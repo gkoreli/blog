@@ -244,7 +244,7 @@ a.post-preview:hover { background: var(--color-surface); }
 .post-content a { color: var(--color-link); }
 .post-content ul, .post-content ol { margin-bottom: 1rem; padding-left: 1.5rem; }
 .post-content li { margin-bottom: 0.25rem; }
-.post-content img { max-width: 100%; border-radius: 0.5rem; }
+.post-content img { max-width: 100%; border-radius: 0.5rem; border: 1px solid var(--color-border); }
 .post-content blockquote {
   border-left: 3px solid var(--color-border);
   padding-left: 1rem;

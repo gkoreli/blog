@@ -46,6 +46,8 @@ component('my-counter', () => {
 
 **[backlog-mcp](https://github.com/gkoreli/backlog-mcp)** — an MCP server that gives AI agents their own task management system. Agents can create tasks, track progress, attach artifacts, and search their own work history. It's the missing piece that makes multi-agent delegation actually work.
 
+![backlog-mcp viewer UI](/images/backlog-viewer-ui.png)
+
 ## This blog is the proof
 
 You're reading a site built with `@nisli/core`. The build pipeline is a custom SSG — markdown goes in, static HTML comes out, and `@nisli/core` web components handle the interactive parts. The theme toggle in the sidebar? That's a `<nisli-theme-toggle>` component using signals and effects. The code blocks you see above? Shiki dual themes — both light and dark colors rendered at build time, switching with zero JavaScript.
