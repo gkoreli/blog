@@ -33,11 +33,11 @@ Two open source projects that I use every day:
 import { component, html, signal, computed } from '@nisli/core';
 
 const count = signal(0);
-const doubled = computed(() => count() * 2);
+const doubled = computed(() => count.value * 2);
 
 component('my-counter', () => {
   return html`
-    <button @click=${() => count.set(count() + 1)}>
+    <button @click=${() => count.value++}>
       ${count} × 2 = ${doubled}
     </button>
   `;
