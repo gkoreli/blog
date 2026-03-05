@@ -6,7 +6,6 @@ export function postTemplate(meta: PostMeta, htmlContent: string) {
 
   return html`<article>
   <header class="post-header">
-    <h1>${meta.title}</h1>
     <time datetime="${meta.date}">${dateStr}</time>
     ${meta.tags.length > 0
       ? html`<div class="tags">${meta.tags.map(t => html`<span class="tag">${t}</span>`)}</div>`

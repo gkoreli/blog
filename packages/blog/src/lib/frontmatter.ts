@@ -1,13 +1,15 @@
 import { readFileSync } from 'node:fs';
 import matter from 'gray-matter';
+import { z } from 'zod/v4';
 
-export interface PostMeta {
-  title: string;
-  date: string;
-  description: string;
-  tags: string[];
-  slug: string;
-}
+const frontmatterSchema = z.object({
+  title: z.string(),
+  date: z.union([z.string(), z.date()]),
+  description: z.string(),
+  tags: z.array(z.string()).optional().default([]),
+});
+
+export type PostMeta = z.infer<typeof frontmatterSchema> & { slug: string; date: string };
 
 export interface Post {
   meta: PostMeta;
@@ -18,23 +20,16 @@ export function parsePost(filePath: string): Post {
   const raw = readFileSync(filePath, 'utf-8');
   const { data, content } = matter(raw);
 
-  const filename = filePath.split('/').pop() ?? '';
-  // 001-hello-world.md → hello-world
-  const slug = filename.replace(/^\d+-/, '').replace(/\.md$/, '');
+  const parsed = frontmatterSchema.parse(data);
 
-  const rawDate = data['date'];
-  const date = rawDate instanceof Date ? rawDate.toISOString().split('T')[0]!
-    : typeof rawDate === 'string' ? rawDate
-    : '';
+  const filename = filePath.split('/').pop() ?? '';
+  const slug = filename.replace(/^\d+-/, '').replace(/\.md$/, '');
+  const date = parsed.date instanceof Date
+    ? parsed.date.toISOString().split('T')[0]!
+    : parsed.date;
 
   return {
-    meta: {
-      title: data['title'] as string ?? 'Untitled',
-      date,
-      description: data['description'] as string ?? '',
-      tags: (data['tags'] as string[] | undefined) ?? [],
-      slug,
-    },
+    meta: { ...parsed, date, slug },
     content,
   };
 }
