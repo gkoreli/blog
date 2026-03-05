@@ -45,7 +45,7 @@ export function pageShell({ title, description, content, posts, currentSlug }: {
       </div>
       <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
       <nav class="sidebar-nav">
-        <h3>Posts</h3>
+        <a href="/about" class="${currentSlug === 'about' ? 'active' : ''}">About</a>
         ${posts.map(p => html`<a href="/${p.slug}" class="${currentSlug === p.slug ? 'active' : ''}">${p.title}</a>`)}
       </nav>
     </aside>

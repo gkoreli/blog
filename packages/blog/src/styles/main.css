@@ -29,6 +29,7 @@ html {
   line-height: 1.7;
   color: var(--color-text);
   background: var(--color-bg);
+  scrollbar-gutter: stable;
 }
 
 /* Layout — 3-column grid: sidebar | content | gutter (for centering) */
@@ -119,15 +120,6 @@ body {
   flex: 1;
 }
 
-.sidebar-nav h3 {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  margin-bottom: 0.75rem;
-  font-weight: 600;
-}
-
 .sidebar-nav a {
   font-size: 0.9rem;
   color: var(--color-text);
@@ -187,33 +179,29 @@ body {
 .hero { margin-bottom: 2.5rem; }
 .hero h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
 .hero h2 { font-size: 1rem; margin-bottom: 0.75rem; color: var(--color-text-muted); font-weight: 400; }
-.projects { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+.projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
 a.project-card {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 0.25rem;
   text-decoration: none;
   color: var(--color-text);
-  padding: 0.75rem;
+  padding: 0.6rem 0.75rem;
   border-radius: 0.5rem;
   border: 1px solid var(--color-border);
   transition: background 0.15s;
-  aspect-ratio: 1;
 }
 a.project-card:visited { color: var(--color-text); }
 a.project-card:hover { background: var(--color-surface); }
+.project-card .project-header { display: flex; align-items: center; gap: 0.4rem; }
 a.project-card img { display: block; }
 a.project-card strong { font-size: 0.85rem; color: var(--color-link); }
 a.project-card p { font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.4; }
 
-/* About */
-.about { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.7; margin-top: 1.5rem; }
-.about p { margin-bottom: 0.75rem; }
-.about em { color: var(--color-text); font-style: italic; }
+/* About brief */
+.about-brief { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.7; margin-top: 1.25rem; }
 
 /* Post list */
-.post-list h2 { margin-bottom: 1.5rem; }
 a.post-preview {
   display: block;
   text-decoration: none;

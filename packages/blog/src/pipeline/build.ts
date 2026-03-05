@@ -7,6 +7,7 @@ import { parsePost } from '../lib/frontmatter.js';
 import { pageShell } from '../templates/page.js';
 import { postTemplate } from '../templates/post.js';
 import { indexTemplate } from '../templates/index.js';
+import { aboutTemplate } from '../templates/about.js';
 import { rssFeed } from '../templates/rss.js';
 
 export { DIST } from '../lib/paths.js';
@@ -34,6 +35,11 @@ export async function buildSite(clean = true): Promise<void> {
   const indexBody = indexTemplate(sortedPosts);
   const indexPage = pageShell({ title: 'Blog', description: 'Engineering blog by Goga Koreli', content: indexBody.toString(), posts: sortedPosts });
   writeRoot('index.html', indexPage.toString());
+
+  const aboutBody = aboutTemplate();
+  const aboutPage = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), posts: sortedPosts, currentSlug: 'about' });
+  writeOutput('about', aboutPage.toString());
+
   writeRoot('feed.xml', rssFeed(sortedPosts));
 
   copyAssets();

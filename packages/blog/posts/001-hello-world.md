@@ -27,7 +27,7 @@ The "product" part matters. An agentic product engineer isn't a prompt engineer 
 
 Two open source projects that I use every day:
 
-**[@nisli/core](https://www.npmjs.com/package/@nisli/core)** — a zero-dependency reactive web component framework. Signals, templates, dependency injection — no build step, no virtual DOM, no dependencies. 660 lines of TypeScript that do what React needs 200KB for.
+**[@nisli/core](https://www.npmjs.com/package/@nisli/core)** — a zero-dependency reactive web component framework. Signals, templates, dependency injection — no build step, no virtual DOM, no dependencies. ~2,600 lines of TypeScript that do what React needs 200KB for.
 
 ```typescript
 import { component, html, signal, computed } from '@nisli/core';
