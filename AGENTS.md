@@ -127,11 +127,50 @@ Decisions made before building. Reference these — don't re-decide.
 | GitHub account | **gkoreli** | Primary dev identity across GitHub and npm. |
 | Rendering | **SSG (static site generation)** | Build script pre-renders markdown → complete HTML at build time. No server needed. Crawlers and AI agents get full HTML. Nisli/core hydrates interactive components client-side. See "How SSG Works" below. |
 | Markdown parser | **marked** | Already used in backlog-mcp viewer. Fast, minimal, passes through raw HTML (web components survive parsing). |
-| Syntax highlighting | **shiki** (build-time) | Uses TextMate grammars (same as VS Code) — pixel-perfect accuracy on edge cases (nested templates, JSX in TS). Outputs pre-highlighted HTML with inline styles — zero client-side JS shipped. highlight.js runs client-side and has coarser grammars. For a static blog, build-time highlighting is strictly better. Integrates via `marked-shiki`. |
+| Syntax highlighting | **shiki** (build-time) | Uses TextMate grammars (same as VS Code) — pixel-perfect accuracy on edge cases (nested templates, JSX in TS). Outputs pre-highlighted HTML with inline styles — zero client-side JS shipped. highlight.js runs client-side and has coarser grammars. For a static blog, build-time highlighting is strictly better. Integrates via `marked-shiki`. Dual themes (`github-light` + `github-dark`) rendered in a single pass using CSS variables — code blocks switch with the page theme via `[data-theme]` selector, zero JS. |
 | CSS approach | **Vanilla CSS** | Blog CSS is ~200 lines: typography, layout, code blocks, nav/footer. Tailwind would add a build step (PostCSS), config file, and 3MB dependency for no gain. Utility classes in tagged template literals are noisy. Nisli/core is zero-dep — the blog should match that philosophy. |
 | Node version | **22.x** | Current LTS. Pinned in `package.json` engines and GitHub Actions. |
 | Language | **TypeScript (strict)** | Latest ECMAScript standards, strict type checking, no `any`. Build script and all tooling are `.ts` files run via `tsx`. ESNext target — always tracks latest standard, no manual bumping. |
 | Project structure | **pnpm monorepo** | `packages/blog` is the site. Extensible for future packages (e.g. `packages/ui` for a blog-specific component library). Same pattern as backlog-mcp. Trivial to set up now, painful to restructure later. |
+
+## Design Philosophy
+
+Researched and decided 2026-03-05. Reference these — don't re-decide.
+
+**Inspiration sources:** shiki.style (sidebar nav, code-first), antfu.me (restraint, whitespace), overreacted.io (literary serif warmth), knifecoat.com (sidebar, code prominence, terminal aesthetic), joshwcomeau.com (code blocks as primary content).
+
+### Layout
+- **Sidebar navigation stays** — meaningful for a technical blog with structured content. Inspired by shiki.style and knifecoat.com. Not every blog needs to be single-column.
+- **3-column CSS grid** — sidebar | content | gutter. Content always centered, sidebar right-aligned within its column (close to content, not pinned to edge). Gutter is empty, exists for symmetric centering.
+- **Code blocks get visual priority** — they're the primary content. Generous padding, full-width within the content column, prominent but not overwhelming.
+
+### Typography
+- **Literary serif for body** — Georgia/Times New Roman. Creates warmth and readability for long-form technical writing. Inspired by overreacted.io's approach — a serif body gives engineering writing a more considered, essay-like feel vs the cold sans-serif default.
+- **Monospace for code only** — SF Mono / Fira Code. Code should feel distinct from prose.
+- **Generous line-height** (1.7+) for body text, tighter for headings.
+
+### Color
+- **Light theme default** — warm cream tones (`#faf8f5` bg), not pure white. Easier on eyes for long reading sessions. Inspired by joshwcomeau.com's warm palette.
+- **Dark theme** — warm dark gray (`#1a1a1a`), not blue-black. Muted text, green accent. Designed separately, not just inverted.
+- **Accent color** — muted green (`#1a6b4e` light / `#6ec9a8` dark). Earthy, calm, distinct from the typical blue link.
+- **Low contrast intentionally** — text is dark but not black (`#2d2a24`), muted text is warm (`#7a7568`). Comfortable for extended reading.
+
+### Code Blocks (Shiki)
+- **Dual themes in one render** — shiki outputs both `github-light` and `github-dark` token colors as CSS variables in a single HTML pass. `defaultColor: false` means no inline colors — everything controlled via `[data-theme]` CSS selectors.
+- **Zero JS for code theme switching** — the theme toggle sets `data-theme` on `<html>`, CSS selectors activate the right shiki variables. No re-rendering, no client-side highlighting.
+- **Why this matters** — code blocks are the most visually complex element on the page. Getting them right in both themes with zero runtime cost is a significant UX win.
+
+### Interactive Components
+- **Islands architecture** — SSG renders the full page shell and content at build time. `@nisli/core` web components handle interactive islands (theme toggle, future interactive demos).
+- **Progressive enhancement** — page is fully readable without JS. Components upgrade when JS loads.
+- **`<nisli-*>` components in markdown** — drop custom elements directly into posts for interactive demos. Browser upgrades them natively.
+
+### Anti-Patterns (Design)
+- Don't use pure white (`#ffffff`) or pure black (`#000000`) — always warm/muted
+- Don't use sans-serif for body text — the literary serif is a deliberate identity choice
+- Don't remove the sidebar to "simplify" — it's a navigation pattern that scales with content
+- Don't add animations or transitions unless they serve comprehension (not decoration)
+- Don't use different fonts for light vs dark — same typography, different palette
 
 ## Current State
 

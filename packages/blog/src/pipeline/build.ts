@@ -10,10 +10,10 @@ import { indexTemplate } from '../templates/index.js';
 
 export { DIST } from '../lib/paths.js';
 
-export async function buildSite(): Promise<void> {
+export async function buildSite(clean = true): Promise<void> {
   const start = performance.now();
 
-  if (existsSync(DIST)) rmSync(DIST, { recursive: true });
+  if (clean && existsSync(DIST)) rmSync(DIST, { recursive: true });
   mkdirSync(DIST, { recursive: true });
 
   await initMarkdown();

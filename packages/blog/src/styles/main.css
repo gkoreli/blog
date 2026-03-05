@@ -1,14 +1,24 @@
 :root {
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Lora', Georgia, serif;
   --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-  --color-bg: #0d1117;
-  --color-surface: #161b22;
-  --color-text: #e6edf3;
-  --color-text-muted: #8b949e;
-  --color-link: #58a6ff;
-  --color-border: #30363d;
-  --sidebar-width: 280px;
   --content-max: 720px;
+
+  /* Light theme (default) — warm cream tones */
+  --color-bg: #faf8f5;
+  --color-surface: #f0ece6;
+  --color-text: #2d2a24;
+  --color-text-muted: #7a7568;
+  --color-link: #1a6b4e;
+  --color-border: #ddd8cf;
+}
+
+[data-theme="dark"] {
+  --color-bg: #1a1a1a;
+  --color-surface: #242424;
+  --color-text: #e0ddd5;
+  --color-text-muted: #9a9589;
+  --color-link: #6ec9a8;
+  --color-border: #3a3a3a;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,26 +31,30 @@ html {
   background: var(--color-bg);
 }
 
-/* Layout */
+/* Layout — 3-column grid: sidebar | content | gutter (for centering) */
 body {
-  display: flex;
   min-height: 100vh;
 }
 
-/* Sidebar */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, var(--content-max)) 1fr;
+  min-height: 100vh;
+}
+
+.gutter { /* empty right column — mirrors sidebar width for centering */ }
+
+/* Sidebar — right-aligned within its column */
 .sidebar {
-  width: var(--sidebar-width);
-  flex-shrink: 0;
-  background: var(--color-surface);
-  border-right: 1px solid var(--color-border);
-  padding: 2rem 1.25rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
+  justify-self: end;
+  padding: 2rem 1.5rem 2rem 1.25rem;
+  border-right: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .sidebar-header {
@@ -115,10 +129,8 @@ body {
 
 /* Main content */
 .content {
-  margin-left: var(--sidebar-width);
-  flex: 1;
-  padding: 3rem 3rem 4rem;
-  max-width: calc(var(--content-max) + 6rem);
+  min-width: 0;
+  padding: 3rem 2rem 4rem;
 }
 
 /* Post list (home page) */
@@ -170,12 +182,42 @@ body {
   margin-bottom: 1.5rem;
   border-radius: 0.5rem;
   overflow-x: auto;
+  padding: 1.25rem;
 }
 .post-content pre code {
   background: none;
   padding: 0;
   font-size: 0.85rem;
   line-height: 1.5;
+}
+
+/* Shiki dual themes — defaultColor: false, so we control via data-theme */
+[data-theme="light"] .shiki,
+[data-theme="light"] .shiki span {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+}
+
+[data-theme="dark"] .shiki,
+[data-theme="dark"] .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+/* Theme toggle component */
+nisli-theme-toggle button {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+nisli-theme-toggle button:hover {
+  color: var(--color-text);
+  background: rgba(128, 128, 128, 0.1);
 }
 
 /* Footer */
@@ -190,18 +232,22 @@ footer a { color: var(--color-link); }
 
 /* Mobile */
 @media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
   .sidebar {
     position: static;
     width: 100%;
+    height: auto;
+    justify-self: stretch;
     border-right: none;
     border-bottom: 1px solid var(--color-border);
     padding: 1.25rem;
   }
   .sidebar-nav { display: none; }
   .sidebar-links { display: none; }
-  body { flex-direction: column; }
+  .gutter { display: none; }
   .content {
-    margin-left: 0;
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.25rem;
   }
 }
