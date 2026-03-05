@@ -1,34 +1,28 @@
 import { readdirSync, mkdirSync, writeFileSync, cpSync, existsSync } from 'node:fs';
-import { join, resolve } from 'node:path';
-
-const ROOT = resolve(import.meta.dirname, '..', '..');
+import { join } from 'node:path';
+import { POSTS_DIR, DIST, PUBLIC_DIR } from './paths.js';
 
 export function discoverPosts(): string[] {
-  const postsDir = join(ROOT, 'posts');
-  return readdirSync(postsDir)
+  return readdirSync(POSTS_DIR)
     .filter(f => f.endsWith('.md'))
     .sort()
-    .map(f => join(postsDir, f));
+    .map(f => join(POSTS_DIR, f));
 }
 
 export function writeOutput(slug: string, html: string): void {
-  const dir = join(ROOT, 'dist', slug);
+  const dir = join(DIST, slug);
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, 'index.html'), html, 'utf-8');
 }
 
 export function writeRoot(filename: string, content: string): void {
-  const dir = join(ROOT, 'dist');
-  mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, filename), content, 'utf-8');
+  mkdirSync(DIST, { recursive: true });
+  writeFileSync(join(DIST, filename), content, 'utf-8');
 }
 
 export function copyAssets(): void {
-  const dist = join(ROOT, 'dist');
-  const publicDir = join(ROOT, 'public');
-  mkdirSync(dist, { recursive: true });
-
-  if (existsSync(publicDir)) {
-    cpSync(publicDir, dist, { recursive: true });
+  mkdirSync(DIST, { recursive: true });
+  if (existsSync(PUBLIC_DIR)) {
+    cpSync(PUBLIC_DIR, DIST, { recursive: true });
   }
 }

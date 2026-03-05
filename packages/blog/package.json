@@ -8,8 +8,8 @@
     "#nisli/server": "./src/nisli-static/static.ts"
   },
   "scripts": {
-    "dev": "tsx watch src/build.ts",
-    "build": "tsx src/build.ts",
+    "dev": "tsx src/pipeline/dev.ts",
+    "build": "tsx src/pipeline/prod.ts",
     "serve": "pnpm dlx serve dist",
     "typecheck": "tsc --noEmit"
   },
