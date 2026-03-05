@@ -1,4 +1,6 @@
-import { buildSite, bundleClient } from './build.js';
+import { cleanDist, copyStaticAssets, buildHTML, bundleClient } from './build.js';
 
-await buildSite();
+cleanDist();
+copyStaticAssets();
+await buildHTML();
 await bundleClient();

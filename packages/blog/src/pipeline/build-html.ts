@@ -1,2 +1,4 @@
-import { buildSite } from './build.js';
-await buildSite(false);
+import { copyStaticAssets, buildHTML } from './build.js';
+
+copyStaticAssets();
+await buildHTML();

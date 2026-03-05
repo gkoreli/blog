@@ -12,10 +12,20 @@ import { rssFeed } from '../templates/rss.js';
 
 export { DIST } from '../lib/paths.js';
 
-export async function buildSite(clean = true): Promise<void> {
-  const start = performance.now();
+/** Step 1: Clean and prepare dist */
+export function cleanDist(): void {
+  if (existsSync(DIST)) rmSync(DIST, { recursive: true });
+  mkdirSync(DIST, { recursive: true });
+}
 
-  if (clean && existsSync(DIST)) rmSync(DIST, { recursive: true });
+/** Step 2: Copy static assets from public/ */
+export function copyStaticAssets(): void {
+  copyAssets();
+}
+
+/** Step 3: Generate all HTML pages + feed */
+export async function buildHTML(): Promise<void> {
+  const start = performance.now();
   mkdirSync(DIST, { recursive: true });
 
   await initMarkdown();
@@ -42,12 +52,11 @@ export async function buildSite(clean = true): Promise<void> {
 
   writeRoot('feed.xml', rssFeed(sortedPosts));
 
-  copyAssets();
-
   const elapsed = (performance.now() - start).toFixed(0);
   console.log(`Built ${posts.length} post(s) in ${elapsed}ms → dist/`);
 }
 
+/** Step 4: Bundle client JS + CSS */
 export async function bundleClient(minify = true): Promise<void> {
   await esbuild({
     entryPoints: [CLIENT_ENTRY, STYLES_SRC],
