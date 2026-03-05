@@ -17,10 +17,19 @@ component('nisli-theme-toggle', () => {
     localStorage.setItem('theme', dark ? 'dark' : 'light');
   });
 
-  const label = computed(() => isDark.value ? '☀️ Light' : '🌙 Dark');
-  const toggle = () => { isDark.value = !isDark.value; };
+  const lightActive = computed(() => isDark.value ? '' : 'active');
+  const darkActive = computed(() => isDark.value ? 'active' : '');
+  const setLight = () => { isDark.value = false; };
+  const setDark = () => { isDark.value = true; };
 
   return html`
-    <button @click=${toggle}>${label}</button>
+    <div class="theme-toggle">
+      <button @click=${setLight} class=${lightActive} aria-label="Light mode" title="Light mode">
+        <img src="/icons/sun.svg" width="16" height="16" alt="">
+      </button>
+      <button @click=${setDark} class=${darkActive} aria-label="Dark mode" title="Dark mode">
+        <img src="/icons/moon.svg" width="16" height="16" alt="">
+      </button>
+    </div>
   `;
 });

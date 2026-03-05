@@ -99,7 +99,7 @@ The markdown never reaches the browser. Content is readable without JS (SEO, cra
 - **Keep it simple** — no CMS, no database, no complex build chains. Markdown → HTML → deploy.
 - **Dogfooding** — the blog itself proves `@nisli/core` works as a standalone npm dependency
 - **Web components in posts** — for interactive elements, use `<nisli-*>` custom elements directly in markdown. No JSX, no MDX.
-- **Git config** — this repo uses local git config (`Goga Koreli <gogakoreli@icloud.com>`), not the global Amazon config
+- **Git config** — this repo uses local git config (personal email, not the global Amazon config)
 - **Auth** — pushes authenticate as `gkoreli` via PAT stored in macOS Keychain
 
 ## Anti-Patterns
@@ -124,7 +124,7 @@ Decisions made before building. Reference these — don't re-decide.
 | Registrar | **Cloudflare** | Wholesale pricing, free WHOIS privacy, integrated DNS. |
 | License | **MIT** | Matches backlog-mcp. Blog source is public. |
 | Branch | **main** | Not `mainline` (Amazon default). Set via local git config. |
-| Git identity | **Goga Koreli \<gogakoreli@icloud.com\>** | Set via local git config for this repo. |
+| Git identity | **Goga Koreli (personal email)** | Set via local git config for this repo. |
 | GitHub account | **gkoreli** | Primary dev identity across GitHub and npm. |
 | Rendering | **SSG (static site generation)** | Build script pre-renders markdown → complete HTML at build time. No server needed. Crawlers and AI agents get full HTML. Nisli/core hydrates interactive components client-side. See "How SSG Works" below. |
 | Markdown parser | **marked** | Already used in backlog-mcp viewer. Fast, minimal, passes through raw HTML (web components survive parsing). |
@@ -135,6 +135,8 @@ Decisions made before building. Reference these — don't re-decide.
 | Node version | **22.x** | Current LTS. Pinned in `package.json` engines and GitHub Actions. |
 | Language | **TypeScript (strict)** | Latest ECMAScript standards, strict type checking, no `any`. Build script and all tooling are `.ts` files run via `tsx`. ESNext target — always tracks latest standard, no manual bumping. |
 | Project structure | **pnpm monorepo** | `packages/blog` is the site. Extensible for future packages (e.g. `packages/ui` for a blog-specific component library). Same pattern as backlog-mcp. Trivial to set up now, painful to restructure later. |
+| Icons | **Cohesive SVG icon set** | Custom gradient line-art SVGs in `public/icons/`. Inspired by backlog-mcp's futuristic style — same geometric line-art approach but using the blog's green gradient (`#1a6b4e` → `#6ec9a8`). Never use emoji — always use SVG icons from the icon set. Icons: logo, sun, moon, github, npm, posts, sparkle. |
+| Accent colors | **Green primary + sky blue secondary** | Primary: `#1a6b4e` / `#6ec9a8`. Secondary: `#93c5fd` (soft sky blue). Green dominates all gradients (60%+), blue is only the trailing hint. Three-stop pattern: dark green → mint → sky blue. Rationale: grass-and-clear-sky — natural, no muddy midpoints. Purple was too dominant, gold looked like spoilage, cyan was indistinguishable from green. |
 
 ## Design Philosophy
 
@@ -155,7 +157,8 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 ### Color
 - **Light theme default** — warm cream tones (`#faf8f5` bg), not pure white. Easier on eyes for long reading sessions. Inspired by joshwcomeau.com's warm palette.
 - **Dark theme** — warm dark gray (`#1a1a1a`), not blue-black. Muted text, green accent. Designed separately, not just inverted.
-- **Accent color** — muted green (`#1a6b4e` light / `#6ec9a8` dark). Earthy, calm, distinct from the typical blue link.
+- **Primary accent** — muted green (`#1a6b4e` dark / `#6ec9a8` light). Earthy, calm, distinct from the typical blue link. Used for links, icon strokes, and as the dominant gradient color.
+- **Secondary accent** — soft sky blue (`#93c5fd`). Grass-and-clear-sky pairing with green. Only appears as the trailing end of gradients — green always dominates (60%+ of gradient). Never used standalone; exists to give gradients a visible color shift without competing with green. Three-stop gradient pattern: `#1a6b4e` → `#6ec9a8` (60%) → `#93c5fd` (100%).
 - **Low contrast intentionally** — text is dark but not black (`#2d2a24`), muted text is warm (`#7a7568`). Comfortable for extended reading.
 
 ### Code Blocks (Shiki)
@@ -174,6 +177,7 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 - Don't remove the sidebar to "simplify" — it's a navigation pattern that scales with content
 - Don't add animations or transitions unless they serve comprehension (not decoration)
 - Don't use different fonts for light vs dark — same typography, different palette
+- Don't use emoji for UI elements — always use SVG icons from `public/icons/`. Emoji render inconsistently across platforms and break the cohesive visual identity. The icon set uses gradient line-art matching the blog's color palette.
 
 ## Current State
 

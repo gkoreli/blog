@@ -1,6 +1,6 @@
-import { cpSync, rmSync, existsSync, mkdirSync } from 'node:fs';
+import { rmSync, existsSync, mkdirSync } from 'node:fs';
 import { build as esbuild } from 'esbuild';
-import { DIST, STYLES_SRC, CLIENT_ENTRY } from '../lib/paths.js';
+import { DIST, CLIENT_ENTRY, STYLES_SRC } from '../lib/paths.js';
 import { discoverPosts, writeOutput, writeRoot, copyAssets } from '../lib/fs.js';
 import { initMarkdown, renderMarkdown } from '../lib/markdown.js';
 import { parsePost } from '../lib/frontmatter.js';
@@ -34,7 +34,6 @@ export async function buildSite(clean = true): Promise<void> {
   const indexPage = pageShell({ title: 'Blog', description: 'Engineering blog by Goga Koreli', content: indexBody.toString(), posts: sortedPosts });
   writeRoot('index.html', indexPage.toString());
 
-  cpSync(STYLES_SRC, `${DIST}/styles.css`);
   copyAssets();
 
   const elapsed = (performance.now() - start).toFixed(0);
@@ -43,9 +42,10 @@ export async function buildSite(clean = true): Promise<void> {
 
 export async function bundleClient(minify = true): Promise<void> {
   await esbuild({
-    entryPoints: [CLIENT_ENTRY],
+    entryPoints: [CLIENT_ENTRY, STYLES_SRC],
     bundle: true,
-    outfile: `${DIST}/main.js`,
+    outdir: DIST,
+    entryNames: '[name]',
     format: 'esm',
     minify,
     target: 'es2024',
