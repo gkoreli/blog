@@ -1,18 +1,17 @@
 {
   "name": "gkoreli-blog",
-  "version": "0.1.0",
   "private": true,
   "description": "Personal blog by Goga Koreli — built with @nisli/core",
   "type": "module",
+  "license": "MIT",
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "dev": "node src/build.js --watch",
-    "build": "node src/build.js",
-    "serve": "npx serve dist"
-  },
-  "dependencies": {
-    "@nisli/core": "latest"
-  },
-  "devDependencies": {
-    "typescript": "^5.7.0"
+    "dev": "pnpm -C packages/blog dev",
+    "build": "pnpm -C packages/blog build",
+    "serve": "pnpm -C packages/blog serve",
+    "typecheck": "pnpm -r typecheck"
   }
 }
