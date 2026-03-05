@@ -89,18 +89,19 @@ Every page shares a common HTML shell. This is a **build-time template**, not a 
 ```
 
 **Key decisions:**
-- The shell is a TypeScript function that returns an HTML string — not a nisli/core component. Build-time only.
+- The shell is a TypeScript template function using `nisli-static`'s `html` tagged template — same syntax as nisli/core, but outputs strings.
 - `<header>`, `<main>`, `<footer>` are semantic HTML, not web components. Content is static.
 - `main.js` is a small client-side bundle that registers nisli/core components for interactive elements in posts.
 - CSS is a single `styles.css` — vanilla CSS, loaded in `<head>`.
 
 ### Component Model — Two Layers
 
-**Layer 1: Build-time (Node, no nisli/core)**
-- Page shell template — TypeScript function returning HTML string
-- Post list generation — iterates posts, outputs `<article>` elements
-- Frontmatter parsing — extracts metadata from markdown
-- These are plain functions, not components. They run in Node during build.
+**Layer 1: Build-time (Node, `nisli-static`)**
+- Page shell, post, and index templates use `html` tagged templates from `nisli-static`
+- Same syntax as nisli/core's browser `html` — but resolves to strings, not DOM
+- `raw()` for pre-rendered content (markdown output, syntax-highlighted code)
+- These are composable template functions, not raw string concatenation
+- See ADR-0002 for the full nisli-static design and migration path
 
 **Layer 2: Client-side (browser, nisli/core)**
 - Interactive elements embedded in posts: `<nisli-counter>`, `<nisli-demo>`, etc.
@@ -111,8 +112,10 @@ Every page shares a common HTML shell. This is a **build-time template**, not a 
 ```
 src/
 ├── build.ts              ← build pipeline orchestrator
+├── nisli-static/
+│   └── static.ts         ← prototype of @nisli/core/server (see ADR-0002)
 ├── templates/
-│   ├── page.ts           ← HTML shell template (build-time)
+│   ├── page.ts           ← HTML shell template (imports from nisli-static)
 │   ├── post.ts           ← single post page template
 │   └── index.ts          ← home page / post list template
 ├── lib/
@@ -122,7 +125,6 @@ src/
 ├── client/
 │   ├── main.ts           ← client entry point (registers components)
 │   └── components/       ← nisli/core interactive components
-│       └── counter.ts    ← example: <nisli-counter>
 └── styles/
     └── main.css          ← vanilla CSS
 ```
@@ -192,4 +194,4 @@ Rejected because:
 - Build script is our responsibility — no framework handles edge cases for us
 - Every new page type (tags, RSS, about) requires adding a template and build logic
 - Client-side JS is minimal but still needs bundling (esbuild)
-- Two mental models: build-time templates (plain functions) vs. client-side components (nisli/core)
+- Two mental models: build-time templates (`nisli-static`) vs. client-side components (nisli/core) — but same `html` syntax in both, reducing cognitive overhead

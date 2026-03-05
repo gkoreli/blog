@@ -5,12 +5,16 @@
     "rootDir": "src",
     "declaration": true,
     "sourceMap": true,
+    "skipLibCheck": true,
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "exactOptionalPropertyTypes": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "nisli-static": ["./src/nisli-static/static.ts"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

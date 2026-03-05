@@ -1,33 +1,77 @@
-// Minimal build script — placeholder until you wire up @nisli/core rendering
-// For now: copies posts and public assets to dist/
+import { resolve, join } from 'node:path';
+import { cpSync, rmSync, existsSync, watch } from 'node:fs';
+import { build as esbuild } from 'esbuild';
+import { discoverPosts, writeOutput, writeRoot, copyAssets } from './lib/fs.js';
+import { initMarkdown, renderMarkdown } from './lib/markdown.js';
+import { parsePost } from './lib/frontmatter.js';
+import { pageShell } from './templates/page.js';
+import { postTemplate } from './templates/post.js';
+import { indexTemplate } from './templates/index.js';
+import type { PostMeta } from './lib/frontmatter.js';
 
-import { readdir, readFile, writeFile, mkdir, cp } from 'fs/promises';
-import { join } from 'path';
+const ROOT = resolve(import.meta.dirname, '..');
+const DIST = join(ROOT, 'dist');
 
-const POSTS_DIR = 'posts';
-const PUBLIC_DIR = 'public';
-const DIST_DIR = 'dist';
+async function build(): Promise<void> {
+  const start = performance.now();
 
-async function build() {
-  await mkdir(DIST_DIR, { recursive: true });
+  // Clean
+  if (existsSync(DIST)) rmSync(DIST, { recursive: true });
 
-  // Copy public assets
-  try {
-    await cp(PUBLIC_DIR, DIST_DIR, { recursive: true });
-  } catch {}
+  // Init markdown + shiki
+  await initMarkdown();
 
-  // Read and list posts
-  const files = (await readdir(POSTS_DIR)).filter(f => f.endsWith('.md'));
-  console.log(`Found ${files.length} post(s)`);
+  // Discover and parse posts
+  const files = discoverPosts();
+  const posts = files.map(parsePost);
 
-  for (const file of files) {
-    const content = await readFile(join(POSTS_DIR, file), 'utf-8');
-    const title = content.match(/^#\s+(.+)$/m)?.[1] || file;
-    console.log(`  → ${title}`);
+  // Render each post
+  const metas: PostMeta[] = [];
+  for (const post of posts) {
+    const htmlContent = await renderMarkdown(post.content);
+    const body = postTemplate(post.meta, htmlContent);
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString() });
+    writeOutput(post.meta.slug, page.toString());
+    metas.push(post.meta);
   }
 
-  // TODO: Parse markdown, render with @nisli/core components, output HTML
-  console.log('\nBuild complete (scaffold only — wire up @nisli/core rendering next)');
+  // Render index page
+  const indexBody = indexTemplate(metas.reverse()); // newest first
+  const indexPage = pageShell({ title: 'Blog', description: 'Engineering blog by Goga Koreli', content: indexBody.toString() });
+  writeRoot('index.html', indexPage.toString());
+
+  // Bundle client JS
+  await esbuild({
+    entryPoints: [join(ROOT, 'src/client/main.ts')],
+    bundle: true,
+    outfile: join(DIST, 'main.js'),
+    format: 'esm',
+    minify: true,
+    target: 'es2024',
+  });
+
+  // Copy CSS
+  cpSync(join(ROOT, 'src/styles/main.css'), join(DIST, 'styles.css'));
+
+  // Copy static assets
+  copyAssets();
+
+  const elapsed = (performance.now() - start).toFixed(0);
+  console.log(`Built ${posts.length} post(s) in ${elapsed}ms → dist/`);
 }
 
-build().catch(console.error);
+// Watch mode
+if (process.argv.includes('--watch')) {
+  await build();
+
+  const dirs = [join(ROOT, 'posts'), join(ROOT, 'src')];
+  for (const dir of dirs) {
+    watch(dir, { recursive: true }, async () => {
+      console.log('\nRebuilding...');
+      await build();
+    });
+  }
+  console.log('Watching for changes...');
+} else {
+  await build();
+}
