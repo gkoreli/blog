@@ -38,8 +38,9 @@ export function pageShell({ title, description, content, posts, currentSlug }: {
         <p>Builder, not thought leader.</p>
       </div>
       <div class="sidebar-links">
-        <a href="https://github.com/gkoreli" class="sidebar-btn" title="GitHub"><img src="/icons/github.svg" width="18" height="18" alt="GitHub"></a>
-        <a href="https://www.npmjs.com/~gkoreli" class="sidebar-btn" title="npm"><img src="/icons/npm.svg" width="18" height="18" alt="npm"></a>
+        <a href="https://github.com/gkoreli" class="sidebar-btn" title="GitHub" target="_blank" rel="noopener"><img src="/icons/github.svg" width="18" height="18" alt="GitHub"></a>
+        <a href="https://www.npmjs.com/~gkoreli" class="sidebar-btn" title="npm" target="_blank" rel="noopener"><img src="/icons/npm.svg" width="18" height="18" alt="npm"></a>
+        <a href="https://www.linkedin.com/in/goga-koreli/" class="sidebar-btn" title="LinkedIn" target="_blank" rel="noopener"><img src="/icons/linkedin.svg" width="18" height="18" alt="LinkedIn"></a>
         <nisli-theme-toggle></nisli-theme-toggle>
       </div>
       <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>

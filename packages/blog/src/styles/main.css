@@ -1,7 +1,7 @@
 :root {
   --font-sans: 'Lora', Georgia, serif;
   --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-  --content-max: 720px;
+  --content-max: 800px;
 
   /* Light theme (default) — warm cream tones */
   --color-bg: #faf8f5;
@@ -179,11 +179,41 @@ body {
 /* Main content */
 .content {
   min-width: 0;
-  padding: 3rem 2rem 4rem;
+  padding: 2rem 1.5rem 3rem;
 }
 
 /* Post list (home page) */
-.post-list h1 { margin-bottom: 2rem; }
+/* Hero */
+.hero { margin-bottom: 2.5rem; }
+.hero h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+.hero h2 { font-size: 1rem; margin-bottom: 0.75rem; color: var(--color-text-muted); font-weight: 400; }
+.projects { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+a.project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  text-decoration: none;
+  color: var(--color-text);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border);
+  transition: background 0.15s;
+  aspect-ratio: 1;
+}
+a.project-card:visited { color: var(--color-text); }
+a.project-card:hover { background: var(--color-surface); }
+a.project-card img { display: block; }
+a.project-card strong { font-size: 0.85rem; color: var(--color-link); }
+a.project-card p { font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.4; }
+
+/* About */
+.about { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.7; margin-top: 1.5rem; }
+.about p { margin-bottom: 0.75rem; }
+.about em { color: var(--color-text); font-style: italic; }
+
+/* Post list */
+.post-list h2 { margin-bottom: 1.5rem; }
 a.post-preview {
   display: block;
   text-decoration: none;
@@ -196,7 +226,7 @@ a.post-preview {
 a.post-preview:visited, a.post-preview:visited h2, a.post-preview:visited p, a.post-preview:visited time { color: inherit; }
 a.post-preview:visited { color: var(--color-text); }
 a.post-preview:hover { background: var(--color-surface); }
-.post-preview h2 { font-size: 1.3rem; margin-bottom: 0.25rem; color: var(--color-text); }
+.post-preview h2, .post-preview h3 { font-size: 1.3rem; margin-bottom: 0.25rem; color: var(--color-text); }
 .post-preview time { font-size: 0.85rem; color: var(--color-text-muted); }
 .post-preview p { margin-top: 0.5rem; color: var(--color-text-muted); }
 
