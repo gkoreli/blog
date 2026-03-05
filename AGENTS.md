@@ -93,6 +93,7 @@ The markdown never reaches the browser. Content is readable without JS (SEO, cra
 
 ### Rules
 
+- **No type assertions** — `as string`, `as any`, `as unknown` are banned. If types don't flow naturally, fix the source (add a Zod schema, narrow with type guards, or fix the upstream type). The only exception is `as const`.
 - **Markdown-first** — posts live in `posts/` as `.md` files with YAML frontmatter
 - **Build script** — `src/build.js` converts markdown to HTML using `@nisli/core` components
 - **Keep it simple** — no CMS, no database, no complex build chains. Markdown → HTML → deploy.
