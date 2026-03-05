@@ -1,12 +1,13 @@
 import { html, raw } from 'nisli-static';
 import type { PostMeta } from '../lib/frontmatter.js';
 
-export function pageShell({ title, description, content, posts, currentSlug }: {
+export function pageShell({ title, description, content, posts, currentSlug, ogImage }: {
   title: string;
   description: string;
   content: string;
   posts: PostMeta[];
   currentSlug?: string;
+  ogImage?: string;
 }) {
   return html`<!DOCTYPE html>
 <html lang="en">
@@ -18,6 +19,9 @@ export function pageShell({ title, description, content, posts, currentSlug }: {
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
   <meta property="og:type" content="article">
+  ${ogImage ? html`<meta property="og:image" content="https://gkoreli.com${ogImage}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://gkoreli.com${ogImage}">` : ''}
   <meta name="author" content="Goga Koreli">
   <link rel="icon" href="/icons/logo.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="Goga Koreli" href="/feed.xml">

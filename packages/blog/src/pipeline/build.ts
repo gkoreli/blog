@@ -9,6 +9,7 @@ import { postTemplate } from '../templates/post.js';
 import { indexTemplate } from '../templates/index.js';
 import { aboutTemplate } from '../templates/about.js';
 import { rssFeed } from '../templates/rss.js';
+import { generateOgImage } from '../lib/og.js';
 
 export { DIST } from '../lib/paths.js';
 
@@ -37,8 +38,9 @@ export async function buildHTML(): Promise<void> {
 
   for (const post of posts) {
     const htmlContent = await renderMarkdown(post.content);
+    const ogImage = await generateOgImage(post.meta.title, post.meta.slug);
     const body = postTemplate(post.meta, htmlContent);
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), posts: sortedPosts, currentSlug: post.meta.slug });
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), posts: sortedPosts, currentSlug: post.meta.slug, ogImage });
     writeOutput(post.meta.slug, page.toString());
   }
 
