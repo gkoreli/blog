@@ -35,9 +35,8 @@ console.log(`Dev server at http://localhost:${port}`);
 let debounce: ReturnType<typeof setTimeout>;
 for (const dir of [SRC, POSTS_DIR]) {
   watch(dir, { recursive: true }, (_event, filename) => {
-    // Skip changes to files esbuild already watches (client JS/CSS)
+    // Skip client JS — esbuild watches those via its import graph
     if (filename?.endsWith('.ts') && filename.includes('client')) return;
-    if (filename?.endsWith('.css')) return;
     clearTimeout(debounce);
     debounce = setTimeout(() => ctx.rebuild().catch(() => {}), 100);
   });

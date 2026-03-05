@@ -137,6 +137,9 @@ Decisions made before building. Reference these — don't re-decide.
 | Project structure | **pnpm monorepo** | `packages/blog` is the site. Extensible for future packages (e.g. `packages/ui` for a blog-specific component library). Same pattern as backlog-mcp. Trivial to set up now, painful to restructure later. |
 | Icons | **Cohesive SVG icon set** | Custom gradient line-art SVGs in `public/icons/`. Inspired by backlog-mcp's futuristic style — same geometric line-art approach but using the blog's green gradient (`#1a6b4e` → `#6ec9a8`). Never use emoji — always use SVG icons from the icon set. Icons: logo, sun, moon, github, npm, posts, sparkle. |
 | Accent colors | **Green primary + sky blue secondary** | Primary: `#1a6b4e` / `#6ec9a8`. Secondary: `#93c5fd` (soft sky blue). Green dominates all gradients (60%+), blue is only the trailing hint. Three-stop pattern: dark green → mint → sky blue. Rationale: grass-and-clear-sky — natural, no muddy midpoints. Purple was too dominant, gold looked like spoilage, cyan was indistinguishable from green. |
+| Logo | **Georgian გკ negative space** | Georgian Mkhedruli letters გ (g) and კ (k) — "Goga Koreli". Font-extracted SVG paths (Noto Sans Georgian Bold via opentype.js) masked out of a gradient rounded square. Letters sit at the bottom like TypeScript's logo. Same file serves as sidebar logo and SVG favicon. Georgian script is distinctive in tech — nobody else uses it. |
+| CI/CD | **GitHub Actions → GitHub Pages** | Push to `main` triggers build + deploy. No versioning (not a library). No preview deploys (single author, use `pnpm dev` locally). Concurrency cancels in-progress deploys. |
+| Custom domain | **gkoreli.com via Cloudflare** | A records (4× GitHub Pages IPs) + CNAME for www. Cloudflare proxy enabled with SSL mode Full. `CNAME` file in `public/` so GitHub Pages remembers the domain across deploys. |
 
 ## Design Philosophy
 
@@ -183,7 +186,7 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 - **RSS feed** — generated at build time from post metadata. Zero dependencies — hand-rolled XML template. Autodiscovery `<link>` in `<head>` so readers and agents find it automatically.
 - **Semantic HTML** — `<article>`, `<time>`, `<header>`, `<nav>`, `<main>`, `<aside>`, `<footer>`. Agents can identify main content vs navigation without heuristics.
 - **AI agent access** — `llms.txt` (content directory for AI agents), `robots.txt` (allow all), pre-rendered HTML (full content without JS), RSS feed (`/feed.xml`).
-- **Dev server** — esbuild `context` with `watch()` + `serve()`. Site HTML generated in `onEnd` plugin (after esbuild finishes, not before). `fs.watch` on `src/` and `posts/` triggers `ctx.rebuild()` for template/markdown changes outside esbuild's dependency graph.
+- **Dev server** — esbuild `context` with `watch()` + `serve()`. Site HTML generated in `onEnd` plugin (after esbuild finishes, not before). `fs.watch` on `src/` and `posts/` triggers `ctx.rebuild()` for template/markdown/CSS changes outside esbuild's dependency graph. Note: esbuild's `watch()` only tracks files in its import graph — entry points like `main.css` with no `@import` statements are NOT watched by esbuild, so `fs.watch` must handle them.
 - **Never run `pnpm build` while `pnpm dev` is running** — esbuild's serve holds the dist directory. Production build would nuke it.
 
 ### Anti-Patterns (Design)
@@ -202,9 +205,9 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 - **Domain (reserved)**: `gogakoreli.com` (separate project later)
 - **License**: MIT
 - **Branch**: `main`
-- **Status**: Design system complete, first post drafted, dev server working
-- **Done**: SSG pipeline, shiki dual themes, theme toggle, sidebar nav, SVG icon set, Zod frontmatter validation, warm cream/dark palette, Lora serif typography
-- **Next**: GitHub Actions CI/CD, Cloudflare DNS setup, publish first post, write more content
+- **Status**: Live at gkoreli.com — design system complete, first post published, CI/CD active
+- **Done**: SSG pipeline, shiki dual themes, theme toggle, sidebar nav, SVG icon set, Georgian გკ logo/favicon, Zod frontmatter validation, warm cream/dark palette, Lora serif typography, GitHub Actions deploy, Cloudflare DNS, RSS feed, llms.txt
+- **Next**: Write more content, @nisli/core SSR (TASK-0477), Open Graph social cards
 
 ## Tech Stack
 

@@ -132,16 +132,18 @@ body {
   font-size: 0.9rem;
   color: var(--color-text);
   text-decoration: none;
-  padding: 0.35rem 0.5rem;
-  border-radius: 0.25rem;
+  padding: 0.4rem 0.6rem;
+  margin: 0 -0.6rem;
+  border-radius: 0.375rem;
   display: block;
   line-height: 1.4;
   opacity: 0.7;
-  transition: opacity 0.15s;
+  transition: opacity 0.15s, background 0.15s;
 }
 
 .sidebar-nav a:hover {
   opacity: 1;
+  background: var(--color-surface);
 }
 
 .sidebar-nav a.active {
@@ -182,10 +184,19 @@ body {
 
 /* Post list (home page) */
 .post-list h1 { margin-bottom: 2rem; }
-.post-preview { margin-bottom: 2rem; }
-.post-preview h2 { font-size: 1.3rem; margin-bottom: 0.25rem; }
-.post-preview a { color: var(--color-text); text-decoration: none; }
-.post-preview a:hover { color: var(--color-link); }
+a.post-preview {
+  display: block;
+  text-decoration: none;
+  color: var(--color-text);
+  padding: 1rem;
+  margin: 0 -1rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background 0.15s;
+}
+a.post-preview:visited, a.post-preview:visited h2, a.post-preview:visited p, a.post-preview:visited time { color: inherit; }
+a.post-preview:visited { color: var(--color-text); }
+a.post-preview:hover { background: var(--color-surface); }
+.post-preview h2 { font-size: 1.3rem; margin-bottom: 0.25rem; color: var(--color-text); }
 .post-preview time { font-size: 0.85rem; color: var(--color-text-muted); }
 .post-preview p { margin-top: 0.5rem; color: var(--color-text-muted); }
 

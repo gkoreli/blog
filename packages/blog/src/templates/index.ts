@@ -6,12 +6,12 @@ export function indexTemplate(posts: PostMeta[]) {
 
   return html`<div class="post-list">
   <h1>Posts</h1>
-  ${posts.map(p => html`<article class="post-preview">
-    <a href="/${p.slug}">
+  ${posts.map(p => html`<a href="/${p.slug}" class="post-preview">
+    <article>
       <h2>${p.title}</h2>
-    </a>
-    <time datetime="${p.date}">${dateStr(p.date)}</time>
-    <p>${p.description}</p>
-  </article>`)}
+      <time datetime="${p.date}">${dateStr(p.date)}</time>
+      <p>${p.description}</p>
+    </article>
+  </a>`)}
 </div>`;
 }
