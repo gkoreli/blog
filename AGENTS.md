@@ -149,8 +149,10 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 
 ### Layout
 - **Sidebar navigation stays** — meaningful for a technical blog with structured content. Inspired by shiki.style and knifecoat.com. Not every blog needs to be single-column.
-- **3-column CSS grid** — sidebar | content | gutter. Content always centered, sidebar right-aligned within its column (close to content, not pinned to edge). Gutter is empty, exists for symmetric centering.
+- **3-column CSS grid** — sidebar | content (800px) | gutter. Content always centered, sidebar right-aligned within its column (close to content, not pinned to edge). Gutter is empty, exists for symmetric centering.
 - **Code blocks get visual priority** — they're the primary content. Generous padding, full-width within the content column, prominent but not overwhelming.
+- **Tagline** — "Where excitement ends, depth begins." in the sidebar. Captures the philosophy: the real work starts after the dopamine of new ideas fades.
+- **Pages** — `/about` page with full bio, projects, and connect links. Home page has hero (name, projects grid, brief about) + post list separated by sparkle.
 
 ### Typography
 - **Lora serif for body** — loaded from Google Fonts, falls back to Georgia. Designed for screens, not print — warmer and more contemporary than Georgia (which looks like a newspaper). Inspired by overreacted.io's literary feel.
@@ -181,13 +183,14 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 - **Tags as `#hashtags`** — no pills or badges. Tags render as `#tag-name` with the `#` using gradient text (`background-clip: text`). Muted, developer-native, doesn't compete with content. Inspired by antfu.me and overreacted.io treating metadata minimally.
 
 ### Build Pipeline
-- **Two-phase build** — `buildSite()` generates HTML (markdown → shiki → templates → dist), `bundleClient()` bundles JS + CSS via esbuild.
+- **Four-step build** — `cleanDist()` → `copyStaticAssets()` → `buildHTML()` → `bundleClient()`. Each step is independent with clear ordering. Prod uses all four, dev uses steps 2+3 only.
 - **esbuild handles all assets** — JS and CSS are esbuild entry points with `entryNames: '[name]'` to flatten output. HTML references `/main.js` and `/main.css`.
 - **RSS feed** — generated at build time from post metadata. Zero dependencies — hand-rolled XML template. Autodiscovery `<link>` in `<head>` so readers and agents find it automatically.
 - **Semantic HTML** — `<article>`, `<time>`, `<header>`, `<nav>`, `<main>`, `<aside>`, `<footer>`. Agents can identify main content vs navigation without heuristics.
 - **AI agent access** — `llms.txt` (content directory for AI agents), `robots.txt` (allow all), pre-rendered HTML (full content without JS), RSS feed (`/feed.xml`).
-- **Dev server** — esbuild `context` with `watch()` + `serve()`. Site HTML generated in `onEnd` plugin (after esbuild finishes, not before). `fs.watch` on `src/` and `posts/` triggers `ctx.rebuild()` for template/markdown/CSS changes outside esbuild's dependency graph. Note: esbuild's `watch()` only tracks files in its import graph — entry points like `main.css` with no `@import` statements are NOT watched by esbuild, so `fs.watch` must handle them.
-- **Never run `pnpm build` while `pnpm dev` is running** — esbuild's serve holds the dist directory. Production build would nuke it.
+- **External links** — all external links open in new tabs (`target="_blank" rel="noopener"`). Markdown renderer auto-detects external vs internal links. Internal links (`/about`, `/hello-world`) stay in same tab.
+- **Dev server** — browser-sync serves `dist/` with WebSocket-based live reload. `bs.watch()` (chokidar) watches `src/` and `posts/` for changes. HTML rebuilt via subprocess (`tsx build-html.ts`) to avoid Node module cache. esbuild context handles JS/CSS bundling.
+- **Never run `pnpm build` while `pnpm dev` is running** — esbuild's context holds the dist directory. Production build would nuke it.
 
 ### Anti-Patterns (Design)
 - Don't use pure white (`#ffffff`) or pure black (`#000000`) — always warm/muted

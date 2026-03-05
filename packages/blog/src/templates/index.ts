@@ -22,7 +22,7 @@ export function indexTemplate(posts: PostMeta[]) {
         <p>Agentic product engineering blog</p>
       </a>
     </div>
-    <p class="about-brief">There's a lot of hype and ambiguity out there. This blog exists because we need honest, grounded writing about what it actually means to build with agents — the real principles, not the marketing. We're crossing boundaries.</p>
+    <p class="about-brief">There's a lot of hype and ambiguity out there about agentic engineering. This blog exists because we need honest, grounded writing about what it actually means to build with agents — the real principles, not the marketing.</p>
   </section>
   <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
   <section class="post-list">

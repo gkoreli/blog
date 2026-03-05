@@ -35,7 +35,7 @@ export function pageShell({ title, description, content, posts, currentSlug }: {
           <img src="/icons/logo.svg" width="24" height="24" alt="">
           <span>gkoreli.com</span>
         </a>
-        <p>Builder, not thought leader.</p>
+        <p>Where excitement ends, depth begins.</p>
       </div>
       <div class="sidebar-links">
         <a href="https://github.com/gkoreli" class="sidebar-btn" title="GitHub" target="_blank" rel="noopener"><img src="/icons/github.svg" width="18" height="18" alt="GitHub"></a>

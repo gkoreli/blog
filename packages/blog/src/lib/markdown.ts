@@ -12,7 +12,19 @@ export async function initMarkdown(): Promise<void> {
     langs: ['typescript', 'javascript', 'html', 'css', 'json', 'bash', 'markdown', 'yaml'],
   });
 
+  const externalLinks = {
+    renderer: {
+      link({ href, text }: { href: string; text: string }) {
+        if (href.startsWith('/') || href.startsWith('#')) {
+          return `<a href="${href}">${text}</a>`;
+        }
+        return `<a href="${href}" target="_blank" rel="noopener">${text}</a>`;
+      },
+    },
+  };
+
   renderer = new Marked(
+    externalLinks,
     markedShiki({
       highlight: (code, lang) => highlighter.codeToHtml(code, {
         lang: lang || 'text',

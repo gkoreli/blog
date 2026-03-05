@@ -1,8 +1,12 @@
 import { html } from 'nisli-static';
 
+const ext = (url: string) => `href="${url}" target="_blank" rel="noopener"`;
+
 export function aboutTemplate() {
   return html`<article class="post-content">
   <h1>About</h1>
+
+  <blockquote>"I'd rather be stuck on a hard problem than coast on easy ones."</blockquote>
 
   <p>After a decade of software engineering, I'm going through a mental shapeshift. The boundaries between engineer, product thinker, and architect are dissolving — and AI agents are the catalyst. I'm calling this new way of working <em>agentic product engineering</em>.</p>
 
@@ -12,14 +16,14 @@ export function aboutTemplate() {
 
   <h2>Projects</h2>
 
-  <p><a href="https://github.com/gkoreli/backlog-mcp">backlog-mcp</a> — A human-agent context engineering backlog. Task management designed for AI agent workflows — agents create tasks, track progress, attach artifacts, and search their own work history.</p>
+  <p><a ${ext('https://github.com/gkoreli/backlog-mcp')}>backlog-mcp</a> — A human-agent context engineering backlog. Task management designed for AI agent workflows — agents create tasks, track progress, attach artifacts, and search their own work history.</p>
 
-  <p><a href="https://www.npmjs.com/package/@nisli/core">@nisli/core</a> — A zero-dependency reactive web component framework. Born from building backlog-mcp's web viewer — signals, templates, and dependency injection in ~2,600 lines of TypeScript.</p>
+  <p><a ${ext('https://www.npmjs.com/package/@nisli/core')}>@nisli/core</a> — A zero-dependency reactive web component framework. Born from building backlog-mcp's web viewer — signals, templates, and dependency injection in ~2,600 lines of TypeScript.</p>
 
-  <p><a href="https://github.com/gkoreli/blog">gkoreli.com</a> — This blog. Built with @nisli/core, deployed on GitHub Pages via Cloudflare. The source is public.</p>
+  <p><a ${ext('https://github.com/gkoreli/blog')}>gkoreli.com</a> — This blog. Built with @nisli/core, deployed on GitHub Pages via Cloudflare. The source is public.</p>
 
   <h2>Connect</h2>
 
-  <p>Find me on <a href="https://github.com/gkoreli">GitHub</a>, <a href="https://www.npmjs.com/~gkoreli">npm</a>, and <a href="https://www.linkedin.com/in/goga-koreli/">LinkedIn</a>.</p>
+  <p>Find me on <a ${ext('https://github.com/gkoreli')}>GitHub</a>, <a ${ext('https://www.npmjs.com/~gkoreli')}>npm</a>, and <a ${ext('https://www.linkedin.com/in/goga-koreli/')}>LinkedIn</a>.</p>
 </article>`;
 }
