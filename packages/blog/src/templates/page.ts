@@ -18,6 +18,8 @@ export function pageShell({ title, description, content, posts, currentSlug }: {
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
   <meta property="og:type" content="article">
+  <meta name="author" content="Goga Koreli">
+  <link rel="alternate" type="application/rss+xml" title="Goga Koreli" href="/feed.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">

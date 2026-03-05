@@ -180,6 +180,9 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 ### Build Pipeline
 - **Two-phase build** — `buildSite()` generates HTML (markdown → shiki → templates → dist), `bundleClient()` bundles JS + CSS via esbuild.
 - **esbuild handles all assets** — JS and CSS are esbuild entry points with `entryNames: '[name]'` to flatten output. HTML references `/main.js` and `/main.css`.
+- **RSS feed** — generated at build time from post metadata. Zero dependencies — hand-rolled XML template. Autodiscovery `<link>` in `<head>` so readers and agents find it automatically.
+- **Semantic HTML** — `<article>`, `<time>`, `<header>`, `<nav>`, `<main>`, `<aside>`, `<footer>`. Agents can identify main content vs navigation without heuristics.
+- **AI agent access** — `llms.txt` (content directory for AI agents), `robots.txt` (allow all), pre-rendered HTML (full content without JS), RSS feed (`/feed.xml`).
 - **Dev server** — esbuild `context` with `watch()` + `serve()`. Site HTML generated in `onEnd` plugin (after esbuild finishes, not before). `fs.watch` on `src/` and `posts/` triggers `ctx.rebuild()` for template/markdown changes outside esbuild's dependency graph.
 - **Never run `pnpm build` while `pnpm dev` is running** — esbuild's serve holds the dist directory. Production build would nuke it.
 

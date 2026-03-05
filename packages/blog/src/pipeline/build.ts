@@ -7,6 +7,7 @@ import { parsePost } from '../lib/frontmatter.js';
 import { pageShell } from '../templates/page.js';
 import { postTemplate } from '../templates/post.js';
 import { indexTemplate } from '../templates/index.js';
+import { rssFeed } from '../templates/rss.js';
 
 export { DIST } from '../lib/paths.js';
 
@@ -33,6 +34,7 @@ export async function buildSite(clean = true): Promise<void> {
   const indexBody = indexTemplate(sortedPosts);
   const indexPage = pageShell({ title: 'Blog', description: 'Engineering blog by Goga Koreli', content: indexBody.toString(), posts: sortedPosts });
   writeRoot('index.html', indexPage.toString());
+  writeRoot('feed.xml', rssFeed(sortedPosts));
 
   copyAssets();
 
