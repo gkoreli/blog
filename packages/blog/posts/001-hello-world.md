@@ -2,7 +2,7 @@
 title: "Hello World"
 date: 2026-03-05
 description: "After a decade of software engineering, I'm becoming something new — an agentic product engineer. This is what that means, and why I'm writing about it."
-tags: [agentic-product-engineer, nisli, backlog-mcp, meta]
+tags: [agentic-engineering, nisli, backlog-mcp]
 ---
 
 # Hello World

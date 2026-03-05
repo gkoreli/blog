@@ -171,6 +171,18 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 - **Progressive enhancement** — page is fully readable without JS. Components upgrade when JS loads.
 - **`<nisli-*>` components in markdown** — drop custom elements directly into posts for interactive demos. Browser upgrades them natively.
 
+### Sidebar UI
+- **Icon buttons** — individual bordered 32×32px buttons with SVG icons. Same visual treatment as theme toggle.
+- **Two-button theme toggle** — sun and moon side by side in a joined pill. Active button gets `background: var(--color-surface)` + full opacity. Inactive is dimmed. Immediately obvious which mode is active.
+- **Sparkle separator** — gradient line with sparkle SVG icon in center (inspired by backlog-mcp's epic-separator). Separates icon buttons from post navigation. Uses the three-stop gradient.
+- **Tags as `#hashtags`** — no pills or badges. Tags render as `#tag-name` with the `#` using gradient text (`background-clip: text`). Muted, developer-native, doesn't compete with content. Inspired by antfu.me and overreacted.io treating metadata minimally.
+
+### Build Pipeline
+- **Two-phase build** — `buildSite()` generates HTML (markdown → shiki → templates → dist), `bundleClient()` bundles JS + CSS via esbuild.
+- **esbuild handles all assets** — JS and CSS are esbuild entry points with `entryNames: '[name]'` to flatten output. HTML references `/main.js` and `/main.css`.
+- **Dev server** — esbuild `context` with `watch()` + `serve()`. Site HTML generated in `onEnd` plugin (after esbuild finishes, not before). `fs.watch` on `src/` and `posts/` triggers `ctx.rebuild()` for template/markdown changes outside esbuild's dependency graph.
+- **Never run `pnpm build` while `pnpm dev` is running** — esbuild's serve holds the dist directory. Production build would nuke it.
+
 ### Anti-Patterns (Design)
 - Don't use pure white (`#ffffff`) or pure black (`#000000`) — always warm/muted
 - Don't use sans-serif for body text — the literary serif is a deliberate identity choice
@@ -187,8 +199,9 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 - **Domain (reserved)**: `gogakoreli.com` (separate project later)
 - **License**: MIT
 - **Branch**: `main`
-- **Status**: Scaffolded — monorepo structure, tsconfig, first post draft
-- **Next**: Wire up `@nisli/core` rendering, GitHub Actions deploy, Cloudflare DNS
+- **Status**: Design system complete, first post drafted, dev server working
+- **Done**: SSG pipeline, shiki dual themes, theme toggle, sidebar nav, SVG icon set, Zod frontmatter validation, warm cream/dark palette, Lora serif typography
+- **Next**: GitHub Actions CI/CD, Cloudflare DNS setup, publish first post, write more content
 
 ## Tech Stack
 
