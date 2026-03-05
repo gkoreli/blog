@@ -1,0 +1,16 @@
+# gkoreli.com
+
+> Personal engineering blog by Goga Koreli. Agentic engineering, open source developer tools, and building in public.
+
+## Posts
+
+- [Hello World](/hello-world): Introducing the agentic product engineer — a new role for engineers who use AI agents as their primary development workflow.
+
+## Projects
+
+- [@nisli/core](https://www.npmjs.com/package/@nisli/core): Zero-dependency reactive web component framework.
+- [backlog-mcp](https://github.com/gkoreli/backlog-mcp): MCP server for AI agent task management.
+
+## About
+
+Goga Koreli builds developer tools and writes about agentic engineering workflows. This blog is built with @nisli/core and deployed on GitHub Pages.
