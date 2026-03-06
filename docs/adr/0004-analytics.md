@@ -222,8 +222,8 @@ CREATE TABLE page_views (
   country TEXT,
   city TEXT,
   continent TEXT,
-  visitor_hash TEXT,  -- hash(IP + UA + daily_salt), no PII stored
-  is_bot INTEGER DEFAULT 0,
+  visitor_hash TEXT,    -- hash(IP + UA + daily_salt), no PII stored
+  visitor_type INTEGER DEFAULT 0,  -- 0=human, 1=bot/crawler, 2=AI agent
   is_owner INTEGER DEFAULT 0,
   created_at TEXT DEFAULT (datetime('now'))
 );
@@ -319,7 +319,47 @@ GPTBot (OpenAI), ClaudeBot (Anthropic), PerplexityBot, CCBot (Common Crawl, used
 **3. Sophisticated bots** (headless browsers, scrapers, AI agents)
 Bots that disguise themselves as real browsers. These don't announce themselves in user-agent strings. Detecting them requires behavioral analysis, JavaScript challenges, or Cloudflare's ML-based bot scoring.
 
-**What's available to us on Cloudflare free plan:**
+**Our visitor type classification:**
+
+Rather than a boolean `is_bot`, we use an enum to distinguish three categories of traffic:
+
+```sql
+-- visitor_type values:
+-- 0 = human visitor
+-- 1 = traditional crawler (Googlebot, Bingbot, search engines)
+-- 2 = AI agent/crawler (GPTBot, ClaudeBot, PerplexityBot, etc.)
+```
+
+This is informed by Cloudflare's own taxonomy. Cloudflare maintains 18 verified bot categories ([source](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#categories)), three of which are AI-specific:
+- **AI Crawler** — bots that scrape content for LLM training (GPTBot, ClaudeBot, CCBot)
+- **AI Search** — bots that fetch content for AI-powered search results (PerplexityBot, DuckAssistBot)
+- **AI Assistant** — bots that fetch content on behalf of a user in real-time
+
+The `cf.verified_bot_category` field is available in WAF rules on all plans. However, `request.cf.botManagement` (which includes `verifiedBot`, `score`, and category) is **only available with Enterprise Bot Management** in Workers ([source](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties)). So we can't use Cloudflare's bot classification directly in our Worker on the free plan.
+
+**Cloudflare's official AI bot list** (from [Block AI Bots docs](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/)):
+- `GPTBot` (OpenAI)
+- `ClaudeBot` (Anthropic)
+- `Meta-ExternalAgent` (Meta)
+- `Bytespider` (ByteDance)
+- `TikTokSpider` (ByteDance)
+- `CCBot` (Common Crawl)
+- `GoogleOther` (Google)
+- `Google-CloudVertexBot` (Google)
+- `Amazonbot` (Amazon)
+- `Applebot` (Apple)
+- `DuckAssistBot` (DuckDuckGo)
+- `PetalBot` (Huawei)
+
+**What the open source projects do (verified in source):**
+
+- **`isbot`** (used by Umami): Binary yes/no only. 179 patterns, no categories. Has `^openai/` pattern but no `ClaudeBot`, `GPTBot`, `PerplexityBot` patterns. Returns boolean, not a type.
+- **Plausible**: Binary drop/keep. Uses `UAInspector` which returns `UAInspector.Result.Bot{}` — no subcategories. Also drops datacenter IPs and threat IPs as separate categories, but doesn't distinguish AI from traditional bots.
+- **Counterscale**: No bot detection at all — relies entirely on Cloudflare Web Analytics' built-in bot filtering.
+
+**None of the open source analytics projects distinguish AI bots from traditional bots.** This is a gap in the ecosystem. Our enum approach is novel.
+
+**Our layered detection approach:**
 
 - **Bot Fight Mode** — free, one-click toggle in dashboard. Challenges requests Cloudflare identifies as bots. Runs at the edge before our Worker is invoked.
 - **`request.cf.botManagement`** — bot score (1-99) available on `request.cf`, BUT **granular scores are Enterprise-only**. Free/Pro plans only get bot groupings in analytics, not per-request scores in Workers. Source: [Cloudflare Bot Scores docs](https://developers.cloudflare.com/bots/concepts/bot-score/).
@@ -336,22 +376,25 @@ Bots that disguise themselves as real browsers. These don't announce themselves 
   5. `spam_referrer?` — checks against a referrer blocklist (`ReferrerBlocklist.is_spammer?()`)
   6. Shield rules — per-site IP, country, page, hostname blocklists
 
-**Our layered approach (from cheapest to most expensive):**
+**Our layered detection approach (from cheapest to most expensive):**
 
-1. **Cloudflare edge (free, zero code)**: Enable "Bot Fight Mode" in dashboard. This stops the majority of malicious bots before they ever reach our Worker. Zero D1 writes wasted.
+1. **Cloudflare edge (free, zero code)**: Enable "Bot Fight Mode" in dashboard. Challenges simple bots and headless browsers before they reach our Worker.
 
-2. **User-agent pattern matching (in Worker, ~0ms)**: Use `isbot` or a lightweight subset. Catches traditional crawlers and known AI crawlers that slip through. Mark as `is_bot = 1` in D1 rather than dropping — we might want to see bot traffic patterns later.
+2. **AI crawler detection (in Worker, ~0ms)**: Match user-agent against Cloudflare's official AI bot list (12 known AI crawlers above). These are well-behaved bots that identify themselves. Mark as `visitor_type = 2`.
 
-3. **Datacenter IP detection (future, if needed)**: Plausible's approach of dropping datacenter IPs is smart — real blog readers don't browse from AWS. Not needed at our scale yet, but the architecture supports adding it.
+3. **Traditional bot detection (in Worker, ~0ms)**: Use `isbot` or a lightweight subset for remaining crawlers. Mark as `visitor_type = 1`.
 
-4. **Referrer spam filtering (in Worker, ~0ms)**: Check referrer against a blocklist. Spam referrers are a known analytics pollution vector.
+4. **Referrer spam filtering (in Worker, ~0ms)**: Check referrer against a blocklist. Mark as `visitor_type = 1`.
+
+5. **Datacenter IP detection (future, if needed)**: Plausible's approach of dropping datacenter IPs. Not needed at our scale yet.
 
 **Why we log bots instead of dropping them:**
 
-Unlike Plausible (which drops bot events entirely), we write them to D1 with `is_bot = 1`. This costs a few extra rows but lets us:
-- See how much bot traffic we get (interesting data for blog posts)
+Unlike Plausible (which drops bot events entirely), we write them to D1 with `visitor_type = 1` or `2`. This costs a few extra rows but lets us:
+- See how much bot vs AI agent traffic we get (interesting data for blog posts)
+- Track the rise of AI agent traffic over time — a metric nobody else publishes
 - Tune detection over time without losing historical data
-- Filter them out in `/api/stats` queries with `WHERE is_bot = 0`
+- Filter them out in `/api/stats` queries with `WHERE visitor_type = 0`
 - The cost is negligible — even 1000 bot visits/day = 4000 extra rows = 4% of free tier
 
 **AI crawlers specifically:**
@@ -359,8 +402,9 @@ Unlike Plausible (which drops bot events entirely), we write them to D1 with `is
 We actually WANT AI crawlers to read our content — the blog's philosophy is open, transparent, AI-friendly. We just don't want them counted as human page views. So:
 - Don't block AI crawlers in `robots.txt` (let them index)
 - Don't enable "Block AI Bots" in Cloudflare (let them through)
-- DO detect them via user-agent and mark `is_bot = 1` in D1
-- The `/stats` page shows human traffic only (`WHERE is_bot = 0 AND is_owner = 0`)
+- DO detect them via user-agent and mark `visitor_type = 2` in D1
+- The `/stats` page shows human traffic only (`WHERE visitor_type = 0 AND is_owner = 0`)
+- A separate section on `/stats` could show: "This article was also fetched by 15 AI agents" — a metric nobody else tracks publicly
 
 ### Public Dashboard (`/stats`)
 
