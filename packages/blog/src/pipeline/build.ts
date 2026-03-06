@@ -49,7 +49,7 @@ export async function buildHTML(): Promise<void> {
     const htmlContent = await renderMarkdown(post.content);
     const ogImage = await generateOgImage(post.meta.title, post.meta.slug);
     const prompts = parsePrompts(post.meta.slug);
-    post.meta.promptCount = prompts?.count;
+    if (prompts) post.meta.promptCount = prompts.count;
     const body = postTemplate(post.meta, htmlContent, prompts);
     const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), posts: sortedPosts, currentSlug: post.meta.slug, ogImage });
     writeOutput(post.meta.slug, page.toString());
