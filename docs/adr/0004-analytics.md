@@ -324,6 +324,57 @@ The `/stats` page will show:
 - Geographic data comes from Cloudflare's edge network, not from client
 - GDPR/CCPA compliant — no personal data collected or stored
 
+## Prior Art
+
+Two open source projects exist for exactly this use case on Cloudflare Workers:
+
+### Counterscale — [benvinegar/counterscale](https://github.com/benvinegar/counterscale) (2K stars, MIT, v3.4.1)
+
+The most mature self-hosted analytics for Cloudflare. 464 commits, 24 releases, actively maintained.
+
+- Uses **Analytics Engine** (not D1) — fire-and-forget writes, but 90-day retention limit
+- Added R2 long-term storage (Apache Arrow files) as a workaround for the retention gap
+- Full dashboard UI built in Remix — powerful but heavy for a single-site blog
+- Tracker available as `<script>` tag or npm package (`@counterscale/tracker`)
+- Supports `autoTrackPageviews` toggle, manual tracking, server-side tracking
+- `/collect` endpoint pattern — separate ingestion from dashboard
+- No cookies, no PII — validates our privacy approach
+- Multi-site support via `data-site-id` attribute
+
+**Inspiration for us:**
+- Tracker script design: `<script>` with `defer`, beacon to `/collect`, `keepalive`
+- Separation of concerns: ingestion endpoint vs dashboard queries
+- `autoTrackPageviews` pattern — useful for SPAs, not needed for our SSG but good to know
+
+**Why we're not adopting it:**
+- Analytics Engine has 90-day retention — the exact problem we chose D1 to avoid
+- Full Remix dashboard is overkill for a single-site blog with ~100 views/day
+- Doesn't integrate with our blog's design or public `/stats` page concept
+- Multi-site architecture adds complexity we don't need
+
+### yestool/analytics_with_cloudflare — [yestool/analytics_with_cloudflare](https://github.com/yestool/analytics_with_cloudflare) (140 stars, MIT)
+
+Simpler reference implementation using **Workers + D1 + Hono** — exactly our stack choice.
+
+- 6 commits, no releases — more of a proof-of-concept than a maintained project
+- Has a `schema.sql` for D1, client script that injects PV/UV counts into the page
+- Uses Hono for routing (lightweight, ergonomic API framework for Workers)
+- Demonstrates the D1 binding pattern with prepared statements
+
+**Inspiration for us:**
+- D1 schema patterns for page view and unique visitor counting
+- Hono as a routing layer — cleaner than raw `if/else` on `url.pathname`
+- Client script that writes counts directly into page elements (interesting for inline stats)
+
+**Why we're not adopting it:**
+- Too minimal — no bot filtering, no owner exclusion, no geographic data
+- No dashboard, no public stats page
+- Not actively maintained
+
+### Summary
+
+Both projects validate our architecture. Counterscale proves the Cloudflare Workers analytics model works at scale (2K stars, real users). yestool proves D1 is viable for the storage layer. Our approach takes the best patterns from both — D1 for unlimited retention (from yestool's approach), beacon + separate endpoints (from Counterscale's architecture) — while adding what neither has: owner exclusion, public `/stats` page, and integration with the blog's transparency design.
+
 ## References
 
 - [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) — hosting + Worker scripts
