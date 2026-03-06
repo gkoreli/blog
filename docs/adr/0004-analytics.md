@@ -318,11 +318,40 @@ The `/stats` page will show:
 
 ### Privacy
 
-- No cookies (unless owner opts out via cookie)
-- No PII stored — visitor hash is `hash(IP + UA + daily_salt)`, rotated daily
-- No third-party scripts or tracking pixels
-- Geographic data comes from Cloudflare's edge network, not from client
-- GDPR/CCPA compliant — no personal data collected or stored
+**Architecture: Server-side daily-salted hash — no cookies, no browser storage, no fingerprinting.**
+
+Our unique visitor counting uses: `hash(daily_salt + IP + user_agent)`
+
+This is the same approach used by Plausible (21K stars), WP Statistics (600K+ installs), Umami, Wide Angle Analytics, and Independent Analytics. It is the industry-standard privacy-first pattern for cookieless analytics.
+
+**How it works:**
+1. On each request, the Worker reads the visitor's IP (from `CF-Connecting-IP` header) and User-Agent
+2. These are combined with a daily-rotating salt and hashed with a one-way function (SHA-256)
+3. The resulting hash is stored in D1 — the raw IP is never written to the database
+4. The salt rotates at midnight UTC — yesterday's hash cannot be correlated with today's
+5. The hash is one-way — you cannot reverse it to derive the original IP
+
+**Why this is more privacy-respecting than Counterscale's `If-Modified-Since` trick:**
+
+Counterscale uses HTTP cache headers (`Last-Modified` / `If-Modified-Since`) to track sessions without cookies. While clever, this is technically a form of **supercookie** — using browser cache as a persistent identifier. This technique has been known since 2011 ([nikcub.me: "Persistent and Unblockable Cookies Using HTTP Headers"](https://nikcub.me/posts/persistant-and-unblockable-cookies-using-http-headers/)) and is classified alongside ETag tracking as a browser fingerprinting vector by the [Chromium security team](https://www.chromium.org/Home/chromium-security/client-identification-mechanisms/).
+
+The CNIL (French data protection authority) explicitly addresses this in their [2021 guidance on cookie alternatives](https://www.cnil.fr/en/alternatives-third-party-cookies-what-consequences-regarding-consent): techniques that access or store information on the user's terminal equipment require prior consent under the ePrivacy Directive, regardless of whether cookies are used. The `Last-Modified` header persists in the browser cache and can be read back — this is terminal storage by another name.
+
+Our hash approach avoids this entirely:
+- **Nothing stored in the browser** — no cookies, no localStorage, no cache manipulation
+- **Nothing persisted across days** — the daily salt rotation means the same visitor gets a different hash tomorrow
+- **Nothing reversible** — SHA-256 is one-way; you cannot derive the IP from the hash
+- **Server-side only** — the client script sends a beacon; all privacy logic runs on the Worker
+
+**Known trade-off:** We cannot track returning visitors across days. A visitor who comes Monday and Tuesday counts as 2 unique visitors. This is the same limitation documented by [WP Statistics](https://wp-statistics.com/resources/counting-unique-visitors-without-cookies/), [Plausible](https://news.ycombinator.com/item?id=25457889), and [Matomo](https://seresa.io/blog/data-loss/the-cookieless-tracking-myth-what-you-actually-lose/). For a personal blog, this is an acceptable trade-off — we care about "how many people visited today" not "is this the same person from last week."
+
+**GDPR/CCPA compliance:**
+- IP addresses are personal data under GDPR. We never store them — only the irreversible hash.
+- The hash with daily salt rotation is the approach Plausible uses to claim GDPR compliance without consent banners. Source: [Plausible blog](https://plausible.io/blog/google-analytics-cookies), [HN discussion](https://news.ycombinator.com/item?id=42273230).
+- No consent banner needed — we don't access or store anything on the user's terminal (no cookies, no cache, no localStorage). This satisfies the ePrivacy Directive's terminal access rules as interpreted by the CNIL.
+- No third-party scripts or tracking pixels from external services
+- Geographic data comes from Cloudflare's edge network (`request.cf`), not from client-side APIs
+- The `/stats` page itself is the transparency mechanism — everything we collect is visible publicly
 
 ## Prior Art (Source Code Analysis)
 
