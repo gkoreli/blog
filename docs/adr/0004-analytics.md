@@ -306,6 +306,62 @@ export default class extends WorkerEntrypoint<Env> {
 
 `keepalive: true` ensures the beacon completes even if the user navigates away. The beacon is non-blocking — it doesn't await the response.
 
+### Bot Detection Strategy
+
+The bot landscape in 2025-2026 has three distinct categories, each requiring different detection approaches:
+
+**1. Traditional crawlers** (Googlebot, Bingbot, etc.)
+Well-behaved bots that identify themselves honestly in user-agent strings. These are "verified bots" in Cloudflare's taxonomy — they power search engines and are generally welcome, but shouldn't count as page views.
+
+**2. AI model crawlers** (new wave, 2023-present)
+GPTBot (OpenAI), ClaudeBot (Anthropic), PerplexityBot, CCBot (Common Crawl, used for training), Google-Extended (Gemini training), Bytespider (TikTok/ByteDance), Applebot-Extended (Apple Intelligence), Meta-ExternalAgent (Meta AI). These identify themselves in user-agent strings but are a distinct category — they're scraping content for LLM training or AI search results. Source: [Search Engine Journal: Complete AI Crawler List](https://www.searchenginejournal.com/ai-crawler-user-agents-list/558130/).
+
+**3. Sophisticated bots** (headless browsers, scrapers, AI agents)
+Bots that disguise themselves as real browsers. These don't announce themselves in user-agent strings. Detecting them requires behavioral analysis, JavaScript challenges, or Cloudflare's ML-based bot scoring.
+
+**What's available to us on Cloudflare free plan:**
+
+- **Bot Fight Mode** — free, one-click toggle in dashboard. Challenges requests Cloudflare identifies as bots. Runs at the edge before our Worker is invoked.
+- **`request.cf.botManagement`** — bot score (1-99) available on `request.cf`, BUT **granular scores are Enterprise-only**. Free/Pro plans only get bot groupings in analytics, not per-request scores in Workers. Source: [Cloudflare Bot Scores docs](https://developers.cloudflare.com/bots/concepts/bot-score/).
+- **"Block AI Bots"** — free, one-click toggle. Cloudflare maintains a list of known AI crawlers and blocks them at the edge. Source: [Cloudflare blog](https://blog.cloudflare.com/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click/).
+
+**What the open source projects use (verified in source code):**
+
+- **Umami**: `isbot` npm package (1.1K stars, [omrilotan/isbot](https://github.com/omrilotan/isbot)) — 179 regex patterns matching user-agent strings. Detects traditional crawlers well. Has `^openai/` and `\b\w+\.ai` patterns but limited AI crawler coverage. Used in `src/app/api/send/route.ts`: `if (isbot(userAgent)) return json({ beep: 'boop' })`.
+- **Plausible**: Multi-layer pipeline (`lib/plausible/ingestion/event.ex` lines 130-150):
+  1. `drop_verification_agent` — drops their own verification bot
+  2. `drop_datacenter_ip` — drops requests from known datacenter IP ranges (AWS, GCP, Azure)
+  3. `drop_threat_ip` — drops known malicious IPs
+  4. `put_user_agent` → uses `UAInspector` library which returns `UAInspector.Result.Bot{}` for known bots, also catches `"Headless Chrome"`
+  5. `spam_referrer?` — checks against a referrer blocklist (`ReferrerBlocklist.is_spammer?()`)
+  6. Shield rules — per-site IP, country, page, hostname blocklists
+
+**Our layered approach (from cheapest to most expensive):**
+
+1. **Cloudflare edge (free, zero code)**: Enable "Bot Fight Mode" in dashboard. This stops the majority of malicious bots before they ever reach our Worker. Zero D1 writes wasted.
+
+2. **User-agent pattern matching (in Worker, ~0ms)**: Use `isbot` or a lightweight subset. Catches traditional crawlers and known AI crawlers that slip through. Mark as `is_bot = 1` in D1 rather than dropping — we might want to see bot traffic patterns later.
+
+3. **Datacenter IP detection (future, if needed)**: Plausible's approach of dropping datacenter IPs is smart — real blog readers don't browse from AWS. Not needed at our scale yet, but the architecture supports adding it.
+
+4. **Referrer spam filtering (in Worker, ~0ms)**: Check referrer against a blocklist. Spam referrers are a known analytics pollution vector.
+
+**Why we log bots instead of dropping them:**
+
+Unlike Plausible (which drops bot events entirely), we write them to D1 with `is_bot = 1`. This costs a few extra rows but lets us:
+- See how much bot traffic we get (interesting data for blog posts)
+- Tune detection over time without losing historical data
+- Filter them out in `/api/stats` queries with `WHERE is_bot = 0`
+- The cost is negligible — even 1000 bot visits/day = 4000 extra rows = 4% of free tier
+
+**AI crawlers specifically:**
+
+We actually WANT AI crawlers to read our content — the blog's philosophy is open, transparent, AI-friendly. We just don't want them counted as human page views. So:
+- Don't block AI crawlers in `robots.txt` (let them index)
+- Don't enable "Block AI Bots" in Cloudflare (let them through)
+- DO detect them via user-agent and mark `is_bot = 1` in D1
+- The `/stats` page shows human traffic only (`WHERE is_bot = 0 AND is_owner = 0`)
+
 ### Public Dashboard (`/stats`)
 
 The `/stats` page will show:
