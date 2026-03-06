@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "tsx src/pipeline/dev.ts",
     "build": "tsx src/pipeline/prod.ts",
+    "validate": "tsx src/pipeline/validate.ts",
     "serve": "pnpm dlx serve dist",
     "typecheck": "tsc --noEmit"
   },

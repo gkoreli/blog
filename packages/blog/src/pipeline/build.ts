@@ -3,7 +3,7 @@ import { build as esbuild } from 'esbuild';
 import { DIST, CLIENT_ENTRY, STYLES_SRC } from '../lib/paths.js';
 import { discoverPosts, writeOutput, writeRoot, copyAssets } from '../lib/fs.js';
 import { initMarkdown, renderMarkdown } from '../lib/markdown.js';
-import { parsePost } from '../lib/frontmatter.js';
+import { parsePost, FrontmatterError, validatePosts } from '../lib/frontmatter.js';
 import { pageShell } from '../templates/page.js';
 import { postTemplate } from '../templates/post.js';
 import { indexTemplate } from '../templates/index.js';
@@ -32,7 +32,15 @@ export async function buildHTML(): Promise<void> {
   await initMarkdown();
 
   const files = discoverPosts();
-  const posts = files.map(parsePost);
+
+  // Validate all posts upfront — skip invalid ones with clear feedback
+  const validation = validatePosts(files);
+  const invalid = validation.filter(r => !r.valid);
+  for (const r of invalid) console.warn(`⚠ Skipping: ${r.errors}`);
+
+  const posts = validation
+    .filter(r => r.valid)
+    .map(r => parsePost(r.file));
   const allPosts = posts.map(p => p.meta);
   const sortedPosts = [...allPosts].reverse();
 
