@@ -29,7 +29,7 @@ export function indexTemplate(posts: PostMeta[]) {
     ${posts.map(p => html`<a href="/${p.slug}" class="post-preview">
       <article>
         <h3>${p.title}</h3>
-        <time datetime="${p.date}">${dateStr(p.date)}</time>
+        <time datetime="${p.date}">${dateStr(p.date)}${p.promptCount ? ` · ${p.promptCount} prompts` : ''}</time>
         <p>${p.description}</p>
       </article>
     </a>`)}

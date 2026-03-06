@@ -11,7 +11,7 @@ const frontmatterSchema = z.object({
   tags: z.array(z.string()).optional().default([]),
 });
 
-export type PostMeta = z.infer<typeof frontmatterSchema> & { slug: string; date: string };
+export type PostMeta = z.infer<typeof frontmatterSchema> & { slug: string; date: string; promptCount?: number };
 
 export interface Post {
   meta: PostMeta;
