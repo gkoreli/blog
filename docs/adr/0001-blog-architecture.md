@@ -6,7 +6,7 @@ Accepted — 2026-03-05
 
 ## Context
 
-We're building a personal engineering blog at `gkoreli.com` using `@nisli/core` (a zero-dependency reactive web component framework). The blog is statically generated (SSG) and hosted on GitHub Pages + Cloudflare.
+We're building a personal engineering blog at `gkoreli.com` using `@nisli/core` (a zero-dependency reactive web component framework). The blog is statically generated (SSG) and deployed to Cloudflare Workers with static assets (migrated from GitHub Pages in March 2026).
 
 The backlog-mcp viewer is a client-side SPA: one HTML file, one `<backlog-app>` root component, esbuild bundles everything, the browser renders it all. The blog is fundamentally different — content is pre-rendered at build time, the browser receives complete HTML. But nisli/core's component model still applies for interactive elements.
 
@@ -167,7 +167,7 @@ Rejected because:
 - SEO requires pre-rendered HTML — crawlers and AI agents can't execute JS
 - Slower first paint — browser must download JS, parse it, fetch markdown, then render
 - Unnecessary complexity — a blog doesn't need client-side routing
-- GitHub Pages serves static files — no server to handle dynamic routes
+- Cloudflare Workers serves static files — no server to handle dynamic routes
 
 ### Existing SSG framework (Astro, 11ty, Hugo)
 
@@ -185,7 +185,7 @@ Run a server that renders pages on each request.
 
 Rejected because:
 - Requires a running server (cost, ops, monitoring)
-- GitHub Pages can't run servers
+- Cloudflare Workers with static assets doesn't run servers — it serves pre-built files from the edge
 - Blog content is static — there's nothing dynamic about rendering the same markdown on every request
 - SSG gives identical SEO benefits with zero runtime cost
 

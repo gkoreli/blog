@@ -2,7 +2,7 @@
 
 ## Vision
 
-A personal engineering blog at `gkoreli.com` by Goga Koreli. Built with `@nisli/core` (my own zero-dependency reactive web component framework), hosted on GitHub Pages + Cloudflare.
+A personal engineering blog at `gkoreli.com` by Goga Koreli. Built with `@nisli/core` (my own zero-dependency reactive web component framework), deployed to Cloudflare Workers with static assets.
 
 The blog fills a gap: there's plenty of AI hype content but very little from engineers who actually build with agents daily — the real decisions, failures, trade-offs, and workflows. This is a builder's journal, not a tutorial site.
 
@@ -105,7 +105,7 @@ src/build.js (Node, build-time)   ← parses frontmatter, converts md → HTML (
         ↓
 dist/hello-world/index.html       ← complete HTML with all content baked in
         ↓
-GitHub Pages serves static files  ← browser gets pre-built HTML instantly
+Cloudflare Workers serves static files  ← browser gets pre-built HTML instantly
         ↓
 @nisli/core JS loads              ← upgrades any <nisli-*> tags into interactive components
 ```
@@ -140,7 +140,7 @@ Decisions made before building. Reference these — don't re-decide.
 | Package manager | **pnpm** | Faster, strict deps, disk-efficient. `packageManager` field in package.json enforces it. |
 | Content format | **Markdown + YAML frontmatter** | Web components ecosystem, not React. MDX requires JSX runtime — incompatible with nisli/core. See "Content Format" section. |
 | Interactive elements | **Native web components in markdown** | `<nisli-*>` custom elements inline. Browser upgrades them. No build step needed for interactivity. |
-| Hosting | **GitHub Pages + Cloudflare** | Free, fast, custom domain support. Cloudflare provides DNS, CDN, SSL, DDoS protection at no cost. |
+| Hosting | **Cloudflare Workers (static assets)** | Migrated from GitHub Pages (Mar 2026). GitHub Pages has zero website analytics and no server-side capabilities. Cloudflare Workers gives us: same free static hosting, built-in Web Analytics, Pages Functions for future API endpoints (e.g. custom analytics), D1 database binding, and the domain was already on Cloudflare. Git integration auto-deploys on push to `main`. Config: `wrangler.jsonc` with `not_found_handling: "404-page"` and `html_handling: "auto-trailing-slash"`. |
 | Domain | **gkoreli.com** | Matches GitHub/npm identity. `gogakoreli.com` reserved for separate project. |
 | Registrar | **Cloudflare** | Wholesale pricing, free WHOIS privacy, integrated DNS. |
 | License | **MIT** | Matches backlog-mcp. Blog source is public. |
@@ -153,17 +153,17 @@ Decisions made before building. Reference these — don't re-decide.
 | CSS approach | **Vanilla CSS** | Blog CSS is ~200 lines: typography, layout, code blocks, nav/footer. Tailwind would add a build step (PostCSS), config file, and 3MB dependency for no gain. Utility classes in tagged template literals are noisy. Nisli/core is zero-dep — the blog should match that philosophy. |
 | Frontmatter validation | **Zod** | `gray-matter` parses YAML frontmatter but returns `{ [key: string]: any }`. Zod schema validates at build time — missing `title`, `date`, or `description` fails the build with a clear error instead of silently producing broken HTML. Zero `as string` / `as any` casts in the codebase. |
 | Body font | **Lora** (Google Fonts) | Literary serif designed for screens. Creates warmth and essay-like feel for long-form technical writing. Falls back to Georgia. Inspired by overreacted.io's serif approach but more contemporary than Georgia/Times. Not a newspaper font — designed for digital reading. |
-| Node version | **22.x** | Current LTS. Pinned in `package.json` engines and GitHub Actions. |
+| Node version | **22.x** | Current LTS. Pinned in `package.json` engines. |
 | Language | **TypeScript (strict)** | Latest ECMAScript standards, strict type checking, no `any`. Build script and all tooling are `.ts` files run via `tsx`. ESNext target — always tracks latest standard, no manual bumping. |
 | Project structure | **pnpm monorepo** | `packages/blog` is the site. Extensible for future packages (e.g. `packages/ui` for a blog-specific component library). Same pattern as backlog-mcp. Trivial to set up now, painful to restructure later. |
 | Icons | **Cohesive SVG icon set** | Custom gradient line-art SVGs in `public/icons/`. Inspired by backlog-mcp's futuristic style — same geometric line-art approach but using the blog's green gradient (`#1a6b4e` → `#6ec9a8`). Never use emoji — always use SVG icons from the icon set. Icons: logo, sun, moon, github, npm, posts, sparkle, pen, linkedin, transparency (fingerprint). |
 | Accent colors | **Green primary + sky blue secondary** | Primary: `#1a6b4e` / `#6ec9a8`. Secondary: `#93c5fd` (soft sky blue). Green dominates all gradients (60%+), blue is only the trailing hint. Three-stop pattern: dark green → mint → sky blue. Rationale: grass-and-clear-sky — natural, no muddy midpoints. Purple was too dominant, gold looked like spoilage, cyan was indistinguishable from green. |
 | Logo | **Georgian გკ negative space** | Georgian Mkhedruli letters გ (g) and კ (k) — "Goga Koreli". Font-extracted SVG paths (Noto Sans Georgian Bold via opentype.js) masked out of a gradient rounded square. Letters sit at the bottom like TypeScript's logo. Same file serves as sidebar logo and SVG favicon. Georgian script is distinctive in tech — nobody else uses it. |
-| CI/CD | **GitHub Actions → GitHub Pages** | Push to `main` triggers build + deploy. No versioning (not a library). No preview deploys (single author, use `pnpm dev` locally). Concurrency cancels in-progress deploys. |
+| CI/CD | **Cloudflare Workers Git integration** | Cloudflare watches the GitHub repo, auto-builds and deploys on push to `main`. Replaced GitHub Actions → GitHub Pages workflow. Build command: `pnpm install && pnpm -C packages/blog build`. No versioning (not a library). No preview deploys (single author, use `pnpm dev` locally). |
 | OG images | **satori + @resvg/resvg-js (build-time)** | Per-post 1200×630 PNG. Dark gradient background, centered layout with logo, sparkle separator, post title, tagline. Lora Bold font loaded from `public/fonts/`. Both are devDependencies (build-time only). |
-| 404 handling | **`public/404.html` → redirect to `/`** | GitHub Pages serves `404.html` for unknown routes. Meta refresh redirects to home instantly. |
+| 404 handling | **`public/404.html` + Cloudflare `not_found_handling: "404-page"`** | Cloudflare Workers serves the nearest `404.html` with a 404 status for unknown routes. The file contains a meta refresh redirect to `/`. |
 | Prompt transparency | **Separate prompts page + article teaser** (ADR-0003) | Each post can have a companion `prompts/{slug}.prompts.md` file — raw `---`-delimited prompts. Build pipeline generates `/{slug}/prompts` page and injects a teaser card at the bottom of the article + inline link in the post header next to the date. Prompts are a first-class route, not a widget. Slogan: "Prompted by human, generated by AI." Icon: fingerprint (Tabler, MIT) with blog gradient. See `docs/adr/0003-prompt-transparency.md`. |
-| Custom domain | **gkoreli.com via Cloudflare** | A records (4× GitHub Pages IPs) + CNAME for www. Cloudflare proxy enabled with SSL mode Full. `CNAME` file in `public/` so GitHub Pages remembers the domain across deploys. |
+| Custom domain | **gkoreli.com via Cloudflare** | Custom domain on Cloudflare Workers. DNS managed in Cloudflare dashboard. SSL handled automatically. No `CNAME` file needed (that was GitHub Pages-specific). |
 
 ## Design Philosophy
 
@@ -235,7 +235,7 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 - **License**: MIT
 - **Branch**: `main`
 - **Status**: Live at gkoreli.com — design system complete, first post published, CI/CD active
-- **Done**: SSG pipeline, shiki dual themes, theme toggle, sidebar nav, SVG icon set, Georgian გკ logo/favicon, Zod frontmatter validation, warm cream/dark palette, Lora serif typography, GitHub Actions deploy, Cloudflare DNS, RSS feed, llms.txt, OG image generation (satori + resvg), about page, 404 redirect, blog-writing agent skill
+- **Done**: SSG pipeline, shiki dual themes, theme toggle, sidebar nav, SVG icon set, Georgian გკ logo/favicon, Zod frontmatter validation, warm cream/dark palette, Lora serif typography, Cloudflare Workers deploy, Cloudflare DNS, RSS feed, llms.txt, OG image generation (satori + resvg), about page, 404 redirect, blog-writing agent skill, prompt transparency feature
 - **Next**: Mobile responsive (sidebar collapse), proofread and publish first post, write more content, @nisli/core SSR (TASK-0477)
 
 ## Tech Stack
@@ -243,9 +243,9 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 - **Framework**: `@nisli/core` (npm dependency)
 - **Package manager**: pnpm (enforced via `packageManager` field)
 - **Content**: Markdown + YAML frontmatter in `posts/`
-- **Hosting**: GitHub Pages
+- **Hosting**: Cloudflare Workers (static assets)
 - **DNS/CDN/SSL**: Cloudflare
-- **CI/CD**: GitHub Actions
+- **CI/CD**: Cloudflare Git integration (auto-deploy on push)
 - **Analytics**: Plausible or Umami (TBD)
 
 ## Future Vision
