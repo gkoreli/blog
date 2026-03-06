@@ -1,11 +1,11 @@
 ---
-title: "Hello World"
+title: "The Agentic Product Engineer"
 date: 2026-03-05
 description: "After a decade of software engineering, I'm becoming something new — an agentic product engineer. This is what that means, and why I'm writing about it."
 tags: [agentic-engineering, nisli, backlog-mcp]
 ---
 
-# Hello World
+# The Agentic Product Engineer
 
 I've been a software engineer for a decade. I've shipped dashboards, design systems, micro-frontends, and infrastructure that serves millions of users. I know how to build things.
 

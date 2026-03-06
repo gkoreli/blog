@@ -8,7 +8,7 @@
 
 ## Posts
 
-- [Hello World](/hello-world): Introducing the agentic product engineer — a new role for engineers who use AI agents as their primary development workflow.
+- [The Agentic Product Engineer](/the-agentic-product-engineer): After a decade of software engineering, becoming an agentic product engineer — what that means and why.
 
 ## Projects
 
