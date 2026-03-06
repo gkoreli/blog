@@ -322,14 +322,42 @@ The `/stats` page will show:
 
 Our unique visitor counting uses: `hash(daily_salt + IP + user_agent)`
 
-This is the same approach used by Plausible (21K stars), WP Statistics (600K+ installs), Umami, Wide Angle Analytics, and Independent Analytics. It is the industry-standard privacy-first pattern for cookieless analytics.
+This is the industry-standard privacy-first pattern for cookieless analytics, verified in the actual source code of four major projects:
 
-**How it works:**
-1. On each request, the Worker reads the visitor's IP (from `CF-Connecting-IP` header) and User-Agent
-2. These are combined with a daily-rotating salt and hashed with a one-way function (SHA-256)
-3. The resulting hash is stored in D1 — the raw IP is never written to the database
-4. The salt rotates at midnight UTC — yesterday's hash cannot be correlated with today's
-5. The hash is one-way — you cannot reverse it to derive the original IP
+**Plausible** (21K stars, Elixir) — `lib/plausible/ingestion/event.ex` line 565:
+```elixir
+SipHash.hash!(salt, user_agent <> request.remote_ip <> domain <> root_domain)
+```
+Salt is a 16-byte cryptographic random value (`lib/plausible/session/salts.ex`), stored in a `salts` database table, rotated via an Oban worker (`lib/workers/rotate_salts.ex`). Old salts are cleaned up after 48 hours. They keep the previous salt to handle session continuity across rotation boundaries.
+
+**Umami** (23K stars, TypeScript) — `src/app/api/send/route.ts` lines 108-110:
+```typescript
+const sessionSalt = hash(startOfMonth(createdAt).toUTCString());
+const sessionId = uuid(sourceId, ip, userAgent, sessionSalt);
+```
+Uses SHA-512 hash (`src/lib/crypto.ts`), salt derived from start-of-month timestamp. Session ID is a UUIDv5 of `hash(websiteId + ip + userAgent + monthlySalt)`. Note: Umami rotates monthly, not daily — longer tracking window but same principle.
+
+**WP Statistics** (600K+ WordPress installs, PHP) — `includes/class-wp-statistics-ip.php`:
+```php
+$dailySalt = ['date' => $date, 'salt' => hash('sha256', wp_generate_password())];
+// ... later:
+return hash('sha256', $dailySalt['salt'] . $ip . $userAgent);
+```
+SHA-256 hash with daily salt stored in WordPress options table. Salt regenerated when date changes. The hash is truncated and prefixed with `#hash#` for identification.
+
+**Wide Angle Analytics** (commercial, [documentation](https://wideangle.co/documentation/cookieless-tracking)):
+Uses daily salt + IP + user-agent hash. Session ID is "additionally randomized with a daily salt value" so "a visit from the same browser, from the same website, and from the same IP address will be unique only within the duration of a single day."
+
+**Key implementation differences across projects:**
+
+| Project | Hash Algorithm | Salt Rotation | Inputs | Storage |
+|---------|---------------|---------------|--------|---------|
+| Plausible | SipHash | ~24h (Oban job) | salt + UA + IP + domain + root_domain | PostgreSQL `salts` table |
+| Umami | SHA-512 → UUIDv5 | Monthly | websiteId + IP + UA + monthlySalt | In-memory |
+| WP Statistics | SHA-256 | Daily (date check) | dailySalt + IP + UA | WordPress options |
+| **Ours** | **SHA-256** | **Daily (midnight UTC)** | **dailySalt + IP + UA** | **D1 or env var** |
+
+All four use the same core pattern: `hash(rotating_salt + IP + user_agent)`. The differences are in hash algorithm, rotation frequency, and where the salt is stored. Our approach aligns most closely with WP Statistics (daily SHA-256) and Plausible (daily rotation, domain-scoped).
 
 **Why this is more privacy-respecting than Counterscale's `If-Modified-Since` trick:**
 
