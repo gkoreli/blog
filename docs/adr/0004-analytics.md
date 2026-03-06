@@ -324,56 +324,119 @@ The `/stats` page will show:
 - Geographic data comes from Cloudflare's edge network, not from client
 - GDPR/CCPA compliant — no personal data collected or stored
 
-## Prior Art
+## Prior Art (Source Code Analysis)
 
-Two open source projects exist for exactly this use case on Cloudflare Workers:
+Two open source projects exist for exactly this use case on Cloudflare Workers. We read their actual source code to extract patterns, best practices, and anti-patterns.
 
 ### Counterscale — [benvinegar/counterscale](https://github.com/benvinegar/counterscale) (2K stars, MIT, v3.4.1)
 
 The most mature self-hosted analytics for Cloudflare. 464 commits, 24 releases, actively maintained.
 
-- Uses **Analytics Engine** (not D1) — fire-and-forget writes, but 90-day retention limit
-- Added R2 long-term storage (Apache Arrow files) as a workaround for the retention gap
-- Full dashboard UI built in Remix — powerful but heavy for a single-site blog
-- Tracker available as `<script>` tag or npm package (`@counterscale/tracker`)
-- Supports `autoTrackPageviews` toggle, manual tracking, server-side tracking
-- `/collect` endpoint pattern — separate ingestion from dashboard
-- No cookies, no PII — validates our privacy approach
-- Multi-site support via `data-site-id` attribute
+**Architecture (from source):**
+- Uses **Analytics Engine** (not D1) — `writeDataPoint()` with blobs/doubles/indexes
+- Full Remix dashboard UI for querying Analytics Engine via SQL API
+- R2 long-term storage (Apache Arrow files) to work around 90-day retention
+- Multi-site via `data-site-id` attribute
+- Monorepo: `packages/tracker` (client), `packages/server` (Worker + dashboard)
 
-**Inspiration for us:**
-- Tracker script design: `<script>` with `defer`, beacon to `/collect`, `keepalive`
-- Separation of concerns: ingestion endpoint vs dashboard queries
-- `autoTrackPageviews` pattern — useful for SPAs, not needed for our SSG but good to know
+**Tracker patterns (from `packages/tracker/src/`):**
 
-**Why we're not adopting it:**
-- Analytics Engine has 90-day retention — the exact problem we chose D1 to avoid
-- Full Remix dashboard is overkill for a single-site blog with ~100 views/day
-- Doesn't integrate with our blog's design or public `/stats` page concept
-- Multi-site architecture adds complexity we don't need
+1. **Script auto-discovery** (`tracker.ts`): The `<script>` tag finds itself via `document.getElementById("counterscale-script")`, reads `data-site-id` and derives the collect URL from its own `src` attribute (`script.src.replace("tracker.js", "collect")`). Smart — no hardcoded URLs.
+
+2. **GET not POST for beacons** (`lib/request.ts`): Counterscale uses `XMLHttpRequest` GET requests to `/collect?p=/path&h=host&r=referrer&sid=site`, not `fetch()` POST. The response is a **1x1 transparent GIF** (`R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7`). This is the classic tracking pixel pattern — works even when JavaScript `fetch` is blocked by ad blockers.
+
+3. **Cookieless unique visitor counting** (`analytics/collect.ts`): Uses `If-Modified-Since` / `Last-Modified` HTTP headers as a session mechanism. The server sets `Last-Modified` to today's date with seconds encoding hit count (1=new visit, 2=anti-bounce, 3+=regular). Browser caches this and sends it back on next request. No cookies, no localStorage, pure HTTP caching semantics. Source: [notes.normally.com/cookieless-unique-visitor-counts](https://notes.normally.com/cookieless-unique-visitor-counts/).
+
+4. **Bounce detection** (`analytics/collect.ts`): Hit count 1 = bounce (visitor left after one page). Hit count 2 = anti-bounce (cancels the bounce). Hit count 3+ = normal. This is tracked via the `Last-Modified` seconds trick above.
+
+5. **SPA navigation tracking** (`lib/instrument.ts`): Monkey-patches `history.pushState` and listens for `popstate` events to auto-track client-side navigation. Preserves original function arity (2 params) per [Sentry's wrapping guide](https://blog.sentry.io/wrap-javascript-functions/#preserve-arity). Returns a cleanup function.
+
+6. **Referrer extraction** (`shared/utils.ts`): Checks multiple sources in order: explicit referrer param → `document.referrer` → URL query params (`ref`, `referer`, `referrer`, `source`, `utm_source`). Strips query strings from referrer URLs. Filters out self-referrals (same hostname).
+
+7. **UA parsing on server** (`analytics/collect.ts`): Uses `ua-parser-js` server-side to extract browser name, version, device type, device model. Masks browser version for privacy (`maskBrowserVersion`). Classifies `device.type === undefined` as "desktop" (UA parser quirk).
+
+8. **Country from `request.cf`** (`analytics/collect.ts`): Passes `context.cloudflare.cf` (which contains `country`) to the collect handler. Confirms our approach — geographic data is free from Cloudflare's edge.
+
+9. **UTM parameter tracking** (`shared/request.ts`): Captures `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content` from URL params. Sends as short keys (`us`, `um`, `uc`, `ut`, `uco`) to minimize beacon size.
+
+10. **1000ms timeout** (`lib/request.ts`): XHR requests have a 1-second timeout. If the collect endpoint is slow, the tracker gives up silently. Analytics should never block the user experience.
 
 ### yestool/analytics_with_cloudflare — [yestool/analytics_with_cloudflare](https://github.com/yestool/analytics_with_cloudflare) (140 stars, MIT)
 
-Simpler reference implementation using **Workers + D1 + Hono** — exactly our stack choice.
+Simpler reference implementation using **Workers + D1 + Hono**.
 
-- 6 commits, no releases — more of a proof-of-concept than a maintained project
-- Has a `schema.sql` for D1, client script that injects PV/UV counts into the page
-- Uses Hono for routing (lightweight, ergonomic API framework for Workers)
-- Demonstrates the D1 binding pattern with prepared statements
+**Architecture (from source):**
+- Hono for routing with CORS middleware
+- D1 with two tables: `t_website` (multi-site) and `t_web_visitor` (page views)
+- Client script sends POST to `/api/visit`, server returns PV/UV counts in response
+- Client injects counts into DOM elements by ID (`page_pv`, `page_uv`)
 
-**Inspiration for us:**
-- D1 schema patterns for page view and unique visitor counting
-- Hono as a routing layer — cleaner than raw `if/else` on `url.pathname`
-- Client script that writes counts directly into page elements (interesting for inline stats)
+**D1 schema (`schema.sql`):**
+```sql
+t_website: id, name, domain, create_at, update_at
+t_web_visitor: id, website_id, url_path, referrer_domain, referrer_path, visitor_ip, create_at, update_at
+```
 
-**Why we're not adopting it:**
-- Too minimal — no bot filtering, no owner exclusion, no geographic data
-- No dashboard, no public stats page
-- Not actively maintained
+**Patterns from source:**
 
-### Summary
+1. **Hono routing** (`src/index.ts`): Clean `app.post('/api/visit', ...)` pattern with typed bindings `Hono<{ Bindings: Bindings }>`. CORS middleware via `app.use('/api/*', cors())`. Much cleaner than raw `if/else` on pathname.
 
-Both projects validate our architecture. Counterscale proves the Cloudflare Workers analytics model works at scale (2K stars, real users). yestool proves D1 is viable for the storage layer. Our approach takes the best patterns from both — D1 for unlimited retention (from yestool's approach), beacon + separate endpoints (from Counterscale's architecture) — while adding what neither has: owner exclusion, public `/stats` page, and integration with the blog's transparency design.
+2. **IP from Cloudflare header** (`src/index.ts`): Uses `c.req.header('CF-Connecting-IP')` for visitor IP. This is the raw IP — they store it directly in the database.
+
+3. **Inline PV/UV response** (`src/index.ts`): The `/api/visit` endpoint both records the visit AND returns current PV/UV counts in the same response. Client script then writes counts into `<span id="page_pv">` elements. Interesting for showing live counters on the page.
+
+4. **D1 prepared statements** (`src/lib/dbutil.ts`): Uses `db.prepare(sql).bind(...args).run()` pattern. Gets last insert ID via separate `SELECT last_insert_rowid()` query.
+
+### Anti-Patterns to Avoid
+
+From studying both codebases, these are patterns we should NOT follow:
+
+1. **❌ Storing raw IP addresses** (yestool): `visitor_ip` column stores the actual IP. This is PII, violates GDPR, and is unnecessary. Counterscale's approach (cookieless via HTTP caching) or our approach (hashed IP + daily salt) is better.
+
+2. **❌ Awaiting the beacon response** (yestool): Their client script `await`s the fetch response to get PV/UV counts. This blocks page interactivity. Counterscale's fire-and-forget XHR is better. Our `fetch()` with `keepalive: true` and no `await` is the right pattern.
+
+3. **❌ Injecting meta tags into `<head>`** (yestool): Their tracker appends `<meta>` tags with author attribution into `document.head.innerHTML`. This is invasive and can break other scripts. Never modify the host page's DOM beyond what's explicitly requested.
+
+4. **❌ Multi-site complexity when you have one site** (both): Counterscale has `siteId` everywhere, yestool has a `t_website` table with domain lookups. We have one site. Skip the abstraction.
+
+5. **❌ Full Remix/React dashboard for simple stats** (Counterscale): Their dashboard is a full React app with routing, auth, charts. For a personal blog with ~100 views/day, a static HTML page with a few `fetch()` calls is sufficient.
+
+### Best Practices to Adopt
+
+1. **✅ GET request + tracking pixel response** (Counterscale): Return a 1x1 GIF with `Cache-Control: no-cache`. Works even when `fetch()` is blocked. Consider this as a fallback or primary pattern.
+
+2. **✅ Cookieless unique visitor counting via HTTP caching** (Counterscale): The `If-Modified-Since` / `Last-Modified` trick is elegant — no cookies, no localStorage, browser handles it natively. We should evaluate this vs our hash approach. Trade-off: the hash approach works across devices (server-side), the caching approach is per-browser but truly zero-storage.
+
+3. **✅ Derive collect URL from script src** (Counterscale): `script.src.replace("tracker.js", "collect")` means zero configuration. The tracker script knows where to send data based on where it was loaded from.
+
+4. **✅ Short parameter keys in beacon** (Counterscale): `p` for path, `h` for host, `r` for referrer, `sid` for site ID. Minimizes beacon URL length.
+
+5. **✅ Server-side UA parsing** (Counterscale): Parse user-agent on the server, not the client. Keeps the client script tiny. `ua-parser-js` is 17KB — that's server-side only.
+
+6. **✅ Hono for Worker routing** (yestool): Cleaner than raw `if/else`. Typed bindings, middleware support, CORS built-in. Consider for our `/api/*` routes.
+
+7. **✅ Silent failure** (both): Analytics should never throw errors that affect the user. Both projects swallow errors gracefully. Our beacon must do the same.
+
+8. **✅ `defer` attribute on script tag** (Counterscale): Ensures the tracker loads after the page content. Never block rendering for analytics.
+
+### What Our Library Adds (That Neither Has)
+
+- **Owner exclusion** — opt-out cookie or `?me` param, `is_owner` flag in D1
+- **Public `/stats` page** — neither project exposes stats publicly on the blog itself
+- **D1 with unlimited retention** — Counterscale's Analytics Engine loses data after 90 days
+- **`request.cf` geographic enrichment** — country, city, continent, region, timezone, all server-side
+- **Framework-agnostic** — works with any static site on Cloudflare Workers, not just our blog
+- **Zero dependencies** — no Hono, no ua-parser-js, no Remix. Pure Cloudflare Workers API.
+
+### Scope: A Reusable Micro-Library
+
+This doesn't need to be blog-specific. The pattern is universal: any static site on Cloudflare Workers that wants lightweight, privacy-first, self-hosted analytics with D1. The library could be:
+
+- **Client**: `<script>` tag (~200 bytes) or ES module import — sends beacon to `/api/event`
+- **Worker**: `/api/event` (ingestion) + `/api/stats` (query) — ~150 lines of TypeScript
+- **Schema**: One `page_views` table with indexes — `wrangler d1 execute` to set up
+
+Could eventually be published as a package (e.g., `@nisli/analytics` or standalone), but for now it lives in the blog repo and serves our needs.
 
 ## References
 
