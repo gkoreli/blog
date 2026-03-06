@@ -185,7 +185,7 @@ Run a server that renders pages on each request.
 
 Rejected because:
 - Requires a running server (cost, ops, monitoring)
-- Cloudflare Workers with static assets doesn't run servers — it serves pre-built files from the edge
+- Blog content is static — there's nothing dynamic about rendering the same markdown on every request. Cloudflare Workers serves pre-built files from the edge, with the option to add serverless functions for specific routes (e.g. analytics API) without running a full server.
 - Blog content is static — there's nothing dynamic about rendering the same markdown on every request
 - SSG gives identical SEO benefits with zero runtime cost
 
