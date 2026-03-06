@@ -1,10 +1,10 @@
 ---
 name: blog-writing
-description: Blog post writing guidelines for gkoreli.com. Use when writing, editing, or reviewing blog posts. Covers voice, structure, content format, build-in-public approach, and technical writing standards for an engineering audience.
+description: Blog post writing guidelines for gkoreli.com. Use when writing, editing, or reviewing blog posts. Covers voice, structure, content format, sourcing rules, formatting balance, transparency, and technical writing standards for an engineering audience.
 license: MIT
 metadata:
   author: gkoreli
-  version: "1.0.0"
+  version: "2.0.0"
 ---
 
 # Blog Writing — Agent Skill
@@ -26,6 +26,53 @@ Reference these guidelines when:
 - **Perspective**: First person. "I built this because..." not "One might consider..."
 - **Honesty**: Show failures and wrong turns, not just wins. "This didn't work because..." is more valuable than "Here's how to do it right."
 - **No fluff**: Skip intros like "In today's fast-paced world..." — lead with the thing.
+- **Transparency**: This blog is AI-assisted. Every post includes the raw prompts that generated it. The author provides the substance — experience, perspective, lessons. The agent helps write. This is not AI slop.
+
+## What Makes a Great Article
+
+A great engineering blog post does several of these:
+
+- **States a problem clearly** — the reader should feel the pain before seeing the solution
+- **Introduces novel ideas or perspectives** — not rehashing what everyone already knows
+- **Debunks myths** — challenges popular but wrong assumptions with evidence
+- **Showcases best practices AND anti-patterns** — what to do and what to avoid, from experience
+- **Highlights gotchas** — the things nobody warns you about until you hit them
+- **Shares personal growth** — what changed in your thinking and why
+- **Is transparent** — about process, tools, trade-offs, and limitations
+
+The goal: a reader finishes the post knowing something they didn't before, or seeing something familiar from a new angle.
+
+## Formatting Balance
+
+### Prose vs Structure
+
+Not everything should be a paragraph. Not everything should be a bullet list. The rule:
+
+- **Prose** — for narrative, arguments that build, origin stories, personal reflections. When the reader needs to follow a thread of reasoning.
+- **Bullet points** — for enumerating distinct items, features, comparisons, lists of things. When each point is independent and the reader benefits from scanning.
+- **Numbered lists** — for sequences, ranked items, or when order matters.
+- **Blockquotes** — for strong opinion statements that deserve visual emphasis. The "quotable" lines. Always wrap the text in literal `"` quote characters inside the blockquote: `> "The actual quote here."`
+- **Bold lead-ins** — `**Label:**` followed by the point. Lets readers scan sections quickly.
+
+### Anti-pattern: Wall of Prose
+
+If a section has 3+ paragraphs of continuous prose making distinct points, it probably needs restructuring. Break it up with:
+- A bullet list for the enumerable parts
+- A blockquote for the strongest claim
+- Shorter paragraphs (2-3 sentences max per paragraph)
+
+### Anti-pattern: Everything is Bullets
+
+If the whole post reads like a slide deck, it loses voice and narrative. The personal sections — origin stories, reflections, arguments — need prose to land.
+
+### Hyperlinks
+
+Use inline contextual links. Don't make readers go find things.
+
+- Link to repos, READMEs, npm packages, the blog itself
+- Link to specific pages when referencing tools or concepts
+- External links open in new tabs (handled by the markdown renderer)
+- Internal links (other posts, homepage) stay in same tab
 
 ## Post Format
 
@@ -50,7 +97,7 @@ Content starts immediately. No preamble.
 ### File Naming
 
 `NNN-slug-title.md` — numbered prefix for ordering, slug for URL.
-- `001-hello-world.md`
+- `001-the-agentic-product-engineer.md`
 - `002-why-i-built-nisli-core.md`
 - `003-backlog-mcp-how-agents-manage-tasks.md`
 
@@ -98,6 +145,57 @@ Here's the reactive counter in action:
 
 Use sparingly — only when interactivity genuinely helps understanding. Most posts are fine with just text and code blocks.
 
+## Sourcing Rules
+
+### When to Use External Sources
+
+This is a builder's blog, not a news outlet. External sources serve as **evidence for claims**, not as content filler. Use them when:
+
+- Backing a specific claim that readers might question
+- Attributing a concept or term to its originator
+- Pointing readers to deeper exploration on a topic
+
+Don't overuse them. A post with 10+ external links feels like a research paper, not a blog.
+
+### Source Selection (strict priority order)
+
+1. **Original author's own post/tweet/repo** — if someone coined a term or published a finding, link to THEIR source, not a summary of it
+2. **Authoritative builder blogs** — engineers and builders who ship real things (e.g. Andrej Karpathy, Steve Yegge, Guillermo Rauch, Dan Abramov, Evan You)
+3. **Authoritative company engineering blogs** — established companies sharing real engineering work (e.g. Vercel, Anthropic, GitHub, LangChain)
+4. **Academic/research institutions** — for research-backed claims (e.g. Columbia, Stanford, MIT)
+5. **Reputable tech publications** — MIT Technology Review, Pragmatic Engineer, etc.
+
+### Source Anti-Patterns
+
+- **Never use subscription-gated articles** — if the reader can't access it freely, don't link it
+- **Avoid Wikipedia as a source** — find the original. Wikipedia is a starting point for research, not a citation. Exception: only if the original source is genuinely unfindable.
+- **Avoid generic SEO content farms** — sites that exist to rank for keywords, not to inform
+- **Avoid outdated sources without context** — agentic engineering moves fast. A 2-year-old article about AI agents is likely outdated. If you must use it, note the date and acknowledge what may have changed.
+- **Avoid news aggregators** — link to the original, not the outlet that summarized it
+
+### Glossary Section
+
+Posts that make claims backed by external evidence should end with a `## Glossary` section. This is NOT part of the article narrative — it's a reference appendix.
+
+Format:
+```markdown
+---
+
+## Glossary
+
+| Term / Claim | Source | Date |
+|---|---|---|
+| Context engineering | [Andrej Karpathy](https://link) — "the delicate art and science of filling the context window..." | Jun 2025 |
+| Vibe coding | [Andrej Karpathy on X](https://link) — coined the term | Feb 2025 |
+```
+
+Rules:
+- **Always include dates** — the industry evolves fast, readers need to know how fresh the source is
+- **Use a table format** — visually distinct from the article body, scannable
+- **Link to the original source** — not a summary or aggregator
+- **Keep descriptions brief** — one line per entry
+- **Separate from article with a horizontal rule** (`---`) — the glossary is a reference section, not a continuation of the narrative
+
 ## Content Topics
 
 ### Core Topics (what the blog is about)
@@ -122,6 +220,11 @@ Use sparingly — only when interactivity genuinely helps understanding. Most po
 - Don't bury the lede — if the interesting thing is in paragraph 5, move it to paragraph 1
 - Don't write posts without code — this is an engineering blog
 - Don't use AI-generated filler text — every sentence should carry information
+- Don't write walls of prose when bullets would be clearer — match format to content
+- Don't make every section bullets either — narrative sections need prose to land
+- Don't make unsubstantiated claims — if it's an opinion, own it. If it's a fact, source it.
+- Don't link to paywalled or subscription-gated sources
+- Don't use Wikipedia when the original source exists
 
 ## Cross-Posting
 
@@ -138,5 +241,10 @@ Before publishing:
 - [ ] Post leads with the interesting thing, not preamble
 - [ ] Code blocks have language specified
 - [ ] At least one concrete number, metric, or specific detail
+- [ ] Formatting balance — prose for narrative, bullets for lists, blockquotes for strong claims
+- [ ] No walls of prose — sections with 3+ paragraphs of distinct points are restructured
+- [ ] External sources follow sourcing rules (original author, no paywalls, no Wikipedia)
+- [ ] Glossary has dates on all sources
+- [ ] Hyperlinks are contextual and useful (repos, READMEs, npm, blog pages)
 - [ ] Ends with what's next (open loop)
 - [ ] Read it out loud — does it sound like you talking?

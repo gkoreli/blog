@@ -8,11 +8,32 @@ The blog fills a gap: there's plenty of AI hype content but very little from eng
 
 ## Problem Space
 
-Agentic engineering is the most interesting frontier in software right now, but the content landscape is thin:
-- Most "AI engineering" content is prompt tips or tool reviews
-- Almost nobody writes about multi-agent delegation, context engineering, or agent-driven development workflows
-- Build-in-public content about open source developer tools (MCP servers, web component frameworks) is rare and valuable
-- Engineers who build their own tools AND write about them have natural credibility — the blog content and the code reinforce each other
+Agentic engineering is the most interesting frontier in software right now, but the content landscape is noisy in the wrong ways:
+
+- **Hype camp**: "AI will replace all developers", "I built a SaaS in 10 minutes" — no mention of the 10 hours debugging after
+- **Skeptic camp**: "AI code is garbage, real engineers write their own" — dismissing the shift entirely
+- **Vibe coding camp**: ship fast, quality optional, dopamine-driven — graveyard of average products
+
+What's actually missing: honest, grounded writing about what it means to build with agents daily. The real principles — context engineering, steering agents through hard problems, knowing when to stop the agent from pivoting to easy solutions. The depth problem: agents default to naive/average solutions, and someone without engineering depth will pivot with them.
+
+This blog exists in that gap. Builder's journal, not a tutorial site. Every post includes the raw prompts that generated it — full transparency that this is AI-assisted writing with human substance.
+
+## Writing Process
+
+Blog posts are AI-assisted with human substance. The workflow:
+
+1. **Author provides golden data** — raw prompts with perspective, experience, specific problems, lessons learned
+2. **Agent distills and structures** — applies the blog-writing skill (`.agents/skills/blog-writing/SKILL.md`)
+3. **Iterative refinement** — author reviews, pushes back on prose, requests structural changes
+4. **Every post ships with raw prompts** — full transparency, readers can see the human thinking behind the AI output
+
+### Writing Skill (`.agents/skills/blog-writing/SKILL.md`)
+
+Covers voice, structure, formatting balance, sourcing rules, glossary format, and quality checklist. Key principles:
+
+- **Formatting balance** — prose for narrative/arguments, bullets for enumerable points, blockquotes (with literal `"` quotes) for strong opinion statements. Anti-pattern: walls of prose when bullets would be clearer. Anti-pattern: everything as bullets losing narrative voice.
+- **Sourcing rules** — original author first (not Wikipedia or aggregators), no paywalled sources, authoritative builder blogs and company engineering blogs preferred. Glossary uses table format with dates on every source.
+- **What makes a great article** — states a problem clearly, introduces novel ideas, debunks myths, showcases best practices AND anti-patterns, highlights gotchas, shares personal growth, is transparent.
 
 ## Content Strategy
 
@@ -139,6 +160,8 @@ Decisions made before building. Reference these — don't re-decide.
 | Accent colors | **Green primary + sky blue secondary** | Primary: `#1a6b4e` / `#6ec9a8`. Secondary: `#93c5fd` (soft sky blue). Green dominates all gradients (60%+), blue is only the trailing hint. Three-stop pattern: dark green → mint → sky blue. Rationale: grass-and-clear-sky — natural, no muddy midpoints. Purple was too dominant, gold looked like spoilage, cyan was indistinguishable from green. |
 | Logo | **Georgian გკ negative space** | Georgian Mkhedruli letters გ (g) and კ (k) — "Goga Koreli". Font-extracted SVG paths (Noto Sans Georgian Bold via opentype.js) masked out of a gradient rounded square. Letters sit at the bottom like TypeScript's logo. Same file serves as sidebar logo and SVG favicon. Georgian script is distinctive in tech — nobody else uses it. |
 | CI/CD | **GitHub Actions → GitHub Pages** | Push to `main` triggers build + deploy. No versioning (not a library). No preview deploys (single author, use `pnpm dev` locally). Concurrency cancels in-progress deploys. |
+| OG images | **satori + @resvg/resvg-js (build-time)** | Per-post 1200×630 PNG. Dark gradient background, centered layout with logo, sparkle separator, post title, tagline. Lora Bold font loaded from `public/fonts/`. Both are devDependencies (build-time only). |
+| 404 handling | **`public/404.html` → redirect to `/`** | GitHub Pages serves `404.html` for unknown routes. Meta refresh redirects to home instantly. |
 | Custom domain | **gkoreli.com via Cloudflare** | A records (4× GitHub Pages IPs) + CNAME for www. Cloudflare proxy enabled with SSL mode Full. `CNAME` file in `public/` so GitHub Pages remembers the domain across deploys. |
 
 ## Design Philosophy
@@ -209,8 +232,8 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 - **License**: MIT
 - **Branch**: `main`
 - **Status**: Live at gkoreli.com — design system complete, first post published, CI/CD active
-- **Done**: SSG pipeline, shiki dual themes, theme toggle, sidebar nav, SVG icon set, Georgian გკ logo/favicon, Zod frontmatter validation, warm cream/dark palette, Lora serif typography, GitHub Actions deploy, Cloudflare DNS, RSS feed, llms.txt
-- **Next**: Write more content, @nisli/core SSR (TASK-0477), Open Graph social cards
+- **Done**: SSG pipeline, shiki dual themes, theme toggle, sidebar nav, SVG icon set, Georgian გკ logo/favicon, Zod frontmatter validation, warm cream/dark palette, Lora serif typography, GitHub Actions deploy, Cloudflare DNS, RSS feed, llms.txt, OG image generation (satori + resvg), about page, 404 redirect, blog-writing agent skill
+- **Next**: Mobile responsive (sidebar collapse), proofread and publish first post, write more content, @nisli/core SSR (TASK-0477)
 
 ## Tech Stack
 
@@ -224,8 +247,8 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 
 ## Future Vision
 
-- RSS feed for dev community subscribers
-- Open Graph auto-generated social cards
 - Email newsletter (Buttondown or Resend)
 - Series/tags for organizing content by topic
+- Prompt archive — each post's raw prompts published alongside the polished article
+- Mobile responsive — sidebar collapses on small screens
 - The blog becomes the public face of the `gkoreli` builder identity — connecting GitHub, npm, and writing into one coherent presence

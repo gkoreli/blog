@@ -1,7 +1,7 @@
 import { html, raw } from 'nisli-static';
-import type { PostMeta } from '../lib/frontmatter.js';
+import type { PostMeta, PromptsData } from '../lib/frontmatter.js';
 
-export function postTemplate(meta: PostMeta, htmlContent: string) {
+export function postTemplate(meta: PostMeta, htmlContent: string, prompts?: PromptsData | null) {
   const dateStr = meta.date ? new Date(meta.date + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
 
   return html`<article>
@@ -14,5 +14,14 @@ export function postTemplate(meta: PostMeta, htmlContent: string) {
   <div class="post-content">
     ${raw(htmlContent)}
   </div>
+  ${prompts ? html`
+  <aside class="prompts-teaser">
+    <div class="prompts-teaser-header">
+      <span class="prompts-teaser-icon">✦</span>
+      <strong>${prompts.count} prompt${prompts.count === 1 ? '' : 's'} behind this post</strong>
+    </div>
+    <p class="prompts-teaser-preview">"${prompts.preview}"</p>
+    <a href="/${meta.slug}/prompts" class="prompts-teaser-link">Read all prompts →</a>
+  </aside>` : ''}
 </article>`;
 }

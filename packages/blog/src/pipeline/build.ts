@@ -3,12 +3,13 @@ import { build as esbuild } from 'esbuild';
 import { DIST, CLIENT_ENTRY, STYLES_SRC } from '../lib/paths.js';
 import { discoverPosts, writeOutput, writeRoot, copyAssets } from '../lib/fs.js';
 import { initMarkdown, renderMarkdown } from '../lib/markdown.js';
-import { parsePost, FrontmatterError, validatePosts } from '../lib/frontmatter.js';
+import { parsePost, validatePosts, parsePrompts } from '../lib/frontmatter.js';
 import { pageShell } from '../templates/page.js';
 import { postTemplate } from '../templates/post.js';
 import { indexTemplate } from '../templates/index.js';
 import { aboutTemplate } from '../templates/about.js';
 import { rssFeed } from '../templates/rss.js';
+import { promptsTemplate } from '../templates/prompts.js';
 import { generateOgImage } from '../lib/og.js';
 
 export { DIST } from '../lib/paths.js';
@@ -47,9 +48,16 @@ export async function buildHTML(): Promise<void> {
   for (const post of posts) {
     const htmlContent = await renderMarkdown(post.content);
     const ogImage = await generateOgImage(post.meta.title, post.meta.slug);
-    const body = postTemplate(post.meta, htmlContent);
+    const prompts = parsePrompts(post.meta.slug);
+    const body = postTemplate(post.meta, htmlContent, prompts);
     const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), posts: sortedPosts, currentSlug: post.meta.slug, ogImage });
     writeOutput(post.meta.slug, page.toString());
+
+    if (prompts) {
+      const promptsBody = promptsTemplate(post.meta, prompts);
+      const promptsPage = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), posts: sortedPosts, currentSlug: post.meta.slug });
+      writeOutput(`${post.meta.slug}/prompts`, promptsPage.toString());
+    }
   }
 
   const indexBody = indexTemplate(sortedPosts);
