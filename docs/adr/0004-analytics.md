@@ -699,6 +699,93 @@ We have 1 table, 1 INSERT, 6 SELECTs, 1 developer. The raw D1 API is the right t
 
 **CF Workers script size limit**: 1MB on free plan. Our entire analytics package is ~9KB source. Even Drizzle (71KB minified) would fit comfortably. Bundle size is not the blocker — complexity and dependency count are.
 
+### Architecture Issues & Resolutions
+
+Four issues identified during implementation review, each explored against open source prior art:
+
+#### 1. ExecutionContext passing — `globalThis.ctx` hack
+
+**Problem**: The analytics library needs `ctx.waitUntil()` to fire-and-forget D1 writes, but `ExecutionContext` is a Workers-specific concept. Storing it on `globalThis` is fragile — it's a mutable global, invisible to the type system, and breaks if the library is used outside a Worker.
+
+**How Hono solves this** (29K⭐, verified in `src/hono-base.ts` and `src/context.ts`):
+- `ExecutionContext` is passed as the 3rd argument to `fetch(request, env, ctx)` — the standard Workers signature
+- Hono threads it through its own `Context` object: `new Context(request, { executionCtx, env, ... })`
+- Handlers access it via `c.executionCtx.waitUntil(promise)`
+- The ctx is **explicitly passed**, never stored globally
+
+**Our resolution**: Pass `ctx` explicitly to `handleEvent()`:
+```typescript
+// Before (fragile):
+(globalThis as any).ctx = ctx;
+handleEvent(request, env);
+
+// After (explicit):
+handleEvent(request, env, ctx);
+```
+The analytics library accepts an optional `ExecutionContext` parameter. If provided, uses `waitUntil`. If not (e.g., testing, non-Worker environments), falls back to `await`. This is the same pattern Hono uses — explicit dependency injection, no globals.
+
+#### 2. Owner detection — IP-based is brittle
+
+**Problem**: `OWNER_IPS` as a comma-separated env var breaks when your ISP rotates your IP.
+
+**How the open source projects solve this** (verified in source):
+- **Plausible** (`tracker/src/track.js` line 42): `localStorage.plausible_ignore === 'true'` — client-side opt-out. The site owner sets this in their browser's dev console. Simple, no server config needed.
+- **Umami** (`src/tracker/index.js`): `localStorage.getItem('umami.disabled')` — same pattern.
+- Both also support `data-do-not-track` attribute and respect the browser's DNT header.
+
+**Our resolution**: Layered approach:
+1. **Primary**: `localStorage.analytics_ignore === 'true'` — client-side, like Plausible/Umami. Owner sets it once in dev console, works across IP changes.
+2. **Secondary**: `OWNER_IPS` env var — server-side fallback for when you can't set localStorage (e.g., first visit from a new device). Keep it, but don't rely on it alone.
+3. **Beacon script checks localStorage before sending** — if ignored, don't even make the request. Zero D1 writes wasted.
+
+#### 3. Error handling — silent D1 failures
+
+**Problem**: If D1 is down, `waitUntil(recordPageView(...))` rejects silently. We lose events with no visibility.
+
+**How the open source projects handle this** (verified in source):
+- **Plausible**: Has explicit `drop_reason` types including `:persist_timeout` and `:persist_error`. Emits telemetry for every dropped event: `:telemetry.execute(telemetry_event_dropped(), %{}, %{reason: reason})`. They track what they lose.
+- **Counterscale**: Client-side XHR with 1s timeout (`REQUEST_TIMEOUT = 1000`). On error/timeout, resolves with fallback response — never throws. Server-side: no error handling (Analytics Engine is fire-and-forget by design).
+- **Umami**: Client-side `fetch` wrapped in try/catch with `/* no-op */` catch block. Server-side: standard Next.js error handling.
+
+**Our resolution**: Wrap D1 writes in try/catch, log errors via `console.error` (which goes to Workers Logs, already enabled at 100% sampling):
+```typescript
+ctx.waitUntil(
+  recordPageView(env.DB, pv).catch(err => console.error('[analytics] D1 write failed:', err))
+);
+```
+Analytics is best-effort — losing a few events during D1 outages is acceptable. But we should know it's happening. Workers Logs gives us that visibility at zero cost.
+
+#### 4. Client beacon — fire-and-forget pattern
+
+**Problem**: The beacon script must not block page rendering, must work during page unload (navigating away), and must be as small as possible.
+
+**How the open source projects send beacons** (verified in source):
+- **Plausible** (`tracker/src/networking.js`): `fetch(endpoint, { method: 'POST', keepalive: true, body: JSON.stringify(payload) })` — modern path. Also has XHR fallback for `COMPILE_COMPAT` mode. Uses `Content-Type: text/plain` to avoid CORS preflight.
+- **Umami** (`src/tracker/index.js`): `fetch(endpoint, { keepalive: true, method: 'POST', body: JSON.stringify({type, payload}), headers: {'Content-Type': 'application/json'} })` — wrapped in try/catch with no-op catch.
+- **Counterscale** (`packages/tracker/src/lib/request.ts`): XHR GET with 1s timeout. Uses `Content-Type: text/plain` to avoid preflight.
+
+**Key patterns from all three:**
+- `keepalive: true` — ensures the request completes even if the page is unloading (user navigates away)
+- `Content-Type: text/plain` (Plausible, Counterscale) — avoids CORS preflight OPTIONS request, saving a round trip. Our Worker is same-origin so this doesn't matter, but it's a good practice for a reusable library.
+- Fire-and-forget — no `await`, no response handling. Plausible has an optional callback; Umami reads a cache token from the response.
+- Client-side filtering — both Plausible and Umami check `localStorage` before sending, skip localhost, skip if DNT is set.
+
+**Our beacon design:**
+```javascript
+// ~150 bytes minified
+(function(){
+  if(localStorage.analytics_ignore==='true')return;
+  fetch('/api/event',{method:'POST',keepalive:true,
+    headers:{'Content-Type':'text/plain'},
+    body:JSON.stringify({path:location.pathname})});
+})();
+```
+- Checks `localStorage` first (owner exclusion)
+- `keepalive: true` (survives page unload)
+- `Content-Type: text/plain` (no CORS preflight, future-proofs for cross-origin use)
+- No `await`, no error handling — true fire-and-forget
+- ~150 bytes minified — smaller than Plausible's tracker (1.2KB) or Umami's (3.5KB) because we only track page views, not custom events, engagement, or SPA navigation
+
 ## References
 
 - [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) — hosting + Worker scripts
