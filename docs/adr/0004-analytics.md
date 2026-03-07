@@ -620,6 +620,85 @@ This doesn't need to be blog-specific. The pattern is universal: any static site
 
 Could eventually be published as a package (e.g., `@nisli/analytics` or standalone), but for now it lives in the blog repo and serves our needs.
 
+### Library Evaluation: Hashing
+
+**Question**: Why use `crypto.subtle.digest('SHA-256', ...)` instead of a battle-tested hashing library?
+
+**Answer**: `crypto.subtle` IS the battle-tested library. It's the W3C Web Crypto API, implemented natively in Cloudflare's `workerd` runtime (the same engine that powers Workers). It's not a JavaScript implementation — it calls into native C++ crypto primitives. Source: [Cloudflare Web Crypto docs](https://developers.cloudflare.com/workers/runtime-apis/web-crypto/).
+
+**Libraries evaluated:**
+
+| Library | Stars | Bundle (min) | Bundle (gzip) | What it does |
+|---------|-------|-------------|---------------|-------------|
+| `crypto.subtle` (Web Crypto) | N/A (platform) | 0 bytes | 0 bytes | Native SHA-256 in Workers runtime |
+| `@noble/hashes` | 829 | 4.7KB | 2.4KB | Audited pure-JS hash implementations |
+| `crypto-js` | 16.4K | — | — | Legacy, not tree-shakeable, not audited |
+| `jsSHA` | 2.3K | — | — | Pure-JS SHA family |
+
+**What the open source projects use (verified in source):**
+- **Plausible**: Erlang's `:siphash` library (SipHash, not SHA-256) — `{:siphash, "~> 3.2"}` in `mix.exs`. SipHash is faster but weaker; they chose speed over collision resistance since hashes are ephemeral.
+- **Umami**: Node.js `crypto.createHash('sha512')` — `import crypto from 'node:crypto'` in `src/lib/crypto.ts`. This is Node's native binding to OpenSSL, equivalent to our `crypto.subtle` but for Node.
+- **WP Statistics**: PHP's `hash('sha256', ...)` — native PHP hash function.
+
+**Key insight**: Every major analytics project uses the platform's native crypto, not a JS library. Plausible uses Erlang's native SipHash. Umami uses Node's native crypto. WP Statistics uses PHP's native hash. We use Workers' native Web Crypto. This is the correct pattern.
+
+**When would `@noble/hashes` make sense?** If we needed:
+- Algorithms not in Web Crypto (BLAKE3, Argon2, scrypt)
+- Synchronous hashing (Web Crypto is async-only)
+- Environments without Web Crypto (old browsers, some edge runtimes)
+
+None of these apply. Our `crypto.subtle.digest` call is 237 bytes bundled. `@noble/hashes` would add 4.7KB for a pure-JS reimplementation of what the runtime already provides natively.
+
+### Library Evaluation: Database Layer
+
+**Question**: Why use raw `db.prepare().bind().run()` instead of an ORM or query builder?
+
+**Libraries evaluated (bundle sizes measured with esbuild tree-shaking):**
+
+| Library | Stars | Bundle (min) | Bundle (gzip) | Type | D1 support |
+|---------|-------|-------------|---------------|------|-----------|
+| Raw D1 API | N/A | ~1.5KB | ~0.5KB | Platform API | Native |
+| `workers-qb` | 386 | 20.5KB | 5.9KB | Query builder | First-class |
+| `drizzle-orm` | 33.2K | 70.6KB | 18.9KB | Full ORM | First-class |
+| `kysely` + `kysely-d1` | 13.5K + 327 | 147.4KB | 27.4KB | Query builder | Community adapter |
+| `d1-orm` | 172 | — | — | ORM | D1-specific |
+| Prisma | — | — | — | Full ORM | Via adapter |
+
+**What the Drizzle D1 driver actually does** (verified in `drizzle-orm/src/d1/session.ts`):
+- Wraps `D1Database.prepare()` with parameter binding
+- Adds result mapping (row → object)
+- Adds batch support (wraps `D1Database.batch()`)
+- Adds transaction support (wraps `BEGIN`/`COMMIT`/`ROLLBACK`)
+- Adds logging and caching layers
+- Total: ~250 lines of adapter code, but pulls in the entire ORM core (dialect, relations, SQL builder, entity system)
+
+**What `workers-qb` does** (verified in source, [G4brym/workers-qb](https://github.com/G4brym/workers-qb)):
+- Zero dependencies, built specifically for Workers
+- Type-safe schema definitions
+- Fluent query builder: `qb.fetchAll({ tableName: 'page_views', where: { conditions: 'visitor_type = ?', params: [0] } })`
+- D1, Durable Objects, and PostgreSQL support
+- Schema migrations
+
+**What Cloudflare recommends**: Their [D1 docs](https://developers.cloudflare.com/d1/best-practices/query-d1/) show raw `db.prepare().bind().run()` in all examples. ORMs are listed under "Community projects" — not in the main docs.
+
+**Our assessment for this use case:**
+
+We have exactly 2 queries:
+1. `INSERT INTO page_views (...) VALUES (?, ?, ?, ?, ?, ?, ?, ?)` — one prepared statement
+2. `SELECT ... FROM page_views WHERE ... GROUP BY ...` — 6 batched queries in `/api/stats`
+
+An ORM adds value when you have:
+- Many tables with relationships (joins, foreign keys)
+- Complex migrations across environments
+- Multiple developers who need schema safety
+- CRUD operations across many entities
+
+We have 1 table, 1 INSERT, 6 SELECTs, 1 developer. The raw D1 API is the right tool.
+
+**When to reconsider**: If the analytics library grows to multiple tables (e.g., `events`, `sessions`, `goals`), Drizzle becomes worth the 19KB gzip cost for schema safety and migration tooling. The architecture supports swapping in Drizzle later — the DB layer is isolated in `db.ts` and `stats.ts`.
+
+**CF Workers script size limit**: 1MB on free plan. Our entire analytics package is ~9KB source. Even Drizzle (71KB minified) would fit comfortably. Bundle size is not the blocker — complexity and dependency count are.
+
 ## References
 
 - [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) — hosting + Worker scripts
