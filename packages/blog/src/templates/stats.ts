@@ -12,7 +12,7 @@ export function statsTemplate() {
       <button data-days="7">7d</button>
       <button data-days="30">30d</button>
       <button data-days="90">90d</button>
-      <button data-days="3650">All</button>
+      <button data-days="0">All</button>
     </div>
   </div>
 

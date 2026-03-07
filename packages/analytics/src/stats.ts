@@ -18,7 +18,8 @@ export interface StatsResponse {
 
 export async function queryStats(db: D1Database, q: StatsQuery = {}): Promise<StatsResponse> {
   const days = q.days ?? 30;
-  const since = new Date(Date.now() - days * 86400_000).toISOString().slice(0, 10);
+  const all = days === 0;
+  const since = all ? '1970-01-01' : new Date(Date.now() - days * 86400_000).toISOString().slice(0, 10);
   const pathFilter = q.path ? `AND path LIKE ?` : '';
   const bind = (stmt: D1PreparedStatement) =>
     q.path ? stmt.bind(since, `${q.path}%`) : stmt.bind(since);
@@ -34,9 +35,13 @@ export async function queryStats(db: D1Database, q: StatsQuery = {}): Promise<St
 
   const t = (totals.results?.[0] ?? { views: 0, visitors: 0 }) as Record<string, number>;
   const ai = (aiFetches.results?.[0] ?? { count: 0 }) as Record<string, number>;
+  const dayRows = (byDay.results ?? []) as StatsResponse['by_day'];
+
+  // For "all time", derive period start from actual data instead of arbitrary lookback
+  const periodStart = all && dayRows.length > 0 ? dayRows[0].date : since;
 
   return {
-    period: { start: since, end: new Date().toISOString().slice(0, 10) },
+    period: { start: periodStart, end: new Date().toISOString().slice(0, 10) },
     totals: { views: t.views ?? 0, visitors: t.visitors ?? 0, ai_fetches: ai.count ?? 0 },
     by_path: (byPath.results ?? []) as StatsResponse['by_path'],
     by_country: (byCountry.results ?? []) as StatsResponse['by_country'],
