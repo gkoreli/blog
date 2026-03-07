@@ -231,6 +231,64 @@ CSS: `.stats-bar` is `position: absolute; inset: 0; background: var(--color-surf
 2. **JS bundle size prediction** — ADR predicted 52KB min / 23KB gzip. Actual: 55.8KB min / 24.6KB gzip. Delta is our 196 lines of client code (~3.8KB minified).
 3. **Stats CSS in main.css** — Early plan draft said "add stats CSS to main.css." This contradicted our own anti-pattern about bundle isolation. Caught during self-review, fixed before implementation.
 
+## Post-Deploy Hardening
+
+Issues found during deep audit after initial deployment. All fixed.
+
+### The `|| 30` Falsy Pattern (found in 2 places)
+
+`Number("0") || 30` evaluates to `30` because `0` is falsy in JavaScript. This pattern appeared in both the client (`getDays()`) and the server (`handleStats`). The `days=0` "all time" feature was completely broken — the server silently treated it as `days=30`.
+
+The fix is the same in both places: check for parameter presence explicitly, don't use `||` with a numeric fallback when `0` is a valid value.
+```typescript
+// ❌ Broken: 0 is falsy
+Number(params.get('days')) || 30
+// ✅ Fixed: explicit null check
+params.has('days') ? Number(params.get('days')) : 30
+// ✅ Also fixed (server): null check + clamp
+raw !== null ? Math.max(0, Math.min(3650, Number(raw) || 0)) : 30
+```
+
+**Lesson**: `||` for default values is a JS footgun when `0`, `""`, or `false` are valid inputs. Use `??` for nullish coalescing, or explicit null checks. This is a well-known pattern but easy to miss in the flow of writing code.
+
+### XSS via `innerHTML` (stored XSS)
+
+`renderList` used `innerHTML` with unescaped data from the API. The `by_path.path` field comes from the client beacon which accepts any string via `POST /api/event`. An attacker could store `<img src=x onerror=alert(1)>` as a path, and it would execute in every visitor's browser on the `/stats` page.
+
+Two-layer fix:
+1. **Server**: `handleEvent` now validates paths — must start with `/`, query/hash stripped, capped at 500 chars. Rejects non-paths with 400.
+2. **Client**: `renderList` now escapes all labels with `esc()` (escapes `&`, `<`, `>`, `"`). Defense in depth — even if the server validation is bypassed, the client won't execute it.
+
+**Lesson**: Any data that flows through a database and back into `innerHTML` is a stored XSS vector. Use `textContent` for plain text, or escape HTML entities. The referrer was safe (URL parsing rejects invalid URLs), but the path had no validation at all.
+
+### Race Condition in Period Switching
+
+Rapid clicks on period pills (7d → 90d) fired parallel fetches. If responses arrived out of order, the UI showed stale data (7d data with 90d pill highlighted). Fixed with a monotonic counter — each `load()` call increments `loadId`, and the response handler discards results if `loadId` has advanced.
+
+```typescript
+let loadId = 0;
+async function load(days: number) {
+  const id = ++loadId;
+  const data = await fetchStats(days);
+  if (id !== loadId) return; // superseded
+  renderAll(data, days);
+}
+```
+
+**Lesson**: Any UI that fires async requests from user input needs a staleness check. `AbortController` is the heavier solution; a monotonic counter is sufficient when you just need to discard stale responses.
+
+### Fragile Hex Color Assumption
+
+`c.link + '26'` appended a hex alpha to the CSS variable value, assuming it's always `#rrggbb`. This produces valid 8-digit hex (`#1a6b4e26`). But if the CSS variable ever changed to `rgb()` format, the fill would silently break. Fixed with an explicit `hexToFill()` that converts hex to `rgba()`.
+
+**Lesson**: Don't assume the format of CSS custom property values. Parse explicitly.
+
+### Error Recovery
+
+`showError()` cleared `stats-totals` innerHTML, destroying the card structure. After an error, switching to a different period couldn't render totals because `querySelector('.stats-card')` found nothing. Fixed by only clearing chart and list sections, preserving the totals card skeleton.
+
+**Lesson**: Error states should be recoverable. Don't destroy DOM structure that other code depends on for re-rendering.
+
 ## References
 
 - [ADR-0004: Analytics](./0004-analytics.md) — the data collection layer this dashboard consumes
