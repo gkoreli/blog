@@ -42,7 +42,12 @@ function countryLabel(code: string): string {
 }
 
 function getDays(): number {
-  return Number(new URLSearchParams(location.search).get('days')) || 30;
+  const p = new URLSearchParams(location.search);
+  return p.has('days') ? Number(p.get('days')) : 30;
+}
+
+function esc(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 // --- Data ---
@@ -88,7 +93,7 @@ let chart: uPlot | null = null;
 function renderChart(byDay: StatsResponse['by_day'], totals: StatsResponse['totals'], days: number) {
   const el = $('stats-chart');
   el.innerHTML = '';
-  el.setAttribute('aria-label', `Daily views: ${totals.views} views, ${totals.visitors} visitors over the last ${days} days`);
+  el.setAttribute('aria-label', `Daily views: ${totals.views} views, ${totals.visitors} visitors${days > 0 ? ` over the last ${days} days` : ''}`);
 
   const c = getColors();
   const data = toUPlotData(byDay);
@@ -132,7 +137,7 @@ function renderList(items: { label: string; value: number }[], containerId: stri
     const pct = max > 0 ? (item.value / max) * 100 : 0;
     const row = document.createElement('div');
     row.className = 'stats-row';
-    row.innerHTML = `<div class="stats-bar" style="width:${pct}%"></div><span class="stats-label">${item.label}</span><span class="stats-value">${item.value.toLocaleString()}</span>`;
+    row.innerHTML = `<div class="stats-bar" style="width:${pct}%"></div><span class="stats-label">${esc(item.label)}</span><span class="stats-value">${item.value.toLocaleString()}</span>`;
     el.appendChild(row);
   }
 }
@@ -146,10 +151,14 @@ function renderAll(data: StatsResponse, days: number) {
 }
 
 function showError() {
-  for (const id of ['stats-totals', 'stats-chart', 'stats-pages', 'stats-referrers', 'stats-countries']) {
-    $(id).innerHTML = '';
-  }
+  // Clear data sections but preserve totals card structure for recovery
   $('stats-chart').innerHTML = '<div class="stats-error">Unable to load stats. Try refreshing.</div>';
+  for (const id of ['stats-pages', 'stats-referrers', 'stats-countries']) {
+    const el = $(id);
+    const h2 = el.querySelector('h2')!;
+    el.innerHTML = '';
+    el.appendChild(h2);
+  }
 }
 
 // --- Init ---
