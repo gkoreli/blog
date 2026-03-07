@@ -1,13 +1,14 @@
 import { html, raw } from 'nisli-static';
 import type { PostMeta } from '../lib/frontmatter.js';
 
-export function pageShell({ title, description, content, posts, currentSlug, ogImage }: {
+export function pageShell({ title, description, content, posts, currentSlug, ogImage, head }: {
   title: string;
   description: string;
   content: string;
   posts: PostMeta[];
   currentSlug?: string;
   ogImage?: string;
+  head?: string;
 }) {
   return html`<!DOCTYPE html>
 <html lang="en">
@@ -30,6 +31,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
   <link rel="stylesheet" href="/main.css">
   <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
+  ${head ? raw(head) : ''}
 </head>
 <body>
   <div class="layout">
@@ -50,6 +52,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
       <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
       <nav class="sidebar-nav">
         <a href="/about" class="${currentSlug === 'about' ? 'active' : ''}">About</a>
+        <a href="/stats" class="${currentSlug === 'stats' ? 'active' : ''}">Stats</a>
         ${posts.map(p => html`<a href="/${p.slug}" class="${currentSlug === p.slug ? 'active' : ''}">${p.title}</a>`)}
       </nav>
     </aside>

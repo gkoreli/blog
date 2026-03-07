@@ -1,6 +1,6 @@
 import { rmSync, existsSync, mkdirSync } from 'node:fs';
 import { build as esbuild } from 'esbuild';
-import { DIST, CLIENT_ENTRY, STYLES_SRC } from '../lib/paths.js';
+import { DIST, CLIENT_ENTRY, STATS_ENTRY, STYLES_SRC } from '../lib/paths.js';
 import { discoverPosts, writeOutput, writeRoot, copyAssets } from '../lib/fs.js';
 import { initMarkdown, renderMarkdown } from '../lib/markdown.js';
 import { parsePost, validatePosts, parsePrompts } from '../lib/frontmatter.js';
@@ -8,6 +8,7 @@ import { pageShell } from '../templates/page.js';
 import { postTemplate } from '../templates/post.js';
 import { indexTemplate } from '../templates/index.js';
 import { aboutTemplate } from '../templates/about.js';
+import { statsTemplate, statsHead } from '../templates/stats.js';
 import { rssFeed } from '../templates/rss.js';
 import { promptsTemplate } from '../templates/prompts.js';
 import { generateOgImage } from '../lib/og.js';
@@ -69,6 +70,10 @@ export async function buildHTML(): Promise<void> {
   const aboutPage = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), posts: sortedPosts, currentSlug: 'about' });
   writeOutput('about', aboutPage.toString());
 
+  const statsBody = statsTemplate();
+  const statsPage = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody.toString(), posts: sortedPosts, currentSlug: 'stats', head: statsHead });
+  writeOutput('stats', statsPage.toString());
+
   writeRoot('feed.xml', rssFeed(sortedPosts));
 
   const elapsed = (performance.now() - start).toFixed(0);
@@ -78,7 +83,7 @@ export async function buildHTML(): Promise<void> {
 /** Step 4: Bundle client JS + CSS */
 export async function bundleClient(minify = true): Promise<void> {
   await esbuild({
-    entryPoints: [CLIENT_ENTRY, STYLES_SRC],
+    entryPoints: [CLIENT_ENTRY, STATS_ENTRY, STYLES_SRC],
     bundle: true,
     outdir: DIST,
     entryNames: '[name]',
