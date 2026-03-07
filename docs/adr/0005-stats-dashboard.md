@@ -22,285 +22,265 @@ Phase 1 of ADR-0004 is deployed. The blog collects page views in D1 and serves a
 }
 ```
 
-**Blog tech stack** (constraints for the dashboard):
-- Static HTML generated at build time by `@nisli/core` pipeline (`packages/blog/src/pipeline/build.ts`)
-- Templates are TypeScript functions returning `html` tagged template literals (not React, not JSX)
-- CSS custom properties for theming: `--color-bg`, `--color-surface`, `--color-text`, `--color-link`, `--color-border`, `--color-text-muted`
-- Dark/light mode via `data-theme` attribute on `<html>`
-- Layout: sidebar + main content area, max-width 800px
-- Client JS: esbuild-bundled ES modules, currently ~1.2KB (theme toggle only)
-- Font: Lora (serif) — the blog has a literary, editorial feel
-- Zero framework dependencies — vanilla JS, web components for interactivity
-- esbuild already supports multiple entry points (currently `[CLIENT_ENTRY, STYLES_SRC]`)
+**Blog tech stack** (constraints):
+- Static HTML generated at build time by `@nisli/core` pipeline
+- Templates: TypeScript functions → `html` tagged template literals
+- CSS custom properties: `--color-bg`, `--color-surface`, `--color-text`, `--color-link`, `--color-border`, `--color-text-muted`
+- Dark/light mode: `data-theme` attribute on `<html>`, toggled by `<nisli-theme-toggle>` web component
+- Layout: sidebar + main content, `--content-max: 800px`, mobile breakpoint at 768px (sidebar stacks on top)
+- Client JS: esbuild-bundled ES modules, currently ~1.2KB (`main.js` = theme toggle only)
+- esbuild entry points: `[CLIENT_ENTRY, STYLES_SRC]` → `main.js` + `main.css`
+- Font: Lora (serif) — editorial, literary aesthetic
 
 ### What the Open Source Projects Use (Verified in Source)
 
 **Plausible** (21K⭐) — `assets/js/dashboard/`:
-- React + Chart.js + D3 (for world map) + Tailwind CSS
-- Dashboard sections: top stats bar, line graph (views/visitors over time), sources, pages, locations (world map), devices, behaviours
-- Chart.js for line/bar charts (`chart.js v3.3.2`), D3 for the choropleth world map (`d3 v7.9.0`)
-- Public shared dashboards via `/share/:slug` — same dashboard, read-only, no auth
-- Bundle: heavy — Chart.js alone is ~65KB gzipped, D3 ~80KB
+- React + Chart.js (`chart.js v3.3.2`) + D3 (`d3 v7.9.0` for world map) + Tailwind CSS
+- Dashboard sections: top stats bar, line graph, sources, pages, locations (world map), devices, behaviours
+- Ranked lists use `assets/js/dashboard/stats/bar.js` — a `<div>` with `width: ${(count / maxCount) * 100}%` and absolute positioning. Dead simple.
+- `MAX_ITEMS = 9` per list, `ROW_HEIGHT = 32px`, `ROW_GAP = 4px`
+- Public shared dashboards via `/share/:slug` — same dashboard, read-only
 
 **Counterscale** (2K⭐) — `packages/server/app/routes/dashboard.tsx`:
-- React + Recharts + React Router (Remix)
-- Dashboard sections: StatsCard (totals), TimeSeriesCard (line chart with `ComposedChart` using `Area` + `Line` for views/visitors overlay), PathsCard, ReferrerCard, CountryCard, BrowserCard, DeviceCard, UTM cards
-- Recharts `ComposedChart` with custom tooltip showing date, visitors, views, bounce rate
-- No public dashboard feature — admin-only behind `requireAuth()`
-- Bundle: very heavy — Recharts ~90KB gzipped, React ~45KB
+- React + Recharts (`recharts v2.13`) + React Router (Remix)
+- `ComposedChart` with `Area` + `Line` for views/visitors overlay
+- Custom tooltip: date, visitors, views, bounce rate
+- Admin-only behind `requireAuth()`
 
-**Key insight**: Both projects use React + heavy charting libraries because they're full-featured SaaS dashboards with multi-site, auth, filters, and drill-down. We're building a single transparent page on a personal blog. Different requirements, but we should not compromise on UX quality.
+**Key insight**: Both use React + heavy charting because they're multi-site SaaS dashboards. We're building one transparent page on a personal blog. Different requirements — but we should not compromise on UX quality.
 
 ### Chart Library Evaluation (Bundle Sizes Measured with esbuild)
 
-| Library | Stars | Min | Gzip | CSS (gzip) | Framework | Rendering | Dark mode |
-|---------|-------|-----|------|------------|-----------|-----------|-----------|
-| Chart.js | 66K | 200KB+ | ~65KB | — | Any | Canvas | JS color config |
-| Recharts | 24K | 300KB+ | ~90KB | — | React-only | SVG | React props |
-| D3 | 110K | 250KB+ | ~80KB | — | Any | SVG | CSS compatible |
-| uPlot | 9.9K | 52KB | 23KB | 772B | Any | Canvas | Destroy + recreate |
-| frappe-charts | 15K | 1MB | ~40KB | — | Any | SVG | — |
-| Hand-rolled SVG | — | ~1KB | ~0.5KB | 0 | None | SVG | CSS `currentColor` |
+| Library | Stars | Min (esbuild) | Gzip | CSS (gzip) | Rendering | Dark mode |
+|---------|-------|---------------|------|------------|-----------|-----------|
+| Chart.js | 66K | 200KB+ | ~65KB | — | Canvas | JS color config |
+| Recharts | 24K | 300KB+ | ~90KB | — | SVG (React-only) | React props |
+| D3 | 110K | 250KB+ | ~80KB | — | SVG | CSS compatible |
+| **uPlot** | **9.9K** | **52KB** | **23KB** | **772B** | **Canvas** | **Destroy + recreate** |
+| frappe-charts | 15K | 1MB | ~40KB | — | SVG | — |
+| Hand-rolled SVG | — | ~1KB | ~0.5KB | 0 | SVG | CSS `currentColor` |
 
-**Our current client JS is 1.2KB.** But this is the wrong frame of reference. The `/stats` page is a separate destination with its own purpose. The right question is: what's the right tool for a polished analytics dashboard, loaded only on that one page?
+### Per-Page Bundle Architecture (Verified with esbuild)
 
-### Per-Page Bundle Architecture
-
-The blog is SSG — each page is its own HTML file. The `/stats` page can load its own JS bundle that no other page loads:
+The blog is SSG — each page is its own HTML file. The `/stats` page loads its own JS bundle that no other page loads. **Tested and confirmed** — esbuild with 3 entry points (`main.ts`, `main.css`, `stats.ts`) produces 4 isolated output files:
 
 ```
 Every page loads:        main.js (1.2KB) + main.css
-Only /stats loads:       stats.js (includes chart lib if any) + stats-specific CSS
+Only /stats loads:       stats.js (52KB min / 23KB gz) + stats.css (1.7KB min / 768B gz)
 ```
 
-esbuild already uses an array of entry points. Adding `stats.ts` as a second entry produces a separate `stats.js` bundle. The `/stats` template includes `<script src="/stats.js">` — other pages don't. When the user navigates away from `/stats`, the browser GCs the entire stats module and chart library. Zero impact on blog reading experience.
+- `stats.ts` imports `uplot` + `uplot/dist/uPlot.min.css` + `../styles/stats.css`
+- esbuild merges all CSS imports into a single `stats.css` output
+- No cross-contamination between main and stats bundles
+- Navigate away from `/stats` → browser GCs the entire stats module
 
-This is the standard SSG pattern: page-specific scripts loaded via page-specific `<script>` tags. No dynamic `import()`, no router, no code splitting framework needed.
+### What We Need to Visualize
 
-### What We Actually Need to Visualize
-
-| Section | Data source | Needs chart? | Interaction needed |
-|---------|-------------|-------------|-------------------|
+| Section | Data source | Needs chart lib? | Interaction |
+|---------|-------------|-------------------|-------------|
 | Totals bar | `totals` | No — 3 numbers | None |
-| Daily trend | `by_day` (~30 pts) | **Yes** — line/area | Hover tooltip with date + values |
-| Top pages | `by_path` | No — ranked list | None (maybe click to filter) |
+| Daily trend | `by_day` (~30 pts) | **Yes** — area + line | Hover tooltip, cursor crosshair |
+| Top pages | `by_path` | No — ranked list | None |
 | Referrers | `by_referrer` | No — ranked list | None |
 | Countries | `by_country` | No — ranked list | None |
-| AI fetches | `totals.ai_fetches` | No — single number | None |
 
-Only the daily trend chart benefits from a charting library. Everything else is numbers and ranked lists — pure HTML/CSS with percentage-width bars (the same visual pattern Plausible uses for its tables).
+Only the daily trend chart benefits from a charting library. Everything else is numbers and ranked lists with percentage-width bars.
 
 ## Proposals
 
 ### Proposal A: Hand-Rolled SVG + Custom Tooltip
 
-Build the daily trend as an inline SVG with JavaScript-powered hover tooltips.
+SVG `<path>` for area, `<polyline>` for line, invisible `<rect>` overlays for hover, absolutely-positioned `<div>` tooltip.
 
-**How it works:**
-- SVG `<path>` for the area fill, `<polyline>` for the line
-- Invisible `<rect>` overlays per data point for hover detection
-- Absolutely-positioned `<div>` tooltip styled with CSS variables
-- ~50-80 lines of JS for the chart, ~30 lines for tooltip positioning
+- ✅ Zero deps, ~2-3KB total, SVG uses CSS `currentColor` (auto dark/light), printable, accessible (in DOM)
+- ❌ Must handle: empty data, single point, resize, axis labels, tooltip viewport boundaries, mobile touch
+- ❌ No cursor crosshair snap-to-point, no drag-to-zoom — would take 200+ lines to approximate poorly
 
-**Pros:**
-- Zero dependencies — consistent with the blog's philosophy
-- ~2-3KB total JS for the entire `/stats` page
-- SVG uses CSS `currentColor` and CSS variables — dark/light theme works automatically, no destroy/recreate
-- SVG is in the DOM — accessible to screen readers, printable, works in RSS
-- Full control over every pixel — matches the editorial aesthetic perfectly
+### Proposal B: uPlot ⭐
 
-**Cons:**
-- Must handle edge cases ourselves: empty data, single data point, resize, axis labels
-- No zoom/pan (acceptable for 30-90 data points)
-- No cursor crosshair snapping to nearest point (can be built but adds complexity)
-- Tooltip positioning edge cases (viewport boundaries, mobile)
+uPlot (9.9K⭐, MIT, v1.6.32, last push Feb 2026) for daily trend. Everything else HTML/CSS.
 
-**Bundle impact on /stats:** ~2-3KB JS
-**Bundle impact on other pages:** 0
+- ✅ Built-in cursor crosshair with snap-to-nearest-point
+- ✅ Built-in legend with live values on hover — no custom tooltip code
+- ✅ Drag-to-zoom for exploring date ranges
+- ✅ Handles all edge cases: empty data, single point, gaps, resize, retina
+- ✅ "No transitions or animations — they're always pure distractions" (README) — matches our aesthetic
+- ✅ "Smooth spline interpolation... strongly discouraged: Your data is misrepresented!" — evidence-based data viz philosophy
+- ✅ 23KB gzip + 772B CSS — smallest battle-tested time series library
+- ✅ 166K data points in 25ms. Our 30-90 points are instant.
+- ❌ Canvas: doesn't use CSS vars (need JS bridge via `getComputedStyle()`)
+- ❌ Canvas: not in DOM (mitigate with `aria-label` on container)
+- ❌ Canvas: blank in print (mitigate with `@media print` text fallback)
+- ❌ Theme switch: destroy + recreate (~5 lines JS)
 
-### Proposal B: uPlot (Battle-Tested, Minimal) ⭐
+### Proposal C: Chart.js
 
-Use uPlot (9.9K⭐, 23KB gzip) for the daily trend chart. Everything else stays as HTML/CSS.
-
-**How it works:**
-- uPlot renders a Canvas chart with built-in cursor, legend, and zoom
-- Loaded only on `/stats` via a separate `stats.js` entry point
-- Theme switching: read CSS variables via `getComputedStyle()`, pass as uPlot options. On theme toggle, destroy and recreate with new colors (~5 lines of JS).
-
-**Pros:**
-- Battle-tested: 9.9K stars, actively maintained, MIT license
-- Built-in cursor crosshair that snaps to nearest data point — polished UX out of the box
-- Built-in legend with live values on hover — no custom tooltip code needed
-- Zoom by drag-select — users can explore date ranges interactively
-- Handles all edge cases: empty data, single point, gaps, resize, retina displays
-- "No animations" is a design feature — matches our editorial aesthetic (the author explicitly rejects animations as "pure distractions")
-- 23KB gzip + 772B CSS — the smallest battle-tested time series chart library
-- Performance: renders 166K data points in 25ms. Our 30-90 points are instant.
-
-**Cons:**
-- Canvas-based — doesn't use CSS variables for colors (need JS bridge to read CSS vars and pass to uPlot config)
-- Canvas not in DOM — screen readers can't traverse the chart (mitigate with `aria-label` summary on container + the rest of the page is fully accessible HTML)
-- Canvas not printable — shows blank in print (mitigate with `@media print` CSS that shows a text summary instead)
-- Theme switching requires destroy + recreate (not just CSS toggle) — but this is ~5 lines of JS
-- Requires importing its CSS file (772 bytes gzipped — negligible)
-
-**Bundle impact on /stats:** ~24KB JS + CSS (uPlot) + ~2KB (our stats logic) = ~26KB
-**Bundle impact on other pages:** 0
-
-**Dark mode handling (verified approach):**
-```javascript
-function getChartColors() {
-  const s = getComputedStyle(document.documentElement);
-  return {
-    line: s.getPropertyValue('--color-link').trim(),
-    grid: s.getPropertyValue('--color-border').trim(),
-    text: s.getPropertyValue('--color-text-muted').trim(),
-    bg: s.getPropertyValue('--color-bg').trim(),
-  };
-}
-// On theme toggle: chart.destroy(); chart = new uPlot(opts(getChartColors()), data, el);
-```
-
-### Proposal C: Chart.js (Plausible's Choice)
-
-Use Chart.js (~65KB gzipped) for the daily trend chart.
-
-**Pros:**
-- Most popular (66K⭐), best documented, largest ecosystem
-- Plausible uses it — proven for analytics dashboards
-- Animations and transitions (though we'd disable them)
-
-**Cons:**
-- 65KB gzip — 2.8x larger than uPlot for the same result
-- Designed for complex multi-dataset charts with legends, tooltips, animations — we'd disable most features
-- Same Canvas limitations as uPlot (no CSS vars, not printable, not accessible)
-- More configuration surface area = more code to write
-
-**Bundle impact on /stats:** ~67KB
-**Bundle impact on other pages:** 0
+- ✅ Most popular (66K⭐), Plausible uses it
+- ❌ 65KB gzip — 2.8x larger than uPlot for the same result
+- ❌ Same Canvas limitations as uPlot
+- ❌ Designed for complex multi-dataset charts — we'd disable most features
 
 ## Decision
 
-**Proposal B (uPlot)** for the daily trend chart. Everything else is HTML/CSS with percentage-width bars.
+**Proposal B (uPlot)** for the daily trend chart. Everything else is HTML/CSS.
 
 ### Why uPlot Over Hand-Rolled SVG
 
-The blog's philosophy is zero-dependency where it makes sense — not zero-dependency as dogma. We chose `crypto.subtle` over `@noble/hashes` because the platform provides a better native solution. We chose raw D1 over Drizzle because we have 2 queries. But for interactive time series visualization, the platform provides nothing — we'd be reimplementing what uPlot already does well.
+Zero-dependency where it makes sense — not as dogma. We chose `crypto.subtle` over `@noble/hashes` because the platform provides a better native. We chose raw D1 over Drizzle because we have 2 queries. For interactive time series, the platform provides nothing. The cursor crosshair, snap-to-point, live legend, and drag-to-zoom are real UX features that would take 200+ lines of hand-rolled SVG to approximate worse.
 
-The cursor crosshair, snap-to-point, live legend values, and drag-to-zoom are real UX features that would take 200+ lines of hand-rolled SVG + JS to approximate, and the result would be worse. uPlot does it in 23KB with 10K stars of battle-testing.
-
-The key architectural guarantee: **uPlot loads only on `/stats`**. It's a separate esbuild entry point, included via a `<script>` tag only in the stats template. Blog posts, the homepage, and the about page never load it. Navigating away from `/stats` = the browser GCs the entire module.
+The architectural guarantee: **uPlot loads only on `/stats`**. Separate esbuild entry point, separate `<script>` tag, separate CSS. Blog posts never load it.
 
 ### Why uPlot Over Chart.js
 
-uPlot is 2.8x smaller (23KB vs 65KB) and philosophically aligned — its author explicitly rejects animations, stacked charts, and feature bloat. The README says: "In order to stay lean, fast and focused the following features will not be added: No transitions or animations — they're always pure distractions." That's our aesthetic.
+- 2.8x smaller (23KB vs 65KB)
+- Philosophically aligned — author explicitly rejects animations, stacked charts, spline interpolation
+- Exact quote: "No transitions or animations — they're always pure distractions."
+- Less configuration surface = less code to write
 
-### Anti-Patterns to Avoid
+## Anti-Patterns
 
-1. **❌ Loading chart library on every page**: The chart lib must be in a separate bundle loaded only on `/stats`. Never in `main.js`.
-2. **❌ Using React for a single page**: Counterscale's dashboard is React + Recharts (135KB+ gzip). We have vanilla JS and web components. Adding React for one page is architectural pollution.
-3. **❌ World map for 5 countries**: Plausible uses D3 + topojson (~80KB) for a choropleth map. A ranked list with flag emoji is better UX for <30 countries and costs 0 bytes.
-4. **❌ Animations on analytics charts**: uPlot's author and our aesthetic agree — animations on data visualization are distractions, not features.
-5. **❌ Client-side data processing**: All aggregation happens in D1 SQL. The client receives pre-aggregated JSON and renders it. No sorting, filtering, or grouping in the browser.
+1. **❌ Chart library in `main.js`**: Must be in separate `stats.js` entry point. Never in the shared bundle.
+2. **❌ React for one page**: Counterscale uses React + Recharts (135KB+ gz). Adding React for a single page is architectural pollution.
+3. **❌ World map for <30 countries**: Plausible uses D3 + topojson (~80KB) for a choropleth. A ranked list with flag emoji is better UX for small datasets and costs 0 bytes.
+4. **❌ Animations on data charts**: uPlot's author and our aesthetic agree — animations on data visualization are distractions.
+5. **❌ Client-side aggregation**: All aggregation happens in D1 SQL. Client receives pre-aggregated JSON and renders. No sorting/filtering/grouping in browser.
+6. **❌ CSS entry point for stats styles**: Don't add `stats.css` as a separate esbuild entry point — it conflicts with CSS extracted from `stats.ts` imports. Import all CSS from `stats.ts` and let esbuild merge.
+7. **❌ `<link>` and `<script>` in `<body>`**: While HTML5-valid, `<link rel="stylesheet">` in body risks FOUC. Use `pageShell`'s `head` param for correct `<head>` placement.
+8. **❌ Dynamic `import()` for code splitting**: Unnecessary complexity. SSG pages control their own `<script>` tags — that IS the code splitting. No router or framework needed.
+9. **❌ Importing `@nisli/core` signals in `stats.ts`**: Stats module should be framework-independent. Use `MutationObserver` on `data-theme` attribute to detect theme changes — decoupled from the signal system.
 
-### Gotchas
+## Gotchas
 
-1. **Canvas + dark mode**: uPlot uses Canvas API colors (strings), not CSS variables. Must read CSS vars via `getComputedStyle()` and pass to uPlot config. On theme toggle, destroy and recreate the chart instance. This is ~5 lines of JS but easy to forget.
+1. **Canvas + dark mode**: uPlot uses Canvas API colors (strings), not CSS variables. Must read CSS vars via `getComputedStyle(document.documentElement)` and pass to uPlot config. On theme toggle, destroy and recreate. The theme toggle sets `data-theme` attribute — detect with `MutationObserver(documentElement, { attributes: true, attributeFilter: ['data-theme'] })`.
 
-2. **Canvas + print**: Canvas renders blank in print. Add `@media print` CSS that hides the canvas and shows a text-based summary of the chart data instead.
+2. **Canvas + print**: Canvas renders blank in `@media print`. Add print CSS that hides the canvas container and shows a text summary instead.
 
-3. **Canvas + accessibility**: Canvas is opaque to screen readers. Add `role="img"` and `aria-label="Daily views chart: N views over the last 30 days"` on the container. The rest of the page (totals, tables) is fully accessible HTML.
+3. **Canvas + accessibility**: Canvas is opaque to screen readers. Add `role="img"` and `aria-label="Daily views: N total views, N visitors over the last 30 days"` on the chart container. The rest of the page (totals, ranked lists) is fully accessible HTML.
 
-4. **Country flag emoji edge cases**: Cloudflare returns non-standard 2-letter codes that aren't ISO 3166-1:
-   - `T1` — Tor exit node → show 🔒 "Tor"
-   - `XX` — Unknown → show 🌐 "Unknown"
-   - `A1` — Anonymous proxy → show 🔒 "Proxy"
-   - `A2` — Satellite provider → show 📡 "Satellite"
-   - `EU` — European Union (generic) → show 🇪🇺 (this one actually has a flag emoji)
-   - `AP` — Asia/Pacific (generic) → show 🌏 "Asia-Pacific"
-   Standard codes use the flag emoji conversion: `String.fromCodePoint(...[...code].map(c => 0x1F1E6 + c.charCodeAt(0) - 65))`
+4. **Canvas + dark mode cursor points**: uPlot issue #780 — cursor point fill defaults to white, looks wrong on dark backgrounds. Fix: explicitly set `cursor.points.fill` to read from series fill color. Verified fix in issue comments.
 
-5. **Empty state**: The blog is new — there will be days/periods with zero data. The dashboard must handle this gracefully, not show broken charts or empty tables. Show a friendly message: "No visitors yet for this period."
+5. **uPlot responsive resize**: uPlot requires explicit `width`/`height` — no auto-resize. Use `ResizeObserver` on the chart container, call `chart.setSize({ width: container.clientWidth, height: 300 })`. Use fixed height (300px) to avoid CSS layout issues (uPlot issue #1075 — flexbox/grid height calculation bugs).
 
-6. **Loading state**: The page loads as static HTML, then fetches `/api/stats`. There's a moment between page load and data arrival. Use CSS skeleton placeholders (animated gray bars) — pure CSS, no JS needed for the skeleton itself. Matches the editorial, polished feel.
+6. **uPlot data format**: Expects columnar arrays `[[timestamps], [views], [visitors]]`, not row objects. X-axis must be unix timestamps in **seconds** (not milliseconds). Transform: `new Date("2026-03-07").getTime() / 1000`. Arrays must have length ≥ 2.
 
-7. **uPlot CSS**: uPlot requires its own CSS file (`uPlot.min.css`, 772 bytes gzip). Import it in the stats-specific CSS or inline it in the stats template. Don't add it to `main.css` — it's only needed on `/stats`.
+7. **uPlot single data point**: Arrays must have length ≥ 2. If `by_day` has 0 or 1 entries, either skip the chart or pad with a zero-value entry for the previous day.
 
-### Best Practices
+8. **Country flag emoji edge cases**: Cloudflare returns non-ISO 2-letter codes:
+   - `T1` → Tor exit node → 🔒 "Tor"
+   - `XX` → Unknown → 🌐 "Unknown"
+   - `A1` → Anonymous proxy → 🔒 "Proxy"
+   - `A2` → Satellite provider → 📡 "Satellite"
+   - `EU` → European Union → 🇪🇺 (has a real flag emoji)
+   - `AP` → Asia/Pacific → 🌏 "Asia-Pacific"
+   - Standard codes: `String.fromCodePoint(...[...code].map(c => 0x1F1E6 + c.charCodeAt(0) - 65))`
 
-1. **✅ Separate entry point per page type**: `main.js` for all pages, `stats.js` for `/stats` only. esbuild builds both. Templates control which scripts load. This is the SSG equivalent of code splitting.
+9. **Empty state**: Blog is new — periods may have zero data. Show friendly message, not broken charts or empty tables.
 
-2. **✅ CSS variables as the theme bridge**: All colors defined as CSS custom properties. uPlot reads them via `getComputedStyle()`. Ranked list bars use `background: var(--color-surface)`. Everything adapts to dark/light automatically.
+10. **Loading state (FOUC)**: Page loads as static HTML, then fetches `/api/stats`. Use CSS skeleton placeholders (animated gray bars matching final layout dimensions). Pure CSS `@keyframes` shimmer. Replaced by real content when data arrives. No layout shift (good CLS).
 
-3. **✅ Percentage-width bars for ranked lists**: The same visual pattern Plausible uses for its page/source/country tables. Each row has a background `<div>` with `width: ${(value / maxValue) * 100}%`. Pure CSS, no chart library needed.
+11. **esbuild CSS merge**: When `stats.ts` imports both `uplot/dist/uPlot.min.css` and `../styles/stats.css`, esbuild merges them into a single `stats.css` output (verified: 768 bytes gzip total). Don't also add `stats.css` as a separate entry point — it would conflict.
 
-4. **✅ URL-based period selector**: `/stats?days=7`, `/stats?days=30`, `/stats?days=90`. Shareable, bookmarkable. Client JS reads `URLSearchParams` and passes to `/api/stats?days=N`. Default: 30 days.
+## Best Practices
+
+1. **✅ Separate entry point per page type**: `main.ts` for all pages, `stats.ts` for `/stats` only. Templates control which `<script>` tags load. This IS code splitting for SSG — no framework needed.
+
+2. **✅ CSS variables as the Canvas theme bridge**: Read `--color-link`, `--color-border`, `--color-text-muted`, `--color-bg` via `getComputedStyle()`. Pass as uPlot `stroke`, `fill`, axis `stroke`, grid `stroke`. On theme change, re-read and recreate.
+
+3. **✅ Percentage-width bars for ranked lists**: Same pattern as Plausible's `bar.js` — `<div>` with `width: ${(value / maxValue) * 100}%` and `background: var(--color-surface)`. Pure CSS, no chart library.
+
+4. **✅ URL-based period selector**: `/stats?days=7`, `/stats?days=30`, `/stats?days=90`. Shareable, bookmarkable. Client JS reads `URLSearchParams`, passes to `/api/stats?days=N`. Default: 30.
 
 5. **✅ Country code → flag emoji with fallback map**: Standard ISO codes get flag emoji via `String.fromCodePoint()`. Non-standard codes (T1, XX, A1, A2, AP) get a lookup table with descriptive emoji + label.
 
-6. **✅ Skeleton loading state**: CSS-only animated placeholders that match the final layout dimensions. Replaced by real content when data arrives. No layout shift (good CLS).
+6. **✅ Skeleton loading state**: CSS-only `@keyframes` shimmer on placeholder elements matching final layout. Replaced when data arrives. No layout shift.
 
-7. **✅ `cache-control: public, max-age=300`**: The `/api/stats` endpoint already returns 5-minute cache. The Cloudflare edge caches this — subsequent visitors within 5 minutes get the cached response with zero D1 reads.
+7. **✅ `MutationObserver` for theme changes**: Decoupled from `@nisli/core` signals. Stats module watches `data-theme` attribute on `<html>`. Framework-independent.
 
-## Implementation Plan
+8. **✅ Fixed chart height, responsive width**: Height 300px (fixed). Width from `container.clientWidth` via `ResizeObserver`. Avoids CSS layout calculation bugs with uPlot.
 
-### Page Sections (in order, top to bottom)
+9. **✅ `pageShell` head param**: Add optional `head?: string` to `pageShell()` for per-page `<link>` and `<script>` tags in `<head>`. Correct HTML semantics, no FOUC, reusable for future pages.
 
-1. **Header**: "Stats" title + period toggle (7d | 30d | 90d | all) as pill buttons
-2. **Totals bar**: 3 cards — Views | Unique Visitors | AI Fetches
-3. **Daily trend chart**: uPlot area+line chart — views (area fill) and visitors (line) over time, with cursor crosshair and live legend
-4. **Top pages**: Ranked list with percentage bars — path, views, visitors
-5. **Referrers**: Ranked list with percentage bars — referrer hostname, views
-6. **Countries**: Ranked list with flag emoji + percentage bars — country, views
-7. **Transparency note**: "This blog collects analytics without cookies, tracking, or fingerprinting. [How it works →](/the-agentic-product-engineer/)" (or link to a dedicated post about the analytics architecture)
+## Engineering Plan
 
-### File Structure
+### Files to Change (7 files, 2 new, 5 modified)
+
+**New files:**
+1. `packages/blog/src/templates/stats.ts` — HTML shell with skeleton placeholders
+2. `packages/blog/src/client/stats.ts` — fetch `/api/stats`, render uPlot chart + ranked lists
+
+**Modified files:**
+3. `packages/blog/src/styles/main.css` — add stats-specific CSS (totals grid, ranked list bars, skeleton shimmer)
+4. `packages/blog/src/templates/page.ts` — add optional `head` param + "Stats" link in sidebar nav
+5. `packages/blog/src/pipeline/build.ts` — import `statsTemplate`, generate `/stats` page, add `STATS_ENTRY` to esbuild
+6. `packages/blog/src/lib/paths.ts` — add `STATS_ENTRY` constant
+7. `packages/blog/package.json` — add `uplot` dependency
+
+### Build Order (dependency chain)
 
 ```
-packages/blog/src/
-  client/
-    main.ts              ← existing, loaded on all pages (1.2KB)
-    stats.ts             ← NEW, loaded only on /stats (~2KB + uPlot 23KB)
-  templates/
-    stats.ts             ← NEW, static HTML shell with skeleton placeholders
-  styles/
-    main.css             ← existing, shared styles
-    stats.css            ← NEW, stats-specific styles (bars, skeleton, layout)
+Step 1: npm install uplot
+Step 2: paths.ts — add STATS_ENTRY constant
+Step 3: page.ts — add head param + Stats nav link
+Step 4: stats.ts (template) — HTML shell with skeletons
+Step 5: stats.css rules in main.css — totals, bars, skeleton shimmer
+Step 6: stats.ts (client) — fetch, transform, render uPlot + lists
+Step 7: build.ts — wire up stats page generation + stats entry point
+Step 8: pnpm run build && verify
+Step 9: pnpm wrangler deploy
 ```
 
-### Build Pipeline Changes
+### stats.ts (client) — Module Structure
 
-```typescript
-// In bundleClient():
-await esbuild({
-  entryPoints: [CLIENT_ENTRY, STATS_ENTRY, STYLES_SRC, STATS_CSS],
-  // ... same config
-});
+```
+1. Imports: uPlot, uPlot CSS, stats CSS
+2. Types: StatsResponse interface (matches API)
+3. Constants: chart colors from CSS vars, special country codes map
+4. fetch(): GET /api/stats?days=N, parse JSON
+5. transformForUPlot(): row objects → columnar arrays with unix timestamps
+6. renderTotals(): populate 3 number cards
+7. renderChart(): create uPlot instance with area (views) + line (visitors)
+8. renderList(): generic ranked list renderer (used for pages, referrers, countries)
+9. init(): read URLSearchParams, fetch, render all sections, setup ResizeObserver + MutationObserver
 ```
 
-The stats template includes:
+### uPlot Configuration (distilled)
+
+```
+Data format:  [[ts1, ts2, ...], [views1, views2, ...], [visitors1, visitors2, ...]]
+              Timestamps in seconds. Arrays length ≥ 2.
+Series 0:     x-axis (timestamps) — auto-formatted by uPlot
+Series 1:     Views — area fill (stroke: --color-link, fill: --color-link @ 0.15 opacity)
+Series 2:     Visitors — line only (stroke: --color-text-muted, no fill)
+Axes:         x: date labels. y: integer counts.
+Grid:         stroke: --color-border
+Cursor:       crosshair enabled, snap to nearest point
+Legend:        inline, live values on hover
+Resize:       ResizeObserver → chart.setSize({ width: container.clientWidth, height: 300 })
+Theme:        MutationObserver on data-theme → destroy + new uPlot(opts, data, el)
+```
+
+### Ranked List HTML Pattern (distilled)
+
 ```html
-<link rel="stylesheet" href="/stats.css">
-<script type="module" src="/stats.js"></script>
+<!-- Same visual pattern as Plausible's bar.js -->
+<div class="stats-row">
+  <div class="stats-bar" style="width: 75%"></div>
+  <span class="stats-label">/the-agentic-product-engineer/</span>
+  <span class="stats-value">15</span>
+</div>
 ```
-
-Other templates don't. Clean separation.
-
-### Open Questions (Resolved)
-
-1. **Separate JS bundle or inline?** → Separate `stats.js`. It includes uPlot (23KB) — too large to inline. Loaded only on `/stats` via `<script>` tag.
-2. **Period selector: URL-based or client-side?** → URL-based (`/stats?days=30`). Shareable, bookmarkable. Client JS reads `URLSearchParams`.
-3. **Country flag emoji edge cases?** → Lookup table for non-standard codes (T1, XX, A1, A2, AP). Standard codes use `String.fromCodePoint()`.
-4. **Empty state?** → Friendly message: "No visitors yet for this period." Chart shows flat line at 0.
-5. **Cache TTL?** → 5 minutes (`max-age=300`). Already set in `/api/stats`. Good balance between freshness and D1 read efficiency.
-6. **Loading state?** → CSS skeleton placeholders. Animated gray bars matching final layout. Pure CSS.
+- Bar: absolute-positioned `<div>`, `width` as percentage of max value, `background: var(--color-surface)`
+- Label + value overlaid on top via relative positioning
+- Max items: 10 per list (Plausible uses 9)
 
 ## References
 
 - ADR-0004: Analytics — the data collection layer this dashboard consumes
-- [uPlot](https://github.com/leeoniya/uPlot) — 9.9K⭐, 23KB gzip, MIT. "A small, fast chart for time series"
-- [uPlot demos](https://leeoniya.github.io/uPlot/demos/index.html) — interactive examples
-- [Plausible public dashboard](https://plausible.io/plausible.io) — public example (React + Chart.js + D3)
-- [Counterscale dashboard](https://github.com/benvinegar/counterscale) — admin-only (React + Recharts)
-- [Country code to flag emoji](https://dev.to/jorik/country-code-to-flag-emoji-3ol9) — `String.fromCodePoint(...[...code].map(c => 0x1F1E6 + c.charCodeAt(0) - 65))`
-- [Cloudflare `request.cf` properties](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties) — country codes including non-standard T1, XX
+- [uPlot](https://github.com/leeoniya/uPlot) — 9.9K⭐, 23KB gz, MIT, v1.6.32, last push 2026-02-26
+- [uPlot area-fill demo](https://github.com/leeoniya/uPlot/blob/master/demos/area-fill.html) — our chart pattern
+- [uPlot issue #780](https://github.com/leeoniya/uPlot/issues/780) — dark mode cursor point fix
+- [uPlot issue #1075](https://github.com/leeoniya/uPlot/issues/1075) — responsive resize gotchas
+- [Plausible bar.js](https://github.com/plausible/analytics/blob/master/assets/js/dashboard/stats/bar.js) — percentage-width bar pattern we adopt
+- [Plausible public dashboard](https://plausible.io/plausible.io) — public example
+- [Counterscale dashboard](https://github.com/benvinegar/counterscale/blob/main/packages/server/app/routes/dashboard.tsx) — React + Recharts reference
+- [Country code to flag emoji](https://dev.to/jorik/country-code-to-flag-emoji-3ol9) — conversion formula
