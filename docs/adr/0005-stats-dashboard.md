@@ -202,61 +202,85 @@ The architectural guarantee: **uPlot loads only on `/stats`**. Separate esbuild 
 
 ## Engineering Plan
 
-### Files to Change (7 files, 2 new, 5 modified)
+### Files to Change (7 files, 3 new, 4 modified)
 
 **New files:**
-1. `packages/blog/src/templates/stats.ts` — HTML shell with skeleton placeholders
+1. `packages/blog/src/templates/stats.ts` — HTML shell with skeleton placeholders, period pill buttons
 2. `packages/blog/src/client/stats.ts` — fetch `/api/stats`, render uPlot chart + ranked lists
+3. `packages/blog/src/styles/stats.css` — totals grid, ranked list bars, skeleton shimmer, period pills
 
 **Modified files:**
-3. `packages/blog/src/styles/main.css` — add stats-specific CSS (totals grid, ranked list bars, skeleton shimmer)
-4. `packages/blog/src/templates/page.ts` — add optional `head` param + "Stats" link in sidebar nav
+4. `packages/blog/src/templates/page.ts` — add optional `head` param + "Stats" link in sidebar nav (after About, before posts)
 5. `packages/blog/src/pipeline/build.ts` — import `statsTemplate`, generate `/stats` page, add `STATS_ENTRY` to esbuild
 6. `packages/blog/src/lib/paths.ts` — add `STATS_ENTRY` constant
-7. `packages/blog/package.json` — add `uplot` dependency
+7. `packages/blog/package.json` — add `uplot` as devDependency (bundled at build time, not runtime)
+
+**Not modified:** `main.css` — stats styles live in `stats.css`, imported from `stats.ts`, extracted by esbuild into `dist/stats.css`. Zero impact on other pages.
 
 ### Build Order (dependency chain)
 
 ```
-Step 1: npm install uplot
-Step 2: paths.ts — add STATS_ENTRY constant
-Step 3: page.ts — add head param + Stats nav link
-Step 4: stats.ts (template) — HTML shell with skeletons
-Step 5: stats.css rules in main.css — totals, bars, skeleton shimmer
-Step 6: stats.ts (client) — fetch, transform, render uPlot + lists
-Step 7: build.ts — wire up stats page generation + stats entry point
-Step 8: pnpm run build && verify
+Step 1: pnpm add -D uplot                          (package.json)
+Step 2: paths.ts — add STATS_ENTRY constant         (no deps)
+Step 3: page.ts — add head param + Stats nav link   (no deps)
+Step 4: stats.css — totals, bars, skeleton, pills   (no deps)
+Step 5: stats.ts (template) — HTML shell            (depends on page.ts head param)
+Step 6: stats.ts (client) — fetch + render          (depends on uplot, stats.css)
+Step 7: build.ts — wire up generation + entry point (depends on template, paths)
+Step 8: pnpm run build && verify locally
 Step 9: pnpm wrangler deploy
 ```
 
 ### stats.ts (client) — Module Structure
 
 ```
-1. Imports: uPlot, uPlot CSS, stats CSS
-2. Types: StatsResponse interface (matches API)
-3. Constants: chart colors from CSS vars, special country codes map
-4. fetch(): GET /api/stats?days=N, parse JSON
-5. transformForUPlot(): row objects → columnar arrays with unix timestamps
-6. renderTotals(): populate 3 number cards
-7. renderChart(): create uPlot instance with area (views) + line (visitors)
-8. renderList(): generic ranked list renderer (used for pages, referrers, countries)
-9. init(): read URLSearchParams, fetch, render all sections, setup ResizeObserver + MutationObserver
+1. Imports: uPlot, uPlot CSS, stats.css
+2. Types: StatsResponse (matches API shape)
+3. Constants: special country codes map (T1→🔒, XX→🌐, etc.)
+4. getColors(): read CSS vars via getComputedStyle → uPlot color config
+5. fetchStats(days): GET /api/stats?days=N → StatsResponse (with error handling)
+6. toUPlotData(by_day): row objects → [[timestamps], [views], [visitors]] (seconds, length ≥ 2)
+7. renderTotals(totals): populate 3 number cards, remove skeleton class
+8. renderChart(by_day, container): create uPlot, setup ResizeObserver
+9. renderList(data, container, labelFn): generic ranked list (pages, referrers, countries)
+10. countryLabel(code): flag emoji + name, with fallback map for non-ISO codes
+11. init():
+    - Read ?days from URLSearchParams (default 30)
+    - Highlight active period pill
+    - fetchStats → render all sections (or show error)
+    - Setup MutationObserver on data-theme → recreate chart
+    - Setup period pill click handlers → pushState + re-fetch (no page reload)
+    - Setup popstate listener (back button)
+```
+
+### Period Selector Behavior
+
+```
+Template renders:  <button data-days="7">7d</button> <button data-days="30">30d</button>
+                   <button data-days="90">90d</button> <button data-days="3650">All</button>
+stats.ts:          Reads ?days from URL, adds 'active' class to matching button
+Click handler:     history.pushState({}, '', '?days=N') → re-fetch → re-render
+Back button:       window.addEventListener('popstate', () => re-read URL → re-fetch)
+Default:           30 days (no ?days param)
+"All" period:      days=3650 (API already handles this — returns all data)
 ```
 
 ### uPlot Configuration (distilled)
 
 ```
 Data format:  [[ts1, ts2, ...], [views1, views2, ...], [visitors1, visitors2, ...]]
-              Timestamps in seconds. Arrays length ≥ 2.
-Series 0:     x-axis (timestamps) — auto-formatted by uPlot
+              Timestamps in unix seconds. Arrays length ≥ 2 (pad if single day).
+Series 0:     x-axis (timestamps) — auto-formatted by uPlot as dates
 Series 1:     Views — area fill (stroke: --color-link, fill: --color-link @ 0.15 opacity)
 Series 2:     Visitors — line only (stroke: --color-text-muted, no fill)
 Axes:         x: date labels. y: integer counts.
 Grid:         stroke: --color-border
 Cursor:       crosshair enabled, snap to nearest point
+              points.fill: explicitly set for dark mode (issue #780)
 Legend:        inline, live values on hover
-Resize:       ResizeObserver → chart.setSize({ width: container.clientWidth, height: 300 })
-Theme:        MutationObserver on data-theme → destroy + new uPlot(opts, data, el)
+Width:        container.clientWidth (via ResizeObserver)
+Height:       300px fixed (avoids flexbox bugs — issue #1075)
+Theme:        MutationObserver on data-theme → getColors() → destroy + recreate
 ```
 
 ### Ranked List HTML Pattern (distilled)
@@ -269,9 +293,26 @@ Theme:        MutationObserver on data-theme → destroy + new uPlot(opts, data,
   <span class="stats-value">15</span>
 </div>
 ```
-- Bar: absolute-positioned `<div>`, `width` as percentage of max value, `background: var(--color-surface)`
+- Bar: absolute-positioned `<div>`, `width: ${(value / maxValue) * 100}%`, `background: var(--color-surface)`
 - Label + value overlaid on top via relative positioning
 - Max items: 10 per list (Plausible uses 9)
+- Empty state: "No data for this period" message instead of empty table
+
+### Error Handling
+
+- Fetch failure (network, 500, timeout): show "Unable to load stats. Try refreshing." in content area
+- Empty data (0 views): show totals as 0, chart as flat line, lists show "No data for this period"
+- Single data point: pad `by_day` with a zero-value entry for the previous day (uPlot needs length ≥ 2)
+
+### CSS Loading Sequence (verified)
+
+```
+1. Browser requests /stats/index.html
+2. <head> contains: <link href="/main.css"> + <link href="/stats.css"> + <script src="/stats.js" type="module">
+3. CSS loads first (render-blocking) → skeleton placeholders visible with shimmer animation
+4. JS loads (deferred, type="module") → fetches /api/stats → replaces skeletons with data
+5. No FOUC, no layout shift — skeleton dimensions match final layout
+```
 
 ## References
 
