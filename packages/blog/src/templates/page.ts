@@ -10,6 +10,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   ogImage?: string;
   head?: string;
 }) {
+  const canonical = currentSlug ? `https://gkoreli.com/${currentSlug}/` : 'https://gkoreli.com/';
   return html`<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,9 +18,11 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} — Goga Koreli</title>
   <meta name="description" content="${description}">
+  <link rel="canonical" href="${canonical}">
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
   <meta property="og:type" content="article">
+  <meta property="og:url" content="${canonical}">
   ${ogImage ? html`<meta property="og:image" content="https://gkoreli.com${ogImage}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://gkoreli.com${ogImage}">` : ''}

@@ -70,7 +70,7 @@ export async function buildHTML(): Promise<void> {
 
     if (prompts) {
       const promptsBody = promptsTemplate(post.meta, prompts);
-      const promptsPage = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), posts: sortedPosts, currentSlug: post.meta.slug });
+      const promptsPage = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), posts: sortedPosts, currentSlug: `${post.meta.slug}/prompts` });
       writeOutput(`${post.meta.slug}/prompts`, promptsPage.toString());
     }
   }
