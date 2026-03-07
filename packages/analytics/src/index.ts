@@ -81,6 +81,9 @@ export async function handleEvent(request: Request, env: Env, ctx?: ExecutionCon
   return new Response(null, { status: 204 });
 }
 
+/** Max days lookback — prevents integer overflow in Date math. 0 = all time. */
+const MAX_DAYS = 365;
+
 /**
  * Handle GET /api/stats — public analytics JSON.
  */
@@ -88,7 +91,7 @@ export async function handleStats(request: Request, env: Env): Promise<Response>
   const url = new URL(request.url);
   const raw = url.searchParams.get('days');
   const q: StatsQuery = {
-    days: raw !== null ? Math.max(0, Math.min(3650, Number(raw) || 0)) : 30,
+    days: raw !== null ? Math.max(0, Math.min(MAX_DAYS, Number(raw) || 0)) : 30,
     path: url.searchParams.get('path') ?? undefined,
   };
 

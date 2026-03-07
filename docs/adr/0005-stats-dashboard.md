@@ -88,7 +88,7 @@ Every page:      main.js  13.1KB / 4.6KB gz    main.css  10.0KB / 2.4KB gz
 
 ### Dashboard Sections
 
-1. **Header + period pills** — 7d | 30d | 90d | All. `pushState` + re-fetch on click (no page reload). Back button works via `popstate`. Default: 30d. "All" = `days=3650`.
+1. **Header + period pills** — 7d | 30d | 90d | All. `pushState` + re-fetch on click (no page reload). Back button works via `popstate`. Default: 30d. "All" = `days=0` (server queries all data, derives period start from earliest record).
 2. **Totals bar** — 3 cards: Views, Visitors, AI Reads. Skeleton → number on load.
 3. **Daily trend chart** — uPlot area (views, filled) + line (visitors). Cursor crosshair, live legend, drag-to-zoom.
 4. **Top Pages** — ranked list with percentage-width bars, max 10 items.
@@ -187,7 +187,11 @@ Standard ISO codes: `String.fromCodePoint(...[...code].map(c => 0x1F1E6 + c.char
 
 ### "All Time" Period
 
-API accepts `?days=N` with no "all" option. `days=3650` (10 years) effectively returns all data for a blog that's days old. No API change needed.
+`days=0` means "all time". The server uses `since = '1970-01-01'` (catches everything), then derives `period.start` from the earliest actual `by_day` entry. The client sends `?days=0` and the URL shows `?days=0` — clean and intentional.
+
+Earlier design used `days=3650` (10 years) as a hack. This produced a misleading period display ("2016 → 2026" for a blog that's days old) and a meaningless URL. The `days=0` approach is semantically correct — 0 means "no lookback limit".
+
+Server clamps input to `0..365` via `MAX_DAYS` constant. Any value outside this range (negative, huge, NaN) is clamped. `days=0` bypasses the lookback entirely.
 
 ### esbuild CSS Merge Behavior
 
@@ -211,19 +215,19 @@ When `stats.ts` imports both `uplot/dist/uPlot.min.css` and `../styles/stats.css
 
 ## Ranked List Pattern (Reusable)
 
-The same 10-line renderer handles pages, referrers, and countries:
+The same renderer handles pages, referrers, and countries:
 ```typescript
 function renderList(items: { label: string; value: number }[], containerId: string) {
   const max = items[0].value;
   for (const item of items.slice(0, 10)) {
     const pct = max > 0 ? (item.value / max) * 100 : 0;
     row.innerHTML = `<div class="stats-bar" style="width:${pct}%"></div>
-      <span class="stats-label">${item.label}</span>
+      <span class="stats-label">${esc(item.label)}</span>
       <span class="stats-value">${item.value.toLocaleString()}</span>`;
   }
 }
 ```
-CSS: `.stats-bar` is `position: absolute; inset: 0; background: var(--color-surface)`. Label and value are `position: relative; z-index: 1` — overlaid on top of the bar. `font-variant-numeric: tabular-nums` aligns numbers.
+All labels are HTML-escaped via `esc()` — defense in depth against stored XSS (see Post-Deploy Hardening). CSS: `.stats-bar` is `position: absolute; inset: 0; background: var(--color-surface)`. Label and value are `position: relative; z-index: 1` — overlaid on top of the bar. `font-variant-numeric: tabular-nums` aligns numbers.
 
 ## What the Plan Got Wrong
 
@@ -243,13 +247,13 @@ The fix is the same in both places: check for parameter presence explicitly, don
 ```typescript
 // ❌ Broken: 0 is falsy
 Number(params.get('days')) || 30
-// ✅ Fixed: explicit null check
+// ✅ Fixed (client): explicit presence check
 params.has('days') ? Number(params.get('days')) : 30
-// ✅ Also fixed (server): null check + clamp
-raw !== null ? Math.max(0, Math.min(3650, Number(raw) || 0)) : 30
+// ✅ Fixed (server): null check + clamp + || 0 (not || 30)
+raw !== null ? Math.max(0, Math.min(MAX_DAYS, Number(raw) || 0)) : 30
 ```
 
-**Lesson**: `||` for default values is a JS footgun when `0`, `""`, or `false` are valid inputs. Use `??` for nullish coalescing, or explicit null checks. This is a well-known pattern but easy to miss in the flow of writing code.
+**Lesson**: `||` for default values is a JS footgun when `0`, `""`, or `false` are valid inputs. Use `??` for nullish coalescing, or explicit null checks. The `|| 0` in the server fix is safe because `NaN || 0 = 0` (all-time), which is a reasonable fallback for garbage input.
 
 ### XSS via `innerHTML` (stored XSS)
 
@@ -288,6 +292,30 @@ async function load(days: number) {
 `showError()` cleared `stats-totals` innerHTML, destroying the card structure. After an error, switching to a different period couldn't render totals because `querySelector('.stats-card')` found nothing. Fixed by only clearing chart and list sections, preserving the totals card skeleton.
 
 **Lesson**: Error states should be recoverable. Don't destroy DOM structure that other code depends on for re-rendering.
+
+## Intentional Design Decisions
+
+Decisions that look like issues but are deliberate.
+
+### `StatsResponse` Type Duplicated (Server + Client)
+
+The `StatsResponse` interface exists in both `packages/analytics/src/stats.ts` (server, canonical) and `packages/blog/src/client/stats.ts` (client, copy). The client can't import from the analytics package — it's a browser module, analytics is a server package. The type is a contract between the API and the client. If the API shape changes, the client copy must be updated manually. This is acceptable for a single-consumer API. A shared types package would be overengineering.
+
+### Timestamps Use Local Time, Not UTC
+
+`toUPlotData` creates timestamps via `new Date(date + 'T00:00:00')` — no timezone suffix, so JavaScript interprets it as local time. This means the timestamp is shifted by the user's timezone offset (up to ±12 hours from UTC). For daily-granularity charts, this is invisible — uPlot formats dates in local time, so the labels are correct. For hourly data, this would be a bug. If we ever add hourly granularity, append `Z` for UTC.
+
+### Client `getDays()` Doesn't Clamp
+
+The client reads `?days=` from the URL without clamping. `?days=-5` sends `-5` to the server, which clamps it to `0` (all-time). The UI shows no pill highlighted (no button matches `-5`), which is slightly confusing but only happens when users manually edit the URL. The server is the authority on input validation — the client trusts it.
+
+### Server `MAX_DAYS = 365` Clamp
+
+The server clamps `days` to `0..365`. This prevents absurd lookback windows (`days=999999` → year -717) that would produce meaningless date math. `days=0` bypasses the lookback entirely (all-time). The `365` limit is arbitrary but reasonable — no analytics question requires "exactly 547 days of data." The valid client options are 0, 7, 30, 90.
+
+### Area Fill Uses `hexToFill()`, Not Hex Append
+
+The area fill color is `rgba(r,g,b,0.15)` computed from the CSS variable's hex value. The earlier approach (`c.link + '26'` for 8-digit hex) was fragile — it assumed CSS variables are always `#rrggbb` format. `getComputedStyle` returns the raw value as written in the stylesheet. If the stylesheet ever changed to `rgb()` notation, the hex append would silently produce an invalid color string. `hexToFill()` explicitly parses the hex and constructs `rgba()`. The `getColors()` helper already calls `.trim()` on the raw value, so leading whitespace from `getComputedStyle` is handled.
 
 ## References
 
