@@ -38,7 +38,11 @@ function geo(cf: IncomingRequestCfProperties | undefined) {
  */
 export async function handleEvent(request: Request, env: Env, ctx?: ExecutionContext): Promise<Response> {
   const body = await request.json().catch(() => null) as { path?: string } | null;
-  if (!body?.path) return new Response(null, { status: 400 });
+  if (!body?.path || typeof body.path !== 'string') return new Response(null, { status: 400 });
+
+  // Sanitize path: must start with /, strip query/hash, cap length
+  const rawPath = body.path.split(/[?#]/)[0];
+  if (!rawPath.startsWith('/') || rawPath.length > 500) return new Response(null, { status: 400 });
 
   const ua = request.headers.get('user-agent');
   const ip = request.headers.get('cf-connecting-ip') ?? '0.0.0.0';
@@ -51,7 +55,7 @@ export async function handleEvent(request: Request, env: Env, ctx?: ExecutionCon
   const isOwner = ownerIps.includes(ip) ? 1 : 0;
 
   const pv: PageView = {
-    path: body.path,
+    path: rawPath,
     referrer: cleanReferrer(request.headers.get('referer'), new URL(request.url).hostname),
     country,
     city,
@@ -82,8 +86,9 @@ export async function handleEvent(request: Request, env: Env, ctx?: ExecutionCon
  */
 export async function handleStats(request: Request, env: Env): Promise<Response> {
   const url = new URL(request.url);
+  const raw = url.searchParams.get('days');
   const q: StatsQuery = {
-    days: Number(url.searchParams.get('days')) || 30,
+    days: raw !== null ? Math.max(0, Math.min(3650, Number(raw) || 0)) : 30,
     path: url.searchParams.get('path') ?? undefined,
   };
 

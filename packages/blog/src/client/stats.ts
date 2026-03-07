@@ -46,6 +46,12 @@ function getDays(): number {
   return p.has('days') ? Number(p.get('days')) : 30;
 }
 
+function hexToFill(hex: string, alpha: number): string {
+  // Convert #rrggbb to rgba() — works regardless of CSS var format
+  const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
 function esc(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
@@ -108,7 +114,7 @@ function renderChart(byDay: StatsResponse['by_day'], totals: StatsResponse['tota
     ],
     series: [
       {},
-      { label: 'Views', stroke: c.link, fill: c.link + '26', width: 2 },
+      { label: 'Views', stroke: c.link, fill: hexToFill(c.link, 0.15), width: 2 },
       { label: 'Visitors', stroke: c.muted, width: 2 },
     ],
     cursor: {
@@ -164,6 +170,7 @@ function showError() {
 // --- Init ---
 
 let currentData: StatsResponse | null = null;
+let loadId = 0; // monotonic counter to discard stale responses
 
 function highlightPill(days: number) {
   document.querySelectorAll('.stats-pills button').forEach(b => {
@@ -173,10 +180,16 @@ function highlightPill(days: number) {
 
 async function load(days: number) {
   highlightPill(days);
+  const id = ++loadId;
   try {
-    currentData = await fetchStats(days);
+    const data = await fetchStats(days);
+    if (id !== loadId) return; // stale response — a newer request superseded this one
+    currentData = data;
     renderAll(currentData, days);
-  } catch { showError(); }
+  } catch {
+    if (id !== loadId) return;
+    showError();
+  }
 }
 
 // Period pill clicks — pushState + re-fetch
