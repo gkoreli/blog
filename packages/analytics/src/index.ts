@@ -1,0 +1,91 @@
+import { classifyVisitor } from './classify.js';
+import { recordPageView, type Env, type PageView } from './db.js';
+import { dailySalt, visitorHash } from './hash.js';
+import { queryStats, type StatsQuery } from './stats.js';
+
+export { VisitorType } from './classify.js';
+export type { Env } from './db.js';
+export type { StatsResponse, StatsQuery } from './stats.js';
+
+/** Clean referrer: strip query params, remove self-referrals */
+function cleanReferrer(raw: string | null, selfHost: string): string | null {
+  if (!raw) return null;
+  try {
+    const url = new URL(raw);
+    if (url.hostname === selfHost) return null;
+    return url.hostname + url.pathname;
+  } catch {
+    return null;
+  }
+}
+
+/** Extract CF geo from request.cf */
+function geo(cf: IncomingRequestCfProperties | undefined) {
+  return {
+    country: (cf?.country as string) ?? null,
+    city: (cf?.city as string) ?? null,
+    continent: (cf?.continent as string) ?? null,
+  };
+}
+
+/**
+ * Handle POST /api/event — record a page view.
+ * Called from client beacon script.
+ */
+export async function handleEvent(request: Request, env: Env): Promise<Response> {
+  const body = await request.json().catch(() => null) as { path?: string } | null;
+  if (!body?.path) return new Response(null, { status: 400 });
+
+  const ua = request.headers.get('user-agent');
+  const ip = request.headers.get('cf-connecting-ip') ?? '0.0.0.0';
+  const cf = (request as { cf?: IncomingRequestCfProperties }).cf;
+  const { country, city, continent } = geo(cf);
+
+  const visitorType = classifyVisitor(ua);
+  const hash = await visitorHash(ip, ua ?? '', dailySalt());
+  const ownerIps = env.OWNER_IPS?.split(',').map(s => s.trim()) ?? [];
+  const isOwner = ownerIps.includes(ip) ? 1 : 0;
+
+  const pv: PageView = {
+    path: body.path,
+    referrer: cleanReferrer(request.headers.get('referer'), new URL(request.url).hostname),
+    country,
+    city,
+    continent,
+    visitor_hash: hash,
+    visitor_type: visitorType,
+    is_owner: isOwner,
+  };
+
+  // Fire-and-forget: don't block the response on D1 write.
+  // Workers runtime keeps the isolate alive for waitUntil promises.
+  const ctx = (globalThis as unknown as { ctx?: ExecutionContext }).ctx;
+  if (ctx) {
+    ctx.waitUntil(recordPageView(env.DB, pv));
+  } else {
+    await recordPageView(env.DB, pv);
+  }
+
+  return new Response(null, { status: 204 });
+}
+
+/**
+ * Handle GET /api/stats — public analytics JSON.
+ */
+export async function handleStats(request: Request, env: Env): Promise<Response> {
+  const url = new URL(request.url);
+  const q: StatsQuery = {
+    days: Number(url.searchParams.get('days')) || 30,
+    path: url.searchParams.get('path') ?? undefined,
+  };
+
+  const stats = await queryStats(env.DB, q);
+
+  return new Response(JSON.stringify(stats), {
+    headers: {
+      'content-type': 'application/json',
+      'cache-control': 'public, max-age=300',
+      'access-control-allow-origin': '*',
+    },
+  });
+}

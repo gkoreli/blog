@@ -201,16 +201,41 @@ Evaluated and rejected.
 1. ✅ **Done**: Migrate to Cloudflare Workers
 2. ✅ **Done**: Cloudflare Web Analytics enabled (basic signal, performance monitoring)
 3. **Phase 1**: Worker script + D1 — log page views with owner exclusion
+   - ✅ Create `packages/analytics` — decoupled, zero-dep analytics library
    - Create D1 database via `wrangler d1 create blog-analytics`
-   - Add `main` entry point and D1 binding to `wrangler.jsonc`
-   - Write Worker script at `src/worker/index.ts`
+   - Add `main` entry point and D1 binding to `wrangler.jsonc` ✅
+   - Write Worker script at `packages/blog/src/worker/index.ts` ✅
    - Add lightweight beacon `<script>` to page template (~200 bytes)
    - Run schema migration via `wrangler d1 execute`
 4. **Phase 2**: `/stats` page — public dashboard on the blog
-   - `/api/stats` Worker endpoint: queries D1, returns JSON
+   - `/api/stats` Worker endpoint: queries D1, returns JSON ✅ (in analytics lib)
    - `/stats` static page: fetches `/api/stats`, renders charts
    - Metrics: total visitors, page views, top posts, referrers, countries, daily trend
+   - AI agent traffic section: "This article was also fetched by N AI agents"
 5. **Phase 3**: Iterate — bot filtering improvements, reading patterns, trend charts
+
+### Package Architecture
+
+The analytics library lives in `packages/analytics` — a separate workspace package, decoupled from the blog:
+
+```
+packages/
+  analytics/          ← @gkoreli/analytics — framework-agnostic, zero runtime deps
+    src/
+      classify.ts     ← visitor_type enum: human (0), bot (1), AI agent (2)
+      hash.ts         ← daily-salted SHA-256 visitor hash
+      db.ts           ← D1 types and INSERT
+      stats.ts        ← batched D1 queries for /api/stats
+      index.ts        ← handleEvent() + handleStats() — the public API
+    schema.sql        ← D1 migration
+  blog/               ← @gkoreli/blog — depends on @gkoreli/analytics
+    src/worker/
+      index.ts        ← thin Worker entry point, delegates to analytics lib
+```
+
+**Dependency direction**: `blog → analytics` (never the reverse). The analytics package has zero runtime dependencies — only `@cloudflare/workers-types` as a dev dependency. Any static site on Cloudflare Workers could use it by importing `handleEvent` and `handleStats`.
+
+**Why decoupled**: This could eventually become `@nisli/analytics` — a reusable micro-library for any static site on Cloudflare Workers + D1. The blog is just the first consumer.
 
 ### Data Schema (D1)
 

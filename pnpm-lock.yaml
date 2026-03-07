@@ -8,8 +8,20 @@ importers:
 
   .: {}
 
+  packages/analytics:
+    devDependencies:
+      '@cloudflare/workers-types':
+        specifier: ^4.20250306.0
+        version: 4.20260306.1
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+
   packages/blog:
     dependencies:
+      '@gkoreli/analytics':
+        specifier: workspace:*
+        version: link:../analytics
       '@nisli/core':
         specifier: latest
         version: 0.46.0
@@ -32,6 +44,9 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
+      '@cloudflare/workers-types':
+        specifier: ^4.20250306.0
+        version: 4.20260306.1
       '@resvg/resvg-js':
         specifier: ^2.6.2
         version: 2.6.2
@@ -55,6 +70,9 @@ importers:
         version: 5.9.3
 
 packages:
+
+  '@cloudflare/workers-types@4.20260306.1':
+    resolution: {integrity: sha512-1gtiB0nm0Uji6VKHprvL1ZyFtdHZSR907lU2fbBioMurJAF4tQPoafJFJp4oeViUiMVUEqkp0Eh0dcbcKoHoow==}
 
   '@esbuild/aix-ppc64@0.27.3':
     resolution: {integrity: sha512-9fJMTNFTWZMh5qwrBItuziu834eOCUcEqymSH7pY+zoMVEZg3gcPuBNxH1EvfVYe9h0x/Ptw8KBzv7qxb7l8dg==}
@@ -1112,6 +1130,8 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
 snapshots:
+
+  '@cloudflare/workers-types@4.20260306.1': {}
 
   '@esbuild/aix-ppc64@0.27.3':
     optional: true
