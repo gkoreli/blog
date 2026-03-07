@@ -31,8 +31,12 @@ function geo(cf: IncomingRequestCfProperties | undefined) {
 /**
  * Handle POST /api/event — record a page view.
  * Called from client beacon script.
+ *
+ * ctx is optional: if provided, D1 write is fire-and-forget via waitUntil.
+ * If omitted (testing, non-Worker envs), falls back to await.
+ * Pattern: explicit dependency injection, same as Hono (see ADR-0004).
  */
-export async function handleEvent(request: Request, env: Env): Promise<Response> {
+export async function handleEvent(request: Request, env: Env, ctx?: ExecutionContext): Promise<Response> {
   const body = await request.json().catch(() => null) as { path?: string } | null;
   if (!body?.path) return new Response(null, { status: 400 });
 
@@ -57,13 +61,17 @@ export async function handleEvent(request: Request, env: Env): Promise<Response>
     is_owner: isOwner,
   };
 
-  // Fire-and-forget: don't block the response on D1 write.
-  // Workers runtime keeps the isolate alive for waitUntil promises.
-  const ctx = (globalThis as unknown as { ctx?: ExecutionContext }).ctx;
+  // Fire-and-forget with error logging. Analytics is best-effort —
+  // losing events during D1 outages is acceptable, but we log failures
+  // to Workers Logs for visibility (see ADR-0004 §Architecture Issues §3).
+  const write = recordPageView(env.DB, pv).catch(err =>
+    console.error('[analytics] D1 write failed:', err),
+  );
+
   if (ctx) {
-    ctx.waitUntil(recordPageView(env.DB, pv));
+    ctx.waitUntil(write);
   } else {
-    await recordPageView(env.DB, pv);
+    await write;
   }
 
   return new Response(null, { status: 204 });
