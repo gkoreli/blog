@@ -1,4 +1,4 @@
-import { rmSync, existsSync, mkdirSync } from 'node:fs';
+import { rmSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { build as esbuild } from 'esbuild';
 import { DIST, CLIENT_ENTRY, STATS_ENTRY, STYLES_SRC } from '../lib/paths.js';
 import { discoverPosts, writeOutput, writeRoot, copyAssets } from '../lib/fs.js';
@@ -12,6 +12,9 @@ import { statsTemplate, statsHead } from '../templates/stats.js';
 import { rssFeed } from '../templates/rss.js';
 import { promptsTemplate } from '../templates/prompts.js';
 import { generateOgImage } from '../lib/og.js';
+import { sitemapXml } from '../templates/sitemap.js';
+import { llmsTxt, llmsFullTxt, postsJson, stripFrontmatter } from '../templates/llms.js';
+import { blogPostingJsonLd } from '../templates/jsonld.js';
 
 export { DIST } from '../lib/paths.js';
 
@@ -46,14 +49,24 @@ export async function buildHTML(): Promise<void> {
   const allPosts = posts.map(p => p.meta);
   const sortedPosts = [...allPosts].reverse();
 
-  for (const post of posts) {
+  // Read raw markdown for .md endpoints and llms-full.txt
+  const rawContents = validation
+    .filter(r => r.valid)
+    .map(r => stripFrontmatter(readFileSync(r.file, 'utf-8')));
+
+  for (let i = 0; i < posts.length; i++) {
+    const post = posts[i]!;
     const htmlContent = await renderMarkdown(post.content);
     const ogImage = await generateOgImage(post.meta.title, post.meta.slug);
     const prompts = parsePrompts(post.meta.slug);
     if (prompts) post.meta.promptCount = prompts.count;
     const body = postTemplate(post.meta, htmlContent, prompts);
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), posts: sortedPosts, currentSlug: post.meta.slug, ogImage });
+    const jsonLd = blogPostingJsonLd(post.meta, ogImage);
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), posts: sortedPosts, currentSlug: post.meta.slug, ogImage, head: jsonLd });
     writeOutput(post.meta.slug, page.toString());
+
+    // .md endpoint — clean markdown per post
+    writeRoot(`${post.meta.slug}.md`, rawContents[i]!);
 
     if (prompts) {
       const promptsBody = promptsTemplate(post.meta, prompts);
@@ -75,6 +88,10 @@ export async function buildHTML(): Promise<void> {
   writeOutput('stats', statsPage.toString());
 
   writeRoot('feed.xml', rssFeed(sortedPosts));
+  writeRoot('sitemap.xml', sitemapXml(sortedPosts));
+  writeRoot('llms.txt', llmsTxt(sortedPosts));
+  writeRoot('llms-full.txt', llmsFullTxt(sortedPosts, rawContents));
+  writeRoot('posts.json', postsJson(sortedPosts));
 
   const elapsed = (performance.now() - start).toFixed(0);
   console.log(`Built ${posts.length} post(s) in ${elapsed}ms → dist/`);
