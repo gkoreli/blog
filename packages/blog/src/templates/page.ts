@@ -65,6 +65,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   </div>
 
   <script type="module" src="/main.js"></script>
+  <script>try{if(localStorage.analytics_ignore!=='true')fetch('/api/event',{method:'POST',keepalive:true,headers:{'Content-Type':'text/plain'},body:JSON.stringify({path:location.pathname})})}catch(e){}</script>
 </body>
 </html>`;
 }

@@ -13,5 +13,8 @@
     "build": "pnpm -C packages/blog build",
     "serve": "pnpm -C packages/blog serve",
     "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "wrangler": "^4.71.0"
   }
 }
