@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed — 2026-03-07
+Phase 1 deployed — 2026-03-07. Phase 2 (AI traffic intelligence) proposed.
 
 ## Problem Statement
 
@@ -28,8 +28,15 @@ Humans get the stats page. Search engines get sitemap.xml + JSON-LD. AI agents g
 ✅ Content:        1 blog post, about page, stats page
 ✅ Analytics:      Cookieless tracking, public dashboard (ADR-0004, ADR-0005)
 ✅ RSS feed:       /feed.xml (for RSS readers)
-✅ robots.txt:     Minimal ("User-agent: * / Allow: /")
-✅ Open Graph:     og:title, og:description, og:type, og:image (social previews)
+✅ robots.txt:     Sitemap reference, Allow: / (updated Phase 1)
+✅ Open Graph:     og:title, og:description, og:type, og:image, og:url
+✅ Canonical URLs: rel="canonical" on every page (self-referencing, absolute)
+✅ sitemap.xml:    Auto-generated from post metadata at build time
+✅ llms.txt:       AI agent index (llmstxt.org spec), auto-generated
+✅ llms-full.txt:  Full content for RAG/large-context models, auto-generated
+✅ .md endpoints:  /{slug}.md — clean markdown per post, frontmatter stripped
+✅ posts.json:     Structured post index (JSON), auto-generated
+✅ JSON-LD:        BlogPosting structured data on blog posts only
 ```
 
 **AI classification** (`packages/analytics/src/classify.ts`):
@@ -45,13 +52,8 @@ Humans get the stats page. Search engines get sitemap.xml + JSON-LD. AI agents g
 ### What We're Missing
 
 ```
-❌ sitemap.xml:    Search engines can't efficiently discover our pages
-❌ llms.txt:       AI agents have no structured way to discover content
-❌ .md endpoints:  AI agents must parse HTML to read posts
-❌ JSON-LD:        Search engines don't understand our content structure
-❌ Content API:    No programmatic access to post index
 ❌ AI agent names: We classify AI visitors but don't record WHICH agent
-❌ Sitemap ref:    robots.txt doesn't reference sitemap.xml
+❌ Google Search Console: Sitemap not yet submitted to GSC
 ```
 
 ### Pain Points (Evidence-Based)
@@ -325,6 +327,10 @@ New `by_agent` field in stats response. New "AI Agents" section on `/stats` — 
 
 12. **robots.json has 137 agents but many are obscure**: Don't blindly import all 137 into our regex. Many are defunct, regional, or extremely rare. The `robots.json` includes a `function` field — prioritize "AI Assistants" and "AI Search Crawlers" over "AI Data Scrapers".
 
+13. **Canonical URL must use absolute path with correct trailing slash**: Our blog uses trailing slashes (`/slug/`). Cloudflare 307-redirects `/slug` → `/slug/`. The canonical must be the final URL (`https://gkoreli.com/slug/`), not the redirected one. Mismatched canonicals are the #1 cause of "Google chose a different canonical" warnings in Search Console.
+
+14. **Prompts sub-pages need their own canonical**: The prompts page at `/{slug}/prompts/` must not inherit the parent post's canonical. Each page gets its own self-referencing canonical. We caught this during implementation — `currentSlug` was set to the parent post slug, producing a wrong canonical.
+
 ## Best Practices
 
 1. **✅ Build-time generation for all metadata**: sitemap.xml, llms.txt, llms-full.txt, posts.json, .md files, JSON-LD — all from the existing build pipeline. Zero runtime cost. The pipeline already has all post metadata and markdown source.
@@ -344,6 +350,14 @@ New `by_agent` field in stats response. New "AI Agents" section on `/stats` — 
 8. **✅ Transparency footer links to llms.txt**: Stats page footer: "AI agents: see our [llms.txt](/llms.txt)". Meta-transparency.
 
 9. **✅ JSON-LD from JSON.stringify**: Generate the entire `<script type="application/ld+json">` block via `JSON.stringify()`, not template literals. Guarantees valid JSON regardless of content.
+
+10. **✅ Self-referencing canonical URLs on every page**: `<link rel="canonical" href="...">` with absolute URL and trailing slash matching the actual URL. Without this, Google may index both `/slug` and `/slug/` as separate pages, diluting signals. Canonical is P0 in every SEO checklist — stronger signal than sitemap for deduplication.
+
+11. **✅ og:url matches canonical**: Social platforms use `og:url` to determine the canonical URL for sharing. Must match `rel="canonical"` exactly. Without it, shares may point to wrong URL variants.
+
+12. **✅ Sitemap only includes indexable canonical URLs**: Every URL in `sitemap.xml` must be the canonical version (trailing slash, HTTPS). Don't include redirected variants, noindex pages, or parameter URLs. Google treats sitemap inclusion as a weak canonical signal — keep it consistent with `rel="canonical"`.
+
+13. **✅ Validate JSON-LD with Google Rich Results Test**: Schema errors are silent — they don't break the page, they just prevent rich results. Always validate at `search.google.com/test/rich-results` after any schema change. Common errors: wrong date format, missing required properties, conflicting `@type`.
 
 ## Implementation Sketch
 
