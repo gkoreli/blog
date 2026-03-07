@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted — 2026-03-06
+Accepted — 2026-03-06. Phase 1 deployed — 2026-03-07.
 
 ## Context
 
@@ -68,6 +68,8 @@ Now on Cloudflare Workers, we have access to:
 - `isEUCountry` — `"1"` if EU country
 - Source: [Request `IncomingRequestCfProperties`](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties)
 
+**Gotcha — `city` reflects the Cloudflare edge location, not always the user's actual city.** In production, a visitor in Portland, OR showed `city: "Boardman"` — the nearest Cloudflare datacenter. The `country` field is reliable (based on IP geolocation), but `city` can be the datacenter city rather than the visitor's city, especially for users routed through nearby PoPs. For a personal blog, country-level granularity is sufficient.
+
 **`run_worker_first` (routing control):**
 - Accepts `true` (all requests) or `string[]` (route patterns like `["/api/*"]`)
 - When set to route patterns, only matching requests invoke the Worker — all other requests serve static assets directly from edge cache with zero Worker invocation
@@ -121,7 +123,7 @@ gkoreli.com
 - `asOrganization` — ISP/cloud provider (useful for bot detection)
 - URL path, referrer, user-agent — from standard request headers
 - Visitor hash: `hash(IP + UA + daily_salt)` — unique counting without storing PII
-- Owner exclusion: opt-out cookie or `?me` param skips logging
+- Owner exclusion: `localStorage.analytics_ignore = 'true'` — client-side opt-out (Plausible/Umami pattern), plus `OWNER_IPS` env var as server-side fallback
 
 **Why this is the right architecture:**
 - Static pages are never slowed down — the Worker only runs on `/api/*` routes
@@ -200,13 +202,15 @@ Evaluated and rejected.
 
 1. ✅ **Done**: Migrate to Cloudflare Workers
 2. ✅ **Done**: Cloudflare Web Analytics enabled (basic signal, performance monitoring)
-3. **Phase 1**: Worker script + D1 — log page views with owner exclusion
+3. **Phase 1**: Worker script + D1 — log page views with owner exclusion ✅ **Deployed 2026-03-07**
    - ✅ Create `packages/analytics` — decoupled, zero-dep analytics library
-   - Create D1 database via `wrangler d1 create blog-analytics`
-   - Add `main` entry point and D1 binding to `wrangler.jsonc` ✅
-   - Write Worker script at `packages/blog/src/worker/index.ts` ✅
-   - Add lightweight beacon `<script>` to page template (~200 bytes)
-   - Run schema migration via `wrangler d1 execute`
+   - ✅ Create D1 database: `blog-analytics` (ID: `56fd8321-3499-48ba-bb45-a1a80a5a9b94`, region: WNAM)
+   - ✅ Add `main` entry point and D1 binding to `wrangler.jsonc`
+   - ✅ Write Worker script at `packages/blog/src/worker/index.ts`
+   - ✅ Add beacon `<script>` to page template (~180 bytes inline)
+   - ✅ Run schema migration via `wrangler d1 execute --remote`
+   - ✅ Deploy via `wrangler deploy`
+   - ✅ Verified: beacon fires, D1 writes succeed, visitor_hash uniqueness works, bot classification works
 4. **Phase 2**: `/stats` page — public dashboard on the blog
    - `/api/stats` Worker endpoint: queries D1, returns JSON ✅ (in analytics lib)
    - `/stats` static page: fetches `/api/stats`, renders charts
@@ -265,10 +269,11 @@ Note: D1 bills per row read/written, not per query. Each index adds 1 extra row 
 ### Worker Config
 
 ```jsonc
-// wrangler.jsonc — additions to existing config
+// wrangler.jsonc
 {
   "name": "gkoreli-com",
-  "main": "src/worker/index.ts",
+  "compatibility_date": "2026-03-06",
+  "main": "packages/blog/src/worker/index.ts",
   "assets": {
     "directory": "packages/blog/dist",
     "binding": "ASSETS",
@@ -277,7 +282,7 @@ Note: D1 bills per row read/written, not per query. Each index adds 1 extra row 
     "run_worker_first": ["/api/*"]
   },
   "d1_databases": [
-    { "binding": "DB", "database_name": "blog-analytics", "database_id": "TBD" }
+    { "binding": "DB", "database_name": "blog-analytics", "database_id": "56fd8321-..." }
   ]
 }
 ```
@@ -290,46 +295,47 @@ Key config decisions:
 ### Worker Script Pattern (TypeScript)
 
 ```typescript
-// src/worker/index.ts — simplified pattern from Cloudflare docs
-import { WorkerEntrypoint } from "cloudflare:workers";
+// packages/blog/src/worker/index.ts — thin entry point
+import { handleEvent, handleStats, type Env } from '@gkoreli/analytics';
 
-interface Env {
-  DB: D1Database;
-  ASSETS: Fetcher;
-}
-
-export default class extends WorkerEntrypoint<Env> {
-  async fetch(request: Request): Promise<Response> {
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
-    if (url.pathname === "/api/event" && request.method === "POST") {
-      return this.handleEvent(request);
+    if (url.pathname === '/api/event' && request.method === 'POST') {
+      return handleEvent(request, env, ctx);
     }
-    if (url.pathname === "/api/stats") {
-      return this.handleStats();
+    if (url.pathname === '/api/stats' && request.method === 'GET') {
+      return handleStats(request, env);
     }
 
-    // Fallback: serve static assets
-    return this.env.ASSETS.fetch(request);
-  }
-}
+    return new Response('Not Found', { status: 404 });
+  },
+} satisfies ExportedHandler<Env>;
 ```
+
+Note: We use the `ExportedHandler` module syntax (plain object with `fetch`), not the `WorkerEntrypoint` class syntax. Both work, but the module syntax is simpler for our use case and doesn't require importing from `cloudflare:workers`. The `run_worker_first: ["/api/*"]` config means this Worker only handles API routes — static assets are served directly by the edge without invoking the Worker at all, so there's no need for `env.ASSETS.fetch(request)` fallback.
 
 ### Client Beacon Pattern
 
 ```html
-<!-- Lightweight beacon in page template, ~200 bytes -->
-<script>
-  fetch('/api/event', {
-    method: 'POST',
-    body: JSON.stringify({ path: location.pathname, referrer: document.referrer }),
-    headers: { 'Content-Type': 'application/json' },
-    keepalive: true
-  });
-</script>
+<!-- Inline beacon in page template, ~180 bytes -->
+<script>try{if(localStorage.analytics_ignore!=='true')fetch('/api/event',{method:'POST',keepalive:true,headers:{'Content-Type':'text/plain'},body:JSON.stringify({path:location.pathname})})}catch(e){}</script>
 ```
 
-`keepalive: true` ensures the beacon completes even if the user navigates away. The beacon is non-blocking — it doesn't await the response.
+Design decisions (each verified against Plausible/Umami/Counterscale source — see §Architecture Issues §4):
+- `localStorage.analytics_ignore` check — owner exclusion, same pattern as Plausible (`plausible_ignore`) and Umami (`umami.disabled`). Prevents the request entirely — zero D1 writes wasted.
+- `keepalive: true` — ensures the beacon completes even if the user navigates away (Plausible and Umami both use this).
+- `Content-Type: text/plain` — avoids CORS preflight OPTIONS request. Same-origin today, but future-proofs for cross-origin use if the library becomes `@nisli/analytics`. Plausible and Counterscale both use `text/plain`.
+- `try/catch` wrapper — analytics must never throw errors that affect the page. Handles edge cases like private browsing modes where `localStorage` may throw.
+- No `await`, no response handling — true fire-and-forget.
+- Inline, not external file — one fewer HTTP request, no render-blocking.
+
+**What we intentionally omit** (that Plausible/Umami include):
+- `document.referrer` — we extract referrer server-side from the `Referer` header, which is more reliable (client-side `document.referrer` can be empty in some privacy modes).
+- SPA navigation tracking — the blog is static HTML, no client-side routing.
+- Custom events — not needed for page view analytics.
+- DNT/GPC respect — debatable; we may add this later. Plausible respects it optionally via `data-do-not-track` attribute.
 
 ### Bot Detection Strategy
 
@@ -480,9 +486,20 @@ Uses daily salt + IP + user-agent hash. Session ID is "additionally randomized w
 | Plausible | SipHash | ~24h (Oban job) | salt + UA + IP + domain + root_domain | PostgreSQL `salts` table |
 | Umami | SHA-512 → UUIDv5 | Monthly | websiteId + IP + UA + monthlySalt | In-memory |
 | WP Statistics | SHA-256 | Daily (date check) | dailySalt + IP + UA | WordPress options |
-| **Ours** | **SHA-256** | **Daily (midnight UTC)** | **dailySalt + IP + UA** | **D1 or env var** |
+| **Ours** | **SHA-256** | **Daily (midnight UTC)** | **dailySalt + IP + UA** | **Computed in code (`YYYY-MM-DD`)** |
 
 All four use the same core pattern: `hash(rotating_salt + IP + user_agent)`. The differences are in hash algorithm, rotation frequency, and where the salt is stored. Our approach aligns most closely with WP Statistics (daily SHA-256) and Plausible (daily rotation, domain-scoped).
+
+**Gotcha — our salt is the date string itself, not a random value:**
+
+Plausible and WP Statistics use cryptographically random salts stored in a database, rotated daily. Our `dailySalt()` returns `YYYY-MM-DD` — the date string itself. This is simpler (no storage needed, stateless, works across multiple Worker isolates without coordination) but has a subtle implication: if someone knows the date and the hashing algorithm, they could brute-force the IP from the hash by trying all ~4 billion IPv4 addresses. With a random salt, this attack requires also guessing the salt.
+
+**Why this is acceptable for our use case:**
+- The hash also includes the user-agent string, which adds significant entropy (thousands of distinct UA strings in the wild)
+- The hash is truncated to 16 hex chars (8 bytes / 64 bits), which already limits uniqueness
+- We don't expose individual hashes publicly — `/api/stats` returns only aggregate counts
+- The threat model for a personal blog doesn't include adversaries trying to deanonymize visitors
+- If this becomes `@nisli/analytics` for broader use, upgrading to a random salt stored in D1 or a Worker secret is straightforward — change `dailySalt()` only
 
 **Why this is more privacy-respecting than Counterscale's `If-Modified-Since` trick:**
 
@@ -583,27 +600,29 @@ From studying both codebases, these are patterns we should NOT follow:
 
 5. **❌ Full Remix/React dashboard for simple stats** (Counterscale): Their dashboard is a full React app with routing, auth, charts. For a personal blog with ~100 views/day, a static HTML page with a few `fetch()` calls is sufficient.
 
-### Best Practices to Adopt
+### Best Practices Evaluated
 
-1. **✅ GET request + tracking pixel response** (Counterscale): Return a 1x1 GIF with `Cache-Control: no-cache`. Works even when `fetch()` is blocked. Consider this as a fallback or primary pattern.
+From studying both codebases, we evaluated these patterns and made explicit adopt/skip decisions:
 
-2. **✅ Cookieless unique visitor counting via HTTP caching** (Counterscale): The `If-Modified-Since` / `Last-Modified` trick is elegant — no cookies, no localStorage, browser handles it natively. We should evaluate this vs our hash approach. Trade-off: the hash approach works across devices (server-side), the caching approach is per-browser but truly zero-storage.
+1. **⏭️ GET request + tracking pixel response** (Counterscale): Return a 1x1 GIF with `Cache-Control: no-cache`. Works even when `fetch()` is blocked by ad blockers. **Skipped for now** — our inline `fetch()` POST is simpler and same-origin requests aren't blocked by ad blockers. Worth revisiting if the library becomes cross-origin (`@nisli/analytics`).
 
-3. **✅ Derive collect URL from script src** (Counterscale): `script.src.replace("tracker.js", "collect")` means zero configuration. The tracker script knows where to send data based on where it was loaded from.
+2. **❌ Cookieless unique visitor counting via HTTP caching** (Counterscale): The `If-Modified-Since` / `Last-Modified` trick is elegant but is technically a supercookie (see Privacy section). **Rejected** — our server-side hash approach is more privacy-respecting and doesn't store anything in the browser.
 
-4. **✅ Short parameter keys in beacon** (Counterscale): `p` for path, `h` for host, `r` for referrer, `sid` for site ID. Minimizes beacon URL length.
+3. **⏭️ Derive collect URL from script src** (Counterscale): `script.src.replace("tracker.js", "collect")` means zero configuration. **Not applicable** — our beacon is inline, not an external script. Worth adopting if we publish `@nisli/analytics` as a standalone tracker script.
 
-5. **✅ Server-side UA parsing** (Counterscale): Parse user-agent on the server, not the client. Keeps the client script tiny. `ua-parser-js` is 17KB — that's server-side only.
+4. **⏭️ Short parameter keys in beacon** (Counterscale): `p` for path, `h` for host, `r` for referrer. **Skipped** — our beacon sends a JSON body (`{path: ...}`), not URL params. The body is ~12 bytes; minifying keys saves nothing meaningful.
 
-6. **✅ Hono for Worker routing** (yestool): Cleaner than raw `if/else`. Typed bindings, middleware support, CORS built-in. Consider for our `/api/*` routes.
+5. **✅ Server-side UA parsing and referrer extraction**: Parse user-agent and extract referrer on the server, not the client. Keeps the client script tiny. **Adopted** — our beacon sends only `{path}`, everything else (UA, referrer, geo, IP) is extracted server-side from request headers and `request.cf`.
 
-7. **✅ Silent failure** (both): Analytics should never throw errors that affect the user. Both projects swallow errors gracefully. Our beacon must do the same.
+6. **⏭️ Hono for Worker routing** (yestool): Cleaner than raw `if/else`. **Skipped** — we have 2 routes. Hono adds ~14KB for routing we don't need. Reconsider if we add more API endpoints.
 
-8. **✅ `defer` attribute on script tag** (Counterscale): Ensures the tracker loads after the page content. Never block rendering for analytics.
+7. **✅ Silent failure**: Analytics should never throw errors that affect the user. **Adopted** — beacon wrapped in `try/catch`, D1 writes wrapped in `.catch()` with `console.error` logging.
+
+8. **✅ Non-blocking script**: Never block rendering for analytics. **Adopted** — inline script at bottom of `<body>`, fire-and-forget `fetch()`, no `await`.
 
 ### What Our Library Adds (That Neither Has)
 
-- **Owner exclusion** — opt-out cookie or `?me` param, `is_owner` flag in D1
+- **Owner exclusion** — `localStorage.analytics_ignore` client-side opt-out (Plausible/Umami pattern) + `OWNER_IPS` server-side fallback, `is_owner` flag in D1
 - **Public `/stats` page** — neither project exposes stats publicly on the blog itself
 - **D1 with unlimited retention** — Counterscale's Analytics Engine loses data after 90 days
 - **`request.cf` geographic enrichment** — country, city, continent, region, timezone, all server-side
@@ -614,9 +633,9 @@ From studying both codebases, these are patterns we should NOT follow:
 
 This doesn't need to be blog-specific. The pattern is universal: any static site on Cloudflare Workers that wants lightweight, privacy-first, self-hosted analytics with D1. The library could be:
 
-- **Client**: `<script>` tag (~200 bytes) or ES module import — sends beacon to `/api/event`
-- **Worker**: `/api/event` (ingestion) + `/api/stats` (query) — ~150 lines of TypeScript
-- **Schema**: One `page_views` table with indexes — `wrangler d1 execute` to set up
+- **Client**: Inline `<script>` (~180 bytes) — sends beacon to `/api/event`
+- **Worker**: `/api/event` (ingestion) + `/api/stats` (query) — 5 source files, ~200 lines of TypeScript
+- **Schema**: One `page_views` table with 3 indexes — `wrangler d1 execute` to set up
 
 Could eventually be published as a package (e.g., `@nisli/analytics` or standalone), but for now it lives in the blog repo and serves our needs.
 
@@ -701,9 +720,9 @@ We have 1 table, 1 INSERT, 6 SELECTs, 1 developer. The raw D1 API is the right t
 
 ### Architecture Issues & Resolutions
 
-Four issues identified during implementation review, each explored against open source prior art:
+Four issues identified during implementation review, each explored against open source prior art. All four resolved and deployed.
 
-#### 1. ExecutionContext passing — `globalThis.ctx` hack
+#### 1. ExecutionContext passing — `globalThis.ctx` hack ✅ Fixed
 
 **Problem**: The analytics library needs `ctx.waitUntil()` to fire-and-forget D1 writes, but `ExecutionContext` is a Workers-specific concept. Storing it on `globalThis` is fragile — it's a mutable global, invisible to the type system, and breaks if the library is used outside a Worker.
 
@@ -724,7 +743,7 @@ handleEvent(request, env, ctx);
 ```
 The analytics library accepts an optional `ExecutionContext` parameter. If provided, uses `waitUntil`. If not (e.g., testing, non-Worker environments), falls back to `await`. This is the same pattern Hono uses — explicit dependency injection, no globals.
 
-#### 2. Owner detection — IP-based is brittle
+#### 2. Owner detection — IP-based is brittle ✅ Fixed
 
 **Problem**: `OWNER_IPS` as a comma-separated env var breaks when your ISP rotates your IP.
 
@@ -738,7 +757,7 @@ The analytics library accepts an optional `ExecutionContext` parameter. If provi
 2. **Secondary**: `OWNER_IPS` env var — server-side fallback for when you can't set localStorage (e.g., first visit from a new device). Keep it, but don't rely on it alone.
 3. **Beacon script checks localStorage before sending** — if ignored, don't even make the request. Zero D1 writes wasted.
 
-#### 3. Error handling — silent D1 failures
+#### 3. Error handling — silent D1 failures ✅ Fixed
 
 **Problem**: If D1 is down, `waitUntil(recordPageView(...))` rejects silently. We lose events with no visibility.
 
@@ -755,7 +774,7 @@ ctx.waitUntil(
 ```
 Analytics is best-effort — losing a few events during D1 outages is acceptable. But we should know it's happening. Workers Logs gives us that visibility at zero cost.
 
-#### 4. Client beacon — fire-and-forget pattern
+#### 4. Client beacon — fire-and-forget pattern ✅ Deployed
 
 **Problem**: The beacon script must not block page rendering, must work during page unload (navigating away), and must be as small as possible.
 
