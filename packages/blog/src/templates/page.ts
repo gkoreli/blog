@@ -38,6 +38,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
 </head>
 <body>
   <div class="layout">
+    <div class="sidebar-wrapper">
     <aside class="sidebar">
       <div class="sidebar-header">
         <a href="/" class="sidebar-logo">
@@ -46,21 +47,22 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
         </a>
         <p>Where excitement ends, depth begins.</p>
       </div>
-      <div class="sidebar-links">
-        <a href="https://github.com/gkoreli" class="sidebar-btn" title="GitHub" target="_blank" rel="noopener"><img src="/icons/github.svg" width="18" height="18" alt="GitHub"></a>
-        <a href="https://www.npmjs.com/~gkoreli" class="sidebar-btn" title="npm" target="_blank" rel="noopener"><img src="/icons/npm.svg" width="18" height="18" alt="npm"></a>
-        <a href="https://www.linkedin.com/in/goga-koreli/" class="sidebar-btn" title="LinkedIn" target="_blank" rel="noopener"><img src="/icons/linkedin.svg" width="18" height="18" alt="LinkedIn"></a>
+      <div class="sidebar-social">
+        <a href="https://github.com/gkoreli" title="GitHub" target="_blank" rel="noopener"><img src="/icons/github.svg" width="18" height="18" alt="GitHub"></a>
+        <a href="https://www.npmjs.com/~gkoreli" title="npm" target="_blank" rel="noopener"><img src="/icons/npm.svg" width="18" height="18" alt="npm"></a>
+        <a href="https://www.linkedin.com/in/goga-koreli/" title="LinkedIn" target="_blank" rel="noopener"><img src="/icons/linkedin.svg" width="18" height="18" alt="LinkedIn"></a>
         <nisli-theme-toggle></nisli-theme-toggle>
       </div>
-      <nav class="page-nav">
+      <nav class="sidebar-section">
         <a href="/about" class="${currentSlug === 'about' ? 'active' : ''}">About</a>
         <a href="/stats" class="${currentSlug === 'stats' ? 'active' : ''}">Stats</a>
       </nav>
       <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
-      <nav class="sidebar-nav">
+      <nav class="sidebar-section">
         ${posts.map(p => html`<a href="/${p.slug}" class="${currentSlug === p.slug ? 'active' : ''}">${p.title}</a>`)}
       </nav>
     </aside>
+    </div>
 
     <main class="content">
       ${raw(content)}
