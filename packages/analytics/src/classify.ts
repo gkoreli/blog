@@ -27,12 +27,29 @@ export function classifyVisitor(ua: string | null): VisitorType {
 
 export type DeviceType = 'mobile' | 'tablet' | 'desktop';
 
-const MOBILE = /Mobile|Android(?!.*Tablet)|iPhone|iPod|Opera Mini|IEMobile/i;
-const TABLET = /Tablet|iPad|Android(?!.*Mobile)|Kindle|Silk/i;
+/**
+ * Device type classification from User-Agent string.
+ *
+ * Patterns distilled from isMobile (2.4K⭐, kaimallea/isMobile) and
+ * ua-parser-js (10K⭐, faisalman/ua-parser-js) generic fallbacks.
+ *
+ * Key insight: Android phone vs tablet is determined by the presence of
+ * 'Mobile' in the UA — Google's convention. Chrome on Android phones
+ * includes 'Mobile', Chrome on Android tablets doesn't.
+ *
+ * Limitation: iPadOS 13+ reports as Mac (desktop UA). Detecting it
+ * requires navigator.maxTouchPoints which is unavailable server-side.
+ * iPads on iOS 13+ will be classified as desktop. Acceptable trade-off
+ * for a server-side classifier.
+ */
+const PHONES = /iPhone|iPod|\bAndroid(?:.+)Mobile|Windows Phone|BB10|BlackBerry|Opera Mini|\b(?:CriOS|Chrome)(?:.+)Mobile|Mobile(?:.+)Firefox\b/i;
+const TABLETS = /iPad|\bWindows(?:.+)ARM|(?:(?:SD4930UR|Silk(?!.+Mobile)))/i;
+const ANDROID_TABLET = /\bAndroid\b/i;
 
 export function classifyDevice(ua: string | null): DeviceType {
   if (!ua) return 'desktop';
-  if (TABLET.test(ua)) return 'tablet';
-  if (MOBILE.test(ua)) return 'mobile';
+  if (PHONES.test(ua)) return 'mobile';
+  if (TABLETS.test(ua)) return 'tablet';
+  if (ANDROID_TABLET.test(ua) && !/Mobile/i.test(ua)) return 'tablet';
   return 'desktop';
 }
