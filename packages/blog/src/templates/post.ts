@@ -1,8 +1,9 @@
 import { html, raw } from 'nisli-static';
 import type { PostMeta, PromptsData } from '../lib/frontmatter.js';
+import { formatDateLong } from '../lib/dates.js';
 
 export function postTemplate(meta: PostMeta, htmlContent: string, prompts?: PromptsData | null) {
-  const dateStr = meta.date ? new Date(meta.date + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+  const dateStr = formatDateLong(meta.date);
 
   return html`<article>
   <header class="post-header">

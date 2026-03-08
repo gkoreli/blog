@@ -1,9 +1,8 @@
 import { html } from 'nisli-static';
 import type { PostMeta } from '../lib/frontmatter.js';
+import { formatDateLong } from '../lib/dates.js';
 
 export function indexTemplate(posts: PostMeta[]) {
-  const dateStr = (date: string) => date ? new Date(date + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
-
   return html`<div class="home">
   <section class="hero">
     <h1>Goga Koreli</h1>
@@ -29,7 +28,7 @@ export function indexTemplate(posts: PostMeta[]) {
     ${posts.map(p => html`<a href="/${p.slug}" class="post-preview">
       <article>
         <h3>${p.title}</h3>
-        <time datetime="${p.date}">${dateStr(p.date)}${p.promptCount ? ` · ${p.promptCount} prompts` : ''}</time>
+        <time datetime="${p.date}">${formatDateLong(p.date)}${p.promptCount ? ` · ${p.promptCount} prompts` : ''}</time>
         <p>${p.description}</p>
       </article>
     </a>`)}

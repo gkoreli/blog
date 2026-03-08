@@ -1,4 +1,5 @@
 import type { D1Database } from '@cloudflare/workers-types';
+import { daysAgo, localToday, shiftToLocal } from './dates.js';
 
 /** Visitor type filter for the stats API */
 export type VisitorFilter = 'human' | 'bot' | 'ai' | 'all';
@@ -48,21 +49,19 @@ function visitorWhere(v: VisitorFilter): string {
 export async function queryStats(db: D1Database, q: StatsQuery = {}): Promise<StatsResponse> {
   const days = q.days ?? 30;
   const all = days === 0;
-  const tz = tzModifier(q.tz ?? 0);
+  const tz = q.tz ?? 0;
+  const tzMod = tzModifier(tz);
   const vw = visitorWhere(q.visitor ?? 'human');
 
-  // Compute 'since' in the viewer's local day so the lookback window aligns with their calendar.
-  // Without this, a PST viewer asking for "last 1 day" at 11pm PST would miss events from earlier
-  // that same local day because 'since' was computed in UTC (where it's already tomorrow).
-  const nowLocal = new Date(Date.now() - (q.tz ?? 0) * 60_000);
-  const since = all ? '1970-01-01' : new Date(nowLocal.getTime() - days * 86400_000).toISOString().slice(0, 10);
+  const nowLocalMs = shiftToLocal(Date.now(), tz);
+  const since = all ? '1970-01-01' : daysAgo(nowLocalMs, days);
   const pathFilter = q.path ? `AND path LIKE ?` : '';
   const bind = (stmt: D1PreparedStatement) =>
     q.path ? stmt.bind(since, `${q.path}%`) : stmt.bind(since);
 
   // datetime(created_at, tz) shifts UTC timestamps to the viewer's local time before DATE() groups them.
   // This means a visit at 2026-03-07T01:00Z (= 2026-03-06T17:00 PST) groups under '2026-03-06' for PST viewers.
-  const localDate = `DATE(datetime(created_at, '${tz}'))`;
+  const localDate = `DATE(datetime(created_at, '${tzMod}'))`;
 
   const [totals, byPath, byCountry, byDay, byReferrer, aiFetches] = await db.batch([
     bind(db.prepare(`SELECT COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter}`)),
@@ -81,7 +80,7 @@ export async function queryStats(db: D1Database, q: StatsQuery = {}): Promise<St
   const periodStart = all && dayRows.length > 0 ? dayRows[0].date : since;
 
   return {
-    period: { start: periodStart, end: nowLocal.toISOString().slice(0, 10) },
+    period: { start: periodStart, end: localToday(tz) },
     totals: { views: t.views ?? 0, visitors: t.visitors ?? 0, ai_fetches: ai.count ?? 0 },
     by_path: (byPath.results ?? []) as StatsResponse['by_path'],
     by_country: (byCountry.results ?? []) as StatsResponse['by_country'],

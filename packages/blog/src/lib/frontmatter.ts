@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import matter from 'gray-matter';
 import { z } from 'zod/v4';
 import { PROMPTS_DIR } from './paths.js';
+import { localDateStr } from './dates.js';
 
 const frontmatterSchema = z.object({
   title: z.string(),
@@ -31,7 +32,7 @@ export function parsePost(filePath: string): Post {
   const filename = filePath.split('/').pop() ?? '';
   const slug = filename.replace(/^\d+-/, '').replace(/\.md$/, '');
   const date = result.data.date instanceof Date
-    ? result.data.date.toISOString().split('T')[0]!
+    ? localDateStr(result.data.date)
     : result.data.date;
 
   return {

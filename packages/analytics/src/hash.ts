@@ -1,3 +1,5 @@
+import { utcToday } from './dates.js';
+
 /**
  * Daily-salted SHA-256 hash for cookieless unique visitor counting.
  * Pattern verified in: Plausible (SipHash + salt rotation), Umami (SHA-512 + monthly salt),
@@ -18,5 +20,5 @@ export async function visitorHash(ip: string, ua: string, salt: string): Promise
 
 /** Salt = YYYY-MM-DD in UTC. Rotates at midnight UTC automatically. */
 export function dailySalt(): string {
-  return new Date().toISOString().slice(0, 10);
+  return utcToday();
 }
