@@ -83,7 +83,7 @@
 /* Print — canvas is blank, show text summary */
 @media print {
   .stats-chart { display: none; }
-  .stats-pills { display: none; }
+  .stats-pills, .stats-visitor-pills { display: none; }
 }
 
 /* Mobile */

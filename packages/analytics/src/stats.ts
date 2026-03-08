@@ -51,9 +51,11 @@ export async function queryStats(db: D1Database, q: StatsQuery = {}): Promise<St
   const tz = tzModifier(q.tz ?? 0);
   const vw = visitorWhere(q.visitor ?? 'human');
 
-  // Compute 'since' in the viewer's local day, then convert back to UTC for the WHERE clause.
-  // This ensures the lookback window aligns with the viewer's calendar, not UTC midnight.
-  const since = all ? '1970-01-01' : new Date(Date.now() - days * 86400_000).toISOString().slice(0, 10);
+  // Compute 'since' in the viewer's local day so the lookback window aligns with their calendar.
+  // Without this, a PST viewer asking for "last 1 day" at 11pm PST would miss events from earlier
+  // that same local day because 'since' was computed in UTC (where it's already tomorrow).
+  const nowLocal = new Date(Date.now() - (q.tz ?? 0) * 60_000);
+  const since = all ? '1970-01-01' : new Date(nowLocal.getTime() - days * 86400_000).toISOString().slice(0, 10);
   const pathFilter = q.path ? `AND path LIKE ?` : '';
   const bind = (stmt: D1PreparedStatement) =>
     q.path ? stmt.bind(since, `${q.path}%`) : stmt.bind(since);
