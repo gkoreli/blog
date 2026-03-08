@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted — 2026-03-06. Phase 1 deployed — 2026-03-07.
+Accepted — 2026-03-06. Phase 1 deployed — 2026-03-07. API updated 2026-03-07: timezone-aware queries, visitor type filter.
 
 ## Context
 
@@ -804,6 +804,25 @@ Analytics is best-effort — losing a few events during D1 outages is acceptable
 - `Content-Type: text/plain` (no CORS preflight, future-proofs for cross-origin use)
 - No `await`, no error handling — true fire-and-forget
 - ~150 bytes minified — smaller than Plausible's tracker (1.2KB) or Umami's (3.5KB) because we only track page views, not custom events, engagement, or SPA navigation
+
+## API Updates (2026-03-07)
+
+### `/api/stats` Query Parameters
+
+| Param | Type | Default | Description |
+|-------|------|---------|-------------|
+| `days` | `0..365` | `30` | Lookback window. `0` = all time. |
+| `path` | string | — | Filter by path prefix |
+| `tz` | `-720..840` | `0` | Client's UTC offset in minutes (`getTimezoneOffset()`). Server uses SQLite `datetime(created_at, '±HH:MM')` to group by the viewer's local day. |
+| `visitor` | `human\|bot\|ai\|all` | `human` | Visitor type filter. `human` excludes bots, AI, and owner. `all` excludes only owner. |
+
+### Timezone-Aware Date Grouping
+
+D1 stores UTC via `datetime('now')`. The original `DATE(created_at)` grouped by UTC day — a visit at 5pm PST on March 6 appeared as March 7. Fix: `DATE(datetime(created_at, '±HH:MM'))` shifts to the viewer's local day before grouping. Storage stays UTC. See ADR-0005 for full analysis.
+
+### Visitor Type Filter
+
+Dashboard was hardcoded to humans only. New `visitor` param exposes the bot/AI traffic the system already collects (see §Bot Detection Strategy). `visitorWhere()` maps filter to SQL WHERE clause. The `ai_fetches` metric in totals is always computed independently — it's a standalone count regardless of active filter.
 
 ## References
 

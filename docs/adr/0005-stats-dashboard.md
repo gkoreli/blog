@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted — 2026-03-07. Deployed to production.
+Accepted — 2026-03-07. Deployed to production. Updated 2026-03-07: timezone-aware dates, visitor type filter.
 
 ## Context
 
@@ -316,6 +316,79 @@ The server clamps `days` to `0..365`. This prevents absurd lookback windows (`da
 ### Area Fill Uses `hexToFill()`, Not Hex Append
 
 The area fill color is `rgba(r,g,b,0.15)` computed from the CSS variable's hex value. The earlier approach (`c.link + '26'` for 8-digit hex) was fragile — it assumed CSS variables are always `#rrggbb` format. `getComputedStyle` returns the raw value as written in the stylesheet. If the stylesheet ever changed to `rgb()` notation, the hex append would silently produce an invalid color string. `hexToFill()` explicitly parses the hex and constructs `rgba()`. The `getColors()` helper already calls `.trim()` on the raw value, so leading whitespace from `getComputedStyle` is handled.
+
+## Timezone-Aware Date Grouping (2026-03-07)
+
+### Problem
+
+D1 stores `created_at` via SQLite's `datetime('now')` — always UTC. The original `DATE(created_at)` grouped by UTC day. A visit at 5pm PST on March 6 stored as `2026-03-07T01:00Z` grouped under March 7. The dashboard showed all activity as "today" when some was actually yesterday in the viewer's timezone.
+
+### Root Cause Chain
+
+1. `schema.sql`: `created_at TEXT DEFAULT (datetime('now'))` — UTC, correct
+2. `stats.ts`: `DATE(created_at)` — groups by UTC day, incorrect for non-UTC viewers
+3. `stats.ts`: `new Date(Date.now() - days * 86400_000).toISOString().slice(0, 10)` — lookback computed in UTC
+4. Client `toUPlotData`: `new Date(r.date + 'T00:00:00')` — interprets UTC date as local midnight (noted as intentional in ADR, but the date itself was wrong)
+
+The entire pipeline was consistently UTC, but the dashboard displayed UTC dates as if they were local dates.
+
+### Solution
+
+Client sends `tz` param (from `new Date().getTimezoneOffset()`) — the number of minutes behind UTC (e.g., PST = 480). Server converts to SQLite time modifier via `tzModifier()`:
+
+```
+480 → '-08:00'   (PST: subtract 8 hours from UTC)
+-60 → '+01:00'   (CET: add 1 hour to UTC)
+0   → '+00:00'   (UTC: no shift)
+```
+
+SQL uses `DATE(datetime(created_at, '±HH:MM'))` to shift UTC timestamps to the viewer's local time before grouping. Storage stays UTC — only the grouping changes per request.
+
+### Why Client Offset, Not IANA Timezone
+
+SQLite's `datetime()` accepts `±HH:MM` modifiers, not IANA timezone names. Converting IANA → offset on the server would require a timezone database (moment-timezone: 200KB+). `getTimezoneOffset()` gives us exactly what SQLite needs, handles DST automatically (the browser knows the current offset), and costs zero bytes.
+
+### Validation
+
+Server clamps `tz` to `[-720, 840]` — the full range of real UTC offsets (UTC-12 to UTC+14). `Math.round()` handles fractional offsets (India: UTC+5:30 = -330 minutes). Invalid/missing defaults to 0 (UTC).
+
+### Verified Result
+
+Before: all 22 views on `2026-03-07` (UTC day).
+After with `tz=480` (PST): 14 views on `2026-03-06`, 8 views on `2026-03-07` — correctly reflects Thursday evening PST activity.
+
+## Visitor Type Filter (2026-03-07)
+
+### Problem
+
+Dashboard was hardcoded to `WHERE visitor_type = 0 AND is_owner = 0` — humans only. No way to see bot or AI agent traffic, which is data the blog explicitly collects and wants to expose transparently (see ADR-0004 §Bot Detection Strategy: "we log bots instead of dropping them").
+
+### Solution
+
+New `visitor` query param on `/api/stats`: `human` (default), `bot`, `ai`, `all`. Maps to SQL via `visitorWhere()`:
+
+| Filter | SQL WHERE |
+|--------|-----------|
+| `human` | `AND visitor_type = 0 AND is_owner = 0` |
+| `bot` | `AND visitor_type = 1` |
+| `ai` | `AND visitor_type = 2` |
+| `all` | `AND is_owner = 0` |
+
+The `ai_fetches` count in totals is always computed independently (`WHERE visitor_type = 2`) regardless of the active filter — it's a standalone metric.
+
+### Dashboard UI
+
+Visitor toggle pills (Humans | Bots | AI | All) sit next to the period pills. Same interaction pattern: `pushState` + re-fetch. URL state: `?days=30&visitor=bot`. Default omits `visitor` param (= human). Both pill groups share CSS via `.stats-pills` and `.stats-visitor-pills` selectors.
+
+### Architecture Consistency
+
+Both features follow the established patterns:
+- URL-driven state via `pushState` + `popstate` (same as period pills)
+- Server validates and clamps all inputs (same as `days` param)
+- Pure functions for SQL generation (`tzModifier()`, `visitorWhere()`)
+- `StatsQuery` interface extended, not replaced — backward compatible
+- Client `getParams()` reads both `days` and `visitor` from URL — single source of truth
+- Monotonic `loadId` counter handles race conditions for both params (same pattern)
 
 ## References
 
