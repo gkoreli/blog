@@ -423,6 +423,25 @@ The safety invariant is: no user string ever reaches the SQL. If `tzModifier()` 
 
 `visitorWhere('human')` and `visitorWhere('all')` include `AND is_owner = 0`. `visitorWhere('bot')` and `visitorWhere('ai')` don't. This is intentional: when viewing bot/AI traffic, you want to see everything including your own `curl` test requests (which match `TRADITIONAL_BOTS`). Owner exclusion only matters for human traffic where it inflates real visitor counts.
 
+### Date Handling Audit (2026-03-07)
+
+Full end-to-end trace of every date operation in the system. The invariant: UTC for storage and salt, viewer-local for display and grouping.
+
+| Layer | Code | Timezone | Status |
+|-------|------|----------|--------|
+| D1 storage | `datetime('now')` | UTC | ✅ Correct — canonical timestamp |
+| Daily salt | `new Date().toISOString().slice(0,10)` | UTC | ✅ Correct — rotates at UTC midnight |
+| SQL grouping | `DATE(datetime(created_at, '±HH:MM'))` | Viewer-local | ✅ Correct — shifts before grouping |
+| Lookback cutoff | `new Date(Date.now() - tz * 60_000)` then `.toISOString().slice(0,10)` | Viewer-local | ✅ Fixed — was UTC, caused off-by-one |
+| `period.end` | `nowLocal.toISOString().slice(0,10)` | Viewer-local | ✅ Fixed — was UTC, mixed timezones in response |
+| Chart timestamps | `new Date(date + 'T00:00:00').getTime() / 1000` | Local (no `Z` suffix) | ✅ Correct — uPlot formats in local time |
+| Chart padding | `localDateStr(new Date())` | Local | ✅ Fixed — was `toISOString()` (UTC) |
+| `TZ_OFFSET` | `new Date().getTimezoneOffset()` | Computed once at load | ✅ Acceptable — stale across DST, refreshes on interaction |
+
+**The `toISOString()` trick**: The server computes `nowLocal = new Date(Date.now() - tz * 60_000)` — this creates a `Date` whose internal UTC value is shifted to simulate local time. Then `.toISOString().slice(0,10)` extracts the date string. The `Date` object doesn't represent a real UTC instant, but the math is correct because both sides of every comparison (lookback cutoff vs SQL `localDate`, `period.start` vs `period.end`) use the same shift.
+
+**Rule**: `toISOString()` = UTC. Use it for storage and salt. For viewer-facing dates, either shift the `Date` first (server pattern) or use `getFullYear()/getMonth()/getDate()` (client `localDateStr()` pattern). Never mix.
+
 ## References
 
 - [ADR-0004: Analytics](./0004-analytics.md) — the data collection layer this dashboard consumes
