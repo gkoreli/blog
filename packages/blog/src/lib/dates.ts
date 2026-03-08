@@ -9,8 +9,15 @@
  * not UTC midnight. This prevents off-by-one display errors near midnight.
  */
 
-/** Parse a YYYY-MM-DD string as local midnight. Never use new Date(dateStr) alone — it parses as UTC. */
+/**
+ * Parse a date string as local time. Handles both daily ('YYYY-MM-DD')
+ * and hourly ('YYYY-MM-DDTHH:00:00') formats from the stats API.
+ * Never use new Date(dateStr) alone — bare 'YYYY-MM-DD' parses as UTC.
+ */
 export function parseLocalDate(dateStr: string): Date {
+  // Hourly format already has T and time — JS parses 'YYYY-MM-DDTHH:00:00' as local (no Z)
+  if (dateStr.includes('T')) return new Date(dateStr);
+  // Daily format needs T00:00:00 appended to avoid UTC parsing
   return new Date(dateStr + 'T00:00:00');
 }
 

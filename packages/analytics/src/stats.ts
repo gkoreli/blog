@@ -46,12 +46,16 @@ function visitorWhere(v: VisitorFilter): string {
   }
 }
 
+/** Threshold: days <= this use hourly grouping, above use daily */
+const HOURLY_THRESHOLD = 7;
+
 export async function queryStats(db: D1Database, q: StatsQuery = {}): Promise<StatsResponse> {
   const days = q.days ?? 30;
   const all = days === 0;
   const tz = q.tz ?? 0;
   const tzMod = tzModifier(tz);
   const vw = visitorWhere(q.visitor ?? 'human');
+  const hourly = !all && days <= HOURLY_THRESHOLD;
 
   const nowLocalMs = shiftToLocal(Date.now(), tz);
   const since = all ? '1970-01-01' : daysAgo(nowLocalMs, days);
@@ -59,15 +63,16 @@ export async function queryStats(db: D1Database, q: StatsQuery = {}): Promise<St
   const bind = (stmt: D1PreparedStatement) =>
     q.path ? stmt.bind(since, `${q.path}%`) : stmt.bind(since);
 
-  // datetime(created_at, tz) shifts UTC timestamps to the viewer's local time before DATE() groups them.
-  // This means a visit at 2026-03-07T01:00Z (= 2026-03-06T17:00 PST) groups under '2026-03-06' for PST viewers.
-  const localDate = `DATE(datetime(created_at, '${tzMod}'))`;
+  const localDt = `datetime(created_at, '${tzMod}')`;
+  const localDate = `DATE(${localDt})`;
+  // Hourly: 'YYYY-MM-DDTHH:00:00' — JS parses as local time (no Z). Daily: 'YYYY-MM-DD'.
+  const bucket = hourly ? `strftime('%Y-%m-%dT%H:00:00', ${localDt})` : localDate;
 
   const [totals, byPath, byCountry, byDay, byReferrer, aiFetches] = await db.batch([
     bind(db.prepare(`SELECT COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter}`)),
     bind(db.prepare(`SELECT path, COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter} GROUP BY path ORDER BY views DESC LIMIT 50`)),
     bind(db.prepare(`SELECT country, COUNT(*) as views FROM page_views WHERE ${localDate} >= ? ${vw} AND country IS NOT NULL ${pathFilter} GROUP BY country ORDER BY views DESC LIMIT 30`)),
-    bind(db.prepare(`SELECT ${localDate} as date, COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter} GROUP BY date ORDER BY date`)),
+    bind(db.prepare(`SELECT ${bucket} as date, COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter} GROUP BY date ORDER BY date`)),
     bind(db.prepare(`SELECT referrer, COUNT(*) as views FROM page_views WHERE ${localDate} >= ? ${vw} AND referrer IS NOT NULL ${pathFilter} GROUP BY referrer ORDER BY views DESC LIMIT 20`)),
     bind(db.prepare(`SELECT COUNT(*) as count FROM page_views WHERE ${localDate} >= ? AND visitor_type = 2 ${pathFilter}`)),
   ]);

@@ -3,6 +3,12 @@
 	"name": "gkoreli-com",
 	"compatibility_date": "2026-03-06",
 	"main": "packages/blog/src/worker/index.ts",
+	"observability": {
+		"logs": {
+			"enabled": true,
+			"invocation_logs": true
+		}
+	},
 	"assets": {
 		"directory": "packages/blog/dist",
 		"binding": "ASSETS",
