@@ -45,6 +45,11 @@ function countryLabel(code: string): string {
   } catch { return `🌐 ${code}`; }
 }
 
+/** Format a Date as YYYY-MM-DD in local time (not UTC) */
+function localDateStr(d: Date): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
 function hexToFill(hex: string, alpha: number): string {
   const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
   return `rgba(${r},${g},${b},${alpha})`;
@@ -81,8 +86,10 @@ async function fetchStats(days: number, visitor: VisitorFilter): Promise<StatsRe
 function toUPlotData(byDay: StatsResponse['by_day']): uPlot.AlignedData {
   let rows = byDay;
   if (rows.length === 0) {
-    const today = new Date().toISOString().slice(0, 10);
-    const yesterday = new Date(Date.now() - 86400_000).toISOString().slice(0, 10);
+    // Pad with local dates — matches the server's timezone-shifted by_day dates
+    const now = new Date();
+    const today = localDateStr(now);
+    const yesterday = localDateStr(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1));
     rows = [{ date: yesterday, views: 0, visitors: 0 }, { date: today, views: 0, visitors: 0 }];
   } else if (rows.length === 1) {
     const prev = new Date(new Date(rows[0].date).getTime() - 86400_000).toISOString().slice(0, 10);

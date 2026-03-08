@@ -81,7 +81,7 @@ export async function queryStats(db: D1Database, q: StatsQuery = {}): Promise<St
   const periodStart = all && dayRows.length > 0 ? dayRows[0].date : since;
 
   return {
-    period: { start: periodStart, end: new Date().toISOString().slice(0, 10) },
+    period: { start: periodStart, end: nowLocal.toISOString().slice(0, 10) },
     totals: { views: t.views ?? 0, visitors: t.visitors ?? 0, ai_fetches: ai.count ?? 0 },
     by_path: (byPath.results ?? []) as StatsResponse['by_path'],
     by_country: (byCountry.results ?? []) as StatsResponse['by_country'],
