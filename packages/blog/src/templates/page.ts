@@ -52,10 +52,12 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
         <a href="https://www.linkedin.com/in/goga-koreli/" class="sidebar-btn" title="LinkedIn" target="_blank" rel="noopener"><img src="/icons/linkedin.svg" width="18" height="18" alt="LinkedIn"></a>
         <nisli-theme-toggle></nisli-theme-toggle>
       </div>
-      <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
-      <nav class="sidebar-nav">
+      <nav class="page-nav">
         <a href="/about" class="${currentSlug === 'about' ? 'active' : ''}">About</a>
         <a href="/stats" class="${currentSlug === 'stats' ? 'active' : ''}">Stats</a>
+      </nav>
+      <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
+      <nav class="sidebar-nav">
         ${posts.map(p => html`<a href="/${p.slug}" class="${currentSlug === p.slug ? 'active' : ''}">${p.title}</a>`)}
       </nav>
     </aside>

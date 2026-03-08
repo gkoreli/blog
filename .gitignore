@@ -4,3 +4,4 @@ dist/
 *.log
 packages/blog/tsconfig.tsbuildinfo
 .wrangler/
+packages/blog/prompts/002-building-transparent-analytics.prompts.md

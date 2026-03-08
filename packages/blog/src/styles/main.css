@@ -168,6 +168,28 @@ body {
 
 .sidebar-btn img { display: block; }
 
+/* Page nav — compact links above separator */
+.page-nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.page-nav a {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.375rem;
+  transition: color 0.15s;
+}
+
+.page-nav a:hover { color: var(--color-text); }
+
+.page-nav a.active {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
 /* Main content */
 .content {
   min-width: 0;
