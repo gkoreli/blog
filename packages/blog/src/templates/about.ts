@@ -1,6 +1,6 @@
-import { html } from 'nisli-static';
+import { html, raw } from 'nisli-static';
 
-const ext = (url: string) => `href="${url}" target="_blank" rel="noopener"`;
+const ext = (url: string) => raw(`href="${url}" target="_blank" rel="noopener"`);
 
 export function aboutTemplate() {
   return html`<article class="post-content">
