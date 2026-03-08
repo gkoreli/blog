@@ -390,6 +390,39 @@ Both features follow the established patterns:
 - Client `getParams()` reads both `days` and `visitor` from URL — single source of truth
 - Monotonic `loadId` counter handles race conditions for both params (same pattern)
 
+### Post-Implementation Audit (2026-03-07)
+
+Five issues found during code review. Two bugs fixed, three documented as intentional/gotchas.
+
+#### ✅ Fixed: Lookback cutoff computed in UTC, not viewer-local
+
+`since` was `new Date(Date.now() - days * 86400_000).toISOString().slice(0, 10)` — UTC. But the WHERE clause compared it against `localDate` (viewer's timezone). A PST viewer asking for `days=1` at 11pm PST (= March 8 07:00 UTC) got `since = '2026-03-07'`, but events from `2026-03-07T06:00Z` had `localDate = '2026-03-06'` (PST), so `'2026-03-06' >= '2026-03-07'` was false — events from the viewer's "today" were excluded.
+
+Fix: `new Date(Date.now() - (q.tz ?? 0) * 60_000)` shifts `Date.now()` to the viewer's local time before computing the cutoff date. Verified: PST `days=1` now correctly includes both March 6 and March 7 local days.
+
+**Lesson**: When you shift one side of a comparison to local time (`localDate`), you must shift the other side too (`since`). Half-local comparisons are a class of timezone bugs.
+
+#### ✅ Fixed: Print CSS didn't hide visitor pills
+
+`.stats-pills` was hidden in `@media print`, but `.stats-visitor-pills` wasn't. One-line fix.
+
+#### Documented: SQL interpolation of `tz` modifier
+
+`DATE(datetime(created_at, '${tz}'))` interpolates a string into SQL. This is safe because:
+1. `index.ts` clamps input to `[-720, 840]` integers
+2. `tzModifier()` constructs from those integers with fixed `±HH:MM` format
+3. SQLite `datetime()` modifiers can't be parameterized via `?` bind — they're syntax, not values
+
+The safety invariant is: no user string ever reaches the SQL. If `tzModifier()` is refactored, this invariant must be preserved. The function is pure and has no external inputs beyond the clamped integer.
+
+#### Documented: `VisitorFilter` validation duplicated (client + server)
+
+`VALID_VISITORS` Set exists in both `index.ts` (server) and `stats.ts` (client). Same rationale as `StatsResponse` type duplication (ADR-0005 §Intentional Design Decisions): the client can't import from the analytics package. The type is a 4-value union — the duplication cost is trivial and the contract is stable.
+
+#### Documented: `bot` and `ai` filters don't exclude owner
+
+`visitorWhere('human')` and `visitorWhere('all')` include `AND is_owner = 0`. `visitorWhere('bot')` and `visitorWhere('ai')` don't. This is intentional: when viewing bot/AI traffic, you want to see everything including your own `curl` test requests (which match `TRADITIONAL_BOTS`). Owner exclusion only matters for human traffic where it inflates real visitor counts.
+
 ## References
 
 - [ADR-0004: Analytics](./0004-analytics.md) — the data collection layer this dashboard consumes
