@@ -4,6 +4,8 @@ import '../styles/stats.css';
 
 // --- Types ---
 
+type VisitorFilter = 'human' | 'bot' | 'ai' | 'all';
+
 interface StatsResponse {
   period: { start: string; end: string };
   totals: { views: number; visitors: number; ai_fetches: number };
@@ -19,8 +21,10 @@ const SPECIAL_COUNTRIES: Record<string, string> = {
   T1: '🔒 Tor', XX: '🌐 Unknown', A1: '🔒 Proxy', A2: '📡 Satellite', AP: '🌏 Asia-Pacific',
 };
 
+const VALID_VISITORS = new Set<VisitorFilter>(['human', 'bot', 'ai', 'all']);
 const MAX_ITEMS = 10;
 const CHART_HEIGHT = 300;
+const TZ_OFFSET = new Date().getTimezoneOffset();
 
 // --- Helpers ---
 
@@ -41,13 +45,7 @@ function countryLabel(code: string): string {
   } catch { return `🌐 ${code}`; }
 }
 
-function getDays(): number {
-  const p = new URLSearchParams(location.search);
-  return p.has('days') ? Number(p.get('days')) : 30;
-}
-
 function hexToFill(hex: string, alpha: number): string {
-  // Convert #rrggbb to rgba() — works regardless of CSS var format
   const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
   return `rgba(${r},${g},${b},${alpha})`;
 }
@@ -56,16 +54,31 @@ function esc(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+// --- URL State ---
+
+function getParams(): { days: number; visitor: VisitorFilter } {
+  const p = new URLSearchParams(location.search);
+  const days = p.has('days') ? Number(p.get('days')) : 30;
+  const v = p.get('visitor') as VisitorFilter | null;
+  return { days, visitor: v && VALID_VISITORS.has(v) ? v : 'human' };
+}
+
+function pushParams(days: number, visitor: VisitorFilter) {
+  const p = new URLSearchParams();
+  p.set('days', String(days));
+  if (visitor !== 'human') p.set('visitor', visitor);
+  history.pushState({}, '', `?${p}`);
+}
+
 // --- Data ---
 
-async function fetchStats(days: number): Promise<StatsResponse> {
-  const r = await fetch(`/api/stats?days=${days}`);
+async function fetchStats(days: number, visitor: VisitorFilter): Promise<StatsResponse> {
+  const r = await fetch(`/api/stats?days=${days}&tz=${TZ_OFFSET}&visitor=${visitor}`);
   if (!r.ok) throw new Error(`${r.status}`);
   return r.json();
 }
 
 function toUPlotData(byDay: StatsResponse['by_day']): uPlot.AlignedData {
-  // uPlot needs length ≥ 2 — pad with zero if single entry
   let rows = byDay;
   if (rows.length === 0) {
     const today = new Date().toISOString().slice(0, 10);
@@ -157,7 +170,6 @@ function renderAll(data: StatsResponse, days: number) {
 }
 
 function showError() {
-  // Clear data sections but preserve totals card structure for recovery
   $('stats-chart').innerHTML = '<div class="stats-error">Unable to load stats. Try refreshing.</div>';
   for (const id of ['stats-pages', 'stats-referrers', 'stats-countries']) {
     const el = $(id);
@@ -170,20 +182,23 @@ function showError() {
 // --- Init ---
 
 let currentData: StatsResponse | null = null;
-let loadId = 0; // monotonic counter to discard stale responses
+let loadId = 0;
 
-function highlightPill(days: number) {
+function highlightPills(days: number, visitor: VisitorFilter) {
   document.querySelectorAll('.stats-pills button').forEach(b => {
     b.classList.toggle('active', Number((b as HTMLElement).dataset.days) === days);
   });
+  document.querySelectorAll('.stats-visitor-pills button').forEach(b => {
+    b.classList.toggle('active', (b as HTMLElement).dataset.visitor === visitor);
+  });
 }
 
-async function load(days: number) {
-  highlightPill(days);
+async function load(days: number, visitor: VisitorFilter) {
+  highlightPills(days, visitor);
   const id = ++loadId;
   try {
-    const data = await fetchStats(days);
-    if (id !== loadId) return; // stale response — a newer request superseded this one
+    const data = await fetchStats(days, visitor);
+    if (id !== loadId) return;
     currentData = data;
     renderAll(currentData, days);
   } catch {
@@ -192,21 +207,32 @@ async function load(days: number) {
   }
 }
 
-// Period pill clicks — pushState + re-fetch
+// Period pill clicks
 document.querySelector('.stats-pills')!.addEventListener('click', (e) => {
   const btn = (e.target as HTMLElement).closest('button');
   if (!btn) return;
   const days = Number(btn.dataset.days);
-  history.pushState({}, '', `?days=${days}`);
-  load(days);
+  const { visitor } = getParams();
+  pushParams(days, visitor);
+  load(days, visitor);
+});
+
+// Visitor type pill clicks
+document.querySelector('.stats-visitor-pills')!.addEventListener('click', (e) => {
+  const btn = (e.target as HTMLElement).closest('button');
+  if (!btn) return;
+  const visitor = btn.dataset.visitor as VisitorFilter;
+  const { days } = getParams();
+  pushParams(days, visitor);
+  load(days, visitor);
 });
 
 // Back button
-window.addEventListener('popstate', () => load(getDays()));
+window.addEventListener('popstate', () => { const p = getParams(); load(p.days, p.visitor); });
 
 // Theme change — recreate chart
 new MutationObserver(() => {
-  if (currentData) renderChart(currentData.by_day, currentData.totals, getDays());
+  if (currentData) renderChart(currentData.by_day, currentData.totals, getParams().days);
 }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
 // Responsive chart
@@ -215,4 +241,5 @@ new ResizeObserver(() => {
 }).observe($('stats-chart'));
 
 // Go
-load(getDays());
+const init = getParams();
+load(init.days, init.visitor);

@@ -8,11 +8,19 @@ export function statsTemplate() {
   return html`<article>
   <div class="stats-header">
     <h1>Stats</h1>
-    <div class="stats-pills">
-      <button data-days="7">7d</button>
-      <button data-days="30">30d</button>
-      <button data-days="90">90d</button>
-      <button data-days="0">All</button>
+    <div class="stats-controls">
+      <div class="stats-visitor-pills">
+        <button data-visitor="human" class="active">Humans</button>
+        <button data-visitor="bot">Bots</button>
+        <button data-visitor="ai">AI</button>
+        <button data-visitor="all">All</button>
+      </div>
+      <div class="stats-pills">
+        <button data-days="7">7d</button>
+        <button data-days="30">30d</button>
+        <button data-days="90">90d</button>
+        <button data-days="0">All</button>
+      </div>
     </div>
   </div>
 

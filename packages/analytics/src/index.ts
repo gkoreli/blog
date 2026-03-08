@@ -1,11 +1,11 @@
 import { classifyVisitor } from './classify.js';
 import { recordPageView, type Env, type PageView } from './db.js';
 import { dailySalt, visitorHash } from './hash.js';
-import { queryStats, type StatsQuery } from './stats.js';
+import { queryStats, type StatsQuery, type VisitorFilter } from './stats.js';
 
 export { VisitorType } from './classify.js';
 export type { Env } from './db.js';
-export type { StatsResponse, StatsQuery } from './stats.js';
+export type { StatsResponse, StatsQuery, VisitorFilter } from './stats.js';
 
 /** Clean referrer: strip query params, remove self-referrals */
 function cleanReferrer(raw: string | null, selfHost: string): string | null {
@@ -84,15 +84,21 @@ export async function handleEvent(request: Request, env: Env, ctx?: ExecutionCon
 /** Max days lookback — prevents integer overflow in Date math. 0 = all time. */
 const MAX_DAYS = 365;
 
+const VALID_VISITORS = new Set<VisitorFilter>(['human', 'bot', 'ai', 'all']);
+
 /**
  * Handle GET /api/stats — public analytics JSON.
  */
 export async function handleStats(request: Request, env: Env): Promise<Response> {
   const url = new URL(request.url);
   const raw = url.searchParams.get('days');
+  const rawTz = url.searchParams.get('tz');
+  const rawVisitor = url.searchParams.get('visitor');
   const q: StatsQuery = {
     days: raw !== null ? Math.max(0, Math.min(MAX_DAYS, Number(raw) || 0)) : 30,
     path: url.searchParams.get('path') ?? undefined,
+    tz: rawTz !== null ? Math.max(-720, Math.min(840, Math.round(Number(rawTz) || 0))) : 0,
+    visitor: rawVisitor !== null && VALID_VISITORS.has(rawVisitor as VisitorFilter) ? rawVisitor as VisitorFilter : 'human',
   };
 
   const stats = await queryStats(env.DB, q);

@@ -1,10 +1,17 @@
 import type { D1Database } from '@cloudflare/workers-types';
 
+/** Visitor type filter for the stats API */
+export type VisitorFilter = 'human' | 'bot' | 'ai' | 'all';
+
 export interface StatsQuery {
   /** Number of days to look back. Default: 30 */
   days?: number;
   /** Filter by path prefix */
   path?: string | undefined;
+  /** UTC offset in minutes (e.g. -480 for PST). Default: 0 (UTC) */
+  tz?: number;
+  /** Visitor type filter. Default: 'human' */
+  visitor?: VisitorFilter;
 }
 
 export interface StatsResponse {
@@ -16,21 +23,52 @@ export interface StatsResponse {
   by_referrer: Array<{ referrer: string; views: number }>;
 }
 
+/** SQLite time shift string from UTC offset minutes. e.g. -480 → '+08:00', 300 → '-05:00' */
+function tzModifier(offsetMin: number): string {
+  if (offsetMin === 0) return '+00:00';
+  // JS getTimezoneOffset() returns minutes *behind* UTC: PST = +480, EST = +300
+  // We negate to get the SQLite modifier: +480 → -08:00 (subtract 8h from UTC = PST)
+  const sign = offsetMin > 0 ? '-' : '+';
+  const abs = Math.abs(offsetMin);
+  const h = String(Math.floor(abs / 60)).padStart(2, '0');
+  const m = String(abs % 60).padStart(2, '0');
+  return `${sign}${h}:${m}`;
+}
+
+/** SQL WHERE clause fragment for visitor_type filtering */
+function visitorWhere(v: VisitorFilter): string {
+  switch (v) {
+    case 'human': return 'AND visitor_type = 0 AND is_owner = 0';
+    case 'bot': return 'AND visitor_type = 1';
+    case 'ai': return 'AND visitor_type = 2';
+    case 'all': return 'AND is_owner = 0';
+  }
+}
+
 export async function queryStats(db: D1Database, q: StatsQuery = {}): Promise<StatsResponse> {
   const days = q.days ?? 30;
   const all = days === 0;
+  const tz = tzModifier(q.tz ?? 0);
+  const vw = visitorWhere(q.visitor ?? 'human');
+
+  // Compute 'since' in the viewer's local day, then convert back to UTC for the WHERE clause.
+  // This ensures the lookback window aligns with the viewer's calendar, not UTC midnight.
   const since = all ? '1970-01-01' : new Date(Date.now() - days * 86400_000).toISOString().slice(0, 10);
   const pathFilter = q.path ? `AND path LIKE ?` : '';
   const bind = (stmt: D1PreparedStatement) =>
     q.path ? stmt.bind(since, `${q.path}%`) : stmt.bind(since);
 
+  // datetime(created_at, tz) shifts UTC timestamps to the viewer's local time before DATE() groups them.
+  // This means a visit at 2026-03-07T01:00Z (= 2026-03-06T17:00 PST) groups under '2026-03-06' for PST viewers.
+  const localDate = `DATE(datetime(created_at, '${tz}'))`;
+
   const [totals, byPath, byCountry, byDay, byReferrer, aiFetches] = await db.batch([
-    bind(db.prepare(`SELECT COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE created_at >= ? AND visitor_type = 0 AND is_owner = 0 ${pathFilter}`)),
-    bind(db.prepare(`SELECT path, COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE created_at >= ? AND visitor_type = 0 AND is_owner = 0 ${pathFilter} GROUP BY path ORDER BY views DESC LIMIT 50`)),
-    bind(db.prepare(`SELECT country, COUNT(*) as views FROM page_views WHERE created_at >= ? AND visitor_type = 0 AND is_owner = 0 AND country IS NOT NULL ${pathFilter} GROUP BY country ORDER BY views DESC LIMIT 30`)),
-    bind(db.prepare(`SELECT DATE(created_at) as date, COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE created_at >= ? AND visitor_type = 0 AND is_owner = 0 ${pathFilter} GROUP BY date ORDER BY date`)),
-    bind(db.prepare(`SELECT referrer, COUNT(*) as views FROM page_views WHERE created_at >= ? AND visitor_type = 0 AND is_owner = 0 AND referrer IS NOT NULL ${pathFilter} GROUP BY referrer ORDER BY views DESC LIMIT 20`)),
-    bind(db.prepare(`SELECT COUNT(*) as count FROM page_views WHERE created_at >= ? AND visitor_type = 2 ${pathFilter}`)),
+    bind(db.prepare(`SELECT COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter}`)),
+    bind(db.prepare(`SELECT path, COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter} GROUP BY path ORDER BY views DESC LIMIT 50`)),
+    bind(db.prepare(`SELECT country, COUNT(*) as views FROM page_views WHERE ${localDate} >= ? ${vw} AND country IS NOT NULL ${pathFilter} GROUP BY country ORDER BY views DESC LIMIT 30`)),
+    bind(db.prepare(`SELECT ${localDate} as date, COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter} GROUP BY date ORDER BY date`)),
+    bind(db.prepare(`SELECT referrer, COUNT(*) as views FROM page_views WHERE ${localDate} >= ? ${vw} AND referrer IS NOT NULL ${pathFilter} GROUP BY referrer ORDER BY views DESC LIMIT 20`)),
+    bind(db.prepare(`SELECT COUNT(*) as count FROM page_views WHERE ${localDate} >= ? AND visitor_type = 2 ${pathFilter}`)),
   ]);
 
   const t = (totals.results?.[0] ?? { views: 0, visitors: 0 }) as Record<string, number>;
