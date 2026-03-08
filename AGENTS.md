@@ -176,7 +176,11 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 
 ### Layout
 - **Sidebar navigation stays** — meaningful for a technical blog with structured content. Inspired by shiki.style and knifecoat.com. Not every blog needs to be single-column.
-- **3-column CSS grid** — sidebar | content (800px) | gutter. Content always centered, sidebar right-aligned within its column (close to content, not pinned to edge). Gutter is empty, exists for symmetric centering.
+- **3-column CSS grid** — `1fr minmax(0, var(--content-max)) 1fr`. Content always centered, sidebar right-aligned within its column. Gutter mirrors sidebar for symmetric centering. `minmax` lets content shrink on narrow viewports — no horizontal scroll.
+- **Sidebar sizes to content** — no fixed width. Sits inside `.sidebar-wrapper` with `justify-content: flex-end`. Spacing via single `gap: 1rem` on parent flex container.
+- **Sidebar HTML zones** — `sidebar-bar` (logo + burger), `sidebar-social` (icon buttons), `sidebar-nav` (sections + separator). Clean separation for responsive behavior.
+- **One media query (768px)** — the only structural change. Grid goes single-column, sidebar becomes horizontal header bar with burger menu. Everything else is intrinsic: `auto-fit` grids, `flex-wrap`, `minmax`.
+- **`<nisli-burger-menu>` web component** — toggles full-screen overlay on mobile. Same `@nisli/core` pattern as theme toggle. Escape to close, body scroll locked, `aria-expanded`.
 - **Code blocks get visual priority** — they're the primary content. Generous padding, full-width within the content column, prominent but not overwhelming.
 - **Tagline** — "Where excitement ends, depth begins." in the sidebar. Captures the philosophy: the real work starts after the dopamine of new ideas fades.
 - **Pages** — `/about` page with full bio, projects, and connect links. Home page has hero (name, projects grid, brief about) + post list separated by sparkle.
@@ -261,8 +265,8 @@ All SEO files are auto-generated at build time from `PostMeta[]`. Adding a new p
 - **License**: MIT
 - **Branch**: `main`
 - **Status**: Live at gkoreli.com — design system complete, first post published, CI/CD active
-- **Done**: SSG pipeline, shiki dual themes, theme toggle, sidebar nav, SVG icon set, Georgian გკ logo/favicon, Zod frontmatter validation, warm cream/dark palette, Lora serif typography, Cloudflare Workers deploy, Cloudflare DNS, RSS feed, llms.txt, OG image generation (satori + resvg), about page, 404 redirect, blog-writing agent skill, prompt transparency feature, custom cookieless analytics (ADR-0004), public /stats dashboard with visitor type filter + timezone-aware hourly/daily chart (ADR-0005), SEO discoverability layer (ADR-0006 Phase 1: sitemap.xml, llms.txt, llms-full.txt, posts.json, .md endpoints, JSON-LD, canonical URLs, og:url), `_headers` UTF-8 charset fix for .txt/.md files
-- **Next**: ADR-0006 Phase 2 (AI traffic intelligence — expand classifier 15→~35 agents, `agent_name` column, stats by_agent), mobile responsive (sidebar collapse), write more content, @nisli/core SSR (TASK-0477)
+- **Done**: SSG pipeline, shiki dual themes, theme toggle, sidebar nav, SVG icon set, Georgian გკ logo/favicon, Zod frontmatter validation, warm cream/dark palette, Lora serif typography, Cloudflare Workers deploy, Cloudflare DNS, RSS feed, llms.txt, OG image generation (satori + resvg), about page, 404 redirect, blog-writing agent skill, prompt transparency feature, custom cookieless analytics (ADR-0004), public /stats dashboard with visitor type filter + timezone-aware hourly/daily chart (ADR-0005), SEO discoverability layer (ADR-0006 Phase 1: sitemap.xml, llms.txt, llms-full.txt, posts.json, .md endpoints, JSON-LD, canonical URLs, og:url), `_headers` UTF-8 charset fix for .txt/.md files, responsive layout with burger menu (ADR-0007: intrinsic grid, one media query, `<nisli-burger-menu>` web component)
+- **Next**: ADR-0006 Phase 2 (AI traffic intelligence — expand classifier 15→~35 agents, `agent_name` column, stats by_agent), write more content, @nisli/core SSR (TASK-0477)
 
 ## Tech Stack
 
@@ -278,5 +282,4 @@ All SEO files are auto-generated at build time from `PostMeta[]`. Adding a new p
 
 - Email newsletter (Buttondown or Resend)
 - Series/tags for organizing content by topic
-- Mobile responsive — sidebar collapses on small screens
 - The blog becomes the public face of the `gkoreli` builder identity — connecting GitHub, npm, and writing into one coherent presence

@@ -40,12 +40,15 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   <div class="layout">
     <div class="sidebar-wrapper">
     <aside class="sidebar">
-      <div class="sidebar-header">
-        <a href="/" class="sidebar-logo">
-          <img src="/icons/logo.svg" width="24" height="24" alt="">
-          <span>gkoreli.com</span>
-        </a>
-        <p>Where excitement ends, depth begins.</p>
+      <div class="sidebar-bar">
+        <div class="sidebar-header">
+          <a href="/" class="sidebar-logo">
+            <img src="/icons/logo.svg" width="24" height="24" alt="">
+            <span>gkoreli.com</span>
+          </a>
+          <p>Where excitement ends, depth begins.</p>
+        </div>
+        <nisli-burger-menu></nisli-burger-menu>
       </div>
       <div class="sidebar-social">
         <a href="https://github.com/gkoreli" title="GitHub" target="_blank" rel="noopener"><img src="/icons/github.svg" width="18" height="18" alt="GitHub"></a>
@@ -53,14 +56,16 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
         <a href="https://www.linkedin.com/in/goga-koreli/" title="LinkedIn" target="_blank" rel="noopener"><img src="/icons/linkedin.svg" width="18" height="18" alt="LinkedIn"></a>
         <nisli-theme-toggle></nisli-theme-toggle>
       </div>
-      <nav class="sidebar-section">
-        <a href="/about" class="${currentSlug === 'about' ? 'active' : ''}">About</a>
-        <a href="/stats" class="${currentSlug === 'stats' ? 'active' : ''}">Stats</a>
-      </nav>
-      <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
-      <nav class="sidebar-section">
-        ${posts.map(p => html`<a href="/${p.slug}" class="${currentSlug === p.slug ? 'active' : ''}">${p.title}</a>`)}
-      </nav>
+      <div class="sidebar-nav">
+        <nav class="sidebar-section">
+          <a href="/about" class="${currentSlug === 'about' ? 'active' : ''}">About</a>
+          <a href="/stats" class="${currentSlug === 'stats' ? 'active' : ''}">Stats</a>
+        </nav>
+        <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
+        <nav class="sidebar-section">
+          ${posts.map(p => html`<a href="/${p.slug}" class="${currentSlug === p.slug ? 'active' : ''}">${p.title}</a>`)}
+        </nav>
+      </div>
     </aside>
     </div>
 

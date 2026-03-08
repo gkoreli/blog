@@ -19,11 +19,12 @@
 .stats-pills button.active, .stats-visitor-pills button.active { background: var(--color-surface); color: var(--color-text); font-weight: 600; }
 
 /* Totals */
-.stats-totals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+.stats-totals { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
 .stats-card {
   padding: 1rem;
   border: 1px solid var(--color-border);
   border-radius: 0.5rem;
+  flex: 1 1 150px;
 }
 .stats-card-value { font-size: 1.8rem; font-weight: 700; line-height: 1.2; }
 .stats-card-label { font-size: 0.8rem; color: var(--color-text-muted); }
@@ -84,11 +85,4 @@
 @media print {
   .stats-chart { display: none; }
   .stats-pills, .stats-visitor-pills { display: none; }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .stats-totals { grid-template-columns: 1fr; }
-  .stats-header { flex-direction: column; }
-  .stats-controls { width: 100%; justify-content: space-between; }
 }

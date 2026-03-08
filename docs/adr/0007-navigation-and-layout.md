@@ -2,71 +2,95 @@
 
 ## Status
 
-Phase 1 accepted — 2026-03-07. Sidebar nav split: page links above separator, posts below.
+Accepted — 2026-03-07. Navigation hierarchy, responsive layout, burger menu.
 
 ## Context
 
-The sidebar nav treats About, Stats, and blog posts as equal siblings — same `<a>` styling, same list. This is misleading: utility/feature pages and blog posts are fundamentally different content types that grow at different rates. As more pages are added (Projects, Talk, Contribute), blog posts get pushed down and the nav becomes a flat soup with no hierarchy.
-
-### Current Layout
-
-```
-gkoreli.com
-"Where excitement ends..."
-[GitHub] [npm] [LinkedIn] [🌙]
-─── ✦ ───
-About                    ← same styling as posts
-Stats                    ← same styling as posts
-The Agentic Product...   ← blog post
-```
-
-### Problem
-
-1. Page links (About, Stats) and blog posts look identical — no visual hierarchy
-2. Adding more pages (Projects, Talk, Contribute) pushes posts further down
-3. No mobile responsive story — sidebar is unusable on small screens
-4. Scales poorly beyond 3-4 total nav items
+The sidebar nav treated About, Stats, and blog posts as equal siblings. No visual hierarchy, no responsive story — sidebar was hidden on mobile losing all navigation. Layout shift: sidebar width varied by content (283px vs 285px across pages).
 
 ## Decision
 
-Two-phase approach: sidebar split now, top bar when page count or mobile demands it.
+### Navigation Hierarchy
 
-### Phase 1: Sidebar Nav Split (now)
-
-Move page links (About, Stats) above the separator as a compact nav row. Posts own everything below the separator. Page links are smaller, muted — clearly secondary to blog content.
+Two `sidebar-section` navs with identical link styling. The sparkle separator is the only visual divider — no labels, no icons, no special treatment. Pages above, posts below.
 
 ```
 gkoreli.com
 "Where excitement ends..."
 [GitHub] [npm] [LinkedIn] [🌙]
-About · Stats              ← page nav: small, inline, muted
-─── ✦ ───
-The Agentic Product...     ← posts: full prominence
-Post Two
-Post Three
+About                      ← sidebar-section (pages)
+Stats
+─── ✦ ───                  ← sparkle separator
+The Agentic Product...     ← sidebar-section (posts)
 ```
 
-**Rationale**: Minimal code change. Immediately establishes hierarchy. Scales to ~5 page links. No new layout elements. Zero throwaway work — the page nav row promotes directly to a top bar in Phase 2.
+Adding a new page = one `<a>` tag. Same link styling, zero per-section CSS.
 
-### Phase 2: Top Bar + Mobile Responsive (future)
+### Sidebar HTML Structure
 
-When page count exceeds ~5 or mobile responsive is built, promote the page nav row to a lightweight full-width top bar above the sidebar+content grid.
+Split into three zones for clean responsive behavior:
 
+```html
+<aside class="sidebar">           <!-- flex column, gap: 1rem -->
+  <div class="sidebar-bar">       <!-- logo + burger (row on mobile) -->
+  <div class="sidebar-social">    <!-- icon buttons (hidden on mobile, shown in overlay) -->
+  <div class="sidebar-nav">       <!-- sections + separator (hidden on mobile, shown in overlay) -->
+</aside>
 ```
-Desktop:  [top bar: logo · About · Stats · Projects · Talk]
-          [sidebar (posts only) | content | gutter]
 
-Mobile:   [top bar: logo · ☰]
-          [content, full width]
-          ☰ opens: page links + post list
+The bar is always horizontal on mobile. Social and nav toggle independently via the burger.
+
+### Layout: Intrinsic Grid
+
+```css
+grid-template-columns: 1fr minmax(0, var(--content-max)) 1fr;
 ```
 
-**Rationale**: The top bar becomes the single source of truth for navigation on all screen sizes. The sidebar becomes a desktop-only enhancement for content discovery. The hamburger menu on mobile solves the "sidebar doesn't fit" problem.
+- Content centered via symmetric `1fr` columns (sidebar left, gutter right)
+- `minmax(0, 800px)` — content shrinks on narrow viewports, no horizontal scroll
+- Sidebar sizes to its content (no fixed width) inside `.sidebar-wrapper` with `justify-content: flex-end`
+- Sidebar spacing: single `gap: 1rem` on parent — no individual margins
 
-**Trigger**: Build Phase 2 when one of these happens:
-- More than 5 page links in the sidebar nav row
-- Mobile responsive work begins
-- A page like `/talk` needs prominent placement
+### Layout Shift Fix
+
+`.sidebar-wrapper` fills the full `1fr` grid column. Sidebar aligns right inside it. Wrapper width is grid-determined, not content-dependent.
+
+### Responsive: One Media Query + Intrinsic Layouts
+
+**Single media query at 768px** — the only structural layout change:
+- Grid switches to single column
+- Sidebar becomes horizontal header bar (logo + burger)
+- Social + nav hidden until burger opens full-screen overlay
+- Body scroll locked when overlay is open
+
+**Everything else is intrinsic** — no media queries:
+- Projects: `repeat(auto-fit, minmax(200px, 1fr))` — reflows 3→2→1
+- Stats totals: `flex-wrap` with `flex: 1 1 150px` — reflows naturally
+- Sidebar bar: `flex-wrap: wrap` — wraps on narrow screens
+
+**Resilience principle**: New code doesn't break responsiveness because:
+- Content goes in `.content` — grid handles width
+- Page links go in `sidebar-section` — one `<a>` tag
+- `--content-max` constrains width; `minmax` handles shrinking
+- No component knows what breakpoint it's in
+
+### Burger Menu: `<nisli-burger-menu>`
+
+Web component built with `@nisli/core` — same pattern as `<nisli-theme-toggle>`.
+
+- Hidden on desktop (`display: none`), shown on mobile (`display: block; margin-left: auto`)
+- Toggles `body.menu-open` class — CSS controls the overlay
+- Full-screen overlay: sidebar becomes `position: fixed; inset: 0`
+- Bar stays in place, social + nav appear below it
+- Escape key to close, body scroll locked when open
+- Icon swaps between menu/close via `computed()` signal binding
+- ~20 lines of component code
+
+**Why web component**: Encapsulated state, consistent with theme toggle, accessibility built in (`aria-expanded`), no global script hacks.
+
+### Future: Hamburger Enhancements
+
+When page count exceeds ~5: focus trap, click-outside-to-close, slide animation.
 
 ## Constraints
 
