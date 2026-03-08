@@ -1,18 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
   <defs>
     <linearGradient id="phone-g" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1a6b4e"/>
       <stop offset="100%" stop-color="#6ec9a8"/>
     </linearGradient>
   </defs>
-  <!-- Tall narrow body — clearly a phone proportion -->
-  <rect x="7" y="2" width="10" height="20" rx="2.5" stroke="url(#phone-g)"/>
-  <!-- Speaker slit -->
-  <line x1="10.5" y1="5" x2="13.5" y2="5" stroke="url(#phone-g)" stroke-width="1.5"/>
-  <!-- Screen area hint -->
-  <line x1="9.5" y1="8" x2="14.5" y2="8" stroke="url(#phone-g)" stroke-width="1" opacity="0.4"/>
-  <line x1="9.5" y1="10.5" x2="14.5" y2="10.5" stroke="url(#phone-g)" stroke-width="1" opacity="0.4"/>
-  <line x1="9.5" y1="13" x2="12.5" y2="13" stroke="url(#phone-g)" stroke-width="1" opacity="0.4"/>
-  <!-- Gesture bar at bottom -->
-  <line x1="10" y1="19" x2="14" y2="19" stroke="url(#phone-g)" stroke-width="1.5"/>
+  <rect x="6" y="2" width="12" height="20" rx="2" stroke="url(#phone-g)" stroke-width="2"/>
+  <line x1="10" y1="19" x2="14" y2="19" stroke="url(#phone-g)" stroke-width="2" stroke-linecap="round"/>
 </svg>

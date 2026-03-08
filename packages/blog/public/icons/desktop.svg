@@ -1,18 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
   <defs>
     <linearGradient id="desktop-g" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1a6b4e"/>
       <stop offset="100%" stop-color="#6ec9a8"/>
     </linearGradient>
   </defs>
-  <!-- Monitor -->
-  <rect x="2" y="3" width="20" height="13" rx="2" stroke="url(#desktop-g)"/>
-  <!-- Screen content hints -->
-  <line x1="5" y1="7" x2="13" y2="7" stroke="url(#desktop-g)" stroke-width="1" opacity="0.4"/>
-  <line x1="5" y1="9.5" x2="19" y2="9.5" stroke="url(#desktop-g)" stroke-width="1" opacity="0.4"/>
-  <line x1="5" y1="12" x2="10" y2="12" stroke="url(#desktop-g)" stroke-width="1" opacity="0.4"/>
-  <!-- Neck -->
-  <line x1="12" y1="16" x2="12" y2="19" stroke="url(#desktop-g)"/>
-  <!-- Base — wider, gives it weight -->
-  <line x1="7" y1="19" x2="17" y2="19" stroke="url(#desktop-g)"/>
+  <rect x="2" y="3" width="20" height="14" rx="2" stroke="url(#desktop-g)" stroke-width="2"/>
+  <path d="M8 21h8M12 17v4" stroke="url(#desktop-g)" stroke-width="2" stroke-linecap="round"/>
 </svg>
