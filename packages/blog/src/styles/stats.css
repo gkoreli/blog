@@ -29,6 +29,14 @@
 .stats-card-value { font-size: 1.8rem; font-weight: 700; line-height: 1.2; }
 .stats-card-label { font-size: 0.8rem; color: var(--color-text-muted); }
 
+/* Device breakdown */
+.stats-devices { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; }
+.stats-device { display: flex; align-items: center; gap: 0.5rem; }
+.stats-device img { opacity: 0.6; }
+.stats-device-value { font-size: 1.1rem; font-weight: 600; }
+.stats-device-label { font-size: 0.8rem; color: var(--color-text-muted); }
+.skeleton-device-val { display: inline-block; width: 2.5rem; height: 1.1rem; }
+
 /* Chart */
 .stats-chart { margin-bottom: 2rem; min-height: 300px; }
 .stats-chart .uplot { font-family: var(--font-sans); }

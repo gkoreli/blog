@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <defs>
+    <linearGradient id="phone-g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a6b4e"/>
+      <stop offset="100%" stop-color="#6ec9a8"/>
+    </linearGradient>
+  </defs>
+  <rect x="5" y="2" width="14" height="20" rx="2" stroke="url(#phone-g)" stroke-width="2"/>
+  <line x1="12" y1="18" x2="12.01" y2="18" stroke="url(#phone-g)" stroke-width="2" stroke-linecap="round"/>
+</svg>

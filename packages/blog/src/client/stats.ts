@@ -14,6 +14,7 @@ interface StatsResponse {
   by_country: { country: string; views: number }[];
   by_day: { date: string; views: number; visitors: number }[];
   by_referrer: { referrer: string; views: number }[];
+  by_device: { device_type: string; views: number }[];
 }
 
 // --- Constants ---
@@ -159,8 +160,24 @@ function renderList(items: { label: string; value: number }[], containerId: stri
   }
 }
 
+function renderDevices(byDevice: StatsResponse['by_device'], totalViews: number) {
+  const el = $('stats-devices');
+  const lookup: Record<string, number> = {};
+  for (const d of byDevice) lookup[d.device_type] = d.views;
+  const order = ['desktop', 'mobile', 'tablet'] as const;
+  const items = el.querySelectorAll('.stats-device');
+  items.forEach((item, i) => {
+    const type = order[i];
+    const views = lookup[type] ?? 0;
+    const pct = totalViews > 0 ? Math.round((views / totalViews) * 100) : 0;
+    const span = item.querySelector('.skeleton, .stats-device-value');
+    if (span) { span.className = 'stats-device-value'; span.textContent = `${pct}%`; }
+  });
+}
+
 function renderAll(data: StatsResponse, days: number) {
   renderTotals(data.totals);
+  renderDevices(data.by_device, data.totals.views);
   renderChart(data.by_day, data.totals, days);
   renderList(data.by_path.map(p => ({ label: p.path, value: p.views })), 'stats-pages');
   renderList(data.by_referrer.map(r => ({ label: r.referrer, value: r.views })), 'stats-referrers');

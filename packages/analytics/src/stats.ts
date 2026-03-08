@@ -22,6 +22,7 @@ export interface StatsResponse {
   by_country: Array<{ country: string; views: number }>;
   by_day: Array<{ date: string; views: number; visitors: number }>;
   by_referrer: Array<{ referrer: string; views: number }>;
+  by_device: Array<{ device_type: string; views: number }>;
 }
 
 /** SQLite time shift string from UTC offset minutes. e.g. -480 → '+08:00', 300 → '-05:00' */
@@ -68,13 +69,14 @@ export async function queryStats(db: D1Database, q: StatsQuery = {}): Promise<St
   // Hourly: 'YYYY-MM-DDTHH:00:00' — JS parses as local time (no Z). Daily: 'YYYY-MM-DD'.
   const bucket = hourly ? `strftime('%Y-%m-%dT%H:00:00', ${localDt})` : localDate;
 
-  const [totals, byPath, byCountry, byDay, byReferrer, aiFetches] = await db.batch([
+  const [totals, byPath, byCountry, byDay, byReferrer, aiFetches, byDevice] = await db.batch([
     bind(db.prepare(`SELECT COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter}`)),
     bind(db.prepare(`SELECT path, COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter} GROUP BY path ORDER BY views DESC LIMIT 50`)),
     bind(db.prepare(`SELECT country, COUNT(*) as views FROM page_views WHERE ${localDate} >= ? ${vw} AND country IS NOT NULL ${pathFilter} GROUP BY country ORDER BY views DESC LIMIT 30`)),
     bind(db.prepare(`SELECT ${bucket} as date, COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter} GROUP BY date ORDER BY date`)),
     bind(db.prepare(`SELECT referrer, COUNT(*) as views FROM page_views WHERE ${localDate} >= ? ${vw} AND referrer IS NOT NULL ${pathFilter} GROUP BY referrer ORDER BY views DESC LIMIT 20`)),
     bind(db.prepare(`SELECT COUNT(*) as count FROM page_views WHERE ${localDate} >= ? AND visitor_type = 2 ${pathFilter}`)),
+    bind(db.prepare(`SELECT device_type, COUNT(*) as views FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter} GROUP BY device_type ORDER BY views DESC`)),
   ]);
 
   const t = (totals.results?.[0] ?? { views: 0, visitors: 0 }) as Record<string, number>;
@@ -91,5 +93,6 @@ export async function queryStats(db: D1Database, q: StatsQuery = {}): Promise<St
     by_country: (byCountry.results ?? []) as StatsResponse['by_country'],
     by_day: (byDay.results ?? []) as StatsResponse['by_day'],
     by_referrer: (byReferrer.results ?? []) as StatsResponse['by_referrer'],
+    by_device: (byDevice.results ?? []) as StatsResponse['by_device'],
   };
 }
