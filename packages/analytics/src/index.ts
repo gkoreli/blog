@@ -1,9 +1,10 @@
-import { classifyVisitor } from './classify.js';
+import { classifyVisitor, classifyDevice } from './classify.js';
 import { recordPageView, type Env, type PageView } from './db.js';
 import { dailySalt, visitorHash } from './hash.js';
 import { queryStats, type StatsQuery, type VisitorFilter } from './stats.js';
 
 export { VisitorType } from './classify.js';
+export type { DeviceType } from './classify.js';
 export type { Env } from './db.js';
 export type { StatsResponse, StatsQuery, VisitorFilter } from './stats.js';
 
@@ -50,6 +51,7 @@ export async function handleEvent(request: Request, env: Env, ctx?: ExecutionCon
   const { country, city, continent } = geo(cf);
 
   const visitorType = classifyVisitor(ua);
+  const deviceType = classifyDevice(ua);
   const hash = await visitorHash(ip, ua ?? '', dailySalt());
   const ownerIps = env.OWNER_IPS?.split(',').map(s => s.trim()) ?? [];
   const isOwner = ownerIps.includes(ip) ? 1 : 0;
@@ -62,6 +64,7 @@ export async function handleEvent(request: Request, env: Env, ctx?: ExecutionCon
     continent,
     visitor_hash: hash,
     visitor_type: visitorType,
+    device_type: deviceType,
     is_owner: isOwner,
   };
 

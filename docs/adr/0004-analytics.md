@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted — 2026-03-06. Phase 1 deployed — 2026-03-07. API updated 2026-03-07: timezone-aware queries, visitor type filter.
+Accepted — 2026-03-06. Phase 1 deployed — 2026-03-07. API updated 2026-03-07: timezone-aware queries, visitor type filter. Device type classification added 2026-03-08.
 
 ## Context
 
@@ -226,7 +226,7 @@ The analytics library lives in `packages/analytics` — a separate workspace pac
 packages/
   analytics/          ← @gkoreli/analytics — framework-agnostic, zero runtime deps
     src/
-      classify.ts     ← visitor_type enum: human (0), bot (1), AI agent (2)
+      classify.ts     ← visitor_type enum + device_type: human/bot/AI + mobile/tablet/desktop
       hash.ts         ← daily-salted SHA-256 visitor hash
       db.ts           ← D1 types and INSERT
       stats.ts        ← batched D1 queries for /api/stats
@@ -253,6 +253,7 @@ CREATE TABLE page_views (
   continent TEXT,
   visitor_hash TEXT,    -- hash(IP + UA + daily_salt), no PII stored
   visitor_type INTEGER DEFAULT 0,  -- 0=human, 1=bot/crawler, 2=AI agent
+  device_type TEXT DEFAULT 'desktop',  -- mobile, tablet, desktop
   is_owner INTEGER DEFAULT 0,
   created_at TEXT DEFAULT (datetime('now'))
 );
@@ -815,6 +816,25 @@ Analytics is best-effort — losing a few events during D1 outages is acceptable
 | `path` | string | — | Filter by path prefix |
 | `tz` | `-720..840` | `0` | Client's UTC offset in minutes (`getTimezoneOffset()`). Server uses SQLite `datetime(created_at, '±HH:MM')` to group by the viewer's local day. |
 | `visitor` | `human\|bot\|ai\|all` | `human` | Visitor type filter. `human` excludes bots, AI, and owner. `all` excludes only owner. |
+
+### Device Type Classification (2026-03-08)
+
+Added `device_type` column (`mobile` | `tablet` | `desktop`) to `page_views`. Classified server-side from User-Agent — no client-side change.
+
+**Why only device type**: We evaluated 10 common analytics fields. Most either violate the cookieless philosophy (session duration, scroll depth, exit page), duplicate what Cloudflare provides free (page load time), or add complexity for vanity metrics (UTM params, language). Device type is the one signal that informs real decisions — we just shipped a responsive layout and burger menu (ADR-0007), we should validate it's used.
+
+**What we deliberately don't capture:**
+- Browser/OS — we use standard CSS, no polyfills, no platform-specific bugs to debug
+- Screen width — privacy-invasive; device type covers the responsive breakpoint question
+- Session duration / scroll depth — requires heartbeat pings, complexity for engagement vanity metrics
+- UTM params — not running campaigns
+- Language — blog is English only
+
+**Classification approach**: Regex on User-Agent, same as Counterscale's `ua-parser-js` approach but without the 14KB dependency. Three patterns: TABLET checked first (iPad, Android without Mobile, Kindle), then MOBILE (iPhone, Android with Mobile, iPod), default DESKTOP. Bots default to desktop (irrelevant — they're filtered out in human stats).
+
+**Schema migration**: `ALTER TABLE page_views ADD COLUMN device_type TEXT DEFAULT 'desktop'` — existing rows backfilled as desktop. No index needed at current scale.
+
+**Stats API**: Not yet exposed in `/api/stats`. Collecting data first. Will add `by_device` breakdown when there's enough data to be meaningful.
 
 ### Timezone-Aware Date Grouping
 

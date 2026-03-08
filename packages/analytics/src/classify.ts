@@ -24,3 +24,15 @@ export function classifyVisitor(ua: string | null): VisitorType {
   if (TRADITIONAL_BOTS.test(ua)) return VisitorType.Bot;
   return VisitorType.Human;
 }
+
+export type DeviceType = 'mobile' | 'tablet' | 'desktop';
+
+const MOBILE = /Mobile|Android(?!.*Tablet)|iPhone|iPod|Opera Mini|IEMobile/i;
+const TABLET = /Tablet|iPad|Android(?!.*Mobile)|Kindle|Silk/i;
+
+export function classifyDevice(ua: string | null): DeviceType {
+  if (!ua) return 'desktop';
+  if (TABLET.test(ua)) return 'tablet';
+  if (MOBILE.test(ua)) return 'mobile';
+  return 'desktop';
+}

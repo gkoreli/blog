@@ -11,6 +11,7 @@ CREATE TABLE page_views (
   visitor_hash TEXT,
   visitor_type INTEGER DEFAULT 0,
   is_owner INTEGER DEFAULT 0,
+  device_type TEXT DEFAULT 'desktop',
   created_at TEXT DEFAULT (datetime('now'))
 );
 
