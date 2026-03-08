@@ -31,9 +31,9 @@ export function statsTemplate() {
   </div>
 
   <div class="stats-devices" id="stats-devices">
-    <div class="stats-device"><img src="/icons/desktop.svg" width="20" height="20" alt=""><span class="skeleton skeleton-device-val"></span><span class="stats-device-label">Desktop</span></div>
-    <div class="stats-device"><img src="/icons/phone.svg" width="20" height="20" alt=""><span class="skeleton skeleton-device-val"></span><span class="stats-device-label">Mobile</span></div>
-    <div class="stats-device"><img src="/icons/tablet.svg" width="20" height="20" alt=""><span class="skeleton skeleton-device-val"></span><span class="stats-device-label">Tablet</span></div>
+    <div class="stats-device"><img src="/icons/desktop.svg" width="20" height="20" alt=""><span class="stats-device-label">Desktop</span><span class="skeleton skeleton-device-val"></span></div>
+    <div class="stats-device"><img src="/icons/phone.svg" width="20" height="20" alt=""><span class="stats-device-label">Mobile</span><span class="skeleton skeleton-device-val"></span></div>
+    <div class="stats-device"><img src="/icons/tablet.svg" width="20" height="20" alt=""><span class="stats-device-label">Tablet</span><span class="skeleton skeleton-device-val"></span></div>
   </div>
 
   <div class="stats-chart" id="stats-chart" role="img" aria-label="Daily views chart">
