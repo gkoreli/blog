@@ -320,6 +320,8 @@ a.post-preview:hover { background: var(--color-surface); }
   margin-bottom: 1.5rem;
   font-size: 0.85rem;
   line-height: 1.5;
+  display: block;
+  overflow-x: auto;
 }
 .post-content thead {
   border-bottom: 2px solid var(--color-border);
@@ -339,7 +341,7 @@ a.post-preview:hover { background: var(--color-surface); }
   vertical-align: top;
 }
 .post-content td:last-child {
-  white-space: nowrap;
+  white-space: normal;
 }
 .post-content tbody tr:last-child td {
   border-bottom: none;

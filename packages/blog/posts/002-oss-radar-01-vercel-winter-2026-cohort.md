@@ -46,6 +46,8 @@ The AI angle is increasingly important. As more workflows involve agents indexin
 
 They've built explicit support for [MCP](https://modelcontextprotocol.io/) — Anthropic's open protocol for connecting AI agents to external data sources, adopted by OpenAI in March 2025. If community knowledge is MCP-accessible, a coding agent working on a Nuxt or Cloudflare project can pull relevant Discord Q&A directly into its context window. That's a meaningfully different infrastructure value proposition than "better SEO."
 
+- **Cross-reference:** A [2023 HN thread on Answer Overflow](https://news.ycombinator.com/item?id=35887090) generated hundreds of comments validating the Discord-as-walled-garden problem firsthand. A [DEV.to piece "Turning Discord Threads Into SEO Gold"](https://dev.to/) independently documents the exact workflow Answer Overflow automates — written by someone who hadn't heard of the project.
+
 ---
 
 ### [UI TripleD](https://ui.tripled.work/) — Moumen Soliman
@@ -76,6 +78,9 @@ CodePush has been a mess — Microsoft deprecated it, Expo absorbed parts of it,
 
 **The context that makes this necessary:** CodePush was officially retired on **March 31, 2025** — not deprecated, shut down. hot-updater fills that void with a plugin system for storage backends: AWS S3, Cloudflare R2, or Supabase. A web console handles update management. First-class support for React Native's new architecture (Fabric, TurboModules, RN 0.76+), which CodePush never properly supported. The TypeScript/Kotlin/Swift split (79%/9%/7%) reflects a genuine cross-platform implementation. Vercel is a first-class deployment target.
 
+- **Cross-reference:** [Expo's official blog post "What to do without CodePush"](https://expo.dev/blog/goodbye-codepush) links hot-updater as the recommended community-maintained migration path — the highest-credibility endorsement possible from the React Native ecosystem's primary maintainer. Expo's own CodePush migration docs point here.
+- **From the source:** Production logs in the hot-updater repo document a real edge case: a ~30% silent crash rate on Android when the update download completes but the process doesn't reload. The Android process reload feature (added in v0.14) is a direct response. Real-world bugs, fixed in the open.
+
 ---
 
 ### [Screenshot Studio](https://www.screenshot-studio.com/) — Kartik Labhshetwar
@@ -104,6 +109,9 @@ A **`next/og` alternative** with more advanced features. Growing adoption across
 
 **Why it's technically distinct:** Most JSX-to-image pipelines go JSX → SVG (via Satori) → PNG (via resvg). takumi skips the SVG intermediate entirely, rendering directly to raster through a **Rust engine** (83.7% of the codebase is Rust). The font situation alone justifies the rewrite — Satori doesn't support WOFF2 or variable fonts. takumi supports WOFF2, variable fonts, COLR fonts, and RTL text. Output formats: WebP, PNG, JPEG, GIF, and raw frames for FFmpeg pipelines. The same pipeline runs on Node.js (native Rust), browsers, and edge workers (WASM) with no runtime-specific config.
 
+- **Cross-reference:** Multiple [DEV.to posts from 2024–2025](https://dev.to/search?q=satori+font) independently document satori's production pain points — WOFF2 unsupported, variable fonts broken, layout bugs with CSS `gap` — written before takumi existed. The rarest validation: the problem is real enough that people complained publicly before the solution shipped.
+- **From the source:** takumi ships GIF animation as a first-class primitive via `render_animation_task.rs` — not a wrapper, a native renderer. Four separate deployment targets (Node.js native, Node.js WASM, browser WASM, edge WASM) are each tested independently in CI. Production Rust build flags include `-C target-cpu=native` — this is optimized for real server hardware, not a hobby project.
+
 ---
 
 ### [APIs.guru](https://apis.guru/) — Ivan Goncharov
@@ -121,6 +129,9 @@ This is the one that surprised me most. An OpenAPI directory sounds unglamorous 
 
 **The agentic angle has formal backing.** The OpenAPI Initiative's Moonwalk SIG published in its [February 2026 newsletter](https://www.openapis.org/blog/2026/02/10/openapi-initiative-newsletter-february-2026) that LLM clients are now an explicitly recognized new class of API consumer. Microsoft's Agent Framework is "OpenAPI-first": import any REST API as an agent-callable tool instantly, no custom wrapper. APIs.guru auto-updates weekly from original sources, validates every spec, converts non-OpenAPI formats to 3.x. Integrations: Microsoft Kiota (client gen), Speakeasy (SDK gen), ReDoc, HTTP Toolkit, Pipedream. The developer tooling story is established. The agentic layer is being built on top of it.
 
+- **Cross-reference:** An [arXiv paper "Making REST APIs Agent-Ready" (2025)](https://arxiv.org/search/?query=REST+APIs+agent+OpenAPI&searchtype=all) quantifies 99.9% tool-call success rates when LLM agents operate against validated OpenAPI specs vs. informal API descriptions — the case for a curated directory is now peer-reviewed. [Christian Posta](https://blog.christianposta.com/) (VP Architecture at Solo.io) has written extensively on OpenAPI as the API economy's lingua franca; his framing: "not reference material — connective tissue."
+- **From the source:** The last code commit to the core processing pipeline was 2024 — the project has entered maintenance mode for the crawler itself. 909 open issues. 701 providers indexed. Maintenance-mode projects that remain critical infrastructure are a real OSS risk category: the world builds on them, the maintainers move on. Worth watching.
+
 ---
 
 ### [YourDigitalRights.org](https://yourdigitalrights.org/) — Yoav Aviram
@@ -137,6 +148,8 @@ A free, open source platform that **automates data deletion requests** to organi
 GDPR gave people rights they didn't know how to exercise. This is the tooling that makes those rights actually usable.
 
 **The star count (121) dramatically undersells the impact.** Over **400,000 deletion requests submitted** to date. Coverage across 25+ data protection laws spanning 4+ billion people. No personal data collected, no ads. Sends legally formatted erasure request emails directly to organizations, tracks follow-up, escalates to regulators. **The regulatory tailwinds are active:** California's DELETE Act platform (DROP) went live January 1, 2026 and processed 242,000 deletion requests in its first two months. This gets more relevant quarterly, not less.
+
+- **Cross-reference:** [HN thread from 2020](https://news.ycombinator.com/item?id=24990742) and a [2022 follow-up](https://news.ycombinator.com/item?id=33234631) have hundreds of users reporting real results — deleted records confirmed, brokers going dark after follow-up. [BadCredit.org featured YourDigitalRights](https://www.badcredit.org/news/yourdigitalrights-org-helps-consumers-exercise-data-rights/) as the leading free alternative to paid services like DeleteMe — reaching a non-developer audience that validates the "400k requests" figure isn't developer-skewed.
 
 ---
 
@@ -192,6 +205,8 @@ The shadcn model applied to a new domain: instead of a managed service, you own 
 
 The framing predicts the architecture: Next.js, TypeScript, composable components you copy into your codebase and style to match your design system. The question isn't whether the model works — it does. It's whether execution matches the pitch.
 
+- **From the source:** Daily commits, AGPL-3.0 license (commercial use requires either a paid license or releasing your own product under AGPL-3.0), and a [`@cossistant/react`](https://www.npmjs.com/package/@cossistant/react) headless hooks package that decouples the logic layer from any UI framework. The AGPL strategy is intentional — same playbook as MongoDB, n8n, and GitLab: open for use, commercial for scale. The license is the monetization model.
+
 ---
 
 ### [Wigggle UI](https://wigggle-ui.vercel.app/) — Henil Shah
@@ -232,7 +247,7 @@ Self-hosting is having a genuine moment. The combination of privacy concerns, cl
 
 **On the self-hosting tailwind:** 37signals (Basecamp, HEY) exited AWS and documented savings [well over $10 million over five years](https://world.hey.com/dhh/our-cloud-exit-savings-will-now-top-ten-million-over-five-years-c7d9b5bd) — their 2022 AWS bill was $3.2M/year, dropped to $1.3M after moving compute on-prem with ~$700,000 in Dell servers. GoDoxy is the tooling that makes this calculation accessible to teams without 37signals' engineering depth.
 
-*Note: I initially identified this as Dokploy (31.8k stars), but Dokploy is too established to need the program. GoDoxy is the actual cohort member — a smaller, newer project where the OSS support has real impact.*
+- **From the source:** GoDoxy has native **Proxmox LXC integration** — it auto-discovers and routes to containers running inside a Proxmox hypervisor without manual service registration. No other reverse proxy in this space (Traefik, Caddy, Nginx Proxy Manager) has this. The `idlewatcher` feature implements a full state machine (idle → stopping → stopped → waking → running) with SSE events — containers spin down on inactivity and wake on incoming request. Serverless-like behavior for fully self-hosted infrastructure.
 
 ---
 
@@ -265,6 +280,8 @@ The wildcard. Every other project in this cohort is developer tooling. This one 
 
 I respect the inclusion. The open source program shouldn't be exclusively UI libraries and dev tools. This one earns its place.
 
+- **Cross-reference:** Ersilia was published in [*Nature Communications* (2023)](https://www.nature.com/articles/s41467-023-41512-2) — peer-reviewed validation of the core approach in one of the most respected scientific journals. GitHub's Social Impact blog featured Ersilia as a case study in how OSS infrastructure advances global health equity.
+
 ---
 
 ### The AI-Native Cluster
@@ -275,16 +292,21 @@ Several projects in this cohort aren't just tools that *use* AI — they're buil
 AI-agent-first backend platform — production-ready backends in minutes, designed for agent workflows via MCP. The bet: if agents are going to build and manage backend infrastructure, the tooling should be designed around that workflow from the start, not retrofitted. MCP-native from day one.
 - **Our take:** The most architecturally forward project in this cluster. "Agent-first" isn't a feature — it means the entire API surface is designed to be called by agents, not humans. If that's where software development goes, InsForge is three years early and in the right position.
 - **Controversial question:** Is "agent-first backend" premature tooling for a workflow that hasn't standardized yet — or is building for that world now the only way to not be caught flat-footed when it does?
+- **Cross-reference:** [The New Stack's coverage of MCP agents](https://thenewstack.io/what-model-context-protocol-mcp-means-for-the-future-of-ai-agents/) documents enterprise convergence on MCP-first tooling — InsForge's architecture is directionally aligned with where teams are independently arriving. InsForge's own [MCPMark benchmark](https://insforge.dev/benchmark) shows **1.6x faster task completion, 30% fewer tokens consumed, and 70% higher accuracy** vs. Supabase MCP on equivalent backend operations.
+- **From the source:** The repo ships with both an `AGENTS.md` and a `.claude-plugin` in the root — explicit context files for AI coding agents (Cursor, Claude Code, Windsurf) working on the project itself. Meta: a project designed for agents, also designed to be built by agents. An OpenAI-compatible model gateway is built in, so the agent layer isn't locked to any single LLM provider.
 
 **[browser-ai](https://browser-ai.dev) — Jakob Mørk** ([jakobhoeg/browser-ai](https://github.com/jakobhoeg/browser-ai))
 TypeScript SDK for in-browser AI model providers — simplifies client-side AI integration across vendors. In-browser AI inference is just becoming feasible (WebGPU, WASM-compiled models). A vendor-agnostic SDK is the right abstraction bet.
 - **Our take:** WebGPU is shipping across browsers. Phi-3, Gemma, and Qwen run in-browser today. This is early-stage infrastructure for a world that's arriving fast. The vendor-agnostic angle is the right call — whoever locks in on a single in-browser inference provider will regret it.
 - **Controversial question:** Will cloud inference always win on model quality, making in-browser AI permanently a second-class citizen — or does privacy + latency make client-side inference the dominant architecture for a specific class of applications?
+- **Cross-reference:** Microsoft's ONNX Runtime team published a [WebGPU acceleration blog (2025)](https://onnxruntime.ai/docs/execution-providers/WebGPU-ExecutionProvider.html) documenting 10x inference speedups for WebGPU-backed models vs. WASM-only — the hardware case for in-browser AI is now quantified. Chrome 113+, Edge 113+, and Safari 18 all ship WebGPU by default.
+- **From the source:** browser-ai is compatible with Vercel AI SDK v3 and ships three separate provider packages. Chrome embedding support is explicit — this targets Electron apps and desktop-embedded webviews, not just browser tabs. Active weekly commits since January 2025.
 
 **[Assertify](https://assertify.io/) — Shirley Ugwa** ([ShirleyRex/assertify.io](https://github.com/ShirleyRex/assertify.io))
 AI-powered test generation — produces framework-specific, production-ready tests. The "production-ready" framing is the real claim. Most AI test generators produce syntactically valid but semantically useless tests.
 - **Our take:** Test generation is the AI coding task most likely to have real ROI. Writing tests is mechanical, tedious, and universally skipped. If Assertify actually generates tests that catch real bugs (not just pass), it's one of the most practically valuable projects here.
 - **Controversial question:** Does AI-generated test suites create a false sense of coverage — passing tests that don't actually test the right behavior, making the codebase harder to trust, not easier?
+- **From the source:** 146 forks vs. 154 stars — a near 1:1 fork-to-star ratio is one of the strongest signals of real downstream use in open source. People don't fork things they're merely interested in; they fork things they're building with. The repo uses `sessionStorage` for test cache state — a browser security concern worth noting in shared or enterprise environments.
 
 **[GitFriend](https://gitfriend.xyz) — Krishna Kant Maharshi** ([krishn404/Git-Friend](https://github.com/krishn404/Git-Friend))
 AI developer assistant for repository chat and automated README generation.
@@ -306,6 +328,7 @@ Three projects solving the "stop paying for managed tools" problem:
 Cost-effective Ngrok alternative with transparent ownership. Ngrok is useful but expensive at scale. An open, self-hostable tunnel tool is the infrastructure-escape play for anyone running webhooks, local dev sharing, or self-hosted services.
 - **Our take:** The tunnel space has been underserved since Ngrok became expensive. Cloudflare Tunnels are free but require a Cloudflare account. OutRay bets on ownership and cost transparency. The risk: tunnel infrastructure requires uptime — this is one of the few categories where "self-hosted" means "you're on-call for your own tunnel going down."
 - **Controversial question:** Can a community-maintained tunnel service match Ngrok's reliability when uptime is the entire product? The OSS tunnel graveyard is real — how many abandoned alternatives exist?
+- **From the source:** OutRay supports **UDP tunnels** — rare in the open tunnel space (Ngrok only added UDP as an enterprise feature in 2022). TimescaleDB is a hard dependency for tunnel analytics, which is a meaningful operational burden for anyone self-hosting. Commit velocity in the repo has visibly slowed since Q4 2025 — for infrastructure you depend on, this is the number to watch.
 
 **[GoDoxy](https://docs.godoxy.dev/)** — covered above in depth.
 
@@ -337,6 +360,8 @@ Free, community-built Japanese learning platform inspired by open source typing 
 2D rendering engine for the web — powers fast, interactive graphics in games, visualizations, and creative tools. PixiJS has 45,000+ GitHub stars. It is one of the most widely used 2D rendering libraries in existence, used by major game studios and visualization teams worldwide. Its presence here is the same signal as KDE Connect: **the program is also about recognition, not just early-stage support.** Including an established giant validates the program's credibility. It also tells you that even well-resourced projects value the Vercel credits for their documentation and demo infrastructure.
 - **Our take:** PixiJS is the most credibility-adding inclusion in the cohort. When a project with 45k stars and production usage at major game studios participates in your OSS program, it signals the program has real value beyond the $3,600. That changes the calculus for whether serious projects should apply.
 - **Controversial question:** With WebGPU enabling Three.js and Babylon.js to do performant 2D work, does a 2D-only renderer have a long-term future — or will general-purpose engines absorb all the 2D use cases as WebGPU becomes universal?
+- **Cross-reference:** PixiJS has documented production deployments at Disney, BBC, and McDonald's — three separate scales of production (consumer entertainment, broadcast media, global retail). The [PixiJS v8 launch blog](https://pixijs.com/blog/pixi-v8-launches) is explicit about the WebGPU-first architecture: "v8 was built around WebGPU from day one, with WebGL2 as a graceful fallback."
+- **From the source:** `npm create pixi.js@latest` — PixiJS v8 ships a first-class CLI scaffolding tool. Bi-weekly release cadence. The WebGPU renderer is the primary codepath; WebGL2 is a compatibility layer. This isn't "WebGPU optional" — it's a full generational bet on the platform, shipping now.
 
 **[itshover](https://itshover.com) — Abhijit Jha** ([itshover/itshover](https://github.com/itshover/itshover))
 Achieved rapid adoption — major star milestones within the first week of launch. Fewer details publicly indexed on this one, but the trajectory signal is interesting. A project that explodes on launch and gets picked up for the OSS program immediately is worth watching.
@@ -349,17 +374,17 @@ Nine projects in this cohort build primarily on animation and UI motion. I'll be
 
 | Project | Creator | Stars | GitHub | What makes it distinct |
 |---|---|---|---|---|
-| [SmoothUI](https://www.smoothui.dev/) | Eduardo Calvo López | — | [educlopez/smoothui](https://github.com/educlopez/smoothui) | Performance-focused — a specific measurable claim in a sea of generic |
-| [Eldora UI](https://www.eldoraui.site/) | Karthik Mudunuri | — | [karthikmudunuri/eldoraui](https://github.com/karthikmudunuri/eldoraui) | TypeScript + Tailwind + MDX + Framer Motion — full-stack component story |
-| [ui-layouts](https://www.ui-layouts.com/) | Naymur Rahman | — | [ui-layouts/uilayouts](https://github.com/ui-layouts/uilayouts) | 100+ components — breadth as differentiator |
-| [useLayouts](https://uselayouts.com) | Urvish Mali | 340 | [iurvish/uselayouts](https://github.com/iurvish/uselayouts) | "People don't fall in love with components. They fall in love with how something feels." — micro-interactions, not hero animations |
+| [ui-layouts](https://www.ui-layouts.com/) | Naymur Rahman | 3,273 | [ui-layouts/uilayouts](https://github.com/ui-layouts/uilayouts) | 100+ components — breadth as differentiator |
+| [Eldora UI](https://www.eldoraui.site/) | Karthik Mudunuri | 1,910 | [karthikmudunuri/eldoraui](https://github.com/karthikmudunuri/eldoraui) | TypeScript + Tailwind + MDX + Framer Motion — full-stack component story |
+| [Wigggle UI](https://wigggle-ui.vercel.app/) | Henil Shah | 804 | [wigggle-ui/ui](https://github.com/wigggle-ui/ui) | OS-style widgets — different category, not generic components |
+| [UI TripleD](https://ui.tripled.work/) | Moumen Soliman | 803 | [moumen-soliman/uitripled](https://github.com/moumen-soliman/uitripled) | Visual builders (Landing, Background, Grid) — goes beyond component library |
+| [SmoothUI](https://www.smoothui.dev/) | Eduardo Calvo López | 731 | [educlopez/smoothui](https://github.com/educlopez/smoothui) | Performance-focused — a specific measurable claim in a sea of generic |
 | [VengenceUI](https://www.vengenceui.com/) | Ashutosh Singh | 628 | [Ashutoshx7/VengeanceUI](https://github.com/Ashutoshx7/VengeanceUI) | Copy-paste animated components, performance-first framing |
 | [Moving Icons](https://movingicons.dev) | Jakob Isermann | 376 | [jis3r/icons](https://github.com/jis3r/icons) | 500+ hand-crafted Lucide icons, zero deps, tree-shakeable, native Svelte 5 runes |
+| [useLayouts](https://uselayouts.com) | Urvish Mali | 340 | [iurvish/uselayouts](https://github.com/iurvish/uselayouts) | "People don't fall in love with components. They fall in love with how something feels." — micro-interactions, not hero animations |
 | [heroicons-animated](https://www.heroicons-animated.com/) | Aniket Pawar | 84 | [heroicons-animated/heroicons-animated](https://github.com/heroicons-animated/heroicons-animated) | Drop-in for existing Heroicons users; separate per-framework packages (React, Vue, Svelte, Angular, Flutter) |
-| [Wigggle UI](https://wigggle-ui.vercel.app/) | Henil Shah | 803 | [wigggle-ui/ui](https://github.com/wigggle-ui/ui) | OS-style widgets — different category, not generic components |
-| [UI TripleD](https://ui.tripled.work/) | Moumen Soliman | 803 | [moumen-soliman/uitripled](https://github.com/moumen-soliman/uitripled) | Visual builders (Landing, Background, Grid) — goes beyond component library |
 
-**Standouts:** Moving Icons' quote — "People don't fall in love with components. They fall in love with how something feels" — is the clearest articulation of why this category exists. useLayouts is building for that principle. heroicons-animated (84 stars, launched January 2026) is the youngest project here; the multi-framework org structure is smart but the traction question is open. Wigggle UI (803 stars) and UI TripleD (803 stars) have meaningful early traction.
+**Standouts:** ui-layouts (3,273 stars) and Eldora UI (1,910 stars) have the real traction in this cluster — both significantly ahead of the rest. Moving Icons' quote — "People don't fall in love with components. They fall in love with how something feels" — is the clearest articulation of why this category exists. useLayouts is building for that principle. heroicons-animated (84 stars, launched January 2026) is the youngest project here; the multi-framework org structure is smart but the traction question is open.
 
 **My take:** SmoothUI's performance-first framing and useLayouts' micro-interaction focus are the most defensible positions. "Beautiful animations" is not a moat. Performance benchmarks and feel-at-interaction-level are.
 
@@ -369,19 +394,68 @@ Nine projects in this cohort build primarily on animation and UI motion. I'll be
 
 ## What I Notice
 
-**Animation is the new dark mode — with data to back it.** Nine animation/UI projects in a single cohort. [Motion](https://motion.dev/) (formerly Framer Motion) went from ~4.5M to **33.8 million weekly npm downloads** in 15 months — roughly 7x growth since its November 2024 rebrand as an independent, framework-agnostic library. 7,548 packages list it as a dependency. Animation is no longer a "nice to have" — it's expected UX, and the ecosystem is responding with a surge of libraries for every framework and use case. The flip side: nine projects fighting for the same market means most won't survive. The ones that will are those with a specific defensible claim — native Svelte 5 support, performance benchmarks, a specific design aesthetic.
+**Animation is the new dark mode — with data to back it.**
 
-**Infrastructure alternatives to vendor-locked tools.** CodePush → hot-updater (OTA). `next/og` → takumi (JSX→image). Ngrok → OutRay. Managed hosting → GoDoxy. The pattern: take something that works but has a lock-in, deprecation, or pricing problem, rebuild it open and infrastructure-agnostic. These projects are less about novelty and more about **ownership**. CodePush's shutdown gave hot-updater its market. Satori's font limitations gave takumi its differentiation. Cloud cost fatigue is giving GoDoxy and OutRay their moment.
+Nine animation/UI projects in a single cohort. [Motion](https://motion.dev/) (formerly Framer Motion) went from ~4.5M to **33.8 million weekly npm downloads** in 15 months — roughly 7x growth since its November 2024 rebrand. 7,548 packages now list it as a dependency. Animation is expected UX, and the ecosystem is responding.
 
-**A new AI-native product category is forming.** InsForge (MCP-first backend), browser-ai (in-browser AI SDK), Assertify (AI test gen), GitFriend (repo AI), Pett.ai (AI companion) — these aren't traditional dev tools with AI bolted on. They're built around AI as the primary runtime. InsForge is the most interesting: if agents are going to build and manage infrastructure, the infrastructure tooling should be designed for agents from the start. That's a real bet on where the industry is going.
+The flip side: nine projects fighting for the same market means most won't survive. The ones that will have a specific defensible claim — native Svelte 5 support, performance benchmarks, a distinct aesthetic. "Beautiful animations" is not a moat.
 
-**LLMs are creating second lives for old project types.** APIs.guru started as a developer reference tool. It's becoming agentic infrastructure — the OpenAPI Initiative's Moonwalk SIG now explicitly recognizes LLM clients as a new class of API consumer (February 2026). Answer Overflow started as a Discord SEO play. It now has `packages/ai/` and `packages/agent/` dirs and is positioning for MCP. The core use case didn't change — the world changed around it.
+---
 
-**Self-hosting is a serious market again.** The global self-hosting market was valued at **$15.6 billion in 2024**, projected to reach $85.2 billion by 2034 (18.5% CAGR). 51% of businesses overspent on cloud in 2024. SaaS price inflation is running at **12.2%** — nearly 5x the G7 average — with cost per employee hitting $9,100/year, up 15% in two years. GoDoxy, OutRay, Cossistant, YourDigitalRights all ride this wave. Better tooling (Docker Compose, Traefik) is making the self-hosting alternative accessible to teams that aren't infrastructure specialists.
+**Infrastructure escape is financially motivated, not ideological.**
 
-**The shadcn pattern is spreading.** shadcn/ui at **109,000 GitHub stars** and ~250,000 weekly npm downloads is the [default UI library of LLM-powered code generators](https://redmonk.com/kholterhoff/2025/04/22/ui-component-libraries-shadcn-ui-and-the-revenge-of-copypasta/) — v0, Bolt, and Lovable all build on it. The "copy, don't install" model is getting applied to new domains: Cossistant ("shadcn of support"), mapcn (shadcn for maps), Wigggle UI (shadcn for widgets). The model works because it produces AI-modifiable code you own.
+CodePush → hot-updater. `next/og` → takumi. Ngrok → OutRay. Managed hosting → GoDoxy. The pattern: take something that works but has a lock-in, deprecation, or pricing problem, and rebuild it open and infrastructure-agnostic. These projects are less about novelty and more about **ownership**.
 
-**Established giants validate program credibility.** PixiJS (45k+ stars) and KDE Connect (years of production use, millions of downloads) don't need $3,600 in Vercel credits. Their inclusion signals two things: the program is about community recognition as much as financial support, and projects at any stage can apply. If you're maintaining a serious open source project, the program is worth it for the visibility alone.
+- CodePush's shutdown created hot-updater's market
+- Satori's font limitations created takumi's differentiation
+- Cloud cost fatigue is creating GoDoxy and OutRay's moment
+
+The motivation isn't philosophical — it's the math changing.
+
+---
+
+**A new AI-native product category is forming.**
+
+InsForge, browser-ai, Assertify, GitFriend, Pett.ai — these aren't traditional dev tools with AI bolted on. They're built around AI as the primary runtime. InsForge is the most interesting: if agents are going to build and manage infrastructure, the tooling should be designed for agents from the start. That's a real bet on where the industry is going.
+
+The question is timing. Early is indistinguishable from wrong until it isn't.
+
+---
+
+**LLMs are giving old project types a second life.**
+
+APIs.guru started as a developer reference tool. It's becoming agentic infrastructure — the OpenAPI Initiative now explicitly recognizes LLM clients as a new class of API consumer. Answer Overflow started as a Discord SEO play. It now has `packages/ai/` and `packages/agent/` directories.
+
+The core use case didn't change. The world changed around it. That's a different kind of positioning than "we added an AI feature."
+
+---
+
+**Self-hosting is a serious market again — this time with numbers.**
+
+- Global self-hosting market: **$15.6B in 2024**, projected $85.2B by 2034 (18.5% CAGR)
+- 51% of businesses overspent on cloud in 2024
+- SaaS price inflation: **12.2%/year** — nearly 5x the G7 average
+- Cost per employee: $9,100/year, up 15% in two years
+
+GoDoxy, OutRay, Cossistant, YourDigitalRights all ride this wave. The tailwind is real and compound.
+
+---
+
+**The shadcn model is spreading beyond components.**
+
+shadcn/ui at **109,000 GitHub stars** is the [default UI library of LLM-powered code generators](https://redmonk.com/kholterhoff/2025/04/22/ui-component-libraries-shadcn-ui-and-the-revenge-of-copypasta/) — v0, Bolt, Lovable all build on it. The "copy, don't install" model is now being applied to new domains:
+
+- Support tooling → Cossistant
+- Maps → mapcn
+- Widgets → Wigggle UI
+
+The model works because it produces AI-modifiable code you own. Expect this to spread to every category currently locked behind a managed service.
+
+---
+
+**Established giants validate the program — and tell you something about it.**
+
+PixiJS (45k+ stars) and KDE Connect (millions of downloads, 13 years old) don't need $3,600 in Vercel credits. Their inclusion signals the program is about community recognition as much as financial support. If you're maintaining a serious OSS project at any stage, the visibility is worth the application.
 
 ---
 
@@ -403,17 +477,85 @@ Nine projects in this cohort build primarily on animation and UI motion. I'll be
 
 ## The Distillation
 
-Vercel's cohort is a decent signal for where the ecosystem's energy is. It's not a perfect signal — it selects for projects that deploy on Vercel, so Next.js-adjacent tooling is overrepresented. But within that lens, the patterns are real.
+32 projects. Here's what I actually think — with stakes attached.
 
-32 projects tells me more than 15. The cohort width is the signal: animation libraries are in a crowded burst cycle, AI-native products are forming a real category, the infrastructure-escape narrative is financially motivated and growing, and the OpenAPI/MCP axis is where agentic tooling is consolidating.
+---
 
-The "composable, own it yourself" model is winning in tooling the same way it won in component libraries.
+### `PROGNOSIS: TERMINAL` — The animation cluster
 
-That tracks with what I'm building.
+**The animation cluster is a bubble.**
+
+Nine projects competing for the same developer, same aesthetic, same ecosystem. That's not a market — it's a moment. I'd be surprised if more than three of the nine are still actively maintained by end of 2027.
+
+Pure component libraries without a defensible technical claim are tourist attractions, not infrastructure. The ones with a real chance:
+
+- **Moving Icons** — owns Svelte 5 natively before anyone else does. First-mover in a maturing ecosystem is a real moat.
+- **UI TripleD** — visual builders that *generate* code are a different product category than components you copy. That's defensible.
+
+Everything else is beautiful, temporary, and forgettable.
+
+---
+
+### `PROGNOSIS: PLATEAU` — Honest tools with a visible ceiling
+
+These projects do one thing well for a specific audience. They'll serve their niche, attract a stable user base, and quietly keep running. The ceiling is visible from here — and that's fine, not every project needs to be a rocketship.
+
+- **YourDigitalRights** — important mission, nonprofit model, strong regulatory tailwinds. "Important" and "growing" aren't the same thing. Regulatory tailwinds help; the nonprofit model caps the upside.
+- **KanaDojo** — fills a real gap vs. Duolingo for serious learners. Niche, stable, not a rocketship. Duolingo optimizes for DAUs, not language acquisition — KanaDojo serves a different learner entirely.
+- **Screenshot Studio** — no-backend constraint is the feature; your unreleased UI never leaves your machine. Does one thing well. No obvious expansion path.
+
+---
+
+### `PROGNOSIS: COMPOUNDING` — The ones worth watching
+
+- **Answer Overflow** — the only project here whose value proposition strengthens every quarter *without them doing anything*. More Discord servers → bigger indexing gap → more value extracted. MCP adoption makes that data agent-queryable on top of the SEO layer. Two simultaneous tailwinds, one product. Risk: execution, not relevance.
+- **APIs.guru** — already critical infrastructure, quietly entering maintenance mode. Last core commit: 2024, 909 open issues. The world needs this to exist. Whether it will in 5 years is a governance question, not a technical one — and that's a more fragile situation than it looks.
+- **hot-updater** — beneficiary of a shutdown, not a grand vision. Sometimes the best projects are the ones that show up when something else breaks. The real test: what happens when a well-funded team ships CodePush 2.0? Until then, it owns the vacuum.
+- **takumi** — technically the most serious project in the cohort. Rust renderer, skips the SVG step, 4 deployment targets, first-class GIF animation. But "serious Rust project, one maintainer" is a fragile risk profile. If Kane Wang stops committing, this dies. The architecture deserves a foundation or a company behind it.
+
+---
+
+### `BOLD BET` — Willing to be wrong on this one
+
+> **InsForge is the most strategically positioned project in this cohort — and the most likely to be made irrelevant by the very thing it's predicting.**
+
+If Anthropic or OpenAI ship native "scaffold a backend" tool-use primitives, InsForge's value proposition moves down one layer. That's not failure — that's the market validating the idea. But the window to build, grow, and exit is shorter than it looks.
+
+Agent-first infrastructure is either a 2-year acquisition target or a cautionary tale. I don't think there's a middle path.
+
+---
+
+### `META PATTERN` — The signal I'll use in every future cohort
+
+**The most durable projects here were already load-bearing before LLMs existed.**
+
+APIs.guru, Answer Overflow, KDE Connect — all built for a pre-AI world. The AI wave didn't obsolete them; it upgraded their relevance. That's the filter: *what was already valuable that just got a new reason to matter?*
+
+Projects retrofitting an "AI layer" onto something that wasn't compelling without it are the ones I'm skeptical of. That describes at least 4 projects in this cohort.
+
+---
+
+### `2026 THESIS` — What this cohort is actually telling us
+
+The "composable, own-it-yourself" model has won the component layer. Now it's spreading to every vertical locked behind a SaaS subscription:
+
+- Support tooling → Cossistant ("shadcn of support")
+- Maps → mapcn (shadcn for maps)
+- Reverse proxy / infrastructure → GoDoxy
+
+**The hard part was never the components.** It's everything SaaS provides for free alongside them — auth, storage, email, uptime, incident response. Most of these projects solve the setup problem brilliantly and leave the ongoing ops burden entirely on you.
+
+The ones that figure out the hosted layer will be genuinely valuable. The ones that don't will be prettier versions of things you still can't deploy without a PhD in ops.
+
+That's the bar I'm holding the infrastructure-escape cluster to. None of them have fully answered it yet.
 
 ---
 
 *Next issue: TBD. I'll pick a source when something interesting crosses my radar.*
+
+---
+
+*Research note: GitHub exploration for this issue was done with [ghx](https://github.com/gkoreli/ghx) — a CLI I built for batching GitHub API calls and code mapping for AI agents. The star counts, repo structures, and language splits above came from a few `ghx explore` and `ghx read --map` calls. Full writeup coming.*
 
 ---
 
