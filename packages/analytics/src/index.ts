@@ -38,7 +38,7 @@ function geo(cf: IncomingRequestCfProperties | undefined) {
  * Pattern: explicit dependency injection, same as Hono (see ADR-0004).
  */
 export async function handleEvent(request: Request, env: Env, ctx?: ExecutionContext): Promise<Response> {
-  const body = await request.json().catch(() => null) as { path?: string } | null;
+  const body = await request.json().catch(() => null) as { path?: string; referrer?: string } | null;
   if (!body?.path || typeof body.path !== 'string') return new Response(null, { status: 400 });
 
   // Sanitize path: must start with /, strip query/hash, cap length
@@ -60,7 +60,8 @@ export async function handleEvent(request: Request, env: Env, ctx?: ExecutionCon
 
   const pv: PageView = {
     path,
-    referrer: cleanReferrer(request.headers.get('referer'), new URL(request.url).hostname),
+    // Prefer document.referrer from client (actual external referrer) over HTTP Referer header (always self-referral on same-origin POST)
+    referrer: cleanReferrer(body.referrer ?? request.headers.get('referer'), new URL(request.url).hostname),
     country,
     city,
     continent,
