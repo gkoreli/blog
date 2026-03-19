@@ -9,8 +9,8 @@ function url(loc: string, lastmod?: string): string {
 
 export function sitemapXml(posts: PostMeta[]): string {
   const postUrls = posts.flatMap(p => {
-    const urls = [url(`/${p.slug}/`, p.date)];
-    if (p.promptCount) urls.push(url(`/${p.slug}/prompts/`, p.date));
+    const urls = [url(`/${p.slug}`, p.date)];
+    if (p.promptCount) urls.push(url(`/${p.slug}/prompts`, p.date));
     return urls;
   });
 
@@ -18,7 +18,7 @@ export function sitemapXml(posts: PostMeta[]): string {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${url('/')}
 ${postUrls.join('\n')}
-${url('/about/')}
-${url('/stats/')}
+${url('/about')}
+${url('/stats')}
 </urlset>`;
 }

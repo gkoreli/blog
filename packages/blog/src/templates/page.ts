@@ -1,7 +1,7 @@
 import { html, raw } from 'nisli-static';
 import type { PostMeta } from '../lib/frontmatter.js';
 
-export function pageShell({ title, description, content, posts, currentSlug, ogImage, head }: {
+export function pageShell({ title, description, content, posts, currentSlug, ogImage, head, ogType = 'website' }: {
   title: string;
   description: string;
   content: string;
@@ -9,8 +9,10 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   currentSlug?: string;
   ogImage?: string;
   head?: string;
+  /** Open Graph type. Only blog posts are 'article'. Everything else (index, about, stats, prompts) is 'website' — prompts are a reference appendix, not standalone articles. */
+  ogType?: 'website' | 'article';
 }) {
-  const canonical = currentSlug ? `https://gkoreli.com/${currentSlug}/` : 'https://gkoreli.com/';
+  const canonical = currentSlug ? `https://gkoreli.com/${currentSlug}` : 'https://gkoreli.com/';
   return html`<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +23,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   <link rel="canonical" href="${canonical}">
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="${ogType}">
   <meta property="og:url" content="${canonical}">
   ${ogImage ? html`<meta property="og:image" content="https://gkoreli.com${ogImage}">
   <meta name="twitter:card" content="summary_large_image">

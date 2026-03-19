@@ -10,8 +10,8 @@ export function blogPostingJsonLd(meta: PostMeta, ogImage?: string): string {
     headline: meta.title,
     datePublished: meta.date,
     description: meta.description,
-    url: `${SITE}/${meta.slug}/`,
-    author: { '@type': 'Person', name: 'Goga Koreli', url: `${SITE}/about/` },
+    url: `${SITE}/${meta.slug}`,
+    author: { '@type': 'Person', name: 'Goga Koreli', url: `${SITE}/about` },
     ...(ogImage && { image: `${SITE}${ogImage}` }),
   };
   return `<script type="application/ld+json">${JSON.stringify(ld)}</script>`;

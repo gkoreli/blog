@@ -62,7 +62,7 @@ export async function buildHTML(): Promise<void> {
     if (prompts) post.meta.promptCount = prompts.count;
     const body = postTemplate(post.meta, htmlContent, prompts);
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), posts: sortedPosts, currentSlug: post.meta.slug, ogImage, head: jsonLd });
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), posts: sortedPosts, currentSlug: post.meta.slug, ogImage, head: jsonLd, ogType: 'article' });
     writeOutput(post.meta.slug, page.toString());
 
     // .md endpoint — clean markdown per post
@@ -70,7 +70,8 @@ export async function buildHTML(): Promise<void> {
 
     if (prompts) {
       const promptsBody = promptsTemplate(post.meta, prompts);
-      const promptsPage = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), posts: sortedPosts, currentSlug: `${post.meta.slug}/prompts` });
+      // ogType: 'website' — prompts are a reference appendix, not a standalone article
+      const promptsPage = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), posts: sortedPosts, currentSlug: `${post.meta.slug}/prompts`, ogType: 'website' });
       writeOutput(`${post.meta.slug}/prompts`, promptsPage.toString());
     }
   }
