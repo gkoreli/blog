@@ -13,8 +13,11 @@ function cleanReferrer(raw: string | null, selfHost: string): string | null {
   if (!raw) return null;
   try {
     const url = new URL(raw);
-    if (url.hostname === selfHost) return null;
-    return url.hostname + url.pathname;
+    const host = url.hostname.replace(/^www\./, '');
+    if (host === selfHost.replace(/^www\./, '')) return null;
+    // Strip trailing slash from path; return bare hostname for root paths
+    const path = url.pathname.replace(/\/+$/, '');
+    return path ? `${host}${path}` : host;
   } catch {
     return null;
   }
