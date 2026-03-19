@@ -44,6 +44,8 @@ export async function handleEvent(request: Request, env: Env, ctx?: ExecutionCon
   // Sanitize path: must start with /, strip query/hash, cap length
   const rawPath = body.path.split(/[?#]/)[0];
   if (!rawPath.startsWith('/') || rawPath.length > 500) return new Response(null, { status: 400 });
+  // Normalize: strip trailing slash (except root /) so /about/ and /about are the same page
+  const path = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '');
 
   const ua = request.headers.get('user-agent');
   const ip = request.headers.get('cf-connecting-ip') ?? '0.0.0.0';
@@ -57,7 +59,7 @@ export async function handleEvent(request: Request, env: Env, ctx?: ExecutionCon
   const isOwner = ownerIps.includes(ip) ? 1 : 0;
 
   const pv: PageView = {
-    path: rawPath,
+    path,
     referrer: cleanReferrer(request.headers.get('referer'), new URL(request.url).hostname),
     country,
     city,
