@@ -1,7 +1,7 @@
 import { html, raw } from 'nisli-static';
 import type { PostMeta } from '../lib/frontmatter.js';
 
-export function pageShell({ title, description, content, posts, currentSlug, ogImage, head, ogType = 'website' }: {
+export function pageShell({ title, description, content, posts, currentSlug, ogImage, head, gutter, preamble, layout, scripts, ogType = 'website' }: {
   title: string;
   description: string;
   content: string;
@@ -9,10 +9,15 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   currentSlug?: string;
   ogImage?: string;
   head?: string;
-  /** Open Graph type. Only blog posts are 'article'. Everything else (index, about, stats, prompts) is 'website' — prompts are a reference appendix, not standalone articles. */
+  gutter?: string;
+  preamble?: string;
+  layout?: string;
+  /** Additional per-page script bundles (e.g. '/immersive.js', '/stats.js') */
+  scripts?: string[];
   ogType?: 'website' | 'article';
 }) {
   const canonical = currentSlug ? `https://gkoreli.com/${currentSlug}` : 'https://gkoreli.com/';
+  const layoutClass = layout && layout !== 'default' ? ` layout-${layout}` : '';
   return html`<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +44,8 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   ${head ? raw(head) : ''}
 </head>
 <body>
-  <div class="layout">
+  ${preamble ? raw(preamble) : ''}
+  <div class="layout${layoutClass}">
     <div class="sidebar-wrapper">
     <aside class="sidebar">
       <div class="sidebar-bar">
@@ -78,10 +84,11 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
         <p>Built with <a href="https://www.npmjs.com/package/@nisli/core">@nisli/core</a></p>
       </footer>
     </main>
-    <div class="gutter"></div>
+    <div class="gutter">${gutter ? raw(gutter) : ''}</div>
   </div>
 
   <script type="module" src="/main.js"></script>
+  ${scripts?.map(s => html`<script type="module" src="${s}"></script>`) ?? ''}
   <script>try{if(localStorage.analytics_ignore!=='true')fetch('/api/event',{method:'POST',keepalive:true,headers:{'Content-Type':'text/plain'},body:JSON.stringify({path:location.pathname,referrer:document.referrer||undefined})})}catch(e){}</script>
 </body>
 </html>`;

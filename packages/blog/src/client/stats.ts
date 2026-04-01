@@ -85,7 +85,7 @@ function toUPlotData(byDay: StatsResponse['by_day']): uPlot.AlignedData {
   if (rows.length === 0) {
     rows = [{ date: localYesterday(), views: 0, visitors: 0 }, { date: localToday(), views: 0, visitors: 0 }];
   } else if (rows.length === 1) {
-    rows = [{ date: prevDay(rows[0].date), views: 0, visitors: 0 }, ...rows];
+    rows = [{ date: prevDay(rows[0]?.date ?? localYesterday()), views: 0, visitors: 0 }, ...rows];
   }
   return [
     rows.map(r => toUnixLocal(r.date)),
@@ -102,7 +102,8 @@ function renderTotals(totals: StatsResponse['totals']) {
   const values = [totals.views, totals.visitors, totals.ai_fetches];
   cards.forEach((card, i) => {
     const val = card.querySelector('.skeleton, .stats-card-value');
-    if (val) { val.className = 'stats-card-value'; val.textContent = values[i].toLocaleString(); }
+    const v = values[i];
+    if (val && v !== undefined) { val.className = 'stats-card-value'; val.textContent = v.toLocaleString(); }
   });
 }
 
@@ -119,7 +120,7 @@ function renderChart(byDay: StatsResponse['by_day'], totals: StatsResponse['tota
   const opts: uPlot.Options = {
     width: el.clientWidth,
     height: CHART_HEIGHT,
-    scales: { x: { time: true }, y: { range: (u, min, max) => [0, Math.max(max, 1)] } },
+    scales: { x: { time: true }, y: { range: (_u, _min, max) => [0, Math.max(max, 1)] } },
     axes: [
       { stroke: c.muted, grid: { stroke: c.border, width: 1 } },
       { stroke: c.muted, grid: { stroke: c.border, width: 1 }, size: 50 },
@@ -130,7 +131,10 @@ function renderChart(byDay: StatsResponse['by_day'], totals: StatsResponse['tota
       { label: 'Visitors', stroke: c.muted, width: 2 },
     ],
     cursor: {
-      points: { fill: (u, sidx) => u.series[sidx].stroke as string, size: 8 },
+      points: { fill: (u, sidx) => {
+        const s = u.series[sidx]?.stroke ?? c.link;
+        return typeof s === 'function' ? s(u, sidx) : s;
+      }, size: 8 },
     },
     legend: { live: true },
   };
@@ -150,7 +154,7 @@ function renderList(items: { label: string; value: number }[], containerId: stri
     return;
   }
 
-  const max = items[0].value;
+  const max = items[0]?.value ?? 0;
   for (const item of items.slice(0, MAX_ITEMS)) {
     const pct = max > 0 ? (item.value / max) * 100 : 0;
     const row = document.createElement('div');
@@ -168,6 +172,7 @@ function renderDevices(byDevice: StatsResponse['by_device'], totalViews: number)
   const items = el.querySelectorAll('.stats-device');
   items.forEach((item, i) => {
     const type = order[i];
+    if (!type) return;
     const views = lookup[type] ?? 0;
     const pct = totalViews > 0 ? Math.round((views / totalViews) * 100) : 0;
     const span = item.querySelector('.skeleton, .stats-device-value');

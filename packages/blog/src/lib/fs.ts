@@ -4,7 +4,7 @@ import { POSTS_DIR, DIST, PUBLIC_DIR } from './paths.js';
 
 export function discoverPosts(): string[] {
   return readdirSync(POSTS_DIR)
-    .filter(f => f.endsWith('.md'))
+    .filter(f => f.endsWith('.md') || f.endsWith('.ts'))
     .sort()
     .map(f => join(POSTS_DIR, f));
 }

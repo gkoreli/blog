@@ -31,3 +31,6 @@ export const CLIENT_ENTRY = join(SRC, 'client', 'main.ts');
 
 /** packages/blog/src/client/stats.ts — stats page entry point (loads only on /stats) */
 export const STATS_ENTRY = join(SRC, 'client', 'stats.ts');
+
+/** packages/blog/src/client/immersive.ts — rich post components (loads only on immersive posts) */
+export const IMMERSIVE_ENTRY = join(SRC, 'client', 'immersive.ts');

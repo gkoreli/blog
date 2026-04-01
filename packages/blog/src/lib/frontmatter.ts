@@ -10,6 +10,7 @@ const frontmatterSchema = z.object({
   date: z.union([z.string(), z.date()]),
   description: z.string(),
   tags: z.array(z.string()).optional().default([]),
+  layout: z.enum(['default', 'immersive']).default('default'),
 });
 
 export type PostMeta = z.infer<typeof frontmatterSchema> & { slug: string; date: string; promptCount?: number };
@@ -30,7 +31,7 @@ export function parsePost(filePath: string): Post {
   }
 
   const filename = filePath.split('/').pop() ?? '';
-  const slug = filename.replace(/^\d+-/, '').replace(/\.md$/, '');
+  const slug = filename.replace(/^\d+-/, '').replace(/\.(md|ts|html)$/, '');
   const date = result.data.date instanceof Date
     ? localDateStr(result.data.date)
     : result.data.date;

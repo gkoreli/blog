@@ -1,0 +1,307 @@
+/* ── Rich content components (<nisli-*>) ── */
+
+/* ── nisli-scroll-reveal ── */
+nisli-scroll-reveal {
+  display: block;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+nisli-scroll-reveal.revealed { opacity: 1; transform: none; }
+.scroll-reveal-inner { display: contents; }
+
+/* ── nisli-insight ── */
+/* Original: bg #0d0d0d, border #222, border-left 3px --edge-rust, padding 1.4rem 1.8rem, margin 2.5rem 0, radius 0 3px 3px 0 */
+nisli-insight {
+  display: block;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent-rust);
+  padding: 1.4rem 1.8rem;
+  margin: 2.5rem 0;
+  border-radius: 0 3px 3px 0;
+}
+/* Original: font-size 0.55rem, letter-spacing 0.2em, margin-bottom 0.5rem */
+nisli-insight .insight-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent-rust);
+  margin-bottom: 0.5rem;
+}
+/* Original: font-size 0.96rem, color #c8c0b4 */
+nisli-insight p { margin: 0; font-size: 0.96rem; color: var(--color-text); }
+
+/* ── nisli-section-num ── */
+/* Original: font-size 0.55rem, letter-spacing 0.25em, color --edge-rust, margin-bottom 0.6rem */
+nisli-section-num {
+  display: block;
+  margin-bottom: 0.6rem;
+}
+nisli-section-num .section-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent-rust);
+}
+
+/* ── nisli-topo-hero ── */
+/* Original: 100vh, min-height 600px, flex-direction column */
+nisli-topo-hero { display: none; }
+.topo-hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.topo-hero canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+}
+/* Original: max-width 780px */
+.topo-hero-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 780px;
+  padding: 2rem;
+}
+/* Original: font-size 0.6rem, letter-spacing 0.3em, color --node-gold, animation rise 1s 0.4s, margin-bottom 1.4rem */
+.topo-hero-inner .topo-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent-warm);
+  opacity: 0;
+  animation: rich-rise 1s 0.4s forwards;
+  margin-bottom: 1.4rem;
+  display: block;
+}
+/* Original: clamp(3rem, 9vw, 7rem), weight 500, line-height 0.95, letter-spacing -0.02em, animation rise 1s 0.65s, margin-bottom 1.8rem */
+.topo-hero-inner h1 {
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: rich-rise 1s 0.65s forwards;
+  margin-bottom: 1.8rem;
+}
+.topo-hero-inner h1 em {
+  font-style: italic;
+  color: var(--color-accent-warm);
+}
+/* Original: font-size 0.95rem, color #888, animation rise 1s 0.9s */
+.topo-hero-inner .topo-byline {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  opacity: 0;
+  animation: rich-rise 1s 0.9s forwards;
+}
+/* Original: bottom 2rem, font-size 0.55rem, letter-spacing 0.3em, color #333, animation breathe 3s infinite */
+.topo-hero .topo-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: var(--color-text-muted);
+  opacity: 0.3;
+  animation: rich-breathe 3s infinite;
+}
+
+/* ── nisli-topo-diagram ── */
+nisli-topo-diagram { display: block; }
+nisli-topo-diagram canvas {
+  display: block;
+  width: 100%;
+  height: 140px;
+}
+
+/* ── Topology diagram grid ── */
+/* Original: gap 1px, bg #1a1a1a, border 1px solid #1a1a1a, radius 4px */
+.topo-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin: 2.5rem 0;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.topo-cell {
+  background: var(--color-bg);
+  padding: 0;
+}
+/* Original: font-size 0.58rem, letter-spacing 0.15em */
+.topo-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.7rem 0.5rem 1rem;
+  color: var(--color-text-muted);
+}
+.topo-label strong {
+  display: block;
+  color: var(--color-accent-warm);
+  font-size: 0.65rem;
+  margin-bottom: 0.2rem;
+}
+
+/* ── Code blocks (hand-highlighted) ── */
+/* Original: padding 1.4rem 1.8rem, font-size 0.72rem, radius 3px */
+.code-block {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 1.4rem 1.8rem;
+  margin: 2rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.9;
+  color: var(--color-text);
+  overflow-x: auto;
+}
+.code-block .cm { color: var(--color-text-muted); font-style: italic; }
+.code-block .kw { color: var(--color-accent-warm); }
+.code-block .fn { color: var(--color-accent-blue); }
+.code-block .st { color: var(--color-link); }
+
+/* ── Ecosystem table ── */
+.ecosystem { margin: 2.5rem 0; }
+/* Original: font-size 0.65rem */
+.eco-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0;
+  border-top: 1px solid var(--color-border);
+  padding: 1rem 0;
+}
+.eco-row:last-child { border-bottom: 1px solid var(--color-border); }
+.eco-name {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-accent-blue);
+  padding-right: 1.5rem;
+  padding-top: 0.2rem;
+  line-height: 1.5;
+}
+.eco-name a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--color-border); }
+.eco-name a:hover { color: var(--color-text); border-color: var(--color-text); }
+.eco-desc {
+  font-size: 0.87rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+/* Original: font-size 0.5rem, letter-spacing 0.1em, radius 2px */
+.eco-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+  margin-right: 0.3rem;
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+}
+
+/* ── Pull quote ── */
+.pull-quote {
+  position: relative;
+  margin: 3.5rem 0;
+  padding: 1.5rem 2rem 1.5rem 2.5rem;
+  border-left: 3px solid var(--color-accent-warm);
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border-radius: 0 3px 3px 0;
+}
+.pull-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: 0.4rem;
+  left: 0.8rem;
+  font-size: 3.5rem;
+  color: var(--color-accent-warm);
+  opacity: 0.2;
+  line-height: 1;
+}
+.pull-quote cite {
+  display: block;
+  margin-top: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  font-style: normal;
+  color: var(--color-text-muted);
+}
+
+/* ── Rich headings (immersive posts) ── */
+.post-content h2 em { color: var(--color-accent-warm); }
+.post-content h3 {
+  color: var(--color-accent-warm);
+  font-style: italic;
+  font-weight: 450;
+  margin: 3rem 0 1rem;
+}
+
+/* ── Section breaks ── */
+/* Original: margin 5rem 0 */
+hr.section-break {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 5rem 0;
+}
+
+/* ── Footnotes ── */
+/* Original: margin-top 5rem */
+.footnotes {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+/* Original: font-size 0.58rem */
+.footnote-item {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+.footnote-item a { color: var(--color-accent-blue); text-decoration: none; }
+
+/* ── Animations ── */
+@keyframes rich-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes rich-breathe {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .topo-row { grid-template-columns: 1fr; }
+  .eco-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}

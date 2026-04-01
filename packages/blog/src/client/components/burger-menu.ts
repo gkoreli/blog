@@ -19,6 +19,7 @@ component('nisli-burger-menu', () => {
       document.addEventListener('keydown', onKey);
       return () => document.removeEventListener('keydown', onKey);
     }
+    return undefined;
   });
 
   return html`
