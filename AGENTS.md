@@ -25,7 +25,8 @@ Blog posts are AI-assisted with human substance. The workflow:
 1. **Author provides golden data** — raw prompts with perspective, experience, specific problems, lessons learned
 2. **Agent distills and structures** — applies the blog-writing skill (`.agents/skills/blog-writing/SKILL.md`)
 3. **Iterative refinement** — author reviews, pushes back on prose, requests structural changes
-4. **Every post ships with raw prompts** — full transparency, readers can see the human thinking behind the AI output
+4. **Fact-check pass** — verify every date, attribution, quote, external link, GitHub repo, and technical claim. Web search each source. Post 004 caught 7 errors in one pass: wrong dates, misattributed quotes, unverifiable projects, a flawed technical premise. This step is mandatory, not optional.
+5. **Every post ships with raw prompts** — full transparency, readers can see the human thinking behind the AI output
 
 ### Writing Skill (`.agents/skills/blog-writing/SKILL.md`)
 
@@ -55,7 +56,9 @@ Build-in-public approach — document the journey with specifics over polish.
 
 Posts are `.md` files with YAML frontmatter. Interactive elements use native web components directly in markdown — no MDX.
 
-**Post format:**
+For immersive/rich posts that need custom layout control, posts can also be `.ts` files in `posts/` that export `meta: PostMeta`, `article(): TemplateResult`, and optionally `preamble(): TemplateResult`. The build pipeline auto-discovers both formats. Use `.md` for standard prose posts, `.ts` when the post needs programmatic layout (custom components, topology diagrams, scroll-reveal sections). The `.ts` format uses `nisli-static` tagged template literals — same component model, just with full TypeScript control over structure.
+
+**Post format (markdown — default):**
 ```markdown
 ---
 title: "Why I built @nisli/core"
