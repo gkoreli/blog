@@ -60,6 +60,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
       </div>
       <div class="sidebar-social">
         <a href="https://github.com/gkoreli" title="GitHub" target="_blank" rel="noopener"><img src="/icons/github.svg" width="18" height="18" alt="GitHub"></a>
+        <a href="https://x.com/GogaKoreli" title="X" target="_blank" rel="noopener"><img src="/icons/x.svg" width="18" height="18" alt="X"></a>
         <a href="https://www.npmjs.com/~gkoreli" title="npm" target="_blank" rel="noopener"><img src="/icons/npm.svg" width="18" height="18" alt="npm"></a>
         <a href="https://www.linkedin.com/in/goga-koreli/" title="LinkedIn" target="_blank" rel="noopener"><img src="/icons/linkedin.svg" width="18" height="18" alt="LinkedIn"></a>
         <nisli-theme-toggle></nisli-theme-toggle>

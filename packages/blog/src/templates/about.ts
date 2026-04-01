@@ -24,6 +24,6 @@ export function aboutTemplate() {
 
   <h2>Connect</h2>
 
-  <p>Find me on <a ${ext('https://github.com/gkoreli')}>GitHub</a>, <a ${ext('https://www.npmjs.com/~gkoreli')}>npm</a>, and <a ${ext('https://www.linkedin.com/in/goga-koreli/')}>LinkedIn</a>.</p>
+  <p>Find me on <a ${ext('https://github.com/gkoreli')}>GitHub</a>, <a ${ext('https://x.com/GogaKoreli')}>X</a>, <a ${ext('https://www.npmjs.com/~gkoreli')}>npm</a>, and <a ${ext('https://www.linkedin.com/in/goga-koreli/')}>LinkedIn</a>.</p>
 </article>`;
 }
