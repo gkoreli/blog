@@ -1,7 +1,7 @@
 import { html, raw } from 'nisli-static';
 import type { PostMeta } from '../lib/frontmatter.js';
 
-export function pageShell({ title, description, content, posts, currentSlug, ogImage, head, gutter, preamble, layout, scripts, ogType = 'website' }: {
+export function pageShell({ title, description, content, posts, currentSlug, ogImage, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false }: {
   title: string;
   description: string;
   content: string;
@@ -15,6 +15,8 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   /** Additional per-page script bundles (e.g. '/immersive.js', '/stats.js') */
   scripts?: string[];
   ogType?: 'website' | 'article';
+  /** Prevent search engines from indexing this page */
+  noindex?: boolean;
 }) {
   const canonical = currentSlug ? `https://gkoreli.com/${currentSlug}` : 'https://gkoreli.com/';
   const layoutClass = layout && layout !== 'default' ? ` layout-${layout}` : '';
@@ -25,6 +27,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} — Goga Koreli</title>
   <meta name="description" content="${description}">
+  ${noindex ? html`<meta name="robots" content="noindex">` : ''}
   <link rel="canonical" href="${canonical}">
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">

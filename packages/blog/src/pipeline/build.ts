@@ -166,7 +166,7 @@ export async function buildHTML(): Promise<void> {
   writeOutput('about', aboutPage.toString());
 
   const statsBody = statsTemplate();
-  const statsPage = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody.toString(), posts: sortedPosts, currentSlug: 'stats', head: statsHead });
+  const statsPage = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody.toString(), posts: sortedPosts, currentSlug: 'stats', head: statsHead, noindex: true });
   writeOutput('stats', statsPage.toString());
 
   writeRoot('feed.xml', rssFeed(sortedPosts));
