@@ -1,6 +1,6 @@
 import { rmSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { build as esbuild } from 'esbuild';
-import { DIST, CLIENT_ENTRY, STATS_ENTRY, IMMERSIVE_ENTRY, STYLES_SRC } from '../lib/paths.js';
+import { DIST, ESBUILD_ENTRIES } from '../lib/paths.js';
 import { discoverPosts, writeOutput, writeRoot, copyAssets } from '../lib/fs.js';
 import { initMarkdown, renderMarkdown } from '../lib/markdown.js';
 import { parsePost, validatePosts, parsePrompts } from '../lib/frontmatter.js';
@@ -182,7 +182,7 @@ export async function buildHTML(): Promise<void> {
 /** Step 4: Bundle client JS + CSS */
 export async function bundleClient(minify = true): Promise<void> {
   await esbuild({
-    entryPoints: [CLIENT_ENTRY, STATS_ENTRY, IMMERSIVE_ENTRY, STYLES_SRC],
+    entryPoints: ESBUILD_ENTRIES,
     bundle: true,
     outdir: DIST,
     entryNames: '[name]',

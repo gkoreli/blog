@@ -34,3 +34,6 @@ export const STATS_ENTRY = join(SRC, 'client', 'stats.ts');
 
 /** packages/blog/src/client/immersive.ts — rich post components (loads only on immersive posts) */
 export const IMMERSIVE_ENTRY = join(SRC, 'client', 'immersive.ts');
+
+/** All esbuild entry points — single source of truth for dev and prod builds */
+export const ESBUILD_ENTRIES = [CLIENT_ENTRY, STATS_ENTRY, IMMERSIVE_ENTRY, STYLES_SRC];
