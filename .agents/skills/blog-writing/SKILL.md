@@ -253,6 +253,11 @@ Rules:
 - Don't link to paywalled or subscription-gated sources
 - Don't use Wikipedia when the original source exists
 
+### Punctuation Rhythm
+
+- **Em dashes are spice, not structure.** Use them for genuine dramatic pauses or pivots, not as a default connector between clauses. If more than ~1 in 3 sentences has an em dash, the rhythm is monotonous. Replace the weaker ones with commas, periods, or parentheses.
+- Read paragraphs aloud — if every sentence has the same pause pattern, vary the punctuation.
+
 ## Cross-Posting
 
 - Always publish on `gkoreli.com` first

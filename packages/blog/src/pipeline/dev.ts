@@ -1,7 +1,7 @@
 import { execSync } from 'node:child_process';
 import { context } from 'esbuild';
 import browserSync from 'browser-sync';
-import { CLIENT_ENTRY, DIST, SRC, POSTS_DIR, STYLES_SRC, ROOT } from '../lib/paths.js';
+import { CLIENT_ENTRY, DIST, SRC, POSTS_DIR, STYLES_SRC, ROOT, IMMERSIVE_ENTRY } from '../lib/paths.js';
 
 const buildHTML = () => {
   execSync('tsx src/pipeline/build-html.ts', { cwd: ROOT, stdio: 'inherit' });
@@ -10,7 +10,7 @@ const buildHTML = () => {
 buildHTML();
 
 const ctx = await context({
-  entryPoints: [CLIENT_ENTRY, STYLES_SRC],
+  entryPoints: [CLIENT_ENTRY, IMMERSIVE_ENTRY, STYLES_SRC],
   bundle: true,
   outdir: DIST,
   entryNames: '[name]',
@@ -48,5 +48,5 @@ const rebuild = async () => {
 bs.watch(`${SRC}/**/*.{ts,css}`, { ignoreInitial: true, ignored: '**/client/**' })
   .on('change', rebuild);
 
-bs.watch(`${POSTS_DIR}/**/*.md`, { ignoreInitial: true })
+bs.watch(`${POSTS_DIR}/**/*.{md,ts}`, { ignoreInitial: true })
   .on('change', rebuild);

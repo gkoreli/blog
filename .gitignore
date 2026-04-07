@@ -4,6 +4,4 @@ dist/
 *.log
 packages/blog/tsconfig.tsbuildinfo
 .wrangler/
-packages/blog/prompts/002-building-transparent-analytics.prompts.md
-/kiro-conversations
-packages/blog/posts/topologies-of-thoughts-v2.html
+packages/blog/worklog/
