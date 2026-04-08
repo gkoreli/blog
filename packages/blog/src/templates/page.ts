@@ -6,8 +6,11 @@ import type { PostMeta } from '../lib/frontmatter.js';
  * Set TURNSTILE_SITE_KEY in your build environment before running `pnpm build`.
  * Leave unset in local dev: the form falls back to button-always-enabled mode.
  * Get your site key: https://dash.cloudflare.com/ → Turnstile
+ * Read at render time so build entrypoints can load env vars before page rendering.
  */
-const TURNSTILE_SITE_KEY = process.env['TURNSTILE_SITE_KEY'] ?? '';
+function turnstileSiteKey(): string {
+  return process.env['TURNSTILE_SITE_KEY'] ?? '';
+}
 
 export function pageShell({ title, description, content, posts, currentSlug, ogImage, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false }: {
   title: string;
@@ -26,6 +29,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   /** Prevent search engines from indexing this page */
   noindex?: boolean;
 }) {
+  const TURNSTILE_SITE_KEY = turnstileSiteKey();
   const canonical = currentSlug ? `https://gkoreli.com/${currentSlug}` : 'https://gkoreli.com/';
   const layoutClass = layout && layout !== 'default' ? ` layout-${layout}` : '';
   return html`<!DOCTYPE html>
