@@ -26,7 +26,8 @@
 		}
 	],
 	// Native Workers Rate Limiting — GA Sept 2025, free tier, zero KV writes.
-	// Limits POST /api/subscribe to 3 attempts per 5 minutes per IP.
+	// Limits POST /api/subscribe to 3 attempts per minute per IP.
+	// (Cloudflare only supports period=10 or period=60; 60s chosen.)
 	// Defense-in-depth behind Turnstile. Namespace ID is arbitrary; created on deploy.
 	"ratelimits": [
 		{
