@@ -5,3 +5,5 @@ dist/
 packages/blog/tsconfig.tsbuildinfo
 .wrangler/
 packages/blog/worklog/
+.env
+.env.local
