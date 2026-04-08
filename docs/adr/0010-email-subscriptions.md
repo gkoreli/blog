@@ -391,7 +391,9 @@ Cloudflare announced native email sending (paid Workers plan, $5/mo). Still limi
 
 **Important:** "Invisible" is a **widget type configured in the Cloudflare dashboard**, not a client-side render parameter. `size: 'invisible'` is not a valid value and throws a `TurnstileError` at runtime. The sitekey must be for an Invisible widget — the client just calls `turnstile.render(slot, { execution: 'execute', ... })` with no size parameter. Visual hiding is handled by the `hidden` attribute on `.turnstile-slot`, which works regardless of widget type.
 
-**Client-side flow:** Turnstile script loads with `?render=explicit&onload=__tsInit`. The `window.__tsInit` no-op is defined in an inline `<script>` that appears *before* the Turnstile `async` script tag in the HTML — this ordering guarantee means the no-op is always defined when Turnstile checks for it synchronously on load, even when loaded from cache. `subscribe.ts` overrides it with the real init function and also initialises directly if `window.turnstile` already exists — covering both timing orderings without a race. An init guard (`form.dataset.subscribeInit`) prevents double widget render and duplicate submit listeners if both paths fire.
+**Client-side flow:** Turnstile script uses `?render=explicit` (no `onload` callback) with `defer`. Our module (`main.js`) is a `type="module"` script in `<body>`. Deferred scripts execute in document order after parsing, so Turnstile (`<head>`, earlier) runs before our module (`<body>`, later) — `window.turnstile` is synchronously available when `subscribe.ts` runs. No global callback, no timing race. `initSubscribeForm()` is called directly at module load. An init guard (`form.dataset.subscribeInit`) prevents double widget render if something calls it twice.
+
+`appearance: 'execute'` is set on the widget so it would only become visible after `turnstile.execute()` — combined with the `.turnstile-slot[hidden]` container, the widget has zero visual footprint regardless of timing.
 
 ### Rate limiting: Workers Native vs. KV-based
 

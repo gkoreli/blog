@@ -4,10 +4,11 @@ interface Turnstile {
     container: string | HTMLElement,
     options: {
       sitekey: string;
-      execution: 'execute';
+      execution?: 'render' | 'execute';
+      appearance?: 'always' | 'execute' | 'interaction-only';
       theme?: 'auto' | 'light' | 'dark';
       callback?: (token: string) => void;
-      'error-callback'?: () => void;
+      'error-callback'?: (errorCode: string) => boolean | void;
       'expired-callback'?: () => void;
     }
   ): string;
@@ -18,7 +19,6 @@ interface Turnstile {
 declare global {
   interface Window {
     turnstile?: Turnstile;
-    __tsInit?: () => void;
   }
 }
 
@@ -26,7 +26,7 @@ function initSubscribeForm(): void {
   const formEl = document.getElementById('sub-form') as HTMLFormElement | null;
   if (!formEl) return;
 
-  // Init guard — prevents double-listener if both __tsInit and window.turnstile paths trigger
+  // Init guard — prevents double-listener if initSubscribeForm is called more than once
   if (formEl.dataset['subscribeInit'] === 'true') return;
   formEl.dataset['subscribeInit'] = 'true';
 
@@ -52,9 +52,10 @@ function initSubscribeForm(): void {
     widgetId = window.turnstile.render(slot, {
       sitekey,
       execution: 'execute',
+      appearance: 'execute',
       theme: 'auto',
       callback(token) { void doSubmit(token); },
-      'error-callback'() { setError('Verification failed. Try again.'); },
+      'error-callback'() { setError('Verification failed. Try again.'); return true; },
       'expired-callback'() { if (widgetId) window.turnstile?.reset(widgetId); },
     });
   }
@@ -102,8 +103,7 @@ function initSubscribeForm(): void {
   }
 }
 
-// page.ts sets window.__tsInit = no-op before Turnstile's async script can fire.
-// We override it here. If Turnstile already loaded before this module ran, init directly.
-// The init guard inside initSubscribeForm() prevents double-execution if both paths trigger.
-window.__tsInit = initSubscribeForm;
-if (window.turnstile) initSubscribeForm();
+// The Turnstile script uses `defer` and appears in <head>; our module is in <body>.
+// Deferred scripts execute in document order after parsing, so window.turnstile
+// is guaranteed to be defined by the time this module runs.
+initSubscribeForm();
