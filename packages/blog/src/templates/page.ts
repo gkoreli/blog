@@ -55,8 +55,8 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
   <link rel="stylesheet" href="/main.css">
-  ${TURNSTILE_SITE_KEY ? html`<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>` : ''}
-  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
+  ${TURNSTILE_SITE_KEY ? html`<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=__tsInit&render=explicit" async defer></script>` : ''}
+  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));window.__tsInit=function(){};</script>
   ${head ? raw(head) : ''}
 </head>
 <body>
@@ -99,13 +99,13 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
       <section class="subscribe">
         <p class="subscribe-kicker">Stay in the loop</p>
         <p class="subscribe-desc">No noise. The next thing I write, straight to your inbox.</p>
-        <form id="sub-form" class="subscribe-form" novalidate>
+        <form id="sub-form" class="subscribe-form" novalidate${TURNSTILE_SITE_KEY ? html` data-turnstile-sitekey="${TURNSTILE_SITE_KEY}"` : ''}>
           <div class="subscribe-row">
             <input type="email" name="email" class="subscribe-input" placeholder="your@email.com" required autocomplete="email">
-            <button type="submit" class="subscribe-btn"${TURNSTILE_SITE_KEY ? ' disabled' : ''}>Subscribe</button>
+            <button type="submit" class="subscribe-btn">Subscribe</button>
           </div>
-          ${TURNSTILE_SITE_KEY ? html`<div class="cf-turnstile" data-sitekey="${TURNSTILE_SITE_KEY}" data-callback="__tsOk" data-theme="auto" data-appearance="interaction-only"></div>` : ''}
           <p class="subscribe-msg" aria-live="polite" role="status"></p>
+          ${TURNSTILE_SITE_KEY ? html`<div class="turnstile-slot" hidden></div>` : ''}
         </form>
       </section>
 
@@ -119,7 +119,6 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   <script type="module" src="/main.js"></script>
   ${scripts?.map(s => html`<script type="module" src="${s}"></script>`) ?? ''}
   <script>try{if(localStorage.analytics_ignore!=='true')fetch('/api/event',{method:'POST',keepalive:true,headers:{'Content-Type':'text/plain'},body:JSON.stringify({path:location.pathname,referrer:document.referrer||undefined})})}catch(e){}</script>
-  <script>(function(){window.__tsOk=function(t){window.__tsToken=t;var b=document.querySelector('#sub-form .subscribe-btn');if(b)b.disabled=false;};var f=document.getElementById('sub-form');if(!f)return;f.addEventListener('submit',async function(e){e.preventDefault();var email=f.elements.namedItem('email').value.trim();var btn=f.querySelector('.subscribe-btn');var msg=f.querySelector('.subscribe-msg');btn.disabled=true;msg.textContent='';try{var r=await fetch('/api/subscribe',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:email,turnstile:window.__tsToken||'',source:location.pathname})});if(r.status===202||r.ok){f.innerHTML='<p class="subscribe-done">Check your inbox \u2014 confirmation link on the way.</p>';}else{var d=await r.json().catch(function(){return{};});msg.textContent=d.error||'Something went wrong. Try again.';if(window.turnstile)window.turnstile.reset();btn.disabled=${TURNSTILE_SITE_KEY ? 'true' : 'false'};}}catch(err){msg.textContent='Network error. Try again.';if(window.turnstile)window.turnstile.reset();btn.disabled=${TURNSTILE_SITE_KEY ? 'true' : 'false'};}});}());</script>
 </body>
 </html>`;
 }

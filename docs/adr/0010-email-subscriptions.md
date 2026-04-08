@@ -39,13 +39,13 @@ Nightly cron at 03:00 UTC handled by `handleScheduled`.
 
 **Reuse the existing `DB` D1 binding.** Add a `subscribers` table to `blog-analytics` — no new D1 database, no new wrangler binding.
 
-**Turnstile** (Cloudflare, free) for spam protection. Managed mode with `data-appearance="interaction-only"` — invisible for trusted users, challenge widget appears only when suspicious. `TURNSTILE_SITE_KEY` baked into static HTML at build time. `TURNSTILE_SECRET_KEY` set as a Worker secret via `wrangler secret put`.
+**Turnstile** (Cloudflare, free) for spam protection. Invisible mode with explicit render — no visible widget UI; widget is mounted into a hidden `.turnstile-slot` container and executed programmatically on form submit. `TURNSTILE_SITE_KEY` baked into static HTML at build time via `data-turnstile-sitekey` on the form element. `TURNSTILE_SECRET_KEY` set as a Worker secret via `wrangler secret put`.
 
 **Resend** for email delivery. One `fetch()` to `https://api.resend.com/emails`. Free tier: 3,000 emails/month, 100/day — more than sufficient for Phase 1. `RESEND_API_KEY` set as a Worker secret. Resend is the delivery pipe; D1 is the source of truth. Swap the delivery layer later without losing subscriber data.
 
 **Double opt-in** — not required by GDPR itself (which regulates consent quality, not mechanism), but adopted here because it produces the strongest proof of consent and eliminates bot/typo signups. Germany's case law effectively requires it for email marketing; for a global audience it is the lowest-risk default. Separate `confirm_token` (one-time, cleared after use) and `unsubscribe_token` (permanent per subscriber, included in every newsletter).
 
-**Subscribe form** in `page.ts` footer — appears on every page. Highest-intent placement is immediately after finishing an article that resonated. Button is disabled until Turnstile completes (graceful fallback: enabled immediately in dev when `TURNSTILE_SITE_KEY` is unset).
+**Subscribe form** in `page.ts` footer — appears on every page. Highest-intent placement is immediately after finishing an article that resonated. Button is always enabled; Turnstile executes on submit and the fetch fires only after the token is returned (graceful fallback: submits without token in dev when `TURNSTILE_SITE_KEY` is unset, relying on server-side rate limiting). All form logic lives in `packages/blog/src/client/subscribe.ts` — a proper typed module imported via `main.ts`, not an inline script in the template.
 
 **`source` column** tracks which page the subscriber came from — free analytics on which content converts.
 
@@ -385,7 +385,11 @@ Cloudflare announced native email sending (paid Workers plan, $5/mo). Still limi
 
 ### Turnstile managed vs. invisible mode
 
-`data-appearance="interaction-only"` (managed mode): widget appears only when a challenge is needed; invisible for trusted users. Invisible mode: no widget at all. **Chosen: managed.** The badge signals to users that the form is protected and provides stronger anti-spam signal.
+`data-appearance="interaction-only"` (managed mode): widget appears only when a challenge is needed; can still render a visible checkbox/badge. Invisible mode (`size: 'invisible'`, `execution: 'execute'`): no visible widget at all; Turnstile is an implementation detail.
+
+**Chosen: invisible.** The visible widget — even in interaction-only mode — is visually incompatible with a minimalist blog design. It injects markup into the form, leaves a success-state badge permanently visible after solving, and makes Turnstile a UI component rather than a spam filter. Switching to invisible mode with explicit render (`?render=explicit&onload=__tsInit`) eliminates all visible footprint while preserving full server-side `siteverify` protection. Same bot protection, zero UI damage.
+
+**Client-side flow:** Turnstile script loads with `?render=explicit&onload=__tsInit`. Page defines `window.__tsInit` as a no-op before the async script can fire. `subscribe.ts` overrides it with the real init function and also initialises directly if `window.turnstile` already exists — covering both timing orderings without a race. An init guard (`form.dataset.subscribeInit`) prevents double widget render and duplicate submit listeners if both paths fire.
 
 ### Rate limiting: Workers Native vs. KV-based
 
@@ -398,6 +402,11 @@ Workers Native Rate Limiting (GA Sept 2025, free tier): zero KV write costs, enf
 - **Drip sequences / automation** — deliberate simplicity. One confirmation email. Newsletters sent manually via `POST /api/send`. Automate when the manual process is the bottleneck.
 - **Separate `NEWSLETTER_DB` binding** — see DB tradeoff above. Defer until subscriber list is meaningful.
 - **Queue-based sending** — `POST /api/send` is synchronous. At 50–500 subscribers, a Resend batch call takes <1s. Queues are Phase 3.
+
+## Known Gaps
+
+- **`'unsafe-inline'` in `script-src` CSP** — Two inline scripts remain in `page.ts` (theme detection and analytics fire-and-forget). Both are intentionally tiny and performance-sensitive (theme must run before first paint to avoid flash; analytics benefits from `keepalive: true` at page exit). Moving them to external modules would allow removing `'unsafe-inline'` from the CSP. Defer until the cost is worth the security improvement; nonces would require per-request generation which is incompatible with a static build.
+- **Turnstile iframe console violations** — Cloudflare's challenge iframe probes browser capabilities (XR tracking, camera, etc.) as part of bot fingerprinting. These probes are blocked by the `Permissions-Policy` header and logged as violations in DevTools (`normal?lang=auto:1 [Violation] Permissions policy violation: xr-spatial-tracking is not allowed`). Expected behavior; Turnstile functions correctly despite them. Only visible in DevTools — not user-facing. Cannot be silenced without weakening the Permissions-Policy.
 
 ## Future Vision
 
@@ -453,7 +462,7 @@ curl -X POST https://gkoreli.com/api/send \
 # One-time setup
 
 # 1. Create Turnstile widget at dash.cloudflare.com → Turnstile
-#    Mode: Managed, data-appearance: interaction-only
+#    Widget type: Invisible (not Managed — invisible mode has no visible UI)
 #    Domain: gkoreli.com
 #    Copy Site Key (public) → set TURNSTILE_SITE_KEY in build env
 wrangler secret put TURNSTILE_SECRET_KEY
