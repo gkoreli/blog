@@ -37,13 +37,19 @@ let building = false;
 let pendingRebuild: 'full' | 'client' | null = null;
 
 const runBuild = async (mode: 'full' | 'client') => {
-  if (mode === 'full') {
-    buildHTML();
-    await ctx.rebuild();
-  } else {
-    await ctx.rebuild();
+  try {
+    if (mode === 'full') {
+      buildHTML();
+      await ctx.rebuild();
+    } else {
+      await ctx.rebuild();
+    }
+    bs.reload();
+  } catch (err) {
+    // buildHTML errors already print via stdio:'inherit' — only log esbuild ctx errors
+    if (!(err instanceof Error && 'status' in err)) console.error(err);
+    console.error('⚠ Build failed — waiting for next change…');
   }
-  bs.reload();
 };
 
 const schedule = async (mode: 'full' | 'client') => {
