@@ -1,13 +1,17 @@
 import { execSync } from 'node:child_process';
+import { basename } from 'node:path';
 import { context } from 'esbuild';
 import browserSync from 'browser-sync';
 import { DIST, SRC, POSTS_DIR, PROMPTS_DIR, PUBLIC_DIR, ROOT, ESBUILD_ENTRIES } from '../lib/paths.js';
 import { loadLocalEnv } from './env.js';
 
 loadLocalEnv();
+process.env['DEV'] = '1';
+
+const clear = () => process.stdout.write('\x1b[2J\x1b[H');
 
 const buildHTML = () => {
-  execSync('tsx src/pipeline/build-html.ts', { cwd: ROOT, stdio: 'inherit' });
+  execSync('tsx src/pipeline/build-html.ts', { cwd: ROOT, stdio: 'inherit', env: { ...process.env, DEV: '1' } });
 };
 
 buildHTML();
@@ -36,7 +40,10 @@ bs.init({
 let building = false;
 let pendingRebuild: 'full' | 'client' | null = null;
 
-const runBuild = async (mode: 'full' | 'client') => {
+const runBuild = async (mode: 'full' | 'client', file?: string) => {
+  const label = file ? basename(file) : mode;
+  clear();
+  console.log(`\x1b[2m${label} changed → rebuilding…\x1b[0m`);
   try {
     if (mode === 'full') {
       buildHTML();
@@ -52,16 +59,14 @@ const runBuild = async (mode: 'full' | 'client') => {
   }
 };
 
-const schedule = async (mode: 'full' | 'client') => {
+const schedule = async (mode: 'full' | 'client', file?: string) => {
   if (building) {
-    // Queue a rebuild — 'full' trumps 'client'
     pendingRebuild = pendingRebuild === 'full' ? 'full' : mode;
     return;
   }
   building = true;
   try {
-    await runBuild(mode);
-    // Drain queued rebuild if changes arrived during build
+    await runBuild(mode, file);
     while (pendingRebuild) {
       const next = pendingRebuild;
       pendingRebuild = null;
@@ -72,23 +77,17 @@ const schedule = async (mode: 'full' | 'client') => {
   }
 };
 
-// Watch source files — chokidar handles debouncing and deduplication
-// Templates, lib, pipeline, styles (HTML + esbuild rebuild)
 bs.watch(`${SRC}/**/*.{ts,css}`, { ignoreInitial: true, ignored: '**/client/**' })
-  .on('change', () => schedule('full'));
+  .on('change', (f: string) => schedule('full', f));
 
-// Client components — esbuild rebuild + reload only (no HTML rebuild needed)
 bs.watch(`${SRC}/client/**/*.ts`, { ignoreInitial: true })
-  .on('change', () => schedule('client'));
+  .on('change', (f: string) => schedule('client', f));
 
-// Posts (markdown + TypeScript immersive posts)
 bs.watch(`${POSTS_DIR}/**/*.{md,ts}`, { ignoreInitial: true })
-  .on('change', () => schedule('full'));
+  .on('change', (f: string) => schedule('full', f));
 
-// Prompts — affects post header links + prompts pages
 bs.watch(`${PROMPTS_DIR}/**/*.md`, { ignoreInitial: true })
-  .on('change', () => schedule('full'));
+  .on('change', (f: string) => schedule('full', f));
 
-// Static assets — icons, images, fonts, _headers, etc.
 bs.watch(`${PUBLIC_DIR}/**/*`, { ignoreInitial: true })
-  .on('change', () => schedule('full'));
+  .on('change', (f: string) => schedule('full', f));

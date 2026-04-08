@@ -34,6 +34,8 @@ function getSparkle(): string {
 }
 
 export async function generateOgImage(title: string, slug: string): Promise<string> {
+  const filename = `${slug}.png`;
+  if (process.env['DEV']) return `/og/${filename}`;
   mkdirSync(OG_DIR, { recursive: true });
 
   const svg = await satori(
@@ -120,7 +122,6 @@ export async function generateOgImage(title: string, slug: string): Promise<stri
 
   const resvg = new Resvg(svg);
   const png = resvg.render().asPng();
-  const filename = `${slug}.png`;
   writeFileSync(join(OG_DIR, filename), png);
   return `/og/${filename}`;
 }
