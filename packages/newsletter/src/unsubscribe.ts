@@ -1,26 +1,36 @@
 /**
- * unsubscribe.ts — GET /api/unsubscribe/:token handler.
+ * unsubscribe.ts — GET /api/unsubscribe/:rawToken
  *
- * One-click unsubscribe — legally required (CAN-SPAM / GDPR).
- * Token is permanent per subscriber and included in every newsletter footer.
+ * One-click unsubscribe — required by CAN-SPAM (honor within 10 business days)
+ * and GDPR (right to withdraw consent at any time, Art. 7(3)).
+ *
+ * Token flow: same hash-before-storage pattern as confirm.ts.
+ *   Email footer URL: /api/unsubscribe/{rawToken}
+ *   DB lookup:        WHERE unsubscribe_token = SHA256(rawToken)
+ *
+ * Unsubscribe tokens NEVER expire. Old archived emails must still work.
+ * Expiring unsubscribe links creates CAN-SPAM / GDPR compliance risk.
+ * See ADR-0010 §Token Security for the full rationale.
  */
 
 import type { NewsletterEnv } from './db.js';
-import { unsubscribeByToken } from './db.js';
+import { unsubscribeByTokenHash } from './db.js';
+import { hashToken } from './tokens.js';
 import { htmlPage } from './responses.js';
 
 export async function handleUnsubscribe(
-  request: Request,
+  _request: Request,
   env: NewsletterEnv,
-  token: string,
+  rawToken: string,
 ): Promise<Response> {
-  if (!token) return htmlPage('Error', '', notFoundBody());
+  if (!rawToken) return htmlPage('Error', notFoundBody());
 
-  const changed = await unsubscribeByToken(env.DB, token);
+  const tokenHash = await hashToken(rawToken);
+  const changed = await unsubscribeByTokenHash(env.DB, tokenHash);
 
   return changed
-    ? htmlPage('Unsubscribed', '', successBody())
-    : htmlPage('Unsubscribed', '', alreadyBody());
+    ? htmlPage('Unsubscribed', successBody())
+    : htmlPage('Unsubscribed', alreadyBody());
 }
 
 function successBody(): string {
@@ -32,7 +42,7 @@ function successBody(): string {
 function alreadyBody(): string {
   return `<div class="icon">✓</div>
     <h1>Already unsubscribed.</h1>
-    <p>You're not receiving emails from me. Nothing to do.</p>`;
+    <p>You're not on the list. Nothing to do.</p>`;
 }
 
 function notFoundBody(): string {
