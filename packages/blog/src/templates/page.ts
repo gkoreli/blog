@@ -1,6 +1,14 @@
 import { html, raw } from 'nisli-static';
 import type { PostMeta } from '../lib/frontmatter.js';
 
+/**
+ * Cloudflare Turnstile site key (public — safe to embed in HTML).
+ * Set TURNSTILE_SITE_KEY in your build environment before running `pnpm build`.
+ * Leave unset in local dev: the form falls back to button-always-enabled mode.
+ * Get your site key: https://dash.cloudflare.com/ → Turnstile
+ */
+const TURNSTILE_SITE_KEY = process.env['TURNSTILE_SITE_KEY'] ?? '';
+
 export function pageShell({ title, description, content, posts, currentSlug, ogImage, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false }: {
   title: string;
   description: string;
@@ -43,6 +51,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
   <link rel="stylesheet" href="/main.css">
+  ${TURNSTILE_SITE_KEY ? html`<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>` : ''}
   <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
   ${head ? raw(head) : ''}
 </head>
@@ -83,6 +92,19 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
     <main class="content">
       ${raw(content)}
 
+      <section class="subscribe">
+        <p class="subscribe-kicker">Stay in the loop</p>
+        <p class="subscribe-desc">No noise. The next thing I write, straight to your inbox.</p>
+        <form id="sub-form" class="subscribe-form" novalidate>
+          <div class="subscribe-row">
+            <input type="email" name="email" class="subscribe-input" placeholder="your@email.com" required autocomplete="email">
+            <button type="submit" class="subscribe-btn"${TURNSTILE_SITE_KEY ? ' disabled' : ''}>Subscribe</button>
+          </div>
+          ${TURNSTILE_SITE_KEY ? html`<div class="cf-turnstile" data-sitekey="${TURNSTILE_SITE_KEY}" data-callback="__tsOk" data-theme="auto" data-appearance="interaction-only"></div>` : ''}
+          <p class="subscribe-msg" aria-live="polite" role="status"></p>
+        </form>
+      </section>
+
       <footer>
         <p>Built with <a href="https://www.npmjs.com/package/@nisli/core">@nisli/core</a></p>
       </footer>
@@ -93,6 +115,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   <script type="module" src="/main.js"></script>
   ${scripts?.map(s => html`<script type="module" src="${s}"></script>`) ?? ''}
   <script>try{if(localStorage.analytics_ignore!=='true')fetch('/api/event',{method:'POST',keepalive:true,headers:{'Content-Type':'text/plain'},body:JSON.stringify({path:location.pathname,referrer:document.referrer||undefined})})}catch(e){}</script>
+  <script>(function(){window.__tsOk=function(t){window.__tsToken=t;var b=document.querySelector('#sub-form .subscribe-btn');if(b)b.disabled=false;};var f=document.getElementById('sub-form');if(!f)return;f.addEventListener('submit',async function(e){e.preventDefault();var email=f.elements.namedItem('email').value.trim();var btn=f.querySelector('.subscribe-btn');var msg=f.querySelector('.subscribe-msg');btn.disabled=true;msg.textContent='';try{var r=await fetch('/api/subscribe',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:email,turnstile:window.__tsToken||'',source:location.pathname})});if(r.status===202||r.ok){f.innerHTML='<p class="subscribe-done">Check your inbox \u2014 confirmation link on the way.</p>';}else{var d=await r.json().catch(function(){return{};});msg.textContent=d.error||'Something went wrong. Try again.';if(window.turnstile)window.turnstile.reset();btn.disabled=${TURNSTILE_SITE_KEY ? 'true' : 'false'};}}catch(err){msg.textContent='Network error. Try again.';if(window.turnstile)window.turnstile.reset();btn.disabled=${TURNSTILE_SITE_KEY ? 'true' : 'false'};}});}());</script>
 </body>
 </html>`;
 }

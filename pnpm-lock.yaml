@@ -26,6 +26,9 @@ importers:
       '@gkoreli/analytics':
         specifier: workspace:*
         version: link:../analytics
+      '@gkoreli/newsletter':
+        specifier: workspace:*
+        version: link:../newsletter
       '@nisli/core':
         specifier: latest
         version: 0.46.0
@@ -81,6 +84,15 @@ importers:
       uplot:
         specifier: ^1.6.32
         version: 1.6.32
+
+  packages/newsletter:
+    devDependencies:
+      '@cloudflare/workers-types':
+        specifier: ^4.20250306.0
+        version: 4.20260306.1
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
 
 packages:
 
