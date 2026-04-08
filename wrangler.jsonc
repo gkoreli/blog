@@ -30,11 +30,14 @@
 	// Defense-in-depth behind Turnstile. Namespace ID is arbitrary; created on deploy.
 	"ratelimits": [
 		{
-			"binding": "SUBSCRIBE_RATE_LIMITER",
+			"name": "SUBSCRIBE_RATE_LIMITER",
 			"namespace_id": "1001",
 			"simple": {
+				// 3 subscribe attempts per minute per IP.
+				// Cloudflare only allows period=10 or period=60.
+				// Original intent was 3/5 min; 3/60s is stricter but protects the same threat.
 				"limit": 3,
-				"period": 300
+				"period": 60
 			}
 		}
 	],
