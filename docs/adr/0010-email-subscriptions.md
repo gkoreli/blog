@@ -23,13 +23,17 @@ The goal: capture readers at peak intent (just finished an article that resonate
 
 Routes added to the existing worker under `/api/*` (already `run_worker_first` in wrangler config):
 
-| Route | Method | Handler |
-|-------|--------|---------|
-| `/api/subscribe` | OPTIONS | `corsPreflightResponse` |
-| `/api/subscribe` | POST | `handleSubscribe` |
-| `/api/confirm/:token` | GET | `handleConfirm` |
-| `/api/unsubscribe/:token` | GET | `handleUnsubscribe` |
-| `/api/webhooks/resend` | POST | `handleResendWebhook` |
+| Route | Method | Handler | Auth |
+|-------|--------|---------|------|
+| `/api/subscribe` | OPTIONS | `corsPreflightResponse` | CORS |
+| `/api/subscribe` | POST | `handleSubscribe` | Turnstile + rate limit |
+| `/api/resend-confirmation` | OPTIONS | `handleResendConfirmationPreflight` | CORS |
+| `/api/resend-confirmation` | POST | `handleResendConfirmation` | rate limit |
+| `/api/confirm/:token` | GET | `handleConfirm` | — |
+| `/api/unsubscribe/:token` | GET | `handleUnsubscribe` | — |
+| `/api/unsubscribe/:token` | POST | `handleUnsubscribe` | — (RFC 8058 one-click) |
+| `/api/send` | POST | `handleSend` | Bearer ADMIN_SECRET |
+| `/api/webhooks/resend` | POST | `handleResendWebhook` | Svix HMAC-SHA256 |
 
 Nightly cron at 03:00 UTC handled by `handleScheduled`.
 
@@ -52,19 +56,22 @@ packages/newsletter/
 ├── migrations/
 │   ├── 0001_create_subscribers.sql     ← authoritative schema (fresh installs)
 │   ├── 0002_for_existing_installs.sql  ← ALTER TABLE for pre-2026-04-08 installs
-│   └── 0003_add_bounced_at.sql         ← adds bounced_at column (GDPR purge fix)
+│   ├── 0003_add_bounced_at.sql         ← adds bounced_at column (GDPR purge fix)
+│   └── 0004_delivery_logs.sql          ← user_agent on subscribers + delivery_logs table
 └── src/
-    ├── index.ts        ← public API exports
-    ├── db.ts           ← D1 types + all query helpers
-    ├── tokens.ts       ← 256-bit token generation + SHA-256 hashing + IP truncation
-    ├── turnstile.ts    ← Cloudflare Turnstile siteverify wrapper
-    ├── email.ts        ← Resend fetch + HTML email templates (confirmation email)
-    ├── responses.ts    ← shared JSON + HTML response helpers, CORS, security headers
-    ├── subscribe.ts    ← POST /api/subscribe handler
-    ├── confirm.ts      ← GET /api/confirm/:token handler
-    ├── unsubscribe.ts  ← GET /api/unsubscribe/:token handler
-    ├── webhook.ts      ← POST /api/webhooks/resend (bounce/complaint handling)
-    └── cleanup.ts      ← Cron Trigger handler (nightly purge)
+    ├── index.ts                    ← public API exports
+    ├── db.ts                       ← D1 types + all query helpers
+    ├── tokens.ts                   ← 256-bit token generation + SHA-256 hashing + IP truncation
+    ├── turnstile.ts                ← Cloudflare Turnstile siteverify wrapper
+    ├── email.ts                    ← Resend fetch: sendConfirmationEmail + sendNewsletterBatch
+    ├── responses.ts                ← shared JSON + HTML response helpers, CORS, security headers
+    ├── subscribe.ts                ← POST /api/subscribe handler
+    ├── confirm.ts                  ← GET /api/confirm/:token handler
+    ├── unsubscribe.ts              ← GET + POST /api/unsubscribe/:token handler
+    ├── resend-confirmation.ts      ← POST /api/resend-confirmation handler
+    ├── send.ts                     ← POST /api/send handler (admin bulk send)
+    ├── webhook.ts                  ← POST /api/webhooks/resend (bounce/complaint handling)
+    └── cleanup.ts                  ← Cron Trigger handler (nightly purge)
 ```
 
 ### Request flow: subscribe
@@ -192,9 +199,22 @@ export async function hashToken(raw: string): Promise<string> {
 - Token found but expired → 410 with "re-subscribe" CTA
 - Token found and valid → confirm + clear token fields
 
-### Unsubscribe tokens: permanent and pre-hashed
+### Unsubscribe tokens: permanent, stored raw (not hashed)
 
-Unsubscribe tokens are never cleared. Every newsletter footer contains a link with the raw token; the stored hash lets us look it up. These do not expire — a reader who unsubscribes from a newsletter sent a year later still gets a working link.
+Unsubscribe tokens are stored as raw values in D1 — unlike confirm tokens, which are hashed.
+
+**Why the different treatment:**
+| Token | Stakes if DB leaked | How stored | URL contains |
+|-------|--------------------|-----------:|-------------|
+| Confirm | Attacker activates pending accounts | SHA-256 hash | raw token |
+| Unsubscribe | Attacker can mass-unsubscribe | **raw** | raw token |
+
+Mass-unsubscribing is annoying but not a security breach — no account access is granted. Storing raw tokens is the correct tradeoff because:
+1. The raw token must appear verbatim in every newsletter footer URL
+2. Without the raw value, you cannot build the URL without a reverse lookup (impossible with SHA-256)
+3. `sendNewsletterBatch()` reads `subscriber.unsubscribe_token` directly when composing emails
+
+Tokens never expire. A reader who gets an archived email from two years ago must still be able to unsubscribe via its footer link. Expiring unsubscribe links is a CAN-SPAM / GDPR compliance risk.
 
 ### Scoped CORS (not wildcard)
 
@@ -373,28 +393,47 @@ Workers Native Rate Limiting (GA Sept 2025, free tier): zero KV write costs, enf
 
 ## What is NOT built (intentional scope)
 
-- **Bulk newsletter sending** — build the `/api/send` endpoint when you have 50+ subscribers. Resend batch API + `ctx.waitUntil()` chain when needed.
 - **Admin UI** — query D1 directly: `wrangler d1 execute blog-analytics --command "SELECT * FROM subscribers WHERE status='active'"`. Build a dashboard at `/admin/newsletter` when manual querying becomes friction.
-- **Click tracking / open rates** — Resend provides these on paid plan. Not needed at Phase 1.
-- **Drip sequences / automation** — deliberate simplicity. One confirmation email. Newsletters sent manually. Automate when the manual process is the bottleneck.
+- **Click tracking / open rates** — Resend provides these on paid plan. Not needed at Phase 1–2.
+- **Drip sequences / automation** — deliberate simplicity. One confirmation email. Newsletters sent manually via `POST /api/send`. Automate when the manual process is the bottleneck.
 - **Separate `NEWSLETTER_DB` binding** — see DB tradeoff above. Defer until subscriber list is meaningful.
+- **Queue-based sending** — `POST /api/send` is synchronous. At 50–500 subscribers, a Resend batch call takes <1s. Queues are Phase 3.
 
 ## Future Vision
 
-### Phase 2 (50+ subscribers)
+### Phase 2 (50+ subscribers) — SHIPPED
 
 **Prerequisites before first bulk send (DNS + infrastructure, not code):**
 - [ ] SPF record on `gkoreli.com` (Resend provides the TXT record on domain verification)
 - [ ] DKIM signing enabled via Resend domain settings
 - [ ] DMARC policy record (`_dmarc.gkoreli.com`) — start with `p=none` for monitoring, move to `p=quarantine` once aligned
-- [ ] Verify all three pass at [mail-tester.com](https://www.mail-tester.com) or [mxtoolbox.com](https://mxtoolbox.com)
+- [ ] ADMIN_SECRET set: `wrangler secret put ADMIN_SECRET`
+- [ ] Verify SPF/DKIM/DMARC at [mail-tester.com](https://www.mail-tester.com) or [mxtoolbox.com](https://mxtoolbox.com)
+- [ ] Apply migration 0004: `wrangler d1 execute blog-analytics --file packages/newsletter/migrations/0004_delivery_logs.sql`
 
-**Engineering:**
-- `POST /api/send` — sends newsletter to all `active` subscribers via Resend batch API
-- Add `List-Unsubscribe` + `List-Unsubscribe-Post` headers to bulk send function (Google requirement)
-- `delivery_logs` table — records sent/delivered/bounced per send
-- Simple admin CLI or protected page to trigger sends
+**Shipped:**
+- `POST /api/send` — sends to all `active` subscribers via Resend batch API (100/chunk).
+  Auth: `Authorization: Bearer $ADMIN_SECRET`. Idempotent via `campaign_id`.
+- `POST /api/resend-confirmation` — resend confirm email to pending subscribers.
+  Saves users who miss the first email. Rate-limited. Always returns 200 (no enumeration).
+- `POST /api/unsubscribe/:token` — RFC 8058 one-click unsubscribe for Gmail.
+- `delivery_logs` table — per-recipient audit trail (campaign_id, status, resend_id).
+- `List-Unsubscribe` + `List-Unsubscribe-Post` headers on every newsletter email.
+- `user_agent` column on subscribers for abuse pattern detection.
 - Bounce suppression already in place (webhook → `status='bounced'`)
+
+**To send a newsletter:**
+```bash
+curl -X POST https://gkoreli.com/api/send \
+  -H "Authorization: Bearer $ADMIN_SECRET" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "campaign_id": "2026-04-post-title",
+    "subject": "New post: ...",
+    "html": "<p>...</p>",
+    "text": "..."
+  }'
+```
 
 ### Phase 3 (500+ subscribers)
 - Migrate to Cloudflare native email sending (replace Resend entirely, zero cost)
@@ -440,8 +479,14 @@ wrangler d1 execute blog-analytics \
 #    All installs — adds bounced_at (GDPR purge fix, safe to run on empty table):
 wrangler d1 execute blog-analytics \
   --file packages/newsletter/migrations/0003_add_bounced_at.sql
+#    All installs — adds user_agent column + delivery_logs table:
+wrangler d1 execute blog-analytics \
+  --file packages/newsletter/migrations/0004_delivery_logs.sql
 
-# 5. Build with site key, then deploy
+# 5. Set admin secret for POST /api/send
+wrangler secret put ADMIN_SECRET
+
+# 6. Build with site key, then deploy
 TURNSTILE_SITE_KEY=0xYOURSITEKEY pnpm build
 wrangler deploy
 ```
