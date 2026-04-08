@@ -3,6 +3,9 @@ import {
   handleSubscribe,
   handleConfirm,
   handleUnsubscribe,
+  handleResendConfirmation,
+  handleResendConfirmationPreflight,
+  handleSend,
   handleResendWebhook,
   handleScheduled,
   allowedOrigin,
@@ -37,12 +40,27 @@ export default {
       return handleSubscribe(request, env, ctx);
     }
 
+    // ── Newsletter: resend confirmation ────────────────────────────────────
+    if (pathname === '/api/resend-confirmation' && method === 'OPTIONS') {
+      return handleResendConfirmationPreflight(request);
+    }
+    if (pathname === '/api/resend-confirmation' && method === 'POST') {
+      return handleResendConfirmation(request, env, ctx);
+    }
+
     // ── Newsletter: confirm / unsubscribe ──────────────────────────────────
     if (pathname.startsWith('/api/confirm/') && method === 'GET') {
       return handleConfirm(request, env, trailingSegment(pathname, '/api/confirm/'));
     }
-    if (pathname.startsWith('/api/unsubscribe/') && method === 'GET') {
+    // GET: manual click from email footer
+    // POST: RFC 8058 one-click unsubscribe (Gmail "Unsubscribe" button)
+    if (pathname.startsWith('/api/unsubscribe/') && (method === 'GET' || method === 'POST')) {
       return handleUnsubscribe(request, env, trailingSegment(pathname, '/api/unsubscribe/'));
+    }
+
+    // ── Newsletter: admin send ─────────────────────────────────────────────
+    if (pathname === '/api/send' && method === 'POST') {
+      return handleSend(request, env);
     }
 
     // ── Newsletter: Resend delivery webhook ────────────────────────────────

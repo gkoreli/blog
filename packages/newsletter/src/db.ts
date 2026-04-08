@@ -15,6 +15,8 @@ export interface NewsletterEnv {
   SUBSCRIBE_RATE_LIMITER?: RateLimit;
   /** Svix signing secret from Resend dashboard (for webhook verification). */
   RESEND_WEBHOOK_SECRET?: string;
+  /** Bearer token for POST /api/send (admin newsletter send). Optional — returns 501 if unset. */
+  ADMIN_SECRET?: string;
 }
 
 export type SubscriberStatus = 'pending' | 'active' | 'unsubscribed' | 'bounced';
@@ -27,15 +29,35 @@ export interface Subscriber {
   confirm_token: string | null;
   /** ISO datetime; NULL after confirmation. */
   confirm_token_expires_at: string | null;
-  /** SHA-256 hash of the permanent unsubscribe token. */
+  /**
+   * Raw (unhashed) permanent unsubscribe token — 256-bit hex string.
+   *
+   * Design note: confirm tokens are hashed before storage because they grant account
+   * activation (a D1 breach must not yield usable confirm URLs). Unsubscribe tokens
+   * grant opt-out only — low-stakes — and must be included verbatim in every newsletter
+   * footer URL. Storing raw allows building the URL without a round-trip decode.
+   */
   unsubscribe_token: string;
   source: string | null;
   /** Truncated IP for GDPR consent proof, e.g. "1.2.3.x". */
   consent_ip: string | null;
+  /** User-Agent at signup time, truncated to 512 chars. For abuse pattern detection. */
+  user_agent: string | null;
   created_at: string; // = consent timestamp
   confirmed_at: string | null;
   unsubscribed_at: string | null;
   bounced_at: string | null;
+}
+
+export interface DeliveryLog {
+  id: string;
+  campaign_id: string;
+  sub_id: string;
+  email: string;
+  status: 'sent' | 'failed';
+  resend_id: string | null;
+  error: string | null;
+  sent_at: string;
 }
 
 /** Confirm-token lifetime: 24 hours — industry standard for double opt-in. */
@@ -72,18 +94,19 @@ export async function insertSubscriber(
   id: string,
   email: string,
   confirmTokenHash: string,
-  unsubscribeTokenHash: string,
+  rawUnsubscribeToken: string,
   source: string | null,
   consentIp: string | null,
+  userAgent: string | null,
 ): Promise<void> {
   await db
     .prepare(
       `INSERT INTO subscribers
-         (id, email, confirm_token, confirm_token_expires_at, unsubscribe_token, source, consent_ip)
+         (id, email, confirm_token, confirm_token_expires_at, unsubscribe_token, source, consent_ip, user_agent)
        VALUES
-         (?, ?, ?, datetime('now', '+${CONFIRM_TOKEN_TTL_HOURS} hours'), ?, ?, ?)`,
+         (?, ?, ?, datetime('now', '+${CONFIRM_TOKEN_TTL_HOURS} hours'), ?, ?, ?, ?)`,
     )
-    .bind(id, email, confirmTokenHash, unsubscribeTokenHash, source, consentIp)
+    .bind(id, email, confirmTokenHash, rawUnsubscribeToken, source, consentIp, userAgent)
     .run();
 }
 
@@ -95,8 +118,9 @@ export async function refreshPendingTokens(
   db: D1Database,
   email: string,
   confirmTokenHash: string,
-  unsubscribeTokenHash: string,
+  rawUnsubscribeToken: string,
   consentIp: string | null,
+  userAgent: string | null,
 ): Promise<void> {
   await db
     .prepare(
@@ -105,10 +129,11 @@ export async function refreshPendingTokens(
            confirm_token_expires_at = datetime('now', '+${CONFIRM_TOKEN_TTL_HOURS} hours'),
            unsubscribe_token        = ?,
            consent_ip               = ?,
+           user_agent               = ?,
            created_at               = datetime('now')
        WHERE email = ? AND status = 'pending'`,
     )
-    .bind(confirmTokenHash, unsubscribeTokenHash, consentIp, email)
+    .bind(confirmTokenHash, rawUnsubscribeToken, consentIp, userAgent, email)
     .run();
 }
 
@@ -136,12 +161,12 @@ export async function confirmSubscriber(db: D1Database, tokenHash: string): Prom
 }
 
 /**
- * Unsubscribe via the permanent unsubscribe token.
- * Parameter: SHA-256 hash of the raw token from the email footer URL.
+ * Unsubscribe via the permanent raw unsubscribe token from the email footer URL.
+ * Token is stored raw (not hashed) — see Subscriber.unsubscribe_token for rationale.
  */
-export async function unsubscribeByTokenHash(
+export async function unsubscribeByToken(
   db: D1Database,
-  tokenHash: string,
+  rawToken: string,
 ): Promise<boolean> {
   const result = await db
     .prepare(
@@ -150,7 +175,7 @@ export async function unsubscribeByTokenHash(
            unsubscribed_at = datetime('now')
        WHERE unsubscribe_token = ? AND status NOT IN ('unsubscribed', 'bounced')`,
     )
-    .bind(tokenHash)
+    .bind(rawToken)
     .run();
   return (result.meta.changes ?? 0) > 0;
 }
@@ -210,4 +235,53 @@ export async function purgeOldInactive(db: D1Database): Promise<number> {
     )
     .run();
   return result.meta.changes ?? 0;
+}
+
+// ── Newsletter send ───────────────────────────────────────────────────────────
+
+/** Fetch all active subscribers for a newsletter send. */
+export async function getActiveSubscribers(db: D1Database): Promise<Subscriber[]> {
+  const result = await db
+    .prepare(`SELECT * FROM subscribers WHERE status = 'active' ORDER BY confirmed_at ASC`)
+    .all<Subscriber>();
+  return result.results;
+}
+
+/**
+ * Returns true if any delivery_log rows exist for this campaign_id.
+ * Used for idempotency: prevent duplicate sends on retry.
+ */
+export async function campaignExists(db: D1Database, campaignId: string): Promise<boolean> {
+  const row = await db
+    .prepare(`SELECT 1 FROM delivery_logs WHERE campaign_id = ? LIMIT 1`)
+    .bind(campaignId)
+    .first<{ 1: number }>();
+  return row !== null;
+}
+
+/** Insert a delivery log row. Called after each Resend batch response. */
+export async function insertDeliveryLog(db: D1Database, log: DeliveryLog): Promise<void> {
+  await db
+    .prepare(
+      `INSERT INTO delivery_logs (id, campaign_id, sub_id, email, status, resend_id, error, sent_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'))`,
+    )
+    .bind(log.id, log.campaign_id, log.sub_id, log.email, log.status, log.resend_id, log.error)
+    .run();
+}
+
+/** Bulk insert delivery log rows in a single statement (up to 100 per batch). */
+export async function insertDeliveryLogs(db: D1Database, logs: DeliveryLog[]): Promise<void> {
+  if (logs.length === 0) return;
+  // D1 batch() executes multiple prepared statements atomically
+  await db.batch(
+    logs.map(log =>
+      db
+        .prepare(
+          `INSERT INTO delivery_logs (id, campaign_id, sub_id, email, status, resend_id, error, sent_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'))`,
+        )
+        .bind(log.id, log.campaign_id, log.sub_id, log.email, log.status, log.resend_id, log.error),
+    ),
+  );
 }

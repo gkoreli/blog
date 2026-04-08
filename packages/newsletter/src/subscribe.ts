@@ -20,6 +20,8 @@
 import type { NewsletterEnv } from './db.js';
 import { findByEmail, insertSubscriber, refreshPendingTokens } from './db.js';
 import { generateToken, hashToken, truncateIp } from './tokens.js';
+
+const MAX_UA_LENGTH = 512;
 import { verifyTurnstile } from './turnstile.js';
 import { sendConfirmationEmail } from './email.js';
 import { jsonOk, jsonError, allowedOrigin } from './responses.js';
@@ -68,33 +70,34 @@ export async function handleSubscribe(
 
   const source = sanitizeSource(body.source);
   const consentIp = truncateIp(ip);
+  const userAgent = (request.headers.get('user-agent') ?? '').slice(0, MAX_UA_LENGTH) || null;
   const existing = await findByEmail(env.DB, email);
 
   // Already confirmed — 202 without revealing account existence
   if (existing?.status === 'active') return jsonOk({ ok: true }, 202, origin);
 
-  // 4. Generate 256-bit tokens; hash both before storage
+  // 4. Generate 256-bit tokens.
+  //    Confirm token: hashed before storage (one-time credential granting account activation).
+  //    Unsubscribe token: stored raw (permanent opt-out token; must be included verbatim in email URLs).
   const rawConfirm = generateToken();
   const rawUnsub = generateToken();
-  const [confirmHash, unsubHash] = await Promise.all([
-    hashToken(rawConfirm),
-    hashToken(rawUnsub),
-  ]);
+  const confirmHash = await hashToken(rawConfirm);
 
   const confirmUrl = `${new URL(request.url).origin}/api/confirm/${rawConfirm}`;
 
   // 5. Insert or refresh
   if (existing?.status === 'pending') {
-    await refreshPendingTokens(env.DB, email, confirmHash, unsubHash, consentIp);
+    await refreshPendingTokens(env.DB, email, confirmHash, rawUnsub, consentIp, userAgent);
   } else {
     await insertSubscriber(
       env.DB,
       generateToken(), // row ID — separate random value
       email,
       confirmHash,
-      unsubHash,
+      rawUnsub,
       source,
       consentIp,
+      userAgent,
     );
   }
 

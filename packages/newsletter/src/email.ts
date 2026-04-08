@@ -4,9 +4,24 @@
  * Resend docs: https://resend.com/docs/api-reference/emails/send-email
  * D1 is the source of truth; Resend is the delivery pipe only.
  * Swap the delivery layer here without touching any other module.
+ *
+ * Two email classes — different compliance obligations:
+ *
+ *   Transactional  sendConfirmationEmail()   — double opt-in confirmation
+ *                  No List-Unsubscribe header required (not marketing).
+ *
+ *   Subscribed     sendNewsletterBatch()      — newsletter / post alerts
+ *                  Requires List-Unsubscribe + List-Unsubscribe-Post headers
+ *                  (Google sender guidelines for bulk / subscribed mail).
+ *                  Each email gets a personalised unsubscribe URL built from
+ *                  the subscriber's raw unsubscribe_token.
  */
 
 const FROM = 'Goga Koreli <newsletter@gkoreli.com>';
+const BASE_URL = 'https://gkoreli.com';
+
+/** Max recipients per Resend batch API call. */
+export const RESEND_BATCH_LIMIT = 100;
 
 /** Send a double opt-in confirmation email. */
 export async function sendConfirmationEmail(
@@ -83,4 +98,101 @@ Confirm subscription: ${confirmUrl}
 
 ---
 If you didn't request this, ignore the email. No account was created.`;
+}
+
+// ── Newsletter (subscribed-content) emails ────────────────────────────────────
+
+export interface NewsletterRecipient {
+  email: string;
+  /** Raw unsubscribe token — included verbatim in footer URL. */
+  unsubscribeToken: string;
+}
+
+export interface ResendBatchItem {
+  from: string;
+  to: string;
+  subject: string;
+  html: string;
+  text: string;
+  headers: Record<string, string>;
+}
+
+export interface BatchSendResult {
+  email: string;
+  resend_id: string | null;
+  error: string | null;
+}
+
+/**
+ * Send a newsletter to a batch of subscribers via Resend's batch API.
+ * Each email gets personalised List-Unsubscribe headers (RFC 8058).
+ *
+ * Caller is responsible for chunking to RESEND_BATCH_LIMIT before calling.
+ * Returns per-recipient results (resend_id on success, error on failure).
+ */
+export async function sendNewsletterBatch(
+  apiKey: string,
+  recipients: NewsletterRecipient[],
+  subject: string,
+  html: string,
+  text: string,
+): Promise<BatchSendResult[]> {
+  const batch: ResendBatchItem[] = recipients.map(r => {
+    const unsubUrl = `${BASE_URL}/api/unsubscribe/${r.unsubscribeToken}`;
+    return {
+      from: FROM,
+      to: r.email,
+      subject,
+      html: appendUnsubFooterHtml(html, unsubUrl),
+      text: appendUnsubFooterText(text, unsubUrl),
+      headers: {
+        'List-Unsubscribe': `<${unsubUrl}>`,
+        'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+      },
+    };
+  });
+
+  const res = await fetch('https://api.resend.com/emails/batch', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(batch),
+  });
+
+  if (!res.ok) {
+    const body = await res.text().catch(() => '');
+    const err = `Resend batch error ${res.status}: ${body}`;
+    // Whole batch failed — return error for every recipient
+    return recipients.map(r => ({ email: r.email, resend_id: null, error: err }));
+  }
+
+  const json = await res.json<{ data: Array<{ id?: string }> }>();
+  return recipients.map((r, i) => ({
+    email: r.email,
+    resend_id: json.data[i]?.id ?? null,
+    error: null,
+  }));
+}
+
+/** Append plain-text unsubscribe footer. */
+function appendUnsubFooterText(text: string, unsubUrl: string): string {
+  return `${text}\n\n---\nYou're receiving this because you subscribed at gkoreli.com.\nUnsubscribe: ${unsubUrl}`;
+}
+
+/** Append HTML unsubscribe footer before </body>. Falls back to appending at end. */
+function appendUnsubFooterHtml(html: string, unsubUrl: string): string {
+  const footer = `<p style="margin:2rem 0 0;font-size:0.75rem;color:#9a9585;border-top:1px solid #ddd8cf;padding-top:1rem;">
+    You're receiving this because you subscribed at <a href="https://gkoreli.com" style="color:#9a9585;">gkoreli.com</a>.
+    <a href="${esc(unsubUrl)}" style="color:#9a9585;">Unsubscribe</a>
+  </p>`;
+  const idx = html.lastIndexOf('</body>');
+  return idx !== -1
+    ? html.slice(0, idx) + footer + html.slice(idx)
+    : html + footer;
+}
+
+function esc(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
