@@ -140,3 +140,89 @@ export function Closing({ title, body }: { title: StaticResult; body: StaticResu
 export function Postscript({ content }: { content: StaticResult }) {
   return html`<div class="proc-ps">${content}</div>`;
 }
+
+/* ── OSS Radar components ── */
+
+export function OssRadarHero({ issueNum, date, tags, title, subtitle, author, wordCount, readTime }: {
+  issueNum: string; date: string; tags: string; title: StaticResult; subtitle: string; author: string; wordCount: string; readTime: string;
+}) {
+  return html`<div class="topo-hero topo-hero--long-title">
+    <nisli-neural-canvas mode="pulse"></nisli-neural-canvas>
+    <div class="topo-hero-inner">
+      <span class="topo-kicker">${tags}</span>
+      <div class="radar-meta"><span class="radar-issue">${issueNum}</span> <span class="radar-date">${date}</span></div>
+      ${title}
+      <p class="topo-byline">${subtitle}</p>
+      <div class="proc-byline">
+        <span class="proc-byline-name"><strong>${author}</strong></span>
+        <span class="proc-byline-sep">·</span>
+        <span class="proc-byline-name">${readTime}</span>
+      </div>
+    </div>
+    <span class="topo-scroll">↓ scroll to read</span>
+  </div>`;
+}
+
+export function StatRow({ items }: { items: { value: string; label: StaticResult }[] }) {
+  return html`<div class="stat-row">
+    ${items.map(s => html`<div class="stat-block">
+      <div class="stat-value">${s.value}</div>
+      <div class="stat-label">${s.label}</div>
+    </div>`)}
+  </div>`;
+}
+
+export function Timeline({ items }: { items: { date: string; event: StaticResult; note?: string }[] }) {
+  return html`<div class="radar-timeline">
+    ${items.map(t => html`<div class="tl-item">
+      <div class="tl-date">${t.date}</div>
+      <div class="tl-event">${t.event}</div>
+      ${t.note ? html`<div class="tl-note">${t.note}</div>` : ''}
+    </div>`)}
+  </div>`;
+}
+
+export function Prognosis({ tag, title, body }: { tag: 'watch' | 'signal' | 'risk'; title: string; body: StaticResult }) {
+  return html`<div class="prognosis">
+    <div class="prognosis-header">
+      <span class="prognosis-tag prognosis-${tag}">${tag}</span>
+      <span class="prognosis-title">${title}</span>
+    </div>
+    <div class="prognosis-body">${body}</div>
+  </div>`;
+}
+
+export function Scoreboard({ title, rows }: { title: string; rows: { company: string; items: { label: string; isNew?: boolean }[] }[] }) {
+  return html`<div class="scoreboard">
+    <div class="scoreboard-header">${title}</div>
+    ${rows.map(r => html`<div class="sb-row">
+      <div class="sb-co">${r.company}</div>
+      <div class="sb-items">
+        ${r.items.map(i => html`<span class="sb-item${i.isNew ? ' sb-new' : ''}">${i.label}</span>`)}
+      </div>
+    </div>`)}
+  </div>`;
+}
+
+export function CompareTable({ headers, rows, highlightRows }: { headers: string[]; rows: string[][]; highlightRows?: number[] }) {
+  const hl = new Set(highlightRows ?? []);
+  return html`<table class="compare-table">
+    <thead><tr>${headers.map(h => html`<th>${h}</th>`)}</tr></thead>
+    <tbody>${rows.map((r, i) => html`<tr${hl.has(i) ? ' class="ct-hl"' : ''}>
+      ${r.map(c => html`<td>${c}</td>`)}
+    </tr>`)}</tbody>
+  </table>`;
+}
+
+export function Sources({ items }: { items: { claim: string; ref: string }[] }) {
+  return html`<div class="radar-sources">
+    <div class="radar-sources-title">Sources & Evidence</div>
+    <div class="radar-sources-grid">
+      ${items.map(s => html`<div class="src-item">
+        <span class="src-claim">${s.claim}</span>
+        <span class="src-ref">${s.ref}</span>
+      </div>`)}
+    </div>
+  </div>`;
+}
+
