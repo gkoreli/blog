@@ -144,7 +144,8 @@ CREATE TABLE subscribers (
 
   created_at               TEXT NOT NULL DEFAULT (datetime('now')),  -- = consent timestamp
   confirmed_at             TEXT,
-  unsubscribed_at          TEXT
+  unsubscribed_at          TEXT,
+  bounced_at               TEXT             -- set by Resend webhook; used for GDPR purge timing
 );
 
 CREATE INDEX idx_sub_email         ON subscribers (email);
@@ -262,7 +263,7 @@ Replay-attack guard: `|now - svix-timestamp| ≤ 300 seconds`. Emails are redact
 
 **Right to erasure (Art. 17):** Nightly cron via `handleScheduled`:
 1. `purgeExpiredPending()` — deletes `status='pending'` rows where `confirm_token_expires_at < now()`. Unconfirmed signups never linger.
-2. `purgeOldInactive()` — deletes `status IN ('unsubscribed', 'bounced')` rows older than 90 days. Satisfies GDPR Art. 5(1)(e) data minimisation: no purpose for retaining data about people who have opted out.
+2. `purgeOldInactive()` — deletes rows older than 90 days using status-specific event timestamps: `unsubscribed_at` for `status='unsubscribed'`; `bounced_at` for `status='bounced'`. Satisfies GDPR Art. 5(1)(e) data minimisation: no purpose for retaining data about people who have opted out.
 
 **Double opt-in:** Legally required under GDPR for marketing emails in the EU/Germany. Subscribers don't reach `status='active'` without clicking the confirmation link sent to their email.
 

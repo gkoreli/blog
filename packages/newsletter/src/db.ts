@@ -35,6 +35,7 @@ export interface Subscriber {
   created_at: string; // = consent timestamp
   confirmed_at: string | null;
   unsubscribed_at: string | null;
+  bounced_at: string | null;
 }
 
 /** Confirm-token lifetime: 24 hours — industry standard for double opt-in. */
@@ -157,7 +158,10 @@ export async function unsubscribeByTokenHash(
 /** Hard bounce: address is undeliverable. Called from Resend webhook. */
 export async function markBounced(db: D1Database, email: string): Promise<void> {
   await db
-    .prepare(`UPDATE subscribers SET status = 'bounced' WHERE email = ? AND status = 'active'`)
+    .prepare(
+      `UPDATE subscribers SET status = 'bounced', bounced_at = datetime('now')
+       WHERE email = ? AND status = 'active'`,
+    )
     .bind(email)
     .run();
 }
@@ -192,15 +196,17 @@ export async function purgeExpiredPending(db: D1Database): Promise<number> {
 
 /**
  * GDPR Art. 5(1)(e) — data minimisation: delete rows where personal data
- * (email) is no longer needed. Applies to unsubscribed + bounced rows older
- * than UNSUBSCRIBED_RETENTION_DAYS. Returns rows deleted.
+ * (email) is no longer needed. Each status uses its own event timestamp:
+ *   unsubscribed → unsubscribed_at
+ *   bounced      → bounced_at
+ * Returns rows deleted.
  */
 export async function purgeOldInactive(db: D1Database): Promise<number> {
   const result = await db
     .prepare(
       `DELETE FROM subscribers
-       WHERE status IN ('unsubscribed', 'bounced')
-         AND unsubscribed_at < datetime('now', '-${UNSUBSCRIBED_RETENTION_DAYS} days')`,
+       WHERE (status = 'unsubscribed' AND unsubscribed_at < datetime('now', '-${UNSUBSCRIBED_RETENTION_DAYS} days'))
+          OR (status = 'bounced'      AND bounced_at      < datetime('now', '-${UNSUBSCRIBED_RETENTION_DAYS} days'))`,
     )
     .run();
   return result.meta.changes ?? 0;
