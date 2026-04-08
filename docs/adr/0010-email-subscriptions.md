@@ -258,19 +258,61 @@ function timingSafeEqual(a: string, b: string): boolean {
 
 Replay-attack guard: `|now - svix-timestamp| ≤ 300 seconds`. Emails are redacted in logs using the first 3 characters + `***@domain`.
 
-### GDPR compliance
+### Legal model: ePrivacy + GDPR (two layers)
 
-**Proof of consent:** `consent_ip` (last octet zeroed: `"1.2.3.x"`) + `created_at` timestamp stored at subscription time. Adequate evidence for GDPR Art. 7 consent requirements without retaining a full IP address.
+For EU subscribers, the governing framework is two-layered — not just GDPR:
+
+1. **ePrivacy Directive (2002/58/EC)** — defines *when* consent is needed. For direct-marketing emails, prior consent is required. This is the rule that makes unsolicited newsletters illegal, not GDPR.
+2. **GDPR / EDPB guidance** — defines *what valid consent looks like*: freely given, specific, informed, unambiguous, expressed by a clear affirmative action. Withdrawal must be as easy as giving consent.
+
+The practical consequence: what you store as consent evidence must satisfy GDPR's standard, and the entire flow (what the user saw, what they agreed to, when, how they can withdraw) must be defensible under ePrivacy's prior-consent requirement.
+
+**Proof of consent:** `consent_ip` (last octet zeroed: `"1.2.3.x"`) + `created_at` timestamp + `source` (the page they signed up from) stored at subscription time. Together these establish: who signed up, when, from what context, on what device IP. Adequate evidence for GDPR Art. 7 without retaining a full IP address.
 
 **Right to erasure (Art. 17):** Nightly cron via `handleScheduled`:
 1. `purgeExpiredPending()` — deletes `status='pending'` rows where `confirm_token_expires_at < now()`. Unconfirmed signups never linger.
 2. `purgeOldInactive()` — deletes rows older than 90 days using status-specific event timestamps: `unsubscribed_at` for `status='unsubscribed'`; `bounced_at` for `status='bounced'`. Satisfies GDPR Art. 5(1)(e) data minimisation: no purpose for retaining data about people who have opted out.
 
-**Double opt-in:** GDPR does not mandate double opt-in — it requires provable, freely given, unambiguous consent. Double opt-in is adopted here as a defensive mechanism: it provides the strongest consent evidence (the subscriber took a second action from their inbox), eliminates bot/typo addresses, and removes practical ambiguity. Germany's case law and some other jurisdictions effectively require it for email marketing, but even absent that, it is the lowest-risk choice for a global audience. Subscribers don't reach `status='active'` without clicking the confirmation link.
+**Double opt-in:** GDPR/ePrivacy do not mandate double opt-in by name. It is adopted here for four concrete engineering reasons:
+1. **Strongest consent proof** — the subscriber took a second action from their own inbox, which is hard to dispute
+2. **List hygiene** — eliminates typos and bot-submitted addresses; Google explicitly says clean lists reduce spam complaints
+3. **Fewer spam complaints** — opted-in addresses remember signing up; cold addresses don't; complaints damage sender reputation
+4. **Sender reputation** — Google treats complaint rate as a hard deliverability signal; lower complaint rate = better inbox placement
+
+Subscribers don't reach `status='active'` without clicking the confirmation link.
 
 ### CAN-SPAM compliance
 
-Transactional confirmation emails are exempt from CAN-SPAM's bulk requirements, but newsletters are not. Every newsletter must include a physical mailing address. A P.O. box or registered business address satisfies this. CAN-SPAM applies even to free personal blogs.
+CAN-SPAM's requirements are triggered by **commercial content**, not by being a blog. A purely personal blog sending non-commercial post-update emails is in a low-risk zone. The compliance burden increases when emails promote products, sponsors, paid content, or any commercial purpose.
+
+Regardless, two rules apply now:
+- **Transactional emails** (confirmation) are exempt from CAN-SPAM's bulk-marketing requirements
+- **Subscribed-content emails** (future newsletters) must include an accurate sender address and a working opt-out; the `unsubscribe_token` flow already satisfies opt-out
+
+Physical mailing address is required if/when emails become commercial under FTC rules. A P.O. box satisfies this. Defer until the blog generates commercial content.
+
+**Email classification matters in code:** treat confirmation emails and newsletter emails as different classes from the start, even if the delivery provider is the same. They have different compliance obligations, different headers, and different deliverability rules. The `email.ts` module currently handles only the transactional confirmation — future newsletter sends belong in a separate function with appropriate `List-Unsubscribe` headers.
+
+### Sender authentication: SPF, DKIM, DMARC (pre-bulk-send gate)
+
+This is not optional at any real sending volume. Google's sender guidelines make these hard requirements for bulk senders (>5,000/day) and strongly recommended for all outbound mail:
+
+| Record | What it does | Required by |
+|--------|-------------|-------------|
+| **SPF** | Lists servers authorised to send from your domain | Google (all senders) |
+| **DKIM** | Cryptographic signature proving the message hasn't been tampered with | Google (bulk senders) |
+| **DMARC** | Policy that tells mailboxes what to do when SPF/DKIM fail | Google (bulk senders) |
+
+**None of this is code** — it is DNS configuration on `gkoreli.com`. Resend's dashboard provides the DNS records to add when you verify your sending domain. This should be done before sending the first newsletter, not after.
+
+**`List-Unsubscribe` + `List-Unsubscribe-Post` headers** — required by Google for bulk senders, and strongly recommended for all subscribed-content emails. These enable one-click unsubscribe directly from Gmail's UI. They do not replace the in-body unsubscribe link — they are additive. Engineering task: add these headers to the future `/api/send` implementation in `email.ts`, not to the transactional confirmation email.
+
+```
+List-Unsubscribe: <https://gkoreli.com/api/unsubscribe/{rawUnsubToken}>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+```
+
+These are **Phase 2 engineering prerequisites**, not optional enhancements. First bulk send without them risks inbox filtering and potential provider policy violation at scale.
 
 ## Why No Third-Party Libraries
 
@@ -340,7 +382,16 @@ Workers Native Rate Limiting (GA Sept 2025, free tier): zero KV write costs, enf
 ## Future Vision
 
 ### Phase 2 (50+ subscribers)
+
+**Prerequisites before first bulk send (DNS + infrastructure, not code):**
+- [ ] SPF record on `gkoreli.com` (Resend provides the TXT record on domain verification)
+- [ ] DKIM signing enabled via Resend domain settings
+- [ ] DMARC policy record (`_dmarc.gkoreli.com`) — start with `p=none` for monitoring, move to `p=quarantine` once aligned
+- [ ] Verify all three pass at [mail-tester.com](https://www.mail-tester.com) or [mxtoolbox.com](https://mxtoolbox.com)
+
+**Engineering:**
 - `POST /api/send` — sends newsletter to all `active` subscribers via Resend batch API
+- Add `List-Unsubscribe` + `List-Unsubscribe-Post` headers to bulk send function (Google requirement)
 - `delivery_logs` table — records sent/delivered/bounced per send
 - Simple admin CLI or protected page to trigger sends
 - Bounce suppression already in place (webhook → `status='bounced'`)
@@ -394,3 +445,23 @@ wrangler d1 execute blog-analytics \
 TURNSTILE_SITE_KEY=0xYOURSITEKEY pnpm build
 wrangler deploy
 ```
+
+## References
+
+**Law and regulation**
+- [ePrivacy Directive 2002/58/EC](https://eur-lex.europa.eu/eli/dir/2002/58/oj/eng) — Directive on privacy and electronic communications; governs when prior consent is required for direct-marketing emails in the EU. The baseline rule that makes unsolicited newsletters illegal.
+- [FTC CAN-SPAM Act compliance guide](https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business) — U.S. requirements for commercial email: accurate headers, honest subject lines, valid physical address, working opt-out. Triggered by commercial content, not blog status.
+
+**Deliverability**
+- [Google Email Sender Guidelines](https://support.google.com/a/answer/81126) — Hard requirements from Google/Gmail: SPF or DKIM for all senders; SPF + DKIM + DMARC for bulk senders (>5K/day); `List-Unsubscribe` + one-click unsubscribe for marketing/subscribed mail; spam rate must stay below threshold. Google explicitly does not verify third-party open-rate figures.
+
+**Infrastructure**
+- [Cloudflare Email Routing docs](https://developers.cloudflare.com/email-routing/) — Primarily for receiving and routing inbound mail. Not the outbound newsletter delivery layer.
+- [Cloudflare Workers + Resend tutorial](https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/) — Official pattern for transactional email from Workers via Resend `fetch()`.
+- [Svix webhook verification (manual)](https://docs.svix.com/receiving/verifying-payloads/how-manual) — Algorithm reference for the HMAC-SHA256 webhook verification in `webhook.ts`.
+
+**Open source reference implementations reviewed**
+- [SamirPaulb/newsletter-and-contact-system](https://github.com/SamirPaulb/newsletter-and-contact-system) — Workers + KV pattern
+- [i365dev/LetterDrop](https://github.com/i365dev/LetterDrop) — Workers + D1 + Resend; validates the stack combination
+- [Divkix/pickmyclass](https://github.com/Divkix/pickmyclass) — token-in-URL pattern on Workers
+- [mnestorov/security-headers-cloudflare-worker](https://github.com/mnestorov/security-headers-cloudflare-worker) — CSP + security headers reference
