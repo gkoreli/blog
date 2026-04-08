@@ -4,7 +4,6 @@ interface Turnstile {
     container: string | HTMLElement,
     options: {
       sitekey: string;
-      size: 'invisible';
       execution: 'execute';
       theme?: 'auto' | 'light' | 'dark';
       callback?: (token: string) => void;
@@ -52,7 +51,6 @@ function initSubscribeForm(): void {
   if (sitekey && slot && window.turnstile) {
     widgetId = window.turnstile.render(slot, {
       sitekey,
-      size: 'invisible',
       execution: 'execute',
       theme: 'auto',
       callback(token) { void doSubmit(token); },

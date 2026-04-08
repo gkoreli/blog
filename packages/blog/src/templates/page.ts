@@ -55,8 +55,8 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
   <link rel="stylesheet" href="/main.css">
+  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));${TURNSTILE_SITE_KEY ? 'window.__tsInit=function(){};' : ''}</script>
   ${TURNSTILE_SITE_KEY ? html`<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=__tsInit&render=explicit" async defer></script>` : ''}
-  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));window.__tsInit=function(){};</script>
   ${head ? raw(head) : ''}
 </head>
 <body>

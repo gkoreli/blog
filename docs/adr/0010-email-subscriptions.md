@@ -387,9 +387,11 @@ Cloudflare announced native email sending (paid Workers plan, $5/mo). Still limi
 
 `data-appearance="interaction-only"` (managed mode): widget appears only when a challenge is needed; can still render a visible checkbox/badge. Invisible mode (`size: 'invisible'`, `execution: 'execute'`): no visible widget at all; Turnstile is an implementation detail.
 
-**Chosen: invisible.** The visible widget — even in interaction-only mode — is visually incompatible with a minimalist blog design. It injects markup into the form, leaves a success-state badge permanently visible after solving, and makes Turnstile a UI component rather than a spam filter. Switching to invisible mode with explicit render (`?render=explicit&onload=__tsInit`) eliminates all visible footprint while preserving full server-side `siteverify` protection. Same bot protection, zero UI damage.
+**Chosen: invisible.** The visible widget — even in interaction-only mode — is visually incompatible with a minimalist blog design. It injects markup into the form, leaves a success-state badge permanently visible after solving, and makes Turnstile a UI component rather than a spam filter. Switching to invisible mode eliminates all visible footprint while preserving full server-side `siteverify` protection. Same bot protection, zero UI damage.
 
-**Client-side flow:** Turnstile script loads with `?render=explicit&onload=__tsInit`. Page defines `window.__tsInit` as a no-op before the async script can fire. `subscribe.ts` overrides it with the real init function and also initialises directly if `window.turnstile` already exists — covering both timing orderings without a race. An init guard (`form.dataset.subscribeInit`) prevents double widget render and duplicate submit listeners if both paths fire.
+**Important:** "Invisible" is a **widget type configured in the Cloudflare dashboard**, not a client-side render parameter. `size: 'invisible'` is not a valid value and throws a `TurnstileError` at runtime. The sitekey must be for an Invisible widget — the client just calls `turnstile.render(slot, { execution: 'execute', ... })` with no size parameter. Visual hiding is handled by the `hidden` attribute on `.turnstile-slot`, which works regardless of widget type.
+
+**Client-side flow:** Turnstile script loads with `?render=explicit&onload=__tsInit`. The `window.__tsInit` no-op is defined in an inline `<script>` that appears *before* the Turnstile `async` script tag in the HTML — this ordering guarantee means the no-op is always defined when Turnstile checks for it synchronously on load, even when loaded from cache. `subscribe.ts` overrides it with the real init function and also initialises directly if `window.turnstile` already exists — covering both timing orderings without a race. An init guard (`form.dataset.subscribeInit`) prevents double widget render and duplicate submit listeners if both paths fire.
 
 ### Rate limiting: Workers Native vs. KV-based
 
@@ -462,7 +464,8 @@ curl -X POST https://gkoreli.com/api/send \
 # One-time setup
 
 # 1. Create Turnstile widget at dash.cloudflare.com → Turnstile
-#    Widget type: Invisible (not Managed — invisible mode has no visible UI)
+#    Widget type: Invisible (REQUIRED — "invisible" is a dashboard setting, not a
+#    client-side parameter; using a Managed sitekey here will render a visible widget)
 #    Domain: gkoreli.com
 #    Copy Site Key (public) → set TURNSTILE_SITE_KEY in build env
 wrangler secret put TURNSTILE_SECRET_KEY
