@@ -295,6 +295,86 @@ function animateThreshold(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext
   return () => { window.removeEventListener('resize', resize); observer.disconnect(); };
 }
 
+function animateFlow(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, container: HTMLElement) {
+  let W = 0, H = 0, t = 0;
+  let neurons: Neuron[] = [];
+  let theme = getTheme();
+
+  function resize() {
+    W = canvas.width = container.offsetWidth;
+    H = canvas.height = container.offsetHeight;
+    neurons = buildNetwork(W, H);
+    theme = getTheme();
+  }
+
+  function draw() {
+    ctx.fillStyle = hexToRgba(theme.bg, 0.1);
+    ctx.fillRect(0, 0, W, H);
+    t++;
+
+    // Wave sweeps left-to-right, cycling every ~240 frames
+    const waveX = (t % 300) / 300; // 0..1 position across screen
+    const waveWidth = 0.25;
+
+    // ── Draw connections ──
+    for (let i = 0; i < neurons.length; i++) {
+      const a = neurons[i]!;
+      for (const j of a.connections) {
+        if (j <= i) continue;
+        const b = neurons[j]!;
+        const midNorm = ((a.x + b.x) / 2) / W;
+        const dist = Math.abs(midNorm - waveX);
+        const wave = Math.max(0, 1 - dist / waveWidth);
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = hexToRgba(wave > 0.3 ? theme.blue : theme.muted, 0.03 + wave * 0.15);
+        ctx.lineWidth = 0.5 + wave * 1;
+        ctx.stroke();
+      }
+    }
+
+    // ── Draw neurons ──
+    for (const n of neurons) {
+      const norm = n.x / W;
+      const dist = Math.abs(norm - waveX);
+      const wave = Math.max(0, 1 - dist / waveWidth);
+      const pulse = wave * wave; // ease-in for sharper peak
+
+      // Glow
+      if (pulse > 0.2) {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r + 5 + pulse * 4, 0, Math.PI * 2);
+        ctx.fillStyle = hexToRgba(theme.blue, pulse * 0.1);
+        ctx.fill();
+      }
+
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r + pulse * 2, 0, Math.PI * 2);
+      const color = pulse > 0.5 ? theme.warm : pulse > 0.2 ? theme.blue : theme.muted;
+      ctx.fillStyle = hexToRgba(color, 0.15 + pulse * 0.65);
+      ctx.fill();
+
+      // Bright core at wave peak
+      if (pulse > 0.6) {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r * 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = hexToRgba(theme.warm, pulse * 0.7);
+        ctx.fill();
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  const observer = new MutationObserver(() => { theme = getTheme(); });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  draw();
+  return () => { window.removeEventListener('resize', resize); observer.disconnect(); };
+}
+
 component('nisli-neural-canvas', (_props, host) => {
   onMount(() => {
     const canvas = document.createElement('canvas');
@@ -303,7 +383,7 @@ component('nisli-neural-canvas', (_props, host) => {
     if (!ctx) return;
 
     const mode = host.getAttribute('mode') ?? 'threshold';
-    if (mode === 'threshold') return animateThreshold(canvas, ctx, host);
+    if (mode === 'flow') return animateFlow(canvas, ctx, host);
     return animateThreshold(canvas, ctx, host);
   });
 

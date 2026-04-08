@@ -147,10 +147,13 @@ export function OssRadarHero({ issueNum, date, tags, title, subtitle, author, wo
   issueNum: string; date: string; tags: string; title: StaticResult; subtitle: string; author: string; wordCount: string; readTime: string;
 }) {
   return html`<div class="topo-hero topo-hero--long-title">
-    <nisli-neural-canvas mode="pulse"></nisli-neural-canvas>
+    <nisli-neural-canvas mode="flow"></nisli-neural-canvas>
+    <div class="radar-pills">
+      <span class="radar-pill radar-pill--accent">${issueNum}</span>
+      <span class="radar-pill">${date}</span>
+    </div>
     <div class="topo-hero-inner">
       <span class="topo-kicker">${tags}</span>
-      <div class="radar-meta"><span class="radar-issue">${issueNum}</span> <span class="radar-date">${date}</span></div>
       ${title}
       <p class="topo-byline">${subtitle}</p>
       <div class="proc-byline">
