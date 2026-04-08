@@ -2,6 +2,9 @@ import { execSync } from 'node:child_process';
 import { context } from 'esbuild';
 import browserSync from 'browser-sync';
 import { DIST, SRC, POSTS_DIR, PROMPTS_DIR, PUBLIC_DIR, ROOT, ESBUILD_ENTRIES } from '../lib/paths.js';
+import { loadLocalEnv } from './env.js';
+
+loadLocalEnv();
 
 const buildHTML = () => {
   execSync('tsx src/pipeline/build-html.ts', { cwd: ROOT, stdio: 'inherit' });

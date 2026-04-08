@@ -10,6 +10,9 @@ import { resolve, join } from 'node:path';
 /** packages/blog/ — the package root */
 export const ROOT = resolve(import.meta.dirname, '..', '..');
 
+/** repo root */
+export const REPO_ROOT = resolve(ROOT, '..', '..');
+
 /** packages/blog/src/ */
 export const SRC = join(ROOT, 'src');
 
