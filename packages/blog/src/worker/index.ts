@@ -22,7 +22,8 @@ function trailingSegment(pathname: string, prefix: string): string {
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-    const { pathname, method } = new URL(request.url);
+    const { pathname } = new URL(request.url);
+    const { method } = request;
 
     // ── Analytics ──────────────────────────────────────────────────────────
     if (pathname === '/api/event' && method === 'POST') {
@@ -72,7 +73,7 @@ export default {
   },
 
   /** Nightly cron: purge expired pending + old inactive rows. */
-  async scheduled(event: ScheduledEvent, env: Env, _ctx: ExecutionContext): Promise<void> {
-    await handleScheduled(event, env);
+  async scheduled(controller: ScheduledController, env: Env, _ctx: ExecutionContext): Promise<void> {
+    await handleScheduled(controller, env);
   },
 } satisfies ExportedHandler<Env>;

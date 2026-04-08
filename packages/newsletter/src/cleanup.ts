@@ -18,7 +18,7 @@ import type { NewsletterEnv } from './db.js';
 import { purgeExpiredPending, purgeOldInactive } from './db.js';
 
 export async function handleScheduled(
-  _event: ScheduledEvent,
+  _controller: ScheduledController,
   env: NewsletterEnv,
 ): Promise<void> {
   try {
