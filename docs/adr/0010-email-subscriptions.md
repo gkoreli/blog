@@ -6,7 +6,7 @@ Accepted — 2026-04-08. Implementation shipped same day.
 
 ## Context
 
-The procrastination article hit 8.3K views in under two hours, 52 shares, #9 on r/ADHD — with zero way to capture readers for the next article. Every channel used to distribute (Reddit, X, HN) is rented attention: the algorithm decides if people see the next post. An email list is the one channel where pressing send reaches 100% of subscribers — no feed ranking, no platform decay.
+The procrastination article hit 8.3K views in under two hours, 52 shares, #9 on r/ADHD — with zero way to capture readers for the next article. Every channel used to distribute (Reddit, X, HN) is rented attention: the algorithm decides if people see the next post. Email is still the most practical owned re-engagement channel — no feed ranking, no platform decay — but deliverability and visibility are not guaranteed: Gmail filters by sender reputation and auto-sorts into Promotions; Apple Mail Privacy Protection blocks open tracking. Industry benchmarks put average open rates at ~32–34% (Mailchimp, Constant Contact). That's not 100% reach, but it's a direct line to readers who opted in, which no social platform offers.
 
 The goal: capture readers at peak intent (just finished an article that resonated) and retain them so the next article starts with a baseline audience instead of zero.
 
