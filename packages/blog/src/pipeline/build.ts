@@ -9,6 +9,7 @@ import { pageShell } from '../templates/page.js';
 import { postTemplate } from '../templates/post.js';
 import { indexTemplate } from '../templates/index.js';
 import { aboutTemplate } from '../templates/about.js';
+import { privacyTemplate } from '../templates/privacy.js';
 import { statsTemplate, statsHead } from '../templates/stats.js';
 import { rssFeed } from '../templates/rss.js';
 import { promptsTemplate } from '../templates/prompts.js';
@@ -168,6 +169,10 @@ export async function buildHTML(): Promise<void> {
   const statsBody = statsTemplate();
   const statsPage = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody.toString(), posts: sortedPosts, currentSlug: 'stats', head: statsHead, noindex: true });
   writeOutput('stats', statsPage.toString());
+
+  const privacyBody = privacyTemplate();
+  const privacyPage = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody.toString(), posts: sortedPosts, currentSlug: 'privacy' });
+  writeOutput('privacy', privacyPage.toString());
 
   writeRoot('feed.xml', rssFeed(sortedPosts));
   writeRoot('sitemap.xml', sitemapXml(sortedPosts));

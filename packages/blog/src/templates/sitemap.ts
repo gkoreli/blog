@@ -20,5 +20,6 @@ ${url('/')}
 ${postUrls.join('\n')}
 ${url('/about')}
 ${url('/stats')}
+${url('/privacy')}
 </urlset>`;
 }

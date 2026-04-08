@@ -110,7 +110,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
       </section>
 
       <footer>
-        <p>Built with <a href="https://www.npmjs.com/package/@nisli/core">@nisli/core</a></p>
+        <p>Built with <a href="https://www.npmjs.com/package/@nisli/core">@nisli/core</a> · <a href="/privacy">Privacy</a></p>
       </footer>
     </main>
     <div class="gutter">${gutter ? raw(gutter) : ''}</div>
