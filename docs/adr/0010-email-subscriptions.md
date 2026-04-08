@@ -39,7 +39,7 @@ Nightly cron at 03:00 UTC handled by `handleScheduled`.
 
 **Resend** for email delivery. One `fetch()` to `https://api.resend.com/emails`. Free tier: 3,000 emails/month, 100/day — more than sufficient for Phase 1. `RESEND_API_KEY` set as a Worker secret. Resend is the delivery pipe; D1 is the source of truth. Swap the delivery layer later without losing subscriber data.
 
-**Double opt-in** — legally required under GDPR for subscribers in the EU/Germany, best practice everywhere for deliverability and spam compliance. Separate `confirm_token` (one-time, cleared after use) and `unsubscribe_token` (permanent per subscriber, included in every newsletter).
+**Double opt-in** — not required by GDPR itself (which regulates consent quality, not mechanism), but adopted here because it produces the strongest proof of consent and eliminates bot/typo signups. Germany's case law effectively requires it for email marketing; for a global audience it is the lowest-risk default. Separate `confirm_token` (one-time, cleared after use) and `unsubscribe_token` (permanent per subscriber, included in every newsletter).
 
 **Subscribe form** in `page.ts` footer — appears on every page. Highest-intent placement is immediately after finishing an article that resonated. Button is disabled until Turnstile completes (graceful fallback: enabled immediately in dev when `TURNSTILE_SITE_KEY` is unset).
 
@@ -51,7 +51,8 @@ Nightly cron at 03:00 UTC handled by `handleScheduled`.
 packages/newsletter/
 ├── migrations/
 │   ├── 0001_create_subscribers.sql     ← authoritative schema (fresh installs)
-│   └── 0002_for_existing_installs.sql  ← ALTER TABLE for pre-2026-04-08 installs
+│   ├── 0002_for_existing_installs.sql  ← ALTER TABLE for pre-2026-04-08 installs
+│   └── 0003_add_bounced_at.sql         ← adds bounced_at column (GDPR purge fix)
 └── src/
     ├── index.ts        ← public API exports
     ├── db.ts           ← D1 types + all query helpers
@@ -112,8 +113,8 @@ POST /api/webhooks/resend
   ├── 2. Replay-attack guard: |now - svix-timestamp| ≤ 300 s
   ├── 3. HMAC-SHA256(RESEND_WEBHOOK_SECRET, svix-id + "." + ts + "." + body)
   ├── 4. timingSafeEqual(computed, provided) — constant-time to prevent timing attacks
-  ├── 5a. email.bounced   → markBounced(DB, email)   (status='bounced')
-  └── 5b. email.complained → markComplained(DB, email) (status='unsubscribed')
+  ├── 5a. email.bounced   → markBounced(DB, email)    (status='bounced', bounced_at=now())
+  └── 5b. email.complained → markComplained(DB, email) (status='unsubscribed', unsubscribed_at=now())
 ```
 
 **Env composition in the worker:**
@@ -265,7 +266,7 @@ Replay-attack guard: `|now - svix-timestamp| ≤ 300 seconds`. Emails are redact
 1. `purgeExpiredPending()` — deletes `status='pending'` rows where `confirm_token_expires_at < now()`. Unconfirmed signups never linger.
 2. `purgeOldInactive()` — deletes rows older than 90 days using status-specific event timestamps: `unsubscribed_at` for `status='unsubscribed'`; `bounced_at` for `status='bounced'`. Satisfies GDPR Art. 5(1)(e) data minimisation: no purpose for retaining data about people who have opted out.
 
-**Double opt-in:** Legally required under GDPR for marketing emails in the EU/Germany. Subscribers don't reach `status='active'` without clicking the confirmation link sent to their email.
+**Double opt-in:** GDPR does not mandate double opt-in — it requires provable, freely given, unambiguous consent. Double opt-in is adopted here as a defensive mechanism: it provides the strongest consent evidence (the subscriber took a second action from their inbox), eliminates bot/typo addresses, and removes practical ambiguity. Germany's case law and some other jurisdictions effectively require it for email marketing, but even absent that, it is the lowest-risk choice for a global audience. Subscribers don't reach `status='active'` without clicking the confirmation link.
 
 ### CAN-SPAM compliance
 
@@ -385,6 +386,9 @@ wrangler d1 execute blog-analytics \
 #    Existing install (applied 0001 before 2026-04-08):
 wrangler d1 execute blog-analytics \
   --file packages/newsletter/migrations/0002_for_existing_installs.sql
+#    All installs — adds bounced_at (GDPR purge fix, safe to run on empty table):
+wrangler d1 execute blog-analytics \
+  --file packages/newsletter/migrations/0003_add_bounced_at.sql
 
 # 5. Build with site key, then deploy
 TURNSTILE_SITE_KEY=0xYOURSITEKEY pnpm build
