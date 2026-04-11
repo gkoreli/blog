@@ -105,7 +105,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
             <button type="submit" class="subscribe-btn">Subscribe</button>
           </div>
           <p class="subscribe-msg" aria-live="polite" role="status"></p>
-          ${TURNSTILE_SITE_KEY ? html`<div class="turnstile-slot" hidden></div>` : ''}
+          ${TURNSTILE_SITE_KEY ? html`<div class="turnstile-slot"></div>` : ''}
         </form>
       </section>
 

@@ -28,6 +28,16 @@ import { jsonOk, jsonError, allowedOrigin } from './responses.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+function logRejection(request: Request, reason: string, details: Record<string, unknown> = {}): void {
+  console.warn('[newsletter:subscribe] rejected', {
+    reason,
+    ray: request.headers.get('cf-ray') ?? '',
+    country: request.headers.get('cf-ipcountry') ?? '',
+    origin: request.headers.get('origin') ?? '',
+    ...details,
+  });
+}
+
 function sanitizeSource(raw: unknown): string | null {
   if (typeof raw !== 'string') return null;
   const stripped = raw.split(/[?#]/)[0]!.slice(0, 200);
@@ -57,16 +67,31 @@ export async function handleSubscribe(
     source?: unknown;
   } | null;
 
-  if (!body) return jsonError('Invalid request body', 400, origin);
+  if (!body) {
+    logRejection(request, 'invalid_body');
+    return jsonError('Invalid request body', 400, origin);
+  }
 
   const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
-  if (!email || !EMAIL_RE.test(email)) return jsonError('Invalid email address', 400, origin);
-  if (email.length > 254) return jsonError('Email too long', 400, origin);
+  if (!email || !EMAIL_RE.test(email)) {
+    logRejection(request, 'invalid_email');
+    return jsonError('Invalid email address', 400, origin);
+  }
+  if (email.length > 254) {
+    logRejection(request, 'email_too_long');
+    return jsonError('Email too long', 400, origin);
+  }
 
   // 3. Turnstile
   const turnstileToken = typeof body.turnstile === 'string' ? body.turnstile : '';
-  const ok = await verifyTurnstile(turnstileToken, env.TURNSTILE_SECRET_KEY, ip);
-  if (!ok) return jsonError('Verification failed. Please try again.', 400, origin);
+  const turnstile = await verifyTurnstile(turnstileToken, env.TURNSTILE_SECRET_KEY, ip);
+  if (!turnstile.ok) {
+    logRejection(request, 'turnstile_failed', {
+      turnstileReason: turnstile.reason ?? '',
+      turnstileErrorCodes: turnstile.errorCodes ?? [],
+    });
+    return jsonError('Verification failed. Retry once, or allow bot protection for this site.', 400, origin);
+  }
 
   const source = sanitizeSource(body.source);
   const consentIp = truncateIp(ip);

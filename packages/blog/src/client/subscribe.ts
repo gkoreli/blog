@@ -55,7 +55,7 @@ function initSubscribeForm(): void {
       appearance: 'execute',
       theme: 'auto',
       callback(token) { void doSubmit(token); },
-      'error-callback'() { setError('Verification failed. Try again.'); return true; },
+      'error-callback'() { setError('Verification failed. Retry once, or allow bot protection for this site.'); return true; },
       'expired-callback'() { if (widgetId) window.turnstile?.reset(widgetId); },
     });
   }
