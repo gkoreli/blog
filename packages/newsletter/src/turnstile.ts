@@ -15,6 +15,22 @@ export interface TurnstileVerification {
   errorCodes?: string[];
 }
 
+function stringArray(value: unknown): string[] {
+  return Array.isArray(value) && value.every(item => typeof item === 'string') ? value : [];
+}
+
+function parseTurnstileResponse(raw: unknown): TurnstileResponse {
+  if (typeof raw !== 'object' || raw === null || !('success' in raw)) {
+    return { success: false, 'error-codes': ['bad-response'] };
+  }
+
+  const codes = 'error-codes' in raw ? raw['error-codes'] : [];
+  return {
+    success: raw.success === true,
+    'error-codes': stringArray(codes),
+  };
+}
+
 /**
  * Verify a Turnstile challenge token against the siteverify API.
  * Network errors fail open to avoid blocking legitimate signups when Cloudflare's
@@ -28,23 +44,19 @@ export async function verifyTurnstile(
   // Local/dev builds may omit the secret entirely. Production must supply a token.
   if (!secret) return { ok: true, reason: 'skipped_no_secret' };
   if (!token) return { ok: false, reason: 'missing_token' };
-
-  const body = new FormData();
-  body.append('secret', secret);
-  body.append('response', token);
-  body.append('remoteip', ip);
+  if (token.length > 2048) return { ok: false, reason: 'token_too_long' };
 
   try {
     const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
-      body,
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ secret, response: token, remoteip: ip }),
     });
-    if (!res.ok) return { ok: false, reason: `siteverify_http_${res.status}` };
-    const data = await res.json() as TurnstileResponse;
+    const data = parseTurnstileResponse(await res.json().catch(() => null));
     if (data.success === true) return { ok: true };
     return {
       ok: false,
-      reason: 'siteverify_rejected',
+      reason: res.ok ? 'siteverify_rejected' : `siteverify_http_${res.status}`,
       errorCodes: data['error-codes'] ?? [],
     };
   } catch {
