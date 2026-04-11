@@ -2,6 +2,8 @@ import { recordClientError, type ClientObservabilityEnv } from './db.js';
 import { parseClientErrorPayload } from './schema.js';
 import type { ServerClientErrorEvent } from './types.js';
 
+export { purgeOldClientErrors } from './db.js';
+
 const MAX_BODY_BYTES = 8 * 1024;
 
 function json(status: number): Response {
