@@ -1,5 +1,10 @@
 import { handleEvent, handleStats, type Env as AnalyticsEnv } from '@gkoreli/analytics';
 import {
+  handleClientError,
+  purgeOldClientErrors,
+  type ClientObservabilityEnv,
+} from '@gkoreli/client-observability/server';
+import {
   handleSubscribe,
   handleConfirm,
   handleUnsubscribe,
@@ -14,7 +19,7 @@ import {
 } from '@gkoreli/newsletter';
 
 /** Merged Worker env — both packages share the same DB binding. */
-type Env = AnalyticsEnv & NewsletterEnv;
+type Env = AnalyticsEnv & NewsletterEnv & ClientObservabilityEnv;
 
 function trailingSegment(pathname: string, prefix: string): string {
   return pathname.slice(prefix.length);
@@ -31,6 +36,9 @@ export default {
     }
     if (pathname === '/api/stats' && method === 'GET') {
       return handleStats(request, env);
+    }
+    if (pathname === '/api/client-error' && method === 'POST') {
+      return handleClientError(request, env, ctx);
     }
 
     // ── Newsletter: subscribe ──────────────────────────────────────────────
@@ -74,6 +82,13 @@ export default {
 
   /** Nightly cron: purge expired pending + old inactive rows. */
   async scheduled(controller: ScheduledController, env: Env, _ctx: ExecutionContext): Promise<void> {
-    await handleScheduled(controller, env);
+    await Promise.all([
+      handleScheduled(controller, env),
+      purgeOldClientErrors(env.DB).then(count =>
+        console.log(`[client:error:cron] Purged ${count} old client errors.`),
+      ).catch(err =>
+        console.error('[client:error:cron] Cleanup failed:', err),
+      ),
+    ]);
   },
 } satisfies ExportedHandler<Env>;

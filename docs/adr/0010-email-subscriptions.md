@@ -39,7 +39,7 @@ Nightly cron at 03:00 UTC handled by `handleScheduled`.
 
 **Reuse the existing `DB` D1 binding.** Add a `subscribers` table to `blog-analytics` — no new D1 database, no new wrangler binding.
 
-**Turnstile** (Cloudflare, free) for spam protection. Invisible mode with explicit render — no visible widget UI; widget is mounted into a hidden `.turnstile-slot` container and executed programmatically on form submit. `TURNSTILE_SITE_KEY` baked into static HTML at build time via `data-turnstile-sitekey` on the form element. `TURNSTILE_SECRET_KEY` set as a Worker secret via `wrangler secret put`.
+**Turnstile** (Cloudflare, free) for spam protection. Invisible mode with explicit render — no visible widget UI in the normal path, but the `.turnstile-slot` container remains visible so Cloudflare can show an interactive fallback if the browser requires one. The widget is executed programmatically on form submit. `TURNSTILE_SITE_KEY` baked into static HTML at build time via `data-turnstile-sitekey` on the form element. `TURNSTILE_SECRET_KEY` set as a Worker secret via `wrangler secret put`.
 
 **Resend** for email delivery. One `fetch()` to `https://api.resend.com/emails`. Free tier: 3,000 emails/month, 100/day — more than sufficient for Phase 1. `RESEND_API_KEY` set as a Worker secret. Resend is the delivery pipe; D1 is the source of truth. Swap the delivery layer later without losing subscriber data.
 

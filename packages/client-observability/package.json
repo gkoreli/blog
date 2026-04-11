@@ -1,0 +1,20 @@
+{
+  "name": "@gkoreli/client-observability",
+  "version": "0.1.0",
+  "private": true,
+  "description": "First-party browser error observability for gkoreli.com",
+  "type": "module",
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client.ts",
+    "./server": "./src/server.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250306.0",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,3 +1,5 @@
+import type { ClientLogger } from '@gkoreli/client-observability/client';
+
 /** Minimal Turnstile API surface we use */
 interface Turnstile {
   render(
@@ -22,7 +24,11 @@ declare global {
   }
 }
 
-function initSubscribeForm(): void {
+interface SubscribeOptions {
+  logger: ClientLogger;
+}
+
+export function initSubscribeForm({ logger }: SubscribeOptions): void {
   const formEl = document.getElementById('sub-form') as HTMLFormElement | null;
   if (!formEl) return;
 
@@ -89,9 +95,22 @@ function initSubscribeForm(): void {
         return;
       }
       const data = await res.json().catch((): { error?: string } => ({})) as { error?: string };
-      setError(data.error ?? 'Something went wrong. Try again.');
+      const message = data.error ?? 'Something went wrong. Try again.';
+      setError(message);
+      logger.report({
+        type: 'interaction_error',
+        component: 'subscribe_form',
+        message,
+        status: res.status,
+      });
     } catch {
-      setError('Network error. Try again.');
+      const message = 'Network error. Try again.';
+      setError(message);
+      logger.report({
+        type: 'interaction_error',
+        component: 'subscribe_form',
+        message,
+      });
     }
   }
 
@@ -102,8 +121,3 @@ function initSubscribeForm(): void {
     btn.disabled = false;
   }
 }
-
-// The Turnstile script uses `defer` and appears in <head>; our module is in <body>.
-// Deferred scripts execute in document order after parsing, so window.turnstile
-// is guaranteed to be defined by the time this module runs.
-initSubscribeForm();

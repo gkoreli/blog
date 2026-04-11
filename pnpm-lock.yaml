@@ -26,6 +26,9 @@ importers:
       '@gkoreli/analytics':
         specifier: workspace:*
         version: link:../analytics
+      '@gkoreli/client-observability':
+        specifier: workspace:*
+        version: link:../client-observability
       '@gkoreli/newsletter':
         specifier: workspace:*
         version: link:../newsletter
@@ -84,6 +87,15 @@ importers:
       uplot:
         specifier: ^1.6.32
         version: 1.6.32
+
+  packages/client-observability:
+    devDependencies:
+      '@cloudflare/workers-types':
+        specifier: ^4.20250306.0
+        version: 4.20260306.1
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
 
   packages/newsletter:
     devDependencies:

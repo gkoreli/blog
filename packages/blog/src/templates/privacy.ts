@@ -20,6 +20,10 @@ export function privacyTemplate() {
 
   <p>The newsletter signup form is protected by <a ${ext('https://www.cloudflare.com/products/turnstile/')}>Cloudflare Turnstile</a> (invisible mode). Turnstile analyses browser and network signals in the background to verify requests are made by a human. No interaction is required from you. Cloudflare may process data as part of this verification — see <a ${ext('https://www.cloudflare.com/privacypolicy/')}>Cloudflare's Privacy Policy</a>.</p>
 
+  <h2>Error diagnostics</h2>
+
+  <p>If something breaks in the browser, a small first-party error report may be sent to help debug the problem. Reports include the page path, error message, component name, browser user agent, and coarse Cloudflare request metadata. They do not include email addresses, form contents, cookies, localStorage values, Turnstile tokens, or full URLs with query strings. Error reports are deleted after 30 days.</p>
+
   <h2>No third-party tracking</h2>
 
   <p>No advertising networks, no social tracking pixels, no session recording. The only third-party service that touches a visitor's request is Cloudflare (infrastructure + Turnstile) and Google Fonts (font loading).</p>
