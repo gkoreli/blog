@@ -26,7 +26,7 @@ Blog posts are AI-assisted with human substance. The workflow:
 2. **Agent distills and structures** — applies the blog-writing skill (`.agents/skills/blog-writing/SKILL.md`)
 3. **Iterative refinement** — author reviews, pushes back on prose, requests structural changes
 4. **Fact-check pass** — verify every date, attribution, quote, external link, GitHub repo, and technical claim. Web search each source. Post 004 caught 7 errors in one pass: wrong dates, misattributed quotes, unverifiable projects, a flawed technical premise. This step is mandatory, not optional.
-5. **Every post ships with raw prompts** — full transparency, readers can see the human thinking behind the AI output
+5. **Every post ships with raw prompts** — full transparency, readers can see the human thinking behind the AI output. **Exception:** OSS Radar issues don't include prompts — they're research-driven analysis, not prompt-driven generation.
 
 ### Writing Skill (`.agents/skills/blog-writing/SKILL.md`)
 

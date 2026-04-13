@@ -143,8 +143,8 @@ export function Postscript({ content }: { content: StaticResult }) {
 
 /* ── OSS Radar components ── */
 
-export function OssRadarHero({ issueNum, date, tags, title, subtitle, author, wordCount, readTime }: {
-  issueNum: string; date: string; tags: string; title: StaticResult; subtitle: string; author: string; wordCount: string; readTime: string;
+export function OssRadarHero({ issueNum, date, tags, title, subtitle, author, readTime }: {
+  issueNum: string; date: string; tags: string; title: StaticResult; subtitle: string; author: string; readTime: string;
 }) {
   return html`<div class="topo-hero topo-hero--long-title">
     <nisli-neural-canvas mode="flow"></nisli-neural-canvas>
@@ -217,13 +217,13 @@ export function CompareTable({ headers, rows, highlightRows }: { headers: string
   </table>`;
 }
 
-export function Sources({ items }: { items: { claim: string; ref: string }[] }) {
+export function Sources({ items }: { items: { claim: string; ref: string; url?: string }[] }) {
   return html`<div class="radar-sources">
     <div class="radar-sources-title">Sources & Evidence</div>
     <div class="radar-sources-grid">
       ${items.map(s => html`<div class="src-item">
         <span class="src-claim">${s.claim}</span>
-        <span class="src-ref">${s.ref}</span>
+        <span class="src-ref">${s.url ? html`<a href="${s.url}" target="_blank" rel="noopener">${s.ref}</a>` : s.ref}</span>
       </div>`)}
     </div>
   </div>`;

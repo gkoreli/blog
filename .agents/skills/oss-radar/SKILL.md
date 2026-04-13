@@ -360,4 +360,4 @@ Before publishing an OSS Radar issue:
 - [ ] Selection bias of the source acknowledged somewhere
 - [ ] The controversial question for each full project is genuinely hard — can't be answered in the same sentence
 - [ ] The "Our take" bullets are opinionated — no hedging, no "it depends"
-- [ ] Prompts file exists in `prompts/` with raw prompts
+- [ ] Prompts file exists in `prompts/` with raw prompts — **Exception:** OSS Radar issues don't include prompts (research-driven analysis, not prompt-driven generation)

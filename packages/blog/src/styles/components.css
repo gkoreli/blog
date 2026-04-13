@@ -872,6 +872,13 @@ mark {
   color: var(--color-text-muted);
   text-align: right;
 }
+.src-ref a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 2px;
+}
+.src-ref a:hover { color: var(--color-accent-warm); text-decoration-color: var(--color-accent-warm); }
 
 /* ── Research note (non-collapsible, OSS Radar variant) ── */
 .radar-research-note {

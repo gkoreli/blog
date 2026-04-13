@@ -7,7 +7,7 @@ import {
 
 export const meta: PostMeta = {
   title: 'OSS Radar #02: The Toolchain Is the Moat',
-  date: '2026-04-08',
+  date: '2026-04-12',
   description: 'How the Astral acquisition reveals the real war being fought in AI coding — and why everyone is talking about the wrong thing.',
   tags: ['oss-radar', 'open-source', 'python', 'ai-tooling', 'rust', 'astral', 'uv'],
   layout: 'immersive',
@@ -22,7 +22,6 @@ export function preamble() {
     title: html`<h1>The Toolchain<br>Is the <em>Moat</em></h1>`,
     subtitle: 'How the Astral acquisition reveals the real war being fought in AI coding — and why everyone is talking about the wrong thing.',
     author: 'Goga Koreli',
-    wordCount: '~3,200 words',
     readTime: '12 min read',
   });
 }
@@ -67,7 +66,7 @@ ${PullQuote({ content: html`<p>What if the tool was just written in the right la
 <p>
   Within months of open-sourcing it, ruff was adopted by <strong>pandas, FastAPI, Apache Airflow, SciPy,
   Hugging Face, and Mozilla</strong>. Not hobbyist projects — the backbone of modern Python.
-  Pylint, one of the tools ruff was replacing, started using ruff as a pre-commit hook.
+  Pylint, one of the tools ruff was replacing, <a href="https://github.com/PyCQA/pylint/blob/main/.pre-commit-config.yaml" target="_blank" rel="noopener">started using ruff as a pre-commit hook</a>.
   That's the equivalent of your competitor recommending your product.
 </p>
 
@@ -80,7 +79,8 @@ ${Callout({ label: 'Team Signal', body: html`<p>
 
 <p>
   Accel's partner flew to New York to meet Marsh after finding ruff on GitHub.
-  The seed round closed November 2022. Angels included <strong>Guillermo Rauch</strong> (Vercel),
+  They had dinner in November 2022 and agreed to work together. The $4M seed round was announced in April 2023,
+  led by Accel, with angels including <strong>Guillermo Rauch</strong> (Vercel),
   <strong>Solomon Hykes</strong> (Docker), and <strong>David Cramer</strong> (Sentry) — every one of them
   has built developer infrastructure before and knows exactly what it looks like when something is becoming load-bearing.
   Then in February 2024, Astral shipped <code>uv</code>.
@@ -122,7 +122,8 @@ ${StatRow({ items: [
 </p>
 
 ${Timeline({ items: [
-      { date: 'Nov 2022', event: html`<strong>Ruff open-sourced.</strong> Accel seed closes. Angels: Rauch, Hykes, Cramer.`, note: 'Adopted by pandas, FastAPI, Airflow, HuggingFace within months.' },
+      { date: 'Mid-2022', event: html`<strong>Ruff open-sourced.</strong> Blows past 1M monthly downloads within months.`, note: 'Adopted by pandas, FastAPI, Airflow, HuggingFace, Mozilla, SciPy.' },
+      { date: 'Apr 2023', event: html`<strong>Astral announced.</strong> $4M seed led by Accel. Angels: Rauch, Hykes, Cramer.`, note: 'Team includes authors of ripgrep, bat, hyperfine, maturin.' },
       { date: 'Feb 2024', event: html`<strong>uv ships.</strong> Replaces pip, virtualenv, pyenv, poetry, pipx in one binary.`, note: '10–100× faster. No Python required to install it.' },
       { date: '2025', event: html`<strong>Tens of millions of monthly downloads.</strong> Series B from a16z.`, note: 'ty (type checker) begins development. The third piece of the stack.' },
       { date: 'Mar 19, 2026', event: html`<strong>OpenAI acquires Astral.</strong> Entire team joins Codex. Pending regulatory approval.`, note: 'Hundreds of millions of monthly downloads across ruff + uv at time of acquisition.' },
@@ -144,17 +145,19 @@ ${Timeline({ items: [
 
 <p>
   Speed that's a convenience for a human is a structural bottleneck for an agent running thousands of tasks.
-  An AI agent making 90,000 commits a year — Peter Steinberger's reported figure for his AI-assisted output —
-  cannot afford a 40-second virtual environment creation. uv at 0.5 seconds is not just faster.
+  Peter Steinberger — creator of OpenClaw, now at OpenAI — reported making 600 commits in a single day
+  while orchestrating multiple AI agents in parallel. At that cadence,
+  a 40-second virtual environment creation becomes a structural wall. uv at 0.5 seconds is not just faster.
   It's <strong>qualitatively different</strong> for agent workflows.
 </p>
 
-${PullQuote({ content: html`<p>The model layer is converging. The differentiator is increasingly the tooling layer — how well the agent sets up environments, resolves dependencies, formats code, catches errors.</p>`, cite: 'ComputeLeap analysis, March 2026' })}
+${PullQuote({ content: html`<p>The model layer is converging. The differentiator is increasingly the tooling layer — how well the agent sets up environments, resolves dependencies, formats code, catches errors.</p>` })}
 
 <p>
-  The AI coding agent market is growing at 27.6% annually toward a projected $91 billion by 2035.
-  Claude Code holds an 80.8% SWE-bench Verified score vs. Codex's 64.7% — a meaningful gap today,
-  but capability gaps close as models converge. Toolchain position doesn't close easily.
+  The AI coding agent market is projected to grow from $10 billion in 2026 to over $70 billion by 2034,
+  at roughly 28% annually. Claude Code holds an 80.8% SWE-bench Verified score — the highest in the industry.
+  But capability gaps close as models converge; OpenAI itself has argued that SWE-bench Verified
+  no longer measures frontier coding capabilities. Toolchain position doesn't close as easily.
   If your agent runs natively on the fastest, most-adopted package manager,
   and your competitor's agent has to work around it, that's a durable structural advantage.
 </p>
@@ -165,18 +168,22 @@ ${PullQuote({ content: html`<p>The model layer is converging. The differentiator
 
 ${Scoreboard({ title: 'The Consolidation Scoreboard — AI Coding Infrastructure, 2026', rows: [
       { company: 'OpenAI', items: [
-        { label: 'Codex (agent)' }, { label: 'Windsurf (IDE)' },
+        { label: 'Codex (agent)' },
         { label: 'Astral — uv, ruff, ty (toolchain) ✦ new', isNew: true },
         { label: 'Promptfoo (testing) ✦ new', isNew: true },
-        { label: 'OpenClaw (agent framework) ✦ new', isNew: true },
+        { label: 'Steinberger / OpenClaw (agents) ✦ new', isNew: true },
       ] },
       { company: 'Anthropic', items: [
         { label: 'Claude Code (agent)' }, { label: '\$2.5B ARR · 135k commits/day' },
       ] },
       { company: 'Google', items: [
         { label: 'Gemini Code Assist' },
-        { label: 'Antigravity — ex-Windsurf team ✦ new', isNew: true },
+        { label: 'Windsurf leadership + tech license (\$2.4B) ✦ new', isNew: true },
         { label: 'IDX' },
+      ] },
+      { company: 'Cognition', items: [
+        { label: 'Devin (autonomous agent)' },
+        { label: 'Windsurf (IDE) — acquired ✦ new', isNew: true },
       ] },
       { company: 'Microsoft', items: [
         { label: 'GitHub Copilot' }, { label: 'GitHub (npm, Actions)' }, { label: 'VS Code' },
@@ -205,7 +212,8 @@ ${Callout({ label: 'The Pattern', body: html`<p>
 
 <p>
   The numbers from production teams are striking: <strong>Linear's build time dropped from 46 seconds to 6 seconds</strong>
-  on Rolldown. Outline saw a 22x build improvement. VoidZero's insight isn't "we made a faster bundler."
+  on Rolldown. Ramp saw a 57% reduction, Beehiiv 64%. VoidZero raised a $12.5M Series A — Accel again, the same firm
+  that backed Astral. The insight isn't "we made a faster bundler."
   It's deeper: <em>parse once, do everything.</em> One shared AST across the entire toolchain.
   No redundant work, no seams between tools. A vertical integration that wasn't possible when each tool was
   a separate JavaScript project maintained by a different team.
@@ -216,7 +224,7 @@ ${CompareTable({
       rows: [
         ['ruff', 'Flake8, isort, Black, Pylint + 50 plugins', '10–100×', 'Rust → Python'],
         ['uv', 'pip, virtualenv, pyenv, poetry, pipx', '10–100× install', 'Rust → Python'],
-        ['Rolldown', 'Rollup + esbuild', '7–22× build', 'Rust → JS'],
+        ['Rolldown', 'Rollup + esbuild', '10–30× build', 'Rust → JS'],
         ['Oxlint', 'ESLint', '50–100×', 'Rust → JS'],
         ['Oxfmt', 'Prettier', '30×', 'Rust → JS'],
         ['Biome', 'ESLint + Prettier', '~35×', 'Rust → JS'],
@@ -279,7 +287,7 @@ ${Prognosis({ tag: 'signal', title: 'Community PR velocity', body: html`<p>
 
 ${Prognosis({ tag: 'risk', title: 'The license protection ceiling', body: html`<p>
       The MIT and Apache 2.0 licenses mean anyone can fork the day something goes wrong —
-      Armin Ronacher (Flask's creator) called uv "a very easy project to fork." But network effects
+      Armin Ronacher (Flask's creator) called uv "a very forkable and maintainable thing." But network effects
       don't care about licenses. Once uv is in your CI pipeline, your Dockerfile, and your pre-commit hooks,
       switching has real cost. OpenAI bought that switching cost at scale. The fork option exists.
       The friction is real.
@@ -301,8 +309,18 @@ ${Prognosis({ tag: 'risk', title: 'The license protection ceiling', body: html`<
 <p>
   Biome, Oxc, Rolldown — if any of these become as foundational to JavaScript as uv is becoming to Python,
   they will face exactly the same pressure. Build something good enough that the ecosystem depends on it,
-  and someone with strategic interests will want to own the dependency. VoidZero is independent today.
+  and someone with strategic interests will want to own the dependency. Biome is particularly interesting here:
+  it's the successor to Rome, and Astral's early team included core Rome contributors. The lineage is direct.
+  VoidZero is independent today, backed by a $12.5M Series A from Accel — the same firm that seeded Astral.
   The question is how long that lasts if Rolldown becomes as ubiquitous as uv.
+</p>
+
+<p>
+  The Windsurf saga is instructive. OpenAI tried to acquire the AI IDE for $3 billion — the deal collapsed.
+  Google <a href="https://techcrunch.com/2025/07/11/windsurfs-ceo-goes-to-google-openais-acquisition-falls-apart/" target="_blank" rel="noopener">hired the CEO and co-founder</a> in a $2.4 billion licensing deal. Cognition (the team behind Devin)
+  bought what remained for ~$250 million. One company, split three ways across three AI labs in a matter of weeks.
+  That's the velocity of consolidation in this space. Developer tools that become strategically valuable
+  don't stay independent for long — and the bidding war can be brutal.
 </p>
 
 ${Callout({ label: 'The Question Nobody Is Asking', body: html`<p>
@@ -336,10 +354,13 @@ ${SectionBreak()}
 </p>
 
 <p>
-  Nobody has built this yet. The closest attempt is Astral's three-tool stack (uv + ruff + ty) as a unified
-  developer environment — but even that is three separate binaries, not a single agent-native runtime.
-  The next version of this, built natively for AI agent workflows rather than adapted from human tooling,
-  would be the most significant piece of developer infrastructure of the next five years.
+  Nobody has built this yet — except VoidZero is getting close. Their <a href="https://voidzero.dev/posts/announcing-vite-plus-alpha" target="_blank" rel="noopener">Vite+</a>, which shipped in March 2026,
+  combines bundler, test runner, linter, formatter, and type-checker into a single <code>vp</code> binary.
+  Vitest 4.1 shipped an <a href="https://voidzero.dev/posts/whats-new-march-launch-week-2026" target="_blank" rel="noopener"><code>agent</code> reporter</a> that auto-detects when an AI coding agent is running tests
+  and optimizes its output accordingly. That's not an afterthought — that's a team explicitly designing
+  for a world where agents are first-class users of the toolchain. Astral's three-tool stack (uv + ruff + ty)
+  covers the Python side but is still three separate binaries. Vite+ is the first attempt at a genuinely
+  unified runtime — and it's backed by the same firm that seeded Astral.
 </p>
 
 ${PullQuote({ content: html`<p>The company that builds the first genuinely agent-native toolchain will be acquired too. The question is whether it will be open source first.</p>` })}
@@ -358,28 +379,38 @@ ${PullQuote({ content: html`<p>The company that builds the first genuinely agent
 
 <div class="radar-research-note">
   <strong>Research Note</strong>
-  GitHub exploration and dependency mapping done with <a href="https://github.com/gkoreli/ghx">ghx</a>.
-  Download stats via PyPI and npm-stat. Benchmark data from VoidZero monthly recaps, Jane Street tech talk transcript
-  (Charlie Marsh), and production migration reports. Acquisition context from OpenAI/Astral announcements,
-  Accel's investor note, and the Hacker News thread (757 points, 475 comments). Developer survey data
-  from Pragmatic Engineer's 2026 AI Tooling survey.
+  Primary sources: official announcements from
+  <a href="https://openai.com/index/openai-to-acquire-astral/" target="_blank" rel="noopener">OpenAI</a>,
+  <a href="https://astral.sh/blog/openai" target="_blank" rel="noopener">Astral</a>, and
+  <a href="https://www.accel.com/noteworthies/astral-how-a-side-project-changed-python-tooling" target="_blank" rel="noopener">Accel</a>.
+  Benchmark data from <a href="https://voidzero.dev/posts/whats-new-march-launch-week-2026" target="_blank" rel="noopener">VoidZero recaps</a>
+  and the Jane Street tech talk transcript (Charlie Marsh).
+  Windsurf reporting from TechCrunch, Bloomberg, and Business Insider (Jul 2025).
+  Download stats via PyPI and npm-stat.
+  GitHub exploration and dependency mapping done with <a href="https://github.com/gkoreli/ghx" target="_blank" rel="noopener">ghx</a>.
 </div>
 
 ${Sources({ items: [
-      { claim: 'Marsh built Ruff to learn Rust; seed Nov 2022; angels Rauch, Hykes, Cramer', ref: 'Accel investor note; Tim McNamara interview' },
-      { claim: 'Ruff adopted by pandas, FastAPI, Airflow, HuggingFace, Mozilla, SciPy', ref: 'Pantsbuild blog; jerrycodes.com, Apr 2023' },
-      { claim: 'Team: authors of ripgrep, bat, hyperfine, maturin; CPython core devs', ref: 'astral.sh/about' },
-      { claim: 'uv ships Feb 2024; virtual env 0.5s vs 20–40s; 10–100× faster installs', ref: 'Astral blog; saaspegasus.com deep dive' },
-      { claim: 'CI pipeline 12 min → 3 min after uv migration; 90% dev env setup reduction', ref: 'ELEKS production report; pydevtools.com' },
-      { claim: 'Tens of millions of downloads/month by 2025; Series B from a16z', ref: 'Jane Street tech talk (Charlie Marsh transcript)' },
-      { claim: 'OpenAI acquires Astral March 19 2026; Codex 2M WAU, 3× growth since Jan', ref: 'OpenAI announcement; CNBC; Astral blog' },
-      { claim: 'Claude Code: \$2.5B ARR, 135k GitHub commits/day, 80.8% SWE-bench', ref: 'Pragmatic Engineer AI Tooling survey 2026; buildfastwithai' },
-      { claim: 'AI code tools market \$7.9B → \$91B by 2035, 27.6% CAGR', ref: 'Precedence Research via implicator.ai, Apr 2026' },
-      { claim: 'VoidZero: Linear 46s→6s build, Outline 22× improvement on Rolldown', ref: 'VoidZero monthly recaps Jul–Dec 2025' },
-      { claim: 'Rolldown 1.0 RC Jan 2026; Oxlint 50–100× ESLint; Oxfmt 30× Prettier', ref: 'VoidZero; InfoQ Jan 2026' },
-      { claim: 'MIT/Apache 2.0 licenses; Armin Ronacher: "very easy to fork"', ref: 'sourcetrail.com; apiyi.com analysis, Mar 2026' },
-      { claim: 'OpenAI also owns Windsurf, Promptfoo; Google acquihired Windsurf team → Antigravity', ref: 'Latent Space AI News Mar 19–19 2026; Forkable newsletter' },
-      { claim: 'Steinberger 90k commits/year with AI assistance', ref: '36kr.com English interview, Mar 2026' },
+      { claim: 'Ruff open-sourced mid-2022; 1M+ downloads within months; adopted by pandas, FastAPI, Airflow, SciPy, HuggingFace, Mozilla', ref: 'astral.sh announcement, Apr 2023', url: 'https://astral.sh/blog/announcing-astral-the-company-behind-ruff' },
+      { claim: 'Accel dinner Nov 2022; $4M seed announced Apr 2023; angels Rauch, Hykes, Cramer', ref: 'Accel investor note, Mar 2026', url: 'https://www.accel.com/noteworthies/astral-how-a-side-project-changed-python-tooling' },
+      { claim: 'Team: authors of ripgrep, bat, hyperfine, maturin; core contributors to Rome/Biome; CPython core devs', ref: 'astral.sh/about', url: 'https://astral.sh/about' },
+      { claim: 'uv ships Feb 2024; virtual env 0.5s vs 20–40s; 10–100× faster installs', ref: 'Astral blog, Feb 2024', url: 'https://astral.sh/blog/uv' },
+      { claim: 'CI pipeline 12 min → 3 min after uv migration (50-microservice architecture)', ref: 'ELEKS engineering blog', url: 'https://eleks.com/expert-opinion/next-gen-python-packaging-uv/' },
+      { claim: 'Tens of millions of downloads/month by 2025; Series B from a16z', ref: 'Jane Street tech talk (Charlie Marsh)', url: 'https://www.janestreet.com/tech-talks/uv-an-extremely-fast-python-package-manager/' },
+      { claim: 'OpenAI acquires Astral March 19 2026; Codex 2M WAU, 3× user growth, 5× usage increase', ref: 'OpenAI announcement', url: 'https://openai.com/index/openai-to-acquire-astral/' },
+      { claim: 'Astral to join OpenAI; tools remain open source', ref: 'Astral blog (Charlie Marsh)', url: 'https://astral.sh/blog/openai' },
+      { claim: 'Claude Code: $2.5B ARR, 135k GitHub commits/day, 80.8% SWE-bench Verified', ref: 'Pragmatic Engineer, Feb 2026', url: 'https://newsletter.pragmaticengineer.com/p/the-creator-of-clawd-i-ship-code' },
+      { claim: 'AI code tools market ~$10B (2026) → ~$70B by 2034, ~28% CAGR', ref: 'Fortune Business Insights', url: 'https://www.fortunebusinessinsights.com/ai-code-tools-market-111725' },
+      { claim: 'OpenAI: SWE-bench Verified no longer measures frontier coding capabilities', ref: 'OpenAI blog, Apr 2026', url: 'https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/' },
+      { claim: 'Linear 46s→6s, Ramp 57%, Beehiiv 64% build improvement on Rolldown', ref: 'VoidZero Launch Week recap', url: 'https://voidzero.dev/posts/whats-new-march-launch-week-2026' },
+      { claim: 'Rolldown 1.0 RC Jan 2026; 10–30× faster than Rollup', ref: 'VoidZero announcement', url: 'https://voidzero.dev/posts/announcing-rolldown-rc' },
+      { claim: 'Oxlint JS Plugins: near-100% ESLint compat, up to 100× faster', ref: 'VoidZero Launch Week recap', url: 'https://voidzero.dev/posts/whats-new-march-launch-week-2026' },
+      { claim: 'MIT/Apache 2.0 licenses; Ronacher: "a very forkable and maintainable thing"', ref: 'Simon Willison blog, Aug 2024', url: 'https://blog.simonwillison.net/2024/Aug/21/armin-ronacher/' },
+      { claim: 'Windsurf: OpenAI $3B deal collapsed; Google hired CEO ($2.4B license); Cognition acquired remainder', ref: 'TechCrunch, Jul 2025', url: 'https://techcrunch.com/2025/07/11/windsurfs-ceo-goes-to-google-openais-acquisition-falls-apart/' },
+      { claim: 'Steinberger: 600 commits/day orchestrating AI agents; joined OpenAI Feb 2026', ref: 'Pragmatic Engineer', url: 'https://newsletter.pragmaticengineer.com/p/the-creator-of-clawd-i-ship-code' },
+      { claim: 'OpenAI acquires Promptfoo Mar 9 2026; used by 25%+ Fortune 500', ref: 'OpenAI announcement', url: 'https://openai.com/index/openai-to-acquire-promptfoo/' },
+      { claim: 'Vite+ alpha: single binary combining Vite, Vitest, Oxlint, Oxfmt, Rolldown, tsdown', ref: 'VoidZero announcement, Mar 2026', url: 'https://voidzero.dev/posts/announcing-vite-plus-alpha' },
+      { claim: 'Vitest 4.1 agent reporter: auto-detects AI coding agents, optimizes output', ref: 'VoidZero Launch Week recap', url: 'https://voidzero.dev/posts/whats-new-march-launch-week-2026' },
     ] })}</article>
   `;
 }
