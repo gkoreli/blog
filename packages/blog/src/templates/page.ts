@@ -1,5 +1,6 @@
 import { html, raw } from 'nisli-static';
 import type { PostMeta } from '../lib/frontmatter.js';
+import { DispatchSlip } from './artifacts.js';
 
 /**
  * Cloudflare Turnstile site key (public — safe to embed in HTML).
@@ -32,6 +33,8 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   const TURNSTILE_SITE_KEY = turnstileSiteKey();
   const canonical = currentSlug ? `https://gkoreli.com/${currentSlug}` : 'https://gkoreli.com/';
   const layoutClass = layout && layout !== 'default' ? ` layout-${layout}` : '';
+  const subscribe = DispatchSlip({ turnstileSiteKey: TURNSTILE_SITE_KEY });
+
   return html`<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,18 +99,7 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
     <main class="content">
       ${raw(content)}
 
-      <section class="subscribe">
-        <p class="subscribe-kicker">Stay in the loop</p>
-        <p class="subscribe-desc">No noise. The next thing I write, straight to your inbox.</p>
-        <form id="sub-form" class="subscribe-form" novalidate${TURNSTILE_SITE_KEY ? html` data-turnstile-sitekey="${TURNSTILE_SITE_KEY}"` : ''}>
-          <div class="subscribe-row">
-            <input type="email" name="email" class="subscribe-input" placeholder="your@email.com" required autocomplete="email">
-            <button type="submit" class="subscribe-btn">Subscribe</button>
-          </div>
-          <p class="subscribe-msg" aria-live="polite" role="status"></p>
-          ${TURNSTILE_SITE_KEY ? html`<div class="turnstile-slot"></div>` : ''}
-        </form>
-      </section>
+      ${subscribe}
 
       <footer>
         <p>Built with <a href="https://www.npmjs.com/package/@nisli/core">@nisli/core</a> · <a href="/privacy">Privacy</a></p>
