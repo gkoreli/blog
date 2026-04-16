@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted — 2026-04-16. Foundation implemented. Engine expansion in progress.
+Accepted — 2026-04-16. v1 foundation implemented; v2 (signals + entities) implemented 2026-04-16. See ADR-0012.1 and ADR-0012.2.
 
 ---
 
@@ -41,8 +41,11 @@ AnimationPoint[]    — the currency between them
 
 **`Effect`** implements:
 - `apply(points, ctx) → AnimationPoint[]` — pure transform, no side effects
-- `pause?() / resume?()` — lifecycle hooks for effects with background work
+- `signals?: Signal<unknown>[]` — declared signal dependencies; runner manages lifecycle
+- `stores?: EntityStore<unknown>[]` — declared entity store dependencies; runner calls tick/prune
 - `dispose?()` — clean up owned resources
+
+Note: `pause?/resume?` were removed from `Effect` in v2. Effects no longer own background work — signals and stores do, and the runner drives them directly.
 
 The key invariant: **`tick()` returns base positions. `draw()` receives post-effects positions.** The module never sees effects and effects never see the module. They share only `AnimationPoint[]`.
 
@@ -59,10 +62,14 @@ The runner is the only place that owns infrastructure:
 ### Call Site (Declarative Composition)
 
 ```ts
+const cursor      = cursorSignal(host);
+const forcePoints = createEntityStore<ForcePointData>();
+
 animate(caustic())
-  .pipe(cursorRepulsion(host))
-  .pipe(someOtherEffect())
-  .start(canvas, container)
+  .emit(clickForceEmitter(canvas, forcePoints))
+  .pipe(forceFieldEffect({ store: forcePoints }))
+  .pipe(cursorRepulsion({ signal: cursor }))
+  .start(canvas, host)
 ```
 
 This reads as a description. The runner wires the pipeline; the caller never touches a loop.
@@ -70,16 +77,22 @@ This reads as a description. The runner wires the pipeline; the caller never tou
 ### Per-Frame Flow
 
 ```
-module.tick(t, w, h)
-  → AnimationPoint[]          // base positions — pure animation math
+store.tick()                           // advance entity ages (for all stores discovered from effects)
 
-applyEffects(points, effects, { w, h, t })
-  → AnimationPoint[]          // post-effects positions — pure transforms, left-to-right
+clock.tick(now, t)                     // update dt for EffectContext
+
+module.tick(t, w, h)
+  → AnimationPoint[]                   // base positions — pure animation math
+
+applyEffects(points, effects, { w, h, t, dt })
+  → AnimationPoint[]                   // post-effects positions — pure transforms, left-to-right
 
 ctx.save()
 ctx.scale(dpr, dpr)
 module.draw(ctx, points, t, w, h)
 ctx.restore()
+
+store.prune()                          // remove dead entities after effects have rendered dying frame
 
 t++
 ```
@@ -114,9 +127,9 @@ For animations at this scale (22–200 points, 60fps, single canvas per page), t
 
 At 60Hz, rAF fires every ~16–17ms. With `TARGET_MS = 16.67`, frames that arrive at 16ms are below the threshold and get skipped. The next frame arrives at 33ms and gets drawn. This silently degrades to 30fps. `TARGET_MS = 15` gives a 1.67ms window that passes all 60fps frames while still blocking 120Hz frames from burning double the work.
 
-### Why does cursor-force have its own rAF loop?
+### Why does `cursorSignal` have its own rAF loop?
 
-The cursor-force smoothing needs to run at display rate to produce clean velocity values — if it only ran when the animation drew, you'd get stale velocity readings on skipped frames. The two loops are intentionally independent: cursor-force smooths at display rate, the animation draws at 60fps. The IntersectionObserver pause/resume lifecycle ensures cursor-force stops when the canvas is off-screen.
+The cursor smoothing needs to run at display rate to produce clean velocity values — if it only ran when the animation drew, you'd get stale velocity readings on skipped frames. The two loops are intentionally independent: cursor smooths at display rate, the animation draws at 60fps. The IntersectionObserver calls `signal.pause()`/`resume()` to stop the cursor loop when the canvas is off-screen.
 
 ### Why document-level mousemove, not canvas-level?
 
@@ -131,20 +144,33 @@ These are the decisions that keep the engine fast. Violating any of them will de
 - **Never `fillRect(0, 0, w, h)` inside a loop.** Fill only the bounding box of what you're drawing. A full-canvas fill with any composite mode reads and writes every pixel — O(w×h) per call, N calls per frame.
 - **`globalCompositeOperation` changes are expensive.** Set once before the loop, reset once after. Never toggle per-point.
 - **No allocations in the hot path.** `applyEffects` reuses the same array. Effects should mutate velocity structs in-place rather than allocating new objects per frame.
-- **Effects must stop their rAF loops on `pause()`.** The IntersectionObserver is the only gate between "on-screen" and "off-screen" work. If an effect ignores `pause()`, it will run forever.
+- **Signals must stop their rAF loops on `pause()`.** The IntersectionObserver is the only gate between "on-screen" and "off-screen" work. If a signal ignores `pause()`, it runs forever regardless of visibility. All built-in signals satisfy this. Custom signals must too.
+- **`entities()` returns a filtered array — avoid calling it outside `apply()`.** The current implementation allocates on every call (`all.filter(...)`). It's called once per frame per effect, which is fine. Caching a reference across frames would return stale data.
 - **Zero dependencies.** Canvas 2D, rAF, ResizeObserver, IntersectionObserver, MutationObserver — all native, all available in every browser that can render the blog. No bundle overhead, no version drift, no supply chain.
 
 ---
 
 ## What Was Implemented
 
+**v1 foundation:**
 - `pipeline.ts` — `AnimationPoint`, `EffectContext`, `Effect`, `AnimationModule`, `applyEffects()`
-- `runner.ts` — `AnimationRunner` class, `animate()` factory, 60fps cap, DPR scaling, ResizeObserver, IntersectionObserver, effect lifecycle
-- `caustic.ts` — Lissajous orbital points with radial gradient screen-blend draw (22 points, bounding-box fill)
-- `neural.ts` — `threshold()` and `flow()` modules — charge-based neural network, theme-aware, shared `buildNetwork()`
-- `cursor-force.ts` — document-level cursor tracking, dual lerp rates (enter 0.07 / leave 0.035), own rAF loop with pause/resume
-- `effects/cursor-repulsion.ts` — velocity accumulation, quadratic falloff, explicit px/frame magnitude, pause/resume lifecycle
+- `runner.ts` — `AnimationRunner`, `animate()` factory, 60fps cap, DPR scaling, ResizeObserver, IntersectionObserver
+- `caustic.ts` — Lissajous orbital points, radial gradient screen-blend draw (22 points, bounding-box fill)
+- `neural.ts` — `threshold()` and `flow()` — charge-based neural network, theme-aware, shared `buildNetwork()`
 - `components/neural-canvas.ts` — declarative web component: `<nisli-neural-canvas mode="caustic|flow|threshold">`
+
+**v2 (ADR-0012.1 + ADR-0012.2):**
+- `pipeline.ts` — extended with `Signal<T>`, `Entity<T>`, `EntityStore<T>`, `Emitter` interfaces; `Effect` gains `signals?[]` and `stores?[]`; `EffectContext` gains `dt`
+- `runner.ts` — `.emit()` builder, signal/store auto-discovery and deduplication, clock injection, store tick/prune per frame
+- `signals/cursor.ts` — `cursorSignal(container)`: document-level mousemove, dual lerp rates, idempotent pause/resume
+- `signals/clock.ts` — `clockSignal()`: internal to runner, `dt` injected into `EffectContext` each frame
+- `signals/scroll.ts` — `scrollSignal()`: smoothed velocity + direction
+- `signals/media.ts` — `mediaSignal(query)`, `prefersReducedMotion()`
+- `signals/derived.ts` — `derived(source, fn)`, `combinedSignal(sources, fn)`
+- `entities/store.ts` — `createEntityStore<T>()`, full alive/dying/dead lifecycle, `DEATH_FRAMES = 30`
+- `entities/emitters/click-force.ts` — `clickForceEmitter()`: pointer events, killRadius toggle, maxEntities cap
+- `effects/cursor-repulsion.ts` — refactored to v2: accepts `Signal<CursorValue>`, declares `signals:[signal]`
+- `effects/force-field.ts` — reads `EntityStore<ForcePointData>`, deterministic jitter+pulse, born/dying envelopes, stacking force
 
 ---
 
@@ -156,7 +182,7 @@ The current foundation is intentionally minimal. The next phase is building this
 
 A library of composable, reusable effects:
 
-- `cursorRepulsion(container, opts)` — ✅ implemented
+- `cursorRepulsion({ signal, opts })` — ✅ implemented (v2: signal injection)
 - `cursorAttraction(container, opts)` — opposite polarity, points drift toward cursor
 - `turbulence(seed, opts)` — per-point noise displacement using a fast value-noise function
 - `gravity(direction, strength)` — constant directional force accumulation
@@ -196,22 +222,9 @@ Scene
 - **Scheduler** owns the single rAF loop for the whole scene, distributes `tick()` calls, enforces frame budget
 - **FrameBudget** — configurable ms limit per frame; if a layer exceeds its allocation it gets frame-skipped, not the whole scene
 
-### Reactive Signals
+### Reactive Signals ✅ Implemented (ADR-0012.1)
 
-The cursor-force is currently a polling model (the effect reads `force.x/y` each frame). The next model is signals:
-
-```ts
-const cursor = cursorSignal(container);    // Signal<{ x, y, strength }>
-const scroll = scrollSignal();             // Signal<{ y, velocity }>
-const time   = clockSignal();              // Signal<{ t, dt }>
-
-animate(caustic())
-  .pipe(repulsion(cursor))
-  .pipe(turbulence(time))
-  .start(canvas, container)
-```
-
-Signals are lazy observables with a single subscription per frame. The runner subscribes once; effects read the current value without owning the tracking infrastructure. This inverts the current model (effect creates cursor tracking) into a cleaner dependency injection.
+`Signal<T>` with `cursorSignal`, `scrollSignal`, `clockSignal`, `mediaSignal`, `derived`, `combinedSignal`. Effects declare `signals?[]`, runner deduplicates by reference and owns lifecycle. See ADR-0012.1.
 
 ### Debug Overlay
 
@@ -240,6 +253,6 @@ Because each frame is deterministic given `(module, effects, t, w, h)`, a record
 | Three.js / PixiJS | Dependency overhead; engine would own the render loop making the architecture impossible |
 | Web Workers + OffscreenCanvas | JS is not the bottleneck at this scale; adds significant API complexity for zero current gain |
 | Returning render descriptors from `draw()` | Canvas 2D is stateful; descriptor model becomes a shadow DOM — complexity without payoff |
-| Global event bus for cursor | Makes effect instantiation order matter implicitly; the explicit `createCursorForce(container)` makes dependencies visible |
+| Global event bus for cursor | Makes effect instantiation order matter implicitly; the explicit `cursorSignal(container)` passed as an argument makes dependencies visible and shareable |
 | Per-animation CSS animations | Can't compose, can't respond to physics, can't be driven by the pipeline |
 | `1000/60` fps threshold | Causes 30fps on 60Hz displays due to frame timing jitter; 15ms is the correct threshold |
