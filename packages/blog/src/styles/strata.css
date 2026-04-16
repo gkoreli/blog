@@ -1,0 +1,103 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   STRATA — Physical Layer Design Language
+
+   Components rest ON surfaces. No blur, no float. No glass.
+   Depth is physical offset. Surfaces are paper, card, screen, thermal.
+   Marks are structural. Type is printed, not rendered.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Surfaces ── */
+  --st-warm:      #f7f3ea;   /* letter paper, aged */
+  --st-thermal:   #f4f3ef;   /* thermal receipt tape */
+  --st-card:      #faf8f3;   /* index card stock */
+  --st-cold:      #eef2f6;   /* technical drawing paper */
+  --st-screen:    #070810;   /* phosphor display, off */
+
+  /* ── Primary inks (light mode) ── */
+  --st-ink:       #1a1710;
+  --st-ink-2:     rgba(26, 23, 16, 0.48);
+  --st-ink-3:     rgba(26, 23, 16, 0.22);
+  --st-navy:      #1d3b78;
+  --st-red:       #bf2020;
+  --st-signal:    #1a6b4e;
+
+  /* ── Screen surface inks ── */
+  --st-screen-fg:   #c8f0e0;
+  --st-screen-mid:  rgba(110, 201, 168, 0.50);
+  --st-screen-dim:  rgba(110, 201, 168, 0.28);
+  --st-screen-rule: rgba(110, 201, 168, 0.10);
+
+  /* ── Physical shadows — offset, not gaussian ── */
+  --st-lift-1:  1px 2px 0 rgba(26, 23, 16, 0.07);
+  --st-lift-2:  2px 3px 0 rgba(26, 23, 16, 0.09),
+                1px 1px 0 rgba(26, 23, 16, 0.05);
+  --st-lift-3:  3px 5px 0 rgba(26, 23, 16, 0.12),
+                1px 2px 0 rgba(26, 23, 16, 0.06);
+  --st-lift-4:  5px 8px 0 rgba(26, 23, 16, 0.15),
+                2px 3px 0 rgba(26, 23, 16, 0.08);
+
+  /* ── Rules ── */
+  --st-rule-w:  rgba(26, 23, 16, 0.10);
+  --st-rule:    1px solid var(--st-rule-w);
+}
+
+[data-theme="dark"] {
+  --st-warm:      #0e0d0a;
+  --st-thermal:   #0d0c09;
+  --st-card:      #100f0c;
+  --st-cold:      #0b0e12;
+  --st-screen:    #04050d;
+
+  --st-ink:       #e8e2d5;
+  --st-ink-2:     rgba(232, 226, 213, 0.48);
+  --st-ink-3:     rgba(232, 226, 213, 0.20);
+  --st-navy:      #5a80c0;
+  --st-red:       #c83030;
+
+  --st-screen-fg:   #b8e8d0;
+  --st-screen-mid:  rgba(110, 201, 168, 0.42);
+  --st-screen-dim:  rgba(110, 201, 168, 0.22);
+  --st-screen-rule: rgba(110, 201, 168, 0.08);
+
+  --st-lift-1:  1px 2px 0 rgba(0, 0, 0, 0.28);
+  --st-lift-2:  2px 3px 0 rgba(0, 0, 0, 0.36),
+                1px 1px 0 rgba(0, 0, 0, 0.22);
+  --st-lift-3:  3px 5px 0 rgba(0, 0, 0, 0.44),
+                1px 2px 0 rgba(0, 0, 0, 0.28);
+  --st-lift-4:  5px 8px 0 rgba(0, 0, 0, 0.55),
+                2px 3px 0 rgba(0, 0, 0, 0.35);
+
+  --st-rule-w:  rgba(232, 226, 213, 0.09);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SCHLIEREN SYSTEM — canvas-based heat field
+
+   <canvas data-schlieren data-palette="heat|brand"> draws directly.
+   Wrap with [data-schlieren-host] for focus convergence.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Canvas sits behind content, fills the host */
+.sch-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Content sits above the canvas */
+.sch-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* SchlierenMark — wraps any content with a heat field canvas behind it */
+.sch-mark {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 4px;
+}
