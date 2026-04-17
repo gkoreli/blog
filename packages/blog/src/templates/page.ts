@@ -50,12 +50,12 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   <meta property="og:url" content="${canonical}">
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:description" content="${description}">
-  ${ogImage ? html`<meta property="og:image" content="https://gkoreli.com${ogImage}?v=2">
+  ${ogImage ? html`<meta property="og:image" content="https://gkoreli.com${ogImage}">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="600">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://gkoreli.com${ogImage}?v=2">
+  <meta name="twitter:image" content="https://gkoreli.com${ogImage}">
   <meta name="twitter:image:alt" content="${title}">` : ''}
   <meta name="author" content="Goga Koreli">
   <link rel="icon" href="/icons/logo.svg" type="image/svg+xml">

@@ -1,6 +1,7 @@
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { DIST } from './paths.js';
 
@@ -123,5 +124,6 @@ export async function generateOgImage(title: string, slug: string): Promise<stri
   const resvg = new Resvg(svg);
   const png = resvg.render().asPng();
   writeFileSync(join(OG_DIR, filename), png);
-  return `/og/${filename}`;
+  const hash = createHash('sha256').update(png).digest('hex').slice(0, 8);
+  return `/og/${filename}?v=${hash}`;
 }
