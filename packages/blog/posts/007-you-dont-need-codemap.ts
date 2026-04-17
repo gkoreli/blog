@@ -46,6 +46,7 @@ export function preamble() {
     subtitle: 'The first decision is not which tool should read the repo. The first decision is whether the repo deserves to be read at all.',
     author: 'Goga Koreli',
     readTime: '8 min read',
+    canvasMode: 'caustic',
   });
 }
 

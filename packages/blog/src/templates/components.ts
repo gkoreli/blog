@@ -160,11 +160,12 @@ export function Postscript({ content }: { content: StaticResult }) {
 
 /* ── OSS Radar components ── */
 
-export function OssRadarHero({ issueNum, date, tags, title, subtitle, author, readTime }: {
+export function OssRadarHero({ issueNum, date, tags, title, subtitle, author, readTime, canvasMode = 'flow' }: {
   issueNum: string; date: string; tags: string; title: StaticResult; subtitle: string; author: string; readTime: string;
+  canvasMode?: string;
 }) {
   return html`<div class="topo-hero topo-hero--long-title">
-    <nisli-neural-canvas mode="flow"></nisli-neural-canvas>
+    <nisli-neural-canvas mode="${canvasMode}"></nisli-neural-canvas>
     <div class="radar-pills">
       <span class="radar-pill radar-pill--accent">${issueNum}</span>
       <span class="radar-pill">${date}</span>
