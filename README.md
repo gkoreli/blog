@@ -46,4 +46,7 @@ Every post can have a companion `prompts/{slug}.prompts.md` file with the raw `-
 
 ## License
 
-MIT
+This repository is dual-licensed:
+
+- Source code is licensed under the [MIT License](./LICENSE-MIT).
+- Blog posts, prompts, and images are licensed under [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International](./LICENSE-CC-BY-NC-ND-4.0).
