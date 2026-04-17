@@ -113,7 +113,7 @@ export async function generateOgImage(title: string, slug: string): Promise<stri
     },
     {
       width: 1200,
-      height: 630,
+      height: 600,
       fonts: [
         { name: 'Lora', data: getFont(), weight: 700, style: 'normal' as const },
       ],
