@@ -6,6 +6,8 @@
 
 /og/*
   Cache-Control: public, max-age=31536000, immutable
+  ! Content-Security-Policy
+  ! Permissions-Policy
 
 /*.txt
   Content-Type: text/plain; charset=utf-8
