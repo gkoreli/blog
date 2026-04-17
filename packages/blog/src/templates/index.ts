@@ -1,8 +1,10 @@
 import { html } from 'nisli-static';
 import type { PostMeta } from '../lib/frontmatter.js';
 import { formatDateLong } from '../lib/dates.js';
+import { FeaturedPost } from './components.js';
 
 export function indexTemplate(posts: PostMeta[]) {
+  const [featured, ...rest] = posts;
   return html`<div class="home">
   <section class="hero">
     <h1>Goga Koreli</h1>
@@ -25,7 +27,8 @@ export function indexTemplate(posts: PostMeta[]) {
   </section>
   <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
   <section class="post-list">
-    ${posts.map(p => html`<a href="/${p.slug}" class="post-preview">
+    ${featured ? FeaturedPost({ title: featured.title, description: featured.description, date: formatDateLong(featured.date), slug: featured.slug, promptCount: featured.promptCount }) : ''}
+    ${rest.map(p => html`<a href="/${p.slug}" class="post-preview">
       <article>
         <h3>${p.title}</h3>
         <time datetime="${p.date}">${formatDateLong(p.date)}${p.promptCount ? ` · ${p.promptCount} prompts` : ''}</time>

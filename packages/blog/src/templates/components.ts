@@ -235,6 +235,30 @@ export function CompareTable({ headers, rows, highlightRows }: { headers: string
   </table>`;
 }
 
+/* ── Home page featured post card ── */
+
+export function FeaturedPost({ title, description, date, slug, promptCount }: {
+  title: string;
+  description: string;
+  date: string;
+  slug: string;
+  promptCount?: number;
+}) {
+  const meta = [date, promptCount ? `${promptCount} prompts` : null].filter(Boolean).join(' · ');
+  return html`<a href="/${slug}" class="featured-post">
+    <div class="featured-post-wash"></div>
+    <div class="featured-post-inner">
+      <div class="featured-post-meta">
+        <span class="featured-post-badge">Latest</span>
+        <span class="featured-post-date">${meta}</span>
+      </div>
+      <h2 class="featured-post-title">${title}</h2>
+      <p class="featured-post-desc">${description}</p>
+      <span class="featured-post-cta">Read article <span class="featured-post-arrow">→</span></span>
+    </div>
+  </a>`;
+}
+
 export function Sources({ items }: { items: { claim: string; ref: string; url?: string }[] }) {
   return html`<div class="radar-sources">
     <div class="radar-sources-title">Sources & Evidence</div>
