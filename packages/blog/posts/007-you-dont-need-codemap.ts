@@ -14,7 +14,7 @@ import {
 
 export const meta: PostMeta = {
   title: "You Don't Always Need Codemap",
-  date: '2026-04-07',
+  date: '2026-04-17',
   description: "Code context tools are not interchangeable. Codemap, Aider, Gitingest, Repomix, and ghx optimize for different moments in an agent's workflow.",
   tags: ['ghx', 'code-mapping', 'context-engineering', 'open-source', 'agentic-engineering'],
   layout: 'immersive',
@@ -40,7 +40,7 @@ function CodeBlock({ code }: { code: string }) {
 export function preamble() {
   return OssRadarHero({
     issueNum: 'Field Note',
-    date: 'April 2026',
+    date: 'April 17, 2026',
     tags: 'ghx · code mapping · context engineering · agents',
     title: html`<h1>You Don't Always<br>Need <em>Codemap</em></h1>`,
     subtitle: 'The first decision is not which tool should read the repo. The first decision is whether the repo deserves to be read at all.',
@@ -542,7 +542,35 @@ ghx read owner/repo path/to/file.ts`,
       })}
 
       ${Section({
-        label: '§ 6 — The Decision Framework',
+        label: '§ 6 — Try It',
+        children: html`
+          <h2>The smallest useful version</h2>
+
+          <p>
+            If you want the practical setup, the
+            <a href="https://github.com/gkoreli/ghx#install" target="_blank" rel="noopener">ghx README</a>
+            has the install commands, MCP config, and <code>ghx skill</code>
+            output for teaching an agent how to use it. The whole idea fits in
+            one instruction:
+          </p>
+
+          ${Callout({
+            label: 'Agent rule',
+            body: html`<p>When inspecting a GitHub repo, use <code>ghx explore</code>, <code>ghx tree</code>, <code>ghx read --map</code>, or <code>ghx read --grep</code> before cloning, packing, or reading whole files.</p>`,
+          })}
+
+          <p>A good first pass is intentionally boring:</p>
+
+          ${CodeBlock({
+            code: `npx @gkoreli/ghx explore owner/repo
+npx @gkoreli/ghx read owner/repo --map "src/**/*.ts"
+npx @gkoreli/ghx read owner/repo path/to/file.ts`,
+          })}
+        `,
+      })}
+
+      ${Section({
+        label: '§ 7 — The Decision Framework',
         final: true,
         children: html`
           <h2>Use the tool that matches the decision</h2>

@@ -242,7 +242,7 @@ export function FeaturedPost({ title, description, date, slug, promptCount }: {
   description: string;
   date: string;
   slug: string;
-  promptCount?: number;
+  promptCount?: number | undefined;
 }) {
   const meta = [date, promptCount ? `${promptCount} prompts` : null].filter(Boolean).join(' · ');
   return html`<a href="/${slug}" class="featured-post">
@@ -270,4 +270,3 @@ export function Sources({ items }: { items: { claim: string; ref: string; url?: 
     </div>
   </div>`;
 }
-

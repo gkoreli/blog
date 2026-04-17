@@ -8,31 +8,33 @@ interface ArtifactMeta {
 
 interface ArtifactSurfaceProps {
   className?: string;
+  labelledBy?: string;
   label: string;
   code?: string;
-  meta: ArtifactMeta[];
+  meta?: ArtifactMeta[];
   body: StaticResult;
   action: StaticResult;
   mark?: string;
   stamp?: StaticResult;
 }
 
-export function ArtifactSurface({ className, label, code, meta, body, action, mark, stamp }: ArtifactSurfaceProps) {
+export function ArtifactSurface({ className, labelledBy, label, code, meta = [], body, action, mark, stamp }: ArtifactSurfaceProps) {
   const classes = className ? `artifact-surface ${className}` : 'artifact-surface';
+  const labelledByAttr = labelledBy ? ` aria-labelledby="${labelledBy}"` : '';
 
-  return html`<section class="${classes}">
+  return html`<section class="${classes}"${labelledByAttr}>
     ${stamp ? html`<div class="artifact-stamp" aria-hidden="true">${stamp}</div>` : ''}
     <header class="artifact-header">
       <div class="artifact-topline">
         <p class="artifact-label">${label}</p>
         ${code ? html`<p class="artifact-code">${code}</p>` : ''}
       </div>
-      <dl class="artifact-meta">
+      ${meta.length > 0 ? html`<dl class="artifact-meta">
         ${meta.map(item => html`<div>
           <dt>${item.label}</dt>
           <dd>${item.value}</dd>
         </div>`)}
-      </dl>
+      </dl>` : ''}
       ${mark ? html`<p class="artifact-mark">${mark}</p>` : ''}
     </header>
     <div class="artifact-body">
@@ -49,13 +51,12 @@ interface ReplySlipProps {
 }
 
 export function ReplySlip({ turnstileSiteKey }: ReplySlipProps) {
-  return html`<form id="sub-form" class="reply-slip subscribe-form" novalidate${turnstileSiteKey ? html` data-turnstile-sitekey="${turnstileSiteKey}"` : ''}>
-    <label for="subscribe-email" class="reply-label subscribe-label">Reply address</label>
-    <div class="reply-row subscribe-row">
-      <input id="subscribe-email" type="email" name="email" class="reply-input subscribe-input" placeholder="your@email.com" required autocomplete="email">
-      <button type="submit" class="reply-action subscribe-btn">Subscribe</button>
+  return html`<form id="sub-form" class="dispatch-form subscribe-form" novalidate${turnstileSiteKey ? html` data-turnstile-sitekey="${turnstileSiteKey}"` : ''}>
+    <div class="dispatch-form-row">
+      <input id="subscribe-email" type="email" name="email" class="dispatch-input subscribe-input" placeholder="your@email.com" required autocomplete="email">
+      <button type="submit" class="dispatch-submit subscribe-btn">Subscribe</button>
     </div>
-    <p class="reply-note subscribe-note">No noise. Unsubscribe anytime.</p>
+    <p class="dispatch-note">One essay per send · no drip · unsubscribe anytime</p>
     <p class="subscribe-msg" aria-live="polite" role="status"></p>
     ${turnstileSiteKey ? html`<div class="turnstile-slot"></div>` : ''}
   </form>`;
@@ -63,18 +64,11 @@ export function ReplySlip({ turnstileSiteKey }: ReplySlipProps) {
 
 export function DispatchSlip({ turnstileSiteKey }: ReplySlipProps) {
   return ArtifactSurface({
-    className: 'dispatch-slip subscribe glass-panel glass-sage',
+    className: 'dispatch-slip',
+    labelledBy: 'dispatch-title',
     label: 'Dispatch',
-    code: 'GK-DISPATCH-001',
-    meta: [
-      { label: 'From', value: 'Goga Koreli' },
-      { label: 'To', value: 'Readers who want the next one' },
-      { label: 'Mode', value: 'Occasional' },
-    ],
-    mark: 'Filed from the workbench when there is something worth sending.',
-    stamp: html`<img src="/icons/mail.svg" width="28" height="28" alt="">`,
-    body: html`<h2 class="subscribe-title">A note when there is signal.</h2>
-      <p class="subscribe-desc">No drip sequence. No growth hacks. Just the next essay from the build log.</p>`,
+    code: 'GK-001',
+    body: html`<h2 id="dispatch-title" class="dispatch-headline"><em>A note when there is signal.</em></h2>`,
     action: ReplySlip({ turnstileSiteKey }),
   });
 }
