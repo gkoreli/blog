@@ -48,6 +48,8 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
   <meta property="og:description" content="${description}">
   <meta property="og:type" content="${ogType}">
   <meta property="og:url" content="${canonical}">
+  <meta name="twitter:title" content="${title}">
+  <meta name="twitter:description" content="${description}">
   ${ogImage ? html`<meta property="og:image" content="https://gkoreli.com${ogImage}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://gkoreli.com${ogImage}">` : ''}
