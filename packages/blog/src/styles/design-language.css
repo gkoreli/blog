@@ -1,0 +1,93 @@
+/* ── Design Language reference page ── */
+
+.dl-page { padding-top: 2rem; }
+
+.dl-header { margin-bottom: 3rem; }
+.dl-grad-rule { height: 2px; background: var(--gradient-brand); border-radius: 1px; margin-bottom: 2.5rem; }
+.dl-eyebrow { font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 0.2rem; }
+.dl-title { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; }
+.dl-subtitle { font-size: var(--text-base); color: var(--color-text-muted); line-height: 1.75; max-width: 580px; font-style: italic; margin-top: 0.75rem; }
+
+.dl-chapter { margin: 4rem 0 1.5rem; }
+.dl-chapter-num { font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.7rem; }
+.dl-chapter-num::after { content: ''; flex: 1; height: 1px; background: var(--color-border); }
+.dl-chapter-title { font-size: 1.8rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; }
+.dl-body-note { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1.25rem; }
+
+/* ── Palette ── */
+.dl-palette { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); }
+.dl-swatch { background: var(--color-bg); padding: 0.85rem 0.75rem 1rem; }
+.dl-swatch-chip { height: 44px; border-radius: 4px; margin-bottom: 0.6rem; }
+.dl-swatch-name { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--color-text); font-weight: 600; margin-bottom: 0.15rem; }
+.dl-swatch-token { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); margin-bottom: 0.1rem; }
+.dl-swatch-hex { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); }
+.dl-swatch-role { font-size: 0.7rem; color: var(--color-text-muted); margin-top: 0.3rem; font-style: italic; line-height: 1.3; }
+
+/* ── Typography ── */
+.dl-type-samples { }
+.dl-type-row { padding: 1.5rem 0; border-bottom: 1px solid var(--color-border); }
+.dl-type-row:first-child { border-top: 1px solid var(--color-border); }
+.dl-type-meta { font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 0.5rem; }
+.dl-type-base { font-size: var(--text-base); }
+.dl-type-lg { font-size: 1.35rem; }
+.dl-type-xl { font-size: 1.8rem; line-height: 1.2; }
+.dl-type-2xl { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+.dl-type-mono { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em; }
+.dl-italic { font-style: italic; }
+
+/* ── Surfaces ── */
+.dl-surface-demo { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); margin-bottom: 0.75rem; }
+.dl-surface-cell { background: var(--color-bg); padding: 1.5rem; }
+.dl-glass-example { padding: 1.25rem; border-radius: 0.75rem; }
+.dl-glass-example h3 { font-size: 0.9rem; margin-bottom: 0.35rem; }
+.dl-glass-example p { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.6; }
+.dl-flat-example { border: 1px solid var(--color-border); padding: 1.25rem; background: var(--color-surface); }
+.dl-flat-example h3 { font-size: 0.9rem; margin-bottom: 0.35rem; }
+.dl-flat-example p { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.6; }
+.dl-surface-label { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); margin-top: 0.75rem; }
+
+/* ── Brand gradient ── */
+.dl-grad-strip { height: 48px; background: var(--gradient-brand); border-radius: 4px; margin-bottom: 0.85rem; }
+.dl-grad-stops { display: flex; justify-content: space-between; margin-bottom: 1.25rem; }
+.dl-grad-stop { text-align: center; }
+.dl-grad-stop-dot { width: 10px; height: 10px; border-radius: 50%; margin: 0 auto 0.3rem; }
+.dl-grad-stop-label { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); letter-spacing: 0.06em; line-height: 1.5; }
+.dl-grad-usage { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); }
+.dl-grad-use { background: var(--color-bg); padding: 0.85rem 0.75rem; font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); letter-spacing: 0.06em; line-height: 1.6; }
+.dl-grad-use strong { display: block; color: var(--color-text); margin-bottom: 0.2rem; font-size: var(--text-2xs); }
+
+/* ── Canvas demos ── */
+.dl-canvas-demos { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); }
+.dl-canvas-cell { background: var(--color-bg); }
+.dl-canvas-header { padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; }
+.dl-canvas-label { font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-text-muted); }
+.dl-canvas-page { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); opacity: 0.6; }
+.dl-canvas-wrap { position: relative; height: 160px; overflow: hidden; }
+.dl-canvas-wrap nisli-neural-canvas { position: absolute; inset: 0; }
+.dl-canvas-desc { padding: 0.75rem 0.9rem; font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.6; border-top: 1px solid var(--color-border); }
+
+/* ── Section identities ── */
+.dl-section-ids { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); }
+.dl-sid { background: var(--color-bg); padding: 1.25rem 1rem; }
+.dl-sid-rule { height: 2px; margin-bottom: 0.85rem; border-radius: 1px; }
+.dl-sid-label { font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.4rem; font-weight: 600; }
+.dl-sid-name { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.4rem; letter-spacing: -0.015em; }
+.dl-sid-canvas { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); margin-bottom: 0.3rem; }
+.dl-sid-desc { font-size: 0.78rem; color: var(--color-text-muted); line-height: 1.55; }
+.dl-sid-tags { display: flex; gap: 0.4rem; margin-top: 0.5rem; flex-wrap: wrap; }
+.dl-sid-tag { font-family: var(--font-mono); font-size: var(--text-2xs); padding: 0.1rem 0.4rem; border-radius: 2px; border: 1px solid; }
+
+/* ── Philosophy ── */
+.dl-principles { display: flex; flex-direction: column; gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); }
+.dl-principle { background: var(--color-bg); padding: 1.5rem; }
+.dl-principle-num { font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 0.5rem; }
+.dl-principle-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
+.dl-principle-body { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.7; }
+.dl-principle-body em { color: var(--color-text); font-style: normal; font-weight: 500; }
+
+@media (max-width: 768px) {
+  .dl-palette { grid-template-columns: repeat(2, 1fr); }
+  .dl-surface-demo, .dl-canvas-demos, .dl-section-ids { grid-template-columns: 1fr; }
+  .dl-grad-usage { grid-template-columns: repeat(2, 1fr); }
+  .dl-type-2xl { font-size: 1.8rem; }
+}

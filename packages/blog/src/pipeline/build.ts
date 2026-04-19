@@ -20,6 +20,7 @@ import TurndownService from 'turndown';
 import { llmsTxt, llmsFullTxt, postsJson, stripFrontmatter } from '../templates/llms.js';
 import { blogPostingJsonLd } from '../templates/jsonld.js';
 import { sectionArchiveTemplate, SECTION_LABELS, SECTION_DESCRIPTIONS } from '../templates/section.js';
+import { designLanguageTemplate } from '../templates/design-language.js';
 
 export { DIST } from '../lib/paths.js';
 
@@ -206,6 +207,10 @@ export async function buildHTML(): Promise<void> {
   const privacyBody = privacyTemplate();
   const privacyPage = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody.toString(), currentSlug: 'privacy' });
   writeOutput('privacy', privacyPage.toString());
+
+  const dlBody = designLanguageTemplate();
+  const dlPage = pageShell({ title: 'Design Language', description: 'The design substrate of gkoreli.com — palette, typography, glass surfaces, canvas moods, section identities, and philosophy.', content: dlBody.toString(), currentSlug: 'design-language', noindex: true });
+  writeOutput('design-language', dlPage.toString());
 
   writeRoot('feed.xml', rssFeed(sortedPosts));
   writeRoot('sitemap.xml', sitemapXml(sortedPosts));
