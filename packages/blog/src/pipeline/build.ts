@@ -44,10 +44,12 @@ export function buildComponentStyles(): void {
     .map(f => `@import '${relative(stylesDir, f).replace(/\\/g, '/')}';`)
     .join('\n');
 
-  writeFileSync(
-    join(stylesDir, 'components.css'),
-    `/* AUTO-GENERATED — run build to regenerate */\n${imports}\n`,
-  );
+  const manifestPath = join(stylesDir, 'components.css');
+  const content = `/* AUTO-GENERATED — run build to regenerate */\n${imports}\n`;
+
+  if (!existsSync(manifestPath) || readFileSync(manifestPath, 'utf-8') !== content) {
+    writeFileSync(manifestPath, content);
+  }
 }
 
 /** Step 3: Copy static assets from public/ */
