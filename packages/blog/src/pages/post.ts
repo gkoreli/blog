@@ -3,7 +3,7 @@ import type { PostMeta, PromptsData } from '../lib/frontmatter.js';
 import { formatDateLong } from '../lib/dates.js';
 import { SectionLabel, FramesGallery } from '../components/index.js';
 
-export function postTemplate(meta: PostMeta, htmlContent: string, prompts?: PromptsData | null) {
+export function postPage(meta: PostMeta, htmlContent: string, prompts?: PromptsData | null) {
   const dateStr = formatDateLong(meta.date);
 
   return html`<article>

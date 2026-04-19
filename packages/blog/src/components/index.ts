@@ -23,7 +23,6 @@ export { PullQuote } from './pull-quote/pull-quote.js';
 export { ResearchNote } from './research-note/research-note.js';
 export { Scoreboard } from './scoreboard/scoreboard.js';
 export { ScrollReveal } from './scroll-reveal/scroll-reveal.js';
-export { SectionArchive } from './section-archive/section-archive.js';
 export { SectionBreak } from './section-break/section-break.js';
 export { SectionLabel } from './section-label/section-label.js';
 export { SectionNum } from './section-num/section-num.js';

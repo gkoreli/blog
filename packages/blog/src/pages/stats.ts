@@ -1,10 +1,9 @@
 import { staticHtml as html } from '@nisli/core/static';
 
-/** Head tags for the stats page — stats.css + stats.js loaded only here */
 export const statsHead = `<link rel="stylesheet" href="/stats.css">
   <script type="module" src="/stats.js"></script>`;
 
-export function statsTemplate() {
+export function statsPage() {
   return html`<article>
   <div class="stats-header">
     <h1>Stats</h1>

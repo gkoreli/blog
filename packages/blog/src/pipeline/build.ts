@@ -5,22 +5,26 @@ import { DIST, SRC, ESBUILD_ENTRIES } from '../lib/paths.js';
 import { discoverPosts, writeOutput, writeRoot, copyAssets } from '../lib/fs.js';
 import { initMarkdown, renderMarkdown } from '../lib/markdown.js';
 import { parsePost, validatePosts, parsePrompts } from '../lib/frontmatter.js';
-import type { Post, Section } from '../lib/frontmatter.js';
+import type { Post } from '../lib/frontmatter.js';
 import { pageShell } from '../templates/page.js';
-import { postTemplate } from '../templates/post.js';
-import { indexTemplate } from '../templates/index.js';
-import { aboutTemplate } from '../templates/about.js';
-import { privacyTemplate } from '../templates/privacy.js';
-import { statsTemplate, statsHead } from '../templates/stats.js';
 import { rssFeed } from '../templates/rss.js';
-import { promptsTemplate } from '../templates/prompts.js';
 import { generateOgImage } from '../lib/og.js';
 import { sitemapXml } from '../templates/sitemap.js';
 import TurndownService from 'turndown';
 import { llmsTxt, llmsFullTxt, postsJson, stripFrontmatter } from '../templates/llms.js';
 import { blogPostingJsonLd } from '../templates/jsonld.js';
-import { sectionArchiveTemplate, SECTION_LABELS, SECTION_DESCRIPTIONS } from '../templates/section.js';
-import { designLanguageTemplate } from '../templates/design-language.js';
+import { SECTION_LABELS, SECTION_DESCRIPTIONS } from '../lib/frontmatter.js';
+import { homePage } from '../pages/home.js';
+import { aboutPage } from '../pages/about.js';
+import { postPage } from '../pages/post.js';
+import { promptsPage } from '../pages/prompts.js';
+import { privacyPage } from '../pages/privacy.js';
+import { statsPage, statsHead } from '../pages/stats.js';
+import { designLanguagePage } from '../pages/design-language.js';
+import { essaysPage } from '../pages/essays.js';
+import { engineeringPage } from '../pages/engineering.js';
+import { ossRadarPage } from '../pages/oss-radar.js';
+import { framesPage } from '../pages/frames.js';
 
 export { DIST } from '../lib/paths.js';
 
@@ -147,16 +151,16 @@ export async function buildHTML(): Promise<void> {
     const ogImage = await generateOgImage(post.meta.title, post.meta.slug);
     const prompts = parsePrompts(post.meta.slug);
     if (prompts) post.meta.promptCount = prompts.count;
-    const body = postTemplate(post.meta, htmlContent, prompts);
+    const body = postPage(post.meta, htmlContent, prompts);
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
     const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: 'post', ogType: 'article' });
     writeOutput(post.meta.slug, page.toString());
     writeRoot(`${post.meta.slug}.md`, mdRawContents[i]!);
 
     if (prompts) {
-      const promptsBody = promptsTemplate(post.meta, prompts);
-      const promptsPage = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogType: 'website' });
-      writeOutput(`${post.meta.slug}/prompts`, promptsPage.toString());
+      const promptsBody = promptsPage(post.meta, prompts);
+      const promptsShell = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogType: 'website' });
+      writeOutput(`${post.meta.slug}/prompts`, promptsShell.toString());
     }
   }
 
@@ -172,9 +176,9 @@ export async function buildHTML(): Promise<void> {
     writeRoot(`${post.meta.slug}.md`, htmlToMarkdown(htmlContent, post.meta));
 
     if (prompts) {
-      const promptsBody = promptsTemplate(post.meta, prompts);
-      const promptsPage = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogType: 'website' });
-      writeOutput(`${post.meta.slug}/prompts`, promptsPage.toString());
+      const promptsBody = promptsPage(post.meta, prompts);
+      const promptsShell = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogType: 'website' });
+      writeOutput(`${post.meta.slug}/prompts`, promptsShell.toString());
     }
   }
 
@@ -184,33 +188,37 @@ export async function buildHTML(): Promise<void> {
     ...tsPosts.map(t => htmlToMarkdown(t.htmlContent, t.post.meta)),
   ];
 
-  const indexBody = indexTemplate(sortedPosts);
-  const indexPage = pageShell({ title: 'Blog', description: 'Engineering blog by Goga Koreli', content: indexBody.toString() });
-  writeRoot('index.html', indexPage.toString());
+  const indexBody = homePage(sortedPosts);
+  const indexShell = pageShell({ title: 'Blog', description: 'Engineering blog by Goga Koreli', content: indexBody.toString() });
+  writeRoot('index.html', indexShell.toString());
 
-  const sections: Section[] = ['essays', 'engineering', 'oss-radar', 'frames'];
-  for (const section of sections) {
-    const sectionPosts = sortedPosts.filter(p => p.section === section);
-    const sectionBody = sectionArchiveTemplate(section, sectionPosts);
-    const sectionPage = pageShell({ title: SECTION_LABELS[section], description: SECTION_DESCRIPTIONS[section], content: sectionBody.toString(), currentSection: section });
-    writeOutput(section, sectionPage.toString());
-  }
+  const essaysBody = essaysPage(sortedPosts.filter(p => p.section === 'essays'));
+  writeOutput('essays', pageShell({ title: SECTION_LABELS['essays'], description: SECTION_DESCRIPTIONS['essays'], content: essaysBody.toString(), currentSection: 'essays' }).toString());
 
-  const aboutBody = aboutTemplate();
-  const aboutPage = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), currentSlug: 'about' });
-  writeOutput('about', aboutPage.toString());
+  const engineeringBody = engineeringPage(sortedPosts.filter(p => p.section === 'engineering'));
+  writeOutput('engineering', pageShell({ title: SECTION_LABELS['engineering'], description: SECTION_DESCRIPTIONS['engineering'], content: engineeringBody.toString(), currentSection: 'engineering' }).toString());
 
-  const statsBody = statsTemplate();
-  const statsPage = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody.toString(), currentSlug: 'stats', head: statsHead, noindex: true });
-  writeOutput('stats', statsPage.toString());
+  const ossRadarBody = ossRadarPage(sortedPosts.filter(p => p.section === 'oss-radar'));
+  writeOutput('oss-radar', pageShell({ title: SECTION_LABELS['oss-radar'], description: SECTION_DESCRIPTIONS['oss-radar'], content: ossRadarBody.toString(), currentSection: 'oss-radar' }).toString());
 
-  const privacyBody = privacyTemplate();
-  const privacyPage = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody.toString(), currentSlug: 'privacy' });
-  writeOutput('privacy', privacyPage.toString());
+  const framesBody = framesPage(sortedPosts.filter(p => p.section === 'frames'));
+  writeOutput('frames', pageShell({ title: SECTION_LABELS['frames'], description: SECTION_DESCRIPTIONS['frames'], content: framesBody.toString(), currentSection: 'frames' }).toString());
 
-  const dlBody = designLanguageTemplate();
-  const dlPage = pageShell({ title: 'Design Language', description: 'The design substrate of gkoreli.com — palette, typography, glass surfaces, canvas moods, section identities, and philosophy.', content: dlBody.toString(), currentSlug: 'design-language', noindex: true });
-  writeOutput('design-language', dlPage.toString());
+  const aboutBody = aboutPage();
+  const aboutShell = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), currentSlug: 'about' });
+  writeOutput('about', aboutShell.toString());
+
+  const statsBody = statsPage();
+  const statsShell = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody.toString(), currentSlug: 'stats', head: statsHead, noindex: true });
+  writeOutput('stats', statsShell.toString());
+
+  const privacyBody = privacyPage();
+  const privacyShell = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody.toString(), currentSlug: 'privacy' });
+  writeOutput('privacy', privacyShell.toString());
+
+  const dlBody = designLanguagePage();
+  const dlShell = pageShell({ title: 'Design Language', description: 'The design substrate of gkoreli.com — palette, typography, glass surfaces, canvas moods, section identities, and philosophy.', content: dlBody.toString(), currentSlug: 'design-language', noindex: true });
+  writeOutput('design-language', dlShell.toString());
 
   writeRoot('feed.xml', rssFeed(sortedPosts));
   writeRoot('sitemap.xml', sitemapXml(sortedPosts));

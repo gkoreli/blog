@@ -36,7 +36,7 @@ function FramesPlaceholder() {
 <p class="frames-caption"><span class="frames-dot"></span>Photo journals — first frame coming soon</p>`;
 }
 
-export function indexTemplate(posts: PostMeta[]) {
+export function homePage(posts: PostMeta[]) {
   const featured = posts.find(p => p.featured) ?? posts[0];
   const essays = posts.filter(p => p.section === 'essays' && p.slug !== featured?.slug);
   const engineering = posts.filter(p => p.section === 'engineering' && p.slug !== featured?.slug);

@@ -46,7 +46,7 @@ function GradSep() {
   return html`<div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>`;
 }
 
-export function designLanguageTemplate() {
+export function designLanguagePage() {
   return html`<div class="dl-page">
 
   <div class="dl-header">

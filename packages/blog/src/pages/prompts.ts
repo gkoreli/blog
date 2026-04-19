@@ -1,7 +1,7 @@
 import { staticHtml as html, raw } from '@nisli/core/static';
 import type { PostMeta, PromptsData } from '../lib/frontmatter.js';
 
-export function promptsTemplate(meta: PostMeta, prompts: PromptsData) {
+export function promptsPage(meta: PostMeta, prompts: PromptsData) {
   return html`<article>
   <header class="post-header">
     <a href="/${meta.slug}" class="prompts-back">← Back to article</a>

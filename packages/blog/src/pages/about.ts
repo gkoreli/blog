@@ -2,7 +2,7 @@ import { staticHtml as html, raw } from '@nisli/core/static';
 
 const ext = (url: string) => raw(`href="${url}" target="_blank" rel="noopener"`);
 
-export function aboutTemplate() {
+export function aboutPage() {
   return html`<article class="post-content">
   <h1>About</h1>
 
