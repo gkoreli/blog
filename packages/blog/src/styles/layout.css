@@ -112,12 +112,7 @@ body { min-height: 100vh; }
 
 .sidebar-section a.active .sb-dot { opacity: 1; }
 
-/* Thin rule between Contents and Studio */
-.sidebar-section-sep {
-  height: 1px;
-  background: var(--color-border);
-  margin: 0.2rem 0 0.7rem;
-}
+.sidebar-section-sep { margin: 0.6rem 0 0.2rem; }
 
 /* ── Studio project links ── */
 .sb-proj {

@@ -9,7 +9,6 @@ a.lit {
   border-bottom: 1px solid var(--color-border);
 }
 
-a.lit:first-of-type { border-top: 1px solid var(--color-border); }
 a.lit:visited { color: var(--color-text); }
 a.lit:hover .lit-title { color: var(--color-link); }
 

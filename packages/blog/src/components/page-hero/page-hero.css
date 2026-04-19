@@ -24,12 +24,6 @@
   animation: hero-rise 0.8s 0.1s both;
 }
 
-.page-hero-kicker::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--color-border);
-}
 
 .page-hero-title {
   font-size: 2.4rem;
@@ -51,9 +45,7 @@
 .page-hero-stats {
   display: flex;
   gap: 2rem;
-  margin-top: 1.2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--color-border);
+  margin-top: 1.4rem;
   animation: hero-rise 0.8s 0.5s both;
 }
 
