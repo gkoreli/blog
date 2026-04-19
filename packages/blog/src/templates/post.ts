@@ -1,4 +1,4 @@
-import { html, raw } from 'nisli-static';
+import { staticHtml as html, raw } from '@nisli/core/static';
 import type { PostMeta, PromptsData } from '../lib/frontmatter.js';
 import { formatDateLong } from '../lib/dates.js';
 

@@ -4,9 +4,6 @@
   "private": true,
   "description": "Blog site — built with @nisli/core",
   "type": "module",
-  "imports": {
-    "#nisli/server": "./src/nisli-static/static.ts"
-  },
   "scripts": {
     "dev": "tsx src/pipeline/dev.ts",
     "build": "tsx src/pipeline/prod.ts",
@@ -18,7 +15,7 @@
     "@gkoreli/analytics": "workspace:*",
     "@gkoreli/client-observability": "workspace:*",
     "@gkoreli/newsletter": "workspace:*",
-    "@nisli/core": "latest",
+    "@nisli/core": "^0.47.4",
     "esbuild": "^0.27.3",
     "gray-matter": "^4.0.3",
     "marked": "^17.0.4",

@@ -1,4 +1,4 @@
-import { html, raw } from 'nisli-static';
+import { staticHtml as html, raw } from '@nisli/core/static';
 import type { PostMeta } from '../lib/frontmatter.js';
 import { DispatchSlip } from './artifacts.js';
 

@@ -1,4 +1,4 @@
-import { html } from 'nisli-static';
+import { staticHtml as html } from '@nisli/core/static';
 import type { PostMeta } from '../lib/frontmatter.js';
 import { formatDateLong } from '../lib/dates.js';
 import { FeaturedPost } from './components.js';

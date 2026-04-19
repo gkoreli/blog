@@ -1,4 +1,4 @@
-import { html } from 'nisli-static';
+import { staticHtml as html } from '@nisli/core/static';
 
 /** Head tags for the stats page — stats.css + stats.js loaded only here */
 export const statsHead = `<link rel="stylesheet" href="/stats.css">

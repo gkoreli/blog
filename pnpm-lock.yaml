@@ -33,8 +33,8 @@ importers:
         specifier: workspace:*
         version: link:../newsletter
       '@nisli/core':
-        specifier: latest
-        version: 0.46.0
+        specifier: ^0.47.4
+        version: 0.47.4
       esbuild:
         specifier: ^0.27.3
         version: 0.27.3
@@ -467,8 +467,8 @@ packages:
   '@mixmark-io/domino@2.2.0':
     resolution: {integrity: sha512-Y28PR25bHXUg88kCV7nivXrP2Nj2RueZ3/l/jdx6J9f8J4nsEGcgX0Qe6lt7Pa+J79+kPiJU3LguR6O/6zrLOw==}
 
-  '@nisli/core@0.46.0':
-    resolution: {integrity: sha512-OkXO+cV6f5OUCfpA5T4WDY3uuRay7nmKaSgAdDTGirOz6vPp0ZPgEi/dgM/7fP0TGzvWd1B48LN57+AxLzwidw==}
+  '@nisli/core@0.47.4':
+    resolution: {integrity: sha512-ZEd+GysBuoi8BPSe7gNsPbEuyDlblRyts87hWKc9iEmVa/yyjTLGLYvy5Ghg5pF8oxINfdnrcuOMnTEi4sSE8A==}
 
   '@poppinss/colors@4.1.6':
     resolution: {integrity: sha512-H9xkIdFswbS8n1d6vmRd8+c10t2Qe+rZITbbDHHkQixH5+2x1FDGmi/0K+WgWiqQFKPSlIYB7jlH6Kpfn6Fleg==}
@@ -1697,7 +1697,7 @@ snapshots:
 
   '@mixmark-io/domino@2.2.0': {}
 
-  '@nisli/core@0.46.0': {}
+  '@nisli/core@0.47.4': {}
 
   '@poppinss/colors@4.1.6':
     dependencies:

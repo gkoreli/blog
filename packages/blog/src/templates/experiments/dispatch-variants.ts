@@ -1,5 +1,5 @@
-import { html } from 'nisli-static';
-import type { StaticResult } from 'nisli-static';
+import { staticHtml as html } from '@nisli/core/static';
+import type { StaticResult } from '@nisli/core/static';
 
 interface ReplySlipProps {
   turnstileSiteKey: string;

@@ -1,4 +1,4 @@
-import { html, raw } from 'nisli-static';
+import { staticHtml as html, raw } from '@nisli/core/static';
 import type { PostMeta, PromptsData } from '../lib/frontmatter.js';
 
 export function promptsTemplate(meta: PostMeta, prompts: PromptsData) {

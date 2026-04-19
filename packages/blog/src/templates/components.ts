@@ -5,11 +5,11 @@
  * content is passed as StaticResult props, not as HTML children.
  * Output is semantic <nisli-*> tags styled by components.css.
  *
- * When @nisli/core SSR lands, these become actual component() factories
- * with the same API — the .ts posts don't change.
+ * When @nisli/core/static grows template components, these can become
+ * framework-owned helpers with the same API — the .ts posts don't change.
  */
-import { html } from 'nisli-static';
-import type { StaticResult } from 'nisli-static';
+import { staticHtml as html } from '@nisli/core/static';
+import type { StaticResult } from '@nisli/core/static';
 
 export function Insight({ label, content }: { label: string; content: StaticResult }) {
   return html`<nisli-insight>

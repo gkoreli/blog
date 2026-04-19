@@ -1,4 +1,4 @@
-import { html, raw } from 'nisli-static';
+import { staticHtml as html, raw } from '@nisli/core/static';
 
 const ext = (url: string) => raw(`href="${url}" target="_blank" rel="noopener"`);
 

@@ -1,4 +1,4 @@
-import { html } from 'nisli-static';
+import { staticHtml as html } from '@nisli/core/static';
 import type { PostMeta } from '../src/lib/frontmatter.js';
 import {
   Insight, PullQuote, SectionBreak, Footnotes,
