@@ -1,10 +1,11 @@
-import { rmSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { rmSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { join, relative } from 'node:path';
 import { build as esbuild } from 'esbuild';
-import { DIST, ESBUILD_ENTRIES } from '../lib/paths.js';
+import { DIST, SRC, ESBUILD_ENTRIES } from '../lib/paths.js';
 import { discoverPosts, writeOutput, writeRoot, copyAssets } from '../lib/fs.js';
 import { initMarkdown, renderMarkdown } from '../lib/markdown.js';
 import { parsePost, validatePosts, parsePrompts } from '../lib/frontmatter.js';
-import type { Post } from '../lib/frontmatter.js';
+import type { Post, Section } from '../lib/frontmatter.js';
 import { pageShell } from '../templates/page.js';
 import { postTemplate } from '../templates/post.js';
 import { indexTemplate } from '../templates/index.js';
@@ -18,6 +19,7 @@ import { sitemapXml } from '../templates/sitemap.js';
 import TurndownService from 'turndown';
 import { llmsTxt, llmsFullTxt, postsJson, stripFrontmatter } from '../templates/llms.js';
 import { blogPostingJsonLd } from '../templates/jsonld.js';
+import { sectionArchiveTemplate, SECTION_LABELS, SECTION_DESCRIPTIONS } from '../templates/section.js';
 
 export { DIST } from '../lib/paths.js';
 
@@ -27,7 +29,28 @@ export function cleanDist(): void {
   mkdirSync(DIST, { recursive: true });
 }
 
-/** Step 2: Copy static assets from public/ */
+/** Step 2: Scan src/components/ and regenerate src/styles/components.css import manifest */
+export function buildComponentStyles(): void {
+  const componentsDir = join(SRC, 'components');
+  const stylesDir = join(SRC, 'styles');
+
+  const cssFiles = readdirSync(componentsDir, { withFileTypes: true })
+    .filter(e => e.isDirectory())
+    .map(e => join(componentsDir, e.name, `${e.name}.css`))
+    .filter(f => existsSync(f))
+    .sort();
+
+  const imports = cssFiles
+    .map(f => `@import '${relative(stylesDir, f).replace(/\\/g, '/')}';`)
+    .join('\n');
+
+  writeFileSync(
+    join(stylesDir, 'components.css'),
+    `/* AUTO-GENERATED — run build to regenerate */\n${imports}\n`,
+  );
+}
+
+/** Step 3: Copy static assets from public/ */
 export function copyStaticAssets(): void {
   copyAssets();
 }
@@ -123,13 +146,13 @@ export async function buildHTML(): Promise<void> {
     if (prompts) post.meta.promptCount = prompts.count;
     const body = postTemplate(post.meta, htmlContent, prompts);
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), posts: sortedPosts, currentSlug: post.meta.slug, ogImage, head: jsonLd, layout: 'post', ogType: 'article' });
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), currentSlug: post.meta.slug, ogImage, head: jsonLd, layout: 'post', ogType: 'article' });
     writeOutput(post.meta.slug, page.toString());
     writeRoot(`${post.meta.slug}.md`, mdRawContents[i]!);
 
     if (prompts) {
       const promptsBody = promptsTemplate(post.meta, prompts);
-      const promptsPage = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), posts: sortedPosts, currentSlug: `${post.meta.slug}/prompts`, ogType: 'website' });
+      const promptsPage = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), currentSlug: `${post.meta.slug}/prompts`, ogType: 'website' });
       writeOutput(`${post.meta.slug}/prompts`, promptsPage.toString());
     }
   }
@@ -141,13 +164,13 @@ export async function buildHTML(): Promise<void> {
     if (prompts) post.meta.promptCount = prompts.count;
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
     const scripts = post.meta.layout === 'immersive' ? ['/immersive.js'] : [];
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: htmlContent, posts: sortedPosts, currentSlug: post.meta.slug, ogImage, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article' });
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: htmlContent, currentSlug: post.meta.slug, ogImage, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article' });
     writeOutput(post.meta.slug, page.toString());
     writeRoot(`${post.meta.slug}.md`, htmlToMarkdown(htmlContent, post.meta));
 
     if (prompts) {
       const promptsBody = promptsTemplate(post.meta, prompts);
-      const promptsPage = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), posts: sortedPosts, currentSlug: `${post.meta.slug}/prompts`, ogType: 'website' });
+      const promptsPage = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), currentSlug: `${post.meta.slug}/prompts`, ogType: 'website' });
       writeOutput(`${post.meta.slug}/prompts`, promptsPage.toString());
     }
   }
@@ -159,19 +182,27 @@ export async function buildHTML(): Promise<void> {
   ];
 
   const indexBody = indexTemplate(sortedPosts);
-  const indexPage = pageShell({ title: 'Blog', description: 'Engineering blog by Goga Koreli', content: indexBody.toString(), posts: sortedPosts });
+  const indexPage = pageShell({ title: 'Blog', description: 'Engineering blog by Goga Koreli', content: indexBody.toString() });
   writeRoot('index.html', indexPage.toString());
 
+  const sections: Section[] = ['essays', 'engineering', 'oss-radar', 'frames'];
+  for (const section of sections) {
+    const sectionPosts = sortedPosts.filter(p => p.section === section);
+    const sectionBody = sectionArchiveTemplate(section, sectionPosts);
+    const sectionPage = pageShell({ title: SECTION_LABELS[section], description: SECTION_DESCRIPTIONS[section], content: sectionBody.toString(), currentSection: section });
+    writeOutput(section, sectionPage.toString());
+  }
+
   const aboutBody = aboutTemplate();
-  const aboutPage = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), posts: sortedPosts, currentSlug: 'about' });
+  const aboutPage = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), currentSlug: 'about' });
   writeOutput('about', aboutPage.toString());
 
   const statsBody = statsTemplate();
-  const statsPage = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody.toString(), posts: sortedPosts, currentSlug: 'stats', head: statsHead, noindex: true });
+  const statsPage = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody.toString(), currentSlug: 'stats', head: statsHead, noindex: true });
   writeOutput('stats', statsPage.toString());
 
   const privacyBody = privacyTemplate();
-  const privacyPage = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody.toString(), posts: sortedPosts, currentSlug: 'privacy' });
+  const privacyPage = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody.toString(), currentSlug: 'privacy' });
   writeOutput('privacy', privacyPage.toString());
 
   writeRoot('feed.xml', rssFeed(sortedPosts));

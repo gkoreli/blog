@@ -5,12 +5,36 @@ import { z } from 'zod/v4';
 import { PROMPTS_DIR } from './paths.js';
 import { localDateStr } from './dates.js';
 
+export const sectionSchema = z.enum(['essays', 'engineering', 'oss-radar', 'frames']);
+export type Section = z.infer<typeof sectionSchema>;
+
+export const SECTION_LABELS: Record<Section, string> = {
+  essays: 'Essays',
+  engineering: 'Engineering',
+  'oss-radar': 'OSS Radar',
+  frames: 'Frames',
+};
+
+export const SECTION_DESCRIPTIONS: Record<Section, string> = {
+  essays: 'Personal reflections, slow thinking, and long-form writing.',
+  engineering: 'Building with agents, tools, and systems. Technical depth.',
+  'oss-radar': 'Open source ecosystem analysis. Serialised issues.',
+  frames: 'Visual journals. Photography and presence.',
+};
+
 const frontmatterSchema = z.object({
   title: z.string(),
   date: z.union([z.string(), z.date()]),
   description: z.string(),
+  section: sectionSchema,
   tags: z.array(z.string()).optional().default([]),
   layout: z.enum(['default', 'immersive']).default('default'),
+  featured: z.boolean().optional().default(false),
+  images: z.array(z.object({
+    src: z.string(),
+    alt: z.string(),
+    caption: z.string().optional(),
+  })).optional().default([]),
 });
 
 export type PostMeta = z.infer<typeof frontmatterSchema> & { slug: string; date: string; promptCount?: number };
@@ -75,7 +99,6 @@ export interface PromptsData {
 
 /** Parse prompts file for a given post slug. Returns null if no prompts file exists. */
 export function parsePrompts(slug: string): PromptsData | null {
-  // Find file matching *-{slug}.prompts.md pattern
   const filename = readdirSync(PROMPTS_DIR).find(f => f.endsWith(`${slug}.prompts.md`));
   if (!filename) return null;
 

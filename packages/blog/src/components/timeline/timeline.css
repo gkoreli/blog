@@ -1,0 +1,40 @@
+.radar-timeline {
+  margin: 2.5rem 0;
+  position: relative;
+  padding-left: 1.6rem;
+  border-left: 1px solid var(--color-border);
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 1.6rem;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: calc(-1.6rem - 4px);
+  top: 0.4rem;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--color-accent-warm);
+  background: var(--color-bg);
+  transform: rotate(45deg);
+}
+.tl-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--color-accent-warm);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.25rem;
+}
+.tl-event {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+.tl-event strong { font-weight: 600; }
+.tl-note {
+  font-style: italic;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}

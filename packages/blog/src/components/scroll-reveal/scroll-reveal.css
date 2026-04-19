@@ -1,0 +1,8 @@
+nisli-scroll-reveal {
+  display: block;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+nisli-scroll-reveal.revealed { opacity: 1; transform: none; }
+.scroll-reveal-inner { display: contents; }

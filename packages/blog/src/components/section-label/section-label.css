@@ -1,0 +1,14 @@
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+  transition: color 0.15s;
+}
+.section-label:hover { color: var(--color-link); }

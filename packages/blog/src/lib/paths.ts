@@ -40,3 +40,9 @@ export const IMMERSIVE_ENTRY = join(SRC, 'client', 'immersive.ts');
 
 /** All esbuild entry points — single source of truth for dev and prod builds */
 export const ESBUILD_ENTRIES = [CLIENT_ENTRY, STATS_ENTRY, IMMERSIVE_ENTRY, STYLES_SRC];
+
+/** Section archive route slugs */
+export const ESSAYS_PAGE = 'essays';
+export const ENGINEERING_PAGE = 'engineering';
+export const OSS_RADAR_PAGE = 'oss-radar';
+export const FRAMES_PAGE = 'frames';

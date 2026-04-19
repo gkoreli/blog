@@ -1,0 +1,21 @@
+.proc-closing {
+  margin: 3.5rem 0 0;
+  padding: 2.2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-accent-rust);
+  text-align: center;
+}
+.proc-closing h3 {
+  font-size: var(--text-xl);
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+.proc-closing p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  max-width: 440px;
+  margin: 0 auto;
+}

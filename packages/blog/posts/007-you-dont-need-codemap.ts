@@ -16,6 +16,7 @@ export const meta: PostMeta = {
   title: "You Don't Always Need Codemap",
   date: '2026-04-17',
   description: "Code context tools are not interchangeable. Codemap, Aider, Gitingest, Repomix, and ghx optimize for different moments in an agent's workflow.",
+  section: 'engineering' as const,
   tags: ['ghx', 'code-mapping', 'context-engineering', 'open-source', 'agentic-engineering'],
   layout: 'immersive',
   slug: 'you-dont-need-codemap',

@@ -1,0 +1,9 @@
+.proc-ps {
+  margin-top: 2.8rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm-mono);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}

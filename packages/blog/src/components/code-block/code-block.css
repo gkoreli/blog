@@ -1,0 +1,16 @@
+.code-block {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 1.4rem 1.8rem;
+  margin: 2rem 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm-mono);
+  line-height: 1.9;
+  color: var(--color-text);
+  overflow-x: auto;
+}
+.code-block .cm { color: var(--color-text-muted); font-style: italic; }
+.code-block .kw { color: var(--color-accent-warm); }
+.code-block .fn { color: var(--color-accent-blue); }
+.code-block .st { color: var(--color-link); }

@@ -1,39 +1,32 @@
 import { staticHtml as html, raw } from '@nisli/core/static';
-import type { PostMeta } from '../lib/frontmatter.js';
+import type { Section } from '../lib/frontmatter.js';
 import { DispatchSlip } from './artifacts.js';
 
-/**
- * Cloudflare Turnstile site key (public — safe to embed in HTML).
- * Set TURNSTILE_SITE_KEY in your build environment before running `pnpm build`.
- * Leave unset in local dev: the form falls back to button-always-enabled mode.
- * Get your site key: https://dash.cloudflare.com/ → Turnstile
- * Read at render time so build entrypoints can load env vars before page rendering.
- */
 function turnstileSiteKey(): string {
   return process.env['TURNSTILE_SITE_KEY'] ?? '';
 }
 
-export function pageShell({ title, description, content, posts, currentSlug, ogImage, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false }: {
+export function pageShell({ title, description, content, currentSlug, currentSection, ogImage, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false }: {
   title: string;
   description: string;
   content: string;
-  posts: PostMeta[];
   currentSlug?: string;
+  currentSection?: Section;
   ogImage?: string;
   head?: string;
   gutter?: string;
   preamble?: string;
   layout?: string;
-  /** Additional per-page script bundles (e.g. '/immersive.js', '/stats.js') */
   scripts?: string[];
   ogType?: 'website' | 'article';
-  /** Prevent search engines from indexing this page */
   noindex?: boolean;
 }) {
   const TURNSTILE_SITE_KEY = turnstileSiteKey();
   const canonical = currentSlug ? `https://gkoreli.com/${currentSlug}` : 'https://gkoreli.com/';
   const layoutClass = layout && layout !== 'default' ? ` layout-${layout}` : '';
   const subscribe = DispatchSlip({ turnstileSiteKey: TURNSTILE_SITE_KEY });
+
+  const isHome = !currentSlug && !currentSection;
 
   return html`<!DOCTYPE html>
 <html lang="en">
@@ -91,12 +84,16 @@ export function pageShell({ title, description, content, posts, currentSlug, ogI
       </div>
       <div class="sidebar-nav">
         <nav class="sidebar-section">
-          <a href="/about" class="${currentSlug === 'about' ? 'active' : ''}">About</a>
-          <a href="/stats" class="${currentSlug === 'stats' ? 'active' : ''}">Stats</a>
+          <a href="/" class="${isHome ? 'active' : ''}">Home</a>
+          <a href="/essays" class="${currentSection === 'essays' ? 'active' : ''}">Essays</a>
+          <a href="/engineering" class="${currentSection === 'engineering' ? 'active' : ''}">Engineering</a>
+          <a href="/oss-radar" class="${currentSection === 'oss-radar' ? 'active' : ''}">OSS Radar</a>
+          <a href="/frames" class="${currentSection === 'frames' ? 'active' : ''}">Frames</a>
         </nav>
         <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
         <nav class="sidebar-section">
-          ${posts.map(p => html`<a href="/${p.slug}" class="${currentSlug === p.slug ? 'active' : ''}">${p.title}</a>`)}
+          <a href="/about" class="${currentSlug === 'about' ? 'active' : ''}">About</a>
+          <a href="/stats" class="${currentSlug === 'stats' ? 'active' : ''}">Stats</a>
         </nav>
       </div>
     </aside>

@@ -1,0 +1,11 @@
+nisli-section-num {
+  display: block;
+  margin-bottom: 0.6rem;
+}
+nisli-section-num .section-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm-mono);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent-rust);
+}

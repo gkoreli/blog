@@ -9,6 +9,7 @@ export const meta: PostMeta = {
   title: "Procrastination Is a Craft You've Been Mastering Your Entire Life",
   date: '2026-04-07',
   description: "Every article you've ever read told you procrastination is the enemy. A flaw to fix. A habit to break. I spent 30 years believing that. Turns out, I had it completely backwards.",
+  section: 'essays' as const,
   tags: ['personal-essay', 'adhd', 'procrastination', 'eisenhower-matrix'],
   layout: 'immersive',
   slug: 'procrastination-is-a-craft-youve-been-mastering-your-entire-life',

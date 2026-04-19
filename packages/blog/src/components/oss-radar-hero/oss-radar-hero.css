@@ -1,0 +1,33 @@
+/* Glassmorphism pills shown above the hero card */
+.radar-pills {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: rich-rise 1s 0.3s forwards;
+}
+.radar-pill {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: 0.3rem 0.8rem;
+  background: rgba(180, 200, 220, 0.08);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border: 1px solid rgba(180, 200, 220, 0.12);
+  border-radius: 20px;
+  white-space: nowrap;
+}
+[data-theme="light"] .radar-pill {
+  background: rgba(220, 230, 245, 0.4);
+  border: 1px solid rgba(180, 200, 220, 0.3);
+}
+.radar-pill--accent {
+  color: var(--color-accent-warm);
+  border-color: var(--color-accent-warm);
+}

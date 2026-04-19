@@ -1,0 +1,8 @@
+/* Immersive post heading styles */
+.post-content h2 em { color: var(--color-accent-warm); }
+.post-content h3 {
+  color: var(--color-accent-warm);
+  font-style: italic;
+  font-weight: 450;
+  margin: 3rem 0 1rem;
+}

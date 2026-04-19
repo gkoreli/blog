@@ -6,6 +6,7 @@ export const meta: PostMeta = {
   title: 'Topologies of Thoughts',
   date: '2026-03-31',
   description: "On Kat Zhang's obsidian note network, the GitHub ecosystem around it, and what graph neuroscience says about the shape of minds",
+  section: 'engineering' as const,
   tags: ['research', 'knowledge-graphs', 'neuroscience', 'obsidian', 'embeddings'],
   layout: 'immersive',
   slug: 'topologies-of-thoughts',

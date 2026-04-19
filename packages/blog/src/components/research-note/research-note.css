@@ -1,0 +1,37 @@
+details.research-note {
+  margin: 1.6rem 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+details.research-note[open] {
+  background: color-mix(in srgb, var(--color-surface) 80%, var(--color-bg));
+}
+details.research-note summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: 0.7rem 1rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  user-select: none;
+}
+details.research-note summary::-webkit-details-marker { display: none; }
+details.research-note summary::before {
+  content: '▸';
+  font-size: var(--text-2xs);
+  color: var(--color-accent-rust);
+  display: inline-block;
+  transition: transform 0.15s;
+}
+details.research-note[open] summary::before { transform: rotate(90deg); }
+details.research-note .details-body {
+  padding: 0.25rem 1rem 1rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}

@@ -1,0 +1,18 @@
+nisli-insight {
+  display: block;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent-rust);
+  padding: 1.4rem 1.8rem;
+  margin: 2.5rem 0;
+  border-radius: 0 3px 3px 0;
+}
+nisli-insight .insight-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent-rust);
+  margin-bottom: 0.5rem;
+}
+nisli-insight p { margin: 0; font-size: var(--text-base); color: var(--color-text); }

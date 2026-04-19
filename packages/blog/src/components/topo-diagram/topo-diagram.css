@@ -1,0 +1,40 @@
+nisli-topo-diagram { display: block; }
+nisli-topo-diagram canvas {
+  display: block;
+  width: 100%;
+  height: 140px;
+}
+
+.topo-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin: 2.5rem 0;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.topo-cell {
+  background: var(--color-bg);
+  padding: 0;
+}
+.topo-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.7rem 0.5rem 1rem;
+  color: var(--color-text-muted);
+}
+.topo-label strong {
+  display: block;
+  color: var(--color-accent-warm);
+  font-size: var(--text-xs);
+  margin-bottom: 0.2rem;
+}
+
+@media (max-width: 600px) {
+  .topo-row { grid-template-columns: 1fr; }
+}

@@ -9,6 +9,7 @@ export const meta: PostMeta = {
   title: 'OSS Radar #02: The Toolchain Is the Moat',
   date: '2026-04-12',
   description: 'How the Astral acquisition reveals the real war being fought in AI coding — and why everyone is talking about the wrong thing.',
+  section: 'oss-radar' as const,
   tags: ['oss-radar', 'open-source', 'python', 'ai-tooling', 'rust', 'astral', 'uv'],
   layout: 'immersive',
   slug: 'oss-radar-02-the-toolchain-is-the-moat',

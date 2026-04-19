@@ -17,6 +17,10 @@ export function sitemapXml(posts: PostMeta[]): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${url('/')}
+${url('/essays')}
+${url('/engineering')}
+${url('/oss-radar')}
+${url('/frames')}
 ${postUrls.join('\n')}
 ${url('/about')}
 ${url('/stats')}

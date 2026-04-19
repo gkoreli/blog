@@ -1,0 +1,37 @@
+.prognosis {
+  margin: 2.5rem 0;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+.prognosis-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 1.2rem;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+.prognosis-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  background: var(--color-bg);
+}
+.prognosis-watch  { color: var(--color-accent-warm); border: 1px solid var(--color-accent-warm); }
+.prognosis-signal { color: var(--color-link); border: 1px solid var(--color-link); }
+.prognosis-risk   { color: var(--color-accent-rust); border: 1px solid var(--color-accent-rust); }
+.prognosis-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+.prognosis-body { padding: 1.2rem; }
+.prognosis-body p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
