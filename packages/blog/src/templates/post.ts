@@ -1,7 +1,7 @@
 import { staticHtml as html, raw } from '@nisli/core/static';
 import type { PostMeta, PromptsData } from '../lib/frontmatter.js';
 import { formatDateLong } from '../lib/dates.js';
-import { SectionLabel } from '../components/index.js';
+import { SectionLabel, FramesGallery } from '../components/index.js';
 
 export function postTemplate(meta: PostMeta, htmlContent: string, prompts?: PromptsData | null) {
   const dateStr = formatDateLong(meta.date);
@@ -14,6 +14,7 @@ export function postTemplate(meta: PostMeta, htmlContent: string, prompts?: Prom
       ? html`<div class="tags">${meta.tags.map(t => html`<span class="tag">${t}</span>`)}</div>`
       : ''}
   </header>
+  ${meta.layout === 'frames' ? FramesGallery({ images: meta.images }) : ''}
   <div class="post-content">
     ${raw(htmlContent)}
   </div>

@@ -1,0 +1,53 @@
+/* HomeSectionBlock — homepage section preview */
+
+.home-section-block {
+  /* designer: section block container */
+}
+
+.home-section-block-header {
+  /* designer: block header row */
+}
+
+.home-section-block-title {
+  /* designer: section name as heading */
+}
+
+.home-section-block-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.home-section-block-posts {
+  /* designer: post list within block */
+}
+
+.home-section-post {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.home-section-post-title {
+  /* designer: post title within block */
+}
+
+.home-section-post-meta {
+  /* designer: date + meta line */
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.home-section-post-desc {
+  /* designer: post description within block */
+}
+
+.home-section-block-viewall {
+  /* designer: "View all →" link */
+  text-decoration: none;
+  color: var(--color-link);
+  font-size: var(--text-sm);
+}
+
+.home-section-block-viewall:hover {
+  text-decoration: underline;
+}

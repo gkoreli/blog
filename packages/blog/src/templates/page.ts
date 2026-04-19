@@ -63,7 +63,7 @@ export function pageShell({ title, description, content, currentSlug, currentSec
 </head>
 <body>
   ${preamble ? raw(preamble) : ''}
-  <div class="layout${layoutClass}">
+  <div class="layout${layoutClass}"${currentSection ? ` data-section="${currentSection}"` : ''}>
     <div class="sidebar-wrapper">
     <aside class="sidebar">
       <div class="sidebar-bar">

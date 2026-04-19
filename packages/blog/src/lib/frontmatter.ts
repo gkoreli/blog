@@ -28,7 +28,7 @@ const frontmatterSchema = z.object({
   description: z.string(),
   section: sectionSchema,
   tags: z.array(z.string()).optional().default([]),
-  layout: z.enum(['default', 'immersive']).default('default'),
+  layout: z.enum(['default', 'immersive', 'frames']).default('default'),
   featured: z.boolean().optional().default(false),
   images: z.array(z.object({
     src: z.string(),

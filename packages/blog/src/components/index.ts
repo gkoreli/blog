@@ -3,6 +3,8 @@ export { Closing } from './closing/closing.js';
 export { CompareTable } from './compare-table/compare-table.js';
 export { EisenhowerMatrix } from './eisenhower-matrix/eisenhower-matrix.js';
 export { FeaturedPost } from './featured-post/featured-post.js';
+export { FramesGallery } from './frames-gallery/frames-gallery.js';
+export { HomeSectionBlock } from './home-section-block/home-section-block.js';
 export { Footnotes } from './footnotes/footnotes.js';
 export { HarnessHero } from './harness-hero/harness-hero.js';
 export { Insight } from './insight/insight.js';
