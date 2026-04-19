@@ -9,6 +9,10 @@
   ! Content-Security-Policy
   ! Permissions-Policy
 
+/design-language
+  ! Content-Security-Policy
+  ! Permissions-Policy
+
 /*.txt
   Content-Type: text/plain; charset=utf-8
 
