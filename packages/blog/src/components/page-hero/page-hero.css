@@ -1,0 +1,82 @@
+/* ── Section page hero ── */
+/* Used on all four section archive pages */
+
+.page-hero {
+  padding: 2.2rem 0 0;
+}
+
+.page-hero-accent-rule {
+  height: 2px;
+  border-radius: 1px;
+  margin-bottom: 0.65rem;
+  animation: hero-rise 0.6s both;
+}
+
+.page-hero-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  animation: hero-rise 0.8s 0.1s both;
+}
+
+.page-hero-kicker::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.page-hero-title {
+  font-size: 2.4rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  margin-bottom: 0.8rem;
+  animation: hero-rise 0.8s 0.25s both;
+}
+
+.page-hero-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: 540px;
+  animation: hero-rise 0.8s 0.4s both;
+}
+
+.page-hero-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  animation: hero-rise 0.8s 0.5s both;
+}
+
+.stat-n {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-l {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (max-width: 768px) {
+  .page-hero-title { font-size: 1.9rem; }
+}

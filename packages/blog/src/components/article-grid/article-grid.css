@@ -1,0 +1,77 @@
+/* ── 2-column editorial article grid ── */
+/* Used on homepage for Essays + Engineering sections */
+
+.ag {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  margin-top: 1px;
+}
+
+a.ag-item {
+  background: var(--color-bg);
+  padding: 1.3rem 1.1rem;
+  display: block;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: background 0.15s;
+}
+
+a.ag-item:visited { color: var(--color-text); }
+a.ag-item:hover { background: var(--color-surface); }
+a.ag-item:hover .ag-title { color: var(--color-link); }
+
+.ag-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  display: block;
+  margin-bottom: 0.38rem;
+}
+
+.ag-title {
+  font-size: var(--text-base);
+  line-height: 1.35;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  transition: color 0.15s;
+  letter-spacing: -0.01em;
+}
+
+.ag-meta {
+  font-size: 0.73rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.38rem;
+  flex-wrap: wrap;
+}
+
+/* Prompt count badge — small monospace pill */
+.ag-badge {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  padding: 0.06rem 0.36rem;
+  border-radius: 2px;
+  color: var(--color-text-muted);
+}
+
+.ag-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+@media (max-width: 768px) {
+  .ag { grid-template-columns: 1fr; }
+}

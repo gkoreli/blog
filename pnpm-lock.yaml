@@ -29,6 +29,9 @@ importers:
       '@gkoreli/client-observability':
         specifier: workspace:*
         version: link:../client-observability
+      '@gkoreli/design':
+        specifier: workspace:*
+        version: link:../design
       '@gkoreli/newsletter':
         specifier: workspace:*
         version: link:../newsletter
@@ -96,6 +99,8 @@ importers:
       typescript:
         specifier: ^5.7.0
         version: 5.9.3
+
+  packages/design: {}
 
   packages/newsletter:
     devDependencies:

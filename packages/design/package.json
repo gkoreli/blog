@@ -1,0 +1,7 @@
+{
+  "name": "@gkoreli/design",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Design language for gkoreli.com — tokens, utilities, and reference",
+  "type": "module"
+}

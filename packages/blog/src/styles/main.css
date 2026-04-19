@@ -1,5 +1,5 @@
-@import './tokens.css';
-@import './utils.css';
+@import '@gkoreli/design/tokens.css';
+@import '@gkoreli/design/utils.css';
 @import './layout.css';
 @import './home.css';
 @import './post.css';

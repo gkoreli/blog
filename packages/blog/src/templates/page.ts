@@ -76,25 +76,36 @@ export function pageShell({ title, description, content, currentSlug, currentSec
         </div>
         <nisli-burger-menu></nisli-burger-menu>
       </div>
+
+      <div class="sidebar-nav">
+        <div class="sb-cat">Contents</div>
+        <nav class="sidebar-section">
+          <a href="/" class="${isHome ? 'active' : ''}"><span class="sb-dot"></span>Home</a>
+          <a href="/essays" class="${currentSection === 'essays' ? 'active' : ''}"><span class="sb-dot"></span>Essays</a>
+          <a href="/engineering" class="${currentSection === 'engineering' ? 'active' : ''}"><span class="sb-dot"></span>Engineering</a>
+          <a href="/oss-radar" class="${currentSection === 'oss-radar' ? 'active' : ''}"><span class="sb-dot"></span>OSS Radar</a>
+          <a href="/frames" class="${currentSection === 'frames' ? 'active' : ''}"><span class="sb-dot"></span>Frames</a>
+          <a href="/about" class="${currentSlug === 'about' ? 'active' : ''}"><span class="sb-dot"></span>About</a>
+          <a href="/stats" class="${currentSlug === 'stats' ? 'active' : ''}"><span class="sb-dot"></span>Stats</a>
+        </nav>
+
+        <div class="sidebar-section-sep"></div>
+
+        <div class="sb-cat">Studio</div>
+        <div class="sb-proj">
+          <a href="https://github.com/gkoreli/backlog-mcp" class="sb-proj-link" target="_blank" rel="noopener">backlog-mcp<span class="sb-proj-arrow">↗</span></a>
+          <a href="https://www.npmjs.com/package/@nisli/core" class="sb-proj-link" target="_blank" rel="noopener">@nisli/core<span class="sb-proj-arrow">↗</span></a>
+          <a href="https://github.com/gkoreli/blog" class="sb-proj-link" target="_blank" rel="noopener">gkoreli.com<span class="sb-proj-arrow">↗</span></a>
+        </div>
+      </div>
+
+      <div class="sidebar-spacer"></div>
+
       <div class="sidebar-social">
         <a href="https://github.com/gkoreli" title="GitHub" target="_blank" rel="noopener"><img src="/icons/github.svg" width="18" height="18" alt="GitHub"></a>
         <a href="https://x.com/GogaKoreli" title="X" target="_blank" rel="noopener"><img src="/icons/x.svg" width="18" height="18" alt="X"></a>
         <a href="https://www.linkedin.com/in/goga-koreli/" title="LinkedIn" target="_blank" rel="noopener"><img src="/icons/linkedin.svg" width="18" height="18" alt="LinkedIn"></a>
         <nisli-theme-toggle></nisli-theme-toggle>
-      </div>
-      <div class="sidebar-nav">
-        <nav class="sidebar-section">
-          <a href="/" class="${isHome ? 'active' : ''}">Home</a>
-          <a href="/essays" class="${currentSection === 'essays' ? 'active' : ''}">Essays</a>
-          <a href="/engineering" class="${currentSection === 'engineering' ? 'active' : ''}">Engineering</a>
-          <a href="/oss-radar" class="${currentSection === 'oss-radar' ? 'active' : ''}">OSS Radar</a>
-          <a href="/frames" class="${currentSection === 'frames' ? 'active' : ''}">Frames</a>
-        </nav>
-        <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
-        <nav class="sidebar-section">
-          <a href="/about" class="${currentSlug === 'about' ? 'active' : ''}">About</a>
-          <a href="/stats" class="${currentSlug === 'stats' ? 'active' : ''}">Stats</a>
-        </nav>
       </div>
     </aside>
     </div>

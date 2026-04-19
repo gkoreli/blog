@@ -21,6 +21,11 @@ export function parseLocalDate(dateStr: string): Date {
   return new Date(dateStr + 'T00:00:00');
 }
 
+/** Format a YYYY-MM-DD string as "Apr 17, 2026" in local time. */
+export function formatDateShort(dateStr: string): string {
+  return parseLocalDate(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
 /** Format a YYYY-MM-DD string as "March 5, 2026" in local time. */
 export function formatDateLong(dateStr: string): string {
   return parseLocalDate(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });

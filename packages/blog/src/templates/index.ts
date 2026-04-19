@@ -1,42 +1,63 @@
 import { staticHtml as html } from '@nisli/core/static';
 import type { PostMeta } from '../lib/frontmatter.js';
 import { SECTION_LABELS } from '../lib/frontmatter.js';
-import { formatDateLong } from '../lib/dates.js';
-import { HomeSectionBlock } from '../components/index.js';
+import { formatDateShort } from '../lib/dates.js';
+import {
+  Masthead,
+  SectionHeader,
+  ArticleGrid,
+  OSSRadarCard,
+} from '../components/index.js';
+
+function FeaturedCard({ post }: { post: PostMeta }) {
+  return html`<a href="/${post.slug}" class="feat">
+  <div class="feat-wash"></div>
+  <div class="feat-inner">
+    <div class="feat-meta">
+      <span class="feat-badge">Latest</span>
+      <span class="feat-sec">${SECTION_LABELS[post.section]}</span>
+      <span class="feat-date">${formatDateShort(post.date)}</span>
+    </div>
+    <h2 class="feat-title">${post.title}</h2>
+    <p class="feat-desc">${post.description}</p>
+    <span class="feat-cta">Read article <span class="feat-arr">→</span></span>
+  </div>
+</a>`;
+}
+
+function FramesPlaceholder() {
+  const slots = ['walk · city', 'light · shadow', 'detail · texture', 'moment · still'];
+  return html`<div class="frames-grid">
+  ${slots.map(l => html`<div class="frame-slot">
+    <div class="frame-slot-bg"></div>
+    <span class="frame-slot-txt">${l}</span>
+  </div>`)}
+</div>
+<p class="frames-caption"><span class="frames-dot"></span>Photo journals — first frame coming soon</p>`;
+}
 
 export function indexTemplate(posts: PostMeta[]) {
   const featured = posts.find(p => p.featured) ?? posts[0];
-  const rest = (section: Parameters<typeof HomeSectionBlock>[0]['section']) =>
-    posts.filter(p => p.section === section && p.slug !== featured?.slug);
+  const essays = posts.filter(p => p.section === 'essays' && p.slug !== featured?.slug);
+  const engineering = posts.filter(p => p.section === 'engineering' && p.slug !== featured?.slug);
+  const ossRadar = posts.filter(p => p.section === 'oss-radar' && p.slug !== featured?.slug);
 
   return html`<div class="home">
-  <section class="masthead">
-    <h1 class="masthead-name">Goga Koreli</h1>
-    <p class="masthead-statement">A personal publication — essays, engineering notes, <a href="/oss-radar">OSS Radar</a>, and <a href="/frames">Frames</a>. A studio for software, attention, images, and ideas.</p>
-    <p class="masthead-projects">
-      <a href="https://github.com/gkoreli/backlog-mcp" target="_blank" rel="noopener">backlog-mcp</a> ·
-      <a href="https://www.npmjs.com/package/@nisli/core" target="_blank" rel="noopener">@nisli/core</a> ·
-      <a href="https://github.com/gkoreli/blog" target="_blank" rel="noopener">gkoreli.com</a>
-    </p>
-  </section>
+  ${Masthead()}
 
-  ${featured ? html`<section class="home-featured">
-    <div class="home-featured-kicker">Featured</div>
-    <a href="/${featured.slug}" class="home-featured-post">
-      <h2 class="home-featured-title">${featured.title}</h2>
-      <p class="home-featured-desc">${featured.description}</p>
-      <div class="home-featured-meta">
-        <span class="section-label section-label--${featured.section}">${SECTION_LABELS[featured.section]}</span>
-        <time datetime="${featured.date}">${formatDateLong(featured.date)}</time>
-      </div>
-    </a>
-  </section>` : ''}
+  ${SectionHeader({ label: 'Featured' })}
+  ${featured ? FeaturedCard({ post: featured }) : ''}
 
-  <div class="home-sections">
-    ${HomeSectionBlock({ section: 'essays', posts: rest('essays') })}
-    ${HomeSectionBlock({ section: 'engineering', posts: rest('engineering') })}
-    ${HomeSectionBlock({ section: 'oss-radar', posts: rest('oss-radar') })}
-    ${HomeSectionBlock({ section: 'frames', posts: rest('frames') })}
-  </div>
+  ${essays.length > 0 ? html`${SectionHeader({ label: 'Essays', href: '/essays', dotColor: 'var(--section-essays)' })}
+  ${ArticleGrid({ posts: essays.slice(0, 4) })}` : ''}
+
+  ${engineering.length > 0 ? html`${SectionHeader({ label: 'Engineering', href: '/engineering', dotColor: 'var(--section-engineering)' })}
+  ${ArticleGrid({ posts: engineering.slice(0, 4) })}` : ''}
+
+  ${ossRadar.length > 0 ? html`${SectionHeader({ label: 'OSS Radar', href: '/oss-radar', dotColor: 'var(--section-oss-radar)' })}
+  ${ossRadar.slice(0, 1).map(p => OSSRadarCard({ post: p }))}` : ''}
+
+  ${SectionHeader({ label: 'Frames', href: '/frames', dotColor: 'var(--section-frames)' })}
+  ${FramesPlaceholder()}
 </div>`;
 }

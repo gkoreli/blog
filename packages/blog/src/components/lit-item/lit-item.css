@@ -1,0 +1,63 @@
+/* ── Literary list item ── */
+/* Used in section archive pages: spacious, text-first, italic excerpt */
+
+a.lit {
+  display: block;
+  text-decoration: none;
+  color: var(--color-text);
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+a.lit:first-of-type { border-top: 1px solid var(--color-border); }
+a.lit:visited { color: var(--color-text); }
+a.lit:hover .lit-title { color: var(--color-link); }
+
+.lit-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.lit-title {
+  font-size: 1.32rem;
+  line-height: 1.3;
+  margin-bottom: 0.55rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  transition: color 0.2s;
+}
+
+.lit-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 0.55rem;
+}
+
+.lit-tags {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.lit-tag {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  opacity: 0.55;
+}
+
+.lit-tag::before {
+  content: '#';
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
