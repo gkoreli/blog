@@ -199,6 +199,7 @@ export function designLanguageTemplate() {
   ${GradSep()}
 
   ${Chapter({ num: '08', title: 'Philosophy' })}
+  <p class="dl-body-note">Six principles that guide every design decision in this publication. The north star: <em>"The site should feel like a well-organized publication, even when each piece feels like a one-off artwork."</em></p>
   <div class="dl-principles">
     ${PRINCIPLES.map(p => html`<div class="dl-principle">
       <div class="dl-principle-num">${p.num}</div>
