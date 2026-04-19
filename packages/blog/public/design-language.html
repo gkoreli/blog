@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Language — gkoreli.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --fn:'Lora',Georgia,serif;--mono:'SF Mono','Fira Code','Fira Mono',monospace;
+  --bg:#faf8f5;--sf:#f0ece6;--sf2:#e8e4dd;--bd:#ddd8cf;
+  --tx:#2d2a24;--mu:#7a7568;--lk:#1a6b4e;
+  --wm:#a88a2a;--rs:#b04a24;--bl:#4a7a94;
+  --hdr:#2d2a24;
+  --grad:linear-gradient(135deg,#1a6b4e 0%,#6ec9a8 60%,#93c5fd 100%);
+  --gls-bg:color-mix(in srgb,var(--bg) 78%,transparent);
+  --gls-bd:color-mix(in srgb,var(--lk) 18%,var(--bd));
+  --gls-sh:inset 0 1px color-mix(in srgb,var(--bg) 78%,transparent),0 4px 20px -4px color-mix(in srgb,var(--lk) 12%,transparent);
+}
+[data-theme=dark]{
+  --bg:#1a1a1a;--sf:#242424;--sf2:#2c2c2c;--bd:#3a3a3a;
+  --tx:#e0ddd5;--mu:#9a9589;--lk:#6ec9a8;--wm:#e8c87a;--rs:#c05a2e;--bl:#5b8fa8;--hdr:#111;
+  --gls-bg:color-mix(in srgb,var(--sf) 72%,transparent);
+  --gls-bd:color-mix(in srgb,var(--lk) 24%,var(--bd));
+  --gls-sh:inset 0 1px color-mix(in srgb,#faf8f5 8%,transparent),0 4px 24px -6px color-mix(in srgb,#101010 54%,transparent);
+}
+html{font-family:var(--fn);font-size:18px;line-height:1.7;color:var(--tx);background:var(--bg);-webkit-font-smoothing:antialiased}
+body{min-height:100vh;transition:background .25s,color .25s}
+a{color:var(--lk)}button{background:none;border:none;cursor:pointer;font:inherit}
+svg,canvas{display:block}
+
+/* ── Layout ── */
+.page{max-width:860px;margin:0 auto;padding:3rem 2rem 6rem}
+
+/* ── Topbar ── */
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:4rem;padding-bottom:1rem;border-bottom:1px solid var(--bd)}
+.topbar-back{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);text-decoration:none;display:flex;align-items:center;gap:.4rem;transition:color .15s}
+.topbar-back:hover{color:var(--lk)}
+.topbar-right{display:flex;align-items:center;gap:.75rem}
+.theme-btn{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);padding:.25rem .6rem;border:1px solid var(--bd);border-radius:.25rem;transition:all .15s}
+.theme-btn:hover{border-color:var(--lk);color:var(--lk)}
+
+/* ── Chapter headings ── */
+.chapter{margin:4rem 0 2rem}
+.chapter-num{font-family:var(--mono);font-size:.54rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mu);margin-bottom:.5rem;display:flex;align-items:center;gap:.7rem}
+.chapter-num::after{content:'';flex:1;height:1px;background:var(--bd)}
+.chapter-title{font-size:1.8rem;font-weight:500;letter-spacing:-.02em;line-height:1.15}
+
+/* ── Pull rule ── */
+.rule-grad{height:2px;background:var(--grad);margin-bottom:2.5rem;border-radius:1px}
+
+/* ── Color palette ── */
+.palette{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd)}
+.swatch{background:var(--bg);padding:.85rem .75rem 1rem}
+.swatch-chip{height:44px;border-radius:4px;margin-bottom:.6rem}
+.swatch-name{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:var(--tx);font-weight:600;margin-bottom:.15rem}
+.swatch-token{font-family:var(--mono);font-size:.54rem;color:var(--mu);margin-bottom:.1rem}
+.swatch-hex{font-family:var(--mono);font-size:.54rem;color:var(--mu)}
+.swatch-role{font-size:.7rem;color:var(--mu);margin-top:.3rem;font-style:italic;line-height:1.3}
+
+/* ── Type samples ── */
+.type-row{padding:1.5rem 0;border-bottom:1px solid var(--bd)}
+.type-row:first-child{border-top:1px solid var(--bd)}
+.type-meta{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:.5rem}
+.type-sample-sm{font-size:.85rem}
+.type-sample-base{font-size:1rem}
+.type-sample-lg{font-size:1.35rem}
+.type-sample-xl{font-size:1.8rem;line-height:1.2}
+.type-sample-2xl{font-size:2.5rem;font-weight:700;letter-spacing:-.03em;line-height:1.05}
+.type-sample-mono{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em}
+
+/* ── Glass demo ── */
+.glass-demo{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd);border:1px solid var(--bd)}
+.glass-demo-cell{padding:1.5rem;background:var(--bg)}
+.glass-panel-demo{border-radius:.75rem;padding:1.25rem;background:var(--gls-bg);border:1px solid var(--gls-bd);box-shadow:var(--gls-sh);backdrop-filter:blur(14px) saturate(1.35);-webkit-backdrop-filter:blur(14px) saturate(1.35)}
+.glass-panel-demo h3{font-size:.9rem;margin-bottom:.35rem}
+.glass-panel-demo p{font-size:.8rem;color:var(--mu);line-height:1.6}
+.surface-demo{border:1px solid var(--bd);padding:1.25rem;background:var(--sf)}
+.surface-demo h3{font-size:.9rem;margin-bottom:.35rem}
+.surface-demo p{font-size:.8rem;color:var(--mu);line-height:1.6}
+
+/* ── Gradient strip ── */
+.grad-strip{height:48px;background:var(--grad);border-radius:4px;margin-bottom:.85rem}
+.grad-stops{display:flex;justify-content:space-between}
+.grad-stop{text-align:center}
+.grad-stop-dot{width:10px;height:10px;border-radius:50%;margin:0 auto .3rem}
+.grad-stop-label{font-family:var(--mono);font-size:.54rem;color:var(--mu);letter-spacing:.06em}
+.grad-usage{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);margin-top:1.25rem}
+.grad-use{background:var(--bg);padding:.85rem .75rem;font-family:var(--mono);font-size:.58rem;color:var(--mu);letter-spacing:.06em;line-height:1.6}
+.grad-use strong{display:block;color:var(--tx);margin-bottom:.2rem}
+
+/* ── Canvas demos ── */
+.canvas-demos{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd);border:1px solid var(--bd)}
+.canvas-demo-cell{background:var(--bg)}
+.canvas-demo-header{padding:.65rem .9rem;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center}
+.canvas-demo-label{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mu)}
+.canvas-demo-page{font-family:var(--mono);font-size:.54rem;color:var(--mu);opacity:.6}
+.canvas-wrap{position:relative;height:160px;overflow:hidden}
+.canvas-desc{padding:.75rem .9rem;font-size:.8rem;color:var(--mu);line-height:1.6;border-top:1px solid var(--bd)}
+
+/* ── Motifs ── */
+.motifs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd)}
+.motif-cell{background:var(--bg);padding:1.25rem 1rem}
+.motif-display{min-height:60px;display:flex;align-items:center;justify-content:center;margin-bottom:.85rem}
+.motif-name{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tx);margin-bottom:.25rem;font-weight:600}
+.motif-desc{font-size:.78rem;color:var(--mu);line-height:1.55}
+
+/* ── Section identities ── */
+.section-ids{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd)}
+.sid{background:var(--bg);padding:1.25rem 1rem;position:relative;overflow:hidden}
+.sid-rule{height:2px;margin-bottom:.85rem;border-radius:1px}
+.sid-label{font-family:var(--mono);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4rem;font-weight:600}
+.sid-name{font-size:1.1rem;font-weight:500;margin-bottom:.4rem;letter-spacing:-.015em}
+.sid-canvas{font-family:var(--mono);font-size:.58rem;color:var(--mu);margin-bottom:.3rem}
+.sid-desc{font-size:.78rem;color:var(--mu);line-height:1.55}
+.sid-tags{display:flex;gap:.4rem;margin-top:.5rem;flex-wrap:wrap}
+.sid-tag{font-family:var(--mono);font-size:.54rem;padding:.1rem .4rem;border-radius:2px;border:1px solid var(--bd)}
+
+/* ── Philosophy ── */
+.principles{display:flex;flex-direction:column;gap:1px;background:var(--bd);border:1px solid var(--bd)}
+.principle{background:var(--bg);padding:1.5rem}
+.principle-num{font-family:var(--mono);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);margin-bottom:.5rem}
+.principle-title{font-size:1.05rem;font-weight:600;margin-bottom:.4rem;letter-spacing:-.01em}
+.principle-body{font-size:.88rem;color:var(--mu);line-height:1.7}
+.principle-body em{color:var(--tx);font-style:normal;font-weight:500}
+
+/* ── Separator ── */
+.sep{display:flex;align-items:center;gap:8px;margin:3rem 0}
+.sep::before{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(26,107,78,.3))}
+.sep::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(26,107,78,.3),transparent)}
+
+/* ── Animations ── */
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+@media(max-width:600px){
+  .palette{grid-template-columns:repeat(2,1fr)}
+  .glass-demo,.canvas-demos,.section-ids{grid-template-columns:1fr}
+  .motifs{grid-template-columns:repeat(2,1fr)}
+  .grad-usage{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const {useState,useEffect,useRef}=React;
+
+/* ─── Neural canvas (shared with publication) ──────────── */
+function h2r(hex,a){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(String(hex).trim());if(!m)return`rgba(150,140,130,${a})`;return`rgba(${parseInt(m[1],16)},${parseInt(m[2],16)},${parseInt(m[3],16)},${a})`;}
+function getCols(){const s=getComputedStyle(document.documentElement),g=v=>s.getPropertyValue(v).trim();return{bg:g('--bg'),mu:g('--mu'),wm:g('--wm'),rs:g('--rs'),bl:g('--bl')};}
+function buildNet(w,h){const ns=[],sp=Math.min(w,h)*0.12;for(let i=0;i<35;i++){const x=w*.08+Math.random()*w*.84,y=h*.1+Math.random()*h*.8;let ok=true;for(const n of ns){if(Math.hypot(n.x-x,n.y-y)<sp*.7){ok=false;break;}}if(ok)ns.push({x,y,r:2+Math.random()*2.5,charge:Math.random()*.3,firing:false,refractory:0,connections:[]});}for(let i=0;i<ns.length;i++)for(let j=i+1;j<ns.length;j++)if(Math.hypot(ns[i].x-ns[j].x,ns[i].y-ns[j].y)<sp*1.6&&Math.random()<.5){ns[i].connections.push(j);ns[j].connections.push(i);}return ns;}
+
+function MiniCanvas({dark,mode='threshold'}){
+  const ref=useRef(null);
+  useEffect(()=>{
+    const cv=ref.current;if(!cv)return;
+    const ctx=cv.getContext('2d');
+    let raf,t=0,ct=0,sigs=[],ns=[];
+    const setup=()=>{cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;ns=buildNet(cv.width,cv.height);sigs=[];};
+    setup();
+    const ro=new ResizeObserver(setup);ro.observe(cv.parentElement);
+    const fire=(idx,cas)=>{const n=ns[idx];if(!n||n.refractory>0)return;n.firing=true;n.charge=1;n.refractory=cas?40:80;for(const ci of n.connections)sigs.push({from:idx,to:ci,progress:0,strength:cas?.95:.2+Math.random()*.3,dopamine:cas});};
+    const draw=()=>{
+      t++;ct++;
+      const c=getCols(),W=cv.width,H=cv.height;
+      ctx.fillStyle=h2r(c.bg,.15);ctx.fillRect(0,0,W,H);
+      if(mode==='threshold'){
+        if(t%20===0&&ns.length){const i=Math.floor(Math.random()*ns.length),n=ns[i];if(n&&n.refractory<=0){n.charge=Math.min(n.charge+.3+Math.random()*.3,1);if(n.charge>=.9)fire(i,false);}}
+        if(ct>=280){ct=0;fire(Math.floor(Math.random()*ns.length),true);}
+        for(let i=0;i<ns.length;i++){const a=ns[i];for(const j of a.connections){if(j<=i)continue;const b=ns[j];ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=h2r(c.mu,.04+Math.max(a.charge,b.charge)*.08);ctx.lineWidth=.5;ctx.stroke();}}
+        const next=[];for(const s of sigs){s.progress+=.028;if(!s.dopamine)s.strength*=.985;const a=ns[s.from],b=ns[s.to];if(!a||!b)continue;if(s.progress>=1){b.charge=Math.min(b.charge+s.strength*.6,1);if(b.charge>=.85&&s.dopamine&&b.refractory<=0)fire(s.to,true);}else{const px=a.x+(b.x-a.x)*s.progress,py=a.y+(b.y-a.y)*s.progress;ctx.beginPath();ctx.arc(px,py,s.dopamine?2.5:1.2,0,Math.PI*2);ctx.fillStyle=h2r(s.dopamine?c.wm:c.mu,s.strength*.8);ctx.fill();next.push(s);}}sigs=next;
+        for(const n of ns){if(n.refractory>0){n.refractory--;n.firing=n.refractory>30;}n.charge*=.992;ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fillStyle=h2r(n.firing?c.wm:c.mu,.15+n.charge*.6);ctx.fill();if(n.firing){ctx.beginPath();ctx.arc(n.x,n.y,n.r*.5,0,Math.PI*2);ctx.fillStyle=h2r(c.wm,.8);ctx.fill();}}
+      } else {
+        const wX=(t%280)/280,wW=.25;
+        for(let i=0;i<ns.length;i++){const a=ns[i];for(const j of a.connections){if(j<=i)continue;const b=ns[j];const w=Math.max(0,1-Math.abs(((a.x+b.x)/2)/W-wX)/wW);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=h2r(w>.3?c.bl:c.mu,.03+w*.15);ctx.lineWidth=.5+w;ctx.stroke();}}
+        for(const n of ns){const w=Math.max(0,1-Math.abs(n.x/W-wX)/wW),p=w*w;ctx.beginPath();ctx.arc(n.x,n.y,n.r+p*2,0,Math.PI*2);ctx.fillStyle=h2r(p>.5?c.wm:p>.2?c.bl:c.mu,.15+p*.65);ctx.fill();}
+      }
+      raf=requestAnimationFrame(draw);
+    };
+    draw();
+    return()=>{cancelAnimationFrame(raf);ro.disconnect();};
+  },[dark,mode]);
+  return<canvas ref={ref} style={{position:'absolute',inset:0,width:'100%',height:'100%'}}/>;
+}
+
+/* ─── Logo + Sparkle ─────────────────────────────────────── */
+const Logo=()=>(
+  <svg width="32" height="32" viewBox="0 0 40 40">
+    <defs><linearGradient id="dlg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#1a6b4e"/><stop offset="60%" stopColor="#6ec9a8"/><stop offset="100%" stopColor="#93c5fd"/></linearGradient><mask id="dlm"><rect width="40" height="40" rx="9" fill="white"/><g fill="black" transform="translate(3.7,4.5)"><path d="M8.57 31Q6.94 31 5.60 30.48Q4.26 29.96 3.28 28.97Q2.30 27.98 1.74 26.55Q1.18 25.12 1.18 23.33Q1.18 21.06 2.00 19.49Q2.83 17.92 4.28 16.99Q5.74 16.05 7.64 15.77Q9.18 15.49 9.84 14.90Q10.50 14.31 10.50 13.30Q10.50 12.46 10.00 11.90Q9.49 11.34 8.57 11.34Q7.64 11.34 7.15 11.88Q6.66 12.41 6.66 13.30Q6.66 13.50 6.71 13.71Q6.75 13.92 6.78 14.14L2.83 14.14Q2.74 13.78 2.70 13.44Q2.66 13.11 2.66 12.80Q2.66 11.46 3.39 10.48Q4.12 9.50 5.45 8.96Q6.78 8.43 8.57 8.43Q10.44 8.43 11.77 9.03Q13.10 9.64 13.82 10.66Q14.53 11.68 14.53 12.91Q14.53 14.09 13.93 15.08Q13.33 16.08 11.82 16.61L11.82 16.69Q13.27 17.22 14.20 18.19Q15.12 19.16 15.57 20.46Q16.02 21.76 16.02 23.33Q16.02 25.12 15.50 26.55Q14.98 27.98 14.01 28.97Q13.05 29.96 11.68 30.48Q10.30 31 8.57 31ZM8.62 27.78Q9.72 27.78 10.40 27.23Q11.09 26.69 11.40 25.68Q11.70 24.67 11.70 23.33Q11.70 21.96 11.38 20.98Q11.06 20.00 10.39 19.46Q9.72 18.93 8.60 18.93Q6.97 18.93 6.23 20.11Q5.49 21.28 5.49 23.33Q5.49 24.67 5.81 25.68Q6.13 26.69 6.82 27.23Q7.50 27.78 8.62 27.78ZM25.34 31Q23.13 31 21.53 30.17Q19.94 29.35 19.08 27.96Q18.23 26.58 18.23 24.87Q18.23 24.11 18.35 23.47Q18.48 22.82 18.68 22.32L22.74 22.32Q22.62 22.77 22.54 23.31Q22.46 23.86 22.46 24.36Q22.46 25.20 22.76 25.99Q23.07 26.77 23.72 27.28Q24.36 27.78 25.34 27.78Q26.40 27.78 27.05 27.26Q27.69 26.74 27.99 25.88Q28.28 25.01 28.28 23.94Q28.28 22.74 27.90 21.89Q27.52 21.03 26.82 20.56Q26.12 20.08 25.12 20.08L24.00 20.08L24.00 16.89L25.12 16.89Q26.12 16.89 26.70 16.50Q27.27 16.10 27.54 15.49Q27.80 14.87 27.80 14.23Q27.80 13.50 27.52 12.93Q27.24 12.35 26.68 12.00Q26.12 11.65 25.34 11.65L25.34 8.43Q27.41 8.43 28.91 9.12Q30.41 9.80 31.22 10.99Q32.03 12.18 32.03 13.64Q32.03 15.54 30.95 16.73Q29.88 17.92 28.08 18.34L28.08 18.43Q29.29 18.65 30.31 19.34Q31.33 20.02 31.96 21.23Q32.59 22.43 32.59 24.20Q32.59 26.24 31.71 27.78Q30.83 29.32 29.20 30.16Q27.58 31 25.34 31Z"/></g></mask></defs>
+    <rect width="40" height="40" rx="9" fill="url(#dlg)" mask="url(#dlm)"/>
+  </svg>
+);
+const Sparkle=({size=14})=>(
+  <svg width={size} height={size} viewBox="0 0 16 16">
+    <defs><linearGradient id="dlspg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#1a6b4e"/><stop offset="60%" stopColor="#6ec9a8"/><stop offset="100%" stopColor="#93c5fd"/></linearGradient></defs>
+    <path d="M7.53 1.282a.5.5 0 01.94 0l.478 1.306a7.492 7.492 0 004.464 4.464l1.305.478a.5.5 0 010 .94l-1.305.478a7.492 7.492 0 00-4.464 4.464l-.478 1.305a.5.5 0 01-.94 0l-.478-1.305a7.492 7.492 0 00-4.464-4.464L1.282 8.47a.5.5 0 010-.94l1.306-.478a7.492 7.492 0 004.464-4.464l.478-1.306z" fill="url(#dlspg)"/>
+  </svg>
+);
+const GradSep=()=><div className="sep"><Sparkle size={11}/></div>;
+
+function App(){
+  const [dark,setDark]=useState(false);
+  useEffect(()=>{document.documentElement.setAttribute('data-theme',dark?'dark':'');}, [dark]);
+
+  const palette=[
+    {name:'Paper',token:'--bg',hex:'#faf8f5',darkHex:'#1a1a1a',chip:'#faf8f5',role:'Page background — warm, not white'},
+    {name:'Ink',token:'--tx',hex:'#2d2a24',darkHex:'#e0ddd5',chip:'#2d2a24',role:'Primary text — warm near-black'},
+    {name:'Deep Green',token:'--lk',hex:'#1a6b4e',darkHex:'#6ec9a8',chip:'#1a6b4e',role:'Links, CTAs, brand primary'},
+    {name:'Warm Gold',token:'--wm',hex:'#a88a2a',darkHex:'#e8c87a',chip:'#a88a2a',role:'Essays — attention, warmth'},
+    {name:'Rust',token:'--rs',hex:'#b04a24',darkHex:'#c05a2e',chip:'#b04a24',role:'OSS Radar — urgency, signal'},
+    {name:'Blueprint',token:'--bl',hex:'#4a7a94',darkHex:'#5b8fa8',chip:'#4a7a94',role:'Engineering — clarity, depth'},
+    {name:'Muted',token:'--mu',hex:'#7a7568',darkHex:'#9a9589',chip:'#7a7568',role:'Secondary text, metadata'},
+  ];
+
+  const sections=[
+    {name:'Essays',accent:'var(--wm)',accentHex:'#a88a2a',canvas:'None — quiet',mood:'Literary · spacious · warm gold',tags:['personal','philosophy','attention'],desc:'More text-led. Quieter. More spacious. The reader should feel they entered a library.'},
+    {name:'Engineering',accent:'var(--bl)',accentHex:'#4a7a94',canvas:'Flow mode',mood:'Structured · flow wave · blueprint blue',tags:['agents','builds','logs'],desc:'More structured. Code-tolerant. The canvas sweeps left-to-right — systematic, linear.'},
+    {name:'OSS Radar',accent:'var(--rs)',accentHex:'#b04a24',canvas:'Threshold mode',mood:'Serialized · cascades · rust signal',tags:['oss','radar','curated'],desc:'Publication-like. Issue numbers. The canvas fires dopamine cascades — signal, urgency.'},
+    {name:'Frames',accent:'var(--lk)',accentHex:'#1a6b4e',canvas:'None — image leads',mood:'Cinematic · whitespace · green growth',tags:['photography','journal','frames'],desc:'Image-first. Captions optional. More cinematic whitespace. The photo speaks first.'},
+  ];
+
+  const principles=[
+    {num:'I',title:'Stable shell. Expressive interior.',body:'The publication shell — sidebar, nav, metadata, footer — stays calm and legible at all times. The body of each post is allowed to break pattern. This is where the artistic freedom lives. <em>The museum building gives orientation. The rooms can vary.</em>'},
+    {num:'II',title:'DRY for navigation. Not for art.',body:'Reuse the navigation system. Reuse the token system. Reuse the component language. But never apply DRY dogma to creative expression. <em>Every post can be its own art object. Every section can have its own atmosphere.</em>'},
+    {num:'III',title:'One gradient. Many appearances.',body:'The brand gradient (Deep Green → Mint → Sky) appears only for identity marks: logo, sparkle separator, #tags. It is the chromatic signature of the publication. <em>Use it sparingly so it lands with weight.</em>'},
+    {num:'IV',title:'Section color = section mood.',body:'Each of the four sections has one accent color. Essays: Warm Gold. Engineering: Blueprint Blue. OSS Radar: Rust. Frames: Deep Green. These are not arbitrary — <em>they are emotional tones for different rooms of the museum.</em>'},
+    {num:'V',title:'One canvas mode per context.',body:'The neural canvas is the publication\'s life force. Each context gets its own mode — never repeated across the same page type. Threshold for the homepage (alive, unpredictable). Flow for Engineering (linear, systematic). More modes can be invented. <em>Each post can invent its own.</em>'},
+    {num:'VI',title:'Lora for thought. Mono for administration.',body:'Lora, Georgia serif carries all editorial voice: headings, body, pull quotes, Dispatch CTA. Monospace carries all metadata: dates, labels, tags, kickers, issue numbers. <em>Two voices, never more. The contrast itself is expressive.</em>'},
+  ];
+
+  return(
+    <div className="page">
+      {/* Top bar */}
+      <div className="topbar">
+        <a href="gkoreli.com v3.html" className="topbar-back">← Publication</a>
+        <div className="topbar-right">
+          <span style={{fontFamily:'var(--mono)',fontSize:'.54rem',letterSpacing:'.1em',color:'var(--mu)'}}>Design Language</span>
+          <button className="theme-btn" onClick={()=>setDark(d=>!d)}>{dark?'Light':'Dark'}</button>
+        </div>
+      </div>
+
+      {/* Header */}
+      <div style={{marginBottom:'3rem',animation:'rise .8s both'}}>
+        <div style={{display:'flex',alignItems:'center',gap:'1rem',marginBottom:'1.5rem'}}>
+          <Logo/>
+          <div>
+            <div style={{fontFamily:'var(--mono)',fontSize:'.58rem',letterSpacing:'.14em',textTransform:'uppercase',color:'var(--mu)',marginBottom:'.2rem'}}>gkoreli.com</div>
+            <h1 style={{fontSize:'1.6rem',fontWeight:700,letterSpacing:'-.025em',lineHeight:1.1}}>Design Language</h1>
+          </div>
+        </div>
+        <div className="rule-grad"/>
+        <p style={{fontSize:'1rem',color:'var(--mu)',lineHeight:1.75,maxWidth:580,fontStyle:'italic'}}>
+          The substrate of a personal publication. One author, many forms, one sensibility. A web museum collective wearing a publication's clothes.
+        </p>
+      </div>
+
+      {/* 1 — Palette */}
+      <div className="chapter">
+        <div className="chapter-num"><Sparkle size={10}/>01</div>
+        <h2 className="chapter-title">Palette</h2>
+      </div>
+      <p style={{fontSize:'.9rem',color:'var(--mu)',marginBottom:'1.25rem',lineHeight:1.7}}>A warm cream base — not white, not gray. Six semantic accent colors. All tokens map to dark equivalents. The palette is restrained so the <strong>brand gradient carries weight</strong> when it appears.</p>
+      <div className="palette">
+        {palette.map(sw=>(
+          <div key={sw.name} className="swatch">
+            <div className="swatch-chip" style={{background:dark?sw.darkHex:sw.hex,border:sw.name==='Paper'?'1px solid var(--bd)':'none'}}/>
+            <div className="swatch-name">{sw.name}</div>
+            <div className="swatch-token">{sw.token}</div>
+            <div className="swatch-hex">{dark?sw.darkHex:sw.hex}</div>
+            <div className="swatch-role">{sw.role}</div>
+          </div>
+        ))}
+      </div>
+
+      <GradSep/>
+
+      {/* 2 — Typography */}
+      <div className="chapter">
+        <div className="chapter-num"><Sparkle size={10}/>02</div>
+        <h2 className="chapter-title">Typography</h2>
+      </div>
+      <p style={{fontSize:'.9rem',color:'var(--mu)',marginBottom:'1.25rem',lineHeight:1.7}}>Two typefaces only. <strong>Lora</strong> carries all editorial voice. <strong>Monospace</strong> carries all administrative metadata. The contrast between them is itself expressive.</p>
+      <div>
+        {[
+          {meta:'Lora 700 · Display',sample:<span className="type-sample-2xl">Goga Koreli</span>},
+          {meta:'Lora 500 · Section title',sample:<span className="type-sample-xl">The Toolchain Is the Moat</span>},
+          {meta:'Lora 500 · Article heading',sample:<span className="type-sample-lg">Topologies of Thoughts</span>},
+          {meta:'Lora 400 italic · Pull quote / Dispatch',sample:<span className="type-sample-lg" style={{fontStyle:'italic'}}>A note when there is signal.</span>},
+          {meta:'Lora 400 · Body',sample:<span className="type-sample-base">There's a lot of hype and ambiguity out there about agentic engineering. This publication exists because we need honest, grounded writing about what it actually means to build with agents — the real principles, not the marketing.</span>},
+          {meta:'Mono · Metadata, labels, kickers',sample:<span className="type-sample-mono">OSS RADAR · ISSUE #02 · APRIL 12, 2026</span>},
+          {meta:'Mono · Tags and tokens',sample:<div style={{display:'flex',gap:'.5rem',flexWrap:'wrap'}}>{['agents','context','toolchain'].map(t=><span key={t} style={{fontFamily:'var(--mono)',fontSize:'.72rem',color:'var(--mu)',opacity:.7}}><span style={{background:'linear-gradient(135deg,#1a6b4e,#6ec9a8,#93c5fd)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',fontWeight:600}}>#</span>{t}</span>)}</div>},
+        ].map((r,i)=>(
+          <div key={i} className="type-row">
+            <div className="type-meta">{r.meta}</div>
+            <div>{r.sample}</div>
+          </div>
+        ))}
+      </div>
+
+      <GradSep/>
+
+      {/* 3 — Surfaces */}
+      <div className="chapter">
+        <div className="chapter-num"><Sparkle size={10}/>03</div>
+        <h2 className="chapter-title">Surfaces</h2>
+      </div>
+      <p style={{fontSize:'.9rem',color:'var(--mu)',marginBottom:'1.25rem',lineHeight:1.7}}>Two surface treatments. <strong>Glass panels</strong> for featured content — depth, blur, the brand gradient subtly seeping through. <strong>Flat surface</strong> for secondary content — solid, quiet, structural.</p>
+      <div className="glass-demo">
+        <div className="glass-demo-cell">
+          <div style={{fontFamily:'var(--mono)',fontSize:'.52rem',letterSpacing:'.16em',textTransform:'uppercase',color:'var(--mu)',marginBottom:'.75rem'}}>Glass panel</div>
+          <div className="glass-panel-demo">
+            <div style={{display:'flex',alignItems:'center',gap:'.5rem',marginBottom:'.5rem'}}>
+              <span style={{fontSize:'.62rem',fontWeight:600,letterSpacing:'.06em',textTransform:'uppercase',color:'var(--lk)',background:'rgba(218,231,223,.3)',border:'1px solid rgba(194,214,202,.25)',padding:'.2em .65em',borderRadius:999}}>Latest</span>
+              <span style={{fontFamily:'var(--mono)',fontSize:'.58rem',color:'var(--mu)'}}>Engineering</span>
+            </div>
+            <h3>You Don't Always Need Codemap</h3>
+            <p>Code context tools are not interchangeable. Each optimizes for a different moment in the agent's workflow.</p>
+          </div>
+          <p style={{fontSize:'.75rem',color:'var(--mu)',marginTop:'.6rem',lineHeight:1.5}}>blur(14px) saturate(1.35) · sage wash overlay · inset top highlight</p>
+        </div>
+        <div className="glass-demo-cell">
+          <div style={{fontFamily:'var(--mono)',fontSize:'.52rem',letterSpacing:'.16em',textTransform:'uppercase',color:'var(--mu)',marginBottom:'.75rem'}}>Flat surface</div>
+          <div className="surface-demo">
+            <div style={{fontFamily:'var(--mono)',fontSize:'.54rem',letterSpacing:'.2em',textTransform:'uppercase',color:'var(--mu)',marginBottom:'.35rem'}}>◆ OSS Radar · #02</div>
+            <h3>The Toolchain Is the Moat</h3>
+            <p>How the Astral acquisition reveals the real war being fought in AI coding.</p>
+          </div>
+          <p style={{fontSize:'.75rem',color:'var(--mu)',marginTop:'.6rem',lineHeight:1.5}}>background: --sf · border: --bd · no blur · structural use</p>
+        </div>
+      </div>
+
+      <GradSep/>
+
+      {/* 4 — Brand gradient */}
+      <div className="chapter">
+        <div className="chapter-num"><Sparkle size={10}/>04</div>
+        <h2 className="chapter-title">Brand Gradient</h2>
+      </div>
+      <p style={{fontSize:'.9rem',color:'var(--mu)',marginBottom:'1.25rem',lineHeight:1.7}}>The gradient is the publication's <strong>chromatic signature</strong>. Deep Green → Mint → Sky Blue. Used only for identity marks — never as backgrounds or decorative fills. Its rarity is what gives it weight.</p>
+      <div className="grad-strip"/>
+      <div className="grad-stops">
+        {[{c:'#1a6b4e',l:'Deep Green',p:'0%'},{c:'#6ec9a8',l:'Mint',p:'60%'},{c:'#93c5fd',l:'Sky Blue',p:'100%'}].map(s=>(
+          <div key={s.l} className="grad-stop">
+            <div className="grad-stop-dot" style={{background:s.c}}/>
+            <div className="grad-stop-label">{s.l}<br/>{s.p}</div>
+          </div>
+        ))}
+      </div>
+      <div className="grad-usage">
+        {[{title:'Logo mark',desc:'The gk letterform mask over gradient fill'},{title:'Sparkle separator',desc:'Gradient sparkle between content sections'},{title:'#tag prefix',desc:'The # character before each content tag'},{title:'Sidebar dot',desc:'Active nav indicator — 3px circle'}].map(u=>(
+          <div key={u.title} className="grad-use"><strong>{u.title}</strong>{u.desc}</div>
+        ))}
+      </div>
+
+      <GradSep/>
+
+      {/* 5 — Canvas moods */}
+      <div className="chapter">
+        <div className="chapter-num"><Sparkle size={10}/>05</div>
+        <h2 className="chapter-title">Canvas Moods</h2>
+      </div>
+      <p style={{fontSize:'.9rem',color:'var(--mu)',marginBottom:'1.25rem',lineHeight:1.7}}>The neural canvas is the publication's <strong>life force</strong> — each context gets its own mode. Never repeat a mode across the same context type. Each post can invent a new one.</p>
+      <div className="canvas-demos">
+        <div className="canvas-demo-cell">
+          <div className="canvas-demo-header">
+            <span className="canvas-demo-label">Threshold</span>
+            <span className="canvas-demo-page">Homepage · OSS Radar</span>
+          </div>
+          <div className="canvas-wrap"><MiniCanvas dark={dark} mode="threshold"/></div>
+          <div className="canvas-desc">Dormant network with periodic <strong>dopamine cascades</strong>. Neurons fire, signals propagate, warm gold particles burst. Alive and unpredictable. Represents the publication as a whole — always active, always surprising.</div>
+        </div>
+        <div className="canvas-demo-cell">
+          <div className="canvas-demo-header">
+            <span className="canvas-demo-label">Flow</span>
+            <span className="canvas-demo-page">Engineering</span>
+          </div>
+          <div className="canvas-wrap"><MiniCanvas dark={dark} mode="flow"/></div>
+          <div className="canvas-desc">A wave sweeps <strong>left-to-right</strong>, lighting up neurons and connections as it passes. Blueprint blue brightens to warm gold at peak. Linear, systematic, synchronized. Engineering is the mode of deliberate construction.</div>
+        </div>
+      </div>
+      <p style={{fontSize:'.78rem',color:'var(--mu)',marginTop:.85+'rem',fontStyle:'italic'}}>Additional modes (topo, caustic, schlieren, cursor-repulsion) live in the animation engine and are used for individual article preambles. Each post can have a unique visual world.</p>
+
+      <GradSep/>
+
+      {/* 6 — Motifs */}
+      <div className="chapter">
+        <div className="chapter-num"><Sparkle size={10}/>06</div>
+        <h2 className="chapter-title">Motifs</h2>
+      </div>
+      <div className="motifs">
+        <div className="motif-cell">
+          <div className="motif-display"><Sparkle size={32}/></div>
+          <div className="motif-name">Sparkle</div>
+          <div className="motif-desc">The publication's signature mark. Appears as a section separator between content zones. Always uses the brand gradient. Never decorative — only structural.</div>
+        </div>
+        <div className="motif-cell">
+          <div className="motif-display">
+            <div style={{width:'100%',display:'flex',alignItems:'center',gap:8}}>
+              <div style={{flex:1,height:1,background:'linear-gradient(90deg,transparent,rgba(26,107,78,.3))'}}/>
+              <Sparkle size={11}/>
+              <div style={{flex:1,height:1,background:'linear-gradient(90deg,rgba(26,107,78,.3),transparent)'}}/>
+            </div>
+          </div>
+          <div className="motif-name">Gradient separator</div>
+          <div className="motif-desc">Fading green lines converging on a sparkle. Used between content chapters. The gradient echoes the brand without asserting it. A breath between ideas.</div>
+        </div>
+        <div className="motif-cell">
+          <div className="motif-display">
+            <div style={{display:'flex',gap:'.6rem'}}>
+              {['agents','context','toolchain'].map(t=>(
+                <span key={t} style={{fontFamily:'var(--mono)',fontSize:'.72rem',color:'var(--mu)',opacity:.7}}>
+                  <span style={{background:'linear-gradient(135deg,#1a6b4e,#6ec9a8,#93c5fd)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',fontWeight:600}}>#</span>{t}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="motif-name">Gradient tags</div>
+          <div className="motif-desc">Content tags with a gradient # prefix. The hash character is the brand gradient, the tag text is muted. A subtle way to tie tagging to the publication identity.</div>
+        </div>
+      </div>
+
+      <GradSep/>
+
+      {/* 7 — Section identities */}
+      <div className="chapter">
+        <div className="chapter-num"><Sparkle size={10}/>07</div>
+        <h2 className="chapter-title">Section Identities</h2>
+      </div>
+      <p style={{fontSize:'.9rem',color:'var(--mu)',marginBottom:'1.25rem',lineHeight:1.7}}>Four sections. Four moods. Not separate brands — different rooms in the same building. The stable shell persists. The interior breathes.</p>
+      <div className="section-ids">
+        {sections.map(s=>(
+          <div key={s.name} className="sid">
+            <div className="sid-rule" style={{background:s.accent}}/>
+            <div className="sid-label" style={{color:s.accent}}>{s.name}</div>
+            <div className="sid-name">{s.mood.split(' · ')[0]}</div>
+            <div className="sid-canvas" style={{color:s.accent,marginBottom:'.25rem'}}>Canvas: {s.canvas}</div>
+            <div className="sid-desc">{s.desc}</div>
+            <div className="sid-tags">{s.tags.map(t=><span key={t} className="sid-tag" style={{borderColor:s.accentHex+'44',color:s.accentHex,fontFamily:'var(--mono)',fontSize:'.52rem'}}>{t}</span>)}</div>
+          </div>
+        ))}
+      </div>
+
+      <GradSep/>
+
+      {/* 8 — Philosophy */}
+      <div className="chapter">
+        <div className="chapter-num"><Sparkle size={10}/>08</div>
+        <h2 className="chapter-title">Philosophy</h2>
+      </div>
+      <p style={{fontSize:'.9rem',color:'var(--mu)',marginBottom:'1.25rem',lineHeight:1.7}}>Six principles that guide every design decision in this publication. The north star: <strong style={{fontStyle:'italic'}}>"The site should feel like a well-organized publication, even when each piece feels like a one-off artwork."</strong></p>
+      <div className="principles">
+        {principles.map(p=>(
+          <div key={p.num} className="principle">
+            <div className="principle-num">Principle {p.num}</div>
+            <div className="principle-title">{p.title}</div>
+            <div className="principle-body" dangerouslySetInnerHTML={{__html:p.body}}/>
+          </div>
+        ))}
+      </div>
+
+      {/* Footer */}
+      <div style={{marginTop:'4rem',paddingTop:'1.5rem',borderTop:'1px solid var(--bd)',display:'flex',justifyContent:'space-between',fontSize:'.75rem',color:'var(--mu)'}}>
+        <span>gkoreli.com Design Language · 2026</span>
+        <a href="gkoreli.com v3.html" style={{color:'var(--lk)'}}>← Back to publication</a>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

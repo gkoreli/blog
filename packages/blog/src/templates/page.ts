@@ -96,6 +96,7 @@ export function pageShell({ title, description, content, currentSlug, currentSec
           <a href="https://github.com/gkoreli/backlog-mcp" class="sb-proj-link" target="_blank" rel="noopener">backlog-mcp<span class="sb-proj-arrow">↗</span></a>
           <a href="https://www.npmjs.com/package/@nisli/core" class="sb-proj-link" target="_blank" rel="noopener">@nisli/core<span class="sb-proj-arrow">↗</span></a>
           <a href="https://github.com/gkoreli/blog" class="sb-proj-link" target="_blank" rel="noopener">gkoreli.com<span class="sb-proj-arrow">↗</span></a>
+          <a href="/design-language" class="sb-proj-link">Design Language</a>
         </div>
       </div>
 
