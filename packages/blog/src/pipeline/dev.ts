@@ -1,6 +1,7 @@
 import { spawn } from 'node:child_process';
 import type { ChildProcess } from 'node:child_process';
-import { basename, join, relative } from 'node:path';
+import { basename, extname, join, relative } from 'node:path';
+import { existsSync, readFileSync } from 'node:fs';
 import { context } from 'esbuild';
 import browserSync from 'browser-sync';
 import { DIST, SRC, POSTS_DIR, PROMPTS_DIR, PUBLIC_DIR, ROOT, ESBUILD_ENTRIES } from '../lib/paths.js';
@@ -100,6 +101,28 @@ bs.init({
   notify: false,
   ui: false,
   logLevel: 'silent',
+  middleware: [
+    function cleanUrls(req: { url: string }, res: { writeHead: Function; end: Function; setHeader: Function }, next: Function) {
+      const urlPath = (req.url as string).split('?')[0];
+      // Redirect trailing slash to clean URL
+      if (urlPath !== '/' && urlPath.endsWith('/')) {
+        const clean = urlPath.slice(0, -1) + req.url.slice(urlPath.length);
+        res.writeHead(301, { Location: clean });
+        res.end();
+        return;
+      }
+      // Serve index.html for clean URLs before serve-static can redirect
+      if (!extname(urlPath)) {
+        const indexFile = join(DIST, urlPath, 'index.html');
+        if (existsSync(indexFile)) {
+          res.setHeader('Content-Type', 'text/html; charset=utf-8');
+          res.end(readFileSync(indexFile));
+          return;
+        }
+      }
+      next();
+    },
+  ],
 }, () => console.log('Dev server at http://localhost:3000'));
 
 process.once('SIGINT', () => {
