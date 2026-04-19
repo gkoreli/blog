@@ -4,7 +4,7 @@
 .sec-canvas-banner {
   position: relative;
   overflow: hidden;
-  margin: -2rem -1.5rem 0 -1rem;
+  margin: -2rem -2rem 0 -2rem;
   height: 180px;
   border-bottom: 2px solid var(--sec-accent, var(--color-text));
   transition: border-color 0.25s;
@@ -55,5 +55,6 @@
 
 @media (max-width: 768px) {
   .sec-canvas-banner { margin: 0 -1rem; }
+
   .frames-grid--lg { grid-template-columns: repeat(2, 1fr); }
 }
