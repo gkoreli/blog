@@ -114,6 +114,10 @@ a.home-featured-post:hover .home-featured-title { color: var(--color-link); }
   color: var(--color-text-muted);
 }
 
+.home-featured-meta .section-label {
+  margin-bottom: 0;
+}
+
 /* Section blocks grid */
 .home-sections {
   display: grid;

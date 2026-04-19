@@ -100,7 +100,8 @@ body { min-height: 100vh; }
 
 /* Focus mode — article pages hide sidebar nav */
 .layout-post .sidebar-nav,
-.layout-immersive .sidebar-nav { display: none; }
+.layout-immersive .sidebar-nav,
+.layout-frames .sidebar-nav { display: none; }
 
 .sidebar-social {
   display: flex;
