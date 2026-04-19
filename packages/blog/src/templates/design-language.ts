@@ -82,6 +82,12 @@ export function designLanguageTemplate() {
       <div class="dl-type-meta">${s.meta}</div>
       <div class="${s.cls}">${s.text}</div>
     </div>`)}
+    <div class="dl-type-row">
+      <div class="dl-type-meta">Mono · Tags and tokens</div>
+      <div class="dl-tag-sample">
+        ${['agents', 'context', 'toolchain'].map(t => html`<span class="tag">${t}</span>`)}
+      </div>
+    </div>
   </div>
 
   ${GradSep()}
@@ -148,7 +154,36 @@ export function designLanguageTemplate() {
 
   ${GradSep()}
 
-  ${Chapter({ num: '06', title: 'Section Identities' })}
+  ${Chapter({ num: '06', title: 'Motifs' })}
+  <p class="dl-body-note">Recurring visual signatures that appear across every page. Use them consistently — their power comes from repetition.</p>
+  <div class="dl-motifs">
+    <div class="dl-motif-cell">
+      <div class="dl-motif-display">
+        <img src="/icons/sparkle.svg" width="28" height="28" alt="">
+      </div>
+      <div class="dl-motif-name">Sparkle</div>
+      <p class="dl-motif-desc">Brand gradient sparkle. Lives inside every gradient separator and marks the center of section divisions.</p>
+    </div>
+    <div class="dl-motif-cell">
+      <div class="dl-motif-display">
+        <div class="separator" style="width:100%"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
+      </div>
+      <div class="dl-motif-name">Gradient separator</div>
+      <p class="dl-motif-desc">Fading green lines converging on the sparkle. Marks section transitions throughout the publication.</p>
+    </div>
+    <div class="dl-motif-cell">
+      <div class="dl-motif-display">
+        <img src="/icons/logo.svg" width="32" height="32" alt="">
+      </div>
+      <div class="dl-motif-name">Logo mark</div>
+      <p class="dl-motif-desc">Gradient gk letterform. Brand gradient masked through the letterform — the only other application of the gradient besides tags.</p>
+    </div>
+  </div>
+
+  ${GradSep()}
+
+  ${Chapter({ num: '07', title: 'Section Identities' })}
+
   <p class="dl-body-note">Four sections — four emotional tones. Each has one accent color. The color appears in kickers, section headers, page hero rules, and canvas banner borders.</p>
   <div class="dl-section-ids">
     ${SECTION_IDS.map(s => html`<div class="dl-sid">
@@ -163,7 +198,7 @@ export function designLanguageTemplate() {
 
   ${GradSep()}
 
-  ${Chapter({ num: '07', title: 'Philosophy' })}
+  ${Chapter({ num: '08', title: 'Philosophy' })}
   <div class="dl-principles">
     ${PRINCIPLES.map(p => html`<div class="dl-principle">
       <div class="dl-principle-num">${p.num}</div>
