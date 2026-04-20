@@ -1,0 +1,28 @@
+{
+  "name": "@gkoreli/animation",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Publication animation runtime for gkoreli.com",
+  "type": "module",
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./core": "./src/core/index.ts",
+    "./sim": "./src/sim/index.ts",
+    "./effects": "./src/effects/index.ts",
+    "./timeline": "./src/timeline/index.ts",
+    "./authoring": "./src/authoring/index.ts",
+    "./compile": "./src/compile/index.ts",
+    "./article-scenes": "./src/article-scenes/index.ts",
+    "./renderer-pixi": "./src/renderer-pixi/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "pixi.js": "^8.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}

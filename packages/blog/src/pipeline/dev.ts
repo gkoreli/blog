@@ -102,11 +102,12 @@ bs.init({
   ui: false,
   logLevel: 'silent',
   middleware: [
-    function cleanUrls(req: { url: string }, res: { writeHead: Function; end: Function; setHeader: Function }, next: Function) {
-      const urlPath = (req.url as string).split('?')[0];
+    function cleanUrls(req, res, next) {
+      const rawUrl = req.url ?? '/';
+      const [urlPath = '/'] = rawUrl.split('?');
       // Redirect trailing slash to clean URL
       if (urlPath !== '/' && urlPath.endsWith('/')) {
-        const clean = urlPath.slice(0, -1) + req.url.slice(urlPath.length);
+        const clean = urlPath.slice(0, -1) + rawUrl.slice(urlPath.length);
         res.writeHead(301, { Location: clean });
         res.end();
         return;
