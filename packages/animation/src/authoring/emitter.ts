@@ -1,4 +1,5 @@
 import type { EmitterDefinition, EmitterShape, Range } from './types.js';
+import type { TextSourceId } from '../core/index.js';
 
 export interface EmitterOptions {
   readonly rate: number;
@@ -22,7 +23,9 @@ export interface RectEmitterOptions extends EmitterOptions {
   readonly height: number;
 }
 
-export interface TextBoxEmitterOptions extends RectEmitterOptions {}
+export interface TextBoxEmitterOptions extends RectEmitterOptions {
+  readonly source?: TextSourceId;
+}
 
 export function pointEmitter(options: PointEmitterOptions): Omit<EmitterDefinition, 'id'> {
   return emitter({ kind: 'point', x: options.x, y: options.y }, options);
@@ -33,10 +36,11 @@ export function rectEmitter(options: RectEmitterOptions): Omit<EmitterDefinition
 }
 
 export function textBoxEmitter(options: TextBoxEmitterOptions): Omit<EmitterDefinition, 'id'> {
-  return emitter(
-    { kind: 'text-box', x: options.x, y: options.y, width: options.width, height: options.height },
-    options,
-  );
+  const shape: EmitterShape = options.source === undefined
+    ? { kind: 'text-box', x: options.x, y: options.y, width: options.width, height: options.height }
+    : { kind: 'text-box', x: options.x, y: options.y, width: options.width, height: options.height, source: options.source };
+
+  return emitter(shape, options);
 }
 
 function emitter(shape: EmitterShape, options: EmitterOptions): Omit<EmitterDefinition, 'id'> {

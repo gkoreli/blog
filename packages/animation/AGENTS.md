@@ -34,6 +34,7 @@ The package follows a layered model:
 | Simulation | `src/sim/` | Particle stores, emitters, fields, zones, occupancy, hot-path systems |
 | Effects | `src/effects/` | Channels, operators, effect stage definitions, reusable effect modules |
 | Timeline | `src/timeline/` | Modulation helpers and source-specific timeline utilities |
+| Render primitives | `src/core/` / `src/compile/` | Renderer-neutral visual vocabulary: text, zones, particles, trails, polylines |
 | Renderer adapter | `src/renderer-pixi/` | Pixi-backed rendering implementation only |
 | Article scenes | `src/article-scenes/` | Concrete editorial scenes, not reusable abstractions until proven |
 
@@ -50,6 +51,46 @@ The first-generation runtime is built around five substrates.
 | Timeline / Modulation | Choreography over time, scroll, section, visibility, events | Scroll and time-linked parameter shaping |
 
 These substrates are intentionally basic. They should compose into expressive motifs without creating an engine taxonomy.
+
+## Current Architectural Correction
+
+The package currently has more semantic runtime architecture than visual renderer vocabulary.
+
+That is the main bottleneck.
+
+The runtime can describe fields, zones, text-box emitters, materials, timelines, and effect pipelines, but the Pixi adapter currently expresses most of that as particles and circles. This makes the system look less serious than the architecture underneath.
+
+Treat the current particle-heavy output as **runtime smoke testing**, not finished visual language.
+
+Do not keep adding lab experiment labels, controls, or substrates while the renderer can only speak in dots.
+
+The next milestone is:
+
+> Make **Text Emergence** visually undeniable.
+
+Reference: `docs/adr/0015.3-text-and-render-primitive-layer.md`
+
+## Visual Primitive Layer
+
+The runtime needs renderer-neutral visual primitives before the lab can become expressive.
+
+Target vocabulary:
+
+| Primitive | Purpose | Pixi Backend Mapping |
+| --- | --- | --- |
+| `TextPrimitive` | Visible publication text, text source identity, text bounds, source glow, debug bounds | Pixi `Text` first; optional `SplitText` later |
+| `ZonePrimitive` | Visible semantic space, fill, edge, glow, occupancy/debug surface | Pixi `Graphics` |
+| `ParticlePrimitive` / particle batches | Hot-path particle rendering | Pixi `Graphics` now; future optimized particle renderer possible |
+| `TrailPrimitive` | Temporal richness and persistence | Per-particle velocity trails first; render texture feedback later |
+| `PolylinePrimitive` | Fracture lines, arcs, connectors, field vectors | Pixi `Graphics` |
+
+Important rules:
+
+- Pixi owns low-level text rendering. The package must not build a font rasterizer or text layout engine.
+- The runtime owns text semantics: source IDs, bounds, emitter binding, timelines, dissolve/return behavior, and effect participation.
+- Authoring must remain renderer-neutral. Do not expose Pixi `Text`, `Graphics`, `Container`, filters, textures, or display objects outside `renderer-pixi`.
+- DOM overlays may be useful for page scaffolding, but they are not substitutes for runtime primitives.
+- If an effect cannot be expressed by renderer-neutral primitives, the runtime is not ready to claim that visual concept.
 
 ## Authoring API Model
 
@@ -101,12 +142,29 @@ The consumption path should remain lazy and article-local.
 1. A page or article declares a canvas or custom element only where the animation is needed.
 2. The blog client lazy-loads the animation scene and Pixi renderer for that article.
 3. The scene is authored declaratively with `createScene(...)`.
-4. `compileScene(...)` turns the declaration into a `CompiledRuntimeScene`.
-5. `mountScene(...)` owns lifecycle, resize, visibility, reduced-motion behavior, and frame scheduling.
-6. `createPixiRenderer(...)` renders compiled batches through the renderer adapter.
-7. Dispose on unmount/navigation to release renderer resources and scene state.
+4. Authoring code declares semantic objects: text sources, emitters, fields, zones, materials, timelines, and effect pipelines.
+5. `compileScene(...)` turns the declaration into a `CompiledRuntimeScene`.
+6. The compiled scene exposes simulation state and renderer-neutral primitives.
+7. `mountScene(...)` owns lifecycle, resize, visibility, reduced-motion behavior, and frame scheduling.
+8. `createPixiRenderer(...)` maps primitives to Pixi objects inside the adapter.
+9. Dispose on unmount/navigation to release renderer resources and scene state.
 
 Default pages must not pay for Pixi or the runtime.
+
+### Text Consumption Model
+
+Text participates in the runtime as a semantic source, not as a Pixi object in authoring code.
+
+Correct shape:
+
+1. Authoring declares a text source or text-bound emitter using semantic IDs.
+2. The text source defines text content, bounds, source visibility, and optional debug behavior.
+3. Emitters bind to the text source or its bounds.
+4. Effects define peel, drift, dissolve, return, or reform behavior.
+5. Compilation produces both particle systems and a renderer-neutral `TextPrimitive`.
+6. Pixi renderer maps `TextPrimitive` to Pixi `Text`.
+
+`SplitText` can be used later inside `renderer-pixi` for per-character rendering, but do not make Pixi `SplitText` the public authoring abstraction.
 
 ## Runtime Frame Model
 
@@ -122,7 +180,7 @@ The intended frame order is:
 8. Run transition effects bound to events.
 9. Run continuous effect pipelines.
 10. Decay and clean up dead particles.
-11. Prepare renderer-facing batches.
+11. Prepare renderer-facing batches and visual primitives.
 12. Render through the adapter.
 
 Keep this order inspectable. If a change alters the order, update this file and the ADR or add a new ADR.
@@ -191,8 +249,33 @@ Not allowed:
 - Returning Pixi objects from public APIs.
 - Storing Pixi objects in runtime plans or authoring definitions.
 - Designing scene APIs around Pixi concepts.
+- Using DOM overlays to fake runtime primitives and then treating them as engine progress.
 
 If a renderer feature needs to surface upward, define a renderer-neutral channel, material field, or adapter capability first.
+
+## Text Emergence Milestone
+
+The next serious experiment is **Text Emergence V1**.
+
+It must include:
+
+- visible Pixi-rendered source text
+- particles emitted from the text source
+- text remains legible while particles peel away
+- source glow or material identity
+- basic trail / persistence
+- controls that affect real behavior, not just labels
+- debug bounds for the text source
+
+Acceptable v1 compromise:
+
+- Use text bounds for emission before true glyph sampling.
+
+Not acceptable:
+
+- Particles spawning near DOM text while the runtime does not render or own the text.
+- Calling a rectangle emitter "Text Emergence" without a runtime text primitive.
+- Adding more experiments before Text Emergence reads as language becoming motion.
 
 ## Performance Rules
 
@@ -211,6 +294,8 @@ If a renderer feature needs to surface upward, define a renderer-neutral channel
 - Keep IDs stable and meaningful; they become debugging vocabulary.
 - Use named pipes for every effect stack.
 - Keep visual motifs small: ambient drift, zone glow, pulse, emergence, sparse electric accents.
+- Build one visually undeniable experiment before expanding the lab.
+- Prefer `TextPrimitive` and `ZonePrimitive` work over new controls or labels.
 - Prefer scroll/time/section modulation over arbitrary animation constants.
 - Respect `prefers-reduced-motion` through `mountScene(...)`.
 - Preserve progressive enhancement: articles must remain readable without JS.
@@ -226,6 +311,9 @@ If a renderer feature needs to surface upward, define a renderer-neutral channel
 - Encoding article semantics in renderer code.
 - Letting Pixi leak into public authoring APIs.
 - Treating zones, fields, and materials as decorative effects instead of semantic primitives.
+- Treating a particle cloud as proof of every concept.
+- Calling lab smoke tests finished experiments.
+- Building more simulation substrates while the renderer still lacks text, zones, trails, and lines.
 - Using inheritance trees for visual behavior.
 - Emitting events for numerical changes that happen every frame.
 - Making every page load Pixi by default.
@@ -242,6 +330,9 @@ If a renderer feature needs to surface upward, define a renderer-neutral channel
 | Emitters bind motion to content | Particles should emerge from article structure, not random screen space | Prefer text-box/layout-bound emitters for editorial scenes |
 | Compilation protects performance | Declarative APIs can be readable while runtime plans stay compact | Compile definitions before frame execution |
 | Renderer isolation protects ownership | Pixi is useful plumbing, not the product language | Keep adapter contracts renderer-neutral |
+| Renderer vocabulary limits expression | Semantic runtime state is invisible without visual primitives | Add text, zone, trail, and polyline primitives before expanding the lab |
+| Pixi text is plumbing, not product | Pixi already renders text; the runtime must define what text means | Use Pixi `Text` behind `TextPrimitive` |
+| Text Emergence is the forcing function | It connects runtime work directly to the publication | Build this before Memory Zone or Fracture Pulse |
 
 ## References
 
@@ -249,6 +340,7 @@ If a renderer feature needs to surface upward, define a renderer-neutral channel
 | --- | --- | --- |
 | `docs/adr/0015-animation-library.md` | Base decision: Pixi-backed custom runtime | Re-checking renderer ownership, package boundaries, and site integration |
 | `docs/adr/0015.1-animation-substrates-and-authoring-model.md` | Substrate, authoring, pipeline/event architecture | Adding primitives, effects, stores, or compile/runtime behavior |
+| `docs/adr/0015.3-text-and-render-primitive-layer.md` | Renderer primitive correction and Text Emergence milestone | Deciding what to build next in renderer and lab work |
 | `src/authoring/` | Public scene declaration surface | Changing how article scenes are written |
 | `src/compile/` | Internal executable runtime plan | Changing how declarations become stores and pipelines |
 | `src/sim/` | Hot-path storage and systems | Changing particle, zone, field, emitter, or occupancy behavior |
@@ -263,5 +355,8 @@ If a renderer feature needs to surface upward, define a renderer-neutral channel
 - Keep runtime execution explicit, compiled, and data-oriented.
 - Keep effects composable through ordered pipelines.
 - Keep events coarse and meaningful.
+- Make renderer-neutral visual primitives real before adding more lab concepts.
+- Use Pixi text; own text semantics.
+- Build Text Emergence before expanding the lab.
 - Keep Pixi replaceable by isolating it behind renderer adapters.
 - Let real articles decide which primitives deserve to exist.

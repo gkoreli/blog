@@ -36,6 +36,9 @@ importers:
       '@gkoreli/analytics':
         specifier: workspace:*
         version: link:../analytics
+      '@gkoreli/animation':
+        specifier: workspace:*
+        version: link:../animation
       '@gkoreli/client-observability':
         specifier: workspace:*
         version: link:../client-observability

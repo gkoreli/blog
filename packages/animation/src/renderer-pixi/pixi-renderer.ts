@@ -1,7 +1,10 @@
-import { Application, Container, Graphics } from 'pixi.js';
+import { Application, Container, Graphics, Text } from 'pixi.js';
+import type { TextStyleOptions } from 'pixi.js';
 import { isParticleRenderScene } from '../compile/index.js';
 import type { ParticleRenderBatch } from '../compile/index.js';
 import type { FrameTime, PrimitiveId, RendererAdapter, RuntimeScene, RuntimeSize } from '../core/index.js';
+import { isTextPrimitive, toScreenPrimitiveRect } from '../core/index.js';
+import type { TextPrimitive } from '../core/index.js';
 import { isParticleFieldPrimitive, isRectZonePrimitive, toScreenRect } from '../sim/index.js';
 import type { ParticleFieldPrimitive, RectZonePrimitive } from '../sim/index.js';
 
@@ -12,7 +15,8 @@ export interface PixiRendererOptions {
 
 export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> implements RendererAdapter<TScene> {
   private readonly root = new Container();
-  private readonly layerByPrimitiveId = new Map<PrimitiveId, Graphics>();
+  private readonly graphicsByPrimitiveId = new Map<PrimitiveId, Graphics>();
+  private readonly textByPrimitiveId = new Map<PrimitiveId, Text>();
   private readonly seenPrimitiveIds = new Set<PrimitiveId>();
   private readonly options: PixiRendererOptions;
   private app: Application | undefined;
@@ -53,7 +57,9 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
     }
 
     for (const primitive of scene.primitives()) {
-      if (isParticleFieldPrimitive(primitive)) {
+      if (isTextPrimitive(primitive)) {
+        this.renderTextPrimitive(primitive);
+      } else if (isParticleFieldPrimitive(primitive)) {
         this.renderParticleField(primitive);
       } else if (isRectZonePrimitive(primitive)) {
         this.renderRectZone(primitive);
@@ -67,18 +73,28 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
   }
 
   dispose(): void {
-    for (const layer of this.layerByPrimitiveId.values()) {
+    const app = this.app;
+    this.app = undefined;
+
+    for (const layer of this.graphicsByPrimitiveId.values()) {
+      this.root.removeChild(layer);
       layer.destroy();
     }
-    this.layerByPrimitiveId.clear();
+    for (const layer of this.textByPrimitiveId.values()) {
+      this.root.removeChild(layer);
+      layer.destroy();
+    }
+    this.graphicsByPrimitiveId.clear();
+    this.textByPrimitiveId.clear();
     this.seenPrimitiveIds.clear();
-    this.root.destroy({ children: true });
-    this.app?.destroy(true, { children: true });
-    this.app = undefined;
+
+    app?.stage.removeChild(this.root);
+    this.root.destroy({ children: false });
+    app?.destroy(false, { children: false });
   }
 
   private renderParticleField(primitive: ParticleFieldPrimitive): void {
-    const graphics = this.getLayer(primitive.id);
+    const graphics = this.getGraphicsLayer(primitive.id);
     const style = primitive.data.style;
     const color = toPixiColor(style.color);
 
@@ -91,7 +107,7 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
   }
 
   private renderRectZone(primitive: RectZonePrimitive): void {
-    const graphics = this.getLayer(primitive.id);
+    const graphics = this.getGraphicsLayer(primitive.id);
     const zone = toScreenRect(primitive.data, this.size);
 
     graphics
@@ -100,8 +116,53 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
       .stroke({ color: toPixiColor(zone.color), alpha: zone.alpha, width: 1 });
   }
 
+  private renderTextPrimitive(primitive: TextPrimitive): void {
+    const text = this.getTextLayer(primitive.id);
+    const data = primitive.data;
+    const bounds = toScreenPrimitiveRect(data.bounds, this.size);
+    const fontSize = data.style.fontSizeUnit === 'bounds-height'
+      ? bounds.height * data.style.fontSize
+      : data.style.fontSize;
+    const lineHeight = data.style.lineHeight ?? fontSize * 1.08;
+
+    const style: TextStyleOptions = {
+      align: data.style.align,
+      fill: data.style.color,
+      fontFamily: data.style.fontFamily,
+      fontSize,
+      fontWeight: data.style.fontWeight,
+      letterSpacing: data.style.letterSpacing,
+      lineHeight,
+      dropShadow: data.style.glow
+        ? {
+            alpha: data.style.glow.alpha,
+            angle: 0,
+            blur: data.style.glow.blur,
+            color: data.style.glow.color,
+            distance: 0,
+          }
+        : false,
+    };
+
+    text.text = data.text;
+    text.style = style;
+    text.anchor.set(data.anchor.x, data.anchor.y);
+    text.alpha = data.style.alpha;
+    text.visible = data.visible;
+    text.x = bounds.x + bounds.width * data.anchor.x;
+    text.y = bounds.y + bounds.height * data.anchor.y;
+
+    if (data.debugBounds) {
+      const debug = this.getGraphicsLayer(`${primitive.id}:debug-bounds`);
+      debug
+        .clear()
+        .rect(bounds.x, bounds.y, bounds.width, bounds.height)
+        .stroke({ color: toPixiColor('#93c5fd'), alpha: 0.42, width: 1 });
+    }
+  }
+
   private renderParticleBatch(batch: ParticleRenderBatch): void {
-    const graphics = this.getLayer(batch.systemId);
+    const graphics = this.getGraphicsLayer(batch.systemId);
     const store = batch.store;
 
     graphics.clear();
@@ -111,30 +172,67 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
       const color = rgbToPixiColor(store.colorR[index] ?? 255, store.colorG[index] ?? 255, store.colorB[index] ?? 255);
       const alpha = Math.min(1, Math.max(0, store.alpha[index] ?? batch.material.alpha));
       const radius = Math.max(0.2, store.radius[index] ?? batch.material.radius);
+      const x = (store.x[index] ?? 0) * this.size.width;
+      const y = (store.y[index] ?? 0) * this.size.height;
+      const trail = Math.max(0, store.trail[index] ?? batch.material.trail);
+
+      if (trail > 0) {
+        const trailSeconds = 0.45 + trail * 2.2;
+        const rawTrailX = (store.vx[index] ?? 0) * this.size.width * trailSeconds;
+        const rawTrailY = (store.vy[index] ?? 0) * this.size.height * trailSeconds;
+        const trailLength = Math.hypot(rawTrailX, rawTrailY);
+        const maxTrailLength = 32 + Math.min(24, trail * 64);
+        const trailScale = trailLength > maxTrailLength ? maxTrailLength / trailLength : 1;
+        const tailX = x - rawTrailX * trailScale;
+        const tailY = y - rawTrailY * trailScale;
+
+        graphics
+          .moveTo(tailX, tailY)
+          .lineTo(x, y)
+          .stroke({ color, alpha: alpha * Math.min(0.58, 0.16 + trail), width: Math.max(0.5, radius * 0.42) });
+      }
 
       graphics
-        .circle((store.x[index] ?? 0) * this.size.width, (store.y[index] ?? 0) * this.size.height, radius)
+        .circle(x, y, radius)
         .fill({ color, alpha });
     }
   }
 
-  private getLayer(id: PrimitiveId): Graphics {
+  private getGraphicsLayer(id: PrimitiveId): Graphics {
     this.seenPrimitiveIds.add(id);
-    const existing = this.layerByPrimitiveId.get(id);
+    const existing = this.graphicsByPrimitiveId.get(id);
     if (existing) return existing;
 
     const layer = new Graphics();
-    this.layerByPrimitiveId.set(id, layer);
+    this.graphicsByPrimitiveId.set(id, layer);
+    this.root.addChild(layer);
+    return layer;
+  }
+
+  private getTextLayer(id: PrimitiveId): Text {
+    this.seenPrimitiveIds.add(id);
+    const existing = this.textByPrimitiveId.get(id);
+    if (existing) return existing;
+
+    const layer = new Text({ text: '' });
+    this.textByPrimitiveId.set(id, layer);
     this.root.addChild(layer);
     return layer;
   }
 
   private removeStaleLayers(): void {
-    for (const [id, layer] of this.layerByPrimitiveId) {
+    for (const [id, layer] of this.graphicsByPrimitiveId) {
       if (this.seenPrimitiveIds.has(id)) continue;
       this.root.removeChild(layer);
       layer.destroy();
-      this.layerByPrimitiveId.delete(id);
+      this.graphicsByPrimitiveId.delete(id);
+    }
+
+    for (const [id, layer] of this.textByPrimitiveId) {
+      if (this.seenPrimitiveIds.has(id)) continue;
+      this.root.removeChild(layer);
+      layer.destroy();
+      this.textByPrimitiveId.delete(id);
     }
   }
 }

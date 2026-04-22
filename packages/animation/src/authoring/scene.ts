@@ -4,6 +4,7 @@ import type {
   MaterialDefinition,
   ParticleSystemDefinition,
   SceneDefinition,
+  TextSourceDefinition,
   TimelineDefinition,
   ZoneDefinition,
 } from './types.js';
@@ -28,6 +29,7 @@ export interface ParticlesOptions {
 export class SceneDefinitionBuilder {
   private readonly fieldList: FieldDefinition[] = [];
   private readonly zoneList: ZoneDefinition[] = [];
+  private readonly textSourceList: TextSourceDefinition[] = [];
   private readonly emitterList: EmitterDefinition[] = [];
   private readonly materialList: MaterialDefinition[] = [];
   private readonly systemList: ParticleSystemDefinition[] = [];
@@ -42,6 +44,11 @@ export class SceneDefinitionBuilder {
 
   zone(id: ZoneId, definition: Omit<ZoneDefinition, 'id'>): this {
     this.zoneList.push({ id, ...definition });
+    return this;
+  }
+
+  textSource(id: TextSourceDefinition['id'], definition: Omit<TextSourceDefinition, 'id'>): this {
+    this.textSourceList.push({ id, ...definition });
     return this;
   }
 
@@ -68,6 +75,7 @@ export class SceneDefinitionBuilder {
   build(): SceneDefinition {
     return {
       id: this.sceneId,
+      textSources: [...this.textSourceList],
       fields: [...this.fieldList],
       zones: [...this.zoneList],
       emitters: [...this.emitterList],

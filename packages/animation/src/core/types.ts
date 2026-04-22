@@ -6,6 +6,7 @@ export type ParticleSystemId = string;
 export type FieldId = string;
 export type ZoneId = string;
 export type EmitterId = string;
+export type TextSourceId = string;
 export type MaterialId = string;
 export type EffectId = string;
 export type TimelineId = string;

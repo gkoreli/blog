@@ -96,16 +96,17 @@ export function pageShell({ title, description, content, currentSlug, currentSec
           <a href="https://github.com/gkoreli/backlog-mcp" class="sb-proj-link" target="_blank" rel="noopener">backlog-mcp<span class="sb-proj-arrow">↗</span></a>
           <a href="https://www.npmjs.com/package/@nisli/core" class="sb-proj-link" target="_blank" rel="noopener">@nisli/core<span class="sb-proj-arrow">↗</span></a>
           <a href="https://github.com/gkoreli/blog" class="sb-proj-link" target="_blank" rel="noopener">gkoreli.com<span class="sb-proj-arrow">↗</span></a>
-          <a href="/design-language" class="sb-proj-link">Design Language</a>
+          <a href="/design-language" class="sb-proj-link ${currentSlug === 'design-language' ? 'active' : ''}">Design Language</a>
+          <a href="/animations-lab" class="sb-proj-link ${currentSlug === 'animations-lab' ? 'active' : ''}">Animations Lab</a>
         </div>
       </div>
 
       <div class="sidebar-spacer"></div>
 
       <div class="sidebar-social">
-        <a href="https://github.com/gkoreli" title="GitHub" target="_blank" rel="noopener"><img src="/icons/github.svg" width="18" height="18" alt="GitHub"></a>
-        <a href="https://x.com/GogaKoreli" title="X" target="_blank" rel="noopener"><img src="/icons/x.svg" width="18" height="18" alt="X"></a>
-        <a href="https://www.linkedin.com/in/goga-koreli/" title="LinkedIn" target="_blank" rel="noopener"><img src="/icons/linkedin.svg" width="18" height="18" alt="LinkedIn"></a>
+        <a href="https://github.com/gkoreli" title="GitHub" target="_blank" rel="noopener"><img src="/icons/github.svg" width="16" height="16" alt="GitHub"></a>
+        <a href="https://x.com/GogaKoreli" title="X" target="_blank" rel="noopener"><img src="/icons/x.svg" width="16" height="16" alt="X"></a>
+        <a href="https://www.linkedin.com/in/goga-koreli/" title="LinkedIn" target="_blank" rel="noopener"><img src="/icons/linkedin.svg" width="16" height="16" alt="LinkedIn"></a>
         <nisli-theme-toggle></nisli-theme-toggle>
       </div>
     </aside>

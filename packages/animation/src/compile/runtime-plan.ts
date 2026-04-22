@@ -4,6 +4,7 @@ import type {
   FieldDefinition,
   MaterialDefinition,
   ParticleSystemDefinition,
+  TextSourceDefinition,
   TimelineDefinition,
 } from '../authoring/index.js';
 import type { PipeDefinition } from '../effects/index.js';
@@ -34,6 +35,7 @@ export interface RuntimePlan {
   readonly sceneId: SceneId;
   readonly fields: ReadonlyMap<FieldDefinition['id'], FieldDefinition>;
   readonly materials: ReadonlyMap<MaterialDefinition['id'], MaterialDefinition>;
+  readonly textSources: readonly TextSourceDefinition[];
   readonly emitters: readonly EmitterDefinition[];
   readonly zones: readonly CompiledZone[];
   readonly systems: readonly RuntimeParticleSystem[];

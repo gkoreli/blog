@@ -5,13 +5,29 @@ import type { ParticleStore } from './particle-store.js';
 export interface EmitterRuntimeState {
   carry: number;
   random: () => number;
+  pointSampler?: EmitterPointSampler;
 }
 
-export function createEmitterRuntimeState(seed: number): EmitterRuntimeState {
-  return {
+export interface EmitterSamplePoint {
+  readonly x: number;
+  readonly y: number;
+}
+
+export interface EmitterPointSampler {
+  sample(random: () => number): EmitterSamplePoint | undefined;
+}
+
+export function createEmitterRuntimeState(seed: number, pointSampler?: EmitterPointSampler): EmitterRuntimeState {
+  const state: EmitterRuntimeState = {
     carry: 0,
     random: createRandom(seed),
   };
+
+  if (pointSampler) {
+    state.pointSampler = pointSampler;
+  }
+
+  return state;
 }
 
 export function spawnFromEmitter(
@@ -29,7 +45,7 @@ export function spawnFromEmitter(
   const color = parseHexColor(material.color);
 
   for (let index = 0; index < spawnCount; index += 1) {
-    const point = sampleEmitterPoint(emitter, state.random);
+    const point = sampleEmitterPoint(emitter, state);
     const direction = lerp(emitter.direction.min, emitter.direction.max, state.random());
     const speed = lerp(emitter.speed.min, emitter.speed.max, state.random());
 
@@ -52,18 +68,40 @@ export function spawnFromEmitter(
   }
 }
 
-function sampleEmitterPoint(emitter: EmitterDefinition, random: () => number): { readonly x: number; readonly y: number } {
+function sampleEmitterPoint(emitter: EmitterDefinition, state: EmitterRuntimeState): EmitterSamplePoint {
   const shape = emitter.shape;
+  const random = state.random;
 
   if (shape.kind === 'point') return { x: shape.x, y: shape.y };
   if (shape.kind === 'line') {
     const t = random();
     return { x: lerp(shape.x1, shape.x2, t), y: lerp(shape.y1, shape.y2, t) };
   }
+  if (shape.kind === 'text-box') {
+    const point = state.pointSampler?.sample(random);
+    if (point) return point;
+    return sampleTextBoxPoint(shape, random);
+  }
 
   return {
     x: shape.x + shape.width * random(),
     y: shape.y + shape.height * random(),
+  };
+}
+
+function sampleTextBoxPoint(
+  shape: Extract<EmitterDefinition['shape'], { readonly kind: 'text-box' }>,
+  random: () => number,
+): { readonly x: number; readonly y: number } {
+  const insetX = shape.width * 0.08;
+  const textX = shape.x + insetX + (shape.width - insetX * 2) * random();
+  const bandRoll = random();
+  const bandCenter = bandRoll < 0.42 ? 0.34 : bandRoll < 0.76 ? 0.52 : 0.7;
+  const jitter = (random() - 0.5) * 0.11;
+
+  return {
+    x: textX,
+    y: shape.y + shape.height * Math.min(0.82, Math.max(0.22, bandCenter + jitter)),
   };
 }
 

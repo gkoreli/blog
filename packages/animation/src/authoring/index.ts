@@ -6,6 +6,8 @@ export { noiseField } from './field.js';
 export type { NoiseFieldOptions } from './field.js';
 export { defineCircleZone, defineRectZone } from './zone.js';
 export type { CircleZoneDefinitionOptions, RectZoneDefinitionOptions, ZoneOptions } from './zone.js';
+export { textSource } from './text.js';
+export type { TextSourceOptions } from './text.js';
 export { pointEmitter, rectEmitter, textBoxEmitter } from './emitter.js';
 export type { EmitterOptions, PointEmitterOptions, RectEmitterOptions, TextBoxEmitterOptions } from './emitter.js';
 export { electricMaterial, glowMaterial, solidMaterial } from './material.js';
@@ -22,6 +24,7 @@ export type {
   ParticleSystemDefinition,
   Range,
   SceneDefinition,
+  TextSourceDefinition,
   TimelineDefinition,
   TimelineSource,
   ZoneBlendMode,

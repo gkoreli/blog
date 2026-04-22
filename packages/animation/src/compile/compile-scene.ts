@@ -1,6 +1,6 @@
-import type { RuntimeEvent, RuntimeUpdateContext } from '../core/index.js';
-import { createRuntimeEventQueue } from '../core/index.js';
-import type { SceneDefinition, TimelineDefinition } from '../authoring/index.js';
+import type { RuntimeEvent, RuntimePrimitive, RuntimeUpdateContext } from '../core/index.js';
+import { createRuntimeEventQueue, createTextPrimitive } from '../core/index.js';
+import type { EmitterDefinition, SceneDefinition, TextSourceDefinition, TimelineDefinition } from '../authoring/index.js';
 import type { EffectApplyDefinition, EffectStageDefinition } from '../effects/index.js';
 import {
   beginOccupancyFrame,
@@ -9,6 +9,7 @@ import {
   createEmitterRuntimeState,
   createOccupancyStore,
   createParticleStore,
+  createTextSourcePointSampler,
   killParticle,
   readOccupancyMask,
   readParticleByte,
@@ -26,6 +27,7 @@ export function compileScene(definition: SceneDefinition): CompiledRuntimeScene 
 
 class CompiledScene implements CompiledRuntimeScene {
   readonly plan: RuntimePlan;
+  private readonly renderPrimitives: readonly RuntimePrimitive[];
   private readonly renderBatches: readonly ParticleRenderBatch[];
   private readonly timelineValues = new Map<string, number>();
 
@@ -33,6 +35,7 @@ class CompiledScene implements CompiledRuntimeScene {
     const fields = new Map(definition.fields.map(field => [field.id, field]));
     const materials = new Map(definition.materials.map(material => [material.id, material]));
     const emittersById = new Map(definition.emitters.map(emitter => [emitter.id, emitter]));
+    const textSourcesById = new Map(definition.textSources.map(source => [source.id, source]));
     const zones = compileZones(definition.zones);
     const events = createRuntimeEventQueue();
     const systems: RuntimeParticleSystem[] = [];
@@ -41,16 +44,18 @@ class CompiledScene implements CompiledRuntimeScene {
       const emitter = emittersById.get(system.emitter);
       const material = materials.get(system.material);
       if (!emitter || !material) continue;
+      const resolvedEmitter = resolveTextEmitter(emitter, textSourcesById);
+      const pointSampler = createEmitterPointSampler(resolvedEmitter, textSourcesById);
 
       const pipelines = compilePipelines(system.pipes);
       systems.push({
         definition: system,
-        emitter,
+        emitter: resolvedEmitter,
         material,
         materialIndex: Math.max(0, definition.materials.findIndex(item => item.id === material.id)),
         store: createParticleStore(system.capacity),
         occupancy: createOccupancyStore(system.capacity),
-        emitterState: createEmitterRuntimeState(hashString(system.id)),
+        emitterState: createEmitterRuntimeState(hashString(system.id), pointSampler),
         transitionPipes: pipelines.transitionPipes,
         continuousPipes: pipelines.continuousPipes,
       });
@@ -60,6 +65,7 @@ class CompiledScene implements CompiledRuntimeScene {
       sceneId: definition.id,
       fields,
       materials,
+      textSources: definition.textSources,
       emitters: definition.emitters,
       zones,
       systems,
@@ -77,6 +83,15 @@ class CompiledScene implements CompiledRuntimeScene {
       systemId: system.definition.id,
       store: system.store,
       material: system.material,
+    }));
+    this.renderPrimitives = definition.textSources.map(source => createTextPrimitive(source.id, {
+      sourceId: source.id,
+      text: source.text,
+      bounds: source.bounds,
+      anchor: source.anchor,
+      style: source.style,
+      visible: source.visible,
+      debugBounds: source.debugBounds,
     }));
   }
 
@@ -100,8 +115,8 @@ class CompiledScene implements CompiledRuntimeScene {
     }
   }
 
-  primitives(): readonly [] {
-    return [];
+  primitives(): readonly RuntimePrimitive[] {
+    return this.renderPrimitives;
   }
 
   particleBatches(): readonly ParticleRenderBatch[] {
@@ -366,4 +381,40 @@ function hashString(value: string): number {
     hash = Math.imul(hash, 16_777_619);
   }
   return hash >>> 0;
+}
+
+function resolveTextEmitter(
+  emitter: EmitterDefinition,
+  textSourcesById: ReadonlyMap<TextSourceDefinition['id'], TextSourceDefinition>,
+): EmitterDefinition {
+  if (emitter.shape.kind !== 'text-box') return emitter;
+  if (emitter.shape.source === undefined) return emitter;
+
+  const source = textSourcesById.get(emitter.shape.source);
+  if (!source || source.bounds.coordinateSpace !== 'normalized') return emitter;
+
+  return {
+    ...emitter,
+    shape: {
+      kind: 'text-box',
+      source: emitter.shape.source,
+      x: source.bounds.x,
+      y: source.bounds.y,
+      width: source.bounds.width,
+      height: source.bounds.height,
+    },
+  };
+}
+
+function createEmitterPointSampler(
+  emitter: EmitterDefinition,
+  textSourcesById: ReadonlyMap<TextSourceDefinition['id'], TextSourceDefinition>,
+) {
+  if (emitter.shape.kind !== 'text-box') return undefined;
+  if (emitter.shape.source === undefined) return undefined;
+
+  const source = textSourcesById.get(emitter.shape.source);
+  if (!source) return undefined;
+
+  return createTextSourcePointSampler(source);
 }

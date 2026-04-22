@@ -44,4 +44,5 @@ export { compileZones, containsZonePoint } from './zone-store.js';
 export type { CompiledZone } from './zone-store.js';
 export { sampleFieldVelocity } from './field-store.js';
 export { createEmitterRuntimeState, spawnFromEmitter } from './emitter-store.js';
-export type { EmitterRuntimeState } from './emitter-store.js';
+export type { EmitterPointSampler, EmitterRuntimeState, EmitterSamplePoint } from './emitter-store.js';
+export { createTextSourcePointSampler } from './text-sampler.js';

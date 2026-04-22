@@ -21,6 +21,7 @@ import { promptsPage } from '../pages/prompts.js';
 import { privacyPage } from '../pages/privacy.js';
 import { statsPage, statsHead } from '../pages/stats.js';
 import { designLanguagePage } from '../pages/design-language.js';
+import { animationsLabPage } from '../pages/animations-lab.js';
 import { essaysPage } from '../pages/essays.js';
 import { engineeringPage } from '../pages/engineering.js';
 import { ossRadarPage } from '../pages/oss-radar.js';
@@ -219,6 +220,17 @@ export async function buildHTML(): Promise<void> {
   const dlBody = designLanguagePage();
   const dlShell = pageShell({ title: 'Design Language', description: 'The design substrate of gkoreli.com — palette, typography, glass surfaces, canvas moods, section identities, and philosophy.', content: dlBody.toString(), currentSlug: 'design-language', noindex: true });
   writeOutput('design-language', dlShell.toString());
+
+  const animationsLabBody = animationsLabPage();
+  const animationsLabShell = pageShell({
+    title: 'Animations Lab',
+    description: 'Live motion experiments for the gkoreli.com animation runtime.',
+    content: animationsLabBody.toString(),
+    currentSlug: 'animations-lab',
+    scripts: ['/animations-lab.js'],
+    noindex: true,
+  });
+  writeOutput('animations-lab', animationsLabShell.toString());
 
   writeRoot('feed.xml', rssFeed(sortedPosts));
   writeRoot('sitemap.xml', sitemapXml(sortedPosts));

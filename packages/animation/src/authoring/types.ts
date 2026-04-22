@@ -3,7 +3,11 @@ import type {
   FieldId,
   MaterialId,
   ParticleSystemId,
+  PrimitiveAnchor,
+  PrimitiveRect,
   SceneId,
+  TextPrimitiveStyle,
+  TextSourceId,
   TimelineId,
   ZoneId,
 } from '../core/index.js';
@@ -27,7 +31,14 @@ export type EmitterShape =
   | { readonly kind: 'point'; readonly x: number; readonly y: number }
   | { readonly kind: 'line'; readonly x1: number; readonly y1: number; readonly x2: number; readonly y2: number }
   | { readonly kind: 'rect'; readonly x: number; readonly y: number; readonly width: number; readonly height: number }
-  | { readonly kind: 'text-box'; readonly x: number; readonly y: number; readonly width: number; readonly height: number };
+  | {
+      readonly kind: 'text-box';
+      readonly x: number;
+      readonly y: number;
+      readonly width: number;
+      readonly height: number;
+      readonly source?: TextSourceId;
+    };
 
 export interface Range {
   readonly min: number;
@@ -43,6 +54,17 @@ export interface EmitterDefinition {
   readonly speed: Range;
   readonly lifetime: Range;
   readonly material: MaterialId;
+  readonly tags: readonly string[];
+}
+
+export interface TextSourceDefinition {
+  readonly id: TextSourceId;
+  readonly text: string;
+  readonly bounds: PrimitiveRect;
+  readonly anchor: PrimitiveAnchor;
+  readonly style: TextPrimitiveStyle;
+  readonly visible: boolean;
+  readonly debugBounds: boolean;
   readonly tags: readonly string[];
 }
 
@@ -94,6 +116,7 @@ export interface ParticleSystemDefinition {
 
 export interface SceneDefinition {
   readonly id: SceneId;
+  readonly textSources: readonly TextSourceDefinition[];
   readonly fields: readonly FieldDefinition[];
   readonly zones: readonly ZoneDefinition[];
   readonly emitters: readonly EmitterDefinition[];

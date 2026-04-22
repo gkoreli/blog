@@ -5,6 +5,7 @@ import {
   noiseField,
   particles,
   scrollTimeline,
+  textSource,
   textBoxEmitter,
 } from '../authoring/index.js';
 import { compileScene } from '../compile/index.js';
@@ -35,6 +36,19 @@ export function createFoundationScene(sceneId = 'foundation-particle-field'): Co
       emissive: 0.35,
       trail: 0.12,
     }))
+    .textSource('hero-title-source', textSource({
+      text: 'Where excitement ends, depth begins.',
+      x: 0.12,
+      y: 0.14,
+      width: 0.76,
+      height: 0.18,
+      fontSize: 0.36,
+      fontWeight: '700',
+      color: '#faf8f5',
+      alpha: 0.78,
+      glow: { color: '#6ec9a8', alpha: 0.22, blur: 16 },
+      tags: ['hero', 'source'],
+    }))
     .zone('memory', defineRectZone({
       x: 0.18,
       y: 0.18,
@@ -47,6 +61,7 @@ export function createFoundationScene(sceneId = 'foundation-particle-field'): Co
       y: 0.16,
       width: 0.76,
       height: 0.22,
+      source: 'hero-title-source',
       rate: 28,
       material: 'thought',
       speed: { min: 0.02, max: 0.07 },
