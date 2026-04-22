@@ -160,7 +160,7 @@ export async function buildHTML(): Promise<void> {
 
     if (prompts) {
       const promptsBody = promptsPage(post.meta, prompts);
-      const promptsShell = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogType: 'website' });
+      const promptsShell = pageShell({ title: `Thoughts by human, co-written by AI — ${post.meta.title}`, description: `${prompts.count} raw notes that shaped "${post.meta.title}"`, content: promptsBody.toString(), currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogType: 'website' });
       writeOutput(`${post.meta.slug}/prompts`, promptsShell.toString());
     }
   }
@@ -178,7 +178,7 @@ export async function buildHTML(): Promise<void> {
 
     if (prompts) {
       const promptsBody = promptsPage(post.meta, prompts);
-      const promptsShell = pageShell({ title: `Prompts — ${post.meta.title}`, description: `The ${prompts.count} prompts that shaped "${post.meta.title}"`, content: promptsBody.toString(), currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogType: 'website' });
+      const promptsShell = pageShell({ title: `Thoughts by human, co-written by AI — ${post.meta.title}`, description: `${prompts.count} raw notes that shaped "${post.meta.title}"`, content: promptsBody.toString(), currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogType: 'website' });
       writeOutput(`${post.meta.slug}/prompts`, promptsShell.toString());
     }
   }
