@@ -18,9 +18,9 @@ And once that thought hit me, it stopped being about music.
 
 I started wondering how many other things in my life I treat the same way. Things I like but never fully enter. Things I care about but keep at a safe distance. Dreams I do not deny, exactly, but quietly postpone. Desires I soften with phrases like "one day," "after this project," "when life calms down," "when I become more ready," as if readiness is something that arrives before commitment instead of after it.
 
-Maybe that is what has been bothering me lately. Not that I do not care. The worse possibility is that I do care, but not all the way.
+Maybe that is what has been bothering me lately. Not that I do not care. The more unsettling possibility is that I do care, just not all the way.
 
-There is a kind of indifference that looks dramatic and obvious. Coldness. Numbness. A visible lack of feeling. That is not what I mean. I mean a quieter kind. A softer, more respectable kind. The kind that can hide inside competence. The kind that can live inside a person who is thoughtful, functional, capable, even ambitious on paper.
+There is a kind of indifference that looks dramatic and obvious. Coldness. Numbness. A visible lack of feeling. That is not what I mean. I mean a quieter kind. A softer, more respectable kind. The kind that hides inside competence. The kind that can live inside a person who is thoughtful, functional, capable, even ambitious on paper.
 
 The kind that says: yes, I like this. Yes, this matters to me. Yes, I feel something here.
 
@@ -56,11 +56,11 @@ There is a version of life that works the same way. New starts, new directions, 
 
 I know these patterns because I have lived inside them.
 
-So this is not me trying to write an argument against detachment, or safety, or even indifference itself. Sometimes distance is wisdom. Sometimes background music is exactly what music should be. Sometimes not going all the way in is the healthy choice. I do not want to become a person who turns every feeling into a crisis and every passing interest into a life mission. That is just another form of chaos pretending to be aliveness.
+So this is not an argument against detachment, or safety, or even indifference itself. Sometimes distance is wisdom. Sometimes background music is exactly what music should be. Sometimes not going all the way in is the healthy choice. I do not want to become a person who turns every feeling into a crisis and every passing interest into a life mission. That is just another form of chaos pretending to be aliveness.
 
 What I want is choice.
 
-I want to know when I am stepping back on purpose and when I am hiding. I want to know when I am listening passively because that is enough for the moment and when I am doing it because I have drifted so far into half-attention that I no longer notice the difference. I want indifference to be a tool, not a home.
+I want to know when I am stepping back on purpose and when I am hiding. I want to know when I am listening passively because that is enough for the moment and when I am doing it because I have drifted into half-attention without noticing. I want indifference to be a tool, not a home.
 
 That feels like the real distinction.
 
@@ -73,7 +73,7 @@ To say: this matters, and I am not going to keep it in the background just becau
 
 To notice when annoyance is not random irritation but information. To notice when longing is not fantasy but a neglected instruction. To notice when admiration, envy, restlessness, attraction, resistance, all those inconvenient little feelings, are trying to tell you where your real life is gathering pressure.
 
-Maybe that is what I have been missing. Not passion. Not depth. Not desire. Maybe I have had all of those in fragments for years. Maybe the real problem is that I have been letting them remain fragments. Enjoying them as signals, moods, textures, private sparks, instead of following them far enough to let them ask something of me.
+Maybe that is what I have been missing. Not passion. Not depth. Not desire. Maybe I have had those in fragments for years. Maybe the real problem is that I have been letting them remain fragments, enjoying them as signals, moods, textures, private sparks, instead of following them far enough to let them ask something of me.
 
 That is how life becomes background music.
 
@@ -85,7 +85,7 @@ But survival is not the same thing as entry.
 
 Being capable is not the same thing as being fully there.
 
-And I think that is what annoyed me so much in that moment with the song. Not the fact that I had missed lyrics before. That part is almost funny. The deeper annoyance was realizing how easily a person can spend years being near beauty, near feeling, near desire, near meaning, and still let it all remain safely unclaimed.
+And I think that is what annoyed me so much in that moment with the song. Not that I had missed lyrics before. That part is almost funny. The deeper annoyance was realizing how easily a person can spend years near beauty, near feeling, near desire, near meaning, and still let it all remain safely unclaimed.
 
 I do not want to live like that by default anymore.
 
