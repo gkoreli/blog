@@ -14,7 +14,7 @@ function FeaturedCard({ post }: { post: PostMeta }) {
   <div class="feat-wash"></div>
   <div class="feat-inner">
     <div class="feat-meta">
-      <span class="feat-badge">Latest</span>
+      <span class="feat-badge">Featured</span>
       <span class="feat-sec">${SECTION_LABELS[post.section]}</span>
       <span class="feat-date">${formatDateShort(post.date)}</span>
     </div>
@@ -26,7 +26,7 @@ function FeaturedCard({ post }: { post: PostMeta }) {
 }
 
 function FramesPlaceholder() {
-  const slots = ['walk · city', 'light · shadow', 'detail · texture', 'moment · still'];
+  const slots = ['walk · city', 'light · shadow', 'moment · still'];
   return html`<div class="frames-grid">
   ${slots.map(l => html`<div class="frame-slot">
     <div class="frame-slot-bg"></div>
@@ -39,8 +39,8 @@ function FramesPlaceholder() {
 export function homePage(posts: PostMeta[]) {
   const featured = posts.find(p => p.featured) ?? posts[0];
   const essays = posts.filter(p => p.section === 'essays' && p.slug !== featured?.slug);
-  const engineering = posts.filter(p => p.section === 'engineering' && p.slug !== featured?.slug);
-  const ossRadar = posts.filter(p => p.section === 'oss-radar' && p.slug !== featured?.slug);
+  const engineering = posts.filter(p => p.section === 'engineering');
+  const ossRadar = posts.filter(p => p.section === 'oss-radar');
 
   return html`<div class="home">
   ${Masthead()}
@@ -49,7 +49,7 @@ export function homePage(posts: PostMeta[]) {
   ${featured ? FeaturedCard({ post: featured }) : ''}
 
   ${essays.length > 0 ? html`${SectionHeader({ label: 'Essays', href: '/essays', dotColor: 'var(--section-essays)' })}
-  ${ArticleGrid({ posts: essays.slice(0, 4) })}` : ''}
+  ${ArticleGrid({ posts: essays.slice(0, 4), columns: 1, showKicker: false })}` : ''}
 
   ${engineering.length > 0 ? html`${SectionHeader({ label: 'Engineering', href: '/engineering', dotColor: 'var(--section-engineering)' })}
   ${ArticleGrid({ posts: engineering.slice(0, 4) })}` : ''}
