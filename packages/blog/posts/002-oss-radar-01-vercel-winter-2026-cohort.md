@@ -1,6 +1,6 @@
 ---
 title: "OSS Radar #01: Vercel's Winter 2026 Cohort"
-date: 2026-03-19
+date: "2026-03-19"
 description: "A new series: I find a source, go through it, distill what's worth your time, and tell you what I actually think. First up — Vercel's Open Source Program Winter 2026 cohort."
 section: oss-radar
 tags: [oss-radar, open-source, vercel, research, distillation]

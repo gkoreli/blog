@@ -1,6 +1,6 @@
 ---
 title: "Life as Background Music"
-date: 2026-04-22
+date: "2026-04-22"
 description: "On realizing how easy it is to like things, want things, even feel things, and still keep them safely in the background."
 section: essays
 tags: [essay, life, attention, indifference]

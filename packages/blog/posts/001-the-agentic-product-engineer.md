@@ -1,6 +1,6 @@
 ---
 title: "The Agentic Product Engineer"
-date: 2026-03-05
+date: "2026-03-05"
 description: "Software engineering isn't going away — writing code without agents is. The role is expanding, not shrinking. Here's what that actually means."
 section: engineering
 tags: [agentic-product-engineering, context-engineering, nisli, backlog-mcp]
