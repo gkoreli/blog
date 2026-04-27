@@ -34,10 +34,10 @@
   max-width: 68ch;
   margin: 0 auto 2.5rem;
   padding: 1rem 1.25rem;
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--color-border);
   font-size: 0.98rem;
   line-height: 1.65;
-  opacity: 0.86;
+  color: var(--color-text-muted);
 }
 
 /* Post content */
