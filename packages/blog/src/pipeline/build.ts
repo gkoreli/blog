@@ -154,7 +154,7 @@ export async function buildHTML(): Promise<void> {
     if (prompts) post.meta.promptCount = prompts.count;
     const body = postPage(post.meta, htmlContent, prompts);
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: 'post', ogType: 'article' });
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: 'post', ogType: 'article', seoTitle: post.meta.seoTitle });
     writeOutput(post.meta.slug, page.toString());
     writeRoot(`${post.meta.slug}.md`, mdRawContents[i]!);
 
@@ -172,7 +172,7 @@ export async function buildHTML(): Promise<void> {
     if (prompts) post.meta.promptCount = prompts.count;
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
     const scripts = post.meta.layout === 'immersive' ? ['/immersive.js'] : [];
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: htmlContent, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article' });
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: htmlContent, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', seoTitle: post.meta.seoTitle });
     writeOutput(post.meta.slug, page.toString());
     writeRoot(`${post.meta.slug}.md`, htmlToMarkdown(htmlContent, post.meta));
 

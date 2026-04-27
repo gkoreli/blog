@@ -6,7 +6,7 @@ function turnstileSiteKey(): string {
   return process.env['TURNSTILE_SITE_KEY'] ?? '';
 }
 
-export function pageShell({ title, description, content, currentSlug, currentSection, ogImage, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false }: {
+export function pageShell({ title, description, content, currentSlug, currentSection, ogImage, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false, seoTitle }: {
   title: string;
   description: string;
   content: string;
@@ -20,6 +20,7 @@ export function pageShell({ title, description, content, currentSlug, currentSec
   scripts?: string[];
   ogType?: 'website' | 'article';
   noindex?: boolean;
+  seoTitle?: string;
 }) {
   const TURNSTILE_SITE_KEY = turnstileSiteKey();
   const canonical = currentSlug ? `https://gkoreli.com/${currentSlug}` : 'https://gkoreli.com/';
@@ -27,13 +28,14 @@ export function pageShell({ title, description, content, currentSlug, currentSec
   const subscribe = DispatchSlip({ turnstileSiteKey: TURNSTILE_SITE_KEY });
 
   const isHome = !currentSlug && !currentSection;
+  const pageTitle = seoTitle ?? `${title} — Goga Koreli`;
 
   return html`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title} — Goga Koreli</title>
+  <title>${pageTitle}</title>
   <meta name="description" content="${description}">
   ${noindex ? html`<meta name="robots" content="noindex">` : ''}
   <link rel="canonical" href="${canonical}">
@@ -63,7 +65,7 @@ export function pageShell({ title, description, content, currentSlug, currentSec
 </head>
 <body>
   ${preamble ? raw(preamble) : ''}
-  <div class="layout${layoutClass}"${currentSection ? ` data-section="${currentSection}"` : ''}>
+  <div class="layout${layoutClass}"${currentSection ? raw(` data-section="${currentSection}"`) : ''}>
     <div class="sidebar-wrapper">
     <aside class="sidebar">
       <div class="sidebar-bar">

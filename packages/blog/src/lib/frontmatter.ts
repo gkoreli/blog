@@ -30,6 +30,8 @@ const frontmatterSchema = z.object({
   tags: z.array(z.string()).optional().default([]),
   layout: z.enum(['default', 'immersive', 'frames']).default('default'),
   featured: z.boolean().optional().default(false),
+  seoTitle: z.string().optional(),
+  alternativeHeadline: z.string().optional(),
   images: z.array(z.object({
     src: z.string(),
     alt: z.string(),

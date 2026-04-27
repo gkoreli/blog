@@ -1,4 +1,4 @@
-import { staticHtml as html } from '@nisli/core/static';
+import { staticHtml as html, raw } from '@nisli/core/static';
 import type { StaticResult } from '@nisli/core/static';
 
 interface ArtifactMeta {
@@ -20,7 +20,7 @@ interface ArtifactSurfaceProps {
 
 export function ArtifactSurface({ className, labelledBy, label, code, meta = [], body, action, mark, stamp }: ArtifactSurfaceProps) {
   const classes = className ? `artifact-surface ${className}` : 'artifact-surface';
-  const labelledByAttr = labelledBy ? ` aria-labelledby="${labelledBy}"` : '';
+  const labelledByAttr = labelledBy ? raw(` aria-labelledby="${labelledBy}"`) : '';
 
   return html`<section class="${classes}"${labelledByAttr}>
     ${stamp ? html`<div class="artifact-stamp" aria-hidden="true">${stamp}</div>` : ''}

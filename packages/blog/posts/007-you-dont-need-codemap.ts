@@ -14,8 +14,10 @@ import {
 
 export const meta: PostMeta = {
   title: "You Don't Always Need Codemap",
+  seoTitle: "You Don't Always Need Codemap — ghx, Repo Maps, and Code Search",
+  alternativeHeadline: 'ghx, repo maps, repo packing, and agent code search',
   date: '2026-04-17',
-  description: "Code context tools are not interchangeable. Codemap, Aider, Gitingest, Repomix, and ghx optimize for different moments in an agent's workflow.",
+  description: "Codemap, Aider, Gitingest, Repomix, and ghx solve different parts of agent code context: mapping, searching, packing, and deciding what to read before cloning.",
   section: 'engineering' as const,
   tags: ['ghx', 'code-mapping', 'context-engineering', 'open-source', 'agentic-engineering'],
   layout: 'immersive',
