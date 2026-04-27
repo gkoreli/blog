@@ -57,9 +57,9 @@ export function article() {
   return html`
     <article class="post-content">
       <p class="post-orient">
-        A field note on Codemap, ghx, Aider repo maps, Repomix, Gitingest, and
-        GitHub code search — and when an agent should search, map, pack, or read
-        code instead of defaulting to cloning and loading everything.
+        A field note on the moment before cloning: how Codemap, ghx, Aider repo
+        maps, Repomix, and Gitingest fit into an agent's decision to explore,
+        search, map, pack, or read a repository.
       </p>
 
       ${Section({
@@ -116,8 +116,10 @@ export function article() {
           </ul>
 
           <p>
-            ghx is built around a deliberately narrow belief: the best context
-            is often the context you do not load.
+            ghx is not a Codemap replacement. It is the remote reconnaissance
+            step before a repo deserves local indexing, packing, or full-file
+            reading. ghx is built around a deliberately narrow belief: the best
+            context is often the context you do not load.
           </p>
         `,
       })}
