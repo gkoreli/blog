@@ -56,6 +56,12 @@ export function preamble() {
 export function article() {
   return html`
     <article class="post-content">
+      <p class="post-orient">
+        A field note on Codemap, ghx, Aider repo maps, Repomix, Gitingest, and
+        GitHub code search — and when an agent should map, search, pack, or read
+        a repository before cloning it.
+      </p>
+
       ${Section({
         label: '§ 0 — The Wrong First Move',
         children: html`

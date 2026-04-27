@@ -29,6 +29,16 @@
   font-weight: 600;
 }
 
+/* Orientation sentence — reader context before the essay voice begins */
+.post-orient {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border, currentColor);
+  opacity: 0.6;
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+}
+
 /* Post content */
 .post-content h1 { font-size: 2rem; line-height: 1.3; margin-bottom: 0.75rem; }
 .post-content h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
