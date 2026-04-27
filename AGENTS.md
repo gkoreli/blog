@@ -260,9 +260,9 @@ Rules:
 
 ### Checklist before publishing a new post
 
-1. Does this post continue an existing thread → add it to the series with `order: N+1`
-2. Does an older post need a forward link to this one → add one prose sentence to that post
-3. Does this post need a backward link to an earlier piece → add one prose sentence in the body
+1. Does this post continue an existing thread? Add it to the series with `order: N + 1`.
+2. Does an older post need a forward link to this one? Add one prose sentence to that post.
+3. Does this post need a backward link to an earlier piece? Add one prose sentence in the body.
 
 ## Decisions Log
 
