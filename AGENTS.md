@@ -156,7 +156,7 @@ Different surfaces serve different audiences. Don't corrupt one to fix the other
 | JSON-LD `headline` | Google's structured data parser | Same as H1 — the real title. |
 | JSON-LD `alternativeHeadline` | Semantic labeling | Explicit field on PostMeta. Set it directly; never derive by parsing `seoTitle`. |
 | JSON-LD `keywords` | Semantic labeling | From `meta.tags`. Not SEO magic — just honest labeling. |
-| Sitemap `<lastmod>` | Googlebot | `lastModified ?? date`. Update when content materially changes. |
+| Sitemap `<lastmod>` | Googlebot | `lastModified ?? date`. Update when the served page meaningfully changes: main content, title/description, structured data, canonical/internal links, or substantial corrections. Do not bump for pure styling/refactors. |
 | JSON-LD `dateModified` | Structured data parsers | Same as `lastModified ?? date`. |
 | RSS `<pubDate>` | Feed readers / subscribers | Publish date only. Never `lastModified`. Don't surface metadata edits as new posts. |
 | Visible article date | Readers | Publish date only. Show updated date only for material changes (new section, corrected argument, major rewrite). Not for metadata/orientation fixes. |
@@ -187,7 +187,7 @@ Style: muted, left-border accent, `color: var(--color-text-muted)`. Reads as a f
 
 ### Diagnosing CTR Problems
 
-High impressions + position 5–8 + near-zero clicks = **intent mismatch**, not bad content.
+High impressions + position 5–8 + near-zero clicks = **SERP mismatch**, not automatically bad content. The mismatch may be query intent, title/snippet packaging, or the type of result searchers expect.
 
 Diagnosis sequence:
 1. Export page-filtered queries from Search Console for the specific page
