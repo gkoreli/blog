@@ -32,6 +32,7 @@ const frontmatterSchema = z.object({
   featured: z.boolean().optional().default(false),
   seoTitle: z.string().optional(),
   alternativeHeadline: z.string().optional(),
+  lastModified: z.string().optional(),
   images: z.array(z.object({
     src: z.string(),
     alt: z.string(),

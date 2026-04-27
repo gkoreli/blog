@@ -9,7 +9,7 @@ function url(loc: string, lastmod?: string): string {
 
 export function sitemapXml(posts: PostMeta[]): string {
   const postUrls = posts.flatMap(p => {
-    const urls = [url(`/${p.slug}`, p.date)];
+    const urls = [url(`/${p.slug}`, p.lastModified ?? p.date)];
     if (p.promptCount) urls.push(url(`/${p.slug}/prompts`, p.date));
     return urls;
   });

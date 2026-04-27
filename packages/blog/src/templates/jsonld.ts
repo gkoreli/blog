@@ -19,7 +19,7 @@ export function blogPostingJsonLd(meta: PostMeta, ogImage?: string): string {
     url,
     mainEntityOfPage: url,
     datePublished: meta.date,
-    dateModified: meta.date,
+    dateModified: meta.lastModified ?? meta.date,
     author: { '@type': 'Person', name: 'Goga Koreli', url: `${SITE}/about` },
   };
 
