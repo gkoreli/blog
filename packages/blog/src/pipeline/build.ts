@@ -242,7 +242,40 @@ export async function buildHTML(): Promise<void> {
   console.log(`Built ${mdPosts.length + tsPosts.length} post(s) in ${elapsed}ms → dist/`);
 }
 
-/** Step 4: Bundle client JS + CSS */
+/** Step 4: Sanity-check built HTML for attribute encoding bugs */
+export function validateHtmlOutput(): void {
+  // Text-content attributes that legitimately hold encoded values
+  const textValueAttrs = /(?:content|href|src|alt|title|name|type|value|rel|property|media|charset|crossorigin)=&quot;/;
+
+  function scanDir(dir: string): string[] {
+    const hits: string[] = [];
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const fullPath = join(dir, entry.name);
+      if (entry.isDirectory()) {
+        hits.push(...scanDir(fullPath));
+      } else if (entry.name.endsWith('.html')) {
+        const content = readFileSync(fullPath, 'utf-8');
+        const lines = content.split('\n');
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i]!;
+          if (line.includes('=&quot;') && !textValueAttrs.test(line)) {
+            hits.push(`${relative(DIST, fullPath)}:${i + 1}: ${line.trim()}`);
+          }
+        }
+      }
+    }
+    return hits;
+  }
+
+  const hits = scanDir(DIST);
+  if (hits.length > 0) {
+    console.error('⚠ Attribute encoding bugs found in built HTML:');
+    for (const h of hits) console.error(`  ${h}`);
+    process.exit(1);
+  }
+}
+
+/** Step 5: Bundle client JS + CSS */
 export async function bundleClient(minify = true): Promise<void> {
   await esbuild({
     entryPoints: ESBUILD_ENTRIES,

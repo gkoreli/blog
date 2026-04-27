@@ -1,4 +1,4 @@
-import { staticHtml as html } from '@nisli/core/static';
+import { staticHtml as html, raw } from '@nisli/core/static';
 
 export function SectionHeader({
   label,
@@ -9,7 +9,7 @@ export function SectionHeader({
   href?: string;
   dotColor?: string;
 }) {
-  const dot = dotColor ? `style="background:${dotColor}"` : `style="background:var(--gradient-brand)"`;
+  const dot = raw(dotColor ? `style="background:${dotColor}"` : `style="background:var(--gradient-brand)"`);
   return html`<div class="sec-hd">
   <span class="sec-hd-name">
     <span class="sec-hd-dot" ${dot}></span>
