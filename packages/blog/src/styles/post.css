@@ -40,6 +40,35 @@
   color: var(--color-text-muted);
 }
 
+/* Series trail — quiet editorial list linking posts in the same series */
+.series-trail {
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-border);
+}
+.series-trail-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.6rem;
+}
+.series-trail-label em { font-style: normal; }
+.series-trail-list {
+  list-style: decimal;
+  padding-left: 1.25rem;
+  margin: 0;
+}
+.series-trail-list li {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
+  color: var(--color-text);
+}
+.series-trail-list a { color: var(--color-link); text-decoration: none; }
+.series-trail-list a:hover { text-decoration: underline; }
+.series-trail-current { color: var(--color-text-muted); }
+
 /* Post content */
 .post-content h1 { font-size: 2rem; line-height: 1.3; margin-bottom: 0.75rem; }
 .post-content h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }

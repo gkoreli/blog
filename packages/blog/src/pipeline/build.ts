@@ -16,7 +16,7 @@ import { blogPostingJsonLd } from '../templates/jsonld.js';
 import { SECTION_LABELS, SECTION_DESCRIPTIONS } from '../lib/frontmatter.js';
 import { homePage } from '../pages/home.js';
 import { aboutPage } from '../pages/about.js';
-import { postPage } from '../pages/post.js';
+import { postPage, seriesTrailBlock } from '../pages/post.js';
 import { promptsPage } from '../pages/prompts.js';
 import { privacyPage } from '../pages/privacy.js';
 import { statsPage, statsHead } from '../pages/stats.js';
@@ -152,7 +152,7 @@ export async function buildHTML(): Promise<void> {
     const ogImage = await generateOgImage(post.meta.title, post.meta.slug);
     const prompts = parsePrompts(post.meta.slug);
     if (prompts) post.meta.promptCount = prompts.count;
-    const body = postPage(post.meta, htmlContent, prompts);
+    const body = postPage(post.meta, htmlContent, prompts, allPosts);
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
     const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: 'post', ogType: 'article', seoTitle: post.meta.seoTitle });
     writeOutput(post.meta.slug, page.toString());
@@ -172,7 +172,9 @@ export async function buildHTML(): Promise<void> {
     if (prompts) post.meta.promptCount = prompts.count;
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
     const scripts = post.meta.layout === 'immersive' ? ['/immersive.js'] : [];
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: htmlContent, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', seoTitle: post.meta.seoTitle });
+    const trail = seriesTrailBlock(post.meta, allPosts);
+    const content = trail ? `${htmlContent}${trail}` : htmlContent;
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', seoTitle: post.meta.seoTitle });
     writeOutput(post.meta.slug, page.toString());
     writeRoot(`${post.meta.slug}.md`, htmlToMarkdown(htmlContent, post.meta));
 

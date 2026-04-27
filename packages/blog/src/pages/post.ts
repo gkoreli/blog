@@ -3,7 +3,28 @@ import type { PostMeta, PromptsData } from '../lib/frontmatter.js';
 import { formatDateLong } from '../lib/dates.js';
 import { SectionLabel, FramesGallery } from '../components/index.js';
 
-export function postPage(meta: PostMeta, htmlContent: string, prompts?: PromptsData | null) {
+export function seriesTrailBlock(meta: PostMeta, allPosts: PostMeta[]): string {
+  if (!meta.series) return '';
+
+  const seriesPosts = allPosts
+    .filter(p => p.series?.name === meta.series!.name)
+    .sort((a, b) => a.series!.order - b.series!.order);
+
+  if (seriesPosts.length < 2) return '';
+
+  const items = seriesPosts.map(p =>
+    p.slug === meta.slug
+      ? html`<li class="series-trail-current">${p.title}</li>`
+      : html`<li><a href="/${p.slug}">${p.title}</a></li>`
+  );
+
+  return html`<nav class="series-trail" aria-label="More in this series">
+  <p class="series-trail-label">More in <em>${meta.series.name}</em></p>
+  <ol class="series-trail-list">${items}</ol>
+</nav>`.toString();
+}
+
+export function postPage(meta: PostMeta, htmlContent: string, prompts?: PromptsData | null, allPosts?: PostMeta[]) {
   const dateStr = formatDateLong(meta.date);
 
   return html`<article>
@@ -18,6 +39,7 @@ export function postPage(meta: PostMeta, htmlContent: string, prompts?: PromptsD
   <div class="post-content">
     ${raw(htmlContent)}
   </div>
+  ${allPosts ? raw(seriesTrailBlock(meta, allPosts)) : ''}
   ${prompts ? html`
   <section class="prompts-teaser">
     <div class="prompts-teaser-header">

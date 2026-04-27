@@ -4,6 +4,10 @@ date: "2026-03-29"
 description: "A CLI tool that looks simple took 23 agent sessions, 2,500+ turns, and three rewrites. This is what building with AI actually looks like."
 section: engineering
 tags: [ghx, agentic-engineering, open-source, build-in-public, context-engineering]
+series:
+  name: ghx field notes
+  order: 1
+relatedPosts: [/you-dont-need-codemap]
 ---
 
 # Build the GitHub Exploration Tool, No Mistakes
