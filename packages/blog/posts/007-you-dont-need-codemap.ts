@@ -58,8 +58,8 @@ export function article() {
     <article class="post-content">
       <p class="post-orient">
         A field note on Codemap, ghx, Aider repo maps, Repomix, Gitingest, and
-        GitHub code search — and when an agent should map, search, pack, or read
-        a repository before cloning it.
+        GitHub code search — and when an agent should search, map, pack, or read
+        code instead of defaulting to cloning and loading everything.
       </p>
 
       ${Section({

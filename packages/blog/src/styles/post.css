@@ -31,12 +31,13 @@
 
 /* Orientation sentence — reader context before the essay voice begins */
 .post-orient {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  border-bottom: 1px solid var(--color-border, currentColor);
-  opacity: 0.6;
-  padding-bottom: 1.25rem;
-  margin-bottom: 2rem;
+  max-width: 68ch;
+  margin: 0 auto 2.5rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  opacity: 0.86;
 }
 
 /* Post content */
