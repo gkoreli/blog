@@ -134,6 +134,87 @@ The markdown never reaches the browser. Content is readable without JS (SEO, cra
 - Don't polish endlessly before publishing — ship ugly, iterate
 - Don't cross-post without canonical URLs pointing back to `gkoreli.com`
 
+## Discoverability Without SEO Sludge
+
+The world wide web problem: an article can be gold and completely invisible. Position 5.9 with 865 impressions and 0 clicks is not a content failure — it is a doorway failure. The essay voice stays intact; the signals that face cold searchers need to be honest and concrete.
+
+### The Core Principle
+
+> Keep the essay. Make the doorway less cryptic.
+
+The fix is never "write for Google." It is: make the same article legible to someone who found it by accident. One grounding sentence, a title that carries search handles, a description that leads with names — not with the thesis.
+
+### The Metadata Split
+
+Different surfaces serve different audiences. Don't corrupt one to fix the other.
+
+| Field | Audience | Rule |
+|---|---|---|
+| `<title>` (HTML) | Cold searcher in SERP | Carry concrete handles: tools, topic, context. Can differ from H1. |
+| H1 / `og:title` | Reader who clicked | Keep the literary/essay title. Voice intact. |
+| `meta description` | Cold searcher scanning results | Lead with tool names and concrete promise. Not the thesis. |
+| JSON-LD `headline` | Google's structured data parser | Same as H1 — the real title. |
+| JSON-LD `alternativeHeadline` | Semantic labeling | Explicit field on PostMeta. Set it directly; never derive by parsing `seoTitle`. |
+| JSON-LD `keywords` | Semantic labeling | From `meta.tags`. Not SEO magic — just honest labeling. |
+| Sitemap `<lastmod>` | Googlebot | `lastModified ?? date`. Update when content materially changes. |
+| JSON-LD `dateModified` | Structured data parsers | Same as `lastModified ?? date`. |
+| RSS `<pubDate>` | Feed readers / subscribers | Publish date only. Never `lastModified`. Don't surface metadata edits as new posts. |
+| Visible article date | Readers | Publish date only. Show updated date only for material changes (new section, corrected argument, major rewrite). Not for metadata/orientation fixes. |
+| Orientation sentence | Reader who landed from a bad-fit query | One concrete sentence before the essay voice. Not SEO bait — reader grounding. |
+
+### How to Apply `seoTitle`
+
+Add it to `PostMeta` when the literary title does not carry enough search handles:
+
+```ts
+title: "You Don't Always Need Codemap",          // H1, og:title — voice intact
+seoTitle: "You Don't Always Need Codemap — ghx, Repo Maps, and Code Search",  // <title> only
+alternativeHeadline: "ghx, repo maps, repo packing, and agent code search",   // JSON-LD only
+```
+
+`seoTitle` replaces `— Goga Koreli` in `<title>` but never touches H1 or og:title. Most posts do not need it — only posts where the title is purely literary and the topic has concrete searchable names.
+
+### The Orientation Sentence
+
+Before the essay voice, one concrete sentence that orients the reader who landed unexpectedly. It should describe:
+- what the article covers (concrete tools/topics, not thesis)
+- the framing (the moment/workflow/decision being analyzed)
+
+Style: muted, left-border accent, `color: var(--color-text-muted)`. Reads as a field-note abstract, not a callout or disclaimer. Class: `.post-orient`.
+
+**Good:** describes the moment and the cast of tools  
+**Bad:** restates the thesis as a sentence ("Code context tools are not interchangeable.")
+
+### Diagnosing CTR Problems
+
+High impressions + position 5–8 + near-zero clicks = **intent mismatch**, not bad content.
+
+Diagnosis sequence:
+1. Export page-filtered queries from Search Console for the specific page
+2. Bucket queries by intent: docs/reference intent vs essay/opinion intent
+3. If docs-intent queries dominate impressions, the article is ranking for the wrong audience
+4. If good-fit queries have 0 clicks at position 3–8, the title/description is failing them
+
+**Do not touch content** until you know which bucket dominates. Churning metadata without query data is guesswork.
+
+### The Measurement Window
+
+After making discoverability changes:
+1. Request indexing in Search Console (URL Inspection → Test Live URL → Request Indexing)
+2. Wait for recrawl — do not keep editing
+3. Export page-filtered queries after fresh data arrives
+4. Only act on the next round if the query data gives you a reason
+
+The signal: if Google is ranking you at position ~6, it already finds topical relevance. The problem is almost never "write more content." It is almost always "make the doorway match the content."
+
+### Anti-Patterns
+
+- **Don't make the `<title>` a comparison slug** — `Codemap vs ghx vs Aider vs Repomix vs Gitingest` is SEO-hostage phrasing. It sounds desperate and attracts the wrong intent.
+- **Don't derive `alternativeHeadline` by parsing `seoTitle`** — explicit field, set it directly.
+- **Don't show updated dates for metadata-only edits** — readers don't care; it makes the publication feel changelog-ish.
+- **Don't create SEO companion pages without query data** — a generic comparison page might attract more bad-fit intent, not less.
+- **Don't use `opacity` for `.post-orient` color** — use `color: var(--color-text-muted)` directly; opacity affects all descendants including future links.
+
 ## Decisions Log
 
 Decisions made before building. Reference these — don't re-decide.
