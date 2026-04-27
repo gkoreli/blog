@@ -33,8 +33,7 @@ const frontmatterSchema = z.object({
   seoTitle: z.string().optional(),
   alternativeHeadline: z.string().optional(),
   lastModified: z.string().optional(),
-  series: z.object({ name: z.string(), order: z.number() }).optional(),
-  relatedPosts: z.array(z.string()).optional().default([]),
+  series: z.object({ id: z.string(), title: z.string(), order: z.number() }).optional(),
   images: z.array(z.object({
     src: z.string(),
     alt: z.string(),

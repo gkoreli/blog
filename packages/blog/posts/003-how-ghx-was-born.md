@@ -5,9 +5,9 @@ description: "A CLI tool that looks simple took 23 agent sessions, 2,500+ turns,
 section: engineering
 tags: [ghx, agentic-engineering, open-source, build-in-public, context-engineering]
 series:
-  name: ghx field notes
+  id: ghx-field-notes
+  title: ghx field notes
   order: 1
-relatedPosts: [/you-dont-need-codemap]
 ---
 
 # Build the GitHub Exploration Tool, No Mistakes

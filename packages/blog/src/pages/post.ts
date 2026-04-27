@@ -3,25 +3,36 @@ import type { PostMeta, PromptsData } from '../lib/frontmatter.js';
 import { formatDateLong } from '../lib/dates.js';
 import { SectionLabel, FramesGallery } from '../components/index.js';
 
-export function seriesTrailBlock(meta: PostMeta, allPosts: PostMeta[]): string {
-  if (!meta.series) return '';
-
-  const seriesPosts = allPosts
-    .filter(p => p.series?.name === meta.series!.name)
+function resolveSeriesPosts(meta: PostMeta, allPosts: PostMeta[]) {
+  if (!meta.series) return null;
+  const posts = allPosts
+    .filter(p => p.series?.id === meta.series!.id)
     .sort((a, b) => a.series!.order - b.series!.order);
+  return posts.length >= 2 ? posts : null;
+}
 
-  if (seriesPosts.length < 2) return '';
+export function seriesTrailBlock(meta: PostMeta, allPosts: PostMeta[]): string {
+  const posts = resolveSeriesPosts(meta, allPosts);
+  if (!posts) return '';
 
-  const items = seriesPosts.map(p =>
+  const items = posts.map(p =>
     p.slug === meta.slug
       ? html`<li class="series-trail-current">${p.title}</li>`
       : html`<li><a href="/${p.slug}">${p.title}</a></li>`
   );
 
   return html`<nav class="series-trail" aria-label="More in this series">
-  <p class="series-trail-label">More in <em>${meta.series.name}</em></p>
+  <p class="series-trail-label">More in <em>${meta.series!.title}</em></p>
   <ol class="series-trail-list">${items}</ol>
 </nav>`.toString();
+}
+
+export function seriesTrailMarkdown(meta: PostMeta, allPosts: PostMeta[]): string {
+  const posts = resolveSeriesPosts(meta, allPosts);
+  if (!posts) return '';
+
+  const items = posts.map((p, i) => `${i + 1}. ${p.title}`).join('\n');
+  return `\n\n## More in ${meta.series!.title}\n\n${items}\n`;
 }
 
 export function postPage(meta: PostMeta, htmlContent: string, prompts?: PromptsData | null, allPosts?: PostMeta[]) {

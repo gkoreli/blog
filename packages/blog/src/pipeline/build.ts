@@ -16,7 +16,7 @@ import { blogPostingJsonLd } from '../templates/jsonld.js';
 import { SECTION_LABELS, SECTION_DESCRIPTIONS } from '../lib/frontmatter.js';
 import { homePage } from '../pages/home.js';
 import { aboutPage } from '../pages/about.js';
-import { postPage, seriesTrailBlock } from '../pages/post.js';
+import { postPage, seriesTrailBlock, seriesTrailMarkdown } from '../pages/post.js';
 import { promptsPage } from '../pages/prompts.js';
 import { privacyPage } from '../pages/privacy.js';
 import { statsPage, statsHead } from '../pages/stats.js';
@@ -140,6 +140,23 @@ export async function buildHTML(): Promise<void> {
   ];
   const sortedPosts = [...allPosts].sort((a, b) => b.date.localeCompare(a.date));
 
+  // Validate series: no duplicate order values within the same series id
+  const seriesGroups = new Map<string, { slug: string; order: number }[]>();
+  for (const p of allPosts) {
+    if (!p.series) continue;
+    const group = seriesGroups.get(p.series.id) ?? [];
+    group.push({ slug: p.slug, order: p.series.order });
+    seriesGroups.set(p.series.id, group);
+  }
+  for (const [id, entries] of seriesGroups) {
+    const orders = entries.map(e => e.order);
+    const dupes = orders.filter((o, i) => orders.indexOf(o) !== i);
+    if (dupes.length > 0) {
+      const slugs = entries.filter(e => dupes.includes(e.order)).map(e => e.slug).join(', ');
+      throw new Error(`Series "${id}" has duplicate order ${dupes[0]} on: ${slugs}`);
+    }
+  }
+
   // Read raw markdown for .md endpoints and llms-full.txt
   const mdRawContents = validation
     .filter(r => r.valid)
@@ -156,7 +173,7 @@ export async function buildHTML(): Promise<void> {
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
     const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: 'post', ogType: 'article', seoTitle: post.meta.seoTitle });
     writeOutput(post.meta.slug, page.toString());
-    writeRoot(`${post.meta.slug}.md`, mdRawContents[i]!);
+    writeRoot(`${post.meta.slug}.md`, mdRawContents[i]! + seriesTrailMarkdown(post.meta, allPosts));
 
     if (prompts) {
       const promptsBody = promptsPage(post.meta, prompts);
@@ -176,7 +193,7 @@ export async function buildHTML(): Promise<void> {
     const content = trail ? `${htmlContent}${trail}` : htmlContent;
     const page = pageShell({ title: post.meta.title, description: post.meta.description, content, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', seoTitle: post.meta.seoTitle });
     writeOutput(post.meta.slug, page.toString());
-    writeRoot(`${post.meta.slug}.md`, htmlToMarkdown(htmlContent, post.meta));
+    writeRoot(`${post.meta.slug}.md`, htmlToMarkdown(htmlContent, post.meta) + seriesTrailMarkdown(post.meta, allPosts));
 
     if (prompts) {
       const promptsBody = promptsPage(post.meta, prompts);

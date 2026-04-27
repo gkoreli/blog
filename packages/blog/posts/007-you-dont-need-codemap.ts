@@ -23,8 +23,7 @@ export const meta: PostMeta = {
   tags: ['ghx', 'code-mapping', 'context-engineering', 'open-source', 'agentic-engineering'],
   layout: 'immersive',
   slug: 'you-dont-need-codemap',
-  series: { name: 'ghx field notes', order: 2 },
-  relatedPosts: ['/how-ghx-was-born'],
+  series: { id: 'ghx-field-notes', title: 'ghx field notes', order: 2 },
 };
 
 function Section({ label, children, final = false }: { label: string; children: StaticResult; final?: boolean }) {
