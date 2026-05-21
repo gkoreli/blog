@@ -9,7 +9,7 @@ export async function initMarkdown(): Promise<void> {
 
   const highlighter = await createHighlighter({
     themes: ['github-light', 'github-dark'],
-    langs: ['typescript', 'javascript', 'html', 'css', 'json', 'bash', 'markdown', 'yaml'],
+    langs: ['typescript', 'javascript', 'html', 'css', 'json', 'bash', 'markdown', 'yaml', 'go', 'c'],
   });
 
   const externalLinks = {
