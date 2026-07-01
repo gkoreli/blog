@@ -16,7 +16,9 @@ I believed this deeply.
 
 I also think it was toxic.
 
-> "Just build great things and people will find them" is not wisdom. For me, it became toxic perfectionism with better branding.
+And I do not think this is only my private weirdness. I think it is a really bad and really common failure pattern in people who strive to build great things.
+
+> "Just build great things and people will find them" is not wisdom. It is often toxic perfectionism with better branding.
 
 This is hard to admit because the belief protected something in me. It made me feel disciplined. It made me feel serious. It gave me a clean excuse to avoid everything that made me uncomfortable.
 
