@@ -1,14 +1,15 @@
 ---
-title: "I Thought Building Was Enough"
+title: "The Builder’s Perfectionism Trap"
+seoTitle: "The Builder’s Perfectionism Trap: Why Great Engineering Is Not Enough"
 date: "2026-07-01"
-description: "For more than ten years I believed great engineering would make everything else happen automatically. I am starting to understand how toxic that was."
+description: "For a decade I believed great engineering would make everything else happen automatically. I am starting to understand how toxic that was."
 section: essays
 tags: [build-in-public, creator, perfectionism, networking]
 ---
 
-# I Thought Building Was Enough
+# The Builder’s Perfectionism Trap
 
-For more than ten years, I believed that if I became good enough at engineering, everything else would happen automatically.
+For a decade, I believed that if I became good enough at engineering, everything else would happen automatically.
 
 Build great products. Build with integrity. Build things that are useful, thoughtful, technically strong. Spend as much time as possible getting better at the craft. If the work is good enough, people will find it. They will understand it. They will love it. They will use it. The rest will take care of itself.
 
