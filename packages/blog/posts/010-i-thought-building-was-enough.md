@@ -17,7 +17,7 @@ I believed this deeply.
 
 I also think it was toxic.
 
-And I do not think this is only my private weirdness. I think it is a really bad and really common failure pattern in people who strive to build great things.
+And I do not think this is just my private weirdness. I think it is a really bad and really common failure pattern in people who strive to build great things.
 
 > "Just build great things and people will find them" is not wisdom. It is often toxic perfectionism with better branding.
 
@@ -137,13 +137,13 @@ I am talking about advocacy. Stewardship. Standing up for the work.
 
 I am talking about respecting myself and my work enough to say: “I made this, it matters to me, can you try it and tell me what you think?”
 
-That can be noble.
+That is noble when the work is real.
 
 Asking for attention can be noble when the work is real. Asking for feedback can be noble. Asking for advice can be noble. Asking for help can be noble. Asking someone for a favor because I genuinely care about what I built and want it to meet the world is not a betrayal of the craft.
 
 It is part of the craft.
 
-And I basically have not done this for the last decade.
+And I have barely done this for the last decade.
 
 If I cannot advocate for my own work, that is not purity. That is a failure of care.
 
