@@ -1,88 +1,130 @@
 ---
 title: "I Thought Building Was Enough"
 date: "2026-07-01"
-description: "I used to believe good products would speak for themselves. That belief protected my perfectionism, isolated my work, and quietly let things I cared about die alone."
+description: "For more than ten years I believed great engineering would make everything else happen automatically. I am starting to understand how toxic that was."
 section: essays
 tags: [build-in-public, creator, perfectionism, networking]
 ---
 
 # I Thought Building Was Enough
 
-I used to believe that if I became a good enough builder, everything else would happen automatically.
+For more than ten years, I believed that if I became good enough at engineering, everything else would happen automatically.
 
-Build something great. Make it useful. Make it beautiful enough. Make it technically strong enough. Then people will find it, understand it, love it, share it, use it, and somehow the universe will reward the work without me having to say much.
+Build great products. Build with integrity. Build things that are useful, thoughtful, technically strong. Spend as much time as possible getting better at the craft. If the work is good enough, people will find it. They will understand it. They will love it. They will use it. The rest will take care of itself.
 
-That belief sounds humble from the outside. It is not. At least not for me.
+I believed this deeply.
 
-For me it became a hiding place.
+I also think it was toxic.
 
-> "Just build great things and the world will notice" is not wisdom. It is often perfectionism wearing a noble costume.
+> "Just build great things and people will find them" is not wisdom. For me, it became toxic perfectionism with better branding.
 
-I am starting to see how much pain that mindset created. Not only for me, but for the things I built.
+This is hard to admit because the belief protected something in me. It made me feel disciplined. It made me feel serious. It gave me a clean excuse to avoid everything that made me uncomfortable.
 
-Because when I treat building as the only respectable work, everything around the product becomes suspicious. Talking about it feels like showing off. Asking people to try it feels needy. Asking for feedback feels like admitting it is not ready. Reaching out to people feels like a distraction from the “real work.” Selling feels dirty. Networking feels artificial. Promotion feels like something lesser builders do because their work cannot stand on its own.
+Talking about my work? Waste of time.
 
-So I keep building.
+Asking people for feedback? Not yet, the product is not ready.
+
+Reaching out for help? I should be able to figure it out myself.
+
+Networking? Artificial, distracting, maybe even fake.
+
+Selling? Suspicious.
+
+Writing in public? Embarrassing.
+
+So I kept building.
 
 And building.
 
 And building.
 
-Then I wonder why the work is alone.
+Then I wondered why the work was alone.
 
-## The cycle I want to end
+## The failure pattern
 
-The cycle is simple and brutal.
+This is one of my failure patterns as a builder and as a perfectionist.
 
-I build something I care about. I put a lot of thought into it. I make decisions that matter to me. I solve real problems. I start feeling proud of the thing.
+I stress when I spend time outside of engineering. Some part of me still feels like if I am not building, improving, refactoring, learning, shipping, fixing, optimizing, then I am wasting time. I should be at the keyboard. I should be getting better. I should be creating more value. I should not be “distracted” by talking about the thing.
 
-Then the sharing part arrives, and I freeze.
+But that belief has a cost.
 
-Instead of standing up for the work, I retreat back into the product. There is always one more feature to add, one more rough edge to fix, one more refactor, one more internal cleanup, one more reason why now is not the right time to talk about it.
+It made me afraid to talk about my own work. It made me afraid to talk about myself. It made it hard to ask people for opinions, advice, help, favors, attention, or even a few honest minutes with something I built.
 
-In my perfectionist mind, building is productive and everything else is waste. If I spend time communicating, networking, asking for advice, asking people to try it, writing about it, or explaining why it matters, some part of me thinks I am stealing time from the product.
+And the cruel part is that I turned that fear into a virtue.
 
-But that is backwards.
+I told myself I was being humble. I told myself I was respecting the craft. I told myself real builders build and the rest is noise.
 
-I am not protecting the product by refusing to share it. I am starving it.
+No.
 
-I am leaving the thing I built in a room with the lights off and hoping someone randomly opens the door.
+That was insecurity.
 
-Then when nobody comes in, I feel hurt. I feel misunderstood. I feel like the work is underappreciated. I tell myself the answer is to keep building because eventually the work will become so good that no one can ignore it.
+It was a way to avoid being seen before the work was perfect. It was a way to avoid asking. It was a way to avoid rejection. It was a way to avoid the possibility that I would share something I cared about and people would not care back.
 
-That sounds disciplined. It is actually a vicious loop.
+So instead, I left everything else in other people’s hands.
 
-The more unseen the work feels, the more I try to solve the pain by building more. The more I build without sharing, the more unseen the work stays. Then I burn out, the project loses oxygen, and something I cared about quietly dies under the weight of my own avoidance.
+Maybe someone will find it. Maybe the right person will stumble into the repo. Maybe the stars will align. Maybe the product will be so good that discovery becomes automatic. Maybe if I just keep improving it silently, one day it will become undeniable.
 
-That is not respect for the work.
+Why would I do that to myself?
 
-That is neglect.
+Why would I leave the fate of my work to luck and then feel hurt when luck does not show up?
+
+## Nobody knows the work until I show them
+
+This is the obvious thing that took me more than a decade of engineering to truly feel:
+
+People do not know my product.
+
+They do not know the integrity behind it. They do not know the decisions I made. They do not know the care, the tradeoffs, the late nights, the taste, the little details, the reasons why something exists. They do not know the philosophy underneath the work unless I explain it.
+
+And if I refuse to explain it, that is not the world failing me.
+
+That is me neglecting the work.
+
+That is me not standing up for myself.
+
+That is me not standing up for the product.
+
+That is me not standing up for the art.
+
+I used to think the product should speak for itself. Now I think that was an incomplete sentence.
+
+The product can speak for itself after it gets a chance to be heard.
+
+Someone has to carry it into the room.
 
 ## Products need tenderness too
 
-This is the part I am still learning how to say without sounding dramatic, but I think it is true: the things I build need tenderness after they are built.
+The things I build need tenderness after they are built.
+
+That sentence feels strange to write, but I believe it.
 
 They need to be introduced to people. They need context. They need explanation. They need someone to say, “I made this, it matters to me, can you try it and tell me what you think?”
 
 They need care after the coding session ends.
 
-A product is not only source code, architecture, design, tests, deployment, and polish. A product also has a relationship with the world. If I refuse to nurture that relationship, I am not being a serious builder. I am outsourcing the most fragile part of the work to luck.
+A product is not only source code, architecture, design, tests, deployment, and polish. A product also has a relationship with the world. If I refuse to nurture that relationship, I am not being a purer builder. I am outsourcing the most fragile part of the work to external factors.
 
-And I have done that too many times.
+And then I get hurt when those external factors do not magically protect me.
 
-I left too many things to external factors. Maybe someone will find it. Maybe the stars will align. Maybe the GitHub repo will get noticed. Maybe the right person will stumble into it. Maybe if I keep improving it silently, one day it will be obvious.
+That is the vicious cycle I want to end.
 
-No.
+I build something with care. I fail to share it with care. It stays underappreciated. I feel pain. Then I respond to the pain by building more, because building is the only mode that feels safe. Eventually I burn out, the project loses oxygen, and something I cared about quietly dies because I did not know how to help it live in the world.
 
-That is not a strategy. That is fear with a productivity mask.
+That is not discipline.
 
-## Selling is not the opposite of building
+That is not humility.
+
+That is not respect for the craft.
+
+That is neglect wearing the clothes of hard work.
+
+## Selling is part of building
 
 One belief I want to kill in myself is that building and selling are enemies.
 
 They are not.
 
-Selling, in the honest sense, is not manipulating people into caring about something useless. Selling is communicating the value of something you actually believe in. It is helping the right people understand why this exists, why it may help them, why it matters, and why they should spend their limited attention on it.
+Selling, in the honest sense, is not manipulating people into caring about something useless. Selling is communicating the value of something I actually believe in. It is helping the right people understand why this exists, why it may help them, why it matters, and why they should spend their limited attention on it.
 
 If I cannot do that for my own work, that is not purity. That is a failure of care.
 
@@ -136,9 +178,17 @@ My work deserves that from me.
 
 I deserve that from me.
 
-## The new standard
+## Better late than never
 
-The new standard I want to practice is not “stop building and become a marketer.”
+It took me more than a decade of engineering to realize this.
+
+Better late than never.
+
+Now I am changing the pattern. Slowly. Imperfectly. In public.
+
+I am building in public. Writing in public. Sharing in public. Networking. Asking people for help and favors. Asking for feedback before I feel ready. Learning how to stand up for myself and for the things I create.
+
+The new standard is not “stop building and become a marketer.”
 
 That is not me.
 
@@ -152,7 +202,7 @@ Not only a better engineer. A better communicator. A better seller. A better net
 
 I am not writing this because I already know how to do it.
 
-I am writing this because I am tired of the old cycle, and I want a public record of the moment I decided to stop respecting my fear more than my work.
+I am writing this because I am tired of respecting my fear more than my work.
 
 What comes next is simple and uncomfortable:
 
