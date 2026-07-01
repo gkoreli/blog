@@ -120,15 +120,31 @@ That is not respect for the craft.
 
 That is neglect wearing the clothes of hard work.
 
-## Selling is part of building
+## Advocacy is part of building
 
-One belief I want to kill in myself is that building and selling are enemies.
+One belief I want to kill in myself is that building and advocating for the work are enemies.
 
 They are not.
 
-Selling, in the honest sense, is not manipulating people into caring about something useless. Selling is communicating the value of something I actually believe in. It is helping the right people understand why this exists, why it may help them, why it matters, and why they should spend their limited attention on it.
+I keep reaching for the word “selling,” but even that word feels corrupted now. These days selling often sounds like someone trying to extract something from you. Like: ugh, you are trying to sell me something?
 
-If I cannot do that for my own work, that is not purity. That is a failure of care.
+That is not what I mean.
+
+I am not talking about manipulating people into buying something useless. I am not talking about turning every conversation into a funnel. I am not talking about profit as the only reason to share.
+
+I am talking about advocacy. Stewardship. Standing up for the work.
+
+I am talking about respecting myself and my work enough to say: “I made this, it matters to me, can you try it and tell me what you think?”
+
+That can be noble.
+
+Asking for attention can be noble when the work is real. Asking for feedback can be noble. Asking for advice can be noble. Asking for help can be noble. Asking someone for a favor because I genuinely care about what I built and want it to meet the world is not a betrayal of the craft.
+
+It is part of the craft.
+
+And I basically have not done this for the last decade.
+
+If I cannot advocate for my own work, that is not purity. That is a failure of care.
 
 I want to become proud of asking people for opinions. Proud of asking for advice. Proud of asking someone to try the thing I made. Proud of saying, “hey, I built this, I think it may be useful, can you tell me what you think?”
 
@@ -172,7 +188,7 @@ I am risking the identity of the quiet builder who does not need to explain hims
 
 That identity protected me for a long time. It also hurt me.
 
-Because I do need to explain myself. I do need to learn how to communicate. I do need to learn how to network. I do need to learn how to ask. I do need to learn how to promote the things I make without feeling like I betrayed the craft.
+Because I do need to explain myself. I do need to learn how to communicate. I do need to learn how to network. I do need to learn how to ask. I do need to learn how to advocate for the things I make without feeling like I betrayed the craft.
 
 The craft deserves that from me.
 
@@ -200,7 +216,7 @@ Build the thing. Then stand next to it. Explain it. Ask people to try it. Ask wh
 
 That is the builder I want to become.
 
-Not only a better engineer. A better communicator. A better seller. A better networker. A better friend. A better artist. A better steward of my own work.
+Not only a better engineer. A better communicator. A better advocate. A better networker. A better friend. A better artist. A better steward of my own work.
 
 I am not writing this because I already know how to do it.
 
@@ -214,7 +230,7 @@ What comes next is simple and uncomfortable:
 - I will ask for help and favors without treating that as weakness.
 - I will give help and favors back.
 - I will let my ideas meet opposition while they are still alive.
-- I will learn how to promote my creations without apologizing for them.
+- I will learn how to advocate for my creations without apologizing for them.
 
 This is me ending the fantasy that great work automatically finds its people.
 
