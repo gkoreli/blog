@@ -1,228 +1,309 @@
 ---
-title: "What If the Agent Was Better Before We Helped?"
-seoTitle: "Evaluating Agentic Tools: What If the Agent Was Better Before We Helped?"
+title: "Does ghx Deserve to Exist?"
+seoTitle: "Evaluating ghx and Agent Sidecars: Does the Code Reconnaissance CLI Deserve to Exist?"
 date: "2026-07-05"
-description: "Everyone talks about evaluating agents and agentic harnesses. I think the bigger missing layer is evaluating the tools we keep giving them: skills, CLIs, wrappers, memory layers, and repo scanners."
+description: "I am building ghx, a code reconnaissance CLI for AI agents, and now an agent sidecar framework around it. The hard question is whether any of it actually improves signal per token compared to plain old gh or the base agent."
 section: engineering
-tags: [agentic-engineering, evals, ghx, claude-code, codex, hermes]
+tags: [agentic-engineering, evals, ghx, sidecar-agents, opentelemetry, acp]
 series:
   id: ghx-field-notes
   title: ghx field notes
   order: 3
 ---
 
-# What If the Agent Was Better Before We Helped?
+# Does ghx Deserve to Exist?
 
-Everyone talks about evaluating agents.
+I am building [ghx](https://github.com/gkoreli/ghx), a code reconnaissance CLI for AI agents.
 
-Fewer people talk about evaluating the tools we keep giving them.
+That is the clean sentence.
 
-That gap feels weird to me.
+The messier truth is that I am now building at least four things at the same time:
 
-We evaluate models. We evaluate agentic harnesses. We build benchmarks for coding agents, browser agents, long-horizon agents, support agents, research agents. We ask whether the agent can solve the task, whether the harness keeps it on track, whether the trajectory makes sense, whether the final answer passes.
+- ghx, the CLI tool
+- ghx-sidecar, a specialist code reconnaissance agent that uses ghx under the hood
+- an agent sidecar framework, where a main agent delegates a whole competence domain to a cheaper specialist agent
+- an eval framework, because I do not trust myself to decide whether any of this deserves to exist by vibes
 
-Good. We need that.
+This is a ridiculous stack of work to create while trying to answer one product question.
 
-But then in day-to-day agentic engineering, we add a pile of intermediate things around the agent and treat them like obvious improvements:
+But the question is harsh enough that I do not see a shortcut anymore:
 
-- Claude and Codex wrappers
-- Hermes skills
-- slash commands
-- custom CLIs
-- repo scanners
-- memory layers
-- tool descriptions
-- prompt libraries
-- context pipelines
-- small harnesses that only exist inside one person's workflow
+> Does ghx actually make agents better, or did I build a beautiful ritual around `gh`?
 
-And then we rarely ask the uncomfortable baseline question:
+## The obvious story is not enough
 
-> "Can the original agent do better without all this bloat?"
+The obvious story for ghx is easy to tell.
 
-That is the part I cannot stop thinking about.
+Agents are bad at exploring GitHub through generic tools. They fetch HTML pages and drown in navigation junk. They use `gh` but guess the wrong API shapes. They read too many full files when they only needed a map. They search badly. They burn context on repo reconnaissance that should have been cheap and surgical.
 
-## The hidden layer nobody wants to measure
+So ghx exists to give agents the thing they wanted in the first place:
 
-The easiest way to make an agentic workflow feel more engineered is to add scaffolding.
+- repo structure and README in one call
+- file maps instead of full file dumps
+- batched reads
+- code search with better context
+- codemode-style multi-step exploration
+- less irrelevant context in the main agent's window
 
-Write a skill. Add a CLI. Add a wrapper. Add a routing rule. Add a memory file. Add a convention. Add a project-specific tool. Add an MCP server. Add a command that injects 700 lines of instructions before every task. Add another command because the first command needed instructions too.
+That story still feels true to me.
 
-This often feels productive.
+It is also not enough.
 
-It feels like you are improving the agent because you are doing engineering around the agent. You are reducing friction. You are encoding knowledge. You are removing repeated explanations. You are giving the model a sharper interface to the world.
+Because a tool can have a beautiful story and still fail the baseline. A CLI can feel elegant and still make the agent worse. A skill can encode knowledge and still pollute the context. A sidecar can compress the main agent's view while wasting a different budget somewhere else.
 
-Sometimes that is true.
+The hard question is not whether ghx sounds useful.
 
-Sometimes it is just ceremony.
+The hard question is whether an agent actually performs better with ghx than without it.
 
-Sometimes the tool makes the agent faster at the wrong thing. Sometimes the skill file anchors it into stale assumptions. Sometimes the wrapper hides useful context. Sometimes the memory layer pollutes the task. Sometimes the CLI saves one tool call but costs more tokens in instructions than it saves in output. Sometimes the agent would have solved the task better if you had left it alone.
+And then the harder question after that:
 
-That last sentence is painful if you like building tools.
+If ghx helps, does ghx-sidecar help even more, or is the sidecar another layer of ceremony?
 
-I like building tools.
+## The baseline I do not want to lose against
 
-## I am not above this
+The baseline is embarrassingly simple.
 
-I am one of those people most of the time.
+Plain agent. Plain shell. Plain old `gh` CLI.
 
-I build agent tooling because I keep hitting real pain. I wrote the origin story in [Build the GitHub Exploration Tool, No Mistakes](/build-the-github-exploration-tool-no-mistakes), but the short version is: I built [ghx](https://github.com/gkoreli/ghx), a code reconnaissance CLI for agents, because agents were terrible at exploring GitHub through normal web fetches and raw `gh` commands. They drowned in HTML. They guessed wrong API shapes. They burned context reading files they did not need. They searched badly. They made repo exploration feel much dumber than it had to be.
+No ghx. No sidecar. No special reconnaissance service. No doctrine. No fancy evidence ledger. No OpenTelemetry traces. No beautiful architectural story.
 
-So I built a tool.
+Just the agent trying to answer the repo question with the boring tools it already has.
 
-That instinct still feels right to me. ghx gives an agent surgical GitHub context: repo structure, README, file maps, batched reads, code search, and codemode-style multi-step exploration in one CLI. In theory, that should help agents reason about unfamiliar codebases with less waste.
+That is the baseline I need to beat.
 
-But "in theory" is exactly the problem.
+Not because `gh` is perfect. It is not. [The origin story for ghx](/build-the-github-exploration-tool-no-mistakes) came from real frustration with `gh`, GitHub HTML, API quirks, search weirdness, and context waste.
 
-For the first time, I am trying to gate the engineering of ghx on the question I usually avoid:
+But frustration is not proof.
 
-> "Does the agent perform better with my CLI than without it entirely?"
+Maybe the base agent is already good enough with `gh` for many tasks. Maybe ghx helps only on a narrow slice. Maybe the CLI helps, but the sidecar does not. Maybe the sidecar helps the main agent's context but wastes too much total workflow context. Maybe the right answer is not to build a sidecar framework at all.
 
-Not: does ghx feel elegant?
+I do not want to hand-wave any of that away.
 
-Not: did I reduce a few manual steps?
+For the first time, I am trying to be the main critique of my own product.
 
-Not: can I tell a good story about progressive disclosure and context engineering?
+## Plain vs ghx vs ghx-sidecar
 
-The question is more annoying than that.
+The eval I care about is not abstract.
 
-If I give the same task to the same agent, with and without ghx, does the ghx-enabled agent produce a better result? Does it finish faster? Does it use fewer tokens? Does it make fewer wrong turns? Does it inspect the right files earlier? Does it avoid hallucinating repo structure? Does it recover better when the initial guess is wrong?
+I want to compare three profiles:
 
-Is the signal per token increasing or decreasing?
+1. **plain** — the agent explores with normal shell / `gh` / whatever it can do without ghx
+2. **ghx** — the agent gets ghx directly and knows how to use it
+3. **ghx-sidecar** — the main agent delegates reconnaissance to a specialist sidecar agent, which uses ghx internally and returns a compact evidence report
 
-That is the only question that matters if I am claiming the tool improves the agent.
+The point is not just to ask who got the answer right.
 
-## Agent evals are not enough
+The point is to ask where the context cost lands.
 
-This is where I think a lot of the current eval conversation misses a layer.
+If plain gets the right answer but burns a huge amount of main-agent context, that matters. If ghx gets the right answer faster, that matters. If ghx-sidecar gives the main agent a tiny, cited report but secretly burns a huge sidecar context budget, that also matters.
 
-If you evaluate the final agent system, you can tell whether the whole thing worked. But you may not know which part helped and which part hurt.
+I need to know both things at the same time:
 
-Maybe the base model improved.
+- is signal per token increasing for the main agent?
+- is signal per token increasing for the sidecar / whole workflow too?
 
-Maybe the harness helped.
+Because it is very easy to cheat this in your own head.
 
-Maybe the skill helped.
+You can make the main agent's context look clean by hiding the mess inside the sidecar. That might still be a good product decision if the sidecar is cheap, specialized, and auditable. But it is not honest to pretend the cost disappeared.
 
-Maybe the skill hurt, but the model was strong enough to recover.
+It moved.
 
-Maybe the CLI reduced output tokens but increased planning errors.
+So the question becomes more precise:
 
-Maybe the wrapper made simple tasks faster and hard tasks worse.
+> Did we increase signal per token for the customer agent while keeping the whole workflow honest?
 
-Maybe the tool looks great in traces because the agent calls it confidently, but the final answer is worse because it stopped doing its own exploration.
+That is the number I want.
 
-If all you measure is the finished agentic system, every piece of scaffolding gets to hide inside the aggregate result.
+Not vibes.
 
-That is not enough.
+## The sidecar thesis
 
-The tool itself needs an eval.
+The sidecar idea is bigger than ghx, but ghx is the proof.
 
-Not a vanity benchmark. Not a demo task where the tool obviously wins. A real A/B test against the uncomfortable baseline: same agent, same task, same budget, with and without the tool.
+The model is simple:
 
-For ghx, that means tasks like:
+A main agent should not have to load an entire competence domain into its own context just to get a good answer.
 
-- find the right file in an unfamiliar repo
-- explain how a feature is implemented
-- identify where to patch a bug
-- compare two APIs in a codebase
-- trace a call path without reading half the repository
-- answer a repo question with citations to exact files
+If I am using a powerful coding agent, I do not want to spend its context on 170 lines of ghx CLI doctrine, GitHub search gotchas, map-before-read rules, backend choice, command syntax, and repo exploration traces. I want that agent to stay focused on the engineering objective.
 
-Then compare the runs.
+So the main agent should ask a specialist:
 
-Did ghx actually help? Where? By how much? What did it make worse? Which tasks should not use it? When is raw Claude Code or Codex already good enough?
+```text
+where is this behavior implemented? show me the evidence.
+```
 
-That last question matters.
+And the sidecar should do the reconnaissance:
 
-Because the goal is not to build more tools around agents. The goal is to make agents better at the actual work.
+- decide which ghx commands to run
+- inspect the right files
+- avoid repeat reads
+- keep a persistent evidence ledger
+- cite exact paths and snippets
+- return a compact report
+- expose traces so the work is auditable
 
-## Bad evals can become fake rigor too
+The main agent should not need to know ghx.
 
-The opposition to this is reasonable.
+Eventually, the main agent should barely know the sidecar exists. It should just get good reconnaissance when it needs it, without carrying the reconnaissance machinery in its own head.
 
-People can say evals are expensive. They can say agent workflows are messy. They can say static tasks do not capture production reality. They can say personal tools are about taste and friction, and not everything needs a benchmark.
+That is the thesis.
 
-I agree with parts of that.
+It is a good thesis.
 
-Bad evals can absolutely become fake rigor. You can overfit to a tiny set of tasks. You can measure the wrong thing. You can reward the agent for looking clean instead of being correct. You can build an eval that flatters your tool because you secretly wrote the benchmark around the tool's strengths.
+It still has to earn the right to exist.
 
-That is real.
+## Why this turned into an eval framework
 
-But the answer cannot be to avoid measurement entirely.
+This is the part that surprised me most.
 
-If my only evidence is "it feels better," I am just doing vibes with extra steps.
+I thought I was building a product.
 
-And if I am building a code reconnaissance tool for agents, the bar should be higher than my personal feeling that the workflow is nicer. At minimum I should be able to show a few tasks where the tool beats the baseline, a few tasks where it does not, and a clear explanation of when to use it.
+Then I realized that to build the product honestly, I had to build the measurement machinery too.
 
-That is the part that feels missing: not perfect evals, but honest deltas.
+There is no clean precedent I can just pick up and use. At least not for the exact thing I need:
 
-Did this tool improve the agent on the work it claims to improve?
+- evaluate a tool given to an agent
+- compare direct tool use vs specialist sidecar delegation
+- isolate whether the baseline cheated by discovering ghx anyway
+- capture every tool call and output for audit
+- measure correctness and evidence quality without an LLM judge becoming another source of vibes
+- track main-agent context, sidecar-internal context, and total workflow context separately
+- produce traces that can become future training data
 
-## The annoying part: this is hard
+That is how I ended up building the eval machinery inside ghx.
 
-I am fuming at how hard it is to run this eval cleanly.
+The current stack uses [ACP](https://agentclientprotocol.com/) as the sidecar runtime boundary because I want a real agent process, not a fake function call. It uses OpenTelemetry traces because I do not want to invent a private observability format if the ecosystem already has one. It stores local episode artifacts because I want the data to be inspectable, rerunnable, and eventually useful for training.
 
-The high-level idea is simple:
+This is not because I wanted to build an eval framework.
 
-1. Pick representative repo-understanding tasks.
-2. Run the same agent with ghx available.
-3. Run the same agent without ghx.
-4. Compare correctness, tokens, time, file choices, tool calls, and quality of reasoning.
-5. Repeat enough times that one lucky run does not become the story.
+I wanted to know if ghx works.
 
-But every step gets annoying fast.
+But knowing if ghx works now requires an eval framework.
 
-What is the task format? How do I prevent the task from leaking the answer? How do I judge correctness without spending more time grading than building? How do I keep the agent from using other tools that mask the difference? How do I compare a run where one agent reads ten files and another reads three but gets the right answer? How do I avoid optimizing ghx for a toy benchmark that has nothing to do with real agentic engineering?
+That is the harsh reality I ran into.
 
-There are libraries and patterns for model evals. There are harnesses for agent evals. There are benchmarks for coding agents.
+## The eval framework also has to be evaluated
 
-But for this middle layer — the skills, CLIs, wrappers, repo scanners, memory layers, and tool descriptions we keep handing to agents — the patterns feel much less established.
+The most annoying part is that the eval framework itself can lie.
 
-That is the gap.
+This has already happened in small ways.
 
-We need evals for agentic tools themselves.
+A plain baseline can accidentally use ghx if ghx is on the PATH. Then the comparison is contaminated.
 
-Not because every tool needs a leaderboard.
+A sidecar can look efficient if you only measure the report it sends back to the main agent, while ignoring the tool output it consumed internally.
 
-Because every tool that claims to make an agent better should be willing to face the baseline it is replacing.
+A resumed ACP session can replay old tool calls and make the new turn look like it repeated work it did not actually repeat.
 
-## The baseline is the product manager
+A task can leak its own expected answer in the prompt, and then the agent can score by parroting the question.
 
-The baseline is uncomfortable because it acts like a product manager with no sentimentality.
+A preliminary n=1 smoke run can print something that looks like a verdict if the reporter is not careful.
 
-It does not care that I spent weeks building the tool.
+This is exactly why I do not trust vibes here.
 
-It does not care that the architecture is elegant.
+It is not enough to run evals. The evals have to be honest enough that I would believe them if they told me to kill my own product direction.
 
-It does not care that the CLI feels clean.
+That means the boring machinery matters:
 
-It asks one brutal question:
+- profile isolation
+- ghx removed from PATH for the plain baseline
+- captured tool calls and outputs
+- agent identity recorded
+- pre-registered gates
+- preliminary results labeled as preliminary
+- OpenTelemetry traces emitted as inspectable artifacts
+- replayed ACP history separated from live turn activity
+- signal-per-token reported at main-agent, sidecar-internal, and workflow levels
 
-> "Would the agent have done better without this?"
+This is not glamorous work.
 
-That question protects the work from my ego.
+But if it is wrong, every product decision after it is downstream of self-deception.
 
-It also protects the agent from my desire to build around it forever.
+## What I am trying to prove
 
-Because agentic engineering has a dangerous failure mode: agents let us build scaffolding extremely fast, and then that scaffolding becomes part of the system before anyone proves it deserves to exist.
+I want to be able to say one of these things truthfully.
 
-We can create bloat at agent speed now.
+Best case:
 
-Skills, wrappers, tools, memories, hooks, commands, orchestration layers. Some of them are real leverage. Some of them are coping mechanisms. Some of them are just my discomfort with letting the base agent try.
+> ghx deserves to exist. It improves code reconnaissance for agents. ghx-sidecar deserves to exist too because it gives the main agent better evidence with much less main-context burden, while keeping the whole workflow efficient enough to justify the boundary.
 
-The only honest way through is to measure the deltas.
+Medium case:
 
-Not perfectly.
+> ghx CLI deserves to exist, but the sidecar does not yet. Direct ghx usage is the right product for now.
 
-Not with fake academic confidence.
+Painful case:
 
-But enough to know whether the tool is earning its context.
+> ghx helps only sometimes. The product needs to narrow its claims and stop pretending it is the default answer for agent code reconnaissance.
 
-Enough to know whether the signal per token is increasing or decreasing.
+Worst case:
 
-Enough to know whether I helped the agent, or just built a ritual around it.
+> plain old `gh` plus a good agent is good enough, and ghx does not deserve the weight I have given it.
 
-That is the standard I want for ghx.
+I do not think the worst case is true.
 
-And I think it should be the standard for a lot more agentic tools too.
+But I want the eval to be capable of saying it.
+
+Otherwise this is all theater.
+
+## The product demands the framework
+
+This is the weirdest part of building agentic products right now.
+
+Sometimes the product is not just the user-facing artifact.
+
+The product demands its own harness. Its own evals. Its own observability. Its own traces. Its own ergonomics. Its own refusal to believe you.
+
+I wanted to build a code reconnaissance CLI.
+
+Then I needed a sidecar because the CLI knowledge itself was becoming context bloat for the main agent.
+
+Then I needed an eval suite because the sidecar thesis could easily be fake.
+
+Then I needed OTel traces because eval JSON was not enough as a trajectory/debugging surface.
+
+Then I needed signal-per-token because correctness alone does not answer the product question.
+
+Now I am building ghx, an agent sidecar framework, a ghx sidecar, and an eval framework in parallel.
+
+That sounds absurd until you stare at the actual question long enough:
+
+> did the agent get better, or did I just add another layer?
+
+I do not know how to answer that honestly without all this machinery.
+
+## The standard
+
+The standard I want is simple and brutal.
+
+Every layer has to earn itself.
+
+The ghx CLI has to beat the baseline it replaces.
+
+The ghx sidecar has to beat direct ghx on the thing it claims to improve: keeping the main agent's context clean while still returning better evidence.
+
+The agent sidecar framework has to prove that delegation to a specialist agent is not just architecture cosplay.
+
+The eval framework has to be strong enough to tell me no.
+
+And I have to be willing to listen.
+
+That is the part I care about most.
+
+I am not afraid of the harsh questions anymore.
+
+Maybe ghx deserves to exist.
+
+Maybe ghx-sidecar deserves to exist.
+
+Maybe the sidecar framework deserves to exist.
+
+Maybe one of them does not.
+
+I want to know.
+
+Not with a launch post. Not with a demo. Not with a feeling that the workflow is nicer.
+
+With enough honest eval data that I can look at the thing I built and say:
+
+this improved the agent.
+
+or it did not.
