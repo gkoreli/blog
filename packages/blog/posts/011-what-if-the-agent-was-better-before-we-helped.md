@@ -1,8 +1,8 @@
 ---
-title: "Does ghx Deserve to Exist?"
-seoTitle: "Evaluating ghx and Agent Sidecars: Does the Code Reconnaissance CLI Deserve to Exist?"
+title: "What If the Agent Was Better Before We Helped?"
+seoTitle: "What If the Agent Was Better Before We Helped? — ghx, Agent Sidecars, and Evals"
 date: "2026-07-05"
-description: "I am building ghx, a code reconnaissance CLI for AI agents, and now an agent sidecar framework around it. The hard question is whether any of it actually improves signal per token compared to plain old gh or the base agent."
+description: "I am building ghx, a code reconnaissance CLI for AI agents, and now an agent sidecar framework around it. The hard question is whether any of it actually improves signal per token compared to plain old gh."
 section: engineering
 tags: [agentic-engineering, evals, ghx, sidecar-agents, opentelemetry, acp]
 series:
@@ -11,7 +11,7 @@ series:
   order: 3
 ---
 
-# Does ghx Deserve to Exist?
+# What If the Agent Was Better Before We Helped?
 
 I am building [ghx](https://github.com/gkoreli/ghx), a code reconnaissance CLI for AI agents.
 
