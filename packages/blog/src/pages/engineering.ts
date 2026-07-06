@@ -11,9 +11,6 @@ export function engineeringPage(posts: PostMeta[]) {
   ];
 
   return html`<div class="section-archive" data-section="engineering">
-  <div class="sec-canvas-banner" style="--sec-accent:var(--section-engineering)">
-    <nisli-neural-canvas mode="flow"></nisli-neural-canvas>
-  </div>
   ${PageHero({
     kicker: 'Personal Publication',
     title: SECTION_LABELS['engineering'],

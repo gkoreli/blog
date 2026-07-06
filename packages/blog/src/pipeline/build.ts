@@ -215,10 +215,10 @@ export async function buildHTML(): Promise<void> {
   writeOutput('essays', pageShell({ title: SECTION_LABELS['essays'], description: SECTION_DESCRIPTIONS['essays'], content: essaysBody.toString(), currentSection: 'essays' }).toString());
 
   const engineeringBody = engineeringPage(sortedPosts.filter(p => p.section === 'engineering'));
-  writeOutput('engineering', pageShell({ title: SECTION_LABELS['engineering'], description: SECTION_DESCRIPTIONS['engineering'], content: engineeringBody.toString(), currentSection: 'engineering', scripts: ['/canvas.js'] }).toString());
+  writeOutput('engineering', pageShell({ title: SECTION_LABELS['engineering'], description: SECTION_DESCRIPTIONS['engineering'], content: engineeringBody.toString(), currentSection: 'engineering' }).toString());
 
   const ossRadarBody = ossRadarPage(sortedPosts.filter(p => p.section === 'oss-radar'));
-  writeOutput('oss-radar', pageShell({ title: SECTION_LABELS['oss-radar'], description: SECTION_DESCRIPTIONS['oss-radar'], content: ossRadarBody.toString(), currentSection: 'oss-radar', scripts: ['/canvas.js'] }).toString());
+  writeOutput('oss-radar', pageShell({ title: SECTION_LABELS['oss-radar'], description: SECTION_DESCRIPTIONS['oss-radar'], content: ossRadarBody.toString(), currentSection: 'oss-radar' }).toString());
 
   const aboutBody = aboutPage();
   const aboutShell = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), currentSlug: 'about' });
@@ -233,7 +233,7 @@ export async function buildHTML(): Promise<void> {
   writeOutput('privacy', privacyShell.toString());
 
   const dlBody = designLanguagePage();
-  const dlShell = pageShell({ title: 'Design Language', description: 'The design substrate of gkoreli.com — palette, typography, glass surfaces, canvas moods, section identities, and philosophy.', content: dlBody.toString(), currentSlug: 'design-language', noindex: true });
+  const dlShell = pageShell({ title: 'Design Language', description: 'The design substrate of gkoreli.com — palette, typography, glass surfaces, canvas moods, section identities, and philosophy.', content: dlBody.toString(), currentSlug: 'design-language', noindex: true, scripts: ['/canvas.js'] });
   writeOutput('design-language', dlShell.toString());
 
   const animationsLabBody = animationsLabPage();

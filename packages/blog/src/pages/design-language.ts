@@ -30,7 +30,7 @@ const PRINCIPLES = [
   { num: 'II',  title: 'DRY for navigation. Not for art.',     body: 'Reuse the navigation system. Reuse the token system. Reuse the component language. But never apply DRY dogma to creative expression. <em>Every post can be its own art object. Every section can have its own atmosphere.</em>' },
   { num: 'III', title: 'One gradient. Many appearances.',      body: 'The brand gradient (Deep Green → Mint → Sky) appears only for identity marks: logo, sparkle separator, #tags. It is the chromatic signature of the publication. <em>Use it sparingly so it lands with weight.</em>' },
   { num: 'IV',  title: 'Section color = section mood.',        body: 'Each section has one accent color. Essays: Warm Gold. Engineering: Blueprint Blue. OSS Radar: Rust. These are not arbitrary — <em>they are emotional tones for different rooms of the museum.</em>' },
-  { num: 'V',   title: 'One canvas mode per context.',         body: 'The neural canvas is the publication\'s life force. Each context gets its own mode. Threshold for OSS Radar (alive, unpredictable). Flow for Engineering (linear, systematic). The homepage stays quiet — it opens straight into the writing. <em>Each post can invent its own.</em>' },
+  { num: 'V',   title: 'The canvas is a post-level instrument.',  body: 'The neural canvas is the publication\'s life force — reserved for immersive posts and the Animations Lab. Threshold: alive, unpredictable. Flow: linear, systematic. Archive surfaces — homepage and section pages — stay quiet and open straight into the writing. <em>Each post can invent its own mode.</em>' },
   { num: 'VI',  title: 'Lora for thought. Mono for administration.', body: 'Lora, Georgia serif carries all editorial voice: headings, body, pull quotes. Monospace carries all metadata: dates, labels, tags, kickers, issue numbers. <em>Two voices, never more. The contrast itself is expressive.</em>' },
 ];
 
@@ -127,12 +127,12 @@ export function designLanguagePage() {
   ${GradSep()}
 
   ${Chapter({ num: '05', title: 'Canvas Moods' })}
-  <p class="dl-body-note">The neural canvas is the publication's life force. Two modes, each assigned to a context — never repeated across the same page type.</p>
+  <p class="dl-body-note">The neural canvas is the publication's life force — a post-level instrument for immersive posts and the Animations Lab. Archive surfaces stay quiet.</p>
   <div class="dl-canvas-demos">
     <div class="dl-canvas-cell">
       <div class="dl-canvas-header">
         <span class="dl-canvas-label">Threshold</span>
-        <span class="dl-canvas-page">OSS Radar</span>
+        <span class="dl-canvas-page">Immersive posts</span>
       </div>
       <div class="dl-canvas-wrap">
         <nisli-neural-canvas mode="threshold"></nisli-neural-canvas>
@@ -142,7 +142,7 @@ export function designLanguagePage() {
     <div class="dl-canvas-cell">
       <div class="dl-canvas-header">
         <span class="dl-canvas-label">Flow</span>
-        <span class="dl-canvas-page">Engineering</span>
+        <span class="dl-canvas-page">Immersive posts</span>
       </div>
       <div class="dl-canvas-wrap">
         <nisli-neural-canvas mode="flow"></nisli-neural-canvas>

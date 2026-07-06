@@ -1,15 +1,5 @@
 /* ── Section landing pages — shared structural styles ── */
 
-/* Canvas banner — used on Engineering (flow) and OSS Radar (threshold) */
-.sec-canvas-banner {
-  position: relative;
-  overflow: hidden;
-  margin: -2rem 0 0 0;
-  height: 180px;
-  border-bottom: 2px solid var(--sec-accent, var(--color-text));
-  transition: border-color 0.25s;
-}
-
 .section-archive-list { margin-top: 0.5rem; }
 
 .section-archive-empty {
@@ -34,8 +24,4 @@
   color: var(--color-text-muted);
   margin-top: 1.75rem;
   opacity: 0.7;
-}
-
-@media (max-width: 768px) {
-  .sec-canvas-banner { margin: 0; }
 }

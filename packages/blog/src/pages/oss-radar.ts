@@ -13,9 +13,6 @@ export function ossRadarPage(posts: PostMeta[]) {
   const [latest, ...archive] = posts;
 
   return html`<div class="section-archive" data-section="oss-radar">
-  <div class="sec-canvas-banner" style="--sec-accent:var(--section-oss-radar)">
-    <nisli-neural-canvas mode="threshold"></nisli-neural-canvas>
-  </div>
   ${PageHero({
     kicker: 'Serialized Publication',
     title: SECTION_LABELS['oss-radar'],
