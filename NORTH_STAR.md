@@ -56,7 +56,8 @@ No decision yet. Until decided: existing posts stay canonical at their URLs, the
 
 ## What Guides Design Work
 
-- **Two strong doors, not four equal ones.** Navigation and homepage present Essays and Engineering as the publication's core. OSS Radar remains reachable without being promoted.
+- **Two strong doors, not four equal ones.** Navigation and section pages present Essays and Engineering as the publication's core. OSS Radar remains reachable without being promoted.
+- **The homepage is a cover + chronological stream** (decided 2026-07-05). One editorial gesture — the cover story — then everything in reverse chronological order with inline section kickers. Section structure lives in the sidebar and section pages; the homepage does not duplicate it as blocks. The stream is the builder-log form: interleaved forms demonstrate the one-sensibility claim.
 - **Stable shell, expressive interior.** The outer frame (sidebar, identity, typography system) changes rarely and deliberately. Posts are where expression lives.
 - **Restraint.** One section signature, not three stacked decorations. Trust typography and spacing before adding visual elements.
 - **One surface at a time.** Design changes are proposed and reviewed per surface (homepage, section page, article shell) — never as a batch redesign.
@@ -65,7 +66,6 @@ No decision yet. Until decided: existing posts stay canonical at their URLs, the
 ## Open Questions
 
 - OSS Radar's fate (collapse / rename / keep) — needs reflection, owner: Goga
-- What the homepage says now that the four-section framing is gone — the description line ("essays, engineering notes, OSS Radar, and Frames") is stale
 - Whether "builder log" deserves explicit surfacing (a phrase in the identity, not necessarily a section)
 
 ## Relationship to Prior Direction
