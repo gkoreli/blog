@@ -47,9 +47,31 @@ So ghx exists to give agents the thing they wanted in the first place:
 
 That story still feels true to me.
 
+The technological positioning matters here too.
+
+ghx is not trying to be Codemap. It sits one step earlier.
+
+[Codemap](https://github.com/JordanCoin/codemap) is useful when a repository has already earned deeper structural analysis. Clone the code, build a map, understand the local shape. That is a real step.
+
+But a lot of agent workflows jump there too early. The agent starts with `gh`, reads random files, maybe clones the repo, maybe runs Codemap, maybe packs too much context, and suddenly a simple reconnaissance question has turned into a context bonfire.
+
+Most of the time the first question is not "map this repo."
+
+The first question is:
+
+> is this repo, file, package, function, or pattern even worth reading?
+
+ghx is the layer before the heavier tools. Remote-first reconnaissance. Look at the repo structure. Search. Map a file before reading it. Read the narrow thing. Decide whether deeper local analysis is justified.
+
+That is why "just let the agent use `gh` and Codemap" misses the point. The expensive part is not only the tool call. It is the uncertainty the agent drags through its context while figuring out what it should have looked at in the first place.
+
+In the future, if the sidecar thesis works, the main agent will not care about this distinction at all. ghx-sidecar will decide when to use ghx CLI, when to escalate to Codemap, when to clone locally, and when to stop. ghx becomes the code reconnaissance product, not because the CLI does everything, but because the sidecar brain owns the reconnaissance decision.
+
+That story still has to survive evals.
+
 It is also not enough.
 
-Because a tool can have a beautiful story and still fail the baseline. A CLI can feel elegant and still make the agent worse. A skill can encode knowledge and still pollute the context. A sidecar can compress the main agent's view while wasting a different budget somewhere else.
+Because a product can have a beautiful story and still fail the baseline. A CLI can feel elegant and still make the agent worse. A skill can encode knowledge and still pollute the context. A sidecar can compress the main agent's view while wasting a different budget somewhere else.
 
 The hard question is not whether ghx sounds useful.
 
