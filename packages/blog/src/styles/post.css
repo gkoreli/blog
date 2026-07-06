@@ -40,6 +40,17 @@
   color: var(--color-text-muted);
 }
 
+/* Standfirst — the article's first spoken line. Primary text, magazine-deck
+   energy: same doorway job as .post-orient, but read as part of the piece. */
+.post-lede {
+  max-width: 68ch;
+  margin: 0 auto 3rem;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--color-text);
+}
+
 /* Series trail — quiet editorial list linking posts in the same series */
 .series-trail {
   margin-top: 3rem;

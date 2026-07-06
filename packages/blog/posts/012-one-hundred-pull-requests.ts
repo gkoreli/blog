@@ -4,10 +4,10 @@ import { PrStreamHero, SectionNum, Insight, ScrollReveal, PullQuote, SectionBrea
 
 export const meta: PostMeta = {
   title: 'One Hundred Pull Requests',
-  seoTitle: 'One Hundred Pull Requests — Building backlog-mcp (an MCP Server) and the nisli UI Framework with AI Agents',
-  alternativeHeadline: 'backlog-mcp, MCP server architecture, agentic engineering, and the weekend birth of the nisli web framework',
+  seoTitle: 'Building an MCP Server with AI Agents: 100 Pull Requests',
+  alternativeHeadline: 'backlog-mcp, MCP server architecture, agentic engineering, and the weekend birth of the nisli UI framework',
   date: '2026-07-05',
-  description: 'Part 1 of the backlog-mcp saga: building an MCP server for AI agents in the open — the personal pain that started it, the weekend the nisli UI framework was born, and why the pull requests stopped.',
+  description: 'backlog-mcp part 1: an MCP server for AI agents, built in the open — the pain that started it, the weekend nisli was born, why the PRs stopped.',
   section: 'engineering' as const,
   tags: ['backlog-mcp', 'mcp', 'agentic-engineering', 'nisli', 'build-in-public'],
   layout: 'immersive',
@@ -30,7 +30,7 @@ export function preamble() {
 export function article() {
   return html`
 <article class="post-content">
-  <p class="post-orient">
+  <p class="post-lede">
     <a href="https://github.com/gkoreli/backlog-mcp" target="_blank">backlog-mcp</a> is an open-source MCP server for AI agent task management; <a href="https://github.com/gkoreli/nisli" target="_blank">nisli</a> is the zero-dependency UI framework born inside it — this is the story of their first 117 pull requests.
   </p>
 
@@ -65,7 +65,7 @@ export function article() {
       The project starts on the evening of December 19, 2025. The first ten commits — schema, storage, a working MCP server — span eighteen minutes in the git log. The decision that shaped everything comes three weeks later, in PR #3: storage moves from JSON to individual markdown files with YAML frontmatter. Tasks become human-readable, git-diffable, agent-editable. Nobody has reversed that decision. Everything now stands on it.
     </p>
     <p>
-      The second founding decision is the one I would defend in front of a protocol committee. An agent editing a task through MCP had to read the whole object and write the whole object back. The first ADR in the repo counts the cost: 10,000+ tokens for a one-line edit, roughly 100× worse than what the same agent pays to edit a local file. PR #23 ships <code>write_resource</code> — surgical operations (<code>str_replace</code>, <code>insert</code>, <code>append</code>) over <code>mcp://</code> URIs.
+      The second founding decision is the one I would defend in front of a protocol committee. An agent editing a task through MCP had to read the whole object and write the whole object back. The first ADR in the repo counts the cost: 10,000+ tokens for a one-line edit, a hundred times what the same agent pays to edit a local file. PR #23 ships <code>write_resource</code> — surgical operations (<code>str_replace</code>, <code>insert</code>, <code>append</code>) over <code>mcp://</code> URIs.
     </p>
 
     ${PullQuote({ content: html`"This isn't just about backlog-mcp — it's about establishing a universal pattern for the entire MCP ecosystem."`, cite: '— ADR 0001, "Writable Resources Design", January 2026' })}
