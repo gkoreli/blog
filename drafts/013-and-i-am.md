@@ -14,5 +14,5 @@ I want to be an artist, creator, builder, father, partner, husband, son, brother
 <!--
 Typed by Goga's hands — no prompt file ships with this one.
 Skill: .agents/skills/personal-essays/SKILL.md
-When it's done: mv drafts/012-and-i-am.md packages/blog/posts/
+When it's done: mv drafts/013-and-i-am.md packages/blog/posts/
 -->
