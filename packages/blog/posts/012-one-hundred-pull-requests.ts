@@ -7,16 +7,21 @@ export const meta: PostMeta = {
   seoTitle: 'One Hundred Pull Requests — Building backlog-mcp (an MCP Server) and the nisli UI Framework with AI Agents',
   alternativeHeadline: 'backlog-mcp, MCP server architecture, agentic engineering, and the weekend birth of the nisli web framework',
   date: '2026-07-05',
-  description: '108 merged PRs, 137 architecture decision records, and a UI framework built in one weekend after a rejected React spike. What building backlog-mcp — an MCP server for AI agents — is teaching me about agentic engineering.',
+  description: 'Part 1 of the backlog-mcp saga: building an MCP server for AI agents in the open — the personal pain that started it, the weekend the nisli UI framework was born, and why the pull requests stopped.',
   section: 'engineering' as const,
   tags: ['backlog-mcp', 'mcp', 'agentic-engineering', 'nisli', 'build-in-public'],
   layout: 'immersive',
   slug: 'one-hundred-pull-requests',
+  series: {
+    id: 'backlog-mcp-saga',
+    title: 'The backlog-mcp saga',
+    order: 1,
+  },
 };
 
 export function preamble() {
   return PrStreamHero({
-    kicker: 'Engineering · Builder Log · backlog-mcp',
+    kicker: 'Engineering · The backlog-mcp Saga · Part 1',
     title: html`<h1>One Hundred<br><em>Pull Requests</em></h1>`,
     byline: html`<p class="prs-byline">The first 78 days of backlog-mcp, an MCP server built with AI agents —<br>and why the pull requests stopped.</p>`,
   });
@@ -31,24 +36,19 @@ export function article() {
 
   <!-- § 0 — THE SHAPE OF THE RUN -->
   ${ScrollReveal({ content: html`
-    ${SectionNum({ label: '§ 0 — The Shape of the Run' })}
-    <h2>The animation above is a <em>chart</em></h2>
+    ${SectionNum({ label: '§ 0 — Where This Starts' })}
+    <h2>Seventy-eight days, <em>every tick real</em></h2>
     <p>
-      Every tick is a real merged pull request. One hundred and eight of them, numbered 1 to 117, positioned by the day they merged. The dense column on the left is January 16 — ten PRs, launch day. The gold cluster is the weekend I built my own UI framework. The long silence is a month where I merged nothing. The last column is April 3: eight PRs in one day. Then never again. The small ticks after it are what the project runs on now — direct commits to main.
-    </p>
-
-    ${StatRow({ items: [
-      { value: '108', label: html`merged PRs, numbered 1–117` },
-      { value: '+97,602', label: html`lines added, −25,639 deleted` },
-      { value: '137', label: html`architecture decision records` },
-      { value: '78', label: html`days, Jan 16 → Apr 3, 2026` },
-    ] })}
-
-    <p>
-      backlog-mcp is a task backlog that AI agents read and write through the <a href="https://modelcontextprotocol.io" target="_blank">Model Context Protocol</a>. I built almost all of it by steering agents, and the pull request was the unit of that work: one delegation, one review boundary, one merge. Those 117 PRs were instrumental. And then I outgrew them — or I quit on rigor and dressed it up as process. This post argues it was the first one. You get to decide.
+      backlog-mcp exists because of a personal pain. I work with AI agents every day, and every task manager I could reach was built for teams of humans coordinating with humans. The agent — the thing doing half my engineering — was nobody's user. Plans lived in chat transcripts that would never be read again. Every session started from zero. On the evening of December 19, 2025, I started building the tool I couldn't buy: the first ten commits — schema, storage, a working <a href="https://modelcontextprotocol.io" target="_blank">MCP</a> server — span eighteen minutes in the git log.
     </p>
     <p>
-      Three claims in this post are still live. nisli, the framework, has one serious user: me. The memory system's north star — an agent measurably smarter in week 10 than in week 1 — is unmeasured. And the claim that pull requests are scaffolding for agentic work can be wrong in a way I would have to publicly walk back. I have argued before that the engineer's role is expanding into an <a href="/the-agentic-product-engineer">agentic product engineer</a>. This project is where that argument gets tested with my own time.
+      The animation above is what happened next. Every tick is a real merged pull request, positioned by the day it merged. The dense column on the left is launch day. The gold cluster is the weekend I ran out of alternatives and built my own UI framework. The long silence is a month where I merged nothing, and the last column is April 3 — eight merges, then never again. The faint ticks after it are what the project runs on now: direct commits to main.
+    </p>
+    <p>
+      This is part 1 of the backlog-mcp saga — the product story, told from the perspective of its first hundred pull requests. Not the numbers; the numbers are a consequence. The PRs were the unit of a working method: one delegation, one review boundary, one merge. They were instrumental, and then I outgrew them — or I quit on rigor and dressed it up as process. This post argues it was the first one. You get to decide.
+    </p>
+    <p>
+      Three claims in this post are still live. nisli, the framework, has one serious user: me. The memory system's north star — an agent measurably smarter in week 10 than in week 1 — is unmeasured. And the claim that pull requests are scaffolding for agentic work can be wrong in a way I would have to publicly walk back. I have argued before that the engineer's role is expanding into an <a href="/the-agentic-product-engineer">agentic product engineer</a>. This project is where I test that with my own time.
     </p>
   ` })}
 
@@ -242,13 +242,24 @@ htmlStr += needsQuotes ? <span class="fn">\`"\${createMarker(i)}"\`</span> : <sp
 
   <!-- § 7 — CLOSING -->
   ${ScrollReveal({ content: html`
-    ${SectionNum({ label: '§ 7 — Closing' })}
+    ${SectionNum({ label: '§ 7 — The Tally' })}
     <h2>What one hundred pull requests <em>buy</em></h2>
     <p>
       Not the software — the practice. Decisions on disk. Dead ends numbered instead of deleted. APIs written for the psychology of the model on the other side. Scaffolding held exactly as long as it earns its overhead, and dropped the day it doesn't.
     </p>
     <p>
-      I want people to find this project, and I want them to find me — that want is typed verbatim into the raw prompt behind this post, and you can read it on the <a href="/one-hundred-pull-requests/prompts">prompts page</a>. Two follow-ups are already owed: nisli's internals with benchmarks and the unflattering parts, and the memory eval — whether week 10 actually beats week 1. The repo is open. The ADRs read like a lab notebook because that is what they are.
+      And a texture no changelog records. The framework ADR lands at 21:19 UTC on a Saturday. The implementation lands at 05:32 UTC on a Monday, and ten merges follow before that day ends. Nobody assigned any of this. No sprint, no standup, no team. Building in the open, alone with agents, looks exactly like the chart at the top of this page — bursts where the determination spiked, silence where the thinking got long, and not one tick placed by anyone but me.
+    </p>
+
+    ${StatRow({ items: [
+      { value: '108', label: html`merged PRs, numbered 1–117` },
+      { value: '+97,602', label: html`lines added, −25,639 deleted` },
+      { value: '137', label: html`architecture decision records` },
+      { value: '78', label: html`days, Jan 16 → Apr 3, 2026` },
+    ] })}
+
+    <p>
+      The numbers are the consequence. The saga is the point, and it is not over. Part 2 of this series is nisli's internals — benchmarks and the unflattering parts included. Part 3 is the memory eval: whether week 10 actually beats week 1. I want people to find this project, and I want them to find me — that want is typed verbatim into the raw prompt behind this post, on the <a href="/one-hundred-pull-requests/prompts">prompts page</a>.
     </p>
     <p>
       108 merges. 137 recorded decisions. One framework. The claims are live and at least one of them can come back wrong.

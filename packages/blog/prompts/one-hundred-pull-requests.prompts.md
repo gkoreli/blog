@@ -5,3 +5,5 @@ i am 117 PRs, and then at some point i moved to making commits and pushing direc
 write the .ts based advanced blog, you can have some cross references with rationale and why they matter relative to the article we are writing. Make sure to write a catchy engineering article. Be mindful about SEO so that people find out about us, about backlog mcp, about nisli/core ui framework and about me.
 ---
 Also you can start another exploration to figure out what it means to write like Goga and what it means to write catchy articles in present tense. read the my personal creative writing skill thats mutual for both of us .agents/skills/personal-essays/SKILL.md - respect it and the article needs to respect it as well
+---
+i think the article is talking too much about the numbers as if its like analytics, the numbers are a consequence the article is about the saga, its like a part 1 of the backlog mcp as a product article series, but from the perspective of 100 PRs, what it means, what does it take to be building in open source as Goga, what does it mean to be so determined to be building from personal pain of not having proper task management tools and so on.
