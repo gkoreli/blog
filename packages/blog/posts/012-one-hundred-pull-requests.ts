@@ -42,10 +42,7 @@ export function article() {
       backlog-mcp exists because of a personal pain. I work with AI agents every day, and every task manager I could reach was built for teams of humans coordinating with humans. The agent — the thing doing half my engineering — was nobody's user. Plans lived in chat transcripts that would never be read again. Every session started from zero. On the evening of December 19, 2025, I started building the tool I couldn't buy: the first ten commits — schema, storage, a working <a href="https://modelcontextprotocol.io" target="_blank">MCP</a> server — span eighteen minutes in the git log.
     </p>
     <p>
-      The animation above is what happened next. Every tick is a real merged pull request, positioned by the day it merged. There are 108 ticks, not 117 — nine PRs died in review and never touched main. That gap is not sloppy bookkeeping; it is evidence, and § 5 collects it. The dense column on the left is launch day. The gold cluster is the weekend I ran out of alternatives and built my own UI framework. The long silence is a month where I merged nothing, and the last column is April 3 — eight merges, then never again. The faint ticks after it are what the project runs on now: direct commits to main.
-    </p>
-    <p>
-      This is part 1 of the backlog-mcp saga — the product story, told from the perspective of its first hundred pull requests. Not the numbers; the numbers are a consequence. The PRs were the unit of a working method: one delegation, one review boundary, one merge. They were instrumental, and then I outgrew them — or I quit on rigor and dressed it up as process. This post argues it was the first one. You get to decide.
+      This is part 1 of the backlog-mcp saga — the product story, told from the perspective of its first hundred pull requests. The animation above is not an illustration; every tick is a real merged PR, placed by the day it merged. The PRs were the unit of a working method: one delegation, one review boundary, one merge. They were instrumental, and then I outgrew them — or I quit on rigor and dressed it up as process. This post argues it was the first one. You get to decide.
     </p>
     <p>
       Three claims in this post are still live. nisli, the framework, has one serious user: me. The memory system's north star — an agent measurably smarter in week 10 than in week 1 — is unmeasured. And the claim that pull requests are scaffolding for agentic work can be wrong in a way I would have to publicly walk back. I have argued before that the engineer's role is expanding into an <a href="/the-agentic-product-engineer">agentic product engineer</a>. This project is where I test that with my own time.
@@ -121,6 +118,9 @@ export function article() {
       <li><strong>Monday, Feb 9, 05:32 UTC</strong> — PR #71: the framework, implemented. Seven modules, 124 tests passing. By end of day, ten PRs merged and the first components migrated.</li>
       <li><strong>Same day, 13:18 UTC</strong> — commit <code>0b4415d</code>: <em>remove react skill</em>. PR #76's body reads: "deleted unused vercel-react-best-practices skill (~6100 lines)."</li>
     </ul>
+    <p>
+      This is the gold cluster in the animation at the top of the page.
+    </p>
     <p>
       The React spike dies without shipping a single React line. Let me be fair to the loser, because React would have worked. It is better at almost everything — ecosystem, tooling, hiring, an answer on StackOverflow for every error you will ever see. None of that was what I needed. I needed a UI layer that agents write correctly on the first pass, that I can hold in my head whole, and that adds zero dependencies to a tool people run with <code>npx</code>. Lit came closest, and the ADR records why it lost: "Lit's template engine is battle-tested across millions of users, but our scope (16 components, known use cases) doesn't justify that complexity."
     </p>
