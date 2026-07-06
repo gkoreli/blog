@@ -24,9 +24,7 @@ The messier truth is that I am now building at least four things at the same tim
 - an agent sidecar framework, where a main agent delegates a whole competence domain to a cheaper specialist agent
 - an eval framework, because I do not trust myself to decide whether any of this deserves to exist by vibes
 
-This is a ridiculous stack of work to create while trying to answer one product question.
-
-But the question is harsh enough that I do not see a shortcut anymore:
+This is a ridiculous stack of work to create for one product question, but the question is harsh enough that I do not see a shortcut anymore:
 
 > Does ghx actually make agents better, or did I build a beautiful ritual around `gh`?
 
@@ -47,21 +45,17 @@ So ghx exists to give agents the thing they wanted in the first place:
 
 That story still feels true to me.
 
-The technological positioning matters here too.
+The technological positioning matters here too: ghx is not trying to be Codemap. It sits one step earlier.
 
-ghx is not trying to be Codemap. It sits one step earlier.
+[Codemap](https://github.com/JordanCoin/codemap) is useful when a repository has already earned deeper structural analysis: clone the code, build a map, understand the local shape. That is a real step. The mistake is making it the first step.
 
-[Codemap](https://github.com/JordanCoin/codemap) is useful when a repository has already earned deeper structural analysis. Clone the code, build a map, understand the local shape. That is a real step.
+A lot of agent workflows jump there too early. The agent starts with `gh`, reads random files, maybe clones the repo, maybe runs Codemap, maybe packs too much context, and suddenly a simple reconnaissance question has turned into a context bonfire.
 
-But a lot of agent workflows jump there too early. The agent starts with `gh`, reads random files, maybe clones the repo, maybe runs Codemap, maybe packs too much context, and suddenly a simple reconnaissance question has turned into a context bonfire.
-
-Most of the time the first question is not "map this repo."
-
-The first question is:
+Most of the time the first question is not "map this repo." The first question is:
 
 > is this repo, file, package, function, or pattern even worth reading?
 
-ghx is the layer before the heavier tools. Remote-first reconnaissance. Look at the repo structure. Search. Map a file before reading it. Read the narrow thing. Decide whether deeper local analysis is justified.
+ghx is the layer before the heavier tools: remote-first reconnaissance, repo structure, search, file maps before full reads, narrow reads before local analysis. It helps the agent decide whether deeper work is justified before the workflow commits to it.
 
 That is why "just let the agent use `gh` and Codemap" misses the point. The expensive part is not only the tool call. It is the uncertainty the agent drags through its context while figuring out what it should have looked at in the first place.
 
@@ -140,15 +134,11 @@ Not vibes.
 
 ## The sidecar thesis
 
-The sidecar idea is bigger than ghx, but ghx is the proof.
+The sidecar idea is bigger than ghx, but ghx is the proof. The main agent's context is sacred; that is the whole product belief.
 
-The main agent's context is sacred.
+If I am using a powerful coding agent, I do not want to spend its context on 170 lines of ghx CLI doctrine, GitHub search gotchas, map-before-read rules, backend choice, command syntax, and repo exploration traces. I want the main agent doing the thing it is good at: engineering.
 
-That is the whole product belief. If I am using a powerful coding agent, I do not want to spend its context on 170 lines of ghx CLI doctrine, GitHub search gotchas, map-before-read rules, backend choice, command syntax, and repo exploration traces. I want the main agent doing the thing it is good at: engineering.
-
-Reconnaissance should move behind a boundary.
-
-The main agent should ask:
+Reconnaissance should move behind a boundary. The main agent should ask:
 
 ```text
 where is this behavior implemented? show me the evidence.
@@ -156,9 +146,7 @@ where is this behavior implemented? show me the evidence.
 
 And the sidecar should decide what that means: ghx search, ghx map, ghx read, local clone, Codemap, stop, escalate, cite uncertainty.
 
-The moat is not the CLI.
-
-The moat is the agentic brain: the doctrine for what to inspect, what to ignore, when to read, when to map, when to escalate, and when to stop. ghx CLI, Codemap, `gh`, local clone, OTel traces — these are tools. The product is the reconnaissance judgment that makes those tools disappear from the main agent's head.
+The moat is not the CLI. The moat is the agentic brain: the doctrine for what to inspect, what to ignore, when to read, when to map, when to escalate, and when to stop. ghx CLI, Codemap, `gh`, local clone, OTel traces — these are tools. The product is the reconnaissance judgment that makes those tools disappear from the main agent's head.
 
 That is the thesis.
 
@@ -300,19 +288,13 @@ Signal per token asks: how much useful evidence did each unit of context buy?
 
 That is the metric this product wants to optimize.
 
-The standard is simple and brutal:
-
-Every layer has to earn itself.
+The standard is simple and brutal: every layer has to earn itself.
 
 The CLI. The sidecar. The framework. The eval framework too.
 
-Maybe signal per token becomes one of the ways we talk about whether agentic systems are actually getting better.
+Maybe signal per token becomes one of the ways we talk about whether agentic systems are actually getting better. Maybe not.
 
-Maybe not.
-
-I want to know.
-
-Not with a launch post. Not with a demo. Not with a feeling that the workflow is nicer.
+I want to know — not with a launch post, not with a demo, not with a feeling that the workflow is nicer.
 
 With enough honest eval data that I can look at the thing I built and say:
 
