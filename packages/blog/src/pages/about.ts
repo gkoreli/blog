@@ -14,6 +14,8 @@ export function aboutPage() {
 
   <p>I'm documenting the shift as I live it: the concepts, the mental models, the open source tools I'm building along the way, and the things I get wrong. If you're going through the same transition, I hope this helps.</p>
 
+  <p>This site is that record — a personal publication. One author, many forms, one sensibility.</p>
+
   <h2>Projects</h2>
 
   <p><a ${ext('https://github.com/gkoreli/backlog-mcp')}>backlog-mcp</a> — A human-agent context engineering backlog. Task management designed for AI agent workflows — agents create tasks, track progress, attach artifacts, and search their own work history.</p>

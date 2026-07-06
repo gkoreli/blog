@@ -3,7 +3,6 @@ import type { PostMeta } from '../lib/frontmatter.js';
 import { SECTION_LABELS } from '../lib/frontmatter.js';
 import { formatDateShort } from '../lib/dates.js';
 import {
-  Masthead,
   SectionHeader,
   ArticleGrid,
   OSSRadarCard,
@@ -32,8 +31,6 @@ export function homePage(posts: PostMeta[]) {
   const ossRadar = posts.filter(p => p.section === 'oss-radar');
 
   return html`<div class="home">
-  ${Masthead()}
-
   ${SectionHeader({ label: 'Featured' })}
   ${featured ? FeaturedCard({ post: featured }) : ''}
 

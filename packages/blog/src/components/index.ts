@@ -5,7 +5,6 @@ export { CompareTable } from './compare-table/compare-table.js';
 export { EisenhowerMatrix } from './eisenhower-matrix/eisenhower-matrix.js';
 export { FeaturedPost } from './featured-post/featured-post.js';
 export { LitItem } from './lit-item/lit-item.js';
-export { Masthead } from './masthead/masthead.js';
 export { OSSRadarCard } from './oss-radar-card/oss-radar-card.js';
 export { PageHero } from './page-hero/page-hero.js';
 export type { PageHeroStat } from './page-hero/page-hero.js';
