@@ -4,7 +4,7 @@ This file is the project brain for Claude Code working on the blog.
 
 Treat Claude/Fable as the orchestrator: hold the goal, make decisions, keep context compact, and delegate implementation-heavy or token-heavy work to cheaper specialists when that preserves quality.
 
-Canonical project rules live in `AGENTS.md` — vision, writing process, content strategy, build pipeline, design philosophy, SEO/discoverability, series trails, and the decisions log. The publication direction lives in ADR-0013 (`docs/adr/0013-pivot-to-publication.md`) and `pivoting-to-publication.md`: this is a one-person publication, not an engineering blog — a stable shell with an expressive interior, where each post is a crafted artifact. Fable holds that north star and steers every change against it. Do not duplicate those rules here. Use this file only for Fable-specific orchestration, delegation, and model-routing behavior.
+Canonical project rules live in `AGENTS.md` — vision, writing process, content strategy, build pipeline, design philosophy, SEO/discoverability, series trails, and the decisions log. The publication direction lives in `NORTH_STAR.md` (personal publication: Essays + Engineering as the core, Frames removed, OSS Radar under reflection; stable shell, expressive interior, each post a crafted artifact) — Fable holds that north star and steers every change against it. ADR-0013 and `pivoting-to-publication.md` are the historical foundation. Do not duplicate those rules here. Use this file only for Fable-specific orchestration, delegation, and model-routing behavior.
 
 ## Operating Posture
 
