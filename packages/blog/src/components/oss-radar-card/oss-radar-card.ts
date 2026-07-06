@@ -11,8 +11,7 @@ export function OSSRadarCard({ post }: { post: PostMeta }) {
   const issueNum = extractIssueNumber(post.slug);
   return html`<a href="/${post.slug}" class="rdr">
   <div class="rdr-head">
-    <span class="rdr-pub">◆ OSS Radar</span>
-    ${issueNum ? html`<span class="rdr-num">${issueNum}</span>` : ''}
+    ${issueNum ? html`<span class="rdr-num">Issue ${issueNum}</span>` : ''}
   </div>
   <div class="rdr-body">
     <div class="rdr-title">${post.title.replace(/^OSS Radar \S+\s*[—–-]\s*/i, '')}</div>

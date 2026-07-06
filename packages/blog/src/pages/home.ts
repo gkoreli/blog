@@ -8,31 +8,26 @@ import {
   OSSRadarCard,
 } from '../components/index.js';
 
-function FeaturedCard({ post }: { post: PostMeta }) {
-  return html`<a href="/${post.slug}" class="feat">
-  <div class="feat-wash"></div>
-  <div class="feat-inner">
-    <div class="feat-meta">
-      <span class="feat-badge">Featured</span>
-      <span class="feat-sec">${SECTION_LABELS[post.section]}</span>
-      <span class="feat-date">${formatDateShort(post.date)}</span>
-    </div>
-    <h2 class="feat-title">${post.title}</h2>
-    <p class="feat-desc">${post.description}</p>
-    <span class="feat-cta">Read article <span class="feat-arr">→</span></span>
+function CoverStory({ post }: { post: PostMeta }) {
+  return html`<a href="/${post.slug}" class="cover">
+  <div class="cover-meta">
+    <span class="cover-sec">${SECTION_LABELS[post.section]}</span>
+    <span class="cover-date">${formatDateShort(post.date)}</span>
   </div>
+  <h2 class="cover-title">${post.title}</h2>
+  <p class="cover-desc">${post.description}</p>
 </a>`;
 }
 
 export function homePage(posts: PostMeta[]) {
   const featured = posts.find(p => p.featured) ?? posts[0];
   const essays = posts.filter(p => p.section === 'essays' && p.slug !== featured?.slug);
-  const engineering = posts.filter(p => p.section === 'engineering');
+  const engineering = posts.filter(p => p.section === 'engineering' && p.slug !== featured?.slug);
   const ossRadar = posts.filter(p => p.section === 'oss-radar');
 
   return html`<div class="home">
   ${SectionHeader({ label: 'Featured' })}
-  ${featured ? FeaturedCard({ post: featured }) : ''}
+  ${featured ? CoverStory({ post: featured }) : ''}
 
   ${essays.length > 0 ? html`${SectionHeader({ label: 'Essays', href: '/essays', dotColor: 'var(--section-essays)' })}
   ${ArticleGrid({ posts: essays.slice(0, 4), columns: 1, showKicker: false })}` : ''}

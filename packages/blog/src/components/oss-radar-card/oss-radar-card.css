@@ -24,17 +24,6 @@ a.rdr:hover .rdr-title { color: var(--color-link); }
   transition: background 0.25s;
 }
 
-.rdr-pub {
-  font-family: var(--font-mono);
-  font-size: var(--text-2xs);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(250, 248, 245, 0.4);
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
 .rdr-num {
   font-family: var(--font-mono);
   font-size: var(--text-xs);

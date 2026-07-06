@@ -1,84 +1,24 @@
 /* ── Homepage ── */
 
-/* ── Featured glass card ── */
-a.feat {
+/* ── Cover story — typographic lead, no chrome ── */
+a.cover {
   display: block;
-  position: relative;
-  overflow: hidden;
   text-decoration: none;
   color: var(--color-text);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  margin: 1.75rem 0 0;
-  background: var(--glass-panel-bg);
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  border: 1px solid var(--glass-panel-border);
-  box-shadow: var(--glass-panel-shadow);
-  transition: box-shadow 0.35s ease, transform 0.35s ease, border-color 0.35s ease;
+  margin: 1.9rem 0 0.5rem;
 }
 
-/* Shimmer on load */
-a.feat::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    110deg,
-    transparent 30%,
-    rgba(255,255,255,0.06) 45%,
-    rgba(255,255,255,0.10) 50%,
-    rgba(255,255,255,0.06) 55%,
-    transparent 70%
-  );
-  transform: translateX(-100%);
-  animation: feat-shimmer 2s ease-out 0.8s forwards;
-  pointer-events: none;
-}
+a.cover:visited { color: var(--color-text); }
+a.cover:hover .cover-title { color: var(--color-link); }
 
-a.feat:visited { color: var(--color-text); }
-
-a.feat:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--color-link) 40%, var(--glass-panel-border));
-  box-shadow: var(--glass-panel-shadow), 0 8px 32px -8px color-mix(in srgb, var(--color-link) 14%, transparent);
-}
-
-a.feat:hover .feat-title { color: var(--color-link); }
-a.feat:hover .feat-arr { transform: translateX(4px); }
-
-/* Sage wash — gives glass card a subtle warm-green tint */
-.feat-wash {
-  position: absolute;
-  inset: 0;
-  background: var(--glass-sage-wash);
-  pointer-events: none;
-}
-
-.feat-inner { position: relative; }
-
-.feat-meta {
+.cover-meta {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.75rem;
-  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.85rem;
 }
 
-/* Featured pill badge */
-.feat-badge {
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-link);
-  background: var(--glass-sage-bg);
-  border: 1px solid var(--glass-sage-border);
-  padding: 0.2em 0.65em;
-  border-radius: 999px;
-}
-
-.feat-sec {
+.cover-sec {
   font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 0.1em;
@@ -86,42 +26,22 @@ a.feat:hover .feat-arr { transform: translateX(4px); }
   color: var(--color-text-muted);
 }
 
-.feat-date {
+.cover-date {
   font-size: 0.78rem;
   color: var(--color-text-muted);
-  margin-left: auto;
 }
 
-.feat-title {
-  font-size: 1.55rem;
-  line-height: 1.22;
-  margin-bottom: 0.6rem;
+.cover-title {
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.8rem;
   transition: color 0.2s;
 }
 
-.feat-desc {
-  font-size: 0.9rem;
+.cover-desc {
+  font-size: 1rem;
   line-height: 1.65;
   color: var(--color-text-muted);
-  margin-bottom: 1rem;
-}
-
-.feat-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--color-link);
-}
-
-.feat-arr {
-  display: inline-block;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* ── Animations ── */
-@keyframes feat-shimmer {
-  from { transform: translateX(-100%); }
-  to   { transform: translateX(100%); }
+  max-width: 38rem;
 }
