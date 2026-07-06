@@ -21,6 +21,7 @@ What this means practically:
 - The publication presents two confident sections: **Essays** and **Engineering**.
 - **OSS Radar** is under reflection (see below) — it stays for now but does not get promoted.
 - Frames disappears from navigation, homepage, and the section schema. The code scaffolding gets removed, not hidden.
+- Frames' future home is a dedicated site — its own shell, its own domain (`gogakoreli.com` is a candidate), designed for images rather than reading. **Gated on an actual body of photographs, not before.** The bottleneck was never hosting; building the museum before the photographs exist is infrastructure-as-procrastination. Shoot and curate first — the site earns its build.
 - No new section is added until at least three posts exist that don't fit the current sections. Content first, container second.
 
 ## Sections
