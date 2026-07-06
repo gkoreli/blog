@@ -28,3 +28,16 @@ Research/grounding from local ghx repo after `git pull --ff-only origin mainline
 - ADR-0016.6 defines SPT at main-agent, sidecar-internal, and workflow levels: signal = correctness × evidence, tokens estimated by chars/4, scaled per 1,000 tokens.
 - ADR-0016.3/0016.4/0016.5 explain the hard parts: plain baseline can accidentally use ghx, tool calls were opaque, ACP resume can replay old tool calls, OTel traces are emitted for audit, preliminary runs must not masquerade as verdicts.
 - `go test ./internal/sidecar/evals ./internal/sidecar` passed locally.
+---
+you can see one of the verdicts already: /Users/goga/Documents/goga/ghx/docs/evals/gate-run-2026-07/verdict.md 
+At first it scared me thinking that future of ghx is obscure, it didn't give us meaningful results, but then i read the readme file and realized a major flaw and failure pattern in the evals framework: 1. BLOCKED (8/22) — e.g. gin-routing_ghx-sidecar_1783287778632.json:
+   the action log shows the downstream agent *searched its deferred-tool
+   list* for a tool named "ghx" ("No matching deferred tools found") and
+   took the escape hatch. The persona prompt (internal/sidecar/prompt.go)
+   never states that ghx is a CLI binary on PATH to be executed via the
+   shell tool, while it *does* script the exact BLOCKED answer. The session
+   also inherits the user's full Claude Code tool surface (MCP servers,
+   deferred tools), which makes the tool-list detour attractive and the
+   failure intermittent.
+
+the ghx cli was not accessible for the ghx sidecar, thats a critical failure pattern, defeats the entire purpose of evaluation. But the meaningful mental model switch happened, i am trusting the evaluation process to make judgment calls and decisions, to step back. I am glad i am iterating on the evaluation framework instead of ghx as a product itself. Because in general all i wanted to build and spend time on is product, i dont want to care about other things, this again stems from my perfectionism and my failure pattern that i have already talked about: https://gkoreli.com/i-thought-building-was-enough - The Builder’s Perfectionism Trap, all i want to do is to build and build the product. However, running evaluations and stepping back and assessing how the product is progressing and is it meaningful at all or not. Does it increase the signals per token for the main agent and ghx sidecar agent both or not? Without spending this much time here, and without updating my mental model, the ghx product would never see the light of the day even though in the hindsight it seems very useful and practical tool, in the future it will transcend being a tool and will become a product in itself. A code reconnaissance product. It will become the first product that establishes agent sidecar framework - that i am establishing and inventing as a consequence of building ghx product. I am coining the signal per token metric and terminology myself as well, because without it it is really hard to measure like delegating all this context and saving context from the main agents increases the signals per token for the main agent to focus on engineering instead of focusing on the code exploration. Signals per token is going to be really meaningful measure/metric going forward in the future.

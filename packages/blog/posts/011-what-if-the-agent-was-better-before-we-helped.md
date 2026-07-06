@@ -198,9 +198,29 @@ A task can leak its own expected answer in the prompt, and then the agent can sc
 
 A preliminary n=1 smoke run can print something that looks like a verdict if the reporter is not careful.
 
+And now I have a more painful example.
+
+One of the first gate-run verdicts scared me. At first glance, it made the future of ghx feel obscure. The results did not look meaningful enough to justify the direction. For a minute, I had the very human reaction: maybe this whole thing is weaker than I thought.
+
+Then I read the run notes and found a critical failure pattern in the eval framework itself.
+
+The ghx-sidecar agent was not actually using ghx correctly. In some BLOCKED episodes, the downstream agent searched its inherited Claude Code tool surface for a deferred tool named `ghx`, found nothing, and took the escape hatch. The persona prompt never made the simple thing explicit enough: ghx is a CLI binary on PATH. Execute it through the shell.
+
+That defeats the entire purpose of the sidecar profile.
+
+If the ghx-sidecar eval is supposed to test whether a specialist agent using ghx can beat direct ghx or plain `gh`, but the specialist does not reliably know that ghx is a CLI binary it can execute, then the verdict is not a product verdict. It is an eval-framework bug report.
+
+That distinction matters.
+
+The old version of me would have been furious because I wanted to build the product, not all this machinery around the product. I still feel that. I want to build ghx. I want to build the sidecar. I want to make the thing useful.
+
+But this is exactly the mental model shift I need.
+
+I am learning to trust the evaluation process enough to let it stop me, not just validate me.
+
 This is exactly why I do not trust vibes here.
 
-It is not enough to run evals. The evals have to be honest enough that I would believe them if they told me to kill my own product direction.
+It is not enough to run evals. The evals have to be honest enough that I would believe them if they told me to kill my own product direction. They also have to be debuggable enough that when they say something scary, I can tell whether they found a product failure or an evaluation failure.
 
 That means the boring machinery matters:
 
@@ -246,6 +266,24 @@ Otherwise this is all theater.
 
 ## The product demands the framework
 
+This is where this connects back to a pattern I already wrote about in [The Builder’s Perfectionism Trap](/i-thought-building-was-enough).
+
+My default instinct is to build and build and build the product. Stay inside the product. Improve the tool. Add the feature. Make the CLI better. Make the sidecar smarter. Keep moving.
+
+That instinct can be useful.
+
+It can also become avoidance with better branding.
+
+Running evals is a way of stepping back from the product long enough to ask whether the work is still meaningful. Not whether I am busy. Not whether the architecture is impressive. Not whether I can keep adding pieces. Whether the thing is actually becoming more useful.
+
+Does it increase signal per token for the main agent?
+
+Does it increase signal per token for the sidecar or the whole workflow?
+
+How much?
+
+Is the improvement large enough to justify the extra machinery?
+
 This is the weirdest part of building agentic products right now.
 
 Sometimes the product is not just the user-facing artifact.
@@ -261,6 +299,14 @@ Then I needed an eval suite because the sidecar thesis could easily be fake.
 Then I needed OTel traces because eval JSON was not enough as a trajectory/debugging surface.
 
 Then I needed signal-per-token because correctness alone does not answer the product question.
+
+Signal per token is the language I needed because the sidecar thesis is not only about correctness. It is about moving low-signal exploration out of the main agent's context so the main agent can stay focused on engineering. If the sidecar returns correct evidence but burns absurd context internally, I need to know that. If it compresses the main-agent view by 20x but loses correctness, I need to know that too.
+
+Correctness asks: did we answer?
+
+Signal per token asks: how much useful evidence did each unit of context buy?
+
+That feels like the metric this whole product wants to optimize.
 
 Now I am building ghx, an agent sidecar framework, a ghx sidecar, and an eval framework in parallel.
 
@@ -295,6 +341,8 @@ Maybe ghx deserves to exist.
 Maybe ghx-sidecar deserves to exist.
 
 Maybe the sidecar framework deserves to exist.
+
+Maybe signal per token becomes one of the ways we talk about whether agentic systems are actually getting better.
 
 Maybe one of them does not.
 
