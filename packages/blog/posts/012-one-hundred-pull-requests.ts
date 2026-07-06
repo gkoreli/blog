@@ -154,7 +154,7 @@ htmlStr += needsQuotes ? <span class="fn">\`"\${createMarker(i)}"\`</span> : <sp
     ${Insight({ label: 'The loop', content: html`<p>Two weeks later, PR #102 extracts nisli as a public npm package. The blog you are reading is built with it. The animated preamble at the top of this post — 108 real merge ticks — is rendered by the framework whose birth those ticks record. The tool became the medium for its own story.</p>` })}
 
     <p>
-      The framework weekend closes at 26 PRs merged in one week — +33,975 lines, −11,807 — with 14 of 14 components migrated and 508 tests passing. If that sounds impossible for one person, that is the point. I didn't type most of it. I made every decision in it. What that division of labor actually costs is a story I've told before, in <a href="/how-ghx-was-born">how ghx was born</a> — where a "simple" CLI took 23 agent sessions and three rewrites.
+      The framework weekend closes at 26 PRs merged in one week — +33,975 lines, −11,807 — with 14 of 14 components migrated and 508 tests passing. If that sounds impossible for one person, that is the point. I didn't type most of it. I made every decision in it. What that division of labor costs is a story I've told before, in <a href="/how-ghx-was-born">how ghx was born</a> — where a "simple" CLI took 23 agent sessions and three rewrites.
     </p>
   ` })}
 
@@ -173,7 +173,7 @@ htmlStr += needsQuotes ? <span class="fn">\`"\${createMarker(i)}"\`</span> : <sp
     </p>
     <h3>Context hydration: one call instead of ten</h3>
     <p>
-      An agent starting work on a task needed 5–10 sequential MCP calls to assemble context — parent epic, siblings, resources, recent operations. Call it 4,000 tokens of plumbing before any real work. PR #90 ships <code>backlog_context</code>: one call, one structured bundle, semantic search folded in so the agent discovers related work it didn't know to ask about. The ADR behind it says what the project is actually becoming: "backlog-mcp is evolving from a task tracker into a context engineering platform — a second brain for humans and AI agents working together."
+      An agent starting work on a task needed 5–10 sequential MCP calls to assemble context — parent epic, siblings, resources, recent operations. Call it 4,000 tokens of plumbing before any real work. PR #90 ships <code>backlog_context</code>: one call, one structured bundle, semantic search folded in so the agent discovers related work it didn't know to ask about. The ADR behind it says what the project is becoming: "backlog-mcp is evolving from a task tracker into a context engineering platform — a second brain for humans and AI agents working together."
     </p>
     <p>
       These are efficiency claims, and efficiency claims about agent tooling deserve measurement, not vibes. I turned that exact suspicion on my own tools in <a href="/what-if-the-agent-was-better-before-we-helped">a later post about evals</a>. backlog-mcp's context pipeline is on that docket too. Frustration is not proof, and neither is a demo.

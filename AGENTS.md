@@ -40,6 +40,10 @@ Covers voice, structure, formatting balance, sourcing rules, glossary format, an
 
 The exposed-register personal essay — writing from open wounds, not scars. For this genre the agent is editor and gatekeeper, **never ghostwriter**: no drafted prose, no prompt file, essays typed by the author's hands and shipped plain (no art-object treatment). Defines the three-property test (present tense, unresolved at publication, confession costs status), the traps (meta-laps, discovery essays, instrumentation), and the editing checklist. Where it conflicts with `blog-writing` on a personal essay, `personal-essays` wins.
 
+### Shareable Engineering Skill (`.agents/skills/shareable-engineering/SKILL.md`)
+
+Evidence-based share/trust/discovery mechanics for engineering posts: seoTitle tuning (40–60 chars, handles first, declarative — Backlinko n=4M), agentic-search reality (the honesty mechanics ARE the AEO strategy per the GEO paper; llms.txt has ~zero real-world crawler adoption per Ahrefs 2026-05 — keep ours but never invest in it), share triggers (armed/vindicated/seen, one falsifiable disagreeable claim per post), the hedging rule ("hedge the epistemics, never the position"), and the 12-point pre-publish checklist. Every rule cites a verified source; audit date in its frontmatter. Runs at pre-publish; `personal-essays` wins all voice conflicts.
+
 ## Content Strategy
 
 Build-in-public approach — document the journey with specifics over polish.
