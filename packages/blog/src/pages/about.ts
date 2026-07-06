@@ -4,7 +4,7 @@ const ext = (url: string) => raw(`href="${url}" target="_blank" rel="noopener"`)
 
 export function aboutPage() {
   return html`<article class="post-content">
-  <h1>About</h1>
+  <h1>Goga Koreli</h1>
 
   <blockquote>"I'd rather be stuck on a hard problem than coast on easy ones."</blockquote>
 
