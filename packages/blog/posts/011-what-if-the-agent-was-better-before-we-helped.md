@@ -142,35 +142,25 @@ Not vibes.
 
 The sidecar idea is bigger than ghx, but ghx is the proof.
 
-The model is simple:
+The main agent's context is sacred.
 
-A main agent should not have to load an entire competence domain into its own context just to get a good answer.
+That is the whole product belief. If I am using a powerful coding agent, I do not want to spend its context on 170 lines of ghx CLI doctrine, GitHub search gotchas, map-before-read rules, backend choice, command syntax, and repo exploration traces. I want the main agent doing the thing it is good at: engineering.
 
-If I am using a powerful coding agent, I do not want to spend its context on 170 lines of ghx CLI doctrine, GitHub search gotchas, map-before-read rules, backend choice, command syntax, and repo exploration traces. I want that agent to stay focused on the engineering objective.
+Reconnaissance should move behind a boundary.
 
-So the main agent should ask a specialist:
+The main agent should ask:
 
 ```text
 where is this behavior implemented? show me the evidence.
 ```
 
-And the sidecar should do the reconnaissance:
+And the sidecar should decide what that means: ghx search, ghx map, ghx read, local clone, Codemap, stop, escalate, cite uncertainty.
 
-- decide which ghx commands to run
-- inspect the right files
-- avoid repeat reads
-- keep a persistent evidence ledger
-- cite exact paths and snippets
-- return a compact report
-- expose traces so the work is auditable
+The moat is not the CLI.
 
-The main agent should not need to know ghx.
-
-Eventually, the main agent should barely know the sidecar exists. It should just get good reconnaissance when it needs it, without carrying the reconnaissance machinery in its own head.
+The moat is the agentic brain: the doctrine for what to inspect, what to ignore, when to read, when to map, when to escalate, and when to stop. ghx CLI, Codemap, `gh`, local clone, OTel traces — these are tools. The product is the reconnaissance judgment that makes those tools disappear from the main agent's head.
 
 That is the thesis.
-
-It is a good thesis.
 
 It still has to earn the right to exist.
 
@@ -262,41 +252,35 @@ But if it is wrong, every product decision after it is downstream of self-decept
 
 ## What I am trying to prove
 
-I want to be able to say one of these things truthfully.
+I want the eval to be capable of telling me the worst possible answer.
 
-Best case:
+Maybe ghx deserves to exist and the sidecar deserves to exist too.
 
-> ghx deserves to exist. It improves code reconnaissance for agents. ghx-sidecar deserves to exist too because it gives the main agent better evidence with much less main-context burden, while keeping the whole workflow efficient enough to justify the boundary.
+Maybe ghx CLI deserves to exist, but direct usage is enough for now.
 
-Medium case:
+Maybe ghx helps only in a narrow slice and the product has to shrink its claims.
 
-> ghx CLI deserves to exist, but the sidecar does not yet. Direct ghx usage is the right product for now.
+Maybe plain old `gh` plus a good agent is good enough.
 
-Painful case:
+I do not think the last one is true.
 
-> ghx helps only sometimes. The product needs to narrow its claims and stop pretending it is the default answer for agent code reconnaissance.
-
-Worst case:
-
-> plain old `gh` plus a good agent is good enough, and ghx does not deserve the weight I have given it.
-
-I do not think the worst case is true.
-
-But I want the eval to be capable of saying it.
-
-Otherwise this is all theater.
+But if the eval is not allowed to say it, the eval is theater.
 
 ## The product demands the framework
 
-This is where this connects back to a pattern I already wrote about in [The Builder’s Perfectionism Trap](/i-thought-building-was-enough).
+This connects back to a pattern I already wrote about in [The Builder’s Perfectionism Trap](/i-thought-building-was-enough).
 
-My default instinct is to build and build and build the product. Stay inside the product. Improve the tool. Add the feature. Make the CLI better. Make the sidecar smarter. Keep moving.
+My default instinct is to build and build and build the product. Improve the CLI. Make the sidecar smarter. Add the next feature. Keep moving.
 
 That instinct can be useful.
 
 It can also become avoidance with better branding.
 
-Running evals is a way of stepping back from the product long enough to ask whether the work is still meaningful. Not whether I am busy. Not whether the architecture is impressive. Not whether I can keep adding pieces. Whether the thing is actually becoming more useful.
+Evals force me to step outside the product and ask the question I would rather postpone:
+
+> is this actually becoming more useful?
+
+Not more elaborate. Not more architecturally satisfying. More useful.
 
 Does it increase signal per token for the main agent?
 
@@ -304,69 +288,27 @@ Does it increase signal per token for the sidecar or the whole workflow?
 
 How much?
 
-Is the improvement large enough to justify the extra machinery?
+Is the improvement large enough to justify the machinery?
 
-This is the weirdest part of building agentic products right now.
+That is why the framework work is not a distraction from ghx. It is what ghx is demanding from me.
 
-Sometimes the product is not just the user-facing artifact.
-
-The product demands its own harness. Its own evals. Its own observability. Its own traces. Its own ergonomics. Its own refusal to believe you.
-
-I wanted to build a code reconnaissance CLI.
-
-Then I needed a sidecar because the CLI knowledge itself was becoming context bloat for the main agent.
-
-Then I needed an eval suite because the sidecar thesis could easily be fake.
-
-Then I needed OTel traces because eval JSON was not enough as a trajectory/debugging surface.
-
-Then I needed signal-per-token because correctness alone does not answer the product question.
-
-Signal per token is the language I needed because the sidecar thesis is not only about correctness. It is about moving low-signal exploration out of the main agent's context so the main agent can stay focused on engineering. If the sidecar returns correct evidence but burns absurd context internally, I need to know that. If it compresses the main-agent view by 20x but loses correctness, I need to know that too.
+I wanted to build a code reconnaissance CLI. Then the CLI knowledge itself became context bloat, so I needed a sidecar. Then the sidecar thesis could be fake, so I needed evals. Then eval JSON was not enough, so I needed traces. Then correctness was not enough, so I needed signal per token.
 
 Correctness asks: did we answer?
 
 Signal per token asks: how much useful evidence did each unit of context buy?
 
-That feels like the metric this whole product wants to optimize.
+That is the metric this product wants to optimize.
 
-Now I am building ghx, an agent sidecar framework, a ghx sidecar, and an eval framework in parallel.
-
-That sounds absurd until you stare at the actual question long enough:
-
-> did the agent get better, or did I just add another layer?
-
-I do not know how to answer that honestly without all this machinery.
-
-## The standard
-
-The standard I want is simple and brutal.
+The standard is simple and brutal:
 
 Every layer has to earn itself.
 
-The ghx CLI has to beat the baseline it replaces.
-
-The ghx sidecar has to beat direct ghx on the thing it claims to improve: keeping the main agent's context clean while still returning better evidence.
-
-The agent sidecar framework has to prove that delegation to a specialist agent is not just architecture cosplay.
-
-The eval framework has to be strong enough to tell me no.
-
-And I have to be willing to listen.
-
-That is the part I care about most.
-
-I am not afraid of the harsh questions anymore.
-
-Maybe ghx deserves to exist.
-
-Maybe ghx-sidecar deserves to exist.
-
-Maybe the sidecar framework deserves to exist.
+The CLI. The sidecar. The framework. The eval framework too.
 
 Maybe signal per token becomes one of the ways we talk about whether agentic systems are actually getting better.
 
-Maybe one of them does not.
+Maybe not.
 
 I want to know.
 
