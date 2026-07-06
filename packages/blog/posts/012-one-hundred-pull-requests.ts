@@ -31,7 +31,7 @@ export function article() {
   return html`
 <article class="post-content">
   <p class="post-orient">
-    This is a field report from building <a href="https://github.com/gkoreli/backlog-mcp" target="_blank">backlog-mcp</a> — an open-source MCP server for AI agent task management — through its first 117 pull requests: the markdown-as-truth storage bet, a seven-attempt HTTP transport saga, a custom UI framework (<a href="https://github.com/gkoreli/nisli" target="_blank">nisli</a>) designed and shipped in one weekend after a rejected React spike, and the search and context systems that turned a task tracker into a storage engine for agentic context.
+    <a href="https://github.com/gkoreli/backlog-mcp" target="_blank">backlog-mcp</a> is an open-source MCP server for AI agent task management; <a href="https://github.com/gkoreli/nisli" target="_blank">nisli</a> is the zero-dependency UI framework born inside it — this is the story of their first 117 pull requests.
   </p>
 
   <!-- § 0 — THE SHAPE OF THE RUN -->
@@ -42,13 +42,16 @@ export function article() {
       backlog-mcp exists because of a personal pain. I work with AI agents every day, and every task manager I could reach was built for teams of humans coordinating with humans. The agent — the thing doing half my engineering — was nobody's user. Plans lived in chat transcripts that would never be read again. Every session started from zero. On the evening of December 19, 2025, I started building the tool I couldn't buy: the first ten commits — schema, storage, a working <a href="https://modelcontextprotocol.io" target="_blank">MCP</a> server — span eighteen minutes in the git log.
     </p>
     <p>
-      The animation above is what happened next. Every tick is a real merged pull request, positioned by the day it merged. The dense column on the left is launch day. The gold cluster is the weekend I ran out of alternatives and built my own UI framework. The long silence is a month where I merged nothing, and the last column is April 3 — eight merges, then never again. The faint ticks after it are what the project runs on now: direct commits to main.
+      The animation above is what happened next. Every tick is a real merged pull request, positioned by the day it merged. There are 108 ticks, not 117 — nine PRs died in review and never touched main. That gap is not sloppy bookkeeping; it is evidence, and § 5 collects it. The dense column on the left is launch day. The gold cluster is the weekend I ran out of alternatives and built my own UI framework. The long silence is a month where I merged nothing, and the last column is April 3 — eight merges, then never again. The faint ticks after it are what the project runs on now: direct commits to main.
     </p>
     <p>
       This is part 1 of the backlog-mcp saga — the product story, told from the perspective of its first hundred pull requests. Not the numbers; the numbers are a consequence. The PRs were the unit of a working method: one delegation, one review boundary, one merge. They were instrumental, and then I outgrew them — or I quit on rigor and dressed it up as process. This post argues it was the first one. You get to decide.
     </p>
     <p>
       Three claims in this post are still live. nisli, the framework, has one serious user: me. The memory system's north star — an agent measurably smarter in week 10 than in week 1 — is unmeasured. And the claim that pull requests are scaffolding for agentic work can be wrong in a way I would have to publicly walk back. I have argued before that the engineer's role is expanding into an <a href="/the-agentic-product-engineer">agentic product engineer</a>. This project is where I test that with my own time.
+    </p>
+    <p>
+      Here is what those hundred pull requests contain. A storage bet — markdown as truth — that everything still stands on. A transport saga that took seven numbered ADRs to end. One weekend where a rejected React spike became a UI framework of my own. Search and context systems that quietly turned a task tracker into a storage engine for agentic context. And nine PRs that died in review, which turn out to matter as much as the ones that merged.
     </p>
   ` })}
 
@@ -197,6 +200,9 @@ htmlStr += needsQuotes ? <span class="fn">\`"\${createMarker(i)}"\`</span> : <sp
       Pull requests are how serious software gets built. I ran 117 of them believing that, and the belief was correct — the project's entire shape was negotiated inside those PRs. In the early months the PR was the delegation boundary: I brief agents, they produce a branch, and the diff is where I audit work I did not type.
     </p>
     <p>
+      The nine missing numbers prove the boundary had teeth. 117 PRs opened, 108 merged — and the other nine read like echoes of their neighbors. #38, "Complete Fastify migration," closed; #37, the same migration, merged. #53 and #54 are both the copy-button system; #55 merged it. #45, #46, and #47 are three runs at the same resource refactor. Those are agent branches I rejected and had redone — sometimes twice — before anything reached main. A review boundary that never kills anything is a ritual. This one killed roughly one attempt in thirteen.
+    </p>
+    <p>
       April 3 is the last PR day — eight merges wiring GitHub OAuth and ChatGPT compliance — and then the stream goes quiet. Not the project. The commits continue to this day, straight to main. What ended was the pull request as my unit of work, and it ended because three things matured at once:
     </p>
     <ul>
@@ -277,7 +283,7 @@ htmlStr += needsQuotes ? <span class="fn">\`"\${createMarker(i)}"\`</span> : <sp
     html`⑤ transformers.js — <a href="https://github.com/huggingface/transformers.js" target="_blank">github.com/huggingface/transformers.js</a> — local embeddings in the hybrid search stack (ADR 0042, Feb 2026)`,
     html`⑥ mcp-remote — <a href="https://github.com/geelen/mcp-remote" target="_blank">github.com/geelen/mcp-remote</a> — the stdio↔HTTP bridge at the center of the transport saga (ADR 0013.x)`,
     html`⑦ Loro — <a href="https://github.com/loro-dev/loro" target="_blank">github.com/loro-dev/loro</a> — CRDT library proposed as backlog-mcp's history substrate (ADR 0107, Jun 2026)`,
-    html`⑧ PR merge data — GitHub API, <code>gh pr list --state merged</code> on gkoreli/backlog-mcp; 108 merged PRs numbered 1–117 (9 numbers closed unmerged or skipped). The preamble renders this dataset verbatim.`,
+    html`⑧ PR merge data — GitHub API, <code>gh pr list --state merged</code> on gkoreli/backlog-mcp; 117 PRs opened, 108 merged. The other nine (#30, #31, #35, #38, #45–47, #53, #54) were closed unmerged — rejected attempts superseded by a redo. The preamble renders the merged set verbatim.`,
   ] })}
 </article>
 `;
