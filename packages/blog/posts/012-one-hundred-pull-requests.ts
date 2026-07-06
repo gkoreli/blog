@@ -34,52 +34,58 @@ export function article() {
     <a href="https://github.com/gkoreli/backlog-mcp" target="_blank">backlog-mcp</a> is an open-source context-engineering backlog for AI agents — tasks, memory, and search, served over MCP; <a href="https://github.com/gkoreli/nisli" target="_blank">nisli</a> is the zero-dependency UI framework born inside it. This is the story of their first 117 pull requests.
   </p>
 
-  <!-- § 0 — THE SHAPE OF THE RUN -->
+  <!-- § 1 — DECEMBER: THE PAIN -->
   ${ScrollReveal({ content: html`
-    ${SectionNum({ label: '§ 0 — Where This Starts' })}
-    <h2>Seventy-eight days, <em>every tick real</em></h2>
+    ${SectionNum({ label: '§ 1 — December: The Pain' })}
+    <h2>Building the tool I <em>couldn't buy</em></h2>
     <p>
       backlog-mcp exists because of a personal pain. I work with AI agents every day, and every task manager I could reach was built for teams of humans coordinating with humans. The agent — the thing doing half my engineering — was nobody's user. Plans lived in chat transcripts that would never be read again. Every session started from zero. On the evening of December 19, 2025, I started building the tool I couldn't buy: the first ten commits — schema, storage, a working <a href="https://modelcontextprotocol.io" target="_blank">MCP</a> server — span eighteen minutes in the git log.
     </p>
     <p>
-      This is part 1 of the backlog-mcp saga — the product story, told from the perspective of its first hundred pull requests. The animation above is not an illustration; every tick is a real merged PR, placed by the day it merged. The PRs were the unit of a working method: one delegation, one review boundary, one merge. They were instrumental, and then I outgrew them — or I quit on rigor and dressed it up as process. This post argues it was the first one. You get to decide.
+      This is part 1 of the backlog-mcp saga — the product story. The hundred pull requests are the signal, not the story: the animation above renders every merged PR by the day it landed, and what those ticks record is a tool and its builder figuring out, in public, what they were actually making. The PRs were the unit of the method — one delegation, one review boundary, one merge — and they were instrumental, until I outgrew them. Or until I quit on rigor and dressed it up as process. This post argues it was the first one. You get to decide.
     </p>
     <p>
       Three claims in this post are still live. nisli, the framework, has one serious user: me. The memory system's north star — an agent measurably smarter in week 10 than in week 1 — is unmeasured. And the claim that pull requests are scaffolding for agentic work can be wrong in a way I would have to publicly walk back. I have argued before that the engineer's role is expanding into an <a href="/the-agentic-product-engineer">agentic product engineer</a>. This project is where I test that with my own time.
     </p>
     <p>
-      Here is what those hundred pull requests contain. A storage bet — markdown as truth — that everything still stands on. A transport saga that took seven numbered ADRs to end. One weekend where a rejected React spike became a UI framework of my own. Search and context systems that quietly turned a task tracker into a storage engine for agentic context. And nine PRs that died in review, which turn out to matter as much as the ones that merged.
+      Here is what the run contains. A storage bet — markdown as truth — that everything still stands on. A transport saga that took seven numbered ADRs to end. One weekend where a rejected React spike became a UI framework of my own. Search and context systems that quietly turned a task tracker into a storage engine for agentic context. And nine PRs that died in review, which turn out to matter as much as the ones that merged.
     </p>
   ` })}
 
   ${SectionBreak()}
 
-  <!-- § 1 — THE FOUNDING BET -->
+  <!-- § 2 — JANUARY: THE BET AND THE USER -->
   ${ScrollReveal({ content: html`
-    ${SectionNum({ label: '§ 1 — The Founding Bet' })}
-    <h2>Markdown as truth, edits as <em>operations</em></h2>
+    ${SectionNum({ label: '§ 2 — January: The Bet, and Meeting the User' })}
+    <h2>Markdown as truth, and the agent as a user <em>with psychology</em></h2>
     <p>
-      The project starts on the evening of December 19, 2025. The first ten commits — schema, storage, a working MCP server — span eighteen minutes in the git log. The decision that shaped everything comes three weeks later, in PR #3: storage moves from JSON to individual markdown files with YAML frontmatter. Tasks become human-readable, git-diffable, agent-editable. Nobody has reversed that decision. Everything now stands on it.
+      The launch burst — ten PRs on January 16 — wired CI, npm publishing, and a web viewer around the prototype. But the decision that shaped everything came in PR #3: storage moved from JSON to individual markdown files with YAML frontmatter. Tasks became human-readable, git-diffable, agent-editable. Nobody has reversed that decision. Everything now stands on it.
     </p>
     <p>
-      The second founding decision is the one I would defend in front of a protocol committee. An agent editing a task through MCP had to read the whole object and write the whole object back. The first ADR in the repo counts the cost: 10,000+ tokens for a one-line edit, a hundred times what the same agent pays to edit a local file. PR #23 ships <code>write_resource</code> — surgical operations (<code>str_replace</code>, <code>insert</code>, <code>append</code>) over <code>mcp://</code> URIs.
+      A week later came the decision I would defend in front of a protocol committee. An agent editing a task through MCP had to read the whole object and write the whole object back. The first ADR in the repo counts the cost: 10,000+ tokens for a one-line edit, a hundred times what the same agent pays to edit a local file. PR #23 shipped <code>write_resource</code> — surgical operations (<code>str_replace</code>, <code>insert</code>, <code>append</code>) over <code>mcp://</code> URIs — deliberately mirroring the edit contract Claude is trained on: unique match or loud failure. Six months later, an ADR proposing a CRDT storage backend kept that tool surface untouched, "so the model stays in its trained edit distribution."
     </p>
 
     ${PullQuote({ content: html`"This isn't just about backlog-mcp — it's about establishing a universal pattern for the entire MCP ecosystem."`, cite: '— ADR 0001, "Writable Resources Design", January 2026' })}
 
     <p>
-      The detail that made it durable: <code>str_replace</code> requires a unique match and fails loudly on ambiguity. That deliberately mirrors the edit contract Claude is trained on. Six months later, an ADR proposes swapping the whole storage backend for a CRDT — and keeps the tool surface untouched, "so the model stays in its trained edit distribution." Design the API for what the model is already good at, not for what looks clean in a spec. That is the most transferable lesson in this repo.
+      Then the tool started teaching me. Late January, a triage agent kept producing malformed reference arrays because it skipped the read-before-write step — LLMs optimize for minimal tool calls, and re-fetching feels redundant to them. The conventional diagnosis: the agent misbehaved. The diagnosis I wrote down instead became the mental model the whole product is built on:
+    </p>
+
+    ${PullQuote({ content: html`"This is not a bug in agent behavior — it's a UX problem with the API design."`, cite: '— ADR 0037, "Partial Array Updates", January 2026' })}
+
+    <p>
+      So the API grew <code>add_references</code> / <code>remove_references</code> — operations matching the agent's mental model of "add to," not "replace all." Its sibling ADR attacked my failure mode rather than the agent's: commitment hoarding. Fifteen open epics, 69 open tasks, 6.7% attention per epic — so the system got decay warnings and grooming pressure, on the theory that "the skill needed isn't better productivity — it's killing good ideas so great ideas can live." The agent is a user with predictable psychology. So am I. Designing for both is what this product turned out to be about — though I didn't know that yet. First, the tool had to survive two walls.
     </p>
   ` })}
 
   ${SectionBreak()}
 
-  <!-- § 2 — THE TRANSPORT SAGA -->
+  <!-- § 3 — THE FIRST WALL: TRANSPORT -->
   ${ScrollReveal({ content: html`
-    ${SectionNum({ label: '§ 2 — The Transport Saga' })}
+    ${SectionNum({ label: '§ 3 — The First Wall: Transport' })}
     <h2>Seven ADRs to move one <em>protocol</em></h2>
     <p>
-      The hardest infrastructure problem of the run looks mundane: turn a stdio MCP server into an HTTP server without breaking anyone's config. It ate the last weekend of January — nine PRs in two days — and left a numbered trail of failure, ADR 0013.1 through 0013.7.
+      The first wall looks mundane: turn a stdio MCP server into an HTTP server without breaking anyone's config. It ate the last weekend of January — nine PRs in two days — and left a numbered trail of failure, ADR 0013.1 through 0013.7.
     </p>
     <p>The dead ends, in order:</p>
     <ul>
@@ -94,13 +100,17 @@ export function article() {
     ${PullQuote({ content: html`"Each time it feels novel because the reasoning lived only in conversation, never on disk. This ADR captures the framework so the loop stops reopening."`, cite: '— ADR 0013.7, June 2026' })}
 
     ${Insight({ label: 'The agentic lesson', content: html`<p>Agents lose context between sessions. So do humans between months. The ADR trail is not documentation — it is <em>memory infrastructure</em> shared by every future session, human or agent. A decision that lives in a chat transcript gets re-litigated. A decision on disk, with its dead ends recorded, stays decided.</p>` })}
+
+    <p>
+      The transport wall cost a weekend and taught a process. The second wall cost more, and it is the reason this saga has a framework in it.
+    </p>
   ` })}
 
   ${SectionBreak()}
 
-  <!-- § 3 — THE FRAMEWORK WEEKEND -->
+  <!-- § 4 — THE SECOND WALL: THE FRAMEWORK WEEKEND -->
   ${ScrollReveal({ content: html`
-    ${SectionNum({ label: '§ 3 — The Framework Weekend' })}
+    ${SectionNum({ label: '§ 4 — The Second Wall: The Framework Weekend' })}
     <h2>Four days from React spike to <em>nisli</em></h2>
     <p>
       You do not write your own UI framework. It is the one piece of advice the entire industry agrees on, and for good reason: the graveyard is full, and React is right there.
@@ -122,7 +132,7 @@ export function article() {
       This is the gold cluster in the animation at the top of the page.
     </p>
     <p>
-      The React spike dies without shipping a single React line. Let me be fair to the loser, because React would have worked. It is better at almost everything — ecosystem, tooling, hiring, an answer on StackOverflow for every error you will ever see. None of that was what I needed. I needed a UI layer that agents write correctly on the first pass, that I can hold in my head whole, and that adds zero dependencies to a tool people run with <code>npx</code>. Lit came closest, and the ADR records why it lost: "Lit's template engine is battle-tested across millions of users, but our scope (16 components, known use cases) doesn't justify that complexity."
+      The React spike died without shipping a single React line. Let me be fair to the loser, because React would have worked. It is better at almost everything — ecosystem, tooling, hiring, an answer on StackOverflow for every error you will ever see. None of that was what I needed. I needed a UI layer that agents write correctly on the first pass, that I can hold in my head whole, and that adds zero dependencies to a tool people run with <code>npx</code>. Lit came closest, and the ADR records why it lost: "Lit's template engine is battle-tested across millions of users, but our scope (16 components, known use cases) doesn't justify that complexity."
     </p>
     <p>
       The framework becomes <a href="https://www.npmjs.com/package/@nisli/core" target="_blank">@nisli/core</a> — <em>nisli</em>, ნისლი, Georgian for "fog": light, present, barely there. Its design principles read like nothing else in the framework space because the audience is different. This is a framework designed for human–AI coherence:
@@ -154,48 +164,36 @@ htmlStr += needsQuotes ? <span class="fn">\`"\${createMarker(i)}"\`</span> : <sp
     ${Insight({ label: 'The loop', content: html`<p>Two weeks later, PR #102 extracts nisli as a public npm package. The blog you are reading is built with it. The animated preamble at the top of this post — 108 real merge ticks — is rendered by the framework whose birth those ticks record. The tool became the medium for its own story.</p>` })}
 
     <p>
-      The framework weekend closes at 26 PRs merged in one week — +33,975 lines, −11,807 — with 14 of 14 components migrated and 508 tests passing. If that sounds impossible for one person, that is the point. I didn't type most of it. I made every decision in it. What that division of labor costs is a story I've told before, in <a href="/how-ghx-was-born">how ghx was born</a> — where a "simple" CLI took 23 agent sessions and three rewrites.
+      The framework weekend closes at 26 PRs merged in one week — +33,975 lines, −11,807 — with 14 of 14 components migrated and 508 tests passing. If that sounds impossible for one person, that is the point. I didn't type most of it. I made every decision in it. What that division of labor costs is a story I've told before, in <a href="/how-ghx-was-born">how ghx was born</a> — where a "simple" CLI took 23 agent sessions and three rewrites. With both walls down, the tool could finally start becoming what it was going to be.
     </p>
   ` })}
 
   ${SectionBreak()}
 
-  <!-- § 4 — THE INTELLIGENCE LAYER -->
+  <!-- § 5 — FEBRUARY: THE BECOMING -->
   ${ScrollReveal({ content: html`
-    ${SectionNum({ label: '§ 4 — The Intelligence Layer' })}
-    <h2>Search, context, and APIs that respect <em>how agents fail</em></h2>
+    ${SectionNum({ label: '§ 5 — February: The Becoming' })}
+    <h2>The tool discovers <em>what it is</em></h2>
     <p>
-      Mid-February the project turns from plumbing to intelligence, and this is where it stops being a task tracker. Three arcs matter.
-    </p>
-    <h3>The search stack earned its complexity twice</h3>
-    <p>
-      Search goes from string matching to <a href="https://github.com/oramasearch/orama" target="_blank">Orama</a> BM25, to hybrid retrieval with local embeddings — transformers.js and its 23MB model won over TensorFlow.js and its 150MB of native-compilation misery — to rank fusion. Then it collapses under its own layers: three scoring systems fighting each other, and a query for "feature store" ranking the task literally about <code>FeatureStore</code> at position 18. The diagnostic ADR finds the smoking gun in the normalization: "MinMax normalization annihilates low-BM25 documents: when a relevant document has the lowest BM25 score, it maps to exactly 0.0, making it invisible despite being relevant." The redesign — independent BM25 and vector retrievers, fused linearly, the same place Elasticsearch landed on its own journey — replaces an 852-line service that had accreted ten responsibilities.
-    </p>
-    <h3>Context hydration: one call instead of ten</h3>
-    <p>
-      An agent starting work on a task needed 5–10 sequential MCP calls to assemble context — parent epic, siblings, resources, recent operations. Call it 4,000 tokens of plumbing before any real work. PR #90 ships <code>backlog_context</code>: one call, one structured bundle, semantic search folded in so the agent discovers related work it didn't know to ask about. The ADR behind it says what the project is becoming: "backlog-mcp is evolving from a task tracker into a context engineering platform — a second brain for humans and AI agents working together."
+      Mid-February the project turns from plumbing to intelligence, and this is where it stops being a task tracker — not by plan, but by following the agent's actual needs one PR at a time.
     </p>
     <p>
-      These are efficiency claims, and efficiency claims about agent tooling deserve measurement, not vibes. I turned that exact suspicion on my own tools in <a href="/what-if-the-agent-was-better-before-we-helped">a later post about evals</a>. backlog-mcp's context pipeline is on that docket too. Frustration is not proof, and neither is a demo.
+      Search first. It goes from string matching to <a href="https://github.com/oramasearch/orama" target="_blank">Orama</a> BM25, to hybrid retrieval with local embeddings — transformers.js and its 23MB model won over TensorFlow.js and its 150MB of native-compilation misery — to rank fusion. Then it collapses under its own layers: three scoring systems fighting each other, and a query for "feature store" ranking the task literally about <code>FeatureStore</code> at position 18. The diagnostic ADR finds the smoking gun in the normalization: "MinMax normalization annihilates low-BM25 documents: when a relevant document has the lowest BM25 score, it maps to exactly 0.0, making it invisible despite being relevant." The redesign — independent BM25 and vector retrievers, fused linearly, the same place Elasticsearch landed on its own journey — replaces an 852-line service that had accreted ten responsibilities.
     </p>
-    <h3>Design for the failure modes agents actually have</h3>
     <p>
-      The best API-design lesson in the repo is ADR 0037. A triage agent kept producing malformed reference arrays because it skipped the read-before-write step — LLMs optimize for minimal tool calls, and re-fetching feels redundant to them. The conventional diagnosis: the agent misbehaved. The ADR's diagnosis:
+      Then context. An agent starting work on a task needed 5–10 sequential MCP calls to assemble its picture — parent epic, siblings, resources, recent operations. Call it 4,000 tokens of plumbing before any real work. PR #90 ships <code>backlog_context</code>: one call, one structured bundle, semantic search folded in so the agent discovers related work it didn't know to ask about. And in the ADR behind that tool, the product says out loud, for the first time, what it is becoming: "backlog-mcp is evolving from a task tracker into a context engineering platform — a second brain for humans and AI agents working together."
     </p>
-
-    ${PullQuote({ content: html`"This is not a bug in agent behavior — it's a UX problem with the API design."`, cite: '— ADR 0037, "Partial Array Updates", January 2026' })}
-
     <p>
-      So the API grows <code>add_references</code> / <code>remove_references</code> — operations matching the agent's mental model of "add to," not "replace all." Its sibling, ADR 0036, attacks the other failure mode: commitment hoarding. Fifteen open epics, 69 open tasks, 6.7% attention per epic. The system gets decay warnings and grooming pressure, on the theory that "the skill needed isn't better productivity — it's killing good ideas so great ideas can live." Both ADRs treat the agent as a user with predictable psychology. That is what API design looks like when your primary user is a language model.
+      I did not set out to build that sentence. I set out to stop losing plans in chat transcripts. But every fix for the agent's real needs — surgical edits, partial updates, one-call context — pointed the same direction, and by late February the direction had a name. These are efficiency claims, and efficiency claims about agent tooling deserve measurement, not vibes; I turned that exact suspicion on my own tools in <a href="/what-if-the-agent-was-better-before-we-helped">a later post about evals</a>, and backlog-mcp's context pipeline is on that docket too. Frustration is not proof, and neither is a demo.
     </p>
   ` })}
 
   ${SectionBreak()}
 
-  <!-- § 5 — WHY THE PRS STOPPED -->
+  <!-- § 6 — APRIL: THE GRADUATION -->
   ${ScrollReveal({ content: html`
-    ${SectionNum({ label: '§ 5 — Why the Pull Requests Stopped' })}
-    <h2>The review moved <em>upstream</em></h2>
+    ${SectionNum({ label: '§ 6 — April: The Graduation' })}
+    <h2>The review moves <em>upstream</em></h2>
     <p>
       Pull requests are how serious software gets built. I ran 117 of them believing that, and the belief was correct — the project's entire shape was negotiated inside those PRs. In the early months the PR was the delegation boundary: I brief agents, they produce a branch, and the diff is where I audit work I did not type.
     </p>
@@ -220,9 +218,9 @@ htmlStr += needsQuotes ? <span class="fn">\`"\${createMarker(i)}"\`</span> : <sp
 
   ${SectionBreak()}
 
-  <!-- § 6 — WHAT IT'S BECOMING -->
+  <!-- § 7 — THE HORIZON -->
   ${ScrollReveal({ content: html`
-    ${SectionNum({ label: '§ 6 — What It Thinks It Is' })}
+    ${SectionNum({ label: '§ 7 — The Horizon' })}
     <h2>From task tracker to <em>storage engine for agentic context</em></h2>
     <p>
       The positioning ADR preserves its own three-stage evolution on purpose, so a newcomer sees all of it at once: the product is "a task tracker today, an agentic storage engine by architecture, and a data bank for the full agentic toolchain in its trajectory." The architecture was type-agnostic from the start — storage iterates any markdown entity, the viewer renders any frontmatter. The framing took months to catch up. When it did, it produced the boldest sentence in the repo:
@@ -246,9 +244,9 @@ htmlStr += needsQuotes ? <span class="fn">\`"\${createMarker(i)}"\`</span> : <sp
 
   ${SectionBreak()}
 
-  <!-- § 7 — CLOSING -->
+  <!-- § 8 — THE TALLY -->
   ${ScrollReveal({ content: html`
-    ${SectionNum({ label: '§ 7 — The Tally' })}
+    ${SectionNum({ label: '§ 8 — The Tally' })}
     <h2>What one hundred pull requests <em>buy</em></h2>
     <p>
       Not the software — the practice. Decisions on disk. Dead ends numbered instead of deleted. APIs written for the psychology of the model on the other side. Scaffolding held exactly as long as it earns its overhead, and dropped the day it doesn't.
