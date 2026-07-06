@@ -15,6 +15,7 @@ export { Insight } from './insight/insight.js';
 export { OssRadarHero } from './oss-radar-hero/oss-radar-hero.js';
 export { Postscript } from './postscript/postscript.js';
 export { Prognosis } from './prognosis/prognosis.js';
+export { PrStreamHero } from './pr-stream-hero/pr-stream-hero.js';
 export { ProcrastinationHero } from './procrastination-hero/procrastination-hero.js';
 export { PullQuote } from './pull-quote/pull-quote.js';
 export { ResearchNote } from './research-note/research-note.js';
