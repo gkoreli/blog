@@ -18,6 +18,21 @@ a.cover:hover .cover-title { color: var(--color-link); }
   margin-bottom: 0.85rem;
 }
 
+/* The one word where the publication itself speaks — brand voice */
+.cover-flag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-link);
+}
+
+.cover-sep {
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+}
+
 .cover-sec {
   font-family: var(--font-mono);
   font-size: 0.62rem;

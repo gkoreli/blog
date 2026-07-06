@@ -6,6 +6,8 @@ import { formatDateShort } from '../lib/dates.js';
 function CoverStory({ post }: { post: PostMeta }) {
   return html`<a href="/${post.slug}" class="cover">
   <div class="cover-meta">
+    <span class="cover-flag">Featured</span>
+    <span class="cover-sep">·</span>
     <span class="cover-sec" style="color:var(--section-${post.section})">${SECTION_LABELS[post.section]}</span>
     <span class="cover-date">${formatDateShort(post.date)}</span>
   </div>
