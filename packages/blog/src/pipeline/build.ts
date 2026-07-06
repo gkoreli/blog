@@ -208,7 +208,7 @@ export async function buildHTML(): Promise<void> {
   ];
 
   const indexBody = homePage(sortedPosts);
-  const indexShell = pageShell({ title: 'Blog', description: 'Engineering blog by Goga Koreli', content: indexBody.toString(), scripts: ['/canvas.js'] });
+  const indexShell = pageShell({ title: 'Blog', description: 'Engineering blog by Goga Koreli', content: indexBody.toString() });
   writeRoot('index.html', indexShell.toString());
 
   const essaysBody = essaysPage(sortedPosts.filter(p => p.section === 'essays'));

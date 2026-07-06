@@ -31,10 +31,6 @@ export function homePage(posts: PostMeta[]) {
   const latest = posts.filter(p => p.slug !== featured?.slug);
 
   return html`<div class="home">
-  <div class="sec-canvas-banner" style="--sec-accent:var(--color-link)">
-    <nisli-neural-canvas mode="threshold"></nisli-neural-canvas>
-  </div>
-
   ${featured ? CoverStory({ post: featured }) : ''}
 
   <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
