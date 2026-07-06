@@ -208,17 +208,17 @@ export async function buildHTML(): Promise<void> {
   ];
 
   const indexBody = homePage(sortedPosts);
-  const indexShell = pageShell({ title: 'Blog', description: 'Engineering blog by Goga Koreli', content: indexBody.toString() });
+  const indexShell = pageShell({ title: 'Blog', description: 'Engineering blog by Goga Koreli', content: indexBody.toString(), scripts: ['/canvas.js'] });
   writeRoot('index.html', indexShell.toString());
 
   const essaysBody = essaysPage(sortedPosts.filter(p => p.section === 'essays'));
   writeOutput('essays', pageShell({ title: SECTION_LABELS['essays'], description: SECTION_DESCRIPTIONS['essays'], content: essaysBody.toString(), currentSection: 'essays' }).toString());
 
   const engineeringBody = engineeringPage(sortedPosts.filter(p => p.section === 'engineering'));
-  writeOutput('engineering', pageShell({ title: SECTION_LABELS['engineering'], description: SECTION_DESCRIPTIONS['engineering'], content: engineeringBody.toString(), currentSection: 'engineering' }).toString());
+  writeOutput('engineering', pageShell({ title: SECTION_LABELS['engineering'], description: SECTION_DESCRIPTIONS['engineering'], content: engineeringBody.toString(), currentSection: 'engineering', scripts: ['/canvas.js'] }).toString());
 
   const ossRadarBody = ossRadarPage(sortedPosts.filter(p => p.section === 'oss-radar'));
-  writeOutput('oss-radar', pageShell({ title: SECTION_LABELS['oss-radar'], description: SECTION_DESCRIPTIONS['oss-radar'], content: ossRadarBody.toString(), currentSection: 'oss-radar' }).toString());
+  writeOutput('oss-radar', pageShell({ title: SECTION_LABELS['oss-radar'], description: SECTION_DESCRIPTIONS['oss-radar'], content: ossRadarBody.toString(), currentSection: 'oss-radar', scripts: ['/canvas.js'] }).toString());
 
   const aboutBody = aboutPage();
   const aboutShell = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), currentSlug: 'about' });

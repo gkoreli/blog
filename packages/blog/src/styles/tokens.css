@@ -33,10 +33,12 @@
   --color-link: #1a6b4e;
   --color-border: #ddd8cf;
 
-  /* Section accent colors — values are designer's call, names are the contract */
-  --section-essays:      hsl(35, 70%, 55%);
-  --section-engineering: hsl(210, 70%, 55%);
-  --section-oss-radar:   hsl(155, 60%, 45%);
+  /* Section accent colors — aliases of the documented palette (Design
+     Language ch. 01/07): Essays = Warm Gold, Engineering = Blueprint,
+     OSS Radar = Rust. Aliasing gives dark-mode variants for free. */
+  --section-essays:      var(--color-accent-warm);
+  --section-engineering: var(--color-accent-blue);
+  --section-oss-radar:   var(--color-accent-rust);
 
   /* Brand + glass surfaces */
   --color-brand-deep: #1a6b4e;

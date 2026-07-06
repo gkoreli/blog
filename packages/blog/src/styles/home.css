@@ -117,3 +117,10 @@ a.stream-item:hover .stream-title { color: var(--color-link); }
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+
+/* Cover → stream hinge — the one branded mark on the page.
+   Replaces a labeled section rule: dates make chronology self-evident. */
+.home .separator { margin: 2.6rem 0 2.2rem; }
+
+/* Section kickers carry their section color inline (see tokens.css
+   --section-*): the label and the color are one mark — no dot glyph. */

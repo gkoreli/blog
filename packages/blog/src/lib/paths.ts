@@ -41,8 +41,11 @@ export const IMMERSIVE_ENTRY = join(SRC, 'client', 'immersive.ts');
 /** packages/blog/src/client/animations-lab.ts — Animations Lab entry point (loads only on /animations-lab) */
 export const ANIMATIONS_LAB_ENTRY = join(SRC, 'client', 'animations-lab.ts');
 
+/** packages/blog/src/client/canvas.ts — neural canvas (loads only on pages with a sec-canvas-banner) */
+export const CANVAS_ENTRY = join(SRC, 'client', 'canvas.ts');
+
 /** All esbuild entry points — single source of truth for dev and prod builds */
-export const ESBUILD_ENTRIES = [CLIENT_ENTRY, STATS_ENTRY, IMMERSIVE_ENTRY, ANIMATIONS_LAB_ENTRY, STYLES_SRC];
+export const ESBUILD_ENTRIES = [CLIENT_ENTRY, STATS_ENTRY, IMMERSIVE_ENTRY, ANIMATIONS_LAB_ENTRY, CANVAS_ENTRY, STYLES_SRC];
 
 /** Section archive route slugs */
 export const ESSAYS_PAGE = 'essays';

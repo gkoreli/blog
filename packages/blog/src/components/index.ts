@@ -8,7 +8,6 @@ export { LitItem } from './lit-item/lit-item.js';
 export { OSSRadarCard } from './oss-radar-card/oss-radar-card.js';
 export { PageHero } from './page-hero/page-hero.js';
 export type { PageHeroStat } from './page-hero/page-hero.js';
-export { SectionHeader } from './section-header/section-header.js';
 export { HomeSectionBlock } from './home-section-block/home-section-block.js';
 export { Footnotes } from './footnotes/footnotes.js';
 export { HarnessHero } from './harness-hero/harness-hero.js';
