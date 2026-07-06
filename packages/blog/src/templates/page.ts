@@ -86,7 +86,6 @@ export function pageShell({ title, description, content, currentSlug, currentSec
           <a href="/essays" class="${currentSection === 'essays' ? 'active' : ''}"><span class="sb-dot"></span>Essays</a>
           <a href="/engineering" class="${currentSection === 'engineering' ? 'active' : ''}"><span class="sb-dot"></span>Engineering</a>
           <a href="/oss-radar" class="${currentSection === 'oss-radar' ? 'active' : ''}"><span class="sb-dot"></span>OSS Radar</a>
-          <a href="/frames" class="${currentSection === 'frames' ? 'active' : ''}"><span class="sb-dot"></span>Frames</a>
           <a href="/about" class="${currentSlug === 'about' ? 'active' : ''}"><span class="sb-dot"></span>About</a>
           <a href="/stats" class="${currentSlug === 'stats' ? 'active' : ''}"><span class="sb-dot"></span>Stats</a>
         </nav>

@@ -23,14 +23,13 @@ const SECTION_IDS = [
   { name: 'Essays',       accent: 'var(--section-essays)',      canvas: 'None — quiet',         mood: 'Literary · spacious · warm gold',         tags: ['personal', 'philosophy', 'attention'],    desc: 'More text-led. Quieter. More spacious. The reader should feel they entered a library.' },
   { name: 'Engineering',  accent: 'var(--section-engineering)', canvas: 'Flow mode',            mood: 'Structured · flow wave · blueprint blue',  tags: ['agents', 'builds', 'logs'],               desc: 'More structured. Code-tolerant. The canvas sweeps left-to-right — systematic, linear.' },
   { name: 'OSS Radar',   accent: 'var(--section-oss-radar)',   canvas: 'Threshold mode',       mood: 'Serialized · cascades · rust signal',       tags: ['oss', 'radar', 'curated'],                desc: 'Publication-like. Issue numbers. The canvas fires dopamine cascades — signal, urgency.' },
-  { name: 'Frames',       accent: 'var(--section-frames)',      canvas: 'None — image leads',   mood: 'Cinematic · whitespace · green growth',     tags: ['photography', 'journal', 'frames'],       desc: 'Image-first. Captions optional. More cinematic whitespace. The photo speaks first.' },
 ];
 
 const PRINCIPLES = [
   { num: 'I',   title: 'Stable shell. Expressive interior.',   body: 'The publication shell — sidebar, nav, metadata, footer — stays calm and legible at all times. The body of each post is allowed to break pattern. This is where the artistic freedom lives. <em>The museum building gives orientation. The rooms can vary.</em>' },
   { num: 'II',  title: 'DRY for navigation. Not for art.',     body: 'Reuse the navigation system. Reuse the token system. Reuse the component language. But never apply DRY dogma to creative expression. <em>Every post can be its own art object. Every section can have its own atmosphere.</em>' },
   { num: 'III', title: 'One gradient. Many appearances.',      body: 'The brand gradient (Deep Green → Mint → Sky) appears only for identity marks: logo, sparkle separator, #tags. It is the chromatic signature of the publication. <em>Use it sparingly so it lands with weight.</em>' },
-  { num: 'IV',  title: 'Section color = section mood.',        body: 'Each section has one accent color. Essays: Warm Gold. Engineering: Blueprint Blue. OSS Radar: Rust. Frames: Deep Green. These are not arbitrary — <em>they are emotional tones for different rooms of the museum.</em>' },
+  { num: 'IV',  title: 'Section color = section mood.',        body: 'Each section has one accent color. Essays: Warm Gold. Engineering: Blueprint Blue. OSS Radar: Rust. These are not arbitrary — <em>they are emotional tones for different rooms of the museum.</em>' },
   { num: 'V',   title: 'One canvas mode per context.',         body: 'The neural canvas is the publication\'s life force. Each context gets its own mode. Threshold for the homepage (alive, unpredictable). Flow for Engineering (linear, systematic). <em>Each post can invent its own.</em>' },
   { num: 'VI',  title: 'Lora for thought. Mono for administration.', body: 'Lora, Georgia serif carries all editorial voice: headings, body, pull quotes. Monospace carries all metadata: dates, labels, tags, kickers, issue numbers. <em>Two voices, never more. The contrast itself is expressive.</em>' },
 ];
@@ -184,7 +183,7 @@ export function designLanguagePage() {
 
   ${Chapter({ num: '07', title: 'Section Identities' })}
 
-  <p class="dl-body-note">Four sections — four emotional tones. Each has one accent color. The color appears in kickers, section headers, page hero rules, and canvas banner borders.</p>
+  <p class="dl-body-note">Three sections — three emotional tones. Each has one accent color. The color appears in kickers, section headers, page hero rules, and canvas banner borders.</p>
   <div class="dl-section-ids">
     ${SECTION_IDS.map(s => html`<div class="dl-sid">
       <div class="dl-sid-rule" style="background:${s.accent}"></div>

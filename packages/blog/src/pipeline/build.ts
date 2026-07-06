@@ -25,7 +25,6 @@ import { animationsLabPage } from '../pages/animations-lab.js';
 import { essaysPage } from '../pages/essays.js';
 import { engineeringPage } from '../pages/engineering.js';
 import { ossRadarPage } from '../pages/oss-radar.js';
-import { framesPage } from '../pages/frames.js';
 
 export { DIST } from '../lib/paths.js';
 
@@ -171,7 +170,7 @@ export async function buildHTML(): Promise<void> {
     if (prompts) post.meta.promptCount = prompts.count;
     const body = postPage(post.meta, htmlContent, prompts, allPosts);
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: 'post', ogType: 'article', seoTitle: post.meta.seoTitle });
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: 'post', ogType: 'article', ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
     writeOutput(post.meta.slug, page.toString());
     writeRoot(`${post.meta.slug}.md`, mdRawContents[i]! + seriesTrailMarkdown(post.meta, allPosts));
 
@@ -191,7 +190,7 @@ export async function buildHTML(): Promise<void> {
     const scripts = post.meta.layout === 'immersive' ? ['/immersive.js'] : [];
     const trail = seriesTrailBlock(post.meta, allPosts);
     const content = trail ? `${htmlContent}${trail}` : htmlContent;
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', seoTitle: post.meta.seoTitle });
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
     writeOutput(post.meta.slug, page.toString());
     writeRoot(`${post.meta.slug}.md`, htmlToMarkdown(htmlContent, post.meta) + seriesTrailMarkdown(post.meta, allPosts));
 
@@ -220,9 +219,6 @@ export async function buildHTML(): Promise<void> {
 
   const ossRadarBody = ossRadarPage(sortedPosts.filter(p => p.section === 'oss-radar'));
   writeOutput('oss-radar', pageShell({ title: SECTION_LABELS['oss-radar'], description: SECTION_DESCRIPTIONS['oss-radar'], content: ossRadarBody.toString(), currentSection: 'oss-radar' }).toString());
-
-  const framesBody = framesPage(sortedPosts.filter(p => p.section === 'frames'));
-  writeOutput('frames', pageShell({ title: SECTION_LABELS['frames'], description: SECTION_DESCRIPTIONS['frames'], content: framesBody.toString(), currentSection: 'frames' }).toString());
 
   const aboutBody = aboutPage();
   const aboutShell = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), currentSlug: 'about' });

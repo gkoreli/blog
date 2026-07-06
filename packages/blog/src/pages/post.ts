@@ -1,7 +1,7 @@
 import { staticHtml as html, raw } from '@nisli/core/static';
 import type { PostMeta, PromptsData } from '../lib/frontmatter.js';
 import { formatDateLong } from '../lib/dates.js';
-import { SectionLabel, FramesGallery } from '../components/index.js';
+import { SectionLabel } from '../components/index.js';
 
 function resolveSeriesPosts(meta: PostMeta, allPosts: PostMeta[]) {
   if (!meta.series) return null;
@@ -46,7 +46,6 @@ export function postPage(meta: PostMeta, htmlContent: string, prompts?: PromptsD
       ? html`<div class="tags">${meta.tags.map(t => html`<span class="tag">${t}</span>`)}</div>`
       : ''}
   </header>
-  ${meta.layout === 'frames' ? FramesGallery({ images: meta.images }) : ''}
   <div class="post-content">
     ${raw(htmlContent)}
   </div>

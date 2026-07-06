@@ -1,7 +1,7 @@
 import { discoverPosts } from '../lib/fs.js';
 import { validatePosts } from '../lib/frontmatter.js';
 
-const results = validatePosts(discoverPosts());
+const results = validatePosts(discoverPosts().filter(f => f.endsWith('.md')));
 const invalid = results.filter(r => !r.valid);
 
 for (const r of invalid) console.error(`❌ ${r.errors}`);

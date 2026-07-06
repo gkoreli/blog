@@ -11,7 +11,7 @@ export function Masthead() {
       <span class="pub-dl-txt">Vol. I</span>
     </div>
     <h1 class="masthead-name">Goga Koreli</h1>
-    <p class="masthead-sub">A personal publication — essays, engineering notes, OSS Radar, and Frames.<br>One author, many forms, one sensibility.</p>
+    <p class="masthead-sub">A personal publication — essays, engineering notes, and OSS Radar.<br>One author, many forms, one sensibility.</p>
     <div class="masthead-pills">
       <a href="https://github.com/gkoreli/backlog-mcp" class="mpill" target="_blank" rel="noopener">backlog-mcp</a>
       <a href="https://www.npmjs.com/package/@nisli/core" class="mpill" target="_blank" rel="noopener">@nisli/core</a>

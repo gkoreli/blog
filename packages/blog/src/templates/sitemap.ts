@@ -20,7 +20,6 @@ ${url('/')}
 ${url('/essays')}
 ${url('/engineering')}
 ${url('/oss-radar')}
-${url('/frames')}
 ${postUrls.join('\n')}
 ${url('/about')}
 ${url('/stats')}

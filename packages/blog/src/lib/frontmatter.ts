@@ -5,21 +5,19 @@ import { z } from 'zod/v4';
 import { PROMPTS_DIR } from './paths.js';
 import { localDateStr } from './dates.js';
 
-export const sectionSchema = z.enum(['essays', 'engineering', 'oss-radar', 'frames']);
+export const sectionSchema = z.enum(['essays', 'engineering', 'oss-radar']);
 export type Section = z.infer<typeof sectionSchema>;
 
 export const SECTION_LABELS: Record<Section, string> = {
   essays: 'Essays',
   engineering: 'Engineering',
   'oss-radar': 'OSS Radar',
-  frames: 'Frames',
 };
 
 export const SECTION_DESCRIPTIONS: Record<Section, string> = {
   essays: 'Personal reflections, slow thinking, and long-form writing.',
   engineering: 'Building with agents, tools, and systems. Technical depth.',
   'oss-radar': 'Open source ecosystem analysis. Serialised issues.',
-  frames: 'Visual journals. Photography and presence.',
 };
 
 const frontmatterSchema = z.object({
@@ -28,7 +26,7 @@ const frontmatterSchema = z.object({
   description: z.string(),
   section: sectionSchema,
   tags: z.array(z.string()).optional().default([]),
-  layout: z.enum(['default', 'immersive', 'frames']).default('default'),
+  layout: z.enum(['default', 'immersive']).default('default'),
   featured: z.boolean().optional().default(false),
   seoTitle: z.string().optional(),
   alternativeHeadline: z.string().optional(),

@@ -48,4 +48,3 @@ export const ESBUILD_ENTRIES = [CLIENT_ENTRY, STATS_ENTRY, IMMERSIVE_ENTRY, ANIM
 export const ESSAYS_PAGE = 'essays';
 export const ENGINEERING_PAGE = 'engineering';
 export const OSS_RADAR_PAGE = 'oss-radar';
-export const FRAMES_PAGE = 'frames';

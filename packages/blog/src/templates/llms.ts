@@ -19,9 +19,9 @@ export function llmsTxt(posts: PostMeta[]): string {
 
   return `# gkoreli.com
 
-> A personal publication by Goga Koreli — essays, engineering notes, OSS Radar, and Frames.
+> A personal publication by Goga Koreli — essays, engineering notes, and OSS Radar.
 
-This is a personal publication with four sections: Essays (personal reflections), Engineering (building with agents and systems), OSS Radar (open source ecosystem analysis), and Frames (visual journals). Posts are written with AI assistance but are human-directed. The source code, analytics, and architecture decisions are all public.
+This is a personal publication with three sections: Essays (personal reflections), Engineering (building with agents and systems), and OSS Radar (open source ecosystem analysis). Posts are written with AI assistance but are human-directed. The source code, analytics, and architecture decisions are all public.
 
 ## Sections
 

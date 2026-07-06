@@ -25,17 +25,6 @@ function FeaturedCard({ post }: { post: PostMeta }) {
 </a>`;
 }
 
-function FramesPlaceholder() {
-  const slots = ['walk · city', 'light · shadow', 'moment · still'];
-  return html`<div class="frames-grid">
-  ${slots.map(l => html`<div class="frame-slot">
-    <div class="frame-slot-bg"></div>
-    <span class="frame-slot-txt">${l}</span>
-  </div>`)}
-</div>
-<p class="frames-caption"><span class="frames-dot"></span>Photo journals — first frame coming soon</p>`;
-}
-
 export function homePage(posts: PostMeta[]) {
   const featured = posts.find(p => p.featured) ?? posts[0];
   const essays = posts.filter(p => p.section === 'essays' && p.slug !== featured?.slug);
@@ -56,8 +45,5 @@ export function homePage(posts: PostMeta[]) {
 
   ${ossRadar.length > 0 ? html`${SectionHeader({ label: 'OSS Radar', href: '/oss-radar', dotColor: 'var(--section-oss-radar)' })}
   ${ossRadar.slice(0, 1).map(p => OSSRadarCard({ post: p }))}` : ''}
-
-  ${SectionHeader({ label: 'Frames', href: '/frames', dotColor: 'var(--section-frames)' })}
-  ${FramesPlaceholder()}
 </div>`;
 }
