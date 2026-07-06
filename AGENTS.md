@@ -36,6 +36,10 @@ Covers voice, structure, formatting balance, sourcing rules, glossary format, an
 - **Sourcing rules** — original author first (not Wikipedia or aggregators), no paywalled sources, authoritative builder blogs and company engineering blogs preferred. Glossary uses table format with dates on every source.
 - **What makes a great article** — states a problem clearly, introduces novel ideas, debunks myths, showcases best practices AND anti-patterns, highlights gotchas, shares personal growth, is transparent.
 
+### Personal Essays Skill (`.agents/skills/personal-essays/SKILL.md`)
+
+The exposed-register personal essay — writing from open wounds, not scars. For this genre the agent is editor and gatekeeper, **never ghostwriter**: no drafted prose, no prompt file, essays typed by the author's hands and shipped plain (no art-object treatment). Defines the three-property test (present tense, unresolved at publication, confession costs status), the traps (meta-laps, discovery essays, instrumentation), and the editing checklist. Where it conflicts with `blog-writing` on a personal essay, `personal-essays` wins.
+
 ## Content Strategy
 
 Build-in-public approach — document the journey with specifics over polish.
