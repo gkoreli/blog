@@ -5,9 +5,9 @@ import { PrStreamHero, SectionNum, Insight, ScrollReveal, PullQuote, SectionBrea
 export const meta: PostMeta = {
   title: 'One Hundred Pull Requests',
   seoTitle: 'Building an MCP Server with AI Agents: 100 Pull Requests',
-  alternativeHeadline: 'backlog-mcp, MCP server architecture, agentic engineering, and the weekend birth of the nisli UI framework',
+  alternativeHeadline: 'backlog-mcp, context engineering for AI agents, MCP server architecture, and the weekend birth of the nisli UI framework',
   date: '2026-07-05',
-  description: 'backlog-mcp part 1: an MCP server for AI agents, built in the open — the pain that started it, the weekend nisli was born, why the PRs stopped.',
+  description: 'backlog-mcp part 1: a context-engineering backlog for AI agents, built in the open — the pain that started it, the weekend nisli was born, why the PRs stopped.',
   section: 'engineering' as const,
   tags: ['backlog-mcp', 'mcp', 'agentic-engineering', 'nisli', 'build-in-public'],
   layout: 'immersive',
@@ -31,7 +31,7 @@ export function article() {
   return html`
 <article class="post-content">
   <p class="post-lede">
-    <a href="https://github.com/gkoreli/backlog-mcp" target="_blank">backlog-mcp</a> is an open-source MCP server for AI agent task management; <a href="https://github.com/gkoreli/nisli" target="_blank">nisli</a> is the zero-dependency UI framework born inside it — this is the story of their first 117 pull requests.
+    <a href="https://github.com/gkoreli/backlog-mcp" target="_blank">backlog-mcp</a> is an open-source context-engineering backlog for AI agents — tasks, memory, and search, served over MCP; <a href="https://github.com/gkoreli/nisli" target="_blank">nisli</a> is the zero-dependency UI framework born inside it. This is the story of their first 117 pull requests.
   </p>
 
   <!-- § 0 — THE SHAPE OF THE RUN -->
