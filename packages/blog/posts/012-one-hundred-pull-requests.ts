@@ -23,7 +23,7 @@ export function preamble() {
   return PrStreamHero({
     kicker: 'Engineering · The backlog-mcp Saga · Part 1',
     title: html`<h1>117 Pull Requests Later,<br><em>It Wasn’t a Task Manager Anymore</em></h1>`,
-    byline: html`<p class="prs-byline">How a simple backlog became local-first context and memory infrastructure for AI agents —<br>and produced the framework powering this blog.</p>`,
+    byline: html`<p class="prs-byline">How a simple backlog became local-first context and memory infrastructure for AI agents —<br>and why I am now using it less.</p>`,
   });
 }
 
@@ -31,7 +31,7 @@ export function article() {
   return html`
 <article class="post-content">
   <p class="post-lede">
-    Over 78 days, I opened 117 pull requests and merged 108 of them. Somewhere during that run, the task manager disappeared.
+    Over 78 days, I opened 117 pull requests and merged 108 of them. Somewhere during that run, the task manager disappeared. Now the system contains almost 1,000 tasks and artifacts, and I am using it less than I did when it was small. I do not know how to fix that yet.
   </p>
 
   <!-- § 1 — WHAT EXISTS NOW -->
@@ -40,6 +40,9 @@ export function article() {
     <h2>backlog-mcp is <em>badly named</em> now</h2>
     <p>
       <a href="https://github.com/gkoreli/backlog-mcp" target="_blank">backlog-mcp</a> began as a place where AI agents could create tasks and mark them done. Today it is the local-first context and memory layer behind how I build software: a resilient store for tasks, decisions, artifacts, evidence, operations, and accumulated project knowledge; hybrid lexical and semantic search powered by <a href="https://github.com/oramasearch/orama" target="_blank">Orama</a>; RAG-style context assembly; and one core exposed through MCP, a CLI, HTTP, and a live web viewer.
+    </p>
+    <p>
+      That is the clean architectural description. The less flattering truth is that the product is reaching a scale where its own ergonomics are breaking down. Context engineering has not become as useful as I expected. Memory is accumulating faster than I can make it trustworthy. Organization that felt natural with one hundred entities feels punishing near one thousand. The system has outgrown the name, but I have not fully nailed what it should become instead.
     </p>
     <p>
       The strangest part is the viewer. It is deliberately read-only. There is no edit form, no create button, no drag-and-drop board, and no friendly CRUD UI waiting to turn the product back into Jira. Agents mutate the system. Humans observe it and steer the agents. That constraint is not a missing feature; it is the product thesis.
@@ -294,11 +297,43 @@ export function article() {
     <p>
       The name still says backlog-mcp because names preserve history too. The backlog was the entry point. MCP was the first port. Neither is the boundary anymore.
     </p>
+  ` })}
+
+  ${SectionBreak()}
+
+  <!-- § 10 — THE OPEN PROBLEM -->
+  ${ScrollReveal({ content: html`
+    ${SectionNum({ label: '§ 10 — The Part I Don’t Know How to Solve' })}
+    <h2>The product I built is becoming the product <em>I avoid</em></h2>
     <p>
-      117 pull requests later, that is what the task manager became.
+      Here is the part that costs me more to publish: backlog-mcp is more capable than it has ever been, and I am not using it as much as I used to.
     </p>
     <p>
-      Follow the work on <a href="https://github.com/gkoreli/backlog-mcp" target="_blank">GitHub</a>, or tell me what you think — I'm <a href="https://x.com/GogaKoreli" target="_blank">@GogaKoreli</a>.
+      My personal backlog is approaching 1,000 tasks and artifacts. The number keeps growing. Without better organization, the tool loses value with every item it successfully preserves. Finding the right epic becomes work. Deciding where an old task belongs becomes work. Context retrieval has not turned out to be as useful as I hoped. Memory now means more than 200 artifacts whose freshness, correctness, and relevance I cannot casually trust. If I do not improve the ergonomics, I may eventually ditch the tool I built because I could not find another one. I do not want that to happen. Wanting is not enough to prevent it.
+    </p>
+    <p>
+      Every time I look at <a href="https://obsidian.md" target="_blank">Obsidian</a>, I feel this pressure from another direction. It is similar enough to make me wonder whether I spent months building a smaller version of something that already won. Sometimes that makes me want to give up entirely. I will not give up, but the feeling is real.
+    </p>
+    <p>
+      I still believe the distinction matters. Obsidian is opinionated around a different center. backlog-mcp is agentic first: substrates declare open-ended kinds of context; agents are the mutation surface; the viewer only observes; the core exposes semantic operations to any transport. I do not think Obsidian can simply become that without fighting the vision that made it Obsidian. backlog-mcp can still pivot around the problems agentic engineering creates because its vision is not finished. That freedom is valuable. It is also another way of saying I still do not know exactly what the product is.
+    </p>
+    <p>
+      Writing this article is producing an idea in real time. Maybe folders and epics should not be empty containers that I organize after the fact. Maybe they should carry routing strategies: this kind of task belongs here; this evidence attaches there; this project context enters through this path. Organization would be decided ahead of arrival instead of performed slowly after the backlog is already full. I do not know whether that is the answer. It is simply the pressure speaking clearly enough for a possible feature to appear.
+    </p>
+    <p>
+      There is another problem underneath it. I want to open the viewer and watch which agents are working, what they are working on, and how that work relates to the durable tasks and decisions in the store. But I do not want backlog-mcp to become another agent orchestrator. Execution should remain outside it. Maybe <code>agent</code> becomes a substrate. Maybe the correlation between an agent, a session, a task, and its resulting artifacts is persisted as something more generic. I want deterministic history without coupling the store to whichever agent runtime is fashionable this month. I still do not know how to model it.
+    </p>
+    <p>
+      This uncertainty is probably one reason my own adoption is slowing down. When I get stuck, I do what I always do: I move to something easier. I tell myself I am clearing my mind. Sometimes I am. Sometimes I am neglecting the projects I love because returning to them means facing the part I cannot solve.
+    </p>
+
+    ${PullQuote({ content: html`I am writing an article about how far backlog-mcp has come while quietly avoiding the version of it that exists today.`, cite: '— the contradiction I cannot resolve in this post' })}
+
+    <p>
+      Maybe routing strategies are next. Maybe agent substrates. Maybe memory needs aggressive forgetting. Maybe the product needs a new name before it can find a clearer identity. Or maybe I built something that worked beautifully at one hundred artifacts and breaks at one thousand.
+    </p>
+    <p>
+      I am not giving up. But I am not going to pretend that refusing to quit is the same thing as knowing what to build next.
     </p>
   ` })}
 
