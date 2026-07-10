@@ -6,11 +6,12 @@ export const meta: PostMeta = {
   title: '117 Pull Requests Later, It Wasn’t a Task Manager Anymore',
   seoTitle: 'How backlog-mcp Became Context and Memory Infrastructure for AI Agents',
   alternativeHeadline: 'How a simple task backlog became a local-first context engine, memory layer, search system, and the birthplace of the nisli UI framework',
-  date: '2026-07-05',
+  date: '2026-07-09',
   description: 'The story of how backlog-mcp grew from a task manager into local-first context and memory infrastructure for AI agents — and produced the UI framework powering this blog.',
   section: 'engineering' as const,
   tags: ['backlog-mcp', 'agentic-engineering', 'agentic-product-engineering', 'context-engineering', 'memory-engineering', 'nisli', 'architecture'],
   layout: 'immersive',
+  featured: true,
   slug: 'one-hundred-pull-requests',
   series: {
     id: 'backlog-mcp-saga',
