@@ -1,6 +1,6 @@
 import { staticHtml as html } from '@nisli/core/static';
 import type { PostMeta } from '../src/lib/frontmatter.js';
-import { PrStreamHero, SectionNum, Insight, ScrollReveal, PullQuote, SectionBreak, StatRow, Timeline, Footnotes } from '../src/templates/components.js';
+import { PrStreamHero, SectionNum, Insight, ScrollReveal, PullQuote, SectionBreak, StatRow, Timeline, CompareTable, Footnotes } from '../src/templates/components.js';
 
 export const meta: PostMeta = {
   title: '117 Pull Requests Later, It Wasn’t a Task Manager Anymore',
@@ -39,18 +39,18 @@ export function article() {
     ${SectionNum({ label: '§ 1 — What Exists Now' })}
     <h2>backlog-mcp is <em>badly named</em> now</h2>
     <p>
-      <a href="https://github.com/gkoreli/backlog-mcp" target="_blank">backlog-mcp</a> began as a place where AI agents could create tasks and mark them done. Today it is the local-first context and memory layer behind how I build software: a resilient store for tasks, decisions, artifacts, evidence, operations, and accumulated project knowledge; hybrid lexical and semantic search powered by <a href="https://github.com/oramasearch/orama" target="_blank">Orama</a>; RAG-style context assembly; and one core exposed through MCP, a CLI, HTTP, and a live web viewer.
+      <a href="https://github.com/gkoreli/backlog-mcp" target="_blank">backlog-mcp</a> began as a place where AI agents could create tasks and mark them done. Today the name describes its origin, not its architecture.
     </p>
+    <ul>
+      <li><strong>Durable context.</strong> Tasks, decisions, artifacts, evidence, operations, and memory live as markdown entities with structured frontmatter.</li>
+      <li><strong>Local retrieval.</strong> <a href="https://github.com/oramasearch/orama" target="_blank">Orama</a> provides lexical search; local embeddings add semantic retrieval.</li>
+      <li><strong>Context assembly.</strong> One request can hydrate relationships, recent activity, references, and semantically related work.</li>
+      <li><strong>One core, many consumers.</strong> MCP, CLI, HTTP, and future ports call the same transport-independent operations.</li>
+      <li><strong>Observation without CRUD.</strong> The live viewer is deliberately read-only. Agents mutate; humans observe and steer.</li>
+    </ul>
     <p>
       That is the clean architectural description. The less flattering truth is that the product is reaching a scale where its own ergonomics are breaking down. Context engineering has not become as useful as I expected. Memory is accumulating faster than I can make it trustworthy. Organization that felt natural with one hundred entities feels punishing near one thousand. The system has outgrown the name, but I have not fully nailed what it should become instead.
     </p>
-    <p>
-      The strangest part is the viewer. It is deliberately read-only. There is no edit form, no create button, no drag-and-drop board, and no friendly CRUD UI waiting to turn the product back into Jira. Agents mutate the system. Humans observe it and steer the agents. That constraint is not a missing feature; it is the product thesis.
-    </p>
-    <p>
-      The current core exports verbs such as <code>wakeup</code> and <code>recall</code>. Search spans typed markdown entities and resources. A context request hydrates the parent, children, siblings, references, recent activity, and semantically related work. Substrates let the core learn entity types from declarations instead of hard-coding every kind of knowledge in advance. The MCP server is still there, but MCP has become an interface to the product rather than the product itself.
-    </p>
-
     ${PullQuote({ content: html`backlog-mcp started as software for tracking what an agent should do next. It became infrastructure for preserving what the agent — and the project — should never have to learn twice.`, cite: '— the transformation this article is about' })}
 
     <p>
@@ -76,12 +76,17 @@ export function article() {
 
     ${Insight({ label: 'The pressure loop', content: html`<p><strong>Feel the problem → build the smallest answer → use it for real → hit the next constraint → extend the core at that pressure point → keep using it.</strong> The roadmap is not predicted in advance. It is uncovered through contact with the product.</p>` })}
 
-    <p>
-      backlog-mcp is almost a controlled record of that loop. I was losing agent work, so I built tasks. The task count grew until I could not find anything, so I built search. Search did not show me the state of the whole system, so I built the viewer. I did not want to spend my time clicking through a management UI, so every useful action had to exist in the core and be exposed to the agent first. The viewer became read-only as a consequence: agents mutate; I observe and steer.
-    </p>
-    <p>
-      Tasks stopped being enough, so I added artifacts, epics, folders, milestones, and eventually substrates. Hundreds of entities made the viewer complicated. The first version used only native Web Components and rebuilt entire DOM subtrees; every refresh could destroy focus, scroll position, and the exact state of the investigation I was in. That pain produced nisli. Once agents could store work but still had to reconstruct the project through repeated calls, context engineering became the next pressure point. Once context disappeared between sessions, memory followed.
-    </p>
+    <p><strong>backlog-mcp is almost a controlled record of that loop:</strong></p>
+    <ol>
+      <li><strong>Lost agent work → tasks.</strong> Plans and research were dying inside completed chat sessions.</li>
+      <li><strong>Too many tasks → search.</strong> Preservation without retrieval created a larger graveyard.</li>
+      <li><strong>No situational awareness → viewer.</strong> Search could find an item but could not show the state of the system.</li>
+      <li><strong>No desire to click through CRUD → read-only UI.</strong> Every useful action had to exist in the core and reach the agent first.</li>
+      <li><strong>More than tasks → substrates.</strong> Artifacts, epics, folders, milestones, and memory needed one extensible model.</li>
+      <li><strong>UI state kept disappearing → nisli.</strong> Native Web Components were rebuilding subtrees and destroying focus, scroll position, and investigation state.</li>
+      <li><strong>Too many retrieval calls → context.</strong> The agent needed relationships and related work in one request.</li>
+      <li><strong>Context died between sessions → memory.</strong> The system needed to compound instead of merely store.</li>
+    </ol>
     <p>
       None of that sequence was a platform roadmap. I did not anticipate a context engine, a memory layer, a UI framework, or a static-site generator and then spend months filling boxes on a diagram. Each abstraction had to earn its existence by removing a problem in a system I was already using. This is my model of agentic product engineering: agents make construction abundant, so the engineer's leverage moves toward taste, problem selection, architecture, and the refusal to build capabilities that have not yet justified themselves.
     </p>
@@ -136,15 +141,21 @@ export function article() {
     <p>
       Somewhere inside this run I stopped treating Architecture Decision Records as documentation written after the engineering. They became the way I did the engineering. I call the method <strong>ADR-driven engineering</strong>.
     </p>
-    <p>
-      A spec is optimized to describe what should exist. That is useful until reality moves. Then the spec becomes an archaeological layer: confident, detailed, and subtly wrong. An ADR is optimized for a different job. It records the pressure that forced a decision, the options that were considered, the reason one won, the costs accepted, and the evidence that would justify reversing it. The implementation can change while that reasoning remains valuable.
-    </p>
-    <p>
-      The mental shift sounds small: write a decision instead of a plan. In practice it changed the project. Before risky work, I create or extend an ADR. The agent audits the current code before proposing edits. Alternatives are scored or rejected explicitly. Consequences and unresolved tensions stay visible. Only then does implementation begin. Review moves upstream from "is this diff correct?" to "are we making the correct decision?"
-    </p>
-    <p>
-      The records are markdown with frontmatter, and related decisions form threads: ADR 0013.1 through 0013.7 for transport; ADR 0092 and its children for memory; ADR 0106 and its children for semantic intent and vocabulary. A newer decision can supersede one branch without erasing it. Search can retrieve the whole chain. An agent entering months later can see not only the current answer, but the failed answers that must not be rediscovered.
-    </p>
+    <ul>
+      <li><strong>A spec describes the intended result.</strong> It is valuable while implementation and intent still match.</li>
+      <li><strong>An ADR preserves the decision.</strong> Pressure, evidence, alternatives, trade-offs, and reversal conditions survive even when code changes.</li>
+      <li><strong>A thread preserves discovery.</strong> ADR 0013.1–0013.7 records the transport dead ends; ADR 0092 grows with memory; ADR 0106 carries semantic intent and vocabulary.</li>
+    </ul>
+
+    ${PullQuote({ content: html`Review moves upstream from “is this diff correct?” to “are we making the correct decision?”`, cite: '— the practical effect of ADR-driven engineering' })}
+
+    <p><strong>The working sequence is explicit:</strong></p>
+    <ol>
+      <li><strong>Audit.</strong> The agent reads the current code and classifies the real constraints before touching anything.</li>
+      <li><strong>Decide.</strong> Alternatives, consequences, open tensions, and reversal conditions go on disk.</li>
+      <li><strong>Implement.</strong> Code executes the decision instead of discovering the architecture accidentally.</li>
+      <li><strong>Thread.</strong> Later evidence extends or supersedes the record without erasing why the previous answer existed.</li>
+    </ol>
 
     ${Insight({ label: 'ADR-driven engineering', content: html`<p>Start consequential work by making the decision legible: current evidence, alternatives, chosen direction, consequences, and reversal conditions. Thread later discoveries onto that record. Let the code implement the decision and let the ADR preserve why the code has its shape.</p>` })}
 
@@ -168,14 +179,21 @@ export function article() {
     <p>
       Most software assumes the human and the interface are the product boundary. backlog-mcp assumes the agent and the core are the boundary. That inversion produces an interface that looks familiar but behaves differently.
     </p>
+
+    <div class="code-block">
+<span class="cm">// every mutation follows the same accountable path</span><br><br>
+<span class="fn">human intent</span> → agent → MCP / CLI → <span class="kw">core</span> → storage<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↘ operation journal<br>
+viewer ← SSE ← event bus ← validated mutation
+    </div>
+
+    <ul>
+      <li><strong>The core owns behavior.</strong> MCP, CLI, HTTP, and future consumers are ports around the same operations.</li>
+      <li><strong>The journal owns attribution.</strong> Writes are recorded inside the core, so changing transport cannot bypass history.</li>
+      <li><strong>The viewer owns observation.</strong> Entities, markdown, references, activity, and diffs update in real time without becoming a second mutation surface.</li>
+    </ul>
     <p>
-      The viewer renders entities, markdown, metadata, references, search results, activity, and diffs in real time. It does not mutate them. If I want to change a task, capture a decision, attach evidence, or reorganize work, I tell an agent. The agent uses a semantic operation, the core validates it, the storage layer persists it, the operation log records it, and the viewer reacts over SSE. The human stays in the control loop without becoming the data-entry layer.
-    </p>
-    <p>
-      This is why extracting the core mattered. The original product surface was MCP-shaped because MCP was how my agents reached it. ADR 0090 pulled the business operations into transport-independent functions and gave the CLI 1:1 capability. MCP, CLI, HTTP, and future consumers are ports around the same behavior. One core, many consumers — and no protocol gets to define the product's ceiling.
-    </p>
-    <p>
-      The operation journal sits at the same boundary. Writes are recorded inside the core, not inside an MCP wrapper, so changing transport cannot bypass history. Actor identity is explicit input rather than ambient state. That is what "resilient storage" means here: not merely that markdown survives a crash, but that every mutation follows one validated, attributable path.
+      If I want to change a task, capture a decision, attach evidence, or reorganize work, I tell an agent. The human stays in the control loop without becoming the data-entry layer. Resilient storage means more than markdown surviving a crash: every mutation follows one validated, attributable path.
     </p>
   ` })}
 
@@ -188,14 +206,60 @@ export function article() {
     <p>
       Agents are unusually sensitive to information architecture. Hide a capability and they cannot use it. Expose everything at once and the context window fills with definitions irrelevant to the current task. Good agent tooling is not maximal exposure. It is progressive disclosure for a model.
     </p>
+    <p><strong>Three rules shape the context layer:</strong></p>
+    <ul>
+      <li><strong>Retrieve independently.</strong> BM25 and local vector search remain separate retrievers, then fuse results without allowing one normalization step to erase relevance.</li>
+      <li><strong>Assemble on demand.</strong> <code>backlog_context</code> returns ancestors, children, siblings, references, recent operations, and related work in one call instead of ten.</li>
+      <li><strong>Expose intent, hide substrate.</strong> <code>remember</code> is agent language; <code>create(type=memory)</code> is storage language. The model should speak the first while the core owns the second.</li>
+    </ul>
     <p>
-      backlog-mcp first attacked the retrieval side. Orama provides BM25 search locally. A local embedding model adds semantic retrieval. Independent lexical and vector retrievers are fused instead of allowing one normalization trick to erase a relevant result. <code>backlog_context</code> then assembles the graph around a task — ancestors, children, siblings, references, reverse references, recent operations, and related results — so an agent buys useful context in one call rather than spending ten calls reconstructing it.
+      Substrates make the entity model open-ended without blasting every type definition into the prompt. Deferred tool loading does the same for capabilities: another tool becomes a discoverable name, not a permanent context tax.
+    </p>
+
+    <h3>Decision 1: make search inspectable</h3>
+    ${CompareTable({
+      headers: ['Option', 'Architecture', 'Verdict'],
+      rows: [
+        ['A · Trust Orama hybrid', 'One black-box text + vector query', 'Rejected — wrong rankings were impossible to explain or tune'],
+        ['B · Pluggable retrievers', 'Interfaces and classes for every retrieval strategy', 'Rejected for now — too much abstraction for two retrievers'],
+        ['C · Independent + linear fusion', 'Separate BM25 and vector queries, normalized and fused', 'Chosen — scores stay debuggable, testable, and tunable'],
+      ],
+      highlightRows: [2],
+    })}
+    <p>
+      The concrete failure was a query for <code>feature store</code> ranking the task literally about <code>FeatureStore</code> eighteenth. The pipeline had Orama hybrid scoring, another normalization layer, and a shadow re-ranker all fighting each other. Independent retrieval costs two queries instead of one, but at this scale the overhead is under 10ms. I accepted the latency to regain the ability to explain a result.
+    </p>
+
+    <h3>Decision 2: reveal types lazily</h3>
+    ${CompareTable({
+      headers: ['Option', 'What the agent sees', 'Verdict'],
+      rows: [
+        ['A · Tool per type', '15+ full schemas loaded into every session', 'Clear semantics, unacceptable eager context cost'],
+        ['B · One fat CRUD tool', 'One schema containing every type-specific field', 'Smaller manifest, but storage leaked into the API and schemas drifted'],
+        ['C · Substrates + lazy intent', 'Names first; exact shape only when the intent is selected', 'Chosen direction — generic core, semantic port, on-demand context'],
+      ],
+      highlightRows: [2],
+    })}
+
+    <div class="code-block">
+<span class="kw">SUBSTRATES</span><br>
+├── derives → EntitySchema <span class="cm">// discriminated Zod union</span><br>
+├── drives&nbsp; → create / update validation<br>
+├── drives&nbsp; → viewer type registry<br>
+└── drives&nbsp; → agent hints
+    </div>
+
+    <p>
+      The first answer was one generic <code>create</code>/<code>update</code> surface because clients eagerly loaded every tool definition. That avoided fifteen tools, but it created a flat schema containing fields such as <code>schedule</code>, <code>due_date</code>, and <code>content_type</code> whether the agent needed them or not. Worse, the MCP schema, core types, validation, and viewer registry began drifting apart.
     </p>
     <p>
-      Substrates attack the schema side. A substrate is the low-level declaration of an entity type: its name, prefix, schema, defaults, and behavior. The storage engine and generic projections operate on entities without needing every future type baked into their own code. More importantly, the MCP surface does not need to dump every substrate into the agent's prompt. Types and tools can be discovered on demand.
+      ADR 0098 moved type knowledge into one substrate declaration per entity: exact Zod schema, prefix, structural rules, UI metadata, and agent hint. The core now validates the discriminated shape at write boundaries. ADR 0106 takes the next step: the port should speak intent with verbs such as <code>remember</code> and <code>schedule</code>, while deferred tool loading reveals the full schema only when selected.
     </p>
+
+    ${PullQuote({ content: html`Agent context should expand like a filesystem: names first, shape on demand, full content only when opened.`, cite: '— the reusable agentic-product rule' })}
+
     <p>
-      The same principle is now reshaping the tool surface. <code>create(type=memory)</code> exposes the persistence model. <code>remember</code> exposes the agent's intent. <code>recall</code>, <code>wakeup</code>, and eventually <code>schedule</code> let the port speak in verbs the model already understands while the substrate stays inside the core. Deferred tool loading makes that vocabulary affordable: another capability becomes a discoverable name, not a permanent context tax.
+      The important nuance is chronological. “Fewer tools” was correct when every schema loaded eagerly. It became less correct when harnesses learned deferred loading. The durable principle was never a fixed tool count. It was minimizing irrelevant context while preserving semantic clarity.
     </p>
     <p>
       Memory was the logical next step, but the important discovery was that most of the memory already existed. Completed tasks are episodic traces. ADRs preserve semantic decisions. Artifacts preserve research and outputs. Evidence connects claims to results. The operation log preserves how state arrived. The backlog is already memory; the engineering problem is deciding what to surface, when to surface it, how much it should cost, and whether the agent can trust it.
@@ -209,6 +273,11 @@ export function article() {
     <p>
       I already tried one answer and rejected it: inject memory on every agent turn. It sounded comprehensive. In use, it was bad. The agent repeatedly paid for context whether the turn needed it or not; irrelevant memories competed with the current task; and constant injection made provenance, staleness, and token cost harder to reason about. More memory did not mean better memory.
     </p>
+    <ul>
+      <li><strong>Token failure.</strong> Every turn paid for memory whether it needed it or not.</li>
+      <li><strong>Attention failure.</strong> Irrelevant artifacts competed with the actual task.</li>
+      <li><strong>Trust failure.</strong> Constant injection obscured provenance, freshness, and why a memory had been selected.</li>
+    </ul>
     <p>
       I still feel the obvious FOMO. Mem0, MemPalace, Letta, Hindsight, and other established systems contain serious ideas. It is tempting to assume that adopting one of them would skip the hard part. But their abstractions were shaped by their pressures, not mine. I want to study their mechanisms — staged retrieval, decay, consolidation, provenance, temporal reasoning — without inheriting a system optimized around problems I do not yet have.
     </p>
@@ -232,12 +301,15 @@ export function article() {
     <p>
       That experience is why I knew exactly which trade I was making. By February, backlog-mcp's viewer had more than fifteen raw <code>HTMLElement</code> classes rebuilding subtrees with <code>innerHTML</code>. Focus disappeared, listeners leaked, and agents had to reproduce lifecycle discipline manually. I ran a React spike. React would have solved the application problem, but it did not fit the system I was trying to build: zero runtime dependencies, close to the web platform, no compiler or invented syntax, and small enough that an agent could understand the whole mechanism instead of imitating framework-shaped code from training data.
     </p>
-    <p>
-      The response was <a href="https://www.npmjs.com/package/@nisli/core" target="_blank">@nisli/core</a>: signals, computed values, effects, typed component factories, tagged HTML templates, dependency injection, queries, lifecycle cleanup, and keyed rendering over native Web Components. Roughly 2,600 lines of TypeScript. Zero dependencies. No virtual DOM. No build step required by the runtime.
-    </p>
-    <p>
-      Its design rules are explicitly agentic. Use ordinary TypeScript and HTML so models stay inside a familiar distribution. Make lost reactivity a compile error. Prefer named functions and explanatory internals over code golf. Contain effect failures. Keep escape hatches close to the platform. A framework written by agents is not enough; the framework itself must make correct code easier for agents to produce.
-    </p>
+    <p><strong>The response was <a href="https://www.npmjs.com/package/@nisli/core" target="_blank">@nisli/core</a>:</strong></p>
+    <ul>
+      <li><strong>Web-native runtime.</strong> Web Components, tagged HTML templates, no virtual DOM, and no required build step.</li>
+      <li><strong>Fine-grained state.</strong> Signals, computed values, effects, queries, lifecycle cleanup, and keyed rendering.</li>
+      <li><strong>Agent-friendly contracts.</strong> Ordinary TypeScript and HTML, typed factories, lost reactivity caught at compile time, and no invented DSL.</li>
+      <li><strong>Reachable internals.</strong> Roughly 2,600 lines of TypeScript, zero dependencies, named functions, and explanatory code instead of framework code golf.</li>
+    </ul>
+
+    ${PullQuote({ content: html`A framework written by agents is not enough. The framework must make correct code easier for agents to produce.`, cite: '— nisli’s design constraint' })}
     <p>
       Then the framework needed to render this site. I built a DOM-free static renderer and a static-site generation layer that turns the same component model into build-time HTML. This is SSG, not a server pretending to be a browser on every request. The output is static, cacheable, crawlable, and SEO-friendly. The blog now proves both halves of the architecture: nisli can power a live reactive application such as the backlog viewer and a content-heavy static site such as this one.
     </p>
@@ -254,12 +326,14 @@ export function article() {
     <p>
       Remote access was not an afterthought. I moved the server to an HTTP-first architecture, built a persistent stdio bridge, added Cloudflare Workers and D1, implemented GitHub OAuth with rotating refresh tokens, and made the viewer deployable as an always-on surface. ChatGPT, Claude, a CLI, or another MCP client could reach the same backlog from anywhere.
     </p>
-    <p>
-      That work succeeded, and it clarified the priority. Making cloud parity the north star forced every capability toward the weakest environment. Local embeddings, filesystem access, rich hybrid search, private project data, and durable history all belong naturally beside the code. The information is not a cache of a cloud product. It is the user's working memory and should exist locally by default.
-    </p>
-    <p>
-      So the product pivoted without throwing remote work away. Local-first is now the source of truth. Remote becomes a synchronization and access problem, not a reason to weaken the core. The proposed Loro history substrate follows that logic: record semantic operations as local-first CRDT history, let agents become peers, and synchronize without inventing conflict copies or maintaining two half-built histories in git and an operation log.
-    </p>
+
+    ${PullQuote({ content: html`Remote proved that the architecture could travel. It did not earn the right to define the source of truth.`, cite: '— the local-first pivot' })}
+
+    <ul>
+      <li><strong>Local owns capability.</strong> Embeddings, filesystem access, hybrid search, private project data, and durable history belong beside the code.</li>
+      <li><strong>Remote owns access.</strong> A hosted surface should make the local system reachable, not reduce it to the cloud's lowest common denominator.</li>
+      <li><strong>Synchronization owns distance.</strong> The proposed Loro substrate records semantic operations as local-first CRDT history so agents can become peers without conflict copies.</li>
+    </ul>
     <p>
       This is another case where an apparently reversed decision was actually useful engineering. Cloud deployment was not a detour. It exposed which capabilities were essential and which environment should be allowed to define them.
     </p>
@@ -308,8 +382,15 @@ export function article() {
     <p>
       Here is the part that costs me more to publish: backlog-mcp is more capable than it has ever been, and I am not using it as much as I used to.
     </p>
+    <h3>What is breaking</h3>
+    <ul>
+      <li><strong>Organization near 1,000 entities.</strong> Finding the right epic and deciding where old work belongs have become work of their own.</li>
+      <li><strong>Context that under-delivers.</strong> Retrieval has not become as useful in daily work as I expected.</li>
+      <li><strong>More than 200 memory artifacts.</strong> Freshness, correctness, relevance, and token cost are no longer details I can casually trust.</li>
+      <li><strong>My own adoption.</strong> The clearest product metric is also the most painful one: I reach for backlog-mcp less than I used to.</li>
+    </ul>
     <p>
-      My personal backlog is approaching 1,000 tasks and artifacts. The number keeps growing. Without better organization, the tool loses value with every item it successfully preserves. Finding the right epic becomes work. Deciding where an old task belongs becomes work. Context retrieval has not turned out to be as useful as I hoped. Memory now means more than 200 artifacts whose freshness, correctness, and relevance I cannot casually trust. If I do not improve the ergonomics, I may eventually ditch the tool I built because I could not find another one. I do not want that to happen. Wanting is not enough to prevent it.
+      Without better organization, the tool loses value with every item it successfully preserves. I may eventually ditch the tool I built because I could not find another one. I do not want that to happen. Wanting is not enough to prevent it.
     </p>
     <p>
       Every time I look at <a href="https://obsidian.md" target="_blank">Obsidian</a>, I feel this pressure from another direction. It is similar enough to make me wonder whether I spent months building a smaller version of something that already won. Sometimes that makes me want to give up entirely. I will not give up, but the feeling is real.
@@ -317,11 +398,15 @@ export function article() {
     <p>
       I still believe the distinction matters. Obsidian is opinionated around a different center. backlog-mcp is agentic first: substrates declare open-ended kinds of context; agents are the mutation surface; the viewer only observes; the core exposes semantic operations to any transport. I do not think Obsidian can simply become that without fighting the vision that made it Obsidian. backlog-mcp can still pivot around the problems agentic engineering creates because its vision is not finished. That freedom is valuable. It is also another way of saying I still do not know exactly what the product is.
     </p>
+    <h3>Ideas, not answers</h3>
+    <ul>
+      <li><strong>Routing strategies.</strong> Folders and epics could declare where certain tasks, evidence, or project context should arrive before the backlog becomes disorganized.</li>
+      <li><strong>An agent substrate.</strong> Agent, session, task, and artifact correlation could persist deterministically without turning backlog-mcp into the executor.</li>
+      <li><strong>Agnostic observation.</strong> I want to watch agents work through the viewer without coupling the store to whichever runtime is fashionable this month.</li>
+      <li><strong>A new name.</strong> “backlog-mcp” is now underselling the product and possibly constraining how I imagine it.</li>
+    </ul>
     <p>
-      Writing this article is producing an idea in real time. Maybe folders and epics should not be empty containers that I organize after the fact. Maybe they should carry routing strategies: this kind of task belongs here; this evidence attaches there; this project context enters through this path. Organization would be decided ahead of arrival instead of performed slowly after the backlog is already full. I do not know whether that is the answer. It is simply the pressure speaking clearly enough for a possible feature to appear.
-    </p>
-    <p>
-      There is another problem underneath it. I want to open the viewer and watch which agents are working, what they are working on, and how that work relates to the durable tasks and decisions in the store. But I do not want backlog-mcp to become another agent orchestrator. Execution should remain outside it. Maybe <code>agent</code> becomes a substrate. Maybe the correlation between an agent, a session, a task, and its resulting artifacts is persisted as something more generic. I want deterministic history without coupling the store to whichever agent runtime is fashionable this month. I still do not know how to model it.
+      The routing idea arrived while writing this article. I do not know whether it is the answer. It is simply the pressure speaking clearly enough for a possible feature to appear. The agent-correlation problem is harder. I want deterministic history, but I still do not know how to model it without becoming another orchestrator.
     </p>
     <p>
       This uncertainty is probably one reason my own adoption is slowing down. When I get stuck, I do what I always do: I move to something easier. I tell myself I am clearing my mind. Sometimes I am. Sometimes I am neglecting the projects I love because returning to them means facing the part I cannot solve.
