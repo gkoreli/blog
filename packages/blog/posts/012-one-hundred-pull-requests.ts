@@ -254,7 +254,7 @@ export function article() {
     ${StatRow({ items: [
       { value: '117', label: html`pull requests opened` },
       { value: '108', label: html`merged across 78 days` },
-      { value: '110+', label: html`architecture decisions and threads` },
+      { value: '90+', label: html`indexed ADRs and decision threads` },
       { value: '1', label: html`UI framework born inside the product` },
     ] })}
 
