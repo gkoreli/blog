@@ -9,7 +9,7 @@ export const meta: PostMeta = {
   date: '2026-07-05',
   description: 'The story of how backlog-mcp grew from a task manager into local-first context and memory infrastructure for AI agents — and produced the UI framework powering this blog.',
   section: 'engineering' as const,
-  tags: ['backlog-mcp', 'agentic-engineering', 'context-engineering', 'memory-engineering', 'nisli', 'architecture'],
+  tags: ['backlog-mcp', 'agentic-engineering', 'agentic-product-engineering', 'context-engineering', 'memory-engineering', 'nisli', 'architecture'],
   layout: 'immersive',
   slug: 'one-hundred-pull-requests',
   series: {
@@ -60,24 +60,39 @@ export function article() {
 
   ${SectionBreak()}
 
-  <!-- § 2 — THE ORIGINAL PAIN -->
+  <!-- § 2 — PRESSURE-DRIVEN PRODUCT ENGINEERING -->
   ${ScrollReveal({ content: html`
-    ${SectionNum({ label: '§ 2 — The Original Pain' })}
-    <h2>I could manage agents, or I could manage <em>their work</em></h2>
+    ${SectionNum({ label: '§ 2 — Pressure-Driven Product Engineering' })}
+    <h2>Building is cheap now. Knowing <em>what deserves to exist</em> is not.</h2>
     <p>
-      The project began with an ordinary frustration. I work with AI agents every day, but every task manager I could reach was designed for humans coordinating with humans. The agent — the thing doing a large share of the engineering — was nobody's user. Plans lived inside chat transcripts that would never be opened again. Research disappeared with the session that produced it. The next agent began from zero and repeated decisions I had already paid for.
+      Agentic engineering changed the scarce resource. I can produce working software faster than I can form justified beliefs about which software should be produced. Implementation is no longer the main bottleneck. Judgment is. The dangerous failure mode is not being unable to build an idea; it is building ten plausible ideas before discovering that none of them came from a real need.
     </p>
     <p>
-      On December 19, 2025, I started building the tool I could not buy. The first prototype was intentionally small: schema, storage, task operations, MCP. The foundational bet arrived in PR #3 a month later: replace a JSON blob with individual markdown files and YAML frontmatter. Each entity became readable by a person, editable by an agent, diffable by git, indexable by search, and portable without an export feature. Everything still stands on that choice.
+      The mental discipline I have arrived at is simple: I try to build only from pressure I am personally feeling. Not a market category. Not a theoretical platform requirement. Not a feature that might become useful when imaginary users arrive. A burning problem interrupts real work; I build the smallest answer; I use that answer until the next problem becomes undeniable. I call this <strong>pressure-driven product engineering</strong>.
+    </p>
+
+    ${Insight({ label: 'The pressure loop', content: html`<p><strong>Feel the problem → build the smallest answer → use it for real → hit the next constraint → extend the core at that pressure point → keep using it.</strong> The roadmap is not predicted in advance. It is uncovered through contact with the product.</p>` })}
+
+    <p>
+      backlog-mcp is almost a controlled record of that loop. I was losing agent work, so I built tasks. The task count grew until I could not find anything, so I built search. Search did not show me the state of the whole system, so I built the viewer. I did not want to spend my time clicking through a management UI, so every useful action had to exist in the core and be exposed to the agent first. The viewer became read-only as a consequence: agents mutate; I observe and steer.
     </p>
     <p>
-      The second important decision was to stop blaming agents for behaving like agents. When a model skipped an expensive read-before-write step and malformed an array update, the obvious diagnosis was "the model used the tool incorrectly." The useful diagnosis was different: the API forced the model to replace an entire collection when its intent was simply to add one reference. So the API gained partial operations matching the agent's mental model.
+      Tasks stopped being enough, so I added artifacts, epics, folders, milestones, and eventually substrates. Hundreds of entities made the viewer complicated. The first version used only native Web Components and rebuilt entire DOM subtrees; every refresh could destroy focus, scroll position, and the exact state of the investigation I was in. That pain produced nisli. Once agents could store work but still had to reconstruct the project through repeated calls, context engineering became the next pressure point. Once context disappeared between sessions, memory followed.
+    </p>
+    <p>
+      None of that sequence was a platform roadmap. I did not anticipate a context engine, a memory layer, a UI framework, or a static-site generator and then spend months filling boxes on a diagram. Each abstraction had to earn its existence by removing a problem in a system I was already using. This is my model of agentic product engineering: agents make construction abundant, so the engineer's leverage moves toward taste, problem selection, architecture, and the refusal to build capabilities that have not yet justified themselves.
+    </p>
+    <p>
+      The original pressure was ordinary. Every task manager I could reach was designed for humans coordinating with humans. The agent — the thing doing a large share of my engineering — was nobody's user. Plans lived inside transcripts that would never be opened again. Research disappeared with the session that produced it. On December 19, 2025, I built the first small answer: schema, local storage, task operations, MCP.
+    </p>
+    <p>
+      The foundational bet arrived in PR #3: replace a JSON blob with individual markdown files and YAML frontmatter. Each entity became readable by a person, editable by an agent, diffable by git, indexable by search, and portable without an export feature. Then an agent skipped an expensive read-before-write step and malformed an array update. Instead of adding another instruction telling the model to behave, I changed the API so "add one reference" no longer required replacing the entire collection.
     </p>
 
     ${PullQuote({ content: html`"This is not a bug in agent behavior — it's a UX problem with the API design."`, cite: '— ADR 0037, “Partial Array Updates,” January 2026' })}
 
     <p>
-      That became the recurring method. Watch where the agent wastes calls, loses context, guesses a schema, or takes a dangerous shortcut. Do not immediately add more instructions. First ask whether the system is making the correct behavior expensive and the wrong behavior easy.
+      That is the loop at API scale. Watch where real use creates waste, confusion, lost context, or dangerous shortcuts. Fix that pressure. Then return to using the product instead of inventing the next ten problems for it.
     </p>
   ` })}
 
@@ -88,7 +103,7 @@ export function article() {
     ${SectionNum({ label: '§ 3 — The Transformation' })}
     <h2>How the task manager <em>disappeared</em></h2>
     <p>
-      There was no meeting where I decided to build an agentic context engine. The category changed one concrete problem at a time. The merge stream above shows the intensity; this is what the bursts actually produced.
+      There was no meeting where I decided to build an agentic context engine. The category changed one concrete problem at a time. Each line below is the same pattern: use created pressure; pressure justified a capability; the new capability exposed the next constraint. The merge stream above shows the intensity. This is what the bursts actually produced.
     </p>
 
     ${Timeline({ items: [
@@ -180,13 +195,25 @@ export function article() {
       The same principle is now reshaping the tool surface. <code>create(type=memory)</code> exposes the persistence model. <code>remember</code> exposes the agent's intent. <code>recall</code>, <code>wakeup</code>, and eventually <code>schedule</code> let the port speak in verbs the model already understands while the substrate stays inside the core. Deferred tool loading makes that vocabulary affordable: another capability becomes a discoverable name, not a permanent context tax.
     </p>
     <p>
-      Memory was the logical next step, but the important discovery was that most of the memory already existed. Completed tasks are episodic traces. ADRs preserve semantic decisions. Artifacts preserve research and outputs. Evidence connects claims to results. The operation log preserves how state arrived. The backlog is already memory; the engineering problem is deciding what to surface, when to surface it, and how to measure whether it helped.
+      Memory was the logical next step, but the important discovery was that most of the memory already existed. Completed tasks are episodic traces. ADRs preserve semantic decisions. Artifacts preserve research and outputs. Evidence connects claims to results. The operation log preserves how state arrived. The backlog is already memory; the engineering problem is deciding what to surface, when to surface it, how much it should cost, and whether the agent can trust it.
     </p>
 
     ${PullQuote({ content: html`The backlog is not where memory gets stored after the work. The backlog is the memory produced by doing the work.`, cite: '— the current memory thesis' })}
 
     <p>
-      That is where most of my work is going now: memory ergonomics. Two-stage recall instead of blasting full documents. Deterministic writes instead of asking a second LLM to reinterpret what the first LLM just said. Scope that follows the repository. Forgetting and consolidation that remain observable. The north-star test is deliberately unforgiving: an agent using backlog-mcp should be measurably better on the same project in week ten than it was in week one because of memory. That result is not proven yet. It is now specific enough to prove or fail.
+      I am now accumulating more than 200 memory artifacts, and the pressure is no longer "can the system remember?" It is "can memory stay useful as it grows?" A stale artifact can be worse than no memory because it arrives with undeserved authority. A misleading or incorrect memory can quietly bend an entire session. Retrieving too much wastes tokens and attention. Retrieving too little recreates the original amnesia.
+    </p>
+    <p>
+      I already tried one answer and rejected it: inject memory on every agent turn. It sounded comprehensive. In use, it was bad. The agent repeatedly paid for context whether the turn needed it or not; irrelevant memories competed with the current task; and constant injection made provenance, staleness, and token cost harder to reason about. More memory did not mean better memory.
+    </p>
+    <p>
+      I still feel the obvious FOMO. Mem0, MemPalace, Letta, Hindsight, and other established systems contain serious ideas. It is tempting to assume that adopting one of them would skip the hard part. But their abstractions were shaped by their pressures, not mine. I want to study their mechanisms — staged retrieval, decay, consolidation, provenance, temporal reasoning — without inheriting a system optimized around problems I do not yet have.
+    </p>
+
+    ${PullQuote({ content: html`Build from your own problems. Borrow from other people's solutions, not their problem statements.`, cite: '— the rule governing the memory work now' })}
+
+    <p>
+      So the current work is intentionally unresolved: better memory ergonomics, organization for hundreds of artifacts, on-demand recall, visible provenance, freshness, token budgets, and safe forgetting. The north-star test is deliberately unforgiving: an agent using backlog-mcp should be measurably better on the same project in week ten than it was in week one because of memory. That result is not proven yet. I know the pressure. I do not know the final architecture — which is exactly when this project has historically done its best work.
     </p>
   ` })}
 
@@ -260,6 +287,9 @@ export function article() {
 
     <p>
       What began as a task manager now has a clearer identity: a local-first storage engine for agentic context, with memory as its most important emerging capability. Agents write to it. Humans observe it. Search and context make its contents useful now; memory should make the agent using it better over time.
+    </p>
+    <p>
+      More importantly, the product now has a method. Do not build what agents make possible merely because they make it possible. Build from the pressure of real use, make the decision legible in an ADR, and return to the product until it tells you what hurts next.
     </p>
     <p>
       The name still says backlog-mcp because names preserve history too. The backlog was the entry point. MCP was the first port. Neither is the boundary anymore.
