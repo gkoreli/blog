@@ -28,6 +28,12 @@ import { ossRadarPage } from '../pages/oss-radar.js';
 
 export { DIST } from '../lib/paths.js';
 
+const PUBLICATION_OG_IMAGE_ALT = 'gkoreli.com social card reading “Agentic Engineering Field Notes” and “Where excitement ends, depth begins.”';
+
+function postOgImageAlt(title: string): string {
+  return `gkoreli.com social card reading “${title}” and “Where excitement ends, depth begins.”`;
+}
+
 /** Step 1: Clean and prepare dist */
 export function cleanDist(): void {
   if (existsSync(DIST)) rmSync(DIST, { recursive: true });
@@ -171,13 +177,14 @@ export async function buildHTML(): Promise<void> {
     if (prompts) post.meta.promptCount = prompts.count;
     const body = postPage(post.meta, htmlContent, prompts, allPosts);
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: 'post', ogType: 'article', ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
+    const ogImageAlt = postOgImageAlt(post.meta.title);
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: 'post', ogType: 'article', ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
     writeOutput(post.meta.slug, page.toString());
     writeRoot(`${post.meta.slug}.md`, mdRawContents[i]! + seriesTrailMarkdown(post.meta, allPosts));
 
     if (prompts) {
       const promptsBody = promptsPage(post.meta, prompts);
-      const promptsShell = pageShell({ title: `Thoughts by human, co-written by AI — ${post.meta.title}`, description: `${prompts.count} raw notes that shaped "${post.meta.title}"`, content: promptsBody.toString(), canonicalPath: `/${post.meta.slug}/prompts`, currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogImage, ogType: 'website' });
+      const promptsShell = pageShell({ title: `Thoughts by human, co-written by AI — ${post.meta.title}`, description: `${prompts.count} raw notes that shaped "${post.meta.title}"`, content: promptsBody.toString(), canonicalPath: `/${post.meta.slug}/prompts`, currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogImage, ogImageAlt, ogType: 'website' });
       writeOutput(`${post.meta.slug}/prompts`, promptsShell.toString());
     }
   }
@@ -192,13 +199,14 @@ export async function buildHTML(): Promise<void> {
     const trail = seriesTrailBlock(post.meta, allPosts);
     const afterword = postAfterword(post.meta, allPosts);
     const content = `${htmlContent}${trail}${afterword}`;
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content, canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
+    const ogImageAlt = postOgImageAlt(post.meta.title);
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content, canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
     writeOutput(post.meta.slug, page.toString());
     writeRoot(`${post.meta.slug}.md`, htmlToMarkdown(htmlContent, post.meta) + seriesTrailMarkdown(post.meta, allPosts));
 
     if (prompts) {
       const promptsBody = promptsPage(post.meta, prompts);
-      const promptsShell = pageShell({ title: `Thoughts by human, co-written by AI — ${post.meta.title}`, description: `${prompts.count} raw notes that shaped "${post.meta.title}"`, content: promptsBody.toString(), canonicalPath: `/${post.meta.slug}/prompts`, currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogImage, ogType: 'website' });
+      const promptsShell = pageShell({ title: `Thoughts by human, co-written by AI — ${post.meta.title}`, description: `${prompts.count} raw notes that shaped "${post.meta.title}"`, content: promptsBody.toString(), canonicalPath: `/${post.meta.slug}/prompts`, currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogImage, ogImageAlt, ogType: 'website' });
       writeOutput(`${post.meta.slug}/prompts`, promptsShell.toString());
     }
   }
@@ -217,32 +225,33 @@ export async function buildHTML(): Promise<void> {
     content: indexBody.toString(),
     canonicalPath: '/',
     ogImage: publicationOgImage,
+    ogImageAlt: PUBLICATION_OG_IMAGE_ALT,
   });
   writeRoot('index.html', indexShell.toString());
 
   const essaysBody = essaysPage(sortedPosts.filter(p => p.section === 'essays'));
-  writeOutput('essays', pageShell({ title: SECTION_LABELS['essays'], description: SECTION_DESCRIPTIONS['essays'], content: essaysBody.toString(), canonicalPath: '/essays', currentSection: 'essays', ogImage: publicationOgImage }).toString());
+  writeOutput('essays', pageShell({ title: SECTION_LABELS['essays'], description: SECTION_DESCRIPTIONS['essays'], content: essaysBody.toString(), canonicalPath: '/essays', currentSection: 'essays', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }).toString());
 
   const engineeringBody = engineeringPage(sortedPosts.filter(p => p.section === 'engineering'));
-  writeOutput('engineering', pageShell({ title: SECTION_LABELS['engineering'], description: SECTION_DESCRIPTIONS['engineering'], content: engineeringBody.toString(), canonicalPath: '/engineering', currentSection: 'engineering', ogImage: publicationOgImage }).toString());
+  writeOutput('engineering', pageShell({ title: SECTION_LABELS['engineering'], description: SECTION_DESCRIPTIONS['engineering'], content: engineeringBody.toString(), canonicalPath: '/engineering', currentSection: 'engineering', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }).toString());
 
   const ossRadarBody = ossRadarPage(sortedPosts.filter(p => p.section === 'oss-radar'));
-  writeOutput('oss-radar', pageShell({ title: SECTION_LABELS['oss-radar'], description: SECTION_DESCRIPTIONS['oss-radar'], content: ossRadarBody.toString(), canonicalPath: '/oss-radar', currentSection: 'oss-radar', ogImage: publicationOgImage }).toString());
+  writeOutput('oss-radar', pageShell({ title: SECTION_LABELS['oss-radar'], description: SECTION_DESCRIPTIONS['oss-radar'], content: ossRadarBody.toString(), canonicalPath: '/oss-radar', currentSection: 'oss-radar', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }).toString());
 
   const aboutBody = aboutPage();
-  const aboutShell = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), canonicalPath: '/about', currentSlug: 'about', ogImage: publicationOgImage });
+  const aboutShell = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), canonicalPath: '/about', currentSlug: 'about', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
   writeOutput('about', aboutShell.toString());
 
   const statsBody = statsPage();
-  const statsShell = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody.toString(), canonicalPath: '/stats', currentSlug: 'stats', ogImage: publicationOgImage, head: statsHead, noindex: true });
+  const statsShell = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody.toString(), canonicalPath: '/stats', currentSlug: 'stats', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: statsHead, noindex: true });
   writeOutput('stats', statsShell.toString());
 
   const privacyBody = privacyPage();
-  const privacyShell = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody.toString(), canonicalPath: '/privacy', currentSlug: 'privacy', ogImage: publicationOgImage });
+  const privacyShell = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody.toString(), canonicalPath: '/privacy', currentSlug: 'privacy', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
   writeOutput('privacy', privacyShell.toString());
 
   const dlBody = designLanguagePage();
-  const dlShell = pageShell({ title: 'Design Language', description: 'The design substrate of gkoreli.com — palette, typography, glass surfaces, canvas moods, section identities, and philosophy.', content: dlBody.toString(), canonicalPath: '/design-language', currentSlug: 'design-language', ogImage: publicationOgImage, noindex: true, scripts: ['/canvas.js'] });
+  const dlShell = pageShell({ title: 'Design Language', description: 'The design substrate of gkoreli.com — palette, typography, glass surfaces, canvas moods, section identities, and philosophy.', content: dlBody.toString(), canonicalPath: '/design-language', currentSlug: 'design-language', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, noindex: true, scripts: ['/canvas.js'] });
   writeOutput('design-language', dlShell.toString());
 
   const animationsLabBody = animationsLabPage();
@@ -253,6 +262,7 @@ export async function buildHTML(): Promise<void> {
     canonicalPath: '/animations-lab',
     currentSlug: 'animations-lab',
     ogImage: publicationOgImage,
+    ogImageAlt: PUBLICATION_OG_IMAGE_ALT,
     scripts: ['/animations-lab.js'],
     noindex: true,
   });
@@ -335,6 +345,7 @@ export function validateHtmlOutput(): void {
   const pages = scanDir(DIST);
   const routes = new Set(pages.flatMap(page => page.route ? [page.route] : []));
   const indexableRoutes = new Set<string>();
+  const socialImageAlts = new Map<string, { alt: string; file: string }>();
   const problems: string[] = [];
 
   for (const page of pages) {
@@ -383,6 +394,14 @@ export function validateHtmlOutput(): void {
       }
       if (ogImageAlt && twitterImageAlt && ogImageAlt !== twitterImageAlt) {
         problems.push(`${page.file}: Open Graph and Twitter image alt text do not match`);
+      }
+      if (ogImage && ogImageAlt) {
+        const existing = socialImageAlts.get(ogImage);
+        if (existing && existing.alt !== ogImageAlt) {
+          problems.push(`${page.file}: reuses ${ogImage} with alt text that differs from ${existing.file}`);
+        } else {
+          socialImageAlts.set(ogImage, { alt: ogImageAlt, file: page.file });
+        }
       }
       if (ogImage) {
         try {

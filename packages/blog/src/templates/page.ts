@@ -16,14 +16,13 @@ function canonicalUrl(path: string): string {
   return new URL(path, SITE_URL).toString();
 }
 
-export function pageShell({ title, description, content, canonicalPath, currentSlug, currentSection, ogImage, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false, seoTitle }: {
+interface PageShellBaseProps {
   title: string;
   description: string;
   content: string;
   canonicalPath: string;
   currentSlug?: string;
   currentSection?: Section;
-  ogImage?: string;
   head?: string;
   gutter?: string;
   preamble?: string;
@@ -32,7 +31,14 @@ export function pageShell({ title, description, content, canonicalPath, currentS
   ogType?: 'website' | 'article';
   noindex?: boolean;
   seoTitle?: string;
-}) {
+}
+
+type PageShellProps = PageShellBaseProps & (
+  | { ogImage: string; ogImageAlt: string }
+  | { ogImage?: undefined; ogImageAlt?: undefined }
+);
+
+export function pageShell({ title, description, content, canonicalPath, currentSlug, currentSection, ogImage, ogImageAlt, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false, seoTitle }: PageShellProps) {
   const TURNSTILE_SITE_KEY = turnstileSiteKey();
   const canonical = canonicalUrl(canonicalPath);
   const layoutClass = layout && layout !== 'default' ? ` layout-${layout}` : '';
@@ -63,9 +69,9 @@ export function pageShell({ title, description, content, canonicalPath, currentS
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="600">
-  <meta property="og:image:alt" content="${title}">
+  <meta property="og:image:alt" content="${ogImageAlt}">
   <meta name="twitter:image" content="https://gkoreli.com${ogImage}">
-  <meta name="twitter:image:alt" content="${title}">` : ''}
+  <meta name="twitter:image:alt" content="${ogImageAlt}">` : ''}
   <meta name="author" content="Goga Koreli">
   <link rel="icon" href="/icons/logo.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="Goga Koreli" href="/feed.xml">
