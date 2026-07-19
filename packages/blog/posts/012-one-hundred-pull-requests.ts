@@ -11,7 +11,6 @@ export const meta: PostMeta = {
   section: 'engineering' as const,
   tags: ['backlog-mcp', 'agentic-engineering', 'agentic-product-engineering', 'context-engineering', 'memory-engineering', 'nisli', 'architecture'],
   layout: 'immersive',
-  featured: true,
   slug: 'one-hundred-pull-requests',
   series: {
     id: 'backlog-mcp-saga',
