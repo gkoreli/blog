@@ -11,7 +11,7 @@ function CoverStory({ post }: { post: PostMeta }) {
     <span class="cover-sec" style="color:var(--section-${post.section})">${SECTION_LABELS[post.section]}</span>
     <span class="cover-date">${formatDateShort(post.date)}</span>
   </div>
-  <h2 class="cover-title">${post.title}</h2>
+  <h1 class="cover-title">${post.title}</h1>
   <p class="cover-desc">${post.description}</p>
 </a>`;
 }
@@ -23,7 +23,7 @@ function StreamItem({ post }: { post: PostMeta }) {
     <span class="stream-date">${formatDateShort(post.date)}</span>
     ${post.promptCount ? html`<span class="stream-badge">${post.promptCount} prompt${post.promptCount === 1 ? '' : 's'}</span>` : ''}
   </div>
-  <div class="stream-title">${post.title}</div>
+  <h2 class="stream-title">${post.title}</h2>
   <p class="stream-desc">${post.description}</p>
 </a>`;
 }

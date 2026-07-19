@@ -28,6 +28,36 @@ interface SubscribeOptions {
   logger: ClientLogger;
 }
 
+const ATTRIBUTION_PARAMS = ['utm_source', 'utm_campaign'] as const;
+
+/**
+ * Preserve only the small amount of acquisition context needed to learn which
+ * launch channel converts. Full referrer URLs and arbitrary query parameters
+ * are deliberately excluded.
+ */
+function subscriptionSource(): string {
+  const source = new URL(location.pathname, location.origin);
+  const current = new URLSearchParams(location.search);
+
+  for (const key of ATTRIBUTION_PARAMS) {
+    const value = current.get(key)?.trim();
+    if (value) source.searchParams.set(key, value.slice(0, 80));
+  }
+
+  if (document.referrer) {
+    try {
+      const referrer = new URL(document.referrer);
+      if (referrer.origin !== location.origin) {
+        source.searchParams.set('ref', referrer.hostname.replace(/^www\./, '').slice(0, 100));
+      }
+    } catch {
+      // Invalid referrers are ignored. Attribution must never block signup.
+    }
+  }
+
+  return `${source.pathname}${source.search}`;
+}
+
 export function initSubscribeForm({ logger }: SubscribeOptions): void {
   const formEl = document.getElementById('sub-form') as HTMLFormElement | null;
   if (!formEl) return;
@@ -88,7 +118,7 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ email: emailInput.value.trim(), turnstile: token, source: location.pathname }),
+        body: JSON.stringify({ email: emailInput.value.trim(), turnstile: token, source: subscriptionSource() }),
       });
       if (res.status === 202 || res.ok) {
         form.innerHTML = '<p class="subscribe-done">Check your inbox \u2014 confirmation link on the way.</p>';

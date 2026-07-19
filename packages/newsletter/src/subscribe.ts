@@ -40,8 +40,23 @@ function logRejection(request: Request, reason: string, details: Record<string, 
 
 function sanitizeSource(raw: unknown): string | null {
   if (typeof raw !== 'string') return null;
-  const stripped = raw.split(/[?#]/)[0]!.slice(0, 200);
-  return stripped.startsWith('/') ? stripped : null;
+  if (!raw.startsWith('/') || raw.startsWith('//')) return null;
+
+  try {
+    const parsed = new URL(raw, 'https://gkoreli.com');
+    const path = parsed.pathname.slice(0, 200);
+    const safeParams = new URLSearchParams();
+
+    for (const key of ['utm_source', 'utm_campaign', 'ref']) {
+      const value = parsed.searchParams.get(key)?.trim();
+      if (value) safeParams.set(key, value.slice(0, key === 'ref' ? 100 : 80));
+    }
+
+    const query = safeParams.toString();
+    return query ? `${path}?${query}` : path;
+  } catch {
+    return null;
+  }
 }
 
 export async function handleSubscribe(

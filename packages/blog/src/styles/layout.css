@@ -143,6 +143,25 @@ body { min-height: 100vh; }
 /* ── Bottom social row ── */
 .sidebar-spacer { flex: 1; }
 
+.sidebar-follow {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.8rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.04em;
+}
+
+.sidebar-follow a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.sidebar-follow a:hover { color: var(--color-link); }
+
 .sidebar-social {
   display: flex;
   align-items: center;
@@ -239,6 +258,7 @@ nisli-burger-menu { display: none; }
   }
   .sidebar-header { margin-bottom: 0; }
   .sidebar-header p { display: none; }
+  .sidebar-follow { display: none; }
   .sidebar-social { display: none; }
   .sidebar-nav { display: none; }
   .sidebar-spacer { display: none; }
@@ -256,6 +276,7 @@ nisli-burger-menu { display: none; }
     overflow-y: auto;
     z-index: 100;
   }
+  body.menu-open .sidebar-follow { display: flex; }
   body.menu-open .sidebar-social { display: flex; }
   body.menu-open .sidebar-nav {
     display: flex;

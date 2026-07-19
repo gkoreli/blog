@@ -14,7 +14,7 @@ export function privacyPage() {
 
   <h2>Newsletter</h2>
 
-  <p>If you subscribe, your email address is stored in a Cloudflare D1 database. It's used exclusively to send you new articles. You can unsubscribe at any time via the link in every email. Unsubscribed and bounced addresses are automatically purged after 90 days.</p>
+  <p>If you subscribe, your email address is stored in a Cloudflare D1 database. It's used exclusively to send you new articles. The signup record may also include the page where you subscribed, an allowlisted campaign source and campaign name, and the referring site's hostname — never a full referrer URL. You can unsubscribe at any time via the link in every email. Unsubscribed and bounced addresses are automatically purged after 90 days.</p>
 
   <h2>Bot protection</h2>
 

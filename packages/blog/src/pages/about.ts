@@ -18,11 +18,13 @@ export function aboutPage() {
 
   <h2>Projects</h2>
 
-  <p><a ${ext('https://github.com/gkoreli/backlog-mcp')}>backlog-mcp</a> — A human-agent context engineering backlog. Task management designed for AI agent workflows — agents create tasks, track progress, attach artifacts, and search their own work history.</p>
+  <p><a ${ext('https://github.com/gkoreli/ghx')}>ghx</a> — Auditable code reconnaissance for AI agents. A specialized sidecar explores GitHub and returns schema-validated claims, evidence, commands, and uncertainty instead of a transcript.</p>
 
-  <p><a ${ext('https://www.npmjs.com/package/@nisli/core')}>@nisli/core</a> — A zero-dependency reactive web component framework. Born from building backlog-mcp's web viewer — signals, templates, and dependency injection in ~2,600 lines of TypeScript.</p>
+  <p><a ${ext('https://github.com/gkoreli/backlog-mcp')}>backlog-mcp</a> — Local-first context, memory, and work history for AI agents. Agents orient, recall decisions, attach artifacts, and search their own history while humans retain plain markdown they can read and diff.</p>
 
-  <p><a ${ext('https://github.com/gkoreli/blog')}>gkoreli.com</a> — This blog. Built with @nisli/core, deployed on GitHub Pages via Cloudflare. The source is public.</p>
+  <p><a ${ext('https://www.npmjs.com/package/@nisli/core')}>@nisli/core</a> — A zero-dependency reactive web component framework. Born from building backlog-mcp's web viewer, with fine-grained signals, light-DOM templates, dependency injection, routing, and static generation.</p>
+
+  <p><a ${ext('https://github.com/gkoreli/blog')}>gkoreli.com</a> — This publication. Built with @nisli/core and deployed on Cloudflare Workers. The source is public.</p>
 
   <h2>Connect</h2>
 

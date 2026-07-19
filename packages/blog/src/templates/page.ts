@@ -6,13 +6,23 @@ function turnstileSiteKey(): string {
   return process.env['TURNSTILE_SITE_KEY'] ?? '';
 }
 
-export function pageShell({ title, description, content, currentSlug, currentSection, ogImage, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false, seoTitle }: {
+const SITE_URL = 'https://gkoreli.com';
+
+function canonicalUrl(path: string): string {
+  if (!path.startsWith('/') || path.startsWith('//') || path.includes('?') || path.includes('#')) {
+    throw new Error(`Canonical path must be a root-relative path without a query or fragment: ${path}`);
+  }
+
+  return new URL(path, SITE_URL).toString();
+}
+
+interface PageShellBaseProps {
   title: string;
   description: string;
   content: string;
+  canonicalPath: string;
   currentSlug?: string;
   currentSection?: Section;
-  ogImage?: string;
   head?: string;
   gutter?: string;
   preamble?: string;
@@ -21,9 +31,16 @@ export function pageShell({ title, description, content, currentSlug, currentSec
   ogType?: 'website' | 'article';
   noindex?: boolean;
   seoTitle?: string;
-}) {
+}
+
+type PageShellProps = PageShellBaseProps & (
+  | { ogImage: string; ogImageAlt: string }
+  | { ogImage?: undefined; ogImageAlt?: undefined }
+);
+
+export function pageShell({ title, description, content, canonicalPath, currentSlug, currentSection, ogImage, ogImageAlt, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false, seoTitle }: PageShellProps) {
   const TURNSTILE_SITE_KEY = turnstileSiteKey();
-  const canonical = currentSlug ? `https://gkoreli.com/${currentSlug}` : 'https://gkoreli.com/';
+  const canonical = canonicalUrl(canonicalPath);
   const layoutClass = layout && layout !== 'default' ? ` layout-${layout}` : '';
   const subscribe = DispatchSlip({ turnstileSiteKey: TURNSTILE_SITE_KEY });
 
@@ -41,17 +58,20 @@ export function pageShell({ title, description, content, currentSlug, currentSec
   <link rel="canonical" href="${canonical}">
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
+  <meta property="og:site_name" content="gkoreli.com">
   <meta property="og:type" content="${ogType}">
   <meta property="og:url" content="${canonical}">
+  <meta name="twitter:card" content="${ogImage ? 'summary_large_image' : 'summary'}">
+  <meta name="twitter:creator" content="@GogaKoreli">
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:description" content="${description}">
   ${ogImage ? html`<meta property="og:image" content="https://gkoreli.com${ogImage}">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="600">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image:alt" content="${ogImageAlt}">
   <meta name="twitter:image" content="https://gkoreli.com${ogImage}">
-  <meta name="twitter:image:alt" content="${title}">` : ''}
+  <meta name="twitter:image:alt" content="${ogImageAlt}">` : ''}
   <meta name="author" content="Goga Koreli">
   <link rel="icon" href="/icons/logo.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="Goga Koreli" href="/feed.xml">
@@ -94,6 +114,7 @@ export function pageShell({ title, description, content, currentSlug, currentSec
 
         <div class="sb-cat">Studio</div>
         <div class="sb-proj">
+          <a href="https://github.com/gkoreli/ghx" class="sb-proj-link" target="_blank" rel="noopener">ghx<span class="sb-proj-arrow">↗</span></a>
           <a href="https://github.com/gkoreli/backlog-mcp" class="sb-proj-link" target="_blank" rel="noopener">backlog-mcp<span class="sb-proj-arrow">↗</span></a>
           <a href="https://www.npmjs.com/package/@nisli/core" class="sb-proj-link" target="_blank" rel="noopener">@nisli/core<span class="sb-proj-arrow">↗</span></a>
           <a href="https://github.com/gkoreli/blog" class="sb-proj-link" target="_blank" rel="noopener">gkoreli.com<span class="sb-proj-arrow">↗</span></a>
@@ -103,6 +124,12 @@ export function pageShell({ title, description, content, currentSlug, currentSec
       </div>
 
       <div class="sidebar-spacer"></div>
+
+      <nav class="sidebar-follow" aria-label="Follow this publication">
+        <a href="#dispatch">Subscribe</a>
+        <span aria-hidden="true">·</span>
+        <a href="/feed.xml">RSS</a>
+      </nav>
 
       <div class="sidebar-social">
         <a href="https://github.com/gkoreli" title="GitHub" target="_blank" rel="noopener"><img src="/icons/github.svg" width="16" height="16" alt="GitHub"></a>

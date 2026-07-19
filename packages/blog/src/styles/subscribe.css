@@ -81,9 +81,29 @@
   margin-bottom: 0;
 }
 
+.dispatch-copy {
+  max-width: 36rem;
+  margin-top: 0.65rem;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+}
+
 /* ── Form ── */
 .dispatch-form { display: flex; flex-direction: column; gap: 0.4rem; }
 .dispatch-form-row { display: flex; align-items: stretch; gap: 0.5rem; }
+
+.dispatch-email-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 .dispatch-input {
   flex: 1;
