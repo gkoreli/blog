@@ -1,5 +1,6 @@
 ---
 title: "I Am Lost Right Now"
+seoTitle: "Open Source Without Users: I Don’t Know What to Build"
 date: "2026-07-19"
 description: "I am the only user of my open source projects, I do not know what to build next, and I am trying not to escape into another idea."
 section: essays
