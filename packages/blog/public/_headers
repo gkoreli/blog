@@ -14,3 +14,10 @@
 
 /*.md
   Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex
+
+/llms-full.txt
+  X-Robots-Tag: noindex
+
+/posts.json
+  X-Robots-Tag: noindex

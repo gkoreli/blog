@@ -2,6 +2,7 @@
 title: "What If the Agent Was Better Before We Helped?"
 seoTitle: "What If the Agent Was Better Before We Helped? — ghx, Agent Sidecars, and Evals"
 date: "2026-07-05"
+lastModified: "2026-07-18"
 description: "I am building ghx, a code reconnaissance CLI for AI agents, and now an agent sidecar framework around it. The hard question is whether any of it actually improves signal per token compared to plain old gh."
 section: engineering
 tags: [agentic-engineering, evals, ghx, sidecar-agents, opentelemetry, acp]
@@ -87,7 +88,7 @@ Just the agent trying to answer the repo question with the boring tools it alrea
 
 That is the baseline I need to beat.
 
-Not because `gh` is perfect. It is not. [The origin story for ghx](/build-the-github-exploration-tool-no-mistakes) came from real frustration with `gh`, GitHub HTML, API quirks, search weirdness, and context waste.
+Not because `gh` is perfect. It is not. [The origin story for ghx](/how-ghx-was-born) came from real frustration with `gh`, GitHub HTML, API quirks, search weirdness, and context waste.
 
 But frustration is not proof.
 

@@ -47,7 +47,7 @@ Nightly cron at 03:00 UTC handled by `handleScheduled`.
 
 **Subscribe form** in `page.ts` footer — appears on every page. Highest-intent placement is immediately after finishing an article that resonated. Button is always enabled; Turnstile executes on submit and the fetch fires only after the token is returned (graceful fallback: submits without token in dev when `TURNSTILE_SITE_KEY` is unset, relying on server-side rate limiting). All form logic lives in `packages/blog/src/client/subscribe.ts` — a proper typed module imported via `main.ts`, not an inline script in the template.
 
-**`source` column** tracks which page the subscriber came from — free analytics on which content converts.
+**`source` column** tracks which page the subscriber came from plus a deliberately small acquisition allowlist: `utm_source`, `utm_campaign`, and the external referrer hostname. Arbitrary query parameters, referrer paths, and full referrer URLs are discarded. This is enough to learn which article and launch channel convert without growing a second analytics system.
 
 ## Architecture
 
@@ -147,7 +147,7 @@ CREATE TABLE subscribers (
   confirm_token_expires_at TEXT,             -- 24-hour window; NULL after confirmation
   unsubscribe_token        TEXT NOT NULL,    -- permanent, never expires
 
-  source                   TEXT,             -- pathname of signup page
+  source                   TEXT,             -- signup path + allowlisted acquisition params
   consent_ip               TEXT,             -- truncated IP: "1.2.3.x" (GDPR proof-of-consent)
 
   created_at               TEXT NOT NULL DEFAULT (datetime('now')),  -- = consent timestamp
@@ -287,7 +287,7 @@ For EU subscribers, the governing framework is two-layered — not just GDPR:
 
 The practical consequence: what you store as consent evidence must satisfy GDPR's standard, and the entire flow (what the user saw, what they agreed to, when, how they can withdraw) must be defensible under ePrivacy's prior-consent requirement.
 
-**Proof of consent:** `consent_ip` (last octet zeroed: `"1.2.3.x"`) + `created_at` timestamp + `source` (the page they signed up from) stored at subscription time. Together these establish: who signed up, when, from what context, on what device IP. Adequate evidence for GDPR Art. 7 without retaining a full IP address.
+**Proof of consent:** `consent_ip` (last octet zeroed: `"1.2.3.x"`) + `created_at` timestamp + `source` (the signup page and optional allowlisted acquisition context) stored at subscription time. Together these establish: who signed up, when, from what context, on what device IP. Adequate evidence for GDPR Art. 7 without retaining a full IP address or full referrer URL.
 
 **Right to erasure (Art. 17):** Nightly cron via `handleScheduled`:
 1. `purgeExpiredPending()` — deletes `status='pending'` rows where `confirm_token_expires_at < now()`. Unconfirmed signups never linger.

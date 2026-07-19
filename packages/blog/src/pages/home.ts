@@ -23,7 +23,7 @@ function StreamItem({ post }: { post: PostMeta }) {
     <span class="stream-date">${formatDateShort(post.date)}</span>
     ${post.promptCount ? html`<span class="stream-badge">${post.promptCount} prompt${post.promptCount === 1 ? '' : 's'}</span>` : ''}
   </div>
-  <div class="stream-title">${post.title}</div>
+  <h2 class="stream-title">${post.title}</h2>
   <p class="stream-desc">${post.description}</p>
 </a>`;
 }
@@ -33,6 +33,11 @@ export function homePage(posts: PostMeta[]) {
   const latest = posts.filter(p => p.slug !== featured?.slug);
 
   return html`<div class="home">
+  <header class="home-intro">
+    <h1>A builder’s journal, made public.</h1>
+    <p>Engineering records, failed experiments, and personal essays from building with agents every day.</p>
+  </header>
+
   ${featured ? CoverStory({ post: featured }) : ''}
 
   <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>

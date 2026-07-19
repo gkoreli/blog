@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS subscribers (
 
   unsubscribe_token        TEXT NOT NULL,    -- SHA-256(rawUnsubToken); permanent, never expires
 
-  source                   TEXT,             -- pathname of signup page (conversion analytics)
+  source                   TEXT,             -- signup path + allowlisted acquisition params
   consent_ip               TEXT,             -- truncated IP for GDPR proof-of-consent ("1.2.3.x")
 
   created_at               TEXT NOT NULL DEFAULT (datetime('now')),  -- = consent timestamp
