@@ -11,7 +11,7 @@ function CoverStory({ post }: { post: PostMeta }) {
     <span class="cover-sec" style="color:var(--section-${post.section})">${SECTION_LABELS[post.section]}</span>
     <span class="cover-date">${formatDateShort(post.date)}</span>
   </div>
-  <h2 class="cover-title">${post.title}</h2>
+  <h1 class="cover-title">${post.title}</h1>
   <p class="cover-desc">${post.description}</p>
 </a>`;
 }
@@ -33,11 +33,6 @@ export function homePage(posts: PostMeta[]) {
   const latest = posts.filter(p => p.slug !== featured?.slug);
 
   return html`<div class="home">
-  <header class="home-intro">
-    <h1>A builder’s journal, made public.</h1>
-    <p>Engineering records, failed experiments, and personal essays from building with agents every day.</p>
-  </header>
-
   ${featured ? CoverStory({ post: featured }) : ''}
 
   <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>

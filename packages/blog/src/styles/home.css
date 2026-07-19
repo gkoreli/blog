@@ -1,26 +1,5 @@
 /* ── Homepage ── */
 
-/* ── Publication position — a quiet doorway before the cover story ── */
-.home-intro {
-  max-width: 40rem;
-  margin: 1.5rem 0 3.25rem;
-}
-
-.home-intro h1 {
-  max-width: 15ch;
-  margin-bottom: 0.75rem;
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.08;
-  letter-spacing: -0.025em;
-}
-
-.home-intro p {
-  max-width: 38rem;
-  color: var(--color-text-muted);
-  font-size: 1rem;
-  line-height: 1.65;
-}
-
 /* ── Cover story — typographic lead, no chrome ── */
 a.cover {
   display: block;
@@ -28,8 +7,6 @@ a.cover {
   color: var(--color-text);
   margin: 1.9rem 0 0.5rem;
 }
-
-.home-intro + a.cover { margin-top: 0; }
 
 a.cover:visited { color: var(--color-text); }
 a.cover:hover .cover-title { color: var(--color-link); }
