@@ -1,9 +1,9 @@
 ---
 title: "OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live"
-seoTitle: "OpenWiki Validates Backlog MCP—But Its Architecture Is Still Unsettled"
-alternativeHeadline: "Project-home sprawl, unreadable filenames, and the name I still cannot replace"
+seoTitle: "OpenWiki Validates Backlog MCP—But Its Design Is Still Unsettled"
+alternativeHeadline: "One backlog became too large. Project homes became too many."
 date: "2026-07-23"
-description: "OpenWiki validates the core bet behind backlog-mcp. It does not solve the harder questions I now face about where agent memory lives, how its files read, or what to call the product."
+description: "OpenWiki validates the main idea behind backlog-mcp. It also forces me to face three problems I have not solved: where agent memory lives, how its files read, and what to call the product."
 section: engineering
 tags: [backlog-mcp, openwiki, agent-memory, context-engineering, mcp]
 series:
@@ -14,91 +14,101 @@ series:
 
 # OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live
 
-OpenWiki validates the idea I have spent more than six months turning into a system: **an agent’s backlog is its memory.**
+OpenWiki validates the idea I have spent more than six months building: **an agent’s backlog is its memory.**
 
-The timing feels good. It also catches me in the middle of a design mess.
+I should feel proven right. Instead, I am staring at three design choices I have not solved.
 
-I started [backlog-mcp](https://github.com/gkoreli/backlog-mcp) in December because agent plans, research, and failed attempts kept dying with the session. A task list became a set of Markdown files. Then tasks gained artifacts, decisions, links, search, and memory. By June, an agent could `wakeup`, `recall`, `remember`, and `forget`.
+I started [backlog-mcp](https://github.com/gkoreli/backlog-mcp) in December because useful context kept dying with each agent session. I first stored tasks as Markdown. Then tasks gained linked records and memory. By June, an agent could `wakeup` into a project and `recall` what prior agents had learned.
 
-I had reached a broader claim: the record of the work is the memory. The goal, the failed attempt, the reason a task got blocked, and the final evidence already contain what the next agent needs.
+The work record often held more useful memory than a later summary. A task kept the goal and why work stopped. The next agent needed that record.
 
-[OpenWiki](https://github.com/langchain-ai/openwiki) reaches the same need from another direction. Its Code Brain turns a repository into maintained documentation. Its Personal Brain pulls from sources such as email, Notion, and Git, then writes a local wiki for agents. OpenWiki 0.2 also adopted Google’s [Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md): Markdown, frontmatter, links, and directory indexes.
+The backlog is the memory.
 
-That is real validation. Durable agent context should live in files that humans can inspect and agents can open as needed.
+[OpenWiki](https://github.com/langchain-ai/openwiki) starts with source material instead. Its code mode turns a repository into docs for agents. Its personal mode reads sources such as email and Notion, then writes a local wiki. OpenWiki now emits Google’s [Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md): Markdown files with YAML frontmatter and links.
 
-It does not prove that my current design is right.
+That is strong proof from outside my project. Agent memory should live in plain files that people can inspect and agents can read a piece at a time.
 
-## The overlap—and the line between us
+It does not prove that my design is right.
 
-OpenWiki builds memory by reading sources and writing a useful account of them. backlog-mcp records state while the work happens.
+## The direct comparison
+
+OpenWiki reads sources and writes a useful account of them. backlog-mcp records state while the work happens.
 
 | Question | OpenWiki | backlog-mcp |
 | --- | --- | --- |
-| Where does memory come from? | Repositories and connected sources | Tasks, decisions, artifacts, evidence, and explicit memories |
-| When is it written? | During an ingest or update run | During the work itself |
-| What does it store? | A maintained wiki | Live state with rules, links, and history |
-| How does an agent retrieve it? | Files, instruction links, and wiki navigation | `wakeup`, hybrid `recall`, search, then `get` |
+| Where does the content come from? | Repositories and linked sources | Work records and explicit memories |
+| When does it get written? | During an ingest or update run | During the work |
+| What does it store? | A maintained wiki | Typed state with links |
+| How does an agent find it? | Files, instruction links, and wiki navigation | `wakeup` and bounded `recall` |
 
-That last part matters to me. A task can be started, blocked with a cause, and completed with evidence. A memory can replace an older belief without deleting it. A decision can link back to the work that forced it. The files do not only explain the project. Agents act on them.
+An agent can block a task with a reason and finish it with proof. A new memory can replace an old belief without erasing it. These files do more than explain the project. Agents use them to run the work.
 
-I still think backlog-mcp is ahead on this narrow problem: memory written inside the work loop, with strict types and bounded retrieval. OpenWiki is far ahead on the first five minutes. Its name explains the product. Its install ends with something visible. Mine asks users to learn what a “substrate” is.
+backlog-mcp goes further on this part: agents write memory while they work, with clear types and retrieval limits.
 
-The architecture may be deeper. The product is less clear.
+OpenWiki has the better first five minutes. Its name tells me what it is. One install gives me something I can see. backlog-mcp asks people to learn terms such as “substrate” before they know why they should care.
 
-## I fixed one pile and created many homes
+I have built a wider system with worse boundaries and a name that misleads people.
 
-For most of its life, backlog-mcp had one global home under `~/.backlog`. It worked until it worked too well. I ended up with almost 1,000 tasks and artifacts in one place. Finding the right epic became work. Old projects stayed mixed with active ones. I had built a system to preserve context, then started avoiding it because the preserved context had become hard to place.
+## One backlog became too large
 
-So I made what felt like the clear move: [bolt backlog-mcp onto each repository](https://github.com/gkoreli/backlog-mcp/blob/main/docs/adr/0112-docs-native-project-scoped-backlog.md).
+For most of its life, backlog-mcp kept one global home under `~/.backlog`. It worked until I had almost 1,000 tasks and artifacts there. Old projects mixed with active ones. Finding the right epic took too long.
 
-Now a repository’s `docs/` directory can hold its tasks, decisions, requirements, memories, and any custom document type it declares. The Markdown is the truth. Git can review it. The hidden `.backlog/` folder holds only indexes and local state. Existing docs work on day one; the tool does not need to import or rewrite them.
+I built the tool to save context. I then began to avoid it because I could no longer place what it had saved.
 
-I still believe in most of that.
+So I changed the design. I let each repository become a [project home](https://github.com/gkoreli/backlog-mcp/blob/main/docs/adr/0112-docs-native-project-scoped-backlog.md).
 
-But project homes spread fast. Every repository I touch can become another home. The viewer now keeps a recent-homes list because otherwise I cannot find them again. That solved discovery and made the sprawl visible.
+A repository can now keep its tasks and memories in `docs/`. Markdown holds the record, and Git can review each change. The hidden `.backlog/` folder holds indexes and local state.
 
-Now I am asking questions I thought the architecture had answered.
+I still believe in that part.
 
-Where should a memory that spans three projects live? If it goes global, agents working in a project may miss it. If I copy it into each home, which copy is true? If every small repository owns a separate backlog, have I restored order or only split one pile into smaller piles?
+The trouble starts when every repository becomes a home. I now have to remember which homes exist. The viewer keeps a list of recent homes because I would lose them otherwise. That list fixed discovery and showed me how much the data had spread.
 
-Cross-home search helps me find things. It does not tell me where they belong.
+Where should a memory shared by several projects live? A global memory may never reach the agent inside a project. Copies in each home can drift apart. Cross-home search can find them, but it cannot tell me which copy owns the truth.
 
-I am genuinely considering going back to one home for all tasks and memory. Repositories could keep their own durable docs while the operational backlog stays central. That would restore one place to wake up, recall, and manage work. It could also recreate the exact scaling problem that project homes were meant to fix.
+I am now thinking about undoing part of the project-home choice.
 
-I do not know yet. I need to use the system longer and feel which failure costs more: one crowded home or many fragmented ones.
+One home could hold all tasks and memory. Repositories could keep their own long-lived docs. An agent would have one place to wake up and recall prior work, while each codebase would still carry the docs that belong to it.
 
-## The files should work without my product
+That split may bring back the same scale problem. One home grew too large before. Many homes now break up the full history.
 
-The project-home shift made another flaw obvious. A file called `TASK-0042.md` is readable once opened, but useless in a directory listing. The title is trapped inside the file.
+I do not know which cost is worse. I need more use, not another design note written before the answer is clear.
 
-I want managed writes to produce names such as `TASK-0042-fix-home-discovery.md`. backlog-mcp already parses slugged filenames and preserves them when they exist. It still creates new files with the ID alone.
+## The files need to work without backlog-mcp
 
-Adding the slug sounds easy. The policy is not. Should the slug stay fixed when the title changes, leaving an old description in the path? Or should the file move, creating Git churn and breaking links that point to it?
+Project homes exposed another flaw. `TASK-0042.md` means little in a directory list. Its title sits inside the file, so the listing does not show it.
 
-I lean toward a fixed slug set at creation. The ID remains the identity; the slug gives a human enough context to browse the files without backlog-mcp. A stale hint may be better than an unstable path. I have not made that call.
+I want new files to look like `TASK-0042-fix-home-discovery.md`. backlog-mcp already reads slugged names and keeps them when they exist. It still creates new files with the ID alone.
 
-This is one test I want every part of the system to pass: if backlog-mcp vanished tomorrow, the repository should still make sense.
+The code change is small. The rule is hard.
 
-## I also need to kill the name
+If the title changes, should the slug stay fixed and become stale? Should the file move, add noise to Git, and risk old links?
 
-“backlog-mcp” is now a bad name.
+I lean toward setting the slug once, when backlog-mcp creates the file. The ID remains its identity. The slug gives people enough context to browse without backlog-mcp. A stale hint seems less harmful than an unstable path, but I have not made the call.
 
-“Backlog” says task tracker. The product stores decisions, requirements, memory, evidence, and project knowledge. “MCP” names one way to reach it, not what it does. I have to explain past the name before I can explain the product.
+If backlog-mcp vanished tomorrow, the repository should still make sense.
 
-There is already a long naming proposal in the repository. It scores candidates, checks package names, and recommends **Kvali**, the Georgian word for “trace.” I have not accepted it.
+## I need a new name
 
-I can defend the architecture with code and use. I cannot make myself love a name through a scoring table.
+“backlog-mcp” is a bad name now.
 
-This bothers me more than it should. I need to rename the product, but I do not want to swap one temporary name for another and repeat the migration six weeks later. Package names, command names, tool prefixes, config, and search results all start to harden once a name ships. I am afraid of committing too early, and tired of carrying a name I already know is wrong.
+“Backlog” says task tracker. The product also stores agent memory and project knowledge. “MCP” names one way to reach it. The name forces me to correct its meaning before I can explain the product.
 
-The names I love tend to arrive whole. They stick at once. This one has not arrived.
+The repository already has a long naming note. It scores options, checks package names, and picks **Kvali**, the Georgian word for “trace.” I have not accepted it.
 
-## Validation is not resolution
+A scorecard can tell me whether a name is free. It cannot make me like the name.
 
-OpenWiki gives me confidence in the category: agents need durable knowledge outside their context windows, stored in files they can retrieve a piece at a time.
+I know the delay has a cost. Each new user learns a name I plan to drop, and each new doc page adds to the rename work. Still, I do not want to choose a second temporary name and repeat the work six weeks later.
 
-It does not settle my storage boundary, my filename policy, or my name.
+I am afraid of choosing too soon. I am also tired of keeping a name that I know is wrong.
 
-That is where the project stands today. The core bet looks stronger than it did a month ago. The product around it feels less settled because real use keeps exposing choices I can no longer hide behind implementation.
+The names I have loved felt right at once. I have not found that name here.
 
-I would rather publish that state than clean it up into a false success story. OpenWiki validates the direction. I am still working out the shape.
+## What OpenWiki changed for me
+
+OpenWiki makes me more sure that agents need durable knowledge outside their context windows. It supports my choice to keep that knowledge in plain files and read it in small pieces.
+
+It also makes my open problems harder to ignore. I need a clear rule for where memory lives. The files must make sense without the tool. The name must describe the product.
+
+I could write that I saw this first and stop there. That would hide the useful part: real use has exposed flaws in a system whose main idea still works.
+
+OpenWiki validates my bet. I still have to decide which parts of my own design to undo.
