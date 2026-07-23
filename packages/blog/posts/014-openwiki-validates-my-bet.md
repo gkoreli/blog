@@ -1,9 +1,9 @@
 ---
-title: "OpenWiki Validates My Bet: The Backlog Is the Memory"
-seoTitle: "OpenWiki Validates Backlog MCP's Agent Memory Bet"
-alternativeHeadline: "OpenWiki, Backlog MCP, and why an agent's work should become its memory"
+title: "OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live"
+seoTitle: "OpenWiki Validates Backlog MCP—But Its Architecture Is Still Unsettled"
+alternativeHeadline: "Project-home sprawl, unreadable filenames, and the name I still cannot replace"
 date: "2026-07-23"
-description: "OpenWiki validates the core bet behind backlog-mcp: an agent's live tasks, decisions, evidence, and artifacts can become its durable memory."
+description: "OpenWiki validates the core bet behind backlog-mcp. It does not solve the harder questions I now face about where agent memory lives, how its files read, or what to call the product."
 section: engineering
 tags: [backlog-mcp, openwiki, agent-memory, context-engineering, mcp]
 series:
@@ -12,69 +12,93 @@ series:
   order: 2
 ---
 
-# OpenWiki Validates My Bet: The Backlog Is the Memory
-
-*LangChain builds agent memory from sources; backlog-mcp builds it from the work itself.*
+# OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live
 
 OpenWiki validates the idea I have spent more than six months turning into a system: **an agent’s backlog is its memory.**
 
-LangChain reached the same problem by reading what already exists. OpenWiki turns code, email, notes, and web sources into a local wiki. backlog-mcp records tasks, decisions, evidence, and memory while an agent works. Both end in durable files. The timing changes what those files can do.
+The timing feels good. It also catches me in the middle of a design mess.
 
-The names matter. [OpenWiki](https://github.com/langchain-ai/openwiki) is a LangChain project. Google created the [Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md), or OKF. Google published its draft on June 12. LangChain released OpenWiki for codebases on July 1, expanded it into [general-purpose “Brains”](https://www.langchain.com/blog/introducing-openwiki-brains-general-purpose-wiki-memory-for-agents) on July 10, and added [OKF support](https://www.langchain.com/blog/openwiki-0-2-adds-okf-support) on July 16.
+I started [backlog-mcp](https://github.com/gkoreli/backlog-mcp) in December because agent plans, research, and failed attempts kept dying with the session. A task list became a set of Markdown files. Then tasks gained artifacts, decisions, links, search, and memory. By June, an agent could `wakeup`, `recall`, `remember`, and `forget`.
 
-In fifteen days, OpenWiki added personal memory and OKF support to its repo-docs base. The category now has products, a public format, and competing designs.
+I had reached a broader claim: the record of the work is the memory. The goal, the failed attempt, the reason a task got blocked, and the final evidence already contain what the next agent needs.
 
-## I reached the same problem through tasks
+[OpenWiki](https://github.com/langchain-ai/openwiki) reaches the same need from another direction. Its Code Brain turns a repository into maintained documentation. Its Personal Brain pulls from sources such as email, Notion, and Git, then writes a local wiki for agents. OpenWiki 0.2 also adopted Google’s [Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md): Markdown, frontmatter, links, and directory indexes.
 
-I built the first backlog-mcp prototype on December 19, 2025, because agent plans and research disappeared when sessions ended. The first prototype modeled strict task state; disk-backed storage followed the next day. By the third pull request, each task had become its own Markdown file with YAML frontmatter.
+That is real validation. Durable agent context should live in files that humans can inspect and agents can open as needed.
 
-Each real run exposed another gap. Tasks needed attached research. Agents needed search, related context, and a way to recover after a context reset. By June, that path had produced four memory verbs: `wakeup`, `recall`, `remember`, and `forget`.
+It does not prove that my current design is right.
 
-I documented that path in [117 Pull Requests Later, It Wasn’t a Task Manager Anymore](https://gkoreli.com/one-hundred-pull-requests). The repository history matters here. Each session showed what the next session would lack, so task state became memory.
+## The overlap—and the line between us
 
-OpenWiki now confirms two choices behind that work: durable agent context belongs in readable files, and agents should open only the part they need. Google’s OKF defines a public format using Markdown, YAML frontmatter, links, and directory indexes, with Git as the recommended way to ship a bundle. OpenWiki turns that base into a product: generate the wiki, point `AGENTS.md` and `CLAUDE.md` at it, then provide a scheduled workflow to update it.
-
-## The direct comparison
+OpenWiki builds memory by reading sources and writing a useful account of them. backlog-mcp records state while the work happens.
 
 | Question | OpenWiki | backlog-mcp |
 | --- | --- | --- |
-| What is its main job? | Build and maintain code or personal wikis | Store and preserve live agent work state |
 | Where does memory come from? | Repositories and connected sources | Tasks, decisions, artifacts, evidence, and explicit memories |
-| How does it write? | Connectors fetch or expose source data, then an agent synthesizes pages | Agents start, block, complete, attach, remember, and correct |
-| What is the data model? | OKF concepts: Markdown, frontmatter, open `type` values, and links | Substrates: schemas, relations, lifecycle, identity and disclosure rules, and allowed actions |
-| How does an agent retrieve context? | Code mode points instruction files at the wiki; Personal Brain navigates its local wiki with file tools | Bounded `wakeup`, hybrid `recall` and `search`, then `get` to expand |
-| What is strongest today? | Setup, connectors, scheduled updates, and OKF support | Operational state, typed writes, retrieval, provenance, and a live viewer |
+| When is it written? | During an ingest or update run | During the work itself |
+| What does it store? | A maintained wiki | Live state with rules, links, and history |
+| How does an agent retrieve it? | Files, instruction links, and wiki navigation | `wakeup`, hybrid `recall`, search, then `get` |
 
-They differ most at the write boundary. OpenWiki synthesizes pages from other sources. [backlog-mcp’s accepted docs-native design](https://github.com/gkoreli/backlog-mcp/blob/main/docs/adr/0112-docs-native-project-scoped-backlog.md) makes its Markdown the state agents update and act on. Personal Brain also maintains commitments and open questions, but its default path derives pages from sources. backlog-mcp applies enforced transitions inside the work loop. The comparison comes down to one line: **OpenWiki builds memory from sources; backlog-mcp builds memory from the work itself.**
+That last part matters to me. A task can be started, blocked with a cause, and completed with evidence. A memory can replace an older belief without deleting it. A decision can link back to the work that forced it. The files do not only explain the project. Agents act on them.
 
-Suppose an agent tries a database migration, finds a locking problem, blocks the task with the cause, attaches its test results, then completes the task with the final patch as evidence. The next agent needs that chain: the goal, the failed attempt, the constraint, the decision, and the result. A later summary can preserve the result. The live record preserves each step that produced it.
+I still think backlog-mcp is ahead on this narrow problem: memory written inside the work loop, with strict types and bounded retrieval. OpenWiki is far ahead on the first five minutes. Its name explains the product. Its install ends with something visible. Mine asks users to learn what a “substrate” is.
 
-backlog-mcp records those state changes as they happen. Through its agent-facing intent tools, a task is not a page that describes work. It is live state with enforced transitions. An artifact keeps the output next to the work that caused it. An ADR preserves the choice and its grounds. A memory can point back to all of them, expire, or supersede an older fact without erasing history.
+The architecture may be deeper. The product is less clear.
 
-That is why the backlog becomes memory. It preserves what changed and why at the moment it happens instead of deriving that state from other sources.
+## I fixed one pile and created many homes
 
-## The substrate is more than a format
+For most of its life, backlog-mcp had one global home under `~/.backlog`. It worked until it worked too well. I ended up with almost 1,000 tasks and artifacts in one place. Finding the right epic became work. Old projects stayed mixed with active ones. I had built a system to preserve context, then started avoiding it because the preserved context had become hard to place.
 
-OKF stays small on purpose. Its `type` is an open string, and the specification has no schema registry or required runtime. That makes it a strong exchange format.
+So I made what felt like the clear move: [bolt backlog-mcp onto each repository](https://github.com/gkoreli/backlog-mcp/blob/main/docs/adr/0112-docs-native-project-scoped-backlog.md).
 
-[backlog-mcp’s substrate model](https://github.com/gkoreli/backlog-mcp/blob/main/docs/adr/0098-unified-substrate-architecture.md) takes on a different job. A declaration can define validation, identity, relations, workflow, agent actions, and retrieval rules. Built-in types add viewer metadata and agent hints. [Projects can declare new types as data](https://github.com/gkoreli/backlog-mcp/blob/main/docs/adr/0113-user-defined-substrates.md) with bounded JSON Schema. Task intents enforce `start`, `block`, and `complete`; the memory loop supports `remember`, supersede-on-write, and `forget`. Both paths validate writes in the core.
+Now a repository’s `docs/` directory can hold its tasks, decisions, requirements, memories, and any custom document type it declares. The Markdown is the truth. Git can review it. The hidden `.backlog/` folder holds only indexes and local state. Existing docs work on day one; the tool does not need to import or rewrite them.
 
-Its retrieval path is also further along. `wakeup` gives an agent a small opening brief. `recall` combines text and local vector search, returns short stubs, and can pack them to a set token budget. The agent expands only useful items. The read-only viewer exposes the same state, including old or conflicting memory, without creating a second edit path.
+I still believe in most of that.
 
-On operational memory, backlog-mcp is ahead today. That lead is narrow and testable: richer state, stricter writes, deeper retrieval, and direct use during execution.
+But project homes spread fast. Every repository I touch can become another home. The viewer now keeps a recent-homes list because otherwise I cannot find them again. That solved discovery and made the sprawl visible.
 
-I cannot call the whole product mature yet. The [changelog](https://github.com/gkoreli/backlog-mcp/blob/main/CHANGELOG.md) makes that plain. I moved substrate storage into project docs on July 16, fixed recall bugs on July 18, and fixed a viewer hang with a 1,300-document home on July 20. The test set is small, and the declarative type system is young. The architecture is ahead of the product’s proof and polish.
+Now I am asking questions I thought the architecture had answered.
 
-## Where OpenWiki beats me
+Where should a memory that spans three projects live? If it goes global, agents working in a project may miss it. If I copy it into each home, which copy is true? If every small repository owns a separate backlog, have I restored order or only split one pile into smaller piles?
 
-OpenWiki has the better name, the easier pitch, and the cleaner first run. Install one CLI, point it at sources, and get a visible wiki. Its connectors and update workflows package the dull work of gathering and refreshing knowledge. Its fast adoption of OKF gives other tools a defined format to consume; backlog-mcp does not yet export one.
+Cross-home search helps me find things. It does not tell me where they belong.
 
-backlog-mcp still carries its history in public. The name sounds like a task tracker tied to one protocol. Users must grasp substrates, memory verbs, a daemon, an MCP surface, and a viewer. That makes the value hard to see in the first run.
+I am genuinely considering going back to one home for all tasks and memory. Repositories could keep their own durable docs while the operational backlog stays central. That would restore one place to wake up, recall, and manage work. It could also recreate the exact scaling problem that project homes were meant to fix.
 
-OpenWiki made the first five minutes clear. I spent more than six months building for the next six weeks. backlog-mcp needs both.
+I do not know yet. I need to use the system longer and feel which failure costs more: one crowded home or many fragmented ones.
 
-## What I take from the convergence
+## The files should work without my product
 
-I should test an OKF export without changing backlog-mcp’s core. Substrates already hold more structure than OKF requires, so an export can remain a view instead of becoming another authoritative copy. OpenWiki could supply source-derived knowledge. backlog-mcp could preserve the live state, decisions, and evidence produced while agents act on it.
+The project-home shift made another flaw obvious. A file called `TASK-0042.md` is readable once opened, but useless in a directory listing. The title is trapped inside the file.
 
-The deeper question is whether an agent should derive memory from existing sources or write memory into live work as it happens. backlog-mcp is my answer: **the work already contains the memory.**
+I want managed writes to produce names such as `TASK-0042-fix-home-discovery.md`. backlog-mcp already parses slugged filenames and preserves them when they exist. It still creates new files with the ID alone.
+
+Adding the slug sounds easy. The policy is not. Should the slug stay fixed when the title changes, leaving an old description in the path? Or should the file move, creating Git churn and breaking links that point to it?
+
+I lean toward a fixed slug set at creation. The ID remains the identity; the slug gives a human enough context to browse the files without backlog-mcp. A stale hint may be better than an unstable path. I have not made that call.
+
+This is one test I want every part of the system to pass: if backlog-mcp vanished tomorrow, the repository should still make sense.
+
+## I also need to kill the name
+
+“backlog-mcp” is now a bad name.
+
+“Backlog” says task tracker. The product stores decisions, requirements, memory, evidence, and project knowledge. “MCP” names one way to reach it, not what it does. I have to explain past the name before I can explain the product.
+
+There is already a long naming proposal in the repository. It scores candidates, checks package names, and recommends **Kvali**, the Georgian word for “trace.” I have not accepted it.
+
+I can defend the architecture with code and use. I cannot make myself love a name through a scoring table.
+
+This bothers me more than it should. I need to rename the product, but I do not want to swap one temporary name for another and repeat the migration six weeks later. Package names, command names, tool prefixes, config, and search results all start to harden once a name ships. I am afraid of committing too early, and tired of carrying a name I already know is wrong.
+
+The names I love tend to arrive whole. They stick at once. This one has not arrived.
+
+## Validation is not resolution
+
+OpenWiki gives me confidence in the category: agents need durable knowledge outside their context windows, stored in files they can retrieve a piece at a time.
+
+It does not settle my storage boundary, my filename policy, or my name.
+
+That is where the project stands today. The core bet looks stronger than it did a month ago. The product around it feels less settled because real use keeps exposing choices I can no longer hide behind implementation.
+
+I would rather publish that state than clean it up into a false success story. OpenWiki validates the direction. I am still working out the shape.
