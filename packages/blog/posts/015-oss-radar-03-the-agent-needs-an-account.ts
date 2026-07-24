@@ -34,7 +34,7 @@ export function preamble() {
     title: html`<h1>Buzz Is Slack<br>on <em>AIroids</em></h1>`,
     subtitle: 'Block built team chat for AI agents. Signed records survive restarts, while model context stays limited.',
     author: 'Goga Koreli',
-    readTime: '6 min read',
+    readTime: '8 min read',
   });
 }
 
@@ -125,14 +125,47 @@ export function article() {
     may assume the same software still runs it.
   </p>
 
+  <h3>The controls are unfinished</h3>
+
+  ${CompareTable({
+    headers: ['Control', 'Current state', 'Gap'],
+    rows: [
+      ['Action rights', 'Channel membership controls access', 'No per-action limits'],
+      ['Human approval', 'Workflow creates an approval token', 'Cannot resume after approval'],
+    ],
+    highlightRows: [0, 1],
+  })}
+
+  <p>
+    Owner-agent authorization remains a draft Nostr extension. A signature proves which key acted; policy and
+    approval decide whether it should have acted.
+    <a href="https://github.com/block/buzz/issues/2376" target="_blank" rel="noopener">Issue #2376</a>
+    tracks the missing <code>request_approval</code> support.
+  </p>
+
   ${Callout({
-    label: 'Limits today',
+    label: 'The audit check fails today',
     body: html`<p>
-      Owner-agent authorization remains a draft, optional Nostr extension. Channel membership grants content
-      access; Buzz cannot limit each action yet. A signature proves which key acted. Teams must still set rules
-      and review the work.
+      <a href="https://github.com/block/buzz/issues/2637" target="_blank" rel="noopener">Issue #2637</a>
+      reports that the verifier rejects every audit chain stored in Postgres because Buzz hashes nanosecond
+      timestamps while Postgres stores microseconds. Event signatures show authorship; the audit service cannot
+      yet tell whether stored history changed.
     </p>`,
   })}
+
+  <h3>The record does not contain every byte</h3>
+
+  <p>
+    Chat, workflow, and Git activity share a signed event format. Git objects and media live in other stores,
+    and voice frames never enter the durable log. The event record refers to this work; it does not store all
+    of it in one transaction.
+  </p>
+
+  <p>
+    A reviewer can still see which key announced a push or approved a change. The record cannot prove that
+    every linked object survived or that each later job ran. It records authorship more reliably than
+    completion.
+  </p>
 
   <h2>Models still lose context</h2>
 
@@ -150,6 +183,16 @@ export function article() {
     ],
     highlightRows: [0, 1],
   })}
+
+  <p>
+    Buzz searches stored events with Postgres full-text search, which matches exact terms and may miss
+    paraphrases. The agent must choose a query and inspect the results.
+  </p>
+
+  <p>
+    Buzz loads core memory only when a new ACP session starts. Named memories require a lookup, and a long
+    session may keep an old core record. This lowers prompt use but can leave the agent with stale facts.
+  </p>
 
   <p>
     ACP prompts carry full event IDs and tags. The native agent resends saved history and tool schemas
@@ -176,6 +219,29 @@ export function article() {
     </p>`,
   })}
 
+  <h3>Live sessions recover from some failures</h3>
+
+  <p>
+    The ACP layer sends one prompt at a time per channel and batches later events. It also detects a crashed
+    agent process and starts a new one. These controls handle busy live sessions, but an offline agent can
+    still miss old work.
+  </p>
+
+  ${Callout({
+    label: 'Agents can miss stored messages',
+    body: html`<p>
+      <a href="https://github.com/block/buzz/issues/1743" target="_blank" rel="noopener">Issue #1743</a>
+      reports that an offline agent can skip a saved mention when it returns. Under the default ACP settings in
+      <a href="https://github.com/block/buzz/issues/2270" target="_blank" rel="noopener">issue #2270</a>,
+      agents ignore later thread replies unless someone tags them again. In both cases, the event never reaches
+      the model.
+    </p>`,
+  })}
+
+  <p>
+    Buzz must deliver saved messages after an agent returns before teams can trust agent-to-agent delegation.
+  </p>
+
   <h2>Git work appears in chat</h2>
 
   <p>
@@ -193,6 +259,17 @@ export function article() {
     body: html`<p>
       Buzz plans to give each branch a room for agent work and test results. Current code creates only the
       Git ref. Merge code ignores approval counts, and Git ref updates cannot start a shipped workflow.
+    </p>`,
+  })}
+
+  ${Callout({
+    label: 'Private channels leave repositories readable',
+    body: html`<p>
+      <a href="https://github.com/block/buzz/issues/2469" target="_blank" rel="noopener">Issue #2469</a>
+      says every signed-in member of a Buzz community can read each hosted repository, including projects tied
+      to private channels. Channel roles limit pushes while reads remain open.
+      <a href="https://github.com/block/buzz/pull/2539" target="_blank" rel="noopener">PR #2539</a>
+      adds private repository reads and remains unmerged.
     </p>`,
   })}
 
@@ -224,12 +301,18 @@ export function article() {
     non-sensitive work and assume the relay operator can read the agent record.
   </p>
 
+  <p>
+    Self-hosting means running the relay and four data stores. The production guide calls for stable secrets
+    and coordinated backups. Buzz has no built-in relay copy for failover, so teams must restore related
+    records together and apply database changes during upgrades.
+  </p>
+
   <h2>Try one project room</h2>
 
   <p>
-    Move one project room from Slack to Buzz for a few weeks. Give two agents separate identities and narrow
-    channel access. Keep the current Git remote and merge rules. Measure how much context people paste and
-    how often agents recover the right history.
+    Move one Slack project room to Buzz for a few weeks, with two agents and narrow channel access. Keep Git
+    and final approval in the current tools until Buzz ships working approvals and private repository access.
+    Measure tokens per finished task and how often people resend work.
   </p>
 
   ${Prognosis({
@@ -245,15 +328,14 @@ export function article() {
   })}
 
   <p>
-    Buzz gives agents signed identities and work records inside a Slack-like workspace. Those records may
-    help after a restart, while models keep their context limits. Teams should adopt Buzz only if it saves
-    more time and tokens than it costs.
+    Buzz gives agents signed identities and work records inside a Slack-like workspace. Teams can test that
+    design on low-risk work. Trusted code changes need reliable delivery and working approval gates.
   </p>
 
   <div class="radar-research-note">
     <strong>Research Note</strong>
-    I checked Block's launch posts against the Buzz repo and left out social claims that its code and docs
-    could not support.
+    I checked Block's launch posts against the Buzz repo and open issues, then left out social claims that the
+    code and docs could not support.
   </div>
 
   ${Sources({
@@ -271,7 +353,7 @@ export function article() {
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/VISION.md',
       },
       {
-        claim: 'Agents have their own keys and revocable relay access; teams can change runtimes',
+        claim: 'Agents have their own keys and revocable relay access',
         why: 'The record separates the owner’s approval from the agent’s action.',
         ref: 'Block Engineering',
         url: 'https://engineering.block.xyz/blog/buzz',
@@ -281,6 +363,24 @@ export function article() {
         why: 'Teams must opt into an unfinished identity scheme.',
         ref: 'NIP-OA draft',
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/docs/nips/NIP-OA.md',
+      },
+      {
+        claim: 'The workflow engine fails runs that reach request_approval',
+        why: 'Buzz cannot yet resume work after a person approves it.',
+        ref: 'Workflow engine',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-workflow/src/lib.rs#L191-L208',
+      },
+      {
+        claim: 'Database-backed audit chains fail verification because timestamps lose precision',
+        why: 'The audit service cannot yet distinguish clean history from changed history.',
+        ref: 'Buzz issue #2637',
+        url: 'https://github.com/block/buzz/issues/2637',
+      },
+      {
+        claim: 'Git objects and media live outside the event log, and voice frames are ephemeral',
+        why: 'Signed events identify related work without storing every byte.',
+        ref: 'Buzz architecture',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/ARCHITECTURE.md',
       },
       {
         claim: 'Buzz loads 12 messages for threads and DMs; agents must request ordinary channel history',
@@ -301,10 +401,10 @@ export function article() {
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/crates/buzz-agent/src/handoff.rs#L30-L107',
       },
       {
-        claim: 'Only core memory loads automatically; agents must fetch named memories',
-        why: 'Stored notes help only when the agent knows what to fetch.',
+        claim: 'Buzz loads core memory at session start; agents must fetch named memories',
+        why: 'Long sessions can use old core memory, while named notes need a lookup.',
         ref: 'Agent memory specification',
-        url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/docs/nips/NIP-AE.md#L28-L35',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-acp/src/engram_fetch.rs',
       },
       {
         claim: 'History retrieval uses filtered Postgres full-text search',
@@ -337,10 +437,34 @@ export function article() {
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/ARCHITECTURE.md',
       },
       {
-        claim: 'One issue links excess pre-started capacity to about 220 Codex processes and 17.7 million tracked tokens',
+        claim: 'One issue links about 220 Codex processes and 17.7 million tracked tokens to too many pre-started agents',
         why: 'Bad pool settings can raise token use; the issue does not measure normal use.',
         ref: 'Buzz issue #2631',
         url: 'https://github.com/block/buzz/issues/2631',
+      },
+      {
+        claim: 'ACP sends one prompt per channel and restarts crashed agent processes',
+        why: 'Live sessions recover from some faults, while offline agents can still miss saved work.',
+        ref: 'ACP architecture',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/ARCHITECTURE.md',
+      },
+      {
+        claim: 'An offline agent can miss a stored mention after it returns',
+        why: 'The agent cannot act on a message it never receives.',
+        ref: 'Buzz issue #1743',
+        url: 'https://github.com/block/buzz/issues/1743',
+      },
+      {
+        claim: 'Under default ACP settings, an agent ignores thread replies unless tagged again',
+        why: 'A person may need to tag the same agent on every turn.',
+        ref: 'Buzz issue #2270',
+        url: 'https://github.com/block/buzz/issues/2270',
+      },
+      {
+        claim: 'Every authenticated community member can read each Buzz-hosted repository',
+        why: 'Private team chat can sit beside code that every community member can clone.',
+        ref: 'Buzz issue #2469',
+        url: 'https://github.com/block/buzz/issues/2469',
       },
       {
         claim: 'Hosted messages and DMs lack end-to-end encryption, and Block may access them',
@@ -353,6 +477,12 @@ export function article() {
         why: 'Outside model providers may receive workspace content.',
         ref: 'Buzz privacy notice',
         url: 'https://block.github.io/buzz/privacy.html',
+      },
+      {
+        claim: 'The production stack requires four persistent data volumes',
+        why: 'The team owns every backup and restore.',
+        ref: 'Deployment guide',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/deploy/compose/README.md#L26-L42',
       },
     ],
   })}
