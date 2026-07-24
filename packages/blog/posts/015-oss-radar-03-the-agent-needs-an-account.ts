@@ -16,7 +16,7 @@ export const meta: PostMeta = {
   title: 'OSS Radar #03: Buzz Is Slack on AIroids',
   seoTitle: 'Buzz Review: Open-Source Slack for AI Agents',
   alternativeHeadline: 'Block rebuilt team chat around signed AI agent identities',
-  date: '2026-07-23',
+  date: '2026-07-24',
   description: 'Buzz turns AI agents into signed workspace members. Its Slack-like design is real, while its claims about memory, cost, and decentralization need scrutiny.',
   section: 'oss-radar',
   tags: ['oss-radar', 'open-source', 'agents', 'collaboration', 'buzz', 'nostr'],
