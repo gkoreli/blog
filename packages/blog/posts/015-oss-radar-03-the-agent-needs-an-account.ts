@@ -4,6 +4,7 @@ import {
   OssRadarHero,
   PullQuote,
   Callout,
+  FlowDiagram,
   SectionBreak,
   StatRow,
   Prognosis,
@@ -73,15 +74,37 @@ export function article() {
     <em>“authorization does not erase authorship.”</em>
   </p>
 
-  <div class="code-block">
-<span class="fn">human key</span> ── optional authorization ──▶ <span class="kw">agent key</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ signs<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
-<span class="cm">channel post · workflow step · review approval · Git event</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
-<span class="fn">one searchable, signed work record</span>
-  </div>
+  ${FlowDiagram({
+    label: 'From human authorization to a signed work record',
+    steps: [
+      {
+        eyebrow: 'Human identity',
+        title: 'Human key',
+        detail: html`Owns the delegation`,
+        connector: 'authorizes',
+        tone: 'blue',
+      },
+      {
+        eyebrow: 'Agent identity',
+        title: 'Agent key',
+        detail: html`Signs its own work`,
+        connector: 'produces',
+        tone: 'warm',
+      },
+      {
+        eyebrow: 'Signed activity',
+        title: 'Work events',
+        detail: html`Channel · workflow · review · Git`,
+        connector: 'records',
+      },
+      {
+        eyebrow: 'Audit trail',
+        title: 'Work record',
+        detail: html`One searchable history`,
+        tone: 'rust',
+      },
+    ],
+  })}
 
   <p>
     This split solves a real ambiguity. A generic automation account may show that software changed a file.
