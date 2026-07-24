@@ -21,7 +21,19 @@
   border-bottom: 1px solid var(--color-border);
   font-size: var(--text-sm);
 }
+.src-content { min-width: 0; }
 .src-claim { color: var(--color-text-muted); }
+.src-why {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--color-text);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+}
+.src-why > span {
+  color: var(--color-accent-warm);
+  padding-right: 0.2rem;
+}
 .src-ref {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
