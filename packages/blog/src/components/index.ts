@@ -4,6 +4,8 @@ export { Closing } from './closing/closing.js';
 export { CompareTable } from './compare-table/compare-table.js';
 export { EisenhowerMatrix } from './eisenhower-matrix/eisenhower-matrix.js';
 export { FeaturedPost } from './featured-post/featured-post.js';
+export { FlowDiagram } from './flow-diagram/flow-diagram.js';
+export type { FlowDiagramStep, FlowDiagramTone } from './flow-diagram/flow-diagram.js';
 export { LitItem } from './lit-item/lit-item.js';
 export { OSSRadarCard } from './oss-radar-card/oss-radar-card.js';
 export { PageHero } from './page-hero/page-hero.js';
