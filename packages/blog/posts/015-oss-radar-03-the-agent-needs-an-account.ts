@@ -15,9 +15,9 @@ import {
 export const meta: PostMeta = {
   title: 'OSS Radar #03: Buzz Is Slack on AIroids',
   seoTitle: 'Buzz Review: Open-Source Slack for AI Agents',
-  alternativeHeadline: 'Block rebuilt team chat around signed AI agent identities',
+  alternativeHeadline: 'Block gave AI agents signed identities in team chat',
   date: '2026-07-24',
-  description: 'Buzz turns AI agents into signed workspace members. Its Slack-like design is real, while its claims about memory, cost, and decentralization need scrutiny.',
+  description: 'Buzz gives AI agents signed workspace accounts. Its context controls limit prompt size, but model-written summaries can lose facts.',
   section: 'oss-radar',
   tags: ['oss-radar', 'open-source', 'agents', 'collaboration', 'buzz', 'nostr'],
   layout: 'immersive',
@@ -32,7 +32,7 @@ export function preamble() {
     date: 'July 2026',
     tags: 'open-source · agents · collaboration · coordination',
     title: html`<h1>Buzz Is Slack<br>on <em>AIroids</em></h1>`,
-    subtitle: 'Block rebuilt team chat around AI agents. The workspace is real. The context cure is still missing.',
+    subtitle: 'Block built team chat for AI agents. Signed records survive restarts, while model context stays limited.',
     author: 'Goga Koreli',
     readTime: '6 min read',
   });
@@ -43,72 +43,52 @@ export function article() {
 <article class="post-content">
   <p>
     Block launched <a href="https://block.xyz/inside/introducing-buzz-where-humans-and-agents-work-together" target="_blank" rel="noopener">Buzz</a>
-    on July 21 as an open-source workspace for people and agents. It has channels, threads, direct messages,
-    canvases, huddles, search, workflows, and an agent directory. The shortest honest description is also
-    the most fun: <strong>Slack on AIroids.</strong>
+    on July 21 as an open-source workspace with team chat and signed work records for people and agents. Buzz
+    can run Codex and Claude Code; a team assigns work and sees who acted. <strong>Buzz is Slack on AIroids.</strong>
   </p>
-
-  <p>
-    The joke works because Buzz changes more than the chat box. Agents get accounts, signed identities,
-    channel membership, persistent sessions, memory, workflows, and access to the same work record as people.
-    Codex, Claude Code, and goose provide the intelligence. Buzz wants to own the room where their work becomes
-    visible to a team.
-  </p>
-
-  ${PullQuote({
-    content: html`<p>The pitch is not AI inside Slack. The pitch is Slack where AI has a badge, a key, and a job.</p>`,
-  })}
 
   ${StatRow({
     items: [
-      { value: '1 key', label: html`Per human or agent<br>signing its own events` },
-      { value: '12 msgs', label: html`Default automatic context<br>for threads and DMs` },
-      { value: '1 relay', label: html`Source of truth<br>for each community` },
+      { value: '1 key', label: html`Each human or agent<br>signs its events` },
+      { value: '12 msgs', label: html`Default history loaded<br>for threads and DMs` },
     ],
   })}
 
-  <h2>Slack, rebuilt around software coworkers</h2>
+  <h2>Slack for software coworkers</h2>
 
   <p>
-    Slack is the clear comparison. Buzz copies the daily shape of a team workspace, then makes agents
-    first-class members instead of apps hanging from a webhook. They can be mentioned, added to rooms,
-    assigned work, given a persona, and traced through the same event system as everyone else.
+    Buzz has Slack's channels and DMs, where agents join as members. People can assign work and trace signed
+    events in the same workspace.
   </p>
 
   ${CompareTable({
-    headers: ['Surface', 'Buzz adds', 'Competitive read'],
+    headers: ['Surface', 'Buzz feature', 'Result'],
     rows: [
-      ['Conversation', 'Channels, threads, DMs, canvases, huddles', 'Direct Slack lane'],
-      ['Agents', 'Signed accounts, personas, teams, and job history', 'The real product wedge'],
-      ['Execution', 'ACP sessions for Codex, Claude Code, and goose', 'Runtimes stay replaceable'],
-      ['Code', 'Git, issues, reviews, and merge events', 'Another work stream, not a GitHub replacement'],
-      ['Memory', 'Core memory, named notes, and search', 'Recovery tools, not endless context'],
+      ['Workspace', 'Channels and DMs', 'Direct Slack rival'],
+      ['Agents', 'Signed accounts and work history', 'Each action has an author'],
     ],
     highlightRows: [1],
   })}
 
   <p>
-    This keeps the market map small. Discord overlaps for open-source communities. Codex and Claude are
-    workers Buzz can run. Git is a substrate. The product lives in the coordination layer: who is present,
-    what they can see, what they did, and whether a person can inspect the result.
+    Codex and Claude Code run as workers inside Buzz. Buzz controls who joins and what work the team can inspect.
   </p>
 
-  <h2>What the AIroids add</h2>
+  <h2>Each agent gets a key</h2>
 
   <p>
-    Buzz gives people and agents separate Nostr keys. Under its optional owner-agent scheme, an owner
-    signs an authorization and the agent signs its own posts and actions. When both signatures are present,
-    one records delegation and the other records authorship. Block's engineering team states the rule well:
-    <em>“authorization does not erase authorship.”</em>
+    Buzz gives each person and agent a Nostr key. In its draft owner-agent scheme, the owner grants access and
+    the agent signs its own work. The signatures record who approved the work and who did it. Block states the
+    rule: <em>“authorization does not erase authorship.”</em>
   </p>
 
   ${FlowDiagram({
-    label: 'From human authorization to a signed work record',
+    label: 'From approval to signed work',
     steps: [
       {
         eyebrow: 'Human identity',
         title: 'Human key',
-        detail: html`Owns the delegation`,
+        detail: html`Grants access`,
         connector: 'authorizes',
         tone: 'blue',
       },
@@ -122,7 +102,7 @@ export function article() {
       {
         eyebrow: 'Signed activity',
         title: 'Work events',
-        detail: html`Channel · workflow · review · Git`,
+        detail: html`Chat and code activity`,
         connector: 'records',
       },
       {
@@ -135,277 +115,242 @@ export function article() {
   })}
 
   <p>
-    This split solves a real ambiguity. A generic automation account may show that software changed a file.
-    A separate key can show which agent account acted across the channel, workflow, and Git record. If that
-    agent is compromised, an operator can remove its relay access without changing the human account. The
-    identity also stays apart from the model, so a team can change runtimes without collapsing every action
-    into one bot account.
+    A shared bot account hides which agent changed a file. A separate key records which agent made the change
+    in chat and Git. If someone steals that key, an admin can remove its relay access without changing the
+    owner's account.
   </p>
 
   <p>
-    That portability creates a new audit problem. A team can change the model or harness behind an agent key
-    while the account name stays fixed. Buzz needs to expose those changes or its stable identity will imply
-    more continuity than the runtime deserves.
+    The agent key does not change when its model or harness changes. Buzz should show those changes, or readers
+    may assume the same software still runs it.
   </p>
 
   ${Callout({
-    label: 'The current limit',
+    label: 'Limits today',
     body: html`<p>
-      Owner-agent authorization is still a draft, optional Nostr extension. Within a channel, membership
-      remains the content-access boundary; Buzz does not yet offer finer channel roles or capabilities.
-      A signature proves which key acted. It does not prove that the action was safe or wanted.
+      Owner-agent authorization remains a draft, optional Nostr extension. Channel membership grants content
+      access; Buzz cannot limit each action yet. A signature proves which key acted. Teams must still set rules
+      and review the work.
     </p>`,
   })}
 
-  <h2>The context bill still arrives</h2>
+  <h2>Models still lose context</h2>
 
   <p>
-    Buzz keeps the durable record that most agent setups scatter across chat, terminal sessions, and local
-    files. That helps an agent recover after a restart. It does not give the model an infinite working memory.
-    The relay can retain six months of discussion while the model still sees a small prompt and an imperfect
-    summary of what came before.
+    Buzz keeps chat and agent work in one record. An agent can search that record after a restart, while its
+    model still receives a limited prompt and a model-written summary. The relay may hold six months of chat;
+    the model receives only selected messages.
   </p>
 
   ${CompareTable({
-    headers: ['Control', 'What the code does', 'What remains'],
+    headers: ['Control', 'What the code does', 'Limit'],
     rows: [
-      ['Backscroll', 'Loads 12 thread or DM messages by default', 'The limit counts messages, not tokens'],
-      ['Search', 'Permission-aware Postgres full-text search', 'Lexical and agent-triggered'],
-      ['Memory', 'Loads one core record; named memories stay cold', 'Manual lookup and stale sessions'],
-      ['Compaction', 'Summarizes near the native agent context limit', 'Lossy, paid, then old turns are dropped'],
+      ['Prompt input', 'Channel mentions omit history; threads and DMs load 12 messages', 'Large messages can still fill the prompt'],
+      ['Recall', 'Loads core memory and offers full-text search', 'The agent must fetch notes or choose useful search words'],
     ],
-    highlightRows: [0, 3],
+    highlightRows: [0, 1],
   })}
 
   <p>
-    The scoping is thoughtful. A mention in a normal channel does not drag the full channel history into the
-    prompt. Threads and DMs get a bounded window, and an agent can search when it needs more. Tool results are
-    capped. These choices reduce accidental prompt sprawl.
-  </p>
-
-  <p>
-    The waste moves rather than disappears. ACP event blocks still include content, full event IDs, sender
-    IDs, timestamps, parsed fields, and every tag. Buzz's native agent resends retained history and tool
-    schemas through its tool loop. Its handoff asks the model to summarize the session, clears the old history,
-    and trusts the summary. After ten handoffs, it starts dropping old conversation groups.
+    ACP prompts carry full event IDs and tags. The native agent resends saved history and tool schemas
+    during tool calls. Its handoff replaces old history with a model-written summary; after ten handoffs,
+    Buzz drops older turns.
   </p>
 
   ${PullQuote({
-    content: html`<p>Buzz attacks coordination and recovery, not context-window physics.</p>`,
+    content: html`<p>Buzz keeps the work record. Each model still has a fixed context window.</p>`,
   })}
 
   <p>
-    Codex and Claude Code keep control of their own context and compaction when Buzz runs them through ACP.
-    Buzz can measure the tokens they report, route the session, and provide room history. It cannot repair
-    a detail their runtime already compressed away. I found no checked-in benchmark showing lower token use
-    than the same agents outside Buzz.
+    When Buzz runs Codex or Claude Code through ACP, each runtime controls its own context and compaction.
+    Buzz can track reported token use and add room history. The repository has no benchmark that compares
+    token use with and without Buzz.
   </p>
 
   ${Callout({
-    label: 'A warning, not a benchmark',
+    label: 'One cost report',
     body: html`<p>
-      One open issue reports four configured agents expanding to roughly 220 Codex processes and 17.7 million
-      tracked tokens. The report points to eager capacity rather than a simple leak. It still shows how an
-      orchestration layer can multiply cost when its pool and no-op behavior are wrong.
+      One open issue says four configured agents spawned about 220 Codex processes and used 17.7 million
+      tracked tokens. The reporter says Buzz pre-started too many agent processes. A bad pool setup can raise
+      both process count and token use.
     </p>`,
   })}
 
-  <h2>Git is part of the conversation</h2>
+  <h2>Git work appears in chat</h2>
 
   <p>
-    Buzz runs a real Git server: standard clone, fetch, and push, backed by object storage and signed HTTP
-    authentication. Its Projects preview can browse repositories, create issues and pull requests, show diffs,
-    collect inline review comments, and perform an owner-side merge.
+    Buzz runs a Git server with standard read and write operations. Its Projects preview adds issues and
+    pull-request review.
   </p>
 
   <p>
-    That still does not make GitHub the main target. Git is a protocol, and Buzz uses it as another source of
-    work events. The interesting overlap is the conversation around code: the issue, review, CI result, and
-    merge decision can sit beside the humans and agents who produced them.
+    Buzz hosts Git itself, so teams can use it without GitHub. Both products support issues and code review;
+    GitHub still supplies runners and security tools that Buzz lacks.
   </p>
 
   ${Callout({
-    label: 'The branch room is still a pitch',
+    label: 'Branch rooms remain unbuilt',
     body: html`<p>
-      Buzz's vision turns every branch into a room that collects agent work, review, CI, and the merge record.
-      Current code creates the Git ref without creating that room. Review decisions appear in the UI but do
-      not yet enforce approval counts at merge, and Git ref updates do not trigger the shipped workflow engine.
-      The Git host is genuine. The complete chat-to-merge loop remains ahead.
+      Buzz plans to give each branch a room for agent work and test results. Current code creates only the
+      Git ref. Merge code ignores approval counts, and Git ref updates cannot start a shipped workflow.
     </p>`,
   })}
 
   ${SectionBreak()}
 
-  <h2>“Decentralized” has one relay</h2>
+  <h2>One relay runs each community</h2>
 
   <p>
-    Buzz uses Nostr, portable keys, and signed events, so Block describes it as decentralized. The architecture
-    document draws a smaller boundary. One relay is the source of truth for a community. Clients do not exchange
-    events with each other, and there is no gossip or relay replication.
+    Block calls Buzz decentralized because it uses Nostr keys and signed events. One relay holds each
+    community's record; clients and relays do not copy events elsewhere.
   </p>
 
   <p>
-    A team can own its server and carry its identity. It does not get a distributed runtime with built-in
-    failover. That choice may be sensible for team software, but it leaves one operator in charge of uptime,
-    storage, access, and policy. Signed events make authorship clearer. They do not encrypt the record.
+    A team can run its own relay and reuse its keys on another server. Each community still depends on one
+    relay for service and access. Signed events prove authorship; anyone with record access can read them.
   </p>
 
   ${Callout({
-    label: 'Hosted Buzz trust boundary',
+    label: 'Who can read hosted Buzz',
     body: html`<p>
-      Block says messages and direct messages in its hosted communities lack end-to-end encryption.
-      Block may access them to run, secure, or moderate the service. Relevant channel content may also go
-      to outside model providers, while messages and media remain for up to 180 days by default.
+      Hosted messages and DMs lack end-to-end encryption. Block may read them to run or secure the service.
+      It may send relevant channel content to outside model providers. By default, it keeps messages and
+      media for up to 180 days.
     </p>`,
   })}
 
   <p>
-    Self-hosting removes Block from that path and makes the team responsible for the relay. A remote model
-    provider may still receive prompts. I would begin with non-sensitive work and treat the relay operator
-    as someone who can read the agent's work history.
+    A self-hosted team controls its own relay. Remote model providers may still receive prompts. Start with
+    non-sensitive work and assume the relay operator can read the agent record.
   </p>
 
-  <h2>The test that matters</h2>
+  <h2>Try one project room</h2>
 
   <p>
-    I would move one project room from Slack into Buzz for a few weeks. Give two agents separate identities
-    and limited channel access. Keep the existing Git remote and final merge rules. Then compare how much
-    context people still have to paste, how often agents recover the right history, and whether the signed
-    record helps during review.
+    Move one project room from Slack to Buzz for a few weeks. Give two agents separate identities and narrow
+    channel access. Keep the current Git remote and merge rules. Measure how much context people paste and
+    how often agents recover the right history.
   </p>
 
   ${Prognosis({
     tag: 'signal',
-    title: 'The team can answer “who acted?”',
-    body: html`<p>
-      A reviewer can trace a patch from human authorization to agent action, workflow result, and final review
-      without rebuilding the story from several tools.
-    </p>`,
+    title: 'Signed actions answer “who acted?”',
+    body: html`<p>A reviewer can see the human approval and agent action in one signed record.</p>`,
   })}
 
   ${Prognosis({
     tag: 'risk',
-    title: 'The context bill compounds',
-    body: html`<p>
-      Repeated event metadata, split worker sessions, stale memory, and summary handoffs cost more than the
-      manual context sharing they were meant to remove.
-    </p>`,
+    title: 'Token use can grow',
+    body: html`<p>Repeated metadata and summary handoffs may cost more than manual context sharing.</p>`,
   })}
 
   <p>
-    Buzz is Slack on AIroids. The line works because it names the real bet: agents become workspace members
-    with identities, permissions, work queues, and a record people can inspect. The Git server, workflows,
-    and memory tools add muscle around that bet.
-  </p>
-
-  <p>
-    The code does not abolish context limits. It gives teams a better place to recover from them. The decisive
-    test is whether that shared record reduces coordination work without becoming a larger, more expensive
-    source of noise.
+    Buzz gives agents signed identities and work records inside a Slack-like workspace. Those records may
+    help after a restart, while models keep their context limits. Teams should adopt Buzz only if it saves
+    more time and tokens than it costs.
   </p>
 
   <div class="radar-research-note">
     <strong>Research Note</strong>
-    This issue uses Block's launch and engineering posts, the Buzz repository, and its architecture,
-    security, protocol, privacy, and project-vision documents. Claims from launch-week social posts were
-    left out when the public code or docs could not support them.
+    I checked Block's launch posts against the Buzz repo and left out social claims that its code and docs
+    could not support.
   </div>
 
   ${Sources({
     items: [
       {
-        claim: 'Buzz launched July 21; free, self-hostable, and Apache-2.0 licensed',
-        why: 'It fixes the project, license, and launch scope before the analysis begins.',
+        claim: 'Block launched Buzz on July 21 with an Apache-2.0 license and self-hosting support',
+        why: 'Teams can inspect the code and run their own server.',
         ref: 'Block launch',
         url: 'https://block.xyz/inside/introducing-buzz-where-humans-and-agents-work-together',
       },
       {
-        claim: 'Buzz defines itself as the shared pipe around agents and ships Slack-like workspace surfaces',
-        why: 'It establishes the Slack lane while keeping the model and agent runtime outside Buzz.',
+        claim: 'Buzz provides Slack-like workspace tools and connects to separate agent runtimes',
+        why: 'Teams can change the runtime without replacing the workspace.',
         ref: 'Buzz vision',
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/VISION.md',
       },
       {
-        claim: 'Separate agent identity, owner authorization, revocable relay access, and model-neutral harness support',
-        why: 'It supports the article’s main distinction between delegated authority and authorship.',
+        claim: 'Agents have their own keys and revocable relay access; teams can change runtimes',
+        why: 'The record separates the owner’s approval from the agent’s action.',
         ref: 'Block Engineering',
         url: 'https://engineering.block.xyz/blog/buzz',
       },
       {
         claim: 'Owner-agent authorization remains a draft, optional Nostr extension',
-        why: 'It keeps cryptographic delegation in its current experimental scope.',
+        why: 'Teams must opt into an unfinished identity scheme.',
         ref: 'NIP-OA draft',
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/docs/nips/NIP-OA.md',
       },
       {
-        claim: 'Automatic thread and DM context defaults to 12 messages; ordinary channel history stays on demand',
-        why: 'It shows that Buzz limits automatic context instead of sending the full workspace.',
+        claim: 'Buzz loads 12 messages for threads and DMs; agents must request ordinary channel history',
+        why: 'The fixed limit uses fewer prompt tokens but leaves recall to the agent.',
         ref: 'ACP context configuration',
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/crates/buzz-acp/src/config.rs#L364-L368',
       },
       {
-        claim: 'ACP prompt blocks retain full event IDs, sender data, timestamps, parsed fields, and tags',
-        why: 'It reveals the metadata cost hidden inside a small message-count limit.',
+        claim: 'ACP prompt blocks retain full event metadata and tags',
+        why: 'Those fields add tokens to each prompt.',
         ref: 'ACP prompt formatting',
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/crates/buzz-acp/src/queue.rs#L1067-L1142',
       },
       {
-        claim: 'The native agent summarizes near its context limit and later falls back to dropping old turns',
-        why: 'It shows that context pressure becomes lossy compaction rather than disappearing.',
+        claim: 'The native agent summarizes near its context limit, then drops old turns after repeated handoffs',
+        why: 'The agent can lose facts during long tasks even when the room keeps them.',
         ref: 'Native context handoff',
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/crates/buzz-agent/src/handoff.rs#L30-L107',
       },
       {
-        claim: 'Only core memory loads automatically; named cold memories require an explicit lookup',
-        why: 'It separates durable storage from automatic recall inside the model context.',
+        claim: 'Only core memory loads automatically; agents must fetch named memories',
+        why: 'Stored notes help only when the agent knows what to fetch.',
         ref: 'Agent memory specification',
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/docs/nips/NIP-AE.md#L28-L35',
       },
       {
-        claim: 'History retrieval uses filtered Postgres full-text search rather than semantic recall',
-        why: 'It leaves recovery dependent on the agent choosing useful search words.',
+        claim: 'History retrieval uses filtered Postgres full-text search',
+        why: 'Recall depends on useful search words.',
         ref: 'Search query implementation',
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/crates/buzz-search/src/query.rs#L198-L323',
       },
       {
         claim: 'Git clone, fetch, and push ship through standard Smart HTTP',
-        why: 'It confirms that Buzz hosts Git rather than wrapping a GitHub repository.',
+        why: 'Teams can host code on Buzz itself.',
         ref: 'Git transport',
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/crates/buzz-relay/src/api/git/transport.rs#L1-L9',
       },
       {
-        claim: 'Issues, pull requests, reviews, and owner-side merges exist in the Projects preview',
-        why: 'It places the current Git conversation layer above the raw transport.',
+        claim: 'The Projects preview adds pull requests and code review',
+        why: 'Teams can discuss code and chat in one workspace.',
         ref: 'Projects preview',
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/preview-features.json#L12-L19',
       },
       {
-        claim: 'Project channel tags have no writer, so branches do not yet create and archive rooms',
-        why: 'It marks the boundary between the branch-room pitch and the current forge.',
+        claim: 'Current code does not create or archive rooms from branch tags',
+        why: 'The advertised branch-to-room workflow is unavailable today.',
         ref: 'Project binding code',
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/desktop/src/features/projects/hooks.ts#L207-L214',
       },
       {
-        claim: 'One relay is the source of truth; no peer exchange, gossip, or relay replication',
-        why: 'It defines what “decentralized” means in the current system.',
+        claim: 'One relay holds each community record; Buzz has no peer or relay replication',
+        why: 'One operator controls service and access for each community.',
         ref: 'Buzz architecture',
         url: 'https://github.com/block/buzz/blob/b78a684cfa997bbffbc86ac9c311f4f7af25d11a/ARCHITECTURE.md',
       },
       {
-        claim: 'One issue reports eager agent capacity creating about 220 Codex processes and 17.7 million tracked tokens',
-        why: 'It is a concrete warning that orchestration can amplify cost, though it is not a benchmark.',
+        claim: 'One issue links excess pre-started capacity to about 220 Codex processes and 17.7 million tracked tokens',
+        why: 'Bad pool settings can raise token use; the issue does not measure normal use.',
         ref: 'Buzz issue #2631',
         url: 'https://github.com/block/buzz/issues/2631',
       },
       {
-        claim: 'Hosted messages and direct messages are not end-to-end encrypted; Block may access them',
-        why: 'It changes which projects are safe for an early hosted trial.',
+        claim: 'Hosted messages and DMs lack end-to-end encryption, and Block may access them',
+        why: 'The relay operator may read sensitive work.',
         ref: 'Buzz support',
         url: 'https://block.github.io/buzz/support.html',
       },
       {
-        claim: 'Hosted retention defaults and disclosure of content to outside model providers',
-        why: 'It shows that signed identity does not make the work record private.',
+        claim: 'Block may send channel content to model providers and keep messages or media for up to 180 days',
+        why: 'Outside model providers may receive workspace content.',
         ref: 'Buzz privacy notice',
         url: 'https://block.github.io/buzz/privacy.html',
       },
