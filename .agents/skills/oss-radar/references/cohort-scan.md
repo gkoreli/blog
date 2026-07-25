@@ -32,6 +32,7 @@ For each pattern:
 - give the denominator;
 - name the projects that support it;
 - add one checkable fact;
+- test the source's likely explanation against one sound rival when the evidence supports it;
 - state what would prove the claim wrong.
 
 Do not restate the project entries.
@@ -49,6 +50,7 @@ Verdict labels such as `BOLD BET` or `META PATTERN` are optional. Use one only w
 - [ ] Unequal projects receive unequal space
 - [ ] Pattern claims include a denominator
 - [ ] Patterns add facts beyond the entries
+- [ ] Main pattern tests a sound rival explanation
 - [ ] Source bias or sample limits appear once
 - [ ] Final thesis can be proved wrong
 - [ ] Follow-up topics support later research
