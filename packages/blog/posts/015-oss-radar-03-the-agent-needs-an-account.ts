@@ -15,9 +15,9 @@ import {
 export const meta: PostMeta = {
   title: 'OSS Radar #03: Buzz Is Slack on AIroids',
   seoTitle: 'Buzz Review: Open-Source Slack for AI Agents',
-  alternativeHeadline: 'Block gave AI agents signed identities in team chat',
+  alternativeHeadline: 'Block gave AI agents signed accounts and shared compute in team chat',
   date: '2026-07-24',
-  description: 'Buzz gives AI agents signed workspace accounts. Event signatures work, but approval and offline delivery remain unfinished.',
+  description: 'Buzz gives agents signed accounts and shared local compute. Delegation reliability and private code access remain unfinished.',
   section: 'oss-radar',
   tags: ['oss-radar', 'open-source', 'agents', 'collaboration', 'buzz', 'nostr'],
   layout: 'immersive',
@@ -31,10 +31,10 @@ export function preamble() {
     issueNum: 'Issue #03',
     date: 'July 2026',
     tags: 'open-source · agents · collaboration · coordination',
-    title: html`<h1>Buzz Is Slack<br>on <em>AIroids</em></h1>`,
-    subtitle: 'Buzz keeps signed agent records across restarts. Approval and offline delivery remain unfinished.',
+    title: html`<h1>Buzz Is Slack on <em>AIroids</em></h1>`,
+    subtitle: 'Agents get signed accounts; members on Apple Silicon can lend a local model.',
     author: 'Goga Koreli',
-    readTime: '7 min read',
+    readTime: '9 min read',
   });
 }
 
@@ -44,35 +44,34 @@ export function article() {
   <p>
     Block launched <a href="https://block.xyz/inside/introducing-buzz-where-humans-and-agents-work-together" target="_blank" rel="noopener">Buzz</a>
     on July 21 as an open-source workspace with team chat and signed work records for people and agents. Buzz
-    can run Codex and Claude Code; a team assigns work and sees who acted. Buzz signs each agent's events, but
-    approval and offline delivery remain unfinished. <strong>Buzz is Slack on AIroids.</strong>
+    can run Codex and Claude Code, and its Apple Silicon build lets members lend local model compute. A team
+    assigns work and sees who acted. Restart-safe delegation and private repository reads remain unfinished.
+    <strong>Buzz is Slack on AIroids.</strong>
   </p>
 
   ${StatRow({
     items: [
-      { value: '1 key', label: html`Each human or agent<br>signs its events` },
-      { value: '12 msgs', label: html`Threads and DMs load<br>this history by default` },
+      { value: '1 key', label: html`Each human or agent signs its events` },
+      { value: '12 msgs', label: html`Threads and DMs load this history by default` },
     ],
   })}
 
-  <h2>Slack where agents are members</h2>
-
-  <p>
-    Buzz has Slack's channels and DMs, where agents join as members. People can assign work and trace signed
-    events in the same workspace.
-  </p>
+  <h2>Agents join the same rooms</h2>
 
   ${CompareTable({
     headers: ['Surface', 'Buzz feature', 'Result'],
     rows: [
-      ['Workspace', 'Channels and DMs', 'Competes with Slack'],
-      ['Agents', 'Signed accounts and work history', 'Each action has an author'],
+      ['Workspace', 'Channels and DMs', 'People and agents share one room'],
+      ['Agents', 'Signed accounts and work history', 'Each signed event has an author'],
     ],
     highlightRows: [1],
   })}
 
   <p>
-    Buzz can run Codex and Claude Code as agents while it controls membership and work history.
+    Buzz connects runtimes through the Agent Client Protocol (ACP) over stdio. Codex and Claude Code need ACP
+    adapters. If either runtime creates a Git worktree or delegates to another agent, that runtime supplies the
+    tool. Buzz queues the room message and records the reply. Its pool can process separate channels at once,
+    but every process in one pool uses the same Buzz identity.
   </p>
 
   <h2>Each agent gets a key</h2>
@@ -109,7 +108,7 @@ export function article() {
       {
         eyebrow: 'Audit trail',
         title: 'Work record',
-        detail: html`One searchable history`,
+        detail: html`Signed event history`,
         tone: 'rust',
       },
     ],
@@ -129,9 +128,9 @@ export function article() {
   </p>
 
   <p>
-    A shared bot account can hide which agent changed a file. Buzz keeps each agent's events separate across
-    chat and Git. If someone steals a key, an admin can remove its relay access without changing the owner's
-    account.
+    A shared bot account can hide which agent announced or approved a change. Buzz keeps each agent's events
+    separate across chat and Git. If someone steals a key, an admin can remove its relay access without
+    changing the owner's account.
   </p>
 
   <p>
@@ -151,19 +150,22 @@ export function article() {
   })}
 
   <p>
-    Owner attestation remains a draft Nostr extension that records provenance. Relay membership controls
-    access. Human approval uses a separate workflow step that cannot yet resume a run;
+    Buzz's workflow schema accepts schedule and HTTP webhook triggers. Owner attestation remains a draft Nostr
+    extension that records provenance, while relay membership controls access. Human approval uses a separate
+    workflow step that cannot yet resume a run;
     <a href="https://github.com/block/buzz/issues/2376" target="_blank" rel="noopener">Issue #2376</a>
-    tracks the missing support.
+    remains open and tracks the missing support.
   </p>
 
   ${Callout({
-    label: 'A reported audit failure',
+    label: 'The audit fix leaves old rows behind',
     body: html`<p>
       <a href="https://github.com/block/buzz/issues/2637" target="_blank" rel="noopener">Issue #2637</a>
-      reports that the verifier rejects every audit chain stored in Postgres because Buzz hashes nanosecond
-      timestamps while Postgres stores microseconds. Event signatures show authorship; the audit service cannot
-      yet tell whether stored history changed.
+      reported that Postgres cut timestamp precision after Buzz hashed each audit entry. Buzz closed it on
+      July 24 after
+      <a href="https://github.com/block/buzz/commit/264a56a2260ac87350bfe1f5d3ec3d89615eb47c" target="_blank" rel="noopener">the fix</a>
+      began hashing new entries at the precision Postgres stores. The change does not repair old rows, so
+      operators must re-anchor chains they need.
     </p>`,
   })}
 
@@ -178,9 +180,9 @@ export function article() {
   <h2>Models still lose context</h2>
 
   <p>
-    Buzz keeps chat and agent work in one record. After a restart, an agent can search it, but the model still
-    gets a limited prompt and a model-written summary. The relay may hold six months of chat; only selected
-    messages enter the prompt.
+    Buzz keeps chat and agent work in one record. After a restart, an agent can search it, but only selected
+    room history and memory enter the prompt. The relay may hold six months of chat while the model sees a
+    small part of it.
   </p>
 
   ${CompareTable({
@@ -199,13 +201,17 @@ export function article() {
 
   <p>
     Buzz loads core memory only when a new ACP session starts. Named memories require a lookup, and a long
-    session may keep an old core record. This lowers prompt use but can leave the agent with stale facts.
+    session may keep an old core record. Named memories stay out of the prompt until the agent fetches them.
   </p>
 
   <p>
-    ACP prompts carry full event IDs and tags. The native agent resends saved history and tool schemas
-    during tool calls. Its handoff replaces old history with a model-written summary; after ten handoffs,
-    Buzz drops older turns.
+    Room history is shared. Buzz keeps each memory note with one agent-owner pair. A team can pass facts through
+    chat; Buzz has no common team memory store.
+  </p>
+
+  <p>
+    ACP prompts carry full event IDs and tags. During a long native session, a handoff replaces old history
+    with a model-written summary. After ten handoffs, Buzz drops older turns.
   </p>
 
   ${PullQuote({
@@ -222,13 +228,37 @@ export function article() {
     label: 'One cost report',
     body: html`<p>
       <a href="https://github.com/block/buzz/issues/2631" target="_blank" rel="noopener">Issue #2631</a>
-      says four configured agents spawned about 220 Codex processes and used 17.7 million tracked tokens.
-      The reporter says Buzz pre-started too many agent processes. A bad pool setup can raise both process
-      count and token use.
+      reports one snapshot with four agents and about 220 Codex descendants. The same local history held
+      17.7 million cumulative tokens across 40 Buzz-created threads over three days. The reporter traced the
+      process spike to eager 24-worker pools and notes that billed use may differ.
     </p>`,
   })}
 
-  <h3>Live ACP sessions restart crashed agents</h3>
+  <h3>Activity is not a terminal</h3>
+
+  <p>
+    Buzz can show a parsed activity feed or raw ACP JSON-RPC frames. A local owner can stop the current turn.
+    The view cannot attach to the agent's terminal or accept terminal input. Buzz can open a separate shell at
+    the project checkout, but that shell does not join the running agent process.
+  </p>
+
+  <p>
+    Buzz's native agent keeps sessions in memory and advertises <code>loadSession: false</code>. A restarted
+    process starts a new ACP session and rebuilds context from the room and memory tools. It also waits for one
+    non-streaming model response per round. Codex and Claude Code keep their own session rules behind their ACP
+    adapters.
+  </p>
+
+  ${Callout({
+    label: 'A latency report, not a benchmark',
+    body: html`<p>
+      <a href="https://github.com/block/buzz/issues/2386" target="_blank" rel="noopener">Issue #2386</a>
+      timed four short replies at 13 to 31 seconds. The sample has no matched run in a direct agent terminal.
+      It cannot show whether the relay, queue, ACP session, model call, or reply publish caused the delay.
+    </p>`,
+  })}
+
+  <h3>Buzz restarts crashed agent processes</h3>
 
   <p>
     The ACP layer sends one prompt at a time per channel and batches later events. If an agent process crashes,
@@ -238,15 +268,52 @@ export function article() {
   ${Callout({
     label: 'Agents can miss stored messages',
     body: html`<p>
-      ACP replays events from about five seconds before startup, and its default <code>mentions</code> mode
+      ACP subscribes to events from about five seconds before startup, and its default <code>mentions</code> mode
       accepts only tagged events.
-      <a href="https://github.com/block/buzz/issues/1743" target="_blank" rel="noopener">Issue #1743</a>
-      reports missed offline mentions; <a href="https://github.com/block/buzz/issues/2270" target="_blank" rel="noopener">issue #2270</a>
+      Open <a href="https://github.com/block/buzz/issues/1743" target="_blank" rel="noopener">issue #1743</a>
+      reports missed offline mentions; open <a href="https://github.com/block/buzz/issues/2270" target="_blank" rel="noopener">issue #2270</a>
       reports missed untagged thread replies.
     </p>`,
   })}
 
-  <h2>Git review happens in chat</h2>
+  <h2>Members can lend a local model</h2>
+
+  <p>
+    Buzz's Apple Silicon release build includes shared compute through MeshLLM. A member picks a local model
+    and turns on <em>Share this machine</em>. Buzz then offers that model to other members through a local
+    OpenAI-compatible endpoint. Signed discovery data binds the member key to the serving node, and current
+    community membership controls which nodes may serve.
+  </p>
+
+  ${CompareTable({
+    headers: ['Part', 'Shipped path', 'Boundary'],
+    rows: [
+      ['Agent runtime', 'Fizz runs through buzz-acp and buzz-agent', 'Codex and Claude Code keep their own provider setup'],
+      ['Model compute', 'MeshLLM sends inference to a member node', 'No price, payment, or per-member quota'],
+    ],
+    highlightRows: [0, 1],
+  })}
+
+  <p>
+    The runbook traces the built-in Fizz path from desktop to <code>buzz-acp</code>, <code>buzz-agent</code>,
+    MeshLLM, and a member model. Shared compute acts as an LLM provider. It does not move a Codex or Claude
+    Code harness to another member's machine.
+  </p>
+
+  <p>
+    MeshLLM carries inference over direct QUIC or encrypted Iroh relays; the Buzz relay handles membership and
+    discovery. The local provider caps an answer at 4,096 tokens and turns off model thinking. Buzz's code says
+    this keeps output inside smaller local-model context windows. That choice favors short work. Buzz has no
+    result that compares it with the same model outside Buzz.
+  </p>
+
+  <p>
+    <a href="https://nips.nostr.com/57" target="_blank" rel="noopener">NIP-57</a> defines Lightning zaps for
+    Nostr, which gives Buzz a possible payment path. Buzz has no price, wallet, usage ledger, or member quota
+    in shared compute.
+  </p>
+
+  <h2>Git review stays in Buzz</h2>
 
   <p>
     Buzz runs a Git server. Its Projects preview shows pull requests and review decisions. Teams can host Git
@@ -256,11 +323,11 @@ export function article() {
   ${Callout({
     label: 'Private channels leave repositories readable',
     body: html`<p>
-      <a href="https://github.com/block/buzz/issues/2469" target="_blank" rel="noopener">Issue #2469</a>
+      Open <a href="https://github.com/block/buzz/issues/2469" target="_blank" rel="noopener">issue #2469</a>
       says every signed-in member of a Buzz community can read each hosted repository, including projects tied
       to private channels. Channel roles limit pushes while reads remain open.
       <a href="https://github.com/block/buzz/pull/2539" target="_blank" rel="noopener">PR #2539</a>
-      adds private repository reads and remains unmerged.
+      adds private repository reads and remains open and unmerged.
     </p>`,
   })}
 
@@ -270,8 +337,8 @@ export function article() {
 
   <p>
     Block calls Buzz decentralized because it uses Nostr keys and signed events. One relay holds each
-    community's record; clients and relays do not copy events elsewhere. A team can run its own relay and reuse
-    its keys on another server. Each community still depends on one operator for service and access.
+    community's record, and Buzz has no peer or relay replication. A team can run its own relay and reuse its
+    keys on another server. Each community still depends on one operator for service and access.
   </p>
 
   ${Callout({
@@ -284,7 +351,7 @@ export function article() {
 
   <p>
     A self-hosted team controls its relay. Remote model providers may still receive prompts. The team must
-    also run four data stores and own upgrades and recovery.
+    also run four persistent data volumes and own upgrades and recovery.
   </p>
 
   <h2>Try one project room</h2>
@@ -299,24 +366,25 @@ export function article() {
   })}
 
   <p>
-    Wait when work needs working approval and offline delivery, or when code must stay private.
+    Wait when work needs reliable approval or offline delivery, or when code must stay private.
   </p>
 
   <p>
-    Run the same tasks in Buzz and one direct agent runtime. Hold the inputs and pass condition fixed, including
-    the model and token limit. Count extra messages and rework. Stop if Buzz adds cost without cutting
-    coordination work.
+    Run the same tasks in Buzz and one direct agent runtime. Hold the inputs, model, token limit, and pass
+    condition fixed. For shared compute, use the same local model on both paths. Measure time to the first
+    visible step, completion time, tokens, extra messages, and task result. Stop if Buzz adds cost without
+    cutting coordination work.
   </p>
 
   <h2>Low-risk work is the current limit</h2>
 
   ${Prognosis({
     tag: 'signal',
-    title: 'Approval and delivery pass restart tests',
+    title: 'Delegation survives a restart',
     body: html`<p>
       Pause a code-writing run for human approval, restart the relay service, then approve it. The run should
       resume once. Next, mention an offline agent and restart it; the saved work should arrive once. Both tests
-      must pass before teams trust approval-gated delegation.
+      must pass before teams trust work that waits for approval.
     </p>`,
   })}
 
@@ -330,17 +398,9 @@ export function article() {
   })}
 
   <p>
-    Buzz's strongest idea is the agent account: a key and work record that survive the model session. Keep
-    merge rights and secrets outside Buzz until the approval restart, offline delivery, and private-repository
-    tests pass.
+    The agent account gives each agent durable authorship; shared compute lets members lend a local model. Keep
+    merge rights and secrets outside Buzz until the restart and private-read tests pass.
   </p>
-
-  <div class="radar-research-note">
-    <strong>Research state</strong>
-    I audited <code>block/buzz</code> <code>main</code> at <code>cfdea818</code> on July 24, 2026, after the
-    July 21 launch. Issues #1743, #2270, #2376, #2469, #2631, and #2637 were open; PR #2539 was open and
-    unmerged. Issue #2631 covers Desktop v0.4.23. I treat issue behavior as reported unless cited code confirms it.
-  </div>
 
   ${Sources({
     items: [
@@ -355,6 +415,12 @@ export function article() {
         why: 'Teams can change the runtime without replacing the workspace.',
         ref: 'Buzz vision',
         url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/VISION.md',
+      },
+      {
+        claim: 'buzz-acp accepts any stdio ACP agent and can process separate channels in parallel',
+        why: 'The runtime supplies worktrees and delegation; Buzz supplies the queue and shared identity.',
+        ref: 'ACP bridge',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-acp/README.md',
       },
       {
         claim: 'Agents have their own keys and revocable relay access',
@@ -393,20 +459,32 @@ export function article() {
         url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-workflow/src/lib.rs#L191-L208',
       },
       {
+        claim: 'The Buzz workflow schema accepts schedules and HTTP webhooks',
+        why: 'The workflow format covers recurring work and outside triggers.',
+        ref: 'Workflow triggers',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-workflow/src/schema.rs#L33-L68',
+      },
+      {
         claim: 'Open issue #2376 tracks work to pause and resume runs for approval',
-        why: 'The missing approval path remains open at the research cutoff.',
+        why: 'The missing approval path remained open on July 25.',
         ref: 'Buzz issue #2376',
         url: 'https://github.com/block/buzz/issues/2376',
       },
       {
-        claim: 'Open issue #2637 reports audit verification failures after timestamps lose precision',
-        why: 'The audit service cannot yet distinguish clean history from changed history.',
+        claim: 'Closed issue #2637 reported audit failures after timestamps lost precision',
+        why: 'The report found why old audit chains failed verification.',
         ref: 'Buzz issue #2637',
         url: 'https://github.com/block/buzz/issues/2637',
       },
       {
-        claim: 'Large objects live outside the event log, and voice frames are ephemeral',
-        why: 'Signed events identify the work; other stores hold its contents.',
+        claim: 'Commit 264a56a hashes new audit entries at Postgres timestamp precision',
+        why: 'New rows can verify, but the change does not repair old rows.',
+        ref: 'Audit precision fix',
+        url: 'https://github.com/block/buzz/commit/264a56a2260ac87350bfe1f5d3ec3d89615eb47c',
+      },
+      {
+        claim: 'Large objects stay outside the event log, one relay holds each community, and ACP restarts crashed agents',
+        why: 'Event signatures cover only part of the system; one relay and other stores remain required.',
         ref: 'Buzz architecture',
         url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/ARCHITECTURE.md',
       },
@@ -435,6 +513,12 @@ export function article() {
         url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-acp/src/engram_fetch.rs',
       },
       {
+        claim: 'Each Buzz memory note belongs to one agent-owner pair',
+        why: 'Shared room history does not create one common team memory store.',
+        ref: 'Agent memory records',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/docs/nips/NIP-AE.md',
+      },
+      {
         claim: 'History retrieval uses filtered Postgres full-text search',
         why: 'Recall depends on useful search words.',
         ref: 'Search query implementation',
@@ -453,22 +537,34 @@ export function article() {
         url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/desktop/src/features/projects/projectPullRequests.mjs#L1-L114',
       },
       {
-        claim: 'One relay holds each community record; Buzz has no peer or relay replication',
-        why: 'One operator controls service and access for each community.',
-        ref: 'Buzz architecture',
-        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/ARCHITECTURE.md',
-      },
-      {
-        claim: 'Open issue #2631 links about 220 Codex processes and 17.7 million tracked tokens to pre-started agents',
-        why: 'Bad pool settings can raise token use; the issue does not measure normal use.',
+        claim: 'Issue #2631 reports about 220 Codex descendants and 17.7 million cumulative tokens',
+        why: 'Eager 24-worker pools can raise local cost; the report does not measure normal or billed use.',
         ref: 'Buzz issue #2631',
         url: 'https://github.com/block/buzz/issues/2631',
       },
       {
-        claim: 'ACP sends one prompt per channel and restarts crashed agent processes',
-        why: 'Crash recovery can still miss older work.',
-        ref: 'ACP architecture',
-        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/ARCHITECTURE.md',
+        claim: 'The activity panel can show raw ACP JSON-RPC frames and stop a local turn',
+        why: 'People can inspect protocol activity, but they cannot attach to the live agent terminal.',
+        ref: 'Agent activity panel',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/desktop/src/features/channels/ui/AgentSessionThreadPanel.tsx#L276-L363',
+      },
+      {
+        claim: 'The native Buzz agent uses non-streaming model calls and cannot load a saved session',
+        why: 'A process restart loses its in-memory session, and each model round arrives as one response.',
+        ref: 'Native agent',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-agent/README.md',
+      },
+      {
+        claim: 'The project terminal command opens a separate shell at the project checkout',
+        why: 'It does not attach the user to the agent’s live process.',
+        ref: 'Project terminal',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/desktop/src-tauri/src/commands/project_terminal.rs',
+      },
+      {
+        claim: 'Issue #2386 timed four short replies at 13 to 31 seconds',
+        why: 'The small sample flags latency but does not isolate its cause.',
+        ref: 'Buzz issue #2386',
+        url: 'https://github.com/block/buzz/issues/2386',
       },
       {
         claim: 'Open issue #1743 reports that an offline agent can miss a stored mention',
@@ -493,6 +589,30 @@ export function article() {
         why: 'An untagged thread reply does not reach the agent.',
         ref: 'ACP relay filter',
         url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-acp/src/relay.rs#L3171-L3194',
+      },
+      {
+        claim: 'Buzz enables MeshLLM shared compute in its Apple Silicon release build',
+        why: 'The feature ships on one supported build rather than across every desktop release.',
+        ref: 'Release workflow',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/.github/workflows/release.yml',
+      },
+      {
+        claim: 'Buzz documents the Fizz path to a member model over direct QUIC or encrypted Iroh relays',
+        why: 'The runbook traces one shared-compute path and keeps model traffic off the Buzz relay.',
+        ref: 'Shared compute runbook',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/docs/buzz-shared-compute-dev.md',
+      },
+      {
+        claim: 'The shared provider caps output at 4,096 tokens and disables model thinking',
+        why: 'The settings bound what a shared local model can return in one round.',
+        ref: 'Shared provider settings',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/desktop/src-tauri/src/managed_agents/relay_mesh.rs#L11-L48',
+      },
+      {
+        claim: 'NIP-57 defines Lightning zaps for Nostr',
+        why: 'Nostr offers a payment path, but Buzz shared compute does not ship one.',
+        ref: 'NIP-57',
+        url: 'https://nips.nostr.com/57',
       },
       {
         claim: 'Open issue #2469 says every authenticated community member can read each hosted repository',
