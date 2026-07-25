@@ -17,6 +17,7 @@ export const meta: PostMeta = {
   seoTitle: 'Buzz Review: Open-Source Slack for AI Agents',
   alternativeHeadline: 'Block gave AI agents signed accounts and shared compute in team chat',
   date: '2026-07-24',
+  lastModified: '2026-07-25',
   description: 'Buzz gives agents signed accounts and shared local compute. Delegation reliability and private code access remain unfinished.',
   section: 'oss-radar',
   tags: ['oss-radar', 'open-source', 'agents', 'collaboration', 'buzz', 'nostr'],
@@ -34,7 +35,7 @@ export function preamble() {
     title: html`<h1>Buzz Is Slack on <em>AIroids</em></h1>`,
     subtitle: 'Agents get signed accounts; members on Apple Silicon can lend a local model.',
     author: 'Goga Koreli',
-    readTime: '9 min read',
+    readTime: '12 min read',
   });
 }
 
@@ -308,9 +309,112 @@ export function article() {
   </p>
 
   <p>
-    <a href="https://nips.nostr.com/57" target="_blank" rel="noopener">NIP-57</a> defines Lightning zaps for
-    Nostr, which gives Buzz a possible payment path. Buzz has no price, wallet, usage ledger, or member quota
-    in shared compute.
+    <a href="https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/VISION_MESH.md" target="_blank" rel="noopener">Buzz calls Mesh a compute commons</a>.
+    Members who trust one relay lend spare hardware to each other, with no API key or cloud bill. Buzz plans a
+    community compute pool. The X post adds a second idea: a market where agents or teams pay for work.
+  </p>
+
+  <h3>Nostr can move the invoice. Buzz cannot price the job</h3>
+
+  ${FlowDiagram({
+    label: 'What a paid Buzz job would need',
+    steps: [
+      {
+        eyebrow: 'Shipped',
+        title: 'Signed key',
+        detail: html`Names the buyer, agent, or host`,
+        connector: 'signs',
+        tone: 'blue',
+      },
+      {
+        eyebrow: 'Missing link',
+        title: 'Job quote',
+        detail: html`Binds scope, model, price, and deadline`,
+        connector: 'starts',
+        tone: 'warm',
+      },
+      {
+        eyebrow: 'Partial',
+        title: 'Work record',
+        detail: html`Links the result and agreed use`,
+        connector: 'releases',
+      },
+      {
+        eyebrow: 'Missing path',
+        title: 'Payment',
+        detail: html`Settles or cancels the invoice`,
+        tone: 'rust',
+      },
+    ],
+  })}
+
+  <p>
+    Buzz can record two kinds of use. When an agent runtime reports use, its
+    <a href="https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-acp/src/pool.rs#L3316-L3361" target="_blank" rel="noopener">NIP-AM publisher</a>
+    stores an encrypted record with token counts and an estimated cost. A serving Mesh node also tracks
+    requests, output tokens, and remote use. These records do not form one bill. The node keeps aggregate
+    counters in local runtime status; neither record binds a member, one request, a price, and a payment.
+    <a href="https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/docs/nips/NIP-AM.md" target="_blank" rel="noopener">Buzz's NIP-AM spec</a>
+    calls its cost estimate advisory.
+  </p>
+
+  <h3>Funding shared hardware needs fewer rules than paid work</h3>
+
+  ${CompareTable({
+    headers: ['Use', 'Nostr piece', 'Buzz gap'],
+    rows: [
+      ['Fund shared hardware', 'NIP-75 goal and NIP-57 split tips', 'Needs a wallet and funding UI'],
+      ['Pay for an agent job', 'NIP-90 job and NIP-47 wallet calls', 'Needs billing and delivery rules'],
+    ],
+    highlightRows: [0],
+  })}
+
+  <p>
+    A Buzz room could use <a href="https://nips.nostr.com/75" target="_blank" rel="noopener">NIP-75</a> to fund
+    one GPU, then use <a href="https://nips.nostr.com/57" target="_blank" rel="noopener">NIP-57</a> to split tips
+    among its hosts. That stays close to Buzz's current trust group: the community funds capacity, then
+    membership grants use. It needs a wallet and UI, but no meter for each turn.
+    <a href="https://github.com/block/buzz/issues/265" target="_blank" rel="noopener">Open issue #265</a>
+    already lists NIP-57 zap events as relay work.
+  </p>
+
+  <p>
+    A fixed price for an accepted job fits Buzz sooner than a token bill. Its Mesh counters cannot tie remote
+    tokens to one member. <a href="https://nips.nostr.com/90" target="_blank" rel="noopener">NIP-90</a>
+    sketches a request, bid, result, and BOLT11 invoice. Its text-generation job can name a model and cap output
+    tokens. The Nostr project marks NIP-90 <em>unrecommended</em> and leaves payment timing open. Buzz also
+    <a href="https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-core/src/kind.rs#L379-L409" target="_blank" rel="noopener">reserved its own job kinds</a>
+    because delegation needs owner authorization chains. Buzz's relay does not accept those job kinds.
+  </p>
+
+  <p>
+    <a href="https://nips.nostr.com/47" target="_blank" rel="noopener">NIP-47</a> could give an app or agent a
+    separate wallet key, a wallet-set spending cap, and a way to make, pay, or hold an invoice. Buzz would
+    still need a rule for when the parties settle or cancel it. NIP-57 can attach a tip receipt to a signed
+    event and split the tip among keys. Buzz supports neither path. Its
+    <a href="https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-relay/src/handlers/ingest.rs#L195-L304" target="_blank" rel="noopener">relay rejects unknown event kinds</a>,
+    including NIP-57 receipt kind <code>9735</code>, and its
+    <a href="https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-relay/src/nip11.rs#L8-L16" target="_blank" rel="noopener">published NIP list</a>
+    omits NIP-57.
+  </p>
+
+  ${PullQuote({
+    content: html`<p>Buzz has identity and usage records. It has not joined them into a price, bill, or payment.</p>`,
+  })}
+
+  <p>
+    The X post's “instant zero-fee” claim goes too far.
+    <a href="https://github.com/lightning/bolts/blob/master/07-routing-gossip.md#htlc-fees" target="_blank" rel="noopener">routing nodes may charge a base fee and a rate</a>.
+    Payments can also fail when routes time out or lack capacity. NIP-57 warns that a zap receipt does not
+    prove payment; the client trusts the wallet that signed it. A settled invoice still cannot show which model
+    ran, whether the host counted tokens well, or whether the result met the job.
+  </p>
+
+  <p>
+    The near bet is a funded compute pool inside one Buzz community. The far bet is an agent market across
+    relays. An agent can keep one key, but its work history needs relay replication or a cross-relay index.
+    Buzz has neither. Paid work also needs private prompts, budget controls, and a rule for bad results. Nostr
+    supplies signed identity; Lightning moves the money. Buzz would still need the work and payment rules.
   </p>
 
   <h2>Git review stays in Buzz</h2>
@@ -398,8 +502,9 @@ export function article() {
   })}
 
   <p>
-    The agent account gives each agent durable authorship; shared compute lets members lend a local model. Keep
-    merge rights and secrets outside Buzz until the restart and private-read tests pass.
+    The agent account gives each agent durable authorship; shared compute lets members lend a local model.
+    Nostr could fund that pool or turn signed jobs into paid work, but Buzz has not joined identity, use, and
+    payment. Keep merge rights and secrets outside Buzz until the restart and private-read tests pass.
   </p>
 
   ${Sources({
@@ -609,10 +714,82 @@ export function article() {
         url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/desktop/src-tauri/src/managed_agents/relay_mesh.rs#L11-L48',
       },
       {
-        claim: 'NIP-57 defines Lightning zaps for Nostr',
-        why: 'Nostr offers a payment path, but Buzz shared compute does not ship one.',
+        claim: 'Buzz frames Mesh as a community-gated compute commons',
+        why: 'Adding prices would change a trust-based pool into a market.',
+        ref: 'Buzz Mesh vision',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/VISION_MESH.md',
+      },
+      {
+        claim: 'Buzz publishes a NIP-AM record only when a runtime reports use and the agent has an owner key',
+        why: 'A turn without reported use leaves no metric.',
+        ref: 'NIP-AM publisher',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-acp/src/pool.rs#L3316-L3361',
+      },
+      {
+        claim: 'NIP-AM marks token cost as an estimate and records it from the agent',
+        why: 'The record can guide a budget but cannot prove what a provider should charge.',
+        ref: 'Agent turn metric spec',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/docs/nips/NIP-AM.md',
+      },
+      {
+        claim: 'A Mesh host reads request and output-token counts from its local runtime',
+        why: 'The host sees session use but not the remote member, and both sides lack a signed bill.',
+        ref: 'Mesh serving usage',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/desktop/src-tauri/src/mesh_llm/mod.rs#L199-L269',
+      },
+      {
+        claim: 'NIP-75 defines goals that people can fund with zaps',
+        why: 'A community could fund shared hardware without pricing each model turn.',
+        ref: 'NIP-75',
+        url: 'https://nips.nostr.com/75',
+      },
+      {
+        claim: 'NIP-57 can link Lightning tips to events and split them among recipients',
+        why: 'A room could reward one signed result or several hosts, though the receipt issuer remains trusted.',
         ref: 'NIP-57',
         url: 'https://nips.nostr.com/57',
+      },
+      {
+        claim: 'Open issue #265 lists NIP-57 zap request and receipt kinds as relay work',
+        why: 'Buzz has a path to store zap events, but it still needs the wallet and Lightning parts.',
+        ref: 'Buzz issue #265',
+        url: 'https://github.com/block/buzz/issues/265',
+      },
+      {
+        claim: 'NIP-90 sketches paid compute jobs but is marked unrecommended',
+        why: 'The closest open job-market spec leaves payment timing and bad-result rules open.',
+        ref: 'NIP-90',
+        url: 'https://nips.nostr.com/90',
+      },
+      {
+        claim: 'Buzz reserves custom job kinds instead of NIP-90 kinds',
+        why: 'Buzz chose owner authorization chains over the public NIP-90 job range.',
+        ref: 'Buzz job kinds',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-core/src/kind.rs#L379-L409',
+      },
+      {
+        claim: 'NIP-47 lets clients pay and hold Lightning invoices through encrypted Nostr requests',
+        why: 'An agent could get a separate wallet key and wallet-set budget without holding the main wallet key.',
+        ref: 'NIP-47',
+        url: 'https://nips.nostr.com/47',
+      },
+      {
+        claim: 'The Buzz relay rejects event kinds outside its write allowlist',
+        why: 'NIP-57 receipts and Buzz job events do not pass the inspected write path.',
+        ref: 'Relay event allowlist',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-relay/src/handlers/ingest.rs#L195-L304',
+      },
+      {
+        claim: 'Buzz does not advertise NIP-47, NIP-57, or NIP-90 support',
+        why: 'Using Nostr does not give Buzz a wallet, zap, or paid-job path.',
+        ref: 'Relay NIP list',
+        url: 'https://github.com/block/buzz/blob/cfdea818dbd0a38ca6077de2bfafba755a6c7853/crates/buzz-relay/src/nip11.rs#L8-L16',
+      },
+      {
+        claim: 'Lightning routing nodes may charge a base and proportional fee',
+        why: 'Lightning payments can be cheap, but “zero-fee” is not a sound general claim.',
+        ref: 'BOLT 7',
+        url: 'https://github.com/lightning/bolts/blob/master/07-routing-gossip.md#htlc-fees',
       },
       {
         claim: 'Open issue #2469 says every authenticated community member can read each hosted repository',
