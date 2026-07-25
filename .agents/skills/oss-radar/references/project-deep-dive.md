@@ -32,6 +32,7 @@ Show the main claim's limits.
 - Use one or two gaps that change the verdict.
 - Attribute reports you did not reproduce.
 - Treat an open pull request as proposed work.
+- Use first-hand field reports to spot missed surfaces, then check those claims in code or issues.
 - Include context, Git, privacy, security, or operations only when they test the main claim.
 - Say what works before saying what fails.
 
