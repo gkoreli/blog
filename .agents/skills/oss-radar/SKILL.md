@@ -30,7 +30,7 @@ Treat an explicit read time as a limit.
 - Cut repeated claims and background before cutting proof.
 - Set `readTime` from the final render.
 
-## Record the research state
+## Keep research state in working notes
 
 Record these facts before drafting:
 
@@ -41,7 +41,8 @@ Record these facts before drafting:
 
 Use one baseline SHA per repository. Explain any later SHA. Recheck live issue and pull-request states before publication.
 
-Put the research state in a short rendered note so readers know the cutoff.
+Do not publish a raw commit and ticket ledger. Pin code links. Put an issue or pull-request state beside its claim
+when that state changes the result. Add a short cutoff note only when the date changes the reader's decision.
 
 ## Build a claim table
 
@@ -67,8 +68,11 @@ Use each source only for the claim it can prove. A launch post proves an announc
 2. Use code, tests, or configuration when the claim concerns shipped behavior.
 3. Trace the main code path for a project deep dive.
 4. For each featured cohort project, find one code fact beyond the README unless the thesis needs more.
-5. Check deployment, privacy, security, and license terms only when they change the verdict.
-6. Check whether cited fixes have merged.
+5. Read one first-hand field report when one exists. Use it to find product surfaces the docs miss, then check its
+   claims in code, tests, or issues.
+6. Treat a field report as a lead, not proof.
+7. Check deployment, privacy, security, and license terms only when they change the verdict.
+8. Check whether cited fixes have merged.
 
 Follow the selected mode reference for depth. Do not turn each cohort entry into a project deep dive.
 
@@ -117,7 +121,8 @@ Also:
 
 - [ ] One mode and one article focus
 - [ ] Requested scope or read-time limit honored
-- [ ] Check date, baseline SHA per repository, release, and live issue or pull-request states recorded
+- [ ] Check date, baseline SHA per repository, release, and live issue or pull-request states recorded in working notes
+- [ ] Reader copy omits the raw audit ledger and keeps only state that changes a claim
 - [ ] Claim table separates code-inspected, reproduced, reported, and proposed evidence
 - [ ] Inferences marked as the author's
 - [ ] Every number, quote, date, and market claim has a source
