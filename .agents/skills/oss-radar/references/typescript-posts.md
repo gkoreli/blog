@@ -4,8 +4,8 @@ Inspect existing exports and nearby posts before adding markup or a component.
 
 ## Components
 
-- Use `CompareTable` for exact mappings or a two-sided decision.
-- Use `FlowDiagram` for a real order or ownership chain.
+- Use `CompareTable` for exact mappings, two tested theories, or two future paths.
+- Use `FlowDiagram` for a real order, ownership chain, or path from shipped work through a missing link.
 - Use `Callout` for one bounded warning.
 - Use `Prognosis` only when a release test helps the decision.
 - Use `Sources` for each material source and its `why` sentence.
@@ -16,6 +16,10 @@ Inspect existing exports and nearby posts before adding markup or a component.
 
 Keep one rendered `<h1>`. Never fill a cell with `&nbsp;`, a blank item, or filler text. Do not use `<br>` to fix a broken layout.
 
+Do not render the working claim or theory tables. Turn their result into one small reader-facing table or diagram
+only when it cuts prose. Label shipped, in progress, enabled, and speculative steps so the visual does not make
+a future idea look complete.
+
 ## Sources and live state
 
 - Add a `why` value to every `Sources` item even when the type marks it optional.
@@ -23,7 +27,7 @@ Keep one rendered `<h1>`. Never fill a cell with `&nbsp;`, a blank item, or fill
 - Do not render that ledger. Put live state next to a claim when it changes the result.
 - Add a short cutoff note only when the cutoff changes the reader's decision.
 - Link a live issue or pull request in the body when its current state changes the claim.
-- Keep each code link on its repository's baseline SHA.
+- Keep each repository code and document link on its baseline SHA.
 - Check that every material body link appears in `Sources`, and that no source card lacks a body claim.
 
 ## SEO and metadata
@@ -52,7 +56,7 @@ Then check:
 - [ ] No empty component cells
 - [ ] No row/header count mismatch
 - [ ] No repeated adjacent callouts that should be one factory
-- [ ] No unpinned GitHub code link
+- [ ] No unpinned GitHub code or document link
 - [ ] Every source has a reason it matters
 - [ ] Reader copy omits the raw research ledger
 - [ ] Time-sensitive claims state what is open, closed, merged, or proposed
