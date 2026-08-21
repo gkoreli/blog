@@ -11,3 +11,7 @@ did you read my writing skills?
 AgentPort is early? why do you think so? raise the PR for now my other engineer will take over
 ---
 lmao article belongs to my blog, what are you doing? dont you realize the project that we are in right now>
+---
+The title says: Bring Your Own AI Agent, but where?
+---
+Why just website do you understand agentport? Read the latest commits in the codebase we have made and understand where its going
