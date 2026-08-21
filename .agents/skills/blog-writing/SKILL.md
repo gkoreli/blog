@@ -26,7 +26,7 @@ Reference these guidelines when:
 - **Perspective**: First person. "I built this because..." not "One might consider..."
 - **Honesty**: Show failures and wrong turns, not just wins. "This didn't work because..." is more valuable than "Here's how to do it right."
 - **No fluff**: Skip intros like "In today's fast-paced world..." — lead with the thing.
-- **Transparency**: This blog is AI-assisted. Every post includes the raw prompts that generated it. The author provides the substance — experience, perspective, lessons. The agent helps write. This is not AI slop.
+- **Transparency**: AI-assisted collaborative posts include the raw prompts that generated them. The author provides the substance — experience, perspective, lessons. The agent helps write. Exposed essays and OSS Radar issues do not ship prompts under their governing skills.
 
 ## What Makes a Great Article
 
@@ -103,7 +103,7 @@ Content starts immediately. No preamble.
 
 ### Prompt Files
 
-Every post ships with its raw prompts — the human thinking that shaped the AI output. This is the blog's core transparency feature.
+Every AI-assisted collaborative post ships with its raw prompts — the human thinking that shaped the AI output. This is the blog's core transparency feature. Exposed essays have no prompt file because the author writes every word; OSS Radar issues are research-driven and also omit prompts.
 
 **Location**: `prompts/{slug}.prompts.md` (matches the post slug, not the numbered filename)
 - Post: `posts/001-the-agentic-product-engineer.md` (slug: `the-agentic-product-engineer`)
@@ -132,12 +132,12 @@ third prompt pushing back on something...
 
 ### Build in Public
 
-Every post should feel like a chapter in an ongoing journey, not a standalone tutorial.
+Engineering posts and build logs should feel like chapters in an ongoing journey, not standalone tutorials.
 
 - **Show real decisions**: "I chose X over Y because Z" with actual trade-offs
 - **Show real numbers**: bundle sizes, line counts, npm downloads, build times
 - **Show real failures**: "This approach failed because..." with what you learned
-- **Open loops**: end posts with what's coming next — pulls readers back
+- **Open loops**: when the governing form calls for one, end with what remains live or comes next
 
 ### Specificity Over Polish
 
@@ -145,13 +145,19 @@ Weak: "I've been working on my framework, things are going well."
 
 Strong: "Week 3: Rewrote the component lifecycle. Old approach created 47 orphaned event listeners in a 10-component page. New approach: zero. Here's the diff."
 
-### Structure That Works
+### Choose the Form First
+
+Run `shape-article` before imposing structure. An exposed essay, essay of inquiry, field note, engineering argument, and research synthesis move differently and earn different endings. Never force a lesson, verdict, or open loop because a generic article template expects one.
+
+### Structure for Engineering Arguments and Build Logs
 
 1. **Lead with the thing** — what you built, what you found, what broke. No preamble.
 2. **Context** — why this matters, what problem it solves. Keep it short.
 3. **The meat** — code, decisions, trade-offs, results. This is 70% of the post.
 4. **What I learned** — honest reflection, not a summary.
 5. **What's next** — open the loop for the next post.
+
+Use this sequence only when it fits the material. Field notes may end at a blocker. Inquiry essays may deepen a question. Exposed essays end without a bow under `personal-essays`.
 
 ### Code Blocks
 
@@ -245,7 +251,7 @@ Rules:
 - Don't use "we" when you mean "I" — this is a personal blog
 - Don't pad posts with background the reader already knows — link to it instead
 - Don't bury the lede — if the interesting thing is in paragraph 5, move it to paragraph 1
-- Don't write posts without code — this is an engineering blog
+- Don't write engineering posts without concrete technical material. Personal essays do not need code.
 - Don't use AI-generated filler text — every sentence should carry information
 - Don't write walls of prose when bullets would be clearer — match format to content
 - Don't make every section bullets either — narrative sections need prose to land
@@ -278,6 +284,6 @@ Before publishing:
 - [ ] External sources follow sourcing rules (original author, no paywalls, no Wikipedia)
 - [ ] Glossary has dates on all sources
 - [ ] Hyperlinks are contextual and useful (repos, READMEs, npm, blog pages)
-- [ ] Ends with what's next (open loop)
+- [ ] Ending fits the governing form — no forced lesson, verdict, redemption, or open loop
 - [ ] Read it out loud — does it sound like you talking?
-- [ ] Prompts file exists in `prompts/` with all raw prompts that shaped this post
+- [ ] For AI-assisted collaborative posts, prompts file exists in `prompts/` with all raw prompts that shaped the post; exposed essays and OSS Radar issues omit it

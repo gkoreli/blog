@@ -1,0 +1,4 @@
+interface:
+  display_name: "Polish Prose"
+  short_description: "Make prose concise, direct, and human"
+  default_prompt: "Use $polish-prose to review this article for concise, direct, natural prose."

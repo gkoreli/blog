@@ -12,6 +12,8 @@ metadata:
 
 This skill exists because "catchy" is usually folklore. Everything prescriptive here traces to a verified source or a named practitioner with receipts; the epistemics section says which is which. When new evidence contradicts a rule, update the rule and bump `evidence-audited`.
 
+Run `shape-article` first. Apply this skill to the engineering and discovery layers of a piece without forcing an exposed essay, inquiry, or field note to become a resolved argument. `personal-essays` governs every conflict involving voice, aliveness, and unresolved experience.
+
 ## Epistemics — how this skill was built
 
 - **Verified at primary source** (fetched, not summarized secondhand): Google Search Central title-link docs (updated 2025-12); Backlinko CTR study (n = 4M results, 1.3M pages, updated 2025-04); Ahrefs llms.txt log analysis (~38k domains, data 2026-05).
@@ -34,7 +36,7 @@ The architecture is the metadata split (see `AGENTS.md`): literary H1/`og:title`
 ## Agentic search (GEO/AEO) — what is real in 2026
 
 - **The honesty mechanics ARE the AEO strategy.** The one peer-reviewed result (GEO, KDD 2024): quotations, statistics-with-sources, and citations boost generative-engine visibility up to ~40%, varying by domain. Pull quotes, dated numbers, and footnoted claims — already this publication's trust practice — are the same interventions.
-- **BLUF: a declarative, quotable, self-contained answer in the first 100 words.** The standfirst (`.post-lede`) does this: one sentence a machine can lift that names the artifact and the story. Weak-source but directionally consistent with GEO; cost is zero.
+- **Give the first 100 words a self-contained anchor.** The standfirst (`.post-lede`) names the artifact and the story in one declarative sentence a machine can lift. It may state a finding, a live question, or the current state; never supply an answer the article does not have. Weak-source but directionally consistent with GEO; cost is zero.
 - **Durable URLs with visible dates are the long game.** ChatGPT-class engines cite years-old content; freshness mainly matters for Perplexity-style engines. Update posts with real changes and honest `lastModified`, never cosmetic date-bumping (see `AGENTS.md` metadata rules).
 - **llms.txt is dead weight — keep it only because it's free.** Ahrefs (2026-05): 97% of domains with a valid llms.txt got zero requests for it; no major provider supports it; Google's Mueller: "comparable to the keywords meta tag." Ours is auto-generated — fine. Never spend an hour on it.
 - **Do not add FAQ schema to essays.** The citation-rate claims for it come from unverifiable sources, and question-boxes bolted onto a narrative are schema spam. BlogPosting JSON-LD (auto-generated) is enough.
@@ -44,7 +46,7 @@ The architecture is the metadata split (see `AGENTS.md`): literary H1/`og:title`
 A reader shares when the post makes them **armed**, **vindicated**, or **seen** (per `personal-essays`). The evidence adds mechanism:
 
 - **Specificity is a structural advantage of a personal blog.** Dan Luu on corporate blogs: the approval chain "removes references to specifics, makes posts vaguer and less interesting," while "there's a dearth of real, in-depth, technical writing." No approval chain here — so every abstraction that could be a name, number, date, or commit SHA is a wasted advantage.
-- **One clear disagreeable opinion.** Goedecke (140 posts, 47 HN front pages in 2025): "the recipe for a popular post is to have a clear opinion about working in tech that many people disagree with." Balanced surveys get nods; falsifiable claims get replies. Every post carries at least one signed, wrong-able position — and states how it could be proven wrong.
+- **One clear disagreeable opinion when the piece makes an argument.** Goedecke (140 posts, 47 HN front pages in 2025): "the recipe for a popular post is to have a clear opinion about working in tech that many people disagree with." Balanced surveys get nods; falsifiable claims get replies. Do not manufacture a claim for an inquiry or field note whose honest center is uncertainty.
 - **Write for the person who struggled.** Evans: "if I struggled with something, there's a pretty good chance other people are struggling with it too… write it down while you still remember what was hard." swyx: "Make the thing you wish you had found when you were learning."
 - **The dead ends are the content, not the framing.** Trust is built almost entirely in what was tried and failed and what it cost. Anyone can publish the success path.
 - **Name what the losing tool is still better at.** A verdict is only trusted from a writer who can praise the other side. (React gets its ecosystem sentence before nisli gets its reason to exist.)
@@ -64,8 +66,8 @@ Luu: "writing confident, unqualified statements works. People like confidence." 
 1. **seoTitle**: ≤ ~57 visible chars, handles first, declarative, shares the H1's substance. H1 stays literary.
 2. **Description**: ≤ ~155 chars, leads with names, works as a standalone sentence.
 3. **Standfirst** (`.post-lede`): first 100 words contain one declarative, liftable sentence naming the artifact and the story.
-4. **The disagreeable claim**: present, signed, and falsifiable — the post states what evidence would prove it wrong.
-5. **Armed reader**: at least one decision rule, trap, or trade-off the reader can use tomorrow.
+4. **The disagreeable claim**: for argument and decision pieces, present, signed, and falsifiable — the post states what evidence would prove it wrong. For inquiry and field notes, preserve the live question.
+5. **Reader value**: give the reader a decision rule, trap, trade-off, sharper question, or faithful account of a hard unresolved state. Match the governing form.
 6. **Dead ends**: every success path shown has its failed attempts and costs beside it.
 7. **Loser praised**: each comparison names what the losing option is still better at.
 8. **Hedge audit**: epistemically honest qualifiers kept; armor words cut; filler words (just/simply/easily/obviously) deleted.

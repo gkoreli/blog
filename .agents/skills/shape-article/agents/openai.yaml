@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shape Article"
+  short_description: "Choose the form before shaping the prose"
+  default_prompt: "Use $shape-article to identify this draft’s living center and edit it without forcing the wrong arc."

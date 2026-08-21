@@ -16,17 +16,17 @@ Agentic engineering is the most interesting frontier in software right now, but 
 
 What's actually missing: honest, grounded writing about what it means to build with agents daily. The real principles — context engineering, steering agents through hard problems, knowing when to stop the agent from pivoting to easy solutions. The depth problem: agents default to naive/average solutions, and someone without engineering depth will pivot with them.
 
-This blog exists in that gap. Builder's journal, not a tutorial site. Every post includes the raw prompts that generated it — full transparency that this is AI-assisted writing with human substance.
+This blog exists in that gap. Builder's journal, not a tutorial site. AI-assisted collaborative posts include the raw prompts that generated them — full transparency that this is AI-assisted writing with human substance. Exposed essays and OSS Radar issues are explicit exceptions for different reasons: the former are written entirely by the author's hands; the latter are research-driven analysis.
 
 ## Writing Process
 
 Blog posts are AI-assisted with human substance. The workflow:
 
 1. **Author provides golden data** — raw prompts with perspective, experience, specific problems, lessons learned
-2. **Agent distills and structures** — applies the blog-writing skill (`.agents/skills/blog-writing/SKILL.md`)
+2. **Agent identifies the living center and form** — applies `shape-article` before structure or polish. For exposed essays, the agent is editor and gatekeeper and never drafts the prose. For other forms, it distills and structures with the governing skill.
 3. **Iterative refinement** — author reviews, pushes back on prose, requests structural changes
 4. **Fact-check pass** — verify every date, attribution, quote, external link, GitHub repo, and technical claim. Web search each source. Post 004 caught 7 errors in one pass: wrong dates, misattributed quotes, unverifiable projects, a flawed technical premise. This step is mandatory, not optional.
-5. **Every post ships with raw prompts** — full transparency, readers can see the human thinking behind the AI output. **Exception:** OSS Radar issues don't include prompts — they're research-driven analysis, not prompt-driven generation.
+5. **AI-assisted collaborative posts ship with raw prompts** — readers can see the human thinking behind the AI output. **Exceptions:** exposed essays have no prompts because the author writes every word; OSS Radar issues have no prompts because they are research-driven analysis.
 
 ### Writing Skill (`.agents/skills/blog-writing/SKILL.md`)
 
@@ -36,13 +36,28 @@ Covers voice, structure, formatting balance, sourcing rules, glossary format, an
 - **Sourcing rules** — original author first (not Wikipedia or aggregators), no paywalled sources, authoritative builder blogs and company engineering blogs preferred. Glossary uses table format with dates on every source.
 - **What makes a great article** — states a problem clearly, introduces novel ideas, debunks myths, showcases best practices AND anti-patterns, highlights gotchas, shares personal growth, is transparent.
 
+### Shape Article Skill (`.agents/skills/shape-article/SKILL.md`)
+
+The editorial router for every article. It identifies the living center and governing form before any structural rule runs: exposed essay, inquiry, field note, engineering argument, or research synthesis. It protects unresolved experience, contradictions, status-risking passages, self-interruptions, and meaningful repetition. It requires movement without demanding resolution and adds context for humans and agents without flattening the article into a summary.
+
+Run skills in this order:
+
+1. `shape-article` — choose the form and protect what is alive
+2. The governing form skill — `personal-essays`, `blog-writing`, or `oss-radar`
+3. `shareable-engineering` — engineering trust and discovery where applicable
+4. `polish-prose` — sentence-level pass last
+
 ### Personal Essays Skill (`.agents/skills/personal-essays/SKILL.md`)
 
 The exposed-register personal essay — writing from open wounds, not scars. For this genre the agent is editor and gatekeeper, **never ghostwriter**: no drafted prose, no prompt file, essays typed by the author's hands and shipped plain (no art-object treatment). Defines the three-property test (present tense, unresolved at publication, confession costs status), the traps (meta-laps, discovery essays, instrumentation), and the editing checklist. Where it conflicts with `blog-writing` on a personal essay, `personal-essays` wins.
 
 ### Shareable Engineering Skill (`.agents/skills/shareable-engineering/SKILL.md`)
 
-Evidence-based share/trust/discovery mechanics for engineering posts: seoTitle tuning (40–60 chars, handles first, declarative — Backlinko n=4M), agentic-search reality (the honesty mechanics ARE the AEO strategy per the GEO paper; llms.txt has ~zero real-world crawler adoption per Ahrefs 2026-05 — keep ours but never invest in it), share triggers (armed/vindicated/seen, one falsifiable disagreeable claim per post), the hedging rule ("hedge the epistemics, never the position"), and the 12-point pre-publish checklist. Every rule cites a verified source; audit date in its frontmatter. Runs at pre-publish; `personal-essays` wins all voice conflicts.
+Evidence-based share/trust/discovery mechanics for engineering posts: seoTitle tuning (40–60 chars, handles first, declarative — Backlinko n=4M), agentic-search reality (the honesty mechanics ARE the AEO strategy per the GEO paper; llms.txt has ~zero real-world crawler adoption per Ahrefs 2026-05 — keep ours but never invest in it), and share triggers (armed/vindicated/seen). Argument and decision pieces need a falsifiable position; inquiry and field notes keep the live question. The skill also defines the hedging rule ("hedge the epistemics, never the position") and the 12-point pre-publish checklist. Every rule cites a verified source; audit date in its frontmatter. Runs at pre-publish; `personal-essays` wins all voice conflicts.
+
+### Polish Prose Skill (`.agents/skills/polish-prose/SKILL.md`)
+
+The final sentence-level pass for concise, direct, natural prose. It protects code, technical language, authorial voice, deliberate roughness, meaningful repetition, and unresolved thought. It never governs an article's structure or ending. In an exposed essay, it flags problems for the author instead of rewriting the prose.
 
 ## Content Strategy
 
