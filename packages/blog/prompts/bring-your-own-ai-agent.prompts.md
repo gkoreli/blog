@@ -19,3 +19,5 @@ Why just website do you understand agentport? Read the latest commits in the cod
 Who are we competing against? Shall we be mentioning the competition and why our solution is drastically novel and why the agentport has to exist in this world? What are the tenets and north star vision?
 ---
 We need more evidence based research and cross references grounded in deep understanding, with mention few of the cross references in the glossary with rationale.
+---
+Do we mention anywhere kinda a mental comparison that this is somewhat like trustwallet or wallet connect for crypto but agentport is for agents? Or does that comparison/example hinder the usefulness of agentport or doesnt capture the full vision and north star position properly? Shall we mention in the article? Exploe to be grounded in understanding
