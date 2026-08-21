@@ -15,3 +15,5 @@ lmao article belongs to my blog, what are you doing? dont you realize the projec
 The title says: Bring Your Own AI Agent, but where?
 ---
 Why just website do you understand agentport? Read the latest commits in the codebase we have made and understand where its going
+---
+Who are we competing against? Shall we be mentioning the competition and why our solution is drastically novel and why the agentport has to exist in this world? What are the tenets and north star vision?

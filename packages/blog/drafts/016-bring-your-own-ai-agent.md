@@ -33,6 +33,28 @@ The application lends a small set of capabilities for one session. The user's ag
 
 This is what AgentPort does.
 
+## The competition is an ownership model
+
+The market is building in two directions. App teams add their own copilot, so the app chooses and runs the agent. Browser teams add one assistant that can see many pages, so the browser vendor chooses the agent.
+
+Both can make good products. An app-owned agent can know its product in depth. A browser-owned agent can work across tabs without waiting for each site to integrate.
+
+[Brave Leo's Bring Your Own Model](https://brave.com/blog/byom-nightly/) is the closest useful comparison I have found. It lets a user connect a local model, a remote endpoint, or a third-party API straight to Leo. Requests can bypass Brave's servers. That is real user control, and AgentPort should not pretend otherwise.
+
+But a model is not an agent. A model endpoint does not carry the user's memory, prompts, MCP servers, files, runtime, approval rules, and work in progress. Brave lets the user bring inference into Brave's assistant. AgentPort lets the user bring the assistant they already run into a capability surface that another application owns.
+
+That ownership split is the claim:
+
+- the user chooses and owns the agent;
+- the application defines the actions it is willing to lend;
+- the wallet grants a narrow, expiring connection between them;
+- the relay cannot read the session;
+- the application never receives the user's model key or inference bill.
+
+Each part exists elsewhere. I have not found another system that joins all five around a user-chosen remote agent. This is a claim someone can disprove: show me an open system where any application can lend its own bounded capabilities to the agent a user already runs, with consent at the user's key and sealed transport through the middle.
+
+The protocols around AgentPort are not rivals. [AG-UI](https://docs.copilotkit.ai/ag-ui/introduction) gives agents and user-facing applications a common event stream. WebMCP lets a web page publish tools. MCP connects agents to tools, while ACP lets a client drive an agent process. AgentPort uses those layers. It supplies the ownership, attachment, consent, and grant that sit between them.
+
 ## WebMCP gives a web app a voice
 
 The web already has a draft answer for how a site can describe its actions. It is called WebMCP.
@@ -125,6 +147,19 @@ Prompts and transcripts belong with the agent, under the user's control. AgentPo
 
 If you do not want to trust the hosted relay even with ciphertext, you can run your own.
 
+## The tenets
+
+AgentPort can change its transport, wallet, runtime adapters, and user interface. It cannot trade away these rules without becoming a different product:
+
+1. **The user owns the agent.** AgentPort never chooses the model, keeps the transcript, or sits on the inference path.
+2. **The application owns its capabilities.** It decides what the attached agent can read or change. The agent does not inherit the rest of the product.
+3. **Consent stays with the user's key.** A page cannot approve its own request. The wallet or daemon shows the decision and signs the grant.
+4. **Every attachment has bounds.** A grant names one agent, one surface, a set of actions, and an expiry. Both ends enforce it, and the user can revoke it.
+5. **The middle stays blind.** Session content is sealed between the application surface and the agent. The relay moves ciphertext and stores no chat history.
+6. **The connection stays small.** One call should attach an agent. AgentPort consumes WebMCP, ACP, AG-UI, and MCP instead of replacing them.
+
+These are not feature preferences. They are the test for every feature. An inference proxy would break the first rule. Consent drawn by the page would break the third. A broad, permanent tool grant would break the fourth.
+
 ## Stop rebuilding the same chatbot
 
 Today, app teams keep building chat panels, model menus, prompt stores, rate limits, billing systems, and tool loops. Then they charge users to fund the same parts every other app also built.
@@ -145,7 +180,9 @@ In both cases, the important part stays the same: it is the user's agent. A brow
 
 The browser proves the model, but it should not own the model. The same agent should attach to a desktop editor, an IDE, a terminal application, or a product surface that has no DOM and no WebMCP. Each application lends only its own capabilities. AgentPort carries the identity, attachment, consent, and private session between them.
 
-## One subscription. One agent. Any app.
+## The north star: one agent everywhere
+
+> "A person should own one agent and carry it everywhere."
 
 Software subscriptions will not vanish, nor should they. People should pay for products that help them. But access to an AI model should not become a separate $20 toll inside every product.
 
@@ -166,3 +203,15 @@ The core path works now: WebMCP tool collection, pairing, ownership checks, scop
 The long-term goal is bigger than one web integration. Websites should publish capabilities through WebMCP. Other applications should expose the capabilities native to their surface. Users should bring the agent that uses them.
 
 One agent should move through all of them.
+
+The end state is not a larger AgentPort service. It is a common application primitive. A user attaches the same agent to two unrelated products and thinks nothing of it. Then browser and operating-system teams argue that this belongs in the platform, and the project no longer needs to explain why it exists.
+
+---
+
+## Glossary
+
+| Term / Claim | Source | Date |
+|---|---|---|
+| Bring Your Own Model | [Brave](https://brave.com/blog/byom-nightly/) — Leo can connect straight to local or remote model endpoints | Jun 2024, updated Aug 2024 |
+| WebMCP | [Web Machine Learning Community Group](https://webmachinelearning.github.io/webmcp/) — web applications expose JavaScript tools to agents | Aug 2026 draft |
+| AG-UI | [AG-UI documentation](https://docs.copilotkit.ai/ag-ui/introduction) — event protocol between agents and user-facing applications | Accessed Aug 2026 |
