@@ -5,7 +5,7 @@ license: MIT
 metadata:
   author: gkoreli
   version: "1.0.0"
-  evidence-audited: 2026-07-06
+  evidence-audited: 2026-08-20
 ---
 
 # Shareable Engineering Articles — The Evidence-Based Mechanics
@@ -25,7 +25,7 @@ Run `shape-article` first. Apply this skill to the engineering and discovery lay
 
 The architecture is the metadata split (see `AGENTS.md`): literary H1/`og:title` for the reader who clicked, concrete `seoTitle` for the cold searcher. The evidence tunes the `seoTitle`:
 
-- **40–60 characters, 6–9 words.** Backlinko: +33.3% CTR inside that band. Google sets no limit — truncation is device-width — so longer isn't penalized, just unseen. Whatever must be *seen* lives in the first ~57 chars.
+- **Use 40–60 characters and 6–9 words as a starting range, not a hard rule.** Backlinko found the highest CTR inside that band, but its summary reports a 33.3% lift while its detailed section reports 8.9%. Do not cite either as settled. Google sets no limit — truncation is device-width — so longer isn't penalized, just unseen. Whatever must be *seen* lives in the first ~57 chars.
 - **Front-load the handles.** Tool names, the topic noun, the artifact ("MCP server," "UI framework") come first; the hook number or verdict closes.
 - **Declarative beats interrogative.** Question titles show no CTR advantage (15.5% vs 16.3%, n = 4M). Curiosity comes from specific stakes, not question marks.
 - **Positive framing edges negative** (+4.1pp absolute). "What 100 PRs bought" over "Why PRs failed me" — when both are honest.
@@ -46,11 +46,11 @@ The architecture is the metadata split (see `AGENTS.md`): literary H1/`og:title`
 A reader shares when the post makes them **armed**, **vindicated**, or **seen** (per `personal-essays`). The evidence adds mechanism:
 
 - **Specificity is a structural advantage of a personal blog.** Dan Luu on corporate blogs: the approval chain "removes references to specifics, makes posts vaguer and less interesting," while "there's a dearth of real, in-depth, technical writing." No approval chain here — so every abstraction that could be a name, number, date, or commit SHA is a wasted advantage.
-- **One clear disagreeable opinion when the piece makes an argument.** Goedecke (140 posts, 47 HN front pages in 2025): "the recipe for a popular post is to have a clear opinion about working in tech that many people disagree with." Balanced surveys get nods; falsifiable claims get replies. Do not manufacture a claim for an inquiry or field note whose honest center is uncertainty.
+- **One clear disagreeable opinion when the piece makes an argument.** Goedecke published 141 posts in 2025; 33 reached the front page of Hacker News or a similar aggregator. His stated recipe for a popular post is a clear opinion about working in tech that many people dispute. Balanced surveys get nods; falsifiable claims get replies. Do not manufacture a claim for an inquiry or field note whose honest center is uncertainty.
 - **Write for the person who struggled.** Evans: "if I struggled with something, there's a pretty good chance other people are struggling with it too… write it down while you still remember what was hard." swyx: "Make the thing you wish you had found when you were learning."
 - **The dead ends are the content, not the framing.** Trust is built almost entirely in what was tried and failed and what it cost. Anyone can publish the success path.
 - **Name what the losing tool is still better at.** A verdict is only trusted from a writer who can praise the other side. (React gets its ecosystem sentence before nisli gets its reason to exist.)
-- **Volume with a low bar beats perfectionism.** Willison: "Aim to hit publish while you are still actively unhappy with what you have written." Ball: 60 minutes every Sunday, "whatever gets written gets published." Willison shipped 118 full posts in 2025; only a third front-paged — the hit rate is unknowable in advance, so the only strategy is shipping.
+- **Volume with a low bar beats perfectionism.** Willison: "Aim to hit publish while you are still actively unhappy with what you have written." Ball's original discipline was 60 minutes every Sunday, when whatever he wrote was published. Neither example proves a universal publishing rate; together they support regular practice and a willingness to ship imperfect work.
 - **Success metric is contact, not pageviews.** Evans calls pageviews a blogging myth; the real signal is the reader who writes back. End with the honest invitation when the want is owned on the page (per `personal-essays`).
 
 ## Hedging — the reconciliation
