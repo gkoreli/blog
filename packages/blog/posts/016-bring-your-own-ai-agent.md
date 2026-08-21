@@ -2,13 +2,15 @@
 title: "Bring Your Own AI Agent Everywhere"
 seoTitle: "AgentPort: One AI Agent Across Every Application"
 alternativeHeadline: "One private agent, one subscription, every application surface"
-date: "2026-08-08"
+date: "2026-08-20"
 description: "AgentPort lets applications attach a user-owned AI agent with scoped grants, private transport, and no new model subscription per app."
 section: engineering
 tags: [agentport, webmcp, ai-agents, privacy, agentic-engineering]
 ---
 
 # Bring Your Own AI Agent Everywhere
+
+<p class="post-lede">AgentPort connects one user-owned agent to application capabilities through scoped grants and an end-to-end encrypted session. The browser is its first public surface.</p>
 
 Every new app seems to come with the same offer: pay another $20 a month for its AI feature.
 
@@ -121,10 +123,14 @@ The browser is the supported public integration today. The other client surfaces
 
 ## One script connects the web
 
-An app developer starts with one script:
+An app developer starts with one script element:
 
 ```html
-<script src="https://agentport.gogakoreli.workers.dev/connect.js"></script>
+<script
+  src="https://agentport.gogakoreli.workers.dev/connect.js"
+  data-relay="wss://agentport.gogakoreli.workers.dev/relay"
+  data-wallet="https://agentport-wallet.gogakoreli.workers.dev"
+></script>
 ```
 
 The page can then register an ordinary WebMCP tool:
@@ -137,11 +143,13 @@ await document.modelContext.registerTool({
   execute: () => ({ text: editor.value }),
 });
 
-const session = await AgentPort.connect({ name: 'Inkwell', tools: [] });
-await session.prompt('Tighten the opening paragraph.');
+document.querySelector('#connect-agent').addEventListener('click', async () => {
+  const session = await AgentPort.connect({ name: 'Inkwell', tools: [] });
+  await session.prompt('Tighten the opening paragraph.');
+});
 ```
 
-AgentPort collects that registration when the user connects. A site can also pass tools straight to `AgentPort.connect`, but WebMCP is the path that lets the same site tools work with more than one agent system.
+AgentPort collects that registration when the user connects. The call starts from a user gesture so the browser can open the wallet. A site can also pass tools straight to `AgentPort.connect`, but WebMCP is the path that lets the same site tools work with more than one agent system.
 
 The site does not need an AI provider, an API key, a model picker, or an inference bill. It publishes what its product can do and lets the user choose the agent.
 
@@ -239,7 +247,11 @@ Let users pay once for the agent they want. Let them run it where they want. Let
 For developers, the front door starts here:
 
 ```html
-<script src="https://agentport.gogakoreli.workers.dev/connect.js"></script>
+<script
+  src="https://agentport.gogakoreli.workers.dev/connect.js"
+  data-relay="wss://agentport.gogakoreli.workers.dev/relay"
+  data-wallet="https://agentport-wallet.gogakoreli.workers.dev"
+></script>
 ```
 
 For users, the promise is even shorter:
