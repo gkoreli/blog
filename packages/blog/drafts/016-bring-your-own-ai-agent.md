@@ -93,6 +93,7 @@ AgentPort did not invent tool descriptions, agent event streams, browser-held ke
 | [WebMCP](https://webmachinelearning.github.io/webmcp/) | a page exposes JavaScript tools, their schemas, origin, and security hints to a browser agent | choosing a user-owned agent, proving ownership, and carrying a private remote session |
 | [AG-UI](https://docs.copilotkit.ai/ag-ui/introduction) and [ACP](https://github.com/agentclientprotocol/agent-client-protocol/blob/main/docs/protocol/v2/overview.mdx) | AG-UI standardizes agent-to-interface events; ACP standardizes how a client drives an agent process | who owns the agent, where its key lives, and what one application may grant it |
 | [NIP-07](https://nips.nostr.com/7) | a web page asks a browser extension to use a key the page does not hold | an agent session, tool grants, streaming, and revocation |
+| [WalletConnect Sign](https://github.com/WalletConnect/walletconnect-docs/blob/main/docs/api/sign/wallet-usage.md) and [Network](https://docs.walletconnect.network/network) | a dapp and wallet pair, approve method-scoped sessions, exchange requests through an end-to-end encrypted relay, and disconnect | portable agent identity, application-lent tools, and an agent conversation |
 | [Credential Management](https://w3c.github.io/webappsec-credential-management/) | browser-mediated selection, an origin shown in trusted UI, and rules for silent versus required mediation | agent discovery, agent transport, and application capabilities |
 | [OAuth Rich Authorization Requests](https://www.rfc-editor.org/rfc/rfc9396.html) | structured, fine-grained authorization data such as actions and locations | a browser attachment and end-to-end encrypted agent session |
 
@@ -148,9 +149,28 @@ The script alone cannot know what “send invoice” or “publish article” me
 
 WebMCP remains an experimental draft, so the current claim must stay narrow. AgentPort supports imperative tools registered after its script loads, including the older `navigator.modelContext` form. It does not claim full WebMCP support. Today, every tool collected from a page asks for user approval on each call because the page cannot grant authority to itself.
 
-## A wallet for AI agents
+## The WalletConnect mental model
 
-The useful part of the MetaMask comparison is custody rather than crypto. The page asks; a wallet the user controls decides; the page never receives the user's secret key. [NIP-07's `window.nostr`](https://nips.nostr.com/7) shows the same browser shape in a small draft interface. AgentPort applies it to an agent attachment instead of a signature request.
+If you know crypto wallets, WalletConnect is the useful mental model. [Trust Wallet](https://developer.trustwallet.com/developer/develop-for-trust/mobile) is one wallet product that accepts WalletConnect sessions. WalletConnect is the connection layer: a dapp proposes chains, methods, and events; the wallet shows the request; the user approves or rejects it; and the settled session has an expiry and a disconnect path. Its network relay carries end-to-end encrypted messages without reading them.
+
+The mapping is close:
+
+| WalletConnect | AgentPort |
+|---|---|
+| dapp session proposal | application attachment request |
+| wallet and selected accounts | user wallet and selected agent |
+| approved chains and methods | approved application capabilities |
+| session topic and expiry | attachment identity and expiry |
+| encrypted relay | encrypted relay |
+| session disconnect | teardown or revocation |
+
+> "AgentPort is WalletConnect-shaped infrastructure for user-owned agents, with one crucial reversal: the application lends capabilities to the agent."
+
+In WalletConnect, the dapp asks to use capabilities held by the wallet, such as signing or sending a transaction. In AgentPort, the application offers capabilities it holds, such as reading the open document or updating a task, to the agent the user chose.
+
+The other limit is that an agent is more than a key holder. It has a runtime, model, memory, prompts, private tools, a streaming conversation, and work in progress. Calling AgentPort “Trust Wallet for agents” would make it sound like one agent app. Trust Wallet is closer to one possible wallet implementation at the edge of AgentPort. WalletConnect better captures the pairing and trust shape, while AgentPort's north star remains one agent across every application surface.
+
+[NIP-07's `window.nostr`](https://nips.nostr.com/7) supplies a second useful piece: the page asks a browser-held signer to act without receiving its secret key. AgentPort applies that custody split to agent ownership and session consent.
 
 A site asks to connect. The user picks one of their agents and approves the actions the site wants to lend it. The agent may run on the user's laptop, a home server, or a VPS. The site does not need to know which runtime or model sits behind it.
 
@@ -245,6 +265,7 @@ The end state is not a larger AgentPort service. It is a common application prim
 | [WebMCP](https://webmachinelearning.github.io/webmcp/) | Web applications can expose JavaScript tools to browser agents; the draft does not prescribe the agent-side transport | This is AgentPort's web capability input. AgentPort should consume it, not create another tool format. | Aug 2026 Community Group draft |
 | [AG-UI](https://docs.copilotkit.ai/ag-ui/introduction) and [ACP](https://github.com/agentclientprotocol/agent-client-protocol/blob/main/docs/protocol/v2/overview.mdx) | AG-UI defines application-facing events; ACP defines client-to-agent process communication | They make AgentPort's UI and runtime edges replaceable. Neither assigns ownership of the agent or its grant to the user. | Accessed Aug 2026 |
 | [NIP-07](https://nips.nostr.com/7) | A page can request work from a browser-injected signer without receiving its private key | It supplies the custody pattern behind `navigator.agent`: the requester asks, while the user's trusted component holds the key. | May 2022, updated Feb 2025 |
+| [WalletConnect Sign](https://github.com/WalletConnect/walletconnect-docs/blob/main/docs/api/sign/wallet-usage.md) and [Network](https://docs.walletconnect.network/network) | A dapp proposes a method-scoped session, the wallet approves it, and an end-to-end encrypted relay carries requests | This is the closest architectural analogy for AgentPort's pairing, bounded session, blind relay, expiry, and disconnect. AgentPort reverses the capability direction and connects a stateful agent rather than a signer. | Accessed Aug 2026 |
 | [Credential Management Level 1](https://w3c.github.io/webappsec-credential-management/) | The browser mediates credential selection, identifies the requesting origin, and distinguishes silent, optional, conditional, and required mediation | It is prior art for an agent chooser and for consent that the page cannot draw or silently upgrade. The document remains an editor's draft. | Accessed Aug 2026 |
 | [OAuth Rich Authorization Requests, RFC 9396](https://www.rfc-editor.org/rfc/rfc9396.html) | Authorization can carry structured, fine-grained details such as actions and locations instead of a flat scope string | It supports AgentPort's choice to make a grant a concrete, inspectable boundary over actions and a surface. AgentPort does not implement OAuth RAR. | May 2023 |
 | [AgentPort north star](https://github.com/gkoreli/agentport/blob/main/docs/NORTH-STAR.md) and [prior-art review](https://github.com/gkoreli/agentport/blob/main/docs/reviews/prior-art-synthesis.md) | The project separates user-owned agency from application-owned capability and records the sources reviewed against that split | They expose the reasoning behind the product claim, including which ideas AgentPort consumes and which gap it claims to fill. | Aug 2026 |
