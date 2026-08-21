@@ -35,13 +35,25 @@ This is what AgentPort does.
 
 ## The competition is an ownership model
 
-The market is building in two directions. App teams add their own copilot, so the app chooses and runs the agent. Browser teams add one assistant that can see many pages, so the browser vendor chooses the agent.
+The market is building several answers to the same problem. App teams add their own copilot. Browser teams add one assistant that can see many pages. Integration platforms give an agent a catalog of SaaS APIs.
 
-Both can make good products. An app-owned agent can know its product in depth. A browser-owned agent can work across tabs without waiting for each site to integrate.
+These are real alternatives. [Composio](https://docs.composio.dev/docs) lets existing agents use authenticated tools across more than 1,000 apps. It solves part of the portability problem.
 
 [Brave Leo's Bring Your Own Model](https://brave.com/blog/byom-nightly/) is the closest useful comparison I have found. It lets a user connect a local model, a remote endpoint, or a third-party API straight to Leo. Requests can bypass Brave's servers. That is real user control, and AgentPort should not pretend otherwise.
 
-But a model is not an agent. A model endpoint does not carry the user's memory, prompts, MCP servers, files, runtime, approval rules, and work in progress. Brave lets the user bring inference into Brave's assistant. AgentPort lets the user bring the assistant they already run into a capability surface that another application owns.
+But a model is not an agent. Brave's BYOM contract is an OpenAI-compatible model endpoint; it does not standardize portable agent identity, memory, MCP servers, files, runtime, or approval rules. Brave lets the user bring inference into Brave's assistant. AgentPort lets the user bring the assistant they already run into a capability surface that another application owns.
+
+Composio reaches the other side of the problem. It gives an agent tools and authentication for outside services. That is useful when the agent starts the interaction and the service has a suitable API. AgentPort lets the application start a live session and lend the agent its current, surface-local capabilities. A WebMCP tool can act on the document already open in the tab without turning the whole product into a remote API or handing an integration platform the user's account token.
+
+The difference becomes clearer when ownership is written down:
+
+| Approach | What follows the user | Who controls the agent | How the application becomes usable |
+|---|---|---|---|
+| App copilot | an account and chat history inside one product | the application | the application builds the whole agent stack |
+| Browser assistant | browser context across pages | the browser vendor | the browser reads or drives the page |
+| Bring your own model | a model endpoint or API key | the host assistant still owns the loop | the host assistant supplies its own capabilities |
+| Agent tool platform | an agent plus connected account grants | the agent builder or user | a platform supplies API tools and OAuth connections |
+| AgentPort | the whole agent: runtime, memory, prompts, tools, and subscription | the user | the application lends a session-scoped capability surface |
 
 That ownership split is the claim:
 
@@ -53,11 +65,11 @@ That ownership split is the claim:
 
 Each part exists elsewhere. I have not found another system that joins all five around a user-chosen remote agent. This is a claim someone can disprove: show me an open system where any application can lend its own bounded capabilities to the agent a user already runs, with consent at the user's key and sealed transport through the middle.
 
-The protocols around AgentPort are not rivals. [AG-UI](https://docs.copilotkit.ai/ag-ui/introduction) gives agents and user-facing applications a common event stream. WebMCP lets a web page publish tools. MCP connects agents to tools, while ACP lets a client drive an agent process. AgentPort uses those layers. It supplies the ownership, attachment, consent, and grant that sit between them.
+The direct competition is any product that becomes the permanent owner of the user's agent relationship: the app, the browser, or an integration cloud. AgentPort wins only if users value carrying their existing agent more than they value an assistant bundled into each surface.
 
 ## WebMCP gives a web app a voice
 
-The web already has a draft answer for how a site can describe its actions. It is called WebMCP.
+The web already has a draft answer for how a site can describe its actions. It is called [WebMCP](https://webmachinelearning.github.io/webmcp/).
 
 WebMCP lets a page say, in a form an agent can use: “Here are the tools available here.” A writing app can publish `readDocument` and `replaceSelection`. A shop can publish `searchProducts` and `addToCart`. The tool runs inside the page, where the product already knows how its own data and controls work.
 
@@ -71,6 +83,22 @@ WebMCP and AgentPort solve different parts of the problem:
 WebMCP does not choose the user's agent. It does not prove that the agent belongs to the user, connect to an agent on a laptop or VPS, or set the bounds of a session. AgentPort adds that missing trust and transport layer.
 
 The full path is simple: **WebMCP tools in, the user's agent in the middle, and streamed results back to the app.**
+
+## The parts exist. The composition does not
+
+AgentPort did not invent tool descriptions, agent event streams, browser-held keys, consent choosers, or fine-grained grants. The design makes more sense when those sources are treated as constraints instead of competitors. The project's [prior-art review](https://github.com/gkoreli/agentport/blob/main/docs/reviews/prior-art-synthesis.md) traces six related fields; these are the references that bear most directly on the product claim.
+
+| Prior art | What it already solves | What remains outside its boundary |
+|---|---|---|
+| [WebMCP](https://webmachinelearning.github.io/webmcp/) | a page exposes JavaScript tools, their schemas, origin, and security hints to a browser agent | choosing a user-owned agent, proving ownership, and carrying a private remote session |
+| [AG-UI](https://docs.copilotkit.ai/ag-ui/introduction) and [ACP](https://github.com/agentclientprotocol/agent-client-protocol/blob/main/docs/protocol/v2/overview.mdx) | AG-UI standardizes agent-to-interface events; ACP standardizes how a client drives an agent process | who owns the agent, where its key lives, and what one application may grant it |
+| [NIP-07](https://nips.nostr.com/7) | a web page asks a browser extension to use a key the page does not hold | an agent session, tool grants, streaming, and revocation |
+| [Credential Management](https://w3c.github.io/webappsec-credential-management/) | browser-mediated selection, an origin shown in trusted UI, and rules for silent versus required mediation | agent discovery, agent transport, and application capabilities |
+| [OAuth Rich Authorization Requests](https://www.rfc-editor.org/rfc/rfc9396.html) | structured, fine-grained authorization data such as actions and locations | a browser attachment and end-to-end encrypted agent session |
+
+These sources do not prove that AgentPort's implementation is secure. They show that separate fields reached the same design pressure: keep keys out of the requesting page, put consent in trusted UI, describe authority as data, and bind it to a limited target.
+
+The narrower novelty claim survives that comparison. AgentPort joins a **user-chosen remote agent** to an **application-defined capability surface** through a **user-held, scoped, revocable grant**, while a blind relay carries the **end-to-end encrypted session**. I have found each phrase elsewhere. I have not found the full sentence elsewhere.
 
 ## The web is the first surface, not the boundary
 
@@ -122,7 +150,7 @@ WebMCP remains an experimental draft, so the current claim must stay narrow. Age
 
 ## A wallet for AI agents
 
-MetaMask gave websites a standard way to ask for a user's wallet without taking custody of the user's keys. AgentPort uses the same shape for agents.
+The useful part of the MetaMask comparison is custody rather than crypto. The page asks; a wallet the user controls decides; the page never receives the user's secret key. [NIP-07's `window.nostr`](https://nips.nostr.com/7) shows the same browser shape in a small draft interface. AgentPort applies it to an agent attachment instead of a signature request.
 
 A site asks to connect. The user picks one of their agents and approves the actions the site wants to lend it. The agent may run on the user's laptop, a home server, or a VPS. The site does not need to know which runtime or model sits behind it.
 
@@ -210,8 +238,13 @@ The end state is not a larger AgentPort service. It is a common application prim
 
 ## Glossary
 
-| Term / Claim | Source | Date |
-|---|---|---|
-| Bring Your Own Model | [Brave](https://brave.com/blog/byom-nightly/) — Leo can connect straight to local or remote model endpoints | Jun 2024, updated Aug 2024 |
-| WebMCP | [Web Machine Learning Community Group](https://webmachinelearning.github.io/webmcp/) — web applications expose JavaScript tools to agents | Aug 2026 draft |
-| AG-UI | [AG-UI documentation](https://docs.copilotkit.ai/ag-ui/introduction) — event protocol between agents and user-facing applications | Accessed Aug 2026 |
+| Cross-reference | What the source establishes | Why it matters to AgentPort | Date |
+|---|---|---|---|
+| [Brave Leo BYOM](https://brave.com/blog/byom-nightly/) | Leo can connect straight to local or remote model endpoints, bypassing Brave's servers | It is the closest evidence that users want inference choice and local privacy. It also marks AgentPort's boundary: bringing a model is narrower than bringing an agent. | Jun 2024, updated Aug 2024 |
+| [Composio](https://docs.composio.dev/docs) | Existing agents can receive authenticated tools for more than 1,000 external apps | It proves that one agent acting across products has demand. Its agent-to-SaaS direction differs from an application lending its live surface to a visiting user-owned agent. | Accessed Aug 2026 |
+| [WebMCP](https://webmachinelearning.github.io/webmcp/) | Web applications can expose JavaScript tools to browser agents; the draft does not prescribe the agent-side transport | This is AgentPort's web capability input. AgentPort should consume it, not create another tool format. | Aug 2026 Community Group draft |
+| [AG-UI](https://docs.copilotkit.ai/ag-ui/introduction) and [ACP](https://github.com/agentclientprotocol/agent-client-protocol/blob/main/docs/protocol/v2/overview.mdx) | AG-UI defines application-facing events; ACP defines client-to-agent process communication | They make AgentPort's UI and runtime edges replaceable. Neither assigns ownership of the agent or its grant to the user. | Accessed Aug 2026 |
+| [NIP-07](https://nips.nostr.com/7) | A page can request work from a browser-injected signer without receiving its private key | It supplies the custody pattern behind `navigator.agent`: the requester asks, while the user's trusted component holds the key. | May 2022, updated Feb 2025 |
+| [Credential Management Level 1](https://w3c.github.io/webappsec-credential-management/) | The browser mediates credential selection, identifies the requesting origin, and distinguishes silent, optional, conditional, and required mediation | It is prior art for an agent chooser and for consent that the page cannot draw or silently upgrade. The document remains an editor's draft. | Accessed Aug 2026 |
+| [OAuth Rich Authorization Requests, RFC 9396](https://www.rfc-editor.org/rfc/rfc9396.html) | Authorization can carry structured, fine-grained details such as actions and locations instead of a flat scope string | It supports AgentPort's choice to make a grant a concrete, inspectable boundary over actions and a surface. AgentPort does not implement OAuth RAR. | May 2023 |
+| [AgentPort north star](https://github.com/gkoreli/agentport/blob/main/docs/NORTH-STAR.md) and [prior-art review](https://github.com/gkoreli/agentport/blob/main/docs/reviews/prior-art-synthesis.md) | The project separates user-owned agency from application-owned capability and records the sources reviewed against that split | They expose the reasoning behind the product claim, including which ideas AgentPort consumes and which gap it claims to fill. | Aug 2026 |
