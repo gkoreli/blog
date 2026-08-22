@@ -18,7 +18,7 @@ I use ghx. I barely use the sidecar.
 
 The distinction is the problem.
 
-The sidecar is the product bet: give a separate agent a GitHub reconnaissance question, keep the main agent's context clean, and return a compact, cited evidence report.
+[ghx began as a remote-first GitHub exploration CLI](/how-ghx-was-born), built to keep HTML noise and repeated API calls out of an agent's context. The sidecar is the product bet that grew from it: give a separate agent a GitHub reconnaissance question, keep the main agent's context clean, and return a compact, cited evidence report.
 
 On July 5, the gate run I had spent a month building returned a verdict: THESIS SUPPORTED. Ninety episodes. All five gates passed. The sidecar scored 0.908 correctness against 0.931 for agents using [ghx](https://github.com/gkoreli/ghx) directly, at 25× context compression. The capability worked.
 
@@ -91,7 +91,7 @@ That is what the north star's measurement tenet requires: the system that produc
 
 ## We built a tool for a habit we do not have
 
-ghx's discovery tier shipped on July 6. Ask which repositories do X, get candidates verified by reading them. It targets a question I face every week: before designing an evidence-contract specification, which projects publish conformance suites and how do they map tests to clauses? Before building a degradation ladder, who else has handled provider quota death?
+In [You Don't Always Need Codemap](/you-dont-need-codemap), I argued that the first decision is not how to map a repository, but whether it deserves to be read at all. The discovery tier, shipped July 6, was meant to make that decision cheap: ask which repositories do X, get candidates verified by reading them. It targets a question I face every week: before designing an evidence-contract specification, which projects publish conformance suites and how do they map tests to clauses? Before building a degradation ladder, who else has handled provider quota death?
 
 The Mac proves I used that tier. Seven times, all on the day it shipped.
 
