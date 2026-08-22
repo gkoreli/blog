@@ -12,7 +12,7 @@ import { generateOgImage } from '../lib/og.js';
 import { sitemapXml } from '../templates/sitemap.js';
 import TurndownService from 'turndown';
 import { llmsTxt, llmsFullTxt, postsJson, stripFrontmatter } from '../templates/llms.js';
-import { blogPostingJsonLd } from '../templates/jsonld.js';
+import { blogPostingJsonLd, profilePageJsonLd, websiteJsonLd } from '../templates/jsonld.js';
 import { SECTION_LABELS, SECTION_DESCRIPTIONS } from '../lib/frontmatter.js';
 import { homePage } from '../pages/home.js';
 import { aboutPage } from '../pages/about.js';
@@ -226,6 +226,7 @@ export async function buildHTML(): Promise<void> {
     canonicalPath: '/',
     ogImage: publicationOgImage,
     ogImageAlt: PUBLICATION_OG_IMAGE_ALT,
+    head: websiteJsonLd(),
   });
   writeRoot('index.html', indexShell.toString());
 
@@ -239,7 +240,7 @@ export async function buildHTML(): Promise<void> {
   writeOutput('oss-radar', pageShell({ title: SECTION_LABELS['oss-radar'], description: SECTION_DESCRIPTIONS['oss-radar'], content: ossRadarBody.toString(), canonicalPath: '/oss-radar', currentSection: 'oss-radar', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }).toString());
 
   const aboutBody = aboutPage();
-  const aboutShell = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), canonicalPath: '/about', currentSlug: 'about', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
+  const aboutShell = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), canonicalPath: '/about', currentSlug: 'about', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: profilePageJsonLd() });
   writeOutput('about', aboutShell.toString());
 
   const statsBody = statsPage();

@@ -1,6 +1,12 @@
 /* Post header */
 .post-header { margin-bottom: 2rem; }
 .post-header time { font-size: 0.85rem; color: var(--color-text-muted); }
+.post-header-author {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+.post-header-author:hover { color: var(--color-link); }
 
 .post-header-sep { color: var(--color-text-muted); }
 .post-header-prompts {

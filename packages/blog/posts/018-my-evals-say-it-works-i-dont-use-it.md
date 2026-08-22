@@ -2,8 +2,8 @@
 title: "My Evals Say It Works. I Still Don't Reach for It."
 seoTitle: "ghx sidecar passed the eval. The habit didn't."
 alternativeHeadline: "ghx sidecar evals, founder dogfooding, and the adoption gap"
-date: 2026-08-22
-description: "The ghx sidecar passed a 90-episode eval at 25× compression. My usage logs show a three-day burst, then silence — and a habit that never formed."
+date: "2026-08-21"
+description: "The ghx AI-agent reconnaissance sidecar passed a 90-episode eval at 25× compression. My usage logs show a three-day burst, then silence."
 section: engineering
 tags: [agentic-engineering, ghx, sidecar-agents, evals, adoption]
 series:
@@ -128,7 +128,7 @@ Four reasons remain after the audit:
 3. **Install to first answer had too many hops.** Hand-written config, adapter quirks, credentials, a daemon, and silent failure modes charged the user before the first answer.
 4. **I used it like a campaign.** The builder reached for the sidecar while testing and researching the sidecar, then returned to the CLI and the host subagent. Adoption cannot outrun the daily-driver problem.
 
-The category is not waiting for me. [codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp) makes a different trade: no LLM sidecar, a local persistent graph, a native binary, and structural queries that return almost immediately. When I checked on August 22, it had 39,811 stars. Its README advertised 43 automatic or conditional client surfaces and a [public benchmark preprint](https://arxiv.org/abs/2603.27277).
+The category is not waiting for me. [codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp) makes a different trade: no LLM sidecar, a local persistent graph, a native binary, and structural queries that return almost immediately. When I checked during this audit, it had 39,811 stars. Its README advertised 43 automatic or conditional client surfaces and a [public benchmark preprint](https://arxiv.org/abs/2603.27277).
 
 That is what it is better at: a stranger can understand the product, install it, and cite its benchmark without entering the author's repository. I have an eval stack that outsiders cannot run and a product boundary I am still explaining to myself.
 

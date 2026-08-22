@@ -2,7 +2,7 @@
 title: "What If the Agent Was Better Before We Helped?"
 seoTitle: "What If the Agent Was Better Before We Helped? — ghx, Agent Sidecars, and Evals"
 date: "2026-07-05"
-lastModified: "2026-07-18"
+lastModified: "2026-08-21"
 description: "I am building ghx, a code reconnaissance CLI for AI agents, and now an agent sidecar framework around it. The hard question is whether any of it actually improves signal per token compared to plain old gh."
 section: engineering
 tags: [agentic-engineering, evals, ghx, sidecar-agents, opentelemetry, acp]
@@ -302,3 +302,5 @@ With enough honest eval data that I can look at the thing I built and say:
 this improved the agent.
 
 or it did not.
+
+The eval eventually said it did. Six weeks later, my own behavior gave me a harder answer: [the capability worked, but the habit never formed](/my-evals-say-it-works-i-dont-use-it).
