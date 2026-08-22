@@ -83,7 +83,11 @@ export function seriesTrailMarkdown(meta: PostMeta, allPosts: PostMeta[]): strin
   const posts = resolveSeriesPosts(meta, allPosts);
   if (!posts) return '';
 
-  const items = posts.map((p, i) => `${i + 1}. ${p.title}`).join('\n');
+  const items = posts.map((p, i) =>
+    p.slug === meta.slug
+      ? `${i + 1}. ${p.title} (current)`
+      : `${i + 1}. [${p.title}](/${p.slug}.md)`
+  ).join('\n');
   return `\n\n## More in ${meta.series!.title}\n\n${items}\n`;
 }
 
@@ -114,7 +118,7 @@ export function postPage(meta: PostMeta, htmlContent: string, prompts?: PromptsD
   return html`<article>
   <header class="post-header">
     ${SectionLabel({ section: meta.section })}
-    <time datetime="${meta.date}">${dateStr}</time>${prompts ? html`<span class="post-header-sep"> · </span><a href="/${meta.slug}/prompts" class="post-header-prompts"><img src="/icons/transparency.svg" width="14" height="14" alt="" class="post-header-prompts-icon">Thoughts by human, co-written by AI<span class="post-header-prompts-count"> — ${prompts.count} prompt${prompts.count === 1 ? '' : 's'}</span></a>` : ''}
+    <time datetime="${meta.date}">${dateStr}</time><span class="post-header-sep"> · </span><a href="/about" rel="author" class="post-header-author">Goga Koreli</a>${prompts ? html`<span class="post-header-sep"> · </span><a href="/${meta.slug}/prompts" class="post-header-prompts"><img src="/icons/transparency.svg" width="14" height="14" alt="" class="post-header-prompts-icon">Thoughts by human, co-written by AI<span class="post-header-prompts-count"> — ${prompts.count} prompt${prompts.count === 1 ? '' : 's'}</span></a>` : ''}
     ${meta.tags.length > 0
       ? html`<div class="tags">${meta.tags.map(t => html`<span class="tag">${t}</span>`)}</div>`
       : ''}
