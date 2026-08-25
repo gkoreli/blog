@@ -1,9 +1,9 @@
 # AI-assisted research footprint
 
-**Status:** Preliminary snapshot. Freeze immediately before the article's release commit.  
+**Status:** Final release-preparation snapshot. Frozen after the article entered `posts/` and all 29 research artifacts were present in `HEAD`.
 **Article:** [`019-does-llms-txt-work.md`](../../../posts/019-does-llms-txt-work.md)
 **Research window began:** 2026-08-24 23:19:05 PDT  
-**Snapshot:** 2026-08-25 01:25:12 PDT
+**Snapshot:** 2026-08-25 01:30:51 PDT
 
 ## Why expose this
 
@@ -17,24 +17,24 @@ A token count alone is a spectacle. The useful disclosure is the provenance chai
 
 The number is worth showing only beside that chain. It measures computation processed during the workflow. It does not prove that the article is correct, interesting, or worth reading.
 
-## Preliminary measured footprint
+## Final measured footprint
 
 | Measure | Value | Definition |
 |---|---:|---|
-| Human prompts | 20 | Raw prompts preserved in `07-golden-prompts.md` and the publishable prompt file |
+| Human prompts | 22 | Raw prompts preserved in `07-golden-prompts.md` and the publishable prompt file |
 | Codex sessions | 7 | One root article session plus six spawned research sessions |
 | Committed research artifacts | 29 | Markdown files in this directory, including this methodology artifact |
-| Total processed tokens | 89,061,063 | Input plus output tokens reported by the seven Codex session logs |
-| Input tokens | 88,621,195 | Repeated session context plus new input across turns |
-| Cached input tokens | 85,064,704 | Subset of input served from cache; do not add again to total |
-| Non-cached input tokens | 3,556,491 | Input minus cached input |
-| Output tokens | 439,868 | Model output across the seven sessions |
-| Reasoning output tokens | 125,746 | Subset of output; do not add again to total |
-| Wall-clock window | 127 minutes | Root session start to the latest selected usage record; not human hands-on time |
+| Total processed tokens | 95,328,534 | Input plus output tokens reported by the seven Codex session logs |
+| Input tokens | 94,877,112 | Repeated session context plus new input across turns |
+| Cached input tokens | 91,269,120 | Subset of input served from cache; do not add again to total |
+| Non-cached input tokens | 3,607,992 | Input minus cached input |
+| Output tokens | 451,422 | Model output across the seven sessions |
+| Reasoning output tokens | 129,640 | Subset of output; do not add again to total |
+| Wall-clock window | 132 minutes | Root session start to the latest selected usage record; not human hands-on time |
 
 ## What the headline number does and does not mean
 
-`89.1M measured tokens` means the model sessions processed 89,061,063 input-plus-output tokens while this article and its research trail were being built through the snapshot. Most input was cached context. Long-context collaboration and repeated agent turns make total processed input much larger than the final article.
+`95.3M measured tokens` means the model sessions processed 95,328,534 input-plus-output tokens while this article and its research trail were being built through the release snapshot. Most input was cached context. Long-context collaboration and repeated agent turns make total processed input much larger than the final article.
 
 It is not:
 
@@ -58,13 +58,13 @@ Included session roles:
 - `/root/green_editorial`
 - `/root/green_product`
 
-## Preliminary session manifest
+## Final session manifest
 
 This manifest was produced by `packages/blog/scripts/research-footprint.ts` with rules version 1. Each SHA-256 value commits to the private JSONL log prefix through the selected cumulative usage record. The raw logs are not public because they contain conversation and system context.
 
 | Agent path | Session ID | Parent | Usage line | Usage timestamp | Total tokens | Log-prefix SHA-256 |
 |---|---|---|---:|---|---:|---|
-| `/root` | `01a03792-8926-7f53-ba7e-5b784d9a5e46` | — | 2514 | 2026-08-25T08:25:12.878Z | 44,664,817 | `92af4d29a8fce7f2f87dd3a382983e773d03deeb7c10401e8be0eff570e77e95` |
+| `/root` | `01a03792-8926-7f53-ba7e-5b784d9a5e46` | — | 2718 | 2026-08-25T08:30:51.568Z | 50,932,288 | `123c73ec99c084f10e7724d04efbdadce325ccf54d0bbf92b5a995c71e391400` |
 | `/root/static_observability` | `01a037a4-efd6-7653-abb8-45927df4210f` | root | 135 | 2026-08-25T06:45:36.760Z | 1,331,901 | `326ca001e69396359fbb8f861a04b652c0f7dd36e341f8fdc4c51c25347e3005` |
 | `/root/crawler_classifier` | `01a037a5-1e3e-7422-a36a-3932e1960d48` | root | 142 | 2026-08-25T06:46:07.927Z | 1,176,321 | `3dfb92b3885b8328c541c71a6e469227398ca720d9bf69d27ee63faaa60ad74c` |
 | `/root/thesis_redteam` | `01a037a5-44f9-7392-8929-d181c156038a` | root | 187 | 2026-08-25T06:48:24.707Z | 2,778,338 | `a01cd5e2ffcbd5b6304e65556d19c1746cc7eff166a36fb2f8e7099ca5f4b7ee` |
