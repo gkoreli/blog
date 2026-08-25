@@ -9,14 +9,14 @@ tags: [llms-txt, geo, ai-agents, analytics, agentic-engineering]
 researchFootprint:
   sessions: 7
   artifacts: 29
-  totalTokens: 97181096
-  inputTokens: 96724520
-  cachedInputTokens: 93062912
-  outputTokens: 456576
-  reasoningOutputTokens: 131106
-  wallClockMinutes: 135
+  totalTokens: 98829081
+  inputTokens: 98364856
+  cachedInputTokens: 94633728
+  outputTokens: 464225
+  reasoningOutputTokens: 133614
+  wallClockMinutes: 140
   startedAt: "2026-08-25T06:19:05.424Z"
-  measuredAt: "2026-08-25T08:34:03.427Z"
+  measuredAt: "2026-08-25T08:38:54.574Z"
   provenanceUrl: "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/llms-txt-geo"
 ---
 

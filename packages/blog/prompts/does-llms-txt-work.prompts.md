@@ -50,3 +50,5 @@ prepare the article to be published
 update the totalTokens right before the final publishing
 ---
 relevant prompts.md doesn't seem to be up to date
+---
+ready to push? all good? want to take a look one last time? how to share this on my Twitter?

@@ -3,7 +3,7 @@
 **Status:** Final release-preparation snapshot. Frozen after the article entered `posts/` and all 29 research artifacts were present in `HEAD`.
 **Article:** [`019-does-llms-txt-work.md`](../../../posts/019-does-llms-txt-work.md)
 **Research window began:** 2026-08-24 23:19:05 PDT  
-**Snapshot:** 2026-08-25 01:34:03 PDT
+**Snapshot:** 2026-08-25 01:38:54 PDT
 
 ## Why expose this
 
@@ -21,20 +21,20 @@ The number is worth showing only beside that chain. It measures computation proc
 
 | Measure | Value | Definition |
 |---|---:|---|
-| Human prompts | 23 | Raw prompts preserved in `07-golden-prompts.md` and the publishable prompt file |
+| Human prompts | 24 | Raw prompts preserved in `07-golden-prompts.md` and the publishable prompt file |
 | Codex sessions | 7 | One root article session plus six spawned research sessions |
 | Committed research artifacts | 29 | Markdown files in this directory, including this methodology artifact |
-| Total processed tokens | 97,181,096 | Input plus output tokens reported by the seven Codex session logs |
-| Input tokens | 96,724,520 | Repeated session context plus new input across turns |
-| Cached input tokens | 93,062,912 | Subset of input served from cache; do not add again to total |
-| Non-cached input tokens | 3,661,608 | Input minus cached input |
-| Output tokens | 456,576 | Model output across the seven sessions |
-| Reasoning output tokens | 131,106 | Subset of output; do not add again to total |
-| Wall-clock window | 135 minutes | Root session start to the latest selected usage record; not human hands-on time |
+| Total processed tokens | 98,829,081 | Input plus output tokens reported by the seven Codex session logs |
+| Input tokens | 98,364,856 | Repeated session context plus new input across turns |
+| Cached input tokens | 94,633,728 | Subset of input served from cache; do not add again to total |
+| Non-cached input tokens | 3,731,128 | Input minus cached input |
+| Output tokens | 464,225 | Model output across the seven sessions |
+| Reasoning output tokens | 133,614 | Subset of output; do not add again to total |
+| Wall-clock window | 140 minutes | Root session start to the latest selected usage record; not human hands-on time |
 
 ## What the headline number does and does not mean
 
-`97.2M measured tokens` means the model sessions processed 97,181,096 input-plus-output tokens while this article and its research trail were being built through the release snapshot. Most input was cached context. Long-context collaboration and repeated agent turns make total processed input much larger than the final article.
+`98.8M measured tokens` means the model sessions processed 98,829,081 input-plus-output tokens while this article and its research trail were being built through the release snapshot. Most input was cached context. Long-context collaboration and repeated agent turns make total processed input much larger than the final article.
 
 It is not:
 
@@ -64,7 +64,7 @@ This manifest was produced by `packages/blog/scripts/research-footprint.ts` with
 
 | Agent path | Session ID | Parent | Usage line | Usage timestamp | Total tokens | Log-prefix SHA-256 |
 |---|---|---|---:|---|---:|---|
-| `/root` | `01a03792-8926-7f53-ba7e-5b784d9a5e46` | — | 2805 | 2026-08-25T08:34:03.427Z | 52,784,850 | `e865c146d4063d1e565fba39a6fc3eea4d38a3b63eb11316278335b569a9e8b6` |
+| `/root` | `01a03792-8926-7f53-ba7e-5b784d9a5e46` | — | 2957 | 2026-08-25T08:38:54.574Z | 54,432,835 | `918792389622410f1d955d6fd31bb46b3408088f1fa5b6321c5cd75805038f61` |
 | `/root/static_observability` | `01a037a4-efd6-7653-abb8-45927df4210f` | root | 135 | 2026-08-25T06:45:36.760Z | 1,331,901 | `326ca001e69396359fbb8f861a04b652c0f7dd36e341f8fdc4c51c25347e3005` |
 | `/root/crawler_classifier` | `01a037a5-1e3e-7422-a36a-3932e1960d48` | root | 142 | 2026-08-25T06:46:07.927Z | 1,176,321 | `3dfb92b3885b8328c541c71a6e469227398ca720d9bf69d27ee63faaa60ad74c` |
 | `/root/thesis_redteam` | `01a037a5-44f9-7392-8929-d181c156038a` | root | 187 | 2026-08-25T06:48:24.707Z | 2,778,338 | `a01cd5e2ffcbd5b6304e65556d19c1746cc7eff166a36fb2f8e7099ca5f4b7ee` |
