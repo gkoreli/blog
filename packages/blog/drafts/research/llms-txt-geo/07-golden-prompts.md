@@ -48,6 +48,22 @@ fanout as needed
 
 ---
 
+this article whatever we are about to write, needs to be an evergreen article that brings a lot of traffic to our gkoreli.com blog
+
+---
+
+does this article touch what is GEO and aspects of GEO besides the llms.txt? is it helpful for knowing a lot more around it complementary to llms.txt?
+
+---
+
+with evidences and cross references with rationale, distilled sections, insights and bullets? And know that it is Aug 25 2026, we need the bleeding edge, the latest information, established patterns and latest trends, for all things that we are touching.
+
+---
+
+fanout as needed
+
+---
+
 can we add somewhere to the article similar to reading time, to showcase how much LLM tokens where spent to build this article? Do you think thats beneficial to the reader?
 
 ---
@@ -82,16 +98,4 @@ update the totalTokens right before the final publishing
 
 ---
 
-this article whatever we are about to write, needs to be an evergreen article that brings a lot of traffic to our gkoreli.com blog
-
----
-
-does this article touch what is GEO and aspects of GEO besides the llms.txt? is it helpful for knowing a lot more around it complementary to llms.txt?
-
----
-
-with evidences and cross references with rationale, distilled sections, insights and bullets? And know that it is Aug 25 2026, we need the bleeding edge, the latest information, established patterns and latest trends, for all things that we are touching.
-
----
-
-fanout as needed
+relevant prompts.md doesn't seem to be up to date

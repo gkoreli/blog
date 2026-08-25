@@ -21,6 +21,14 @@ iterate on the final article as we are making progress now
 ---
 fanout as needed
 ---
+this article whatever we are about to write, needs to be an evergreen article that brings a lot of traffic to our gkoreli.com blog
+---
+does this article touch what is GEO and aspects of GEO besides the llms.txt? is it helpful for knowing a lot more around it complementary to llms.txt?
+---
+with evidences and cross references with rationale, distilled sections, insights and bullets? And know that it is Aug 25 2026, we need the bleeding edge, the latest information, established patterns and latest trends, for all things that we are touching.
+---
+fanout as needed
+---
 can we add somewhere to the article similar to reading time, to showcase how much LLM tokens where spent to build this article? Do you think thats beneficial to the reader?
 ---
 or like even showcasing like how many reasearch sessions, and how much investigation artifacts (all of which will get commited in the repo) took it to finalize and distill into the final article, with full provenance and transparency, like this is the reason it is so meaningful to read my articles, it takes so much tokens, and time and effort to research, investigate and distill into the final article, it took so much effort, tokens and time, human-steering and all that, so that someone can have a fully evidence driven final article.
@@ -41,10 +49,4 @@ prepare the article to be published
 ---
 update the totalTokens right before the final publishing
 ---
-this article whatever we are about to write, needs to be an evergreen article that brings a lot of traffic to our gkoreli.com blog
----
-does this article touch what is GEO and aspects of GEO besides the llms.txt? is it helpful for knowing a lot more around it complementary to llms.txt?
----
-with evidences and cross references with rationale, distilled sections, insights and bullets? And know that it is Aug 25 2026, we need the bleeding edge, the latest information, established patterns and latest trends, for all things that we are touching.
----
-fanout as needed
+relevant prompts.md doesn't seem to be up to date
