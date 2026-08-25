@@ -203,7 +203,7 @@ The full, dated working artifact lives in [`packages/blog/drafts/research/llms-t
 - cross-references with a rationale for every source;
 - open experiments and next research actions.
 
-The current article draft is [`packages/blog/drafts/019-does-llms-txt-work.md`](../../packages/blog/drafts/019-does-llms-txt-work.md). The independent fact, editorial, technical-reader, and search-landscape reviews are preserved in the research folder rather than collapsed into the draft.
+The publication candidate is [`packages/blog/posts/019-does-llms-txt-work.md`](../../packages/blog/posts/019-does-llms-txt-work.md). The independent fact, editorial, technical-reader, search-landscape, frontier, and final green reviews are preserved in the research folder rather than collapsed into the article.
 
 ## Findings that already changed the article
 

@@ -1,6 +1,6 @@
 # Draft Editorial Review — Durable Search Doorway Without Losing the Field Note
 
-**Draft reviewed:** first iteration of [`019-does-llms-txt-work.md`](../../019-does-llms-txt-work.md), renamed after review  
+**Draft reviewed:** first iteration of [`019-does-llms-txt-work.md`](../../../posts/019-does-llms-txt-work.md), renamed after review
 **Reviewed:** 2026-08-25  
 **Scope:** Article shape, voice, authenticity, evergreen search potential, title architecture, practical reader value, and ending.  
 **Skills applied:** `shape-article` → `blog-writing` → `shareable-engineering`.  
@@ -646,7 +646,7 @@ That is the version most likely to attract the right readers without making Goga
 
 ## Sources used for this review
 
-- [`019-does-llms-txt-work.md`](../../019-does-llms-txt-work.md) — current draft; this review covered its earlier first iteration.
+- [`019-does-llms-txt-work.md`](../../../posts/019-does-llms-txt-work.md) — publication candidate; this review covered its earlier first iteration.
 - [`00-research-scratchpad.md`](./00-research-scratchpad.md) — living center, evidence boundaries, authenticity contract, and original article form.
 - [`04-thesis-red-team.md`](./04-thesis-red-team.md) — claims the draft must not expand beyond.
 - [`08-green-team-synthesis.md`](./08-green-team-synthesis.md) — adaptive investment model and current artifact decisions.

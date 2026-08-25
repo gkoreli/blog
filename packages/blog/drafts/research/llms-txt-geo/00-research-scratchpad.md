@@ -103,7 +103,7 @@ We bumped the skill to `1.1.0` and replaced both absolutes with the stage model:
 
 Three independent reviews agreed that the first full draft had unique evidence and the wrong doorway. It made a cold reader wait for the answer, assumed knowledge of the file, promised testing without runnable checks, and narrated agent-assisted research actions as if Goga personally performed each one.
 
-The second draft is now [`019-does-llms-txt-work.md`](../../019-does-llms-txt-work.md). It changed the H1, SEO title, and slug around the durable query; put a stage-specific verdict and site-type decision at the top; added a live-shaped example, v2 relations, delivery commands, Ahrefs base rate, reproducible-client boundaries, measurement ladder, exact draft thresholds, reader answers, and dated ledger. The March belief, broken metric, contaminated observation window, desire for readers, and adaptive ending remain.
+The publication candidate is now [`019-does-llms-txt-work.md`](../../../posts/019-does-llms-txt-work.md). It changed the H1, SEO title, and slug around the durable query; put a stage-specific verdict and site-type decision at the top; added a live-shaped example, v2 relations, delivery commands, Ahrefs base rate, reproducible-client boundaries, measurement ladder, exact draft thresholds, reader answers, and dated ledger. The March belief, broken metric, contaminated observation window, desire for readers, and adaptive ending remain.
 
 The rewrite also corrected the first-person contract. Goga's `I` carries the blog, original model, desire, and owned build. The collaborative process is named as the audit or reproduction for Cloudflare queries, client sweeps, dependency reproduction, token measurement, and literature review.
 

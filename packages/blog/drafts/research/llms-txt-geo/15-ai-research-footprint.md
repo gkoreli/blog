@@ -1,7 +1,7 @@
 # AI-assisted research footprint
 
 **Status:** Preliminary snapshot. Freeze immediately before the article's release commit.  
-**Article:** [`019-does-llms-txt-work.md`](../../019-does-llms-txt-work.md)  
+**Article:** [`019-does-llms-txt-work.md`](../../../posts/019-does-llms-txt-work.md)
 **Research window began:** 2026-08-24 23:19:05 PDT  
 **Snapshot:** 2026-08-25 01:25:12 PDT
 

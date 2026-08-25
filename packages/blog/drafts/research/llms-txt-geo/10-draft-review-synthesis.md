@@ -1,7 +1,7 @@
 # llms.txt and GEO — Draft Review Synthesis
 
 **Synthesized:** 2026-08-25  
-**Input draft:** first iteration of [`019-does-llms-txt-work.md`](../../019-does-llms-txt-work.md), renamed after review  
+**Input draft:** first iteration of [`019-does-llms-txt-work.md`](../../../posts/019-does-llms-txt-work.md), renamed after review
 **Inputs:** [`09a-draft-fact-audit.md`](./09a-draft-fact-audit.md), [`09b-draft-editorial-review.md`](./09b-draft-editorial-review.md), [`09c-draft-technical-reader-review.md`](./09c-draft-technical-reader-review.md), [`09d-evergreen-search-landscape.md`](./09d-evergreen-search-landscape.md)
 
 ## Decision

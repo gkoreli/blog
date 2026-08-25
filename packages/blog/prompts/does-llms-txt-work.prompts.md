@@ -37,6 +37,10 @@ schemas.d.cts(439, 9): The declaration was marked as deprecated here.
 }, z.core.$loose>
 @deprecated — Use z.looseObject() or .loose() instead.
 ---
+prepare the article to be published
+---
+update the totalTokens right before the final publishing
+---
 this article whatever we are about to write, needs to be an evergreen article that brings a lot of traffic to our gkoreli.com blog
 ---
 does this article touch what is GEO and aspects of GEO besides the llms.txt? is it helpful for knowing a lot more around it complementary to llms.txt?

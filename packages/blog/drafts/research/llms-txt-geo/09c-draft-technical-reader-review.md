@@ -1,7 +1,7 @@
 # Draft Review — Technical Reader and Evergreen Acquisition Asset
 
 **Reviewed:** 2026-08-25  
-**Draft:** first iteration of [`019-does-llms-txt-work.md`](../../019-does-llms-txt-work.md), renamed after review  
+**Draft:** first iteration of [`019-does-llms-txt-work.md`](../../../posts/019-does-llms-txt-work.md), renamed after review
 **Review lens:** technical usefulness, durable query satisfaction, evidence integrity, and distribution to relevant engineering readers  
 **Governing form:** research synthesis with a first-person engineering field investigation  
 **Production edits:** none
