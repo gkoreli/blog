@@ -4,8 +4,8 @@ description: Evidence-based mechanics for engineering articles that get read, sh
 license: MIT
 metadata:
   author: gkoreli
-  version: "1.0.0"
-  evidence-audited: 2026-08-20
+  version: "1.1.0"
+  evidence-audited: 2026-08-25
 ---
 
 # Shareable Engineering Articles — The Evidence-Based Mechanics
@@ -16,8 +16,8 @@ Run `shape-article` first. Apply this skill to the engineering and discovery lay
 
 ## Epistemics — how this skill was built
 
-- **Verified at primary source** (fetched, not summarized secondhand): Google Search Central title-link docs (updated 2025-12); Backlinko CTR study (n = 4M results, 1.3M pages, updated 2025-04); Ahrefs llms.txt log analysis (~38k domains, data 2026-05).
-- **Peer-reviewed**: "GEO: Generative Engine Optimization," Aggarwal et al., KDD 2024 (arXiv:2311.09735).
+- **Verified at primary source** (fetched, not summarized secondhand): Google Search Central title-link docs (updated 2025-12); Google Search's AI-feature and `llms.txt` guidance (accessed 2026-08); Backlinko CTR study (n = 4M results, 1.3M pages, updated 2025-04); Ahrefs `llms.txt` log analysis (~38k valid files, data 2026-05); the `llms.txt` v2 proposal; pinned maintained client workflows from Google Gemini skills, Prismatic, tldraw, Streamlit, and LangChain `mcpdoc`.
+- **Peer-reviewed**: "GEO: Generative Engine Optimization," Aggarwal et al., KDD 2024 (arXiv:2311.09735); FeatGEO, ACL 2026; MAGEO, ACL Findings 2026; Competitive GEO, SIGIR 2026.
 - **Practitioner authority** (consistent with their published work): Dan Luu, Julia Evans, Simon Willison, Thorsten Ball, swyx, Sean Goedecke, HN moderator dang.
 - **Rejected**: AEO content-farm posts with fake-precise stats (r-values, "+156%") and no methodology. If a number has no methodology, it does not enter this skill.
 
@@ -35,10 +35,12 @@ The architecture is the metadata split (see `AGENTS.md`): literary H1/`og:title`
 
 ## Agentic search (GEO/AEO) — what is real in 2026
 
-- **The honesty mechanics ARE the AEO strategy.** The one peer-reviewed result (GEO, KDD 2024): quotations, statistics-with-sources, and citations boost generative-engine visibility up to ~40%, varying by domain. Pull quotes, dated numbers, and footnoted claims — already this publication's trust practice — are the same interventions.
+- **Separate eligibility, selection, navigation, use, citation, and referral.** A crawler request proves only that a resource was requested. A supplied source influencing an answer does not prove organic discovery or selection. Every GEO claim must name its stage and evidence.
+- **Evidence-rich writing can change use after retrieval; it is not a universal acquisition recipe.** The KDD 2024 GEO benchmark began with Google's top five results, and its Perplexity test supplied source files. ACL/SIGIR 2026 studies likewise freeze candidates or retrieval to isolate content effects. Citations, relevant evidence, clear claims, and qualifications remain good human-facing trust mechanics, but their effects on generated answers are conditional and engine-specific. Do not promise discovery or repeat the “up to 40%” result without its supplied-source boundary.
 - **Give the first 100 words a self-contained anchor.** The standfirst (`.post-lede`) names the artifact and the story in one declarative sentence a machine can lift. It may state a finding, a live question, or the current state; never supply an answer the article does not have. Weak-source but directionally consistent with GEO; cost is zero.
 - **Durable URLs with visible dates are the long game.** ChatGPT-class engines cite years-old content; freshness mainly matters for Perplexity-style engines. Update posts with real changes and honest `lastModified`, never cosmetic date-bumping (see `AGENTS.md` metadata rules).
-- **llms.txt is dead weight — keep it only because it's free.** Ahrefs (2026-05): 97% of domains with a valid llms.txt got zero requests for it; no major provider supports it; Google's Mueller: "comparable to the keywords meta tag." Ours is auto-generated — fine. Never spend an hour on it.
+- **Give `llms.txt` the job the evidence supports.** Google Search says it neither helps nor hurts Search or AI-feature visibility, and Ahrefs found 97% of valid files received no requests in its May 2026 sample. But maintained coding-agent workflows demonstrably use a small index followed by targeted Markdown, while other bounded tasks cache and search a full dump. Treat it as optional known-site agent navigation, not an organic ranking or citation lever. Keep a generated, synchronized index when cheap; invest further only for a real client or measured task benefit.
+- **Page-level Markdown is a separate product from the root index.** It may reduce representation noise or token cost after a client selects a page. Measure answer quality, qualifications, failed navigation, total resources, bytes, and tokens; a smaller response alone is not a task win.
 - **Do not add FAQ schema to essays.** The citation-rate claims for it come from unverifiable sources, and question-boxes bolted onto a narrative are schema spam. BlogPosting JSON-LD (auto-generated) is enough.
 
 ## What makes an engineering article get shared

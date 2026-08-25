@@ -28,6 +28,36 @@ Blog posts are AI-assisted with human substance. The workflow:
 4. **Fact-check pass** — verify every date, attribution, quote, external link, GitHub repo, and technical claim. Web search each source. Post 004 caught 7 errors in one pass: wrong dates, misattributed quotes, unverifiable projects, a flawed technical premise. This step is mandatory, not optional.
 5. **AI-assisted collaborative posts ship with raw prompts** — readers can see the human thinking behind the AI output. **Exceptions:** exposed essays have no prompts because the author writes every word; OSS Radar issues have no prompts because they are research-driven analysis.
 
+### Research Footprint Accounting
+
+Research-heavy collaborative posts may publish a `researchFootprint` beside their raw prompts. This is provenance, not a quality badge. The compact article header may show the measured token total; the transparency page must show human prompts, sessions, committed artifacts, wall-clock window, token breakdown, methodology, limitations, and the public research directory.
+
+Use `packages/blog/scripts/research-footprint.ts` to calculate the numbers. Never hand-count sessions or sum a mixture of per-turn and cumulative usage records.
+
+Deterministic rule:
+
+1. Identify the root Codex thread ID for the article session.
+2. Scan the configured Codex session-log root and parse every `session_meta` record.
+3. Starting with the root thread, compute the **recursive descendant closure** through `source.subagent.thread_spawn.parent_thread_id`. Include children, grandchildren, and deeper descendants. Do not stop at direct fan-out.
+4. For each included session, select the last valid `event_msg` whose payload type is `token_count`. Use only its cumulative `info.total_token_usage` object. Never sum `last_token_usage` records.
+5. Verify per session: `total_tokens = input_tokens + output_tokens`; `cached_input_tokens <= input_tokens`; `reasoning_output_tokens <= output_tokens`.
+6. Sum each cumulative field once across the included sessions. Cached input is a subset of input, and reasoning output is a subset of output; neither is added again to total. Derive non-cached input as `input - cached input`.
+7. Count prompts with the same `---` delimiter rule as `parsePrompts()`. Report both Markdown files present in the declared research directory and files present in `HEAD`. Copy the committed count into public frontmatter only when both counts match; otherwise the provenance set is not yet releasable.
+8. Define `startedAt` from the root session metadata, `measuredAt` as the latest selected cumulative-usage event, and wall-clock minutes as the ceiling of that interval. Wall-clock time is not human hands-on time.
+9. Freeze immediately before the release commit. The script emits every included session ID, parent ID, agent path, selected usage-record line, cumulative values, and a SHA-256 commitment to the log prefix through that record. Save that manifest in the research artifact before copying totals into frontmatter.
+10. If any work ran outside the root thread tree—for example an independent `codex exec` background process whose metadata has no parent-thread link—it is excluded unless its session ID is explicitly added to a future manifest mechanism. Disclose every such inclusion. Never silently guess by timestamp or working directory.
+
+Example:
+
+```bash
+pnpm -C packages/blog exec tsx scripts/research-footprint.ts \
+  --root-thread <root-thread-id> \
+  --research-dir drafts/research/<article> \
+  --prompts-file prompts/<slug>.prompts.md
+```
+
+Trust boundary: session logs contain private conversation and system context and are not committed. The public manifest and prefix hashes make the accounting reproducible by the author and commit to the exact private log prefixes used, but readers cannot independently reconstruct the token totals without those logs. Say this plainly; “auditable by the author with integrity commitments” is accurate, while “publicly verifiable” is not.
+
 ### Writing Skill (`.agents/skills/blog-writing/SKILL.md`)
 
 Covers voice, structure, formatting balance, sourcing rules, glossary format, and quality checklist. Key principles:

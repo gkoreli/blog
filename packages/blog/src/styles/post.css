@@ -305,6 +305,39 @@
 .prompts-subtitle { font-size: 0.95rem; color: var(--color-text-muted); margin-top: 0.25rem; }
 .prompts-subtitle a { color: var(--color-link); }
 .prompts-intro { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 2rem; font-style: italic; }
+
+.research-footprint {
+  margin: 0 0 2.25rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+}
+.research-footprint-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.research-footprint-heading h2 { margin: 0; font-size: 1.15rem; }
+.research-footprint-heading a { font-size: 0.82rem; }
+.research-footprint-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.research-footprint-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.research-footprint-stats strong { font-size: 1.35rem; line-height: 1.2; }
+.research-footprint-stats span { color: var(--color-text-muted); font-size: 0.78rem; }
+.research-footprint p { margin: 0.75rem 0 0; font-size: 0.86rem; }
+.research-footprint-note { color: var(--color-text-muted); }
 .prompt-block { margin-bottom: 1.5rem; border: 1px solid var(--color-border); border-radius: 0.5rem; overflow: hidden; }
 .prompt-label {
   font-size: 0.75rem;
