@@ -28,6 +28,8 @@ Blog posts are AI-assisted with human substance. The workflow:
 4. **Fact-check pass** — verify every date, attribution, quote, external link, GitHub repo, and technical claim. Web search each source. Post 004 caught 7 errors in one pass: wrong dates, misattributed quotes, unverifiable projects, a flawed technical premise. This step is mandatory, not optional.
 5. **AI-assisted collaborative posts ship with raw prompts** — readers can see the human thinking behind the AI output. **Exceptions:** exposed essays have no prompts because the author writes every word; OSS Radar issues have no prompts because they are research-driven analysis.
 
+Prompt files preserve exact human prompts in chronological order when they materially shape the article, research scope, claim handling, metadata, provenance, or publication decision. Do not include later repository or skill-maintenance discussion that changes none of the published artifacts. This boundary keeps the prompt page a provenance record for the post instead of an unbounded project transcript.
+
 ### Research Footprint Accounting
 
 Research-heavy collaborative posts may publish a `researchFootprint` beside their raw prompts. This is provenance, not a quality badge. The compact article header may show the measured token total; the transparency page must show human prompts, sessions, committed artifacts, wall-clock window, token breakdown, methodology, limitations, and the public research directory.
@@ -66,9 +68,11 @@ Covers voice, structure, formatting balance, sourcing rules, glossary format, an
 - **Sourcing rules** — original author first (not Wikipedia or aggregators), no paywalled sources, authoritative builder blogs and company engineering blogs preferred. Glossary uses table format with dates on every source.
 - **What makes a great article** — states a problem clearly, introduces novel ideas, debunks myths, showcases best practices AND anti-patterns, highlights gotchas, shares personal growth, is transparent.
 
+For an **evidence-led engineering investigation**, read `.agents/skills/blog-writing/references/evidence-led-engineering-investigations.md`. Use this form when the article begins with a system the author built or used, then tests a disputed claim through code inspection, reproduction, first-party observation, primary documentation, and outside research. It is not the OSS Radar form: the article's center is the author's system, failure, or decision rather than an open-source product verdict.
+
 ### Shape Article Skill (`.agents/skills/shape-article/SKILL.md`)
 
-The editorial router for every article. It identifies the living center and governing form before any structural rule runs: exposed essay, inquiry, field note, engineering argument, or research synthesis. It protects unresolved experience, contradictions, status-risking passages, self-interruptions, and meaningful repetition. It requires movement without demanding resolution and adds context for humans and agents without flattening the article into a summary.
+The editorial router for every article. It identifies the living center and governing form before any structural rule runs: exposed essay, inquiry, field note, engineering argument, evidence-led engineering investigation, or OSS Radar research synthesis. It protects unresolved experience, contradictions, status-risking passages, self-interruptions, and meaningful repetition. It requires movement without demanding resolution and adds context for humans and agents without flattening the article into a summary.
 
 Run skills in this order:
 
@@ -88,6 +92,19 @@ Evidence-based share/trust/discovery mechanics for engineering posts: seoTitle t
 ### Polish Prose Skill (`.agents/skills/polish-prose/SKILL.md`)
 
 The final sentence-level pass for concise, direct, natural prose. It protects code, technical language, authorial voice, deliberate roughness, meaningful repetition, and unresolved thought. It never governs an article's structure or ending. In an exposed essay, it flags problems for the author instead of rewriting the prose.
+
+### Editorial Learning Loop
+
+After publishing a material engineering article:
+
+1. Define a measurement window before reacting; do not churn the article from day-to-day noise.
+2. Capture page-filtered search queries, reader replies, corrections, attributable referrals, source changes, and relevant implementer evidence in the article's research directory.
+3. Decide explicitly between a content correction, discoverability change, distribution change, new experiment, or no action.
+4. Update `lastModified` only when the served page changes materially under the metadata rules below.
+5. Keep one-off lessons in the article artifact. Update a shared reference or skill when a failure recurs across articles or when one missing rule caused a costly, preventable error.
+6. Prefer a focused reference inside the governing skill first. Create a standalone skill only after the workflow has repeated use and needs distinct automatic routing.
+
+This loop improves the publication from reader and evidence contact, not from token volume or pageviews alone.
 
 ## Content Strategy
 

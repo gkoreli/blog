@@ -30,7 +30,8 @@ Let forms mix, but choose one to govern movement and the ending.
 | Essay of inquiry | Think against the starting belief; make the question more precise or difficult | Leave a better question, tension, or possibility | `personal-essays` |
 | Field note or build journal | Record a time-bound state, pressure, attempt, or blocker | Mark what changed and what remains unknown | `blog-writing`, then `personal-essays` when a human spine is present |
 | Engineering argument or decision record | Test a claim against evidence, alternatives, failures, and constraints | Give a bounded verdict, trade-off, or decision rule | `blog-writing`, then `shareable-engineering` |
-| Research synthesis or OSS Radar | Reconstruct competing theories and audit them against primary evidence | Give a calibrated verdict with provenance and limits | `oss-radar`, then `shareable-engineering` |
+| Evidence-led engineering investigation | Start from an owned system or failure; test a disputed claim across implementation, reproduction, and outside evidence | Give a bounded verdict, provenance, limits, and evidence that would change it | `blog-writing` with its investigation reference, then `shareable-engineering` |
+| OSS Radar research synthesis | Reconstruct an open-source project or cohort's competing theories and audit them against code and primary evidence | Give a calibrated product or adoption verdict with provenance and limits | `oss-radar`, then `shareable-engineering` |
 
 Do not punish one form for lacking another form's payoff. An exposed essay needs no takeaway. A research verdict needs more than emotional truth.
 

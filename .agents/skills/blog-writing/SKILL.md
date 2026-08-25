@@ -149,6 +149,12 @@ Strong: "Week 3: Rewrote the component lifecycle. Old approach created 47 orphan
 
 Run `shape-article` before imposing structure. An exposed essay, essay of inquiry, field note, engineering argument, and research synthesis move differently and earn different endings. Never force a lesson, verdict, or open loop because a generic article template expects one.
 
+### Evidence-led Engineering Investigations
+
+When an article starts from a system the author built or used and tests a disputed claim through implementation evidence, reproductions, primary documentation, and outside research, read [references/evidence-led-engineering-investigations.md](references/evidence-led-engineering-investigations.md) before research fan-out or drafting.
+
+This is a conditional research mode, not the default structure for every sourced post. Use `oss-radar` instead when the article's subject and verdict are an open-source project or cohort.
+
 ### Structure for Engineering Arguments and Build Logs
 
 1. **Lead with the thing** — what you built, what you found, what broke. No preamble.
@@ -282,6 +288,7 @@ Before publishing:
 - [ ] Formatting balance — prose for narrative, bullets for lists, blockquotes for strong claims
 - [ ] No walls of prose — sections with 3+ paragraphs of distinct points are restructured
 - [ ] External sources follow sourcing rules (original author, no paywalls, no Wikipedia)
+- [ ] For an evidence-led investigation, the claim table separates evidence states, stages, limits, counterevidence, and inference
 - [ ] Glossary has dates on all sources
 - [ ] Hyperlinks are contextual and useful (repos, READMEs, npm, blog pages)
 - [ ] Ending fits the governing form — no forced lesson, verdict, redemption, or open loop
