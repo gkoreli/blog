@@ -24,4 +24,5 @@ export type {
   RuntimePlan,
   RuntimeSceneExecutor,
   RuntimeSystem,
+  PrimitiveTimelineDebugState,
 } from './runtime-plan.js';

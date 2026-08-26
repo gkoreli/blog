@@ -6,6 +6,7 @@ interface LabExperiment {
   readonly title: string;
   readonly tagline: string;
   readonly status: string;
+  readonly metricLabel: string;
   readonly substrates: readonly string[];
   readonly quick: string;
   readonly distilled: string;
@@ -22,6 +23,7 @@ const EXPERIMENTS: readonly LabExperiment[] = [
     title: 'Ambient Drift',
     tagline: 'The default breath of the system.',
     status: 'baseline',
+    metricLabel: 'Particles',
     substrates: ['Emitter', 'Field', 'Material', 'Modulation'],
     quick: 'A low-density field that establishes the quiet life-sign of the runtime. This one is allowed to be restrained because it is the baseline.',
     distilled: 'Quiet motion only matters if restraint still feels alive.',
@@ -41,9 +43,9 @@ const EXPERIMENTS: readonly LabExperiment[] = [
       'The base substrate is stable enough to build from.',
     ],
     controls: [
-      { id: 'particles', label: 'Density', min: 60, max: 260, value: 140, step: 1 },
-      { id: 'drift', label: 'Drift', min: 15, max: 90, value: 38, step: 1 },
-      { id: 'glow', label: 'Glow', min: 10, max: 80, value: 32, step: 1 },
+      { id: 'particles', label: 'Density', min: 48, max: 180, value: 112, step: 1 },
+      { id: 'drift', label: 'Current', min: 20, max: 72, value: 34, step: 1 },
+      { id: 'glow', label: 'Fleck Scale', min: 70, max: 130, value: 100, step: 1 },
     ],
   },
   {
@@ -52,6 +54,7 @@ const EXPERIMENTS: readonly LabExperiment[] = [
     title: 'Memory Zone',
     tagline: 'Motion gains meaning when space changes behavior.',
     status: 'semantic',
+    metricLabel: 'Particles',
     substrates: ['Field', 'Zone', 'Event', 'Glow', 'Decay'],
     quick: 'A visible memory chamber changes the behavior of particles that cross it. The point is semantic space: motion reacts to where it is.',
     distilled: 'Space is no longer neutral. It has memory, temperature, and consequence.',
@@ -71,9 +74,9 @@ const EXPERIMENTS: readonly LabExperiment[] = [
       'Animation can encode place, not just movement.',
     ],
     controls: [
-      { id: 'particles', label: 'Travelers', min: 80, max: 320, value: 180, step: 1 },
-      { id: 'drift', label: 'Current', min: 15, max: 100, value: 44, step: 1 },
-      { id: 'glow', label: 'Memory Heat', min: 10, max: 110, value: 58, step: 1 },
+      { id: 'particles', label: 'Travelers', min: 80, max: 240, value: 150, step: 1 },
+      { id: 'drift', label: 'Current', min: 20, max: 80, value: 42, step: 1 },
+      { id: 'glow', label: 'Memory Heat', min: 20, max: 100, value: 60, step: 1 },
     ],
   },
   {
@@ -82,6 +85,7 @@ const EXPERIMENTS: readonly LabExperiment[] = [
     title: 'Text Emergence',
     tagline: 'The writing itself becomes a source of motion.',
     status: 'editorial',
+    metricLabel: 'Particles',
     substrates: ['Text Source', 'Emitter', 'Field', 'Material'],
     quick: 'Literal text anchors the scene. The title remains visible while particles lift from its bounds and drift into the surrounding field.',
     distilled: 'If motion can emerge from language, the engine has found its home.',
@@ -101,45 +105,46 @@ const EXPERIMENTS: readonly LabExperiment[] = [
       'Future museum pieces can be content-shaped, not only canvas-shaped.',
     ],
     controls: [
-      { id: 'particles', label: 'Glyph Dust', min: 70, max: 260, value: 150, step: 1 },
-      { id: 'drift', label: 'Lift', min: 15, max: 100, value: 58, step: 1 },
-      { id: 'glow', label: 'Ink Light', min: 10, max: 95, value: 46, step: 1 },
+      { id: 'particles', label: 'Glyph Dust', min: 50, max: 180, value: 96, step: 1 },
+      { id: 'drift', label: 'Lift', min: 20, max: 90, value: 54, step: 1 },
+      { id: 'glow', label: 'Ink Light', min: 20, max: 80, value: 44, step: 1 },
     ],
   },
   {
     id: 'fracture-pulse',
     number: '04',
     title: 'Fracture Pulse',
-    tagline: 'A restrained rupture: intensity used as punctuation.',
+    tagline: 'A fault line flashes, branches, and leaves the field quiet again.',
     status: 'volatile',
-    substrates: ['Event', 'Pulse', 'Electric Material', 'Pipeline'],
-    quick: 'A calm field is interrupted by sharp fracture geometry and electric particles. The point is controlled rupture, not constant chaos.',
-    distilled: 'The system needs a way to break composure without losing taste.',
+    metricLabel: 'Branches',
+    substrates: ['Timeline', 'Polyline', 'Glow', 'Deterministic Seed'],
+    quick: 'Most of the cycle is dark. A single fault tears outward through connected hairline branches, holds for a fraction of a second, then disappears.',
+    distilled: 'Rupture is geometry plus timing. It is not a particle cloud.',
     rationale: [
-      'Adds dynamic contrast after the quiet and semantic experiments.',
-      'Tests temporary intensity as punctuation rather than decoration.',
-      'Defines what high-energy article moments could look like without becoming generic VFX.',
+      'Tests whether renderer-neutral lines can carry a discrete high-energy event.',
+      'Makes silence part of the effect: the long calm interval gives the rupture consequence.',
+      'Defines fracture as connected topology instead of glowing dots with tails.',
     ],
     insights: [
-      'Sparse fracture lines read stronger than noisy sparks.',
-      'The reset back to calm is part of the design.',
-      'Volatile effects should be hard to promote into core until they survive restraint.',
+      'Hairline branches read as force only when they share a believable fault topology.',
+      'Propagation should finish in under 300ms; afterglow should die before one second.',
+      'Round particle heads, visible trigger zones, and constant motion destroy the fracture metaphor.',
     ],
     proves: [
-      'The runtime can carry expressive contrast.',
-      'Events and pulse-like modulation deserve first-class treatment.',
-      'The visual language can include tension without becoming tacky.',
+      'Polyline primitives can reveal and decay through deterministic timeline bindings.',
+      'The runtime can stage a short rupture without filling the scene with ambient motion.',
+      'A high-energy motif can still preserve the publication’s restraint.',
     ],
     controls: [
-      { id: 'particles', label: 'Charge', min: 60, max: 300, value: 150, step: 1 },
-      { id: 'drift', label: 'Instability', min: 20, max: 130, value: 78, step: 1 },
-      { id: 'glow', label: 'Voltage', min: 20, max: 140, value: 92, step: 1 },
+      { id: 'particles', label: 'Branches', min: 4, max: 10, value: 8, step: 1 },
+      { id: 'drift', label: 'Spread', min: 35, max: 90, value: 62, step: 1 },
+      { id: 'glow', label: 'Voltage', min: 20, max: 100, value: 58, step: 1 },
     ],
   },
 ];
 
 function ExperimentSection(experiment: LabExperiment) {
-  return html`<section class="al-experiment al-${experiment.id}" id="${experiment.id}" data-lab-experiment="${experiment.id}">
+  return html`<section class="al-experiment al-${experiment.id}" id="${experiment.id}" data-lab-experiment="${experiment.id}" data-stage-label="${experiment.metricLabel}">
     <header class="al-exp-header">
       <div>
         <div class="al-note-kicker">Experiment ${experiment.number}</div>
@@ -149,12 +154,52 @@ function ExperimentSection(experiment: LabExperiment) {
       <div class="al-status">${experiment.status}</div>
     </header>
 
-    <div class="al-stage">
-      <canvas data-lab-canvas aria-label="${experiment.title} live animation"></canvas>
-      <div class="al-stage-overlay">
-        <span>${experiment.substrates.join(' / ')}</span>
-        <span data-stage-particles>Particles: -</span>
+    <div class="al-stage-shell">
+      <div class="al-stage">
+        <canvas data-lab-canvas aria-label="${experiment.title} live animation"></canvas>
+        <div class="al-stage-overlay">
+          <span>${experiment.substrates.join(' / ')}</span>
+          <span data-stage-particles>${experiment.metricLabel}: -</span>
+        </div>
       </div>
+
+      <aside class="al-console">
+        <div class="al-panel-label">Scene controls</div>
+        ${experiment.controls.map(control => html`<label>
+          <span class="al-control-heading">
+            <span>${control.label}</span>
+            <output data-control-value="${control.id}">${control.value}</output>
+          </span>
+          <input type="range" min="${control.min}" max="${control.max}" value="${control.value}" step="${control.step}" data-control="${control.id}" data-default-value="${control.value}">
+        </label>`)}
+
+        <div class="al-panel-label al-debug-label">Timeline debugger</div>
+        <label class="al-timeline-control">
+          <span class="al-control-heading">
+            <span>Playhead</span>
+            <output data-timeline-value>0.00s / —</output>
+          </span>
+          <input type="range" min="0" max="1000" value="0" step="1" data-timeline-scrub disabled>
+        </label>
+
+        <div class="al-actions">
+          <button type="button" data-action="pause" aria-pressed="false">Freeze</button>
+          <button type="button" data-action="restart">Restart</button>
+          <button type="button" data-action="defaults">Defaults</button>
+          <button type="button" data-action="stress" aria-pressed="false">Stress</button>
+        </div>
+        <div class="al-metrics" data-metrics>
+          <div><span>Status</span><strong data-metric="status" aria-live="polite">Waiting</strong></div>
+          <div><span>FPS</span><strong data-metric="fps">-</strong></div>
+          <div><span>Frame</span><strong data-metric="frame">-</strong></div>
+          <div><span>${experiment.metricLabel}</span><strong data-metric="particles">-</strong></div>
+        </div>
+        <details class="al-config">
+          <summary>Scene manifest</summary>
+          <pre data-config-snapshot>scene: ${experiment.id}
+status: waiting for viewport</pre>
+        </details>
+      </aside>
     </div>
 
     <div class="al-exp-body">
@@ -186,30 +231,6 @@ function ExperimentSection(experiment: LabExperiment) {
           </div>
         </div>
       </div>
-
-      <aside class="al-console">
-        <div class="al-panel-label">Controls</div>
-        ${experiment.controls.map(control => html`<label>
-          <span class="al-control-heading">
-            <span>${control.label}</span>
-            <output data-control-value="${control.id}">${control.value}</output>
-          </span>
-          <input type="range" min="${control.min}" max="${control.max}" value="${control.value}" step="${control.step}" data-control="${control.id}" data-default-value="${control.value}">
-        </label>`)}
-        <div class="al-actions">
-          <button type="button" data-action="pause" aria-pressed="false">Pause</button>
-          <button type="button" data-action="reset">Reset</button>
-          <button type="button" data-action="stress" aria-pressed="false">Stress</button>
-        </div>
-        <div class="al-metrics" data-metrics>
-          <div><span>Status</span><strong data-metric="status" aria-live="polite">Waiting</strong></div>
-          <div><span>FPS</span><strong data-metric="fps">-</strong></div>
-          <div><span>Frame</span><strong data-metric="frame">-</strong></div>
-          <div><span>Particles</span><strong data-metric="particles">-</strong></div>
-        </div>
-        <pre data-config-snapshot>scene: ${experiment.id}
-status: waiting for viewport</pre>
-      </aside>
     </div>
   </section>`;
 }

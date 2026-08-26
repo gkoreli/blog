@@ -1,6 +1,7 @@
 /* Animations Lab - scroll-native experiment page. */
 
 .al-page {
+  width: min(1120px, calc(100vw - 2rem));
   padding-top: 2rem;
 }
 
@@ -125,12 +126,21 @@
   border-radius: 4px;
 }
 
-.al-stage {
-  position: relative;
-  min-height: min(72vh, 680px);
+.al-stage-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 300px);
+  gap: 1px;
   overflow: hidden;
   border: 1px solid rgba(110, 201, 168, 0.24);
   border-radius: 8px;
+  background: var(--color-border);
+}
+
+.al-stage {
+  position: relative;
+  min-height: min(68vh, 680px);
+  border: 0;
+  border-radius: 0;
   background: #151713;
   isolation: isolate;
 }
@@ -172,47 +182,38 @@
 }
 
 .al-ambient-drift .al-stage {
-  background:
-    radial-gradient(circle at 26% 30%, rgba(110, 201, 168, 0.15), transparent 34%),
-    radial-gradient(circle at 72% 70%, rgba(147, 197, 253, 0.1), transparent 36%),
-    #151713;
+  background: #151713;
 }
 
 .al-memory-zone .al-stage {
-  background:
-    radial-gradient(circle at 50% 48%, rgba(232, 200, 122, 0.2), transparent 30%),
-    radial-gradient(circle at 24% 24%, rgba(110, 201, 168, 0.1), transparent 32%),
-    #161510;
+  background: #161510;
 }
 
 .al-text-emergence .al-stage {
-  background:
-    radial-gradient(circle at 50% 42%, rgba(147, 197, 253, 0.18), transparent 34%),
-    radial-gradient(circle at 72% 62%, rgba(110, 201, 168, 0.1), transparent 30%),
-    #111417;
+  background: #111417;
 }
 
 .al-fracture-pulse .al-stage {
-  background:
-    radial-gradient(circle at 50% 50%, rgba(103, 232, 249, 0.16), transparent 22%),
-    radial-gradient(circle at 55% 45%, rgba(167, 139, 250, 0.11), transparent 34%),
-    #111216;
+  background: #101215;
 }
 
 .al-exp-body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(210px, 280px);
-  gap: 1px;
   margin-top: 1px;
-  background: var(--color-border);
   border: 1px solid var(--color-border);
 }
 
-.al-notes,
+.al-notes {
+  min-width: 0;
+  padding: 1rem;
+  background: var(--color-bg);
+}
+
 .al-console {
   min-width: 0;
-  background: var(--color-bg);
+  max-height: min(68vh, 680px);
+  overflow-y: auto;
   padding: 1rem;
+  background: var(--color-surface);
 }
 
 .al-substrates {
@@ -284,6 +285,12 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
+.al-debug-label {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
 .al-control-heading {
   display: flex;
   justify-content: space-between;
@@ -296,7 +303,15 @@
 
 .al-console input[type='range'] {
   width: 100%;
+  height: 1rem;
+  margin: 0;
   accent-color: var(--color-link);
+  cursor: pointer;
+}
+
+.al-console input[type='range']:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
 }
 .al-experiment.is-loading .al-stage canvas {
   visibility: hidden;
@@ -326,8 +341,14 @@
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   cursor: pointer;
+  min-height: 2.25rem;
 }
-
+.al-actions button:focus-visible,
+.al-console input:focus-visible,
+.al-config summary:focus-visible {
+  outline: 2px solid var(--color-link);
+  outline-offset: 2px;
+}
 .al-actions button:hover,
 .al-actions button.active,
 .al-actions button[aria-pressed='true'] {
@@ -354,6 +375,21 @@
   color: var(--color-text);
   font-weight: 600;
 }
+.al-config {
+  margin-top: 0.9rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.al-config summary {
+  padding-top: 0.8rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 
 .al-console pre {
   margin-top: 0.9rem;
@@ -370,9 +406,17 @@
 }
 
 @media (max-width: 1060px) {
-  .al-exp-body,
+  .al-page {
+    width: 100%;
+  }
+
+  .al-stage-shell,
   .al-note-grid {
     grid-template-columns: 1fr;
+  }
+
+  .al-console {
+    max-height: none;
   }
 }
 
@@ -391,7 +435,11 @@
   }
 
   .al-stage {
-    min-height: 360px;
+    min-height: clamp(320px, 42svh, 400px);
+  }
+
+  .al-actions button {
+    min-height: 2.75rem;
   }
 
   .al-stage-overlay {

@@ -5,6 +5,7 @@ export interface TimelineOptions {
   readonly inputEnd?: number;
   readonly outputStart?: number;
   readonly outputEnd?: number;
+  readonly durationMs?: number;
 }
 
 export function scrollTimeline(options: TimelineOptions = {}): Omit<TimelineDefinition, 'id'> {
@@ -22,5 +23,6 @@ function timeline(source: TimelineSource, options: TimelineOptions): Omit<Timeli
     inputEnd: options.inputEnd ?? 1,
     outputStart: options.outputStart ?? 0,
     outputEnd: options.outputEnd ?? 1,
+    durationMs: source === 'time' ? options.durationMs ?? 1_000 : 0,
   };
 }

@@ -20,6 +20,8 @@ export interface PolylinePrimitiveData {
   readonly color: ColorValue;
   readonly alpha: number;
   readonly width: number;
+  readonly progress: number;
+  readonly opacity: number;
   readonly glow?: PolylinePrimitiveGlow;
 }
 
@@ -45,7 +47,11 @@ function isPolylinePrimitiveData(value: unknown): value is PolylinePrimitiveData
     'alpha' in value &&
     typeof value.alpha === 'number' &&
     'width' in value &&
-    typeof value.width === 'number'
+    typeof value.width === 'number' &&
+    'opacity' in value &&
+    typeof value.opacity === 'number' &&
+    'progress' in value &&
+    typeof value.progress === 'number'
   );
 }
 

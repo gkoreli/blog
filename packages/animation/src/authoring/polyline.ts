@@ -4,7 +4,7 @@ import type {
   PrimitiveCoordinateSpace,
   PrimitivePoint,
 } from '../core/index.js';
-import type { PolylineDefinition } from './types.js';
+import type { PolylineDefinition, PolylineTimelineDefinition } from './types.js';
 
 export interface PolylineOptions {
   readonly points: readonly PrimitivePoint[];
@@ -13,6 +13,7 @@ export interface PolylineOptions {
   readonly alpha?: number;
   readonly width?: number;
   readonly glow?: Partial<PolylinePrimitiveGlow>;
+  readonly timeline?: PolylineTimelineDefinition;
 }
 
 export function polyline(options: PolylineOptions): Omit<PolylineDefinition, 'id'> {
@@ -33,5 +34,6 @@ export function polyline(options: PolylineOptions): Omit<PolylineDefinition, 'id
     alpha: options.alpha ?? 0.72,
     width: options.width ?? 1,
     ...glow,
+    ...(options.timeline === undefined ? {} : { timeline: options.timeline }),
   };
 }

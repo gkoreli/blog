@@ -36,8 +36,17 @@ export interface ZoneDefinition {
   readonly blendMode: ZoneBlendMode;
   readonly visual?: ZoneVisualDefinition;
 }
-export interface PolylineDefinition extends PolylinePrimitiveData {
+export interface PolylineTimelineDefinition {
+  readonly timelineId: TimelineId;
+  readonly revealStart: number;
+  readonly revealEnd: number;
+  readonly fadeStart: number;
+  readonly fadeEnd: number;
+}
+
+export interface PolylineDefinition extends Omit<PolylinePrimitiveData, 'opacity' | 'progress'> {
   readonly id: string;
+  readonly timeline?: PolylineTimelineDefinition;
 }
 
 export type EmitterShape =
@@ -81,11 +90,18 @@ export interface TextSourceDefinition {
   readonly tags: readonly string[];
 }
 
+export type ParticleMarkDefinition =
+  | { readonly kind: 'circle' }
+  | { readonly kind: 'lozenge'; readonly aspect: number }
+  | { readonly kind: 'frame'; readonly strokeWidth: number }
+  | { readonly kind: 'bar'; readonly aspect: number };
+
 export type MaterialKind = 'solid' | 'glow' | 'ember' | 'electric' | 'ghost';
 export type BlendHint = 'normal' | 'additive' | 'screen';
 
 export interface MaterialDefinition {
   readonly id: MaterialId;
+  readonly mark: ParticleMarkDefinition;
   readonly kind: MaterialKind;
   readonly color: string;
   readonly radius: number;
@@ -116,6 +132,7 @@ export interface TimelineDefinition {
   readonly inputEnd: number;
   readonly outputStart: number;
   readonly outputEnd: number;
+  readonly durationMs: number;
 }
 
 export interface ParticleSystemDefinition {

@@ -14,7 +14,7 @@ export interface SceneMountOptions<TScene extends RuntimeScene = RuntimeScene> {
 export interface MountedScene {
   start(): void;
   stop(): void;
-  renderOnce(): void;
+  renderCurrentFrame(): void;
   dispose(): void;
 }
 
@@ -36,9 +36,10 @@ export async function mountScene<TScene extends RuntimeScene>(
   let running = false;
   let visible = true;
   let animationFrame = 0;
-  let startedAt: number | undefined;
   let lastNow: number | undefined;
+  let activeElapsedMs = 0;
   let frame = 0;
+  let lastFrameTime: FrameTime | undefined;
   let size = readSize(canvas);
 
   await renderer.init(canvas);
@@ -47,7 +48,8 @@ export async function mountScene<TScene extends RuntimeScene>(
   const resizeObserver = new ResizeObserver(() => {
     size = readSize(canvas);
     applySize();
-    if (reducedMotion) renderStaticFrame(performance.now());
+    updateRunningState();
+    if (reducedMotion) renderCurrentFrame();
   });
   resizeObserver.observe(container);
 
@@ -69,17 +71,19 @@ export async function mountScene<TScene extends RuntimeScene>(
   }
 
   function buildFrameTime(now: number): FrameTime {
-    if (startedAt === undefined) startedAt = now;
     const previousNow = lastNow ?? now;
+    const deltaMs = now - previousNow;
     lastNow = now;
+    activeElapsedMs += deltaMs;
 
     const time: FrameTime = {
       now,
-      deltaMs: now - previousNow,
-      elapsedMs: now - startedAt,
+      deltaMs,
+      elapsedMs: activeElapsedMs,
       frame,
     };
     frame += 1;
+    lastFrameTime = time;
     return time;
   }
 
@@ -118,7 +122,7 @@ export async function mountScene<TScene extends RuntimeScene>(
   }
 
   function updateRunningState(): void {
-    if (!disposed && requestedRunning && visible && !reducedMotion) {
+    if (!disposed && requestedRunning && visible && size.width > 0 && size.height > 0 && !reducedMotion) {
       if (running) return;
       running = true;
       lastNow = undefined;
@@ -132,9 +136,19 @@ export async function mountScene<TScene extends RuntimeScene>(
     animationFrame = 0;
     lastNow = undefined;
   }
-  function renderOnce(): void {
-    renderStaticFrame(performance.now());
+  function renderCurrentFrame(): void {
+    if (disposed || size.width === 0 || size.height === 0) return;
+    const time: FrameTime = lastFrameTime ?? {
+      now: performance.now(),
+      deltaMs: 0,
+      elapsedMs: activeElapsedMs,
+      frame: 0,
+    };
+    renderer.beginFrame(time);
+    renderer.render(scene, time);
+    renderer.endFrame(time);
   }
+
 
   function dispose(): void {
     if (disposed) return;
@@ -146,7 +160,7 @@ export async function mountScene<TScene extends RuntimeScene>(
     scene.dispose();
   }
 
-  return { start, stop, renderOnce, dispose };
+  return { start, stop, renderCurrentFrame, dispose };
 }
 
 function readSize(canvas: HTMLCanvasElement): RuntimeSize {

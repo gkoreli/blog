@@ -14,6 +14,7 @@ export type SceneDiagnosticCode =
   | 'invalid-burst'
   | 'invalid-capacity'
   | 'invalid-effect-operator'
+  | 'invalid-particle-mark'
   | 'invalid-polyline'
   | 'invalid-range'
   | 'material-mismatch'
@@ -116,6 +117,29 @@ export function analyzeScene(definition: SceneDefinition): SceneAnalysis {
         'Polyline requires at least two points, a positive width, and a finite alpha',
       ));
     }
+    if (line.timeline !== undefined) {
+      requireReference(
+        timelineIds,
+        line.timeline.timelineId,
+        `polylines[${index}].timeline.timelineId`,
+        'timeline',
+        diagnostics,
+      );
+      const ordered = (
+        line.timeline.revealStart >= 0 &&
+        line.timeline.revealStart <= line.timeline.revealEnd &&
+        line.timeline.revealEnd <= line.timeline.fadeStart &&
+        line.timeline.fadeStart <= line.timeline.fadeEnd &&
+        line.timeline.fadeEnd <= 1
+      );
+      if (!ordered) {
+        diagnostics.push(error(
+          'invalid-polyline',
+          `polylines[${index}].timeline`,
+          'Polyline timeline must satisfy 0 <= revealStart <= revealEnd <= fadeStart <= fadeEnd <= 1',
+        ));
+      }
+    }
     if (systemIds.has(line.id)) {
       diagnostics.push(error(
         'render-primitive-id-collision',
@@ -143,6 +167,18 @@ export function analyzeScene(definition: SceneDefinition): SceneAnalysis {
       ));
     }
   }
+  for (let index = 0; index < definition.materials.length; index += 1) {
+    const material = definition.materials[index];
+    if (!material || material.mark.kind === 'circle') continue;
+    const value = material.mark.kind === 'frame' ? material.mark.strokeWidth : material.mark.aspect;
+    if (Number.isFinite(value) && value > 0) continue;
+    diagnostics.push(error(
+      'invalid-particle-mark',
+      `materials[${index}].mark`,
+      `${material.mark.kind} particle mark requires a positive finite ${material.mark.kind === 'frame' ? 'strokeWidth' : 'aspect'}`,
+    ));
+  }
+
 
   for (let index = 0; index < definition.emitters.length; index += 1) {
     const emitter = definition.emitters[index];
@@ -256,6 +292,13 @@ function validateTimeline(
       'unsupported-timeline-source',
       `timelines[${index}].source`,
       `Timeline source "${timeline.source}" is declared but has no runtime implementation`,
+    ));
+  }
+  if (timeline.source === 'time' && (!Number.isFinite(timeline.durationMs) || timeline.durationMs <= 0)) {
+    diagnostics.push(error(
+      'invalid-range',
+      `timelines[${index}].durationMs`,
+      'Time timeline durationMs must be a positive finite number',
     ));
   }
 

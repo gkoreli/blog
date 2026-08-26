@@ -29,6 +29,8 @@ export type {
   MaterialKind,
   ParticleSystemDefinition,
   PolylineDefinition,
+  ParticleMarkDefinition,
+  PolylineTimelineDefinition,
   Range,
   SceneDefinition,
   TextSourceDefinition,

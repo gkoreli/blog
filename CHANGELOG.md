@@ -2,6 +2,21 @@
 
 Notable changes to the publication and its supporting packages are recorded here.
 
+## 0.3.0 — 2026-08-26
+
+### Animation framework
+
+- Add explicit renderer-neutral particle marks: circles, velocity-aligned lozenges, hollow frames, and upright bars, with validation and matching emissive silhouettes.
+- Add separate time-driven primitive clocks, stable-ID primitive timeline inspection/seeking, exact freeze semantics, and non-advancing current-frame redraws without claiming particle simulation rewind.
+- Make mount time accumulate only active deltas across caller freeze, viewport suspension, zero-size surfaces, and reduced motion.
+- Add timeline-driven polyline reveal, collective hold, decay, and branching fracture geometry.
+
+### Animations Lab
+
+- Replace the shared tadpole/comet glyph with distinct visual languages for Ambient Drift, Memory Zone, Text Emergence, and Fracture Pulse.
+- Replace the buried control panel with an adjacent 1120px workbench and visible instrument dock containing Freeze, Restart, Defaults, Stress, playhead scrub, metrics, and manifest inspection.
+- Add honest continuous-scene messaging, exact primitive-timeline scrubbing, persistent semantic memory transitions, responsive mobile stacking, and full-scale visual acceptance checks.
+
 ## 0.2.1 — 2026-08-26
 
 ### Animation framework

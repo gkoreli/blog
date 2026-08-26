@@ -1,6 +1,12 @@
-import type { RuntimeEvent, RuntimePrimitive, RuntimeUpdateContext } from '../core/index.js';
+import type { PolylinePrimitiveData, RuntimeEvent, RuntimePrimitive, RuntimeUpdateContext } from '../core/index.js';
 import { createPolylinePrimitive, createRuntimeEventQueue, createTextPrimitive } from '../core/index.js';
-import type { EmitterDefinition, SceneDefinition, TextSourceDefinition, TimelineDefinition } from '../authoring/index.js';
+import type {
+  EmitterDefinition,
+  PolylineTimelineDefinition,
+  SceneDefinition,
+  TextSourceDefinition,
+  TimelineDefinition,
+} from '../authoring/index.js';
 import type { EffectApplyDefinition, EffectStageDefinition } from '../effects/index.js';
 import {
   PARTICLE_FLAG_NEW,
@@ -23,7 +29,13 @@ import {
 } from '../sim/index.js';
 import type { ParticleStore } from '../sim/index.js';
 import { compilePipelines } from './compile-pipelines.js';
-import type { CompiledRuntimeScene, ParticleRenderBatch, RuntimeParticleSystem, RuntimePlan } from './runtime-plan.js';
+import type {
+  CompiledRuntimeScene,
+  ParticleRenderBatch,
+  RuntimeParticleSystem,
+  RuntimePlan,
+  PrimitiveTimelineDebugState,
+} from './runtime-plan.js';
 import { analyzeScene, SceneCompilationError } from './scene-contract.js';
 
 export function compileScene(definition: SceneDefinition): CompiledRuntimeScene {
@@ -32,17 +44,33 @@ export function compileScene(definition: SceneDefinition): CompiledRuntimeScene 
   return new CompiledScene(definition, analysis.manifest);
 }
 
+type RuntimePolylineData = Omit<PolylinePrimitiveData, 'opacity' | 'progress'> & {
+  opacity: number;
+  progress: number;
+};
+
+interface RuntimePolylineTimeline {
+  readonly data: RuntimePolylineData;
+  readonly definition: PolylineTimelineDefinition;
+  readonly timeline: TimelineDefinition;
+}
+
 class CompiledScene implements CompiledRuntimeScene {
   readonly plan: RuntimePlan;
   private readonly renderPrimitives: readonly RuntimePrimitive[];
   private readonly renderBatches: readonly ParticleRenderBatch[];
   private readonly timelineValues = new Map<string, number>();
+  private readonly polylineTimelines: readonly RuntimePolylineTimeline[];
+  private simulationElapsedMs = 0;
+  private readonly primitiveTimelineTimes = new Map<string, number>();
+  private readonly primitiveTimelineDefinitions = new Map<string, TimelineDefinition>();
 
   constructor(definition: SceneDefinition, manifest: RuntimePlan['manifest']) {
     const fields = new Map(definition.fields.map(field => [field.id, field]));
     const materials = new Map(definition.materials.map(material => [material.id, material]));
     const emittersById = new Map(definition.emitters.map(emitter => [emitter.id, emitter]));
     const textSourcesById = new Map(definition.textSources.map(source => [source.id, source]));
+    const timelinesById = new Map(definition.timelines.map(timeline => [timeline.id, timeline]));
     const zones = compileZones(definition.zones);
     const events = createRuntimeEventQueue();
     const systems: RuntimeParticleSystem[] = [];
@@ -96,14 +124,36 @@ class CompiledScene implements CompiledRuntimeScene {
       store: system.store,
       material: system.material,
     }));
-    const renderPrimitives: RuntimePrimitive[] = definition.polylines.map(line => createPolylinePrimitive(line.id, {
-      points: line.points,
-      coordinateSpace: line.coordinateSpace,
-      color: line.color,
-      alpha: line.alpha,
-      width: line.width,
-      ...(line.glow === undefined ? {} : { glow: line.glow }),
-    }));
+    const renderPrimitives: RuntimePrimitive[] = [];
+    const polylineTimelines: RuntimePolylineTimeline[] = [];
+    for (const line of definition.polylines) {
+      const data: RuntimePolylineData = {
+        points: line.points,
+        coordinateSpace: line.coordinateSpace,
+        color: line.color,
+        alpha: line.alpha,
+        width: line.width,
+        opacity: line.timeline === undefined ? 1 : 0,
+        progress: line.timeline === undefined ? 1 : 0,
+        ...(line.glow === undefined ? {} : { glow: line.glow }),
+      };
+      renderPrimitives.push(createPolylinePrimitive(line.id, data));
+      if (line.timeline !== undefined) {
+        const timeline = timelinesById.get(line.timeline.timelineId);
+        if (timeline) {
+          if (timeline.source === 'time' && !this.primitiveTimelineTimes.has(timeline.id)) {
+            this.primitiveTimelineTimes.set(timeline.id, 0);
+            this.primitiveTimelineDefinitions.set(timeline.id, timeline);
+          }
+          polylineTimelines.push({
+            data,
+            definition: line.timeline,
+            timeline,
+          });
+        }
+      }
+    }
+    this.polylineTimelines = polylineTimelines;
     for (const source of definition.textSources) {
       renderPrimitives.push(createTextPrimitive(source.id, {
         sourceId: source.id,
@@ -138,23 +188,52 @@ class CompiledScene implements CompiledRuntimeScene {
   }
 
   update(context: RuntimeUpdateContext): void {
-    const dtSeconds = Math.min(Math.max(context.time.deltaMs / 1_000, 0), 0.05);
+    const rawDeltaMs = Math.max(context.time.deltaMs, 0);
+    const dtSeconds = Math.min(rawDeltaMs / 1_000, 0.05);
+    this.simulationElapsedMs += rawDeltaMs;
+    for (const [timelineId, timeMs] of this.primitiveTimelineTimes) {
+      this.primitiveTimelineTimes.set(timelineId, timeMs + rawDeltaMs);
+    }
+    const elapsedMs = this.simulationElapsedMs;
     this.plan.events.clear();
-    this.updateTimelines(context);
+    this.updateTimelines(elapsedMs);
+    this.updatePolylineTimelines();
 
     for (const system of this.plan.systems) {
       spawnFromEmitter(system.store, system.emitter, system.material, system.materialIndex, system.emitterState, dtSeconds);
-      this.applyFieldPipes(system, dtSeconds, context.time.elapsedMs / 1_000);
+      this.applyFieldPipes(system, dtSeconds, elapsedMs / 1_000);
       integrate(system.store, dtSeconds);
-      this.updateZoneOccupancy(system, context.time.elapsedMs);
-      this.applyTransitionPipes(system, context.time.elapsedMs);
-      this.applyContinuousPipes(system, context.time.elapsedMs, dtSeconds);
+      this.updateZoneOccupancy(system, elapsedMs);
+      this.applyTransitionPipes(system, elapsedMs);
+      this.applyContinuousPipes(system, elapsedMs, dtSeconds);
       decayDeadParticles(system.store);
     }
   }
 
   primitives(): readonly RuntimePrimitive[] {
     return this.renderPrimitives;
+  }
+
+  primitiveTimelineDebugStates(): readonly PrimitiveTimelineDebugState[] {
+    const states: PrimitiveTimelineDebugState[] = [];
+    for (const [timelineId, timeline] of this.primitiveTimelineDefinitions) {
+      const timeMs = this.primitiveTimelineTimes.get(timelineId) ?? 0;
+      states.push({
+        timelineId,
+        timeMs: timeMs % timeline.durationMs,
+        durationMs: timeline.durationMs,
+      });
+    }
+    return states;
+  }
+
+  seekPrimitiveTimeline(timelineId: string, timeMs: number): void {
+    const timeline = this.primitiveTimelineDefinitions.get(timelineId);
+    if (!timeline) throw new Error(`Unknown time-based primitive timeline "${timelineId}"`);
+    if (!Number.isFinite(timeMs)) throw new RangeError('Primitive timeline time must be finite');
+    const wrappedTimeMs = ((timeMs % timeline.durationMs) + timeline.durationMs) % timeline.durationMs;
+    this.primitiveTimelineTimes.set(timelineId, wrappedTimeMs);
+    this.updatePolylineTimelines();
   }
 
   particleBatches(): readonly ParticleRenderBatch[] {
@@ -165,12 +244,34 @@ class CompiledScene implements CompiledRuntimeScene {
     this.plan.events.clear();
   }
 
-  private updateTimelines(context: RuntimeUpdateContext): void {
+  private updateTimelines(elapsedMs: number): void {
     for (const timeline of this.plan.timelines) {
-      const raw = sampleTimelineSource(timeline, context);
+      const raw = sampleTimelineSource(timeline, elapsedMs);
       this.timelineValues.set(timeline.id, remap(raw, timeline.inputStart, timeline.inputEnd, timeline.outputStart, timeline.outputEnd));
     }
   }
+
+  private updatePolylineTimelines(): void {
+    for (const binding of this.polylineTimelines) {
+      const timeMs = binding.timeline.source === 'time'
+        ? this.primitiveTimelineTimes.get(binding.timeline.id) ?? 0
+        : this.simulationElapsedMs;
+      const raw = sampleTimelineSource(binding.timeline, timeMs);
+      const value = remap(
+        raw,
+        binding.timeline.inputStart,
+        binding.timeline.inputEnd,
+        binding.timeline.outputStart,
+        binding.timeline.outputEnd,
+      );
+      const reveal = smoothstep(binding.definition.revealStart, binding.definition.revealEnd, value);
+      const fade = 1 - smoothstep(binding.definition.fadeStart, binding.definition.fadeEnd, value);
+      binding.data.progress = reveal;
+      binding.data.opacity = reveal * fade;
+    }
+  }
+
+
 
   private applyFieldPipes(system: RuntimeParticleSystem, dtSeconds: number, timeSeconds: number): void {
     for (const pipe of system.continuousPipes) {
@@ -392,8 +493,11 @@ function forEachAlive(store: ParticleStore, visit: (index: number) => void): voi
   }
 }
 
-function sampleTimelineSource(timeline: TimelineDefinition, context: RuntimeUpdateContext): number {
-  if (timeline.source === 'time') return (context.time.elapsedMs / 1_000) % 1;
+function sampleTimelineSource(timeline: TimelineDefinition, elapsedMs: number): number {
+  if (timeline.source === 'time') {
+    const durationMs = Math.max(1, timeline.durationMs);
+    return (elapsedMs % durationMs) / durationMs;
+  }
   if (timeline.source !== 'scroll') return 0;
   if (typeof document === 'undefined' || typeof window === 'undefined') return 0;
 
@@ -410,6 +514,12 @@ function remap(value: number, inputStart: number, inputEnd: number, outputStart:
 
 function readTuple(value: readonly [number, number, number], index: number): number {
   return value[index] ?? 0;
+}
+
+function smoothstep(start: number, end: number, value: number): number {
+  if (start === end) return value < start ? 0 : 1;
+  const amount = clamp01((value - start) / (end - start));
+  return amount * amount * (3 - 2 * amount);
 }
 
 function clamp01(value: number): number {

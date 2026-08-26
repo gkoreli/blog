@@ -67,8 +67,16 @@ export interface RuntimeFrameContext {
   readonly scene: RuntimeScene;
 }
 
+export interface PrimitiveTimelineDebugState {
+  readonly timelineId: TimelineDefinition['id'];
+  readonly timeMs: number;
+  readonly durationMs: number;
+}
+
 export interface CompiledRuntimeScene extends ParticleRenderScene {
   readonly plan: RuntimePlan;
+  primitiveTimelineDebugStates(): readonly PrimitiveTimelineDebugState[];
+  seekPrimitiveTimeline(timelineId: TimelineDefinition['id'], timeMs: number): void;
 }
 
 export function isParticleRenderScene(scene: RuntimeScene): scene is ParticleRenderScene {

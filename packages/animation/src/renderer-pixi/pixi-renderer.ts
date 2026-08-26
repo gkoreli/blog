@@ -106,12 +106,12 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
         data,
         this.size,
         toPixiColor(data.glow.color),
-        data.glow.alpha,
+        data.glow.alpha * data.opacity,
         data.glow.width,
       );
     }
 
-    drawPolyline(graphics, data, this.size, toPixiColor(data.color), data.alpha, data.width);
+    drawPolyline(graphics, data, this.size, toPixiColor(data.color), data.alpha * data.opacity, data.width);
   }
 
   private renderRectZone(primitive: RectZonePrimitive): void {
@@ -189,10 +189,20 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
       const emissive = Math.min(1, Math.max(0, store.emissive[index] ?? batch.material.emissive));
 
       if (emissive > 0) {
-        const glowAlpha = Math.min(0.24, alpha * emissive * 0.32);
-        const glowExpansion = Math.min(12, radius * (0.45 + emissive * 0.75));
-
-        graphics.circle(x, y, radius + glowExpansion).fill({ color, alpha: glowAlpha });
+        const glowAlpha = Math.min(0.18, alpha * emissive * 0.24);
+        const glowExpansion = Math.min(7, radius * (0.45 + emissive * 0.65));
+        drawParticleMark(
+          graphics,
+          batch.material.mark,
+          x,
+          y,
+          radius,
+          glowExpansion,
+          color,
+          glowAlpha,
+          (store.vx[index] ?? 0) * this.size.width,
+          (store.vy[index] ?? 0) * this.size.height,
+        );
       }
 
       if (trail > 0) {
@@ -211,9 +221,18 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
           .stroke({ color, alpha: alpha * Math.min(0.58, 0.16 + trail), width: Math.max(0.5, radius * 0.42) });
       }
 
-      graphics
-        .circle(x, y, radius)
-        .fill({ color, alpha });
+      drawParticleMark(
+        graphics,
+        batch.material.mark,
+        x,
+        y,
+        radius,
+        0,
+        color,
+        alpha,
+        (store.vx[index] ?? 0) * this.size.width,
+        (store.vy[index] ?? 0) * this.size.height,
+      );
     }
   }
 
@@ -256,6 +275,58 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
   }
 }
 
+function drawParticleMark(
+  graphics: Graphics,
+  mark: ParticleRenderBatch['material']['mark'],
+  x: number,
+  y: number,
+  radius: number,
+  expansion: number,
+  color: number,
+  alpha: number,
+  velocityX: number,
+  velocityY: number,
+): void {
+  const halfExtent = radius + expansion;
+  if (mark.kind === 'circle') {
+    graphics.circle(x, y, halfExtent).fill({ color, alpha });
+    return;
+  }
+
+  if (mark.kind === 'frame') {
+    graphics
+      .rect(x - halfExtent, y - halfExtent, halfExtent * 2, halfExtent * 2)
+      .stroke({
+        color,
+        alpha,
+        width: Math.max(0.4, mark.strokeWidth + expansion * 0.25),
+      });
+    return;
+  }
+
+  if (mark.kind === 'bar') {
+    const halfWidth = halfExtent / mark.aspect;
+    graphics
+      .rect(x - halfWidth, y - halfExtent, halfWidth * 2, halfExtent * 2)
+      .fill({ color, alpha });
+    return;
+  }
+
+  const speed = Math.hypot(velocityX, velocityY);
+  const unitX = speed > 0 ? velocityX / speed : 1;
+  const unitY = speed > 0 ? velocityY / speed : 0;
+  const perpendicularX = -unitY;
+  const perpendicularY = unitX;
+  const halfMinor = halfExtent / mark.aspect;
+  graphics
+    .moveTo(x + unitX * halfExtent, y + unitY * halfExtent)
+    .lineTo(x + perpendicularX * halfMinor, y + perpendicularY * halfMinor)
+    .lineTo(x - unitX * halfExtent, y - unitY * halfExtent)
+    .lineTo(x - perpendicularX * halfMinor, y - perpendicularY * halfMinor)
+    .closePath()
+    .fill({ color, alpha });
+}
+
 export function createPixiRenderer<TScene extends RuntimeScene = RuntimeScene>(
   options: PixiRendererOptions = {},
 ): PixiRendererAdapter<TScene> {
@@ -293,15 +364,48 @@ function drawPolyline(
   width: number,
 ): void {
   const first = data.points[0];
-  if (!first) return;
+  const progress = Math.min(1, Math.max(0, data.progress));
+  const boundedAlpha = Math.min(1, Math.max(0, alpha));
+  if (!first || progress <= 0 || boundedAlpha <= 0) return;
   const scaleX = data.coordinateSpace === 'normalized' ? size.width : 1;
   const scaleY = data.coordinateSpace === 'normalized' ? size.height : 1;
 
+  let totalLength = 0;
+  for (let index = 1; index < data.points.length; index += 1) {
+    const previous = data.points[index - 1];
+    const point = data.points[index];
+    if (!previous || !point) continue;
+    totalLength += Math.hypot(
+      (point.x - previous.x) * scaleX,
+      (point.y - previous.y) * scaleY,
+    );
+  }
+  if (totalLength <= 0) return;
+
+  let remaining = totalLength * progress;
   graphics.moveTo(first.x * scaleX, first.y * scaleY);
   for (let index = 1; index < data.points.length; index += 1) {
+    const previous = data.points[index - 1];
     const point = data.points[index];
-    if (!point) continue;
-    graphics.lineTo(point.x * scaleX, point.y * scaleY);
+    if (!previous || !point) continue;
+    const startX = previous.x * scaleX;
+    const startY = previous.y * scaleY;
+    const endX = point.x * scaleX;
+    const endY = point.y * scaleY;
+    const segmentLength = Math.hypot(endX - startX, endY - startY);
+    if (segmentLength <= remaining) {
+      graphics.lineTo(endX, endY);
+      remaining -= segmentLength;
+      continue;
+    }
+    if (remaining > 0 && segmentLength > 0) {
+      const amount = remaining / segmentLength;
+      graphics.lineTo(
+        startX + (endX - startX) * amount,
+        startY + (endY - startY) * amount,
+      );
+    }
+    break;
   }
-  graphics.stroke({ color, alpha: Math.min(1, Math.max(0, alpha)), width: Math.max(0.2, width) });
+  graphics.stroke({ color, alpha: boundedAlpha, width: Math.max(0.2, width) });
 }

@@ -146,7 +146,7 @@ Current vocabulary:
 | --- | --- | --- |
 | `TextPrimitive` | Visible text source, bounds, source glow, debug surface | Pixi `Text` |
 | visible rectangle zone | Semantic territory with fill and stroke | Pixi `Graphics` |
-| particle batch | Hot-path particle rendering and velocity trails | Pixi `Graphics` |
+| particle batch | Material-declared marks (`circle`, `lozenge`, `frame`, `bar`) and optional trails | Pixi `Graphics` |
 | `PolylinePrimitive` | Fractures, arcs, connectors, field/debug lines | Pixi `Graphics` |
 
 Rules:
@@ -155,6 +155,8 @@ Rules:
 - The framework owns semantics, IDs, bounds, source binding, channels, and timelines.
 - No Pixi import or Pixi type may appear outside `renderer-pixi`.
 - Every claimed material channel must render or fail validation.
+- Particle geometry is explicit `ParticleMarkDefinition` data. Never infer shape from a scene/system ID or hide it in the renderer.
+- Non-circular marks require matching silhouettes for emissive rendering; never place a circular halo behind a frame, bar, or lozenge.
 - DOM overlays may frame a consumer UI but cannot substitute for a runtime primitive.
 
 ## Renderer Isolation
@@ -184,10 +186,23 @@ If a backend feature must surface upward, define a renderer-neutral primitive, c
 - caller-requested start/stop state
 - reduced-motion static rendering
 - frame callbacks
-- render-once invalidation
+- renderer-only current-frame redraw
 - deterministic disposal
 
 Caller pause and viewport visibility are separate states. Scrolling a paused scene offscreen and back must not restart it. Resuming after suspension must not include hidden time in `deltaMs`.
+
+## Framework Debugging Controls
+
+Basic visual debugging is a framework contract:
+
+- `MountedScene.stop()` freezes the exact current simulation and primitive state.
+- `MountedScene.renderCurrentFrame()` redraws without calling `scene.update()`, advancing clocks/frames, or emitting `onFrame`.
+- `CompiledRuntimeScene.primitiveTimelineDebugStates()` exposes only time-based timelines bound to renderer primitives, keyed by stable timeline ID.
+- `seekPrimitiveTimeline(timelineId, timeMs)` changes only that primitive timeline and immediately re-samples its bound primitives.
+- Primitive timeline seeking does not rewind particle stores, emitters, occupancy, events, fields, effect time, or seeded random state. Never present it as full scene replay.
+- Unsupported/unknown timeline IDs and non-finite seek values fail loudly.
+
+Full deterministic simulation rewind, checkpoint restore, and frame rendering remain a separate runtime milestone.
 
 ## Performance Rules
 

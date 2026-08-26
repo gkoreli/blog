@@ -1,4 +1,4 @@
-import type { BlendHint, MaterialDefinition, MaterialKind } from './types.js';
+import type { BlendHint, MaterialDefinition, MaterialKind, ParticleMarkDefinition } from './types.js';
 
 export interface MaterialOptions {
   readonly color: string;
@@ -9,6 +9,7 @@ export interface MaterialOptions {
   readonly trail?: number;
   readonly noise?: number;
   readonly blendHint?: BlendHint;
+  readonly mark?: ParticleMarkDefinition;
 }
 
 export function solidMaterial(options: MaterialOptions): Omit<MaterialDefinition, 'id'> {
@@ -34,5 +35,6 @@ function material(kind: MaterialKind, options: MaterialOptions): Omit<MaterialDe
     trail: options.trail ?? 0,
     noise: options.noise ?? 0,
     blendHint: options.blendHint ?? 'normal',
+    mark: options.mark ?? { kind: 'circle' },
   };
 }
