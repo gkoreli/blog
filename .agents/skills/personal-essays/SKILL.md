@@ -4,14 +4,26 @@ description: The full creative-writing canon for gkoreli.com — Goga's voice, t
 license: MIT
 metadata:
   author: gkoreli
-  version: "2.0.0"
+  version: "2.2.0"
 ---
 
-# Writing From the Open Wound — Goga's Creative Writing Canon
+# Goga's Creative Writing Canon — Growth in Public
 
 This skill exists because of a diagnosed pattern: eleven posts in, every personal essay in the catalog was an autopsy — the confession of a former self, safely dead before the essay began. Exposed *content* delivered from an unexposed *position*. The same night the pattern was named, Goga wrote — in a prompt, at the keyboard, mid-feeling — "I want to be an artist, creator, builder, father, partner, husband, son, brother, all of these. AND I AM!" That is the register. This document's entire job is to get that voice out of the prompt box and onto the page, and to teach the agent how to protect it instead of sanding it off.
 
 It complements `blog-writing` (structure, sourcing, formatting for the publication generally). Where the two conflict on a personal essay or the human core of an engineering article, this skill wins.
+
+## Why We Write — Growth in Public
+
+Writing helps Goga grow, helps readers grow alongside him, and builds in public by inviting a third-person eye into life and work. The publication does not only expose wounds. It makes the whole attempt visible: projects, architecture, methods, failures, lessons, tenets, bets, plans, ambition, vision, and the desire to change something in the world.
+
+Time carries different kinds of truth:
+
+- **Past:** reflection, analysis, earned lessons, and evidence of growth.
+- **Present:** ambiguity, conditioning, calculated guesses, judgment calls, bets, unresolved tension, and open pain.
+- **Future:** intention, possibility, declared ambition, and vision that can still fail.
+
+Use the tense and form the material earns. A piece may stay in one layer or braid all three. Open-wound writing protects live truth from hindsight; it does not outrank retrospectives, guides, decisions, project narratives, or future-facing manifestos. The goal is not vulnerability as a style. The goal is contact with what matters now, so author and reader can grow through it.
 
 ## Writing Like Goga — The Voice
 
@@ -75,6 +87,23 @@ The engineering pieces and the personal essays are the same project: a person on
 - **Stakes make it catchy.** The hook is never the technology — it's the builder's live question: "I am building this and I don't know whether it's worth anything." Curiosity about the outcome carries the reader through the technical depth.
 - **Fact-check pass is sacred** (per `blog-writing`) — every date, quote, attribution, repo, claim. One caught error in public costs more trust than ten polished paragraphs buy.
 - **The personal essay inside the engineering article.** The best technical pieces have a human spine: why this problem grabbed *you*, what you're afraid the answer is. Don't amputate it during editing — it's the difference between documentation and writing.
+
+## Active Engineering Wounds — Permission, Not Formula
+
+Engineering work does not need to be finished before it can be written honestly. A live architecture cutover, a metric the author no longer trusts, effort whose payoff is unknown, and a decision still capable of being wrong can supply the human spine.
+
+This is permission, not an exposure quota. Do not force a wound into material governed by earned expertise, growth, a resolved decision, or a useful retrospective. Past-tense lessons are not less honest than present pain when the experience is genuinely understood. Manufactured vulnerability is another kind of armor.
+
+Articles may braid time. Use the past tense for lessons and experiences the author has earned, the present tense for what still hurts or can change, and the future for intentions or tests whose outcomes remain open. Let context decide which layer governs.
+
+**Hard rule for the agent:** never recommend waiting only because more data, distance, or certainty would make an active article easier to summarize. If the author has active pain, enough factual evidence, and unresolved tension, help the current article exist now. Suggest waiting only for a missing material fact, a concrete publication risk, or a missing human stake.
+
+A transparent two-article pattern is one option:
+
+- **Article one:** what hurts, what changed, why the effort happened, what is known, what was learned already, and what remains live.
+- **Article two:** the declared follow-up window, past-tense lessons earned since the first piece, and whatever new tension is alive then.
+
+Neither piece is required to imitate the other's form. The first is not a teaser; the second is not obliged to manufacture a fresh wound. Each must carry its own evidence, lessons, and honest state.
 
 ## The Collaboration Protocol — Growing Together
 

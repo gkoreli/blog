@@ -4,6 +4,7 @@ import type { ParticleStore } from './particle-store.js';
 
 export interface EmitterRuntimeState {
   carry: number;
+  pendingBurst: number;
   random: () => number;
   pointSampler?: EmitterPointSampler;
 }
@@ -17,9 +18,14 @@ export interface EmitterPointSampler {
   sample(random: () => number): EmitterSamplePoint | undefined;
 }
 
-export function createEmitterRuntimeState(seed: number, pointSampler?: EmitterPointSampler): EmitterRuntimeState {
+export function createEmitterRuntimeState(
+  seed: number,
+  pointSampler?: EmitterPointSampler,
+  initialBurst = 0,
+): EmitterRuntimeState {
   const state: EmitterRuntimeState = {
     carry: 0,
+    pendingBurst: Math.max(0, Math.floor(initialBurst)),
     random: createRandom(seed),
   };
 
@@ -41,7 +47,8 @@ export function spawnFromEmitter(
   state.carry += Math.max(0, emitter.rate) * dtSeconds;
   const wholeCount = Math.floor(state.carry);
   state.carry -= wholeCount;
-  const spawnCount = wholeCount + emitter.burst;
+  const spawnCount = wholeCount + state.pendingBurst;
+  state.pendingBurst = 0;
   const color = parseHexColor(material.color);
 
   for (let index = 0; index < spawnCount; index += 1) {

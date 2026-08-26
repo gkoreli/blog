@@ -8,11 +8,13 @@ export interface SceneMountOptions<TScene extends RuntimeScene = RuntimeScene> {
   readonly visibilityTarget?: Element;
   readonly respectReducedMotion?: boolean;
   readonly intersectionThreshold?: number;
+  readonly onFrame?: (time: FrameTime, scene: TScene) => void;
 }
 
 export interface MountedScene {
   start(): void;
   stop(): void;
+  renderOnce(): void;
   dispose(): void;
 }
 
@@ -27,8 +29,10 @@ export async function mountScene<TScene extends RuntimeScene>(
   const threshold = options.intersectionThreshold ?? DEFAULT_INTERSECTION_THRESHOLD;
   const renderer = options.renderer;
   const scene = options.scene;
+  const reducedMotion = shouldRespectReducedMotion(options.respectReducedMotion);
 
   let disposed = false;
+  let requestedRunning = false;
   let running = false;
   let visible = true;
   let animationFrame = 0;
@@ -43,20 +47,19 @@ export async function mountScene<TScene extends RuntimeScene>(
   const resizeObserver = new ResizeObserver(() => {
     size = readSize(canvas);
     applySize();
+    if (reducedMotion) renderStaticFrame(performance.now());
   });
   resizeObserver.observe(container);
 
   const intersectionObserver = new IntersectionObserver(
     entries => {
       visible = entries.some(entry => entry.isIntersecting);
-      if (visible) start();
-      else stop();
+      updateRunningState();
     },
     { threshold },
   );
   intersectionObserver.observe(visibilityTarget);
 
-  const reducedMotion = shouldRespectReducedMotion(options.respectReducedMotion);
   if (reducedMotion) renderStaticFrame(performance.now());
   else start();
 
@@ -87,6 +90,7 @@ export async function mountScene<TScene extends RuntimeScene>(
     renderer.beginFrame(time);
     renderer.render(scene, time);
     renderer.endFrame(time);
+    options.onFrame?.(time, scene);
   }
 
   function tick(now: number): void {
@@ -99,19 +103,37 @@ export async function mountScene<TScene extends RuntimeScene>(
     renderer.beginFrame(time);
     renderer.render(scene, time);
     renderer.endFrame(time);
+    options.onFrame?.(time, scene);
   }
 
   function start(): void {
-    if (disposed || running || !visible || reducedMotion) return;
-    running = true;
-    animationFrame = requestAnimationFrame(tick);
+    if (disposed) return;
+    requestedRunning = true;
+    updateRunningState();
   }
 
   function stop(): void {
+    requestedRunning = false;
+    updateRunningState();
+  }
+
+  function updateRunningState(): void {
+    if (!disposed && requestedRunning && visible && !reducedMotion) {
+      if (running) return;
+      running = true;
+      lastNow = undefined;
+      animationFrame = requestAnimationFrame(tick);
+      return;
+    }
+
     if (!running) return;
     running = false;
     cancelAnimationFrame(animationFrame);
     animationFrame = 0;
+    lastNow = undefined;
+  }
+  function renderOnce(): void {
+    renderStaticFrame(performance.now());
   }
 
   function dispose(): void {
@@ -124,7 +146,7 @@ export async function mountScene<TScene extends RuntimeScene>(
     scene.dispose();
   }
 
-  return { start, stop, dispose };
+  return { start, stop, renderOnce, dispose };
 }
 
 function readSize(canvas: HTMLCanvasElement): RuntimeSize {

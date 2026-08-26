@@ -1,10 +1,10 @@
 ---
 name: shareable-engineering
-description: Evidence-based mechanics for engineering articles that get read, shared, cited by AI search, and answered — titles and SEO titles, agentic-search (GEO/AEO) reality, trust mechanics, share triggers, and the editorial checklist. Use when titling, editing, or doing the pre-publish pass on an engineering post. Complements blog-writing (structure/sourcing) and personal-essays (voice/register); where they conflict on voice, personal-essays wins.
+description: Evidence-based mechanics for engineering articles that get read, shared, cited by AI search, and answered—title mechanics, agentic-search reality, trust, share triggers, and the pre-publish checklist. Run after article-discovery-positioning has fixed the honest reader job and doorway package. Personal-essays wins every voice conflict.
 license: MIT
 metadata:
   author: gkoreli
-  version: "1.1.0"
+  version: "1.2.0"
   evidence-audited: 2026-08-25
 ---
 
@@ -13,6 +13,8 @@ metadata:
 This skill exists because "catchy" is usually folklore. Everything prescriptive here traces to a verified source or a named practitioner with receipts; the epistemics section says which is which. When new evidence contradicts a rule, update the rule and bump `evidence-audited`.
 
 Run `shape-article` first. Apply this skill to the engineering and discovery layers of a piece without forcing an exposed essay, inquiry, or field note to become a resolved argument. `personal-essays` governs every conflict involving voice, aliveness, and unresolved experience.
+
+`article-discovery-positioning` owns publication role, content-to-intent translation, H1/seoTitle/description/standfirst meaning, heading/keyword strategy, internal relationship links, and the doorway learning loop. This skill does not re-select those meanings. It supplies evidence-based title mechanics, engineering trust, share triggers, agentic-search boundaries, and the final checklist after the doorway promise is fixed.
 
 ## Epistemics — how this skill was built
 

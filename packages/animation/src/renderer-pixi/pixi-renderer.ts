@@ -1,12 +1,12 @@
 import { Application, Container, Graphics, Text } from 'pixi.js';
-import type { TextStyleOptions } from 'pixi.js';
+import type { BLEND_MODES, TextStyleOptions } from 'pixi.js';
 import { isParticleRenderScene } from '../compile/index.js';
 import type { ParticleRenderBatch } from '../compile/index.js';
 import type { FrameTime, PrimitiveId, RendererAdapter, RuntimeScene, RuntimeSize } from '../core/index.js';
-import { isTextPrimitive, toScreenPrimitiveRect } from '../core/index.js';
-import type { TextPrimitive } from '../core/index.js';
-import { isParticleFieldPrimitive, isRectZonePrimitive, toScreenRect } from '../sim/index.js';
-import type { ParticleFieldPrimitive, RectZonePrimitive } from '../sim/index.js';
+import { isPolylinePrimitive, isTextPrimitive, toScreenPrimitiveRect } from '../core/index.js';
+import type { PolylinePrimitive, PolylinePrimitiveData, TextPrimitive } from '../core/index.js';
+import { isRectZonePrimitive, toScreenRect } from '../sim/index.js';
+import type { RectZonePrimitive } from '../sim/index.js';
 
 export interface PixiRendererOptions {
   readonly antialias?: boolean;
@@ -59,8 +59,8 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
     for (const primitive of scene.primitives()) {
       if (isTextPrimitive(primitive)) {
         this.renderTextPrimitive(primitive);
-      } else if (isParticleFieldPrimitive(primitive)) {
-        this.renderParticleField(primitive);
+      } else if (isPolylinePrimitive(primitive)) {
+        this.renderPolylinePrimitive(primitive);
       } else if (isRectZonePrimitive(primitive)) {
         this.renderRectZone(primitive);
       }
@@ -93,17 +93,23 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
     app?.destroy(false, { children: false });
   }
 
-  private renderParticleField(primitive: ParticleFieldPrimitive): void {
+  private renderPolylinePrimitive(primitive: PolylinePrimitive): void {
     const graphics = this.getGraphicsLayer(primitive.id);
-    const style = primitive.data.style;
-    const color = toPixiColor(style.color);
-
+    const data = primitive.data;
     graphics.clear();
-    primitive.data.field.forEachParticle(this.size, particle => {
-      graphics
-        .circle(particle.x, particle.y, particle.radius * style.radiusScale)
-        .fill({ color, alpha: particle.alpha * style.alpha });
-    });
+
+    if (data.glow) {
+      drawPolyline(
+        graphics,
+        data,
+        this.size,
+        toPixiColor(data.glow.color),
+        data.glow.alpha,
+        data.glow.width,
+      );
+    }
+
+    drawPolyline(graphics, data, this.size, toPixiColor(data.color), data.alpha, data.width);
   }
 
   private renderRectZone(primitive: RectZonePrimitive): void {
@@ -113,6 +119,7 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
     graphics
       .clear()
       .rect(zone.x, zone.y, zone.width, zone.height)
+      .fill({ color: toPixiColor(zone.fillColor), alpha: zone.fillAlpha })
       .stroke({ color: toPixiColor(zone.color), alpha: zone.alpha, width: 1 });
   }
 
@@ -165,6 +172,8 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
     const graphics = this.getGraphicsLayer(batch.systemId);
     const store = batch.store;
 
+    graphics.blendMode = toPixiBlendMode(batch.material.blendHint);
+
     graphics.clear();
     for (let index = 0; index < store.count; index += 1) {
       if ((store.alive[index] ?? 0) !== 1) continue;
@@ -175,6 +184,14 @@ export class PixiRendererAdapter<TScene extends RuntimeScene = RuntimeScene> imp
       const x = (store.x[index] ?? 0) * this.size.width;
       const y = (store.y[index] ?? 0) * this.size.height;
       const trail = Math.max(0, store.trail[index] ?? batch.material.trail);
+      const emissive = Math.min(1, Math.max(0, store.emissive[index] ?? batch.material.emissive));
+
+      if (emissive > 0) {
+        const glowAlpha = Math.min(0.24, alpha * emissive * 0.32);
+        const glowExpansion = Math.min(12, radius * (0.45 + emissive * 0.75));
+
+        graphics.circle(x, y, radius + glowExpansion).fill({ color, alpha: glowAlpha });
+      }
 
       if (trail > 0) {
         const trailSeconds = 0.45 + trail * 2.2;
@@ -252,9 +269,37 @@ function toPixiColor(color: number | string): number {
   return parsed;
 }
 
+function toPixiBlendMode(blendHint: ParticleRenderBatch['material']['blendHint']): BLEND_MODES {
+  if (blendHint === 'additive') return 'add';
+  if (blendHint === 'screen') return 'screen';
+  return 'normal';
+}
+
 function rgbToPixiColor(red: number, green: number, blue: number): number {
   const r = Math.max(0, Math.min(255, Math.round(red)));
   const g = Math.max(0, Math.min(255, Math.round(green)));
   const b = Math.max(0, Math.min(255, Math.round(blue)));
   return (r << 16) | (g << 8) | b;
+}
+
+function drawPolyline(
+  graphics: Graphics,
+  data: PolylinePrimitiveData,
+  size: RuntimeSize,
+  color: number,
+  alpha: number,
+  width: number,
+): void {
+  const first = data.points[0];
+  if (!first) return;
+  const scaleX = data.coordinateSpace === 'normalized' ? size.width : 1;
+  const scaleY = data.coordinateSpace === 'normalized' ? size.height : 1;
+
+  graphics.moveTo(first.x * scaleX, first.y * scaleY);
+  for (let index = 1; index < data.points.length; index += 1) {
+    const point = data.points[index];
+    if (!point) continue;
+    graphics.lineTo(point.x * scaleX, point.y * scaleY);
+  }
+  graphics.stroke({ color, alpha: Math.min(1, Math.max(0, alpha)), width: Math.max(0.2, width) });
 }

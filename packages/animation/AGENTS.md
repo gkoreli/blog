@@ -2,361 +2,288 @@
 
 ## Purpose
 
-`@gkoreli/animation` is the publication animation runtime for `gkoreli.com`.
+`@gkoreli/animation` is an independent agent-native TypeScript animation framework experiment.
 
-It exists to make selected essays feel like authored editorial spaces, not pages with decorative motion pasted on top. The package should support article-scale visual storytelling with a small house language: fields, zones, emitters, materials, timelines, and explicit effect pipelines.
+It is not a blog subsystem. It must not depend on article metadata, publication layout, routes, `@nisli/core`, or gkoreli.com content semantics.
 
-The goal is not to build a general-purpose game engine. The goal is a narrow, inspectable runtime that lets important articles become museum pieces while keeping default pages light.
+`gkoreli.com` is the current reference host. It provides the Animations Lab and may mount package scenes behind selected article preambles. Default pages and unrelated articles must not load the runtime or Pixi.
+
+Primary decision: `docs/adr/0015.4-agent-native-animation-framework.md`.
 
 ## Guiding Statement
 
-The runtime should read like authored editorial composition at the surface, execute like a disciplined simulation pipeline underneath, and remain narrow enough that every primitive earns its existence through real published work.
+The framework should be easy for humans and coding agents to author, inspect, patch, validate, and verify. Its surface is semantic data; its execution is explicit and data-oriented; its renderer backends remain replaceable.
 
-## Core Philosophy
+## Agent-Native Means
 
-- **The article is the product.** The runtime exists to serve published writing, not to become an independent engine project.
-- **Motion must carry meaning.** Animation should clarify pressure, memory, drift, fracture, emergence, attention, or transition. Avoid movement that only decorates.
-- **Authoring should be semantic.** Scene code should describe what exists and why it matters: `memory`, `thought`, `hero-title`, `ambient-drift`, `section-pulse`.
-- **Execution should be explicit.** Effects run in ordered pipelines. If order matters visually or computationally, it must be visible in code.
-- **Hot paths are data-oriented.** Large particle sets should use compact stores, typed arrays, stable iteration, and minimal per-frame allocation.
-- **Pixi is a backend.** PixiJS is allowed only behind renderer adapter boundaries. Authoring, compile, sim, effects, and article scenes must not expose Pixi objects.
-- **Build narrow, then generalize.** Add primitives only when a real article scene needs them.
+Every canonical scene has:
 
-## Architectural Model
+- a schema version
+- a stable semantic scene ID
+- an explicit seed
+- plain-data declarations
+- stable IDs for referenced objects
+- deterministic array order where order matters
+- structured diagnostics before runtime allocation
+- a JSON-compatible inspection manifest
+- an explicit path toward fixed-frame rendering and snapshots
 
-The package follows a layered model:
+Agent-native does not mean:
+
+- natural-language execution inside the runtime
+- a model dependency
+- an MCP server inside the package
+- an opaque editor database
+- Pixi objects in scene declarations
+- arbitrary generated code as the only inspectable plan
+
+## Canonical Architecture
 
 | Layer | Folder | Responsibility |
 | --- | --- | --- |
-| Core runtime | `src/core/` | IDs, frame time, lifecycle, scene mounting, event queue, renderer adapter contracts |
-| Authoring | `src/authoring/` | Human-readable scene declarations: fields, zones, emitters, materials, timelines, systems |
-| Compilation | `src/compile/` | Convert declarations into runtime plans, pipeline groups, stores, renderer bindings |
-| Simulation | `src/sim/` | Particle stores, emitters, fields, zones, occupancy, hot-path systems |
-| Effects | `src/effects/` | Channels, operators, effect stage definitions, reusable effect modules |
-| Timeline | `src/timeline/` | Modulation helpers and source-specific timeline utilities |
-| Render primitives | `src/core/` / `src/compile/` | Renderer-neutral visual vocabulary: text, zones, particles, trails, polylines |
-| Renderer adapter | `src/renderer-pixi/` | Pixi-backed rendering implementation only |
-| Article scenes | `src/article-scenes/` | Concrete editorial scenes, not reusable abstractions until proven |
+| Core | `src/core/` | Scene, frame, primitive, renderer, and mount contracts |
+| Authoring | `src/authoring/` | Versioned semantic scene declarations and helpers |
+| Compilation | `src/compile/` | Validation, diagnostics, manifests, reference resolution, execution plans |
+| Simulation | `src/sim/` | Typed stores, emitters, fields, zones, occupancy, hot-path operations |
+| Effects | `src/effects/` | Ordered stages, conditions, channels, and reusable operators |
+| Renderer adapter | `src/renderer-pixi/` | All Pixi imports and primitive-to-Pixi mapping |
 
-## Initial Substrates
+Concrete lab and article scenes belong to the consuming application. Do not add an `article-scenes` package layer.
 
-The first-generation runtime is built around five substrates.
+## Canonical Consumption Flow
 
-| Substrate | Meaning | Current Role |
-| --- | --- | --- |
-| Field | Spatial influence over motion or channels | Noise-driven drift and atmospheric movement |
-| Zone | Semantic spatial realm or geofence | Memory bands, pressure areas, fracture regions, silence zones |
-| Emitter | Source of particles/entities | Point, rectangle, text-box, and future layout-bound emergence |
-| Material | Visual identity and render channels | Glow, solid, ember, electric, ghost-style appearance |
-| Timeline / Modulation | Choreography over time, scroll, section, visibility, events | Scroll and time-linked parameter shaping |
+1. A consumer declares a `SceneDefinition` with `createScene(...)`.
+2. `analyzeScene(...)` validates the declaration and returns structured diagnostics plus `SceneManifestV1`.
+3. `compileScene(...)` rejects invalid declarations before allocating runtime state.
+4. Compilation resolves systems, emitters, materials, fields, zones, timelines, and stage phases.
+5. `mountScene(...)` owns initialization, resize, visibility, reduced motion, frame scheduling, frame observation, and disposal.
+6. A renderer adapter maps renderer-neutral primitives and batches to its backend.
 
-These substrates are intentionally basic. They should compose into expressive motifs without creating an engine taxonomy.
+The blog may wrap this flow in lab controls or an article-specific lazy client entry. Those concerns do not enter this package.
 
-## Current Architectural Correction
+## Scene Contract
 
-The package currently has more semantic runtime architecture than visual renderer vocabulary.
+`SceneDefinition` is the source of truth. The builder is syntax over that data, not a second model.
 
-That is the main bottleneck.
+Current top-level fields:
 
-The runtime can describe fields, zones, text-box emitters, materials, timelines, and effect pipelines, but the Pixi adapter currently expresses most of that as particles and circles. This makes the system look less serious than the architecture underneath.
+- `version`
+- `id`
+- `seed`
+- `textSources`
+- `polylines`
+- `fields`
+- `zones`
+- `emitters`
+- `materials`
+- `systems`
+- `timelines`
 
-Treat the current particle-heavy output as **runtime smoke testing**, not finished visual language.
+Use semantic IDs that survive refactors and explain the concept. IDs are shared vocabulary for authors, agents, diagnostics, manifests, logs, and the lab.
 
-Do not keep adding lab experiment labels, controls, or substrates while the renderer can only speak in dots.
+Compilation must fail on:
 
-The next milestone is:
+- empty or duplicate IDs
+- dangling emitter, material, field, zone, timeline, or text-source references
+- invalid capacities, ranges, rates, or bursts
+- unsupported timeline sources
+- unsupported coordinate combinations
+- renderer-layer ID collisions
+- unsupported visible primitive shapes
+- operator/channel combinations the runtime cannot execute
+- more active zones than the occupancy representation supports
 
-> Make **Text Emergence** visually undeniable.
+Silent skipping is prohibited.
 
-Reference: `docs/adr/0015.3-text-and-render-primitive-layer.md`
+## Execution Model
 
-## Visual Primitive Layer
+The frame order is:
 
-The runtime needs renderer-neutral visual primitives before the lab can become expressive.
+1. sample time and external modulation
+2. consume scheduled bursts and coarse triggers
+3. spawn particles
+4. apply field influence
+5. integrate motion
+6. compute zone occupancy
+7. emit coarse transition events
+8. execute transition stages
+9. execute continuous stages
+10. decay and retire state
+11. prepare renderer-facing primitives and batches
+12. render through the adapter
 
-Target vocabulary:
+Pipes may contain stages from multiple phases. Classify stages, not entire pipes. Preserve authored pipe and stage order in `SceneManifestV1`.
 
-| Primitive | Purpose | Pixi Backend Mapping |
-| --- | --- | --- |
-| `TextPrimitive` | Visible publication text, text source identity, text bounds, source glow, debug bounds | Pixi `Text` first; optional `SplitText` later |
-| `ZonePrimitive` | Visible semantic space, fill, edge, glow, occupancy/debug surface | Pixi `Graphics` |
-| `ParticlePrimitive` / particle batches | Hot-path particle rendering | Pixi `Graphics` now; future optimized particle renderer possible |
-| `TrailPrimitive` | Temporal richness and persistence | Per-particle velocity trails first; render texture feedback later |
-| `PolylinePrimitive` | Fracture lines, arcs, connectors, field vectors | Pixi `Graphics` |
-
-Important rules:
-
-- Pixi owns low-level text rendering. The package must not build a font rasterizer or text layout engine.
-- The runtime owns text semantics: source IDs, bounds, emitter binding, timelines, dissolve/return behavior, and effect participation.
-- Authoring must remain renderer-neutral. Do not expose Pixi `Text`, `Graphics`, `Container`, filters, textures, or display objects outside `renderer-pixi`.
-- DOM overlays may be useful for page scaffolding, but they are not substitutes for runtime primitives.
-- If an effect cannot be expressed by renderer-neutral primitives, the runtime is not ready to claim that visual concept.
-
-## Authoring API Model
-
-Authoring code should read like editorial composition:
-
-```ts
-createScene('topologies-of-thought')
-  .field('hero-noise', noiseField({ strength: 0.35 }))
-  .material('thought', glowMaterial({ color: '#6ec9a8', radius: 2.4 }))
-  .zone('memory', defineRectZone({ x: 0.18, y: 0.18, width: 0.64, height: 0.42 }))
-  .emitter('hero-title', textBoxEmitter({
-    x: 0.12,
-    y: 0.16,
-    width: 0.76,
-    height: 0.22,
-    rate: 28,
-    material: 'thought',
-  }))
-  .timeline('hero-scroll', scrollTimeline({ inputStart: 0, inputEnd: 0.35 }))
-  .system('nodes', particles({
-    emitter: 'hero-title',
-    material: 'thought',
-    pipes: [
-      pipe('ambient-drift', [
-        applyFieldVelocity('hero-noise', 0.9),
-        decayAlpha({ rate: 0.035 }),
-      ]),
-      pipe('memory-glow', [
-        onEnterZone('memory', add('emissive', 0.22)),
-        insideZone('memory', multiply('radius', 1.005)),
-      ]),
-    ],
-  }));
-```
-
-### API Rules
-
-- Use semantic IDs that explain the article concept, not implementation details.
-- Prefer normalized coordinates for article scenes unless the scene is explicitly bound to measured DOM/layout boxes.
-- Keep authoring declarations declarative. Do not place renderer calls, Pixi objects, mutable graphics state, or DOM traversal in article scenes.
-- Use `pipe()` to make effect order explicit.
-- Use effect stages for behavior. Do not create subclasses for visual variants.
-- Keep reusable authoring helpers small and named after publication concepts only after multiple scenes prove the abstraction.
-
-## Consumption Model
-
-The consumption path should remain lazy and article-local.
-
-1. A page or article declares a canvas or custom element only where the animation is needed.
-2. The blog client lazy-loads the animation scene and Pixi renderer for that article.
-3. The scene is authored declaratively with `createScene(...)`.
-4. Authoring code declares semantic objects: text sources, emitters, fields, zones, materials, timelines, and effect pipelines.
-5. `compileScene(...)` turns the declaration into a `CompiledRuntimeScene`.
-6. The compiled scene exposes simulation state and renderer-neutral primitives.
-7. `mountScene(...)` owns lifecycle, resize, visibility, reduced-motion behavior, and frame scheduling.
-8. `createPixiRenderer(...)` maps primitives to Pixi objects inside the adapter.
-9. Dispose on unmount/navigation to release renderer resources and scene state.
-
-Default pages must not pay for Pixi or the runtime.
-
-### Text Consumption Model
-
-Text participates in the runtime as a semantic source, not as a Pixi object in authoring code.
-
-Correct shape:
-
-1. Authoring declares a text source or text-bound emitter using semantic IDs.
-2. The text source defines text content, bounds, source visibility, and optional debug behavior.
-3. Emitters bind to the text source or its bounds.
-4. Effects define peel, drift, dissolve, return, or reform behavior.
-5. Compilation produces both particle systems and a renderer-neutral `TextPrimitive`.
-6. Pixi renderer maps `TextPrimitive` to Pixi `Text`.
-
-`SplitText` can be used later inside `renderer-pixi` for per-character rendering, but do not make Pixi `SplitText` the public authoring abstraction.
-
-## Runtime Frame Model
-
-The intended frame order is:
-
-1. Update modulation sources.
-2. Process scheduled bursts/triggers.
-3. Spawn particles from emitters.
-4. Apply field influence.
-5. Integrate velocity.
-6. Query zone occupancy.
-7. Enqueue coarse semantic events.
-8. Run transition effects bound to events.
-9. Run continuous effect pipelines.
-10. Decay and clean up dead particles.
-11. Prepare renderer-facing batches and visual primitives.
-12. Render through the adapter.
-
-Keep this order inspectable. If a change alters the order, update this file and the ADR or add a new ADR.
+Time and randomness are inputs. `requestAnimationFrame` belongs only to `mountScene`. Runtime execution must not call unseeded randomness or read wall-clock time directly.
 
 ## Effect Composition
 
-Effects are pipelines over channels, not subclasses.
+Effects are ordered stages over explicit channels.
 
-| Concept | Preferred Model | Avoid |
+Preferred:
+
+- small stage definitions
+- composition over inheritance
+- visible add, multiply, override, decay, field, and timeline semantics
+- coarse events for enter, exit, threshold, and scheduled burst
+- continuous systems for motion, integration, occupancy, and decay
+
+Avoid:
+
+- class trees for visual variants
+- per-particle signal graphs
+- global reactive stores
+- per-frame semantic event spam
+- legal TypeScript operations that the executor silently ignores
+
+Continuous operations must define whether they are time-normalized, cumulative, or derived from a baseline. Refresh-rate-dependent ambiguity is a bug.
+
+## Renderer-Neutral Primitive Layer
+
+Current vocabulary:
+
+| Primitive | Purpose | Pixi mapping |
 | --- | --- | --- |
-| Reusable behavior | Small effect stage/module | Class hierarchy |
-| Visual stacking | Ordered `pipe()` stages | Hidden side effects |
-| Transition behavior | Coarse events like `zone.enter` | Per-frame event spam |
-| Continuous behavior | Hot-loop systems over stores | Per-particle signal graphs |
-| Parameter changes | Channels and modulation | Renderer-specific mutation |
+| `TextPrimitive` | Visible text source, bounds, source glow, debug surface | Pixi `Text` |
+| visible rectangle zone | Semantic territory with fill and stroke | Pixi `Graphics` |
+| particle batch | Hot-path particle rendering and velocity trails | Pixi `Graphics` |
+| `PolylinePrimitive` | Fractures, arcs, connectors, field/debug lines | Pixi `Graphics` |
 
-### Channel Semantics
+Rules:
 
-Current effect channels include:
-
-- `velocity`
-- `alpha`
-- `radius`
-- `emissive`
-- `noise`
-- `trail`
-- `color`
-
-Stages must declare whether they add, multiply, override, decay, sample a field, or bind to a timeline. Ambiguous effect semantics are not acceptable.
-
-## Event Model
-
-Events are for semantic transitions only.
-
-Good events:
-
-- `zone.enter`
-- `zone.exit`
-- `timeline.threshold`
-- `emitter.burst`
-- viewport suspended/resumed
-- section enter/exit
-
-Bad events:
-
-- particle moved slightly
-- alpha changed slightly
-- radius pulsed this frame
-- every integration step
-
-The event model is deliberately coarse. Do not turn it into a universal reactive system.
+- Pixi owns low-level drawing.
+- The framework owns semantics, IDs, bounds, source binding, channels, and timelines.
+- No Pixi import or Pixi type may appear outside `renderer-pixi`.
+- Every claimed material channel must render or fail validation.
+- DOM overlays may frame a consumer UI but cannot substitute for a runtime primitive.
 
 ## Renderer Isolation
 
-PixiJS is only allowed under `src/renderer-pixi/`.
-
 Allowed:
 
-- Importing Pixi in `renderer-pixi/*`.
-- Mapping runtime batches to Pixi `Graphics`, containers, textures, and cached renderer resources.
-- Backend-specific resource management inside renderer packages.
+- Pixi imports in `src/renderer-pixi/`
+- backend-specific caches, display objects, blend modes, filters, and disposal inside the adapter
+- backend mapping from renderer-neutral primitives and prepared batches
 
-Not allowed:
+Prohibited:
 
-- Pixi imports in authoring, compile, sim, effects, timeline, or article-scenes.
-- Returning Pixi objects from public APIs.
-- Storing Pixi objects in runtime plans or authoring definitions.
-- Designing scene APIs around Pixi concepts.
-- Using DOM overlays to fake runtime primitives and then treating them as engine progress.
+- Pixi imports in core, authoring, compile, sim, or effects
+- Pixi objects in `SceneDefinition`, manifests, runtime plans, or public scene APIs
+- authoring APIs named after Pixi display objects
+- renderer-specific behavior encoded in lab DOM/CSS and described as framework capability
 
-If a renderer feature needs to surface upward, define a renderer-neutral channel, material field, or adapter capability first.
+If a backend feature must surface upward, define a renderer-neutral primitive, channel, or adapter capability first.
 
-## Text Emergence Milestone
+## Mount Lifecycle
 
-The next serious experiment is **Text Emergence V1**.
+`mountScene(...)` owns:
 
-It must include:
+- renderer initialization
+- DPR-aware resize
+- viewport suspension
+- caller-requested start/stop state
+- reduced-motion static rendering
+- frame callbacks
+- render-once invalidation
+- deterministic disposal
 
-- visible Pixi-rendered source text
-- particles emitted from the text source
-- text remains legible while particles peel away
-- source glow or material identity
-- basic trail / persistence
-- controls that affect real behavior, not just labels
-- debug bounds for the text source
-
-Acceptable v1 compromise:
-
-- Use text bounds for emission before true glyph sampling.
-
-Not acceptable:
-
-- Particles spawning near DOM text while the runtime does not render or own the text.
-- Calling a rectangle emitter "Text Emergence" without a runtime text primitive.
-- Adding more experiments before Text Emergence reads as language becoming motion.
+Caller pause and viewport visibility are separate states. Scrolling a paused scene offscreen and back must not restart it. Resuming after suspension must not include hidden time in `deltaMs`.
 
 ## Performance Rules
 
-- Avoid per-frame object allocation in particle hot loops.
-- Prefer typed arrays for large particle state.
-- Keep event queues reusable and bounded by meaningful transitions.
-- Use bitmasks for first-generation zone occupancy while zone counts remain intentionally small.
-- Keep renderer-facing state compact and incremental.
-- Do not introduce a global immutable store for simulation state.
-- Do not introduce per-particle signals.
-- Do not optimize blindly before a real scene demonstrates the bottleneck.
+- Avoid per-frame allocation in simulation hot loops.
+- Prefer typed arrays and stable iteration for particle state.
+- Seed random state once; do not create random functions per frame.
+- Keep event queues reusable and bounded by semantic transitions.
+- Reset all slot-coupled state when a particle slot is reused.
+- Keep zone occupancy explicit and bounded.
+- Do not expose mutable simulation stores as the long-term renderer contract.
+- Do not rebuild text styles or static primitive geometry each frame without evidence that the cost is acceptable.
+- Measure real scenes before adding Web Workers, OffscreenCanvas, WebGPU, an ECS, or a spatial index.
 
-## Best Practices
+Readable authoring syntax must not hide capacity, stage order, renderer cost, or unsupported behavior.
 
-- Start from a concrete article scene, then extract shared primitives only when repeated.
-- Keep IDs stable and meaningful; they become debugging vocabulary.
-- Use named pipes for every effect stack.
-- Keep visual motifs small: ambient drift, zone glow, pulse, emergence, sparse electric accents.
-- Build one visually undeniable experiment before expanding the lab.
-- Prefer `TextPrimitive` and `ZonePrimitive` work over new controls or labels.
-- Prefer scroll/time/section modulation over arbitrary animation constants.
-- Respect `prefers-reduced-motion` through `mountScene(...)`.
-- Preserve progressive enhancement: articles must remain readable without JS.
-- Keep default pages light; import renderer code only from scene-specific client entries.
-- Run `pnpm -C packages/animation typecheck` after package changes.
-- Run `pnpm -r typecheck` before considering cross-package work complete.
+## Animations Lab Boundary
+
+The lab lives in `packages/blog`. It owns:
+
+- experiment registry and copy
+- control presentation and defaults
+- stress mode
+- metrics presentation
+- visual acceptance
+- scene selection
+
+The package owns the behavior those controls exercise.
+
+A lab experiment is real only when:
+
+- `analyzeScene(...)` returns no errors
+- visible semantics come from runtime primitives
+- controls change real scene/runtime values
+- metrics come from actual runtime frames and live state
+- pause, reset, visibility, reduced motion, and disposal work
+- the stage does not use CSS art to fake a missing primitive
+
+Prefer fewer real experiments to more convincing labels.
+
+## Blog Integration Boundary
+
+- Existing Canvas 2D and CSS article preambles may remain until a concrete migration earns the cost.
+- A framework-backed preamble gets a page-specific lazy entry or scene key.
+- Never import Pixi through a shared bundle used by articles that do not need it.
+- Preserve complete static article HTML and readable content without JavaScript.
+- Do not spread animation to archive/default pages to justify the package.
+
+## Clean Cutovers
+
+One public grammar only:
+
+- keep `SceneDefinition` / `createScene`
+- remove unused article-scene builders
+- remove legacy effect descriptor and timeline models
+- migrate every real caller before deleting an API
+- do not keep deprecated aliases or inert metadata paths
+
+Internal primitives may remain reusable, but do not export two authoring routes that appear equally valid.
+
+## Verification
+
+After package changes:
+
+- run `pnpm -C packages/animation typecheck`
+- run `pnpm -C packages/blog typecheck` when the blog consumer changes
+- run `pnpm -C packages/blog build` only when no blog dev server owns `dist`
+- browser-drive `/animations-lab` and exercise lazy mount, controls, pause, reset, stress, offscreen resume, and reduced motion
+- verify representative article preambles and one default page
+
+Structural verification must include at least one valid scene analysis and one invalid declaration that returns the expected diagnostic code.
 
 ## Anti-Patterns
 
-- Building a general ECS before article scenes need it.
-- Adding a substrate because it is interesting rather than because a published scene requires it.
-- Hiding runtime cost behind cute authoring syntax.
-- Encoding article semantics in renderer code.
-- Letting Pixi leak into public authoring APIs.
-- Treating zones, fields, and materials as decorative effects instead of semantic primitives.
-- Treating a particle cloud as proof of every concept.
-- Calling lab smoke tests finished experiments.
-- Building more simulation substrates while the renderer still lacks text, zones, trails, and lines.
-- Using inheritance trees for visual behavior.
-- Emitting events for numerical changes that happen every frame.
-- Making every page load Pixi by default.
-
-## Insights And Rationale
-
-| Insight | Rationale | Practical Rule |
-| --- | --- | --- |
-| Pure events are wrong for motion | Integration, decay, and renderer preparation are continuous work | Use systems/pipelines for per-frame computation |
-| Pure signals are wrong for particles | Fine-grained reactive graphs would hide cost and broaden invalidation | Keep signals at orchestration boundaries only |
-| Inheritance is wrong for effects | Visual behavior needs stacking, ordering, and reuse | Compose effect stages through pipes |
-| Zones convert motion into meaning | Enter/exit/inside semantics let visuals carry article concepts | Model zones as first-class substrates |
-| Materials define house style | Visual identity should be reusable across scenes | Route appearance through material channels |
-| Emitters bind motion to content | Particles should emerge from article structure, not random screen space | Prefer text-box/layout-bound emitters for editorial scenes |
-| Compilation protects performance | Declarative APIs can be readable while runtime plans stay compact | Compile definitions before frame execution |
-| Renderer isolation protects ownership | Pixi is useful plumbing, not the product language | Keep adapter contracts renderer-neutral |
-| Renderer vocabulary limits expression | Semantic runtime state is invisible without visual primitives | Add text, zone, trail, and polyline primitives before expanding the lab |
-| Pixi text is plumbing, not product | Pixi already renders text; the runtime must define what text means | Use Pixi `Text` behind `TextPrimitive` |
-| Text Emergence is the forcing function | It connects runtime work directly to the publication | Build this before Memory Zone or Fracture Pulse |
+- Building a general-purpose game engine
+- Treating the blog as the package architecture
+- Adding substrates without a real scene
+- Adding controls that do not affect runtime behavior
+- Calling a repeating per-frame spawn count a burst
+- Faking zones or fractures with DOM art
+- Silent missing-reference fallbacks
+- Exposing mutable renderer or simulation internals as the agent contract
+- Returning an opaque runtime plan as the only inspection surface
+- Treating a particle cloud as proof of text, memory, or fracture semantics
+- Adding an editor before deterministic scene inspection exists
 
 ## References
 
-| Reference | Role | Use When |
-| --- | --- | --- |
-| `docs/adr/0015-animation-library.md` | Base decision: Pixi-backed custom runtime | Re-checking renderer ownership, package boundaries, and site integration |
-| `docs/adr/0015.1-animation-substrates-and-authoring-model.md` | Substrate, authoring, pipeline/event architecture | Adding primitives, effects, stores, or compile/runtime behavior |
-| `docs/adr/0015.3-text-and-render-primitive-layer.md` | Renderer primitive correction and Text Emergence milestone | Deciding what to build next in renderer and lab work |
-| `src/authoring/` | Public scene declaration surface | Changing how article scenes are written |
-| `src/compile/` | Internal executable runtime plan | Changing how declarations become stores and pipelines |
-| `src/sim/` | Hot-path storage and systems | Changing particle, zone, field, emitter, or occupancy behavior |
-| `src/effects/` | Effect channels and pipeline stages | Adding visual behavior or operators |
-| `src/renderer-pixi/` | Pixi backend implementation | Changing rendering details or Pixi resource management |
-| `src/article-scenes/foundation-scene.ts` | First compiled scene example | Checking the intended authoring and consumption shape |
-
-## Distilled Direction
-
-- Build an animation language for essays, not an engine for everything.
-- Keep authoring semantic, declarative, and pleasant.
-- Keep runtime execution explicit, compiled, and data-oriented.
-- Keep effects composable through ordered pipelines.
-- Keep events coarse and meaningful.
-- Make renderer-neutral visual primitives real before adding more lab concepts.
-- Use Pixi text; own text semantics.
-- Build Text Emergence before expanding the lab.
-- Keep Pixi replaceable by isolating it behind renderer adapters.
-- Let real articles decide which primitives deserve to exist.
+| Reference | Role |
+| --- | --- |
+| `docs/adr/0015.4-agent-native-animation-framework.md` | Accepted ownership and agent-native architecture |
+| `docs/adr/0015-animation-library.md` | Pixi backend rationale |
+| `docs/adr/0015.1-animation-substrates-and-authoring-model.md` | Substrates, events, pipelines, and hot-path model |
+| `docs/adr/0015.2-animations-lab.md` | Lab product and experience direction |
+| `docs/adr/0015.3-text-and-render-primitive-layer.md` | Renderer-neutral primitive correction |
+| `src/authoring/` | Canonical scene declaration surface |
+| `src/compile/` | Validation, manifest, and executable runtime path |
+| `src/sim/` | Hot-path state and substrate operations |
+| `src/effects/` | Ordered effect stages and channels |
+| `src/renderer-pixi/` | Pixi backend only |

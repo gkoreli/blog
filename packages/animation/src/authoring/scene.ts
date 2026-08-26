@@ -3,6 +3,7 @@ import type {
   FieldDefinition,
   MaterialDefinition,
   ParticleSystemDefinition,
+  PolylineDefinition,
   SceneDefinition,
   TextSourceDefinition,
   TimelineDefinition,
@@ -13,6 +14,7 @@ import type {
   FieldId,
   MaterialId,
   ParticleSystemId,
+  PrimitiveId,
   SceneId,
   TimelineId,
   ZoneId,
@@ -25,9 +27,13 @@ export interface ParticlesOptions {
   readonly pipes?: ParticleSystemDefinition['pipes'];
   readonly tags?: readonly string[];
 }
+export interface SceneOptions {
+  readonly seed?: number;
+}
 
 export class SceneDefinitionBuilder {
   private readonly fieldList: FieldDefinition[] = [];
+  private readonly polylineList: PolylineDefinition[] = [];
   private readonly zoneList: ZoneDefinition[] = [];
   private readonly textSourceList: TextSourceDefinition[] = [];
   private readonly emitterList: EmitterDefinition[] = [];
@@ -35,10 +41,17 @@ export class SceneDefinitionBuilder {
   private readonly systemList: ParticleSystemDefinition[] = [];
   private readonly timelineList: TimelineDefinition[] = [];
 
-  constructor(private readonly sceneId: SceneId) {}
+  constructor(
+    private readonly sceneId: SceneId,
+    private readonly sceneSeed: number,
+  ) {}
 
   field(id: FieldId, definition: Omit<FieldDefinition, 'id'>): this {
     this.fieldList.push({ id, ...definition });
+    return this;
+  }
+  polyline(id: PrimitiveId, definition: Omit<PolylineDefinition, 'id'>): this {
+    this.polylineList.push({ id, ...definition });
     return this;
   }
 
@@ -74,9 +87,12 @@ export class SceneDefinitionBuilder {
 
   build(): SceneDefinition {
     return {
+      version: 1,
       id: this.sceneId,
+      seed: this.sceneSeed,
       textSources: [...this.textSourceList],
       fields: [...this.fieldList],
+      polylines: [...this.polylineList],
       zones: [...this.zoneList],
       emitters: [...this.emitterList],
       materials: [...this.materialList],
@@ -86,8 +102,8 @@ export class SceneDefinitionBuilder {
   }
 }
 
-export function createScene(sceneId: SceneId): SceneDefinitionBuilder {
-  return new SceneDefinitionBuilder(sceneId);
+export function createScene(sceneId: SceneId, options: SceneOptions = {}): SceneDefinitionBuilder {
+  return new SceneDefinitionBuilder(sceneId, options.seed ?? 0);
 }
 
 export function particles(options: ParticlesOptions): Omit<ParticleSystemDefinition, 'id'> {

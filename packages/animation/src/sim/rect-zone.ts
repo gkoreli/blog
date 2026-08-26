@@ -17,6 +17,8 @@ export interface RectZoneOptions {
   readonly coordinateSpace?: ZoneCoordinateSpace;
   readonly color?: ColorValue;
   readonly alpha?: number;
+  readonly fillColor?: ColorValue;
+  readonly fillAlpha?: number;
 }
 
 export interface RectZone {
@@ -27,12 +29,15 @@ export interface RectZone {
   readonly coordinateSpace: ZoneCoordinateSpace;
   readonly color: ColorValue;
   readonly alpha: number;
+  readonly fillColor: ColorValue;
+  readonly fillAlpha: number;
 }
 
 export interface RectZonePrimitive extends RuntimePrimitive<typeof RECT_ZONE_KIND, RectZone> {}
 
 const DEFAULT_ZONE_COLOR = '#93c5fd';
 const DEFAULT_ZONE_ALPHA = 0.22;
+const DEFAULT_ZONE_FILL_ALPHA = 0.06;
 
 export function rectZone(options: RectZoneOptions): RectZone {
   return {
@@ -43,6 +48,8 @@ export function rectZone(options: RectZoneOptions): RectZone {
     coordinateSpace: options.coordinateSpace ?? 'normalized',
     color: options.color ?? DEFAULT_ZONE_COLOR,
     alpha: options.alpha ?? DEFAULT_ZONE_ALPHA,
+    fillColor: options.fillColor ?? options.color ?? DEFAULT_ZONE_COLOR,
+    fillAlpha: options.fillAlpha ?? DEFAULT_ZONE_FILL_ALPHA,
   };
 }
 
@@ -90,7 +97,9 @@ function isRectZone(value: unknown): value is RectZone {
     typeof value.height === 'number' &&
     (value.coordinateSpace === 'normalized' || value.coordinateSpace === 'screen') &&
     (typeof value.color === 'string' || typeof value.color === 'number') &&
-    typeof value.alpha === 'number'
+    typeof value.alpha === 'number' &&
+    (typeof value.fillColor === 'string' || typeof value.fillColor === 'number') &&
+    typeof value.fillAlpha === 'number'
   );
 }
 

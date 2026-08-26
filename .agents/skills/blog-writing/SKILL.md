@@ -4,7 +4,7 @@ description: Blog post writing guidelines for gkoreli.com. Use when writing, edi
 license: MIT
 metadata:
   author: gkoreli
-  version: "2.0.0"
+  version: "2.1.0"
 ---
 
 # Blog Writing — Agent Skill
@@ -133,6 +133,16 @@ third prompt pushing back on something...
 ### Build in Public
 
 Engineering posts and build logs should feel like chapters in an ongoing journey, not standalone tutorials.
+
+Build in public is a growth practice. It invites a third-person eye into the projects and the person making them so the author can understand his own work and readers can grow alongside it. The material is broader than failure: architecture, methods, tenets, bets, plans, vision, ambition, and attempts to change the world all belong.
+
+Use time according to the article's context:
+
+- **Past:** analyze experience, share lessons, and show growth.
+- **Present:** expose active judgment, ambiguity, bets, conditioning, pain, or uncertainty.
+- **Future:** state intent, vision, and what the project is trying to make possible.
+
+One article may braid all three. Do not impose a tense, wound, lesson, or open loop as a house formula.
 
 - **Show real decisions**: "I chose X over Y because Z" with actual trade-offs
 - **Show real numbers**: bundle sizes, line counts, npm downloads, build times

@@ -69,6 +69,22 @@ Build the article around:
 
 This is movement, not a mandatory heading template. Keep the governing form from `shape-article`.
 
+## Publish While the Outcome Remains Live
+
+An evidence-led investigation does not require a completed adoption curve, clean benchmark window, or retrospective verdict. Publish the current article when the owned failure, mechanism, action, and claim boundaries are supported—even if the outcome of the repair can still change.
+
+This does not make every investigation an open-wound field note. A completed experiment may be best served by a retrospective, a decision record, or a practical guide. Preserve resolved lessons and earned expertise when they are what matters. The article may combine past lessons, present uncertainty, and future tests; the governing form decides which layer carries the piece.
+
+Treat present uncertainty as an evidence state:
+
+- **Observed now:** the failure, implementation, available data, and decision.
+- **Unknown now:** the outcome or measurement that time has not produced.
+- **Declared continuation:** the later window and the result branches that would change the decision. It may report this work in the past tense while naming a different present uncertainty.
+
+When the current material is live, never recommend waiting merely to replace “I do not know yet” with expert hindsight. That move destroys transparency and converts work-in-progress contact into a postmortem. A later data window can earn a second article when it changes the state; it is not automatically a prerequisite for the first.
+
+Release still requires every material claim made now to be grounded. Unresolved does not mean unsupported.
+
 ## Make the result evergreen without hiding time
 
 Separate two layers:

@@ -161,7 +161,7 @@ UTC is the only reporting zone. The same URL returns the same period for every v
 - `7d` means today and the six preceding UTC calendar dates. Group by hour.
 - `30d` means today and the 29 preceding UTC calendar dates. Group by day.
 - `90d` means today and the 89 preceding UTC calendar dates. Group by day.
-- `All` starts at the first edge observation and groups by day.
+- `All` starts at the first non-owner source-marked observation across the legacy and edge eras, and groups by day.
 - The current date is partial. Return `updatedAt` and render it.
 - Query with a half-open range: `observed_at >= start AND observed_at < tomorrow_utc`.
 - Return every bucket from the start through the current hour/date. Missing rows are zeros.

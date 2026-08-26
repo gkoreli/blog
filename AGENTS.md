@@ -6,6 +6,23 @@ A personal engineering blog at `gkoreli.com` by Goga Koreli. Built with `@nisli/
 
 The blog fills a gap: there's plenty of AI hype content but very little from engineers who actually build with agents daily — the real decisions, failures, trade-offs, and workflows. This is a builder's journal, not a tutorial site.
 
+## Why We Write
+
+Writing is part of the work, not a report produced after the work. The publication exists to:
+
+- help Goga grow by forcing experience, judgment, ambition, and uncertainty into language;
+- help readers grow alongside him by sharing lessons, failures, methods, decisions, and live questions;
+- build in public by inviting a third-person eye into both the projects and the person building them;
+- make projects, architecture, methods, tenets, bets, plans, vision, and attempts to change the world visible—not only pain and ambiguity.
+
+Time is editorial material, not a style rule:
+
+- **Past:** reflect, analyze, learn, name growth, and share earned lessons.
+- **Present:** expose what is unresolved—conditioning, ambiguity, calculated guesses, judgment calls, bets, tension, and pain.
+- **Future:** declare intention, possibility, vision, and what the work is trying to change.
+
+An article may live in one time layer or braid all three. Choose by context. Open-wound writing is permission to publish before hindsight closes the experience, not a vulnerability quota. Retrospectives, guides, decision records, build journals, investigations, project visions, and exposed essays are all valid when their form tells the truth about why the piece exists now.
+
 ## Problem Space
 
 Agentic engineering is the most interesting frontier in software right now, but the content landscape is noisy in the wrong ways:
@@ -78,12 +95,17 @@ Run skills in this order:
 
 1. `shape-article` — choose the form and protect what is alive
 2. The governing form skill — `personal-essays`, `blog-writing`, or `oss-radar`
-3. `shareable-engineering` — engineering trust and discovery where applicable
-4. `polish-prose` — sentence-level pass last
+3. `article-discovery-positioning` — after shaping, reverse-engineer honest reader/search doorways, metadata, headings, links, and distribution where applicable
+4. `shareable-engineering` — engineering trust and evidence-based share mechanics where applicable
+5. `polish-prose` — sentence-level pass last
 
 ### Personal Essays Skill (`.agents/skills/personal-essays/SKILL.md`)
 
-The exposed-register personal essay — writing from open wounds, not scars. For this genre the agent is editor and gatekeeper, **never ghostwriter**: no drafted prose, no prompt file, essays typed by the author's hands and shipped plain (no art-object treatment). Defines the three-property test (present tense, unresolved at publication, confession costs status), the traps (meta-laps, discovery essays, instrumentation), and the editing checklist. Where it conflicts with `blog-writing` on a personal essay, `personal-essays` wins.
+The full creative-writing canon for growth in public. Open-wound writing protects live truth from retrospective laundering, but it is permission rather than a quota. Past lessons, present tension, and future intent may coexist; retrospectives, guides, project visions, decision records, and exposed essays are all valid when context earns them. In the exposed register the agent is editor and gatekeeper, **never ghostwriter**: no drafted prose and no prompt file. Where it conflicts with another skill on voice or aliveness, `personal-essays` wins.
+
+### Article Discovery Positioning Skill (`.agents/skills/article-discovery-positioning/SKILL.md`)
+
+Runs only after the living center and governing form are fixed. Classifies the article as reader-growth, signature, or bridge without quotas; inventories the content; maps honest reader/search jobs; produces coherent H1/seoTitle/description/standfirst/heading/keyword/link packages; separates doorway optimization from distribution, link earning, and reader contact; and may return a narrow or no-op recommendation. It never rewrites the body around a keyword or overrides voice.
 
 ### Shareable Engineering Skill (`.agents/skills/shareable-engineering/SKILL.md`)
 
@@ -109,6 +131,16 @@ This loop improves the publication from reader and evidence contact, not from to
 ## Content Strategy
 
 Build-in-public approach — document the journey with specifics over polish.
+
+### Publication Roles: Reach and Identity
+
+The publication needs useful external entry points and a recognizable mind behind them. Three article roles are first-class:
+
+- **Reader-growth:** a cold reader can recognize a problem, mechanism, decision, or artifact that matters beyond the existing audience. Broad means a wider honest fit set, not generic subject matter.
+- **Signature:** makes Goga's voice, thinking, identity, projects, bets, or vision legible. Its value is depth, recognition, and contact even when search fit is narrow.
+- **Bridge:** a concrete problem carries the reader into Goga's judgment or vision, or a personal stake reveals a transferable engineering problem.
+
+Roles are not quotas, quality rankings, or fixed forms. Shape the article first, then design the doorway. Reader-growth articles can use externally legible H1s; signature pieces may preserve literary titles and orient through description; bridge pieces may split a voice-bearing H1 from a concrete `seoTitle`. Internal links and series trails let reach and identity strengthen each other without asking every article to do both jobs.
 
 **Core topics:**
 - `@nisli/core` — zero-dependency reactive web component framework

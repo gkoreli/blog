@@ -171,45 +171,11 @@
   pointer-events: none;
 }
 
-.al-ambient-art,
-.al-memory-field,
-.al-text-art,
-.al-fracture-art {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
 .al-ambient-drift .al-stage {
   background:
     radial-gradient(circle at 26% 30%, rgba(110, 201, 168, 0.15), transparent 34%),
     radial-gradient(circle at 72% 70%, rgba(147, 197, 253, 0.1), transparent 36%),
     #151713;
-}
-
-.al-ambient-art span {
-  position: absolute;
-  left: 12%;
-  right: 12%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(110, 201, 168, 0.42), transparent);
-  transform-origin: center;
-}
-
-.al-ambient-art span:nth-child(1) {
-  top: 30%;
-  transform: rotate(-8deg);
-}
-
-.al-ambient-art span:nth-child(2) {
-  top: 52%;
-  transform: rotate(4deg);
-}
-
-.al-ambient-art span:nth-child(3) {
-  top: 70%;
-  transform: rotate(-3deg);
 }
 
 .al-memory-zone .al-stage {
@@ -219,42 +185,6 @@
     #161510;
 }
 
-.al-memory-field {
-  inset: 18% 20%;
-  border: 1px solid rgba(232, 200, 122, 0.58);
-  border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgba(232, 200, 122, 0.1), rgba(110, 201, 168, 0.04)),
-    repeating-linear-gradient(90deg, rgba(232, 200, 122, 0.08) 0 1px, transparent 1px 22px);
-  box-shadow: 0 0 42px rgba(232, 200, 122, 0.18);
-}
-
-.al-memory-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: rgba(232, 200, 122, 0.68);
-  font-family: var(--font-mono);
-  font-size: clamp(1.3rem, 5vw, 4.5rem);
-  letter-spacing: 0.28em;
-  transform: translate(-50%, -50%);
-}
-
-.al-memory-edge {
-  position: absolute;
-  inset: 0;
-  border: 1px solid rgba(232, 200, 122, 0.26);
-  border-radius: 8px;
-}
-
-.al-memory-edge.edge-a {
-  transform: translate(-14px, 10px);
-}
-
-.al-memory-edge.edge-b {
-  transform: translate(18px, -12px);
-}
-
 .al-text-emergence .al-stage {
   background:
     radial-gradient(circle at 50% 42%, rgba(147, 197, 253, 0.18), transparent 34%),
@@ -262,60 +192,11 @@
     #111417;
 }
 
-.al-text-art {
-  display: grid;
-  place-items: center;
-}
-
-.al-text-source-line {
-  position: absolute;
-  left: 14%;
-  right: 14%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(147, 197, 253, 0.46), rgba(110, 201, 168, 0.26), transparent);
-}
-
-.al-text-source-line.line-a {
-  top: 33%;
-}
-
-.al-text-source-line.line-b {
-  top: 56%;
-}
-
 .al-fracture-pulse .al-stage {
   background:
     radial-gradient(circle at 50% 50%, rgba(103, 232, 249, 0.16), transparent 22%),
     radial-gradient(circle at 55% 45%, rgba(167, 139, 250, 0.11), transparent 34%),
     #111216;
-}
-
-.al-fracture-art .crack {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(36vw, 280px);
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(103, 232, 249, 0.9), rgba(167, 139, 250, 0.62), transparent);
-  box-shadow: 0 0 22px rgba(103, 232, 249, 0.45);
-  transform-origin: left center;
-}
-
-.al-fracture-art .c1 { transform: rotate(-42deg) translateX(0); }
-.al-fracture-art .c2 { transform: rotate(18deg) translateX(-16px); }
-.al-fracture-art .c3 { transform: rotate(74deg) translateX(-8px); }
-.al-fracture-art .c4 { transform: rotate(138deg) translateX(-22px); }
-.al-fracture-art .c5 { transform: rotate(-8deg) translateX(24px); }
-
-.al-pulse-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: rgba(103, 232, 249, 0.72);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.22em;
-  transform: translate(-50%, -50%);
 }
 
 .al-exp-body {
@@ -403,10 +284,30 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+.al-control-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.al-control-heading output {
+  color: var(--color-text);
+}
 
 .al-console input[type='range'] {
   width: 100%;
   accent-color: var(--color-link);
+}
+.al-experiment.is-loading .al-stage canvas {
+  visibility: hidden;
+}
+
+.al-experiment.is-paused .al-stage {
+  border-color: rgba(147, 197, 253, 0.34);
+}
+
+.al-experiment.is-error .al-stage {
+  border-color: rgba(232, 200, 122, 0.52);
 }
 
 .al-actions {
@@ -428,7 +329,8 @@
 }
 
 .al-actions button:hover,
-.al-actions button.active {
+.al-actions button.active,
+.al-actions button[aria-pressed='true'] {
   background: var(--color-surface);
 }
 
@@ -497,7 +399,4 @@
     gap: 0.25rem;
   }
 
-  .al-memory-field {
-    inset: 22% 10%;
-  }
 }

@@ -1,28 +1,35 @@
 import type { RuntimeEvent, RuntimePrimitive, RuntimeUpdateContext } from '../core/index.js';
-import { createRuntimeEventQueue, createTextPrimitive } from '../core/index.js';
+import { createPolylinePrimitive, createRuntimeEventQueue, createTextPrimitive } from '../core/index.js';
 import type { EmitterDefinition, SceneDefinition, TextSourceDefinition, TimelineDefinition } from '../authoring/index.js';
 import type { EffectApplyDefinition, EffectStageDefinition } from '../effects/index.js';
 import {
+  PARTICLE_FLAG_NEW,
   beginOccupancyFrame,
   compileZones,
   containsZonePoint,
   createEmitterRuntimeState,
+  createRectZonePrimitive,
   createOccupancyStore,
   createParticleStore,
   createTextSourcePointSampler,
   killParticle,
   readOccupancyMask,
   readParticleByte,
+  readParticleFlag,
   readParticleFloat,
   sampleFieldVelocity,
+  rectZone,
   spawnFromEmitter,
 } from '../sim/index.js';
 import type { ParticleStore } from '../sim/index.js';
 import { compilePipelines } from './compile-pipelines.js';
 import type { CompiledRuntimeScene, ParticleRenderBatch, RuntimeParticleSystem, RuntimePlan } from './runtime-plan.js';
+import { analyzeScene, SceneCompilationError } from './scene-contract.js';
 
 export function compileScene(definition: SceneDefinition): CompiledRuntimeScene {
-  return new CompiledScene(definition);
+  const analysis = analyzeScene(definition);
+  if (!analysis.ok) throw new SceneCompilationError(definition.id, analysis.diagnostics);
+  return new CompiledScene(definition, analysis.manifest);
 }
 
 class CompiledScene implements CompiledRuntimeScene {
@@ -31,7 +38,7 @@ class CompiledScene implements CompiledRuntimeScene {
   private readonly renderBatches: readonly ParticleRenderBatch[];
   private readonly timelineValues = new Map<string, number>();
 
-  constructor(definition: SceneDefinition) {
+  constructor(definition: SceneDefinition, manifest: RuntimePlan['manifest']) {
     const fields = new Map(definition.fields.map(field => [field.id, field]));
     const materials = new Map(definition.materials.map(material => [material.id, material]));
     const emittersById = new Map(definition.emitters.map(emitter => [emitter.id, emitter]));
@@ -55,13 +62,18 @@ class CompiledScene implements CompiledRuntimeScene {
         materialIndex: Math.max(0, definition.materials.findIndex(item => item.id === material.id)),
         store: createParticleStore(system.capacity),
         occupancy: createOccupancyStore(system.capacity),
-        emitterState: createEmitterRuntimeState(hashString(system.id), pointSampler),
+        emitterState: createEmitterRuntimeState(
+          hashString(`${definition.seed}:${definition.id}:${system.id}`),
+          pointSampler,
+          resolvedEmitter.burst,
+        ),
         transitionPipes: pipelines.transitionPipes,
         continuousPipes: pipelines.continuousPipes,
       });
     }
 
     this.plan = {
+      manifest,
       sceneId: definition.id,
       fields,
       materials,
@@ -84,15 +96,41 @@ class CompiledScene implements CompiledRuntimeScene {
       store: system.store,
       material: system.material,
     }));
-    this.renderPrimitives = definition.textSources.map(source => createTextPrimitive(source.id, {
-      sourceId: source.id,
-      text: source.text,
-      bounds: source.bounds,
-      anchor: source.anchor,
-      style: source.style,
-      visible: source.visible,
-      debugBounds: source.debugBounds,
+    const renderPrimitives: RuntimePrimitive[] = definition.polylines.map(line => createPolylinePrimitive(line.id, {
+      points: line.points,
+      coordinateSpace: line.coordinateSpace,
+      color: line.color,
+      alpha: line.alpha,
+      width: line.width,
+      ...(line.glow === undefined ? {} : { glow: line.glow }),
     }));
+    for (const source of definition.textSources) {
+      renderPrimitives.push(createTextPrimitive(source.id, {
+        sourceId: source.id,
+        text: source.text,
+        bounds: source.bounds,
+        anchor: source.anchor,
+        style: source.style,
+        visible: source.visible,
+        debugBounds: source.debugBounds,
+      }));
+    }
+
+    for (const zone of definition.zones) {
+      if (zone.shape.kind !== 'rect' || zone.visual === undefined) continue;
+      renderPrimitives.push(createRectZonePrimitive(zone.id, rectZone({
+        x: zone.shape.x,
+        y: zone.shape.y,
+        width: zone.shape.width,
+        height: zone.shape.height,
+        color: zone.visual.stroke,
+        alpha: zone.visual.strokeAlpha,
+        fillColor: zone.visual.fill,
+        fillAlpha: zone.visual.fillAlpha,
+      })));
+    }
+
+    this.renderPrimitives = renderPrimitives;
   }
 
   get id(): string {
@@ -171,7 +209,11 @@ class CompiledScene implements CompiledRuntimeScene {
       }
 
       system.occupancy.currentMask[index] = mask;
-      const previous = readOccupancyMask(system.occupancy.previousMask, index);
+      const flags = readParticleFlag(system.store.flags, index);
+      const previous = (flags & PARTICLE_FLAG_NEW) === 0
+        ? readOccupancyMask(system.occupancy.previousMask, index)
+        : 0;
+      system.store.flags[index] = flags & ~PARTICLE_FLAG_NEW;
       const entered = mask & ~previous;
       const exited = previous & ~mask;
 

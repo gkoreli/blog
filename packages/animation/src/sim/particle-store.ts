@@ -1,3 +1,5 @@
+export const PARTICLE_FLAG_NEW = 1;
+
 export interface ParticleStore {
   readonly capacity: number;
   count: number;
@@ -82,7 +84,7 @@ export function spawnParticle(store: ParticleStore, options: ParticleSpawnOption
   store.colorG[index] = options.colorG;
   store.colorB[index] = options.colorB;
   store.materialIndex[index] = options.materialIndex;
-  store.flags[index] = 0;
+  store.flags[index] = PARTICLE_FLAG_NEW;
   store.alive[index] = 1;
   store.count = Math.max(store.count, index + 1);
 

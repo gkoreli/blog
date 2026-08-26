@@ -1,20 +1,4 @@
 export {
-  PARTICLE_FIELD_KIND,
-  ParticleField,
-  createParticleField,
-  createParticleFieldPrimitive,
-  graphParticles,
-  isParticleFieldPrimitive,
-} from './particle-field.js';
-export type {
-  ParticleFieldBlueprint,
-  ParticleFieldOptions,
-  ParticleFieldPrimitive,
-  ParticleFieldRenderData,
-  ParticleFieldStyle,
-  ParticleSnapshot,
-} from './particle-field.js';
-export {
   RECT_ZONE_KIND,
   containsPoint,
   createRectZonePrimitive,
@@ -30,6 +14,7 @@ export type {
   ZoneCoordinateSpace,
 } from './rect-zone.js';
 export {
+  PARTICLE_FLAG_NEW,
   createParticleStore,
   killParticle,
   readParticleByte,

@@ -6,6 +6,10 @@ date: "2026-08-25"
 description: "Does llms.txt improve AI search? This live audit examines edge data, agent tools, Markdown, and GEO evidence—then shows what to build and measure."
 section: engineering
 tags: [llms-txt, geo, ai-agents, analytics, agentic-engineering]
+series:
+  id: "measurement-boundaries"
+  title: "Measurement boundaries"
+  order: 1
 researchFootprint:
   sessions: 7
   artifacts: 29
@@ -144,6 +148,8 @@ Those resources are static assets. Only `/api/*` runs Worker-first in the deploy
 The classifier had a second problem. Its categories were `Human`, `Bot`, and `AI`. But providers document different purposes: search crawling, potential training collection, and user-directed fetching. In the current code, `OAI-SearchBot` and `Claude-SearchBot` fall into the generic bot bucket, while `Claude-User` and `Perplexity-User` can fall into the human bucket. `GPTBot` and `ChatGPT-User` both become AI even though they perform different jobs.
 
 The honest description of the existing metric is: browser analytics events whose beacon user agent matched the current AI regex. It is not a count of AI crawlers reading the site's files. The official crawler roles for [OpenAI](https://developers.openai.com/api/docs/bots), [Anthropic](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler), and [Perplexity](https://docs.perplexity.ai/docs/resources/perplexity-crawlers) also change over time, so the classifier needs a dated purpose model—not a longer permanent regex.
+
+I rebuilt the system around the event it could actually observe, then discovered that a clean cutover threatened to erase 2,564 useful historical rows. The live repair and the questions it did not settle continue in [How I Built First-Party Analytics for a Personal Blog](/first-party-analytics-for-a-personal-blog).
 
 ## The first edge snapshot mostly found the investigation
 

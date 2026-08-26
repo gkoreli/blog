@@ -36,11 +36,18 @@ export type {
   TextPrimitiveGlow,
   TextPrimitiveStyle,
 } from './primitives.js';
+export {
+  POLYLINE_PRIMITIVE_KIND,
+  createPolylinePrimitive,
+  isPolylinePrimitive,
+} from './polyline.js';
+export type {
+  PolylinePrimitive,
+  PolylinePrimitiveData,
+  PolylinePrimitiveGlow,
+  PrimitivePoint,
+} from './polyline.js';
 export { createRuntimeEventQueue } from './event-queue.js';
 export type { RuntimeEvent, RuntimeEventQueue } from './event-queue.js';
-export { createRuntimeScene } from './scene.js';
-export type { RuntimeSceneOptions } from './scene.js';
 export { mountScene } from './mount.js';
 export type { MountedScene, SceneMountOptions } from './mount.js';
-export { createValueSignal } from './signal.js';
-export type { Signal, WritableSignal } from './signal.js';

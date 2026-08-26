@@ -1,5 +1,3 @@
-export { electric, glow, pulse } from './motifs.js';
-export { enterZone } from './pipes.js';
 export { add, multiply, override } from './operators.js';
 export {
   always,
@@ -19,13 +17,3 @@ export type {
   PipeDefinition,
 } from './effect.js';
 export type { DecayAlphaOptions, TimelinePulseOptions } from './modules.js';
-export type {
-  EffectDescriptor,
-  EffectKind,
-  ElectricEffectOptions,
-  EnterZonePipe,
-  GlowEffectOptions,
-  PipeTriggerKind,
-  PulseEffectOptions,
-  ScenePipe,
-} from './types.js';

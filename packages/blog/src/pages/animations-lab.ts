@@ -41,9 +41,9 @@ const EXPERIMENTS: readonly LabExperiment[] = [
       'The base substrate is stable enough to build from.',
     ],
     controls: [
-      { id: 'particles', label: 'Density', min: 60, max: 260, value: 140, step: 20 },
-      { id: 'drift', label: 'Drift', min: 15, max: 90, value: 38, step: 5 },
-      { id: 'glow', label: 'Glow', min: 10, max: 80, value: 32, step: 4 },
+      { id: 'particles', label: 'Density', min: 60, max: 260, value: 140, step: 1 },
+      { id: 'drift', label: 'Drift', min: 15, max: 90, value: 38, step: 1 },
+      { id: 'glow', label: 'Glow', min: 10, max: 80, value: 32, step: 1 },
     ],
   },
   {
@@ -71,9 +71,9 @@ const EXPERIMENTS: readonly LabExperiment[] = [
       'Animation can encode place, not just movement.',
     ],
     controls: [
-      { id: 'particles', label: 'Travelers', min: 80, max: 320, value: 180, step: 20 },
-      { id: 'drift', label: 'Current', min: 15, max: 100, value: 44, step: 5 },
-      { id: 'glow', label: 'Memory Heat', min: 10, max: 110, value: 58, step: 4 },
+      { id: 'particles', label: 'Travelers', min: 80, max: 320, value: 180, step: 1 },
+      { id: 'drift', label: 'Current', min: 15, max: 100, value: 44, step: 1 },
+      { id: 'glow', label: 'Memory Heat', min: 10, max: 110, value: 58, step: 1 },
     ],
   },
   {
@@ -101,9 +101,9 @@ const EXPERIMENTS: readonly LabExperiment[] = [
       'Future museum pieces can be content-shaped, not only canvas-shaped.',
     ],
     controls: [
-      { id: 'particles', label: 'Glyph Dust', min: 70, max: 260, value: 150, step: 10 },
-      { id: 'drift', label: 'Lift', min: 15, max: 100, value: 58, step: 5 },
-      { id: 'glow', label: 'Ink Light', min: 10, max: 95, value: 46, step: 4 },
+      { id: 'particles', label: 'Glyph Dust', min: 70, max: 260, value: 150, step: 1 },
+      { id: 'drift', label: 'Lift', min: 15, max: 100, value: 58, step: 1 },
+      { id: 'glow', label: 'Ink Light', min: 10, max: 95, value: 46, step: 1 },
     ],
   },
   {
@@ -131,46 +131,12 @@ const EXPERIMENTS: readonly LabExperiment[] = [
       'The visual language can include tension without becoming tacky.',
     ],
     controls: [
-      { id: 'particles', label: 'Charge', min: 60, max: 300, value: 150, step: 20 },
-      { id: 'drift', label: 'Instability', min: 20, max: 130, value: 78, step: 5 },
-      { id: 'glow', label: 'Voltage', min: 20, max: 140, value: 92, step: 4 },
+      { id: 'particles', label: 'Charge', min: 60, max: 300, value: 150, step: 1 },
+      { id: 'drift', label: 'Instability', min: 20, max: 130, value: 78, step: 1 },
+      { id: 'glow', label: 'Voltage', min: 20, max: 140, value: 92, step: 1 },
     ],
   },
 ];
-
-function StageArt(experiment: LabExperiment) {
-  if (experiment.id === 'memory-zone') {
-    return html`<div class="al-memory-field" aria-hidden="true">
-      <div class="al-memory-core">MEMORY</div>
-      <div class="al-memory-edge edge-a"></div>
-      <div class="al-memory-edge edge-b"></div>
-    </div>`;
-  }
-
-  if (experiment.id === 'text-emergence') {
-    return html`<div class="al-text-art" aria-hidden="true">
-      <div class="al-text-source-line line-a"></div>
-      <div class="al-text-source-line line-b"></div>
-    </div>`;
-  }
-
-  if (experiment.id === 'fracture-pulse') {
-    return html`<div class="al-fracture-art" aria-hidden="true">
-      <span class="crack c1"></span>
-      <span class="crack c2"></span>
-      <span class="crack c3"></span>
-      <span class="crack c4"></span>
-      <span class="crack c5"></span>
-      <div class="al-pulse-core">PULSE</div>
-    </div>`;
-  }
-
-  return html`<div class="al-ambient-art" aria-hidden="true">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>`;
-}
 
 function ExperimentSection(experiment: LabExperiment) {
   return html`<section class="al-experiment al-${experiment.id}" id="${experiment.id}" data-lab-experiment="${experiment.id}">
@@ -185,7 +151,6 @@ function ExperimentSection(experiment: LabExperiment) {
 
     <div class="al-stage">
       <canvas data-lab-canvas aria-label="${experiment.title} live animation"></canvas>
-      ${StageArt(experiment)}
       <div class="al-stage-overlay">
         <span>${experiment.substrates.join(' / ')}</span>
         <span data-stage-particles>Particles: -</span>
@@ -225,16 +190,19 @@ function ExperimentSection(experiment: LabExperiment) {
       <aside class="al-console">
         <div class="al-panel-label">Controls</div>
         ${experiment.controls.map(control => html`<label>
-          <span>${control.label}</span>
-          <input type="range" min="${control.min}" max="${control.max}" value="${control.value}" step="${control.step}" data-control="${control.id}">
+          <span class="al-control-heading">
+            <span>${control.label}</span>
+            <output data-control-value="${control.id}">${control.value}</output>
+          </span>
+          <input type="range" min="${control.min}" max="${control.max}" value="${control.value}" step="${control.step}" data-control="${control.id}" data-default-value="${control.value}">
         </label>`)}
         <div class="al-actions">
-          <button type="button" data-action="pause">Pause</button>
+          <button type="button" data-action="pause" aria-pressed="false">Pause</button>
           <button type="button" data-action="reset">Reset</button>
-          <button type="button" data-action="stress">Stress</button>
+          <button type="button" data-action="stress" aria-pressed="false">Stress</button>
         </div>
         <div class="al-metrics" data-metrics>
-          <div><span>Status</span><strong data-metric="status">Waiting</strong></div>
+          <div><span>Status</span><strong data-metric="status" aria-live="polite">Waiting</strong></div>
           <div><span>FPS</span><strong data-metric="fps">-</strong></div>
           <div><span>Frame</span><strong data-metric="frame">-</strong></div>
           <div><span>Particles</span><strong data-metric="particles">-</strong></div>

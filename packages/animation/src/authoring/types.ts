@@ -1,9 +1,11 @@
 import type {
+  ColorValue,
   EmitterId,
   FieldId,
   MaterialId,
   ParticleSystemId,
   PrimitiveAnchor,
+  PolylinePrimitiveData,
   PrimitiveRect,
   SceneId,
   TextPrimitiveStyle,
@@ -12,12 +14,19 @@ import type {
   ZoneId,
 } from '../core/index.js';
 import type { PipeDefinition } from '../effects/index.js';
+export const SCENE_DEFINITION_VERSION = 1;
 
 export type ZoneBlendMode = 'highest-priority' | 'accumulate' | 'exclusive';
 
 export type ZoneShape =
   | { readonly kind: 'rect'; readonly x: number; readonly y: number; readonly width: number; readonly height: number }
   | { readonly kind: 'circle'; readonly x: number; readonly y: number; readonly radius: number };
+export interface ZoneVisualDefinition {
+  readonly stroke: ColorValue;
+  readonly strokeAlpha: number;
+  readonly fill: ColorValue;
+  readonly fillAlpha: number;
+}
 
 export interface ZoneDefinition {
   readonly id: ZoneId;
@@ -25,6 +34,10 @@ export interface ZoneDefinition {
   readonly tags: readonly string[];
   readonly priority: number;
   readonly blendMode: ZoneBlendMode;
+  readonly visual?: ZoneVisualDefinition;
+}
+export interface PolylineDefinition extends PolylinePrimitiveData {
+  readonly id: string;
 }
 
 export type EmitterShape =
@@ -115,9 +128,12 @@ export interface ParticleSystemDefinition {
 }
 
 export interface SceneDefinition {
+  readonly version: typeof SCENE_DEFINITION_VERSION;
   readonly id: SceneId;
+  readonly seed: number;
   readonly textSources: readonly TextSourceDefinition[];
   readonly fields: readonly FieldDefinition[];
+  readonly polylines: readonly PolylineDefinition[];
   readonly zones: readonly ZoneDefinition[];
   readonly emitters: readonly EmitterDefinition[];
   readonly materials: readonly MaterialDefinition[];

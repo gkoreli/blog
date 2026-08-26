@@ -9,6 +9,7 @@ import type {
 } from '../authoring/index.js';
 import type { PipeDefinition } from '../effects/index.js';
 import type { CompiledZone, EmitterRuntimeState, OccupancyStore, ParticleStore } from '../sim/index.js';
+import type { SceneManifestV1 } from './scene-contract.js';
 
 export interface RendererBindings {
   readonly particleSystems: readonly ParticleSystemIdBinding[];
@@ -32,6 +33,7 @@ export interface RuntimeParticleSystem {
 }
 
 export interface RuntimePlan {
+  readonly manifest: SceneManifestV1;
   readonly sceneId: SceneId;
   readonly fields: ReadonlyMap<FieldDefinition['id'], FieldDefinition>;
   readonly materials: ReadonlyMap<MaterialDefinition['id'], MaterialDefinition>;

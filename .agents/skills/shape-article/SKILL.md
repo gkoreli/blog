@@ -35,6 +35,29 @@ Let forms mix, but choose one to govern movement and the ending.
 
 Do not punish one form for lacking another form's payoff. An exposed essay needs no takeaway. A research verdict needs more than emotional truth.
 
+## Protect the Live State Without Making It a Formula
+
+When an owned engineering failure is active, consider the article that can be written truthfully now. Do not recommend waiting for a benchmark, adoption curve, clean measurement window, or completed outcome merely so the author can sound more authoritative later.
+
+This is a routing safeguard, not a house style. Do not force every piece into open-wound form. Earned expertise, past-tense lessons, growth, resolved tradeoffs, and retrospective synthesis are valuable when they are the truth of the material. An article may braid all three time layers: past experience for lessons, present tension for contact, and future intention for what remains possible. Choose the governing form from context.
+
+Current evidence is enough when it can establish:
+
+- what was built or believed;
+- what failed, hurt, or became ambiguous;
+- which mechanism explains the failure;
+- what action the author took and why;
+- which tensions or outcomes remain unresolved.
+
+The unresolved outcome is part of the article's evidence boundary. Name it. A later measurement can earn a continuation without replacing the open-wound article.
+
+One valid pattern, when time itself creates two meaningful states:
+
+1. **Now:** publish the active pain, present-tense reasoning, implementation, available evidence, and unresolved tensions.
+2. **Later:** publish changed evidence and earned lessons in the past tense while naming whatever new tension is alive then. The continuation is not required to imitate the first article's form.
+
+Waiting is justified only when a material factual claim lacks enough evidence to publish safely, publication would cause concrete harm, or the author has not supplied the human stake. “The data will be cleaner later” is not enough. Do not launder vulnerability into retrospective authority.
+
 ## Protect Before Editing
 
 Mark load-bearing material before changing the draft:
@@ -68,7 +91,7 @@ Allow linear argument, circling, fragments, accumulation, juxtaposition, or a si
 
 Do not flatten the body into a separate machine-facing summary. Preserve the full thinking process and add anchors around it:
 
-- Use a concrete title, description, date, section, and tags.
+- Use a truthful title, concrete description, date, section, and tags. A signature title may stay literary; `article-discovery-positioning` decides how cold-reader handles belong on the other surfaces without flattening it.
 - Name projects, people, concepts, and time shifts consistently.
 - Keep factual claims close to their sources.
 - Distinguish observation, external evidence, inference, fear, and judgment through natural language.
@@ -85,9 +108,10 @@ Treat lived uncertainty as information. It exposes constraints, competing explan
 3. Apply the governing skill without importing another form's ending.
 4. Shape movement, recurrence, and reader orientation.
 5. Verify facts, dates, references, quotations, and claim boundaries.
-6. Apply `shareable-engineering` only where its engineering and discovery rules fit.
-7. Apply `polish-prose` last. Restore any edit that reduced aliveness, precision, or voice.
-8. Read the result as both a human reader and an agent reconstructing state, evidence, uncertainty, and time.
+6. Apply `article-discovery-positioning` after the article's truth and claim boundaries are stable; accept a narrow or no-op doorway when that protects the form.
+7. Apply `shareable-engineering` only where its engineering trust and share rules fit.
+8. Apply `polish-prose` last. Restore any edit that reduced aliveness, precision, or voice.
+9. Read the result as both a human reader and an agent reconstructing state, evidence, uncertainty, and time.
 
 ## Reject These Failure Modes
 
