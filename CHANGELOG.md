@@ -2,6 +2,13 @@
 
 Notable changes to the publication and its supporting packages are recorded here.
 
+## 0.2.1 — 2026-08-26
+
+### Animation framework
+
+- Load Pixi’s CSP-safe static shader and uniform synchronization fallback so the Animations Lab runs without adding `'unsafe-eval'` to `script-src`.
+- Preserve the next framework sequence as a backlog epic covering deterministic frames, executable plans, agent inspection, measured performance, Text Emergence V2, choreography inputs, and one selective preamble pilot.
+
 ## 0.2.0 — 2026-08-26
 
 ### Animation framework

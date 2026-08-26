@@ -1,0 +1,46 @@
+# Analytics implementation and production evidence
+docs/tasks/TASK-0010.md
+docs/tasks/TASK-0011.md
+docs/tasks/TASK-0012.md
+docs/tasks/TASK-0013.md
+docs/tasks/TASK-0014.md
+docs/tasks/TASK-0015.md
+docs/tasks/TASK-0016.md
+docs/tasks/TASK-0017.md
+docs/tasks/TASK-0018.md
+docs/tasks/TASK-0019.md
+docs/tasks/TASK-0020.md
+docs/tasks/TASK-0021.md
+
+# Article research, editorial canon, and decision artifacts
+docs/tasks/TASK-0033.md
+docs/tasks/TASK-0034.md
+docs/tasks/TASK-0035.md
+docs/tasks/TASK-0036.md
+docs/tasks/TASK-0037.md
+docs/tasks/TASK-0038.md
+docs/tasks/TASK-0039.md
+docs/tasks/TASK-0040.md
+docs/tasks/TASK-0041.md
+docs/tasks/TASK-0043.md
+docs/tasks/TASK-0044.md
+docs/tasks/TASK-0045.md
+
+# Draft reviews and publication verification
+docs/tasks/TASK-0051.md
+docs/tasks/TASK-0052.md
+docs/tasks/TASK-0053.md
+docs/tasks/TASK-0055.md
+
+# Doorway and discovery-positioning research
+docs/tasks/TASK-0069.md
+docs/tasks/TASK-0070.md
+docs/tasks/TASK-0071.md
+docs/tasks/TASK-0072.md
+docs/tasks/TASK-0073.md
+docs/tasks/TASK-0074.md
+docs/tasks/TASK-0075.md
+docs/tasks/TASK-0076.md
+
+# Public research index
+packages/blog/drafts/research/analytics-wrong-event/00-research-index.md

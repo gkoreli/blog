@@ -1,3 +1,5 @@
+import 'pixi.js/unsafe-eval';
+
 import { Application, Container, Graphics, Text } from 'pixi.js';
 import type { BLEND_MODES, TextStyleOptions } from 'pixi.js';
 import { isParticleRenderScene } from '../compile/index.js';

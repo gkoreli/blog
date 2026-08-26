@@ -33,3 +33,5 @@ where is the article? write it
 I Built a Correct Counter for the Wrong Event - i like this but this kinda article will not bring readers to our blog... i think it needs to be more external, like very naive example would be: how to build the analytics with full transparency for a personal blog, but this is not a good title, i am just using as an example
 ---
 the language and positioning matters a lot, imagine what are potential ways to come across this website, what would  someone be looking for and comes across this article and they find it very meaningful and interesting to read it. Can you reverse engineer the title and SEO positioning? We shouldn't change the core article itself, but headers, titles and certain keywords matter a lot.
+---
+where is the researchFootprint and totalTokens  for this article? i feel like we spent so much time, effort and tokens on this article, it would be nice to showcase it
