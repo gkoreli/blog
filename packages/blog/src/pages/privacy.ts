@@ -8,9 +8,19 @@ export function privacyPage() {
 
   <p>This is a personal engineering blog. Here's what's collected and why.</p>
 
-  <h2>Analytics</h2>
+  <h2>First-party analytics</h2>
 
-  <p>Page views are recorded server-side (path and referrer only) using a self-built analytics system running on Cloudflare Workers. No cookies. No cross-site tracking. No third-party scripts involved in analytics.</p>
+  <p>For a successful, non-prefetch GET that serves an HTML page, this site records the page path, referring hostname, country, a daily pseudonymous client ID, a heuristic traffic class (browser, bot, or AI User-Agent), the matched User-Agent rule name when available, device type, whether the request is mine, and the UTC observation time. It does not record query strings, full referrer URLs, city, continent, raw IP addresses, or raw User-Agent strings for these edge observations.</p>
+
+  <p>The edge daily client ID is the first 128 bits of an HMAC-SHA-256 value derived from the site host, UTC date, IP address, and User-Agent using a secret key. The IP address and User-Agent are processed transiently to create it but are not stored. The ID can link requests within one UTC day; it is not anonymous, does not identify a person, and cannot establish the same client across dates, devices, or networks. Public stats exclude my requests. Recording is best effort and uses no cookies.</p>
+
+  <p>The browser-beacon dataset collected before August 26, 2026 remains intact. Its source table stores page path, cleaned referrer host/path, country, city, continent, a daily date-derived IP + User-Agent hash, heuristic traffic and device classes, owner status, and UTC time; it never stored raw IP addresses or raw User-Agent strings. A minimized, source-marked copy is included in public stats so the historical trends are not lost.</p>
+
+  <p>First-party analytics rows are retained until I delete them; there is currently no automatic expiration. The source marker distinguishes historical beacon events from newer edge observations.</p>
+
+  <h2>Cloudflare Web Analytics</h2>
+
+  <p>Cloudflare Web Analytics is separate from the first-party dataset above. Its JavaScript beacon supplies Cloudflare's performance dashboard and does not feed this site's public <a href="/stats">stats</a>. Cloudflare may process request and browser data for that service; see <a ${ext('https://www.cloudflare.com/privacypolicy/')}>Cloudflare's Privacy Policy</a>.</p>
 
   <h2>Newsletter</h2>
 
@@ -18,15 +28,15 @@ export function privacyPage() {
 
   <h2>Bot protection</h2>
 
-  <p>The newsletter signup form is protected by <a ${ext('https://www.cloudflare.com/products/turnstile/')}>Cloudflare Turnstile</a> (invisible mode). Turnstile analyses browser and network signals in the background to verify requests are made by a human. No interaction is required from you. Cloudflare may process data as part of this verification — see <a ${ext('https://www.cloudflare.com/privacypolicy/')}>Cloudflare's Privacy Policy</a>.</p>
+  <p>The newsletter signup form is protected by <a ${ext('https://www.cloudflare.com/products/turnstile/')}>Cloudflare Turnstile</a> (invisible mode). Turnstile analyses browser and network signals in the background to assess signup requests for automated abuse. No interaction is normally required. Cloudflare may process data as part of this assessment — see <a ${ext('https://www.cloudflare.com/privacypolicy/')}>Cloudflare's Privacy Policy</a>.</p>
 
   <h2>Error diagnostics</h2>
 
   <p>If something breaks in the browser, a small first-party error report may be sent to help debug the problem. Reports include the page path, error message, component name, browser user agent, and coarse Cloudflare request metadata. They do not include email addresses, form contents, cookies, localStorage values, Turnstile tokens, or full URLs with query strings. Error reports are deleted after 30 days.</p>
 
-  <h2>No third-party tracking</h2>
+  <h2>Other services</h2>
 
-  <p>No advertising networks, no social tracking pixels, no session recording. The only third-party service that touches a visitor's request is Cloudflare (infrastructure + Turnstile) and Google Fonts (font loading).</p>
+  <p>No advertising networks, social tracking pixels, or session recording are used. Cloudflare provides site infrastructure, Cloudflare Web Analytics, and Turnstile; Google Fonts supplies fonts.</p>
 
   <h2>Contact</h2>
 

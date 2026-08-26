@@ -1,4 +1,4 @@
-import { handleEvent, handleStats, type Env as AnalyticsEnv } from '@gkoreli/analytics';
+import { handleStats, observePageResponse, type Env as AnalyticsEnv } from '@gkoreli/analytics';
 import {
   handleClientError,
   purgeOldClientErrors,
@@ -18,8 +18,8 @@ import {
   type NewsletterEnv,
 } from '@gkoreli/newsletter';
 
-/** Merged Worker env — both packages share the same DB binding. */
-type Env = AnalyticsEnv & NewsletterEnv & ClientObservabilityEnv;
+/** Merged bindings for the packages composed by this Worker. */
+type Env = AnalyticsEnv & NewsletterEnv & ClientObservabilityEnv & { ASSETS: Fetcher };
 
 function trailingSegment(pathname: string, prefix: string): string {
   return pathname.slice(prefix.length);
@@ -30,10 +30,6 @@ export default {
     const { pathname } = new URL(request.url);
     const { method } = request;
 
-    // ── Analytics ──────────────────────────────────────────────────────────
-    if (pathname === '/api/event' && method === 'POST') {
-      return handleEvent(request, env, ctx);
-    }
     if (pathname === '/api/stats' && method === 'GET') {
       return handleStats(request, env);
     }
@@ -77,7 +73,9 @@ export default {
       return handleResendWebhook(request, env);
     }
 
-    return new Response('Not Found', { status: 404 });
+    const response = await env.ASSETS.fetch(request);
+    observePageResponse(request, response, env, ctx);
+    return response;
   },
 
   /** Nightly cron: purge expired pending + old inactive rows. */

@@ -5,8 +5,13 @@
   "description": "Cookieless, privacy-first analytics for Cloudflare Workers + D1",
   "type": "module",
   "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./contracts": "./src/contracts.ts"
+  },
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "tsc -p tsconfig.test.json && node --test test/*.test.mjs"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250306.0",

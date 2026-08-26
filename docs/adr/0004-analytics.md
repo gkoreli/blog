@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted — 2026-03-06. Phase 1 deployed — 2026-03-07. API updated 2026-03-07: timezone-aware queries, visitor type filter. Device type classification added 2026-03-08.
+Superseded by ADR-0016 — 2026-08-25. Worker + D1 remains the infrastructure decision; collection, identity, time, and public metric semantics were replaced.
 
 ## Context
 

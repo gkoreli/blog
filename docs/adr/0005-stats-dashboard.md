@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted — 2026-03-07. Deployed to production. Updated 2026-03-07: timezone-aware dates, visitor type filter.
+Superseded by ADR-0016 — 2026-08-25. The public `/stats` route and uPlot remain; its data contract, labels, state model, and disclosure were replaced.
 
 ## Context
 

@@ -1,55 +1,68 @@
-/** Visitor classification: human, traditional bot, or AI agent */
-export const enum VisitorType {
-  Human = 0,
-  Bot = 1,
-  AI = 2,
+import type { DeviceType, TrafficClass } from './contracts.js';
+
+export interface TrafficClassification {
+  trafficClass: TrafficClass;
+  agentName: string | null;
 }
 
-/**
- * AI crawler user-agents — from Cloudflare's official "Block AI Bots" list.
- * Source: https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/
- */
-const AI_CRAWLERS = /GPTBot|ClaudeBot|Claude-Web|CCBot|ChatGPT|Amazonbot|Applebot-Extended|Bytespider|TikTokSpider|GoogleOther|Google-CloudVertexBot|Meta-ExternalAgent|DuckAssistBot|PetalBot|PerplexityBot|Cohere-AI/i;
-
-/**
- * Traditional bot patterns — subset of isbot (omrilotan/isbot, 179 patterns).
- * We inline a focused set rather than pulling the full 179-pattern library.
- * Covers: search engines, monitoring, crawlers, headless browsers.
- */
-const TRADITIONAL_BOTS = /bot\b|crawl|spider|slurp|mediapartners|headlesschrome|phantomjs|lighthouse|pingdom|uptimerobot|feed|fetch|scan|check|monitor|archive|index|search|wget|curl|httpx|python-|go-http|java\/|libwww|axios|node-fetch/i;
-
-export function classifyVisitor(ua: string | null): VisitorType {
-  if (!ua) return VisitorType.Bot;
-  if (AI_CRAWLERS.test(ua)) return VisitorType.AI;
-  if (TRADITIONAL_BOTS.test(ua)) return VisitorType.Bot;
-  return VisitorType.Human;
+interface AgentRule {
+  name: string;
+  pattern: RegExp;
 }
 
-export type DeviceType = 'mobile' | 'tablet' | 'desktop';
+const AI_RULES: readonly AgentRule[] = [
+  { name: 'GPTBot', pattern: /GPTBot/i },
+  { name: 'ChatGPT-User', pattern: /ChatGPT-User/i },
+  { name: 'ClaudeBot', pattern: /ClaudeBot/i },
+  { name: 'Claude-Web', pattern: /Claude-Web/i },
+  { name: 'PerplexityBot', pattern: /PerplexityBot/i },
+  { name: 'CCBot', pattern: /CCBot/i },
+  { name: 'Amazonbot', pattern: /Amazonbot/i },
+  { name: 'Applebot-Extended', pattern: /Applebot-Extended/i },
+  { name: 'Bytespider', pattern: /Bytespider/i },
+  { name: 'GoogleOther', pattern: /GoogleOther/i },
+  { name: 'Google-CloudVertexBot', pattern: /Google-CloudVertexBot/i },
+  { name: 'Meta-ExternalAgent', pattern: /Meta-ExternalAgent/i },
+  { name: 'DuckAssistBot', pattern: /DuckAssistBot/i },
+  { name: 'Cohere-AI', pattern: /Cohere-AI/i },
+  { name: 'PetalBot', pattern: /PetalBot/i },
+];
 
-/**
- * Device type classification from User-Agent string.
- *
- * Patterns distilled from isMobile (2.4K⭐, kaimallea/isMobile) and
- * ua-parser-js (10K⭐, faisalman/ua-parser-js) generic fallbacks.
- *
- * Key insight: Android phone vs tablet is determined by the presence of
- * 'Mobile' in the UA — Google's convention. Chrome on Android phones
- * includes 'Mobile', Chrome on Android tablets doesn't.
- *
- * Limitation: iPadOS 13+ reports as Mac (desktop UA). Detecting it
- * requires navigator.maxTouchPoints which is unavailable server-side.
- * iPads on iOS 13+ will be classified as desktop. Acceptable trade-off
- * for a server-side classifier.
- */
-const PHONES = /iPhone|iPod|\bAndroid(?:.+)Mobile|Windows Phone|BB10|BlackBerry|Opera Mini|\b(?:CriOS|Chrome)(?:.+)Mobile|Mobile(?:.+)Firefox\b/i;
-const TABLETS = /iPad|\bWindows(?:.+)ARM|(?:(?:SD4930UR|Silk(?!.+Mobile)))/i;
-const ANDROID_TABLET = /\bAndroid\b/i;
+const BOT_RULES: readonly AgentRule[] = [
+  { name: 'Googlebot', pattern: /Googlebot/i },
+  { name: 'Bingbot', pattern: /bingbot/i },
+  { name: 'DuckDuckBot', pattern: /DuckDuckBot/i },
+  { name: 'YandexBot', pattern: /YandexBot/i },
+  { name: 'Baiduspider', pattern: /Baiduspider/i },
+  { name: 'FacebookBot', pattern: /facebookexternalhit|Facebot/i },
+  { name: 'LinkedInBot', pattern: /LinkedInBot/i },
+  { name: 'Slackbot', pattern: /Slackbot/i },
+];
 
-export function classifyDevice(ua: string | null): DeviceType {
-  if (!ua) return 'desktop';
-  if (PHONES.test(ua)) return 'mobile';
-  if (TABLETS.test(ua)) return 'tablet';
-  if (ANDROID_TABLET.test(ua) && !/Mobile/i.test(ua)) return 'tablet';
+const GENERIC_BOT = /bot\b|spider|crawler|crawl\b|slurp|scrapy|headless|phantom|selenium|wget|curl\/|python-requests|Go-http-client|UptimeRobot|Lighthouse/i;
+
+function namedMatch(userAgent: string, rules: readonly AgentRule[]): string | null {
+  for (const rule of rules) {
+    if (rule.pattern.test(userAgent)) return rule.name;
+  }
+  return null;
+}
+
+export function classifyTraffic(userAgent: string): TrafficClassification {
+  const aiName = namedMatch(userAgent, AI_RULES);
+  if (aiName !== null) return { trafficClass: 'ai', agentName: aiName };
+
+  const botName = namedMatch(userAgent, BOT_RULES);
+  if (botName !== null) return { trafficClass: 'bot', agentName: botName };
+
+  if (GENERIC_BOT.test(userAgent)) return { trafficClass: 'bot', agentName: null };
+  return { trafficClass: 'browser', agentName: null };
+}
+
+export function classifyDevice(userAgent: string): DeviceType {
+  if (/iPad|Tablet|PlayBook|Silk/i.test(userAgent) || (/Android/i.test(userAgent) && !/Mobile/i.test(userAgent))) {
+    return 'tablet';
+  }
+  if (/Mobile|iPhone|iPod|Android|IEMobile|Opera Mini/i.test(userAgent)) return 'mobile';
   return 'desktop';
 }

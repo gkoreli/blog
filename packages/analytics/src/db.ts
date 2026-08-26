@@ -1,36 +1,45 @@
-import { VisitorType, type DeviceType } from './classify.js';
+import type { DeviceType, TrafficClass } from './contracts.js';
 
 export interface Env {
   DB: D1Database;
-  ASSETS: Fetcher;
-  /** Comma-separated IPs to mark as owner. Set in wrangler.jsonc or dashboard. */
+  ANALYTICS_HASH_KEY: string;
   OWNER_IPS?: string;
 }
 
-export interface PageView {
+export interface PageObservation {
   path: string;
-  referrer: string | null;
+  referrerHost: string | null;
   country: string | null;
-  city: string | null;
-  continent: string | null;
-  visitor_hash: string;
-  visitor_type: VisitorType;
-  device_type: DeviceType;
-  is_owner: number;
+  dailyClientId: string;
+  trafficClass: TrafficClass;
+  agentName: string | null;
+  deviceType: DeviceType;
+  isOwner: boolean;
+  observedAt: string;
 }
 
-const INSERT = `INSERT INTO page_views (path, referrer, country, city, continent, visitor_hash, visitor_type, device_type, is_owner) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+const INSERT_OBSERVATION = `INSERT INTO page_observations (
+  path,
+  referrer_host,
+  country,
+  daily_client_id,
+  traffic_class,
+  agent_name,
+  device_type,
+  is_owner,
+  observed_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-export async function recordPageView(db: D1Database, pv: PageView): Promise<void> {
-  await db.prepare(INSERT).bind(
-    pv.path,
-    pv.referrer,
-    pv.country,
-    pv.city,
-    pv.continent,
-    pv.visitor_hash,
-    pv.visitor_type,
-    pv.device_type,
-    pv.is_owner,
+export async function recordPageObservation(db: D1Database, observation: PageObservation): Promise<void> {
+  await db.prepare(INSERT_OBSERVATION).bind(
+    observation.path,
+    observation.referrerHost,
+    observation.country,
+    observation.dailyClientId,
+    observation.trafficClass,
+    observation.agentName,
+    observation.deviceType,
+    observation.isOwner ? 1 : 0,
+    observation.observedAt,
   ).run();
 }

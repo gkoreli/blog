@@ -1,20 +1,30 @@
--- Analytics schema for Cloudflare D1
--- See: docs/adr/0004-analytics.md
+-- Fresh analytics schema. observation_source preserves the method boundary for optional legacy backfills.
 
-CREATE TABLE page_views (
+CREATE TABLE page_observations (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  path TEXT NOT NULL,
-  referrer TEXT,
+  path TEXT NOT NULL CHECK (path LIKE '/%'),
+  referrer_host TEXT,
   country TEXT,
-  city TEXT,
-  continent TEXT,
-  visitor_hash TEXT,
-  visitor_type INTEGER DEFAULT 0,
-  is_owner INTEGER DEFAULT 0,
-  device_type TEXT DEFAULT 'desktop',
-  created_at TEXT DEFAULT (datetime('now'))
+  daily_client_id TEXT NOT NULL CHECK (
+    length(daily_client_id) = 32
+    AND daily_client_id NOT GLOB '*[^0-9a-f]*'
+  ),
+  traffic_class TEXT NOT NULL CHECK (traffic_class IN ('browser', 'bot', 'ai')),
+  agent_name TEXT CHECK (agent_name IS NULL OR traffic_class IN ('bot', 'ai')),
+  device_type TEXT NOT NULL CHECK (device_type IN ('desktop', 'mobile', 'tablet')),
+  is_owner INTEGER NOT NULL CHECK (is_owner IN (0, 1)),
+  observation_source TEXT NOT NULL DEFAULT 'edge'
+    CHECK (observation_source IN ('beacon', 'edge')),
+  source_event_id INTEGER,
+  observed_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
-CREATE INDEX idx_path ON page_views(path);
-CREATE INDEX idx_created ON page_views(created_at);
-CREATE INDEX idx_visitor ON page_views(visitor_hash);
+CREATE INDEX idx_page_observations_observed_at
+  ON page_observations(observed_at);
+CREATE INDEX idx_page_observations_public_traffic_time
+  ON page_observations(is_owner, traffic_class, observed_at);
+CREATE INDEX idx_page_observations_public_path_time
+  ON page_observations(is_owner, path, observed_at);
+CREATE UNIQUE INDEX idx_page_observations_source_event
+  ON page_observations(observation_source, source_event_id)
+  WHERE source_event_id IS NOT NULL;

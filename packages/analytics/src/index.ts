@@ -1,122 +1,53 @@
-import { classifyVisitor, classifyDevice } from './classify.js';
-import { recordPageView, type Env, type PageView } from './db.js';
-import { dailySalt, visitorHash } from './hash.js';
-import { queryStats, type StatsQuery, type VisitorFilter } from './stats.js';
+import { classifyDevice, classifyTraffic } from './classify.js';
+import { recordPageObservation, type Env, type PageObservation } from './db.js';
+import { isEligiblePageResponse } from './eligibility.js';
+import { createDailyClientId } from './hash.js';
+import { extractRequestMetadata } from './metadata.js';
 
-export { VisitorType } from './classify.js';
-export type { DeviceType } from './classify.js';
 export type { Env } from './db.js';
-export type { StatsResponse, StatsQuery, VisitorFilter } from './stats.js';
+export type { StatsResponse, TrafficFilter } from './contracts.js';
+export { handleStats } from './stats.js';
 
-/** Clean referrer: strip query params, remove self-referrals */
-function cleanReferrer(raw: string | null, selfHost: string): string | null {
-  if (!raw) return null;
-  try {
-    const url = new URL(raw);
-    const host = url.hostname.replace(/^www\./, '');
-    if (host === selfHost.replace(/^www\./, '')) return null;
-    // Strip trailing slash from path; return bare hostname for root paths
-    const path = url.pathname.replace(/\/+$/, '');
-    return path ? `${host}${path}` : host;
-  } catch {
-    return null;
-  }
+function sqliteTimestamp(date: Date): string {
+  return date.toISOString().replace('T', ' ').slice(0, 19);
 }
 
-/** Extract CF geo from request.cf */
-function geo(cf: IncomingRequestCfProperties | undefined) {
-  return {
-    country: (cf?.country as string) ?? null,
-    city: (cf?.city as string) ?? null,
-    continent: (cf?.continent as string) ?? null,
-  };
-}
-
-/**
- * Handle POST /api/event — record a page view.
- * Called from client beacon script.
- *
- * ctx is optional: if provided, D1 write is fire-and-forget via waitUntil.
- * If omitted (testing, non-Worker envs), falls back to await.
- * Pattern: explicit dependency injection, same as Hono (see ADR-0004).
- */
-export async function handleEvent(request: Request, env: Env, ctx?: ExecutionContext): Promise<Response> {
-  const body = await request.json().catch(() => null) as { path?: string; referrer?: string } | null;
-  if (!body?.path || typeof body.path !== 'string') return new Response(null, { status: 400 });
-
-  // Sanitize path: must start with /, strip query/hash, cap length
-  const rawPath = body.path.split(/[?#]/)[0];
-  if (!rawPath.startsWith('/') || rawPath.length > 500) return new Response(null, { status: 400 });
-  // Normalize: strip trailing slash (except root /) so /about/ and /about are the same page
-  const path = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '');
-
-  const ua = request.headers.get('user-agent');
-  const ip = request.headers.get('cf-connecting-ip') ?? '0.0.0.0';
-  const cf = (request as { cf?: IncomingRequestCfProperties }).cf;
-  const { country, city, continent } = geo(cf);
-
-  const visitorType = classifyVisitor(ua);
-  const deviceType = classifyDevice(ua);
-  const hash = await visitorHash(ip, ua ?? '', dailySalt());
-  const ownerIps = env.OWNER_IPS?.split(',').map(s => s.trim()) ?? [];
-  const isOwner = ownerIps.includes(ip) ? 1 : 0;
-
-  const pv: PageView = {
-    path,
-    // Prefer document.referrer from client (actual external referrer) over HTTP Referer header (always self-referral on same-origin POST)
-    referrer: cleanReferrer(body.referrer ?? request.headers.get('referer'), new URL(request.url).hostname),
-    country,
-    city,
-    continent,
-    visitor_hash: hash,
-    visitor_type: visitorType,
-    device_type: deviceType,
-    is_owner: isOwner,
-  };
-
-  // Fire-and-forget with error logging. Analytics is best-effort —
-  // losing events during D1 outages is acceptable, but we log failures
-  // to Workers Logs for visibility (see ADR-0004 §Architecture Issues §3).
-  const write = recordPageView(env.DB, pv).catch(err =>
-    console.error('[analytics] D1 write failed:', err),
-  );
-
-  if (ctx) {
-    ctx.waitUntil(write);
-  } else {
-    await write;
+async function persistObservation(request: Request, env: Env, observedAt: Date): Promise<void> {
+  const hashKey = env.ANALYTICS_HASH_KEY;
+  if (typeof hashKey !== 'string' || hashKey.length === 0) {
+    throw new Error('ANALYTICS_HASH_KEY must not be empty');
   }
 
-  return new Response(null, { status: 204 });
-}
-
-/** Max days lookback — prevents integer overflow in Date math. 0 = all time. */
-const MAX_DAYS = 365;
-
-const VALID_VISITORS = new Set<VisitorFilter>(['human', 'bot', 'ai', 'all']);
-
-/**
- * Handle GET /api/stats — public analytics JSON.
- */
-export async function handleStats(request: Request, env: Env): Promise<Response> {
-  const url = new URL(request.url);
-  const raw = url.searchParams.get('days');
-  const rawTz = url.searchParams.get('tz');
-  const rawVisitor = url.searchParams.get('visitor');
-  const q: StatsQuery = {
-    days: raw !== null ? Math.max(0, Math.min(MAX_DAYS, Number(raw) || 0)) : 30,
-    path: url.searchParams.get('path') ?? undefined,
-    tz: rawTz !== null ? Math.max(-720, Math.min(840, Math.round(Number(rawTz) || 0))) : 0,
-    visitor: rawVisitor !== null && VALID_VISITORS.has(rawVisitor as VisitorFilter) ? rawVisitor as VisitorFilter : 'human',
-  };
-
-  const stats = await queryStats(env.DB, q);
-
-  return new Response(JSON.stringify(stats), {
-    headers: {
-      'content-type': 'application/json',
-      'cache-control': 'public, max-age=300',
-      'access-control-allow-origin': '*',
-    },
+  const metadata = extractRequestMetadata(request, env.OWNER_IPS);
+  const classification = classifyTraffic(metadata.userAgent);
+  const utcDate = observedAt.toISOString().slice(0, 10);
+  const dailyClientId = await createDailyClientId({
+    masterKey: hashKey,
+    siteHost: metadata.siteHost,
+    utcDate,
+    ip: metadata.ip,
+    userAgent: metadata.userAgent,
   });
+  const observation: PageObservation = {
+    path: metadata.path,
+    referrerHost: metadata.referrerHost,
+    country: metadata.country,
+    dailyClientId,
+    trafficClass: classification.trafficClass,
+    agentName: classification.agentName,
+    deviceType: classifyDevice(metadata.userAgent),
+    isOwner: metadata.isOwner,
+    observedAt: sqliteTimestamp(observedAt),
+  };
+  await recordPageObservation(env.DB, observation);
+}
+
+export function observePageResponse(
+  request: Request,
+  response: Response,
+  env: Env,
+  ctx: ExecutionContext,
+): void {
+  if (!isEligiblePageResponse(request, response)) return;
+  ctx.waitUntil(persistObservation(request, env, new Date()));
 }

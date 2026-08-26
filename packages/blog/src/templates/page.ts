@@ -154,7 +154,6 @@ export function pageShell({ title, description, content, canonicalPath, currentS
 
   <script type="module" src="/main.js"></script>
   ${scripts?.map(s => html`<script type="module" src="${s}"></script>`) ?? ''}
-  <script>try{if(localStorage.analytics_ignore!=='true')fetch('/api/event',{method:'POST',keepalive:true,headers:{'Content-Type':'text/plain'},body:JSON.stringify({path:location.pathname,referrer:document.referrer||undefined})})}catch(e){}</script>
 </body>
 </html>`;
 }

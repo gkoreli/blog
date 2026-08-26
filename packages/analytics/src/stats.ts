@@ -1,98 +1,195 @@
-import type { D1Database } from '@cloudflare/workers-types';
-import { daysAgo, localToday, shiftToLocal } from './dates.js';
+import type {
+  DeviceType,
+  StatsRange,
+  StatsResponse,
+  TimeSeriesPoint,
+  TrafficClass,
+  TrafficFilter,
+} from './contracts.js';
+import type { Env } from './db.js';
+import {
+  completeTimeSeries,
+  createStatsWindow,
+  parseStatsRange,
+  type StatsWindow,
+} from './dates.js';
 
-/** Visitor type filter for the stats API */
-export type VisitorFilter = 'human' | 'bot' | 'ai' | 'all';
+export type { StatsResponse, TrafficFilter } from './contracts.js';
 
 export interface StatsQuery {
-  /** Number of days to look back. Default: 30 */
-  days?: number;
-  /** Filter by path prefix */
-  path?: string | undefined;
-  /** UTC offset in minutes (e.g. -480 for PST). Default: 0 (UTC) */
-  tz?: number;
-  /** Visitor type filter. Default: 'human' */
-  visitor?: VisitorFilter;
+  range: StatsRange;
+  traffic: TrafficFilter;
+  path?: string;
 }
 
-export interface StatsResponse {
-  period: { start: string; end: string };
-  totals: { views: number; visitors: number; ai_fetches: number };
-  by_path: Array<{ path: string; views: number; visitors: number }>;
-  by_country: Array<{ country: string; views: number }>;
-  by_day: Array<{ date: string; views: number; visitors: number }>;
-  by_referrer: Array<{ referrer: string; views: number }>;
-  by_device: Array<{ device_type: string; views: number }>;
+interface QueryPredicate {
+  sql: string;
+  values: unknown[];
 }
 
-/** SQLite time shift string from UTC offset minutes. e.g. -480 → '+08:00', 300 → '-05:00' */
-function tzModifier(offsetMin: number): string {
-  if (offsetMin === 0) return '+00:00';
-  // JS getTimezoneOffset() returns minutes *behind* UTC: PST = +480, EST = +300
-  // We negate to get the SQLite modifier: +480 → -08:00 (subtract 8h from UTC = PST)
-  const sign = offsetMin > 0 ? '-' : '+';
-  const abs = Math.abs(offsetMin);
-  const h = String(Math.floor(abs / 60)).padStart(2, '0');
-  const m = String(abs % 60).padStart(2, '0');
-  return `${sign}${h}:${m}`;
-}
-
-/** SQL WHERE clause fragment for visitor_type filtering */
-function visitorWhere(v: VisitorFilter): string {
-  switch (v) {
-    case 'human': return 'AND visitor_type = 0 AND is_owner = 0';
-    case 'bot': return 'AND visitor_type = 1';
-    case 'ai': return 'AND visitor_type = 2';
-    case 'all': return 'AND is_owner = 0';
+function parseTrafficFilter(value: string | null): TrafficFilter | null {
+  switch (value) {
+    case 'browser':
+    case 'bot':
+    case 'ai':
+    case 'all':
+      return value;
+    default:
+      return null;
   }
 }
 
-/** Threshold: days <= this use hourly grouping, above use daily */
-const HOURLY_THRESHOLD = 7;
+function predicateFor(window: StatsWindow, query: StatsQuery): QueryPredicate {
+  let sql = 'observed_at >= ? AND observed_at < ? AND is_owner = 0';
+  const values: unknown[] = [window.startInclusive, window.endExclusive];
+  if (query.traffic !== 'all') {
+    sql += ' AND traffic_class = ?';
+    values.push(query.traffic);
+  }
+  if (query.path !== undefined) {
+    sql += ' AND path = ?';
+    values.push(query.path);
+  }
+  return { sql, values };
+}
 
-export async function queryStats(db: D1Database, q: StatsQuery = {}): Promise<StatsResponse> {
-  const days = q.days ?? 30;
-  const all = days === 0;
-  const tz = q.tz ?? 0;
-  const tzMod = tzModifier(tz);
-  const vw = visitorWhere(q.visitor ?? 'human');
-  const hourly = !all && days <= HOURLY_THRESHOLD;
+function numberField(row: Record<string, unknown> | undefined, field: string): number {
+  const value = row?.[field];
+  return typeof value === 'number' && Number.isFinite(value) ? value : 0;
+}
 
-  const nowLocalMs = shiftToLocal(Date.now(), tz);
-  const since = all ? '1970-01-01' : daysAgo(nowLocalMs, days);
-  const pathFilter = q.path ? `AND path LIKE ?` : '';
-  const bind = (stmt: D1PreparedStatement) =>
-    q.path ? stmt.bind(since, `${q.path}%`) : stmt.bind(since);
+function stringField(row: Record<string, unknown>, field: string): string | null {
+  const value = row[field];
+  return typeof value === 'string' ? value : null;
+}
 
-  const localDt = `datetime(created_at, '${tzMod}')`;
-  const localDate = `DATE(${localDt})`;
-  // Hourly: 'YYYY-MM-DDTHH:00:00' — JS parses as local time (no Z). Daily: 'YYYY-MM-DD'.
-  const bucket = hourly ? `strftime('%Y-%m-%dT%H:00:00', ${localDt})` : localDate;
+function bindQuery(db: D1Database, sql: string, predicate: QueryPredicate): D1PreparedStatement {
+  return db.prepare(sql).bind(...predicate.values);
+}
 
-  const [totals, byPath, byCountry, byDay, byReferrer, aiFetches, byDevice] = await db.batch([
-    bind(db.prepare(`SELECT COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter}`)),
-    bind(db.prepare(`SELECT path, COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter} GROUP BY path ORDER BY views DESC LIMIT 50`)),
-    bind(db.prepare(`SELECT country, COUNT(*) as views FROM page_views WHERE ${localDate} >= ? ${vw} AND country IS NOT NULL ${pathFilter} GROUP BY country ORDER BY views DESC LIMIT 30`)),
-    bind(db.prepare(`SELECT ${bucket} as date, COUNT(*) as views, COUNT(DISTINCT visitor_hash) as visitors FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter} GROUP BY date ORDER BY date`)),
-    bind(db.prepare(`SELECT referrer, COUNT(*) as views FROM page_views WHERE ${localDate} >= ? ${vw} AND referrer IS NOT NULL ${pathFilter} GROUP BY referrer ORDER BY views DESC LIMIT 20`)),
-    bind(db.prepare(`SELECT COUNT(*) as count FROM page_views WHERE ${localDate} >= ? AND visitor_type = 2 ${pathFilter}`)),
-    bind(db.prepare(`SELECT device_type, COUNT(*) as views FROM page_views WHERE ${localDate} >= ? ${vw} ${pathFilter} GROUP BY device_type ORDER BY views DESC`)),
-  ]);
+function pathRows(rows: Record<string, unknown>[]): StatsResponse['byPath'] {
+  const result: StatsResponse['byPath'] = [];
+  for (const row of rows) {
+    const path = stringField(row, 'path');
+    if (path !== null) result.push({ path, views: numberField(row, 'views'), dailyClients: numberField(row, 'dailyClients') });
+  }
+  return result;
+}
 
-  const t = (totals.results?.[0] ?? { views: 0, visitors: 0 }) as Record<string, number>;
-  const ai = (aiFetches.results?.[0] ?? { count: 0 }) as Record<string, number>;
-  const dayRows = (byDay.results ?? []) as StatsResponse['by_day'];
+function countryRows(rows: Record<string, unknown>[]): StatsResponse['byCountry'] {
+  const result: StatsResponse['byCountry'] = [];
+  for (const row of rows) {
+    const country = stringField(row, 'country');
+    if (country !== null) result.push({ country, views: numberField(row, 'views') });
+  }
+  return result;
+}
 
-  // For "all time", derive period start from actual data instead of arbitrary lookback
-  const periodStart = all && dayRows.length > 0 ? dayRows[0].date : since;
+function seriesRows(rows: Record<string, unknown>[]): TimeSeriesPoint[] {
+  const result: TimeSeriesPoint[] = [];
+  for (const row of rows) {
+    const bucket = stringField(row, 'bucket');
+    if (bucket !== null) result.push({ bucket, views: numberField(row, 'views'), dailyClients: numberField(row, 'dailyClients') });
+  }
+  return result;
+}
+
+function referrerRows(rows: Record<string, unknown>[]): StatsResponse['byReferrer'] {
+  const result: StatsResponse['byReferrer'] = [];
+  for (const row of rows) {
+    const referrerHost = stringField(row, 'referrerHost');
+    if (referrerHost !== null) result.push({ referrerHost, views: numberField(row, 'views') });
+  }
+  return result;
+}
+
+function deviceRows(rows: Record<string, unknown>[]): StatsResponse['byDevice'] {
+  const result: StatsResponse['byDevice'] = [];
+  for (const row of rows) {
+    const deviceType = stringField(row, 'deviceType');
+    if (deviceType === 'desktop' || deviceType === 'mobile' || deviceType === 'tablet') {
+      result.push({ deviceType, views: numberField(row, 'views') });
+    }
+  }
+  return result;
+}
+
+function agentRows(rows: Record<string, unknown>[]): StatsResponse['byAgent'] {
+  const result: StatsResponse['byAgent'] = [];
+  for (const row of rows) {
+    const agentName = stringField(row, 'agentName');
+    const trafficClass = stringField(row, 'trafficClass');
+    if (agentName !== null && (trafficClass === 'bot' || trafficClass === 'ai')) {
+      result.push({ agentName, trafficClass, views: numberField(row, 'views') });
+    }
+  }
+  return result;
+}
+
+export async function queryStats(db: D1Database, query: StatsQuery, now = new Date()): Promise<StatsResponse> {
+  const initialWindow = createStatsWindow(query.range, now);
+  const predicate = predicateFor(initialWindow, query);
+  const bucketSql = initialWindow.granularity === 'hour'
+    ? "strftime('%Y-%m-%dT%H:00:00Z', observed_at)"
+    : "strftime('%Y-%m-%d', observed_at)";
+
+  const aggregateStatements = [
+    bindQuery(db, `SELECT COUNT(*) AS views, COUNT(DISTINCT daily_client_id) AS dailyClients FROM page_observations WHERE ${predicate.sql}`, predicate),
+    bindQuery(db, `SELECT path, COUNT(*) AS views, COUNT(DISTINCT daily_client_id) AS dailyClients FROM page_observations WHERE ${predicate.sql} GROUP BY path ORDER BY views DESC, path`, predicate),
+    bindQuery(db, `SELECT country, COUNT(*) AS views FROM page_observations WHERE ${predicate.sql} AND country IS NOT NULL GROUP BY country ORDER BY views DESC, country`, predicate),
+    bindQuery(db, `SELECT ${bucketSql} AS bucket, COUNT(*) AS views, COUNT(DISTINCT daily_client_id) AS dailyClients FROM page_observations WHERE ${predicate.sql} GROUP BY bucket ORDER BY bucket`, predicate),
+    bindQuery(db, `SELECT referrer_host AS referrerHost, COUNT(*) AS views FROM page_observations WHERE ${predicate.sql} AND referrer_host IS NOT NULL GROUP BY referrer_host ORDER BY views DESC, referrerHost`, predicate),
+    bindQuery(db, `SELECT device_type AS deviceType, COUNT(*) AS views FROM page_observations WHERE ${predicate.sql} GROUP BY device_type ORDER BY views DESC, deviceType`, predicate),
+    bindQuery(db, `SELECT agent_name AS agentName, traffic_class AS trafficClass, COUNT(*) AS views FROM page_observations WHERE ${predicate.sql} AND agent_name IS NOT NULL GROUP BY agent_name, traffic_class ORDER BY views DESC, agentName`, predicate),
+  ];
+  const statements = query.range === 'all'
+    ? [db.prepare('SELECT MIN(observed_at) AS firstObservedAt FROM page_observations WHERE is_owner = 0'), ...aggregateStatements]
+    : aggregateStatements;
+  const results = await db.batch<Record<string, unknown>>(statements);
+  const aggregateOffset = query.range === 'all' ? 1 : 0;
+  const firstObservedRow = query.range === 'all' ? results[0]?.results[0] : undefined;
+  const firstObservedAt = firstObservedRow ? stringField(firstObservedRow, 'firstObservedAt') : null;
+  const window = createStatsWindow(query.range, now, firstObservedAt ?? undefined);
+  const totalsRow = results[aggregateOffset]?.results[0];
+  const populatedSeries = seriesRows(results[aggregateOffset + 3]?.results ?? []);
 
   return {
-    period: { start: periodStart, end: localToday(tz) },
-    totals: { views: t.views ?? 0, visitors: t.visitors ?? 0, ai_fetches: ai.count ?? 0 },
-    by_path: (byPath.results ?? []) as StatsResponse['by_path'],
-    by_country: (byCountry.results ?? []) as StatsResponse['by_country'],
-    by_day: (byDay.results ?? []) as StatsResponse['by_day'],
-    by_referrer: (byReferrer.results ?? []) as StatsResponse['by_referrer'],
-    by_device: (byDevice.results ?? []) as StatsResponse['by_device'],
+    period: {
+      start: window.start,
+      end: window.end,
+      timeZone: 'UTC',
+      granularity: window.granularity,
+      updatedAt: window.updatedAt,
+    },
+    totals: {
+      views: numberField(totalsRow, 'views'),
+      dailyClients: numberField(totalsRow, 'dailyClients'),
+    },
+    byPath: pathRows(results[aggregateOffset + 1]?.results ?? []),
+    byCountry: countryRows(results[aggregateOffset + 2]?.results ?? []),
+    timeSeries: completeTimeSeries(window, populatedSeries, now),
+    byReferrer: referrerRows(results[aggregateOffset + 4]?.results ?? []),
+    byDevice: deviceRows(results[aggregateOffset + 5]?.results ?? []),
+    byAgent: agentRows(results[aggregateOffset + 6]?.results ?? []),
   };
+}
+
+function jsonError(message: string): Response {
+  return Response.json({ error: message }, { status: 400 });
+}
+
+export async function handleStats(request: Request, env: Pick<Env, 'DB'>): Promise<Response> {
+  const url = new URL(request.url);
+  const rangeValue = url.searchParams.get('range');
+  const trafficValue = url.searchParams.get('traffic');
+  const range = rangeValue === null ? '30d' : parseStatsRange(rangeValue);
+  const traffic = trafficValue === null ? 'browser' : parseTrafficFilter(trafficValue);
+  if (range === null) return jsonError('range must be 7d, 30d, 90d, or all');
+  if (traffic === null) return jsonError('traffic must be browser, bot, ai, or all');
+
+  const rawPath = url.searchParams.get('path');
+  const path = rawPath === null || rawPath.length === 0 ? undefined : rawPath;
+  const query: StatsQuery = path === undefined ? { range, traffic } : { range, traffic, path };
+  const response = await queryStats(env.DB, query);
+  return Response.json(response, { headers: { 'Cache-Control': 'public, max-age=60' } });
 }

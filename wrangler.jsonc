@@ -10,7 +10,7 @@
 		}
 	],
 	"secrets": {
-		"required": ["ADMIN_SECRET", "RESEND_API_KEY", "TURNSTILE_SECRET_KEY"]
+		"required": ["ADMIN_SECRET", "ANALYTICS_HASH_KEY", "RESEND_API_KEY", "TURNSTILE_SECRET_KEY"]
 	},
 	"observability": {
 		"logs": {
@@ -23,9 +23,7 @@
 		"binding": "ASSETS",
 		"not_found_handling": "404-page",
 		"html_handling": "drop-trailing-slash",
-		"run_worker_first": [
-			"/api/*"
-		]
+		"run_worker_first": true
 	},
 	"d1_databases": [
 		{

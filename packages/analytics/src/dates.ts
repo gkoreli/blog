@@ -1,51 +1,79 @@
-/**
- * Date utilities for the analytics package.
- *
- * Invariant: D1 stores UTC. All server-side date operations are either
- * UTC (for storage/salt) or explicitly shifted to the viewer's timezone
- * (for grouping/display). These functions make the intent unambiguous.
- */
+import type { Granularity, StatsRange, TimeSeriesPoint } from './contracts.js';
 
-const MS_PER_DAY = 86_400_000;
-const MS_PER_MINUTE = 60_000;
-
-/** Today's date in UTC as YYYY-MM-DD. Used for daily salt rotation. */
-export function utcToday(): string {
-  return new Date().toISOString().slice(0, 10);
+export interface StatsWindow {
+  range: StatsRange;
+  start: string;
+  end: string;
+  startInclusive: string;
+  endExclusive: string;
+  granularity: Granularity;
+  updatedAt: string;
 }
 
-/**
- * Today's date in the viewer's timezone as YYYY-MM-DD.
- * @param tzOffsetMin - `getTimezoneOffset()` value (minutes behind UTC, e.g. 480 for PST)
- */
-export function localToday(tzOffsetMin: number): string {
-  return toDateString(shiftToLocal(Date.now(), tzOffsetMin));
+const DAY_MS = 86_400_000;
+const HOUR_MS = 3_600_000;
+
+function utcMidnight(value: Date): Date {
+  return new Date(Date.UTC(value.getUTCFullYear(), value.getUTCMonth(), value.getUTCDate()));
 }
 
-/**
- * Subtract N days from a timestamp and return YYYY-MM-DD.
- * The timestamp should already be in the desired timezone frame (use shiftToLocal first).
- */
-export function daysAgo(fromMs: number, days: number): string {
-  return toDateString(fromMs - days * MS_PER_DAY);
+function dateLabel(value: Date): string {
+  return value.toISOString().slice(0, 10);
 }
 
-/**
- * Shift a UTC timestamp to simulate the viewer's local time.
- *
- * Returns a ms value that, when formatted via toISOString(), produces
- * the viewer's local date. The Date object doesn't represent a real UTC
- * instant — it's a number-line trick so toISOString().slice(0,10) gives
- * the local date string.
- *
- * @param utcMs - UTC timestamp (e.g. Date.now())
- * @param tzOffsetMin - getTimezoneOffset() value (minutes behind UTC)
- */
-export function shiftToLocal(utcMs: number, tzOffsetMin: number): number {
-  return utcMs - tzOffsetMin * MS_PER_MINUTE;
+function sqlTimestamp(value: Date): string {
+  return value.toISOString().replace('T', ' ').slice(0, 19);
 }
 
-/** Extract YYYY-MM-DD from a ms timestamp via toISOString. */
-function toDateString(ms: number): string {
-  return new Date(ms).toISOString().slice(0, 10);
+export function parseStatsRange(value: string | null): StatsRange | null {
+  switch (value) {
+    case '7d':
+    case '30d':
+    case '90d':
+    case 'all':
+      return value;
+    default:
+      return null;
+  }
+}
+
+export function createStatsWindow(range: StatsRange, now: Date, allStart?: string): StatsWindow {
+  const today = utcMidnight(now);
+  const tomorrow = new Date(today.getTime() + DAY_MS);
+  const dayCount = range === '7d' ? 7 : range === '30d' ? 30 : range === '90d' ? 90 : 1;
+  const presetStart = new Date(today.getTime() - (dayCount - 1) * DAY_MS);
+  const requestedStart = range === 'all' && allStart ? new Date(`${allStart.slice(0, 10)}T00:00:00Z`) : presetStart;
+  const startDate = Number.isNaN(requestedStart.getTime()) || requestedStart > today ? today : requestedStart;
+
+  return {
+    range,
+    start: dateLabel(startDate),
+    end: dateLabel(today),
+    startInclusive: range === 'all' && !allStart ? '1970-01-01 00:00:00' : sqlTimestamp(startDate),
+    endExclusive: sqlTimestamp(tomorrow),
+    granularity: range === '7d' ? 'hour' : 'day',
+    updatedAt: now.toISOString(),
+  };
+}
+
+export function completeTimeSeries(window: StatsWindow, rows: readonly TimeSeriesPoint[], now: Date): TimeSeriesPoint[] {
+  const byBucket = new Map<string, TimeSeriesPoint>();
+  for (const row of rows) byBucket.set(row.bucket, row);
+
+  const result: TimeSeriesPoint[] = [];
+  const start = new Date(`${window.start}T00:00:00Z`).getTime();
+  const current = window.granularity === 'hour'
+    ? Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours())
+    : utcMidnight(now).getTime();
+  const step = window.granularity === 'hour' ? HOUR_MS : DAY_MS;
+
+  for (let time = start; time <= current; time += step) {
+    const instant = new Date(time);
+    const bucket = window.granularity === 'hour'
+      ? `${instant.toISOString().slice(0, 13)}:00:00Z`
+      : dateLabel(instant);
+    result.push(byBucket.get(bucket) ?? { bucket, views: 0, dailyClients: 0 });
+  }
+
+  return result;
 }
