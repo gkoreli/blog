@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { basename, dirname, relative, resolve } from 'node:path';
 import { z } from 'zod/v4';
 
@@ -9,6 +9,7 @@ interface Args {
   researchDir: string;
   promptsFile: string;
   artifactsFile: string;
+  outputFile: string | undefined;
 }
 
 interface TokenUsage {
@@ -60,7 +61,7 @@ const ompAssistantUsageSchema = z.looseObject({
 });
 
 function usage(): never {
-  throw new Error('Usage: tsx scripts/omp-research-footprint.ts --root-log <path> --research-dir <path> --prompts-file <path> --artifacts-file <path>');
+  throw new Error('Usage: tsx scripts/omp-research-footprint.ts --root-log <path> --research-dir <path> --prompts-file <path> --artifacts-file <path> [--output <path>]');
 }
 
 function parseArgs(values: string[]): Args {
@@ -74,6 +75,7 @@ function parseArgs(values: string[]): Args {
 
   const rootLog = options.get('--root-log');
   const researchDir = options.get('--research-dir');
+  const outputFile = options.get('--output');
   const promptsFile = options.get('--prompts-file');
   const artifactsFile = options.get('--artifacts-file');
   if (!rootLog || !researchDir || !promptsFile || !artifactsFile) usage();
@@ -83,6 +85,7 @@ function parseArgs(values: string[]): Args {
     researchDir: resolve(researchDir),
     promptsFile: resolve(promptsFile),
     artifactsFile: resolve(artifactsFile),
+    outputFile: outputFile ? resolve(outputFile) : undefined,
   };
 }
 
@@ -277,7 +280,13 @@ function main(): void {
     promptsFile: relative(repositoryRoot, args.promptsFile),
   };
 
-  console.log(JSON.stringify(result, null, 2));
+  const serialized = `${JSON.stringify(result, null, 2)}\n`;
+  if (args.outputFile) {
+    writeFileSync(args.outputFile, serialized);
+    console.log(`Wrote OMP research footprint to ${args.outputFile}`);
+  } else {
+    console.log(serialized);
+  }
 }
 
 main();

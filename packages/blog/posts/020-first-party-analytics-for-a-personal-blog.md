@@ -10,6 +10,18 @@ series:
   id: "measurement-boundaries"
   title: "Measurement boundaries"
   order: 2
+researchFootprint:
+  sessions: 27
+  artifacts: 37
+  totalTokens: 301267888
+  inputTokens: 300558571
+  cachedInputTokens: 295059968
+  outputTokens: 709317
+  reasoningOutputTokens: 274589
+  wallClockMinutes: 867
+  startedAt: "2026-08-26T04:53:10.248Z"
+  measuredAt: "2026-08-26T19:19:54.617Z"
+  provenanceUrl: "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-wrong-event"
 ---
 
 # How I Built First-Party Analytics for a Personal Blog

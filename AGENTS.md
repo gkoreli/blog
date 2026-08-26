@@ -51,7 +51,7 @@ Prompt files preserve exact human prompts in chronological order when they mater
 
 Research-heavy collaborative posts may publish a `researchFootprint` beside their raw prompts. This is provenance, not a quality badge. The compact article header may show the measured token total; the transparency page must show human prompts, sessions, committed artifacts, wall-clock window, token breakdown, methodology, limitations, and the public research directory.
 
-Use `packages/blog/scripts/research-footprint.ts` to calculate the numbers. Never hand-count sessions or sum a mixture of per-turn and cumulative usage records.
+Use `packages/blog/scripts/research-footprint.ts` for Codex cumulative logs and `packages/blog/scripts/omp-research-footprint.ts` for OMP per-response logs. Never hand-count sessions or mix cumulative and per-response usage models.
 
 Deterministic rule:
 
@@ -66,6 +66,15 @@ Deterministic rule:
 9. Freeze immediately before the release commit. The script emits every included session ID, parent ID, agent path, selected usage-record line, cumulative values, and a SHA-256 commitment to the log prefix through that record. Save that manifest in the research artifact before copying totals into frontmatter.
 10. If any work ran outside the root thread tree—for example an independent `codex exec` background process whose metadata has no parent-thread link—it is excluded unless its session ID is explicitly added to a future manifest mechanism. Disclose every such inclusion. Never silently guess by timestamp or working directory.
 
+OMP session rule:
+
+1. Pass the exact root `.jsonl` log. Include that root plus every child `.jsonl` in its same-named agent directory; do not infer siblings from timestamp or working directory. A separate root session is excluded.
+2. Parse each assistant message with an OMP `usage` object exactly once. OMP input excludes cached/cache-write tokens, so normalize public input as `input + cacheRead + cacheWrite`; cached input remains a subset of public input.
+3. Verify each response: `totalTokens = input + cacheRead + cacheWrite + output`; `reasoningTokens <= output`. Sum response usage within each session, then sum each included session once.
+4. Read `startedAt`, session ID, and cwd from the first `session` record. Use the latest included assistant usage timestamp as `measuredAt`.
+5. Count prompts with the normal `---` delimiter. Count artifacts from an explicit manifest of repository-relative paths, and require every listed path to exist in `HEAD` before copying the count to frontmatter.
+6. Freeze immediately before the release commit. Record each root/child session ID, parent ID, agent name, response count, last usage line/time, normalized totals, and SHA-256 commitment to the private log prefix.
+
 Example:
 
 ```bash
@@ -73,6 +82,15 @@ pnpm -C packages/blog exec tsx scripts/research-footprint.ts \
   --root-thread <root-thread-id> \
   --research-dir drafts/research/<article> \
   --prompts-file prompts/<slug>.prompts.md
+```
+
+```bash
+pnpm -C packages/blog exec tsx scripts/omp-research-footprint.ts \
+  --root-log <root-session.jsonl> \
+  --research-dir drafts/research/<article> \
+  --prompts-file prompts/<slug>.prompts.md \
+  --artifacts-file drafts/research/<article>/artifacts.txt \
+  --output drafts/research/<article>/research-footprint.json
 ```
 
 Trust boundary: session logs contain private conversation and system context and are not committed. The public manifest and prefix hashes make the accounting reproducible by the author and commit to the exact private log prefixes used, but readers cannot independently reconstruct the token totals without those logs. Say this plainly; “auditable by the author with integrity commitments” is accurate, while “publicly verifiable” is not.

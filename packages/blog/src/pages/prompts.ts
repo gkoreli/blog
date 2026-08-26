@@ -22,7 +22,7 @@ export function promptsPage(meta: PostMeta, prompts: PromptsData) {
       </div>
       <div class="research-footprint-stats">
         <div><strong>${prompts.count}</strong><span>human prompts</span></div>
-        <div><strong>${footprint.sessions}</strong><span>Codex sessions</span></div>
+        <div><strong>${footprint.sessions}</strong><span>agent sessions</span></div>
         <div><strong>${footprint.artifacts}</strong><span>committed artifacts</span></div>
         <div><strong>${compactTokenCount(footprint.totalTokens)}</strong><span>tokens processed</span></div>
       </div>
@@ -33,7 +33,7 @@ export function promptsPage(meta: PostMeta, prompts: PromptsData) {
       and ${compactTokenCount(footprint.outputTokens)} output tokens. Reasoning tokens (${compactTokenCount(footprint.reasoningOutputTokens)})
       are a subset of output, not an additional charge.</p>
       <p class="research-footprint-note">This is a provenance measure, not a quality score, cost estimate, or environmental-impact estimate.
-      Token counts come from the Codex session logs for the main article session and its research agents. The committed artifacts let readers inspect what all that computation produced.</p>
+      Token counts come from the private agent session logs for the main article session and its research agents. The public manifest records the log format, included session IDs, selected response boundaries, and SHA-256 prefix commitments. The committed artifacts let readers inspect what all that computation produced.</p>
     </section>` : ''}
     ${prompts.prompts.map((p, i) => html`
     <div class="prompt-block">
