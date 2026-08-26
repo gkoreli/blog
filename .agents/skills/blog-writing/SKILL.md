@@ -4,7 +4,7 @@ description: Blog post writing guidelines for gkoreli.com. Use when writing, edi
 license: MIT
 metadata:
   author: gkoreli
-  version: "2.1.0"
+  version: "2.2.0"
 ---
 
 # Blog Writing — Agent Skill
@@ -148,6 +148,19 @@ One article may braid all three. Do not impose a tense, wound, lesson, or open l
 - **Show real numbers**: bundle sizes, line counts, npm downloads, build times
 - **Show real failures**: "This approach failed because..." with what you learned
 - **Open loops**: when the governing form calls for one, end with what remains live or comes next
+
+### Complete the Engineering Lesson
+
+A failure report is not yet a lesson. For every load-bearing mistake, the reader must be able to reconstruct:
+
+1. **Before:** what was built, believed, or measured.
+2. **Break:** what evidence exposed the mismatch and why the old mechanism could not answer the question.
+3. **Now:** the current implementation or decision, shown with the same level of concrete detail as the failure.
+4. **Why:** alternatives considered, decision rationale, and the tradeoff deliberately accepted.
+5. **Tenet:** the bounded rule another engineer can carry without turning it into dogma.
+6. **Vision:** what the repair is trying to make possible and which tension remains open.
+
+Do not force these into six headings. Do make the comparison reconstructable through prose, code, diagrams, or tables. Present tense is not reserved for pain; it also names the system that exists now, the judgment behind it, and the bet it embodies. Critique without the repair teaches diagnosis but withholds growth.
 
 ### Specificity Over Polish
 

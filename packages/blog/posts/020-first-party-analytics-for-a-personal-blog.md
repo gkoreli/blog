@@ -13,14 +13,14 @@ series:
 researchFootprint:
   sessions: 27
   artifacts: 37
-  totalTokens: 301267888
-  inputTokens: 300558571
-  cachedInputTokens: 295059968
-  outputTokens: 709317
-  reasoningOutputTokens: 274589
-  wallClockMinutes: 867
+  totalTokens: 365815028
+  inputTokens: 365082271
+  cachedInputTokens: 359472896
+  outputTokens: 732757
+  reasoningOutputTokens: 284481
+  wallClockMinutes: 898
   startedAt: "2026-08-26T04:53:10.248Z"
-  measuredAt: "2026-08-26T19:19:54.617Z"
+  measuredAt: "2026-08-26T19:51:10.023Z"
   provenanceUrl: "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-wrong-event"
 ---
 
@@ -139,17 +139,18 @@ I expected to replace the beacon and adjust one query.
 
 Instead, the event definition reached through the whole system.
 
-| Layer | What changed |
-|---|---|
-| Routing | `run_worker_first` moved from `/api/*` to every static request. |
-| Eligibility | The served response, status, method, content type, prefetch state, and path became part of the contract. |
-| Vocabulary | Humans became Browsers. Visitors became Daily clients. AI Reads became AI UAs. |
-| Identity | A public-date SHA hash became a site/day-scoped HMAC with a required secret. |
-| Storage | `page_views` gave way to a constrained, source-aware `page_observations` read model. |
-| Time | Viewer-local offsets became reproducible UTC windows with exact half-open bounds. |
-| Aggregates | Every card, chart, path, referrer, country, device, and agent row received the same owner, traffic-class, path, and time predicates. Both source eras remain included; `observation_source` preserves provenance rather than filtering the public view. |
-| Presentation | Loading, empty, failure, units, methodology, and accessibility became one public contract. |
-| Privacy | The page now names transient IP and User-Agent processing, pseudonymous linkage, retained fields, and Cloudflare Web Analytics separately. |
+| Layer | Before | Now | Why I chose it |
+|---|---|---|---|
+| Routing | Static pages bypassed application code; only `/api/*` ran Worker-first. | Every request reaches the Worker, which serves the asset once and observes the actual response. | The original HTML request has to cross the instrument if Page view is going to mean a served page. |
+| Event | A row began with a later browser `POST /api/event`. | A row begins with an eligible successful HTML `GET`; persistence remains best effort. | Copy and SQL cannot recover a request the sensor never saw. |
+| Vocabulary | Human, Visitor, and AI Read implied identity or cognition. | Browser, Daily client, Bot, AI UA, and Page view name observable or explicitly heuristic facts. | Public nouns should be the epistemic ceiling of the row. |
+| Referrer | JavaScript sent `document.referrer`; ingestion stored a cleaned hostname + path. | The original HTML request supplies its `Referer` header; the read model keeps the external hostname only. | Attribution now belongs to the event being counted. Host-level data answers channel decisions while reducing sensitive detail and fragmented rows. |
+| Identity | A public UTC date acted as the salt for a 64-bit SHA-256 prefix. | A Worker secret derives a daily HMAC key; D1 stores a 128-bit site/day client ID. | Keep within-day estimation while making offline candidate testing require the secret. It remains pseudonymous, not anonymous. |
+| Storage | `page_views` mixed old product words with nullable/defaulted fields. | `page_observations` constrains class, device, identity, owner, source, and timestamp; `page_views` stays the lossless archive. | Preserve history and provenance without pretending both collection methods mean the same thing. |
+| Time | The viewer's current offset shifted historical rows, and `30d` included 31 dates. | UTC half-open windows produce exactly 7/30/90 dates and zero-filled hourly/daily buckets. | The same public URL should return the same reproducible period for every reader. |
+| Aggregates | AI Reads ignored the active filter; owner predicates differed; chart fields changed granularity without changing language. | Every aggregate shares owner, traffic-class, path, and time predicates; both source eras remain visible. | One response should describe one population. `observation_source` preserves provenance rather than becoming a hidden filter. |
+| Presentation | New filter pills could temporarily sit above stale cards; failures left partial skeletons; units were implicit. | Loading, empty, failure, selected state, units, UTC range, accessible chart data, and methodology move together. | A mathematically correct response can still become a misleading interface. |
+| Privacy | Public copy said path/referrer only and fingerprint-free while more fields and a daily IP + UA identifier were stored. | The privacy page names transient inputs, stored fields, linkage, indefinite retention, legacy history, and separate Cloudflare Web Analytics. | Privacy is a threat model and disclosure contract, not the word cookieless. |
 
 The public label was not decoration. It was the top of a data contract.
 
@@ -180,6 +181,47 @@ I used composition because those policies vary independently. Eligibility can ch
 The boundary also prevented a concrete dependency leak. My first shared `StatsResponse` export pulled Worker-only D1 types into the browser's TypeScript program. Moving the public contract to a browser-safe `contracts` entry point restored the direction: the blog consumes analytics vocabulary without importing analytics infrastructure.
 
 This is the useful part of domain-driven design here: split meanings and reasons to change, not files for their own sake. `PageObservation` owns served HTML. A future non-HTML `ResourceObservation` would be a different context because its unit, privacy needs, retention, and product question are different.
+
+## How referrer attribution works now
+
+The old beacon could not use the `Referer` header on `POST /api/event`: that request came from the article to the same site, so its HTTP referrer described the current blog page. The browser had to send the navigation source explicitly:
+
+```text
+document.referrer
+  -> beacon JSON body
+  -> parse URL
+  -> remove self-referrals and query/fragment
+  -> store hostname + pathname
+```
+
+That path-level detail was useful. It could distinguish `reddit.com` from a specific Reddit thread or `github.com` from one repository page.
+
+The edge model observes the original HTML request, so the request already carries the relevant `Referer` header. The current policy reads it at the event boundary:
+
+```typescript
+function referrerHost(request: Request, siteHostname: string): string | null {
+  const raw = request.headers.get('Referer')
+  if (raw === null) return null
+
+  try {
+    const host = new URL(raw).hostname.toLowerCase().replace(/^www\./, '')
+    const selfHost = siteHostname.replace(/^www\./, '')
+    return host === selfHost ? null : host
+  } catch {
+    return null
+  }
+}
+```
+
+The read model keeps only the external hostname.
+
+I chose host-level attribution because the decisions I currently make are channel-level: did a reader arrive from Reddit, Google, Hacker News, X, GitHub, or ChatGPT? Host aggregation avoids splitting one channel into many path rows, stores less potentially sensitive detail on a low-traffic personal site, and removes a client-supplied field from the event body.
+
+The tradeoff is real. I can no longer tell which exact Reddit thread, short link, or repository page sent a new edge observation. The untouched legacy archive still retains its cleaned hostname + path values; the public continuity copy normalizes them to hosts so the combined referrer list has one meaning.
+
+Browser referrer policy, `noreferrer`, redirects, and privacy tools can still suppress or reduce the header. `null` means unattributed, not necessarily direct.
+
+The tenet I am carrying forward is field-level: when an event moves, explain where every important field comes from now, why its granularity changed, and what decision justified the loss.
 
 ## Cookieless analytics does not mean anonymous
 
@@ -312,6 +354,32 @@ So I cannot currently prove that my own requests are excluded.
 
 The public methodology used to say they were. I corrected that wording while writing this article: only rows marked as mine are excluded, and that marking depends on server-side configuration. The remaining limit is operational, not hidden behind the predicate.
 
+## What I am building toward
+
+I am not trying to reproduce Google Analytics on a smaller budget.
+
+I want a public decision instrument for one personal publication:
+
+- enough reach data to know whether work leaves my own browser;
+- page and referrer evidence that can change content, discoverability, or distribution;
+- automation classes without calling a User-Agent match a read;
+- visible collection-method changes instead of a magically continuous chart;
+- a privacy model that names transient inputs, retained fields, linkage, and deletion honestly;
+- separate instruments for served HTML, browser performance, non-HTML resources, referrals, and actual reader contact;
+- a stop condition: if a metric cannot change a named decision, I do not need to build it.
+
+That vision explains why I spent the effort. The dashboard is public, the implementation is open, the historical source remains intact, and the method is inspectable. If I ask readers to trust a number, I want them to be able to see what became a row and where the claim stops.
+
+It also limits the future work. The next steps are not “collect everything.” They are:
+
+1. configure and verify server-side owner marking;
+2. finish the declared 30-day comparison without changing the event mid-window;
+3. keep using Cloudflare Web Analytics for RUM rather than duplicating it;
+4. observe non-HTML resource demand through existing Cloudflare evidence before deciding whether `ResourceObservation` deserves its own schema;
+5. prefer replies, corrections, subscriptions, citations, and reports of use over adding another dashboard card.
+
+The architecture is a bet that a smaller, explicit model will teach me more than a large system with convenient nouns.
+
 ## An event-first checklist for trustworthy analytics
 
 ### Name the event and its strongest noun
@@ -377,6 +445,7 @@ If you have built a precise counter for the wrong event, tell me where you found
 |---|---|---|
 | Original beacon could not observe direct static-resource requests | [Does llms.txt Work?](/does-llms-txt-work) and [pinned old implementation](https://github.com/gkoreli/blog/tree/c85a629d1074db54d5f9e5c171abbd798be85945/packages/analytics) | Aug 2026 audit |
 | Edge PageObservation contract | [ADR-0016](https://github.com/gkoreli/blog/blob/f9d65ae9618c00c464c4ed274fc52534f352513b/docs/adr/0016-analytics-observation-semantics.md), [eligibility](https://github.com/gkoreli/blog/blob/f9d65ae9618c00c464c4ed274fc52534f352513b/packages/analytics/src/eligibility.ts), and [Worker composition root](https://github.com/gkoreli/blog/blob/f9d65ae9618c00c464c4ed274fc52534f352513b/packages/blog/src/worker/index.ts) | Aug 26, 2026 |
+| Referrer before/after policy | [Old client-referrer cleaning](https://github.com/gkoreli/blog/blob/c85a629d1074db54d5f9e5c171abbd798be85945/packages/analytics/src/index.ts#L11-L23), [current request-header policy](https://github.com/gkoreli/blog/blob/f9d65ae9618c00c464c4ed274fc52534f352513b/packages/analytics/src/metadata.ts#L11-L39), and [legacy hostname normalization](https://github.com/gkoreli/blog/blob/f9d65ae9618c00c464c4ed274fc52534f352513b/packages/analytics/migrations/0002_backfill_legacy_page_views.sql#L25-L31) | Aug 26, 2026 |
 | Daily HMAC identity and minimization | [HMAC implementation](https://github.com/gkoreli/blog/blob/f9d65ae9618c00c464c4ed274fc52534f352513b/packages/analytics/src/hash.ts), [metadata policy](https://github.com/gkoreli/blog/blob/f9d65ae9618c00c464c4ed274fc52534f352513b/packages/analytics/src/metadata.ts), [RFC 2104](https://www.rfc-editor.org/rfc/rfc2104) | Aug 26, 2026 |
 | 2,564 source rows preserved with source-aware continuity | [Migration](https://github.com/gkoreli/blog/blob/f9d65ae9618c00c464c4ed274fc52534f352513b/packages/analytics/migrations/0002_backfill_legacy_page_views.sql), [production cutover evidence](https://github.com/gkoreli/blog/blob/f9d65ae9618c00c464c4ed274fc52534f352513b/docs/tasks/TASK-0020.md), and [article claim audit](https://github.com/gkoreli/blog/blob/main/docs/tasks/TASK-0035.md) | Aug 26, 2026 |
 | Analytics purpose and stop condition | [ADR-0016.1](https://github.com/gkoreli/blog/blob/0df8c5936b2cfa6a1d9f77218262aacbd489100c/docs/adr/0016.1-analytics-purpose-and-decision-loop.md) | Aug 26, 2026 |

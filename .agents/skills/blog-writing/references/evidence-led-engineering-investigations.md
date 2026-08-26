@@ -85,6 +85,28 @@ When the current material is live, never recommend waiting merely to replace “
 
 Release still requires every material claim made now to be grounded. Unresolved does not mean unsupported.
 
+## Close the Repair Loop Without Closing the Question
+
+An article may remain unresolved while its engineering explanation is complete. Do not confuse open tension with an incomplete mechanism.
+
+For each central failure, preserve a symmetric evidence chain:
+
+```text
+before state
+  -> observed failure
+  -> causal mechanism
+  -> current repair
+  -> decision rationale and rejected alternatives
+  -> accepted tradeoff
+  -> transferable tenet
+  -> remaining unknown / future vision
+```
+
+Give the current implementation the same evidentiary standard as the old one: code, flow, schema, production state, and claim boundary. If a field changed—identity, referrer, timestamp, source, privacy, or retention—show how it is produced now, why the new shape was chosen, and what capability was lost. A critique that never reaches the present system cannot support a lesson learned.
+
+This is not a victory-arc requirement. The repair may be provisional, costly, or wrong. The article can still explain what exists, why the author chose it, and what would reverse the decision.
+
+
 ## Make the result evergreen without hiding time
 
 Separate two layers:
