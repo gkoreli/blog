@@ -4,6 +4,8 @@
 
 Accepted — 2026-08-25. Amended — 2026-08-26 to retain the legacy browser-beacon history in the public read model with an explicit source marker. Supersedes the collection and metric semantics in ADR-0004 and the dashboard semantics in ADR-0005. Worker + D1 remains the chosen infrastructure.
 
+Purpose, interpretation, and the stop condition for further analytics work are governed by [ADR-0016.1](0016.1-analytics-purpose-and-decision-loop.md).
+
 ## Context
 
 The deployed dashboard counts browser beacon rows but labels them as views, visitors, bots, and AI reads. Those labels promise more than the system observes.
