@@ -2,6 +2,16 @@
 
 Notable changes to the publication and its supporting packages are recorded here.
 
+## 0.4.0 — 2026-08-26
+
+### Animations Lab
+
+- Recompose Ambient Drift as three depth layers with separate fields, emitters, lifetimes, scales, and opacity hierarchies.
+- Turn Memory Zone into a left-to-right itinerary with a named chamber and persistent color, size, alpha, and emissive state after crossing.
+- Layer Text Emergence into core and ghost glyph fragments while preserving the source word as the dominant editorial object.
+- Rebuild Fracture Pulse as a seven-branch hierarchy with an eight-second calm/reveal/hold/decay cycle, one restrained hue, and exact phase inspection.
+- Add live phase labels and constrain the right-gutter breakout at every tested viewport without losing the adjacent instrument dock.
+
 ## 0.3.1 — 2026-08-26
 
 ### Animations Lab

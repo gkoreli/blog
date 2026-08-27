@@ -21,12 +21,12 @@ const EXPERIMENTS: readonly LabExperiment[] = [
     id: 'ambient-drift',
     number: '01',
     title: 'Ambient Drift',
-    tagline: 'The default breath of the system.',
+    tagline: 'Three depths of air move as one current.',
     status: 'baseline',
     metricLabel: 'Particles',
-    substrates: ['Emitter', 'Field', 'Material', 'Modulation'],
-    quick: 'A low-density field that establishes the quiet life-sign of the runtime. This one is allowed to be restrained because it is the baseline.',
-    distilled: 'Quiet motion only matters if restraint still feels alive.',
+    substrates: ['Layered Emitters', 'Fields', 'Lozenges', 'Depth'],
+    quick: 'Three particle layers move at different scales and speeds. Near flecks catch the eye; distant flecks make the field feel larger than the canvas.',
+    distilled: 'Atmosphere needs depth, not more dots.',
     rationale: [
       'Validates the particle store, field substrate, material substrate, and baseline renderer path.',
       'Sets the taste threshold for motion that can live behind an article without stealing the article.',
@@ -56,17 +56,17 @@ const EXPERIMENTS: readonly LabExperiment[] = [
     status: 'semantic',
     metricLabel: 'Particles',
     substrates: ['Field', 'Zone', 'Event', 'Glow', 'Decay'],
-    quick: 'A visible memory chamber changes the behavior of particles that cross it. The point is semantic space: motion reacts to where it is.',
-    distilled: 'Space is no longer neutral. It has memory, temperature, and consequence.',
+    quick: 'Neutral frames enter from the left, cross a named memory chamber, and leave larger, warmer, and permanently changed.',
+    distilled: 'A place becomes meaningful when what leaves it still carries the crossing.',
     rationale: [
       'Tests zone occupancy as a semantic primitive, not a renderer trick.',
-      'Exercises enter and continuous-in-zone effects through the pipeline.',
-      'Makes the user see why zones matter before reading the implementation notes.',
+      'Exercises one-time enter transitions whose color, size, alpha, and emissive state persist after exit.',
+      'Makes before, inside, and remembered-after states visible in the same frame.',
     ],
     insights: [
-      'A zone has to be visually authored; invisible geofences read as random particles.',
-      'Warmth and persistence make spatial meaning legible faster than raw particle count.',
-      'The effect needs slow decay so memory feels like memory.',
+      'The chamber is context; the changed travelers are the subject.',
+      'Persistence makes memory legible without relying on color alone.',
+      'A left-to-right itinerary reads more clearly than a uniform particle field.',
     ],
     proves: [
       'The zone model is worth keeping.',
@@ -87,8 +87,8 @@ const EXPERIMENTS: readonly LabExperiment[] = [
     status: 'editorial',
     metricLabel: 'Particles',
     substrates: ['Text Source', 'Emitter', 'Field', 'Material'],
-    quick: 'Literal text anchors the scene. The title remains visible while particles lift from its bounds and drift into the surrounding field.',
-    distilled: 'If motion can emerge from language, the engine has found its home.',
+    quick: 'Two layers of upright ink fragments lift directly from the rendered glyphs while the word remains stable, bright, and unquestionably primary.',
+    distilled: 'Language can shed material without surrendering its form.',
     rationale: [
       'Binds the runtime to publication composition instead of generic particle spectacle.',
       'Validates text-bound emitters as an authoring concept.',
@@ -96,8 +96,8 @@ const EXPERIMENTS: readonly LabExperiment[] = [
     ],
     insights: [
       'The text must remain primary. The motion is evidence of the text, not a replacement for it.',
-      'Bounds are acceptable for v1, but glyph-aware emission is the real next step.',
-      'Editorial animation should make language feel physical.',
+      'Glyph sampling keeps every fragment tied to the actual letterforms.',
+      'Core and ghost fragments need different scale, density, and lift to create a shaped plume rather than a cloud.',
     ],
     proves: [
       'The runtime belongs inside the publication voice.',
@@ -114,10 +114,10 @@ const EXPERIMENTS: readonly LabExperiment[] = [
     id: 'fracture-pulse',
     number: '04',
     title: 'Fracture Pulse',
-    tagline: 'A fault line flashes, branches, and leaves the field quiet again.',
-    status: 'volatile',
+    tagline: 'A hairline rupture, then silence.',
+    status: 'event',
     metricLabel: 'Branches',
-    substrates: ['Timeline', 'Polyline', 'Glow', 'Deterministic Seed'],
+    substrates: ['Timeline', 'Polyline', 'Hierarchy', 'Silence'],
     quick: 'Most of the cycle is dark. A single fault tears outward through connected hairline branches, holds for a fraction of a second, then disappears.',
     distilled: 'Rupture is geometry plus timing. It is not a particle cloud.',
     rationale: [
@@ -136,9 +136,9 @@ const EXPERIMENTS: readonly LabExperiment[] = [
       'A high-energy motif can still preserve the publication’s restraint.',
     ],
     controls: [
-      { id: 'particles', label: 'Branches', min: 4, max: 10, value: 8, step: 1 },
-      { id: 'drift', label: 'Spread', min: 35, max: 90, value: 62, step: 1 },
-      { id: 'glow', label: 'Voltage', min: 20, max: 100, value: 58, step: 1 },
+      { id: 'particles', label: 'Branches', min: 4, max: 7, value: 7, step: 1 },
+      { id: 'drift', label: 'Spread', min: 45, max: 90, value: 62, step: 1 },
+      { id: 'glow', label: 'Afterglow', min: 20, max: 80, value: 45, step: 1 },
     ],
   },
 ];
@@ -181,6 +181,10 @@ function ExperimentSection(experiment: LabExperiment) {
           </span>
           <input type="range" min="0" max="1000" value="0" step="1" data-timeline-scrub disabled>
         </label>
+        <div class="al-timeline-phase">
+          <span>Phase</span>
+          <strong data-timeline-phase>Continuous</strong>
+        </div>
 
         <div class="al-actions">
           <button type="button" data-action="pause" aria-pressed="false">Freeze</button>

@@ -3,7 +3,7 @@
 .al-page {
   position: relative;
   z-index: 1;
-  width: min(1120px, calc(100vw - 2rem));
+  width: min(1120px, calc(50% + 50vw - 2rem));
   padding-top: 2rem;
 }
 
@@ -302,6 +302,23 @@
 .al-control-heading output {
   color: var(--color-text);
 }
+.al-timeline-phase {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.45rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.al-timeline-phase strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
 
 .al-console input[type='range'] {
   width: 100%;
