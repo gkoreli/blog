@@ -13,10 +13,11 @@
 - Ranked practical-impact research: `09-biggest-impact-items.md`
 - Post-cutover release-cadence audit: `10-release-cadence-after-1-4.md`
 - Practical-impact section editorial audit: `11-impact-section-editorial-audit.md`
+- Research-footprint counter-reset audit: `12-research-footprint-reset-audit.md`
 
 Planning envelope recorded at the author's request: 90–120 minutes and 250,000–400,000 aggregate tokens across the root session and its recursive subagent tree. The published `researchFootprint` will use measured cumulative session usage, not this estimate.
 
-Final freeze: 267 wall-clock minutes, 4 sessions, 12 committed Markdown research artifacts, and 73,252,806 total tokens. The total contains 72,990,889 input tokens (70,291,328 cached; 2,699,561 non-cached) and 261,917 output tokens (90,157 reasoning output, counted inside output). The planning token estimate was materially low because the cumulative model counts the full context on every response, including cache hits. See `research-footprint.json` for the included sessions and log-prefix commitments.
+Final freeze: 292 wall-clock minutes, 4 linked sessions, 13 committed Markdown research artifacts, and 114,317,897 total tokens. The total contains 113,943,245 input tokens (110,553,216 cached; 3,390,029 non-cached) and 374,652 output tokens (131,130 reasoning output, counted inside output). Rules version 2 detected one root counter reset and summed two monotonic cumulative epochs. Four unlinked automatic guardian sessions totaling 956,584 tokens remain disclosed but excluded. See `research-footprint.json` and `12-research-footprint-reset-audit.md`.
 
 Root Codex thread: `01a04082-e0c4-7701-9cf4-3d32898f5773`.
 

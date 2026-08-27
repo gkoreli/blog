@@ -15,18 +15,19 @@ import {
 
 const RESEARCH_URL = 'https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-1-4';
 const MANIFEST_URL = 'https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/bun-1-4/research-footprint.json';
+const FOOTPRINT_AUDIT_URL = 'https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/bun-1-4/12-research-footprint-reset-audit.md';
 
 const researchFootprint = {
   sessions: 4,
-  artifacts: 12,
-  totalTokens: 73_252_806,
-  inputTokens: 72_990_889,
-  cachedInputTokens: 70_291_328,
-  outputTokens: 261_917,
-  reasoningOutputTokens: 90_157,
-  wallClockMinutes: 267,
+  artifacts: 13,
+  totalTokens: 114_317_897,
+  inputTokens: 113_943_245,
+  cachedInputTokens: 110_553_216,
+  outputTokens: 374_652,
+  reasoningOutputTokens: 131_130,
+  wallClockMinutes: 292,
   startedAt: '2026-08-26T23:58:34.236Z',
-  measuredAt: '2026-08-27T04:25:13.144Z',
+  measuredAt: '2026-08-27T04:50:02.563Z',
   provenanceUrl: RESEARCH_URL,
 };
 
@@ -77,7 +78,7 @@ export function preamble() {
     author: 'Goga Koreli',
     readTime: '15 min read',
     footprint: {
-      label: `${researchFootprint.wallClockMinutes} min · ${researchFootprint.sessions} sessions · ${researchFootprint.artifacts} artifacts · ${compactTokenCount(researchFootprint.totalTokens)} measured tokens`,
+      label: `${researchFootprint.wallClockMinutes} min · ${researchFootprint.sessions} linked sessions · ${researchFootprint.artifacts} artifacts · ${compactTokenCount(researchFootprint.totalTokens)} measured tokens`,
       url: '#research-footprint',
     },
   });
@@ -675,7 +676,7 @@ export function article() {
     </div>
     <div class="research-footprint-stats">
       <div><strong>${researchFootprint.wallClockMinutes} min</strong><span>wall-clock window</span></div>
-      <div><strong>${researchFootprint.sessions}</strong><span>agent sessions</span></div>
+      <div><strong>${researchFootprint.sessions}</strong><span>linked agent sessions</span></div>
       <div><strong>${researchFootprint.artifacts}</strong><span>committed Markdown artifacts</span></div>
       <div><strong>${compactTokenCount(researchFootprint.totalTokens)}</strong><span>tokens processed</span></div>
     </div>
@@ -695,8 +696,15 @@ export function article() {
     </p>
     <p>
       The <a href="${MANIFEST_URL}" target="_blank" rel="noopener">frozen manifest</a> records the recursive session
-      closure, last cumulative usage record selected for each session, log-prefix hashes, artifact counts, and timing.
-      Each session total is counted once. Cached input is part of input, and reasoning output is part of output.
+      closure, selected cumulative epoch ends, log-prefix hashes, artifact counts, and timing. The root counter reset
+      once after compaction, so rules version 2 counts its two monotonic epochs; the other three sessions have one.
+      Cached input is part of input, and reasoning output is part of output.
+    </p>
+    <p>
+      The <a href="${FOOTPRINT_AUDIT_URL}" target="_blank" rel="noopener">counter-reset audit</a> also records four
+      automatic guardian sessions totaling 956,584 tokens. They have no parent-thread link and remain outside the
+      headline total. This number describes the article's linked research-session tree, not every internal token the
+      Codex product may have processed around it.
     </p>
     <p class="research-footprint-note">
       This is provenance, not a quality score, bill, or environmental estimate. Wall-clock time is not hands-on time.

@@ -1,22 +1,22 @@
 {
-  "rulesVersion": 1,
+  "rulesVersion": 2,
   "rootThread": "01a04082-e0c4-7701-9cf4-3d32898f5773",
   "startedAt": "2026-08-26T23:58:34.236Z",
-  "measuredAt": "2026-08-27T04:25:13.144Z",
-  "wallClockMinutes": 267,
+  "measuredAt": "2026-08-27T04:50:02.563Z",
+  "wallClockMinutes": 292,
   "sessionCount": 4,
   "promptCount": 0,
-  "artifactCount": 12,
-  "committedArtifactCount": 12,
+  "artifactCount": 13,
+  "committedArtifactCount": 13,
   "uncommittedArtifactCount": 0,
   "totals": {
-    "inputTokens": 72990889,
-    "cachedInputTokens": 70291328,
+    "inputTokens": 113943245,
+    "cachedInputTokens": 110553216,
     "cacheWriteInputTokens": 0,
-    "outputTokens": 261917,
-    "reasoningOutputTokens": 90157,
-    "totalTokens": 73252806,
-    "nonCachedInputTokens": 2699561
+    "outputTokens": 374652,
+    "reasoningOutputTokens": 131130,
+    "totalTokens": 114317897,
+    "nonCachedInputTokens": 3390029
   },
   "sessions": [
     {
@@ -25,17 +25,46 @@
       "agentPath": "/root",
       "cwd": "/Users/goga/Documents/goga/blog",
       "log": "2026/08/26/rollout-2026-08-26T16-58-34-01a04082-e0c4-7701-9cf4-3d32898f5773.jsonl",
-      "logBytes": 22217768,
-      "usageRecordLine": 2843,
-      "usageAt": "2026-08-27T04:25:13.144Z",
-      "prefixSha256": "a2e21d56952f0a44a016ae87baf8b2b728364b5e1936b4ff3fdb086569291245",
+      "logBytes": 23020485,
+      "usageRecordLine": 3238,
+      "usageAt": "2026-08-27T04:50:02.563Z",
+      "prefixSha256": "81091b812fc257a7a7701dedd9bdc479d55ded01a6f27f83ce05a91c2da971a5",
+      "usageEpochCount": 2,
+      "usageEpochs": [
+        {
+          "endLine": 1477,
+          "endAt": "2026-08-27T00:53:08.334Z",
+          "prefixSha256": "0910e8f9a16b6bb3586d3269aa536581a9913307de49a2c9c064aa3ee3634879",
+          "usage": {
+            "input_tokens": 29567086,
+            "cached_input_tokens": 29022720,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 82336,
+            "reasoning_output_tokens": 32526,
+            "total_tokens": 29649422
+          }
+        },
+        {
+          "endLine": 3238,
+          "endAt": "2026-08-27T04:50:02.563Z",
+          "prefixSha256": "81091b812fc257a7a7701dedd9bdc479d55ded01a6f27f83ce05a91c2da971a5",
+          "usage": {
+            "input_tokens": 34655267,
+            "cached_input_tokens": 33817984,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 104659,
+            "reasoning_output_tokens": 37978,
+            "total_tokens": 34759926
+          }
+        }
+      ],
       "usage": {
-        "input_tokens": 23269997,
-        "cached_input_tokens": 22578816,
+        "input_tokens": 64222353,
+        "cached_input_tokens": 62840704,
         "cache_write_input_tokens": 0,
-        "output_tokens": 74260,
-        "reasoning_output_tokens": 29531,
-        "total_tokens": 23344257
+        "output_tokens": 186995,
+        "reasoning_output_tokens": 70504,
+        "total_tokens": 64409348
       }
     },
     {
@@ -48,6 +77,22 @@
       "usageRecordLine": 630,
       "usageAt": "2026-08-27T03:56:15.550Z",
       "prefixSha256": "90c851b261aa9d0bd664d57680de6a2f9bbc1a6f95e23fe3e87d8b4b8a36c449",
+      "usageEpochCount": 1,
+      "usageEpochs": [
+        {
+          "endLine": 630,
+          "endAt": "2026-08-27T03:56:15.550Z",
+          "prefixSha256": "90c851b261aa9d0bd664d57680de6a2f9bbc1a6f95e23fe3e87d8b4b8a36c449",
+          "usage": {
+            "input_tokens": 12624564,
+            "cached_input_tokens": 12108800,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 48097,
+            "reasoning_output_tokens": 10280,
+            "total_tokens": 12672661
+          }
+        }
+      ],
       "usage": {
         "input_tokens": 12624564,
         "cached_input_tokens": 12108800,
@@ -67,6 +112,22 @@
       "usageRecordLine": 756,
       "usageAt": "2026-08-27T03:58:17.250Z",
       "prefixSha256": "6eedaecacecfadd5a52546b222cd71d139508d56c7281d7e980eeb3a405dfc4f",
+      "usageEpochCount": 1,
+      "usageEpochs": [
+        {
+          "endLine": 756,
+          "endAt": "2026-08-27T03:58:17.250Z",
+          "prefixSha256": "6eedaecacecfadd5a52546b222cd71d139508d56c7281d7e980eeb3a405dfc4f",
+          "usage": {
+            "input_tokens": 13390437,
+            "cached_input_tokens": 12746240,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 61473,
+            "reasoning_output_tokens": 18773,
+            "total_tokens": 13451910
+          }
+        }
+      ],
       "usage": {
         "input_tokens": 13390437,
         "cached_input_tokens": 12746240,
@@ -86,6 +147,22 @@
       "usageRecordLine": 1261,
       "usageAt": "2026-08-27T04:12:01.330Z",
       "prefixSha256": "16dfcaeb959cff373ab6efd659b6f27b693c44dbb5d3c43009a9ff7641690a95",
+      "usageEpochCount": 1,
+      "usageEpochs": [
+        {
+          "endLine": 1261,
+          "endAt": "2026-08-27T04:12:01.330Z",
+          "prefixSha256": "16dfcaeb959cff373ab6efd659b6f27b693c44dbb5d3c43009a9ff7641690a95",
+          "usage": {
+            "input_tokens": 23705891,
+            "cached_input_tokens": 22857472,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 78087,
+            "reasoning_output_tokens": 31573,
+            "total_tokens": 23783978
+          }
+        }
+      ],
       "usage": {
         "input_tokens": 23705891,
         "cached_input_tokens": 22857472,
