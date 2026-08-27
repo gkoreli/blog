@@ -10,10 +10,15 @@
 - Main editorial synthesis and claim table: `06-editorial-synthesis.md`
 - Final draft fact-check and red-team: `TASK-0095` → `07-draft-fact-check.md`
 - Immersive article visual verification: `TASK-0096` → `08-visual-verification.md`
+- Ranked practical-impact research: `09-biggest-impact-items.md`
+- Post-cutover release-cadence audit: `10-release-cadence-after-1-4.md`
+- Practical-impact section editorial audit: `11-impact-section-editorial-audit.md`
 
 Planning envelope recorded at the author's request: 90–120 minutes and 250,000–400,000 aggregate tokens across the root session and its recursive subagent tree. The published `researchFootprint` will use measured cumulative session usage, not this estimate.
 
-Final freeze: 47 wall-clock minutes, 4 sessions, 9 committed Markdown research artifacts, and 58,621,779 total tokens. The total contains 58,427,867 input tokens (56,625,408 cached; 1,802,459 non-cached) and 193,912 output tokens (67,367 reasoning output, counted inside output). The planning token estimate was materially low because the cumulative model counts the full context on every response, including cache hits. See `research-footprint.json` for the included sessions and log-prefix commitments.
+The final freeze below is temporarily stale while the practical-impact expansion is being verified. It will be regenerated from the recursive session tree after all twelve Markdown research artifacts are committed; no total will be hand-counted.
+
+Previous freeze: 47 wall-clock minutes, 4 sessions, 9 committed Markdown research artifacts, and 58,621,779 total tokens. The total contains 58,427,867 input tokens (56,625,408 cached; 1,802,459 non-cached) and 193,912 output tokens (67,367 reasoning output, counted inside output). The planning token estimate was materially low because the cumulative model counts the full context on every response, including cache hits. See `research-footprint.json` for the included sessions and log-prefix commitments.
 
 Root Codex thread: `01a04082-e0c4-7701-9cf4-3d32898f5773`.
 

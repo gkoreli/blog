@@ -10,6 +10,7 @@ import {
   SectionBreak,
   Sources,
   StatRow,
+  Steps,
 } from '../src/templates/components.js';
 
 const RESEARCH_URL = 'https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-1-4';
@@ -74,7 +75,7 @@ export function preamble() {
     title: html`<h1>Bun 1.4 Made the Runtime the <em>Dependency</em></h1>`,
     subtitle: 'The package graph shrank. The responsibility did not.',
     author: 'Goga Koreli',
-    readTime: '9 min read',
+    readTime: '12 min read',
     footprint: {
       label: `47 min · 4 sessions · 9 artifacts · ${compactTokenCount(researchFootprint.totalTokens)} measured tokens`,
       url: '#research-footprint',
@@ -164,7 +165,7 @@ export function article() {
     steps: [
       {
         eyebrow: 'Create',
-        title: 'Bun.Terminal',
+        title: html`Bun.<wbr>Terminal`,
         detail: html`Columns, rows, data and exit callbacks`,
         connector: 'attach',
         tone: 'warm',
@@ -306,10 +307,102 @@ export function article() {
     do not reveal how many teams use the package manager, the runtime, a compiled CLI, or production servers.
   </p>
 
+  <h2>What engineers get from Bun 1.4 in practice</h2>
+
   <p>
     <a href="/oss-radar-02-the-toolchain-is-the-moat">Bun's original moat was the integrated JavaScript toolchain</a>.
     Version 1.4 pushes that integration upward into application work. Node compatibility is becoming the entry
     contract beneath a Bun-specific toolkit, not the final destination. That is a stronger product and a larger bet.
+  </p>
+
+  <p>
+    The architecture matters only if it removes work or makes a production failure less likely. The practical list
+    below uses the full 1.3-to-1.4 release train and keeps the final tag boundary visible. These are the changes that
+    make me want to test Bun again on real projects.
+  </p>
+
+  ${Steps({
+    items: [
+      {
+        title: 'A migration trial can target memory and CPU',
+        body: html`Bun's own measurements show a 2,000-call <code>Bun.build()</code> loop leveling at 609 MB instead
+          of 6,745 MB, a 100-deep <code>Response.clone()</code> chain around a 10 MB streaming body falling from about
+          1,050 MB to 20 MB, and HTTP server workloads using 13–48% less peak memory. Claude Code's reported p99 CPU
+          fell from 24% to 10%. These are maintainer and owner measurements. Use them as trial targets, then rerun the
+          same loops on your service.`,
+      },
+      {
+        title: 'The test runner and tracer can follow the application',
+        body: html`Bun reports that Playwright, Vitest with coverage and worker pools, OpenTelemetry HTTP and file
+          instrumentation, <code>dd-trace</code>, and <code>@datadog/pprof</code> now run on 1.4.0. Those are migration
+          blockers, not demo features. Verify the exact plugins and transports you use. Addons bound directly to
+          Node, V8, libuv, or the C++ ABI need matching prebuilds for Bun's Node 26.3.0 target; Node-API addons retain
+          their cross-version ABI contract.`,
+      },
+      {
+        title: 'Large test suites get scheduling primitives',
+        body: html`<code>--parallel</code>, <code>--shard</code>, <code>--changed</code>, and isolation now compose with
+          <code>--timings=&lt;path&gt;</code> and <code>--update-timings</code>, so workers and CI runners can start with
+          slow tests instead of dividing files evenly. Keep a no-output watchdog and a serial fallback: a
+          <a href="https://github.com/oven-sh/bun/issues/39987" target="_blank" rel="noopener">large-suite deadlock report</a>
+          remained open at the cutoff.`,
+      },
+      {
+        title: 'Performance evidence becomes plain Markdown',
+        body: html`<code>--cpu-prof-md</code>, <code>--heap-prof-md</code>, and <code>--metafile-md</code> emit call
+          trees, retaining chains, and bundle dependency paths that work over SSH, in an issue, or inside an agent's
+          context. Most of this arrived during 1.3.x. The 1.4 value is the coherent workflow: measure, inspect, change,
+          and compare without converting a GUI profile or a large JSON file first.`,
+      },
+      {
+        title: 'Agent tools gain native terminal, browser, and image surfaces',
+        body: html`A TypeScript process can drive a real PTY with <code>Bun.Terminal</code>, navigate and screenshot
+          with <code>Bun.WebView</code>, and resize or encode an image with <code>Bun.Image</code>. That covers much of a
+          coding agent's observe-and-act loop inside one runtime. It does not supply approvals, secret policy, session
+          recovery, or cross-platform parity; WebView is experimental and still relies on OS or installed browsers.`,
+      },
+      {
+        title: 'Package maintenance becomes one reviewable workflow',
+        body: html`<code>bun pm diff</code>, <code>bun audit fix --dry-run</code>, <code>bun dedupe</code>,
+          <code>bun prune --production</code>, and <code>bun pm licenses --prod --json</code> cover upgrade review,
+          advisory repair, lockfile cleanup, deployment pruning, and license inventory. Audit sends installed package
+          names and versions to the configured registries; it is not an offline scan. Keep repair changes on a branch:
+          an <a href="https://github.com/oven-sh/bun/issues/39309" target="_blank" rel="noopener">open report</a>
+          shows <code>audit fix --latest</code> selecting an older, more vulnerable major.`,
+      },
+      {
+        title: 'React Compiler can become a Bun build option',
+        body: html`<code>bun build --react-compiler</code> runs React's auto-memoization transform inside Bun's parser
+          instead of adding another Babel or SWC parse-and-print pass. Bun reports 71 ms of added work across roughly
+          860 components versus 9.15 seconds for the Babel plugin on the same input. Treat that as one measured codebase,
+          then compare your plugins, output, and runtime behavior before removing the old compiler path.`,
+      },
+      {
+        title: 'Monorepo fan-out can lose two coordinator packages',
+        body: html`<code>bun run --parallel --filter</code> prefixes output by package and script, preserves pre/post
+          hooks, and can continue after failures. That absorbs common <code>concurrently</code> and
+          <code>npm-run-all</code> jobs. The related test flags shorten the edit-test loop further, but Bun still does
+          not provide a distributed task graph, remote cache, or isolation policy for shared ports and databases.`,
+      },
+    ],
+  })}
+
+  ${Callout({
+    label: 'Two smaller fixes with a large practical effect',
+    body: html`<ul>
+      <li><code>bun --hot</code> no longer loses track of macOS files after an editor's atomic rename.</li>
+      <li><code>Bun.Glob</code> and recursive <code>fs.readdir</code> no longer skip files on bind mounts, FUSE, or NFS.</li>
+    </ul>`,
+  })}
+
+  <p>
+    This is the part that genuinely excites me. Bun says the 1.3-to-1.4 train fixed more than 2,900 issues, while the
+    Rust port fixed 128 bugs that still reproduced on 1.3.14. The one-time cutover now sits behind a stable tag. In
+    the first week after release, smaller fixes, ownership cleanup, and performance work were already landing in an
+    official 1.4.1 canary. That proves fast delivery from <code>main</code> to canary, not a faster stable cadence; at
+    the August 26 cutoff, 1.4.0 was still the only stable 1.4 release. What changed is that the next fixes no longer
+    have to share a release milestone with the mechanical port. Whether the 1.4.x line turns that into smaller,
+    quicker stable releases is the next result I want to see.
   </p>
 
   <h2>Adopt by canary, not by ambient upgrade</h2>
@@ -354,8 +447,8 @@ export function article() {
         url: 'https://github.com/oven-sh/bun/releases/tag/bun-v1.4.0',
       },
       {
-        claim: 'The Bun 1.4 post is a roundup since 1.3.0 and labels the release that first shipped each feature',
-        why: 'This prevents release-train features such as Bun.Image from being misreported as new in the 1.4.0 tag.',
+        claim: 'The Bun 1.4 post covers the 1.3-to-1.4 train, reports its performance and compatibility results, and labels feature chronology',
+        why: 'It supports the practical impact list while preventing release-train work such as Bun.Image from being misreported as new in the 1.4.0 tag.',
         ref: 'Bun 1.4 release post',
         url: 'https://bun.com/blog/bun-v1.4',
       },
@@ -366,8 +459,8 @@ export function article() {
         url: 'https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/bun-1-4/05-local-reproduction.md',
       },
       {
-        claim: 'Bun 1.4 is the first Rust release after a mechanically staged Zig migration',
-        why: 'The maintainer account supplies the motivation, process, test strategy, production canaries, scale, and explicit limits of the rewrite.',
+        claim: 'Bun 1.4 is the first Rust release, fixes 128 bugs reproducible in 1.3.14, and leaves idiomatic Rust refactoring for later releases',
+        why: 'The maintainer account supplies the rewrite mechanism, operational examples, future work, and the boundary between shipped fixes and enabled improvements.',
         ref: 'Bun is rewriting itself in Rust',
         url: 'https://bun.com/blog/bun-in-rust',
       },
@@ -412,6 +505,36 @@ export function article() {
         why: 'The merged test and implementation change proves that “fixed on main” was not the behavior of the pinned release binary.',
         ref: 'Bun pull request #39642',
         url: 'https://github.com/oven-sh/bun/pull/39642',
+      },
+      {
+        claim: 'A large-suite bun test --parallel deadlock remained reported against stable 1.4.0 at the cutoff',
+        why: 'The open report keeps the new CI scheduling workflow behind a soak test, watchdog, and serial fallback.',
+        ref: 'Bun issue #39987',
+        url: 'https://github.com/oven-sh/bun/issues/39987',
+      },
+      {
+        claim: 'bun audit fix --latest had an open report of selecting an older, more vulnerable package major',
+        why: 'The report makes dry-run, branch isolation, and manifest-plus-lockfile review part of the package-repair workflow.',
+        ref: 'Bun issue #39309',
+        url: 'https://github.com/oven-sh/bun/issues/39309',
+      },
+      {
+        claim: 'Bun audit serializes installed package names and versions and sends the request to configured registries',
+        why: 'Pinned implementation code establishes the network and inventory-disclosure boundary behind the new repair workflow.',
+        ref: 'Bun audit implementation',
+        url: 'https://github.com/oven-sh/bun/blob/34cbb9a40b4bd1bd767d134a7065e66c2432a676/src/runtime/cli/audit_command.rs#L550-L758',
+      },
+      {
+        claim: 'Node-API carries cross-version ABI stability while direct V8, libuv, and Node C++ bindings do not',
+        why: 'The Node contract bounds which native addons should survive Bun\'s Node 26.3.0 target without a matching rebuild.',
+        ref: 'Node-API ABI stability',
+        url: 'https://nodejs.org/api/n-api.html#implications-of-abi-stability',
+      },
+      {
+        claim: 'An official canary identified itself as 1.4.1 and contained post-tag fixes, Rust cleanup, and performance work',
+        why: 'This first-hand check supports fast main-to-canary delivery while preserving that no faster stable point-release cadence had yet been proved.',
+        ref: 'Post-1.4 cadence check',
+        url: 'https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/bun-1-4/10-release-cadence-after-1-4.md',
       },
       {
         claim: 'Prisma Compute launched its public beta on Bun\'s Rust canary after two specific failure tests improved',

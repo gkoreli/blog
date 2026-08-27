@@ -48,7 +48,15 @@ Research artifact for TASK-0096 / FLDR-0006.
 - The five-row dependency-boundary table renders as a semantic table.
 - The Bun.Terminal trace renders as an ordered, labelled four-step flow.
 - Both evidence-boundary tables, pull quotes, migration gates, Sources block, internal series link, feedback link, and afterword render.
-- The rendered article body before Sources contains 1,661 whitespace-delimited words. At the publication's existing read-time convention, the nine-minute label is appropriate.
+- After the practical-impact expansion, the rendered article body through the adoption decision contains 2,294 whitespace-delimited words. At the publication's 200-words-per-minute convention, the twelve-minute label is appropriate.
+
+### Practical-impact expansion, desktop and mobile
+
+- The new `What engineers get from Bun 1.4 in practice` section preserves the article's ending: eight numbered consequences, one compact small-fixes callout, then the existing canary decision.
+- At the default 1,440 × 1,000 desktop viewport, all numbered steps, the callout, the cadence coda, and the transition into the final adoption section remain aligned and readable.
+- At 390 × 844, the section heading wraps between `from` and `Bun` without splitting words. The numbered markers, code identifiers, callout bullets, and cadence paragraph stay inside the 354 px article column.
+- The mobile document remained exactly 390 px wide with zero horizontal overflow.
+- The browser console remained free of warnings and errors after the expansion.
 
 ## Final footprint freeze check
 

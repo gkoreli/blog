@@ -5,7 +5,7 @@ export type FlowDiagramTone = 'neutral' | 'blue' | 'warm' | 'rust';
 
 export interface FlowDiagramStep {
   eyebrow?: string;
-  title: string;
+  title: string | StaticResult;
   detail?: StaticResult;
   connector?: string;
   tone?: FlowDiagramTone;
