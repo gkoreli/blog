@@ -71,7 +71,7 @@ Research artifact for TASK-0096 / FLDR-0006.
 
 The final build includes the frozen research footprint in two places:
 
-- The preamble shows `257 min · 4 sessions · 12 artifacts · 65.7M measured tokens` as a compact anchor. It remains readable at the default desktop width and within the 390 px mobile frame.
+- The preamble shows `267 min · 4 sessions · 12 artifacts · 73.3M measured tokens` as a compact anchor. It remains readable at the default desktop width and within the 390 px mobile frame.
 - The full `#research-footprint` section shows the four headline values, planning envelope, exact input/output/cache/reasoning breakdown, measurement timestamps, zero-prompt OSS Radar rule, methodology, and private-log limitation.
 - The compact anchor moves to the full disclosure on the same page.
 - Evidence-directory and manifest links are distinct and labelled.

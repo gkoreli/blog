@@ -19,14 +19,14 @@ const MANIFEST_URL = 'https://github.com/gkoreli/blog/blob/main/packages/blog/dr
 const researchFootprint = {
   sessions: 4,
   artifacts: 12,
-  totalTokens: 65_691_309,
-  inputTokens: 65_454_413,
-  cachedInputTokens: 62_877_696,
-  outputTokens: 236_896,
-  reasoningOutputTokens: 80_446,
-  wallClockMinutes: 257,
+  totalTokens: 73_252_806,
+  inputTokens: 72_990_889,
+  cachedInputTokens: 70_291_328,
+  outputTokens: 261_917,
+  reasoningOutputTokens: 90_157,
+  wallClockMinutes: 267,
   startedAt: '2026-08-26T23:58:34.236Z',
-  measuredAt: '2026-08-27T04:14:50.932Z',
+  measuredAt: '2026-08-27T04:25:13.144Z',
   provenanceUrl: RESEARCH_URL,
 };
 

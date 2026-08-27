@@ -2,21 +2,21 @@
   "rulesVersion": 1,
   "rootThread": "01a04082-e0c4-7701-9cf4-3d32898f5773",
   "startedAt": "2026-08-26T23:58:34.236Z",
-  "measuredAt": "2026-08-27T04:14:50.932Z",
-  "wallClockMinutes": 257,
+  "measuredAt": "2026-08-27T04:25:13.144Z",
+  "wallClockMinutes": 267,
   "sessionCount": 4,
   "promptCount": 0,
   "artifactCount": 12,
   "committedArtifactCount": 12,
   "uncommittedArtifactCount": 0,
   "totals": {
-    "inputTokens": 65454413,
-    "cachedInputTokens": 62877696,
+    "inputTokens": 72990889,
+    "cachedInputTokens": 70291328,
     "cacheWriteInputTokens": 0,
-    "outputTokens": 236896,
-    "reasoningOutputTokens": 80446,
-    "totalTokens": 65691309,
-    "nonCachedInputTokens": 2576717
+    "outputTokens": 261917,
+    "reasoningOutputTokens": 90157,
+    "totalTokens": 73252806,
+    "nonCachedInputTokens": 2699561
   },
   "sessions": [
     {
@@ -25,17 +25,17 @@
       "agentPath": "/root",
       "cwd": "/Users/goga/Documents/goga/blog",
       "log": "2026/08/26/rollout-2026-08-26T16-58-34-01a04082-e0c4-7701-9cf4-3d32898f5773.jsonl",
-      "logBytes": 18705149,
-      "usageRecordLine": 2436,
-      "usageAt": "2026-08-27T04:14:50.932Z",
-      "prefixSha256": "83d0efa971f16b7ad8936c82199d8a6e581b7f447f34de964c70c795fd82eb8f",
+      "logBytes": 22217768,
+      "usageRecordLine": 2843,
+      "usageAt": "2026-08-27T04:25:13.144Z",
+      "prefixSha256": "a2e21d56952f0a44a016ae87baf8b2b728364b5e1936b4ff3fdb086569291245",
       "usage": {
-        "input_tokens": 15733521,
-        "cached_input_tokens": 15165184,
+        "input_tokens": 23269997,
+        "cached_input_tokens": 22578816,
         "cache_write_input_tokens": 0,
-        "output_tokens": 49239,
-        "reasoning_output_tokens": 19820,
-        "total_tokens": 15782760
+        "output_tokens": 74260,
+        "reasoning_output_tokens": 29531,
+        "total_tokens": 23344257
       }
     },
     {
