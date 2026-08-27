@@ -1,5 +1,5 @@
 import { rmSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { basename, join, relative } from 'node:path';
 import { build as esbuild } from 'esbuild';
 import { DIST, SRC, ESBUILD_ENTRIES } from '../lib/paths.js';
 import { discoverPosts, writeOutput, writeRoot, copyAssets } from '../lib/fs.js';
@@ -143,7 +143,15 @@ export async function buildHTML(): Promise<void> {
     ...mdPosts.map(p => p.meta),
     ...tsPosts.map(t => t.post.meta),
   ];
-  const sortedPosts = [...allPosts].sort((a, b) => b.date.localeCompare(a.date));
+  const discoveryIndex = new Map(files.map((file, index) => [
+    basename(file).replace(/^\d+-/, '').replace(/\.(md|ts|html)$/, ''),
+    index,
+  ]));
+  const sortedPosts = [...allPosts].sort((a, b) => {
+    const dateOrder = b.date.localeCompare(a.date);
+    if (dateOrder !== 0) return dateOrder;
+    return (discoveryIndex.get(b.slug) ?? -1) - (discoveryIndex.get(a.slug) ?? -1);
+  });
   const publicationOgImage = await generateOgImage('Agentic Engineering Field Notes', 'gkoreli-com');
 
   // Validate series: no duplicate order values within the same series id
