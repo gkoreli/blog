@@ -2,6 +2,13 @@
 
 Notable changes to the publication and its supporting packages are recorded here.
 
+## 0.3.1 — 2026-08-26
+
+### Animations Lab
+
+- Raise the breakout workbench above the mirrored grid gutter so sliders, timeline scrubbing, and transport buttons receive pointer input.
+- Add an explicit museum-grade art-direction follow-up and require owner sign-off before treating technically valid experiments as visually finished.
+
 ## 0.3.0 — 2026-08-26
 
 ### Animation framework

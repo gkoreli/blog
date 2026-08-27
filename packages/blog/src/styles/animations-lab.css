@@ -1,6 +1,8 @@
 /* Animations Lab - scroll-native experiment page. */
 
 .al-page {
+  position: relative;
+  z-index: 1;
   width: min(1120px, calc(100vw - 2rem));
   padding-top: 2rem;
 }

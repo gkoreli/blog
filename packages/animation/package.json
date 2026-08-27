@@ -1,6 +1,6 @@
 {
   "name": "@gkoreli/animation",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "description": "Agent-native animation framework experiment",
   "type": "module",
