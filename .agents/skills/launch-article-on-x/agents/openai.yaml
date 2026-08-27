@@ -1,0 +1,4 @@
+interface:
+  display_name: "Launch Article on X"
+  short_description: "Design high-impact X launches for blog articles"
+  default_prompt: "Use $launch-article-on-x to design a visual X launch for this finished article, and publish it only if I explicitly ask."
