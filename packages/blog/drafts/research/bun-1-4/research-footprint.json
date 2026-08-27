@@ -1,0 +1,99 @@
+{
+  "rulesVersion": 1,
+  "rootThread": "01a04082-e0c4-7701-9cf4-3d32898f5773",
+  "startedAt": "2026-08-26T23:58:34.236Z",
+  "measuredAt": "2026-08-27T00:45:14.181Z",
+  "wallClockMinutes": 47,
+  "sessionCount": 4,
+  "promptCount": 0,
+  "artifactCount": 9,
+  "committedArtifactCount": 9,
+  "uncommittedArtifactCount": 0,
+  "totals": {
+    "inputTokens": 58427867,
+    "cachedInputTokens": 56625408,
+    "cacheWriteInputTokens": 0,
+    "outputTokens": 193912,
+    "reasoningOutputTokens": 67367,
+    "totalTokens": 58621779,
+    "nonCachedInputTokens": 1802459
+  },
+  "sessions": [
+    {
+      "id": "01a04082-e0c4-7701-9cf4-3d32898f5773",
+      "parentId": null,
+      "agentPath": "/root",
+      "cwd": "/Users/goga/Documents/goga/blog",
+      "log": "2026/08/26/rollout-2026-08-26T16-58-34-01a04082-e0c4-7701-9cf4-3d32898f5773.jsonl",
+      "logBytes": 6033462,
+      "usageRecordLine": 1287,
+      "usageAt": "2026-08-27T00:45:14.181Z",
+      "prefixSha256": "ae8487553741a64597c1847bec1356144dae29a1d9ea938b5a6f708a17f626c0",
+      "usage": {
+        "input_tokens": 23761029,
+        "cached_input_tokens": 23266304,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 67602,
+        "reasoning_output_tokens": 27389,
+        "total_tokens": 23828631
+      }
+    },
+    {
+      "id": "01a04085-bb3f-7db0-b29d-c70ee6050510",
+      "parentId": "01a04082-e0c4-7701-9cf4-3d32898f5773",
+      "agentPath": "/root/bun_release_code",
+      "cwd": "/Users/goga/Documents/goga/blog",
+      "log": "2026/08/26/rollout-2026-08-26T17-01-41-01a04085-bb3f-7db0-b29d-c70ee6050510.jsonl",
+      "logBytes": 3360836,
+      "usageRecordLine": 478,
+      "usageAt": "2026-08-27T00:18:05.893Z",
+      "prefixSha256": "fec2788ce69f7bfbd3da26a75ab271c2c16e5321a1cdfa315c974beb5f79d8b5",
+      "usage": {
+        "input_tokens": 9771071,
+        "cached_input_tokens": 9420288,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 29810,
+        "reasoning_output_tokens": 7231,
+        "total_tokens": 9800881
+      }
+    },
+    {
+      "id": "01a04085-deab-75f3-9570-420391c55bc1",
+      "parentId": "01a04082-e0c4-7701-9cf4-3d32898f5773",
+      "agentPath": "/root/bun_product_theory",
+      "cwd": "/Users/goga/Documents/goga/blog",
+      "log": "2026/08/26/rollout-2026-08-26T17-01-50-01a04085-deab-75f3-9570-420391c55bc1.jsonl",
+      "logBytes": 3388599,
+      "usageRecordLine": 532,
+      "usageAt": "2026-08-27T00:43:26.671Z",
+      "prefixSha256": "cac69c73ad193b6ec9addb94ccc1e8a547459ac41f62a2f4eade03ed117de628",
+      "usage": {
+        "input_tokens": 8376197,
+        "cached_input_tokens": 8005376,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 45199,
+        "reasoning_output_tokens": 12978,
+        "total_tokens": 8421396
+      }
+    },
+    {
+      "id": "01a04085-f597-7330-a5c5-be96dc7624c4",
+      "parentId": "01a04082-e0c4-7701-9cf4-3d32898f5773",
+      "agentPath": "/root/bun_red_team",
+      "cwd": "/Users/goga/Documents/goga/blog",
+      "log": "2026/08/26/rollout-2026-08-26T17-01-56-01a04085-f597-7330-a5c5-be96dc7624c4.jsonl",
+      "logBytes": 8201210,
+      "usageRecordLine": 828,
+      "usageAt": "2026-08-27T00:38:47.316Z",
+      "prefixSha256": "1b33abb6be48262ac7cb8c77a2920f26a1d437164c1cc24d42fc9e609b912f95",
+      "usage": {
+        "input_tokens": 16519570,
+        "cached_input_tokens": 15933440,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 51301,
+        "reasoning_output_tokens": 19769,
+        "total_tokens": 16570871
+      }
+    }
+  ]
+}

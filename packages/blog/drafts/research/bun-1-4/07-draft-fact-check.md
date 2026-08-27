@@ -202,3 +202,20 @@ One label should be narrowed: `fifteen named job mappings · one runtime-owned s
 - [ ] Re-run typecheck, build, link check, rendered word count, visual/Markdown inspection, and `git diff --check` after corrections.
 
 No article, component, or other research file was modified during this review.
+
+## Main-session resolution
+
+Resolved after the audit, before the final release commit:
+
+- removed the unsupported “biggest release yet” phrase and narrowed the release-train chronology wording;
+- corrected the Terminal/Subprocess ownership direction and linked both pinned implementations;
+- cut the verdict-only HTTP/2, Windows, parallel-test, and direct-addon warnings rather than adding an issue list to reader copy;
+- removed the unsourced Marked comparison, pinned the WebView documentation, and linked WebSocket repair PR #39642 directly;
+- changed the Anthropic rationale from independent corroboration to correlated buyer/owner confirmation;
+- preserved the exact 956-byte reproduction script in `05-local-reproduction.md`;
+- completed the preamble artifact and changed its legend to “one runtime-owned boundary”;
+- froze the recursive four-session footprint after all nine Markdown artifacts existed in `HEAD`;
+- added the compact and full research-footprint presentation, including the planning miss, exact token breakdown, methodology, manifest, and trust limitation; and
+- reran TypeScript, production-build, Markdown, theme, mobile, console, and diff checks as recorded in `08-visual-verification.md`.
+
+The original hold decision is therefore resolved. The central thesis and pinned-canary verdict remain unchanged.

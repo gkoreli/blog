@@ -50,6 +50,24 @@ Research artifact for TASK-0096 / FLDR-0006.
 - Both evidence-boundary tables, pull quotes, migration gates, Sources block, internal series link, feedback link, and afterword render.
 - The rendered article body before Sources contains 1,661 whitespace-delimited words. At the publication's existing read-time convention, the nine-minute label is appropriate.
 
-## Remaining freeze check
+## Final footprint freeze check
 
-The first visual pass preceded the final measured research-footprint insertion. Re-run the local build and inspect the compact and full footprint presentation after the manifest is frozen; record the final result here before marking TASK-0096 done.
+The final build includes the frozen research footprint in two places:
+
+- The preamble shows `47 min · 4 sessions · 9 artifacts · 58.6M measured tokens` as a compact anchor. It stays on one readable line at the default desktop width and within the 390 px mobile frame.
+- The full `#research-footprint` section shows the four headline values, planning envelope, exact input/output/cache/reasoning breakdown, measurement timestamps, zero-prompt OSS Radar rule, methodology, and private-log limitation.
+- The compact anchor moves to the full disclosure on the same page.
+- Evidence-directory and manifest links are distinct and labelled.
+- The dark-theme footprint card and muted limitation copy remain legible.
+- The final 390 × 844 screenshot retained the title, footprint line, and ledger without visual horizontal clipping.
+- The final browser console remained free of warnings and errors.
+
+Final verification commands:
+
+```console
+pnpm -C packages/blog typecheck
+pnpm -C packages/blog build
+git diff --check
+```
+
+Typecheck and production build passed. `git diff --check` is rerun after every final artifact edit and must remain green at release handoff.

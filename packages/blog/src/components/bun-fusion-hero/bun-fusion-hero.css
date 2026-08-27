@@ -122,6 +122,26 @@
   color: var(--bun-fusion-signal);
 }
 
+.bun-fusion-footprint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--bun-fusion-signal) 32%, transparent);
+  padding-bottom: 0.12rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  animation: bun-fusion-rise 700ms 410ms both;
+}
+
+.bun-fusion-footprint:hover {
+  border-bottom-color: var(--bun-fusion-signal);
+  color: var(--color-text);
+}
+
 @keyframes bun-fusion-rise {
   from { transform: translateY(12px); }
   to { transform: none; }
@@ -577,6 +597,13 @@
     max-width: 34rem;
     padding-inline: 0.35rem;
     font-size: 0.88rem;
+  }
+
+  .bun-fusion-footprint {
+    max-width: 21rem;
+    justify-content: center;
+    font-size: 0.48rem;
+    line-height: 1.5;
   }
 
   .bun-fusion-machine {

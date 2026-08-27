@@ -12,6 +12,45 @@ import {
   StatRow,
 } from '../src/templates/components.js';
 
+const RESEARCH_URL = 'https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-1-4';
+const MANIFEST_URL = 'https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/bun-1-4/research-footprint.json';
+
+const researchFootprint = {
+  sessions: 4,
+  artifacts: 9,
+  totalTokens: 58_621_779,
+  inputTokens: 58_427_867,
+  cachedInputTokens: 56_625_408,
+  outputTokens: 193_912,
+  reasoningOutputTokens: 67_367,
+  wallClockMinutes: 47,
+  startedAt: '2026-08-26T23:58:34.236Z',
+  measuredAt: '2026-08-27T00:45:14.181Z',
+  provenanceUrl: RESEARCH_URL,
+};
+
+function compactTokenCount(tokens: number): string {
+  if (tokens >= 1_000_000) return `${(tokens / 1_000_000).toFixed(1)}M`;
+  if (tokens >= 1_000) return `${Math.round(tokens / 1_000)}K`;
+  return String(tokens);
+}
+
+function formatCount(value: number): string {
+  return new Intl.NumberFormat('en-US').format(value);
+}
+
+function formatTimestamp(value: string): string {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZoneName: 'short',
+    timeZone: 'America/Los_Angeles',
+  }).format(new Date(value));
+}
+
 export const meta: PostMeta = {
   title: 'Bun 1.4 Made the Runtime the Dependency',
   seoTitle: 'Bun 1.4 Review: The Runtime Is the Dependency',
@@ -24,6 +63,7 @@ export const meta: PostMeta = {
   featured: false,
   images: [],
   slug: 'oss-radar-05-bun-1-4',
+  researchFootprint,
 };
 
 export function preamble() {
@@ -35,6 +75,10 @@ export function preamble() {
     subtitle: 'The package graph shrank. The responsibility did not.',
     author: 'Goga Koreli',
     readTime: '9 min read',
+    footprint: {
+      label: `47 min · 4 sessions · 9 artifacts · ${compactTokenCount(researchFootprint.totalTokens)} measured tokens`,
+      url: '#research-footprint',
+    },
   });
 }
 
@@ -395,5 +439,42 @@ export function article() {
       },
     ],
   })}
+
+  <section class="research-footprint" id="research-footprint" aria-labelledby="research-footprint-title">
+    <div class="research-footprint-heading">
+      <h2 id="research-footprint-title">Research footprint</h2>
+      <a href="${RESEARCH_URL}" target="_blank" rel="noopener">Open the evidence artifacts ↗</a>
+    </div>
+    <div class="research-footprint-stats">
+      <div><strong>47 min</strong><span>wall-clock window</span></div>
+      <div><strong>${researchFootprint.sessions}</strong><span>agent sessions</span></div>
+      <div><strong>${researchFootprint.artifacts}</strong><span>committed Markdown artifacts</span></div>
+      <div><strong>${compactTokenCount(researchFootprint.totalTokens)}</strong><span>tokens processed</span></div>
+    </div>
+    <p>
+      The planning envelope was 90–120 minutes and 250,000–400,000 aggregate tokens. The measured freeze arrived
+      after 47 minutes, from <time datetime="${researchFootprint.startedAt}">${formatTimestamp(researchFootprint.startedAt)}</time>
+      to <time datetime="${researchFootprint.measuredAt}">${formatTimestamp(researchFootprint.measuredAt)}</time>.
+      The token estimate was badly wrong because cumulative accounting counts the full context presented on every
+      response, including cache hits.
+    </p>
+    <p>
+      The ${formatCount(researchFootprint.totalTokens)} total equals ${formatCount(researchFootprint.inputTokens)} input
+      plus ${formatCount(researchFootprint.outputTokens)} output tokens. Of the input, ${formatCount(researchFootprint.cachedInputTokens)}
+      came from cache and ${formatCount(researchFootprint.inputTokens - researchFootprint.cachedInputTokens)} did not.
+      Reasoning output (${formatCount(researchFootprint.reasoningOutputTokens)}) is a subset of output, not an extra
+      addition. This OSS Radar issue has no public raw-prompt transcript; its prompt count is zero by publication rule.
+    </p>
+    <p>
+      The <a href="${MANIFEST_URL}" target="_blank" rel="noopener">frozen manifest</a> records the recursive session
+      closure, last cumulative usage record selected for each session, log-prefix hashes, artifact counts, and timing.
+      Each session total is counted once. Cached input is part of input, and reasoning output is part of output.
+    </p>
+    <p class="research-footprint-note">
+      This is provenance, not a quality score, bill, or environmental estimate. Wall-clock time is not hands-on time.
+      The private session logs are not published; the prefix commitments make the record auditable by the author but
+      do not let a reader independently reconstruct the totals.
+    </p>
+  </section>
 </article>`;
 }

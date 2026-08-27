@@ -64,6 +64,7 @@ export function BunFusionHero({
   subtitle,
   author,
   readTime,
+  footprint,
 }: {
   issueNum: string;
   date: string;
@@ -72,6 +73,7 @@ export function BunFusionHero({
   subtitle: string;
   author: string;
   readTime: string;
+  footprint?: { label: string; url: string };
 }) {
   return html`<div class="bun-fusion-hero">
     <div class="bun-fusion-heading">
@@ -87,6 +89,9 @@ export function BunFusionHero({
         <span class="bun-fusion-byline-sep">·</span>
         <span>${readTime}</span>
       </div>
+      ${footprint ? html`<a class="bun-fusion-footprint" href="${footprint.url}">
+        ${footprint.label} <span aria-hidden="true">↗</span>
+      </a>` : ''}
     </div>
 
     <figure
