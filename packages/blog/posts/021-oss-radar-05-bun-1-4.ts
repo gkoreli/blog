@@ -53,7 +53,7 @@ function formatTimestamp(value: string): string {
 }
 
 export const meta: PostMeta = {
-  title: 'Bun 1.4 Made the Runtime the Dependency',
+  title: 'OSS Radar #05: Bun 1.4 Made the Runtime the Dependency',
   seoTitle: 'Bun 1.4 Review: The Runtime Is the Dependency',
   alternativeHeadline: 'Bun 1.4 moves fifteen package jobs into one Rust-based binary',
   date: '2026-08-26',
@@ -75,7 +75,7 @@ export function preamble() {
     title: html`<h1>Bun 1.4 Made the Runtime the <em>Dependency</em></h1>`,
     subtitle: 'The package graph shrank. The responsibility did not.',
     author: 'Goga Koreli',
-    readTime: '12 min read',
+    readTime: '15 min read',
     footprint: {
       label: `${researchFootprint.wallClockMinutes} min · ${researchFootprint.sessions} sessions · ${researchFootprint.artifacts} artifacts · ${compactTokenCount(researchFootprint.totalTokens)} measured tokens`,
       url: '#research-footprint',
@@ -307,6 +307,113 @@ export function article() {
     do not reveal how many teams use the package manager, the runtime, a compiled CLI, or production servers.
   </p>
 
+  <h2>Fifty agents make small runtime costs expensive</h2>
+
+  <p>
+    My laptop is an M5 MacBook Pro with 24 GB of RAM. The CPU, memory, and disk are fast, and I still feel the machine
+    slow down. A normal workday can include Chrome, VS Code, ChatGPT's desktop app or Claude Cowork, several CLIs and
+    MCP servers, and many Claude Code or Codex sessions at once. The metric I care about is how much of the workstation
+    remains after all of them are running.
+  </p>
+
+  <p>
+    This is why Bun's resource numbers matter more to me now than they would have a few years ago. Saving a little idle
+    CPU or tens of megabytes in one process can look trivial on modern hardware. Keep 10–15 agent processes and their
+    tools alive, then aim for 50–100, and the same steady-state costs become the limit on useful parallel work. These
+    benchmarks measure the runtime cost beneath every Bun-based agent; total agent capacity remains unmeasured.
+  </p>
+
+  ${StatRow({
+    items: [
+      { value: '24% → 10%', label: html`Claude Code p99 CPU` },
+      { value: '5.8% → 2.5%', label: html`Claude Code p50 CPU` },
+      { value: '5× lower', label: html`Idle CPU in a small hello-world app` },
+    ],
+  })}
+
+  <p>
+    Bun attributes the CPU drop to better garbage-collector timer requests, a segmented-array layout for visiting
+    JavaScriptCore <code>Strong</code> roots, fewer futex calls, and allocator changes. Claude Code is owner evidence,
+    not an independent benchmark, but it is the right shape of workload: a large application that stays alive while
+    tools, subprocesses, and user sessions keep moving through it.
+  </p>
+
+  <h3>Memory decides how many workers stay resident</h3>
+
+  <p>
+    Bun measured peak memory under one million requests with 64 connections, except the Next.js and Vite runs, which
+    used 100,000 requests. Every tested Bun server used less peak memory than it did on 1.3:
+  </p>
+
+  ${CompareTable({
+    headers: ['Server', 'Bun 1.4', 'Bun 1.3', 'Node.js 26', 'Change vs 1.3'],
+    rows: [
+      ['Fastify', '120 MB', '233 MB', '156 MB', '−48%'],
+      ['Express', '92 MB', '169 MB', '145 MB', '−46%'],
+      ['node:http', '81 MB', '135 MB', '107 MB', '−40%'],
+      ['Elysia', '55 MB', '91 MB', 'n/a', '−40%'],
+      ['Next.js', '285 MB', '397 MB', '342 MB', '−28%'],
+      ['Bun.serve', '36 MB', '45 MB', 'n/a', '−20%'],
+      ['Vite dev server', '233 MB', '268 MB', '214 MB', '−13%'],
+    ],
+    highlightRows: [0, 1],
+  })}
+
+  <p>
+    The long-running cases are even more relevant to agent software. In Bun's Next.js App Router test, a dynamic route
+    using <code>React.cache</code> and a <code>no-store</code> fetch settled at 238 MB after 4,000 pages on Bun 1.4.
+    Node settled at 410 MB; Bun 1.3 kept growing. A 100-deep <code>Response.clone()</code> chain around a 10 MB stream
+    fell from about 1,050 MB to 20 MB. Those are narrow tests, but both remove the kind of retained memory that makes a
+    long session decay while the developer is still using it.
+  </p>
+
+  <h3>Startup and binary size constrain fan-out</h3>
+
+  ${CompareTable({
+    headers: ['Hello-world process', 'Bun 1.4', 'Bun 1.3', 'Node.js 26'],
+    rows: [
+      ['Windows startup', '15.5 ms', '39.0 ms', '40.1 ms'],
+      ['Windows peak memory', '16.8 MB', '46.5 MB', '32.5 MB'],
+      ['Linux startup', '5.1 ms', '10.9 ms', '27.2 ms'],
+      ['Linux peak memory', '14.6 MB', '33.0 MB', '44.5 MB'],
+    ],
+    highlightRows: [0, 2],
+  })}
+
+  <p>
+    Short-lived workers pay startup cost on every invocation. Resident workers pay the memory cost for their whole
+    lifetime. Bun 1.4 cuts both in these Linux and Windows tests, which makes process-level isolation less expensive
+    for schedulers that start tools on demand instead of keeping every tool inside one host.
+  </p>
+
+  ${CompareTable({
+    headers: ['Runtime binary', 'Bun 1.4', 'Bun 1.3.14', 'Result'],
+    rows: [
+      ['Linux x64', '77.0 MB', '88.5 MB', '11.5 MB smaller'],
+      ['Linux arm64', '76.8 MB', '87.6 MB', '10.8 MB smaller'],
+      ['Windows x64', '84.8 MB', '93.9 MB', '9.1 MB smaller'],
+      ['Windows arm64', '75.1 MB', '90.2 MB', '15.1 MB smaller'],
+      ['macOS arm64', '61.2 MB', '60.2 MB', '1.0 MB larger'],
+      ['macOS x64', '66.6 MB', '66.0 MB', '0.6 MB larger'],
+    ],
+    highlightRows: [3],
+  })}
+
+  <p>
+    Bun can also compile TypeScript or JavaScript, its imports, and a copy of the runtime into one executable for a
+    supported operating-system and architecture target. That does not turn JavaScript into a tiny native program;
+    each executable still embeds Bun. It does give agent tools one deployable file and one runtime boundary instead
+    of a separate Node installation and package tree.
+  </p>
+
+  <p>
+    I want 10–15 parallel agent sessions to feel ordinary, then 50–100 terminal panes without
+    saturating the machine. A runtime cannot erase the cost of models, browsers, editors, MCP servers, or the
+    work each agent performs. Bun 1.4 still moves in the direction I care about: more work per machine, a smaller
+    steady-state cost, and one fast toolchain with which to build the next layer of agent software. To me, these
+    improvements buy capacity.
+  </p>
+
   <h2>What engineers get from Bun 1.4 in practice</h2>
 
   <p>
@@ -323,14 +430,6 @@ export function article() {
 
   ${Steps({
     items: [
-      {
-        title: 'A migration trial can target memory and CPU',
-        body: html`Bun's own measurements show a 2,000-call <code>Bun.build()</code> loop leveling at 609 MB instead
-          of 6,745 MB, a 100-deep <code>Response.clone()</code> chain around a 10 MB streaming body falling from about
-          1,050 MB to 20 MB, and HTTP server workloads using 13–48% less peak memory. Claude Code's reported p99 CPU
-          fell from 24% to 10%. These are maintainer and owner measurements. Use them as trial targets, then rerun the
-          same loops on your service.`,
-      },
       {
         title: 'The test runner and tracer can follow the application',
         body: html`Bun reports that Playwright, Vitest with coverage and worker pools, OpenTelemetry HTTP and file
@@ -448,9 +547,15 @@ export function article() {
       },
       {
         claim: 'The Bun 1.4 post covers the 1.3-to-1.4 train, reports its performance and compatibility results, and labels feature chronology',
-        why: 'It supports the practical impact list while preventing release-train work such as Bun.Image from being misreported as new in the 1.4.0 tag.',
+        why: 'It supports the CPU, memory, startup, binary-size, and practical-impact claims while keeping release-train work separate from the final tag.',
         ref: 'Bun 1.4 release post',
         url: 'https://bun.com/blog/bun-v1.4',
+      },
+      {
+        claim: 'Bun can bundle JavaScript or TypeScript, imports, and the Bun runtime into a standalone executable for supported cross-compilation targets',
+        why: 'The pinned documentation supports the deployment model while making clear that the result still embeds a runtime and targets a defined platform matrix.',
+        ref: 'Bun standalone executable documentation',
+        url: 'https://github.com/oven-sh/bun/blob/34cbb9a40b4bd1bd767d134a7065e66c2432a676/docs/bundler/executables.mdx',
       },
       {
         claim: 'The official 1.4.0 macOS arm64 binary matched its published digest and passed the PTY, Markdown, JSON5, and string-width checks used here',

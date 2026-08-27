@@ -1,8 +1,21 @@
+.compare-table-scroll {
+  width: 100%;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
 .compare-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 2.5rem 0;
   font-size: var(--text-sm);
+}
+
+/* The shared post table rule is a block scroller. Keep the semantic table in
+   table layout and let its wrapper own horizontal overflow. */
+.post-content .compare-table {
+  display: table;
+  margin: 0;
+  overflow: visible;
 }
 .compare-table th {
   font-family: var(--font-mono);

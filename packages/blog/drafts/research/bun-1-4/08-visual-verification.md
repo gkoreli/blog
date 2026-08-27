@@ -48,7 +48,7 @@ Research artifact for TASK-0096 / FLDR-0006.
 - The five-row dependency-boundary table renders as a semantic table.
 - The Bun.Terminal trace renders as an ordered, labelled four-step flow.
 - Both evidence-boundary tables, pull quotes, migration gates, Sources block, internal series link, feedback link, and afterword render.
-- After the practical-impact expansion, the rendered article body through the adoption decision contains 2,294 whitespace-delimited words. At the publication's 200-words-per-minute convention, the twelve-minute label is appropriate.
+- After the agent-density performance expansion, the rendered title and article body through the adoption decision contain 2,884 whitespace-delimited words. At the publication's 200-words-per-minute convention, the fifteen-minute label is appropriate.
 
 ### Practical-impact expansion, desktop and mobile
 
@@ -57,6 +57,15 @@ Research artifact for TASK-0096 / FLDR-0006.
 - At 390 × 844, the section heading wraps between `from` and `Bun` without splitting words. The numbered markers, code identifiers, callout bullets, and cadence paragraph stay inside the 354 px article column.
 - The mobile document remained exactly 390 px wide with zero horizontal overflow.
 - The browser console remained free of warnings and errors after the expansion.
+
+### Agent-density performance section, desktop and mobile
+
+- The new section renders one three-stat CPU row and three semantic comparison tables for server memory, process startup, and runtime binary size.
+- At 1,440 × 1,000, the section heading, first-hand workstation context, CPU row, and table introductions stay inside the 728 px article column.
+- At 390 × 844, the article stays 354 px wide and the document has zero horizontal overflow. Wide tables scroll internally instead of widening the page.
+- `CompareTable` now keeps the semantic `<table>` in table layout and moves horizontal scrolling to a wrapper. At mobile width, each `<thead>`, `<tbody>`, and row matched its table's full intrinsic width; the 354 px wrapper alone clipped and scrolled the wider columns.
+- The mobile heading wraps between words, all benchmark rows remain available, and prose following each table returns to the normal article column.
+- The browser console remained free of warnings and errors.
 
 ## Final footprint freeze check
 

@@ -320,3 +320,50 @@ The section can be six to eight short numbered paragraphs under a blunt heading 
 8. **Monorepo fan-out and interactive agent subprocesses lose helper dependencies.** Then pair `bun run --parallel --filter` with `Bun.Terminal`, explicitly dating both to 1.3.x.
 
 The connective verdict is: **Bun 1.4 matters less as a pile of new APIs than as a shift in which operational and build responsibilities the Bun binary is willing to own.** That is an inference from the shipped work, not a Bun quote.
+
+## Author-density follow-up: why small runtime costs matter now
+
+The author supplied a first-hand workstation constraint after reviewing the first practical-impact draft:
+
+- M5 MacBook Pro with 24 GB RAM;
+- Chrome, VS Code, ChatGPT Desktop or Claude Cowork active beside local work;
+- multiple CLIs and MCP servers;
+- many Claude Code and Codex sessions running in parallel;
+- a stated goal of making 10–15 concurrent sessions ordinary and 50–100 terminal panes plausible.
+
+This is personal observation and product ambition, not a benchmark. The safe bridge to the release evidence is:
+
+`lower steady-state cost per Bun process → more workstation headroom under parallel agent work → workload-specific concurrency still needs measurement`
+
+Do not multiply one Claude Code CPU percentile by an agent count or claim the benchmark proves a 50-agent laptop.
+CPU, memory, model clients, browsers, editors, MCP servers, network work, and the agents' own tasks do not compose
+linearly. The release figures show runtime headroom, not total system capacity.
+
+### Official resource matrix carried into the article
+
+All figures below come from the [official Bun 1.4 release post](https://bun.com/blog/bun-v1.4) and remain maintainer
+or owner measurements:
+
+- Claude Code production CPU: p99 24% → 10%; p50 5.8% → 2.5%.
+- Small hello-world idle CPU: 5× lower.
+- HTTP-server peak memory under the stated request load: Fastify 233 → 120 MB; Express 169 → 92 MB;
+  `node:http` 135 → 81 MB; Elysia 91 → 55 MB; Next.js 397 → 285 MB; `Bun.serve` 45 → 36 MB;
+  Vite dev server 268 → 233 MB.
+- Dynamic Next.js App Router SSR over 4,000 pages: Bun 1.4 settles at 238 MB, Node.js 26 at 410 MB, and Bun 1.3
+  grows without bound in the published run.
+- Windows hello-world: 39.0 → 15.5 ms startup and 46.5 → 16.8 MB peak memory.
+- Linux hello-world: 10.9 → 5.1 ms startup and 33.0 → 14.6 MB peak memory.
+- Runtime binaries shrink on Linux and Windows, with the largest shown drop on Windows arm64 (90.2 → 75.1 MB);
+  macOS binaries grow by 1.0 MB on arm64 and 0.6 MB on x64.
+
+The release attributes CPU improvements to garbage-collector timer behavior, a segmented-array layout for visiting
+JavaScriptCore `Strong` roots, fewer futex calls, and allocator work. The article can name these mechanisms because
+they explain why the numbers changed; it must not turn them into an independent causal reproduction.
+
+### Standalone-executable boundary
+
+Pinned [standalone executable documentation](https://github.com/oven-sh/bun/blob/34cbb9a40b4bd1bd767d134a7065e66c2432a676/docs/bundler/executables.mdx)
+states that `bun build --compile` bundles JavaScript or TypeScript, imported files and packages, and a copy of the Bun
+runtime. It supports a defined cross-compilation matrix. Safe wording is “one deployable file for a supported target.”
+Avoid “native on any hardware,” “no runtime,” or “tiny native binary”: the executable embeds Bun, target support is
+finite, and compiled applications must be rebuilt to pick up runtime fixes.
