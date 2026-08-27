@@ -49,6 +49,13 @@ interface Args {
   promptsFile: string;
 }
 
+interface UsageEpoch {
+  endLine: number;
+  endAt: string;
+  prefixSha256: string;
+  usage: z.infer<typeof usageSchema>;
+}
+
 interface SessionRecord {
   id: string;
   parentId?: string;
@@ -61,6 +68,7 @@ interface SessionRecord {
   usageAt: string | null;
   prefixSha256: string | null;
   usage: z.infer<typeof usageSchema> | null;
+  usageEpochs: UsageEpoch[];
 }
 
 interface CompleteSessionRecord extends SessionRecord {
@@ -110,9 +118,12 @@ function readSession(logPath: string): SessionRecord | null {
   const raw = readFileSync(logPath, 'utf8');
   const lines = raw.split('\n');
   let meta: z.infer<typeof sessionMetaSchema> | undefined;
-  let tokenEvent: z.infer<typeof tokenEventSchema> | undefined;
-  let usageLine = 0;
-  let prefixEnd = 0;
+  const tokenEvents: Array<{
+    line: number;
+    at: string;
+    prefixEnd: number;
+    usage: z.infer<typeof usageSchema>;
+  }> = [];
   let byteOffset = 0;
 
   for (let index = 0; index < lines.length; index += 1) {
@@ -136,9 +147,22 @@ function readSession(logPath: string): SessionRecord | null {
 
     const tokenResult = tokenEventSchema.safeParse(value);
     if (tokenResult.success) {
-      tokenEvent = tokenResult.data;
-      usageLine = index + 1;
-      prefixEnd = byteOffset;
+      const usageValue = tokenResult.data.payload.info.total_token_usage;
+      if (usageValue.total_tokens !== usageValue.input_tokens + usageValue.output_tokens) {
+        throw new Error(`Token arithmetic failed for session ${meta?.payload.id ?? logPath}: total != input + output at line ${index + 1}`);
+      }
+      if (usageValue.cached_input_tokens > usageValue.input_tokens) {
+        throw new Error(`Token arithmetic failed for session ${meta?.payload.id ?? logPath}: cached input > input at line ${index + 1}`);
+      }
+      if (usageValue.reasoning_output_tokens > usageValue.output_tokens) {
+        throw new Error(`Token arithmetic failed for session ${meta?.payload.id ?? logPath}: reasoning output > output at line ${index + 1}`);
+      }
+      tokenEvents.push({
+        line: index + 1,
+        at: tokenResult.data.timestamp,
+        prefixEnd: byteOffset,
+        usage: usageValue,
+      });
     }
   }
 
@@ -150,7 +174,8 @@ function readSession(logPath: string): SessionRecord | null {
   const agentPath = typeof source === 'string'
     ? '/root'
     : source.subagent.thread_spawn.agent_path ?? basename(logPath);
-  if (!tokenEvent) {
+  const [firstTokenEvent, ...remainingTokenEvents] = tokenEvents;
+  if (!firstTokenEvent) {
     return {
       id: meta.payload.id,
       parentId,
@@ -163,20 +188,41 @@ function readSession(logPath: string): SessionRecord | null {
       usageAt: null,
       prefixSha256: null,
       usage: null,
+      usageEpochs: [],
     };
   }
 
-  const usageValue = tokenEvent.payload.info.total_token_usage;
+  const epochEnds = [];
+  let previousTokenEvent = firstTokenEvent;
+  for (const tokenEvent of remainingTokenEvents) {
+    if (tokenEvent.usage.total_tokens < previousTokenEvent.usage.total_tokens) {
+      epochEnds.push(previousTokenEvent);
+    }
+    previousTokenEvent = tokenEvent;
+  }
+  epochEnds.push(previousTokenEvent);
 
-  if (usageValue.total_tokens !== usageValue.input_tokens + usageValue.output_tokens) {
-    throw new Error(`Token arithmetic failed for session ${meta.payload.id}: total != input + output`);
-  }
-  if (usageValue.cached_input_tokens > usageValue.input_tokens) {
-    throw new Error(`Token arithmetic failed for session ${meta.payload.id}: cached input > input`);
-  }
-  if (usageValue.reasoning_output_tokens > usageValue.output_tokens) {
-    throw new Error(`Token arithmetic failed for session ${meta.payload.id}: reasoning output > output`);
-  }
+  const usageValue = epochEnds.reduce((sum, tokenEvent) => ({
+    input_tokens: sum.input_tokens + tokenEvent.usage.input_tokens,
+    cached_input_tokens: sum.cached_input_tokens + tokenEvent.usage.cached_input_tokens,
+    cache_write_input_tokens: sum.cache_write_input_tokens + tokenEvent.usage.cache_write_input_tokens,
+    output_tokens: sum.output_tokens + tokenEvent.usage.output_tokens,
+    reasoning_output_tokens: sum.reasoning_output_tokens + tokenEvent.usage.reasoning_output_tokens,
+    total_tokens: sum.total_tokens + tokenEvent.usage.total_tokens,
+  }), {
+    input_tokens: 0,
+    cached_input_tokens: 0,
+    cache_write_input_tokens: 0,
+    output_tokens: 0,
+    reasoning_output_tokens: 0,
+    total_tokens: 0,
+  });
+  const usageEpochs = epochEnds.map(tokenEvent => ({
+    endLine: tokenEvent.line,
+    endAt: tokenEvent.at,
+    prefixSha256: createHash('sha256').update(raw.slice(0, tokenEvent.prefixEnd)).digest('hex'),
+    usage: tokenEvent.usage,
+  }));
 
   return {
     id: meta.payload.id,
@@ -186,10 +232,11 @@ function readSession(logPath: string): SessionRecord | null {
     startedAt: meta.payload.timestamp,
     logPath,
     logBytes: statSync(logPath).size,
-    usageLine,
-    usageAt: tokenEvent.timestamp,
-    prefixSha256: createHash('sha256').update(raw.slice(0, prefixEnd)).digest('hex'),
+    usageLine: previousTokenEvent.line,
+    usageAt: previousTokenEvent.at,
+    prefixSha256: createHash('sha256').update(raw.slice(0, previousTokenEvent.prefixEnd)).digest('hex'),
     usage: usageValue,
+    usageEpochs,
   };
 }
 
@@ -197,7 +244,8 @@ function hasUsage(session: SessionRecord): session is CompleteSessionRecord {
   return session.usage !== null
     && session.usageLine !== null
     && session.usageAt !== null
-    && session.prefixSha256 !== null;
+    && session.prefixSha256 !== null
+    && session.usageEpochs.length > 0;
 }
 
 function descendants(rootThread: string, sessions: SessionRecord[]): SessionRecord[] {
@@ -269,7 +317,7 @@ function main(): void {
     .filter(path => path.endsWith('.md')).length;
 
   const result = {
-    rulesVersion: 1,
+    rulesVersion: 2,
     rootThread: args.rootThread,
     startedAt: root.startedAt,
     measuredAt,
@@ -293,6 +341,8 @@ function main(): void {
       usageRecordLine: session.usageLine,
       usageAt: session.usageAt,
       prefixSha256: session.prefixSha256,
+      usageEpochCount: session.usageEpochs.length,
+      usageEpochs: session.usageEpochs,
       usage: session.usage,
     })),
   };
