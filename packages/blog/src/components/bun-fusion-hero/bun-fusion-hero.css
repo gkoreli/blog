@@ -1,0 +1,686 @@
+/*
+ * BunFusionHero — a dependency zipper for the Bun 1.4 OSS Radar issue.
+ * CSS supplies sequence only; the complete mapping is legible without motion
+ * or client JavaScript.
+ */
+
+.bun-fusion-hero {
+  --bun-fusion-signal: var(--color-accent-rust);
+  --bun-fusion-api: var(--color-link);
+  --bun-fusion-line: color-mix(in srgb, var(--color-border) 76%, transparent);
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 3vh, 2.5rem);
+  overflow: hidden;
+  padding: clamp(5rem, 9vh, 7rem) 1rem 4.5rem;
+  isolation: isolate;
+}
+
+.bun-fusion-hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: min(58rem, 120vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--bun-fusion-signal) 11%, transparent), transparent 56%),
+    repeating-radial-gradient(circle, transparent 0 3.9rem, color-mix(in srgb, var(--color-border) 24%, transparent) 4rem 4.04rem);
+  opacity: 0.72;
+}
+
+.bun-fusion-heading {
+  width: min(980px, 100%);
+  text-align: center;
+}
+
+.bun-fusion-pills {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+  animation: bun-fusion-rise 700ms 80ms both;
+}
+
+.bun-fusion-pill {
+  border: 1px solid color-mix(in srgb, var(--color-border) 76%, transparent);
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--color-surface) 72%, transparent);
+  padding: 0.24rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.bun-fusion-pill--accent {
+  border-color: color-mix(in srgb, var(--bun-fusion-signal) 65%, var(--color-border));
+  color: var(--bun-fusion-signal);
+}
+
+.bun-fusion-kicker {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--bun-fusion-signal);
+  animation: bun-fusion-rise 700ms 150ms both;
+}
+
+.bun-fusion-heading h1 {
+  max-width: 980px;
+  margin: 0 auto 0.9rem;
+  font-size: clamp(2.2rem, 5.7vw, 5rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  animation: bun-fusion-rise 800ms 220ms both;
+}
+
+.bun-fusion-heading h1 em {
+  color: var(--bun-fusion-signal);
+  font-style: italic;
+}
+
+.bun-fusion-subtitle {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: 1.55;
+  animation: bun-fusion-rise 700ms 300ms both;
+}
+
+.bun-fusion-byline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  animation: bun-fusion-rise 700ms 360ms both;
+}
+
+.bun-fusion-byline strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.bun-fusion-byline-sep {
+  color: var(--bun-fusion-signal);
+}
+
+@keyframes bun-fusion-rise {
+  from { transform: translateY(12px); }
+  to { transform: none; }
+}
+
+/* ---- dependency zipper ---- */
+
+.bun-fusion-machine {
+  width: min(940px, 96vw);
+  margin: 0;
+  color: var(--color-text);
+}
+
+.bun-fusion-machine-inner {
+  display: grid;
+  justify-items: center;
+}
+
+.bun-fusion-ledger {
+  position: relative;
+  width: min(840px, 100%);
+  border: 1px solid color-mix(in srgb, var(--color-border) 82%, transparent);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--color-surface) 72%, transparent) 0 49.9%, transparent 49.9% 50.1%, color-mix(in srgb, var(--bun-fusion-api) 5%, var(--color-bg)) 50.1%),
+    var(--color-bg);
+  box-shadow:
+    inset 0 1px color-mix(in srgb, var(--color-bg) 75%, transparent),
+    0 18px 60px -42px color-mix(in srgb, var(--bun-fusion-signal) 74%, transparent);
+}
+
+.bun-fusion-ledger-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 0.48rem 0.75rem;
+  border-bottom: 1px solid var(--bun-fusion-line);
+  font-family: var(--font-mono);
+  font-size: 0.47rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.bun-fusion-ledger-head span:last-child {
+  text-align: right;
+}
+
+.bun-fusion-rows {
+  display: grid;
+  list-style: none;
+}
+
+.bun-fusion-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2.7rem minmax(0, 1fr);
+  min-height: 1.52rem;
+  border-bottom: 1px solid var(--bun-fusion-line);
+  font-family: var(--font-mono);
+  font-size: clamp(0.48rem, 1.25vw, 0.62rem);
+  line-height: 1;
+}
+
+.bun-fusion-row:last-child {
+  border-bottom: 0;
+}
+
+.bun-fusion-package,
+.bun-fusion-surface {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  padding: 0.3rem 0.7rem;
+}
+
+.bun-fusion-package {
+  color: var(--color-text-muted);
+}
+
+.bun-fusion-package::after {
+  content: '';
+  position: absolute;
+  left: 1.65rem;
+  right: 0.7rem;
+  top: 50%;
+  height: 1px;
+  background: color-mix(in srgb, var(--bun-fusion-signal) 76%, transparent);
+  transform: scaleX(0);
+  transform-origin: right;
+  animation: bun-fusion-cut 350ms var(--bun-fusion-row-delay) ease-out forwards;
+}
+
+.bun-fusion-surface {
+  justify-content: flex-end;
+  color: color-mix(in srgb, var(--bun-fusion-api) 82%, var(--color-text));
+  animation: bun-fusion-surface-on 440ms var(--bun-fusion-row-delay) ease-out both;
+}
+
+.bun-fusion-package code,
+.bun-fusion-surface code {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: inherit;
+}
+
+.bun-fusion-sign {
+  flex: 0 0 auto;
+  width: 0.55rem;
+  color: var(--bun-fusion-signal);
+  text-align: center;
+}
+
+.bun-fusion-surface .bun-fusion-sign {
+  color: var(--bun-fusion-api);
+}
+
+.bun-fusion-seam {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  overflow: hidden;
+  border-inline: 1px solid var(--bun-fusion-line);
+  background: color-mix(in srgb, var(--color-bg) 70%, transparent);
+}
+
+.bun-fusion-seam::after {
+  content: '';
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 1px;
+  background: color-mix(in srgb, var(--bun-fusion-signal) 58%, transparent);
+  transform: scaleX(0);
+  animation: bun-fusion-seal 300ms var(--bun-fusion-row-delay) ease-out forwards;
+}
+
+.bun-fusion-tooth {
+  width: 72%;
+  height: 0.34rem;
+  border: 1px solid color-mix(in srgb, var(--bun-fusion-signal) 62%, var(--color-border));
+  opacity: 0.62;
+  animation: bun-fusion-tooth-lock 300ms var(--bun-fusion-row-delay) cubic-bezier(0.2, 0.8, 0.2, 1.25) forwards;
+}
+
+.bun-fusion-tooth--left {
+  justify-self: start;
+  border-left: 0;
+  border-radius: 0 0.25rem 0.25rem 0;
+  transform: translateX(-82%);
+}
+
+.bun-fusion-tooth--right {
+  justify-self: end;
+  border-right: 0;
+  border-radius: 0.25rem 0 0 0.25rem;
+  transform: translateX(82%);
+}
+
+@keyframes bun-fusion-cut {
+  to { transform: scaleX(1); }
+}
+
+@keyframes bun-fusion-surface-on {
+  from { color: var(--color-text-muted); background: transparent; }
+  55% { background: color-mix(in srgb, var(--bun-fusion-api) 12%, transparent); }
+  to { color: color-mix(in srgb, var(--bun-fusion-api) 82%, var(--color-text)); background: transparent; }
+}
+
+@keyframes bun-fusion-seal {
+  to { transform: scaleX(1); }
+}
+
+@keyframes bun-fusion-tooth-lock {
+  70% { opacity: 1; }
+  to { opacity: 0.78; transform: none; }
+}
+
+.bun-fusion-zipper {
+  position: absolute;
+  z-index: 4;
+  top: 1.52rem;
+  left: 50%;
+  width: 1.5rem;
+  height: 1.05rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--bun-fusion-signal) 78%, var(--color-border));
+  border-radius: 0.3rem 0.3rem 0.7rem 0.7rem;
+  background: color-mix(in srgb, var(--bun-fusion-signal) 82%, var(--color-bg));
+  color: var(--color-bg);
+  box-shadow: 0 0 1rem color-mix(in srgb, var(--bun-fusion-signal) 36%, transparent);
+  transform: translate(-50%, -42%);
+  animation: bun-fusion-zip 2.35s 560ms cubic-bezier(0.35, 0, 0.22, 1) forwards;
+}
+
+.bun-fusion-zipper::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1px;
+  height: 0.65rem;
+  background: var(--bun-fusion-signal);
+}
+
+.bun-fusion-zipper-mark {
+  font-family: var(--font-mono);
+  font-size: 0.34rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+@keyframes bun-fusion-zip {
+  0% { top: 1.52rem; }
+  88% { opacity: 1; }
+  100% { top: calc(100% - 0.5rem); opacity: 0; }
+}
+
+/* ---- convergence and binary core ---- */
+
+.bun-fusion-funnel {
+  position: relative;
+  width: min(460px, 64%);
+  height: 2rem;
+  overflow: hidden;
+}
+
+.bun-fusion-funnel span {
+  position: absolute;
+  top: -70%;
+  left: 50%;
+  width: 1px;
+  height: 175%;
+  background: linear-gradient(transparent, color-mix(in srgb, var(--bun-fusion-signal) 68%, transparent));
+  transform-origin: bottom;
+  animation: bun-fusion-current 900ms 2.55s ease-out both;
+}
+
+.bun-fusion-funnel span:nth-child(1) { transform: translateX(-10rem) rotate(77deg); }
+.bun-fusion-funnel span:nth-child(2) { transform: translateX(-5rem) rotate(63deg); }
+.bun-fusion-funnel span:nth-child(3) { transform: translateX(0); }
+.bun-fusion-funnel span:nth-child(4) { transform: translateX(5rem) rotate(-63deg); }
+.bun-fusion-funnel span:nth-child(5) { transform: translateX(10rem) rotate(-77deg); }
+
+@keyframes bun-fusion-current {
+  from { opacity: 0; filter: brightness(1); }
+  55% { opacity: 1; filter: brightness(1.5); }
+  to { opacity: 0.55; filter: brightness(1); }
+}
+
+.bun-fusion-binary {
+  position: relative;
+  width: min(31rem, 86vw);
+  border: 1px solid color-mix(in srgb, var(--bun-fusion-signal) 52%, var(--color-border));
+  border-radius: 1rem;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--bun-fusion-signal) 7%, var(--color-surface)), var(--color-bg) 62%),
+    var(--color-surface);
+  box-shadow:
+    inset 0 1px color-mix(in srgb, var(--color-bg) 80%, transparent),
+    0 22px 72px -45px color-mix(in srgb, var(--bun-fusion-signal) 90%, transparent);
+  animation: bun-fusion-binary-lock 650ms 2.75s cubic-bezier(0.2, 0.8, 0.2, 1.2) both;
+}
+
+.bun-fusion-binary::before,
+.bun-fusion-binary::after {
+  content: '';
+  position: absolute;
+  top: 1.1rem;
+  width: 0.32rem;
+  height: calc(100% - 2.2rem);
+  border-block: 1px solid color-mix(in srgb, var(--bun-fusion-signal) 38%, transparent);
+  background: repeating-linear-gradient(to bottom, var(--bun-fusion-signal) 0 2px, transparent 2px 0.65rem);
+  opacity: 0.42;
+}
+
+.bun-fusion-binary::before { left: 0.65rem; }
+.bun-fusion-binary::after { right: 0.65rem; }
+
+@keyframes bun-fusion-binary-lock {
+  from { transform: scaleX(0.9); filter: saturate(0.7); }
+  to { transform: none; filter: none; }
+}
+
+.bun-fusion-binary-cap {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 0.48rem 1rem;
+  border-bottom: 1px solid var(--bun-fusion-line);
+  font-family: var(--font-mono);
+  font-size: 0.47rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.bun-fusion-cap-arrow {
+  color: var(--bun-fusion-signal);
+}
+
+.bun-fusion-binary-name {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1rem 0.55rem;
+  font-family: var(--font-mono);
+}
+
+.bun-fusion-binary-name strong {
+  font-size: clamp(1.65rem, 5vw, 2.7rem);
+  line-height: 1;
+  letter-spacing: -0.08em;
+  color: var(--color-text);
+}
+
+.bun-fusion-binary-name > span:last-child {
+  font-size: 0.6rem;
+  color: var(--bun-fusion-signal);
+}
+
+.bun-fusion-prompt {
+  color: var(--bun-fusion-api);
+  font-size: 0.75rem;
+}
+
+.bun-fusion-core {
+  width: calc(100% - 2.5rem);
+  margin: 0 auto 0.7rem;
+  padding: 0.5rem 0.8rem 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--color-border) 82%, transparent);
+  border-radius: 0.55rem;
+  background: color-mix(in srgb, var(--color-bg) 76%, transparent);
+  text-align: center;
+}
+
+.bun-fusion-core-label,
+.bun-fusion-core-note {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.42rem;
+  line-height: 1.35;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.bun-fusion-core-swap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin: 0.22rem 0 0.18rem;
+  font-family: var(--font-mono);
+}
+
+.bun-fusion-core-swap code {
+  min-width: 3.5rem;
+  border-radius: 0.32rem;
+  padding: 0.16rem 0.55rem;
+  font: inherit;
+  font-size: 0.68rem;
+}
+
+.bun-fusion-zig {
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  animation: bun-fusion-zig-out 500ms 3.2s ease-out forwards;
+}
+
+.bun-fusion-rust {
+  border: 1px solid color-mix(in srgb, var(--bun-fusion-signal) 72%, var(--color-border));
+  color: var(--bun-fusion-signal);
+  animation: bun-fusion-rust-in 600ms 3.35s cubic-bezier(0.2, 0.85, 0.25, 1.2) both;
+}
+
+.bun-fusion-core-arrow {
+  color: var(--bun-fusion-signal);
+  animation: bun-fusion-arrow 420ms 3.35s ease-out both;
+}
+
+@keyframes bun-fusion-zig-out {
+  to { opacity: 0.48; border-style: dashed; }
+}
+
+@keyframes bun-fusion-rust-in {
+  from { transform: translateX(0.8rem); filter: saturate(0.5); }
+  65% { box-shadow: 0 0 0.9rem color-mix(in srgb, var(--bun-fusion-signal) 35%, transparent); }
+  to { transform: none; filter: none; box-shadow: none; }
+}
+
+@keyframes bun-fusion-arrow {
+  from { transform: scaleX(0); }
+  to { transform: none; }
+}
+
+.bun-fusion-legend {
+  margin: 0.55rem 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.bun-fusion-scroll {
+  position: absolute;
+  bottom: 1.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.22em;
+  color: var(--color-text-muted);
+  opacity: 0.35;
+  animation: rich-breathe 3s infinite;
+}
+
+/* The theme tokens do most of the work. These adjustments keep glass and
+   shadow contrast intentional at both ends of the palette. */
+[data-theme="light"] .bun-fusion-ledger {
+  box-shadow: 0 18px 60px -46px color-mix(in srgb, var(--bun-fusion-signal) 58%, transparent);
+}
+
+[data-theme="dark"] .bun-fusion-binary {
+  box-shadow:
+    inset 0 1px color-mix(in srgb, #faf8f5 8%, transparent),
+    0 24px 76px -42px color-mix(in srgb, var(--bun-fusion-signal) 76%, transparent);
+}
+
+/* ---- narrow screens ---- */
+
+@media (max-width: 640px) {
+  .bun-fusion-hero {
+    gap: 1.35rem;
+    padding: 4.6rem 0.55rem 4.2rem;
+  }
+
+  .bun-fusion-heading h1 {
+    font-size: clamp(2rem, 11.4vw, 3.2rem);
+    line-height: 0.98;
+  }
+
+  .bun-fusion-subtitle {
+    max-width: 34rem;
+    padding-inline: 0.35rem;
+    font-size: 0.88rem;
+  }
+
+  .bun-fusion-machine {
+    width: 100%;
+  }
+
+  .bun-fusion-ledger-head {
+    gap: 2.1rem;
+    padding-inline: 0.48rem;
+    font-size: 0.4rem;
+    letter-spacing: 0.08em;
+  }
+
+  .bun-fusion-row {
+    grid-template-columns: minmax(0, 1fr) 2.1rem minmax(0, 1.16fr);
+    min-height: 1.45rem;
+    font-size: clamp(0.42rem, 2.55vw, 0.54rem);
+  }
+
+  .bun-fusion-package,
+  .bun-fusion-surface {
+    gap: 0.25rem;
+    padding: 0.28rem 0.38rem;
+  }
+
+  .bun-fusion-package::after {
+    left: 1.1rem;
+    right: 0.38rem;
+  }
+
+  .bun-fusion-sign {
+    width: 0.45rem;
+  }
+
+  .bun-fusion-funnel {
+    width: 82%;
+  }
+
+  .bun-fusion-binary-cap {
+    gap: 0.48rem;
+    font-size: 0.41rem;
+    letter-spacing: 0.09em;
+  }
+
+  .bun-fusion-legend {
+    font-size: 0.48rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+@media (max-width: 380px) {
+  .bun-fusion-kicker {
+    font-size: 0.5rem;
+    letter-spacing: 0.18em;
+  }
+
+  .bun-fusion-ledger {
+    border-radius: 0.55rem;
+  }
+
+  .bun-fusion-row {
+    grid-template-columns: minmax(0, 0.92fr) 1.7rem minmax(0, 1.18fr);
+    font-size: 0.41rem;
+  }
+
+  .bun-fusion-seam {
+    border-inline: 0;
+  }
+
+  .bun-fusion-core-note {
+    font-size: 0.38rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* ---- motion accessibility ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .bun-fusion-hero *,
+  .bun-fusion-hero *::before,
+  .bun-fusion-hero *::after {
+    animation: none !important;
+  }
+
+  .bun-fusion-package::after,
+  .bun-fusion-seam::after {
+    transform: scaleX(1);
+  }
+
+  .bun-fusion-tooth--left,
+  .bun-fusion-tooth--right {
+    transform: none;
+  }
+
+  .bun-fusion-zipper {
+    display: none;
+  }
+
+  .bun-fusion-funnel span {
+    opacity: 0.55;
+  }
+
+  .bun-fusion-zig {
+    opacity: 0.48;
+    border-style: dashed;
+  }
+}

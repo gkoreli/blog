@@ -1,4 +1,5 @@
 export { ArticleGrid } from './article-grid/article-grid.js';
+export { BunFusionHero } from './bun-fusion-hero/bun-fusion-hero.js';
 export { Callout } from './callout/callout.js';
 export { Closing } from './closing/closing.js';
 export { CompareTable } from './compare-table/compare-table.js';
