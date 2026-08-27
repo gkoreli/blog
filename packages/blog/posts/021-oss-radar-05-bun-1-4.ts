@@ -18,15 +18,15 @@ const MANIFEST_URL = 'https://github.com/gkoreli/blog/blob/main/packages/blog/dr
 
 const researchFootprint = {
   sessions: 4,
-  artifacts: 9,
-  totalTokens: 58_621_779,
-  inputTokens: 58_427_867,
-  cachedInputTokens: 56_625_408,
-  outputTokens: 193_912,
-  reasoningOutputTokens: 67_367,
-  wallClockMinutes: 47,
+  artifacts: 12,
+  totalTokens: 65_691_309,
+  inputTokens: 65_454_413,
+  cachedInputTokens: 62_877_696,
+  outputTokens: 236_896,
+  reasoningOutputTokens: 80_446,
+  wallClockMinutes: 257,
   startedAt: '2026-08-26T23:58:34.236Z',
-  measuredAt: '2026-08-27T00:45:14.181Z',
+  measuredAt: '2026-08-27T04:14:50.932Z',
   provenanceUrl: RESEARCH_URL,
 };
 
@@ -77,7 +77,7 @@ export function preamble() {
     author: 'Goga Koreli',
     readTime: '12 min read',
     footprint: {
-      label: `47 min · 4 sessions · 9 artifacts · ${compactTokenCount(researchFootprint.totalTokens)} measured tokens`,
+      label: `${researchFootprint.wallClockMinutes} min · ${researchFootprint.sessions} sessions · ${researchFootprint.artifacts} artifacts · ${compactTokenCount(researchFootprint.totalTokens)} measured tokens`,
       url: '#research-footprint',
     },
   });
@@ -569,14 +569,14 @@ export function article() {
       <a href="${RESEARCH_URL}" target="_blank" rel="noopener">Open the evidence artifacts ↗</a>
     </div>
     <div class="research-footprint-stats">
-      <div><strong>47 min</strong><span>wall-clock window</span></div>
+      <div><strong>${researchFootprint.wallClockMinutes} min</strong><span>wall-clock window</span></div>
       <div><strong>${researchFootprint.sessions}</strong><span>agent sessions</span></div>
       <div><strong>${researchFootprint.artifacts}</strong><span>committed Markdown artifacts</span></div>
       <div><strong>${compactTokenCount(researchFootprint.totalTokens)}</strong><span>tokens processed</span></div>
     </div>
     <p>
       The planning envelope was 90–120 minutes and 250,000–400,000 aggregate tokens. The measured freeze arrived
-      after 47 minutes, from <time datetime="${researchFootprint.startedAt}">${formatTimestamp(researchFootprint.startedAt)}</time>
+      after ${researchFootprint.wallClockMinutes} minutes, from <time datetime="${researchFootprint.startedAt}">${formatTimestamp(researchFootprint.startedAt)}</time>
       to <time datetime="${researchFootprint.measuredAt}">${formatTimestamp(researchFootprint.measuredAt)}</time>.
       The token estimate was badly wrong because cumulative accounting counts the full context presented on every
       response, including cache hits.

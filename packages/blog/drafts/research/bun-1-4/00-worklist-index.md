@@ -16,9 +16,7 @@
 
 Planning envelope recorded at the author's request: 90–120 minutes and 250,000–400,000 aggregate tokens across the root session and its recursive subagent tree. The published `researchFootprint` will use measured cumulative session usage, not this estimate.
 
-The final freeze below is temporarily stale while the practical-impact expansion is being verified. It will be regenerated from the recursive session tree after all twelve Markdown research artifacts are committed; no total will be hand-counted.
-
-Previous freeze: 47 wall-clock minutes, 4 sessions, 9 committed Markdown research artifacts, and 58,621,779 total tokens. The total contains 58,427,867 input tokens (56,625,408 cached; 1,802,459 non-cached) and 193,912 output tokens (67,367 reasoning output, counted inside output). The planning token estimate was materially low because the cumulative model counts the full context on every response, including cache hits. See `research-footprint.json` for the included sessions and log-prefix commitments.
+Final freeze: 257 wall-clock minutes, 4 sessions, 12 committed Markdown research artifacts, and 65,691,309 total tokens. The total contains 65,454,413 input tokens (62,877,696 cached; 2,576,717 non-cached) and 236,896 output tokens (80,446 reasoning output, counted inside output). The planning token estimate was materially low because the cumulative model counts the full context on every response, including cache hits. See `research-footprint.json` for the included sessions and log-prefix commitments.
 
 Root Codex thread: `01a04082-e0c4-7701-9cf4-3d32898f5773`.
 
