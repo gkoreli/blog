@@ -319,8 +319,9 @@ export function article() {
     product-facing inference, while TransformerLens keeps the research surface and nnsight keeps programmable traces
     and remote execution. The contest that is left is over who names the points, and that is why the validator is the durable piece. It
     already records a real production failure, six execution paths, and version-pinned diffs. Whether it becomes a
-    standard other engines score against is speculative; no outside project uses its vocabulary yet, and the
-    repository had zero issues and zero pull requests from anyone else when I checked.
+    standard other engines score against is speculative; no outside project uses its vocabulary yet, and when I
+    checked on September 1 the repository had no issues and no pull requests from anyone but the maintainer and
+    Dependabot.
   </p>
 
   <p>

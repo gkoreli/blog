@@ -65,6 +65,7 @@ export const meta: PostMeta = {
   featured: false,
   images: [],
   slug: 'oss-radar-05-bun-1-4',
+  lastModified: '2026-09-02',
   researchFootprint,
 };
 
@@ -536,6 +537,11 @@ export function article() {
 
   <p>
     The package graph shrank. The dependency became Bun.
+  </p>
+
+  <p>
+    The next issue follows the same move into a different runtime:
+    <a href="/oss-radar-06-interp-engine">interp-engine, Neuronpedia's new interpretability engine, tested on a Mac</a>.
   </p>
 
   ${Sources({
