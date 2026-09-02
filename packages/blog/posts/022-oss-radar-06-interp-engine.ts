@@ -419,8 +419,7 @@ export function article() {
   <p>
     This is the third issue in a row where the move that matters happens inside a runtime, after
     <a href="/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime">Herdr</a> and
-    <a href="/oss-radar-05-bun-1-4">Bun 1.4</a>. Issue #07 stays there with DFlash 2, a drafter for speculative
-    decoding.
+    <a href="/oss-radar-05-bun-1-4">Bun 1.4</a>.
   </p>
 
   ${SectionBreak()}
