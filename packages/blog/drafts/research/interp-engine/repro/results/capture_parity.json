@@ -1,0 +1,1346 @@
+{
+  "device_observed": {
+    "mps_available": true,
+    "mps_built": true,
+    "mps_device_count": 1,
+    "mps_tensor_creation": "succeeded"
+  },
+  "device_requested": "mps",
+  "dtype": "float32",
+  "errors": [],
+  "finished_at": "2026-09-02T04:48:27.425422+00:00",
+  "interp_engine_baseline_sha": "74716092e5bad8beca1e27193ec9980a8e9a4e85",
+  "measurement": "capture_parity",
+  "models": {
+    "gemma-2-2b": {
+      "layers": [
+        0,
+        6,
+        13,
+        19,
+        25
+      ],
+      "naive_pairings": [
+        {
+          "interp_point": "mlp_out",
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.8736637830734253,
+          "layer": 0,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 135.0850067138672,
+          "mean_abs_diff": 0.49768632650375366,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.0.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_point": "attn_out",
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.8287752866744995,
+          "layer": 0,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 52.592159271240234,
+          "mean_abs_diff": 0.23903901875019073,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.0.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_point": "mlp_out",
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.8714331388473511,
+          "layer": 6,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 125.61890411376953,
+          "mean_abs_diff": 0.5826684832572937,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.6.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_point": "attn_out",
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.757527232170105,
+          "layer": 6,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 38.171817779541016,
+          "mean_abs_diff": 0.19933883845806122,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.6.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_point": "mlp_out",
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.8025475144386292,
+          "layer": 13,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 196.24951171875,
+          "mean_abs_diff": 0.8720196485519409,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.13.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_point": "attn_out",
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.712465226650238,
+          "layer": 13,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 15.126768112182617,
+          "mean_abs_diff": 0.5585671067237854,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.13.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_point": "mlp_out",
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.8205944299697876,
+          "layer": 19,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 49.601600646972656,
+          "mean_abs_diff": 1.6503814458847046,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.19.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_point": "attn_out",
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.7347261905670166,
+          "layer": 19,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 21.525110244750977,
+          "mean_abs_diff": 0.6395334005355835,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.19.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_point": "mlp_out",
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.8951748013496399,
+          "layer": 25,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 272.45208740234375,
+          "mean_abs_diff": 3.268275022506714,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.25.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_point": "attn_out",
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.7905309200286865,
+          "layer": 25,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 157.61524963378906,
+          "mean_abs_diff": 1.9021297693252563,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.25.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        }
+      ],
+      "offline_snapshot": "/Users/goga/.cache/huggingface/hub/models--google--gemma-2-2b/snapshots/c5ebcd40d208330abc697524c919956e692655cf",
+      "prompt": "On a quiet autumn morning, the small library opened early while neighbors gathered to read, share coffee, and discuss plans for the coming week.",
+      "prompt_token_count_with_bos": 29,
+      "requested_id": "google/gemma-2-2b",
+      "revision": "c5ebcd40d208330abc697524c919956e692655cf",
+      "rows": [
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999997615814209,
+          "layer": 0,
+          "mapping_caveat": null,
+          "max_abs_diff": 2.002716064453125e-05,
+          "mean_abs_diff": 4.513253202276246e-07,
+          "point": "resid_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.0.hook_resid_post",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000001192092896,
+          "layer": 0,
+          "mapping_caveat": null,
+          "max_abs_diff": 1.1444091796875e-05,
+          "mean_abs_diff": 1.7759279558049457e-07,
+          "point": "resid_mid",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.0.hook_resid_mid",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0,
+          "layer": 0,
+          "mapping_caveat": null,
+          "max_abs_diff": 1.1444091796875e-05,
+          "mean_abs_diff": 1.7766168980415387e-07,
+          "point": "attn_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.0.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999998807907104,
+          "layer": 0,
+          "mapping_caveat": null,
+          "max_abs_diff": 2.956390380859375e-05,
+          "mean_abs_diff": 4.2231667407577334e-07,
+          "point": "mlp_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.0.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000003576278687,
+          "layer": 6,
+          "mapping_caveat": null,
+          "max_abs_diff": 0.0001220703125,
+          "mean_abs_diff": 1.945321628227248e-06,
+          "point": "resid_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.6.hook_resid_post",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999998807907104,
+          "layer": 6,
+          "mapping_caveat": null,
+          "max_abs_diff": 6.103515625e-05,
+          "mean_abs_diff": 1.765775891726662e-06,
+          "point": "resid_mid",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.6.hook_resid_mid",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999998211860657,
+          "layer": 6,
+          "mapping_caveat": null,
+          "max_abs_diff": 5.340576171875e-05,
+          "mean_abs_diff": 6.84321037169866e-07,
+          "point": "attn_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.6.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999996423721313,
+          "layer": 6,
+          "mapping_caveat": null,
+          "max_abs_diff": 4.863739013671875e-05,
+          "mean_abs_diff": 1.6078563476185082e-06,
+          "point": "mlp_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.6.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.000000238418579,
+          "layer": 13,
+          "mapping_caveat": null,
+          "max_abs_diff": 0.00018310546875,
+          "mean_abs_diff": 4.155482656642562e-06,
+          "point": "resid_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.13.hook_resid_post",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999995231628418,
+          "layer": 13,
+          "mapping_caveat": null,
+          "max_abs_diff": 0.0001220703125,
+          "mean_abs_diff": 4.0196755435317755e-06,
+          "point": "resid_mid",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.13.hook_resid_mid",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999997615814209,
+          "layer": 13,
+          "mapping_caveat": null,
+          "max_abs_diff": 4.0531158447265625e-05,
+          "mean_abs_diff": 1.5555381196463713e-06,
+          "point": "attn_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.13.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000003576278687,
+          "layer": 13,
+          "mapping_caveat": null,
+          "max_abs_diff": 0.0001220703125,
+          "mean_abs_diff": 2.8982174171687802e-06,
+          "point": "mlp_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.13.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0,
+          "layer": 19,
+          "mapping_caveat": null,
+          "max_abs_diff": 0.000244140625,
+          "mean_abs_diff": 7.0598844104097225e-06,
+          "point": "resid_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.19.hook_resid_post",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0,
+          "layer": 19,
+          "mapping_caveat": null,
+          "max_abs_diff": 0.00022125244140625,
+          "mean_abs_diff": 6.533137820952106e-06,
+          "point": "resid_mid",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.19.hook_resid_mid",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999997019767761,
+          "layer": 19,
+          "mapping_caveat": null,
+          "max_abs_diff": 5.626678466796875e-05,
+          "mean_abs_diff": 1.3261133062769659e-06,
+          "point": "attn_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.19.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000001192092896,
+          "layer": 19,
+          "mapping_caveat": null,
+          "max_abs_diff": 9.5367431640625e-05,
+          "mean_abs_diff": 4.157188413955737e-06,
+          "point": "mlp_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.19.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999997019767761,
+          "layer": 25,
+          "mapping_caveat": null,
+          "max_abs_diff": 0.0005340576171875,
+          "mean_abs_diff": 1.6552792658330873e-05,
+          "point": "resid_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.25.hook_resid_post",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999998211860657,
+          "layer": 25,
+          "mapping_caveat": null,
+          "max_abs_diff": 0.000274658203125,
+          "mean_abs_diff": 1.4495260984404013e-05,
+          "point": "resid_mid",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.25.hook_resid_mid",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0,
+          "layer": 25,
+          "mapping_caveat": null,
+          "max_abs_diff": 0.000213623046875,
+          "mean_abs_diff": 4.020960659545381e-06,
+          "point": "attn_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.25.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            2304
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0,
+          "layer": 25,
+          "mapping_caveat": null,
+          "max_abs_diff": 0.0004119873046875,
+          "mean_abs_diff": 7.338523573707789e-06,
+          "point": "mlp_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.25.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            2304
+          ]
+        }
+      ],
+      "status": "completed",
+      "tokenizer_class": "GemmaTokenizer"
+    },
+    "gpt2": {
+      "layers": [
+        0,
+        3,
+        6,
+        9,
+        11
+      ],
+      "naive_pairings": [
+        {
+          "interp_point": "mlp_out",
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.000000238418579,
+          "layer": 0,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 1.52587890625e-05,
+          "mean_abs_diff": 5.318707962942426e-07,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.0.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_point": "attn_out",
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000001192092896,
+          "layer": 0,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 4.76837158203125e-06,
+          "mean_abs_diff": 1.2819495509575063e-07,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.0.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_point": "mlp_out",
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000001192092896,
+          "layer": 3,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 0.0001678466796875,
+          "mean_abs_diff": 1.0317667147319298e-06,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.3.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_point": "attn_out",
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999998807907104,
+          "layer": 3,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 2.193450927734375e-05,
+          "mean_abs_diff": 8.070939543358691e-07,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.3.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_point": "mlp_out",
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0,
+          "layer": 6,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 3.1948089599609375e-05,
+          "mean_abs_diff": 1.403391706844559e-06,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.6.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_point": "attn_out",
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.000000238418579,
+          "layer": 6,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 1.4781951904296875e-05,
+          "mean_abs_diff": 8.261411608145863e-07,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.6.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_point": "mlp_out",
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0,
+          "layer": 9,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 4.76837158203125e-05,
+          "mean_abs_diff": 2.026384890996269e-06,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.9.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_point": "attn_out",
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000001192092896,
+          "layer": 9,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 2.288818359375e-05,
+          "mean_abs_diff": 9.901832527248189e-07,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.9.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_point": "mlp_out",
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0,
+          "layer": 11,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 9.72747802734375e-05,
+          "mean_abs_diff": 2.936610599135747e-06,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.11.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_point": "attn_out",
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999998807907104,
+          "layer": 11,
+          "mapping_caveat": "Naive pairing: TL block-level hook fires after the post-sublayer norm on Gemma-2 (residual contribution); interp raw point is the module output. Expected to agree on gpt2 and to differ on gemma-2-2b.",
+          "max_abs_diff": 9.918212890625e-05,
+          "mean_abs_diff": 1.2848081496485975e-06,
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.11.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        }
+      ],
+      "offline_snapshot": "/Users/goga/.cache/huggingface/hub/models--gpt2/snapshots/607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "prompt": "On a quiet autumn morning, the small library opened early while neighbors gathered to read, share coffee, and discuss plans for the coming week.",
+      "prompt_token_count_with_bos": 29,
+      "requested_id": "openai-community/gpt2",
+      "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "rows": [
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000001192092896,
+          "layer": 0,
+          "mapping_caveat": null,
+          "max_abs_diff": 1.52587890625e-05,
+          "mean_abs_diff": 5.310779442879721e-07,
+          "point": "resid_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.0.hook_resid_post",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000001192092896,
+          "layer": 0,
+          "mapping_caveat": null,
+          "max_abs_diff": 4.76837158203125e-06,
+          "mean_abs_diff": 1.282556780779487e-07,
+          "point": "resid_mid",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.0.hook_resid_mid",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000001192092896,
+          "layer": 0,
+          "mapping_caveat": null,
+          "max_abs_diff": 4.76837158203125e-06,
+          "mean_abs_diff": 1.2819495509575063e-07,
+          "point": "attn_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.0.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.000000238418579,
+          "layer": 0,
+          "mapping_caveat": null,
+          "max_abs_diff": 1.52587890625e-05,
+          "mean_abs_diff": 5.318707962942426e-07,
+          "point": "mlp_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.0.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.000000238418579,
+          "layer": 3,
+          "mapping_caveat": null,
+          "max_abs_diff": 6.103515625e-05,
+          "mean_abs_diff": 1.4093028539718944e-06,
+          "point": "resid_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.3.hook_resid_post",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0,
+          "layer": 3,
+          "mapping_caveat": null,
+          "max_abs_diff": 6.103515625e-05,
+          "mean_abs_diff": 1.240214714925969e-06,
+          "point": "resid_mid",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.3.hook_resid_mid",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999998807907104,
+          "layer": 3,
+          "mapping_caveat": null,
+          "max_abs_diff": 2.193450927734375e-05,
+          "mean_abs_diff": 8.070939543358691e-07,
+          "point": "attn_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.3.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000001192092896,
+          "layer": 3,
+          "mapping_caveat": null,
+          "max_abs_diff": 0.0001678466796875,
+          "mean_abs_diff": 1.0317667147319298e-06,
+          "point": "mlp_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.3.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000001192092896,
+          "layer": 6,
+          "mapping_caveat": null,
+          "max_abs_diff": 6.103515625e-05,
+          "mean_abs_diff": 2.161089469154831e-06,
+          "point": "resid_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.6.hook_resid_post",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000001192092896,
+          "layer": 6,
+          "mapping_caveat": null,
+          "max_abs_diff": 6.103515625e-05,
+          "mean_abs_diff": 2.0350223621790064e-06,
+          "point": "resid_mid",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.6.hook_resid_mid",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.000000238418579,
+          "layer": 6,
+          "mapping_caveat": null,
+          "max_abs_diff": 1.4781951904296875e-05,
+          "mean_abs_diff": 8.261411608145863e-07,
+          "point": "attn_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.6.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0,
+          "layer": 6,
+          "mapping_caveat": null,
+          "max_abs_diff": 3.1948089599609375e-05,
+          "mean_abs_diff": 1.403391706844559e-06,
+          "point": "mlp_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.6.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0,
+          "layer": 9,
+          "mapping_caveat": null,
+          "max_abs_diff": 6.103515625e-05,
+          "mean_abs_diff": 3.594731197154033e-06,
+          "point": "resid_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.9.hook_resid_post",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999998211860657,
+          "layer": 9,
+          "mapping_caveat": null,
+          "max_abs_diff": 6.103515625e-05,
+          "mean_abs_diff": 3.1963090805220418e-06,
+          "point": "resid_mid",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.9.hook_resid_mid",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0000001192092896,
+          "layer": 9,
+          "mapping_caveat": null,
+          "max_abs_diff": 2.288818359375e-05,
+          "mean_abs_diff": 9.901832527248189e-07,
+          "point": "attn_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.9.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0,
+          "layer": 9,
+          "mapping_caveat": null,
+          "max_abs_diff": 4.76837158203125e-05,
+          "mean_abs_diff": 2.026384890996269e-06,
+          "point": "mlp_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.9.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999997615814209,
+          "layer": 11,
+          "mapping_caveat": null,
+          "max_abs_diff": 0.0001373291015625,
+          "mean_abs_diff": 5.715452516596997e-06,
+          "point": "resid_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.11.hook_resid_post",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999997615814209,
+          "layer": 11,
+          "mapping_caveat": null,
+          "max_abs_diff": 9.918212890625e-05,
+          "mean_abs_diff": 4.875588729191804e-06,
+          "point": "resid_mid",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.11.hook_resid_mid",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 0.9999998807907104,
+          "layer": 11,
+          "mapping_caveat": null,
+          "max_abs_diff": 9.918212890625e-05,
+          "mean_abs_diff": 1.2848081496485975e-06,
+          "point": "attn_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.11.hook_attn_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        },
+        {
+          "interp_shape": [
+            1,
+            29,
+            768
+          ],
+          "label": "Reproduced",
+          "last_token_cosine_similarity": 1.0,
+          "layer": 11,
+          "mapping_caveat": null,
+          "max_abs_diff": 9.72747802734375e-05,
+          "mean_abs_diff": 2.936610599135747e-06,
+          "point": "mlp_out_post",
+          "shape_equal": true,
+          "transformer_lens_hook": "blocks.11.hook_mlp_out",
+          "transformer_lens_shape": [
+            1,
+            29,
+            768
+          ]
+        }
+      ],
+      "status": "completed",
+      "tokenizer_class": "GPT2Tokenizer"
+    }
+  },
+  "offline": true,
+  "offline_model_cache_preflight": {
+    "gemma-2-2b": {
+      "config_present": true,
+      "requested_id": "google/gemma-2-2b",
+      "revision": "c5ebcd40d208330abc697524c919956e692655cf",
+      "snapshot": "/Users/goga/.cache/huggingface/hub/models--google--gemma-2-2b/snapshots/c5ebcd40d208330abc697524c919956e692655cf"
+    },
+    "gpt2": {
+      "config_present": true,
+      "requested_id": "openai-community/gpt2",
+      "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "snapshot": "/Users/goga/.cache/huggingface/hub/models--gpt2/snapshots/607a30d783dfa663caf39e06633721c8d4cfcd7e"
+    }
+  },
+  "reproduction_label": "Reproduced",
+  "schema_version": 1,
+  "seed": 1729,
+  "started_at": "2026-09-02T04:45:41.199302+00:00",
+  "status": "completed",
+  "versions": {
+    "interp-engine": "1.5.1",
+    "machine": "arm64",
+    "macos": "26.5.2",
+    "python": "3.12.12",
+    "torch": "2.13.0",
+    "transformer-lens": "3.5.1",
+    "transformers": "5.14.1"
+  },
+  "vllm_installed": false
+}

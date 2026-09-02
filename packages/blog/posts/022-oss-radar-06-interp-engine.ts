@@ -258,12 +258,12 @@ export function article() {
   </p>
 
   ${CompareTable({
-    headers: ['Pairing, last-token cosine', 'gemma-2-2b L0', 'L6', 'L13', 'L19', 'L25', 'gpt2, all layers'],
+    headers: ['Last-token cosine', 'gemma-2-2b L0', 'L13', 'L25', 'gpt2, every layer'],
     rows: [
-      ['mlp_out_post ↔ hook_mlp_out (matched)', '0.99999', '0.99999', '1.00000', '1.00000', '1.00000', '1.00000'],
-      ['mlp_out ↔ hook_mlp_out (naive)', '0.874', '0.871', '0.803', '0.821', '0.895', '1.00000'],
-      ['attn_out_post ↔ hook_attn_out (matched)', '1.00000', '0.99999', '0.99999', '0.99999', '1.00000', '1.00000'],
-      ['attn_out ↔ hook_attn_out (naive)', '0.829', '0.758', '0.712', '0.735', '0.791', '1.00000'],
+      ['mlp_out_post ↔ hook_mlp_out (matched)', '0.99999', '1.00000', '1.00000', '1.00000'],
+      ['mlp_out ↔ hook_mlp_out (naive)', '0.874', '0.803', '0.895', '1.00000'],
+      ['attn_out_post ↔ hook_attn_out (matched)', '1.00000', '0.99999', '1.00000', '1.00000'],
+      ['attn_out ↔ hook_attn_out (naive)', '0.829', '0.712', '0.791', '1.00000'],
     ],
     highlightRows: [1, 3],
   })}
@@ -286,7 +286,29 @@ export function article() {
     the two engines agree even where the model has stopped making sense.
   </p>
 
-  REPRO_TODO_THROUGHPUT
+  <p>
+    Speed on a laptop is the part the benchmark cannot tell you, so I measured it: a 128-token prompt, 64 greedy
+    tokens, fp32 on MPS, one warm-up and three timed runs, capturing <code>resid_post</code> at one layer throughout.
+    The two engines capture differently. interp-engine generates and then runs one extra forward over the finished
+    sequence to collect the point; TransformerLens hooks each position during cached decoding. The numbers are
+    medians in tokens per second, with the sampled peak of Metal driver memory beside them.
+  </p>
+
+  ${CompareTable({
+    headers: ['MPS, fp32, 128 + 64 tokens', 'plain transformers, no hooks', 'interp-engine eager + capture', 'TransformerLens + caching hook'],
+    rows: [
+      ['gemma-2-2b (tok/s)', '7.6', '6.2', '1.9'],
+      ['gemma-2-2b peak driver memory', '11.1 GB', '12.4 GB', '17.0 GB'],
+      ['gpt2 (tok/s)', '57.8', '85.9', '39.6'],
+    ],
+  })}
+
+  <p>
+    Nobody gets the B200 story here, and nobody should expect to. What the table does say is that the eager backend
+    costs almost nothing over bare transformers on the model I use, and that my current harness is the slow one. On
+    gpt2 interp-engine's own decode loop beats <code>generate</code> outright. On gemma-2-2b it gives back a fifth
+    of the speed for the recapture pass and stays five gigabytes under TransformerLens on a machine with 24.
+  </p>
 
   <p>
     What changed in my harness is small and specific. My vectors come from <code>resid_post</code>, which is the

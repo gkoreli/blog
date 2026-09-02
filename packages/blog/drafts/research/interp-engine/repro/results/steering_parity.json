@@ -1,0 +1,324 @@
+{
+  "device_observed": {
+    "mps_available": true,
+    "mps_built": true,
+    "mps_device_count": 1,
+    "mps_tensor_creation": "succeeded"
+  },
+  "device_requested": "mps",
+  "dtype": "float32",
+  "errors": [],
+  "finished_at": "2026-09-02T04:51:44.585392+00:00",
+  "interp_engine_baseline_sha": "74716092e5bad8beca1e27193ec9980a8e9a4e85",
+  "measurement": "steering_parity",
+  "models": {
+    "gemma-2-2b": {
+      "comparison": {
+        "generated_shared_prefix_tokens": 20,
+        "generated_tokens_exact_equal": true,
+        "label": "Reproduced",
+        "next_token_steered_logits": {
+          "argmax_equal": true,
+          "interp_argmax_token_id": 674,
+          "max_abs_diff": 7.748603820800781e-05,
+          "mean_abs_diff": 7.687969628022984e-06,
+          "transformer_lens_argmax_token_id": 674
+        },
+        "next_token_unsteered_logits": {
+          "argmax_equal": true,
+          "interp_argmax_token_id": 674,
+          "max_abs_diff": 5.53131103515625e-05,
+          "mean_abs_diff": 6.9934599196130875e-06,
+          "transformer_lens_argmax_token_id": 674
+        }
+      },
+      "contrast_frame": "The reader described the emotional tone of the story as {word}",
+      "contrast_pairs": [
+        {
+          "negative": "The reader described the emotional tone of the story as terrible",
+          "negative_tokens_with_bos": 12,
+          "positive": "The reader described the emotional tone of the story as wonderful",
+          "positive_tokens_with_bos": 12
+        },
+        {
+          "negative": "The reader described the emotional tone of the story as miserable",
+          "negative_tokens_with_bos": 12,
+          "positive": "The reader described the emotional tone of the story as joyful",
+          "positive_tokens_with_bos": 12
+        },
+        {
+          "negative": "The reader described the emotional tone of the story as hopeless",
+          "negative_tokens_with_bos": 12,
+          "positive": "The reader described the emotional tone of the story as hopeful",
+          "positive_tokens_with_bos": 12
+        },
+        {
+          "negative": "The reader described the emotional tone of the story as awful",
+          "negative_tokens_with_bos": 12,
+          "positive": "The reader described the emotional tone of the story as delightful",
+          "positive_tokens_with_bos": 12
+        },
+        {
+          "negative": "The reader described the emotional tone of the story as depressing",
+          "negative_tokens_with_bos": 12,
+          "positive": "The reader described the emotional tone of the story as uplifting",
+          "positive_tokens_with_bos": 12
+        },
+        {
+          "negative": "The reader described the emotional tone of the story as horrible",
+          "negative_tokens_with_bos": 12,
+          "positive": "The reader described the emotional tone of the story as pleasant",
+          "positive_tokens_with_bos": 12
+        }
+      ],
+      "delta_norm": 325.0110778808594,
+      "interp_engine": {
+        "argmax_token_id": 674,
+        "excluded_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "generated_text": " that the author is a spirit of the spirit of the spirit of the spirit of the spirit of the",
+        "generated_token_ids": [
+          674,
+          573,
+          3426,
+          603,
+          476,
+          6914,
+          576,
+          573,
+          6914,
+          576,
+          573,
+          6914,
+          576,
+          573,
+          6914,
+          576,
+          573,
+          6914,
+          576,
+          573
+        ],
+        "position_mask_semantics": "excluded prompt positions [0, prompt_len-2]; final prompt token and all generated positions steered"
+      },
+      "layer": 13,
+      "mask_exactly_expressible": true,
+      "multiplier": 4.0,
+      "offline_snapshot": "/Users/goga/.cache/huggingface/hub/models--google--gemma-2-2b/snapshots/c5ebcd40d208330abc697524c919956e692655cf",
+      "point": "resid_post",
+      "prompt": "After reading the detailed review, my overall reaction is",
+      "prompt_tokens_with_bos": 11,
+      "requested_id": "google/gemma-2-2b",
+      "revision": "c5ebcd40d208330abc697524c919956e692655cf",
+      "status": "completed",
+      "transformer_lens": {
+        "argmax_token_id": 674,
+        "generated_text": " that the author is a spirit of the spirit of the spirit of the spirit of the spirit of the",
+        "generated_token_ids": [
+          674,
+          573,
+          3426,
+          603,
+          476,
+          6914,
+          576,
+          573,
+          6914,
+          576,
+          573,
+          6914,
+          576,
+          573,
+          6914,
+          576,
+          573,
+          6914,
+          576,
+          573
+        ],
+        "hook": "blocks.13.hook_resid_post"
+      },
+      "vector_definition": "mean over six (positive final-token resid_post - negative final-token resid_post) vectors from interp-engine eager",
+      "vector_norm": 81.25276947021484
+    },
+    "gpt2": {
+      "comparison": {
+        "generated_shared_prefix_tokens": 20,
+        "generated_tokens_exact_equal": true,
+        "label": "Reproduced",
+        "next_token_steered_logits": {
+          "argmax_equal": true,
+          "interp_argmax_token_id": 284,
+          "max_abs_diff": 6.866455078125e-05,
+          "mean_abs_diff": 9.410780876351055e-06,
+          "transformer_lens_argmax_token_id": 284
+        },
+        "next_token_unsteered_logits": {
+          "argmax_equal": true,
+          "interp_argmax_token_id": 326,
+          "max_abs_diff": 9.1552734375e-05,
+          "mean_abs_diff": 2.422166107862722e-05,
+          "transformer_lens_argmax_token_id": 326
+        }
+      },
+      "contrast_frame": "The reader described the emotional tone of the story as {word}",
+      "contrast_pairs": [
+        {
+          "negative": "The reader described the emotional tone of the story as terrible",
+          "negative_tokens_with_bos": 12,
+          "positive": "The reader described the emotional tone of the story as wonderful",
+          "positive_tokens_with_bos": 12
+        },
+        {
+          "negative": "The reader described the emotional tone of the story as miserable",
+          "negative_tokens_with_bos": 12,
+          "positive": "The reader described the emotional tone of the story as joyful",
+          "positive_tokens_with_bos": 12
+        },
+        {
+          "negative": "The reader described the emotional tone of the story as hopeless",
+          "negative_tokens_with_bos": 12,
+          "positive": "The reader described the emotional tone of the story as hopeful",
+          "positive_tokens_with_bos": 12
+        },
+        {
+          "negative": "The reader described the emotional tone of the story as awful",
+          "negative_tokens_with_bos": 12,
+          "positive": "The reader described the emotional tone of the story as delightful",
+          "positive_tokens_with_bos": 12
+        },
+        {
+          "negative": "The reader described the emotional tone of the story as depressing",
+          "negative_tokens_with_bos": 12,
+          "positive": "The reader described the emotional tone of the story as uplifting",
+          "positive_tokens_with_bos": 13
+        },
+        {
+          "negative": "The reader described the emotional tone of the story as horrible",
+          "negative_tokens_with_bos": 12,
+          "positive": "The reader described the emotional tone of the story as pleasant",
+          "positive_tokens_with_bos": 12
+        }
+      ],
+      "delta_norm": 143.6578369140625,
+      "interp_engine": {
+        "argmax_token_id": 284,
+        "excluded_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "generated_text": " to the \"I have to be both and I are both to both and to both to both to",
+        "generated_token_ids": [
+          284,
+          262,
+          366,
+          40,
+          423,
+          284,
+          307,
+          1111,
+          290,
+          314,
+          389,
+          1111,
+          284,
+          1111,
+          290,
+          284,
+          1111,
+          284,
+          1111,
+          284
+        ],
+        "position_mask_semantics": "excluded prompt positions [0, prompt_len-2]; final prompt token and all generated positions steered"
+      },
+      "layer": 6,
+      "mask_exactly_expressible": true,
+      "multiplier": 4.0,
+      "offline_snapshot": "/Users/goga/.cache/huggingface/hub/models--gpt2/snapshots/607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "point": "resid_post",
+      "prompt": "After reading the detailed review, my overall reaction is",
+      "prompt_tokens_with_bos": 11,
+      "requested_id": "openai-community/gpt2",
+      "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "status": "completed",
+      "transformer_lens": {
+        "argmax_token_id": 284,
+        "generated_text": " to the \"I have to be both and I are both to both and to both to both to",
+        "generated_token_ids": [
+          284,
+          262,
+          366,
+          40,
+          423,
+          284,
+          307,
+          1111,
+          290,
+          314,
+          389,
+          1111,
+          284,
+          1111,
+          290,
+          284,
+          1111,
+          284,
+          1111,
+          284
+        ],
+        "hook": "blocks.6.hook_resid_post"
+      },
+      "vector_definition": "mean over six (positive final-token resid_post - negative final-token resid_post) vectors from interp-engine eager",
+      "vector_norm": 35.914459228515625
+    }
+  },
+  "offline": true,
+  "offline_model_cache_preflight": {
+    "gemma-2-2b": {
+      "config_present": true,
+      "requested_id": "google/gemma-2-2b",
+      "revision": "c5ebcd40d208330abc697524c919956e692655cf",
+      "snapshot": "/Users/goga/.cache/huggingface/hub/models--google--gemma-2-2b/snapshots/c5ebcd40d208330abc697524c919956e692655cf"
+    },
+    "gpt2": {
+      "config_present": true,
+      "requested_id": "openai-community/gpt2",
+      "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "snapshot": "/Users/goga/.cache/huggingface/hub/models--gpt2/snapshots/607a30d783dfa663caf39e06633721c8d4cfcd7e"
+    }
+  },
+  "reproduction_label": "Reproduced",
+  "schema_version": 1,
+  "seed": 1729,
+  "started_at": "2026-09-02T04:48:33.625380+00:00",
+  "status": "completed",
+  "versions": {
+    "interp-engine": "1.5.1",
+    "machine": "arm64",
+    "macos": "26.5.2",
+    "python": "3.12.12",
+    "torch": "2.13.0",
+    "transformer-lens": "3.5.1",
+    "transformers": "5.14.1"
+  },
+  "vllm_installed": false
+}

@@ -1,0 +1,284 @@
+{
+  "device_observed": {
+    "mps_available": true,
+    "mps_built": true,
+    "mps_device_count": 1,
+    "mps_tensor_creation": "succeeded"
+  },
+  "device_requested": "mps",
+  "dtype": "float32",
+  "errors": [],
+  "finished_at": "2026-09-02T05:01:45.354724+00:00",
+  "interp_engine_baseline_sha": "74716092e5bad8beca1e27193ec9980a8e9a4e85",
+  "measurement": "throughput_mps",
+  "models": {
+    "gemma-2-2b": {
+      "capture_layer": 13,
+      "interp_engine_eager": {
+        "capture_point": "resid_post.13",
+        "capture_semantics": "generate, then one full recapture forward over prompt + generated[:-1]",
+        "implementation": "interp-engine eager capture_generation",
+        "max_sampled_peak_current_allocated_bytes": 402934016,
+        "max_sampled_peak_driver_allocated_bytes": 12446859264,
+        "median_tokens_per_second": 6.189588522582747,
+        "peak_memory_method": "2 ms sampling of torch.mps current_allocated_memory and driver_allocated_memory",
+        "runs": [
+          {
+            "elapsed_seconds": 10.93522816686891,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 250462720,
+            "sampled_peak_driver_allocated_bytes": 12446859264,
+            "tokens_per_second": 5.852644226839682
+          },
+          {
+            "elapsed_seconds": 10.339944208972156,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 252494336,
+            "sampled_peak_driver_allocated_bytes": 12446859264,
+            "tokens_per_second": 6.189588522582747
+          },
+          {
+            "elapsed_seconds": 10.185804083012044,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 402934016,
+            "sampled_peak_driver_allocated_bytes": 12446859264,
+            "tokens_per_second": 6.283254564726966
+          }
+        ],
+        "warmup_generated_tokens": 64
+      },
+      "measured_runs": 3,
+      "offline_snapshot": "/Users/goga/.cache/huggingface/hub/models--google--gemma-2-2b/snapshots/c5ebcd40d208330abc697524c919956e692655cf",
+      "plain_transformers": {
+        "capture_point": null,
+        "capture_semantics": "no hooks and no activation capture",
+        "implementation": "plain transformers generate",
+        "max_sampled_peak_current_allocated_bytes": 10523171584,
+        "max_sampled_peak_driver_allocated_bytes": 11105271808,
+        "median_tokens_per_second": 7.648697437716055,
+        "peak_memory_method": "2 ms sampling of torch.mps current_allocated_memory and driver_allocated_memory",
+        "runs": [
+          {
+            "elapsed_seconds": 8.261583666782826,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 10523171584,
+            "sampled_peak_driver_allocated_bytes": 11105271808,
+            "tokens_per_second": 7.746698766402795
+          },
+          {
+            "elapsed_seconds": 8.367437792010605,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 10523171584,
+            "sampled_peak_driver_allocated_bytes": 11105271808,
+            "tokens_per_second": 7.648697437716055
+          },
+          {
+            "elapsed_seconds": 8.46530312509276,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 10523171584,
+            "sampled_peak_driver_allocated_bytes": 11105271808,
+            "tokens_per_second": 7.560272686549392
+          }
+        ],
+        "warmup_generated_tokens": 64
+      },
+      "prompt_tokens": 128,
+      "requested_id": "google/gemma-2-2b",
+      "requested_new_tokens": 64,
+      "revision": "c5ebcd40d208330abc697524c919956e692655cf",
+      "status": "completed",
+      "transformer_lens": {
+        "capture_point": "blocks.13.hook_resid_post",
+        "capture_semantics": "capture prompt prefill and each generated position during KV-cached decoding",
+        "implementation": "TransformerLens generate with a forward caching hook",
+        "max_sampled_peak_current_allocated_bytes": 15455627776,
+        "max_sampled_peak_driver_allocated_bytes": 16992911360,
+        "median_tokens_per_second": 1.861063877926385,
+        "peak_memory_method": "2 ms sampling of torch.mps current_allocated_memory and driver_allocated_memory",
+        "runs": [
+          {
+            "elapsed_seconds": 85.25968954199925,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 15455627264,
+            "sampled_peak_driver_allocated_bytes": 16992911360,
+            "tokens_per_second": 0.7506478189610737
+          },
+          {
+            "elapsed_seconds": 34.38893245905638,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 15455627776,
+            "sampled_peak_driver_allocated_bytes": 16992911360,
+            "tokens_per_second": 1.861063877926385
+          },
+          {
+            "elapsed_seconds": 29.224692333023995,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 15455625728,
+            "sampled_peak_driver_allocated_bytes": 16992911360,
+            "tokens_per_second": 2.1899289570169334
+          }
+        ],
+        "warmup_generated_tokens": 64
+      },
+      "warmups": 1
+    },
+    "gpt2": {
+      "capture_layer": 6,
+      "interp_engine_eager": {
+        "capture_point": "resid_post.6",
+        "capture_semantics": "generate, then one full recapture forward over prompt + generated[:-1]",
+        "implementation": "interp-engine eager capture_generation",
+        "max_sampled_peak_current_allocated_bytes": 67397376,
+        "max_sampled_peak_driver_allocated_bytes": 2407530496,
+        "median_tokens_per_second": 85.8757339575697,
+        "peak_memory_method": "2 ms sampling of torch.mps current_allocated_memory and driver_allocated_memory",
+        "runs": [
+          {
+            "elapsed_seconds": 0.763968416955322,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 66337536,
+            "sampled_peak_driver_allocated_bytes": 2407530496,
+            "tokens_per_second": 83.7730966092317
+          },
+          {
+            "elapsed_seconds": 0.7452629171311855,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 66368256,
+            "sampled_peak_driver_allocated_bytes": 2407530496,
+            "tokens_per_second": 85.8757339575697
+          },
+          {
+            "elapsed_seconds": 0.7429715830367059,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 67397376,
+            "sampled_peak_driver_allocated_bytes": 2407530496,
+            "tokens_per_second": 86.14057584600532
+          }
+        ],
+        "warmup_generated_tokens": 64
+      },
+      "measured_runs": 3,
+      "offline_snapshot": "/Users/goga/.cache/huggingface/hub/models--gpt2/snapshots/607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "plain_transformers": {
+        "capture_point": null,
+        "capture_semantics": "no hooks and no activation capture",
+        "implementation": "plain transformers generate",
+        "max_sampled_peak_current_allocated_bytes": 515335680,
+        "max_sampled_peak_driver_allocated_bytes": 1842380800,
+        "median_tokens_per_second": 57.77516849779183,
+        "peak_memory_method": "2 ms sampling of torch.mps current_allocated_memory and driver_allocated_memory",
+        "runs": [
+          {
+            "elapsed_seconds": 1.0663631251081824,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 515335680,
+            "sampled_peak_driver_allocated_bytes": 1842380800,
+            "tokens_per_second": 60.017079072860106
+          },
+          {
+            "elapsed_seconds": 1.10774233401753,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 515093760,
+            "sampled_peak_driver_allocated_bytes": 1842380800,
+            "tokens_per_second": 57.77516849779183
+          },
+          {
+            "elapsed_seconds": 1.1162956249900162,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 514694400,
+            "sampled_peak_driver_allocated_bytes": 1810923520,
+            "tokens_per_second": 57.33248305131752
+          }
+        ],
+        "warmup_generated_tokens": 64
+      },
+      "prompt_tokens": 128,
+      "requested_id": "openai-community/gpt2",
+      "requested_new_tokens": 64,
+      "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "status": "completed",
+      "transformer_lens": {
+        "capture_point": "blocks.6.hook_resid_post",
+        "capture_semantics": "capture prompt prefill and each generated position during KV-cached decoding",
+        "implementation": "TransformerLens generate with a forward caching hook",
+        "max_sampled_peak_current_allocated_bytes": 847296000,
+        "max_sampled_peak_driver_allocated_bytes": 1179336704,
+        "median_tokens_per_second": 39.592276876066116,
+        "peak_memory_method": "2 ms sampling of torch.mps current_allocated_memory and driver_allocated_memory",
+        "runs": [
+          {
+            "elapsed_seconds": 1.7827008748427033,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 830543360,
+            "sampled_peak_driver_allocated_bytes": 1179336704,
+            "tokens_per_second": 35.900582595297735
+          },
+          {
+            "elapsed_seconds": 1.4128965421114117,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 847296000,
+            "sampled_peak_driver_allocated_bytes": 1179336704,
+            "tokens_per_second": 45.29701792911132
+          },
+          {
+            "elapsed_seconds": 1.616476875031367,
+            "generated_tokens": 64,
+            "label": "Reproduced",
+            "sampled_peak_current_allocated_bytes": 822359808,
+            "sampled_peak_driver_allocated_bytes": 1179336704,
+            "tokens_per_second": 39.592276876066116
+          }
+        ],
+        "warmup_generated_tokens": 64
+      },
+      "warmups": 1
+    }
+  },
+  "offline": true,
+  "offline_model_cache_preflight": {
+    "gemma-2-2b": {
+      "config_present": true,
+      "requested_id": "google/gemma-2-2b",
+      "revision": "c5ebcd40d208330abc697524c919956e692655cf",
+      "snapshot": "/Users/goga/.cache/huggingface/hub/models--google--gemma-2-2b/snapshots/c5ebcd40d208330abc697524c919956e692655cf"
+    },
+    "gpt2": {
+      "config_present": true,
+      "requested_id": "openai-community/gpt2",
+      "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "snapshot": "/Users/goga/.cache/huggingface/hub/models--gpt2/snapshots/607a30d783dfa663caf39e06633721c8d4cfcd7e"
+    }
+  },
+  "reproduction_label": "Reproduced",
+  "schema_version": 1,
+  "seed": 1729,
+  "started_at": "2026-09-02T04:51:46.945837+00:00",
+  "status": "completed",
+  "versions": {
+    "interp-engine": "1.5.1",
+    "machine": "arm64",
+    "macos": "26.5.2",
+    "python": "3.12.12",
+    "torch": "2.13.0",
+    "transformer-lens": "3.5.1",
+    "transformers": "5.14.1"
+  },
+  "vllm_installed": false
+}

@@ -1,0 +1,12 @@
+ng weights:   1%|          | 2/288 [00:00<00:39,  7.23it/s]ng weights:  15%|█▌        | 44/288 [00:00<00:02, 97.83it/s]ng weights:  22%|██▏       | 63/288 [00:01<00:06, 35.29it/s]ng weights:  26%|██▋       | 76/288 [00:01<00:05, 36.76it/s]ng weights: 100%|██████████| 288/288 [00:01<00:00, 144.49it/s]
+ng weights: 100%|██████████| 288/288 [00:00<00:00, 8587.80it/s]
+/private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/repro/.venv/lib/python3.12/site-packages/transformer_lens/config/hooked_transformer_config.py:354: UserWarning: MPS backend may produce silently incorrect results (PyTorch 2.13.0). Set TRANSFORMERLENS_ALLOW_MPS=1 to suppress this warning. See: https://github.com/TransformerLensOrg/TransformerLens/issues/1178
+  warn_if_mps(self.device)
+Loaded pretrained model google/gemma-2-2b into HookedTransformer
+Moving model to device:  cpu
+ng weights: 100%|██████████| 288/288 [00:00<00:00, 6653.30it/s]
+ng weights: 100%|██████████| 148/148 [00:00<00:00, 114827.41it/s]
+ng weights: 100%|██████████| 148/148 [00:00<00:00, 9869.26it/s]
+Loaded pretrained model gpt2 into HookedTransformer
+Moving model to device:  cpu
+ng weights: 100%|██████████| 148/148 [00:00<00:00, 22942.57it/s]

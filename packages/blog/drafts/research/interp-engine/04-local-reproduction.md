@@ -1,165 +1,71 @@
 # interp-engine eager vs TransformerLens on Apple Silicon
 
-## Outcome
+Check date: 2026-09-01 (evening, America/Los_Angeles). interp-engine baseline `74716092e5bad8beca1e27193ec9980a8e9a4e85`, installed from the pinned clone as 1.5.1. Every number below is **Reproduced** on the author's machine. Scripts and raw JSON: `repro/scripts/` and `repro/results/` beside this file.
 
-The requested MPS measurements could not be produced in this managed execution session. The host is an Apple M5 Mac and `system_profiler SPDisplaysDataType` reports `Metal: Supported`, but the isolated PyTorch process reports **Reproduced: `torch.backends.mps.is_built() == True`**, **Reproduced: `torch.backends.mps.is_available() == False`**, and **Reproduced: `torch.mps.device_count() == 0`**. Creating `torch.ones(1, device="mps")` raises **Reproduced: `RuntimeError: The MPS backend is supported on macOS 14.0+. Current OS version can be queried using sw_vers`**, even though `sw_vers` reports **Reproduced: macOS 26.5.2**.
+## How this ran
 
-This was reproduced with cached PyTorch **Reproduced: 2.8.0** and again with the final explicit pin, **Reproduced: 2.13.0**. The latter is the version recorded in every JSON result. This establishes that the failure was not fixed by selecting the newer locally available MPS build. It does not establish whether the root cause is the managed sandbox's Metal entitlement/device visibility or a host-level PyTorch issue.
+A Codex worker wrote the harness and environment inside its sandbox, where torch reported `mps.is_built() = True` and `mps.is_available() = False` on two PyTorch builds (2.8.0 and 2.13.0); macOS's sandbox hides the Metal device from child processes. The worker's first report recorded that blocker and no model numbers. The editor then ran the same scripts from an unsandboxed shell, where MPS was available, after two harness fixes:
 
-No CPU result was substituted. The requested CPU fallback applied only if Gemma exhausted MPS memory; MPS never became available, and no model forward pass was started. vLLM was neither installed nor tested: **Reproduced: `importlib.util.find_spec("vllm") is None`**.
+1. The capture script had used `blocks.N.attn.hook_out` and `blocks.N.mlp.hook_out`, which exist only on TransformerLens 3's `TransformerBridge`. The harness loads the `HookedTransformer` class, whose block-level `hook_attn_out` and `hook_mlp_out` fire **after** Gemma-2's post-sublayer norms (`transformer_block.py`, "we do it before the hook so hook_attn_out captures that which is added"). The matched pairing is therefore interp-engine's `*_post` points against those hooks; the raw points have no hook in that class. The naive pairing (raw `mlp_out` / `attn_out` against the block-level names) was kept as the demonstration, with gpt2 as the control.
+2. TransformerLens calls hooks as `fn(activation, hook=hook)`; two hook functions took the second argument positionally and were changed to accept the keyword.
 
-## Environment
+Environment: Python 3.12.12, torch 2.13.0, transformers 5.14.1, transformer-lens 3.5.1, interp-engine 1.5.1, macOS 26.5.2, Apple M5, 24 GiB unified memory. Both engines in float32 on MPS. TransformerLens loaded with `from_pretrained_no_processing` (no layer-norm folding, no weight centering) so tensors are comparable. `HF_HUB_OFFLINE=1`; models from the local cache at revisions `c5ebcd40` (google/gemma-2-2b) and `607a30d7` (gpt2). TransformerLens warned on load: "MPS backend may produce silently incorrect results (PyTorch 2.13.0)". Its weights were confirmed on `mps:0`; the "Moving model to device: cpu" line in the logs is an intermediate step of its loader.
 
-| Item | Exact value | Evidence status |
-| --- | ---: | --- |
-| interp-engine | 1.5.1, installed from the read-only source clone at SHA `74716092e5bad8beca1e27193ec9980a8e9a4e85` | Reproduced |
-| TransformerLens | 3.5.1 | Reproduced |
-| transformers | 5.14.1 | Reproduced |
-| torch | 2.13.0 | Reproduced |
-| Python | 3.12.12 | Reproduced |
-| Machine | arm64, Apple M5 with 10 GPU cores | Reproduced |
-| macOS | 26.5.2, build 25F84 | Reproduced |
-| Requested device | MPS | Reproduced |
-| PyTorch MPS build | built = true | Reproduced |
-| PyTorch MPS runtime | available = false; device count = 0 | Reproduced |
-| dtype | float32 | Reproduced |
-| seed | 1729 | Reproduced |
-| Hugging Face mode | `HF_HUB_OFFLINE=1` on every measurement invocation | Reproduced |
-| uv environment health | 82 packages; `uv pip check`: all compatible | Reproduced |
+Commands:
 
-The offline Gemma snapshot is **Reproduced: `c5ebcd40d208330abc697524c919956e692655cf`**. Its config, tokenizer, index, and all three safetensor shards are present. The offline GPT-2 snapshot is **Reproduced: `607a30d783dfa663caf39e06633721c8d4cfcd7e`**. Its config, tokenizer files, and `model.safetensors` are present. Hugging Face stores this GPT-2 checkpoint under the legacy canonical cache namespace `models--gpt2`; the scripts label the requested article model as `openai-community/gpt2` and pass TransformerLens its `gpt2` alias. Both configs and tokenizers load successfully offline: **Reproduced: `Gemma2Config` / `GemmaTokenizer`, vocabulary 256,000** and **Reproduced: `GPT2Config` / `GPT2Tokenizer`, vocabulary 50,257**.
+```sh
+cd repro && export HF_HUB_OFFLINE=1
+.venv/bin/python scripts/capture_parity.py
+.venv/bin/python scripts/steering_parity.py
+.venv/bin/python scripts/throughput_mps.py
+```
 
 ## 1. Capture parity
 
-The script implements the requested fixed English prompt, captures four points at all requested layers, and uses the exact mappings in `docs/ENGINE_HOOK_MAPPINGS.md`:
+One 29-token prompt (with BOS). Four points at five layers per model. Metrics over the whole `[1, 29, d_model]` tensor plus the last-token cosine.
 
-- `resid_post` to `blocks.L.hook_resid_post`
-- `resid_mid` to `blocks.L.hook_resid_mid`
-- raw `attn_out` to `blocks.L.attn.hook_out`
-- raw `mlp_out` to `blocks.L.mlp.hook_out`
+Matched pairings (interp-engine point ↔ TransformerLens hook):
 
-It also computes Gemma's deliberately wrong comparison, interp-engine raw `mlp_out` versus TransformerLens block-level `blocks.L.hook_mlp_out`. The mapping document says the latter is the post-sublayer-normalized residual contribution on Gemma-2, not the raw MLP module output.
+| Model | Points | Layers | Max abs diff (worst cell) | Last-token cosine (all cells) |
+|---|---|---|---:|---:|
+| gemma-2-2b | resid_post ↔ hook_resid_post, resid_mid ↔ hook_resid_mid, attn_out_post ↔ hook_attn_out, mlp_out_post ↔ hook_mlp_out | 0, 6, 13, 19, 25 | 5.3e-4 (resid_post, L25) | ≥ 0.99999 |
+| gpt2 | same four | 0, 3, 6, 9, 11 | 1.7e-4 (mlp_out_post, L3) | ≥ 0.99999 |
 
-| Model | Requested layers | Per-point shapes and metrics | Status |
-| --- | --- | --- | --- |
-| google/gemma-2-2b | 0, 6, 13, 19, 25 | No max/mean absolute differences or last-token cosines produced | Reproduced: blocked at MPS preflight |
-| openai-community/gpt2 | 0, 3, 6, 9, 11 | No max/mean absolute differences or last-token cosines produced | Reproduced: blocked at MPS preflight |
+Naive pairings (raw interp-engine point ↔ TransformerLens block-level hook):
 
-Result: [results/capture_parity.json](results/capture_parity.json).
+| Pairing | gemma L0 | L6 | L13 | L19 | L25 | gpt2 (all layers) |
+|---|---:|---:|---:|---:|---:|---:|
+| mlp_out ↔ hook_mlp_out, last-token cosine | 0.874 | 0.871 | 0.803 | 0.821 | 0.895 | 1.00000 |
+| mlp_out ↔ hook_mlp_out, max abs diff | 135 | 126 | 196 | 50 | 272 | ≤ 1.7e-4 |
+| attn_out ↔ hook_attn_out, last-token cosine | 0.829 | 0.758 | 0.712 | 0.735 | 0.791 | 1.00000 |
+| attn_out ↔ hook_attn_out, max abs diff | 53 | 38 | 15 | 22 | 158 | ≤ 9.9e-5 |
+
+Reading: where names mean the same tensor the engines agree to fp32 round-off. The naive pairing on Gemma is a plausible-looking wrong tensor (cosine 0.71–0.90) and is exact on gpt2, which has no post-sublayer norm.
 
 ## 2. Steering parity
 
-The script defines six same-frame positive/negative sentiment pairs and would construct the CAA vector as the mean of `(positive final-token resid_post - negative final-token resid_post)` in interp-engine eager. It applies the exact same raw vector times **Reproduced configuration: 4.0** at `resid_post` layer **Reproduced configuration: 13 for Gemma** and **Reproduced configuration: 6 for GPT-2**.
+CAA-style vector: mean over six sentiment contrast pairs of (positive − negative) `resid_post` at the final token, extracted with interp-engine eager. Injected at 4× the raw vector (delta norm 325 on gemma-2-2b, 144 on gpt2) from the final prompt token onward on an 11-token prompt: interp-engine `steer` with `position_mask = [0 … prompt_len−2]` (excluded prompt positions; decode tokens always steered), TransformerLens with a forward hook adding the same delta at the same positions. Greedy, 20 new tokens.
 
-interp-engine's `position_mask` is an exclusion mask, an API detail that is easy to reverse accidentally. “From the final prompt token onward” is exactly expressible: exclude prompt positions `0..prompt_len-2`; the eager steering context always steers subsequently generated positions. The TransformerLens hook implements the identical absolute-position rule. Separate fresh contexts are used for the next-token logits pass and generation because interp-engine's eager mask hook tracks consumed positions. Greedy generation is configured for 20 tokens with EOS stopping disabled.
+| Model | Point / layer | Steered next-token logits, max abs diff | Argmax equal | 20 greedy tokens equal |
+|---|---|---:|---|---|
+| gemma-2-2b | resid_post / 13 | 7.7e-5 | yes (674) | yes |
+| gpt2 | resid_post / 6 | 6.9e-5 | yes (284) | yes |
 
-| Model | Point/layer | Vector norm and delta norm | Logit diff / argmax | First 20 greedy tokens | Status |
-| --- | --- | --- | --- | --- | --- |
-| google/gemma-2-2b | resid_post / 13 | Not produced | Not produced | Not produced | Reproduced: blocked at MPS preflight |
-| openai-community/gpt2 | resid_post / 6 | Not produced | Not produced | Not produced | Reproduced: blocked at MPS preflight |
+Unsteered next-token logits also matched (max abs diff 5.5e-5 and 9.2e-5). At this strength both models produce degenerate text ("a spirit of the spirit of the spirit…"); parity holds in that regime too. The mask "from the final prompt token onward" was exactly expressible in both engines.
 
-Result: [results/steering_parity.json](results/steering_parity.json).
+## 3. Throughput on MPS
 
-## 3. MPS throughput
+128-token prompt, 64 greedy new tokens, one warm-up, three timed runs, median tokens per second. Capture at `resid_post.13` (gemma) / `resid_post.6` (gpt2). Semantics differ: interp-engine's `capture_generation` generates, then runs one recapture forward over prompt + generated; TransformerLens captures each position during KV-cached decoding; plain transformers has no hooks. Peak memory is a 2 ms sample of `torch.mps.driver_allocated_memory`.
 
-The script prepares an exact 128-token prompt, requests 64 new greedy tokens, performs one warm-up and three measured runs, synchronizes MPS around the timer, and samples `torch.mps.current_allocated_memory()` and `torch.mps.driver_allocated_memory()` every 2 ms. The selected capture layer is 13 for Gemma and 6 for GPT-2.
+| Model | Plain transformers | interp-engine eager + capture | TransformerLens + caching hook |
+|---|---:|---:|---:|
+| gemma-2-2b tok/s | 7.65 | 6.19 | 1.86 |
+| gemma-2-2b peak driver memory | 11.1 GB | 12.4 GB | 17.0 GB |
+| gpt2 tok/s | 57.8 | 85.9 | 39.6 |
+| gpt2 peak driver memory | 1.8 GB | 2.4 GB | 1.2 GB |
 
-| Model | Implementation | Requested workload | Median tokens/s | Peak memory | Status |
-| --- | --- | --- | ---: | ---: | --- |
-| google/gemma-2-2b | interp-engine eager `capture_generation` | 128 + 64 tokens, 1 warm-up + 3 runs | Not produced | Not produced | Reproduced: blocked at MPS preflight |
-| google/gemma-2-2b | TransformerLens generate + caching hook | 128 + 64 tokens, 1 warm-up + 3 runs | Not produced | Not produced | Reproduced: blocked at MPS preflight |
-| google/gemma-2-2b | plain transformers, no hooks | 128 + 64 tokens, 1 warm-up + 3 runs | Not produced | Not produced | Reproduced: blocked at MPS preflight |
-| openai-community/gpt2 | interp-engine eager `capture_generation` | 128 + 64 tokens, 1 warm-up + 3 runs | Not produced | Not produced | Reproduced: blocked at MPS preflight |
-| openai-community/gpt2 | TransformerLens generate + caching hook | 128 + 64 tokens, 1 warm-up + 3 runs | Not produced | Not produced | Reproduced: blocked at MPS preflight |
-| openai-community/gpt2 | plain transformers, no hooks | 128 + 64 tokens, 1 warm-up + 3 runs | Not produced | Not produced | Reproduced: blocked at MPS preflight |
+Reading: no laptop speedup exists or was claimed; the eager backend costs about a fifth of plain-transformers speed on gemma-2-2b for the recapture pass, and TransformerLens's decode loop is the slow path on this machine.
 
-An important interpretation detail is encoded in the script and should accompany eventual numbers: interp-engine eager `capture_generation` first generates with a KV cache and then performs one full recapture forward over `prompt + generated[:-1]`. TransformerLens captures the prefill and decode positions directly through a caching hook during KV-cached generation. Thus the requested columns price different implementation strategies, not only different hook frameworks. Plain transformers is the no-hook baseline.
+## What this does and does not show
 
-Result: [results/throughput_mps.json](results/throughput_mps.json).
-
-## Exact commands
-
-The requested initial setup commands were attempted first:
-
-```sh
-uv venv --python 3.12 .venv
-uv pip install --python .venv/bin/python 'interp-engine==1.5.1' 'transformer-lens>=3.0'
-```
-
-The first command initially failed because uv could not initialize its cache under `/Users/goga/.cache/uv` in the managed sandbox (`Operation not permitted`). Pointing uv at a workspace cache created the venv:
-
-```sh
-UV_CACHE_DIR=.uv-cache uv venv --python 3.12 .venv
-```
-
-The normal package install then failed after three retries because this session had no DNS route to `https://pypi.org/simple/transformer-lens/`. The already-present uv archives were copied into a writable workspace cache; cached wheel contents were repacked locally and installed with uv. interp-engine itself was installed into this venv from the exact read-only 1.5.1 baseline clone:
-
-```sh
-UV_CACHE_DIR=.uv-cache uv pip install --python .venv/bin/python --no-deps wheelhouse/*.whl
-UV_CACHE_DIR=.uv-cache uv pip install --python .venv/bin/python --no-build-isolation --no-deps /private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/interp-engine
-UV_CACHE_DIR=.uv-cache uv pip check --python .venv/bin/python
-```
-
-The final check returned **Reproduced: `Checked 82 packages`** and **Reproduced: `All installed packages are compatible`**. Nothing was installed into another Python environment.
-
-Device probes:
-
-```sh
-system_profiler SPDisplaysDataType
-sw_vers
-HF_HUB_OFFLINE=1 .venv/bin/python - <<'PY'
-import torch
-print(torch.__version__)
-print(torch.backends.mps.is_built())
-print(torch.backends.mps.is_available())
-print(torch.mps.device_count())
-print(torch.ones(1, device="mps"))
-PY
-```
-
-Measurement invocations, run exactly as follows:
-
-```sh
-HF_HUB_OFFLINE=1 .venv/bin/python scripts/capture_parity.py
-HF_HUB_OFFLINE=1 .venv/bin/python scripts/steering_parity.py
-HF_HUB_OFFLINE=1 .venv/bin/python scripts/throughput_mps.py
-```
-
-Each returned **Reproduced: exit status 2** after writing its JSON result, meaning “blocked at required device preflight.” Syntax validation passed:
-
-```sh
-.venv/bin/python -m py_compile scripts/common.py scripts/capture_parity.py scripts/steering_parity.py scripts/throughput_mps.py
-```
-
-## What this evidence does and does not show
-
-It shows, first-hand and reproduced, that this execution sandbox cannot expose the Mac's Metal GPU to either tested PyTorch MPS build, despite the host reporting Metal support. It also verifies the exact software environment, offline model snapshots, hook mapping choices, steering mask semantics, and runnable measurement implementations.
-
-It does **not** provide evidence for hook-point numerical parity, steering numerical/text parity, or MPS throughput. There are no model-derived numerical claims to publish from this run. Running the same three commands from a process where `torch.backends.mps.is_available()` is true is required before using the article's intended claims. The scripts intentionally refuse CPU substitution so a blocked MPS run cannot be mistaken for Apple GPU evidence.
-
-## API surprises and errors
-
-1. Gemma's raw-output mapping is non-obvious: interp-engine `mlp_out` maps to `blocks.L.mlp.hook_out`; `blocks.L.hook_mlp_out` is a different, post-sublayer-normalized tensor by design.
-2. `steer(..., position_mask=...)` takes positions to exclude, not positions to include. The requested mask is nevertheless exactly expressible.
-3. interp-engine eager `capture_generation` is generate-then-recapture; it is not an eager decode-time capture hook. Throughput comparisons must state that extra full forward.
-4. The managed session denied uv's normal cache initialization and had no PyPI DNS route. Cached artifacts and the pinned local source clone were used without reading credentials or any `.env` file.
-5. The blocking MPS traceback is summarized in all three JSONs. No model-specific traceback exists because the shared device preflight correctly stopped before loading weights.
-
-## Uncertainty
-
-The precise reason Metal is invisible remains unresolved. The evidence is consistent with sandbox GPU/Metal restrictions, but the PyTorch exception text presents it as an OS-version check even on macOS 26.5.2. Because no unsandboxed command execution was available, that distinction could not be tested. The measurement scripts have been syntax-checked but their model-forward paths could not be runtime-validated here.
-
-Execution assignment: **Reproduced: model `gpt-5.6-sol`, reasoning effort `high`**.
-
-Files created:
-
-- [REPORT.md](/private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/repro/REPORT.md)
-- [capture_parity.py](/private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/repro/scripts/capture_parity.py)
-- [steering_parity.py](/private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/repro/scripts/steering_parity.py)
-- [throughput_mps.py](/private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/repro/scripts/throughput_mps.py)
-- [common.py](/private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/repro/scripts/common.py)
-- [capture_parity.json](/private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/repro/results/capture_parity.json)
-- [steering_parity.json](/private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/repro/results/steering_parity.json)
-- [throughput_mps.json](/private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/repro/results/throughput_mps.json)
-- `.gitignore`
-- `.venv/` isolated Python environment
+It shows first-hand that on Apple Silicon the eager backend matches `HookedTransformer` on the residual and contribution points at fp32, that steering arithmetic matches a hand-written hook, and that the naming trap the maintainers describe is large on Gemma-2 and absent on gpt2. It does not test the vLLM backends (CUDA only), fp16 or bf16 behaviour, attention-matrix points, more than one prompt, or prompts longer than 128 tokens. Two runs are a demonstration, not the fp16 four-layer sweep proposed in `03` as a verdict-changing test.
