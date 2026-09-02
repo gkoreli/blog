@@ -2,20 +2,19 @@
 
 Judged by the editor from deterministic Playwright captures of the built page (`dist/oss-radar-06-interp-engine/`), dark theme, fonts loaded, animations seeked by `currentTime`. Screenshots lived in the session scratchpad and were not committed.
 
-## Preamble (AddressBoardHero)
+## Preamble, revision 1 (AddressBoardHero, rejected)
 
-Desktop 1280×900, frames at 0 ms, 2,600 ms, 3,400 ms, 5,500 ms, and reduced motion:
+A labelled block schematic with a TransformerLens ledger was implemented, verified at desktop and mobile, and rejected by the owner on 2026-09-01 as too literal for this publication's register ("more abstract, like the other posts"). Component removed. The desktop capture had read cleanly; the first mobile capture overlapped and was fixed before rejection. Kept here as the record of what was tried.
 
-- Pills, kicker, two-line title with the italic accent on "Tensor", subtitle, byline, and the research-artifacts link fit above the board in the first frame.
-- The board reads as one Gemma-2 block: a vertical residual spine with three spine taps, two branches drawn as norm → sublayer → post norm → add, and nine named taps in monospace. Leader lines join each translated tap to its row in the "TransformerLens says" ledger. No hook string wraps.
-- At 3,400 ms the argument row shows `blocks.4.hook_mlp_out` with the ≠ glyph, the warm caption "same name, different tensor", and a leader to the raw `mlp_out.4` tap. At 5,500 ms the leader has moved to `mlp_out_post.4`, the glyph is ✓, the caption reads "residual contribution", and the legend "34 points · one name each · checked against TransformerLens and nnsight" is visible.
-- Reduced motion renders the final state with every tap lit and the single line `hook_mlp_out → mlp_out_post`.
-- Restraint check: two accent colours (section accent and link colour), the mismatch state in the warm accent, no glow, no particles; the `::before` radial treatment matches the Bun hero.
+## Preamble, revision 2 (OssRadarHero + split canvas)
 
-Mobile 390×844 and 320 wide, same frames:
+Judged from deterministic captures at 1280×900 (dark and light) and 390×844, using `data-seed=6` and `data-t` at 0, 2,900 and 4,500 ms, plus reduced motion:
 
-- First implementation (percentage-positioned diagram) collided: `mlp_out_post.4` sat on the MLP box and translations ran into the attention box. Rejected.
-- Second implementation switches below 720 px to normal-flow rows: spine taps on a vertical line, branches indented, each norm, sublayer, post-norm and add step on its own row, translations under their tap labels, argument states stacked. No overlaps at 390 or 320; the board is taller than one phone viewport and scrolls, which is acceptable for a preamble.
+- The shell is the same glass card, pills, kicker, title, subtitle and byline as issues #03 and #04; the issue #04 page was captured before and after the change and is unchanged.
+- Title renders in three lines with the accent on "Tested on a Mac". Long, and it fits inside the card at 1280 and wraps cleanly at 390.
+- At rest the field reads as the `flow` constellation. At the pulse peak five twin links show a blue and a rust strand parting by a few pixels with the far-end node glowing in the strand colour; two of the five sit in the visible margins on desktop. After the pulse the strands settle with a hairline gap. Nothing in the canvas is text or a box.
+- Reduced motion shows the static residual frame. Two captures at the same seed and time were byte-identical.
+- Restraint: no new colours beyond the theme's blue and rust accents; the effect is easy to miss unless the pulse is passing, which is the intended register.
 
 ## Article body
 
@@ -28,8 +27,8 @@ Element captures at 1280 and 390:
 - Throughput table: three rows, three engine columns.
 - Callout, pull quote, section break and the Sources grid render in the shared styles with no empty cells.
 
-Body word count from the rendered page, excluding Sources: 2,722. readTime 14 min (200 wpm, rounded up).
+Body word count from the rendered page, excluding Sources, after the opening restructure and fact-check pass: 3,349. readTime 17 min (200 wpm, rounded up).
 
 ## X clip
 
-Captured 256 frames at 40 fps over 6.4 s from the built page at 1200×1200 in the dark theme, plus 16 blended seam frames back to frame 0. Encoded with the launch skill's script: H.264 MP4, 1200×1200, 40 fps, 6.8 s, yuv420p, 307 KB; GIF fallback 900×900, 16.7 fps, 805 KB. Frame checks at 3.3 s and 6.5 s: title, board, ≠ caption and the resolved ✓ are legible at full size; at phone width the title and the mismatch beat read and the hook strings do not, as expected for this canvas.
+Revision 2 clip: 256 frames at 40 fps over 6.4 s from the built page at 1200×1200, one page load per frame with the seek attributes, plus 16 blended seam frames back to frame 0. Encoded with the launch skill's script to H.264 MP4 (1200×1200, 40 fps, yuv420p) and a GIF fallback (900×900). Frame checks at the pulse peak and at rest: title legible at full size; the rust strands survive as a warm tint at phone width.

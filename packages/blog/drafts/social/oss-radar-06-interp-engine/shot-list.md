@@ -1,18 +1,20 @@
-# Shot list: preamble capture for X
+# Shot list: preamble capture for X (revision 2)
 
-Source: the built article page, `AddressBoardHero`, captured deterministically by seeking `document.getAnimations()` after `document.fonts.ready`. Canvas 1200×1200, 40 fps, MP4 master plus GIF fallback. Capture the figure region (the board plus the title block above it), not the whole viewport, so the hook strings stay legible after X recompression.
+Source: the built article page, `OssRadarHero` with `canvasMode: 'split'` and `canvasSeed: 6`, captured deterministically: one page load per frame with `data-seed=6` and `data-t=<ms>` set on `nisli-neural-canvas` before it mounts, CSS animations seeked to the same time. Canvas 1200×1200, 40 fps, dark theme. MP4 master plus GIF fallback.
+
+The visual is abstract by design: a sparse constellation behind the glass card. Five links are twins, a blue strand and a rust strand leaving the same node. When the pulse passes they separate by a few pixels, hold, and settle back with a hairline gap left. Nothing in the frame is labelled; the title carries the words.
 
 | Time | State | Reader learns | Motion | Hold |
 |---:|---|---|---|---:|
-| 0.00 s | Title, kicker, block outline, taps dim | the subject: same hook name, different tensor | none | 250 ms |
-| 0.30–2.60 s | taps light in forward order; ledger rows tick | where hooks sit on a forward pass; every point has one translation | spine pulse, staggered rows | — |
-| 2.90 s | `blocks.4.hook_mlp_out` leader lands on raw `mlp_out`, glyph ≠, caption "same name, different tensor" | the trap | leader draw | 1,200 ms |
-| 4.10 s | leader swings to `mlp_out_post`, glyph ✓, caption "residual contribution" | the fix | leader swing | — |
-| 5.00 s | legend "34 points · one name each · checked against TransformerLens and nnsight" | the scope | fade | 1,000 ms |
-| 6.00 s | end; loop seam back to 0.00 s | | cross-fade over 400 ms | |
+| 0.0 s | Card with title "interp-engine, Neuronpedia's New Interpretability Engine, Tested on a Mac"; constellation at rest; twins read as single links | the subject | card entrance (CSS) | 300 ms |
+| 0.3–2.4 s | pulse travels left to right; nodes brighten in its wake | there is a current through the field | pulse | — |
+| 2.5–3.1 s | twins separate at the pulse: blue and rust strands part, far-end nodes glow | one line was two | ease-in 600 ms, hold 120 ms | — |
+| 3.1–4.5 s | strands ease back; a hairline gap remains | they do not fully rejoin | ease-out 1,400 ms | — |
+| 4.5–6.4 s | field at rest with residual gaps; title readable | the takeaway holds | none | 1,900 ms |
+| 6.4 s | cross-fade to frame 0 over 400 ms | | loop seam | |
 
-Total: about 6.4 s per loop. Poster frame: 0.00 s must show the title and the block outline so the post works with autoplay off.
+Poster frame: 0.0 s shows the title and the field, so the post works with autoplay off.
 
-Quality gates: no clipped hook strings; no scrollbars or cursor; check the ≠ glyph and the warm caption survive H.264 at phone width; muted comprehension (no sound).
+Quality gates: no clipped title lines; no scrollbars or cursor; the rust strands must survive H.264 at phone width as a visible warm tint even if the separation itself is too small to read there; muted comprehension.
 
-Alt text: "Animated diagram of one Gemma-2 decoder block. Named hook points light up along the residual stream; a ledger shows each TransformerLens hook name. The name hook_mlp_out first attaches to the raw MLP output and is marked as a different tensor, then moves to the post-norm output and is checked."
+Alt text: "A dark constellation of dots and thin lines behind a card titled 'interp-engine, Neuronpedia's New Interpretability Engine, Tested on a Mac'. A pulse crosses the field; a few links briefly split into a blue strand and an orange strand from the same point, then settle back with a small gap."
