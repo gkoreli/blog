@@ -1,15 +1,15 @@
-# X thread copy (draft; numbers to be rechecked against the published article)
+# X thread copy (numbers rechecked against the live article, 2026-09-02; revised against the X baseline in metrics.md)
 
 Thread of four posts. Post 1 carries the clip and the link. Character counts to verify against X's ordinary limit before posting.
 
 ## 1 — main claim + media + link
 
 ```text
-On a Gemma-2 block, TransformerLens's hook_mlp_out and the raw MLP output are two different tensors with one name.
+Neuronpedia's server fed a Gemma Scope SAE the wrong tensor for a while. Nothing raised. The SAE returned zeros.
 
-Neuronpedia's server once fed a Gemma Scope SAE the wrong one. Nothing raised. The SAE returned zeros.
+The cause: on a Gemma-2 block, two tools give one hook name (hook_mlp_out) to two different tensors.
 
-I audited interp-engine, their new engine, and ran it on my Mac.
+interp-engine is the maintainers' fix. I audited the code and ran it on my M5 MacBook Pro.
 
 https://gkoreli.com/oss-radar-06-interp-engine
 ```
@@ -19,9 +19,9 @@ Media: the preamble loop (MP4). Alt text from shot-list.md.
 ## 2 — personal stake
 
 ```text
-I care because my own research harness reads gemma-2-2b through TransformerLens on Apple Silicon. Every number I have depends on reading the tensor I think I'm reading.
+My own research harness reads gemma-2-2b through TransformerLens on this Mac. Every number I have depends on reading the tensor I think I'm reading.
 
-So I paired the names the naive way on my machine. Last-token cosine on layer 0: 0.87, and between 0.80 and 0.90 on every layer I checked. On gpt2, the same pairing: 1.00000.
+So I paired the names the naive way. Last-token cosine on layer 0: 0.87, and between 0.80 and 0.90 on every layer I checked. Same pairing on gpt2: 1.00000. A tensor that looks right and is wrong.
 ```
 
 ## 3 — surprising evidence
@@ -35,13 +35,17 @@ The speed claim is a different story: "40x" is eight concurrent requests on a B2
 ## 4 — bounded verdict
 
 ```text
-Verdict: use it in a CUDA serving stack, and use its hook-name mapper in any harness that consumes someone else's SAE or lens. Wait if you need gradients, patching, or a laptop speedup.
+Use it in a CUDA serving stack, and use its hook-name mapper in any harness that consumes someone else's SAE or lens. Wait if you need gradients, patching, or a laptop speedup.
 
-Reproduction scripts and the claim table are in the article. Tell me what I got wrong.
+Scripts and the claim table are in the article. Which tensor is your SAE trained on, and how do you know?
 ```
 
 Optional 5: bare link so X renders the page card. Only if post 1's card fails to render.
 
 ## Reply invitation
 
-"Which tensor is your SAE trained on, and how do you know?" folded into post 4 as "Tell me what I got wrong." Keep one question, not two.
+Post 4 ends on the one specific question. The baseline (metrics.md) shows the only originals with three or more replies asked something concrete; a generic "tell me what I got wrong" was dropped.
+
+## After posting
+
+One on-topic reply under the interp-engine announcement post with the parity result (5.3e-4 at fp32, bit-identical at fp16 on a Mac) and the fp16 loader crash. Replies to large accounts reach five to fifteen times an original on this account. No hashtags.
