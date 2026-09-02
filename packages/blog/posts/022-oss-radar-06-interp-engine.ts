@@ -108,7 +108,7 @@ export function article() {
     <li>
       <strong>The mistake is easy to make, and I measured it.</strong> On gemma-2-2b, the raw MLP output and the tensor
       TransformerLens calls <code>hook_mlp_out</code> agree at cosine 0.87: wrong, and plausible. On gpt2 they are
-      identical, which is how code tested on one model carries the bug to the other.
+      identical, which is how code tested on one model is wrong on the other.
     </li>
     <li>
       <strong>Where the names match, the engines agree.</strong> On my Mac, interp-engine and TransformerLens differ
@@ -139,7 +139,7 @@ export function article() {
     The reason a wrong number survives is that nothing crashes. A model is a stack of layers with places between
     them where you can tap the numbers passing through. One common workflow reads a tap and trains a small model on
     it, a sparse autoencoder, that turns those numbers into features a person can name. The autoencoder learns one
-    tap. Feed it the tap next door and it returns something with the right shape and the wrong meaning, and the
+    tap. Feed it a different tap from the same block and it returns something with the right shape and the wrong meaning, and the
     charts downstream still look valid. Which tap a name points to depends on the model family, so code that was
     correct on Llama reads the wrong tap on Gemma without a warning.
   </p>
@@ -281,7 +281,7 @@ export function article() {
       The validator README says "50+ models." The committed table has 35 rows and the same page counts 31 verified
       architectures with 46 unaudited. Ordinary CI scores those committed files without loading weights, runs gpt2
       parity on CPU, two sub-billion models, and one L4 job with real vLLM. The full cross-engine sweep is a manual
-      workflow on self-hosted hardware, so a green cell carries the engine and vLLM version it was made with, not
+      workflow on self-hosted hardware, so a green cell records the engine and vLLM version it was made with, not
       today's.
     </p>`,
   })}
@@ -380,7 +380,7 @@ export function article() {
   <p>
     A cosine of 0.87 is the kind of wrong that goes unnoticed: far from random, with the right shape, and nothing
     downstream refuses it. On gpt2 the same
-    naive pairing is exact, which is why code that was tested on gpt2 carries the bug to Gemma without noticing.
+    naive pairing is exact, which is why code that was tested on gpt2 is wrong on Gemma without noticing.
     The maximum absolute difference on the naive gemma rows runs from 15 to 272; on the matched rows it never
     passes 0.001.
   </p>
@@ -488,7 +488,7 @@ export function article() {
     items: [
       {
         claim: 'interp-engine repository at the audited commit, Apache-2.0, 34 points, benchmark table',
-        why: 'Every interp-engine code claim in this issue is pinned to this commit; the README carries the throughput table the headline is read against.',
+        why: 'Every interp-engine code claim in this issue is pinned to this commit; the README contains the throughput table the headline is read against.',
         ref: 'decoderesearch/interp-engine @ 7471609',
         url: `${AT}/README.md`,
       },

@@ -2,7 +2,7 @@
 
 Source: the built article page, `OssRadarHero` with `canvasMode: 'split'` and `canvasSeed: 6`, captured deterministically: one page load per frame with `data-seed=6` and `data-t=<ms>` set on `nisli-neural-canvas` before it mounts, CSS animations seeked to the same time. Canvas 1200×1200, 40 fps, dark theme. MP4 master plus GIF fallback.
 
-The visual is abstract by design: a sparse constellation behind the glass card. Five links are twins, a blue strand and a rust strand leaving the same node. When the pulse passes they separate by a few pixels, hold, and settle back with a hairline gap left. Nothing in the frame is labelled; the title carries the words.
+The visual is abstract by design: a sparse constellation behind the glass card. Five links are twins, a blue strand and a rust strand leaving the same node. When the pulse passes they separate by a few pixels, hold, and settle back with a hairline gap left. Nothing in the frame is labelled; the title supplies the words.
 
 | Time | State | Reader learns | Motion | Hold |
 |---:|---|---|---|---:|

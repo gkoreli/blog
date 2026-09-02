@@ -1,6 +1,6 @@
 # X thread copy (numbers rechecked against the live article, 2026-09-02; revised against the X baseline in metrics.md)
 
-Thread of four posts. Post 1 carries the clip and the link. Character counts to verify against X's ordinary limit before posting.
+Thread of four posts. Post 1 holds the clip and the link. Character counts to verify against X's ordinary limit before posting.
 
 ## 1 — main claim + media + link
 
@@ -29,7 +29,7 @@ So I paired the names the naive way. Last-token cosine on layer 0: 0.87, and bet
 ```text
 Where the names mean the same tensor, interp-engine's eager backend and TransformerLens agree to 5.3e-4 at fp32 on MPS. At fp16, against plain transformers hooks, it matched bit for bit across 1,608 comparisons and 24 generations.
 
-The speed claim is a different story: "40x" is eight concurrent requests on a B200 with fixed taps. One stream is 6.9x. On a Mac you get the parity table, not the speed.
+The speed claim is narrower. "40x" is eight concurrent requests on a B200 with fixed taps. One stream is 6.9x. On a Mac you get the parity table, not the speed.
 ```
 
 ## 4 — bounded verdict

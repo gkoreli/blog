@@ -16,10 +16,10 @@ Neuronpedia's own server once fed a Gemma Scope SAE the wrong tensor because two
 claim → visual proof → reader consequence
 
 - Claim: on a Gemma-2 block, `hook_mlp_out` names the post-norm contribution, not the raw MLP output; pair them naively and you get a tensor at cosine 0.87 that looks right and is wrong.
-- Visual proof: the preamble animation, abstract by design (revision 2, after the owner rejected a labelled schematic). A sparse constellation behind the glass card; five links are twins, a blue and a rust strand from one node, that separate when the pulse passes and settle back with a hairline gap. The title carries the words; the motion carries the feeling that one line was two.
+- Visual proof: the preamble animation, abstract by design (revision 2, after the owner rejected a labelled schematic). A sparse constellation behind the glass card; five links are twins, a blue and a rust strand from one node, that separate when the pulse passes and settle back with a hairline gap. The title supplies the words; the motion shows that one line was two.
 - Reader consequence: if you consume anyone else's hook names (an SAE, a transcoder, a lens), translate them through a model-aware mapper before you trust a number.
 
-The number that carries the post is 0.87: the last-token cosine between the two tensors on gemma-2-2b layer 0 measured on my Mac (0.80 to 0.90 across the five layers checked), against 1.00000 on gpt2 for the same pairing.
+The number the post depends on is 0.87: the last-token cosine between the two tensors on gemma-2-2b layer 0 measured on my Mac (0.80 to 0.90 across the five layers checked), against 1.00000 on gpt2 for the same pairing.
 
 ## Evidence
 

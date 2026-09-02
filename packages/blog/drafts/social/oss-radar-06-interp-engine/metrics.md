@@ -32,8 +32,8 @@ Replies to large accounts reach five to fifteen times an original (360, 299, 146
 2. Keep the link in post one. Link posts produced every URL click in the window; there is no evidence that withholding the link helps this account.
 3. Put the strongest number and the owner's machine in posts one and two. Post three onward is read by a fifth of the audience.
 4. End with one specific question, not a verdict. The only originals with three or more replies asked something concrete.
-5. Skip hashtags; #BuildInPublic did not move impressions.
-6. After posting, one on-topic reply under the interp-engine announcement post is worth more reach than any second original. That is a reply with the reproduction result, not a link drop.
+5. Skip hashtags; #BuildInPublic did not raise impressions.
+6. After posting, one on-topic reply under the interp-engine announcement post is worth more reach than any second original. That is a reply with the reproduction result, not a bare link.
 
 Success signal stays as in the launch brief: a reply or correction from the maintainers, a reshare from the interpretability community, or someone running the scripts.
 
