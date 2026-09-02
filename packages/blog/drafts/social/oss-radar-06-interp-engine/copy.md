@@ -21,13 +21,13 @@ Media: the preamble loop (MP4). Alt text from shot-list.md.
 ```text
 I care because my own research harness reads gemma-2-2b through TransformerLens on Apple Silicon. Every number I have depends on reading the tensor I think I'm reading.
 
-So I paired the names the naive way on my machine. Last-token cosine on layer 4: 0.87. On gpt2, the same pairing: 1.00000.
+So I paired the names the naive way on my machine. Last-token cosine on layer 0: 0.87, and between 0.80 and 0.90 on every layer I checked. On gpt2, the same pairing: 1.00000.
 ```
 
 ## 3 — surprising evidence
 
 ```text
-Where the names mean the same tensor, interp-engine's eager backend and TransformerLens agree to 5e-4 at fp32 on MPS, across 40 comparisons.
+Where the names mean the same tensor, interp-engine's eager backend and TransformerLens agree to 5.3e-4 at fp32 on MPS. At fp16, against plain transformers hooks, it matched bit for bit across 1,608 comparisons and 24 generations.
 
 The speed claim is a different story: "40x" is eight concurrent requests on a B200 with fixed taps. One stream is 6.9x. On a Mac you get the parity table, not the speed.
 ```

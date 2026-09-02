@@ -1,0 +1,63 @@
+ng weights:   0%|          | 1/288 [00:00<01:30,  3.19it/s]ng weights:   9%|▉         | 26/288 [00:00<00:04, 59.67it/s]ng weights:  17%|█▋        | 48/288 [00:00<00:04, 58.40it/s]ng weights:  24%|██▍       | 69/288 [00:01<00:04, 48.17it/s]ng weights:  32%|███▏      | 91/288 [00:01<00:04, 47.76it/s]ng weights:  39%|███▉      | 113/288 [00:02<00:03, 46.33it/s]ng weights:  47%|████▋     | 135/288 [00:02<00:02, 52.86it/s]ng weights:  55%|█████▍    | 157/288 [00:03<00:03, 43.07it/s]ng weights:  62%|██████▏   | 179/288 [00:03<00:02, 47.46it/s]ng weights:  70%|██████▉   | 201/288 [00:04<00:01, 45.74it/s]ng weights:  77%|███████▋  | 223/288 [00:04<00:01, 50.53it/s]ng weights:  85%|████████▌ | 245/288 [00:05<00:00, 52.38it/s]ng weights:  93%|█████████▎| 267/288 [00:05<00:00, 54.26it/s]ng weights: 100%|██████████| 288/288 [00:05<00:00, 49.94it/s]
+ng weights:   0%|          | 1/288 [00:08<38:59,  8.15s/it]ng weights: 100%|██████████| 288/288 [00:09<00:00, 29.36it/s]
+[2026-09-02T15:03:11.730853+00:00] gemma-2-2b: prompt 1/8 at 64 tokens
+[2026-09-02T15:03:30.154074+00:00] gemma-2-2b: prompt 2/8 at 64 tokens
+[2026-09-02T15:03:38.651335+00:00] gemma-2-2b: prompt 3/8 at 64 tokens
+[2026-09-02T15:03:47.512515+00:00] gemma-2-2b: prompt 4/8 at 64 tokens
+[2026-09-02T15:03:55.917369+00:00] gemma-2-2b: prompt 5/8 at 64 tokens
+[2026-09-02T15:04:05.780432+00:00] gemma-2-2b: prompt 6/8 at 64 tokens
+[2026-09-02T15:04:16.710555+00:00] gemma-2-2b: prompt 7/8 at 64 tokens
+[2026-09-02T15:04:26.088481+00:00] gemma-2-2b: prompt 8/8 at 64 tokens
+[2026-09-02T15:04:35.151631+00:00] gemma-2-2b: prompt 1/8 at 512 tokens
+[2026-09-02T15:04:53.116857+00:00] gemma-2-2b: prompt 2/8 at 512 tokens
+[2026-09-02T15:05:11.359591+00:00] gemma-2-2b: prompt 3/8 at 512 tokens
+[2026-09-02T15:05:29.328968+00:00] gemma-2-2b: prompt 4/8 at 512 tokens
+[2026-09-02T15:05:45.108863+00:00] gemma-2-2b: prompt 5/8 at 512 tokens
+[2026-09-02T15:06:00.728553+00:00] gemma-2-2b: prompt 6/8 at 512 tokens
+[2026-09-02T15:06:18.158341+00:00] gemma-2-2b: prompt 7/8 at 512 tokens
+[2026-09-02T15:06:35.478763+00:00] gemma-2-2b: prompt 8/8 at 512 tokens
+[2026-09-02T15:06:51.409309+00:00] gemma-2-2b: prompt 1/8 at 2048 tokens
+[2026-09-02T15:10:19.079113+00:00] gemma-2-2b: prompt 2/8 at 2048 tokens
+[2026-09-02T15:14:05.721361+00:00] gemma-2-2b: prompt 3/8 at 2048 tokens
+[2026-09-02T15:19:11.516015+00:00] gemma-2-2b: prompt 4/8 at 2048 tokens
+[2026-09-02T15:23:15.398114+00:00] gemma-2-2b: prompt 5/8 at 2048 tokens
+[2026-09-02T15:28:07.021872+00:00] gemma-2-2b: prompt 6/8 at 2048 tokens
+[2026-09-02T15:32:58.440650+00:00] gemma-2-2b: prompt 7/8 at 2048 tokens
+[2026-09-02T15:37:46.546778+00:00] gemma-2-2b: prompt 8/8 at 2048 tokens
+ng weights: 100%|██████████| 148/148 [00:00<00:00, 880.40it/s]
+ng weights: 100%|██████████| 148/148 [00:00<00:00, 5939.97it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1216 > 1024). Running this sequence through the model will result in indexing errors
+[2026-09-02T15:42:16.671432+00:00] gpt2: prompt 1/8 at 64 tokens
+[2026-09-02T15:42:19.773849+00:00] gpt2: prompt 2/8 at 64 tokens
+[2026-09-02T15:42:21.162950+00:00] gpt2: prompt 3/8 at 64 tokens
+[2026-09-02T15:42:22.376594+00:00] gpt2: prompt 4/8 at 64 tokens
+[2026-09-02T15:42:23.672275+00:00] gpt2: prompt 5/8 at 64 tokens
+[2026-09-02T15:42:24.922164+00:00] gpt2: prompt 6/8 at 64 tokens
+[2026-09-02T15:42:26.548132+00:00] gpt2: prompt 7/8 at 64 tokens
+[2026-09-02T15:42:28.328441+00:00] gpt2: prompt 8/8 at 64 tokens
+[2026-09-02T15:42:29.950053+00:00] gpt2: prompt 1/8 at 512 tokens
+[2026-09-02T15:42:32.981101+00:00] gpt2: prompt 2/8 at 512 tokens
+[2026-09-02T15:42:35.618975+00:00] gpt2: prompt 3/8 at 512 tokens
+[2026-09-02T15:42:38.190791+00:00] gpt2: prompt 4/8 at 512 tokens
+[2026-09-02T15:42:40.724529+00:00] gpt2: prompt 5/8 at 512 tokens
+[2026-09-02T15:42:43.248934+00:00] gpt2: prompt 6/8 at 512 tokens
+[2026-09-02T15:42:45.985281+00:00] gpt2: prompt 7/8 at 512 tokens
+[2026-09-02T15:42:48.713787+00:00] gpt2: prompt 8/8 at 512 tokens
+# fp16 eager parity sweep
+
+Status: **completed** · Overall verdict: **FAIL**
+
+| Model | Points × layers coverage | Worst max-abs | Worst min-cosine | Mean cosine | Non-finite (IE/plain) | Generation match | Median tok/s (IE/plain, 512) | Peak Metal driver (IE/plain) | Verdict |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| gemma-2-2b | 67 addresses; 1608/1608 rows | 0 | 1 | 1 | 8290 / 8290 | 24/24 | 4.129 / 7.874 | 13.33 GiB / 13.34 GiB | FAIL |
+| gpt2 | 63 addresses; 1008/1008 rows | 0 | 1 | 1 | 339272 / 339272 | 16/16 | 34.88 / 44.49 | 1.62 GiB / 1.62 GiB | FAIL |
+
+Pass marks: exact shape and same dtype for every row; max absolute error ≤ 0.002; mean cosine ≥ 0.9999; every token-position cosine ≥ 0.99; zero non-finite values; and exact IDs for all generated tokens.
+
+Plain-side recompute: only `attn_scores`, from the Q/K tensors passed to Transformers' documented eager-attention interface after RoPE/cache update. The recompute applies the family call's scale, grouped-query expansion, Gemma softcap, and additive mask. `attn_probs` is the tensor returned by that family eager implementation; all other points are module I/O hooks.
+
+Scoped deviations:
+
+- gemma-2-2b: interp-engine load_model(device='mps', dtype='float16') hands transformers device_map='mps'; on this machine (torch 2.13.0, transformers 5.14.1, macOS 26.5.2, Apple M5) that streamed bf16->fp16 load segfaults in transformers core_model_loading._materialize_copy (or hangs). The sweep therefore loads interp-engine's eager model on CPU in float16 and moves hf_model to MPS afterwards; EagerModel.device derives from the parameters, so capture and generation then run on MPS. The fp32 direct-to-MPS path used by the earlier scripts was unaffected.
+- gpt2: interp-engine load_model(device='mps', dtype='float16') hands transformers device_map='mps'; on this machine (torch 2.13.0, transformers 5.14.1, macOS 26.5.2, Apple M5) that streamed bf16->fp16 load segfaults in transformers core_model_loading._materialize_copy (or hangs). The sweep therefore loads interp-engine's eager model on CPU in float16 and moves hf_model to MPS afterwards; EagerModel.device derives from the parameters, so capture and generation then run on MPS. The fp32 direct-to-MPS path used by the earlier scripts was unaffected.
+- gpt2: GPT-2's 1024-position checkpoint cannot run a 2048-token control without changing the model; that length is excluded.

@@ -54,6 +54,9 @@ interp-engine is Neuronpedia's production inference engine, released under Apach
 | Repo: first commit 2026-08-20 "1.3.3"; 31 commits; 13 with Cursor co-author trailers; 7 releases in 12 days; one human author | git | `git log`, `shortlog`, `tag` | Reproduced | agent-assisted, share unknown | provenance |
 | MPS parity: matched points agree to max abs 5.3e-4 (gemma-2-2b) / 1.7e-4 (gpt2), cosine ≥0.99999; naive pairing on gemma cosine 0.71–0.90, exact on gpt2; steering logits max abs 7.7e-5, argmax and 20 greedy tokens equal; throughput gemma 7.65 / 6.19 / 1.86 tok/s (plain / interp-engine / TL) | (author) | `04` and `repro/results/*.json` | Reproduced | none | the provable-wrong claim held |
 
+| fp16 eager on MPS matches plain transformers hooks bit for bit: gemma-2-2b 19 points × 4 layers × 24 prompts (1,608 rows), max abs 0, 24/24 generations; gpt2 control identical; only masked attn_scores are non-finite, identically on both sides | (author) | `04` §4, `repro/results/fp16_sweep.json` | Reproduced | none | the article's own verdict-changing test, passed |
+| interp-engine fp16 direct-to-MPS load segfaults or hangs (transformers threaded materialization with device_map='mps'); CPU load then move works | (author) | `repro/results/logs-interp-engine-fp16-mps-load-segfault.txt` | Reproduced | transformers/torch-MPS interaction, not an engine arithmetic bug | adoption caveat for Mac users; upstream report |
+
 ## Theory map
 
 | Theory | Whose view | Evidence for | Evidence against | Direction state | What would disprove it |

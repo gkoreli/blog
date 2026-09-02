@@ -78,7 +78,7 @@ export function preamble() {
     title: html`<h1>interp-engine, Neuronpedia's New Interpretability Engine, <em>Tested on a Mac</em></h1>`,
     subtitle: 'Two tensors shared one hook name. The new engine names them apart and checks the names; I checked it on Apple Silicon.',
     author: 'Goga Koreli',
-    readTime: '17 min read',
+    readTime: '20 min read',
     canvasMode: 'split',
     canvasSeed: 6,
     footprint: {
@@ -112,8 +112,9 @@ export function article() {
     </li>
     <li>
       <strong>Where the names match, the engines agree.</strong> On my Mac, interp-engine and TransformerLens differ
-      by at most 5.3e-4 across twenty comparisons, and a steering vector pushed through either produces the same twenty
-      tokens.
+      by at most 5.3e-4 across twenty fp32 comparisons, a steering vector pushed through either produces the same
+      twenty tokens, and at fp16 interp-engine matched plain transformers hooks bit for bit across 1,608 comparisons
+      and 24 generations.
     </li>
     <li>
       <strong>"Over 40x" is eight concurrent requests on a datacenter GPU with fixed taps.</strong> One stream is
@@ -419,6 +420,26 @@ export function article() {
   </p>
 
   <p>
+    The earlier draft of this article named one test that would move Apple Silicon from "unverified" to "verified for
+    that configuration," so I ran it. At fp16 on this M5, against plain transformers hooks as the independent
+    comparator, with eight prompts at each of 64, 512 and 2,048 tokens, every applicable point at layers 0, 13, 19
+    and 25, and 32 greedy tokens per prompt: 19 points on gemma-2-2b, 1,608 comparisons, maximum absolute difference
+    0, every position cosine 1.0, 24 of 24 generations identical. The gpt2 control, 18 points and 1,008 comparisons,
+    was identical too. The only values that were not finite were the masked positions in <code>attn_scores</code>,
+    which both sides set to negative infinity in the same 8,290 places. Runtime was 40 minutes; peak Metal memory
+    13.3 GB on both sides.
+  </p>
+
+  <p>
+    The test found one defect on the way. Asking interp-engine for fp16 on MPS hands transformers a
+    <code>device_map</code> of <code>mps</code>, and on this machine that streamed load of a bf16 checkpoint into fp16
+    crashed with a segmentation fault inside transformers' threaded weight materialization, or hung. The fp32 load
+    through the same path had worked all evening. Loading on the CPU and moving the model afterwards works, and
+    because the engine reads its device from the parameters, capture and generation then run on MPS. That is the
+    route the sweep took, it is recorded beside the results, and it is the first thing I would report upstream.
+  </p>
+
+  <p>
     What changed in my harness is small and specific. My vectors come from <code>resid_post</code>, which is the
     one name every engine agrees on, so the mistake was not in my extraction. It is waiting in the next phase, where I
     move from raw directions to a Gemma Scope SAE basis and the SAE's declared hook is exactly the kind of name that
@@ -432,24 +453,24 @@ export function article() {
     Try it now if you serve capture or residual steering to many concurrent callers on Linux with a CUDA card, you
     can fix the taps you need, and you can pin the whole stack and replay parity before upgrades. The verified
     configurations are Qwen3-4B on an A40 and a B200. Try the eager backend now if you consume block-level hook
-    names from someone else's SAE, transcoder or lens and want a mapper that refuses to guess.
+    names from someone else's SAE, transcoder or lens and want a mapper that refuses to guess. Try it on Apple
+    Silicon for correctness: at fp16 it matched plain transformers bit for bit on gemma-2-2b and gpt2 on my machine,
+    provided you load on the CPU and move the model.
   </p>
 
   <p>
-    Wait if you expected the speedup on a Mac, a free Colab, or a consumer GPU; no vLLM or static result is verified
-    there. Wait if your research needs the fast path to do what eager does: gradients through the model, arbitrary
+    Wait if you expected a speedup on a Mac, a free Colab, or a consumer GPU; no vLLM or static result is verified
+    there, and on my Mac the fp16 eager path decoded at half the speed of plain <code>generate</code>. Wait if your research needs the fast path to do what eager does: gradients through the model, arbitrary
     patching, head-level tensors across GPUs, or neuron-basis points on a sparse MoE. Wait if you need exact parity
     on the architectures the table flags, DeepSeek-V4-Flash and Gemma-4 12B and 26B.
   </p>
 
   <p>
-    Two results would change this verdict. Comparing interp-engine eager against same-dtype plain-transformers hooks
-    on this Apple M5 at fp16, with at least eight prompts of 64, 512 and 2,048 tokens, every applicable point at
-    layers 0, 13, 19 and 25, and 32-token greedy generation, passing at exact shapes, mean cosine 0.9999, max absolute
-    error 0.002, no token below cosine 0.99 and identical greedy tokens, would verify that configuration. A bf16 Qwen3-4B comparison on one RTX 4090 with the same pinned
+    One result would still change this verdict. A bf16 Qwen3-4B comparison on one RTX 4090 with the same pinned
     stack, 8,192-token context, prompts, generation length and acceptance check in eager and static modes, holding at
     least 5× one-stream and 20× eight-request aggregate throughput with no cross-request contamination, would make
-    the headline relevant to hardware that researchers own.
+    the headline relevant to hardware that researchers own. The Apple Silicon test I would have asked for is the one
+    above, and it passed.
   </p>
 
   ${PullQuote({
@@ -574,7 +595,7 @@ export function article() {
         url: `${AT}/interp_engine/select.py`,
       },
       {
-        claim: 'Reproduction scripts, JSON results and environment for the Apple Silicon parity, steering and throughput runs',
+        claim: 'Reproduction scripts, JSON results and logs for the Apple Silicon parity, steering, throughput and fp16 sweep runs, including the fp16 MPS load crash trace',
         why: 'Every number in the laptop section comes from these files; rerun them to check me.',
         ref: 'Research artifacts',
         url: RESEARCH_URL,
@@ -607,7 +628,7 @@ export function article() {
       because the Codex sandbox hides the Metal device. The measured window runs from
       <time datetime="${researchFootprint.startedAt}">${formatTimestamp(researchFootprint.startedAt)}</time> to
       <time datetime="${researchFootprint.measuredAt}">${formatTimestamp(researchFootprint.measuredAt)}</time>, the
-      freeze point; the second fact-check and the edits after it fall outside the total.
+      freeze point; the second fact-check, the fp16 sweep, and the edits after them fall outside the total.
     </p>
     <p>
       The ${formatCount(researchFootprint.totalTokens)} total equals ${formatCount(researchFootprint.inputTokens)} input
