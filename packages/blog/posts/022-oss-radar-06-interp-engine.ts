@@ -106,7 +106,7 @@ export function article() {
 
   <ul>
     <li>
-      <strong>The trap is real, and I measured it.</strong> On gemma-2-2b, the raw MLP output and the tensor
+      <strong>The mistake is easy to make, and I measured it.</strong> On gemma-2-2b, the raw MLP output and the tensor
       TransformerLens calls <code>hook_mlp_out</code> agree at cosine 0.87: wrong, and plausible. On gpt2 they are
       identical, which is how code tested on one model carries the bug to the other.
     </li>
@@ -154,7 +154,7 @@ export function article() {
   ${StatRow({
     items: [
       { value: '2 → 1', label: html`tensors that shared one name, now named apart` },
-      { value: '0.87', label: html`cosine between the wrong tensor and the right one on my Mac; close enough to pass a glance` },
+      { value: '0.87', label: html`cosine between the wrong tensor and the right one on my Mac; close enough to look right` },
       { value: '5.3e-4', label: html`largest disagreement between interp-engine and TransformerLens where the names match` },
     ],
   })}
@@ -162,8 +162,8 @@ export function article() {
   <h2>A wrong tensor with the right name</h2>
 
   <p>
-    The trap exists because Gemma's blocks are wired differently from Llama's, and one tool's name hides the
-    difference. A Gemma-2 block normalizes both before and after each sublayer, what the code calls a sandwich norm,
+    The mistake is possible because Gemma's blocks are built differently from Llama's, and one tool's name hides
+    the difference. A Gemma-2 block normalizes both before and after each sublayer, what the code calls a sandwich norm,
     and only the normed output is added to the residual stream. TransformerLens applies that second norm before both
     of its block-level hooks; its attention comment reads: <code>We do it before the hook so hook_attn_out captures
     "that which is added to the residual stream"</code>, and the MLP path follows the same order. On a Llama-shaped
@@ -172,7 +172,7 @@ export function article() {
   </p>
 
   <p>
-    interp-engine's answer is to spell both. <code>mlp_out</code> is the raw module output. <code>mlp_out_post</code>
+    interp-engine's answer is to name both. <code>mlp_out</code> is the raw module output. <code>mlp_out_post</code>
     is what gets added. On families without a post-sublayer norm the second aliases the first, so asking for the
     contribution point is safe everywhere. The architecture facts detect the norm structurally, on a real block.
     Checking whether the model is called Gemma would not do: Gemma-1 has none of these norms and VaultGemma
@@ -194,7 +194,7 @@ export function article() {
   })}
 
   <p>
-    The two highlighted rows are the trap. TransformerLens and nnterp default to different sides of the norm, both
+    The two highlighted rows are where the mistake happens. TransformerLens and nnterp default to different sides of the norm, both
     call their choice the MLP output, and the mapping between them is model-dependent. interp-engine ships a mapper
     that translates hook names in both directions and refuses names that have no faithful equivalent, such as a
     norm's <code>hook_normalized</code>, which TransformerLens fires between the scale and the gain and which no
@@ -223,7 +223,7 @@ export function article() {
     and steering requests get a unique cache salt so a steered prefix is never reused, while plain generation shares
     prefixes as usual. That keeps 28 of the 34 points reachable and gives up the single-stream gain: gemma-2-2b
     decodes at 31.5 tokens per second hooked against 30.9 eager, though batching still lifts eight requests to 226
-    aggregate against 30.1. The static backend goes the other way. It wraps the modules before graph capture, so
+    aggregate against 30.1. The static backend makes the opposite trade. It wraps the modules before graph capture, so
     graph capture records a <code>copy_</code> into a capture buffer and an <code>add_</code> from a steering buffer
     and replays them with the graph. A self-test writes a sentinel and checks it survives replay. The price is that you declare the taps at load time, hold extra
     VRAM for the buffers, and lose most of the batch window, from 16,384 tokens to 1,024.
@@ -256,7 +256,7 @@ export function article() {
     The part of the repository I would keep if the engine vanished is the validator. It is also where "checked
     against the other tools" turns from a slogan into a number with a tolerance. It runs each model through
     six engine paths, eager, hooked vLLM, static vLLM, TransformerLens 2 and 3, and nnsight, records the point-engine
-    pairs each path supports, and leaves unsupported and unasked cells explicit. The thresholds are the fine print. A raw Hugging Face pair passes at a maximum absolute error of 0.002 and cosine
+    pairs each path supports, and leaves unsupported and unasked cells explicit. The thresholds decide what a green cell means. A raw Hugging Face pair passes at a maximum absolute error of 0.002 and cosine
     similarity of 0.9999. A pair involving TransformerLens or a fused kernel normally passes at cosine 0.99 and
     relative error 0.5, and named checkpoint waivers can lower the cosine gate. A tolerance miss becomes a warning. A
     missing signal, a shape mismatch, or cosine below 0.5 is a failure. The validator samples the first, middle and
@@ -331,7 +331,7 @@ export function article() {
     and pins nothing above its floor. The README says Gemma 4 needs transformers 5.14.1; the Gemma-4 validator cell
     ran on 5.16.1. Pin the engine, vLLM, transformers and torch together, and replay your own parity before you
     move any of them. The layer is contested and young; the comparison table is the part worth keeping whatever
-    happens to the engine. It is also the third issue in a row where the move that matters happens inside a
+    happens to the engine. It is also the third issue in a row where the important change happens inside a
     runtime, after <a href="/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime">Herdr</a> and
     <a href="/oss-radar-05-bun-1-4">Bun 1.4</a>.
   </p>
@@ -343,17 +343,17 @@ export function article() {
     activation vectors from gemma-2-2b through TransformerLens 3.5.1 on Apple Silicon and injects them at
     <code>resid_post</code> to measure how many directions a frozen model can hold at once. Every number I have
     depends on reading the tensor I think I am reading. So the question I could answer on a laptop was the one the
-    validator answers on a B200: does the eager backend agree with the tool I already trust, and does the trap show
-    up when I pair the names naively?
+    validator answers on a B200: does the eager backend agree with the tool I already trust, and does the mistake
+    show up when I pair the names naively?
   </p>
 
   <p>
     Automatic device selection would have put
     gemma-2-2b on the CPU. The checkpoint is bf16-native and the engine treats MPS as unsafe for bf16 weights, so
     unless you ask for the device and a dtype explicitly you get a correct, slow run and no warning about speed. I
-    asked for MPS and fp32. TransformerLens greets that same device with a warning that "MPS backend may
-    produce silently incorrect results" on the PyTorch I have. Two tools, two different opinions about my machine,
-    and no third party to break the tie except the numbers.
+    asked for MPS and fp32. TransformerLens prints a warning for that same device: "MPS backend may
+    produce silently incorrect results" on the PyTorch I have. The two tools disagree about my machine, and only
+    the numbers can settle it.
   </p>
 
   <p>
@@ -362,7 +362,7 @@ export function article() {
     names mean the same tensor, the two engines agree to floating-point noise: the largest absolute difference across
     twenty gemma-2-2b comparisons is 5.3e-4, at the last layer's <code>resid_post</code>.
     Then I paired the names the way Neuronpedia's old server did, raw <code>mlp_out</code> against
-    <code>blocks.N.hook_mlp_out</code>, and the same run reproduced the trap.
+    <code>blocks.N.hook_mlp_out</code>, and the same run reproduced the mistake.
   </p>
 
   ${CompareTable({
@@ -377,8 +377,8 @@ export function article() {
   })}
 
   <p>
-    A cosine of 0.87 is the dangerous kind of wrong: far from random, with the right shape, and nothing downstream
-    refuses it. On gpt2 the same
+    A cosine of 0.87 is the kind of wrong that goes unnoticed: far from random, with the right shape, and nothing
+    downstream refuses it. On gpt2 the same
     naive pairing is exact, which is why code that was tested on gpt2 carries the bug to Gemma without noticing.
     The maximum absolute difference on the naive gemma rows runs from 15 to 272; on the matched rows it never
     passes 0.001.
@@ -420,7 +420,7 @@ export function article() {
 
   <p>
     What changed in my harness is small and specific. My vectors come from <code>resid_post</code>, which is the
-    one name every engine agrees on, so the trap was not in my extraction. It is waiting in the next phase, where I
+    one name every engine agrees on, so the mistake was not in my extraction. It is waiting in the next phase, where I
     move from raw directions to a Gemma Scope SAE basis and the SAE's declared hook is exactly the kind of name that
     means two tensors. I now translate every hook string through the mapper before I trust it, and I keep the
     naive-pairing check in the test suite as a tripwire.
@@ -453,12 +453,12 @@ export function article() {
   </p>
 
   ${PullQuote({
-    content: html`<p>A hook name is a promise about a tensor. This engine is the first one I have used that writes the promise down and checks it.</p>`,
+    content: html`<p>A hook name is a claim about which tensor you get. This engine is the first one I have used that writes the claim down and checks it.</p>`,
   })}
 
   <p>
-    interp-engine earns a place in a CUDA serving stack today and a place in any harness that consumes hook names,
-    and it does not yet earn the speed story on the hardware most researchers have.
+    interp-engine belongs in a CUDA serving stack today and in any harness that consumes hook names, and it does not
+    yet justify the speed claim on the hardware most researchers have.
   </p>
 
   ${SectionBreak()}
