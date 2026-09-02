@@ -16,10 +16,10 @@ const SHA = '74716092e5bad8beca1e27193ec9980a8e9a4e85';
 const AT = `${REPO}/blob/${SHA}`;
 
 export const meta: PostMeta = {
-  title: 'OSS Radar #06: Same Hook Name, Different Tensor',
-  seoTitle: "interp-engine Review: Neuronpedia's Hooks on vLLM",
+  title: "OSS Radar #06: I Tested interp-engine, Neuronpedia's New Interpretability Engine, on a Mac",
+  seoTitle: "interp-engine Review: Neuronpedia's Interpretability Engine",
   alternativeHeadline:
-    "interp-engine puts Neuronpedia's interpretability hooks on vLLM and checks every point against TransformerLens",
+    'Same hook name, different tensor: interp-engine names every tap once and checks it against TransformerLens and nnsight',
   date: '2026-09-02',
   description:
     "interp-engine puts Neuronpedia's hooks on vLLM and checks 34 points against TransformerLens and nnsight. Without CUDA you get the parity table, not the speed.",
@@ -103,8 +103,7 @@ export function article() {
   </p>
 
   <p>
-    That is what happened at <a href="https://www.neuronpedia.org" target="_blank" rel="noopener">Neuronpedia</a>,
-    the site where much of the field browses model internals. Its old server translated a TransformerLens hook name
+    That is what happened at Neuronpedia. Its old server translated a TransformerLens hook name
     into the raw output for gemma-2-2b and fed it to a Gemma Scope lens trained on the normed one. The lens's own
     error said so, 9.8 where 0.26 was expected, with 8 active features instead of 85, but nobody was reading that
     number. The endpoint returned zeros and a whole lens went dark on the very text its dashboards were built from.

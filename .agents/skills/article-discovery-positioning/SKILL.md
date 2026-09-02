@@ -89,7 +89,7 @@ The article makes Goga's voice, thinking, identity, vision, or live state more l
 
 Default:
 
-- preserve the voice-bearing H1;
+- preserve the voice-bearing phrase, but the H1 still names its subject in plain words first (`AGENTS.md`, "Titles Name the Subject", 2026-09-01); a title that needs the article to explain it fails;
 - let the description orient a cold reader honestly;
 - add `seoTitle` only when a real doorway can describe the same piece without changing its meaning;
 - return **no search intervention** when concrete handles would corrupt the form.
@@ -257,6 +257,7 @@ Keywords are nouns and relationships the article already earns.
 - Never repeat a phrase to satisfy density.
 - Never add a section solely to place a phrase.
 - Never make an H1 broad by deleting the boundary that makes the evidence honest.
+- Never ship an H1 that does not name its subject (tool, project, problem, or result) in words a stranger could search for. `Same Hook Name, Different Tensor` failed this on 2026-09-01; `How I Built First-Party Analytics for a Personal Blog` passes.
 
 ## Internal Cross-References
 

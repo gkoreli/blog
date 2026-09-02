@@ -25,7 +25,7 @@ Run `shape-article` first. Apply this skill to the engineering and discovery lay
 
 ## Titles
 
-The architecture is the metadata split (see `AGENTS.md`): literary H1/`og:title` for the reader who clicked, concrete `seoTitle` for the cold searcher. The evidence tunes the `seoTitle`:
+The architecture is the metadata split (see `AGENTS.md`), amended 2026-09-01 by "Titles Name the Subject": the H1/`og:title` names the subject in plain, searchable words first, with any voice-bearing phrase after it; the `seoTitle` is a snippet supplement, not a substitute for a clear H1. The evidence tunes the `seoTitle`:
 
 - **Use 40–60 characters and 6–9 words as a starting range, not a hard rule.** Backlinko found the highest CTR inside that band, but its summary reports a 33.3% lift while its detailed section reports 8.9%. Do not cite either as settled. Google sets no limit — truncation is device-width — so longer isn't penalized, just unseen. Whatever must be *seen* lives in the first ~57 chars.
 - **Front-load the handles.** Tool names, the topic noun, the artifact ("MCP server," "UI framework") come first; the hook number or verdict closes.
@@ -67,7 +67,7 @@ Luu: "writing confident, unqualified statements works. People like confidence." 
 
 ## Pre-publish checklist (run on every engineering post)
 
-1. **seoTitle**: ≤ ~57 visible chars, handles first, declarative, shares the H1's substance. H1 stays literary.
+1. **Title**: the H1 names the subject a stranger could search for (tool, project, problem, result) before any literary phrase; it must make sense as a bare link on X. **seoTitle**: ≤ ~57 visible chars, handles first, declarative, shares the H1's substance.
 2. **Description**: ≤ ~155 chars, leads with names, works as a standalone sentence.
 3. **Standfirst** (`.post-lede`): first 100 words contain one declarative, liftable sentence naming the artifact and the story.
 4. **The disagreeable claim**: for argument and decision pieces, present, signed, and falsifiable — the post states what evidence would prove it wrong. For inquiry and field notes, preserve the live question.

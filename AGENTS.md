@@ -179,7 +179,7 @@ The publication needs useful external entry points and a recognizable mind behin
 - **Signature:** makes Goga's voice, thinking, identity, projects, bets, or vision legible. Its value is depth, recognition, and contact even when search fit is narrow.
 - **Bridge:** a concrete problem carries the reader into Goga's judgment or vision, or a personal stake reveals a transferable engineering problem.
 
-Roles are not quotas, quality rankings, or fixed forms. Shape the article first, then design the doorway. Reader-growth articles can use externally legible H1s; signature pieces may preserve literary titles and orient through description; bridge pieces may split a voice-bearing H1 from a concrete `seoTitle`. Internal links and series trails let reach and identity strengthen each other without asking every article to do both jobs.
+Roles are not quotas, quality rankings, or fixed forms. Shape the article first, then design the doorway. Reader-growth articles can use externally legible H1s; signature pieces may preserve literary titles and orient through description; bridge pieces may split a voice-bearing H1 from a concrete `seoTitle`. Internal links and series trails let reach and identity strengthen each other without asking every article to do both jobs. Since 2026-09-01 every H1 must name its subject in plain words first ("Titles Name the Subject"); voice lives in the second half of a title and in the body.
 
 **Core topics:**
 - `@nisli/core` — zero-dependency reactive web component framework
@@ -292,7 +292,7 @@ Different surfaces serve different audiences. Don't corrupt one to fix the other
 | Field | Audience | Rule |
 |---|---|---|
 | `<title>` (HTML) | Cold searcher in SERP | Carry concrete handles: tools, topic, context. Can differ from H1. |
-| H1 / `og:title` | Reader who clicked | Keep the literary/essay title. Voice intact. |
+| H1 / `og:title` | Reader who clicked, and the cold reader who sees it shared | Names the subject in plain words first (the tool, project, problem, or result); a voice-bearing phrase may follow, never replace it. See "Titles Name the Subject" below. |
 | `meta description` | Cold searcher scanning results | Lead with tool names and concrete promise. Not the thesis. |
 | JSON-LD `headline` | Google's structured data parser | Same as H1 — the real title. |
 | JSON-LD `alternativeHeadline` | Semantic labeling | Explicit field on PostMeta. Set it directly; never derive by parsing `seoTitle`. |
@@ -302,6 +302,18 @@ Different surfaces serve different audiences. Don't corrupt one to fix the other
 | RSS `<pubDate>` | Feed readers / subscribers | Publish date only. Never `lastModified`. Don't surface metadata edits as new posts. |
 | Visible article date | Readers | Publish date only. Show updated date only for material changes (new section, corrected argument, major rewrite). Not for metadata/orientation fixes. |
 | Orientation sentence | Reader who landed from a bad-fit query | One concrete sentence before the essay voice. Not SEO bait — reader grounding. |
+
+### Titles Name the Subject (owner tenet, 2026-09-01)
+
+Every title, in every section, names its subject in plain words a stranger could search for: the tool, project, person, problem, or result. `How I Built First-Party Analytics for a Personal Blog` is the model. `Same Hook Name, Different Tensor` is the failure: it names nothing a reader could look for, and it was chosen under the older "literary H1, concrete seoTitle" reading of the split above. That reading is retired. The split still exists for search snippets, but the H1 carries the handle first; a literary phrase may follow it, as the accent half of the title, never instead of it. The slug and the description name the subject too.
+
+Why: this is not an established publication. Nobody arrives knowing the house style, and most readers meet a title on X, in a search result, or in a feed with no context. A title that needs the article to explain it costs the reader the article.
+
+The owner's words, recorded verbatim on 2026-09-01:
+
+> also look at the title of the /Users/goga/Documents/goga/blog/packages/blog/posts/020-first-party-analytics-for-a-personal-blog.md it is much more searchable and catchy and come-acrossable, than Same Hook Name, Different Tensor. What does this title even mean? It is very criptic, for what reason? Nobody will find this article, it doesn't even mention the interp-engine or anything like that, how will someone ever find this article at all? we are not an established publishing yet, hope you understand. Capture this as a rule somewhere, I feel like we have some kinda misleading rules or what? Why are we making this kinda mistakes over and over? We need to improve eitehr the skills, rules or tenets or something.
+
+Checklist for any title: (1) a stranger can tell what it is about; (2) it contains the searchable name of the thing; (3) it would still make sense as a bare link on X; (4) first person is welcome when the author did the work ("How I…", "I tested…"). Exposed essays keep their voice, and their titles still pass (1) and (3).
 
 ### How to Apply `seoTitle`
 
@@ -313,7 +325,7 @@ seoTitle: "You Don't Always Need Codemap — ghx, Repo Maps, and Code Search",  
 alternativeHeadline: "ghx, repo maps, repo packing, and agent code search",   // JSON-LD only
 ```
 
-`seoTitle` replaces `— Goga Koreli` in `<title>` but never touches H1 or og:title. Most posts do not need it — only posts where the title is purely literary and the topic has concrete searchable names.
+`seoTitle` replaces `— Goga Koreli` in `<title>` but never touches H1 or og:title. It is a supplement for search snippets, not a licence for a cryptic H1: the H1 itself must already name the subject (see "Titles Name the Subject").
 
 ### The Orientation Sentence
 
