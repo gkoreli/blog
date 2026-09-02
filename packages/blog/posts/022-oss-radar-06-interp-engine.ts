@@ -1,9 +1,9 @@
 import { staticHtml as html } from '@nisli/core/static';
 import type { PostMeta } from '../src/lib/frontmatter.js';
 import {
-  AddressBoardHero,
   Callout,
   CompareTable,
+  OssRadarHero,
   PullQuote,
   SectionBreak,
   Sources,
@@ -32,15 +32,16 @@ export const meta: PostMeta = {
 };
 
 export function preamble() {
-  return AddressBoardHero({
-    issueNum: 'Issue 06',
+  return OssRadarHero({
+    issueNum: 'Issue #06',
     date: 'September 2026',
     tags: 'open-source · interpretability · inference · steering',
-    title: html`<h1>Same Hook Name,<br>Different <em>Tensor</em></h1>`,
-    subtitle: 'interp-engine spells the two apart and checks every point against TransformerLens before it serves one.',
+    title: html`<h1>Same Hook Name, Different <em>Tensor</em></h1>`,
+    subtitle: 'Two tensors shared one name. interp-engine names them apart and checks the names.',
     author: 'Goga Koreli',
-    readTime: '14 min read',
-    footprint: { label: 'Research artifacts', url: RESEARCH_URL },
+    readTime: '15 min read',
+    canvasMode: 'split',
+    canvasSeed: 6,
   });
 }
 
