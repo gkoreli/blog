@@ -1,6 +1,6 @@
 # interp-engine editorial synthesis
 
-Status: filled 2026-09-01 after `01`, `02`, `03` landed. The reproduction section is filled from `04` and the rerun results once the MPS runs finish outside the Codex sandbox.
+Status: filled 2026-09-01 after `01`, `02`, `03` landed; reproduction row updated after the MPS runs completed outside the Codex sandbox (`04`).
 
 ## Article passport
 
@@ -52,7 +52,7 @@ interp-engine is Neuronpedia's production inference engine, released under Apach
 | TransformerLens active: 3.8.1 on 2026-09-01; nnsight 0.7.0 (May 2026) ships a vLLM server | PyPI, releases | web | Reported | incumbents are converging, not retreating | rival theory |
 | No outside field report; zero issues and PRs on the repo at check time | (search) | `02` §7 | Reported (absence) | the author's run is the first | why this article |
 | Repo: first commit 2026-08-20 "1.3.3"; 31 commits; 13 with Cursor co-author trailers; 7 releases in 12 days; one human author | git | `git log`, `shortlog`, `tag` | Reproduced | agent-assisted, share unknown | provenance |
-| MPS parity to round-off on gemma-2-2b and gpt2; steering argmax equal; MPS throughput | (author) | `04` rerun | Reproduced | none | the provable-wrong claim |
+| MPS parity: matched points agree to max abs 5.3e-4 (gemma-2-2b) / 1.7e-4 (gpt2), cosine ≥0.99999; naive pairing on gemma cosine 0.71–0.90, exact on gpt2; steering logits max abs 7.7e-5, argmax and 20 greedy tokens equal; throughput gemma 7.65 / 6.19 / 1.86 tok/s (plain / interp-engine / TL) | (author) | `04` and `repro/results/*.json` | Reproduced | none | the provable-wrong claim held |
 
 ## Theory map
 

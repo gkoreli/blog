@@ -17,4 +17,6 @@ Mode: project deep dive. Article focus: interp-engine as Neuronpedia's productio
 
 Backlog MCP was unreachable (502) at planning time; no backlog IDs recorded.
 
-OSS Radar publication rule: no public raw-prompt page; `promptCount: 0` if a research footprint is published.
+OSS Radar publication rule: no public raw-prompt page. No research footprint is published for this issue: the workers were five independent Codex threads launched from a Claude session plus editor-run reproductions, and `scripts/research-footprint.ts` assumes one Codex root thread. Worker prompts and logs stayed in the session scratchpad; the reports are the committed artifacts `01`–`04`, `07`.
+
+Reproduction note: Codex's sandbox hides the Metal device from child processes (torch `mps.is_available() = False` inside the worker); the editor ran the reproduction scripts from an unsandboxed shell. See `04`.
