@@ -101,7 +101,7 @@ export function article() {
     find: where the names match, it agreed with TransformerLens to 5.3e-4; the advertised speed was measured on a
     datacenter GPU. Read this if you have ever
     trusted a hook name. You will learn how a wrong tensor passes for a right one, what "checked" tolerates, which
-    hardware gets the speed, and the one rule that closes the trap today.
+    hardware gets the speed, and the one rule that prevents the mistake today.
   </p>
 
   <ul>
