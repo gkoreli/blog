@@ -48,29 +48,40 @@ export function article() {
   return html`
 <article class="post-content">
   <p class="post-lede">
-    <a href="${REPO}" target="_blank" rel="noopener">interp-engine</a> is the inference engine behind
-    <a href="https://www.neuronpedia.org" target="_blank" rel="noopener">Neuronpedia</a>, released under Apache-2.0 and
-    announced on August 31. It gives 34 hook points one name each across model families, checks them against
-    TransformerLens and nnsight on 35 committed models, and runs them inside vLLM for throughput. Its correctness
-    claim is stronger than its speed claim. The speed needs a CUDA machine and a fixed set of taps. The parity table
-    can be checked on a laptop, and I checked it on mine.
+    If you have ever read a Gemma model's insides through TransformerLens and asked for <code>hook_mlp_out</code>,
+    there is a fair chance you read the wrong tensor and nothing told you. I measured it this week on my Mac: the
+    wrong tensor is 87% similar to the right one, close enough to pass a glance and far enough to turn a trained
+    lens into noise. Neuronpedia shipped that exact mistake in production.
+    <a href="${REPO}" target="_blank" rel="noopener">interp-engine</a>, their new engine, is the fix: every tap gets
+    one name, and every name is checked against the other tools. The rule you can apply today: on any model with a
+    norm after the sublayer, ask for the contribution point, never the raw output, unless you mean it.
   </p>
 
   <p>
-    The best argument for the engine is a number that looked fine. Neuronpedia's old inference server translated
-    TransformerLens's <code>blocks.4.hook_mlp_out</code> into the raw MLP output for gemma-2-2b and fed it to a
-    Gemma Scope sparse autoencoder that had been trained on a different tensor. Nothing raised. The SAE's
-    reconstruction error came back at 9.8 instead of 0.26, worse than predicting the mean, with 8 active features
-    instead of the declared 85. The endpoint returned zeros, and a whole SAE source stopped firing on the very text
-    its dashboards were built from. The maintainers tell this story themselves in the
-    <a href="${AT}/docs/ENGINE_HOOK_MAPPINGS.md" target="_blank" rel="noopener">hook-mapping guide</a>.
+    The reason a wrong number survives is that nothing crashes. A model is a stack of layers with places between
+    them where you can tap the numbers passing through. Interpretability work is largely reading those taps and
+    training small lenses, called sparse autoencoders, to turn them into features a person can name. A lens is
+    trained on one tap. Feed it the tap next door and it returns something with the right shape and the wrong
+    meaning, and every chart downstream renders it with a straight face. Which tap a name points to depends on the
+    model family, so code that was correct on Llama silently reads the wrong tap on Gemma.
+  </p>
+
+  <p>
+    That is what happened at <a href="https://www.neuronpedia.org" target="_blank" rel="noopener">Neuronpedia</a>,
+    the site where much of the field browses model internals. Its old server translated a TransformerLens hook name
+    into the raw output for gemma-2-2b and fed it to a Gemma Scope lens trained on the normed one. The lens's own
+    error said so, 9.8 where 0.26 was expected, with 8 active features instead of 85, but nobody was reading that
+    number. The endpoint returned zeros and a whole lens went dark on the very text its dashboards were built from.
+    The maintainers tell the story in the <a href="${AT}/docs/ENGINE_HOOK_MAPPINGS.md" target="_blank" rel="noopener">hook-mapping
+    guide</a>, and then they built the engine. I read its code and ran it on my laptop. The correctness holds. The
+    advertised speed needs a datacenter GPU.
   </p>
 
   ${StatRow({
     items: [
-      { value: '34', label: html`named points; 28 of them reachable on vLLM` },
-      { value: '35', label: html`models in the committed cross-engine parity table` },
-      { value: '6.9×', label: html`gemma-2-2b, one stream, B200; 41× with eight requests` },
+      { value: '2 → 1', label: html`tensors that shared one name, now named apart` },
+      { value: '0.87', label: html`how close the wrong tensor looks to the right one on my Mac; close enough to fool a lens` },
+      { value: '5e-4', label: html`largest disagreement between interp-engine and TransformerLens where the names match` },
     ],
   })}
 
