@@ -27,6 +27,12 @@ import { clockSignal }      from './signals/clock.js';
 import type { AnimationModule, Effect, Emitter, EntityStore, Signal } from './pipeline.js';
 
 const TARGET_MS = 15; // cap at 60fps — 15ms threshold avoids dropping 16.67ms frames due to jitter
+const FRAME_MS = 1000 / 60;
+
+interface RunnerOptions {
+  /** Render the ideal 60fps animation state at this millisecond and stop. */
+  seekTimeMs?: number;
+}
 
 /** Deduplicate an array by reference identity. */
 function dedup<T>(items: T[]): T[] {
@@ -52,7 +58,7 @@ class AnimationRunner {
     return this;
   }
 
-  start(canvas: HTMLCanvasElement, container: HTMLElement): () => void {
+  start(canvas: HTMLCanvasElement, container: HTMLElement, options: RunnerOptions = {}): () => void {
     const ctx             = canvas.getContext('2d')!;
     const { mod, effects, emitters } = this;
 
@@ -77,6 +83,7 @@ class AnimationRunner {
       canvas.width  = w * devicePixelRatio;
       canvas.height = h * devicePixelRatio;
       mod.resize(w, h);
+      if (options.seekTimeMs !== undefined) renderSeekFrame(options.seekTimeMs);
     }
 
     // Size immediately — don't wait for ResizeObserver on first render
@@ -84,6 +91,33 @@ class AnimationRunner {
 
     const ro = new ResizeObserver(() => applySize(canvas.offsetWidth, canvas.offsetHeight));
     ro.observe(canvas);
+    const themeObserver = options.seekTimeMs === undefined ? undefined : new MutationObserver(() => {
+      applySize(canvas.offsetWidth, canvas.offsetHeight);
+    });
+    themeObserver?.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    function render(tick: number, now: DOMHighResTimeStamp): void {
+      clock.tick(now, tick);
+      for (const s of stores) s.tick();
+
+      const effectCtx = { w, h, t: tick, dt: clock.read().dt };
+      const base = mod.tick(tick, w, h);
+      const points = applyEffects(base, effects, effectCtx);
+
+      ctx.save();
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+      mod.draw(ctx, points, tick, w, h);
+      ctx.restore();
+
+      for (const s of stores) s.prune();
+    }
+
+    function renderSeekFrame(timeMs: number): void {
+      const targetTick = Math.max(0, timeMs) / FRAME_MS;
+      const wholeTicks = Math.floor(targetTick);
+      for (let tick = 0; tick < wholeTicks; tick++) render(tick, tick * FRAME_MS);
+      render(targetTick, Math.max(0, timeMs));
+    }
 
     function frame(now: DOMHighResTimeStamp) {
       // Re-request at the top so skipped frames don't break the chain
@@ -95,22 +129,7 @@ class AnimationRunner {
 
       if (w === 0 || h === 0) return;
 
-      // Advance clock and stores before computing the frame
-      clock.tick(now, t);
-      for (const s of stores) s.tick();
-
-      const effectCtx = { w, h, t, dt: clock.read().dt };
-      const base      = mod.tick(t, w, h);
-      const points    = applyEffects(base, effects, effectCtx);
-
-      ctx.save();
-      ctx.scale(devicePixelRatio, devicePixelRatio);
-      mod.draw(ctx, points, t, w, h);
-      ctx.restore();
-
-      // Prune dead entities after draw — effects had one last frame to render dying state
-      for (const s of stores) s.prune();
-
+      render(t, now);
       t++;
     }
 
@@ -130,16 +149,17 @@ class AnimationRunner {
     }
 
     // Start/stop based on visibility — no wasted work when scrolled away
-    const io = new IntersectionObserver(entries => {
+    const io = options.seekTimeMs === undefined ? new IntersectionObserver(entries => {
       if (entries[0]!.isIntersecting) startAll();
       else                            stopAll();
-    }, { threshold: 0.1 });
-    io.observe(container);
+    }, { threshold: 0.1 }) : undefined;
+    io?.observe(container);
 
     return () => {
       stopAll();
       ro.disconnect();
-      io.disconnect();
+      themeObserver?.disconnect();
+      io?.disconnect();
       mod.dispose?.();
       for (const e of effects)  e.dispose?.();
       for (const s of signals)  s.dispose();

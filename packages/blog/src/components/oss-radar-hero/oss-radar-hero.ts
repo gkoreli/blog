@@ -1,12 +1,17 @@
 import { staticHtml as html } from '@nisli/core/static';
 import type { StaticResult } from '@nisli/core/static';
 
-export function OssRadarHero({ issueNum, date, tags, title, subtitle, author, readTime, canvasMode = 'flow' }: {
+export function OssRadarHero({ issueNum, date, tags, title, subtitle, author, readTime, canvasMode = 'flow', canvasSeed }: {
   issueNum: string; date: string; tags: string; title: StaticResult; subtitle: string; author: string; readTime: string;
   canvasMode?: string;
+  canvasSeed?: number;
 }) {
+  const canvas = canvasSeed === undefined
+    ? html`<nisli-neural-canvas mode="${canvasMode}"></nisli-neural-canvas>`
+    : html`<nisli-neural-canvas mode="${canvasMode}" data-seed="${canvasSeed}"></nisli-neural-canvas>`;
+
   return html`<div class="topo-hero topo-hero--long-title">
-    <nisli-neural-canvas mode="${canvasMode}"></nisli-neural-canvas>
+    ${canvas}
     <div class="radar-pills">
       <span class="radar-pill radar-pill--accent">${issueNum}</span>
       <span class="radar-pill">${date}</span>

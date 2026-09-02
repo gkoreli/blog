@@ -1,5 +1,4 @@
 export { ArticleGrid } from './article-grid/article-grid.js';
-export { AddressBoardHero } from './address-board-hero/address-board-hero.js';
 export { BunFusionHero } from './bun-fusion-hero/bun-fusion-hero.js';
 export { Callout } from './callout/callout.js';
 export { Closing } from './closing/closing.js';
