@@ -1,0 +1,744 @@
+{
+  "rulesVersion": 3,
+  "rootThread": "01a06058-2dbb-70b2-b8db-d6a6d1c638ce",
+  "rootThreads": [
+    "01a06058-2dbb-70b2-b8db-d6a6d1c638ce",
+    "01a06058-2dc6-7521-b057-624fd6fdaeb3",
+    "01a06058-2e13-7732-b7ed-dd20d70eecec",
+    "01a06058-2e30-75d1-acc1-187da5ed6254",
+    "01a0605b-e126-7943-abdd-a9c76aff9368",
+    "01a06075-0893-7020-95bc-92ffc4cc735a",
+    "01a06080-e3fa-7d73-a025-794372ca37d5",
+    "01a06089-fe32-7c33-a073-376797e808c5"
+  ],
+  "claudeTranscripts": [
+    "/Users/goga/.claude/projects/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103.jsonl"
+  ],
+  "startedAt": "2026-09-02T03:42:21.704Z",
+  "measuredAt": "2026-09-02T06:05:20.659Z",
+  "wallClockMinutes": 143,
+  "sessionCount": 14,
+  "promptCount": 0,
+  "artifactCount": 11,
+  "committedArtifactCount": 11,
+  "uncommittedArtifactCount": 0,
+  "totals": {
+    "inputTokens": 135031648,
+    "cachedInputTokens": 130725478,
+    "cacheWriteInputTokens": 1103065,
+    "outputTokens": 550714,
+    "reasoningOutputTokens": 109660,
+    "totalTokens": 135582362,
+    "nonCachedInputTokens": 4306170
+  },
+  "sources": [
+    {
+      "kind": "codex",
+      "id": "01a06058-2dbb-70b2-b8db-d6a6d1c638ce",
+      "path": null,
+      "startedAt": "2026-09-02T04:19:46.808Z",
+      "usageAt": "2026-09-02T04:39:05.132Z",
+      "sessions": [
+        "01a06058-2dbb-70b2-b8db-d6a6d1c638ce"
+      ],
+      "sessionCount": 1,
+      "responses": null,
+      "epochs": {
+        "count": 1,
+        "resetCount": 0,
+        "note": "Codex token_count values are cumulative within each monotonic epoch."
+      },
+      "tokens": {
+        "inputTokens": 11153913,
+        "cachedInputTokens": 10439552,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 34965,
+        "reasoningOutputTokens": 5038,
+        "totalTokens": 11188878,
+        "nonCachedInputTokens": 714361
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "01a06058-2dc6-7521-b057-624fd6fdaeb3",
+      "path": null,
+      "startedAt": "2026-09-02T04:19:46.817Z",
+      "usageAt": "2026-09-02T04:39:27.078Z",
+      "sessions": [
+        "01a06058-2dc6-7521-b057-624fd6fdaeb3"
+      ],
+      "sessionCount": 1,
+      "responses": null,
+      "epochs": {
+        "count": 1,
+        "resetCount": 0,
+        "note": "Codex token_count values are cumulative within each monotonic epoch."
+      },
+      "tokens": {
+        "inputTokens": 12988437,
+        "cachedInputTokens": 12125696,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 30905,
+        "reasoningOutputTokens": 9505,
+        "totalTokens": 13019342,
+        "nonCachedInputTokens": 862741
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "01a06058-2e13-7732-b7ed-dd20d70eecec",
+      "path": null,
+      "startedAt": "2026-09-02T04:19:46.885Z",
+      "usageAt": "2026-09-02T04:31:20.335Z",
+      "sessions": [
+        "01a06058-2e13-7732-b7ed-dd20d70eecec"
+      ],
+      "sessionCount": 1,
+      "responses": null,
+      "epochs": {
+        "count": 1,
+        "resetCount": 0,
+        "note": "Codex token_count values are cumulative within each monotonic epoch."
+      },
+      "tokens": {
+        "inputTokens": 6810027,
+        "cachedInputTokens": 6395904,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 25114,
+        "reasoningOutputTokens": 6882,
+        "totalTokens": 6835141,
+        "nonCachedInputTokens": 414123
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "01a06058-2e30-75d1-acc1-187da5ed6254",
+      "path": null,
+      "startedAt": "2026-09-02T04:19:46.913Z",
+      "usageAt": "2026-09-02T04:37:15.955Z",
+      "sessions": [
+        "01a06058-2e30-75d1-acc1-187da5ed6254"
+      ],
+      "sessionCount": 1,
+      "responses": null,
+      "epochs": {
+        "count": 1,
+        "resetCount": 0,
+        "note": "Codex token_count values are cumulative within each monotonic epoch."
+      },
+      "tokens": {
+        "inputTokens": 7316075,
+        "cachedInputTokens": 6970496,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 47166,
+        "reasoningOutputTokens": 14573,
+        "totalTokens": 7363241,
+        "nonCachedInputTokens": 345579
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "01a0605b-e126-7943-abdd-a9c76aff9368",
+      "path": null,
+      "startedAt": "2026-09-02T04:23:49.312Z",
+      "usageAt": "2026-09-02T04:48:59.968Z",
+      "sessions": [
+        "01a0605b-e126-7943-abdd-a9c76aff9368"
+      ],
+      "sessionCount": 1,
+      "responses": null,
+      "epochs": {
+        "count": 1,
+        "resetCount": 0,
+        "note": "Codex token_count values are cumulative within each monotonic epoch."
+      },
+      "tokens": {
+        "inputTokens": 11649009,
+        "cachedInputTokens": 11406720,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 62442,
+        "reasoningOutputTokens": 26083,
+        "totalTokens": 11711451,
+        "nonCachedInputTokens": 242289
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "01a06075-0893-7020-95bc-92ffc4cc735a",
+      "path": null,
+      "startedAt": "2026-09-02T04:51:17.975Z",
+      "usageAt": "2026-09-02T04:58:32.073Z",
+      "sessions": [
+        "01a06075-0893-7020-95bc-92ffc4cc735a"
+      ],
+      "sessionCount": 1,
+      "responses": null,
+      "epochs": {
+        "count": 1,
+        "resetCount": 0,
+        "note": "Codex token_count values are cumulative within each monotonic epoch."
+      },
+      "tokens": {
+        "inputTokens": 1331980,
+        "cachedInputTokens": 1167360,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 15112,
+        "reasoningOutputTokens": 6660,
+        "totalTokens": 1347092,
+        "nonCachedInputTokens": 164620
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "01a06080-e3fa-7d73-a025-794372ca37d5",
+      "path": null,
+      "startedAt": "2026-09-02T05:04:14.874Z",
+      "usageAt": "2026-09-02T05:19:47.920Z",
+      "sessions": [
+        "01a06080-e3fa-7d73-a025-794372ca37d5"
+      ],
+      "sessionCount": 1,
+      "responses": null,
+      "epochs": {
+        "count": 1,
+        "resetCount": 0,
+        "note": "Codex token_count values are cumulative within each monotonic epoch."
+      },
+      "tokens": {
+        "inputTokens": 7045076,
+        "cachedInputTokens": 6781696,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 43962,
+        "reasoningOutputTokens": 25493,
+        "totalTokens": 7089038,
+        "nonCachedInputTokens": 263380
+      }
+    },
+    {
+      "kind": "codex",
+      "id": "01a06089-fe32-7c33-a073-376797e808c5",
+      "path": null,
+      "startedAt": "2026-09-02T05:14:11.416Z",
+      "usageAt": "2026-09-02T05:27:53.209Z",
+      "sessions": [
+        "01a06089-fe32-7c33-a073-376797e808c5"
+      ],
+      "sessionCount": 1,
+      "responses": null,
+      "epochs": {
+        "count": 1,
+        "resetCount": 0,
+        "note": "Codex token_count values are cumulative within each monotonic epoch."
+      },
+      "tokens": {
+        "inputTokens": 3990097,
+        "cachedInputTokens": 3821312,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 37194,
+        "reasoningOutputTokens": 15426,
+        "totalTokens": 4027291,
+        "nonCachedInputTokens": 168785
+      }
+    },
+    {
+      "kind": "claude",
+      "id": "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+      "path": "/Users/goga/.claude/projects/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103.jsonl",
+      "startedAt": "2026-09-02T03:42:21.704Z",
+      "usageAt": "2026-09-02T05:57:10.302Z",
+      "sessions": [
+        "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+        "7fed1700-9c71-4dfb-9eb3-c8a61c669103/a054924de4e5c48c5",
+        "7fed1700-9c71-4dfb-9eb3-c8a61c669103/a43f351c756313837",
+        "7fed1700-9c71-4dfb-9eb3-c8a61c669103/a7e520ef330bad752",
+        "7fed1700-9c71-4dfb-9eb3-c8a61c669103/a8c7276dfb94efb23",
+        "7fed1700-9c71-4dfb-9eb3-c8a61c669103/ae05a87e80c7c0eea"
+      ],
+      "sessionCount": 6,
+      "responses": 275,
+      "epochs": {
+        "count": 0,
+        "resetCount": 0,
+        "note": "Claude usage is per API message, not cumulative; epoch logic does not apply."
+      },
+      "tokens": {
+        "inputTokens": 72747034,
+        "cachedInputTokens": 71616742,
+        "cacheWriteInputTokens": 1103065,
+        "outputTokens": 253854,
+        "reasoningOutputTokens": 0,
+        "totalTokens": 73000888,
+        "nonCachedInputTokens": 1130292
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "kind": "codex",
+      "sourceId": "01a06058-2dbb-70b2-b8db-d6a6d1c638ce",
+      "id": "01a06058-2dbb-70b2-b8db-d6a6d1c638ce",
+      "parentId": null,
+      "agentPath": "/root",
+      "startedAt": "2026-09-02T04:19:46.808Z",
+      "cwd": "/private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/interp-engine",
+      "log": "rollout-2026-09-01T21-19-46-01a06058-2dbb-70b2-b8db-d6a6d1c638ce.jsonl",
+      "logBytes": 13958770,
+      "usageRecordLine": 551,
+      "usageAt": "2026-09-02T04:39:05.132Z",
+      "prefixSha256": "9e55df9120e92c381586cc9e9310bcf31710669a0d962d70e8735a3f7ee2dd36",
+      "usageEpochCount": 1,
+      "usageEpochs": [
+        {
+          "endLine": 551,
+          "endAt": "2026-09-02T04:39:05.132Z",
+          "prefixSha256": "9e55df9120e92c381586cc9e9310bcf31710669a0d962d70e8735a3f7ee2dd36",
+          "usage": {
+            "input_tokens": 11153913,
+            "cached_input_tokens": 10439552,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 34965,
+            "reasoning_output_tokens": 5038,
+            "total_tokens": 11188878
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 11153913,
+        "cached_input_tokens": 10439552,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 34965,
+        "reasoning_output_tokens": 5038,
+        "total_tokens": 11188878
+      }
+    },
+    {
+      "kind": "codex",
+      "sourceId": "01a06058-2dc6-7521-b057-624fd6fdaeb3",
+      "id": "01a06058-2dc6-7521-b057-624fd6fdaeb3",
+      "parentId": null,
+      "agentPath": "/root",
+      "startedAt": "2026-09-02T04:19:46.817Z",
+      "cwd": "/private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/interp-engine",
+      "log": "rollout-2026-09-01T21-19-46-01a06058-2dc6-7521-b057-624fd6fdaeb3.jsonl",
+      "logBytes": 4638610,
+      "usageRecordLine": 675,
+      "usageAt": "2026-09-02T04:39:27.078Z",
+      "prefixSha256": "fb83817c461ef2dd82975763664d4000d9aaed35527e7896e81030d10c4d755a",
+      "usageEpochCount": 1,
+      "usageEpochs": [
+        {
+          "endLine": 675,
+          "endAt": "2026-09-02T04:39:27.078Z",
+          "prefixSha256": "fb83817c461ef2dd82975763664d4000d9aaed35527e7896e81030d10c4d755a",
+          "usage": {
+            "input_tokens": 12988437,
+            "cached_input_tokens": 12125696,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 30905,
+            "reasoning_output_tokens": 9505,
+            "total_tokens": 13019342
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 12988437,
+        "cached_input_tokens": 12125696,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 30905,
+        "reasoning_output_tokens": 9505,
+        "total_tokens": 13019342
+      }
+    },
+    {
+      "kind": "codex",
+      "sourceId": "01a06058-2e13-7732-b7ed-dd20d70eecec",
+      "id": "01a06058-2e13-7732-b7ed-dd20d70eecec",
+      "parentId": null,
+      "agentPath": "/root",
+      "startedAt": "2026-09-02T04:19:46.885Z",
+      "cwd": "/private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/interp-engine",
+      "log": "rollout-2026-09-01T21-19-46-01a06058-2e13-7732-b7ed-dd20d70eecec.jsonl",
+      "logBytes": 7852438,
+      "usageRecordLine": 395,
+      "usageAt": "2026-09-02T04:31:20.335Z",
+      "prefixSha256": "10b2370df427db71e20fee3618739d54e004a163dab855252ab4b429260f4b11",
+      "usageEpochCount": 1,
+      "usageEpochs": [
+        {
+          "endLine": 395,
+          "endAt": "2026-09-02T04:31:20.335Z",
+          "prefixSha256": "10b2370df427db71e20fee3618739d54e004a163dab855252ab4b429260f4b11",
+          "usage": {
+            "input_tokens": 6810027,
+            "cached_input_tokens": 6395904,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 25114,
+            "reasoning_output_tokens": 6882,
+            "total_tokens": 6835141
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 6810027,
+        "cached_input_tokens": 6395904,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 25114,
+        "reasoning_output_tokens": 6882,
+        "total_tokens": 6835141
+      }
+    },
+    {
+      "kind": "codex",
+      "sourceId": "01a06058-2e30-75d1-acc1-187da5ed6254",
+      "id": "01a06058-2e30-75d1-acc1-187da5ed6254",
+      "parentId": null,
+      "agentPath": "/root",
+      "startedAt": "2026-09-02T04:19:46.913Z",
+      "cwd": "/private/tmp/claude-501/-Users-goga-Documents-goga-blog/7fed1700-9c71-4dfb-9eb3-c8a61c669103/scratchpad/repro",
+      "log": "rollout-2026-09-01T21-19-46-01a06058-2e30-75d1-acc1-187da5ed6254.jsonl",
+      "logBytes": 2383238,
+      "usageRecordLine": 412,
+      "usageAt": "2026-09-02T04:37:15.955Z",
+      "prefixSha256": "39e15014976858275ce72e063378b882e10f199fef41a158d8a17cec65573686",
+      "usageEpochCount": 1,
+      "usageEpochs": [
+        {
+          "endLine": 412,
+          "endAt": "2026-09-02T04:37:15.955Z",
+          "prefixSha256": "39e15014976858275ce72e063378b882e10f199fef41a158d8a17cec65573686",
+          "usage": {
+            "input_tokens": 7316075,
+            "cached_input_tokens": 6970496,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 47166,
+            "reasoning_output_tokens": 14573,
+            "total_tokens": 7363241
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 7316075,
+        "cached_input_tokens": 6970496,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 47166,
+        "reasoning_output_tokens": 14573,
+        "total_tokens": 7363241
+      }
+    },
+    {
+      "kind": "codex",
+      "sourceId": "01a0605b-e126-7943-abdd-a9c76aff9368",
+      "id": "01a0605b-e126-7943-abdd-a9c76aff9368",
+      "parentId": null,
+      "agentPath": "/root",
+      "startedAt": "2026-09-02T04:23:49.312Z",
+      "cwd": "/Users/goga/Documents/goga/.codex-worktrees/blog/address-board-hero",
+      "log": "rollout-2026-09-01T21-23-49-01a0605b-e126-7943-abdd-a9c76aff9368.jsonl",
+      "logBytes": 2962452,
+      "usageRecordLine": 661,
+      "usageAt": "2026-09-02T04:48:59.968Z",
+      "prefixSha256": "f45987fcc73f4d3f0e6490cfced7691b6d5b4eacbda862ef0fc36f6816719b46",
+      "usageEpochCount": 1,
+      "usageEpochs": [
+        {
+          "endLine": 661,
+          "endAt": "2026-09-02T04:48:59.968Z",
+          "prefixSha256": "f45987fcc73f4d3f0e6490cfced7691b6d5b4eacbda862ef0fc36f6816719b46",
+          "usage": {
+            "input_tokens": 11649009,
+            "cached_input_tokens": 11406720,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 62442,
+            "reasoning_output_tokens": 26083,
+            "total_tokens": 11711451
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 11649009,
+        "cached_input_tokens": 11406720,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 62442,
+        "reasoning_output_tokens": 26083,
+        "total_tokens": 11711451
+      }
+    },
+    {
+      "kind": "codex",
+      "sourceId": "01a06075-0893-7020-95bc-92ffc4cc735a",
+      "id": "01a06075-0893-7020-95bc-92ffc4cc735a",
+      "parentId": null,
+      "agentPath": "/root",
+      "startedAt": "2026-09-02T04:51:17.975Z",
+      "cwd": "/Users/goga/Documents/goga/.codex-worktrees/blog/address-board-hero",
+      "log": "rollout-2026-09-01T21-51-17-01a06075-0893-7020-95bc-92ffc4cc735a.jsonl",
+      "logBytes": 3666606,
+      "usageRecordLine": 196,
+      "usageAt": "2026-09-02T04:58:32.073Z",
+      "prefixSha256": "929d05c498239f30058630f0da7940dbdc5a6b6cb385a32ac9ddf9513cfb6e89",
+      "usageEpochCount": 1,
+      "usageEpochs": [
+        {
+          "endLine": 196,
+          "endAt": "2026-09-02T04:58:32.073Z",
+          "prefixSha256": "929d05c498239f30058630f0da7940dbdc5a6b6cb385a32ac9ddf9513cfb6e89",
+          "usage": {
+            "input_tokens": 1331980,
+            "cached_input_tokens": 1167360,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 15112,
+            "reasoning_output_tokens": 6660,
+            "total_tokens": 1347092
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 1331980,
+        "cached_input_tokens": 1167360,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 15112,
+        "reasoning_output_tokens": 6660,
+        "total_tokens": 1347092
+      }
+    },
+    {
+      "kind": "codex",
+      "sourceId": "01a06080-e3fa-7d73-a025-794372ca37d5",
+      "id": "01a06080-e3fa-7d73-a025-794372ca37d5",
+      "parentId": null,
+      "agentPath": "/root",
+      "startedAt": "2026-09-02T05:04:14.874Z",
+      "cwd": "/Users/goga/Documents/goga/blog",
+      "log": "rollout-2026-09-01T22-04-14-01a06080-e3fa-7d73-a025-794372ca37d5.jsonl",
+      "logBytes": 3485377,
+      "usageRecordLine": 370,
+      "usageAt": "2026-09-02T05:19:47.920Z",
+      "prefixSha256": "ba63777034e33d00acbbc192c5a0e8cb5a5445e3dd6f59d6691655fa7de9f52c",
+      "usageEpochCount": 1,
+      "usageEpochs": [
+        {
+          "endLine": 370,
+          "endAt": "2026-09-02T05:19:47.920Z",
+          "prefixSha256": "ba63777034e33d00acbbc192c5a0e8cb5a5445e3dd6f59d6691655fa7de9f52c",
+          "usage": {
+            "input_tokens": 7045076,
+            "cached_input_tokens": 6781696,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 43962,
+            "reasoning_output_tokens": 25493,
+            "total_tokens": 7089038
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 7045076,
+        "cached_input_tokens": 6781696,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 43962,
+        "reasoning_output_tokens": 25493,
+        "total_tokens": 7089038
+      }
+    },
+    {
+      "kind": "codex",
+      "sourceId": "01a06089-fe32-7c33-a073-376797e808c5",
+      "id": "01a06089-fe32-7c33-a073-376797e808c5",
+      "parentId": null,
+      "agentPath": "/root",
+      "startedAt": "2026-09-02T05:14:11.416Z",
+      "cwd": "/Users/goga/Documents/goga/.codex-worktrees/blog/split-canvas",
+      "log": "rollout-2026-09-01T22-14-11-01a06089-fe32-7c33-a073-376797e808c5.jsonl",
+      "logBytes": 3275938,
+      "usageRecordLine": 359,
+      "usageAt": "2026-09-02T05:27:53.209Z",
+      "prefixSha256": "22f7a72a793794db8650e91467fa4e3327b7ff9fc8473810a2dc48647f02e466",
+      "usageEpochCount": 1,
+      "usageEpochs": [
+        {
+          "endLine": 359,
+          "endAt": "2026-09-02T05:27:53.209Z",
+          "prefixSha256": "22f7a72a793794db8650e91467fa4e3327b7ff9fc8473810a2dc48647f02e466",
+          "usage": {
+            "input_tokens": 3990097,
+            "cached_input_tokens": 3821312,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 37194,
+            "reasoning_output_tokens": 15426,
+            "total_tokens": 4027291
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 3990097,
+        "cached_input_tokens": 3821312,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 37194,
+        "reasoning_output_tokens": 15426,
+        "total_tokens": 4027291
+      }
+    },
+    {
+      "kind": "claude",
+      "sourceId": "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+      "id": "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+      "parentId": null,
+      "agentPath": "/claude",
+      "startedAt": "2026-09-02T03:42:21.704Z",
+      "cwd": "/Users/goga/Documents/goga/blog",
+      "log": "7fed1700-9c71-4dfb-9eb3-c8a61c669103.jsonl",
+      "logBytes": 15408136,
+      "usageRecordLine": 1792,
+      "usageAt": "2026-09-02T05:57:10.302Z",
+      "prefixSha256": "d8482da2e612fe848c15bc58f7c5dafa30b69d6469d2fcaafe241606a5726d06",
+      "usageEpochCount": 0,
+      "usageEpochs": [],
+      "responseCount": 165,
+      "duplicateUsageRecordCount": 310,
+      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; Claude reasoning tokens are not exposed separately and are reported as 0.",
+      "usage": {
+        "input_tokens": 64965651,
+        "cached_input_tokens": 64309370,
+        "cache_write_input_tokens": 629274,
+        "output_tokens": 251018,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 65216669
+      }
+    },
+    {
+      "kind": "claude",
+      "sourceId": "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+      "id": "7fed1700-9c71-4dfb-9eb3-c8a61c669103/a054924de4e5c48c5",
+      "parentId": "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+      "agentPath": "/claude/a054924de4e5c48c5",
+      "startedAt": "2026-09-02T03:54:19.378Z",
+      "cwd": "/Users/goga/Documents/goga/blog",
+      "log": "7fed1700-9c71-4dfb-9eb3-c8a61c669103/subagents/agent-a054924de4e5c48c5.jsonl",
+      "logBytes": 446981,
+      "usageRecordLine": 143,
+      "usageAt": "2026-09-02T04:00:12.210Z",
+      "prefixSha256": "bafcc44b2608697ec857c1759b639e9b1eb3412a7daf1827ffaa02509d326e96",
+      "usageEpochCount": 0,
+      "usageEpochs": [],
+      "responseCount": 17,
+      "duplicateUsageRecordCount": 61,
+      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; Claude reasoning tokens are not exposed separately and are reported as 0.",
+      "usage": {
+        "input_tokens": 1276425,
+        "cached_input_tokens": 1173858,
+        "cache_write_input_tokens": 102533,
+        "output_tokens": 65,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 1276490
+      }
+    },
+    {
+      "kind": "claude",
+      "sourceId": "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+      "id": "7fed1700-9c71-4dfb-9eb3-c8a61c669103/a43f351c756313837",
+      "parentId": "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+      "agentPath": "/claude/a43f351c756313837",
+      "startedAt": "2026-09-02T03:43:19.167Z",
+      "cwd": "/Users/goga/Documents/goga/blog/packages/blog",
+      "log": "7fed1700-9c71-4dfb-9eb3-c8a61c669103/subagents/agent-a43f351c756313837.jsonl",
+      "logBytes": 514147,
+      "usageRecordLine": 149,
+      "usageAt": "2026-09-02T03:49:25.149Z",
+      "prefixSha256": "ed5742bb711c3bdc090f6865cdf066619273746483e5ef8da2939380eef40ccb",
+      "usageEpochCount": 0,
+      "usageEpochs": [],
+      "responseCount": 20,
+      "duplicateUsageRecordCount": 63,
+      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; Claude reasoning tokens are not exposed separately and are reported as 0.",
+      "usage": {
+        "input_tokens": 1622281,
+        "cached_input_tokens": 1507961,
+        "cache_write_input_tokens": 114280,
+        "output_tokens": 305,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 1622586
+      }
+    },
+    {
+      "kind": "claude",
+      "sourceId": "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+      "id": "7fed1700-9c71-4dfb-9eb3-c8a61c669103/a7e520ef330bad752",
+      "parentId": "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+      "agentPath": "/claude/a7e520ef330bad752",
+      "startedAt": "2026-09-02T04:17:16.520Z",
+      "cwd": "/Users/goga/Documents/goga/blog/packages/blog",
+      "log": "7fed1700-9c71-4dfb-9eb3-c8a61c669103/subagents/agent-a7e520ef330bad752.jsonl",
+      "logBytes": 380674,
+      "usageRecordLine": 136,
+      "usageAt": "2026-09-02T04:19:46.220Z",
+      "prefixSha256": "382147445ad711445e65f7d7fdfcaf94d404addb02abb3e643ec3bd4cdb39ab3",
+      "usageEpochCount": 0,
+      "usageEpochs": [],
+      "responseCount": 35,
+      "duplicateUsageRecordCount": 47,
+      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; Claude reasoning tokens are not exposed separately and are reported as 0.",
+      "usage": {
+        "input_tokens": 1590759,
+        "cached_input_tokens": 1522555,
+        "cache_write_input_tokens": 68134,
+        "output_tokens": 722,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 1591481
+      }
+    },
+    {
+      "kind": "claude",
+      "sourceId": "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+      "id": "7fed1700-9c71-4dfb-9eb3-c8a61c669103/a8c7276dfb94efb23",
+      "parentId": "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+      "agentPath": "/claude/a8c7276dfb94efb23",
+      "startedAt": "2026-09-02T03:54:28.359Z",
+      "cwd": "/Users/goga/Documents/goga/blog",
+      "log": "7fed1700-9c71-4dfb-9eb3-c8a61c669103/subagents/agent-a8c7276dfb94efb23.jsonl",
+      "logBytes": 476702,
+      "usageRecordLine": 156,
+      "usageAt": "2026-09-02T04:01:15.307Z",
+      "prefixSha256": "8acc1a61a9ce138b1f4356a9df5b6d5d9f384b4ead865f2a0a0a422c5c86c5c6",
+      "usageEpochCount": 0,
+      "usageEpochs": [],
+      "responseCount": 21,
+      "duplicateUsageRecordCount": 65,
+      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; Claude reasoning tokens are not exposed separately and are reported as 0.",
+      "usage": {
+        "input_tokens": 1780787,
+        "cached_input_tokens": 1696115,
+        "cache_write_input_tokens": 84630,
+        "output_tokens": 411,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 1781198
+      }
+    },
+    {
+      "kind": "claude",
+      "sourceId": "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+      "id": "7fed1700-9c71-4dfb-9eb3-c8a61c669103/ae05a87e80c7c0eea",
+      "parentId": "7fed1700-9c71-4dfb-9eb3-c8a61c669103",
+      "agentPath": "/claude/ae05a87e80c7c0eea",
+      "startedAt": "2026-09-02T03:43:25.911Z",
+      "cwd": "/Users/goga/Documents/goga/blog/packages/blog",
+      "log": "7fed1700-9c71-4dfb-9eb3-c8a61c669103/subagents/agent-ae05a87e80c7c0eea.jsonl",
+      "logBytes": 584736,
+      "usageRecordLine": 176,
+      "usageAt": "2026-09-02T03:49:39.298Z",
+      "prefixSha256": "8a4db411ea280368635257e89995b607135ae6cd0eb9f18561f36096d8284630",
+      "usageEpochCount": 0,
+      "usageEpochs": [],
+      "responseCount": 17,
+      "duplicateUsageRecordCount": 78,
+      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; Claude reasoning tokens are not exposed separately and are reported as 0.",
+      "usage": {
+        "input_tokens": 1511131,
+        "cached_input_tokens": 1406883,
+        "cache_write_input_tokens": 104214,
+        "output_tokens": 1333,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 1512464
+      }
+    }
+  ],
+  "trustBoundary": "Private Codex and Claude logs are not committed. Prefix hashes commit to the measured private log prefixes, so the totals are auditable by the author with integrity commitments, not publicly reconstructible."
+}

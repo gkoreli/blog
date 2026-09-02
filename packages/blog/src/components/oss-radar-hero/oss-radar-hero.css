@@ -31,3 +31,23 @@
   color: var(--color-accent-warm);
   border-color: var(--color-accent-warm);
 }
+
+.radar-footprint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-accent-warm) 32%, transparent);
+  padding-bottom: 0.12rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  animation: rich-rise 1s 0.95s both;
+}
+
+.radar-footprint:hover {
+  border-bottom-color: var(--color-accent-warm);
+  color: var(--color-text);
+}

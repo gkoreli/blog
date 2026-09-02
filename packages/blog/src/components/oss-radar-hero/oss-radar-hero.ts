@@ -1,8 +1,15 @@
 import { staticHtml as html } from '@nisli/core/static';
 import type { StaticResult } from '@nisli/core/static';
 
-export function OssRadarHero({ issueNum, date, tags, title, subtitle, author, readTime, canvasMode = 'flow', canvasSeed }: {
-  issueNum: string; date: string; tags: string; title: StaticResult; subtitle: string; author: string; readTime: string;
+export function OssRadarHero({ issueNum, date, tags, title, subtitle, author, readTime, footprint, canvasMode = 'flow', canvasSeed }: {
+  issueNum: string;
+  date: string;
+  tags: string;
+  title: StaticResult;
+  subtitle: string;
+  author: string;
+  readTime: string;
+  footprint?: { label: string; url: string };
   canvasMode?: string;
   canvasSeed?: number;
 }) {
@@ -25,6 +32,9 @@ export function OssRadarHero({ issueNum, date, tags, title, subtitle, author, re
         <span class="proc-byline-sep">·</span>
         <span class="proc-byline-name">${readTime}</span>
       </div>
+      ${footprint ? html`<a class="radar-footprint" href="${footprint.url}">
+        ${footprint.label} <span aria-hidden="true">↗</span>
+      </a>` : ''}
     </div>
     <span class="topo-scroll">↓ scroll to read</span>
   </div>`;
