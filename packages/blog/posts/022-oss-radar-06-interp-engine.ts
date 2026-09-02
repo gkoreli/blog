@@ -11,9 +11,47 @@ import {
 } from '../src/templates/components.js';
 
 const RESEARCH_URL = 'https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/interp-engine';
+const MANIFEST_URL = 'https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/interp-engine/research-footprint.json';
+const FOOTPRINT_NOTE_URL = 'https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/interp-engine/13-research-footprint.md';
 const REPO = 'https://github.com/decoderesearch/interp-engine';
 const SHA = '74716092e5bad8beca1e27193ec9980a8e9a4e85';
 const AT = `${REPO}/blob/${SHA}`;
+
+const researchFootprint = {
+  sessions: 14,
+  artifacts: 11,
+  totalTokens: 135_582_362,
+  inputTokens: 135_031_648,
+  cachedInputTokens: 130_725_478,
+  outputTokens: 550_714,
+  reasoningOutputTokens: 109_660,
+  wallClockMinutes: 143,
+  startedAt: '2026-09-02T03:42:21.704Z',
+  measuredAt: '2026-09-02T06:05:20.659Z',
+  provenanceUrl: RESEARCH_URL,
+};
+
+function compactTokenCount(tokens: number): string {
+  if (tokens >= 1_000_000) return `${(tokens / 1_000_000).toFixed(1)}M`;
+  if (tokens >= 1_000) return `${Math.round(tokens / 1_000)}K`;
+  return String(tokens);
+}
+
+function formatCount(value: number): string {
+  return new Intl.NumberFormat('en-US').format(value);
+}
+
+function formatTimestamp(value: string): string {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZoneName: 'short',
+    timeZone: 'America/Los_Angeles',
+  }).format(new Date(value));
+}
 
 export const meta: PostMeta = {
   title: "OSS Radar #06: interp-engine, Neuronpedia's New Interpretability Engine, Tested on a Mac",
@@ -29,6 +67,7 @@ export const meta: PostMeta = {
   featured: false,
   images: [],
   slug: 'oss-radar-06-interp-engine',
+  researchFootprint,
 };
 
 export function preamble() {
@@ -42,6 +81,10 @@ export function preamble() {
     readTime: '17 min read',
     canvasMode: 'split',
     canvasSeed: 6,
+    footprint: {
+      label: `${researchFootprint.wallClockMinutes} min · ${researchFootprint.sessions} sessions · ${researchFootprint.artifacts} artifacts · ${compactTokenCount(researchFootprint.totalTokens)} measured tokens`,
+      url: RESEARCH_URL,
+    },
   });
 }
 
@@ -543,6 +586,50 @@ export function article() {
       },
     ],
   })}
+
+  <section class="research-footprint" id="research-footprint" aria-labelledby="research-footprint-title">
+    <div class="research-footprint-heading">
+      <h2 id="research-footprint-title">Research footprint</h2>
+      <a href="${RESEARCH_URL}" target="_blank" rel="noopener">Open the evidence artifacts ↗</a>
+    </div>
+    <div class="research-footprint-stats">
+      <div><strong>${researchFootprint.wallClockMinutes} min</strong><span>wall-clock window</span></div>
+      <div><strong>${researchFootprint.sessions}</strong><span>measured agent sessions</span></div>
+      <div><strong>${researchFootprint.artifacts}</strong><span>committed Markdown artifacts</span></div>
+      <div><strong>${compactTokenCount(researchFootprint.totalTokens)}</strong><span>tokens processed</span></div>
+    </div>
+    <p>
+      This issue was researched in a different shape from the last one. A Claude Code session held the editorial
+      thread, ran five short search agents, and launched eight independent Codex workers: a source audit, a product
+      and ecosystem theory, an adversarial adoption review, the Apple Silicon reproduction harness, two revisions of
+      the preamble, the canvas animation, and a fact-check. The reproduction itself ran from the editor's shell
+      because the Codex sandbox hides the Metal device. The measured window runs from
+      <time datetime="${researchFootprint.startedAt}">${formatTimestamp(researchFootprint.startedAt)}</time> to
+      <time datetime="${researchFootprint.measuredAt}">${formatTimestamp(researchFootprint.measuredAt)}</time>, the
+      freeze point; the second fact-check and the edits after it fall outside the total.
+    </p>
+    <p>
+      The ${formatCount(researchFootprint.totalTokens)} total equals ${formatCount(researchFootprint.inputTokens)} input
+      plus ${formatCount(researchFootprint.outputTokens)} output tokens. Of the input, ${formatCount(researchFootprint.cachedInputTokens)}
+      came from cache and ${formatCount(researchFootprint.inputTokens - researchFootprint.cachedInputTokens)} did not.
+      Reasoning output (${formatCount(researchFootprint.reasoningOutputTokens)}) is a subset of output; the Claude
+      transcripts do not expose reasoning separately, so that figure covers the Codex sessions only. Cumulative
+      accounting counts the full context presented on every response, including cache hits, which is why the total
+      is large. This OSS Radar issue has no public raw-prompt transcript; its prompt count is zero by publication rule.
+    </p>
+    <p>
+      The <a href="${MANIFEST_URL}" target="_blank" rel="noopener">frozen manifest</a> records each root thread, its
+      sessions and epochs, log-prefix hashes, artifact counts, and timing; the
+      <a href="${FOOTPRINT_NOTE_URL}" target="_blank" rel="noopener">methodology note</a> explains how eight Codex
+      roots and one Claude transcript were joined and what was excluded, including the worker that produced the
+      manifest. No Codex counter reset occurred in this issue's sessions.
+    </p>
+    <p class="research-footprint-note">
+      This is provenance, not a quality score, bill, or environmental estimate. Wall-clock time is not hands-on time.
+      The private session logs are not published; the prefix commitments make the record auditable by the author but
+      do not let a reader independently reconstruct the totals.
+    </p>
+  </section>
 </article>
 `;
 }
