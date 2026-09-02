@@ -63,9 +63,19 @@ No decision yet. Until decided: existing posts stay canonical at their URLs, the
 - **One surface at a time.** Design changes are proposed and reviewed per surface (homepage, section page, article shell) — never as a batch redesign.
 - **Each post is a crafted artifact.** The unit of quality is the post, not the site. Infrastructure and design serve the writing.
 
+## What Guides Readership
+
+Owner tenet, stated 2026-09-01 while planning OSS Radar #06 and recorded in the owner's own framing:
+
+- **Our edge is the hard thing nobody else can be bothered to do.** The work that is hard, trustworthy, genuinely interesting, and valuable, done because we thrive doing it and genuinely want to share the value. We do not shy away from what others avoid.
+- **Hard is not enough.** Readership does not come from difficulty. The work also has to be interesting, timely, findable, catchy. Roughly 80% of what we publish should be easily digestible value that brings people to the page; roughly 20% can be niche depth.
+- **The digestible surface brings them; Goga is why they stay.** The values, tenets, voice, vision, past experiences and lessons, active pain, unresolved tensions, future-looking opinions, and constructive feedback are the reason a reader keeps coming back. The doorway is not the destination.
+
+How to apply: every article gets a doorway that a cold reader can use without knowing the author, and a body that could only have been written by this author. When choosing a topic, ask both questions: is this the hard thing others avoid, and is there an easily digestible piece of value in it that a reader can take in one sitting? Positioning rules live in `.agents/skills/article-discovery-positioning`; the 80/20 split is a portfolio guide, not a per-article quota.
+
 ## Open Questions
 
-- OSS Radar's fate (collapse / rename / keep) — needs reflection, owner: Goga
+- OSS Radar's fate (collapse / rename / keep) — needs reflection, owner: Goga. Evidence since 2026-07: three issues in six weeks (#03 Buzz, #04 Herdr, #05 Bun), and #06 redirects the section toward the AI and interpretability tooling the owner's own research uses.
 - Whether "builder log" deserves explicit surfacing (a phrase in the identity, not necessarily a section)
 
 ## Relationship to Prior Direction

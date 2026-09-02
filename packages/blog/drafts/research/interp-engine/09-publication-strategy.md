@@ -16,7 +16,9 @@ Written 2026-09-01 alongside issue #06. This is an assessment with a plan, not a
 | OSS Radar #04 Herdr (2026-08-21) | 31 | 23 |
 | `/oss-radar` section page | 38 | 31 |
 
-AI-user-agent requests in the last 30 days: 7 each for issues #04 and #05, on par with the llms.txt post. Nothing in the series has been cited or linked from outside as far as the referrer data shows (to verify against `referrer_host` before repeating this claim in public).
+AI-user-agent requests in the last 30 days: 7 each for issues #04 and #05, on par with the llms.txt post.
+
+Referrer hosts on record (all time): issue #05 shows 4 views from `t.co` and #04 shows 1; the rest arrived with no referrer, which is what X's in-app browser and direct links produce. Issue #03 shows 16 views from `google.com` and 2 from `kagi.com`, so the best-performing issue is the only one with search traffic; "Buzz" was a name people were looking up. No referrer from a forum, aggregator, newsletter, or another blog appears for any issue.
 
 Reading of the table:
 
@@ -53,6 +55,14 @@ Keep from the skill: verdict in the first 100 words, claim table separation, one
 - **A stable, link-worthy asset per issue.** For #06 it is the Gemma hook-name mapping with the measured differences. Put it in one table with a heading a person can link to.
 - **A shorter trail between issues.** Issues #04, #05 and #06 share a thesis (the serving engine is where research has to land). Name the trail in one sentence in each issue so a reader who arrives at one finds the others.
 - **Publish faster after the announcement.** Two to five days after a launch is when maintainers and early users are still reading reactions. #06 will publish about two days after the blog post.
+
+## The owner's tenet (2026-09-01)
+
+Stated while this issue was in research, now recorded in `NORTH_STAR.md` under "What Guides Readership":
+
+> What is something we do that nobody else does? Something hard, trustworthy, genuinely interesting and valuable that nobody else can be bothered to do like us, because we genuinely thrive doing it and genuinely want to share value. Hard things others avoid, that we are not afraid of. But value and readership do not come from doing hard things alone. It has to be interesting, trendy, come-acrossable, valuable, catchy. Some of it niche, maybe 20%. Most of it easily digestible value, maybe 80%, which brings viewers to the page. Then the hard technical and philosophical part, the values, tenets, voice and vision, past experiences, lessons, active pain, unresolved tensions, future-looking opinions and constructive feedback, is the reason you stay and keep coming back.
+
+Applied to this issue: the hard thing is the code audit plus a laptop reproduction nobody else has run. The digestible value is one sentence and one picture: a hook name is not a tensor, and here is the block where the two names split. The preamble and the X clip carry the digestible part; the body carries the rest.
 
 ## What the author's research program adds
 
