@@ -16,13 +16,13 @@ const SHA = '74716092e5bad8beca1e27193ec9980a8e9a4e85';
 const AT = `${REPO}/blob/${SHA}`;
 
 export const meta: PostMeta = {
-  title: "OSS Radar #06: I Tested interp-engine, Neuronpedia's New Interpretability Engine, on a Mac",
+  title: "OSS Radar #06: interp-engine, Neuronpedia's New Interpretability Engine, Tested on a Mac",
   seoTitle: "interp-engine Review: Neuronpedia's Interpretability Engine",
   alternativeHeadline:
     'Same hook name, different tensor: interp-engine names every tap once and checks it against TransformerLens and nnsight',
   date: '2026-09-02',
   description:
-    "interp-engine puts Neuronpedia's hooks on vLLM and checks 34 points against TransformerLens and nnsight. Without CUDA you get the parity table, not the speed.",
+    "interp-engine, Neuronpedia's new interpretability engine, names 34 hook points once and checks them across engines. I audited the code and ran it on a Mac.",
   section: 'oss-radar',
   tags: ['oss-radar', 'interpretability', 'neuronpedia', 'vllm', 'transformerlens', 'steering'],
   layout: 'immersive',
@@ -36,10 +36,10 @@ export function preamble() {
     issueNum: 'Issue #06',
     date: 'September 2026',
     tags: 'open-source · interpretability · inference · steering',
-    title: html`<h1>Same Hook Name, Different <em>Tensor</em></h1>`,
-    subtitle: 'Two tensors shared one name. interp-engine names them apart and checks the names.',
+    title: html`<h1>interp-engine, Neuronpedia's New Interpretability Engine, <em>Tested on a Mac</em></h1>`,
+    subtitle: 'Two tensors shared one hook name. The new engine names them apart and checks the names; I checked it on Apple Silicon.',
     author: 'Goga Koreli',
-    readTime: '15 min read',
+    readTime: '17 min read',
     canvasMode: 'split',
     canvasSeed: 6,
   });
