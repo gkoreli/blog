@@ -47,6 +47,26 @@ Blog posts are AI-assisted with human substance. The workflow:
 
 Prompt files preserve exact human prompts in chronological order when they materially shape the article, research scope, claim handling, metadata, provenance, or publication decision. Do not include later repository or skill-maintenance discussion that changes none of the published artifacts. This boundary keeps the prompt page a provenance record for the post instead of an unbounded project transcript.
 
+### Opening and Section Discipline (owner tenet, 2026-09-01)
+
+Every article opens with why it matters, then breaks that down, and only then explains the background. Chronology is a mold, not a rule. The first and last paragraph of every section must carry the section's point on their own, so a reader who reads only those still leaves with the whole argument, if not the depth.
+
+Concretely:
+
+1. **First paragraph: the significance.** What was achieved or released, why it matters, why the reader is here, what they will learn. Catchy is allowed; every catchy statement in it must be explained later in the body.
+2. **Then bullets** that break the significance down into the article's main findings or claims, each one a promise the body keeps.
+3. **Then background**, mechanism, and history, each leading back to and paying off the first paragraph. Twist the order of facts to keep the reader; never twist the facts.
+4. **Every section:** first paragraph states the point in plain language; last paragraph states the takeaway. Deep technical material lives between them. Jargon goes where it matters most, not in the opening.
+5. **Two registers per article.** Some sections are for every reader; some are for the person who will run the thing. Say which is which in one sentence when the register changes.
+
+The owner's words, recorded verbatim on 2026-09-01 while reviewing OSS Radar #06:
+
+> You should start with the significant achievements, reasons, why this article or the release matters at all, why am I reading this article, what am I going to learn? Then some bullet points to further break it down, and only then in a next section or paragraph you can start explaining the background and all of that need to lead to and connect to the first paragraph, all the main reasons and catchy statements need to get explained afterall. Imagine like a Christopher Nolan movie or martin scorsese movie, do you think they just start the movie with how it all started and just follow the chronological order, because they have to? No, they start with something very interesting and they use chronology and facts as like a flexible mold, they can twist them as they need, because its all about catching and keeping the reader and viewer, then explaining facts, like even if you only read first and last paragraphs of each section, that should give you the full understanding of the article without the deep technological understanding, morale or rationale, which is still good enough of a takeaway. Think from this perspective when writing articles.
+
+Earlier the same day: "the initial section needs to be catchy, why is this a big deal, in human understandable ways, don't use lots of jargon right away, you can use jargon wherever it matters the most but there are sections that needs to be human friendly, easy to follow and comprehend, and there can be sections that are highly technical." And: "the first paragraph is the highest value section/space, the real estate value is the highest at the beginning."
+
+This tenet governs all forms. `shape-article` still chooses the living center and the ending; `personal-essays` still wins on voice for exposed essays, where the opening may be a scene or a wound rather than a summary, but even there the first paragraph must be the reason to keep reading. See also `NORTH_STAR.md` "What Guides Readership".
+
 ### Research Footprint Accounting
 
 Research-heavy collaborative posts may publish a `researchFootprint` beside their raw prompts. This is provenance, not a quality badge. The compact article header may show the measured token total; the transparency page must show human prompts, sessions, committed artifacts, wall-clock window, token breakdown, methodology, limitations, and the public research directory.

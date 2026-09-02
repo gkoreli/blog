@@ -4,7 +4,11 @@ Use five parts. Adapt headings to the project. Research each part; combine headi
 
 ## 1. Verdict
 
-Name the project, date, job, market focus, and present limit inside the first 100 words. Write one claim that the evidence can prove wrong.
+Open with the significance before anything else: why this release matters, why the reader is here, what they will learn. Then a short bullet list of the issue's main findings, each a promise the body keeps. Only then the background. This is the owner's opening tenet in `AGENTS.md` ("Opening and Section Discipline"); it binds every issue.
+
+Name the project, date, job, market focus, and present limit inside the first 100 words. Write one claim that the evidence can prove wrong. Keep jargon out of the opening; put it where it does the most work.
+
+Every section's first paragraph states its point in plain language and its last paragraph states the takeaway, so a reader who reads only those two paragraphs per section still leaves with the argument.
 
 Good:
 

@@ -48,13 +48,49 @@ export function article() {
   return html`
 <article class="post-content">
   <p class="post-lede">
-    If you have ever read a Gemma model's insides through TransformerLens and asked for <code>hook_mlp_out</code>,
-    there is a fair chance you read the wrong tensor and nothing told you. I measured it this week on my Mac: the
-    wrong tensor is 87% similar to the right one, close enough to pass a glance and far enough to turn a trained
-    lens into noise. Neuronpedia shipped that exact mistake in production.
-    <a href="${REPO}" target="_blank" rel="noopener">interp-engine</a>, their new engine, is the fix: every tap gets
-    one name, and every name is checked against the other tools. The rule you can apply today: on any model with a
-    norm after the sublayer, ask for the contribution point, never the raw output, unless you mean it.
+    This week the team behind <a href="https://www.neuronpedia.org" target="_blank" rel="noopener">Neuronpedia</a>,
+    the site where much of AI interpretability goes to look inside models, released the engine they built after
+    discovering they had been showing the world the wrong numbers.
+    <a href="${REPO}" target="_blank" rel="noopener">interp-engine</a> gives every measurement inside a model one
+    name and proves that name against the other tools before serving it. I audited the code and ran it on a laptop,
+    the first run outside their lab. Read this if you have ever trusted a hook name. You will learn how a wrong
+    tensor passes for a right one, what "checked" tolerates, which hardware gets the promised speed, and the one
+    rule that closes the trap today.
+  </p>
+
+  <ul>
+    <li>
+      <strong>The trap is real, and I measured it.</strong> On gemma-2-2b, the raw MLP output and the tensor
+      TransformerLens calls <code>hook_mlp_out</code> agree at cosine 0.87: wrong, and plausible. On gpt2 they are
+      identical, which is how code tested on one model carries the bug to the other.
+    </li>
+    <li>
+      <strong>Where the names match, the engines agree.</strong> On my Mac, interp-engine and TransformerLens differ
+      by at most 5e-4 across twenty comparisons, and a steering vector pushed through either produces the same twenty
+      tokens.
+    </li>
+    <li>
+      <strong>"Over 40×" is eight concurrent requests on a datacenter GPU with fixed taps.</strong> One stream is
+      6.9×. A laptop gets no speedup, and left to its defaults the engine would have run gemma-2-2b on my CPU.
+    </li>
+    <li>
+      <strong>A green cell has a tolerance.</strong> Against TransformerLens it means cosine 0.99 and relative error
+      0.5. The committed table has 35 models, not the "50+" the README says, and DeepSeek-V4-Flash fails.
+    </li>
+    <li>
+      <strong>The validator will outlast the engine.</strong> Neuronpedia moved three services onto interp-engine in
+      one commit; TransformerLens and nnsight are converging on the same design from the other side; the piece
+      nobody else has is the cross-engine comparison.
+    </li>
+    <li>
+      <strong>The rule:</strong> on any model with a norm after the sublayer, ask for the contribution point, never
+      the raw output, unless you mean it.
+    </li>
+  </ul>
+
+  <p>
+    Each of those claims is paid for below. First, the mistake, because it explains why an engine like this had to
+    exist.
   </p>
 
   <p>
@@ -73,8 +109,7 @@ export function article() {
     error said so, 9.8 where 0.26 was expected, with 8 active features instead of 85, but nobody was reading that
     number. The endpoint returned zeros and a whole lens went dark on the very text its dashboards were built from.
     The maintainers tell the story in the <a href="${AT}/docs/ENGINE_HOOK_MAPPINGS.md" target="_blank" rel="noopener">hook-mapping
-    guide</a>, and then they built the engine. I read its code and ran it on my laptop. The correctness holds. The
-    advertised speed needs a datacenter GPU.
+    guide</a>, and then they built the engine.
   </p>
 
   ${StatRow({
@@ -88,7 +123,8 @@ export function article() {
   <h2>A wrong tensor with the right name</h2>
 
   <p>
-    A Gemma-2 block is a sandwich. Each sublayer has a norm before it and a second norm after it, and only the
+    The trap exists because Gemma's blocks are wired differently from Llama's, and one tool's name hides the
+    difference. A Gemma-2 block is a sandwich. Each sublayer has a norm before it and a second norm after it, and only the
     normed output is added to the residual stream. TransformerLens's block-level <code>hook_mlp_out</code> fires
     after that second norm; the source comment says it does so "so hook_attn_out captures that which is added." On
     a Llama-shaped block there is no second norm, so the raw MLP output and the residual contribution are the same
@@ -122,10 +158,17 @@ export function article() {
     call their choice the MLP output, and the mapping between them is model-dependent. interp-engine ships a mapper
     that translates hook names in both directions and refuses names that have no faithful equivalent, such as a
     norm's <code>hook_normalized</code>, which TransformerLens fires between the scale and the gain and which no
-    Hugging Face module ever outputs.
+    Hugging Face module ever outputs. A name is not a tensor; a translator that knows the model is the only safe way
+    across.
   </p>
 
   <h2>One address, three engines</h2>
+
+  <p>
+    This section and the next are for people who will run the thing. If you only wanted the warning, skip to
+    <em>Whose layer is this</em>. The short version: the same request can run three ways, and only one of them is
+    fast.
+  </p>
 
   <p>
     The eager backend is plain Hugging Face. <code>load_model</code> loads the checkpoint, the point registry turns
@@ -164,13 +207,16 @@ export function article() {
     stream is 6.9×. Static capture still costs vLLM 40% of its own decode speed, and a single capture or a logit lens
     is slower through vLLM than through eager, because the tensor has to cross a worker boundary. The benchmark is
     one B200, bf16, interp-engine 1.2.0 on vLLM 0.26, run on August 19. The audited release is 1.5.1 and now
-    requires vLLM 0.28.
+    requires vLLM 0.28. The eager path is correct anywhere and costs nothing; the speed exists on datacenter CUDA
+    with taps you declare up front.
   </p>
 
   <h2>What a green cell means</h2>
 
   <p>
-    The part of the repository I would keep if the engine vanished is the validator. It runs each model through
+    The part of the repository I would keep if the engine vanished is the validator. It is also where "checked
+    against the other tools" turns from a slogan into a number with a tolerance, so this is the section to read
+    before trusting any green cell. It runs each model through
     eager, hooked vLLM, static vLLM, TransformerLens 2 and 3, and nnsight, and commits a per-point comparison. The
     thresholds are the fine print. A raw Hugging Face pair passes at a maximum absolute error of 0.002 and cosine
     similarity of 0.9999. A pair involving TransformerLens or a fused kernel passes at cosine 0.99 and relative
@@ -199,10 +245,16 @@ export function article() {
     </p>`,
   })}
 
+  <p>
+    Read green as "within tolerance, on that engine and that vLLM, on that day." It is far more than most tools
+    offer, and it is still not a certificate. For the model you care about, rerun the comparison before you trust a
+    point.
+  </p>
+
   <h2>Whose layer is this</h2>
 
   <p>
-    On August 21, Neuronpedia's repository took a
+    Back to the plain-language question: does this change who owns the way we look inside models? On August 21, Neuronpedia's repository took a
     <a href="https://github.com/hijohnnylin/neuronpedia/commit/17bc39171bf11c68bf5bf52013b11afe8e8b1f81" target="_blank" rel="noopener">1,119-file
     commit</a> whose message reads "Migrated inference, autointerp and graph services to new engine." The inference
     README now says the engine "replaced the previous TransformerLens + nnsight stack," and the graph service depends
@@ -236,7 +288,8 @@ export function article() {
     integration monkeypatches the worker's <code>load_model</code>, reaches into private model-runner attributes,
     and pins nothing above its floor. The README says Gemma 4 needs transformers 5.14.1; the Gemma-4 validator cell
     ran on 5.16.1. Pin the engine, vLLM, transformers and torch together, and replay your own parity before you
-    move any of them.
+    move any of them. The layer is contested and young; the comparison table is the part worth keeping whatever
+    happens to the engine.
   </p>
 
   <h2>What runs on my Mac</h2>
