@@ -87,10 +87,14 @@ Use a single post when one claim and one visual carry the whole doorway. Use a t
 1. main claim + media + article link;
 2. personal or operational stake;
 3. surprising evidence or mechanism;
-4. practical consequence or bounded verdict;
-5. optional text-only article link so X can render the page card.
+4. practical consequence or call to action + the article link again, with no media attached.
 
-Do not repeat the same claim across the thread, delay all value until the link, or use engagement bait. Keep each post independently legible if a reply is shown out of context. Verify character counts against X's current ordinary-post limit.
+Thread mechanics (owner's rules, 2026-09-02):
+
+- Every post stays at or under 280 characters. X allows more, but anything longer is cut behind a "Show more" click. Count any URL as 23 characters and record each post's length in `copy.md`.
+- The first and last posts of a thread both appear on the author's profile. Post one carries the clip and the link; the attached media replaces the article's OG card. The last post carries the call to action and repeats the link with no media attached, so X renders the OG card there. Both profile-visible posts then have media.
+
+Do not repeat the same claim across the thread, delay all value until the link, or use engagement bait. Keep each post independently legible if a reply is shown out of context.
 
 ### 5. Preview and publish safely
 

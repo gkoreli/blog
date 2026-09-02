@@ -1,15 +1,17 @@
 # X thread copy (numbers rechecked against the live article, 2026-09-02; revised against the X baseline in metrics.md)
 
-Thread of four posts. Post 1 holds the clip and the link. Character counts to verify against X's ordinary limit before posting.
+Thread of four posts. Every post is at or under 280 characters (X counts any URL as 23), so none is truncated behind "Show more". The first and last posts both appear on the profile: post 1 holds the clip and the link (the clip replaces the OG card), post 4 holds the call to action and the link again with no media, so the OG card renders there. Both profile-visible posts therefore have media.
 
-## 1 — main claim + media + link
+## 1 — main claim + clip + link (shows on the profile; the clip replaces the OG card)
+
+Length: 271 characters (URL counted as 23).
 
 ```text
-Neuronpedia's server fed a Gemma Scope SAE the wrong tensor for a while. Nothing raised. The SAE returned zeros.
+Neuronpedia's server fed an SAE the wrong tensor. Nothing raised. It returned zeros.
 
-The cause: on a Gemma-2 block, two tools give one hook name (hook_mlp_out) to two different tensors.
+On a Gemma-2 block, two tools give one hook name to two different tensors.
 
-interp-engine is the maintainers' fix. I audited the code and ran it on my M5 MacBook Pro.
+interp-engine is the maintainers' fix. I audited it and ran it on my M5 MacBook Pro.
 
 https://gkoreli.com/oss-radar-06-interp-engine
 ```
@@ -18,29 +20,41 @@ Media: the preamble loop (MP4). Alt text from shot-list.md.
 
 ## 2 — personal stake
 
+Length: 279 characters (URL counted as 23).
+
 ```text
 My own research harness reads gemma-2-2b through TransformerLens on this Mac. Every number I have depends on reading the tensor I think I'm reading.
 
-So I paired the names the naive way. Last-token cosine on layer 0: 0.87, and between 0.80 and 0.90 on every layer I checked. Same pairing on gpt2: 1.00000. A tensor that looks right and is wrong.
+So I paired the names the naive way. Last-token cosine: 0.87 on layer 0, 0.80 to 0.90 on every layer I checked. On gpt2: 1.00000.
 ```
+
+No media.
 
 ## 3 — surprising evidence
 
-```text
-Where the names mean the same tensor, interp-engine's eager backend and TransformerLens agree to 5.3e-4 at fp32 on MPS. At fp16, against plain transformers hooks, it matched bit for bit across 1,608 comparisons and 24 generations.
+Length: 280 characters (URL counted as 23).
 
-The speed claim is narrower. "40x" is eight concurrent requests on a B200 with fixed taps. One stream is 6.9x. On a Mac you get the parity table, not the speed.
+```text
+Where the names mean the same tensor, interp-engine and TransformerLens agree to 5.3e-4 at fp32 on MPS. At fp16, against plain transformers hooks: bit-identical across 1,608 comparisons.
+
+The speed claim is narrower. "40x" is eight concurrent requests on a B200. One stream: 6.9x.
 ```
 
-## 4 — bounded verdict
+No media.
+
+## 4 — call to action + link (shows on the profile; no media attached, so the OG card renders)
+
+Length: 280 characters (URL counted as 23).
 
 ```text
 Use it in a CUDA serving stack, and use its hook-name mapper in any harness that consumes someone else's SAE or lens. Wait if you need gradients, patching, or a laptop speedup.
 
-Scripts and the claim table are in the article. Which tensor is your SAE trained on, and how do you know?
+Which tensor is your SAE trained on, and how do you know?
+
+Scripts and claims: https://gkoreli.com/oss-radar-06-interp-engine
 ```
 
-Optional 5: bare link so X renders the page card. Only if post 1's card fails to render.
+No media. The link card is the media.
 
 ## Reply invitation
 
