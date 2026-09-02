@@ -57,7 +57,7 @@ export function article() {
   </p>
 
   <p>
-    The reason the engine exists is a number that looked fine. Neuronpedia's old inference server translated
+    The best argument for the engine is a number that looked fine. Neuronpedia's old inference server translated
     TransformerLens's <code>blocks.4.hook_mlp_out</code> into the raw MLP output for gemma-2-2b and fed it to a
     Gemma Scope sparse autoencoder that had been trained on a different tensor. Nothing raised. The SAE's
     reconstruction error came back at 9.8 instead of 0.26, worse than predicting the mean, with 8 active features
@@ -87,9 +87,9 @@ export function article() {
   <p>
     interp-engine's answer is to spell both. <code>mlp_out</code> is the raw module output. <code>mlp_out_post</code>
     is what gets added. On families without a post-sublayer norm the second aliases the first, so asking for the
-    contribution point is safe everywhere. The architecture facts detect the norm structurally, on a real block,
-    rather than by checking whether the model is called Gemma. That matters because Gemma-1 has none of these norms
-    and VaultGemma removes them.
+    contribution point is safe everywhere. The architecture facts detect the norm structurally, on a real block.
+    Checking whether the model is called Gemma would not do: Gemma-1 has none of these norms and VaultGemma
+    removes them.
   </p>
 
   ${CompareTable({
@@ -206,7 +206,7 @@ export function article() {
     backward. The vLLM worker exposes a closed list of remote calls, so an arbitrary patching function cannot cross
     into it, though the eager backend does accept callables and dotted module paths. TransformerLens is not
     retreating: version 3.8.1 shipped the day after the launch post, and its TransformerBridge now wraps native
-    Hugging Face models rather than reimplementing them. nnsight 0.7.0 ships its own vLLM server. The incumbents are
+    Hugging Face models where version 2 reimplemented them. nnsight 0.7.0 ships its own vLLM server. The incumbents are
     converging on the same design from the other side.
   </p>
 
@@ -252,7 +252,7 @@ export function article() {
     The numbers broke the tie. I captured four points at five layers on both models with one 29-token prompt, both
     engines in fp32 on MPS, TransformerLens loaded without weight folding so the tensors are comparable. Where the
     names mean the same tensor, the two engines agree to floating-point noise: the largest absolute difference across
-    forty gemma-2-2b comparisons is 5.3e-4, at the last layer's <code>resid_post</code>, on values in the hundreds.
+    twenty gemma-2-2b comparisons is 5.3e-4, at the last layer's <code>resid_post</code>.
     Then I paired the names the way Neuronpedia's old server did, raw <code>mlp_out</code> against
     <code>blocks.N.hook_mlp_out</code>, and the same run reproduced the trap.
   </p>
@@ -307,7 +307,7 @@ export function article() {
     Nobody gets the B200 story here, and nobody should expect to. What the table does say is that the eager backend
     costs almost nothing over bare transformers on the model I use, and that my current harness is the slow one. On
     gpt2 interp-engine's own decode loop beats <code>generate</code> outright. On gemma-2-2b it gives back a fifth
-    of the speed for the recapture pass and stays five gigabytes under TransformerLens on a machine with 24.
+    of the speed for the recapture pass and stays 4.6 gigabytes under TransformerLens on a machine with 24.
   </p>
 
   <p>
@@ -347,9 +347,12 @@ export function article() {
 
   <p>
     interp-engine earns a place in a CUDA serving stack today and a place in any harness that consumes hook names,
-    and it does not yet earn the speed story on the hardware most researchers have. The next issue stays on the same
-    bench: DFlash 2, a block-diffusion drafter for speculative decoding that also only started to matter once it
-    landed inside vLLM and llama.cpp, and that I can run on this Mac through MLX.
+    and it does not yet earn the speed story on the hardware most researchers have. This is the third issue in a
+    row where the interesting move happens inside a runtime: <a href="/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime">Herdr</a>
+    turned a terminal multiplexer into one, <a href="/oss-radar-05-bun-1-4">Bun 1.4</a> pulled package jobs into
+    one, and here a serving engine becomes the bench interpretability has to run on. The next issue stays there:
+    DFlash 2, a block-diffusion drafter for speculative decoding that also only started to matter once it landed
+    inside vLLM and llama.cpp, and that I can run on this Mac through MLX.
   </p>
 
   ${SectionBreak()}
