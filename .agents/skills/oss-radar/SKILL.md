@@ -167,6 +167,7 @@ Review every prose output against these rules before publication.
 
 Also:
 
+- No mannered prose: when a literal phrase is available, use it. "A parameter worth varying," not "a dial worth turning"; "this point still matters," not "this point earns its keep." The full rule, in the owner's words, is in `polish-prose` ("No Mannered Prose").
 - Keep a joke only when it adds value. Never add one to meet a quota.
 - Never explain why a joke, title, or line works.
 - Delete prose such as “the line works,” “the real bet,” “this section shows,” and “before the analysis.”

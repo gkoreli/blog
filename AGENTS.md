@@ -67,6 +67,12 @@ Earlier the same day: "the initial section needs to be catchy, why is this a big
 
 This tenet governs all forms. `shape-article` still chooses the living center and the ending; `personal-essays` still wins on voice for exposed essays, where the opening may be a scene or a wound rather than a summary, but even there the first paragraph must be the reason to keep reading. See also `NORTH_STAR.md` "What Guides Readership".
 
+### No Mannered Prose (owner rule, 2026-09-02)
+
+Recorded verbatim; it binds every article and every skill that touches prose (`polish-prose` carries the working form):
+
+> Mannered prose substitutes metaphor and flourish for direct statement. Instead of "a parameter worth varying," the mannered writer produces "a dial worth turning." Instead of "this point still matters," they write "this point earns its keep." The phrases exist to display the writer, not to convey the idea, and readers can tell. That is why mannered prose irritates: it makes the reader work harder so the writer can perform. It is also imprecise. Metaphors drag in connotations the writer did not choose and cannot control. The fix is to say what you mean. When a literal phrase is available, use it.
+
 ### Research Footprint Accounting
 
 Research-heavy collaborative posts may publish a `researchFootprint` beside their raw prompts. This is provenance, not a quality badge. The compact article header may show the measured token total; the transparency page must show human prompts, sessions, committed artifacts, wall-clock window, token breakdown, methodology, limitations, and the public research directory.

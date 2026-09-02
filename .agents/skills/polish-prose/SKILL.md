@@ -30,6 +30,12 @@ Use this skill as a final prose pass. Preserve the author's meaning, facts, voic
 11. Vary the length and shape of neighboring sentences.
 12. Break any rule before writing like a machine.
 
+## No Mannered Prose (owner rule, 2026-09-02)
+
+Mannered prose substitutes metaphor and flourish for direct statement. Instead of "a parameter worth varying," the mannered writer produces "a dial worth turning." Instead of "this point still matters," they write "this point earns its keep." The phrases exist to display the writer, not to convey the idea, and readers can tell. That is why mannered prose irritates: it makes the reader work harder so the writer can perform. It is also imprecise. Metaphors drag in connotations the writer did not choose and cannot control. The fix is to say what you mean. When a literal phrase is available, use it.
+
+Apply it as a search: for every figure of speech, ask whether a literal phrase says the same thing. If it does, use the literal phrase. Keep a metaphor only when no literal phrase carries the idea, and then keep one, not a chain.
+
 ## Review the Prose
 
 1. Mark protected text before editing.
