@@ -37,6 +37,30 @@ Replies to large accounts reach five to fifteen times an original (360, 299, 146
 
 Success signal stays as in the launch brief: a reply or correction from the maintainers, a reshare from the interpretability community, or someone running the scripts.
 
+## Launch (2026-09-02)
+
+- Thread posted by the owner on 2026-09-02 from the signed-in X app, four posts as in `copy.md`. Status URL and publish time: (fill in).
+- Doorway: result (the wrong-tensor failure in plain words). Media: native video on post 1, article card on post 4. Link placement: post 1 and post 4.
+- Changes versus the Bun 1.4 launch (Aug 27), all at once, so the result is observational, not causal: plain-words opener instead of a numbers-first opener; every post at or under 280 characters; link repeated on the last post with no media so the OG card renders; one concrete question instead of a verdict.
+- Freeze: no copy edits until the 24-hour snapshot unless a fact, link, or media is broken.
+
 ## Snapshots
 
-(record at +1 h, +24 h, +7 d after posting: impressions, expands, URL clicks, replies, follows, and any corrections)
+Comparable baseline: originals in the two weeks before launch, median 20 impressions, best 97 (see table above). Above baseline is more than 20 impressions at the same age; breakout is roughly 100 with qualified contact beyond the usual responders.
+
+| Age | Impressions (post 1 / post 4) | Expands | URL clicks | Likes | Replies | Reposts | Bookmarks | Follows | Qualified contact |
+|---|---|---|---|---|---|---|---|---|---|
+| ~1 h | | | | | | | | | |
+| ~24 h | | | | | | | | | |
+| ~7 d | | | | | | | | | |
+
+Article contact: gkoreli.com visits with an x.com or t.co referrer on 2026-09-02 to 09-09, from the first-party analytics dashboard.
+
+## Decision
+
+- Keep:
+- Change next time:
+- Evidence:
+- Confidence and confounders: four changes at once; single launch; small account.
+- Article correction needed: no (as of publish)
+- Shared-skill change needed: recorded already for the two thread-mechanics rules; anything else waits for a second launch

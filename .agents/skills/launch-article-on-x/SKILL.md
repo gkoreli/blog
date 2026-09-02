@@ -42,7 +42,7 @@ Do not mix social artifacts into the article's research-footprint directory. Dis
 
 Read the article, launch metadata, preamble implementation, and relevant evidence artifacts. State in one sentence why a technically serious reader should care now.
 
-When the user asks what performs on their account, inspect 10–20 recent original posts. Separate originals from replies, reposts, and quote posts. Compare posts at similar ages; a six-month total is not comparable to a one-hour total. Record visible impressions, likes, replies, reposts, bookmarks when available, media type, opening move, topic, link placement, and whether the post created qualified conversation.
+When the user asks what performs on their account, inspect 10–20 recent original posts. Prefer the X analytics export (Premium: Analytics → Content → export CSV, columns Post id, Date, Post text, Post Link, Impressions, Likes, Engagements, Bookmarks, Shares, New follows, Replies, Reposts, Profile visits, Detail Expands, URL Clicks) over reading the profile in a browser; it gives exact counts for every post in the window. Treat a post whose text starts with `@` as a reply. The export path is `~/Downloads/account_analytics_content_<from>_<to>.csv`; do not commit it. Separate originals from replies, reposts, and quote posts. Compare posts at similar ages; a six-month total is not comparable to a one-hour total. Record visible impressions, likes, replies, reposts, bookmarks when available, media type, opening move, topic, link placement, and whether the post created qualified conversation.
 
 Use one focused current X search when external examples could change the decision. Do not imitate a large account's absolute numbers or infer causation from a handful of posts.
 

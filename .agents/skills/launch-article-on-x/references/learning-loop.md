@@ -4,7 +4,7 @@ The objective is not to reverse-engineer an unknowable ranking system from one p
 
 ## Before publishing
 
-Build a small comparable baseline from 10–20 recent original posts. Exclude replies and pure reposts. Mark quote posts separately. Record snapshots at comparable ages whenever timestamps allow.
+Build a small comparable baseline from 10–20 recent original posts. Exclude replies and pure reposts. Mark quote posts separately. The X analytics CSV export is the preferred source (see SKILL.md step 1); the first use of it (OSS Radar #06, 2026-09-02) is in that launch's `metrics.md` and shows the shape: originals versus replies, engagements by opening move, thread decay across posts. Record snapshots at comparable ages whenever timestamps allow.
 
 | Field | What to record |
 |---|---|
