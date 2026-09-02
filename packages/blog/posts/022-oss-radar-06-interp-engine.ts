@@ -19,10 +19,10 @@ export const meta: PostMeta = {
   title: "OSS Radar #06: interp-engine, Neuronpedia's New Interpretability Engine, Tested on a Mac",
   seoTitle: "interp-engine Review: Neuronpedia's Interpretability Engine",
   alternativeHeadline:
-    'Same hook name, different tensor: interp-engine names every tap once and checks it against TransformerLens and nnsight',
+    'Same hook name, different tensor: interp-engine names canonical taps once and records cross-engine checks for 27 point types',
   date: '2026-09-02',
   description:
-    "interp-engine, Neuronpedia's new interpretability engine, names 34 hook points once and checks them across engines. I audited the code and ran it on a Mac.",
+    "interp-engine, Neuronpedia's new interpretability engine, names 34 hook points once and compares 27 across engines. I audited the code and ran it on a Mac.",
   section: 'oss-radar',
   tags: ['oss-radar', 'interpretability', 'neuronpedia', 'vllm', 'transformerlens', 'steering'],
   layout: 'immersive',
@@ -50,12 +50,13 @@ export function article() {
 <article class="post-content">
   <p class="post-lede">
     On August 31 the team behind <a href="https://www.neuronpedia.org" target="_blank" rel="noopener">Neuronpedia</a>,
-    the open-source interpretability platform, released the engine they now run after serving the wrong tensor
-    from a Gemma model for a while with no alarm.
+    the open-source interpretability platform, announced the engine it had already moved into production after
+    serving the wrong tensor from a Gemma model for a while with no alarm.
     <a href="${REPO}" target="_blank" rel="noopener">interp-engine</a> (Apache-2.0) gives each measurement point
-    inside a model one name across model families and checks 27 of its 34 point types against TransformerLens and
-    nnsight. I audited the code and ran it on a laptop, the first run outside their lab: where the names match, it
-    agreed with TransformerLens to 5e-4; the advertised speed needs a datacenter GPU. Read this if you have ever
+    inside a model one name across model families and records cross-engine checks for 27 of its 34 point types;
+    each model and engine covers a subset. I audited the code and ran it on a laptop, the first outside run I could
+    find: where the names match, it agreed with TransformerLens to 5.3e-4; the advertised speed was measured on a
+    datacenter GPU. Read this if you have ever
     trusted a hook name. You will learn how a wrong tensor passes for a right one, what "checked" tolerates, which
     hardware gets the speed, and the one rule that closes the trap today.
   </p>
@@ -68,12 +69,12 @@ export function article() {
     </li>
     <li>
       <strong>Where the names match, the engines agree.</strong> On my Mac, interp-engine and TransformerLens differ
-      by at most 5e-4 across twenty comparisons, and a steering vector pushed through either produces the same twenty
+      by at most 5.3e-4 across twenty comparisons, and a steering vector pushed through either produces the same twenty
       tokens.
     </li>
     <li>
-      <strong>"Over 40×" is eight concurrent requests on a datacenter GPU with fixed taps.</strong> One stream is
-      6.9×. A laptop gets no speedup, and left to its defaults the engine would have run gemma-2-2b on my CPU.
+      <strong>"Over 40x" is eight concurrent requests on a datacenter GPU with fixed taps.</strong> One stream is
+      6.9×. My gemma-2-2b laptop run got no speedup, and left to its defaults the engine would have run it on my CPU.
     </li>
     <li>
       <strong>A green cell has a tolerance.</strong> Against TransformerLens it means cosine 0.99 and relative error
@@ -82,18 +83,13 @@ export function article() {
     <li>
       <strong>The validator will outlast the engine.</strong> Neuronpedia moved three services onto interp-engine in
       one commit; TransformerLens now wraps native Hugging Face models and nnsight now serves traces through vLLM;
-      the piece nobody else has is the cross-engine comparison.
+      the project's distinctive piece is the cross-engine comparison.
     </li>
     <li>
       <strong>The rule:</strong> on any model with a norm after the sublayer, ask for the contribution point, never
       the raw output, unless you mean it.
     </li>
   </ul>
-
-  <p>
-    Each of those claims is paid for below. First, the mistake, because it explains why an engine like this had to
-    exist.
-  </p>
 
   <p>
     The reason a wrong number survives is that nothing crashes. A model is a stack of layers with places between
@@ -107,8 +103,7 @@ export function article() {
   <p>
     That is what happened at Neuronpedia. Its old server translated a TransformerLens hook name into the raw
     output for gemma-2-2b and fed it to a Gemma Scope autoencoder trained on the normed one. The autoencoder's own
-    reconstruction error said so, 9.8 where 0.26 was expected, with 8 active features instead of 85, and nothing
-    was reading that number. The endpoint returned zeros and the autoencoder produced no features on the very text
+    reconstruction error said so, 9.8 where 0.26 was expected, with 8 active features instead of 85. The endpoint returned zeros and the autoencoder produced no features on the very text
     its dashboards were built from. The engine that replaced that server documents the failure in its
     <a href="${AT}/docs/ENGINE_HOOK_MAPPINGS.md" target="_blank" rel="noopener">hook-mapping guide</a>.
   </p>
@@ -117,7 +112,7 @@ export function article() {
     items: [
       { value: '2 → 1', label: html`tensors that shared one name, now named apart` },
       { value: '0.87', label: html`cosine between the wrong tensor and the right one on my Mac; close enough to pass a glance` },
-      { value: '5e-4', label: html`largest disagreement between interp-engine and TransformerLens where the names match` },
+      { value: '5.3e-4', label: html`largest disagreement between interp-engine and TransformerLens where the names match` },
     ],
   })}
 
@@ -160,22 +155,22 @@ export function article() {
     call their choice the MLP output, and the mapping between them is model-dependent. interp-engine ships a mapper
     that translates hook names in both directions and refuses names that have no faithful equivalent, such as a
     norm's <code>hook_normalized</code>, which TransformerLens fires between the scale and the gain and which no
-    Hugging Face module ever outputs. A name is not a tensor; a translator that knows the model is the only safe way
-    across.
+    Hugging Face module ever outputs. A name is not a tensor. Use the model-aware mapper when you can, and when you
+    cannot, ask for the contribution point.
   </p>
 
   <h2>One address, three engines</h2>
 
   <p>
     The next two sections are for people who will run the thing; the rest of the article does not depend on them.
-    The same request can run three ways, and only one of them is fast.
+    The same request can run three ways, and only the static path delivers the advertised single-stream gain.
   </p>
 
   <p>
     The eager backend is plain Hugging Face. <code>load_model</code> loads the checkpoint, the point registry turns
     <code>Address("mlp_out_post", 4)</code> into a module, a tensor side and an optional transform, and
     <code>run_with_cache</code> installs ordinary PyTorch hooks around one forward pass. Nothing about this path
-    needs a GPU. It is the same trick every interpretability library uses, with a fixed vocabulary on top and tests
+    needs a GPU. It is a conventional hook-based capture path, with a fixed vocabulary on top and tests
     that reconstruct the sandwich equations to make sure raw and post outputs stay distinct.
   </p>
 
@@ -207,9 +202,9 @@ export function article() {
     The launch post says "Over 40x the throughput vs HF transformers." The 41× is the eight-request aggregate on the static backend, where eager serializes requests that vLLM batches. One
     stream is 6.9×. Static capture still costs vLLM 40% of its own decode speed, and a single capture or a logit lens
     is slower through vLLM than through eager, because the tensor has to cross a worker boundary. The benchmark is
-    one B200, bf16, interp-engine 1.2.0 on vLLM 0.26, run on August 19. The audited release is 1.5.1 and now
-    requires vLLM 0.28. The eager path is correct anywhere and costs nothing; the speed exists on datacenter CUDA
-    with taps you declare up front.
+    one B200, bf16, interp-engine 1.2.0 on vLLM 0.26.0, run on August 19. The audited release is 1.5.1 and now
+    requires vLLM 0.28.0. The eager path runs on CPU, MPS or CUDA; the published speed evidence applies to datacenter
+    CUDA with taps you declare up front.
   </p>
 
   <h2>What a green cell means</h2>
@@ -219,14 +214,16 @@ export function article() {
     against the other tools" turns from a slogan into a number with a tolerance. It runs each model through
     six engine paths, eager, hooked vLLM, static vLLM, TransformerLens 2 and 3, and nnsight, records the point-engine
     pairs each path supports, and leaves unsupported and unasked cells explicit. The thresholds are the fine print. A raw Hugging Face pair passes at a maximum absolute error of 0.002 and cosine
-    similarity of 0.9999. A pair involving TransformerLens or a fused kernel passes at cosine 0.99 and relative
-    error 0.5, falls to a warning below that, and fails only when shapes differ or cosine drops under 0.5. The
-    validator samples the first, middle, last and three-quarter-depth layers. It compares 27 of the 34 points; seven,
+    similarity of 0.9999. A pair involving TransformerLens or a fused kernel normally passes at cosine 0.99 and
+    relative error 0.5, and named checkpoint waivers can lower the cosine gate. A tolerance miss becomes a warning. A
+    missing signal, a shape mismatch, or cosine below 0.5 is a failure. The validator samples the first, middle and
+    last layers, adds three-quarter depth for trunks with at least 16 layers, and may add an early attending layer
+    for hybrid trunks. It compares 27 of the 34 points; seven,
     including <code>resid_pre</code> and <code>attn_probs</code>, are excluded.
   </p>
 
   <p>
-    gemma-2-2b is green across the board, and the detail file shows what green tolerates. The vLLM column is bf16
+    Every stored cell for gemma-2-2b is green, and the detail file shows what green tolerates. The vLLM column is bf16
     against an fp32 reference. Whole-tensor cosines sit above 0.997; the worst single token on
     <code>final_norm</code> sits at 0.961. gpt2 is fp32 everywhere and differs nowhere. DeepSeek-V4-Flash fails on
     both vLLM backends at its last layer, with <code>mlp_out</code> near cosine 0.235, and because no other engine
@@ -246,8 +243,8 @@ export function article() {
   })}
 
   <p>
-    Read green as "within tolerance, on that engine and that vLLM, on that day." It is far more than most tools
-    offer, and it is still not a certificate. For the model you care about, rerun the comparison before you trust a
+    Read green as "within tolerance, on that engine and that vLLM, on that day." It is useful evidence, and it is
+    still not a certificate. For the model you care about, rerun the comparison before you trust a
     point.
   </p>
 
@@ -256,10 +253,11 @@ export function article() {
   <p>
     Back to the plain-language question: does this change who owns the way we look inside models? On August 21, Neuronpedia's repository took a
     <a href="https://github.com/hijohnnylin/neuronpedia/commit/17bc39171bf11c68bf5bf52013b11afe8e8b1f81" target="_blank" rel="noopener">1,119-file
-    commit</a> whose message reads "Migrated inference, autointerp and graph services to new engine." The inference
+    commit</a> whose message reads "interp-engine: Migrated inference, autointerp and graph services to new engine."
+    The inference
     README now says the engine "replaced the previous TransformerLens + nnsight stack," and the graph service depends
-    on interp-engine with no TransformerLens in its manifest. In January the same site said nnsight powered its
-    backends. That is the maintainer thesis in one move: interpretability at production scale runs inside a serving
+    on interp-engine with no TransformerLens in its manifest. In January the same site said nnsight powered several
+    of its inference backends. That is the maintainer thesis in one move: interpretability at production scale runs inside a serving
     engine, and the semantic layer that names the points belongs to whoever runs it.
   </p>
 
@@ -289,7 +287,9 @@ export function article() {
     and pins nothing above its floor. The README says Gemma 4 needs transformers 5.14.1; the Gemma-4 validator cell
     ran on 5.16.1. Pin the engine, vLLM, transformers and torch together, and replay your own parity before you
     move any of them. The layer is contested and young; the comparison table is the part worth keeping whatever
-    happens to the engine.
+    happens to the engine. It is also the third issue in a row where the move that matters happens inside a
+    runtime, after <a href="/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime">Herdr</a> and
+    <a href="/oss-radar-05-bun-1-4">Bun 1.4</a>.
   </p>
 
   <h2>What runs on my Mac</h2>
@@ -333,8 +333,8 @@ export function article() {
   })}
 
   <p>
-    A cosine of 0.87 is the dangerous kind of wrong. It is far from random, it has the right shape, and an SAE
-    trained on the other tensor will encode it into something that looks like sparse features. On gpt2 the same
+    A cosine of 0.87 is the dangerous kind of wrong: far from random, with the right shape, and nothing downstream
+    refuses it. On gpt2 the same
     naive pairing is exact, which is why code that was tested on gpt2 carries the bug to Gemma without noticing.
     The maximum absolute difference on the naive gemma rows runs from 15 to 272; on the matched rows it never
     passes 0.001.
@@ -399,9 +399,10 @@ export function article() {
   </p>
 
   <p>
-    Two results would change this verdict. An fp16 eager run on this Apple M5 across every applicable point at four
-    layers and 64-, 512- and 2,048-token prompts, passing at mean cosine 0.9999, max absolute error 0.002 and identical
-    greedy tokens, would verify that configuration. A bf16 Qwen3-4B comparison on one RTX 4090 with the same pinned
+    Two results would change this verdict. Comparing interp-engine eager against same-dtype plain-transformers hooks
+    on this Apple M5 at fp16, with at least eight prompts of 64, 512 and 2,048 tokens, every applicable point at
+    layers 0, 13, 19 and 25, and 32-token greedy generation, passing at exact shapes, mean cosine 0.9999, max absolute
+    error 0.002, no token below cosine 0.99 and identical greedy tokens, would verify that configuration. A bf16 Qwen3-4B comparison on one RTX 4090 with the same pinned
     stack, 8,192-token context, prompts, generation length and acceptance check in eager and static modes, holding at
     least 5× one-stream and 20× eight-request aggregate throughput with no cross-request contamination, would make
     the headline relevant to hardware that researchers own.
@@ -414,12 +415,6 @@ export function article() {
   <p>
     interp-engine earns a place in a CUDA serving stack today and a place in any harness that consumes hook names,
     and it does not yet earn the speed story on the hardware most researchers have.
-  </p>
-
-  <p>
-    This is the third issue in a row where the move that matters happens inside a runtime, after
-    <a href="/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime">Herdr</a> and
-    <a href="/oss-radar-05-bun-1-4">Bun 1.4</a>.
   </p>
 
   ${SectionBreak()}
@@ -537,14 +532,14 @@ export function article() {
       {
         claim: 'Reproduction scripts, JSON results and environment for the Apple Silicon parity, steering and throughput runs',
         why: 'Every number in the laptop section comes from these files; rerun them to check me.',
+        ref: 'Research artifacts',
+        url: RESEARCH_URL,
       },
       {
         claim: 'No gradients through vLLM; eager supports through-forward gradients; the vLLM worker exposes a closed set of remote calls',
         why: 'Sources the limits that put gradient and patching work on the eager backend.',
         ref: 'docs/GRADIENTS.md',
         url: `${AT}/docs/GRADIENTS.md`,
-        ref: 'Research artifacts',
-        url: RESEARCH_URL,
       },
     ],
   })}
