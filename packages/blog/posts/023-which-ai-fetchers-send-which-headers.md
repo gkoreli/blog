@@ -85,7 +85,7 @@ Anthropic's fetcher from claude.ai also identifies itself and also came from an 
 
 One difference from OpenAI is worth noting. Anthropic says all its bots, Claude-User included, "respect 'do not crawl' signals by honoring industry standard directives in robots.txt". OpenAI, Perplexity and Google all say the opposite for their user-triggered fetchers: robots.txt "may not apply" or is "generally ignored" because a person asked. Anthropic is the only one of the four that documents robots.txt as binding on its on-demand fetcher.
 
-Claude Code's fetch tool is a different animal that happens to share the token. Its request came from my own residential IP, because the tool runs inside the CLI on the user's machine. It sent `Accept: text/markdown, text/html, */*`. That is the first request I have seen in this site's logs that asks for Markdown before HTML. This site has content negotiation for Markdown merged but not yet deployed, so it got HTML. After the deploy it will get the post's Markdown source, and the observation row will say so.
+Claude Code's fetch tool is a different animal that happens to share the token. Its request came from my own residential IP, because the tool runs inside the CLI on the user's machine. It sent `Accept: text/markdown, text/html, */*`. That is the first request I have seen in this site's logs that asks for Markdown before HTML. At capture time this site's Markdown content negotiation was merged but not yet deployed, so it got HTML. The deploy went out later the same day; the same request now gets the post's Markdown source, and the observation row says so.
 
 ## MistralAI-User: a browser behind the token
 
@@ -195,7 +195,7 @@ This section is for anyone who counts visitors on their own server, whether with
 
 **Some reads leave no trace at all.** Index answers like Codex's and Perplexity's never reach you, even when the assistant reports a status code, and Copilot's tool reported a result for a page it never asked for. Your logs are a floor on AI readership, not a measurement of it.
 
-**Do not trust your own labels until you have seen the raw requests.** The live version of my Worker at the time of the capture did not yet recognise the `Claude-User` token, so the Claude fetches were stored as browsers with `Accept: */*` and no language header, and it filed DuckAssistBot under `DuckDuckBot`, the search crawler. Both fixes were already merged and not deployed. Header-level captures like these are how you find out your classifier is wrong; aggregate dashboards never tell you.
+**Do not trust your own labels until you have seen the raw requests.** The live version of my Worker at the time of the capture did not yet recognise the `Claude-User` token, so the Claude fetches were stored as browsers with `Accept: */*` and no language header, and it filed DuckAssistBot under `DuckDuckBot`, the search crawler. Both fixes were merged and deployed later the same day. Header-level captures like these are how you find out your classifier is wrong; aggregate dashboards never tell you.
 
 ## Method and limits
 
@@ -209,7 +209,7 @@ What this does not show:
 - **Network names are registry holders.** Every ASN was checked against RIPEstat and Team Cymru on the day. Cloudflare's own `asOrganization` string differed for seven of the fourteen Grok exits; it names the IP block's registered organisation, not the announcing network. The first draft of this article used Cloudflare's strings and a reader caught the discrepancy.
 - **Header order is lost.** The tail event delivers headers as a map. Order is a fingerprinting signal in its own right and is not analysed here.
 - **Attribution for Grok is by timing and the unique URL**, not by any declaration from xAI. I consider eight requests for a URL that existed nowhere else, within thirty seconds of the prompt, twice, conclusive; a reader who wants stronger evidence can repeat the probe with their own URL.
-- **The DuckDuckGo signature was matched by key id, not re-verified byte for byte.** The Worker code to verify it is merged and not yet deployed; when it is, the observation row will carry the verified agent host.
+- **The DuckDuckGo signature was matched by key id, not re-verified byte for byte.** The Worker now verifies signatures on live traffic and stores the verified agent host on the observation row; DuckAssistBot's next visit will show whether the full verification passes.
 
 Evidence that would change the conclusions: a Google page documenting the `Google` User-Agent and its IP range; a Perplexity capture; any xAI documentation or a `Signature-Agent` header on a Grok request; a second round of probes showing different headers from the same vendors.
 
