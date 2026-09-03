@@ -14,87 +14,26 @@
  * recorded JSONL line even when earlier records contain multibyte text.
  */
 
-import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import { homedir } from 'node:os';
-import { basename, dirname, join, relative, resolve } from 'node:path';
-import { z } from 'zod/v4';
-
-const nonNegativeInteger = z.number().int().nonnegative();
-
-const spawnSourceSchema = z.looseObject({
-  subagent: z.looseObject({
-    thread_spawn: z.looseObject({
-      parent_thread_id: z.string(),
-      agent_path: z.string().nullable().optional(),
-    }),
-  }),
-});
-
-const sessionMetaSchema = z.looseObject({
-  type: z.literal('session_meta'),
-  payload: z.looseObject({
-    id: z.string(),
-    timestamp: z.string(),
-    cwd: z.string(),
-    source: z.union([z.string(), spawnSourceSchema]),
-  }),
-});
-
-const usageSchema = z.object({
-  input_tokens: nonNegativeInteger,
-  cached_input_tokens: nonNegativeInteger,
-  cache_write_input_tokens: nonNegativeInteger,
-  output_tokens: nonNegativeInteger,
-  reasoning_output_tokens: nonNegativeInteger,
-  total_tokens: nonNegativeInteger,
-});
-
-const tokenEventSchema = z.looseObject({
-  timestamp: z.string(),
-  type: z.literal('event_msg'),
-  payload: z.looseObject({
-    type: z.literal('token_count'),
-    info: z.object({ total_token_usage: usageSchema }),
-  }),
-});
-
-const claudeRecordSchema = z.looseObject({
-  timestamp: z.string().optional(),
-  sessionId: z.string().optional(),
-  session_id: z.string().optional(),
-  cwd: z.string().optional(),
-  agentId: z.string().optional(),
-});
-
-const claudeAssistantUsageSchema = z.looseObject({
-  type: z.literal('assistant'),
-  timestamp: z.string(),
-  sessionId: z.string().optional(),
-  session_id: z.string().optional(),
-  cwd: z.string().optional(),
-  agentId: z.string().optional(),
-  message: z.looseObject({
-    id: z.string(),
-    role: z.literal('assistant'),
-    usage: z.looseObject({
-      input_tokens: nonNegativeInteger,
-      cache_read_input_tokens: nonNegativeInteger.default(0),
-      cache_creation_input_tokens: nonNegativeInteger.default(0),
-      output_tokens: nonNegativeInteger,
-    }),
-  }),
-});
-
-const legacyManifestSchema = z.object({
-  rulesVersion: z.number().int().max(2),
-  rootThread: z.string(),
-  sessions: z.array(z.object({
-    id: z.string(),
-    usageRecordLine: z.number().int().positive(),
-  })),
-});
+import { dirname, join, relative, resolve } from 'node:path';
+import {
+  addTokenTotals,
+  countPrompts,
+  descendants,
+  earliestStartedAt,
+  emptyTokenTotals,
+  hasUsage,
+  latestUsageAt,
+  legacyUsageCutoffs,
+  markdownArtifactCounts,
+  parseCliOptionPairs,
+  readClaudeSession,
+  readCodexSession,
+  toTokenTotals,
+  wallClockMinutes,
+} from './research-footprint.models.js';
+import type { ClaudeSourceRecord, CodexSourceRecord } from './research-footprint.models.js';
 
 interface Args {
   rootThreads: string[];
@@ -102,81 +41,6 @@ interface Args {
   sessionsRoot: string;
   researchDir: string;
   promptsFile: string;
-}
-
-interface TokenTotals {
-  inputTokens: number;
-  cachedInputTokens: number;
-  cacheWriteInputTokens: number;
-  outputTokens: number;
-  reasoningOutputTokens: number;
-  totalTokens: number;
-  nonCachedInputTokens: number;
-}
-
-interface UsageEpoch {
-  endLine: number;
-  endAt: string;
-  prefixSha256: string;
-  usage: z.infer<typeof usageSchema>;
-}
-
-interface CodexSessionRecord {
-  id: string;
-  parentId?: string;
-  agentPath: string;
-  cwd: string;
-  startedAt: string;
-  logPath: string;
-  logBytes: number;
-  usageLine: number | null;
-  usageAt: string | null;
-  prefixSha256: string | null;
-  usage: z.infer<typeof usageSchema> | null;
-  usageEpochs: UsageEpoch[];
-}
-
-interface CompleteCodexSessionRecord extends CodexSessionRecord {
-  usageLine: number;
-  usageAt: string;
-  prefixSha256: string;
-  usage: z.infer<typeof usageSchema>;
-}
-
-interface ClaudeSessionRecord {
-  id: string;
-  parentId?: string;
-  agentPath: string;
-  cwd: string;
-  startedAt: string;
-  logPath: string;
-  logBytes: number;
-  usageLine: number;
-  usageAt: string;
-  prefixSha256: string;
-  responseCount: number;
-  duplicateUsageRecordCount: number;
-  usage: z.infer<typeof usageSchema>;
-}
-
-interface CodexSourceRecord {
-  kind: 'codex';
-  id: string;
-  path: null;
-  sessions: CompleteCodexSessionRecord[];
-  startedAt: string;
-  usageAt: string;
-  totals: TokenTotals;
-}
-
-interface ClaudeSourceRecord {
-  kind: 'claude';
-  id: string;
-  path: string;
-  sessions: ClaudeSessionRecord[];
-  startedAt: string;
-  usageAt: string;
-  totals: TokenTotals;
 }
 
 function usage(): never {
@@ -188,11 +52,7 @@ function parseArgs(values: string[]): Args {
   const claudeTranscripts: string[] = [];
   const options = new Map<string, string>();
 
-  for (let index = 0; index < values.length; index += 2) {
-    const key = values[index];
-    const value = values[index + 1];
-    if (!key?.startsWith('--') || !value) usage();
-
+  for (const { key, value } of parseCliOptionPairs(values, usage)) {
     if (key === '--root-thread') {
       rootThreads.push(value);
     } else if (key === '--claude-transcript') {
