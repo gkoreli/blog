@@ -8,7 +8,7 @@
     "dev": "tsx src/pipeline/dev.ts",
     "build": "node --import tsx src/pipeline/prod.ts",
     "validate": "node --import tsx src/pipeline/validate.ts",
-    "test": "node --test test/*.test.ts",
+    "test": "node --import tsx --test test/*.test.ts",
     "serve": "pnpm dlx serve dist",
     "typecheck": "tsc --noEmit && tsc -p src/worker/tsconfig.json"
   },
