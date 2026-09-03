@@ -12,15 +12,15 @@ series:
   order: 3
 researchFootprint:
   sessions: 4
-  artifacts: 5
-  totalTokens: 40947060
-  inputTokens: 40742715
-  cachedInputTokens: 40028817
-  outputTokens: 204345
-  reasoningOutputTokens: 45929
-  wallClockMinutes: 131
+  artifacts: 6
+  totalTokens: 41337528
+  inputTokens: 41130908
+  cachedInputTokens: 40413117
+  outputTokens: 206620
+  reasoningOutputTokens: 46092
+  wallClockMinutes: 132
   startedAt: "2026-09-03T03:44:10.071Z"
-  measuredAt: "2026-09-03T05:55:07.491Z"
+  measuredAt: "2026-09-03T05:55:38.361Z"
   provenanceUrl: "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/ai-fetcher-headers"
 ---
 
