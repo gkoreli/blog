@@ -39,6 +39,13 @@ interface DictionaryEntry {
   member: DictionaryMember;
 }
 
+type SignatureAgentForm = 'dictionary' | 'legacy-string' | 'bare-uri';
+
+interface ParsedSignatureAgent {
+  form: SignatureAgentForm;
+  entries: DictionaryEntry[];
+}
+
 interface SignatureCandidate {
   label: string;
   input: InnerList;
@@ -328,13 +335,23 @@ function serializeInnerList(innerList: InnerList): string {
   return `(${innerList.items.map(serializeItem).join(' ')})${serializeParameters(innerList.parameters)}`;
 }
 
-function parseSignatureAgentEntries(value: string): { legacy: boolean; entries: DictionaryEntry[] } | null {
+function parseSignatureAgentEntries(value: string): ParsedSignatureAgent | null {
   const trimmed = value.trim();
   if (trimmed.startsWith('"')) {
     const item = new StructuredFieldParser(trimmed).parseSingleItem();
     if (item === null || item.bare.type !== 'string' || item.parameters.length !== 0) return null;
     return {
-      legacy: true,
+      form: 'legacy-string',
+      entries: [{ key: '', member: { type: 'item', value: item } }],
+    };
+  }
+  if (/^https:\/\/[^\s,;="]+$/.test(trimmed)) {
+    const item: Item = {
+      bare: { type: 'string', value: trimmed },
+      parameters: [],
+    };
+    return {
+      form: 'bare-uri',
       entries: [{ key: '', member: { type: 'item', value: item } }],
     };
   }
@@ -343,7 +360,7 @@ function parseSignatureAgentEntries(value: string): { legacy: boolean; entries: 
   for (const entry of entries) {
     if (entry.member.type !== 'item' || entry.member.value.bare.type !== 'string') return null;
   }
-  return { legacy: false, entries };
+  return { form: 'dictionary', entries };
 }
 
 export function parseSignatureAgentHeader(value: string): readonly SignatureAgentMember[] | null {
@@ -353,9 +370,9 @@ export function parseSignatureAgentHeader(value: string): readonly SignatureAgen
   for (const entry of parsed.entries) {
     if (entry.member.type !== 'item' || entry.member.value.bare.type !== 'string') return null;
     result.push({
-      key: parsed.legacy ? null : entry.key,
+      key: parsed.form === 'dictionary' ? entry.key : null,
       uri: entry.member.value.bare.value,
-      legacy: parsed.legacy,
+      legacy: parsed.form !== 'dictionary',
     });
   }
   return result;
@@ -390,13 +407,16 @@ function normalizeFieldValue(value: string): string {
 
 function signatureAgentComponentValue(
   component: Item,
-  parsedAgent: { legacy: boolean; entries: DictionaryEntry[] },
+  parsedAgent: ParsedSignatureAgent,
 ): { serialized: string; uri: string } | null {
-  if (parsedAgent.legacy) {
+  if (parsedAgent.form !== 'dictionary') {
     if (component.parameters.length !== 0) return null;
     const entry = parsedAgent.entries[0];
     if (entry?.member.type !== 'item' || entry.member.value.bare.type !== 'string') return null;
-    return { serialized: serializeItem(entry.member.value), uri: entry.member.value.bare.value };
+    const uri = entry.member.value.bare.value;
+    // DuckDuckBot signs the non-conforming bare field value exactly as sent.
+    const serialized = parsedAgent.form === 'bare-uri' ? uri : serializeItem(entry.member.value);
+    return { serialized, uri };
   }
 
   if (component.parameters.length !== 1 || component.parameters[0]?.name !== 'key') return null;
@@ -414,7 +434,7 @@ function signatureAgentComponentValue(
 function componentValue(
   request: Request,
   component: Item,
-  parsedAgent: { legacy: boolean; entries: DictionaryEntry[] } | null,
+  parsedAgent: ParsedSignatureAgent | null,
 ): { value: string; signatureAgentUri: string | null } | null {
   if (component.bare.type !== 'string') return null;
   const name = component.bare.value;
@@ -460,7 +480,7 @@ interface SignatureBaseResult {
 function createSignatureBase(
   request: Request,
   input: InnerList,
-  parsedAgent: { legacy: boolean; entries: DictionaryEntry[] } | null,
+  parsedAgent: ParsedSignatureAgent | null,
 ): SignatureBaseResult | null {
   const lines: string[] = [];
   let signatureAgentUri: string | null = null;
@@ -626,7 +646,7 @@ function agentLocation(uri: string): { agent: string; directoryUrl: string } | n
 async function verifyCandidate(
   request: Request,
   candidate: SignatureCandidate,
-  parsedAgent: { legacy: boolean; entries: DictionaryEntry[] },
+  parsedAgent: ParsedSignatureAgent,
   fetcher: typeof fetch,
   cache: WebBotAuthCache,
   nowMs: number,
@@ -698,11 +718,21 @@ export async function verifyWebBotAuth(
     const parsedAgent = parseSignatureAgentEntries(signatureAgent);
     if (parsedAgent === null) return { status: 'unverified', reason: 'malformed-signature-agent' };
     const candidates = signatureCandidates(signatureInput, signature);
-    if (candidates === null) return { status: 'unverified', reason: 'malformed-signature-fields' };
+    if (candidates === null) {
+      return {
+        status: 'unverified',
+        reason: parsedAgent.form === 'bare-uri' ? 'bare-uri-signature-agent' : 'malformed-signature-fields',
+      };
+    }
     const tagged = candidates.filter((candidate) => (
       stringValue(parameter(candidate.input.parameters, 'tag')) === 'web-bot-auth'
     ));
-    if (tagged.length === 0) return { status: 'unverified', reason: 'no-web-bot-auth-signature' };
+    if (tagged.length === 0) {
+      return {
+        status: 'unverified',
+        reason: parsedAgent.form === 'bare-uri' ? 'bare-uri-signature-agent' : 'no-web-bot-auth-signature',
+      };
+    }
 
     const fetcher = options.fetcher ?? fetch;
     const cache = options.cache ?? sharedCache;
@@ -713,7 +743,9 @@ export async function verifyWebBotAuth(
       if (result.status === 'verified') return result;
       lastFailure = result;
     }
-    return lastFailure;
+    return parsedAgent.form === 'bare-uri'
+      ? { status: 'unverified', reason: 'bare-uri-signature-agent' }
+      : lastFailure;
   } catch {
     return { status: 'unverified', reason: 'verification-error' };
   }

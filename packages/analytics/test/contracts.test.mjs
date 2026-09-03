@@ -421,7 +421,7 @@ test('ingestion stores an unverified signature reason without trusting its claim
     signature_agent: null,
     signature_status: 'unverified',
     reader_kind: 'http-client',
-    reader_reason: 'missing-signature-input',
+    reader_reason: 'no-fetch-metadata; signature:missing-signature-input',
   });
 });
 
@@ -496,7 +496,13 @@ test('reader-kind classifier maps every closed-set code and records one reason',
     trafficClass: 'ai',
     agentName: 'GPTBot',
     signature: { status: 'unverified', reason: 'expired' },
-  }), { kind: 'ai-crawler', reason: 'expired' });
+  }), { kind: 'ai-crawler', reason: 'GPTBot; signature:expired' });
+  assert.deepEqual(classifyReaderKind({
+    ...base,
+    trafficClass: 'bot',
+    agentName: 'DuckDuckBot',
+    signature: { status: 'unverified', reason: 'bare-uri-signature-agent' },
+  }), { kind: 'search-crawler', reason: 'DuckDuckBot; signature:bare-uri-signature-agent' });
 });
 
 test('browser partition keeps beacons, pre-evidence edge rows, and navigation-shaped edge rows while each failed signal demotes', async () => {

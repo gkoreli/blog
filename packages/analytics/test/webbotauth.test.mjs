@@ -17,12 +17,68 @@ const DRAFT_PUBLIC_KEY = {
 };
 const DRAFT_KEY_ID = 'poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U';
 const EMPTY_SIGNATURE = Buffer.alloc(64).toString('base64');
+const DUCKDUCKBOT_AGENT = 'https://bot.duckduckgo.com';
+const DUCKDUCKBOT_KEY_ID = '5HvpfNA946z6lcCXEIOOpzlN5l0mdZE42jdqimEwPf8';
+const DUCKDUCKBOT_PUBLIC_KEY = {
+  kty: 'OKP',
+  crv: 'Ed25519',
+  x: 'pVqc2ohmGpL_H1OJGq7mIGkxAk65mm5JkY7qSdJachE',
+  kid: DUCKDUCKBOT_KEY_ID,
+};
+const DUCKDUCKBOT_CAPTURES = [
+  {
+    now: '2026-09-03T04:59:34Z',
+    signatureInput: `sig1=("@method" "@authority" "@path" "signature-agent");created=1788411573;expires=1788412173;alg="ed25519";tag="web-bot-auth";keyid="${DUCKDUCKBOT_KEY_ID}"`,
+    signature: 'sig1=:63joPbtMnsFXGyPmWp8mkRzsxiT0Ugujee2gB5dFajTA/ODK8bTRdkuM1/gYaU1f5DpDBvn5KMvoRkreGyWtCQ==:',
+  },
+  {
+    now: '2026-09-03T05:14:33Z',
+    signatureInput: `sig1=("@method" "@authority" "@path" "signature-agent");created=1788412472;expires=1788413072;alg="ed25519";tag="web-bot-auth";keyid="${DUCKDUCKBOT_KEY_ID}"`,
+    signature: 'sig1=:gAD62RXq84zpB3ILRjPYkJqt/+RUy7R0zux2xWu1ezA9f+9q1HHltDwS0BzQyJ9JrdVBVMXN8x41duwLDGsdCg==:',
+  },
+  {
+    now: '2026-09-03T06:23:31Z',
+    signatureInput: `sig1=("@method" "@authority" "@path" "signature-agent");created=1788416610;expires=1788417210;alg="ed25519";tag="web-bot-auth";keyid="${DUCKDUCKBOT_KEY_ID}"`,
+    signature: 'sig1=:OOBHjBnAwkkBDGpV26WHYjNhnooOXwjPrKRnlij7pXsG0cfX84LHHXQBYnMTMVyA1KKkzC0XlnqJYlEIRt4ZAA==:',
+  },
+];
+const AHREFSBOT_AGENT = 'https://ahrefs.com';
+const AHREFSBOT_PUBLIC_KEYS = [
+  {
+    kty: 'OKP',
+    crv: 'Ed25519',
+    x: '0g1xFRWdVlSOm1h92tZ4VFl7FWGtvRnTZ0PwuBdJuDU',
+    kid: 'e3vpiy0B6M1Wdxnizw3dqRSgpqS6SXM2qiQ6HtUwZ5g',
+    use: 'sig',
+  },
+  {
+    kty: 'OKP',
+    crv: 'Ed25519',
+    x: 'v02owuOay4qEWYA4r-BZzdwy7ySHU8o1FESfuY4ICro',
+    kid: '0227KWFT1389RBnlR8TLhbMaA_Of2MbNPhmlNICS7eI',
+    use: 'sig',
+  },
+];
+const AHREFSBOT_CAPTURE = {
+  now: '2026-09-03T06:31:53Z',
+  signatureInput: 'sig=("@authority" "signature-agent");created=1788417112;keyid="e3vpiy0B6M1Wdxnizw3dqRSgpqS6SXM2qiQ6HtUwZ5g";alg="ed25519";expires=1788417172;nonce="G1Ywem9vmQEo0fdcGB7X5U9zPBDn7t1bL_ThO2xn3SomHhITaea-gLCYBUaHp0YRIDGvnVmofZM9h6dNaVTTig";tag="web-bot-auth"',
+  signature: 'sig=:+B/zW07ZjErBYQKeX5yYs7W/hTzbARoe9EDTg8WehmDZ6lsQfNgUR0Wrv/ggxa0JCu4RAfBi72XAFYw4I9FNAg==:',
+};
 
-function jsonDirectory() {
-  return new Response(JSON.stringify({ keys: [DRAFT_PUBLIC_KEY] }), {
+function jsonDirectory(keys = [DRAFT_PUBLIC_KEY]) {
+  return new Response(JSON.stringify({ keys }), {
     status: 200,
     headers: { 'Content-Type': 'application/http-message-signatures-directory+json' },
   });
+}
+
+function duckDuckBotRequest(capture, path = '/favicon.ico') {
+  return new Request(`https://gkoreli.com${path}`, { headers: {
+    'User-Agent': 'DuckDuckBot/1.1; (+http://duckduckgo.com/duckduckbot.html)',
+    'Signature-Agent': DUCKDUCKBOT_AGENT,
+    'Signature-Input': capture.signatureInput,
+    Signature: capture.signature,
+  } });
 }
 
 function draftRequest() {
@@ -33,13 +89,26 @@ function draftRequest() {
   } });
 }
 
-test('Signature-Agent parser accepts dictionary members and the deprecated bare string', () => {
+test('Signature-Agent parser accepts dictionary, sf-string, and bare-URI legacy forms', () => {
   assert.deepEqual(parseSignatureAgentHeader('sig="https://agent.example";type=directory'), [
     { key: 'sig', uri: 'https://agent.example', legacy: false },
   ]);
   assert.deepEqual(parseSignatureAgentHeader('"https://legacy.example"'), [
     { key: null, uri: 'https://legacy.example', legacy: true },
   ]);
+  assert.deepEqual(parseSignatureAgentHeader(' \thttps://bot.duckduckgo.com\t '), [
+    { key: null, uri: DUCKDUCKBOT_AGENT, legacy: true },
+  ]);
+  for (const invalid of [
+    'http://bot.duckduckgo.com',
+    'https://bot.duckduckgo.com path',
+    'https://bot.duckduckgo.com,other',
+    'https://bot.duckduckgo.com;type=directory',
+    'https://bot.duckduckgo.com=other',
+    'https://bot.duckduckgo.com"',
+  ]) {
+    assert.equal(parseSignatureAgentHeader(invalid), null);
+  }
   assert.equal(parseSignatureAgentHeader('sig=http://agent.example'), null);
 });
 
@@ -101,6 +170,66 @@ test('Web Bot Auth verifier accepts the draft Ed25519 test vector', async () => 
   assert.deepEqual(result, { status: 'verified', agent: 'https://signature-agent.test' });
   assert.deepEqual(requested, [
     'https://signature-agent.test/.well-known/http-message-signatures-directory',
+  ]);
+});
+
+test('captured DuckDuckBot bare-URI signatures verify with injected directory and fixed clocks', async () => {
+  for (const capture of DUCKDUCKBOT_CAPTURES) {
+    const request = duckDuckBotRequest(capture);
+    const base = buildSignatureBase(request, 'sig1');
+    assert.notEqual(base, null);
+    assert.match(base, /\n"signature-agent": https:\/\/bot\.duckduckgo\.com\n/);
+    const requested = [];
+    const result = await verifyWebBotAuth(request, {
+      now: new Date(capture.now),
+      cache: createWebBotAuthCache(),
+      async fetcher(url) {
+        requested.push(String(url));
+        return jsonDirectory([DUCKDUCKBOT_PUBLIC_KEY]);
+      },
+    });
+    assert.deepEqual(result, { status: 'verified', agent: DUCKDUCKBOT_AGENT });
+    assert.deepEqual(requested, [
+      'https://bot.duckduckgo.com/.well-known/http-message-signatures-directory',
+    ]);
+  }
+});
+
+test('failed bare-URI Signature-Agent verification records the legacy-form reason', async () => {
+  const capture = DUCKDUCKBOT_CAPTURES[0];
+  const result = await verifyWebBotAuth(duckDuckBotRequest(capture, '/changed'), {
+    now: new Date(capture.now),
+    cache: createWebBotAuthCache(),
+    async fetcher() {
+      return jsonDirectory([DUCKDUCKBOT_PUBLIC_KEY]);
+    },
+  });
+  assert.deepEqual(result, { status: 'unverified', reason: 'bare-uri-signature-agent' });
+});
+
+test('captured AhrefsBot sf-string signature with nonce verifies with injected directory and fixed clock', async () => {
+  assert.deepEqual(await Promise.all(AHREFSBOT_PUBLIC_KEYS.map(ed25519JwkThumbprint)), [
+    'e3vpiy0B6M1Wdxnizw3dqRSgpqS6SXM2qiQ6HtUwZ5g',
+    '0227KWFT1389RBnlR8TLhbMaA_Of2MbNPhmlNICS7eI',
+  ]);
+  const request = new Request('https://gkoreli.com/robots.txt', { headers: {
+    'User-Agent': 'Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)',
+    'Signature-Agent': `"${AHREFSBOT_AGENT}"`,
+    'Signature-Input': AHREFSBOT_CAPTURE.signatureInput,
+    Signature: AHREFSBOT_CAPTURE.signature,
+  } });
+  const requested = [];
+  const result = await verifyWebBotAuth(request, {
+    now: new Date(AHREFSBOT_CAPTURE.now),
+    cache: createWebBotAuthCache(),
+    async fetcher(url) {
+      requested.push(String(url));
+      return jsonDirectory(AHREFSBOT_PUBLIC_KEYS);
+    },
+  });
+  assert.deepEqual(result, { status: 'verified', agent: AHREFSBOT_AGENT });
+  assert.deepEqual(requested, [
+    'https://ahrefs.com/.well-known/http-message-signatures-directory',
   ]);
 });
 

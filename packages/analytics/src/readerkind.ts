@@ -192,6 +192,8 @@ export function classifyReaderKind(facts: ReaderKindFacts): ReaderKindResult {
     return { kind: 'signed-agent', reason: facts.signature.agent };
   }
   const result = unsignedReaderKind(facts);
-  if (facts.signature.status === 'unverified') return { ...result, reason: facts.signature.reason };
+  if (facts.signature.status === 'unverified') {
+    return { ...result, reason: `${result.reason}; signature:${facts.signature.reason}` };
+  }
   return result;
 }
