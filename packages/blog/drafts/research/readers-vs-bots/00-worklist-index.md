@@ -16,9 +16,13 @@
 | `02-evidence-ledger.md` | Every number with its query and read time | Fable |
 | `03-standards-and-vocabulary.md` | MRC/IAB, Cloudflare, GA4, Matomo, Plausible, Fathom, GoatCounter, Umami definitions with URLs | Claude opus research worker |
 | `04-open-source-and-asn-lists.md` | What the open-source tools' code actually checks; hosting-ASN list survey; Sec-Fetch precedents | Claude opus research worker |
-| `05-referred-traffic-measurement.md` | TASK-0101: fetch-metadata presence on real referred traffic | Fable, after daytime traffic |
-| `06-rule-and-vocabulary-decision.md` | TASK-0102: the settled predicate and names, with citations | Fable |
-| `07-living-center-and-form.md` | TASK-0103: shape-article output, protected passages | Fable with Goga |
+| `05-citability-and-citation-visibility.md` | Scholar, DOIs (Rogue Scholar, Zenodo), OpenAlex, backlink APIs, cite-this conventions | Claude opus research worker |
+| `06-agent-identification-and-taxonomies.md` | Web Bot Auth, vendor agent UAs, headless fingerprints (with experiment), MeshClaw/Hermes, taxonomies, Cloudflare AI Crawl Control | Claude opus research worker |
+| `07-cloudflare-agent-readiness-and-zone-state.md` | Zone robots.txt, AI Crawl Control state, Agent Readiness scan results | Fable (dashboard read) |
+| `08-agent-native-landscape-2026-09.md` | Dated survey: what is shipping vs proposal in September 2026 | Claude opus research worker |
+| `09-referred-traffic-measurement.md` | TASK-0101: fetch-metadata presence on real referred traffic | Fable, after daytime traffic |
+| `10-rule-and-vocabulary-decision.md` | TASK-0102/0105: the settled reader kinds and predicate, with citations | Fable |
+| `11-living-center-and-form.md` | TASK-0103: shape-article output, protected passages | Fable with Goga |
 
 ## Tasks
 
@@ -29,5 +33,9 @@
 - `TASK-0102` settle rule and names, amend ADR, ship
 - `TASK-0103` living center, form, protected material
 - `TASK-0104` 14-day calibration against Cloudflare Web Analytics
+- `TASK-0105` audience composition taxonomy (PROMPT 0012)
+- `TASK-0106` citable articles and reference visibility (PROMPT 0012)
+
+Decision record for all of the above: `docs/adr/0016.3-audience-composition-and-citable-articles.md`.
 
 Backlog MCP was unreachable (502) when this worklist opened; folder, prompt, and task files were written by hand in the same format.
