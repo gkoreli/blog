@@ -122,7 +122,7 @@ Goga: "dont we already have some raw logs in cloudflare?" We do; Workers Logs ke
 
 ## 9. Network evidence reconstructed for the pre-evidence window (2026-09-03 05:30 UTC)
 
-Goga: "i believe we have correct provenance even for historical data." Zone analytics (8-day retention, `clientIP` served on Free, `clientAsn` refused) plus Team Cymru DNS gave an unambiguous ASN to 1,429 of the 1,962 pre-evidence rows; 714 browser-class rows were on hosting networks (Google Cloud 377, OVH 126, Tencent 133). Migration 0007 stores them with `asn_source = 'zone-sample'`. The `unchecked` kind is retired: beacon rows say `beacon-script-ran`, pre-evidence edge rows say `user-agent-only`. Method and table in artifact 09.
+Goga, verbatim: "│ Unchecked              │ unchecked (rows before 2026-09-03 with no evidence)  why dont we have data for this, i believe we have correct provenance even for historical data" Zone analytics (8-day retention, `clientIP` served on Free, `clientAsn` refused) plus Team Cymru DNS gave an unambiguous ASN to 1,429 of the 1,962 pre-evidence rows; 714 browser-class rows were on hosting networks (Google Cloud 377, OVH 126, Tencent 133). Migration 0007 stores them with `asn_source = 'zone-sample'`. The `unchecked` kind is retired: beacon rows say `beacon-script-ran`, pre-evidence edge rows say `user-agent-only`. Method and table in artifact 09.
 
 ## 10. Production composition after the backfill and the 0.6.0 surface (2026-09-03 05:45 UTC)
 

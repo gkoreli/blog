@@ -53,7 +53,7 @@ ASNs seen carrying automation that were absent from `networks.ts`, verified with
 
 ## History reconstruction: network evidence for 2026-08-27 to 2026-09-03 (2026-09-03 05:30 UTC)
 
-Goga: "i believe we have correct provenance even for historical data." The pre-evidence edge rows (2026-08-26 15:26 to 2026-09-03 01:35 UTC, 1,962 rows) had the User-Agent verdict, path, referrer, country, and device, but no network or header evidence. Two raw sources exist at Cloudflare:
+Goga, verbatim: "│ Unchecked              │ unchecked (rows before 2026-09-03 with no evidence)  why dont we have data for this, i believe we have correct provenance even for historical data" The pre-evidence edge rows (2026-08-26 15:26 to 2026-09-03 01:35 UTC, 1,962 rows) had the User-Agent verdict, path, referrer, country, and device, but no network or header evidence. Two raw sources exist at Cloudflare:
 
 - Workers Logs: three days, full headers. Already gone for most of the window.
 - Zone analytics `httpRequestsAdaptiveGroups` via GraphQL: eight days ("cannot request data older than 1w1d"). On the Free zone the fields `clientAsn`, `clientRefererHost`, `botScore`, and `ja4` are refused, but `clientIP`, `clientRequestPath`, `userAgent`, `clientCountryName`, `datetimeHour`, and `clientDeviceType` are served. The wrangler OAuth token (`zone:read`) is accepted by GraphQL; only the Workers observability endpoint refuses it.

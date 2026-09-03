@@ -41,7 +41,7 @@ The script misses readers who block scripts, and the windows do not align to the
 
 The day I noticed, the edge count said 113 daily readers. One hundred of the 113 loaded exactly one page. 156 of the day's 164 page loads carried no referrer. One "mobile" client fetched 31 different pages in one second. That is what a fake day looks like from inside, and it looks like a good day from the dashboard. My note to the agent that night, verbatim:
 
-> i am seeing daily clients as 113 for today, and it seems unbelievable to me, like which articles are they reading, where are they coming from and so on... I don't want to gaslight ourselves, like something is not adding up
+> i am seeing daily clients as 113 for today, and it seems unbelievable to me, like which articles are they reading, where are they coming from and so on... i just published a new article and its not even coming up in the Top pages by views section... like whats going on... Like sometimes when i publish the post i wanna see for this particular post how many readers have arrived and through which sources, its impossible to figure out. But still the most bizarre is the numbers, who is all reading these articles, it seems insane, which i appreciate but I don't want to gaslight ourselves, like something is not adding up
 
 If your ratio is under two, stop reading and go write. If it is not, the next section is the fix.
 
@@ -99,7 +99,7 @@ What that view shows, for the thirty days to September 2, is small and real. Cha
 
 The frame matters as much as the rules. I started with the advertiser's question, valid traffic versus invalid, and the owner of the site changed it halfway:
 
-> i even want to know the headless browsers on home connections, like Meshclaws or Hermess cloud agents using playwright or cypress or any type of automation, we don't want to miscount or block them, on the contrary, I want to embrace them, anyone can read my articles... I just want full visibility and transparency and categorization
+> i even want to know the headless browsers on home connections, like Meshclaws or Hermess cloud agents using playwright or cypress or any type of automation, we don't want to miscount or block them, on the contrary, I want to embrace them, anyone can read my articles... I just want full visibility and transparency and categorization, like we need to explicitly know who is who (of course with respecting PII), but lots of people might stop reading articles directly and might use their AI agents like Meshclaws and Hermes agents running on the cloud to read my articles and so on, and I want to know who is reading what, like I am trying to understand how people are using my articles... Ideally I would love to have some kind of official citation for my articles as well, like you know how Arxiv or research papers have citations? I want to embrace that as well, like people reading and finding my content valuable and recommending them to cite them as needed, and have some kind of visibility into those citations. Like another example is  how scholar.google.com shows Total citations Cited by 51, something like that would love to.
 
 A census, not a filter. Every kind is a fact about the request, none is a confidence word, and none of them is "human". The only way for an agent to be named as a fact rather than matched by a string is Web Bot Auth, the IETF draft that puts an RFC 9421 signature on the request and a key at a well-known URL. My Worker verifies it with no dependencies and stores the signer's origin. In [the fetcher headers study](/which-ai-fetchers-send-which-headers), DuckDuckGo's assistant was the only one of ten that signed. Since the verifier went live, no signed request has arrived.
 
@@ -121,7 +121,13 @@ The first version shipped with the header checks and the network check together,
 
 The week came back within the hour, marked as recorded before evidence existed. That is now the rule I hold above the classifier: a method change is a dated boundary in the series, never a deletion. Then the label went:
 
-> saying browser-like is a little misleading and screams low confidence, like what is the browser like, do we know deterministically or what?
+> this is kinda confusing, and saying browser-like is a little misleading and screams low confidence, like what is the browser like, do we know deterministically or what? Browsers
+> Browser-like
+> Bots
+> AI UAs
+> All
+>
+> You need to ground yourself better
 
 "Browser-like" described my confidence, not the request. Every label since is a fact the request carried.
 
@@ -137,9 +143,7 @@ Then the raw logs, which had existed all along.
 
 Three days of Worker logs with full headers, 844 successful page loads: 112 navigation-shaped from normal networks, 430 navigation-shaped from hosting networks, 126 declared bots, 49 header-less browser claims outside hosting networks, and all twelve externally referred visits carrying Fetch Metadata. That is where the network check moved ahead of the header checks.
 
-Then history. The rows from the week before the evidence columns had a User-Agent verdict and nothing else, and I had labelled them "unchecked".
-
-> i believe we have correct provenance even for historical data
+Then history. The rows from the week before the evidence columns had a User-Agent verdict and nothing else, and I had labelled them "unchecked". I did not accept that: the rows had exactly the evidence recorded at the time, which is provenance, and the raw sources for that week had not been checked.
 
 Cloudflare's zone analytics keep eight days and, on a free zone, serve the client IP but not the network. So: 1,884 page loads pulled by hour, path, country, device, and IP; 784 addresses resolved to networks through a registry lookup and never stored; each old row matched to its group and given a network only when the whole group agreed. 1,429 of 1,962 rows qualified, and 714 of the browser-class ones sat on hosting providers. On August 31, the day the chart spiked to 402 views, 346 were on hosting networks and 36 were not. Every row now states where its network came from, the request or the reconstruction, and nothing says "unchecked", because nothing is.
 

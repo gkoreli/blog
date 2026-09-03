@@ -309,6 +309,16 @@ Different surfaces serve different audiences. Don't corrupt one to fix the other
 | Visible article date | Readers | Publish date only. Show updated date only for material changes (new section, corrected argument, major rewrite). Not for metadata/orientation fixes. |
 | Orientation sentence | Reader who landed from a bad-fit query | One concrete sentence before the essay voice. Not SEO bait — reader grounding. |
 
+### Quote the Owner Only Verbatim (owner tenet, 2026-09-03)
+
+Never put words in Goga's mouth. A quotation attributed to him, anywhere (posts, prompts files, ADRs, task files, research artifacts, code comments, commit messages), must be a complete prompt message he typed, reproduced exactly: same spelling, same punctuation, same ellipses, no splicing of two messages, no trimming to the good part, no bracketed context inserted inside the quote. If only a fragment is known, or the message cannot be checked against the transcript or a prompts file, paraphrase without quotation marks and say the exact text was not preserved. Full messages may be long; that is fine. The prompts page exists so readers can check.
+
+The owner's words, verbatim, 2026-09-03:
+
+> do not quote me anywhere unless it was literally my verbatim prompt message
+
+Why: his voice is the publication's identity, and a spliced or trimmed quote is a fabrication in his byline even when every word was his once. This applies with the `personal-essays` collaboration protocol, which already forbids the agent from originating his opinions or feelings.
+
 ### Titles Name the Subject (owner tenet, 2026-09-01)
 
 Every title, in every section, names its subject in plain words a stranger could search for: the tool, project, person, problem, or result. `How I Built First-Party Analytics for a Personal Blog` is the model. `Same Hook Name, Different Tensor` is the failure: it names nothing a reader could look for, and it was chosen under the older "literary H1, concrete seoTitle" reading of the split above. That reading is retired. The split still exists for search snippets, but the H1 carries the handle first; a literary phrase may follow it, as the accent half of the title, never instead of it. The slug and the description name the subject too.
