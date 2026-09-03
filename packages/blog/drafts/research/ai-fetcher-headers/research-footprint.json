@@ -6,21 +6,21 @@
     "/Users/goga/.claude/projects/-Users-goga-Documents-goga-blog/c4b4024b-bce0-4186-9977-c402bd7308c1.jsonl"
   ],
   "startedAt": "2026-09-03T03:44:10.071Z",
-  "measuredAt": "2026-09-03T16:26:18.144Z",
-  "wallClockMinutes": 763,
+  "measuredAt": "2026-09-03T16:32:06.573Z",
+  "wallClockMinutes": 768,
   "sessionCount": 4,
   "promptCount": 13,
-  "artifactCount": 8,
-  "committedArtifactCount": 8,
+  "artifactCount": 9,
+  "committedArtifactCount": 9,
   "uncommittedArtifactCount": 0,
   "totals": {
-    "inputTokens": 65329800,
-    "cachedInputTokens": 64005677,
-    "cacheWriteInputTokens": 1277728,
-    "outputTokens": 318856,
-    "reasoningOutputTokens": 66991,
-    "totalTokens": 65648656,
-    "nonCachedInputTokens": 1324123
+    "inputTokens": 76436069,
+    "cachedInputTokens": 75083276,
+    "cacheWriteInputTokens": 1306354,
+    "outputTokens": 338216,
+    "reasoningOutputTokens": 73274,
+    "totalTokens": 76774285,
+    "nonCachedInputTokens": 1352793
   },
   "sources": [
     {
@@ -28,7 +28,7 @@
       "id": "c4b4024b-bce0-4186-9977-c402bd7308c1",
       "path": "/Users/goga/.claude/projects/-Users-goga-Documents-goga-blog/c4b4024b-bce0-4186-9977-c402bd7308c1.jsonl",
       "startedAt": "2026-09-03T03:44:10.071Z",
-      "usageAt": "2026-09-03T16:26:07.067Z",
+      "usageAt": "2026-09-03T16:31:42.351Z",
       "sessions": [
         "c4b4024b-bce0-4186-9977-c402bd7308c1",
         "c4b4024b-bce0-4186-9977-c402bd7308c1/a0f868f79d7a99c9e",
@@ -36,20 +36,20 @@
         "c4b4024b-bce0-4186-9977-c402bd7308c1/adbae234d85bd994f"
       ],
       "sessionCount": 4,
-      "responses": 367,
+      "responses": 389,
       "epochs": {
         "count": 0,
         "resetCount": 0,
         "note": "Claude usage is per API message, not cumulative; epoch logic does not apply."
       },
       "tokens": {
-        "inputTokens": 65329800,
-        "cachedInputTokens": 64005677,
-        "cacheWriteInputTokens": 1277728,
-        "outputTokens": 318856,
-        "reasoningOutputTokens": 66991,
-        "totalTokens": 65648656,
-        "nonCachedInputTokens": 1324123
+        "inputTokens": 76436069,
+        "cachedInputTokens": 75083276,
+        "cacheWriteInputTokens": 1306354,
+        "outputTokens": 338216,
+        "reasoningOutputTokens": 73274,
+        "totalTokens": 76774285,
+        "nonCachedInputTokens": 1352793
       }
     }
   ],
@@ -63,22 +63,22 @@
       "startedAt": "2026-09-03T03:44:10.071Z",
       "cwd": "/Users/goga/Documents/goga/blog",
       "log": "c4b4024b-bce0-4186-9977-c402bd7308c1.jsonl",
-      "logBytes": 3288822,
-      "usageRecordLine": 1789,
-      "usageAt": "2026-09-03T16:26:07.067Z",
-      "prefixSha256": "276a4379294ba245137825e2523dc9aff883739905d515a72c92d664c369375b",
+      "logBytes": 3491463,
+      "usageRecordLine": 1919,
+      "usageAt": "2026-09-03T16:31:42.351Z",
+      "prefixSha256": "b89aec3aba494eeac2cfe0790b4eaf88582a807b386f429a2055cd9acb8a2c29",
       "usageEpochCount": 0,
       "usageEpochs": [],
-      "responseCount": 186,
-      "duplicateUsageRecordCount": 289,
+      "responseCount": 208,
+      "duplicateUsageRecordCount": 311,
       "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; reasoning output is message.usage.output_tokens_details.thinking_tokens, counted once per API message.",
       "usage": {
-        "input_tokens": 54076025,
-        "cached_input_tokens": 53083705,
-        "cache_write_input_tokens": 964889,
-        "output_tokens": 312745,
-        "reasoning_output_tokens": 66403,
-        "total_tokens": 54388770
+        "input_tokens": 65182294,
+        "cached_input_tokens": 64161304,
+        "cache_write_input_tokens": 993515,
+        "output_tokens": 332105,
+        "reasoning_output_tokens": 72686,
+        "total_tokens": 65514399
       }
     },
     {
