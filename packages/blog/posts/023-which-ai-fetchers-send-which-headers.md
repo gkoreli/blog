@@ -61,7 +61,7 @@ Every assistant in the table was reached. Copilot demands a sign-in and was prob
 
 OpenAI's fetcher is what every other fetcher should be measured against. The User-Agent matches OpenAI's [published string](https://developers.openai.com/api/docs/bots) character for character. The source address, `9.129.45.186`, is inside the range OpenAI publishes at `openai.com/chatgpt-user.json`. The `Accept` header is the same list Chrome sends, `Accept-Language` is present, and the request came over HTTP/2 with an Envoy timeout header of 15 seconds, which tells you roughly how long OpenAI is willing to wait for your page.
 
-The ChatGPT mobile app uses the same fetcher: a probe sent from the iPhone app produced one request with an identical User-Agent and header set, again from an address in OpenAI's list.
+The ChatGPT mobile app uses the same fetcher: a probe sent from the iPhone app produced one request with an identical User-Agent and header set, again from an address in OpenAI's list. That probe pointed at a 404 page, and ChatGPT reported the status correctly but said no body or heading was returned. The server sent a full 404 page with a heading; the tool discarded it. DuckDuckGo's tool did the same, while Grok and Mistral read the 404 page's heading. How much of a non-200 response an assistant lets its model see varies by vendor.
 
 Two things to know. First, OpenAI states plainly that "because these actions are initiated by a user, robots.txt rules may not apply" to ChatGPT-User. Second, after fetching the probe URL, ChatGPT also fetched the homepage three seconds later, unprompted. One question produced two page loads.
 
