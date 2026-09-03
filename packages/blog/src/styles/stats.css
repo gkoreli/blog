@@ -8,6 +8,7 @@
 .stats-filter legend { margin-bottom: 0.3rem; font-size: 0.72rem; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
 .stats-pills { display: flex; gap: 0.25rem; }
 .stats-pills button,
+.stats-scope-clear,
 .stats-retry {
   font-family: var(--font-sans);
   font-size: 0.8rem;
@@ -20,8 +21,10 @@
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 .stats-pills button:hover,
+.stats-scope-clear:hover,
 .stats-retry:hover { background: var(--color-surface); color: var(--color-text); }
 .stats-pills button:focus-visible,
+.stats-scope-clear:focus-visible,
 .stats-retry:focus-visible { outline: 2px solid var(--color-link); outline-offset: 2px; }
 .stats-pills button[aria-pressed='true'] { background: var(--color-surface); border-color: var(--color-text-muted); color: var(--color-text); font-weight: 600; }
 
@@ -29,6 +32,9 @@
 .stats-status-error { padding: 1.25rem; border: 1px solid var(--color-border); border-radius: 0.5rem; text-align: center; }
 .stats-retry { margin-left: 0.4rem; color: var(--color-text); }
 .stats-period { margin-bottom: 1rem; color: var(--color-text-muted); font-size: 0.8rem; }
+.stats-scope { margin: -0.35rem 0 1rem; color: var(--color-text-muted); font-size: 0.8rem; white-space: nowrap; overflow-x: auto; }
+.stats-scope-value { color: var(--color-text); font-family: var(--font-mono); font-weight: 600; }
+.stats-scope-clear { margin-left: 0.2rem; padding: 0.15rem 0.45rem; font-size: 0.72rem; }
 
 .stats-totals { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
 .stats-card { padding: 1rem; border: 1px solid var(--color-border); border-radius: 0.5rem; flex: 1 1 180px; }
@@ -67,6 +73,8 @@
 .stats-label { position: relative; z-index: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 a.stats-label { color: var(--color-link); }
 .stats-value { position: relative; z-index: 1; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--color-text-muted); }
+.stats-row-actions { position: relative; z-index: 1; display: inline-flex; align-items: baseline; gap: 0.5rem; white-space: nowrap; }
+.stats-open { font-size: 0.75rem; color: var(--color-link); }
 .stats-empty { color: var(--color-text-muted); font-style: italic; padding: 1rem 0; }
 
 .stats-methodology { margin-top: 2.5rem; padding: 1.25rem; border: 1px solid var(--color-border); border-radius: 0.5rem; color: var(--color-text-muted); font-size: 0.85rem; }

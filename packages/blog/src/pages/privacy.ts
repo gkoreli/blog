@@ -1,6 +1,14 @@
 import { staticHtml as html, raw } from '@nisli/core/static';
+import { ANALYTICS_EVIDENCE_SINCE } from '@gkoreli/analytics/contracts';
 
 const ext = (url: string) => raw(`href="${url}" target="_blank" rel="noopener"`);
+
+const evidenceDate = new Intl.DateTimeFormat('en-US', {
+  timeZone: 'UTC',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(new Date(`${ANALYTICS_EVIDENCE_SINCE}T00:00:00Z`));
 
 export function privacyPage() {
   return html`<article class="post-content">
@@ -10,7 +18,7 @@ export function privacyPage() {
 
   <h2>First-party analytics</h2>
 
-  <p>For a successful, non-prefetch GET that serves an HTML page, this site records the page path, referring hostname, country, a daily pseudonymous client ID, a heuristic traffic class (browser, bot, or AI User-Agent), the matched User-Agent rule name when available, device type, whether the request is mine, and the UTC observation time. It does not record query strings, full referrer URLs, city, continent, raw IP addresses, or raw User-Agent strings for these edge observations.</p>
+  <p>For a successful, non-prefetch GET that serves an HTML page, this site records the page path, referring hostname, country, a daily pseudonymous client ID, a heuristic traffic class (browser, bot, or AI User-Agent), the matched User-Agent rule name when available, device type, the request's network (autonomous system number and organization name, such as an internet provider or cloud host), the values of the Fetch Metadata headers Sec-Fetch-Mode, Sec-Fetch-Dest, Sec-Fetch-Site, and Sec-Fetch-User when a browser sends them, whether the Accept header included HTML, and whether an Accept-Language header was present (the Accept and Accept-Language values themselves are not stored), whether the request is mine, and the UTC observation time. It does not record query strings, full referrer URLs, city, continent, raw IP addresses, or raw User-Agent strings for these edge observations. This request evidence has been collected since ${evidenceDate}.</p>
 
   <p>The edge daily client ID is the first 128 bits of an HMAC-SHA-256 value derived from the site host, UTC date, IP address, and User-Agent using a secret key. The IP address and User-Agent are processed transiently to create it but are not stored. The ID can link requests within one UTC day; it is not anonymous, does not identify a person, and cannot establish the same client across dates, devices, or networks. Public stats exclude rows marked as mine; owner marking depends on server-side configuration and may not identify every request I make. Recording is best effort and uses no cookies.</p>
 

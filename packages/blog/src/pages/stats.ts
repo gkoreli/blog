@@ -1,4 +1,5 @@
 import { staticHtml as html, raw } from '@nisli/core/static';
+import { ANALYTICS_EVIDENCE_SINCE } from '@gkoreli/analytics/contracts';
 
 export const statsHead = `<link rel="stylesheet" href="/stats.css">
   <script type="module" src="/stats.js"></script>`;
@@ -6,6 +7,13 @@ export const statsHead = `<link rel="stylesheet" href="/stats.css">
 function listSkeleton(rows: number): string {
   return Array.from({ length: rows }, () => '<div class="skeleton skeleton-row"></div>').join('');
 }
+
+const evidenceDate = new Intl.DateTimeFormat('en-US', {
+  timeZone: 'UTC',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(new Date(`${ANALYTICS_EVIDENCE_SINCE}T00:00:00Z`));
 
 export function statsPage() {
   return html`<article>
@@ -19,6 +27,7 @@ export function statsPage() {
         <legend>Traffic</legend>
         <div class="stats-pills">
           <button type="button" data-traffic="browser" aria-pressed="true">Browsers</button>
+          <button type="button" data-traffic="browserlike" aria-pressed="false">Browser-like</button>
           <button type="button" data-traffic="bot" aria-pressed="false">Bots</button>
           <button type="button" data-traffic="ai" aria-pressed="false">AI UAs</button>
           <button type="button" data-traffic="all" aria-pressed="false">All</button>
@@ -40,6 +49,8 @@ export function statsPage() {
 
   <div id="stats-dashboard" aria-busy="true">
     <div class="stats-period" id="stats-period"><span class="skeleton skeleton-text"></span></div>
+
+    <p class="stats-scope" id="stats-scope" hidden></p>
 
     <div class="stats-totals" id="stats-totals">
       <div class="stats-card"><div class="skeleton skeleton-value"></div><div class="stats-card-label">Page views</div></div>
@@ -91,9 +102,10 @@ export function statsPage() {
     <h2 id="stats-methodology-heading">What these numbers mean</h2>
     <p>A page view is one recorded page event. Since the August 26, 2026 cutover, that means a successful, non-prefetch GET that served HTML at the edge. API requests, assets, redirects, errors, feeds, and non-HTML responses do not count. Recording is best effort. Rows marked as mine are excluded from public queries, but that marking depends on server-side configuration and is not currently proven for all of my requests.</p>
     <p>The history before the cutover remains included because it is useful. Those rows came from the former browser JavaScript beacon, so they represent browser-rendered page events and beacon-capable automation rather than every served page. Treat the cutover as a measurement-method change, not a claim that the two eras are identical.</p>
-    <p>Browsers, Bots, and AI UAs are heuristic classes based on sender-provided User-Agent strings; they are not verified identities. An AI-UA match does not prove that a model read, indexed, cited, or used a page.</p>
+    <p>Bots and AI UAs are heuristic classes matched on sender-provided User-Agent rules. Browsers are requests whose User-Agent looks like a browser and that also arrived shaped like a browser navigation: a Sec-Fetch-Mode of navigate, a Sec-Fetch-Dest of document, an Accept header that includes HTML, and an Accept-Language header, from a network that is not on a short list of cloud and VPS providers. Browser-like are browser User-Agents that failed one of those checks, or that were recorded between August 26 and ${evidenceDate}, before the site collected that evidence. Rows from the browser-beacon era count as Browsers because they ran JavaScript in a browser by construction.</p>
+    <p>Browsers is not a verified-human count. A headless browser on a home connection passes the checks, and a reader on a browser older than Safari 16.4 or Chrome 80 does not. An AI-UA match does not prove that a model read, indexed, cited, or used a page. Filtering by a page or by a matched rule applies the same window and class to every panel on this page.</p>
     <p>A daily client is a per-day pseudonymous identifier, not a person. Edge observations use a secret HMAC over the site, UTC date, IP address, and User-Agent; historical beacon rows use their original daily identifiers. Neither method establishes the same client across dates, devices, or networks. Hourly daily-client values are not additive.</p>
-    <p><a href="/privacy">Privacy details</a> · <a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016-analytics-observation-semantics.md">Engineering decision</a></p>
+    <p><a href="/privacy">Privacy details</a> · <a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016-analytics-observation-semantics.md">Engineering decision</a> · <a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016.2-browser-evidence-and-reader-tier.md">Browser evidence</a></p>
   </aside>
 </article>`;
 }

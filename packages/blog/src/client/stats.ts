@@ -4,12 +4,23 @@ import type { StatsResponse, TrafficFilter } from '@gkoreli/analytics/contracts'
 import '../styles/stats.css';
 
 type RangeFilter = '7d' | '30d' | '90d' | 'all';
-type ViewState = { range: RangeFilter; traffic: TrafficFilter };
-type RankedItem = { label: string; views: number; href?: string };
+type ViewState = {
+  range: RangeFilter;
+  traffic: TrafficFilter;
+  path: string | null;
+  agent: string | null;
+};
+type RankedItem = {
+  label: string;
+  views: number;
+  href?: string;
+  openHref?: string;
+  openAriaLabel?: string;
+};
 
 const MAX_ITEMS = 10;
 const CHART_HEIGHT = 300;
-const DEFAULT_STATE: ViewState = { range: '30d', traffic: 'browser' };
+const DEFAULT_STATE: ViewState = { range: '30d', traffic: 'browser', path: null, agent: null };
 const SPECIAL_COUNTRIES: Record<string, string> = {
   T1: '🔒 Tor',
   XX: '🌐 Unknown',
@@ -36,30 +47,52 @@ function parseRange(value: string | null): RangeFilter {
   }
 }
 
-function parseTraffic(value: string | null): TrafficFilter {
+function parseTraffic(value: string | null, fallback: TrafficFilter): TrafficFilter {
   switch (value) {
     case 'browser':
+    case 'browserlike':
     case 'bot':
     case 'ai':
     case 'all':
       return value;
     default:
-      return DEFAULT_STATE.traffic;
+      return fallback;
   }
+}
+
+function optionalFilter(value: string | null): string | null {
+  return value === null || value.length === 0 ? null : value;
 }
 
 function getState(): ViewState {
   const params = new URLSearchParams(location.search);
+  const path = optionalFilter(params.get('path'));
+  const agent = optionalFilter(params.get('agent'));
   return {
     range: parseRange(params.get('range')),
-    traffic: parseTraffic(params.get('traffic')),
+    traffic: parseTraffic(params.get('traffic'), agent === null ? DEFAULT_STATE.traffic : 'all'),
+    path,
+    agent,
   };
 }
 
-function pushState(state: ViewState): void {
+function paramsForState(state: ViewState): URLSearchParams {
   const params = new URLSearchParams();
   if (state.range !== DEFAULT_STATE.range) params.set('range', state.range);
-  if (state.traffic !== DEFAULT_STATE.traffic) params.set('traffic', state.traffic);
+  const defaultTraffic = state.agent === null ? DEFAULT_STATE.traffic : 'all';
+  if (state.traffic !== defaultTraffic) params.set('traffic', state.traffic);
+  if (state.path !== null) params.set('path', state.path);
+  if (state.agent !== null) params.set('agent', state.agent);
+  return params;
+}
+
+function stateHref(state: ViewState): string {
+  const query = paramsForState(state).toString();
+  return query ? `${location.pathname}?${query}` : location.pathname;
+}
+
+function pushState(state: ViewState): void {
+  const params = paramsForState(state);
   const query = params.toString();
   history.pushState({}, '', query ? `?${query}` : location.pathname);
 }
@@ -76,6 +109,8 @@ function updateControls(state: ViewState): void {
 
 async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsResponse> {
   const params = new URLSearchParams({ range: state.range, traffic: state.traffic });
+  if (state.path !== null) params.set('path', state.path);
+  if (state.agent !== null) params.set('agent', state.agent);
   const response = await fetch(`/api/stats?${params}`, { signal });
   if (!response.ok) throw new Error(`Stats request failed with ${response.status}`);
   const data: StatsResponse = await response.json();
@@ -180,7 +215,42 @@ function renderTotals(totals: StatsResponse['totals']): void {
   });
 }
 
-function replaceSectionRows(containerId: string, items: RankedItem[]): void {
+function renderScope(filters: StatsResponse['filters']): void {
+  const scope = element('stats-scope');
+  scope.replaceChildren();
+  const active = [
+    filters.path === null ? null : {
+      label: 'Page',
+      value: filters.path,
+      filter: 'path',
+      ariaLabel: 'Clear page filter',
+    },
+    filters.agent === null ? null : {
+      label: 'Agent',
+      value: filters.agent,
+      filter: 'agent',
+      ariaLabel: 'Clear agent filter',
+    },
+  ].filter((item) => item !== null);
+
+  scope.hidden = active.length === 0;
+  active.forEach((item, index) => {
+    if (index > 0) scope.append(' · ');
+    scope.append(`${item.label} `);
+    const value = document.createElement('span');
+    value.className = 'stats-scope-value';
+    value.textContent = item.value;
+    const clear = document.createElement('button');
+    clear.type = 'button';
+    clear.className = 'stats-scope-clear';
+    clear.dataset.clearFilter = item.filter;
+    clear.setAttribute('aria-label', item.ariaLabel);
+    clear.textContent = 'Clear';
+    scope.append(value, ' ', clear);
+  });
+}
+
+function replaceSectionRows(containerId: string, items: RankedItem[], limit: number | null = MAX_ITEMS): void {
   const section = element(containerId);
   const heading = section.querySelector('h2');
   section.replaceChildren();
@@ -194,8 +264,9 @@ function replaceSectionRows(containerId: string, items: RankedItem[]): void {
     return;
   }
 
-  const max = items[0]?.views ?? 0;
-  for (const item of items.slice(0, MAX_ITEMS)) {
+  const visibleItems = limit === null ? items : items.slice(0, limit);
+  const max = visibleItems.reduce((highest, item) => Math.max(highest, item.views), 0);
+  for (const item of visibleItems) {
     const row = document.createElement('div');
     row.className = 'stats-row';
 
@@ -213,7 +284,19 @@ function replaceSectionRows(containerId: string, items: RankedItem[]): void {
     value.className = 'stats-value';
     value.textContent = formatViewCount(item.views);
 
-    row.append(bar, label, value);
+    const actions = document.createElement('span');
+    actions.className = 'stats-row-actions';
+    actions.appendChild(value);
+    if (item.openHref !== undefined) {
+      const open = document.createElement('a');
+      open.className = 'stats-open';
+      open.href = item.openHref;
+      open.textContent = 'open';
+      if (item.openAriaLabel !== undefined) open.setAttribute('aria-label', item.openAriaLabel);
+      actions.appendChild(open);
+    }
+
+    row.append(bar, label, actions);
     section.appendChild(row);
   }
 }
@@ -224,10 +307,13 @@ function pageHref(path: string): string | undefined {
     : undefined;
 }
 
-function pageItem(row: StatsResponse['byPath'][number]): RankedItem {
-  const item = { label: row.path, views: row.views };
-  const href = pageHref(row.path);
-  return href === undefined ? item : { ...item, href };
+function pageItem(row: StatsResponse['byPath'][number], state: ViewState): RankedItem {
+  const openHref = pageHref(row.path);
+  const item: RankedItem = state.path === null
+    ? { label: row.path, views: row.views, href: stateHref({ ...state, path: row.path }) }
+    : { label: row.path, views: row.views };
+  if (openHref === undefined) return item;
+  return { ...item, openHref, openAriaLabel: `Open ${row.path}` };
 }
 
 function renderDevices(rows: StatsResponse['byDevice'], totalViews: number, traffic: TrafficFilter): void {
@@ -345,18 +431,26 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   }
   setDashboardVisible(true);
   renderPeriod(data.period);
+  renderScope(data.filters);
   renderTotals(data.totals);
   renderDevices(data.byDevice, data.totals.views, state.traffic);
   renderChart(data);
-  replaceSectionRows('stats-pages', data.byPath.map(pageItem));
-  replaceSectionRows('stats-referrers', data.byReferrer.map(row => ({ label: row.referrerHost, views: row.views })));
+  replaceSectionRows('stats-pages', data.byPath.map((row) => pageItem(row, state)));
+  const referrers: RankedItem[] = data.byReferrer.map(row => ({ label: row.referrerHost, views: row.views }));
+  if (referrers.length > 0 || data.totals.unattributedViews > 0) {
+    referrers.push({ label: 'No referrer', views: data.totals.unattributedViews });
+  }
+  replaceSectionRows('stats-referrers', referrers, null);
   replaceSectionRows('stats-countries', data.byCountry.map(row => ({ label: countryLabel(row.country), views: row.views })));
   const agentSection = element('stats-agents');
   agentSection.hidden = data.byAgent.length === 0;
   if (data.byAgent.length > 0) {
-    const agents = data.byAgent.map(row => ({
+    const agents: RankedItem[] = data.byAgent.map(row => ({
       label: `${row.agentName} UA rule · ${row.trafficClass === 'ai' ? 'AI' : 'Bot'}`,
       views: row.views,
+      ...(state.agent === null
+        ? { href: stateHref({ ...state, agent: row.agentName, traffic: row.trafficClass }) }
+        : {}),
     }));
     replaceSectionRows('stats-agents', agents);
   }
@@ -405,11 +499,37 @@ document.querySelector('.stats-controls')?.addEventListener('click', event => {
 
   const traffic = button.dataset.traffic;
   const days = button.dataset.days;
+  const nextTraffic = traffic ? parseTraffic(traffic, currentState.traffic) : currentState.traffic;
+  let agent = currentState.agent;
+  if (traffic && agent !== null && nextTraffic !== currentState.traffic && nextTraffic !== 'all') {
+    const matchedAgent = currentData?.byAgent.find((row) => row.agentName === agent);
+    if (matchedAgent?.trafficClass !== nextTraffic) agent = null;
+  }
   const state: ViewState = {
-    traffic: traffic ? parseTraffic(traffic) : currentState.traffic,
+    traffic: nextTraffic,
     range: days ? parseRange(days === '0' ? 'all' : `${days}d`) : currentState.range,
+    path: currentState.path,
+    agent,
   };
-  if (state.traffic === currentState.traffic && state.range === currentState.range) return;
+  if (state.traffic === currentState.traffic
+    && state.range === currentState.range
+    && state.path === currentState.path
+    && state.agent === currentState.agent) return;
+  pushState(state);
+  void load(state);
+});
+
+element('stats-scope').addEventListener('click', event => {
+  if (!(event.target instanceof Element)) return;
+  const button = event.target.closest('button');
+  if (!(button instanceof HTMLButtonElement)) return;
+  const filter = button.dataset.clearFilter;
+  const state: ViewState = filter === 'path'
+    ? { ...currentState, path: null }
+    : filter === 'agent'
+      ? { ...currentState, agent: null }
+      : currentState;
+  if (state === currentState) return;
   pushState(state);
   void load(state);
 });
