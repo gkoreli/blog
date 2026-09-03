@@ -1,9 +1,9 @@
 ---
 title: "Which AI Fetchers Send Which Headers, Measured on a Live Site"
 seoTitle: "ChatGPT, Claude, Gemini and Grok Fetcher Headers, Measured"
-alternativeHeadline: "The request headers, networks and identities of ChatGPT-User, Claude-User, Gemini, Grok, Claude Code and Codex, captured at a Cloudflare Worker"
+alternativeHeadline: "The request headers, networks, IP lists and signatures of ChatGPT-User, Claude-User, MistralAI-User, DuckAssistBot, Gemini, Grok, Perplexity, Claude Code and Codex, captured at a Cloudflare Worker"
 date: "2026-09-03"
-description: "What ChatGPT, Claude, Gemini, Grok, Claude Code and Codex actually send when they fetch a web page: User-Agent, Accept, Fetch Metadata, IP ranges, and who cannot be identified at all. Captured on a live Cloudflare Worker."
+description: "What ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, DuckDuckGo, Claude Code and Codex actually send when they fetch a web page: User-Agent, Accept, Fetch Metadata, IP ranges, Web Bot Auth signatures, and who cannot be identified at all. Captured on a live Cloudflare Worker."
 section: engineering
 tags: [ai-agents, analytics, cloudflare-workers, http, observability, agentic-engineering]
 series:
