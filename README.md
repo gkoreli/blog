@@ -62,4 +62,4 @@ Every post can have a companion `prompts/{slug}.prompts.md` file with the raw `-
 This repository is dual-licensed:
 
 - Source code is licensed under the [MIT License](./LICENSE-MIT).
-- Text published on gkoreli.com is licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). Original images remain under [CC BY-NC-ND 4.0](./LICENSE-CC-BY-NC-ND-4.0).
+- Blog posts, prompts, and images are licensed under [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International](./LICENSE-CC-BY-NC-ND-4.0).

@@ -376,8 +376,9 @@ Everything below is derived from `PostMeta[]` + prompts files at build time. Add
 | `/{slug}.bib` — BibTeX citation | `PostMeta` + content license constant | Any post add/edit |
 | `/{slug}/index.html` — JSON-LD, canonical, og:url | `PostMeta` + `ogImage` | Any post add/edit |
 | `/{slug}/prompts/index.html` — canonical | Prompts file existence | Prompts file add/edit |
-| `feed.xml` — RSS items + text license | `PostMeta.title`, `.slug`, `.description`, `.date` + content license constant | Any post add/edit |
-| `robots.txt` — access policy, Content Signal, sitemap | Site policy constants | Build |
+| `feed.xml` — RSS items | `PostMeta.title`, `.slug`, `.description`, `.date` | Any post add/edit |
+| `license/index.html` — published content license | Repository `LICENSE` content section | License change |
+| `robots.txt` — access, content signal, license, sitemap | Content license constant + site URL | License or crawler-policy change |
 | `rel="canonical"` — self-referencing on every page | `currentSlug` in `pageShell()` | Automatic |
 | `og:url` — matches canonical | Same as canonical | Automatic |
 

@@ -42,20 +42,8 @@ function canonicalUrl(meta: PostMeta): string {
 }
 
 function bibtexKey(meta: PostMeta, year: number): string {
-  const firstTitleWord = meta.title.normalize('NFKD').match(/[A-Za-z0-9]+/)?.[0]?.toLowerCase() ?? 'post';
+  const firstTitleWord = meta.title.match(/[A-Za-z0-9]+/)?.[0]?.toLowerCase() ?? 'post';
   return `koreli${year}${firstTitleWord}`;
-}
-
-function bibtexValue(value: string): string {
-  let escaped = '';
-  for (const character of value) {
-    if (character === '\\') escaped += '\\textbackslash{}';
-    else if (character === '^') escaped += '\\textasciicircum{}';
-    else if (character === '~') escaped += '\\textasciitilde{}';
-    else if ('{}%&#_$'.includes(character)) escaped += `\\${character}`;
-    else escaped += character;
-  }
-  return escaped;
 }
 
 export function cslJson(meta: PostMeta): string {
@@ -78,7 +66,7 @@ export function bibtex(meta: PostMeta): string {
   const { year, monthName } = citationDate(meta.date);
   return `@misc{${bibtexKey(meta, year)},
   author={Koreli, Goga},
-  title={${bibtexValue(meta.title)}},
+  title={${meta.title}},
   year={${year}},
   month={${monthName}},
   howpublished={gkoreli.com},

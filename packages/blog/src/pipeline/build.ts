@@ -1,7 +1,7 @@
 import { rmSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { basename, join, relative } from 'node:path';
 import { build as esbuild } from 'esbuild';
-import { DIST, SRC, ESBUILD_ENTRIES } from '../lib/paths.js';
+import { DIST, SRC, ESBUILD_ENTRIES, REPO_ROOT } from '../lib/paths.js';
 import { discoverPosts, writeOutput, writeRoot, copyAssets } from '../lib/fs.js';
 import { initMarkdown, renderMarkdown } from '../lib/markdown.js';
 import { parsePost, validatePosts, parsePrompts } from '../lib/frontmatter.js';
@@ -25,8 +25,10 @@ import { animationsLabPage } from '../pages/animations-lab.js';
 import { essaysPage } from '../pages/essays.js';
 import { engineeringPage } from '../pages/engineering.js';
 import { ossRadarPage } from '../pages/oss-radar.js';
+import { licensePage } from '../pages/license.js';
 import { cslJson, bibtex, citationMarkdown } from '../templates/citation.js';
 import { robotsTxt } from '../templates/robots.js';
+import { CONTENT_LICENSE } from '../lib/license.js';
 
 export { DIST } from '../lib/paths.js';
 
@@ -34,6 +36,16 @@ const PUBLICATION_OG_IMAGE_ALT = 'gkoreli.com social card reading “Agentic Eng
 
 function postOgImageAlt(title: string): string {
   return `gkoreli.com social card reading “${title}” and “Where excitement ends, depth begins.”`;
+}
+
+function contentLicenseMarkdown(): string {
+  const repositoryLicense = readFileSync(join(REPO_ROOT, 'LICENSE'), 'utf-8');
+  const heading = `## Content (${CONTENT_LICENSE.name})`;
+  const start = repositoryLicense.indexOf(heading);
+  if (start < 0) throw new Error(`Repository LICENSE is missing the ${heading} section`);
+
+  // This section becomes a standalone page, so promote its heading without changing its text.
+  return repositoryLicense.slice(start).trim().replace(/^## /, '# ');
 }
 
 /** Step 1: Clean and prepare dist */
@@ -264,6 +276,10 @@ export async function buildHTML(): Promise<void> {
   const privacyBody = privacyPage();
   const privacyShell = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody.toString(), canonicalPath: '/privacy', currentSlug: 'privacy', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
   writeOutput('privacy', privacyShell.toString());
+
+  const licenseBody = licensePage(await renderMarkdown(contentLicenseMarkdown()));
+  const licenseShell = pageShell({ title: 'Content License', description: 'The license for articles, essays, images, and prompts published on gkoreli.com.', content: licenseBody.toString(), canonicalPath: '/license', currentSlug: 'license', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
+  writeOutput('license', licenseShell.toString());
 
   const dlBody = designLanguagePage();
   const dlShell = pageShell({ title: 'Design Language', description: 'The design substrate of gkoreli.com — palette, typography, glass surfaces, canvas moods, section identities, and philosophy.', content: dlBody.toString(), canonicalPath: '/design-language', currentSlug: 'design-language', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, noindex: true, scripts: ['/canvas.js'] });
@@ -563,7 +579,7 @@ export function validateHtmlOutput(): void {
     problems.push('_headers: missing');
   } else {
     const headers = readFileSync(headersFile, 'utf-8');
-    for (const path of ['/*.md', '/*.csl.json', '/*.bib', '/llms-full.txt', '/posts.json']) {
+    for (const path of ['/*.md', '/llms-full.txt', '/posts.json']) {
       const block = headerBlock(headers, path);
       const noindex = block?.some(header => header.toLowerCase() === 'x-robots-tag: noindex') ?? false;
       if (!noindex) problems.push(`_headers: ${path} must set X-Robots-Tag: noindex`);
