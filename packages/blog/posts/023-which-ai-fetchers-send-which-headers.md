@@ -14,14 +14,14 @@ series:
 researchFootprint:
   sessions: 4
   artifacts: 9
-  totalTokens: 76774285
-  inputTokens: 76436069
-  cachedInputTokens: 75083276
-  outputTokens: 338216
-  reasoningOutputTokens: 73274
-  wallClockMinutes: 768
+  totalTokens: 96338161
+  inputTokens: 95960671
+  cachedInputTokens: 94544659
+  outputTokens: 377490
+  reasoningOutputTokens: 88584
+  wallClockMinutes: 790
   startedAt: "2026-09-03T03:44:10.071Z"
-  measuredAt: "2026-09-03T16:32:06.573Z"
+  measuredAt: "2026-09-03T16:54:06.410Z"
   provenanceUrl: "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/ai-fetcher-headers"
 ---
 
@@ -196,7 +196,9 @@ This section is for anyone who counts visitors on their own server, whether with
 
 **Some reads leave no trace at the time.** Codex's and Perplexity's correct answers arrived with no request, Copilot's tool reported a result for a page it never asked for, and the one fetch that did come later was unattributable. Your logs are a lower bound on AI reading, not a measurement of it.
 
-**Do not trust your own labels until you have seen the raw requests.** The live version of this Worker at the time of the capture did not yet recognise the `Claude-User` token, so the Claude fetches were stored as browsers with `Accept: */*` and no language header, and it filed DuckAssistBot under `DuckDuckBot`, the search crawler. Both fixes were merged and deployed later the same day. Header-level captures like these are how a classifier's errors get found; aggregate dashboards do not show them.
+**Do not trust your own labels until you have seen the raw requests.** The live version of this Worker at the time of the capture did not yet recognise the `Claude-User` token, so the Claude fetches were stored as browsers with `Accept: */*` and no language header, and it filed DuckAssistBot under `DuckDuckBot`, the search crawler. Both fixes were merged and deployed later the same day.
+
+Ten hours after this article was published I read the 42 requests its own stats page had counted as browsers. Seven were me, because owner exclusion matched an address that had since changed. Fourteen were infrastructure: the Wayback Machine archiving the page four seconds after a link was posted, a bare-metal host fetching the same URL twice at identical timestamps, a data-centre proxy network sending a referrer that no browser sends. About twenty-one were plausible readers. The classifier was missing five hosting networks and had no rule for archivers at all. Header-level captures like these are how a classifier's errors get found, and reading your own rows one by one is how you find the rest; aggregate dashboards show neither.
 
 ## AI fetcher probe method and limits
 
@@ -235,6 +237,7 @@ The probes will be repeated monthly and this page updated in place, with differe
 
 ### Changelog
 
+- **2026-09-03, revision 3.** Added what reading this page's own first-day requests found: of the 42 counted as browsers, seven were the author, fourteen were infrastructure and about twenty-one were plausible readers. The three classifier defects behind that are recorded in ADR-0016.4 and fixed.
 - **2026-09-03, revision 2.** Corrections after an audit of the article against its artifacts: exact prompts printed; run counts, request counts and network mixes recomputed from the data files; absence claims scoped to the pages, files and lists checked; the late Codex fetch and Perplexity's answer described as hypotheses where the mechanism is inferred; Grok's undetectability scoped to the anonymous path; signing claims scoped to observed requests and served directories; the data files split into assigned probes, attributed side requests and stray requests; `lastModified` added.
 - **2026-09-03, revision 1.** Published with ten assistants, the open-source detector comparison, the DuckAssistBot signature verified by key id and then in full by the Worker, and the correction of network names from Cloudflare's organisation strings to registry holders.
 
