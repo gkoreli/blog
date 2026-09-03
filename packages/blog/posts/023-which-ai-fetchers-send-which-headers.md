@@ -56,8 +56,8 @@ Each assistant was given a fresh chat and asked to open a URL unique to it, eith
 | Mistral (Vibe), 2 requests | `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; MistralAI-User/1.0; +https://docs.mistral.ai/robots)` | browser-shaped, plus `application/json` | `en-US,en;q=0.9` (first request) | `navigate` / `document` / `none`, `Sec-Fetch-User: ?1`, `Sec-CH-UA`, `Cache-Control: no-cache` (first request); none (second) | AS8075 Microsoft | yes, `mistralai-user-ips.json` | HTTP/2 |
 | DuckDuckGo duck.ai | `DuckAssistBot/1.2; (+http://duckduckgo.com/duckassistbot.html)` | `*/*` | absent | none, but `Signature`, `Signature-Input`, `Signature-Agent: "https://assistbot.duckduckgo.com"` | AS8075 Microsoft | yes, `duckassistbot.json`; signature key verified | HTTP/2 |
 | Gemini | `Google` | `*/*` | absent | none | AS15169 Google | no (checked 5 lists) | HTTP/1.1 |
-| Grok, run 1, 8 requests | Safari 26.2 on macOS (2), Chrome 143 on macOS (5), Chrome 142 (1) | browser-shaped | `en-US,en;q=0.9` | `navigate` / `document` / `none` | 8 ASNs: 3 hosting, 1 mobile carrier, 2 ISPs, 2 "Private Customer" | no | HTTP/2 |
-| Grok, run 2, 8 requests | Safari 26.2 (4), Chrome 143 (2), Chrome 142 (2) | browser-shaped | `en-US,en;q=0.9` | `navigate` / `document` / `none` | 8 different ASNs: 4 hosting or transit, 3 ISPs (two Brazilian, one US), 1 personal ASN | no | HTTP/2 |
+| Grok, run 1, 8 requests | Safari 26.2 on macOS (2), Chrome 143 on macOS (5), Chrome 142 (1) | browser-shaped | `en-US,en;q=0.9` | `navigate` / `document` / `none` | 8 ASNs: 5 hosting or transit, 1 mobile carrier, 2 consumer ISPs (registry names) | no | HTTP/2 |
+| Grok, run 2, 8 requests | Safari 26.2 (4), Chrome 143 (2), Chrome 142 (2) | browser-shaped | `en-US,en;q=0.9` | `navigate` / `document` / `none` | 8 different ASNs: 5 hosting or transit, 3 telecoms (two Brazilian, one Argentine) | no | HTTP/2 |
 | Grok, logged in (phone app and website), 1 to 2 renders + subresources, plus one bare `Mozilla/5.0` client | `Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/148.0.0.0 Safari/537.36` | browser-shaped | `en-US,en;q=0.9` | `navigate` / `document` / `none`, `Sec-Fetch-User: ?1`, `Sec-CH-UA` platform Linux | AS396982 Google Cloud | no list exists | HTTP/2 |
 | Perplexity, 7 attempts | no request for any probe URL; PerplexityBot crawled 3 other paths | `PerplexityBot/1.0` with `From: crawler-support@perplexity.ai`, no `Accept` | absent | none | AS14618 Amazon | yes, `perplexitybot.json` | HTTP/1.1 |
 | Copilot, 2 attempts | no request reached the origin | no request | no request | no request | no request | no request | no request |
@@ -133,28 +133,30 @@ This is the finding that changes what server-side analytics can claim.
 
 Grok, used anonymously in "Fast" mode, showed a tool step reading "Opened page gkoreli.com/does-llms-txt-work?probe=grok" and quoted the H1 correctly. The origin saw eight requests for that URL between 04:03:18 and 04:03:30 UTC:
 
-| Time (UTC) | Network | Country | Claimed browser |
-|---|---|---|---|
-| 04:03:18 | AS9009 Aventice LLC (hosting) | US | Safari 26.2, macOS |
-| 04:03:18 | AS3257 Web2Objects LLC (hosting) | US | Safari 26.2, macOS |
-| 04:03:18 | AS132817 DZCRD Networks Ltd (ISP) | Netherlands | Chrome 143, macOS |
-| 04:03:18 | AS13280 Three Ireland, Mobile Subscriber Pools | Ireland | Chrome 143, macOS |
-| 04:03:18 | AS262988 Pombonet Telecomunicações (ISP) | Brazil | Chrome 143, macOS |
-| 04:03:19 | AS212238 "Private Customer" | South Africa | Chrome 143, macOS |
-| 04:03:22 | AS7979 Servers.com (hosting) | US | Chrome 142, macOS |
-| 04:03:30 | AS398781 "Private Customer" | US | Chrome 143, macOS |
+| Time (UTC) | ASN and registry holder | Cloudflare's organisation string | Country (Cloudflare) | Claimed browser |
+|---|---|---|---|---|
+| 04:03:18 | AS9009 M247 Europe SRL (hosting, Romania) | Aventice LLC | US | Safari 26.2, macOS |
+| 04:03:18 | AS3257 GTT Communications (transit) | Web2Objects LLC | US | Safari 26.2, macOS |
+| 04:03:18 | AS132817 DZCRD Networks Ltd (ISP, Bangladesh) | DZCRD Networks Ltd | Netherlands | Chrome 143, macOS |
+| 04:03:18 | AS13280 Three Ireland (Hutchison), mobile subscriber pool | Three Ireland (Hutchison) - Mobile Subscriber Pools | Ireland | Chrome 143, macOS |
+| 04:03:18 | AS262988 Pombonet Telecomunicações (ISP, Brazil) | Pombonet Telecomunicações e Informática | Brazil | Chrome 143, macOS |
+| 04:03:19 | AS212238 Datacamp Limited (hosting and CDN, UK) | Private Customer | South Africa | Chrome 143, macOS |
+| 04:03:22 | AS7979 Servers.com (hosting) | Servers.com, Inc. | US | Chrome 142, macOS |
+| 04:03:30 | AS398781 Oculus Networks Inc (hosting) | Private Customer | US | Chrome 143, macOS |
+
+Registry holders are from RIPEstat and Team Cymru, checked on the day of the capture. Cloudflare attaches its own organisation string to each request; for the proxy exits it names the company registered for the IP block rather than the network that announces it, so the two columns disagree wherever a hosting provider resells address space. Both are recorded in the research directory.
 
 Every request carried a complete browser header set: a Safari or Chrome User-Agent, Chrome's exact `Accept` list, `Accept-Language: en-US,en;q=0.9`, `Sec-Fetch-Mode: navigate`, `Sec-Fetch-Dest: document`, `Sec-Fetch-Site: none`, `Priority: u=0, i`, and on the Chrome-claiming requests the `Sec-CH-UA` client hints with matching version numbers. The words "Grok" and "xAI" appear nowhere. There is no `Signature-Agent` header. The TLS fingerprints differ from request to request, so this is not one client behind eight addresses; it is several client stacks.
 
-An hour later I asked Grok again, anonymously, for a different unique URL. Eight requests again, in six seconds, from eight networks none of which appeared in the first run: two hosting providers, a transit carrier, two Brazilian ISPs including Claro, a US fibre ISP, a small host, and an autonomous system registered to an individual's name. Same Safari and Chrome header sets, same absence of any token.
+An hour later I asked Grok again, anonymously, for a different unique URL. Eight requests again, in six seconds, from eight networks: GTT and Datacamp appeared in both runs, and the other six were new: Claro and DESTAK NET in Brazil, ARSAT, the Argentine state telecom, and three hosting providers, B2 Net Solutions, Ace Data Centers, and code200 in Lithuania. Same Safari and Chrome header sets, same absence of any token.
 
 A third probe, sent from the Grok iPhone app while signed in, took a different path altogether. One request arrived from a Google Cloud address with the User-Agent `HeadlessChrome/148.0.0.0` on Linux, `Sec-Fetch-User: ?1`, Chrome 148 client hints, and then, a second later, same-origin requests for `/main.css` and the site logo with the probe page as referer. That is a real Chromium rendering the page, and it says so in its User-Agent: Chromium inserts the `Headless` prefix whenever it runs without a display. A fourth probe from grok.com on the desktop, also signed in, did the same: two headless renders six seconds apart, each pulling the stylesheet and logo, followed by one bare request with the User-Agent `Mozilla/5.0` and nothing else, also from Google Cloud. The eight-exit proxy pattern did not appear in either signed-in run.
 
 So Grok has at least two fetch paths, and the split is by account, not by device: anonymous sessions get an undeclared proxy pool wearing consumer browser headers, signed-in sessions get a declared headless Chromium on Google Cloud. The second is easy to label as automation on a cloud host. The first is not, and it is what anyone using Grok without an account gets.
 
-Attribution rests on the probe string: nobody but Grok was ever given any of the three URLs, and the requests arrived within thirty seconds of each prompt. The pattern is not new. A [February 2026 experiment by Stackfox](https://stackfox.co/research/grok-user-agent) used the same method and saw Chrome and iPhone Safari User-Agents from rotating datacenter proxy providers. What this capture adds is that the exits now include a mobile carrier's subscriber pool and consumer ISPs on four continents, and that a single question produces eight fetches, not one. xAI publishes no fetcher documentation, no User-Agent token, and no IP list that I or the other researchers who have looked could find.
+Attribution rests on the probe string: nobody but Grok was ever given any of the three URLs, and the requests arrived within thirty seconds of each prompt. The pattern is not new. A [February 2026 experiment by Stackfox](https://stackfox.co/research/grok-user-agent) used the same method and saw Chrome and iPhone Safari User-Agents from two rotating proxy providers, M247 Europe and Datacamp. Both appear in my captures. What this capture adds is that the exits now include a mobile carrier's subscriber pool and consumer ISPs on four continents, and that a single question produces eight fetches, not one. xAI publishes no fetcher documentation, no User-Agent token, and no IP list that I or the other researchers who have looked could find.
 
-For counting purposes: my Worker classified all eight as browsers, and it was right to. The rule it applies, described in [How I Built First-Party Analytics for a Personal Blog](/first-party-analytics-for-a-personal-blog) and refined since, is that a request with a browser User-Agent, navigation-shaped Fetch Metadata, and a network that is not a known hosting provider is recorded as a browser. Five of the eight requests came from networks that are not hosting providers by any list I would trust. The rule cannot separate them from readers, and neither can any other server-side rule I know of. Grok's traffic is a human-shaped hole in every server-side audience count on the web.
+For counting purposes: my Worker classified all eight as browsers, and it was right to. The rule it applies, described in [How I Built First-Party Analytics for a Personal Blog](/first-party-analytics-for-a-personal-blog) and refined since, is that a request with a browser User-Agent, navigation-shaped Fetch Metadata, and a network that is not a known hosting provider is recorded as a browser. Three of the eight requests in the first run, and three in the second, came from consumer networks that no hosting list would ever contain: a mobile carrier, two Brazilian ISPs, a Bangladeshi ISP, an Argentine telecom. The rule cannot separate them from readers, and neither can any other server-side rule I know of. Grok's traffic is a human-shaped hole in every server-side audience count on the web.
 
 ## Codex: the fetch that never happened
 
@@ -202,6 +204,7 @@ What this does not show:
 - **One or two requests each.** Most fetchers were probed once. Headers can vary by region, plan, model, or the tool the assistant chooses. Grok's twenty page requests came from four prompts.
 - **Perplexity-User is absent from the origin.** Seven attempts, anonymous and logged in, produced no request for the asked URL. A page not yet in Perplexity's index, or a different prompt shape, might.
 - **Copilot was probed twice from one account.** A different Copilot surface (Edge sidebar, Windows, Microsoft 365) may use a different tool.
+- **Network names are registry holders.** Every ASN was checked against RIPEstat and Team Cymru on the day. Cloudflare's own `asOrganization` string differed for seven of the fourteen Grok exits; it names the IP block's registered organisation, not the announcing network. The first draft of this article used Cloudflare's strings and a reader caught the discrepancy.
 - **Header order is lost.** The tail event delivers headers as a map. Order is a fingerprinting signal in its own right and is not analysed here.
 - **Attribution for Grok is by timing and the unique URL**, not by any declaration from xAI. I consider eight requests for a URL that existed nowhere else, within thirty seconds of the prompt, twice, conclusive; a reader who wants stronger evidence can repeat the probe with their own URL.
 - **The DuckDuckGo signature was matched by key id, not re-verified byte for byte.** The Worker code to verify it is merged and not yet deployed; when it is, the observation row will carry the verified agent host.

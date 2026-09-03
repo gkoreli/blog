@@ -78,3 +78,31 @@ query($z:String,$s:Time,$u:Time){viewer{zones(filter:{zoneTag:$z}){firewallEvent
 ## Footprint disclosures
 
 The research footprint (`research-footprint.json`, format `claude-code-per-message-v1`) covers the Claude Code root session `c4b4024b-bce0-4186-9977-c402bd7308c1` and its three subagent logs (vendor-docs research, two browser-probe workers). Excluded because they ran outside that log tree: one `codex exec` web-search probe (Codex reported 35,786 tokens), one failed `gemini` CLI invocation, and the WebFetch/WebSearch server-side tool calls whose token cost is not itemised in the session log. The session was still open when the footprint was frozen; a re-freeze happens before the release commit.
+
+## Correction, 2026-09-03 05:45 UTC: network names
+
+Goga checked AS9009 against Team Cymru and got M247 Europe, not the "Aventice LLC" the draft printed. Cause: the draft used Cloudflare's `request.cf.asOrganization`, which names the organisation registered for the IP block (ARIN WHOIS for 104.232.219.72 shows Web2Objects LLC, announced by AS3257 GTT), not the ASN holder. Registry holders (RIPEstat `as-overview`, Team Cymru `whois.cymru.com`) for every ASN in the captures:
+
+| ASN | Registry holder | Cloudflare string |
+|---|---|---|
+| 9009 | M247 Europe SRL (RO) | Aventice LLC |
+| 3257 | GTT Communications Inc. | Web2Objects LLC / GTT - EMEA Ltd. |
+| 132817 | DZCRD Networks Ltd (BD) | same |
+| 13280 | Three Ireland (Hutchison) limited | same |
+| 262988 | Pombonet Telecomunicacoes e Informatica | same |
+| 212238 | Datacamp Limited (GB) | Private Customer |
+| 7979 | Servers.com, Inc. | same |
+| 398781 | Oculus Networks Inc | Private Customer |
+| 268249 | DESTAK NET LTDA | same |
+| 52361 | ARSAT - Empresa Argentina de Soluciones Satelitales S.A. | ORTIZ MARIA MARGARITA |
+| 55286 | B2 Net Solutions Inc. | same |
+| 28573 | Claro NXT Telecomunicacoes Ltda | same |
+| 11798 | Ace Data Centers, Inc. | Metronet |
+| 209709 | UAB code200 (LT) | Zappie Host LLC |
+| 8075 | Microsoft Corporation | Microsoft Limited / Corporation |
+| 396982 | Google LLC (Google Cloud Platform) | Google LLC |
+| 15169 | Google LLC | Google LLC |
+| 14618 | Amazon.com, Inc. | Amazon Technologies Inc. |
+| 62887 | WhiteSky Communications, LLC. | same |
+
+Article and `02-probe-captures.md` now carry registry holders with the source named; the Cloudflare string is kept alongside as a second fact. Stackfox's February 2026 providers (M247, Datacamp) match AS9009 and AS212238 here.
