@@ -5,6 +5,7 @@ import { createDailyClientId } from './hash.js';
 import { extractRequestMetadata } from './metadata.js';
 
 export type { Env } from './db.js';
+export { ANALYTICS_EVIDENCE_SINCE } from './contracts.js';
 export type { StatsResponse, TrafficFilter } from './contracts.js';
 export { handleStats } from './stats.js';
 
@@ -37,6 +38,14 @@ async function persistObservation(request: Request, env: Env, observedAt: Date):
     agentName: classification.agentName,
     deviceType: classifyDevice(metadata.userAgent),
     isOwner: metadata.isOwner,
+    asn: metadata.asn,
+    asOrg: metadata.asOrg,
+    secFetchMode: metadata.secFetchMode,
+    secFetchDest: metadata.secFetchDest,
+    secFetchSite: metadata.secFetchSite,
+    secFetchUser: metadata.secFetchUser,
+    acceptsHtml: metadata.acceptsHtml,
+    hasAcceptLanguage: metadata.hasAcceptLanguage,
     observedAt: sqliteTimestamp(observedAt),
   };
   await recordPageObservation(env.DB, observation);

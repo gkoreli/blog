@@ -15,6 +15,14 @@ export interface PageObservation {
   agentName: string | null;
   deviceType: DeviceType;
   isOwner: boolean;
+  asn: number | null;
+  asOrg: string | null;
+  secFetchMode: string | null;
+  secFetchDest: string | null;
+  secFetchSite: string | null;
+  secFetchUser: number | null;
+  acceptsHtml: number | null;
+  hasAcceptLanguage: number;
   observedAt: string;
 }
 
@@ -27,8 +35,16 @@ const INSERT_OBSERVATION = `INSERT INTO page_observations (
   agent_name,
   device_type,
   is_owner,
+  asn,
+  as_org,
+  sec_fetch_mode,
+  sec_fetch_dest,
+  sec_fetch_site,
+  sec_fetch_user,
+  accepts_html,
+  has_accept_language,
   observed_at
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
 export async function recordPageObservation(db: D1Database, observation: PageObservation): Promise<void> {
   await db.prepare(INSERT_OBSERVATION).bind(
@@ -40,6 +56,14 @@ export async function recordPageObservation(db: D1Database, observation: PageObs
     observation.agentName,
     observation.deviceType,
     observation.isOwner ? 1 : 0,
+    observation.asn,
+    observation.asOrg,
+    observation.secFetchMode,
+    observation.secFetchDest,
+    observation.secFetchSite,
+    observation.secFetchUser,
+    observation.acceptsHtml,
+    observation.hasAcceptLanguage,
     observation.observedAt,
   ).run();
 }

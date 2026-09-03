@@ -16,6 +16,14 @@ CREATE TABLE page_observations (
   observation_source TEXT NOT NULL DEFAULT 'edge'
     CHECK (observation_source IN ('beacon', 'edge')),
   source_event_id INTEGER,
+  asn INTEGER,
+  as_org TEXT,
+  sec_fetch_mode TEXT,
+  sec_fetch_dest TEXT,
+  sec_fetch_site TEXT,
+  sec_fetch_user INTEGER CHECK (sec_fetch_user IN (0, 1)),
+  accepts_html INTEGER CHECK (accepts_html IN (0, 1)),
+  has_accept_language INTEGER CHECK (has_accept_language IN (0, 1)),
   observed_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 

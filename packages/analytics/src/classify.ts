@@ -41,6 +41,17 @@ const BOT_RULES: readonly AgentRule[] = [
 
 const GENERIC_BOT = /bot\b|spider|crawler|crawl\b|slurp|scrapy|headless|phantom|selenium|wget|curl\/|python-requests|Go-http-client|UptimeRobot|Lighthouse/i;
 
+export const KNOWN_AGENT_NAMES: ReadonlySet<string> = new Set([
+  ...AI_RULES.map((rule) => rule.name),
+  ...BOT_RULES.map((rule) => rule.name),
+]);
+
+export function knownAgentTrafficClass(agentName: string): Exclude<TrafficClass, 'browser'> | null {
+  if (AI_RULES.some((rule) => rule.name === agentName)) return 'ai';
+  if (BOT_RULES.some((rule) => rule.name === agentName)) return 'bot';
+  return null;
+}
+
 function namedMatch(userAgent: string, rules: readonly AgentRule[]): string | null {
   for (const rule of rules) {
     if (rule.pattern.test(userAgent)) return rule.name;

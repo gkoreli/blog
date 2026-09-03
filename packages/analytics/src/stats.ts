@@ -3,16 +3,17 @@ import type {
   StatsRange,
   StatsResponse,
   TimeSeriesPoint,
-  TrafficClass,
   TrafficFilter,
 } from './contracts.js';
 import type { Env } from './db.js';
+import { KNOWN_AGENT_NAMES, knownAgentTrafficClass } from './classify.js';
 import {
   completeTimeSeries,
   createStatsWindow,
   parseStatsRange,
   type StatsWindow,
 } from './dates.js';
+import { partitionPredicate } from './partition.js';
 
 export type { StatsResponse, TrafficFilter } from './contracts.js';
 
@@ -20,6 +21,7 @@ export interface StatsQuery {
   range: StatsRange;
   traffic: TrafficFilter;
   path?: string;
+  agent?: string;
 }
 
 interface QueryPredicate {
@@ -30,6 +32,7 @@ interface QueryPredicate {
 function parseTrafficFilter(value: string | null): TrafficFilter | null {
   switch (value) {
     case 'browser':
+    case 'browserlike':
     case 'bot':
     case 'ai':
     case 'all':
@@ -42,13 +45,18 @@ function parseTrafficFilter(value: string | null): TrafficFilter | null {
 function predicateFor(window: StatsWindow, query: StatsQuery): QueryPredicate {
   let sql = 'observed_at >= ? AND observed_at < ? AND is_owner = 0';
   const values: unknown[] = [window.startInclusive, window.endExclusive];
-  if (query.traffic !== 'all') {
-    sql += ' AND traffic_class = ?';
-    values.push(query.traffic);
+  const partition = partitionPredicate(query.traffic);
+  if (partition.sql.length > 0) {
+    sql += ` AND (${partition.sql})`;
+    values.push(...partition.values);
   }
   if (query.path !== undefined) {
     sql += ' AND path = ?';
     values.push(query.path);
+  }
+  if (query.agent !== undefined) {
+    sql += ' AND agent_name = ?';
+    values.push(query.agent);
   }
   return { sql, values };
 }
@@ -134,7 +142,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     : "strftime('%Y-%m-%d', observed_at)";
 
   const aggregateStatements = [
-    bindQuery(db, `SELECT COUNT(*) AS views, COUNT(DISTINCT daily_client_id) AS dailyClients FROM page_observations WHERE ${predicate.sql}`, predicate),
+    bindQuery(db, `SELECT COUNT(*) AS views, COUNT(DISTINCT daily_client_id) AS dailyClients, SUM(CASE WHEN referrer_host IS NULL THEN 1 ELSE 0 END) AS unattributedViews FROM page_observations WHERE ${predicate.sql}`, predicate),
     bindQuery(db, `SELECT path, COUNT(*) AS views, COUNT(DISTINCT daily_client_id) AS dailyClients FROM page_observations WHERE ${predicate.sql} GROUP BY path ORDER BY views DESC, path`, predicate),
     bindQuery(db, `SELECT country, COUNT(*) AS views FROM page_observations WHERE ${predicate.sql} AND country IS NOT NULL GROUP BY country ORDER BY views DESC, country`, predicate),
     bindQuery(db, `SELECT ${bucketSql} AS bucket, COUNT(*) AS views, COUNT(DISTINCT daily_client_id) AS dailyClients FROM page_observations WHERE ${predicate.sql} GROUP BY bucket ORDER BY bucket`, predicate),
@@ -164,6 +172,13 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     totals: {
       views: numberField(totalsRow, 'views'),
       dailyClients: numberField(totalsRow, 'dailyClients'),
+      unattributedViews: numberField(totalsRow, 'unattributedViews'),
+    },
+    filters: {
+      traffic: query.traffic,
+      range: query.range,
+      path: query.path ?? null,
+      agent: query.agent ?? null,
     },
     byPath: pathRows(results[aggregateOffset + 1]?.results ?? []),
     byCountry: countryRows(results[aggregateOffset + 2]?.results ?? []),
@@ -182,14 +197,29 @@ export async function handleStats(request: Request, env: Pick<Env, 'DB'>): Promi
   const url = new URL(request.url);
   const rangeValue = url.searchParams.get('range');
   const trafficValue = url.searchParams.get('traffic');
+  const rawAgent = url.searchParams.get('agent');
+  const agent = rawAgent === null ? undefined : rawAgent;
   const range = rangeValue === null ? '30d' : parseStatsRange(rangeValue);
-  const traffic = trafficValue === null ? 'browser' : parseTrafficFilter(trafficValue);
+  const traffic = trafficValue === null
+    ? agent === undefined ? 'browser' : 'all'
+    : parseTrafficFilter(trafficValue);
   if (range === null) return jsonError('range must be 7d, 30d, 90d, or all');
-  if (traffic === null) return jsonError('traffic must be browser, bot, ai, or all');
+  if (traffic === null) return jsonError('traffic must be browser, browserlike, bot, ai, or all');
+  if (agent !== undefined && !KNOWN_AGENT_NAMES.has(agent)) {
+    return jsonError('agent must be a known matched User-Agent rule name');
+  }
+  if (agent !== undefined && (traffic === 'browser' || traffic === 'browserlike')) {
+    return jsonError(`agent ${agent} cannot be combined with traffic=${traffic}`);
+  }
+  if (agent !== undefined && traffic !== 'all' && knownAgentTrafficClass(agent) !== traffic) {
+    return jsonError(`agent ${agent} cannot be combined with traffic=${traffic}`);
+  }
 
   const rawPath = url.searchParams.get('path');
   const path = rawPath === null || rawPath.length === 0 ? undefined : rawPath;
-  const query: StatsQuery = path === undefined ? { range, traffic } : { range, traffic, path };
+  const query: StatsQuery = { range, traffic };
+  if (path !== undefined) query.path = path;
+  if (agent !== undefined) query.agent = agent;
   const response = await queryStats(env.DB, query);
   return Response.json(response, { headers: { 'Cache-Control': 'public, max-age=60' } });
 }
