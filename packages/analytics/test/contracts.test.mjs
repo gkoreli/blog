@@ -445,6 +445,7 @@ test('reader-kind classifier maps every closed-set code and records one reason',
     [{ ...base, trafficClass: 'bot', agentName: null }, 'other-bot', 'generic-bot'],
     [{ ...base, asn: 16509 }, 'cloud-browser', 'hosting-asn:16509'],
     [{ ...base, secFetchMode: 'cors', secFetchDest: 'empty' }, 'http-client', 'not-navigation-shaped'],
+    [{ ...base, secFetchMode: null, secFetchDest: null, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148' }, 'legacy-browser', 'pre-fetch-metadata-ua'],
     [{ ...base, observationSource: 'beacon', hasAcceptLanguage: null }, 'browser', 'legacy-beacon'],
     [{ ...base, hasAcceptLanguage: null }, 'unchecked', 'evidence-not-recorded'],
   ];
@@ -455,6 +456,14 @@ test('reader-kind classifier maps every closed-set code and records one reason',
     seen.push(kind);
   }
   assert.deepEqual(seen, [...READER_KINDS]);
+  assert.deepEqual(
+    classifyReaderKind({ ...base, secFetchMode: null, secFetchDest: null, userAgent: 'Mozilla/5.0 (Windows NT 10.0) Chrome/152.0.0.0 Safari/537.36' }),
+    { kind: 'http-client', reason: 'no-fetch-metadata' },
+  );
+  assert.deepEqual(
+    classifyReaderKind({ ...base, secFetchMode: null, secFetchDest: null, userAgent: 'Mozilla/5.0 (Windows NT 6.1) Chrome/49.0.2623.112 Safari/537.36' }),
+    { kind: 'legacy-browser', reason: 'pre-fetch-metadata-ua' },
+  );
   assert.deepEqual(classifyReaderKind({
     ...base,
     trafficClass: 'ai',
@@ -872,6 +881,8 @@ test('SQL reader-kind backfill uses the same closed-set mapping as ingestion', (
   assert.deepEqual(
     sqlite.prepare(`SELECT reader_kind FROM page_observations ORDER BY id`).all()
       .map(row => row.reader_kind),
-    [...READER_KINDS],
+    // The raw User-Agent is not stored, so history cannot be version-gated:
+    // the backfill never emits legacy-browser and labels those rows http-client.
+    READER_KINDS.filter(kind => kind !== 'legacy-browser'),
   );
 });

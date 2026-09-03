@@ -13,6 +13,7 @@ export const READER_KINDS = [
   'other-bot',
   'cloud-browser',
   'http-client',
+  'legacy-browser',
   'browser',
   'unchecked',
 ] as const;
@@ -108,6 +109,33 @@ function userAgentHeadlessName(userAgent: string): string | null {
   return null;
 }
 
+/**
+ * Whether the User-Agent claims an engine version that ships Fetch Metadata on
+ * every request: Chromium >= 76 (2019, including Android WebView), Firefox >= 90
+ * (2021), WebKit on Safari/iOS >= 16.4 (2023, including WKWebView). Sources are
+ * in research artifact 09. A claim at or above these versions with no
+ * Sec-Fetch-Mode is a verdict; an older or unreadable claim proves nothing.
+ */
+export function claimsFetchMetadataBrowser(userAgent: string): boolean {
+  const chromium = /\bChrome\/(\d+)/.exec(userAgent);
+  if (chromium) return Number(chromium[1]) >= 76;
+  const firefox = /\bFirefox\/(\d+)/.exec(userAgent);
+  if (firefox) return Number(firefox[1]) >= 90;
+  const ios = /\bOS (\d+)_(\d+)/.exec(userAgent);
+  if (ios && /\bAppleWebKit\//.test(userAgent)) {
+    const major = Number(ios[1]);
+    const minor = Number(ios[2]);
+    return major > 16 || (major === 16 && minor >= 4);
+  }
+  const safari = /\bVersion\/(\d+)\.(\d+)[^ ]* (?:Mobile\/\S+ )?Safari\//.exec(userAgent);
+  if (safari) {
+    const major = Number(safari[1]);
+    const minor = Number(safari[2]);
+    return major > 16 || (major === 16 && minor >= 4);
+  }
+  return false;
+}
+
 function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
   const agentName = facts.agentName;
   if (agentName !== null && onDemandFetchers.has(agentName)) {
@@ -138,7 +166,13 @@ function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
   if (facts.hasAcceptLanguage === null) return { kind: 'unchecked', reason: 'evidence-not-recorded' };
 
   const navigationShaped = facts.secFetchMode === 'navigate' && facts.secFetchDest === 'document';
-  if (!navigationShaped) return { kind: 'http-client', reason: 'not-navigation-shaped' };
+  if (!navigationShaped) {
+    if (facts.secFetchMode !== null) return { kind: 'http-client', reason: 'not-navigation-shaped' };
+    if (claimsFetchMetadataBrowser(facts.userAgent)) {
+      return { kind: 'http-client', reason: 'no-fetch-metadata' };
+    }
+    return { kind: 'legacy-browser', reason: 'pre-fetch-metadata-ua' };
+  }
   if (isHostingAsn(facts.asn)) return { kind: 'cloud-browser', reason: `hosting-asn:${facts.asn}` };
   return { kind: 'browser', reason: 'navigation-shaped' };
 }

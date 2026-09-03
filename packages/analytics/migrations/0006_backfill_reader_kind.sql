@@ -1,3 +1,9 @@
+-- Backfill reader_kind and reader_reason for rows written before migration 0005.
+-- Ingestion version-gates the no-Sec-Fetch case on the claimed engine version
+-- (readerkind.ts, research artifact 09). The raw User-Agent is not stored, so
+-- history cannot be gated: every evidence-recorded browser row that is not
+-- navigation-shaped is labelled http-client / not-navigation-shaped here, and
+-- the pre-Fetch-Metadata share (under 4.3% of global browser usage) is folded in.
 UPDATE page_observations
 SET
   reader_kind = CASE

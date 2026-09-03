@@ -105,3 +105,13 @@ By 01:47 UTC no non-author rows had arrived in the evidence era; the site had be
 ## 7. Migration mechanics (for the article's honesty section)
 
 `wrangler d1 execute --remote --file` failed with `Authentication error [code: 10000]` on the D1 import endpoint despite a `d1 (write)` OAuth scope; the same eight `ALTER TABLE` statements applied through `--command`. Afterwards `migrations_dir` was added to `wrangler.jsonc` and the `d1_migrations` table bootstrapped so that `wrangler d1 migrations list --remote` reports no pending migrations.
+
+
+## 7. Header absence: settled by prior art, not by this ledger (2026-09-03 04:45 UTC)
+
+Goga asked why the absence rule needed a site measurement when others must have faced it. They had; I had not read them. Artifact 09 records the sources. Summary:
+
+- Fetch Metadata support is 95.72% of global usage (caniuse); Android WebView has sent it since Chromium 76 (2019); a 2025 production log analysis (mdn/browser-compat-data #27928) shows `Sec-Fetch-Mode` from iOS WebView in the millions.
+- The "WebViews omit it" premise in section 6 and in TASK-0101 was wrong for current versions. It came from one vendor blog post and from defensive projects that hedged for lack of data.
+- Rule shipped in `readerkind.ts`: no `Sec-Fetch-Mode` plus a User-Agent claiming Chromium >= 76, Firefox >= 90, or WebKit >= 16.4 is `http-client` (reason `no-fetch-metadata`); an older or unreadable engine claim is `legacy-browser` (reason `pre-fetch-metadata-ua`). Non-navigation shapes with headers present stay `http-client` (`not-navigation-shaped`).
+- The evidence era had 27 non-owner browser-class rows at the time, none referred (11 without Sec-Fetch, 16 with). Too small to use, and no longer needed for the rule. The calibration in TASK-0104 remains the honesty check on the whole partition.

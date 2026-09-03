@@ -20,7 +20,7 @@
 | `06-agent-identification-and-taxonomies.md` | Web Bot Auth, vendor agent UAs, headless fingerprints (with experiment), MeshClaw/Hermes, taxonomies, Cloudflare AI Crawl Control | Claude opus research worker |
 | `07-cloudflare-agent-readiness-and-zone-state.md` | Zone robots.txt, AI Crawl Control state, Agent Readiness scan results | Fable (dashboard read) |
 | `08-agent-native-landscape-2026-09.md` | Dated survey: what is shipping vs proposal in September 2026 | Claude opus research worker |
-| `09-referred-traffic-measurement.md` | TASK-0101: fetch-metadata presence on real referred traffic | Fable, after daytime traffic |
+| `09-fetch-metadata-prior-art.md` | TASK-0101 closed on prior art: caniuse 95.72%, Android WebView since Chromium 76, iOS WebView measured in mdn/browser-compat-data #27928; version-gated verdict rule | Fable, 2026-09-03 |
 | `10-rule-and-vocabulary-decision.md` | TASK-0102/0105: the settled reader kinds and predicate, with citations | Fable |
 | `11-living-center-and-form.md` | TASK-0103: shape-article output, protected passages | Fable with Goga |
 
@@ -29,7 +29,7 @@
 - `TASK-0098` evidence ledger (done)
 - `TASK-0099` standards vocabulary (in progress)
 - `TASK-0100` open-source code and ASN lists (in progress)
-- `TASK-0101` measure fetch metadata on referred traffic (blocks 0102)
+- `TASK-0101` fetch metadata absence rule (done, closed on prior art; artifact 09)
 - `TASK-0102` settle rule and names, amend ADR, ship
 - `TASK-0103` living center, form, protected material
 - `TASK-0104` 14-day calibration against Cloudflare Web Analytics
