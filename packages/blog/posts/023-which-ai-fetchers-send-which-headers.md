@@ -26,7 +26,7 @@ The findings, each explained below:
 - **DuckAssistBot** is the only fetcher that signed: a Web Bot Auth signature whose key id matches the Ed25519 key at its well-known directory. Its documentation does not mention this.
 - **Gemini** sends `User-Agent: Google` and `Accept: */*` from a Google address that is in none of Google's five published crawler and fetcher IP lists, and "Google" matches none of the twelve user-triggered fetchers Google documents.
 - **Grok** sends no token, no signature, and full browser headers from rotating proxy exits, several of them residential or mobile. There is no request fact that separates it from a person. The pattern reproduced exactly on a second run.
-- **Perplexity** reported "HTTP 200 OK" and the correct heading for a real page without any request reaching the origin, and reported a fetch failure for an unknown path, also without a request.
+- **Perplexity** reported "HTTP 200 OK" and the correct heading for a real page without any request reaching the origin, and reported a fetch failure for an unknown path, also without a request. Logged in, it did the same, and instead dispatched its search crawler to `robots.txt`, `/about` and `/essays`.
 - **Copilot**, logged in, reported twice that its fetch tool "returned an empty result". No request reached the origin, and Cloudflare's edge firewall log shows nothing was blocked.
 - **Claude Code's fetch tool** runs on the user's own machine, not on Anthropic's, and asks for Markdown before HTML.
 - **Codex's web search** answered correctly about the page without ever requesting it.
@@ -46,7 +46,7 @@ Each assistant was given a fresh chat and asked to open a URL unique to it, eith
 | Gemini | `Google` | `*/*` | absent | none | AS15169 Google | no (checked 5 lists) | HTTP/1.1 |
 | Grok, run 1, 8 requests | Safari 26.2 on macOS (2), Chrome 143 on macOS (5), Chrome 142 (1) | browser-shaped | `en-US,en;q=0.9` | `navigate` / `document` / `none` | 8 ASNs: 3 hosting, 1 mobile carrier, 2 ISPs, 2 "Private Customer" | no | HTTP/2 |
 | Grok, run 2, 8 requests | Safari 26.2 (4), Chrome 143 (2), Chrome 142 (2) | browser-shaped | `en-US,en;q=0.9` | `navigate` / `document` / `none` | 8 different ASNs: 4 hosting or transit, 3 ISPs (two Brazilian, one US), 1 personal ASN | no | HTTP/2 |
-| Perplexity, 5 attempts | no request reached the origin | no request | no request | no request | no request | no request | no request |
+| Perplexity, 7 attempts | no request for any probe URL; PerplexityBot crawled 3 other paths | `PerplexityBot/1.0` with `From: crawler-support@perplexity.ai`, no `Accept` | absent | none | AS14618 Amazon | yes, `perplexitybot.json` | HTTP/1.1 |
 | Copilot, 2 attempts | no request reached the origin | no request | no request | no request | no request | no request | no request |
 | Claude Code | `Claude-User (claude-code/2.1.259; +https://support.anthropic.com/)` | `text/markdown, text/html, */*` | absent | none | my own ISP | not applicable, runs locally | HTTP/1.1 |
 | Codex CLI web search | no request reached the origin | no request | no request | no request | no request | no request | no request |
@@ -59,6 +59,8 @@ Every assistant in the table was reached. Copilot demands a sign-in and was prob
 ## ChatGPT-User: the reference behaviour
 
 OpenAI's fetcher is what every other fetcher should be measured against. The User-Agent matches OpenAI's [published string](https://developers.openai.com/api/docs/bots) character for character. The source address, `9.129.45.186`, is inside the range OpenAI publishes at `openai.com/chatgpt-user.json`. The `Accept` header is the same list Chrome sends, `Accept-Language` is present, and the request came over HTTP/2 with an Envoy timeout header of 15 seconds, which tells you roughly how long OpenAI is willing to wait for your page.
+
+The ChatGPT mobile app uses the same fetcher: a probe sent from the iPhone app produced one request with an identical User-Agent and header set, again from an address in OpenAI's list.
 
 Two things to know. First, OpenAI states plainly that "because these actions are initiated by a user, robots.txt rules may not apply" to ChatGPT-User. Second, after fetching the probe URL, ChatGPT also fetched the homepage three seconds later, unprompted. One question produced two page loads.
 
@@ -94,9 +96,11 @@ DuckDuckGo's own documentation for the bot does not mention signing at all. The 
 
 ## Perplexity: answers without requests
 
-Perplexity, used without an account, was given five chances. Three times it was asked to open a query-string probe URL and reported that "the page could not be retrieved". Once it was asked to open a plain 404 path and reported "Failed to fetch content". Once it was asked to open a real, existing post with no query string, and it answered "The page returned successfully (HTTP 200 OK)" with the correct H1.
+Perplexity was given seven chances, five anonymous and two from a logged-in account. Anonymously: three times it was asked to open a query-string probe URL and reported that "the page could not be retrieved"; once it was asked to open a plain 404 path and reported "Failed to fetch content"; once it was asked to open a real, existing post with no query string, and it answered "The page returned successfully (HTTP 200 OK)" with the correct H1. The origin saw none of the five. The "200 OK" came from Perplexity's index, and the tool presented an index hit as a live fetch with a status code.
 
-The origin saw none of the five. Not the failures, and not the success. The "200 OK" came from Perplexity's index, and the tool presented an index hit as a live fetch with a status code. Perplexity documents `Perplexity-User` with an IP list, so the fetcher is nameable when it does appear; it simply did not appear for an anonymous session on this site. Whether a logged-in session behaves differently is an open question listed below.
+Logged in, the two probes went the same way: the unknown path "still cannot be retrieved" and the real post answered correctly, with neither URL requested. But this time something did arrive. Within the same second, three requests from Amazon addresses inside Perplexity's [published `PerplexityBot` range](https://docs.perplexity.ai/guides/bots) fetched `/robots.txt`, `/about` and `/essays`, each carrying the `PerplexityBot/1.0` User-Agent and a `From: crawler-support@perplexity.ai` header. Perplexity's reply said it had "searched for the exact path". So a logged-in user asking for one URL triggered the search crawler against three other pages of the site, robots.txt first, and never the page that was asked for. Attribution here is by timing: PerplexityBot also crawls this site on its own schedule, but a three-request burst starting with robots.txt in the second the prompt was sent is not its routine pattern.
+
+`Perplexity-User`, the fetcher Perplexity documents for exactly this situation, did not appear in any of the seven attempts. It is nameable by token and IP list when it does appear; on this site, for these prompts, it did not.
 
 ## Copilot: an empty result, twice
 
@@ -174,12 +178,12 @@ This section is for anyone who counts visitors on their own server, whether with
 
 ## Method and limits
 
-Captures were taken on 2026-09-03 in three runs, 03:55 to 04:05, 04:55 to 05:05 and 05:13 to 05:15 UTC, with `wrangler tail --format json` against the production Worker for gkoreli.com. Each assistant received a prompt of the form "Please open this exact URL and tell me the exact text of its main heading: <URL>. Do not answer from memory; fetch the page." in a new chat. ChatGPT (Pro), Claude.ai (Max), Gemini and Copilot were used with logged-in accounts; Grok, Perplexity, Mistral and duck.ai were used anonymously. For every row with no origin request, the zone's firewall events (Cloudflare GraphQL `firewallEventsAdaptive`) for the surrounding hours were checked for blocks or challenges; none matched. Vendor documentation and IP lists were fetched the same day; the addresses were checked against them, and the captured strings were run through the open-source detectors, with TypeScript scripts that are in the research directory. The DuckDuckGo key thumbprint was recomputed from the published JWK.
+Captures were taken on 2026-09-03 in four runs, 03:55 to 04:05, 04:55 to 05:05, 05:13 to 05:15 and 05:20 to 05:23 UTC, with `wrangler tail --format json` against the production Worker for gkoreli.com. Each assistant received a prompt of the form "Please open this exact URL and tell me the exact text of its main heading: <URL>. Do not answer from memory; fetch the page." in a new chat. ChatGPT (Pro, web and iPhone app), Claude.ai (Max), Gemini, Copilot and the second Perplexity pair were used with logged-in accounts; Grok, Perplexity, Mistral and duck.ai were used anonymously. For every row with no origin request, the zone's firewall events (Cloudflare GraphQL `firewallEventsAdaptive`) for the surrounding hours were checked for blocks or challenges; none matched. Vendor documentation and IP lists were fetched the same day; the addresses were checked against them, and the captured strings were run through the open-source detectors, with TypeScript scripts that are in the research directory. The DuckDuckGo key thumbprint was recomputed from the published JWK.
 
 What this does not show:
 
 - **One or two requests each.** Most fetchers were probed once. Headers can vary by region, plan, model, or the tool the assistant chooses. Grok's sixteen requests came from two prompts.
-- **Perplexity is absent from the origin.** Five anonymous attempts produced no request. A logged-in attempt, or a page not yet in Perplexity's index, might.
+- **Perplexity-User is absent from the origin.** Seven attempts, anonymous and logged in, produced no request for the asked URL. A page not yet in Perplexity's index, or a different prompt shape, might.
 - **Copilot was probed twice from one account.** A different Copilot surface (Edge sidebar, Windows, Microsoft 365) may use a different tool.
 - **Header order is lost.** The tail event delivers headers as a map. Order is a fingerprinting signal in its own right and is not analysed here.
 - **Attribution for Grok is by timing and the unique URL**, not by any declaration from xAI. I consider eight requests for a URL that existed nowhere else, within thirty seconds of the prompt, twice, conclusive; a reader who wants stronger evidence can repeat the probe with their own URL.

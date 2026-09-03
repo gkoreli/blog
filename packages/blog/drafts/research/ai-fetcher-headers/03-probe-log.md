@@ -62,3 +62,12 @@ Query used (zone:read scope of the wrangler OAuth token suffices):
 ```graphql
 query($z:String,$s:Time,$u:Time){viewer{zones(filter:{zoneTag:$z}){firewallEventsAdaptive(filter:{datetime_geq:$s,datetime_leq:$u},limit:1000,orderBy:[datetime_DESC]){datetime action clientRequestPath clientRequestQuery userAgent clientASNDescription clientCountryName source ruleId description}}}}
 ```
+
+## Fourth run, 2026-09-03 05:20–05:23 UTC (Goga: Perplexity logged in on desktop, ChatGPT iPhone app)
+
+| Service | UTC | Assistant said | Origin requests seen | Notes |
+|---|---|---|---|---|
+| Perplexity logged in, `/probe/perplexity-goga` | ~05:21 | "I made a second retrieval attempt and also searched for the exact path. The page-fetching service still cannot retrieve … I won't invent either value." | none for the URL. At 05:21:17 three requests: `/robots.txt`, `/about`, `/essays`, UA `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)`, `From: crawler-support@perplexity.ai`, no Accept, HTTP/1.1, AS14618 Amazon, IPs 18.97.9.101/102 in perplexitybot.json, not in perplexity-user.json | attribution by timing; PerplexityBot has 51 routine hits in the prior 30 days but not in bursts starting with robots.txt |
+| Perplexity logged in, real page `/first-party-analytics-for-a-personal-blog` | ~05:21 | exact H1 and standfirst quoted | none | index answer |
+| ChatGPT iPhone app, `/probe/chatgpt-mobile` | 05:22:17 | (Goga to confirm) | 1: `ChatGPT-User/1.0`, same header set as the web run, AS8075, IP in chatgpt-user.json | mobile app uses the same fetcher |
+| Grok mobile, `/probe/grok-mobile` | not run yet | | | |

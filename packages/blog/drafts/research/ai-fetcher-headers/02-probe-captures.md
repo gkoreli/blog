@@ -463,3 +463,55 @@ sec-fetch-user: ?1
 upgrade-insecure-requests: 1
 user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36
 ```
+
+## `codex%2Dsearch` — 2026-09-03 05:15:59 UTC
+
+- Network: AS14618 Amazon Data Services Northern Virginia, country US, Cloudflare colo IAD
+- IP in a vendor list: no
+- Protocol: HTTP/1.1, TLSv1.2, ClientHello length 239, cipher-set hash `92MdFu0K9xXMB7ZENxJUajKWT9k=`, extension-set hash `+C3Bh/F9UaeOK0g3ptJN577jGXA=`
+
+```http
+accept: */*
+accept-encoding: gzip, br
+baggage: sentry-environment=production,sentry-public_key=e6210d6b5d3246c29d5667b356d11c63,sentry-release=ha_github_commits_consumer@459382,sentry-trace_id=6ea28e3b55d3451380921b242be01608
+range: bytes: 0-22
+traceparent: 00-ab1a18ed3323b72e0c717ec76b7c02b6-5cb1b6d09f7eba0b-03
+user-agent: Mozilla/5.0 (compatible)
+```
+
+## `chatgpt-mobile` — 2026-09-03 05:22:17 UTC
+
+- Network: AS8075 Microsoft Limited, country US, Cloudflare colo DFW
+- IP in a vendor list: chatgpt-user.json (9.129.45.183)
+- Protocol: HTTP/2, TLSv1.3, ClientHello length 508, cipher-set hash `xWtDJfIZGwhhu4n0y6l7XO1WR6E=`, extension-set hash `XXH8ek08xcXyrTOoqPlimHTPPeA=`
+
+```http
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, br
+accept-language: en-US,en;q=0.9
+user-agent: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot
+x-envoy-expected-rq-timeout-ms: 15000
+x-request-id: 5dcb181c-1b21-4808-82a5-898bf541a685
+```
+
+## `grok-mobile` — 2026-09-03 05:22:58 UTC
+
+- Network: AS396982 Google LLC, country US, Cloudflare colo IAD
+- IP in a vendor list: no
+- Protocol: HTTP/2, TLSv1.3, ClientHello length 1712, cipher-set hash `qUlYa/u1n4QQ0ikv+ReyY9Hq/6I=`, extension-set hash `1pjUW4FDVxA8NypmktHsqsB5MO0=`
+
+```http
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+accept-encoding: gzip, br
+accept-language: en-US,en;q=0.9
+priority: u=0, i
+sec-ch-ua: "Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+sec-fetch-user: ?1
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/148.0.0.0 Safari/537.36
+```
