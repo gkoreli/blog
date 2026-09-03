@@ -21,20 +21,20 @@
 | `07-cloudflare-agent-readiness-and-zone-state.md` | Zone robots.txt, AI Crawl Control state, Agent Readiness scan results | Fable (dashboard read) |
 | `08-agent-native-landscape-2026-09.md` | Dated survey: what is shipping vs proposal in September 2026 | Claude opus research worker |
 | `09-fetch-metadata-prior-art.md` | TASK-0101 closed on prior art: caniuse 95.72%, Android WebView since Chromium 76, iOS WebView measured in mdn/browser-compat-data #27928; version-gated verdict rule | Fable, 2026-09-03 |
-| `10-rule-and-vocabulary-decision.md` | TASK-0102/0105: the settled reader kinds and predicate, with citations | Fable |
+| (no artifact 10) | TASK-0102/0105 decisions are recorded in ADR-0016.3 (section A, "Public labels", build-list status), the task outcome sections, and CHANGELOG 0.5.0/0.6.0 rather than a separate artifact | Fable, 2026-09-03 |
 | `11-living-center-and-form.md` | TASK-0103: shape-article output, protected passages | Fable with Goga |
 
 ## Tasks
 
 - `TASK-0098` evidence ledger (done)
-- `TASK-0099` standards vocabulary (in progress)
-- `TASK-0100` open-source code and ASN lists (in progress)
+- `TASK-0099` standards vocabulary (done, artifact 03)
+- `TASK-0100` open-source code and ASN lists (done, artifact 04)
 - `TASK-0101` fetch metadata absence rule (done, closed on prior art; artifact 09)
-- `TASK-0102` settle rule and names, amend ADR, ship
-- `TASK-0103` living center, form, protected material
-- `TASK-0104` 14-day calibration against Cloudflare Web Analytics
-- `TASK-0105` audience composition taxonomy (PROMPT 0012)
-- `TASK-0106` citable articles and reference visibility (PROMPT 0012)
+- `TASK-0102` settle rule and names, ship (done, 0.6.0)
+- `TASK-0103` living center, form, protected material (open; Goga's prose)
+- `TASK-0104` 14-day calibration against Cloudflare Web Analytics (open; around 2026-09-17; method and decision rule in the task file)
+- `TASK-0105` audience composition taxonomy (done, 0.5.0 + 0.6.0)
+- `TASK-0106` citable articles and reference visibility (citable half done in 0.5.0; "Referenced by" open)
 
 Decision record for all of the above: `docs/adr/0016.3-audience-composition-and-citable-articles.md`.
 

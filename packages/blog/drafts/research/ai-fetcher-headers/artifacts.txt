@@ -1,0 +1,9 @@
+# Repository-relative paths counted as committed research artifacts for post 023.
+packages/blog/drafts/research/ai-fetcher-headers/01-vendor-documentation.md
+packages/blog/drafts/research/ai-fetcher-headers/02-probe-captures.md
+packages/blog/drafts/research/ai-fetcher-headers/03-probe-log.md
+packages/blog/drafts/research/ai-fetcher-headers/04-open-source-validation.md
+packages/blog/drafts/research/ai-fetcher-headers/scripts/detectors.ts
+packages/blog/drafts/research/ai-fetcher-headers/artifacts.txt
+packages/blog/drafts/research/ai-fetcher-headers/research-footprint.json
+packages/blog/prompts/which-ai-fetchers-send-which-headers.prompts.md

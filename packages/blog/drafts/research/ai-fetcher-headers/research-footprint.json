@@ -1,0 +1,129 @@
+{
+  "rulesVersion": 1,
+  "format": "claude-code-per-message-v1",
+  "rootSession": "c4b4024b-bce0-4186-9977-c402bd7308c1",
+  "startedAt": "2026-09-03T03:44:10.071Z",
+  "measuredAt": "2026-09-03T05:32:36.495Z",
+  "wallClockMinutes": 109,
+  "sessionCount": 4,
+  "promptCount": 13,
+  "artifactCount": 8,
+  "committedArtifactCount": 6,
+  "uncommittedArtifactCount": 2,
+  "totals": {
+    "inputTokens": 31939704,
+    "nonCachedInputTokens": 37320,
+    "cachedInputTokens": 31296250,
+    "cacheWriteInputTokens": 606134,
+    "outputTokens": 164047,
+    "reasoningOutputTokens": 35853,
+    "totalTokens": 32103751
+  },
+  "trustBoundary": "Claude Code writes each assistant API message as several JSONL records sharing message.id, each repeating the message usage. One usage is counted per distinct message.id (last record wins), normalized so cached and cache-write input are a subset of public input, then summed once per included root or subagent log. Private logs are not committed; prefix hashes commit to the measured private bytes.",
+  "sessions": [
+    {
+      "id": "c4b4024b-bce0-4186-9977-c402bd7308c1",
+      "parentId": null,
+      "agentPath": "/root",
+      "startedAt": "2026-09-03T03:44:10.071Z",
+      "cwd": "/Users/goga/Documents/goga/blog",
+      "log": "c4b4024b-bce0-4186-9977-c402bd7308c1.jsonl",
+      "logBytes": 1888954,
+      "responseCount": 104,
+      "recordCount": 286,
+      "usageLine": 1063,
+      "usageAt": "2026-09-03T05:32:36.495Z",
+      "prefixSha256": "4b8d8b6a1e57c6f0ee948b5b1b198acf55f54776318b9a420db03123d38ca112",
+      "usage": {
+        "inputTokens": 20685929,
+        "nonCachedInputTokens": 18356,
+        "cachedInputTokens": 20374278,
+        "cacheWriteInputTokens": 293295,
+        "outputTokens": 157936,
+        "reasoningOutputTokens": 35265,
+        "totalTokens": 20843865
+      }
+    },
+    {
+      "id": "agent-a0f868f79d7a99c9e",
+      "parentId": "c4b4024b-bce0-4186-9977-c402bd7308c1",
+      "agentPath": "agent-a0f868f79d7a99c9e",
+      "startedAt": "2026-09-03T03:56:28.463Z",
+      "cwd": "/Users/goga/Documents/goga/blog/packages/blog",
+      "log": "c4b4024b-bce0-4186-9977-c402bd7308c1/subagents/agent-a0f868f79d7a99c9e.jsonl",
+      "logBytes": 2477005,
+      "responseCount": 86,
+      "recordCount": 142,
+      "usageLine": 431,
+      "usageAt": "2026-09-03T04:07:08.412Z",
+      "prefixSha256": "ae15751254341cda0e7096c30487e6910f6b5b88d1adce6fc34cada43616bf8b",
+      "usage": {
+        "inputTokens": 5658164,
+        "nonCachedInputTokens": 10307,
+        "cachedInputTokens": 5531093,
+        "cacheWriteInputTokens": 116764,
+        "outputTokens": 2627,
+        "reasoningOutputTokens": 231,
+        "totalTokens": 5660791
+      }
+    },
+    {
+      "id": "agent-a1e7a38155809a355",
+      "parentId": "c4b4024b-bce0-4186-9977-c402bd7308c1",
+      "agentPath": "agent-a1e7a38155809a355",
+      "startedAt": "2026-09-03T04:54:30.625Z",
+      "cwd": "/Users/goga/Documents/goga/blog",
+      "log": "c4b4024b-bce0-4186-9977-c402bd7308c1/subagents/agent-a1e7a38155809a355.jsonl",
+      "logBytes": 1598014,
+      "responseCount": 69,
+      "recordCount": 116,
+      "usageLine": 350,
+      "usageAt": "2026-09-03T05:05:04.365Z",
+      "prefixSha256": "549401fdf013ee05208bf80915680d95a58e3a8c130c4d38c585cad72dca18ba",
+      "usage": {
+        "inputTokens": 3924371,
+        "nonCachedInputTokens": 8605,
+        "cachedInputTokens": 3823080,
+        "cacheWriteInputTokens": 92686,
+        "outputTokens": 2698,
+        "reasoningOutputTokens": 88,
+        "totalTokens": 3927069
+      }
+    },
+    {
+      "id": "agent-adbae234d85bd994f",
+      "parentId": "c4b4024b-bce0-4186-9977-c402bd7308c1",
+      "agentPath": "agent-adbae234d85bd994f",
+      "startedAt": "2026-09-03T03:56:02.541Z",
+      "cwd": "/Users/goga/Documents/goga/blog/packages/blog",
+      "log": "c4b4024b-bce0-4186-9977-c402bd7308c1/subagents/agent-adbae234d85bd994f.jsonl",
+      "logBytes": 455807,
+      "responseCount": 26,
+      "recordCount": 81,
+      "usageLine": 169,
+      "usageAt": "2026-09-03T04:03:14.476Z",
+      "prefixSha256": "1a7f604ecc48cbf5ef212fd1423d814c8a2d6ab319aa4cca2d604bf7faace7dc",
+      "usage": {
+        "inputTokens": 1671240,
+        "nonCachedInputTokens": 52,
+        "cachedInputTokens": 1567799,
+        "cacheWriteInputTokens": 103389,
+        "outputTokens": 786,
+        "reasoningOutputTokens": 269,
+        "totalTokens": 1672026
+      }
+    }
+  ],
+  "artifacts": [
+    "packages/blog/drafts/research/ai-fetcher-headers/01-vendor-documentation.md",
+    "packages/blog/drafts/research/ai-fetcher-headers/02-probe-captures.md",
+    "packages/blog/drafts/research/ai-fetcher-headers/03-probe-log.md",
+    "packages/blog/drafts/research/ai-fetcher-headers/04-open-source-validation.md",
+    "packages/blog/drafts/research/ai-fetcher-headers/scripts/detectors.ts",
+    "packages/blog/drafts/research/ai-fetcher-headers/artifacts.txt",
+    "packages/blog/drafts/research/ai-fetcher-headers/research-footprint.json",
+    "packages/blog/prompts/which-ai-fetchers-send-which-headers.prompts.md"
+  ],
+  "researchDirectory": "packages/blog/drafts/research/ai-fetcher-headers",
+  "promptsFile": "packages/blog/prompts/which-ai-fetchers-send-which-headers.prompts.md"
+}

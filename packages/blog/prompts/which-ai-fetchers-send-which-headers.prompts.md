@@ -11,3 +11,39 @@ lets write this: Which AI fetchers send which headers, measured on a live site. 
 ---
 
 are you following the "The doorway paragraph" is your own rule from the opening-discipline note: the first paragraph has to give a stranger the significance and the takeaway before any background. For this post that would be the one paragraph a cold reader can use without knowing who you are.?
+
+---
+
+how to make this more valuable, validated, authoritative, legitimate, credible and so much more so that it gets referenced more?
+
+---
+
+look up authoritative references on open source (do it yourself), then validate further and capture all this in the worklist
+
+---
+
+The device-detector check used a Python parse of its YAML, not the PHP library. What? why not typescript
+
+---
+
+then the four missing assistants probed with your accounts?? why can't we do it without accounts?
+
+---
+
+cant you query the traces from cloudflare via cli? why are you using the chrome browser?
+
+---
+
+i dont want the empty cells in the table
+
+---
+
+btw, which ones do you want me to validate manually? and how? tell me if i can help i will help
+
+---
+
+grok responded with http status 404, main heading this page doesnt exist, but i was on wifi
+
+---
+
+afterall i want the researchFootprint to be measured and added to the article
