@@ -1,6 +1,6 @@
 {
   "source": "https://stat.ripe.net/data/as-overview/data.json",
-  "fetched_at": "2026-09-03T05:45:27.594Z",
+  "fetched_at": "2026-09-03T07:09:37.371Z",
   "holders": {
     "3257": "GTT-BACKBONE GTT Communications Inc.",
     "7979": "SERVERS-COM - Servers.com, Inc.",
@@ -14,6 +14,7 @@
     "52361": "AS52361 - ARSAT - Empresa Argentina de Soluciones Satelitales S.A.",
     "55286": "SERVER-MANIA - B2 Net Solutions Inc.",
     "62887": "WHITESKY-COMMUNICATIONS - WhiteSky Communications, LLC.",
+    "132203": "TENCENT-NET-AP-CN - Tencent Building, Kejizhongyi Avenue",
     "132817": "DZCRD-AS-AP - DZCRD Networks Ltd",
     "209709": "code200-ISP1 UAB code200",
     "212238": "CDNEXT Datacamp Limited",

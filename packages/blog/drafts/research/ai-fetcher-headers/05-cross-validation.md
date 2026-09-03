@@ -53,7 +53,7 @@ A large, maintained datacenter list flags 3 of 8 exits in run 1 and 2 of 8 in ru
 |---|---|
 | chatgpt.com | 200, 1 key (OpenAI's ChatGPT agent; matches research artifact 06 in readers-vs-bots) |
 | assistbot.duckduckgo.com | 200, 1 Ed25519 key, thumbprint `Ov3HDsa8JQ39dPEYFvFFN-cUpnz9yNI8LDvr-5LeiBM`, equal to the `keyid` in the captured DuckAssistBot request |
-| openai.com, duckduckgo.com, anthropic.com (→ www), claude.ai, claude.com, perplexity.ai (→ www), x.ai, grok.com, mistral.ai, gemini.google.com, google.com, www.google.com, bing.com | 404 |
+| openai.com, duckduckgo.com, anthropic.com (→ www.anthropic.com), claude.ai, claude.com, perplexity.ai (→ www.perplexity.ai), www.perplexity.ai, x.ai, grok.com, mistral.ai, gemini.google.com, google.com, www.google.com, bing.com (→ www.bing.com) | 404 |
 | copilot.microsoft.com | redirects to the Bing homepage |
 
-Only two hosts in the set publish signing keys, and only one of them, DuckDuckGo, signed a request in this study. Google-Agent's directory (documented elsewhere) is not on the consumer Gemini hosts probed here.
+Seventeen hosts were requested (two with keys, fourteen 404 after redirects, one redirect to a homepage). Only two hosts in the set publish signing keys, and only one of them, DuckDuckGo, signed a request in this study. Google-Agent's directory (documented elsewhere) is not on the consumer Gemini hosts probed here.

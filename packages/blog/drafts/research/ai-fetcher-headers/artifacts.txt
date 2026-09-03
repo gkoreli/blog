@@ -1,4 +1,4 @@
-# Repository-relative paths counted as committed research artifacts for post 023.
+# Repository-relative paths of the research files for post 023. The footprint counts Markdown files in the research directory (AGENTS.md rule); this manifest lists every file, Markdown or not.
 packages/blog/drafts/research/ai-fetcher-headers/01-vendor-documentation.md
 packages/blog/drafts/research/ai-fetcher-headers/02-probe-captures.md
 packages/blog/drafts/research/ai-fetcher-headers/03-probe-log.md
@@ -11,6 +11,8 @@ packages/blog/drafts/research/ai-fetcher-headers/scripts/export-captures.ts
 packages/blog/drafts/research/ai-fetcher-headers/data/README.md
 packages/blog/drafts/research/ai-fetcher-headers/data/captures.jsonl
 packages/blog/drafts/research/ai-fetcher-headers/data/captures.csv
+packages/blog/drafts/research/ai-fetcher-headers/data/side-requests.jsonl
+packages/blog/drafts/research/ai-fetcher-headers/data/stray-probe-requests.jsonl
 packages/blog/drafts/research/ai-fetcher-headers/data/asn-holders.json
 packages/blog/drafts/research/ai-fetcher-headers/data/firewall-events-2026-09-03.json
 packages/blog/drafts/research/ai-fetcher-headers/05-cross-validation.md

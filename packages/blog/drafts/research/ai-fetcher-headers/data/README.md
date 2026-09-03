@@ -4,7 +4,9 @@ Captured 2026-09-03 at the Cloudflare Worker in front of gkoreli.com with `wrang
 
 | File | What it is |
 |---|---|
-| `captures.jsonl` | One record per probe request (any URL carrying `?probe=` or `/probe/`), ordered by time. Fields below. |
+| `captures.jsonl` | One record per request for a probe URL assigned to a specific assistant or baseline during the study (the allowlist is in `../scripts/export-captures.ts`), ordered by time. Fields below. |
+| `side-requests.jsonl` | Attributed requests that are not probe URLs: subresources whose `Referer` is a probe URL (headless renders), and requests from `ChatGPT-User`, `PerplexityBot`, `DuckAssistBot` or `GPTBot` during the capture windows (homepage and post follow-ups, the PerplexityBot burst, robots.txt fetches). |
+| `stray-probe-requests.jsonl` | Probe-shaped URLs nobody assigned: the article's literal `<name>` template fetched by GPTBot, and URLs assembled from columns of the published CSV by whatever read it. Kept because they show the dataset itself being crawled. |
 | `captures.csv` | The same records flattened: one row per request, the most-used headers as columns, remaining header names listed in `header_names`. |
 | `asn-holders.json` | ASN → registry holder from RIPEstat `as-overview`, fetched at export time. |
 | `firewall-events-2026-09-03.json` | Every Cloudflare edge security event for the zone across the capture window (GraphQL `firewallEventsAdaptive`). Used to rule out edge blocking of probes that produced no origin request. |
@@ -27,13 +29,15 @@ Captured 2026-09-03 at the Cloudflare Worker in front of gkoreli.com with `wrang
 | `client_ip` | Present only when `client_ip_vendor_lists` is non-empty; otherwise `null` |
 | `owner_network` | `true` for requests from the site owner's own network (baselines, local tools) |
 
+The files are exports of the requests the article relies on, redacted as described below. They are not a complete log of the site's traffic during the windows.
+
 ## Redaction rule
 
 A client address identifies a vendor when it is inside that vendor's published list, and possibly a person when it is not. Addresses are therefore kept only in the first case. Proxy-exit addresses (the Grok runs) are never included; the ASN, its registry holder, and the Cloudflare country stand in. TLS client randoms and exported authenticators are dropped.
 
 ## Attribution
 
-Each probe URL was given to exactly one assistant, in a fresh chat, and existed nowhere else. A request carrying that URL is attributed to that assistant. The prompts, times and assistant replies are in `../03-probe-log.md`.
+Each assigned probe URL was given to one assistant in a fresh chat and existed nowhere else at the time, with one deliberate exception: `/probe/grok-mobile` was reused for the signed-in phone and desktop Grok runs. A request carrying an assigned URL is attributed to that assistant by the URL and by arrival time. The prompts, times and assistant replies are in `../03-probe-log.md`.
 
 ## Reuse
 

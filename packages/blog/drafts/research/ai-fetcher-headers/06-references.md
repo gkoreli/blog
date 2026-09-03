@@ -28,6 +28,7 @@ Every external source the article relies on, what it supports, how it was verifi
 | 22 | [arp242/isbot](https://github.com/arp242/isbot) (GoatCounter) | Hosting-range reason codes; Servers.com and Google Cloud listed | Source read 2026-09-03 | Primary. Strong. |
 | 23 | [X4BNet/lists_vpn](https://github.com/X4BNet/lists_vpn) datacenter IPv4 | 3 of 8 and 2 of 8 Grok exits flagged | 42,797 ranges fetched 2026-09-03; checked privately; booleans published | Community list; coverage varies. Used as a lower bound, not a verdict. |
 | 24 | Cloudflare Radar [bot directory, DuckAssistBot](https://radar.cloudflare.com/bots/directory/duckassistbot) | DuckAssistBot listed | Search result 2026-09-03; direct fetch returns 403 to non-browser clients | Secondary until opened in a browser. Article says "lists", not "verified". |
+| 25a | Fetch Metadata support in current engines | Chromium 76+, Firefox 90+, Safari and iOS WebKit 16.4+ send `Sec-Fetch-*` on navigations | caniuse and mdn/browser-compat-data #27928 as recorded in readers-vs-bots artifact 09 (2026-09-03) | Primary compatibility data; "every mainstream engine" is bounded to those versions. |
 | 25 | Cloudflare AI Crawl Control state (readers-vs-bots artifact 07) | Every crawler allowed, no block toggles | Dashboard read 2026-09-03 early | Primary, dashboard. Supports the firewall check. |
 
 ## Internal evidence
@@ -42,4 +43,4 @@ Every external source the article relies on, what it supports, how it was verifi
 
 ## Link check
 
-All 17 external links in the article resolved with HTTP 200 on 2026-09-03 except: the two `data/` file links, which return 404 until the branch is pushed (they point at `main`), and the Cloudflare Radar page, which returns 403 to non-browser clients. Pin the research links to the release commit at publish time.
+All external links in the article resolved with HTTP 200 on 2026-09-03 after the push, except the Cloudflare Radar page, which returns 403 to non-browser clients. Research and data links point at `main`; pin them to a commit if the directory is ever restructured.

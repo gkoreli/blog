@@ -356,7 +356,7 @@ The public methodology used to say they were. I corrected that wording while wri
 
 ## What I am building toward
 
-I am not trying to reproduce Google Analytics on a smaller budget. The first audit of whether this counter can be trusted came a week later, in [Which AI Fetchers Send Which Headers, Measured on a Live Site](/which-ai-fetchers-send-which-headers), where the raw requests of six AI fetchers were compared with what the counter recorded.
+I am not trying to reproduce Google Analytics on a smaller budget. The first audit of whether this counter can be trusted came a week later, in [Which AI Fetchers Send Which Headers, Measured on a Live Site](/which-ai-fetchers-send-which-headers), where the raw requests of ten AI fetchers were compared with what the counter recorded.
 
 I want a public decision instrument for one personal publication:
 

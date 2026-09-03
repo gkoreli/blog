@@ -5,6 +5,11 @@
  * plus the vendor IP-list JSON files fetched the same day.
  * Output (committed under ../data/):
  *   captures.jsonl   one record per probe request
+ *   stray-probe-requests.jsonl probe-shaped URLs not assigned in the study (template URL, CSV-assembled URLs)
+ *   side-requests.jsonl attributed non-probe requests: any request whose Referer is a probe URL
+ *                    (subresources of a headless render), plus requests from a vendor-tokened
+ *                    agent (ChatGPT-User, PerplexityBot, DuckAssistBot, GPTBot) inside
+ *                    the capture windows, which the article uses as follow-up evidence
  *   captures.csv     the same, flattened
  *   asn-holders.json ASN -> registry holder (RIPEstat as-overview), fetched at export time
  *
@@ -28,6 +33,10 @@ mkdirSync(outDir, { recursive: true });
 
 const DROP_HEADERS = new Set(['cf-connecting-ip', 'x-real-ip', 'cf-ray', 'cf-visitor', 'x-forwarded-proto', 'host', 'connection', 'cf-ipcountry']);
 const OWNER_ASN = 62887;
+// Probe names assigned to a specific assistant or baseline during the study. Any other
+// probe-shaped URL (the article's literal <name> template, URLs assembled from the
+// published CSV columns, unknown names) is a stray request and goes to its own file.
+const ASSIGNED_PROBES = new Set(['hdr1', 'claudecode-webfetch', 'chatgpt', 'claude', 'gemini', 'grok', 'chrome-navigation', 'perplexity-path', 'duckai-path', 'copilot-path', 'mistral-path', 'grok-second-run', 'codex%2Dsearch', 'chatgpt-mobile', 'grok-mobile', 'grok-web-loggedin', 'perplexity-goga', 'copilot-goga', 'duckai-goga', 'deploy-check']);
 
 interface TailEvent {
   eventTimestamp: number;
@@ -151,12 +160,18 @@ function str(value: unknown): string | null { return typeof value === 'string' ?
 
 async function main(): Promise<void> {
   const rows: Capture[] = [];
+  const sideRows: Capture[] = [];
+  const strayRows: Capture[] = [];
   for (const file of readdirSync(scratchDir).filter((n) => n.startsWith('tail-') && n.endsWith('.json'))) {
     for (const value of readConcatenatedJson(readFileSync(join(scratchDir, file), 'utf8'))) {
       if (!isTailEvent(value)) continue;
       const request = value.event?.request;
       const url = request?.url ?? '';
-      if (!url.includes('probe=') && !url.includes('/probe/')) continue;
+      const isProbe = url.includes('probe=') || url.includes('/probe/');
+      const referer = request?.headers?.referer ?? '';
+      const ua = request?.headers?.['user-agent'] ?? '';
+      const isSide = !isProbe && (referer.includes('probe') || /ChatGPT-User|PerplexityBot|DuckAssistBot|GPTBot/.test(ua));
+      if (!isProbe && !isSide) continue;
       const headers = request?.headers ?? {};
       const cf = request?.cf ?? {};
       const asnValue = cf.asn;
@@ -165,9 +180,11 @@ async function main(): Promise<void> {
       const lists = [...vendorLists.entries()].filter(([, prefixes]) => prefixes.some((p) => inCidr(ip, p))).map(([name]) => name);
       const kept: Record<string, string> = {};
       for (const key of Object.keys(headers).sort()) if (!DROP_HEADERS.has(key)) kept[key] = headers[key] ?? '';
-      rows.push({
+      const probeName = isProbe ? (url.includes('probe=') ? url.split('probe=')[1] ?? '' : url.split('/probe/')[1] ?? '') : '';
+      const target = !isProbe ? sideRows : ASSIGNED_PROBES.has(probeName) ? rows : strayRows;
+      target.push({
         observed_at: new Date(value.eventTimestamp).toISOString(),
-        probe: url.includes('probe=') ? url.split('probe=')[1] ?? '' : url.split('/probe/')[1] ?? '',
+        probe: probeName,
         url,
         method: request?.method ?? 'GET',
         headers: kept,
@@ -188,7 +205,11 @@ async function main(): Promise<void> {
     }
   }
   rows.sort((a, b) => a.observed_at.localeCompare(b.observed_at));
+  sideRows.sort((a, b) => a.observed_at.localeCompare(b.observed_at));
   writeFileSync(join(outDir, 'captures.jsonl'), rows.map((r) => JSON.stringify(r)).join('\n') + '\n');
+  writeFileSync(join(outDir, 'side-requests.jsonl'), sideRows.map((r) => JSON.stringify(r)).join('\n') + '\n');
+  strayRows.sort((a, b) => a.observed_at.localeCompare(b.observed_at));
+  writeFileSync(join(outDir, 'stray-probe-requests.jsonl'), strayRows.map((r) => JSON.stringify(r)).join('\n') + '\n');
 
   const columns = ['observed_at', 'probe', 'url', 'asn', 'asn_registry_holder', 'cloudflare_as_organization', 'cloudflare_country', 'http_protocol', 'tls_version', 'user_agent', 'accept', 'accept_language', 'sec_fetch_mode', 'sec_fetch_dest', 'sec_fetch_site', 'sec_fetch_user', 'sec_ch_ua', 'signature_agent', 'client_ip_vendor_lists', 'client_ip', 'owner_network', 'header_names'];
   const csvCell = (v: unknown): string => {
@@ -205,7 +226,7 @@ async function main(): Promise<void> {
   }
   writeFileSync(join(outDir, 'captures.csv'), csv.join('\n') + '\n');
   writeFileSync(join(outDir, 'asn-holders.json'), JSON.stringify({ source: 'https://stat.ripe.net/data/as-overview/data.json', fetched_at: new Date().toISOString(), holders: Object.fromEntries([...holders.entries()].sort((a, b) => a[0] - b[0]).map(([k, v]) => [String(k), v])) }, null, 2) + '\n');
-  console.log(`${rows.length} requests exported to ${outDir}`);
+  console.log(`${rows.length} probe requests, ${sideRows.length} side requests, ${strayRows.length} stray probe-shaped requests exported to ${outDir}`);
 }
 
 await main();
