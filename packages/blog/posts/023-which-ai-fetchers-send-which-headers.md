@@ -41,7 +41,7 @@ The findings, each explained below:
 - **Perplexity** reported "HTTP 200 OK" and the correct heading for a real page without any request reaching the origin, and reported a fetch failure for an unknown path, also without a request. Logged in, it did the same, and instead dispatched its search crawler to `robots.txt`, `/about` and `/essays`.
 - **Copilot**, logged in, reported twice that its fetch tool "returned an empty result". No request reached the origin, and Cloudflare's edge firewall log shows nothing was blocked.
 - **Claude Code's fetch tool** runs on the user's own machine, not on Anthropic's, and asks for Markdown before HTML.
-- **Codex's web search** answered correctly about the page without ever requesting it.
+- **Codex's web search** answered correctly about the page without requesting it; 76 minutes later an unnamed client on Amazon fetched that exact URL.
 
 Three of these matter beyond this site. The Grok result means that server-side "human versus bot" counts on any site are inflated by an unknowable amount whenever people use Grok to read pages. The Gemini result means the largest search company in the world runs a consumer fetcher that its own crawler documentation does not describe. The DuckDuckGo result means the mechanism that would fix both already runs in production at a mainstream assistant, and the others have simply not adopted it.
 
@@ -62,7 +62,7 @@ Each assistant was given a fresh chat and asked to open a URL unique to it, eith
 | Perplexity, 7 attempts | no request for any probe URL; PerplexityBot crawled 3 other paths | `PerplexityBot/1.0` with `From: crawler-support@perplexity.ai`, no `Accept` | absent | none | AS14618 Amazon | yes, `perplexitybot.json` | HTTP/1.1 |
 | Copilot, 2 attempts | no request reached the origin | no request | no request | no request | no request | no request | no request |
 | Claude Code | `Claude-User (claude-code/2.1.259; +https://support.anthropic.com/)` | `text/markdown, text/html, */*` | absent | none | my own ISP | not applicable, runs locally | HTTP/1.1 |
-| Codex CLI web search | no request reached the origin | no request | no request | no request | no request | no request | no request |
+| Codex CLI web search | none at answer time; 76 min later `Mozilla/5.0 (compatible)` fetched the exact URL | `*/*` | absent | none | AS14618 Amazon | no | HTTP/1.1 |
 | Chrome, human baseline | `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36` | browser-shaped | `en-US,en;q=0.9,ka;q=0.8,ru;q=0.7` | `navigate` / `document` / `cross-site`, plus `Sec-CH-UA`, `Upgrade-Insecure-Requests` | my own ISP | not applicable, a person | HTTP/3 |
 
 "Fetch Metadata" means the `Sec-Fetch-Mode`, `Sec-Fetch-Dest` and `Sec-Fetch-Site` headers that every current browser engine sends on a navigation. Of the declared fetchers only Mistral's first request sends them, which suggests a real browser engine behind that fetch. Grok's requests all do.
@@ -160,9 +160,9 @@ For counting purposes: my Worker classified all eight as browsers, and it was ri
 
 ## Codex: the fetch that never happened
 
-I ran OpenAI's Codex CLI with its web search tool enabled and asked it to open the probe URL. It printed a search step with the URL, then answered with the exact H1 and a link to the page. The origin never received a request with `probe=codex-search`. Neither the tail nor the database has one.
+I ran OpenAI's Codex CLI with its web search tool enabled and asked it to open the probe URL. It printed a search step with the URL, encoded as `probe=codex%2Dsearch`, then answered with the exact H1 and a link to the page. At answer time the origin had received no request for that URL. Neither the tail nor the database had one.
 
-The page's content came from OpenAI's search index, which had the article from earlier crawls, and the tool presented that as having opened the URL. For the reader the answer was correct. For the site owner it is a read that no server log will ever show. Whatever share of AI reading happens this way is invisible to first-party analytics by construction, and no amount of header work recovers it.
+The page's content came from OpenAI's search index, which had the article from earlier crawls, and the tool presented that as having opened the URL. For the reader the answer was correct. For the site owner it was a read that no server log showed. Then, 76 minutes later, one request for exactly that URL arrived, with the hyphen still percent-encoded the way Codex had printed it, from an Amazon address, with the User-Agent `Mozilla/5.0 (compatible)`, `Accept: */*`, and no token, contact or signature. That URL existed nowhere but Codex's search step. Whatever fetched it is part of OpenAI's search pipeline catching up on a URL it had answered about without visiting, and it identified itself as nothing. Reads that happen this way are invisible to first-party analytics when they happen, and unattributable when the fetch finally comes.
 
 ## What the open-source detectors make of these requests
 
