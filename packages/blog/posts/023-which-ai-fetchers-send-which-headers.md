@@ -100,6 +100,21 @@ I ran OpenAI's Codex CLI with its web search tool enabled and asked it to open t
 
 The page's content came from OpenAI's search index, which had the article from earlier crawls, and the tool presented that as having opened the URL. For the reader the answer was correct. For the site owner it is a read that no server log will ever show. Whatever share of AI reading happens this way is invisible to first-party analytics by construction, and no amount of header work recovers it.
 
+## What the open-source detectors make of these requests
+
+Most sites do not write their own classifier. They use a library. So I ran the six captured User-Agent strings through the detectors the open-source world actually ships: [isbot](https://github.com/omrilotan/isbot) 5.2.2 (the npm package), Matomo's [device-detector](https://github.com/matomo-org/device-detector) bot list, [crawler-user-agents](https://github.com/monperrus/crawler-user-agents), the [ai.robots.txt](https://github.com/ai-robots-txt/ai.robots.txt) registry, and GoatCounter's [isbot](https://github.com/arp242/isbot) rules, all at their current `main` on the day of the capture.
+
+| Captured User-Agent | isbot | device-detector | crawler-user-agents | ai.robots.txt |
+|---|---|---|---|---|
+| ChatGPT-User | bot | `ChatGPT-User` | `ChatGPT-User` | listed, OpenAI |
+| Claude-User | bot | `Claude-User` | `Claude-User` | listed, Anthropic |
+| `Google` | bot, generic `google` pattern | `Googlebot`, "Search bot" | no match | no entry |
+| Claude Code | bot | `Claude-User` | `Claude-User` | `Claude-Code`, operator "unclear" |
+| Grok, Safari UA | not a bot | no match | no match | no entry |
+| Grok, Chrome UA | not a bot | no match | no match | no entry |
+
+Three things fall out. The declared fetchers are named identically everywhere; on ChatGPT-User and Claude-User the open-source consensus and my Worker agree. The bare `Google` string is known to exactly one detector, and that detector files it under Googlebot as search crawling, so every Matomo installation counts a person reading through Gemini as Google indexing the page. And Grok passes every check, because there is nothing to match: ai.robots.txt, whose whole purpose is to let sites express AI-agent policy in robots.txt, has no xAI entry and cannot have one. GoatCounter's IP-range rules would catch one of the eight exits, the one at Servers.com. Isbot's own pattern for Claude Code, `^claude-code/`, does not match the real string either, which starts with `Claude-User`; the request is caught by a different pattern. Each of those is a pull request I will open with this capture as the evidence, and the results table lives in the research directory with the exact files checked.
+
 ## What this means if you run a site
 
 This section is for anyone who counts visitors on their own server, whether with a Worker, a log parser, or a hosted product that runs at the edge.
