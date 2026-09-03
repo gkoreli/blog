@@ -3,14 +3,14 @@
 **Subject:** *Manufactured Sources Behind AI Recommendations*  
 **Report ID:** TR-2026-009  
 **Trellner publication date:** 2026-09-02  
-**Audit fetch date:** 2026-09-02 in America/Los_Angeles; several requests occurred after midnight on 2026-09-03 UTC  
+**Audit fetch date:** 2026-09-02 in America/Los_Angeles (2026-09-03 UTC for all network fetches)  
 **Scope:** report, methodology, published scripts, every linked data artifact, selected live evidence pages, and publisher/conflict checks
 
 ## Overall assessment
 
-The release is a useful descriptive snapshot of the URLs returned by one Perplexity retrieval stack. Trellner publishes enough cleaned data and code to independently recompute most headline counts. It is not evidence that a formally identified class of “manufactured sources” causes AI recommendations. That label has no operational definition, no classifier, and no column in the dataset. Three domains are selected after collection and hard-coded in the analysis.[^report][^method][^analyze]
+The release is a useful descriptive snapshot of URLs returned by two Perplexity tiers routed through OpenRouter whose outputs overlap strongly. Trellner publishes enough cleaned data and code to independently recompute most headline counts. It is not evidence that a formally identified manufactured-source class causes AI recommendations. That label has no operational definition, no classifier, and no column in the dataset. Three domains are selected after collection and hard-coded in the analysis.[^report][^method][^analyze]
 
-The strongest reusable contribution is the artifact design: call-level records, flat recommendation and citation tables, a pinned Tranco list, archive and liveness enrichment, evidence extracts, a method, a report ID, a PDF, and a CC BY 4.0 licence. The most serious defect is the Wayback treatment: failed lookups become blank exported dates and are then counted as “never archived.” Three obviously archived domains account for at least 271 of the 343 citation occurrences carrying blank dates, so the published 4.6% derived value cannot be interpreted as a verified “never archived” rate.[^enrich][^export][^citations][^wb-reddit][^wb-nytimes][^wb-x]
+The strongest reusable contribution is the artifact design: call-level records, flat recommendation and citation tables, a pinned Tranco list, archive and liveness enrichment, evidence extracts, a method, a report ID, a PDF, and a CC BY 4.0 licence. The most serious defect is the Wayback treatment: failed lookups become blank exported dates and are then counted as absent from the archive. Three obviously archived domains account for at least 271 of the 343 citation occurrences carrying blank dates, so the published 4.6% derived value cannot be interpreted as a verified no-capture rate.[^enrich][^export][^citations][^wb-reddit][^wb-nytimes][^wb-x]
 
 ## 1. What the report claims
 
@@ -33,18 +33,18 @@ These units come from the report, `numbers.json`, the exported CSVs, and my inde
 The central popularity result is citation-weighted:
 
 - 1,766 of 7,534 citation occurrences, or 23.4%, have a derived domain absent from Tranco K9QPW’s top million.
-- 4,508 of 7,534, or 59.8%, either rank below 100,000 or are absent. The implementation assigns absent domains an effective rank of one billion for this calculation.
+- 4,508 of 7,534, or 59.8%, either rank numerically greater than 100,000 (worse than #100,000) or are absent. The implementation assigns absent domains an effective rank of one billion for this calculation.
 - 5,768 citation occurrences have a Tranco rank; their citation-weighted median rank is 71,611.
 - 751 of 2,055 distinct derived domains, or 36.5%, are absent from that Tranco list.
 - The ten most-cited derived domains account for 1,302 occurrences, or 17.3%. Wikipedia accounts for three occurrences.
 
-The report’s shorthand “59.8% of sources” therefore means 59.8% of citation **occurrences**, including missing ranks. It does not mean 59.8% of distinct URLs or domains.[^numbers][^analyze]
+The report presents the 59.8% figure as a source share. Technically, it means 59.8% of citation **occurrences**, including missing ranks; it does not mean 59.8% of distinct URLs or domains.[^numbers][^analyze]
 
 The report also compares archive ages among domains for which a first-capture date was exported: the median first-capture year is 2020 for Tranco-absent domains and 2011 for ranked domains; 16.6% versus 1.6% were first captured in 2025 or later. Those figures exclude blank archive values and should be treated cautiously because the blanks contain confirmed lookup failures, discussed in Sections 2 and 3.[^numbers][^enrich]
 
 ### Named actors
 
-Guideflow is the strongest non-network example. It receives 194 citation occurrences, 2.57% of the corpus, across 96 categories and 96 distinct URLs; it ranks third among derived domains and was Tranco rank 177,039. Trellner manually describes it as an interactive-demo vendor whose blog publishes listicles outside its product category. There is no dataset-wide vendor/review/publisher classification supporting that description.[^report][^numbers]
+Guideflow is the strongest single-domain content-marketing example. It receives 194 citation occurrences, 2.57% of the corpus, across 96 categories and 96 distinct URLs; it ranks third among derived domains and was Tranco rank 177,039. Its sitemap contained 3,351 blog URL entries representing 2,176 distinct posts. Trellner manually describes it as an interactive-demo vendor whose blog publishes listicles outside its product category. There is no dataset-wide vendor/review/publisher classification supporting that description.[^report][^numbers]
 
 There is a numerical wording error in the report: it says each of Guideflow’s 194 citations is a different URL, then immediately reports 96 distinct URLs. Both cannot be true. The data support 194 occurrences and 96 unique URLs; repeated URLs across the two model tiers are the natural explanation.[^report][^citations][^numbers]
 
@@ -59,13 +59,15 @@ For the three domains Trellner groups together:
 
 The 181 occurrences are 2.4% of all citations and touch 10.8% of categories. The sites share a Cloudflare nameserver pair, a page template, navigation/taxonomy, and cross-promotional blogs. Trellner correctly calls common control circumstantial rather than proven.[^numbers][^sitemaps][^report]
 
+Trellner’s saved WHOIS extraction gives creation timestamps of 2023-12-04T17:10:49Z for Gitnux, 2024-04-17T14:43:26Z for WifiTalents, and 2024-05-01T18:03:06Z for Worldmetrics; all three list NameCheap as registrar. These are domain-registration facts, not dates for individual buying-guide pages.[^numbers]
+
 The homepage metadata is live: Worldmetrics and Gitnux use the `Facts & Grounding Page` title; ZipDo, the fourth cross-promoted brand, uses it too. WifiTalents currently uses a different homepage title.[^worldmetrics][^gitnux][^zipdo][^wifitalents]
 
-The homepage-domain audit finds 10 names with no A-record resolution, four resolving names with no response on either path, two HTTP 404s, and one HTTP 502. That is 17 of 1,502, or 1.1%, classed as gone or unreachable. Another 92, or 6.1%, redirect outside the supplied domain. Combining those groups yields the report’s 109 “wrong or stale” domains, 7.3%, but off-domain redirects include ordinary acquisitions and rebrands and are not inherently wrong.[^numbers][^vendors][^redirect]
+The homepage-domain audit finds 10 names with no A-record resolution, four resolving names with no response on either path, two HTTP 404s, and one HTTP 502. That is 17 of 1,502, or 1.1%, classed as gone or unreachable. Another 92, or 6.1%, redirect outside the supplied domain. Combining those groups yields the report’s 109-domain wrong/stale group, 7.3%, but off-domain redirects include ordinary acquisitions and rebrands and are not inherently wrong.[^numbers][^vendors][^redirect]
 
 ### Exact definitions—and the missing ones
 
-The quoted term **“manufactured source”** is not operationally defined anywhere in the report, README, METHOD, CSVs, or published scripts. There is no rule for inclusion, no model or human coding protocol, no threshold, no negative examples, no blinded review, and no inter-rater check. `analyze.py` simply hard-codes `worldmetrics.org`, `gitnux.org`, and `wifitalents.com` into a three-element list after data collection. “Machine-generated” is also an inference from scale and templates; the report publishes no generator trace or detector validation.[^report][^method][^analyze]
+The quoted term **“manufactured source”** is not operationally defined anywhere in the report, README, METHOD, CSVs, or published scripts. There is no rule for inclusion, no model or human coding protocol, no threshold, no negative examples, no blinded review, and no inter-rater check. `analyze.py` simply hard-codes `worldmetrics.org`, `gitnux.org`, and `wifitalents.com` into a three-element list after data collection. The claim that the pages were machine-generated is also an inference from scale and templates; the report publishes no generator trace or detector validation.[^report][^method][^analyze]
 
 **“Facts & Grounding Page”** is an exact HTML title on Worldmetrics, Gitnux, and ZipDo. The report defines grounding as **“the name of the step in which a retrieval system fetches documents to condition an answer on.”** That explains why the wording is noteworthy, but it does not prove who the intended reader was or why Perplexity selected a page.[^report][^worldmetrics][^gitnux][^zipdo]
 
@@ -98,7 +100,7 @@ It then demanded only an array of exactly five ranked objects, each shaped:
 
 This was a natural-language formatting instruction, not an API-enforced JSON Schema. The request body contains one user message and `max_tokens: 700`; it sets no system message, `response_format`, seed, or temperature. The parser searches for the first bracketed span, JSON-decodes it, and accepts every dictionary with a truthy `name`; it does not enforce five objects or a nonempty domain. All 760 published calls nevertheless contain exactly five picks.[^method][^orlib][^raw]
 
-The calls used `perplexity/sonar` and `perplexity/sonar-pro` through OpenRouter. This is one vendor family and apparently one heavily shared retrieval stack, not two independent engines: 289 of 380 category pairs have byte-identical citation lists, the tiers’ unique-URL sets have Jaccard similarity 0.898, they choose the same top product in 290 categories, and their top-five product-name sets have mean Jaccard similarity 0.763.[^method][^numbers]
+The calls used `perplexity/sonar` and `perplexity/sonar-pro` through OpenRouter. They are two tiers from one vendor family, not independent vendor observations: 289 of 380 category pairs have byte-identical citation lists, the tiers’ unique-URL sets have Jaccard similarity 0.898, they choose the same top product in 290 categories, and their top-five product-name sets have mean Jaccard similarity 0.763. This suggests shared retrieval components but does not establish the provider’s internal architecture.[^method][^numbers]
 
 The public records’ request-start timestamps run from 2026-09-02T11:53:54Z through 11:57:53Z, a roughly four-minute snapshot. Completion timestamps are absent. The collector allows up to three attempts, but the cleaned JSONL removes error, attempt, raw response ID, response text, and usage fields, so retries and exact provider responses cannot be audited from the release.[^run][^raw][^export]
 
@@ -136,7 +138,7 @@ No direct Perplexity API key is needed to run the published route; it requires a
 
 ### What is weak
 
-- **One effective retrieval stack:** two tiers from one provider share most citation URLs.
+- **One vendor family with high overlap:** two Perplexity tiers routed through OpenRouter share most citation URLs.
 - **One English prompt form:** no language, geography, persona, task-stage, or “best” versus “popular” sensitivity test.
 - **One run:** no repeat sampling, confidence intervals, or temporal replication.
 - **Hand-built categories:** broad but not sampled from an external frame; niche mix can affect prevalence.
@@ -213,7 +215,7 @@ The archive field has a larger problem. `enrich.py` distinguishes `wayback_first
 - `nytimes.com`: eight blank-date occurrences; a capture is returned from 1996.
 - `x.com`: two blank-date occurrences; a capture is returned from 1999.
 
-Those three domains alone account for 271 of 343 blank-date citation occurrences. At most 72 occurrences remain unresolved after correcting these demonstrable false negatives. The release’s 4.6% “never archived” value is therefore not valid as stated; the reason each remaining lookup is blank is **UNVERIFIED**.[^enrich][^export][^analyze][^citations][^wb-reddit][^wb-nytimes][^wb-x]
+Those three domains alone account for 271 of 343 blank-date citation occurrences. At most 72 occurrences remain unresolved after correcting these demonstrable false negatives. The release’s 4.6% no-capture value is therefore not valid as stated; the reason each remaining lookup is blank is **UNVERIFIED**.[^enrich][^export][^analyze][^citations][^wb-reddit][^wb-nytimes][^wb-x]
 
 ### Reproducibility
 
@@ -237,18 +239,20 @@ The fair characterization is: **the published analysis is substantially auditabl
 
 Trellner describes itself as an independent research firm studying brands, products, and market positioning. Its about page says subjects do not pay it, it accepts no sponsorship, and it issues no ratings, rankings, or investment advice. Its leadership page names Konrad Trellner as founder/director, Margaret Ellis as principal analyst, and Sofia Marek as senior analyst.[^about][^leadership]
 
-The public reports index lists eight items: TR-2026-001 through 007 and TR-2026-009. Their subjects cluster around AI visibility, entity signals, citation concentration, software-buyer research, the difference between machine retrieval and human visits, and AI reference layers. Most are short narrative research pieces rather than downloadable empirical releases; TR-2026-009 is the most complete public data package on the index.[^reports]
+The public reports index lists eight items: TR-2026-001 through 007 and TR-2026-009. Their subjects cluster around AI visibility, entity signals, citation concentration, software-buyer research, the difference between machine retrieval and human visits, and AI reference layers. Most are short narrative research pieces rather than downloadable empirical releases; TR-2026-009 is the most complete public data package on the index. The public podcast feed contains episodes for TR-2026-001, 002, 008, and 010, including the two reports omitted from the site index.[^reports][^podcast]
 
-The site’s usual citation style is contextual inline linking, not a bibliography. TR-2026-009 links its external benchmark (Tranco), then moves most verification into its internal data directory: cleaned source data, scripts, named-page extracts, and a manifest. The manifest covers selected pages discussed in the prose, not all 7,534 citation occurrences. This is better provenance than unsupported narrative, but it still requires readers to distinguish captured first-party claims from independent corroboration.[^report][^data][^manifest]
+Across representative reports TR-2026-003, 004, and 006, the site uses contextual inline links rather than a conventional bibliography. TR-2026-009 links its external benchmark (Tranco), then moves most verification into its internal data directory: cleaned source data, scripts, named-page extracts, and a manifest. The manifest covers selected pages discussed in the prose, not all 7,534 citation occurrences. This is better provenance than unsupported narrative, but it still requires readers to distinguish captured first-party claims from independent corroboration.[^tr003][^tr004][^tr006][^report][^data][^manifest]
 
 ### Commercial-interest audit
+
+I found no Trellner-branded paid product for AI-citation measurement, optimization, or publishing on the inspected public pages. The site advertises free research reports and a contact address. Thus no direct product-sales conflict tied to TR-2026-009 was established; undisclosed services or ownership interests remain **UNVERIFIED**.[^about][^reports]
 
 There is a direct inconsistency on Trellner’s own site. Its about page says it issues no rankings, while two live, consecutively numbered reports do exactly that:
 
 - TR-2026-008 ranks ExhibitorLens first among ten trade-show exhibitor-list providers and describes a $199 one-time product.
 - TR-2026-010 ranks TAM Graph first among ten B2B data APIs and describes a $199/month product.
 
-Both pages are dated 2026-09-02 and state that rank cannot be bought and Trellner receives no payment or affiliate benefit. Neither report appears on the reports index or sitemap fetched for this audit.[^about][^tr008][^tr010][^reports][^trellner-sitemap]
+Both pages are dated 2026-09-02 and state that rank cannot be bought and Trellner receives no payment or affiliate benefit. Neither report appears on the reports index or sitemap fetched for this audit, although both have entries in the podcast feed.[^about][^tr008][^tr010][^reports][^trellner-sitemap][^podcast]
 
 TAM Graph is explicitly listed on the Hatchling Labs homepage. TAM Graph and ExhibitorLens both load `pulse-rvrb.onrender.com/p.js` and `support.js`; the shared support script’s failure message directs users to `jakob@hatchlinglabs.com`. This establishes TAM Graph as a listed Hatchling product and shows an apparent shared support/analytics relationship across both products. It does **not** by itself establish who owns ExhibitorLens or Trellner.[^hatchling][^tamgraph][^exhibitorlens][^pulse]
 
@@ -258,9 +262,9 @@ There are additional coordination signals:
 - The Hacker News account `jakobgreenfeld` submitted a report from each domain between 13:49:23Z and 13:59:59Z on 2026-09-02—a 10 minute 36 second window.
 - `trellner.com` was therefore registered one day before TR-2026-009’s stated publication date. Some indexed Trellner reports carry August dates that predate the current domain registration.[^rdap-trellner][^rdap-haus][^rdap-fentner][^hn-trellner][^hn-haus][^hn-fentner][^reports]
 
-These facts strongly indicate a coordinated launch. They do not prove common legal ownership, and they do not prove that the TR-2026-009 dataset was altered to benefit a product. An exact-name Companies House search returned no company result, but that cannot exclude another jurisdiction or a trading name. I found no independent basis in the inspected sources to validate the three leadership biographies.[^companies][^leadership]
+These facts strongly indicate a coordinated launch. They do not prove common legal ownership, and they do not prove that the TR-2026-009 dataset was altered to benefit a product. A Companies House text search for “Trellner” returned no exact company match, but that cannot exclude another jurisdiction or a trading name. I found no independent basis in the inspected sources to validate the three leadership biographies.[^companies][^leadership]
 
-**Conflict verdict:** a direct ownership conflict between Trellner and Hatchling Labs, TAM Graph, or ExhibitorLens is **UNVERIFIED**. The combination of omitted product-ranking reports, synchronized research-site launches, one promoter account, and shared product infrastructure creates a material undisclosed-conflict risk. Trellner should disclose the operating legal entity, ownership, funding, staff profiles, and any personal or corporate relationship to every ranked subject. Until then, its independence statement is a first-party claim, not an independently established fact.
+**Conflict verdict:** a direct ownership conflict between Trellner and Hatchling Labs, TAM Graph, or ExhibitorLens is **UNVERIFIED**. TR-2026-008 and 010 concern separate product rankings, not the citation-source question in TR-2026-009, and no evidence reviewed here shows that those products shaped this dataset. Even so, the omitted product-ranking reports, synchronized research-site launches, one promoter account, and shared support/analytics endpoints create a material disclosure concern. Trellner should disclose the operating legal entity, ownership, funding, staff profiles, and any personal or corporate relationship to every ranked subject. Until then, its independence statement is a first-party claim, not an independently established fact.[^report][^tr008][^tr010][^tamgraph][^exhibitorlens][^pulse]
 
 ## 5. What we can learn and reuse
 
@@ -303,11 +307,21 @@ The reusable homepage signature, normalized by brand, is:
 <meta name="robots" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"/>
 ```
 
-The `description`, `og:description`, and `twitter:description` fields also share one brand-substituted template. A precise, low-copy detector can use:
+The exact description-bearing tag structure is:
 
-```regex
-^Verified facts about [^:]+: .* one machine-readable record\.$
+```html
+<meta name="description" content="{description}"/>
+<meta property="og:description" content="{description}"/>
+<meta name="twitter:description" content="{description}"/>
 ```
+
+Within each site, those three decoded `content` values are byte-identical; across the sites, only the brand differs. To make the full 28-word value exactly testable without needlessly reproducing it, strip no whitespace, UTF-8 encode the decoded attribute value, and compare SHA-256:[^worldmetrics][^gitnux][^zipdo]
+
+| Brand | SHA-256 of exact decoded description |
+|---|---|
+| Worldmetrics | `4e255affe947cddd595d9601748ccfd73c27805da6dce0b7e5b99118ad586eaa` |
+| Gitnux | `30e4ca3e73b8f78fa0dfe19ce3fa8770be392814136b7a00f2eec78ab6bf8657` |
+| ZipDo | `c59580e78c6262bbd9d36145689eecda11445a4e3ba2eb7d90d1025c3f842822` |
 
 This signature is present on Worldmetrics, Gitnux, and ZipDo as fetched; WifiTalents is part of Trellner’s three-domain citation group but currently has different title and description text. A crawler analyst should treat the signature as a fingerprint for clustering and review, not as proof of ownership, automation, deception, quality, or causal influence on citations.[^worldmetrics][^gitnux][^zipdo][^wifitalents]
 
@@ -352,9 +366,9 @@ Cost estimates below use Trellner’s observed $23.77/760-call blended rate, abo
 
 **Search question:** “Do AI assistants actually fetch machine-generated ‘best software’ pages, or merely return them as citations?”
 
-**Data needed:** Origin logs from Worldmetrics, Gitnux, WifiTalents, or a cooperating operator would be decisive: path, timestamp, User-Agent, headers, ASN, cache state, and response. Without cooperation, the direct historical question is **UNVERIFIED**. The ethical controlled alternative is to publish clearly labelled instrumented test pages on domains we control, vary only the grounding-page signature/content structure, and issue a preregistered prompt set.[^report][^worldmetrics][^gitnux][^wifitalents]
+**Data needed:** Origin logs from Worldmetrics, Gitnux, WifiTalents, or a cooperating operator would be decisive: path, timestamp, User-Agent, headers, ASN, cache state, and response. Without cooperation, the direct historical question is **UNVERIFIED**. The ethical controlled alternative is to publish matched instrumented pages on domains we control whose substantive content is identical and whose metadata signature differs, then issue a preregistered prompt set.[^report][^worldmetrics][^gitnux][^wifitalents]
 
-**Key/cost:** No key for donated origin logs. For a 60-question, two-tier provocation run: 120 calls, about **$3.75**, via OpenRouter.
+**Key/cost:** No key for donated origin logs. A controlled pilot with ten questions, two metadata variants, two tiers, and three repeats is 120 calls: about **$3.75** via OpenRouter.
 
 **Source-side link:** Reuse the same Cloudflare Worker JSONL/CSV schema from our fetcher-header article, adding experiment and page-variant IDs. This is the clean source-side counterpart Trellner does not have.[^gkoreli][^gkoreli-data]
 
@@ -402,7 +416,7 @@ Cost estimates below use Trellner’s observed $23.77/760-call blended rate, abo
 
 ### Verification rules
 
-- Every factual claim above points to a source below. All sources were fetched with text-only HTTP requests on **2026-09-02 America/Los_Angeles**; requests made after 17:00 PDT have UTC date **2026-09-03**.
+- Every factual claim above points to a source below. All sources were fetched with text-only HTTP requests on **2026-09-02 America/Los_Angeles (2026-09-03 UTC)**.
 - Published CSV/JSON counts labelled as my recomputation were derived directly from the linked artifacts, without writing a second dataset copy.
 - First-party statements are described as statements, not independent proof.
 - Inferences are labelled as such. Unknown ownership, causality, model internals, and archive-error causes remain **UNVERIFIED**.
@@ -470,7 +484,11 @@ Cost estimates below use Trellner’s observed $23.77/760-call blended rate, abo
 [^hn-trellner]: [Hacker News API item 49536375](https://hacker-news.firebaseio.com/v0/item/49536375.json). Fetched 2026-09-02 America/Los_Angeles (2026-09-03 UTC).
 [^hn-haus]: [Hacker News API item 49536201](https://hacker-news.firebaseio.com/v0/item/49536201.json). Fetched 2026-09-02 America/Los_Angeles (2026-09-03 UTC).
 [^hn-fentner]: [Hacker News API item 49536329](https://hacker-news.firebaseio.com/v0/item/49536329.json). Fetched 2026-09-02 America/Los_Angeles (2026-09-03 UTC).
-[^companies]: [UK Companies House exact-name search for Trellner](https://find-and-update.company-information.service.gov.uk/search/companies?q=Trellner). Fetched 2026-09-02 America/Los_Angeles (2026-09-03 UTC).
+[^tr003]: [TR-2026-003, citation-source concentration](https://trellner.com/reports/narrow-set-of-sources-behind-ai-answers/). Fetched 2026-09-02 America/Los_Angeles (2026-09-03 UTC).
+[^tr004]: [TR-2026-004, correlates of assistant mentions](https://trellner.com/reports/what-correlates-with-being-named-by-an-assistant/). Fetched 2026-09-02 America/Los_Angeles (2026-09-03 UTC).
+[^tr006]: [TR-2026-006, retrieval versus visits](https://trellner.com/reports/read-often-and-visited-rarely/). Fetched 2026-09-02 America/Los_Angeles (2026-09-03 UTC).
+[^podcast]: [The Trellner Review podcast RSS feed](https://feeds.transistor.fm/the-trellner-review). Fetched 2026-09-02 America/Los_Angeles (2026-09-03 UTC).
+[^companies]: [UK Companies House text search for Trellner](https://find-and-update.company-information.service.gov.uk/search/companies?q=Trellner). Fetched 2026-09-02 America/Los_Angeles (2026-09-03 UTC).
 [^perplexity]: [Perplexity Sonar API quickstart and migration notice](https://docs.perplexity.ai/docs/sonar/quickstart.md). Fetched 2026-09-02 America/Los_Angeles (2026-09-03 UTC).
 [^gkoreli]: [Goga Koreli, “Which AI Fetchers Send Which Headers, Measured on a Live Site”](https://gkoreli.com/which-ai-fetchers-send-which-headers). Fetched 2026-09-02 America/Los_Angeles (2026-09-03 UTC).
 [^gkoreli-data]: [Published source-side capture dataset README](https://raw.githubusercontent.com/gkoreli/blog/main/packages/blog/drafts/research/ai-fetcher-headers/data/README.md). Fetched 2026-09-02 America/Los_Angeles (2026-09-03 UTC).
