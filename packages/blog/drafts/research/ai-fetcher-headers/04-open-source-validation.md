@@ -41,4 +41,18 @@ Checked 2026-09-03 against the current `main`/`master` of each project (raw file
 - **ai-robots-txt/ai.robots.txt**: fill in `Claude-Code` operator (Anthropic) and the observed UA; open a documented issue that xAI/Grok cannot be listed because it sends no token, linking the capture. That issue is the natural home for the "Grok is undetectable" finding.
 - **cloudflare/web-bot-auth** discussions or the IETF `webbotauth` list: the Grok capture is direct evidence for why signed agents matter.
 
-Limits: regex matching for device-detector was run with Python `re` on a crude parse of the YAML (841 of the file's entries); a PHP or Go run of the real library should confirm before any upstream PR. isbot was run through the real npm package (5.2.2).
+## Reproducible run (TypeScript)
+
+`scripts/detectors.ts` runs the captured strings through the real packages: isbot 5.2.2, node-device-detector 2.2.7 (the Node port that ships matomo's regexes compiled; it contains the same `^Google$` rule), the upstream `bots.yml` (842 rules) parsed with js-yaml and evaluated with the PHP library's anchoring prefix, crawler-user-agents (1,500 patterns) and ai.robots.txt (166 entries). Output, 2026-09-03:
+
+| Captured | isbot | node-device-detector | upstream bots.yml (PHP anchoring) | crawler-user-agents | ai.robots.txt |
+|---|---|---|---|---|---|
+| ChatGPT-User | bot | ChatGPT-User (AI Assistant) | ChatGPT-User (AI Assistant); Generic Bot | ChatGPT-User | ChatGPT-User; OpenAI |
+| Claude-User (claude.ai) | bot | Claude-User (AI Assistant) | Claude-User (AI Assistant); Generic Bot | Claude-User | Claude-User |
+| Gemini app (`Google`) | bot | Googlebot (Search bot) | Googlebot (Search bot) | no match | no entry |
+| Claude Code WebFetch | bot | Claude-User (AI Assistant) | Claude-User (AI Assistant) | Claude-User | Claude-Code; Claude-User |
+| Grok exit, Safari UA | not a bot | no match | no match | no match | no entry |
+| Grok exit, Chrome UA | not a bot | no match | no match | no match | no entry |
+| Chrome 152 (human baseline) | not a bot | no match | no match | no match | no entry |
+
+The "Generic Bot" secondary hit is device-detector's catch-all for a URL inside the User-Agent. An earlier same-day pass used a Python regex parse of the YAML; it produced the same verdicts and is superseded by this run. A PHP run of matomo/device-detector itself remains the last confirmation step before the upstream PR in TASK-0112.
