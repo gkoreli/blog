@@ -67,8 +67,8 @@ function insertObservation(sqlite, observation) {
     path, referrer_host, country, daily_client_id, traffic_class,
     agent_name, device_type, is_owner, observation_source, asn, as_org,
     sec_fetch_mode, sec_fetch_dest, sec_fetch_site, sec_fetch_user,
-    accepts_html, has_accept_language, observed_at
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
+    accepts_html, has_accept_language, representation, observed_at
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
     observation.path,
     observation.referrerHost ?? null,
     observation.country ?? null,
@@ -86,6 +86,7 @@ function insertObservation(sqlite, observation) {
     observation.secFetchUser ?? null,
     observation.acceptsHtml ?? null,
     observation.hasAcceptLanguage ?? null,
+    observation.representation ?? null,
     observation.observedAt,
   );
 }
@@ -98,14 +99,18 @@ const NAVIGATION_EVIDENCE = {
   hasAcceptLanguage: 1,
 };
 
-test('eligibility accepts only successful, non-prefetch HTML GET page responses', () => {
-  assert.equal(isEligiblePageResponse(request('/article'), html), true);
-  assert.equal(isEligiblePageResponse(request('/api/stats'), html), false);
-  assert.equal(isEligiblePageResponse(request('/stats'), html), false);
-  assert.equal(isEligiblePageResponse(request('/article', { method: 'HEAD' }), html), false);
-  assert.equal(isEligiblePageResponse(request('/article', { headers: { Purpose: 'prefetch' } }), html), false);
-  assert.equal(isEligiblePageResponse(request('/article'), new Response('no', { status: 500, headers: { 'Content-Type': 'text/html' } })), false);
-  assert.equal(isEligiblePageResponse(request('/article'), new Response('# markdown', { headers: { 'Content-Type': 'text/markdown' } })), false);
+test('eligibility accepts HTML and negotiated Markdown page GETs but rejects direct Markdown assets', () => {
+  const markdown = new Response('# markdown', { headers: { 'Content-Type': 'text/markdown; charset=utf-8' } });
+  assert.equal(isEligiblePageResponse(request('/article'), html, 'html'), true);
+  assert.equal(isEligiblePageResponse(request('/article'), markdown, 'markdown'), true);
+  assert.equal(isEligiblePageResponse(request('/article.md'), markdown, 'markdown'), false);
+  assert.equal(isEligiblePageResponse(request('/api/stats'), html, 'html'), false);
+  assert.equal(isEligiblePageResponse(request('/stats'), html, 'html'), false);
+  assert.equal(isEligiblePageResponse(request('/article', { method: 'HEAD' }), html, 'html'), false);
+  assert.equal(isEligiblePageResponse(request('/article', { headers: { Purpose: 'prefetch' } }), html, 'html'), false);
+  assert.equal(isEligiblePageResponse(request('/article'), new Response('no', { status: 500, headers: { 'Content-Type': 'text/html' } }), 'html'), false);
+  assert.equal(isEligiblePageResponse(request('/article'), markdown, 'html'), false);
+  assert.equal(isEligiblePageResponse(request('/article'), html, 'markdown'), false);
 });
 
 test('AI rules have priority and classifiers return nullable named matches', () => {
@@ -273,7 +278,7 @@ test('edge observation schedules one constrained write and fails closed on a mis
   const pending = [];
   const context = { waitUntil(promise) { pending.push(promise); } };
 
-  observePageResponse(observed, html, {
+  observePageResponse(observed, html, 'html', {
     DB: d1,
     ANALYTICS_HASH_KEY: 'test-key',
     OWNER_IPS: '',
@@ -294,10 +299,11 @@ test('edge observation schedules one constrained write and fails closed on a mis
   assert.equal(row.sec_fetch_user, 1);
   assert.equal(row.accepts_html, 1);
   assert.equal(row.has_accept_language, 1);
+  assert.equal(row.representation, 'html');
   assert.match(row.daily_client_id, /^[0-9a-f]{32}$/);
 
   const missingSecret = [];
-  observePageResponse(observed, html, {
+  observePageResponse(observed, html, 'html', {
     DB: d1,
     ANALYTICS_HASH_KEY: undefined,
     OWNER_IPS: '',
@@ -305,6 +311,32 @@ test('edge observation schedules one constrained write and fails closed on a mis
   assert.equal(missingSecret.length, 1);
   await assert.rejects(missingSecret[0], /ANALYTICS_HASH_KEY must not be empty/);
   assert.equal(sqlite.prepare('SELECT COUNT(*) AS count FROM page_observations').get().count, 1);
+});
+
+test('negotiated Markdown observations store their representation on the page path', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  const observed = request('/article', {
+    headers: {
+      'CF-Connecting-IP': '203.0.113.30',
+      'User-Agent': 'OpenClaw/1.0',
+      Accept: 'text/markdown, text/html;q=0.9',
+    },
+  });
+  const markdown = new Response('# markdown', {
+    headers: { 'Content-Type': 'text/markdown; charset=utf-8' },
+  });
+  const pending = [];
+
+  observePageResponse(observed, markdown, 'markdown', {
+    DB: d1,
+    ANALYTICS_HASH_KEY: 'test-key',
+    OWNER_IPS: '',
+  }, { waitUntil(promise) { pending.push(promise); } });
+  assert.equal(pending.length, 1);
+  await pending[0];
+
+  const row = sqlite.prepare('SELECT path, representation FROM page_observations').get();
+  assert.deepEqual({ ...row }, { path: '/article', representation: 'markdown' });
 });
 
 test('hosting list excludes relay/CDN ASNs and partition SQL inlines only validated numbers', () => {
@@ -654,6 +686,18 @@ test('legacy continuity migration preserves source rows and backfills a source-m
   }
   assert.throws(
     () => sqlite.prepare(`UPDATE page_observations SET accepts_html = 2 WHERE path = '/edge'`).run(),
+    /CHECK constraint failed/,
+  );
+
+  sqlite.exec(readFileSync(new URL('../migrations/0004_add_representation.sql', import.meta.url), 'utf8'));
+  const representations = sqlite.prepare(
+    'SELECT representation FROM page_observations ORDER BY id',
+  ).all();
+  assert.equal(representations.length, 3);
+  for (const row of representations) assert.equal(row.representation, null);
+  sqlite.prepare(`UPDATE page_observations SET representation = 'html' WHERE path = '/edge'`).run();
+  assert.throws(
+    () => sqlite.prepare(`UPDATE page_observations SET representation = 'pdf' WHERE path = '/edge'`).run(),
     /CHECK constraint failed/,
   );
 });

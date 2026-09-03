@@ -1,4 +1,4 @@
-import type { DeviceType, TrafficClass } from './contracts.js';
+import type { DeviceType, Representation, TrafficClass } from './contracts.js';
 
 export interface Env {
   DB: D1Database;
@@ -23,6 +23,7 @@ export interface PageObservation {
   secFetchUser: number | null;
   acceptsHtml: number | null;
   hasAcceptLanguage: number;
+  representation: Representation;
   observedAt: string;
 }
 
@@ -43,8 +44,9 @@ const INSERT_OBSERVATION = `INSERT INTO page_observations (
   sec_fetch_user,
   accepts_html,
   has_accept_language,
+  representation,
   observed_at
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
 export async function recordPageObservation(db: D1Database, observation: PageObservation): Promise<void> {
   await db.prepare(INSERT_OBSERVATION).bind(
@@ -64,6 +66,7 @@ export async function recordPageObservation(db: D1Database, observation: PageObs
     observation.secFetchUser,
     observation.acceptsHtml,
     observation.hasAcceptLanguage,
+    observation.representation,
     observation.observedAt,
   ).run();
 }

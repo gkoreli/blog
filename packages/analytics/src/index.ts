@@ -1,4 +1,5 @@
 import { classifyDevice, classifyTraffic } from './classify.js';
+import type { Representation } from './contracts.js';
 import { recordPageObservation, type Env, type PageObservation } from './db.js';
 import { isEligiblePageResponse } from './eligibility.js';
 import { createDailyClientId } from './hash.js';
@@ -6,14 +7,19 @@ import { extractRequestMetadata } from './metadata.js';
 
 export type { Env } from './db.js';
 export { ANALYTICS_EVIDENCE_SINCE } from './contracts.js';
-export type { StatsResponse, TrafficFilter } from './contracts.js';
+export type { Representation, StatsResponse, TrafficFilter } from './contracts.js';
 export { handleStats } from './stats.js';
 
 function sqliteTimestamp(date: Date): string {
   return date.toISOString().replace('T', ' ').slice(0, 19);
 }
 
-async function persistObservation(request: Request, env: Env, observedAt: Date): Promise<void> {
+async function persistObservation(
+  request: Request,
+  representation: Representation,
+  env: Env,
+  observedAt: Date,
+): Promise<void> {
   const hashKey = env.ANALYTICS_HASH_KEY;
   if (typeof hashKey !== 'string' || hashKey.length === 0) {
     throw new Error('ANALYTICS_HASH_KEY must not be empty');
@@ -46,6 +52,7 @@ async function persistObservation(request: Request, env: Env, observedAt: Date):
     secFetchUser: metadata.secFetchUser,
     acceptsHtml: metadata.acceptsHtml,
     hasAcceptLanguage: metadata.hasAcceptLanguage,
+    representation,
     observedAt: sqliteTimestamp(observedAt),
   };
   await recordPageObservation(env.DB, observation);
@@ -54,9 +61,10 @@ async function persistObservation(request: Request, env: Env, observedAt: Date):
 export function observePageResponse(
   request: Request,
   response: Response,
+  representation: Representation,
   env: Env,
   ctx: ExecutionContext,
 ): void {
-  if (!isEligiblePageResponse(request, response)) return;
-  ctx.waitUntil(persistObservation(request, env, new Date()));
+  if (!isEligiblePageResponse(request, response, representation)) return;
+  ctx.waitUntil(persistObservation(request, representation, env, new Date()));
 }
