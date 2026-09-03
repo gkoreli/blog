@@ -14,3 +14,4 @@ packages/blog/drafts/research/ai-fetcher-headers/data/captures.csv
 packages/blog/drafts/research/ai-fetcher-headers/data/asn-holders.json
 packages/blog/drafts/research/ai-fetcher-headers/data/firewall-events-2026-09-03.json
 packages/blog/drafts/research/ai-fetcher-headers/05-cross-validation.md
+packages/blog/drafts/research/ai-fetcher-headers/06-references.md
