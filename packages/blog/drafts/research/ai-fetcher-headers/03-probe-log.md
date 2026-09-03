@@ -124,3 +124,16 @@ Post-publication traffic in the same minute, for the +1h record: browser-UA fetc
 | `?probe=%3Cname%3E` (the literal `<name>` placeholder from the article's method section) | 05:31:48 | `GPTBot/1.4`, `From: gptbot(at)openai.com`, AS8075 | GPTBot crawled the published article within the hour and followed the template URL. Harmless, and evidence of the crawl. |
 
 Worker health at the same time: 1,245 tail events captured across the session, every one `outcome: ok`, no exceptions, no console logs. Signature verification since deploy: 2 rows `verified` (DuckAssistBot), 2 rows `unverified` with reason `malformed-signature-agent` (investigated separately).
+
+## Other signers seen in the tail (2026-09-03)
+
+| Agent | Signature-Agent as sent | Form | Covered components | Worker result |
+|---|---|---|---|---|
+| `DuckDuckBot/1.1` (DuckDuckGo search crawler), `/` and `/favicon.ico`, 04:59:33, 05:14:32, 06:23:30 | `https://bot.duckduckgo.com` (unquoted) | bare URI, deprecated by the current draft | `@method @authority @path signature-agent` | `unverified`, `malformed-signature-agent` (parser accepts only sf-string or Dictionary). Directory at `bot.duckduckgo.com` serves keys. TASK-0114. |
+| `AhrefsBot/7.0`, `/robots.txt` and the article's OG image, 06:31:52 | `"https://ahrefs.com"` (quoted) | sf-string, with `nonce` | `@authority signature-agent` | robots.txt and images are not page observations, so no row; the header set is valid and should verify on a page fetch |
+
+So three signers reached this site on the day: DuckAssistBot (verified), DuckDuckBot (rejected on a formatting difference), AhrefsBot (not a page fetch). The article's scope is AI fetchers; DuckDuckBot and Ahrefs are recorded here for the Web Bot Auth article (lane row 4).
+
+## Client-side errors (`client_errors` table), checked 2026-09-03
+
+8 rows, all from 2026-08-26 and all from the owner's own browser: 6 × `unhandled_rejection` "Current environment does not allow unsafe-eval, please use pixi.js/unsafe-eval module" on `/animations-lab` (a CSP vs pixi.js conflict in the animations lab), 2 × `window_error` "ResizeObserver loop completed with undelivered notifications" on `/stats` (benign browser notice). Nothing from readers, nothing since the deploy.
