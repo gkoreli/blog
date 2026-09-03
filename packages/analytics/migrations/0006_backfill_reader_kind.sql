@@ -29,13 +29,13 @@ SET
     WHEN agent_name IN ('FacebookBot', 'LinkedInBot', 'Slackbot') THEN 'preview-or-feed'
     WHEN agent_name IN ('HeadlessChrome', 'Cypress', 'Lightpanda') THEN 'headless-browser'
     WHEN traffic_class IN ('bot', 'ai') THEN 'other-bot'
-    WHEN observation_source = 'beacon' THEN 'browser'
-    WHEN has_accept_language IS NULL THEN 'unchecked'
     WHEN asn IN (
         16509, 14618, 396982, 8075, 14061, 24940, 16276, 20473, 63949,
         31898, 45102, 45090, 132203, 51167, 40021, 141995, 12876, 16265,
-        60781, 8560, 30058
+        60781, 8560, 30058, 211590, 18779
       ) THEN 'cloud-browser'
+    WHEN observation_source = 'beacon' THEN 'browser'
+    WHEN has_accept_language IS NULL THEN 'browser'
     WHEN sec_fetch_mode = 'navigate' AND sec_fetch_dest = 'document' THEN 'browser'
     ELSE 'http-client'
   END,
@@ -44,13 +44,13 @@ SET
     WHEN signature_status = 'verified' THEN signature_agent
     WHEN agent_name IS NOT NULL THEN agent_name
     WHEN traffic_class IN ('bot', 'ai') THEN 'generic-bot'
-    WHEN observation_source = 'beacon' THEN 'legacy-beacon'
-    WHEN has_accept_language IS NULL THEN 'evidence-not-recorded'
     WHEN asn IN (
         16509, 14618, 396982, 8075, 14061, 24940, 16276, 20473, 63949,
         31898, 45102, 45090, 132203, 51167, 40021, 141995, 12876, 16265,
-        60781, 8560, 30058
+        60781, 8560, 30058, 211590, 18779
       ) THEN 'hosting-asn:' || asn
+    WHEN observation_source = 'beacon' THEN 'beacon-script-ran'
+    WHEN has_accept_language IS NULL THEN 'user-agent-only'
     WHEN sec_fetch_mode = 'navigate' AND sec_fetch_dest = 'document' THEN 'navigation-shaped'
     ELSE 'not-navigation-shaped'
   END

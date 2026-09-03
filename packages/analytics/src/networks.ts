@@ -36,6 +36,8 @@ export const HOSTING_NETWORKS = [
   { asn: 60781, provider: 'Leaseweb', checkedOn: '2026-09-02' },
   { asn: 8560, provider: 'IONOS', checkedOn: '2026-09-02' },
   { asn: 30058, provider: 'FDCservers', checkedOn: '2026-09-03' },
+  { asn: 211590, provider: 'Bucklog', checkedOn: '2026-09-03' },
+  { asn: 18779, provider: 'EGIHosting', checkedOn: '2026-09-03' },
 ] as const;
 
 export const HOSTING_ASNS: ReadonlySet<number> = new Set(

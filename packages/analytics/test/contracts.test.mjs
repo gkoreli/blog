@@ -446,8 +446,8 @@ test('reader-kind classifier maps every closed-set code and records one reason',
     [{ ...base, asn: 16509 }, 'cloud-browser', 'hosting-asn:16509'],
     [{ ...base, secFetchMode: 'cors', secFetchDest: 'empty' }, 'http-client', 'not-navigation-shaped'],
     [{ ...base, secFetchMode: null, secFetchDest: null, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148' }, 'legacy-browser', 'pre-fetch-metadata-ua'],
-    [{ ...base, observationSource: 'beacon', hasAcceptLanguage: null }, 'browser', 'legacy-beacon'],
-    [{ ...base, hasAcceptLanguage: null }, 'unchecked', 'evidence-not-recorded'],
+    [{ ...base, observationSource: 'beacon', hasAcceptLanguage: null }, 'browser', 'beacon-script-ran'],
+    [{ ...base, hasAcceptLanguage: null }, 'browser', 'user-agent-only'],
   ];
 
   const seen = [];
@@ -455,7 +455,7 @@ test('reader-kind classifier maps every closed-set code and records one reason',
     assert.deepEqual(classifyReaderKind(facts), { kind, reason });
     seen.push(kind);
   }
-  assert.deepEqual(seen, [...READER_KINDS]);
+  assert.deepEqual([...new Set(seen)], [...READER_KINDS]);
   assert.deepEqual(
     classifyReaderKind({ ...base, secFetchMode: null, secFetchDest: null, userAgent: 'Mozilla/5.0 (Windows NT 10.0) Chrome/152.0.0.0 Safari/537.36' }),
     { kind: 'http-client', reason: 'no-fetch-metadata' },
@@ -477,7 +477,7 @@ test('reader-kind classifier maps every closed-set code and records one reason',
   }), { kind: 'ai-crawler', reason: 'expired' });
 });
 
-test('browser partition keeps beacons, unchecked edge rows, and navigation-shaped edge rows while each failed signal demotes', async () => {
+test('browser partition keeps beacons, pre-evidence edge rows, and navigation-shaped edge rows while each failed signal demotes', async () => {
   const { sqlite, d1 } = analyticsDatabase();
   const observedAt = '2026-09-03 12:00:00';
   insertObservation(sqlite, {
@@ -694,7 +694,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
   assert.match((await unknown.json()).error, /known matched User-Agent rule/);
 });
 
-test('migrations 0005 and 0006 apply after the existing chain and backfill legacy identity idempotently', () => {
+test('migrations 0005 to 0007 apply after the existing chain and backfill legacy identity idempotently', () => {
   const sqlite = new DatabaseSync(':memory:');
   sqlite.exec(`
     CREATE TABLE page_views (
@@ -848,14 +848,31 @@ test('migrations 0005 and 0006 apply after the existing chain and backfill legac
     sqlite.prepare(`SELECT path, reader_kind, reader_reason
       FROM page_observations ORDER BY observed_at`).all().map(row => ({ ...row })),
     [
-      { path: '/legacy', reader_kind: 'browser', reader_reason: 'legacy-beacon' },
+      { path: '/legacy', reader_kind: 'browser', reader_reason: 'beacon-script-ran' },
       { path: '/legacy-ai', reader_kind: 'other-bot', reader_reason: 'generic-bot' },
-      { path: '/edge', reader_kind: 'unchecked', reader_reason: 'evidence-not-recorded' },
+      { path: '/edge', reader_kind: 'browser', reader_reason: 'user-agent-only' },
     ],
   );
   sqlite.exec(backfill);
   assert.equal(sqlite.prepare(`SELECT COUNT(*) AS count FROM page_observations
     WHERE reader_kind IS NULL OR reader_reason IS NULL`).get().count, 0);
+
+  // 0007 adds asn_source, marks request-derived networks, and its row-specific
+  // reconstruction statements are no-ops on ids that do not exist here.
+  sqlite.prepare(`UPDATE page_observations SET asn = 64512 WHERE path = '/edge'`).run();
+  sqlite.exec(readFileSync(new URL('../migrations/0007_reconstruct_pre_evidence_asn.sql', import.meta.url), 'utf8'));
+  assert.deepEqual(
+    sqlite.prepare(`SELECT path, asn, asn_source FROM page_observations ORDER BY observed_at`).all().map(row => ({ ...row })),
+    [
+      { path: '/legacy', asn: null, asn_source: null },
+      { path: '/legacy-ai', asn: null, asn_source: null },
+      { path: '/edge', asn: 64512, asn_source: 'request' },
+    ],
+  );
+  assert.throws(
+    () => sqlite.prepare(`UPDATE page_observations SET asn_source = 'guess'`).run(),
+    /CHECK constraint failed/,
+  );
 });
 
 test('SQL reader-kind backfill inlines exactly the hosting ASN list', () => {
@@ -882,7 +899,6 @@ test('SQL reader-kind backfill uses the same closed-set mapping as ingestion', (
     { path: '/cloud', trafficClass: 'browser', asn: 16509, hasAcceptLanguage: 1 },
     { path: '/client', trafficClass: 'browser', secFetchMode: 'cors', secFetchDest: 'empty', hasAcceptLanguage: 1 },
     { path: '/browser', trafficClass: 'browser', observationSource: 'beacon' },
-    { path: '/unchecked', trafficClass: 'browser' },
   ];
   rows.forEach((row, index) => insertObservation(sqlite, {
     dailyClientId: (index % 10).toString().repeat(32),

@@ -15,7 +15,6 @@ export const READER_KINDS = [
   'http-client',
   'legacy-browser',
   'browser',
-  'unchecked',
 ] as const;
 
 export type ReaderKind = typeof READER_KINDS[number];
@@ -162,8 +161,12 @@ function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
   if (facts.trafficClass === 'bot' || facts.trafficClass === 'ai') {
     return { kind: 'other-bot', reason: agentName ?? 'generic-bot' };
   }
-  if (facts.observationSource === 'beacon') return { kind: 'browser', reason: 'legacy-beacon' };
-  if (facts.hasAcceptLanguage === null) return { kind: 'unchecked', reason: 'evidence-not-recorded' };
+  // Beacon rows (before 2026-08-26) ran the site's script in a page: that is
+  // stronger browser evidence than any header. Edge rows before 2026-09-03 have
+  // the User-Agent verdict and, where migration 0007 could reconstruct it, the
+  // network; they are browsers by User-Agent only and say so.
+  if (facts.observationSource === 'beacon') return { kind: 'browser', reason: 'beacon-script-ran' };
+  if (facts.hasAcceptLanguage === null) return { kind: 'browser', reason: 'user-agent-only' };
 
   // Hosting network is a verdict on its own (MRC floor, GoatCounter, Plausible
   // cloud, Fathom) and is checked before request shape: in the 72-hour Workers

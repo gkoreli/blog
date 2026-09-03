@@ -50,3 +50,30 @@ What this adds to the prior art:
 5. Reader estimate for the window: about 112 page views over 72 hours, roughly 13% of successful page GETs. The stats page will say this once the labels ship.
 
 ASNs seen carrying automation that were absent from `networks.ts`, verified with Team Cymru whois on 2026-09-03: 9009 M247 Europe, 60068 Datacamp (CDN77), 212238 Datacamp (CDNEXT), 210558 1337 Services GmbH, 30058 FDCservers.net. Decision: add only 30058, a dedicated-server host. The other four sell consumer VPN exits, so the network alone would convict a person on a VPN; the MRC standard excludes "routing artifacts of legitimate users" from data-center filtration for exactly this case, and the automation seen from them (the "Chrome 78" claims) is already convicted by the Fetch Metadata rule. The reasoning is in the `networks.ts` header comment. The analytics tests now assert that migration 0006 inlines the same list as `networks.ts`.
+
+## History reconstruction: network evidence for 2026-08-27 to 2026-09-03 (2026-09-03 05:30 UTC)
+
+Goga: "i believe we have correct provenance even for historical data." The pre-evidence edge rows (2026-08-26 15:26 to 2026-09-03 01:35 UTC, 1,962 rows) had the User-Agent verdict, path, referrer, country, and device, but no network or header evidence. Two raw sources exist at Cloudflare:
+
+- Workers Logs: three days, full headers. Already gone for most of the window.
+- Zone analytics `httpRequestsAdaptiveGroups` via GraphQL: eight days ("cannot request data older than 1w1d"). On the Free zone the fields `clientAsn`, `clientRefererHost`, `botScore`, and `ja4` are refused, but `clientIP`, `clientRequestPath`, `userAgent`, `clientCountryName`, `datetimeHour`, and `clientDeviceType` are served. The wrangler OAuth token (`zone:read`) is accepted by GraphQL; only the Workers observability endpoint refuses it.
+
+Method (`tools/pull_zone_html_groups.py` in this folder, then Team Cymru DNS for IP to ASN):
+
+1. Pull HTML, status 200, GET, eyeball requests per day grouped by hour, path, country, device, IP, User-Agent. 2026-08-27 to 2026-09-03: 1,395 groups, 1,884 requests, 784 distinct IPs, sample interval mostly 1 (max 23). 2026-08-26 was already past retention.
+2. Resolve every IP to an ASN through `origin.asn.cymru.com` / `origin6.asn.cymru.com` TXT records (784 of 784 resolved). IPs were used transiently and not stored; the migration carries only ASN and AS name.
+3. Match each D1 row to the zone group with the same UTC hour, path, country, and device. A row receives an ASN only when every sampled request in that group came from one ASN.
+
+| Outcome | Rows |
+|---|---:|
+| Unambiguous ASN assigned | 1,429 |
+| Ambiguous group (several ASNs) | 191 |
+| No sampled group (169 of them are 2026-08-26) | 342 |
+
+Of the 1,039 browser-class rows that received an ASN, 714 sit on hosting networks: Google Cloud 377, OVH 126, Tencent 133, DigitalOcean 21, AWS 15, Alibaba 13, Oracle 5, and others. By day, browser-class rows on hosting networks versus elsewhere: 08-27 28/54, 08-28 33/30, 08-29 18/36, 08-30 148/99, 08-31 346/36, 09-01 46/30, 09-02 93/37. The 2026-08-31 spike Goga did not believe was 346 hosting-network hits against 36 others.
+
+Shipped as migration 0007: a nullable `asn_source` column (`request` for rows whose network came from the request, `zone-sample` for reconstructed rows), 197 grouped UPDATE statements for the 1,429 rows, and a reader-kind rewrite to `cloud-browser` for reconstructed rows on hosting networks. The Browsers partition now excludes pre-evidence rows whose reconstructed network is a hosting provider. Header evidence for this window cannot be reconstructed and stays NULL.
+
+Two more hosters verified with Team Cymru and added to `networks.ts` from this sample: AS211590 Bucklog SARL (187 requests in the window) and AS18779 EGIHosting.
+
+Naming consequence: the `unchecked` reader kind is gone. Beacon rows are `browser` with reason `beacon-script-ran` (the site's script executed in a page, stronger evidence than any header). Pre-evidence edge rows are `browser` with reason `user-agent-only`, or `cloud-browser` when the reconstructed network is a hosting provider. Every row now states the evidence it actually has.

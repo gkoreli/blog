@@ -29,6 +29,7 @@ CREATE TABLE page_observations (
   signature_status TEXT CHECK (signature_status IN ('verified', 'unverified')),
   reader_kind TEXT,
   reader_reason TEXT,
+  asn_source TEXT CHECK (asn_source IN ('request', 'zone-sample')),
   observed_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 

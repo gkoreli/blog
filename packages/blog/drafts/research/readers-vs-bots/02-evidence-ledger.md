@@ -119,3 +119,7 @@ Goga asked why the absence rule needed a site measurement when others must have 
 ## 8. Raw Workers Logs, 72 hours (2026-09-03 04:00 UTC)
 
 Goga: "dont we already have some raw logs in cloudflare?" We do; Workers Logs keep three days of full request headers. Measured 844 successful page GETs: 112 navigation-shaped reader hits outside hosting networks; 430 navigation-shaped hits on hosting networks (374 from one Google Cloud client claiming Chrome Mobile 114); 64 header-less "iOS 13.2" hits from Tencent Cloud; 49 header-less browser claims outside hosting networks; 12 external referrals, all with Fetch Metadata. Consequence: hosting ASN moves ahead of request shape in the classifier. Full table and method in artifact 09.
+
+## 9. Network evidence reconstructed for the pre-evidence window (2026-09-03 05:30 UTC)
+
+Goga: "i believe we have correct provenance even for historical data." Zone analytics (8-day retention, `clientIP` served on Free, `clientAsn` refused) plus Team Cymru DNS gave an unambiguous ASN to 1,429 of the 1,962 pre-evidence rows; 714 browser-class rows were on hosting networks (Google Cloud 377, OVH 126, Tencent 133). Migration 0007 stores them with `asn_source = 'zone-sample'`. The `unchecked` kind is retired: beacon rows say `beacon-script-ran`, pre-evidence edge rows say `user-agent-only`. Method and table in artifact 09.

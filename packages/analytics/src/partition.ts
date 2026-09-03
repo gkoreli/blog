@@ -25,8 +25,11 @@ export function partitionPredicate(traffic: TrafficFilter): PartitionPredicate {
   //      NULL only for those rows; ingestion always writes 0 or 1), kept so the public
   //      series stays continuous and the boundary is disclosed rather than hidden;
   //   3. edge rows with evidence that is navigation-shaped and not from a hosting ASN.
-  // Browser-like is therefore "checked and failed", never "unchecked".
-  const browser = `((observation_source = 'beacon' AND traffic_class = 'browser') OR (traffic_class = 'browser' AND has_accept_language IS NULL) OR (traffic_class = 'browser' AND sec_fetch_mode = 'navigate' AND sec_fetch_dest = 'document' AND accepts_html = 1 AND has_accept_language = 1 AND (asn IS NULL OR asn NOT IN (${hostingAsnList()}))))`;
+  // Browser-like is therefore "checked and failed", never "not yet checked".
+  // Pre-evidence edge rows whose network was reconstructed by migration 0007 as a
+  // hosting provider leave Browsers too: the network verdict does not depend on
+  // request headers.
+  const browser = `((observation_source = 'beacon' AND traffic_class = 'browser') OR (traffic_class = 'browser' AND has_accept_language IS NULL AND (asn IS NULL OR asn NOT IN (${hostingAsnList()}))) OR (traffic_class = 'browser' AND sec_fetch_mode = 'navigate' AND sec_fetch_dest = 'document' AND accepts_html = 1 AND has_accept_language = 1 AND (asn IS NULL OR asn NOT IN (${hostingAsnList()}))))`;
 
   switch (traffic) {
     case 'browser':
