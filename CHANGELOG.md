@@ -2,6 +2,31 @@
 
 Notable changes to the publication and its supporting packages are recorded here.
 
+## 0.5.0 — 2026-09-03
+
+### Analytics: audience composition with provenance (ADR-0016.2, ADR-0016.3)
+
+- Record request evidence on every edge observation: network (ASN, organisation), Fetch Metadata headers, Accept and Accept-Language presence, and the served representation.
+- Partition Browsers by evidence instead of User-Agent alone: a navigation-shaped request from outside hosting networks. Hosting-network traffic is a verdict on its own and is checked before request shape; the largest inflator was one Google Cloud client sending 374 navigation-shaped "Chrome Mobile 114" page hits in three days.
+- Version-gate Fetch Metadata absence on the claimed engine (Chromium 76, Firefox 90, WebKit 16.4 and later), grounded in caniuse support data, Chromium WebView behaviour since 2019, and a 2025 production measurement of iOS WebView, instead of the undated "WebViews omit it" caveat.
+- Store one reader kind and one reason per row from a closed set: signed agent, AI assistant, AI search, AI crawler, search crawler, link preview, headless browser, other bot, cloud browser, HTTP client, legacy browser, browser. Backfill history with the same mapping.
+- Reconstruct network evidence for the 2026-08-27 to 2026-09-03 window from Cloudflare zone analytics and Team Cymru, stored with `asn_source = 'zone-sample'`: 1,429 of 1,962 rows, 714 browser-class rows on hosting networks. Beacon rows state `beacon-script-ran`; pre-evidence edge rows state `user-agent-only`.
+- Verify Web Bot Auth signatures (RFC 9421, draft-ietf-webbotauth-httpsig-protocol-00) with a dependency-free Ed25519 verifier and record the signed origin.
+- Refresh AI and crawler rules from vendor documentation (OpenAI, Anthropic, Perplexity, Meta, Mistral, Amazon, Google, Apple) and add headless-browser tokens.
+- Keep the public stats API and dashboard on the previous filters until the reader-kind labels ship.
+
+### Agent-native reading and citation (ADR-0016.3)
+
+- Negotiate representations on post and page paths: `Accept: text/markdown` returns the Markdown twin with `Content-Location`; CSL-JSON and BibTeX media types return per-post citation files. HTML and Markdown responses carry typed `Link` headers (alternate Markdown, describedby, author, license, alternate CSL-JSON) and matching head links.
+- Generate `/<slug>.csl.json` and `/<slug>.bib` for every post and append a "Cite this" block to each Markdown twin.
+- Generate `robots.txt` from a template with `Content-Signal: search=yes, ai-input=yes` and a content-license comment; publish `/license` from the repository LICENSE.
+- Clarify LICENSE: content stays CC BY-NC-ND 4.0, quoting with attribution is welcome, code snippets inside posts are MIT.
+
+### Research and records
+
+- Research artifacts 00 to 09 under `packages/blog/drafts/research/readers-vs-bots/`: standards vocabulary, open-source classifier code, hosting-ASN lists, citability, agent identification, Cloudflare zone state, the September 2026 agent-web landscape, and the Fetch Metadata prior art with the 72-hour Workers Logs and zone-analytics measurements.
+- Worklist FLDR-0007 with PROMPT 0011 and 0012 and TASK-0098 to TASK-0106 for the readers-versus-bots article.
+
 ## 0.4.0 — 2026-08-26
 
 ### Animations Lab
