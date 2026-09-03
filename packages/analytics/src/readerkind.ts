@@ -1,23 +1,9 @@
-import type { TrafficClass } from './contracts.js';
+import type { ReaderKind, TrafficClass } from './contracts.js';
 import { isHostingAsn } from './networks.js';
 import type { WebBotAuthResult } from './webbotauth.js';
 
-export const READER_KINDS = [
-  'signed-agent',
-  'ai-assistant',
-  'ai-search',
-  'ai-crawler',
-  'search-crawler',
-  'preview-or-feed',
-  'headless-browser',
-  'other-bot',
-  'cloud-browser',
-  'http-client',
-  'legacy-browser',
-  'browser',
-] as const;
-
-export type ReaderKind = typeof READER_KINDS[number];
+export { READER_KINDS } from './contracts.js';
+export type { ReaderKind } from './contracts.js';
 
 export const ON_DEMAND_FETCHERS = [
   'ChatGPT-User',
@@ -135,6 +121,17 @@ export function claimsFetchMetadataBrowser(userAgent: string): boolean {
   return false;
 }
 
+/** The reader kind a named User-Agent rule maps to, for filter validation. */
+export function agentReaderKind(agentName: string): ReaderKind {
+  if (onDemandFetchers.has(agentName)) return 'ai-assistant';
+  if (aiSearchCrawlers.has(agentName)) return 'ai-search';
+  if (aiCrawlers.has(agentName)) return 'ai-crawler';
+  if (searchCrawlers.has(agentName)) return 'search-crawler';
+  if (previewOrFeedAgents.has(agentName)) return 'preview-or-feed';
+  if (headlessBrowsers.has(agentName)) return 'headless-browser';
+  return 'other-bot';
+}
+
 function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
   const agentName = facts.agentName;
   if (agentName !== null && onDemandFetchers.has(agentName)) {
@@ -175,7 +172,11 @@ function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
   // hits from Tencent Cloud (research artifact 09, section "Site measurement").
   if (isHostingAsn(facts.asn)) return { kind: 'cloud-browser', reason: `hosting-asn:${facts.asn}` };
 
-  const navigationShaped = facts.secFetchMode === 'navigate' && facts.secFetchDest === 'document';
+  // A page navigation from a browser carries navigate/document Fetch Metadata,
+  // an Accept that admits HTML, and an Accept-Language. A client that sends the
+  // Fetch Metadata but not the other two is a script imitating one.
+  const navigationShaped = facts.secFetchMode === 'navigate' && facts.secFetchDest === 'document'
+    && facts.acceptsHtml === 1 && facts.hasAcceptLanguage === 1;
   if (!navigationShaped) {
     if (facts.secFetchMode !== null) return { kind: 'http-client', reason: 'not-navigation-shaped' };
     if (claimsFetchMetadataBrowser(facts.userAgent)) {

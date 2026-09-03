@@ -1,12 +1,16 @@
-import type {
-  DeviceType,
-  StatsRange,
-  StatsResponse,
-  TimeSeriesPoint,
-  TrafficFilter,
+import {
+  READER_GROUPS,
+  isReaderKind,
+  readerGroupOf,
+  type ReaderKind,
+  type StatsRange,
+  type StatsResponse,
+  type TimeSeriesPoint,
+  type TrafficFilter,
 } from './contracts.js';
 import type { Env } from './db.js';
-import { KNOWN_AGENT_NAMES, knownAgentTrafficClass } from './classify.js';
+import { KNOWN_AGENT_NAMES } from './classify.js';
+import { agentReaderKind } from './readerkind.js';
 import {
   completeTimeSeries,
   createStatsWindow,
@@ -22,6 +26,7 @@ export interface StatsQuery {
   traffic: TrafficFilter;
   path?: string;
   agent?: string;
+  kind?: ReaderKind;
 }
 
 interface QueryPredicate {
@@ -32,9 +37,9 @@ interface QueryPredicate {
 function parseTrafficFilter(value: string | null): TrafficFilter | null {
   switch (value) {
     case 'browser':
-    case 'browserlike':
-    case 'bot':
-    case 'ai':
+    case 'agents':
+    case 'crawlers':
+    case 'automation':
     case 'all':
       return value;
     default:
@@ -57,6 +62,10 @@ function predicateFor(window: StatsWindow, query: StatsQuery): QueryPredicate {
   if (query.agent !== undefined) {
     sql += ' AND agent_name = ?';
     values.push(query.agent);
+  }
+  if (query.kind !== undefined) {
+    sql += ' AND reader_kind = ?';
+    values.push(query.kind);
   }
   return { sql, values };
 }
@@ -134,6 +143,18 @@ function agentRows(rows: Record<string, unknown>[]): StatsResponse['byAgent'] {
   return result;
 }
 
+function kindRows(rows: Record<string, unknown>[]): StatsResponse['byKind'] {
+  const result: StatsResponse['byKind'] = [];
+  for (const row of rows) {
+    const kind = stringField(row, 'kind');
+    const reason = stringField(row, 'reason');
+    if (kind !== null && isReaderKind(kind) && reason !== null) {
+      result.push({ kind, reason, views: numberField(row, 'views'), dailyClients: numberField(row, 'dailyClients') });
+    }
+  }
+  return result;
+}
+
 export async function queryStats(db: D1Database, query: StatsQuery, now = new Date()): Promise<StatsResponse> {
   const initialWindow = createStatsWindow(query.range, now);
   const predicate = predicateFor(initialWindow, query);
@@ -149,6 +170,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     bindQuery(db, `SELECT referrer_host AS referrerHost, COUNT(*) AS views FROM page_observations WHERE ${predicate.sql} AND referrer_host IS NOT NULL GROUP BY referrer_host ORDER BY views DESC, referrerHost`, predicate),
     bindQuery(db, `SELECT device_type AS deviceType, COUNT(*) AS views FROM page_observations WHERE ${predicate.sql} GROUP BY device_type ORDER BY views DESC, deviceType`, predicate),
     bindQuery(db, `SELECT agent_name AS agentName, traffic_class AS trafficClass, COUNT(*) AS views FROM page_observations WHERE ${predicate.sql} AND agent_name IS NOT NULL GROUP BY agent_name, traffic_class ORDER BY views DESC, agentName`, predicate),
+    bindQuery(db, `SELECT reader_kind AS kind, reader_reason AS reason, COUNT(*) AS views, COUNT(DISTINCT daily_client_id) AS dailyClients FROM page_observations WHERE ${predicate.sql} AND reader_kind IS NOT NULL GROUP BY reader_kind, reader_reason ORDER BY views DESC, kind, reason`, predicate),
   ];
   const statements = query.range === 'all'
     ? [db.prepare('SELECT MIN(observed_at) AS firstObservedAt FROM page_observations WHERE is_owner = 0'), ...aggregateStatements]
@@ -179,6 +201,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
       range: query.range,
       path: query.path ?? null,
       agent: query.agent ?? null,
+      kind: query.kind ?? null,
     },
     byPath: pathRows(results[aggregateOffset + 1]?.results ?? []),
     byCountry: countryRows(results[aggregateOffset + 2]?.results ?? []),
@@ -186,6 +209,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     byReferrer: referrerRows(results[aggregateOffset + 4]?.results ?? []),
     byDevice: deviceRows(results[aggregateOffset + 5]?.results ?? []),
     byAgent: agentRows(results[aggregateOffset + 6]?.results ?? []),
+    byKind: kindRows(results[aggregateOffset + 7]?.results ?? []),
   };
 }
 
@@ -198,20 +222,29 @@ export async function handleStats(request: Request, env: Pick<Env, 'DB'>): Promi
   const rangeValue = url.searchParams.get('range');
   const trafficValue = url.searchParams.get('traffic');
   const rawAgent = url.searchParams.get('agent');
+  const rawKind = url.searchParams.get('kind');
   const agent = rawAgent === null ? undefined : rawAgent;
   const range = rangeValue === null ? '30d' : parseStatsRange(rangeValue);
-  const traffic = trafficValue === null
-    ? agent === undefined ? 'browser' : 'all'
-    : parseTrafficFilter(trafficValue);
   if (range === null) return jsonError('range must be 7d, 30d, 90d, or all');
-  if (traffic === null) return jsonError('traffic must be browser, browserlike, bot, ai, or all');
   if (agent !== undefined && !KNOWN_AGENT_NAMES.has(agent)) {
     return jsonError('agent must be a known matched User-Agent rule name');
   }
-  if (agent !== undefined && (traffic === 'browser' || traffic === 'browserlike')) {
-    return jsonError(`agent ${agent} cannot be combined with traffic=${traffic}`);
+  if (rawKind !== null && !isReaderKind(rawKind)) {
+    return jsonError('kind must be one of the reader kinds');
   }
-  if (agent !== undefined && traffic !== 'all' && knownAgentTrafficClass(agent) !== traffic) {
+  const kind = rawKind === null ? undefined : rawKind;
+  const scoped = agent !== undefined || kind !== undefined;
+  const traffic = trafficValue === null
+    ? scoped ? 'all' : 'browser'
+    : parseTrafficFilter(trafficValue);
+  if (traffic === null) return jsonError('traffic must be browser, agents, crawlers, automation, or all');
+  if (agent !== undefined && kind !== undefined && agentReaderKind(agent) !== kind) {
+    return jsonError(`agent ${agent} cannot be combined with kind=${kind}`);
+  }
+  if (kind !== undefined && traffic !== 'all' && !READER_GROUPS[traffic].includes(kind)) {
+    return jsonError(`kind ${kind} cannot be combined with traffic=${traffic}`);
+  }
+  if (agent !== undefined && traffic !== 'all' && readerGroupOf(agentReaderKind(agent)) !== traffic) {
     return jsonError(`agent ${agent} cannot be combined with traffic=${traffic}`);
   }
 
@@ -220,6 +253,7 @@ export async function handleStats(request: Request, env: Pick<Env, 'DB'>): Promi
   const query: StatsQuery = { range, traffic };
   if (path !== undefined) query.path = path;
   if (agent !== undefined) query.agent = agent;
+  if (kind !== undefined) query.kind = kind;
   const response = await queryStats(env.DB, query);
   return Response.json(response, { headers: { 'Cache-Control': 'public, max-age=60' } });
 }

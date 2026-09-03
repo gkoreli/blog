@@ -12,6 +12,7 @@ import { extractRequestMetadata } from '../.test-dist/metadata.js';
 import { HOSTING_ASNS, isHostingAsn } from '../.test-dist/networks.js';
 import { partitionPredicate } from '../.test-dist/partition.js';
 import { classifyReaderKind, READER_KINDS } from '../.test-dist/readerkind.js';
+import { READER_GROUPS, readerGroupOf } from '../.test-dist/contracts.js';
 import { handleStats, queryStats } from '../.test-dist/stats.js';
 
 const html = new Response('<!doctype html>', {
@@ -64,6 +65,24 @@ function analyticsDatabase() {
 }
 
 function insertObservation(sqlite, observation) {
+  const derived = observation.readerKind === undefined
+    ? classifyReaderKind({
+      trafficClass: observation.trafficClass,
+      agentName: observation.agentName ?? null,
+      observationSource: observation.observationSource ?? 'edge',
+      asn: observation.asn ?? null,
+      secFetchMode: observation.secFetchMode ?? null,
+      secFetchDest: observation.secFetchDest ?? null,
+      secFetchSite: observation.secFetchSite ?? null,
+      secFetchUser: observation.secFetchUser ?? null,
+      acceptsHtml: observation.acceptsHtml ?? null,
+      hasAcceptLanguage: observation.hasAcceptLanguage ?? null,
+      signature: observation.signatureStatus === 'verified'
+        ? { status: 'verified', agent: observation.signatureAgent }
+        : { status: 'absent' },
+      userAgent: observation.userAgent ?? 'Mozilla/5.0 Chrome/152',
+    })
+    : null;
   sqlite.prepare(`INSERT INTO page_observations (
     path, referrer_host, country, daily_client_id, traffic_class,
     agent_name, device_type, is_owner, observation_source, asn, as_org,
@@ -91,8 +110,8 @@ function insertObservation(sqlite, observation) {
     observation.representation ?? null,
     observation.signatureAgent ?? null,
     observation.signatureStatus ?? null,
-    observation.readerKind ?? null,
-    observation.readerReason ?? null,
+    observation.readerKind ?? derived?.kind ?? null,
+    observation.readerReason ?? derived?.reason ?? null,
     observation.observedAt,
   );
 }
@@ -415,8 +434,11 @@ test('hosting list excludes relay/CDN ASNs and partition SQL inlines only valida
   assert.equal(isHostingAsn(null), false);
   const browser = partitionPredicate('browser');
   assert.equal(browser.values.length, 0);
-  assert.match(browser.sql, /asn NOT IN \([\d, ]+\)/);
-  assert.match(browser.sql, /observation_source = 'beacon'/);
+  assert.equal(browser.sql, "reader_kind IN ('browser')");
+  assert.equal(partitionPredicate('all').sql, '');
+  const grouped = ['browser', 'agents', 'crawlers', 'automation'].flatMap((group) => READER_GROUPS[group]);
+  assert.deepEqual([...grouped].sort(), [...READER_KINDS].sort(), 'groups are disjoint and cover every kind');
+  for (const kind of READER_KINDS) assert.equal(READER_GROUPS[readerGroupOf(kind)].includes(kind), true);
 });
 
 test('reader-kind classifier maps every closed-set code and records one reason', () => {
@@ -517,9 +539,17 @@ test('browser partition keeps beacons, pre-evidence edge rows, and navigation-sh
 
   const now = new Date('2026-09-03T13:00:00.000Z');
   const browsers = await queryStats(d1, { range: '7d', traffic: 'browser' }, now);
-  const browserlike = await queryStats(d1, { range: '7d', traffic: 'browserlike' }, now);
+  const automation = await queryStats(d1, { range: '7d', traffic: 'automation' }, now);
   assert.deepEqual(browsers.byPath.map((row) => row.path).sort(), ['/beacon', '/edge-navigation', '/unchecked-edge']);
-  assert.deepEqual(browserlike.byPath.map((row) => row.path).sort(), failures.map((row) => row.path).sort());
+  assert.deepEqual(automation.byPath.map((row) => row.path).sort(), failures.map((row) => row.path).sort());
+  assert.deepEqual(
+    browsers.byKind.map((row) => [row.kind, row.reason]).sort(),
+    [['browser', 'beacon-script-ran'], ['browser', 'navigation-shaped'], ['browser', 'user-agent-only']],
+  );
+  assert.deepEqual(
+    automation.byKind.map((row) => [row.kind, row.reason, row.views]).sort(),
+    [['cloud-browser', 'hosting-asn:16509', 1], ['http-client', 'not-navigation-shaped', 4]],
+  );
 });
 
 test('stats queries enforce one UTC window, class partition, owner exclusion, and legacy isolation', async () => {
@@ -588,32 +618,32 @@ test('stats queries enforce one UTC window, class partition, owner exclusion, an
 
   const now = new Date('2026-08-25T12:00:00.000Z');
   const browser = await queryStats(d1, { range: '30d', traffic: 'browser' }, now);
-  const bot = await queryStats(d1, { range: '30d', traffic: 'bot' }, now);
-  const ai = await queryStats(d1, { range: '30d', traffic: 'ai' }, now);
-  const browserlike = await queryStats(d1, { range: '30d', traffic: 'browserlike' }, now);
+  const agents = await queryStats(d1, { range: '30d', traffic: 'agents' }, now);
+  const crawlers = await queryStats(d1, { range: '30d', traffic: 'crawlers' }, now);
+  const automation = await queryStats(d1, { range: '30d', traffic: 'automation' }, now);
   const all = await queryStats(d1, { range: '30d', traffic: 'all' }, now);
 
   assert.deepEqual(
-    [browser.totals.views, browserlike.totals.views, bot.totals.views, ai.totals.views, all.totals.views],
-    [2, 1, 1, 1, 5],
+    [browser.totals.views, agents.totals.views, crawlers.totals.views, automation.totals.views, all.totals.views],
+    [2, 0, 2, 1, 5],
   );
   assert.equal(
     all.totals.views,
-    browser.totals.views + browserlike.totals.views + bot.totals.views + ai.totals.views,
+    browser.totals.views + agents.totals.views + crawlers.totals.views + automation.totals.views,
   );
   assert.equal(all.totals.dailyClients, 4);
   assert.equal(all.timeSeries.reduce((sum, point) => sum + point.views, 0), all.totals.views);
   assert.equal(all.byPath.reduce((sum, row) => sum + row.views, 0), all.totals.views);
   assert.equal(all.timeSeries.length, 30);
   assert.deepEqual([all.period.start, all.period.end], ['2026-07-27', '2026-08-25']);
-  assert.deepEqual(all.filters, { traffic: 'all', range: '30d', path: null, agent: null });
+  assert.deepEqual(all.filters, { traffic: 'all', range: '30d', path: null, agent: null, kind: null });
   assert.equal(
     all.totals.unattributedViews + all.byReferrer.reduce((sum, row) => sum + row.views, 0),
     all.totals.views,
   );
 
-  const aiAllTime = await queryStats(d1, { range: 'all', traffic: 'ai' }, now);
-  const emptyAllTime = await queryStats(d1, { range: 'all', traffic: 'ai', path: '/missing' }, now);
+  const aiAllTime = await queryStats(d1, { range: 'all', traffic: 'crawlers' }, now);
+  const emptyAllTime = await queryStats(d1, { range: 'all', traffic: 'crawlers', path: '/missing' }, now);
   assert.equal(aiAllTime.period.start, '2026-07-26');
   assert.equal(emptyAllTime.period.start, aiAllTime.period.start);
   assert.equal(emptyAllTime.totals.views, 0);
@@ -640,7 +670,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
 
   const path = await queryStats(d1, { range: '7d', traffic: 'all', path: '/article' }, now);
   assert.equal(path.totals.views, 2);
-  assert.deepEqual(path.filters, { traffic: 'all', range: '7d', path: '/article', agent: null });
+  assert.deepEqual(path.filters, { traffic: 'all', range: '7d', path: '/article', agent: null, kind: null });
   assert.deepEqual(path.byPath.map((row) => row.path), ['/article']);
   assert.deepEqual(path.byCountry.map((row) => row.country).sort(), ['CA', 'US']);
   assert.deepEqual(path.byReferrer.map((row) => row.referrerHost).sort(), ['example.com', 'search.example']);
@@ -650,7 +680,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
 
   const agent = await queryStats(d1, { range: '7d', traffic: 'all', agent: 'GPTBot' }, now);
   assert.equal(agent.totals.views, 2);
-  assert.deepEqual(agent.filters, { traffic: 'all', range: '7d', path: null, agent: 'GPTBot' });
+  assert.deepEqual(agent.filters, { traffic: 'all', range: '7d', path: null, agent: 'GPTBot', kind: null });
   assert.deepEqual(agent.byPath.map((row) => row.path).sort(), ['/article', '/other']);
   assert.deepEqual(agent.byCountry.map((row) => row.country).sort(), ['DE', 'US']);
   assert.deepEqual(agent.byReferrer.map((row) => row.referrerHost), ['example.com']);
@@ -664,7 +694,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
 
   const composed = await queryStats(d1, {
     range: '7d',
-    traffic: 'ai',
+    traffic: 'crawlers',
     path: '/article',
     agent: 'GPTBot',
   }, now);
@@ -683,12 +713,25 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
   const browserConflict = await handleStats(request('/api/stats?agent=GPTBot&traffic=browser'), { DB: d1 });
   assert.equal(browserConflict.status, 400);
   assert.match((await browserConflict.json()).error, /cannot be combined/);
-  const browserlikeConflict = await handleStats(request('/api/stats?agent=GPTBot&traffic=browserlike'), { DB: d1 });
-  assert.equal(browserlikeConflict.status, 400);
-  assert.match((await browserlikeConflict.json()).error, /cannot be combined/);
-  const classConflict = await handleStats(request('/api/stats?agent=GPTBot&traffic=bot'), { DB: d1 });
+  const agentsConflict = await handleStats(request('/api/stats?agent=GPTBot&traffic=agents'), { DB: d1 });
+  assert.equal(agentsConflict.status, 400);
+  assert.match((await agentsConflict.json()).error, /cannot be combined/);
+  const classConflict = await handleStats(request('/api/stats?agent=GPTBot&traffic=automation'), { DB: d1 });
   assert.equal(classConflict.status, 400);
   assert.match((await classConflict.json()).error, /cannot be combined/);
+  const kindOk = await handleStats(request('/api/stats?kind=ai-crawler'), { DB: d1 });
+  assert.equal(kindOk.status, 200);
+  const kindBody = await kindOk.json();
+  assert.equal(kindBody.filters.traffic, 'all');
+  assert.equal(kindBody.filters.kind, 'ai-crawler');
+  assert.equal(kindBody.totals.views, 2);
+  assert.deepEqual(kindBody.byKind, [{ kind: 'ai-crawler', reason: 'GPTBot', views: 2, dailyClients: 2 }]);
+  const kindConflict = await handleStats(request('/api/stats?kind=ai-crawler&traffic=browser'), { DB: d1 });
+  assert.equal(kindConflict.status, 400);
+  const kindAgentConflict = await handleStats(request('/api/stats?kind=search-crawler&agent=GPTBot'), { DB: d1 });
+  assert.equal(kindAgentConflict.status, 400);
+  const kindUnknown = await handleStats(request('/api/stats?kind=humans'), { DB: d1 });
+  assert.equal(kindUnknown.status, 400);
   const unknown = await handleStats(request('/api/stats?agent=UnknownBot'), { DB: d1 });
   assert.equal(unknown.status, 400);
   assert.match((await unknown.json()).error, /known matched User-Agent rule/);

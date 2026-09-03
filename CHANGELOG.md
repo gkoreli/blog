@@ -2,6 +2,15 @@
 
 Notable changes to the publication and its supporting packages are recorded here.
 
+## 0.6.0 — 2026-09-03
+
+### Stats page: audience composition
+
+- Replace the Browsers / Browser-like / Bots / AI UAs filters with four groups of the reader kinds, named for what the client was doing: Browsers, AI agents, Crawlers, Automation, plus All. The groups are disjoint and add up to All.
+- Add a "Who fetched these pages" composition table listing every reader kind with its reasons in plain words (hosting providers by name, the three Browsers evidence levels by date range, named agents as links to their own view).
+- Accept `kind=` on the stats API alongside `path=` and `agent=`, and reject combinations whose kind lies outside the chosen group.
+- Rewrite the methodology to state the reader kinds, the three Browsers evidence levels, the two method changes (August 26 edge cutover, September 3 evidence), and the rules for hosting networks and Fetch Metadata.
+
 ## 0.5.0 — 2026-09-03
 
 ### Analytics: audience composition with provenance (ADR-0016.2, ADR-0016.3)

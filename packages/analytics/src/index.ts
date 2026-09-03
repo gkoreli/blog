@@ -9,9 +9,8 @@ import { verifyWebBotAuth, type WebBotAuthResult } from './webbotauth.js';
 
 export type { Env } from './db.js';
 export { ANALYTICS_EVIDENCE_SINCE } from './contracts.js';
-export type { Representation, StatsResponse, TrafficFilter } from './contracts.js';
-export { READER_KINDS } from './readerkind.js';
-export type { ReaderKind } from './readerkind.js';
+export type { ReaderKind, Representation, StatsResponse, TrafficFilter } from './contracts.js';
+export { READER_GROUPS, READER_KINDS, isReaderKind, readerGroupOf } from './contracts.js';
 export { handleStats } from './stats.js';
 
 function sqliteTimestamp(date: Date): string {

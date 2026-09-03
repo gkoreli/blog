@@ -1,6 +1,7 @@
 import uPlot from 'uplot';
 import 'uplot/dist/uPlot.min.css';
-import type { StatsResponse, TrafficFilter } from '@gkoreli/analytics/contracts';
+import { READER_GROUPS, isReaderKind, readerGroupOf, type ReaderKind, type StatsResponse, type TrafficFilter } from '@gkoreli/analytics/contracts';
+import { HOSTING_NETWORKS } from '@gkoreli/analytics/networks';
 import '../styles/stats.css';
 
 type RangeFilter = '7d' | '30d' | '90d' | 'all';
@@ -9,6 +10,7 @@ type ViewState = {
   traffic: TrafficFilter;
   path: string | null;
   agent: string | null;
+  kind: ReaderKind | null;
 };
 type RankedItem = {
   label: string;
@@ -20,7 +22,50 @@ type RankedItem = {
 
 const MAX_ITEMS = 10;
 const CHART_HEIGHT = 300;
-const DEFAULT_STATE: ViewState = { range: '30d', traffic: 'browser', path: null, agent: null };
+const DEFAULT_STATE: ViewState = { range: '30d', traffic: 'browser', path: null, agent: null, kind: null };
+
+/** Public names for the reader kinds: what the client is, in plain words. */
+const KIND_LABELS: Record<ReaderKind, string> = {
+  browser: 'Browsers',
+  'signed-agent': 'Signed agents',
+  'ai-assistant': 'AI assistants',
+  'ai-search': 'AI search',
+  'ai-crawler': 'AI crawlers',
+  'search-crawler': 'Search engines',
+  'preview-or-feed': 'Link previews',
+  'cloud-browser': 'Cloud browsers',
+  'headless-browser': 'Headless browsers',
+  'http-client': 'HTTP clients',
+  'other-bot': 'Other bots',
+  'legacy-browser': 'Old browsers',
+};
+
+/** Public wording for the reason codes that are not agent names. */
+const REASON_LABELS: Record<string, string> = {
+  'navigation-shaped': 'page navigation from a normal network',
+  'beacon-script-ran': 'site script ran in the page (before Aug 26, 2026)',
+  'user-agent-only': 'User-Agent only (Aug 26 to Sep 3, 2026)',
+  'not-navigation-shaped': 'not shaped like a page navigation',
+  'no-fetch-metadata': 'modern browser claim without Fetch Metadata',
+  'pre-fetch-metadata-ua': 'browser version that predates Fetch Metadata',
+  'generic-bot': 'generic bot token in the User-Agent',
+};
+
+function reasonLabel(kind: ReaderKind, reason: string): string {
+  const known = REASON_LABELS[reason];
+  if (known !== undefined) return known;
+  const hosting = /^hosting-asn:(\d+)$/.exec(reason);
+  if (hosting) {
+    const asn = Number(hosting[1]);
+    const provider = HOSTING_NETWORKS.find((network) => network.asn === asn)?.provider;
+    return provider === undefined ? `hosting network AS${asn}` : `${provider} (AS${asn})`;
+  }
+  if (kind === 'signed-agent') return `signed by ${reason}`;
+  if (reason.startsWith('signature-') || reason.startsWith('missing-') || reason.startsWith('invalid-')) {
+    return `signature not verified: ${reason.replace(/-/g, ' ')}`;
+  }
+  return reason;
+}
 const SPECIAL_COUNTRIES: Record<string, string> = {
   T1: '🔒 Tor',
   XX: '🌐 Unknown',
@@ -50,9 +95,9 @@ function parseRange(value: string | null): RangeFilter {
 function parseTraffic(value: string | null, fallback: TrafficFilter): TrafficFilter {
   switch (value) {
     case 'browser':
-    case 'browserlike':
-    case 'bot':
-    case 'ai':
+    case 'agents':
+    case 'crawlers':
+    case 'automation':
     case 'all':
       return value;
     default:
@@ -64,25 +109,33 @@ function optionalFilter(value: string | null): string | null {
   return value === null || value.length === 0 ? null : value;
 }
 
+function parseKind(value: string | null): ReaderKind | null {
+  return value !== null && isReaderKind(value) ? value : null;
+}
+
 function getState(): ViewState {
   const params = new URLSearchParams(location.search);
   const path = optionalFilter(params.get('path'));
   const agent = optionalFilter(params.get('agent'));
+  const kind = parseKind(params.get('kind'));
+  const scoped = agent !== null || kind !== null;
   return {
     range: parseRange(params.get('range')),
-    traffic: parseTraffic(params.get('traffic'), agent === null ? DEFAULT_STATE.traffic : 'all'),
+    traffic: parseTraffic(params.get('traffic'), scoped ? 'all' : DEFAULT_STATE.traffic),
     path,
     agent,
+    kind,
   };
 }
 
 function paramsForState(state: ViewState): URLSearchParams {
   const params = new URLSearchParams();
   if (state.range !== DEFAULT_STATE.range) params.set('range', state.range);
-  const defaultTraffic = state.agent === null ? DEFAULT_STATE.traffic : 'all';
+  const defaultTraffic = state.agent === null && state.kind === null ? DEFAULT_STATE.traffic : 'all';
   if (state.traffic !== defaultTraffic) params.set('traffic', state.traffic);
   if (state.path !== null) params.set('path', state.path);
   if (state.agent !== null) params.set('agent', state.agent);
+  if (state.kind !== null) params.set('kind', state.kind);
   return params;
 }
 
@@ -111,6 +164,7 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   const params = new URLSearchParams({ range: state.range, traffic: state.traffic });
   if (state.path !== null) params.set('path', state.path);
   if (state.agent !== null) params.set('agent', state.agent);
+  if (state.kind !== null) params.set('kind', state.kind);
   const response = await fetch(`/api/stats?${params}`, { signal });
   if (!response.ok) throw new Error(`Stats request failed with ${response.status}`);
   const data: StatsResponse = await response.json();
@@ -230,6 +284,12 @@ function renderScope(filters: StatsResponse['filters']): void {
       value: filters.agent,
       filter: 'agent',
       ariaLabel: 'Clear agent filter',
+    },
+    filters.kind === null ? null : {
+      label: 'Kind',
+      value: KIND_LABELS[filters.kind],
+      filter: 'kind',
+      ariaLabel: 'Clear kind filter',
     },
   ].filter((item) => item !== null);
 
@@ -423,6 +483,82 @@ function renderChart(data: StatsResponse): void {
   chart = new uPlot(options, alignedData, container);
 }
 
+/** Only a named User-Agent rule scopes the page further; other reasons are facts, not filters. */
+function reasonHref(kind: ReaderKind, reason: string, state: ViewState): string | undefined {
+  if (state.kind !== null || state.agent !== null) return undefined;
+  const namedAgentKinds: ReaderKind[] = ['ai-assistant', 'ai-search', 'ai-crawler', 'search-crawler', 'preview-or-feed', 'headless-browser', 'other-bot'];
+  if (!namedAgentKinds.includes(kind) || reason === 'generic-bot' || reason.includes(':')) return undefined;
+  return stateHref({ ...state, agent: reason, traffic: 'all' });
+}
+
+function renderComposition(data: StatsResponse, state: ViewState): void {
+  const section = element('stats-composition');
+  const heading = section.querySelector('h2');
+  section.replaceChildren();
+  if (heading) section.appendChild(heading);
+  if (data.byKind.length === 0) {
+    const empty = document.createElement('p');
+    empty.className = 'stats-empty';
+    empty.textContent = 'No data for this selection.';
+    section.appendChild(empty);
+    return;
+  }
+
+  const byKind = new Map<ReaderKind, StatsResponse['byKind']>();
+  for (const row of data.byKind) {
+    const rows = byKind.get(row.kind) ?? [];
+    rows.push(row);
+    byKind.set(row.kind, rows);
+  }
+  const kinds = [...byKind.entries()]
+    .map(([kind, rows]) => ({ kind, rows, views: rows.reduce((sum, row) => sum + row.views, 0) }))
+    .sort((a, b) => b.views - a.views);
+  const max = kinds[0]?.views ?? 0;
+
+  for (const group of kinds) {
+    const row = document.createElement('div');
+    row.className = 'stats-row stats-row-kind';
+    const bar = document.createElement('span');
+    bar.className = 'stats-bar';
+    bar.style.width = `${max > 0 ? (group.views / max) * 100 : 0}%`;
+    bar.setAttribute('aria-hidden', 'true');
+    const label = state.kind === null && state.agent === null ? document.createElement('a') : document.createElement('span');
+    label.className = 'stats-label';
+    label.textContent = KIND_LABELS[group.kind];
+    if (label instanceof HTMLAnchorElement) label.href = stateHref({ ...state, kind: group.kind, traffic: 'all' });
+    const value = document.createElement('span');
+    value.className = 'stats-value';
+    value.textContent = formatViewCount(group.views);
+    row.append(bar, label, value);
+    section.appendChild(row);
+
+    const reasons = group.rows.slice(0, MAX_ITEMS);
+    for (const reason of reasons) {
+      const sub = document.createElement('div');
+      sub.className = 'stats-row stats-row-reason';
+      const href = reasonHref(group.kind, reason.reason, state);
+      const subLabel = href === undefined ? document.createElement('span') : document.createElement('a');
+      subLabel.className = 'stats-label';
+      subLabel.textContent = reasonLabel(group.kind, reason.reason);
+      if (subLabel instanceof HTMLAnchorElement && href !== undefined) subLabel.href = href;
+      const subValue = document.createElement('span');
+      subValue.className = 'stats-value';
+      subValue.textContent = formatNumber(reason.views);
+      sub.append(subLabel, subValue);
+      section.appendChild(sub);
+    }
+    if (group.rows.length > reasons.length) {
+      const more = document.createElement('div');
+      more.className = 'stats-row stats-row-reason stats-row-more';
+      const moreLabel = document.createElement('span');
+      moreLabel.className = 'stats-label';
+      moreLabel.textContent = `${group.rows.length - reasons.length} more reasons`;
+      more.appendChild(moreLabel);
+      section.appendChild(more);
+    }
+  }
+}
+
 function renderDashboard(data: StatsResponse, state: ViewState): void {
   if (data.totals.views === 0) {
     setDashboardVisible(false);
@@ -442,18 +578,7 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   }
   replaceSectionRows('stats-referrers', referrers, null);
   replaceSectionRows('stats-countries', data.byCountry.map(row => ({ label: countryLabel(row.country), views: row.views })));
-  const agentSection = element('stats-agents');
-  agentSection.hidden = data.byAgent.length === 0;
-  if (data.byAgent.length > 0) {
-    const agents: RankedItem[] = data.byAgent.map(row => ({
-      label: `${row.agentName} UA rule · ${row.trafficClass === 'ai' ? 'AI' : 'Bot'}`,
-      views: row.views,
-      ...(state.agent === null
-        ? { href: stateHref({ ...state, agent: row.agentName, traffic: row.trafficClass }) }
-        : {}),
-    }));
-    replaceSectionRows('stats-agents', agents);
-  }
+  renderComposition(data, state);
 
   setStatus(`Showing ${formatViewCount(data.totals.views, true)}.`, 'ready');
 }
@@ -501,20 +626,24 @@ document.querySelector('.stats-controls')?.addEventListener('click', event => {
   const days = button.dataset.days;
   const nextTraffic = traffic ? parseTraffic(traffic, currentState.traffic) : currentState.traffic;
   let agent = currentState.agent;
-  if (traffic && agent !== null && nextTraffic !== currentState.traffic && nextTraffic !== 'all') {
-    const matchedAgent = currentData?.byAgent.find((row) => row.agentName === agent);
-    if (matchedAgent?.trafficClass !== nextTraffic) agent = null;
+  let kind = currentState.kind;
+  if (traffic && nextTraffic !== currentState.traffic && nextTraffic !== 'all') {
+    const agentKind = agent === null ? null : currentData?.byKind.find((row) => row.reason === agent)?.kind ?? null;
+    if (agent !== null && (agentKind === null || readerGroupOf(agentKind) !== nextTraffic)) agent = null;
+    if (kind !== null && !READER_GROUPS[nextTraffic].includes(kind)) kind = null;
   }
   const state: ViewState = {
     traffic: nextTraffic,
     range: days ? parseRange(days === '0' ? 'all' : `${days}d`) : currentState.range,
     path: currentState.path,
     agent,
+    kind,
   };
   if (state.traffic === currentState.traffic
     && state.range === currentState.range
     && state.path === currentState.path
-    && state.agent === currentState.agent) return;
+    && state.agent === currentState.agent
+    && state.kind === currentState.kind) return;
   pushState(state);
   void load(state);
 });
@@ -528,7 +657,9 @@ element('stats-scope').addEventListener('click', event => {
     ? { ...currentState, path: null }
     : filter === 'agent'
       ? { ...currentState, agent: null }
-      : currentState;
+      : filter === 'kind'
+        ? { ...currentState, kind: null }
+        : currentState;
   if (state === currentState) return;
   pushState(state);
   void load(state);

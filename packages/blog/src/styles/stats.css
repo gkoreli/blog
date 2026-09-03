@@ -77,6 +77,14 @@ a.stats-label { color: var(--color-link); }
 .stats-open { font-size: 0.75rem; color: var(--color-link); }
 .stats-empty { color: var(--color-text-muted); font-style: italic; padding: 1rem 0; }
 
+.stats-row-kind { margin-top: 0.5rem; font-weight: 600; }
+.stats-row-kind:first-of-type { margin-top: 0; }
+.stats-row-kind .stats-value { color: var(--color-text); }
+.stats-row-reason { min-height: 26px; padding: 0.15rem 0.6rem 0.15rem 1.6rem; margin-bottom: 0; font-size: 0.8rem; color: var(--color-text-muted); }
+.stats-row-reason .stats-label { color: var(--color-text-muted); }
+.stats-row-reason a.stats-label { color: var(--color-link); }
+.stats-row-more .stats-label { font-style: italic; }
+
 .stats-methodology { margin-top: 2.5rem; padding: 1.25rem; border: 1px solid var(--color-border); border-radius: 0.5rem; color: var(--color-text-muted); font-size: 0.85rem; }
 .stats-methodology h2 { margin: 0 0 0.75rem; color: var(--color-text); font-size: 1.05rem; }
 .stats-methodology p { margin: 0.65rem 0; }
