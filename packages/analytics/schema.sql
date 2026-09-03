@@ -42,3 +42,12 @@ CREATE INDEX idx_page_observations_public_path_time
 CREATE UNIQUE INDEX idx_page_observations_source_event
   ON page_observations(observation_source, source_event_id)
   WHERE source_event_id IS NOT NULL;
+
+CREATE TABLE owner_clients (
+  daily_client_id TEXT PRIMARY KEY CHECK (
+    length(daily_client_id) = 32
+    AND daily_client_id NOT GLOB '*[^0-9a-f]*'
+  ),
+  utc_date TEXT NOT NULL,
+  marked_at TEXT NOT NULL DEFAULT (datetime('now'))
+);

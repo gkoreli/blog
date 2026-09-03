@@ -1,5 +1,5 @@
 import type { ReaderKind, TrafficClass } from './contracts.js';
-import { isHostingAsn } from './networks.js';
+import { isArchiverAsn, isHostingAsn } from './networks.js';
 import type { WebBotAuthResult } from './webbotauth.js';
 
 export { READER_KINDS } from './contracts.js';
@@ -154,6 +154,10 @@ function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
     ? agentName
     : userAgentHeadlessName(facts.userAgent);
   if (headlessName !== null) return { kind: 'headless-browser', reason: headlessName };
+
+  if (agentName === null && isArchiverAsn(facts.asn)) {
+    return { kind: 'preview-or-feed', reason: `archiver-asn:${facts.asn}` };
+  }
 
   if (facts.trafficClass === 'bot' || facts.trafficClass === 'ai') {
     return { kind: 'other-bot', reason: agentName ?? 'generic-bot' };

@@ -11,6 +11,7 @@ export type { Env } from './db.js';
 export { ANALYTICS_EVIDENCE_SINCE } from './contracts.js';
 export type { ReaderKind, Representation, StatsResponse, TrafficFilter } from './contracts.js';
 export { READER_GROUPS, READER_KINDS, isReaderKind, readerGroupOf } from './contracts.js';
+export { handleOwner } from './owner.js';
 export { handleStats } from './stats.js';
 
 function sqliteTimestamp(date: Date): string {

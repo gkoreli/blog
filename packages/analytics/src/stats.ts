@@ -34,6 +34,11 @@ interface QueryPredicate {
   values: unknown[];
 }
 
+const PUBLIC_OBSERVATION_PREDICATE = `is_owner = 0 AND NOT EXISTS (
+  SELECT 1 FROM owner_clients
+  WHERE owner_clients.daily_client_id = page_observations.daily_client_id
+)`;
+
 function parseTrafficFilter(value: string | null): TrafficFilter | null {
   switch (value) {
     case 'browser':
@@ -48,7 +53,7 @@ function parseTrafficFilter(value: string | null): TrafficFilter | null {
 }
 
 function predicateFor(window: StatsWindow, query: StatsQuery): QueryPredicate {
-  let sql = 'observed_at >= ? AND observed_at < ? AND is_owner = 0';
+  let sql = `observed_at >= ? AND observed_at < ? AND ${PUBLIC_OBSERVATION_PREDICATE}`;
   const values: unknown[] = [window.startInclusive, window.endExclusive];
   const partition = partitionPredicate(query.traffic);
   if (partition.sql.length > 0) {
@@ -173,7 +178,8 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     bindQuery(db, `SELECT reader_kind AS kind, reader_reason AS reason, COUNT(*) AS views, COUNT(DISTINCT daily_client_id) AS dailyClients FROM page_observations WHERE ${predicate.sql} AND reader_kind IS NOT NULL GROUP BY reader_kind, reader_reason ORDER BY views DESC, kind, reason`, predicate),
   ];
   const statements = query.range === 'all'
-    ? [db.prepare('SELECT MIN(observed_at) AS firstObservedAt FROM page_observations WHERE is_owner = 0'), ...aggregateStatements]
+    ? [db.prepare(`SELECT MIN(observed_at) AS firstObservedAt
+        FROM page_observations WHERE ${PUBLIC_OBSERVATION_PREDICATE}`), ...aggregateStatements]
     : aggregateStatements;
   const results = await db.batch<Record<string, unknown>>(statements);
   const aggregateOffset = query.range === 'all' ? 1 : 0;

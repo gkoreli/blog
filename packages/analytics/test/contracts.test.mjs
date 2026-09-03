@@ -7,9 +7,15 @@ import { classifyTraffic, KNOWN_AGENT_NAMES } from '../.test-dist/classify.js';
 import { completeTimeSeries, createStatsWindow } from '../.test-dist/dates.js';
 import { isEligiblePageResponse } from '../.test-dist/eligibility.js';
 import { createDailyClientId } from '../.test-dist/hash.js';
-import { observePageResponse } from '../.test-dist/index.js';
+import { handleOwner, observePageResponse } from '../.test-dist/index.js';
 import { extractRequestMetadata } from '../.test-dist/metadata.js';
-import { HOSTING_ASNS, isHostingAsn } from '../.test-dist/networks.js';
+import {
+  ARCHIVER_NETWORKS,
+  HOSTING_ASNS,
+  HOSTING_NETWORKS,
+  isArchiverAsn,
+  isHostingAsn,
+} from '../.test-dist/networks.js';
 import { partitionPredicate } from '../.test-dist/partition.js';
 import { classifyReaderKind, READER_KINDS } from '../.test-dist/readerkind.js';
 import { READER_GROUPS, readerGroupOf } from '../.test-dist/contracts.js';
@@ -197,6 +203,120 @@ test('daily client HMAC is stable and separated by every scoped input', async ()
     { ...base, userAgent: 'Browser/2.0' },
   ];
   for (const variant of variants) assert.notEqual(await createDailyClientId(variant), expected);
+});
+
+test('owner endpoint rejects non-POST methods', async () => {
+  const { d1 } = analyticsDatabase();
+  const response = await handleOwner(request('/api/owner', {
+    method: 'GET',
+    headers: { Authorization: 'Bearer owner-secret' },
+  }), {
+    DB: d1,
+    ADMIN_SECRET: 'owner-secret',
+    ANALYTICS_HASH_KEY: 'analytics-secret',
+  });
+
+  assert.equal(response.status, 405);
+  assert.equal(response.headers.get('allow'), 'POST');
+  assert.deepEqual(await response.json(), { error: 'Method Not Allowed' });
+});
+
+test('owner endpoint fails closed when a required secret is unset', async () => {
+  const { d1 } = analyticsDatabase();
+  const authorized = request('/api/owner', {
+    method: 'POST',
+    headers: { Authorization: 'Bearer owner-secret' },
+  });
+
+  const missingAdmin = await handleOwner(authorized, {
+    DB: d1,
+    ANALYTICS_HASH_KEY: 'analytics-secret',
+  });
+  assert.equal(missingAdmin.status, 500);
+
+  const missingHashKey = await handleOwner(authorized, {
+    DB: d1,
+    ADMIN_SECRET: 'owner-secret',
+    ANALYTICS_HASH_KEY: '',
+  });
+  assert.equal(missingHashKey.status, 500);
+});
+
+test('owner endpoint rejects missing and incorrect bearer credentials', async () => {
+  const { d1 } = analyticsDatabase();
+  const env = {
+    DB: d1,
+    ADMIN_SECRET: 'owner-secret',
+    ANALYTICS_HASH_KEY: 'analytics-secret',
+  };
+
+  const missing = await handleOwner(request('/api/owner', { method: 'POST' }), env);
+  assert.equal(missing.status, 401);
+  assert.deepEqual(await missing.json(), { error: 'Unauthorized' });
+
+  const incorrect = await handleOwner(request('/api/owner', {
+    method: 'POST',
+    headers: { Authorization: 'Bearer wrong-secret' },
+  }), env);
+  assert.equal(incorrect.status, 401);
+});
+
+test('owner endpoint marks the ingestion identity without exposing it and preserves the first mark', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  const now = new Date('2026-09-03T23:59:59.000Z');
+  const ip = '203.0.113.42';
+  const userAgent = 'Browser/1.0';
+  const adminSecret = 'owner-secret';
+  const hashKey = 'analytics-secret';
+  const ownerRequest = request('/api/owner?ignored=yes', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${adminSecret}`,
+      'CF-Connecting-IP': ip,
+      'User-Agent': userAgent,
+    },
+  });
+  const env = {
+    DB: d1,
+    ADMIN_SECRET: adminSecret,
+    ANALYTICS_HASH_KEY: hashKey,
+    OWNER_IPS: ip,
+  };
+
+  const expectedId = await createDailyClientId({
+    masterKey: hashKey,
+    siteHost: 'gkoreli.com',
+    utcDate: '2026-09-03',
+    ip,
+    userAgent,
+  });
+  const first = await handleOwner(ownerRequest, env, now);
+  const firstText = await first.text();
+  assert.equal(first.status, 200);
+  assert.deepEqual(JSON.parse(firstText), { marked: true, utcDate: '2026-09-03' });
+  assert.equal(first.headers.get('cache-control'), 'no-store');
+  assert.equal(firstText.includes(expectedId), false);
+  assert.equal(firstText.includes(adminSecret), false);
+  assert.equal(firstText.includes(hashKey), false);
+
+  assert.deepEqual({ ...sqlite.prepare(
+    'SELECT daily_client_id, utc_date FROM owner_clients',
+  ).get() }, {
+    daily_client_id: expectedId,
+    utc_date: '2026-09-03',
+  });
+
+  sqlite.prepare(
+    "UPDATE owner_clients SET marked_at = '2000-01-01 00:00:00' WHERE daily_client_id = ?",
+  ).run(expectedId);
+  const repeated = await handleOwner(ownerRequest, env, now);
+  assert.equal(repeated.status, 200);
+  assert.deepEqual({ ...sqlite.prepare(
+    'SELECT COUNT(*) AS count, MIN(marked_at) AS marked_at FROM owner_clients',
+  ).get() }, {
+    count: 1,
+    marked_at: '2000-01-01 00:00:00',
+  });
 });
 
 test('UTC presets contain exact dates and required granularity', () => {
@@ -426,7 +546,7 @@ test('ingestion stores an unverified signature reason without trusting its claim
 });
 
 test('hosting list excludes relay/CDN ASNs and partition SQL inlines only validated numbers', () => {
-  for (const prohibited of [15169, 13335, 36183, 20940, 54113]) {
+  for (const prohibited of [15169, 13335, 36183, 20940, 54113, 6939, 7941, 46997]) {
     assert.equal(HOSTING_ASNS.has(prohibited), false);
     assert.equal(isHostingAsn(prohibited), false);
   }
@@ -439,6 +559,27 @@ test('hosting list excludes relay/CDN ASNs and partition SQL inlines only valida
   const grouped = ['browser', 'agents', 'crawlers', 'automation'].flatMap((group) => READER_GROUPS[group]);
   assert.deepEqual([...grouped].sort(), [...READER_KINDS].sort(), 'groups are disjoint and cover every kind');
   for (const kind of READER_KINDS) assert.equal(READER_GROUPS[readerGroupOf(kind)].includes(kind), true);
+});
+
+test('network registries contain the exact ADR-0016.4 hosting and archiver entries', () => {
+  const addedAsns = new Set([29802, 64267, 150436, 59711, 25820]);
+  assert.deepEqual(
+    HOSTING_NETWORKS
+      .filter((network) => addedAsns.has(network.asn))
+      .map((network) => ({ ...network })),
+    [
+      { asn: 29802, provider: 'Hivelocity', checkedOn: '2026-09-03' },
+      { asn: 64267, provider: 'Sprious (Rayobyte)', checkedOn: '2026-09-03' },
+      { asn: 150436, provider: 'Byteplus', checkedOn: '2026-09-03' },
+      { asn: 59711, provider: 'HZ Hosting', checkedOn: '2026-09-03' },
+      { asn: 25820, provider: 'IT7 Networks', checkedOn: '2026-09-03' },
+    ],
+  );
+  for (const asn of addedAsns) assert.equal(isHostingAsn(asn), true);
+  assert.deepEqual([...ARCHIVER_NETWORKS], [[7941, 'internet-archive']]);
+  assert.equal(isArchiverAsn(7941), true);
+  assert.equal(isArchiverAsn(29802), false);
+  assert.equal(isArchiverAsn(null), false);
 });
 
 test('reader-kind classifier maps every closed-set code and records one reason', () => {
@@ -503,6 +644,48 @@ test('reader-kind classifier maps every closed-set code and records one reason',
     agentName: 'DuckDuckBot',
     signature: { status: 'unverified', reason: 'bare-uri-signature-agent' },
   }), { kind: 'search-crawler', reason: 'DuckDuckBot; signature:bare-uri-signature-agent' });
+});
+
+test('archiver ASN classifies unnamed requests while named agents retain priority', () => {
+  const base = {
+    trafficClass: 'browser',
+    agentName: null,
+    observationSource: 'edge',
+    asn: 7941,
+    secFetchMode: 'navigate',
+    secFetchDest: 'document',
+    secFetchSite: 'cross-site',
+    secFetchUser: 1,
+    acceptsHtml: 1,
+    hasAcceptLanguage: 1,
+    signature: { status: 'absent' },
+    userAgent: 'Mozilla/5.0 Chrome/152',
+  };
+
+  assert.deepEqual(classifyReaderKind(base), {
+    kind: 'preview-or-feed',
+    reason: 'archiver-asn:7941',
+  });
+  assert.deepEqual(classifyReaderKind({ ...base, trafficClass: 'bot' }), {
+    kind: 'preview-or-feed',
+    reason: 'archiver-asn:7941',
+  });
+  assert.deepEqual(classifyReaderKind({
+    ...base,
+    trafficClass: 'bot',
+    agentName: 'Googlebot',
+    userAgent: 'Googlebot/2.1',
+  }), { kind: 'search-crawler', reason: 'Googlebot' });
+  assert.deepEqual(classifyReaderKind({
+    ...base,
+    trafficClass: 'bot',
+    agentName: 'HeadlessChrome',
+    userAgent: 'HeadlessChrome/152',
+  }), { kind: 'headless-browser', reason: 'HeadlessChrome' });
+  assert.deepEqual(classifyReaderKind({
+    ...base,
+    signature: { status: 'verified', agent: 'https://agent.example' },
+  }), { kind: 'signed-agent', reason: 'https://agent.example' });
 });
 
 test('browser partition keeps beacons, pre-evidence edge rows, and navigation-shaped edge rows while each failed signal demotes', async () => {
@@ -653,6 +836,67 @@ test('stats queries enforce one UTC window, class partition, owner exclusion, an
   assert.equal(aiAllTime.period.start, '2026-07-26');
   assert.equal(emptyAllTime.period.start, aiAllTime.period.start);
   assert.equal(emptyAllTime.totals.views, 0);
+});
+
+test('stats exclude marked daily clients from every aggregate and the all-time boundary', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  insertObservation(sqlite, {
+    path: '/marked-earliest',
+    referrerHost: 'marked.example',
+    country: 'DE',
+    dailyClientId: 'a'.repeat(32),
+    trafficClass: 'browser',
+    deviceType: 'mobile',
+    ...NAVIGATION_EVIDENCE,
+    observedAt: '2026-08-01 12:00:00',
+  });
+  insertObservation(sqlite, {
+    path: '/reader',
+    referrerHost: 'reader.example',
+    country: 'US',
+    dailyClientId: 'b'.repeat(32),
+    trafficClass: 'browser',
+    ...NAVIGATION_EVIDENCE,
+    observedAt: '2026-08-02 12:00:00',
+  });
+  insertObservation(sqlite, {
+    path: '/marked-agent',
+    referrerHost: 'agent.example',
+    country: 'CA',
+    dailyClientId: 'c'.repeat(32),
+    trafficClass: 'ai',
+    agentName: 'GPTBot',
+    deviceType: 'tablet',
+    observedAt: '2026-09-03 11:00:00',
+  });
+  const markOwner = sqlite.prepare(
+    'INSERT INTO owner_clients (daily_client_id, utc_date) VALUES (?, ?)',
+  );
+  markOwner.run('a'.repeat(32), '2026-08-01');
+  markOwner.run('c'.repeat(32), '2026-09-03');
+
+  const stats = await queryStats(
+    d1,
+    { range: 'all', traffic: 'all' },
+    new Date('2026-09-03T13:00:00.000Z'),
+  );
+
+  assert.equal(stats.period.start, '2026-08-02');
+  assert.deepEqual(stats.totals, { views: 1, dailyClients: 1, unattributedViews: 0 });
+  assert.deepEqual(stats.byPath, [{ path: '/reader', views: 1, dailyClients: 1 }]);
+  assert.deepEqual(stats.byCountry, [{ country: 'US', views: 1 }]);
+  assert.deepEqual(stats.byReferrer, [{ referrerHost: 'reader.example', views: 1 }]);
+  assert.deepEqual(stats.byDevice, [{ deviceType: 'desktop', views: 1 }]);
+  assert.deepEqual(stats.byAgent, []);
+  assert.deepEqual(stats.byKind, [{
+    kind: 'browser',
+    reason: 'navigation-shaped',
+    views: 1,
+    dailyClients: 1,
+  }]);
+  assert.equal(stats.timeSeries.reduce((sum, point) => sum + point.views, 0), 1);
+  assert.equal(sqlite.prepare(`SELECT COUNT(*) AS count FROM page_observations
+    WHERE daily_client_id IN (?, ?) AND is_owner = 0`).get('a'.repeat(32), 'c'.repeat(32)).count, 2);
 });
 
 test('path and agent filters scope every aggregate and API rejects unknown or conflicting agents', async () => {
@@ -924,13 +1168,137 @@ test('migrations 0005 to 0007 apply after the existing chain and backfill legacy
   );
 });
 
-test('SQL reader-kind backfill inlines exactly the hosting ASN list', () => {
+test('migration 0008 creates owner clients and narrowly reclassifies bounded network history', () => {
+  const sqlite = new DatabaseSync(':memory:');
+  sqlite.exec(`CREATE TABLE page_observations (
+    path TEXT NOT NULL,
+    asn INTEGER,
+    reader_kind TEXT,
+    reader_reason TEXT,
+    observed_at TEXT NOT NULL
+  )`);
+  const insert = sqlite.prepare(`INSERT INTO page_observations
+    (path, asn, reader_kind, reader_reason, observed_at) VALUES (?, ?, ?, ?, ?)`);
+  const beforeBoundary = '2026-09-03 23:59:59';
+  const hostingAsns = [29802, 64267, 150436, 59711, 25820];
+  hostingAsns.forEach((asn, index) => insert.run(
+    `/hosting-${asn}`,
+    asn,
+    index % 2 === 0 ? 'browser' : 'legacy-browser',
+    'old-browser-reason',
+    beforeBoundary,
+  ));
+  insert.run('/archiver-browser', 7941, 'browser', 'navigation-shaped', beforeBoundary);
+  insert.run('/archiver-legacy', 7941, 'legacy-browser', 'pre-fetch-metadata-ua', '2026-01-01 00:00:00');
+  insert.run('/hosting-at-cutoff', 29802, 'browser', 'navigation-shaped', '2026-09-04 00:00:00');
+  insert.run('/archiver-at-cutoff', 7941, 'browser', 'navigation-shaped', '2026-09-04 00:00:00');
+  insert.run('/old-hosting', 16509, 'browser', 'navigation-shaped', beforeBoundary);
+  insert.run('/hurricane-electric', 6939, 'browser', 'navigation-shaped', beforeBoundary);
+  insert.run('/black-mesa', 46997, 'browser', 'navigation-shaped', beforeBoundary);
+
+  const protectedKinds = [
+    ['signed-agent', 'https://agent.example'],
+    ['ai-assistant', 'ChatGPT-User'],
+    ['ai-search', 'OAI-SearchBot'],
+    ['ai-crawler', 'GPTBot'],
+    ['search-crawler', 'Googlebot'],
+    ['preview-or-feed', 'Slackbot'],
+    ['headless-browser', 'HeadlessChrome'],
+    ['other-bot', 'generic-bot'],
+    ['http-client', 'not-navigation-shaped'],
+    ['cloud-browser', 'hosting-asn:29802'],
+  ];
+  protectedKinds.forEach(([kind, reason], index) => insert.run(
+    `/protected-${kind}`,
+    index % 2 === 0 ? 29802 : 7941,
+    kind,
+    reason,
+    beforeBoundary,
+  ));
+
+  const migration = readFileSync(
+    new URL('../migrations/0008_owner_clients_and_network_reclassification.sql', import.meta.url),
+    'utf8',
+  );
+  sqlite.exec(migration);
+
+  for (const asn of hostingAsns) {
+    assert.deepEqual({ ...sqlite.prepare(`SELECT reader_kind, reader_reason
+      FROM page_observations WHERE path = ?`).get(`/hosting-${asn}`) }, {
+      reader_kind: 'cloud-browser',
+      reader_reason: `hosting-asn:${asn}`,
+    });
+  }
+  for (const path of ['/archiver-browser', '/archiver-legacy']) {
+    assert.deepEqual({ ...sqlite.prepare(`SELECT reader_kind, reader_reason
+      FROM page_observations WHERE path = ?`).get(path) }, {
+      reader_kind: 'preview-or-feed',
+      reader_reason: 'archiver-asn:7941',
+    });
+  }
+  assert.deepEqual(
+    sqlite.prepare(`SELECT path, reader_kind, reader_reason FROM page_observations
+      WHERE path IN ('/hosting-at-cutoff', '/archiver-at-cutoff', '/old-hosting',
+        '/hurricane-electric', '/black-mesa') ORDER BY path`).all().map((row) => ({ ...row })),
+    [
+      { path: '/archiver-at-cutoff', reader_kind: 'browser', reader_reason: 'navigation-shaped' },
+      { path: '/black-mesa', reader_kind: 'browser', reader_reason: 'navigation-shaped' },
+      { path: '/hosting-at-cutoff', reader_kind: 'browser', reader_reason: 'navigation-shaped' },
+      { path: '/hurricane-electric', reader_kind: 'browser', reader_reason: 'navigation-shaped' },
+      { path: '/old-hosting', reader_kind: 'browser', reader_reason: 'navigation-shaped' },
+    ],
+  );
+  for (const [kind, reason] of protectedKinds) {
+    assert.deepEqual({ ...sqlite.prepare(`SELECT reader_kind, reader_reason
+      FROM page_observations WHERE path = ?`).get(`/protected-${kind}`) }, {
+      reader_kind: kind,
+      reader_reason: reason,
+    });
+  }
+
+  sqlite.prepare(`INSERT INTO owner_clients (daily_client_id, utc_date)
+    VALUES (?, ?)`).run('a'.repeat(32), '2026-09-03');
+  const owner = sqlite.prepare(`SELECT daily_client_id, utc_date, marked_at
+    FROM owner_clients`).get();
+  assert.equal(owner.daily_client_id, 'a'.repeat(32));
+  assert.equal(owner.utc_date, '2026-09-03');
+  assert.equal(typeof owner.marked_at, 'string');
+  assert.throws(
+    () => sqlite.prepare(`INSERT INTO owner_clients (daily_client_id, utc_date)
+      VALUES (?, ?)`).run('A'.repeat(32), '2026-09-03'),
+    /CHECK constraint failed/,
+  );
+});
+
+test('SQL reader-kind migrations inline exactly the current network registries', () => {
   const backfill = readFileSync(new URL('../migrations/0006_backfill_reader_kind.sql', import.meta.url), 'utf8');
-  const lists = [...backfill.matchAll(/asn IN \(([^)]*)\)/g)].map(match =>
+  const originalLists = [...backfill.matchAll(/asn IN \(([^)]*)\)/g)].map(match =>
     match[1].split(',').map(value => Number(value.trim())).filter(Number.isFinite).sort((a, b) => a - b),
   );
-  assert.equal(lists.length, 2);
-  for (const list of lists) assert.deepEqual(list, [...HOSTING_ASNS].sort((a, b) => a - b));
+  assert.equal(originalLists.length, 2);
+  assert.deepEqual(originalLists[0], originalLists[1]);
+
+  const migration = readFileSync(
+    new URL('../migrations/0008_owner_clients_and_network_reclassification.sql', import.meta.url),
+    'utf8',
+  );
+  const additionLists = [...migration.matchAll(/WHERE asn IN \(([^)]*)\)/g)].map(match =>
+    match[1].split(',').map(value => Number(value.trim())).filter(Number.isFinite).sort((a, b) => a - b),
+  );
+  assert.equal(additionLists.length, 1);
+  const originalSet = new Set(originalLists[0]);
+  assert.deepEqual(
+    additionLists[0],
+    [...HOSTING_ASNS].filter((asn) => !originalSet.has(asn)).sort((a, b) => a - b),
+  );
+  assert.deepEqual(
+    [...new Set([...originalLists[0], ...additionLists[0]])].sort((a, b) => a - b),
+    [...HOSTING_ASNS].sort((a, b) => a - b),
+  );
+  const archiverAsns = [...migration.matchAll(/WHERE asn = (\d+)/g)]
+    .map((match) => Number(match[1])).sort((a, b) => a - b);
+  assert.deepEqual(archiverAsns, [...ARCHIVER_NETWORKS.keys()].sort((a, b) => a - b));
+  assert.equal((migration.match(/observed_at < '2026-09-04 00:00:00'/g) ?? []).length, 2);
 });
 
 test('SQL reader-kind backfill uses the same closed-set mapping as ingestion', () => {

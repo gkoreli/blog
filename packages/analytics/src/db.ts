@@ -4,6 +4,7 @@ import type { ReaderKind } from './readerkind.js';
 export interface Env {
   DB: D1Database;
   ANALYTICS_HASH_KEY: string;
+  ADMIN_SECRET?: string;
   OWNER_IPS?: string;
 }
 

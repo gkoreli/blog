@@ -1,6 +1,6 @@
 # @gkoreli/analytics
 
-Edge-observed, cookieless page analytics for gkoreli.com, running in a Cloudflare Worker with D1. This README is the reference version of the classification rules. The article [How I Separate Readers from Bots on a Static Blog Without JavaScript](https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript) explains them for a general reader, and the decision records are ADR-0016 through ADR-0016.3 in `docs/adr/`.
+Edge-observed, cookieless page analytics for gkoreli.com, running in a Cloudflare Worker with D1. This README is the reference version of the classification rules. The article [How I Separate Readers from Bots on a Static Blog Without JavaScript](https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript) explains them for a general reader, and the decision records are ADR-0016 through ADR-0016.4 in `docs/adr/`.
 
 Zero runtime dependencies. MIT.
 
@@ -31,7 +31,7 @@ Twelve kinds, one per row, each a fact about the request (`contracts.ts`, `READE
 | Crawlers | `ai-search` | OAI-SearchBot, Claude-SearchBot, PerplexityBot, MistralAI-Index, Amzn-SearchBot, Meta-WebIndexer, Applebot | the agent name |
 | Crawlers | `ai-crawler` | GPTBot, ClaudeBot, MistralAI-Training, Meta-ExternalAgent, Amazonbot, CCBot, Google-CloudVertexBot, Bytespider, PetalBot, Cohere-AI | the agent name |
 | Crawlers | `search-crawler` | Googlebot, Bingbot, DuckDuckBot, YandexBot, Baiduspider | the agent name |
-| Crawlers | `preview-or-feed` | FacebookBot, LinkedInBot, Slackbot | the agent name |
+| Crawlers | `preview-or-feed` | FacebookBot, LinkedInBot, Slackbot; or an unnamed request from an archiver network | the agent name or `archiver-asn:<asn>` |
 | Automation | `headless-browser` | `HeadlessChrome/`, `Cypress/`, `Lightpanda/` in the User-Agent | the token |
 | Automation | `other-bot` | any other bot-class match, including generic tokens | rule name or `generic-bot` |
 | Automation | `cloud-browser` | browser User-Agent from a network in `networks.ts`, checked before request shape | `hosting-asn:<asn>` |
@@ -39,13 +39,13 @@ Twelve kinds, one per row, each a fact about the request (`contracts.ts`, `READE
 | Automation | `legacy-browser` | no `Sec-Fetch-Mode` and a User-Agent that predates Fetch Metadata or cannot be versioned | `pre-fetch-metadata-ua` |
 | Browsers | `browser` | navigation-shaped request from outside hosting networks; or a beacon-era row; or a pre-evidence edge row | `navigation-shaped`, `beacon-script-ran`, `user-agent-only` |
 
-Order of evaluation: verified signature, named agent rules, headless tokens, bot class, then the hosting network, then the beacon and pre-evidence cases, then request shape. The network runs before shape because, in a three-day sample of the site's raw logs, the largest single cluster (374 of 844 page loads) was navigation-shaped traffic from Google Cloud that passed every header check.
+Order of evaluation: verified signature, named agent rules, headless tokens, archiver network for unnamed requests, bot class, beacon and pre-evidence cases, hosting network, then request shape. The hosting network runs before shape because, in a three-day sample of the site's raw logs, the largest single cluster (374 of 844 page loads) was navigation-shaped traffic from Google Cloud that passed every header check.
 
 "Navigation-shaped" means `Sec-Fetch-Mode: navigate`, `Sec-Fetch-Dest: document`, an `Accept` that admits HTML, and an `Accept-Language`. `Sec-Fetch-User` is never required: Safari has never sent it.
 
 ## The two rules that matter most
 
-**Hosting network is a verdict on its own.** `networks.ts` lists 23 hosting providers, each verified against Team Cymru whois on the date recorded. It deliberately excludes AS15169 Google, AS13335 Cloudflare, AS36183 and AS20940 Akamai, and AS54113 Fastly, which carry iCloud Private Relay, Cloudflare WARP, and consumer services; and it excludes networks that sell consumer VPN exits (AS9009 M247, AS60068 and AS212238 Datacamp, AS210558 1337 Services), because the network alone would convict a person on a VPN. Public "datacenter" lists were checked and rejected for containing those networks (research artifact 04). The analytics tests assert that the migration backfill inlines exactly this list.
+**Hosting network is a verdict on its own.** `networks.ts` lists 28 hosting providers, each verified against Team Cymru whois on the date recorded. It deliberately excludes AS15169 Google, AS13335 Cloudflare, AS36183 and AS20940 Akamai, and AS54113 Fastly, which carry iCloud Private Relay, Cloudflare WARP, and consumer services; and it excludes networks that sell consumer VPN exits (AS9009 M247, AS60068 and AS212238 Datacamp, AS210558 1337 Services), because the network alone would convict a person on a VPN. ADR-0016.4 also refuses AS6939 Hurricane Electric because people use its free IPv6 tunnel broker, handles AS7941 Internet Archive through the archiver rule, and leaves AS46997 Black Mesa unclassified because one request did not establish what the network carries. Public "datacenter" lists were checked and rejected for containing those networks (research artifact 04). The analytics tests assert that migrations 0006 and 0008 together inline exactly the current list.
 
 **Fetch Metadata absence is a verdict only against a version that sends it.** `claimsFetchMetadataBrowser()` in `readerkind.ts` reads the engine version from the User-Agent: Chromium 76 and later (2019, including Android WebView), Firefox 90 and later (2021), WebKit 16.4 and later (2023, including WKWebView). Sources: caniuse (95.72% global support), Chromium's intent to ship, Privacy Browser issue 495 confirming WebView, and mdn/browser-compat-data issue 27928, a 2025 production measurement finding `Sec-Fetch-Mode` from iOS WebView in the millions. Older or unreadable claims become `legacy-browser`, neither readers nor automation. Research artifact 09 holds the reasoning.
 
@@ -63,7 +63,9 @@ Method changes are dated boundaries, never deletions.
 
 ## Public API
 
-`GET /api/stats?range=7d|30d|90d|all&traffic=browser|agents|crawlers|automation|all&path=/slug&agent=<rule name>&kind=<reader kind>`. `path`, `agent`, and `kind` scope every panel; combinations whose kind lies outside the chosen group return 400. The response carries totals, per-path, per-country, per-referrer, per-device, per-agent, and per-kind-and-reason aggregates over exact UTC windows.
+`GET /api/stats?range=7d|30d|90d|all&traffic=browser|agents|crawlers|automation|all&path=/slug&agent=<rule name>&kind=<reader kind>`. `path`, `agent`, and `kind` scope every panel; combinations whose kind lies outside the chosen group return 400. The response carries totals, per-path, per-country, per-referrer, per-device, per-agent, and per-kind-and-reason aggregates over exact UTC windows. Every query excludes rows marked by `is_owner` at ingestion and daily client IDs recorded in `owner_clients`.
+
+`POST /api/owner` records the authenticated caller's daily client ID in `owner_clients`. It uses `Authorization: Bearer <ADMIN_SECRET>` and the same site, UTC date, IP, User-Agent, and HMAC secret as ingestion. A mark covers one browser, address, and UTC day; a changed address needs another call.
 
 ## Development
 

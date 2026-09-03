@@ -1,4 +1,5 @@
 import {
+  handleOwner,
   handleStats,
   observePageResponse,
   type Env as AnalyticsEnv,
@@ -189,6 +190,9 @@ export default {
 
     if (pathname === '/api/stats' && method === 'GET') {
       return handleStats(request, env);
+    }
+    if (pathname === '/api/owner') {
+      return handleOwner(request, env);
     }
     if (pathname === '/api/client-error' && method === 'POST') {
       return handleClientError(request, env, ctx);

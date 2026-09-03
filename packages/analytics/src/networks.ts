@@ -10,9 +10,14 @@
 // reason. Automation from those networks is still caught by the request-shape
 // and Fetch Metadata rules in readerkind.ts.
 //
+// ADR-0016.4 also refuses three networks observed on 2026-09-03: AS6939
+// Hurricane Electric is transit plus a free IPv6 tunnel broker used by real
+// people; AS7941 Internet Archive is an archiver and is handled separately;
+// AS46997 Black Mesa produced one request and its business is unclear.
+//
 // Every entry is verified against Team Cymru whois (`whois -h whois.cymru.com
-// " -v AS<n>"`) on checkedOn. Migration 0006 inlines the same numbers; the
-// analytics test suite asserts the two lists match.
+// " -v AS<n>"`) on checkedOn. Migrations 0006 and 0008 inline the same numbers;
+// the analytics test suite asserts the combined lists match.
 
 export const HOSTING_NETWORKS = [
   { asn: 16509, provider: 'Amazon Web Services', checkedOn: '2026-09-02' },
@@ -38,6 +43,11 @@ export const HOSTING_NETWORKS = [
   { asn: 30058, provider: 'FDCservers', checkedOn: '2026-09-03' },
   { asn: 211590, provider: 'Bucklog', checkedOn: '2026-09-03' },
   { asn: 18779, provider: 'EGIHosting', checkedOn: '2026-09-03' },
+  { asn: 29802, provider: 'Hivelocity', checkedOn: '2026-09-03' },
+  { asn: 64267, provider: 'Sprious (Rayobyte)', checkedOn: '2026-09-03' },
+  { asn: 150436, provider: 'Byteplus', checkedOn: '2026-09-03' },
+  { asn: 59711, provider: 'HZ Hosting', checkedOn: '2026-09-03' },
+  { asn: 25820, provider: 'IT7 Networks', checkedOn: '2026-09-03' },
 ] as const;
 
 export const HOSTING_ASNS: ReadonlySet<number> = new Set(
@@ -46,4 +56,12 @@ export const HOSTING_ASNS: ReadonlySet<number> = new Set(
 
 export function isHostingAsn(asn: number | null): boolean {
   return asn !== null && HOSTING_ASNS.has(asn);
+}
+
+export const ARCHIVER_NETWORKS: ReadonlyMap<number, string> = new Map([
+  [7941, 'internet-archive'],
+]);
+
+export function isArchiverAsn(asn: number | null): boolean {
+  return asn !== null && ARCHIVER_NETWORKS.has(asn);
 }
