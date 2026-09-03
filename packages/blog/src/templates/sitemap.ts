@@ -23,6 +23,5 @@ ${url('/oss-radar')}
 ${postUrls.join('\n')}
 ${url('/about')}
 ${url('/privacy')}
-${url('/license')}
 </urlset>`;
 }
