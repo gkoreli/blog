@@ -80,7 +80,7 @@ Mistral's documentation says the fetcher "handles user actions in Vibe" and is "
 
 DuckDuckGo's duck.ai fetched its probe URL once, from an Azure address inside DuckDuckGo's [published list](https://duckduckgo.com/duckassistbot.html), with the documented `DuckAssistBot/1.2` User-Agent and `Accept: */*`. Then it did something no other fetcher in this study did. It signed the request:
 
-```http
+```text
 signature-agent: "https://assistbot.duckduckgo.com"
 signature-input: sig1=("@authority" "signature-agent");created=1788411572;expires=1788412172;keyid="Ov3HDsa8JQ39dPEYFvFFN-cUpnz9yNI8LDvr-5LeiBM";alg="ed25519";tag="web-bot-auth"
 signature: sig1=:NBrgbVdKFeZEFLnpQx0osM5xAZ5wfGP1TBvYC2NBrYycNLKuX7EU+lsLxylIYn8A0f3zshL8IZRdP+fj3VkzBA==:
