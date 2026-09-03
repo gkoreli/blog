@@ -1,4 +1,5 @@
-import type { DeviceType, Representation, TrafficClass } from './contracts.js';
+import type { DeviceType, Representation, SignatureStatus, TrafficClass } from './contracts.js';
+import type { ReaderKind } from './readerkind.js';
 
 export interface Env {
   DB: D1Database;
@@ -24,6 +25,10 @@ export interface PageObservation {
   acceptsHtml: number | null;
   hasAcceptLanguage: number;
   representation: Representation;
+  signatureAgent: string | null;
+  signatureStatus: SignatureStatus | null;
+  readerKind: ReaderKind;
+  readerReason: string;
   observedAt: string;
 }
 
@@ -45,8 +50,12 @@ const INSERT_OBSERVATION = `INSERT INTO page_observations (
   accepts_html,
   has_accept_language,
   representation,
+  signature_agent,
+  signature_status,
+  reader_kind,
+  reader_reason,
   observed_at
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
 export async function recordPageObservation(db: D1Database, observation: PageObservation): Promise<void> {
   await db.prepare(INSERT_OBSERVATION).bind(
@@ -67,6 +76,10 @@ export async function recordPageObservation(db: D1Database, observation: PageObs
     observation.acceptsHtml,
     observation.hasAcceptLanguage,
     observation.representation,
+    observation.signatureAgent,
+    observation.signatureStatus,
+    observation.readerKind,
+    observation.readerReason,
     observation.observedAt,
   ).run();
 }

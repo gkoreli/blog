@@ -48,6 +48,8 @@ export function privacyPage() {
 
   <h2>Contact</h2>
 
-  <p>Questions? Reach out on <a ${ext('https://x.com/GogaKoreli')}>X</a> or <a ${ext('https://www.linkedin.com/in/goga-koreli/')}>LinkedIn</a>. <a href="/license">License</a>.</p>
+  <p>Questions? Reach out on <a ${ext('https://x.com/GogaKoreli')}>X</a> or <a ${ext('https://www.linkedin.com/in/goga-koreli/')}>LinkedIn</a>.</p>
+
+  <p>The license for everything published here is on the <a href="/license">license page</a>.</p>
 </article>`;
 }

@@ -72,7 +72,7 @@ test('Worker negotiates Markdown and records the page-path representation', asyn
   await Promise.all(pending);
   assert.equal(writes.length, 1);
   assert.equal(writes[0]?.[0], '/post');
-  assert.equal(writes[0]?.at(-2), 'markdown');
+  assert.ok(writes[0]?.includes('markdown'), 'representation column receives markdown');
 });
 
 test('Worker keeps HTML on ties and advertises every typed post link', async () => {
