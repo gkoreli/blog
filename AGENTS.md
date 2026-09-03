@@ -77,7 +77,7 @@ Recorded verbatim; it binds every article and every skill that touches prose (`p
 
 Research-heavy collaborative posts may publish a `researchFootprint` beside their raw prompts. This is provenance, not a quality badge. The compact article header may show the measured token total; the transparency page must show human prompts, sessions, committed artifacts, wall-clock window, token breakdown, methodology, limitations, and the public research directory.
 
-Use `packages/blog/scripts/research-footprint.ts` for Codex cumulative logs and `packages/blog/scripts/omp-research-footprint.ts` for OMP per-response logs. Never hand-count sessions or mix cumulative and per-response usage models.
+Use `packages/blog/scripts/research-footprint.ts` for Codex cumulative logs and for Claude Code transcripts (`--claude-transcript <~/.claude/projects/<project>/<sessionId>.jsonl>`; the script includes that session's `subagents/agent-*.jsonl` logs itself, counts one usage per API `message.id` because Claude Code repeats a message's usage on every content-block record, and reads reasoning from `output_tokens_details.thinking_tokens`). Use `packages/blog/scripts/omp-research-footprint.ts` for OMP per-response logs. Shared types, schemas and helpers live in `packages/blog/scripts/research-footprint.models.ts`. Never hand-count sessions or mix cumulative and per-response usage models, and do not write a new footprint script for a log format the existing ones already read.
 
 Deterministic rule:
 

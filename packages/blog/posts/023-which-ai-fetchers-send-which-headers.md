@@ -10,6 +10,18 @@ series:
   id: "measurement-boundaries"
   title: "Measurement boundaries"
   order: 3
+researchFootprint:
+  sessions: 4
+  artifacts: 4
+  totalTokens: 33423711
+  inputTokens: 33255534
+  cachedInputTokens: 32600001
+  outputTokens: 168177
+  reasoningOutputTokens: 0
+  wallClockMinutes: 111
+  startedAt: "2026-09-03T03:44:10.071Z"
+  measuredAt: "2026-09-03T05:34:14.932Z"
+  provenanceUrl: "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/ai-fetcher-headers"
 ---
 
 # Which AI Fetchers Send Which Headers, Measured on a Live Site
