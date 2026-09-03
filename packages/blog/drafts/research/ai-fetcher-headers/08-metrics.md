@@ -12,24 +12,27 @@ Published 2026-09-03 ~06:00 UTC. Snapshot taken 16:30 UTC (about +10h) from the 
 | Automation | `cloud-browser`, `headless-browser`, `http-client`, `other-bot`, `legacy-browser` | 782 | 475 |
 | **All** | | **879** | **555** |
 
-So 4.8% of the requests for this article are in the Browsers class. The largest single group is `legacy-browser` (207 views, a UA claiming an engine older than the Fetch Metadata versions), then `other-bot` (136), `http-client` (147 across two reasons) and `cloud-browser` (285 across fifteen hosting networks, led by Amazon, DigitalOcean and AWS ranges).
+So 4.8% of the requests for this article are in the Browsers class as the page counted it, and about 2.4% are plausible readers once the author and the infrastructure are removed (see the row-level read below). The largest single group is `legacy-browser` (207 views, a UA claiming an engine older than the Fetch Metadata versions), then `other-bot` (136), `http-client` (147 across two reasons) and `cloud-browser` (285 across fifteen hosting networks, led by Amazon, DigitalOcean and AWS ranges).
 
 Named agents and crawlers on the article in the same window: FacebookBot 21, YandexBot 10, HeadlessChrome 7, Bytespider 4, ChatGPT-User 4, Googlebot 3, Applebot 2, and one each of Bingbot, Claude-User, ClaudeBot, DuckAssistBot (the signed one), GPTBot, LinkedInBot, Meta-ExternalAgent, OAI-SearchBot, PerplexityBot, Slackbot. A second `signed-agent` row appeared that was not part of the study: `https://crawler.exa.ai`, verified by the Worker.
 
-## Are the 42 people?
+## Are the 42 people? Read row by row, about half
 
-Evidence that most are:
+The public number was 42 in the Browsers class. Reading all 42 rows in D1 against RIPEstat registry holders, on 2026-09-03 at 17:00 UTC:
 
-- **18 of the 42 carry a referrer**, and every referrer is consistent with a person following a link: `news.ycombinator.com` 8, `hnagg.com` 4 (an HN mirror, "HNAgg — Top Hacker News Stories"), `google.com` 2, `uniuit.com` 2, `hacker-news.firebaseio.com` 1, `t.co` 1.
-- **The hourly shape matches the two submissions.** Goga posted to X at 2026-09-03 06:00 UTC and submitted to Hacker News at 06:15:14 UTC (item 49546499). Views by hour: 05:00 → 3, 06:00 → 24 (20 distinct clients), 07:00 → 9, 08:00 → 2, then 1–2 per hour into the afternoon. Automated traffic in the same window carries no referrer and no such decay.
-- **32 distinct daily clients for 42 views**, about 1.3 requests each, which is what one-visit reading looks like.
-- Countries: US 23, then China 3, Germany 2, France 2, UK 2, Singapore 2, and single views from Canada, Chile, Denmark, Hong Kong, India, Iraq, Japan, South Korea.
+| Group | Rows | Detail |
+|---|---:|---|
+| The author | 7 | AS62887 WhiteSky, a single daily client id, 05:06 to 06:37 UTC, including the click on his own X link at 06:00:27. Owner exclusion is an exact match against a static IP list and his address is dynamic, so his own reading was published as audience |
+| Infrastructure, not readers | 14 | Internet Archive (AS7941) ×2 at 06:16:01 and 06:16:04, four seconds apart, right after the Hacker News submission; Hivelocity (AS29802) ×4, two pairs at exactly 06:20:00 and exactly 07:25:00 from one client id with referrer `hnagg.com`; Sprious/Rayobyte (AS64267) ×1 with referrer `hacker-news.firebaseio.com`, a JSON API host no browser sends as a referer; Byteplus (AS150436) ×2 in the same second from two client ids; HZ Hosting (AS59711) ×1; IT7 Networks (AS25820) ×1; Black Mesa (AS46997) ×1; Hurricane Electric (AS6939) ×2 |
+| Plausible readers | 21 | Consumer, mobile and university networks: Charter, Comcast ×2, Cox, Windstream, TELUS, Vodafone Germany, Vodafone UK, Free SAS, Virgin Media, RWTH Aachen (mobile), Atria Convergence, China Mobile, China Telecom Tianjin ×2 (mobile), SK Broadband, HGC, NETV, Hulum Almustakbal, Akamai (mobile), and two small ASNs in Japan and France |
 
-What cannot be claimed:
+Eleven of the twenty-one plausible readers carry a `news.ycombinator.com` referrer, two came from Google, and two from `hnagg.com`. The rest arrived with no referrer.
 
-- **24 of the 42 have no referrer at all.** That is the uncertain part, and it is exactly where this article's own finding lands: an anonymous Grok fetch, or any proxied client with full browser headers on a consumer network, is stored in the `browser` class and is indistinguishable from a person at the request level. None of the study's own probe traffic hit this path, but the class cannot exclude that traffic in general.
-- `uniuit.com` is the corporate site of a Chinese company and is not an obvious link source; two views referred from it are unexplained.
-- The Browsers class is not "verified human" and the stats page does not call it that.
+**The honest number for this article's first ten hours is about 21 people, not 42.** Neither number is verified: the twenty-one are inferred from consumer networks, browser-shaped requests and plausible referrers, which is the ceiling of what request evidence can establish. This article's own finding applies here too, since an anonymous Grok fetch or any proxied browser-shaped client on a consumer network would sit in exactly this group.
+
+Two names in the rows are wrong in a way worth recording: Cloudflare's `as_org` printed `Chiron Software LLC` where the registry says Cox Communications, and `AviationAI` where the registry says Comcast. That is the same block-organisation mismatch the article documents for nine of sixteen Grok exits, appearing now in the site's own stats page.
+
+The three defects behind the over-count are recorded in `docs/adr/0016.4-owner-exclusion-and-network-evidence.md` and implemented under TASK-0117: owner marking that does not depend on an address, five hosting networks added, and archivers named as archivers.
 
 ## Distribution results so far
 
@@ -43,10 +46,11 @@ What cannot be claimed:
 
 ## Read against the lane's premise
 
-The lane bets that reference pages earn links. At +10h this page has one self-submitted HN entry with one point and no external comments, and its first-day audience is 4.8% browser-class requests against 89% automation-class. That is a small sample and a single day; the +24h and +7d snapshots go below. It is also the first data point that the article's own thesis applies to the article: most of what requested this page was not a person, and the honest number is a lower bound.
+The lane bets that reference pages earn links. At +10h this page has one self-submitted HN entry with one point and no external comments, and about twenty-one plausible readers against 872 requests. That is a small sample and a single day; the +24h and +7d snapshots go below. It is also the first data point that the article's own thesis applies to the article: most of what requested this page was not a person, and the honest number is a lower bound.
 
 | Snapshot | Date | Browsers | Agents | Crawlers | Automation | All |
 |---|---|---:|---:|---:|---:|---:|
-| +10h | 2026-09-03 16:30 UTC | 42 | 7 | 48 | 782 | 879 |
+| +10h as the stats page showed it | 2026-09-03 16:30 UTC | 42 | 7 | 48 | 782 | 879 |
+| +10h as the rows support | 2026-09-03 17:00 UTC | ~21 | 7 | 50 | 794 | 872 |
 | +24h | owed 2026-09-04 | | | | | |
 | +7d | owed 2026-09-10 | | | | | |
