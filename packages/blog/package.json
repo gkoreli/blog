@@ -6,10 +6,11 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/pipeline/dev.ts",
-    "build": "tsx src/pipeline/prod.ts",
-    "validate": "tsx src/pipeline/validate.ts",
+    "build": "node --import tsx src/pipeline/prod.ts",
+    "validate": "node --import tsx src/pipeline/validate.ts",
+    "test": "node --test test/*.test.ts",
     "serve": "pnpm dlx serve dist",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit && tsc -p src/worker/tsconfig.json"
   },
   "dependencies": {
     "@gkoreli/analytics": "workspace:*",
