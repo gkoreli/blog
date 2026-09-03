@@ -1,0 +1,243 @@
+# Probe captures: full request headers seen by the gkoreli.com Worker
+
+Method: `wrangler tail --format json` on the production Worker (`gkoreli-com`) while each assistant was asked, in a fresh chat, to open a unique URL of the form `https://gkoreli.com/does-llms-txt-work?probe=<name>` and quote the H1. Attribution is by the unique query string: only the named assistant was ever given that URL. Captured 2026-09-03 03:55–04:30 UTC. Client IPs are shown only when they fall inside a vendor-published IP list; otherwise the ASN, organisation and country stand in for the address.
+
+Cloudflare-added headers (`cf-*`, `x-real-ip`, `x-forwarded-proto`, `host`, `connection`) are omitted. Header names are as received (lower-cased by the runtime). Header order is not preserved by the tail event.
+
+## `hdr1` — 2026-09-03 03:55:12 UTC
+
+- Network: AS62887 WhiteSky Communications, LLC., country US, Cloudflare colo SEA
+- IP in a vendor list: no
+- Protocol: HTTP/2, TLSv1.3, ClientHello length 312, cipher-set hash `eDGmD1H99AwNYzOR+7eoGLo6eLU=`, extension-set hash `Ub+nUmIm1U57hdNSUph0R+kx9Gc=`
+
+```http
+accept: text/markdown, text/html;q=0.9
+accept-encoding: gzip, br
+user-agent: ProbeAgent/1.0 (+headers-test)
+```
+
+## `claudecode-webfetch` — 2026-09-03 03:56:50 UTC
+
+- Network: AS62887 WhiteSky Communications, LLC., country US, Cloudflare colo SEA
+- IP in a vendor list: no
+- Protocol: HTTP/1.1, TLSv1.3, ClientHello length 1463, cipher-set hash `tLt94YkR/yUiWQeOc4ow07DiA9U=`, extension-set hash `IDS2jshLLK/HGrjct4bpWAlzt4s=`
+
+```http
+accept: text/markdown, text/html, */*
+accept-encoding: gzip, br
+user-agent: Claude-User (claude-code/2.1.259; +https://support.anthropic.com/)
+```
+
+## `chatgpt` — 2026-09-03 03:57:28 UTC
+
+- Network: AS8075 Microsoft Limited, country US, Cloudflare colo DFW
+- IP in a vendor list: chatgpt-user.json (9.129.45.186)
+- Protocol: HTTP/2, TLSv1.3, ClientHello length 508, cipher-set hash `xWtDJfIZGwhhu4n0y6l7XO1WR6E=`, extension-set hash `XXH8ek08xcXyrTOoqPlimHTPPeA=`
+
+```http
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, br
+accept-language: en-US,en;q=0.9
+user-agent: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot
+x-envoy-expected-rq-timeout-ms: 15000
+x-request-id: 2282895d-ebc7-4653-a7b7-d1cd1af59a97
+```
+
+## `claude` — 2026-09-03 03:58:09 UTC
+
+- Network: AS396982 Google LLC, country US, Cloudflare colo IAD
+- IP in a vendor list: bots.json (34.162.230.222)
+- Protocol: HTTP/1.1, TLSv1.3, ClientHello length 1533, cipher-set hash `EPPWGkMwL/+VHBbDlFeYFF2S3W0=`, extension-set hash `L9gAwdYM96wD8xcublQ4JrojsbM=`
+
+```http
+accept: */*
+accept-encoding: gzip, br
+user-agent: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +claude-user@anthropic.com)
+```
+
+## `gemini` — 2026-09-03 04:01:10 UTC
+
+- Network: AS15169 Google LLC, country US, Cloudflare colo SEA
+- IP in a vendor list: no
+- Protocol: HTTP/1.1, TLSv1.3, ClientHello length 508, cipher-set hash `bzIoN6qRA6M2nUZwCJMACbyhX1o=`, extension-set hash `Jz9AFu9xkdMiuJ0go+66sSsnkzI=`
+
+```http
+accept: */*
+accept-encoding: gzip, br
+user-agent: Google
+```
+
+## `grok` — 2026-09-03 04:03:18 UTC
+
+- Network: AS3257 Web2Objects LLC, country US, Cloudflare colo IAD
+- IP in a vendor list: no
+- Protocol: HTTP/2, TLSv1.3, ClientHello length 508, cipher-set hash `fkGCT0aGJcgmlIuI8JlWO23naXc=`, extension-set hash `x5kvOkv0ePZWWisPP4F6kJmrcas=`
+
+```http
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+accept-encoding: gzip, br
+accept-language: en-US,en;q=0.9
+priority: u=0, i
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.2 Safari/605.1.15
+```
+
+## `grok` — 2026-09-03 04:03:18 UTC
+
+- Network: AS9009 Aventice LLC, country US, Cloudflare colo EWR
+- IP in a vendor list: no
+- Protocol: HTTP/2, TLSv1.3, ClientHello length 508, cipher-set hash `L75k4jpt96L/qk+PIP9rclcgEWo=`, extension-set hash `2VR9GbMHtODE3OCf3nCzwZh42sY=`
+
+```http
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+accept-encoding: gzip, br
+accept-language: en-US,en;q=0.9
+priority: u=0, i
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.2 Safari/605.1.15
+```
+
+## `grok` — 2026-09-03 04:03:18 UTC
+
+- Network: AS262988 Pombonet Telecomunicações e Informática, country BR, Cloudflare colo GRU
+- IP in a vendor list: no
+- Protocol: HTTP/2, TLSv1.3, ClientHello length 1744, cipher-set hash `nWmr2CuvhM3+1BAitb/WHA2q9wk=`, extension-set hash `aoHP2nGxU62Jhn0w0NRWRqHREJA=`
+
+```http
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, br
+accept-language: en-US,en;q=0.9
+priority: u=0, i
+sec-ch-ua: "Chromium";v="143", "Google Chrome";v="143", "Not_A Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36
+```
+
+## `grok` — 2026-09-03 04:03:18 UTC
+
+- Network: AS132817 DZCRD Networks Ltd, country NL, Cloudflare colo AMS
+- IP in a vendor list: no
+- Protocol: HTTP/2, TLSv1.3, ClientHello length 1744, cipher-set hash `omXii3/A8TcEoK4v8ABTAazY/ao=`, extension-set hash `JKwAowKsufW9uUCZF8Jzhdmf+CE=`
+
+```http
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, br
+accept-language: en-US,en;q=0.9
+priority: u=0, i
+sec-ch-ua: "Chromium";v="143", "Google Chrome";v="143", "Not_A Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36
+```
+
+## `grok` — 2026-09-03 04:03:18 UTC
+
+- Network: AS13280 Three Ireland (Hutchison) - Mobile Subscriber Pools, country IE, Cloudflare colo DUB
+- IP in a vendor list: no
+- Protocol: HTTP/2, TLSv1.3, ClientHello length 1776, cipher-set hash `TkWWX+BVdX+teLUyccOBfetwATE=`, extension-set hash `PpQ+4jReWui/uY9EYsPN7QgvB1A=`
+
+```http
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, br
+accept-language: en-US,en;q=0.9
+priority: u=0, i
+sec-ch-ua: "Chromium";v="143", "Google Chrome";v="143", "Not_A Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36
+```
+
+## `grok` — 2026-09-03 04:03:19 UTC
+
+- Network: AS212238 Private Customer, country ZA, Cloudflare colo JNB
+- IP in a vendor list: no
+- Protocol: HTTP/2, TLSv1.3, ClientHello length 1744, cipher-set hash `j7bXVc3l/qer8FRj2aEiq0rx1ro=`, extension-set hash `w4Ao2Pbq5wM/woOdsdjJHiurlBE=`
+
+```http
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, br
+accept-language: en-US,en;q=0.9
+priority: u=0, i
+sec-ch-ua: "Chromium";v="143", "Google Chrome";v="143", "Not_A Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36
+```
+
+## `grok` — 2026-09-03 04:03:22 UTC
+
+- Network: AS7979 Servers.com, Inc., country US, Cloudflare colo DFW
+- IP in a vendor list: no
+- Protocol: HTTP/2, TLSv1.3, ClientHello length 1744, cipher-set hash `omXii3/A8TcEoK4v8ABTAazY/ao=`, extension-set hash `IfNKXQ4UGELyGebn4amB6YqYlTE=`
+
+```http
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, br
+accept-language: en-US,en;q=0.9
+priority: u=0, i
+sec-ch-ua: "Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36
+```
+
+## `grok` — 2026-09-03 04:03:30 UTC
+
+- Network: AS398781 Private Customer, country US, Cloudflare colo IAD
+- IP in a vendor list: no
+- Protocol: HTTP/2, TLSv1.3, ClientHello length 1808, cipher-set hash `qUlYa/u1n4QQ0ikv+ReyY9Hq/6I=`, extension-set hash `BnsPmUKHAlb1dswzGAbT+FHdxSY=`
+
+```http
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+accept-encoding: gzip, br
+accept-language: en-US,en;q=0.9
+priority: u=0, i
+sec-ch-ua: "Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36
+```
+
+## `chrome-navigation` — 2026-09-03 04:04:03 UTC
+
+- Network: AS62887 WhiteSky Communications, LLC., country US, Cloudflare colo SEA
+- IP in a vendor list: no
+- Protocol: HTTP/3, TLSv1.3, ClientHello length 1907, cipher-set hash `3HTt3+R/6BL3zeALJDSq0pR1yOQ=`, extension-set hash `Txx+fb+M1qipEsrEeceufQFhtAI=`
+
+```http
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+accept-encoding: gzip, br
+accept-language: en-US,en;q=0.9,ka;q=0.8,ru;q=0.7
+priority: u=0, i
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Google Chrome";v="152"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: cross-site
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36
+```
