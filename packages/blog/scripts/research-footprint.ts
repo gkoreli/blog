@@ -173,17 +173,11 @@ function main(): void {
   if (!allSessions.length) throw new Error('No sessions were included');
   const measuredAt = new Date().toISOString();
   const startedAt = earliestStartedAt(allSessions);
-  const wallClockMinutes = Math.ceil((new Date(measuredAt).getTime() - new Date(startedAt).getTime()) / 60_000);
+  const measuredWallClockMinutes = wallClockMinutes(startedAt, measuredAt);
   const totals = [...codexSources, ...claudeSources].reduce((sum, source) => addTokenTotals(sum, source.totals), emptyTokenTotals());
 
-  const promptsRaw = readFileSync(args.promptsFile, 'utf8');
-  const promptCount = promptsRaw.split(/^---$/m).map(part => part.trim()).filter(Boolean).length;
-  const artifactCount = readdirSync(args.researchDir, { withFileTypes: true }).filter(entry => entry.isFile() && entry.name.endsWith('.md')).length;
-  const repositoryRoot = execFileSync('git', ['-C', args.researchDir, 'rev-parse', '--show-toplevel'], { encoding: 'utf8' }).trim();
-  const researchPathspec = relative(repositoryRoot, args.researchDir);
-  const committedArtifactCount = execFileSync('git', ['-C', repositoryRoot, 'ls-tree', '-r', '--name-only', 'HEAD', '--', researchPathspec], { encoding: 'utf8' })
-    .split('\n')
-    .filter(path => path.endsWith('.md')).length;
+  const promptCount = countPrompts(args.promptsFile);
+  const { artifactCount, committedArtifactCount } = markdownArtifactCounts(args.researchDir);
 
   const sources = [
     ...codexSources.map(source => ({
@@ -229,7 +223,7 @@ function main(): void {
     claudeTranscripts: args.claudeTranscripts,
     startedAt,
     measuredAt,
-    wallClockMinutes,
+    wallClockMinutes: measuredWallClockMinutes,
     sessionCount: allSessions.length,
     promptCount,
     artifactCount,

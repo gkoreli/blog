@@ -126,7 +126,7 @@ export interface UsageEpoch {
 
 export interface CodexSessionRecord {
   id: string;
-  parentId?: string;
+  parentId: string | undefined;
   agentPath: string;
   cwd: string;
   startedAt: string;
@@ -336,7 +336,7 @@ export function readCodexSession(logPath: string, usageCutoffs: Map<string, numb
   if (!firstTokenEvent) {
     return {
       id: meta.payload.id,
-      ...(parentId ? { parentId } : {}),
+      parentId,
       agentPath,
       cwd: meta.payload.cwd,
       startedAt: meta.payload.timestamp,
@@ -368,7 +368,7 @@ export function readCodexSession(logPath: string, usageCutoffs: Map<string, numb
 
   return {
     id: meta.payload.id,
-    ...(parentId ? { parentId } : {}),
+    parentId,
     agentPath,
     cwd: meta.payload.cwd,
     startedAt: meta.payload.timestamp,
