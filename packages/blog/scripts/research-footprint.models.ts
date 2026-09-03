@@ -1,7 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
-import { basename, join, relative } from 'node:path';
+import { basename, join, relative, resolve } from 'node:path';
 import { z } from 'zod/v4';
 
 const nonNegativeInteger = z.number().int().nonnegative();
@@ -620,8 +620,12 @@ export function repositoryRootFor(path: string): string {
 }
 
 export function markdownArtifactCounts(researchDir: string): { artifactCount: number; committedArtifactCount: number } {
-  const artifactCount = readdirSync(researchDir, { withFileTypes: true })
-    .filter(entry => entry.isFile() && entry.name.endsWith('.md')).length;
+  const countMarkdown = (directory: string): number => readdirSync(directory, { withFileTypes: true })
+    .reduce((count, entry) => {
+      if (entry.isDirectory()) return count + countMarkdown(resolve(directory, entry.name));
+      return entry.isFile() && entry.name.endsWith('.md') ? count + 1 : count;
+    }, 0);
+  const artifactCount = countMarkdown(researchDir);
   const repositoryRoot = repositoryRootFor(researchDir);
   const researchPathspec = relative(repositoryRoot, researchDir);
   const committedArtifactCount = execFileSync(

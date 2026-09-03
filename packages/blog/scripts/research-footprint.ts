@@ -266,7 +266,7 @@ function main(): void {
         usageEpochs: [],
         responseCount: session.responseCount,
         duplicateUsageRecordCount: session.duplicateUsageRecordCount,
-        usageNote: 'input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; Claude reasoning tokens are not exposed separately and are reported as 0.',
+        usageNote: 'input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; reasoning output is message.usage.output_tokens_details.thinking_tokens, counted once per API message.',
         usage: session.usage,
       }))),
     ],

@@ -6,21 +6,21 @@
     "/Users/goga/.claude/projects/-Users-goga-Documents-goga-blog/c4b4024b-bce0-4186-9977-c402bd7308c1.jsonl"
   ],
   "startedAt": "2026-09-03T03:44:10.071Z",
-  "measuredAt": "2026-09-03T05:34:14.932Z",
-  "wallClockMinutes": 111,
+  "measuredAt": "2026-09-03T05:55:07.491Z",
+  "wallClockMinutes": 131,
   "sessionCount": 4,
   "promptCount": 13,
-  "artifactCount": 4,
-  "committedArtifactCount": 4,
-  "uncommittedArtifactCount": 0,
+  "artifactCount": 6,
+  "committedArtifactCount": 5,
+  "uncommittedArtifactCount": 1,
   "totals": {
-    "inputTokens": 33255534,
-    "cachedInputTokens": 32600001,
-    "cacheWriteInputTokens": 618007,
-    "outputTokens": 168177,
-    "reasoningOutputTokens": 0,
-    "totalTokens": 33423711,
-    "nonCachedInputTokens": 655533
+    "inputTokens": 40742715,
+    "cachedInputTokens": 40028817,
+    "cacheWriteInputTokens": 670788,
+    "outputTokens": 204345,
+    "reasoningOutputTokens": 45929,
+    "totalTokens": 40947060,
+    "nonCachedInputTokens": 713898
   },
   "sources": [
     {
@@ -28,7 +28,7 @@
       "id": "c4b4024b-bce0-4186-9977-c402bd7308c1",
       "path": "/Users/goga/.claude/projects/-Users-goga-Documents-goga-blog/c4b4024b-bce0-4186-9977-c402bd7308c1.jsonl",
       "startedAt": "2026-09-03T03:44:10.071Z",
-      "usageAt": "2026-09-03T05:33:56.109Z",
+      "usageAt": "2026-09-03T05:54:36.045Z",
       "sessions": [
         "c4b4024b-bce0-4186-9977-c402bd7308c1",
         "c4b4024b-bce0-4186-9977-c402bd7308c1/a0f868f79d7a99c9e",
@@ -36,20 +36,20 @@
         "c4b4024b-bce0-4186-9977-c402bd7308c1/adbae234d85bd994f"
       ],
       "sessionCount": 4,
-      "responses": 289,
+      "responses": 310,
       "epochs": {
         "count": 0,
         "resetCount": 0,
         "note": "Claude usage is per API message, not cumulative; epoch logic does not apply."
       },
       "tokens": {
-        "inputTokens": 33255534,
-        "cachedInputTokens": 32600001,
-        "cacheWriteInputTokens": 618007,
-        "outputTokens": 168177,
-        "reasoningOutputTokens": 0,
-        "totalTokens": 33423711,
-        "nonCachedInputTokens": 655533
+        "inputTokens": 40742715,
+        "cachedInputTokens": 40028817,
+        "cacheWriteInputTokens": 670788,
+        "outputTokens": 204345,
+        "reasoningOutputTokens": 45929,
+        "totalTokens": 40947060,
+        "nonCachedInputTokens": 713898
       }
     }
   ],
@@ -63,22 +63,22 @@
       "startedAt": "2026-09-03T03:44:10.071Z",
       "cwd": "/Users/goga/Documents/goga/blog",
       "log": "c4b4024b-bce0-4186-9977-c402bd7308c1.jsonl",
-      "logBytes": 1948691,
-      "usageRecordLine": 1109,
-      "usageAt": "2026-09-03T05:33:56.109Z",
-      "prefixSha256": "de47f2ff5479f1c631c75033c97a0f3a3e6bf50436b38d5b4e939e6d837bc6a7",
+      "logBytes": 2265754,
+      "usageRecordLine": 1307,
+      "usageAt": "2026-09-03T05:54:36.045Z",
+      "prefixSha256": "e2d085af64f964d72c879b05000cc79c1d202618621e2c757cc99fabf984bde3",
       "usageEpochCount": 0,
       "usageEpochs": [],
-      "responseCount": 108,
-      "duplicateUsageRecordCount": 190,
-      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; Claude reasoning tokens are not exposed separately and are reported as 0.",
+      "responseCount": 129,
+      "duplicateUsageRecordCount": 222,
+      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; reasoning output is message.usage.output_tokens_details.thinking_tokens, counted once per API message.",
       "usage": {
-        "input_tokens": 22001759,
-        "cached_input_tokens": 21678029,
-        "cache_write_input_tokens": 305168,
-        "output_tokens": 162066,
-        "reasoning_output_tokens": 0,
-        "total_tokens": 22163825
+        "input_tokens": 29488940,
+        "cached_input_tokens": 29106845,
+        "cache_write_input_tokens": 357949,
+        "output_tokens": 198234,
+        "reasoning_output_tokens": 45341,
+        "total_tokens": 29687174
       }
     },
     {
@@ -98,13 +98,13 @@
       "usageEpochs": [],
       "responseCount": 86,
       "duplicateUsageRecordCount": 56,
-      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; Claude reasoning tokens are not exposed separately and are reported as 0.",
+      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; reasoning output is message.usage.output_tokens_details.thinking_tokens, counted once per API message.",
       "usage": {
         "input_tokens": 5658164,
         "cached_input_tokens": 5531093,
         "cache_write_input_tokens": 116764,
         "output_tokens": 2627,
-        "reasoning_output_tokens": 0,
+        "reasoning_output_tokens": 231,
         "total_tokens": 5660791
       }
     },
@@ -125,13 +125,13 @@
       "usageEpochs": [],
       "responseCount": 69,
       "duplicateUsageRecordCount": 47,
-      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; Claude reasoning tokens are not exposed separately and are reported as 0.",
+      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; reasoning output is message.usage.output_tokens_details.thinking_tokens, counted once per API message.",
       "usage": {
         "input_tokens": 3924371,
         "cached_input_tokens": 3823080,
         "cache_write_input_tokens": 92686,
         "output_tokens": 2698,
-        "reasoning_output_tokens": 0,
+        "reasoning_output_tokens": 88,
         "total_tokens": 3927069
       }
     },
@@ -152,13 +152,13 @@
       "usageEpochs": [],
       "responseCount": 26,
       "duplicateUsageRecordCount": 55,
-      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; Claude reasoning tokens are not exposed separately and are reported as 0.",
+      "usageNote": "input includes uncached, cache-read, and cache-creation input; cached input is cache-read only; reasoning output is message.usage.output_tokens_details.thinking_tokens, counted once per API message.",
       "usage": {
         "input_tokens": 1671240,
         "cached_input_tokens": 1567799,
         "cache_write_input_tokens": 103389,
         "output_tokens": 786,
-        "reasoning_output_tokens": 0,
+        "reasoning_output_tokens": 269,
         "total_tokens": 1672026
       }
     }

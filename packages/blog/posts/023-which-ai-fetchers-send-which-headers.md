@@ -12,15 +12,15 @@ series:
   order: 3
 researchFootprint:
   sessions: 4
-  artifacts: 4
-  totalTokens: 33423711
-  inputTokens: 33255534
-  cachedInputTokens: 32600001
-  outputTokens: 168177
-  reasoningOutputTokens: 0
-  wallClockMinutes: 111
+  artifacts: 5
+  totalTokens: 40947060
+  inputTokens: 40742715
+  cachedInputTokens: 40028817
+  outputTokens: 204345
+  reasoningOutputTokens: 45929
+  wallClockMinutes: 131
   startedAt: "2026-09-03T03:44:10.071Z"
-  measuredAt: "2026-09-03T05:34:14.932Z"
+  measuredAt: "2026-09-03T05:55:07.491Z"
   provenanceUrl: "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/ai-fetcher-headers"
 ---
 
@@ -178,6 +178,8 @@ Most sites do not write their own classifier. They use a library. So I ran the s
 | Grok, Chrome UA | not a bot | no match | no match | no entry |
 
 Three things fall out. The declared fetchers are named identically everywhere; on ChatGPT-User and Claude-User the open-source consensus and my Worker agree. The bare `Google` string is known to exactly one detector, and that detector files it under Googlebot as search crawling, by a rule added in August 2023, months before the Gemini app existed. So every Matomo installation counts a person reading through Gemini as Google indexing the page. And Grok passes every check, because there is nothing to match: ai.robots.txt, whose whole purpose is to let sites express AI-agent policy in robots.txt, has no xAI entry and cannot have one. GoatCounter's IP-range rules would catch one of the eight exits, the one at Servers.com. Isbot's own pattern for Claude Code, `^claude-code/`, does not match the real string either, which starts with `Claude-User`; the request is caught by a different pattern. Each of those is a pull request I will open with this capture as the evidence, and the results table lives in the research directory with the exact files checked.
+
+The captured strings were also compared with the community's own records. crawler-user-agents stores the exact User-Agents its contributors have seen: ChatGPT-User, MistralAI-User, DuckAssistBot and PerplexityBot match those records byte for byte, which corroborates both sides. The recorded Claude-User instance differs from mine only in the case of the contact token. `Google` has no record anywhere. And the Grok exits were checked against X4BNet's open datacenter list of about forty-three thousand ranges: it flags three of the eight first-run exits and two of the eight second-run exits, none of them the consumer networks. Finally, the well-known signing-key directory was requested on fifteen vendor hosts; only chatgpt.com and assistbot.duckduckgo.com serve one.
 
 ## What this means if you run a site
 
