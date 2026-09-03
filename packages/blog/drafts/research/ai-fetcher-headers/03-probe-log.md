@@ -48,3 +48,17 @@ Prompt: "Please open this exact URL and tell me the HTTP status and the exact te
 | Gemini CLI 0.37.1, `/probe/gemini-cli` (terminal) | 04:56:16 | `IneligibleTierError: This client is no longer supported for Gemini Code Assist for individuals` | none | CLI trigger unavailable on this account tier |
 
 Cross-checks: D1 recorded only the DuckAssistBot row (as `DuckDuckBot`, path `/`) and the operator's own browser in this window; the Worker does not store 404 paths as page observations, so the tail is the record for the path-based probes.
+
+## Third run, 2026-09-03 05:13–05:15 UTC (Goga, logged in to copilot.microsoft.com)
+
+| Service | UTC | Assistant said | Origin requests seen | Notes |
+|---|---|---|---|---|
+| Microsoft Copilot, `/probe/copilot-goga`, two attempts | ~05:14 | "the result was still empty — no HTTP status code, no HTML, no text, no error message … The fetch tool returned an empty result again, which must be treated as final." Offered generic causes (server blocks bots, JS required, unparseable response). | none (tail alive: 93 → 124 events in the window) | logged-in account |
+
+Edge confound check: Cloudflare GraphQL `firewallEventsAdaptive` for the zone, 02:15–05:15 UTC, returned 17 events, all `block` by managed WAF rules (16 × "React - RCE - CVE-2025-55182" on `/` from Amazon addresses, 1 × WordPress file-access rule on `/wp-config.php`). No event for any `/probe/*` path, `/bring-your-own-ai-agent`, or any Microsoft, Perplexity, OpenAI, Anthropic, Google, Mistral or DuckDuckGo network. Therefore the Perplexity, Copilot and Codex "no request" results are not edge blocks. AI Crawl Control state (artifact 07 in readers-vs-bots, same day): every crawler allowed, no block toggles.
+
+Query used (zone:read scope of the wrangler OAuth token suffices):
+
+```graphql
+query($z:String,$s:Time,$u:Time){viewer{zones(filter:{zoneTag:$z}){firewallEventsAdaptive(filter:{datetime_geq:$s,datetime_leq:$u},limit:1000,orderBy:[datetime_DESC]){datetime action clientRequestPath clientRequestQuery userAgent clientASNDescription clientCountryName source ruleId description}}}}
+```

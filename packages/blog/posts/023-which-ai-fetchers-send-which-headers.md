@@ -1,9 +1,9 @@
 ---
 title: "Which AI Fetchers Send Which Headers, Measured on a Live Site"
 seoTitle: "ChatGPT, Claude, Gemini and Grok Fetcher Headers, Measured"
-alternativeHeadline: "The request headers, networks, IP lists and signatures of ChatGPT-User, Claude-User, MistralAI-User, DuckAssistBot, Gemini, Grok, Perplexity, Claude Code and Codex, captured at a Cloudflare Worker"
+alternativeHeadline: "The request headers, networks, IP lists and signatures of ChatGPT-User, Claude-User, MistralAI-User, DuckAssistBot, Gemini, Grok, Perplexity, Copilot, Claude Code and Codex, captured at a Cloudflare Worker"
 date: "2026-09-03"
-description: "What ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, DuckDuckGo, Claude Code and Codex actually send when they fetch a web page: User-Agent, Accept, Fetch Metadata, IP ranges, Web Bot Auth signatures, and who cannot be identified at all. Captured on a live Cloudflare Worker."
+description: "What ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, DuckDuckGo, Claude Code and Codex actually send when they fetch a web page: User-Agent, Accept, Fetch Metadata, IP ranges, Web Bot Auth signatures, and who cannot be identified at all. Captured on a live Cloudflare Worker."
 section: engineering
 tags: [ai-agents, analytics, cloudflare-workers, http, observability, agentic-engineering]
 series:
@@ -14,9 +14,9 @@ series:
 
 # Which AI Fetchers Send Which Headers, Measured on a Live Site
 
-<p class="post-orient">A header-by-header record of what nine AI fetchers sent to one Cloudflare Worker on September 3, 2026, checked against each vendor's own documentation, IP lists and signing keys, with the raw captures published.</p>
+<p class="post-orient">A header-by-header record of what ten AI fetchers sent to one Cloudflare Worker on September 3, 2026, checked against each vendor's own documentation, IP lists and signing keys, with the raw captures published.</p>
 
-When a person asks an AI assistant to read a web page, the assistant sends a request to that page's server. Whether the site owner can tell that request apart from a human visitor depends entirely on what the assistant chooses to put in it. I asked ChatGPT, Claude, Gemini, Grok, Perplexity, Mistral, DuckDuckGo, Claude Code and OpenAI's Codex to each open a unique URL on this site and recorded every header the server saw. Five identify themselves in a way you can verify against a vendor list. One, DuckDuckGo's, goes further and signs every request with a published key, the only fetcher in the set that proves who it is. One identifies itself with a single word that appears in no documentation. Two answered about the page without ever requesting it. And one does not identify itself at all: Grok fetched the page eight times in twelve seconds from eight networks on four continents, including a mobile carrier in Ireland and a home ISP in Brazil, wearing Safari and Chrome headers that pass every browser check my analytics have. A second run an hour later produced eight more, from eight different networks. If you count readers on your own server, those sixteen requests were sixteen people.
+When a person asks an AI assistant to read a web page, the assistant sends a request to that page's server. Whether the site owner can tell that request apart from a human visitor depends entirely on what the assistant chooses to put in it. I asked ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, DuckDuckGo, Claude Code and OpenAI's Codex to each open a unique URL on this site and recorded every header the server saw. Five identify themselves in a way you can verify against a vendor list. One, DuckDuckGo's, goes further and signs every request with a published key, the only fetcher in the set that proves who it is. One identifies itself with a single word that appears in no documentation. Three reported a result about the page without ever requesting it. And one does not identify itself at all: Grok fetched the page eight times in twelve seconds from eight networks on four continents, including a mobile carrier in Ireland and a home ISP in Brazil, wearing Safari and Chrome headers that pass every browser check my analytics have. A second run an hour later produced eight more, from eight different networks. If you count readers on your own server, those sixteen requests were sixteen people.
 
 The findings, each explained below:
 
@@ -27,6 +27,7 @@ The findings, each explained below:
 - **Gemini** sends `User-Agent: Google` and `Accept: */*` from a Google address that is in none of Google's five published crawler and fetcher IP lists, and "Google" matches none of the twelve user-triggered fetchers Google documents.
 - **Grok** sends no token, no signature, and full browser headers from rotating proxy exits, several of them residential or mobile. There is no request fact that separates it from a person. The pattern reproduced exactly on a second run.
 - **Perplexity** reported "HTTP 200 OK" and the correct heading for a real page without any request reaching the origin, and reported a fetch failure for an unknown path, also without a request.
+- **Copilot**, logged in, reported twice that its fetch tool "returned an empty result". No request reached the origin, and Cloudflare's edge firewall log shows nothing was blocked.
 - **Claude Code's fetch tool** runs on the user's own machine, not on Anthropic's, and asks for Markdown before HTML.
 - **Codex's web search** answered correctly about the page without ever requesting it.
 
@@ -46,13 +47,14 @@ Each assistant was given a fresh chat and asked to open a URL unique to it, eith
 | Grok, run 1, 8 requests | Safari 26.2 on macOS (2), Chrome 143 on macOS (5), Chrome 142 (1) | browser-shaped | `en-US,en;q=0.9` | `navigate` / `document` / `none` | 8 ASNs: 3 hosting, 1 mobile carrier, 2 ISPs, 2 "Private Customer" | no | HTTP/2 |
 | Grok, run 2, 8 requests | Safari 26.2 (4), Chrome 143 (2), Chrome 142 (2) | browser-shaped | `en-US,en;q=0.9` | `navigate` / `document` / `none` | 8 different ASNs: 4 hosting or transit, 3 ISPs (two Brazilian, one US), 1 personal ASN | no | HTTP/2 |
 | Perplexity, 5 attempts | no request reached the origin | no request | no request | no request | no request | no request | no request |
+| Copilot, 2 attempts | no request reached the origin | no request | no request | no request | no request | no request | no request |
 | Claude Code | `Claude-User (claude-code/2.1.259; +https://support.anthropic.com/)` | `text/markdown, text/html, */*` | absent | none | my own ISP | not applicable, runs locally | HTTP/1.1 |
 | Codex CLI web search | no request reached the origin | no request | no request | no request | no request | no request | no request |
 | Chrome, human baseline | `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36` | browser-shaped | `en-US,en;q=0.9,ka;q=0.8,ru;q=0.7` | `navigate` / `document` / `cross-site`, plus `Sec-CH-UA`, `Upgrade-Insecure-Requests` | my own ISP | not applicable, a person | HTTP/3 |
 
 "Fetch Metadata" means the `Sec-Fetch-Mode`, `Sec-Fetch-Dest` and `Sec-Fetch-Site` headers that every current browser engine sends on a navigation. Of the declared fetchers only Mistral's first request sends them, which suggests a real browser engine behind that fetch. Grok's requests all do.
 
-One assistant could not be tested. Microsoft Copilot demands a sign-in at both of its entry points and offers no anonymous chat. Everything else was probed without an account except ChatGPT, Claude and Gemini, which used my own logged-in sessions.
+Every assistant in the table was reached. Copilot demands a sign-in and was probed from my own account; ChatGPT, Claude and Gemini also used logged-in sessions; the rest were used anonymously. For every "no request" row I also pulled Cloudflare's firewall event log for the zone over the same hours to make sure the edge had not blocked the fetch before it reached the Worker. It had not: the only blocks in that window were exploit scans against the homepage.
 
 ## ChatGPT-User: the reference behaviour
 
@@ -95,6 +97,10 @@ DuckDuckGo's own documentation for the bot does not mention signing at all. The 
 Perplexity, used without an account, was given five chances. Three times it was asked to open a query-string probe URL and reported that "the page could not be retrieved". Once it was asked to open a plain 404 path and reported "Failed to fetch content". Once it was asked to open a real, existing post with no query string, and it answered "The page returned successfully (HTTP 200 OK)" with the correct H1.
 
 The origin saw none of the five. Not the failures, and not the success. The "200 OK" came from Perplexity's index, and the tool presented an index hit as a live fetch with a status code. Perplexity documents `Perplexity-User` with an IP list, so the fetcher is nameable when it does appear; it simply did not appear for an anonymous session on this site. Whether a logged-in session behaves differently is an open question listed below.
+
+## Copilot: an empty result, twice
+
+Microsoft Copilot, signed in, was asked twice to open its probe URL. Both times it said its fetch tool "returned an empty result" with "no HTTP status code, no HTML, no text, no error message", and it offered the usual explanations: the server blocks automated requests, the page needs JavaScript, the response type could not be parsed. None of those happened. The origin received no request at all, and the zone's edge firewall log for that hour contains no block, challenge, or rate limit for any Copilot, Bing, or Microsoft address. Whatever Copilot's fetch tool does with a URL it has never indexed, it does not fetch it. Microsoft documents `bingbot` and `MicrosoftPreview` but, as far as I can find, no on-demand fetcher for Copilot chat, which is consistent with what the log shows.
 
 ## Gemini: one word, no documentation
 
@@ -162,19 +168,19 @@ This section is for anyone who counts visitors on their own server, whether with
 
 **One cannot be found.** Grok's requests will sit inside your browser count, and inside Cloudflare's, Plausible's, GoatCounter's and everyone else's, until xAI either adds a token or signs its requests. Web Bot Auth is the mechanism that would settle this, and DuckDuckGo's capture shows it is not theoretical: OpenAI's ChatGPT agent, Google's Google-Agent and DuckAssistBot sign today. Anthropic, Perplexity, Mistral and xAI do not. A verified signature is the only header fact that cannot be spoofed by a proxy pool; everything else in this article can be.
 
-**Some reads leave no trace at all.** Index answers like Codex's and Perplexity's never reach you, even when the assistant reports a status code. Your logs are a floor on AI readership, not a measurement of it.
+**Some reads leave no trace at all.** Index answers like Codex's and Perplexity's never reach you, even when the assistant reports a status code, and Copilot's tool reported a result for a page it never asked for. Your logs are a floor on AI readership, not a measurement of it.
 
 **Do not trust your own labels until you have seen the raw requests.** The live version of my Worker at the time of the capture did not yet recognise the `Claude-User` token, so the Claude fetches were stored as browsers with `Accept: */*` and no language header, and it filed DuckAssistBot under `DuckDuckBot`, the search crawler. Both fixes were already merged and not deployed. Header-level captures like these are how you find out your classifier is wrong; aggregate dashboards never tell you.
 
 ## Method and limits
 
-Captures were taken on 2026-09-03 in two runs, 03:55 to 04:05 UTC and 04:55 to 05:05 UTC, with `wrangler tail --format json` against the production Worker for gkoreli.com. Each assistant received a prompt of the form "Please open this exact URL and tell me the exact text of its main heading: <URL>. Do not answer from memory; fetch the page." in a new chat. ChatGPT (Pro), Claude.ai (Max) and Gemini were used with logged-in accounts; Grok, Perplexity, Mistral and duck.ai were used anonymously. Vendor documentation and IP lists were fetched the same day; the addresses were checked against them, and the captured strings were run through the open-source detectors, with TypeScript scripts that are in the research directory. The DuckDuckGo key thumbprint was recomputed from the published JWK.
+Captures were taken on 2026-09-03 in three runs, 03:55 to 04:05, 04:55 to 05:05 and 05:13 to 05:15 UTC, with `wrangler tail --format json` against the production Worker for gkoreli.com. Each assistant received a prompt of the form "Please open this exact URL and tell me the exact text of its main heading: <URL>. Do not answer from memory; fetch the page." in a new chat. ChatGPT (Pro), Claude.ai (Max), Gemini and Copilot were used with logged-in accounts; Grok, Perplexity, Mistral and duck.ai were used anonymously. For every row with no origin request, the zone's firewall events (Cloudflare GraphQL `firewallEventsAdaptive`) for the surrounding hours were checked for blocks or challenges; none matched. Vendor documentation and IP lists were fetched the same day; the addresses were checked against them, and the captured strings were run through the open-source detectors, with TypeScript scripts that are in the research directory. The DuckDuckGo key thumbprint was recomputed from the published JWK.
 
 What this does not show:
 
 - **One or two requests each.** Most fetchers were probed once. Headers can vary by region, plan, model, or the tool the assistant chooses. Grok's sixteen requests came from two prompts.
 - **Perplexity is absent from the origin.** Five anonymous attempts produced no request. A logged-in attempt, or a page not yet in Perplexity's index, might.
-- **Copilot is missing** because both entry points require a sign-in.
+- **Copilot was probed twice from one account.** A different Copilot surface (Edge sidebar, Windows, Microsoft 365) may use a different tool.
 - **Header order is lost.** The tail event delivers headers as a map. Order is a fingerprinting signal in its own right and is not analysed here.
 - **Attribution for Grok is by timing and the unique URL**, not by any declaration from xAI. I consider eight requests for a URL that existed nowhere else, within thirty seconds of the prompt, twice, conclusive; a reader who wants stronger evidence can repeat the probe with their own URL.
 - **The DuckDuckGo signature was matched by key id, not re-verified byte for byte.** The Worker code to verify it is merged and not yet deployed; when it is, the observation row will carry the verified agent host.
