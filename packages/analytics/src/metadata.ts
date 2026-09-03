@@ -14,6 +14,7 @@ export interface RequestMetadata {
   secFetchUser: number | null;
   acceptsHtml: number | null;
   hasAcceptLanguage: number;
+  hasSignatureHeaders: boolean;
 }
 
 function boundedHeader(request: Request, name: string): string | null {
@@ -45,6 +46,8 @@ export function extractRequestMetadata(request: Request, ownerIps: string | unde
   const secFetchUser = request.headers.get('Sec-Fetch-User');
   const accept = request.headers.get('Accept');
   const acceptLanguage = request.headers.get('Accept-Language');
+  const hasSignatureHeaders = ['Signature-Agent', 'Signature-Input', 'Signature']
+    .some((name) => request.headers.has(name));
 
   return {
     path: url.pathname,
@@ -64,5 +67,6 @@ export function extractRequestMetadata(request: Request, ownerIps: string | unde
       ? null
       : accept.toLowerCase().includes('text/html') || accept.includes('*/*') ? 1 : 0,
     hasAcceptLanguage: acceptLanguage !== null && acceptLanguage.trim().length > 0 ? 1 : 0,
+    hasSignatureHeaders,
   };
 }

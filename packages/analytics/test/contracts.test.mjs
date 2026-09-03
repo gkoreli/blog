@@ -11,6 +11,7 @@ import { observePageResponse } from '../.test-dist/index.js';
 import { extractRequestMetadata } from '../.test-dist/metadata.js';
 import { HOSTING_ASNS, isHostingAsn } from '../.test-dist/networks.js';
 import { partitionPredicate } from '../.test-dist/partition.js';
+import { classifyReaderKind, READER_KINDS } from '../.test-dist/readerkind.js';
 import { handleStats, queryStats } from '../.test-dist/stats.js';
 
 const html = new Response('<!doctype html>', {
@@ -67,8 +68,9 @@ function insertObservation(sqlite, observation) {
     path, referrer_host, country, daily_client_id, traffic_class,
     agent_name, device_type, is_owner, observation_source, asn, as_org,
     sec_fetch_mode, sec_fetch_dest, sec_fetch_site, sec_fetch_user,
-    accepts_html, has_accept_language, observed_at
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
+    accepts_html, has_accept_language, signature_agent, signature_status,
+    reader_kind, reader_reason, observed_at
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
     observation.path,
     observation.referrerHost ?? null,
     observation.country ?? null,
@@ -86,6 +88,10 @@ function insertObservation(sqlite, observation) {
     observation.secFetchUser ?? null,
     observation.acceptsHtml ?? null,
     observation.hasAcceptLanguage ?? null,
+    observation.signatureAgent ?? null,
+    observation.signatureStatus ?? null,
+    observation.readerKind ?? null,
+    observation.readerReason ?? null,
     observation.observedAt,
   );
 }
@@ -117,6 +123,34 @@ test('AI rules have priority and classifiers return nullable named matches', () 
   assert.deepEqual(classifyTraffic('Google-CloudVertexBot/1.0'), { trafficClass: 'ai', agentName: 'Google-CloudVertexBot' });
   assert.equal(KNOWN_AGENT_NAMES.has('GPTBot'), true);
   assert.equal(KNOWN_AGENT_NAMES.has('Googlebot'), true);
+});
+
+test('named classifier rules cover every added agent, crawler, spoofed token, and headless marker', () => {
+  const cases = [
+    ['Claude-User/1.0', 'ai', 'Claude-User'],
+    ['Perplexity-User/1.0', 'ai', 'Perplexity-User'],
+    ['meta-externalfetcher/1.1', 'ai', 'Meta-ExternalFetcher'],
+    ['MistralAI-User/1.0', 'ai', 'MistralAI-User'],
+    ['MistralAI-Index/1.0', 'ai', 'MistralAI-Index'],
+    ['MistralAI-Training/1.0', 'ai', 'MistralAI-Training'],
+    ['Amzn-User/1.0', 'ai', 'Amzn-User'],
+    ['Amzn-SearchBot/1.0', 'ai', 'Amzn-SearchBot'],
+    ['Google-Agent/1.0', 'ai', 'Google-Agent'],
+    ['Google-GeminiNotebook/1.0', 'ai', 'Google-GeminiNotebook'],
+    ['OAI-SearchBot/1.0', 'ai', 'OAI-SearchBot'],
+    ['Claude-SearchBot/1.0', 'ai', 'Claude-SearchBot'],
+    ['Meta-WebIndexer/1.0', 'ai', 'Meta-WebIndexer'],
+    ['Applebot/0.1', 'ai', 'Applebot'],
+    ['Google-Extended', 'bot', 'Google-Extended'],
+    ['Applebot-Extended', 'bot', 'Applebot-Extended'],
+    ['Mozilla/5.0 HeadlessChrome/152.0.0.0', 'bot', 'HeadlessChrome'],
+    ['Mozilla/5.0 Cypress/15.0 Chrome/140 Electron/38', 'bot', 'Cypress'],
+    ['Lightpanda/1.0', 'bot', 'Lightpanda'],
+  ];
+  for (const [userAgent, trafficClass, agentName] of cases) {
+    assert.deepEqual(classifyTraffic(userAgent), { trafficClass, agentName });
+    assert.equal(KNOWN_AGENT_NAMES.has(agentName), true);
+  }
 });
 
 test('daily client HMAC is stable and separated by every scoped input', async () => {
@@ -204,6 +238,7 @@ test('request metadata extracts bounded request evidence and reports absent valu
     secFetchUser: 1,
     acceptsHtml: 1,
     hasAcceptLanguage: 1,
+    hasSignatureHeaders: false,
   });
 
   const selfReferral = request('/article', { headers: { Referer: 'https://www.gkoreli.com/about' } });
@@ -221,6 +256,7 @@ test('request metadata extracts bounded request evidence and reports absent valu
     secFetchUser: absent.secFetchUser,
     acceptsHtml: absent.acceptsHtml,
     hasAcceptLanguage: absent.hasAcceptLanguage,
+    hasSignatureHeaders: absent.hasSignatureHeaders,
   }, {
     asn: null,
     asOrg: null,
@@ -230,6 +266,7 @@ test('request metadata extracts bounded request evidence and reports absent valu
     secFetchUser: null,
     acceptsHtml: null,
     hasAcceptLanguage: 0,
+    hasSignatureHeaders: false,
   });
 
   const negative = extractRequestMetadata(request('/negative', { headers: {
@@ -248,6 +285,9 @@ test('request metadata extracts bounded request evidence and reports absent valu
   } }), undefined);
   assert.equal(wildcard.acceptsHtml, 1);
   assert.equal(wildcard.secFetchSite, 'a'.repeat(32));
+  assert.equal(extractRequestMetadata(request('/signed', {
+    headers: { 'Signature-Input': 'sig=("@authority")' },
+  }), undefined).hasSignatureHeaders, true);
 });
 
 test('edge observation schedules one constrained write and fails closed on a missing HMAC secret', async () => {
@@ -294,6 +334,10 @@ test('edge observation schedules one constrained write and fails closed on a mis
   assert.equal(row.sec_fetch_user, 1);
   assert.equal(row.accepts_html, 1);
   assert.equal(row.has_accept_language, 1);
+  assert.equal(row.signature_agent, null);
+  assert.equal(row.signature_status, null);
+  assert.equal(row.reader_kind, 'ai-crawler');
+  assert.equal(row.reader_reason, 'GPTBot');
   assert.match(row.daily_client_id, /^[0-9a-f]{32}$/);
 
   const missingSecret = [];
@@ -307,6 +351,29 @@ test('edge observation schedules one constrained write and fails closed on a mis
   assert.equal(sqlite.prepare('SELECT COUNT(*) AS count FROM page_observations').get().count, 1);
 });
 
+test('ingestion stores an unverified signature reason without trusting its claimed agent', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  const observed = request('/claimed-agent', { headers: {
+    'CF-Connecting-IP': '203.0.113.21',
+    'User-Agent': 'Mozilla/5.0 Chrome/152',
+    'Signature-Agent': 'sig="https://claimed.example"',
+  } });
+  const pending = [];
+  observePageResponse(observed, html, {
+    DB: d1,
+    ANALYTICS_HASH_KEY: 'test-key',
+  }, { waitUntil(promise) { pending.push(promise); } });
+  await pending[0];
+
+  assert.deepEqual({ ...sqlite.prepare(`SELECT signature_agent, signature_status,
+    reader_kind, reader_reason FROM page_observations`).get() }, {
+    signature_agent: null,
+    signature_status: 'unverified',
+    reader_kind: 'http-client',
+    reader_reason: 'missing-signature-input',
+  });
+});
+
 test('hosting list excludes relay/CDN ASNs and partition SQL inlines only validated numbers', () => {
   for (const prohibited of [15169, 13335, 36183, 20940, 54113]) {
     assert.equal(HOSTING_ASNS.has(prohibited), false);
@@ -318,6 +385,50 @@ test('hosting list excludes relay/CDN ASNs and partition SQL inlines only valida
   assert.equal(browser.values.length, 0);
   assert.match(browser.sql, /asn NOT IN \([\d, ]+\)/);
   assert.match(browser.sql, /observation_source = 'beacon'/);
+});
+
+test('reader-kind classifier maps every closed-set code and records one reason', () => {
+  const base = {
+    trafficClass: 'browser',
+    agentName: null,
+    observationSource: 'edge',
+    asn: 64512,
+    secFetchMode: 'navigate',
+    secFetchDest: 'document',
+    secFetchSite: 'none',
+    secFetchUser: 1,
+    acceptsHtml: 1,
+    hasAcceptLanguage: 1,
+    signature: { status: 'absent' },
+    userAgent: 'Mozilla/5.0 Chrome/152',
+  };
+  const cases = [
+    [{ ...base, signature: { status: 'verified', agent: 'https://agent.example' } }, 'signed-agent', 'https://agent.example'],
+    [{ ...base, trafficClass: 'ai', agentName: 'Claude-User' }, 'ai-assistant', 'Claude-User'],
+    [{ ...base, trafficClass: 'ai', agentName: 'OAI-SearchBot' }, 'ai-search', 'OAI-SearchBot'],
+    [{ ...base, trafficClass: 'ai', agentName: 'GPTBot' }, 'ai-crawler', 'GPTBot'],
+    [{ ...base, trafficClass: 'bot', agentName: 'Googlebot' }, 'search-crawler', 'Googlebot'],
+    [{ ...base, trafficClass: 'bot', agentName: 'Slackbot' }, 'preview-or-feed', 'Slackbot'],
+    [{ ...base, trafficClass: 'bot', agentName: 'HeadlessChrome', userAgent: 'HeadlessChrome/152' }, 'headless-browser', 'HeadlessChrome'],
+    [{ ...base, trafficClass: 'bot', agentName: null }, 'other-bot', 'generic-bot'],
+    [{ ...base, asn: 16509 }, 'cloud-browser', 'hosting-asn:16509'],
+    [{ ...base, secFetchMode: 'cors', secFetchDest: 'empty' }, 'http-client', 'not-navigation-shaped'],
+    [{ ...base, observationSource: 'beacon', hasAcceptLanguage: null }, 'browser', 'legacy-beacon'],
+    [{ ...base, hasAcceptLanguage: null }, 'unchecked', 'evidence-not-recorded'],
+  ];
+
+  const seen = [];
+  for (const [facts, kind, reason] of cases) {
+    assert.deepEqual(classifyReaderKind(facts), { kind, reason });
+    seen.push(kind);
+  }
+  assert.deepEqual(seen, [...READER_KINDS]);
+  assert.deepEqual(classifyReaderKind({
+    ...base,
+    trafficClass: 'ai',
+    agentName: 'GPTBot',
+    signature: { status: 'unverified', reason: 'expired' },
+  }), { kind: 'ai-crawler', reason: 'expired' });
 });
 
 test('browser partition keeps beacons, unchecked edge rows, and navigation-shaped edge rows while each failed signal demotes', async () => {
@@ -537,7 +648,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
   assert.match((await unknown.json()).error, /known matched User-Agent rule/);
 });
 
-test('legacy continuity migration preserves source rows and backfills a source-marked read model', () => {
+test('migrations 0005 and 0006 apply after the existing chain and backfill legacy identity idempotently', () => {
   const sqlite = new DatabaseSync(':memory:');
   sqlite.exec(`
     CREATE TABLE page_views (
@@ -655,5 +766,68 @@ test('legacy continuity migration preserves source rows and backfills a source-m
   assert.throws(
     () => sqlite.prepare(`UPDATE page_observations SET accepts_html = 2 WHERE path = '/edge'`).run(),
     /CHECK constraint failed/,
+  );
+
+  sqlite.exec(readFileSync(new URL('../migrations/0005_add_reader_identity.sql', import.meta.url), 'utf8'));
+  const identityBeforeBackfill = sqlite.prepare(`SELECT signature_agent, signature_status,
+    reader_kind, reader_reason FROM page_observations ORDER BY id`).all();
+  for (const row of identityBeforeBackfill) {
+    assert.deepEqual({ ...row }, {
+      signature_agent: null,
+      signature_status: null,
+      reader_kind: null,
+      reader_reason: null,
+    });
+  }
+  assert.throws(
+    () => sqlite.prepare(`UPDATE page_observations SET signature_status = 'claimed'`).run(),
+    /CHECK constraint failed/,
+  );
+
+  const backfill = readFileSync(new URL('../migrations/0006_backfill_reader_kind.sql', import.meta.url), 'utf8');
+  sqlite.exec(backfill);
+  assert.deepEqual(
+    sqlite.prepare(`SELECT path, reader_kind, reader_reason
+      FROM page_observations ORDER BY observed_at`).all().map(row => ({ ...row })),
+    [
+      { path: '/legacy', reader_kind: 'browser', reader_reason: 'legacy-beacon' },
+      { path: '/legacy-ai', reader_kind: 'other-bot', reader_reason: 'generic-bot' },
+      { path: '/edge', reader_kind: 'unchecked', reader_reason: 'evidence-not-recorded' },
+    ],
+  );
+  sqlite.exec(backfill);
+  assert.equal(sqlite.prepare(`SELECT COUNT(*) AS count FROM page_observations
+    WHERE reader_kind IS NULL OR reader_reason IS NULL`).get().count, 0);
+});
+
+test('SQL reader-kind backfill uses the same closed-set mapping as ingestion', () => {
+  const { sqlite } = analyticsDatabase();
+  const observedAt = '2026-09-03 12:00:00';
+  const rows = [
+    { path: '/signed', trafficClass: 'browser', signatureAgent: 'https://agent.example', signatureStatus: 'verified' },
+    { path: '/assistant', trafficClass: 'ai', agentName: 'ChatGPT-User' },
+    { path: '/ai-search', trafficClass: 'ai', agentName: 'Applebot' },
+    { path: '/ai-crawler', trafficClass: 'ai', agentName: 'ClaudeBot' },
+    { path: '/search', trafficClass: 'bot', agentName: 'Bingbot' },
+    { path: '/preview', trafficClass: 'bot', agentName: 'LinkedInBot' },
+    { path: '/headless', trafficClass: 'bot', agentName: 'Lightpanda' },
+    { path: '/other', trafficClass: 'bot' },
+    { path: '/cloud', trafficClass: 'browser', asn: 16509, secFetchMode: 'navigate', secFetchDest: 'document', hasAcceptLanguage: 1 },
+    { path: '/client', trafficClass: 'browser', secFetchMode: 'cors', secFetchDest: 'empty', hasAcceptLanguage: 1 },
+    { path: '/browser', trafficClass: 'browser', observationSource: 'beacon' },
+    { path: '/unchecked', trafficClass: 'browser' },
+  ];
+  rows.forEach((row, index) => insertObservation(sqlite, {
+    dailyClientId: (index % 10).toString().repeat(32),
+    observedAt,
+    ...row,
+  }));
+
+  const backfill = readFileSync(new URL('../migrations/0006_backfill_reader_kind.sql', import.meta.url), 'utf8');
+  sqlite.exec(backfill);
+  assert.deepEqual(
+    sqlite.prepare(`SELECT reader_kind FROM page_observations ORDER BY id`).all()
+      .map(row => row.reader_kind),
+    [...READER_KINDS],
   );
 });

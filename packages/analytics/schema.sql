@@ -24,6 +24,10 @@ CREATE TABLE page_observations (
   sec_fetch_user INTEGER CHECK (sec_fetch_user IN (0, 1)),
   accepts_html INTEGER CHECK (accepts_html IN (0, 1)),
   has_accept_language INTEGER CHECK (has_accept_language IN (0, 1)),
+  signature_agent TEXT,
+  signature_status TEXT CHECK (signature_status IN ('verified', 'unverified')),
+  reader_kind TEXT,
+  reader_reason TEXT,
   observed_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 

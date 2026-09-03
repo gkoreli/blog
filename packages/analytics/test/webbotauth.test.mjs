@@ -68,6 +68,16 @@ test('signature-base construction matches RFC 9421 and Web Bot Auth draft vector
     '"signature-agent";key="agent2": "https://signature-agent.test"',
     '"@signature-params": ("@authority" "signature-agent";key="agent2");created=1735689600;keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U";alg="ed25519";expires=4889289600;nonce="n9p433xm+NJ3ph3upfBIGmsuwHw387YV7Q/F+6BSpGCVjYCqQw6rznNA8PVVLySrAWsv0hQtFioQb6E1YsauiA==";tag="web-bot-auth"',
   ].join('\n'));
+
+  const legacyDraftRequest = new Request('https://example.com/', { headers: {
+    'Signature-Agent': '"https://signature-agent.test"',
+    'Signature-Input': 'sig2=("@authority" "signature-agent");created=1735689600;keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U";alg="ed25519";expires=1735693200;nonce="e8N7S2MFd/qrd6T2R3tdfAuuANngKI7LFtKYI/vowzk4lAZYadIX6wW25MwG7DCT9RUKAJ0qVkU0mEeLElW1qg==";tag="web-bot-auth"',
+  } });
+  assert.equal(buildSignatureBase(legacyDraftRequest, 'sig2'), [
+    '"@authority": example.com',
+    '"signature-agent": "https://signature-agent.test"',
+    '"@signature-params": ("@authority" "signature-agent");created=1735689600;keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U";alg="ed25519";expires=1735693200;nonce="e8N7S2MFd/qrd6T2R3tdfAuuANngKI7LFtKYI/vowzk4lAZYadIX6wW25MwG7DCT9RUKAJ0qVkU0mEeLElW1qg==";tag="web-bot-auth"',
+  ].join('\n'));
 });
 
 test('Ed25519 JWK thumbprint matches RFC 8037 Appendix A.3', async () => {

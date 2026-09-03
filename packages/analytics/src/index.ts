@@ -3,14 +3,23 @@ import { recordPageObservation, type Env, type PageObservation } from './db.js';
 import { isEligiblePageResponse } from './eligibility.js';
 import { createDailyClientId } from './hash.js';
 import { extractRequestMetadata } from './metadata.js';
+import { classifyReaderKind } from './readerkind.js';
+import { verifyWebBotAuth, type WebBotAuthResult } from './webbotauth.js';
 
 export type { Env } from './db.js';
 export { ANALYTICS_EVIDENCE_SINCE } from './contracts.js';
 export type { StatsResponse, TrafficFilter } from './contracts.js';
+export { READER_KINDS } from './readerkind.js';
+export type { ReaderKind } from './readerkind.js';
 export { handleStats } from './stats.js';
 
 function sqliteTimestamp(date: Date): string {
   return date.toISOString().replace('T', ' ').slice(0, 19);
+}
+
+async function verifyRequestSignature(request: Request, headersPresent: boolean): Promise<WebBotAuthResult> {
+  if (!headersPresent) return { status: 'absent' };
+  return verifyWebBotAuth(request);
 }
 
 async function persistObservation(request: Request, env: Env, observedAt: Date): Promise<void> {
@@ -22,11 +31,28 @@ async function persistObservation(request: Request, env: Env, observedAt: Date):
   const metadata = extractRequestMetadata(request, env.OWNER_IPS);
   const classification = classifyTraffic(metadata.userAgent);
   const utcDate = observedAt.toISOString().slice(0, 10);
-  const dailyClientId = await createDailyClientId({
-    masterKey: hashKey,
-    siteHost: metadata.siteHost,
-    utcDate,
-    ip: metadata.ip,
+  const [dailyClientId, signature] = await Promise.all([
+    createDailyClientId({
+      masterKey: hashKey,
+      siteHost: metadata.siteHost,
+      utcDate,
+      ip: metadata.ip,
+      userAgent: metadata.userAgent,
+    }),
+    verifyRequestSignature(request, metadata.hasSignatureHeaders),
+  ]);
+  const reader = classifyReaderKind({
+    trafficClass: classification.trafficClass,
+    agentName: classification.agentName,
+    observationSource: 'edge',
+    asn: metadata.asn,
+    secFetchMode: metadata.secFetchMode,
+    secFetchDest: metadata.secFetchDest,
+    secFetchSite: metadata.secFetchSite,
+    secFetchUser: metadata.secFetchUser,
+    acceptsHtml: metadata.acceptsHtml,
+    hasAcceptLanguage: metadata.hasAcceptLanguage,
+    signature,
     userAgent: metadata.userAgent,
   });
   const observation: PageObservation = {
@@ -46,6 +72,10 @@ async function persistObservation(request: Request, env: Env, observedAt: Date):
     secFetchUser: metadata.secFetchUser,
     acceptsHtml: metadata.acceptsHtml,
     hasAcceptLanguage: metadata.hasAcceptLanguage,
+    signatureAgent: signature.status === 'verified' ? signature.agent : null,
+    signatureStatus: signature.status === 'absent' ? null : signature.status,
+    readerKind: reader.kind,
+    readerReason: reader.reason,
     observedAt: sqliteTimestamp(observedAt),
   };
   await recordPageObservation(env.DB, observation);

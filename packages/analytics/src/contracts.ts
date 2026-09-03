@@ -3,6 +3,7 @@ export type TrafficFilter = 'browser' | 'browserlike' | 'bot' | 'ai' | 'all';
 export type DeviceType = 'desktop' | 'mobile' | 'tablet';
 export type StatsRange = '7d' | '30d' | '90d' | 'all';
 export type Granularity = 'hour' | 'day';
+export type SignatureStatus = 'verified' | 'unverified';
 
 export interface TimeSeriesPoint {
   bucket: string;
