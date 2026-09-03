@@ -7,3 +7,9 @@ packages/blog/drafts/research/ai-fetcher-headers/scripts/detectors.ts
 packages/blog/drafts/research/ai-fetcher-headers/artifacts.txt
 packages/blog/drafts/research/ai-fetcher-headers/research-footprint.json
 packages/blog/prompts/which-ai-fetchers-send-which-headers.prompts.md
+packages/blog/drafts/research/ai-fetcher-headers/scripts/export-captures.ts
+packages/blog/drafts/research/ai-fetcher-headers/data/README.md
+packages/blog/drafts/research/ai-fetcher-headers/data/captures.jsonl
+packages/blog/drafts/research/ai-fetcher-headers/data/captures.csv
+packages/blog/drafts/research/ai-fetcher-headers/data/asn-holders.json
+packages/blog/drafts/research/ai-fetcher-headers/data/firewall-events-2026-09-03.json

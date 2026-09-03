@@ -1,0 +1,25 @@
+{
+  "source": "https://stat.ripe.net/data/as-overview/data.json",
+  "fetched_at": "2026-09-03T05:45:27.594Z",
+  "holders": {
+    "3257": "GTT-BACKBONE GTT Communications Inc.",
+    "7979": "SERVERS-COM - Servers.com, Inc.",
+    "8075": "MICROSOFT-CORP-MSN-AS-BLOCK - Microsoft Corporation",
+    "9009": "M247 M247 Europe SRL",
+    "11798": "ACEDATACENTERS-AS-1 - Ace Data Centers, Inc.",
+    "13280": "H3GIE Three Ireland (Hutchison) limited",
+    "14618": "AMAZON-AES - Amazon.com, Inc.",
+    "15169": "GOOGLE - Google LLC",
+    "28573": "AS28573 - Claro NXT Telecomunicacoes Ltda",
+    "52361": "AS52361 - ARSAT - Empresa Argentina de Soluciones Satelitales S.A.",
+    "55286": "SERVER-MANIA - B2 Net Solutions Inc.",
+    "62887": "WHITESKY-COMMUNICATIONS - WhiteSky Communications, LLC.",
+    "132817": "DZCRD-AS-AP - DZCRD Networks Ltd",
+    "209709": "code200-ISP1 UAB code200",
+    "212238": "CDNEXT Datacamp Limited",
+    "262988": "AS262988 - Pombonet Telecomunicacoes e Informatica",
+    "268249": "AS268249 - DESTAK NET LTDA",
+    "396982": "GOOGLE-CLOUD-PLATFORM - Google LLC",
+    "398781": "OSL-188 - OCULUS NETWORKS INC"
+  }
+}
