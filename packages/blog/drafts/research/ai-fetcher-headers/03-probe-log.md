@@ -106,3 +106,11 @@ Goga checked AS9009 against Team Cymru and got M247 Europe, not the "Aventice LL
 | 62887 | WhiteSky Communications, LLC. | same |
 
 Article and `02-probe-captures.md` now carry registry holders with the source named; the Cloudflare string is kept alongside as a second fact. Stackfox's February 2026 providers (M247, Datacamp) match AS9009 and AS212238 here.
+
+## Fifth run, 2026-09-03 06:29 UTC (Goga, duck.ai, after the Worker deploy)
+
+| Service | UTC | Assistant said | Origin request | Stored row |
+|---|---|---|---|---|
+| duck.ai, `/which-ai-fetchers-send-which-headers?probe=duckai-goga` | 06:29:44 | exact H1 and standfirst quoted | `DuckAssistBot/1.2`, AS8075, `Signature-Agent: "https://assistbot.duckduckgo.com"`, `Signature-Input` with `tag="web-bot-auth"`, `alg="ed25519"`, same keyid `Ov3HDsa8JQ39dPEYFvFFN-cUpnz9yNI8LDvr-5LeiBM`, fresh `created`/`expires` (600 s window) | `traffic_class=ai`, `agent_name=DuckAssistBot`, `reader_kind=signed-agent`, `reader_reason=https://assistbot.duckduckgo.com`, `signature_status=verified` (Worker verification in `webbotauth.ts`, migration 0005 columns) |
+
+Post-publication traffic in the same minute, for the +1h record: browser-UA fetches of the article from AWS (AS14618, AS16509), Tencent Cloud (AS45090) and DigitalOcean (AS14061) stored as `cloud-browser`; several `http-client` (no Fetch Metadata) and `legacy-browser` rows; ClaudeBot fetched `/license`. That is the X post's audience arriving as agents and scrapers.
