@@ -1,5 +1,6 @@
 import { staticHtml as html, raw } from '@nisli/core/static';
 import type { Section } from '../lib/frontmatter.js';
+import { typedLinkElements } from '../lib/typed-links.js';
 import { DispatchSlip } from './artifacts.js';
 
 function turnstileSiteKey(): string {
@@ -31,6 +32,7 @@ interface PageShellBaseProps {
   ogType?: 'website' | 'article';
   noindex?: boolean;
   seoTitle?: string;
+  postSlug?: string;
 }
 
 type PageShellProps = PageShellBaseProps & (
@@ -38,7 +40,7 @@ type PageShellProps = PageShellBaseProps & (
   | { ogImage?: undefined; ogImageAlt?: undefined }
 );
 
-export function pageShell({ title, description, content, canonicalPath, currentSlug, currentSection, ogImage, ogImageAlt, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false, seoTitle }: PageShellProps) {
+export function pageShell({ title, description, content, canonicalPath, currentSlug, currentSection, ogImage, ogImageAlt, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false, seoTitle, postSlug }: PageShellProps) {
   const TURNSTILE_SITE_KEY = turnstileSiteKey();
   const canonical = canonicalUrl(canonicalPath);
   const layoutClass = layout && layout !== 'default' ? ` layout-${layout}` : '';
@@ -46,6 +48,9 @@ export function pageShell({ title, description, content, canonicalPath, currentS
 
   const isHome = !currentSlug && !currentSection;
   const pageTitle = seoTitle ?? `${title} — Goga Koreli`;
+  const typedLinks = typedLinkElements({
+    ...(postSlug ? { markdownPath: `/${postSlug}.md`, postSlug } : {}),
+  });
 
   return html`<!DOCTYPE html>
 <html lang="en">
@@ -56,6 +61,7 @@ export function pageShell({ title, description, content, canonicalPath, currentS
   <meta name="description" content="${description}">
   ${noindex ? html`<meta name="robots" content="noindex">` : ''}
   <link rel="canonical" href="${canonical}">
+  ${raw(typedLinks)}
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
   <meta property="og:site_name" content="gkoreli.com">

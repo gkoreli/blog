@@ -1,7 +1,7 @@
 import { rmSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { basename, join, relative } from 'node:path';
 import { build as esbuild } from 'esbuild';
-import { DIST, SRC, ESBUILD_ENTRIES } from '../lib/paths.js';
+import { DIST, SRC, ESBUILD_ENTRIES, REPO_ROOT } from '../lib/paths.js';
 import { discoverPosts, writeOutput, writeRoot, copyAssets } from '../lib/fs.js';
 import { initMarkdown, renderMarkdown } from '../lib/markdown.js';
 import { parsePost, validatePosts, parsePrompts } from '../lib/frontmatter.js';
@@ -25,6 +25,10 @@ import { animationsLabPage } from '../pages/animations-lab.js';
 import { essaysPage } from '../pages/essays.js';
 import { engineeringPage } from '../pages/engineering.js';
 import { ossRadarPage } from '../pages/oss-radar.js';
+import { licensePage } from '../pages/license.js';
+import { cslJson, bibtex, citationMarkdown } from '../templates/citation.js';
+import { robotsTxt } from '../templates/robots.js';
+import { CONTENT_LICENSE } from '../lib/license.js';
 
 export { DIST } from '../lib/paths.js';
 
@@ -32,6 +36,16 @@ const PUBLICATION_OG_IMAGE_ALT = 'gkoreli.com social card reading “Agentic Eng
 
 function postOgImageAlt(title: string): string {
   return `gkoreli.com social card reading “${title}” and “Where excitement ends, depth begins.”`;
+}
+
+function contentLicenseMarkdown(): string {
+  const repositoryLicense = readFileSync(join(REPO_ROOT, 'LICENSE'), 'utf-8');
+  const heading = `## Content (${CONTENT_LICENSE.name})`;
+  const start = repositoryLicense.indexOf(heading);
+  if (start < 0) throw new Error(`Repository LICENSE is missing the ${heading} section`);
+
+  // This section becomes a standalone page, so promote its heading without changing its text.
+  return repositoryLicense.slice(start).trim().replace(/^## /, '# ');
 }
 
 /** Step 1: Clean and prepare dist */
@@ -186,9 +200,11 @@ export async function buildHTML(): Promise<void> {
     const body = postPage(post.meta, htmlContent, prompts, allPosts);
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
     const ogImageAlt = postOgImageAlt(post.meta.title);
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: 'post', ogType: 'article', ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: 'post', ogType: 'article', postSlug: post.meta.slug, ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
     writeOutput(post.meta.slug, page.toString());
-    writeRoot(`${post.meta.slug}.md`, mdRawContents[i]! + seriesTrailMarkdown(post.meta, allPosts));
+    writeRoot(`${post.meta.slug}.md`, mdRawContents[i]! + seriesTrailMarkdown(post.meta, allPosts) + citationMarkdown(post.meta));
+    writeRoot(`${post.meta.slug}.csl.json`, cslJson(post.meta));
+    writeRoot(`${post.meta.slug}.bib`, `${bibtex(post.meta)}\n`);
 
     if (prompts) {
       const promptsBody = promptsPage(post.meta, prompts);
@@ -208,9 +224,11 @@ export async function buildHTML(): Promise<void> {
     const afterword = postAfterword(post.meta, allPosts);
     const content = `${htmlContent}${trail}${afterword}`;
     const ogImageAlt = postOgImageAlt(post.meta.title);
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content, canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content, canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', postSlug: post.meta.slug, ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
     writeOutput(post.meta.slug, page.toString());
-    writeRoot(`${post.meta.slug}.md`, htmlToMarkdown(htmlContent, post.meta) + seriesTrailMarkdown(post.meta, allPosts));
+    writeRoot(`${post.meta.slug}.md`, htmlToMarkdown(htmlContent, post.meta) + seriesTrailMarkdown(post.meta, allPosts) + citationMarkdown(post.meta));
+    writeRoot(`${post.meta.slug}.csl.json`, cslJson(post.meta));
+    writeRoot(`${post.meta.slug}.bib`, `${bibtex(post.meta)}\n`);
 
     if (prompts) {
       const promptsBody = promptsPage(post.meta, prompts);
@@ -259,6 +277,10 @@ export async function buildHTML(): Promise<void> {
   const privacyShell = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody.toString(), canonicalPath: '/privacy', currentSlug: 'privacy', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
   writeOutput('privacy', privacyShell.toString());
 
+  const licenseBody = licensePage(await renderMarkdown(contentLicenseMarkdown()));
+  const licenseShell = pageShell({ title: 'Content License', description: 'The license for articles, essays, images, and prompts published on gkoreli.com.', content: licenseBody.toString(), canonicalPath: '/license', currentSlug: 'license', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
+  writeOutput('license', licenseShell.toString());
+
   const dlBody = designLanguagePage();
   const dlShell = pageShell({ title: 'Design Language', description: 'The design substrate of gkoreli.com — palette, typography, glass surfaces, canvas moods, section identities, and philosophy.', content: dlBody.toString(), canonicalPath: '/design-language', currentSlug: 'design-language', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, noindex: true, scripts: ['/canvas.js'] });
   writeOutput('design-language', dlShell.toString());
@@ -282,6 +304,7 @@ export async function buildHTML(): Promise<void> {
   writeRoot('llms.txt', llmsTxt(sortedPosts));
   writeRoot('llms-full.txt', llmsFullTxt(sortedPosts, allRawContents));
   writeRoot('posts.json', postsJson(sortedPosts));
+  writeRoot('robots.txt', robotsTxt());
 
   const elapsed = (performance.now() - start).toFixed(0);
   console.log(`Built ${mdPosts.length + tsPosts.length} post(s) in ${elapsed}ms → dist/`);
