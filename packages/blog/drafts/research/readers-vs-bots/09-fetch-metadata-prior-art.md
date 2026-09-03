@@ -24,3 +24,29 @@ Can "browser User-Agent, no `Sec-Fetch-Mode`" be a verdict (this is not the brow
 ## What remains site-specific
 
 Only the calibration: whether the count of navigation-shaped rows outside hosting networks tracks Cloudflare Web Analytics visits. That is TASK-0104, not a precondition for the rule.
+
+## Site measurement from Workers Logs, 72 hours to 2026-09-03 03:55 UTC
+
+Goga asked whether raw logs already existed. They do: Workers Logs (`observability.logs.invocation_logs` in `wrangler.jsonc`) keep every invocation with full request headers, User-Agent, ASN, and client IP for three days on the Free plan. The wrangler OAuth token cannot query them (`Authentication error [code: 10000]` on the telemetry endpoint), but the dashboard's own session can, so the query below ran from the dashboard page (`/api/v4/accounts/<id>/workers/observability/telemetry/query`, `view: "events"`, 3-hour windows, 1,000-event limit each; 3,372 of 3,399 invocations captured). Field keys are `$workers.event.request.headers.*` and `$workers.event.request.cf.asn`. Group-by queries return only the top 10 groups, so aggregation was done on the raw events. Only aggregates left the page; no IP or full User-Agent was recorded here.
+
+Population: 844 successful GETs of page paths (no file extension, not `/api/`).
+
+| Bucket | Rows | What it is |
+|---|---:|---|
+| Navigation-shaped, browser UA, outside hosting networks | 112 | The reader estimate: Chrome 152 (43), 142 (21), 144 (12), 145 (8), 147 (7), Safari 26.2 (4), others |
+| Navigation-shaped on hosting networks | 430 | 374 are one "Chrome Mobile 114" client on AS396982 Google Cloud; 23 are Chrome 145/146 on AS14618 AWS; the rest AWS, OVH, DigitalOcean |
+| Declared bots (UA says so) | 126 | 88 on hosting networks |
+| Client libraries (curl, python, Go, node, HeadlessChrome) | 26 | |
+| No Fetch Metadata, hosting network, browser UA | 64 | "iOS 13.2 Safari" on AS132203 and AS45090 Tencent Cloud, Accept-Language present |
+| No Fetch Metadata, outside hosting networks, browser UA | 49 | 14 "Chrome 78" across AS212238, AS60068 (Datacamp), AS210558, AS9009 (M247), all with Accept-Language; the rest single hits of Chrome 100–152; 3 "iOS 17.3 / 17.5 / 26.6" hits |
+| External referrals (t.co 3, google.com 8, chatgpt.com 1) | 12 | Every one carried Fetch Metadata |
+
+What this adds to the prior art:
+
+1. Hosting ASN, not header absence, is the rule that catches the bulk inflation. The single largest cluster (374 of 844) is navigation-shaped with Accept-Language and would pass every header check; only the network convicts it. The classifier now checks the hosting network before request shape (`readerkind.ts`, backfill 0006).
+2. Header absence outside hosting networks is small (49 rows, under 6%) and is dominated by a "Chrome 78" claim from four VPN and hosting ASNs that are not on the list. Chrome 78 shipped Fetch Metadata, so the version-gated verdict is correct for it.
+3. All 12 referred visits carried Fetch Metadata. Consistent with the prior art; too few to prove anything alone.
+4. Three hits claim iOS 17.3, 17.5, and 26.6 without Fetch Metadata from residential-looking ASNs. Prior art says those versions send it, so these are either spoofed or a rare embedded client. They are three rows; the rule labels them `http-client`, and they are the case to watch in the calibration.
+5. Reader estimate for the window: about 112 page views over 72 hours, roughly 13% of successful page GETs. The stats page will say this once the labels ship.
+
+ASNs seen carrying automation that are absent from `networks.ts`: 9009 M247, 60068 and 212238 Datacamp, 210558, 30058 (FDCservers), 45102 (Alibaba US, present) — candidates for TASK-0102 after whois verification, with the artifact 04 warning that 212238 also serves a CDN.

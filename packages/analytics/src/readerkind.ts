@@ -165,6 +165,13 @@ function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
   if (facts.observationSource === 'beacon') return { kind: 'browser', reason: 'legacy-beacon' };
   if (facts.hasAcceptLanguage === null) return { kind: 'unchecked', reason: 'evidence-not-recorded' };
 
+  // Hosting network is a verdict on its own (MRC floor, GoatCounter, Plausible
+  // cloud, Fathom) and is checked before request shape: in the 72-hour Workers
+  // Logs sample of 2026-09-03 the largest single cluster was 374 navigation-shaped
+  // "Chrome Mobile 114" hits from Google Cloud, and 64 header-less "iOS 13.2"
+  // hits from Tencent Cloud (research artifact 09, section "Site measurement").
+  if (isHostingAsn(facts.asn)) return { kind: 'cloud-browser', reason: `hosting-asn:${facts.asn}` };
+
   const navigationShaped = facts.secFetchMode === 'navigate' && facts.secFetchDest === 'document';
   if (!navigationShaped) {
     if (facts.secFetchMode !== null) return { kind: 'http-client', reason: 'not-navigation-shaped' };
@@ -173,7 +180,6 @@ function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
     }
     return { kind: 'legacy-browser', reason: 'pre-fetch-metadata-ua' };
   }
-  if (isHostingAsn(facts.asn)) return { kind: 'cloud-browser', reason: `hosting-asn:${facts.asn}` };
   return { kind: 'browser', reason: 'navigation-shaped' };
 }
 

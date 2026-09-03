@@ -2,7 +2,8 @@
 -- Ingestion version-gates the no-Sec-Fetch case on the claimed engine version
 -- (readerkind.ts, research artifact 09). The raw User-Agent is not stored, so
 -- history cannot be gated: every evidence-recorded browser row that is not
--- navigation-shaped is labelled http-client / not-navigation-shaped here, and
+-- navigation-shaped is labelled http-client / not-navigation-shaped here (after
+-- the hosting-ASN check, which is a verdict regardless of shape), and
 -- the pre-Fetch-Metadata share (under 4.3% of global browser usage) is folded in.
 UPDATE page_observations
 SET
@@ -30,8 +31,7 @@ SET
     WHEN traffic_class IN ('bot', 'ai') THEN 'other-bot'
     WHEN observation_source = 'beacon' THEN 'browser'
     WHEN has_accept_language IS NULL THEN 'unchecked'
-    WHEN sec_fetch_mode = 'navigate' AND sec_fetch_dest = 'document'
-      AND asn IN (
+    WHEN asn IN (
         16509, 14618, 396982, 8075, 14061, 24940, 16276, 20473, 63949,
         31898, 45102, 45090, 132203, 51167, 40021, 141995, 12876, 16265,
         60781, 8560
@@ -46,8 +46,7 @@ SET
     WHEN traffic_class IN ('bot', 'ai') THEN 'generic-bot'
     WHEN observation_source = 'beacon' THEN 'legacy-beacon'
     WHEN has_accept_language IS NULL THEN 'evidence-not-recorded'
-    WHEN sec_fetch_mode = 'navigate' AND sec_fetch_dest = 'document'
-      AND asn IN (
+    WHEN asn IN (
         16509, 14618, 396982, 8075, 14061, 24940, 16276, 20473, 63949,
         31898, 45102, 45090, 132203, 51167, 40021, 141995, 12876, 16265,
         60781, 8560

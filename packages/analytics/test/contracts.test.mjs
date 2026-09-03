@@ -464,6 +464,11 @@ test('reader-kind classifier maps every closed-set code and records one reason',
     classifyReaderKind({ ...base, secFetchMode: null, secFetchDest: null, userAgent: 'Mozilla/5.0 (Windows NT 6.1) Chrome/49.0.2623.112 Safari/537.36' }),
     { kind: 'legacy-browser', reason: 'pre-fetch-metadata-ua' },
   );
+  assert.deepEqual(
+    classifyReaderKind({ ...base, asn: 132203, secFetchMode: null, secFetchDest: null, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2 like Mac OS X) AppleWebKit/605.1.15 Version/13.0.3 Mobile/15E148 Safari/604.1' }),
+    { kind: 'cloud-browser', reason: 'hosting-asn:132203' },
+    'hosting network is a verdict before request shape',
+  );
   assert.deepEqual(classifyReaderKind({
     ...base,
     trafficClass: 'ai',
@@ -865,7 +870,7 @@ test('SQL reader-kind backfill uses the same closed-set mapping as ingestion', (
     { path: '/preview', trafficClass: 'bot', agentName: 'LinkedInBot' },
     { path: '/headless', trafficClass: 'bot', agentName: 'Lightpanda' },
     { path: '/other', trafficClass: 'bot' },
-    { path: '/cloud', trafficClass: 'browser', asn: 16509, secFetchMode: 'navigate', secFetchDest: 'document', hasAcceptLanguage: 1 },
+    { path: '/cloud', trafficClass: 'browser', asn: 16509, hasAcceptLanguage: 1 },
     { path: '/client', trafficClass: 'browser', secFetchMode: 'cors', secFetchDest: 'empty', hasAcceptLanguage: 1 },
     { path: '/browser', trafficClass: 'browser', observationSource: 'beacon' },
     { path: '/unchecked', trafficClass: 'browser' },

@@ -115,3 +115,7 @@ Goga asked why the absence rule needed a site measurement when others must have 
 - The "WebViews omit it" premise in section 6 and in TASK-0101 was wrong for current versions. It came from one vendor blog post and from defensive projects that hedged for lack of data.
 - Rule shipped in `readerkind.ts`: no `Sec-Fetch-Mode` plus a User-Agent claiming Chromium >= 76, Firefox >= 90, or WebKit >= 16.4 is `http-client` (reason `no-fetch-metadata`); an older or unreadable engine claim is `legacy-browser` (reason `pre-fetch-metadata-ua`). Non-navigation shapes with headers present stay `http-client` (`not-navigation-shaped`).
 - The evidence era had 27 non-owner browser-class rows at the time, none referred (11 without Sec-Fetch, 16 with). Too small to use, and no longer needed for the rule. The calibration in TASK-0104 remains the honesty check on the whole partition.
+
+## 8. Raw Workers Logs, 72 hours (2026-09-03 04:00 UTC)
+
+Goga: "dont we already have some raw logs in cloudflare?" We do; Workers Logs keep three days of full request headers. Measured 844 successful page GETs: 112 navigation-shaped reader hits outside hosting networks; 430 navigation-shaped hits on hosting networks (374 from one Google Cloud client claiming Chrome Mobile 114); 64 header-less "iOS 13.2" hits from Tencent Cloud; 49 header-less browser claims outside hosting networks; 12 external referrals, all with Fetch Metadata. Consequence: hosting ASN moves ahead of request shape in the classifier. Full table and method in artifact 09.
