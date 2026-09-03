@@ -3,6 +3,7 @@ import { parseClientErrorPayload } from './schema.js';
 import type { ServerClientErrorEvent } from './types.js';
 
 export { purgeOldClientErrors } from './db.js';
+export type { ClientObservabilityEnv } from './db.js';
 
 const MAX_BODY_BYTES = 8 * 1024;
 

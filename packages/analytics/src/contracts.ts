@@ -1,6 +1,7 @@
 export type TrafficClass = 'browser' | 'bot' | 'ai';
 export type TrafficFilter = 'browser' | 'browserlike' | 'bot' | 'ai' | 'all';
 export type DeviceType = 'desktop' | 'mobile' | 'tablet';
+export type Representation = 'html' | 'markdown';
 export type StatsRange = '7d' | '30d' | '90d' | 'all';
 export type Granularity = 'hour' | 'day';
 

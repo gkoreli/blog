@@ -1,5 +1,6 @@
 import type { PostMeta } from '../lib/frontmatter.js';
 import { parseLocalDate } from '../lib/dates.js';
+import { CONTENT_LICENSE } from '../lib/license.js';
 
 const SITE = 'https://gkoreli.com';
 
@@ -23,6 +24,7 @@ export function rssFeed(posts: PostMeta[]): string {
     <link>${SITE}</link>
     <description>Agentic engineering, open source developer tools, and building in public.</description>
     <language>en</language>
+    <copyright>${CONTENT_LICENSE.name} — ${CONTENT_LICENSE.url}</copyright>
     <atom:link href="${SITE}/feed.xml" rel="self" type="application/rss+xml"/>
 ${items}
   </channel>

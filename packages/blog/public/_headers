@@ -16,6 +16,14 @@
   Content-Type: text/markdown; charset=utf-8
   X-Robots-Tag: noindex
 
+/*.csl.json
+  Content-Type: application/vnd.citationstyles.csl+json
+  X-Robots-Tag: noindex
+
+/*.bib
+  Content-Type: application/x-bibtex; charset=utf-8
+  X-Robots-Tag: noindex
+
 /llms-full.txt
   X-Robots-Tag: noindex
 

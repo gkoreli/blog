@@ -24,6 +24,7 @@ CREATE TABLE page_observations (
   sec_fetch_user INTEGER CHECK (sec_fetch_user IN (0, 1)),
   accepts_html INTEGER CHECK (accepts_html IN (0, 1)),
   has_accept_language INTEGER CHECK (has_accept_language IN (0, 1)),
+  representation TEXT CHECK (representation IN ('html', 'markdown')),
   observed_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 

@@ -371,10 +371,14 @@ Everything below is derived from `PostMeta[]` + prompts files at build time. Add
 | `llms.txt` — post links + prompts links | `PostMeta.title`, `.slug`, `.description`, `.promptCount` | Any post add/edit |
 | `llms-full.txt` — full markdown content | Raw post `.md` files (frontmatter stripped) | Any post add/edit |
 | `posts.json` — structured index with prompts URLs | All `PostMeta` fields + `.promptCount` | Any post add/edit |
-| `/{slug}.md` — clean markdown endpoint | Raw post `.md` (frontmatter stripped) | Any post add/edit |
+| `/{slug}.md` — clean markdown endpoint with citation block | Raw post `.md` (frontmatter stripped) + `PostMeta` | Any post add/edit |
+| `/{slug}.csl.json` — CSL-JSON citation | `PostMeta` + content license constant | Any post add/edit |
+| `/{slug}.bib` — BibTeX citation | `PostMeta` + content license constant | Any post add/edit |
 | `/{slug}/index.html` — JSON-LD, canonical, og:url | `PostMeta` + `ogImage` | Any post add/edit |
 | `/{slug}/prompts/index.html` — canonical | Prompts file existence | Prompts file add/edit |
 | `feed.xml` — RSS items | `PostMeta.title`, `.slug`, `.description`, `.date` | Any post add/edit |
+| `license/index.html` — published content license | Repository `LICENSE` content section | License change |
+| `robots.txt` — access, content signal, license, sitemap | Content license constant + site URL | License or crawler-policy change |
 | `rel="canonical"` — self-referencing on every page | `currentSlug` in `pageShell()` | Automatic |
 | `og:url` — matches canonical | Same as canonical | Automatic |
 
@@ -385,7 +389,6 @@ Everything below is derived from `PostMeta[]` + prompts files at build time. Add
 | `llms.txt` intro paragraph | Site description ("Engineering blog by...") | If blog mission/scope changes | ~Never |
 | `llms.txt` API section | Links to `/api/stats`, `/posts.json`, `/feed.xml` | If API endpoints change | ~Never |
 | `llms.txt` Source section | GitHub repo link | If repo moves | ~Never |
-| `robots.txt` | `User-agent`, `Allow`, `Sitemap` directives | If adding `Disallow` rules or new sitemaps | ~Never |
 | `jsonld.ts` author | Hardcoded `Goga Koreli` + `/about/` URL | Single-author blog — only if author changes | ~Never |
 | `page.ts` site URL | `https://gkoreli.com` used for canonical/og:url | If domain changes | ~Never |
 | AI crawler regex | `classify.ts` — curated list of ~35 agents | Periodic sync from `ai-robots-txt/ai.robots.txt` | ~Quarterly |

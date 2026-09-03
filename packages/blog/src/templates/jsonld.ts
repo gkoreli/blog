@@ -1,4 +1,5 @@
 import type { PostMeta } from '../lib/frontmatter.js';
+import { CONTENT_LICENSE } from '../lib/license.js';
 
 const SITE = 'https://gkoreli.com';
 const AUTHOR_ID = `${SITE}/about#goga-koreli`;
@@ -41,6 +42,7 @@ export function blogPostingJsonLd(meta: PostMeta, ogImage?: string): string {
     datePublished: meta.date,
     dateModified: meta.lastModified ?? meta.date,
     author: authorJsonLd(),
+    license: CONTENT_LICENSE.url,
   };
 
   if (altHeadline) ld.alternativeHeadline = altHeadline;
