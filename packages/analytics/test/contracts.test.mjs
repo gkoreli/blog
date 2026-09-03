@@ -241,6 +241,13 @@ test('request metadata extracts bounded request evidence and reports absent valu
     [negative.secFetchUser, negative.acceptsHtml, negative.hasAcceptLanguage],
     [0, 0, 0],
   );
+
+  const wildcard = extractRequestMetadata(request('/wildcard', { headers: {
+    Accept: '*/*',
+    'Sec-Fetch-Site': 'A'.repeat(40),
+  } }), undefined);
+  assert.equal(wildcard.acceptsHtml, 1);
+  assert.equal(wildcard.secFetchSite, 'a'.repeat(32));
 });
 
 test('edge observation schedules one constrained write and fails closed on a missing HMAC secret', async () => {
@@ -491,6 +498,20 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
     agent.totals.views,
   );
 
+  const composed = await queryStats(d1, {
+    range: '7d',
+    traffic: 'ai',
+    path: '/article',
+    agent: 'GPTBot',
+  }, now);
+  assert.equal(composed.totals.views, 1);
+  assert.deepEqual(composed.byPath.map((row) => row.path), ['/article']);
+  assert.deepEqual(composed.byCountry.map((row) => row.country), ['US']);
+  assert.deepEqual(composed.byReferrer.map((row) => row.referrerHost), ['example.com']);
+  assert.deepEqual(composed.byDevice.map((row) => row.deviceType), ['desktop']);
+  assert.deepEqual(composed.byAgent.map((row) => row.agentName), ['GPTBot']);
+  assert.equal(composed.timeSeries.reduce((sum, row) => sum + row.views, 0), 1);
+
   const agentDefault = await handleStats(request('/api/stats?agent=GPTBot'), { DB: d1 });
   assert.equal(agentDefault.status, 200);
   assert.equal((await agentDefault.json()).filters.traffic, 'all');
@@ -498,6 +519,9 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
   const browserConflict = await handleStats(request('/api/stats?agent=GPTBot&traffic=browser'), { DB: d1 });
   assert.equal(browserConflict.status, 400);
   assert.match((await browserConflict.json()).error, /cannot be combined/);
+  const browserlikeConflict = await handleStats(request('/api/stats?agent=GPTBot&traffic=browserlike'), { DB: d1 });
+  assert.equal(browserlikeConflict.status, 400);
+  assert.match((await browserlikeConflict.json()).error, /cannot be combined/);
   const classConflict = await handleStats(request('/api/stats?agent=GPTBot&traffic=bot'), { DB: d1 });
   assert.equal(classConflict.status, 400);
   assert.match((await classConflict.json()).error, /cannot be combined/);
