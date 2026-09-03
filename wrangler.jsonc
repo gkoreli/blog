@@ -29,7 +29,8 @@
 		{
 			"binding": "DB",
 			"database_name": "blog-analytics",
-			"database_id": "56fd8321-3499-48ba-bb45-a1a80a5a9b94"
+			"database_id": "56fd8321-3499-48ba-bb45-a1a80a5a9b94",
+			"migrations_dir": "packages/analytics/migrations"
 		}
 	],
 	// Native Workers Rate Limiting — GA Sept 2025, free tier, zero KV writes.

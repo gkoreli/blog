@@ -320,7 +320,7 @@ test('hosting list excludes relay/CDN ASNs and partition SQL inlines only valida
   assert.match(browser.sql, /observation_source = 'beacon'/);
 });
 
-test('browser partition keeps beacons and navigation-shaped edge rows while each failed signal demotes', async () => {
+test('browser partition keeps beacons, unchecked edge rows, and navigation-shaped edge rows while each failed signal demotes', async () => {
   const { sqlite, d1 } = analyticsDatabase();
   const observedAt = '2026-09-03 12:00:00';
   insertObservation(sqlite, {
@@ -337,8 +337,13 @@ test('browser partition keeps beacons and navigation-shaped edge rows while each
     ...NAVIGATION_EVIDENCE,
     observedAt,
   });
+  insertObservation(sqlite, {
+    path: '/unchecked-edge',
+    dailyClientId: 'c'.repeat(32),
+    trafficClass: 'browser',
+    observedAt,
+  });
   const failures = [
-    { path: '/null-evidence' },
     { path: '/bad-mode', ...NAVIGATION_EVIDENCE, secFetchMode: 'cors' },
     { path: '/bad-dest', ...NAVIGATION_EVIDENCE, secFetchDest: 'iframe' },
     { path: '/no-html', ...NAVIGATION_EVIDENCE, acceptsHtml: 0 },
@@ -356,7 +361,7 @@ test('browser partition keeps beacons and navigation-shaped edge rows while each
   const now = new Date('2026-09-03T13:00:00.000Z');
   const browsers = await queryStats(d1, { range: '7d', traffic: 'browser' }, now);
   const browserlike = await queryStats(d1, { range: '7d', traffic: 'browserlike' }, now);
-  assert.deepEqual(browsers.byPath.map((row) => row.path).sort(), ['/beacon', '/edge-navigation']);
+  assert.deepEqual(browsers.byPath.map((row) => row.path).sort(), ['/beacon', '/edge-navigation', '/unchecked-edge']);
   assert.deepEqual(browserlike.byPath.map((row) => row.path).sort(), failures.map((row) => row.path).sort());
 });
 
@@ -392,6 +397,8 @@ test('stats queries enforce one UTC window, class partition, owner exclusion, an
     path: '/browserlike',
     dailyClientId: '9'.repeat(32),
     trafficClass: 'browser',
+    ...NAVIGATION_EVIDENCE,
+    hasAcceptLanguage: 0,
     observedAt: '2026-08-21 12:00:00',
   });
   insertObservation(sqlite, {

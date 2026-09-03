@@ -19,13 +19,20 @@ function hostingAsnList(): string {
 }
 
 export function partitionPredicate(traffic: TrafficFilter): PartitionPredicate {
-  const browser = `((observation_source = 'beacon' AND traffic_class = 'browser') OR (traffic_class = 'browser' AND sec_fetch_mode = 'navigate' AND sec_fetch_dest = 'document' AND accepts_html = 1 AND has_accept_language = 1 AND (asn IS NULL OR asn NOT IN (${hostingAsnList()}))))`;
+  // Three ways into Browsers (ADR-0016.2, amended 2026-09-03):
+  //   1. legacy beacon rows, which executed JavaScript in a browser;
+  //   2. edge rows recorded before evidence collection began (has_accept_language is
+  //      NULL only for those rows; ingestion always writes 0 or 1), kept so the public
+  //      series stays continuous and the boundary is disclosed rather than hidden;
+  //   3. edge rows with evidence that is navigation-shaped and not from a hosting ASN.
+  // Browser-like is therefore "checked and failed", never "unchecked".
+  const browser = `((observation_source = 'beacon' AND traffic_class = 'browser') OR (traffic_class = 'browser' AND has_accept_language IS NULL) OR (traffic_class = 'browser' AND sec_fetch_mode = 'navigate' AND sec_fetch_dest = 'document' AND accepts_html = 1 AND has_accept_language = 1 AND (asn IS NULL OR asn NOT IN (${hostingAsnList()}))))`;
 
   switch (traffic) {
     case 'browser':
       return { sql: browser, values: [] };
     case 'browserlike':
-      // COALESCE turns the all-NULL pre-evidence edge shape into false before negation.
+      // COALESCE guards the NULL that a partially-NULL evidence row can produce before negation.
       return { sql: `traffic_class = 'browser' AND NOT COALESCE(${browser}, 0)`, values: [] };
     case 'bot':
       return { sql: "traffic_class = 'bot'", values: [] };
