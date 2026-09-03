@@ -858,6 +858,15 @@ test('migrations 0005 and 0006 apply after the existing chain and backfill legac
     WHERE reader_kind IS NULL OR reader_reason IS NULL`).get().count, 0);
 });
 
+test('SQL reader-kind backfill inlines exactly the hosting ASN list', () => {
+  const backfill = readFileSync(new URL('../migrations/0006_backfill_reader_kind.sql', import.meta.url), 'utf8');
+  const lists = [...backfill.matchAll(/asn IN \(([^)]*)\)/g)].map(match =>
+    match[1].split(',').map(value => Number(value.trim())).filter(Number.isFinite).sort((a, b) => a - b),
+  );
+  assert.equal(lists.length, 2);
+  for (const list of lists) assert.deepEqual(list, [...HOSTING_ASNS].sort((a, b) => a - b));
+});
+
 test('SQL reader-kind backfill uses the same closed-set mapping as ingestion', () => {
   const { sqlite } = analyticsDatabase();
   const observedAt = '2026-09-03 12:00:00';

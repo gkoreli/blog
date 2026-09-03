@@ -1,6 +1,18 @@
 // ADR-0016.2: never add AS15169 (Google), AS13335 (Cloudflare), AS36183 or
 // AS20940 (Akamai), or AS54113 (Fastly). Those networks carry consumer services,
 // iCloud Private Relay, or Cloudflare WARP traffic and are not hosting-only evidence.
+//
+// Also not added, seen carrying automation in the 2026-09-03 Workers Logs sample
+// (research artifact 09): AS9009 M247, AS60068 and AS212238 Datacamp/CDN77,
+// AS210558 1337 Services. All four sell consumer VPN exits, so a person behind a
+// VPN would be convicted by the network alone. The MRC standard excludes
+// "routing artifacts of legitimate users" from data-center filtration for this
+// reason. Automation from those networks is still caught by the request-shape
+// and Fetch Metadata rules in readerkind.ts.
+//
+// Every entry is verified against Team Cymru whois (`whois -h whois.cymru.com
+// " -v AS<n>"`) on checkedOn. Migration 0006 inlines the same numbers; the
+// analytics test suite asserts the two lists match.
 
 export const HOSTING_NETWORKS = [
   { asn: 16509, provider: 'Amazon Web Services', checkedOn: '2026-09-02' },
@@ -23,6 +35,7 @@ export const HOSTING_NETWORKS = [
   { asn: 16265, provider: 'Leaseweb', checkedOn: '2026-09-02' },
   { asn: 60781, provider: 'Leaseweb', checkedOn: '2026-09-02' },
   { asn: 8560, provider: 'IONOS', checkedOn: '2026-09-02' },
+  { asn: 30058, provider: 'FDCservers', checkedOn: '2026-09-03' },
 ] as const;
 
 export const HOSTING_ASNS: ReadonlySet<number> = new Set(

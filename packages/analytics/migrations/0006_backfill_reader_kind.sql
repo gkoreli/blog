@@ -34,7 +34,7 @@ SET
     WHEN asn IN (
         16509, 14618, 396982, 8075, 14061, 24940, 16276, 20473, 63949,
         31898, 45102, 45090, 132203, 51167, 40021, 141995, 12876, 16265,
-        60781, 8560
+        60781, 8560, 30058
       ) THEN 'cloud-browser'
     WHEN sec_fetch_mode = 'navigate' AND sec_fetch_dest = 'document' THEN 'browser'
     ELSE 'http-client'
@@ -49,7 +49,7 @@ SET
     WHEN asn IN (
         16509, 14618, 396982, 8075, 14061, 24940, 16276, 20473, 63949,
         31898, 45102, 45090, 132203, 51167, 40021, 141995, 12876, 16265,
-        60781, 8560
+        60781, 8560, 30058
       ) THEN 'hosting-asn:' || asn
     WHEN sec_fetch_mode = 'navigate' AND sec_fetch_dest = 'document' THEN 'navigation-shaped'
     ELSE 'not-navigation-shaped'
