@@ -54,6 +54,7 @@ The lane bets that reference pages earn links. At +10h this page has one self-su
 | +10h as the rows support | 2026-09-03 17:00 UTC | ~21 | 7 | 50 | 794 | 872 |
 | +36h as the stats page showed it | 2026-09-04 18:00 UTC | 52 | 8 | 52 | 888 | 1000 |
 | +36h as the rows support | 2026-09-04 18:00 UTC | ~21 | 8 | 52 | 898 | 979 |
+| +36h after migration 0008 | 2026-09-04 18:32 UTC | 37 | 8 | 54 | 902 | 1001 |
 | +7d | owed 2026-09-10 | | | | | |
 
 ## +36h read, 2026-09-04 18:00 UTC
@@ -70,3 +71,11 @@ The Browsers class grew from 42 to 52. All ten new rows are automation, so the r
 So the honest reader count for this article stands at about 21, all from the first day and mostly from Hacker News. Nothing arrived in the following 24 hours that looks like a person.
 
 Three of these networks were added to the hosting list on 2026-09-04 (ADR-0016.4 section B). The polling client is left as it is and recorded here as the limit: request evidence cannot see a pattern that only exists across requests, and this site does not profile clients over time.
+
+## Migration 0008 applied, 2026-09-04 18:30 UTC
+
+The reclassification is live in D1. It rewrote 38 rows across the whole site, not just this article: 19 Internet Archive rows from `browser` to `preview-or-feed`, and 19 hosting rows from `browser` or `legacy-browser` to `cloud-browser` on the eight added ASNs. The public Browsers count for this page fell from 52 to 37, and the remaining gap to the roughly 21 the rows support is the author's own seven views, which need the owner endpoint and therefore the deploy.
+
+Nothing was lost. The 38 affected rows were exported out of band before the migration ran, and the migration records every rewrite in `reader_kind_revisions` with the value it replaced. Cross-checking the two afterwards: 38 rows each, identical observation ids, and zero rows whose recorded prior value differs from the export. Total observations are unchanged and the migration contains no `DELETE`.
+
+That table is new and matters beyond this change: migrations 0006 and 0007 rewrote classifications in place, so their prior verdicts are recoverable only by reading their SQL. From 0008 onward each rewrite is auditable per observation.
