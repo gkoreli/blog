@@ -48,6 +48,9 @@ export const HOSTING_NETWORKS = [
   { asn: 150436, provider: 'Byteplus', checkedOn: '2026-09-03' },
   { asn: 59711, provider: 'HZ Hosting', checkedOn: '2026-09-03' },
   { asn: 25820, provider: 'IT7 Networks', checkedOn: '2026-09-03' },
+  { asn: 213230, provider: 'Hetzner Cloud (second ASN)', checkedOn: '2026-09-04' },
+  { asn: 62610, provider: 'Zenlayer', checkedOn: '2026-09-04' },
+  { asn: 139341, provider: 'Aceville', checkedOn: '2026-09-04' },
 ] as const;
 
 export const HOSTING_ASNS: ReadonlySet<number> = new Set(

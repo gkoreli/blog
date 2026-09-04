@@ -1168,7 +1168,7 @@ test('migrations 0005 to 0007 apply after the existing chain and backfill legacy
   );
 });
 
-test('migration 0008 creates owner clients and narrowly reclassifies bounded network history', () => {
+test('migration 0008 creates owner clients and narrowly reclassifies network history at the migration boundary', () => {
   const sqlite = new DatabaseSync(':memory:');
   sqlite.exec(`CREATE TABLE page_observations (
     path TEXT NOT NULL,
@@ -1180,7 +1180,7 @@ test('migration 0008 creates owner clients and narrowly reclassifies bounded net
   const insert = sqlite.prepare(`INSERT INTO page_observations
     (path, asn, reader_kind, reader_reason, observed_at) VALUES (?, ?, ?, ?, ?)`);
   const beforeBoundary = '2026-09-03 23:59:59';
-  const hostingAsns = [29802, 64267, 150436, 59711, 25820];
+  const hostingAsns = [29802, 64267, 150436, 59711, 25820, 213230, 62610, 139341];
   hostingAsns.forEach((asn, index) => insert.run(
     `/hosting-${asn}`,
     asn,
@@ -1190,8 +1190,11 @@ test('migration 0008 creates owner clients and narrowly reclassifies bounded net
   ));
   insert.run('/archiver-browser', 7941, 'browser', 'navigation-shaped', beforeBoundary);
   insert.run('/archiver-legacy', 7941, 'legacy-browser', 'pre-fetch-metadata-ua', '2026-01-01 00:00:00');
-  insert.run('/hosting-at-cutoff', 29802, 'browser', 'navigation-shaped', '2026-09-04 00:00:00');
-  insert.run('/archiver-at-cutoff', 7941, 'browser', 'navigation-shaped', '2026-09-04 00:00:00');
+  // ADR-0016.4: the boundary is the migration, not a calendar date. Rows written
+  // after the ADR but before the deploy came from the old classifier and are
+  // corrected too; only the refused ASNs and the protected kinds are left alone.
+  insert.run('/hosting-after-adr', 29802, 'browser', 'navigation-shaped', '2026-09-04 12:00:00');
+  insert.run('/archiver-after-adr', 7941, 'browser', 'navigation-shaped', '2026-09-04 12:00:00');
   insert.run('/old-hosting', 16509, 'browser', 'navigation-shaped', beforeBoundary);
   insert.run('/hurricane-electric', 6939, 'browser', 'navigation-shaped', beforeBoundary);
   insert.run('/black-mesa', 46997, 'browser', 'navigation-shaped', beforeBoundary);
@@ -1229,21 +1232,27 @@ test('migration 0008 creates owner clients and narrowly reclassifies bounded net
       reader_reason: `hosting-asn:${asn}`,
     });
   }
-  for (const path of ['/archiver-browser', '/archiver-legacy']) {
+  for (const path of ['/archiver-browser', '/archiver-legacy', '/archiver-after-adr']) {
     assert.deepEqual({ ...sqlite.prepare(`SELECT reader_kind, reader_reason
       FROM page_observations WHERE path = ?`).get(path) }, {
       reader_kind: 'preview-or-feed',
       reader_reason: 'archiver-asn:7941',
     });
   }
+  // Written after the ADR but before the deploy: still the old classifier's
+  // output, so the migration corrects it.
+  assert.deepEqual({ ...sqlite.prepare(`SELECT reader_kind, reader_reason
+    FROM page_observations WHERE path = ?`).get('/hosting-after-adr') }, {
+    reader_kind: 'cloud-browser',
+    reader_reason: 'hosting-asn:29802',
+  });
+  // Refused ASNs and networks 0006 already covered are left exactly as they were.
   assert.deepEqual(
     sqlite.prepare(`SELECT path, reader_kind, reader_reason FROM page_observations
-      WHERE path IN ('/hosting-at-cutoff', '/archiver-at-cutoff', '/old-hosting',
-        '/hurricane-electric', '/black-mesa') ORDER BY path`).all().map((row) => ({ ...row })),
+      WHERE path IN ('/old-hosting', '/hurricane-electric', '/black-mesa')
+      ORDER BY path`).all().map((row) => ({ ...row })),
     [
-      { path: '/archiver-at-cutoff', reader_kind: 'browser', reader_reason: 'navigation-shaped' },
       { path: '/black-mesa', reader_kind: 'browser', reader_reason: 'navigation-shaped' },
-      { path: '/hosting-at-cutoff', reader_kind: 'browser', reader_reason: 'navigation-shaped' },
       { path: '/hurricane-electric', reader_kind: 'browser', reader_reason: 'navigation-shaped' },
       { path: '/old-hosting', reader_kind: 'browser', reader_reason: 'navigation-shaped' },
     ],
@@ -1298,7 +1307,11 @@ test('SQL reader-kind migrations inline exactly the current network registries',
   const archiverAsns = [...migration.matchAll(/WHERE asn = (\d+)/g)]
     .map((match) => Number(match[1])).sort((a, b) => a - b);
   assert.deepEqual(archiverAsns, [...ARCHIVER_NETWORKS.keys()].sort((a, b) => a - b));
-  assert.equal((migration.match(/observed_at < '2026-09-04 00:00:00'/g) ?? []).length, 2);
+  // ADR-0016.4: no calendar bound. Narrowness comes from the ASN and
+  // reader_kind filters, so a row written between the ADR and the deploy is
+  // corrected rather than left behind a stale date.
+  assert.equal((migration.match(/observed_at\s*</g) ?? []).length, 0);
+  assert.equal((migration.match(/reader_kind IN \('browser', 'legacy-browser'\)/g) ?? []).length, 2);
 });
 
 test('SQL reader-kind backfill uses the same closed-set mapping as ingestion', () => {

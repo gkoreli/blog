@@ -52,5 +52,21 @@ The lane bets that reference pages earn links. At +10h this page has one self-su
 |---|---|---:|---:|---:|---:|---:|
 | +10h as the stats page showed it | 2026-09-03 16:30 UTC | 42 | 7 | 48 | 782 | 879 |
 | +10h as the rows support | 2026-09-03 17:00 UTC | ~21 | 7 | 50 | 794 | 872 |
-| +24h | owed 2026-09-04 | | | | | |
+| +36h as the stats page showed it | 2026-09-04 18:00 UTC | 52 | 8 | 52 | 888 | 1000 |
+| +36h as the rows support | 2026-09-04 18:00 UTC | ~21 | 8 | 52 | 898 | 979 |
 | +7d | owed 2026-09-10 | | | | | |
+
+## +36h read, 2026-09-04 18:00 UTC
+
+The Browsers class grew from 42 to 52. All ten new rows are automation, so the reader count did not move.
+
+| Rows | Network | What they are |
+|---|---:|---|
+| 6 | AS17638 China Telecom Tianjin, referrer `uniuit.com` | five of the six share one daily client id and arrive at 02:43, 06:48, 10:09, 13:25 and 17:53 UTC, roughly every three and a half hours. That is a monitor polling the page, not a person rereading it. The network is a genuine consumer ISP, so no network rule catches it and no per-request rule can: the signal is the interval, which only exists across requests |
+| 2 | AS139341 Aceville Pte Ltd | both at exactly 22:58:39, from two client ids geolocated Thailand and Mexico. A proxy pool |
+| 1 | AS213230 Hetzner Cloud | a second Hetzner ASN that the hosting list was missing while AS24940 was present |
+| 1 | AS62610 Zenlayer | edge-cloud provider |
+
+So the honest reader count for this article stands at about 21, all from the first day and mostly from Hacker News. Nothing arrived in the following 24 hours that looks like a person.
+
+Three of these networks were added to the hosting list on 2026-09-04 (ADR-0016.4 section B). The polling client is left as it is and recorded here as the limit: request evidence cannot see a pattern that only exists across requests, and this site does not profile clients over time.
