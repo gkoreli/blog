@@ -1171,6 +1171,7 @@ test('migrations 0005 to 0007 apply after the existing chain and backfill legacy
 test('migration 0008 creates owner clients and narrowly reclassifies network history at the migration boundary', () => {
   const sqlite = new DatabaseSync(':memory:');
   sqlite.exec(`CREATE TABLE page_observations (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     path TEXT NOT NULL,
     asn INTEGER,
     reader_kind TEXT,
@@ -1246,6 +1247,21 @@ test('migration 0008 creates owner clients and narrowly reclassifies network his
     reader_kind: 'cloud-browser',
     reader_reason: 'hosting-asn:29802',
   });
+  // ADR-0016.4: every rewrite is recorded with the value it replaced, so a
+  // later reader can reconstruct what the classifier said before this method
+  // change. Migrations 0006 and 0007 overwrote in place and could not.
+  const revisions = sqlite.prepare(`SELECT observation_id, migration, from_kind,
+    from_reason, to_kind, to_reason FROM reader_kind_revisions ORDER BY id`).all();
+  // One per eligible fixture row: every hosting ASN, the post-ADR hosting row,
+  // and the three archiver rows. Rows already classified are not rewritten and
+  // therefore leave no revision.
+  assert.equal(revisions.length, hostingAsns.length + 1 + 3);
+  assert.ok(revisions.every((row) => row.migration
+    === '0008_owner_clients_and_network_reclassification'));
+  assert.ok(revisions.every((row) => row.from_kind === 'browser'
+    || row.from_kind === 'legacy-browser'));
+  assert.ok(revisions.every((row) => row.from_reason !== row.to_reason));
+
   // Refused ASNs and networks 0006 already covered are left exactly as they were.
   assert.deepEqual(
     sqlite.prepare(`SELECT path, reader_kind, reader_reason FROM page_observations
@@ -1294,7 +1310,9 @@ test('SQL reader-kind migrations inline exactly the current network registries',
   const additionLists = [...migration.matchAll(/WHERE asn IN \(([^)]*)\)/g)].map(match =>
     match[1].split(',').map(value => Number(value.trim())).filter(Number.isFinite).sort((a, b) => a - b),
   );
-  assert.equal(additionLists.length, 1);
+  // One list for the audit INSERT and one for the UPDATE; they must agree.
+  assert.equal(additionLists.length, 2);
+  assert.deepEqual(additionLists[0], additionLists[1]);
   const originalSet = new Set(originalLists[0]);
   assert.deepEqual(
     additionLists[0],
@@ -1304,14 +1322,17 @@ test('SQL reader-kind migrations inline exactly the current network registries',
     [...new Set([...originalLists[0], ...additionLists[0]])].sort((a, b) => a - b),
     [...HOSTING_ASNS].sort((a, b) => a - b),
   );
-  const archiverAsns = [...migration.matchAll(/WHERE asn = (\d+)/g)]
-    .map((match) => Number(match[1])).sort((a, b) => a - b);
+  const archiverAsns = [...new Set([...migration.matchAll(/WHERE asn = (\d+)/g)]
+    .map((match) => Number(match[1])))].sort((a, b) => a - b);
   assert.deepEqual(archiverAsns, [...ARCHIVER_NETWORKS.keys()].sort((a, b) => a - b));
   // ADR-0016.4: no calendar bound. Narrowness comes from the ASN and
   // reader_kind filters, so a row written between the ADR and the deploy is
   // corrected rather than left behind a stale date.
   assert.equal((migration.match(/observed_at\s*</g) ?? []).length, 0);
-  assert.equal((migration.match(/reader_kind IN \('browser', 'legacy-browser'\)/g) ?? []).length, 2);
+  assert.equal((migration.match(/reader_kind IN \('browser', 'legacy-browser'\)/g) ?? []).length, 4);
+  // Every rewrite is recorded before it happens.
+  assert.equal((migration.match(/INSERT INTO reader_kind_revisions/g) ?? []).length, 2);
+  assert.equal((migration.match(/UPDATE page_observations/g) ?? []).length, 2);
 });
 
 test('SQL reader-kind backfill uses the same closed-set mapping as ingestion', () => {

@@ -51,3 +51,20 @@ CREATE TABLE owner_clients (
   utc_date TEXT NOT NULL,
   marked_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
+
+-- ADR-0016.4: every reclassification of reader_kind records the value it
+-- replaced, so a method change can be audited per observation rather than only
+-- by reading the migration that made it.
+CREATE TABLE reader_kind_revisions (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  observation_id INTEGER NOT NULL REFERENCES page_observations(id),
+  migration TEXT NOT NULL,
+  from_kind TEXT,
+  from_reason TEXT,
+  to_kind TEXT NOT NULL,
+  to_reason TEXT NOT NULL,
+  revised_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX idx_reader_kind_revisions_observation
+  ON reader_kind_revisions(observation_id);
