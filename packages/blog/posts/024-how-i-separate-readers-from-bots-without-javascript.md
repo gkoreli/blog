@@ -18,7 +18,7 @@ series:
 On my blog, network and request-header rules moved **277 of 372 browser-User-Agent requests out of the Browsers category: 74.5%**. That gives me a much more useful account of the traffic arriving at my Cloudflare Worker. It has not established how many people read the site. Over the same two complete UTC days, the remaining **95 Browser HTML observations** still differ from **14 Cloudflare Web Analytics page loads**. The useful result is knowing which requests the rules separate, why they separate them, and where the evidence stops.
 
 - **Network evidence catches requests that pass the header checks.** In that window, 60 cloud-classified requests carried the navigation headers the browser rule requires.
-- **A reason for each classification makes the counter explainable.** It also exposes mistakes: our HTML-acceptance check mishandles valid headers, and new rows were missing their network-provenance marker.
+- **A reason for each classification makes the counter explainable.** It also exposed mistakes: our HTML-acceptance check mishandled valid headers, and new rows were missing their network-provenance marker. Both have since been repaired.
 - **Client identity and readership need different evidence.** Nine stored signature verifications identify signers, including crawlers and deliberate tests. They do not count people asking an assistant to read.
 - **The remaining disagreement is a measured problem.** Neither a smaller Browser count nor agreement with a script counter establishes audience accuracy.
 
@@ -75,9 +75,9 @@ The [curated network list](https://github.com/gkoreli/blog/blob/1737fa9a8056d639
 
 Those version thresholds follow [browser support data](https://caniuse.com/mdn-http_headers_sec-fetch-mode), checked September 6. They establish an expected browser capability; they do not authenticate each request or establish a zero false-positive rate for every embedded client. We do not require `Sec-Fetch-User`: the [Safari compatibility investigation](https://github.com/mdn/browser-compat-data/issues/27928) found support for other Fetch Metadata headers without it.
 
-The follow-up audit also found a defect in our own `Accept` check. Running `extractRequestMetadata()` on `Accept: text/html;q=0` returns `acceptsHtml: 1`; running it on `Accept: text/*` returns `0`. The first explicitly excludes HTML, while the second admits it. The substring check ignores HTTP quality and media-range rules. [RFC 9110, Accept semantics](https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.1); [recorded reproduction](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md).
+The follow-up audit also found a defect in our own `Accept` check. The original `extractRequestMetadata()` returned `acceptsHtml: 1` for `Accept: text/html;q=0` and `0` for `Accept: text/*`. The first explicitly excludes HTML, while the second admits it. The substring check ignored HTTP quality and media-range rules. [RFC 9110, Accept semantics](https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.1); [recorded reproduction](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md).
 
-That parser repair is pending in this revision. Stored booleans cannot tell us how many historical requests it affected. The request rules are inspectable and useful, but their implementation and error rate need separate checks.
+The September 6 repair now evaluates quality, specificity, and matching representation parameters. In twelve selected local ingestion cases, seven incorrect acceptance results became zero; this is a regression check, not a production error-rate estimate. [Executed experiment and artifacts](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/03-local-experiment.md). Stored booleans cannot tell us how many historical requests the defect affected.
 
 ## What open-source classifiers contributed
 
@@ -166,9 +166,9 @@ The original 72-hour sample contained 112 navigation-shaped requests outside the
 
 For older rows, the retained zone data allowed a partial reconstruction. Of 1,962 pre-evidence observations, 1,429 received an ASN only when all sampled requests in the matching hour/path/country/device group agreed on the network. There were 191 ambiguous rows and 342 unmatched rows. The migration records reconstructed networks as `asn_source = 'zone-sample'`. This is a sampled attribution method, not an exact request join. [Reconstruction method](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/09-fetch-metadata-prior-art.md).
 
-The follow-up found another defect: all 1,797 inspected observations from September 3 05:05:22 through September 6 01:29:53 UTC had null `asn_source`. The INSERT omits that field. My previous statement that every row records its network provenance was therefore wrong. The migration marked rows that existed when it ran; that did not fix future ingestion. [Provenance audit](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md).
+The follow-up found another defect: all 1,797 inspected observations from September 3 05:05:22 through September 6 01:29:53 UTC had null `asn_source`. The then-active INSERT omitted that field. My previous statement that every row records its network provenance was therefore wrong. The migration marked rows that existed when it ran; that did not fix future ingestion. [Provenance audit](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md).
 
-Preserving history requires checking both the migration and subsequent writes. A classification revision, a database migration, and a Worker deployment are separate events; recording one does not establish the others.
+The September 6 future-write repair now records `asn_source = 'request'` when an ASN is available, leaving missing networks unmarked. [Deployment and subsequent-write check](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/04-release-verification.md). Preserving history requires checking both the migration and subsequent writes. A classification revision, a database migration, and a Worker deployment are separate events; recording one does not establish the others.
 
 ## What the September 4–5 measurements show
 
@@ -208,6 +208,6 @@ The [research directory](https://github.com/gkoreli/blog/tree/main/packages/blog
 
 D1 observations, private Worker logs/traces, and Cloudflare RUM are separate collections. A field absent from D1 may exist in operational diagnostics. The published evidence contains selected observations and reviewed aggregates, not access to the private Cloudflare account. Stored signature results are not independent re-verification, and inferred zone matches are not shared-ID joins. No verified count of distinct people, reading actions, or citations follows from these counters.
 
-**September 6 correction:** added the September 4–5 measurements; removed the universal accuracy thresholds and lower-bound claim; corrected signature arrivals, vendor-IP validation, and network provenance; disclosed the `Accept` defect. The original publication date and URL remain. Runtime fixes and the full controlled-client study are separate work.
+**September 6 correction:** added the September 4–5 measurements; removed the universal accuracy thresholds and lower-bound claim; corrected signature arrivals, vendor-IP validation, and network provenance; disclosed the `Accept` defect. The original publication date and URL remain. The parser and future-write provenance repairs were subsequently merged and deployed on September 6; the local regression result is linked above. The full browser/beacon study remains separate work.
 
 I wanted this page to exist on the night I could not find it. If you have a captured browser request that contradicts one of these rules, or a measured explanation for a similar counter gap, tell me where this is wrong.

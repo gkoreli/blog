@@ -229,3 +229,7 @@ i want to iterate and publish the article and start working on the next generati
 I would adjust my earlier ordering slightly: **preserve the time-sensitive evidence first**, then make the compact corrections and run the controlled checks. Cloudflare retains unsampled beacon data for seven days before longer-term aggregation, so waiting until September 17 to collect would weaken the comparison. [Cloudflare retention and sampling](https://developers.cloudflare.com/web-analytics/faq/#is-the-data-sampled)
 
 The engineering objective is to explain specific counting failures and correct them. A smaller Browser total—or closer agreement with RUM—would not, by itself, demonstrate improvement.
+
+---
+
+is article ready to be shared on hackernews and X? does it have all the valuable information? does it have researchFootprint? does it have all the authoritative cross references and all that

@@ -45,7 +45,7 @@ Order of evaluation: verified signature, named agent rules, headless tokens, arc
 
 The implemented navigation predicate requires `Sec-Fetch-Mode: navigate`, `Sec-Fetch-Dest: document`, `accepts_html = 1`, and `has_accept_language = 1`. `Sec-Fetch-Site` is recorded but not restricted; `Sec-Fetch-User` is not required. Safari's compatibility evidence is discussed in research artifact 09.
 
-**Accept repair, implemented locally September 6:** `accept.ts` replaces substring matching with media-range quality and specificity for `text/html; charset=utf-8`, following [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.1). Explicit zero-quality HTML overrides a wider positive wildcard; `text/*` accepts HTML. Missing Accept stays null evidence. Invalid weights provide no positive acceptance evidence, and parameters must match the representation. This branch has not been deployed. A twelve-case local ingestion experiment changed seven incorrect results to their expected values; historical effect cannot be calculated from stored booleans alone.
+**Accept repair, deployed September 6:** `accept.ts` replaces substring matching with media-range quality and specificity for `text/html; charset=utf-8`, following [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.1). Explicit zero-quality HTML overrides a wider positive wildcard; `text/*` accepts HTML. Missing Accept stays null evidence. Invalid weights provide no positive acceptance evidence, and parameters must match the representation. The repair was merged and deployed on September 6; see the release verification linked below. A twelve-case local ingestion experiment changed seven incorrect results to their expected values; historical effect cannot be calculated from stored booleans alone.
 
 ## The two rules that matter most
 
@@ -61,7 +61,7 @@ Method changes are dated boundaries, never deletions.
 
 - Rows before 2026-08-26 came from a browser JavaScript beacon (`observation_source = 'beacon'`); they are `browser` / `beacon-script-ran`, because the site's script ran in a page.
 - Pre-evidence edge browser-UA rows retain `user-agent-only` provenance unless reconstructed network evidence changes their kind. Migration 0007 reconstructed an ASN for 1,429 of 1,962 pre-evidence observations using the retained zone sample, matched by UTC hour/path/country/device, with assignment only when sampled candidates agreed. It marks them `asn_source = 'zone-sample'`; applicable browser-UA rows on hosting networks became `cloud-browser`. The method is correlation, not a shared-ID request join.
-- Migration 0007 marked applicable existing request-derived ASNs as `request`, but the original subsequent ingestion omitted `asn_source`. All 1,797 observations in the inspected September 3 05:05:22–September 6 01:29:53 UTC cohort had NULL. The local future-write repair now records a request source when an ASN is present. Deployment verification and any supported historical reconstruction remain open; do not silently infer a provenance marker for every missing row.
+- Migration 0007 marked applicable existing request-derived ASNs as `request`, but the original subsequent ingestion omitted `asn_source`. All 1,797 observations in the inspected September 3 05:05:22–September 6 01:29:53 UTC cohort had NULL. The local future-write repair now records a request source when an ASN is present. Subsequent production writes have been checked; historical reconstruction remains open; do not silently infer a provenance marker for every missing row.
 
 ## Web Bot Auth
 
@@ -110,4 +110,6 @@ npx wrangler d1 migrations apply blog-analytics --remote   # migrations live in 
 - Vendor crawler documentation for each named rule (links in the header comment of `classify.ts`).
 - Open-source classifier reading with line references, hosting-list survey, Fetch Metadata prior art, and the log measurements: `packages/blog/drafts/research/readers-vs-bots/`, artifacts 03, 04, and 09.
 
-The [controlled local experiment](../blog/drafts/research/edge-vs-rum/03-local-experiment.md) records both runs and compiled-source hashes. These parser/provenance changes are on `codex/analytics-calibration`; they add no visitor fields and do not change signer verification, client-role grouping, content negotiation, or historical rows. Browser/beacon trials and the TASK-0119 grouping repair remain open.
+The [controlled local experiment](../blog/drafts/research/edge-vs-rum/03-local-experiment.md) records both runs and compiled-source hashes. These parser/provenance changes were merged to `main` in PR #15; they add no visitor fields and do not change signer verification, client-role grouping, content negotiation, or historical rows. Browser/beacon trials and the TASK-0119 grouping repair remain open.
+
+[Release verification](../blog/drafts/research/edge-vs-rum/04-release-verification.md) records the activated Worker version and a read-only check of subsequent production provenance.

@@ -10,7 +10,7 @@ Article 024's corrected revision is published at its stable URL. This follow-up 
 |---|---|---|
 | Preserve historical evidence | Complete for September 4–5 baseline; additional September 3 RUM saved with an explicit D1 failure | [Existing capture and limits](../readers-vs-bots/16-claims-and-work-status-2026-09-06.md) |
 | Reproduce known parser/provenance defects | Executed locally | [Baseline](01-local-baseline.json), [repaired run](02-local-repair.json), [method and findings](03-local-experiment.md) |
-| Correct future HTML acceptance and provenance writes | Implemented on `codex/analytics-calibration`, not deployed | 39 tests pass, including actual SQLite ingestion; no historical rewrite |
+| Correct future HTML acceptance and provenance writes | Merged and deployed September 6; [verification](04-release-verification.md) | 39 tests pass, including actual SQLite ingestion; no historical rewrite |
 | Match existing Cloudflare observations | Partial, inconclusive | [Existing diagnostics](../readers-vs-bots/15-existing-cloudflare-evidence-2026-09-06.md); individual trace-span access still unresolved |
 | Paired real-browser beacon trials | Pending | Execute the controlled protocol below; report each stage and failed/unknown observations |
 | Separate signer identity from client role | TASK-0119 remains open | Preserve signature evidence; unknown trigger stays unknown. Full study is lane row 4. |

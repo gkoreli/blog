@@ -34,7 +34,7 @@ The corrected parser evaluates quality and the most specific matching range for 
 
 The same run exposed the missing provenance write: all twelve requests supplied an ASN, but all twelve inserted rows had a null source marker. Adding the existing `asn_source` column to the INSERT preserves `request` for those networks. A separate absent-network test keeps the source null. This does not invent provenance for old rows.
 
-The repair currently lives on the analytics iteration branch and has not been deployed. Its value is independently checkable behavior. It leaves the historical 95-versus-14 question unchanged because the old Accept flags cannot reconstruct the original headers.
+The repair was merged and deployed on September 6, after these local runs. Its value is independently checkable behavior. It leaves the historical 95-versus-14 question unchanged because the old Accept flags cannot reconstruct the original headers.
 
 ## The browser experiment still has to run
 
