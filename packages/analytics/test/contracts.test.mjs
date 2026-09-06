@@ -471,6 +471,7 @@ test('edge observation schedules one constrained write and fails closed on a mis
   assert.equal(row.traffic_class, 'ai');
   assert.equal(row.agent_name, 'GPTBot');
   assert.equal(row.asn, 16509);
+  assert.equal(row.asn_source, 'request');
   assert.equal(row.as_org, 'Amazon.com, Inc.');
   assert.equal(row.sec_fetch_mode, 'navigate');
   assert.equal(row.sec_fetch_dest, 'document');
@@ -518,8 +519,8 @@ test('negotiated Markdown observations store their representation on the page pa
   assert.equal(pending.length, 1);
   await pending[0];
 
-  const row = sqlite.prepare('SELECT path, representation FROM page_observations').get();
-  assert.deepEqual({ ...row }, { path: '/article', representation: 'markdown' });
+  const row = sqlite.prepare('SELECT path, representation, asn_source FROM page_observations').get();
+  assert.deepEqual({ ...row }, { path: '/article', representation: 'markdown', asn_source: null });
 });
 
 test('ingestion stores an unverified signature reason without trusting its claimed agent', async () => {

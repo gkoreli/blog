@@ -12,12 +12,12 @@ One observation is scheduled per eligible successful, non-prefetch `GET` that se
 |---|---|
 | `asn`, `as_org` | Autonomous system of the client IP, from Cloudflare's request metadata |
 | `sec_fetch_mode`, `sec_fetch_dest`, `sec_fetch_site`, `sec_fetch_user` | Fetch Metadata request headers, NULL when absent |
-| `accepts_html`, `has_accept_language` | Current substring-based HTML-acceptance flag (known defect below); whether a nonempty `Accept-Language` is present |
+| `accepts_html`, `has_accept_language` | HTML acceptance for UTF-8 HTML using media-range quality and specificity; whether a nonempty `Accept-Language` is present |
 | `agent_name`, `traffic_class` | Named User-Agent rule match (`classify.ts`) and its class |
 | `signature_agent`, `signature_status` | Web Bot Auth: the verified signer origin, or `unverified` with the failure reason in `reader_reason` |
 | `representation` | `html` or `markdown`, the representation served |
 | `reader_kind`, `reader_reason` | One kind from the closed set below and one reason, assigned at ingestion (`readerkind.ts`) |
-| `asn_source` | Migration 0007 assigned `request` or `zone-sample` to applicable existing rows. The ingestion INSERT currently omits this field; new rows have NULL |
+| `asn_source` | Migration 0007 assigned `request` or `zone-sample` to applicable existing rows. New writes record `request` when an ASN is supplied, otherwise NULL |
 | `daily_client_id` | HMAC over site, UTC date, IP, and User-Agent; raw IPs and full UAs are not stored in D1 page observations |
 
 Cloudflare Worker logs/traces, client-error collection, and RUM are separate operational collections. The D1 field list is not a description of all telemetry retained by the site or Cloudflare. A daily identifier is not a person, visit, or cross-day identity.
@@ -45,7 +45,7 @@ Order of evaluation: verified signature, named agent rules, headless tokens, arc
 
 The implemented navigation predicate requires `Sec-Fetch-Mode: navigate`, `Sec-Fetch-Dest: document`, `accepts_html = 1`, and `has_accept_language = 1`. `Sec-Fetch-Site` is recorded but not restricted; `Sec-Fetch-User` is not required. Safari's compatibility evidence is discussed in research artifact 09.
 
-**Known Accept defect, reproduced September 6:** `metadata.ts` uses substring matching. It returns `accepts_html = 1` for `text/html;q=0`, `*/*;q=0`, and `text/html;q=0, */*;q=1`, but `0` for `text/*`. This does not implement [RFC 9110's quality and specificity rules](https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.1). Repair is pending. Historical effect cannot be calculated from stored booleans alone.
+**Accept repair, implemented locally September 6:** `accept.ts` replaces substring matching with media-range quality and specificity for `text/html; charset=utf-8`, following [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.1). Explicit zero-quality HTML overrides a wider positive wildcard; `text/*` accepts HTML. Missing Accept stays null evidence. Invalid weights provide no positive acceptance evidence, and parameters must match the representation. This branch has not been deployed. A twelve-case local ingestion experiment changed seven incorrect results to their expected values; historical effect cannot be calculated from stored booleans alone.
 
 ## The two rules that matter most
 
@@ -61,7 +61,7 @@ Method changes are dated boundaries, never deletions.
 
 - Rows before 2026-08-26 came from a browser JavaScript beacon (`observation_source = 'beacon'`); they are `browser` / `beacon-script-ran`, because the site's script ran in a page.
 - Pre-evidence edge browser-UA rows retain `user-agent-only` provenance unless reconstructed network evidence changes their kind. Migration 0007 reconstructed an ASN for 1,429 of 1,962 pre-evidence observations using the retained zone sample, matched by UTC hour/path/country/device, with assignment only when sampled candidates agreed. It marks them `asn_source = 'zone-sample'`; applicable browser-UA rows on hosting networks became `cloud-browser`. The method is correlation, not a shared-ID request join.
-- Migration 0007 marked applicable existing request-derived ASNs as `request`, but subsequent ingestion omits `asn_source`. All 1,797 observations in the inspected September 3 05:05:22–September 6 01:29:53 UTC cohort had NULL. Future-write repair and any supported historical reconstruction remain open; do not silently infer a provenance marker for every missing row.
+- Migration 0007 marked applicable existing request-derived ASNs as `request`, but the original subsequent ingestion omitted `asn_source`. All 1,797 observations in the inspected September 3 05:05:22–September 6 01:29:53 UTC cohort had NULL. The local future-write repair now records a request source when an ASN is present. Deployment verification and any supported historical reconstruction remain open; do not silently infer a provenance marker for every missing row.
 
 ## Web Bot Auth
 
@@ -109,3 +109,5 @@ npx wrangler d1 migrations apply blog-analytics --remote   # migrations live in 
 - Cloudflare bot vocabulary (bot score bands, Verified Bots, Signed Agents) and the Web Bot Auth working group.
 - Vendor crawler documentation for each named rule (links in the header comment of `classify.ts`).
 - Open-source classifier reading with line references, hosting-list survey, Fetch Metadata prior art, and the log measurements: `packages/blog/drafts/research/readers-vs-bots/`, artifacts 03, 04, and 09.
+
+The [controlled local experiment](../blog/drafts/research/edge-vs-rum/03-local-experiment.md) records both runs and compiled-source hashes. These parser/provenance changes are on `codex/analytics-calibration`; they add no visitor fields and do not change signer verification, client-role grouping, content negotiation, or historical rows. Browser/beacon trials and the TASK-0119 grouping repair remain open.

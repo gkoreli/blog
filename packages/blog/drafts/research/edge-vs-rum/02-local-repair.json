@@ -1,0 +1,137 @@
+{
+  "capturedAt": "2026-09-06T23:40:21.242Z",
+  "gitRevision": "eebe3421d53215dfdb8c960c8f0de0bdeb3f5c11",
+  "sourceHashes": {
+    "metadata": "b1dab8d3d8a7c8b2a92e2285386007210a254e03c910b01c6558a7d6491d82d4",
+    "db": "152157e3b6be5794b196a3e3ccbff4f355c1cad9cfa4d3ef87433617fd9b90bd",
+    "readerkind": "f32a4cf55feca9bd1889f70b6c50f6104b5657765f488b3f05e624a63dee5da6",
+    "index": "96d9bc9112138ce4f854211ff87465d1751a32ff5a0a3de7ec74979b87797ad2",
+    "accept": "b96e56247bc19dd36065a8c4847710088a4f99fb204f8293ed14b858674a470b"
+  },
+  "method": "Synthetic Request -> production observePageResponse -> in-memory SQLite; no HTTP transport, browser, beacon, or production D1 involved.",
+  "cases": 12,
+  "acceptanceMismatches": 0,
+  "missingProvenance": 0,
+  "results": [
+    {
+      "id": "html",
+      "accept": "text/html",
+      "expectedAcceptance": 1,
+      "accepts_html": 1,
+      "reader_kind": "browser",
+      "reader_reason": "navigation-shaped",
+      "asn_source": "request",
+      "acceptanceMatches": true
+    },
+    {
+      "id": "html-zero",
+      "accept": "text/html;q=0",
+      "expectedAcceptance": 0,
+      "accepts_html": 0,
+      "reader_kind": "http-client",
+      "reader_reason": "not-navigation-shaped",
+      "asn_source": "request",
+      "acceptanceMatches": true
+    },
+    {
+      "id": "wildcard-zero",
+      "accept": "*/*;q=0",
+      "expectedAcceptance": 0,
+      "accepts_html": 0,
+      "reader_kind": "http-client",
+      "reader_reason": "not-navigation-shaped",
+      "asn_source": "request",
+      "acceptanceMatches": true
+    },
+    {
+      "id": "text-wildcard",
+      "accept": "text/*",
+      "expectedAcceptance": 1,
+      "accepts_html": 1,
+      "reader_kind": "browser",
+      "reader_reason": "navigation-shaped",
+      "asn_source": "request",
+      "acceptanceMatches": true
+    },
+    {
+      "id": "specific-zero-overrides-wildcard",
+      "accept": "text/html;q=0, */*;q=1",
+      "expectedAcceptance": 0,
+      "accepts_html": 0,
+      "reader_kind": "http-client",
+      "reader_reason": "not-navigation-shaped",
+      "asn_source": "request",
+      "acceptanceMatches": true
+    },
+    {
+      "id": "specific-positive-overrides-wildcard",
+      "accept": "text/html;q=0.5, */*;q=0",
+      "expectedAcceptance": 1,
+      "accepts_html": 1,
+      "reader_kind": "browser",
+      "reader_reason": "navigation-shaped",
+      "asn_source": "request",
+      "acceptanceMatches": true
+    },
+    {
+      "id": "different-subtype",
+      "accept": "text/html-example",
+      "expectedAcceptance": 0,
+      "accepts_html": 0,
+      "reader_kind": "http-client",
+      "reader_reason": "not-navigation-shaped",
+      "asn_source": "request",
+      "acceptanceMatches": true
+    },
+    {
+      "id": "mixed-ranges",
+      "accept": "application/json, text/*;q=0.5",
+      "expectedAcceptance": 1,
+      "accepts_html": 1,
+      "reader_kind": "browser",
+      "reader_reason": "navigation-shaped",
+      "asn_source": "request",
+      "acceptanceMatches": true
+    },
+    {
+      "id": "utf8-parameter",
+      "accept": "text/html;charset=\"utf-8\"",
+      "expectedAcceptance": 1,
+      "accepts_html": 1,
+      "reader_kind": "browser",
+      "reader_reason": "navigation-shaped",
+      "asn_source": "request",
+      "acceptanceMatches": true
+    },
+    {
+      "id": "nonmatching-parameter",
+      "accept": "text/html;profile=\"other\"",
+      "expectedAcceptance": 0,
+      "accepts_html": 0,
+      "reader_kind": "http-client",
+      "reader_reason": "not-navigation-shaped",
+      "asn_source": "request",
+      "acceptanceMatches": true
+    },
+    {
+      "id": "absent",
+      "accept": null,
+      "expectedAcceptance": null,
+      "accepts_html": null,
+      "reader_kind": "http-client",
+      "reader_reason": "not-navigation-shaped",
+      "asn_source": "request",
+      "acceptanceMatches": true
+    },
+    {
+      "id": "empty",
+      "accept": "",
+      "expectedAcceptance": 0,
+      "accepts_html": 0,
+      "reader_kind": "http-client",
+      "reader_reason": "not-navigation-shaped",
+      "asn_source": "request",
+      "acceptanceMatches": true
+    }
+  ]
+}

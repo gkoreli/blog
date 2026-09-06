@@ -271,6 +271,7 @@ The markdown never reaches the browser. Content is readable without JS (SEO, cra
 - **Dogfooding** — the blog itself proves `@nisli/core` works as a standalone npm dependency
 - **Web components in posts** — for interactive elements, use `<nisli-*>` custom elements directly in markdown. No JSX, no MDX.
 - **Git config** — this repo uses local git config (personal email, not the global Amazon config)
+- **Delivery workflow** — after the relevant checks pass, commit and push directly to `main`. Do not create pull requests unless Goga explicitly requests one. Preserve concurrent uncommitted work; use an isolated checkout when needed, then integrate the tested changes. Owner preference recorded September 6, 2026.
 - **Auth** — pushes authenticate as `gkoreli` via PAT stored in macOS Keychain
 
 ## Anti-Patterns

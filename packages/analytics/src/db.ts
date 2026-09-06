@@ -55,8 +55,9 @@ const INSERT_OBSERVATION = `INSERT INTO page_observations (
   signature_status,
   reader_kind,
   reader_reason,
-  observed_at
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  observed_at,
+  asn_source
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
 export async function recordPageObservation(db: D1Database, observation: PageObservation): Promise<void> {
   await db.prepare(INSERT_OBSERVATION).bind(
@@ -82,5 +83,6 @@ export async function recordPageObservation(db: D1Database, observation: PageObs
     observation.readerKind,
     observation.readerReason,
     observation.observedAt,
+    observation.asn === null ? null : 'request',
   ).run();
 }

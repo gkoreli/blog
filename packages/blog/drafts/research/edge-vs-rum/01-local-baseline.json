@@ -1,0 +1,136 @@
+{
+  "capturedAt": "2026-09-06T23:38:45.584Z",
+  "gitRevision": "eebe3421d53215dfdb8c960c8f0de0bdeb3f5c11",
+  "sourceHashes": {
+    "metadata": "3263db752ffb8d3b0d9b5ba82418c80783a9e65bf9437af8d3d75746b18ffb3c",
+    "db": "ce9c99c909ddefec2c7246e4eb58f55efcd8ddbe290985d286ae5247d5830200",
+    "readerkind": "f32a4cf55feca9bd1889f70b6c50f6104b5657765f488b3f05e624a63dee5da6",
+    "index": "96d9bc9112138ce4f854211ff87465d1751a32ff5a0a3de7ec74979b87797ad2"
+  },
+  "method": "Synthetic Request -> production observePageResponse -> in-memory SQLite; no HTTP transport, browser, beacon, or production D1 involved.",
+  "cases": 12,
+  "acceptanceMismatches": 7,
+  "missingProvenance": 12,
+  "results": [
+    {
+      "id": "html",
+      "accept": "text/html",
+      "expectedAcceptance": 1,
+      "accepts_html": 1,
+      "reader_kind": "browser",
+      "reader_reason": "navigation-shaped",
+      "asn_source": null,
+      "acceptanceMatches": true
+    },
+    {
+      "id": "html-zero",
+      "accept": "text/html;q=0",
+      "expectedAcceptance": 0,
+      "accepts_html": 1,
+      "reader_kind": "browser",
+      "reader_reason": "navigation-shaped",
+      "asn_source": null,
+      "acceptanceMatches": false
+    },
+    {
+      "id": "wildcard-zero",
+      "accept": "*/*;q=0",
+      "expectedAcceptance": 0,
+      "accepts_html": 1,
+      "reader_kind": "browser",
+      "reader_reason": "navigation-shaped",
+      "asn_source": null,
+      "acceptanceMatches": false
+    },
+    {
+      "id": "text-wildcard",
+      "accept": "text/*",
+      "expectedAcceptance": 1,
+      "accepts_html": 0,
+      "reader_kind": "http-client",
+      "reader_reason": "not-navigation-shaped",
+      "asn_source": null,
+      "acceptanceMatches": false
+    },
+    {
+      "id": "specific-zero-overrides-wildcard",
+      "accept": "text/html;q=0, */*;q=1",
+      "expectedAcceptance": 0,
+      "accepts_html": 1,
+      "reader_kind": "browser",
+      "reader_reason": "navigation-shaped",
+      "asn_source": null,
+      "acceptanceMatches": false
+    },
+    {
+      "id": "specific-positive-overrides-wildcard",
+      "accept": "text/html;q=0.5, */*;q=0",
+      "expectedAcceptance": 1,
+      "accepts_html": 1,
+      "reader_kind": "browser",
+      "reader_reason": "navigation-shaped",
+      "asn_source": null,
+      "acceptanceMatches": true
+    },
+    {
+      "id": "different-subtype",
+      "accept": "text/html-example",
+      "expectedAcceptance": 0,
+      "accepts_html": 1,
+      "reader_kind": "browser",
+      "reader_reason": "navigation-shaped",
+      "asn_source": null,
+      "acceptanceMatches": false
+    },
+    {
+      "id": "mixed-ranges",
+      "accept": "application/json, text/*;q=0.5",
+      "expectedAcceptance": 1,
+      "accepts_html": 0,
+      "reader_kind": "http-client",
+      "reader_reason": "not-navigation-shaped",
+      "asn_source": null,
+      "acceptanceMatches": false
+    },
+    {
+      "id": "utf8-parameter",
+      "accept": "text/html;charset=\"utf-8\"",
+      "expectedAcceptance": 1,
+      "accepts_html": 1,
+      "reader_kind": "browser",
+      "reader_reason": "navigation-shaped",
+      "asn_source": null,
+      "acceptanceMatches": true
+    },
+    {
+      "id": "nonmatching-parameter",
+      "accept": "text/html;profile=\"other\"",
+      "expectedAcceptance": 0,
+      "accepts_html": 1,
+      "reader_kind": "browser",
+      "reader_reason": "navigation-shaped",
+      "asn_source": null,
+      "acceptanceMatches": false
+    },
+    {
+      "id": "absent",
+      "accept": null,
+      "expectedAcceptance": null,
+      "accepts_html": null,
+      "reader_kind": "http-client",
+      "reader_reason": "not-navigation-shaped",
+      "asn_source": null,
+      "acceptanceMatches": true
+    },
+    {
+      "id": "empty",
+      "accept": "",
+      "expectedAcceptance": 0,
+      "accepts_html": 0,
+      "reader_kind": "http-client",
+      "reader_reason": "not-navigation-shaped",
+      "asn_source": null,
+      "acceptanceMatches": true
+    }
+  ]
+}
