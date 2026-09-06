@@ -1,3 +1,5 @@
+import { htmlAcceptance } from './accept.js';
+
 export interface RequestMetadata {
   path: string;
   siteHost: string;
@@ -63,9 +65,7 @@ export function extractRequestMetadata(request: Request, ownerIps: string | unde
     secFetchDest: boundedHeader(request, 'Sec-Fetch-Dest'),
     secFetchSite: boundedHeader(request, 'Sec-Fetch-Site'),
     secFetchUser: secFetchUser === null ? null : secFetchUser === '?1' ? 1 : 0,
-    acceptsHtml: accept === null
-      ? null
-      : accept.toLowerCase().includes('text/html') || accept.includes('*/*') ? 1 : 0,
+    acceptsHtml: htmlAcceptance(accept),
     hasAcceptLanguage: acceptLanguage !== null && acceptLanguage.trim().length > 0 ? 1 : 0,
     hasSignatureHeaders,
   };
