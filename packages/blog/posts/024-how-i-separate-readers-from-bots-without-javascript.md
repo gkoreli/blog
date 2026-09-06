@@ -1,9 +1,10 @@
 ---
-title: "How I Separate Readers from Bots on a Static Blog Without JavaScript"
-seoTitle: "Readers vs Bots on a Static Blog: Edge Analytics Without JavaScript"
-alternativeHeadline: "A server-side counter reported eleven times more readers than a script-based one. Two request facts fix most of the gap. The rest is traffic no rule can separate from readers, and you should know its size."
+title: "How I Classify Browser and Bot Requests Without JavaScript"
+seoTitle: "Browser and Bot Classification Without JavaScript"
+alternativeHeadline: "Network and request-header rules reclassified 74.5% of browser-UA traffic on my blog. The remaining count still differs from Cloudflare Web Analytics."
 date: "2026-09-03"
-description: "Server-side visitor counts are inflated by browser-shaped automation, and the popular open-source tools do not catch it. Here is the ten-minute test that shows your gap, the two rules that close most of it without a script, what AI readership really looks like on a small site, and the traffic no rule can separate from readers."
+lastModified: "2026-09-06"
+description: "Cloudflare Workers request rules reclassified 74.5% of browser-UA traffic on my blog. Measured results, defects, and an unresolved reader count."
 section: engineering
 tags: [analytics, cloudflare-workers, http, bots, ai-agents, observability]
 series:
@@ -12,114 +13,134 @@ series:
   order: 4
 ---
 
-# How I Separate Readers from Bots on a Static Blog Without JavaScript
+# How I Classify Browser and Bot Requests Without JavaScript
 
-<p class="post-orient">If you count visitors on your own server, your number is probably several times too high, and the tools you trust are not catching it. This is the ten-minute test that shows the gap, the two request facts that close most of it without a script, what AI readership looks like once the count is honest, and the traffic no rule can separate from readers.</p>
+On my blog, network and request-header rules moved **277 of 372 browser-User-Agent requests out of the Browsers category: 74.5%**. That gives me a much more useful account of the traffic arriving at my Cloudflare Worker. It has not established how many people read the site. Over the same two complete UTC days, the remaining **95 Browser HTML observations** still differ from **14 Cloudflare Web Analytics page loads**. The useful result is knowing which requests the rules separate, why they separate them, and where the evidence stops.
 
-My site counts every page load at the edge, in a Cloudflare Worker, with no JavaScript and nothing for a reader to block. For a week it reported 578 daily readers. A script-based counter on the same pages, over the same days, reported 52 visits. Eleven to one. The gap was not a bug. It was browser-shaped automation, counted as people, by a rule that every server-side counter I have read applies: if the User-Agent says browser, it is a browser. The fix is two facts the request already carries, and it works on any edge or log-based counter. What the rules cannot separate is a known share of traffic, and its size should be published rather than hidden.
+- **Network evidence catches requests that pass the header checks.** In that window, 60 cloud-classified requests carried the navigation headers the browser rule requires.
+- **A reason for each classification makes the counter explainable.** It also exposes mistakes: our HTML-acceptance check mishandles valid headers, and new rows were missing their network-provenance marker.
+- **Client identity and readership need different evidence.** Nine stored signature verifications identify signers, including crawlers and deliberate tests. They do not count people asking an assistant to read.
+- **The remaining disagreement is a measured problem.** Neither a smaller Browser count nor agreement with a script counter establishes audience accuracy.
 
-What you will take from this:
+## Comparing edge page views with a script counter
 
-- **A ten-minute test.** Put any script-based counter beside your server count for a week. If the ratio is more than about two, you have the problem this article is about.
-- **Two rules that close most of the gap.** A hosting network is a verdict on its own. A missing Fetch Metadata header is a verdict only when the browser version says it should be there. On my site the first rule alone removed the largest cluster: 374 page loads from one Google Cloud client calling itself Chrome Mobile 114, which passed every header check.
-- **What the tools you trust actually check.** I read the classifier code of Matomo, Plausible, GoatCounter, Umami, and `isbot`. Four of five are User-Agent matching and nothing else. None reads Fetch Metadata. `isbot`'s README says it does not try to catch clients disguised as browsers.
-- **What AI readership looks like on a small site.** Once the count is honest: 33 reads through ChatGPT in a month, on eight pages, against crawlers that touch every page once. The composition table on my stats page now answers "which AI is reading what" per article.
-- **What no rule can separate.** Grok, and any assistant driving a browser on a person's device, sends a person's request. My count is a lower bound, and the page says so.
+Comparing two counters exposed the problem with [my first-party analytics](/first-party-analytics-for-a-personal-blog): I had treated browser User-Agents as evidence of readers. The counters measure different events, so their disagreement is a starting point for investigation. It cannot, by itself, tell me which requests were automation.
 
-## The ten-minute test
+The initial alarm came from this comparison, saved on September 3:
 
-Server-side counters and script-based counters measure different populations, and the difference is the automation. A script runs only in a browser that executes JavaScript. A server-side counter sees every request that claims to be a browser. If you run one, borrow the other for a week: Cloudflare Web Analytics, Plausible's script, GoatCounter's script, anything that needs the page to render. Compare page views to page views and visitors to visits, and expect the units to differ a little.
-
-Mine, for the seven days ending September 2, with the script counter set to exclude bots:
-
-| Source | Page views | Readers |
+| Source | Page events / loads | Client or visit metric |
 |---|---:|---:|
-| Edge counter, browser User-Agents | 1,209 | 578 daily clients |
-| Script counter, same pages, same days | 113 | 52 visits |
+| D1 browser-UA class, seven UTC days ending September 2 | 1,209 | 578 daily client identifiers |
+| Cloudflare Web Analytics, its rolling seven-day dashboard window | 113 | 52 visits |
 
-The script misses readers who block scripts, and the windows do not align to the hour, so the honest expectation is a ratio under two. Eleven is a different population.
+The 578-versus-52 difference looked like eleven times as many readers. But a daily client identifier is not a visit, the time windows were not identical, and the script dashboard included `/stats`. Even the more comparable 1,209-versus-113 page totals needed those qualifications. The [original query record](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/02-evidence-ledger.md) preserves the comparison as it was made.
 
-The day I noticed, the edge count said 113 daily readers. One hundred of the 113 loaded exactly one page. 156 of the day's 164 page loads carried no referrer. One "mobile" client fetched 31 different pages in one second. That is what a fake day looks like from inside, and it looks like a good day from the dashboard. My note to the agent that night, verbatim:
+There was stronger evidence inside the requests. On September 2, 100 of 113 daily clients loaded one page; 156 of 164 browser-UA page observations carried no referrer. Those facts alone would not establish automation. One client classified as mobile, however, fetched 31 distinct pages in the same timestamp second. My note that night was:
 
 > i am seeing daily clients as 113 for today, and it seems unbelievable to me, like which articles are they reading, where are they coming from and so on... i just published a new article and its not even coming up in the Top pages by views section... like whats going on... Like sometimes when i publish the post i wanna see for this particular post how many readers have arrived and through which sources, its impossible to figure out. But still the most bizarre is the numbers, who is all reading these articles, it seems insane, which i appreciate but I don't want to gaslight ourselves, like something is not adding up
 
-If your ratio is under two, stop reading and go write. If it is not, the next section is the fix.
+A useful comparison needs four decisions made before calculating the ratio:
 
-## Four facts and two rules
+1. Choose the same host and explicit start-inclusive, end-exclusive UTC window.
+2. Compare page events with page loads. Report daily identifiers and visits separately.
+3. Record which routes, response types, bots, owners, and test requests each system excludes. Keep sampling information with the result.
+4. Inspect the discrepant requests and test the possible collection differences.
 
-A page load arrives with headers. Four of them are evidence. I now store all four on every row, because verdicts change and evidence lets you re-run them over history.
+Cloudflare documents script blockers and browser or network loss as reasons its beacon can miss page loads. Browser caching and differing eligibility also need checking against the edge counter. A script can run in an automated browser. There is no universal ratio that separates these causes. [Cloudflare Web Analytics FAQ](https://developers.cloudflare.com/web-analytics/faq/), checked September 6, 2026.
 
-1. **The network.** The autonomous system of the client's IP, which Cloudflare attaches to every request and any log parser can add. A reader sits on an ISP or a mobile carrier. A scraper sits on Amazon, Google Cloud, OVH, Hetzner, DigitalOcean, Tencent. This is the one fact a client cannot change by editing headers.
-2. **Fetch Metadata.** Every current browser engine sends `Sec-Fetch-Mode`, `Sec-Fetch-Dest`, and `Sec-Fetch-Site`, and on a page navigation the values are `navigate`, `document`, and `none` or `same-site`. A non-browser client can send anything, so presence proves little. Absence proves something under one condition.
-3. **Accept and Accept-Language.** A browser asking for a page admits HTML and names its user's languages. `curl` says `*/*` and nothing about language. So does most automation.
-4. **The User-Agent.** The weakest fact, because the client writes it, and the strongest, because declared crawlers and AI fetchers declare themselves in it, and the good ones publish an IP list to confirm it against.
+The comparison reveals questions we can investigate. The earlier version of this article's under-two validation threshold was unsupported, and I have removed it.
 
-From those, two rules do most of the work.
+## The request rules in the Cloudflare Worker
 
-**Rule one: a hosting network is a verdict on its own.** Check it first, before any header. A browser running on a cloud host that sends every header a person's browser sends is still automation. In three days of raw logs on my site, 430 of 844 successful page loads were navigation-shaped requests from hosting networks, and 374 of them were one client on Google Cloud claiming Chrome Mobile 114, a 2023 browser, with a correct `Accept`, an `Accept-Language`, and perfect Fetch Metadata. Only the network convicts it. The advertising industry's invalid-traffic standard has said the same since its 2015 edition: data-center traffic is routine filtration, and where no list is used, Amazon, Google, and Microsoft are the floor.
+The Worker classifies recorded request characteristics. It can apply those rules deterministically without establishing who controlled the client. This section is for someone implementing the classifier; the measured results below can be read without the implementation detail.
 
-Keep the list short and verify each entry yourself against a registry. Do not import a public "datacenter" list. The ones I checked contain Google, Akamai, and Cloudflare, which would convict every reader on iCloud Private Relay or Cloudflare WARP. And do not add networks that sell consumer VPN exits, M247 and Datacamp among them: they carry scrapers and people, and the standard excludes "routing artifacts of legitimate users" for exactly this reason. Let the header rules catch the scrapers there. My list is 23 networks, each with the date it was checked, and it is [public](https://github.com/gkoreli/blog/blob/main/packages/analytics/src/networks.ts).
+The edge counter schedules a D1 observation after an eligible successful page `GET`. It excludes prefetches, `/stats`, API routes, and non-page responses. It includes HTML and negotiated Markdown page responses; direct `.md` requests are outside this counter. That collection boundary comes from [the eligibility code](https://github.com/gkoreli/blog/blob/1737fa9a8056d6390465ccfc6951ca8c3e3007c4/packages/analytics/src/eligibility.ts).
 
-**Rule two: a missing Fetch Metadata header is a verdict only against a browser version that sends it.** Chromium 76 and later, Firefox 90 and later, Safari and WebKit 16.4 and later, including their WebViews. A User-Agent that claims one of those and sends no `Sec-Fetch-Mode` on a page load is not the browser it names. A User-Agent that claims something older, or whose engine cannot be read, proves nothing either way, and gets its own label rather than a guess. Never require `Sec-Fetch-User`; Safari has never sent it.
+Four sources of evidence feed the classification:
 
-That second rule is the one I had wrong for a day, and the story of why is in the middle of this article, because the wrong version is the one most people will find if they search.
+1. **Network metadata.** Cloudflare supplies the client's autonomous system number (ASN). This describes the network reaching the edge. A client cannot change it by editing an HTTP header, but can reach the site through another network or proxy. It does not establish the operator's purpose.
+2. **Fetch Metadata.** `Sec-Fetch-Mode: navigate` and `Sec-Fetch-Dest: document` describe a page navigation. `Sec-Fetch-Site` can be `none`, `same-origin`, `same-site`, or `cross-site`; the classifier records it but does not require one value. [Header definitions](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Site).
+3. **Accept and Accept-Language.** The rule checks whether HTML is acceptable and whether a language header is present. These are request characteristics, not evidence of attention.
+4. **User-Agent.** Named crawler and assistant rules match the client's declaration. The same string also supplies the browser-version claim used below. A client can imitate it.
 
-## What the tools you trust actually check
+D1 stores selected headers, derived flags, names, and classification reasons. It does not retain the full User-Agent. Existing Cloudflare operational logs contain additional request detail. Storing a derived flag is useful, but does not preserve enough information to replay every future parser change.
 
-Most sites do not write a classifier. They use one, and assume it handles this. I read the code. Line references are in the [research directory](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/readers-vs-bots).
+**Rule one: classify known hosting networks before browser shape.** After signature and named-client rules, a browser-UA request on the curated hosting list becomes `cloud-browser`, even if it passes the navigation-header check. In the original 72-hour log sample ending September 3, 430 of 844 successful page GETs were navigation-shaped traffic on hosting networks. The largest cluster was 374 requests attributed to one Google Cloud client claiming Chrome Mobile 114. Header presence could not separate that cluster. [Original measurement and coverage](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/09-fetch-metadata-prior-art.md).
 
-| Tool | Network evidence | Fetch Metadata | What it actually does |
-|---|---|---|---|
-| Matomo | a hardcoded list of Googlebot and Bing ranges, years old | no | User-Agent regexes from device-detector, plus two prefetch headers |
-| Plausible Community Edition | no | no | User-Agent library; the cloud service drops data-center IPs with a classifier that is not in the repository |
-| GoatCounter | yes: IP ranges for nine cloud providers | no | User-Agent heuristics plus network ranges, and a reason code stored with every hit |
-| Umami | no | no | one line: if `isbot` matches the User-Agent, drop the hit |
-| `isbot` (npm) | no | no | 207 patterns; the README says it identifies "good bots" that "voluntarily identify themselves" and "does not try to recognise malicious bots or programs disguising themselves as real users" |
+A cloud browser may be carrying out useful work for a person. I want that access recorded and visible. The network label describes how it reached the site, and moving it out of Browsers does not remove its observation.
 
-That last line is not a criticism of `isbot`. It is a statement of scope that the sites depending on it mostly have not read. Four defensive projects do read Fetch Metadata, Anubis, caddy-waf, BunkerWeb, and bot-signal, and all four treat its absence as a weight rather than a verdict, with the same comment: WebViews might not send it. I took that consensus at face value and it was wrong, which is the next section's subject.
+The [curated network list](https://github.com/gkoreli/blog/blob/1737fa9a8056d6390465ccfc6951ca8c3e3007c4/packages/analytics/src/networks.ts) excludes several shared service and consumer-VPN networks. Broad hosting lists can include networks that carry legitimate browsing. Curating the list accepts the opposite cost: some automation will arrive through networks outside it.
 
-GoatCounter's reason code is the one design I copied. Every row in my table carries one kind and one reason, so anyone reading the stats page can see why a hit landed where it did, and so a rule change can be replayed over history.
+**Rule two: check missing Fetch Metadata against the claimed browser version.** The implementation checks Chromium 76+, Firefox 90+, and Safari/iOS 16.4+. If a request claims one of those engines but lacks `Sec-Fetch-Mode`, it becomes `http-client` with reason `no-fetch-metadata`. Older or unreadable claims receive `legacy-browser`. A request with Fetch Metadata that fails the navigation combination receives `not-navigation-shaped`. [Classifier code](https://github.com/gkoreli/blog/blob/1737fa9a8056d6390465ccfc6951ca8c3e3007c4/packages/analytics/src/readerkind.ts).
 
-## What AI readership looks like on a small site
+Those version thresholds follow [browser support data](https://caniuse.com/mdn-http_headers_sec-fetch-mode), checked September 6. They establish an expected browser capability; they do not authenticate each request or establish a zero false-positive rate for every embedded client. We do not require `Sec-Fetch-User`: the [Safari compatibility investigation](https://github.com/mdn/browser-compat-data/issues/27928) found support for other Fetch Metadata headers without it.
 
-This is the question most people arrive with in 2026, and the honest answer needs the rules above first, because a dashboard that counts scrapers as readers also counts crawlers as readers.
+The follow-up audit also found a defect in our own `Accept` check. Running `extractRequestMetadata()` on `Accept: text/html;q=0` returns `acceptsHtml: 1`; running it on `Accept: text/*` returns `0`. The first explicitly excludes HTML, while the second admits it. The substring check ignores HTTP quality and media-range rules. [RFC 9110, Accept semantics](https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.1); [recorded reproduction](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md).
 
-Once the count is honest, every row on my site carries one of twelve kinds, and the public stats page groups them by what the client was doing:
+That parser repair is pending in this revision. Stored booleans cannot tell us how many historical requests it affected. The request rules are inspectable and useful, but their implementation and error rate need separate checks.
 
-| Group | Kinds | The fact behind the label |
+## What open-source classifiers contributed
+
+The useful prior art supplied specific pieces of this design: declared-bot detection, network classification, and retained reasons. Our reading did not establish that the combination is novel, or that every other counter misses the same traffic.
+
+| Project | What the inspected source contributes | Boundary |
 |---|---|---|
-| Browsers | browser | a navigation-shaped request from outside hosting networks |
-| AI agents | signed agent, AI assistant | software fetching a page right now because a person asked: a verified Web Bot Auth signature, or a named on-demand fetcher such as ChatGPT-User or Claude-User confirmed against the vendor's IP list |
-| Crawlers | search engine, AI search, AI crawler, link preview | fetching to index, train, or preview for later |
-| Automation | cloud browser, headless browser, HTTP client, other bot, old browser | browser User-Agents on hosting networks, self-declared HeadlessChrome and Cypress, curl and python, generic bot tokens, and browsers too old to send the headers I check |
+| [`isbot`](https://github.com/omrilotan/isbot#clarifications) | User-Agent matching for clients that identify themselves | Its stated scope excludes programs disguising themselves as users |
+| [Plausible](https://github.com/plausible/analytics/blob/543b30185c104ce17900d03c95d95429180acc0b/lib/plausible/ingestion/event.ex) | UA checks, explicit ingestion outcomes, and consumption of an upstream IP classification | Reading that code does not reveal or reproduce the upstream classifier |
+| [GoatCounter](https://github.com/arp242/goatcounter/blob/c957f51c43eb56dcc462b7e9d7a4550955b71846/handlers/count.go) | Server-side bot classification and retention of bot reasons | Its categories and collection rules differ from ours |
+| [Anubis](https://github.com/TecharoHQ/anubis/blob/4578023de7b631537e3a43d89b1998e802beb7e0/data/common/acts-like-browser.yaml) | A combination of browser headers that adjusts a classification weight | The rule file warns that automated scrapers can bypass it |
 
-The four groups are disjoint and add up to All. Under the chart, a composition table lists each kind with its reasons, hosting providers by name, and named agents as links to their own view, so "what is ChatGPT reading" is one click per article.
+These sources were checked on September 6; revisions and source boundaries are in the [pinned review](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md). `isbot` remains useful for the declared clients it aims to recognize. Anubis makes access-control decisions, whereas this counter aims to retain and explain access.
 
-What that view shows, for the thirty days to September 2, is small and real. ChatGPT-User, the fetcher that runs when a person asks ChatGPT to read a page, made 33 requests to eight different pages: the llms.txt post, the first-party analytics post, two OSS Radar issues, the bring-your-own-agent post, Topologies of Thoughts, and the homepage. Every other AI agent touched each page once or twice: PerplexityBot 51 views on 31 pages, Amazonbot 37 on 36, GPTBot 21 on 21. Views equal to pages is a crawl. Thirty-three reads through an assistant, in a month, on a site this size, is the honest number for "AI readership" here. The 51 the old dashboard attributed to Perplexity was indexing.
+The part I adopted from GoatCounter was a reason attached to each classification. A lower total tells me little; a table of requests and the rules that classified them tells me what changed.
 
-The frame matters as much as the rules. I started with the advertiser's question, valid traffic versus invalid, and the owner of the site changed it halfway:
+## Agent names, signatures, and request purpose
+
+The site already records named User-Agent matches and verifies supported Web Bot Auth signatures. The mistake was treating those identity signals as proof that a person asked an assistant to read. The signature machinery is useful; the grouping and wording need correction.
+
+In the saved cohort since the verifier launched, through September 5 UTC, D1 contains nine requests with a stored `verified` result:
+
+| Signer | Requests | What this record establishes |
+|---|---:|---|
+| `ahrefs.com` | 5 | The Worker recorded successful signature verification |
+| `crawler.exa.ai` | 2 | The Worker recorded successful signature verification |
+| `assistbot.duckduckgo.com` | 2 | Successful verifications from our deliberate DuckAssist tests |
+
+These are stored verifier outcomes, not a fresh independent verification of every original signed message. [The cohort and queries](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/12-production-followup-2026-09-05.md) separate the deliberate tests. The previous claim that no signed request had arrived was wrong.
+
+A signed client can be a crawler: [Exa documents ExaSearchBot](https://crawler.exa.ai/) as fetching and indexing pages. A signature associates a request with a signing identity under the verifier's checks. It does not establish the initiating person's identity, delegation, or purpose. The [versioned Web Bot Auth draft](https://datatracker.ietf.org/doc/html/draft-meunier-webbotauth-httpsig-protocol-01#section-4.6) makes those boundaries explicit; citing it is not a claim that our implementation conforms to every provision of that draft.
+
+The current stats grouping puts `signed-agent` and `ai-assistant` together under AI agents. That grouping conflates authentication with client role and is pending repair. Routine ingestion matches User-Agent rules and verifies signatures; it does **not** perform the vendor-IP validation we did manually in [the fetcher-header probe study](/which-ai-fetchers-send-which-headers).
+
+The older thirty-day snapshot recorded 33 `ChatGPT-User`-matched observations across eight paths, alongside 51 `PerplexityBot` observations across 31 paths, 37 `Amazonbot` observations across 36, and 21 `GPTBot` observations across 21. Those are recorded access patterns. They do not establish 33 human reading actions, and similar request/path totals do not independently prove why a crawl happened.
+
+The reason to keep all this traffic is the publishing question behind it:
 
 > i even want to know the headless browsers on home connections, like Meshclaws or Hermess cloud agents using playwright or cypress or any type of automation, we don't want to miscount or block them, on the contrary, I want to embrace them, anyone can read my articles... I just want full visibility and transparency and categorization, like we need to explicitly know who is who (of course with respecting PII), but lots of people might stop reading articles directly and might use their AI agents like Meshclaws and Hermes agents running on the cloud to read my articles and so on, and I want to know who is reading what, like I am trying to understand how people are using my articles... Ideally I would love to have some kind of official citation for my articles as well, like you know how Arxiv or research papers have citations? I want to embrace that as well, like people reading and finding my content valuable and recommending them to cite them as needed, and have some kind of visibility into those citations. Like another example is  how scholar.google.com shows Total citations Cited by 51, something like that would love to.
 
-A census, not a filter. Every kind is a fact about the request, none is a confidence word, and none of them is "human". The only way for an agent to be named as a fact rather than matched by a string is Web Bot Auth, the IETF draft that puts an RFC 9421 signature on the request and a key at a well-known URL. My Worker verifies it with no dependencies and stores the signer's origin. In [the fetcher headers study](/which-ai-fetchers-send-which-headers), DuckDuckGo's assistant was the only one of ten that signed. Since the verifier went live, no signed request has arrived.
+For that question, a useful table distinguishes the claimed client, verified signer, documented role, and any directly known trigger. Ordinary production requests usually leave the trigger unknown. The identity study can investigate that separately without turning this counter into a count of unobserved reading actions.
 
-## What no rule can separate
+## What the Browsers category cannot establish
 
-Two kinds of traffic no server-side rule recovers, and the article is dishonest without them.
+Browsers contains requests that pass our rule, including some automation. It can also exclude legitimate access through cloud browsers or unusual clients. Its error can run in both directions, so it is not an established lower or upper bound on people.
 
-The same study found that Grok, used anonymously, fetches a page eight times from eight networks on four continents, several of them residential and one a mobile carrier, wearing complete Chrome and Safari header sets. Five of those eight pass every rule above. They are in my Browsers count, they will stay there, and there is no fact in the request that would move them. Any assistant that drives a browser on the reader's own device, Comet, Claude for Chrome, Edge's Copilot mode, sends a person's request from a person's network, and it should be counted as one, because a person asked.
+Our fetcher-header study captured Grok fetching through clients with browser User-Agents and navigation headers, including requests that passed the browser rules. An agent driving an ordinary browser can produce the same characteristics the counter uses for human browsing. The access is valuable, but headers alone need not reveal whether it followed a conversation, a scheduled job, or another process.
 
-So Browsers is a lower bound, and the undercount is whatever share of readers use those tools. The right response is not another rule. It is to say "browsers", never "humans", to publish the comparison against a script counter, and to state the ratio on the page.
+The new production window adds a concrete case to investigate: 22 of the 95 Browser observations share the `uniuit.com` referrer and a repeated homepage/article pattern. An inspected Worker log declares a Redroid Android WebView; the later zone-data correlation finds that declaration among candidates for 19 of the 22 rows. [Diagnostic evidence and matching limits](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/15-existing-cloudflare-evidence-2026-09-06.md).
 
-## How the number got here
+That supports investigating automation, not naming an authenticated operator. A User-Agent is a declaration, and the zone matches lack a shared request identifier. Setting all 22 observations aside as a sensitivity calculation still leaves 73 versus 14, or 5.21×. Explaining this cluster would not explain the whole discrepancy.
 
-The rules above took a night and a day, and the mistakes are the useful part. Shortened.
+The useful claim is narrower than a reader count: these requests met a documented rule. Determining how much of that category represents people consuming the article requires evidence the rule does not collect.
 
-The first version shipped with the header checks and the network check together, and with a bucket labelled "Browser-like" for anything that failed. Two things went wrong at once. The evidence columns did not exist for any row written before that minute, so the default view of the stats page showed three page views for the week.
+## How classification changes affected history
+
+Changing a classification must preserve what was observed before the change. Our first repair briefly made the old audience disappear from the default view, and restoring that history mattered as much as improving the rule.
+
+The evidence columns did not exist on old rows. When the first header and network checks shipped together, the default stats view showed three page views for the week.
 
 > why did we lose all the views lmao... you need to migrate properly and maintain the historical views, even if it was miscalculated doesn't matter, its okay, we can trace the commit history and know with full honesty what happened and why
 
-The week came back within the hour, marked as recorded before evidence existed. That is now the rule I hold above the classifier: a method change is a dated boundary in the series, never a deletion. Then the label went:
+The week came back, marked with the evidence available when it was recorded. The first unsuccessful name for requests that failed the new checks was Browser-like:
 
 > this is kinda confusing, and saying browser-like is a little misleading and screams low confidence, like what is the browser like, do we know deterministically or what? Browsers
 > Browser-like
@@ -129,44 +150,64 @@ The week came back within the hour, marked as recorded before evidence existed. 
 >
 > You need to ground yourself better
 
-"Browser-like" described my confidence, not the request. Every label since is a fact the request carried.
+Replacing that confidence label with named rules made the system easier to inspect. It did not make every classification an authenticated fact about the client.
 
-Then the wrong premise. I had written, in the decision record and on the stats page, that a missing Fetch Metadata header could never be a verdict, because WebViews omit it. Four defensive projects said the same. I planned a measurement on my own referred traffic before deciding.
+The next mistake was accepting a broad claim that WebViews omit Fetch Metadata. We had read several defensive projects and planned to wait for our own referred traffic before deciding.
 
 > can't we learn from other people and prior art? this is 2026 september
 
-We could. Fetch Metadata shipped in Chrome 76 in 2019, Firefox 90 in 2021, Safari 16.4 in March 2023; caniuse puts support at 95.72% of global usage. Android WebView has sent it since Chromium 76, recorded in a 2019 issue on a privacy browser. And someone had measured iOS: a September 2025 issue on the MDN browser-compatibility project analysed a day of logs across several large sites and found `Sec-Fetch-Mode` from Safari desktop, iOS, and iOS WebView in the millions. The caveat I had repeated traces to one vendor post with no data and to projects that hedged for lack of it. I read four codebases that agreed with each other and did not ask whether any of them had checked.
+The support history was already available. [A 2019 Android WebView issue](https://redmine.stoutner.com/issues/495) recorded the headers after Chromium 76. The [September 2025 Safari compatibility report](https://github.com/mdn/browser-compat-data/issues/27928) described production observations and a BrowserStack reproduction: Safari and its WebViews sent `Sec-Fetch-Mode` while lacking `Sec-Fetch-User`. That was enough to reject the blanket WebView claim. It did not remove the need to investigate unusual requests on our own site.
 
-Then the raw logs, which had existed all along.
+Then there were the logs we already had:
 
 > dont we already have some raw logs in cloudflare?
 
-Three days of Worker logs with full headers, 844 successful page loads: 112 navigation-shaped from normal networks, 430 navigation-shaped from hosting networks, 126 declared bots, 49 header-less browser claims outside hosting networks, and all twelve externally referred visits carrying Fetch Metadata. That is where the network check moved ahead of the header checks.
+The original 72-hour sample contained 112 navigation-shaped requests outside the hosting list out of 844 successful page GETs. That is about 13% satisfying the sample's rule, not 13% proven human readership. All twelve externally referred requests in that sample carried Fetch Metadata; twelve is useful corroboration, not a false-positive-rate measurement.
 
-Then history. The rows from the week before the evidence columns had a User-Agent verdict and nothing else, and I had labelled them "unchecked". I did not accept that: the rows had exactly the evidence recorded at the time, which is provenance, and the raw sources for that week had not been checked.
+For older rows, the retained zone data allowed a partial reconstruction. Of 1,962 pre-evidence observations, 1,429 received an ASN only when all sampled requests in the matching hour/path/country/device group agreed on the network. There were 191 ambiguous rows and 342 unmatched rows. The migration records reconstructed networks as `asn_source = 'zone-sample'`. This is a sampled attribution method, not an exact request join. [Reconstruction method](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/09-fetch-metadata-prior-art.md).
 
-Cloudflare's zone analytics keep eight days and, on a free zone, serve the client IP but not the network. So: 1,884 page loads pulled by hour, path, country, device, and IP; 784 addresses resolved to networks through a registry lookup and never stored; each old row matched to its group and given a network only when the whole group agreed. 1,429 of 1,962 rows qualified, and 714 of the browser-class ones sat on hosting providers. On August 31, the day the chart spiked to 402 views, 346 were on hosting networks and 36 were not. Every row now states where its network came from, the request or the reconstruction, and nothing says "unchecked", because nothing is.
+The follow-up found another defect: all 1,797 inspected observations from September 3 05:05:22 through September 6 01:29:53 UTC had null `asn_source`. The INSERT omits that field. My previous statement that every row records its network provenance was therefore wrong. The migration marked rows that existed when it ran; that did not fix future ingestion. [Provenance audit](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md).
 
-## The number now, and what I do not know
+Preserving history requires checking both the migration and subsequent writes. A classification revision, a database migration, and a Worker deployment are separate events; recording one does not establish the others.
 
-Reader-shaped page loads were 13 percent of successful page loads over the three-day sample. The evidence-era rows are hours old, so I will not print a weekly reader count I would have to correct next week. On September 17, two full weeks of them exist, and I will set them against the script counter over the same days. If Browsers sits within about twice the script count, the rules hold and the stats page says so. If it is still three times higher, something the evidence cannot see is still counted, and the next post in this series reports that instead. I do not know which it will be.
+## What the September 4–5 measurements show
 
-## If you count visitors on your own server
+The new rules have a large measured effect, and the remaining count is still uncalibrated. This comparison uses September 4 00:00 through September 6 00:00 UTC, with the end excluded, for both sources.
 
-1. **Run the test.** One week, a script counter beside your server count. Ratio over two means you have this problem.
-2. **Store the evidence, not the verdict.** Network, `Sec-Fetch-Mode`, `Sec-Fetch-Dest`, whether `Accept` admits HTML, whether `Accept-Language` is present. One reason code per row.
-3. **Hosting network first, as a verdict.** Short list, hand-verified, no VPN networks, no public list imported wholesale.
-4. **Header absence is a verdict only against a version that sends the header.** Chromium 76, Firefox 90, WebKit 16.4 and later. Never require `Sec-Fetch-User`.
-5. **Name what declares itself, verify what signs, record the rest as the literal token.** `User-Agent: Google` from a Google address is a fact; "Gemini" is an inference until Google documents it.
-6. **Never delete a method change.** Date it, disclose it, keep the old rows with their evidence level stated. If a raw source can improve history, use it once and mark the rows it touched.
-7. **Say "browsers", not "humans", and publish the gap.** Your count is a lower bound. Put the ratio against a script counter on the page.
+| UTC day | Browser-UA observations | Browsers HTML observations | Non-bot RUM page loads |
+|---|---:|---:|---:|
+| September 4 | 224 | 49 | 7 |
+| September 5 | 148 | 46 | 7 |
+| Total | 372 | 95 | 14 |
 
-## Method and limits
+The rules reclassified 277 of 372 browser-UA observations, or 74.5%. Of the cloud-classified requests in that original browser-UA population, 60 passed the navigation-header combination. Network evidence therefore separates requests the header combination alone would admit. This measures rule effects; we did not label all 277 requests independently and measure classifier accuracy.
 
-Every number comes from the production database, the Cloudflare dashboards, or the raw logs; the queries are in the [evidence ledger](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/02-evidence-ledger.md), the standards and code reading in artifacts 03 and 04, and the Fetch Metadata prior art with the log measurements in artifact 09 of the same directory. The classifier, the network list, the migrations, and the tests are in the [analytics package](https://github.com/gkoreli/blog/tree/main/packages/analytics), whose README is the reference version of the rules above.
+RUM excludes bots and the two `/stats` loads in this window; all returned RUM groups had sample interval 1. Including its bot-tagged loads raises the comparable RUM total to 16, leaving 95/16 = 5.94×. Bot filtering alone does not account for the discrepancy. D1 applies owner exclusions, but incomplete owner marking remains a comparison limit. [SQL and saved results](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/12-production-followup-2026-09-05.md).
 
-What this does not show: the reader count is hours old and the calibration is two weeks out; the history reconstruction is a matched sample, with 191 ambiguous rows and 342 unmatched, all of August 26 among them; three header-less iOS claims from residential networks are unexplained, probably spoofed, unprovable from three rows; and on-device agents are invisible by design. Much of the reading and all of the queries were done with an AI agent, and the wrong premise in the middle was the agent's before it was mine. The prompts that shaped the piece are on the prompts page.
+A read-only extractor reproduced the 95/14 = 6.79× result in a separate capture and saves queries, sampling, and deployment metadata. The [extraction command](https://github.com/gkoreli/blog/blob/main/packages/blog/scripts/analytics-evidence.md) makes the comparison repeatable. It does not turn the two sources into identical populations or authenticate their results independently of Cloudflare.
 
-Evidence that would change the conclusions: a calibration ratio above three; a measured rate of modern browsers omitting Fetch Metadata on a real site; a vendor statement that Grok names or signs its fetcher.
+The next investigation uses existing invocation logs and traces, then controlled clients to test classification, script execution, and beacon delivery separately. Individual trace-span inspection and those controlled-client trials remain open. The longer calibration is planned around September 17. This article does not need their outcome to report the rule effects already measured, but it cannot claim the reader-count problem is solved.
 
-I wanted this page to exist on the night I could not find it. If your number looks too good, it probably is, and now you know the four headers to look at. Tell me where this is wrong.
+## Applying this to another site's analytics
+
+The transferable method is to retain useful request evidence, make classification reasons visible, and compare collection stages before interpreting the total as readership.
+
+1. **Define the event.** State which methods, routes, responses, representations, and prefetches enter the counter.
+2. **Compare explicit windows and units.** Page observations, script page loads, visits, and daily identifiers answer different questions. Record filters and sampling.
+3. **Keep evidence beside the classification.** Preserve the fields needed to inspect a rule and disclose where only derived values survive. Check that new writes populate provenance.
+4. **Evaluate network and browser shape separately.** A hosting list and a navigation-header check catch different traffic. Document shared-network exclusions and version handling.
+5. **Separate declared identity, verification, and purpose.** Preserve signed crawler access as well as assistant access. Do not manufacture a human trigger from either.
+6. **Keep history explainable.** Record rule changes and reconstruction methods. Preserve ambiguous and unmatched observations.
+7. **Test the unresolved mechanisms.** A smaller Browser total or a favorable ratio is not a completion criterion.
+
+This leaves a more useful counter: I can inspect why requests were classified and choose the next experiment from the evidence. It leaves readership as a question to measure.
+
+## Method, limits, and revision history
+
+The [research directory](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/readers-vs-bots) preserves the original measurements, subsequent corrections, primary-source notes, and aggregate exports. The [claims ledger](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/16-claims-and-work-status-2026-09-06.md) distinguishes completed research from pending implementation. Its correction notes supersede overclaims in the dated early artifacts; those artifacts retain their historical wording.
+
+D1 observations, private Worker logs/traces, and Cloudflare RUM are separate collections. A field absent from D1 may exist in operational diagnostics. The published evidence contains selected observations and reviewed aggregates, not access to the private Cloudflare account. Stored signature results are not independent re-verification, and inferred zone matches are not shared-ID joins. No verified count of distinct people, reading actions, or citations follows from these counters.
+
+**September 6 correction:** added the September 4–5 measurements; removed the universal accuracy thresholds and lower-bound claim; corrected signature arrivals, vendor-IP validation, and network provenance; disclosed the `Accept` defect. The original publication date and URL remain. Runtime fixes and the full controlled-client study are separate work.
+
+I wanted this page to exist on the night I could not find it. If you have a captured browser request that contradicts one of these rules, or a measured explanation for a similar counter gap, tell me where this is wrong.

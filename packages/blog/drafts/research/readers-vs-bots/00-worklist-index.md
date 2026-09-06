@@ -1,6 +1,6 @@
 # Readers vs bots — article worklist index
 
-**Working title:** How I Separate Readers from Bots on a Static Blog Without JavaScript (title rule: subject first; final title decided in TASK-0103).
+**Current article title:** How I Classify Browser and Bot Requests Without JavaScript. The stable published URL retains the original readers-versus-bots slug.
 
 **Worklist:** `FLDR-0007`. **Author directive:** `PROMPT 0011`. **Engineering decision under revision:** `docs/adr/0016.2-browser-evidence-and-reader-tier.md`.
 
@@ -26,6 +26,18 @@
 
 ## Tasks
 
+**Current bookkeeping:** [artifact 16](16-claims-and-work-status-2026-09-06.md) records the correction checklist, completed extractor validation, private capture location, and remaining work. The [extractor](../../../scripts/analytics-evidence.md) is implemented; grouping repairs, article corrections, and controlled trials remain open. TASK-0104's current contract supersedes its original ratio thresholds and waiting instruction.
+
+**Next two implementation priorities:** TASK-0119 separates client identity evidence from traffic purpose; TASK-0120 measures classification and beacon delivery with known clients. Scope, acceptance criteria, article outputs, and proposed collection limits are in `13-two-priority-implementation-plan.md`, subject to the scope clarification below. The grouping correction and controlled trials are not implemented; investigation of existing data is in progress.
+
+**September 5 PDT scope and stopping rule:** [FLDR-0008](../../../../../docs/folders/FLDR-0008.md) now maps the ten initial article slots, their current status, and evidence gates. Correct article 024's unsupported claims and add the compact dated production result, then close this revision. The full 95-versus-14 investigation belongs to lane row 10; the signed/unsigned identity study belongs to row 4. TASK-0120 is in progress, starting with existing Cloudflare logs and traces. Do not build another tracing system before establishing an actual evidence gap. The verifier remains; TASK-0119's immediate scope is grouping and wording.
+
+**Evidence-backed refinement:** [artifact 14](14-evidence-backed-implementation-plan.md) adds commit-pinned source reviews of Plausible, GoatCounter, Matomo Device Detector, and Anubis; protocol references; collection contracts; controlled lifecycle/cache experiments; and release gates for the same two tasks.
+
+**Existing Cloudflare evidence:** [artifact 15](15-existing-cloudflare-evidence-2026-09-06.md) records the current log/trace-access boundary, a refined correlation with candidates for 77 of 95 D1 rows, 19 Redroid-UA candidates, and finer RUM results. These are diagnostic correlations, not an exact reconciliation. Individual trace spans and controlled-client trials remain outstanding.
+
+**September 5 follow-up:** `12-production-followup-2026-09-05.md` records two complete UTC days of new production evidence, the 372 → 95 classification impact, 95 versus 14 script page loads, repeated-referrer traffic, verified signatures, and the separate deployment/migration boundaries. SQL and aggregate results are stored alongside it. TASK-0104 remains open for the longer window; the early result does not validate its proposed ratio threshold.
+
 - `TASK-0098` evidence ledger (done)
 - `TASK-0099` standards vocabulary (done, artifact 03)
 - `TASK-0100` open-source code and ASN lists (done, artifact 04)
@@ -39,3 +51,5 @@
 Decision record for all of the above: `docs/adr/0016.3-audience-composition-and-citable-articles.md`.
 
 Backlog MCP was unreachable (502) when this worklist opened; folder, prompt, and task files were written by hand in the same format.
+
+**September 6 revision:** [article revision audit](17-article-revision-2026-09-06.md) records the corrected claim boundary, metadata, validation, and release. The full edge-versus-RUM investigation remains TASK-0120 / FLDR-0008 row 10.

@@ -1,0 +1,43 @@
+{
+  "window": {
+    "fromInclusive": "2026-09-04T00:00:00Z",
+    "toExclusive": "2026-09-06T00:00:00Z"
+  },
+  "status": "investigation-in-progress",
+  "d1Browsers": 95,
+  "zoneReturnedGroups": [
+    990,
+    649
+  ],
+  "correlation": {
+    "sharedRequestIdentifier": false,
+    "predicates": [
+      "exact timestamp second",
+      "path",
+      "GET",
+      "status 200",
+      "content type html",
+      "country"
+    ],
+    "candidateMultiplicity": {
+      "0": 18,
+      "1": 77
+    },
+    "singleCandidateSampleIntervals": {
+      "1": 76,
+      "2": 1
+    },
+    "redroidUACandidates": 19
+  },
+  "rum": {
+    "allGroups": 18,
+    "botTagged": 2,
+    "nonbotStats": 2,
+    "comparablePageLoads": 14,
+    "sampleIntervals": [
+      1
+    ]
+  },
+  "individualTraceSpansInspected": false,
+  "controlledClientTrialsExecuted": false
+}

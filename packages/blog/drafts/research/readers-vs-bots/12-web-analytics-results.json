@@ -1,0 +1,166 @@
+{
+  "query": "{viewer{accounts(filter:{accountTag:\"7e0dc86ef69b4572a63162a52cddd269\"}){rumPageloadEventsAdaptiveGroups(limit:10000,filter:{datetime_geq:\"2026-09-04T00:00:00Z\",datetime_lt:\"2026-09-06T00:00:00Z\",requestHost:\"gkoreli.com\",bot:0}){count avg{sampleInterval} sum{visits} dimensions{date requestPath deliveryType navigationType}}}}}",
+  "response": {
+    "data": {
+      "viewer": {
+        "accounts": [
+          {
+            "rumPageloadEventsAdaptiveGroups": [
+              {
+                "avg": {
+                  "sampleInterval": 1
+                },
+                "count": 2,
+                "dimensions": {
+                  "date": "2026-09-05",
+                  "deliveryType": "unknown",
+                  "navigationType": "navigate",
+                  "requestPath": "/which-ai-fetchers-send-which-headers"
+                },
+                "sum": {
+                  "visits": 2
+                }
+              },
+              {
+                "avg": {
+                  "sampleInterval": 1
+                },
+                "count": 1,
+                "dimensions": {
+                  "date": "2026-09-04",
+                  "deliveryType": "unknown",
+                  "navigationType": "routing-apis",
+                  "requestPath": "/stats"
+                },
+                "sum": {
+                  "visits": 0
+                }
+              },
+              {
+                "avg": {
+                  "sampleInterval": 1
+                },
+                "count": 1,
+                "dimensions": {
+                  "date": "2026-09-04",
+                  "deliveryType": "unknown",
+                  "navigationType": "navigate",
+                  "requestPath": "/bring-your-own-ai-agent"
+                },
+                "sum": {
+                  "visits": 1
+                }
+              },
+              {
+                "avg": {
+                  "sampleInterval": 1
+                },
+                "count": 5,
+                "dimensions": {
+                  "date": "2026-09-04",
+                  "deliveryType": "unknown",
+                  "navigationType": "navigate",
+                  "requestPath": "/"
+                },
+                "sum": {
+                  "visits": 3
+                }
+              },
+              {
+                "avg": {
+                  "sampleInterval": 1
+                },
+                "count": 1,
+                "dimensions": {
+                  "date": "2026-09-05",
+                  "deliveryType": "unknown",
+                  "navigationType": "navigate",
+                  "requestPath": "/the-agentic-product-engineer"
+                },
+                "sum": {
+                  "visits": 1
+                }
+              },
+              {
+                "avg": {
+                  "sampleInterval": 1
+                },
+                "count": 2,
+                "dimensions": {
+                  "date": "2026-09-05",
+                  "deliveryType": "unknown",
+                  "navigationType": "navigate",
+                  "requestPath": "/"
+                },
+                "sum": {
+                  "visits": 2
+                }
+              },
+              {
+                "avg": {
+                  "sampleInterval": 1
+                },
+                "count": 1,
+                "dimensions": {
+                  "date": "2026-09-04",
+                  "deliveryType": "unknown",
+                  "navigationType": "navigate",
+                  "requestPath": "/stats"
+                },
+                "sum": {
+                  "visits": 0
+                }
+              },
+              {
+                "avg": {
+                  "sampleInterval": 1
+                },
+                "count": 1,
+                "dimensions": {
+                  "date": "2026-09-05",
+                  "deliveryType": "unknown",
+                  "navigationType": "navigate",
+                  "requestPath": "/my-evals-say-it-works-i-dont-use-it"
+                },
+                "sum": {
+                  "visits": 1
+                }
+              },
+              {
+                "avg": {
+                  "sampleInterval": 1
+                },
+                "count": 1,
+                "dimensions": {
+                  "date": "2026-09-05",
+                  "deliveryType": "unknown",
+                  "navigationType": "navigate",
+                  "requestPath": "/bring-your-own-ai-agent"
+                },
+                "sum": {
+                  "visits": 1
+                }
+              },
+              {
+                "avg": {
+                  "sampleInterval": 1
+                },
+                "count": 1,
+                "dimensions": {
+                  "date": "2026-09-04",
+                  "deliveryType": "unknown",
+                  "navigationType": "navigate",
+                  "requestPath": "/animations-lab"
+                },
+                "sum": {
+                  "visits": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "errors": null
+  }
+}

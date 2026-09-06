@@ -1,0 +1,2265 @@
+{
+  "queriedAt": "2026-09-06 01:22:38",
+  "sqlFile": "12-production-followup.sql",
+  "results": [
+    [
+      {
+        "queried_at": "2026-09-06 01:22:38"
+      }
+    ],
+    [
+      {
+        "id": 1,
+        "name": "0001_create_page_observations.sql",
+        "applied_at": "2026-09-03 01:39:10"
+      },
+      {
+        "id": 2,
+        "name": "0002_backfill_legacy_page_views.sql",
+        "applied_at": "2026-09-03 01:39:10"
+      },
+      {
+        "id": 3,
+        "name": "0003_add_request_evidence.sql",
+        "applied_at": "2026-09-03 01:39:10"
+      },
+      {
+        "id": 4,
+        "name": "0004_add_representation.sql",
+        "applied_at": "2026-09-03 05:04:02"
+      },
+      {
+        "id": 5,
+        "name": "0005_add_reader_identity.sql",
+        "applied_at": "2026-09-03 05:04:03"
+      },
+      {
+        "id": 6,
+        "name": "0006_backfill_reader_kind.sql",
+        "applied_at": "2026-09-03 05:04:03"
+      },
+      {
+        "id": 7,
+        "name": "0007_reconstruct_pre_evidence_asn.sql",
+        "applied_at": "2026-09-03 05:04:03"
+      },
+      {
+        "id": 8,
+        "name": "0008_owner_clients_and_network_reclassification.sql",
+        "applied_at": "2026-09-04 18:30:09"
+      }
+    ],
+    [
+      {
+        "migration": "0008_owner_clients_and_network_reclassification",
+        "from_kind": "browser",
+        "to_kind": "cloud-browser",
+        "rows": 18,
+        "first_revision": "2026-09-04 18:30:09",
+        "last_revision": "2026-09-04 18:30:09"
+      },
+      {
+        "migration": "0008_owner_clients_and_network_reclassification",
+        "from_kind": "browser",
+        "to_kind": "preview-or-feed",
+        "rows": 19,
+        "first_revision": "2026-09-04 18:30:09",
+        "last_revision": "2026-09-04 18:30:09"
+      },
+      {
+        "migration": "0008_owner_clients_and_network_reclassification",
+        "from_kind": "legacy-browser",
+        "to_kind": "cloud-browser",
+        "rows": 1,
+        "first_revision": "2026-09-04 18:30:09",
+        "last_revision": "2026-09-04 18:30:09"
+      }
+    ],
+    [],
+    [
+      {
+        "day": "2026-09-04",
+        "traffic_class": "ai",
+        "reader_kind": "ai-assistant",
+        "views": 6,
+        "daily_clients": 6
+      },
+      {
+        "day": "2026-09-04",
+        "traffic_class": "ai",
+        "reader_kind": "ai-crawler",
+        "views": 13,
+        "daily_clients": 13
+      },
+      {
+        "day": "2026-09-04",
+        "traffic_class": "ai",
+        "reader_kind": "ai-search",
+        "views": 1,
+        "daily_clients": 1
+      },
+      {
+        "day": "2026-09-04",
+        "traffic_class": "bot",
+        "reader_kind": "headless-browser",
+        "views": 2,
+        "daily_clients": 2
+      },
+      {
+        "day": "2026-09-04",
+        "traffic_class": "bot",
+        "reader_kind": "other-bot",
+        "views": 24,
+        "daily_clients": 18
+      },
+      {
+        "day": "2026-09-04",
+        "traffic_class": "bot",
+        "reader_kind": "search-crawler",
+        "views": 4,
+        "daily_clients": 4
+      },
+      {
+        "day": "2026-09-04",
+        "traffic_class": "bot",
+        "reader_kind": "signed-agent",
+        "views": 1,
+        "daily_clients": 1
+      },
+      {
+        "day": "2026-09-04",
+        "traffic_class": "browser",
+        "reader_kind": "browser",
+        "views": 49,
+        "daily_clients": 35
+      },
+      {
+        "day": "2026-09-04",
+        "traffic_class": "browser",
+        "reader_kind": "cloud-browser",
+        "views": 111,
+        "daily_clients": 60
+      },
+      {
+        "day": "2026-09-04",
+        "traffic_class": "browser",
+        "reader_kind": "http-client",
+        "views": 51,
+        "daily_clients": 27
+      },
+      {
+        "day": "2026-09-04",
+        "traffic_class": "browser",
+        "reader_kind": "legacy-browser",
+        "views": 13,
+        "daily_clients": 8
+      },
+      {
+        "day": "2026-09-05",
+        "traffic_class": "ai",
+        "reader_kind": "ai-assistant",
+        "views": 6,
+        "daily_clients": 6
+      },
+      {
+        "day": "2026-09-05",
+        "traffic_class": "ai",
+        "reader_kind": "ai-crawler",
+        "views": 11,
+        "daily_clients": 8
+      },
+      {
+        "day": "2026-09-05",
+        "traffic_class": "ai",
+        "reader_kind": "ai-search",
+        "views": 1,
+        "daily_clients": 1
+      },
+      {
+        "day": "2026-09-05",
+        "traffic_class": "bot",
+        "reader_kind": "other-bot",
+        "views": 15,
+        "daily_clients": 14
+      },
+      {
+        "day": "2026-09-05",
+        "traffic_class": "bot",
+        "reader_kind": "preview-or-feed",
+        "views": 1,
+        "daily_clients": 1
+      },
+      {
+        "day": "2026-09-05",
+        "traffic_class": "bot",
+        "reader_kind": "search-crawler",
+        "views": 5,
+        "daily_clients": 5
+      },
+      {
+        "day": "2026-09-05",
+        "traffic_class": "bot",
+        "reader_kind": "signed-agent",
+        "views": 5,
+        "daily_clients": 5
+      },
+      {
+        "day": "2026-09-05",
+        "traffic_class": "browser",
+        "reader_kind": "browser",
+        "views": 46,
+        "daily_clients": 37
+      },
+      {
+        "day": "2026-09-05",
+        "traffic_class": "browser",
+        "reader_kind": "cloud-browser",
+        "views": 72,
+        "daily_clients": 37
+      },
+      {
+        "day": "2026-09-05",
+        "traffic_class": "browser",
+        "reader_kind": "http-client",
+        "views": 24,
+        "daily_clients": 24
+      },
+      {
+        "day": "2026-09-05",
+        "traffic_class": "browser",
+        "reader_kind": "legacy-browser",
+        "views": 6,
+        "daily_clients": 5
+      }
+    ],
+    [
+      {
+        "reader_kind": "browser",
+        "sec_fetch_mode": "navigate",
+        "sec_fetch_dest": "document",
+        "accepts_html": 1,
+        "has_accept_language": 1,
+        "views": 95
+      },
+      {
+        "reader_kind": "cloud-browser",
+        "sec_fetch_mode": null,
+        "sec_fetch_dest": null,
+        "accepts_html": null,
+        "has_accept_language": 0,
+        "views": 4
+      },
+      {
+        "reader_kind": "cloud-browser",
+        "sec_fetch_mode": null,
+        "sec_fetch_dest": null,
+        "accepts_html": 1,
+        "has_accept_language": 0,
+        "views": 82
+      },
+      {
+        "reader_kind": "cloud-browser",
+        "sec_fetch_mode": null,
+        "sec_fetch_dest": null,
+        "accepts_html": 1,
+        "has_accept_language": 1,
+        "views": 33
+      },
+      {
+        "reader_kind": "cloud-browser",
+        "sec_fetch_mode": "cors",
+        "sec_fetch_dest": null,
+        "accepts_html": 1,
+        "has_accept_language": 1,
+        "views": 4
+      },
+      {
+        "reader_kind": "cloud-browser",
+        "sec_fetch_mode": "navigate",
+        "sec_fetch_dest": "document",
+        "accepts_html": 1,
+        "has_accept_language": 1,
+        "views": 60
+      },
+      {
+        "reader_kind": "http-client",
+        "sec_fetch_mode": null,
+        "sec_fetch_dest": null,
+        "accepts_html": null,
+        "has_accept_language": 0,
+        "views": 23
+      },
+      {
+        "reader_kind": "http-client",
+        "sec_fetch_mode": null,
+        "sec_fetch_dest": null,
+        "accepts_html": null,
+        "has_accept_language": 1,
+        "views": 2
+      },
+      {
+        "reader_kind": "http-client",
+        "sec_fetch_mode": null,
+        "sec_fetch_dest": null,
+        "accepts_html": 1,
+        "has_accept_language": 0,
+        "views": 24
+      },
+      {
+        "reader_kind": "http-client",
+        "sec_fetch_mode": null,
+        "sec_fetch_dest": null,
+        "accepts_html": 1,
+        "has_accept_language": 1,
+        "views": 19
+      },
+      {
+        "reader_kind": "http-client",
+        "sec_fetch_mode": "cors",
+        "sec_fetch_dest": null,
+        "accepts_html": 1,
+        "has_accept_language": 1,
+        "views": 1
+      },
+      {
+        "reader_kind": "http-client",
+        "sec_fetch_mode": "navigate",
+        "sec_fetch_dest": null,
+        "accepts_html": 1,
+        "has_accept_language": 1,
+        "views": 3
+      },
+      {
+        "reader_kind": "http-client",
+        "sec_fetch_mode": "navigate",
+        "sec_fetch_dest": "document",
+        "accepts_html": 1,
+        "has_accept_language": 0,
+        "views": 3
+      },
+      {
+        "reader_kind": "legacy-browser",
+        "sec_fetch_mode": null,
+        "sec_fetch_dest": null,
+        "accepts_html": null,
+        "has_accept_language": 0,
+        "views": 9
+      },
+      {
+        "reader_kind": "legacy-browser",
+        "sec_fetch_mode": null,
+        "sec_fetch_dest": null,
+        "accepts_html": 1,
+        "has_accept_language": 0,
+        "views": 9
+      },
+      {
+        "reader_kind": "legacy-browser",
+        "sec_fetch_mode": null,
+        "sec_fetch_dest": null,
+        "accepts_html": 1,
+        "has_accept_language": 1,
+        "views": 1
+      }
+    ],
+    [
+      {
+        "day": "2026-09-04",
+        "path": "/",
+        "reader_kind": "ai-assistant",
+        "representation": "html",
+        "views": 4
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 3
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 12
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 25
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/",
+        "reader_kind": "headless-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 44
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/",
+        "reader_kind": "legacy-browser",
+        "representation": "html",
+        "views": 3
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 7
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/about",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/about",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/about",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/animations-lab",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/animations-lab",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/animations-lab",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/animations-lab",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/bring-your-own-ai-agent",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/bring-your-own-ai-agent",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/bring-your-own-ai-agent",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/bring-your-own-ai-agent/prompts",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/bring-your-own-ai-agent/prompts",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/design-language",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/does-llms-txt-work",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 3
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/engineering",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/engineering",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/essays",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/essays",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/first-party-analytics-for-a-personal-blog/prompts",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/how-ghx-was-born",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/how-ghx-was-born",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/i-am-lost-right-now",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/i-thought-building-was-enough/prompts",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/i-thought-building-was-enough/prompts",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/license",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/license",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/my-evals-say-it-works-i-dont-use-it",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/my-evals-say-it-works-i-dont-use-it",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/my-evals-say-it-works-i-dont-use-it/prompts",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 3
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/my-evals-say-it-works-i-dont-use-it/prompts",
+        "reader_kind": "search-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/one-hundred-pull-requests",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/one-hundred-pull-requests/prompts",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/openwiki-validates-my-bet",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/oss-radar",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/oss-radar",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/oss-radar-02-the-toolchain-is-the-moat",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 3
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/oss-radar-02-the-toolchain-is-the-moat",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/oss-radar-03-buzz-is-slack-on-airoids",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 6
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/oss-radar-03-buzz-is-slack-on-airoids",
+        "reader_kind": "other-bot",
+        "representation": "markdown",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+        "reader_kind": "ai-assistant",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+        "reader_kind": "search-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/oss-radar-06-interp-engine",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/oss-radar-06-interp-engine",
+        "reader_kind": "signed-agent",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/privacy",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+        "reader_kind": "search-crawler",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/the-agentic-product-engineer",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/the-agentic-product-engineer",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/the-agentic-product-engineer/prompts",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/topologies-of-thoughts",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/topologies-of-thoughts",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/what-if-the-agent-was-better-before-we-helped",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "ai-assistant",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "ai-search",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 6
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 65
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "headless-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 5
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "legacy-browser",
+        "representation": "html",
+        "views": 10
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 3
+      },
+      {
+        "day": "2026-09-04",
+        "path": "/you-dont-need-codemap",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 3
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/",
+        "reader_kind": "ai-assistant",
+        "representation": "html",
+        "views": 4
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 7
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 18
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 8
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/",
+        "reader_kind": "legacy-browser",
+        "representation": "html",
+        "views": 3
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 3
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/",
+        "reader_kind": "search-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/",
+        "reader_kind": "signed-agent",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/about",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/about",
+        "reader_kind": "legacy-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/animations-lab",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/animations-lab",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/animations-lab",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/bring-your-own-ai-agent",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/bring-your-own-ai-agent",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/bring-your-own-ai-agent",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/bring-your-own-ai-agent/prompts",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/bring-your-own-ai-agent/prompts",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/bring-your-own-ai-agent/prompts",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/design-language",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/design-language",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/design-language",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/does-llms-txt-work",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/does-llms-txt-work",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/does-llms-txt-work",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/does-llms-txt-work/prompts",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/does-llms-txt-work/prompts",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/engineering",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/engineering",
+        "reader_kind": "search-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/essays",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/first-party-analytics-for-a-personal-blog",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/first-party-analytics-for-a-personal-blog",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/first-party-analytics-for-a-personal-blog",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/first-party-analytics-for-a-personal-blog",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/how-ghx-was-born",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/how-ghx-was-born/prompts",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 3
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "reader_kind": "signed-agent",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/how-i-separate-readers-from-bots-without-javascript/prompts",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/how-i-separate-readers-from-bots-without-javascript/prompts",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/i-am-lost-right-now",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/i-am-lost-right-now",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/i-am-lost-right-now",
+        "reader_kind": "search-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/i-thought-building-was-enough",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/i-thought-building-was-enough",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/i-thought-building-was-enough/prompts",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/i-thought-building-was-enough/prompts",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/license",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/license",
+        "reader_kind": "signed-agent",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/life-as-background-music",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/life-as-background-music",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/life-as-background-music",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/life-as-background-music",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/life-as-background-music/prompts",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/life-as-background-music/prompts",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/linux-signal-stack-conflict",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/my-evals-say-it-works-i-dont-use-it",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/my-evals-say-it-works-i-dont-use-it",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/my-evals-say-it-works-i-dont-use-it/prompts",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/one-hundred-pull-requests",
+        "reader_kind": "ai-assistant",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/one-hundred-pull-requests",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/one-hundred-pull-requests/prompts",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/openwiki-validates-my-bet",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-01-vercel-winter-2026-cohort",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-01-vercel-winter-2026-cohort",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-02-the-toolchain-is-the-moat",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-02-the-toolchain-is-the-moat",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-03-buzz-is-slack-on-airoids",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 3
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-03-buzz-is-slack-on-airoids",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-03-buzz-is-slack-on-airoids",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-05-bun-1-4",
+        "reader_kind": "ai-search",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-05-bun-1-4",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-05-bun-1-4",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-05-bun-1-4",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-05-bun-1-4",
+        "reader_kind": "http-client",
+        "representation": "markdown",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-05-bun-1-4",
+        "reader_kind": "signed-agent",
+        "representation": "markdown",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-06-interp-engine",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-06-interp-engine",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-06-interp-engine",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-06-interp-engine",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/oss-radar-06-interp-engine",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/privacy",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/privacy",
+        "reader_kind": "legacy-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+        "reader_kind": "preview-or-feed",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/the-agentic-product-engineer",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/the-agentic-product-engineer",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/the-agentic-product-engineer",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/the-agentic-product-engineer/prompts",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/the-agentic-product-engineer/prompts",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/the-agentic-product-engineer/prompts",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/topologies-of-thoughts",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/what-if-the-agent-was-better-before-we-helped",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/what-if-the-agent-was-better-before-we-helped",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/what-if-the-agent-was-better-before-we-helped/prompts",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "ai-assistant",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "ai-crawler",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 8
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 13
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "http-client",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "legacy-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "search-crawler",
+        "representation": "html",
+        "views": 2
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "reader_kind": "signed-agent",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/which-ai-fetchers-send-which-headers/prompts",
+        "reader_kind": "browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/which-ai-fetchers-send-which-headers/prompts",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/which-ai-fetchers-send-which-headers/prompts",
+        "reader_kind": "other-bot",
+        "representation": "html",
+        "views": 1
+      },
+      {
+        "day": "2026-09-05",
+        "path": "/you-dont-need-codemap",
+        "reader_kind": "cloud-browser",
+        "representation": "html",
+        "views": 1
+      }
+    ],
+    [
+      {
+        "signature_status": "unverified",
+        "signature_agent": null,
+        "agent_name": "DuckDuckBot",
+        "reader_kind": "search-crawler",
+        "views": 2,
+        "first_seen": "2026-09-03 05:14:32",
+        "last_seen": "2026-09-03 06:23:30"
+      },
+      {
+        "signature_status": "verified",
+        "signature_agent": "https://ahrefs.com",
+        "agent_name": null,
+        "reader_kind": "signed-agent",
+        "views": 5,
+        "first_seen": "2026-09-04 02:58:42",
+        "last_seen": "2026-09-05 12:53:32"
+      },
+      {
+        "signature_status": "verified",
+        "signature_agent": "https://assistbot.duckduckgo.com",
+        "agent_name": "DuckAssistBot",
+        "reader_kind": "signed-agent",
+        "views": 2,
+        "first_seen": "2026-09-03 06:29:44",
+        "last_seen": "2026-09-03 06:31:40"
+      },
+      {
+        "signature_status": "verified",
+        "signature_agent": "https://crawler.exa.ai",
+        "agent_name": null,
+        "reader_kind": "signed-agent",
+        "views": 2,
+        "first_seen": "2026-09-03 07:37:55",
+        "last_seen": "2026-09-05 16:01:52"
+      }
+    ],
+    [
+      {
+        "day": "2026-09-04",
+        "asn": 17638,
+        "referrer_host": "uniuit.com",
+        "sec_fetch_site": "none",
+        "views": 12,
+        "daily_clients": 1,
+        "paths": 2
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 17638,
+        "referrer_host": "uniuit.com",
+        "sec_fetch_site": "none",
+        "views": 10,
+        "daily_clients": 1,
+        "paths": 2
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 212238,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 7,
+        "daily_clients": 7,
+        "paths": 4
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 62874,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 5,
+        "daily_clients": 5,
+        "paths": 5
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 212238,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 4,
+        "daily_clients": 4,
+        "paths": 4
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 3257,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 2,
+        "daily_clients": 2,
+        "paths": 2
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 4837,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 2,
+        "daily_clients": 2,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 199775,
+        "referrer_host": null,
+        "sec_fetch_site": "same-origin",
+        "views": 2,
+        "daily_clients": 1,
+        "paths": 2
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 396356,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 2,
+        "daily_clients": 2,
+        "paths": 2
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 2856,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 2,
+        "daily_clients": 2,
+        "paths": 2
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 4837,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 2,
+        "daily_clients": 2,
+        "paths": 2
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 10753,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 2,
+        "daily_clients": 2,
+        "paths": 2
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 214483,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 2,
+        "daily_clients": 2,
+        "paths": 2
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 3215,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 3301,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 5089,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 7922,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 9009,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 9198,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 9808,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 17072,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 28220,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 46635,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 48832,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 49791,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 55286,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 62874,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 62887,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 62887,
+        "referrer_host": null,
+        "sec_fetch_site": "same-origin",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 199775,
+        "referrer_host": "t.co",
+        "sec_fetch_site": "cross-site",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 210906,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 214483,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 263694,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 270817,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-04",
+        "asn": 398781,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 209,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 4775,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 7922,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 9009,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 10396,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 11404,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 11798,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 17072,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 22773,
+        "referrer_host": "google.com",
+        "sec_fetch_site": "cross-site",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 25019,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 27611,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 38136,
+        "referrer_host": "chatgpt.com",
+        "sec_fetch_site": "cross-site",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 47007,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 48832,
+        "referrer_host": "vuink.com",
+        "sec_fetch_site": "cross-site",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 136191,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 141380,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 201341,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 216472,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      },
+      {
+        "day": "2026-09-05",
+        "asn": 328943,
+        "referrer_host": null,
+        "sec_fetch_site": "none",
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1
+      }
+    ],
+    [
+      {
+        "asn": 396982,
+        "reader_kind": "cloud-browser",
+        "sec_fetch_mode": null,
+        "sec_fetch_dest": null,
+        "accepts_html": null,
+        "has_accept_language": 0,
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1,
+        "first_seen": "2026-09-04 18:02:31",
+        "last_seen": "2026-09-04 18:02:31"
+      },
+      {
+        "asn": 396982,
+        "reader_kind": "cloud-browser",
+        "sec_fetch_mode": null,
+        "sec_fetch_dest": null,
+        "accepts_html": 1,
+        "has_accept_language": 0,
+        "views": 1,
+        "daily_clients": 1,
+        "paths": 1,
+        "first_seen": "2026-09-04 15:22:52",
+        "last_seen": "2026-09-04 15:22:52"
+      },
+      {
+        "asn": 396982,
+        "reader_kind": "cloud-browser",
+        "sec_fetch_mode": "navigate",
+        "sec_fetch_dest": "document",
+        "accepts_html": 1,
+        "has_accept_language": 1,
+        "views": 34,
+        "daily_clients": 1,
+        "paths": 32,
+        "first_seen": "2026-09-05 07:25:00",
+        "last_seen": "2026-09-05 07:25:01"
+      },
+      {
+        "asn": 396982,
+        "reader_kind": "other-bot",
+        "sec_fetch_mode": null,
+        "sec_fetch_dest": null,
+        "accepts_html": 1,
+        "has_accept_language": 0,
+        "views": 9,
+        "daily_clients": 9,
+        "paths": 8,
+        "first_seen": "2026-09-04 04:30:29",
+        "last_seen": "2026-09-05 17:43:03"
+      }
+    ],
+    []
+  ]
+}
