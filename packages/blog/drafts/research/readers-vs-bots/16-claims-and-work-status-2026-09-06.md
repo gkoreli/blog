@@ -1,6 +1,6 @@
 # Analytics claims, evidence, and outstanding work
 
-Updated September 6, 2026 UTC. Bookkeeping for the investigation and article revision. This ledger separates article corrections from dashboard, ingestion, and deployment work. The September 6 article/README revision is prepared and being release-checked; the runtime repairs remain open.
+Updated September 6, 2026 UTC. Bookkeeping for the investigation and article revision. This ledger separates article corrections from dashboard, ingestion, and deployment work. The September 6 article/README revision is published and live-verified in commit `eebe342`; the runtime repairs remain open.
 
 ## Current conclusion
 
@@ -43,7 +43,7 @@ The private run is `/tmp/blog-analytics-evidence-20260906/`, with `report.md` an
 
 | Work | Status and next action |
 |---|---|
-| TASK-0103 / article 024 revision | Revised locally with the dated results and factual/semantic corrections. Release checks and live verification are recorded in artifact 17. The full experiment study does not gate this revision. |
+| TASK-0103 / article 024 revision | Complete: the dated results and factual/semantic corrections are published and verified live. Release checks and deployment are recorded in artifact 17. The full experiment study does not gate this revision. |
 | TASK-0119 / identity and role | Todo. Immediate scope is grouping and wording while retaining the verifier. Preserve evidence/history and verify deployed owner behavior. Full protocol investigation belongs to FLDR-0008 row 4. |
 | TASK-0120 / discrepancy investigation | In progress. Extractor and existing-data inspection are completed substeps; trace details and controlled clients remain open. Full investigation belongs to FLDR-0008 row 10. |
 | TASK-0104 / longer calibration | In progress. Preserve complete-day exports within the RUM retention window and compare the longer period around September 17. No universal ratio threshold or automatic completion from counter agreement. |
