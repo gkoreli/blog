@@ -7,6 +7,19 @@ lastModified: "2026-09-06"
 description: "Cloudflare Workers bot detection without JavaScript: headers, network evidence, and an unresolved gap of 95 browser observations versus 14 script page loads."
 section: engineering
 tags: [analytics, cloudflare-workers, http, bots, ai-agents, observability]
+researchFootprint:
+  sessions: 27
+  artifacts: 21
+  totalTokens: 192964421
+  inputTokens: 192089749
+  cachedInputTokens: 186339334
+  outputTokens: 874672
+  reasoningOutputTokens: 258791
+  wallClockMinutes: 5816
+  startedAt: "2026-09-02T23:40:35.429Z"
+  measuredAt: "2026-09-07T00:35:59.352Z"
+  provenanceUrl: "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/readers-vs-bots"
+  scope: "These sessions cover the original research, implementation, later investigations, and publication. They also include shared analytics and follow-up work, so this is not an exclusive total for writing this article. Codex accounting sums the final cumulative counter before each reset and at the session cutoff. Claude Code accounting counts usage once per API message, removing repeated log records. The artifact count covers committed Markdown files in the linked research directory."
 series:
   id: "measurement-boundaries"
   title: "Measurement boundaries"
