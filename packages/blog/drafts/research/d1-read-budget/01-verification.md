@@ -34,4 +34,10 @@ The new correction changes code and report delivery, while policy `2026-09-06.2`
 3. Capture one live `/api/stats?range=30d&traffic=browser` response and one equivalent request with reordered or irrelevant parameters. Confirm the unchanged policy, approved-name projection, report timestamp, and a cache hit with identical received JSON. Record the Cloudflare data-center indicator; a different data center may have a separate cold cache.
 4. Append release/version metadata and received-byte hashes. Update the task and article with measured results only after these checks succeed.
 
-Deployment and current live error-path verification are recorded below when available.
+## Deployment and served-artifact verification
+
+Commit `316eb006a2ab150a56414c93d95e844339dad304` was pushed to `main`. Cloudflare activated deployment `4f84a84d-9132-4d6f-9788-d4db6a8997ab` at **05:49:21.201035 UTC**, with version `b0e713a8-c2fe-4094-acba-ea57e3ae9457` serving 100%. The commit's Workers Build check completed successfully at 05:49:25 UTC.
+
+Checks at **05:50–05:51 UTC** verified the served stats freshness disclosure, the corrected article's Markdown representation, and the replacement of real-time discovery wording. All returned HTTP 200. An invalid stats selection returned the expected HTTP 400 and `Cache-Control: no-store`, exercising the new validation path before database access. [Response hashes and deployment metadata](release-verification.json).
+
+No valid stats request was issued for this release check while the account was capped. It does not verify a successful production query, a cache hit, or the live database-failure response. The ten cache tests cover error handling locally. The owner's later limit-exceeded email corroborated the database quota rejection without authorizing a billing change. Successful report acceptance remains the follow-up above; the release record does not mark the task complete.

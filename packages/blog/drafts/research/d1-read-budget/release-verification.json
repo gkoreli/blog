@@ -1,0 +1,76 @@
+{
+  "capturedAt": "2026-09-07T05:51:17.857Z",
+  "codeCommit": "316eb006a2ab150a56414c93d95e844339dad304",
+  "scope": "Served-artifact and validation checks only. No valid stats query and no direct production SQL; valid reports remain unverified while D1 is capped.",
+  "results": [
+    {
+      "name": "stats-page",
+      "capturedAt": "2026-09-07T05:50:39.164Z",
+      "status": 200,
+      "contentMatches": true,
+      "bodySha256": "bde3ad179846d8bafc3a776c438c37ac23cb5b287d1712c7b829cfa46bffaaa1",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "cfRay": "a3736fe588bc76b8-SEA"
+    },
+    {
+      "name": "llms",
+      "capturedAt": "2026-09-07T05:50:39.326Z",
+      "status": 200,
+      "contentMatches": true,
+      "bodySha256": "2909af946a160ae309efe212081ffee3be532d7647dc4c3a92651214de664157",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "cfRay": "a3736fe71a1576b8-SEA"
+    },
+    {
+      "name": "article",
+      "capturedAt": "2026-09-07T05:51:17.831Z",
+      "status": 200,
+      "contentMatches": true,
+      "bodySha256": "d526f2a36e95df3ef1d9e2be96ce7feaff5a4f6fc9e426348916feddc289e7ba",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "cfRay": "a37370d71a52c6ba-SEA"
+    },
+    {
+      "name": "invalid-stats-state",
+      "capturedAt": "2026-09-07T05:51:17.857Z",
+      "status": 400,
+      "contentMatches": true,
+      "bodySha256": "217cb0a59dfb4e790494273ace2e6d1a5746fe883714f368062f25e9643f6026",
+      "cacheControl": "no-store",
+      "cfRay": "a37370d8bb35c6ba-SEA"
+    }
+  ],
+  "deployment": {
+    "id": "4f84a84d-9132-4d6f-9788-d4db6a8997ab",
+    "versionId": "b0e713a8-c2fe-4094-acba-ea57e3ae9457",
+    "createdOn": "2026-09-07T05:49:21.201035Z",
+    "percentage": 100,
+    "buildId": "313af56d-3537-44f4-b35a-8a5c3fa01463",
+    "buildCompletedAt": "2026-09-07T05:49:25Z",
+    "buildConclusion": "success",
+    "source": "Wrangler deployments list and GitHub commit check-run metadata; only relevant fields reproduced."
+  },
+  "privateCaptureCommitments": [
+    {
+      "path": "live-article.json",
+      "sha256": "bdd1647f117b0e892dc741204b56d42ceba65ad857612bd0342dd083087e69ba"
+    },
+    {
+      "path": "live-invalid-stats-state.json",
+      "sha256": "0aca549ec816b489fa0ca08ea01ce441c57b95702f2f7f6bd339bf718d6ce0d6"
+    },
+    {
+      "path": "live-llms.json",
+      "sha256": "6fa196b1f59b2db27cafb8dcb3e6d036b192a39e09679ad2eae9908c4d600e3c"
+    },
+    {
+      "path": "live-stats-page.json",
+      "sha256": "2790104cd2afd1cee3c166ec96eafa839d6eb78936c16146ca15406c3bf5638f"
+    },
+    {
+      "path": "live-summary.json",
+      "sha256": "791d6bf2ff604458339e406116687aaf892f7446f1ac03de7cf9e50446d5c962"
+    }
+  ],
+  "privateVerificationScriptSha256": "f4db42185dad46df23898a136498aa5cef25047351203b1896a12d7ff9f64e24"
+}
