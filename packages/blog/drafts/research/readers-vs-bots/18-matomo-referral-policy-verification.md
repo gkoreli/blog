@@ -1,6 +1,6 @@
 # Matomo referral policy: source review, implementation, and verification
 
-Engineering follow-up on September 6 PDT / September 7 UTC, extending [artifact 17](17-referral-abuse-defense-verification.md). Decisions: [ADR-0016.5](../../../../../docs/adr/0016.5-referral-abuse-defense.md), [ADR-0016.6](../../../../../docs/adr/0016.6-versioned-referral-policy-and-matomo-source.md). Work: [TASK-0121](../../../../../docs/tasks/TASK-0121.md). This checkpoint precedes deployment; actual activation will be recorded separately.
+Engineering follow-up on September 6 PDT / September 7 UTC, extending [artifact 17](17-referral-abuse-defense-verification.md). Decisions: [ADR-0016.5](../../../../../docs/adr/0016.5-referral-abuse-defense.md), [ADR-0016.6](../../../../../docs/adr/0016.6-versioned-referral-policy-and-matomo-source.md). Work: [TASK-0121](../../../../../docs/tasks/TASK-0121.md). This checkpoint precedes deployment; actual activation is recorded separately in [artifact 19](19-referral-policy-activation.md).
 
 ## Findings that changed the implementation
 

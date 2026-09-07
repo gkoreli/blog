@@ -26,7 +26,7 @@
 
 ## Tasks
 
-Referral-abuse repair: [worklist FLDR-0009](../../../../../docs/folders/FLDR-0009.md), [ADR-0016.5](../../../../../docs/adr/0016.5-referral-abuse-defense.md), [Matomo/provenance ADR-0016.6](../../../../../docs/adr/0016.6-versioned-referral-policy-and-matomo-source.md), and [verification artifact 18](18-matomo-referral-policy-verification.md). The candidate combines a pinned community list and local exceptions, prevents arbitrary hostname promotion, discloses exclusions, and preserves evidence. Production activation remains outstanding at the implementation checkpoint.
+Referral-abuse repair: [worklist FLDR-0009](../../../../../docs/folders/FLDR-0009.md), [ADR-0016.5](../../../../../docs/adr/0016.5-referral-abuse-defense.md), [Matomo/provenance ADR-0016.6](../../../../../docs/adr/0016.6-versioned-referral-policy-and-matomo-source.md), and [verification artifact 18](18-matomo-referral-policy-verification.md). The candidate combines a pinned community list and local exceptions, prevents arbitrary hostname promotion, discloses exclusions, and preserves evidence. Production activation and live checks are recorded in [artifact 19](19-referral-policy-activation.md); TASK-0121 is complete. Manual browser QA remains unperformed.
 
 **Current bookkeeping:** [artifact 16](16-claims-and-work-status-2026-09-06.md) records the correction checklist, completed extractor validation, private capture location, and remaining work. The [extractor](../../../scripts/analytics-evidence.md) is implemented; grouping repairs, article corrections, and controlled trials remain open. TASK-0104's current contract supersedes its original ratio thresholds and waiting instruction.
 

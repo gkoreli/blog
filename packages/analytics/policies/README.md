@@ -37,7 +37,7 @@ The assessment file records source/policy hashes, input-file hash, and each host
 
 ## Record an actual release
 
-After deployment, record the deployment's actual ID and activation time, code commit, environment, policy version/hash, and verification artifact. Append corrections and rollbacks; do not revise previous activation records. No activation record exists for this locally tested candidate.
+After deployment, record the deployment's actual ID and activation time, code commit, environment, policy version/hash, and verification artifact. Append corrections and rollbacks; do not revise previous activation records. The first verified activation is recorded in [2026-09-07.1](activations/2026-09-07.1.json), with [live verification](../../blog/drafts/research/readers-vs-bots/19-referral-policy-activation.md).
 
 Create a private report capture after the live API advertises the reviewed policy:
 

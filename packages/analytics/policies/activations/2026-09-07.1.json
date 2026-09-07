@@ -1,0 +1,28 @@
+{
+  "environment": "production",
+  "policyVersion": "2026-09-06.2",
+  "policySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+  "evaluator": "host-suffix-v1",
+  "source": {
+    "provider": "matomo",
+    "revision": "e65db652cade6882aa9a76bbb65c9bb17e079f4b",
+    "sha256": "83d2f174807c72987e73611fd7b36776bab02ee85fccc7b705d3be1bfa2a80b5"
+  },
+  "codeCommit": "fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d",
+  "buildCheck": {
+    "name": "Workers Builds: gkoreli-com",
+    "conclusion": "success",
+    "buildId": "be21b0df-7abe-41b7-9f91-92cd5d92e4af"
+  },
+  "deploymentId": "b2a44fdf-9291-40e3-8aae-85e4f191e016",
+  "workerVersionId": "662f06cd-2b80-425d-ac70-cc54d5002167",
+  "percentage": 100,
+  "deploymentCreatedAt": "2026-09-07T00:23:54.049584Z",
+  "reportCapturedAt": "2026-09-07T00:24:48.184Z",
+  "verifiedAt": "2026-09-07T00:25:26.863Z",
+  "recordedAt": "2026-09-07T00:27:22.997093Z",
+  "verificationArtifact": "packages/blog/drafts/research/readers-vs-bots/19-referral-policy-activation.md",
+  "reportResponseSha256": "1592332e6663043b09dda35315243623a0cb96a11296e1cf4e746adec75304b9",
+  "privateReleaseManifestSha256": "3ec2031da20b973d4051fc6aa9dab985888b73ca20766e0bb96e8f480b090961",
+  "verificationArtifactSha256": "fbb93dceb638bdb61fed66fb7fa03a8871df152dde0698e48d795c46ac709d4c"
+}
