@@ -1,11 +1,13 @@
 ---
 name: article-discovery-positioning
-description: Reverse-engineer honest external doorways from an already-shaped article: publication role, reader and search intent, H1/seoTitle/description/standfirst, headings, keywords, internal cross-references, link-worthy assets, and distribution. Use when titling, positioning, preparing, or repairing discovery for a gkoreli.com article. Never choose or flatten the living center.
+description: >-
+  Reverse-engineer honest external doorways from an already-shaped article: publication role, reader and search intent, H1/seoTitle/description/standfirst, headings, keywords, internal cross-references, link-worthy assets, and distribution. Use when titling, positioning, preparing, or repairing discovery for a gkoreli.com article. Never choose or flatten the living center.
 license: MIT
 metadata:
   author: gkoreli
-  version: "1.0.0"
+  version: "1.1.0"
   evidence-audited: "2026-08-26"
+  credibility-reviewed: "2026-09-06"
 ---
 
 # Article Discovery Positioning
@@ -61,6 +63,7 @@ Owned failure, decision, question, or result:
 Mechanisms and procedures actually explained:
 Reader decisions the body can support:
 Evidence inventory:
+Firsthand basis, when relevant (what the author built, operated, tested, or observed):
 Claim boundaries and prohibited promises:
 Series / predecessor / continuation relationships:
 Observed query, referral, reply, correction, citation, or subscription evidence:
@@ -215,6 +218,8 @@ Explicit non-promises:
 
 Apply the title mechanics in `shareable-engineering` after the package's meaning is fixed.
 
+When ownership is part of the promise, consult [Firsthand Evidence and Credibility](../blog-writing/references/firsthand-evidence-and-credibility.md). First person can truthfully locate the work and limit its scope. Treat a credibility or click-through advantage from the pronoun itself as an untested hypothesis. Keep the concrete subject first; choose first, second, or neutral person according to what this article actually provides.
+
 ### 6. Run the promise ledger
 
 For every meaningful noun, verb, number, comparison, and outcome in the package:
@@ -228,6 +233,7 @@ Hard questions:
 - Would a cold reader expect setup steps that do not exist?
 - Does “how to” promise completion or only experience?
 - Does the title add identity, causality, privacy, performance, or outcome the body cannot prove?
+- If it says “I,” “we,” or “my,” what work or observation establishes that relationship, and where can the reader inspect its basis?
 - Would the article still make sense if the target phrase were removed?
 - Does the title sound compatible beside the strongest passage?
 - Are H1, seoTitle, description, and orientation describing the same article?

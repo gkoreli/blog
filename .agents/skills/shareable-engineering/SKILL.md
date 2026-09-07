@@ -4,13 +4,14 @@ description: Evidence-based mechanics for engineering articles that get read, sh
 license: MIT
 metadata:
   author: gkoreli
-  version: "1.2.0"
+  version: "1.3.0"
   evidence-audited: 2026-08-25
+  credibility-reviewed: "2026-09-06"
 ---
 
 # Shareable Engineering Articles — The Evidence-Based Mechanics
 
-This skill exists because "catchy" is usually folklore. Everything prescriptive here traces to a verified source or a named practitioner with receipts; the epistemics section says which is which. When new evidence contradicts a rule, update the rule and bump `evidence-audited`.
+This skill separates empirical findings, provider guidance, practitioner experience, and editorial judgment. Practitioner advice is not a measured causal effect, and a benchmark does not establish a universal publishing rule. When evidence changes, update the affected guidance and record the scope and date of that review; do not imply untouched sources were re-audited.
 
 Run `shape-article` first. Apply this skill to the engineering and discovery layers of a piece without forcing an exposed essay, inquiry, or field note to become a resolved argument. `personal-essays` governs every conflict involving voice, aliveness, and unresolved experience.
 
@@ -22,6 +23,7 @@ Run `shape-article` first. Apply this skill to the engineering and discovery lay
 - **Peer-reviewed**: "GEO: Generative Engine Optimization," Aggarwal et al., KDD 2024 (arXiv:2311.09735); FeatGEO, ACL 2026; MAGEO, ACL Findings 2026; Competitive GEO, SIGIR 2026.
 - **Practitioner authority** (consistent with their published work): Dan Luu, Julia Evans, Simon Willison, Thorsten Ball, swyx, Sean Goedecke, HN moderator dang.
 - **Rejected**: AEO content-farm posts with fake-precise stats (r-values, "+156%") and no methodology. If a number has no methodology, it does not enter this skill.
+- **Credibility review, 2026-09-06:** the [primary-source ledger](../../../packages/blog/drafts/research/engineering-credibility/01-evidence-ledger.md) covers human credibility judgments, model source preferences, and provider documentation. First-person ownership is an editorial attribution choice, not an experimentally established trust or ranking advantage. This review does not revalidate every older title/share claim above.
 
 ## Titles
 
@@ -31,13 +33,14 @@ The architecture is the metadata split (see `AGENTS.md`), amended 2026-09-01 by 
 - **Front-load the handles.** Tool names, the topic noun, the artifact ("MCP server," "UI framework") come first; the hook number or verdict closes.
 - **Declarative beats interrogative.** Question titles show no CTR advantage (15.5% vs 16.3%, n = 4M). Curiosity comes from specific stakes, not question marks.
 - **Positive framing edges negative** (+4.1pp absolute). "What 100 PRs bought" over "Why PRs failed me" — when both are honest.
-- **Semantic match with H1 is defensive.** Google rewrites titles it distrusts, drawing from H1, anchors, and on-page text. A `seoTitle` that shares the H1's substance keeps Google from writing yours for you.
-- **First person signals a human.** HN data: titles like "I've …" read as a person, not a content farm. dang: "Intellectual curiosity is the currency of HN. You can't fake it."
+- **Keep title signals accurate and consistent.** Google can form title links from the title element, headings, anchors, and other sources. Matching the H1's substance avoids contradictory promises; it does not guarantee the displayed wording. [Google title-link documentation](https://developers.google.com/search/docs/appearance/title-link), checked September 6, 2026.
+- **First person can identify firsthand work.** Use ownership when it truthfully tells the reader who built, operated, tested, or observed the system. The methods and artifacts support the claim; the pronoun supplies attribution. We have not established that first person authenticates a human, increases trust or clicks, or improves AI citation. See [Firsthand Evidence and Credibility](../blog-writing/references/firsthand-evidence-and-credibility.md).
 - **Never**: keyword stuffing, boilerplate patterns, comparison-slug titles ("X vs Y vs Z") — Google flags them and readers smell them.
 
 ## Agentic search (GEO/AEO) — what is real in 2026
 
 - **Separate eligibility, selection, navigation, use, citation, and referral.** A crawler request proves only that a resource was requested. A supplied source influencing an answer does not prove organic discovery or selection. Every GEO claim must name its stage and evidence.
+- **Source preference is not demonstrated credibility.** Controlled model studies can reveal sensitivity to source labels without showing factual reliability or organic discovery. Provider source labels describe that provider's review, not a guarantee about every claim. Preserve the source's qualifications and evaluate citation support separately from citation presence; use the [credibility reference](../blog-writing/references/firsthand-evidence-and-credibility.md) for the evidence and limits.
 - **Evidence-rich writing can change use after retrieval; it is not a universal acquisition recipe.** The KDD 2024 GEO benchmark began with Google's top five results, and its Perplexity test supplied source files. ACL/SIGIR 2026 studies likewise freeze candidates or retrieval to isolate content effects. Citations, relevant evidence, clear claims, and qualifications remain good human-facing trust mechanics, but their effects on generated answers are conditional and engine-specific. Do not promise discovery or repeat the “up to 40%” result without its supplied-source boundary.
 - **Give the first 100 words a self-contained anchor.** The standfirst (`.post-lede`) names the artifact and the story in one declarative sentence a machine can lift. It may state a finding, a live question, or the current state; never supply an answer the article does not have. Weak-source but directionally consistent with GEO; cost is zero.
 - **Durable URLs with visible dates are the long game.** ChatGPT-class engines cite years-old content; freshness mainly matters for Perplexity-style engines. Update posts with real changes and honest `lastModified`, never cosmetic date-bumping (see `AGENTS.md` metadata rules).
@@ -52,8 +55,8 @@ A reader shares when the post makes them **armed**, **vindicated**, or **seen** 
 - **Specificity is a structural advantage of a personal blog.** Dan Luu on corporate blogs: the approval chain "removes references to specifics, makes posts vaguer and less interesting," while "there's a dearth of real, in-depth, technical writing." No approval chain here — so every abstraction that could be a name, number, date, or commit SHA is a wasted advantage.
 - **One clear disagreeable opinion when the piece makes an argument.** Goedecke published 141 posts in 2025; 33 reached the front page of Hacker News or a similar aggregator. His stated recipe for a popular post is a clear opinion about working in tech that many people dispute. Balanced surveys get nods; falsifiable claims get replies. Do not manufacture a claim for an inquiry or field note whose honest center is uncertainty.
 - **Write for the person who struggled.** Evans: "if I struggled with something, there's a pretty good chance other people are struggling with it too… write it down while you still remember what was hard." swyx: "Make the thing you wish you had found when you were learning."
-- **The dead ends are the content, not the framing.** Trust is built almost entirely in what was tried and failed and what it cost. Anyone can publish the success path.
-- **Name what the losing tool is still better at.** A verdict is only trusted from a writer who can praise the other side. (React gets its ecosystem sentence before nisli gets its reason to exist.)
+- **Show relevant failed attempts and costs.** They help a reader inspect the decision and its limits. Include the ones that explain the result; do not invent failure or require confession as a credibility ritual.
+- **Represent competing options fairly.** Include material advantages, counterevidence, and conditions that would change the decision. Forced praise is not evidence of fairness.
 - **Volume with a low bar beats perfectionism.** Willison: "Aim to hit publish while you are still actively unhappy with what you have written." Ball's original discipline was 60 minutes every Sunday, when whatever he wrote was published. Neither example proves a universal publishing rate; together they support regular practice and a willingness to ship imperfect work.
 - **Success metric is contact, not pageviews.** Evans calls pageviews a blogging myth; the real signal is the reader who writes back. End with the honest invitation when the want is owned on the page (per `personal-essays`).
 
@@ -72,8 +75,8 @@ Luu: "writing confident, unqualified statements works. People like confidence." 
 3. **Standfirst** (`.post-lede`): first 100 words contain one declarative, liftable sentence naming the artifact and the story.
 4. **The disagreeable claim**: for argument and decision pieces, present, signed, and falsifiable — the post states what evidence would prove it wrong. For inquiry and field notes, preserve the live question.
 5. **Reader value**: give the reader a decision rule, trap, trade-off, sharper question, or faithful account of a hard unresolved state. Match the governing form.
-6. **Dead ends**: every success path shown has its failed attempts and costs beside it.
-7. **Loser praised**: each comparison names what the losing option is still better at.
+6. **Evidence basis**: consequential claims have the relevant observations, conditions, method, and artifacts; failed attempts and costs appear where they explain the decision.
+7. **Counterevidence**: comparisons represent material competing advantages and limits fairly; no mandatory praise or manufactured failure.
 8. **Hedge audit**: epistemically honest qualifiers kept; armor words cut; filler words (just/simply/easily/obviously) deleted.
 9. **Specificity audit**: abstractions that could be names, numbers, dates, SHAs — converted or flagged.
 10. **Numbers verified**: every count, quote, date, and attribution checked at source (`gh`, the repo, the original post) — never from memory, never from a miner's summary alone.

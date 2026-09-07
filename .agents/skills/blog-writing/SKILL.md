@@ -4,7 +4,7 @@ description: Blog post writing guidelines for gkoreli.com. Use when writing, edi
 license: MIT
 metadata:
   author: gkoreli
-  version: "2.2.0"
+  version: "2.3.0"
 ---
 
 # Blog Writing — Agent Skill
@@ -23,7 +23,7 @@ Reference these guidelines when:
 
 - **Author**: Goga Koreli — builder, not thought leader
 - **Tone**: Direct, technical, conversational. Write like explaining to a sharp colleague, not lecturing a classroom.
-- **Perspective**: First person. "I built this because..." not "One might consider..."
+- **Perspective**: Use first person for the author's own work, decisions, and observations. Ownership clarifies who had access to the evidence; it does not prove the claim. Do not invent firsthand experience or force every title into first person.
 - **Honesty**: Show failures and wrong turns, not just wins. "This didn't work because..." is more valuable than "Here's how to do it right."
 - **No fluff**: Skip intros like "In today's fast-paced world..." — lead with the thing.
 - **Transparency**: AI-assisted collaborative posts include the raw prompts that generated them. The author provides the substance — experience, perspective, lessons. The agent helps write. Exposed essays and OSS Radar issues do not ship prompts under their governing skills.
@@ -209,6 +209,8 @@ Use sparingly — only when interactivity genuinely helps understanding. Most po
 
 ## Sourcing Rules
 
+When firsthand experience supports a claim, or the task concerns credibility for readers or AI systems, read [Firsthand Evidence and Credibility](references/firsthand-evidence-and-credibility.md). It separates inspectable evidence from persuasive cues and records the limits of the research.
+
 ### When to Use External Sources
 
 This is a builder's blog, not a news outlet. External sources serve as **evidence for claims**, not as content filler. Use them when:
@@ -217,15 +219,17 @@ This is a builder's blog, not a news outlet. External sources serve as **evidenc
 - Attributing a concept or term to its originator
 - Pointing readers to deeper exploration on a topic
 
-Don't overuse them. A post with 10+ external links feels like a research paper, not a blog.
+Use as many sources as the claims require. Remove irrelevant or redundant links; do not impose a numerical cap on a research-heavy article.
 
-### Source Selection (strict priority order)
+### Source Selection (match the evidence to the claim)
 
-1. **Original author's own post/tweet/repo** — if someone coined a term or published a finding, link to THEIR source, not a summary of it
-2. **Authoritative builder blogs** — engineers and builders who ship real things (e.g. Andrej Karpathy, Steve Yegge, Guillermo Rauch, Dan Abramov, Evan You)
-3. **Authoritative company engineering blogs** — established companies sharing real engineering work (e.g. Vercel, Anthropic, GitHub, LangChain)
-4. **Academic/research institutions** — for research-backed claims (e.g. Columbia, Stanford, MIT)
-5. **Reputable tech publications** — MIT Technology Review, Pragmatic Engineer, etc.
+- **What happened in our system:** dated observations and reproducible artifacts, with versions, conditions, units, and exclusions where relevant. Our capture establishes its recorded events, not universal behavior.
+- **How something works:** the applicable standard, pinned source code, or maintainer documentation. Distinguish specified behavior, implemented behavior, and observed behavior.
+- **What someone said or originated:** the original publication, post, or repository. Attribution does not independently validate the speaker's claim.
+- **How people or models behave:** relevant primary studies, their methods and tested populations/models, and material replications or counterevidence. Do not infer a causal effect from a famous builder's preference or a company's reputation.
+- **Whether a conclusion generalizes:** independent evidence that tests the same claim. Vendor documentation describes the vendor's account; our own blog, repository, and research notes share authorship and are not independent corroboration.
+
+Prefer freely accessible primary sources. Evaluate expertise for the particular claim, methods, incentives, and relevance; do not rank sources by fame or institution alone. State when the best available evidence leaves the question open.
 
 ### Source Anti-Patterns
 

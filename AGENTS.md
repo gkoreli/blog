@@ -121,12 +121,20 @@ pnpm -C packages/blog exec tsx scripts/omp-research-footprint.ts \
 
 Trust boundary: session logs contain private conversation and system context and are not committed. The public manifest and prefix hashes make the accounting reproducible by the author and commit to the exact private log prefixes used, but readers cannot independently reconstruct the token totals without those logs. Say this plainly; “auditable by the author with integrity commitments” is accurate, while “publicly verifiable” is not.
 
+### Firsthand Evidence and Credibility
+
+Make the author's relationship to the evidence explicit when it matters. First person can identify work Goga built, operated, tested, or observed; it does not authenticate the author or prove the result. Keep the subject searchable, and use ownership where it clarifies the claim's source and scope. Do not force every title into first person.
+
+Support consequential engineering claims with the relevant method, conditions, date/version, result, and inspectable artifact. Distinguish observation from interpretation and generalization. Choose sources by what can establish the particular claim, not the speaker's fame. Preserve limitations, counterevidence, and material corrections; neither confident prose nor a large research footprint substitutes for evidence.
+
+Separate human judgments of credibility, search eligibility/ranking, crawler access, and an agent's source use or citation. No pronoun, citation count, schema, or author biography guarantees trust or discovery. Read the [firsthand evidence and credibility reference](.agents/skills/blog-writing/references/firsthand-evidence-and-credibility.md) when applying these distinctions. Its [research record](packages/blog/drafts/research/engineering-credibility/00-research-brief.md) separates studies, provider documentation, editorial judgments, and experiments still to run.
+
 ### Writing Skill (`.agents/skills/blog-writing/SKILL.md`)
 
 Covers voice, structure, formatting balance, sourcing rules, glossary format, and quality checklist. Key principles:
 
 - **Formatting balance** — prose for narrative/arguments, bullets for enumerable points, blockquotes (with literal `"` quotes) for strong opinion statements. Anti-pattern: walls of prose when bullets would be clearer. Anti-pattern: everything as bullets losing narrative voice.
-- **Sourcing rules** — original author first (not Wikipedia or aggregators), no paywalled sources, authoritative builder blogs and company engineering blogs preferred. Glossary uses table format with dates on every source.
+- **Sourcing rules** — freely accessible primary evidence matched to the claim: observations, pinned implementation, standards, documentation, or relevant research. A famous author or company is not a substitute for method or corroboration. Glossary uses table format with dates on every source.
 - **What makes a great article** — states a problem clearly, introduces novel ideas, debunks myths, showcases best practices AND anti-patterns, highlights gotchas, shares personal growth, is transparent.
 - **Engineering lesson completeness** — a failure is not yet a lesson. Show what existed before, what broke, how the current implementation works, why that repair won, which tradeoff remains, the bounded tenet, and the future vision. Present tense includes today's architecture and rationale, not only today's pain. The sequence need not become rigid headings.
 
@@ -154,7 +162,7 @@ Runs only after the living center and governing form are fixed. Classifies the a
 
 ### Shareable Engineering Skill (`.agents/skills/shareable-engineering/SKILL.md`)
 
-Evidence-based share/trust/discovery mechanics for engineering posts: seoTitle tuning (40–60 chars, handles first, declarative — Backlinko n=4M), agentic-search reality (the honesty mechanics ARE the AEO strategy per the GEO paper; llms.txt has ~zero real-world crawler adoption per Ahrefs 2026-05 — keep ours but never invest in it), and share triggers (armed/vindicated/seen). Argument and decision pieces need a falsifiable position; inquiry and field notes keep the live question. The skill also defines the hedging rule ("hedge the epistemics, never the position") and the 12-point pre-publish checklist. Every rule cites a verified source; audit date in its frontmatter. Runs at pre-publish; `personal-essays` wins all voice conflicts.
+Share/trust/discovery guidance for engineering posts: concrete titles, inspectable evidence, bounded agentic-search findings, and practitioner advice on sharing. Supplied-source GEO experiments do not establish organic discovery; `llms.txt` can serve a demonstrated known-site workflow without being a ranking lever. First-person ownership identifies a claimed basis for knowledge, not a proven trust effect. The skill distinguishes research from editorial judgment and records the scope of its reviews. Argument and decision pieces need a falsifiable position; inquiry and field notes keep the live question. It includes the hedging rule ("hedge the epistemics, never the position") and a 12-point pre-publish checklist. Runs at pre-publish; `personal-essays` wins all voice conflicts.
 
 ### Polish Prose Skill (`.agents/skills/polish-prose/SKILL.md`)
 
