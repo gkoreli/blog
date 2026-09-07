@@ -1,0 +1,170 @@
+{
+  "scope": "Private incident captures, local verification scripts and baseline modules, and independent reviews. Contains no copied credentials or session logs. Public hashes commit to private bytes; author access is required to reproduce private metrics.",
+  "files": [
+    {
+      "path": "baseline/accept.js",
+      "bytes": 3259,
+      "sha256": "b96e56247bc19dd36065a8c4847710088a4f99fb204f8293ed14b858674a470b"
+    },
+    {
+      "path": "baseline/classify.js",
+      "bytes": 3871,
+      "sha256": "1ebb6cd2b7c9a491363236b6dcd32fd59930b575865e997bcd8c6aa4613e04cf"
+    },
+    {
+      "path": "baseline/contracts.js",
+      "bytes": 1196,
+      "sha256": "72075040979c77bf92a9c4e76ef122d49b0dfd6217ea4dd8575b181749f72f41"
+    },
+    {
+      "path": "baseline/dates.js",
+      "bytes": 2324,
+      "sha256": "1df4a90a5e520a0937b43f1971687433125a8b3b0b83940e5a556f95ca744953"
+    },
+    {
+      "path": "baseline/db.js",
+      "bytes": 1211,
+      "sha256": "152157e3b6be5794b196a3e3ccbff4f355c1cad9cfa4d3ef87433617fd9b90bd"
+    },
+    {
+      "path": "baseline/eligibility.js",
+      "bytes": 949,
+      "sha256": "48a7c4f2bb7c7f2dec235e0373fde7a989f60d4fecc75f7b5417027728bbae6a"
+    },
+    {
+      "path": "baseline/hash.js",
+      "bytes": 1369,
+      "sha256": "54597eedfdfe3ecbd46e2b1eeb1ea7ab0ed50c8c767017a6b69195e9383556f9"
+    },
+    {
+      "path": "baseline/index.js",
+      "bytes": 3519,
+      "sha256": "96d9bc9112138ce4f854211ff87465d1751a32ff5a0a3de7ec74979b87797ad2"
+    },
+    {
+      "path": "baseline/metadata.js",
+      "bytes": 1979,
+      "sha256": "6739fa2c0b786bb1c152004bfabff7e3759c84f54ecd8d338aae91f24a3e7ba5"
+    },
+    {
+      "path": "baseline/networks.js",
+      "bytes": 3863,
+      "sha256": "453a3e6533aeb025dac09fc8392734a90fb587bdcf57bc51843cd4c1ec814d5f"
+    },
+    {
+      "path": "baseline/owner.js",
+      "bytes": 2366,
+      "sha256": "29a5aceaddfe8a0c199a23646fcdf091b15dc706920b60996c0174fa9da251a2"
+    },
+    {
+      "path": "baseline/package.json",
+      "bytes": 18,
+      "sha256": "1239d4d885dcad42201a27ed9324f8f0f760b78700d8db9ced39a511cffe7eae"
+    },
+    {
+      "path": "baseline/partition.js",
+      "bytes": 646,
+      "sha256": "5f522f556752aa516e49bccedc6ddea537001ab0f06b44c1b6fdefcb9e8f63f7"
+    },
+    {
+      "path": "baseline/readerkind.js",
+      "bytes": 6998,
+      "sha256": "f32a4cf55feca9bd1889f70b6c50f6104b5657765f488b3f05e624a63dee5da6"
+    },
+    {
+      "path": "baseline/referral-policy.generated.js",
+      "bytes": 64715,
+      "sha256": "452370d64b72a3161c71e4361493a0a74b644c3b58c462367facde62ef4cf1d0"
+    },
+    {
+      "path": "baseline/referral-policy.js",
+      "bytes": 3358,
+      "sha256": "f940e6abae914b89fea6be1d41c47c7287b1ec9c713accdec4754ffdd8ca3817"
+    },
+    {
+      "path": "baseline/referral-sql.js",
+      "bytes": 2347,
+      "sha256": "2dbb485e7ad14d435b8221d3000b943e5d1c0375472d4381ede55923daf1f0db"
+    },
+    {
+      "path": "baseline/referrals.js",
+      "bytes": 1743,
+      "sha256": "031a1a2b94b00a909cbe02bf75c8932ad5827d638d067bef984d3a7a65dd4050"
+    },
+    {
+      "path": "baseline/stats.js",
+      "bytes": 12705,
+      "sha256": "85e59360b1dbab3a507654447e29769115c006d1539a6e923a279e53092a5abd"
+    },
+    {
+      "path": "baseline/stats.ts",
+      "bytes": 12706,
+      "sha256": "7f944be00ab168f922aec92c6e5cc7fdc12d49192a29e93f96f1759d77855aca"
+    },
+    {
+      "path": "baseline/webbotauth.js",
+      "bytes": 26550,
+      "sha256": "6522b575f8e97436fc65a73fec9e266a6678932dd414971045fc3ecff55ed987"
+    },
+    {
+      "path": "capture-usage.mjs",
+      "bytes": 1724,
+      "sha256": "ae4517e43540562d8fa0fb23c4befe69cb98ba2f800e131346728df13f4bf638"
+    },
+    {
+      "path": "compare.mjs",
+      "bytes": 3972,
+      "sha256": "1d827c067854e879d2e63b3742f1b85283908dd2691455fae050dc2fb9238c4a"
+    },
+    {
+      "path": "independent-cache-review.md",
+      "bytes": 8878,
+      "sha256": "41c27b02fc161c208c6eb049510632a408e94828803a4300f19a9035693dda0c"
+    },
+    {
+      "path": "independent-query-review.md",
+      "bytes": 15330,
+      "sha256": "86e7000981f086e0eee017bbe44e92b76dda721c8fe224f0854a03e6180f781c"
+    },
+    {
+      "path": "insights-24h.json",
+      "bytes": 72101,
+      "sha256": "5a7afc1f5ffd75dde94ed802e6c78db06b6f4f63379bf0df3e2d17e81cffafd6"
+    },
+    {
+      "path": "metrics-at-exhaustion.json",
+      "bytes": 104521,
+      "sha256": "ef4c9a5e3a82803393feb129f70538a60c32f0a9153b8d3477a6e014f3d6cfec"
+    },
+    {
+      "path": "metrics-since-sep6.json",
+      "bytes": 91517,
+      "sha256": "a92b05ecf74ca816e283707d5c993a721d4fa993919d22cd225c61da4a9c4525"
+    },
+    {
+      "path": "parity-workerd.json",
+      "bytes": 536,
+      "sha256": "947673f1bbb260116cce4d09b0e687e8c6faa0523defc56633601ee882bedb39"
+    },
+    {
+      "path": "parity.json",
+      "bytes": 491,
+      "sha256": "949a70fc59fd8514d5ffb1e7fdec5ec896cffdedc0c0c597d09082a0351a317a"
+    },
+    {
+      "path": "production-candidate.mjs",
+      "bytes": 3335,
+      "sha256": "fa3068e494543169c427d9f877f0a04b26f82e9bfc4d991c95778ec9ce75c4b0"
+    },
+    {
+      "path": "production-query-error.json",
+      "bytes": 920,
+      "sha256": "f550fb2746ee6465835ae84068e66d06abdd52a586b0d2e83ed674ce20ff3640"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 5493,
+      "sha256": "883a7fb31e0e58628da62c6475fc95050f94da8e907096bc9e26464bd101bdc5"
+    }
+  ]
+}

@@ -12,7 +12,8 @@ export { ANALYTICS_EVIDENCE_SINCE } from './contracts.js';
 export type { ReaderKind, Representation, StatsResponse, TrafficFilter } from './contracts.js';
 export { READER_GROUPS, READER_KINDS, isReaderKind, readerGroupOf } from './contracts.js';
 export { handleOwner } from './owner.js';
-export { handleStats } from './stats.js';
+export { handleStats, parseStatsQuery } from './stats.js';
+export { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
 
 function sqliteTimestamp(date: Date): string {
   return date.toISOString().replace('T', ' ').slice(0, 19);

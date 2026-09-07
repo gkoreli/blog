@@ -3,6 +3,7 @@ title: "How I Filter Referrer Spam Without Deleting Analytics History"
 seoTitle: "Filter Referrer Spam Without Losing Analytics History"
 alternativeHeadline: "Versioned Matomo rules, local exceptions, and saved reports keep referral filtering reversible."
 date: "2026-09-06"
+lastModified: "2026-09-06"
 description: "A public dashboard ranked a suspicious referrer first. I added Matomo rules, local exceptions, and saved reports while retaining the observations."
 section: engineering
 tags: [analytics, http, cloudflare-workers, open-source]
@@ -77,6 +78,10 @@ The fixed August 8–September 6 UTC check produced **972 Browser observations b
 The public evidence records aggregates and hashes; private captures let me audit the original reads.
 
 Filtering at query time costs database work. In that production sample, the totals query went from **7.77 to 14.95 milliseconds**, with rows read increasing from **8,423 to 19,826**. Those are database measurements, not page latency. The ADR records the larger benchmark and when to reconsider stored or materialized results.
+
+**Update, September 7 UTC:** that cost assessment was incomplete. The full report used **182,388 rows read across nine statements**—about **3.65% of D1's free daily read allowance for one report**. The account subsequently exhausted the allowance. Its query profile was dominated by the repeated referral matcher, although the metrics do not identify who requested those reports. Short database execution time had concealed an unacceptable read budget. [Incident evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/00-incident.md); [Cloudflare's scanned-row accounting](https://developers.cloudflare.com/d1/platform/pricing/).
+
+The correction calculates the report from one shared assessment and caches public results for at most an hour, with their calculation time visible. Local D1 checks preserve the previous output across 148 cases. The daily cap blocked the production cost benchmark, so I cannot yet report a measured reduction in billed reads. Cache storage is local to a Cloudflare data center, which also prevents treating one cached result as a global quota guarantee. [Revised decision and verification limits](https://github.com/gkoreli/blog/blob/main/docs/adr/0016.7-budget-d1-reads-and-cache-public-reports.md).
 
 The maintenance cost also remains: review new names, update the source, and reverse mistaken exclusions. Clients can change or omit the header; even a correctly implemented rule can hide legitimate visits. The reconciled counts verify policy application, without establishing how many requests came from people.
 

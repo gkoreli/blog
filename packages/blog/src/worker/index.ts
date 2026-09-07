@@ -25,9 +25,15 @@ import {
 } from '@gkoreli/newsletter';
 import { typedLinkHeaderValue } from '../lib/typed-links.js';
 import { negotiateRepresentation, type NegotiatedRepresentation } from './negotiate.js';
+import { createStatsHandler } from './stats-cache.js';
 
 /** Merged bindings for the packages composed by this Worker. */
 type Env = AnalyticsEnv & NewsletterEnv & ClientObservabilityEnv & { ASSETS: Fetcher };
+
+const cachedStats = createStatsHandler({
+  match: request => caches.default.match(request),
+  put: (request, response) => caches.default.put(request, response),
+}, handleStats);
 
 function trailingSegment(pathname: string, prefix: string): string {
   return pathname.slice(prefix.length);
@@ -189,7 +195,7 @@ export default {
     const { method } = request;
 
     if (pathname === '/api/stats' && method === 'GET') {
-      return handleStats(request, env);
+      return cachedStats(request, env);
     }
     if (pathname === '/api/owner') {
       return handleOwner(request, env);

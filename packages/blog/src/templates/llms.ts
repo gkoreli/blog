@@ -33,7 +33,7 @@ ${postLinks}
 
 ## API
 
-- [Public Analytics](${SITE}/api/stats): Real-time analytics data (JSON, no auth required)
+- [Public Analytics](${SITE}/stats): Public reports and methodology; results may be cached for up to one hour
 - [Post Index](${SITE}/posts.json): All posts with metadata (JSON)
 - [RSS Feed](${SITE}/feed.xml): Subscribe to new posts
 

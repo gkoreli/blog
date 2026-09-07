@@ -1,0 +1,13 @@
+{
+  "capturedAt": "2026-09-07T05:43:07.004Z",
+  "utcDay": "2026-09-07",
+  "accountRowsRead": 5055350,
+  "queryProfile": {
+    "rowsRead": 5266594,
+    "referralMatcherRowsRead": 5028734,
+    "referralMatcherExecutions": 225
+  },
+  "quotaRejectionAt": "2026-09-07T05:41:47.652Z",
+  "captureSha256": "ef4c9a5e3a82803393feb129f70538a60c32f0a9153b8d3477a6e014f3d6cfec",
+  "scope": "Metadata-only capture after a candidate was rejected by the account free daily rows-read cap. Separate adaptive query and hourly datasets; no caller attribution."
+}

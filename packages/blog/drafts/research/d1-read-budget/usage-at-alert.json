@@ -1,0 +1,30 @@
+{
+  "capturedAt": "2026-09-07T05:11:32.426289Z",
+  "utcDay": "2026-09-07",
+  "hourlyAccountTotals": {
+    "rowsRead": 3889701,
+    "rowsWritten": 430,
+    "readQueries": 264,
+    "writeQueries": 85
+  },
+  "hourlyBlogTotals": {
+    "rowsRead": 3889143,
+    "rowsWritten": 430,
+    "readQueries": 202,
+    "writeQueries": 85
+  },
+  "freeRowsReadLimit": 5000000,
+  "fractionUsed": 0.7779402,
+  "queryProfile": {
+    "groups": 37,
+    "rowsRead": 4072463,
+    "referralMatcherRowsRead": 3835924,
+    "referralMatcherExecutions": 180
+  },
+  "captureSha256": "a92b05ecf74ca816e283707d5c993a721d4fa993919d22cd225c61da4a9c4525",
+  "limitations": [
+    "Account hourly totals and adaptive query profiles are separate datasets and do not reconcile exactly at this capture.",
+    "SQL shape identifies database work, not the caller or request motive.",
+    "Query-profile matching uses the suffixes CTE name in the captured query string."
+  ]
+}

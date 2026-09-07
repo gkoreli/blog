@@ -19,7 +19,7 @@ import {
 import { partitionPredicate } from '../.test-dist/partition.js';
 import { classifyReaderKind, READER_KINDS } from '../.test-dist/readerkind.js';
 import { READER_GROUPS, readerGroupOf } from '../.test-dist/contracts.js';
-import { handleStats, queryStats } from '../.test-dist/stats.js';
+import { handleStats, parseStatsQuery, queryStats } from '../.test-dist/stats.js';
 import { parseReferrerHost, REFERRAL_POLICY_VERSION } from '../.test-dist/referrals.js';
 import { ACTIVE_REFERRAL_POLICY } from '../.test-dist/referral-policy.generated.js';
 
@@ -55,13 +55,17 @@ class D1Statement {
 class D1Adapter {
   constructor(database) {
     this.database = database;
+    this.batchSizes = [];
+    this.preparedSql = [];
   }
 
   prepare(sql) {
+    this.preparedSql.push(sql);
     return new D1Statement(this.database, sql);
   }
 
   async batch(statements) {
+    this.batchSizes.push(statements.length);
     return statements.map(statement => statement.execute());
   }
 }
@@ -804,7 +808,45 @@ test('referral abuse is excluded consistently from every group and aggregate wit
   const scoped = await queryStats(d1, { range: '7d', traffic: 'all', path: '/page-signed-agent', kind: 'signed-agent' }, now);
   assert.equal(scoped.totals.views, 1);
   assert.equal(scoped.referralPolicy.excludedViews, 3);
+  assert.deepEqual(d1.batchSizes, [1, 1, 1, 1, 1, 1]);
+  assert.equal(d1.preparedSql.every(sql => (sql.match(/\bUNION(?:\s+ALL)?\b/g) ?? []).length === 1), true);
   assert.deepEqual(sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all(), before);
+});
+
+test('consolidated stats preserve local referral precedence and suppress unknown hostnames', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  const policy = {
+    ...ACTIVE_REFERRAL_POLICY,
+    upstreamHosts: ['spam.example'],
+    localRules: [
+      { id: 'reader', host: 'reader.spam.example', scope: 'subtree', action: 'include', reason: 'fixture', evidence: 'fixture' },
+      { id: 'exact', host: 'exact.spam.example', scope: 'host', action: 'include', reason: 'fixture', evidence: 'fixture' },
+    ],
+    publicHosts: ['reader.spam.example'],
+  };
+  const hosts = [
+    'spam.example', 'sub.spam.example', 'reader.spam.example', 'sub.reader.spam.example',
+    'exact.spam.example', 'sub.exact.spam.example', 'unknown.example',
+  ];
+  for (const [index, referrerHost] of hosts.entries()) {
+    insertObservation(sqlite, {
+      path: '/policy', referrerHost, dailyClientId: index.toString(16).padStart(32, '0'),
+      trafficClass: 'browser', ...NAVIGATION_EVIDENCE, observedAt: '2026-09-05 12:00:00',
+    });
+  }
+
+  const stats = await queryStats(
+    d1,
+    { range: '7d', traffic: 'browser' },
+    new Date('2026-09-06T23:00:00Z'),
+    policy,
+  );
+  assert.equal(stats.totals.views, 4);
+  assert.equal(stats.referralPolicy.excludedViews, 3);
+  assert.deepEqual(stats.byReferrer, [{ referrerHost: 'reader.spam.example', views: 1 }]);
+  assert.equal(stats.otherReferrerViews, 3);
+  assert.equal(JSON.stringify(stats).includes('unknown.example'), false);
+  assert.deepEqual(d1.batchSizes, [1]);
 });
 
 test('referrer policy resists rotated names and lookalikes without suppressing unfamiliar readership', async () => {
@@ -851,7 +893,65 @@ test('referral exclusions preserve scoped agent counts and handle all-excluded h
   assert.equal(restored.period.start, '2026-08-01');
   assert.deepEqual(restored.byAgent, [{ agentName: 'GPTBot', trafficClass: 'ai', views: 1 }]);
   assert.equal(restored.referralPolicy.excludedViews, 1);
+  assert.deepEqual(d1.batchSizes, [1, 1, 1]);
   assert.equal(sqlite.prepare('SELECT COUNT(*) AS count FROM page_observations').get().count, 2);
+});
+
+test('stats query parsing preserves endpoint defaults, empty paths, canonical scopes, and errors', () => {
+  assert.deepEqual(parseStatsQuery(new URLSearchParams()), { range: '30d', traffic: 'browser' });
+  assert.deepEqual(parseStatsQuery(new URLSearchParams('path=&ignored=value')), { range: '30d', traffic: 'browser' });
+  assert.deepEqual(parseStatsQuery(new URLSearchParams('agent=GPTBot&path=%2Farticle')), {
+    range: '30d', traffic: 'all', path: '/article', agent: 'GPTBot',
+  });
+  assert.equal(parseStatsQuery(new URLSearchParams('range=year')), 'range must be 7d, 30d, 90d, or all');
+  assert.equal(
+    parseStatsQuery(new URLSearchParams('traffic=browser&agent=GPTBot')),
+    'agent GPTBot cannot be combined with traffic=browser',
+  );
+});
+
+test('stats result decoding rejects malformed, duplicate, missing, and misplaced section payloads', async () => {
+  const emptyReportRows = () => [
+    { section: 'totals', payload: '[{"views":0,"dailyClients":0,"unattributedViews":null}]' },
+    { section: 'path', payload: '[]' },
+    { section: 'country', payload: '[]' },
+    { section: 'series', payload: '[]' },
+    { section: 'referrer', payload: '[]' },
+    { section: 'device', payload: '[]' },
+    { section: 'agent', payload: '[]' },
+    { section: 'kind', payload: '[]' },
+    { section: 'excluded', payload: '[{"views":0}]' },
+  ];
+  const database = rows => ({
+    prepare() { return { bind() { return {}; } }; },
+    async batch() { return [{ results: rows }]; },
+  });
+  const query = { range: '30d', traffic: 'browser' };
+  const now = new Date('2026-09-07T05:00:00Z');
+  const valid = await queryStats(database(emptyReportRows()), query, now);
+  assert.deepEqual(valid.totals, { views: 0, dailyClients: 0, unattributedViews: 0 });
+  assert.deepEqual(valid.byPath, []);
+
+  const malformedCases = [
+    emptyReportRows().slice(1),
+    [...emptyReportRows(), emptyReportRows()[0]],
+    emptyReportRows().map(row => row.section === 'path' ? { section: 'path', payload: null } : row),
+    emptyReportRows().map(row => row.section === 'path' ? { section: 'path', payload: '{"not":"an array"}' } : row),
+    emptyReportRows().map(row => row.section === 'path' ? { section: 'path', payload: '[null]' } : row),
+    emptyReportRows().map(row => row.section === 'totals' ? { section: 'totals', payload: '[]' } : row),
+    [...emptyReportRows(), { section: 'boundary', payload: '[{"firstObservedAt":null}]' }],
+  ];
+  for (const rows of malformedCases) {
+    await assert.rejects(queryStats(database(rows), query, now), /Malformed statistics report/);
+  }
+  await assert.rejects(
+    queryStats(database(emptyReportRows()), { range: 'all', traffic: 'browser' }, now),
+    /Malformed statistics report/,
+  );
+  const all = await queryStats(database([
+    ...emptyReportRows(), { section: 'boundary', payload: '[{"firstObservedAt":null}]' },
+  ]), { range: 'all', traffic: 'browser' }, now);
+  assert.equal(all.period.start, '2026-09-07');
 });
 
 test('stats queries enforce one UTC window, class partition, owner exclusion, and legacy isolation', async () => {

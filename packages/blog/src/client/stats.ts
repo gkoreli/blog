@@ -165,7 +165,7 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   if (state.path !== null) params.set('path', state.path);
   if (state.agent !== null) params.set('agent', state.agent);
   if (state.kind !== null) params.set('kind', state.kind);
-  const response = await fetch(`/api/stats?${params}`, { signal, cache: 'no-store' });
+  const response = await fetch(`/api/stats?${params}`, { signal });
   if (!response.ok) throw new Error(`Stats request failed with ${response.status}`);
   const data: StatsResponse = await response.json();
   // An old cached API response must not restore arbitrary hostname display.

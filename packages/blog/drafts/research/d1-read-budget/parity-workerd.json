@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-09-07T05:41:15.359Z",
+  "baselineCommit": "3d92b10",
+  "seededObservations": 624,
+  "comparedNonemptyStates": 144,
+  "comparedEmptyStates": 4,
+  "everyReportDeepEqual": true,
+  "currentStatementCount": 1,
+  "scope": "Local Node SQLite baseline versus Miniflare 4.20260301.1 D1 runtime. Old stats projection code with the same legacy hostname evaluator; no production query. Includes all ranges/traffic groups, repeated daily IDs, two owner forms, null dimensions, all reader kinds, scopes, and boundary dates."
+}
