@@ -1,0 +1,60 @@
+{
+  "scope": "Post-upgrade acceptance and scoped attribution audit. Raw report payloads, private query results and scripts remain outside Git. No credentials included.",
+  "files": [
+    {
+      "path": "inventory.json",
+      "bytes": 695,
+      "sha256": "c48a207cbc2e7ccb5fcca8c9beb173276779dde01e05757060a52ddd0a8234ea"
+    },
+    {
+      "path": "live-cache-summary.json",
+      "bytes": 1715,
+      "sha256": "093061ec136b6554b47937867ffa20402a4fe5d4ae18dfb53a8bd2decfc8084a"
+    },
+    {
+      "path": "live-report-0.json",
+      "bytes": 10491,
+      "sha256": "6adbef2cf0160db527cb7165e363379e5a09c79d5d120b068703d5dad1a8972d"
+    },
+    {
+      "path": "live-report-1.json",
+      "bytes": 10525,
+      "sha256": "d6732e2e75361bf37b041d07b8a69aa0f781ac622139a3e71c19eb8651d29dfd"
+    },
+    {
+      "path": "own-verification-audit.md",
+      "bytes": 7664,
+      "sha256": "14aef1b166b4a1f651cbdb3801b9e5c0d28b5fb4a9da316fc28fb20d8a8bc2ea"
+    },
+    {
+      "path": "production-candidate.mjs",
+      "bytes": 3335,
+      "sha256": "fa3068e494543169c427d9f877f0a04b26f82e9bfc4d991c95778ec9ce75c4b0"
+    },
+    {
+      "path": "production-query.json",
+      "bytes": 71338,
+      "sha256": "366adc9cc0482e538b7a799fc1692412cd8e1b962cc109de54af0854f144946b"
+    },
+    {
+      "path": "production-response.json",
+      "bytes": 13171,
+      "sha256": "3f30f531280800046320cfe54f629981f69b73f8fef2f823073eebed28d4c933"
+    },
+    {
+      "path": "production-result.json",
+      "bytes": 9493,
+      "sha256": "7155d8d00384e3c25ec103272ec7d6f5a6fa0159783cf5d4319a026b246c3888"
+    },
+    {
+      "path": "production-summary.json",
+      "bytes": 971,
+      "sha256": "792f6e5975801e6de0028bb805f28ef79515b3569086af0e29528cd0c0d0cc08"
+    },
+    {
+      "path": "verify-cache.mjs",
+      "bytes": 2865,
+      "sha256": "73ee56cced6b78dafaaa81a87bad46e4fd664adca97991265db51c73d02ad67c"
+    }
+  ]
+}

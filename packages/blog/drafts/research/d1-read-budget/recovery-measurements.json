@@ -1,0 +1,94 @@
+{
+  "recordedAt": "2026-09-07T06:21:53.785Z",
+  "reportCodeCommit": "316eb006a2ab150a56414c93d95e844339dad304",
+  "planChange": "Owner reported completing the Workers Paid upgrade. The agent did not change billing; exact plan activation time was not inspected.",
+  "fixedWindowComparison": {
+    "capturedAt": "2026-09-07T06:18:37.306Z",
+    "query": {
+      "range": "30d",
+      "traffic": "browser"
+    },
+    "fixedClock": "2026-09-06T23:59:59.000Z",
+    "statementCount": 1,
+    "meta": {
+      "served_by": "v3-prod",
+      "served_by_region": "WNAM",
+      "served_by_colo": "SJC",
+      "served_by_primary": true,
+      "timings": {
+        "sql_duration_ms": 29.1998
+      },
+      "duration": 29.1998,
+      "changes": 0,
+      "last_row_id": 7010,
+      "changed_db": false,
+      "size_after": 3117056,
+      "rows_read": 33259,
+      "rows_written": 0,
+      "total_attempts": 1
+    },
+    "included": 937,
+    "excluded": 35,
+    "matchesEarlierFixedWindowReport": true,
+    "earlierReportRowsRead": 182388,
+    "reductionInMeasuredRowsRead": 0.8176469943198017,
+    "querySha256": "62a5492f7e072355517bd5ec78f88313e7af43db11058a39da1c480384dd4fff",
+    "scope": "One read-only candidate production statement. Compared with the retained earlier fixed-window report, not a simultaneous old/new transaction."
+  },
+  "inventory": {
+    "capturedAt": "2026-09-07T06:19:56.210Z",
+    "storedPageObservations": 7010,
+    "databaseBytes": 3117056,
+    "rowsRead": 7010,
+    "rowsWritten": 0
+  },
+  "liveCache": {
+    "capturedAt": "2026-09-07T06:21:53.785Z",
+    "scope": "Two sequential live captures of one canonical state from the same client. Second request reorders fields and adds an irrelevant parameter; both send no-cache. First captured response was reused after removing an incorrect assertion that a current window must retain the historical excluded count. No third request or report generation was needed.",
+    "identicalBody": true,
+    "allPublicNamesApproved": true,
+    "panelsReconcile": true,
+    "results": [
+      {
+        "capturedAt": "2026-09-07T06:19:55.446Z",
+        "status": 200,
+        "cache": "HIT",
+        "cfRay": "a3739ac73829def1-SEA",
+        "elapsedMs": 160,
+        "updatedAt": "2026-09-07T06:11:48.211Z",
+        "periodStart": "2026-08-09",
+        "periodEnd": "2026-09-07",
+        "views": 1028,
+        "excludedViews": 38,
+        "policySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+        "cacheControl": "public, max-age=60",
+        "expires": "Mon, 07 Sep 2026 07:11:48 GMT",
+        "bodySha256": "bdd03787223e36e938bb5ced9e50d0ce353f907d65c845d306acbab6ae0fd59e"
+      },
+      {
+        "capturedAt": "2026-09-07T06:21:53.784Z",
+        "status": 200,
+        "cache": "HIT",
+        "cfRay": "a3739dab0c80e809-SEA",
+        "elapsedMs": 105,
+        "updatedAt": "2026-09-07T06:11:48.211Z",
+        "periodStart": "2026-08-09",
+        "periodEnd": "2026-09-07",
+        "views": 1028,
+        "excludedViews": 38,
+        "policySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+        "cacheControl": "public, max-age=60",
+        "expires": "Mon, 07 Sep 2026 07:11:48 GMT",
+        "bodySha256": "bdd03787223e36e938bb5ced9e50d0ce353f907d65c845d306acbab6ae0fd59e"
+      }
+    ]
+  },
+  "verificationReadBudget": {
+    "successfulDirectD1Statements": 2,
+    "meteredRowsRead": 40269,
+    "rowsWritten": 0,
+    "liveReportRequests": 2,
+    "liveReportCacheHits": 2,
+    "scope": "These post-upgrade checks did not cause the earlier exhaustion. Cache-hit report reads are avoided by the deployed handler; no claim about other callers."
+  }
+}

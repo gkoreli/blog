@@ -51,3 +51,15 @@ does this require an article? is it something that others will find useful and v
 ---
 
 proceed
+
+---
+
+are we going to be able to serve the customers in the meanwhile lmao?
+
+---
+
+i upgraded to $5/month but its insane to me like we don't have that much data, how did we go through the 5000000 rows_read: Your D1 rows_read limit has been exceeded
+
+---
+
+how do we even have  182,388 rows in production db lmao

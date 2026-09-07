@@ -24,6 +24,8 @@ pnpm build
 
 ## Assess retained evidence privately
 
+These SELECTs consume production reads. Check account metadata first, choose a bounded review window, and capture the aggregate evidence once for local reassessment. Do not rerun production SQL for every policy candidate or reviewer. The September 7 incident showed why read-only investigations need an operating budget; see [ADR-0016.7](../../../docs/adr/0016.7-budget-d1-reads-and-cache-public-reports.md).
+
 Run the two SELECTs in `scripts/referral-review.sql` using the [analytics README command](../README.md#referral-abuse-defense). Keep their aggregate output private. Assess the retained hostnames under an archived policy:
 
 ```bash
@@ -48,6 +50,6 @@ pnpm -C packages/blog exec tsx scripts/referral-policy.ts capture-report \
   --out "$referral_review_dir/published-report.json"
 ```
 
-The command validates the live policy and public names before writing the exact received response text and hash. A stale or pre-policy response fails; it cannot masquerade as a verified activation. Capture time, report `updatedAt`, and deployment time are separate facts. Store the private artifact durably in the author's evidence archive and put its path/hash and reviewed aggregate findings in the release record; a `/tmp` path alone is not durable retention.
+The command validates the live policy and public names before writing the exact received response text and hash. A response carrying a different or pre-policy commitment fails; it cannot masquerade as the reviewed policy. A valid report may be cached for up to one hour, so capture time, report `updatedAt`, and deployment time are separate facts. A new capture does not prove a fresh database calculation. Cache misses consume production reads; reuse saved reports when only the local assessment or prose changes. Store the private artifact durably in the author's evidence archive and put its path/hash and reviewed aggregate findings in the release record; a `/tmp` path alone is not durable retention.
 
 Replaying a policy over today's retained D1 data answers what that policy reports now. Reconstructing an old public report additionally needs its captured response or the exact data/code/owner state. New source versions never justify deleting observations or rewriting old research counts.
