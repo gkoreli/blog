@@ -38,4 +38,10 @@ This is a content and bookkeeping release. No runtime implementation changed and
 
 ## Release record
 
-The publication commit and live checks will be appended after the push and Cloudflare's build complete. Concurrent editorial-skill edits belong to another active work stream and are preserved outside this article commit.
+Published at [gkoreli.com/filter-referrer-spam-without-deleting-analytics-history](https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history) in commit [`f0cb22469a6c9797ca4c5bfbb590004d93c80991`](https://github.com/gkoreli/blog/commit/f0cb22469a6c9797ca4c5bfbb590004d93c80991), pushed directly to `main`. Cloudflare build `5318f9d7-9830-44b6-9f50-2ebd63837b22` completed successfully at `2026-09-07T04:31:01Z`.
+
+[Live HTTP checks](06-live-checks.json) completed at `2026-09-07T04:33:43.986267+00:00`. All eleven endpoints returned 200: article, negotiated Markdown, direct Markdown, prompts, OG image, CSL-JSON, BibTeX, predecessor, RSS, sitemap, and post index. The latter four contain the new article link/entry. Both Markdown routes, citation files, and the OG image match the locally verified bytes.
+
+The live article and prompt HTML differ from the local build in exactly four inspected production additions: the Turnstile script, public sitekey attribute, newsletter slot, and injected Cloudflare beacon. The first three follow the existing `TURNSTILE_SITE_KEY` branches in `src/templates/page.ts` and `src/templates/artifacts.ts`. Removing only those exact additions produces a byte-for-byte match to the local HTML, including its metadata, body, prompts, and series links. The live results preserve the literal non-match as well as the successful comparison after accounting for these additions. No newsletter form was submitted, and no interactive browser check is claimed.
+
+Concurrent editorial-skill edits belong to another active work stream and are preserved outside this article commit. Their newly added firsthand-evidence reference was read when it became available; this note already identifies the author's evidence basis, distinguishes own evidence from outside authority, and avoids pronoun-based trust or discovery claims. The release-record follow-up changes documentation only; the article bytes are those published and verified above.

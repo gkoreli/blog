@@ -1,0 +1,110 @@
+{
+  "checkedAt": "2026-09-07T04:33:43.986267+00:00",
+  "checks": [
+    {
+      "name": "article",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history",
+      "status": 200,
+      "contentType": "text/html",
+      "sha256": "835ea04f53d4efe5d60f4298a8ad5ad5b1cef746749e6f41bbfa1c09da8cb727",
+      "matchesLocalArtifact": false,
+      "knownProductionDifferences": {
+        "turnstileScript": 1,
+        "turnstileSitekey": 1,
+        "turnstileSlot": 1,
+        "cloudflareBeacon": 1
+      },
+      "matchesAfterRemovingOnlyKnownProductionAdditions": true
+    },
+    {
+      "name": "negotiated_markdown",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "sha256": "1aae38f449fbdefda3a0113f669f1bb3621e281dcb1c039143667db906300aed",
+      "matchesLocalArtifact": true,
+      "negotiatedMarkdown": true
+    },
+    {
+      "name": "markdown",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history.md",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "sha256": "1aae38f449fbdefda3a0113f669f1bb3621e281dcb1c039143667db906300aed",
+      "matchesLocalArtifact": true
+    },
+    {
+      "name": "prompts",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history/prompts",
+      "status": 200,
+      "contentType": "text/html",
+      "sha256": "9876f8d50117fe2a2e63ab45b642b21bd7aca2568899aecb33b9120e1ac87e4c",
+      "matchesLocalArtifact": false,
+      "knownProductionDifferences": {
+        "turnstileScript": 1,
+        "turnstileSitekey": 1,
+        "turnstileSlot": 1,
+        "cloudflareBeacon": 1
+      },
+      "matchesAfterRemovingOnlyKnownProductionAdditions": true
+    },
+    {
+      "name": "og",
+      "url": "https://gkoreli.com/og/filter-referrer-spam-without-deleting-analytics-history.png?v=9c1d935b",
+      "status": 200,
+      "contentType": "image/png",
+      "sha256": "9c1d935ba533c29f3fae292620c7d542a62bb70af6d2d5b02e7df679b128d361",
+      "matchesLocalArtifact": true
+    },
+    {
+      "name": "csl",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history.csl.json",
+      "status": 200,
+      "contentType": "application/vnd.citationstyles.csl+json",
+      "sha256": "9bde0651494f05a921e9bdde65467ef1abd3bc65854d42fe04056b18eb53aa26",
+      "matchesLocalArtifact": true
+    },
+    {
+      "name": "bibtex",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history.bib",
+      "status": 200,
+      "contentType": "application/x-bibtex; charset=utf-8",
+      "sha256": "c064b37976f170f4e997e6484b4d2ee9104020586942774ac8bd91fa1da086b0",
+      "matchesLocalArtifact": true
+    },
+    {
+      "name": "predecessor",
+      "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+      "status": 200,
+      "contentType": "text/html",
+      "sha256": "8b215d9e0f2bc4a0750e24a7eefb1b04ebf446cdc54ca86cea0ddc608b8933b9",
+      "includesPublishedSlug": true
+    },
+    {
+      "name": "feed",
+      "url": "https://gkoreli.com/feed.xml",
+      "status": 200,
+      "contentType": "application/xml",
+      "sha256": "5c5808c1674c95e7708689ed8192ad668e8e5cb6a81119ecf7ecfe1bed5f7ff5",
+      "includesPublishedSlug": true
+    },
+    {
+      "name": "sitemap",
+      "url": "https://gkoreli.com/sitemap.xml",
+      "status": 200,
+      "contentType": "application/xml",
+      "sha256": "9208812c025fa7e3c4fc5f24c710249d32543062c946dc9619b724e7c238a384",
+      "includesPublishedSlug": true
+    },
+    {
+      "name": "post_index",
+      "url": "https://gkoreli.com/posts.json",
+      "status": 200,
+      "contentType": "application/json",
+      "sha256": "e01cad69e48eb2531f7337e3862feab2e10f63cdb96bb36be05b5d8694604d4c",
+      "includesPublishedSlug": true
+    }
+  ],
+  "scope": "HTTP retrieval and artifact comparison. HTML differs only by the production Turnstile script/sitekey/slot and the injected Cloudflare beacon; those exact additions are recorded separately. No interactive browser verification.",
+  "allChecksPassed": true
+}
