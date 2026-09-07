@@ -5,16 +5,16 @@
  *   1. Rate limit per IP (native Workers binding — free, <1ms, zero KV writes)
  *   2. Validate email format + length
  *   3. Verify Turnstile token server-side
- *   4. Generate 256-bit confirm + unsubscribe tokens; SHA-256 hash before storage
+ *   4. Generate 256-bit confirm + unsubscribe tokens; hash only the confirm token
  *   5. Insert or refresh pending subscription with consent IP (truncated for GDPR)
  *   6. Fire-and-forget confirmation email via Resend (ctx.waitUntil)
  *
  * Security:
  *   - CORS scoped to gkoreli.com — see responses.ts
- *   - Raw tokens live only in email URLs; hashes stored in D1 (DB breach ≠ usable tokens)
+ *   - Confirm tokens are hashed in D1; unsubscribe tokens are stored raw for mail links
  *   - Active addresses return 202 without revealing account existence (no enumeration)
  *   - Turnstile is the primary bot gate; rate limiter is defense-in-depth
- *   - Consent IP stored truncated (last octet masked) for GDPR Art. 5(1)(c) compliance
+ *   - Signup IP is truncated; this context does not authenticate who submitted an email
  */
 
 import type { NewsletterEnv } from './db.js';

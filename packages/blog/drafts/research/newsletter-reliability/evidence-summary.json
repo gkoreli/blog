@@ -222,6 +222,10 @@
     {
       "file": "resend-logs.json",
       "sha256": "69b2f05526a2b17e0646013c1a554ba7669827214ddb77b089c03d37866ba811"
+    },
+    {
+      "file": "recovery-log-recheck.json",
+      "sha256": "a22d3c285b1ae51785c6c2eb5c6ad0758d78773cbe508de344974aae0b6a898b"
     }
   ],
   "limitations": [
@@ -258,6 +262,16 @@
       "rowsInspected": false,
       "restorePerformed": false
     },
-    "productionSecretChanged": false
+    "productionSecretChanged": false,
+    "latestClientLogRecheck": {
+      "capturedAt": "2026-09-07T06:11:07.753Z",
+      "retainedReports": 13,
+      "signupReports": 5,
+      "allColumnsInspected": true,
+      "addressLikeMatches": 0,
+      "rowsRead": 13,
+      "rowsWritten": 0,
+      "artifact": "recovery-log-recheck.json"
+    }
   }
 }

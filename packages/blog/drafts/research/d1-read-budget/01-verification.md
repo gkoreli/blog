@@ -2,6 +2,8 @@
 
 September 7, 2026 UTC. [Decision](../../../../../docs/adr/0016.7-budget-d1-reads-and-cache-public-reports.md), [incident](00-incident.md).
 
+**Later acceptance completed:** after the owner's reported upgrade, production comparison and cache reuse passed at 06:18–06:21 UTC. [Recovery record](02-recovery.md). References below to unverified or blocked checks describe the initial release checkpoint; they are not the current task status.
+
 ## Local acceptance
 
 - **49 analytics tests passed**, including one shared report statement, policy precedence, owner and scope exclusions, all panel contracts, empty dimensions, and rejection of malformed report sections.
@@ -17,9 +19,13 @@ The first candidate used a long compound `SELECT`. Local SQLite accepted it; pro
 
 At **05:41:47 UTC**, D1 rejected the revised fixed-window benchmark because the account's free daily read allowance was exhausted. The candidate returned no result or `rows_read` metadata. At **05:43:07 UTC**, a metadata-only request reported 5,055,350 account reads for the UTC day; the separate query profile attributed 5,028,734 reads to 225 referral-matcher statement executions. [Sanitized exhaustion capture](usage-at-exhaustion.json). Those executions do not identify callers.
 
-Consequently, **production compilation/result parity, measured read reduction, and successful live cache reuse remain unverified**. Do not publish a percentage reduction derived from statement count or local elapsed time. A one-statement report still scans materialized data for its different panels. Neither rejected production attempt returned metering metadata; their read cost is unknown.
+At that checkpoint, **production compilation/result parity, measured read reduction, and successful live cache reuse were unverified**. Do not derive a percentage reduction from statement count or local elapsed time. A one-statement report still scans materialized data for its different panels. Neither rejected production attempt returned metering metadata; their read cost is unknown. The later [recovery measurement](02-recovery.md) supplies the missing production evidence.
 
-Deploying the correction cannot restore a spent account allowance. D1 access needs the documented UTC reset or an authorized billing change before successful production acceptance can finish. No upgrade or database mutation was performed for this repair.
+Deploying the correction does not itself restore a spent account allowance. Cloudflare documents the UTC reset and plan upgrade as ways past the free cap. The agent did not change billing or mutate the database for this repair. The owner later reported completing the upgrade, and the subsequent [recovery checks](02-recovery.md) completed production acceptance. The small query below was an earlier, narrower access observation.
+
+### Later access observation — 06:11 UTC
+
+The newsletter recovery follow-up successfully ran `SELECT * FROM client_errors` at 06:11:07.753 UTC, returning thirteen rows with thirteen metered reads and zero writes. [Sanitized evidence](../newsletter-reliability/recovery-log-recheck.json). This verifies that one small query succeeded after the earlier quota rejection. It does not verify production compilation or parity of the revised analytics query, read reduction, a successful stats report, or a cache hit. No billing change or reset is inferred from it.
 
 ## Retained evidence
 
@@ -27,7 +33,7 @@ The author's private archive is `analytics-evidence/2026-09-07-d1-read-budget/`.
 
 The new correction changes code and report delivery, while policy `2026-09-06.2` retains SHA-256 `25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4`. No collection fields, observations, referral rules, or database schema were changed. The article's cost section and ADR-0016.6 now point to the operating-budget correction without replacing their historical measurements.
 
-## Production acceptance after access returns
+## Initial production acceptance plan, completed in recovery
 
 1. Read account metadata first. Do not run the wider evidence extractor or repeatedly refresh the public dashboard during the incident.
 2. Run the retained candidate once for the fixed August 8–September 6 UTC window. Record statement count, `meta.rows_read`, writes, and comparison with the old saved report. Investigate late writes or owner changes if it differs; do not assume a transactional comparison with the earlier capture.
@@ -40,4 +46,4 @@ Commit `316eb006a2ab150a56414c93d95e844339dad304` was pushed to `main`. Cloudfla
 
 Checks at **05:50–05:51 UTC** verified the served stats freshness disclosure, the corrected article's Markdown representation, and the replacement of real-time discovery wording. All returned HTTP 200. An invalid stats selection returned the expected HTTP 400 and `Cache-Control: no-store`, exercising the new validation path before database access. [Response hashes and deployment metadata](release-verification.json).
 
-No valid stats request was issued for this release check while the account was capped. It does not verify a successful production query, a cache hit, or the live database-failure response. The ten cache tests cover error handling locally. The owner's later limit-exceeded email corroborated the database quota rejection without authorizing a billing change. Successful report acceptance remains the follow-up above; the release record does not mark the task complete.
+No valid stats request was issued for this initial release check while the account was capped. That check did not verify a successful production query, a cache hit, or the live database-failure response. The ten cache tests covered error handling locally. The owner's later limit-exceeded email corroborated the database quota rejection without authorizing a billing change. Successful report acceptance was still required then; it subsequently completed in the [post-upgrade recovery record](02-recovery.md).

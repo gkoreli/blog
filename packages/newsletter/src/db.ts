@@ -2,7 +2,8 @@
  * db.ts — D1 types and query helpers for newsletter subscribers.
  *
  * All queries use parameterised bindings — no string interpolation into SQL.
- * Token values stored here are SHA-256 hashes; raw tokens live only in email URLs.
+ * Confirmation tokens are stored as SHA-256 hashes; unsubscribe tokens are raw
+ * so later newsletters can include their permanent opt-out links.
  * See tokens.ts for generateToken() / hashToken() / truncateIp().
  */
 
@@ -39,7 +40,7 @@ export interface Subscriber {
    */
   unsubscribe_token: string;
   source: string | null;
-  /** Truncated IP for GDPR consent proof, e.g. "1.2.3.x". */
+  /** Truncated signup-request IP, e.g. "1.2.3.x"; not an authenticated identity. */
   consent_ip: string | null;
   /** User-Agent at signup time, truncated to 512 chars. For abuse pattern detection. */
   user_agent: string | null;

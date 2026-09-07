@@ -65,6 +65,8 @@ This establishes an earlier repository account of a reader-facing incident. The 
 
 [Recovery checks](04-recovery.md) found no current pending subscriptions. The rejected flow has no saved address or confirmation send to reconstruct. Resend read endpoints denied the application's send-only credential; historical provider review remains open. A local secret passed a synthetic credential check, but the matching-widget read was denied and production has not been changed.
 
+A follow-up at 06:11:07 UTC read all columns of all thirteen retained records, including referrer and stack fields. It found no address-like text and no request-body column; the five signup reports still carried the same generic message. The read succeeded with thirteen metered reads and zero writes. [Sanitized follow-up](recovery-log-recheck.json). This strengthens the bounded table finding; the full Worker and provider histories remain uninspected.
+
 ## Claims ledger
 
 | Claim | Stage / state | Evidence | Supports | Cannot prove / counterevidence | Disposition |
@@ -81,6 +83,6 @@ This establishes an earlier repository account of a reader-facing incident. The 
 
 ## Reproduction and privacy
 
-Private captures were archived outside the repository with owner-only directory and file permissions. The public JSON records query windows, aggregate results and hashes of eleven private capture files. They contain no credentials; client records retain operational browser context and are kept outside Git. Hashes commit to the author's copies; readers cannot independently recreate the account's results without access.
+Private captures were archived outside the repository with owner-only directory and file permissions. The public JSON records query windows, aggregate results and hashes of twelve private capture files. They contain no credentials; client records retain operational browser context and are kept outside Git. Hashes commit to the author's copies; readers cannot independently recreate the account's results without access.
 
 The D1 queries were read-only and small: the initial all-error aggregate read 13 rows, its grouping read 29 rows, and the subscriber summary read one row. The account usage alert visible during the investigation is an independent concern, not evidence that these queries or the newsletter caused high account usage.

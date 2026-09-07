@@ -13,9 +13,9 @@
 		"required": ["ADMIN_SECRET", "ANALYTICS_HASH_KEY", "RESEND_API_KEY", "TURNSTILE_SECRET_KEY"]
 	},
 	// Workers Logs and Traces, matching the dashboard settings (2026-09-03) so a
-	// deploy never turns them off. Logs keep three days of every invocation with
-	// full request headers on the Free plan; they were the raw source for
-	// research artifact 09 and TASK-0101.
+	// deploy never turns them off. Free-plan retention is three days, subject to
+	// collection limits. Captured request headers supplied research artifact 09
+	// and TASK-0101; sampling=1 is not a guarantee that every event is retained.
 	"observability": {
 		"logs": {
 			"enabled": true,
@@ -55,7 +55,7 @@
 			"simple": {
 				// 3 subscribe attempts per minute per IP.
 				// Cloudflare only allows period=10 or period=60.
-				// Original intent was 3/5 min; 3/60s is stricter but protects the same threat.
+				// Original intent was 3/5 min; 3/60s permits more sustained attempts.
 				"limit": 3,
 				"period": 60
 			}

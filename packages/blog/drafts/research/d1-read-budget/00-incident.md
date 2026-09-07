@@ -2,9 +2,13 @@
 
 Started September 6, 2026 PDT / September 7 UTC after the owner supplied a Cloudflare 77% daily-read alert. The email's reset is September 8 at 00:00 UTC, equivalent to September 7 at 17:00 PDT. The private email and account details are not reproduced here.
 
+**Current status:** the owner subsequently reported a Workers Paid upgrade. At 06:18–06:21 UTC, the revised production report passed the retained-result comparison at **33,259 reads (81.7647% fewer)**, and live cache reuse was verified. [Recovery evidence](02-recovery.md), [handoff](03-handoff.md). The exhaustion and blocked checks below describe earlier checkpoints.
+
 ## Finding
 
 Our public analytics report repeatedly evaluated the new referral policy. The earlier production benchmark already measured **182,388 rows read across nine statements** for one report. That is 3.65% of a five-million-read daily allowance. We should have evaluated that operating budget before accepting the implementation's latency. This investigation corrects the acceptance claim while preserving the original measured numbers and referral evidence.
+
+That total is cumulative database read work: add the nine returned `meta.rows_read` values once. Re-reading the same data in another query counts again. The report did not contain 182,388 distinct observations, and it did not require 182,388 visitors. The execution plan shows repeated observation and referral assessment plus index use; these measurements do not allocate the total precisely among tables, indexes, and intermediate results. See [Cloudflare's metric definition](https://developers.cloudflare.com/d1/platform/pricing/).
 
 [Sanitized metrics](usage-at-alert.json) record the September 7 account total at 05:11:32 UTC: **3,889,701 rows read (77.79%)**, with 3,889,143 in the blog database and 558 elsewhere. The account had only 430 rows written in that capture. Rows read are scanned database rows, not visitors, observations stored, or returned report rows.
 
@@ -16,7 +20,9 @@ At baseline `3d92b10`, `queryStats()` issues nine aggregates, plus the earliest-
 
 The account cap is shared. D1-backed newsletter operations and observation writes can fail if it is exhausted. The Worker serves static assets independently and schedules eligible observation writes with `ctx.waitUntil`, so a D1 failure does not by itself make article HTML unavailable.
 
-At **05:41:47 UTC**, the revised candidate query was rejected because the account had exhausted its free daily read allowance. A metadata-only capture at **05:43:07 UTC** reported **5,055,350 account reads**. The quota error establishes that D1 access was blocked; the displayed aggregate slightly above five million is retained as received. No successful candidate result or billed-read reduction is claimed. No further production SQL probes are justified until access returns. Neither rejected candidate returned row-read metadata, so their metered cost is unknown, not assumed zero.
+At **05:41:47 UTC**, the revised candidate query was rejected because the account had exhausted its free daily read allowance. A metadata-only capture at **05:43:07 UTC** reported **5,055,350 account reads**. The quota error establishes that this request was blocked; the displayed aggregate slightly above five million is retained as received. No successful candidate result or billed-read reduction is claimed. After a quota rejection, inspect service metadata before attempting more production SQL. Neither rejected candidate returned row-read metadata, so their metered cost is unknown, not assumed zero.
+
+At **06:11:07 UTC**, a separate newsletter investigation successfully read the thirteen retained client-error rows, with `rows_read: 13` and `rows_written: 0`. [Sanitized recheck](../newsletter-reliability/recovery-log-recheck.json). That observation alone did not explain restored access, establish a plan change or reset, or validate the revised analytics query. The subsequent owner report and [06:18–06:21 production acceptance](02-recovery.md) supply later evidence; the earlier small read must not be credited with establishing those results.
 
 ## Evidence and method
 

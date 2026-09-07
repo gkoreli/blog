@@ -4,7 +4,13 @@
 
 Accepted — 2026-04-08. Implementation shipped same day.
 
-## Context
+### Reliability checkpoint — September 7 UTC, 2026
+
+Implementation is not evidence of current signup health. An inspected production rejection returned Turnstile `invalid-input-secret` before subscriber storage or email scheduling. The [reliability worklist](../folders/FLDR-0010-newsletter-reliability-and-bot-protection-worklist.md) tracks credential repair, missing client reports, durable outcomes, and locally reproduced resubscription/confirmation bugs. No successful production signup and confirmation was established in that investigation. The [recovery audit](../../packages/blog/drafts/research/newsletter-reliability/04-recovery.md) distinguishes absent addresses in inspected stores from provider history still inaccessible.
+
+The request flows and security descriptions below were reconciled with the September 7 source. Historical launch assumptions and legal rationale are not a current plan-limit check, abuse-effectiveness measurement, or compliance determination.
+
+## Historical context — April 8, 2026
 
 The procrastination article hit 8.3K views in under two hours, 52 shares, #9 on r/ADHD — with zero way to capture readers for the next article. Every channel used to distribute (Reddit, X, HN) is rented attention: the algorithm decides if people see the next post. Email is still the most practical owned re-engagement channel — no feed ranking, no platform decay — but deliverability and visibility are not guaranteed: Gmail filters by sender reputation and auto-sorts into Promotions; Apple Mail Privacy Protection blocks open tracking. Industry benchmarks put average open rates at ~32–34% (Mailchimp, Constant Contact). That's not 100% reach, but it's a direct line to readers who opted in, which no social platform offers.
 
@@ -39,13 +45,13 @@ Nightly cron at 03:00 UTC handled by `handleScheduled`.
 
 **Reuse the existing `DB` D1 binding.** Add a `subscribers` table to `blog-analytics` — no new D1 database, no new wrangler binding.
 
-**Turnstile** (Cloudflare, free) for spam protection. Invisible mode with explicit render — no visible widget UI in the normal path, but the `.turnstile-slot` container remains visible so Cloudflare can show an interactive fallback if the browser requires one. The widget is executed programmatically on form submit. `TURNSTILE_SITE_KEY` baked into static HTML at build time via `data-turnstile-sitekey` on the form element. `TURNSTILE_SECRET_KEY` set as a Worker secret via `wrangler secret put`.
+**Turnstile** for pre-send verification. The client explicitly renders with `execution: 'execute'` and `appearance: 'execute'`, then executes on submit. These client settings do not establish the widget mode configured in Cloudflare; the account widget read was inaccessible during the audit. `TURNSTILE_SITE_KEY` is baked into static HTML as `data-turnstile-sitekey`. `TURNSTILE_SECRET_KEY` is a Worker secret. Missing-secret and verifier-network-error cases currently allow the request; an invalid secret rejects it. TASK-0124 and TASK-0127 track this inconsistent failure policy.
 
 **Resend** for email delivery. One `fetch()` to `https://api.resend.com/emails`. Free tier: 3,000 emails/month, 100/day — more than sufficient for Phase 1. `RESEND_API_KEY` set as a Worker secret. Resend is the delivery pipe; D1 is the source of truth. Swap the delivery layer later without losing subscriber data.
 
-**Double opt-in** — not required by GDPR itself (which regulates consent quality, not mechanism), but adopted here because it produces the strongest proof of consent and eliminates bot/typo signups. Germany's case law effectively requires it for email marketing; for a global audience it is the lowest-risk default. Separate `confirm_token` (one-time, cleared after use) and `unsubscribe_token` (permanent per subscriber, included in every newsletter).
+**Double opt-in** — require a valid confirmation link before activating a pending address. This records a confirmation action; it does not identify who first submitted the address or prevent the initial confirmation email from being abused. Separate `confirm_token` (hashed, one-time, cleared after use) and `unsubscribe_token` (stored raw, included in every newsletter).
 
-**Subscribe form** in `page.ts` footer — appears on every page. Highest-intent placement is immediately after finishing an article that resonated. Button is always enabled; Turnstile executes on submit and the fetch fires only after the token is returned (graceful fallback: submits without token in dev when `TURNSTILE_SITE_KEY` is unset, relying on server-side rate limiting). All form logic lives in `packages/blog/src/client/subscribe.ts` — a proper typed module imported via `main.ts`, not an inline script in the template.
+**Subscribe form** in the `page.ts` footer. The button is initially enabled and disabled while submitting. With a ready widget, the callback sends the returned token. If the widget is unavailable at initialization or submit time, the client sends an empty token; this fallback also exists in production, where a configured verifier rejects it. TASK-0125 tracks readiness and recovery. Form logic lives in `packages/blog/src/client/subscribe.ts`, imported by `main.ts`.
 
 **`source` column** tracks which page the subscriber came from plus a deliberately small acquisition allowlist: `utm_source`, `utm_campaign`, and the external referrer hostname. Arbitrary query parameters, referrer paths, and full referrer URLs are discarded. This is enough to learn which article and launch channel convert without growing a second analytics system.
 
@@ -80,21 +86,20 @@ packages/newsletter/
 Browser form
   POST /api/subscribe { email, turnstile, source }
     │
-    ├── 1. CORS origin check (allowedOrigin)
-    ├── 2. Rate limit check (SUBSCRIBE_RATE_LIMITER: 3 req / 5 min per IP)
-    ├── 3. verifyTurnstile() → challenges.cloudflare.com/turnstile/v0/siteverify
-    ├── 4. validateEmail()
-    ├── 5. findByEmail(DB) → 409 if active, re-send confirmation if pending, insert if new
-    ├── 6. generateToken() → rawConfirmToken (256-bit)
-    │       hashToken(rawConfirmToken) → confirmTokenHash (stored in DB)
-    ├── 7. generateToken() → rawUnsubToken (256-bit)
-    │       hashToken(rawUnsubToken) → unsubTokenHash (stored in DB)
-    ├── 8. truncateIp(CF-Connecting-IP) → "1.2.3.x" (stored as consent_ip)
-    ├── 9. insertSubscriber(DB, { email, confirmTokenHash, unsubTokenHash,
-    │       confirmTokenExpiresAt, consentIp, source })
-    └── 10. ctx.waitUntil(sendConfirmationEmail(rawConfirmToken)) ← fire-and-forget
-               rawConfirmToken goes into the email URL — never stored plain in DB
+    ├── 1. Select allowed CORS response origin; this is not a POST rejection check
+    ├── 2. Rate limit: 3 attempts / 60 seconds per IP
+    ├── 3. Parse JSON and validate email format/length
+    ├── 4. verifyTurnstile() → rejection returns 400 before DB access
+    ├── 5. findByEmail(DB) → active: 202 without another email
+    ├── 6. Generate independent confirmation, unsubscribe, and row-ID tokens
+    │       SHA-256 confirmation token for DB; retain unsubscribe token raw
+    ├── 7. Refresh pending row, or insert a new pending row with source/context
+    │       BUG: retained inactive rows reach INSERT and fail email uniqueness
+    └── 8. ctx.waitUntil(sendConfirmationEmail(...)); return 202
+               Provider failure is logged after the browser response
 ```
+
+The original invalid-secret failure stops at step 4. There is no saved address from that request to restore, and a 202 from a later successful path would still not prove email delivery.
 
 ### Request flow: confirm
 
@@ -102,14 +107,15 @@ Browser form
 GET /api/confirm/:rawToken
   │
   ├── 1. hashToken(rawToken) → tokenHash
-  ├── 2. findByConfirmTokenHash(DB, tokenHash)
-  │       → null: 404 "invalid or already used"
-  │       → expired: 410 "link expired, re-subscribe"
-  │       → valid: continue
-  └── 3. confirmSubscriber(DB, tokenHash)
-           clears confirm_token + confirm_token_expires_at
-           sets status='active', confirmed_at=now()
+  ├── 2. Atomic confirmSubscriber(DB, tokenHash)
+  │       → pending + unexpired match: set active, clear token fields, HTTP 200
+  └── 3. On no update, findByConfirmTokenHash(DB, tokenHash)
+          → pending row: "Link expired", HTTP 200
+          → otherwise: "Already confirmed / Your subscription is active", HTTP 200
+              BUG: an unknown token does not establish an active subscription
 ```
+
+TASK-0129 tracks this reproduced false-success message and the inactive-address insertion bug. The diagram describes current behavior, not the desired contract.
 
 ### Request flow: bounce/complaint webhook
 
@@ -142,13 +148,14 @@ CREATE TABLE subscribers (
   status                   TEXT NOT NULL DEFAULT 'pending'
                            CHECK (status IN ('pending', 'active', 'unsubscribed', 'bounced')),
 
-  -- SHA-256 hashes stored; raw tokens sent only in email URLs (never persisted)
+  -- Confirmation token is hashed; permanent unsubscribe token is stored raw
   confirm_token            TEXT,             -- NULL after use
   confirm_token_expires_at TEXT,             -- 24-hour window; NULL after confirmation
   unsubscribe_token        TEXT NOT NULL,    -- permanent, never expires
 
   source                   TEXT,             -- signup path + allowlisted acquisition params
-  consent_ip               TEXT,             -- truncated IP: "1.2.3.x" (GDPR proof-of-consent)
+  consent_ip               TEXT,             -- truncated request IP: "1.2.3.x"
+  user_agent               TEXT,             -- added by migration 0004
 
   created_at               TEXT NOT NULL DEFAULT (datetime('now')),  -- = consent timestamp
   confirmed_at             TEXT,
@@ -166,7 +173,7 @@ CREATE INDEX idx_sub_status        ON subscribers (status);
 
 ### Token entropy: 256-bit via `crypto.getRandomValues()`
 
-**Why not `crypto.randomUUID()`?** UUID v4 provides 122 bits of randomness — above OWASP's 128-bit minimum for session tokens, but right at the edge. For confirm and unsubscribe tokens, which function as single-use credentials in email URLs, we use 256-bit tokens generated via `crypto.getRandomValues(new Uint8Array(32))` encoded as 64 hex characters.
+The implementation generates 32 random bytes with `crypto.getRandomValues()` and encodes them as 64 hex characters. Confirmation tokens are one-time credentials; unsubscribe tokens remain usable while the subscriber row exists. The earlier comparison that called 122 bits greater than 128 was incorrect and is removed.
 
 ```typescript
 // tokens.ts
@@ -179,11 +186,11 @@ export function generateToken(): string {
 
 The confirm token lives in an email link for up to 24 hours and is sent to an email provider. 256-bit headroom is appropriate.
 
-### SHA-256 token hashing before D1 storage
+### SHA-256 confirmation-token hashing before D1 storage
 
-Raw tokens are never stored in the database. Only SHA-256 hashes are persisted. This is the same pattern used for password-reset tokens by security-conscious implementations (Devise, Doorkeeper, etc.).
+The database stores only the confirmation token's SHA-256 hash. It stores the unsubscribe token raw so the mail sender can include it in future footer links.
 
-**Threat model:** A D1 database export or breach yields only hashes. SHA-256 preimage resistance means an attacker cannot derive the raw token from the stored hash. Confirm links and unsubscribe links in inboxes remain valid; the attacker cannot forge new ones.
+**Threat model:** A database export does not directly reveal usable confirmation tokens. It does reveal subscriber addresses and usable unsubscribe tokens. Confirmation hashing does not protect those other fields from a database disclosure.
 
 ```typescript
 export async function hashToken(raw: string): Promise<string> {
@@ -194,10 +201,7 @@ export async function hashToken(raw: string): Promise<string> {
 
 ### Confirm token expiry: 24 hours
 
-`confirm_token_expires_at = datetime('now', '+24 hours')` set at subscription time. `handleConfirm` distinguishes three outcomes:
-- Token not found / already used → 404
-- Token found but expired → 410 with "re-subscribe" CTA
-- Token found and valid → confirm + clear token fields
+`confirm_token_expires_at = datetime('now', '+24 hours')` is set at subscription time. The atomic update checks pending status and expiry before activation. The current HTML helper returns 200 for successful, expired, and unknown-token pages; the last case also carries the false-success message documented above.
 
 ### Unsubscribe tokens: permanent, stored raw (not hashed)
 
@@ -209,25 +213,22 @@ Unsubscribe tokens are stored as raw values in D1 — unlike confirm tokens, whi
 | Confirm | Attacker activates pending accounts | SHA-256 hash | raw token |
 | Unsubscribe | Attacker can mass-unsubscribe | **raw** | raw token |
 
-Mass-unsubscribing is annoying but not a security breach — no account access is granted. Storing raw tokens is the correct tradeoff because:
+A disclosed unsubscribe token enables unauthorized opt-out. The implementation accepts that risk to compose permanent footer links from stored subscriber state:
 1. The raw token must appear verbatim in every newsletter footer URL
 2. Without the raw value, you cannot build the URL without a reverse lookup (impossible with SHA-256)
 3. `sendNewsletterBatch()` reads `subscriber.unsubscribe_token` directly when composing emails
 
-Tokens never expire. A reader who gets an archived email from two years ago must still be able to unsubscribe via its footer link. Expiring unsubscribe links is a CAN-SPAM / GDPR compliance risk.
+No unsubscribe-token expiry is set. A link resolves only while its corresponding subscriber row exists.
 
 ### Scoped CORS (not wildcard)
 
 ```typescript
 // responses.ts
-const ALLOWED_ORIGINS = new Set([
-  'https://gkoreli.com',
-  'http://localhost:8788',  // wrangler dev default
-  'http://localhost:4321',  // astro dev default
-]);
+const PRODUCTION_ORIGIN = 'https://gkoreli.com';
+const LOCAL_RE = /^http:\/\/localhost(:\d+)?$/;
 ```
 
-`Access-Control-Allow-Origin` is set to the specific requesting origin when it matches, or omitted entirely when it does not. This prevents cross-origin POST abuse from arbitrary domains. `Access-Control-Allow-Credentials` is not set (no cookies).
+`Access-Control-Allow-Origin` is set for a matching origin and omitted otherwise. OPTIONS rejects unknown origins. The POST handler uses `allowedOrigin()` to select response headers; it does not reject a POST solely for an unknown or missing Origin. CORS therefore must not be described as authentication or a general server-side abuse barrier. `Access-Control-Allow-Credentials` is not set.
 
 ### Security headers
 
@@ -247,17 +248,17 @@ Two sets applied contextually:
 
 ### Native Workers Rate Limiting
 
-`wrangler.jsonc` declares a `ratelimits` binding (GA Sept 2025, free tier):
+`wrangler.jsonc` declares this native rate-limit binding:
 
 ```jsonc
 "ratelimits": [{
-  "binding": "SUBSCRIBE_RATE_LIMITER",
+  "name": "SUBSCRIBE_RATE_LIMITER",
   "namespace_id": "1001",
-  "simple": { "limit": 3, "period": 300 }
+  "simple": { "limit": 3, "period": 60 }
 }]
 ```
 
-3 POST attempts per 5 minutes per IP, enforced before Turnstile verification. Defense-in-depth behind Turnstile: Turnstile catches bots early; the rate limiter caps burst attempts that sneak through. Zero KV writes — implemented at the CF edge, not in Worker code.
+Three attempts per minute per IP, applied before verification and shared with the resend-confirmation route. This permits a higher sustained attempt rate than the originally described three per five minutes. Cloudflare's counters are per location and eventually consistent; they are not a global send budget. [Rate-limit behavior](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/), checked September 7, 2026.
 
 ### Webhook HMAC verification (Svix protocol)
 
@@ -278,76 +279,25 @@ function timingSafeEqual(a: string, b: string): boolean {
 
 Replay-attack guard: `|now - svix-timestamp| ≤ 300 seconds`. Emails are redacted in logs using the first 3 characters + `***@domain`.
 
-### Legal model: ePrivacy + GDPR (two layers)
+### Confirmation and retention: implemented behavior
 
-For EU subscribers, the governing framework is two-layered — not just GDPR:
+After verification, the subscriber row records the submitted address, truncated request IP, timestamp, source, and browser details. A later valid confirmation records activation. These fields do not authenticate who first submitted the address, and this ADR does not establish their legal sufficiency.
 
-1. **ePrivacy Directive (2002/58/EC)** — defines *when* consent is needed. For direct-marketing emails, prior consent is required. This is the rule that makes unsolicited newsletters illegal, not GDPR.
-2. **GDPR / EDPB guidance** — defines *what valid consent looks like*: freely given, specific, informed, unambiguous, expressed by a clear affirmative action. Withdrawal must be as easy as giving consent.
+The nightly cleanup deletes expired pending rows and inactive rows older than ninety days using their unsubscribe/bounce timestamps. These are implementation choices, not a complete erasure-request workflow or proof of compliance. Confirmation mail has already been attempted before a pending row expires; double opt-in does not prevent that first message from being abused.
 
-The practical consequence: what you store as consent evidence must satisfy GDPR's standard, and the entire flow (what the user saw, what they agreed to, when, how they can withdraw) must be defensible under ePrivacy's prior-consent requirement.
+Earlier categorical legal and deliverability claims were not verified by this investigation and are removed from current instructions. They remain in Git history. Any future sending decision must use the actual message content, provider requirements, consent evidence, and applicable rules. This checkpoint performs no new legal review.
 
-**Proof of consent:** `consent_ip` (last octet zeroed: `"1.2.3.x"`) + `created_at` timestamp + `source` (the signup page and optional allowlisted acquisition context) stored at subscription time. Together these establish: who signed up, when, from what context, on what device IP. Adequate evidence for GDPR Art. 7 without retaining a full IP address or full referrer URL.
+### Sender configuration and message classes
 
-**Right to erasure (Art. 17):** Nightly cron via `handleScheduled`:
-1. `purgeExpiredPending()` — deletes `status='pending'` rows where `confirm_token_expires_at < now()`. Unconfirmed signups never linger.
-2. `purgeOldInactive()` — deletes rows older than 90 days using status-specific event timestamps: `unsubscribed_at` for `status='unsubscribed'`; `bounced_at` for `status='bounced'`. Satisfies GDPR Art. 5(1)(e) data minimisation: no purpose for retaining data about people who have opted out.
+The code has separate `sendConfirmationEmail()` and `sendNewsletterBatch()` functions. Newsletter messages already include `List-Unsubscribe` and `List-Unsubscribe-Post` headers plus footer links. These are implemented features, not future work.
 
-**Double opt-in:** GDPR/ePrivacy do not mandate double opt-in by name. It is adopted here for four concrete engineering reasons:
-1. **Strongest consent proof** — the subscriber took a second action from their own inbox, which is hard to dispute
-2. **List hygiene** — eliminates typos and bot-submitted addresses; Google explicitly says clean lists reduce spam complaints
-3. **Fewer spam complaints** — opted-in addresses remember signing up; cold addresses don't; complaints damage sender reputation
-4. **Sender reputation** — Google treats complaint rate as a hard deliverability signal; lower complaint rate = better inbox placement
-
-Subscribers don't reach `status='active'` without clicking the confirmation link.
-
-### CAN-SPAM compliance
-
-CAN-SPAM's requirements are triggered by **commercial content**, not by being a blog. A purely personal blog sending non-commercial post-update emails is in a low-risk zone. The compliance burden increases when emails promote products, sponsors, paid content, or any commercial purpose.
-
-Regardless, two rules apply now:
-- **Transactional emails** (confirmation) are exempt from CAN-SPAM's bulk-marketing requirements
-- **Subscribed-content emails** (future newsletters) must include an accurate sender address and a working opt-out; the `unsubscribe_token` flow already satisfies opt-out
-
-Physical mailing address is required if/when emails become commercial under FTC rules. A P.O. box satisfies this. Defer until the blog generates commercial content.
-
-**Email classification matters in code:** treat confirmation emails and newsletter emails as different classes from the start, even if the delivery provider is the same. They have different compliance obligations, different headers, and different deliverability rules. The `email.ts` module currently handles only the transactional confirmation — future newsletter sends belong in a separate function with appropriate `List-Unsubscribe` headers.
-
-### Sender authentication: SPF, DKIM, DMARC (pre-bulk-send gate)
-
-This is not optional at any real sending volume. Google's sender guidelines make these hard requirements for bulk senders (>5,000/day) and strongly recommended for all outbound mail:
-
-| Record | What it does | Required by |
-|--------|-------------|-------------|
-| **SPF** | Lists servers authorised to send from your domain | Google (all senders) |
-| **DKIM** | Cryptographic signature proving the message hasn't been tampered with | Google (bulk senders) |
-| **DMARC** | Policy that tells mailboxes what to do when SPF/DKIM fail | Google (bulk senders) |
-
-**None of this is code** — it is DNS configuration on `gkoreli.com`. Resend's dashboard provides the DNS records to add when you verify your sending domain. This should be done before sending the first newsletter, not after.
-
-**`List-Unsubscribe` + `List-Unsubscribe-Post` headers** — required by Google for bulk senders, and strongly recommended for all subscribed-content emails. These enable one-click unsubscribe directly from Gmail's UI. They do not replace the in-body unsubscribe link — they are additive. Engineering task: add these headers to the future `/api/send` implementation in `email.ts`, not to the transactional confirmation email.
-
-```
-List-Unsubscribe: <https://gkoreli.com/api/unsubscribe/{rawUnsubToken}>
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
-```
-
-These are **Phase 2 engineering prerequisites**, not optional enhancements. First bulk send without them risks inbox filtering and potential provider policy violation at scale.
+DNS authentication and provider sending limits require an account check before a real send. This investigation did not verify SPF, DKIM, DMARC, current provider limits, or delivery. The application key's ability to send does not establish read access to provider history or successful inbox delivery.
 
 ## Why No Third-Party Libraries
 
-The existing blog Worker was built with zero npm runtime dependencies. Every kilobyte matters against the 1 MB uncompressed Worker bundle limit. The full newsletter implementation adds:
+The package uses Web Crypto for random tokens, hashing and HMAC, and direct fetch calls for Turnstile and Resend. This keeps the runtime dependency surface small. It also means we own lifecycle correctness, verification, retries and reporting.
 
-| What | Our approach | Alternative library | Bundle cost of library |
-|------|-------------|--------------------|-----------------------|
-| Token generation | `crypto.getRandomValues` (Web Crypto API, built in) | `nanoid`, `uuid` | ~3 KB / ~5 KB |
-| Email delivery | Direct `fetch()` to Resend REST API | `resend` (official SDK) | ~150 KB |
-| Turnstile verification | Direct `fetch()` to CF siteverify | — | — |
-| Webhook signing | Inline HMAC + `crypto.subtle` | `@svix/api` | ~900 KB |
-| Input validation | `email.includes('@')` + length check | `zod`, `joi`, `yup` | 50–150 KB |
-| **Total** | **~0 KB external** | **potential total** | **>1 MB** |
-
-The Svix SDK alone (`@svix/api`) would consume the entire Worker bundle budget. This is not a hypothetical — the 1 MB limit is real and enforced at deploy time.
+The earlier library-size estimates and one-megabyte uncompressed Worker-limit claim were not supported by a pinned bundle measurement in this ADR and are removed. Assess a proposed dependency by the actual built artifact and the current account limit, rather than npm package size or an old estimate.
 
 ### Inspiration from open source reference implementations
 
@@ -365,58 +315,51 @@ Shows token-in-URL pattern for confirmation flows on Workers. We extend this wit
 **[mnestorov/security-headers-cloudflare-worker](https://github.com/mnestorov/security-headers-cloudflare-worker)**
 Reference for the CSP and security header set on Workers. Confirms `X-Content-Type-Options`, `Referrer-Policy`, and `Content-Security-Policy` are the right set for Workers-served HTML.
 
-**Key difference from all references:** None of the above use SHA-256 token hashing. Storing raw tokens in the database is the common pattern in open source Workers implementations — and the common mistake. We adopt the pattern used in mature web frameworks (Devise's `Devise.secure_compare`, Doorkeeper's token hashing) where a DB breach cannot yield usable tokens.
+The reference links above are historical pointers. This checkpoint did not re-audit their current code, token handling, or production use. Our inspected implementation hashes confirmation tokens and stores unsubscribe tokens raw; a general claim that a database disclosure reveals no usable tokens would be false.
 
-**On the "why not a battle-tested library" question more directly:** The libraries that exist for this domain (Buttondown SDK, Mailchimp API client, ConvertKit wrappers) are designed around *managed newsletter platforms*, not around building your own subscription backend. They assume you are calling their API to manage subscribers on their platform — not building subscriber storage in your own D1. There is no battle-tested npm library for "run double opt-in confirmation with D1 as the store," because that combination is specific to this architecture. The Web Crypto API functions we use (`getRandomValues`, `subtle.digest`, `subtle.importKey`) are themselves the battle-tested primitives, backed by the browser specification and the WHATWG standards process.
+Owning the small integration does not prove it more reliable than a maintained library. The September audit found missing reporting paths and lifecycle bugs in our implementation. Dependency choice and tested behavior are separate decisions.
 
 ## Tradeoffs
 
-### Reusing `blog-analytics` DB vs. a separate `blog-newsletter` DB
+### Reusing the analytics database
 
-**Chosen: same DB.** Simpler config (one binding), no new wrangler entry, free plan gives 10 databases and we're using 1.
+The newsletter, analytics, and client-error reports share `blog-analytics`. That reduces configuration, but puts subscriber addresses and operational records in the same database and makes them depend on shared D1 capacity. A second database in the same account would not isolate the account-level read allowance.
 
-**The concern:** Subscriber emails are PII. Mixing PII with anonymous page view data in one database is a security smell — a DB export includes both. **Accepted** at personal blog scale where both are on the same Cloudflare account under the same access credentials anyway.
+Separating storage would require bindings, routing/environment changes, migration and validation; it is not a one-file edit. No such migration is authorized or performed by this documentation checkpoint.
 
-**Migration path:** When the subscriber list reaches a meaningful size, create `blog-newsletter` D1, add a second binding `NEWSLETTER_DB`, migrate the table, update the package Env type. The package boundary (`@gkoreli/newsletter`) means this is isolated to one file change in `db.ts`.
+### Delivery provider
 
-### Resend vs. Cloudflare Email Workers (native)
+The current implementation sends through Resend. Native Cloudflare sending was an earlier alternative; its availability, current pricing and migration requirements were not checked in this investigation. No provider replacement is selected.
 
-Cloudflare announced native email sending (paid Workers plan, $5/mo). Still limited availability. Resend's free tier (3K/month) covers Phase 1-2 entirely. Resend is a single `fetch()` call — swappable in `email.ts` without touching any other code. Switch to native CF sending in Phase 3 if/when the subscriber volume justifies it.
+### Turnstile mode and initialization
 
-### Turnstile managed vs. invisible mode
+An invisible widget was the historical design preference. Actual widget type is configured in Cloudflare and was not verified during this incident because the account read was denied. Current client code sets `execution: 'execute'` and `appearance: 'execute'`; these options do not prove the dashboard mode or equivalent protection across modes.
 
-`data-appearance="interaction-only"` (managed mode): widget appears only when a challenge is needed; can still render a visible checkbox/badge. Invisible mode (`size: 'invisible'`, `execution: 'execute'`): no visible widget at all; Turnstile is an implementation detail.
+The main module checks `window.turnstile` once during initialization. Deferred script placement does not guarantee successful loading, a ready widget, or recovery from a blocked script. If initialization misses it, the form submits an empty token. The earlier claims of guaranteed availability, no timing risk, and a universally hidden widget were unsupported. TASK-0125 covers readiness, error callbacks and recovery; the [client audit](../../packages/blog/drafts/research/newsletter-reliability/02-client-audit.md) contains the observed code and local probes.
 
-**Chosen: invisible.** The visible widget — even in interaction-only mode — is visually incompatible with a minimalist blog design. It injects markup into the form, leaves a success-state badge permanently visible after solving, and makes Turnstile a UI component rather than a spam filter. Switching to invisible mode eliminates all visible footprint while preserving full server-side `siteverify` protection. Same bot protection, zero UI damage.
+### Native rate limiting
 
-**Important:** "Invisible" is a **widget type configured in the Cloudflare dashboard**, not a client-side render parameter. `size: 'invisible'` is not a valid value and throws a `TurnstileError` at runtime. The sitekey must be for an Invisible widget — the client just calls `turnstile.render(slot, { execution: 'execute', ... })` with no size parameter. Visual hiding is handled by the `hidden` attribute on `.turnstile-slot`, which works regardless of widget type.
-
-**Client-side flow:** Turnstile script uses `?render=explicit` (no `onload` callback) with `defer`. Our module (`main.js`) is a `type="module"` script in `<body>`. Deferred scripts execute in document order after parsing, so Turnstile (`<head>`, earlier) runs before our module (`<body>`, later) — `window.turnstile` is synchronously available when `subscribe.ts` runs. No global callback, no timing race. `initSubscribeForm()` is called directly at module load. An init guard (`form.dataset.subscribeInit`) prevents double widget render if something calls it twice.
-
-`appearance: 'execute'` is set on the widget so it would only become visible after `turnstile.execute()` — combined with the `.turnstile-slot[hidden]` container, the widget has zero visual footprint regardless of timing.
-
-### Rate limiting: Workers Native vs. KV-based
-
-Workers Native Rate Limiting (GA Sept 2025, free tier): zero KV write costs, enforced at the CF edge before the Worker runs. KV-based alternatives require a KV write per request (slow, costs KV operations). The only downside is the `namespace_id` is arbitrary and must be stable across deploys — documented in wrangler.jsonc comments.
+The Worker invokes `SUBSCRIBE_RATE_LIMITER.limit()` before verification. It is a runtime binding called by application code, not a rule that runs before the Worker. Current limits are three attempts per sixty seconds per IP, with provider-documented locality/consistency limits. The implementation makes no application KV writes for this limiter; per-address cooldowns and a global send budget remain open design work.
 
 ## What is NOT built (intentional scope)
 
-- **Admin UI** — query D1 directly: `wrangler d1 execute blog-analytics --command "SELECT * FROM subscribers WHERE status='active'"`. Build a dashboard at `/admin/newsletter` when manual querying becomes friction.
+- **Admin UI** — no dedicated subscriber dashboard. For an authorized investigation, prefer a bounded aggregate or targeted private query; remote SQL consumes read allowance, and subscriber addresses/tokens must not appear in public output.
 - **Click tracking / open rates** — Resend provides these on paid plan. Not needed at Phase 1–2.
 - **Drip sequences / automation** — deliberate simplicity. One confirmation email. Newsletters sent manually via `POST /api/send`. Automate when the manual process is the bottleneck.
 - **Separate `NEWSLETTER_DB` binding** — see DB tradeoff above. Defer until subscriber list is meaningful.
-- **Queue-based sending** — `POST /api/send` is synchronous. At 50–500 subscribers, a Resend batch call takes <1s. Queues are Phase 3.
+- **Queue-based sending** — `POST /api/send` awaits provider batches. No delivery-latency guarantee or queue is established; confirmation sending separately uses `ctx.waitUntil`.
 
 ## Known Gaps
 
-- **`'unsafe-inline'` in `script-src` CSP** — Two inline scripts remain in `page.ts` (theme detection and analytics fire-and-forget). Both are intentionally tiny and performance-sensitive (theme must run before first paint to avoid flash; analytics benefits from `keepalive: true` at page exit). Moving them to external modules would allow removing `'unsafe-inline'` from the CSP. Defer until the cost is worth the security improvement; nonces would require per-request generation which is incompatible with a static build.
-- **Turnstile iframe console violations** — Cloudflare's challenge iframe probes browser capabilities (XR tracking, camera, etc.) as part of bot fingerprinting. These probes are blocked by the `Permissions-Policy` header and logged as violations in DevTools (`normal?lang=auto:1 [Violation] Permissions policy violation: xr-spatial-tracking is not allowed`). Expected behavior; Turnstile functions correctly despite them. Only visible in DevTools — not user-facing. Cannot be silenced without weakening the Permissions-Policy.
+The current gaps are tracked in TASK-0124–TASK-0129: invalid production verifier credentials, widget/load errors without explicit reports, inconsistent verifier failure policy, incomplete diagnostic ingestion, confirmation delivery without a durable outcome, inactive-address resubscription errors, and false success for unknown confirmation tokens. The audit distinguishes local reproductions from observed production incidents.
+
+Earlier iframe-console messages and historical CSP descriptions cannot establish present signup health. Keep the site's current headers and client implementation as the reference; do not relax protection to silence an uncorrelated console message.
 
 ## Future Vision
 
 ### Phase 2 (50+ subscribers) — SHIPPED
 
-**Prerequisites before first bulk send (DNS + infrastructure, not code):**
+**Historical first-send checklist:** these boxes are not a current account-state audit. Migration 0004 and the required binding names are already present in the inspected deployment; inspect migration history and configuration before repeating setup commands. DNS and real-delivery validation remain unperformed in this investigation.
 - [ ] SPF record on `gkoreli.com` (Resend provides the TXT record on domain verification)
 - [ ] DKIM signing enabled via Resend domain settings
 - [ ] DMARC policy record (`_dmarc.gkoreli.com`) — start with `p=none` for monitoring, move to `p=quarantine` once aligned
@@ -428,7 +371,7 @@ Workers Native Rate Limiting (GA Sept 2025, free tier): zero KV write costs, enf
 - `POST /api/send` — sends to all `active` subscribers via Resend batch API (100/chunk).
   Auth: `Authorization: Bearer $ADMIN_SECRET`. Idempotent via `campaign_id`.
 - `POST /api/resend-confirmation` — resend confirm email to pending subscribers.
-  Saves users who miss the first email. Rate-limited. Always returns 200 (no enumeration).
+  Normal eligible/ineligible responses return 200 without revealing pending state; validation and rate-limit errors can return 400/429. Provider delivery can still fail after the response.
 - `POST /api/unsubscribe/:token` — RFC 8058 one-click unsubscribe for Gmail.
 - `delivery_logs` table — per-recipient audit trail (campaign_id, status, resend_id).
 - `List-Unsubscribe` + `List-Unsubscribe-Post` headers on every newsletter email.

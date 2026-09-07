@@ -47,6 +47,8 @@ The no-exclusion total is a sensitivity query with empty rules, not an activated
 
 ## Query cost and scale
 
+**September 7 accounting correction:** the 182,388 below is summed read work across nine statements for one report. The same underlying data may be read repeatedly; this is not a stored-observation or visitor count. At the captured free allowance it used 3.65% of the day's five million reads. The original correctness and timing acceptance missed that operating limit. [ADR-0016.7](../../../../../docs/adr/0016.7-budget-d1-reads-and-cache-public-reports.md) and the [later incident](../d1-read-budget/00-incident.md) preserve the correction. Subsequent [production acceptance](../d1-read-budget/02-recovery.md) measured 33,259 reads for the same retained report and verified cache reuse. The historical measurements below remain unchanged.
+
 The JSON rule payload is 61,161 bytes, the predicate SQL 1,266 bytes, and the adapter uses three bindings. This is below the [D1 statement/string/parameter limits](https://developers.cloudflare.com/d1/platform/limits/). Production EXPLAIN shows materialized hosts/rules and an automatic covering index on suffix candidates. The nine statements reported 9.60–15.88 ms each, 111.17 ms summed execution, and 182,388 summed rows read. The no-exclusion totals query used 7.77 ms and 8,423 rows read; the corresponding candidate totals query used 14.95 ms and 19,826 rows read. This measures added work in one sample, not full Worker latency or a capacity guarantee.
 
 The reproducible local benchmark uses the real `queryStats` builder, production schema, all nine projections, synthetic hosts, and an expected 5% exclusion rate. [Raw results and plans](18-referral-policy-benchmark.json):

@@ -233,7 +233,7 @@ The client redactor runs before transport:
 | `userAgent` | optional; server also has UA header, max 512 chars |
 | `buildId` | static build/version string when available |
 
-The server validates the same limits again. Client redaction is a convenience, not a trust boundary.
+The intended server boundary applies the same limits and sanitization again. The September 7 audit found field truncation but incomplete URL/message sanitization in the current handler; client redaction alone does not enforce this goal.
 
 ## Server Design
 
@@ -241,9 +241,9 @@ Route:
 
 | Route | Method | Handler | Auth |
 |-------|--------|---------|------|
-| `/api/client-error` | POST | `handleClientError` | same-origin + size limit |
+| `/api/client-error` | POST | `handleClientError` | Intended: origin and actual-byte limits; current implementation gaps documented above |
 
-The handler:
+The intended handler contract (the implementation audit above records gaps):
 
 1. Rejects non-JSON and bodies over 8 KB.
 2. Parses JSON with `catch(() => null)`.
@@ -349,7 +349,7 @@ Never collect:
 
 Server-side Cloudflare request metadata may include IP-derived geography, but the table stores only coarse fields. Do not store `cf-connecting-ip`.
 
-The endpoint is same-origin only. Unknown origins receive no CORS allowance. Non-browser abuse is rate-limited by body size and cheap validation; add a native Workers rate limiter if abuse appears.
+The current handler does not explicitly reject unknown origins. Absence of CORS response permission is not an application-level origin check, and a body-size limit is not a request-rate limit. The current size check trusts Content-Length; a synthetic oversized request without it was accepted. Actual-byte limits, server sanitization, and bounded ingestion are tracked in TASK-0126.
 
 ## Why Not Sentry
 

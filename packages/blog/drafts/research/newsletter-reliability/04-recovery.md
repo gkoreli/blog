@@ -16,6 +16,12 @@ Checked September 7 UTC, 2026. No recoverable pending subscription was found in 
 
 The logger intentionally avoids collecting form contents. That is a useful separation: diagnostics should explain a failure without becoming another address database. The audit found broader redaction weaknesses for arbitrary error text; those do not mean the five generic subscription reports contain the entered addresses.
 
+## Full-column log recheck — 06:11 UTC
+
+After the owner asked whether logs might still contain an address, the investigation read every column of every retained client-error row. All thirteen records were returned, including the same five signup failures. No string field matched an email-address pattern; the subscription messages remain generic and no request-body field exists. [Sanitized capture](recovery-log-recheck.json). This read cost thirteen rows read and zero writes.
+
+The broader claim that no address could exist anywhere would exceed the evidence. Only one detailed Worker rejection was inspected, and full Worker/Resend history access remains incomplete. Native dashboard access failed again during the recheck. A transient Wrangler authentication failure cleared after checking the existing login; it is not evidence of a production subscription error.
+
 ## The remaining historical lead
 
 Resend's [sent-email API](https://resend.com/docs/api-reference/emails/list-emails) exposes recipients and sending outcomes. An authorized read of retained confirmation sends could identify addresses that passed verification and reached the provider, including pending rows later deleted by cleanup. The existing application's send-only key cannot perform that read, and native browser access failed during this follow-up. A signed-in Resend dashboard review remains open work.
