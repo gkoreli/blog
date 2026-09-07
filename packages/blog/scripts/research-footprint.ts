@@ -1,12 +1,13 @@
 /**
- * Research-footprint rules version 3.
+ * Research-footprint rules version 4.
  *
  * Version 2 measured one Codex root and its recursive descendants, splitting
  * cumulative token counters into monotonic epochs. Version 3 keeps that logic,
  * accepts repeated Codex roots, and can also include repeated Claude Code
  * transcripts. Claude usage is per API message, so repeated log entries with
  * the same message id are counted once and never use Codex epoch logic.
- * Top-level measuredAt is the freeze time; each source and session retains its
+ * Version 4 sets measuredAt to the latest included usage timestamp and records
+ * the later manifest freeze time separately as frozenAt. Each source retains its
  * last private usage-record timestamp and prefix commitment. A matching legacy
  * version-1/2 manifest pins its recorded Codex session lines so an old one-root
  * invocation remains reproducible even if that root log later continued. Hashes
@@ -171,7 +172,8 @@ function main(): void {
 
   const allSessions = [...codexSources.flatMap(source => source.sessions), ...claudeSources.flatMap(source => source.sessions)];
   if (!allSessions.length) throw new Error('No sessions were included');
-  const measuredAt = new Date().toISOString();
+  const measuredAt = latestUsageAt(allSessions);
+  const frozenAt = new Date().toISOString();
   const startedAt = earliestStartedAt(allSessions);
   const measuredWallClockMinutes = wallClockMinutes(startedAt, measuredAt);
   const totals = [...codexSources, ...claudeSources].reduce((sum, source) => addTokenTotals(sum, source.totals), emptyTokenTotals());
@@ -217,12 +219,13 @@ function main(): void {
   const firstRootThread = args.rootThreads[0] ?? claudeSources[0]?.id;
   if (!firstRootThread) throw new Error('No root identifier was available');
   const result = {
-    rulesVersion: 3,
+    rulesVersion: 4,
     rootThread: firstRootThread,
     rootThreads: args.rootThreads,
     claudeTranscripts: args.claudeTranscripts,
     startedAt,
     measuredAt,
+    frozenAt,
     wallClockMinutes: measuredWallClockMinutes,
     sessionCount: allSessions.length,
     promptCount,

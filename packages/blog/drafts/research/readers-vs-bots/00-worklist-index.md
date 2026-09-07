@@ -1,6 +1,6 @@
 # Readers vs bots — article worklist index
 
-**Current article title:** How I Classify Browser and Bot Requests Without JavaScript. The stable published URL retains the original readers-versus-bots slug.
+**Current article title:** Bot Detection Without JavaScript: What My Blog Measured. The stable published URL retains the original readers-versus-bots slug.
 
 **Worklist:** `FLDR-0007`. **Author directive:** `PROMPT 0011`. **Engineering decision under revision:** `docs/adr/0016.2-browser-evidence-and-reader-tier.md`.
 
@@ -55,3 +55,5 @@ Decision record for all of the above: `docs/adr/0016.3-audience-composition-and-
 Backlog MCP was unreachable (502) when this worklist opened; folder, prompt, and task files were written by hand in the same format.
 
 **September 6 revision:** [article revision audit](17-article-revision-2026-09-06.md) records the corrected claim boundary, metadata, validation, and release. The full edge-versus-RUM investigation remains TASK-0120 / FLDR-0008 row 10.
+
+**Research footprint:** [scope and accounting](19-research-footprint.md) reconciles the original Claude session, its separate Codex workers, and the later evidence and publication sessions. [Title positioning](20-discovery-positioning.md) records the subject-first title decision and its measurement boundary.

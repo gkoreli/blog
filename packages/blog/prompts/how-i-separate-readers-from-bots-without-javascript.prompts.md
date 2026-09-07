@@ -233,3 +233,15 @@ The engineering objective is to explain specific counting failures and correct t
 ---
 
 is article ready to be shared on hackernews and X? does it have all the valuable information? does it have researchFootprint? does it have all the authoritative cross references and all that
+
+---
+
+lets add the researchFootprint
+
+---
+
+lets do this then: - Missing footprint: the original research and later investigation sessions still need reconciliation before publishing a defensible token total. I would not    invent one or treat token volume as proof of quality. - What are we waiting for otherwise
+
+---
+
+should the title be from i perspective or you perspective How I Classify Browser and Bot Requests Without JavaScript, because imagine how the AI agent is searching for it or someone else is searching for it... we need to make it highly come acrossable

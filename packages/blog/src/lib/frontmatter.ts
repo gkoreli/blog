@@ -44,6 +44,7 @@ const frontmatterSchema = z.object({
     startedAt: z.string(),
     measuredAt: z.string(),
     provenanceUrl: z.string(),
+    scope: z.string().optional(),
   }).optional(),
   images: z.array(z.object({
     src: z.string(),

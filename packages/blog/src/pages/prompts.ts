@@ -26,14 +26,15 @@ export function promptsPage(meta: PostMeta, prompts: PromptsData) {
         <div><strong>${footprint.artifacts}</strong><span>committed artifacts</span></div>
         <div><strong>${compactTokenCount(footprint.totalTokens)}</strong><span>tokens processed</span></div>
       </div>
-      <p>This article was researched over ${formatMinutes(footprint.wallClockMinutes)} of wall-clock collaboration, from
+      ${footprint.scope ? html`<p>${footprint.scope}</p>` : ''}
+      <p>The included sessions span ${formatMinutes(footprint.wallClockMinutes)} of elapsed wall-clock time, from
       <time datetime="${footprint.startedAt}">${formatTimestamp(footprint.startedAt)}</time> to
       <time datetime="${footprint.measuredAt}">${formatTimestamp(footprint.measuredAt)}</time>. The measured token total includes
       ${compactTokenCount(footprint.inputTokens)} input tokens (${compactTokenCount(footprint.cachedInputTokens)} served from cache)
       and ${compactTokenCount(footprint.outputTokens)} output tokens. Reasoning tokens (${compactTokenCount(footprint.reasoningOutputTokens)})
-      are a subset of output, not an additional charge.</p>
+      are already included in output. Elapsed time includes gaps between sessions and does not measure human hands-on work.</p>
       <p class="research-footprint-note">This is a provenance measure, not a quality score, cost estimate, or environmental-impact estimate.
-      Token counts come from the private agent session logs for the main article session and its research agents. The public manifest records the log format, included session IDs, selected response boundaries, and SHA-256 prefix commitments. The committed artifacts let readers inspect what all that computation produced.</p>
+      Token counts come from the private agent sessions identified in the public manifest, which records the log format, included session IDs, selected usage boundaries, and SHA-256 prefix commitments. The author can audit the totals against those logs; readers cannot independently reconstruct them without the private logs. The committed artifacts show the resulting work.</p>
     </section>` : ''}
     ${prompts.prompts.map((p, i) => html`
     <div class="prompt-block">

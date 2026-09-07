@@ -1,10 +1,10 @@
 ---
-title: "How I Classify Browser and Bot Requests Without JavaScript"
-seoTitle: "Browser and Bot Classification Without JavaScript"
+title: "Bot Detection Without JavaScript: What My Blog Measured"
+seoTitle: "Bot Detection Without JavaScript on Cloudflare Workers"
 alternativeHeadline: "Network and request-header rules reclassified 74.5% of browser-UA traffic on my blog. The remaining count still differs from Cloudflare Web Analytics."
 date: "2026-09-03"
 lastModified: "2026-09-06"
-description: "Cloudflare Workers request rules reclassified 74.5% of browser-UA traffic on my blog. Measured results, defects, and an unresolved reader count."
+description: "Cloudflare Workers bot detection without JavaScript: headers, network evidence, and an unresolved gap of 95 browser observations versus 14 script page loads."
 section: engineering
 tags: [analytics, cloudflare-workers, http, bots, ai-agents, observability]
 series:
@@ -13,7 +13,7 @@ series:
   order: 4
 ---
 
-# How I Classify Browser and Bot Requests Without JavaScript
+# Bot Detection Without JavaScript: What My Blog Measured
 
 On my blog, network and request-header rules moved **277 of 372 browser-User-Agent requests out of the Browsers category: 74.5%**. That gives me a much more useful account of the traffic arriving at my Cloudflare Worker. It has not established how many people read the site. Over the same two complete UTC days, the remaining **95 Browser HTML observations** still differ from **14 Cloudflare Web Analytics page loads**. The useful result is knowing which requests the rules separate, why they separate them, and where the evidence stops.
 
