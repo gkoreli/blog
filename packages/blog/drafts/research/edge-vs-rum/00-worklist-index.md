@@ -4,6 +4,8 @@ Started September 6, 2026 UTC. Continuation of article 024, FLDR-0008 row 10, TA
 
 Article 024's corrected revision is published at its stable URL. This follow-up starts from the 95 Browser HTML observations versus 14 non-bot RUM page loads for September 4–5. Those are different populations with no shared request identifier; 81 is not an established count of bots or lost beacons.
 
+**September 7 checkpoint:** the [publication handoff](../../../../../docs/handoffs/2026-09-07-publication-checkpoint.md) preserves the closed article, releases, draft, and worktree archive. Before further production capture, follow [TASK-0131's D1 budget checks](../../../../../docs/tasks/TASK-0131-d1-analytics-read-budget.md). Browser experiments below are planned, with no unattended job started by this checkpoint. The owner's next research exploration is [Trellner](../../../../../docs/tasks/TASK-0132-explore-trellner-research-further-ai-citation-sources-and-a.md); this experiment remains open rather than silently cancelled.
+
 ## Work and evidence
 
 | Work | Status | Evidence / next acceptance condition |

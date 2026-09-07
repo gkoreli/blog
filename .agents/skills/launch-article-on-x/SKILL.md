@@ -26,15 +26,17 @@ Run the blog skills in this order when they apply:
 
 ## Working directory
 
-Create `packages/blog/drafts/social/<slug>/` for a new launch. Keep:
+Create `packages/blog/drafts/social/<slug>/` for a new launch. Keep artifacts that match the request:
 
 - `launch-brief.md`: reader, honest breakout concept, evidence, and success signal
-- `shot-list.md`: exact visual states and capture timing
-- `copy.md`: approved post or thread text
-- `metrics.md`: baseline, snapshots, replies, corrections, and decision
-- rendered MP4/GIF and any poster frame
+- `copy.md`: post or thread text, with its draft/reviewed/published state stated explicitly
+- `shot-list.md`: visual states and capture timing when media is requested or useful
+- `metrics.md`: available baseline, publication state, and later observations; mark unmeasured fields plainly
+- rendered MP4/GIF and any poster frame, when producing media is in scope
 
 Do not mix social artifacts into the article's research-footprint directory. Distribution work performed after the final footprint freeze is not article research provenance.
+
+A copy request can finish with supported text, checked links, and recorded lengths. Rendering, account analysis, publishing, and post-launch measurement are separate stages; do not turn an optional media idea into unfinished copy work or treat writing a draft as publication approval.
 
 ## Workflow
 
@@ -62,6 +64,8 @@ Never promise virality. The useful goal is to increase the chance of voluntary r
 
 ### 3. Design the native visual
 
+Apply this stage when producing media. A text thread may use the article's evidence directly without requiring a new render.
+
 Read [references/media-and-motion.md](references/media-and-motion.md) before producing or changing media.
 
 Default to a native H.264 MP4 loop at 1200×1200, 30–40 fps, and 5–10 seconds. Use GIF as a lighter-motion fallback, not the quality master. Do not default to WebM for an ordinary browser post: X documents it in an API media-type schema, while its ordinary upload guidance centers MP4/MOV.
@@ -77,7 +81,7 @@ Use `scripts/encode_social_clip.py` to create and inspect delivery files from nu
 Make the first post complete enough to earn attention on X:
 
 - first line: concrete tension, result, or question;
-- native media: the proof, not decoration;
+- native media, when included: evidence that supports the claim;
 - body: why the result matters to the target engineer;
 - link: direct canonical article URL;
 - reply invitation: a real decision or experience readers can answer.
@@ -89,16 +93,16 @@ Use a single post when one claim and one visual carry the whole doorway. Use a t
 3. surprising evidence or mechanism;
 4. practical consequence or call to action + the article link again, with no media attached.
 
-Thread mechanics (owner's rules, 2026-09-02):
+Thread length and layout conventions:
 
-- Every post stays at or under 280 characters. X allows more, but anything longer is cut behind a "Show more" click. Count any URL as 23 characters and record each post's length in `copy.md`.
-- The first and last posts of a thread both appear on the author's profile. Post one carries the clip and the link; the attached media replaces the article's OG card. The last post carries the call to action and repeats the link with no media attached, so X renders the OG card there. Both profile-visible posts then have media.
+- Keep each post within the owner's 280-character editorial limit. Use X's weighted text count, treating a URL as 23 characters, and record each length in `copy.md`; a raw string length is not sufficient for every Unicode character. See [X's link-count guidance](https://help.x.com/en/using-x/how-to-post-a-link).
+- Retain the owner's preference for a canonical link in the first and last posts. Attach any produced clip to the first; leave the last without an attachment so the article card can appear. Profile ordering, collapsed-thread presentation, and card rendering are not guaranteed by this layout. Inspect the composer when preparing publication and the status page after publishing before claiming a particular presentation.
 
 Do not repeat the same claim across the thread, delay all value until the link, or use engagement bait. Keep each post independently legible if a reply is shown out of context.
 
 ### 5. Preview and publish safely
 
-Inspect the final media at phone width and at full resolution. Confirm the URL, title, alt text, media order, and thread reply chain. Use descriptive alt text for meaningful visuals. For spoken or sound-dependent video, attach captions; for a silent visual, make every claim legible without audio.
+For a publication request, inspect any final media at phone width and full resolution, and check the composer. Confirm the URL, title, alt text, media order, and thread reply chain as applicable. Use descriptive alt text for meaningful visuals. For spoken or sound-dependent video, attach captions; for a silent visual, make every claim legible without audio. A copy-only delivery records that composer and live checks have not occurred.
 
 Publishing is an external write:
 
@@ -110,7 +114,7 @@ After publishing, reopen the canonical status URL and verify the text, media pla
 
 ### 6. Learn without laundering noise into a lesson
 
-Read [references/learning-loop.md](references/learning-loop.md). Freeze the post for the planned measurement window unless a factual error, broken link, or broken media requires repair. Capture comparable snapshots near one hour, 24 hours, and seven days when practical.
+After publication, read [references/learning-loop.md](references/learning-loop.md). Freeze the post for the planned measurement window unless a factual error, broken link, or broken media requires repair. Capture comparable snapshots near one hour, 24 hours, and seven days when practical. Recording a measurement plan does not schedule a job or establish that captures occurred.
 
 Classify the next action as one of:
 
@@ -125,12 +129,8 @@ Update this skill only when a pattern recurs across launches or a missing rule c
 ## Completion checklist
 
 - The concept is true, specific, and supported by the article.
-- The first frame works when autoplay is off.
-- Motion begins quickly, ends with a readable hold, and loops cleanly.
-- The MP4 passes the ordinary X limits in the media reference.
-- Any GIF passes both the web limit and the mobile target if mobile posting matters.
-- Fine text, gradients, and dark/light colors were inspected after encoding.
+- If media was produced: the first frame works without autoplay; motion and the loop are readable; encoded text/colors were inspected; files meet the applicable limits in the media reference.
 - The opening post contains value before the click.
 - Claims, numbers, dates, and link destination were rechecked.
 - Publication occurred only when explicitly requested.
-- The live status was verified and added to the measurement record.
+- If published: the live status was verified and added to the measurement record. Otherwise, the copy's unpublished state and any unperformed preview/media checks are explicit.

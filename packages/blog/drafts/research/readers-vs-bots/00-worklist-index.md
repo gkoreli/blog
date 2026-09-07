@@ -2,6 +2,8 @@
 
 **Current article title:** Bot Detection Without JavaScript: What My Blog Measured. The stable published URL retains the original readers-versus-bots slug.
 
+**September 7 checkpoint:** article 024's correction, parser/provenance release, and reconciled research footprint are complete. The [publication handoff](../../../../../docs/handoffs/2026-09-07-publication-checkpoint.md) records release receipts, preserved worktrees, remaining experiments, and the next research priority. The [X launch copy](../../social/how-i-separate-readers-from-bots-without-javascript/launch-brief.md) is written; no X publication or media render is recorded for this launch.
+
 **Worklist:** `FLDR-0007`. **Author directive:** `PROMPT 0011`. **Engineering decision under revision:** `docs/adr/0016.2-browser-evidence-and-reader-tier.md`.
 
 **State when the worklist opened:** 2026-09-03 01:55 UTC. Evidence columns went live in production at 01:35 UTC the same night. The public rule and the class names are not settled. Goga's decision that history stays in Browsers is settled.
@@ -28,11 +30,11 @@
 
 Referral-abuse repair: [worklist FLDR-0009](../../../../../docs/folders/FLDR-0009.md), [ADR-0016.5](../../../../../docs/adr/0016.5-referral-abuse-defense.md), [Matomo/provenance ADR-0016.6](../../../../../docs/adr/0016.6-versioned-referral-policy-and-matomo-source.md), and [verification artifact 18](18-matomo-referral-policy-verification.md). The candidate combines a pinned community list and local exceptions, prevents arbitrary hostname promotion, discloses exclusions, and preserves evidence. Production activation and live checks are recorded in [artifact 19](19-referral-policy-activation.md); TASK-0121 is complete. Manual browser QA remains unperformed.
 
-**Current bookkeeping:** [artifact 16](16-claims-and-work-status-2026-09-06.md) records the correction checklist, completed extractor validation, private capture location, and remaining work. The [extractor](../../../scripts/analytics-evidence.md) is implemented; grouping repairs, article corrections, and controlled trials remain open. TASK-0104's current contract supersedes its original ratio thresholds and waiting instruction.
+**Current bookkeeping:** [artifact 16](16-claims-and-work-status-2026-09-06.md) records the correction checklist, completed extractor validation, private capture location, and remaining work. Article corrections and the parser/provenance repair have shipped. Identity/purpose grouping, paired browser/beacon trials, and longer calibration remain open. TASK-0104's current contract supersedes its original ratio thresholds and waiting instruction. Follow the [D1 budget acceptance task](../../../../../docs/tasks/TASK-0131-d1-analytics-read-budget.md) before further production extraction; read-only SQL still consumes quota.
 
 **Next two implementation priorities:** TASK-0119 separates client identity evidence from traffic purpose; TASK-0120 measures classification and beacon delivery with known clients. Scope, acceptance criteria, article outputs, and proposed collection limits are in `13-two-priority-implementation-plan.md`, subject to the scope clarification below. The grouping correction and controlled trials are not implemented; investigation of existing data is in progress.
 
-**September 5 PDT scope and stopping rule:** [FLDR-0008](../../../../../docs/folders/FLDR-0008.md) now maps the ten initial article slots, their current status, and evidence gates. Correct article 024's unsupported claims and add the compact dated production result, then close this revision. The full 95-versus-14 investigation belongs to lane row 10; the signed/unsigned identity study belongs to row 4. TASK-0120 is in progress, starting with existing Cloudflare logs and traces. Do not build another tracing system before establishing an actual evidence gap. The verifier remains; TASK-0119's immediate scope is grouping and wording.
+**Scope and stopping rule:** [FLDR-0008](../../../../../docs/folders/FLDR-0008.md) maps the ten initial article slots and their evidence gates. The September 5 instruction to correct article 024 and add the compact dated result is fulfilled; this revision is closed. The full 95-versus-14 investigation belongs to lane row 10; the signed/unsigned identity study belongs to row 4. TASK-0120 retains the existing Cloudflare evidence and unfinished controlled trials. Do not build another tracing system before establishing an actual evidence gap. The verifier remains; TASK-0119's immediate scope is grouping and wording. The owner's later [Trellner research priority](../../../../../docs/tasks/TASK-0132-explore-trellner-research-further-ai-citation-sources-and-a.md) is recorded separately from these engineering dependencies.
 
 **Evidence-backed refinement:** [artifact 14](14-evidence-backed-implementation-plan.md) adds commit-pinned source reviews of Plausible, GoatCounter, Matomo Device Detector, and Anubis; protocol references; collection contracts; controlled lifecycle/cache experiments; and release gates for the same two tasks.
 
@@ -45,7 +47,7 @@ Referral-abuse repair: [worklist FLDR-0009](../../../../../docs/folders/FLDR-000
 - `TASK-0100` open-source code and ASN lists (done, artifact 04)
 - `TASK-0101` fetch metadata absence rule (done, closed on prior art; artifact 09)
 - `TASK-0102` settle rule and names, ship (done, 0.6.0)
-- `TASK-0103` living center, form, protected material (open; Goga's prose)
+- `TASK-0103` living center, form, protected material and bounded article revision (done; release receipt in artifact 17)
 - `TASK-0104` 14-day calibration against Cloudflare Web Analytics (open; around 2026-09-17; method and decision rule in the task file)
 - `TASK-0105` audience composition taxonomy (done, 0.5.0 + 0.6.0)
 - `TASK-0106` citable articles and reference visibility (citable half done in 0.5.0; "Referenced by" open)

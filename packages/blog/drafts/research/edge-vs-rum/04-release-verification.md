@@ -18,7 +18,7 @@ GROUP BY asn_source;
 
 D1 reported zero rows written. This is a small subsequent-write check, not a population accuracy measurement. No historical row was reconstructed by this repair. The local experiment and 39 tests establish parser behavior; this aggregate does not recover live Accept headers or measure the parser's production impact.
 
-The main checkout's concurrent referral-defense edits were preserved through the merge. The one conflict was between two imports in `metadata.ts`; keeping both restored both features. All 43 analytics tests pass in that combined local workspace. The additional referral-defense changes remain uncommitted and are not included in this release.
+The main checkout's concurrent referral-defense edits were preserved through the merge. The one conflict was between two imports in `metadata.ts`; keeping both restored both features. All 43 analytics tests passed in that combined local workspace. The additional referral-defense changes were uncommitted at this checkpoint and were not included in this parser release. Their later activation is recorded [separately](../readers-vs-bots/19-referral-policy-activation.md).
 
 ## Article sharing audit
 
@@ -26,6 +26,6 @@ The live article's title, description, X large-image card metadata, prompts link
 
 The article has sufficient results for its bounded question: what the rules classify and what they cannot establish. The 95-versus-14 explanation remains a separate investigation. This release adds the compact parser/provenance repair status and the executed local result, without importing the full follow-up draft.
 
-**Research footprint is absent.** The article has a raw-prompt provenance page but no `researchFootprint` frontmatter or token-accounting manifest. Original research is attributed to the Fable session and research workers; the exact source-session set has not been reconciled with subsequent independent investigations and this revision. Do not substitute another article's total, infer ownership from timing, or describe an incomplete count as the full article's footprint. Use the existing accounting scripts once the session scope is verified.
+**Footprint status at this release:** reconciliation was still pending. It subsequently completed in `789de70`, with live verification recorded in `5722b4c`: 192,964,421 tokens across the declared 27-session set, 41 prompts, and 21 Markdown artifacts at the freeze. [Scope, manifest, limitations, and live receipt](../readers-vs-bots/19-research-footprint.md). These are frozen provenance totals, not a quality score or a count of later distribution and bookkeeping work.
 
 For Hacker News, this article fits a regular link submission. The [Show HN rules](https://news.ycombinator.com/showhn.html) exclude blog posts from Show HN. Use the article's original title and source link; author comments must follow the [HN guidelines](https://news.ycombinator.com/newsguidelines.html), including the restriction on generated or AI-edited comment text. Checked September 6. No HN or X submission was made during this audit.
