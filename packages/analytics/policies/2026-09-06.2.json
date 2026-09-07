@@ -1,0 +1,20 @@
+{
+  "version": "2026-09-06.2",
+  "evaluator": "host-suffix-v1",
+  "sourceRevision": "e65db652cade6882aa9a76bbb65c9bb17e079f4b",
+  "localRules": [
+    {
+      "id": "repeated-referrer-001",
+      "host": "uniuit.com",
+      "scope": "subtree",
+      "action": "exclude",
+      "reason": "repeated-referrer-page-pair-pattern",
+      "evidence": "packages/blog/drafts/research/readers-vs-bots/15-existing-cloudflare-evidence-2026-09-06.md"
+    }
+  ],
+  "publicHosts": [
+    "bing.com", "chatgpt.com", "claude.ai", "dev.to", "duckduckgo.com",
+    "github.com", "google.com", "kagi.com", "linkedin.com", "news.ycombinator.com",
+    "old.reddit.com", "perplexity.ai", "reddit.com", "t.co", "x.com"
+  ]
+}

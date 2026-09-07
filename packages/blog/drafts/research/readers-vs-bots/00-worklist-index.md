@@ -26,6 +26,8 @@
 
 ## Tasks
 
+Referral-abuse repair: [worklist FLDR-0009](../../../../../docs/folders/FLDR-0009.md), [ADR-0016.5](../../../../../docs/adr/0016.5-referral-abuse-defense.md), [Matomo/provenance ADR-0016.6](../../../../../docs/adr/0016.6-versioned-referral-policy-and-matomo-source.md), and [verification artifact 18](18-matomo-referral-policy-verification.md). The candidate combines a pinned community list and local exceptions, prevents arbitrary hostname promotion, discloses exclusions, and preserves evidence. Production activation remains outstanding at the implementation checkpoint.
+
 **Current bookkeeping:** [artifact 16](16-claims-and-work-status-2026-09-06.md) records the correction checklist, completed extractor validation, private capture location, and remaining work. The [extractor](../../../scripts/analytics-evidence.md) is implemented; grouping repairs, article corrections, and controlled trials remain open. TASK-0104's current contract supersedes its original ratio thresholds and waiting instruction.
 
 **Next two implementation priorities:** TASK-0119 separates client identity evidence from traffic purpose; TASK-0120 measures classification and beacon delivery with known clients. Scope, acceptance criteria, article outputs, and proposed collection limits are in `13-two-priority-implementation-plan.md`, subject to the scope clarification below. The grouping correction and controlled trials are not implemented; investigation of existing data is in progress.

@@ -165,9 +165,11 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   if (state.path !== null) params.set('path', state.path);
   if (state.agent !== null) params.set('agent', state.agent);
   if (state.kind !== null) params.set('kind', state.kind);
-  const response = await fetch(`/api/stats?${params}`, { signal });
+  const response = await fetch(`/api/stats?${params}`, { signal, cache: 'no-store' });
   if (!response.ok) throw new Error(`Stats request failed with ${response.status}`);
   const data: StatsResponse = await response.json();
+  // An old cached API response must not restore arbitrary hostname display.
+  if (data.referralPolicy === undefined) throw new Error('Stats referral policy is unavailable');
   return data;
 }
 
@@ -560,9 +562,13 @@ function renderComposition(data: StatsResponse, state: ViewState): void {
 }
 
 function renderDashboard(data: StatsResponse, state: ViewState): void {
+  const excluded = data.referralPolicy.excludedViews;
+  const exclusionNotice = excluded > 0
+    ? ` ${formatNumber(excluded)} ${excluded === 1 ? 'observation excluded' : 'observations excluded'} by the referral-abuse policy for this selection.`
+    : '';
   if (data.totals.views === 0) {
     setDashboardVisible(false);
-    setStatus('No page views were recorded for this selection.', 'empty');
+    setStatus(`No page views to show for this selection.${exclusionNotice}`, 'empty');
     return;
   }
   setDashboardVisible(true);
@@ -573,6 +579,9 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   renderChart(data);
   replaceSectionRows('stats-pages', data.byPath.map((row) => pageItem(row, state)));
   const referrers: RankedItem[] = data.byReferrer.map(row => ({ label: row.referrerHost, views: row.views }));
+  if (data.otherReferrerViews > 0) {
+    referrers.push({ label: 'Other reported referrers', views: data.otherReferrerViews });
+  }
   if (referrers.length > 0 || data.totals.unattributedViews > 0) {
     referrers.push({ label: 'No referrer', views: data.totals.unattributedViews });
   }
@@ -580,7 +589,7 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   replaceSectionRows('stats-countries', data.byCountry.map(row => ({ label: countryLabel(row.country), views: row.views })));
   renderComposition(data, state);
 
-  setStatus(`Showing ${formatViewCount(data.totals.views, true)}.`, 'ready');
+  setStatus(`Showing ${formatViewCount(data.totals.views, true)}.${exclusionNotice}`, 'ready');
 }
 
 let currentData: StatsResponse | null = null;

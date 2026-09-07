@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/pipeline/dev.ts",
-    "build": "node --import tsx src/pipeline/prod.ts",
+    "build": "pnpm check:referral-policy && node --import tsx src/pipeline/prod.ts",
+    "check:referral-policy": "tsx scripts/referral-policy.ts build --check",
     "validate": "node --import tsx src/pipeline/validate.ts",
     "test": "node --import tsx --test test/*.test.ts",
     "serve": "pnpm dlx serve dist",

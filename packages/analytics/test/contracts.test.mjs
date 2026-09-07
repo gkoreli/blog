@@ -20,6 +20,8 @@ import { partitionPredicate } from '../.test-dist/partition.js';
 import { classifyReaderKind, READER_KINDS } from '../.test-dist/readerkind.js';
 import { READER_GROUPS, readerGroupOf } from '../.test-dist/contracts.js';
 import { handleStats, queryStats } from '../.test-dist/stats.js';
+import { parseReferrerHost, REFERRAL_POLICY_VERSION } from '../.test-dist/referrals.js';
+import { ACTIVE_REFERRAL_POLICY } from '../.test-dist/referral-policy.generated.js';
 
 const html = new Response('<!doctype html>', {
   status: 200,
@@ -369,7 +371,7 @@ test('request metadata extracts bounded request evidence and reports absent valu
   assert.deepEqual(extractRequestMetadata(observed, '203.0.113.9, 203.0.113.10'), {
     path: '/article',
     siteHost: 'gkoreli.com',
-    referrerHost: 'example.com',
+    referrerHost: 'www.example.com',
     ip: '203.0.113.10',
     country: 'GE',
     userAgent: 'Browser/1.0',
@@ -742,6 +744,116 @@ test('browser partition keeps beacons, pre-evidence edge rows, and navigation-sh
   );
 });
 
+test('referrer parsing bounds and normalizes hosts without confusing credentials or schemes', () => {
+  for (const raw of [null, 'not a url', 'javascript:alert(1)', 'file://google.com/a', `https://${'a'.repeat(254)}.test/`]) {
+    assert.equal(parseReferrerHost(raw, 'gkoreli.com'), null, String(raw));
+  }
+  assert.equal(parseReferrerHost('https://WWW.UNIUIT.COM.:443/a?q=private', 'gkoreli.com'), 'www.uniuit.com');
+  assert.equal(parseReferrerHost('https://google.com@uniuit.com/a', 'gkoreli.com'), 'uniuit.com');
+  assert.equal(parseReferrerHost('https://uniuit.com@google.com/a', 'gkoreli.com'), 'google.com');
+  assert.equal(parseReferrerHost('https://www.gkoreli.com./a', 'gkoreli.com'), null);
+  assert.equal(parseReferrerHost('https://uniuit.com.attacker.test/a', 'gkoreli.com'), 'uniuit.com.attacker.test');
+  assert.equal(parseReferrerHost('android-app://com.google.android.googlequicksearchbox', 'gkoreli.com'), 'com.google.android.googlequicksearchbox');
+});
+
+test('referral abuse is excluded consistently from every group and aggregate without rewriting evidence', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  const kinds = ['browser', 'signed-agent', 'ai-crawler', 'other-bot'];
+  for (const [index, kind] of kinds.entries()) {
+    for (const [suffix, host] of ['uniuit.com', 'WWW.UNIUIT.COM.', 'probe.uniuit.com', 'news.ycombinator.com'].entries()) {
+      insertObservation(sqlite, {
+        path: `/page-${kind}`, referrerHost: host, country: 'US',
+        dailyClientId: (index * 4 + suffix).toString(16).padStart(32, '0'),
+        trafficClass: 'browser', readerKind: kind, readerReason: 'original-reason',
+        signatureStatus: kind === 'signed-agent' ? 'verified' : null,
+        signatureAgent: kind === 'signed-agent' ? 'https://signer.test' : null,
+        observedAt: '2026-09-05 12:00:00',
+      });
+    }
+  }
+  // Owner, marked-owner, and future rows must not inflate even the excluded count.
+  for (const [index, extra] of [
+    { isOwner: true },
+    { dailyClientId: 'f'.repeat(32) },
+    { observedAt: '2026-09-07 00:00:00' },
+  ].entries()) {
+    insertObservation(sqlite, {
+      path: '/private', referrerHost: 'uniuit.com', dailyClientId: (100 + index).toString(16).padStart(32, '0'),
+      trafficClass: 'browser', readerKind: 'browser', readerReason: 'original-reason',
+      observedAt: '2026-09-05 12:00:00', ...extra,
+    });
+  }
+  sqlite.prepare('INSERT INTO owner_clients (daily_client_id, utc_date) VALUES (?, ?)').run('f'.repeat(32), '2026-09-05');
+  const before = sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all();
+  const now = new Date('2026-09-06T23:00:00Z');
+  for (const traffic of ['browser', 'agents', 'crawlers', 'automation', 'all']) {
+    const stats = await queryStats(d1, { range: '7d', traffic }, now);
+    const included = traffic === 'all' ? 4 : 1;
+    assert.equal(stats.totals.views, included, traffic);
+    assert.equal(stats.totals.dailyClients, included, traffic);
+    assert.equal(stats.referralPolicy.version, REFERRAL_POLICY_VERSION);
+    assert.equal(stats.referralPolicy.sha256, ACTIVE_REFERRAL_POLICY.sha256);
+    assert.equal(stats.referralPolicy.source.revision, ACTIVE_REFERRAL_POLICY.source.revision);
+    assert.equal(stats.referralPolicy.excludedViews, included * 3);
+    for (const key of ['byPath', 'byCountry', 'byDevice', 'byKind', 'byReferrer', 'timeSeries']) {
+      assert.equal(stats[key].reduce((sum, row) => sum + row.views, 0), included, `${traffic}/${key}`);
+    }
+    assert.equal(stats.otherReferrerViews, 0);
+    assert.equal(JSON.stringify(stats).includes('uniuit'), false);
+  }
+  const scoped = await queryStats(d1, { range: '7d', traffic: 'all', path: '/page-signed-agent', kind: 'signed-agent' }, now);
+  assert.equal(scoped.totals.views, 1);
+  assert.equal(scoped.referralPolicy.excludedViews, 3);
+  assert.deepEqual(sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all(), before);
+});
+
+test('referrer policy resists rotated names and lookalikes without suppressing unfamiliar readership', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  const hosts = ['notuniuit.com', 'uniuit.com.attacker.test', 'a.google.com', 'google.com.attacker.test', 'xn--oogle-qmc.com', 'news.ycombinator.com', 'WWW.GOOGLE.COM.', 'google.com', null];
+  for (let i = 0; i < 1000; i++) hosts.push(`spam-${i}.attacker.test`);
+  for (const [index, host] of hosts.entries()) {
+    insertObservation(sqlite, {
+      path: '/article', referrerHost: host, dailyClientId: index.toString(16).padStart(32, '0'),
+      trafficClass: 'browser', ...NAVIGATION_EVIDENCE, observedAt: '2026-09-05 12:00:00',
+    });
+  }
+  const stats = await queryStats(d1, { range: '7d', traffic: 'browser' }, new Date('2026-09-06T23:00:00Z'));
+  assert.equal(stats.totals.views, hosts.length);
+  assert.equal(stats.referralPolicy.excludedViews, 0);
+  assert.equal(stats.otherReferrerViews, 1005);
+  assert.deepEqual(stats.byReferrer, [{ referrerHost: 'google.com', views: 2 }, { referrerHost: 'news.ycombinator.com', views: 1 }]);
+  assert.equal(stats.otherReferrerViews + stats.totals.unattributedViews + stats.byReferrer.reduce((sum, row) => sum + row.views, 0), stats.totals.views);
+  assert.equal(JSON.stringify(stats).includes('attacker'), false);
+  assert.equal(JSON.stringify(stats).includes('xn--'), false);
+});
+
+test('referral exclusions preserve scoped agent counts and handle all-excluded history and empty selections', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  insertObservation(sqlite, {
+    path: '/old', referrerHost: 'uniuit.com', dailyClientId: 'a'.repeat(32), trafficClass: 'ai',
+    agentName: 'GPTBot', observedAt: '2026-08-01 12:00:00',
+  });
+  const now = new Date('2026-09-06T23:00:00Z');
+  const excluded = await queryStats(d1, { range: 'all', traffic: 'all', agent: 'GPTBot' }, now);
+  assert.equal(excluded.totals.views, 0);
+  assert.equal(excluded.referralPolicy.excludedViews, 1);
+  assert.equal(excluded.period.start, '2026-08-01');
+  assert.deepEqual(excluded.byAgent, []);
+  assert.deepEqual(excluded.byReferrer, []);
+  assert.equal(excluded.timeSeries.reduce((sum, row) => sum + row.views, 0), 0);
+  const missing = await queryStats(d1, { range: 'all', traffic: 'all', path: '/missing' }, now);
+  assert.equal(missing.referralPolicy.excludedViews, 0);
+  insertObservation(sqlite, {
+    path: '/new', referrerHost: 'github.com', dailyClientId: 'b'.repeat(32), trafficClass: 'ai',
+    agentName: 'GPTBot', observedAt: '2026-08-02 12:00:00',
+  });
+  const restored = await queryStats(d1, { range: 'all', traffic: 'all', agent: 'GPTBot' }, now);
+  assert.equal(restored.period.start, '2026-08-01');
+  assert.deepEqual(restored.byAgent, [{ agentName: 'GPTBot', trafficClass: 'ai', views: 1 }]);
+  assert.equal(restored.referralPolicy.excludedViews, 1);
+  assert.equal(sqlite.prepare('SELECT COUNT(*) AS count FROM page_observations').get().count, 2);
+});
+
 test('stats queries enforce one UTC window, class partition, owner exclusion, and legacy isolation', async () => {
   const { sqlite, d1 } = analyticsDatabase();
   sqlite.exec('CREATE TABLE page_views (id INTEGER PRIMARY KEY, path TEXT NOT NULL)');
@@ -755,7 +867,7 @@ test('stats queries enforce one UTC window, class partition, owner exclusion, an
   });
   insertObservation(sqlite, {
     path: '/article',
-    referrerHost: 'example.com',
+    referrerHost: 'news.ycombinator.com',
     country: 'US',
     dailyClientId: 'a'.repeat(32),
     trafficClass: 'browser',
@@ -853,7 +965,7 @@ test('stats exclude marked daily clients from every aggregate and the all-time b
   });
   insertObservation(sqlite, {
     path: '/reader',
-    referrerHost: 'reader.example',
+    referrerHost: 'github.com',
     country: 'US',
     dailyClientId: 'b'.repeat(32),
     trafficClass: 'browser',
@@ -886,7 +998,7 @@ test('stats exclude marked daily clients from every aggregate and the all-time b
   assert.deepEqual(stats.totals, { views: 1, dailyClients: 1, unattributedViews: 0 });
   assert.deepEqual(stats.byPath, [{ path: '/reader', views: 1, dailyClients: 1 }]);
   assert.deepEqual(stats.byCountry, [{ country: 'US', views: 1 }]);
-  assert.deepEqual(stats.byReferrer, [{ referrerHost: 'reader.example', views: 1 }]);
+  assert.deepEqual(stats.byReferrer, [{ referrerHost: 'github.com', views: 1 }]);
   assert.deepEqual(stats.byDevice, [{ deviceType: 'desktop', views: 1 }]);
   assert.deepEqual(stats.byAgent, []);
   assert.deepEqual(stats.byKind, [{
@@ -904,7 +1016,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
   const { sqlite, d1 } = analyticsDatabase();
   const rows = [
     {
-      path: '/article', referrerHost: 'example.com', country: 'US', dailyClientId: 'a'.repeat(32),
+      path: '/article', referrerHost: 'news.ycombinator.com', country: 'US', dailyClientId: 'a'.repeat(32),
       trafficClass: 'ai', agentName: 'GPTBot', deviceType: 'desktop', observedAt: '2026-09-03 10:00:00',
     },
     {
@@ -912,7 +1024,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
       agentName: 'GPTBot', deviceType: 'mobile', observedAt: '2026-09-03 11:00:00',
     },
     {
-      path: '/article', referrerHost: 'search.example', country: 'CA', dailyClientId: 'c'.repeat(32),
+      path: '/article', referrerHost: 'google.com', country: 'CA', dailyClientId: 'c'.repeat(32),
       trafficClass: 'bot', agentName: 'Googlebot', deviceType: 'tablet', observedAt: '2026-09-03 12:00:00',
     },
   ];
@@ -924,7 +1036,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
   assert.deepEqual(path.filters, { traffic: 'all', range: '7d', path: '/article', agent: null, kind: null });
   assert.deepEqual(path.byPath.map((row) => row.path), ['/article']);
   assert.deepEqual(path.byCountry.map((row) => row.country).sort(), ['CA', 'US']);
-  assert.deepEqual(path.byReferrer.map((row) => row.referrerHost).sort(), ['example.com', 'search.example']);
+  assert.deepEqual(path.byReferrer.map((row) => row.referrerHost).sort(), ['google.com', 'news.ycombinator.com']);
   assert.deepEqual(path.byDevice.map((row) => row.deviceType).sort(), ['desktop', 'tablet']);
   assert.deepEqual(path.byAgent.map((row) => row.agentName).sort(), ['GPTBot', 'Googlebot']);
   assert.equal(path.timeSeries.reduce((sum, row) => sum + row.views, 0), 2);
@@ -934,7 +1046,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
   assert.deepEqual(agent.filters, { traffic: 'all', range: '7d', path: null, agent: 'GPTBot', kind: null });
   assert.deepEqual(agent.byPath.map((row) => row.path).sort(), ['/article', '/other']);
   assert.deepEqual(agent.byCountry.map((row) => row.country).sort(), ['DE', 'US']);
-  assert.deepEqual(agent.byReferrer.map((row) => row.referrerHost), ['example.com']);
+  assert.deepEqual(agent.byReferrer.map((row) => row.referrerHost), ['news.ycombinator.com']);
   assert.deepEqual(agent.byDevice.map((row) => row.deviceType).sort(), ['desktop', 'mobile']);
   assert.deepEqual(agent.byAgent.map((row) => row.agentName), ['GPTBot']);
   assert.equal(agent.timeSeries.reduce((sum, row) => sum + row.views, 0), 2);
@@ -952,7 +1064,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
   assert.equal(composed.totals.views, 1);
   assert.deepEqual(composed.byPath.map((row) => row.path), ['/article']);
   assert.deepEqual(composed.byCountry.map((row) => row.country), ['US']);
-  assert.deepEqual(composed.byReferrer.map((row) => row.referrerHost), ['example.com']);
+  assert.deepEqual(composed.byReferrer.map((row) => row.referrerHost), ['news.ycombinator.com']);
   assert.deepEqual(composed.byDevice.map((row) => row.deviceType), ['desktop']);
   assert.deepEqual(composed.byAgent.map((row) => row.agentName), ['GPTBot']);
   assert.equal(composed.timeSeries.reduce((sum, row) => sum + row.views, 0), 1);

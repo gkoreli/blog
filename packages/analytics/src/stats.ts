@@ -18,6 +18,10 @@ import {
   type StatsWindow,
 } from './dates.js';
 import { partitionPredicate } from './partition.js';
+import { publicReferrers } from './referrals.js';
+import { referralAbusePredicate } from './referral-sql.js';
+import { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
+import type { ReferralPolicy } from './referral-policy.js';
 
 export type { StatsResponse, TrafficFilter } from './contracts.js';
 
@@ -160,9 +164,14 @@ function kindRows(rows: Record<string, unknown>[]): StatsResponse['byKind'] {
   return result;
 }
 
-export async function queryStats(db: D1Database, query: StatsQuery, now = new Date()): Promise<StatsResponse> {
+export async function queryStats(db: D1Database, query: StatsQuery, now = new Date(), policy: ReferralPolicy = ACTIVE_REFERRAL_POLICY): Promise<StatsResponse> {
   const initialWindow = createStatsWindow(query.range, now);
-  const predicate = predicateFor(initialWindow, query);
+  const selected = predicateFor(initialWindow, query);
+  const abuse = referralAbusePredicate(policy, initialWindow.startInclusive, initialWindow.endExclusive);
+  const predicate = {
+    sql: `${selected.sql} AND NOT (${abuse.sql})`,
+    values: [...selected.values, ...abuse.values],
+  };
   const bucketSql = initialWindow.granularity === 'hour'
     ? "strftime('%Y-%m-%dT%H:00:00Z', observed_at)"
     : "strftime('%Y-%m-%d', observed_at)";
@@ -176,7 +185,13 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     bindQuery(db, `SELECT device_type AS deviceType, COUNT(*) AS views FROM page_observations WHERE ${predicate.sql} GROUP BY device_type ORDER BY views DESC, deviceType`, predicate),
     bindQuery(db, `SELECT agent_name AS agentName, traffic_class AS trafficClass, COUNT(*) AS views FROM page_observations WHERE ${predicate.sql} AND agent_name IS NOT NULL GROUP BY agent_name, traffic_class ORDER BY views DESC, agentName`, predicate),
     bindQuery(db, `SELECT reader_kind AS kind, reader_reason AS reason, COUNT(*) AS views, COUNT(DISTINCT daily_client_id) AS dailyClients FROM page_observations WHERE ${predicate.sql} AND reader_kind IS NOT NULL GROUP BY reader_kind, reader_reason ORDER BY views DESC, kind, reason`, predicate),
+    bindQuery(db, `SELECT COUNT(*) AS views FROM page_observations WHERE ${selected.sql} AND (${abuse.sql})`, {
+      sql: selected.sql,
+      values: [...selected.values, ...abuse.values],
+    }),
   ];
+  // Include the excluded population in the all-time date boundary so the
+  // disclosed exclusion count cannot refer to dates outside the shown period.
   const statements = query.range === 'all'
     ? [db.prepare(`SELECT MIN(observed_at) AS firstObservedAt
         FROM page_observations WHERE ${PUBLIC_OBSERVATION_PREDICATE}`), ...aggregateStatements]
@@ -188,6 +203,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
   const window = createStatsWindow(query.range, now, firstObservedAt ?? undefined);
   const totalsRow = results[aggregateOffset]?.results[0];
   const populatedSeries = seriesRows(results[aggregateOffset + 3]?.results ?? []);
+  const referrals = publicReferrers(referrerRows(results[aggregateOffset + 4]?.results ?? []), policy);
 
   return {
     period: {
@@ -212,7 +228,15 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     byPath: pathRows(results[aggregateOffset + 1]?.results ?? []),
     byCountry: countryRows(results[aggregateOffset + 2]?.results ?? []),
     timeSeries: completeTimeSeries(window, populatedSeries, now),
-    byReferrer: referrerRows(results[aggregateOffset + 4]?.results ?? []),
+    byReferrer: referrals.byReferrer,
+    otherReferrerViews: referrals.otherReferrerViews,
+    referralPolicy: {
+      version: policy.version,
+      sha256: policy.sha256,
+      evaluator: policy.evaluator,
+      source: { provider: policy.source.provider, revision: policy.source.revision, sha256: policy.source.sha256 },
+      excludedViews: numberField(results[aggregateOffset + 8]?.results[0], 'views'),
+    },
     byDevice: deviceRows(results[aggregateOffset + 5]?.results ?? []),
     byAgent: agentRows(results[aggregateOffset + 6]?.results ?? []),
     byKind: kindRows(results[aggregateOffset + 7]?.results ?? []),

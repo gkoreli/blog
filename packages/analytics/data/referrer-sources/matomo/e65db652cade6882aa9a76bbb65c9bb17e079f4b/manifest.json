@@ -1,0 +1,13 @@
+{
+  "provider": "matomo",
+  "repository": "https://github.com/matomo-org/referrer-spam-list",
+  "revision": "e65db652cade6882aa9a76bbb65c9bb17e079f4b",
+  "capturedAt": "2026-09-06T23:57:19.785Z",
+  "license": "CC0-1.0",
+  "files": {
+    "spammers.txt": "83d2f174807c72987e73611fd7b36776bab02ee85fccc7b705d3be1bfa2a80b5",
+    "README.md": "f5c5a21412eb5fe3a09e25c1c36eb35badedb3832204d8cf87df90b5fd0f9c77",
+    "composer.json": "736792998634f7f0d8b7983f97f5f04acd0500db77805db2b9144f4520bc1fd5"
+  },
+  "entryCount": 2348
+}

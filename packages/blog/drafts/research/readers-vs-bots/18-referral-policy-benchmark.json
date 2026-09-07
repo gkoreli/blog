@@ -1,0 +1,120 @@
+{
+  "capturedAt": "2026-09-07T00:09:32.952Z",
+  "node": "v24.14.1",
+  "policyVersion": "2026-09-06.2",
+  "policySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+  "ruleCount": 2349,
+  "predicateSqlBytes": 1266,
+  "rulesJsonBytes": 61161,
+  "predicateBindCount": 3,
+  "measurements": [
+    {
+      "observations": 10000,
+      "distinctHosts": 100,
+      "fullReportMs": [
+        52.51,
+        49.6,
+        49.7
+      ],
+      "plan": [
+        "USE TEMP B-TREE FOR count(DISTINCT)",
+        "SEARCH page_observations USING INDEX idx_page_observations_public_path_time (is_owner=?)",
+        "LIST SUBQUERY 7",
+        "MATERIALIZE matches",
+        "CO-ROUTINE (subquery-9)",
+        "MATERIALIZE suffixes",
+        "SETUP",
+        "MATERIALIZE hosts",
+        "SEARCH page_observations USING INDEX idx_page_observations_observed_at (observed_at>? AND observed_at<?)",
+        "USE TEMP B-TREE FOR DISTINCT",
+        "SCAN hosts",
+        "RECURSIVE STEP",
+        "SCAN suffixes",
+        "MATERIALIZE rules",
+        "SCAN json_each VIRTUAL TABLE INDEX 1:",
+        "SCAN rules",
+        "BLOOM FILTER ON suffixes (candidate=?)",
+        "SEARCH suffixes USING AUTOMATIC COVERING INDEX (candidate=?)",
+        "USE TEMP B-TREE FOR ORDER BY",
+        "SCAN (subquery-9)",
+        "BLOOM FILTER ON matches (precedence=? AND excluded=?)",
+        "SEARCH matches USING AUTOMATIC PARTIAL COVERING INDEX (precedence=? AND excluded=?)",
+        "CREATE BLOOM FILTER",
+        "CORRELATED SCALAR SUBQUERY 1",
+        "SEARCH owner_clients USING COVERING INDEX sqlite_autoindex_owner_clients_1 (daily_client_id=?)"
+      ]
+    },
+    {
+      "observations": 100000,
+      "distinctHosts": 1000,
+      "fullReportMs": [
+        469.35,
+        490.33,
+        491.43
+      ],
+      "plan": [
+        "USE TEMP B-TREE FOR count(DISTINCT)",
+        "SEARCH page_observations USING INDEX idx_page_observations_public_path_time (is_owner=?)",
+        "LIST SUBQUERY 7",
+        "MATERIALIZE matches",
+        "CO-ROUTINE (subquery-9)",
+        "MATERIALIZE suffixes",
+        "SETUP",
+        "MATERIALIZE hosts",
+        "SEARCH page_observations USING INDEX idx_page_observations_observed_at (observed_at>? AND observed_at<?)",
+        "USE TEMP B-TREE FOR DISTINCT",
+        "SCAN hosts",
+        "RECURSIVE STEP",
+        "SCAN suffixes",
+        "MATERIALIZE rules",
+        "SCAN json_each VIRTUAL TABLE INDEX 1:",
+        "SCAN rules",
+        "BLOOM FILTER ON suffixes (candidate=?)",
+        "SEARCH suffixes USING AUTOMATIC COVERING INDEX (candidate=?)",
+        "USE TEMP B-TREE FOR ORDER BY",
+        "SCAN (subquery-9)",
+        "BLOOM FILTER ON matches (precedence=? AND excluded=?)",
+        "SEARCH matches USING AUTOMATIC PARTIAL COVERING INDEX (precedence=? AND excluded=?)",
+        "CREATE BLOOM FILTER",
+        "CORRELATED SCALAR SUBQUERY 1",
+        "SEARCH owner_clients USING COVERING INDEX sqlite_autoindex_owner_clients_1 (daily_client_id=?)"
+      ]
+    },
+    {
+      "observations": 100000,
+      "distinctHosts": 100000,
+      "fullReportMs": [
+        2060.32,
+        2009.34,
+        2046.27
+      ],
+      "plan": [
+        "USE TEMP B-TREE FOR count(DISTINCT)",
+        "SEARCH page_observations USING INDEX idx_page_observations_public_path_time (is_owner=?)",
+        "LIST SUBQUERY 7",
+        "MATERIALIZE matches",
+        "CO-ROUTINE (subquery-9)",
+        "MATERIALIZE suffixes",
+        "SETUP",
+        "MATERIALIZE hosts",
+        "SEARCH page_observations USING INDEX idx_page_observations_observed_at (observed_at>? AND observed_at<?)",
+        "USE TEMP B-TREE FOR DISTINCT",
+        "SCAN hosts",
+        "RECURSIVE STEP",
+        "SCAN suffixes",
+        "MATERIALIZE rules",
+        "SCAN json_each VIRTUAL TABLE INDEX 1:",
+        "SCAN rules",
+        "BLOOM FILTER ON suffixes (candidate=?)",
+        "SEARCH suffixes USING AUTOMATIC COVERING INDEX (candidate=?)",
+        "USE TEMP B-TREE FOR ORDER BY",
+        "SCAN (subquery-9)",
+        "BLOOM FILTER ON matches (precedence=? AND excluded=?)",
+        "SEARCH matches USING AUTOMATIC PARTIAL COVERING INDEX (precedence=? AND excluded=?)",
+        "CREATE BLOOM FILTER",
+        "CORRELATED SCALAR SUBQUERY 1",
+        "SEARCH owner_clients USING COVERING INDEX sqlite_autoindex_owner_clients_1 (daily_client_id=?)"
+      ]
+    }
+  ]
+}

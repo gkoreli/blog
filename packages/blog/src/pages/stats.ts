@@ -83,7 +83,7 @@ export function statsPage() {
     </section>
 
     <section class="stats-section" id="stats-referrers">
-      <h2>Referrer hosts <span>by views</span></h2>
+      <h2>Reported referrers <span>by views</span></h2>
       ${raw(listSkeleton(2))}
     </section>
 
@@ -100,6 +100,7 @@ export function statsPage() {
 
   <aside class="stats-methodology" aria-labelledby="stats-methodology-heading">
     <h2 id="stats-methodology-heading">What these numbers mean</h2>
+    <p>Referrers are claims supplied with requests and can be fabricated. Only reviewed hostnames are named here; other names are grouped as Other reported referrers, without treating unfamiliar sources as bots. A pinned Matomo spam list and reviewed local rules exclude matching observations from every public metric, including All; the excluded count is shown for your selection. Referral evidence is retained. These rules also apply to past dates, so reported history can change when the policy changes. An approved name does not prove a genuine referral. <a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016.6-versioned-referral-policy-and-matomo-source.md">Referral-abuse policy</a>.</p>
     <p>A page view is one recorded page event. Since the August 26, 2026 cutover, that means a successful, non-prefetch GET that served HTML or the Markdown twin of a page at the edge. API requests, assets, redirects, errors, feeds, and other non-page responses do not count. Recording is best effort. Rows marked as mine are excluded from public queries, but that marking depends on server-side configuration and is not currently proven for all of my requests.</p>
     <p>Every row carries one reader kind and one reason, both facts about the request. The four filters group those kinds by what the client was doing. Browsers: a browser fetching a page for itself. AI agents: software fetching a page right now on a person's behalf, either a named on-demand fetcher such as ChatGPT-User or a client that signed its request with Web Bot Auth. Crawlers: search engines, AI search indexers, AI training crawlers, and link-preview fetchers, all matched on the User-Agent they declare. Automation: browsers running on hosting networks, headless browsers, HTTP clients, generic bot tokens, and browsers too old to send the headers this site checks. The four groups are disjoint and add up to All.</p>
     <p>Browsers is not a verified-human count. It holds three kinds of evidence, listed by name in the composition table. Since ${evidenceDate}: a navigation-shaped request, meaning a Sec-Fetch-Mode of navigate, a Sec-Fetch-Dest of document, an Accept that admits HTML, and an Accept-Language, from a network that is not on this site's list of hosting providers. Between August 26 and ${evidenceDate}: the User-Agent alone, because the site did not record headers yet; for most of those rows the network was reconstructed afterwards from Cloudflare's zone analytics, and rows that turned out to sit on hosting networks moved to Automation. Before August 26: rows from the former browser beacon, which ran this site's script inside a page. Expect the Browsers series to drop across those two dates. That is the method changing, not readers leaving.</p>

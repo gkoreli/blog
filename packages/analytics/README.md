@@ -73,9 +73,11 @@ Signature verification supports the signer association under those checks. It do
 
 ### Referral-abuse defense
 
-[ADR-0016.5](../../docs/adr/0016.5-referral-abuse-defense.md) defines a separate, reversible reporting policy in `src/referrals.ts`. Only exact reviewed hostnames appear in `byReferrer`; other supplied names are counted in `otherReferrerViews`. A display approval does not authenticate a referral. New unreviewed domains cannot advertise through public JSON or the dashboard.
+[ADR-0016.5](../../docs/adr/0016.5-referral-abuse-defense.md) defines public referral defense; [ADR-0016.6](../../docs/adr/0016.6-versioned-referral-policy-and-matomo-source.md) adds the Matomo source and historical provenance. `src/referral-policy.ts` owns the pure assessment model, `referral-sql.ts` implements the D1 predicate, and `referrals.ts` handles parsing and display. Only exact reviewed hostnames appear in `byReferrer`; other supplied names are counted in `otherReferrerViews`. A display approval does not authenticate a referral. New unreviewed domains cannot advertise through public JSON or the dashboard.
 
-Reviewed abuse rules exclude matching observations from every public metric and traffic group, including All. `referralPolicy` reports the active version and `excludedViews` for the same selection, after owner exclusion. The original hostname, kind, reason, and signature remain in D1. Rules apply to historical and new rows at read time, with no migration or deletion. Bump the policy version and record evidence whenever either catalogue changes. The current rule covers one investigated domain and its subdomains; it does not claim to detect all automated traffic.
+Policy `2026-09-06.2` combines 2,348 domains from a pinned Matomo snapshot with the local investigated-domain rule. That local domain is absent from Matomo. Canonical host/subdomain matching excludes observations from every public metric and traffic group, including All. Local include/exclude rules override the upstream source; more specific hosts and then exact-host scope resolve overlaps. `referralPolicy` reports the active version, definition hash, evaluator, source revision/hash, and `excludedViews` for the same selection after owner exclusion.
+
+Referral evidence stays in D1. New parsing preserves `www` labels, supported HTTP(S)/Android-app hosts, and a 253-character bound; earlier stripped labels cannot be recovered. Rules apply to historical and new rows at read time. The repair adds no tracking field, migration, deletion, classification rewrite, or dependency. Retain source snapshots, use a new policy version for changes, and save actual reports when their historical totals matter. See the [maintenance/replay guide](policies/README.md) for capture, validation, private assessment, report snapshots, and activation bookkeeping. The production build verifies the source and generated policy offline.
 
 Private review, from the repository root (the output contains unreviewed names and must not be published automatically):
 
@@ -83,7 +85,7 @@ Private review, from the repository root (the output contains unreviewed names a
 umask 077
 referral_review_dir=$(mktemp -d /tmp/blog-referral-review.XXXXXX)
 pnpm exec wrangler d1 execute blog-analytics --remote \
-  --command "$(cat packages/analytics/scripts/referral-review.sql)" --json \
+  --command="$(cat packages/analytics/scripts/referral-review.sql)" --json \
   > "$referral_review_dir/results.json"
 ```
 

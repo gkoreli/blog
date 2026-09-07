@@ -1,4 +1,5 @@
 import { htmlAcceptance } from './accept.js';
+import { parseReferrerHost } from './referrals.js';
 
 export interface RequestMetadata {
   path: string;
@@ -24,19 +25,6 @@ function boundedHeader(request: Request, name: string): string | null {
   return value === null ? null : value.trim().toLowerCase().slice(0, 32);
 }
 
-function referrerHost(request: Request, siteHostname: string): string | null {
-  const raw = request.headers.get('Referer');
-  if (raw === null) return null;
-
-  try {
-    const host = new URL(raw).hostname.toLowerCase().replace(/^www\./, '');
-    const selfHost = siteHostname.replace(/^www\./, '');
-    return host === selfHost ? null : host;
-  } catch {
-    return null;
-  }
-}
-
 export function extractRequestMetadata(request: Request, ownerIps: string | undefined): RequestMetadata {
   const url = new URL(request.url);
   const siteHost = url.host.toLowerCase();
@@ -54,7 +42,7 @@ export function extractRequestMetadata(request: Request, ownerIps: string | unde
   return {
     path: url.pathname,
     siteHost,
-    referrerHost: referrerHost(request, url.hostname.toLowerCase()),
+    referrerHost: parseReferrerHost(request.headers.get('Referer'), url.hostname),
     ip,
     country: typeof country === 'string' && country.length > 0 ? country : null,
     userAgent: request.headers.get('User-Agent') ?? '',

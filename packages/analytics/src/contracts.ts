@@ -73,6 +73,16 @@ export interface StatsResponse {
   byCountry: Array<{ country: string; views: number }>;
   timeSeries: TimeSeriesPoint[];
   byReferrer: Array<{ referrerHost: string; views: number }>;
+  /** Included views with a referrer whose name is not approved for public display. */
+  otherReferrerViews: number;
+  /** Same selection as totals, after owner exclusions, before referral exclusions. */
+  referralPolicy: {
+    version: string;
+    sha256: string;
+    evaluator: 'host-suffix-v1';
+    source: { provider: 'matomo'; revision: string; sha256: string };
+    excludedViews: number;
+  };
   byDevice: Array<{ deviceType: DeviceType; views: number }>;
   byAgent: Array<{ agentName: string; trafficClass: Exclude<TrafficClass, 'browser'>; views: number }>;
   byKind: Array<{ kind: ReaderKind; reason: string; views: number; dailyClients: number }>;
