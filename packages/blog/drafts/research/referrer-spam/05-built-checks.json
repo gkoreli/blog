@@ -1,0 +1,31 @@
+{
+  "checks": {
+    "single_subject_h1": true,
+    "seo_title": true,
+    "description": true,
+    "canonical": true,
+    "structured_metadata": true,
+    "markdown_body": true,
+    "full_owner_quote": true,
+    "all_twelve_prompt_messages_exact": true,
+    "transparency_link": true,
+    "code_highlight": true,
+    "domain_table_and_glossary": true,
+    "internal_links_exist": true,
+    "predecessor_forward_link": true,
+    "series_membership": true,
+    "post_index": true,
+    "sitemap_date": true,
+    "rss_original_date": true,
+    "citation_metadata": true,
+    "og_asset_and_alt": true,
+    "no_abuse_destination_link": true,
+    "markdown_series_and_citation": true
+  },
+  "ogSha256": "9c1d935ba533c29f3fae292620c7d542a62bb70af6d2d5b02e7df679b128d361",
+  "htmlSha256": "3f5c4132aa365bb3ea1d4d38961d945747826c184af9c7e87cb55e747d91001d",
+  "wordCountIncludingGlossary": 982,
+  "promptCount": 12,
+  "seoTitleCharacters": 53,
+  "descriptionCharacters": 146
+}

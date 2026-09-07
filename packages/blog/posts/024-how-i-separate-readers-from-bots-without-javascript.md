@@ -143,6 +143,8 @@ The new production window adds a concrete case to investigate: 22 of the 95 Brow
 
 That supports investigating automation, not naming an authenticated operator. A User-Agent is a declaration, and the zone matches lack a shared request identifier. Setting all 22 observations aside as a sensitivity calculation still leaves 73 versus 14, or 5.21×. Explaining this cluster would not explain the whole discrepancy.
 
+The subsequent repair is covered in [How I Filter Referrer Spam Without Deleting Analytics History](/filter-referrer-spam-without-deleting-analytics-history): a versioned reporting policy excludes matching observations while retaining the evidence and limiting which referrer names appear publicly. The historical comparison above keeps its original scope.
+
 The useful claim is narrower than a reader count: these requests met a documented rule. Determining how much of that category represents people consuming the article requires evidence the rule does not collect.
 
 ## How classification changes affected history

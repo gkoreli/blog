@@ -36,6 +36,12 @@ The same run exposed the missing provenance write: all twelve requests supplied 
 
 The repair was merged and deployed on September 6, after these local runs. Its value is independently checkable behavior. It leaves the historical 95-versus-14 question unchanged because the old Accept flags cannot reconstruct the original headers.
 
+## Referrer filtering changes the reporting population
+
+The referral-abuse repair now excludes matching observations from public reports while retaining their evidence. [How I Filter Referrer Spam Without Deleting Analytics History](/filter-referrer-spam-without-deleting-analytics-history) covers that separate decision: a pinned Matomo source, local exceptions, restricted public names, and saved report responses.
+
+The 95-versus-14 comparison above predates that policy and keeps its original population. A new extraction must name its policy and reconcile exclusions before comparison. Removing the investigated referrer cluster from a report does not explain which requests executed JavaScript or delivered a beacon; the controlled browser experiment remains necessary.
+
 ## The browser experiment still has to run
 
 The next result must come from paired real-browser navigations with known conditions. Three repetitions each will compare a normal load, the same load with the beacon blocked, JavaScript disabled, and warm-cache/back-forward behavior. Each trial needs its own recorded sequence: edge arrival, successful response, injected script, execution, beacon attempt, delivery evidence, and eventual RUM presence.

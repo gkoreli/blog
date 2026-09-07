@@ -1,0 +1,52 @@
+[
+  {
+    "url": "https://github.com/gkoreli/blog/blob/e1aa4a305ef934b1f089b24894321558db5f1603/docs/adr/0016.6-versioned-referral-policy-and-matomo-source.md",
+    "status": 200,
+    "finalUrl": "https://github.com/gkoreli/blog/blob/e1aa4a305ef934b1f089b24894321558db5f1603/docs/adr/0016.6-versioned-referral-policy-and-matomo-source.md"
+  },
+  {
+    "url": "https://github.com/gkoreli/blog/blob/e1aa4a305ef934b1f089b24894321558db5f1603/packages/blog/drafts/research/readers-vs-bots/19-referral-policy-activation.md",
+    "status": 200,
+    "finalUrl": "https://github.com/gkoreli/blog/blob/e1aa4a305ef934b1f089b24894321558db5f1603/packages/blog/drafts/research/readers-vs-bots/19-referral-policy-activation.md"
+  },
+  {
+    "url": "https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/analytics/policies/README.md",
+    "status": 200,
+    "finalUrl": "https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/analytics/policies/README.md"
+  },
+  {
+    "url": "https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/analytics/src/referral-policy.ts",
+    "status": 200,
+    "finalUrl": "https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/analytics/src/referral-policy.ts"
+  },
+  {
+    "url": "https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/blog/drafts/research/readers-vs-bots/17-referral-abuse-defense-verification.md",
+    "status": 200,
+    "finalUrl": "https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/blog/drafts/research/readers-vs-bots/17-referral-abuse-defense-verification.md"
+  },
+  {
+    "url": "https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/blog/drafts/research/readers-vs-bots/18-matomo-referral-policy-verification.md",
+    "status": 200,
+    "finalUrl": "https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/blog/drafts/research/readers-vs-bots/18-matomo-referral-policy-verification.md"
+  },
+  {
+    "url": "https://github.com/matomo-org/matomo/blob/79c953a035723b8a7ee80b87074daf82976e954e/core/Tracker/Visit/ReferrerSpamFilter.php#L28-L45",
+    "status": 200,
+    "finalUrl": "https://github.com/matomo-org/matomo/blob/79c953a035723b8a7ee80b87074daf82976e954e/core/Tracker/Visit/ReferrerSpamFilter.php#L28-L45"
+  },
+  {
+    "url": "https://github.com/matomo-org/referrer-spam-list/blob/e65db652cade6882aa9a76bbb65c9bb17e079f4b/README.md",
+    "status": 200,
+    "finalUrl": "https://github.com/matomo-org/referrer-spam-list/blob/e65db652cade6882aa9a76bbb65c9bb17e079f4b/README.md"
+  },
+  {
+    "url": "https://github.com/matomo-org/referrer-spam-list/blob/e65db652cade6882aa9a76bbb65c9bb17e079f4b/spammers.txt",
+    "status": 200,
+    "finalUrl": "https://github.com/matomo-org/referrer-spam-list/blob/e65db652cade6882aa9a76bbb65c9bb17e079f4b/spammers.txt"
+  },
+  {
+    "url": "https://matomo.org/blog/2015/05/stopping-referrer-spam/",
+    "status": 200,
+    "finalUrl": "https://matomo.org/blog/2015/05/stopping-referrer-spam/"
+  }
+]
