@@ -1,0 +1,56 @@
+{
+  "capturedAt": "2026-09-07T05:17:04.626Z",
+  "sourceRevision": "3d92b10b7a495ab537646b141e2dc9bbba7e20e7",
+  "command": "pnpm -C packages/blog exec tsx drafts/research/newsletter-reliability/repro/audit.mjs",
+  "node": "v24.14.1",
+  "probes": {
+    "widgetError": {
+      "messageShown": "Verification failed. Retry once, or allow bot protection for this site.",
+      "reportsSent": 0,
+      "callbackReturnsHandled": true,
+      "timeoutCallbackPresent": false,
+      "unsupportedCallbackPresent": false
+    },
+    "invalidSecret": {
+      "responseStatus": 400,
+      "responseBody": {
+        "error": "Verification failed. Retry once, or allow bot protection for this site."
+      },
+      "verificationCalls": 1,
+      "emailOrDbAttempted": false
+    },
+    "verifierNetworkFailure": {
+      "ok": true,
+      "reason": "siteverify_network_error"
+    },
+    "missingSecret": {
+      "ok": true,
+      "reason": "skipped_no_secret"
+    },
+    "beaconQueued": {
+      "fallbackFetches": 0,
+      "promiseResolved": true
+    },
+    "fetchHttp500": {
+      "promiseResolved": true
+    },
+    "ingestion": {
+      "bodyBytes": 9532,
+      "contentLengthPresent": false,
+      "crossOriginRequestStatus": 204,
+      "storedRows": 1,
+      "sourceQueryStored": true,
+      "externalReferrerPathAndQueryStored": true,
+      "messageAddressStored": true,
+      "occurredAtStored": false
+    },
+    "failedPersistence": {
+      "responseStatus": 204,
+      "storedRows": 0
+    },
+    "clientRedaction": {
+      "messageAddressRetained": true,
+      "sensitivePathSegmentRetained": true
+    }
+  }
+}

@@ -2,7 +2,15 @@
 
 ## Status
 
-Accepted — 2026-04-11. Implementation pending.
+Accepted — 2026-04-11. Core reporting implemented April 11; coverage and ingestion gaps confirmed September 7 UTC, 2026.
+
+### Implementation checkpoint — September 7, 2026
+
+The browser logger, subscription API-error reports, Worker ingestion, D1 table, and scheduled cleanup are implemented. The incident audit found thirteen retained reports: five subscription verification failures, six animation-lab errors, and two stats-page errors. These count stored reports, not distinct readers or every browser failure.
+
+The design below is not a statement that every goal is enforced. Local probes found unreported Turnstile widget errors, incomplete transport/persistence acknowledgement, missing actual-body size enforcement and origin rejection, and incomplete server redaction. All retained reports lacked a build ID. The audit also found no dedicated package regression tests for this reporting path; its synthetic probes are research artifacts, not completed browser or production validation.
+
+See the [implementation audit](../../packages/blog/drafts/research/newsletter-reliability/02-client-audit.md), [incident evidence](../../packages/blog/drafts/research/newsletter-reliability/01-evidence.md), and [reliability worklist](../folders/FLDR-0010-newsletter-reliability-and-bot-protection-worklist.md). The original decision and plan remain below as the intended design.
 
 ## Context
 

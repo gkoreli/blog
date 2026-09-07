@@ -1,0 +1,263 @@
+{
+  "capturedAt": "2026-09-07T05:10:43.764Z",
+  "sourceRevision": "3d92b10b7a495ab537646b141e2dc9bbba7e20e7",
+  "scope": "All retained D1 client_errors at capture; zone adaptive queries have separate explicit windows and are not an exact request census.",
+  "clientErrors": {
+    "events": 13,
+    "groups": [
+      {
+        "type": "window_error",
+        "component": null,
+        "path": "/stats",
+        "message": "ResizeObserver loop completed with undelivered notifications.",
+        "status": null,
+        "events": 2,
+        "firstDayUtc": "2026-08-26",
+        "lastDayUtc": "2026-08-26"
+      },
+      {
+        "type": "unhandled_rejection",
+        "component": null,
+        "path": "/animations-lab",
+        "message": "Current environment does not allow unsafe-eval, please use pixi.js/unsafe-eval module to enable support.",
+        "status": null,
+        "events": 6,
+        "firstDayUtc": "2026-08-26",
+        "lastDayUtc": "2026-08-26"
+      },
+      {
+        "type": "interaction_error",
+        "component": "subscribe_form",
+        "path": "/",
+        "message": "Verification failed. Retry once, or allow bot protection for this site.",
+        "status": 400,
+        "events": 5,
+        "firstDayUtc": "2026-09-07",
+        "lastDayUtc": "2026-09-07"
+      }
+    ],
+    "buildIdPresent": 0,
+    "subscriptionUaVariants": 1,
+    "distinctPeople": null
+  },
+  "subscribers": [
+    {
+      "status": "active",
+      "rows": 1,
+      "firstCreatedDayUtc": "2026-04-08",
+      "lastCreatedDayUtc": "2026-04-08",
+      "lastConfirmedDayUtc": "2026-04-08"
+    }
+  ],
+  "newsletterDeliveryLogRows": [],
+  "zoneSubscribe": [
+    {
+      "window": {
+        "from": "2026-09-01T00:00:00Z",
+        "to": "2026-09-02T00:00:00Z"
+      },
+      "httpStatus": 200,
+      "groups": 0,
+      "outcomes": {},
+      "sampleIntervals": [],
+      "errors": null
+    },
+    {
+      "window": {
+        "from": "2026-09-02T00:00:00Z",
+        "to": "2026-09-03T00:00:00Z"
+      },
+      "httpStatus": 200,
+      "groups": 0,
+      "outcomes": {},
+      "sampleIntervals": [],
+      "errors": null
+    },
+    {
+      "window": {
+        "from": "2026-09-03T00:00:00Z",
+        "to": "2026-09-04T00:00:00Z"
+      },
+      "httpStatus": 200,
+      "groups": 0,
+      "outcomes": {},
+      "sampleIntervals": [],
+      "errors": null
+    },
+    {
+      "window": {
+        "from": "2026-09-04T00:00:00Z",
+        "to": "2026-09-05T00:00:00Z"
+      },
+      "httpStatus": 200,
+      "groups": 0,
+      "outcomes": {},
+      "sampleIntervals": [],
+      "errors": null
+    },
+    {
+      "window": {
+        "from": "2026-09-05T00:00:00Z",
+        "to": "2026-09-06T00:00:00Z"
+      },
+      "httpStatus": 200,
+      "groups": 0,
+      "outcomes": {},
+      "sampleIntervals": [],
+      "errors": null
+    },
+    {
+      "window": {
+        "from": "2026-09-06T00:00:00Z",
+        "to": "2026-09-07T00:00:00Z"
+      },
+      "httpStatus": 200,
+      "groups": 0,
+      "outcomes": {},
+      "sampleIntervals": [],
+      "errors": null
+    },
+    {
+      "window": {
+        "from": "2026-09-07T00:00:00Z",
+        "to": "2026-09-07T05:14:48.410Z"
+      },
+      "httpStatus": 200,
+      "groups": 4,
+      "outcomes": {
+        "POST 400": 7
+      },
+      "sampleIntervals": [
+        1,
+        3,
+        2
+      ],
+      "errors": null
+    }
+  ],
+  "zoneServer5xx": [
+    {
+      "window": {
+        "from": "2026-09-04T00:00:00Z",
+        "to": "2026-09-05T00:00:00Z"
+      },
+      "httpStatus": 200,
+      "errors": null,
+      "returnedGroups": 0
+    },
+    {
+      "window": {
+        "from": "2026-09-05T00:00:00Z",
+        "to": "2026-09-06T00:00:00Z"
+      },
+      "httpStatus": 200,
+      "errors": null,
+      "returnedGroups": 0
+    },
+    {
+      "window": {
+        "from": "2026-09-06T00:00:00Z",
+        "to": "2026-09-07T00:00:00Z"
+      },
+      "httpStatus": 200,
+      "errors": null,
+      "returnedGroups": 0
+    },
+    {
+      "window": {
+        "from": "2026-09-07T00:00:00Z",
+        "to": "2026-09-07T05:16:09.651Z"
+      },
+      "httpStatus": 200,
+      "errors": null,
+      "returnedGroups": 0
+    }
+  ],
+  "workerBulkQuery": {
+    "status": 403,
+    "coverage": "Unavailable with current Wrangler OAuth credential; individual rejection inspected in signed-in dashboard during initial incident.",
+    "expectedFreePlanRetentionDays": 3
+  },
+  "privateCaptureCommitments": [
+    {
+      "file": "capture.json",
+      "sha256": "d48cf7e937d2c2f34b574eaae6111b50bc72d96eaabeffb81de09293ce1180cf"
+    },
+    {
+      "file": "client-errors.json",
+      "sha256": "ffa46d271ace866ab28ad06bb7ca08509446d0a41f5a22cd8a3469872aedeba7"
+    },
+    {
+      "file": "subscriber-summary.json",
+      "sha256": "a081b9e9ebc5809e0aa4034b9b2061f8caf8cd6e4274fe15d7f18439a9fed4bf"
+    },
+    {
+      "file": "delivery-summary.json",
+      "sha256": "72b6f748b940ce6572d2bc07670de3e4d11f74d2dd55dc3b7a7b351ac2851661"
+    },
+    {
+      "file": "telemetry-api.json",
+      "sha256": "1239c76881ecf2791caaed75b5fda942f01830dd2e9a70d7670362ef924ce612"
+    },
+    {
+      "file": "zone-subscribe-history.json",
+      "sha256": "5309f23bb4e59af3dac23a9746c567f4345adbb7cdbd681b3aa68c680fa2b226"
+    },
+    {
+      "file": "zone-server-errors.json",
+      "sha256": "7f682ca78048b9441a8c7b3f54939e5f029eecc6e94b936198fae5c983f51cac"
+    },
+    {
+      "file": "local-secret-validation.json",
+      "sha256": "522df918545ae70797751174e7c233d011e698f1ced1b35d8d776b2ebde21da6"
+    },
+    {
+      "file": "widget-validation.json",
+      "sha256": "1d5e28144ff5e8ba58d0624ae04a86a378d79bf4ec7934661ec3faa7e6bda57e"
+    },
+    {
+      "file": "resend-emails.json",
+      "sha256": "8017a9c3ddce11ee871d47ab2de2fc5d2b01ebfd50336346dff3c26597ff1662"
+    },
+    {
+      "file": "resend-logs.json",
+      "sha256": "69b2f05526a2b17e0646013c1a554ba7669827214ddb77b089c03d37866ba811"
+    }
+  ],
+  "limitations": [
+    "30-day client retention cannot recover older records or reports never sent/stored.",
+    "Shared browser properties are not a person identifier.",
+    "The April incident is a contemporaneous repository account, not retained raw logs.",
+    "Zone results include adaptive sampling; estimated count 7 across 4 groups does not establish 2 additional attempts beyond the 5 client reports.",
+    "No matching 5xx groups is a bounded negative in adaptive zone data, not proof that no Worker failures or waitUntil failures occurred.",
+    "Subscriber cleanup makes the current table unsuitable as an all-time signup census.",
+    "Private source files are not published. Hashes commit to author-held captures and do not make their content independently verifiable."
+  ],
+  "recovery": {
+    "checkedDayUtc": "2026-09-07",
+    "recoveredAddresses": 0,
+    "currentPendingRows": 0,
+    "resendHistoryAccess": {
+      "httpStatus": 401,
+      "reason": "restricted_api_key",
+      "historyRetrieved": false
+    },
+    "widgetReadAccess": {
+      "httpStatus": 403,
+      "configurationRetrieved": false
+    },
+    "localSecretProbe": {
+      "httpStatus": 200,
+      "errorCodes": [
+        "invalid-input-response"
+      ],
+      "realWidgetMatchVerified": false
+    },
+    "historicalDatabase": {
+      "bookmarkLookupSucceeded": true,
+      "rowsInspected": false,
+      "restorePerformed": false
+    },
+    "productionSecretChanged": false
+  }
+}

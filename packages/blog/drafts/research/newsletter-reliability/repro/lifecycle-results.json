@@ -1,0 +1,20 @@
+{
+  "capturedAt": "2026-09-07T05:21:00.558Z",
+  "sourceRevision": "3d92b10b7a495ab537646b141e2dc9bbba7e20e7",
+  "command": "pnpm -C packages/blog exec tsx drafts/research/newsletter-reliability/repro/lifecycle.mjs",
+  "node": "v24.14.1",
+  "probes": {
+    "unsubscribedResubscription": {
+      "thrownError": "UNIQUE constraint failed: subscribers.email"
+    },
+    "bouncedResubscription": {
+      "thrownError": "UNIQUE constraint failed: subscribers.email"
+    },
+    "unknownConfirmation": {
+      "responseStatus": 200,
+      "claimsSubscriptionActive": true,
+      "activeRows": 0
+    }
+  },
+  "emailRequests": 0
+}
