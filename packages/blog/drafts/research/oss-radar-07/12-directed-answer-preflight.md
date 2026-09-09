@@ -1,6 +1,6 @@
 # One directed answer: frozen preflight
 
-Protocol prepared September 9, 2026 UTC / September 8 PDT, before viewing a live answer. **Not run.** This is the minimum live workload check for Radar #07, separate from the proposed 72-call organic-discovery cohort. No account or billing entitlement has been assumed.
+Protocol prepared September 9, 2026 UTC / September 8 PDT, before viewing a live answer. **Not run.** The question and rubric remain frozen. The collection route was amended before execution after Goga clarified that he has Perplexity Pro web access but no purchased API credits. See [the provider-choice correction](13-provider-choice-and-web-capture.md). This directed case is separate from the proposed 72-call organic-discovery cohort.
 
 ## Exact question
 
@@ -10,17 +10,27 @@ Using https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript, e
 
 The explicit URL makes this a directed access and evidence-retention test. A citation here must not be counted as organic discovery. Do not replace an inaccessible article, failed request, or no-citation answer with a more favorable question after seeing the outcome.
 
-## Execution contract
+## Execution contract — preferred web capture
 
-Use one non-streaming, retrieval-capable route on the author's existing OpenRouter or Perplexity API account. Record the actual endpoint, model identifier and unresolved alias if applicable, current documented settings, UTC time, and account-side limit without publishing credentials. Prefer the already tested OpenRouter-compatible route if the account supports it; do not silently combine native and gateway pricing. Current route documentation and rates must be checked at execution.
+Use ordinary search in the existing Perplexity web membership. Preserve the exact submitted question, complete visible answer, citation markers and their links, UTC capture time, and any displayed model/mode label. Record the captured representation and its hash. Do not infer hidden model versions, retrieval steps, token usage, temperature, or per-answer cost. The API adapter's 700-token limit does not control a browser answer. Record the actual visible interface settings before submission.
 
-Use the tested capture adapter with 700 maximum output tokens, temperature zero where supported, concurrency one, no local cache, and **one attempt**. Record any necessary supported-setting change before the call. Confirm a bounded charge from current prices and the existing account's controls. The earlier $20 study ceiling is a proposal for the larger experiment, not a preflight purchase or permission to spend it automatically.
+Before the question, retain a private snapshot of the served article with URL, retrieval time, content hash, and access status. Do not pass the scoring notes into the question. Use the existing subscription allowance; this protocol does not require Computer, an API-credit purchase, or additional paid calls. Preserve a failed search or inaccessible answer rather than silently resampling it.
 
-Before the call, save a private snapshot of the served article and record its URL, retrieval time, content hash, and access status. The serving version may differ from the repository preparation revision. Do not pass the scoring notes into the model request. Save the exact request text, each received decoded response, status/request ID when exposed, missing-field states, usage, provider-reported charge, and explicit Promptfoo evaluation/test/trace identifiers. Reconcile charge with the account record when available; otherwise retain it as unreconciled or unknown.
+Save the web answer as a web capture, then import that saved record through Promptfoo's custom-provider interface. Return its answer text for evaluation and retain the captured citation relationships and capture origin as metadata. Verify the imported record through the persisted database and JSON/CLI exports. The import is an evaluation of an existing answer, not another model call. Local evaluation trace IDs describe this import; they do not describe the original Perplexity generation or its retrieval history.
 
-Then replay **that captured response** through a local endpoint and the same installed adapter/export checks. A replay is a preservation check, not a second live answer. Verify the response hash, structured evidence fields, persisted database record, and fresh CLI export. Retain both successful and failed outcomes. No unexpected network destination is part of the test.
+Review the answer against the cited sources using the unchanged rubric below. A web capture and successful import can establish a real source-support example and retention of the imported evidence. They cannot establish preservation of Perplexity's original API fields. Keep the original synthetic OpenRouter adapter finding separate.
 
-Private capture stays outside Git until reviewed for credentials, account data, and third-party text. Public evidence should retain our exact question and necessary claim judgments while using limited excerpts and links for third-party sources. Public export must not silently alter the private source record: document redactions and retain its integrity hash.
+## Optional API collection
+
+An existing API from any suitable provider can supply a stronger transport-level test later. OpenRouter and Perplexity are options, not required vendors. Check that route's current response contract, supported settings, and prices before using it; adapt and verify its capture code rather than assuming the OpenRouter-compatible parser applies. Preserve request/response text, status/request ID when exposed, missing-field states, usage, charge provenance, and the explicit Promptfoo IDs available on that route. A retrieved or supplied-source answer needs its provenance recorded; a generated URL does not establish source access.
+
+If the existing compatible capture adapter is used, retain its 700-token limit, temperature zero where supported, concurrency one, no local cache, and one attempt. Reconcile provider-reported charge if a billing record is accessible; otherwise leave it unreconciled or unknown. The proposed $20 ceiling belongs to the larger study and does not require a purchase for this article.
+
+Replay a saved API response only as a preservation check, never as a second live answer. Do not construct a purported API payload from a web transcript.
+
+## Public evidence
+
+Private capture stays outside Git until reviewed for credentials, account data, and third-party text. Public evidence should retain our exact question and necessary claim judgments while using limited excerpts and links for third-party sources. Document redactions and retain the private record's integrity hash. A web transcript, screenshot, provider response, source snapshot, and derived review are different artifacts; label each accurately.
 
 ## Source-support rubric
 
@@ -38,4 +48,4 @@ Report counts with their units: completed live answers; live attempts; retained 
 
 ## Decision rule
 
-The preflight supports a narrow adoption claim if the needed evidence survives the real-response path and the source review can be reproduced from retained records with modest capture code. A no-citation answer or inaccessible source is still a valid observed result and must remain visible in the verdict. If the route omits necessary evidence or the integration requires rebuilding most of the useful runner, narrow the recommendation or choose a direct runner. Do not keep spending until a positive answer appears.
+The preflight supports a narrow adoption claim if the needed evidence survives the explicitly identified capture and evaluation path and the source review can be reproduced from retained records with modest capture code. A no-citation answer or inaccessible source is still a valid observed result and must remain visible in the verdict. If the route omits necessary evidence or the integration requires rebuilding most of the useful runner, narrow the recommendation or choose a direct runner. Do not keep spending until a positive answer appears.

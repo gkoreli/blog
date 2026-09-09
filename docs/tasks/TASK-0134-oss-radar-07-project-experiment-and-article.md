@@ -4,7 +4,7 @@ title: OSS Radar 07 project experiment and article
 status: in_progress
 parent_id: FLDR-0011
 created_at: '2026-09-08T19:21:39.000Z'
-updated_at: '2026-09-09T00:53:35.000Z'
+updated_at: '2026-09-09T01:02:23.000Z'
 type: task
 ---
 
@@ -16,11 +16,11 @@ The [trigger/citation research](../../packages/blog/drafts/research/oss-radar-07
 
 The [installed method and artifacts](../../packages/blog/drafts/research/oss-radar-07/repro/installed/README.md) retain the exact dependency lock, script, response fixture, full summaries, cache entry, and the resolved execution interruption. The [measurement contract](../../packages/blog/drafts/research/oss-radar-07/07-citation-measurement-contract.md) defines proposed records, denominators, and missing-data states.
 
-The draft now has a dedicated **What Promptfoo is building** section, supported by the [purpose and trajectory audit](../../packages/blog/drafts/research/oss-radar-07/08-promptfoo-purpose-and-trajectory.md). It explains evaluation, adversarial testing, code scanning, recent tracing/accounting work, current OpenAI affiliation, and the stated Frontier plan without treating planned integration as shipped. All nine shaping prompts through the desktop takeover request are preserved verbatim in the [prompts file](../../packages/blog/prompts/oss-radar-07-promptfoo.prompts.md).
+The draft now has a dedicated **What Promptfoo is building** section, supported by the [purpose and trajectory audit](../../packages/blog/drafts/research/oss-radar-07/08-promptfoo-purpose-and-trajectory.md). It explains evaluation, adversarial testing, code scanning, recent tracing/accounting work, current OpenAI affiliation, and the stated Frontier plan without treating planned integration as shipped. All ten shaping prompts through the provider-choice clarification are preserved verbatim in the [prompts file](../../packages/blog/prompts/oss-radar-07-promptfoo.prompts.md).
 
 The [current publication review](../../packages/blog/drafts/research/oss-radar-07/11-publication-candidate-review.md) records the immersive [candidate module](../../packages/blog/drafts/oss-radar-07-promptfoo.ts), 37 dated source cards, ten-term glossary, discovery package, and complete desktop/mobile, Markdown, type, and isolated build checks. The new [capture experiment](../../packages/blog/drafts/research/oss-radar-07/repro/capture/README.md) passed ten synthetic cases and eleven attempts, with exact response retention through both exporters. The candidate stays outside `posts/`; its prompts filename now matches its slug and the preview route works.
 
-Next action: obtain the location of Goga's existing OpenRouter or Perplexity API configuration, then execute the [frozen one-answer preflight](../../packages/blog/drafts/research/oss-radar-07/12-directed-answer-preflight.md). No key was present in this task's environment. Do not request a secret in chat, substitute a fixture for a live answer, or count directed access as organic discovery. The proposed one-week timebox and $20 study ceiling remain planning assumptions. The 72-call study is separate from the minimum Radar release evidence.
+Next action: use the existing Perplexity web membership for the [one-answer preflight](../../packages/blog/drafts/research/oss-radar-07/12-directed-answer-preflight.md), preserve visible citations, verify the imported record through Promptfoo, and review the cited sources. [The provider-choice correction](../../packages/blog/drafts/research/oss-radar-07/13-provider-choice-and-web-capture.md) removes the unnecessary API-account prerequisite. No particular provider or credit purchase is required. A web-answer import cannot establish preservation of live API fields; the verdict must describe the tested workflow. The 72-call study remains separate.
 
 Acceptance:
 

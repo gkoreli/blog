@@ -32,3 +32,7 @@ are we close to publish this article? where are the references or glossary table
 ---
 
 [OSS Radar Ideas #7](chatgpt-conversation://6aa059e9-e208-83e8-af86-f7ee8670659a) i want us to take over the oss radar #7 article and make it publishable ready
+
+---
+
+can we use Perplexity without api account? I have free pro membership with them but i haven't purchased api tokens with them, why do we need OpenRouter or Perplexity API? Can't we use some other AI provider or we need them explicitly?

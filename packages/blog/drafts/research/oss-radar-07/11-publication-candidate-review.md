@@ -2,7 +2,7 @@
 
 September 8, 2026 PDT / September 9 UTC. Continues [the takeover review](10-takeover-and-evidence-review.md). The [TypeScript publication candidate](../../oss-radar-07-promptfoo.ts) and [Markdown manuscript](../../oss-radar-07-promptfoo.md) remain in `drafts/`.
 
-**Decision: layout, references, and local implementation evidence are ready for author review. The selected workload review still needs one real provider response and its source-support review.** This is not a live citation study or a publication record. The account/configuration location is the only access input requested from Goga; no secret should be pasted into chat. The [frozen preflight](12-directed-answer-preflight.md) makes the next action concrete.
+**Decision: layout, references, and local implementation evidence are ready for author review. The selected workload review still needs one real answer capture and its source-support review.** This is not a live citation study or a publication record. The later [provider-choice correction](13-provider-choice-and-web-capture.md) removes the API-account prerequisite: the existing Perplexity web membership can supply a separately labeled web-answer/import case. The verification counts below record the original candidate review; the latest clarification is now prompt ten. The [frozen preflight](12-directed-answer-preflight.md) makes the next action concrete.
 
 ## Editorial scope
 
@@ -57,7 +57,7 @@ Read time is 12 minutes at 200 words per minute for the rendered title/body thro
 
 ## Release handoff
 
-1. Use the existing API configuration identified by Goga; confirm the selected route and bounded charge before the one-answer preflight. Do not infer API entitlement from a consumer subscription.
-2. Capture and replay the real response; review every material claim/citation relationship under the frozen rubric. Keep absent/inaccessible evidence explicit. Incorporate the result into the body and adoption decision, preserving a negative result if it occurs.
+1. Use the existing Perplexity web membership under the amended preflight. Preserve the answer and visible citation links as a web capture. API access is optional; no provider or credit purchase is required.
+2. Import the captured record through Promptfoo, verify its retention, and review every material claim/citation relationship under the frozen rubric. Keep absent/inaccessible evidence explicit. Incorporate the result into the body and adoption decision, preserving a negative result if it occurs.
 3. Refresh relevant release/issue state, set the actual publication date, and recheck the changed candidate. On publication instruction, move the module into `posts/` with the available sequence number. The prompts file already matches its slug.
 4. Keep the 72-call frequency study, analytics integration, and engineering continuation open. They are not conditions for this narrow Radar release.

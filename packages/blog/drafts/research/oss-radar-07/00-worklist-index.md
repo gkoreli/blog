@@ -2,7 +2,7 @@
 
 Check date: September 8, 2026. Repository baseline: gkoreli/blog at `935abf29de1a755d2e278f90d4794c11d18a6a43`.
 
-**State:** The unpublished publication candidate now includes an immersive hero, response-flow diagram, 37 dated sources with reasons, a ten-term glossary, and nine exact shaping prompts. The new capture continuation passed ten controlled cases, eleven attempts, both JSON exporters, database reopening, and one explicit local trace join. Type checks, the isolated production build, Markdown representation, and desktop/mobile review passed. One real provider response and source-support review remain before the selected workload verdict is ready. See [current candidate review](11-publication-candidate-review.md) and [frozen preflight](12-directed-answer-preflight.md).
+**State:** The unpublished publication candidate now includes an immersive hero, response-flow diagram, 37 dated sources with reasons, a ten-term glossary, and ten exact shaping prompts. The new capture continuation passed ten controlled cases, eleven attempts, both JSON exporters, database reopening, and one explicit local trace join. Type checks, the isolated production build, Markdown representation, and desktop/mobile review passed. One real answer capture and source-support review remain before the selected workload verdict is ready. See [current candidate review](11-publication-candidate-review.md) and [frozen preflight](12-directed-answer-preflight.md).
 
 Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original baseline above belongs to the four-option investigation.
 
@@ -45,7 +45,8 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 - [Earlier publication readiness](09-publication-readiness.md): historical comparison with #05/#06 and the initial reference correction.
 - [Desktop takeover](10-takeover-and-evidence-review.md): article passport, source audit, additional implementation evidence, and access boundary.
 - [Current candidate review](11-publication-candidate-review.md): selected discovery package, promise ledger, rendered checks, and release handoff.
-- [Frozen directed preflight](12-directed-answer-preflight.md): exact next question, capture settings, source-support rubric, and decision rule.
+- [Frozen directed preflight](12-directed-answer-preflight.md): unchanged question/rubric, preferred web capture, optional API route, and decision rule.
+- [Provider-choice correction](13-provider-choice-and-web-capture.md): no required provider or API purchase; distinguishes web-answer import from live API-field preservation.
 - [OSS Radar #07 draft](../../oss-radar-07-promptfoo.md): working article with Sources & Evidence and a dated Glossary; not published.
 - [Repository baselines](baselines.json): pinned source revisions and read-only checks.
 - [Promptfoo fixture probe](repro/README.md): runnable module-level reproduction, original source snapshot with its MIT licence, synthetic response, and saved result.
@@ -56,7 +57,7 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 
 [Exact shaping prompts](../../../prompts/oss-radar-07-promptfoo.prompts.md).
 
-The record contains nine complete prompts through the desktop takeover request. The original eight entries remain unchanged; the latest request is appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
+The record contains ten complete prompts through the Perplexity membership and provider-choice clarification. The original nine entries remain unchanged; the latest request is appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
 
 The September 8 request explicitly asks for a prompts section for this issue. It overrides the usual OSS Radar exception that omits public prompts. This is an issue-specific decision; no shared skill or prior issue was changed. Keep the complete initial prompt intact. The second recorded answer delegated the experiment timebox decision.
 
@@ -68,7 +69,7 @@ The controlled tests earn the adapter and local-retention findings. The selected
 
 ## Next bounded action
 
-Goga has been asked for the location of an existing OpenRouter or Perplexity API configuration; no key is present in this task's environment. Do not ask for a secret in chat. Once that access is identified, follow the [frozen one-answer preflight](12-directed-answer-preflight.md), retain its actual outcome, and update the adoption decision. No production analytics query is needed.
+Use Goga's existing Perplexity web membership for the [one-answer preflight](12-directed-answer-preflight.md). Preserve the visible answer/citations, verify the imported record through Promptfoo, review its sources, and update the verdict to describe that workflow. No particular provider or API purchase is required. Browser access has not yet been verified. [The correction](13-provider-choice-and-web-capture.md) supersedes the earlier API-configuration blocker; live API fields and billing remain outside a web-capture result. No production analytics query is needed.
 
 The local trace/export work is complete; do not repeat it as if unrun. The [capture manifest](repro/capture/recorded/manifest.json) commits to the accepted records and source hashes. The original telemetry interruption and accepted local blocking behavior remain documented in their methods.
 
