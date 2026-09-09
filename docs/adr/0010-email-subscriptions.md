@@ -301,21 +301,21 @@ The earlier library-size estimates and one-megabyte uncompressed Worker-limit cl
 
 ### Inspiration from open source reference implementations
 
-Before finalising the approach, we searched GitHub for real-world Cloudflare Workers newsletter implementations to validate patterns and avoid reinventing solved problems:
+The April decision recorded the following GitHub projects as implementation inspiration. They established possible architecture patterns; the preserved record contains no comparative completion or abuse study. The [September 2026 reassessment](../../packages/blog/drafts/research/newsletter-reliability/05-prior-art-2026.md) adds maintained newsletter providers, self-hosted proof of work, and the original Turnstile rationale.
 
 **[SamirPaulb/newsletter-and-contact-system](https://github.com/SamirPaulb/newsletter-and-contact-system)**
-Uses Cloudflare Workers + KV for subscriber storage. KV is appropriate at small scale; D1 is chosen here because the blog already uses D1 and SQL makes cleanup queries (purge by status + age) significantly cleaner than iterating KV keys.
+The current README describes Workers, Turnstile, native rate limits, KV operational storage, and D1 archival storage. It was originally cited for a Workers/KV pattern. This is repository documentation, not a verified reliability result or proof of a strict global send ceiling.
 
 **[i365dev/LetterDrop](https://github.com/i365dev/LetterDrop)**
-Full newsletter system on Workers + D1 + Resend. Confirms the D1 + Resend combination is validated in production. Their schema uses a similar `status` field pattern. They include an admin UI from the start — we defer this until manual D1 querying becomes the bottleneck.
+Originally cited for a Workers/D1/Resend newsletter pattern. The repository remains available; its existence does not establish that the combination is validated in production. No deployed service or end-to-end reliability measurement was inspected in the September reassessment.
 
 **[Divkix/pickmyclass](https://github.com/Divkix/pickmyclass)**
-Shows token-in-URL pattern for confirmation flows on Workers. We extend this with SHA-256 hashing before storage (they store raw tokens — a pattern we chose not to follow).
+Originally cited for confirmation tokens in URLs. Its current token storage was not re-audited and should not be used to establish our security properties. Our own confirmation tokens are hashed; unsubscribe tokens remain stored raw.
 
 **[mnestorov/security-headers-cloudflare-worker](https://github.com/mnestorov/security-headers-cloudflare-worker)**
-Reference for the CSP and security header set on Workers. Confirms `X-Content-Type-Options`, `Referrer-Policy`, and `Content-Security-Policy` are the right set for Workers-served HTML.
+Originally cited as a security-header example. A reference implementation alone cannot establish which policies are correct for this site's content and integrations; validate the actual served headers and behavior.
 
-The reference links above are historical pointers. This checkpoint did not re-audit their current code, token handling, or production use. Our inspected implementation hashes confirmation tokens and stores unsubscribe tokens raw; a general claim that a database disclosure reveals no usable tokens would be false.
+The reference links above are historical pointers. The September 9 UTC pass checked the first two repository pages, not their full code or production use. A general claim that our database disclosure reveals no usable tokens would be false.
 
 Owning the small integration does not prove it more reliable than a maintained library. The September audit found missing reporting paths and lifecycle bugs in our implementation. Dependency choice and tested behavior are separate decisions.
 

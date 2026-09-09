@@ -22,6 +22,7 @@ Each stage needs its own observation. A page response does not establish form av
 - `02-client-audit.md`: implementation coverage and local failure probes.
 - `03-protection-options.md`: primary sources, threats, and candidate decisions.
 - `04-recovery.md`: whether addresses can be recovered, completed checks, and remaining access limits.
+- `05-prior-art-2026.md`: original Turnstile rationale, current newsletter practices, hosted and self-hosted alternatives, counterevidence, and decision protocol.
 - `repro/audit.mjs`: local synthetic probes; never contacts production or sends email.
 - `repro/lifecycle.mjs`: real SQLite probes for inactive-address resubscription and unknown confirmation tokens.
 - `article.md`: provisional article draft, outside the publishing directory.
@@ -41,3 +42,7 @@ Private operational captures are stored separately from the repository. Public a
 8. Assess recovery of previously stored attempts without inventing identities or activating unconfirmed addresses (TASK-0130).
 
 The present investigation does not claim a repaired production flow. The article can describe unresolved work, but must not claim that a proposed control was deployed or successful.
+
+## September 8 PDT / September 9 UTC research checkpoint
+
+The [prior-art review](05-prior-art-2026.md) reconstructed the urgent April launch from Git and widened the comparison beyond challenge settings to ownership of the signup operation. Current providers combine pre-send protection with other controls; listmonk provides a self-hosted proof-of-work example with material limitations. The review qualifies the earlier preference for a widget-free trial and adds a concrete comparison protocol. Production repair, comparative tests, and the architectural decision remain unfinished. The draft and five shaping prompts are preserved; this pass ran no production SQL or email tests.

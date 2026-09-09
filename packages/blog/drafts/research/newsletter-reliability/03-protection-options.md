@@ -1,6 +1,6 @@
 # Newsletter abuse controls: decision in progress
 
-Checked September 7 UTC, 2026. This is an architectural assessment, not a deployed change or a comparative effectiveness study.
+Initial assessment September 7 UTC, 2026; expanded September 8 PDT / September 9 UTC with [original-decision history, 2026 prior art, and the comparison protocol](05-prior-art-2026.md). This is an architectural assessment, not a deployed change or a comparative effectiveness study.
 
 ## Protect the operation that can be abused
 
@@ -28,7 +28,9 @@ Double opt-in prevents activation before confirmation. The first message has alr
 
 The current native limiter is configured as three attempts per 60 seconds per IP. Cloudflare documents its counters as local to each location and eventually consistent. It is not a strict global email budget. Neither a hidden field nor a browser-header heuristic is an adequate replacement for controlling email volume. [Rate limiting binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/), checked September 7.
 
-The initial recommendation is to restore the configured credential and measure the complete flow, while making configuration failures visible to the operator. The architecture work should evaluate a widget-free path with explicit send budgets against a conditional challenge. This is a recommendation for investigation; the incident alone does not select the winner.
+The immediate repair remains restoring the configured credential, measuring the complete flow, and making configuration failures visible to the operator. The expanded research adds an ownership decision alongside these three enforcement policies: compare our repaired custom flow with a maintained provider's supported signup flow. Buttondown supplies operational prior art; listmonk supplies a pinned implementation of self-hosted ALTCHA. A different verifier can still be mandatory or conditional, and hosted forms have their own protection and recovery policies.
+
+The earlier conversational preference for a widget-free trial is now qualified by the [2026 review](05-prior-art-2026.md). Confirmation emails themselves can participate in subscription bombing. Address cooldowns and global ceilings bound our contribution but do not establish that accepting the first unsolicited send is harmless. No-challenge intake remains a candidate with an explicit residual-risk decision. Neither this incident nor provider marketing selects the winner.
 
 ## Failure policy must be deliberate
 
@@ -51,4 +53,4 @@ Use synthetic addresses and mocked providers locally. Any real email test needs 
 | [GraphQL sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/) | September 7, 2026 | Adaptive estimates; not an exact set of failed attempts |
 | [Resend logs](https://resend.com/docs/dashboard/logs/introduction) | September 7, 2026 | A provider-side source for older attempts that reached sending; read requests returned 401 because the available key is restricted to sending. No account email history was obtained; see [recovery](04-recovery.md) |
 
-No peer-reviewed CAPTCHA usability result or cross-provider benchmark is claimed in this first pass. A broader article argument about reader friction needs evidence beyond this one configuration failure.
+No peer-reviewed CAPTCHA usability result or cross-provider benchmark is claimed. The [later source comparison](05-prior-art-2026.md) includes 2026 threat reporting, an author-hosted subscription-bombing study, provider controls, open-source code, and counterevidence. A broader article argument about reader friction still needs evidence beyond this one configuration failure. TASK-0127 remains open until the protocol records limits, tested results, a chosen design, rollback, and reversal conditions.

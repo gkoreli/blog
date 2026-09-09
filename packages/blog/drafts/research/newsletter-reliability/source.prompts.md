@@ -8,3 +8,11 @@ can we recover those subscriptions or know who tried to subscribe? 3 +Inspected 
         mentation is pending. It provided the five current subscription error reports and eight older reports.
 
  I am so sad, we had real subscribers and we didn't get to successfully let them subscribe... its so annyoing...
+
+---
+
+how to make this decision, is there an active research artifact on it? - Turnstile decision and article: the alternatives, evidence, worklist, and unpublished draft are preserved. We haven’t decided to remove Turnstile.
+
+---
+
+Why did I add turnstile to begin with? Maybe there is much better prior art that I overlooked, can you lookup 2026 best practices?
