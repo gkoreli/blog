@@ -5,7 +5,7 @@ description: >-
 license: MIT
 metadata:
   author: gkoreli
-  version: "1.1.0"
+  version: "1.2.0"
   evidence-audited: "2026-08-26"
   credibility-reviewed: "2026-09-06"
 ---
@@ -116,6 +116,8 @@ Record:
 - evidence boundary;
 - article role;
 - claims the article refuses to make.
+
+Record the primary reader consequence separately from supporting mechanisms and design constraints, following `shape-article`. Choose headline emphasis by that hierarchy. A “without X” detail belongs in the title when avoiding X is central to the reader's job or defines the result's scope; specificity alone does not justify giving it headline space.
 
 Any candidate doorway that violates these is rejected before scoring.
 
@@ -235,6 +237,7 @@ Hard questions:
 - Does the title add identity, causality, privacy, performance, or outcome the body cannot prove?
 - If it says “I,” “we,” or “my,” what work or observation establishes that relationship, and where can the reader inspect its basis?
 - Would the article still make sense if the target phrase were removed?
+- Does the headline emphasize the main reader problem or result, or has a secondary implementation requirement displaced it?
 - Does the title sound compatible beside the strongest passage?
 - Are H1, seoTitle, description, and orientation describing the same article?
 
@@ -242,7 +245,7 @@ Hard questions:
 
 | Surface | Reader-growth | Signature | Bridge |
 |---|---|---|---|
-| H1 / og:title | Usually concrete and externally legible; first person can preserve standing | Preserve the voice-bearing or literary title | Choose the concrete or voice-bearing side that carries the living center |
+| H1 / og:title | Concrete subject first; first person can preserve standing | Name the subject and preserve a voice-bearing phrase where it helps | Name the subject and the problem or result carrying the living center |
 | seoTitle | Front-load tool/problem handles; semantically match H1 | Optional; use only for the same article | Often carries concrete entities when H1 carries the contradiction |
 | Description | Reader problem + owned mechanism/result + boundary | Honest orientation, never manufactured practical benefit | Name both concrete artifact and human stake |
 | Standfirst | Self-contained external anchor | Minimal grounding without explaining away the title | Name the artifact and live tension |
@@ -389,13 +392,13 @@ Every recommendation must say which stage it could influence and what evidence w
 
 ### Signature: Life as Background Music
 
-- Preserve the literary H1.
+- Preserve a voice-bearing phrase while making the subject recognizable in the H1; the description supplements that subject rather than supplying a missing one.
 - Use the description to orient around liking, wanting, and feeling while keeping life safely in the background.
 - Reject `How to Stop Emotional Avoidance`—the essay does not offer a method and the title would convert recognition into advice.
 
 ### Bridge: My Evals Say It Works. I Still Don't Reach for It.
 
-- Preserve the contradiction in H1.
+- Name ghx in the H1 and preserve the contradiction.
 - Let seoTitle name ghx, the eval, and the broken adoption habit.
 - The concrete evidence and founder's live failure are inseparable; neither a generic eval report nor a pure confession tells the truth.
 

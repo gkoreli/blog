@@ -1,10 +1,10 @@
 ---
-title: "How I Filter Referrer Spam Without Deleting Analytics History"
-seoTitle: "Filter Referrer Spam Without Losing Analytics History"
-alternativeHeadline: "Versioned Matomo rules, local exceptions, and saved reports keep referral filtering reversible."
+title: "How I Defend My Analytics Against Referrer Spam"
+seoTitle: "Referrer Spam Defense for Public Analytics"
+alternativeHeadline: "Matomo rules and reviewed public names limit referral abuse; shared report queries and caching control the cost."
 date: "2026-09-06"
-lastModified: "2026-09-06"
-description: "A public dashboard ranked a suspicious referrer first. I added Matomo rules, local exceptions, and saved reports while retaining the observations."
+lastModified: "2026-09-08"
+description: "Suspected referrer spam reached my dashboard. I added Matomo rules and name review, then cut a fixed report's D1 reads by 81.8%."
 section: engineering
 tags: [analytics, http, cloudflare-workers, open-source]
 series:
@@ -13,13 +13,14 @@ series:
   order: 5
 ---
 
-# How I Filter Referrer Spam Without Deleting Analytics History
+# How I Defend My Analytics Against Referrer Spam
 
-My public analytics dashboard ranked a suspicious referrer first, with **35 views**. I wanted those requests excluded without destroying the evidence behind that decision. The deployed repair uses Matomo's referrer spam list, local exceptions, and a separate rule for which names can appear publicly. A capture command also preserves reports, because keeping database rows alone cannot tell me what yesterday's dashboard showed.
+My public analytics dashboard now filters suspected referrer spam from its metrics and publishes only reviewed referrer names. The repair began with a suspicious host ranked first at **35 views**: a request field was giving an untrusted name public exposure. Matomo's spam list, local rules, and a separate display policy now control what reaches the report. These are reporting rules; the originating requests still reach the site.
 
-- Excluded observations remain stored, and every public metric applies the same policy.
-- Unreviewed included hostnames become an unnamed aggregate instead of gaining public exposure.
-- Archived rules explain a calculation; a saved response preserves what was actually reported.
+- **Limit public exposure.** Unreviewed included hostnames appear under “Other reported referrers.”
+- **Apply exclusions consistently.** Matching rules affect totals, charts, and rankings, with excluded observations counted separately.
+- **Budget the defense.** The first implementation was expensive. A shared query used **81.8% fewer D1 reads** for the same historical report; caching reduces repeated calculation.
+- **Keep decisions correctable.** Stored observations, versioned rules, and saved reports preserve the evidence behind an exclusion.
 
 ## How a reported referrer became a public ranking
 
@@ -27,11 +28,7 @@ The ranking treated a hostname supplied by a client as something worth showing r
 
 Referrer spam is an established form of abuse. Matomo's [May 2015 explanation](https://matomo.org/blog/2015/05/stopping-referrer-spam/) describes automated requests carrying fabricated referrers to get a site noticed in analytics. Our repeated homepage/article requests supported a local exclusion, but did not authenticate an operator or prove that motive. The [request investigation](/how-i-separate-readers-from-bots-without-javascript) preserves that distinction.
 
-My requirement during the repair was:
-
-> "we still need to save those data for historical provenance reasons right?"
-
-The design had to preserve the evidence behind an exclusion, including evidence that could later overturn it.
+The defense needed two separate decisions: which observations to exclude from the metrics, and which referrer names to publish.
 
 ## Separating observations from reporting decisions
 
@@ -49,6 +46,17 @@ Exclusions affect totals, charts, pages, devices, and referrer rankings, includi
 
 Display approval permits a name to appear. It does not authenticate a referral: a client can supply a familiar hostname too.
 
+The reporting outcomes are distinct:
+
+| Referral assessment | Public metrics | Public referrer display |
+|---|---|---|
+| Excluded by a rule | Removed from included totals; disclosed in the exclusion count | No hostname |
+| Included, name unreviewed | Counted | “Other reported referrers” |
+| Included, name approved | Counted | Reviewed display name |
+| No reported hostname | Counted | No referrer ranking entry |
+
+An unfamiliar name alone is enough to withhold public exposure. Excluding its observations requires a matching reporting rule.
+
 ## Using Matomo rules with local exceptions
 
 Matomo supplies maintained prior art, but its list could not decide this case for me. The [pinned source](https://github.com/matomo-org/referrer-spam-list/blob/e65db652cade6882aa9a76bbb65c9bb17e079f4b/spammers.txt) contained **2,348 hosts** and omitted the hostname under investigation. That required a reviewed local rule.
@@ -65,17 +73,23 @@ Reviewed local rules override upstream entries; more specific local rules can re
 
 ## Preserving historical reports
 
+An exclusion can be mistaken, so the design keeps the evidence needed to reconsider it. My requirement during the repair was:
+
+> "we still need to save those data for historical provenance reasons right?"
+
 Retained observations support recalculation. They do not automatically reconstruct an earlier dashboard: late writes, owner exclusions, and other classification changes can alter the result even under the same referral policy.
 
 The [report-capture command](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/analytics/policies/README.md) saves the exact received JSON and its hash, checks the advertised policy against the archive, and refuses to overwrite an earlier capture. Deployment records bind the policy to the released code. Captures are explicit, not automatic snapshots of every report.
 
 This repair adds no visitor field and deletes no observation. The retained evidence is a bounded hostname and selected request fields; full original referrer headers were never stored. Keeping that evidence and saving report responses answers two different historical questions.
 
-## Referrer filtering results and costs
+## What the referrer filter changed
 
 The fixed August 8–September 6 UTC check produced **972 Browser observations before referral exclusions: 937 included plus 35 excluded**, all 35 through the local rule. These were separate read-only production queries, not a transactional snapshot. [Verification record](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/blog/drafts/research/readers-vs-bots/18-matomo-referral-policy-verification.md). Subsequent [live verification](https://github.com/gkoreli/blog/blob/e1aa4a305ef934b1f089b24894321558db5f1603/packages/blog/drafts/research/readers-vs-bots/19-referral-policy-activation.md) confirmed the deployed policy, suppressed names, and scoped exclusion counts.
 
 The public evidence records aggregates and hashes; private captures let me audit the original reads.
+
+## The D1 cost of filtering every report
 
 Filtering at query time costs database work. In that production sample, the totals query went from **7.77 to 14.95 milliseconds**, with rows read increasing from **8,423 to 19,826**. Those are database measurements, not page latency. The ADR records the larger benchmark and when to reconsider stored or materialized results.
 
@@ -83,11 +97,18 @@ Filtering at query time costs database work. In that production sample, the tota
 
 The database was small: the later count found **7,010 stored page observations** in about **3.1 MB** of database storage. The 182,388 number described repeated query work for one report. It did not describe stored observations or visitors. The saved benchmark itself accounts for 190,811 reads including its baseline query; additional saved API checks also cost reads, but their exact contribution is unavailable. The reviewed evidence does not attribute the whole allowance to those checks or to an attacker. [Read accounting and attribution](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md).
 
-After upgrading Workers, the corrected production query returned the identical historical report with **33,259 reads—81.8% fewer**. It calculates every panel from one shared assessment. Two live requests also returned identical cached results, including one with an irrelevant query parameter. Reports can be up to an hour old, with their calculation time visible. Cache storage is local to a Cloudflare data center, so these checks establish a measured improvement and local reuse, without guaranteeing a global read budget. [Production verification and limits](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md).
+After upgrading Workers, the corrected production query returned the identical historical report with **81.8% fewer reads**. It calculates every panel from one shared assessment:
+
+| Fixed historical report | Statements | D1 rows read |
+|---|---:|---:|
+| Repeated assessments | 9 | 182,388 |
+| Shared assessment | 1 | 33,259 |
+
+Two live requests also returned identical cached results, including one with an irrelevant query parameter. Reports can be up to an hour old, with their calculation time visible. Cache storage is local to a Cloudflare data center, so these checks establish a measured improvement and local reuse, without guaranteeing a global read budget. [Production verification and limits](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md).
 
 The maintenance cost also remains: review new names, update the source, and reverse mistaken exclusions. Clients can change or omit the header; even a correctly implemented rule can hide legitimate visits. The reconciled counts verify policy application, without establishing how many requests came from people.
 
-The repair gives me an accountable reporting decision: the observation remains available, the rule has a reason and version, and a saved report records what I published.
+The dashboard now publishes only reviewed referrer names and applies abuse exclusions consistently across its reports. Reviewing new evidence, correcting mistaken rules, and controlling query cost remain part of operating that defense.
 
 ---
 

@@ -67,6 +67,8 @@ Earlier the same day: "the initial section needs to be catchy, why is this a big
 
 This tenet governs all forms. `shape-article` still chooses the living center and the ending; `personal-essays` still wins on voice for exposed essays, where the opening may be a scene or a wound rather than a summary, but even there the first paragraph must be the reason to keep reading. See also `NORTH_STAR.md` "What Guides Readership".
 
+**Title significance (owner correction, September 8, 2026):** distinguish the main reader problem or result from supporting implementation constraints. A true, specific detail can still be the wrong emphasis. Article 025's title gave historical retention more weight than the central problem of referrer abuse gaining exposure and distorting reports. Preserve such constraints in the explanation; headline them when they define the reader's reason to care or a necessary boundary of the result. Apply this through `shape-article` and `article-discovery-positioning`, without promising higher traffic from a title change.
+
 ### No Mannered Prose (owner rule, 2026-09-02)
 
 Recorded verbatim; it binds every article and every skill that touches prose (`polish-prose` carries the working form):
@@ -127,6 +129,8 @@ Make the author's relationship to the evidence explicit when it matters. First p
 
 Support consequential engineering claims with the relevant method, conditions, date/version, result, and inspectable artifact. Distinguish observation from interpretation and generalization. Choose sources by what can establish the particular claim, not the speaker's fame. Preserve limitations, counterevidence, and material corrections; neither confident prose nor a large research footprint substitutes for evidence.
 
+Aim to produce references that other engineers and their agents can inspect, challenge, and reuse in real work. Evidence should serve that engineering purpose and remain proportionate to the claim. Predictions about future LLM preferences do not establish a publishing strategy or make ordinary search support obsolete.
+
 Separate human judgments of credibility, search eligibility/ranking, crawler access, and an agent's source use or citation. No pronoun, citation count, schema, or author biography guarantees trust or discovery. Read the [firsthand evidence and credibility reference](.agents/skills/blog-writing/references/firsthand-evidence-and-credibility.md) when applying these distinctions. Its [research record](packages/blog/drafts/research/engineering-credibility/00-research-brief.md) separates studies, provider documentation, editorial judgments, and experiments still to run.
 
 ### Writing Skill (`.agents/skills/blog-writing/SKILL.md`)
@@ -178,6 +182,10 @@ After publishing a material engineering article:
 4. Update `lastModified` only when the served page changes materially under the metadata rules below.
 5. Keep one-off lessons in the article artifact. Update a shared reference or skill when a failure recurs across articles or when one missing rule caused a costly, preventable error.
 6. Prefer a focused reference inside the governing skill first. Create a standalone skill only after the workflow has repeated use and needs distinct automatic routing.
+
+When a willing human reader is available, get feedback on the actual draft: what claim they understood, where the explanation became hard to follow, and what evidence they still need. Record the response and the resulting editorial decision. Prepare a reviewable draft without making outside feedback a mandatory release gate. Agent review and human reception are separate evidence. Use `blog-writing`'s skim check to make the title, opening, headings, useful visuals, and section endings intelligible together.
+
+Private reader messages belong in the private evidence archive, with a descriptive filename and a worklist reference. Preserve original bytes and the receipt date; do not infer a conversation date from clock times alone. Public worklists can summarize the advice and resulting changes without republishing a private conversation. The [article 025 feedback worklist](packages/blog/drafts/research/referrer-spam/07-reader-feedback-and-article-focus.md) records this application.
 
 This loop improves the publication from reader and evidence contact, not from token volume or pageviews alone.
 

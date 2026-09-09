@@ -18,7 +18,7 @@ Article 024's corrected revision is published at its stable URL. This follow-up 
 | Separate signer identity from client role | TASK-0119 remains open | Preserve signature evidence; unknown trigger stays unknown. Full study is lane row 4. |
 | Follow-up article | Started, unpublished | [Working draft](../../edge-page-views-versus-cloudflare-rum.md) |
 
-A separate short note, [How I Filter Referrer Spam Without Deleting Analytics History](../../../posts/025-filter-referrer-spam-without-deleting-analytics-history.md), documents the deployed referral policy and preservation of report evidence. Its [article record](../referrer-spam/00-article-passport.md) is separate from this experiment. The historical 95-versus-14 comparison retains its original scope; subsequent extractions must state the referral policy and reconcile included/excluded observations. This reporting repair does not satisfy the paired-browser experiment gate.
+A separate case study, [How I Defend My Analytics Against Referrer Spam](../../../posts/025-filter-referrer-spam-without-deleting-analytics-history.md), documents the deployed referral policy and preservation of report evidence. Its [article record](../referrer-spam/00-article-passport.md) is separate from this experiment. The historical 95-versus-14 comparison retains its original scope; subsequent extractions must state the referral policy and reconcile included/excluded observations. This reporting repair does not satisfy the paired-browser experiment gate.
 
 ## First browser experiment
 

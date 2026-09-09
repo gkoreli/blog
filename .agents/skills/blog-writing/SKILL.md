@@ -4,7 +4,7 @@ description: Blog post writing guidelines for gkoreli.com. Use when writing, edi
 license: MIT
 metadata:
   author: gkoreli
-  version: "2.3.0"
+  version: "2.4.0"
 ---
 
 # Blog Writing — Agent Skill
@@ -64,6 +64,14 @@ If a section has 3+ paragraphs of continuous prose making distinct points, it pr
 ### Anti-pattern: Everything is Bullets
 
 If the whole post reads like a slide deck, it loses voice and narrative. The personal sections — origin stories, reflections, arguments — need prose to land.
+
+### Skimming and Human Draft Feedback
+
+Read the title, opening, headings, principal table or diagram, and section endings without the intervening prose. They should convey the main problem, response or live question, strongest evidence, and the limits needed to interpret it. Repair missing connections rather than adding more headings. Choose a table for a comparison and a diagram for a relationship or decision path; use a visual when it explains something the reader otherwise has to reconstruct.
+
+When a willing human reader is available, use the actual draft to learn what they understood its main claim to be, where they lost the thread, and what evidence they still need. Record their feedback and the decision it led to. Agent review checks the draft; it does not establish human reception. Human feedback is a useful opportunity, not a standing publication gate.
+
+Disclosure of AI assistance preserves provenance. It does not excuse repetitive, mannered, or generic prose; apply `polish-prose` to the writing itself. The [reader-feedback worklist](../../../packages/blog/drafts/research/referrer-spam/07-reader-feedback-and-article-focus.md) records the owner correction and practitioner advice behind this focused update, without claiming a measured effect on readership.
 
 ### Hyperlinks
 

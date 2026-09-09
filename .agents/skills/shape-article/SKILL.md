@@ -20,6 +20,8 @@ Inspect the draft, prompts, and author context. Determine:
 
 Do not invent a stake or feeling when the source material lacks one. Name the gap and return it to the author.
 
+Separate the main reader problem or result from the implementation choices and constraints that support it. A detail can be true, concrete, and important without being the reason someone should read the article. Carry that priority into the title, opening, and ending. A constraint belongs in the headline when it defines the reader's problem or a necessary boundary of the result.
+
 ## Choose the Governing Form
 
 Let forms mix, but choose one to govern movement and the ending.
@@ -91,7 +93,7 @@ Allow linear argument, circling, fragments, accumulation, juxtaposition, or a si
 
 Do not flatten the body into a separate machine-facing summary. Preserve the full thinking process and add anchors around it:
 
-- Use a truthful title, concrete description, date, section, and tags. A signature title may stay literary; `article-discovery-positioning` decides how cold-reader handles belong on the other surfaces without flattening it.
+- Use a truthful title, concrete description, date, section, and tags. Every H1 names its subject in plain words; a signature title can carry a literary phrase alongside that subject. `article-discovery-positioning` aligns the other surfaces with the same article.
 - Name projects, people, concepts, and time shifts consistently.
 - Keep factual claims close to their sources.
 - Distinguish observation, external evidence, inference, fear, and judgment through natural language.

@@ -1,22 +1,24 @@
 # Referrer spam article: scope and publication decision
 
-Created September 6, 2026 PDT / September 7 UTC. This is a short engineering note about the referral policy already deployed in commit `fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d`. It reuses the engineering investigation in `../readers-vs-bots/15-*` and `17-*` through `19-*`; those artifacts and article 024's frozen research accounting are unchanged.
+Created September 6, 2026 PDT / September 7 UTC; editorial focus revised September 8 PDT. This engineering case study covers the referral policy deployed in commit `fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d` and its subsequent D1 cost repair. It reuses the engineering investigation in `../readers-vs-bots/15-*` and `17-*` through `19-*`; those artifacts and article 024's frozen research accounting are unchanged. The [reader-feedback worklist](07-reader-feedback-and-article-focus.md) records the current title decision, private source location, and release checks.
 
 ## Article passport
 
-- **Living center:** a suspicious hostname led a public ranking, and the owner wanted it removed while retaining the observations for historical provenance.
-- **Form:** short evidence-led engineering investigation / decision case study. AI-assisted drafting is appropriate; this is not an exposed essay.
+- **Living center:** a supplied hostname gained public exposure and affected the reported traffic. The owner built a reporting defense, then had to repair its database cost.
+- **Form:** evidence-led engineering investigation / decision case study. AI-assisted drafting is appropriate; this is not an exposed essay.
 - **Role:** bridge. A problem in the author's own dashboard yields a decision another analytics implementer can use.
-- **Reader job:** filter suspected referral abuse, preserve the evidence needed to correct a mistaken exclusion, and distinguish recalculated history from a saved report.
+- **Reader job:** defend public analytics from referral abuse through consistent exclusions, reviewed name visibility, and a measured operating budget. Retained evidence supports correcting mistaken decisions.
 - **Before / failure / repair:** arbitrary reported hostnames became public rankings; name visibility and consistent report exclusions now follow an explicit policy, while stored evidence remains available.
 - **Protected uncertainty:** the supplied hostname does not establish the operator or motive. Inclusion does not establish human readership. Community-list membership can be wrong.
 - **Bounded position:** this public dashboard should retain its existing evidence and version the reporting decision. Excluding matches at query time and restricting public names meet that need, with query and review costs.
-- **Ending:** retain the observation, explain the decision, and preserve the report that actually appeared. No claim that the audience measurement problem is finished.
-- **Length:** approximately 700–1,000 words; links carry the full ADR, precedence rules, and benchmarks.
+- **Ending:** publish reviewed names, apply exclusions consistently, and continue reviewing evidence and cost. No claim that the audience measurement problem is finished.
+- **Scope:** a focused case study; links carry the full ADR, precedence rules, and benchmarks. The D1 incident expanded the original short note.
 
 ## Discovery brief
 
-Primary doorway: **filter referrer spam**. Secondary language: **Matomo referrer spam list**, **analytics history**, **public analytics dashboard**. These phrases come from the actual implementation and Matomo's primary documentation, not measured search-volume research. Excluded intent: GA4 configuration, complete bot detection, identifying a spam operator, blocking all automated access, and recovering headers never stored.
+Primary doorway: **referrer spam defense for public analytics**. Secondary language: **Matomo referrer spam list**, **public referrer rankings**, **D1 query cost**, **versioned reporting rules**. These phrases come from the implementation and primary documentation, not measured search-volume research. Excluded intent: GA4 configuration, complete bot detection, identifying a spam operator, blocking all automated access, and recovering headers never stored.
+
+### Initial publication choice, superseded September 8 PDT
 
 Three coherent candidates were considered after fixing the living center:
 
@@ -32,7 +34,7 @@ Three coherent candidates were considered after fixing the living center:
 | Internal links | First-party analytics architecture; request-classification investigation | Public stats; first-party analytics architecture | First-party analytics architecture; request-classification investigation |
 | Non-promise | No complete raw-header archive or human-count accuracy claim | No complete traffic blocking or prevention guarantee | No Matomo integration tutorial or claim of equivalent matching semantics |
 
-A best preserves the owner's provenance requirement and the repair another implementer can reuse. B underrepresents saved reports; C makes list integration sound like the whole problem. No keyword insertion into the body is needed.
+The initial rationale selected A because it preserved the owner's provenance requirement. It rejected B as underrepresenting saved reports and C as making list integration sound like the whole problem. The owner subsequently identified the mistake in that weighting: historical retention is a supporting design constraint, while abuse of the dashboard is the main reader problem. The current revision adopts B's public-exposure emphasis with the title **How I Defend My Analytics Against Referrer Spam**. Its complete metadata and checks are in [the revision worklist](07-reader-feedback-and-article-focus.md). The original URL stays stable.
 
 ## Promise and link plan
 

@@ -3,7 +3,7 @@ title: "Bot Detection Without JavaScript: What My Blog Measured"
 seoTitle: "Bot Detection Without JavaScript on Cloudflare Workers"
 alternativeHeadline: "Network and request-header rules reclassified 74.5% of browser-UA traffic on my blog. The remaining count still differs from Cloudflare Web Analytics."
 date: "2026-09-03"
-lastModified: "2026-09-06"
+lastModified: "2026-09-08"
 description: "Cloudflare Workers bot detection without JavaScript: headers, network evidence, and an unresolved gap of 95 browser observations versus 14 script page loads."
 section: engineering
 tags: [analytics, cloudflare-workers, http, bots, ai-agents, observability]
@@ -143,7 +143,7 @@ The new production window adds a concrete case to investigate: 22 of the 95 Brow
 
 That supports investigating automation, not naming an authenticated operator. A User-Agent is a declaration, and the zone matches lack a shared request identifier. Setting all 22 observations aside as a sensitivity calculation still leaves 73 versus 14, or 5.21×. Explaining this cluster would not explain the whole discrepancy.
 
-The subsequent repair is covered in [How I Filter Referrer Spam Without Deleting Analytics History](/filter-referrer-spam-without-deleting-analytics-history): a versioned reporting policy excludes matching observations while retaining the evidence and limiting which referrer names appear publicly. The historical comparison above keeps its original scope.
+The subsequent repair is covered in [How I Defend My Analytics Against Referrer Spam](/filter-referrer-spam-without-deleting-analytics-history): a versioned reporting policy excludes matching observations while retaining the evidence and limiting which referrer names appear publicly. The historical comparison above keeps its original scope.
 
 The useful claim is narrower than a reader count: these requests met a documented rule. Determining how much of that category represents people consuming the article requires evidence the rule does not collect.
 

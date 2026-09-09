@@ -1,0 +1,36 @@
+{
+  "recordedAt": "2026-09-09T00:55:42.574334+00:00",
+  "sourceTitle": "How I Defend My Analytics Against Referrer Spam",
+  "seoTitleCharacters": 42,
+  "descriptionCharacters": 128,
+  "promptCount": 17,
+  "wordCountIncludingAppendix": 1396,
+  "checkedRelativeLinks": 46,
+  "checks": {
+    "h1": true,
+    "seo_title": true,
+    "description": true,
+    "canonical_stable": true,
+    "structured_titles_and_dates": true,
+    "all_17_prompts_render_exactly": true,
+    "owner_quote_complete": true,
+    "table_absent_host": true,
+    "fixed_report_cost_scope": true,
+    "markdown_body": true,
+    "citation_title": true,
+    "rss_title": true,
+    "indexes": true,
+    "predecessor_link_label": true,
+    "private_source_hash": true,
+    "private_source_moved": true,
+    "private_transcript_not_in_article": true,
+    "relative_file_and_site_links": true
+  },
+  "ogCard": {
+    "path": "/og/filter-referrer-spam-without-deleting-analytics-history.png",
+    "sha256": "dd5b4517d4bc1119cb4081d42ea9d9923702cae31d1f06405d87f02b51ea0adb",
+    "inspection": "Model visually inspected the generated 1200x600 image: full title readable, no clipping."
+  },
+  "browserQA": "Unavailable: CUA reported no browser. Generated HTML/metadata and the OG asset were checked; no browser interaction is claimed.",
+  "checkerCorrection": "The first relative-link check treated an existing root-relative site link in AGENTS.md as a filesystem path. The corrected check resolves site routes against dist and passed without changing that link."
+}

@@ -63,3 +63,12 @@ i upgraded to $5/month but its insane to me like we don't have that much data, h
 ---
 
 how do we even have  182,388 rows in production db lmao
+
+---
+
+How I Filter Referrer Spam Without Deleting Analytics History
+ i feel like Without Deleting Analytics History, this is much less significant in the scope of this article, why are we focusing on that?
+
+---
+
+Also I received a positive message on X, they followed me and gave me advice that I would like to incorporate in the article #25 and improve the skills and agents.md instructions as well. read /Users/goga/Documents/goga/blog/x-message.md

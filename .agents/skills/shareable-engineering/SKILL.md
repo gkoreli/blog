@@ -4,7 +4,7 @@ description: Evidence-based mechanics for engineering articles that get read, sh
 license: MIT
 metadata:
   author: gkoreli
-  version: "1.3.0"
+  version: "1.4.0"
   evidence-audited: 2026-08-25
   credibility-reviewed: "2026-09-06"
 ---
@@ -39,6 +39,8 @@ The architecture is the metadata split (see `AGENTS.md`), amended 2026-09-01 by 
 
 ## Agentic search (GEO/AEO) — what is real in 2026
 
+The publishing goal is useful engineering material that people and their agents can inspect, challenge, and reuse. Choose evidence for the claim it supports, with scope proportionate to the article. A prediction about future model preferences is not a reason to add a research apparatus, remove ordinary search support, or change the author's voice. The existing [credibility reference](../blog-writing/references/firsthand-evidence-and-credibility.md) separates those claims from tested behavior.
+
 - **Separate eligibility, selection, navigation, use, citation, and referral.** A crawler request proves only that a resource was requested. A supplied source influencing an answer does not prove organic discovery or selection. Every GEO claim must name its stage and evidence.
 - **Source preference is not demonstrated credibility.** Controlled model studies can reveal sensitivity to source labels without showing factual reliability or organic discovery. Provider source labels describe that provider's review, not a guarantee about every claim. Preserve the source's qualifications and evaluate citation support separately from citation presence; use the [credibility reference](../blog-writing/references/firsthand-evidence-and-credibility.md) for the evidence and limits.
 - **Evidence-rich writing can change use after retrieval; it is not a universal acquisition recipe.** The KDD 2024 GEO benchmark began with Google's top five results, and its Perplexity test supplied source files. ACL/SIGIR 2026 studies likewise freeze candidates or retrieval to isolate content effects. Citations, relevant evidence, clear claims, and qualifications remain good human-facing trust mechanics, but their effects on generated answers are conditional and engine-specific. Do not promise discovery or repeat the “up to 40%” result without its supplied-source boundary.
@@ -49,6 +51,10 @@ The architecture is the metadata split (see `AGENTS.md`), amended 2026-09-01 by 
 - **Do not add FAQ schema to essays.** The citation-rate claims for it come from unverifiable sources, and question-boxes bolted onto a narrative are schema spam. BlogPosting JSON-LD (auto-generated) is enough.
 
 ## What makes an engineering article get shared
+
+For a Hacker News submission, use an ordinary title faithful to the published article. Its [guidelines](https://news.ycombinator.com/newsguidelines.html) favor intellectually interesting material and discourage promotional editorializing, gratuitous numbers, and attention-seeking typography. Meaningful numbers can stay. A strong article title should already explain why the subject matters; a submission title should not promise more than the article establishes.
+
+Treat aggregator reception as an outcome to observe. HN's [FAQ](https://news.ycombinator.com/newsfaq.html) describes ranking factors beyond title wording, including votes, time, anti-abuse systems, and moderation. One successful post cannot identify which editorial choice caused its response. Its prohibition on generated or AI-edited text is stated under **In Comments**; leave HN comment composition to the author. This is distinct from linking an externally hosted, transparently collaborative article. HN sources checked September 9, 2026 UTC.
 
 A reader shares when the post makes them **armed**, **vindicated**, or **seen** (per `personal-essays`). The evidence adds mechanism:
 
