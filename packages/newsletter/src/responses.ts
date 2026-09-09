@@ -4,8 +4,8 @@
  * Security decisions applied here (see ADR-0010 §Security):
  *
  * CORS: scoped to gkoreli.com + localhost — never wildcard on mutation endpoints.
- *   Any site could otherwise silently enroll visitors. Turnstile alone is not
- *   sufficient because CORS adds a defense-in-depth layer enforced by the browser.
+ *   CORS governs browser reads, not direct API authorization. The confirmation
+ *   handler also rejects a supplied foreign Origin and validates requests.
  *
  * Referrer-Policy: no-referrer on HTML pages — confirm/unsubscribe tokens are in
  *   URL paths. If an email client proxies link clicks, the raw token could appear
@@ -49,7 +49,7 @@ const HTML_HEADERS: Record<string, string> = {
   'x-frame-options': 'DENY',
   'referrer-policy': 'no-referrer',
   'content-security-policy':
-    "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'",
+    "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'self'",
 };
 
 // ── Constructors ──────────────────────────────────────────────────────────────
@@ -92,7 +92,7 @@ export function corsPreflightResponse(origin: string): Response {
  * No external resources. Theme detection via inline script reading localStorage.
  * All dynamic content must be hard-coded strings or pass through esc().
  */
-export function htmlPage(title: string, body: string, backHref = '/'): Response {
+export function htmlPage(title: string, body: string, backHref = '/', status = 200): Response {
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,6 +111,7 @@ export function htmlPage(title: string, body: string, backHref = '/'): Response 
     p{color:var(--muted);line-height:1.7;margin-bottom:1.5rem}
     a{color:var(--link);text-decoration:none;font-size:0.9rem}
     a:hover{text-decoration:underline}
+    button{font:inherit;color:var(--bg);background:var(--link);border:0;border-radius:6px;padding:.75rem 1.25rem;cursor:pointer;margin-bottom:1.5rem}
   </style>
 </head>
 <body>
@@ -120,7 +121,7 @@ export function htmlPage(title: string, body: string, backHref = '/'): Response 
   </div>
 </body>
 </html>`;
-  return new Response(html, { headers: HTML_HEADERS });
+  return new Response(html, { status, headers: HTML_HEADERS });
 }
 
 function esc(s: string): string {

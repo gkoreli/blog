@@ -44,16 +44,16 @@
 			"migrations_dir": "packages/analytics/migrations"
 		}
 	],
-	// Native Workers Rate Limiting — GA Sept 2025, free tier, zero KV writes.
-	// Limits POST /api/subscribe to 3 attempts per minute per IP.
+	// Native Workers Rate Limiting: one shared per-IP budget for subscribe and resend.
+	// Local, eventually consistent protection; D1 admission enforces shared mail limits.
 	// (Cloudflare only supports period=10 or period=60; 60s chosen.)
-	// Defense-in-depth behind Turnstile. Namespace ID is arbitrary; created on deploy.
+	// Runs before Turnstile. Namespace ID is arbitrary; created on deploy.
 	"ratelimits": [
 		{
 			"name": "SUBSCRIBE_RATE_LIMITER",
 			"namespace_id": "1001",
 			"simple": {
-				// 3 subscribe attempts per minute per IP.
+				// 3 signup/resend attempts per minute per IP.
 				// Cloudflare only allows period=10 or period=60.
 				// Original intent was 3/5 min; 3/60s permits more sustained attempts.
 				"limit": 3,
@@ -64,7 +64,8 @@
 	"triggers": {
 		// Nightly at 03:00 UTC:
 		//   1. Purge pending rows with expired confirm tokens (24 h window)
-		//   2. Purge unsubscribed/bounced rows older than 90 days (GDPR data minimisation)
+		//   2. Purge unsubscribed/bounced rows and suppression older than 90 days
+		//   3. Purge confirmation admission records older than seven days
 		"crons": ["0 3 * * *"]
 	}
 }

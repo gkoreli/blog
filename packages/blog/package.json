@@ -9,7 +9,7 @@
     "build": "pnpm check:referral-policy && node --import tsx src/pipeline/prod.ts",
     "check:referral-policy": "tsx scripts/referral-policy.ts build --check",
     "validate": "node --import tsx src/pipeline/validate.ts",
-    "test": "node --import tsx --test test/*.test.ts",
+    "test": "node --import tsx --test test/*.test.ts test/*.test.mjs",
     "serve": "pnpm dlx serve dist",
     "typecheck": "tsc --noEmit && tsc -p src/worker/tsconfig.json"
   },

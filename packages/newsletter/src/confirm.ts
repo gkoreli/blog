@@ -1,68 +1,35 @@
-/**
- * confirm.ts — GET /api/confirm/:rawToken
- *
- * Token flow (hash-before-storage pattern):
- *   Email URL:  /api/confirm/{rawToken}          ← 256-bit hex from generateToken()
- *   DB lookup:  WHERE confirm_token = SHA256(rawToken)
- *
- * Why: a D1 breach cannot yield usable confirm URLs because only hashes are stored.
- * The raw token is ephemeral — it exists only in the email and briefly in this request.
- *
- * Three distinct outcomes:
- *   1. success  (UPDATE changes > 0)         → "You're in."
- *   2. expired  (hash found, status=pending) → "Link expired — subscribe again."
- *   3. not found / already confirmed         → "Already confirmed."
- *
- * Distinguishing 2 from 3 requires a second DB read on the failure path only.
- * Happy path = single atomic UPDATE.
- */
-
 import type { NewsletterEnv } from './db.js';
 import { confirmSubscriber, findByConfirmTokenHash } from './db.js';
 import { hashToken } from './tokens.js';
 import { htmlPage } from './responses.js';
 
-export async function handleConfirm(
-  _request: Request,
-  env: NewsletterEnv,
-  rawToken: string,
-): Promise<Response> {
-  if (!rawToken) return htmlPage('Error', notFoundBody());
-
+/** GET is a preview so mail-scanner prefetch cannot activate a subscription. */
+export async function handleConfirm(request: Request, env: NewsletterEnv, rawToken: string): Promise<Response> {
+  if (!/^[a-f0-9]{64}$/.test(rawToken)) return invalidLink();
   const tokenHash = await hashToken(rawToken);
-
-  // Atomic UPDATE: marks active, clears token, checks 24-hour expiry
-  const confirmed = await confirmSubscriber(env.DB, tokenHash);
-  if (confirmed) return htmlPage('Subscribed', successBody());
-
-  // Failure path: hash still in DB with status=pending → expired
-  const row = await findByConfirmTokenHash(env.DB, tokenHash);
-  if (row?.status === 'pending') return htmlPage('Link expired', expiredBody());
-
-  // Hash not found: already confirmed (token cleared) or invalid link
-  return htmlPage('Already confirmed', alreadyBody());
+  try {
+    const row = await findByConfirmTokenHash(env.DB, tokenHash);
+    if (!row || row.suppression_reason || (row.status !== 'pending' && row.status !== 'active')) return invalidLink();
+    if (row.status === 'active') {
+      return htmlPage('Already confirmed', '<h1>Already confirmed.</h1><p>Your subscription is active.</p>');
+    }
+    if (!row.token_valid) return invalidLink();
+    if (request.method === 'GET') {
+      return htmlPage('Confirm subscription', `<h1>Confirm your subscription.</h1>
+        <p>Receive an email when I publish something new.</p>
+        <form method="post" action="/api/confirm/${rawToken}"><button type="submit">Confirm subscription</button></form>`);
+    }
+    if (request.method !== 'POST') return new Response(null, { status: 405, headers: { allow: 'GET, POST' } });
+    if (await confirmSubscriber(env.DB, tokenHash, row.email)) {
+      return htmlPage('Subscribed', "<h1>You're in.</h1><p>You'll hear from me next time I write something worth your inbox.</p>");
+    }
+    return invalidLink();
+  } catch {
+    console.error('[newsletter:confirm] service_unavailable');
+    return htmlPage('Please try again', '<h1>Please try again.</h1><p>We could not confirm your subscription. Keep this link and try again later.</p>', '/', 503);
+  }
 }
 
-function successBody(): string {
-  return `<div class="icon">✓</div>
-    <h1>You're in.</h1>
-    <p>You'll hear from me next time I write something worth your inbox.</p>`;
-}
-
-function expiredBody(): string {
-  return `<div class="icon">⏱</div>
-    <h1>Link expired.</h1>
-    <p>Confirmation links are valid for 24 hours. Subscribe again and a fresh link will be sent.</p>`;
-}
-
-function alreadyBody(): string {
-  return `<div class="icon">✓</div>
-    <h1>Already confirmed.</h1>
-    <p>Your subscription is active — nothing else to do.</p>`;
-}
-
-function notFoundBody(): string {
-  return `<div class="icon">✗</div>
-    <h1>Link not found.</h1>
-    <p>This confirmation link is invalid. Try subscribing again from the blog.</p>`;
+function invalidLink(): Response {
+  return htmlPage('Link unavailable', '<h1>Link unavailable.</h1><p>This link is invalid, expired, or has been used. You can request a new confirmation from the blog.</p>', '/', 400);
 }

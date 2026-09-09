@@ -1,67 +1,42 @@
-/**
- * turnstile.ts — Cloudflare Turnstile server-side token verification.
- *
- * Docs: https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
- */
+/** Cloudflare verifies requests; it does not establish control of an email address. */
+export type TurnstileVerification =
+  | { ok: true }
+  | { ok: false; kind: 'rejected' | 'unavailable'; reason: string };
 
-interface TurnstileResponse {
-  success: boolean;
-  'error-codes'?: string[];
-}
-
-export interface TurnstileVerification {
-  ok: boolean;
-  reason?: string;
-  errorCodes?: string[];
-}
-
-function stringArray(value: unknown): string[] {
-  return Array.isArray(value) && value.every(item => typeof item === 'string') ? value : [];
-}
-
-function parseTurnstileResponse(raw: unknown): TurnstileResponse {
-  if (typeof raw !== 'object' || raw === null || !('success' in raw)) {
-    return { success: false, 'error-codes': ['bad-response'] };
-  }
-
-  const codes = 'error-codes' in raw ? raw['error-codes'] : [];
-  return {
-    success: raw.success === true,
-    'error-codes': stringArray(codes),
-  };
-}
-
-/**
- * Verify a Turnstile challenge token against the siteverify API.
- * Network errors fail open to avoid blocking legitimate signups when Cloudflare's
- * verifier is temporarily unavailable.
- */
 export async function verifyTurnstile(
-  token: string,
-  secret: string,
-  ip: string,
+  token: string, secret: string, ip: string, hostname: string,
 ): Promise<TurnstileVerification> {
-  // Local/dev builds may omit the secret entirely. Production must supply a token.
-  if (!secret) return { ok: true, reason: 'skipped_no_secret' };
-  if (!token) return { ok: false, reason: 'missing_token' };
-  if (token.length > 2048) return { ok: false, reason: 'token_too_long' };
-
+  if (!secret) return { ok: false, kind: 'unavailable', reason: 'missing_secret' };
+  if (!token || token.length > 2048) return { ok: false, kind: 'rejected', reason: 'invalid_token' };
   try {
     const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ secret, response: token, remoteip: ip }),
+      signal: AbortSignal.timeout(5_000),
     });
-    const data = parseTurnstileResponse(await res.json().catch(() => null));
-    if (data.success === true) return { ok: true };
-    return {
-      ok: false,
-      reason: res.ok ? 'siteverify_rejected' : `siteverify_http_${res.status}`,
-      errorCodes: data['error-codes'] ?? [],
-    };
+    const data: unknown = await res.json();
+    if (typeof data !== 'object' || data === null || !('success' in data)
+      || typeof data.success !== 'boolean') {
+      return { ok: false, kind: 'unavailable', reason: 'invalid_verifier_response' };
+    }
+    const codes = 'error-codes' in data && Array.isArray(data['error-codes']) ? data['error-codes'] : [];
+    if (codes.includes('missing-input-secret') || codes.includes('invalid-input-secret')) {
+      return { ok: false, kind: 'unavailable', reason: 'invalid_secret' };
+    }
+    if (!res.ok || codes.includes('internal-error')) {
+      return { ok: false, kind: 'unavailable', reason: 'verifier_unavailable' };
+    }
+    if (!data.success) return { ok: false, kind: 'rejected', reason: 'invalid_token' };
+    if (!('hostname' in data) || data.hostname !== hostname) {
+      return { ok: false, kind: 'rejected', reason: 'hostname_mismatch' };
+    }
+    // Existing cached clients did not set an action. A different action is rejected.
+    if ('action' in data && data.action !== '' && data.action !== 'subscribe') {
+      return { ok: false, kind: 'rejected', reason: 'action_mismatch' };
+    }
+    return { ok: true };
   } catch {
-    // Network error hitting Turnstile API — fail open to avoid blocking legit users
-    console.warn('[newsletter] Turnstile verification failed with network error');
-    return { ok: true, reason: 'siteverify_network_error' };
+    return { ok: false, kind: 'unavailable', reason: 'verifier_unavailable' };
   }
 }

@@ -8,9 +8,9 @@
 ALTER TABLE subscribers ADD COLUMN user_agent TEXT;
 
 -- Delivery log: one row per subscriber per campaign send.
--- Denormalizes email so the audit trail survives subscriber purges (GDPR data-minimisation deletes rows).
--- sub_id references subscribers(id) conceptually; no FK constraint (D1 does not enforce FK by default,
--- and subscriber rows will be purged after 90 days per GDPR cleanup).
+-- Denormalizes email so the delivery record survives subscriber-row cleanup.
+-- sub_id references subscribers(id) conceptually; this table intentionally has no
+-- foreign-key constraint because the referenced subscriber may later be deleted.
 CREATE TABLE IF NOT EXISTS delivery_logs (
   id           TEXT PRIMARY KEY,
   campaign_id  TEXT NOT NULL,

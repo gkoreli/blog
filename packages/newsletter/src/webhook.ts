@@ -1,51 +1,17 @@
 /**
- * webhook.ts — POST /api/webhooks/resend
- *
- * Handles Resend delivery events for bounce and spam-complaint management.
- *
- * WHY THIS EXISTS
- * ───────────────
- * CAN-SPAM §5(a)(4): must honor opt-out requests within 10 business days.
- * A spam complaint (user clicks "Report Spam") IS an opt-out request.
- * Without this webhook, complaints go unprocessed → CAN-SPAM violation.
- *
- * Hard bounces (invalid address) must be suppressed immediately.
- * Continuing to send to hard-bounced addresses damages sender reputation
- * and can get gkoreli.com blacklisted by major email providers.
- *
- * WHY NO LIBRARY (no svix npm package)
- * ─────────────────────────────────────
- * Resend uses Svix for webhook signing. The @svix/api npm package adds
- * ~900 KB to the Worker bundle. Workers have a 1 MB uncompressed script
- * size limit on the free plan. The verification algorithm is simple
- * HMAC-SHA256 — implementable in ~30 lines using the Web Crypto API.
- *
- * This is the same approach used in Divkix/pickmyclass (GitHub) and
- * recommended by the Svix docs themselves for bundle-size-constrained
- * environments. See ADR-0010 §Dependencies for the full rationale.
- *
- * Source: https://docs.svix.com/receiving/verifying-payloads/how-manual
- *
- * SETUP
- * ─────
- * Resend → Webhooks → Add Endpoint → https://gkoreli.com/api/webhooks/resend
- * Select events: email.bounced, email.complained
- * Copy signing secret → wrangler secret put RESEND_WEBHOOK_SECRET
+ * POST /api/webhooks/resend — suppress recipients after a signed bounce or complaint.
+ * Configure both event types in Resend and supply RESEND_WEBHOOK_SECRET.
+ * Verification uses Web Crypto following Svix's signed-payload format:
+ * https://docs.svix.com/receiving/verifying-payloads/how-manual
  */
 
 import type { NewsletterEnv } from './db.js';
 import { markBounced, markComplained } from './db.js';
 
-/** Reject webhooks older than 5 minutes (replay attack prevention). */
+/** Reject timestamps more than five minutes from the current time. */
 const MAX_AGE_SECONDS = 300;
-
-interface ResendWebhookPayload {
-  type: string;
-  data: {
-    email?: { to?: string[]; from?: string };
-    to?: string[];
-  };
-}
+const MAX_BODY_BYTES = 64 * 1024;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function handleResendWebhook(
   request: Request,
@@ -56,39 +22,62 @@ export async function handleResendWebhook(
     return new Response('Not configured', { status: 501 });
   }
 
-  const body = await request.text();
+  const bodyResult = await readBody(request);
+  if (!bodyResult.ok) return new Response('Invalid webhook body', { status: bodyResult.status });
+  const body = bodyResult.body;
   const valid = await verifySvixSignature(request, body, env.RESEND_WEBHOOK_SECRET);
   if (!valid) return new Response('Unauthorized', { status: 401 });
 
-  let payload: ResendWebhookPayload;
+  let payload: unknown;
   try {
-    payload = JSON.parse(body) as ResendWebhookPayload;
+    payload = JSON.parse(body);
   } catch {
     return new Response('Invalid JSON', { status: 400 });
   }
 
-  const email = extractEmail(payload);
-  if (!email) return new Response('OK', { status: 200 }); // unknown shape — ack, don't retry
-
-  switch (payload.type) {
-    case 'email.bounced':
-      // Hard bounce: address is undeliverable — suppress to protect deliverability
-      await markBounced(env.DB, email);
-      console.log(`[newsletter:webhook] Bounced: ${redact(email)}`);
-      break;
-
-    case 'email.complained':
-      // Spam complaint: mandatory CAN-SPAM unsubscribe
-      await markComplained(env.DB, email);
-      console.log(`[newsletter:webhook] Complained/unsubscribed: ${redact(email)}`);
-      break;
-
-    default:
-      // Unsubscribed event type — ack without action
-      break;
+  if (!isRecord(payload) || (payload.type !== 'email.bounced' && payload.type !== 'email.complained')) {
+    return new Response('OK', { status: 200 });
   }
+  const recipients = extractRecipients(payload.data);
+  const suppress = payload.type === 'email.bounced' ? markBounced : markComplained;
+  for (const email of recipients) {
+    await suppress(env.DB, email);
+  }
+  console.log('[newsletter:webhook]', { event: payload.type, recipients: recipients.length });
 
   return new Response('OK', { status: 200 });
+}
+
+async function readBody(request: Request): Promise<
+  { ok: true; body: string } | { ok: false; status: 400 | 413 }
+> {
+  const reader = request.body?.getReader();
+  if (!reader) return { ok: true, body: '' };
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  try {
+    while (true) {
+      const next = await reader.read();
+      if (next.done) break;
+      size += next.value.byteLength;
+      if (size > MAX_BODY_BYTES) {
+        await reader.cancel();
+        return { ok: false, status: 413 };
+      }
+      chunks.push(next.value);
+    }
+    const bytes = new Uint8Array(size);
+    let offset = 0;
+    for (const chunk of chunks) {
+      bytes.set(chunk, offset);
+      offset += chunk.byteLength;
+    }
+    return { ok: true, body: new TextDecoder().decode(bytes) };
+  } catch {
+    return { ok: false, status: 400 };
+  } finally {
+    reader.releaseLock();
+  }
 }
 
 // ── Svix HMAC-SHA256 verification — zero deps, Web Crypto API only ─────────────
@@ -103,9 +92,10 @@ async function verifySvixSignature(
   const sig = request.headers.get('svix-signature');
   if (!id || !ts || !sig) return false;
 
-  // Reject stale messages
-  const tsNum = parseInt(ts, 10);
-  if (!Number.isFinite(tsNum) || Math.abs(Date.now() / 1000 - tsNum) > MAX_AGE_SECONDS) {
+  // Accept whole Unix seconds, not partially numeric strings such as "123abc".
+  if (!/^\d+$/.test(ts)) return false;
+  const tsNum = Number(ts);
+  if (!Number.isSafeInteger(tsNum) || Math.abs(Date.now() / 1000 - tsNum) > MAX_AGE_SECONDS) {
     return false;
   }
 
@@ -130,7 +120,7 @@ async function verifySvixSignature(
   return sig.split(' ').some(s => timingSafeEqual(s, computed));
 }
 
-/** Constant-time string comparison — prevents timing-based signature extraction. */
+/** Compare all equal-length characters without returning on the first mismatch. */
 function timingSafeEqual(a: string, b: string): boolean {
   if (a.length !== b.length) return false;
   let diff = 0;
@@ -138,15 +128,23 @@ function timingSafeEqual(a: string, b: string): boolean {
   return diff === 0;
 }
 
-function extractEmail(payload: ResendWebhookPayload): string | null {
-  const addr = payload.data?.email?.to?.[0] ?? payload.data?.to?.[0];
-  return typeof addr === 'string' && addr.includes('@')
-    ? addr.toLowerCase().trim()
-    : null;
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
-/** Redact email for safe logging: user@example.com → u***@example.com */
-function redact(email: string): string {
-  const [local, domain] = email.split('@');
-  return local && domain ? `${local[0]}***@${domain}` : '[redacted]';
+/** Current Resend recipients plus the older nested shape; normalize and deduplicate. */
+function extractRecipients(data: unknown): string[] {
+  if (!isRecord(data)) return [];
+  const recipients = new Set<string>();
+  const collect = (value: unknown): void => {
+    if (!Array.isArray(value)) return;
+    for (const candidate of value) {
+      if (typeof candidate !== 'string') continue;
+      const email = candidate.trim().toLowerCase();
+      if (email.length <= 254 && EMAIL_RE.test(email)) recipients.add(email);
+    }
+  };
+  collect(data.to);
+  if (isRecord(data.email)) collect(data.email.to);
+  return [...recipients];
 }

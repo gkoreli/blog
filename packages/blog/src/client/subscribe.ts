@@ -9,13 +9,20 @@ interface Turnstile {
       execution?: 'render' | 'execute';
       appearance?: 'always' | 'execute' | 'interaction-only';
       theme?: 'auto' | 'light' | 'dark';
+      action?: string;
+      retry?: 'auto' | 'never';
+      'refresh-expired'?: 'auto' | 'manual' | 'never';
+      'refresh-timeout'?: 'auto' | 'manual' | 'never';
+      'response-field'?: boolean;
       callback?: (token: string) => void;
       'error-callback'?: (errorCode: string) => boolean | void;
       'expired-callback'?: () => void;
+      'timeout-callback'?: () => void;
+      'unsupported-callback'?: () => void;
     }
   ): string;
   execute(widgetId: string): void;
-  reset(widgetId: string): void;
+  remove(widgetId: string): void;
 }
 
 declare global {
@@ -29,6 +36,15 @@ interface SubscribeOptions {
 }
 
 const ATTRIBUTION_PARAMS = ['utm_source', 'utm_campaign'] as const;
+const VERIFICATION_TIMEOUT_MS = 30_000;
+const REQUEST_TIMEOUT_MS = 35_000;
+
+interface Attempt {
+  email: string;
+  phase: 'verifying' | 'sending';
+  timer: number | null;
+  controller: AbortController | null;
+}
 
 /**
  * Preserve only the small amount of acquisition context needed to learn which
@@ -59,19 +75,20 @@ function subscriptionSource(): string {
 }
 
 export function initSubscribeForm({ logger }: SubscribeOptions): void {
-  const formEl = document.getElementById('sub-form') as HTMLFormElement | null;
-  if (!formEl) return;
+  const formEl = document.getElementById('sub-form');
+  if (!(formEl instanceof HTMLFormElement)) return;
 
   // Init guard — prevents double-listener if initSubscribeForm is called more than once
   if (formEl.dataset['subscribeInit'] === 'true') return;
-  formEl.dataset['subscribeInit'] = 'true';
-
   const rawInput = formEl.elements.namedItem('email');
-  const rawBtn = formEl.querySelector<HTMLButtonElement>('.subscribe-btn');
-  const rawMsg = formEl.querySelector<HTMLElement>('.subscribe-msg');
-  const slot = formEl.querySelector<HTMLElement>('.turnstile-slot');
+  const rawBtn = formEl.querySelector('.subscribe-btn');
+  const rawMsg = formEl.querySelector('.subscribe-msg');
+  const slot = formEl.querySelector('.turnstile-slot');
 
-  if (!(rawInput instanceof HTMLInputElement) || !rawBtn || !rawMsg) return;
+  if (!(rawInput instanceof HTMLInputElement)
+    || !(rawBtn instanceof HTMLButtonElement)
+    || !(rawMsg instanceof HTMLElement)) return;
+  formEl.dataset['subscribeInit'] = 'true';
 
   // Capture non-nullable references. TypeScript narrows these at the assignment point
   // but doesn't carry narrowing across async/closure boundaries, so we rebind explicitly.
@@ -80,74 +97,196 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
   const btn = rawBtn;            // HTMLButtonElement (non-null past guard)
   const msg = rawMsg;            // HTMLElement (non-null past guard)
 
-  const sitekey = form.dataset['turnstileSitekey'];
-  let widgetId: string | null = null;
-  let submitting = false;
-
-  if (sitekey && slot && window.turnstile) {
-    widgetId = window.turnstile.render(slot, {
-      sitekey,
-      execution: 'execute',
-      appearance: 'execute',
-      theme: 'auto',
-      callback(token) { void doSubmit(token); },
-      'error-callback'() { setError('Verification failed. Retry once, or allow bot protection for this site.'); return true; },
-      'expired-callback'() { if (widgetId) window.turnstile?.reset(widgetId); },
-    });
-  }
+  let widget: { id: string | null; api: Turnstile } | null = null;
+  let active: Attempt | null = null;
 
   form.addEventListener('submit', e => {
     e.preventDefault();
-    if (submitting) return;
+    if (active) return;
     if (!emailInput.checkValidity()) { emailInput.reportValidity(); return; }
 
-    submitting = true;
+    const attempt: Attempt = {
+      email: emailInput.value.trim(), phase: 'verifying', timer: null, controller: null,
+    };
+    active = attempt;
     btn.disabled = true;
-    msg.textContent = '';
+    form.setAttribute('aria-busy', 'true');
+    msg.textContent = 'Verifying…';
 
-    if (widgetId && window.turnstile) {
-      window.turnstile.execute(widgetId);
-    } else {
-      // Turnstile unavailable — best-effort fallback; server rate-limiting still applies
-      void doSubmit('');
+    // Retry initialization here when the external script arrived after our module.
+    if (!initWidget(true) || !widget || widget.id === null
+      || active !== attempt || attempt.phase !== 'verifying') return;
+    attempt.timer = window.setTimeout(() => {
+      if (active === attempt) {
+        fail('subscribe_widget_deadline', 'Verification took too long. Please try again.');
+      }
+    }, VERIFICATION_TIMEOUT_MS);
+
+    try {
+      widget.api.execute(widget.id);
+    } catch {
+      if (active === attempt) {
+        fail('subscribe_widget_execute_exception', 'Verification could not start. Please try again.');
+      }
     }
   });
 
-  async function doSubmit(token: string): Promise<void> {
+  initWidget(false);
+
+  function initWidget(reportMissing: boolean): boolean {
+    if (widget) return true;
+    const sitekey = form.dataset['turnstileSitekey']?.trim();
+    if (!sitekey || !(slot instanceof HTMLElement)) {
+      if (reportMissing) {
+        fail('subscribe_widget_configuration_missing', 'Subscriptions are temporarily unavailable. Please try again later.');
+      }
+      return false;
+    }
+    const api = window.turnstile;
+    if (!api) {
+      if (reportMissing) {
+        fail('subscribe_widget_unavailable', 'Verification has not loaded. Please wait a moment and try again.');
+      }
+      return false;
+    }
+
+    const current: { id: string | null; api: Turnstile } = { id: null, api };
+    widget = current;
+    try {
+      const id = api.render(slot, {
+        sitekey, execution: 'execute', appearance: 'execute', theme: 'auto', action: 'subscribe',
+        retry: 'never', 'refresh-expired': 'manual', 'refresh-timeout': 'manual', 'response-field': false,
+        callback(token) {
+          if (widget === current && active?.phase === 'verifying') void doSubmit(active, token);
+        },
+        'error-callback'() {
+          if (widget === current) fail('subscribe_widget_error', 'Verification failed. Please try again.');
+          return true;
+        },
+        'expired-callback'() {
+          if (widget !== current) return;
+          if (active) {
+            fail('subscribe_widget_expired', active.phase === 'sending'
+              ? 'Verification expired. Check for a confirmation email before trying again.'
+              : 'Verification expired. Please try again.');
+          } else {
+            removeWidget();
+          }
+        },
+        'timeout-callback'() {
+          if (widget === current) fail('subscribe_widget_timeout', 'Verification timed out. Please try again.');
+        },
+        'unsupported-callback'() {
+          if (widget === current) fail('subscribe_widget_unsupported', 'Verification does not support this browser. Please try another browser.');
+        },
+      });
+      current.id = id;
+      // A callback can fail synchronously inside render, before its ID is returned.
+      if (widget !== current) {
+        api.remove(id);
+        return false;
+      }
+      return true;
+    } catch {
+      if (widget === current) {
+        fail('subscribe_widget_render_exception', 'Verification could not load. Please try again.');
+      }
+      return false;
+    }
+  }
+
+  async function doSubmit(attempt: Attempt, token: string): Promise<void> {
+    if (!token.trim()) {
+      fail('subscribe_widget_empty_token', 'Verification failed. Please try again.');
+      return;
+    }
+    // Consume this callback before fetch so duplicate callbacks cannot send twice.
+    attempt.phase = 'sending';
+    clearDeadline(attempt);
+    const controller = new AbortController();
+    attempt.controller = controller;
+    attempt.timer = window.setTimeout(() => {
+      if (active === attempt) {
+        fail('subscribe_request_timeout', 'The request took too long. Check for a confirmation email before trying again.');
+      }
+    }, REQUEST_TIMEOUT_MS);
+    msg.textContent = 'Submitting…';
+
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ email: emailInput.value.trim(), turnstile: token, source: subscriptionSource() }),
+        body: JSON.stringify({ email: attempt.email, turnstile: token, source: subscriptionSource() }),
+        signal: controller.signal,
       });
-      if (res.status === 202 || res.ok) {
-        form.innerHTML = '<p class="subscribe-done">Check your inbox \u2014 confirmation link on the way.</p>';
+      if (active !== attempt) return;
+      if (res.status === 202) {
+        clearDeadline(attempt);
+        active = null;
+        removeWidget();
+        form.removeAttribute('aria-busy');
+        btn.disabled = false;
+        msg.textContent = 'Request received. If confirmation is needed, check your inbox and spam folder. No email? You can try again in ten minutes.';
         return;
       }
-      const data = await res.json().catch((): { error?: string } => ({})) as { error?: string };
-      const message = data.error ?? 'Something went wrong. Try again.';
-      setError(message);
-      logger.report({
-        type: 'interaction_error',
-        component: 'subscribe_form',
-        message,
-        status: res.status,
-      });
+      const message = res.status === 429
+        ? 'Too many requests. Please wait a few minutes and try again.'
+        : res.status === 503
+          ? res.headers.get('retry-after') === '600'
+            ? 'Subscriptions are temporarily unavailable. Check your inbox before retrying in ten minutes.'
+            : 'Subscriptions are temporarily unavailable. Please try again later.'
+          : res.status === 400
+            ? 'We could not verify this request. Please try again.'
+            : 'We could not complete the request. Please try again.';
+      fail('subscribe_api_rejected', message, res.status);
     } catch {
-      const message = 'Network error. Try again.';
-      setError(message);
-      logger.report({
-        type: 'interaction_error',
-        component: 'subscribe_form',
-        message,
-      });
+      if (active === attempt) {
+        fail('subscribe_network_error', 'Connection failed. Check for a confirmation email before trying again.');
+      }
     }
   }
 
-  function setError(text: string): void {
+  function report(stage: string, status?: number): void {
+    try {
+      logger.report({
+        type: 'interaction_error', component: 'subscribe_form', message: stage, status,
+      });
+    } catch {
+      // Reporting must not break the form's recovery path.
+    }
+  }
+
+  function clearDeadline(attempt: Attempt): void {
+    if (attempt.timer !== null) window.clearTimeout(attempt.timer);
+    attempt.timer = null;
+  }
+
+  function removeWidget(): void {
+    const previous = widget;
+    widget = null; // Ignore callbacks from a removed or failed challenge.
+    if (previous && previous.id !== null) {
+      try {
+        previous.api.remove(previous.id);
+      } catch {
+        report('subscribe_widget_remove_exception');
+        if (slot instanceof HTMLElement) slot.replaceChildren();
+      }
+    } else if (previous && slot instanceof HTMLElement) {
+      slot.replaceChildren();
+    }
+  }
+
+  function fail(stage: string, text: string, status?: number): void {
+    const attempt = active;
+    active = null;
+    if (attempt) {
+      clearDeadline(attempt);
+      attempt.controller?.abort();
+    }
+    removeWidget();
     msg.textContent = text;
-    if (widgetId) window.turnstile?.reset(widgetId);
-    submitting = false;
+    form.removeAttribute('aria-busy');
     btn.disabled = false;
+    report(stage, status);
   }
 }

@@ -3,7 +3,8 @@
  *
  * Public API:
  *   handleSubscribe                    — POST   /api/subscribe
- *   handleConfirm                      — GET    /api/confirm/:rawToken
+ *   handleConfirm                      — GET    /api/confirm/:rawToken (preview)
+ *                                      — POST   /api/confirm/:rawToken (activate)
  *   handleUnsubscribe                  — GET    /api/unsubscribe/:rawToken
  *                                      — POST   /api/unsubscribe/:rawToken  (RFC 8058 one-click)
  *   handleResendConfirmation           — POST   /api/resend-confirmation
@@ -11,7 +12,7 @@
  *   handleSend                         — POST   /api/send  (admin, Bearer token)
  *   handleResendWebhook                — POST   /api/webhooks/resend  (bounce + complaint)
  *   handleScheduled                    — Cloudflare Cron Trigger  (nightly cleanup)
- *   allowedOrigin                      — CORS origin validation
+ *   allowedOrigin                      — allowed CORS response origin (not authentication)
  *   corsPreflightResponse              — OPTIONS preflight for CORS endpoints
  *   NewsletterEnv                      — Worker env type
  */

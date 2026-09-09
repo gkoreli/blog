@@ -222,7 +222,7 @@ export default {
     }
 
     // ── Newsletter: confirm / unsubscribe ──────────────────────────────────
-    if (pathname.startsWith('/api/confirm/') && method === 'GET') {
+    if (pathname.startsWith('/api/confirm/') && (method === 'GET' || method === 'POST')) {
       return handleConfirm(request, env, trailingSegment(pathname, '/api/confirm/'));
     }
     // GET: manual click from email footer

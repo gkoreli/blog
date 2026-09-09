@@ -34,11 +34,15 @@ export function privacyPage() {
 
   <h2>Newsletter</h2>
 
-  <p>If you subscribe, your email address is stored in a Cloudflare D1 database. It's used exclusively to send you new articles. The signup record may also include the page where you subscribed, an allowlisted campaign source and campaign name, and the referring site's hostname — never a full referrer URL. You can unsubscribe at any time via the link in every email. Unsubscribed and bounced addresses are automatically purged after 90 days.</p>
+  <p>If you request a subscription, your email address is stored in a Cloudflare D1 database and sent to Resend to deliver confirmation and newsletter emails. You become a subscriber after opening the confirmation link and pressing the confirmation button. The signup record may also include the page where you subscribed, an allowlisted campaign source and campaign name, the referring site's hostname, a truncated request IP address, a browser user agent, and request and confirmation times.</p>
+
+  <p>To limit unwanted confirmation emails and diagnose delivery failures, the site retains confirmation reservations for seven days. These records contain the email address, a random request identifier, a hashed confirmation token, timestamps, send outcome, and any returned provider message identifier and HTTP status. They are private operational records. An accepted send does not establish that an email reached the inbox. Routine confirmation diagnostics use the request identifier and outcome, without the address, form contents, or tokens.</p>
+
+  <p>You can unsubscribe via the link in every newsletter. Confirmation emails also offer a way to block further confirmation requests for up to 90 days. Unsubscribed and bounced addresses, including their suppression state, are purged after 90 days; expired pending signup records are removed by nightly cleanup. An already admitted email may still arrive after an opt-out.</p>
 
   <h2>Bot protection</h2>
 
-  <p>The newsletter signup form is protected by <a ${ext('https://www.cloudflare.com/products/turnstile/')}>Cloudflare Turnstile</a> (invisible mode). Turnstile analyses browser and network signals in the background to assess signup requests for automated abuse. No interaction is normally required. Cloudflare may process data as part of this assessment — see <a ${ext('https://www.cloudflare.com/privacypolicy/')}>Cloudflare's Privacy Policy</a>.</p>
+  <p>The newsletter signup form uses <a ${ext('https://www.cloudflare.com/products/turnstile/')}>Cloudflare Turnstile</a> when you submit a request. Turnstile analyses browser and network signals to assess automated abuse. Verification may require interaction and can fail; the form reports a problem and lets you retry. Cloudflare may process data as part of this assessment — see <a ${ext('https://www.cloudflare.com/privacypolicy/')}>Cloudflare's Privacy Policy</a>.</p>
 
   <h2>Error diagnostics</h2>
 

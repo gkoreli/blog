@@ -23,34 +23,62 @@ const BASE_URL = 'https://gkoreli.com';
 /** Max recipients per Resend batch API call. */
 export const RESEND_BATCH_LIMIT = 100;
 
-/** Send a double opt-in confirmation email. */
+export type ConfirmationDelivery =
+  | { outcome: 'accepted'; providerId: string; providerStatus: number }
+  | { outcome: 'failed' | 'unknown'; providerId: null; providerStatus: number | null };
+
+/** Two bounded attempts with the same idempotency key and exact message body. */
 export async function sendConfirmationEmail(
   apiKey: string,
   to: string,
   confirmUrl: string,
-): Promise<void> {
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      from: FROM,
-      to,
-      subject: 'One click to confirm your subscription',
-      html: confirmationHtml(confirmUrl),
-      text: confirmationText(confirmUrl),
-    }),
+  optOutUrl: string,
+  attemptId: string,
+): Promise<ConfirmationDelivery> {
+  const body = JSON.stringify({
+    from: FROM, to, subject: 'Confirm your blog subscription',
+    html: confirmationHtml(confirmUrl, optOutUrl), text: confirmationText(confirmUrl, optOutUrl),
   });
-
-  if (!res.ok) {
-    const body = await res.text().catch(() => '');
-    throw new Error(`Resend error ${res.status}: ${body}`);
+  let last: ConfirmationDelivery = { outcome: 'unknown', providerId: null, providerStatus: null };
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const res = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json',
+          'Idempotency-Key': `newsletter-confirmation/${attemptId}`,
+        },
+        body, signal: AbortSignal.timeout(8_000),
+      });
+      if (res.ok) {
+        const data: unknown = await res.json();
+        if (typeof data === 'object' && data !== null && 'id' in data
+          && typeof data.id === 'string' && data.id.length > 0 && data.id.length <= 128) {
+          return { outcome: 'accepted', providerId: data.id, providerStatus: res.status };
+        }
+        last = { outcome: 'unknown', providerId: null, providerStatus: res.status };
+      } else {
+        // Provider bodies may contain addresses; retain only the HTTP status.
+        last = { outcome: res.status >= 500 || res.status === 409 ? 'unknown' : 'failed',
+          providerId: null, providerStatus: res.status };
+        await res.body?.cancel();
+        if (res.status !== 409 && res.status !== 429 && res.status < 500) return last;
+        if (res.status === 429 && attempt === 0) {
+          // Respect a short provider reset without exceeding the interactive wait budget.
+          // A longer or malformed hint returns the failure; never retry ahead of it.
+          const seconds = Number(res.headers.get('retry-after') ?? '1');
+          if (!Number.isFinite(seconds) || seconds < 0 || seconds > 3) return last;
+          await new Promise<void>(resolve => setTimeout(resolve, Math.max(1, seconds) * 1000));
+        }
+      }
+    } catch {
+      last = { outcome: 'unknown', providerId: null, providerStatus: null };
+    }
   }
+  return last;
 }
 
-function confirmationHtml(confirmUrl: string): string {
+function confirmationHtml(confirmUrl: string, optOutUrl: string): string {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,17 +90,17 @@ function confirmationHtml(confirmUrl: string): string {
   <div style="max-width:520px;margin:0 auto;">
     <p style="margin:0 0 2rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:#7a7568;">gkoreli.com</p>
 
-    <h1 style="margin:0 0 1rem;font-size:1.4rem;font-weight:700;line-height:1.3;">One click to confirm</h1>
+    <h1 style="margin:0 0 1rem;font-size:1.4rem;font-weight:700;line-height:1.3;">Confirm your subscription</h1>
 
     <p style="margin:0 0 0.75rem;line-height:1.7;color:#4a4740;">
       You asked to be notified when something new lands on the blog.
-      Click below to confirm — then you're done.
+      Open the link below, then confirm on the blog.
     </p>
     <p style="margin:0 0 2rem;line-height:1.7;color:#4a4740;">
       You'll only hear from me when I write something worth your inbox.
     </p>
 
-    <a href="${confirmUrl}"
+    <a href="${esc(confirmUrl)}"
        style="display:inline-block;padding:0.75rem 1.75rem;background:#1a6b4e;color:#fff;text-decoration:none;border-radius:6px;font-size:0.95rem;font-family:Georgia,serif;">
       Confirm subscription →
     </a>
@@ -80,24 +108,26 @@ function confirmationHtml(confirmUrl: string): string {
     <hr style="margin:2.5rem 0;border:none;border-top:1px solid #ddd8cf;">
 
     <p style="margin:0;font-size:0.75rem;line-height:1.6;color:#9a9585;">
-      If you didn't request this, ignore the email. No account was created and you won't receive anything else.
+      If you didn't request this, you haven't been subscribed. You can
+      <a href="${esc(optOutUrl)}">block further confirmation requests</a> for this address.
     </p>
   </div>
 </body>
 </html>`;
 }
 
-function confirmationText(confirmUrl: string): string {
+function confirmationText(confirmUrl: string, optOutUrl: string): string {
   return `gkoreli.com
 
-One click to confirm
+Confirm your subscription
 
-You asked to be notified when something new lands on the blog. Click below to confirm — then you're done. You'll only hear from me when I write something worth your inbox.
+You asked to be notified when something new lands on the blog. Open the link below, then confirm on the blog. You'll only hear from me when I write something worth your inbox.
 
 Confirm subscription: ${confirmUrl}
 
 ---
-If you didn't request this, ignore the email. No account was created.`;
+If you didn't request this, you haven't been subscribed.
+Block further confirmation requests: ${optOutUrl}`;
 }
 
 // ── Newsletter (subscribed-content) emails ────────────────────────────────────
