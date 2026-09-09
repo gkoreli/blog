@@ -1,0 +1,510 @@
+{
+  "formatVersion": 1,
+  "capturedAt": "2026-09-09T01:16:37.102616+00:00",
+  "rowsRead": 44831,
+  "rowsWritten": 0,
+  "policyVersion": "2026-09-06.2",
+  "policySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+  "rawViews": 8590,
+  "includedViews": 8589,
+  "excludedViews": 1,
+  "includedByKind": [
+    {
+      "value": "legacy-browser",
+      "views": 2292
+    },
+    {
+      "value": "other-bot",
+      "views": 2044
+    },
+    {
+      "value": "browser",
+      "views": 1616
+    },
+    {
+      "value": "cloud-browser",
+      "views": 1406
+    },
+    {
+      "value": "http-client",
+      "views": 1001
+    },
+    {
+      "value": "preview-or-feed",
+      "views": 107
+    },
+    {
+      "value": "search-crawler",
+      "views": 51
+    },
+    {
+      "value": "ai-search",
+      "views": 25
+    },
+    {
+      "value": "ai-assistant",
+      "views": 16
+    },
+    {
+      "value": "headless-browser",
+      "views": 15
+    },
+    {
+      "value": "ai-crawler",
+      "views": 10
+    },
+    {
+      "value": "signed-agent",
+      "views": 6
+    }
+  ],
+  "browser": {
+    "views": 1616,
+    "byDay": [
+      {
+        "value": "2026-09-07",
+        "views": 1534
+      },
+      {
+        "value": "2026-09-08",
+        "views": 76
+      },
+      {
+        "value": "2026-09-06",
+        "views": 3
+      },
+      {
+        "value": "2026-09-09",
+        "views": 2
+      },
+      {
+        "value": "2026-09-04",
+        "views": 1
+      }
+    ],
+    "byFetchSite": [
+      {
+        "value": "cross-site",
+        "views": 1085
+      },
+      {
+        "value": "none",
+        "views": 490
+      },
+      {
+        "value": "same-origin",
+        "views": 40
+      },
+      {
+        "value": "same-site",
+        "views": 1
+      }
+    ],
+    "byFetchUser": [
+      {
+        "value": 1,
+        "views": 1159
+      },
+      {
+        "value": null,
+        "views": 453
+      },
+      {
+        "value": 0,
+        "views": 4
+      }
+    ],
+    "byDevice": [
+      {
+        "value": "desktop",
+        "views": 1023
+      },
+      {
+        "value": "mobile",
+        "views": 586
+      },
+      {
+        "value": "tablet",
+        "views": 7
+      }
+    ],
+    "byRepresentation": [
+      {
+        "value": "html",
+        "views": 1616
+      }
+    ],
+    "byAsnSource": [
+      {
+        "value": "request",
+        "views": 1613
+      },
+      {
+        "value": null,
+        "views": 3
+      }
+    ],
+    "countryCount": 79,
+    "networkCount": 547,
+    "topCountries": [
+      {
+        "value": "US",
+        "views": 282
+      },
+      {
+        "value": "DE",
+        "views": 209
+      },
+      {
+        "value": "GB",
+        "views": 144
+      },
+      {
+        "value": "FR",
+        "views": 94
+      },
+      {
+        "value": "NL",
+        "views": 86
+      },
+      {
+        "value": "IN",
+        "views": 49
+      },
+      {
+        "value": "IT",
+        "views": 47
+      },
+      {
+        "value": "AU",
+        "views": 46
+      },
+      {
+        "value": "SE",
+        "views": 46
+      },
+      {
+        "value": "PL",
+        "views": 40
+      }
+    ],
+    "byReferrerCategory": [
+      {
+        "value": "named",
+        "views": 782
+      },
+      {
+        "value": "absent",
+        "views": 652
+      },
+      {
+        "value": "other",
+        "views": 182
+      }
+    ],
+    "namedReferrers": [
+      {
+        "value": "news.ycombinator.com",
+        "views": 753
+      },
+      {
+        "value": "google.com",
+        "views": 22
+      },
+      {
+        "value": "duckduckgo.com",
+        "views": 3
+      },
+      {
+        "value": "t.co",
+        "views": 2
+      },
+      {
+        "value": "github.com",
+        "views": 1
+      },
+      {
+        "value": "reddit.com",
+        "views": 1
+      }
+    ]
+  },
+  "noReferrer": {
+    "views": 652,
+    "byDay": [
+      {
+        "value": "2026-09-07",
+        "views": 606
+      },
+      {
+        "value": "2026-09-08",
+        "views": 41
+      },
+      {
+        "value": "2026-09-06",
+        "views": 3
+      },
+      {
+        "value": "2026-09-04",
+        "views": 1
+      },
+      {
+        "value": "2026-09-09",
+        "views": 1
+      }
+    ],
+    "byFetchSite": [
+      {
+        "value": "none",
+        "views": 444
+      },
+      {
+        "value": "cross-site",
+        "views": 170
+      },
+      {
+        "value": "same-origin",
+        "views": 38
+      }
+    ],
+    "byFetchUser": [
+      {
+        "value": 1,
+        "views": 406
+      },
+      {
+        "value": null,
+        "views": 242
+      },
+      {
+        "value": 0,
+        "views": 4
+      }
+    ],
+    "byDevice": [
+      {
+        "value": "desktop",
+        "views": 402
+      },
+      {
+        "value": "mobile",
+        "views": 247
+      },
+      {
+        "value": "tablet",
+        "views": 3
+      }
+    ],
+    "byRepresentation": [
+      {
+        "value": "html",
+        "views": 652
+      }
+    ],
+    "byAsnSource": [
+      {
+        "value": "request",
+        "views": 649
+      },
+      {
+        "value": null,
+        "views": 3
+      }
+    ],
+    "countryCount": 66,
+    "networkCount": 308,
+    "topCountries": [
+      {
+        "value": "US",
+        "views": 147
+      },
+      {
+        "value": "DE",
+        "views": 64
+      },
+      {
+        "value": "GB",
+        "views": 41
+      },
+      {
+        "value": "FR",
+        "views": 33
+      },
+      {
+        "value": "NL",
+        "views": 31
+      },
+      {
+        "value": "ES",
+        "views": 23
+      },
+      {
+        "value": "IN",
+        "views": 20
+      },
+      {
+        "value": "JP",
+        "views": 18
+      },
+      {
+        "value": "SE",
+        "views": 18
+      },
+      {
+        "value": "CH",
+        "views": 16
+      }
+    ],
+    "shareOfBrowserViews": 0.4034653465346535,
+    "dailyIds": 576,
+    "repeatHistogram": [
+      {
+        "viewsPerDailyId": 1,
+        "dailyIds": 535
+      },
+      {
+        "viewsPerDailyId": 2,
+        "dailyIds": 27
+      },
+      {
+        "viewsPerDailyId": 3,
+        "dailyIds": 9
+      },
+      {
+        "viewsPerDailyId": 4,
+        "dailyIds": 2
+      },
+      {
+        "viewsPerDailyId": 6,
+        "dailyIds": 1
+      },
+      {
+        "viewsPerDailyId": 9,
+        "dailyIds": 1
+      },
+      {
+        "viewsPerDailyId": 13,
+        "dailyIds": 1
+      }
+    ]
+  },
+  "hn": {
+    "views": 753,
+    "byDay": [
+      {
+        "value": "2026-09-07",
+        "views": 736
+      },
+      {
+        "value": "2026-09-08",
+        "views": 17
+      }
+    ],
+    "byFetchSite": [
+      {
+        "value": "cross-site",
+        "views": 743
+      },
+      {
+        "value": "none",
+        "views": 8
+      },
+      {
+        "value": "same-origin",
+        "views": 2
+      }
+    ],
+    "byFetchUser": [
+      {
+        "value": 1,
+        "views": 599
+      },
+      {
+        "value": null,
+        "views": 154
+      }
+    ],
+    "byDevice": [
+      {
+        "value": "desktop",
+        "views": 480
+      },
+      {
+        "value": "mobile",
+        "views": 270
+      },
+      {
+        "value": "tablet",
+        "views": 3
+      }
+    ],
+    "byRepresentation": [
+      {
+        "value": "html",
+        "views": 753
+      }
+    ],
+    "byAsnSource": [
+      {
+        "value": "request",
+        "views": 753
+      }
+    ],
+    "countryCount": 64,
+    "networkCount": 330,
+    "topCountries": [
+      {
+        "value": "DE",
+        "views": 128
+      },
+      {
+        "value": "GB",
+        "views": 90
+      },
+      {
+        "value": "US",
+        "views": 72
+      },
+      {
+        "value": "FR",
+        "views": 49
+      },
+      {
+        "value": "NL",
+        "views": 46
+      },
+      {
+        "value": "IT",
+        "views": 29
+      },
+      {
+        "value": "AU",
+        "views": 26
+      },
+      {
+        "value": "PL",
+        "views": 23
+      },
+      {
+        "value": "SE",
+        "views": 23
+      },
+      {
+        "value": "IN",
+        "views": 21
+      }
+    ]
+  },
+  "query": "WITH selected AS MATERIALIZED (\n SELECT referrer_host, country, daily_client_id, traffic_class, agent_name, device_type,\n        asn, as_org, sec_fetch_mode, sec_fetch_dest, sec_fetch_site, sec_fetch_user,\n        accepts_html, has_accept_language, representation, signature_agent,\n        signature_status, reader_kind, reader_reason, observed_at, asn_source\n FROM page_observations\n WHERE is_owner = 0 AND path = '/how-i-separate-readers-from-bots-without-javascript'\n   AND observed_at >= '2026-09-03 00:00:00' AND observed_at < '2026-09-09 00:33:35'\n   AND NOT EXISTS (SELECT 1 FROM owner_clients\n     WHERE owner_clients.daily_client_id = page_observations.daily_client_id)\n), repeats AS (\n SELECT substr(observed_at,1,10) AS day, daily_client_id, COUNT(*) AS views\n FROM selected WHERE reader_kind = 'browser' AND referrer_host IS NULL\n GROUP BY day, daily_client_id\n)\nSELECT 'request-groups' AS panel, json_object(\n 'referrerHost',referrer_host,'country',country,'trafficClass',traffic_class,'agentName',agent_name,\n 'deviceType',device_type,'asn',asn,'asOrg',as_org,'fetchMode',sec_fetch_mode,\n 'fetchDest',sec_fetch_dest,'fetchSite',sec_fetch_site,'fetchUser',sec_fetch_user,\n 'acceptsHtml',accepts_html,'hasAcceptLanguage',has_accept_language,\n 'representation',representation,'signatureAgent',signature_agent,'signatureStatus',signature_status,\n 'readerKind',reader_kind,'readerReason',reader_reason,'day',substr(observed_at,1,10),\n 'asnSource',asn_source,'views',COUNT(*),'firstAt',MIN(observed_at),'lastAt',MAX(observed_at)) AS data\nFROM selected\nGROUP BY referrer_host,country,traffic_class,agent_name,device_type,asn,as_org,\n sec_fetch_mode,sec_fetch_dest,sec_fetch_site,sec_fetch_user,accepts_html,has_accept_language,\n representation,signature_agent,signature_status,reader_kind,reader_reason,substr(observed_at,1,10),asn_source\nUNION ALL\nSELECT 'no-referrer-repeat',json_object('viewsPerDailyId',views,'dailyIds',COUNT(*))\nFROM repeats GROUP BY views\nUNION ALL\nSELECT 'no-referrer-hours',json_object('hour',substr(observed_at,1,13),'fetchSite',sec_fetch_site,'views',COUNT(*))\nFROM selected WHERE reader_kind = 'browser' AND referrer_host IS NULL\nGROUP BY substr(observed_at,1,13),sec_fetch_site\nLIMIT 10001;\n",
+  "commitments": {
+    "captureSha256": "e81236afebe5b74e6a5d98f00d575b8f65877b8e7990670cd78116da7221cf0f",
+    "querySha256": "c579c6a99d726c4da3709d6e428174d9467a82825898e3e193eb29cab25f6432"
+  },
+  "limits": [
+    "The query defines the window and selection; a later capture is not an immutable historical database snapshot.",
+    "Browser classification and daily IDs do not establish people, completed reads, or audience accuracy.",
+    "No stored referrer merges absent, rejected, and internal referrers. Fetch Metadata supplies separate client claims.",
+    "Other reported referrers have retained hostnames that are not approved for public display.",
+    "Private capture commitments require the original files to reproduce the counts; hashes do not authenticate Cloudflare."
+  ]
+}

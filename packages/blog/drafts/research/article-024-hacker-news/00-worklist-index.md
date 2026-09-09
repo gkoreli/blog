@@ -12,6 +12,8 @@ Article 024 brought substantially more recorded traffic to this page after its H
 - [Exact shaping prompts](source.prompts.md): this new investigation's human direction, separate from article 024's frozen prompts and footprint.
 - [Publication learning](04-publication-learning.md): what the launch supports, the owner-reported signup repair, zero new confirmed subscribers, and the next steps toward regular readership.
 - [Follow-up measurements](publication-followup-measurements.json): successful Cloudflare access, the one-row subscriber check, and the browser-script capture for September 7–8.
+- [Referrer analysis](05-referrer-analysis.md): the 652 no-referrer observations, exact reconciliation, private evidence boundary, and committed analysis method.
+- [Transitions and funnels](06-transitions-and-funnels.md): authoritative prior art and the accepted internal-navigation implementation.
 
 ## What is complete and what remains open
 
