@@ -1,0 +1,13 @@
+# What our blog analytics adds beyond Matomo—and what agent subscriptions need
+
+Research checkpoint, September 9 UTC / September 8 PDT, 2026. This is a working research artifact, not a published article or a comparative benchmark. [Worklist](00-worklist-index.md) · [Exact owner prompts](source.prompts.md).
+
+We are rebuilding some established analytics features. Matomo already offers page-transition reporting and server-side collection. Its current documentation also describes dedicated AI-agent and chatbot reports, including Cloudflare integration. A claim that our blog is distinctive simply because it observes agents without browser JavaScript would be wrong. [Matomo AI Chatbots Overview](https://matomo.org/faq/reports/ai-chatbots-overview-report/), [HTTP tracking integration](https://matomo.org/faq/how-to/set-up-ai-chatbot-tracking-with-the-http-tracking-api/).
+
+The comparison needs to examine what each implementation records and verifies, how reports can be reproduced, what happens when classification rules change, and the operating burden for one publication. There is no measured basis here yet for claiming that our analytics is more accurate, cheaper overall, or substantially better than Matomo.
+
+The initial upstream code baseline is Matomo **5.13.0**, published August 16, 2026, resolved from GitHub's latest-release endpoint on September 9 UTC. Its source tree is `04c528673024239d858998eebc34e1f8afa1acf3`. Current developer pages may describe later development behavior, so code and live documentation must remain distinguishable. Our deployed comparison baseline is blog commit `c338059`. [Matomo release](https://github.com/matomo-org/matomo/releases/tag/5.13.0).
+
+Agent subscriptions require more than identifying a bot. WebMCP exposes page actions to browser agents; Chrome's August 7 documentation describes an origin trial from Chrome 149, and its current specification is a Community Group draft. WebSub already defines machine subscriptions, callback verification, expiring leases, delivery, and unsubscription. Neither mechanism independently establishes that a human authorized a particular agent to follow this publication. [Chrome WebMCP documentation](https://developer.chrome.com/docs/ai/webmcp), [WebMCP draft](https://webmachinelearning.github.io/webmcp/), [WebSub Recommendation](https://www.w3.org/TR/2026/REC-websub-20260602/).
+
+Pending in this checkpoint: inspect the pinned Matomo detection and verification code; compare storage and operational choices; separate delivery, consent, and identity mechanisms; specify bounded experiments with real denominators and failure cases. No new subscription interface has been implemented or enabled by this research.
