@@ -1,10 +1,10 @@
 ---
 title: "How I Defend My Analytics Against Referrer Spam"
 seoTitle: "Referrer Spam Defense for Public Analytics"
-alternativeHeadline: "Matomo rules and reviewed public names limit referral abuse; shared report queries and caching control the cost."
+alternativeHeadline: "Public analytics need reviewed referrer names, consistent spam exclusions, and honest limits on what requests prove."
 date: "2026-09-06"
 lastModified: "2026-09-08"
-description: "Suspected referrer spam reached my dashboard. I added Matomo rules and name review, then cut a fixed report's D1 reads by 81.8%."
+description: "Suspected referrer spam gave an untrusted site exposure in my public analytics. Matomo rules and reviewed names now limit that abuse."
 section: engineering
 tags: [analytics, http, cloudflare-workers, open-source]
 series:
@@ -23,25 +23,37 @@ researchFootprint:
   startedAt: "2026-09-06T01:17:48.075Z"
   measuredAt: "2026-09-09T01:35:07.268Z"
   provenanceUrl: "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/referrer-spam/10-research-footprint.md"
-  scope: "Measured from the full analytics investigation and three linked review sessions, including referral-policy engineering, the D1 repair, article publication, editorial revision, and bookkeeping. Three earlier session prefixes (22,698,893 tokens) also appear in article 024's frozen footprint. These totals overlap and must not be added together; this is not an exclusive writing cost."
+  scope: "Frozen on September 9 at 01:35 UTC from the full analytics investigation and three linked review sessions, including referral-policy engineering, the D1 repair, publication, editorial revision, and bookkeeping. It covers the first 18 prompts; later prompts and article edits are outside this measurement. Three earlier session prefixes (22,698,893 tokens) also appear in article 024's frozen footprint. These totals overlap and must not be added together; this is not an exclusive writing cost."
 ---
 
 # How I Defend My Analytics Against Referrer Spam
 
-My public analytics dashboard now filters suspected referrer spam from its metrics and publishes only reviewed referrer names. The repair began with a suspicious host ranked first at **35 views**: a request field was giving an untrusted name public exposure. Matomo's spam list, local rules, and a separate display policy now control what reaches the report. These are reporting rules; the originating requests still reach the site.
+My public analytics had put an untrusted website first in the referrer rankings, at **35 views**. Publishing that result gave the site exposure and made a claim about my audience that the request data could not support. I now filter suspected referrer spam and publish only reviewed referrer names, while disclosing exclusions and retaining the observations needed to challenge them.
 
 - **Limit public exposure.** Unreviewed included hostnames appear under “Other reported referrers.”
 - **Apply exclusions consistently.** Matching rules affect totals, charts, and rankings, with excluded observations counted separately.
-- **Budget the defense.** The first implementation was expensive. A shared query used **81.8% fewer D1 reads** for the same historical report; caching reduces repeated calculation.
+- **Avoid inventing an audience.** A request carrying a referrer does not establish that a reader followed a link from that site.
 - **Keep decisions correctable.** Stored observations, versioned rules, and saved reports preserve the evidence behind an exclusion.
 
 ## How a reported referrer became a public ranking
 
-The ranking treated a hostname supplied by a client as something worth showing readers. In the [September 6 capture](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/blog/drafts/research/readers-vs-bots/17-referral-abuse-defense-verification.md), that hostname was `uniuit.com`. Displaying the name gave it exposure regardless of whether anyone followed a real link from that site.
+The ranking gave `uniuit.com`, a site I regarded as malicious, first place with 35 reported views in the [September 6 capture](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/blog/drafts/research/readers-vs-bots/17-referral-abuse-defense-verification.md). I publish [analytics](/stats) as part of this blog's transparency model. Anyone opening that report could see the name at the top. I had given an untrusted destination exposure through my own publication.
 
-Referrer spam is an established form of abuse. Matomo's [May 2015 explanation](https://matomo.org/blog/2015/05/stopping-referrer-spam/) describes automated requests carrying fabricated referrers to get a site noticed in analytics. Our repeated homepage/article requests supported a local exclusion, but did not authenticate an operator or prove that motive. The [request investigation](/how-i-separate-readers-from-bots-without-javascript) preserves that distinction.
+Referrer spam fabricates the claim that traffic came from a website. An automated client can send that website's name in a request without visiting it or following a link. Matomo's [May 2015 explanation](https://matomo.org/blog/2015/05/stopping-referrer-spam/) describes this mechanism and its incentive: getting the advertised site noticed in analytics. Such requests can inflate apparent readership and referral success without bringing an audience.
 
-The defense needed two separate decisions: which observations to exclude from the metrics, and which referrer names to publish.
+My assessment of the destination is separate from what the logs prove. The [repeated homepage/article requests](/how-i-separate-readers-from-bots-without-javascript) supported treating this cluster as suspected referrer spam. They did not independently establish malware or phishing, identify an operator, or prove that zero legitimate clicks occurred. Those 35 reported views gave me no basis to claim 35 readers had arrived from that site.
+
+I did not need to prove every request's origin before withholding a public ranking. The defense needed two decisions: which observations to exclude from the metrics, and which referrer names to publish.
+
+## Why fake referrers undermine public analytics
+
+Public analytics give referral abuse an audience beyond the site owner. A high position can make an untrusted destination look like an established source of readers. My dashboard displayed hostnames as plain text, without outbound links, but the names were still visible and easy to look up.
+
+- **Readers can be directed toward harm.** If someone visits an unsafe site because they found it at the top of my analytics, my blog helped them find it. That risks their safety and my credibility.
+- **I can mistake activity for readership.** Counting suspected spam as evidence of an audience would let me tell myself the blog is growing without establishing that people are reading it.
+- **Referral rankings can reward fabrication.** An automated client can repeat a hostname until it competes with actual sources of discovery. Publishing that claim gives the abuse the exposure the spammer seeks.
+
+Authentic transparency requires explaining what was observed, what was excluded, and what remains unknown. Publishing untrusted referral claims without those distinctions would make my account of the blog less truthful.
 
 ## Separating observations from reporting decisions
 
@@ -94,7 +106,7 @@ Retained observations support recalculation. They do not automatically reconstru
 
 The [report-capture command](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/analytics/policies/README.md) saves the exact received JSON and its hash, checks the advertised policy against the archive, and refuses to overwrite an earlier capture. Deployment records bind the policy to the released code. Captures are explicit, not automatic snapshots of every report.
 
-This repair adds no visitor field and deletes no observation. The retained evidence is a bounded hostname and selected request fields; full original referrer headers were never stored. Keeping that evidence and saving report responses answers two different historical questions.
+The September 6 defense added no visitor field and deleted no observation. Its retained evidence was a bounded hostname and selected request fields; full original referrer headers had not been stored. Keeping that evidence and saving report responses answers two different historical questions.
 
 ## What the referrer filter changed
 
@@ -102,26 +114,15 @@ The fixed August 8–September 6 UTC check produced **972 Browser observations b
 
 The public evidence records aggregates and hashes; private captures let me audit the original reads.
 
-## The D1 cost of filtering every report
+This has not eliminated all referrer spam. It closes automatic public promotion for unreviewed hostnames and removes rule-matched observations from the reports. A client can still impersonate an approved referrer, omit the header, or rotate names that remain included under the generic label. Excluding 35 observations verifies the policy's effect in that window; it does not prove that every remaining observation is genuine.
 
-Filtering at query time costs database work. In that production sample, the totals query went from **7.77 to 14.95 milliseconds**, with rows read increasing from **8,423 to 19,826**. Those are database measurements, not page latency. The ADR records the larger benchmark and when to reconsider stored or materialized results.
+The implementation also had an operating cost. Repeating the referral assessment across panels made one report incur **182,388 D1 row reads**. A shared assessment reduced that to **33,259**, or **81.8% fewer reads**, for the identical historical report. Caching reduces repeated calculation but can leave reports up to an hour old. The [D1 incident](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/00-incident.md) and [repair verification](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md) preserve the query details, read accounting, and limits of that result.
 
-**Update, September 7 UTC:** that cost assessment was incomplete. The full report used **182,388 rows read across nine statements**—about **3.65% of D1's free daily read allowance for one report**. The account subsequently exhausted the allowance. Its query profile was dominated by the repeated referral matcher, although the metrics do not identify who requested those reports. Short database execution time had concealed an unacceptable read budget. [Incident evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/00-incident.md); [Cloudflare's scanned-row accounting](https://developers.cloudflare.com/d1/platform/pricing/).
+## Public analytics need evidence
 
-The database was small: the later count found **7,010 stored page observations** in about **3.1 MB** of database storage. The 182,388 number described repeated query work for one report. It did not describe stored observations or visitors. The saved benchmark itself accounts for 190,811 reads including its baseline query; additional saved API checks also cost reads, but their exact contribution is unavailable. The reviewed evidence does not attribute the whole allowance to those checks or to an attacker. [Read accounting and attribution](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md).
+I want to know whether people are reading the blog and which sources bring them here. A request with a claimed referrer cannot answer those questions on its own. The dashboard now controls name exposure and applies abuse exclusions consistently, while showing that filtering occurred. These reporting rules do not block the originating requests or prove that the remaining traffic is human.
 
-After upgrading Workers, the corrected production query returned the identical historical report with **81.8% fewer reads**. It calculates every panel from one shared assessment:
-
-| Fixed historical report | Statements | D1 rows read |
-|---|---:|---:|
-| Repeated assessments | 9 | 182,388 |
-| Shared assessment | 1 | 33,259 |
-
-Two live requests also returned identical cached results, including one with an irrelevant query parameter. Reports can be up to an hour old, with their calculation time visible. Cache storage is local to a Cloudflare data center, so these checks establish a measured improvement and local reuse, without guaranteeing a global read budget. [Production verification and limits](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md).
-
-The maintenance cost also remains: review new names, update the source, and reverse mistaken exclusions. Clients can change or omit the header; even a correctly implemented rule can hide legitimate visits. The reconciled counts verify policy application, without establishing how many requests came from people.
-
-The dashboard now publishes only reviewed referrer names and applies abuse exclusions consistently across its reports. Reviewing new evidence, correcting mistaken rules, and controlling query cost remain part of operating that defense.
+The rules can still be wrong: clients can change headers, and a legitimate visit from an excluded domain will also be omitted. Reviewing evidence and reversing mistaken decisions remains part of the work. Keeping that correction path is how I can report suspected abuse honestly without promoting it or counting it as proof of an audience.
 
 ---
 
@@ -129,6 +130,6 @@ The dashboard now publishes only reviewed referrer names and applies abuse exclu
 
 | Term | Meaning and source | Date |
 |---|---|---|
-| Referrer spam | Fabricated referral information intended to gain exposure through analytics. [Matomo explanation](https://matomo.org/blog/2015/05/stopping-referrer-spam/). | Published May 13, 2015; checked September 7, 2026 UTC |
+| Referrer spam | Fabricated referral information intended to gain exposure through analytics. [Matomo explanation](https://matomo.org/blog/2015/05/stopping-referrer-spam/). | Published May 13, 2015; rechecked September 9, 2026 UTC |
 | Matomo referrer spam list | Community-contributed hostname list; our release uses a fixed revision. [Source README](https://github.com/matomo-org/referrer-spam-list/blob/e65db652cade6882aa9a76bbb65c9bb17e079f4b/README.md). | Revision `e65db652`; checked September 7, 2026 UTC |
 | Referral policy | Our versioned reporting rules, distinct from retained observations and public name approval. [Decision record](https://github.com/gkoreli/blog/blob/e1aa4a305ef934b1f089b24894321558db5f1603/docs/adr/0016.6-versioned-referral-policy-and-matomo-source.md). | Policy `2026-09-06.2`; activated September 7, 2026 UTC |

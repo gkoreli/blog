@@ -76,3 +76,15 @@ Also I received a positive message on X, they followed me and gave me advice tha
 ---
 
 please measure and add researchFootprint properly
+
+---
+
+In the September 6 capture, that hostname was uniuit.com, we need to explicitly say that this is a malicious website and the fact that it topped our list of Referrers which is a public information due to our blog's full transparency model, even analytics are public, they unded up surfaced on the top of the list, if someone accesses this malicious site we lose credeibility as a blog, and also these referrers are fake, nobody really visited from those pages. We need to explicitly explain why it is bad to have fake/malicious actors trying to be at the top of our analytics and rankings, why do we need to avoid lying to ourselves as if we have lots of readers and referrers from this website, we need authentic transparency not just false, naive transparency.
+
+---
+
+Also, why is this "The D1 cost of filtering every report" a big part of the article? What does this D1 optimization have anything to do with this article? Maybe I am wrong so please explain to me properly
+
+---
+
+Did we eradicate the referrer spam entirely? I feel like its a really valuable lesson to share to the public, we implement the solution and share the values and learnings to the open world

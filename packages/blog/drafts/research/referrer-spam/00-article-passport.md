@@ -4,19 +4,19 @@ Created September 6, 2026 PDT / September 7 UTC; editorial focus revised Septemb
 
 ## Article passport
 
-- **Living center:** a supplied hostname gained public exposure and affected the reported traffic. The owner built a reporting defense, then had to repair its database cost.
+- **Living center:** the blog's public analytics gave an untrusted hostname exposure and made reported referrals look like evidence of an audience. The owner wants transparency that supports honest judgments about readership without promoting abuse.
 - **Form:** evidence-led engineering investigation / decision case study. AI-assisted drafting is appropriate; this is not an exposed essay.
 - **Role:** bridge. A problem in the author's own dashboard yields a decision another analytics implementer can use.
-- **Reader job:** defend public analytics from referral abuse through consistent exclusions, reviewed name visibility, and a measured operating budget. Retained evidence supports correcting mistaken decisions.
+- **Reader job:** defend public analytics from referral abuse through consistent exclusions, reviewed name visibility, and explicit evidence limits. Retained observations support correcting mistakes; database cost is a supporting operating tradeoff.
 - **Before / failure / repair:** arbitrary reported hostnames became public rankings; name visibility and consistent report exclusions now follow an explicit policy, while stored evidence remains available.
 - **Protected uncertainty:** the supplied hostname does not establish the operator or motive. Inclusion does not establish human readership. Community-list membership can be wrong.
 - **Bounded position:** this public dashboard should retain its existing evidence and version the reporting decision. Excluding matches at query time and restricting public names meet that need, with query and review costs.
-- **Ending:** publish reviewed names, apply exclusions consistently, and continue reviewing evidence and cost. No claim that the audience measurement problem is finished.
-- **Scope:** a focused case study; links carry the full ADR, precedence rules, and benchmarks. The D1 incident expanded the original short note.
+- **Ending:** explain what the public report can establish, disclose its exclusions, and correct mistaken rules. No claim that filtering authenticates the remaining audience.
+- **Scope:** a focused case study of public-referrer abuse and credible transparency. The D1 incident initially expanded the note, but the owner questioned its weight. The article now keeps one measured cost paragraph and links the complete incident and repair.
 
 ## Discovery brief
 
-Primary doorway: **referrer spam defense for public analytics**. Secondary language: **Matomo referrer spam list**, **public referrer rankings**, **D1 query cost**, **versioned reporting rules**. These phrases come from the implementation and primary documentation, not measured search-volume research. Excluded intent: GA4 configuration, complete bot detection, identifying a spam operator, blocking all automated access, and recovering headers never stored.
+Primary doorway: **referrer spam defense for public analytics**. Secondary language: **Matomo referrer spam list**, **public referrer rankings**, **analytics transparency**, **versioned reporting rules**. These phrases come from the implementation, owner's concern, and primary documentation, not measured search-volume research. Excluded intent: GA4 configuration, complete bot detection, identifying a spam operator, blocking all automated access, a D1 optimization tutorial, and recovering headers never stored.
 
 ### Initial publication choice, superseded September 8 PDT
 

@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-09-09T01:58:21.794Z",
+  "checks": [
+    {
+      "name": "Title and URL retained; metadata reflects public-referrer defense",
+      "passed": true
+    },
+    {
+      "name": "Public harm, author assessment, and evidence limits rendered",
+      "passed": true
+    },
+    {
+      "name": "D1 remains one measured paragraph with evidence links",
+      "passed": true
+    },
+    {
+      "name": "Every complete shaping prompt is rendered; prior prompts are unchanged",
+      "passed": true
+    },
+    {
+      "name": "Frozen measurement is unchanged and later prompt scope is explicit",
+      "passed": true
+    },
+    {
+      "name": "Expected decision tables and original complete quotation survive",
+      "passed": true
+    },
+    {
+      "name": "Complete-eradication claim rejected with remaining attack paths explicit",
+      "passed": true
+    }
+  ],
+  "measurements": {
+    "descriptionCharacters": 133,
+    "promptCount": 21,
+    "frozenPromptCount": 18,
+    "sourceBodyWhitespaceWords": 1524
+  },
+  "sources": {
+    "mechanism": "https://matomo.org/blog/2015/05/stopping-referrer-spam/",
+    "method": "Official indexed page rechecked after direct retrieval timeout; saved first-party capture and ADR inspected locally."
+  },
+  "frozenManifestSha256": "4036a0ecfd7d560dd31caa9765df977e0c4c77d50c40120b33738a47045f0db6",
+  "limitations": "Generated-output and saved-evidence checks. No new production SQL, destination visit, or interactive browser check."
+}

@@ -2,6 +2,8 @@
 
 Checked September 7, 2026 UTC; publication date September 6 in the author's America/Los_Angeles timezone. This note summarizes a deployed repair. It does not introduce a new production measurement or rewrite the prior investigation's populations.
 
+The tables below preserve the initial release's claim audit. The [September 9 public-transparency revision](07-reader-feedback-and-article-focus.md#public-transparency-and-d1-scope-correction) records the later owner assessment, stronger account of public exposure and credibility risk, and reduced D1 scope. The frozen footprint and historical captures stay unchanged.
+
 ## Source inventory
 
 | ID | Source | Authority and exact use |

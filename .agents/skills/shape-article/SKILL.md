@@ -22,6 +22,8 @@ Do not invent a stake or feeling when the source material lacks one. Name the ga
 
 Separate the main reader problem or result from the implementation choices and constraints that support it. A detail can be true, concrete, and important without being the reason someone should read the article. Carry that priority into the title, opening, and ending. A constraint belongs in the headline when it defines the reader's problem or a necessary boundary of the result.
 
+Apply that priority to body space too. Explain a supporting repair or incident only as deeply as the article's reader decision requires; a short tradeoff paragraph and a link may suffice. Work sharing a codebase or session does not automatically deserve equal weight in the article.
+
 ## Choose the Governing Form
 
 Let forms mix, but choose one to govern movement and the ending.

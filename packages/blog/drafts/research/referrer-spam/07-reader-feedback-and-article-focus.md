@@ -83,3 +83,38 @@ Validation: the four skill validators passed, the blog build produced all 25 pos
 The independent review caught two precision issues before acceptance: metadata now retains the suspected-abuse qualification, and the reporting table includes absent hostnames. Both tables were checked against the current evaluator/projection and saved production read measurements. A remaining literary-title example in the positioning skill was also aligned with its subject-first instruction.
 
 Published in `85c3451`. Its Cloudflare build `2f60f5cc-b2d7-41fa-a1fd-a64b2f804203` completed successfully at September 9 **00:57:52 UTC**. [Live acceptance](09-editorial-revision-live.json) at **01:00:44 UTC** verified the H1, SEO title, qualified description, structured metadata, both new tables, 17-prompt page, citation title, and social card. The citation JSON and social image match the checked local bytes. The final bookkeeping commit records this acceptance; it changes no article content.
+
+## Public transparency and D1 scope correction
+
+September 9 UTC / September 8 PDT, 2026. [TASK-0139](../../../../../docs/tasks/TASK-0139-explain-public-referrer-abuse-and-refocus-article-025.md) records the owner's further correction: the article must explain why an untrusted destination topping a public report risks readers' safety, the blog's credibility, and honest judgments about readership. The owner also questioned why a database optimization occupied so much of the article, then asked whether spam had been eradicated and emphasized sharing the implementation and lesson. All three complete prompts are appended chronologically; none is quoted in fragments or rewritten as a public prompt.
+
+### Position and evidence
+
+| Point | Evidence and treatment |
+|---|---|
+| The hostname topped a publicly visible report with 35 views | The existing September 6 capture and ADR establish the displayed ranking; `/stats` is public. The original display used plain text, with no outbound link or HTML injection. |
+| The owner considers the destination malicious | Preserve that as the owner's stated assessment, rather than claiming an independent malware/phishing diagnosis. No destination inspection is invented. |
+| Referrer spam fabricates referral claims to gain exposure | Matomo's May 13, 2015 explanation describes repeated automated requests and the analytics-promotion incentive. Rechecked September 9 through the official indexed page after a direct retrieval timed out. |
+| The 35 observations establish zero legitimate referrals | Unsupported. Repetition supports a suspected-abuse policy; the saved request fields cannot prove that every reported referral was fabricated or identify the operator. The article rejects presenting those observations as 35 established readers. |
+| Public exposure can endanger readers and credibility | The owner identifies this risk. Present it conditionally; no incident of a reader following the name or suffering harm has been measured. Plain-text exposure can still make a destination discoverable. |
+| Unfiltered rankings can mislead the author about audience growth and discovery | Explain the mechanism and reporting risk. Do not claim a measured amount of false readership or prove that every included, approved source is authentic. |
+
+The bounded domain search found reproductions of our own article and commercial reputation-score pages; it did not provide primary evidence establishing malware, phishing, operator identity, or zero genuine click-throughs. Our own article and its mirrors are not independent corroboration. Inconsistent third-party scores are not used as a safety verdict. The suspected destination was neither visited nor linked.
+
+The published argument is firm about the reporting decision: arbitrary names should not earn public exposure by generating requests, and suspected spam should not be counted as proof of an audience. It remains precise about what the historical observations can establish. The new section names reader safety, the author's credibility, inflated audience interpretation, and distorted referral rankings. The ending makes accountable filtering and correction part of the transparency model.
+
+The answer to complete eradication is explicitly **no**. The article distinguishes the closed promotion path and consistent rule-based report exclusions from continuing possibilities: forged approved names, absent headers, rotated unreviewed names, and automated requests that pass other rules. The known 35-observation exclusion is a fixed-window policy result. The public code, ADR, and captures let others inspect and reuse the defense without promising complete visitor authentication or traffic blocking.
+
+### Why D1 stays brief
+
+The D1 incident is connected to the implementation: repeated referral assessments made reports expensive. It establishes an operating tradeoff of this particular defense. It does not establish referral authenticity, explain the exposure incentive, or prove credibility harm. Giving that incident a long section and a headline opening bullet displaced the article's main reader problem.
+
+The body now keeps one paragraph with the identical-report comparison, 182,388 to 33,259 rows read (81.8% fewer), and the cache freshness tradeoff. Links retain the complete [incident](../d1-read-budget/00-incident.md) and [repair verification](../d1-read-budget/02-recovery.md). No evidence is deleted from those sources; this revision does not create or promise another article. The title and URL stay stable; the description and alternative headline now match the public-abuse focus.
+
+This repeats the earlier weighting error: first historical retention, then query optimization was promoted above the reader's central concern. The existing `shape-article` focus rule now explicitly applies to body space as well as title, opening, and ending. This is a focused correction to an existing skill, without introducing another workflow or publication gate.
+
+### Frozen provenance and acceptance
+
+The [research footprint](10-research-footprint.md) remains frozen at 71,572,616 tokens, four sessions, six committed Markdown artifacts, and the first 18 shaping prompts, ending September 9 at 01:35:07.268 UTC. The public prompt record now contains 21 messages. Its scope text explicitly says later prompts and article edits are outside the frozen measurement. Both earlier manifests and the overlap record remain unchanged; this editorial continuation is recorded in existing research notes rather than adding another Markdown artifact to the counted set.
+
+The material served change occurs on September 8 in the author's timezone, matching the existing `lastModified` date. The original publication date remains September 6. The `shape-article` validator and production build passed; the build generated all 25 posts and passed the referral-policy integrity check. [Seven generated-output checks](13-public-transparency-checks.json) passed, including all 21 exact prompts, the shorter D1 treatment, explicit residual abuse paths, and unchanged frozen accounting. An independent read-only editorial review found no remaining material issue after clarifying that the D1 measurement counts row reads rather than stored rows. Live acceptance will be recorded after deployment. No production SQL or suspicious-destination visit was performed.
