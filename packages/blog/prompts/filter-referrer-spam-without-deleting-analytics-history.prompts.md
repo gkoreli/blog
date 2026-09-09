@@ -72,3 +72,7 @@ How I Filter Referrer Spam Without Deleting Analytics History
 ---
 
 Also I received a positive message on X, they followed me and gave me advice that I would like to incorporate in the article #25 and improve the skills and agents.md instructions as well. read /Users/goga/Documents/goga/blog/x-message.md
+
+---
+
+please measure and add researchFootprint properly
