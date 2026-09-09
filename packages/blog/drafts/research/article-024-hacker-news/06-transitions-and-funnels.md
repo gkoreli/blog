@@ -33,4 +33,4 @@ Before publishing a completion rate, choose whether the unit is an observed tran
 
 A small controlled route through published test pages should establish what the collection sees with normal referrers, suppressed referrers, internal query strings, repeated pages, and owner marking. Human-operated runs and scripted requests need separate labels. This can supply an engineering section in the next article once the measurements exist.
 
-Current status: request analysis and prior-art review complete; implementation and deployment acceptance in progress. This file is the decision record, not a claim that production already captures these fields.
+Current status: request analysis, prior-art review, implementation, migration, and deployment acceptance complete. [Release acceptance](07-transition-release-acceptance.md) records code `c338059`, local checks, the nine excluded scripted observations, the metered report, and live cache reuse. Real-browser calibration and complete multi-step funnels remain separate work.

@@ -39,3 +39,9 @@ Use the next three engineering releases to record reach, confirmed subscriptions
 The fixed article query at 01:16:37 UTC reconciles all 1,616 Browser observations and the original referral categories. The 652 null-referrer rows report Fetch Metadata values of none (444), cross-site (170), and same-origin (38). The parser merges absent, unusable, and internal referrals. The query used 44,831 reads and zero writes; its local D1 fixture passed first. See `05-referrer-analysis.md`, the committed SQL and offline analyzer, and the sanitized `referrer-measurements.json`.
 
 Goga approved preserving referral categories and recognized public internal paths, and requested authoritative prior art for funnel analysis. `06-transitions-and-funnels.md` records the sources, scope, and acceptance plan. Implement and verify page transitions while keeping complete multi-step/person-level funnels explicitly separate from the observations available. Do not infer old internal paths or repeat production extraction of this preserved cohort.
+
+## Referrer release accepted — September 9 UTC
+
+Runtime commit `c338059` is pushed, migration 0009 applied, and production capture and cache behavior verified. `07-transition-release-acceptance.md` and `transition-acceptance.json` record 53 analytics/36 blog tests, local D1 and browser checks, eight scripted referrer cases plus an excluded bootstrap (all nine excluded from public metrics), a 58,204-read report, and a byte-identical MISS → HIT. The implementation is complete; organic transition measurement, real-browser calibration, and the seven-day launch review remain open.
+
+The owner's Matomo comparison and delegated-agent subscription direction are preserved in `agent-readership/00-worklist-index.md` and TASK-0141. The original article and footprint remain unchanged.

@@ -14,6 +14,8 @@ Article 024 brought substantially more recorded traffic to this page after its H
 - [Follow-up measurements](publication-followup-measurements.json): successful Cloudflare access, the one-row subscriber check, and the browser-script capture for September 7–8.
 - [Referrer analysis](05-referrer-analysis.md): the 652 no-referrer observations, exact reconciliation, private evidence boundary, and committed analysis method.
 - [Transitions and funnels](06-transitions-and-funnels.md): authoritative prior art and the accepted internal-navigation implementation.
+- [Transition release acceptance](07-transition-release-acceptance.md): deployed code, controlled capture, report cost, cache reuse, and [sanitized results](transition-acceptance.json).
+- [Matomo and agent subscriptions](../agent-readership/00-worklist-index.md): the owner's next research question, with exact prompts and a separate comparison artifact.
 
 ## What is complete and what remains open
 
@@ -24,6 +26,7 @@ Article 024 brought substantially more recorded traffic to this page after its H
 | Compare earlier submissions | Done: current scores for four URL-matched submissions | Treat as context, since age, subject, timing, and distribution differ |
 | Answer the reader | Facts recorded; earlier assistant draft retained as history | Goga writes the reply himself under HN's current comment rules; no reply was sent here |
 | Test real browser visits | Open in [TASK-0120](../../../../../docs/tasks/TASK-0120.md) | Verify test exclusion, label who operated each client, and run the bounded cases |
+| Preserve referrer context and show page transitions | Deployed and accepted in `c338059`; scripted cases and cache reuse verified | Let organic observations accumulate; do not infer discarded historical paths or complete journeys |
 | Learn from article choices | Initial hypotheses recorded | Separate what a reader explicitly says from our guesses about the title, evidence, and structure |
 | Select and publish the next article | Scope proposed; unpublished | Choose a field note or the existing measurement investigation from the evidence actually available |
 

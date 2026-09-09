@@ -1,0 +1,265 @@
+{
+  "recordedAt": "2026-09-09T02:15:51.080571+00:00",
+  "codeCommit": "c338059",
+  "candidateBase": "c235029",
+  "migration": {
+    "finishedAt": "2026-09-09T01:57:42.356015+00:00",
+    "exitCode": 0,
+    "command": "wrangler d1 migrations apply blog-analytics --remote",
+    "auth": "existing Wrangler OAuth credential explicitly supplied to CLI"
+  },
+  "firstHtmlVerification": {
+    "checkedAt": "2026-09-09T02:01:59.605777+00:00",
+    "status": 200,
+    "hasTransitionSection": true,
+    "hasCorrectedSignatureWording": true,
+    "cfRay": "a3829bb24efa7533-SEA",
+    "cfMitigated": null
+  },
+  "observedDeployment": {
+    "id": "6214b171-fd5d-44a8-8abc-8d1f8e56c3fd",
+    "created_on": "2026-09-09T02:07:43.752278Z",
+    "versions": [
+      {
+        "version_id": "e8c69b0d-3174-4e8f-a3f9-5788f2868686",
+        "percentage": 100
+      }
+    ]
+  },
+  "localChecks": {
+    "analyticsTests": 53,
+    "blogTests": 36,
+    "typechecks": "analytics and blog/worker passed",
+    "builtPosts": 25,
+    "localD1ReportSectionsCompared": 12,
+    "localD1MigrationOldRowPreserved": true,
+    "localD1ProbeQueriesPassed": true,
+    "browserReview": "Chrome desktop: article filter, previous/next rows, category labels and layout. No responsive or real human journey experiment."
+  },
+  "controlledCapture": {
+    "startedAt": "2026-09-09T02:08:16.878475+00:00",
+    "finishedAt": "2026-09-09T02:08:23.239847+00:00",
+    "operator": "scripted HTTP client",
+    "bootstrapRequests": 1,
+    "cases": [
+      {
+        "case": "external",
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer": "https://news.ycombinator.com/item?id=synthetic#test",
+        "status": 200,
+        "contentType": "text/html",
+        "ray": "a382a4f1b8456e05-SEA"
+      },
+      {
+        "case": "internal-article",
+        "path": "/filter-referrer-spam-without-deleting-analytics-history",
+        "referrer": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript?synthetic=1#test",
+        "status": 200,
+        "contentType": "text/html",
+        "ray": "a382a4f3cee46e05-SEA"
+      },
+      {
+        "case": "internal-fixed-page",
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer": "https://gkoreli.com/engineering?synthetic=1",
+        "status": 200,
+        "contentType": "text/html",
+        "ray": "a382a4f5eddd6e05-SEA"
+      },
+      {
+        "case": "internal-unrecognized",
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer": "https://gkoreli.com/api/confirm/synthetic-only?token=synthetic",
+        "status": 200,
+        "contentType": "text/html",
+        "ray": "a382a4f61e976e05-SEA"
+      },
+      {
+        "case": "absent",
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer": null,
+        "status": 200,
+        "contentType": "text/html",
+        "ray": "a382a4f65fbd6e05-SEA"
+      },
+      {
+        "case": "unusable",
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer": "not-a-url",
+        "status": 200,
+        "contentType": "text/html",
+        "ray": "a382a4f698e36e05-SEA"
+      },
+      {
+        "case": "same-page",
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+        "status": 200,
+        "contentType": "text/html",
+        "ray": "a382a4f6c9b76e05-SEA"
+      },
+      {
+        "case": "internal-article-repeated",
+        "path": "/filter-referrer-spam-without-deleting-analytics-history",
+        "referrer": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+        "status": 200,
+        "contentType": "text/html",
+        "ray": "a382a4f70a7f6e05-SEA"
+      }
+    ],
+    "groups": [
+      {
+        "path": "/design-language",
+        "referrer_state": "external",
+        "internal_referrer_path": null,
+        "referrer_host": "bootstrap-excluded",
+        "reader_kind": "other-bot",
+        "observations": 1,
+        "public_eligible": 0
+      },
+      {
+        "path": "/filter-referrer-spam-without-deleting-analytics-history",
+        "referrer_state": "internal",
+        "internal_referrer_path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer_host": null,
+        "reader_kind": "other-bot",
+        "observations": 2,
+        "public_eligible": 0
+      },
+      {
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer_state": "absent",
+        "internal_referrer_path": null,
+        "referrer_host": null,
+        "reader_kind": "other-bot",
+        "observations": 1,
+        "public_eligible": 0
+      },
+      {
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer_state": "external",
+        "internal_referrer_path": null,
+        "referrer_host": "news.ycombinator.com",
+        "reader_kind": "other-bot",
+        "observations": 1,
+        "public_eligible": 0
+      },
+      {
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer_state": "internal",
+        "internal_referrer_path": null,
+        "referrer_host": null,
+        "reader_kind": "other-bot",
+        "observations": 1,
+        "public_eligible": 0
+      },
+      {
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer_state": "internal",
+        "internal_referrer_path": "/engineering",
+        "referrer_host": null,
+        "reader_kind": "other-bot",
+        "observations": 1,
+        "public_eligible": 0
+      },
+      {
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer_state": "internal",
+        "internal_referrer_path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer_host": null,
+        "reader_kind": "other-bot",
+        "observations": 1,
+        "public_eligible": 0
+      },
+      {
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "referrer_state": "unusable",
+        "internal_referrer_path": null,
+        "referrer_host": null,
+        "reader_kind": "other-bot",
+        "observations": 1,
+        "public_eligible": 0
+      }
+    ],
+    "rowsRead": 45,
+    "rowsWritten": 2,
+    "publicEligible": 0,
+    "harnessCorrection": "Expected curl requests to be http-client; existing generic curl rule yields other-bot. Corrected assertion and revalidated saved receipt without replaying requests."
+  },
+  "reportCheck": {
+    "rowsRead": 58204,
+    "rowsWritten": 0,
+    "sqlDurationMs": 72.0412,
+    "sections": 12,
+    "publicTotals": {
+      "views": 1619,
+      "dailyClients": 1500,
+      "unattributedViews": 653
+    },
+    "referrerStates": [
+      {
+        "state": "external",
+        "views": 966
+      },
+      {
+        "state": "legacy-unknown",
+        "views": 653
+      }
+    ],
+    "internalTransitions": [],
+    "window": {
+      "start": "2026-09-03",
+      "end": "2026-09-09",
+      "timeZone": "UTC",
+      "granularity": "hour",
+      "updatedAt": "2026-09-09T02:10:21.080Z"
+    }
+  },
+  "cacheCheck": {
+    "first": "MISS",
+    "second": "HIT",
+    "identicalBody": true,
+    "updatedAtUnchanged": true,
+    "expires": "Wed, 09 Sep 2026 03:10:21 GMT",
+    "colo": "SEA"
+  },
+  "meteringLimit": "58,204 metered report reads plus 8 schema/bookkeeping reads and 45 probe reads. The CLI migration, edge inserts and separate cold public API fill were not individually metered here; 58,257 is not the total work for this release.",
+  "captureCommitments": [
+    {
+      "file": "controlled-referrer-capture.json",
+      "sha256": "ece982e2d04e6ad3711e331037d3e662163182191490553f1b0b442993107d9d"
+    },
+    {
+      "file": "controlled-referrer-validation.json",
+      "sha256": "b7fc59a6e7a654255d44b88fdf0e63ead92038d96113a072f63054f9050c77e7"
+    },
+    {
+      "file": "production-report.json",
+      "sha256": "92b7fcc8fc13abc716a887f92131d9bcdf1ac7b2817ebd99a1ddc7598f04023f"
+    },
+    {
+      "file": "public-report-1.json",
+      "sha256": "07217c6197a7ec5dc3f66fa4c715c328b59411675960be7974ac13bae97a0153"
+    },
+    {
+      "file": "public-report-2.json",
+      "sha256": "e95596c332d591d5cc56571efba96a9498286ede8e39af575f53375e3b5c155f"
+    },
+    {
+      "file": "migration-command.json",
+      "sha256": "e46f44c334e5c3bee12d7e6153266720586aa4d185785eec63bd36ec15e1a559"
+    },
+    {
+      "file": "local-migration.stdout",
+      "sha256": "46fd857dea01e3b204c59e82a8f3ae765a858358c1849c71ebc1a058ba71d8ed"
+    },
+    {
+      "file": "local-probe.stdout",
+      "sha256": "adf681f881a515d92bcec6f1564d83aa4654a6289e2dd00d1f03bcfba4f6135c"
+    },
+    {
+      "file": "runtime-release.patch",
+      "sha256": "26a44a8dbd33522645ab119091fc16e61b9d8f66d5bdf27d98e366d3b8688365"
+    }
+  ]
+}
