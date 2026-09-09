@@ -14,8 +14,8 @@ The existing extractor discovers the recursive descendant closure from `source.s
 |---|---|---|
 | `01a0744b-0295-76b0-8660-ed4695a74dc1` | `/root` | Investigation, implementation, measurements, article, releases, editorial revision, and accounting |
 | `01a07922-4c3d-7020-974f-22e1d2eaaeaa` | `/root/matomo_sources` | Matomo source and matching-semantics review |
-| `01a07922-7c2a-7c80-bdad-dbc09e79865d` | `/root/referral_design` | Referral domain design, article claim review, and D1 repair review |
-| `01a0839b-2d66-76f2-8632-9a88d01c38a4` | `/root/editorial_feedback_review` | Article focus, reader-feedback, and shared-instruction review |
+| `01a07922-7c2a-7c80-bdad-dbc09e79865d` | `/root/referral_design` | Referral domain design, article claim review, and D1 report-consolidation implementation and review |
+| `01a0839b-2d66-76f2-8632-9a88d01c38a4` | `/root/editorial_feedback_review` | Article focus, reader-feedback, shared-instruction review, and footprint validation |
 
 The manifest, rather than this descriptive table, determines the session count. No independent root, Claude transcript, or OMP transcript was attributed to this article's work. Article 024's other roots produced its earlier research and shared infrastructure; citing that work does not import those entire sessions into this measurement. The separate root `01a0743e-3475-70d2-a6a4-58772d6c746a` also records publication handoffs and a later HN/referrer investigation. Those activities are outside this selected session tree and its token total.
 
@@ -61,4 +61,6 @@ Private logs contain conversation and system context and are not published. The 
 
 ## Acceptance record
 
-Before the final freeze, the existing mixed-session accounting regression passed. The release must also verify selected private prefixes and recorded usage values, recursive membership, arithmetic, overlap, committed artifact counts, exact frontmatter and rendered values, complete prompts, and the live transparency page. Acceptance results will be recorded here after deployment without moving the frozen boundary.
+Before the final freeze, the existing mixed-session accounting regression passed. An independent read-only agent audit confirmed source ownership, the recursive four-session closure, preliminary cumulative values and arithmetic, selected private-prefix hashes, and the 22,698,893-token overlap. It corrected the contribution table to include the referral-design agent's D1 implementation. This was agent verification, separate from human reader feedback.
+
+The release must also verify final private prefixes and recorded usage values, arithmetic, overlap, identical local and `HEAD` Markdown path sets, committed methodology and prompt bytes, exact frontmatter and rendered values, complete prompts, and the live transparency page. Acceptance results will be recorded here after deployment without moving the frozen boundary.
