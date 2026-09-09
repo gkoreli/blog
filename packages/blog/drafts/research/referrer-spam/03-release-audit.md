@@ -1,5 +1,7 @@
 # Referrer spam note: publication checks
 
+**Original release only.** This is the September 7 audit of `f0cb224`, including its original 982-word count, metadata, and twelve prompts. Those are historical checks. Article 025's current practices revision is `b4e14b5`, with acceptance recorded in `672ac1a`: [latest checks and live result](07-reader-feedback-and-article-focus.md#current-release-and-break-checkpoint). The current prompt page has 23 messages; the frozen research footprint covers the first 18. Resume from the [September 8 break checkpoint](../../../../../docs/handoffs/2026-09-08-article-025-and-referrer-defense-checkpoint.md).
+
 Prepared September 7, 2026 UTC, with September 6 as the author's local publication date. Post 025 is a 982-word short engineering note including its headings, code, and glossary. It links the deployed repair to its evidence and preserves the unresolved identity/readership questions.
 
 ## Review acceptance

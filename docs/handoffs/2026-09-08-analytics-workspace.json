@@ -1,0 +1,63 @@
+{
+  "capturedAt": "2026-09-09T02:53:08.159992+00:00",
+  "archive": "/Users/goga/.local/share/gkoreli/workspace-checkpoints/analytics-break-20260909T025308Z",
+  "manifestSha256": "7760923c0447df79cd85e90d5c22cece56a1d8d03254823203648e6c135739b3",
+  "worktrees": [
+    {
+      "source": "/Users/goga/Documents/goga/blog",
+      "baseCommit": "f6185f5a8b8789ad589b687653903d4ef37153c8",
+      "archivedFiles": 1,
+      "excludedPaths": 0,
+      "statusUnchangedDuringCapture": true
+    },
+    {
+      "source": "/private/tmp/blog-024-release",
+      "baseCommit": "1737fa9a8056d6390465ccfc6951ca8c3e3007c4",
+      "archivedFiles": 24,
+      "excludedPaths": 0,
+      "statusUnchangedDuringCapture": true
+    },
+    {
+      "source": "/private/tmp/blog-radar07-preview",
+      "baseCommit": "5fc2dc5dc40ad2397a78325e3a192485b44e8cb5",
+      "archivedFiles": 9,
+      "excludedPaths": 6,
+      "statusUnchangedDuringCapture": true
+    },
+    {
+      "source": "/Users/goga/.codex/.chatgpt-projects/g-p-6a5054094534819184192d302fa7224f/blog-pr",
+      "baseCommit": "835817bc0cb91823aacdb5258d5aa1afdcf098c1",
+      "archivedFiles": 0,
+      "excludedPaths": 0,
+      "statusUnchangedDuringCapture": true
+    },
+    {
+      "source": "/Users/goga/.local/share/gkoreli/worktrees/article-025-practices-20260909",
+      "baseCommit": "c42ab3afe02a5212684caef9eab8873ab66edfa5",
+      "archivedFiles": 6,
+      "excludedPaths": 0,
+      "statusUnchangedDuringCapture": true
+    },
+    {
+      "source": "/Users/goga/.local/share/gkoreli/worktrees/referrer-context-20260909",
+      "baseCommit": "c235029d6560a0e894c835e6af0cf3aa7bc829e6",
+      "archivedFiles": 18,
+      "excludedPaths": 1,
+      "statusUnchangedDuringCapture": true
+    },
+    {
+      "source": "/Users/goga/.local/share/gkoreli/worktrees/subscription-bombing-20260909",
+      "baseCommit": "86dad937e8d57bbe66085fcf2687272203d93506",
+      "archivedFiles": 0,
+      "excludedPaths": 0,
+      "statusUnchangedDuringCapture": true
+    },
+    {
+      "source": "/Users/goga/Documents/goga/blog-analytics-calibration",
+      "baseCommit": "789de702a0856246ca0e98697b4418d0a8ecd36b",
+      "archivedFiles": 0,
+      "excludedPaths": 0,
+      "statusUnchangedDuringCapture": true
+    }
+  ]
+}

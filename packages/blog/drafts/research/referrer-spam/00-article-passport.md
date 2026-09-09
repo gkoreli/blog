@@ -4,7 +4,7 @@ Created September 6, 2026 PDT / September 7 UTC; editorial focus revised Septemb
 
 ## Article passport
 
-- **Living center:** the blog's public analytics gave an untrusted hostname exposure and made reported referrals look like evidence of an audience. The owner wants transparency that supports honest judgments about readership without promoting abuse.
+- **Living center:** the blog's public analytics gave an untrusted hostname exposure and made a suspicious request cluster look like established readership. The owner wants transparency that supports honest judgments about readership without promoting abuse.
 - **Form:** evidence-led engineering investigation / decision case study. AI-assisted drafting is appropriate; this is not an exposed essay.
 - **Role:** bridge. A problem in the author's own dashboard yields a decision another analytics implementer can use.
 - **Reader job:** defend public analytics from referral abuse through consistent exclusions, reviewed name visibility, and explicit evidence limits. Retained observations support correcting mistakes; database cost is a supporting operating tradeoff.

@@ -2,6 +2,14 @@
 
 Opened September 8, 2026 PDT / September 9 UTC. [TASK-0136](../../../../../docs/tasks/TASK-0136-refocus-article-025-on-referrer-abuse-and-apply-reader.md), filed in [the publishing worklist](../../../../../docs/folders/FLDR-0008.md) and linked from [the referral-defense worklist](../../../../../docs/folders/FLDR-0009.md), tracks this revision. The owner questioned why article 025's title emphasized historical retention and supplied a private X conversation with editorial advice. This is an owner-directed focus correction, independent of the planned September 28 discovery review.
 
+## Current release and break checkpoint
+
+The owner-directed revisions are complete. `bc5bf19` explains referrers as useful evidence with limits; `b4e14b5` puts tested practices, pinned prior art, and scoped production results into the article. Acceptance is recorded in `672ac1a`. The [local checks](16-practices-checks.json) and [live acceptance](17-practices-live.json) establish the current article, metadata, and 23 exact prompts; the last live check was September 9 at **02:41:14.803 UTC**. D1 cost now occupies one supporting paragraph. The current title remains **How I Defend My Analytics Against Referrer Spam**.
+
+The [research footprint](10-research-footprint.md) remains frozen at **71,572,616 tokens, four sessions, six Markdown artifacts, and the first 18 prompts**. Later article changes and this handoff are outside that measurement. Do not remeasure it to make the current 23-prompt count match. The [break checkpoint](../../../../../docs/handoffs/2026-09-08-article-025-and-referrer-defense-checkpoint.md) records remaining engineering work and recovery copies; no article revision is pending merely because those investigations remain open.
+
+The earlier sections below preserve decisions and checks in order. In particular, the initial D1-heavy metadata and opening rationale were superseded by the later public-transparency correction and tested-practices revision.
+
 ## Original feedback archive
 
 The root `x-message.md` was moved to:
@@ -12,7 +20,7 @@ The original **3,271 bytes** were copied, compared byte for byte, and verified a
 
 The full conversation remains private. This worklist paraphrases the relevant advice and resulting decisions. Its positive reception is a reported individual response, not a readership experiment or an endorsement of the revised article. The message was general blog feedback, not a review of the new article 025 draft.
 
-## Advice and editorial decisions
+## Initial advice and editorial decisions
 
 | Input | Decision | Evidence boundary |
 |---|---|---|
@@ -24,7 +32,7 @@ The full conversation remains private. This worklist paraphrases the relevant ad
 | Avoid chasing short-lived LLM behavior | Build useful, inspectable engineering references with evidence proportionate to the claim | The conversation's prediction about future model behavior remains an assumption |
 | The owner's goal of useful engineering references | Preserve methods, artifacts, qualifications, and corrections that engineers and their agents can reuse | A publishing goal, not a demonstrated citation or ranking benefit |
 
-## Article 025 revision
+## Initial article 025 revision — historical release 85c3451
 
 The earlier passport promoted one implementation constraint into the headline. Retaining evidence remains necessary for this design, but the reader first needs to understand how fabricated referrers gain exposure and how a reporting policy limits that abuse. The D1 correction also belongs in the opening's main findings because it shows the operating cost of the chosen defense.
 

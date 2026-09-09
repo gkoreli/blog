@@ -4,6 +4,8 @@ Checked September 7, 2026 UTC; publication date September 6 in the author's Amer
 
 The tables below preserve the initial release's claim audit. The [September 9 public-transparency revision](07-reader-feedback-and-article-focus.md#public-transparency-and-d1-scope-correction) records the later owner assessment, stronger account of public exposure and credibility risk, and reduced D1 scope. The frozen footprint and historical captures stay unchanged.
 
+The [current release record](07-reader-feedback-and-article-focus.md#current-release-and-break-checkpoint) links the subsequent useful-referrer clarification and tested-practices revision. The later practices audit in this ledger connects synthetic tests, fixed production comparisons, and live activation without treating them as interchangeable measurements.
+
 ## Source inventory
 
 | ID | Source | Authority and exact use |
