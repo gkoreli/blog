@@ -7,3 +7,7 @@ By the way, i want to explore and read an artifact about the following, make sur
 ---
 
 By the way, i want to explore and read an artifact about the following, make sure to save it somewhere in the worklist: Are we rebuilding what Matomo has already built? Is our approach drastically different in certain aspects that allows us to be a credible alternative approach as a personal blog analytics solution? Does our solution have approaches that are drastically better than what they have? I want evidence based exploration/research to see where we stand and where they stand. And remember we are embracing AI Agent readership, I want to even arrive to the point where our subscribers are AI Agents on behalf of the real humans. Maybe via WebMCP or maybe via some kinda new framework or protocol that allows the AI Agents to subscribe to Blogs, publications, newsletters and so on. I want to understand and be an example proof of what engineering blogs and Agentic readership looks like in the era of AI Agents in 2026-2027 and beyond. Save this prompt verbatim somewhere, maybe in the article prompts or as prompts.
+
+---
+
+"that a human authorized a particular agent to follow this publication." - is there any prior art for this? any new specification or protocol in progress getting developed to achieve this? or anything similar or parallel to this concept? fanout as needed

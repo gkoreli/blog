@@ -1,0 +1,77 @@
+{
+  "checkedAt": "2026-09-09T02:20:59.453116+00:00",
+  "matomo": {
+    "version": "5.13.0",
+    "commit": "04c528673024239d858998eebc34e1f8afa1acf3",
+    "tree": "f5ba6ef42e5ee8f7cd94cc976649e77546a41c78",
+    "method": "source and upstream test inspection; PHP and full Matomo were not run",
+    "expectedDetectionInUpstreamTest": true,
+    "provider": "plugins/AIAgents/Providers/ChatGPT.php"
+  },
+  "blog": {
+    "commit": "c338059",
+    "method": "executed local verifyWebBotAuth against the upstream placeholder-signature fixture",
+    "result": {
+      "status": "unverified",
+      "reason": "malformed-signature-fields"
+    },
+    "networkFetches": 0
+  },
+  "limits": "One verification predicate comparison, not a head-to-head analytics accuracy or security benchmark. Header parameters may be filtered by a Matomo deployment outside this provider. No production attack was performed.",
+  "sourceFiles": [
+    {
+      "path": "core/Tracker/BotRequestProcessor.php",
+      "url": "https://raw.githubusercontent.com/matomo-org/matomo/5.13.0/core/Tracker/BotRequestProcessor.php",
+      "sha256": "239e68c175d0a8f5f7653c2de70bf06dce0e358113fc6748842413c077805003",
+      "bytes": 950
+    },
+    {
+      "path": "plugins/BotTracking/BotDetector.php",
+      "url": "https://raw.githubusercontent.com/matomo-org/matomo/5.13.0/plugins/BotTracking/BotDetector.php",
+      "sha256": "fcb299b2d5dc0bc492a0692b4004e747daa9e0b443cbdf90bf82351bb4572464",
+      "bytes": 2402
+    },
+    {
+      "path": "plugins/BotTracking/BotTracking.php",
+      "url": "https://raw.githubusercontent.com/matomo-org/matomo/5.13.0/plugins/BotTracking/BotTracking.php",
+      "sha256": "faad16d779e7b9d9d68bbaaa5ae3e86ae160095b8df4540f0224bd1db8b715ec",
+      "bytes": 7831
+    },
+    {
+      "path": "plugins/BotTracking/BotTrackingMethod/Cloudflare.php",
+      "url": "https://raw.githubusercontent.com/matomo-org/matomo/5.13.0/plugins/BotTracking/BotTrackingMethod/Cloudflare.php",
+      "sha256": "0aa96fd424a3e39b0c9572632aa4b30a0142432c53b64580d3cf06ab246a9ca1",
+      "bytes": 1086
+    },
+    {
+      "path": "plugins/AIAgents/Providers/ChatGPT.php",
+      "url": "https://raw.githubusercontent.com/matomo-org/matomo/5.13.0/plugins/AIAgents/Providers/ChatGPT.php",
+      "sha256": "450a3ce44349a0a8d060f03a3759d506e72014a1e963106ff85ce8a736e1eb92",
+      "bytes": 1740
+    },
+    {
+      "path": "plugins/AIAgents/Providers/AgentAbstract.php",
+      "url": "https://raw.githubusercontent.com/matomo-org/matomo/5.13.0/plugins/AIAgents/Providers/AgentAbstract.php",
+      "sha256": "80d13218055cc7b4d75412c176854c15042cf047ab7dd9fe63863a01aaa831ed",
+      "bytes": 634
+    },
+    {
+      "path": "plugins/AIAgents/Providers/NovaAct.php",
+      "url": "https://raw.githubusercontent.com/matomo-org/matomo/5.13.0/plugins/AIAgents/Providers/NovaAct.php",
+      "sha256": "87f148ad01bf6c3039e81c87459a6b01352db9fb5259773b4c9f39f5d418e720",
+      "bytes": 587
+    },
+    {
+      "path": "plugins/AIAgents/Columns/AIAgentName.php",
+      "url": "https://raw.githubusercontent.com/matomo-org/matomo/5.13.0/plugins/AIAgents/Columns/AIAgentName.php",
+      "sha256": "21d53c780e53d2601f987eca94b4f115140c800e08f5f224eaabca3068fc91ca",
+      "bytes": 2427
+    },
+    {
+      "path": "plugins/AIAgents/tests/Unit/Providers/ChatGPTTest.php",
+      "url": "https://raw.githubusercontent.com/matomo-org/matomo/5.13.0/plugins/AIAgents/tests/Unit/Providers/ChatGPTTest.php",
+      "sha256": "0f527b5a5dad133dceb33b7c10fa31a77b1ba4bab36fa7c8bf5269b94b3da59f",
+      "bytes": 3242
+    }
+  ]
+}

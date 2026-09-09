@@ -1,0 +1,17 @@
+{
+  "capturedAt": "2026-09-09T02:15:51.432665+00:00",
+  "url": "https://gkoreli.com/feed.xml",
+  "status": 200,
+  "bytes": 12645,
+  "etagPresent": true,
+  "lastModifiedPresent": false,
+  "items": 25,
+  "uniqueGuids": 25,
+  "descriptionItems": 25,
+  "contentEncodedItems": 0,
+  "feedHubLinks": 0,
+  "sha256": "77e4051f286edd3e52dbc9bf7db8f41e1898803fc703dc14717f24ea0fe97d92",
+  "operator": "scripted HTTP client; no subscription created",
+  "conditionalStatus": 304,
+  "conditionalBodyBytes": 0
+}
