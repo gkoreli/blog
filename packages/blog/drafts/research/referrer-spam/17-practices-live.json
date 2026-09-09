@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-09-09T02:41:14.803Z",
+  "releaseCommit": "b4e14b528c0d60e701970a7d95b1de696d798bb3",
+  "cloudflareBuild": "eb957206-a149-40d8-92b7-726c33b9c034",
+  "cloudflareCompletedAt": "2026-09-09T02:39:36Z",
+  "checks": [
+    {
+      "name": "Live article body exactly matches the independently built revision",
+      "passed": true
+    },
+    {
+      "name": "All 23 live prompts match generated output exactly",
+      "passed": true
+    },
+    {
+      "name": "Live metadata and Markdown match the checked article",
+      "passed": true
+    },
+    {
+      "name": "Frozen measurement scope and five tables remain; no suspect-destination link",
+      "passed": true
+    }
+  ],
+  "requests": [
+    {
+      "key": "article",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history",
+      "status": 200,
+      "contentType": "text/html",
+      "sha256": "1b0d8115cf034b383681ed7486747934e973de194c39ef5c11b866f9e1f9397f"
+    },
+    {
+      "key": "prompts",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history/prompts",
+      "status": 200,
+      "contentType": "text/html",
+      "sha256": "a05ba9a0c955a9bf605dc53d7e154637a46bd430533e9c00418bc63c828b460e"
+    },
+    {
+      "key": "markdown",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history.md",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "sha256": "f7d10f5bafe7ec8679c52a6dba746ccfd955565ceb5e01a98bee6a9eed129b71"
+    }
+  ],
+  "limitations": "HTTP and generated-content acceptance, not interactive browser QA or new analytics measurements. This release preserves the calibrated referrer wording from bc5bf19 and adds practices backed by historical evidence. Frozen footprint unchanged."
+}
