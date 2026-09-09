@@ -1,0 +1,29 @@
+{
+  "runId": "missing-answer",
+  "invocationId": "missing-answer-1",
+  "evaluationId": "eval-1WF-2026-09-09T00:33:55",
+  "testCaseId": null,
+  "traceparent": null,
+  "attemptId": "missing-answer-1-attempt-1",
+  "startedAt": "2026-09-09T00:33:55.828Z",
+  "finishedAt": "2026-09-09T00:33:55.828Z",
+  "elapsedMs": 1,
+  "status": 200,
+  "requestId": "synthetic-missing-answer-10",
+  "retryAfter": "0",
+  "outcome": "missing-answer",
+  "responseSha256": "d4a534e3d5ab43de5b09ee16dedc6eec035cf179b072195f128d15ac87be79f0",
+  "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+  "providerResponseId": null,
+  "providerCitations": {
+    "state": "absent"
+  },
+  "answerAnnotations": {
+    "state": "absent"
+  },
+  "providerReportedUsage": null,
+  "charge": {
+    "state": "unknown"
+  },
+  "cache": "adapter-disabled"
+}

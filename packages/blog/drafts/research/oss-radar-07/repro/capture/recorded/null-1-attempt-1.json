@@ -1,0 +1,30 @@
+{
+  "runId": "null",
+  "invocationId": "null-1",
+  "evaluationId": "eval-F7c-2026-09-09T00:33:53",
+  "testCaseId": null,
+  "traceparent": null,
+  "attemptId": "null-1-attempt-1",
+  "startedAt": "2026-09-09T00:33:53.314Z",
+  "finishedAt": "2026-09-09T00:33:53.315Z",
+  "elapsedMs": 1,
+  "status": 200,
+  "requestId": "synthetic-null-4",
+  "retryAfter": "0",
+  "outcome": "success",
+  "responseSha256": "83a146ade1197ff7323a6f4ff67d312bf2c6afc346a0ebd7c40b707e707fb3f1",
+  "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+  "providerResponseId": null,
+  "providerCitations": {
+    "state": "null",
+    "value": null
+  },
+  "answerAnnotations": {
+    "state": "absent"
+  },
+  "providerReportedUsage": null,
+  "charge": {
+    "state": "unknown"
+  },
+  "cache": "adapter-disabled"
+}

@@ -1,0 +1,29 @@
+{
+  "runId": "malformed",
+  "invocationId": "malformed-1",
+  "evaluationId": "eval-kcv-2026-09-09T00:33:53",
+  "testCaseId": null,
+  "traceparent": null,
+  "attemptId": "malformed-1-attempt-1",
+  "startedAt": "2026-09-09T00:33:53.815Z",
+  "finishedAt": "2026-09-09T00:33:53.816Z",
+  "elapsedMs": 1,
+  "status": 200,
+  "requestId": "synthetic-malformed-5",
+  "retryAfter": "0",
+  "outcome": "invalid-json",
+  "responseSha256": "be302461cda285db3ed2d45fb767b23e08ca8808b35a638009937df22b332d73",
+  "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+  "providerResponseId": null,
+  "providerCitations": {
+    "state": "absent"
+  },
+  "answerAnnotations": {
+    "state": "absent"
+  },
+  "providerReportedUsage": null,
+  "charge": {
+    "state": "unknown"
+  },
+  "cache": "adapter-disabled"
+}

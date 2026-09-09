@@ -1,0 +1,421 @@
+{
+  "evalId": "eval-mEJ-2026-09-09T00:33:51",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-09-09T00:33:51.674Z",
+    "prompts": [
+      {
+        "id": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+        "raw": "Explain the classification boundary.",
+        "label": "Explain the classification boundary.",
+        "provider": "citation-capture:full",
+        "metrics": {
+          "score": 1,
+          "testPassCount": 1,
+          "testFailCount": 0,
+          "testErrorCount": 0,
+          "assertPassCount": 1,
+          "assertFailCount": 0,
+          "totalLatencyMs": 13,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "Assertion passed",
+              "assertion": {
+                "type": "contains",
+                "value": "count of people"
+              }
+            }
+          ]
+        },
+        "id": "a9a1bc0a-5bd1-425e-85dd-5053f580c551",
+        "latencyMs": 13,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Explain the classification boundary.",
+          "label": "Explain the classification boundary.",
+          "config": {}
+        },
+        "promptId": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+        "promptIdx": 0,
+        "traceId": "67bd53ced0802c20d552a0c432cffa6e",
+        "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+        "provider": {
+          "id": "citation-capture:full"
+        },
+        "response": {
+          "output": "Requests do not establish a count of people.",
+          "raw": "{\"id\":\"synthetic-completion\",\"choices\":[{\"message\":{\"content\":\"Requests do not establish a count of people.\",\"annotations\":[{\"type\":\"url_citation\",\"url_citation\":{\"url\":\"https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript\"}}]},\"finish_reason\":\"stop\"}],\"citations\":[\"https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript\"],\"usage\":{\"prompt_tokens\":10,\"completion_tokens\":11,\"cost\":0.001}}",
+          "metadata": {
+            "evidence": {
+              "runId": "full",
+              "invocationId": "full-1",
+              "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+              "testCaseId": "0-0",
+              "traceparent": "00-67bd53ced0802c20d552a0c432cffa6e-7fd54f9650690f53-01",
+              "attempts": [
+                {
+                  "runId": "full",
+                  "invocationId": "full-1",
+                  "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+                  "testCaseId": "0-0",
+                  "traceparent": "00-67bd53ced0802c20d552a0c432cffa6e-7fd54f9650690f53-01",
+                  "attemptId": "full-1-attempt-1",
+                  "startedAt": "2026-09-09T00:33:51.686Z",
+                  "finishedAt": "2026-09-09T00:33:51.695Z",
+                  "elapsedMs": 9,
+                  "status": 200,
+                  "requestId": "synthetic-full-1",
+                  "retryAfter": "0",
+                  "outcome": "success",
+                  "responseSha256": "03c2dc3662fea8854622047c24b0d874fe63ce2cf29a8ba6481843fe2599a6ee",
+                  "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+                  "providerResponseId": "synthetic-completion",
+                  "providerCitations": {
+                    "state": "present",
+                    "value": [
+                      "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+                    ]
+                  },
+                  "answerAnnotations": {
+                    "state": "present",
+                    "value": [
+                      {
+                        "type": "url_citation",
+                        "url_citation": {
+                          "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+                        }
+                      }
+                    ]
+                  },
+                  "providerReportedUsage": {
+                    "prompt_tokens": 10,
+                    "completion_tokens": 11,
+                    "cost": 0.001
+                  },
+                  "charge": {
+                    "state": "provider-reported",
+                    "amount": 0.001,
+                    "currency": "USD",
+                    "field": "usage.cost",
+                    "billingReconciled": false
+                  },
+                  "cache": "adapter-disabled"
+                }
+              ]
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "assert": [
+            {
+              "type": "contains",
+              "value": "count of people"
+            }
+          ],
+          "vars": {},
+          "options": {},
+          "metadata": {
+            "tracingEnabled": true,
+            "evaluationId": "eval-mEJ-2026-09-09T00:33:51"
+          }
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {},
+        "metadata": {
+          "tracingEnabled": true,
+          "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+          "evidence": {
+            "runId": "full",
+            "invocationId": "full-1",
+            "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+            "testCaseId": "0-0",
+            "traceparent": "00-67bd53ced0802c20d552a0c432cffa6e-7fd54f9650690f53-01",
+            "attempts": [
+              {
+                "runId": "full",
+                "invocationId": "full-1",
+                "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+                "testCaseId": "0-0",
+                "traceparent": "00-67bd53ced0802c20d552a0c432cffa6e-7fd54f9650690f53-01",
+                "attemptId": "full-1-attempt-1",
+                "startedAt": "2026-09-09T00:33:51.686Z",
+                "finishedAt": "2026-09-09T00:33:51.695Z",
+                "elapsedMs": 9,
+                "status": 200,
+                "requestId": "synthetic-full-1",
+                "retryAfter": "0",
+                "outcome": "success",
+                "responseSha256": "03c2dc3662fea8854622047c24b0d874fe63ce2cf29a8ba6481843fe2599a6ee",
+                "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+                "providerResponseId": "synthetic-completion",
+                "providerCitations": {
+                  "state": "present",
+                  "value": [
+                    "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+                  ]
+                },
+                "answerAnnotations": {
+                  "state": "present",
+                  "value": [
+                    {
+                      "type": "url_citation",
+                      "url_citation": {
+                        "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+                      }
+                    }
+                  ]
+                },
+                "providerReportedUsage": {
+                  "prompt_tokens": 10,
+                  "completion_tokens": 11,
+                  "cost": 0.001
+                },
+                "charge": {
+                  "state": "provider-reported",
+                  "amount": 0.001,
+                  "currency": "USD",
+                  "field": "usage.cost",
+                  "billingReconciled": false
+                },
+                "cache": "adapter-disabled"
+              }
+            ]
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      }
+    ],
+    "stats": {
+      "successes": 1,
+      "failures": 0,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 23,
+      "evaluationDurationMs": 23
+    }
+  },
+  "config": {
+    "prompts": [
+      {
+        "raw": "Explain the classification boundary.",
+        "label": "Explain the classification boundary."
+      }
+    ],
+    "providers": [
+      {
+        "id": "citation-capture:full"
+      }
+    ],
+    "tests": [
+      {
+        "assert": [
+          {
+            "type": "contains",
+            "value": "count of people"
+          }
+        ]
+      }
+    ],
+    "writeLatestResults": true,
+    "sharing": false,
+    "tracing": {
+      "enabled": true
+    },
+    "outputPath": "/var/folders/1m/77x7hnqs7_v2kqkcdk0s_v2m0000gn/T/radar-07-capture-8wG5Mr/full-export.json"
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.122.2",
+    "nodeVersion": "v24.14.1",
+    "platform": "darwin",
+    "arch": "arm64",
+    "exportedAt": "2026-09-09T00:33:52.291Z",
+    "evaluationCreatedAt": "2026-09-09T00:33:51.674Z",
+    "author": "OSS Radar controlled fixture"
+  },
+  "traces": [
+    {
+      "traceId": "67bd53ced0802c20d552a0c432cffa6e",
+      "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+      "testCaseId": "0-0",
+      "metadata": {
+        "testIdx": 0,
+        "promptIdx": 0,
+        "providerId": "citation-capture:full",
+        "repeatIndex": 0,
+        "vars": {}
+      },
+      "spans": [
+        {
+          "spanId": "7fd54f9650690f53",
+          "parentSpanId": "27aa9c26a72ef54a",
+          "name": "citation-capture:full",
+          "startTime": 1788914031683,
+          "endTime": 1788914031695.3347,
+          "attributes": {
+            "service.name": "promptfoo",
+            "service.version": "0.122.2",
+            "promptfoo.provider.id": "citation-capture:full",
+            "promptfoo.span.role": "target",
+            "promptfoo.target.type": "provider",
+            "promptfoo.prompt.label": "Explain the classification boundary.",
+            "promptfoo.eval.id": "eval-mEJ-2026-09-09T00:33:51",
+            "promptfoo.test.index": 0
+          },
+          "statusCode": 1
+        },
+        {
+          "spanId": "75b8e6b43f825234",
+          "parentSpanId": "27aa9c26a72ef54a",
+          "name": "grader contains",
+          "startTime": 1788914031696,
+          "endTime": 1788914031696.52,
+          "attributes": {
+            "service.name": "promptfoo",
+            "service.version": "0.122.2",
+            "promptfoo.grader.id": "contains",
+            "gen_ai.evaluation.name": "contains",
+            "promptfoo.span.role": "grader",
+            "promptfoo.eval.id": "eval-mEJ-2026-09-09T00:33:51",
+            "promptfoo.test.index": 0,
+            "gen_ai.evaluation.score.label": "pass",
+            "gen_ai.evaluation.score.value": 1,
+            "gen_ai.evaluation.explanation": "Assertion passed"
+          },
+          "statusCode": 1
+        },
+        {
+          "spanId": "27aa9c26a72ef54a",
+          "name": "promptfoo.test_case",
+          "startTime": 1788914031681,
+          "endTime": 1788914031696.7944,
+          "attributes": {
+            "service.name": "promptfoo",
+            "service.version": "0.122.2",
+            "promptfoo.span.role": "test_case",
+            "promptfoo.eval.id": "eval-mEJ-2026-09-09T00:33:51",
+            "promptfoo.test.index": 0,
+            "promptfoo.test_case.id": "0-0",
+            "promptfoo.prompt.index": 0,
+            "promptfoo.provider.id": "citation-capture:full",
+            "promptfoo.prompt.label": "Explain the classification boundary.",
+            "promptfoo.repeat.index": 0,
+            "promptfoo.test.success": true,
+            "promptfoo.test.score": 1
+          },
+          "statusCode": 1
+        }
+      ]
+    }
+  ]
+}

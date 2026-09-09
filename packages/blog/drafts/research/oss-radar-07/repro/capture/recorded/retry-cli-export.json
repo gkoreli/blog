@@ -1,0 +1,394 @@
+{
+  "evalId": "eval-avl-2026-09-09T00:33:54",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-09-09T00:33:54.814Z",
+    "prompts": [
+      {
+        "id": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+        "raw": "Explain the classification boundary.",
+        "label": "Explain the classification boundary.",
+        "provider": "citation-capture:retry",
+        "metrics": {
+          "score": 1,
+          "testPassCount": 1,
+          "testFailCount": 0,
+          "testErrorCount": 0,
+          "assertPassCount": 1,
+          "assertFailCount": 0,
+          "totalLatencyMs": 2,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "Assertion passed",
+              "assertion": {
+                "type": "contains",
+                "value": "count of people"
+              }
+            }
+          ]
+        },
+        "id": "62001607-b855-488a-865f-eeda70621211",
+        "latencyMs": 2,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Explain the classification boundary.",
+          "label": "Explain the classification boundary.",
+          "config": {}
+        },
+        "promptId": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+        "promptIdx": 0,
+        "provider": {
+          "id": "citation-capture:retry"
+        },
+        "response": {
+          "output": "Requests do not establish a count of people.",
+          "raw": "{\"id\":\"synthetic-completion\",\"choices\":[{\"message\":{\"content\":\"Requests do not establish a count of people.\",\"annotations\":[{\"type\":\"url_citation\",\"url_citation\":{\"url\":\"https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript\"}}]},\"finish_reason\":\"stop\"}],\"citations\":[\"https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript\"],\"usage\":{\"prompt_tokens\":10,\"completion_tokens\":11,\"cost\":0.001}}",
+          "metadata": {
+            "evidence": {
+              "runId": "retry",
+              "invocationId": "retry-1",
+              "evaluationId": "eval-avl-2026-09-09T00:33:54",
+              "testCaseId": null,
+              "traceparent": null,
+              "attempts": [
+                {
+                  "runId": "retry",
+                  "invocationId": "retry-1",
+                  "evaluationId": "eval-avl-2026-09-09T00:33:54",
+                  "testCaseId": null,
+                  "traceparent": null,
+                  "attemptId": "retry-1-attempt-1",
+                  "startedAt": "2026-09-09T00:33:54.817Z",
+                  "finishedAt": "2026-09-09T00:33:54.817Z",
+                  "elapsedMs": 1,
+                  "status": 429,
+                  "requestId": "synthetic-retry-7",
+                  "retryAfter": "0",
+                  "outcome": "http-error",
+                  "responseSha256": "1fdb81f13b1962c8c7ab09594d94279a393fbce1bef8ccb13d247d5c9d79d90d",
+                  "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+                  "providerResponseId": null,
+                  "providerCitations": {
+                    "state": "absent"
+                  },
+                  "answerAnnotations": {
+                    "state": "absent"
+                  },
+                  "providerReportedUsage": null,
+                  "charge": {
+                    "state": "unknown"
+                  },
+                  "cache": "adapter-disabled"
+                },
+                {
+                  "runId": "retry",
+                  "invocationId": "retry-1",
+                  "evaluationId": "eval-avl-2026-09-09T00:33:54",
+                  "testCaseId": null,
+                  "traceparent": null,
+                  "attemptId": "retry-1-attempt-2",
+                  "startedAt": "2026-09-09T00:33:54.818Z",
+                  "finishedAt": "2026-09-09T00:33:54.818Z",
+                  "elapsedMs": 0,
+                  "status": 200,
+                  "requestId": "synthetic-retry-8",
+                  "retryAfter": "0",
+                  "outcome": "success",
+                  "responseSha256": "03c2dc3662fea8854622047c24b0d874fe63ce2cf29a8ba6481843fe2599a6ee",
+                  "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+                  "providerResponseId": "synthetic-completion",
+                  "providerCitations": {
+                    "state": "present",
+                    "value": [
+                      "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+                    ]
+                  },
+                  "answerAnnotations": {
+                    "state": "present",
+                    "value": [
+                      {
+                        "type": "url_citation",
+                        "url_citation": {
+                          "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+                        }
+                      }
+                    ]
+                  },
+                  "providerReportedUsage": {
+                    "prompt_tokens": 10,
+                    "completion_tokens": 11,
+                    "cost": 0.001
+                  },
+                  "charge": {
+                    "state": "provider-reported",
+                    "amount": 0.001,
+                    "currency": "USD",
+                    "field": "usage.cost",
+                    "billingReconciled": false
+                  },
+                  "cache": "adapter-disabled"
+                }
+              ]
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "assert": [
+            {
+              "type": "contains",
+              "value": "count of people"
+            }
+          ],
+          "vars": {},
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {},
+        "metadata": {
+          "evidence": {
+            "runId": "retry",
+            "invocationId": "retry-1",
+            "evaluationId": "eval-avl-2026-09-09T00:33:54",
+            "testCaseId": null,
+            "traceparent": null,
+            "attempts": [
+              {
+                "runId": "retry",
+                "invocationId": "retry-1",
+                "evaluationId": "eval-avl-2026-09-09T00:33:54",
+                "testCaseId": null,
+                "traceparent": null,
+                "attemptId": "retry-1-attempt-1",
+                "startedAt": "2026-09-09T00:33:54.817Z",
+                "finishedAt": "2026-09-09T00:33:54.817Z",
+                "elapsedMs": 1,
+                "status": 429,
+                "requestId": "synthetic-retry-7",
+                "retryAfter": "0",
+                "outcome": "http-error",
+                "responseSha256": "1fdb81f13b1962c8c7ab09594d94279a393fbce1bef8ccb13d247d5c9d79d90d",
+                "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+                "providerResponseId": null,
+                "providerCitations": {
+                  "state": "absent"
+                },
+                "answerAnnotations": {
+                  "state": "absent"
+                },
+                "providerReportedUsage": null,
+                "charge": {
+                  "state": "unknown"
+                },
+                "cache": "adapter-disabled"
+              },
+              {
+                "runId": "retry",
+                "invocationId": "retry-1",
+                "evaluationId": "eval-avl-2026-09-09T00:33:54",
+                "testCaseId": null,
+                "traceparent": null,
+                "attemptId": "retry-1-attempt-2",
+                "startedAt": "2026-09-09T00:33:54.818Z",
+                "finishedAt": "2026-09-09T00:33:54.818Z",
+                "elapsedMs": 0,
+                "status": 200,
+                "requestId": "synthetic-retry-8",
+                "retryAfter": "0",
+                "outcome": "success",
+                "responseSha256": "03c2dc3662fea8854622047c24b0d874fe63ce2cf29a8ba6481843fe2599a6ee",
+                "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+                "providerResponseId": "synthetic-completion",
+                "providerCitations": {
+                  "state": "present",
+                  "value": [
+                    "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+                  ]
+                },
+                "answerAnnotations": {
+                  "state": "present",
+                  "value": [
+                    {
+                      "type": "url_citation",
+                      "url_citation": {
+                        "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+                      }
+                    }
+                  ]
+                },
+                "providerReportedUsage": {
+                  "prompt_tokens": 10,
+                  "completion_tokens": 11,
+                  "cost": 0.001
+                },
+                "charge": {
+                  "state": "provider-reported",
+                  "amount": 0.001,
+                  "currency": "USD",
+                  "field": "usage.cost",
+                  "billingReconciled": false
+                },
+                "cache": "adapter-disabled"
+              }
+            ]
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      }
+    ],
+    "stats": {
+      "successes": 1,
+      "failures": 0,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 5,
+      "evaluationDurationMs": 5
+    }
+  },
+  "config": {
+    "prompts": [
+      {
+        "raw": "Explain the classification boundary.",
+        "label": "Explain the classification boundary."
+      }
+    ],
+    "providers": [
+      {
+        "id": "citation-capture:retry"
+      }
+    ],
+    "tests": [
+      {
+        "assert": [
+          {
+            "type": "contains",
+            "value": "count of people"
+          }
+        ]
+      }
+    ],
+    "writeLatestResults": true,
+    "sharing": false,
+    "outputPath": "/var/folders/1m/77x7hnqs7_v2kqkcdk0s_v2m0000gn/T/radar-07-capture-8wG5Mr/retry-export.json"
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.122.2",
+    "nodeVersion": "v24.14.1",
+    "platform": "darwin",
+    "arch": "arm64",
+    "exportedAt": "2026-09-09T00:33:55.304Z",
+    "evaluationCreatedAt": "2026-09-09T00:33:54.814Z",
+    "author": "OSS Radar controlled fixture"
+  }
+}

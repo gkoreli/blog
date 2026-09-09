@@ -1,0 +1,276 @@
+{
+  "evalId": "eval-1WF-2026-09-09T00:33:55",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-09-09T00:33:55.826Z",
+    "prompts": [
+      {
+        "id": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+        "raw": "Explain the classification boundary.",
+        "label": "Explain the classification boundary.",
+        "provider": "citation-capture:missing-answer",
+        "metrics": {
+          "score": 0,
+          "testPassCount": 0,
+          "testFailCount": 0,
+          "testErrorCount": 1,
+          "assertPassCount": 0,
+          "assertFailCount": 0,
+          "totalLatencyMs": 2,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "error": "Capture outcome: missing-answer",
+        "gradingResult": null,
+        "id": "2629cbc9-f43a-4135-843c-3561e4215694",
+        "latencyMs": 2,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Explain the classification boundary.",
+          "label": "Explain the classification boundary.",
+          "config": {}
+        },
+        "promptId": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+        "promptIdx": 0,
+        "provider": {
+          "id": "citation-capture:missing-answer"
+        },
+        "response": {
+          "error": "Capture outcome: missing-answer",
+          "raw": "{\"choices\":[]}",
+          "metadata": {
+            "evidence": {
+              "runId": "missing-answer",
+              "invocationId": "missing-answer-1",
+              "evaluationId": "eval-1WF-2026-09-09T00:33:55",
+              "testCaseId": null,
+              "traceparent": null,
+              "attempts": [
+                {
+                  "runId": "missing-answer",
+                  "invocationId": "missing-answer-1",
+                  "evaluationId": "eval-1WF-2026-09-09T00:33:55",
+                  "testCaseId": null,
+                  "traceparent": null,
+                  "attemptId": "missing-answer-1-attempt-1",
+                  "startedAt": "2026-09-09T00:33:55.828Z",
+                  "finishedAt": "2026-09-09T00:33:55.828Z",
+                  "elapsedMs": 1,
+                  "status": 200,
+                  "requestId": "synthetic-missing-answer-10",
+                  "retryAfter": "0",
+                  "outcome": "missing-answer",
+                  "responseSha256": "d4a534e3d5ab43de5b09ee16dedc6eec035cf179b072195f128d15ac87be79f0",
+                  "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+                  "providerResponseId": null,
+                  "providerCitations": {
+                    "state": "absent"
+                  },
+                  "answerAnnotations": {
+                    "state": "absent"
+                  },
+                  "providerReportedUsage": null,
+                  "charge": {
+                    "state": "unknown"
+                  },
+                  "cache": "adapter-disabled"
+                }
+              ]
+            }
+          }
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "assert": [
+            {
+              "type": "contains",
+              "value": "count of people"
+            }
+          ],
+          "vars": {},
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {},
+        "metadata": {
+          "evidence": {
+            "runId": "missing-answer",
+            "invocationId": "missing-answer-1",
+            "evaluationId": "eval-1WF-2026-09-09T00:33:55",
+            "testCaseId": null,
+            "traceparent": null,
+            "attempts": [
+              {
+                "runId": "missing-answer",
+                "invocationId": "missing-answer-1",
+                "evaluationId": "eval-1WF-2026-09-09T00:33:55",
+                "testCaseId": null,
+                "traceparent": null,
+                "attemptId": "missing-answer-1-attempt-1",
+                "startedAt": "2026-09-09T00:33:55.828Z",
+                "finishedAt": "2026-09-09T00:33:55.828Z",
+                "elapsedMs": 1,
+                "status": 200,
+                "requestId": "synthetic-missing-answer-10",
+                "retryAfter": "0",
+                "outcome": "missing-answer",
+                "responseSha256": "d4a534e3d5ab43de5b09ee16dedc6eec035cf179b072195f128d15ac87be79f0",
+                "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+                "providerResponseId": null,
+                "providerCitations": {
+                  "state": "absent"
+                },
+                "answerAnnotations": {
+                  "state": "absent"
+                },
+                "providerReportedUsage": null,
+                "charge": {
+                  "state": "unknown"
+                },
+                "cache": "adapter-disabled"
+              }
+            ]
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 2
+      }
+    ],
+    "stats": {
+      "successes": 0,
+      "failures": 0,
+      "errors": 1,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 4,
+      "evaluationDurationMs": 4
+    }
+  },
+  "config": {
+    "prompts": [
+      {
+        "raw": "Explain the classification boundary.",
+        "label": "Explain the classification boundary."
+      }
+    ],
+    "providers": [
+      {
+        "id": "citation-capture:missing-answer"
+      }
+    ],
+    "tests": [
+      {
+        "assert": [
+          {
+            "type": "contains",
+            "value": "count of people"
+          }
+        ]
+      }
+    ],
+    "writeLatestResults": true,
+    "sharing": false,
+    "outputPath": "/var/folders/1m/77x7hnqs7_v2kqkcdk0s_v2m0000gn/T/radar-07-capture-8wG5Mr/missing-answer-export.json"
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.122.2",
+    "nodeVersion": "v24.14.1",
+    "platform": "darwin",
+    "arch": "arm64",
+    "exportedAt": "2026-09-09T00:33:56.332Z",
+    "evaluationCreatedAt": "2026-09-09T00:33:55.826Z",
+    "author": "OSS Radar controlled fixture"
+  }
+}

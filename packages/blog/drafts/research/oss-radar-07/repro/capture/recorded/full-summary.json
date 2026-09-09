@@ -1,0 +1,304 @@
+{
+  "version": 3,
+  "timestamp": "2026-09-09T00:33:51.674Z",
+  "prompts": [
+    {
+      "id": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+      "raw": "Explain the classification boundary.",
+      "label": "Explain the classification boundary.",
+      "provider": "citation-capture:full",
+      "metrics": {
+        "score": 1,
+        "testPassCount": 1,
+        "testFailCount": 0,
+        "testErrorCount": 0,
+        "assertPassCount": 1,
+        "assertFailCount": 0,
+        "totalLatencyMs": 13,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "namedScores": {},
+        "namedScoresCount": {},
+        "namedScoreWeights": {},
+        "cost": 0
+      }
+    }
+  ],
+  "results": [
+    {
+      "cost": 0,
+      "gradingResult": {
+        "pass": true,
+        "score": 1,
+        "reason": "All assertions passed",
+        "namedScores": {},
+        "tokensUsed": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0
+        },
+        "componentResults": [
+          {
+            "pass": true,
+            "score": 1,
+            "reason": "Assertion passed",
+            "assertion": {
+              "type": "contains",
+              "value": "count of people"
+            }
+          }
+        ]
+      },
+      "id": "a9a1bc0a-5bd1-425e-85dd-5053f580c551",
+      "latencyMs": 13,
+      "namedScores": {},
+      "prompt": {
+        "raw": "Explain the classification boundary.",
+        "label": "Explain the classification boundary.",
+        "config": {}
+      },
+      "promptId": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+      "promptIdx": 0,
+      "traceId": "67bd53ced0802c20d552a0c432cffa6e",
+      "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+      "provider": {
+        "id": "citation-capture:full"
+      },
+      "response": {
+        "output": "Requests do not establish a count of people.",
+        "raw": "{\"id\":\"synthetic-completion\",\"choices\":[{\"message\":{\"content\":\"Requests do not establish a count of people.\",\"annotations\":[{\"type\":\"url_citation\",\"url_citation\":{\"url\":\"https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript\"}}]},\"finish_reason\":\"stop\"}],\"citations\":[\"https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript\"],\"usage\":{\"prompt_tokens\":10,\"completion_tokens\":11,\"cost\":0.001}}",
+        "metadata": {
+          "evidence": {
+            "runId": "full",
+            "invocationId": "full-1",
+            "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+            "testCaseId": "0-0",
+            "traceparent": "00-67bd53ced0802c20d552a0c432cffa6e-7fd54f9650690f53-01",
+            "attempts": [
+              {
+                "runId": "full",
+                "invocationId": "full-1",
+                "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+                "testCaseId": "0-0",
+                "traceparent": "00-67bd53ced0802c20d552a0c432cffa6e-7fd54f9650690f53-01",
+                "attemptId": "full-1-attempt-1",
+                "startedAt": "2026-09-09T00:33:51.686Z",
+                "finishedAt": "2026-09-09T00:33:51.695Z",
+                "elapsedMs": 9,
+                "status": 200,
+                "requestId": "synthetic-full-1",
+                "retryAfter": "0",
+                "outcome": "success",
+                "responseSha256": "03c2dc3662fea8854622047c24b0d874fe63ce2cf29a8ba6481843fe2599a6ee",
+                "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+                "providerResponseId": "synthetic-completion",
+                "providerCitations": {
+                  "state": "present",
+                  "value": [
+                    "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+                  ]
+                },
+                "answerAnnotations": {
+                  "state": "present",
+                  "value": [
+                    {
+                      "type": "url_citation",
+                      "url_citation": {
+                        "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+                      }
+                    }
+                  ]
+                },
+                "providerReportedUsage": {
+                  "prompt_tokens": 10,
+                  "completion_tokens": 11,
+                  "cost": 0.001
+                },
+                "charge": {
+                  "state": "provider-reported",
+                  "amount": 0.001,
+                  "currency": "USD",
+                  "field": "usage.cost",
+                  "billingReconciled": false
+                },
+                "cache": "adapter-disabled"
+              }
+            ]
+          }
+        }
+      },
+      "score": 1,
+      "success": true,
+      "testCase": {
+        "assert": [
+          {
+            "type": "contains",
+            "value": "count of people"
+          }
+        ],
+        "vars": {},
+        "options": {},
+        "metadata": {
+          "tracingEnabled": true,
+          "evaluationId": "eval-mEJ-2026-09-09T00:33:51"
+        }
+      },
+      "testIdx": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "vars": {},
+      "metadata": {
+        "tracingEnabled": true,
+        "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+        "evidence": {
+          "runId": "full",
+          "invocationId": "full-1",
+          "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+          "testCaseId": "0-0",
+          "traceparent": "00-67bd53ced0802c20d552a0c432cffa6e-7fd54f9650690f53-01",
+          "attempts": [
+            {
+              "runId": "full",
+              "invocationId": "full-1",
+              "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+              "testCaseId": "0-0",
+              "traceparent": "00-67bd53ced0802c20d552a0c432cffa6e-7fd54f9650690f53-01",
+              "attemptId": "full-1-attempt-1",
+              "startedAt": "2026-09-09T00:33:51.686Z",
+              "finishedAt": "2026-09-09T00:33:51.695Z",
+              "elapsedMs": 9,
+              "status": 200,
+              "requestId": "synthetic-full-1",
+              "retryAfter": "0",
+              "outcome": "success",
+              "responseSha256": "03c2dc3662fea8854622047c24b0d874fe63ce2cf29a8ba6481843fe2599a6ee",
+              "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+              "providerResponseId": "synthetic-completion",
+              "providerCitations": {
+                "state": "present",
+                "value": [
+                  "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+                ]
+              },
+              "answerAnnotations": {
+                "state": "present",
+                "value": [
+                  {
+                    "type": "url_citation",
+                    "url_citation": {
+                      "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+                    }
+                  }
+                ]
+              },
+              "providerReportedUsage": {
+                "prompt_tokens": 10,
+                "completion_tokens": 11,
+                "cost": 0.001
+              },
+              "charge": {
+                "state": "provider-reported",
+                "amount": 0.001,
+                "currency": "USD",
+                "field": "usage.cost",
+                "billingReconciled": false
+              },
+              "cache": "adapter-disabled"
+            }
+          ]
+        },
+        "_promptfooFileMetadata": {}
+      },
+      "failureReason": 0
+    }
+  ],
+  "stats": {
+    "successes": 1,
+    "failures": 0,
+    "errors": 0,
+    "tokenUsage": {
+      "prompt": 0,
+      "completion": 0,
+      "cached": 0,
+      "total": 0,
+      "numRequests": 1,
+      "completionDetails": {
+        "reasoning": 0,
+        "acceptedPrediction": 0,
+        "rejectedPrediction": 0,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0
+      },
+      "assertions": {
+        "total": 0,
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "numRequests": 0,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        }
+      }
+    },
+    "durationMs": 23,
+    "evaluationDurationMs": 23
+  }
+}

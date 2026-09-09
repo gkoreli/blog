@@ -1,0 +1,31 @@
+{
+  "runId": "empty",
+  "invocationId": "empty-1",
+  "evaluationId": "eval-vZk-2026-09-09T00:33:52",
+  "testCaseId": null,
+  "traceparent": null,
+  "attemptId": "empty-1-attempt-1",
+  "startedAt": "2026-09-09T00:33:52.810Z",
+  "finishedAt": "2026-09-09T00:33:52.811Z",
+  "elapsedMs": 1,
+  "status": 200,
+  "requestId": "synthetic-empty-3",
+  "retryAfter": "0",
+  "outcome": "success",
+  "responseSha256": "2d676fe4b66abf82d59b68d719f2d5596b4b5f5ce81846e571e4ff0099cf21ba",
+  "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+  "providerResponseId": null,
+  "providerCitations": {
+    "state": "empty",
+    "value": []
+  },
+  "answerAnnotations": {
+    "state": "empty",
+    "value": []
+  },
+  "providerReportedUsage": null,
+  "charge": {
+    "state": "unknown"
+  },
+  "cache": "adapter-disabled"
+}

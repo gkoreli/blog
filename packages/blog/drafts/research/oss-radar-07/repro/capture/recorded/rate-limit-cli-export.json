@@ -1,0 +1,276 @@
+{
+  "evalId": "eval-8Hr-2026-09-09T00:33:54",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-09-09T00:33:54.314Z",
+    "prompts": [
+      {
+        "id": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+        "raw": "Explain the classification boundary.",
+        "label": "Explain the classification boundary.",
+        "provider": "citation-capture:rate-limit",
+        "metrics": {
+          "score": 0,
+          "testPassCount": 0,
+          "testFailCount": 0,
+          "testErrorCount": 1,
+          "assertPassCount": 0,
+          "assertFailCount": 0,
+          "totalLatencyMs": 1,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "error": "Capture outcome: http-error",
+        "gradingResult": null,
+        "id": "cd8ca165-b1ad-473b-8afc-f75b9b8f5132",
+        "latencyMs": 1,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Explain the classification boundary.",
+          "label": "Explain the classification boundary.",
+          "config": {}
+        },
+        "promptId": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+        "promptIdx": 0,
+        "provider": {
+          "id": "citation-capture:rate-limit"
+        },
+        "response": {
+          "error": "Capture outcome: http-error",
+          "raw": "{\"error\":{\"message\":\"Synthetic rate limit\"}}",
+          "metadata": {
+            "evidence": {
+              "runId": "rate-limit",
+              "invocationId": "rate-limit-1",
+              "evaluationId": "eval-8Hr-2026-09-09T00:33:54",
+              "testCaseId": null,
+              "traceparent": null,
+              "attempts": [
+                {
+                  "runId": "rate-limit",
+                  "invocationId": "rate-limit-1",
+                  "evaluationId": "eval-8Hr-2026-09-09T00:33:54",
+                  "testCaseId": null,
+                  "traceparent": null,
+                  "attemptId": "rate-limit-1-attempt-1",
+                  "startedAt": "2026-09-09T00:33:54.316Z",
+                  "finishedAt": "2026-09-09T00:33:54.317Z",
+                  "elapsedMs": 1,
+                  "status": 429,
+                  "requestId": "synthetic-rate-limit-6",
+                  "retryAfter": "0",
+                  "outcome": "http-error",
+                  "responseSha256": "50ebfcc07fad999a6de35428f0f85a373c375ea4e20149f083367176b697f0c9",
+                  "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+                  "providerResponseId": null,
+                  "providerCitations": {
+                    "state": "absent"
+                  },
+                  "answerAnnotations": {
+                    "state": "absent"
+                  },
+                  "providerReportedUsage": null,
+                  "charge": {
+                    "state": "unknown"
+                  },
+                  "cache": "adapter-disabled"
+                }
+              ]
+            }
+          }
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "assert": [
+            {
+              "type": "contains",
+              "value": "count of people"
+            }
+          ],
+          "vars": {},
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {},
+        "metadata": {
+          "evidence": {
+            "runId": "rate-limit",
+            "invocationId": "rate-limit-1",
+            "evaluationId": "eval-8Hr-2026-09-09T00:33:54",
+            "testCaseId": null,
+            "traceparent": null,
+            "attempts": [
+              {
+                "runId": "rate-limit",
+                "invocationId": "rate-limit-1",
+                "evaluationId": "eval-8Hr-2026-09-09T00:33:54",
+                "testCaseId": null,
+                "traceparent": null,
+                "attemptId": "rate-limit-1-attempt-1",
+                "startedAt": "2026-09-09T00:33:54.316Z",
+                "finishedAt": "2026-09-09T00:33:54.317Z",
+                "elapsedMs": 1,
+                "status": 429,
+                "requestId": "synthetic-rate-limit-6",
+                "retryAfter": "0",
+                "outcome": "http-error",
+                "responseSha256": "50ebfcc07fad999a6de35428f0f85a373c375ea4e20149f083367176b697f0c9",
+                "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+                "providerResponseId": null,
+                "providerCitations": {
+                  "state": "absent"
+                },
+                "answerAnnotations": {
+                  "state": "absent"
+                },
+                "providerReportedUsage": null,
+                "charge": {
+                  "state": "unknown"
+                },
+                "cache": "adapter-disabled"
+              }
+            ]
+          },
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 2
+      }
+    ],
+    "stats": {
+      "successes": 0,
+      "failures": 0,
+      "errors": 1,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 4,
+      "evaluationDurationMs": 4
+    }
+  },
+  "config": {
+    "prompts": [
+      {
+        "raw": "Explain the classification boundary.",
+        "label": "Explain the classification boundary."
+      }
+    ],
+    "providers": [
+      {
+        "id": "citation-capture:rate-limit"
+      }
+    ],
+    "tests": [
+      {
+        "assert": [
+          {
+            "type": "contains",
+            "value": "count of people"
+          }
+        ]
+      }
+    ],
+    "writeLatestResults": true,
+    "sharing": false,
+    "outputPath": "/var/folders/1m/77x7hnqs7_v2kqkcdk0s_v2m0000gn/T/radar-07-capture-8wG5Mr/rate-limit-export.json"
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.122.2",
+    "nodeVersion": "v24.14.1",
+    "platform": "darwin",
+    "arch": "arm64",
+    "exportedAt": "2026-09-09T00:33:54.805Z",
+    "evaluationCreatedAt": "2026-09-09T00:33:54.314Z",
+    "author": "OSS Radar controlled fixture"
+  }
+}

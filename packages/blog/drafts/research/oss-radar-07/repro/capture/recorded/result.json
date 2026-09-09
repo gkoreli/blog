@@ -1,0 +1,141 @@
+{
+  "measuredAt": "2026-09-09T00:33:56.848Z",
+  "node": "v24.14.1",
+  "platform": "darwin",
+  "arch": "arm64",
+  "promptfooVersion": "0.122.2",
+  "evaluations": 10,
+  "localHttpRequests": 11,
+  "liveModelCalls": 0,
+  "apiSpendUsd": 0,
+  "tracingEnabled": "full case only",
+  "databasePersistence": true,
+  "observations": [
+    {
+      "case": "full",
+      "attempts": 1,
+      "outcome": "success",
+      "citationFieldState": "present",
+      "allAttemptRecordsEqualAfterExport": true,
+      "finalRawTextEqualAfterExport": true,
+      "libraryAndRestartedCliResponsesEqual": true,
+      "evaluationId": "eval-mEJ-2026-09-09T00:33:51"
+    },
+    {
+      "case": "absent",
+      "attempts": 1,
+      "outcome": "success",
+      "citationFieldState": "absent",
+      "allAttemptRecordsEqualAfterExport": true,
+      "finalRawTextEqualAfterExport": true,
+      "libraryAndRestartedCliResponsesEqual": true,
+      "evaluationId": "eval-qkl-2026-09-09T00:33:52"
+    },
+    {
+      "case": "empty",
+      "attempts": 1,
+      "outcome": "success",
+      "citationFieldState": "empty",
+      "allAttemptRecordsEqualAfterExport": true,
+      "finalRawTextEqualAfterExport": true,
+      "libraryAndRestartedCliResponsesEqual": true,
+      "evaluationId": "eval-vZk-2026-09-09T00:33:52"
+    },
+    {
+      "case": "null",
+      "attempts": 1,
+      "outcome": "success",
+      "citationFieldState": "null",
+      "allAttemptRecordsEqualAfterExport": true,
+      "finalRawTextEqualAfterExport": true,
+      "libraryAndRestartedCliResponsesEqual": true,
+      "evaluationId": "eval-F7c-2026-09-09T00:33:53"
+    },
+    {
+      "case": "malformed",
+      "attempts": 1,
+      "outcome": "invalid-json",
+      "citationFieldState": "absent",
+      "allAttemptRecordsEqualAfterExport": true,
+      "finalRawTextEqualAfterExport": true,
+      "libraryAndRestartedCliResponsesEqual": true,
+      "evaluationId": "eval-kcv-2026-09-09T00:33:53"
+    },
+    {
+      "case": "rate-limit",
+      "attempts": 1,
+      "outcome": "http-error",
+      "citationFieldState": "absent",
+      "allAttemptRecordsEqualAfterExport": true,
+      "finalRawTextEqualAfterExport": true,
+      "libraryAndRestartedCliResponsesEqual": true,
+      "evaluationId": "eval-8Hr-2026-09-09T00:33:54"
+    },
+    {
+      "case": "retry",
+      "attempts": 2,
+      "outcome": "success",
+      "citationFieldState": "present",
+      "allAttemptRecordsEqualAfterExport": true,
+      "finalRawTextEqualAfterExport": true,
+      "libraryAndRestartedCliResponsesEqual": true,
+      "evaluationId": "eval-avl-2026-09-09T00:33:54"
+    },
+    {
+      "case": "provider-error",
+      "attempts": 1,
+      "outcome": "provider-error",
+      "citationFieldState": "absent",
+      "allAttemptRecordsEqualAfterExport": true,
+      "finalRawTextEqualAfterExport": true,
+      "libraryAndRestartedCliResponsesEqual": true,
+      "evaluationId": "eval-CZq-2026-09-09T00:33:55"
+    },
+    {
+      "case": "missing-answer",
+      "attempts": 1,
+      "outcome": "missing-answer",
+      "citationFieldState": "absent",
+      "allAttemptRecordsEqualAfterExport": true,
+      "finalRawTextEqualAfterExport": true,
+      "libraryAndRestartedCliResponsesEqual": true,
+      "evaluationId": "eval-1WF-2026-09-09T00:33:55"
+    },
+    {
+      "case": "truncated",
+      "attempts": 1,
+      "outcome": "incomplete-answer",
+      "citationFieldState": "present",
+      "allAttemptRecordsEqualAfterExport": true,
+      "finalRawTextEqualAfterExport": true,
+      "libraryAndRestartedCliResponsesEqual": true,
+      "evaluationId": "eval-P6E-2026-09-09T00:33:56"
+    }
+  ],
+  "traceJoin": {
+    "traceId": "67bd53ced0802c20d552a0c432cffa6e",
+    "targetSpanId": "7fd54f9650690f53",
+    "evaluationId": "eval-mEJ-2026-09-09T00:33:51",
+    "testCaseId": "0-0",
+    "spans": 3,
+    "libraryAndRestartedCliJoinVerified": true
+  },
+  "blockedFetches": [
+    "https://r.promptfoo.app/"
+  ],
+  "sourceHashes": {
+    "capture-provider.ts": "ee9184ea7285823840829f9ba6145fcf1ce0026a62ded155376c0f4c627d6186",
+    "probe-capture.ts": "18c0209205a0412f11ceb66adf0d2671541757f90aad6f29f02e7b70aa5b7c5b",
+    "offline-cli.ts": "54a252fc3cc30e8162ff7abda9ba3dff3955f500219c0b0f954478a1f001e55b"
+  },
+  "limits": [
+    "Synthetic response variants only.",
+    "UTF-8 decoded response text; not HTTP wire bytes.",
+    "Summary JSON, library JSON exporter, and separately started CLI database export tested; UI and streaming untested.",
+    "Local trace joins tested on one successful case; no remote provider trace or separate retry spans.",
+    "Synthetic cost is an input, not an invoice.",
+    "Missing citation fields do not establish citation absence.",
+    "Transport-exception handling exists but is not exercised by these ten cases.",
+    "Main-process fetch guard records the listed blocked destinations; export subprocesses separately block fetch without counting attempts."
+  ]
+}

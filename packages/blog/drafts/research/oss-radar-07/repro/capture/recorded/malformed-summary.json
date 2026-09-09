@@ -1,0 +1,237 @@
+{
+  "version": 3,
+  "timestamp": "2026-09-09T00:33:53.813Z",
+  "prompts": [
+    {
+      "id": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+      "raw": "Explain the classification boundary.",
+      "label": "Explain the classification boundary.",
+      "provider": "citation-capture:malformed",
+      "metrics": {
+        "score": 0,
+        "testPassCount": 0,
+        "testFailCount": 0,
+        "testErrorCount": 1,
+        "assertPassCount": 0,
+        "assertFailCount": 0,
+        "totalLatencyMs": 1,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "namedScores": {},
+        "namedScoresCount": {},
+        "namedScoreWeights": {},
+        "cost": 0
+      }
+    }
+  ],
+  "results": [
+    {
+      "cost": 0,
+      "error": "Capture outcome: invalid-json",
+      "gradingResult": null,
+      "id": "5917e37d-77b8-46d6-90a0-7ac9873c6e00",
+      "latencyMs": 1,
+      "namedScores": {},
+      "prompt": {
+        "raw": "Explain the classification boundary.",
+        "label": "Explain the classification boundary.",
+        "config": {}
+      },
+      "promptId": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+      "promptIdx": 0,
+      "provider": {
+        "id": "citation-capture:malformed"
+      },
+      "response": {
+        "error": "Capture outcome: invalid-json",
+        "raw": "{broken",
+        "metadata": {
+          "evidence": {
+            "runId": "malformed",
+            "invocationId": "malformed-1",
+            "evaluationId": "eval-kcv-2026-09-09T00:33:53",
+            "testCaseId": null,
+            "traceparent": null,
+            "attempts": [
+              {
+                "runId": "malformed",
+                "invocationId": "malformed-1",
+                "evaluationId": "eval-kcv-2026-09-09T00:33:53",
+                "testCaseId": null,
+                "traceparent": null,
+                "attemptId": "malformed-1-attempt-1",
+                "startedAt": "2026-09-09T00:33:53.815Z",
+                "finishedAt": "2026-09-09T00:33:53.816Z",
+                "elapsedMs": 1,
+                "status": 200,
+                "requestId": "synthetic-malformed-5",
+                "retryAfter": "0",
+                "outcome": "invalid-json",
+                "responseSha256": "be302461cda285db3ed2d45fb767b23e08ca8808b35a638009937df22b332d73",
+                "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+                "providerResponseId": null,
+                "providerCitations": {
+                  "state": "absent"
+                },
+                "answerAnnotations": {
+                  "state": "absent"
+                },
+                "providerReportedUsage": null,
+                "charge": {
+                  "state": "unknown"
+                },
+                "cache": "adapter-disabled"
+              }
+            ]
+          }
+        }
+      },
+      "score": 0,
+      "success": false,
+      "testCase": {
+        "assert": [
+          {
+            "type": "contains",
+            "value": "count of people"
+          }
+        ],
+        "vars": {},
+        "options": {},
+        "metadata": {}
+      },
+      "testIdx": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "vars": {},
+      "metadata": {
+        "evidence": {
+          "runId": "malformed",
+          "invocationId": "malformed-1",
+          "evaluationId": "eval-kcv-2026-09-09T00:33:53",
+          "testCaseId": null,
+          "traceparent": null,
+          "attempts": [
+            {
+              "runId": "malformed",
+              "invocationId": "malformed-1",
+              "evaluationId": "eval-kcv-2026-09-09T00:33:53",
+              "testCaseId": null,
+              "traceparent": null,
+              "attemptId": "malformed-1-attempt-1",
+              "startedAt": "2026-09-09T00:33:53.815Z",
+              "finishedAt": "2026-09-09T00:33:53.816Z",
+              "elapsedMs": 1,
+              "status": 200,
+              "requestId": "synthetic-malformed-5",
+              "retryAfter": "0",
+              "outcome": "invalid-json",
+              "responseSha256": "be302461cda285db3ed2d45fb767b23e08ca8808b35a638009937df22b332d73",
+              "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+              "providerResponseId": null,
+              "providerCitations": {
+                "state": "absent"
+              },
+              "answerAnnotations": {
+                "state": "absent"
+              },
+              "providerReportedUsage": null,
+              "charge": {
+                "state": "unknown"
+              },
+              "cache": "adapter-disabled"
+            }
+          ]
+        },
+        "_promptfooFileMetadata": {}
+      },
+      "failureReason": 2
+    }
+  ],
+  "stats": {
+    "successes": 0,
+    "failures": 0,
+    "errors": 1,
+    "tokenUsage": {
+      "prompt": 0,
+      "completion": 0,
+      "cached": 0,
+      "total": 0,
+      "numRequests": 1,
+      "completionDetails": {
+        "reasoning": 0,
+        "acceptedPrediction": 0,
+        "rejectedPrediction": 0,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0
+      },
+      "assertions": {
+        "total": 0,
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "numRequests": 0,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        }
+      }
+    },
+    "durationMs": 4,
+    "evaluationDurationMs": 4
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "runId": "absent",
+  "invocationId": "absent-1",
+  "evaluationId": "eval-qkl-2026-09-09T00:33:52",
+  "testCaseId": null,
+  "traceparent": null,
+  "attemptId": "absent-1-attempt-1",
+  "startedAt": "2026-09-09T00:33:52.303Z",
+  "finishedAt": "2026-09-09T00:33:52.304Z",
+  "elapsedMs": 1,
+  "status": 200,
+  "requestId": "synthetic-absent-2",
+  "retryAfter": "0",
+  "outcome": "success",
+  "responseSha256": "cbf62a01167d1172f9800b1293f8732a3178ba79207fc921092da816e1013189",
+  "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+  "providerResponseId": null,
+  "providerCitations": {
+    "state": "absent"
+  },
+  "answerAnnotations": {
+    "state": "absent"
+  },
+  "providerReportedUsage": null,
+  "charge": {
+    "state": "unknown"
+  },
+  "cache": "adapter-disabled"
+}

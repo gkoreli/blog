@@ -1,0 +1,263 @@
+{
+  "version": 3,
+  "timestamp": "2026-09-09T00:33:52.808Z",
+  "prompts": [
+    {
+      "id": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+      "raw": "Explain the classification boundary.",
+      "label": "Explain the classification boundary.",
+      "provider": "citation-capture:empty",
+      "metrics": {
+        "score": 1,
+        "testPassCount": 1,
+        "testFailCount": 0,
+        "testErrorCount": 0,
+        "assertPassCount": 1,
+        "assertFailCount": 0,
+        "totalLatencyMs": 1,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "namedScores": {},
+        "namedScoresCount": {},
+        "namedScoreWeights": {},
+        "cost": 0
+      }
+    }
+  ],
+  "results": [
+    {
+      "cost": 0,
+      "gradingResult": {
+        "pass": true,
+        "score": 1,
+        "reason": "All assertions passed",
+        "namedScores": {},
+        "tokensUsed": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0
+        },
+        "componentResults": [
+          {
+            "pass": true,
+            "score": 1,
+            "reason": "Assertion passed",
+            "assertion": {
+              "type": "contains",
+              "value": "count of people"
+            }
+          }
+        ]
+      },
+      "id": "42c45869-738e-40fb-9fd7-f6177faad334",
+      "latencyMs": 1,
+      "namedScores": {},
+      "prompt": {
+        "raw": "Explain the classification boundary.",
+        "label": "Explain the classification boundary.",
+        "config": {}
+      },
+      "promptId": "b6e5b1cd5c9130662296ae86c804cb085646656745ee7cabcd1b1dba6d2bd516",
+      "promptIdx": 0,
+      "provider": {
+        "id": "citation-capture:empty"
+      },
+      "response": {
+        "output": "Requests do not establish a count of people.",
+        "raw": "{\"choices\":[{\"message\":{\"content\":\"Requests do not establish a count of people.\",\"annotations\":[]}}],\"citations\":[]}",
+        "metadata": {
+          "evidence": {
+            "runId": "empty",
+            "invocationId": "empty-1",
+            "evaluationId": "eval-vZk-2026-09-09T00:33:52",
+            "testCaseId": null,
+            "traceparent": null,
+            "attempts": [
+              {
+                "runId": "empty",
+                "invocationId": "empty-1",
+                "evaluationId": "eval-vZk-2026-09-09T00:33:52",
+                "testCaseId": null,
+                "traceparent": null,
+                "attemptId": "empty-1-attempt-1",
+                "startedAt": "2026-09-09T00:33:52.810Z",
+                "finishedAt": "2026-09-09T00:33:52.811Z",
+                "elapsedMs": 1,
+                "status": 200,
+                "requestId": "synthetic-empty-3",
+                "retryAfter": "0",
+                "outcome": "success",
+                "responseSha256": "2d676fe4b66abf82d59b68d719f2d5596b4b5f5ce81846e571e4ff0099cf21ba",
+                "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+                "providerResponseId": null,
+                "providerCitations": {
+                  "state": "empty",
+                  "value": []
+                },
+                "answerAnnotations": {
+                  "state": "empty",
+                  "value": []
+                },
+                "providerReportedUsage": null,
+                "charge": {
+                  "state": "unknown"
+                },
+                "cache": "adapter-disabled"
+              }
+            ]
+          }
+        }
+      },
+      "score": 1,
+      "success": true,
+      "testCase": {
+        "assert": [
+          {
+            "type": "contains",
+            "value": "count of people"
+          }
+        ],
+        "vars": {},
+        "options": {},
+        "metadata": {}
+      },
+      "testIdx": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "vars": {},
+      "metadata": {
+        "evidence": {
+          "runId": "empty",
+          "invocationId": "empty-1",
+          "evaluationId": "eval-vZk-2026-09-09T00:33:52",
+          "testCaseId": null,
+          "traceparent": null,
+          "attempts": [
+            {
+              "runId": "empty",
+              "invocationId": "empty-1",
+              "evaluationId": "eval-vZk-2026-09-09T00:33:52",
+              "testCaseId": null,
+              "traceparent": null,
+              "attemptId": "empty-1-attempt-1",
+              "startedAt": "2026-09-09T00:33:52.810Z",
+              "finishedAt": "2026-09-09T00:33:52.811Z",
+              "elapsedMs": 1,
+              "status": 200,
+              "requestId": "synthetic-empty-3",
+              "retryAfter": "0",
+              "outcome": "success",
+              "responseSha256": "2d676fe4b66abf82d59b68d719f2d5596b4b5f5ce81846e571e4ff0099cf21ba",
+              "inputSha256": "2910d8231d2f385b8c7d5c6f8071c87213c31a95d94cfb97b074ffc7b2f4f387",
+              "providerResponseId": null,
+              "providerCitations": {
+                "state": "empty",
+                "value": []
+              },
+              "answerAnnotations": {
+                "state": "empty",
+                "value": []
+              },
+              "providerReportedUsage": null,
+              "charge": {
+                "state": "unknown"
+              },
+              "cache": "adapter-disabled"
+            }
+          ]
+        },
+        "_promptfooFileMetadata": {}
+      },
+      "failureReason": 0
+    }
+  ],
+  "stats": {
+    "successes": 1,
+    "failures": 0,
+    "errors": 0,
+    "tokenUsage": {
+      "prompt": 0,
+      "completion": 0,
+      "cached": 0,
+      "total": 0,
+      "numRequests": 1,
+      "completionDetails": {
+        "reasoning": 0,
+        "acceptedPrediction": 0,
+        "rejectedPrediction": 0,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0
+      },
+      "assertions": {
+        "total": 0,
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "numRequests": 0,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        }
+      }
+    },
+    "durationMs": 4,
+    "evaluationDurationMs": 4
+  }
+}
