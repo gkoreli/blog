@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-09-09T02:10:21.149Z",
+  "releaseCommit": "e0e1fa290295780c752b7f10b2eb7fff65fd887e",
+  "cloudflareBuild": "ee5b909d-b533-405f-9593-7c6922e767af",
+  "cloudflareCompletedAt": "2026-09-09T02:06:10Z",
+  "requests": [
+    {
+      "key": "article",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history",
+      "status": 200,
+      "contentType": "text/html",
+      "sha256": "36f5a95083cb1a02fb5c5936fdbdd81635b5921c164d8bbb5ff176fe5b6d4343"
+    },
+    {
+      "key": "prompts",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history/prompts",
+      "status": 200,
+      "contentType": "text/html",
+      "sha256": "1783946330291d61109ca742d808999eec1d18961ee6189c1aa735d69ff438a8"
+    },
+    {
+      "key": "markdown",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history.md",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "sha256": "8783ab69da915297a234f77f08871408a985032946e96b9afd0445c31b30b5d1"
+    },
+    {
+      "key": "citation",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history.csl.json",
+      "status": 200,
+      "contentType": "application/vnd.citationstyles.csl+json",
+      "sha256": "9d866dd6f6c10a5647aae61dfb0f39ee8cd521cac9f90c285de47319e5587428"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Live article contains the revised public-risk argument and residual limits",
+      "passed": true
+    },
+    {
+      "name": "Live metadata matches the revised article and preserves its publication date",
+      "passed": true
+    },
+    {
+      "name": "All 21 live shaping prompts match the checked generated page",
+      "passed": true
+    },
+    {
+      "name": "Live footprint remains frozen and explicitly excludes later prompts and edits",
+      "passed": true
+    },
+    {
+      "name": "Live Markdown includes the revised argument and the citation retains the article title",
+      "passed": true
+    }
+  ],
+  "limitations": "HTTP and rendered-content verification. No interactive browser inspection, production SQL, suspicious-destination visit, or new traffic measurement. The frozen footprint is unchanged."
+}
