@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-09-09T01:38:41.297Z",
+  "releaseCommit": "43fcd258fe17aa798cf274a46cf1c2cb9a1bc060",
+  "measuredAt": "2026-09-09T01:35:07.268Z",
+  "totalTokens": 71572616,
+  "requests": [
+    {
+      "key": "article",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history",
+      "status": 200,
+      "contentType": "text/html",
+      "sha256": "1454a9c4382e5f48234b4bfebb181d453feb3cf2ee7191519c01ae388d9c61a3"
+    },
+    {
+      "key": "prompts",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history/prompts",
+      "status": 200,
+      "contentType": "text/html",
+      "sha256": "08e04a023b9be882cfbf49f9ba101f3acb5e42b1404ce05a145e7dddc487766f"
+    },
+    {
+      "key": "manifest",
+      "url": "https://raw.githubusercontent.com/gkoreli/blog/43fcd258fe17aa798cf274a46cf1c2cb9a1bc060/packages/blog/drafts/research/referrer-spam/research-footprint.json",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "sha256": "4036a0ecfd7d560dd31caa9765df977e0c4c77d50c40120b33738a47045f0db6"
+    },
+    {
+      "key": "methodology",
+      "url": "https://raw.githubusercontent.com/gkoreli/blog/43fcd258fe17aa798cf274a46cf1c2cb9a1bc060/packages/blog/drafts/research/referrer-spam/10-research-footprint.md",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "sha256": "b6f37a292c787d0b6a4be20b427d76fc42b19695b750a8fcaf9cf75165b426f7"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Live article header displays the frozen measured total and provenance anchor",
+      "passed": true
+    },
+    {
+      "name": "Live transparency section exactly matches the verified generated section",
+      "passed": true
+    },
+    {
+      "name": "All live complete shaping prompts match the verified generated page",
+      "passed": true
+    },
+    {
+      "name": "Public frozen manifest matches the release bytes",
+      "passed": true
+    },
+    {
+      "name": "Public methodology matches the committed release note",
+      "passed": true
+    }
+  ],
+  "limitations": "HTTP and rendered-HTML verification, without interactive browser inspection or production SQL. Deployment checks occur after the frozen usage boundary."
+}
