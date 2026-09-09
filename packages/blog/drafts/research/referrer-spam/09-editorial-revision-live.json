@@ -1,0 +1,49 @@
+{
+  "recordedAt": "2026-09-09T01:00:44.359Z",
+  "articleCommit": "85c3451",
+  "cloudflareBuild": {
+    "id": "2f60f5cc-b2d7-41fa-a1fd-a64b2f804203",
+    "conclusion": "success",
+    "completedAt": "2026-09-09T00:57:52Z",
+    "source": "GitHub check-runs for commit 85c3451"
+  },
+  "latestObservedDeployment": {
+    "versionId": "cf5895b3-850b-49f1-8a4f-64d4c7828368",
+    "activatedAt": "2026-09-09T00:57:47.934Z",
+    "source": "Wrangler deployments list; content acceptance checked separately"
+  },
+  "requests": [
+    {
+      "path": "/filter-referrer-spam-without-deleting-analytics-history",
+      "status": 200,
+      "sha256": "6eb756e79335d5c741b51e67b4c7dfcba930d4aefc3b073ddd17aaf471881f33"
+    },
+    {
+      "path": "/filter-referrer-spam-without-deleting-analytics-history/prompts",
+      "status": 200,
+      "sha256": "4e7b6e58cf735c69ead72f1fe59347ddd3bd929981f1545fb5cbf1ab3049975d"
+    },
+    {
+      "path": "/filter-referrer-spam-without-deleting-analytics-history.csl.json",
+      "status": 200,
+      "sha256": "9d866dd6f6c10a5647aae61dfb0f39ee8cd521cac9f90c285de47319e5587428"
+    },
+    {
+      "path": "/og/filter-referrer-spam-without-deleting-analytics-history.png",
+      "status": 200,
+      "sha256": "dd5b4517d4bc1119cb4081d42ea9d9923702cae31d1f06405d87f02b51ea0adb"
+    }
+  ],
+  "checks": {
+    "liveH1": true,
+    "liveSeoTitle": true,
+    "liveDescriptionQualified": true,
+    "liveStructuredMetadata": true,
+    "liveTables": true,
+    "livePromptCountAndTitle": true,
+    "liveCitationMatchesBuild": true,
+    "liveSocialCardMatchesBuild": true
+  },
+  "transportNote": "Default Python urllib requests to the direct Markdown endpoint returned Cloudflare 1010. A transparently identified gkoreli-editorial-verification/1.0 client successfully fetched the current Markdown and the four release surfaces captured here. No browser impersonation or security configuration change was used.",
+  "scope": "HTTP release verification. No direct production SQL, interactive browser QA, newsletter submission, or social posting."
+}

@@ -73,7 +73,7 @@ Sources were checked September 9, 2026 UTC. The existing [credibility reference]
 - [x] Revise article 025 and align contextual links and exact prompt provenance.
 - [x] Apply focused instruction changes and obtain an independent read-only review.
 - [x] Validate changed skills, relative links, exact prompts, and the generated article, metadata, and social card.
-- [ ] Commit and push the scoped changes; verify the served revision.
+- [x] Commit and push the scoped changes; verify the served revision.
 - [ ] Obtain human feedback on the revised draft when a willing reader is available; record the result before claiming it helped.
 
 The final item is a future opportunity, not an acceptance gate for this owner-requested revision. No messages were sent and no HN or X submission was performed.
@@ -81,3 +81,5 @@ The final item is a future opportunity, not an acceptance gate for this owner-re
 Validation: the four skill validators passed, the blog build produced all 25 posts with the referral-policy integrity check, and [18 generated-output/archive checks](08-editorial-revision-checks.json) passed, including 17 exact rendered prompts and 46 relative file/site links. The 1,396-word article's 42-character SEO title and 128-character description fit the intended presentation. The generated 1200×600 social card was visually inspected with no clipped text. Browser interaction could not be checked because CUA reported no available browser; the temporary local server was stopped. No production SQL was executed.
 
 The independent review caught two precision issues before acceptance: metadata now retains the suspected-abuse qualification, and the reporting table includes absent hostnames. Both tables were checked against the current evaluator/projection and saved production read measurements. A remaining literary-title example in the positioning skill was also aligned with its subject-first instruction.
+
+Published in `85c3451`. Its Cloudflare build `2f60f5cc-b2d7-41fa-a1fd-a64b2f804203` completed successfully at September 9 **00:57:52 UTC**. [Live acceptance](09-editorial-revision-live.json) at **01:00:44 UTC** verified the H1, SEO title, qualified description, structured metadata, both new tables, 17-prompt page, citation title, and social card. The citation JSON and social image match the checked local bytes. The final bookkeeping commit records this acceptance; it changes no article content.
