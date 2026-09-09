@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-09-09T02:25:07.933Z",
+  "checks": [
+    {
+      "name": "Opening states referrer utility and limits; previous blanket phrasing is removed",
+      "passed": true
+    },
+    {
+      "name": "Background explains normal use before abuse, and ending retains its value",
+      "passed": true
+    },
+    {
+      "name": "All 22 prompts render exactly and the original 21 remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "Frontmatter and frozen measurement remain byte-identical",
+      "passed": true
+    }
+  ],
+  "promptCount": 22,
+  "frozenPromptCount": 18,
+  "artifacts": 6,
+  "relativeLinks": 17,
+  "commitments": {
+    "research-footprint.json": "4036a0ecfd7d560dd31caa9765df977e0c4c77d50c40120b33738a47045f0db6",
+    "research-footprint-overlap.json": "7098a4122db2f4d9457e9cd71010ce9cc4bdcbc132a0e972b80fde0bcb0fa13f"
+  },
+  "limitations": "Focused generated-content and provenance checks; no runtime change, production SQL, or interactive browser check."
+}

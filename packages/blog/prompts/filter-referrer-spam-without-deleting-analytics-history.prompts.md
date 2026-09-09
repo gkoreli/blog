@@ -88,3 +88,8 @@ Also, why is this "The D1 cost of filtering every report" a big part of the arti
 ---
 
 Did we eradicate the referrer spam entirely? I feel like its a really valuable lesson to share to the public, we implement the solution and share the values and learnings to the open world
+
+---
+
+This line is said so authoritatively that makes it confusing: Avoid inventing an audience. A request carrying a referrer does not establish that a reader followed a link from that site.
+I mean referrer is a good way to understand, but its not an absolute way to understand where the reader is coming from, the sentence is structured in a way that completely neglects the first part of this statement. Why?

@@ -28,20 +28,22 @@ researchFootprint:
 
 # How I Defend My Analytics Against Referrer Spam
 
-My public analytics had put an untrusted website first in the referrer rankings, at **35 views**. Publishing that result gave the site exposure and made a claim about my audience that the request data could not support. I now filter suspected referrer spam and publish only reviewed referrer names, while disclosing exclusions and retaining the observations needed to challenge them.
+My public analytics had put an untrusted website first in the referrer rankings, at **35 views**. Publishing that result gave the site exposure and risked presenting suspected spam as readership. I now filter suspected referrer spam and publish only reviewed referrer names, while disclosing exclusions and retaining the observations needed to challenge them.
 
 - **Limit public exposure.** Unreviewed included hostnames appear under “Other reported referrers.”
 - **Apply exclusions consistently.** Matching rules affect totals, charts, and rankings, with excluded observations counted separately.
-- **Avoid inventing an audience.** A request carrying a referrer does not establish that a reader followed a link from that site.
+- **Interpret referrers in context.** Referrers help identify where traffic comes from, but forged or missing values can distort that picture.
 - **Keep decisions correctable.** Stored observations, versioned rules, and saved reports preserve the evidence behind an exclusion.
 
 ## How a reported referrer became a public ranking
 
 The ranking gave `uniuit.com`, a site I regarded as malicious, first place with 35 reported views in the [September 6 capture](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/blog/drafts/research/readers-vs-bots/17-referral-abuse-defense-verification.md). I publish [analytics](/stats) as part of this blog's transparency model. Anyone opening that report could see the name at the top. I had given an untrusted destination exposure through my own publication.
 
+In ordinary browsing, the [referrer header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referer) helps identify the page or site a visitor came from. That makes it useful for understanding how people discover the blog.
+
 Referrer spam fabricates the claim that traffic came from a website. An automated client can send that website's name in a request without visiting it or following a link. Matomo's [May 2015 explanation](https://matomo.org/blog/2015/05/stopping-referrer-spam/) describes this mechanism and its incentive: getting the advertised site noticed in analytics. Such requests can inflate apparent readership and referral success without bringing an audience.
 
-My assessment of the destination is separate from what the logs prove. The [repeated homepage/article requests](/how-i-separate-readers-from-bots-without-javascript) supported treating this cluster as suspected referrer spam. They did not independently establish malware or phishing, identify an operator, or prove that zero legitimate clicks occurred. Those 35 reported views gave me no basis to claim 35 readers had arrived from that site.
+My assessment of the destination is separate from what the logs prove. The [repeated homepage/article requests](/how-i-separate-readers-from-bots-without-javascript) supported treating this cluster as suspected referrer spam. They did not independently establish malware or phishing, identify an operator, or prove that zero legitimate clicks occurred. The repeated requests made this cluster unreliable evidence of genuine readership from that site.
 
 I did not need to prove every request's origin before withholding a public ranking. The defense needed two decisions: which observations to exclude from the metrics, and which referrer names to publish.
 
@@ -120,7 +122,7 @@ The implementation also had an operating cost. Repeating the referral assessment
 
 ## Public analytics need evidence
 
-I want to know whether people are reading the blog and which sources bring them here. A request with a claimed referrer cannot answer those questions on its own. The dashboard now controls name exposure and applies abuse exclusions consistently, while showing that filtering occurred. These reporting rules do not block the originating requests or prove that the remaining traffic is human.
+I want to know whether people are reading the blog and which sources bring them here. Referrers help me identify those sources; filtering suspected spam makes that evidence more useful. The dashboard now controls name exposure and applies abuse exclusions consistently, while showing that filtering occurred. These reporting rules do not block the originating requests or prove that the remaining traffic is human.
 
 The rules can still be wrong: clients can change headers, and a legitimate visit from an excluded domain will also be omitted. Reviewing evidence and reversing mistaken decisions remains part of the work. Keeping that correction path is how I can report suspected abuse honestly without promoting it or counting it as proof of an audience.
 
