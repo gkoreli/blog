@@ -1,6 +1,6 @@
-# Newsletter abuse controls: decision in progress
+# Newsletter abuse controls: chosen scope and earlier alternatives
 
-Initial assessment September 7 UTC, 2026; expanded September 8 PDT / September 9 UTC with [original-decision history, 2026 prior art, and the comparison protocol](05-prior-art-2026.md). This is an architectural assessment, not a deployed change or a comparative effectiveness study.
+Initial assessment September 7 UTC, 2026; expanded September 8 PDT / September 9 UTC with [original-decision history, 2026 prior art, and the comparison protocol](05-prior-art-2026.md). Updated at the break checkpoint: the [chosen implementation](09-design-and-implementation.md) keeps the existing platform and Turnstile, with shared atomic sending limits. It is deployed and has one [completed authorized live flow](15-live-signup-acceptance.md), including a Gmail Spam finding. No comparative effectiveness study was performed. The alternatives below remain dated research, not pending builds or a selected provider migration.
 
 ## Current scope: simple signup on our existing platform
 
@@ -8,13 +8,13 @@ Goga's follow-up asks why a personal blog cannot own a button and a public POST 
 
 The existing Worker, D1, and Resend integration already implements pending subscriptions, confirmation, and unsubscribe. Public signup is an ordinary product requirement. Its abuse exposure comes from letting an unknown caller trigger mail to a supplied address. Email confirmation controls activation; it does not prevent the first unwanted confirmation. Turnstile assesses the request, without proving control of the supplied mailbox. Request and email limits bound repeated use. These responsibilities can remain small application functions using the existing services.
 
-The current recommendation is to retain the existing platform and address specific defects:
+The implemented decision is to retain the platform and mandatory Turnstile verification, while giving both public confirmation routes the same sending budget:
 
-1. Reuse the parallel repair receipt before changing credentials or repeating production checks. The latest [TASK-0124 note](../../../../../docs/tasks/TASK-0124-restore-subscription-verification-and-distinguish.md) records an owner-reported signup fix. This session has not independently verified it; the earlier statement that signup was still unrepaired was outdated.
-2. Verify signup, confirmation, unsubscribe, and resubscription. Repair the reproduced lifecycle bugs and distinguish configuration errors, rejected tokens, and email-provider failures. Make accepted or failed confirmation sends observable and support a bounded retry through the existing pending state.
-3. Check that signup and resend both limit repeated email to one address, alongside the existing request limit and a deliberate overall sending allowance. Keep Turnstile's retention or replacement as a separate decision. This clarification does not remove protection or require a new queue, framework, or comparative build project.
+1. Real verification and the ordinary unsubscribe/re-subscribe and confirmation cycle passed after the September 9 binding repair. Read the [live receipt](15-live-signup-acceptance.md) before any repeat test; earlier owner reports do not define the current acceptance state.
+2. Both routes share one admission per normalized address per ten minutes, at most three/address/day, and aggregate ceilings of 25/hour and 100/day. Failed and ambiguous attempts remain charged; provider retries reuse the same operation key and body. These are blog policy values with tested local enforcement, not universal safe thresholds.
+3. Preserve usable retries, earlier unexpired confirmation links and suppression. The [local regressions](10-verification.md) cover failure and concurrency cases; the one live flow does not establish every browser, provider retry or signed webhook path. No queue, new framework or provider migration was added.
 
-The next action is reconciling the reported repair with its acceptance evidence, then implementing only the remaining concrete gaps. Provider migration remains an optional maintenance tradeoff. The research below preserves its benefits and limitations; it does not establish that owning this API is unreasonable.
+The next work is Gmail placement (TASK-0145), the signed provider-event connection (TASK-0142), and broader client logging/ingestion/alerts (TASK-0125/0126). Reconsider Turnstile if measured reader failures justify changing it; keeping the first-message allowance does not depend on that verifier choice. Provider migration remains an optional maintenance tradeoff. The research below preserves its benefits and limitations; it does not establish that owning this API is unreasonable.
 
 ## Earlier managed-service recommendation
 
@@ -33,13 +33,13 @@ If this option is selected, the bounded adoption work would be:
 
 This choice would transfer subscriber operations to a provider. The tradeoff is provider dependency and future cost as the list grows. A controlled completion test establishes the tested path, not guaranteed delivery or a population success rate. Recovery of older failed attempts and general client-error logging remain separate unfinished work.
 
-This alternative has not been selected. TASK-0127 remains in progress under the existing-platform scope above. Its next action does not depend on a Buttondown account.
+This alternative was not selected. TASK-0127 records the implemented initial decision above. No current task depends on a Buttondown account.
 
 ## Protect the operation that can be abused
 
 The protected operation is sending confirmation email and creating pending state. A completed challenge is one input to that decision. It cannot replace correct subscription transitions, delivery handling, or knowledge of whether the form works.
 
-The existing flow applies a native per-IP limiter, validates the address, checks Turnstile, writes pending state, and schedules email. A pending address can refresh its tokens and receive another message. `/api/resend-confirmation` also sends to existing pending addresses without Turnstile, behind the same per-IP limiter. Controls must cover both send paths.
+At the September 7 baseline, signup applied a native per-IP limiter, validated the address, checked Turnstile, wrote pending state and scheduled email. A pending address could refresh its tokens and receive another message. `/api/resend-confirmation` sent to existing pending addresses without Turnstile. The implemented repair removes that exception: both routes now share verification and atomic admission.
 
 Threats to evaluate:
 
@@ -67,7 +67,7 @@ The earlier conversational preference for a widget-free trial is now qualified b
 
 ## Failure policy must be deliberate
 
-Current code allows missing-secret and fetch-network-error cases, but rejects a bad secret. This gives different abuse and availability behavior to three failures of the same dependency. A replacement policy must state what happens during each condition and which controls still bound sends. Logging the decision is part of the control.
+The September 7 code allowed missing-secret and fetch-network-error cases, but rejected a bad secret. The current implementation rejects unavailable or invalid verifier configuration with a service error and sends nothing. Invalid reader proof receives a distinct rejection. This keeps the send policy consistent while accepting that a verifier outage can stop signup; the form provides retry guidance and static diagnostics. Alerting remains unfinished.
 
 Required controlled cases: successful signup and confirmation; invalid/expired challenge; script unavailable; widget error or unsupported browser; slow/no response; invalid configuration; verifier/network outage; repeated target address; distributed send attempts; limiter/DB/provider failure; expired, invalid and repeated confirmation; inactive-address resubscription.
 
@@ -86,4 +86,4 @@ Use synthetic addresses and mocked providers locally. Any real email test needs 
 | [GraphQL sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/) | September 7, 2026 | Adaptive estimates; not an exact set of failed attempts |
 | [Resend logs](https://resend.com/docs/dashboard/logs/introduction) | September 7, 2026 | A provider-side source for older attempts that reached sending; read requests returned 401 because the available key is restricted to sending. No account email history was obtained; see [recovery](04-recovery.md) |
 
-No peer-reviewed CAPTCHA usability result or cross-provider benchmark is claimed. The [later source comparison](05-prior-art-2026.md) includes 2026 threat reporting, an author-hosted subscription-bombing study, provider controls, open-source code, and counterevidence. A broader article argument about reader friction still needs evidence beyond this one configuration failure. TASK-0127's next action is the bounded existing-platform work above.
+No peer-reviewed CAPTCHA usability result or cross-provider benchmark is claimed. The [later source comparison](05-prior-art-2026.md) includes 2026 threat reporting, an author-hosted subscription-bombing study, provider controls, open-source code, and counterevidence. A broader article argument about reader friction still needs evidence beyond the configuration failures and one completed flow. The [handoff](14-handoff.md) records the remaining work without reopening the initial platform decision.

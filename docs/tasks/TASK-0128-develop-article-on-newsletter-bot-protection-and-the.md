@@ -4,7 +4,7 @@ title: Develop article on newsletter bot protection and the failures our logs mi
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.966Z'
-updated_at: '2026-09-09T01:57:04.846Z'
+updated_at: '2026-09-09T03:02:05.177Z'
 type: task
 ---
 P2 editorial. Governing form: evidence-led engineering investigation with an active field-note state. Owned trigger: Goga's friend could not subscribe, invalid production Turnstile secret, and uncertainty about earlier readers. Test whether the newsletter's protection and observability are proportionate; do not presuppose Turnstile is bad. Draft alongside evidence. Show the value and gaps of existing first-party logging, earlier April incident, retention and identity limits, alternatives and current repair status. Protect the skepticism as an unresolved question. Exact human prompts must be preserved intact; no invented or trimmed owner quotes. Draft and research live outside posts/ pending author review and publication decision. Apply shape-article, blog-writing investigation reference, discovery/share passes when release is intended, and final prose/fact-check passes.
@@ -20,3 +20,7 @@ The draft now reconstructs the April launch rationale from pinned Git records an
 ## Parallel article checkpoint — September 9 UTC
 
 Rebuilt the unpublished draft around the owner's requested subject, Subscription Bombing: How I Protect My Blog, while server and browser implementation ran alongside it. The [worklist index](../../packages/blog/drafts/research/newsletter-reliability/00-worklist-index.md) links the article passport, primary source/claim ledgers, design, independent review, server/client/D1 verification, and ORM decision. All research Markdown remains in the existing directory. Nine complete shaping prompts are preserved. The draft distinguishes the historical secret failure from an unobserved bombing attack, local test results from production acceptance, admissions from provider API calls, and implemented safeguards from remaining limits. Publication is not authorized by drafting and has not occurred.
+
+## Break checkpoint — September 9 UTC
+
+The unpublished draft now includes implementation 86dad93, the fresh verifier-binding repair and one completed authorized flow, preserving the Gmail Spam result. Nine exact shaping prompts remain; test-address authorization and this housekeeping are operational records, not additions to the public prompt page. Review article.md and its claim/source ledgers in the worklist folder. No article route, release metadata or frozen research footprint exists. [14-handoff.md](../../packages/blog/drafts/research/newsletter-reliability/14-handoff.md) is the current resume point; avoid older acceptance-pending instructions.

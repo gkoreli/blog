@@ -1,6 +1,6 @@
 # Subscription confirmation controls
 
-Implemented locally September 9, 2026 UTC. Deployment and live-email acceptance are separate receipts in [10-verification.md](10-verification.md). The [worklist index](00-worklist-index.md) is the entry point; [13-data-access-decision.md](13-data-access-decision.md) records the ORM question.
+Implemented and deployed as `86dad93`, September 9, 2026 UTC. Migration 0005 is applied and one [authorized live flow](15-live-signup-acceptance.md) completed after a verifier-binding repair; its confirmation arrived in Gmail Spam. [10-verification.md](10-verification.md) separates local checks, migration and activation. The [worklist index](00-worklist-index.md) is the entry point; [13-data-access-decision.md](13-data-access-decision.md) records the scoped prepared-SQL choice.
 
 ## Decision and threat
 
@@ -51,7 +51,9 @@ Migration `0005_confirmation_admission.sql` adds `suppression_reason` to subscri
 
 Routine confirmation logs contain opaque attempt ID, route mode, stage, static reason, and provider HTTP status. They do not retain the submitted address for pre-admission failures. That is an intentional privacy boundary and does not solve historical address recovery. Signed webhook handlers log event type and recipient count only. Worker request logs and the email provider have separate storage/access policies; this code does not establish their retention or redaction behavior.
 
-## Rollout and acceptance
+## Completed rollout sequence
+
+These steps describe the recorded September 9 rollout. Migration 0005 and the authorized signup are complete; a new session must read the receipts rather than repeat this sequence. Use a fresh bounded plan only for a new change or unresolved acceptance question.
 
 1. Run the handler/client regressions, package typechecks, and actual local workerd D1 migration/concurrency/rollback probe.
 2. Inspect the live schema with a bounded metadata check. Do not rerun old incident searches or select subscriber addresses. If quota access fails, stop and use service metadata to resolve access.
@@ -64,5 +66,7 @@ The local probe already passes the fresh migration path, concurrent address and 
 ## Remaining work and change criteria
 
 General client-error ingestion still needs actual-byte enforcement, server-side sanitization, rate limits and an honest persistence contract (TASK-0126). Configuration-failure alerts and a routine operator review are not implemented by structured logging. Historical provider/Worker access remains incomplete (TASK-0130). No new endpoint here recovers missing addresses or proves complete client reporting.
+
+TASK-0142 owns the missing production bounce/complaint connection. TASK-0145 owns the observed Gmail Spam placement; DNS records alone do not establish this message's authentication or the reason for Spam. Keep both separate from the completed signup/lifecycle acceptance.
 
 Review the starting limits when observed legitimate demand reaches them. Review Turnstile if measured completion failures justify a change, using the common scenarios in the earlier options artifact. A removal decision would still need to retain bounded first-message sending. Preserve dated evidence, operator rationale and the actual activation/acceptance boundary when changing policy.

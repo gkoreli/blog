@@ -2,7 +2,13 @@
 
 ## Status
 
-Accepted — 2026-04-11. Core reporting implemented April 11; coverage and ingestion gaps confirmed September 7 UTC, 2026.
+Accepted — 2026-04-11. Core reporting implemented April 11. Subscription-form coverage and recovery were repaired in `86dad93`; broader transport, correlation, ingestion and alerting gaps remain open as of the September 9 UTC checkpoint.
+
+### Current checkpoint — September 9, 2026
+
+The form emits static failure stages and status codes, restores usable retries, bounds widget/API waits and handles late or stale widget callbacks. Twenty-five controlled initializer tests passed. One authorized native Chrome flow then completed through the real verifier, provider, mailbox and confirmation POST. That message landed in Gmail Spam. The signup receipt does not verify durable client-error delivery. [Client tests](../../packages/blog/drafts/research/newsletter-reliability/12-client-verification.md), [live acceptance](../../packages/blog/drafts/research/newsletter-reliability/15-live-signup-acceptance.md).
+
+The shared logger still discards transport failures; FetchTransport does not check HTTP status, beacon queueing is not storage acknowledgement, and the Worker can return 204 before a failed D1 write. `occurredAt` is parsed but not stored, build identity is not supplied, and the stored ray belongs to the logging request rather than the failed signup. Actual-byte enforcement, server sanitization, ingestion limits and configuration-failure alerts remain TASK-0125/0126. A form repair is not complete client observability. The September 7 observations and original design below retain their dates.
 
 ### Implementation checkpoint — September 7, 2026
 
@@ -52,7 +58,7 @@ Use the existing `DB` D1 binding and add a `client_errors` table to `blog-analyt
 
 ## Goals
 
-- Capture the exact user-visible error message for failed interactions.
+- Capture known interaction stages and HTTP status without storing arbitrary API responses. Exact displayed copy requires the corresponding source/build context; build correlation remains unfinished.
 - Correlate client-reported failures with Worker requests using path, timestamp, response status, and optional request/ray identifiers.
 - Keep the implementation dependency-free and small enough for the Worker bundle budget.
 - Avoid collecting form contents, emails, Turnstile tokens, cookies, localStorage values, stack dumps with arbitrary user data, or full URLs with query strings.
@@ -118,9 +124,9 @@ Blog integration:
 
 ```
 packages/blog/src/client/main.ts
-  ├── initThemeToggle()
-  ├── initSubscribeForm({ logger })
-  └── initClientErrorReporting(logger)
+  ├── static component imports
+  ├── initClientErrorReporting(logger)
+  └── initSubscribeForm({ logger })
 
 packages/blog/src/worker/index.ts
   └── POST /api/client-error → handleClientError(request, env, ctx)
@@ -157,18 +163,18 @@ initSubscribeForm({
 });
 ```
 
-When a failed API response becomes visible to the user:
+The current subscribe form displays fixed reader guidance separately from its diagnostic stage. Its rejection report is equivalent to:
 
 ```typescript
-const message = data.error ?? 'Something went wrong. Try again.';
-setError(message);
 logger.report({
   type: 'interaction_error',
   component: 'subscribe_form',
-  message,
+  message: 'subscribe_api_rejected',
   status: res.status,
 });
 ```
+
+The form wraps reporting so it cannot interrupt recovery. Do not restore the old pattern that copied `data.error` into diagnostics. Static imports still run before the global listeners, so failures that prevent this entry point from executing are not covered by that listener installation.
 
 Global browser listeners report uncaught failures:
 
@@ -309,7 +315,7 @@ CREATE INDEX IF NOT EXISTS idx_client_errors_component  ON client_errors (compon
 
 Client errors are operational diagnostics, not product analytics. Retain for 30 days by default.
 
-Add the cleanup to the existing scheduled Worker path:
+The existing scheduled Worker path already calls the cleanup:
 
 ```sql
 DELETE FROM client_errors
@@ -351,24 +357,18 @@ Server-side Cloudflare request metadata may include IP-derived geography, but th
 
 The current handler does not explicitly reject unknown origins. Absence of CORS response permission is not an application-level origin check, and a body-size limit is not a request-rate limit. The current size check trusts Content-Length; a synthetic oversized request without it was accepted. Actual-byte limits, server sanitization, and bounded ingestion are tracked in TASK-0126.
 
-## Why Not Sentry
+## Why the original decision kept first-party logging
 
-Sentry is excellent, but it is wrong for this project right now:
+The April decision favored the existing Worker and D1, direct control of retained fields, and a small feature set. This is a project preference, not evidence that an established logging service or library must collect unsafe data or would be less reliable.
 
-- Adds a third-party script to every page.
-- Sends browser errors to an external processor.
-- Adds bundle weight and configuration surface.
-- Encourages capturing rich context that can easily include PII.
-- Solves source maps, releases, ownership, alerting, and dashboards before we need them.
-
-The blog already has a first-party Worker, D1, and a strict minimal-dependency philosophy. A tiny first-party logger solves the current problem directly.
+Owning the logger also means owning its ingestion protection, acknowledgement behavior, correlation and alerts. Those gaps remain visible in TASK-0125/0126. The absence of a runtime dependency does not establish that the logging problem is solved; reconsider a maintained capability if the remaining operational work outweighs the value of this implementation.
 
 ## Consequences
 
 ### Positive
 
-- We can see the exact message shown to users.
-- Subscribe failures become debuggable from both sides: server rejection reason and browser-visible message.
+- Known form failures have a static diagnostic stage and status; global failures can report an error message.
+- Browser and server evidence can explain different parts of a failure; automatic correlation and reconstruction of exact displayed copy remain incomplete.
 - No third-party dependency or privacy policy expansion beyond first-party diagnostics.
 - D1 gives queryable incident history beyond ephemeral logs.
 - The injected client logger keeps modules testable and avoids hard-coded global reporting.
@@ -380,7 +380,9 @@ The blog already has a first-party Worker, D1, and a strict minimal-dependency p
 - No alerting in Phase 1.
 - Browser reports can be spoofed; they are diagnostics, not security evidence.
 
-## Implementation Plan
+## Original implementation plan — April 11
+
+The package, routes, integration and cleanup listed below already exist. The subscription form now has controlled failure tests. These steps preserve the original plan; the current unfinished work is the September 9 checkpoint above, not recreating the package or replaying its migration.
 
 1. Create `packages/client-observability`.
 2. Add D1 migration `0001_create_client_errors.sql`.

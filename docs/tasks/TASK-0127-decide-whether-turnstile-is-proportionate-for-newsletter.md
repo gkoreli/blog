@@ -1,17 +1,27 @@
 ---
 id: TASK-0127
 title: Decide whether Turnstile is proportionate for newsletter signup
-status: in_progress
+status: done
 parent_id: FLDR-0010
+evidence:
+  - >-
+    Initial choice implemented: retain Worker/D1/Resend/Turnstile and shared
+    confirmation admission in 86dad93. Design and review criteria:
+    packages/blog/drafts/research/newsletter-reliability/09-design-and-implementation.md.
+  - >-
+    Local enforcement and one authorized live cycle are recorded in
+    10-verification.md and 15-live-signup-acceptance.md. No comparative efficacy
+    claim; Gmail placement, webhooks and broader logging remain separate open
+    tasks.
 created_at: '2026-09-07T05:09:30.902Z'
-updated_at: '2026-09-09T01:57:04.430Z'
+updated_at: '2026-09-09T03:02:05.025Z'
 type: task
 ---
-P1 proportionate newsletter protection decision. Goga wants a simple implementation and asks why he cannot keep his own platform. The agent's Buttondown recommendation was not a selected migration. Current recommendation: keep the existing Worker, D1, and Resend integration, verify the reported parallel repair, and fix concrete remaining gaps. A Buttondown account or URL is not a dependency. Follow the [current scope](../../packages/blog/drafts/research/newsletter-reliability/03-protection-options.md#current-scope-simple-signup-on-our-existing-platform).
+Initial implementation decision: retain the existing Worker, D1, Resend and Turnstile, with shared atomic admission for signup/resend and bounded provider retries. This follows the owner's request to build on his platform without a new framework. The agent's Buttondown recommendation was not a selected migration, and no provider account or comparison build is a dependency. [Current scope](../../packages/blog/drafts/research/newsletter-reliability/03-protection-options.md#current-scope-simple-signup-on-our-existing-platform) and [design](../../packages/blog/drafts/research/newsletter-reliability/09-design-and-implementation.md) record the limits and tradeoffs. One authorized real flow completed after a verifier-binding repair; this does not establish comparative CAPTCHA efficacy or a population success rate.
 
 Public signup is normal. Distinguish control of the supplied mailbox, automated-request assessment, limits on email sending, and reliable state transitions. Reuse existing services and pending state; no new framework, queue, or exhaustive comparison is automatically required. Keep the Turnstile policy decision separate from platform ownership. Verify signup, confirmation, unsubscribe, resubscription, failure reporting, and bounded resend behavior. General client logging and historical recovery remain separate unfinished work.
 
-The latest TASK-0124 note records an owner-reported parallel signup fix; retrieve its acceptance receipt before repeating credential work or asserting that signup is still broken. This session has not independently verified it. The dated checkpoints below preserve earlier proposals; their migration and custom-build next steps do not override this scope.
+[TASK-0124's live receipt](../../packages/blog/drafts/research/newsletter-reliability/15-live-signup-acceptance.md) now records successful verification, provider acceptance, Gmail receipt and confirmation activation. Read it before repeating credential work. The dated checkpoints below preserve earlier proposals; their migration and comparison next steps do not override the implemented choice. Reconsider the verifier when measured reader failures or operational burden justify a change, while preserving bounded first-message sending.
 
 ## Investigation checkpoint
 

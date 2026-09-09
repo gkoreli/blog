@@ -2,9 +2,13 @@
 id: FLDR-0010
 title: Newsletter Reliability and Bot Protection Worklist
 created_at: '2026-09-07T05:07:50.125Z'
-updated_at: '2026-09-09T02:48:13.551Z'
+updated_at: '2026-09-09T03:07:27.448Z'
 type: folder
 ---
+Current break checkpoint — September 9 UTC: the platform/Turnstile decision, atomic admission, verifier repair and lifecycle acceptance are complete (TASK-0127, TASK-0137, TASK-0124, TASK-0129). One authorized confirmation arrived in Gmail Spam and its POST activated the address. Migration 0005 is already applied. Gmail placement (TASK-0145), signed provider events (TASK-0142), broader logging/alerts (TASK-0125/0126), historical impact/recovery (TASK-0123/0130) and the unpublished article (TASK-0128) remain open. Start at [the current handoff](../../packages/blog/drafts/research/newsletter-reliability/14-handoff.md) and [worklist index](../../packages/blog/drafts/research/newsletter-reliability/00-worklist-index.md). Earlier sections below preserve their original stages; they do not authorize replaying a migration, changing a secret, migrating to Buttondown or sending new test mail.
+
+## Original scope — September 7 UTC
+
 Investigate the September 6, 2026 PDT subscription outage reported by Goga, establish the retained historical evidence, audit first-party browser error reporting, and decide whether Turnstile is proportionate for this newsletter. Keep production repair separate from the broader architectural decision. The immediate server evidence is Siteverify HTTP 400 with invalid-input-secret; this is not evidence that Cloudflare classified the reader as a bot. Count attempts and retained reports without inventing unique people or lost subscriptions. Preserve operational evidence privately and publish only sanitized findings. Develop an evidence-led article draft from the owned failure and the unresolved question; publication is a later editorial step. Research home: packages/blog/drafts/research/newsletter-reliability/.
 
 ## September 7 UTC checkpoint
@@ -17,7 +21,7 @@ Break handoff: [September 7 reliability checkpoint](../handoffs/2026-09-07-relia
 
 ## September 8 PDT / September 9 UTC simplicity constraint
 
-Goga wants a simple adopted capability for this personal blog. [TASK-0127's current scope](../tasks/TASK-0127-decide-whether-turnstile-is-proportionate-for-newsletter.md) recommends Buttondown's hosted signup, with its standard protections and confirmation. The next input is the newsletter's public URL; provider choice and completion tests remain open. The [earlier adoption steps](../../packages/blog/drafts/research/newsletter-reliability/03-protection-options.md#earlier-managed-service-recommendation) supersede building multiple custom alternatives. Reassess TASK-0124, the newsletter-specific portion of TASK-0126, and TASK-0129 against the migration; keep their findings and do not mark them complete before repair or verified retirement. General client logging, diagnostic-ingestion protection, and historical address recovery remain unfinished. Six exact shaping prompts and the unpublished draft are preserved; production signup has not been repaired by this documentation update.
+At this earlier checkpoint, the agent interpreted Goga's simplicity request as a reason to recommend Buttondown's hosted signup. The owner did not select that migration; the following ownership correction and [TASK-0127's implemented decision](../tasks/TASK-0127-decide-whether-turnstile-is-proportionate-for-newsletter.md) supersede it. The public provider URL was an input to that unselected proposal, not a current dependency. The [earlier adoption steps](../../packages/blog/drafts/research/newsletter-reliability/03-protection-options.md#earlier-managed-service-recommendation) supersede building multiple custom alternatives. Reassess TASK-0124, the newsletter-specific portion of TASK-0126, and TASK-0129 against the migration; keep their findings and do not mark them complete before repair or verified retirement. General client logging, diagnostic-ingestion protection, and historical address recovery remain unfinished. Six exact shaping prompts and the unpublished draft are preserved; production signup has not been repaired by this documentation update.
 
 ## Follow-up: simplicity allows owning the platform
 

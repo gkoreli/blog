@@ -4,10 +4,10 @@ title: Make subscription outcomes durable and protect the diagnostic endpoint
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.844Z'
-updated_at: '2026-09-09T01:57:04.585Z'
+updated_at: '2026-09-09T03:02:04.422Z'
 type: task
 ---
-P1 operations. Record privacy-minimized server outcome stages for subscription rejection, pending creation, confirmation-email provider acceptance/failure, confirmation and rate-limit rejection, with retention and bounded cost. Current delivery_logs covers newsletter campaigns, not confirmation mail; confirmation send errors only reach Worker console while the browser already sees 202. Add a review/alert mechanism for configuration failures and tests for quota/DB failures. Audit ingestion: body size enforced from Content-Length only; server does not reapply client redaction; missing-origin/cross-origin requests are not explicitly rejected; no ingestion rate binding or event budget. Reproduce locally and remedy with actual byte limits, shared sanitization, appropriate origin checks and bounded rate limiting. Assess the shared-D1 quota dependency separately from this invalid-secret incident; do not infer the observed account usage alert caused it.
+P1 remaining operations. Shared confirmation admission, bounded provider retries and the private accepted/failed/unknown attempt ledger are implemented; sending is awaited before the response. Campaign delivery_logs remains separate. The authorized live test linked a server attempt ID to one accepted send and activation, with Gmail Spam placement tracked in TASK-0145. This task still owns configuration-failure review/alerts and general diagnostic-ingestion protection: actual-byte limits instead of trusting Content-Length, server sanitization, a deliberate origin policy, bounded rate/event admission, and an honest persistence acknowledgement. Reuse local failure captures and test the fixes without repeating production scans. Keep shared-D1 quota failures distinct from verifier configuration failures; one does not establish the other's cause.
 
 ## Investigation checkpoint
 

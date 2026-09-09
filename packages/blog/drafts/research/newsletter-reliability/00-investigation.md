@@ -2,13 +2,15 @@
 
 Started September 6, 2026 Pacific; captures continue September 7 UTC. Worklist: FLDR-0010, TASK-0123 through TASK-0130. Source revision at the initial audit: `3d92b10b7a495ab537646b141e2dc9bbba7e20e7`.
 
+Current resume point: [14-handoff.md](14-handoff.md), after implementation `86dad93` and live-acceptance checkpoint `f6185f5`. Migration 0005 is applied. One authorized subscription completed after a fresh verifier-binding repair, with its confirmation received in Gmail Spam. The platform and Turnstile are retained with shared sending limits. [00-worklist-index.md](00-worklist-index.md) includes the later tasks and all research; [15-live-signup-acceptance.md](15-live-signup-acceptance.md) records the exact result. Earlier proposals below are investigation history, not instructions to repeat completed work.
+
 ## Question and living center
 
 A friend could not subscribe. The production verifier rejected the server's secret, while the form suggested retrying or allowing bot protection. Goga is skeptical of the protection and wants to know whether earlier readers met the same failure, and whether our browser diagnostics can answer that question.
 
 The governing form is an evidence-led engineering investigation, currently a field note. The live question is whether the protection and operational burden are proportionate to this newsletter's abuse exposure. An invalid credential is an integration failure; it does not measure Turnstile's ability to distinguish abuse from legitimate requests.
 
-Working claim: the captured flow had a confirmed configuration failure and incomplete diagnostic coverage. A newer TASK-0124 note records an owner-reported parallel repair; retrieve its acceptance receipt before treating the old capture as current health. A claim that Turnstile should be removed needs further evidence about abuse, alternative controls, and reader completion. A successful controlled signup would establish that tested path, not a population success rate.
+The captured flow had a confirmed configuration failure and incomplete diagnostic coverage. The September 9 live test independently found and repaired a verifier-binding failure and completed one subscription. That establishes the tested path, not continuous historical availability or a population success rate. A future removal decision would still need evidence about reader completion and an explicit policy for bounded first-message sending.
 
 ## Evidence stages
 
@@ -28,9 +30,9 @@ Each stage needs its own observation. A page response does not establish form av
 - `article.md`: provisional article draft, outside the publishing directory.
 - `source.prompts.md`: exact human prompts that shaped this investigation.
 
-Private operational captures are stored separately from the repository. Public artifacts omit credentials, addresses, challenge/confirmation tokens, raw IPs, request identifiers, and complete visitor records. Public summaries are author-produced evidence, not independent access to Cloudflare's private logs.
+Private operational captures are stored separately from the repository. Public artifacts omit credentials, addresses, challenge/confirmation tokens, raw IPs, provider message IDs and complete visitor records. The later authorized test receipt includes its opaque operation IDs to connect sanitized stages; these are not visitor identities or historical recovery evidence. Public summaries are author-produced evidence, not independent access to Cloudflare's private logs.
 
-## Work order
+## Earlier work order — September 8 PDT
 
 Goga's September 8 PDT follow-up separates simplicity from outsourcing. [TASK-0127's current scope](03-protection-options.md#current-scope-simple-signup-on-our-existing-platform) recommends keeping the existing platform and repairing concrete gaps. Buttondown is an optional alternative; no migration was selected and no provider URL is required to continue.
 
@@ -40,7 +42,7 @@ Goga's September 8 PDT follow-up separates simplicity from outsourcing. [TASK-01
 4. Decide proportionate protection for both signup and resend, separately from ownership (TASK-0127). Do not build multiple alternatives as a prerequisite for a working form.
 5. Develop the unpublished article from the actual decision and result (TASK-0128).
 
-This session has not independently verified the reported production repair. The article can describe unresolved work, but must distinguish the owner's report from a captured successful flow and must not claim that a proposed control was deployed or successful.
+At this checkpoint, the session had not independently verified the reported production repair. The later live receipt supplies that tested flow with its own limits. The article must continue to distinguish reports, proposals, local tests and observations.
 
 ## September 8 PDT / September 9 UTC research checkpoint
 
@@ -48,7 +50,7 @@ The [prior-art review](05-prior-art-2026.md) reconstructed the urgent April laun
 
 ## Later September 8 PDT / September 9 UTC scope correction
 
-The owner wants a simple adopted capability for a personal blog. The current recommendation is Buttondown's hosted signup, with a small migration and completion check. Building the earlier comparison candidates is no longer the next action. Six complete shaping prompts are preserved. No account was created, subscriber imported, email sent, or runtime changed in this update.
+The owner wanted a simple adopted capability for a personal blog. The agent then recommended Buttondown's hosted signup, with a small migration and completion check. The owner did not select that migration; the next section records his correction. Six complete shaping prompts had been preserved at this point. No account was created, subscriber imported, email sent, or runtime changed in this update.
 
 ## Follow-up: ownership remains a valid choice
 

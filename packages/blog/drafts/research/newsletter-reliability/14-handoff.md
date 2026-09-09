@@ -2,6 +2,8 @@
 
 The implementation is committed as `86dad93` and pushed to main. The [authorized live signup](15-live-signup-acceptance.md) completed at 02:38 UTC after repairing a newly observed invalid-secret failure in the production Turnstile binding. One confirmation arrived in Gmail Spam; the address is active again. It keeps the existing Worker, D1, Resend and Turnstile. No provider migration, queue or ORM was added. The article is written and remains unpublished outside `posts/`.
 
+Break checkpoint: the live receipt, article update and task completions are committed in `f6185f5`. [16-bookkeeping-review.md](16-bookkeeping-review.md) records the documentation audit and recovery snapshot. Start with the retained Gmail test message's authentication results when resuming; no migration, secret change or extra test message is needed simply to restart the session.
+
 ## Completed evidence
 
 - Final isolated integration: 100 blog tests pass, including 39 server and 25 client cases; all workspace typechecks and the 25-post production build pass.
@@ -12,20 +14,23 @@ The implementation is committed as `86dad93` and pushed to main. The [authorized
 - Gmail contained one matching message in Spam. Its link opened a preview without activating; the button POST activated. Seven targeted diagnostic statements consumed seven reads and zero writes, excluding Worker endpoint work. The exact address, tokens and full captures stay private. The live Worker tail is stopped.
 - All research Markdown, the draft, source/claim ledgers, nine exact shaping prompts and test receipts are in this folder. Start at [00-worklist-index.md](00-worklist-index.md). Historical incident captures and probe results retain their original dates.
 
-## Concrete remaining work
+## Task status and resume order
 
 | Task | State and next bounded action |
 |---|---|
 | TASK-0124 / TASK-0137 | Acceptance completed. Read the live receipt before any repeat test or key change; no new test is needed merely to resume work |
+| TASK-0127 | Initial decision completed: keep this platform and Turnstile with shared send admission. Reconsider from measured reader failures or maintenance burden; no provider comparison or migration is pending by default |
 | TASK-0145 | One Gmail confirmation landed in Spam. Inspect the retained message's authentication results and provider sender-domain settings. The local resolver returned no DMARC TXT answer; SPF/DKIM records exist, but message authentication and the Spam cause remain unverified |
-| TASK-0142 | Production metadata lacks `RESEND_WEBHOOK_SECRET`. Resend's dashboard redirects the existing Chrome session to login. Sign into the existing provider account, inspect existing webhooks, configure bounce/complaint delivery and install its signing secret privately; verify a signed event. Do not claim live suppression processing from fixture tests |
+| TASK-0142 | The deployment inspected at 02:09 UTC lacked `RESEND_WEBHOOK_SECRET`; the dashboard redirected to login. On resume, inspect the existing provider account and any endpoint already present before configuring bounce/complaint delivery, installing its signing secret privately and verifying a signed event. Recheck access rather than treating the old login state as permanent |
 | TASK-0125 / TASK-0126 | The component's reporting/retry fixes pass. General diagnostic-ingestion byte limits, server sanitization, admission limits, acknowledgement/transport behavior and configuration-failure review/alerts remain unfinished |
 | TASK-0129 | Lifecycle acceptance completed with the live ordinary unsubscribe/re-subscribe, GET preview and POST activation. Signed provider-event setup remains TASK-0142. Suppression lasts only while the inactive record is retained, up to 90 days |
 | TASK-0128 | Review the unpublished engineering draft. It includes actual implementation, local results, the completed live flow and Spam finding. Publication and any frozen research footprint are separate later steps |
-| TASK-0130 | Historical provider and Worker history remain partly inaccessible. Reuse saved captures; do not repeat broad production scans or infer missing addresses from generic reports |
+| TASK-0123 / TASK-0130 | Historical impact/recovery remains incomplete. Reuse saved captures; inspect only the specific still-retained Worker/provider history if access becomes available. Do not repeat broad production scans or infer missing addresses from generic reports |
 
 The server ledger keeps admitted addresses privately for seven days; it intentionally does not preserve addresses rejected before admission. It is not an outbox: no background crash replay or permanent exactly-once delivery is promised. The request/limit unit is an admitted confirmation operation; provider retries can create two API calls for that operation.
 
 The owner explicitly designated the test recipient in this conversation; that authorization is preserved privately. The existing active address was used for a controlled cycle and left active. No other address was used, and no historical address was recovered. The Resend dashboard was signed out at the earlier check; no provider login or webhook creation occurred. Shared Chrome activity interrupted native UI actions, including original-message header inspection. Verify current state before interacting with a tab; do not mistake a delayed UI snapshot for a new failed request.
 
 The isolated verification checkout is `/Users/goga/.local/share/gkoreli/worktrees/subscription-bombing-20260909`. It is disposable task state, with the existing public build site key only; runtime work is already committed. Preserve unrelated concurrent work in the main checkout. Active task statuses record work to resume, not a claim that an agent keeps running after the turn.
+
+At the break audit that checkout was clean at `86dad937e8d57bbe66085fcf2687272203d93506`, and all three delegated subscription agents had completed. Their earlier local-only summaries do not supersede the parent's later integration and live receipts. The private main-workspace snapshot and verified untracked copies are under `/Users/goga/Documents/goga/private-evidence/bookkeeping/2026-09-09/newsletter-break/`; compare them with current Git history before restoring anything. Other sessions' analytics/article work is preserved separately and must not be reset or committed as unfinished newsletter work.

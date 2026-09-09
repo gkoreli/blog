@@ -36,9 +36,11 @@ Built with [@nisli/core](https://www.npmjs.com/package/@nisli/core) — a zero-d
 pnpm install
 pnpm dev        # browser-sync dev server on localhost:3000
 pnpm build      # production build → packages/blog/dist/
-pnpm validate   # check all posts have valid frontmatter
+pnpm -C packages/blog validate  # validate Markdown frontmatter; nonzero exit on errors
 pnpm typecheck  # TypeScript verification
 ```
+
+The build warns and skips Markdown posts with invalid frontmatter. Run the explicit validation command above when invalid frontmatter must fail a check; the root package has no `validate` script.
 
 ## Project Structure
 
@@ -59,6 +61,7 @@ Every post can have a companion `prompts/{slug}.prompts.md` file with the raw `-
 
 ## Research and operating records
 
+- [Newsletter implementation, live acceptance and remaining work](packages/blog/drafts/research/newsletter-reliability/14-handoff.md)
 - [Analytics implementation and limits](packages/analytics/README.md)
 - [Completed Matomo comparison and agent-subscription research](packages/blog/drafts/research/agent-readership/00-worklist-index.md)
 - [Article 024 launch measurements and accepted referrer capture](packages/blog/drafts/research/article-024-hacker-news/00-worklist-index.md)

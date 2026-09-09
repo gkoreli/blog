@@ -1,5 +1,7 @@
 # Reliability checkpoint for the next session
 
+Historical checkpoint. For current newsletter state, start at [the September 9 handoff](../../packages/blog/drafts/research/newsletter-reliability/14-handoff.md): migration, shared admission and the authorized live flow are complete; Gmail Spam placement, webhooks and broader logging/recovery work remain open. The repair-unverified and implementation-next steps below describe September 7 and must not be replayed as current instructions.
+
 September 7 UTC / September 6 PDT, 2026. Goga requested a break after preserving meaningful work and correcting misleading documentation. This handoff is based on repository state `8b31b32` plus the documentation checkpoint that adds this file. It records work to resume; no background execution is implied by a task's `in_progress` status.
 
 ## Newsletter: diagnosed, repair unverified

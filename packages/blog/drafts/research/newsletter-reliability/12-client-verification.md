@@ -1,6 +1,6 @@
 # Subscription form: bounded failures and local verification
 
-Implemented and checked September 9, 2026, at 01:31 UTC; accepted-response recovery was updated and rechecked before 01:49 UTC (September 8 PDT). This receipt covers the local client changes awaiting integration. It does not record a deployment or a successful production subscription.
+Implemented and checked September 9, 2026, at 01:31 UTC; accepted-response recovery was updated and rechecked before 01:49 UTC (September 8 PDT). This is the local test receipt from before integration into `86dad93`. The separate [live acceptance](15-live-signup-acceptance.md) subsequently verified one real flow; it does not expand these controlled tests into a claim about every browser or durable logger delivery.
 
 The form now stops before the subscription API when verification is unavailable, restores a usable retry after failures, and reports a static diagnostic stage. This addresses the widget coverage and recovery gaps identified in the [September 7 audit](02-client-audit.md). The earlier probe results remain historical evidence of the inspected revision.
 

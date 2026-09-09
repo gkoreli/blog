@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted April 8, 2026; initial implementation shipped that day. Revised September 9, 2026 UTC for the subscription-bombing repair. Local implementation, activation and live completion are separate evidence stages. Consult the [current verification receipt](../../packages/blog/drafts/research/newsletter-reliability/10-verification.md) before claiming the new behavior is deployed or email delivery works.
+Accepted April 8, 2026; initial implementation shipped that day. Revised September 9, 2026 UTC. Implementation `86dad93` is deployed, migration 0005 is applied, and one [authorized live signup](../../packages/blog/drafts/research/newsletter-reliability/15-live-signup-acceptance.md) completed after repairing the production verifier binding. The confirmation arrived in Gmail Spam. Inbox placement, provider webhook connection and general logging repairs remain open. Local tests, deployment and this one observed completion retain separate evidence limits.
 
 The [worklist and research index](../../packages/blog/drafts/research/newsletter-reliability/00-worklist-index.md) contains the current design, primary sources, tests, review, raw shaping prompts and unpublished article. The [detailed implementation decision](../../packages/blog/drafts/research/newsletter-reliability/09-design-and-implementation.md) governs the current subscription flow. Earlier versions of this ADR remain in Git history; their setup instructions and gap lists are not current acceptance receipts.
 
@@ -10,7 +10,7 @@ The [worklist and research index](../../packages/blog/drafts/research/newsletter
 
 The April launch needed a way for readers to hear about later articles. The blog already used Cloudflare Workers and D1, so it added a small newsletter package with Resend delivery and Turnstile verification. The preserved decision was an urgent launch under a free-stack preference, not a comparative reliability or abuse study. An invisible widget was a later aesthetic preference. See the [historical rationale and 2026 prior art](../../packages/blog/drafts/research/newsletter-reliability/05-prior-art-2026.md).
 
-The September 7 investigation found a verifier-secret rejection before subscriber storage and mail scheduling. Five client reports did not establish five distinct readers, and their diagnostics did not retain submitted addresses. The owner subsequently reported a repair in another session; retrieve TASK-0124's acceptance evidence instead of assuming the old failure continues or rotating credentials again. [Recovery findings](../../packages/blog/drafts/research/newsletter-reliability/04-recovery.md) distinguish inspected stores from provider and Worker histories still inaccessible.
+The September 7 investigation found a verifier-secret rejection before subscriber storage and mail scheduling. Five client reports did not establish five distinct readers, and their diagnostics did not retain submitted addresses. After an owner-reported repair, the September 9 authorized test found a fresh invalid-secret failure. Installing the existing recognized secret in the Worker made the real challenge and complete flow pass. That receipt does not establish the earlier outage window or who configured the bad binding. [Recovery findings](../../packages/blog/drafts/research/newsletter-reliability/04-recovery.md) distinguish inspected stores from provider and Worker histories still inaccessible. Reuse these dated receipts before another key change or live test.
 
 Goga wants to keep his platform and keep the subscription integration small. A managed-provider recommendation was never a selected migration. This revision protects the first confirmation email as well as later newsletter activation. It does not claim that the blog experienced a subscription-bombing attack.
 
@@ -25,7 +25,7 @@ Keep the existing Worker, shared `blog-analytics` D1 binding, Resend, and Turnst
 | `/api/confirm/:token` | GET, POST | GET previews; POST activates an eligible pending address |
 | `/api/unsubscribe/:token` | GET, POST | GET previews; POST opts out, including mailbox-provider one-click POST |
 | `/api/send` | POST | Existing newsletter campaign sender, bearer `ADMIN_SECRET` |
-| `/api/webhooks/resend` | POST | Signed bounce and complaint events suppress recipients |
+| `/api/webhooks/resend` | POST | Implemented signed bounce/complaint suppression; production connection pending in TASK-0142 |
 
 A public signup request is not authenticated consent. Turnstile assesses a request; email confirmation establishes a later activation action. Neither identifies who first submitted the address. CORS controls browser access and is not an abuse budget or authentication system.
 
@@ -72,20 +72,20 @@ Nightly cleanup at 03:00 UTC removes expired pending rows, inactive rows older t
 
 ## Migration and deployment procedure
 
-Inspect the schema before applying anything. Newsletter migrations are explicit files against the shared database; the root Wrangler `migrations_dir` points to analytics and is not the newsletter migration history.
+Start with the saved receipt: **production migration 0005 completed September 9 at 01:58:35 UTC and must not be rerun**. A break or new session does not require another schema query. Newsletter migrations are explicit files against the shared database; the root Wrangler `migrations_dir` points to analytics and is not the newsletter migration history.
 
 - A fresh newsletter schema uses `0001_create_subscribers.sql`, then `0003_add_bounced_at.sql`, `0004_delivery_logs.sql`, and `0005_confirmation_admission.sql`.
 - `0002_for_existing_installs.sql` is only a compatibility patch for a pre-April-8 schema. Never execute it after the current fresh-install 0001, and never rerun ALTER migrations blindly.
-- The current installation already has 0001/0003/0004. Apply 0005 once before activating the new code. It adds a nullable column/table while leaving the old Worker able to run. It imports known pending token hashes and preserves old inactive-state uncertainty.
+- The current installation has 0001/0003/0004/0005. For a different installation verified to lack 0005, apply it once before activating dependent code. It adds a nullable column/table, imports known pending token hashes and preserves old inactive-state uncertainty while leaving the old Worker compatible.
 
-After local tests and a bounded live-schema check, the explicit production command for this revision is:
+The historical command below produced the saved migration receipt. It is **not a command to run on the current production database**:
 
 ```bash
 pnpm exec wrangler d1 execute blog-analytics --remote \
   --file packages/newsletter/migrations/0005_confirmation_admission.sql
 ```
 
-Keep its receipt. Stop after a quota rejection and resolve access through metadata; do not retry expensive SQL. Then build and deploy the tested source through the repository's direct-main delivery workflow. Git integration deploys pushes to `main`. Verify schema, code revision and active deployment separately from a designated recipient's complete signup flow.
+For future changes, keep the migration receipt, stop after a quota rejection and resolve access through metadata. Build and deploy tested source through the repository's direct-main workflow. Git integration deploys pushes to `main`; verify code and active deployment separately from any justified designated-recipient test. An active address normally produces a no-send 202, so it cannot establish new email delivery by itself. The saved test used an authorized ordinary unsubscribe/re-subscribe cycle and left the address active; do not repeat that cycle merely to resume work.
 
 Existing configuration uses `TURNSTILE_SITE_KEY` in the build environment; `TURNSTILE_SECRET_KEY` and `RESEND_API_KEY` are Worker secrets. The native `SUBSCRIBE_RATE_LIMITER` binding is required by signup. `RESEND_WEBHOOK_SECRET` is required to process signed bounce/complaint events. `ADMIN_SECRET` protects the separate campaign sender. Do not print secrets or change them because an old failure capture exists. Current widget dashboard mode, DNS authentication, provider limits, webhook setup and actual inbox delivery require account evidence; a successful build establishes none of them.
 
@@ -93,7 +93,7 @@ The package's lack of runtime dependencies is a maintenance choice, not a ban on
 
 ## Remaining work
 
-The [verification receipt](../../packages/blog/drafts/research/newsletter-reliability/10-verification.md) records completed local tests and the deployment/live-email boundary. TASK-0124 tracks the designated recipient's complete acceptance; TASK-0126 still includes general diagnostic-ingestion protection and configuration-failure review/alerts; TASK-0130 retains the incomplete historical recovery audit. Do not mark those tasks complete because confirmation admission is implemented.
+TASK-0124, TASK-0129 and TASK-0137 are complete with distinct local, deployment and live receipts. TASK-0145 investigates the observed Gmail Spam placement; the DNS observation alone does not diagnose it. TASK-0142 requires the provider webhook connection and a signed-event receipt. TASK-0125/0126 retain broader client-report correlation, transport, ingestion and alerting work; TASK-0130 retains incomplete historical recovery. The [current handoff](../../packages/blog/drafts/research/newsletter-reliability/14-handoff.md) gives the next bounded actions. Structured logs are not alerts, provider acceptance is not Inbox placement, and this test recovered no historical address.
 
 The article remains outside `posts/` and unpublished. Future provider migration, removal of Turnstile, permanent suppression storage, campaign automation and a subscriber dashboard are possible decisions, not work automatically authorized by this repair.
 

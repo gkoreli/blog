@@ -6,10 +6,10 @@ title: >-
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:24:39.544Z'
-updated_at: '2026-09-07T06:31:22.991Z'
+updated_at: '2026-09-09T03:02:05.370Z'
 type: task
 ---
-P0 investigation prompted by Goga's recovery question. Distinguish requests rejected before persistence from pending subscriptions whose confirmation failed or expired. Re-check current D1 tables; inspect available Resend sent-email/API logs for actual confirmation attempts; identify existing exports and supported D1 historical recovery. Never infer an email from IP, UA or analytics, never mark an unconfirmed address active, and never send recovery mail without explicit authorization. D1 Time Travel can restore previously stored data, not a request that was never written; current provider docs describe an in-place overwrite, so no speculative production rollback. Keep any recovered addresses private and preserve status/consent evidence. Document recoverable count, provenance, limitations, and a concrete next step for the friend.
+P0 historical recovery. Reuse the saved D1 census, full-column client-error recheck, Resend read-access rejection and D1 bookmark result; no broad database rescan is needed to resume. Requests rejected before persistence differ from stored pending subscriptions whose confirmation failed or expired. The remaining lead is authorized access to retained provider/Worker history or an existing export. Never infer an address from IP, UA or analytics, activate an unconfirmed address, or send recovery mail without authorization. A D1 restore cannot reconstruct a request never written and would overwrite this shared production database; do not perform a speculative rollback. Keep any recovered addresses and consent/suppression evidence private. The September 9 test used an explicitly authorized existing address and recovered no historical subscriber.
 
 ## Investigation checkpoint
 
@@ -18,3 +18,7 @@ Current result: zero recovered addresses and zero pending rows. Inspected verifi
 ## September 7 break checkpoint
 
 Full-column recheck completed at 06:11 UTC: all 13 client-error records, including referrer/stack columns, contain no address-like text. This rules out an address in the inspected fields, not every historical provider or Worker record. Resend read access and native dashboard access remain unavailable. No addresses recovered or activated; no mail sent. The capture is archived privately with a public aggregate and hash in recovery-log-recheck.json. Resume from docs/handoffs/2026-09-07-reliability-checkpoint.md.
+
+## Current resume point — September 9 UTC
+
+Historical recovery still found zero addresses in the inspected evidence. The live test's known authorized address is not a recovery. Access observations in earlier checkpoints are dated: recheck the availability of the specific retained history when resuming, not the entire database. Current operational state and private capture locations are in [14-handoff.md](../../packages/blog/drafts/research/newsletter-reliability/14-handoff.md).

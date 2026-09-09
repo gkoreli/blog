@@ -4,10 +4,10 @@ title: Close client error reporting gaps for Turnstile and subscription failures
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.781Z'
-updated_at: '2026-09-09T02:48:13.613Z'
+updated_at: '2026-09-09T03:02:04.289Z'
 type: task
 ---
-P1 reliability. Audit and reproduce: Turnstile error-callback currently discards its code, calls setError, returns true, and never logger.report; missing script/widget, render/execute exceptions, unsupported browser and timeout paths need bounded explicit reporting. Preserve occurredAt in storage (currently parsed then discarded), attach actual build revision, and correlate the failed operation with its browser report instead of storing only the logging request ray. Install early enough to cover bootstrap/resource-load failures where practical. Add duplicate/event budgets and bounded delivery semantics; sendBeacon queueing is not durable receipt, FetchTransport ignores non-2xx, and D1 waitUntil writes may fail after 204. Preserve error distinctions and usable form recovery without capturing email addresses or challenge tokens. Tests must exercise failure behavior rather than mirror implementation.
+P1 remaining client observability. The subscription form's missing/late widget, failure, expiry, unsupported-browser and timeout paths now emit static stages and leave usable retries; 25 controlled tests pass and one authorized real flow completed. Do not repeat that implementation. Preserve occurredAt in storage (currently parsed then discarded), attach actual build revision, and correlate the failed operation with its browser report instead of storing only the logging request ray. Cover bootstrap/resource-load failures where practical. Add duplicate/event budgets and bounded delivery semantics: sendBeacon queueing is not durable receipt, FetchTransport ignores non-2xx, and D1 waitUntil writes may fail after 204. Keep addresses, tokens and arbitrary API response text out of diagnostics. Tests must exercise the remaining failure behavior.
 
 ## Investigation checkpoint
 
