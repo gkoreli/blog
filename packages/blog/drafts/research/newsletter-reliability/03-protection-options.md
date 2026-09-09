@@ -2,15 +2,29 @@
 
 Initial assessment September 7 UTC, 2026; expanded September 8 PDT / September 9 UTC with [original-decision history, 2026 prior art, and the comparison protocol](05-prior-art-2026.md). This is an architectural assessment, not a deployed change or a comparative effectiveness study.
 
-## Current direction: adopt a maintained newsletter service
+## Current scope: simple signup on our existing platform
 
-On September 8 PDT, Goga made the requirement explicit: this is a personal blog; subscription should work through a simple, safe capability we can adopt. This narrows the work. Building several alternative abuse-control systems is no longer the next step. The earlier comparison remains evidence, not an implementation checklist.
+Goga's follow-up asks why a personal blog cannot own a button and a public POST endpoint. It can. The earlier Buttondown recommendation interpreted simplicity too narrowly as outsourcing subscriber operations. No migration was selected, and a Buttondown URL is not a prerequisite for this work. Keep ownership and abuse protection as separate decisions.
 
-**Recommendation: Buttondown, starting with its hosted signup page.** The blog needs a Subscribe link to the newsletter's real public URL. Buttondown documents default double opt-in, managed signup protection, and subscriber export. Its first 100 subscribers are free. These are documented capabilities, not results from a completed trial of our newsletter. [Signup integration](https://docs.buttondown.com/building-your-subscriber-base), [confirmation](https://docs.buttondown.com/double-opt-in), [firewall](https://docs.buttondown.com/firewall), [export API](https://docs.buttondown.com/api-exports-create), [pricing](https://buttondown.com/pricing), checked September 9 UTC, 2026.
+The existing Worker, D1, and Resend integration already implements pending subscriptions, confirmation, and unsubscribe. Public signup is an ordinary product requirement. Its abuse exposure comes from letting an unknown caller trigger mail to a supplied address. Email confirmation controls activation; it does not prevent the first unwanted confirmation. Turnstile assesses the request, without proving control of the supplied mailbox. Request and email limits bound repeated use. These responsibilities can remain small application functions using the existing services.
+
+The current recommendation is to retain the existing platform and address specific defects:
+
+1. Reuse the parallel repair receipt before changing credentials or repeating production checks. The latest [TASK-0124 note](../../../../../docs/tasks/TASK-0124-restore-subscription-verification-and-distinguish.md) records an owner-reported signup fix. This session has not independently verified it; the earlier statement that signup was still unrepaired was outdated.
+2. Verify signup, confirmation, unsubscribe, and resubscription. Repair the reproduced lifecycle bugs and distinguish configuration errors, rejected tokens, and email-provider failures. Make accepted or failed confirmation sends observable and support a bounded retry through the existing pending state.
+3. Check that signup and resend both limit repeated email to one address, alongside the existing request limit and a deliberate overall sending allowance. Keep Turnstile's retention or replacement as a separate decision. This clarification does not remove protection or require a new queue, framework, or comparative build project.
+
+The next action is reconciling the reported repair with its acceptance evidence, then implementing only the remaining concrete gaps. Provider migration remains an optional maintenance tradeoff. The research below preserves its benefits and limitations; it does not establish that owning this API is unreasonable.
+
+## Earlier managed-service recommendation
+
+On September 8 PDT, Goga asked for a simple, safe capability for a personal blog. The agent proposed the managed-service plan below. Goga's follow-up clarified that simplicity must also allow owning the platform. Building several alternative abuse-control systems remains outside the immediate work.
+
+**Optional alternative: Buttondown's hosted signup page.** The blog would need a Subscribe link to the newsletter's real public URL. Buttondown documents default double opt-in, managed signup protection, and subscriber export. Its first 100 subscribers are free. These are documented capabilities, not results from a completed trial of our newsletter. [Signup integration](https://docs.buttondown.com/building-your-subscriber-base), [confirmation](https://docs.buttondown.com/double-opt-in), [firewall](https://docs.buttondown.com/firewall), [export API](https://docs.buttondown.com/api-exports-create), [pricing](https://buttondown.com/pricing), checked September 9 UTC, 2026.
 
 Use the provider's standard confirmation and protection settings. Keep the subscribe page on `buttondown.com`: its firewall documentation says CAPTCHA recovery is unavailable on custom hosting domains. If an inline email field is wanted later, its supported HTML form can preserve our styling; submit it normally. The provider explicitly warns against using `fetch` for that endpoint because validation and challenge flows can require navigation. No custom signup proxy or provider abstraction is needed.
 
-The bounded adoption work is:
+If this option is selected, the bounded adoption work would be:
 
 1. Obtain the actual newsletter account and public signup URL. Provider choice is currently a recommendation; no account, purchase, or migration is recorded.
 2. Verify signup → confirmation received → active subscription → unsubscribe → deliberate resubscription with a designated, authorized test address. Check mobile Safari and a desktop browser, duplicate submission, visible error recovery, and a subscriber export. Keep the scope to the supported service, without simulating attacks against it.
@@ -19,7 +33,7 @@ The bounded adoption work is:
 
 This choice would transfer subscriber operations to a provider. The tradeoff is provider dependency and future cost as the list grows. A controlled completion test establishes the tested path, not guaranteed delivery or a population success rate. Recovery of older failed attempts and general client-error logging remain separate unfinished work.
 
-Next input: the public Buttondown signup URL. Production signup is still unrepaired. TASK-0127 stays in progress until the provider choice and the tested behavior are recorded. The custom-flow criteria below apply only if that flow is retained or used as an interim repair.
+This alternative has not been selected. TASK-0127 remains in progress under the existing-platform scope above. Its next action does not depend on a Buttondown account.
 
 ## Protect the operation that can be abused
 
@@ -72,4 +86,4 @@ Use synthetic addresses and mocked providers locally. Any real email test needs 
 | [GraphQL sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/) | September 7, 2026 | Adaptive estimates; not an exact set of failed attempts |
 | [Resend logs](https://resend.com/docs/dashboard/logs/introduction) | September 7, 2026 | A provider-side source for older attempts that reached sending; read requests returned 401 because the available key is restricted to sending. No account email history was obtained; see [recovery](04-recovery.md) |
 
-No peer-reviewed CAPTCHA usability result or cross-provider benchmark is claimed. The [later source comparison](05-prior-art-2026.md) includes 2026 threat reporting, an author-hosted subscription-bombing study, provider controls, open-source code, and counterevidence. A broader article argument about reader friction still needs evidence beyond this one configuration failure. TASK-0127's next action and acceptance scope are the managed adoption steps above.
+No peer-reviewed CAPTCHA usability result or cross-provider benchmark is claimed. The [later source comparison](05-prior-art-2026.md) includes 2026 threat reporting, an author-hosted subscription-bombing study, provider controls, open-source code, and counterevidence. A broader article argument about reader friction still needs evidence beyond this one configuration failure. TASK-0127's next action is the bounded existing-platform work above.

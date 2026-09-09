@@ -20,3 +20,7 @@ Why did I add turnstile to begin with? Maybe there is much better prior art that
 ---
 
 what shall we do? this is for a personal blog, i want the subscription to just work without over engineering, and inventing a new framework, i want a simply to adopt safe capability
+
+---
+
+im confused like why can't i have my own platform? Like it is a simple button thats submits API post request... whats so complicated with it? Is it just because that it allows un-authenticated access?

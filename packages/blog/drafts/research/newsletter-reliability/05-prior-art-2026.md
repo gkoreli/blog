@@ -2,7 +2,7 @@
 
 Checked September 8 PDT / September 9 UTC, 2026. TASK-0127 remains in progress. This pass reconstructs the recorded decision and compares primary guidance and implementations; it does not measure comparative signup completion or abuse prevention.
 
-Later owner direction: adopt a simple capability for this personal blog. The [managed-service recommendation](03-protection-options.md#current-direction-adopt-a-maintained-newsletter-service) now governs the work; the custom implementation practices and comparison below are retained research, not prerequisites for adoption.
+Later owner direction: keep this personal blog simple while allowing ownership of the platform. The [current scope](03-protection-options.md#current-scope-simple-signup-on-our-existing-platform) governs the work. A managed service remains an option; the agent's recommendation was not an owner-selected migration. The implementation practices and comparison below are retained research, not a requirement to build new infrastructure or every candidate.
 
 The original choice was a fast, inexpensive way to add spam protection to an urgent newsletter launch on the existing Cloudflare stack. The stronger prior art supports controls at several stages, including before confirmation mail. It does not establish a universally better CAPTCHA. The comparison must also include delegating subscription operations to a maintained newsletter service.
 
@@ -63,7 +63,7 @@ The following is an engineering synthesis from the sources and our [application 
 
 ## Earlier comparison protocol — superseded as the next work
 
-After this review, Goga narrowed the requirement to a simple capability suitable for a personal blog. The [current recommendation and adoption steps](03-protection-options.md#current-direction-adopt-a-maintained-newsletter-service) take precedence over the custom comparison below. Preserve this protocol as research; do not build these candidates or make custom send infrastructure a prerequisite for adopting a maintained service.
+After this review, Goga narrowed the requirement to a simple capability suitable for a personal blog, then questioned the assumption that this required outsourcing. The [current existing-platform scope](03-protection-options.md#current-scope-simple-signup-on-our-existing-platform) takes precedence over the comparison below. Preserve this protocol as research; do not build each candidate or add custom send infrastructure without a concrete remaining need.
 
 The earlier conversational preference for evaluating a widget-free flow first was an untested engineering hypothesis. This review qualifies it: protecting the first send and reducing maintenance both deserve more weight. The immediate comparison should be a repaired custom flow versus a maintained provider's supported signup flow. A self-hosted challenge and a no-challenge design remain candidates under explicit constraints. Enforcement policy, verifier choice, and ownership are separate decisions; the following tracks are not mutually exclusive product categories.
 

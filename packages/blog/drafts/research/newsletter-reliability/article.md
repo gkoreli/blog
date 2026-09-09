@@ -1,6 +1,6 @@
 # Newsletter Bot Protection: What Broke, and What My Logs Missed
 
-Working draft, started September 6 and updated September 8, 2026 Pacific. Evidence-led field note; production repair and the protection decision remain open. This file is outside `posts/` and has no publication date or release metadata.
+Working draft, started September 6 and updated September 8, 2026 Pacific. Evidence-led field note; a newer TASK-0124 checkpoint records an owner-reported signup repair, whose acceptance receipt has not been inspected in this session. The protection decision remains open. This file is outside `posts/` and has no publication date or release metadata.
 
 My friend could not subscribe to my blog because the server's bot-verification key was invalid. The form suggested retrying or allowing bot protection in his browser. When I asked whether other readers had met the same failure, our logs could show five failed submissions. They could not tell me how many people had given up before a report reached us.
 
@@ -72,7 +72,7 @@ A widget-free flow would still need per-address cooldowns, duplicate handling, a
 
 The audit also reproduced two ordinary application bugs: an inactive address can hit a database uniqueness error when subscribing again, and an unknown confirmation token can produce a page claiming the subscription is active. Neither is fixed by a better bot detector. [SQLite reproductions](repro/lifecycle-results.json).
 
-On September 8, I narrowed the requirement: this is a personal blog, and I want subscribing to work through a simple capability I can adopt. The current recommendation is a maintained service's hosted signup page. We can test that flow without building each custom alternative first. The provider choice and production acceptance remain open. [Current worklist and adoption scope](03-protection-options.md#current-direction-adopt-a-maintained-newsletter-service).
+On September 8, I asked for a simple capability for this personal blog. The agent recommended a hosted signup service. That left me confused: why couldn't I keep my own platform when the visible interaction was a button making an API request? The remaining decision includes how to keep the existing implementation small, as well as what protection it needs. A migration has not been selected. [Current worklist and scope](03-protection-options.md#current-scope-simple-signup-on-our-existing-platform).
 
 ---
 
@@ -90,4 +90,4 @@ On September 8, I narrowed the requirement: this is a personal blog, and I want 
 | Self-hosted challenge implementation | [listmonk v6.2.0 verification module](https://github.com/knadh/listmonk/blob/ef0a75872463f10a4848af6c547d1c057405453a/internal/captcha/captcha.go) | September 9 UTC, 2026 |
 | Confirmation-email bombing | [Swiss NCSC](https://www.bacs.admin.ch/en/26w6-en), published February 10, 2026 | September 9 UTC, 2026 |
 
-The [investigation](00-investigation.md) separates observed logs, historical reports, code inspection, local reproductions, and proposed repairs. The six [human prompts](source.prompts.md) are preserved exactly. Research and drafting were assisted by an agent; private operational logs are not published.
+The [investigation](00-investigation.md) separates observed logs, historical reports, code inspection, local reproductions, and proposed repairs. The seven [human prompts](source.prompts.md) are preserved exactly. Research and drafting were assisted by an agent; private operational logs are not published.

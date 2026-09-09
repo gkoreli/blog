@@ -8,7 +8,7 @@ A friend could not subscribe. The production verifier rejected the server's secr
 
 The governing form is an evidence-led engineering investigation, currently a field note. The live question is whether the protection and operational burden are proportionate to this newsletter's abuse exposure. An invalid credential is an integration failure; it does not measure Turnstile's ability to distinguish abuse from legitimate requests.
 
-Working claim: the existing flow has a confirmed configuration failure and incomplete diagnostic coverage. A claim that Turnstile should be removed needs further evidence about abuse, alternative controls, and reader completion. A successful controlled signup would establish that tested path, not a population success rate.
+Working claim: the captured flow had a confirmed configuration failure and incomplete diagnostic coverage. A newer TASK-0124 note records an owner-reported parallel repair; retrieve its acceptance receipt before treating the old capture as current health. A claim that Turnstile should be removed needs further evidence about abuse, alternative controls, and reader completion. A successful controlled signup would establish that tested path, not a population success rate.
 
 ## Evidence stages
 
@@ -32,15 +32,15 @@ Private operational captures are stored separately from the repository. Public a
 
 ## Work order
 
-Goga's September 8 PDT simplicity constraint now governs the order. [TASK-0127's current direction](03-protection-options.md#current-direction-adopt-a-maintained-newsletter-service) recommends a maintained service with a hosted signup page. The next missing input is the actual newsletter's public URL. Provider selection and production acceptance remain open.
+Goga's September 8 PDT follow-up separates simplicity from outsourcing. [TASK-0127's current scope](03-protection-options.md#current-scope-simple-signup-on-our-existing-platform) recommends keeping the existing platform and repairing concrete gaps. Buttondown is an optional alternative; no migration was selected and no provider URL is required to continue.
 
-1. Verify the supported signup, confirmation, unsubscribe, resubscription, and export flow; replace the blog entry point and retire the old sender only with a safe migration (TASK-0127).
+1. Reuse the reported parallel repair's receipt and verify any remaining signup, confirmation, unsubscribe, and resubscription acceptance gaps (TASK-0124, TASK-0129).
 2. Preserve evidence and continue bounded recovery of older stored attempts, without activating unconfirmed addresses (TASK-0123, TASK-0130).
-3. Keep general browser logging and diagnostic-ingestion repairs (TASK-0125, TASK-0126). Reassess newsletter-specific repairs against the chosen service; do not build a custom delivery framework in parallel.
-4. Retain the existing credential and lifecycle findings (TASK-0124, TASK-0129). Repair the custom path if it must remain in service; otherwise close those implementation items only after verified retirement, with the evidence preserved.
+3. Repair specific browser logging, send-outcome, and diagnostic-ingestion gaps (TASK-0125, TASK-0126). Use existing application state for bounded recovery before adding infrastructure.
+4. Decide proportionate protection for both signup and resend, separately from ownership (TASK-0127). Do not build multiple alternatives as a prerequisite for a working form.
 5. Develop the unpublished article from the actual decision and result (TASK-0128).
 
-The present investigation does not claim a repaired production flow. The article can describe unresolved work, but must not claim that a proposed control was deployed or successful.
+This session has not independently verified the reported production repair. The article can describe unresolved work, but must distinguish the owner's report from a captured successful flow and must not claim that a proposed control was deployed or successful.
 
 ## September 8 PDT / September 9 UTC research checkpoint
 
@@ -49,3 +49,7 @@ The [prior-art review](05-prior-art-2026.md) reconstructed the urgent April laun
 ## Later September 8 PDT / September 9 UTC scope correction
 
 The owner wants a simple adopted capability for a personal blog. The current recommendation is Buttondown's hosted signup, with a small migration and completion check. Building the earlier comparison candidates is no longer the next action. Six complete shaping prompts are preserved. No account was created, subscriber imported, email sent, or runtime changed in this update.
+
+## Follow-up: ownership remains a valid choice
+
+Goga questioned why a public POST requires moving platforms. The recommendation above was the agent's inference, not an owner-selected migration. The current scope keeps the existing platform, reuses the reported repair evidence, and addresses the remaining concrete defects. Seven shaping prompts are preserved. The latest TASK-0124 checkpoint supersedes the earlier unqualified claim that signup remains unrepaired; this pass inspected local code and notes, with no new production query, email, or runtime change.

@@ -4,14 +4,14 @@ title: Decide whether Turnstile is proportionate for newsletter signup
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.902Z'
-updated_at: '2026-09-09T01:01:05.167Z'
+updated_at: '2026-09-09T01:12:21.618Z'
 type: task
 ---
-P1 newsletter adoption decision. Goga's latest requirement is a simple, safe capability suitable for a personal blog. The recommendation is Buttondown's hosted signup page, using its standard confirmation and abuse protection. Provider selection remains open; the next missing input is the real newsletter's public signup URL. Follow the [current adoption scope](../../packages/blog/drafts/research/newsletter-reliability/03-protection-options.md#current-direction-adopt-a-maintained-newsletter-service).
+P1 proportionate newsletter protection decision. Goga wants a simple implementation and asks why he cannot keep his own platform. The agent's Buttondown recommendation was not a selected migration. Current recommendation: keep the existing Worker, D1, and Resend integration, verify the reported parallel repair, and fix concrete remaining gaps. A Buttondown account or URL is not a dependency. Follow the [current scope](../../packages/blog/drafts/research/newsletter-reliability/03-protection-options.md#current-scope-simple-signup-on-our-existing-platform).
 
-Verify the supported signup, confirmation, unsubscribe, resubscription, visible error recovery, and export behavior with a designated authorized recipient. Then replace the blog entry point and retire old signup/sending paths while preserving confirmed subscriptions and working legacy opt-outs. Record the accepted provider dependency, cost, tested result, and integration rollback. Do not build custom verifier variants, an outbox framework, or an exhaustive comparative benchmark as prerequisites. General client logging and historical recovery remain separate work. No account, migration, send, or runtime change has occurred.
+Public signup is normal. Distinguish control of the supplied mailbox, automated-request assessment, limits on email sending, and reliable state transitions. Reuse existing services and pending state; no new framework, queue, or exhaustive comparison is automatically required. Keep the Turnstile policy decision separate from platform ownership. Verify signup, confirmation, unsubscribe, resubscription, failure reporting, and bounded resend behavior. General client logging and historical recovery remain separate unfinished work.
 
-The dated checkpoints below preserve the earlier investigation. Their custom-build next steps are superseded by this scope; they are not outstanding prerequisites.
+The latest TASK-0124 note records an owner-reported parallel signup fix; retrieve its acceptance receipt before repeating credential work or asserting that signup is still broken. This session has not independently verified it. The dated checkpoints below preserve earlier proposals; their migration and custom-build next steps do not override this scope.
 
 ## Investigation checkpoint
 
