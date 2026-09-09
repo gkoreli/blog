@@ -1,0 +1,7 @@
+{
+  "name": "oss-radar-07-installed-probe",
+  "private": true,
+  "type": "module",
+  "scripts": { "probe": "node probe-installed.ts" },
+  "dependencies": { "promptfoo": "0.122.2" }
+}

@@ -3,3 +3,20 @@
 ---
 
 you decide
+
+---
+
+@GitHub i am curious how some of these tie into the OSS Radar article style?
+
+---
+
+And also analytics thread that i am following for the following 10 articles, is AI Citation a subset of analytics or a genre in itself?
+
+---
+
+"This is the strongest option for improving the Worker directly. Its limit: verified identity still does not establish a human trigger or an AI citation."
+Is this even possible to determine human trigger vs AI citation? And what does it even mean, in either case human triggered something and AI read the article at some point, what does it even semantically or mentally how to construct a mindset, is there a prior art or research into mental model of how to differentiate attribution of the trigger? I would love a research artifact in the worklist on this question, and part of this needs to go into the OSS article itself.
+
+---
+
+lets do this: **OSS Radar:** *Can Promptfoo Preserve the Evidence Behind an AI Answer?* Judge its design, what works, what needs extra code, and whether it is worth adopting for this workload. Now that you explained the following it makes sense more now: "AI citations are a topic; counting them is analytics, and checking whether their sources support an answer is evaluation.". Feels like AI Citations will become larger over time and measuring will become an analytics question, and part of it could be answered by us, by the analytics that we are building for our blog. This is an interesting novel concept in my opinion, lets explore more. And lets start working on the worklist item, capture references and research artifact md files, and start the draft for OSS Radar #7.

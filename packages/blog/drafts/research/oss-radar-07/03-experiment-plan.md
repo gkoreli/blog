@@ -1,6 +1,6 @@
 # Promptfoo citation pilot
 
-Status: proposed, September 8, 2026. The only completed execution is the [offline module probe](repro/README.md). It does not satisfy the live-pilot gates below.
+Status: Promptfoo selected by Goga, September 8, 2026. The [installed-package comparison](repro/installed/README.md) completed the successful-fixture portion of steps 1–2 below. The built-in normalized summary omitted citation fields; the cache retained them; a custom provider retained raw/metadata through programmatic JSON export. Error paths, trace/export joins, and the paid pilot remain open. The initial [offline module probe](repro/README.md) retains its narrower historical scope.
 
 The first week should determine whether Promptfoo can support an auditable, small citation study with a thin adapter. It should leave useful research code and a project verdict. It should not promise a measured increase in organic discovery.
 
@@ -8,14 +8,16 @@ The first week should determine whether Promptfoo can support an auditable, smal
 
 | Step | Work | Required evidence | Stop or change direction when |
 |---|---|---|---|
-| 1 | Reproduce the adapter result using the installed pinned package and a mock HTTP endpoint | Package/lockfile versions, request/response fixture, exported result, cache configuration | The installed result differs: explain the difference before claiming a defect |
-| 2 | Build a raw-response capture adapter and replay the same fixture | Exact payload, citation/annotation fields, request ID, usage, charge provenance, error/cached states | Capturing results requires a large framework fork: compare a small standalone runner |
+| 1 | Complete: installed pinned package with a mock HTTP endpoint and fresh/cached summaries | [Package/lockfile, requests, response, summaries, cache](repro/installed/README.md) | Broader loss claim rejected: full parsed data survived in the cache |
+| 2 | Successful-fixture prototype complete; extend it to real response and failure states | Raw bytes, citation/annotation fields, synthetic request ID and usage retained; live charge/error provenance open | Capturing results requires a large framework fork: compare a small standalone runner |
 | 3 | Run five paid preflight calls at most | Working account/route, actual response shape, bill/usage agreement, limits and retry record | Key/route unavailable, evidence fields missing, or spend cannot be bounded |
 | 4 | Freeze the pilot protocol and run 72 fresh calls | 12 questions × 2 wordings × 3 repetitions; complete response and failure records | Budget reserve is reached or the provider changes behavior/version materially |
 | 5 | Score, review failures, and compare with a bounded source-side capture | Fixed rubric, per-question table, disagreement notes, explicit join coverage | The retained data cannot support the planned claim: narrow the claim |
 | 6 | Build the article artifact and decide | Static dataset, minimal case explorer, runnable checks, adoption verdict | The experiment adds no useful product judgment: publish a small research note instead |
 
-Five preflight calls are separate from the 72 analyzed calls. Runs are repeated observations on 12 questions, not 72 independent engineering problems. A week is a planning target; these steps are not scheduled automation.
+Five preflight calls are separate from the 72 analyzed calls. Runs are repeated observations on 12 questions, not 72 independent engineering problems. The three installed fixture evaluations are parser/transport checks and enter neither count. A week is a planning target; these steps are not scheduled automation.
+
+Before relying on tracing, enable it in a separate bounded test and check explicit run/attempt IDs through the chosen trace and evaluation exports. The installed probe used no tracing or database persistence. Keep private raw capture separate from reviewed public export, and preserve the local egress restriction described in the reproduction method.
 
 ## Question set
 
@@ -48,11 +50,15 @@ Retain an immutable private raw-response record and a reviewed public export. Th
 | Review | supported/unsupported/unverifiable claim judgments, preserved limitations, reviewer disagreements, correction notes |
 | Origin comparison | matching rule, observation window, path, match confidence, reason for unmatched or unknown cases |
 
+Apply the [trigger and citation model](04-trigger-provenance-and-ai-citations.md): preserve task/run identity, known start event, parent run, URL-selection method, and evidence for each. Keep documented client role separate from observed run trigger. Source lists, answer citations, source support, and citation faithfulness remain separate fields. Faithfulness stays untested in this pilot.
+
 Preserve field absence as unknown, not zero. Retain raw URLs; derive hostname and registrable-domain fields using a pinned Public Suffix List implementation. Keep citation occurrences, unique URLs, unique domains, and answer claims as separate units. Preserve lookup failures separately from confirmed absence. Do not publish subscriber addresses, request credentials, or private visitor-level traces.
 
 Response caching must be disabled for repeated sampling through a supported version-specific setting and verified with transport counters. Replaying a saved response for parser tests is desirable; counting that replay as a new model answer is not.
 
 ## Primary outcomes and scoring
+
+The novelty claim is bounded by [existing citation research and publisher analytics](06-promptfoo-design-and-prior-art.md). We are testing an inspectable implementation on an owned workload. We are not claiming to invent citation analytics or to infer every citation from Cloudflare logs.
 
 Primary outcomes are citation-field retention through the chosen adapter and the proportion of scored claims that their cited sources support. Report the numerator, denominator, unit, and unavailable-source count. Return URLs alone do not prove that every source supports a statement or that the model fetched it during that run.
 

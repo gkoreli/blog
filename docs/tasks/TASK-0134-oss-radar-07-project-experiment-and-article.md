@@ -1,18 +1,22 @@
 ---
 id: TASK-0134
 title: OSS Radar 07 project experiment and article
-status: open
+status: in_progress
 parent_id: FLDR-0011
 created_at: '2026-09-08T19:21:39.000Z'
-updated_at: '2026-09-08T19:21:39.000Z'
+updated_at: '2026-09-08T21:11:05.633Z'
 type: task
 ---
 
-Choose one project from the [four researched options](../../packages/blog/drafts/research/oss-radar-07/01-options.md), run its bounded experiment, and write OSS Radar #07 as a project deep dive. Develop a distinct engineering continuation from code used on the blog.
+Goga selected **Promptfoo** for **OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?** Run its bounded experiment and write the article as a project deep dive. Judge design, working behavior, extra code, and adoption for a citation-evidence workload. Develop a distinct engineering continuation from code used on the blog.
 
-The September 8 preparation is complete: recent article review, credibility context, dated project checks, source inspection, and one offline Promptfoo adapter probe. That probe uses mocked dependencies and a synthetic response; it is not a live model evaluation. Topic selection, installed-package reproduction, API trials, and the article remain open.
+The September 8 preparation now includes source/prior-art research, the initial offline module probe, an installed-package fixture comparison, a custom capture-provider prototype, and the first article draft. The installed result distinguishes a missing citation field in the built-in summary from complete parsed data in the transport cache. Custom raw/metadata survived programmatic JSON export. All model responses were synthetic; no paid or production study ran. API trials, trace/export joins, author review, and publication remain open.
 
-Recommended next action: follow the [Promptfoo experiment plan](../../packages/blog/drafts/research/oss-radar-07/03-experiment-plan.md), beginning with an installed-package mock-server test. The proposed one-week timebox and $20 incremental API ceiling are planning assumptions, not a purchase or scheduled job.
+The [trigger/citation research](../../packages/blog/drafts/research/oss-radar-07/04-trigger-provenance-and-ai-citations.md) separates task authority, run trigger, signer identity, content access, citation support, and causal reliance. Its [article passage](../../packages/blog/drafts/research/oss-radar-07/05-article-section-trigger-and-citation.md) belongs in the [working draft](../../packages/blog/drafts/oss-radar-07-promptfoo.md). [Design and prior art](../../packages/blog/drafts/research/oss-radar-07/06-promptfoo-design-and-prior-art.md) constrain the novelty and adoption claims.
+
+The [installed method and artifacts](../../packages/blog/drafts/research/oss-radar-07/repro/installed/README.md) retain the exact dependency lock, script, response fixture, full summaries, cache entry, and the resolved execution interruption. The [measurement contract](../../packages/blog/drafts/research/oss-radar-07/07-citation-measurement-contract.md) defines proposed records, denominators, and missing-data states.
+
+Next action: extend the capture provider to real response variants, absent fields, failures, retries, and charge provenance; freeze questions and the support rubric; then follow the bounded preflight in the [experiment plan](../../packages/blog/drafts/research/oss-radar-07/03-experiment-plan.md). The proposed one-week timebox and $20 incremental API ceiling are planning assumptions, not a purchase or scheduled job.
 
 Acceptance:
 
@@ -21,6 +25,8 @@ Acceptance:
 - Produce at least one runnable or explorable article artifact with real results.
 - Connect an adopted code change or explicit no-adoption verdict to the owned problem.
 - Keep the Radar product verdict distinct from the engineering article's new operating result.
+- Include the task-trigger and citation distinction in the article; distinguish citation counts, source-support evaluation, and untested causal reliance.
+- State what prior work already does and identify our contribution through retained data and a reproducible method, without claiming category-level novelty.
 - Apply article shaping, fact checking, discovery, prose, and visual checks before publication.
 - Match the final article slug to the preserved prompts file and verify its page.
 

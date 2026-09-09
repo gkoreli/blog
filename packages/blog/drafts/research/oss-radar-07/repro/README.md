@@ -31,6 +31,8 @@ See [result.json](result.json) for the exact inputs, runtime, source and fixture
 
 The probe establishes this module's return shape under controlled dependencies. It does not establish the behavior of an installed Promptfoo evaluation, its raw transport cache, another provider adapter, a live model, or the provider's billing. Those are next checks. No upstream issue was filed.
 
+September 8 continuation: the separate [installed-package probe](installed/README.md) now checks programmatic summaries, the transport cache, and a custom capture provider. It confirms the summary omission and demonstrates that the full parsed fixture survives in the cache. The broader framework can retain raw data and metadata through the tested custom-provider path. The original result above remains unchanged.
+
 ## Source
 
 [Promptfoo OpenRouter provider](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/providers/openrouter.ts), under the retained [MIT licence](vendor/LICENSE.promptfoo). The snapshot is unmodified. The probe and fixture are original research code under this repository's code licence.

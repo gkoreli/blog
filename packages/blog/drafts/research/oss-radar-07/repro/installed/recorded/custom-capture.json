@@ -1,0 +1,231 @@
+{
+  "version": 3,
+  "timestamp": "2026-09-08T21:13:33.787Z",
+  "prompts": [
+    {
+      "id": "21813e9b77a35d9ea601c00329b48aa05a231595a6afedbc6f983aff6d86a648",
+      "raw": "Explain the classification finding.",
+      "label": "Explain the classification finding.",
+      "provider": "oss-radar-evidence-fixture",
+      "metrics": {
+        "score": 1,
+        "testPassCount": 1,
+        "testFailCount": 0,
+        "testErrorCount": 0,
+        "assertPassCount": 1,
+        "assertFailCount": 0,
+        "totalLatencyMs": 13,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "namedScores": {},
+        "namedScoresCount": {},
+        "namedScoreWeights": {},
+        "cost": 0
+      }
+    }
+  ],
+  "results": [
+    {
+      "cost": 0,
+      "gradingResult": {
+        "pass": true,
+        "score": 1,
+        "reason": "All assertions passed",
+        "namedScores": {},
+        "tokensUsed": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0
+        },
+        "componentResults": [
+          {
+            "pass": true,
+            "score": 1,
+            "reason": "Assertion passed",
+            "assertion": {
+              "type": "contains",
+              "value": "no verified count of people"
+            }
+          }
+        ]
+      },
+      "id": "f232b98b-2eb4-4f4e-97d5-4488876153e8",
+      "latencyMs": 13,
+      "namedScores": {},
+      "prompt": {
+        "raw": "Explain the classification finding.",
+        "label": "Explain the classification finding.",
+        "config": {}
+      },
+      "promptId": "21813e9b77a35d9ea601c00329b48aa05a231595a6afedbc6f983aff6d86a648",
+      "promptIdx": 0,
+      "provider": {
+        "id": "oss-radar-evidence-fixture"
+      },
+      "response": {
+        "output": "The source describes request classification, with no verified count of people. [1]",
+        "raw": "{\n  \"id\": \"synthetic-oss-radar-07\",\n  \"model\": \"perplexity/sonar\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"The source describes request classification, with no verified count of people. [1]\",\n        \"annotations\": [\n          {\n            \"type\": \"url_citation\",\n            \"url_citation\": {\n              \"url\": \"https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript\",\n              \"title\": \"Synthetic citation fixture\",\n              \"start_index\": 0,\n              \"end_index\": 90\n            }\n          }\n        ]\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"citations\": [\n    \"https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript\"\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 100,\n    \"completion_tokens\": 20,\n    \"total_tokens\": 120,\n    \"cost\": 0.008\n  }\n}\n",
+        "metadata": {
+          "evidence": {
+            "providerCitations": [
+              "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+            ],
+            "answerAnnotations": [
+              {
+                "type": "url_citation",
+                "url_citation": {
+                  "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+                  "title": "Synthetic citation fixture",
+                  "start_index": 0,
+                  "end_index": 90
+                }
+              }
+            ],
+            "requestId": "synthetic-request-07",
+            "responseSha256": "d7b4e3d467bd9b87d623daa52f8bd1938b50e3fd42888c1b8b1a58c9f71d4ba2",
+            "providerReportedUsage": {
+              "prompt_tokens": 100,
+              "completion_tokens": 20,
+              "total_tokens": 120,
+              "cost": 0.008
+            }
+          }
+        }
+      },
+      "score": 1,
+      "success": true,
+      "testCase": {
+        "assert": [
+          {
+            "type": "contains",
+            "value": "no verified count of people"
+          }
+        ],
+        "vars": {},
+        "options": {},
+        "metadata": {}
+      },
+      "testIdx": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "vars": {},
+      "metadata": {
+        "evidence": {
+          "providerCitations": [
+            "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+          ],
+          "answerAnnotations": [
+            {
+              "type": "url_citation",
+              "url_citation": {
+                "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+                "title": "Synthetic citation fixture",
+                "start_index": 0,
+                "end_index": 90
+              }
+            }
+          ],
+          "requestId": "synthetic-request-07",
+          "responseSha256": "d7b4e3d467bd9b87d623daa52f8bd1938b50e3fd42888c1b8b1a58c9f71d4ba2",
+          "providerReportedUsage": {
+            "prompt_tokens": 100,
+            "completion_tokens": 20,
+            "total_tokens": 120,
+            "cost": 0.008
+          }
+        },
+        "_promptfooFileMetadata": {}
+      },
+      "failureReason": 0
+    }
+  ],
+  "stats": {
+    "successes": 1,
+    "failures": 0,
+    "errors": 0,
+    "tokenUsage": {
+      "prompt": 0,
+      "completion": 0,
+      "cached": 0,
+      "total": 0,
+      "numRequests": 1,
+      "completionDetails": {
+        "reasoning": 0,
+        "acceptedPrediction": 0,
+        "rejectedPrediction": 0,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0
+      },
+      "assertions": {
+        "total": 0,
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "numRequests": 0,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        }
+      }
+    },
+    "durationMs": 19,
+    "evaluationDurationMs": 19
+  }
+}

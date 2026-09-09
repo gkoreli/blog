@@ -1,5 +1,7 @@
 # OSS Radar #07: Four experiments for the blog
 
+**Selection update, September 8:** Goga chose Promptfoo and the question **Can Promptfoo Preserve the Evidence Behind an AI Answer?** The comparison below preserves the initial selection research. Continue in the [worklist](00-worklist-index.md), [trigger/citation research](04-trigger-provenance-and-ai-citations.md), and [article draft](../../oss-radar-07-promptfoo.md).
+
 **Recommendation: evaluate Promptfoo against a real AI-citation study.** It has the best fit with the open Trellner research task, the credibility experiments, and the missing answer-side analytics. Cloudflare Web Bot Auth is the strongest alternative if the next week should improve the Worker directly.
 
 These are four candidates for one project deep dive, not a proposed four-project issue. Research cutoff: September 8, 2026. The plans below are estimates for one week of focused work. One small offline Promptfoo fixture ran during this investigation; no live model study or Cloudflare account query ran.
@@ -56,6 +58,8 @@ August's fixes are unusually relevant to a site that already records verified si
 The blog's [current verifier](https://github.com/gkoreli/blog/blob/935abf29de1a755d2e278f90d4794c11d18a6a43/packages/analytics/src/webbotauth.ts) already checks validity times, selects Ed25519 keys by thumbprint, keys its cache by directory and key ID, and accepts documented legacy forms. There is no basis here to say it shares those upstream Rust defects. The useful question is conformance and operating policy across implementations.
 
 **Maintainer thesis:** signed requests offer an identity mechanism that does not depend on a User-Agent claim. **Rival explanation:** crypto verification is only one part of the result; directory trust, freshness, replay policy, compatibility, and cache behavior determine what an operator may safely infer.
+
+**Meaning of the limit:** a task's trigger and its answer's citations are separate facts. A person can commission a scheduled task; the timer starts a later run, and the answer may cite the article. The verifier cannot recover those events from signer identity alone. This is a boundary of its stated purpose, not a missing promise to detect people. [Prior art and measurement model](04-trigger-provenance-and-ai-citations.md).
 
 **One-week experiment.** Run the same local signature vectors through the blog verifier and the pinned Cloudflare implementations. Vary time windows, key rotation, signed components, signature-agent forms, and directory failures. Separately exercise duplicate-request policy. A replayed valid signature can still pass cryptographic verification; the draft makes replay prevention a deployment concern.
 

@@ -1,6 +1,6 @@
 {
   "checked_date": "2026-09-08",
-  "scope": "Option-selection research; pinned code inspection and one offline synthetic module probe.",
+  "scope": "Original option-selection snapshot; its unperformed list is historical. See continuation for the selected-project update.",
   "repository": "gkoreli/blog",
   "blog_baseline_commit": "935abf29de1a755d2e278f90d4794c11d18a6a43",
   "projects": [
@@ -89,5 +89,35 @@
     "Full Trellner dataset recomputation",
     "Organic discovery or credibility experiment",
     "New upstream report or external message"
-  ]
+  ],
+  "continuation": {
+    "checked_date": "2026-09-08",
+    "blog_baseline_commit": "b338d642f04da6a9c24af513212d4a6565778bc3",
+    "selected_project": "promptfoo/promptfoo",
+    "source_baseline_unchanged": true,
+    "installed_version": "0.122.2",
+    "completed": [
+      "Installed-package synthetic fresh/cached programmatic summaries",
+      "Full parsed transport-cache fixture comparison",
+      "Custom-provider raw/metadata capture and JSON round trip",
+      "Primary-source trigger/citation and design/prior-art research",
+      "First unpublished Radar draft"
+    ],
+    "result": "repro/installed/recorded/result.json",
+    "issue_state": {
+      "url": "https://github.com/promptfoo/promptfoo/issues/9968",
+      "state": "open",
+      "checked_date": "2026-09-08"
+    },
+    "unperformed": [
+      "Live model calls and billing preflight",
+      "Trace/export join execution",
+      "Streaming, missing-field and failure-path capture",
+      "New Cloudflare queries or production instrumentation",
+      "Organic discovery or citation-support study",
+      "Full Trellner dataset recomputation",
+      "Upstream report, comment, or other message",
+      "Article publication"
+    ]
+  }
 }

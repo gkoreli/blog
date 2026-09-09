@@ -1,0 +1,10 @@
+[
+  {
+    "path": "/api/v1/chat/completions",
+    "body": "{\"model\":\"perplexity/sonar\",\"messages\":[{\"role\":\"user\",\"content\":\"Explain the classification finding.\"}],\"max_tokens\":1024,\"temperature\":0}"
+  },
+  {
+    "path": "/api/v1/chat/completions",
+    "body": "{\"model\":\"perplexity/sonar\",\"messages\":[{\"role\":\"user\",\"content\":\"Explain the classification finding.\"}],\"temperature\":0,\"max_tokens\":1024}"
+  }
+]

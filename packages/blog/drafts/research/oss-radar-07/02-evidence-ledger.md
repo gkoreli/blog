@@ -1,6 +1,8 @@
 # OSS Radar #07 evidence ledger
 
-Checked September 8, 2026. This is an option-selection audit, not a complete review of every project feature. One offline module probe ran; the proposed paid and production experiments did not.
+Checked September 8, 2026. The table below preserves the original option-selection audit, when one offline module probe had run. The selected-project continuation adds [design/prior-art claims](06-promptfoo-design-and-prior-art.md) and an [installed-package reproduction](repro/installed/README.md). Paid and production experiments remain unrun.
+
+Continuation correction: the installed transport cache retained the full parsed fixture, including citation fields. The built-in programmatic summary omitted them; a custom provider carried them through JSON serialization. Keep this boundary beside any reuse of the earlier omission claim. [Trigger/citation research](04-trigger-provenance-and-ai-citations.md) and the [measurement contract](07-citation-measurement-contract.md) define what those records can establish.
 
 Evidence states follow the OSS Radar skill: **Code-inspected**, **Reproduced**, **Reported**, and **Proposed**. Reported covers attributed releases, documentation, prior research, and observations not rerun here. Interpretations and decisions remain separate from those states.
 

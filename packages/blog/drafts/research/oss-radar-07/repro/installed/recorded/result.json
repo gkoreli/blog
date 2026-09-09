@@ -1,0 +1,92 @@
+{
+  "measuredAt": "2026-09-08T21:13:33.816Z",
+  "node": "v24.19.0",
+  "platform": "linux",
+  "arch": "x64",
+  "promptfooVersion": "0.122.2",
+  "upstreamCommit": "89052308bce06f53645b1f189ada5ac9d1897347",
+  "fixtureSha256": "d7b4e3d467bd9b87d623daa52f8bd1938b50e3fd42888c1b8b1a58c9f71d4ba2",
+  "scriptSha256": "1a0232c16adaa138ee91ad4df227135eea7c6c97c9eac7b9efa1e7d43e110600",
+  "lockfileSha256": "07e29b10a02cb78937cf1af405015e94f2b3f070e4adc7772bc640c97668d34c",
+  "tracingEnabled": false,
+  "databasePersistence": false,
+  "fixtureUniqueSourceUrls": 1,
+  "evaluations": [
+    {
+      "label": "built-in-fresh",
+      "localHttpRequests": 1,
+      "cacheEnabled": true,
+      "cached": false,
+      "responseKeys": [
+        "output",
+        "tokenUsage",
+        "cached",
+        "finishReason"
+      ],
+      "answerPreserved": true,
+      "rawBytesPreserved": false,
+      "structuredCitationUrlsRetained": 0,
+      "structuredAnnotationsRetained": 0,
+      "textAssertionPassed": true
+    },
+    {
+      "label": "built-in-cached",
+      "localHttpRequests": 0,
+      "cacheEnabled": true,
+      "cached": true,
+      "responseKeys": [
+        "output",
+        "tokenUsage",
+        "cached",
+        "finishReason"
+      ],
+      "answerPreserved": true,
+      "rawBytesPreserved": false,
+      "structuredCitationUrlsRetained": 0,
+      "structuredAnnotationsRetained": 0,
+      "textAssertionPassed": true
+    },
+    {
+      "label": "custom-capture",
+      "localHttpRequests": 1,
+      "cacheEnabled": false,
+      "cached": null,
+      "responseKeys": [
+        "output",
+        "raw",
+        "metadata"
+      ],
+      "answerPreserved": true,
+      "rawBytesPreserved": true,
+      "structuredCitationUrlsRetained": 1,
+      "structuredAnnotationsRetained": 1,
+      "textAssertionPassed": true
+    }
+  ],
+  "cacheRecordsWithFullParsedFixture": 1,
+  "totalLocalHttpRequests": 2,
+  "liveModelCalls": 0,
+  "apiSpendUsd": 0,
+  "blockedNonLoopbackFetches": [
+    {
+      "destination": "https://r.promptfoo.app/",
+      "method": "POST",
+      "bodyFields": [
+        "event",
+        "environment",
+        "email",
+        "meta"
+      ]
+    }
+  ],
+  "limits": [
+    "One invented payload; one distinct URL appears in two structured fields.",
+    "Counts measure fixture retention, not citation rates in model answers.",
+    "String assertion checks answer transport, not source support or truth.",
+    "Fixture annotation offsets are not validated and are not used for scoring.",
+    "Synthetic usage/cost fields are not bills; absent normalized cost is not free live inference.",
+    "Programmatic summary JSON only; trace export, CLI export, database restart, streaming, retries and failures are untested.",
+    "Custom provider handles this successful fixture only and is not ready for paid use.",
+    "Non-loopback fetch attempts were blocked locally; this is not an OS-level network audit."
+  ]
+}
