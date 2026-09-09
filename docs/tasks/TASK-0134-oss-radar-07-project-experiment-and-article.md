@@ -4,7 +4,7 @@ title: OSS Radar 07 project experiment and article
 status: in_progress
 parent_id: FLDR-0011
 created_at: '2026-09-08T19:21:39.000Z'
-updated_at: '2026-09-08T21:11:05.633Z'
+updated_at: '2026-09-08T21:36:00.550Z'
 type: task
 ---
 
@@ -15,6 +15,8 @@ The September 8 preparation now includes source/prior-art research, the initial 
 The [trigger/citation research](../../packages/blog/drafts/research/oss-radar-07/04-trigger-provenance-and-ai-citations.md) separates task authority, run trigger, signer identity, content access, citation support, and causal reliance. Its [article passage](../../packages/blog/drafts/research/oss-radar-07/05-article-section-trigger-and-citation.md) belongs in the [working draft](../../packages/blog/drafts/oss-radar-07-promptfoo.md). [Design and prior art](../../packages/blog/drafts/research/oss-radar-07/06-promptfoo-design-and-prior-art.md) constrain the novelty and adoption claims.
 
 The [installed method and artifacts](../../packages/blog/drafts/research/oss-radar-07/repro/installed/README.md) retain the exact dependency lock, script, response fixture, full summaries, cache entry, and the resolved execution interruption. The [measurement contract](../../packages/blog/drafts/research/oss-radar-07/07-citation-measurement-contract.md) defines proposed records, denominators, and missing-data states.
+
+The draft now has a dedicated **What Promptfoo is building** section, supported by the [purpose and trajectory audit](../../packages/blog/drafts/research/oss-radar-07/08-promptfoo-purpose-and-trajectory.md). It explains evaluation, adversarial testing, code scanning, recent tracing/accounting work, current OpenAI affiliation, and the stated Frontier plan without treating planned integration as shipped. All seven shaping prompts through this request are preserved verbatim in the [prompts file](../../packages/blog/prompts/oss-radar-07.prompts.md).
 
 Next action: extend the capture provider to real response variants, absent fields, failures, retries, and charge provenance; freeze questions and the support rubric; then follow the bounded preflight in the [experiment plan](../../packages/blog/drafts/research/oss-radar-07/03-experiment-plan.md). The proposed one-week timebox and $20 incremental API ceiling are planning assumptions, not a purchase or scheduled job.
 

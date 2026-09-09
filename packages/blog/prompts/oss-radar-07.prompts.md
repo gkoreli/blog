@@ -20,3 +20,7 @@ Is this even possible to determine human trigger vs AI citation? And what does i
 ---
 
 lets do this: **OSS Radar:** *Can Promptfoo Preserve the Evidence Behind an AI Answer?* Judge its design, what works, what needs extra code, and whether it is worth adopting for this workload. Now that you explained the following it makes sense more now: "AI citations are a topic; counting them is analytics, and checking whether their sources support an answer is evaluation.". Feels like AI Citations will become larger over time and measuring will become an analytics question, and part of it could be answered by us, by the analytics that we are building for our blog. This is an interesting novel concept in my opinion, lets explore more. And lets start working on the worklist item, capture references and research artifact md files, and start the draft for OSS Radar #7.
+
+---
+
+capture all the prompts that i gave you in the prompts md file verbatim so far. Also we need a dedicated section about what is Promptfoo and their latest trajectory that they are on, like what they are building and what vision/purpose have out there in the open source world

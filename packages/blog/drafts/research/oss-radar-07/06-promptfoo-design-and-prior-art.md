@@ -14,7 +14,9 @@ Blog continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. Older op
 
 ## The product's job and the competing explanation
 
-The pinned [README](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/README.md) presents a shared framework for evaluating prompts, models, and AI applications. The [custom-provider documentation](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/site/docs/providers/custom-api.md) lets an operator bring an application behind a common interface. These support a maintainer thesis of reusable evaluation and inspection. They do not promise a publisher citation census or a complete forensic archive for every provider.
+The [purpose and trajectory audit](08-promptfoo-purpose-and-trajectory.md) expands the project's context: application evaluation, adversarial testing, service-backed code scanning, current OpenAI affiliation, and the stated Frontier direction. The dedicated draft section uses this wider purpose before narrowing to our workload.
+
+The pinned [README](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/README.md) presents evaluation and red teaming for AI applications. The [custom-provider documentation](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/site/docs/providers/custom-api.md) lets an operator bring an application behind a common interface. These support reusable testing and inspection within the maintainers' broader application-security purpose. They do not promise a publisher citation census or a complete forensic archive for every provider.
 
 | Theory | Whose view | Evidence for | Evidence against or limit | Direction | What would disprove it for this workload? |
 |---|---|---|---|---|---|

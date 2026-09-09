@@ -8,7 +8,25 @@ Promptfoo can carry the evidence needed to inspect an AI answer, but its OpenRou
 - Promptfoo's response interface already has room for raw data and metadata. Our fixture needed no framework fork.
 - Citation capture gives analytics something to count and evaluation something to inspect. It cannot reconstruct an unseen human action or establish why a model relied on a source.
 
-The timely change is Promptfoo's August work on execution traces. Its [August 26 release](https://github.com/promptfoo/promptfoo/releases/tag/0.122.1) added per-test roots, target spans, and richer accounting. Those features make a useful question sharper: can the record explain the answer well enough for someone else to check it?
+## What Promptfoo is building
+
+Promptfoo is a command-line tool and library for testing AI applications, with an [MIT-licensed open-source implementation](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/LICENSE). You supply test cases, choose models or an application to call, and define checks. It runs the cases and lets you compare results. The [project overview](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/README.md) also puts adversarial testing and code review within its scope.
+
+Its public purpose is to help teams ship secure, reliable AI applications. Founders Ian Webster and Michael D'Angelo [describe a shift](https://www.promptfoo.dev/blog/promptfoo-joining-openai/) from systematic application testing toward the security and behavioral risks that blocked deployment. That explains why the project reaches beyond comparing answers.
+
+| Part | What it does | Evidence |
+|---|---|---|
+| Evaluations | Runs chosen cases against providers or applications and checks their responses | Our [installed evaluation](research/oss-radar-07/repro/installed/README.md) exercises this path |
+| Red teaming | Generates adversarial cases, applies attack strategies, and tests a target application | The [architecture](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/site/docs/red-team/architecture.md) defines the parts; the [run implementation](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/redteam/shared.ts) connects generation to evaluation |
+| Code scanning | Reviews code changes for LLM-related security risks and supplies findings in the development workflow | The [scanner implementation](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/codeScan/scanner/index.ts) calls a scan service; the [GitHub Action](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/code-scan-action/src/main.ts) handles the review workflow |
+
+August's work strengthened the records behind those tests. The [August 26 release](https://github.com/promptfoo/promptfoo/releases/tag/0.122.1) added per-test roots, target spans, agent telemetry integrations, and fuller token accounting. The [August 28 scanner-action release](https://github.com/promptfoo/promptfoo/releases/tag/code-scan-action-0.2.0) hardened its installation and dependencies. These are different release tracks. The scanner itself predates August: its [engineering introduction](https://www.promptfoo.dev/blog/building-a-security-scanner-for-llm-apps/) appeared in December 2025.
+
+I read that work as an effort to make AI testing part of the normal development process: run a test, inspect the execution, locate a failure, and check a repair. Traces and accounting help explain what happened inside a test. They do not make its judgments correct or its evidence complete.
+
+The project now [identifies itself as part of OpenAI](https://www.promptfoo.dev/about/). Its founders' March announcement commits to maintaining open-source red teaming, scanning, and evals across providers. [OpenAI's announcement](https://openai.com/index/openai-to-acquire-promptfoo/) sets out an additional direction: integrate testing, remediation, reporting, and traceability into Frontier. That is a stated product plan; these sources do not establish that the promised integration has shipped.
+
+The distinction matters for adoption. The MIT runner gives us inspectable code and an extension interface. A connected feature can still depend on a service: the scanner's [default API host](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/code-scan-action/action.yml) is Promptfoo's cloud. We need to judge the specific path we use. For this blog, the relevant bet is whether its reusable evaluation and execution records can support our citation study; the citation pipeline remains work we must build and verify.
 
 ## Citation analytics needs the answer
 
@@ -18,9 +36,9 @@ AI citations are a topic; counting them is analytics, and checking whether their
 
 The opportunity for this blog is to publish inspectable cases: the question, captured answer, cited source, review, and records that connect them. We can then compare those cases with our request observations where a defensible connection exists. Whether the blog appears in the answers remains an open result. The capture method should still help another engineer if it does not.
 
-## What Promptfoo owns
+## Where provider evidence enters the result
 
-Promptfoo supplies a common way to run test cases and inspect results across providers and applications. Its [custom-provider interface](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/site/docs/providers/custom-api.md) also lets an operator bring their own application into that runner. For this study, that division is useful: reuse the evaluation machinery and retain provider-specific evidence explicitly.
+Promptfoo's [custom-provider interface](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/site/docs/providers/custom-api.md) lets an operator bring an application into the runner. For this study, that division is useful: reuse the evaluation machinery and retain provider-specific evidence explicitly.
 
 The implementation detail matters for anyone choosing an adapter. The pinned [OpenRouter provider](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/providers/openrouter.ts) sends the request through a cache-aware transport, then builds a smaller response from answer text, usage, and completion information. It does not copy the fixture's citation list or answer annotations into that response. The evaluator receives the smaller object.
 

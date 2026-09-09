@@ -19,6 +19,7 @@ Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original 
 | Select the project | Complete: Promptfoo | Exact selection in the prompts record |
 | Research task triggers, identity, and citations | Complete: source research; tests proposed | [Research](04-trigger-provenance-and-ai-citations.md), [article passage](05-article-section-trigger-and-citation.md) |
 | Inspect Promptfoo's design and citation-analytics prior art | Complete for the draft's claims | [Design and prior art](06-promptfoo-design-and-prior-art.md) |
+| Explain Promptfoo's purpose and current trajectory | Complete: dedicated draft section and source audit | [Purpose and trajectory](08-promptfoo-purpose-and-trajectory.md) |
 | Define citation records and reporting units | Proposed; ready for pilot implementation | [Measurement contract](07-citation-measurement-contract.md) |
 | Run the bounded pilot | Open | [Experiment plan](03-experiment-plan.md) |
 | Start the OSS Radar #07 draft | Complete: first draft; review and further evidence open | [Draft](../../oss-radar-07-promptfoo.md) |
@@ -38,6 +39,7 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 - [Article passage](05-article-section-trigger-and-citation.md): sourced prose on task history and answer attribution for the Promptfoo draft.
 - [Promptfoo design and prior art](06-promptfoo-design-and-prior-art.md): product theory, source trace, novelty limits, and adoption decision.
 - [Citation measurement contract](07-citation-measurement-contract.md): proposed records, missing-data states, denominators, and the connection to the analytics thread.
+- [Promptfoo purpose and trajectory](08-promptfoo-purpose-and-trajectory.md): what the tools do, the maintainers' public purpose, recent releases, OpenAI affiliation, and the boundary between shipped features and the Frontier plan.
 - [OSS Radar #07 draft](../../oss-radar-07-promptfoo.md): working article; not published.
 - [Repository baselines](baselines.json): pinned source revisions and read-only checks.
 - [Promptfoo fixture probe](repro/README.md): runnable module-level reproduction, original source snapshot with its MIT licence, synthetic response, and saved result.
@@ -46,6 +48,8 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 ## Prompts
 
 [Exact shaping prompts](../../../prompts/oss-radar-07.prompts.md).
+
+The record contains seven complete prompts through the request to preserve all prompts and explain Promptfoo's purpose. The six existing entries remain unchanged; the latest request is appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
 
 The September 8 request explicitly asks for a prompts section for this issue. It overrides the usual OSS Radar exception that omits public prompts. This is an issue-specific decision; no shared skill or prior issue was changed. Keep the complete initial prompt intact. The second recorded answer delegated the experiment timebox decision.
 
