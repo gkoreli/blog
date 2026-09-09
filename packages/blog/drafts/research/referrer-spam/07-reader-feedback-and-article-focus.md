@@ -1,6 +1,6 @@
 # Reader feedback: referrer-spam article focus and writing practice
 
-Opened September 8, 2026 PDT / September 9 UTC. [TASK-0136](../../../../../docs/tasks/TASK-0136-refocus-article-025-on-referrer-abuse-and-apply-reader.md), under [the referral-defense worklist](../../../../../docs/folders/FLDR-0009.md), tracks this revision. The owner questioned why article 025's title emphasized historical retention and supplied a private X conversation with editorial advice. This is an owner-directed focus correction, independent of the planned September 28 discovery review.
+Opened September 8, 2026 PDT / September 9 UTC. [TASK-0136](../../../../../docs/tasks/TASK-0136-refocus-article-025-on-referrer-abuse-and-apply-reader.md), filed in [the publishing worklist](../../../../../docs/folders/FLDR-0008.md) and linked from [the referral-defense worklist](../../../../../docs/folders/FLDR-0009.md), tracks this revision. The owner questioned why article 025's title emphasized historical retention and supplied a private X conversation with editorial advice. This is an owner-directed focus correction, independent of the planned September 28 discovery review.
 
 ## Original feedback archive
 
