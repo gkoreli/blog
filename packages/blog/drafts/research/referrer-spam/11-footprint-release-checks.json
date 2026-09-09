@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-09-09T01:36:31.442Z",
+  "manifestSha256": "4036a0ecfd7d560dd31caa9765df977e0c4c77d50c40120b33738a47045f0db6",
+  "checks": [
+    {
+      "name": "Article 024 frozen manifest is unchanged",
+      "passed": true
+    },
+    {
+      "name": "Unique root closure and recorded source membership",
+      "passed": true
+    },
+    {
+      "name": "Every selected event, cumulative epoch, metadata field, and private prefix matches",
+      "passed": true
+    },
+    {
+      "name": "Manifest arithmetic and time boundaries match existing accounting helpers",
+      "passed": true
+    },
+    {
+      "name": "Earlier shared epoch boundaries and hashes are contained in the new measurement",
+      "passed": true
+    },
+    {
+      "name": "Prompt count and exact new shaping prompt match parser rules",
+      "passed": true
+    },
+    {
+      "name": "Research Markdown paths and counts match HEAD",
+      "passed": true
+    },
+    {
+      "name": "Methodology and shaping prompts match committed bytes at the freeze",
+      "passed": true
+    },
+    {
+      "name": "Frontmatter matches the frozen manifest exactly",
+      "passed": true
+    },
+    {
+      "name": "Rendered article and transparency page show the frozen footprint",
+      "passed": true
+    },
+    {
+      "name": "Every rendered prompt preserves the complete selected message",
+      "passed": true
+    },
+    {
+      "name": "Article title, canonical URL, original date, and content remain intact",
+      "passed": true
+    }
+  ],
+  "limitations": "No production SQL or interactive browser check. Private log contents are excluded. Build and release checks occur after the frozen usage boundary."
+}

@@ -11,6 +11,19 @@ series:
   id: "measurement-boundaries"
   title: "Measurement boundaries"
   order: 5
+researchFootprint:
+  sessions: 4
+  artifacts: 6
+  totalTokens: 71572616
+  inputTokens: 71151738
+  cachedInputTokens: 68468352
+  outputTokens: 420878
+  reasoningOutputTokens: 153251
+  wallClockMinutes: 4338
+  startedAt: "2026-09-06T01:17:48.075Z"
+  measuredAt: "2026-09-09T01:35:07.268Z"
+  provenanceUrl: "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/referrer-spam/10-research-footprint.md"
+  scope: "Measured from the full analytics investigation and three linked review sessions, including referral-policy engineering, the D1 repair, article publication, editorial revision, and bookkeeping. Three earlier session prefixes (22,698,893 tokens) also appear in article 024's frozen footprint. These totals overlap and must not be added together; this is not an exclusive writing cost."
 ---
 
 # How I Defend My Analytics Against Referrer Spam

@@ -1,0 +1,93 @@
+{
+  "checkedAt": "2026-09-09T01:36:31.392Z",
+  "methodology": "Match session IDs across the two frozen manifests; verify earlier selected cumulative events and private-log prefix commitments, then confirm the earlier boundaries lie within the later single-epoch prefixes. Sum only the earlier shared session usage with the existing accounting helpers.",
+  "earlierManifest": "../readers-vs-bots/research-footprint.json",
+  "earlierManifestSha256": "262ff8f7bb8648abfcd20430d7431ed1ba1d0a19abbf3fd3723dc5ae6591f908",
+  "currentManifest": "research-footprint.json",
+  "currentManifestSha256": "4036a0ecfd7d560dd31caa9765df977e0c4c77d50c40120b33738a47045f0db6",
+  "sharedSessionCount": 3,
+  "overlappingTokens": {
+    "inputTokens": 22548605,
+    "cachedInputTokens": 21384960,
+    "cacheWriteInputTokens": 0,
+    "outputTokens": 150288,
+    "reasoningOutputTokens": 41938,
+    "totalTokens": 22698893,
+    "nonCachedInputTokens": 1163645
+  },
+  "sessions": [
+    {
+      "id": "01a0744b-0295-76b0-8660-ed4695a74dc1",
+      "agentPath": "/root",
+      "earlier": {
+        "usageRecordLine": 1368,
+        "usageAt": "2026-09-07T00:32:07.655Z",
+        "prefixSha256": "09dca24c4311341000ae1364f298d626762fe0b1247ec997aae58f913a20a789",
+        "usage": {
+          "input_tokens": 19629640,
+          "cached_input_tokens": 18676352,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 128323,
+          "reasoning_output_tokens": 31038,
+          "total_tokens": 19757963
+        }
+      },
+      "current": {
+        "usageRecordLine": 3616,
+        "usageAt": "2026-09-09T01:35:07.268Z",
+        "prefixSha256": "e0d61c658f8b83f11f9762d257d226e2d4efe5383a7711f98238dee5e42c5c91"
+      },
+      "earlierPrefixVerified": true,
+      "earlierBoundaryContainedInCurrentPrefix": true
+    },
+    {
+      "id": "01a07922-4c3d-7020-974f-22e1d2eaaeaa",
+      "agentPath": "/root/matomo_sources",
+      "earlier": {
+        "usageRecordLine": 70,
+        "usageAt": "2026-09-06T23:53:07.285Z",
+        "prefixSha256": "d2099f7b3c85f572b1903a1df02ac6e3fa011f73caa5df59e57538fc74ed764e",
+        "usage": {
+          "input_tokens": 401020,
+          "cached_input_tokens": 304128,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4185,
+          "reasoning_output_tokens": 969,
+          "total_tokens": 405205
+        }
+      },
+      "current": {
+        "usageRecordLine": 70,
+        "usageAt": "2026-09-06T23:53:07.285Z",
+        "prefixSha256": "d2099f7b3c85f572b1903a1df02ac6e3fa011f73caa5df59e57538fc74ed764e"
+      },
+      "earlierPrefixVerified": true,
+      "earlierBoundaryContainedInCurrentPrefix": true
+    },
+    {
+      "id": "01a07922-7c2a-7c80-bdad-dbc09e79865d",
+      "agentPath": "/root/referral_design",
+      "earlier": {
+        "usageRecordLine": 272,
+        "usageAt": "2026-09-07T00:07:37.145Z",
+        "prefixSha256": "7dc5709a2a5c938dcf048b697a415750709b7129024409a51112355cbc8be15f",
+        "usage": {
+          "input_tokens": 2517945,
+          "cached_input_tokens": 2404480,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 17780,
+          "reasoning_output_tokens": 9931,
+          "total_tokens": 2535725
+        }
+      },
+      "current": {
+        "usageRecordLine": 1143,
+        "usageAt": "2026-09-07T06:29:20.995Z",
+        "prefixSha256": "c158a73634b058e4a27d3f7a15730fd1fa1a290cae6eeb62b48b6236d2fdc11f"
+      },
+      "earlierPrefixVerified": true,
+      "earlierBoundaryContainedInCurrentPrefix": true
+    }
+  ],
+  "interpretation": "This usage appears in both article totals. Neither the later total nor its difference from the overlap is an exclusive writing cost. Article 024 remains frozen. Private logs are not published; their hashes support author auditing, not public reconstruction."
+}
