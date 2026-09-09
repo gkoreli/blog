@@ -36,3 +36,7 @@ are we close to publish this article? where are the references or glossary table
 ---
 
 can we use Perplexity without api account? I have free pro membership with them but i haven't purchased api tokens with them, why do we need OpenRouter or Perplexity API? Can't we use some other AI provider or we need them explicitly?
+
+---
+
+delegate to subagent, create on a novel entirely new concept for the canvas graphics animation in the background

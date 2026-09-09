@@ -246,7 +246,7 @@ export function preamble() {
     tags: 'open source · AI evaluation · citations · analytics',
     title: html`<h1>Promptfoo: Can It Preserve the Evidence <em>Behind an AI Answer?</em></h1>`,
     subtitle: 'The answer survived. Its structured citations depended on the adapter. We tested the capture, failures, and exports.',
-    author: 'Goga Koreli', readTime: '12 min read', canvasMode: 'flow', canvasSeed: 7,
+    author: 'Goga Koreli', readTime: '12 min read', canvasMode: 'evidence', canvasSeed: 7,
     footprint: { label: 'Runnable experiments · captured records · research notes', url: 'https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-07' },
   });
 }
