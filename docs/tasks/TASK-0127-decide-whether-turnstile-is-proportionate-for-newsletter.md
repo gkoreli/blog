@@ -4,10 +4,14 @@ title: Decide whether Turnstile is proportionate for newsletter signup
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.902Z'
-updated_at: '2026-09-09T00:38:40.684Z'
+updated_at: '2026-09-09T01:01:05.167Z'
 type: task
 ---
-P1 architecture decision. Start from threats: repeated confirmation email to third parties, distributed sending abuse, DB/cost exhaustion, automated signup, reader access and delegated-agent access. Compare a repaired mandatory widget, challenge only after justified abuse signals, and a flow built around IP plus per-address/global send budgets, pending dedup/cooldowns and double opt-in. Double opt-in proves confirmation after initial email and does not prevent confirmation-email abuse; the existing 3/60s per-IP binding alone is not a global budget. Test browser/script blocking, slow network, token expiry, configuration error, verifier outage, limiter/DB/email failure. Use primary sources and measured local behavior, no blanket claims about Turnstile efficacy or false-positive rates. Record the smallest adequate design, the accepted abuse/availability tradeoff, rollback, and evidence that would reverse the choice. No security-policy removal during the evidence audit.
+P1 newsletter adoption decision. Goga's latest requirement is a simple, safe capability suitable for a personal blog. The recommendation is Buttondown's hosted signup page, using its standard confirmation and abuse protection. Provider selection remains open; the next missing input is the real newsletter's public signup URL. Follow the [current adoption scope](../../packages/blog/drafts/research/newsletter-reliability/03-protection-options.md#current-direction-adopt-a-maintained-newsletter-service).
+
+Verify the supported signup, confirmation, unsubscribe, resubscription, visible error recovery, and export behavior with a designated authorized recipient. Then replace the blog entry point and retire old signup/sending paths while preserving confirmed subscriptions and working legacy opt-outs. Record the accepted provider dependency, cost, tested result, and integration rollback. Do not build custom verifier variants, an outbox framework, or an exhaustive comparative benchmark as prerequisites. General client logging and historical recovery remain separate work. No account, migration, send, or runtime change has occurred.
+
+The dated checkpoints below preserve the earlier investigation. Their custom-build next steps are superseded by this scope; they are not outstanding prerequisites.
 
 ## Investigation checkpoint
 

@@ -16,3 +16,7 @@ how to make this decision, is there an active research artifact on it? - Turnsti
 ---
 
 Why did I add turnstile to begin with? Maybe there is much better prior art that I overlooked, can you lookup 2026 best practices?
+
+---
+
+what shall we do? this is for a personal blog, i want the subscription to just work without over engineering, and inventing a new framework, i want a simply to adopt safe capability

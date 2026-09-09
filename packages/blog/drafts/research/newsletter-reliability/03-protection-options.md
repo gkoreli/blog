@@ -2,6 +2,25 @@
 
 Initial assessment September 7 UTC, 2026; expanded September 8 PDT / September 9 UTC with [original-decision history, 2026 prior art, and the comparison protocol](05-prior-art-2026.md). This is an architectural assessment, not a deployed change or a comparative effectiveness study.
 
+## Current direction: adopt a maintained newsletter service
+
+On September 8 PDT, Goga made the requirement explicit: this is a personal blog; subscription should work through a simple, safe capability we can adopt. This narrows the work. Building several alternative abuse-control systems is no longer the next step. The earlier comparison remains evidence, not an implementation checklist.
+
+**Recommendation: Buttondown, starting with its hosted signup page.** The blog needs a Subscribe link to the newsletter's real public URL. Buttondown documents default double opt-in, managed signup protection, and subscriber export. Its first 100 subscribers are free. These are documented capabilities, not results from a completed trial of our newsletter. [Signup integration](https://docs.buttondown.com/building-your-subscriber-base), [confirmation](https://docs.buttondown.com/double-opt-in), [firewall](https://docs.buttondown.com/firewall), [export API](https://docs.buttondown.com/api-exports-create), [pricing](https://buttondown.com/pricing), checked September 9 UTC, 2026.
+
+Use the provider's standard confirmation and protection settings. Keep the subscribe page on `buttondown.com`: its firewall documentation says CAPTCHA recovery is unavailable on custom hosting domains. If an inline email field is wanted later, its supported HTML form can preserve our styling; submit it normally. The provider explicitly warns against using `fetch` for that endpoint because validation and challenge flows can require navigation. No custom signup proxy or provider abstraction is needed.
+
+The bounded adoption work is:
+
+1. Obtain the actual newsletter account and public signup URL. Provider choice is currently a recommendation; no account, purchase, or migration is recorded.
+2. Verify signup → confirmation received → active subscription → unsubscribe → deliberate resubscription with a designated, authorized test address. Check mobile Safari and a desktop browser, duplicate submission, visible error recovery, and a subscriber export. Keep the scope to the supported service, without simulating attacks against it.
+3. Replace the blog's signup form with the verified hosted link, remove its Turnstile script and form handler, update the privacy disclosure, and disable the old signup/resend endpoints and sender. A failed migration must not send readers back to the known-broken form; retain the hosted URL during local integration rollback.
+4. Preserve existing confirmed subscriptions and suppression state. Before moving any existing address, make sure an old unsubscribe link suppresses that address in the new sender too. Leaving an old D1-only unsubscribe route running would not achieve that. Keep required legacy data and links until this is verified; never activate addresses merely found in error or provider logs.
+
+This choice would transfer subscriber operations to a provider. The tradeoff is provider dependency and future cost as the list grows. A controlled completion test establishes the tested path, not guaranteed delivery or a population success rate. Recovery of older failed attempts and general client-error logging remain separate unfinished work.
+
+Next input: the public Buttondown signup URL. Production signup is still unrepaired. TASK-0127 stays in progress until the provider choice and the tested behavior are recorded. The custom-flow criteria below apply only if that flow is retained or used as an interim repair.
+
 ## Protect the operation that can be abused
 
 The protected operation is sending confirmation email and creating pending state. A completed challenge is one input to that decision. It cannot replace correct subscription transitions, delivery handling, or knowledge of whether the form works.
@@ -28,7 +47,7 @@ Double opt-in prevents activation before confirmation. The first message has alr
 
 The current native limiter is configured as three attempts per 60 seconds per IP. Cloudflare documents its counters as local to each location and eventually consistent. It is not a strict global email budget. Neither a hidden field nor a browser-header heuristic is an adequate replacement for controlling email volume. [Rate limiting binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/), checked September 7.
 
-The immediate repair remains restoring the configured credential, measuring the complete flow, and making configuration failures visible to the operator. The expanded research adds an ownership decision alongside these three enforcement policies: compare our repaired custom flow with a maintained provider's supported signup flow. Buttondown supplies operational prior art; listmonk supplies a pinned implementation of self-hosted ALTCHA. A different verifier can still be mandatory or conditional, and hosted forms have their own protection and recovery policies.
+Before the simplicity constraint, the proposed immediate work was restoring the configured credential and comparing a repaired custom flow with a maintained provider's supported signup flow. Credential repair remains relevant if the custom flow must serve during migration; it is not a prerequisite for using a hosted signup page. Buttondown supplies operational prior art; listmonk supplies a pinned implementation of self-hosted ALTCHA. A different verifier can still be mandatory or conditional, and hosted forms have their own protection and recovery policies.
 
 The earlier conversational preference for a widget-free trial is now qualified by the [2026 review](05-prior-art-2026.md). Confirmation emails themselves can participate in subscription bombing. Address cooldowns and global ceilings bound our contribution but do not establish that accepting the first unsolicited send is harmless. No-challenge intake remains a candidate with an explicit residual-risk decision. Neither this incident nor provider marketing selects the winner.
 
@@ -53,4 +72,4 @@ Use synthetic addresses and mocked providers locally. Any real email test needs 
 | [GraphQL sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/) | September 7, 2026 | Adaptive estimates; not an exact set of failed attempts |
 | [Resend logs](https://resend.com/docs/dashboard/logs/introduction) | September 7, 2026 | A provider-side source for older attempts that reached sending; read requests returned 401 because the available key is restricted to sending. No account email history was obtained; see [recovery](04-recovery.md) |
 
-No peer-reviewed CAPTCHA usability result or cross-provider benchmark is claimed. The [later source comparison](05-prior-art-2026.md) includes 2026 threat reporting, an author-hosted subscription-bombing study, provider controls, open-source code, and counterevidence. A broader article argument about reader friction still needs evidence beyond this one configuration failure. TASK-0127 remains open until the protocol records limits, tested results, a chosen design, rollback, and reversal conditions.
+No peer-reviewed CAPTCHA usability result or cross-provider benchmark is claimed. The [later source comparison](05-prior-art-2026.md) includes 2026 threat reporting, an author-hosted subscription-bombing study, provider controls, open-source code, and counterevidence. A broader article argument about reader friction still needs evidence beyond this one configuration failure. TASK-0127's next action and acceptance scope are the managed adoption steps above.

@@ -32,17 +32,20 @@ Private operational captures are stored separately from the repository. Public a
 
 ## Work order
 
-1. Preserve retained evidence and bound the historical-impact claim (TASK-0123).
-2. Correct and validate the production secret, then test signup and confirmation (TASK-0124).
-3. Close widget, bootstrap, correlation, and transport logging gaps (TASK-0125).
-4. Add durable server outcome coverage and protect diagnostic ingestion (TASK-0126).
-5. Decide the smallest adequate abuse control from explicit threats and failure tests (TASK-0127).
-6. Develop the article as the evidence changes (TASK-0128).
-7. Repair the reproduced resubscription and confirmation-state bugs (TASK-0129).
-8. Assess recovery of previously stored attempts without inventing identities or activating unconfirmed addresses (TASK-0130).
+Goga's September 8 PDT simplicity constraint now governs the order. [TASK-0127's current direction](03-protection-options.md#current-direction-adopt-a-maintained-newsletter-service) recommends a maintained service with a hosted signup page. The next missing input is the actual newsletter's public URL. Provider selection and production acceptance remain open.
+
+1. Verify the supported signup, confirmation, unsubscribe, resubscription, and export flow; replace the blog entry point and retire the old sender only with a safe migration (TASK-0127).
+2. Preserve evidence and continue bounded recovery of older stored attempts, without activating unconfirmed addresses (TASK-0123, TASK-0130).
+3. Keep general browser logging and diagnostic-ingestion repairs (TASK-0125, TASK-0126). Reassess newsletter-specific repairs against the chosen service; do not build a custom delivery framework in parallel.
+4. Retain the existing credential and lifecycle findings (TASK-0124, TASK-0129). Repair the custom path if it must remain in service; otherwise close those implementation items only after verified retirement, with the evidence preserved.
+5. Develop the unpublished article from the actual decision and result (TASK-0128).
 
 The present investigation does not claim a repaired production flow. The article can describe unresolved work, but must not claim that a proposed control was deployed or successful.
 
 ## September 8 PDT / September 9 UTC research checkpoint
 
 The [prior-art review](05-prior-art-2026.md) reconstructed the urgent April launch from Git and widened the comparison beyond challenge settings to ownership of the signup operation. Current providers combine pre-send protection with other controls; listmonk provides a self-hosted proof-of-work example with material limitations. The review qualifies the earlier preference for a widget-free trial and adds a concrete comparison protocol. Production repair, comparative tests, and the architectural decision remain unfinished. The draft and five shaping prompts are preserved; this pass ran no production SQL or email tests.
+
+## Later September 8 PDT / September 9 UTC scope correction
+
+The owner wants a simple adopted capability for a personal blog. The current recommendation is Buttondown's hosted signup, with a small migration and completion check. Building the earlier comparison candidates is no longer the next action. Six complete shaping prompts are preserved. No account was created, subscriber imported, email sent, or runtime changed in this update.

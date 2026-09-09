@@ -2,6 +2,8 @@
 
 Checked September 8 PDT / September 9 UTC, 2026. TASK-0127 remains in progress. This pass reconstructs the recorded decision and compares primary guidance and implementations; it does not measure comparative signup completion or abuse prevention.
 
+Later owner direction: adopt a simple capability for this personal blog. The [managed-service recommendation](03-protection-options.md#current-direction-adopt-a-maintained-newsletter-service) now governs the work; the custom implementation practices and comparison below are retained research, not prerequisites for adoption.
+
 The original choice was a fast, inexpensive way to add spam protection to an urgent newsletter launch on the existing Cloudflare stack. The stronger prior art supports controls at several stages, including before confirmation mail. It does not establish a universally better CAPTCHA. The comparison must also include delegating subscription operations to a maintained newsletter service.
 
 ## Why Turnstile was added
@@ -59,7 +61,9 @@ The following is an engineering synthesis from the sources and our [application 
 
 [OWASP's bot-management guidance](https://cheatsheetseries.owasp.org/cheatsheets/Bot_Management_and_Anti-Automation_Cheat_Sheet.html) supports endpoint-specific, layered controls, monitored decisions, and graduated responses. Its provider examples must still be checked: it groups Turnstile under numerical risk scoring, whereas the documented [Siteverify response](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/) exposes a success boolean and verification metadata, not the application-configurable bot score that wording implies. We should not design thresholds around a field our API does not return.
 
-## Decision protocol and revised recommendation
+## Earlier comparison protocol — superseded as the next work
+
+After this review, Goga narrowed the requirement to a simple capability suitable for a personal blog. The [current recommendation and adoption steps](03-protection-options.md#current-direction-adopt-a-maintained-newsletter-service) take precedence over the custom comparison below. Preserve this protocol as research; do not build these candidates or make custom send infrastructure a prerequisite for adopting a maintained service.
 
 The earlier conversational preference for evaluating a widget-free flow first was an untested engineering hypothesis. This review qualifies it: protecting the first send and reducing maintenance both deserve more weight. The immediate comparison should be a repaired custom flow versus a maintained provider's supported signup flow. A self-hosted challenge and a no-challenge design remain candidates under explicit constraints. Enforcement policy, verifier choice, and ownership are separate decisions; the following tracks are not mutually exclusive product categories.
 

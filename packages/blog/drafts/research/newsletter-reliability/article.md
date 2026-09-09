@@ -72,7 +72,7 @@ A widget-free flow would still need per-address cooldowns, duplicate handling, a
 
 The audit also reproduced two ordinary application bugs: an inactive address can hit a database uniqueness error when subscribing again, and an unknown confirmation token can produce a page claiming the subscription is active. Neither is fixed by a better bot detector. [SQLite reproductions](repro/lifecycle-results.json).
 
-My skepticism now has a more precise question: which controls protect the sending operation, and which failures can prevent a reader from subscribing without telling me? The worklist starts with restoring the existing flow and observing its outcomes. Whether Turnstile belongs in the resulting design remains open.
+On September 8, I narrowed the requirement: this is a personal blog, and I want subscribing to work through a simple capability I can adopt. The current recommendation is a maintained service's hosted signup page. We can test that flow without building each custom alternative first. The provider choice and production acceptance remain open. [Current worklist and adoption scope](03-protection-options.md#current-direction-adopt-a-maintained-newsletter-service).
 
 ---
 
@@ -90,4 +90,4 @@ My skepticism now has a more precise question: which controls protect the sendin
 | Self-hosted challenge implementation | [listmonk v6.2.0 verification module](https://github.com/knadh/listmonk/blob/ef0a75872463f10a4848af6c547d1c057405453a/internal/captcha/captcha.go) | September 9 UTC, 2026 |
 | Confirmation-email bombing | [Swiss NCSC](https://www.bacs.admin.ch/en/26w6-en), published February 10, 2026 | September 9 UTC, 2026 |
 
-The [investigation](00-investigation.md) separates observed logs, historical reports, code inspection, local reproductions, and proposed repairs. The five [human prompts](source.prompts.md) are preserved exactly. Research and drafting were assisted by an agent; private operational logs are not published.
+The [investigation](00-investigation.md) separates observed logs, historical reports, code inspection, local reproductions, and proposed repairs. The six [human prompts](source.prompts.md) are preserved exactly. Research and drafting were assisted by an agent; private operational logs are not published.
