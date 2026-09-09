@@ -10,15 +10,17 @@ Article 024 brought substantially more recorded traffic to this page after its H
 - [Measurements](measurements.json): reviewed public aggregates and their source/time boundaries.
 - [Capture commitments](capture-manifest.json): hashes of the private originals; credentials and raw operational records stay outside Git.
 - [Exact shaping prompts](source.prompts.md): this new investigation's human direction, separate from article 024's frozen prompts and footprint.
+- [Publication learning](04-publication-learning.md): what the launch supports, the owner-reported signup repair, zero new confirmed subscribers, and the next steps toward regular readership.
+- [Follow-up measurements](publication-followup-measurements.json): successful Cloudflare access, the one-row subscriber check, and the browser-script capture for September 7–8.
 
 ## What is complete and what remains open
 
 | Work | Current state | Next action |
 |---|---|---|
 | Preserve HN submission and feedback | Done: official story and three child records captured; one visible comment, two dead records | Recheck at the seven-day review; do not infer historical rank from today's list |
-| Capture article traffic | Done: one public, article-filtered report, with exact filters, calculation time, policy, and day totals | Obtain the bounded launch-window comparison when authenticated access is restored |
+| Capture article traffic | Done: public article report plus the September 7–8 browser-script capture | Reconcile collection rules before comparing the counters; preserve their separate filters and sampling |
 | Compare earlier submissions | Done: current scores for four URL-matched submissions | Treat as context, since age, subject, timing, and distribution differ |
-| Answer the reader | Drafted and simplified after Goga's feedback | Goga can post the draft; no reply was sent here |
+| Answer the reader | Facts recorded; earlier assistant draft retained as history | Goga writes the reply himself under HN's current comment rules; no reply was sent here |
 | Test real browser visits | Open in [TASK-0120](../../../../../docs/tasks/TASK-0120.md) | Verify test exclusion, label who operated each client, and run the bounded cases |
 | Learn from article choices | Initial hypotheses recorded | Separate what a reader explicitly says from our guesses about the title, evidence, and structure |
 | Select and publish the next article | Scope proposed; unpublished | Choose a field note or the existing measurement investigation from the evidence actually available |
@@ -33,4 +35,4 @@ Keep article 024's current title and URL under the [existing observation decisio
 
 The most useful engineering continuation is still the [edge-versus-RUM investigation](../edge-vs-rum/00-worklist-index.md), now with a reader asking for real-browser validation. This worklist adds the launch and editorial learning record; it does not duplicate the controlled-client implementation task or commit another slot in the ten-article plan. A shorter field note about the launch can stand on the measured current state if that is the article Goga wants to write.
 
-The Promptfoo and Trellner worklists remain separate. The [D1 recovery receipt](../d1-read-budget/02-recovery.md) remains completed; today's authentication failure is a new access limitation, not evidence that the database has failed again. Newsletter outcomes remain outside these captured page counts.
+The Promptfoo and Trellner worklists remain separate. The [D1 recovery receipt](../d1-read-budget/02-recovery.md) remains completed. Authenticated REST access succeeded again at 00:52 UTC, superseding this session's earlier access failure. The separate follow-up found no new retained signups or confirmations since the HN submission; Goga reports the signup repair was probably live before the traffic spike. Read the follow-up's timing and retention limits before interpreting those results.

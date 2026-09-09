@@ -1,0 +1,222 @@
+{
+  "formatVersion": 1,
+  "createdAt": "2026-09-09T01:00:25.589929+00:00",
+  "subscriptionSnapshot": {
+    "capturedAt": "2026-09-09T00:54:02.288153+00:00",
+    "since": "2026-09-07T05:13:22Z",
+    "sql": "SELECT status,\n COUNT(*) AS retained_rows,\n SUM(CASE WHEN datetime(created_at) >= '2026-09-07 05:13:22' THEN 1 ELSE 0 END) AS created_since_hn,\n SUM(CASE WHEN datetime(confirmed_at) >= '2026-09-07 05:13:22' THEN 1 ELSE 0 END) AS confirmed_since_hn,\n MIN(created_at) AS earliest_created_at,\n MAX(created_at) AS latest_created_at,\n MAX(confirmed_at) AS latest_confirmed_at\nFROM subscribers\nGROUP BY status\nORDER BY status",
+    "statuses": [
+      {
+        "status": "active",
+        "retained_rows": 1,
+        "created_since_hn": 0,
+        "confirmed_since_hn": 0,
+        "earliest_created_at": "2026-04-08 07:08:21",
+        "latest_created_at": "2026-04-08 07:08:21",
+        "latest_confirmed_at": "2026-04-08 07:09:10"
+      }
+    ],
+    "totalRetained": 1,
+    "createdSinceSubmission": 0,
+    "confirmedSinceSubmission": 0,
+    "rowsRead": 1,
+    "rowsWritten": 0,
+    "repairStatus": "Owner reports fixed and believes the fix preceded the HN spike; exact activation and full-window availability unverified in this session.",
+    "limit": "Current retained rows do not count all failed or expired unconfirmed attempts. No addresses or tokens selected."
+  },
+  "rumSnapshot": {
+    "capturedAt": "2026-09-09T00:56:19.455600+00:00",
+    "query": "{viewer{accounts(filter:{accountTag:\"7e0dc86ef69b4572a63162a52cddd269\"}){rumPageloadEventsAdaptiveGroups(limit:10000,filter:{datetime_geq:\"2026-09-07T00:00:00Z\",datetime_lt:\"2026-09-09T00:00:00Z\",requestHost:\"gkoreli.com\",bot:0}){count avg{sampleInterval} dimensions{date requestPath deliveryType navigationType}}}}}",
+    "window": {
+      "startInclusive": "2026-09-07T00:00:00Z",
+      "endExclusive": "2026-09-09T00:00:00Z"
+    },
+    "botFilter": 0,
+    "articlePath": "/how-i-separate-readers-from-bots-without-javascript",
+    "returnedGroups": 61,
+    "articleGroups": [
+      {
+        "avg": {
+          "sampleInterval": 1
+        },
+        "count": 1,
+        "dimensions": {
+          "date": "2026-09-08",
+          "deliveryType": "cache",
+          "navigationType": "restore",
+          "requestPath": "/how-i-separate-readers-from-bots-without-javascript"
+        }
+      },
+      {
+        "avg": {
+          "sampleInterval": 1
+        },
+        "count": 1,
+        "dimensions": {
+          "date": "2026-09-07",
+          "deliveryType": "unknown",
+          "navigationType": "routing-apis",
+          "requestPath": "/how-i-separate-readers-from-bots-without-javascript"
+        }
+      },
+      {
+        "avg": {
+          "sampleInterval": 1
+        },
+        "count": 26,
+        "dimensions": {
+          "date": "2026-09-08",
+          "deliveryType": "unknown",
+          "navigationType": "navigate",
+          "requestPath": "/how-i-separate-readers-from-bots-without-javascript"
+        }
+      },
+      {
+        "avg": {
+          "sampleInterval": 1
+        },
+        "count": 1,
+        "dimensions": {
+          "date": "2026-09-07",
+          "deliveryType": "unknown",
+          "navigationType": "reload",
+          "requestPath": "/how-i-separate-readers-from-bots-without-javascript"
+        }
+      },
+      {
+        "avg": {
+          "sampleInterval": 1
+        },
+        "count": 9,
+        "dimensions": {
+          "date": "2026-09-07",
+          "deliveryType": "cache",
+          "navigationType": "navigate",
+          "requestPath": "/how-i-separate-readers-from-bots-without-javascript"
+        }
+      },
+      {
+        "avg": {
+          "sampleInterval": 1
+        },
+        "count": 2,
+        "dimensions": {
+          "date": "2026-09-07",
+          "deliveryType": "unknown",
+          "navigationType": "back-forward",
+          "requestPath": "/how-i-separate-readers-from-bots-without-javascript"
+        }
+      },
+      {
+        "avg": {
+          "sampleInterval": 1
+        },
+        "count": 2,
+        "dimensions": {
+          "date": "2026-09-08",
+          "deliveryType": "cache",
+          "navigationType": "navigate",
+          "requestPath": "/how-i-separate-readers-from-bots-without-javascript"
+        }
+      },
+      {
+        "avg": {
+          "sampleInterval": 1
+        },
+        "count": 1,
+        "dimensions": {
+          "date": "2026-09-07",
+          "deliveryType": "unknown",
+          "navigationType": "restore",
+          "requestPath": "/how-i-separate-readers-from-bots-without-javascript"
+        }
+      },
+      {
+        "avg": {
+          "sampleInterval": 1
+        },
+        "count": 1,
+        "dimensions": {
+          "date": "2026-09-08",
+          "deliveryType": "unknown",
+          "navigationType": "back-forward",
+          "requestPath": "/how-i-separate-readers-from-bots-without-javascript"
+        }
+      },
+      {
+        "avg": {
+          "sampleInterval": 1.0019880715705765
+        },
+        "count": 504,
+        "dimensions": {
+          "date": "2026-09-07",
+          "deliveryType": "unknown",
+          "navigationType": "navigate",
+          "requestPath": "/how-i-separate-readers-from-bots-without-javascript"
+        }
+      },
+      {
+        "avg": {
+          "sampleInterval": 1
+        },
+        "count": 1,
+        "dimensions": {
+          "date": "2026-09-07",
+          "deliveryType": "cache",
+          "navigationType": "restore",
+          "requestPath": "/how-i-separate-readers-from-bots-without-javascript"
+        }
+      },
+      {
+        "avg": {
+          "sampleInterval": 1
+        },
+        "count": 4,
+        "dimensions": {
+          "date": "2026-09-07",
+          "deliveryType": "cache",
+          "navigationType": "back-forward",
+          "requestPath": "/how-i-separate-readers-from-bots-without-javascript"
+        }
+      }
+    ],
+    "dailyPageLoads": {
+      "2026-09-08": 30,
+      "2026-09-07": 523
+    },
+    "reportedPageLoads": 553,
+    "sampleIntervals": [
+      1,
+      1.0019880715705765
+    ],
+    "comparisonRatio": null,
+    "limit": "Some sampling is reported. Counts are used as returned, without multiplying sampleInterval. The public Browser report and RUM have different exclusions and representation/collection boundaries; no matched-event or accuracy ratio is asserted."
+  },
+  "access": {
+    "metadataCapturedAt": "2026-09-09T00:52:53.504295+00:00",
+    "httpStatus": 200,
+    "databaseBytes": 6868992,
+    "previousAuthenticationFailureSuperseded": true
+  },
+  "privateEvidence": {
+    "directory": "/Users/goga/.local/share/gkoreli/analytics-evidence/2026-09-09-article-024-hn/signup-check-20260909T005253Z",
+    "files": [
+      {
+        "name": "metadata.json",
+        "bytes": 703,
+        "sha256": "efdfad23f28f1d79b83b041938af47e3f1127dbe3cbd57f0ab5e8f61ad462b1e"
+      },
+      {
+        "name": "rum-launch-days.json",
+        "bytes": 24701,
+        "sha256": "8df079f80fd1e72b1f2c83bd8d01a96f05fdde449b12811ff4d9e5bf51b30ea6"
+      },
+      {
+        "name": "subscriber-counts.json",
+        "bytes": 1728,
+        "sha256": "eb0f9f77b1ae95a320abc0546f0bb102c674f39da8f5d462e72e6b31d06334f2"
+      }
+    ],
+    "trustBoundary": "Hashes commit to capture bytes; they do not independently authenticate the source."
+  }
+}

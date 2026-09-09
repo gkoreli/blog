@@ -2,6 +2,8 @@
 
 Captured September 9 UTC / September 8 PDT, 2026, from repository revision `c4c924fa9005a1e30e99862ab5e871d8fa6b257c`. The article's public counter shows a substantial increase around its HN submission. This is a distribution observation; it does not establish how many people read the whole article or why they clicked.
 
+The [later follow-up](04-publication-learning.md) records restored authenticated access, the browser-script comparison source, the owner-reported signup repair, and the subscriber-count check. The access failures and unqueried sources below describe this initial capture.
+
 ## Public Hacker News evidence
 
 The [submission](https://news.ycombinator.com/item?id=49594130) uses the article's exact title, **Bot Detection Without JavaScript: What My Blog Measured**, and canonical URL. Its official API record identifies `gogakoreli` as submitter and September 7, 2026 at 05:13:22 UTC as creation time.
