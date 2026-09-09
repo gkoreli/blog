@@ -1,0 +1,150 @@
+{
+  "formatVersion": 1,
+  "repositoryCommit": "c4c924fa9005a1e30e99862ab5e871d8fa6b257c",
+  "hn": {
+    "source": "https://hacker-news.firebaseio.com/v0/item/49594130.json",
+    "capturedAt": "2026-09-09T00:30:00.658945+00:00",
+    "comparisons": [
+      {
+        "id": 49594130,
+        "url": "https://news.ycombinator.com/item?id=49594130",
+        "title": "Bot Detection Without JavaScript: What My Blog Measured",
+        "submittedAt": "2026-09-07T05:13:22+00:00",
+        "capturedAt": "2026-09-09T00:30:00.658945+00:00",
+        "score": 13,
+        "reportedComments": 1
+      },
+      {
+        "id": 49546499,
+        "url": "https://news.ycombinator.com/item?id=49546499",
+        "title": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+        "submittedAt": "2026-09-03T06:15:14+00:00",
+        "capturedAt": "2026-09-09T00:30:01.201232+00:00",
+        "score": 1,
+        "reportedComments": 1
+      },
+      {
+        "id": 48229058,
+        "url": "https://news.ycombinator.com/item?id=48229058",
+        "title": "One bitmask in task_struct fixes 15 years of Linux signal conflicts",
+        "submittedAt": "2026-05-21T21:25:47+00:00",
+        "capturedAt": "2026-09-09T00:30:01.323908+00:00",
+        "score": 3,
+        "reportedComments": 0
+      },
+      {
+        "id": 49618029,
+        "url": "https://news.ycombinator.com/item?id=49618029",
+        "title": "How I Built First-Party Analytics for a Personal Blog",
+        "submittedAt": "2026-09-08T22:25:07+00:00",
+        "capturedAt": "2026-09-09T00:30:01.449724+00:00",
+        "score": 1,
+        "reportedComments": 0
+      }
+    ],
+    "childRecordsInspected": 3,
+    "visibleCommentIds": [
+      49600953
+    ],
+    "deadCommentRecords": 2,
+    "historicalPeakRank": null,
+    "historicalFrontPageDuration": null,
+    "linkClicks": null
+  },
+  "articleReport": {
+    "source": "https://gkoreli.com/api/stats?traffic=browser&range=7d&path=%2Fhow-i-separate-readers-from-bots-without-javascript",
+    "capturedAt": "2026-09-09T00:33:34.970220+00:00",
+    "httpStatus": 200,
+    "headers": {
+      "Date": "Wed, 09 Sep 2026 00:33:35 GMT",
+      "Content-Type": "application/json",
+      "Cache-Control": "public, max-age=60",
+      "X-Stats-Cache": "MISS"
+    },
+    "period": {
+      "start": "2026-09-03",
+      "end": "2026-09-09",
+      "timeZone": "UTC",
+      "granularity": "hour",
+      "updatedAt": "2026-09-09T00:33:34.890Z"
+    },
+    "filters": {
+      "traffic": "browser",
+      "range": "7d",
+      "path": "/how-i-separate-readers-from-bots-without-javascript",
+      "agent": null,
+      "kind": null
+    },
+    "totals": {
+      "views": 1616,
+      "dailyClients": 1497,
+      "unattributedViews": 652
+    },
+    "dailyViews": {
+      "2026-09-03": 0,
+      "2026-09-04": 1,
+      "2026-09-05": 0,
+      "2026-09-06": 3,
+      "2026-09-07": 1534,
+      "2026-09-08": 76,
+      "2026-09-09": 2
+    },
+    "reportedReferrers": [
+      {
+        "referrerHost": "news.ycombinator.com",
+        "views": 753
+      },
+      {
+        "referrerHost": "google.com",
+        "views": 22
+      },
+      {
+        "referrerHost": "duckduckgo.com",
+        "views": 3
+      },
+      {
+        "referrerHost": "t.co",
+        "views": 2
+      },
+      {
+        "referrerHost": "github.com",
+        "views": 1
+      },
+      {
+        "referrerHost": "reddit.com",
+        "views": 1
+      }
+    ],
+    "otherReferrerViews": 182,
+    "referralPolicy": {
+      "version": "2026-09-06.2",
+      "sha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+      "evaluator": "host-suffix-v1",
+      "source": {
+        "provider": "matomo",
+        "revision": "e65db652cade6882aa9a76bbb65c9bb17e079f4b",
+        "sha256": "83d2f174807c72987e73611fd7b36776bab02ee85fccc7b705d3be1bfa2a80b5"
+      },
+      "excludedViews": 1
+    },
+    "byKind": [
+      {
+        "kind": "browser",
+        "reason": "navigation-shaped",
+        "views": 1616,
+        "dailyClients": 1497
+      }
+    ],
+    "reportedDatabaseRowsRead": null
+  },
+  "limits": [
+    "Browser observations and daily identifiers are not verified people or completed reads.",
+    "The report window includes days before HN submission and the partial current UTC day.",
+    "Reported referrers are client-supplied; missing referrers cannot be attributed to HN.",
+    "Comparison stories differ in age, topic and distribution.",
+    "No causal title, first-person, footprint or accuracy effect measured.",
+    "No direct SQL, RUM or subscriber query ran; one public report cache miss has unreported D1 read cost."
+  ],
+  "reviewAt": "2026-09-14T05:13:22Z",
+  "reviewScheduled": false
+}

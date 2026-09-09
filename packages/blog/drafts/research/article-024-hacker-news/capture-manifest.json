@@ -1,0 +1,69 @@
+{
+  "formatVersion": 1,
+  "createdAt": "2026-09-09T00:40:20.442228+00:00",
+  "privateDirectory": "/Users/goga/.local/share/gkoreli/analytics-evidence/2026-09-09-article-024-hn",
+  "files": [
+    {
+      "name": "access-summary.json",
+      "bytes": 454,
+      "sha256": "08d695ce0f2f14eef3c2fa8c43c638aaccfcbb0dfe25e0e0a00c8fb53e76b944"
+    },
+    {
+      "name": "d1-cli-metadata.json",
+      "bytes": 3125,
+      "sha256": "0bd1f2f4aaee254987bff5b564cb992b00d518fc9798047a2f66af951888ca2c"
+    },
+    {
+      "name": "d1-metadata.json",
+      "bytes": 445,
+      "sha256": "b35874704868383e47df8085af27931e825787bb61552b3403d4c69af4776109"
+    },
+    {
+      "name": "hn-current-top.json",
+      "bytes": 7205,
+      "sha256": "d34be47990d95d77b1b7878a360517d09e35762b191b643e8b0c5d8b8ac4810f"
+    },
+    {
+      "name": "hn-item-48229058.json",
+      "bytes": 517,
+      "sha256": "43bed7eecc6d51968acd28f083bd8092f693a3b593ae32dc08225b76c941cb59"
+    },
+    {
+      "name": "hn-item-49546499.json",
+      "bytes": 520,
+      "sha256": "08fd29158f697e3c7ca54d1f1f727ebb4f6f79b5cafd66cc65758f9043d306f7"
+    },
+    {
+      "name": "hn-item-49594130.json",
+      "bytes": 562,
+      "sha256": "ed97690e2dc363c44beebbb08ced9a537441870be68607c2c42a490ad96fc8bb"
+    },
+    {
+      "name": "hn-item-49595632.json",
+      "bytes": 362,
+      "sha256": "9d59701580594c7cb73c4bef010891e7b8094784d4df1edda4a96b802d16f8b0"
+    },
+    {
+      "name": "hn-item-49600953.json",
+      "bytes": 485,
+      "sha256": "71cbe682476fb56428216873d45327ddf310dfa5f7d765b1a0c14a773fcca157"
+    },
+    {
+      "name": "hn-item-49604231.json",
+      "bytes": 359,
+      "sha256": "f98cbdfae9dc9d0bcc08e2248ba0ded0d5d321b1b4130298e1a022eb9144c742"
+    },
+    {
+      "name": "hn-item-49618029.json",
+      "bytes": 481,
+      "sha256": "ab46e1296b54c4dba2ea93b097d1f369587dc04369b82709221d358882545b9c"
+    },
+    {
+      "name": "public-article-stats.json",
+      "bytes": 22572,
+      "sha256": "6e2c05e90b6ad65e18872c09d8349657db742a880e75278d50c5dfb251b225e0"
+    }
+  ],
+  "publicMeasurementsSha256": "b2a0b7073e073008dabb7f9ed876a2707b1b64b00aef9061f7ddeb3cb41e4c90",
+  "trustBoundary": "Hashes commit to captured bytes; they do not independently authenticate the sources. Private API/CLI output is not committed. Public measurements are a reviewed aggregate extract."
+}
