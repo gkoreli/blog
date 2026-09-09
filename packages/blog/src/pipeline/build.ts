@@ -11,6 +11,7 @@ import { rssFeed } from '../templates/rss.js';
 import { generateOgImage } from '../lib/og.js';
 import { sitemapXml } from '../templates/sitemap.js';
 import TurndownService from 'turndown';
+import { preserveMarkdownTables } from '../lib/markdown-tables.js';
 import { llmsTxt, llmsFullTxt, postsJson, stripFrontmatter } from '../templates/llms.js';
 import { blogPostingJsonLd, profilePageJsonLd, websiteJsonLd } from '../templates/jsonld.js';
 import { SECTION_LABELS, SECTION_DESCRIPTIONS } from '../lib/frontmatter.js';
@@ -86,6 +87,7 @@ export function copyStaticAssets(): void {
 
 function htmlToMarkdown(articleHtml: string, meta: { title: string; description: string }): string {
   const td = new TurndownService({ headingStyle: 'atx', codeBlockStyle: 'fenced', bulletListMarker: '-' });
+  preserveMarkdownTables(td);
 
   td.remove(['canvas']);
 
