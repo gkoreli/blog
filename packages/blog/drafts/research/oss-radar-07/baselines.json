@@ -1,0 +1,93 @@
+{
+  "checked_date": "2026-09-08",
+  "scope": "Option-selection research; pinned code inspection and one offline synthetic module probe.",
+  "repository": "gkoreli/blog",
+  "blog_baseline_commit": "935abf29de1a755d2e278f90d4794c11d18a6a43",
+  "projects": [
+    {
+      "repository": "promptfoo/promptfoo",
+      "branch_or_ref": "0.122.2",
+      "commit": "89052308bce06f53645b1f189ada5ac9d1897347",
+      "release": "0.122.2",
+      "release_published_at": "2026-08-28T07:03:20Z",
+      "event_in_scope": "0.122.1 tracing/accounting changes, 2026-08-26; examined in 0.122.2",
+      "license_file": "LICENSE",
+      "license_label_from_file": "MIT"
+    },
+    {
+      "repository": "cloudflare/web-bot-auth",
+      "branch_or_ref": "main snapshot",
+      "commit": "fe52630a2c20d248b7e84c132a94d3486ae6a725",
+      "source_commit_time": "2026-09-04T08:07:25Z",
+      "release": null,
+      "event_in_scope": "August validity/performance changes; September directory-key fix; September 1 IETF draft",
+      "release_note": "No GitHub releases returned. This is a source baseline, not proof of a package publication.",
+      "license_file": "LICENSE",
+      "license_label_from_file": "Apache-2.0"
+    },
+    {
+      "repository": "unclecode/crawl4ai",
+      "branch_or_ref": "v0.9.3",
+      "commit": "4bcd5fa8a56000ce103dd499e8ecdff2439f3e9c",
+      "release": "v0.9.3",
+      "release_published_at": "2026-08-31T11:34:14Z",
+      "event_in_scope": "PDF processing and Docker UI security fixes; Markdown output paths predate the release",
+      "license_file": "LICENSE",
+      "license_label_from_file": "Apache License 2.0 text with an appended attribution requirement"
+    },
+    {
+      "repository": "tiagozip/cap",
+      "branch_or_ref": "standalone@3.1.11",
+      "commit": "e02138579482c711ee0bb79c7be3486fe0bf3e84",
+      "release": "standalone@3.1.11",
+      "release_published_at": "2026-09-04T10:47:36Z",
+      "event_in_scope": "Site-secret verification changes, PR 308",
+      "license_file": "LICENSE",
+      "license_label_from_file": "Apache-2.0"
+    }
+  ],
+  "issue_and_pr_states": [
+    {
+      "merged": true,
+      "merged_at": "2026-08-13T03:22:43Z",
+      "number": 125,
+      "state": "closed",
+      "title": "fix(web-bot-auth): fail closed on expired signatures in Rust verify",
+      "url": "https://github.com/cloudflare/web-bot-auth/pull/125"
+    },
+    {
+      "merged": true,
+      "merged_at": "2026-08-18T02:19:46Z",
+      "number": 127,
+      "state": "closed",
+      "title": "fix(web-bot-auth): fail closed on future created timestamps in Rust verify",
+      "url": "https://github.com/cloudflare/web-bot-auth/pull/127"
+    },
+    {
+      "merged": true,
+      "merged_at": "2026-08-31T16:22:52Z",
+      "number": 139,
+      "state": "closed",
+      "title": "perf: prepare Ed25519 verifying keys at import time",
+      "url": "https://github.com/cloudflare/web-bot-auth/pull/139"
+    },
+    {
+      "repository": "tiagozip/cap",
+      "number": 308,
+      "title": "fix(standalone): verify site secrets with SHA-256 instead of argon2id",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-09-04T10:43:29Z",
+      "url": "https://github.com/tiagozip/cap/pull/308"
+    }
+  ],
+  "unperformed": [
+    "Installed-package reproduction",
+    "Live model calls",
+    "Cloudflare account queries",
+    "New production changes",
+    "Full Trellner dataset recomputation",
+    "Organic discovery or credibility experiment",
+    "New upstream report or external message"
+  ]
+}

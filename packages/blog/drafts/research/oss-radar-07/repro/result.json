@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "checked_date": "2026-09-08",
+  "evidence_state": "Reproduced",
+  "scope": "Pinned provider module with mocked dependencies and one synthetic response; no network, model call, npm installation, or production request.",
+  "upstream": {
+    "repository": "promptfoo/promptfoo",
+    "release": "0.122.2",
+    "commit": "89052308bce06f53645b1f189ada5ac9d1897347",
+    "path": "src/providers/openrouter.ts",
+    "sha256": "7b309ba9800741910029e3734a542c0320828e51421ea8a0ad15298cac01c667"
+  },
+  "fixture_sha256": "d7b4e3d467bd9b87d623daa52f8bd1938b50e3fd42888c1b8b1a58c9f71d4ba2",
+  "runtime": "v24.19.0",
+  "fixture_inputs": {
+    "provider_citation_count": 1,
+    "message_annotation_count": 1,
+    "provider_usage_cost": 0.008,
+    "mocked_cost_calculator_result": 0.00012
+  },
+  "observed": {
+    "mocked_transport_calls": 1,
+    "answer_text_preserved": true,
+    "normalized_citation_count": 0,
+    "normalized_annotation_count": 0,
+    "normalized_cost": 0.00012,
+    "provider_reported_cost_preserved": false,
+    "normalized_keys": [
+      "cached",
+      "cost",
+      "finishReason",
+      "output",
+      "tokenUsage"
+    ]
+  },
+  "limits": [
+    "The fixture is invented test data, not an answer from Perplexity.",
+    "Imported transport, tracing, base provider, token parsing, and cost calculation are mocked.",
+    "The probe establishes the selected module return shape only; it does not test the installed package, raw cache retention, other provider routes, or live billing.",
+    "A later upstream change requires a new source hash and a new dated result."
+  ]
+}
