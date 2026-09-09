@@ -1,6 +1,6 @@
 # @gkoreli/analytics
 
-Edge-observed, cookieless page analytics for gkoreli.com, running in a Cloudflare Worker with D1. This README describes the repository implementation and its known limitations. The article [How I Classify Browser and Bot Requests Without JavaScript](https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript) explains the measured results, and the decision records are ADR-0016 through ADR-0016.4 in `docs/adr/`. Deployment and migration activation must be checked separately from repository code.
+Edge-observed, cookieless page analytics for gkoreli.com, running in a Cloudflare Worker with D1. This README describes the repository implementation and its known limitations. The article [Bot Detection Without JavaScript: What My Blog Measured](https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript) explains the measured results. Analytics decision records live in [docs/adr](../../docs/adr/). Deployment and migration activation must be checked separately from repository code.
 
 Zero runtime dependencies. MIT.
 
@@ -105,6 +105,8 @@ Old null `referrer_state` values remain unknown. Reports can identify an older n
 
 All panels share one materialized selection and referral assessment. An additional `(is_owner, internal_referrer_path, observed_at)` index supports outgoing-page selection. Cache report version `2026-09-09.1` separates this response contract from older entries. [Evidence, prior art, and acceptance scope](../blog/drafts/research/article-024-hacker-news/06-transitions-and-funnels.md).
 
+The [September 9 production receipt](../blog/drafts/research/article-024-hacker-news/07-transition-release-acceptance.md) records migration 0009, code `c338059`, nine excluded scripted observations, bounded report cost, and live cache reuse. This release is accepted. Testing browser-sent referrers and complete visit sequences remains separate from those supplied-header checks.
+
 `POST /api/owner` records the authenticated caller's daily client ID in `owner_clients`. It uses `Authorization: Bearer <ADMIN_SECRET>` and the same site, UTC date, IP, User-Agent, and HMAC secret as ingestion. A mark covers one browser, address, and UTC day; a changed address needs another call.
 
 ## Development
@@ -125,3 +127,5 @@ npx wrangler d1 migrations apply blog-analytics --remote   # migrations live in 
 The [controlled local experiment](../blog/drafts/research/edge-vs-rum/03-local-experiment.md) records both runs and compiled-source hashes. These parser/provenance changes were merged to `main` in PR #15; they add no visitor fields and do not change signer verification, client-role grouping, content negotiation, or historical rows. Browser/beacon trials and the TASK-0119 grouping repair remain open.
 
 [Release verification](../blog/drafts/research/edge-vs-rum/04-release-verification.md) records the activated Worker version and a read-only check of subsequent production provenance.
+
+The completed [Matomo comparison](../blog/drafts/research/agent-readership/01-matomo-and-agent-subscriptions.md) documents established overlap in server collection, AI reports, cookieless operation, and page transitions. It identifies a narrower verification difference against Matomo 5.13.0's ChatGPT provider and preserves a local reproducer. Overall accuracy, reliability, and cost advantages have not been measured. The [agent-authorization and subscription research](../blog/drafts/research/agent-readership/00-worklist-index.md) is also complete; its proposed integration experiments have not run, and this package does not implement an account-authorized agent subscription service.

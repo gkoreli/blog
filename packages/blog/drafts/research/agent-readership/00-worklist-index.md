@@ -2,6 +2,8 @@
 
 Started September 9 UTC / September 8 PDT, 2026. [TASK-0141](../../../../../docs/tasks/TASK-0141-compare-blog-analytics-with-matomo-and-research-agent.md).
 
+**Completed and pushed in `c42ab3a`.** The comparison, protocol reviews, measured checks, and experiment designs below fulfill TASK-0141. The [break checkpoint](../../../../../docs/handoffs/2026-09-09-analytics-and-agent-research-checkpoint.md) distinguishes this completed research from proposed extensions and separate unfinished implementation tasks.
+
 The owner wants an evidence-based account of what this blog should build itself, what Matomo already supplies, and how a publication could serve agents that subscribe for people. The intended result is a working example other engineering blogs can inspect. Advantage claims need a defined comparison and measured result.
 
 - [Exact human prompts](source.prompts.md): four complete messages in received order, including the repeated preservation request and the question about human delegation. These belong to this new investigation, outside article 024's frozen provenance.
@@ -22,15 +24,15 @@ The owner wants an evidence-based account of what this blog should build itself,
 4. Which existing mechanisms fit discovery, durable following, delivery, and revocation: feeds, WebSub, WebMCP, MCP, or something else?
 5. What bounded experiments could turn the next article into a reproducible demonstration?
 
-## Status and next action
+## Completed findings and proposed extensions
 
 The source/code research and two small executed checks are complete. Matomo already covers server collection, AI reports, page transitions, and funnels. The reviewed ChatGPT provider detects header fields without verifying them cryptographically; our local verifier rejects its placeholder fixture. This is a specific difference, not evidence of better overall audience accuracy. The blog's existing RSS feed already permits reader-side following.
 
 The authorization review found mature building blocks and active agent-specific work, but no settled publication-specific grant shared across the reviewed clients. Account approval, an enrolled agent key, successful subscription, delivery, and human reading remain separate evidence.
 
-**Next bounded action:** select and pin a disposable reader/server pair for experiment 1, then execute its fixed follow/restart/recovery/unfollow/revoke sequence. A narrower grant to one publication is a separate extension. Experiment 2 reuses TASK-0120's known-client calibration and adds a pinned Matomo observer. Neither experiment, new subscription endpoint, enrollment, email, or unattended job was activated during this review.
+**Proposed first extension when this direction resumes:** select and pin a disposable reader/server pair for experiment 1, then execute its fixed follow/restart/recovery/unfollow/revoke sequence. A narrower grant to one publication is another extension. Experiment 2 reuses TASK-0120's known-client calibration and adds a pinned Matomo observer. These are saved proposals, not unfinished acceptance criteria for TASK-0141. Neither experiment, new subscription endpoint, enrollment, email, or unattended job was activated during this review.
 
-The protocol reviews used two delegated researchers. Their source/version ledgers are embedded in artifacts 02 and 03; primary links identify the exact revisions where available. The root review inspected Matomo 5.13.0 at commit `04c528673024239d858998eebc34e1f8afa1acf3` and blog `c338059`. Original downloaded Matomo sources and release metadata are preserved locally under `/Users/goga/.local/share/gkoreli/analytics-evidence/2026-09-09-agent-readership/`; public file hashes are in the comparison receipt. No research-token total is asserted for this unfinished publication work.
+The protocol reviews used two delegated researchers. Their source/version ledgers are embedded in artifacts 02 and 03; primary links identify the exact revisions where available. The root review inspected Matomo 5.13.0 at commit `04c528673024239d858998eebc34e1f8afa1acf3` and blog `c338059`. Original downloaded Matomo sources and release metadata are preserved locally under `/Users/goga/.local/share/gkoreli/analytics-evidence/2026-09-09-agent-readership/`; public file hashes are in the comparison receipt. This completed research has no published article footprint or asserted token total.
 
 To repeat the local signature check from the repository root:
 

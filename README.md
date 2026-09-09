@@ -46,7 +46,7 @@ pnpm typecheck  # TypeScript verification
 packages/blog/
 ├── posts/           # Markdown blog posts
 ├── prompts/         # Raw author prompts per post (transparency feature)
-├── public/          # Static assets (icons, images, CNAME)
+├── public/          # Static assets (icons, images, Cloudflare headers)
 └── src/
     ├── pipeline/    # Build scripts (prod, dev, validate)
     ├── lib/         # Markdown, frontmatter, paths, fs utilities
@@ -56,6 +56,15 @@ packages/blog/
 ```
 
 Every post can have a companion `prompts/{slug}.prompts.md` file with the raw `---`-delimited prompts that shaped it. The build generates a dedicated prompts page at `/{slug}/prompts` and adds a "Thoughts by human, co-written by AI" link in the article header.
+
+## Research and operating records
+
+- [Analytics implementation and limits](packages/analytics/README.md)
+- [Completed Matomo comparison and agent-subscription research](packages/blog/drafts/research/agent-readership/00-worklist-index.md)
+- [Article 024 launch measurements and accepted referrer capture](packages/blog/drafts/research/article-024-hacker-news/00-worklist-index.md)
+- [September 9 analytics and research handoff](docs/handoffs/2026-09-09-analytics-and-agent-research-checkpoint.md)
+
+Research reports, reproducible methods, and sanitized results live in the repository. Credentials, raw operational captures, and session logs remain in private local storage; the relevant receipts describe their locations and limits.
 
 ## License
 

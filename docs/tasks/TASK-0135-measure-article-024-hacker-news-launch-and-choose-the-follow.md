@@ -9,9 +9,11 @@ references:
   - url: 'https://news.ycombinator.com/item?id=49600953'
     title: Reader question about false positives
 created_at: '2026-09-09T00:34:56.926Z'
-updated_at: '2026-09-09T01:03:19.017Z'
+updated_at: '2026-09-09T02:50:00.000Z'
 type: task
 ---
+**At the break:** launch capture, referrer analysis, and the referrer implementation/acceptance are complete. This task stays open for observation and the choice of a launch follow-up article; real-browser calibration is owned by TASK-0120. The separate Matomo/protocol research in TASK-0141 is done. Read the [current checkpoint](../handoffs/2026-09-09-analytics-and-agent-research-checkpoint.md) before resuming.
+
 Initial grounding completed September 9 UTC / September 8 PDT. The HN story, comment tree, comparison submissions, and one article-filtered public stats response are captured. The working record is `packages/blog/drafts/research/article-024-hacker-news/00-worklist-index.md`; public measurements, queries, limits, and private capture commitments are stored beside it.
 
 Keep this task open for the remaining measurement and editorial decisions. At the initial capture, Cloudflare REST and Wrangler metadata checks failed with authentication error 10000, and no browser was available. One public stats request succeeded with X-Stats-Cache: MISS; its database-read cost is not exposed. Authenticated REST access subsequently succeeded at 00:52 UTC. The follow-up used one aggregate subscriber SELECT (one row read, zero writes) and one RUM query; see `publication-followup-measurements.json` and `04-publication-learning.md` in the research directory. Do not treat the earlier authentication failure as a current blocker.
@@ -36,12 +38,12 @@ Use the next three engineering releases to record reach, confirmed subscriptions
 
 ## Referrer investigation and approved page-transition work — September 9 UTC
 
-The fixed article query at 01:16:37 UTC reconciles all 1,616 Browser observations and the original referral categories. The 652 null-referrer rows report Fetch Metadata values of none (444), cross-site (170), and same-origin (38). The parser merges absent, unusable, and internal referrals. The query used 44,831 reads and zero writes; its local D1 fixture passed first. See `05-referrer-analysis.md`, the committed SQL and offline analyzer, and the sanitized `referrer-measurements.json`.
+The fixed article query at 01:16:37 UTC reconciles all 1,616 Browser observations and the original referral categories. The 652 null-referrer rows report Fetch Metadata values of none (444), cross-site (170), and same-origin (38). The parser at that capture merged absent, unusable, and internal referrals; the subsequent release distinguishes new observations. The query used 44,831 reads and zero writes; its local D1 fixture passed first. See `05-referrer-analysis.md`, the committed SQL and offline analyzer, and the sanitized `referrer-measurements.json`.
 
-Goga approved preserving referral categories and recognized public internal paths, and requested authoritative prior art for funnel analysis. `06-transitions-and-funnels.md` records the sources, scope, and acceptance plan. Implement and verify page transitions while keeping complete multi-step/person-level funnels explicitly separate from the observations available. Do not infer old internal paths or repeat production extraction of this preserved cohort.
+Goga approved preserving referral categories and recognized public internal paths, and requested authoritative prior art for funnel analysis. `06-transitions-and-funnels.md` records the sources, scope, and completed acceptance plan. The release below implements reported page transitions; complete multi-step/person-level funnels remain separate. Do not infer old internal paths or repeat production extraction of this preserved cohort.
 
 ## Referrer release accepted — September 9 UTC
 
 Runtime commit `c338059` is pushed, migration 0009 applied, and production capture and cache behavior verified. `07-transition-release-acceptance.md` and `transition-acceptance.json` record 53 analytics/36 blog tests, local D1 and browser checks, eight scripted referrer cases plus an excluded bootstrap (all nine excluded from public metrics), a 58,204-read report, and a byte-identical MISS → HIT. The implementation is complete; organic transition measurement, real-browser calibration, and the seven-day launch review remain open.
 
-The owner's Matomo comparison and delegated-agent subscription direction are preserved in `agent-readership/00-worklist-index.md` and TASK-0141. The original article and footprint remain unchanged.
+The owner's Matomo comparison and delegated-agent subscription research is complete in [TASK-0141's artifacts](../../packages/blog/drafts/research/agent-readership/00-worklist-index.md), pushed as `c42ab3a`. Its proposed experiments have not run. This thread's research and referrer implementation did not reopen the original article or its frozen footprint.

@@ -2,6 +2,8 @@
 
 Started September 9 UTC / September 8 PDT, 2026. [FLDR-0012](../../../../../docs/folders/FLDR-0012-article-024-hacker-news-follow-up.md) / [TASK-0135](../../../../../docs/tasks/TASK-0135-measure-article-024-hacker-news-launch-and-choose-the-follow.md).
 
+**Break checkpoint:** launch capture, referrer analysis, and the referrer implementation/acceptance are complete. The [September 9 handoff](../../../../../docs/handoffs/2026-09-09-analytics-and-agent-research-checkpoint.md) separates these results from open observation, browser calibration, and proposed agent-subscription experiments.
+
 Article 024 brought substantially more recorded traffic to this page after its Hacker News submission. The first saved report contains **1,616 page observations in Browsers**, including **753 reporting Hacker News as their source**. It records 1,534 on September 7. One visible reader comment asks whether the rules also misclassify real readers. These give us a measured launch result and a concrete question to test.
 
 - [Initial evidence](01-initial-evidence.md): submission, public report, reader response, access limits, and claim decisions.
@@ -15,7 +17,7 @@ Article 024 brought substantially more recorded traffic to this page after its H
 - [Referrer analysis](05-referrer-analysis.md): the 652 no-referrer observations, exact reconciliation, private evidence boundary, and committed analysis method.
 - [Transitions and funnels](06-transitions-and-funnels.md): authoritative prior art and the accepted internal-navigation implementation.
 - [Transition release acceptance](07-transition-release-acceptance.md): deployed code, controlled capture, report cost, cache reuse, and [sanitized results](transition-acceptance.json).
-- [Matomo and agent subscriptions](../agent-readership/00-worklist-index.md): the owner's next research question, with exact prompts and a separate comparison artifact.
+- [Completed Matomo and agent-subscription research](../agent-readership/00-worklist-index.md): TASK-0141's comparison, delegated protocol reviews, exact prompts, measured checks, and proposed extensions; pushed in `c42ab3a`.
 
 ## What is complete and what remains open
 
@@ -27,6 +29,7 @@ Article 024 brought substantially more recorded traffic to this page after its H
 | Answer the reader | Facts recorded; earlier assistant draft retained as history | Goga writes the reply himself under HN's current comment rules; no reply was sent here |
 | Test real browser visits | Open in [TASK-0120](../../../../../docs/tasks/TASK-0120.md) | Verify test exclusion, label who operated each client, and run the bounded cases |
 | Preserve referrer context and show page transitions | Deployed and accepted in `c338059`; scripted cases and cache reuse verified | Let organic observations accumulate; do not infer discarded historical paths or complete journeys |
+| Compare Matomo and research authorized agent subscriptions | Done in TASK-0141 and `c42ab3a` | Read the saved reports; integration and matched-system experiments remain proposals |
 | Learn from article choices | Initial hypotheses recorded | Separate what a reader explicitly says from our guesses about the title, evidence, and structure |
 | Select and publish the next article | Scope proposed; unpublished | Choose a field note or the existing measurement investigation from the evidence actually available |
 
@@ -40,4 +43,4 @@ Keep article 024's current title and URL under the [existing observation decisio
 
 The most useful engineering continuation is still the [edge-versus-RUM investigation](../edge-vs-rum/00-worklist-index.md), now with a reader asking for real-browser validation. This worklist adds the launch and editorial learning record; it does not duplicate the controlled-client implementation task or commit another slot in the ten-article plan. A shorter field note about the launch can stand on the measured current state if that is the article Goga wants to write.
 
-The Promptfoo and Trellner worklists remain separate. The [D1 recovery receipt](../d1-read-budget/02-recovery.md) remains completed. Authenticated REST access succeeded again at 00:52 UTC, superseding this session's earlier access failure. The separate follow-up found no new retained signups or confirmations since the HN submission; Goga reports the signup repair was probably live before the traffic spike. Read the follow-up's timing and retention limits before interpreting those results.
+The Promptfoo and Trellner worklists remain separate. The [D1 recovery receipt](../d1-read-budget/02-recovery.md) remains completed. Authenticated REST access succeeded again at 00:52 UTC, superseding this session's earlier access failure. At its capture time, the separate follow-up found no new retained signups or confirmations since the HN submission; Goga reported the signup repair was probably live before the traffic spike. Read that capture's timing and retention limits before interpreting the counts. The [newsletter handoff](../newsletter-reliability/14-handoff.md) owns later parallel acceptance and current availability; do not treat the earlier zero as a current subscriber total.

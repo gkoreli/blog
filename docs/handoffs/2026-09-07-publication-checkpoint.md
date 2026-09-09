@@ -2,6 +2,8 @@
 
 September 7 UTC / September 6 PDT, 2026. This checkpoint preserves the publication decisions and unfinished studies before the author's break. Read it with the linked task receipts; dated captures are not live service-health checks. No background experiment, scheduled capture, or social publication was started by this bookkeeping.
 
+**Later checkpoint:** the [September 9 analytics and agent-research handoff](2026-09-09-analytics-and-agent-research-checkpoint.md) records the HN launch, accepted referrer implementation, completed TASK-0141 research, and current experiment boundaries. This September 7 document remains the historical article-footprint and workspace-recovery receipt; its open-work wording is superseded where the later checkpoint records completion.
+
 ## Article 024 is finished for this revision
 
 **Bot Detection Without JavaScript: What My Blog Measured** is published at its retained canonical URL: [gkoreli.com/how-i-separate-readers-from-bots-without-javascript](https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript). Keep the URL. The title identifies the subject and the firsthand measurement boundary; there is no measured pronoun, ranking, or citation advantage. Keep the title stable through September 28 unless a factual correction or repeated misleading reader expectations justify a change. [Title decision](../../packages/blog/drafts/research/readers-vs-bots/20-discovery-positioning.md).
