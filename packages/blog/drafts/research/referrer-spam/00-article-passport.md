@@ -43,13 +43,14 @@ The initial rationale selected A because it preserved the owner's provenance req
 | What happened to the suspicious 35 views? | Initial ranking, fixed-window policy comparison, and separate deployment verification |
 | Why retain excluded traffic? | Correction path, retained fields, versioned decision, and exact report snapshots |
 | What does adopting Matomo mean here? | Pinned 2,348-host list, absent local hostname, and narrower matching semantics |
+| Which practices were actually tested? | Rotating-name API fixture, complete-list and cross-evaluator checks, all-excluded state, integrity checks, and scoped live reconciliation |
 | Does the repair solve readership? | Explicitly no: unknown headers, false positives, and forged approved names remain possible |
 
 Headings name the mechanism or decision: public ranking, observations versus reporting decisions, Matomo rules, historical reports, deployed result and cost. The implementation section marks its register change before code. Each section begins with its point and ends with its implication.
 
 The new post is Measurement boundaries order 5. A contextual forward link goes in article 024; the new note links to articles 020 and 024. The unpublished edge-versus-RUM draft receives a short account and link, preserving its pending browser-experiment gate. This note does not occupy another promised row in FLDR-0008's existing lane.
 
-Link-worthy artifacts already exist: the ADR, pinned evaluator, source archive, verification tables, benchmark, and report-capture command. Link to those instead of republishing the full engineering record. No custom visual is needed beyond the existing generated OG card and a small domain-concept table.
+Link-worthy artifacts already exist: the ADR, pinned evaluator, source archive, verification tables, benchmark, and report-capture command. Carry selected consequential results into the article beside the practice they support; link the full artifacts for reproduction and detail. A link alone does not teach what the experiment established. The practice/result and live-scope tables make these connections without republishing the complete engineering record.
 
 Distribution hypothesis: engineers operating public analytics or maintaining an ingestion/filtering pipeline may find the correction and report-provenance distinction useful. Publication and internal links are authorized. Social/community posting is not part of this release. No search ranking, traffic, citation, or backlink outcome is promised.
 

@@ -93,3 +93,7 @@ Did we eradicate the referrer spam entirely? I feel like its a really valuable l
 
 This line is said so authoritatively that makes it confusing: Avoid inventing an audience. A request carrying a referrer does not establish that a reader followed a link from that site.
 I mean referrer is a good way to understand, but its not an absolute way to understand where the reader is coming from, the sentence is structured in a way that completely neglects the first part of this statement. Why?
+
+---
+
+i feel like we did so much research on the topic of getting rid of referrer spam, so much exploration and reading authoritative cross references and open source github projects, we learned so much but best practices with evidences from our live blog and from our experiments are missing from the article.

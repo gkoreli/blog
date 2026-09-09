@@ -33,6 +33,7 @@ My public analytics had put an untrusted website first in the referrer rankings,
 - **Limit public exposure.** Unreviewed included hostnames appear under “Other reported referrers.”
 - **Apply exclusions consistently.** Matching rules affect totals, charts, and rankings, with excluded observations counted separately.
 - **Interpret referrers in context.** Referrers help identify where traffic comes from, but forged or missing values can distort that picture.
+- **Verify the defense.** Test rotating names, matching edge cases, and totals that reconcile across reports.
 - **Keep decisions correctable.** Stored observations, versioned rules, and saved reports preserve the evidence behind an exclusion.
 
 ## How a reported referrer became a public ranking
@@ -58,6 +59,8 @@ Public analytics give referral abuse an audience beyond the site owner. A high p
 Authentic transparency requires explaining what was observed, what was excluded, and what remains unknown. Publishing untrusted referral claims without those distinctions would make my account of the blog less truthful.
 
 ## Separating observations from reporting decisions
+
+The useful pattern in the prior art is an explicit filtering decision. Matomo's [tracker excludes matching visits](https://github.com/matomo-org/matomo/blob/cd1266ab025390e83cee7ca0ef98940028a113d5/core/Tracker/VisitExcluded.php#L136); Plausible's [ingestion pipeline drops spam-referrer events](https://github.com/plausible/analytics/blob/e74d6fb214b76664442d6a6bb8d96e74807ccfbf/lib/plausible/ingestion/event.ex#L64) before normal processing. For my public dashboard, I also needed control over which included names receive exposure. My retention requirement placed the exclusion in reporting, so a mistaken rule could be reversed over existing observations.
 
 The repair gives three concepts separate responsibilities in [my first-party analytics](/first-party-analytics-for-a-personal-blog):
 
@@ -88,6 +91,8 @@ An unfamiliar name alone is enough to withhold public exposure. Excluding its ob
 
 Matomo supplies maintained prior art, but its list could not decide this case for me. The [pinned source](https://github.com/matomo-org/referrer-spam-list/blob/e65db652cade6882aa9a76bbb65c9bb17e079f4b/spammers.txt) contained **2,348 hosts** and omitted the hostname under investigation. That required a reviewed local rule.
 
+The [private review covered 23 distinct retained hostnames](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/blog/drafts/research/readers-vs-bots/18-matomo-referral-policy-verification.md). None matched the upstream list. All 35 exclusions in the fixed-window check came from our local rule. This exposed a testing gap: a lower production count could demonstrate the local rule working while telling us nothing about whether we had integrated Matomo correctly. We tested every imported hostname separately.
+
 For someone implementing the filter, the matching boundary matters. After parsing and normalizing a hostname, a subtree rule has this meaning:
 
 ```typescript
@@ -98,6 +103,23 @@ For `example.com`, that includes `sub.example.com` and excludes lookalikes such 
 
 Reviewed local rules override upstream entries; more specific local rules can refine broader ones. An explicit include can correct a false positive. Each change gets a new policy version, while the exact upstream bytes, their hash, and the evaluator identity remain archived. List membership is a reporting signal whose mistakes I must be able to correct.
 
+## Tests that made the referrer policy safer to change
+
+A filter needs tests for the observations it keeps as well as those it removes. For implementers, these were the most useful checks: they exercise the public response and the database queries, beyond the hostname-matching function.
+
+| Test | Saved result | What it establishes |
+|---|---|---|
+| Rotate unreviewed names | A fixture with **1,000 rotating hostnames**, plus nine ordinary and edge cases, kept **1,009 observations**: 1,005 Other, 3 under approved names, and 1 without a referrer. The attacking labels did not appear in serialized public JSON. | Name rotation cannot obtain automatic public exposure through this projection. Unfamiliar traffic remains counted unless separately excluded. |
+| Compare both evaluators | TypeScript and SQLite agreed across **9,409 retained-host fixtures**, covering the upstream list, local overrides, lookalikes, and malformed historical input. Retained rows remained unchanged. | The policy used for review and the policy used for reports agree on the tested cases. |
+| Exclude the entire selection | A historical fixture returned **0 included, 1 excluded**, while preserving the original reporting start date. | An empty chart still explains that filtering occurred; the exclusion remains inside the displayed period. |
+| Alter a policy or capture | Tests rejected changed source bytes, conflicting rules, and a report capture carrying the wrong policy hash. | The review and capture tools check that policy labels correspond to the archived rules and received report. |
+
+These are local test results from the [release verification](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/blog/drafts/research/readers-vs-bots/18-matomo-referral-policy-verification.md), with inspectable [public-response fixtures](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/analytics/test/contracts.test.mjs), [evaluator fixtures](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/analytics/test/referral-policy.test.mjs), and [integrity checks](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/blog/test/referral-policy.test.ts). They test implementation behavior, not the percentage of real-world spam detected.
+
+The cross-language review exposed a concrete trap: JavaScript and SQLite do not case-fold every Unicode character identically. We used ASCII-only normalization for malformed retained hostname strings and added Kelvin-sign fixtures to check agreement; newly received HTTP(S) hosts already pass through URL/IDNA parsing. Testing only the TypeScript function would not check agreement with the SQL deciding the published counts.
+
+The reusable practice is to test the whole decision path: normalization, rule precedence, database selection, and public serialization. A correct match function alone does not establish that an excluded observation has disappeared from every panel or that a hidden name cannot leak through the API.
+
 ## Preserving historical reports
 
 An exclusion can be mistaken, so the design keeps the evidence needed to reconsider it. My requirement during the repair was:
@@ -105,6 +127,8 @@ An exclusion can be mistaken, so the design keeps the evidence needed to reconsi
 > "we still need to save those data for historical provenance reasons right?"
 
 Retained observations support recalculation. They do not automatically reconstruct an earlier dashboard: late writes, owner exclusions, and other classification changes can alter the result even under the same referral policy.
+
+We encountered that immediately: the [first live capture and following candidate calculation](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/blog/drafts/research/readers-vs-bots/17-referral-abuse-defense-verification.md) differed by two newly arrived unattributed observations, even before exclusions. Subsequent comparisons fixed the report clock and calendar window. That made the comparison clearer, while still leaving separate queries short of a transactional snapshot.
 
 The [report-capture command](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/analytics/policies/README.md) saves the exact received JSON and its hash, checks the advertised policy against the archive, and refuses to overwrite an earlier capture. Deployment records bind the policy to the released code. Captures are explicit, not automatic snapshots of every report.
 
@@ -114,7 +138,17 @@ The September 6 defense added no visitor field and deleted no observation. Its r
 
 The fixed August 8–September 6 UTC check produced **972 Browser observations before referral exclusions: 937 included plus 35 excluded**, all 35 through the local rule. These were separate read-only production queries, not a transactional snapshot. [Verification record](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/blog/drafts/research/readers-vs-bots/18-matomo-referral-policy-verification.md). Subsequent [live verification](https://github.com/gkoreli/blog/blob/e1aa4a305ef934b1f089b24894321558db5f1603/packages/blog/drafts/research/readers-vs-bots/19-referral-policy-activation.md) confirmed the deployed policy, suppressed names, and scoped exclusion counts.
 
-The public evidence records aggregates and hashes; private captures let me audit the original reads.
+The included referrer buckets also reconciled: **60 named + 7 Other + 870 without a referrer = 937**. The seven unreviewed referrals and the observations without a referrer stayed included. The defense preserved useful discovery data while applying a specific exclusion.
+
+After deployment, I checked the selected report scopes separately. The live 30-day window had advanced to **August 9–September 7 UTC**, so these are activation checks rather than another before/after comparison:
+
+| Live selection | Included observations | Excluded observations |
+|---|---:|---:|
+| Browsers | 936 | 35 |
+| All traffic groups | 4,178 | 35 |
+| Browsers on the homepage | 321 | 17 |
+
+In each saved response, paths, time series, devices, and reader kinds summed to included views; referrer buckets reconciled too. No unapproved name appeared in the public report. This [live acceptance](https://github.com/gkoreli/blog/blob/e1aa4a305ef934b1f089b24894321558db5f1603/packages/blog/drafts/research/readers-vs-bots/19-referral-policy-activation.md) checked that changing a filter did not restore the excluded observations or produce contradictory panels. The public evidence records aggregates and hashes; private captures let me audit the original reads.
 
 This has not eliminated all referrer spam. It closes automatic public promotion for unreviewed hostnames and removes rule-matched observations from the reports. A client can still impersonate an approved referrer, omit the header, or rotate names that remain included under the generic label. Excluding 35 observations verifies the policy's effect in that window; it does not prove that every remaining observation is genuine.
 
@@ -126,6 +160,8 @@ I want to know whether people are reading the blog and which sources bring them 
 
 The rules can still be wrong: clients can change headers, and a legitimate visit from an excluded domain will also be omitted. Reviewing evidence and reversing mistaken decisions remains part of the work. Keeping that correction path is how I can report suspected abuse honestly without promoting it or counting it as proof of an audience.
 
+For a new suspicious source, the [maintenance workflow](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/analytics/policies/README.md) is to inspect private aggregates, record the evidence for a rule, rerun the boundary and reconciliation checks, version the policy, and capture the deployed report. An unfamiliar name can stay grouped while I investigate. That gives me a practical way to improve the analytics without either rewarding spam or discarding every source I do not yet recognize.
+
 ---
 
 ## Glossary
@@ -134,4 +170,5 @@ The rules can still be wrong: clients can change headers, and a legitimate visit
 |---|---|---|
 | Referrer spam | Fabricated referral information intended to gain exposure through analytics. [Matomo explanation](https://matomo.org/blog/2015/05/stopping-referrer-spam/). | Published May 13, 2015; rechecked September 9, 2026 UTC |
 | Matomo referrer spam list | Community-contributed hostname list; our release uses a fixed revision. [Source README](https://github.com/matomo-org/referrer-spam-list/blob/e65db652cade6882aa9a76bbb65c9bb17e079f4b/README.md). | Revision `e65db652`; checked September 7, 2026 UTC |
+| Spam-referrer ingestion filter | Plausible checks the supplied referrer before its normal event pipeline. [Inspected source](https://github.com/plausible/analytics/blob/e74d6fb214b76664442d6a6bb8d96e74807ccfbf/lib/plausible/ingestion/event.ex#L64). | Revision `e74d6fb2`; checked September 9, 2026 UTC |
 | Referral policy | Our versioned reporting rules, distinct from retained observations and public name approval. [Decision record](https://github.com/gkoreli/blog/blob/e1aa4a305ef934b1f089b24894321558db5f1603/docs/adr/0016.6-versioned-referral-policy-and-matomo-source.md). | Policy `2026-09-06.2`; activated September 7, 2026 UTC |

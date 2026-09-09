@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-09-09T02:37:49.312Z",
+  "buildCheckout": "/Users/goga/.local/share/gkoreli/worktrees/article-025-practices-20260909",
+  "buildBase": "c42ab3afe02a5212684caef9eab8873ab66edfa5",
+  "checks": [
+    {
+      "name": "Isolated build matches source; utility-first referrer wording survives",
+      "passed": true
+    },
+    {
+      "name": "Historical fixtures and the review-origin correction render with code links",
+      "passed": true
+    },
+    {
+      "name": "Fixed production comparison and later live scopes remain distinct and reconcile",
+      "passed": true
+    },
+    {
+      "name": "Pinned project files exist and inspected Matomo/Plausible links render",
+      "passed": true
+    },
+    {
+      "name": "Five tables render, D1 stays one paragraph, and no suspect-destination link appears",
+      "passed": true
+    },
+    {
+      "name": "All 23 prompts render exactly and prior 22 are unchanged",
+      "passed": true
+    },
+    {
+      "name": "Frontmatter is unchanged and frozen prompt scope remains explicit",
+      "passed": true
+    }
+  ],
+  "promptCount": 23,
+  "frozenPromptCount": 18,
+  "artifacts": 6,
+  "relativeLinks": 27,
+  "articleSha256": "1647ee1165e74fa582790425f4f5ae71cde39bd3b586ace69a9b02685e124956",
+  "sourceBodyWhitespaceWords": 2336,
+  "commitments": {
+    "research-footprint.json": "4036a0ecfd7d560dd31caa9765df977e0c4c77d50c40120b33738a47045f0db6",
+    "research-footprint-overlap.json": "7098a4122db2f4d9457e9cd71010ce9cc4bdcbc132a0e972b80fde0bcb0fa13f"
+  },
+  "limitations": "Historical runtime test receipts and production captures were reused and their pinned assertions inspected. This pass checks article rendering and provenance; no repeated analytics experiment or production SQL. An isolated build avoids the active shared development server."
+}

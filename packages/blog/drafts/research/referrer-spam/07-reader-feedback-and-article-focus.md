@@ -136,3 +136,27 @@ Editorial lesson: explain what a signal helps us infer before explaining what it
 The complete owner message is appended as prompt 22. It is outside the frozen first-18-prompt measurement, whose scope already discloses later work. Numeric footprint fields and manifests remain unchanged, as do the six Markdown artifact paths. Acceptance will record the focused build, generated content and exact-prompt checks, and live release verification below.
 
 The production build passed for all 25 posts. [Four focused generated checks](15-referrer-evidence-checks.json) verify the calibrated opening/background/ending, unchanged metadata and frozen commitments, all 22 exact rendered prompts, six committed Markdown artifacts, and 17 resolving relative links. The owner's next correction asks for more practical lessons backed by our tests and live evidence; that is a further article pass rather than a reason to leave this completed wording correction uncommitted.
+
+The calibrated wording was committed and pushed in `bc5bf19`. Its final served acceptance is checked together with the following practices pass, which preserves that wording and adds the next complete shaping prompt.
+
+## Practices backed by experiments and live reports
+
+September 9 UTC / September 8 PDT, 2026. [TASK-0144](../../../../../docs/tasks/TASK-0144-ground-article-025-practices-in-tests-and-production.md) addresses the owner's observation that the research had earned more practical knowledge than the article conveyed. The issue was excessive compression: linking evidence records while omitting their consequential tests and results left readers with policy statements and limitations, but too little explanation of which practices were tested and why they matter.
+
+Two bounded read-only reviews identified the strongest material in saved artifacts 17–19 and the pinned test code. Their useful findings are preserved in the [practice/evidence map](01-evidence-ledger.md#practices-added-from-existing-evidence). The article now carries:
+
+- the explicit Matomo/Plausible filtering pattern and our choices about retained observations and public-name exposure;
+- the 23-host review with zero upstream matches, explaining why production counts could not validate the Matomo integration alone;
+- a test table for 1,000-name rotation, 9,409 cross-evaluator fixtures, all-excluded history, and rejected policy/capture tampering;
+- the Unicode case-folding mismatch identified in cross-language review and the fixtures that check the repair;
+- fixed-window referral reconciliation that preserves named, unfamiliar, and absent sources;
+- separate, dated live activation results for Browsers, All, and homepage scopes;
+- the observed two-row drift between early captures and a practical maintenance sequence.
+
+The table's synthetic results, fixed-window production comparison, and later live activation remain explicitly different evidence. Tests establish behavior for their cases, not a detection-accuracy percentage. The article retains referrers' normal usefulness and the limited reporting guarantee. It does not claim that unimplemented attestation or global quota proposals are deployed. D1 remains one supporting paragraph, and the fuller benchmark stays linked in the incident record.
+
+The passport now requires selected results beside the practices they support; linking the full record alone is insufficient. Existing writing skills already require the complete engineering lesson, so this correction applies those instructions rather than adding another skill. The owner's complete message becomes prompt 23. Metadata and frozen footprint fields/commitments remain unchanged; the six Markdown artifact paths remain the same. Release checks and acceptance follow below.
+
+Final independent review found one evidence-origin correction: the saved record attributes the Unicode issue to code review and records the Kelvin-sign fixture as a check; it does not preserve a failing-test-first sequence. The article and ledger now say that explicitly. The reviewer otherwise confirmed the teaching structure and separation of local fixtures, fixed-window counts, and live acceptance.
+
+The shared-directory build encountered `ENOTEMPTY` while an independent development server was updating `dist`. No process was stopped. A detached checkout at `/Users/goga/.local/share/gkoreli/worktrees/article-025-practices-20260909`, based on `c42ab3a`, received the scoped changes and installed dependencies from the local lockfile/store. Its production build passed for all 25 posts with policy integrity verification. [Seven generated-content checks](16-practices-checks.json) passed, including exact article/prompt bytes, five rendered tables, pinned source paths, all 23 prompts, unchanged frozen commitments and metadata, and 27 resolving relative links. These checks validate the new publication; historical analytics tests and live captures are cited as historical evidence rather than rerun.
