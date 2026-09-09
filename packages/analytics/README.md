@@ -95,6 +95,16 @@ The two SELECTs retain the current UTC day and preceding 29 days, owner exclusio
 
 `GET /api/stats?range=7d|30d|90d|all&traffic=browser|agents|crawlers|automation|all&path=/slug&agent=<rule name>&kind=<reader kind>`. `path`, `agent`, and `kind` scope every panel; combinations whose kind lies outside the chosen group return 400. The response carries totals, per-path, per-country, per-referrer, per-device, per-agent, and per-kind-and-reason aggregates over exact UTC windows. Every query excludes rows marked by `is_owner` at ingestion and daily client IDs recorded in `owner_clients`.
 
+### Internal referral context and page transitions
+
+Migration 0009 adds `referrer_state` and `internal_referrer_path`. New ingestion distinguishes external, internal, absent/empty, and unusable headers. Internal paths are stored only when present in the blog's public route set; query strings and fragments are removed. The Worker loads article and prompt paths from its static `posts.json` binding, alongside known public non-post routes. It caches this set for five minutes; an unavailable index records a bounded warning, retries after one minute, and still captures the category with unknown article paths omitted. No database reads are needed to recognize routes.
+
+Old null `referrer_state` values remain unknown. Reports can identify an older non-null external hostname, but cannot reconstruct discarded internal paths. `byReferrerState` reconciles with headline views. For compatibility, `totals.unattributedViews` retains its original host-null calculation, which includes internal and historical unknown rows; use the explicit categories for interpretation.
+
+`internalTransitions` counts HTML destination requests with a recognized, different internal source path. The page filter selects both incoming and outgoing transitions; other panels remain scoped to requests for the selected page. Traffic/agent/kind and UTC filters describe the destination request. `internalReferrerDetails` reports same-page referrals, unrecognized internal paths, and the first detailed-referrer record in that transition scope. A same-page referrer is not proof of a reload. Repeated requests count again; these are reported transitions, not unique people, complete funnels, conversion rates, or measured exits.
+
+All panels share one materialized selection and referral assessment. An additional `(is_owner, internal_referrer_path, observed_at)` index supports outgoing-page selection. Cache report version `2026-09-09.1` separates this response contract from older entries. [Evidence, prior art, and acceptance scope](../blog/drafts/research/article-024-hacker-news/06-transitions-and-funnels.md).
+
 `POST /api/owner` records the authenticated caller's daily client ID in `owner_clients`. It uses `Authorization: Bearer <ADMIN_SECRET>` and the same site, UTC date, IP, User-Agent, and HMAC secret as ingestion. A mark covers one browser, address, and UTC day; a changed address needs another call.
 
 ## Development

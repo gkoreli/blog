@@ -56,7 +56,7 @@ function parseTrafficFilter(value: string | null): TrafficFilter | null {
   }
 }
 
-function predicateFor(window: StatsWindow, query: StatsQuery): QueryPredicate {
+function predicateFor(window: StatsWindow, query: StatsQuery, includeOutgoing = false): QueryPredicate {
   let sql = `observed_at >= ? AND observed_at < ? AND ${PUBLIC_OBSERVATION_PREDICATE}`;
   const values: unknown[] = [window.startInclusive, window.endExclusive];
   const partition = partitionPredicate(query.traffic);
@@ -65,8 +65,9 @@ function predicateFor(window: StatsWindow, query: StatsQuery): QueryPredicate {
     values.push(...partition.values);
   }
   if (query.path !== undefined) {
-    sql += ' AND path = ?';
+    sql += includeOutgoing ? ' AND (path = ? OR internal_referrer_path = ?)' : ' AND path = ?';
     values.push(query.path);
+    if (includeOutgoing) values.push(query.path);
   }
   if (query.agent !== undefined) {
     sql += ' AND agent_name = ?';
@@ -121,6 +122,29 @@ function referrerRows(rows: Record<string, unknown>[]): StatsResponse['byReferre
   for (const row of rows) {
     const referrerHost = stringField(row, 'key1');
     if (referrerHost !== null) result.push({ referrerHost, views: numberField(row, 'views') });
+  }
+  return result;
+}
+
+function referrerStateRows(rows: Record<string, unknown>[]): StatsResponse['byReferrerState'] {
+  const result: StatsResponse['byReferrerState'] = [];
+  for (const row of rows) {
+    const state = stringField(row, 'key1');
+    if (state === 'external' || state === 'internal' || state === 'absent'
+      || state === 'unusable' || state === 'legacy-unknown') {
+      result.push({ state, views: numberField(row, 'views') });
+    } else return malformedReport();
+  }
+  return result;
+}
+
+function transitionRows(rows: Record<string, unknown>[]): StatsResponse['internalTransitions'] {
+  const result: StatsResponse['internalTransitions'] = [];
+  for (const row of rows) {
+    const fromPath = stringField(row, 'key1');
+    const toPath = stringField(row, 'key2');
+    if (fromPath === null || toPath === null) return malformedReport();
+    result.push({ fromPath, toPath, views: numberField(row, 'views') });
   }
   return result;
 }
@@ -184,6 +208,7 @@ function payloadRows(row: Record<string, unknown>): Record<string, unknown>[] {
 function reportSections(rows: Record<string, unknown>[], includeBoundary: boolean): Map<string, Record<string, unknown>[]> {
   const expected = new Set([
     'totals', 'path', 'country', 'series', 'referrer', 'device', 'agent', 'kind', 'excluded',
+    'referrer-state', 'transitions', 'referrer-details',
   ]);
   if (includeBoundary) expected.add('boundary');
   const sections = new Map<string, Record<string, unknown>[]>();
@@ -191,7 +216,7 @@ function reportSections(rows: Record<string, unknown>[], includeBoundary: boolea
     const section = stringField(row, 'section');
     if (section === null || !expected.has(section) || sections.has(section)) return malformedReport();
     const payload = payloadRows(row);
-    if ((section === 'totals' || section === 'excluded' || section === 'boundary') && payload.length !== 1) {
+    if ((section === 'totals' || section === 'excluded' || section === 'boundary' || section === 'referrer-details') && payload.length !== 1) {
       return malformedReport();
     }
     sections.set(section, payload);
@@ -219,14 +244,16 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
   const sectionValues = [
     "('totals', 0)", "('path', 1)", "('country', 2)", "('series', 3)", "('referrer', 4)",
     "('device', 5)", "('agent', 6)", "('kind', 7)", "('excluded', 8)",
+    "('referrer-state', 9)", "('transitions', 10)", "('referrer-details', 11)",
   ];
-  if (includeBoundary) sectionValues.push("('boundary', 9)");
+  if (includeBoundary) sectionValues.push("('boundary', 12)");
 
   return {
     sql: `WITH RECURSIVE
       selected AS MATERIALIZED (
         SELECT path, country, daily_client_id, traffic_class, agent_name, device_type,
-               reader_kind, reader_reason, referrer_host, observed_at
+               reader_kind, reader_reason, referrer_host, observed_at,
+               referrer_state, internal_referrer_path, representation
         FROM page_observations WHERE ${selected.sql}
       ),
       ${referralAssessmentCtes(`
@@ -239,8 +266,11 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
           COALESCE(referrer_host IN (SELECT original FROM abusive_hosts), 0) AS referral_excluded
         FROM selected
       ),
+      report_scope AS MATERIALIZED (
+        SELECT * FROM assessed WHERE (? IS NULL OR path = ?)
+      ),
       included AS MATERIALIZED (
-        SELECT * FROM assessed WHERE referral_excluded = 0
+        SELECT * FROM report_scope WHERE referral_excluded = 0
       )
       ${boundaryCte},
       sections(section, section_order) AS MATERIALIZED (
@@ -304,7 +334,34 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         )
         WHEN 'excluded' THEN (
           SELECT json_array(json_object('views', COUNT(*)))
-          FROM assessed WHERE referral_excluded = 1
+          FROM report_scope WHERE referral_excluded = 1
+        )
+        WHEN 'referrer-state' THEN (
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', COALESCE(referrer_state,
+              CASE WHEN referrer_host IS NOT NULL THEN 'external' ELSE 'legacy-unknown' END),
+              'views', COUNT(*)) AS row_json
+            FROM included GROUP BY COALESCE(referrer_state,
+              CASE WHEN referrer_host IS NOT NULL THEN 'external' ELSE 'legacy-unknown' END)
+          )
+        )
+        WHEN 'transitions' THEN (
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', internal_referrer_path, 'key2', path, 'views', COUNT(*)) AS row_json
+            FROM assessed WHERE referral_excluded = 0 AND representation = 'html'
+              AND referrer_state = 'internal' AND internal_referrer_path IS NOT NULL
+              AND internal_referrer_path <> path
+            GROUP BY internal_referrer_path, path ORDER BY COUNT(*) DESC, internal_referrer_path, path
+          )
+        )
+        WHEN 'referrer-details' THEN (
+          SELECT json_array(json_object(
+            'firstCapturedAt', MIN(CASE WHEN referrer_state IS NOT NULL THEN observed_at END),
+            'unrecognizedPathViews', SUM(CASE WHEN referrer_state = 'internal'
+              AND internal_referrer_path IS NULL AND representation = 'html' THEN 1 ELSE 0 END),
+            'selfReferrals', SUM(CASE WHEN referrer_state = 'internal'
+              AND internal_referrer_path = path AND representation = 'html' THEN 1 ELSE 0 END)
+          )) FROM assessed WHERE referral_excluded = 0
         )
         ${boundaryProjection}
         ELSE json('[]')
@@ -316,12 +373,12 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
 
 export async function queryStats(db: D1Database, query: StatsQuery, now = new Date(), policy: ReferralPolicy = ACTIVE_REFERRAL_POLICY): Promise<StatsResponse> {
   const initialWindow = createStatsWindow(query.range, now);
-  const selected = predicateFor(initialWindow, query);
+  const selected = predicateFor(initialWindow, query, true);
   const bucketSql = initialWindow.granularity === 'hour'
     ? "strftime('%Y-%m-%dT%H:00:00Z', observed_at)"
     : "strftime('%Y-%m-%d', observed_at)";
   const report = reportSql(selected, bucketSql, query.range === 'all');
-  const statement = db.prepare(report.sql).bind(...report.values, referralRulesJson(policy));
+  const statement = db.prepare(report.sql).bind(...report.values, referralRulesJson(policy), query.path ?? null, query.path ?? null);
   const results = await db.batch<Record<string, unknown>>([statement]);
   const rows = results[0]?.results ?? [];
   const sections = reportSections(rows, query.range === 'all');
@@ -331,6 +388,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
   const totalsRow = requiredSection(sections, 'totals')[0];
   const populatedSeries = seriesRows(requiredSection(sections, 'series'));
   const referrals = publicReferrers(referrerRows(requiredSection(sections, 'referrer')), policy);
+  const referrerDetails = requiredSection(sections, 'referrer-details')[0];
 
   return {
     period: {
@@ -357,6 +415,13 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     timeSeries: completeTimeSeries(window, populatedSeries, now),
     byReferrer: referrals.byReferrer,
     otherReferrerViews: referrals.otherReferrerViews,
+    byReferrerState: referrerStateRows(requiredSection(sections, 'referrer-state')),
+    internalTransitions: transitionRows(requiredSection(sections, 'transitions')),
+    internalReferrerDetails: {
+      unrecognizedPathViews: numberField(referrerDetails, 'unrecognizedPathViews'),
+      selfReferrals: numberField(referrerDetails, 'selfReferrals'),
+      firstCapturedAt: stringField(referrerDetails, 'firstCapturedAt'),
+    },
     referralPolicy: {
       version: policy.version,
       sha256: policy.sha256,

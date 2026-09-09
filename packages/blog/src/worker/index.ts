@@ -26,6 +26,7 @@ import {
 import { typedLinkHeaderValue } from '../lib/typed-links.js';
 import { negotiateRepresentation, type NegotiatedRepresentation } from './negotiate.js';
 import { createStatsHandler } from './stats-cache.js';
+import { publicPagePaths } from './referrer-pages.js';
 
 /** Merged bindings for the packages composed by this Worker. */
 type Env = AnalyticsEnv & NewsletterEnv & ClientObservabilityEnv & { ASSETS: Fetcher };
@@ -242,7 +243,9 @@ export default {
 
     const { response, representation } = await serveContent(request, env);
     if (representation !== null) {
-      observePageResponse(request, response, representation, env, ctx);
+      observePageResponse(request, response, representation, env, ctx, {
+        publicPagePaths: () => publicPagePaths(env.ASSETS),
+      });
     }
     return response;
   },

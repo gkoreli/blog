@@ -4,6 +4,11 @@ CREATE TABLE page_observations (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   path TEXT NOT NULL CHECK (path LIKE '/%'),
   referrer_host TEXT,
+  referrer_state TEXT CHECK (referrer_state IN ('external', 'internal', 'absent', 'unusable')),
+  internal_referrer_path TEXT CHECK (internal_referrer_path IS NULL OR (
+    referrer_state IS 'internal' AND internal_referrer_path LIKE '/%'
+    AND instr(internal_referrer_path, '?') = 0 AND instr(internal_referrer_path, '#') = 0
+  )),
   country TEXT,
   daily_client_id TEXT NOT NULL CHECK (
     length(daily_client_id) = 32
@@ -39,6 +44,8 @@ CREATE INDEX idx_page_observations_public_traffic_time
   ON page_observations(is_owner, traffic_class, observed_at);
 CREATE INDEX idx_page_observations_public_path_time
   ON page_observations(is_owner, path, observed_at);
+CREATE INDEX idx_page_observations_public_internal_referrer_time
+  ON page_observations(is_owner, internal_referrer_path, observed_at);
 CREATE UNIQUE INDEX idx_page_observations_source_event
   ON page_observations(observation_source, source_event_id)
   WHERE source_event_id IS NOT NULL;

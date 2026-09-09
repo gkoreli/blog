@@ -44,6 +44,8 @@ export type Representation = 'html' | 'markdown';
 export type StatsRange = '7d' | '30d' | '90d' | 'all';
 export type Granularity = 'hour' | 'day';
 export type SignatureStatus = 'verified' | 'unverified';
+export type ReferrerState = 'external' | 'internal' | 'absent' | 'unusable';
+export type ReportedReferrerState = ReferrerState | 'legacy-unknown';
 
 export interface TimeSeriesPoint {
   bucket: string;
@@ -75,6 +77,14 @@ export interface StatsResponse {
   byReferrer: Array<{ referrerHost: string; views: number }>;
   /** Included views with a referrer whose name is not approved for public display. */
   otherReferrerViews: number;
+  byReferrerState: Array<{ state: ReportedReferrerState; views: number }>;
+  /** HTML requests reporting a recognized, different internal source page. */
+  internalTransitions: Array<{ fromPath: string; toPath: string; views: number }>;
+  internalReferrerDetails: {
+    unrecognizedPathViews: number;
+    selfReferrals: number;
+    firstCapturedAt: string | null;
+  };
   /** Same selection as totals, after owner exclusions, before referral exclusions. */
   referralPolicy: {
     version: string;

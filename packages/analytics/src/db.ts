@@ -1,4 +1,4 @@
-import type { DeviceType, Representation, SignatureStatus, TrafficClass } from './contracts.js';
+import type { DeviceType, ReferrerState, Representation, SignatureStatus, TrafficClass } from './contracts.js';
 import type { ReaderKind } from './readerkind.js';
 
 export interface Env {
@@ -11,6 +11,8 @@ export interface Env {
 export interface PageObservation {
   path: string;
   referrerHost: string | null;
+  referrerState: ReferrerState;
+  internalReferrerPath: string | null;
   country: string | null;
   dailyClientId: string;
   trafficClass: TrafficClass;
@@ -56,8 +58,10 @@ const INSERT_OBSERVATION = `INSERT INTO page_observations (
   reader_kind,
   reader_reason,
   observed_at,
-  asn_source
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  asn_source,
+  referrer_state,
+  internal_referrer_path
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
 export async function recordPageObservation(db: D1Database, observation: PageObservation): Promise<void> {
   await db.prepare(INSERT_OBSERVATION).bind(
@@ -84,5 +88,7 @@ export async function recordPageObservation(db: D1Database, observation: PageObs
     observation.readerReason,
     observation.observedAt,
     observation.asn === null ? null : 'request',
+    observation.referrerState,
+    observation.internalReferrerPath,
   ).run();
 }

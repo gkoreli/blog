@@ -20,7 +20,7 @@ import { partitionPredicate } from '../.test-dist/partition.js';
 import { classifyReaderKind, READER_KINDS } from '../.test-dist/readerkind.js';
 import { READER_GROUPS, readerGroupOf } from '../.test-dist/contracts.js';
 import { handleStats, parseStatsQuery, queryStats } from '../.test-dist/stats.js';
-import { parseReferrerHost, REFERRAL_POLICY_VERSION } from '../.test-dist/referrals.js';
+import { parseReferrer, parseReferrerHost, REFERRAL_POLICY_VERSION } from '../.test-dist/referrals.js';
 import { ACTIVE_REFERRAL_POLICY } from '../.test-dist/referral-policy.generated.js';
 
 const html = new Response('<!doctype html>', {
@@ -100,8 +100,8 @@ function insertObservation(sqlite, observation) {
     agent_name, device_type, is_owner, observation_source, asn, as_org,
     sec_fetch_mode, sec_fetch_dest, sec_fetch_site, sec_fetch_user,
     accepts_html, has_accept_language, representation, signature_agent, signature_status,
-    reader_kind, reader_reason, observed_at
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
+    reader_kind, reader_reason, observed_at, referrer_state, internal_referrer_path
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
     observation.path,
     observation.referrerHost ?? null,
     observation.country ?? null,
@@ -125,6 +125,8 @@ function insertObservation(sqlite, observation) {
     observation.readerKind ?? derived?.kind ?? null,
     observation.readerReason ?? derived?.reason ?? null,
     observation.observedAt,
+    observation.referrerState ?? null,
+    observation.internalReferrerPath ?? null,
   );
 }
 
@@ -376,6 +378,8 @@ test('request metadata extracts bounded request evidence and reports absent valu
     path: '/article',
     siteHost: 'gkoreli.com',
     referrerHost: 'www.example.com',
+    referrerState: 'external',
+    internalReferrerPath: null,
     ip: '203.0.113.10',
     country: 'GE',
     userAgent: 'Browser/1.0',
@@ -921,6 +925,9 @@ test('stats result decoding rejects malformed, duplicate, missing, and misplaced
     { section: 'agent', payload: '[]' },
     { section: 'kind', payload: '[]' },
     { section: 'excluded', payload: '[{"views":0}]' },
+    { section: 'referrer-state', payload: '[]' },
+    { section: 'transitions', payload: '[]' },
+    { section: 'referrer-details', payload: '[{"unrecognizedPathViews":0,"selfReferrals":0,"firstCapturedAt":null}]' },
   ];
   const database = rows => ({
     prepare() { return { bind() { return {}; } }; },
@@ -1579,4 +1586,89 @@ test('SQL reader-kind backfill uses the same closed-set mapping as ingestion', (
     // the backfill never emits legacy-browser and labels those rows http-client.
     READER_KINDS.filter(kind => kind !== 'legacy-browser'),
   );
+});
+
+test('referrer context keeps internal paths only from the public route set', () => {
+  const paths = new Set(['/', '/article', '/other']);
+  const parse = value => parseReferrer(value, 'gkoreli.com', paths);
+  assert.deepEqual(parse(null), { referrerState: 'absent', referrerHost: null, internalReferrerPath: null });
+  assert.equal(parse('').referrerState, 'absent');
+  for (const value of ['not a URL', 'about:blank', 'file:///private/document']) {
+    assert.equal(parse(value).referrerState, 'unusable');
+  }
+  assert.deepEqual(parse('https://www.gkoreli.com/article/?email=private@example.test#secret'), {
+    referrerState: 'internal', referrerHost: null, internalReferrerPath: '/article',
+  });
+  for (const value of ['https://gkoreli.com/api/confirm/private-token', 'https://gkoreli.com/unpublished-secret', 'https://gkoreli.com/article/private']) {
+    assert.deepEqual(parse(value), { referrerState: 'internal', referrerHost: null, internalReferrerPath: null });
+  }
+  assert.deepEqual(parse('https://news.ycombinator.com/item?id=123'), {
+    referrerState: 'external', referrerHost: 'news.ycombinator.com', internalReferrerPath: null,
+  });
+  assert.equal(parse('android-app://com.example.reader').referrerState, 'external');
+});
+
+test('ingestion persists the internal category and public path without query or fragment', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  const work = [];
+  observePageResponse(request('/other', { headers: { Referer: 'https://gkoreli.com/article?secret=discard#fragment' } }), html,
+    'html', { DB: d1, ANALYTICS_HASH_KEY: 'test-key' }, { waitUntil: promise => work.push(promise) },
+    { publicPagePaths: async () => new Set(['/article', '/other']) });
+  await Promise.all(work);
+  const row = sqlite.prepare('SELECT referrer_state, referrer_host, internal_referrer_path FROM page_observations').get();
+  assert.deepEqual({ ...row }, { referrer_state: 'internal', referrer_host: null, internal_referrer_path: '/article' });
+});
+
+test('page-focused transitions include both directions without changing page totals or inventing old routes', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  let id = 0;
+  const add = details => insertObservation(sqlite, {
+    path: '/article', trafficClass: 'browser', readerKind: 'browser', readerReason: 'navigation-shaped',
+    representation: 'html', observedAt: '2026-09-09 01:00:00',
+    dailyClientId: (++id).toString(16).padStart(32, '0'), ...details,
+  });
+  add({}); // Historical null: cannot be classified as an observed absence.
+  add({ referrerHost: 'news.ycombinator.com' }); // Historical external host survives.
+  add({ referrerState: 'absent' });
+  add({ referrerState: 'unusable' });
+  add({ referrerState: 'internal', internalReferrerPath: '/' });
+  add({ referrerState: 'internal', internalReferrerPath: '/article' });
+  add({ referrerState: 'internal' });
+  add({ path: '/next', referrerState: 'internal', internalReferrerPath: '/article' });
+  add({ path: '/next', referrerState: 'internal', internalReferrerPath: '/article' }); // Repeat requests count again.
+  add({ path: '/unrelated', referrerState: 'internal', internalReferrerPath: '/' });
+  add({ path: '/next', referrerState: 'internal', internalReferrerPath: '/article', isOwner: true });
+  add({ path: '/next', referrerState: 'internal', internalReferrerPath: '/article', readerKind: 'http-client' });
+  add({ path: '/next', referrerState: 'internal', internalReferrerPath: '/article', representation: 'markdown' });
+  add({ path: '/next', referrerState: 'internal', internalReferrerPath: '/article', observedAt: '2026-09-02 23:59:59' });
+  add({ referrerState: 'external', referrerHost: 'uniuit.com' });
+  const marked = (++id).toString(16).padStart(32, '0');
+  add({ path: '/next', referrerState: 'internal', internalReferrerPath: '/article', dailyClientId: marked });
+  sqlite.prepare("INSERT INTO owner_clients (daily_client_id, utc_date) VALUES (?, '2026-09-09')").run(marked);
+  const report = await queryStats(d1, { range: '7d', traffic: 'browser', path: '/article' }, new Date('2026-09-09T02:00:00Z'));
+  assert.equal(report.totals.views, 7);
+  assert.equal(report.referralPolicy.excludedViews, 1);
+  assert.deepEqual(report.internalTransitions, [
+    { fromPath: '/article', toPath: '/next', views: 2 },
+    { fromPath: '/', toPath: '/article', views: 1 },
+  ]);
+  assert.equal(report.byReferrerState.find(row => row.state === 'legacy-unknown').views, 1);
+  assert.equal(report.byReferrerState.find(row => row.state === 'external').views, 1);
+  assert.equal(report.byReferrerState.find(row => row.state === 'internal').views, 3);
+  assert.equal(report.byReferrerState.reduce((total, row) => total + row.views, 0), report.totals.views);
+  assert.equal(report.internalReferrerDetails.selfReferrals, 1);
+  assert.equal(report.internalReferrerDetails.unrecognizedPathViews, 1);
+  assert.equal(report.byPath.length, 1);
+  assert.equal(d1.batchSizes.at(-1), 1);
+});
+
+test('migration 0009 leaves old evidence unknown and rejects unsafe internal path shapes', () => {
+  const sqlite = new DatabaseSync(':memory:');
+  sqlite.exec("CREATE TABLE page_observations (referrer_host TEXT, is_owner INTEGER, observed_at TEXT); INSERT INTO page_observations VALUES (NULL, 0, '2026-09-07'), ('news.ycombinator.com', 0, '2026-09-07');");
+  sqlite.exec(readFileSync(new URL('../migrations/0009_referrer_context.sql', import.meta.url), 'utf8'));
+  assert.equal(sqlite.prepare('SELECT COUNT(*) AS count FROM page_observations WHERE referrer_state IS NULL').get().count, 2);
+  for (const path of ['/api?token=secret', '/article#secret', 'https://external.example']) {
+    assert.throws(() => sqlite.prepare("INSERT INTO page_observations (referrer_state, internal_referrer_path) VALUES ('internal', ?)").run(path));
+  }
+  assert.throws(() => sqlite.prepare("INSERT INTO page_observations (internal_referrer_path) VALUES ('/article')").run());
 });

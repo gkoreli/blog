@@ -1,5 +1,6 @@
 import { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
 import { normalizeReportedHost, type ReferralPolicy } from './referral-policy.js';
+import type { ReferrerState } from './contracts.js';
 
 export const REFERRAL_POLICY_VERSION = ACTIVE_REFERRAL_POLICY.version;
 
@@ -9,15 +10,36 @@ export function normalizeReferrerHost(host: string): string {
 }
 
 export function parseReferrerHost(raw: string | null, siteHostname: string): string | null {
-  if (raw === null) return null;
+  return parseReferrer(raw, siteHostname).referrerHost;
+}
+
+export interface ReferrerEvidence {
+  referrerState: ReferrerState;
+  referrerHost: string | null;
+  internalReferrerPath: string | null;
+}
+
+/** Preserve why a hostname is absent without storing arbitrary URLs or internal tokens. */
+export function parseReferrer(raw: string | null, siteHostname: string, publicPaths: ReadonlySet<string> = new Set()): ReferrerEvidence {
+  const empty = { referrerHost: null, internalReferrerPath: null };
+  if (raw === null || raw.trim().length === 0) return { ...empty, referrerState: 'absent' };
   try {
     const url = new URL(raw);
-    if (url.protocol !== 'http:' && url.protocol !== 'https:' && url.protocol !== 'android-app:') return null;
+    if (url.protocol !== 'http:' && url.protocol !== 'https:' && url.protocol !== 'android-app:') {
+      return { ...empty, referrerState: 'unusable' };
+    }
     const host = normalizeReportedHost(url.hostname);
-    if (host.length === 0 || host.length > 253 || normalizeReferrerHost(host) === normalizeReferrerHost(siteHostname)) return null;
-    return host;
+    if (host.length === 0 || host.length > 253) return { ...empty, referrerState: 'unusable' };
+    if (normalizeReferrerHost(host) === normalizeReferrerHost(siteHostname)) {
+      const path = url.pathname.replace(/\/+$/, '') || '/';
+      return {
+        ...empty, referrerState: 'internal',
+        internalReferrerPath: publicPaths.has(path) ? path : null,
+      };
+    }
+    return { ...empty, referrerState: 'external', referrerHost: host };
   } catch {
-    return null;
+    return { ...empty, referrerState: 'unusable' };
   }
 }
 

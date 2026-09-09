@@ -1,7 +1,7 @@
 import { ACTIVE_REFERRAL_POLICY, parseStatsQuery } from '@gkoreli/analytics';
 
 /** Bump when report semantics, storage binding, or public selection rules change. */
-export const STATS_REPORT_VERSION = '2026-09-07.1';
+export const STATS_REPORT_VERSION = '2026-09-09.1';
 export const STATS_EDGE_TTL_SECONDS = 3600;
 const MAX_PENDING_REPORTS = 8;
 

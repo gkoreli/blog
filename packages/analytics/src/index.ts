@@ -5,6 +5,7 @@ import { isEligiblePageResponse } from './eligibility.js';
 import { createDailyClientId } from './hash.js';
 import { extractRequestMetadata } from './metadata.js';
 import { classifyReaderKind } from './readerkind.js';
+import { parseReferrer } from './referrals.js';
 import { verifyWebBotAuth, type WebBotAuthResult } from './webbotauth.js';
 
 export type { Env } from './db.js';
@@ -29,13 +30,16 @@ async function persistObservation(
   representation: Representation,
   env: Env,
   observedAt: Date,
+  options: ObservationOptions,
 ): Promise<void> {
   const hashKey = env.ANALYTICS_HASH_KEY;
   if (typeof hashKey !== 'string' || hashKey.length === 0) {
     throw new Error('ANALYTICS_HASH_KEY must not be empty');
   }
 
-  const metadata = extractRequestMetadata(request, env.OWNER_IPS);
+  const internal = parseReferrer(request.headers.get('Referer'), new URL(request.url).hostname).referrerState === 'internal';
+  const publicPaths = internal && options.publicPagePaths ? await options.publicPagePaths() : undefined;
+  const metadata = extractRequestMetadata(request, env.OWNER_IPS, publicPaths);
   const classification = classifyTraffic(metadata.userAgent);
   const utcDate = observedAt.toISOString().slice(0, 10);
   const [dailyClientId, signature] = await Promise.all([
@@ -65,6 +69,8 @@ async function persistObservation(
   const observation: PageObservation = {
     path: metadata.path,
     referrerHost: metadata.referrerHost,
+    referrerState: metadata.referrerState,
+    internalReferrerPath: metadata.internalReferrerPath,
     country: metadata.country,
     dailyClientId,
     trafficClass: classification.trafficClass,
@@ -89,13 +95,18 @@ async function persistObservation(
   await recordPageObservation(env.DB, observation);
 }
 
+export interface ObservationOptions {
+  publicPagePaths?: () => Promise<ReadonlySet<string>>;
+}
+
 export function observePageResponse(
   request: Request,
   response: Response,
   representation: Representation,
   env: Env,
   ctx: ExecutionContext,
+  options: ObservationOptions = {},
 ): void {
   if (!isEligiblePageResponse(request, response, representation)) return;
-  ctx.waitUntil(persistObservation(request, representation, env, new Date()));
+  ctx.waitUntil(persistObservation(request, representation, env, new Date(), options));
 }

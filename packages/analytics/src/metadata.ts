@@ -1,10 +1,13 @@
 import { htmlAcceptance } from './accept.js';
-import { parseReferrerHost } from './referrals.js';
+import { parseReferrer } from './referrals.js';
+import type { ReferrerState } from './contracts.js';
 
 export interface RequestMetadata {
   path: string;
   siteHost: string;
   referrerHost: string | null;
+  referrerState: ReferrerState;
+  internalReferrerPath: string | null;
   ip: string;
   country: string | null;
   userAgent: string;
@@ -25,7 +28,7 @@ function boundedHeader(request: Request, name: string): string | null {
   return value === null ? null : value.trim().toLowerCase().slice(0, 32);
 }
 
-export function extractRequestMetadata(request: Request, ownerIps: string | undefined): RequestMetadata {
+export function extractRequestMetadata(request: Request, ownerIps: string | undefined, publicPaths?: ReadonlySet<string>): RequestMetadata {
   const url = new URL(request.url);
   const siteHost = url.host.toLowerCase();
   const ip = request.headers.get('CF-Connecting-IP')?.trim() ?? '';
@@ -42,7 +45,7 @@ export function extractRequestMetadata(request: Request, ownerIps: string | unde
   return {
     path: url.pathname,
     siteHost,
-    referrerHost: parseReferrerHost(request.headers.get('Referer'), url.hostname),
+    ...parseReferrer(request.headers.get('Referer'), url.hostname, publicPaths),
     ip,
     country: typeof country === 'string' && country.length > 0 ? country : null,
     userAgent: request.headers.get('User-Agent') ?? '',

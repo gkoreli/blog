@@ -1,6 +1,6 @@
 import uPlot from 'uplot';
 import 'uplot/dist/uPlot.min.css';
-import { READER_GROUPS, isReaderKind, readerGroupOf, type ReaderKind, type StatsResponse, type TrafficFilter } from '@gkoreli/analytics/contracts';
+import { READER_GROUPS, isReaderKind, readerGroupOf, type ReaderKind, type ReportedReferrerState, type StatsResponse, type TrafficFilter } from '@gkoreli/analytics/contracts';
 import { HOSTING_NETWORKS } from '@gkoreli/analytics/networks';
 import '../styles/stats.css';
 
@@ -170,6 +170,9 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   const data: StatsResponse = await response.json();
   // An old cached API response must not restore arbitrary hostname display.
   if (data.referralPolicy === undefined) throw new Error('Stats referral policy is unavailable');
+  if (data.byReferrerState === undefined || data.internalTransitions === undefined || data.internalReferrerDetails === undefined) {
+    throw new Error('Updated referral details are unavailable. Please reload.');
+  }
   return data;
 }
 
@@ -561,12 +564,35 @@ function renderComposition(data: StatsResponse, state: ViewState): void {
   }
 }
 
+function renderTransitions(data: StatsResponse, state: ViewState): void {
+  element('stats-transitions').hidden = state.path !== null;
+  element('stats-previous-pages').hidden = state.path === null;
+  element('stats-next-pages').hidden = state.path === null;
+  if (state.path === null) {
+    replaceSectionRows('stats-transitions', data.internalTransitions.map(row => ({
+      label: `${row.fromPath} → ${row.toPath}`, views: row.views,
+      href: stateHref({ ...state, path: row.fromPath }),
+    })));
+  } else {
+    replaceSectionRows('stats-previous-pages', data.internalTransitions.filter(row => row.toPath === state.path).map(row => ({
+      label: row.fromPath, views: row.views, href: stateHref({ ...state, path: row.fromPath }),
+    })));
+    replaceSectionRows('stats-next-pages', data.internalTransitions.filter(row => row.fromPath === state.path).map(row => ({
+      label: row.toPath, views: row.views, href: stateHref({ ...state, path: row.toPath }),
+    })));
+  }
+  const details = data.internalReferrerDetails;
+  element('stats-transition-details').textContent = details.firstCapturedAt === null
+    ? 'No detailed referrer records in this selection. Earlier internal page paths were not saved.'
+    : `Recorded page transitions, with repeated requests counted separately. ${formatNumber(details.selfReferrals)} same-page referrals are separate; ${formatNumber(details.unrecognizedPathViews)} internal referrals have no recognized source path. A missing next request does not establish that someone left.`;
+}
+
 function renderDashboard(data: StatsResponse, state: ViewState): void {
   const excluded = data.referralPolicy.excludedViews;
   const exclusionNotice = excluded > 0
     ? ` ${formatNumber(excluded)} ${excluded === 1 ? 'observation excluded' : 'observations excluded'} by the referral-abuse policy for this selection.`
     : '';
-  if (data.totals.views === 0) {
+  if (data.totals.views === 0 && data.internalTransitions.length === 0) {
     setDashboardVisible(false);
     setStatus(`No page views to show for this selection.${exclusionNotice}`, 'empty');
     return;
@@ -582,10 +608,15 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   if (data.otherReferrerViews > 0) {
     referrers.push({ label: 'Other reported referrers', views: data.otherReferrerViews });
   }
-  if (referrers.length > 0 || data.totals.unattributedViews > 0) {
-    referrers.push({ label: 'No referrer', views: data.totals.unattributedViews });
+  const referrerLabels: Record<ReportedReferrerState, string> = {
+    external: 'Outside websites', internal: 'Within this blog', absent: 'No referrer sent',
+    unusable: 'Unusable referrer', 'legacy-unknown': 'Unknown — earlier collection',
+  };
+  for (const row of data.byReferrerState) {
+    if (row.state !== 'external') referrers.push({ label: referrerLabels[row.state], views: row.views });
   }
   replaceSectionRows('stats-referrers', referrers, null);
+  renderTransitions(data, state);
   replaceSectionRows('stats-countries', data.byCountry.map(row => ({ label: countryLabel(row.country), views: row.views })));
   renderComposition(data, state);
 

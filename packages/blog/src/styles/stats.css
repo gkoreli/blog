@@ -119,3 +119,17 @@ a.stats-label { color: var(--color-link); }
   .stats-chart-data { display: block; }
   .stats-chart-data summary { display: none; }
 }
+/* Source and destination paths must remain readable on narrow displays. */
+#stats-transitions .stats-label,
+#stats-previous-pages .stats-label,
+#stats-next-pages .stats-label {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
+}
+
+.stats-transition-details {
+  grid-column: 1 / -1;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
