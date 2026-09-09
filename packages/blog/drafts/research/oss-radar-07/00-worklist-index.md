@@ -2,7 +2,7 @@
 
 Check date: September 8, 2026. Repository baseline: gkoreli/blog at `935abf29de1a755d2e278f90d4794c11d18a6a43`.
 
-**State:** Goga selected Promptfoo on September 8. Working title: **OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?** The first draft is started. Source research, the initial module probe, and an installed-package fixture comparison are complete. The paid pilot, trace/export join test, and organic-citation study remain unrun.
+**State:** Goga selected Promptfoo on September 8. Working title: **OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?** The working draft now includes a dated source appendix, a glossary, the tested capture-code excerpt, and a trigger/citation comparison table. Source research, the initial module probe, and an installed-package fixture comparison are complete. The paid pilot, trace/export join test, and organic-citation study remain unrun.
 
 Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original baseline above belongs to the four-option investigation.
 
@@ -23,7 +23,8 @@ Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original 
 | Define citation records and reporting units | Proposed; ready for pilot implementation | [Measurement contract](07-citation-measurement-contract.md) |
 | Run the bounded pilot | Open | [Experiment plan](03-experiment-plan.md) |
 | Start the OSS Radar #07 draft | Complete: first draft; review and further evidence open | [Draft](../../oss-radar-07-promptfoo.md) |
-| Verify and publish OSS Radar #07 | Open | Requires the project verdict and completed experiment artifacts |
+| Check publication style and reader-facing references | Complete for the manuscript: 32 source entries and 10 glossary terms | [Publication readiness](09-publication-readiness.md) |
+| Verify and publish OSS Radar #07 | Open: real-answer workload evidence and final publication pass | [Scoped readiness assessment](09-publication-readiness.md) |
 | Develop the engineering continuation | Open | Requires useful blog code and new operating evidence |
 
 Formal tracker: [FLDR-0011](../../../../../docs/folders/FLDR-0011-oss-radar-07-worklist.md). Execution task: [TASK-0134](../../../../../docs/tasks/TASK-0134-oss-radar-07-project-experiment-and-article.md).
@@ -40,7 +41,8 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 - [Promptfoo design and prior art](06-promptfoo-design-and-prior-art.md): product theory, source trace, novelty limits, and adoption decision.
 - [Citation measurement contract](07-citation-measurement-contract.md): proposed records, missing-data states, denominators, and the connection to the analytics thread.
 - [Promptfoo purpose and trajectory](08-promptfoo-purpose-and-trajectory.md): what the tools do, the maintainers' public purpose, recent releases, OpenAI affiliation, and the boundary between shipped features and the Frontier plan.
-- [OSS Radar #07 draft](../../oss-radar-07-promptfoo.md): working article; not published.
+- [Publication readiness](09-publication-readiness.md): comparison with published #05/#06, references/glossary corrections, supported scope, and concrete remaining publication work.
+- [OSS Radar #07 draft](../../oss-radar-07-promptfoo.md): working article with Sources & Evidence and a dated Glossary; not published.
 - [Repository baselines](baselines.json): pinned source revisions and read-only checks.
 - [Promptfoo fixture probe](repro/README.md): runnable module-level reproduction, original source snapshot with its MIT licence, synthetic response, and saved result.
 - [Installed Promptfoo probe](repro/installed/README.md): guarded local HTTP experiment, capture-provider prototype, exact dependency lock, full summaries, and cache evidence.
@@ -49,11 +51,15 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 
 [Exact shaping prompts](../../../prompts/oss-radar-07.prompts.md).
 
-The record contains seven complete prompts through the request to preserve all prompts and explain Promptfoo's purpose. The six existing entries remain unchanged; the latest request is appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
+The record contains eight complete prompts through the publication-readiness and references/glossary question. The seven existing entries remain unchanged; the latest request is appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
 
 The September 8 request explicitly asks for a prompts section for this issue. It overrides the usual OSS Radar exception that omits public prompts. This is an issue-specific decision; no shared skill or prior issue was changed. Keep the complete initial prompt intact. The second recorded answer delegated the experiment timebox decision.
 
 The provisional prompt filename is `oss-radar-07.prompts.md`. When the final article slug is chosen, move the file to that exact slug and verify the normal prompts page. There is no matching published post yet.
+
+## Publication boundary
+
+The installed fixture earns a narrow adapter review. The stronger workload review should add a real-answer capture, then use the established publication module and rendered checks. The entire repeated citation study is not a blanket requirement for publishing the scoped Radar result. See [the readiness assessment](09-publication-readiness.md); the broader analytics and engineering work remains open.
 
 ## Next bounded action
 

@@ -2,7 +2,7 @@
 id: FLDR-0011
 title: OSS Radar 07 Worklist
 created_at: '2026-09-08T19:21:39.000Z'
-updated_at: '2026-09-08T21:11:05.633Z'
+updated_at: '2026-09-08T21:59:19.313Z'
 type: folder
 ---
 
@@ -12,7 +12,7 @@ Research home: [OSS Radar #07](../../packages/blog/drafts/research/oss-radar-07/
 
 Goga selected Promptfoo: **Can Promptfoo Preserve the Evidence Behind an AI Answer?** Source/prior-art research, the initial module probe, an installed-package fixture comparison, and the first draft are complete. The [installed artifacts](../../packages/blog/drafts/research/oss-radar-07/repro/installed/README.md) show that the cache retains citation fields the built-in summary omits, while a custom provider preserves raw/metadata through programmatic JSON export. The paid pilot, trace/export joins, author review, and publication remain open.
 
-[Trigger provenance and AI citations](../../packages/blog/drafts/research/oss-radar-07/04-trigger-provenance-and-ai-citations.md) supplies the requested mental model and prior art. [Promptfoo design and citation-analytics prior art](../../packages/blog/drafts/research/oss-radar-07/06-promptfoo-design-and-prior-art.md) defines the workload and the novelty limit. The [first draft](../../packages/blog/drafts/oss-radar-07-promptfoo.md) incorporates the sourced trigger/citation passage.
+[Trigger provenance and AI citations](../../packages/blog/drafts/research/oss-radar-07/04-trigger-provenance-and-ai-citations.md) supplies the requested mental model and prior art. [Promptfoo design and citation-analytics prior art](../../packages/blog/drafts/research/oss-radar-07/06-promptfoo-design-and-prior-art.md) defines the workload and the novelty limit. The [working draft](../../packages/blog/drafts/oss-radar-07-promptfoo.md) incorporates the sourced trigger/citation passage, a dated Sources & Evidence appendix, and a glossary. The [publication-readiness assessment](../../packages/blog/drafts/research/oss-radar-07/09-publication-readiness.md) compares it with published Radar #05/#06 and separates the narrow adapter finding from the real-answer workload and later analytics study.
 
 Preserve the exact September 8 request in the issue's prompts record. That explicit request overrides the normal OSS Radar no-prompts exception for this issue. Keep the existing Trellner priority (TASK-0132), citation design decision (TASK-0106), and newsletter reliability tasks distinct.
 

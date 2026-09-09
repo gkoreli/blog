@@ -24,3 +24,7 @@ lets do this: **OSS Radar:** *Can Promptfoo Preserve the Evidence Behind an AI A
 ---
 
 capture all the prompts that i gave you in the prompts md file verbatim so far. Also we need a dedicated section about what is Promptfoo and their latest trajectory that they are on, like what they are building and what vision/purpose have out there in the open source world
+
+---
+
+are we close to publish this article? where are the references or glossary table? Did you see how we write OSS radar publication articles?
