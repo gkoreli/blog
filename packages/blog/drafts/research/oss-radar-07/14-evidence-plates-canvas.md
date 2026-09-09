@@ -1,5 +1,7 @@
 # Evidence plates: the #07 background
 
+**First design, preserved as history.** This describes the scene at `d68ae35`. The author's phone and motion feedback led to the [depth and motion revision](15-mobile-depth-and-motion-review.md); consult that record for the current design and acceptance.
+
 Prepared September 9 UTC / September 8 PDT, 2026. Goga requested a delegated, entirely new canvas concept; his exact request is prompt eleven. The subagent `radar07_canvas` designed and implemented the scene. The parent task selected it for the candidate and reviewed the render.
 
 ## Concept

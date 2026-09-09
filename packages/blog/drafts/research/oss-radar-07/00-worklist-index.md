@@ -2,7 +2,7 @@
 
 Check date: September 8, 2026. Repository baseline: gkoreli/blog at `935abf29de1a755d2e278f90d4794c11d18a6a43`.
 
-**State:** The unpublished publication candidate now includes an immersive hero, response-flow diagram, 37 dated sources with reasons, a ten-term glossary, and eleven exact shaping prompts. The new capture continuation passed ten controlled cases, eleven attempts, both JSON exporters, database reopening, and one explicit local trace join. Type checks, the isolated production build, Markdown representation, and desktop/mobile review passed. One real answer capture and source-support review remain before the selected workload verdict is ready. See [current candidate review](11-publication-candidate-review.md) and [frozen preflight](12-directed-answer-preflight.md).
+**State:** The unpublished publication candidate now includes an immersive hero, response-flow diagram, 37 dated sources with reasons, a ten-term glossary, and twelve exact shaping prompts. The new capture continuation passed ten controlled cases, eleven attempts, both JSON exporters, database reopening, and one explicit local trace join. Type checks, the isolated production build, Markdown representation, and desktop/mobile review passed. One real answer capture and source-support review remain before the selected workload verdict is ready. See [current candidate review](11-publication-candidate-review.md) and [frozen preflight](12-directed-answer-preflight.md).
 
 Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original baseline above belongs to the four-option investigation.
 
@@ -24,7 +24,7 @@ Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original 
 | Run the bounded pilot | Open; one-answer preflight first | [Experiment plan](03-experiment-plan.md) |
 | Build the OSS Radar #07 publication candidate | Complete; kept outside `posts/` | [Publication module](../../oss-radar-07-promptfoo.ts), [manuscript](../../oss-radar-07-promptfoo.md) |
 | Check publication style, references, and render | Complete: 37 sources, 10 glossary terms, desktop/mobile and Markdown checks | [Candidate review](11-publication-candidate-review.md) |
-| Design the dedicated background animation | Complete: delegated evidence-plates concept, implemented and reviewed in both themes | [Canvas record](14-evidence-plates-canvas.md) |
+| Design the dedicated background animation | Complete: projected stacks, six-second motion, and a separate phone composition | [Current revision](15-mobile-depth-and-motion-review.md), [first design](14-evidence-plates-canvas.md) |
 | Exercise capture failures, persistence, and tracing | Complete: 10 synthetic cases, 11 HTTP attempts, explicit local join | [Method and accepted exports](repro/capture/README.md) |
 | Verify and publish OSS Radar #07 | Open: real-answer/source review, author review, and actual release | [Frozen live preflight](12-directed-answer-preflight.md) |
 | Develop the engineering continuation | Open | Requires useful blog code and new operating evidence |
@@ -48,7 +48,8 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 - [Current candidate review](11-publication-candidate-review.md): selected discovery package, promise ledger, rendered checks, and release handoff.
 - [Frozen directed preflight](12-directed-answer-preflight.md): unchanged question/rubric, preferred web capture, optional API route, and decision rule.
 - [Provider-choice correction](13-provider-choice-and-web-capture.md): no required provider or API purchase; distinguishes web-answer import from live API-field preservation.
-- [Evidence-plates canvas](14-evidence-plates-canvas.md): delegated concept, implementation, responsive review, and reduced-motion behavior.
+- [Evidence-plates canvas](14-evidence-plates-canvas.md): first delegated design and technical checks, preserved as history.
+- [Mobile depth and motion](15-mobile-depth-and-motion-review.md): author feedback, projected stacks, faster movement, and revised phone composition with rendered checks.
 - [OSS Radar #07 draft](../../oss-radar-07-promptfoo.md): working article with Sources & Evidence and a dated Glossary; not published.
 - [Repository baselines](baselines.json): pinned source revisions and read-only checks.
 - [Promptfoo fixture probe](repro/README.md): runnable module-level reproduction, original source snapshot with its MIT licence, synthetic response, and saved result.
@@ -59,7 +60,7 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 
 [Exact shaping prompts](../../../prompts/oss-radar-07-promptfoo.prompts.md).
 
-The record contains eleven complete prompts through the delegated canvas concept request. The original ten entries remain unchanged; the latest request is appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
+The record contains twelve complete prompts through the phone composition and animation feedback. The original eleven entries remain unchanged; the latest request is appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
 
 The September 8 request explicitly asks for a prompts section for this issue. It overrides the usual OSS Radar exception that omits public prompts. This is an issue-specific decision; no shared skill or prior issue was changed. Keep the complete initial prompt intact. The second recorded answer delegated the experiment timebox decision.
 

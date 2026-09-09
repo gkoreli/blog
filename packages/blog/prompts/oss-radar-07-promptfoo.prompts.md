@@ -40,3 +40,7 @@ can we use Perplexity without api account? I have free pro membership with them 
 ---
 
 delegate to subagent, create on a novel entirely new concept for the canvas graphics animation in the background
+
+---
+
+on the phone scale it doesn't look great and also i think animation can be richer or more like 3d, and a bit faster or snappy or responsive, it is too slow to conceive as an animation

@@ -1,34 +1,30 @@
 /**
- * Evidence plates — translucent records separate and return to registration.
- * Each plate retains the same seeded source-mark pattern. A broad answer rule
- * stays quiet in the middle; the evidence is readable around the outer edges.
- *
- * Geometry is a function of time, dimensions, and seed, so seeking or resizing
- * cannot change a record's marks. The shared runner owns visibility and timing.
+ * Evidence stacks — projected records open in depth, then settle into alignment.
+ * Every face retains the same seeded source signature. Phones get two compact
+ * stacks above and below the title; wide layouts place them on opposite flanks.
+ * All geometry is derived from seed, size, and time, including the spring settle.
  */
 import type { AnimationModule, AnimationPoint } from './pipeline.js';
 
-interface EvidenceOptions {
-  seed?: number;
+interface EvidenceOptions { seed?: number; }
+interface Point3D { x: number; y: number; z: number; }
+interface ProjectedPoint extends AnimationPoint { depth: number; }
+interface SourceMark { width: number; height: number; inset: number; }
+interface CardPose {
+  origin: AnimationPoint;
+  x: number; y: number; z: number;
+  sinX: number; cosX: number;
+  sinY: number; cosY: number;
+  sinZ: number; cosZ: number;
+  focal: number;
 }
 
-interface SourceMark {
-  width: number;
-  height: number;
-  inset: number;
-}
+const CYCLE_FRAMES = 360;
+const LAYERS = [-1, 0, 1];
 
-interface Plate {
-  depth: number;
-  tilt: number;
+function cyclePhase(t: number): number {
+  return ((t % CYCLE_FRAMES) + CYCLE_FRAMES) % CYCLE_FRAMES / CYCLE_FRAMES;
 }
-
-const CYCLE_FRAMES = 1080;
-const PLATES: readonly Plate[] = [
-  { depth: -1, tilt: -0.014 },
-  { depth: 0, tilt: 0.005 },
-  { depth: 1, tilt: 0.016 },
-];
 
 function seededRandom(seed: number): () => number {
   let state = Math.trunc(seed) >>> 0;
@@ -46,6 +42,7 @@ function getTheme() {
   const read = (name: string, fallback: string) => styles.getPropertyValue(name).trim() || fallback;
   return {
     bg: read('--color-bg', '#faf8f5'),
+    face: read('--color-surface', '#f0ece6'),
     ink: read('--color-text-muted', '#7a7568'),
     source: read('--color-link', '#1a6b4e'),
     answer: read('--color-accent-warm', '#a88a2a'),
@@ -58,173 +55,219 @@ function ease(value: number): number {
   return clamped * clamped * (3 - 2 * clamped);
 }
 
-/** Hold, separate, inspect, register, hold — one unbroken 18-second cycle. */
-function separation(t: number): number {
-  const phase = ((t / CYCLE_FRAMES) % 1 + 1) % 1;
-  const opening = ease((phase - 0.08) / 0.3);
-  const closing = ease((phase - 0.56) / 0.32);
-  return 0.2 + 0.8 * opening * (1 - closing);
+/** Open over 3.4 seconds, then register with one short damped overshoot. */
+function spread(phase: number): number {
+  if (phase < 0.56) return Math.sin(phase / 0.56 * Math.PI / 2);
+  const closing = (phase - 0.56) / 0.44;
+  const spring = Math.exp(-5 * closing) * (Math.cos(9 * closing) + 5 / 9 * Math.sin(9 * closing));
+  return spring * (1 - ease((closing - 0.7) / 0.3));
 }
 
-function plateOutline(ctx: CanvasRenderingContext2D, width: number, height: number): void {
-  const fold = Math.min(23, width * 0.07);
+function project(point: Point3D, pose: CardPose): ProjectedPoint {
+  const x = point.x + pose.x;
+  const y = point.y + pose.y;
+  const z = point.z + pose.z;
+  const tiltedY = y * pose.cosX - z * pose.sinX;
+  const tiltedZ = y * pose.sinX + z * pose.cosX;
+  const turnedX = x * pose.cosY + tiltedZ * pose.sinY;
+  const turnedZ = -x * pose.sinY + tiltedZ * pose.cosY;
+  const scale = pose.focal / (pose.focal - turnedZ);
+  return {
+    x: pose.origin.x + (turnedX * pose.cosZ - tiltedY * pose.sinZ) * scale,
+    y: pose.origin.y + (turnedX * pose.sinZ + tiltedY * pose.cosZ) * scale,
+    depth: turnedZ,
+  };
+}
+
+function polygon(ctx: CanvasRenderingContext2D, points: readonly AnimationPoint[]): void {
   ctx.beginPath();
-  ctx.moveTo(0, 0);
-  ctx.lineTo(width - fold, 0);
-  ctx.lineTo(width, fold);
-  ctx.lineTo(width, height);
-  ctx.lineTo(0, height);
+  points.forEach((point, index) => {
+    if (index === 0) ctx.moveTo(point.x, point.y);
+    else ctx.lineTo(point.x, point.y);
+  });
   ctx.closePath();
 }
 
-function registrationMark(ctx: CanvasRenderingContext2D, x: number, y: number): void {
-  ctx.moveTo(x - 5, y);
-  ctx.lineTo(x + 5, y);
-  ctx.moveTo(x, y - 5);
-  ctx.lineTo(x, y + 5);
+function surfaceRect(ctx: CanvasRenderingContext2D, pose: CardPose, x: number, y: number, w: number, h: number): void {
+  polygon(ctx, [
+    project({ x, y, z: 0 }, pose),
+    project({ x: x + w, y, z: 0 }, pose),
+    project({ x: x + w, y: y + h, z: 0 }, pose),
+    project({ x, y: y + h, z: 0 }, pose),
+  ]);
 }
 
 export function evidence(options: EvidenceOptions = {}): AnimationModule {
   const random = seededRandom(options.seed ?? 7);
   const sourceMarks: SourceMark[] = Array.from({ length: 9 }, () => ({
     width: 2 + Math.floor(random() * 3),
-    height: 5 + Math.floor(random() * 4) * 3,
+    height: 8 + Math.floor(random() * 4) * 3,
     inset: Math.floor(random() * 2) * 3,
   }));
-  const answerLengths = [0.58, 0.79, 0.45].map(length => length + random() * 0.05);
+  const answerLengths = [0.68, 0.83, 0.52].map(length => length + random() * 0.05);
   let theme = getTheme();
-  let plateWidth = 0;
-  let plateHeight = 0;
-  let spreadX = 0;
-  let spreadY = 0;
-  let sourceSpacing = 0;
+  let narrow = false;
+  let cardWidth = 0;
+  let cardHeight = 0;
+  let focal = 0;
+  let corners: Point3D[] = [];
 
   const themeObserver = new MutationObserver(() => { theme = getTheme(); });
   themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
-  function drawSourceMarks(ctx: CanvasRenderingContext2D, x: number, y: number, reflected: boolean): void {
+  function drawCard(ctx: CanvasRenderingContext2D, pose: CardPose, front: boolean): void {
+    const face = corners.map(point => project(point, pose));
+    const back = corners.map(point => project({ ...point, z: -3.5 }, pose));
+
+    // A bounded shadow and projected side faces establish depth. Drawing cards
+    // from far to near lets the foreground records occlude those behind them.
     ctx.save();
-    ctx.translate(x, y);
-    if (reflected) ctx.rotate(Math.PI);
-    ctx.beginPath();
-    ctx.moveTo(-8, -5);
-    ctx.lineTo(-8, 21);
-    ctx.lineTo(-3, 21);
-    ctx.moveTo(sourceSpacing * sourceMarks.length + 2, -5);
-    ctx.lineTo(sourceSpacing * sourceMarks.length + 2, 21);
-    ctx.lineTo(sourceSpacing * sourceMarks.length - 3, 21);
-    ctx.stroke();
-    sourceMarks.forEach((mark, index) => {
-      ctx.fillRect(index * sourceSpacing, mark.inset, mark.width, mark.height);
-    });
+    ctx.translate(3, 8);
+    polygon(ctx, back);
+    ctx.fillStyle = theme.ink;
+    ctx.globalAlpha = theme.dark ? 0.13 : 0.085;
+    ctx.shadowColor = theme.ink;
+    ctx.shadowBlur = 11;
+    ctx.fill();
     ctx.restore();
+
+    ctx.fillStyle = theme.ink;
+    ctx.globalAlpha = theme.dark ? 0.34 : 0.23;
+    face.forEach((point, index) => {
+      const next = (index + 1) % face.length;
+      const nextFace = face[next];
+      const nextBack = back[next];
+      const backPoint = back[index];
+      if (!nextFace || !nextBack || !backPoint) return;
+      polygon(ctx, [point, nextFace, nextBack, backPoint]);
+      ctx.fill();
+    });
+
+    polygon(ctx, face);
+    ctx.globalAlpha = 0.97;
+    ctx.fillStyle = theme.face;
+    ctx.fill();
+    ctx.globalAlpha = front ? 0.54 : 0.32;
+    ctx.strokeStyle = theme.source;
+    ctx.lineWidth = front ? 1.1 : 0.8;
+    ctx.stroke();
+
+    const upperLeft = face[0];
+    const lowerRight = face[3];
+    if (upperLeft && lowerRight) {
+      const wash = ctx.createLinearGradient(upperLeft.x, upperLeft.y, lowerRight.x, lowerRight.y);
+      wash.addColorStop(0, theme.source);
+      wash.addColorStop(0.55, theme.bg);
+      wash.addColorStop(1, theme.answer);
+      ctx.fillStyle = wash;
+      ctx.globalAlpha = theme.dark ? 0.09 : 0.055;
+      ctx.fill();
+    }
+
+    const topStart = face[0];
+    const topEnd = face[1];
+    if (topStart && topEnd) {
+      ctx.beginPath();
+      ctx.moveTo(topStart.x, topStart.y);
+      ctx.lineTo(topEnd.x, topEnd.y);
+      ctx.strokeStyle = theme.source;
+      ctx.globalAlpha = theme.dark ? 0.7 : 0.48;
+      ctx.lineWidth = 1.25;
+      ctx.stroke();
+    }
+
+    const inset = narrow ? 17 : 23;
+    const left = -cardWidth / 2 + inset;
+    const top = -cardHeight / 2 + inset;
+    const spacing = narrow ? 7 : 8;
+    ctx.fillStyle = theme.source;
+    ctx.globalAlpha = front ? 0.77 : 0.57;
+    for (const reflected of [false, true]) {
+      sourceMarks.forEach((mark, index) => {
+        const x = left + index * spacing;
+        const y = top + mark.inset;
+        surfaceRect(ctx, pose,
+          reflected ? -x - mark.width : x,
+          reflected ? -y - mark.height : y,
+          mark.width, mark.height);
+        ctx.fill();
+      });
+    }
+
+    // The answer and its retained-field row are projected on the same face.
+    ctx.fillStyle = theme.answer;
+    ctx.globalAlpha = front ? 0.4 : 0.25;
+    answerLengths.forEach((length, row) => {
+      surfaceRect(ctx, pose, left, -7 + row * 9, (cardWidth - inset * 2) * length, row === 0 ? 2 : 1.3);
+      ctx.fill();
+    });
+    ctx.fillStyle = theme.ink;
+    ctx.globalAlpha = 0.25;
+    for (let index = 0; index < 3; index++) {
+      surfaceRect(ctx, pose, left + index * 14, cardHeight / 2 - inset - 9, 8, 1.5);
+      ctx.fill();
+    }
   }
 
   return {
-    resize(w, h) {
-      // On phones the top-left and bottom-right records extend out of frame;
-      // their identifying marks remain inside the narrow visible corners.
-      const narrow = w < 620;
-      plateWidth = w * (narrow ? 0.89 : 0.82);
-      plateHeight = h * (narrow ? 0.77 : 0.72);
-      spreadX = Math.min(58, w * (narrow ? 0.058 : 0.046));
-      spreadY = Math.min(61, h * 0.07);
-      sourceSpacing = narrow ? 6 : 8;
+    resize(w) {
+      narrow = w < 620;
+      cardWidth = narrow ? Math.min(290, w * 0.67) : Math.min(380, w * 0.32);
+      cardHeight = cardWidth * (narrow ? 0.57 : 0.61);
+      focal = Math.max(620, w * 0.8);
+      const halfW = cardWidth / 2;
+      const halfH = cardHeight / 2;
+      const cut = narrow ? 10 : 14;
+      corners = [
+        { x: -halfW, y: -halfH, z: 0 },
+        { x: halfW - cut, y: -halfH, z: 0 },
+        { x: halfW, y: -halfH + cut, z: 0 },
+        { x: halfW, y: halfH, z: 0 },
+        { x: -halfW, y: halfH, z: 0 },
+      ];
       theme = getTheme();
     },
 
     tick(t, w, h): AnimationPoint[] {
-      const amount = separation(t);
-      return PLATES.map(plate => ({
-        x: w / 2 + plate.depth * spreadX * amount,
-        y: h / 2 + plate.depth * spreadY * amount,
-      }));
+      const wave = cyclePhase(t) * Math.PI * 2;
+      return [
+        {
+          x: w * (narrow ? 0.32 : 0.14) + Math.sin(wave) * (narrow ? 4 : 9),
+          y: h * (narrow ? 0.12 : 0.28) + Math.cos(wave) * 5,
+        },
+        {
+          x: w * (narrow ? 0.7 : 0.86) - Math.sin(wave) * (narrow ? 4 : 9),
+          y: h * (narrow ? 0.88 : 0.73) - Math.cos(wave) * 5,
+        },
+      ];
     },
 
     draw(ctx, points, t, w, h) {
       ctx.clearRect(0, 0, w, h);
-      const amount = separation(t);
-      const registered = 1 - (amount - 0.2) / 0.8;
-      const left = (w - plateWidth) / 2;
-      const top = (h - plateHeight) / 2;
+      const cycle = cyclePhase(t);
+      const wave = cycle * Math.PI * 2;
+      points.forEach((origin, stackIndex) => {
+        const direction = stackIndex === 0 ? 1 : -1;
+        const phase = (cycle + 0.12 + stackIndex * 0.08) % 1;
+        const amount = spread(phase);
+        const tiltX = direction * (0.5 + Math.sin(wave + stackIndex) * 0.14);
+        const tiltY = direction * (-0.35 + Math.cos(wave) * 0.17);
+        const tiltZ = direction * (-0.14 + Math.sin(wave) * 0.055);
+        const poses = LAYERS.map(layer => {
+          const pose: CardPose = {
+            origin,
+            x: direction * layer * (10 + amount * (narrow ? 14 : 23)),
+            y: -direction * layer * (5 + amount * 13),
+            z: layer * (15 + amount * (narrow ? 43 : 58)),
+            sinX: Math.sin(tiltX), cosX: Math.cos(tiltX),
+            sinY: Math.sin(tiltY), cosY: Math.cos(tiltY),
+            sinZ: Math.sin(tiltZ), cosZ: Math.cos(tiltZ),
+            focal,
+          };
+          return { pose, depth: project({ x: 0, y: 0, z: 0 }, pose).depth };
+        }).sort((a, b) => a.depth - b.depth);
 
-      // Fixed printer's registration crosses make the alignment legible.
-      ctx.strokeStyle = theme.ink;
-      ctx.globalAlpha = theme.dark ? 0.22 : 0.2;
-      ctx.lineWidth = 0.75;
-      ctx.beginPath();
-      registrationMark(ctx, left - 13, top - 13);
-      registrationMark(ctx, left + plateWidth + 13, top - 13);
-      registrationMark(ctx, left - 13, top + plateHeight + 13);
-      registrationMark(ctx, left + plateWidth + 13, top + plateHeight + 13);
-      ctx.stroke();
-
-      PLATES.forEach((plate, index) => {
-        const point = points[index];
-        if (!point) return;
-        const front = index === PLATES.length - 1;
-        ctx.save();
-        ctx.translate(point.x, point.y);
-        ctx.rotate(plate.tilt * amount);
-        ctx.translate(-plateWidth / 2, -plateHeight / 2);
-
-        // Transparent fills prevent the rear sheets from becoming a busy grid.
-        plateOutline(ctx, plateWidth, plateHeight);
-        ctx.globalAlpha = front ? 0.16 : 0.1;
-        ctx.fillStyle = theme.bg;
-        ctx.fill();
-        ctx.globalAlpha = (theme.dark ? 0.2 : 0.17) + index * 0.035;
-        ctx.strokeStyle = front ? theme.source : theme.ink;
-        ctx.lineWidth = front ? 1 : 0.8;
-        ctx.stroke();
-
-        // Folded corner and inner margin give the layers a document silhouette.
-        const fold = Math.min(23, plateWidth * 0.07);
-        ctx.beginPath();
-        ctx.moveTo(plateWidth - fold, 0);
-        ctx.lineTo(plateWidth - fold, fold);
-        ctx.lineTo(plateWidth, fold);
-        ctx.moveTo(15, 63);
-        ctx.lineTo(15, plateHeight - 64);
-        ctx.moveTo(plateWidth - 15, 64);
-        ctx.lineTo(plateWidth - 15, plateHeight - 63);
-        ctx.stroke();
-
-        // Exactly the same marks remain on every layer, on both exposed corners.
-        ctx.globalAlpha = (theme.dark ? 0.38 : 0.34) + registered * 0.13;
-        ctx.strokeStyle = theme.source;
-        ctx.fillStyle = theme.source;
-        ctx.lineWidth = 0.7;
-        drawSourceMarks(ctx, 23, 23, false);
-        drawSourceMarks(ctx, plateWidth - 23, plateHeight - 23, true);
-
-        // Short margin rules suggest retained fields without imitating UI text.
-        ctx.strokeStyle = theme.ink;
-        ctx.globalAlpha = theme.dark ? 0.17 : 0.15;
-        ctx.lineWidth = 0.65;
-        ctx.beginPath();
-        for (let row = 0; row < 4; row++) {
-          const ruleY = 83 + row * 11;
-          const ruleWidth = 19 + (row % 3) * 7;
-          ctx.moveTo(23, ruleY);
-          ctx.lineTo(23 + ruleWidth, ruleY);
-          ctx.moveTo(plateWidth - 23, plateHeight - ruleY);
-          ctx.lineTo(plateWidth - 23 - ruleWidth, plateHeight - ruleY);
-        }
-        ctx.stroke();
-
-        // The answer occupies a much quieter center than its surrounding record.
-        ctx.strokeStyle = theme.answer;
-        ctx.globalAlpha = theme.dark ? 0.09 : 0.075;
-        ctx.lineWidth = 1.2;
-        ctx.beginPath();
-        answerLengths.forEach((length, row) => {
-          const ruleY = plateHeight * 0.48 + row * 12;
-          ctx.moveTo(plateWidth * 0.14, ruleY);
-          ctx.lineTo(plateWidth * (0.14 + length * 0.72), ruleY);
-        });
-        ctx.stroke();
-        ctx.restore();
+        poses.forEach(({ pose }, index) => drawCard(ctx, pose, index === poses.length - 1));
       });
       ctx.globalAlpha = 1;
     },

@@ -17,7 +17,7 @@ export function OssRadarHero({ issueNum, date, tags, title, subtitle, author, re
     ? html`<nisli-neural-canvas mode="${canvasMode}"></nisli-neural-canvas>`
     : html`<nisli-neural-canvas mode="${canvasMode}" data-seed="${canvasSeed}"></nisli-neural-canvas>`;
 
-  return html`<div class="topo-hero topo-hero--long-title">
+  return html`<div class="topo-hero topo-hero--long-title" data-canvas-mode="${canvasMode}">
     ${canvas}
     <div class="radar-pills">
       <span class="radar-pill radar-pill--accent">${issueNum}</span>

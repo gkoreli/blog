@@ -20,7 +20,7 @@ import type { ForcePointData }                                 from '../animatio
  * flow      — neural network flow animation
  * split     — flow network with a few twin links that diverge under the pulse
  * threshold — neural network threshold animation
- * evidence  — transparent evidence plates separating and returning to registration
+ * evidence  — projected evidence stacks opening in depth and settling into alignment
  *
  * Optional capture controls:
  * data-seed — seed the chosen scene's placement and identifying marks
@@ -69,7 +69,7 @@ component('nisli-neural-canvas', (_props, host) => {
     }
 
     if (mode === 'evidence') {
-      const evidenceRunnerOptions = captureTime === undefined && reducedMotion ? { seekTimeMs: 8100 } : runnerOptions;
+      const evidenceRunnerOptions = captureTime === undefined && reducedMotion ? { seekTimeMs: 1800 } : runnerOptions;
       return animate(evidence(neuralOptions))
         .start(canvas, host, evidenceRunnerOptions);
     }
