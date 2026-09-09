@@ -1,10 +1,10 @@
 # OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?
 
-Promptfoo can preserve the records needed to inspect an AI answer if we capture them explicitly. In our September 8 check of the installed 0.122.2 package, the built-in OpenRouter evaluation summary omitted the synthetic response's citation fields. Its transport cache retained them, and a custom provider preserved them in the exported summary. Try the runner with a capture provider for this workload. The useful finding is where evidence survives; the experiment has not yet tested a real AI answer. [Method and results](https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/README.md).
+Promptfoo's evaluation runner can keep citation evidence through its database and JSON exports, provided we capture it explicitly. In our September 8 checks of version 0.122.2, the built-in OpenRouter summary omitted the fixture's structured citation fields; the transport cache retained them. A custom provider also preserved successful and failed attempt records after a database restart. This makes Promptfoo worth trying for citation evaluation, with a tested capture layer. All responses in these checks were synthetic. [Original comparison](https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/README.md); [failure and export checks](https://github.com/gkoreli/blog/blob/5fc2dc5dc40ad2397a78325e3a192485b44e8cb5/packages/blog/drafts/research/oss-radar-07/repro/capture/README.md).
 
-- The answer text survived in every tested path. The structured citation fields survived in the custom provider's summary and the built-in transport cache.
-- Promptfoo's response interface already has room for raw data and metadata. Our fixture needed no framework fork.
-- Citation capture gives analytics something to count and evaluation something to inspect. It cannot reconstruct an unseen human action or establish why a model relied on a source.
+- **The adapter decides what reaches the evaluator.** Answer text survived all three original paths; structured citations survived the cache and custom capture.
+- **The repair survives more than a successful response.** Ten controlled cases retained every attempt through the library exporter and a fresh CLI process. One local trace also kept the explicit link to its saved attempt.
+- **Preservation is the first step in citation evaluation.** Counting an answer's references, checking their support, and explaining what triggered a run need different records.
 
 ## What Promptfoo is building
 
@@ -28,7 +28,7 @@ The distinction matters for adoption. The MIT runner gives us inspectable code a
 
 ## Citation analytics needs the answer
 
-Our blog analytics can record requests that reach the site. A citation exists in an answer somewhere else. Bringing those observations together starts with preserving what each system can see.
+Our [blog analytics](/first-party-analytics-for-a-personal-blog) can record requests that reach the site. A citation exists in an answer somewhere else. Bringing those observations together starts with preserving what each system can see.
 
 AI citations are a topic; counting them is analytics, and checking whether their sources support an answer is evaluation. There is already publisher-facing prior art. Microsoft's [AI Performance preview](https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview), announced February 10, reports citation activity across its supported AI surfaces and selected partners. Its coverage is defined by that product. It does not audit every cited claim.
 
@@ -38,7 +38,7 @@ The opportunity for this blog is to publish inspectable cases: the question, cap
 
 Promptfoo's [custom-provider interface](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/site/docs/providers/custom-api.md) lets an operator bring an application into the runner. For this study, that division is useful: reuse the evaluation machinery and retain provider-specific evidence explicitly.
 
-The implementation detail matters for anyone choosing an adapter. The pinned [OpenRouter provider](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/providers/openrouter.ts) sends the request through a cache-aware transport, then builds a smaller response from answer text, usage, and completion information. It does not copy the fixture's citation list or answer annotations into that response. The evaluator receives the smaller object.
+The adapter and experiment sections are for engineers choosing or implementing this path. The pinned [OpenRouter provider](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/providers/openrouter.ts) sends the request through a cache-aware transport, then builds a smaller response from answer text, usage, and completion information. It does not copy the fixture's citation list or answer annotations into that response. The evaluator receives the smaller object.
 
 The shared [response contract](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/contracts/providers.ts) allows both `raw` and arbitrary metadata. This changes the adoption question. We need to test the chosen adapter and export path, rather than assume either that the whole framework preserves everything or that it cannot preserve the evidence at all.
 
@@ -54,7 +54,7 @@ We ran the built-in provider against a local HTTP server, repeated the evaluatio
 | Built-in provider, cached summary | 0 | Preserved | 0 | 0 |
 | Custom capture provider, fresh summary | 1 | Preserved | 1 | 1 |
 
-The [built-in transport cache](https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/recorded/transport-cache-entry.json) retained the full parsed fixture, including both citation fields. The [custom summary](https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/recorded/custom-capture.json) retained the exact raw response text, its hash, the mock request ID, and the structured fields. Those are two positive findings. The result is narrower than saying Promptfoo discarded the evidence everywhere.
+The [built-in transport cache](https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/recorded/transport-cache-entry.json) retained the full parsed fixture, including both citation fields. The [custom summary](https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/recorded/custom-capture.json) retained the exact decoded response text, its hash, the mock request ID, and the structured fields. The omission occurs between the adapter and the summary; the evidence remains available in the cache.
 
 The repair uses fields Promptfoo already accepts. This is the return object from the [tested capture provider](https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/probe-installed.ts), after reading the response text and parsing the fixture:
 
@@ -72,11 +72,27 @@ return {
 };
 ```
 
-This changes what the runner can retain without changing the answer assertion. The prototype handles the successful fixture only; its saved usage fields are invented inputs, not a billing record.
+This changes what the runner can retain without changing the answer assertion. That original prototype handles the successful fixture only; its saved usage fields are invented inputs, not a billing record.
 
-The fixture's repeated URL is one source, not two lost citations. Its annotation offsets are not validated, and the text assertion checks transport rather than truth. Tracing, database persistence, CLI export, streaming, failure handling, and live billing were outside this check. The [recorded result](https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/recorded/result.json) keeps those limits beside the measurements.
+The fixture's repeated URL is one source, not two lost citations. Its annotation offsets are not validated, and the text assertion checks transport rather than truth. Tracing, database persistence, CLI export, streaming, failure handling, and live billing were outside that original check. The next experiment covers several of those gaps. The [recorded result](https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/recorded/result.json) keeps those limits beside the measurements.
 
 For a real answer, missing citation fields would mean we could not assess citations through that field. They would not mean the model cited nothing. The controlled fixture lets us establish an omission because we know what entered the adapter.
+
+## What survived failures, a restart, and tracing
+
+The capture layer now preserves failed attempts as well as successful answers. We extended the experiment to ten controlled cases on a Mac, saved each response before parsing it, and checked the same records in the public summary, Promptfoo's JSON exporter, and a separate CLI process reopening the database. All ten retained the complete provider response used by our capture layer. [Method and recorded results](https://github.com/gkoreli/blog/blob/5fc2dc5dc40ad2397a78325e3a192485b44e8cb5/packages/blog/drafts/research/oss-radar-07/repro/capture/README.md).
+
+| Condition | Evaluations | HTTP attempts | What the exported record retains |
+|---|---:|---:|---|
+| Successful responses | 4 | 4 | The answer plus present, absent, empty, or null citation fields |
+| Five failure conditions | 5 | 5 | Malformed JSON, HTTP 429, an error envelope, no answer, and truncation |
+| HTTP 429 → success | 1 | 2 | Both attempts, their statuses, and the final answer |
+
+Those counts measure record retention. Five evaluations passed the text assertion; five deliberately failed. A successful export of an error is a useful result for this workload. It keeps a later analyst from quietly excluding a failed request or treating it as an answer with no citations. The [retry export](https://github.com/gkoreli/blog/blob/5fc2dc5dc40ad2397a78325e3a192485b44e8cb5/packages/blog/drafts/research/oss-radar-07/repro/capture/recorded/retry-cli-export.json) shows both attempts after restart.
+
+Local tracing also did useful work. The full-success case produced three spans: the test case, provider target, and assertion. Our capture saved the evaluation ID, test-case ID, and `traceparent` supplied by Promptfoo. They matched the [exported trace](https://github.com/gkoreli/blog/blob/5fc2dc5dc40ad2397a78325e3a192485b44e8cb5/packages/blog/drafts/research/oss-radar-07/repro/capture/recorded/full-cli-export.json), including the exact target span, through both exporters. That is an observed connection between records, rather than a guess from matching timestamps. The pinned [tracing implementation](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/tracing/evaluatorTracing.ts) explains how the runner supplies that context.
+
+A trace still describes only the participating system. We did not capture a remote provider's retrieval history, and the two retry attempts live in our metadata rather than separate spans. The fixture's reported cost remains invented. These checks establish local retention and joins; live response shape, source review, and billing remain untested.
 
 ## Who started the task, and what did the answer cite?
 
@@ -97,9 +113,9 @@ For controlled runs, we can preserve the submission or scheduler event and link 
 
 ## What still needs code
 
-The custom provider proves that evidence can cross this interface. A live study needs a capture contract that handles the cases our successful fixture did not exercise.
+The remaining work is in the live capture and source review. The local tests now cover response variants, failed attempts, a bounded retry, database export, and one trace join. They do not establish what a live service returns or what its citations support.
 
-That contract must preserve exact input and output records, separate provider source lists from answer citations, and retain missing fields, failed attempts, retries, cache state, and charge provenance. Source review then needs its own claim boundaries and support rubric. Earlier work such as [ALCE](https://aclanthology.org/2023.emnlp-main.398/) gives citation evaluation a research basis; a returned URL alone is not a support judgment.
+Our [capture provider](https://github.com/gkoreli/blog/blob/5fc2dc5dc40ad2397a78325e3a192485b44e8cb5/packages/blog/drafts/research/oss-radar-07/repro/capture/capture-provider.ts) saves request text and each decoded response before selecting fields. It records missing citation fields separately from empty lists and leaves charge unknown when the response does not expose it. Even a provider-reported charge needs reconciliation with its billing record. Source review needs its own claim boundaries and support rubric. Earlier work such as [ALCE](https://aclanthology.org/2023.emnlp-main.398/) gives citation evaluation a research basis; a returned URL alone is not a support judgment.
 
 The [proposed measurement contract](https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/07-citation-measurement-contract.md) keeps counts honest. Citation presence uses assessable answers as its denominator and reports observation coverage alongside it. Support uses reviewed claim–citation relationships. Requests, unique URLs, citation occurrences, and people never become interchangeable units. A capture hash helps detect changed bytes; it does not authenticate the provider or make an answer true.
 
@@ -111,9 +127,9 @@ The larger adoption test is whether these additions remain a small capture layer
 
 Promptfoo is worth the next bounded trial for this blog's citation-evaluation workload. The tested interface can retain evidence, and the built-in cache gives useful counterevidence to the strongest loss claim. Anyone who needs complete records from the built-in OpenRouter summary should first add and verify capture on the route they will use.
 
-Two results would change the decision: a live preflight that cannot preserve complete success and failure records with defensible charge provenance, or a trace/export check that cannot maintain the explicit joins we choose to depend on. Those tests remain in the [worklist](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/00-worklist-index.md). The proposed API ceiling is $20; this fixture run made no live model calls and incurred no API charges.
+The local trace and export checks have passed. The next test is a live preflight that retains the request, answer, exposed citation fields, and charge provenance, then checks the cited source against the answer. A service that does not expose the needed evidence, or an integration that forces us to rebuild most of the runner, would change this decision. The [worklist](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/00-worklist-index.md) keeps that test separate from the larger citation-frequency study.
 
-Use Promptfoo with a capture provider for the next experiment. Keep the raw records independently replayable, and judge wider adoption after the live and trace/export gates. The later engineering article can report what the blog's own pipeline lets us observe about citations; this Radar issue judges whether Promptfoo is a useful part of that pipeline.
+Try Promptfoo when you want its test runner, assertions, and result inspection enough to maintain explicit capture. If you need a complete citation archive from an unmodified adapter, wait or use a direct runner you can audit. Keep the captured records independently replayable; wider adoption depends on the live evidence.
 
 ---
 
@@ -121,7 +137,7 @@ Use Promptfoo with a capture provider for the next experiment. Keep the raw reco
 
 Dates are publication dates unless marked **checked**. Pinned Promptfoo code and documentation refer to the tested 0.122.2 release. Our artifacts record a synthetic-response experiment; the standards and studies supply concepts and methods, not measurements of this blog's citation rate.
 
-### Our experiment and proposed pipeline
+### Our experiments and proposed pipeline
 
 | Claim | Source and why it matters | Date |
 |---|---|---|
@@ -132,6 +148,11 @@ Dates are publication dates unless marked **checked**. Pinned Promptfoo code and
 | The capture provider uses existing response fields and verifies serialized results | [Runnable installed probe](https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/probe-installed.ts) — Shows the repair, the equality checks, and the network guard without hiding them behind prose. | Sep 8, 2026 |
 | Triggers, request identity, citations, and source review require different records | [Trigger and citation research](https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/04-trigger-provenance-and-ai-citations.md) — Maps each question to an observer and records the prior art and unrun tests. | Sep 8, 2026 |
 | Citation presence and source support need explicit units and missing-data states | [Proposed measurement contract](https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/07-citation-measurement-contract.md) — Makes the planned denominators inspectable without presenting them as deployed analytics. | Sep 8, 2026 |
+| Ten controlled cases retained final response text and all eleven attempts across exports | [Capture and export experiment](https://github.com/gkoreli/blog/blob/5fc2dc5dc40ad2397a78325e3a192485b44e8cb5/packages/blog/drafts/research/oss-radar-07/repro/capture/README.md) — Records the failure matrix, database restart, installation difference, and the tested boundary. | Sep 8, 2026 (PDT) |
+| The retry's failed and successful attempts survived the restarted CLI export | [Saved retry export](https://github.com/gkoreli/blog/blob/5fc2dc5dc40ad2397a78325e3a192485b44e8cb5/packages/blog/drafts/research/oss-radar-07/repro/capture/recorded/retry-cli-export.json) — Lets a reader check both attempts rather than relying on an aggregate pass count. | Sep 8, 2026 (PDT) |
+| The capture provider records field states and attempts before deriving the answer | [Capture implementation](https://github.com/gkoreli/blog/blob/5fc2dc5dc40ad2397a78325e3a192485b44e8cb5/packages/blog/drafts/research/oss-radar-07/repro/capture/capture-provider.ts) — Makes absent/empty states and charge limitations inspectable. | Sep 8, 2026 (PDT) |
+| A saved attempt links to the local trace by explicit IDs | [Saved full export with trace](https://github.com/gkoreli/blog/blob/5fc2dc5dc40ad2397a78325e3a192485b44e8cb5/packages/blog/drafts/research/oss-radar-07/repro/capture/recorded/full-cli-export.json) — Contains the matching evaluation, test-case, trace, and target-span identifiers. | Sep 8, 2026 (PDT) |
+| The runner supplies test roots and target context | [Evaluator tracing implementation](https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/tracing/evaluatorTracing.ts) — Explains the local trace path exercised by the continuation. | Sep 8, 2026 (checked) |
 
 ### Promptfoo: design, releases, and purpose
 
@@ -170,7 +191,7 @@ Dates are publication dates unless marked **checked**. Pinned Promptfoo code and
 
 ### Research record
 
-The [worklist](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/00-worklist-index.md) links the experiments, research notes, and open work. The [verbatim shaping prompts](https://github.com/gkoreli/blog/blob/main/packages/blog/prompts/oss-radar-07.prompts.md) are preserved for this issue at the author's request. The installed method records the runtime, dependency lock, script, and results. Research-session token totals and hands-on time have not been measured.
+The [worklist](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/00-worklist-index.md) links the experiments, research notes, and open work. The [verbatim shaping prompts](https://github.com/gkoreli/blog/blob/main/packages/blog/prompts/oss-radar-07-promptfoo.prompts.md) are preserved for this issue at the author's request. The methods record the runtimes, dependency lock, scripts, results, and failed setup attempts. Codex executed the experiments for this article; Goga supplied the workload and editorial direction. Research-session token totals and hands-on time have not been measured.
 
 ---
 

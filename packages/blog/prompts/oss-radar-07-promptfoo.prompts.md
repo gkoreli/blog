@@ -28,3 +28,7 @@ capture all the prompts that i gave you in the prompts md file verbatim so far. 
 ---
 
 are we close to publish this article? where are the references or glossary table? Did you see how we write OSS radar publication articles?
+
+---
+
+[OSS Radar Ideas #7](chatgpt-conversation://6aa059e9-e208-83e8-af86-f7ee8670659a) i want us to take over the oss radar #7 article and make it publishable ready

@@ -2,7 +2,7 @@
 
 Check date: September 8, 2026. Repository baseline: gkoreli/blog at `935abf29de1a755d2e278f90d4794c11d18a6a43`.
 
-**State:** Goga selected Promptfoo on September 8. Working title: **OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?** The working draft now includes a dated source appendix, a glossary, the tested capture-code excerpt, and a trigger/citation comparison table. Source research, the initial module probe, and an installed-package fixture comparison are complete. The paid pilot, trace/export join test, and organic-citation study remain unrun.
+**State:** The unpublished publication candidate now includes an immersive hero, response-flow diagram, 37 dated sources with reasons, a ten-term glossary, and nine exact shaping prompts. The new capture continuation passed ten controlled cases, eleven attempts, both JSON exporters, database reopening, and one explicit local trace join. Type checks, the isolated production build, Markdown representation, and desktop/mobile review passed. One real provider response and source-support review remain before the selected workload verdict is ready. See [current candidate review](11-publication-candidate-review.md) and [frozen preflight](12-directed-answer-preflight.md).
 
 Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original baseline above belongs to the four-option investigation.
 
@@ -21,10 +21,11 @@ Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original 
 | Inspect Promptfoo's design and citation-analytics prior art | Complete for the draft's claims | [Design and prior art](06-promptfoo-design-and-prior-art.md) |
 | Explain Promptfoo's purpose and current trajectory | Complete: dedicated draft section and source audit | [Purpose and trajectory](08-promptfoo-purpose-and-trajectory.md) |
 | Define citation records and reporting units | Proposed; ready for pilot implementation | [Measurement contract](07-citation-measurement-contract.md) |
-| Run the bounded pilot | Open | [Experiment plan](03-experiment-plan.md) |
-| Start the OSS Radar #07 draft | Complete: first draft; review and further evidence open | [Draft](../../oss-radar-07-promptfoo.md) |
-| Check publication style and reader-facing references | Complete for the manuscript: 32 source entries and 10 glossary terms | [Publication readiness](09-publication-readiness.md) |
-| Verify and publish OSS Radar #07 | Open: real-answer workload evidence and final publication pass | [Scoped readiness assessment](09-publication-readiness.md) |
+| Run the bounded pilot | Open; one-answer preflight first | [Experiment plan](03-experiment-plan.md) |
+| Build the OSS Radar #07 publication candidate | Complete; kept outside `posts/` | [Publication module](../../oss-radar-07-promptfoo.ts), [manuscript](../../oss-radar-07-promptfoo.md) |
+| Check publication style, references, and render | Complete: 37 sources, 10 glossary terms, desktop/mobile and Markdown checks | [Candidate review](11-publication-candidate-review.md) |
+| Exercise capture failures, persistence, and tracing | Complete: 10 synthetic cases, 11 HTTP attempts, explicit local join | [Method and accepted exports](repro/capture/README.md) |
+| Verify and publish OSS Radar #07 | Open: real-answer/source review, author review, and actual release | [Frozen live preflight](12-directed-answer-preflight.md) |
 | Develop the engineering continuation | Open | Requires useful blog code and new operating evidence |
 
 Formal tracker: [FLDR-0011](../../../../../docs/folders/FLDR-0011-oss-radar-07-worklist.md). Execution task: [TASK-0134](../../../../../docs/tasks/TASK-0134-oss-radar-07-project-experiment-and-article.md).
@@ -41,30 +42,34 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 - [Promptfoo design and prior art](06-promptfoo-design-and-prior-art.md): product theory, source trace, novelty limits, and adoption decision.
 - [Citation measurement contract](07-citation-measurement-contract.md): proposed records, missing-data states, denominators, and the connection to the analytics thread.
 - [Promptfoo purpose and trajectory](08-promptfoo-purpose-and-trajectory.md): what the tools do, the maintainers' public purpose, recent releases, OpenAI affiliation, and the boundary between shipped features and the Frontier plan.
-- [Publication readiness](09-publication-readiness.md): comparison with published #05/#06, references/glossary corrections, supported scope, and concrete remaining publication work.
+- [Earlier publication readiness](09-publication-readiness.md): historical comparison with #05/#06 and the initial reference correction.
+- [Desktop takeover](10-takeover-and-evidence-review.md): article passport, source audit, additional implementation evidence, and access boundary.
+- [Current candidate review](11-publication-candidate-review.md): selected discovery package, promise ledger, rendered checks, and release handoff.
+- [Frozen directed preflight](12-directed-answer-preflight.md): exact next question, capture settings, source-support rubric, and decision rule.
 - [OSS Radar #07 draft](../../oss-radar-07-promptfoo.md): working article with Sources & Evidence and a dated Glossary; not published.
 - [Repository baselines](baselines.json): pinned source revisions and read-only checks.
 - [Promptfoo fixture probe](repro/README.md): runnable module-level reproduction, original source snapshot with its MIT licence, synthetic response, and saved result.
 - [Installed Promptfoo probe](repro/installed/README.md): guarded local HTTP experiment, capture-provider prototype, exact dependency lock, full summaries, and cache evidence.
+- [Capture continuation](repro/capture/README.md): complete failure matrix, input/response hashes, persisted exports, local trace join, source hashes, and accepted records.
 
 ## Prompts
 
-[Exact shaping prompts](../../../prompts/oss-radar-07.prompts.md).
+[Exact shaping prompts](../../../prompts/oss-radar-07-promptfoo.prompts.md).
 
-The record contains eight complete prompts through the publication-readiness and references/glossary question. The seven existing entries remain unchanged; the latest request is appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
+The record contains nine complete prompts through the desktop takeover request. The original eight entries remain unchanged; the latest request is appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
 
 The September 8 request explicitly asks for a prompts section for this issue. It overrides the usual OSS Radar exception that omits public prompts. This is an issue-specific decision; no shared skill or prior issue was changed. Keep the complete initial prompt intact. The second recorded answer delegated the experiment timebox decision.
 
-The provisional prompt filename is `oss-radar-07.prompts.md`. When the final article slug is chosen, move the file to that exact slug and verify the normal prompts page. There is no matching published post yet.
+The filename now matches the final slug, and the normal prompts page was verified in the isolated preview. There is no matching published post yet.
 
 ## Publication boundary
 
-The installed fixture earns a narrow adapter review. The stronger workload review should add a real-answer capture, then use the established publication module and rendered checks. The entire repeated citation study is not a blanket requirement for publishing the scoped Radar result. See [the readiness assessment](09-publication-readiness.md); the broader analytics and engineering work remains open.
+The controlled tests earn the adapter and local-retention findings. The selected workload review still needs one actual answer and source review; the complete repeated citation study is not a blanket release requirement. The candidate remains outside `posts/`. Its September 8 metadata date records preparation and must be replaced on release. No live model call, charge, production D1 query, deployment, or social post occurred in this continuation.
 
 ## Next bounded action
 
-Extend the successful fixture capture to missing fields, failures, retries, and charge provenance before the live preflight. Freeze the real question set and source-support rubric before viewing live answers. Then obtain a bounded API/billing preflight and verify the trace/export joins the study will depend on. Do not query production D1 merely to repeat known counts.
+Goga has been asked for the location of an existing OpenRouter or Perplexity API configuration; no key is present in this task's environment. Do not ask for a secret in chat. Once that access is identified, follow the [frozen one-answer preflight](12-directed-answer-preflight.md), retain its actual outcome, and update the adoption decision. No production analytics query is needed.
 
-The installed result supports a narrow adoption decision: use Promptfoo's runner with explicit capture for the next experiment. Built-in OpenRouter summaries omitted the fixture's citation fields, while the transport cache retained them and a custom provider preserved them through programmatic JSON export. There were no live model calls or API charges. The first run encountered an opt-out beacon; the accepted rerun blocked it locally and records the limitation.
+The local trace/export work is complete; do not repeat it as if unrun. The [capture manifest](repro/capture/recorded/manifest.json) commits to the accepted records and source hashes. The original telemetry interruption and accepted local blocking behavior remain documented in their methods.
 
-One week is a planning target, not an automation or a promised publication date. Keep null results, failed runs, and explicit no-change decisions in the record.
+One week is a planning target, not an automation or a promised publication date. Keep null results, failed runs, and explicit no-change decisions in the record. TASK-0134 stays in progress until its remaining evidence and publication work are completed.

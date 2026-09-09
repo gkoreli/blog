@@ -1,6 +1,6 @@
 # Promptfoo citation pilot
 
-Status: Promptfoo selected by Goga, September 8, 2026. The [installed-package comparison](repro/installed/README.md) completed the successful-fixture portion of steps 1–2 below. The built-in normalized summary omitted citation fields; the cache retained them; a custom provider retained raw/metadata through programmatic JSON export. Error paths, trace/export joins, and the paid pilot remain open. The initial [offline module probe](repro/README.md) retains its narrower historical scope.
+Status: Promptfoo selected by Goga, September 8, 2026. The [installed-package comparison](repro/installed/README.md) completed the successful-fixture portion of steps 1–2 below. The built-in normalized summary omitted citation fields; the cache retained them; a custom provider retained raw/metadata through programmatic JSON export. The later [capture continuation](repro/capture/README.md) completed controlled error paths, persisted JSON exports, and one local trace join. The paid pilot remains open; the [frozen one-answer preflight](12-directed-answer-preflight.md) is the next bounded action. The initial [offline module probe](repro/README.md) retains its narrower historical scope.
 
 The first week should determine whether Promptfoo can support an auditable, small citation study with a thin adapter. It should leave useful research code and a project verdict. It should not promise a measured increase in organic discovery.
 
@@ -17,7 +17,7 @@ The first week should determine whether Promptfoo can support an auditable, smal
 
 Five preflight calls are separate from the 72 analyzed calls. Runs are repeated observations on 12 questions, not 72 independent engineering problems. The three installed fixture evaluations are parser/transport checks and enter neither count. A week is a planning target; these steps are not scheduled automation.
 
-Before relying on tracing, enable it in a separate bounded test and check explicit run/attempt IDs through the chosen trace and evaluation exports. The installed probe used no tracing or database persistence. Keep private raw capture separate from reviewed public export, and preserve the local egress restriction described in the reproduction method.
+The capture continuation has now checked one local trace through both evaluation exports using explicit evaluation/test/trace/target-span IDs. Retry attempts remain metadata records, not distinct spans. The original installed probe used no tracing or database persistence. Keep private raw capture separate from reviewed public export, and preserve the local egress restriction described in the reproduction method.
 
 ## Question set
 

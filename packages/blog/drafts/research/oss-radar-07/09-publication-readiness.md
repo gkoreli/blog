@@ -1,4 +1,6 @@
-# OSS Radar #07 publication readiness
+# OSS Radar #07 publication readiness — earlier assessment
+
+**Historical checkpoint.** The desktop continuation supersedes the open layout, failure-handling, and local trace/export work below. See [the current candidate review](11-publication-candidate-review.md) for completed checks and the remaining one-answer access gate. The original assessment is retained to show what changed.
 
 Reviewed September 8, 2026 against blog commit `dabd081506de2e0a8dba6778b4e43c0bb83d5c13`.
 
