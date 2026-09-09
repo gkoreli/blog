@@ -24,3 +24,11 @@ what shall we do? this is for a personal blog, i want the subscription to just w
 ---
 
 im confused like why can't i have my own platform? Like it is a simple button thats submits API post request... whats so complicated with it? Is it just because that it allows un-authenticated access?
+
+---
+
+start the worklist on this issue, this will become the engineering article as well, Subscription bombing - how i protect my blog from it. Build it out and also write an article in parallel both at the same time, capture all the research artifact md files in the worklist folder.
+
+---
+
+should we be using ORM or something better than RAW sql?

@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-09-09T01:47:23.908Z",
+  "runtime": "Miniflare local workerd D1",
+  "miniflareVersion": "4.20260301.1",
+  "scope": "Admission store and fresh migration path. No remote database, Turnstile, Resend, browser, or production-quota acceptance.",
+  "results": [
+    {
+      "check": "fresh migration path 0001/0003/0004/0005",
+      "passed": true
+    },
+    {
+      "check": "48 concurrent mixed-endpoint admissions for one address",
+      "admitted": 1,
+      "passed": true
+    },
+    {
+      "check": "rolling address day cap after cooldowns",
+      "admitted": 3,
+      "passed": true
+    },
+    {
+      "check": "four 60-request concurrent waves with shifted fixture times; rolling hour/day caps",
+      "admitted": 100,
+      "passed": true
+    },
+    {
+      "check": "subscriber write failure rolls back admission reservation",
+      "passed": true
+    }
+  ]
+}

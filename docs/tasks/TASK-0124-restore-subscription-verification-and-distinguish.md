@@ -6,7 +6,7 @@ title: >-
 status: open
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.705Z'
-updated_at: '2026-09-09T01:03:18.927Z'
+updated_at: '2026-09-09T02:14:45.799Z'
 type: task
 ---
 The September 7 investigation recorded Siteverify HTTP 400 invalid-input-secret for the production widget. Goga now reports repairing signup; see the dated update below. This task remains open for the repair's acceptance evidence or verified retirement through the [managed newsletter adoption](TASK-0127-decide-whether-turnstile-is-proportionate-for-newsletter.md), not an assumption that the original fault persists. Completion requires observed successful signup/confirmation, not only an accepted deployment.
@@ -22,3 +22,7 @@ Credential checkpoint: existing ignored local secret produced invalid-input-resp
 Goga reports that he fixed signup in parallel and believes the fix preceded article 024's HN traffic spike. Treat the earlier invalid-secret capture as historical, not proof that another secret repair is currently needed. The exact activation and full-window availability were not independently verified in this session; reuse the repair session's receipt for that acceptance detail.
 
 At 00:54:02 UTC, an aggregate query found one active subscriber from April 8, zero current pending rows, and zero retained creations or confirmations since the September 7 05:13:22 UTC HN submission. The check read one row and wrote zero; it selected no addresses or tokens and sent no email. Expired pending records and pre-persistence failures prevent an all-time attempt count. See [publication follow-up](../../packages/blog/drafts/research/article-024-hacker-news/04-publication-learning.md) and its measured JSON. This verifies subscriber state, not an end-to-end signup or a new production repair.
+
+## Committed implementation and partial live acceptance — September 9 UTC
+
+Code `86dad93` is committed and pushed; final combined checks pass (100 blog tests, all workspace typechecks, production build). Migration 0005 is applied. Version e8c69b0d-3174-4e8f-a3f9-5788f2868686 was activated at 100%, and four bounded live HTTP checks verified the changed guards/copy. This is not complete signup acceptance: a designated recipient is still needed, and the missing production webhook signing-secret connection is TASK-0142. Exact results, known access limits and next actions are in [14-handoff.md](../../packages/blog/drafts/research/newsletter-reliability/14-handoff.md). Do not repeat the migration or rotate a verifier key from old incident evidence.

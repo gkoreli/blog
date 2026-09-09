@@ -1,93 +1,129 @@
-# Newsletter Bot Protection: What Broke, and What My Logs Missed
+# Subscription Bombing: How I Protect My Blog
 
-Working draft, started September 6 and updated September 8, 2026 Pacific. Evidence-led field note; a newer TASK-0124 checkpoint records an owner-reported signup repair, whose acceptance receipt has not been inspected in this session. The protection decision remains open. This file is outside `posts/` and has no publication date or release metadata.
+Working engineering draft, updated September 8 PDT / September 9 UTC, 2026. The protection is committed and deployed. Controlled server/client tests, actual local D1 admission checks, and bounded live HTTP checks passed. Received email and completed signup remain unverified; the production webhook connection is still missing. The owner-reported earlier signup repair remains a separate checkpoint. Outside `posts/`; unpublished, with no release metadata.
 
-My friend could not subscribe to my blog because the server's bot-verification key was invalid. The form suggested retrying or allowing bot protection in his browser. When I asked whether other readers had met the same failure, our logs could show five failed submissions. They could not tell me how many people had given up before a report reached us.
+A newsletter signup form lets someone ask my server to email an address they may not own. I want readers to subscribe to my personal blog, and I want to keep the platform I built. The new implementation puts shared limits before confirmation mail, preserves a usable retry after failure, and records which stage the request reached. It uses the Worker, D1 database, Resend, and Turnstile already in the blog.
 
-- The inspected server error identified a configuration failure. Our message gave the reader advice that could not fix it.
-- First-party browser logging helped diagnose the incident, but the widget's own error callback did not report errors.
-- Removing the widget would remove one dependency. It would still leave me responsible for confirmation-email abuse, delivery failures, and a subscription flow that tells the truth.
+- The first confirmation email needs abuse protection. Waiting for confirmation before newsletter delivery does not protect that first send.
+- Signup and resend use the same database-enforced allowance. Different URLs or source IPs do not create separate mail budgets.
+- Provider acceptance, mailbox delivery, and subscription activation remain different outcomes. The response and logs must not collapse them into “it worked.”
 
-## The server had a more useful answer
+The limits are implemented and the changed routes are live. The concurrency results come from local fixtures, and a complete live signup still needs its own acceptance check. None of this establishes that subscription bombing has been eliminated.
 
-The immediate cause was specific: Cloudflare's verifier returned `invalid-input-secret`. That is the error for an invalid or expired server secret. It does not say that Cloudflare classified my friend as a bot. [Siteverify documentation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/).
+## A friend could not subscribe
 
-The flow uses a Cloudflare Worker, D1 for subscription state, Resend for mail, and Turnstile before creating a pending subscription. The Worker has the secret key; the page has the public site key. The failed request stopped at verification, before the database write or confirmation email.
+This investigation started with a failed legitimate signup. The server event I inspected reported `invalid-input-secret` from Cloudflare's verifier. My form told the reader to retry or allow bot protection in his browser. Neither could repair an invalid server credential. [Captured evidence](01-evidence.md), [Cloudflare's error definition](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/).
 
-Our handler treated that configuration problem like every other verification rejection. It returned HTTP 400 and the same suggestion to retry or allow bot protection. The structured server log preserved the useful distinction, but the response discarded it. A local reproduction with a synthetic invalid-secret response produced the same result. [Code and recorded probe](02-client-audit.md).
+I asked whether anyone else had tried. The retained client logs contained five recent subscription error reports, but those were five reports, not five identified readers. Only one corresponding server event was expanded far enough to inspect that specific error code. The rejected path stopped before storing the submitted address or scheduling confirmation mail.
 
-The first repair is to make the deployed credential valid and verify a complete signup. The failure message also needs to distinguish a service problem from something the reader can retry. Neither repair requires a verdict about CAPTCHA systems in general.
+Then I asked whether we could recover the subscriptions. The inspected error records contained no addresses, and a database backup cannot reconstruct a value the request never wrote. Older attempts that reached the email provider remain a separate possibility: the credential available to the investigation could not read that history. I cannot turn that incomplete record into a count of people lost or addresses recovered. [Recovery record](04-recovery.md).
 
-## Five reports do not tell me who I lost
+The failure that started this work was a configuration problem. It is not evidence that someone used my blog for subscription bombing.
 
-The history is incomplete in two ways: some reports expire, and some errors are never reported. Counting what survives cannot answer how many people tried to subscribe.
+## The first email is already a side effect
 
-At the September 7 UTC capture, the client-error table held thirteen records. Five were the current subscription failures. Six were older Pixi/CSP errors in the animation lab, and two were ResizeObserver errors on the stats page. The five signup reports shared iPhone Safari details. Those details cannot distinguish people reliably.
+Subscription bombing exploits public forms to fill somebody else's inbox. In February 2026, the Swiss NCSC described attackers making legitimate websites send registration confirmations, sometimes to hide an important account warning among the flood. The messages can come from otherwise legitimate mail servers. [NCSC report](https://www.bacs.admin.ch/en/26w6-en).
 
-There was an earlier warning in the repository. An April 11 incident note describes a reader in Georgia using Brave on a Mac who received a subscription failure after the verifier returned HTTP 400. That account helped motivate the browser logger. It does not preserve enough evidence to establish the same root cause, continuous breakage since April, or whether the reader was a different person. [Historical evidence](01-evidence.md).
+Double opt-in requires confirmation before I activate a newsletter subscription. It still starts by sending an email to an address supplied by an unconfirmed requester. Someone who knows a victim's address can ask many websites to send that first message.
 
-Our client table retains thirty days. The initial capture recorded three days of Workers Logs on the account's then-Free plan; the subsequent owner-reported Paid upgrade is recorded separately and does not reconstruct expired logs. A supplemental search of sampled HTTP data returned no signup groups for September 1–6, but absence from that sample cannot clear the flow. The attempt to inspect the full retained Worker history through our CLI credential was denied, so that part of the audit remains open. [Retention and recovery evidence](01-evidence.md), [upgrade checkpoint](../../../../../docs/handoffs/2026-09-07-reliability-checkpoint.md), [sampling limits](https://developers.cloudflare.com/analytics/graphql-api/sampling/).
+The endpoint being public is normal. Creating a blog account through email would begin with the same unconfirmed address. My server needs rules for what a request may cause before it knows whether the requester controls the mailbox.
 
-I can describe the failures we recorded and the earlier incident someone documented. I cannot turn those records into a count of readers lost.
+Turnstile supplies one check before sending. The server must verify its token; a widget alone cannot enforce anything against a direct API request. Even successful verification does not establish ownership of the submitted address. [Server verification](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/).
 
-## Can I recover the subscriptions?
+A per-address limit reduces repeated requests for the same address. Different aliases can still reach one inbox. An aggregate limit bounds this blog's contribution, but one unwanted confirmation from each of many websites can still become a flood. That is the limit of what my own form can prevent.
 
-The question became more painful when I asked whether we could recover the addresses. The current database had no pending subscriptions to resume, and the inspected request failed before saving its address or scheduling mail. An error report could tell me something went wrong without giving me anyone to contact.
+## Keeping my own platform is a reasonable constraint
 
-The five reports do not establish five lost subscribers. They could include repeated attempts, and the logger deliberately excludes form contents. For requests rejected at verification, a database backup cannot recover data that was never written.
+I asked for a simple capability, and the agent recommended moving subscriptions to a hosted service. I pushed back: why couldn't I keep my own platform when the visible interaction was a button submitting an API request?
 
-Older attempts that reached confirmation sending are a separate possibility. Resend's retained history could contain those recipients even after our cleanup deleted their pending rows. Our available key could send mail but could not read that history, so the provider review remains unfinished. Finding a recipient would still not establish a confirmed subscription. [Recovery checks and limits](04-recovery.md).
+The original architecture is reasonable for this blog: a form, a Worker, D1 for subscription state, and Resend for mail. The April decision added Turnstile while shipping on the existing Cloudflare stack; invisible mode later kept the widget out of the visible design. Those records explain how it arrived. They do not establish that the entire flow was tested against the failures now in the worklist. [Recorded rationale and prior art](05-prior-art-2026.md).
 
-For my friend, recovery means getting the form working and giving him a reason to try again. For anyone we cannot identify, I have no automatic repair for the missed contact. That is part of the cost of this failure, even while its size remains unknown.
+A hosted service remains a valid way to delegate these responsibilities. My requirement was to keep the platform and fix what I already owned: permission to send, subscription state, and failure handling. The repair adds one confirmation-attempt table and shared request handling to the existing system. That is a scope I can reason about.
 
-## The error callback handled the message and lost the evidence
+## Signup and resend use the same sending limits
 
-The browser logger works for some failures and misses others. This section is for someone implementing the flow; the practical consequence is that an empty error table cannot establish a working form.
+Every new confirmation operation must reserve capacity in D1 before calling Resend. Both public routes call the same handler, including the same Turnstile verification. The former resend exception disappeared because it could cause the same email as signup. [Shared handler](../../../../newsletter/src/confirmation-request.ts).
 
-The main script reports uncaught JavaScript errors and unhandled promise rejections. The subscription form reports failed API responses and network errors. Those explicit reports are how we found the five recent failures.
+This section is for someone implementing a similar flow. The existing per-IP binding remains a cheap request filter. Cloudflare documents it as location-local and eventually consistent, so it cannot establish an exact aggregate mail budget. The shared database makes that decision. [Binding semantics](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/).
 
-But the Turnstile error callback calls `setError()`, returns `true`, and never calls the logger. Cloudflare treats that return value as the application having handled the error and suppresses its additional logging. In a local probe, invoking the registered callback displayed the message and sent zero reports. [Callback behavior](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/), [reproduction](repro/results.json).
+The initial policy counts **admitted confirmation operations**, regardless of whether the provider later accepts them:
 
-Delivery has another boundary. Our transport stops when `sendBeacon()` says it queued the report. Its fetch fallback also resolves on HTTP 500. On the server, a failed D1 write can leave the request acknowledged with 204 and no stored row. These are reproduced possibilities, not a measurement of how many production reports disappeared. [Beacon semantics](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon), [local audit](02-client-audit.md).
+| Scope | Allowance |
+|---|---|
+| Same normalized address | At least 600 seconds between admissions |
+| Same normalized address | At most 3 admissions in the preceding 24 hours |
+| All addresses, signup and resend together | At most 25 admissions in the preceding hour |
+| All addresses, signup and resend together | At most 100 admissions in the preceding 24 hours |
 
-The useful next step is modest: report the known widget failures, give the form a bounded recovery path, correlate the failed request with its report, and record important server outcomes independently. More context is useful only if the record arrives and excludes addresses and tokens.
+These are policy choices for my small blog, not measured safe thresholds or a statement of the provider's account quota. Normalization trims whitespace and lowercases the supplied address; it does not merge aliases. The aggregate limit still applies when several distinct addresses reach one mailbox.
 
-## Why Turnstile was there
+The reservation insert, preservation of an older confirmation hash, pending-subscriber upsert, and returned decision share one D1 batch. The insert contains the limit and suppression predicates. A request that gets no reservation cannot mutate subscription tokens or call the provider. Reading a remaining count and incrementing only after sending would leave concurrent requests able to act on the same old count. [Admission implementation](../../../../newsletter/src/confirmation-store.ts).
 
-The preserved decision was about shipping a signup form while a post was receiving attention. The April ADR records a free-service constraint, an existing Cloudflare stack, and an urgent need for a way to retain readers. Turnstile was the selected spam control. The later switch to invisible mode was explicitly about keeping the visible widget out of the blog's design. [Original ADR](https://github.com/gkoreli/blog/blob/2b3863c2a9bb3417d9c17e48fae39aeb53a9fd3d/docs/adr/0010-email-subscriptions.md), [mode-change record](https://github.com/gkoreli/blog/commit/568a95988249e4ca7198f0f7235c314eb639b5ef).
+D1 documents transactional batches with rollback on statement failure. I check the returned admission decision rather than treating a nonthrowing SQL call as permission to send. The actual statements also ran against local workerd D1 through Miniflare 4.20260301.1. [D1 contract](https://developers.cloudflare.com/d1/worker-api/d1-database/#batch), [SQLite conflict behavior](https://www.sqlite.org/lang_conflict.html).
 
-Those records explain the choice. They do not contain a comparative test of reader completion, abuse prevention, or maintenance. The examples cited in the ADR mostly demonstrated ways to build on Workers. They did not establish that operating the entire subscription flow myself was the best tradeoff.
+The recorded local fixture admitted one operation from 48 concurrent calls for the same address, alternating signup and resend modes. Four waves of 60 concurrent calls admitted 25 each, then rejected further admission at the 100-per-day ceiling. The fixture moved stored timestamps between waves; it did not wait four real hours. A trigger that deliberately failed the subscriber insert left no reservation behind. These are checks of the actual admission function and fresh migration path, with synthetic data and no email-provider calls. [Reproduction and result](repro/d1-admission-results.json), [executable fixture](repro/d1-admission.mjs).
 
-The broader research changes the comparison. Buttondown documents conditional challenges and an automatic attack mode; listmonk has a self-hosted ALTCHA implementation. These are useful alternatives to examine, with their own restrictions and failure modes. The decision now includes how much of subscription operations I want to own, as well as which challenge policy to use. [Dated prior-art review](05-prior-art-2026.md).
+Reserved, accepted, failed, and unknown operations all consume allowance. Refunding a timeout could allow another email even when the provider had accepted the first one. Records remain for seven days, beyond the longest accounting window. Imported old token hashes are compatibility records and do not claim a measured historical send. These limits cover operations admitted by the new code after activation; they do not retroactively count mail sent by an older deployment or cap newsletter campaigns.
 
-## What am I protecting the newsletter from?
+## A retry reuses the same provider operation
 
-The decision should start with the operation that can hurt someone: sending mail to an address the requester may not control. Requiring an email confirmation helps prevent unwanted activation, but the first message has already gone out.
+The handler now waits for a bounded confirmation-send result. It records the admitted operation before contacting Resend, then attempts to store the outcome and provider message ID. This gives me something more useful than a successful browser response followed by an unobserved background failure.
 
-The current per-IP limit is three attempts per minute. Cloudflare documents that binding as local to each Cloudflare location and eventually consistent. It cannot serve as a strict global send budget. Pending addresses can also request another confirmation through a route without Turnstile. Any replacement has to cover both paths. [Rate-limit behavior](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/), [control assessment](03-protection-options.md).
+The sender makes at most two provider requests, each with an eight-second deadline. A rate-limit response can add a wait of up to three seconds before the retry; a longer or malformed wait hint returns a retryable failure instead of retrying too early. [Provider rate-limit headers](https://resend.com/docs/api-reference/rate-limit). Both use the same serialized body and `newsletter-confirmation/<attempt-id>` idempotency key. Resend documents deduplication of that key and payload for 24 hours. The retry stays inside one admitted operation; a later fresh signup has to earn its own allowance. [Sender](../../../../newsletter/src/email.ts), [Resend contract](https://resend.com/docs/dashboard/emails/idempotency-keys).
 
-There are three enforcement policies to compare: a mandatory challenge, a challenge after a defined abuse signal, or no challenge with explicit send limits. Verifier choice and a maintained hosted signup flow are separate implementation decisions. The available evidence has not measured their comparative effectiveness on this blog.
+I keep the stages separate:
 
-A widget-free flow would still need per-address cooldowns, duplicate handling, and a deliberate limit on total sending. Even then, one unwanted confirmation can contribute to a flood assembled across many websites. The Swiss NCSC's February 2026 report describes that exact abuse of otherwise legitimate signup systems. A sending ceiling bounds my contribution; it does not make it harmless. [NCSC report](https://www.bacs.admin.ch/en/26w6-en).
+| Evidence | What it establishes | What it leaves unknown |
+|---|---|---|
+| D1 reservation | This operation passed admission and counts against the limits | Whether the provider saw it |
+| Valid Resend success and message ID | The provider accepted this operation | Inbox delivery or human reading |
+| Provider delivery event, if separately retained | The recipient's mail server accepted the email | Inbox placement and consent |
+| Valid confirmation POST and state transition | The pending subscription became active | Who submitted the original address |
 
-The audit also reproduced two ordinary application bugs: an inactive address can hit a database uniqueness error when subscribing again, and an unknown confirmation token can produce a page claiming the subscription is active. Neither is fixed by a better bot detector. [SQLite reproductions](repro/lifecycle-results.json).
+Resend's `email.sent` and `email.delivered` events describe the provider stages in that table. The new local record captures API acceptance; it does not implement a complete delivery-event history. [Event definitions](https://resend.com/docs/webhooks/event-types).
 
-On September 8, I asked for a simple capability for this personal blog. The agent recommended a hosted signup service. That left me confused: why couldn't I keep my own platform when the visible interaction was a button making an API request? The remaining decision includes how to keep the existing implementation small, as well as what protection it needs. A migration has not been selected. [Current worklist and scope](03-protection-options.md#current-scope-simple-signup-on-our-existing-platform).
+The outcome can remain `unknown`. A timeout, malformed success response, or interrupted process cannot safely be turned into “nothing was sent.” If saving the outcome fails after provider acceptance, the reservation remains charged and that failure does not cause another send. The failed or unknown response asks the reader to check their inbox before trying again in ten minutes.
+
+The local handler tests exercised these failure branches with synthetic provider responses. One case admitted 25 operations but made 47 provider API calls because 22 unknown operations retried once. That distinction matters: the policy counts admitted mail operations, not HTTP calls to Resend. The tests verify the same key and body on retries; Resend's actual deduplication and delivery remain separate provider behavior. [Server verification](10-verification.md).
+
+This is deliberately a reservation ledger, without an outbox or background replay worker. The raw message payload is not saved for replay after a crash. An interrupted operation may need a fresh request after the cooldown. Requests rejected before admission still leave no saved recipient to recover. D1 and Resend do not share a transaction, and already-admitted mail can finish while an opt-out is being committed. I accept those limits to keep the implementation small, while refusing to pretend the uncertain operation never happened.
+
+## Confirmation and suppression have different jobs
+
+A confirmation link now opens a preview; a POST from its button activates the pending subscription. A GET-only email scanner cannot activate it just by fetching the link. This adds a button press for the reader, and it still does not authenticate a human. [Confirmation handler](../../../../newsletter/src/confirm.ts).
+
+The attempt table retains hashes of issued confirmation tokens, each with a 24-hour lifetime. A failed resend does not invalidate an earlier unexpired link. Activation and opt-out revoke the issued set, so a link from a completed subscription cycle cannot activate a later one. The original unsubscribe token remains stable while the subscriber row exists. [State transitions](../../../../newsletter/src/db.ts).
+
+Ordinary unsubscribe and abuse suppression are separate. A reader who previously opted out can subscribe again through fresh verification and confirmation. A bounce, complaint, or explicit request to block further confirmations prevents new admission. Confirmation emails now offer that block action. Old inactive rows whose history cannot distinguish opt-out from complaint remain suppressed during migration.
+
+Retention is a boundary here too. The existing cleanup removes inactive rows after 90 days, so suppression and those old opt-out links are not permanent. The change does not quietly turn a rejected address into a subscriber, or claim to preserve a block after its record has been deleted. These choices let the state transitions remain explicit rather than treating every inactive address the same way.
+
+## The form keeps a usable retry
+
+The client now reports the widget failures that the original audit reproduced, and it restores the form after them. Missing script, missing widget configuration, empty token, unsupported browser, render and execute errors, expiry, and timeouts have explicit paths. A late script can initialize when the reader submits again. Duplicate or stale callbacks cannot start another request for the same attempt. [Client implementation and test receipt](12-client-verification.md).
+
+The browser allows 30 seconds for verification and 35 seconds for its API request. On the server, verification has a five-second deadline and fails closed: missing or invalid configuration and verifier unavailability return a service error without admitting mail. The server checks the hostname and the new `subscribe` action, accepting a missing or empty action only for compatibility with cached older clients. These choices can temporarily stop legitimate readers; they are explicit availability tradeoffs.
+
+HTTP 202 stays generic so the form does not reveal whether an address is active, suppressed, or inside a cooldown. Its message says to look for confirmation if needed and keeps both the form and address available for another attempt. It does not claim that every accepted request sent an email. A failed or uncertain send gives check-inbox guidance because aborting a browser request does not prove the server stopped processing it.
+
+The client lane's 25 tests passed against the actual initializer using controlled DOM objects, timers, widget callbacks, and fetch responses; its source typecheck also passed. They exercise local behavior without a real browser, challenge, endpoint, or email. Reports carry static stage names and status codes, excluding addresses, tokens, and provider response bodies. The shared logger's transport and ingestion gaps remain separate work; these tests do not establish delivery of every error report.
+
+The server suite also passed 39 tests against the actual handlers and migrations with an in-memory SQLite transaction adapter. It covered concurrent requests, failed and unknown sends, token cycles, suppression, and signed webhooks. The separate local workerd D1 run checked the admission SQL in Cloudflare's local runtime. Neither environment contacted a real verifier or mail provider. [Server methods and results](10-verification.md).
+
+The code is deployed, and four bounded live checks verified the changed request guards, unknown-link error and privacy copy. Live challenge completion, email receipt, confirmation and unsubscribe still need their own evidence. The deployment inspection also found no webhook signing-secret binding: bounce and complaint suppression passes local tests but is not yet connected to live provider events. [Activation and remaining setup](10-verification.md). The limits can also delay genuine readers during a burst, and they do not cap every incoming request, verifier call, or database read. My criterion is practical: a reader can finish, a public request has bounded permission to send, and a failure leaves a usable next step. The missed contact with readers is why I want this flow to work, and why protection cannot become an unexplained dead end.
 
 ---
 
 ## Glossary
 
-| Term / claim | Source | Checked |
+| Term / claim | Source | Date |
 |---|---|---|
-| Invalid verifier secret | [Cloudflare Siteverify](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/) | September 7, 2026 |
-| Widget callback handling | [Cloudflare client errors](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/) | September 7, 2026 |
-| Queued browser report | [MDN sendBeacon](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) | September 7, 2026 |
-| Operational retention | [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) | September 7, 2026 |
-| Sampled HTTP estimates | [Cloudflare GraphQL sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/) | September 7, 2026 |
-| Per-location rate limits | [Workers binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/) | September 7, 2026 |
-| Conditional hosted protection and custom-domain limits | [Buttondown firewall](https://docs.buttondown.com/firewall) | September 9 UTC, 2026 |
-| Self-hosted challenge implementation | [listmonk v6.2.0 verification module](https://github.com/knadh/listmonk/blob/ef0a75872463f10a4848af6c547d1c057405453a/internal/captcha/captcha.go) | September 9 UTC, 2026 |
-| Confirmation-email bombing | [Swiss NCSC](https://www.bacs.admin.ch/en/26w6-en), published February 10, 2026 | September 9 UTC, 2026 |
+| Subscription bombing before activation | [Swiss NCSC](https://www.bacs.admin.ch/en/26w6-en) | Published February 10, 2026; checked September 9 UTC |
+| Turnstile verification and secret errors | [Cloudflare Siteverify](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/) | Checked September 9 UTC, 2026 |
+| Per-location request throttling | [Workers rate-limiting binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/) | Checked September 9 UTC, 2026 |
+| Transactional batch behavior | [D1 Database](https://developers.cloudflare.com/d1/worker-api/d1-database/#batch) | Checked September 9 UTC, 2026 |
+| Constraint conflict handling | [SQLite](https://www.sqlite.org/lang_conflict.html) | Updated November 22, 2025; checked September 9 UTC, 2026 |
+| Retrying one mail operation | [Resend idempotency keys](https://resend.com/docs/dashboard/emails/idempotency-keys) | Checked September 9 UTC, 2026 |
+| Provider acceptance and delivery | [Resend events](https://resend.com/docs/webhooks/event-types) | Checked September 9 UTC, 2026 |
 
-The [investigation](00-investigation.md) separates observed logs, historical reports, code inspection, local reproductions, and proposed repairs. The seven [human prompts](source.prompts.md) are preserved exactly. Research and drafting were assisted by an agent; private operational logs are not published.
+The [worklist](00-worklist-index.md), [source ledger](07-source-ledger.md), and [claims ledger](08-claims-ledger.md) distinguish captured incidents, inspected code, local tests, documented capabilities, and unfinished acceptance. Nine [raw prompts](source.prompts.md) preserve the author's direction. Research, implementation, and drafting were assisted by agents; private operational captures are not published.
