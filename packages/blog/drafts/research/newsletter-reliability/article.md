@@ -1,6 +1,6 @@
 # Subscription Bombing: How I Protect My Blog
 
-Working engineering draft, updated September 8 PDT / September 9 UTC, 2026. The protection is committed and deployed. Controlled server/client tests, actual local D1 admission checks, and bounded live HTTP checks passed. Received email and completed signup remain unverified; the production webhook connection is still missing. The owner-reported earlier signup repair remains a separate checkpoint. Outside `posts/`; unpublished, with no release metadata.
+Working engineering draft, updated September 8 PDT / September 9 UTC, 2026. The protection is committed and deployed. Controlled server/client tests, local D1 checks and one authorized live signup passed. That live check required a production verifier-binding repair, and Gmail placed the confirmation in Spam. The provider webhook connection is still missing. Outside `posts/`; unpublished, with no release metadata.
 
 A newsletter signup form lets someone ask my server to email an address they may not own. I want readers to subscribe to my personal blog, and I want to keep the platform I built. The new implementation puts shared limits before confirmation mail, preserves a usable retry after failure, and records which stage the request reached. It uses the Worker, D1 database, Resend, and Turnstile already in the blog.
 
@@ -8,7 +8,7 @@ A newsletter signup form lets someone ask my server to email an address they may
 - Signup and resend use the same database-enforced allowance. Different URLs or source IPs do not create separate mail budgets.
 - Provider acceptance, mailbox delivery, and subscription activation remain different outcomes. The response and logs must not collapse them into “it worked.”
 
-The limits are implemented and the changed routes are live. The concurrency results come from local fixtures, and a complete live signup still needs its own acceptance check. None of this establishes that subscription bombing has been eliminated.
+The limits are implemented and the changed routes are live. The concurrency results come from local fixtures. One authorized live signup completed, including receipt of its confirmation in Gmail Spam. That distinction matters: an accepted send did not ensure Inbox placement. None of this establishes that subscription bombing has been eliminated.
 
 ## A friend could not subscribe
 
@@ -110,7 +110,11 @@ The client lane's 25 tests passed against the actual initializer using controlle
 
 The server suite also passed 39 tests against the actual handlers and migrations with an in-memory SQLite transaction adapter. It covered concurrent requests, failed and unknown sends, token cycles, suppression, and signed webhooks. The separate local workerd D1 run checked the admission SQL in Cloudflare's local runtime. Neither environment contacted a real verifier or mail provider. [Server methods and results](10-verification.md).
 
-The code is deployed, and four bounded live checks verified the changed request guards, unknown-link error and privacy copy. Live challenge completion, email receipt, confirmation and unsubscribe still need their own evidence. The deployment inspection also found no webhook signing-secret binding: bounce and complaint suppression passes local tests but is not yet connected to live provider events. [Activation and remaining setup](10-verification.md). The limits can also delay genuine readers during a burst, and they do not cap every incoming request, verifier call, or database read. My criterion is practical: a reader can finish, a public request has bounded permission to send, and a failure leaves a usable next step. The missed contact with readers is why I want this flow to work, and why protection cannot become an unexplained dead end.
+The live acceptance test found a failure the earlier deployment checks had missed: Turnstile still returned `invalid_secret`. Installing the existing recognized secret in the production Worker made the real challenge pass. The authorized address was already active, so the test used an ordinary unsubscribe and fresh signup, then followed the received email. Opening the link left the address pending; pressing Confirm made it active. The original creation time and unsubscribe token survived. [Live acceptance receipt](15-live-signup-acceptance.md).
+
+Gmail put that confirmation in Spam. The site could now complete a subscription, but provider acceptance still did not mean the reader would see the message in Inbox. The Spam cause remains unverified. The deployment inspection also found no webhook signing-secret binding: bounce and complaint suppression passes local tests but is not yet connected to live provider events. These are separate worklist items, alongside the shared logger's remaining gaps.
+
+The limits can also delay genuine readers during a burst, and they do not cap every incoming request, verifier call, or database read. My criterion is practical: a reader can finish, a public request has bounded permission to send, and a failure leaves a usable next step. The missed contact with readers is why I want this flow to work, and why protection cannot become an unexplained dead end.
 
 ---
 

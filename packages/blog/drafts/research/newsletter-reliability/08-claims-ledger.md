@@ -1,6 +1,6 @@
 # Subscription bombing: active claims ledger
 
-Created September 8 PDT / September 9 UTC, 2026; updated after implementation inspection and local results. Governs the [article](article.md); source IDs refer to [07-source-ledger.md](07-source-ledger.md). Shared code, controlled client and server handler tests, and actual local D1 admission checks have evidence. Code commit and deployment are recorded below; full live acceptance and webhook setup remain unfinished.
+Created September 8 PDT / September 9 UTC, 2026; updated after the authorized live test. Governs the [article](article.md); source IDs refer to [07-source-ledger.md](07-source-ledger.md). Shared code, controlled tests, local D1, deployment and one complete live signup have evidence. The live test required a verifier-binding repair and received its message in Gmail Spam. Inbox placement, webhook setup and general diagnostic ingestion remain unfinished.
 
 ## Separate the stages
 
@@ -39,6 +39,9 @@ Created September 8 PDT / September 9 UTC, 2026; updated after implementation in
 | C20 | GET-only prefetch cannot activate a pending subscriber | Confirmation / inspected and reproduced | F9, F13 | GET preserves pending state; POST executes the valid transition | A human clicked, or all scanners use only GET | Keep precise request-method claim |
 | C21 | Legacy imported token hashes preserve compatibility | Migration / inspected and reproduced | F8, F13 | Imported and rollout-era old hashes remain usable through original expiry; excluded from new budget | Historical provider sends or a full previous rolling day's cap | Keep activation-era limit boundary |
 | C22 | 25 admitted operations can make 47 provider requests | Unit / reproduced | F13 | One failure-heavy fixture retries 22 unknown operations once | 47 delivered messages or violation of a 25-admission budget | Use when explaining policy unit and retries |
+| C23 | The September 9 live attempt hit an invalid-secret failure; installing the existing recognized secret repaired verification | Verification / observed | F14, S2, S9 | Current 503 reason, secret deployment and subsequent successful real challenge | Original secret value, who set it, continuous historical outage | Keep this fresh evidence separate from the earlier owner report |
+| C24 | One authorized subscription completed after ordinary unsubscribe and re-subscription | Lifecycle / observed | F14 | Real challenge, accepted send, received email, GET remains pending, POST becomes active; original creation and opt-out token preserved | Every browser, production concurrency bounds, live signed suppression, old-address recovery | Promotes this one lifecycle path to live acceptance; other cases retain local-test scope |
+| C25 | Gmail placed the test confirmation in Spam | Mailbox / observed | F14 | One matching message and Gmail's displayed folder/explanation | Spam cause, general placement rate, authentication pass from DNS alone | Retain as counterevidence; TASK-0145 follows up |
 
 ## Implementation evidence to attach
 
@@ -66,3 +69,7 @@ Code commit `86dad93` passed the final combined 100-test blog suite (39 server, 
 ## Production boundary update
 
 The code is deployed at the version recorded in [10-verification.md](10-verification.md); four bounded live HTTP checks passed without a valid proof or real recipient. C9–C14 and C19–C21 still rely on local tests for concurrency, successful sending, token transitions and suppression. In particular, deployment metadata lacks RESEND_WEBHOOK_SECRET and the provider dashboard is signed out: live bounce/complaint handling is not connected. Do not promote local signed-event tests into production acceptance.
+
+## Authorized-recipient update
+
+The preceding boundary describes the 02:10 UTC checkpoint. [F14](15-live-signup-acceptance.md) adds one successful real challenge, accepted confirmation, Gmail receipt and complete ordinary re-subscription cycle, including the GET/POST distinction in C20. It leaves concurrency, retry deduplication, all other browsers and signed provider-event suppression under their previous evidence limits. C23–C25 preserve the newly observed configuration failure and Spam placement instead of turning completion into an unconditional reliability claim.

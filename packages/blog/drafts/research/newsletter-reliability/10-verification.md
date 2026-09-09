@@ -1,5 +1,7 @@
 # Subscription bombing controls: local server verification
 
+Current acceptance: [September 9 live signup](15-live-signup-acceptance.md) completed after repairing the production verifier binding. One confirmation reached Gmail Spam, and its POST activated the authorized address. The entries below preserve their earlier evidence stages; “recipient needed” and “not sent” describe those checkpoints, not the current state.
+
 Checked September 9, 2026, at 01:49 UTC (September 8 PDT). The implementation is in the working tree awaiting integration. This receipt records local handler tests; deployment and production acceptance require separate evidence.
 
 All 37 [server regression tests](../../../test/newsletter.test.mjs) passed against the actual newsletter handlers and SQL migrations. The tests exercise admission, provider outcomes, token lifecycle, and signed webhook suppression. The [client receipt](12-client-verification.md) separately records 25 passing form tests and source type checking.
@@ -84,3 +86,9 @@ At `2026-09-09T02:10:26.088Z`, four bounded checks passed: unknown confirmation 
 The active version has the expected DB, native limiter, Turnstile and send-key bindings, but **no RESEND_WEBHOOK_SECRET**. Signed webhook suppression is therefore locally tested code awaiting its production connection. The existing Chrome session's Resend webhook URL redirected to login. Account access is needed to inspect existing endpoints and install the corresponding signing secret; do not infer that a live provider webhook exists.
 
 A single end-to-end confirmation message still needs an explicitly designated recipient. No address has been authorized in this session. The pending acceptance sequence is real challenge, request, provider acceptance, received email, GET preview and POST activation. General diagnostic ingestion/alerts and historical recovery remain open; none is completed by these deployment checks.
+
+## Authorized live acceptance — September 9, 02:38 UTC
+
+The owner designated one test address. The first real challenge exposed a current 503 / `invalid_secret` failure. Installing the existing recognized local secret in the production binding produced successful verification. The already-active address then completed ordinary unsubscribe, fresh signup, one provider-accepted confirmation, Gmail receipt, GET preview with pending state preserved, and POST activation. Final targeted reads confirmed active state, stable original creation/opt-out values, and revoked confirmation hash. No direct SQL mutation or rollback was needed.
+
+The message appeared in Gmail Spam. Delivery investigation is TASK-0145; live webhook connection remains TASK-0142. [Exact sequence, runtime versions, limits and private capture locations](15-live-signup-acceptance.md), [sanitized JSON](repro/live-signup-results.json). Seven diagnostic statements reported seven total reads and zero writes, excluding unmetered Worker endpoint work. No migration or local suite was rerun; this turn changed an operational secret binding and documentation, not runtime code.

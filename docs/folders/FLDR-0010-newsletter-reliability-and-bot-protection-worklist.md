@@ -2,7 +2,7 @@
 id: FLDR-0010
 title: Newsletter Reliability and Bot Protection Worklist
 created_at: '2026-09-07T05:07:50.125Z'
-updated_at: '2026-09-09T02:14:45.735Z'
+updated_at: '2026-09-09T02:48:13.551Z'
 type: folder
 ---
 Investigate the September 6, 2026 PDT subscription outage reported by Goga, establish the retained historical evidence, audit first-party browser error reporting, and decide whether Turnstile is proportionate for this newsletter. Keep production repair separate from the broader architectural decision. The immediate server evidence is Siteverify HTTP 400 with invalid-input-secret; this is not evidence that Cloudflare classified the reader as a bot. Count attempts and retained reports without inventing unique people or lost subscriptions. Preserve operational evidence privately and publish only sanitized findings. Develop an evidence-led article draft from the owned failure and the unresolved question; publication is a later editorial step. Research home: packages/blog/drafts/research/newsletter-reliability/.
@@ -32,3 +32,9 @@ The article and all new research Markdown remain in that directory, outside post
 ## Committed implementation and partial live acceptance — September 9 UTC
 
 Code `86dad93` is committed and pushed; final combined checks pass (100 blog tests, all workspace typechecks, production build). Migration 0005 is applied. Version e8c69b0d-3174-4e8f-a3f9-5788f2868686 was activated at 100%, and four bounded live HTTP checks verified the changed guards/copy. This is not complete signup acceptance: a designated recipient is still needed, and the missing production webhook signing-secret connection is TASK-0142. Exact results, known access limits and next actions are in [14-handoff.md](../../packages/blog/drafts/research/newsletter-reliability/14-handoff.md). Do not repeat the migration or rotate a verifier key from old incident evidence.
+
+## Authorized live acceptance — September 9, 02:38 UTC
+
+The owner-designated flow is complete after a newly observed invalid-secret failure and production binding repair. One confirmation reached Gmail Spam; GET preserved pending state and POST activated the address. Original creation time and unsubscribe token were preserved. TASK-0124, TASK-0129 and TASK-0137 are complete. [15-live-signup-acceptance.md](../../packages/blog/drafts/research/newsletter-reliability/15-live-signup-acceptance.md) records the exact method, versions and seven direct diagnostic reads.
+
+TASK-0145 tracks the Spam result and sender authentication; TASK-0142 still needs the signed provider-event connection. TASK-0125/0126 broader reporting/ingestion/alerts, TASK-0130 historical recovery and TASK-0128 unpublished article remain unfinished. The earlier recipient-needed passages are historical checkpoints. [14-handoff.md](../../packages/blog/drafts/research/newsletter-reliability/14-handoff.md) is the current resume point. No article was published, no attack traffic was generated, and migration 0005 was not repeated.

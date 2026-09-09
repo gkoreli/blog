@@ -2,7 +2,7 @@
 
 Started September 8 PDT / September 9 UTC, 2026. Backlog container: [FLDR-0010](../../../../../docs/folders/FLDR-0010-newsletter-reliability-and-bot-protection-worklist.md). This directory is the canonical worklist folder for all research Markdown, the evolving article, and verification evidence. Existing incident artifacts stay here with their original dates and limits.
 
-Goga asked to build the protection on his own platform and write **Subscription Bombing: How I Protect My Blog** in parallel. The incident that prompted the work was a verifier-secret failure; it is not evidence of an observed subscription-bombing attack. A separate session records an owner-reported signup repair. Reuse that receipt rather than assuming the old failure continues.
+Goga asked to build the protection on his own platform and write **Subscription Bombing: How I Protect My Blog** in parallel. The incident that prompted the work was a verifier-secret failure; it is not evidence of an observed subscription-bombing attack. The [September 9 live test](15-live-signup-acceptance.md) found a fresh invalid-secret failure, repaired the production binding, and completed one authorized subscription. The earlier owner-reported repair remains historical evidence, not acceptance of the current deployment.
 
 ## Active implementation
 
@@ -16,6 +16,7 @@ Goga asked to build the protection on his own platform and write **Subscription 
 | Reconcile production signup acceptance | TASK-0124 | Separate owner report, deployed code, schema, and a designated recipient's complete flow |
 | Engineering article and evidence ledger | TASK-0128 | Write alongside implementation; every material claim matches its evidence stage |
 | Connect provider bounce/complaint events | TASK-0142 | Inspect existing Resend endpoints, install the missing signing-secret binding privately, verify a signed event |
+| Investigate confirmation placement in Gmail Spam | TASK-0145 | Inspect this test message's authentication results and sender configuration; make only evidence-supported changes |
 
 The implemented starting policy is one confirmation admission per normalized address per ten minutes, at most three per address in a rolling 24 hours, and aggregate ceilings of 25 per rolling hour and 100 per rolling 24 hours. These are blog policy values, not measured safe thresholds or a statement of the current Resend account quota. Failed and ambiguous attempts stay charged. Native per-IP limiting and Turnstile remain additional controls. No attack traffic will be sent to production. [10-verification.md](10-verification.md) separates local results, migration, deployment and live-email acceptance.
 
@@ -37,11 +38,12 @@ The implemented starting policy is one confirmation admission per normalized add
 | [11-adversarial-review.md](11-adversarial-review.md) | Independent failure analysis and subsequent diff review |
 | [12-client-verification.md](12-client-verification.md) | Browser implementation and controlled test receipt |
 | [13-data-access-decision.md](13-data-access-decision.md) | ORM benefits, prepared-SQL tradeoffs, and scoped recommendation |
-| [14-handoff.md](14-handoff.md) | Committed work, applied migration, partial live acceptance and exact next steps |
+| [14-handoff.md](14-handoff.md) | Committed work, applied migration, completed live test and exact next steps |
+| [15-live-signup-acceptance.md](15-live-signup-acceptance.md) | Current invalid-secret repair, authorized email/activation receipt, query budget and Gmail Spam finding |
 | [article.md](article.md) | Evolving unpublished engineering article |
 | [source.prompts.md](source.prompts.md) | Complete shaping prompts in chronological order |
 | `repro/` | Saved original probes and measured results; retain historical outputs unchanged |
 
 Implementation and article development are concurrent. Runtime edits, article prose, and review artifacts have separate owners for this session. The parent integrates and verifies the combined result. Production queries, migrations, sends, and deployments are recorded separately; the article is not published merely because the implementation is pushed.
 
-Latest checkpoint: implementation `86dad93` is committed and deployed; migration 0005 is applied. The final combined 100-test suite, typechecks and build pass. Full live signup still needs a designated recipient, and production webhook setup is missing. [Resume here](14-handoff.md). The original `repro/audit.mjs` and `repro/lifecycle.mjs` target the September 7 source and preserve historical failures; use the current regression suite and D1 probe for the new contract.
+Latest checkpoint: implementation `86dad93` is committed and deployed; migration 0005 is applied. The final combined 100-test suite, typechecks and build pass. The designated-recipient flow completed on September 9 UTC after a production secret-binding repair; the address is active. Gmail placed the confirmation in Spam, and production webhook setup is still missing. [Resume here](14-handoff.md). The original `repro/audit.mjs` and `repro/lifecycle.mjs` target the September 7 source and preserve historical failures; use the current regression suite and D1 probe for the new contract.

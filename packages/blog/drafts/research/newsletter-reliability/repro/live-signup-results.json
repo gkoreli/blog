@@ -1,0 +1,124 @@
+{
+  "checkedAt": "2026-09-09T02:38:58.250644+00:00",
+  "implementationCommit": "86dad93",
+  "authorization": "One owner-designated address; exact authorization and address retained privately.",
+  "method": "Native Chrome form with real Turnstile; one ordinary unsubscribe POST for an already-active address; Gmail message inspection and confirmation GET/POST; targeted D1 reads.",
+  "events": [
+    {
+      "at": "2026-09-09T02:26:10.890000+00:00",
+      "workerVersion": "dd8e6377-19ee-40e3-8fa5-85e4c4283073",
+      "httpStatus": 503,
+      "logs": [
+        {
+          "attemptId": "b8a89646-f9c7-453f-9607-e152ad32d923",
+          "mode": "subscribe",
+          "stage": "verification_failed",
+          "reason": "invalid_secret"
+        }
+      ]
+    },
+    {
+      "at": "2026-09-09T02:32:56.767000+00:00",
+      "workerVersion": "cb0c95ff-9409-402b-9999-1aa16d43bc89",
+      "httpStatus": 202,
+      "logs": [
+        {
+          "attemptId": "fc7b1eb6-311c-4401-877b-4554512e389f",
+          "mode": "subscribe",
+          "stage": "unchanged"
+        }
+      ]
+    },
+    {
+      "at": "2026-09-09T02:34:59.786000+00:00",
+      "workerVersion": "7501d89c-c3ac-4b05-9ec3-748eb4d0a800",
+      "httpStatus": 202,
+      "logs": [
+        {
+          "attemptId": "61e82d0a-de64-4ff8-bb60-1f80dd4eb692",
+          "mode": "subscribe",
+          "stage": "reserved"
+        },
+        {
+          "attemptId": "61e82d0a-de64-4ff8-bb60-1f80dd4eb692",
+          "mode": "subscribe",
+          "stage": "accepted",
+          "providerStatus": 200
+        }
+      ]
+    }
+  ],
+  "mailbox": {
+    "matchingMessagesObserved": 1,
+    "folder": "Spam",
+    "displayedAt": "19:35 PDT, September 8, 2026",
+    "explanation": "Similar to messages previously identified as spam; causal diagnosis unverified.",
+    "authenticationHeadersInspected": false
+  },
+  "lifecycle": {
+    "initial": "active",
+    "afterResubscribe": "pending",
+    "afterConfirmationGet": "pending",
+    "afterConfirmationPost": "active",
+    "confirmedAt": "2026-09-09 02:38:29",
+    "originalCreatedAtPreserved": true,
+    "originalUnsubscribeTokenPreserved": true,
+    "subscriberConfirmationTokenCleared": true,
+    "acceptedAttemptCountForAddress": 1,
+    "acceptedAttemptRevokedAfterActivation": true
+  },
+  "directSql": {
+    "statements": [
+      {
+        "capture": "before.json",
+        "statement": 1,
+        "rowsRead": 1,
+        "rowsWritten": 0
+      },
+      {
+        "capture": "original-subscriber-private.json",
+        "statement": 1,
+        "rowsRead": 1,
+        "rowsWritten": 0
+      },
+      {
+        "capture": "pending-check-private.json",
+        "statement": 1,
+        "rowsRead": 1,
+        "rowsWritten": 0
+      },
+      {
+        "capture": "pending-check-private.json",
+        "statement": 2,
+        "rowsRead": 1,
+        "rowsWritten": 0
+      },
+      {
+        "capture": "after-preview-private.json",
+        "statement": 1,
+        "rowsRead": 1,
+        "rowsWritten": 0
+      },
+      {
+        "capture": "final-active-private.json",
+        "statement": 1,
+        "rowsRead": 1,
+        "rowsWritten": 0
+      },
+      {
+        "capture": "final-active-private.json",
+        "statement": 2,
+        "rowsRead": 1,
+        "rowsWritten": 0
+      }
+    ],
+    "totalRowsRead": 7,
+    "totalRowsWritten": 0,
+    "scope": "Targeted diagnostic statements only. Worker endpoint SQL is not metered in these HTTP receipts; these are read-work units, not people or subscriber counts."
+  },
+  "limits": [
+    "One mailbox and browser; no audience-wide completion or inbox-placement claim.",
+    "No production attack traffic, provider retry-deduplication experiment, or lost-address recovery.",
+    "Signed bounce/complaint events remain unconnected; general diagnostic ingestion/alerts remain open."
+  ]
+}
