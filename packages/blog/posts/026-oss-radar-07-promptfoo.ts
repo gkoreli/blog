@@ -2,6 +2,21 @@ import { staticHtml as html } from '@nisli/core/static';
 import type { PostMeta } from '../src/lib/frontmatter.js';
 import { FlowDiagram, OssRadarHero, Sources } from '../src/templates/components.js';
 
+const researchFootprint = {
+  "sessions": 8,
+  "artifacts": 23,
+  "totalTokens": 43272331,
+  "inputTokens": 43096350,
+  "cachedInputTokens": 40628992,
+  "outputTokens": 175981,
+  "reasoningOutputTokens": 59745,
+  "wallClockMinutes": 3068,
+  "startedAt": "2026-09-09T00:18:40.705Z",
+  "measuredAt": "2026-09-11T03:26:22.382Z",
+  "provenanceUrl": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/19-research-footprint.md",
+  "scope": "Measured portion: recovered Codex research, canvas work, automatic reviews, publication checks, sharing preparation, and accounting. Original ChatGPT research has no recovered usage log. The mixed analytics/publication parent and one review without usage are excluded. These are contributing-session totals, not the complete research total or an exclusive writing cost. The 15 human prompts describe the public provenance record, including work outside the measured sessions."
+};
+
 export const meta: PostMeta = {
   title: 'OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?',
   seoTitle: 'Promptfoo Review: Preserving AI Citation Evidence',
@@ -11,6 +26,7 @@ export const meta: PostMeta = {
   section: 'oss-radar', layout: 'immersive', featured: false,
   tags: ['oss-radar', 'promptfoo', 'ai-evaluation', 'analytics'],
   images: [], slug: 'oss-radar-07-promptfoo',
+  researchFootprint,
 };
 
 const sources = [
@@ -251,13 +267,13 @@ export function preamble() {
     title: html`<h1>Promptfoo: Can It Preserve the Evidence <em>Behind an AI Answer?</em></h1>`,
     subtitle: 'The answer survived. Its structured citations depended on the adapter. We tested the capture, failures, and exports.',
     author: 'Goga Koreli', readTime: '12 min read', canvasMode: 'evidence', canvasSeed: 7,
-    footprint: { label: 'Runnable experiments · captured records · research notes', url: 'https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-07' },
+    footprint: { label: `${(researchFootprint.totalTokens / 1_000_000).toFixed(1)}M measured tokens · partial footprint`, url: '/oss-radar-07-promptfoo/prompts#research-footprint' },
   });
 }
 
 export function article() {
   return html`<article class="post-content">
-<p class="post-lede">Promptfoo&#39;s evaluation runner can keep citation evidence through its database and JSON exports, provided we capture it explicitly. In our September 8 checks of version 0.122.2, the built-in OpenRouter summary omitted the fixture&#39;s structured citation fields; the transport cache retained them. A custom provider also preserved successful and failed attempt records after a database restart. This makes Promptfoo worth trying for citation evaluation, with a tested capture layer. All responses in these checks were synthetic. <a href="https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/README.md" target="_blank" rel="noopener">Original comparison</a>; <a href="https://github.com/gkoreli/blog/blob/5fc2dc5dc40ad2397a78325e3a192485b44e8cb5/packages/blog/drafts/research/oss-radar-07/repro/capture/README.md" target="_blank" rel="noopener">failure and export checks</a>.</p>
+<p class="post-lede">Promptfoo&#39;s evaluation runner can keep citation evidence through its database and JSON exports, provided we capture it explicitly. On September 8, we tested version 0.122.2 using local servers and made-up AI responses. Promptfoo&#39;s built-in connector for OpenRouter left the structured citation fields out of its evaluation summary; the transport cache retained them. A custom provider also preserved successful and failed attempt records after a database restart. This makes Promptfoo worth trying for citation evaluation, with a tested capture layer. No request went to OpenRouter or any model service. <a href="https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/README.md" target="_blank" rel="noopener">Original comparison</a>; <a href="https://github.com/gkoreli/blog/blob/5fc2dc5dc40ad2397a78325e3a192485b44e8cb5/packages/blog/drafts/research/oss-radar-07/repro/capture/README.md" target="_blank" rel="noopener">failure and export checks</a>.</p>
 <ul>
 <li><strong>The adapter decides what reaches the evaluator.</strong> Answer text survived all three original paths; structured citations survived the cache and custom capture.</li>
 <li><strong>The repair survives more than a successful response.</strong> Ten controlled cases retained every attempt through the library exporter and a fresh CLI process. One local trace also kept the explicit link to its saved attempt.</li>
@@ -438,7 +454,7 @@ ${Sources({items: sources})}
 <p>Dates are publication dates unless marked <strong>checked</strong>. Pinned Promptfoo code and documentation refer to the tested 0.122.2 release. Our artifacts record a synthetic-response experiment; the standards and studies supply concepts and methods, not measurements of this blog&#39;s citation rate.</p>
 
 <h3>Research record</h3>
-<p>The <a href="https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/00-worklist-index.md" target="_blank" rel="noopener">worklist</a> links the experiments, research notes, and open work. The <a href="https://github.com/gkoreli/blog/blob/main/packages/blog/prompts/oss-radar-07-promptfoo.prompts.md" target="_blank" rel="noopener">verbatim shaping prompts</a> are preserved for this issue at the author&#39;s request. The methods record the runtimes, dependency lock, scripts, results, and failed setup attempts. Codex executed the experiments for this article; Goga supplied the workload and editorial direction. Research-session token totals and hands-on time have not been measured.</p>
+<p>The <a href="https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/00-worklist-index.md" target="_blank" rel="noopener">worklist</a> links the experiments, research notes, and open work. The <a href="https://github.com/gkoreli/blog/blob/main/packages/blog/prompts/oss-radar-07-promptfoo.prompts.md" target="_blank" rel="noopener">verbatim shaping prompts</a> are preserved for this issue at the author&#39;s request. The methods record the runtimes, dependency lock, scripts, results, and failed setup attempts. Codex executed the experiments for this article; Goga supplied the workload and editorial direction. A <a href="/oss-radar-07-promptfoo/prompts#research-footprint">partial research footprint</a> records 43,272,331 tokens across eight recovered Codex sessions. The original ChatGPT research and the mixed analytics/publication conversation are excluded. The <a href="https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/19-research-footprint.md" target="_blank" rel="noopener">accounting method and exclusions</a> explain the measured portion; human hands-on time remains unmeasured.</p>
 
 </section>
 <h2 id="glossary">Glossary</h2>

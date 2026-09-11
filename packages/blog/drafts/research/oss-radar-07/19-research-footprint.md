@@ -62,4 +62,8 @@ The private logs contain conversation and system context and are not committed. 
 
 ## Release verification
 
-The final freeze and served footprint are recorded here after the selected sessions have finished and their hashes, arithmetic, artifact counts, and rendered values have been checked. The article's initial release is separately documented in [artifact 18](18-publication-verification.md).
+The freeze records **43,272,331 tokens across 8 sessions**, with **15 public human prompts** and **23 committed Markdown artifacts**. It contains 43,096,350 input tokens (40,628,992 cached) and 175,981 output tokens, including 59,745 reasoning tokens. Non-cached input is 2,467,358. No included session had a cumulative-counter reset.
+
+Usage runs from `2026-09-09T00:18:40.705Z` to `2026-09-11T03:26:22.382Z`: 3,068 elapsed minutes. The manifest was frozen at `2026-09-11T03:28:18.675Z`. The attribution note and fifteen-prompt set were committed in `e3607d2` before extraction; guardian support and its regression were committed in `7489180`. All eight private session prefixes and epoch boundaries matched their hashes and recorded usage; arithmetic and identical local/HEAD Markdown path sets passed. No included session ID appears in another existing article footprint manifest. This does not make the measured work an exclusive writing cost.
+
+The original article release is separately documented in [artifact 18](18-publication-verification.md). The footprint revision also clarifies that the OpenRouter connector test used local servers and made-up responses; no OpenRouter service or model was called. Final rendered and live acceptance will be appended after this revision is deployed.
