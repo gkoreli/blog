@@ -2,13 +2,13 @@
 id: FLDR-0011
 title: OSS Radar 07 Worklist
 created_at: '2026-09-08T19:21:39.000Z'
-updated_at: '2026-09-11T16:58:13.953737+00:00'
+updated_at: '2026-09-11T17:07:29.943793+00:00'
 type: folder
 ---
 
 OSS Radar #07 now covers **AI citations, research agents, attribution, and engineering-source credibility** as an OSS cohort. OpenScholar and STORM receive the most attention; Promptfoo supplies one real capture experiment. The former one-project article is preserved in dated publication history.
 
-**Current state — September 11:** research, manuscript, and three independent reviews are complete; final checks and release verification are in progress. The [rewrite acceptance](../../packages/blog/drafts/research/oss-radar-07/32-ai-citations-rewrite-acceptance.md) owns the current article state, metadata, and verification. The [worklist](../../packages/blog/drafts/research/oss-radar-07/00-worklist-index.md) links all research and experiments.
+**Current state — September 11:** the rewrite is **published and verified at `4f8e39e`**. Research, manuscript, three independent reviews, final build, desktop/mobile checks, and live-content acceptance are complete. The [rewrite acceptance](../../packages/blog/drafts/research/oss-radar-07/32-ai-citations-rewrite-acceptance.md) owns the current article state, metadata, and verification. The [worklist](../../packages/blog/drafts/research/oss-radar-07/00-worklist-index.md) links all research and experiments.
 
 The two real subscription CLI answers and source review remain completed evidence. Earlier local response fixtures did not call OpenRouter or a model; see the [claim audit](../../packages/blog/drafts/research/oss-radar-07/23-openrouter-claim-audit.md). The current prompt page contains nineteen exact messages. The frozen partial footprint measures earlier work and excludes the real runs and full rewrite.
 

@@ -1,0 +1,102 @@
+{
+  "checkedAt": "2026-09-11T17:06:11.148016+00:00",
+  "commit": "4f8e39e766145bed4464fdf31c1c3d1a9a7e26e9",
+  "url": "https://gkoreli.com/oss-radar-07-promptfoo",
+  "title": "AI Citations: Do Agents Preserve the Evidence Behind an Answer?",
+  "responses": {
+    "article": {
+      "status": 200,
+      "url": "https://gkoreli.com/oss-radar-07-promptfoo",
+      "contentType": "text/html",
+      "cfRay": "a39842ee6d37cb73-PDX",
+      "contentLocation": null,
+      "sha256": "683ee1d02f2db820d77c3c10bae070077b65933d0f65a18b8482311c092f1ffb",
+      "bytes": 51366
+    },
+    "markdown": {
+      "status": 200,
+      "url": "https://gkoreli.com/oss-radar-07-promptfoo.md",
+      "contentType": "text/markdown; charset=utf-8",
+      "cfRay": "a39842ee78d068f1-PDX",
+      "contentLocation": null,
+      "sha256": "d58faf801eeb36ded5a7919250b75b02ccb1320d9431509e22de2ea1c3b01b4b",
+      "bytes": 34042
+    },
+    "prompts": {
+      "status": 200,
+      "url": "https://gkoreli.com/oss-radar-07-promptfoo/prompts",
+      "contentType": "text/html",
+      "cfRay": "a39842ee6c4fc654-PDX",
+      "contentLocation": null,
+      "sha256": "c263df1a96b953d096c5c43691f2e0610ec9a1f4ad2d14e6dfbceaed6d61f454",
+      "bytes": 21196
+    },
+    "negotiatedMarkdown": {
+      "status": 200,
+      "url": "https://gkoreli.com/oss-radar-07-promptfoo",
+      "contentType": "text/markdown; charset=utf-8",
+      "cfRay": "a39842ee6bdaeedd-PDX",
+      "contentLocation": "/oss-radar-07-promptfoo.md",
+      "sha256": "d58faf801eeb36ded5a7919250b75b02ccb1320d9431509e22de2ea1c3b01b4b",
+      "bytes": 34042
+    },
+    "citation": {
+      "status": 200,
+      "url": "https://gkoreli.com/oss-radar-07-promptfoo",
+      "contentType": "application/vnd.citationstyles.csl+json",
+      "cfRay": "a39842ef79b683fb-BOS",
+      "contentLocation": null,
+      "sha256": "f258835a139ec2497d1d52e6381f4d4d17d94f9cf0c19cb8a50558b40ba6ba4f",
+      "bytes": 476
+    },
+    "catalog": {
+      "status": 200,
+      "url": "https://gkoreli.com/posts.json",
+      "contentType": "application/json",
+      "cfRay": "a39842ee5edc75a6-SEA",
+      "contentLocation": null,
+      "sha256": "cd5411681402220a18fe4aa824d2e1c08f23fd801b8e2c0ba2725197c0aafacb",
+      "bytes": 20338
+    },
+    "ogImage": {
+      "status": 200,
+      "url": "https://gkoreli.com/og/oss-radar-07-promptfoo.png",
+      "contentType": "image/png",
+      "cfRay": "a39842eecf25f570-SEA",
+      "contentLocation": null,
+      "sha256": "886ca88967f56c53e774da708056d46868e80fbae46d88113685a1c9c7f2af60",
+      "bytes": 126170
+    },
+    "manifest": {
+      "status": 200,
+      "url": "https://raw.githubusercontent.com/gkoreli/blog/4f8e39e766145bed4464fdf31c1c3d1a9a7e26e9/packages/blog/drafts/research/oss-radar-07/research-footprint.json",
+      "contentType": "text/plain; charset=utf-8",
+      "cfRay": null,
+      "contentLocation": null,
+      "sha256": "36d3e870bd4d6efae26e45af1035065f7b071934f21f907c5aa75f048657dbd0",
+      "bytes": 17555
+    }
+  },
+  "checks": [
+    {
+      "name": "Workers Builds: gkoreli-com",
+      "status": "completed",
+      "conclusion": "success",
+      "completedAt": "2026-09-11T17:05:39Z",
+      "detailsUrl": "https://dash.cloudflare.com/7e0dc86ef69b4572a63162a52cddd269/workers/services/view/gkoreli-com/production/builds/9e29fd1f-b1c6-496c-b58c-69f4742548d5"
+    }
+  ],
+  "articleBodyExactMatch": true,
+  "articleBodySha256": "f8f4eb442eb629229f154c3c54744700c797deaf4621a1efaea69520376d8036",
+  "markdownExactMatch": true,
+  "negotiatedMarkdownExactMatch": true,
+  "ogImageExactMatch": true,
+  "publicManifestExactMatch": true,
+  "exactPromptsMatch": true,
+  "promptCount": 19,
+  "citationTitleMatch": true,
+  "catalogTitleMatch": true,
+  "footprintExplicitlyExcludesRewrite": true,
+  "wholePageEqualityRequired": false,
+  "wholePageNote": "Cloudflare-injected scripts can differ; the complete article body and served alternate representations are compared."
+}

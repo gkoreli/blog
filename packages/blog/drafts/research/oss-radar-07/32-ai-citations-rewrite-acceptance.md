@@ -1,6 +1,6 @@
 # AI-citations rewrite: acceptance and publication
 
-September 11, 2026. Parent synthesis on `main`, following the full request preserved as prompt 19. **Current state: research, manuscript review, final build, and local acceptance complete; live release verification pending.** The earlier article remains live until this replacement deploys.
+September 11, 2026. Parent synthesis on `main`, following the full request preserved as prompt 19. **Published and verified:** release `4f8e39e` replaces the earlier Promptfoo-centered article. Research, manuscript review, final build, local acceptance, and live checks are complete.
 
 ## What changed
 
@@ -39,6 +39,8 @@ Final client/Worker type checking and the production build pass; the build conta
 
 The [viewport checks and screenshots](repro/rewrite-review/README.md) use explicit 1440×1000 and 390×844 dimensions. The hero, opening, and comparison table were visually inspected. All tables fit the desktop article width; mobile tables scroll inside their own wrappers, with no document overflow. The generated social image has the new title and was visually checked. `git diff --check` passes. The native UI connection was unavailable; a fresh local headless Chrome profile provided the preview.
 
-The live release receipt will record the deployed commit/build and served-content comparison once the new commit is pushed. The original generation scripts and code findings remain separate from publication verification.
+The [live release receipt](ai-citations-rewrite-verification.json) records release **`4f8e39e766145bed4464fdf31c1c3d1a9a7e26e9`**. Cloudflare build **`9e29fd1f-b1c6-496c-b58c-69f4742548d5`** completed successfully at **2026-09-11T17:05:39Z**. Acceptance at **17:06:11 UTC** returned HTTP 200 for every checked surface. The complete article body, explicit Markdown, negotiated Markdown, social image, and pinned public footprint manifest match the local build/manifest exactly. All nineteen prompts match their source; the live footprint scope excludes the rewrite. CSL-JSON and the post catalog carry the new title.
+
+The first multi-surface probe observed the earlier footprint-scope paragraph on the prompts page while the article body was already current. A fresh check and the full repeated probe returned the new scope and passed. This was a transient mixed-version observation during release checking; its cause was not diagnosed. The receipt records the fully matching result, not that initial partial state. Whole-page byte equality is unnecessary because Cloudflare may inject scripts; the complete article body is compared. The original generation scripts and code findings remain separate from publication verification.
 
 The larger citation-frequency study and a distinct analytics engineering continuation remain open work. They are not prerequisites for publishing these completed findings and are not counted as completed by this article.

@@ -4,11 +4,11 @@ title: OSS Radar 07 AI citations research, article, and engineering continuation
 status: in_progress
 parent_id: FLDR-0011
 created_at: '2026-09-08T19:21:39.000Z'
-updated_at: '2026-09-11T16:58:13.953737+00:00'
+updated_at: '2026-09-11T17:07:29.943793+00:00'
 type: task
 ---
 
-**Current article state — September 11:** the full AI-citations rewrite is researched, written, and independently reviewed. Final publication checks and release verification are in progress in [acceptance 32](../../packages/blog/drafts/research/oss-radar-07/32-ai-citations-rewrite-acceptance.md). The governing subject is **AI Citations: Do Agents Preserve the Evidence Behind an Answer?** The author's latest request supersedes the earlier requirement to make Promptfoo the article's center.
+**Current article state — September 11:** the full AI-citations rewrite is **published and verified at `4f8e39e`**. Completed research, three independent reviews, build/viewport checks, and exact live-content matches are recorded in [acceptance 32](../../packages/blog/drafts/research/oss-radar-07/32-ai-citations-rewrite-acceptance.md). The governing subject is **AI Citations: Do Agents Preserve the Evidence Behind an Answer?** The author's latest request supersedes the earlier requirement to make Promptfoo the article's center.
 
 This task retains its separate engineering-continuation scope, so article publication alone does not complete the whole task. The larger citation-frequency pilot is also unrun. Neither is a release gate for the findings already established.
 
@@ -32,8 +32,7 @@ Historical receipts: [first publication](../../packages/blog/drafts/research/oss
 
 ## Remaining scope
 
-1. Complete the final rewrite checks and verify the Cloudflare release.
-2. Separately implement a useful analytics continuation with new operating evidence, using the [measurement contract](../../packages/blog/drafts/research/oss-radar-07/07-citation-measurement-contract.md). It must answer a distinct question from this OSS synthesis.
-3. Keep the larger citation-frequency pilot and [Trellner research task](TASK-0132-explore-trellner-research-further-ai-citation-sources-and-a.md) explicitly uncompleted until their own evidence requirements are met. The two directed answers cannot establish organic discovery or a population error rate.
+1. Separately implement a useful analytics continuation with new operating evidence, using the [measurement contract](../../packages/blog/drafts/research/oss-radar-07/07-citation-measurement-contract.md). It must answer a distinct question from this OSS synthesis.
+2. Keep the larger citation-frequency pilot and [Trellner research task](TASK-0132-explore-trellner-research-further-ai-citation-sources-and-a.md) explicitly uncompleted until their own evidence requirements are met. The two directed answers cannot establish organic discovery or a population error rate.
 
 Do not repeat completed fixture, CLI, or review work as if unrun. Do not restore the old browser-only blocker: the subscription CLI route already ran successfully. Share-copy preparation does not authorize posting to X or HN.

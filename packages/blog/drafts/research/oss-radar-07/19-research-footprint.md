@@ -80,3 +80,5 @@ The [subscription CLI experiments](20-subscription-cli-experiment.md), [source r
 ## September 11 claim correction and rewrite
 
 The OpenRouter claim challenge and the full AI-citations rewrite request add two more exact prompts, bringing the current page to nineteen messages. This later work is outside the frozen manifest. The fifteen-prompt snapshot, token totals, session set, and artifact count above remain historical measurements. See the [claim audit](23-openrouter-claim-audit.md) and [rewrite brief](27-ai-citations-rewrite-brief.md).
+
+The full AI-citations rewrite was published at `4f8e39e` and [verified live](32-ai-citations-rewrite-acceptance.md) on September 11. Its hero labels the total as earlier research, and the transparency scope explicitly excludes the cohort rewrite. The public manifest still matches the original SHA-256. No new accounting is implied by the completed rewrite.

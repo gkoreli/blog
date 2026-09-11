@@ -17,7 +17,7 @@ Initial research sample: ALCE, Self-RAG, STORM/Co-STORM (one repository), OpenSc
 | Cited-answer generation: ALCE, Self-RAG, STORM, OpenScholar | `radar07_source_refresh` | [Generation audit](24-citation-generation-oss.md) | Complete; source and metric audit saved |
 | Evaluation and observability: Ragas, DeepEval, TruLens, Phoenix | `footprint_guardian_support` | [Evaluation audit](25-citation-evaluation-oss.md) | Complete; source and metric audit saved |
 | Citation faithfulness, human/model source credibility, publisher implications | `radar07_share_copy` | [Credibility audit](26-source-credibility-and-citation-evidence.md) | Complete; source and metric audit saved |
-| Article 01 analysis, synthesis, claim acceptance, manuscript, release | Parent | This brief, manuscript, publication module, [acceptance](32-ai-citations-rewrite-acceptance.md) | Manuscript and reviews complete; final release checks in progress |
+| Article 01 analysis, synthesis, claim acceptance, manuscript, release | Parent | This brief, manuscript, publication module, [acceptance](32-ai-citations-rewrite-acceptance.md) | Complete: release `4f8e39e` published and live-verified |
 
 Each research artifact must include primary links, check dates, repository SHAs, at least one code fact per inspected project, numbers with task and denominator, a claim/evidence table, competing explanations, and useful adoption judgments. Literature findings remain attributed to their authors. Code inspection is not a reproduced result. The local OpenRouter test is not live inference.
 

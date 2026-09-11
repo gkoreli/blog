@@ -1,6 +1,6 @@
 # OSS Radar #07 worklist
 
-**Current state — September 11, 2026:** The full rewrite is researched, written, and independently reviewed. Final build and release verification are in progress in the [rewrite acceptance](32-ai-citations-rewrite-acceptance.md). The new subject is **AI Citations: Do Agents Preserve the Evidence Behind an Answer?** Promptfoo is one tested section within an OSS cohort about generation, evaluation, attribution, and source credibility.
+**Current state — September 11, 2026:** The full rewrite is **published and verified at `4f8e39e`**. The [rewrite acceptance](32-ai-citations-rewrite-acceptance.md) records the completed research, three independent reviews, build, viewport checks, and exact live-content matches. The new subject is **AI Citations: Do Agents Preserve the Evidence Behind an Answer?** Promptfoo is one tested section within an OSS cohort about generation, evaluation, attribution, and source credibility.
 
 **Article form:** OSS Radar cohort synthesis under the [rewrite brief](27-ai-citations-rewrite-brief.md). The earlier one-project restriction is superseded. The sample includes ten inspected candidates; nine appear in the article, including Phoenix as a disclosed source-available comparator. DeepTRACE headline comparisons were declined after audit. PaperQA2 is a paper baseline, not an independently inspected candidate.
 
@@ -29,7 +29,7 @@
 | Exercise capture failures, persistence, and tracing | Complete: 10 synthetic cases, 11 HTTP attempts, explicit local join | [Method and accepted exports](repro/capture/README.md) |
 | Verify and publish OSS Radar #07 | Complete: release `ccd6bc6`, Cloudflare activation, and served-content acceptance | [Publication verification](18-publication-verification.md) |
 | Recover and publish research footprint | Complete: 43,272,331 measured tokens, eight sessions, explicit exclusions, and live acceptance | [Footprint methodology and receipt](19-research-footprint.md) |
-| Rewrite Radar #07 around AI citations and the OSS landscape | Research, writing, and reviews complete; final checks and release in progress | [Acceptance](32-ai-citations-rewrite-acceptance.md), [brief](27-ai-citations-rewrite-brief.md) |
+| Rewrite Radar #07 around AI citations and the OSS landscape | Complete: released and live-verified at `4f8e39e` | [Acceptance](32-ai-citations-rewrite-acceptance.md), [brief](27-ai-citations-rewrite-brief.md) |
 | Develop the engineering continuation | Open | Requires useful blog code and new operating evidence |
 
 Formal tracker: [FLDR-0011](../../../../../docs/folders/FLDR-0011-oss-radar-07-worklist.md). Execution task: [TASK-0134](../../../../../docs/tasks/TASK-0134-oss-radar-07-project-experiment-and-article.md).
@@ -92,6 +92,6 @@ The original controlled tests established how Promptfoo's OpenRouter connector h
 
 ## Next bounded action
 
-Finish publication checks and verify the rewritten release under [acceptance 32](32-ai-citations-rewrite-acceptance.md). Research, directed CLI experiments, and independent manuscript reviews are complete; do not repeat them as if unrun. The [sharing copy](../../social/oss-radar-07-promptfoo/launch.md) is prepared but not posted.
+No article work remains for this rewrite. [Acceptance 32](32-ai-citations-rewrite-acceptance.md) verifies the published release. Research, directed CLI experiments, and independent manuscript reviews are complete; do not repeat them as if unrun. The [sharing copy](../../social/oss-radar-07-promptfoo/launch.md) is prepared but not posted.
 
 The larger citation-frequency study and distinct engineering continuation remain open. The existing fixture/trace work is complete. The original footprint manifest remains frozen and excludes every later continuation; current prompt and artifact counts must not be substituted into that historical freeze.
