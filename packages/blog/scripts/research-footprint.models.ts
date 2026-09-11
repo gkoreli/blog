@@ -15,13 +15,19 @@ export const spawnSourceSchema = z.looseObject({
   }),
 });
 
+export const guardianSourceSchema = z.looseObject({
+  subagent: z.looseObject({
+    other: z.literal('guardian'),
+  }),
+});
+
 export const sessionMetaSchema = z.looseObject({
   type: z.literal('session_meta'),
   payload: z.looseObject({
     id: z.string(),
     timestamp: z.string(),
     cwd: z.string(),
-    source: z.union([z.string(), spawnSourceSchema]),
+    source: z.union([z.string(), spawnSourceSchema, guardianSourceSchema]),
   }),
 });
 
@@ -330,8 +336,12 @@ export function readCodexSession(logPath: string, usageCutoffs: Map<string, numb
 
   if (!meta) return null;
   const source = meta.payload.source;
-  const parentId = typeof source === 'string' ? undefined : source.subagent.thread_spawn.parent_thread_id;
-  const agentPath = typeof source === 'string' ? '/root' : source.subagent.thread_spawn.agent_path ?? basename(logPath);
+  const spawned = spawnSourceSchema.safeParse(source);
+  // Guardian metadata has no parent link; inclusion requires an explicit root.
+  const parentId = spawned.success ? spawned.data.subagent.thread_spawn.parent_thread_id : undefined;
+  const agentPath = spawned.success
+    ? spawned.data.subagent.thread_spawn.agent_path ?? basename(logPath)
+    : typeof source === 'string' ? '/root' : '/guardian';
   const [firstTokenEvent, ...remainingTokenEvents] = tokenEvents;
   if (!firstTokenEvent) {
     return {
