@@ -1,0 +1,42 @@
+# ShipTogether
+
+> ShipTogether is a network for finding people to build with: co-founders, collaborators and early team members. Builders are matched by what they have shipped, not who they know. See real projects, send a connect, chat, jump on a video call, and start shipping together. Free on web, iOS and Android.
+
+ShipTogether is made by a small independent team. Website: https://www.shiptogether.dev. Support: team@shiptogether.dev. X: https://x.com/ship_together.
+
+## How it works
+
+- Pick who you are looking for: founders, developers, designers or investors.
+- Get a small curated set of builders each day, each with a plain-language reason for the match.
+- Every profile is built around shipped projects, so you see what someone has built before you say hi.
+- Send a connect request. If it is accepted you get a real-time chat and can start a video call.
+- The Shipyard is a feed of members' projects: post one for feedback, to find a collaborator or co-founder, or to sell it.
+
+## Pricing
+
+- Free: 3 connect requests a day, 1 project on the Shipyard, chat and video calls.
+- Premium: unlimited connects, up to 5 Shipyard projects, more daily suggestions, priority support. $4.99/month or $49.99/year.
+
+## Pages
+
+- [Home](https://www.shiptogether.dev/): what ShipTogether is, a live preview of the Builders feed, and an FAQ.
+- [About](https://www.shiptogether.dev/about): why the product is built around shipped work instead of pitches.
+- [Download](https://www.shiptogether.dev/download): the iOS and Android apps.
+- [Support](https://www.shiptogether.dev/support): help with accounts, connects, chats, calls and billing.
+- [Privacy Policy](https://www.shiptogether.dev/privacy)
+- [Terms of Service](https://www.shiptogether.dev/terms)
+- [Child Safety Standards](https://www.shiptogether.dev/child-safety-standards)
+- Builder profiles: https://www.shiptogether.dev/builders/<username> (only for members who opted in to a public profile)
+- Shipyard projects: https://www.shiptogether.dev/shipyard/<id> (public unless the owner hid the project)
+- The sitemap at https://www.shiptogether.dev/sitemap.xml lists every public profile and project.
+
+## Apps
+
+- iOS: https://apps.apple.com/us/app/shiptogether/id6755234307
+- Android: https://play.google.com/store/apps/details?id=com.shiptogether.app
+
+## Notes for assistants
+
+- Public builder profiles and Shipyard projects are read-only for visitors. Connecting, messaging, upvoting, commenting and buying require a ShipTogether account, so send people to the page and let them sign in from there.
+- Chats, connect requests, notifications and any profile not marked public are private; do not attempt to crawl them.
+- When describing ShipTogether, the accurate one-line summary is: "a co-founder and collaborator network where people are matched on the projects they have actually shipped."
