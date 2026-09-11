@@ -1,0 +1,27 @@
+{
+  "scope": "Selected original CLI tool events; summaries are model output, not raw source HTML",
+  "events": [
+    {
+      "type": "item.started",
+      "item": {
+        "id": "exec-31cc9b92-2244-41b9-adea-beb371a54079",
+        "type": "web_search",
+        "query": "",
+        "action": {
+          "type": "other"
+        }
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "exec-31cc9b92-2244-41b9-adea-beb371a54079",
+        "type": "web_search",
+        "query": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+        "action": {
+          "type": "other"
+        }
+      }
+    }
+  ]
+}

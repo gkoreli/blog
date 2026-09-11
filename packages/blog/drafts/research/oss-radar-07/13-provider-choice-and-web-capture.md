@@ -1,5 +1,7 @@
 # Provider choice and the web-app alternative
 
+**Later execution:** the [subscription-backed CLI experiment](20-subscription-cli-experiment.md) completed the unchanged directed question with real Codex and Claude answers. This document preserves the earlier web/API route decision; the browser blocker no longer applies to the experiment.
+
 September 9, 2026 UTC / September 8 PDT. Goga has a promotional Perplexity Pro membership and has not purchased API credits. His exact clarification is prompt ten in the issue's provenance file.
 
 **Correction:** neither OpenRouter nor Perplexity is required by this workload. Requiring an API account before continuing the article was an unnecessarily narrow choice in the agent's test plan. An API response is necessary to establish live API-field preservation, but a real answer with visible citations can be captured from an existing web subscription and evaluated as an imported record. These tests establish different results.

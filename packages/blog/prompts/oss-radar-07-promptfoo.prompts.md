@@ -56,3 +56,17 @@ please mine and capture researchFootprint
 ---
 
 OpenRouter summary? when did we evaluate open router for promptfoo?
+
+---
+
+made-up responses.??? WHAT?? LMAO. why can't we use my chatgpt subscription or claude code's subscription with promptfoo to run real experiments
+
+---
+
+› 2 issues in the oss blog article 7:
+  1. Promptfoo is worth the next bounded trial for this blog's citation-evaluation workload. The tested interface can retain evidence, and the built-in cache gives
+  useful counterevidence to the strongest loss claim. Anyone who needs complete records from the built-in OpenRouter summary should first add and verify capture on
+  the route they will use.
+
+  why do we have meta conversations in the blog? Do you understand how we write OSS articles? read the oss article skill.
+  2. why do we have 2 glossaries? 1 should be enough, consolidate them.

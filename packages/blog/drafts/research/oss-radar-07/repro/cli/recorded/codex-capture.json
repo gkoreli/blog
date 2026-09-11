@@ -1,0 +1,37 @@
+{
+  "client": "codex",
+  "startedAt": "2026-09-11T04:06:13.772Z",
+  "evaluationId": "eval-nSV-2026-09-11T04:06:13",
+  "testCaseId": null,
+  "traceparent": null,
+  "finishedAt": "2026-09-11T04:06:34.581Z",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "timedOut": false,
+  "spawnError": null,
+  "outcome": "answer",
+  "captureOrigin": "Official CLI stdout JSONL and final answer; not a raw model-service HTTP response",
+  "stdoutSha256": "0bc5441bfed159965e4cbb062d9ed5770a0ce66c4c206c1f111e07a67c88aca9",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "answerSha256": "344b2ee4be8704d0821cf3b574bc0b7af5401df65300aa53998d75398f085bc1",
+  "promptSha256": "1465ff7d255fb61eff365b62c6ac6bf915303520bd7088e7800889ffa5972547",
+  "eventCount": 7,
+  "citationRepresentation": "Inspect original answer markers/links and CLI events; no invented API citation array",
+  "charge": {
+    "state": "Subscription-authenticated CLI; no invoice reconciliation. Any CLI cost is reported usage, not an observed charge."
+  },
+  "reportedUsage": {
+    "usage": {
+      "input_tokens": 37883,
+      "cached_input_tokens": 24320,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 507,
+      "reasoning_output_tokens": 43
+    }
+  },
+  "model": "gpt-6-astra",
+  "modelEvidence": "Private Codex turn_context.model",
+  "cliVersion": "0.153.4"
+}

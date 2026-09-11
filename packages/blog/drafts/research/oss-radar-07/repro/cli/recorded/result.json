@@ -1,0 +1,32 @@
+{
+  "promptfooVersion": "0.122.2",
+  "promptSha256": "1465ff7d255fb61eff365b62c6ac6bf915303520bd7088e7800889ffa5972547",
+  "observations": [
+    {
+      "client": "codex",
+      "evaluationId": "eval-nSV-2026-09-11T04:06:13",
+      "outcome": "answer",
+      "summaryLibraryAndRestartedCliEqual": true,
+      "rawStdoutPreserved": true,
+      "sourceSupportScored": false
+    },
+    {
+      "client": "claude",
+      "evaluationId": "eval-zaR-2026-09-11T04:06:35",
+      "outcome": "answer",
+      "summaryLibraryAndRestartedCliEqual": true,
+      "rawStdoutPreserved": true,
+      "sourceSupportScored": false
+    }
+  ],
+  "blockedFetches": [
+    "https://r.promptfoo.app/"
+  ],
+  "measuredAt": "2026-09-11T04:07:58.805Z",
+  "limits": [
+    "CLI invocations can contain multiple model/tool requests.",
+    "No assertion here scores source support; review is separate.",
+    "No raw model-service HTTP response or remote retrieval trace captured.",
+    "Two directed cases do not estimate organic discovery or population accuracy."
+  ]
+}

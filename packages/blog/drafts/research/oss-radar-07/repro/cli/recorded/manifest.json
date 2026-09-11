@@ -1,0 +1,21 @@
+{
+  "privateCapture": "oss-radar-07-cli-20260911-run03",
+  "privateRecordsPublished": false,
+  "publicSelection": "Complete final answers, selected emitted web-tool calls/results, reported usage, source snapshots, and preservation results. No reasoning blocks, thinking signatures, system messages, account data, private paths, or raw session logs are published. Full stdout/stderr remain private; their hashes are in capture records.",
+  "sourceRevision": "bde3d64",
+  "sourceScope": "Repository article copies retained for review; HTML snapshots were fetched separately at the times in source.json and source-023.json.",
+  "protocolSha256": "e95953e01016674bfa33bdf0a94a4299b269d6386c66bc3441c5266f61d14304",
+  "publicFiles": {
+    "claude-answer.md": "61458965d50a352d40b80b79d264c531e337c8319bc7754c3f067b202bc22695",
+    "claude-capture.json": "e90bcc9d626bcd5237e4b921847b9543f261d4cec37be845ba8702e99ac4c76c",
+    "claude-web-tools.json": "ff329e14c9ebc1ca6a2c33fd1032a6191ed22e7fe03eaab9133e92cb2c3d4d21",
+    "codex-answer.md": "344b2ee4be8704d0821cf3b574bc0b7af5401df65300aa53998d75398f085bc1",
+    "codex-capture.json": "e9fc0afc15be0ec2df00b0bc2d4d35cd9928eea385a96a56414320940a700e95",
+    "codex-web-tools.json": "07f5b0f6e65c6374fc02a01fc936f59de1b701ff1432b627fd29c992dbbcf2e0",
+    "result.json": "0057743097e6b8e5dfb4af4ded405d5f789a4ef6bcddd54e72fdacdff1da3aaf",
+    "source-023.json": "64e7bc669da771cf8c8c820b704325e3fffcf41f0dca24f37d015eeb48bae89a",
+    "source-023.md": "4185c58c0a97c827e968863159a093aaffb99ba2793aa96f594294810c4b06ef",
+    "source-024.md": "de335574cb53858ebd0880a2eb95f212cbb88940a3b57ed01108085511f29001",
+    "source.json": "1fa8990d7ea4269f4a0539b0df976fe4b5d132cab09d789861611b80bfca86aa"
+  }
+}

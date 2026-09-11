@@ -2,7 +2,7 @@
 
 Check date: September 8, 2026. Repository baseline: gkoreli/blog at `935abf29de1a755d2e278f90d4794c11d18a6a43`.
 
-**State:** [Published and verified](18-publication-verification.md) on September 10, 2026 PDT, at Goga's request. The article contains 38 source cards, a ten-term glossary, runnable experiments, and recorded exports. The completed tests support a bounded trial recommendation. The requested [research footprint](19-research-footprint.md) measures recovered article-specific sessions and states the missing work; it does not invent a total for the original ChatGPT research. The prompt record now contains fifteen complete messages, including the publication, footprint, and connector-wording requests. The real-answer test remains unrun follow-up work; browser access failed before submission.
+**State:** The first article release and its partial footprint are [published and verified](18-publication-verification.md). The [real subscription CLI experiment](20-subscription-cli-experiment.md) and [source review](21-real-answer-source-review.md) are now complete: two real answers, both retained through database/export, with three material errors found in Claude's answer. The article is being revised to include this evidence, replace internal planning with a product judgment, and consolidate references and definitions. The prompt record contains seventeen complete messages. The earlier [footprint](19-research-footprint.md) stays frozen and excludes this continuation.
 
 Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original baseline above belongs to the four-option investigation.
 
@@ -21,7 +21,8 @@ Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original 
 | Inspect Promptfoo's design and citation-analytics prior art | Complete for the draft's claims | [Design and prior art](06-promptfoo-design-and-prior-art.md) |
 | Explain Promptfoo's purpose and current trajectory | Complete: dedicated draft section and source audit | [Purpose and trajectory](08-promptfoo-purpose-and-trajectory.md) |
 | Define citation records and reporting units | Proposed; ready for pilot implementation | [Measurement contract](07-citation-measurement-contract.md) |
-| Run the bounded pilot | Open; one-answer preflight first | [Experiment plan](03-experiment-plan.md) |
+| Run real directed answers and source review | Complete: two subscription CLI answers, exact preservation, reviewed sources | [Execution](20-subscription-cli-experiment.md), [review](21-real-answer-source-review.md) |
+| Run the larger citation-frequency pilot | Open; separate from the completed directed cases | [Experiment plan](03-experiment-plan.md) |
 | Build OSS Radar #07 | Complete; release module is in `posts/` | [Publication module](../../../posts/026-oss-radar-07-promptfoo.ts), [manuscript](../../oss-radar-07-promptfoo.md) |
 | Check publication style, references, and render | Complete: 38 sources, 10 glossary terms, current type/build/Markdown checks; earlier desktop/mobile review | [Candidate review](11-publication-candidate-review.md), [source refresh](16-publication-source-check.md) |
 | Design the dedicated background animation | Complete: projected stacks, six-second motion, and a separate phone composition | [Current revision](15-mobile-depth-and-motion-review.md), [first design](14-evidence-plates-canvas.md) |
@@ -54,6 +55,8 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 - [Publication source refresh](16-publication-source-check.md): September 10 release/issue audit and comparison with the newer runner.
 - [Publication decision](17-publication-decision.md): tested scope, unavailable browser, and unfinished real-answer follow-up.
 - [First publication verification](18-publication-verification.md): deployed commit, exact served-content checks, and environment differences.
+- [Real subscription CLI experiment](20-subscription-cli-experiment.md): route, conditions, execution, and the missed available subscription path.
+- [Real-answer source review](21-real-answer-source-review.md): both answers, retained sources, explicit judgments, and useful tool-record failures.
 - [Research footprint](19-research-footprint.md): recovered sessions, ownership evidence, exclusions, accounting, and footprint release checks.
 - [Publication module](../../../posts/026-oss-radar-07-promptfoo.ts) and [Markdown manuscript](../../oss-radar-07-promptfoo.md): article with Sources & Evidence and a dated glossary.
 - [Repository baselines](baselines.json): pinned source revisions and read-only checks.
@@ -65,7 +68,7 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 
 [Exact shaping prompts](../../../prompts/oss-radar-07-promptfoo.prompts.md).
 
-The record contains fifteen complete prompts through the footprint request and connector-wording question. The original twelve entries remain unchanged; all three later messages are appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
+The record contains seventeen complete prompts. The first fifteen remain unchanged. The subscription-experiment request and the request to remove internal planning and consolidate the glossaries were appended verbatim.
 
 The September 8 request explicitly asks for a prompts section for this issue. It overrides the usual OSS Radar exception that omits public prompts. This is an issue-specific decision; no shared skill or prior issue was changed. Keep the complete initial prompt intact. The second recorded answer delegated the experiment timebox decision.
 
@@ -73,10 +76,10 @@ The filename matches the final slug. The initial thirteen-prompt release passed 
 
 ## Publication boundary
 
-The controlled tests establish the adapter omission and explicit capture's local retention. The release recommends a bounded trial; production citation reporting is not adopted or implemented. All recorded model payloads are synthetic. A real answer and source review could change the later adoption decision. The [publication decision](17-publication-decision.md) supersedes the earlier requirement to finish that example before releasing these findings.
+The original controlled tests established the OpenRouter adapter omission and local retention. The later CLI experiment establishes that two real subscription-backed answers and their emitted records survive the custom-provider/database/export path. Source review found errors in one answer; preservation itself did not grade truth. The native Codex and Claude integrations were code-inspected, not executed in this experiment.
 
 ## Next bounded action
 
-The article is published. Resume the [one-answer protocol](12-directed-answer-preflight.md) when browser access is available, using the existing Perplexity membership or another explicitly documented route. Preserve its result, verify the imported record through Promptfoo, and review its sources. No provider or API purchase is required. A web capture cannot establish live API-field or billing preservation. No production analytics query is needed.
+Publish the article revision with the real result, a reader-facing product judgment, and one glossary/reference section. Verify the served HTML, Markdown, prompts, and release commit. The earlier browser blocker and unrun one-answer status are historical. No API purchase or production analytics query is needed.
 
-The local trace/export work is complete; do not repeat it as if unrun. The [capture manifest](repro/capture/recorded/manifest.json) commits to the accepted records and source hashes. The telemetry interruption and accepted local blocking behavior remain documented. The larger citation study and distinct engineering continuation stay open; publication does not complete them.
+The larger citation-frequency study and distinct engineering continuation remain open. The existing fixture/trace work is complete and must not be repeated as if unrun. The earlier footprint manifest remains frozen; the new experiment and follow-up are outside that cutoff.
