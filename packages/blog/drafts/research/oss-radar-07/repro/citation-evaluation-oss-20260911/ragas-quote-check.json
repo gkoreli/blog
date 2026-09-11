@@ -1,0 +1,126 @@
+{
+  "checkedAt": "2026-09-11T16:30:00.799256+00:00",
+  "python": "3.14.6",
+  "repository": "https://github.com/vibrantlabsai/ragas",
+  "baseline": "298b68274234c060deacab3cf5fb52aa3a20e885",
+  "scope": "Five deterministic quote-matching cases; no LLM judge or full metric class executed.",
+  "cases": [
+    {
+      "id": "correct-marker",
+      "answer": "The count was \"95 Browser HTML observations\" [1].",
+      "sources": [
+        "95 Browser HTML observations",
+        "14 script page loads"
+      ],
+      "expected_counts": [
+        1,
+        1
+      ],
+      "extracted_spans": [
+        "95 Browser HTML observations"
+      ],
+      "modern_helper_counts": [
+        1,
+        1
+      ],
+      "standalone_function_result": {
+        "citation_alignment_quoted_spans": 1.0,
+        "matched": 1.0,
+        "total": 1.0
+      }
+    },
+    {
+      "id": "wrong-marker",
+      "answer": "The count was \"95 Browser HTML observations\" [2].",
+      "sources": [
+        "95 Browser HTML observations",
+        "14 script page loads"
+      ],
+      "expected_counts": [
+        1,
+        1
+      ],
+      "extracted_spans": [
+        "95 Browser HTML observations"
+      ],
+      "modern_helper_counts": [
+        1,
+        1
+      ],
+      "standalone_function_result": {
+        "citation_alignment_quoted_spans": 1.0,
+        "matched": 1.0,
+        "total": 1.0
+      }
+    },
+    {
+      "id": "quote-assembled-across-passages",
+      "answer": "The text was \"the result is supported\" [1].",
+      "sources": [
+        "the result",
+        "is supported"
+      ],
+      "expected_counts": [
+        1,
+        1
+      ],
+      "extracted_spans": [
+        "the result is supported"
+      ],
+      "modern_helper_counts": [
+        1,
+        1
+      ],
+      "standalone_function_result": {
+        "citation_alignment_quoted_spans": 1.0,
+        "matched": 1.0,
+        "total": 1.0
+      }
+    },
+    {
+      "id": "changed-number",
+      "answer": "The count was \"96 Browser HTML observations\" [1].",
+      "sources": [
+        "95 Browser HTML observations",
+        "14 script page loads"
+      ],
+      "expected_counts": [
+        0,
+        1
+      ],
+      "extracted_spans": [
+        "96 Browser HTML observations"
+      ],
+      "modern_helper_counts": [
+        0,
+        1
+      ],
+      "standalone_function_result": {
+        "citation_alignment_quoted_spans": 0.0,
+        "matched": 0.0,
+        "total": 1.0
+      }
+    },
+    {
+      "id": "no-quotation",
+      "answer": "The count was 999 observations [1].",
+      "sources": [
+        "95 Browser HTML observations"
+      ],
+      "expected_counts": [
+        0,
+        0
+      ],
+      "extracted_spans": [],
+      "modern_helper_counts": [
+        0,
+        0
+      ],
+      "standalone_function_result": {
+        "citation_alignment_quoted_spans": 0.0,
+        "matched": 0.0,
+        "total": 0.0
+      }
+    }
+  ]
+}

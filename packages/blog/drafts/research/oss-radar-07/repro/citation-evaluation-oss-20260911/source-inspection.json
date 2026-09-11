@@ -1,0 +1,201 @@
+{
+  "checkedAt": "2026-09-11T16:30:35.579500+00:00",
+  "selection": "Four assigned evaluation/observability repositories, all inspected; three permissive-license projects and one source-available comparator. No market census.",
+  "method": "Read pinned code, tests and license files. Ran only the five standard-library Ragas quote checks in the sibling receipt. No model calls, hosted evaluation, package installation or production queries.",
+  "repositories": [
+    {
+      "name": "ragas",
+      "repository": "https://github.com/vibrantlabsai/ragas",
+      "requestedRepository": "explodinggradients/ragas",
+      "branch": "main",
+      "baseline": "298b68274234c060deacab3cf5fb52aa3a20e885",
+      "capturedAt": "2026-09-11T16:25:23.370976+00:00",
+      "commitDate": "2026-02-24T13:17:18+05:30",
+      "githubLicenseMetadata": {
+        "key": "apache-2.0",
+        "name": "Apache License 2.0",
+        "spdx_id": "Apache-2.0"
+      },
+      "sourceFiles": [
+        {
+          "path": "LICENSE",
+          "sha256": "664b930830f291c2936ab30bcd6ef9ca6c9c7384cc475ae0c526156a27d5a6c6"
+        },
+        {
+          "path": "src/ragas/metrics/collections/faithfulness/metric.py",
+          "sha256": "f3850ad76e173c932dff09464489934f7df7c499a8e43b178cd69f339511965d"
+        },
+        {
+          "path": "src/ragas/metrics/collections/context_recall/metric.py",
+          "sha256": "31d992eff2a163e4ed109977826386576a669599b2cbd247b49301de62b84358"
+        },
+        {
+          "path": "src/ragas/metrics/collections/context_precision/metric.py",
+          "sha256": "09567b9d9ad08c33e448618de5685eb89376d40a390eede56db5ecc8e03d138a"
+        },
+        {
+          "path": "src/ragas/metrics/collections/quoted_spans/metric.py",
+          "sha256": "8b34552354338b148f494514f2aa33e01455a698cb5c9779e8cb838354359ca5"
+        },
+        {
+          "path": "src/ragas/metrics/collections/quoted_spans/util.py",
+          "sha256": "40d566c65d5da21f5b94d26f95e44f046d2b0e825ade467bb00cb41ed5e752ec"
+        },
+        {
+          "path": "src/ragas/metrics/quoted_spans.py",
+          "sha256": "7df87341106f76650672cf663088441489dade8345196217c9c8a6a4392cd1ba"
+        }
+      ]
+    },
+    {
+      "name": "deepeval",
+      "repository": "https://github.com/confident-ai/deepeval",
+      "requestedRepository": "confident-ai/deepeval",
+      "branch": "main",
+      "baseline": "f94d940c1e5afc4b280420fe73fe17d146274018",
+      "capturedAt": "2026-09-11T16:25:25.372581+00:00",
+      "commitDate": "2026-09-06T22:41:48+08:00",
+      "githubLicenseMetadata": {
+        "key": "apache-2.0",
+        "name": "Apache License 2.0",
+        "spdx_id": "Apache-2.0"
+      },
+      "sourceFiles": [
+        {
+          "path": "LICENSE.md",
+          "sha256": "d004e4b8bbfa420b094c13835070b945a93f3c0ac0ea0bf6b7b8a72733533f7f"
+        },
+        {
+          "path": "deepeval/metrics/community/citation_faithfulness/citation_faithfulness.py",
+          "sha256": "a986a38a79917f71012eae0e19ac0191df1a05f796bf0810844f45dcfc0e2e7e"
+        },
+        {
+          "path": "deepeval/metrics/community/citation_faithfulness/template.py",
+          "sha256": "8baf2b855208aa910719bab1b487fc1da1c2f09e41df4ee653736de479526bbf"
+        },
+        {
+          "path": "deepeval/metrics/community/citation_faithfulness/schema.py",
+          "sha256": "f06b054ae7e1bb0e978c2c48b9e0a79dea48e674ffc3bedb03a2b3c71b027fc4"
+        },
+        {
+          "path": "deepeval/metrics/faithfulness/faithfulness.py",
+          "sha256": "7ef45dabc5f26ad4d9bf5c53c3d15835c90239e4ba750ed5ebd3c0c8e0e3d87b"
+        },
+        {
+          "path": "deepeval/metrics/contextual_recall/contextual_recall.py",
+          "sha256": "a996a6ea0953f9fe356c3c98cf4b7c0677aa4c93b72bf6033f391c571a6d005c"
+        },
+        {
+          "path": "tests/test_metrics/test_citation_faithfulness_metric.py",
+          "sha256": "3484b16cddd70033b75a579c67ff496504e3f64d194935fa8bb3164b7c352ce5"
+        },
+        {
+          "path": "docs/content/docs/(community)/metrics-citation-faithfulness.mdx",
+          "sha256": "f1c2f248b0e9d6654ddb1522bd11b4840c74fa816d8fd0341ea5473cf1d4314b"
+        }
+      ]
+    },
+    {
+      "name": "trulens",
+      "repository": "https://github.com/truera/trulens",
+      "requestedRepository": "truera/trulens",
+      "branch": "main",
+      "baseline": "72d60ce6c1af6f9a479bdc8f99d69796340d459a",
+      "capturedAt": "2026-09-11T16:25:27.644835+00:00",
+      "commitDate": "2026-09-11T09:30:01-04:00",
+      "githubLicenseMetadata": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT"
+      },
+      "sourceFiles": [
+        {
+          "path": "LICENSE",
+          "sha256": "cbc129d2a89ca1684a46c719a8e75b7f3602a5f00d6c17a12ec9c49a7cfa3d33"
+        },
+        {
+          "path": "src/feedback/trulens/feedback/templates/rag.py",
+          "sha256": "c5cd6b63a7b3dcffa01b0ec49ab9d13843b3825e57998a7ba6224151d4e17717"
+        },
+        {
+          "path": "src/feedback/trulens/feedback/llm_provider.py",
+          "sha256": "3522773bfaa6c9a0611a6024749a0a2e57ad072870219476eb51049abde73221"
+        },
+        {
+          "path": "tests/unit/test_citation_attribution.py",
+          "sha256": "5f07a821152dc34dc3e1a6115e49559330367d63fcfaca213846f8e827185cca"
+        },
+        {
+          "path": "tests/unit/test_citation_accuracy.py",
+          "sha256": "f776b3c109b0224f1f1213df28e63d155e6780df59da2fe33937394613a14487"
+        }
+      ]
+    },
+    {
+      "name": "phoenix",
+      "repository": "https://github.com/Arize-ai/phoenix",
+      "requestedRepository": "Arize-ai/phoenix",
+      "branch": "main",
+      "baseline": "d69a92e16ac29dc8a7a7262aa18ddeaccfea2b70",
+      "capturedAt": "2026-09-11T16:25:30.139808+00:00",
+      "commitDate": "2026-09-10T21:59:37-06:00",
+      "githubLicenseMetadata": {
+        "key": "other",
+        "name": "Other",
+        "spdx_id": "NOASSERTION"
+      },
+      "sourceFiles": [
+        {
+          "path": "LICENSE",
+          "sha256": "1c5916f5112e30e92f291002bb02cf4f4851c9d1dbdf3360f9f745b7de2d775f"
+        },
+        {
+          "path": "packages/phoenix-evals/LICENSE",
+          "sha256": "1c5916f5112e30e92f291002bb02cf4f4851c9d1dbdf3360f9f745b7de2d775f"
+        },
+        {
+          "path": "packages/phoenix-client/LICENSE",
+          "sha256": "eaf2723a549ed4fd3d7696ca1882b228f1b8ac308664c17d76b1b55dca054e0f"
+        },
+        {
+          "path": "packages/phoenix-otel/LICENSE",
+          "sha256": "eaf2723a549ed4fd3d7696ca1882b228f1b8ac308664c17d76b1b55dca054e0f"
+        },
+        {
+          "path": "src/phoenix/db/models.py",
+          "sha256": "fc75d82e204c00f99aa1e54563bce38cbacc1621dde212f4c92aeada95c40030"
+        },
+        {
+          "path": "src/phoenix/db/insertion/span_annotation.py",
+          "sha256": "fabc54af28f177679044031542063b87fa30a5563956d4d40c56a00fac229e57"
+        },
+        {
+          "path": "packages/phoenix-evals/src/phoenix/evals/metrics/faithfulness.py",
+          "sha256": "60e9fa6ddfa09c3174e07159ec12b7f2bef3d47249f8d4937b6a4095103a931a"
+        },
+        {
+          "path": "packages/phoenix-evals/src/phoenix/evals/metrics/hallucination.py",
+          "sha256": "633dc1283c803cd4a3e2a3b9a6dab377978204b64fa00f943f8913240ed38136"
+        },
+        {
+          "path": "packages/phoenix-evals/src/phoenix/evals/metrics/retrieval_relevance.py",
+          "sha256": "91d1efe9b72430b93b2ded6cfc1fd9aad4215ac8bb860101cb3fab3b470c4f89"
+        },
+        {
+          "path": "packages/phoenix-evals/src/phoenix/evals/metrics/completeness.py",
+          "sha256": "027371ba653c1bc82e8d3d74baaa5d9331b39614cc79f8daf56b396ca053f5cd"
+        }
+      ]
+    }
+  ],
+  "reportedIssue": {
+    "html_url": "https://github.com/truera/trulens/issues/861",
+    "title": "Can Groundedness Contextualize and Understand the Semantic Relationship Between User Questions and Algorithm Answer?",
+    "state": "closed",
+    "state_reason": "completed",
+    "created_at": "2024-02-06T17:39:09Z",
+    "closed_at": "2024-02-08T21:40:03Z",
+    "updated_at": "2024-02-08T21:40:03Z",
+    "checkedAt": "2026-09-11T16:30:35.579487+00:00"
+  }
+}

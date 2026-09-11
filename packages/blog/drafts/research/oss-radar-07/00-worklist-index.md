@@ -8,7 +8,7 @@ Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original 
 
 **Article form:** project deep dive under the OSS Radar skill. Choose one project. The engineering continuation will use the evidence-led investigation form and answer a distinct question about the blog.
 
-**Current work:** The author requested a complete rewrite around AI citations and the open-source systems behind generation, evaluation, attribution, and source credibility. Promptfoo becomes one tested section. Three research tracks are running under the [rewrite brief](27-ai-citations-rewrite-brief.md). The [OpenRouter claim audit](23-openrouter-claim-audit.md) records the immediate correction; its local test made no service or model call.
+**Current work:** The author requested a complete rewrite around AI citations and the open-source systems behind generation, evaluation, attribution, and source credibility. Promptfoo becomes one tested section. Three research tracks are complete, with the rewrite underway under the [rewrite brief](27-ai-citations-rewrite-brief.md). The [OpenRouter claim audit](23-openrouter-claim-audit.md) records the immediate correction; its local test made no service or model call.
 
 ## Worklist
 
@@ -31,7 +31,7 @@ Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original 
 | Exercise capture failures, persistence, and tracing | Complete: 10 synthetic cases, 11 HTTP attempts, explicit local join | [Method and accepted exports](repro/capture/README.md) |
 | Verify and publish OSS Radar #07 | Complete: release `ccd6bc6`, Cloudflare activation, and served-content acceptance | [Publication verification](18-publication-verification.md) |
 | Recover and publish research footprint | Complete: 43,272,331 measured tokens, eight sessions, explicit exclusions, and live acceptance | [Footprint methodology and receipt](19-research-footprint.md) |
-| Rewrite Radar #07 around AI citations and the OSS landscape | In progress: three delegated research tracks, parent synthesis | [Rewrite brief](27-ai-citations-rewrite-brief.md) |
+| Rewrite Radar #07 around AI citations and the OSS landscape | In progress: research complete, parent writing and review | [Rewrite brief](27-ai-citations-rewrite-brief.md) |
 | Develop the engineering continuation | Open | Requires useful blog code and new operating evidence |
 
 Formal tracker: [FLDR-0011](../../../../../docs/folders/FLDR-0011-oss-radar-07-worklist.md). Execution task: [TASK-0134](../../../../../docs/tasks/TASK-0134-oss-radar-07-project-experiment-and-article.md).
@@ -64,6 +64,10 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 - [Research footprint](19-research-footprint.md): recovered sessions, ownership evidence, exclusions, accounting, and footprint release checks.
 - [Publication module](../../../posts/026-oss-radar-07-promptfoo.ts) and [Markdown manuscript](../../oss-radar-07-promptfoo.md): article with Sources & Evidence and a dated glossary.
 - [OpenRouter claim audit](23-openrouter-claim-audit.md): the local test, misleading opening, and corrected evidence boundary.
+- [Cited-answer generation audit](24-citation-generation-oss.md): ALCE, Self-RAG, STORM/Co-STORM, OpenScholar, and exact study limits.
+- [Citation evaluation audit](25-citation-evaluation-oss.md): TruLens, DeepEval, Ragas, Phoenix, licenses, and preserved evidence.
+- [Source credibility audit](26-source-credibility-and-citation-evidence.md): source selection, support, causal faithfulness, and publisher implications.
+- [DeepTRACE comparison audit](28-deeptrace-comparison-audit.md): useful matrix design and reasons to decline its headline percentages.
 - [AI-citations rewrite brief](27-ai-citations-rewrite-brief.md): new subject, nine-project initial sample, delegation, and acceptance.
 - [Repository baselines](baselines.json): pinned source revisions and read-only checks.
 - [Promptfoo fixture probe](repro/README.md): runnable module-level reproduction, original source snapshot with its MIT licence, synthetic response, and saved result.
