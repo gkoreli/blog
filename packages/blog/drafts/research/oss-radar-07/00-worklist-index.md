@@ -2,7 +2,7 @@
 
 Check date: September 8, 2026. Repository baseline: gkoreli/blog at `935abf29de1a755d2e278f90d4794c11d18a6a43`.
 
-**State:** The first article release and its partial footprint are [published and verified](18-publication-verification.md). The [real subscription CLI experiment](20-subscription-cli-experiment.md) and [source review](21-real-answer-source-review.md) are now complete: two real answers, both retained through database/export, with three material errors found in Claude's answer. The [article revision](22-real-experiment-article-revision.md) is built and checked with this evidence, a product judgment, and one consolidated glossary/source table; live acceptance follows the release. The prompt record contains seventeen complete messages. The earlier [footprint](19-research-footprint.md) stays frozen and excludes this continuation.
+**State:** The first article release and its partial footprint are [published and verified](18-publication-verification.md). The [real subscription CLI experiment](20-subscription-cli-experiment.md) and [source review](21-real-answer-source-review.md) are now complete: two real answers, both retained through database/export, with three material errors found in Claude's answer. The [article revision](22-real-experiment-article-revision.md) is published and verified with this evidence, a product judgment, and one consolidated glossary/source table. The prompt record contains seventeen complete messages. The earlier [footprint](19-research-footprint.md) stays frozen and excludes this continuation.
 
 Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original baseline above belongs to the four-option investigation.
 
@@ -81,6 +81,6 @@ The original controlled tests established the OpenRouter adapter omission and lo
 
 ## Next bounded action
 
-Publish the article revision with the real result, a reader-facing product judgment, and one glossary/reference section. Verify the served HTML, Markdown, prompts, and release commit. The earlier browser blocker and unrun one-answer status are historical. No API purchase or production analytics query is needed.
+The real-answer experiment and article revision are complete; [release acceptance](22-real-experiment-article-revision.md) verifies the served HTML, Markdown, seventeen prompts, and consolidated glossary. The next research choice is the separate larger citation-frequency study or new operating evidence for the engineering continuation. Do not repeat the directed test, treat the article as unpublished, or restore the old browser-only blocker.
 
 The larger citation-frequency study and distinct engineering continuation remain open. The existing fixture/trace work is complete and must not be repeated as if unrun. The earlier footprint manifest remains frozen; the new experiment and follow-up are outside that cutoff.

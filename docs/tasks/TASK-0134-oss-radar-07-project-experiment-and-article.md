@@ -4,7 +4,7 @@ title: OSS Radar 07 project experiment and article
 status: in_progress
 parent_id: FLDR-0011
 created_at: '2026-09-08T19:21:39.000Z'
-updated_at: '2026-09-11T04:15:00.000Z'
+updated_at: '2026-09-11T04:29:30.203049+00:00'
 type: task
 ---
 Goga selected **Promptfoo** for **OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?** The research tests its design and adoption fit for preserving citation evidence; the planned engineering continuation must answer a distinct question about code used on the blog.
@@ -26,7 +26,7 @@ The [subscription CLI experiment](../../packages/blog/drafts/research/oss-radar-
 
 The browser failure was not the only available route. The earlier fixture-only publication decision did not satisfy this real-answer request. The prompt record now has seventeen exact messages; the original footprint remains frozen and excludes the continuation.
 
-The [article revision](../../packages/blog/drafts/research/oss-radar-07/22-real-experiment-article-revision.md) is built and checked: real results, product/adoption advice, and one consolidated glossary/reference table. Deployment acceptance follows the release. The larger 72-call study and distinct engineering continuation remain open; publication does not complete them. This task remains `in_progress` for that continuation.
+The [article revision](../../packages/blog/drafts/research/oss-radar-07/22-real-experiment-article-revision.md) is published and verified at `db54ff8`: real results, product/adoption advice, and one consolidated glossary/reference table. Served article, Markdown, prompts, and metadata match the checked build. The larger 72-call study and distinct engineering continuation remain open; publication does not complete them. This task remains `in_progress` for that continuation.
 
 Acceptance:
 

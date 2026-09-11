@@ -21,4 +21,8 @@ A separate agent reread the OSS Radar skill, project-deep-dive reference, and Ty
 
 ## Release acceptance
 
-Commit/push and exact live-content acceptance are pending at this pre-release checkpoint. The live receipt will be added here after Cloudflare serves the revision.
+**Published and verified.** Release `db54ff8` was pushed directly to `main`. Cloudflare build `5e99e5d4-f3d8-478f-83c5-bb788c2e7b37` succeeded at September 11 04:26:50 UTC. Live acceptance at 04:28:41 UTC found exact equality with the built article body and Markdown, one consolidated glossary, the removed planning prose absent, all seventeen decoded prompt messages equal to their source, and matching description and footprint sections. RSS, sitemap, posts index, OSS index, and OG image returned HTTP 200. [Machine-readable receipt](real-experiment-article-verification.json).
+
+The first prompt comparison treated rendered `<br>` elements as literal text; converting those elements back to their original newlines made the exact comparison pass. No prompt text changed. Full live-page captures remain in the private run archive. The receipt records HTTP/content checks, not a fresh browser screenshot.
+
+This completes the requested real-answer experiment and article revision. The larger citation-frequency study and distinct engineering continuation remain separate open work.

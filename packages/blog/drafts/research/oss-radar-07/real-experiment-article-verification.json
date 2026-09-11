@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-09-11T04:28:41.567596+00:00",
+  "releaseCommit": "db54ff8",
+  "cloudflareBuild": "5e99e5d4-f3d8-478f-83c5-bb788c2e7b37",
+  "cloudflareBuildCompletedAt": "2026-09-11T04:26:50Z",
+  "articleStatus": 200,
+  "articleBodyExactlyMatchesBuild": true,
+  "articleBodySha256": "323c63d9de23abaa70af40f909f3cb0027e6b1a8e797dc18fcb920e3a0327581",
+  "markdownStatus": 200,
+  "markdownExactlyMatchesBuild": true,
+  "markdownSha256": "779803897e811dcc92bf540a94079b9ccb63e1007952b4377c1e86f49a41bd67",
+  "promptsStatus": 200,
+  "exactPromptMessages": 17,
+  "promptComparison": "Decode HTML entities and convert rendered br elements back to original newlines before exact comparison.",
+  "oneConsolidatedGlossary": true,
+  "definitionCount": 10,
+  "distinctDatedReferences": 45,
+  "oldInternalPlanningAbsent": true,
+  "descriptionAndFootprintSectionMatchBuild": true,
+  "otherStatuses": {
+    "/feed.xml": 200,
+    "/sitemap.xml": 200,
+    "/posts.json": 200,
+    "/oss-radar": 200,
+    "/og/oss-radar-07-promptfoo.png": 200
+  },
+  "liveChecksAreHttpAndParsedContent": true,
+  "freshBrowserScreenshot": false
+}
