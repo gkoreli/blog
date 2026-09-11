@@ -1,0 +1,21 @@
+{
+  "article": {
+    "status": 200,
+    "matchesBuild": true,
+    "sha256": "39802a05463c65a139eee7dc397ce0a108823ed33e4d130c3d1a9249942c190c"
+  },
+  "markdown": {
+    "status": 200,
+    "matchesBuild": true,
+    "sha256": "c756b34b355c9f5dcb222d2f0a5fdc9c069a4ce1543991402b9db8d221b7534f"
+  },
+  "prompts": {
+    "status": 200,
+    "matchesBuild": true,
+    "sha256": "24da2960957b51a94f378df2b3b1e0982561fa2c5844fbed7337787ff9220c3c"
+  },
+  "checkedAt": "2026-09-11T16:30:15.431315+00:00",
+  "releaseCommit": "5d3067e",
+  "promptCount": 19,
+  "modelCallsDuringAudit": 0
+}

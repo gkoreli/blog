@@ -23,4 +23,4 @@ The opening, method, table label, diagram, and source labels now identify the lo
 
 The exact challenge and subsequent rewrite request are appended to the prompt record. The original footprint remains frozen and excludes this work. Future reviews must read the first claim and every standalone visual without relying on a later methods caveat.
 
-Release checks and live acceptance will be recorded after deployment. The broader article is being rebuilt under the [new brief](27-ai-citations-rewrite-brief.md).
+Release `5d3067e` passed blog type checks, the 26-post production build, whitespace checks, explicit local-test wording checks, one H1/glossary, and exact rendering of all nineteen prompts. Cloudflare build `81fb9b05-dd89-4714-8328-536d0120de65` succeeded at `2026-09-11T16:29:37Z`. The [live receipt](openrouter-correction-verification.json) verifies the article body, Markdown, and prompts against the build, all HTTP 200. The footprint manifest hash is unchanged. The broader article is being rebuilt under the [new brief](27-ai-citations-rewrite-brief.md).
