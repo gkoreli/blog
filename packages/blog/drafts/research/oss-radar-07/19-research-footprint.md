@@ -75,3 +75,8 @@ These verification and bookkeeping updates occur after the frozen usage boundary
 ## Subsequent real-answer revision
 
 The [subscription CLI experiments](20-subscription-cli-experiment.md), [source review](21-real-answer-source-review.md), and two later human prompts occurred after this frozen cutoff. The prompt page now includes seventeen messages. These additions do not change this manifest or its measured total, and their work must not be presented as included in the 43,272,331 tokens.
+
+
+## September 11 claim correction and rewrite
+
+The OpenRouter claim challenge and the full AI-citations rewrite request add two more exact prompts, bringing the current page to nineteen messages. This later work is outside the frozen manifest. The fifteen-prompt snapshot, token totals, session set, and artifact count above remain historical measurements. See the [claim audit](23-openrouter-claim-audit.md) and [rewrite brief](27-ai-citations-rewrite-brief.md).

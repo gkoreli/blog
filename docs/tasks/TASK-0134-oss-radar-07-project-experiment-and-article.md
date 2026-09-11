@@ -4,9 +4,11 @@ title: OSS Radar 07 project experiment and article
 status: in_progress
 parent_id: FLDR-0011
 created_at: '2026-09-08T19:21:39.000Z'
-updated_at: '2026-09-11T04:29:30.203049+00:00'
+updated_at: '2026-09-11T16:27:10.096159+00:00'
 type: task
 ---
+
+**Current work — September 11:** Goga requested a full rewrite about AI citations, analytics, attribution, and source credibility across open-source projects. Promptfoo will be one tested section. Three delegated research tracks and parent synthesis are executing on main under the [rewrite brief](../../packages/blog/drafts/research/oss-radar-07/27-ai-citations-rewrite-brief.md). The [OpenRouter claim audit](../../packages/blog/drafts/research/oss-radar-07/23-openrouter-claim-audit.md) preserves the immediate correction: no OpenRouter service or model ran. The current prompt record has nineteen exact messages. The old footprint is frozen and excludes this work. Earlier releases below remain published; the full rewrite is in progress.
 Goga selected **Promptfoo** for **OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?** The research tests its design and adoption fit for preserving citation evidence; the planned engineering continuation must answer a distinct question about code used on the blog.
 
 **Publication: complete.** [Release `ccd6bc6` and live acceptance](../../packages/blog/drafts/research/oss-radar-07/18-publication-verification.md) verified the article, 38 source cards, glossary, thirteen initial prompts, metadata, Markdown, and assets. The [research-footprint record](../../packages/blog/drafts/research/oss-radar-07/19-research-footprint.md) owns the later measured-subset accounting and release checks. The [prompt record](../../packages/blog/prompts/oss-radar-07-promptfoo.prompts.md) contains fifteen complete messages at that frozen release, including the footprint and connector-wording requests. The [publication module](../../packages/blog/posts/026-oss-radar-07-promptfoo.ts) is the served source.

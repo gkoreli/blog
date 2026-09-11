@@ -14,14 +14,14 @@ const researchFootprint = {
   "startedAt": "2026-09-09T00:18:40.705Z",
   "measuredAt": "2026-09-11T03:26:22.382Z",
   "provenanceUrl": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/19-research-footprint.md",
-  "scope": "Measured portion: recovered Codex research, canvas work, automatic reviews, publication checks, sharing preparation, and accounting. Original ChatGPT research has no recovered usage log. The mixed analytics/publication parent and one review without usage are excluded. These are contributing-session totals, not the complete research total or an exclusive writing cost. This frozen snapshot covered 15 human prompts. Two later prompts, the real CLI experiments, and follow-up reviews are outside its measured cutoff; the prompt page includes those later requests."
+  "scope": "Measured portion: recovered Codex research, canvas work, automatic reviews, publication checks, sharing preparation, and accounting. Original ChatGPT research has no recovered usage log. The mixed analytics/publication parent and one review without usage are excluded. These are contributing-session totals, not the complete research total or an exclusive writing cost. This frozen snapshot covered 15 human prompts. Later prompts, the real CLI experiments, follow-up reviews, and claim corrections are outside its measured cutoff; the prompt page includes those later requests."
 };
 
 export const meta: PostMeta = {
   title: 'OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?',
   seoTitle: 'Promptfoo Review: Preserving AI Citation Evidence',
   alternativeHeadline: 'Citation fields, failed attempts, and trace joins through Promptfoo 0.122.2',
-  date: '2026-09-10', lastModified: '2026-09-10',
+  date: '2026-09-10', lastModified: '2026-09-11',
   description: 'Promptfoo preserved real Codex and Claude answers through database exports. A cited claim was still wrong. Our tests show what capture and review require.',
   section: 'oss-radar', layout: 'immersive', featured: false,
   tags: ['oss-radar', 'promptfoo', 'ai-evaluation', 'analytics'],
@@ -31,9 +31,9 @@ export const meta: PostMeta = {
 
 const sources = [
   {
-    "claim": "The installed runner omitted citation fields in its built-in summary; custom capture retained them",
-    "why": "Records the package identity, local setup, commands, outputs, and exclusions behind the verdict.",
-    "ref": "Installed experiment method",
+    "claim": "Promptfoo's OpenRouter connector omitted our made-up citation fields from its summary; custom capture retained them",
+    "why": "Records the local test method and outputs. No OpenRouter service or model was called.",
+    "ref": "Local mock-response experiment",
     "url": "https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/README.md",
     "date": "Sep 8, 2026"
   },
@@ -227,9 +227,9 @@ const sources = [
     "date": "Sep 8, 2026 (checked)"
   },
   {
-    "claim": "The OpenRouter adapter normalizes the provider response",
+    "claim": "Promptfoo's OpenRouter connector selects fields from the supplied response",
     "why": "Locates the smaller response object that the evaluator receives.",
-    "ref": "OpenRouter provider implementation",
+    "ref": "Promptfoo OpenRouter connector implementation",
     "url": "https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/providers/openrouter.ts",
     "date": "Sep 8, 2026 (checked)"
   },
@@ -333,7 +333,7 @@ const sources = [
   },
   {
     "claim": "Promptfoo’s native Codex SDK provider supports saved login and retains its turn",
-    "why": "Bounds the OpenRouter finding: another built-in adapter already preserves different evidence.",
+    "why": "Shows in code that another built-in adapter retains its turn; we did not execute this SDK path.",
     "ref": "Native Codex provider",
     "url": "https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/providers/openai/codex-sdk.ts",
     "date": "Sep 11, 2026 (checked, UTC)"
@@ -364,7 +364,7 @@ export function article() {
 <ul>
 <li><strong>Real answers survived the evaluation pipeline.</strong> A custom provider retained the final text and emitted CLI records through both JSON exporters, including a process reopening the database.</li>
 <li><strong>A citation can accompany a wrong claim.</strong> Claude preserved the article&#39;s headline figures but changed their meaning in one sentence. The source review also caught an incorrect description of the classifier.</li>
-<li><strong>Capture depends on the adapter.</strong> In a separate controlled test, the OpenRouter connector omitted supplied citation fields from its summary while its cache retained them. The runner can preserve evidence that its adapter supplies.</li>
+<li><strong>A local test exposed missing citation fields.</strong> Promptfoo&#39;s OpenRouter connector omitted citation fields from a response we wrote and served locally. Its cache retained them. No request went to OpenRouter. <a href="https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/recorded/result.json" target="_blank" rel="noopener">Test record</a>.</li>
 </ul>
 <h2>What Promptfoo is building</h2>
 <p>Promptfoo is a command-line tool and library for testing AI applications, with an <a href="https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/LICENSE" target="_blank" rel="noopener">MIT-licensed open-source implementation</a>. You supply test cases, choose models or an application to call, and define checks. It runs the cases and lets you compare results. The <a href="https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/README.md" target="_blank" rel="noopener">project overview</a> also puts adversarial testing and code review within its scope.</p>
@@ -404,16 +404,16 @@ export function article() {
 <p>For a publisher investigating an answer, the useful record is the question, answer, cited source, and a review of the associated claims. Request logs supply another observation when a connection can be established. They cannot reconstruct an answer that was never captured.</p>
 <h2>Where provider evidence enters the result</h2>
 <p>Promptfoo&#39;s <a href="https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/site/docs/providers/custom-api.md" target="_blank" rel="noopener">custom-provider interface</a> lets an operator bring an application into the runner. It separates the application call from the test runner, so an adapter can retain evidence specific to its provider.</p>
-<p>The adapter and experiment sections are for engineers choosing or implementing this path. The pinned <a href="https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/providers/openrouter.ts" target="_blank" rel="noopener">OpenRouter provider</a> sends the request through a cache-aware transport, then builds a smaller response from answer text, usage, and completion information. It does not copy the fixture&#39;s citation list or answer annotations into that response. The evaluator receives the smaller object.</p>
+<p>The adapter and experiment sections are for engineers choosing or implementing this path. We tested Promptfoo&#39;s OpenRouter connector with a made-up JSON response from a local server. The pinned <a href="https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/providers/openrouter.ts" target="_blank" rel="noopener">connector implementation</a> sends the request through a cache-aware transport, then builds a smaller response from answer text, usage, and completion information. It did not copy our supplied citation list or answer annotations into that response. The evaluator received the smaller object.</p>
 <p>The shared <a href="https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/contracts/providers.ts" target="_blank" rel="noopener">response contract</a> allows both <code>raw</code> and arbitrary metadata. An adapter can use those fields to retain the original response alongside the answer being evaluated. The export checks below test that path.</p>
-${FlowDiagram({ label: "Built-in OpenRouter response path in the original fixture", steps: [ { eyebrow: "Transport", title: "Full parsed response", detail: html`The cache retains the citation list and annotation.`, connector: "adapter reads", tone: "blue" }, { eyebrow: "Adapter", title: "Selected fields", detail: html`Answer, usage, cache state, cost, and finish reason.`, connector: "evaluator gets", tone: "warm" }, { eyebrow: "Summary", title: "Answer retained", detail: html`Structured citations are absent in this tested path.`, tone: "rust" } ] })}
-<h2>What survived the installed-package check</h2>
-<p>The installed experiment located the omission and tested a repair with the same response. It used one invented payload containing one distinct source URL, represented in a citation list and an annotation. No live model answered the question.</p>
+${FlowDiagram({ label: "Local mock response through Promptfoo's OpenRouter connector; no OpenRouter call", steps: [ { eyebrow: "Local server", title: "Made-up response", detail: html`The cache retains our citation list and annotation.`, connector: "connector reads", tone: "blue" }, { eyebrow: "Promptfoo connector", title: "Selected fields", detail: html`Answer, usage, cache state, cost, and finish reason.`, connector: "evaluator gets", tone: "warm" }, { eyebrow: "Summary", title: "Supplied text retained", detail: html`Our structured citation fields are absent.`, tone: "rust" } ] })}
+<h2>Testing Promptfoo&#39;s OpenRouter connector locally</h2>
+<p>The local experiment tested how Promptfoo handled fields we supplied. It used one made-up response containing one distinct source URL, represented in a citation list and an annotation. No OpenRouter service or model was called. We did not check whether a live OpenRouter response would contain those fields.</p>
 <p>We ran the built-in provider against a local HTTP server, repeated the evaluation with caching enabled, then sent the same payload through a custom capture provider. Each evaluation used the public summary API and a text assertion. The script serialized the summaries and read them back before checking the fields. <a href="https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/README.md" target="_blank" rel="noopener">Runnable probe and saved outputs</a>.</p>
 <div class="compare-table-scroll"><table class="compare-table" style="min-width:44rem">
 <thead>
 <tr>
-<th>Observed path</th>
+<th>Summary path (same made-up response)</th>
 <th align="right">New local requests</th>
 <th>Answer text</th>
 <th align="right">Citation-list entries retained</th>
@@ -457,7 +457,7 @@ ${FlowDiagram({ label: "Built-in OpenRouter response path in the original fixtur
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">};</span></span></code></pre>
 <p>This changes what the runner can retain without changing the answer assertion. That original prototype handles the successful fixture only; its saved usage fields are invented inputs, not a billing record.</p>
 <p>The fixture&#39;s repeated URL is one source, not two lost citations. Its annotation offsets are not validated, and the text assertion checks transport rather than truth. Tracing, database persistence, CLI export, streaming, failure handling, and live billing were outside that original check. The failure and export checks below cover several of those gaps. The <a href="https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/repro/installed/recorded/result.json" target="_blank" rel="noopener">recorded result</a> keeps those limits beside the measurements.</p>
-<p>For a real answer, missing citation fields would mean we could not assess citations through that field. They would not mean the model cited nothing. The controlled fixture lets us establish an omission because we know what entered the adapter.</p>
+<p>This test establishes an omission for the response we wrote. It does not establish that any real OpenRouter citations were lost. For a real answer, missing citation fields would leave that part of the evidence unassessed; they would not show that the model cited nothing.</p>
 <h2>What survived failures, a restart, and tracing</h2>
 <p>The capture layer now preserves failed attempts as well as successful answers. We extended the experiment to ten controlled cases on a Mac, saved each response before parsing it, and checked the same records in the public summary, Promptfoo&#39;s JSON exporter, and a separate CLI process reopening the database. All ten retained the complete provider response used by our capture layer. <a href="https://github.com/gkoreli/blog/blob/5fc2dc5dc40ad2397a78325e3a192485b44e8cb5/packages/blog/drafts/research/oss-radar-07/repro/capture/README.md" target="_blank" rel="noopener">Method and recorded results</a>.</p>
 <div class="compare-table-scroll"><table class="compare-table" style="min-width:44rem">
@@ -566,13 +566,13 @@ ${FlowDiagram({ label: "Built-in OpenRouter response path in the original fixtur
 
 <section id="sources-and-evidence" aria-label="Glossary and sources">
 <h2 id="glossary">Glossary &amp; sources</h2>
-<p>Definitions and supporting evidence share one table. Dates are publication dates unless marked <strong>checked</strong>. Promptfoo code links refer to the tested 0.122.2 baseline. The experiment records distinguish controlled responses, real CLI output, and source review.</p>
+<p>Definitions and supporting evidence share one table. Dates are publication dates unless marked <strong>checked</strong>. Promptfoo code links refer to the tested 0.122.2 baseline. The experiment records distinguish made-up responses served locally, real CLI output, and source review.</p>
 <div class="compare-table-scroll"><table class="compare-table" style="min-width:44rem">
 <thead><tr><th>Term or finding</th><th>Source and why it matters</th><th>Date</th></tr></thead>
 <tbody>${sources.map(s => html`<tr><td>${s.claim}</td><td><a href="${s.url}" target="_blank" rel="noopener">${s.ref}</a><p>${s.why}</p></td><td>${s.date}</td></tr>`)}</tbody>
 </table></div>
 <h3>Research record</h3>
-<p>The <a href="https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/00-worklist-index.md" target="_blank" rel="noopener">worklist</a> links the experiments, research notes, and open work. The <a href="https://github.com/gkoreli/blog/blob/main/packages/blog/prompts/oss-radar-07-promptfoo.prompts.md" target="_blank" rel="noopener">verbatim shaping prompts</a> are preserved for this issue at the author&#39;s request. The methods record the runtimes, dependency lock, scripts, results, and failed setup attempts. Codex executed the experiments for this article; Goga supplied the workload and editorial direction. A <a href="/oss-radar-07-promptfoo/prompts#research-footprint">partial research footprint</a> records 43,272,331 tokens across eight recovered Codex sessions. The original ChatGPT research, mixed analytics/publication conversation, and subsequent real CLI experiments and reviews are excluded. The original fifteen-prompt snapshot remains frozen; the prompt page includes two later requests. The <a href="https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/19-research-footprint.md" target="_blank" rel="noopener">accounting method and exclusions</a> explain the measured portion; human hands-on time remains unmeasured.</p>
+<p>The <a href="https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/00-worklist-index.md" target="_blank" rel="noopener">worklist</a> links the experiments, research notes, and open work. The <a href="https://github.com/gkoreli/blog/blob/main/packages/blog/prompts/oss-radar-07-promptfoo.prompts.md" target="_blank" rel="noopener">verbatim shaping prompts</a> are preserved for this issue at the author&#39;s request. The methods record the runtimes, dependency lock, scripts, results, and failed setup attempts. Codex executed the experiments for this article; Goga supplied the workload and editorial direction. A <a href="/oss-radar-07-promptfoo/prompts#research-footprint">partial research footprint</a> records 43,272,331 tokens across eight recovered Codex sessions. The original ChatGPT research, mixed analytics/publication conversation, and subsequent real CLI experiments and reviews are excluded. The original fifteen-prompt snapshot remains frozen; the prompt page includes later requests and claim corrections. The <a href="https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/19-research-footprint.md" target="_blank" rel="noopener">accounting method and exclusions</a> explain the measured portion; human hands-on time remains unmeasured.</p>
 
 </section>
 </article>`;

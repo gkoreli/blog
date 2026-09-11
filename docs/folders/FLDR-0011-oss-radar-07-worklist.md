@@ -2,9 +2,11 @@
 id: FLDR-0011
 title: OSS Radar 07 Worklist
 created_at: '2026-09-08T19:21:39.000Z'
-updated_at: '2026-09-11T04:29:30.203281+00:00'
+updated_at: '2026-09-11T16:27:10.096497+00:00'
 type: folder
 ---
+
+**Current work — September 11:** Goga requested a full rewrite about AI citations, analytics, attribution, and source credibility across open-source projects. Promptfoo will be one tested section. Three delegated research tracks and parent synthesis are executing on main under the [rewrite brief](../../packages/blog/drafts/research/oss-radar-07/27-ai-citations-rewrite-brief.md). The [OpenRouter claim audit](../../packages/blog/drafts/research/oss-radar-07/23-openrouter-claim-audit.md) preserves the immediate correction: no OpenRouter service or model ran. The current prompt record has nineteen exact messages. The old footprint is frozen and excludes this work. Earlier releases below remain published; the full rewrite is in progress.
 
 OSS Radar #07 reviews Promptfoo for preserving the evidence behind AI answers. It starts from the blog's citation-analytics question and has a separate engineering continuation.
 

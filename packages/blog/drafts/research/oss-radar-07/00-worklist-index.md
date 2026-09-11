@@ -2,11 +2,13 @@
 
 Check date: September 8, 2026. Repository baseline: gkoreli/blog at `935abf29de1a755d2e278f90d4794c11d18a6a43`.
 
-**State:** The first article release and its partial footprint are [published and verified](18-publication-verification.md). The [real subscription CLI experiment](20-subscription-cli-experiment.md) and [source review](21-real-answer-source-review.md) are now complete: two real answers, both retained through database/export, with three material errors found in Claude's answer. The [article revision](22-real-experiment-article-revision.md) is published and verified with this evidence, a product judgment, and one consolidated glossary/source table. The prompt record contains seventeen complete messages. The earlier [footprint](19-research-footprint.md) stays frozen and excludes this continuation.
+**State:** The first article release and its partial footprint are [published and verified](18-publication-verification.md). The [real subscription CLI experiment](20-subscription-cli-experiment.md) and [source review](21-real-answer-source-review.md) are now complete: two real answers, both retained through database/export, with three material errors found in Claude's answer. The [article revision](22-real-experiment-article-revision.md) is published and verified with this evidence, a product judgment, and one consolidated glossary/source table. The prompt record now contains nineteen complete messages. The earlier [footprint](19-research-footprint.md) stays frozen and excludes this continuation.
 
 Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original baseline above belongs to the four-option investigation.
 
 **Article form:** project deep dive under the OSS Radar skill. Choose one project. The engineering continuation will use the evidence-led investigation form and answer a distinct question about the blog.
+
+**Current work:** The author requested a complete rewrite around AI citations and the open-source systems behind generation, evaluation, attribution, and source credibility. Promptfoo becomes one tested section. Three research tracks are running under the [rewrite brief](27-ai-citations-rewrite-brief.md). The [OpenRouter claim audit](23-openrouter-claim-audit.md) records the immediate correction; its local test made no service or model call.
 
 ## Worklist
 
@@ -29,6 +31,7 @@ Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original 
 | Exercise capture failures, persistence, and tracing | Complete: 10 synthetic cases, 11 HTTP attempts, explicit local join | [Method and accepted exports](repro/capture/README.md) |
 | Verify and publish OSS Radar #07 | Complete: release `ccd6bc6`, Cloudflare activation, and served-content acceptance | [Publication verification](18-publication-verification.md) |
 | Recover and publish research footprint | Complete: 43,272,331 measured tokens, eight sessions, explicit exclusions, and live acceptance | [Footprint methodology and receipt](19-research-footprint.md) |
+| Rewrite Radar #07 around AI citations and the OSS landscape | In progress: three delegated research tracks, parent synthesis | [Rewrite brief](27-ai-citations-rewrite-brief.md) |
 | Develop the engineering continuation | Open | Requires useful blog code and new operating evidence |
 
 Formal tracker: [FLDR-0011](../../../../../docs/folders/FLDR-0011-oss-radar-07-worklist.md). Execution task: [TASK-0134](../../../../../docs/tasks/TASK-0134-oss-radar-07-project-experiment-and-article.md).
@@ -60,6 +63,8 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 - [Real-answer source review](21-real-answer-source-review.md): both answers, retained sources, explicit judgments, and useful tool-record failures.
 - [Research footprint](19-research-footprint.md): recovered sessions, ownership evidence, exclusions, accounting, and footprint release checks.
 - [Publication module](../../../posts/026-oss-radar-07-promptfoo.ts) and [Markdown manuscript](../../oss-radar-07-promptfoo.md): article with Sources & Evidence and a dated glossary.
+- [OpenRouter claim audit](23-openrouter-claim-audit.md): the local test, misleading opening, and corrected evidence boundary.
+- [AI-citations rewrite brief](27-ai-citations-rewrite-brief.md): new subject, nine-project initial sample, delegation, and acceptance.
 - [Repository baselines](baselines.json): pinned source revisions and read-only checks.
 - [Promptfoo fixture probe](repro/README.md): runnable module-level reproduction, original source snapshot with its MIT licence, synthetic response, and saved result.
 - [Installed Promptfoo probe](repro/installed/README.md): guarded local HTTP experiment, capture-provider prototype, exact dependency lock, full summaries, and cache evidence.
@@ -69,7 +74,7 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 
 [Exact shaping prompts](../../../prompts/oss-radar-07-promptfoo.prompts.md).
 
-The record contains seventeen complete prompts. The first fifteen remain unchanged. The subscription-experiment request and the request to remove internal planning and consolidate the glossaries were appended verbatim.
+The record contains nineteen complete prompts. The first fifteen remain unchanged. Later messages request real subscription experiments, remove internal planning and duplicate glossaries, challenge the OpenRouter wording, and redirect the entire article to AI citations. Each is preserved verbatim.
 
 The September 8 request explicitly asks for a prompts section for this issue. It overrides the usual OSS Radar exception that omits public prompts. This is an issue-specific decision; no shared skill or prior issue was changed. Keep the complete initial prompt intact. The second recorded answer delegated the experiment timebox decision.
 
@@ -77,10 +82,12 @@ The filename matches the final slug. The initial thirteen-prompt release passed 
 
 ## Publication boundary
 
-The original controlled tests established the OpenRouter adapter omission and local retention. The later CLI experiment establishes that two real subscription-backed answers and their emitted records survive the custom-provider/database/export path. Source review found errors in one answer; preservation itself did not grade truth. The native Codex and Claude integrations were code-inspected, not executed in this experiment.
+The original controlled tests established how Promptfoo's OpenRouter connector handled a made-up response served locally. No OpenRouter service or model was called, and real OpenRouter citation loss was not established. The later CLI experiment establishes that two real subscription-backed answers and their emitted records survive the custom-provider/database/export path. Source review found errors in one answer; preservation itself did not grade truth. The native Codex and Claude integrations were code-inspected, not executed in this experiment.
 
 ## Next bounded action
 
-The real-answer experiment and article revision are complete; [release acceptance](22-real-experiment-article-revision.md) verifies the served HTML, Markdown, seventeen prompts, and consolidated glossary. The next research choice is the separate larger citation-frequency study or new operating evidence for the engineering continuation. Do not repeat the directed test, treat the article as unpublished, or restore the old browser-only blocker.
+Complete the three research artifacts and the full rewrite under the [current brief](27-ai-citations-rewrite-brief.md), then check and publish the revised article. The preceding article remains live while the rewrite develops; completed experiments remain evidence rather than work to repeat.
+
+The real-answer experiment and article revision are complete; [release acceptance](22-real-experiment-article-revision.md) verifies the served HTML, Markdown, seventeen prompts, and consolidated glossary. Those receipts describe the preceding release; the AI-citations rewrite is now the immediate work. Do not repeat the directed test, treat the article as unpublished, or restore the old browser-only blocker.
 
 The larger citation-frequency study and distinct engineering continuation remain open. The existing fixture/trace work is complete and must not be repeated as if unrun. The earlier footprint manifest remains frozen; the new experiment and follow-up are outside that cutoff.
