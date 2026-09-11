@@ -2,13 +2,13 @@
 id: FLDR-0011
 title: OSS Radar 07 Worklist
 created_at: '2026-09-08T19:21:39.000Z'
-updated_at: '2026-09-11T03:07:00.000Z'
+updated_at: '2026-09-11T03:27:00.000Z'
 type: folder
 ---
 
 OSS Radar #07 reviews Promptfoo for preserving the evidence behind AI answers. It starts from the blog's citation-analytics question and has a separate engineering continuation.
 
-**Publication is prepared at Goga's request.** The [article module](../../packages/blog/posts/026-oss-radar-07-promptfoo.ts) contains the completed controlled experiments, 38 source cards, a ten-term glossary, and a bounded trial recommendation. Thirteen exact shaping/publication prompts are retained. Current isolated type/build/Markdown checks passed; push and live acceptance remain.
+**Publication is complete.** [The release receipt](../../packages/blog/drafts/research/oss-radar-07/18-publication-verification.md) verifies the article's controlled experiments, 38 source cards, glossary, thirteen initial prompts, metadata, and served assets. The [research-footprint record](../../packages/blog/drafts/research/oss-radar-07/19-research-footprint.md) documents the later accounting request, recovered sessions, exclusions, and release checks; the prompt record now contains fifteen complete messages.
 
 The [publication decision](../../packages/blog/drafts/research/oss-radar-07/17-publication-decision.md) retires the earlier real-answer release gate for this narrower finding. The [source refresh](../../packages/blog/drafts/research/oss-radar-07/16-publication-source-check.md) records 0.123.0 while preserving the 0.122.2 experiment baseline. The [installed comparison](../../packages/blog/drafts/research/oss-radar-07/repro/installed/README.md) and [capture continuation](../../packages/blog/drafts/research/oss-radar-07/repro/capture/README.md) preserve the scripts and actual results: three original evaluations/two requests, then ten controlled cases/eleven attempts, saved exports, and one local trace join. All model payloads were synthetic.
 

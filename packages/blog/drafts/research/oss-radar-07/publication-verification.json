@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "scope": "First publication of OSS Radar #07; excludes the later research-footprint revision",
+  "releaseCommit": "ccd6bc6affccf1062a6e618f68ad1211edf8a148",
+  "canonicalUrl": "https://gkoreli.com/oss-radar-07-promptfoo",
+  "publicationDate": "2026-09-10",
+  "publicationTimeZone": "America/Los_Angeles",
+  "verification": {
+    "startedAt": "2026-09-11T03:16:12.909825+00:00",
+    "httpCompletedAt": "2026-09-11T03:16:13.372430+00:00",
+    "completedAt": "2026-09-11T03:25:12.868008+00:00",
+    "method": "11 direct HTTPS GETs followed by saved-response comparisons; no browser or production database queries",
+    "userAgent": "gkoreli-publication-check/1.0",
+    "allRequestsReturned200": true,
+    "redirects": 0
+  },
+  "deployment": {
+    "cloudflareBuildId": "a4f0e3af-6c1c-46e0-9a02-8f5fbb8a2765",
+    "githubCheckRunId": 103133082329,
+    "checkName": "Workers Builds: gkoreli-com",
+    "checkConclusion": "success",
+    "checkCompletedAt": "2026-09-11T03:11:00Z",
+    "activeDeploymentId": "e01e8770-becd-4cb3-8d5e-609cc851e8d6",
+    "activeVersionId": "cfd8b234-c26f-4039-84d7-b91102a81e85",
+    "trafficPercentage": 100,
+    "createdAt": "2026-09-11T03:10:55.142473Z",
+    "observedAt": "2026-09-11T03:19:09.775226+00:00"
+  },
+  "localBaseline": {
+    "sourceMatchesReleaseCommit": true,
+    "articleSourceSha256": "afce9c17fedfdbd3acca4bb57b6ad1b06930b8f81702c0816f5a0fc09cd2d886",
+    "savedBuildSummarySha256": "9156e440c8c48495c4b7a859e6b73225b4e4c1bf4c9b1055c1c10174fea9e18b",
+    "typeAndProductionBuildChecks": "passed, reported by publication parent",
+    "originalTwelvePromptsUnchanged": true
+  },
+  "responses": [
+    {
+      "resource": "article",
+      "url": "https://gkoreli.com/oss-radar-07-promptfoo",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 65823,
+      "sha256": "63a2297d6f35e18414bfc61d936e190e6d998610f03e7a89810db14506b077e1",
+      "localBytes": 65273,
+      "localSha256": "e28d59151d9115a15cc335627a85dc7dfd155d42144daafce216ca4081d87e1d",
+      "exactLocalMatch": false
+    },
+    {
+      "resource": "markdown",
+      "url": "https://gkoreli.com/oss-radar-07-promptfoo.md",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 36951,
+      "sha256": "5f0dee1df3a953dd7265c25b3a89ab38d418f4a11cbf6ae4a05ce970bbe580d5",
+      "localBytes": 36951,
+      "localSha256": "5f0dee1df3a953dd7265c25b3a89ab38d418f4a11cbf6ae4a05ce970bbe580d5",
+      "exactLocalMatch": true
+    },
+    {
+      "resource": "prompts",
+      "url": "https://gkoreli.com/oss-radar-07-promptfoo/prompts",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 15112,
+      "sha256": "8d7a07d6b8442c55d1625a90838fb527f89ac1eddd558c550576f03df7ef4245",
+      "localBytes": 14562,
+      "localSha256": "1e2eaabd124f4d494d7f2f54411676e5bcef8cb834530c21545e52448a22a86b",
+      "exactLocalMatch": false
+    },
+    {
+      "resource": "og",
+      "url": "https://gkoreli.com/og/oss-radar-07-promptfoo.png?v=6a341f1a",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 132103,
+      "sha256": "6a341f1adb28532aa8bc08d4ca53a116b54b740fca7edea64e0d6640e116161e",
+      "localBytes": 132103,
+      "localSha256": "6a341f1adb28532aa8bc08d4ca53a116b54b740fca7edea64e0d6640e116161e",
+      "exactLocalMatch": true
+    },
+    {
+      "resource": "styles",
+      "url": "https://gkoreli.com/main.css",
+      "status": 200,
+      "contentType": "text/css",
+      "bytes": 88203,
+      "sha256": "c5c1acdd5c1eee34948e1984f1669071abe73c5b007bcbee5aac9943dd1b3f91",
+      "localBytes": 88203,
+      "localSha256": "c5c1acdd5c1eee34948e1984f1669071abe73c5b007bcbee5aac9943dd1b3f91",
+      "exactLocalMatch": true
+    },
+    {
+      "resource": "immersive",
+      "url": "https://gkoreli.com/immersive.js",
+      "status": 200,
+      "contentType": "text/javascript",
+      "bytes": 36014,
+      "sha256": "35acc47de52cfefa30b2f14e8648cabde7f46936698c847b8745bdbeb77319eb",
+      "localBytes": 36014,
+      "localSha256": "35acc47de52cfefa30b2f14e8648cabde7f46936698c847b8745bdbeb77319eb",
+      "exactLocalMatch": true
+    },
+    {
+      "resource": "main",
+      "url": "https://gkoreli.com/main.js",
+      "status": 200,
+      "contentType": "text/javascript",
+      "bytes": 20856,
+      "sha256": "7ce9ff190b25c87d7b2b2ac26507d71497acd59ca7d48927410078193af55a88",
+      "localBytes": 20856,
+      "localSha256": "7ce9ff190b25c87d7b2b2ac26507d71497acd59ca7d48927410078193af55a88",
+      "exactLocalMatch": true
+    },
+    {
+      "resource": "rss",
+      "url": "https://gkoreli.com/feed.xml",
+      "status": 200,
+      "contentType": "application/xml",
+      "bytes": 13121,
+      "sha256": "7eb126fceeb2f9b96513d82f7affaa4c9e7aa0aac752fd14877ae643ccd41f76",
+      "localBytes": 13121,
+      "localSha256": "aea46031d9f02346d7dc8622dc67b20c35807159944f0193bd14924765c63cb3",
+      "exactLocalMatch": false
+    },
+    {
+      "resource": "sitemap",
+      "url": "https://gkoreli.com/sitemap.xml",
+      "status": 200,
+      "contentType": "application/xml",
+      "bytes": 4830,
+      "sha256": "24f5c957ba891980b36855df1c07218d5f53ae18cbb1eaa5346e09e0af452e8d",
+      "localBytes": 4830,
+      "localSha256": "24f5c957ba891980b36855df1c07218d5f53ae18cbb1eaa5346e09e0af452e8d",
+      "exactLocalMatch": true
+    },
+    {
+      "resource": "posts",
+      "url": "https://gkoreli.com/posts.json",
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 20259,
+      "sha256": "d8c1741b50e88587b6c3a7961db9d4417878e3b8d601d79d53f7c9d4c7e25aea",
+      "localBytes": 20259,
+      "localSha256": "d8c1741b50e88587b6c3a7961db9d4417878e3b8d601d79d53f7c9d4c7e25aea",
+      "exactLocalMatch": true
+    },
+    {
+      "resource": "radar",
+      "url": "https://gkoreli.com/oss-radar",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 14073,
+      "sha256": "59255acda4eebcade74f079923216c03c14dc7e09504ae7caaaa64db0d2d3845",
+      "localBytes": 13523,
+      "localSha256": "57a87a3a953011e83242fc4ffea12d1e4ec893834f30aee70f1e42be0c743078",
+      "exactLocalMatch": false
+    }
+  ],
+  "htmlShellDifferences": [
+    {
+      "resource": "article",
+      "removed": [
+        {
+          "element": "turnstileScript",
+          "count": 1,
+          "bytes": 99
+        },
+        {
+          "element": "turnstilePublicSiteKeyAttribute",
+          "count": 1,
+          "bytes": 50
+        },
+        {
+          "element": "turnstileSlot",
+          "count": 1,
+          "bytes": 34
+        },
+        {
+          "element": "cloudflareWebAnalyticsScript",
+          "count": 1,
+          "bytes": 367
+        }
+      ],
+      "onlyTheseDifferences": true,
+      "normalizedHtmlSha256": "e28d59151d9115a15cc335627a85dc7dfd155d42144daafce216ca4081d87e1d"
+    },
+    {
+      "resource": "prompts",
+      "removed": [
+        {
+          "element": "turnstileScript",
+          "count": 1,
+          "bytes": 99
+        },
+        {
+          "element": "turnstilePublicSiteKeyAttribute",
+          "count": 1,
+          "bytes": 50
+        },
+        {
+          "element": "turnstileSlot",
+          "count": 1,
+          "bytes": 34
+        },
+        {
+          "element": "cloudflareWebAnalyticsScript",
+          "count": 1,
+          "bytes": 367
+        }
+      ],
+      "onlyTheseDifferences": true,
+      "normalizedHtmlSha256": "1e2eaabd124f4d494d7f2f54411676e5bcef8cb834530c21545e52448a22a86b"
+    },
+    {
+      "resource": "radar",
+      "removed": [
+        {
+          "element": "turnstileScript",
+          "count": 1,
+          "bytes": 99
+        },
+        {
+          "element": "turnstilePublicSiteKeyAttribute",
+          "count": 1,
+          "bytes": 50
+        },
+        {
+          "element": "turnstileSlot",
+          "count": 1,
+          "bytes": 34
+        },
+        {
+          "element": "cloudflareWebAnalyticsScript",
+          "count": 1,
+          "bytes": 367
+        }
+      ],
+      "onlyTheseDifferences": true,
+      "normalizedHtmlSha256": "57a87a3a953011e83242fc4ffea12d1e4ec893834f30aee70f1e42be0c743078"
+    }
+  ],
+  "article": {
+    "bodyMatchesLocalExactly": true,
+    "bodySha256": "7ab965e7d94c999f7fbc3c73665f857e3689060870a6c2cd53fad0f5290513eb",
+    "h1Count": 1,
+    "h1Text": "Promptfoo: Can It Preserve the Evidence Behind an AI Answer?",
+    "sourceCardCount": 38,
+    "tableRowCounts": [
+      4,
+      4,
+      4,
+      5,
+      11
+    ],
+    "displayedReadTimeMinutes": 12,
+    "localNarrativeWordsIncludingTitle": 2383
+  },
+  "metadata": {
+    "seoTitle": "Promptfoo Review: Preserving AI Citation Evidence",
+    "canonical": "https://gkoreli.com/oss-radar-07-promptfoo",
+    "description": "Promptfoo can retain citation evidence with explicit capture. We tested adapter omissions, failed attempts, database export, and local trace joins.",
+    "ogTitle": "OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?",
+    "ogImage": "https://gkoreli.com/og/oss-radar-07-promptfoo.png?v=6a341f1a",
+    "ogImageDimensions": [
+      1200,
+      600
+    ],
+    "twitterCard": "summary_large_image",
+    "jsonLdMatchesLocalExactly": true,
+    "datePublished": "2026-09-10",
+    "dateModified": "2026-09-10"
+  },
+  "prompts": {
+    "count": 13,
+    "allRenderedPromptsMatchReleaseSourceExactly": true,
+    "comparison": "Decode HTML entities and map the template-generated br elements back to newlines.",
+    "releasePromptSourceSha256": "e32a88e38d123479cd271b636086605fd304cf40cf49613ea5b6911bf4d82653",
+    "pageMatchesLocalAfterDocumentedShellDifferences": true
+  },
+  "discovery": {
+    "postsJsonEntryCount": 1,
+    "postsJsonEntry": {
+      "slug": "oss-radar-07-promptfoo",
+      "title": "OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?",
+      "date": "2026-09-10",
+      "section": "oss-radar",
+      "description": "Promptfoo can retain citation evidence with explicit capture. We tested adapter omissions, failed attempts, database export, and local trace joins.",
+      "tags": [
+        "oss-radar",
+        "promptfoo",
+        "ai-evaluation",
+        "analytics"
+      ],
+      "featured": false,
+      "alternativeHeadline": "Citation fields, failed attempts, and trace joins through Promptfoo 0.122.2",
+      "url": "/oss-radar-07-promptfoo",
+      "markdown": "/oss-radar-07-promptfoo.md",
+      "prompts": "/oss-radar-07-promptfoo/prompts",
+      "promptCount": 13
+    },
+    "rssItemCount": 26,
+    "rssMatchingArticleItems": 1,
+    "rssPubDateLive": "Thu, 10 Sep 2026 00:00:00 GMT",
+    "rssPubDateLocal": "Thu, 10 Sep 2026 07:00:00 GMT",
+    "rssOnlyDifferenceIsPubDateTimeOfDay": true,
+    "rssPublicationDatePreserved": true,
+    "sitemapMatchingArticleEntries": 1,
+    "sitemapLastModified": "2026-09-10",
+    "radarIndexArticleLinks": 1
+  },
+  "visualVerification": {
+    "liveOgPngInspected": true,
+    "ogResult": "1200 by 600; complete title and branding readable without clipping",
+    "freshBrowserReview": false,
+    "priorReview": "15-mobile-depth-and-motion-review.md",
+    "browserLimitation": "Native browser pipe unavailable during publication; prior review is historical, not a fresh live-browser check"
+  },
+  "boundaries": [
+    "All Promptfoo experiment payloads remain synthetic and pinned to 0.122.2.",
+    "This verifies published artifacts and metadata, not a live model answer or citation support.",
+    "Successful asset responses do not verify script execution, animation performance, or newsletter signup.",
+    "Production Turnstile configuration and Cloudflare Web Analytics markup account for 550 added HTML bytes.",
+    "RSS uses build-local midnight converted to UTC; production and Mac builds retain September 10 but differ by seven hours for this issue.",
+    "This receipt covers the initial release before the later research-footprint update."
+  ],
+  "result": "pass_with_documented_environment_differences"
+}

@@ -4,12 +4,12 @@ title: OSS Radar 07 project experiment and article
 status: in_progress
 parent_id: FLDR-0011
 created_at: '2026-09-08T19:21:39.000Z'
-updated_at: '2026-09-11T03:07:00.000Z'
+updated_at: '2026-09-11T03:27:00.000Z'
 type: task
 ---
 Goga selected **Promptfoo** for **OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?** The research tests its design and adoption fit for preserving citation evidence; the planned engineering continuation must answer a distinct question about code used on the blog.
 
-**Publication: prepared at Goga's explicit request, September 10 PDT.** The [release module](../../packages/blog/posts/026-oss-radar-07-promptfoo.ts) now lives in `posts/`, with the actual publication date, 38 dated source cards, a ten-term glossary, and thirteen [verbatim prompts](../../packages/blog/prompts/oss-radar-07-promptfoo.prompts.md). Current isolated type/build and generated-representation checks passed. Push and live acceptance remain before reporting publication complete.
+**Publication: complete.** [Release `ccd6bc6` and live acceptance](../../packages/blog/drafts/research/oss-radar-07/18-publication-verification.md) verified the article, 38 source cards, glossary, thirteen initial prompts, metadata, Markdown, and assets. The [research-footprint record](../../packages/blog/drafts/research/oss-radar-07/19-research-footprint.md) owns the later measured-subset accounting and release checks. The [prompt record](../../packages/blog/prompts/oss-radar-07-promptfoo.prompts.md) now contains fifteen complete messages, including the footprint and connector-wording requests. The [publication module](../../packages/blog/posts/026-oss-radar-07-promptfoo.ts) is the served source.
 
 The [publication decision](../../packages/blog/drafts/research/oss-radar-07/17-publication-decision.md) supersedes the earlier real-answer release gate. The article publishes controlled results and recommends a bounded trial. It does not claim a working production citation pipeline or measured live source-support accuracy. The [source refresh](../../packages/blog/drafts/research/oss-radar-07/16-publication-source-check.md) records the newer 0.123.0 release separately from the tested 0.122.2 baseline.
 

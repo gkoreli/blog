@@ -2,7 +2,7 @@
 
 Check date: September 8, 2026. Repository baseline: gkoreli/blog at `935abf29de1a755d2e278f90d4794c11d18a6a43`.
 
-**State:** Release prepared at Goga's request on September 10, 2026 PDT. The article publishes the completed controlled tests and a bounded trial recommendation. It contains 38 dated source cards, a ten-term glossary, thirteen exact prompts, runnable experiments, recorded exports, and the reviewed immersive presentation. The current isolated type check and 26-post production build passed. Push and live verification are the remaining publication steps. The real-answer test remains unrun follow-up work; browser access failed before a question could be submitted. See [publication decision](17-publication-decision.md) and [source refresh](16-publication-source-check.md).
+**State:** [Published and verified](18-publication-verification.md) on September 10, 2026 PDT, at Goga's request. The article contains 38 source cards, a ten-term glossary, runnable experiments, and recorded exports. The completed tests support a bounded trial recommendation. The requested [research footprint](19-research-footprint.md) measures recovered article-specific sessions and states the missing work; it does not invent a total for the original ChatGPT research. The prompt record now contains fifteen complete messages, including the publication, footprint, and connector-wording requests. The real-answer test remains unrun follow-up work; browser access failed before submission.
 
 Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original baseline above belongs to the four-option investigation.
 
@@ -26,7 +26,8 @@ Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original 
 | Check publication style, references, and render | Complete: 38 sources, 10 glossary terms, current type/build/Markdown checks; earlier desktop/mobile review | [Candidate review](11-publication-candidate-review.md), [source refresh](16-publication-source-check.md) |
 | Design the dedicated background animation | Complete: projected stacks, six-second motion, and a separate phone composition | [Current revision](15-mobile-depth-and-motion-review.md), [first design](14-evidence-plates-canvas.md) |
 | Exercise capture failures, persistence, and tracing | Complete: 10 synthetic cases, 11 HTTP attempts, explicit local join | [Method and accepted exports](repro/capture/README.md) |
-| Verify and publish OSS Radar #07 | Release prepared; push and live verification pending | [Publication decision](17-publication-decision.md) |
+| Verify and publish OSS Radar #07 | Complete: release `ccd6bc6`, Cloudflare activation, and served-content acceptance | [Publication verification](18-publication-verification.md) |
+| Recover and publish research footprint | Accounting recovered; freeze and rendered release checks recorded separately | [Footprint methodology and receipt](19-research-footprint.md) |
 | Develop the engineering continuation | Open | Requires useful blog code and new operating evidence |
 
 Formal tracker: [FLDR-0011](../../../../../docs/folders/FLDR-0011-oss-radar-07-worklist.md). Execution task: [TASK-0134](../../../../../docs/tasks/TASK-0134-oss-radar-07-project-experiment-and-article.md).
@@ -52,6 +53,8 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 - [Mobile depth and motion](15-mobile-depth-and-motion-review.md): author feedback, projected stacks, faster movement, and revised phone composition with rendered checks.
 - [Publication source refresh](16-publication-source-check.md): September 10 release/issue audit and comparison with the newer runner.
 - [Publication decision](17-publication-decision.md): tested scope, unavailable browser, and unfinished real-answer follow-up.
+- [First publication verification](18-publication-verification.md): deployed commit, exact served-content checks, and environment differences.
+- [Research footprint](19-research-footprint.md): recovered sessions, ownership evidence, exclusions, accounting, and footprint release checks.
 - [Publication module](../../../posts/026-oss-radar-07-promptfoo.ts) and [Markdown manuscript](../../oss-radar-07-promptfoo.md): article with Sources & Evidence and a dated glossary.
 - [Repository baselines](baselines.json): pinned source revisions and read-only checks.
 - [Promptfoo fixture probe](repro/README.md): runnable module-level reproduction, original source snapshot with its MIT licence, synthetic response, and saved result.
@@ -62,11 +65,11 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 
 [Exact shaping prompts](../../../prompts/oss-radar-07-promptfoo.prompts.md).
 
-The record contains thirteen complete prompts through the explicit publication instruction. The original twelve entries remain unchanged; the publication request is appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
+The record contains fifteen complete prompts through the footprint request and connector-wording question. The original twelve entries remain unchanged; all three later messages are appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
 
 The September 8 request explicitly asks for a prompts section for this issue. It overrides the usual OSS Radar exception that omits public prompts. This is an issue-specific decision; no shared skill or prior issue was changed. Keep the complete initial prompt intact. The second recorded answer delegated the experiment timebox decision.
 
-The filename matches the final slug, and the thirteen-prompt page passed the current isolated-build check.
+The filename matches the final slug. The initial thirteen-prompt release passed local and live checks; the footprint receipt owns the later fifteen-prompt revision.
 
 ## Publication boundary
 
@@ -74,6 +77,6 @@ The controlled tests establish the adapter omission and explicit capture's local
 
 ## Next bounded action
 
-Finish push and live acceptance for the prepared article. After publication, resume the [one-answer protocol](12-directed-answer-preflight.md) when browser access is available, using the existing Perplexity membership or another explicitly documented route. Preserve its result, verify the imported record through Promptfoo, and review its sources. No provider or API purchase is required. A web capture cannot establish live API-field or billing preservation. No production analytics query is needed.
+The article is published. Resume the [one-answer protocol](12-directed-answer-preflight.md) when browser access is available, using the existing Perplexity membership or another explicitly documented route. Preserve its result, verify the imported record through Promptfoo, and review its sources. No provider or API purchase is required. A web capture cannot establish live API-field or billing preservation. No production analytics query is needed.
 
 The local trace/export work is complete; do not repeat it as if unrun. The [capture manifest](repro/capture/recorded/manifest.json) commits to the accepted records and source hashes. The telemetry interruption and accepted local blocking behavior remain documented. The larger citation study and distinct engineering continuation stay open; publication does not complete them.

@@ -6,12 +6,12 @@ For engineers evaluating AI answers, the useful surprise is that a readable answ
 
 ## Recommended X post
 
-255 weighted characters, including the canonical URL and hashtag.
+251 weighted characters, including the canonical URL and hashtag.
 
 ```text
-Promptfoo kept the answer. Its built-in OpenRouter summary dropped the citation fields.
+Promptfoo 0.122.2 saved the answer, but left out its citation fields.
 
-Synthetic test on 0.122.2. The cache kept them. Custom capture retained citations and failed attempts through database export.
+A local test of its OpenRouter connector, using a made-up response. The cache kept the fields; custom capture preserved them through export.
 
 #BuildInPublic
 https://gkoreli.com/oss-radar-07-promptfoo
@@ -57,4 +57,5 @@ This preserves the article title after removing the series label and issue numbe
 - The [capture continuation](../../research/oss-radar-07/repro/capture/README.md) retained all 11 attempts across 10 synthetic cases through the database and JSON exports, including failures and the failed attempt before a successful retry. Five evaluations deliberately failed. Retention is the result; this is not a claim that every evaluation passed.
 - The [article](../../../posts/026-oss-radar-07-promptfoo.ts) notes the newer 0.123.0 release without claiming a rerun. These experiments establish no live model behavior, citation accuracy, or billing result.
 - Counts include paragraph breaks. Every post uses ASCII text, with each ordinary character weighted 1 and the canonical URL weighted 23. [X character-count rules](https://docs.x.com/fundamentals/counting-characters); [X link-count guidance](https://help.x.com/en/using-x/how-to-post-a-link), checked September 10, 2026 PDT.
-- The canonical URL matches the article slug. A HEAD request returned 404 at September 11, 2026, 03:06:15 UTC, before publication completed. The publication task owns the post-deployment link check.
+- The canonical URL returned HTTP 200 in the completed [publication verification](../../research/oss-radar-07/18-publication-verification.md), which checked the article, Markdown, metadata, prompts, and assets. The earlier 03:06 UTC 404 preceded deployment.
+- The owner's later wording question prompted a clarification: this tests Promptfoo's OpenRouter connector against a local server, not OpenRouter's service or models. No OpenRouter API call occurred.

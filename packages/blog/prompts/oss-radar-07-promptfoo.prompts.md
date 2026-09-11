@@ -48,3 +48,11 @@ on the phone scale it doesn't look great and also i think animation can be riche
 ---
 
 lets publish the OSS article shall we?
+
+---
+
+please mine and capture researchFootprint
+
+---
+
+OpenRouter summary? when did we evaluate open router for promptfoo?
