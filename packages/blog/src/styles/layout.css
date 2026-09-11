@@ -207,10 +207,6 @@ body { min-height: 100vh; }
 .separator-icon { flex-shrink: 0; }
 .sidebar .separator { margin: 0.5rem 0; }
 
-/* ── Focus mode — article pages hide sidebar nav ── */
-.layout-post .sidebar-nav,
-.layout-immersive .sidebar-nav { display: none; }
-
 /* ── Main content ── */
 .content {
   min-width: 0;

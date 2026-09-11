@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted — 2026-03-31
+Accepted — 2026-03-31. Amended — 2026-09-11: the *Focus Mode Sidebar* decision is superseded — article pages now keep the full sidebar nav. Every other decision here stands. See [Amendment — 2026-09-11](#amendment--2026-09-11-focus-mode-sidebar-superseded).
 
 ## Context
 
@@ -87,6 +87,8 @@ esbuild bundles all three as separate entry points. Pages that don't need a bund
 
 ### Focus Mode Sidebar
 
+> **Superseded — 2026-09-11.** The decision below is kept as written for the record; it is no longer how the site behaves. Read the [amendment](#amendment--2026-09-11-focus-mode-sidebar-superseded).
+
 Article pages hide the sidebar nav but keep the logo, tagline, social icons, and theme toggle. CSS-only:
 
 ```css
@@ -151,3 +153,52 @@ src/styles/
 **Trade-offs accepted:**
 - `as HTMLElement` casts in turndown rules — domino provides full DOM but turndown types filter params as `Node`
 - Dynamic import `as { meta, article }` for `.ts` posts — no runtime validator, type safety at the authoring boundary via `PostMeta`
+
+## Amendment — 2026-09-11: Focus Mode Sidebar Superseded
+
+### What was decided in March
+
+Article pages hid `.sidebar-nav` — the Contents links (Home, Essays, Engineering, OSS Radar, About, Stats) and the Studio project list — keeping only the logo, tagline, follow links, social icons, and theme toggle. The reasoning was reading focus: strip the navigation while the reader is in the piece.
+
+### Why it is reversed
+
+Focus mode optimized the wrong moment. A reader who finishes a post, or who bounces off one three paragraphs in, has no door out except the browser's back button and the single afterword link at the bottom of the article. The sidebar is the only place section structure is exposed while reading, and articles are where most readers arrive — search, an X link, an AI citation — so the pages with the least navigation are the pages with the most first-time visitors.
+
+This also contradicted two rules that came after ADR-0009:
+
+- **Stable shell, expressive interior** (`NORTH_STAR.md`). The outer frame is supposed to be the constant a reader learns once. A nav that vanishes on articles makes the shell the variable and the interior the constant — backwards.
+- **Section structure lives in the sidebar and section pages** (`NORTH_STAR.md`, homepage decision, 2026-07-05). If the sidebar is where the publication's shape is expressed, hiding it on articles means the shape is invisible exactly where it is needed.
+
+The distraction cost that focus mode was buying protection against is small: the nav is low-contrast (`opacity: 0.6`), sits left of a centered measure, and does not move. The navigation cost it imposed is not.
+
+### The decision
+
+Article pages render the full sidebar, identical to every other page. The `.layout-post` / `.layout-immersive` override in `layout.css` is removed; no replacement rule takes its place.
+
+```css
+/* removed — there is no article-specific sidebar state */
+.layout-post .sidebar-nav,
+.layout-immersive .sidebar-nav { display: none; }
+```
+
+`layout-post` and `layout-immersive` are still set by the build and still carried on `.layout`; they simply have no CSS attached now. They stay as hooks for interior-level differences, which is where per-post expression belongs.
+
+Two details follow from the shell already being correct:
+
+- `pageShell()` already receives `currentSection` for every post (`pipeline/build.ts`), so an article marks its own section active — an essay shows **Essays** lit. The sidebar tells the reader where they are, not just where they could go.
+- The Studio block returns on articles too. Keeping Contents but hiding Studio would trade one article-specific shell for another; the point of this amendment is that there is no article-specific shell.
+
+Mobile is unchanged: below 768px the nav has always been collapsed behind the burger on every page, article or not.
+
+### Consequences
+
+**Positive:**
+- Every page is one click from every section; the afterword's "Continue reading" becomes a recommendation instead of the only exit.
+- One shell, no layout-conditional navigation state to reason about or keep in sync.
+- The active-section marker orients readers who arrive mid-site from search or a citation.
+
+**Negative:**
+- Slightly more in the reader's periphery during long-form reading.
+- Immersive posts with a full-bleed preamble hero now reveal the nav as soon as the reader scrolls into the body, a beat after a deliberately bare opening.
+
+**Watch:** if the nav proves to be a real distraction rather than a hypothetical one, the answer is a quieter sidebar for everyone, not a different sidebar for articles.

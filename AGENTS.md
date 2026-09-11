@@ -520,6 +520,7 @@ Researched and decided 2026-03-05. Reference these — don't re-decide.
 - **3-column CSS grid** — `1fr minmax(0, var(--content-max)) 1fr`. Content always centered, sidebar right-aligned within its column. Gutter mirrors sidebar for symmetric centering. `minmax` lets content shrink on narrow viewports — no horizontal scroll.
 - **Sidebar sizes to content** — no fixed width. Sits inside `.sidebar-wrapper` with `justify-content: flex-end`. Spacing via single `gap: 1rem` on parent flex container.
 - **Sidebar HTML zones** — `sidebar-bar` (logo + burger), `sidebar-social` (icon buttons), `sidebar-nav` (sections + separator). Clean separation for responsive behavior.
+- **The sidebar is the same on every page** — including articles. There is no article-specific navigation state. Posts pass `currentSection`, so an article lights its own section. Focus mode (articles hiding `.sidebar-nav`) was superseded 2026-09-11: it left readers who arrive on an article with no door to the rest of the publication, and section structure lives in the sidebar. See the amendment in ADR-0009.
 - **One media query (768px)** — the only structural change. Grid goes single-column, sidebar becomes horizontal header bar with burger menu. Everything else is intrinsic: `auto-fit` grids, `flex-wrap`, `minmax`.
 - **`<nisli-burger-menu>` web component** — toggles full-screen overlay on mobile. Same `@nisli/core` pattern as theme toggle. Escape to close, body scroll locked, `aria-expanded`.
 - **Code blocks get visual priority** — they're the primary content. Generous padding, full-width within the content column, prominent but not overwhelming.
@@ -595,6 +596,7 @@ All SEO files are auto-generated at build time from `PostMeta[]`. Adding a new p
 - Don't use pure white (`#ffffff`) or pure black (`#000000`) — always warm/muted
 - Don't use sans-serif for body text — the literary serif is a deliberate identity choice
 - Don't remove the sidebar to "simplify" — it's a navigation pattern that scales with content
+- Don't hide the sidebar nav on article pages — the shell is stable across pages; a reader mid-article must always be one click from a section (ADR-0009 amendment, 2026-09-11)
 - Don't add animations or transitions unless they serve comprehension (not decoration)
 - Don't use different fonts for light vs dark — same typography, different palette
 - Don't use emoji for UI elements — always use SVG icons from `public/icons/`. Emoji render inconsistently across platforms and break the cohesive visual identity. The icon set uses gradient line-art matching the blog's color palette.
