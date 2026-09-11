@@ -1,0 +1,136 @@
+{
+  "checkedAt": "2026-09-11T17:02:16.785Z",
+  "method": "Headless Chrome with explicit CDP device metrics; local production build",
+  "results": [
+    {
+      "name": "desktop",
+      "viewport": 1440,
+      "pageWidth": 1440,
+      "h1Count": 1,
+      "heading": "AI Citations: Do Agents Preserve the Evidence Behind an Answer?",
+      "tables": [
+        {
+          "width": 728,
+          "contentWidth": 728
+        },
+        {
+          "width": 728,
+          "contentWidth": 728
+        },
+        {
+          "width": 728,
+          "contentWidth": 728
+        },
+        {
+          "width": 728,
+          "contentWidth": 728
+        }
+      ],
+      "bodyWidth": 1440
+    },
+    {
+      "name": "mobile",
+      "viewport": 390,
+      "pageWidth": 390,
+      "h1Count": 1,
+      "heading": "AI Citations: Do Agents Preserve the Evidence Behind an Answer?",
+      "tables": [
+        {
+          "width": 354,
+          "contentWidth": 576
+        },
+        {
+          "width": 354,
+          "contentWidth": 576
+        },
+        {
+          "width": 354,
+          "contentWidth": 576
+        },
+        {
+          "width": 354,
+          "contentWidth": 684
+        }
+      ],
+      "bodyWidth": 390
+    },
+    {
+      "name": "mobile-body",
+      "viewport": 390,
+      "pageWidth": 390,
+      "h1Count": 1,
+      "heading": "AI Citations: Do Agents Preserve the Evidence Behind an Answer?",
+      "tables": [
+        {
+          "width": 354,
+          "contentWidth": 576
+        },
+        {
+          "width": 354,
+          "contentWidth": 576
+        },
+        {
+          "width": 354,
+          "contentWidth": 576
+        },
+        {
+          "width": 354,
+          "contentWidth": 684
+        }
+      ],
+      "bodyWidth": 390
+    },
+    {
+      "name": "desktop-table",
+      "viewport": 1440,
+      "pageWidth": 1440,
+      "h1Count": 1,
+      "heading": "AI Citations: Do Agents Preserve the Evidence Behind an Answer?",
+      "tables": [
+        {
+          "width": 728,
+          "contentWidth": 728
+        },
+        {
+          "width": 728,
+          "contentWidth": 728
+        },
+        {
+          "width": 728,
+          "contentWidth": 728
+        },
+        {
+          "width": 728,
+          "contentWidth": 728
+        }
+      ],
+      "bodyWidth": 1440
+    },
+    {
+      "name": "mobile-table",
+      "viewport": 390,
+      "pageWidth": 390,
+      "h1Count": 1,
+      "heading": "AI Citations: Do Agents Preserve the Evidence Behind an Answer?",
+      "tables": [
+        {
+          "width": 354,
+          "contentWidth": 576
+        },
+        {
+          "width": 354,
+          "contentWidth": 576
+        },
+        {
+          "width": 354,
+          "contentWidth": 576
+        },
+        {
+          "width": 354,
+          "contentWidth": 684
+        }
+      ],
+      "bodyWidth": 390
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-09-11T17:01:44.024556+00:00",
+  "title": "AI Citations: Do Agents Preserve the Evidence Behind an Answer?",
+  "h1Count": 1,
+  "sourceCount": 29,
+  "tableBodyRowCounts": [
+    2,
+    2,
+    3,
+    29
+  ],
+  "narrativeWordsIncludingTitle": 2667,
+  "readTimeMinutes": 14,
+  "promptCount": 19,
+  "exactPromptsMatch": true,
+  "publishedDate": "2026-09-10",
+  "modifiedDate": "2026-09-11",
+  "rssPublishedDateUnchanged": true,
+  "sitemapModifiedDate": "2026-09-11",
+  "footprintSha256": "36d3e870bd4d6efae26e45af1035065f7b071934f21f907c5aa75f048657dbd0",
+  "footprintExcludesRewrite": true,
+  "relativeLinksChecked": 265,
+  "brokenRelativeLinks": [],
+  "articleBodySha256": "f8f4eb442eb629229f154c3c54744700c797deaf4621a1efaea69520376d8036",
+  "markdownSha256": "d58faf801eeb36ded5a7919250b75b02ccb1320d9431509e22de2ea1c3b01b4b",
+  "manuscriptSha256": "955fe9b1128c6f25841e73eabe0b6ed38fc35755106076a2f80ee8b6091133d2"
+}

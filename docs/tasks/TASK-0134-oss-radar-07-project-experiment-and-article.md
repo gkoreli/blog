@@ -1,45 +1,39 @@
 ---
 id: TASK-0134
-title: OSS Radar 07 project experiment and article
+title: OSS Radar 07 AI citations research, article, and engineering continuation
 status: in_progress
 parent_id: FLDR-0011
 created_at: '2026-09-08T19:21:39.000Z'
-updated_at: '2026-09-11T16:27:10.096159+00:00'
+updated_at: '2026-09-11T16:58:13.953737+00:00'
 type: task
 ---
 
-**Current work — September 11:** Goga requested a full rewrite about AI citations, analytics, attribution, and source credibility across open-source projects. Promptfoo will be one tested section. Three delegated research tracks and parent synthesis are executing on main under the [rewrite brief](../../packages/blog/drafts/research/oss-radar-07/27-ai-citations-rewrite-brief.md). The [OpenRouter claim audit](../../packages/blog/drafts/research/oss-radar-07/23-openrouter-claim-audit.md) preserves the immediate correction: no OpenRouter service or model ran. The current prompt record has nineteen exact messages. The old footprint is frozen and excludes this work. Earlier releases below remain published; the full rewrite is in progress.
-Goga selected **Promptfoo** for **OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?** The research tests its design and adoption fit for preserving citation evidence; the planned engineering continuation must answer a distinct question about code used on the blog.
+**Current article state — September 11:** the full AI-citations rewrite is researched, written, and independently reviewed. Final publication checks and release verification are in progress in [acceptance 32](../../packages/blog/drafts/research/oss-radar-07/32-ai-citations-rewrite-acceptance.md). The governing subject is **AI Citations: Do Agents Preserve the Evidence Behind an Answer?** The author's latest request supersedes the earlier requirement to make Promptfoo the article's center.
 
-**Publication: complete.** [Release `ccd6bc6` and live acceptance](../../packages/blog/drafts/research/oss-radar-07/18-publication-verification.md) verified the article, 38 source cards, glossary, thirteen initial prompts, metadata, Markdown, and assets. The [research-footprint record](../../packages/blog/drafts/research/oss-radar-07/19-research-footprint.md) owns the later measured-subset accounting and release checks. The [prompt record](../../packages/blog/prompts/oss-radar-07-promptfoo.prompts.md) contains fifteen complete messages at that frozen release, including the footprint and connector-wording requests. The [publication module](../../packages/blog/posts/026-oss-radar-07-promptfoo.ts) is the served source.
-
-The [publication decision](../../packages/blog/drafts/research/oss-radar-07/17-publication-decision.md) supersedes the earlier real-answer release gate. The article publishes controlled results and recommends a bounded trial. It does not claim a working production citation pipeline or measured live source-support accuracy. The [source refresh](../../packages/blog/drafts/research/oss-radar-07/16-publication-source-check.md) records the newer 0.123.0 release separately from the tested 0.122.2 baseline.
+This task retains its separate engineering-continuation scope, so article publication alone does not complete the whole task. The larger citation-frequency pilot is also unrun. Neither is a release gate for the findings already established.
 
 ## Completed research and experiments
 
-- [Source/design and prior-art review](../../packages/blog/drafts/research/oss-radar-07/06-promptfoo-design-and-prior-art.md), [product purpose/trajectory](../../packages/blog/drafts/research/oss-radar-07/08-promptfoo-purpose-and-trajectory.md), and the original four-option comparison are saved in the [worklist](../../packages/blog/drafts/research/oss-radar-07/00-worklist-index.md).
-- The [installed comparison](../../packages/blog/drafts/research/oss-radar-07/repro/installed/README.md) ran three evaluations and two local requests. The built-in OpenRouter summary omitted fixture citation fields; its cache and a custom provider retained them.
-- The [capture continuation](../../packages/blog/drafts/research/oss-radar-07/repro/capture/README.md) retained ten controlled cases and all eleven attempts through saved database results and both JSON exporters. One explicit local trace join also passed. All payloads were synthetic.
-- [Trigger/citation research](../../packages/blog/drafts/research/oss-radar-07/04-trigger-provenance-and-ai-citations.md), [measurement contract](../../packages/blog/drafts/research/oss-radar-07/07-citation-measurement-contract.md), and [rendered candidate review](../../packages/blog/drafts/research/oss-radar-07/11-publication-candidate-review.md) preserve rationale, method, limits, and earlier checks.
+- [OSS generation audit](../../packages/blog/drafts/research/oss-radar-07/24-citation-generation-oss.md): ALCE, Self-RAG, STORM/Co-STORM, OpenScholar, code baselines, and reported study populations.
+- [Evaluation and observability audit](../../packages/blog/drafts/research/oss-radar-07/25-citation-evaluation-oss.md): TruLens, DeepEval, Ragas, Phoenix, code behavior, and license boundaries.
+- [Credibility audit](../../packages/blog/drafts/research/oss-radar-07/26-source-credibility-and-citation-evidence.md): citation support, causal attribution, source preferences, and publishing implications.
+- [DeepTRACE audit](../../packages/blog/drafts/research/oss-radar-07/28-deeptrace-comparison-audit.md): useful design, with headline comparisons declined for recorded reasons.
+- [Real subscription CLI experiment](../../packages/blog/drafts/research/oss-radar-07/20-subscription-cli-experiment.md) and [source review](../../packages/blog/drafts/research/oss-radar-07/21-real-answer-source-review.md): one real Codex answer and one real Claude Code answer; exact retained records across summary/library/reopened database exports; three material errors identified in Claude's answer. No answer was resampled.
+- Earlier [installed connector test](../../packages/blog/drafts/research/oss-radar-07/repro/installed/README.md) and [capture continuation](../../packages/blog/drafts/research/oss-radar-07/repro/capture/README.md) are completed synthetic transport/persistence tests. They did not call OpenRouter or any model. The [claim audit](../../packages/blog/drafts/research/oss-radar-07/23-openrouter-claim-audit.md) corrects the former misleading wording.
+- Three independent manuscript reviews, parent synthesis, current metadata, one glossary/source table, and draft sharing copy are saved under the [worklist](../../packages/blog/drafts/research/oss-radar-07/00-worklist-index.md).
 
-## Real-answer continuation
+## Publication and provenance
 
-The [subscription CLI experiment](../../packages/blog/drafts/research/oss-radar-07/20-subscription-cli-experiment.md) and [source review](../../packages/blog/drafts/research/oss-radar-07/21-real-answer-source-review.md) are complete. One fresh Codex and one fresh Claude Code invocation used saved subscription logins. Both real answers and emitted records survived the summary, library exporter, and restarted CLI database export. The review found three material errors in Claude's answer. No answer was resampled.
+Current [served module](../../packages/blog/posts/026-oss-radar-07-promptfoo.ts), [manuscript](../../packages/blog/drafts/oss-radar-07-promptfoo.md), and [rewrite brief](../../packages/blog/drafts/research/oss-radar-07/27-ai-citations-rewrite-brief.md). The existing URL is retained. Nineteen exact human prompts are public at the author's explicit request.
 
-The browser failure was not the only available route. The earlier fixture-only publication decision did not satisfy this real-answer request. The prompt record now has seventeen exact messages; the original footprint remains frozen and excludes the continuation.
+The [partial footprint](../../packages/blog/drafts/research/oss-radar-07/19-research-footprint.md) remains frozen: eight sessions, 43,272,331 tokens, fifteen prompts and twenty-three research Markdown artifacts at its cutoff. Those counts describe earlier work; they exclude the real CLI continuation, full rewrite, and subsequent prompts. Do not enlarge or relabel the snapshot without new attributable accounting.
 
-The [article revision](../../packages/blog/drafts/research/oss-radar-07/22-real-experiment-article-revision.md) is published and verified at `db54ff8`: real results, product/adoption advice, and one consolidated glossary/reference table. Served article, Markdown, prompts, and metadata match the checked build. The larger 72-call study and distinct engineering continuation remain open; publication does not complete them. This task remains `in_progress` for that continuation.
+Historical receipts: [first publication](../../packages/blog/drafts/research/oss-radar-07/18-publication-verification.md), [real-experiment revision](../../packages/blog/drafts/research/oss-radar-07/22-real-experiment-article-revision.md). Current acceptance belongs to artifact 32; earlier source counts, titles, and publication decisions are historical.
 
-Acceptance:
+## Remaining scope
 
-- Pin the chosen repository/release and record a complete claim table and competing product theories.
-- Retain exact prompts, input fixtures, failures, results, scripts, costs, and evidence limits.
-- Produce at least one runnable or explorable article artifact with real results.
-- Connect an adopted code change or explicit no-adoption verdict to the owned problem.
-- Keep the Radar product verdict distinct from the engineering article's new operating result.
-- Include the task-trigger and citation distinction in the article; distinguish citation counts, source-support evaluation, and untested causal reliance.
-- State what prior work already does and identify our contribution through retained data and a reproducible method, without claiming category-level novelty.
-- Apply article shaping, fact checking, discovery, prose, and visual checks before publication. Carry the Sources & Evidence entries and dated glossary into the publication render.
-- Match the final article slug to the preserved prompts file and verify its page.
+1. Complete the final rewrite checks and verify the Cloudflare release.
+2. Separately implement a useful analytics continuation with new operating evidence, using the [measurement contract](../../packages/blog/drafts/research/oss-radar-07/07-citation-measurement-contract.md). It must answer a distinct question from this OSS synthesis.
+3. Keep the larger citation-frequency pilot and [Trellner research task](TASK-0132-explore-trellner-research-further-ai-citation-sources-and-a.md) explicitly uncompleted until their own evidence requirements are met. The two directed answers cannot establish organic discovery or a population error rate.
 
-Do not mark TASK-0132 complete through this task: its source audit, domain comparison, and study have their own evidence requirements. Reuse the existing newsletter and citation worklists where the selected option overlaps them.
+Do not repeat completed fixture, CLI, or review work as if unrun. Do not restore the old browser-only blocker: the subscription CLI route already ran successfully. Share-copy preparation does not authorize posting to X or HN.

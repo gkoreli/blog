@@ -1,0 +1,25 @@
+# Generation claims: manuscript factual review
+
+Reviewed September 11, 2026, **2026-09-11T16:49:12Z**. Scope: the opening study numbers and the OpenScholar, STORM/Co-STORM, ALCE, and Self-RAG sections, including their source-table entries and PaperQA2 counterevidence. Reviewed manuscript: `packages/blog/drafts/oss-radar-07-promptfoo.md`, SHA-256 `6d0b7f662514999209509502c1886ccce3ba082125e23c33392934c5dbfe4b25`. This review did not edit the manuscript or served TypeScript and did not run models.
+
+**Result: factual pass, with two small precision edits recommended.** No incorrect study number, denominator, model pairing, or implementation claim was found in the assigned sections. The manuscript distinguishes reported experiments from code inspection and does not claim to have run these four projects.
+
+## Recommended corrections
+
+1. **Opening, line 3 — distinguish an undetected gain from established absence.** “Without making its claims easier to verify” reads more strongly than the study establishes. Suggested opening: **“A better-organized AI research report is not necessarily easier to verify.”** The later section already states the statistical limitation correctly. [STORM Table 6](https://aclanthology.org/2024.naacl-long.347.pdf), PDF p7 / printed p6258, reports organization `p=.005` and verifiability `p=.843`; the latter is not an equivalence result.
+2. **OpenScholar, line 22 — name the adapted PaperQA2 comparison.** The reported **48.0** is correct. Suggested sentence: **“The paper's PaperQA2 baseline, using the OpenScholar datastore, scored 48.0 on the same citation measure, so OpenScholar does not win every comparison.”** Link [Table 1](https://www.nature.com/articles/s41586-025-10072-4.pdf) beside this sentence; its current nearest link is supplementary evaluation methods. The paper adapted PaperQA2's retrieval source. Its [supplement, §4.1](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-10072-4/MediaObjects/41586_2025_10072_MOESM1_ESM.pdf) also specifies `gpt-4o-2024-08-06`, versus `2024-05-13` for the main OpenScholar comparison. The manuscript does not explicitly conflate them; this clarification protects that boundary.
+
+## Checks passed
+
+| Manuscript claim | Primary-source check | Result |
+|---|---|---|
+| STORM organization **45%→70%**, verifiability **67.5% each** | Table 6, PDF p7 / printed p6258; proportions are shares of ratings ≥4 on a seven-point scale | Pass. These are rating shares, not fractions of factually correct statements. |
+| STORM **20 article pairs**, **two editors per pair**, **ten editors overall** | Table 6 caption and §6 on the same page | Pass. This produces 40 article ratings per system; it is not 40 independent topics. The body preserves the paired-sample limitation. |
+| OpenScholar **100 Scholar-CS questions**; rubric **52.4→57.7**, reported citation F1 **31.1→39.5** | Nature Table 1, PDF p3 / printed p859; Extended Data Table 1, PDF p19, confirms the dataset size | Pass. Correct columns and GPT-4o rows. The body retains whole-pipeline/additional-evidence limits. |
+| Citation F1 combines precision and recall and is not percent-correct citations | Nature methods and supplement §2.3.3; released evaluator audit in [24](24-citation-generation-oss.md#m1--what-openscholars-citation-score-establishes) | Pass. The manuscript does not invent the unresolved final F1 aggregation formula. |
+| OpenScholar retains an initial answer, handles up to three feedback items, optionally retrieves more evidence and performs attribution; optional ranking uses paper citation counts | Re-read pinned `src/open_scholar.py`, lines 40–60 and 527–708 | Pass. These are conditional implementation paths, not measured reliability guarantees. |
+| STORM retains research records, limits section information to 1,500 words, and reconciles references by URL; Co-STORM uses unused snippets to guide its moderator | Re-read pinned curation, section-writing, reference-merging, and grounded-question code linked in the body | Pass. The text does not infer citation correctness from preservation or organization. |
+| ALCE separates post-hoc insertion from support evaluation and considers joint support/reference contribution | Re-read pinned `post_hoc_cite.py` and `eval.py` | Pass. The causal-reliance limit is appropriate. |
+| Self-RAG weights relevance, support, and utility, while the inspected static path reuses supplied passages | Re-read pinned `run_long_form_static.py`, including weights and `ctxs` passed to generation | Pass. No unsupported live-search or adaptive-retrieval performance claim remains. |
+
+The pinned baselines and exact code links are recorded in [artifact 24](24-citation-generation-oss.md). The locally retained Nature Table 1, Extended Data Table 1, and STORM Table 6 images listed there were reopened for this review; the source tables were checked visually as well as through their PDF text. Other projects, the subscription experiment, analytics, and external credibility studies are outside this bounded review.
