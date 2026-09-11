@@ -26,7 +26,7 @@ The [subscription CLI experiment](../../packages/blog/drafts/research/oss-radar-
 
 The browser failure was not the only available route. The earlier fixture-only publication decision did not satisfy this real-answer request. The prompt record now has seventeen exact messages; the original footprint remains frozen and excludes the continuation.
 
-The article revision is in progress: add the real result, replace internal planning with product/adoption advice, and consolidate the duplicate glossary/reference material. Deployment acceptance follows the build. The larger 72-call study and distinct engineering continuation remain open; publication does not complete them. This task remains `in_progress` for that continuation.
+The [article revision](../../packages/blog/drafts/research/oss-radar-07/22-real-experiment-article-revision.md) is built and checked: real results, product/adoption advice, and one consolidated glossary/reference table. Deployment acceptance follows the release. The larger 72-call study and distinct engineering continuation remain open; publication does not complete them. This task remains `in_progress` for that continuation.
 
 Acceptance:
 

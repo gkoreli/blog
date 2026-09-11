@@ -2,7 +2,7 @@
 
 Check date: September 8, 2026. Repository baseline: gkoreli/blog at `935abf29de1a755d2e278f90d4794c11d18a6a43`.
 
-**State:** The first article release and its partial footprint are [published and verified](18-publication-verification.md). The [real subscription CLI experiment](20-subscription-cli-experiment.md) and [source review](21-real-answer-source-review.md) are now complete: two real answers, both retained through database/export, with three material errors found in Claude's answer. The article is being revised to include this evidence, replace internal planning with a product judgment, and consolidate references and definitions. The prompt record contains seventeen complete messages. The earlier [footprint](19-research-footprint.md) stays frozen and excludes this continuation.
+**State:** The first article release and its partial footprint are [published and verified](18-publication-verification.md). The [real subscription CLI experiment](20-subscription-cli-experiment.md) and [source review](21-real-answer-source-review.md) are now complete: two real answers, both retained through database/export, with three material errors found in Claude's answer. The [article revision](22-real-experiment-article-revision.md) is built and checked with this evidence, a product judgment, and one consolidated glossary/source table; live acceptance follows the release. The prompt record contains seventeen complete messages. The earlier [footprint](19-research-footprint.md) stays frozen and excludes this continuation.
 
 Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original baseline above belongs to the four-option investigation.
 
@@ -56,6 +56,7 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 - [Publication decision](17-publication-decision.md): tested scope, unavailable browser, and unfinished real-answer follow-up.
 - [First publication verification](18-publication-verification.md): deployed commit, exact served-content checks, and environment differences.
 - [Real subscription CLI experiment](20-subscription-cli-experiment.md): route, conditions, execution, and the missed available subscription path.
+- [Real-experiment article revision](22-real-experiment-article-revision.md): the editorial repair, one reference table, build checks, and release acceptance.
 - [Real-answer source review](21-real-answer-source-review.md): both answers, retained sources, explicit judgments, and useful tool-record failures.
 - [Research footprint](19-research-footprint.md): recovered sessions, ownership evidence, exclusions, accounting, and footprint release checks.
 - [Publication module](../../../posts/026-oss-radar-07-promptfoo.ts) and [Markdown manuscript](../../oss-radar-07-promptfoo.md): article with Sources & Evidence and a dated glossary.

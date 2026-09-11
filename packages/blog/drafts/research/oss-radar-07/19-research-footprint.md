@@ -71,3 +71,7 @@ The original article release is separately documented in [artifact 18](18-public
 Cloudflare build `9e12ba80-e11d-4df8-b169-9dee380544ad` completed successfully at `2026-09-11T03:31:56Z`. [Live verification](footprint-live-verification.json) at `2026-09-11T03:33:37.378098+00:00` returned HTTP 200 for the article, transparency page, Markdown, and pinned public manifest. The complete article body and Markdown match the isolated build; the entire footprint section matches; all fifteen rendered prompts match their source; and the public manifest matches SHA-256 `36d3e870bd4d6efae26e45af1035065f7b071934f21f907c5aa75f048657dbd0`. The opening explicitly states that no request went to OpenRouter or a model service.
 
 These verification and bookkeeping updates occur after the frozen usage boundary. They do not change its totals, selected prefixes, or artifact count.
+
+## Subsequent real-answer revision
+
+The [subscription CLI experiments](20-subscription-cli-experiment.md), [source review](21-real-answer-source-review.md), and two later human prompts occurred after this frozen cutoff. The prompt page now includes seventeen messages. These additions do not change this manifest or its measured total, and their work must not be presented as included in the 43,272,331 tokens.
