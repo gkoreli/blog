@@ -2,7 +2,7 @@
 
 Check date: September 8, 2026. Repository baseline: gkoreli/blog at `935abf29de1a755d2e278f90d4794c11d18a6a43`.
 
-**State:** The unpublished publication candidate now includes an immersive hero, response-flow diagram, 37 dated sources with reasons, a ten-term glossary, and twelve exact shaping prompts. The new capture continuation passed ten controlled cases, eleven attempts, both JSON exporters, database reopening, and one explicit local trace join. Type checks, the isolated production build, Markdown representation, and desktop/mobile review passed. One real answer capture and source-support review remain before the selected workload verdict is ready. See [current candidate review](11-publication-candidate-review.md) and [frozen preflight](12-directed-answer-preflight.md).
+**State:** Release prepared at Goga's request on September 10, 2026 PDT. The article publishes the completed controlled tests and a bounded trial recommendation. It contains 38 dated source cards, a ten-term glossary, thirteen exact prompts, runnable experiments, recorded exports, and the reviewed immersive presentation. The current isolated type check and 26-post production build passed. Push and live verification are the remaining publication steps. The real-answer test remains unrun follow-up work; browser access failed before a question could be submitted. See [publication decision](17-publication-decision.md) and [source refresh](16-publication-source-check.md).
 
 Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original baseline above belongs to the four-option investigation.
 
@@ -22,11 +22,11 @@ Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original 
 | Explain Promptfoo's purpose and current trajectory | Complete: dedicated draft section and source audit | [Purpose and trajectory](08-promptfoo-purpose-and-trajectory.md) |
 | Define citation records and reporting units | Proposed; ready for pilot implementation | [Measurement contract](07-citation-measurement-contract.md) |
 | Run the bounded pilot | Open; one-answer preflight first | [Experiment plan](03-experiment-plan.md) |
-| Build the OSS Radar #07 publication candidate | Complete; kept outside `posts/` | [Publication module](../../oss-radar-07-promptfoo.ts), [manuscript](../../oss-radar-07-promptfoo.md) |
-| Check publication style, references, and render | Complete: 37 sources, 10 glossary terms, desktop/mobile and Markdown checks | [Candidate review](11-publication-candidate-review.md) |
+| Build OSS Radar #07 | Complete; release module is in `posts/` | [Publication module](../../../posts/026-oss-radar-07-promptfoo.ts), [manuscript](../../oss-radar-07-promptfoo.md) |
+| Check publication style, references, and render | Complete: 38 sources, 10 glossary terms, current type/build/Markdown checks; earlier desktop/mobile review | [Candidate review](11-publication-candidate-review.md), [source refresh](16-publication-source-check.md) |
 | Design the dedicated background animation | Complete: projected stacks, six-second motion, and a separate phone composition | [Current revision](15-mobile-depth-and-motion-review.md), [first design](14-evidence-plates-canvas.md) |
 | Exercise capture failures, persistence, and tracing | Complete: 10 synthetic cases, 11 HTTP attempts, explicit local join | [Method and accepted exports](repro/capture/README.md) |
-| Verify and publish OSS Radar #07 | Open: real-answer/source review, author review, and actual release | [Frozen live preflight](12-directed-answer-preflight.md) |
+| Verify and publish OSS Radar #07 | Release prepared; push and live verification pending | [Publication decision](17-publication-decision.md) |
 | Develop the engineering continuation | Open | Requires useful blog code and new operating evidence |
 
 Formal tracker: [FLDR-0011](../../../../../docs/folders/FLDR-0011-oss-radar-07-worklist.md). Execution task: [TASK-0134](../../../../../docs/tasks/TASK-0134-oss-radar-07-project-experiment-and-article.md).
@@ -45,12 +45,14 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 - [Promptfoo purpose and trajectory](08-promptfoo-purpose-and-trajectory.md): what the tools do, the maintainers' public purpose, recent releases, OpenAI affiliation, and the boundary between shipped features and the Frontier plan.
 - [Earlier publication readiness](09-publication-readiness.md): historical comparison with #05/#06 and the initial reference correction.
 - [Desktop takeover](10-takeover-and-evidence-review.md): article passport, source audit, additional implementation evidence, and access boundary.
-- [Current candidate review](11-publication-candidate-review.md): selected discovery package, promise ledger, rendered checks, and release handoff.
+- [Candidate review](11-publication-candidate-review.md): historical discovery package, promise ledger, and rendered checks; its release gate is superseded.
 - [Frozen directed preflight](12-directed-answer-preflight.md): unchanged question/rubric, preferred web capture, optional API route, and decision rule.
 - [Provider-choice correction](13-provider-choice-and-web-capture.md): no required provider or API purchase; distinguishes web-answer import from live API-field preservation.
 - [Evidence-plates canvas](14-evidence-plates-canvas.md): first delegated design and technical checks, preserved as history.
 - [Mobile depth and motion](15-mobile-depth-and-motion-review.md): author feedback, projected stacks, faster movement, and revised phone composition with rendered checks.
-- [OSS Radar #07 draft](../../oss-radar-07-promptfoo.md): working article with Sources & Evidence and a dated Glossary; not published.
+- [Publication source refresh](16-publication-source-check.md): September 10 release/issue audit and comparison with the newer runner.
+- [Publication decision](17-publication-decision.md): tested scope, unavailable browser, and unfinished real-answer follow-up.
+- [Publication module](../../../posts/026-oss-radar-07-promptfoo.ts) and [Markdown manuscript](../../oss-radar-07-promptfoo.md): article with Sources & Evidence and a dated glossary.
 - [Repository baselines](baselines.json): pinned source revisions and read-only checks.
 - [Promptfoo fixture probe](repro/README.md): runnable module-level reproduction, original source snapshot with its MIT licence, synthetic response, and saved result.
 - [Installed Promptfoo probe](repro/installed/README.md): guarded local HTTP experiment, capture-provider prototype, exact dependency lock, full summaries, and cache evidence.
@@ -60,20 +62,18 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 
 [Exact shaping prompts](../../../prompts/oss-radar-07-promptfoo.prompts.md).
 
-The record contains twelve complete prompts through the phone composition and animation feedback. The original eleven entries remain unchanged; the latest request is appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
+The record contains thirteen complete prompts through the explicit publication instruction. The original twelve entries remain unchanged; the publication request is appended verbatim. Spelling, punctuation, Markdown, and message boundaries are preserved.
 
 The September 8 request explicitly asks for a prompts section for this issue. It overrides the usual OSS Radar exception that omits public prompts. This is an issue-specific decision; no shared skill or prior issue was changed. Keep the complete initial prompt intact. The second recorded answer delegated the experiment timebox decision.
 
-The filename now matches the final slug, and the normal prompts page was verified in the isolated preview. There is no matching published post yet.
+The filename matches the final slug, and the thirteen-prompt page passed the current isolated-build check.
 
 ## Publication boundary
 
-The controlled tests earn the adapter and local-retention findings. The selected workload review still needs one actual answer and source review; the complete repeated citation study is not a blanket release requirement. The candidate remains outside `posts/`. Its September 8 metadata date records preparation and must be replaced on release. No live model call, charge, production D1 query, deployment, or social post occurred in this continuation.
+The controlled tests establish the adapter omission and explicit capture's local retention. The release recommends a bounded trial; production citation reporting is not adopted or implemented. All recorded model payloads are synthetic. A real answer and source review could change the later adoption decision. The [publication decision](17-publication-decision.md) supersedes the earlier requirement to finish that example before releasing these findings.
 
 ## Next bounded action
 
-Use Goga's existing Perplexity web membership for the [one-answer preflight](12-directed-answer-preflight.md). Preserve the visible answer/citations, verify the imported record through Promptfoo, review its sources, and update the verdict to describe that workflow. No particular provider or API purchase is required. Browser access has not yet been verified. [The correction](13-provider-choice-and-web-capture.md) supersedes the earlier API-configuration blocker; live API fields and billing remain outside a web-capture result. No production analytics query is needed.
+Finish push and live acceptance for the prepared article. After publication, resume the [one-answer protocol](12-directed-answer-preflight.md) when browser access is available, using the existing Perplexity membership or another explicitly documented route. Preserve its result, verify the imported record through Promptfoo, and review its sources. No provider or API purchase is required. A web capture cannot establish live API-field or billing preservation. No production analytics query is needed.
 
-The local trace/export work is complete; do not repeat it as if unrun. The [capture manifest](repro/capture/recorded/manifest.json) commits to the accepted records and source hashes. The original telemetry interruption and accepted local blocking behavior remain documented in their methods.
-
-One week is a planning target, not an automation or a promised publication date. Keep null results, failed runs, and explicit no-change decisions in the record. TASK-0134 stays in progress until its remaining evidence and publication work are completed.
+The local trace/export work is complete; do not repeat it as if unrun. The [capture manifest](repro/capture/recorded/manifest.json) commits to the accepted records and source hashes. The telemetry interruption and accepted local blocking behavior remain documented. The larger citation study and distinct engineering continuation stay open; publication does not complete them.

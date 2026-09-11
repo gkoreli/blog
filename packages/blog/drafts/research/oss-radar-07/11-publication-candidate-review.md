@@ -1,6 +1,8 @@
 # Publication candidate review
 
-September 8, 2026 PDT / September 9 UTC. Continues [the takeover review](10-takeover-and-evidence-review.md). The [TypeScript publication candidate](../../oss-radar-07-promptfoo.ts) and [Markdown manuscript](../../oss-radar-07-promptfoo.md) remain in `drafts/`.
+September 8, 2026 PDT / September 9 UTC. Continues [the takeover review](10-takeover-and-evidence-review.md). At this checkpoint, the [TypeScript publication candidate](https://github.com/gkoreli/blog/blob/db010a56ff12b0f73a9386f872a639b00a04da11/packages/blog/drafts/oss-radar-07-promptfoo.ts) and [Markdown manuscript](../../oss-radar-07-promptfoo.md) remained in `drafts/`.
+
+**Historical review:** the September 10 [publication decision](17-publication-decision.md) supersedes the release gate below. The article publishes the completed controlled tests; the real-answer preflight remains unrun follow-up work. Use the [worklist](00-worklist-index.md) for current release status.
 
 **Decision: layout, references, and local implementation evidence are ready for author review. The selected workload review still needs one real answer capture and its source-support review.** This is not a live citation study or a publication record. The later [provider-choice correction](13-provider-choice-and-web-capture.md) removes the API-account prerequisite: the existing Perplexity web membership can supply a separately labeled web-answer/import case. The verification counts below record the original candidate review; the latest clarification is now prompt ten. The [frozen preflight](12-directed-answer-preflight.md) makes the next action concrete.
 

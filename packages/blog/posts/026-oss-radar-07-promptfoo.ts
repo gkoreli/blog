@@ -2,13 +2,11 @@ import { staticHtml as html } from '@nisli/core/static';
 import type { PostMeta } from '../src/lib/frontmatter.js';
 import { FlowDiagram, OssRadarHero, Sources } from '../src/templates/components.js';
 
-// Publication candidate: kept outside posts until the real-answer gate and author review.
-// Date is the preparation date; update it when the issue is released.
 export const meta: PostMeta = {
   title: 'OSS Radar #07: Can Promptfoo Preserve the Evidence Behind an AI Answer?',
   seoTitle: 'Promptfoo Review: Preserving AI Citation Evidence',
   alternativeHeadline: 'Citation fields, failed attempts, and trace joins through Promptfoo 0.122.2',
-  date: '2026-09-08',
+  date: '2026-09-10',
   description: 'Promptfoo can retain citation evidence with explicit capture. We tested adapter omissions, failed attempts, database export, and local trace joins.',
   section: 'oss-radar', layout: 'immersive', featured: false,
   tags: ['oss-radar', 'promptfoo', 'ai-evaluation', 'analytics'],
@@ -143,6 +141,12 @@ const sources = [
     "url": "https://github.com/promptfoo/promptfoo/releases/tag/0.122.2"
   },
   {
+    "claim": "Promptfoo 0.123.0 shipped after the tested release",
+    "why": "Marks the newer release separately from the installed experiments, which remain pinned to 0.122.2.",
+    "ref": "Promptfoo 0.123.0 · Sep 10, 2026",
+    "url": "https://github.com/promptfoo/promptfoo/releases/tag/0.123.0"
+  },
+  {
     "claim": "The scanner action received installation and dependency hardening",
     "why": "Distinguishes recent maintenance from the scanner's earlier introduction.",
     "ref": "Scanner action 0.2.0 · Aug 28, 2026",
@@ -157,7 +161,7 @@ const sources = [
   {
     "claim": "Promptfoo identifies itself as part of OpenAI",
     "why": "Records the project's current affiliation without inventing an acquisition closing date.",
-    "ref": "Promptfoo about page · Sep 8, 2026 (checked)",
+    "ref": "Promptfoo about page · Sep 10, 2026 (checked, PDT)",
     "url": "https://www.promptfoo.dev/about/"
   },
   {
@@ -199,7 +203,7 @@ const sources = [
   {
     "claim": "An upstream user reported the opt-out beacon; the issue remained open",
     "why": "Adds an independently reported failure path, checked against code and our installed run.",
-    "ref": "Promptfoo issue #9968 · Sep 8, 2026 (checked)",
+    "ref": "Promptfoo issue #9968 · Sep 10, 2026 (checked, PDT)",
     "url": "https://github.com/promptfoo/promptfoo/issues/9968"
   },
   {
@@ -287,6 +291,7 @@ export function article() {
 </tr>
 </tbody></table></div>
 <p>August&#39;s work strengthened the records behind those tests. The <a href="https://github.com/promptfoo/promptfoo/releases/tag/0.122.1" target="_blank" rel="noopener">August 26 release</a> added per-test roots, target spans, agent telemetry integrations, and fuller token accounting. The <a href="https://github.com/promptfoo/promptfoo/releases/tag/code-scan-action-0.2.0" target="_blank" rel="noopener">August 28 scanner-action release</a> hardened its installation and dependencies. These are different release tracks. Our installed runner came from the separate <a href="https://github.com/promptfoo/promptfoo/releases/tag/0.122.2" target="_blank" rel="noopener">0.122.2 release</a>, also published August 28. The scanner itself predates August: its <a href="https://www.promptfoo.dev/blog/building-a-security-scanner-for-llm-apps/" target="_blank" rel="noopener">engineering introduction</a> appeared in December 2025.</p>
+<p><a href="https://github.com/promptfoo/promptfoo/releases/tag/0.123.0" target="_blank" rel="noopener">Promptfoo 0.123.0</a> shipped on September 10. The experiments here remain pinned to 0.122.2; we have not rerun them on the newer release.</p>
 <p>I read that work as an effort to make AI testing part of the normal development process: run a test, inspect the execution, locate a failure, and check a repair. Traces and accounting help explain what happened inside a test. They do not make its judgments correct or its evidence complete.</p>
 <p>The project now <a href="https://www.promptfoo.dev/about/" target="_blank" rel="noopener">identifies itself as part of OpenAI</a>. Its founders&#39; March announcement commits to maintaining open-source red teaming, scanning, and evals across providers. <a href="https://openai.com/index/openai-to-acquire-promptfoo/" target="_blank" rel="noopener">OpenAI's announcement</a> sets out an additional direction: integrate testing, remediation, reporting, and traceability into Frontier. That is a stated product plan; these sources do not establish that the promised integration has shipped.</p>
 <p>The distinction matters for adoption. The MIT runner gives us inspectable code and an extension interface. A connected feature can still depend on a service: the scanner&#39;s <a href="https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/code-scan-action/action.yml" target="_blank" rel="noopener">default API host</a> is Promptfoo&#39;s cloud. We need to judge the specific path we use. For this blog, the relevant bet is whether its reusable evaluation and execution records can support our citation study; the citation pipeline remains work we must build and verify.</p>
@@ -421,7 +426,7 @@ ${FlowDiagram({ label: "Built-in OpenRouter response path in the original fixtur
 <p>The remaining work is in the live capture and source review. The local tests now cover response variants, failed attempts, a bounded retry, database export, and one trace join. They do not establish what a live service returns or what its citations support.</p>
 <p>Our <a href="https://github.com/gkoreli/blog/blob/5fc2dc5dc40ad2397a78325e3a192485b44e8cb5/packages/blog/drafts/research/oss-radar-07/repro/capture/capture-provider.ts" target="_blank" rel="noopener">capture provider</a> saves request text and each decoded response before selecting fields. It records missing citation fields separately from empty lists and leaves charge unknown when the response does not expose it. Even a provider-reported charge needs reconciliation with its billing record. Source review needs its own claim boundaries and support rubric. Earlier work such as <a href="https://aclanthology.org/2023.emnlp-main.398/" target="_blank" rel="noopener">ALCE</a> gives citation evaluation a research basis; a returned URL alone is not a support judgment.</p>
 <p>The <a href="https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/07-citation-measurement-contract.md" target="_blank" rel="noopener">proposed measurement contract</a> keeps counts honest. Citation presence uses assessable answers as its denominator and reports observation coverage alongside it. Support uses reviewed claim–citation relationships. Requests, unique URLs, citation occurrences, and people never become interchangeable units. A capture hash helps detect changed bytes; it does not authenticate the provider or make an answer true.</p>
-<p>Collection also needs a known network boundary. Our first attempt encountered an unexpected telemetry request despite the opt-out. The final probe blocked one such POST before transmission, matching the pinned <a href="https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/telemetry.ts" target="_blank" rel="noopener">telemetry implementation</a> and the <a href="https://github.com/promptfoo/promptfoo/issues/9968" target="_blank" rel="noopener">upstream report</a>, still open when checked on September 8. This does not establish prompt disclosure. It does mean the opt-out alone was insufficient for this restricted local run. The method records the interruption and the guard.</p>
+<p>Collection also needs a known network boundary. Our first attempt encountered an unexpected telemetry request despite the opt-out. The final probe blocked one such POST before transmission, matching the pinned <a href="https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/telemetry.ts" target="_blank" rel="noopener">telemetry implementation</a> and the <a href="https://github.com/promptfoo/promptfoo/issues/9968" target="_blank" rel="noopener">upstream report</a>, still open at publication. This does not establish prompt disclosure. It does mean the opt-out alone was insufficient for this restricted local run. The method records the interruption and the guard.</p>
 <p>The larger adoption test is whether these additions remain a small capture layer while Promptfoo supplies useful execution and review machinery. A direct runner remains a reasonable alternative if maintaining the integration means rebuilding those parts ourselves.</p>
 <h2>The next decision</h2>
 <p>Promptfoo is worth the next bounded trial for this blog&#39;s citation-evaluation workload. The tested interface can retain evidence, and the built-in cache gives useful counterevidence to the strongest loss claim. Anyone who needs complete records from the built-in OpenRouter summary should first add and verify capture on the route they will use.</p>

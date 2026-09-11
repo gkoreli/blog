@@ -16,7 +16,7 @@ The title remains on the existing quiet glass panel. Most detail sits outside th
 
 - [Scene](../../../src/client/animations/evidence.ts): Canvas 2D geometry derived from time, size, and seed, with three plates and nine seeded marks per group.
 - [Mount](../../../src/client/components/neural-canvas.ts): opt-in `mode="evidence"`; existing mode branches retain their behavior.
-- [Article candidate](../../oss-radar-07-promptfoo.ts): selects `evidence` with seed `7`. It remains outside `posts/`.
+- [Article candidate at this checkpoint](https://github.com/gkoreli/blog/blob/db010a56ff12b0f73a9386f872a639b00a04da11/packages/blog/drafts/oss-radar-07-promptfoo.ts): selects `evidence` with seed `7`. It was still outside `posts/`; see the [worklist](00-worklist-index.md) for current publication status.
 
 The scene uses the existing animation runner for DPR sizing, resize, visibility suspension, deterministic capture time, and cleanup. Reduced motion selects a stationary frame at 8100 ms. The scene observes theme changes and disconnects that observer on disposal. No dependencies, image assets, Pixi migration, or production article were added.
 

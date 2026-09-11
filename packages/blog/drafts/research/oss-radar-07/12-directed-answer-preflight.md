@@ -2,6 +2,8 @@
 
 Protocol prepared September 9, 2026 UTC / September 8 PDT, before viewing a live answer. **Not run.** The question and rubric remain frozen. The collection route was amended before execution after Goga clarified that he has Perplexity Pro web access but no purchased API credits. See [the provider-choice correction](13-provider-choice-and-web-capture.md). This directed case is separate from the proposed 72-call organic-discovery cohort.
 
+At the September 10 publication decision, browser access failed before any question was submitted. This protocol remains follow-up work, not a prerequisite for publishing the completed controlled tests. See [the release scope and access record](17-publication-decision.md). There is no model-answer outcome to score from that access failure.
+
 ## Exact question
 
 ```text
