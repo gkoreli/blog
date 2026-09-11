@@ -27,7 +27,7 @@ Continuation baseline: `b338d642f04da6a9c24af513212d4a6565778bc3`. The original 
 | Design the dedicated background animation | Complete: projected stacks, six-second motion, and a separate phone composition | [Current revision](15-mobile-depth-and-motion-review.md), [first design](14-evidence-plates-canvas.md) |
 | Exercise capture failures, persistence, and tracing | Complete: 10 synthetic cases, 11 HTTP attempts, explicit local join | [Method and accepted exports](repro/capture/README.md) |
 | Verify and publish OSS Radar #07 | Complete: release `ccd6bc6`, Cloudflare activation, and served-content acceptance | [Publication verification](18-publication-verification.md) |
-| Recover and publish research footprint | Accounting recovered; freeze and rendered release checks recorded separately | [Footprint methodology and receipt](19-research-footprint.md) |
+| Recover and publish research footprint | Complete: 43,272,331 measured tokens, eight sessions, explicit exclusions, and live acceptance | [Footprint methodology and receipt](19-research-footprint.md) |
 | Develop the engineering continuation | Open | Requires useful blog code and new operating evidence |
 
 Formal tracker: [FLDR-0011](../../../../../docs/folders/FLDR-0011-oss-radar-07-worklist.md). Execution task: [TASK-0134](../../../../../docs/tasks/TASK-0134-oss-radar-07-project-experiment-and-article.md).

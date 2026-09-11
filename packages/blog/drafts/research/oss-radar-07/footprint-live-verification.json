@@ -1,0 +1,34 @@
+{
+  "releaseCommit": "9055d8a",
+  "checkedAt": "2026-09-11T03:33:37.378098+00:00",
+  "allResponses200": true,
+  "articleBodyMatchesLocal": true,
+  "markdownMatchesLocal": true,
+  "footprintSectionMatchesLocal": true,
+  "publicManifestMatchesLocal": true,
+  "all15PromptsMatchSource": true,
+  "localConnectorClarificationPresent": true,
+  "manifestSha256": "36d3e870bd4d6efae26e45af1035065f7b071934f21f907c5aa75f048657dbd0",
+  "responses": [
+    {
+      "url": "https://gkoreli.com/oss-radar-07-promptfoo",
+      "status": 200,
+      "sha256": "c418a97dd98e80f900144c62eced161c8f03e6fbec020d637b42539d0578f8da"
+    },
+    {
+      "url": "https://gkoreli.com/oss-radar-07-promptfoo/prompts",
+      "status": 200,
+      "sha256": "b6dfd35101cd192411673e405600b24b5b7c167b1e2bdb6b5293c3a8d5d59a7c"
+    },
+    {
+      "url": "https://gkoreli.com/oss-radar-07-promptfoo.md",
+      "status": 200,
+      "sha256": "6c6f97d3cf039a9c4026a0910698f72e021c374804ec146e24c9743aac412a76"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/gkoreli/blog/9055d8a/packages/blog/drafts/research/oss-radar-07/research-footprint.json",
+      "status": 200,
+      "sha256": "36d3e870bd4d6efae26e45af1035065f7b071934f21f907c5aa75f048657dbd0"
+    }
+  ]
+}
