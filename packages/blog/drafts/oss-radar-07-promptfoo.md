@@ -1,4 +1,4 @@
-# AI Citations: Do Agents Preserve the Evidence Behind an Answer?
+# OSS Radar #07: AI Citations — Do Agents Preserve the Evidence Behind an Answer?
 
 A better-organized AI research report is not necessarily easier to verify. In STORM's 2024 study, good organization ratings rose from **45% to 70%** compared with an outline-driven retrieval baseline. Good verifiability ratings were **67.5% for both**. The open-source work worth watching tackles that gap: finding better evidence, keeping the connection between a claim and its source, and checking what the answer actually says. [STORM study, Table 6](https://aclanthology.org/2024.naacl-long.347.pdf).
 

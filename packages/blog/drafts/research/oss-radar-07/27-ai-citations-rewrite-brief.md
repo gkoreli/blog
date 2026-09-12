@@ -30,7 +30,7 @@ Each research artifact must include primary links, check dates, repository SHAs,
 - State calculated bets as judgments with reasons and disconfirming evidence. Strong opinion is welcome; invented facts, personal experience, percentages, or quotations are not.
 - Preserve one glossary/reference table with dates and source rationales. Keep research administration and future execution plans out of the article body.
 
-Final title: **AI Citations: Do Agents Preserve the Evidence Behind an Answer?** Preserve the existing published URL; this rewrite changes the title, description, and body without breaking existing links. The [acceptance](32-ai-citations-rewrite-acceptance.md) records final discovery choices and review resolutions.
+Final publication title: **OSS Radar #07: AI Citations — Do Agents Preserve the Evidence Behind an Answer?** The [September 12 correction](33-series-title-correction.md) restores the series prefix omitted during the rewrite. Preserve the existing published URL; this rewrite changes the title, description, and body without breaking existing links. The [acceptance](32-ai-citations-rewrite-acceptance.md) records final discovery choices and review resolutions.
 
 ## Completion
 

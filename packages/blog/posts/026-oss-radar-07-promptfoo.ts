@@ -18,10 +18,10 @@ const researchFootprint = {
 };
 
 export const meta: PostMeta = {
-  title: "AI Citations: Do Agents Preserve the Evidence Behind an Answer?",
+  title: "OSS Radar #07: AI Citations — Do Agents Preserve the Evidence Behind an Answer?",
   seoTitle: 'AI Citations: Open Source Tools, Evidence, and Trust',
   alternativeHeadline: 'Open-source research agents, citation checks, and credible engineering sources',
-  date: '2026-09-10', lastModified: '2026-09-11',
+  date: '2026-09-10', lastModified: '2026-09-12',
   description: 'OpenScholar, STORM, TruLens, and real Codex/Claude runs show where AI citations improve, where they fail, and what makes engineering evidence useful.',
   section: 'oss-radar', layout: 'immersive', featured: false,
   tags: ['oss-radar', 'ai-citations', 'open-source', 'ai-agents', 'source-attribution', 'analytics'],

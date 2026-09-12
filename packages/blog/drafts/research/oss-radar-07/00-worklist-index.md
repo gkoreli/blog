@@ -1,10 +1,12 @@
 # OSS Radar #07 worklist
 
+**September 12 title correction:** restored `OSS Radar #07:` in the publication title, following all six earlier issues. [Change and verification](33-series-title-correction.md). This is a metadata correction; the completed research and article body are preserved.
+
 **Current state — September 11, 2026:** The full rewrite is **published and verified at `4f8e39e`**. The [rewrite acceptance](32-ai-citations-rewrite-acceptance.md) records the completed research, three independent reviews, build, viewport checks, and exact live-content matches. The new subject is **AI Citations: Do Agents Preserve the Evidence Behind an Answer?** Promptfoo is one tested section within an OSS cohort about generation, evaluation, attribution, and source credibility.
 
 **Article form:** OSS Radar cohort synthesis under the [rewrite brief](27-ai-citations-rewrite-brief.md). The earlier one-project restriction is superseded. The sample includes ten inspected candidates; nine appear in the article, including Phoenix as a disclosed source-available comparator. DeepTRACE headline comparisons were declined after audit. PaperQA2 is a paper baseline, not an independently inspected candidate.
 
-**Evidence already completed:** three new research tracks and three manuscript reviews; two earlier real subscription CLI answers retained through database/export; a source review finding three material errors in Claude's answer. The [OpenRouter claim audit](23-openrouter-claim-audit.md) verifies that the earlier connector test made no OpenRouter service or model call. The prompt record has nineteen complete messages. The [earlier footprint](19-research-footprint.md) stays frozen and excludes the real CLI continuation and full rewrite.
+**Evidence already completed:** three new research tracks and three manuscript reviews; two earlier real subscription CLI answers retained through database/export; a source review finding three material errors in Claude's answer. The [OpenRouter claim audit](23-openrouter-claim-audit.md) verifies that the earlier connector test made no OpenRouter service or model call. The prompt record has twenty complete messages. The [earlier footprint](19-research-footprint.md) stays frozen and excludes the real CLI continuation and full rewrite.
 
 **Historical baselines:** September 8 four-option investigation at `935abf29de1a755d2e278f90d4794c11d18a6a43`; Promptfoo continuation at `b338d642f04da6a9c24af513212d4a6565778bc3`. Earlier [first publication](18-publication-verification.md) and [real-experiment revision](22-real-experiment-article-revision.md) remain dated receipts, not descriptions of the new article.
 
@@ -80,7 +82,7 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 
 [Exact shaping prompts](../../../prompts/oss-radar-07-promptfoo.prompts.md).
 
-The record contains nineteen complete prompts. The first fifteen remain unchanged. Later messages request real subscription experiments, remove internal planning and duplicate glossaries, challenge the OpenRouter wording, and redirect the entire article to AI citations. Each is preserved verbatim.
+The record contains twenty complete prompts. The first fifteen remain unchanged. Later messages request real subscription experiments, remove internal planning and duplicate glossaries, challenge the OpenRouter wording, and redirect the entire article to AI citations. The twentieth restores the OSS Radar series prefix in the title. Each is preserved verbatim.
 
 The September 8 request explicitly asks for a prompts section for this issue. It overrides the usual OSS Radar exception that omits public prompts. This is an issue-specific decision; no shared skill or prior issue was changed. Keep the complete initial prompt intact. The second recorded answer delegated the experiment timebox decision.
 

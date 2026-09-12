@@ -4,11 +4,11 @@ title: OSS Radar 07 AI citations research, article, and engineering continuation
 status: in_progress
 parent_id: FLDR-0011
 created_at: '2026-09-08T19:21:39.000Z'
-updated_at: '2026-09-11T17:07:29.943793+00:00'
+updated_at: '2026-09-12T17:21:00.577030+00:00'
 type: task
 ---
 
-**Current article state — September 11:** the full AI-citations rewrite is **published and verified at `4f8e39e`**. Completed research, three independent reviews, build/viewport checks, and exact live-content matches are recorded in [acceptance 32](../../packages/blog/drafts/research/oss-radar-07/32-ai-citations-rewrite-acceptance.md). The governing subject is **AI Citations: Do Agents Preserve the Evidence Behind an Answer?** The author's latest request supersedes the earlier requirement to make Promptfoo the article's center.
+**Current article state — September 11:** the full AI-citations rewrite is **published and verified at `4f8e39e`**. Completed research, three independent reviews, build/viewport checks, and exact live-content matches are recorded in [acceptance 32](../../packages/blog/drafts/research/oss-radar-07/32-ai-citations-rewrite-acceptance.md). The governing subject is **OSS Radar #07: AI Citations — Do Agents Preserve the Evidence Behind an Answer?** The author's latest request supersedes the earlier requirement to make Promptfoo the article's center.
 
 This task retains its separate engineering-continuation scope, so article publication alone does not complete the whole task. The larger citation-frequency pilot is also unrun. Neither is a release gate for the findings already established.
 
@@ -24,7 +24,9 @@ This task retains its separate engineering-continuation scope, so article public
 
 ## Publication and provenance
 
-Current [served module](../../packages/blog/posts/026-oss-radar-07-promptfoo.ts), [manuscript](../../packages/blog/drafts/oss-radar-07-promptfoo.md), and [rewrite brief](../../packages/blog/drafts/research/oss-radar-07/27-ai-citations-rewrite-brief.md). The existing URL is retained. Nineteen exact human prompts are public at the author's explicit request.
+[September 12 title correction](../../packages/blog/drafts/research/oss-radar-07/33-series-title-correction.md): restore the `OSS Radar #07:` publication-title prefix used by the other issues. The content and earlier evidence remain intact.
+
+Current [served module](../../packages/blog/posts/026-oss-radar-07-promptfoo.ts), [manuscript](../../packages/blog/drafts/oss-radar-07-promptfoo.md), and [rewrite brief](../../packages/blog/drafts/research/oss-radar-07/27-ai-citations-rewrite-brief.md). The existing URL is retained. Twenty exact human prompts are public at the author's explicit request.
 
 The [partial footprint](../../packages/blog/drafts/research/oss-radar-07/19-research-footprint.md) remains frozen: eight sessions, 43,272,331 tokens, fifteen prompts and twenty-three research Markdown artifacts at its cutoff. Those counts describe earlier work; they exclude the real CLI continuation, full rewrite, and subsequent prompts. Do not enlarge or relabel the snapshot without new attributable accounting.
 

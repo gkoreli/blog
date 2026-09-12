@@ -42,10 +42,10 @@ https://gkoreli.com/oss-radar-07-promptfoo
 
 ## Hacker News
 
-**Title — 63 characters**, matching the reviewed manuscript:
+**Title — 79 characters**, matching the publication title:
 
 ```text
-AI Citations: Do Agents Preserve the Evidence Behind an Answer?
+OSS Radar #07: AI Citations — Do Agents Preserve the Evidence Behind an Answer?
 ```
 
 **URL:** https://gkoreli.com/oss-radar-07-promptfoo
@@ -59,5 +59,7 @@ Submit as an ordinary linked article after the rewrite is live. The article cont
 - The opening hook is one retained observation: Claude described the article's **277 reclassified requests** as **277 cloud-classified requests**. The [source review](../../research/oss-radar-07/21-real-answer-source-review.md), claim A4, compares the unchanged answer with the retained source. This is not a model ranking, a population error rate, or evidence of organic discovery; the question supplied the article URL.
 - The broader promise matches the [rewritten manuscript](../../oss-radar-07-promptfoo.md): STORM/OpenScholar generation, explicit citation checks, source credibility, and record preservation. The social copy makes no numerical or general model-accuracy comparison from the two runs or from the studies.
 - Every post contains ASCII text. Counts use weight 1 for those characters and 23 for the canonical URL; paragraph breaks and the hashtag are included. [X character-count rules](https://docs.x.com/fundamentals/counting-characters); [X link-count guidance](https://help.x.com/en/using-x/how-to-post-a-link), checked September 11, 2026.
-- **Destination verified live at 2026-09-11 17:06 UTC.** Release `4f8e39e` serves the rewritten article and its matching social image. The [release receipt](../../research/oss-radar-07/ai-citations-rewrite-verification.json) verifies article/Markdown, nineteen prompts, catalog/citation title, and image. The HN title above matches the final H1. The earlier 16:50 check saw the preceding article and is superseded by this acceptance.
+- **Destination verified live at 2026-09-11 17:06 UTC.** Release `4f8e39e` serves the rewritten article and its matching social image. The [release receipt](../../research/oss-radar-07/ai-citations-rewrite-verification.json) verifies article/Markdown, nineteen prompts, catalog/citation title, and image. The title correction below supersedes that release’s publication title. The earlier 16:50 check saw the preceding article and is superseded by this acceptance.
 - Copy remains unpublished: no account analysis, composer preview, or social posting occurred. The final generated social image was inspected locally and verified byte-for-byte against the live image; no social-platform card-cache refresh was performed.
+
+**September 12 title correction:** restored the series prefix in the HN title above, following issues #01–#06. The article hero keeps its separate issue badge and subject heading, while the publication title includes `OSS Radar #07:`. [Correction and release status](../../research/oss-radar-07/33-series-title-correction.md).

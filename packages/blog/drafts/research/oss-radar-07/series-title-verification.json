@@ -1,0 +1,25 @@
+{
+  "local": {
+    "checkedAt": "2026-09-12T17:23:45.716359+00:00",
+    "publicationTitle": "OSS Radar #07: AI Citations \u2014 Do Agents Preserve the Evidence Behind an Answer?",
+    "titleCharacters": 79,
+    "earlierIssuePrefixesChecked": 6,
+    "articleBodyUnchanged": true,
+    "articleBodySha256": "f8f4eb442eb629229f154c3c54744700c797deaf4621a1efaea69520376d8036",
+    "ogAndStructuredTitlesMatch": true,
+    "cardsFeedCatalogMarkdownTitlesMatch": true,
+    "publicationDate": "2026-09-10",
+    "modifiedDate": "2026-09-12",
+    "promptCount": 20,
+    "priorPromptsUnchanged": true,
+    "renderedPromptsExactMatch": true,
+    "footprintUnchanged": true,
+    "footprintSha256": "36d3e870bd4d6efae26e45af1035065f7b071934f21f907c5aa75f048657dbd0",
+    "ogImageSha256": "81fad54bf7daa6a922b037ca75b28814efbea3395562e9a2854fd64512e7e572",
+    "ogImageVisuallyChecked": true,
+    "relativeLinksChecked": 119,
+    "typecheck": "pass",
+    "productionBuildPosts": 26,
+    "whitespace": "pass"
+  }
+}
