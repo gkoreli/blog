@@ -21,5 +21,64 @@
     "typecheck": "pass",
     "productionBuildPosts": 26,
     "whitespace": "pass"
+  },
+  "live": {
+    "checkedAt": "2026-09-12T17:25:33.596427+00:00",
+    "commit": "9c9642b0daf5edef66b0a1ac467f1ea995bbf490",
+    "checks": [
+      {
+        "name": "Workers Builds: gkoreli-com",
+        "status": "completed",
+        "conclusion": "success",
+        "completedAt": "2026-09-12T17:25:28Z",
+        "detailsUrl": "https://dash.cloudflare.com/7e0dc86ef69b4572a63162a52cddd269/workers/services/view/gkoreli-com/production/builds/68fbdc90-d2b8-4c2d-9f55-d76a10873f73"
+      }
+    ],
+    "responses": {
+      "article": {
+        "url": "https://gkoreli.com/oss-radar-07-promptfoo",
+        "status": 200,
+        "sha256": "f8cb3c9599493fdbfeae68978c17334e1c46810e6f53c7b488bbcd94753f63de"
+      },
+      "markdown": {
+        "url": "https://gkoreli.com/oss-radar-07-promptfoo.md",
+        "status": 200,
+        "sha256": "ec3401196756a4728c3158230d7be2ec205ab454d3bc78b646d0fd1f1ff7ec3a"
+      },
+      "citation": {
+        "url": "https://gkoreli.com/oss-radar-07-promptfoo",
+        "status": 200,
+        "sha256": "549dba41869848c50ef836f4c49f576ecd983f0532f3814c3fa74fc4238e5a06"
+      },
+      "prompts": {
+        "url": "https://gkoreli.com/oss-radar-07-promptfoo/prompts",
+        "status": 200,
+        "sha256": "8c2e2d6056f6e0360c38521eb1d5a318fb9addc87364415d30cc8aebc4ee933c"
+      },
+      "ogImage": {
+        "url": "https://gkoreli.com/og/oss-radar-07-promptfoo.png",
+        "status": 200,
+        "sha256": "81fad54bf7daa6a922b037ca75b28814efbea3395562e9a2854fd64512e7e572"
+      },
+      "radarIndex": {
+        "url": "https://gkoreli.com/oss-radar",
+        "status": 200,
+        "sha256": "e1b09dcb545ba6c42212e0bedbb55aedd618105a681bffbf67ad3b4052c4cc9c"
+      },
+      "feed": {
+        "url": "https://gkoreli.com/feed.xml",
+        "status": 200,
+        "sha256": "1e3a0acb7c219cf55a8611bb31dd7f7187a62dd0b94526d41a3fd5f38adb4781"
+      }
+    },
+    "publicationTitleMatches": true,
+    "articleBodyUnchanged": true,
+    "markdownExactMatch": true,
+    "ogImageExactMatch": true,
+    "citationTitleMatches": true,
+    "radarIndexTitleMatches": true,
+    "rssTitleMatches": true,
+    "exactPromptsMatch": true,
+    "promptCount": 20
   }
 }

@@ -1,6 +1,6 @@
 # OSS Radar #07 worklist
 
-**September 12 title correction:** restored `OSS Radar #07:` in the publication title, following all six earlier issues. [Change and verification](33-series-title-correction.md). This is a metadata correction; the completed research and article body are preserved.
+**September 12 title correction — published and verified at `9c9642b`:** restored `OSS Radar #07:` in the publication title, following all six earlier issues. [Change and verification](33-series-title-correction.md). This is a metadata correction; the completed research and article body are preserved.
 
 **Current state — September 11, 2026:** The full rewrite is **published and verified at `4f8e39e`**. The [rewrite acceptance](32-ai-citations-rewrite-acceptance.md) records the completed research, three independent reviews, build, viewport checks, and exact live-content matches. The new subject is **AI Citations: Do Agents Preserve the Evidence Behind an Answer?** Promptfoo is one tested section within an OSS cohort about generation, evaluation, attribution, and source credibility.
 
