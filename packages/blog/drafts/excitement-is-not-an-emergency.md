@@ -1,129 +1,173 @@
 ---
-title: "Excitement Is Not an Emergency"
+title: "Saving Ideas Without Derailing Your Plans: A Rule I Want to Practice"
 date: "2026-09-19"
-description: "I worry that postponing an idea means losing the desire to pursue it. A five-step rule for saving the thought without letting it rearrange the evening."
+description: "A five-step practice for excitement-driven procrastination: what memory research supports, why I fear losing the desire, and what I still need to test."
 section: essays
 tags: [essay, attention, procrastination, creativity]
 ---
 
-<!-- AI-assisted working draft shaped from the author's reflection and supplied conversation. An essay of inquiry, not an entirely human-written exposed essay. The rule is a proposed practice, not a reported success. Date is provisional until publication. Review author wording and provenance before publication; the raw conversation is not included because it also contains unrelated third-party details. -->
+<!-- AI-assisted working draft from the author's reflection and supplied conversation. Earned-Trust Writing revision, 2026-09-19. Personal account, external findings, and proposed practice are distinct; no successful trial of the full rule is claimed. Date is provisional until publication. The owner's complete positioning prompt is preserved at docs/editorial/2026-09-19-earned-trust-writing.prompt.md. The mixed-speaker conversation is not published because it contains unrelated third-party details. See research/excitement-is-not-an-emergency/01-earned-trust-revision.md for sources, provenance, and unanswered interview questions. -->
 
-# Excitement Is Not an Emergency
+# Saving Ideas Without Derailing Your Plans: A Rule I Want to Practice
 
-I can spend an evening doing things I care about and still put off the thing I chose to do. That makes the problem easy to defend. I was learning something. I was making progress. The idea really was worth pursuing. But I was supposed to be doing something else, and its time kept moving until there was hardly any left.
+You can put off something important by doing something else that is genuinely worthwhile. The new activity may produce a useful result. It still takes time away from sleep, a promise, or the work you had chosen to finish. The practical question is how to preserve an exciting idea without automatically handing it the next part of your day.
 
-An activity can be valuable and still be the wrong thing to do next.
-
-I was trying to explain this to my girlfriend when I wanted to check something on the computer for fifteen minutes. It was bedtime. I needed to shower and go to bed. The thing on the computer interested me, and I expected it to be useful. I wasn't choosing between doing something meaningful and wasting time.
-
-I was deciding which meaningful thing would have to wait. Except I barely experienced it as a decision. Of course I would still shower. Of course I would still go to bed. I would just do those things a little later.
-
-That little later is where the problem lives.
-
-## I am afraid of losing the desire
-
-Writing the idea down addresses one part of the fear. I might forget the thought, so I save it. Simple enough. But there is something else I am trying to keep: the feeling that makes me want to act on it.
-
-Right now, I see a connection. I understand why it matters. I can almost follow the next few steps in my head, and I want to start. Tomorrow I might remember the subject perfectly and feel none of that urgency. A note could preserve the information while losing what made it feel worth doing.
-
-So the choice feels harsher than now or later. It feels like now or never.
-
-In the conversation, I kept calling this a dopamine surge. I wasn't measuring dopamine. I was trying to describe that sudden combination of interest, possibility, and pressure to act. The experience is real enough to examine without pretending I know its exact chemistry.
-
-The usual suggestions didn't quite reach it. Break the primary task into smaller pieces. Make it more interesting. Give each piece a clear finish. Those can help, and I said so. But even an interesting, manageable task can be interrupted by another interesting task. Making the first one easier does not decide which one gets my time.
-
-I already have a [procrastination essay](/procrastination-is-a-craft-youve-been-mastering-your-entire-life) that describes an idea arriving before sleep, turning into a note, and keeping me awake until it became an article. There is something useful in that result. There is also a question the result does not answer: was following the thought immediately the right trade?
-
-Producing something worth keeping does not settle what it cost to produce it then.
-
-## I don't know what I am pushing back
-
-The most useful difference in our conversation was how clearly my girlfriend could describe what came after the task in front of her. She had a sequence in mind. Washing her hair meant styling it afterward. That took time. Bedtime mattered because she was preparing for an earlier waking schedule. Changing one part meant reconsidering the others.
-
-When I push something back, I often have a much vaguer picture. I am going to do the remaining things later. I haven't worked out how long they take or what happens when I add another activity before them.
-
-The new idea is specific. The cost is vague.
-
-I can tell you what I want to investigate on the computer. I am much less precise about where those fifteen minutes will come from. I treat the shower as something I can move because I will still complete it. But completing the shower does not protect bedtime. And if the computer leads to another question, then another, the original estimate has stopped describing what I am actually doing.
-
-I explained that a fifteen-minute task can turn into an hour and a half because I fit three or four other things around it. Each addition has its own explanation. Looking at the whole sequence makes the problem much harder to excuse.
-
-Before changing the plan, I need a smaller, more concrete question: what exactly moves if I do this now?
-
-For an evening like that, even a rough sequence would help: shower, finish getting ready, go to bed. Estimate what remains and work backward from the time I want to be in bed. Any computer time has to come from somewhere. I don't need to account for every minute to stop treating later as unlimited.
-
-Sometimes the answer will justify the change. A real deadline can make the new task the right priority. Sometimes there is room for it. But wanting to do it intensely tells me very little about whether that room exists.
-
-## SURGE → CAPTURE → RETURN → REVISIT → CHOOSE
-
-This is the rule I want to practice. I want a way to take an idea seriously without having to pursue it the moment it appears.
-
-**SURGE.** Notice the point where interest starts becoming an instruction. I have gone from finding something exciting to feeling that I must act before the opportunity disappears. Before opening the computer or switching tasks, I need to distinguish what will actually expire from what I am afraid I will stop feeling.
-
-There may be a real time limit. Often, in the situations I was describing, the apparent deadline is the excitement itself.
-
-**CAPTURE.** Save enough context to understand why the thought mattered. A subject line is often too little. I want the idea, the connection that made it interesting, and the first thing I would check when I return.
-
-A possible note for this essay:
-
-*An essay about getting distracted by worthwhile work. The important part is the fear of losing the desire, even if I remember the idea. Use the bedtime example. First step: explain why writing down only a topic doesn't resolve that fear. Revisit during tomorrow's writing time.*
-
-That would preserve a way back into the thought without requiring the entire essay to be written at bedtime.
-
-A short voice recording might do the same job. We talked about a dedicated recorder because it could make capturing an idea easy and enjoyable. I like that possibility. But I do not need to buy a device before trying the practice. A note or a voice memo is enough to begin.
-
-The boundary matters more than the tool: capture should end before it becomes the activity I was trying to postpone. If I start researching, outlining every section, or comparing ways to organize my notes, I have switched tasks. Calling it preparation does not change that.
-
-**RETURN.** Resume what I had chosen to do. At bedtime, that means continuing to get ready for bed. While working, it means returning to the piece of work I had interrupted.
-
-This is the part I could easily leave out while congratulating myself for recording the idea. Saving it does not protect the evening if I keep following it afterward. I need to leave it alone while it is still interesting, rather than wait for the interest to disappear before I return.
-
-**REVISIT.** Give the saved thought a real chance to be considered. Later has to refer to something I can find again: a writing session, an available afternoon, a brief review of notes. I don't need to assign every thought its own appointment. I do need a place and an occasion for looking at what I saved.
-
-If I repeatedly store ideas and never look at them, I have done little to answer the original fear. I am still abandoning them, only with a record of the abandonment. The practice has to include returning to ideas, not merely returning from them.
-
-**CHOOSE.** Decide what deserves action once I can see both the idea and the time it would take. I might pursue it, leave it for another day, or let it go. Recording a thought should preserve a possibility without creating another obligation.
-
-Revisiting is not a promise to execute. It gives me another chance to decide.
-
-## The excitement might not come back
-
-My first version of this thought included a comforting promise: save the idea, return at the right time, and the excitement will repeat, perhaps even more strongly because I can enjoy it without guilt.
-
-I cannot promise that.
-
-I may return and feel interested again. I may need to read the note and try the first step before I can tell. I may understand the idea and no longer want to pursue it. A recording can preserve my explanation of why I cared; it cannot guarantee that I will care in exactly the same way tomorrow.
-
-That makes the decision less comfortable. Sometimes waiting could mean losing momentum I would have used. I should acknowledge that possibility instead of pretending there is a method that preserves every benefit and removes every cost.
-
-But acting immediately has costs too. In the bedtime example, those costs are already visible. The choice is between accepting the risk that an idea will feel less compelling later and accepting the delay I cause by pursuing it now.
-
-I want to become more deliberate about that choice. I don't need certainty that the excitement will return before I am allowed to protect the rest of the evening.
-
-And the feeling's return cannot be my only test of whether an idea is worthwhile. Something can still deserve a small attempt without recreating its first rush of possibility. I would rather ask whether I still have a reason to pursue it, and whether I am willing to give it time.
-
-## Later cannot mean never
-
-There is an opposite mistake I do not want this rule to justify. I have already written about it in [Life as Background Music](/life-as-background-music): caring about things while repeatedly postponing the attention they deserve. I don't want a better system for doing that.
-
-If every obligation gets protected time and every personal interest gets a note, I have created a hierarchy I do not believe in. My own work and enjoyment deserve actual time too. Sleep matters. So does having something I am excited to wake up and do.
-
-The rule has to work in both directions. When I choose time for an idea, I should be able to give it my attention instead of treating it as a guilty interruption of something more legitimate. That doesn't require finishing every task in my life first. It requires making an honest choice about what this part of the day is for.
-
-I can also choose spontaneity. I can decide that a new thought is worth changing my plans for. The difference is whether I acknowledge the change and its cost, or keep insisting that everything else will happen somehow.
-
-I started by calling this maturity: stop acting from excitement. That is too blunt for what I actually want. I like becoming excited. I like the connections, the sudden possibilities, the desire to make something. I want to keep that part of my life and get better at deciding what to do when it arrives.
+The rule I want to practice is simple enough to remember:
 
 **SURGE → CAPTURE → RETURN → REVISIT → CHOOSE.**
 
-Writing the rule is easier than following it. This essay is not evidence that I have solved the problem. The test is much smaller: an idea arrives, I still want to pursue it, and I continue getting ready for bed.
+Notice the urge, save enough context to return to the idea, resume the original activity, revisit what you saved, and decide whether to pursue it. Research on reminders and specific plans gives reasons to consider parts of this approach. My own contribution is the problem that makes a reminder alone feel insufficient: I am afraid of losing the desire to do the thing, even if I remember exactly what it was.
 
-I have explained why that matters. I still have to practice doing it.
+There are two questions here. Can I preserve a useful thought? And can I tolerate leaving it alone while I still want to act on it? This article explains the practice and its rationale. I have not established that the whole sequence works for me yet.
+
+## A valuable detour is still a change of plan
+
+The value of an activity and its place in the day are separate decisions. Asking whether the new idea is worthwhile leaves out what doing it now would postpone.
+
+I was trying to explain this to my girlfriend when I wanted to check something on the computer for fifteen minutes. It was bedtime. I needed to shower and go to bed. The thing on the computer interested me, and I expected it to be useful. I wasn't choosing between meaningful work and wasting time.
+
+I still intended to shower. I still intended to sleep. I would just move them a little later.
+
+That is how I can defend each decision while losing control of the sequence. In our conversation, I described a fifteen-minute task turning into an hour and a half because I fit three or four other things around it. I don't experience each addition as abandoning the original plan. But a plan includes when something happens, especially when other things depend on it.
+
+This is why making the primary task smaller doesn't completely answer the problem. Smaller pieces can make it easier to start; in our conversation, I agreed that this helps me. But an interesting, manageable activity can still be interrupted by another interesting activity. I need a way to decide between them.
+
+Before switching, ask what would actually move. An answer such as *I will still do everything* says nothing about the cost of doing it later.
+
+## Saving the thought and saving the feeling are different problems
+
+A reminder can help with a future action without promising to preserve the enthusiasm behind it. Keeping those two aims separate makes both the research and the practical problem easier to understand.
+
+In [Sam Gilbert's 2015 study of external reminders](https://journals.sagepub.com/doi/10.1080/17470218.2014.972963), four online experiments involved 1,196 participants. The tasks included remembering to move particular numbered circles to different locations. Participants could arrange circles in advance as reminders. Having the option to externalize intentions improved performance in the tested tasks. This supports using an external cue rather than relying entirely on memory. It does not show that a voice memo preserves creative excitement or prevents a late-night detour.
+
+That distinction matters to me because forgetting the information is only half my fear.
+
+When an idea arrives, I can see why it matters. I notice a connection and want to follow it. Tomorrow I might remember the topic perfectly and feel none of that urgency. Writing down the subject seems inadequate because I want to preserve what makes me care about it now.
+
+So the choice feels like now or never. The thought has an apparent deadline even when nothing outside my head is about to expire.
+
+This suggests a more useful capture than a topic alone: save the connection, the reason it matters, and the first question to investigate. That is a design choice in the practice I am proposing, not a finding that the reminder experiment established. It gives a future reader of the note more context. Whether it brings back the desire is another question.
+
+For example, a possible note for this essay would be:
+
+*An essay about getting distracted by worthwhile work. The important part is the fear of losing the desire, even if I remember the idea. Use the bedtime example. First step: explain why saving only the topic doesn't resolve that fear. Revisit during tomorrow's writing time.*
+
+The note would preserve a way to resume the thought without requiring the entire essay to be written at bedtime.
+
+## Make the cost of switching visible
+
+A practical way to assess a detour is to describe the remaining sequence before changing it. You do not need a schedule for every minute. You need enough detail to know what you are postponing.
+
+My girlfriend could describe that sequence much more clearly than I could. Washing her hair meant styling it afterward. That took time. Bedtime mattered because she was preparing for an earlier waking schedule. Changing one part meant reconsidering the others.
+
+When I push something back, I often have a much vaguer picture. I will do the remaining things later. I haven't worked out how long they take or what happens when I add another activity first.
+
+The new idea is specific. The cost is vague.
+
+Here is a hypothetical evening, rather than a measurement of ours: there are thirty minutes until your chosen bedtime, and getting ready is expected to take those thirty minutes. Fifteen minutes at the computer must come from somewhere. You can change bedtime, shorten the routine, or decline the detour. You cannot keep all three commitments unchanged just by still intending to complete them.
+
+And the estimate needs a stopping condition. *Check one answer and close the computer* is a different commitment from *look into this for a bit*. A new question can make the latter activity much larger than the estimate you used to justify starting it.
+
+For my bedtime example, the immediate question is whether the computer activity has a real deadline. If it doesn't, the plan to shower and sleep already gives me a reason to postpone it. If the new task really is time-sensitive, I can change the plan deliberately and acknowledge what I am trading away.
+
+Feeling strongly about an idea is relevant to whether I want to pursue it. It does not tell me how much room is left in the evening.
+
+## The five-step practice
+
+The sequence separates recording an idea from committing to execute it. Use it as a small experiment in a situation where an exciting, non-urgent thought competes with something you have already chosen to do.
+
+### SURGE: notice when interest becomes urgency
+
+Pause before opening the computer, switching tabs, or beginning the new task. Ask what would actually be lost by waiting. Is there a deadline, an opportunity that will close, or only the fear that you will no longer feel like doing it?
+
+The distinction does not make the feeling unimportant. It makes the decision more explicit. A genuine time limit may justify switching; excitement alone does not settle the trade.
+
+In our conversation, I kept saying dopamine surge. That was my description of the felt rush, not a measurement. I can notice the urge to act without claiming to know its exact chemistry.
+
+### CAPTURE: leave enough context to resume
+
+Record the idea, why it matters, and one next step. Keep a location or an occasion for revisiting it in view. Text and a short voice memo are both possible tools; the useful feature is that recording ends before pursuing begins.
+
+We talked about a dedicated recorder because the act of capturing an idea could itself be enjoyable. I like that possibility. Buying a device is not a prerequisite for trying the rule, though. A note or a voice memo is enough to begin.
+
+There is also an obvious trap here. If capture turns into research, a complete outline, or a comparison of note-taking systems, the original activity is still being postponed. Calling the detour preparation does not protect the time.
+
+### RETURN: continue the activity you interrupted
+
+After saving the thought, do the next concrete part of the original task. At bedtime, put down the device and continue getting ready. During work, resume from the point you left. When that point could be hard to recover, leave a brief marker before recording the new idea.
+
+This is the step I could overlook while congratulating myself for writing something down. Recording does not help the original plan if I keep following the idea afterward. I need to leave it alone while it remains interesting, rather than wait until I have exhausted the interest.
+
+### REVISIT: give later an actual occasion
+
+Choose a place and occasion for reviewing saved thoughts. That could be the beginning of a writing session or a brief review when you plan the next day. Every thought does not need a calendar appointment, but storing it somewhere you never inspect does little to answer the fear of losing it.
+
+There is relevant experimental work on planning. In [Masicampo and Baumeister's 2011 studies](https://pubmed.ncbi.nlm.nih.gov/21688924/), activated unfinished goals interfered with tasks such as reading and solving anagrams. Formulating specific plans reduced or eliminated the measured interference in those experiments. That is a reason to consider a concrete plan rather than an indefinite intention. The studies did not test this five-step routine or prove that scheduling creative work restores excitement.
+
+The practical distinction is between *look at this sometime* and *review this note when I begin tomorrow's writing session*. The second gives the idea a next encounter. It still leaves open what you will decide then.
+
+For me, this step is essential to the honesty of the promise. If I save ideas and never return to them, I have documented their abandonment rather than addressed it.
+
+### CHOOSE: review without automatically committing
+
+On returning, decide whether the idea still deserves time. You may pursue the first step, leave it for another occasion, or discard it. A saved thought is a possibility, not an obligation.
+
+Ask whether you still have a reason to investigate it, what a small attempt would involve, and what giving it time would displace. The original intensity need not return before the idea can be worth a limited attempt. Equally, having once felt excited is not a reason to keep an idea forever.
+
+Revisiting gives you another decision. It does not require completing every thought you recorded.
+
+## The promise I cannot make
+
+My first version of this reflection made the approach sound more comfortable than I can justify. I said the excitement would return at the right time and could be even better without guilt. I also suggested a chemical explanation for why acting at the wrong time was doing myself a disfavor.
+
+I have not established either claim.
+
+[Berridge and Kringelbach's review of pleasure systems](https://pubmed.ncbi.nlm.nih.gov/25950633/) distinguishes wanting from pleasure and cautions against treating familiar dopamine systems as simple pleasure generators. It does not establish a guilt-to-dopamine rule for my evening. I should describe the experience I recognize without giving a chemical explanation more certainty than the evidence supports.
+
+I may revisit a note and feel interested again. I may need to try the first step before I can judge it. I may understand the idea and no longer want to pursue it. A recording cannot guarantee tomorrow's enthusiasm.
+
+That means the practice involves a real trade. Waiting could cost momentum I would have used. Acting immediately could cost time I had already committed elsewhere. I want to make that choice more deliberately, without pretending there is a method that keeps every benefit and removes every cost.
+
+My [earlier procrastination essay](/procrastination-is-a-craft-youve-been-mastering-your-entire-life) describes an idea arriving before sleep, becoming a note, and keeping me awake until it became an article. There is something useful in that result. It does not settle whether pursuing it at that moment was the right trade.
+
+Producing something worth keeping is not a complete account of what it cost to produce it then.
+
+## Later cannot become a respectable way to give up
+
+Protecting a schedule is useful only if the schedule has room for the things you actually care about. A system that saves every personal interest for later while giving every obligation protected time needs questioning too.
+
+I have already written about the opposite problem in [Life as Background Music](/life-as-background-music): caring about things while repeatedly postponing the attention they deserve. I don't want this rule to become a better-organized version of that.
+
+If every obligation gets protected time and every personal interest gets a note, I have created a hierarchy I do not believe in. Sleep matters. So does having something I am excited to wake up and do.
+
+One way to keep the practice honest is to protect chosen creative time with the same seriousness as other commitments. When you decide to explore an idea, that is the activity for that period. It does not have to wait until every other task in your life is finished.
+
+Spontaneity can also be a deliberate choice. You can change your plans because an opportunity is worth it. The relevant question is whether you acknowledge the change and its cost, or keep assuming everything else will happen somehow.
+
+I started by calling this maturity: stop acting from excitement. That is too blunt for what I actually want. I like becoming excited. I want to keep the connections, the possibilities, and the desire to make something, while getting better at deciding what happens next.
+
+## What would make this more than an appealing rule?
+
+The useful test is whether the practice changes what happens after an interruption. A growing collection of notes would not, by itself, demonstrate that.
+
+On one ordinary occasion, record what you intended to finish, what interrupted you, and what you actually did. Did capture end? Did you return? Was the idea understandable when you revisited it? Did you protect the original commitment, make an explicit trade, or simply delay everything again? This is a small personal observation, not a controlled experiment or a test of anyone's worth.
+
+A failure could still be informative. A note without context suggests a different problem from a clear note you never revisit. A review habit that works while capture regularly becomes research needs a different adjustment again. Look at the step that failed rather than assuming you need an entirely new productivity system.
+
+I have not collected those results for this rule. What I can offer now is the problem as I experience it, research relevant to parts of the approach, and a practice specific enough to try and question.
+
+**SURGE → CAPTURE → RETURN → REVISIT → CHOOSE.**
+
+I can explain why going to bed makes sense. The unresolved part is smaller and harder: an idea arrives, I still want to pursue it, and I continue getting ready for bed.
 
 ---
 
-### A note on the science
+## Glossary
 
-I use *surge* here for a felt experience, not a measured chemical event. Berridge and Kringelbach's [review of pleasure systems](https://pubmed.ncbi.nlm.nih.gov/25950633/) distinguishes wanting from pleasure; it does not support treating dopamine as a simple measure of enjoyment. This essay makes no claim that guilt lowers dopamine or that I can reproduce a particular chemical state later.
+| Concept | Source and useful scope | Date |
+|---|---|---|
+| External reminders | [Gilbert, Strategic offloading of delayed intentions](https://journals.sagepub.com/doi/10.1080/17470218.2014.972963): experimental support for reminders in delayed-intention tasks, not preservation of creative excitement. | 2015 |
+| Specific plans for unfinished goals | [Masicampo and Baumeister, Consider it done!](https://pubmed.ncbi.nlm.nih.gov/21688924/): reduced goal-related interference in the reported experiments; the full practice here was not tested. | 2011 |
+| Wanting and pleasure | [Berridge and Kringelbach, Pleasure systems in the brain](https://pubmed.ncbi.nlm.nih.gov/25950633/): a research review that distinguishes desire from pleasure, not a diagnosis of my experience. | 2015 |
 
-There is related experimental work on making specific plans. In [Masicampo and Baumeister's 2011 studies](https://pubmed.ncbi.nlm.nih.gov/21688924/), participants who made specific plans for unfinished goals showed reduced goal-related interference with other tasks. That finding is relevant to giving an idea a concrete next step. It does not establish that this five-step rule works or that recording excitement preserves it. I am proposing a personal practice, not a validated treatment.
+The five-step sequence is a proposed practical synthesis. The linked research does not validate it as a treatment, and my account does not establish its effectiveness for other people.
