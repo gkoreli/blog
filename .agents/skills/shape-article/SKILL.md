@@ -39,6 +39,16 @@ Let forms mix, but choose one to govern movement and the ending.
 
 Do not punish one form for lacking another form's payoff. An exposed essay needs no takeaway. A research verdict needs more than emotional truth.
 
+## Earned-Trust Writing: Two Perspectives in One Article
+
+The owner's September 19, 2026 direction makes [earned-trust-writing](../earned-trust-writing/SKILL.md) the preferred model for substantive practical articles. It is compatible with several forms above, rather than a replacement for their truth or endings. Apply it after identifying the living center and before drafting or substantial restructuring.
+
+Write down two promises: what can a stranger learn or use without knowing Goga, and what will the same reader discover about Goga through his actual work, decisions, mistakes, opinions, or unresolved experience? Give these roughly equal substantive weight, with permission to weave them together. Do not impose a literal midpoint, and do not quietly drop either perspective.
+
+The teaching must stand on explanation and appropriately scoped evidence. The personal material must be supplied or documented, not manufactured to make the author credible. Separate external findings, firsthand observation, interpretation, and proposed tests. When a gap matters, ask a small set of concrete questions about events, costs, actual attempts, counterexamples, and live stakes; do not re-ask what the supplied material already answers.
+
+A usable method and an unresolved personal ending can coexist. Do not turn a proposed practice into a success story or strip out the practical value merely because the author is still learning. Genuinely exposed essays retain their author-written boundary and need not become tutorials. The [founding prompt](../../../docs/editorial/2026-09-19-earned-trust-writing.prompt.md) records the owner's intended shift verbatim.
+
 ## Protect the Live State Without Making It a Formula
 
 When an owned engineering failure is active, consider the article that can be written truthfully now. Do not recommend waiting for a benchmark, adoption curve, clean measurement window, or completed outcome merely so the author can sound more authoritative later.
@@ -109,13 +119,13 @@ Treat lived uncertainty as information. It exposes constraints, competing explan
 
 1. Diagnose the living center and governing form.
 2. Mark protected passages and failure risks.
-3. Apply the governing skill without importing another form's ending.
+3. Apply the governing skill without importing another form's ending. For practical articles, apply `earned-trust-writing` and state both the reader-value and author-present promises.
 4. Shape movement, recurrence, and reader orientation.
 5. Verify facts, dates, references, quotations, and claim boundaries.
 6. Apply `article-discovery-positioning` after the article's truth and claim boundaries are stable; accept a narrow or no-op doorway when that protects the form.
 7. Apply `shareable-engineering` only where its engineering trust and share rules fit.
 8. Apply `polish-prose` last. Restore any edit that reduced aliveness, precision, or voice.
-9. Read the result as both a human reader and an agent reconstructing state, evidence, uncertainty, and time.
+9. Read the result as both a human reader and an agent reconstructing state, evidence, uncertainty, and time. For earned-trust articles, run the stranger, author, and connection tests.
 
 ## Reject These Failure Modes
 
@@ -127,8 +137,10 @@ Treat lived uncertainty as information. It exposes constraints, competing explan
 - Cutting repetition before checking its function
 - Adding a quotable claim only to satisfy a checklist
 - Researching the feeling away instead of sourcing the factual frame
+- Requiring readers to trust the byline before the article offers useful explanation or evidence
+- Appending an unrelated personal story to a generic tutorial and calling that earned trust
 - Building more editorial machinery instead of helping the current article exist
 
 ## Improve From Real Use
 
-After publication or author review, record what helped the piece and what harmed it. Update a skill only when the same failure recurs across articles. Keep one-off preferences with the article instead of turning them into universal law.
+After publication or author review, record what helped the piece and what harmed it. Update a skill when the same failure recurs across articles or the owner explicitly changes the publication's governing direction. Keep one-off preferences with the article instead of turning them into universal law.
