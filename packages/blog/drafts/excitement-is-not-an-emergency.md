@@ -1,167 +1,181 @@
 ---
-title: "Distracted by New Ideas? Why Writing Them Down Isn't Enough"
+title: "Productive Procrastination: When Meaningful Work Costs You Sleep"
 date: "2026-09-19"
-description: "Save an idea without losing the motivation to explore it? Why my notes go unused, what research supports, and a five-step practice for protecting focus."
+description: "Why useful work can override other priorities, why saving ideas doesn't preserve motivation, and the planning experiment I want to try."
 section: essays
-tags: [essay, attention, procrastination, creativity]
+tags: [essay, procrastination, creativity, planning, sleep]
 ---
 
-<!-- AI-assisted working draft. Revised with the author's first walk dictation on 2026-09-21. The publication date remains provisional. Author reports, external evidence, editorial interpretations, and proposed trials are distinct. No successful trial of the five-step practice is claimed. Source prompts and revision notes are under research/excitement-is-not-an-emergency/. The founding positioning prompt is docs/editorial/2026-09-19-earned-trust-writing.prompt.md. These selected prompts are not a complete conversation archive. The earlier mixed-speaker conversation remains unpublished. -->
+<!-- AI-assisted working draft, revised with the second walk dictation on 2026-09-21. Publication date is provisional. The author values creative energy and wants to protect both exploration and other commitments. Planning is the next proposed experiment, not a tested solution or a way to schedule neurochemistry. Full second dictation: research/excitement-is-not-an-emergency/04-walk-dictation-planning.prompt.md. Revision and evidence record: research/excitement-is-not-an-emergency/05-planning-and-productive-hijack.md. Earlier prompts and revisions remain in that directory; selected records are not a complete conversation archive. -->
 
-# Distracted by New Ideas? Why Writing Them Down Isn't Enough
+# Productive Procrastination: When Meaningful Work Costs You Sleep
 
-An exciting idea can interrupt work you genuinely care about. Writing it down seems like an obvious way to stay focused, until the note preserves the topic and loses everything that made you want to explore it. A more detailed record might help, but creating it can become the very detour you were trying to avoid.
+You can do meaningful work and still keep postponing something important. Write the article, improve the project, investigate the idea. The result may be genuinely valuable. It can also be the reason you go to bed later than you intended, delay a commitment, or lose time you had set aside for someone else.
 
-The useful distinction is between three jobs: remembering the idea, recovering the desire to work on it, and protecting the task you interrupted. A note can help with one while leaving the others unresolved. Separating those jobs gives you a way to examine what is failing instead of collecting another set of notes you never open.
+The difficult part is that useful work gives you a convincing explanation for continuing. That is the version of productive procrastination I want to understand: an important activity becomes permission to override other priorities. The practical question is how to give ideas real time without letting each burst of motivation decide when everything else happens.
 
-I know that last part from experience. I have saved ideas in my iPhone notes and stopped returning to them. Pursuing an idea immediately has felt more reliable because I actually explore it. It also takes time from work I had planned to finish or sleep I wanted to protect.
+Three distinctions help:
 
-The practice I want to try is:
+- An activity's importance in your life does not automatically make it the priority right now.
+- Saving an idea, developing it, and recovering the desire to pursue it are different jobs.
+- A plan needs to protect creative work as well as the commitments it might interrupt.
 
-**SURGE → CAPTURE → RETURN → REVISIT → CHOOSE.**
+I am writing from an unresolved attempt to do this. My engineering blog and open-source projects matter to me. In two or three years, I want people to know my work, find it useful, and choose to keep reading. I want an audience. That ambition makes the extra hour at the computer very easy to justify.
 
-There is research relevant to reminders and plans. There is also a problem those findings do not settle: whether I can leave an idea alone without losing the motivation that makes exploration possible. I have not demonstrated that this sequence solves that problem. My unused notes are one reason the practice needs testing, rather than another confident recommendation to write things down.
+I also want to sleep well and have a life that can sustain the work. The problem is that I can explain those priorities clearly when I am talking about them, then lose sight of their timing while I am doing something exciting.
 
-## Productive procrastination still postpones something
+## Meaningful work can become the excuse
 
-An activity can be worthwhile and still be the wrong thing to do next. This is the form of productive procrastination I am describing: making progress on one thing while delaying another commitment. Nothing about the detour has to be frivolous for the timing to be a problem.
+The question is not whether the work matters, but whether doing more of it now is worth what it displaces. My mistake is often answering only the first part.
 
-I work a nine-to-five and want time for my own projects too. I get home around five or six, want dinner, want to recover, want to watch something or scroll Twitter. I also want to write engineering articles and work on open-source projects. Those are real interests, not tasks I am pretending to care about.
+I finish a nine-to-five and get home around five or six. I want dinner, some recovery, maybe a show or time scrolling Twitter. I also want to write and build. By the time I start a project, it can be nine or ten. An hour becomes an hour and a half or two, and now it is close to midnight.
 
-By the time I start, it can be nine or ten. An hour becomes an hour and a half or two, and now it is close to midnight. Sometimes an idea arrives in the shower. I get another burst of energy and want to follow it, even though I would rather protect my sleep and how I function the next day.
+Sometimes the energy arrives in the shower. I see a connection and want to investigate it. Sometimes, during the workday, an interesting issue becomes more compelling than documentation I need to submit. I still intend to finish the documentation. I am just changing the order, and then the time goes.
 
-I have noticed mornings when I feel I slept poorly after those late sessions, and I look at my Oura sleep reports too. That is a personal observation, not a controlled comparison. I have not established a hormonal explanation or isolated what caused a particular night's sleep. What I can say directly is that the work moved bedtime later than I intended.
+What makes this especially difficult is that I don't necessarily feel guilty while it is happening. I am doing something important to me. I can point to the work and explain why I care about it, which makes delaying sleep feel acceptable in the moment.
 
-At work, an interesting issue can compete with documentation that needs to be submitted. I also remember a video idea arriving during the workday and spending a couple of hours on it. The idea gave me something to pursue; those hours still came out of the time I had been using for something else.
+That changes how I understand the problem. Earlier, I described poorly timed excitement as something guilt might spoil. Often the opposite happens: the value of the work removes the objection I might otherwise have felt. Productivity becomes my excuse to disregard the rest of the plan.
 
-This is why asking whether an idea is good does not finish the decision. Ask what doing it now would replace. I can keep intending to finish everything and still keep pushing the original commitment back.
+The work is real. So is the cost. Calling it productive does not decide whether I should keep doing it.
 
-## I tried saving ideas. I didn't return to them.
+For a reader facing a similar choice, separate two questions: *Do I want this in my life?* and *Does it deserve the next hour?* An honest yes to the first can coexist with a no to the second. You do not have to pretend your project is unimportant to stop working on it tonight.
 
-The strongest objection to this practice is that capturing an idea has already failed me in a recognizable way. The note exists. The exploration does not happen.
+## I want to keep the excitement
 
-Sometimes I tried to keep an idea in memory and later struggled to remember what I had wanted to do. Sometimes I wrote it down. But the following day, or a week later, it no longer seemed exciting. I didn't want to investigate it. Often I didn't even check the notes.
+The burst of motivation is something I value. It helps me follow an idea, imagine alternatives, and explore possibilities I might otherwise leave alone. An approach that makes me less interested in my own work would miss what I am trying to achieve.
 
-That history matters. My fear of losing an idea is not just a prediction that someone can answer with reassurance. I have tried a version of saving things for later, and later has repeatedly failed to become actual work.
+In conversation, I call this a dopamine surge. Here that means the felt rush of interest and energy, rather than a measured chemical event. [Berridge and Kringelbach's review](https://pmc.ncbi.nlm.nih.gov/articles/PMC4425246/) distinguishes wanting, pleasure, and learning; it gives no basis for treating motivation as something I can save and replay chemically.
 
-Following the excitement gives me a different result. At least I investigate. At least I give the thought time. That is part of why switching feels worthwhile, even when I recognize the cost.
+The experience itself is clear to me. A new idea rarely arrives as a title alone. It arrives with possible directions. I look across them, then go deeper into one, then see another possibility. That willingness to explore is a substantial part of what makes the moment useful.
 
-It is tempting to treat this as proof that immediate pursuit is always the right choice. It does establish a benefit I value: exploration happens. It does not yet compare that benefit with everything the session displaced. I need both parts of the account before calling the decision a good trade.
+I can also become so enthusiastic that I neglect objections or disadvantages. That is a reason to leave room for criticism while evaluating the idea. It does not make the energy itself a mistake.
 
-For a reader with the same problem, the first useful question is specific: did you lose the information, fail to encounter the note, or encounter it and no longer want to act? Those are different failures. A better-organized folder does not automatically answer the last one.
+There is research that complicates the idea that creative work must always be protected from switching. In [two experiments by Jackson Lu, Modupe Akinola, and Malia Mason](https://business.columbia.edu/faculty/research/switching-creativity-task-switching-can-increase-creativity-reducing-cognitive), participants who repeatedly alternated between two creativity tasks outperformed participants who switched at their discretion or once at the midpoint. The researchers linked the benefit partly to reduced fixation. Those were bounded creative tasks, not open-ended software work or interruptions at bedtime.
 
-## The idea arrives with branches, not just a title
+The useful point is that structure and exploration need not be enemies. I want to find a structure that gives exploration room, while keeping the rest of my life in the decision.
 
-A short note can omit much of what feels valuable in a new idea. The topic is only the beginning; possible uses, connections, questions, and next steps arrive with it.
+## Why writing ideas down hasn't been enough
 
-An agentic UI framework was the kind of example I gave while explaining this. Writing down that topic would not preserve everything I could see in the moment. I might want to explore several directions, then follow one of them much further. I described this as breadth-first and depth-first exploration: looking across possibilities and going deeper into particular ones.
+A note can help preserve what you already know. It cannot contain the discoveries you would make by continuing the work.
 
-The energy matters because it keeps me doing that exploration. When I save only the title, I have not saved the whole opportunity as I experience it. When I try to save all the branches, I am already doing substantial work.
+I have saved ideas in my iPhone notes and failed to return to them. Sometimes I forgot to look. Sometimes the subject no longer felt interesting. Immediate pursuit has seemed more reliable because at least I actually explore the idea.
 
-Even five, ten, or fifteen minutes of documentation can be enough to pull me away from the original task. I can lose track of what I was doing before the idea appeared. Capture is not free just because the output is a note.
+Research supports a narrower benefit of reminders. In [Sam Gilbert's four online experiments](https://journals.sagepub.com/doi/10.1080/17470218.2014.972963), involving 1,196 participants, external reminders improved performance on tasks requiring people to carry out delayed intentions. Participants could position numbered circles as cues for later actions. That is evidence for helping memory; it does not establish that an idea note will restore creative motivation.
 
-I kept calling the feeling a dopamine surge. I was describing sudden motivation, not measuring a chemical event. [Berridge and Kringelbach's review of pleasure systems](https://pmc.ncbi.nlm.nih.gov/articles/PMC4425246/) distinguishes wanting, pleasure, and learning rather than treating reward as one simple process. It does not explain my particular evenings or establish a way to store and replay motivation.
+I remember discussing this problem before and receiving a more substantial suggestion: spend about ten minutes speaking the idea through. Preserve a narrative rather than a title. That might record more of the connections and reasoning while still costing less than an entire evening. It remains a possibility, rather than a method I can report having proved successful.
 
-The practical problem survives without a chemical claim: a brief note can lose important context; a fuller record can become a long interruption; neither guarantees that I will want to return.
+But much of my thinking requires experimentation. I need to write code, run a test, read what someone else has tried, or compare approaches. The idea develops through those interactions. I cannot always form it completely by talking for ten minutes because some of what I need to think about does not exist yet.
 
-## What research on reminders does—and doesn't—support
+That leaves an important boundary. **Capture records the current state of an idea. Exploration changes that state.** If I insist on fully developing the idea before saving it, I have made completing the exploration a condition of stopping.
 
-External reminders can help people carry out delayed intentions. That is a narrower claim than saying they preserve the motivation behind a creative idea.
+A useful record may therefore need an unanswered question, an unfinished test, or the next thing to check. It can preserve where the work could continue without pretending to contain the work itself. Whether that is enough to bring me back is still open.
 
-In [Sam Gilbert's 2015 research](https://journals.sagepub.com/doi/10.1080/17470218.2014.972963), four online experiments involved 1,196 participants. Participants moved numbered circles and had to remember special actions for some of them. They could arrange circles in advance to create reminders. External reminders improved performance in the tested tasks.
+## The missing plan may come before the interruption
 
-That is useful evidence for reducing reliance on memory. It is not evidence that an iPhone note will recreate a branching engineering idea or make me eager to work on it tomorrow. The study tested carrying out instructions, not preserving a creative state.
+Planning interests me because it could make the whole evening visible before one activity becomes the only thing I am considering. I have been trying to manage individual detours without reliably deciding how the activities fit together in the first place.
 
-A second distinction helps here. Saving the contents of a thought and remembering to consult those contents are separate requirements. A detailed note can still go unread. My own account includes both inadequate capture and a missing return to what I saved; it does not tell me which change would make the biggest difference.
+My girlfriend could describe how getting ready for bed involved a sequence. Washing her hair meant styling it afterward. That took time. Changing one activity affected the others. She could tell what she would be moving if she added something new.
 
-This is where I want the practice to become more precise. A useful capture needs enough context to resume, a realistic occasion for review, and a cost small enough that it does not consume the current task's time. That is a proposed design for my workflow, not a result the reminder study established.
+I usually describe my evening differently. I get home and notice that I am hungry, so I cook. I notice the kitchen needs cleaning. After eating, I want to rest. I watch something. Then I remember the project and start working. Eventually I need to shower and go to bed.
 
-## A five-step practice with limits
+Each activity makes sense when it appears. But I am deciding one at a time, without a clear estimate of what still has to happen. By the time the project becomes absorbing, sleep is the thing that can apparently move.
 
-**SURGE → CAPTURE → RETURN → REVISIT → CHOOSE** is a way to make the trade explicit. It is not a promise to preserve every thought, every branch, and every burst of motivation while leaving the rest of the day untouched.
+I suspect that knowing the sequence could make it easier to stop treating the remaining time as available. That is what I take from our conversation; it is not proof of how other people's minds work or why she finds a particular decision easier.
 
-### SURGE: identify what is at risk on both sides
+There is a relevant finding in [Masicampo and Baumeister's experiments on unfinished goals](https://pubmed.ncbi.nlm.nih.gov/21688924/). Activated goals interfered with unrelated activities, including reading and anagram tasks. Making specific plans eliminated the measured interference in those experiments. This supports taking a concrete next occasion seriously instead of relying on an indefinite intention. The studies did not establish that a planned creative session makes enthusiasm arrive at a chosen hour.
 
-Notice when interest becomes an urge to switch. Ask what waiting might lose and what switching would interrupt. A real deadline, a passing opportunity, and the fear of losing enthusiasm are different reasons. All deserve consideration; none makes the time cost disappear.
+For an evening, a practical starting point is to estimate the remaining activities together: eating, recovery, project work, getting ready, and the time you intend to be in bed. Leave room for transitions and overruns. When the total does not fit, decide what changes before beginning the most absorbing part.
 
-My bedtime example needs a concrete sequence. I was discussing it with my girlfriend, who could explain how one part of getting ready affected the next. I often have a vaguer intention to do everything later. Before adding computer time, I need to know what remains and when I intended to be in bed.
+That can be a short note rather than a detailed calendar. For me, relying on a mental sequence I don't currently maintain may be less useful than making it visible. The point is to see what a change costs while there is still a choice about where to take the time from.
 
-At work, identify the next part of the document or problem before turning elsewhere. A brief return marker, such as the next paragraph to finish, is an option to test. The original task deserves a record of its own when losing that context is part of the problem.
+## Plan room for experimentation, not a required feeling
 
-### CAPTURE: preserve a way to restart, not every possibility
+I want to try allocating time when I am allowed to investigate an idea properly. Coding, testing, following references, finding objections, changing direction: those activities need room. They cannot all be compressed into an interruption-safe note.
 
-Try saving the connection that made the idea worth investigating and one question to pursue. Where several branches are already clear, naming them is different from exploring them. Following links, testing designs, and generating further branches belongs to the exploration itself.
+My hope is that deliberately giving the work a place will make it easier to engage with it there and leave it alone elsewhere. I also wonder whether expecting that time could make ideas easier to develop during it. That second part is a hypothesis, not something I know happens.
 
-For example, an illustrative note about this article could contain:
+The commitment I can actually make is to the occasion and the activity. I can open an unfinished experiment, read the saved question, and attempt the next test. I cannot guarantee the same excitement I felt yesterday. The distinction matters because a quiet start would not automatically mean the planned session failed.
+
+A proposed session needs a beginning and an ending. Decide what to open first, how much room there is to explore, and when to start leaving a record for the next session. The stopping condition cannot always be a fully formed idea; research can keep generating questions.
+
+An illustrative checkpoint could be:
 
 ```text
-Idea: writing down an idea can preserve the topic but lose the motivation.
-Important connection: detailed capture can itself become the distraction.
-Next question: what is the smallest note I would actually return to?
-Review: at the start of my next planned writing session.
+Current idea or question:
+Why I wanted to investigate it:
+What I have actually tried or learned:
+An objection or uncertainty I still need to examine:
+Next experiment, file, or source to open:
+Next occasion with time to work on it:
 ```
 
-This is an example, not a note from a successful trial. It is intentionally incomplete. I do not yet know whether a record this small would preserve enough for me.
+This is a template to test, not a record from a successful trial. It should capture what already exists, without requiring fresh research to fill every line. An unknown can stay unknown.
 
-For a first attempt, a small capture limit—say, one minute—would make the cost visible. That duration is a constraint to test, not a research-backed prescription. If meaningful capture keeps taking fifteen minutes, that is evidence that this version of the practice does not fit the situation. Restarting the timer would only hide the problem.
+Ten minutes of dictation may fit some evenings and be too much at other times. A brief pointer may be all that fits during a time-sensitive task. There is no universally harmless capture duration in this proposal. If recording keeps turning into an hour of work, that is information about a boundary the method has failed to protect.
 
-We discussed a dedicated voice recorder because it might be enjoyable and easy to use. It could help with the effort of recording. It would not, by itself, solve stopping or revisiting. I can test those problems with a note or voice memo before buying another tool.
+And project time has to be real. If every obligation receives a protected slot while every personal idea gets deferred, planning has simply made it easier to postpone the life I want. I have already written about that danger in [Life as Background Music](/life-as-background-music).
 
-### RETURN: check that capture actually ended
+## SURGE → CAPTURE → RETURN → REVISIT → CHOOSE
 
-Resume the next concrete part of the original activity. If I continue researching the idea after recording it, the rule has failed at this step, however good the note is. At bedtime, returning means putting down the device and continuing to get ready.
+I still want to use this rule, but it needs somewhere credible to lead. Planning provides the intended time for exploration; the sequence is the response to an idea arriving while something else has priority.
 
-There is related work on managing transitions. In [Leroy and Glomb's research, described by the University of Washington](https://www.washington.edu/news/2018/01/16/task-interrupted-a-plan-for-returning-helps-you-move-on/), making a brief plan for resuming interrupted work reduced lingering attention to it and improved performance on the interrupting task. The studies did not test whether people performed better on the original task when they returned. That is a reason to examine a return marker, not proof it will solve my problem.
+**SURGE.** Notice the energy and the urge to change activities. Ask what is important about the idea, whether there is an actual deadline, and what acting now would move. The feeling deserves consideration without settling the decision by itself.
 
-My own risk is already clear: I can save the exciting thought and lose track of the work I was trying to protect. A capture method needs to be judged partly by what happens immediately after the note is made.
+For me, an interesting project can feel connected to the person I want to become. That significance is real. I need to bring the rest of the evening back into view before letting it determine the next action.
 
-### REVISIT: make review an action, not a filing system
+**CAPTURE.** Preserve enough of the current thought to make a return possible. That may be a question, a connection, a file, or a short recording. Accept that a capture can be incomplete. Starting a new test to finish the note is already a change from recording to exploring.
 
-Choose an occasion when the note will actually be in front of you. Attaching it to the beginning of an existing writing or project session is one option. A separate review ritual may just become another task to postpone.
+If the original activity is easy to lose track of, leave its next step visible too. Saving the new idea while forgetting the work I interrupted would solve only part of my problem.
 
-[Masicampo and Baumeister's 2011 experiments](https://pubmed.ncbi.nlm.nih.gov/21688924/) found that specific plans reduced the measured interference of unfinished goals with other tasks. This supports considering a concrete plan rather than an indefinite intention. It does not establish that scheduling an idea restores enthusiasm or that the five-step sequence works.
+**RETURN.** Continue the activity that had priority. At bedtime, that means getting ready for bed. If I choose to keep exploring instead, I need to acknowledge the changed plan and what it displaces, rather than count continued research as a successful capture.
 
-For me, this is a major unanswered part. I have not been opening the notes. A more detailed capture changes nothing if I never encounter it, and encountering it does not guarantee I will feel like exploring.
+A note alone cannot demonstrate that this step happened. I have to look at what I actually did afterward.
 
-Separate those two observations in a trial: did the review happen, and what happened to my interest once it did? Otherwise I can mistake a failure to look for proof that the idea could never have interested me again.
+**REVISIT.** Put the saved thought in front of me during the planned project time. Start with something concrete: the unanswered question, the file, the next small test. The first observation is whether I return at all. The next is whether engaging with it produces useful work or renewed interest.
 
-### CHOOSE: decide without requiring the original feeling
+My unused notes cannot tell me that every idea would remain uninteresting after an actual attempt. They do tell me that storing more notes, without changing how I return, is insufficient.
 
-At review, consider one small attempt, a deliberate deferral, or letting the idea go. The question is whether there is still a reason to explore it and time I am willing to give it. A saved idea should not become a permanent obligation.
+**CHOOSE.** Decide whether to continue, defer, change direction, or stop. This is also where an objection deserves attention if initial enthusiasm made it easy to overlook. Remembering why I liked an idea should not oblige me to defend it forever.
 
-Trying one concrete step could reveal whether interest develops during the work. It might not. That is a possibility to test, not a result I can claim from my unused notes.
+During chosen creative time, exploring is allowed to be the priority. The same rule that protects sleep from a project should protect a project session from unrelated demands when those demands can wait.
 
-My history shows that my existing approach has not reliably brought me back to ideas. It does not establish that motivation can never return under any conditions. Equally, the possibility of improvement is not a reason to promise me that it will.
+## Sleep belongs in the account of the work
 
-The choice at review has to remain real, including the choice to stop.
+An extra hour of work is easy to count. Deciding whether it helped requires looking beyond that hour.
 
-## There is also a problem before the interruption
+I notice mornings when I feel I slept poorly after a late project session, and I look at my Oura reports. I have not turned that into a controlled comparison or established a hormonal explanation. What I can report directly is that I sometimes work past the bedtime I had intended and then dislike how I feel the next day.
 
-A rule for sudden ideas cannot, by itself, resolve an evening in which work, recovery, personal projects, and sleep all compete for the same remaining hours. That is a planning question as well as an impulse question.
+There is stronger evidence for the general cost of repeated sleep restriction. In [Van Dongen and colleagues' laboratory research](https://pubmed.ncbi.nlm.nih.gov/12683469/), chronic restriction involved four, six, or eight hours in bed per night for fourteen days. The four- and six-hour conditions produced accumulating cognitive-performance deficits. Reported sleepiness did not fully track the worsening performance. This was sustained restriction under laboratory conditions; it does not give me a recovery formula for a single late evening.
 
-I want a couple of hours for my own projects. I also want to eat, rest, enjoy something, and get enough sleep after my workday. If project time starts at nine or ten, I have left the decision about when to stop very close to bedtime. Capturing a new idea does not create another hour.
+It does give me a reason to question whether the extra visible work is the whole benefit. I want to build a body of work over years. Perhaps maintaining a schedule that leaves me able to think clearly will contribute more to that goal than repeatedly extending a session because it feels important.
 
-I do not want the conclusion to be that my personal work is always the thing to remove. In [Life as Background Music](/life-as-background-music), I wrote about caring about things while repeatedly postponing the attention they deserve. Saving every personal interest for later could become a more organized version of the same problem.
+That is a bet I want to examine in my own life. Sleep also matters to me apart from what it might do for my output. I don't want rest, health, or time with other people to need a productivity argument before I respect them.
 
-One option to test is to decide in advance which evenings get project time and how much, rather than expecting the same amount every day. Another is to deliberately reserve a longer session elsewhere. These are alternatives to assess against the life I actually want, not a schedule I have already adopted.
+## What the next attempt has to show
 
-The important boundary is that protected time has to include my own interests too. Otherwise the practice asks me to become reliable at postponing the things that make it worth having time.
+A useful trial needs to protect both sides: meaningful attention to my projects and the other commitments I chose. Better sleep with all personal work indefinitely postponed would fail one part. More project work with the same unplanned overruns would fail another.
 
-## I still don't know what I can afford to lose
+My next attempt is to plan some actual room for experimentation before the evening unfolds, including when I intend to stop. Then I want to see what happens when an idea arrives outside that time and when the planned time arrives without the original excitement.
 
-The difficult part is that following excitement really does give me something. I explore possibilities I might otherwise forget. I feel the energy to keep going. I am not willing to dismiss all of that as fake progress just because the timing is inconvenient.
+A small record should be enough to start: what I planned, whether I began, what I actually explored, when I stopped, and whether a saved idea received attention later. Alongside that, note how the next morning felt. This would be personal observation, with other influences still present, rather than proof of what caused a change.
 
-My [earlier procrastination essay](/procrastination-is-a-craft-youve-been-mastering-your-entire-life) describes a thought arriving before sleep and keeping me awake until it became an article. There was an actual result. The result does not settle whether pursuing it immediately was worth the cost.
+The interesting failures will be specific. Did the note omit the next step? Did I never open it? Did I start without much enthusiasm and find the work engaging anyway? Did the experiment develop enough momentum that I ignored the stopping point again? Each would tell me something different.
 
-When I first described this practice, I made a reassuring claim: the excitement would return later and might even be better when I could enjoy it without guilt. I haven't established that. The notes I don't reopen make the uncertainty more concrete.
+I do not want to replace curiosity with a complicated monitoring project. I want enough evidence to tell whether planning changes anything beyond how organized the intention sounds.
 
-The current choice feels like pursuing the idea now or letting it disappear. I want to find out whether there is a workable alternative. That means asking how much context I can preserve briefly, whether I will actually revisit it, and whether exploration can restart without the original rush.
+## I want to be able to do both
 
-A useful first observation would include both sides: did I protect the original commitment, and did the saved idea receive any meaningful attention later? Counting notes would miss the point. So would counting only the projects I started while ignoring the work or sleep I displaced.
+My [earlier procrastination essay](/procrastination-is-a-craft-youve-been-mastering-your-entire-life) came from a thought that arrived before sleep and kept me awake until it became an article. That result matters. So does the pattern I am now trying to change. I don't need to dismiss the article to question how I keep making that trade.
+
+I want to be known for useful engineering work. I want readers, open-source contributions, and projects that matter to people. I also want to stop using that ambition as an explanation for why the other things I care about can always wait.
+
+Planning may help. The rule may help. I have not yet shown that either lets me return to an idea, do good work, and stop when I intended.
 
 **SURGE → CAPTURE → RETURN → REVISIT → CHOOSE.**
 
-I still like the rule. I no longer think explaining it is enough. If a brief capture loses too much and a full capture takes over the evening, what am I willing to leave unexplored?
+The continuation of this essay should come from trying it. I want to find out whether I can give the work serious, deliberate time without needing the rest of my evening to be available whenever inspiration arrives.
+
+I want the energy. I want the work. I want to sleep. I still need to learn how to make those intentions fit into the same life.
 
 ---
 
@@ -169,9 +183,10 @@ I still like the rule. I no longer think explaining it is enough. If a brief cap
 
 | Concept | Source and useful scope | Date |
 |---|---|---|
-| External reminders | [Gilbert, Strategic offloading of delayed intentions](https://journals.sagepub.com/doi/10.1080/17470218.2014.972963): reminders improved delayed-intention performance in the experiments; creative motivation was not the outcome. | 2015 |
-| Planning a task transition | [UW's account of Leroy and Glomb's research](https://www.washington.edu/news/2018/01/16/task-interrupted-a-plan-for-returning-helps-you-move-on/): a ready-to-resume plan improved performance on interrupting work; performance after returning was not tested. | 2018 |
-| Specific plans for unfinished goals | [Masicampo and Baumeister, Consider it done!](https://pubmed.ncbi.nlm.nih.gov/21688924/): reduced goal-related interference in the reported experiments, not validation of this practice. | 2011 |
-| Wanting, pleasure, and learning | [Berridge and Kringelbach, Pleasure systems in the brain](https://pmc.ncbi.nlm.nih.gov/articles/PMC4425246/): distinct reward components; no measurement of my motivation or method for replaying it. | 2015 |
+| Wanting, pleasure, and learning | [Berridge and Kringelbach, Pleasure systems in the brain](https://pmc.ncbi.nlm.nih.gov/articles/PMC4425246/): a review distinguishing reward components; not a measurement of my experience. | 2015 |
+| Structured creative exploration | [Lu, Akinola, and Mason, Switching on creativity](https://business.columbia.edu/faculty/research/switching-creativity-task-switching-can-increase-creativity-reducing-cognitive): repeated switching improved performance in particular creativity tasks; not a prescription for software work or scheduled enthusiasm. | 2017 |
+| External reminders | [Gilbert, Strategic offloading of delayed intentions](https://journals.sagepub.com/doi/10.1080/17470218.2014.972963): reminders improved delayed-intention performance; creative motivation was not the outcome. | 2015 |
+| Specific plans | [Masicampo and Baumeister, Consider it done!](https://pubmed.ncbi.nlm.nih.gov/21688924/): specific plans reduced interference from unfinished goals in the reported experiments. | 2011 |
+| Repeated sleep restriction | [Van Dongen and colleagues, The cumulative cost of additional wakefulness](https://pubmed.ncbi.nlm.nih.gov/12683469/): sustained restricted sleep opportunities impaired measured performance; not a recovery rule for one late session. | 2003 |
 
-The five-step sequence and suggested capture limit are proposals. The research does not validate the combined method as a treatment. Personal examples are author reports, not independently verified measurements or proof of effectiveness for other people.
+The planning approach and five-step sequence are a proposed practical synthesis. The studies examine separate questions; they do not validate the combined method. Personal experiences are the author's account, and the outcome of the planned attempt remains open.
