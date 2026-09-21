@@ -4,7 +4,7 @@ description: Shape gkoreli.com articles that deliver independently useful teachi
 license: MIT
 metadata:
   author: gkoreli
-  version: "1.0.0"
+  version: "1.1.0"
   owner-direction-date: "2026-09-19"
 ---
 
@@ -61,6 +61,23 @@ Give a cold reader a recognizable subject and a reason to read. Where it fits, a
 
 Use words such as *measured*, *tested*, and *learned* only when the record earns them. For a proposed practice, describe a rule to try or a question under investigation. Do not imply successful treatment, guaranteed outcomes, or completed experiments to improve a headline.
 
+### Discovery and payoff must be visible in the title
+
+The owner's follow-up correction is preserved in full in [the first walk dictation](../../../packages/blog/drafts/research/excitement-is-not-an-emergency/02-walk-dictation.prompt.md). A title can be clearer than the old title and still fail to tell a stranger how the article relates to their problem or why to open it.
+
+Before accepting a title, record:
+
+1. **Reader language:** what problem or task would someone describe before knowing the author's framework? Prefer that language over a newly coined method or an abstract description of the essay.
+2. **Discovery route:** plausible search queries, a specific discussion in which the article answers a question, or what makes a bare shared title recognizable. Query hypotheses are not measured demand. Search results can show usage and ambiguity; they do not establish keyword volume, ranking difficulty, or likely traffic.
+3. **Concrete payoff:** what will the reader understand, distinguish, do, or assess after reading? The title must communicate enough of that payoff on its own. A description can add detail; it cannot rescue a title with no subject or value.
+4. **Earned scope:** does the body deliver the title's actual promise? Do not advertise a solved problem when the evidence only supports an explanation, a bounded proposal, or a failed attempt.
+
+For example, *Saving Ideas Without Derailing Your Plans: A Rule I Want to Practice* named an intended activity but gave little reason to choose this particular article. *Distracted by New Ideas? Why Writing Them Down Isn't Enough* names the reader's problem and the failure the article explains. This is an editorial judgment about clarity and fit, not a measured traffic improvement.
+
+Do not force a personal suffix such as *a rule I want to practice* into every title to imitate a 50/50 split. The author's half needs substantive evidence and judgment in the article, not equal headline space. A personal phrase earns headline space when it adds a concrete contribution, such as measurements or a specific failed attempt.
+
+Keep the H1, description, proposed publication slug, and opening aligned. Use `article-discovery-positioning` to evaluate the actual article; do not rewrite it around an unrelated popular term. [Google's title guidance](https://developers.google.com/search/docs/appearance/title-link) supports descriptive, concise titles and warns against keyword stuffing; it does not certify any particular title or predict this publication's growth.
+
 The opening should explain the practical value and bring the author into the actual problem promptly. Do not require readers to care about his biography before the article helps them. Do not remove the author so thoroughly that the article becomes a generic how-to.
 
 ## Working Sequence
@@ -71,7 +88,7 @@ The opening should explain the practical value and bring the author into the act
 4. **Interview for missing substance.** Ask a small set of walk-friendly questions about concrete scenes, costs, counterexamples, actual attempts, changed beliefs, and live stakes. Use what is already known; do not repeat answered questions. Ask neutrally rather than feeding the author a flattering or embarrassing story to confirm.
 5. **Draft with both perspectives in contact.** A concept should help interpret the experience; an experience should test, illustrate, or complicate the concept. A method needs its rationale and failure modes. Keep a reusable rule, example, or decision aid visible.
 6. **Audit the claims.** Verify citations and provenance. Distinguish a laboratory result from real-world validation of the article's full practice. Keep proposed tests future-facing.
-7. **Position and polish.** Apply `article-discovery-positioning` after the substance is stable, then `polish-prose`. Preserve Goga's voice and the actual state of the work.
+7. **Position and polish.** Apply `article-discovery-positioning` after the substance is stable, then `polish-prose`. Check title language, discovery route, payoff, and earned scope. Preserve Goga's voice and the actual state of the work.
 
 ## Three Editorial Tests
 
