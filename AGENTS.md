@@ -1,5 +1,19 @@
 # AGENTS.md — Blog Project Context
 
+## Earned-Trust Writing (owner direction, 2026-09-19)
+
+**Teach something useful. Show the basis for the advice. Let the reader get to know the person doing the work.** This is the preferred model for substantive gkoreli.com articles, including engineering and practical personal inquiry. Read [.agents/skills/earned-trust-writing/SKILL.md](.agents/skills/earned-trust-writing/SKILL.md) after `shape-article` when applying it. The [complete founding prompt](docs/editorial/2026-09-19-earned-trust-writing.prompt.md) is preserved verbatim for historical reasons; do not silently edit it.
+
+Aim for roughly equal substantive weight: **50% transferable reader value and 50% Goga's actual work, experience, opinions, mistakes, and unresolved questions.** Weave these perspectives together rather than requiring a tutorial followed by an unrelated personal half. A stranger should be able to learn and inspect the reasons for a claim without knowing or trusting the author beforehand. Through that same explanation, the reader should discover what Goga builds, how he thinks, what he has learned, and what he still needs to understand.
+
+The owner's reference is [Bot Detection Without JavaScript: What My Blog Measured](https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript): a recognizable reader problem paired with an implementation, measurements, corrections, and explicit limits. Copy that relationship between teaching and evidence, not its exact structure or the word “measured” when nothing was measured.
+
+Keep external findings, firsthand observations, interpretations/opinions, and proposed experiments distinct. Put useful evidence beside the advice it supports. An anecdote is not universal proof; a citation does not validate an entire proposed method. Do not invent experiences, measurements, quotations, feelings, or a completed recovery story to establish credibility. Ask targeted, walk-friendly questions for missing personal substance instead of manufacturing it.
+
+This direction clarifies older “not a tutorial site” and “don't write generic tutorials” wording below: **teach directly, but avoid interchangeable instruction detached from evidence and the author's work.** Practical utility and an author-present journal belong in the same article. The 50/50 goal is a substantive balance, not a word-count formula. `shape-article` still chooses the honest form, and deliberately exposed essays remain author-written under `personal-essays`; do not force every piece into a tutorial.
+
+Before delivery, run the stranger test (useful without the byline), author test (specific work and judgment, not a replaceable biography), and connection test (the teaching and personal material strengthen each other). This is an editorial strategy for warranted confidence and reciprocal readership, not a guarantee of trust, subscriptions, search performance, or growth.
+
 ## Vision
 
 A personal engineering blog at `gkoreli.com` by Goga Koreli. Built with `@nisli/core` (my own zero-dependency reactive web component framework), deployed to Cloudflare Workers with static assets.
@@ -256,7 +270,7 @@ None of these make sense. The blog exists to prove `@nisli/core` works standalon
 
 - **No framework mismatch** — markdown parser passes through HTML tags, browser upgrades them into live web components via `customElements.define()`. This is the native web platform way.
 - **Zero extra dependencies** — no MDX compiler, no JSX transform, no React runtime
-- **Same interactive power** — any `@nisli/core` component can be embedded directly in markdown as a custom element
+- **Same interactive power** — any `@nisli/core` component can be embedded directly into markdown as a custom element
 - **Portable content** — posts are valid markdown that renders anywhere (GitHub, dev.to, any markdown viewer). MDX only renders in MDX-aware toolchains.
 - **Simpler build pipeline** — parse frontmatter, convert markdown to HTML, wrap in nisli/core shell. Done.
 
