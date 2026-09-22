@@ -97,3 +97,7 @@ The original controlled tests established how Promptfoo's OpenRouter connector h
 No article work remains for this rewrite. [Acceptance 32](32-ai-citations-rewrite-acceptance.md) verifies the published release. Research, directed CLI experiments, and independent manuscript reviews are complete; do not repeat them as if unrun. The [sharing copy](../../social/oss-radar-07-promptfoo/launch.md) is prepared but not posted.
 
 The larger citation-frequency study and distinct engineering continuation remain open. The existing fixture/trace work is complete. The original footprint manifest remains frozen and excludes every later continuation; current prompt and artifact counts must not be substituted into that historical freeze.
+
+## September 22: result-led opening and article revision
+
+The [owner-directed revision](35-result-led-revision.md) replaces the unexplained STORM opening with the citation-manipulation result, defines the denominator immediately, and reorganizes the body around the experiment, source support, generation, and capture. It preserves the prior research and frozen footprint. The saved local and live checks distinguish editorial verification from a new model experiment.

@@ -1,0 +1,25 @@
+{
+  "narrativeWords": 2985,
+  "readTimeMinutes": 15,
+  "promptCount": 31,
+  "tables": 6,
+  "headings": [
+    "How a document became a source after it was altered",
+    "Our experiment: the number stayed, its meaning changed",
+    "Which parts can open-source tools check?",
+    "TruLens, DeepEval, and Ragas: check the cited passage",
+    "ALCE and Self-RAG: separate citation creation from checking",
+    "OpenScholar: improve evidence selection and revision",
+    "STORM and Co-STORM: better research does not guarantee better citations",
+    "Promptfoo and Phoenix: retain what the checks need",
+    "Citation analytics: count appearances and assess claims separately",
+    "What makes an engineering source worth trusting?",
+    "My bet: test citation support claim by claim",
+    "Glossary & sources"
+  ],
+  "externalLinks": 29,
+  "checks": "one H1, canonical, headline numerator/denominator, table column counts/wrappers, one glossary, Markdown headings, modified date, all exact prompts, unchanged prior prompt prefix and footprint manifest",
+  "manuscriptMatchesRenderedNarrative": true,
+  "rssPublicationDateUnchanged": true,
+  "sitemapModifiedDate": "2026-09-22"
+}

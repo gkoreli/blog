@@ -1,0 +1,151 @@
+{
+  "checkedAt": "2026-09-22T16:35:12.755215+00:00",
+  "scope": "HTTP availability; not independent verification of each source claim. Prior pinned-code audits retained. Revised paper claims rechecked separately.",
+  "results": [
+    {
+      "url": "https://aclanthology.org/2024.naacl-long.347.pdf",
+      "status": 200,
+      "finalUrl": "https://aclanthology.org/2024.naacl-long.347.pdf"
+    },
+    {
+      "url": "https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview",
+      "status": 200,
+      "finalUrl": "https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview"
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "status": 200,
+      "finalUrl": "https://developers.google.com/search/docs/appearance/ai-features"
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "status": 200,
+      "finalUrl": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+    },
+    {
+      "url": "https://github.com/AkariAsai/OpenScholar/blob/0e9b8fb912273d3dae39e593da86e4f6d3bf8de1/src/open_scholar.py#L40-L60",
+      "status": 200,
+      "finalUrl": "https://github.com/AkariAsai/OpenScholar/blob/0e9b8fb912273d3dae39e593da86e4f6d3bf8de1/src/open_scholar.py"
+    },
+    {
+      "url": "https://github.com/AkariAsai/OpenScholar/blob/0e9b8fb912273d3dae39e593da86e4f6d3bf8de1/src/open_scholar.py#L527-L708",
+      "status": 200,
+      "finalUrl": "https://github.com/AkariAsai/OpenScholar/blob/0e9b8fb912273d3dae39e593da86e4f6d3bf8de1/src/open_scholar.py"
+    },
+    {
+      "url": "https://github.com/AkariAsai/self-rag/blob/1fcdc420e48f50a7d7ab1ece5494221b93252e99/retrieval_lm/run_long_form_static.py#L72-L238",
+      "status": 200,
+      "finalUrl": "https://github.com/AkariAsai/self-rag/blob/1fcdc420e48f50a7d7ab1ece5494221b93252e99/retrieval_lm/run_long_form_static.py"
+    },
+    {
+      "url": "https://github.com/Arize-ai/phoenix/blob/d69a92e16ac29dc8a7a7262aa18ddeaccfea2b70/LICENSE",
+      "status": 200,
+      "finalUrl": "https://github.com/Arize-ai/phoenix/blob/d69a92e16ac29dc8a7a7262aa18ddeaccfea2b70/LICENSE"
+    },
+    {
+      "url": "https://github.com/Arize-ai/phoenix/blob/d69a92e16ac29dc8a7a7262aa18ddeaccfea2b70/src/phoenix/db/models.py#L1284-L1326",
+      "status": 200,
+      "finalUrl": "https://github.com/Arize-ai/phoenix/blob/d69a92e16ac29dc8a7a7262aa18ddeaccfea2b70/src/phoenix/db/models.py"
+    },
+    {
+      "url": "https://github.com/confident-ai/deepeval/blob/f94d940c1e5afc4b280420fe73fe17d146274018/deepeval/metrics/community/citation_faithfulness/citation_faithfulness.py",
+      "status": 200,
+      "finalUrl": "https://github.com/confident-ai/deepeval/blob/f94d940c1e5afc4b280420fe73fe17d146274018/deepeval/metrics/community/citation_faithfulness/citation_faithfulness.py"
+    },
+    {
+      "url": "https://github.com/confident-ai/deepeval/blob/f94d940c1e5afc4b280420fe73fe17d146274018/deepeval/metrics/community/citation_faithfulness/template.py#L15-L34",
+      "status": 200,
+      "finalUrl": "https://github.com/confident-ai/deepeval/blob/f94d940c1e5afc4b280420fe73fe17d146274018/deepeval/metrics/community/citation_faithfulness/template.py"
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/9d99ae8fac8fefc24fc45b4a962ef776d122f405/packages/blog/drafts/research/oss-radar-07/21-real-answer-source-review.md",
+      "status": 200,
+      "finalUrl": "https://github.com/gkoreli/blog/blob/9d99ae8fac8fefc24fc45b4a962ef776d122f405/packages/blog/drafts/research/oss-radar-07/21-real-answer-source-review.md"
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/9d99ae8fac8fefc24fc45b4a962ef776d122f405/packages/blog/drafts/research/oss-radar-07/repro/cli/README.md",
+      "status": 200,
+      "finalUrl": "https://github.com/gkoreli/blog/blob/9d99ae8fac8fefc24fc45b4a962ef776d122f405/packages/blog/drafts/research/oss-radar-07/repro/cli/README.md"
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/07-citation-measurement-contract.md",
+      "status": 200,
+      "finalUrl": "https://github.com/gkoreli/blog/blob/dabd081506de2e0a8dba6778b4e43c0bb83d5c13/packages/blog/drafts/research/oss-radar-07/07-citation-measurement-contract.md"
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/00-worklist-index.md",
+      "status": 200,
+      "finalUrl": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/00-worklist-index.md"
+    },
+    {
+      "url": "https://github.com/princeton-nlp/ALCE/blob/246c476a4edfc564266b7346b6e29ef4861ae937/eval.py#L340-L429",
+      "status": 200,
+      "finalUrl": "https://github.com/princeton-nlp/ALCE/blob/246c476a4edfc564266b7346b6e29ef4861ae937/eval.py"
+    },
+    {
+      "url": "https://github.com/princeton-nlp/ALCE/blob/246c476a4edfc564266b7346b6e29ef4861ae937/post_hoc_cite.py#L38-L70",
+      "status": 200,
+      "finalUrl": "https://github.com/princeton-nlp/ALCE/blob/246c476a4edfc564266b7346b6e29ef4861ae937/post_hoc_cite.py"
+    },
+    {
+      "url": "https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/contracts/providers.ts#L62-L83",
+      "status": 200,
+      "finalUrl": "https://github.com/promptfoo/promptfoo/blob/89052308bce06f53645b1f189ada5ac9d1897347/src/contracts/providers.ts"
+    },
+    {
+      "url": "https://github.com/stanford-oval/storm/blob/fb951af7744dab086e34962e9bc6fe878e145f83/knowledge_storm/collaborative_storm/modules/grounded_question_generation.py#L81-L115",
+      "status": 200,
+      "finalUrl": "https://github.com/stanford-oval/storm/blob/fb951af7744dab086e34962e9bc6fe878e145f83/knowledge_storm/collaborative_storm/modules/grounded_question_generation.py"
+    },
+    {
+      "url": "https://github.com/stanford-oval/storm/blob/fb951af7744dab086e34962e9bc6fe878e145f83/knowledge_storm/storm_wiki/modules/article_generation.py#L144-L174",
+      "status": 200,
+      "finalUrl": "https://github.com/stanford-oval/storm/blob/fb951af7744dab086e34962e9bc6fe878e145f83/knowledge_storm/storm_wiki/modules/article_generation.py"
+    },
+    {
+      "url": "https://github.com/stanford-oval/storm/blob/fb951af7744dab086e34962e9bc6fe878e145f83/knowledge_storm/storm_wiki/modules/knowledge_curation.py#L204-L243",
+      "status": 200,
+      "finalUrl": "https://github.com/stanford-oval/storm/blob/fb951af7744dab086e34962e9bc6fe878e145f83/knowledge_storm/storm_wiki/modules/knowledge_curation.py"
+    },
+    {
+      "url": "https://github.com/stanford-oval/storm/blob/fb951af7744dab086e34962e9bc6fe878e145f83/knowledge_storm/storm_wiki/modules/storm_dataclass.py#L188-L207",
+      "status": 200,
+      "finalUrl": "https://github.com/stanford-oval/storm/blob/fb951af7744dab086e34962e9bc6fe878e145f83/knowledge_storm/storm_wiki/modules/storm_dataclass.py"
+    },
+    {
+      "url": "https://github.com/truera/trulens/blob/72d60ce6c1af6f9a479bdc8f99d69796340d459a/src/feedback/trulens/feedback/templates/rag.py#L299-L502",
+      "status": 200,
+      "finalUrl": "https://github.com/truera/trulens/blob/72d60ce6c1af6f9a479bdc8f99d69796340d459a/src/feedback/trulens/feedback/templates/rag.py"
+    },
+    {
+      "url": "https://github.com/vibrantlabsai/ragas/blob/298b68274234c060deacab3cf5fb52aa3a20e885/src/ragas/metrics/collections/faithfulness/metric.py#L116-L159",
+      "status": 200,
+      "finalUrl": "https://github.com/vibrantlabsai/ragas/blob/298b68274234c060deacab3cf5fb52aa3a20e885/src/ragas/metrics/collections/faithfulness/metric.py"
+    },
+    {
+      "url": "https://github.com/vibrantlabsai/ragas/blob/298b68274234c060deacab3cf5fb52aa3a20e885/src/ragas/metrics/collections/quoted_spans/util.py#L35-L66",
+      "status": 200,
+      "finalUrl": "https://github.com/vibrantlabsai/ragas/blob/298b68274234c060deacab3cf5fb52aa3a20e885/src/ragas/metrics/collections/quoted_spans/util.py"
+    },
+    {
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-10072-4/MediaObjects/41586_2025_10072_MOESM1_ESM.pdf",
+      "status": 200,
+      "finalUrl": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-10072-4/MediaObjects/41586_2025_10072_MOESM1_ESM.pdf"
+    },
+    {
+      "url": "https://staff.fnwi.uva.nl/m.derijke/wp-content/papercite-data/pdf/wallat-2025-correctness.pdf",
+      "status": 200,
+      "finalUrl": "https://staff.fnwi.uva.nl/m.derijke/wp-content/papercite-data/pdf/wallat-2025-correctness.pdf"
+    },
+    {
+      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2026/04/khan26_iclr.pdf",
+      "error": "The read operation timed out"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-10072-4",
+      "status": 200,
+      "finalUrl": "https://www.nature.com/articles/s41586-025-10072-4?error=cookies_not_supported&code=5b84993d-fbb9-49db-b10b-5fd44a15b082"
+    }
+  ],
+  "followup": "Khan PDF succeeded through the browser-backed web reader on September 22; the initial urllib timeout is retained above."
+}

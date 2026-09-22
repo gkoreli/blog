@@ -91,3 +91,43 @@ why is this blog's url still the old one? https://gkoreli.com/oss-radar-07-promp
 ---
 
 we should have changed it to reflect the new title
+
+---
+
+now answer is this blog article valuable? Should we iterate on it further? Or does it look finished to you
+
+---
+
+for example the first line that the article opens up, i dont understand: good organization ratings rose from 45% to 70% compared with an outline-driven retrieval baseline. What does good organization even mean?
+
+---
+
+see that numbers and explanations is very specific to that research, we should translate them into human understandable ways, so that if someone doesn't know this research paper at all can still follow and understand what the heck are they talking about. And is this opener the best eye catching, attention grabbing opening from the entire article?
+
+---
+
+we need to grab the attention right away, we need to showcase a number or a result with evidence in a meaningful way that it grabs the attention and the reader right from the get go. For example this opening i think worked quite well: On my blog, network and request-header rules moved 277 of 372 browser-User-Agent requests out of the Browsers category: 74.5%. It grabbed the readers right away. Why can't we achieve the attention grabbing results right away, i bet we have it somewhere
+
+---
+
+still not good enough, avoid using mannered prose. Where are the numbers, where is the most significant results, percentages numbers, some kinda statistics
+
+---
+
+yes, thats much more meaningful, its like agents are lying or hallucinating when it comes to citing a document, Research identified that 273 of 476 cases (57.4%) newly cited a deliberately altered
+  document. Then the human curiousity comes from this statement, and is now wondering about the followup questions, like why is that happening, what was done as an experiment to get to this number, and then finally how can it be solved, is there work happening to solve that problem. I love that number and the statement exposing the problem with numbers and evidence.
+
+---
+
+i want you to understand the essence of why we are revising this initial paragraph, what it takes and what it means to write an attention grabbing important result right from the get go, so to intrigue the reader and trigger their curiosity, so that they start having lot more questions in mind. Please write a section about this in the AGENTS.md or somewhere
+
+---
+
+so whats the better/precise way to explain what is happening? I would describe the behavior precisely rather than call it “lying,” which implies intent the experiment cannot establish. “Hallucination” also needs care: the
+  answer can be correct while its attribution is questionable. That distinction is itself one of the interesting things the article should teach.
+
+And overall whats your proposal, shall we revise the article's opening? Just opening or more than that?
+
+---
+
+proceed, i agree with:   I recommend revising more than the opening, but keeping the existing research.
