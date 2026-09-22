@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-09-22T16:41:30.853Z",
+  "release": "107d238",
+  "checks": {
+    "articleBodyMatchesBuild": true,
+    "markdownMatchesBuild": true,
+    "latestPromptPresent": true,
+    "oldUrlRedirects": true,
+    "modifiedDatePresent": true
+  },
+  "responses": [
+    {
+      "path": "/oss-radar-07-ai-citations",
+      "status": 200,
+      "location": null
+    },
+    {
+      "path": "/oss-radar-07-ai-citations.md",
+      "status": 200,
+      "location": null
+    },
+    {
+      "path": "/oss-radar-07-ai-citations/prompts",
+      "status": 200,
+      "location": null
+    },
+    {
+      "path": "/oss-radar-07-promptfoo",
+      "status": 301,
+      "location": "/oss-radar-07-ai-citations"
+    }
+  ]
+}

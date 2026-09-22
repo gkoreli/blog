@@ -29,3 +29,7 @@ The saved answer and source-review artifact still support the three reported err
 - Local artifact checks cover one H1, canonical URL, opening counts, HTML/Markdown headings, all prompt texts, publication/modified-date handling, one glossary, and the unchanged footprint manifest. The narrative and visible title contain 2,985 whitespace-delimited words, giving 15 minutes at 200 words per minute.
 - [Local checks](repro/result-led-revision/local-check.json) and [link availability](repro/result-led-revision/link-check.json) record their respective scopes. Link availability does not validate a claim.
 - Live publication verification is recorded separately after deployment.
+
+## Live release
+
+Release `107d238` was verified at `2026-09-22T16:41:30.853Z`. The complete served article body and Markdown twin match the local build. The latest owner prompt is present, the September 22 modified date is served, and the old Promptfoo URL returns a 301 to the AI-citations URL. All three current article/Markdown/prompts routes returned 200. [Live receipt](repro/result-led-revision/live-check.json).
