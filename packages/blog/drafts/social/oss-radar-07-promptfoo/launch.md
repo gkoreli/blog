@@ -13,7 +13,7 @@ Claude cited my article, kept the number, and changed what it meant.
 
 OSS Radar #07 follows the tools trying to make AI research verifiable: STORM, OpenScholar, citation checks, and the records needed to investigate an answer.
 
-https://gkoreli.com/oss-radar-07-promptfoo
+https://gkoreli.com/oss-radar-07-ai-citations
 
 #BuildInPublic
 ```
@@ -37,7 +37,7 @@ I want agents to cite my blog. I also want readers to find the claim the answer 
 
 My bet is on original results with visible methods, versions, and limits, then checking what survives in the answer.
 
-https://gkoreli.com/oss-radar-07-promptfoo
+https://gkoreli.com/oss-radar-07-ai-citations
 ```
 
 ## Hacker News
@@ -48,7 +48,7 @@ https://gkoreli.com/oss-radar-07-promptfoo
 OSS Radar #07: AI Citations — Do Agents Preserve the Evidence Behind an Answer?
 ```
 
-**URL:** https://gkoreli.com/oss-radar-07-promptfoo
+**URL:** https://gkoreli.com/oss-radar-07-ai-citations
 
 Submit as an ordinary linked article after the rewrite is live. The article contains original code inspection and a retained CLI experiment, alongside attributed research. HN asks for the original source and an ordinary faithful title. Keep the article title for the submission. [HN guidelines, checked September 11, 2026](https://news.ycombinator.com/newsguidelines.html).
 

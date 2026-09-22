@@ -1,6 +1,6 @@
 # AI citations: OSS Radar #07 rewrite brief
 
-Started September 11, 2026, on `main`. The author's full request is preserved in [prompt 19](../../../prompts/oss-radar-07-promptfoo.prompts.md). This changes the article's governing subject from Promptfoo to the open-source work on AI citations, analytics, attribution, and source credibility.
+Started September 11, 2026, on `main`. The author's full request is preserved in [prompt 19](../../../prompts/oss-radar-07-ai-citations.prompts.md). This changes the article's governing subject from Promptfoo to the open-source work on AI citations, analytics, attribution, and source credibility.
 
 ## Living center and form
 

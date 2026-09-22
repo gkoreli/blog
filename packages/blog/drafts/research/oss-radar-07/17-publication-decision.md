@@ -1,6 +1,6 @@
 # Publish the tested Promptfoo findings
 
-September 10, 2026 PDT / September 11 UTC. Publication preparation follows Goga's explicit instruction, preserved as prompt thirteen in the [prompt record](../../../prompts/oss-radar-07-promptfoo.prompts.md).
+September 10, 2026 PDT / September 11 UTC. Publication preparation follows Goga's explicit instruction, preserved as prompt thirteen in the [prompt record](../../../prompts/oss-radar-07-ai-citations.prompts.md).
 
 This records the first release. The subsequent [footprint recovery](19-research-footprint.md) adds a measured subset with explicit exclusions; it does not complete the missing original ChatGPT accounting or the live-answer experiment.
 

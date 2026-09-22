@@ -80,7 +80,7 @@ The existing [Trellner research task](../../../../../docs/tasks/TASK-0132-explor
 
 ## Prompts
 
-[Exact shaping prompts](../../../prompts/oss-radar-07-promptfoo.prompts.md).
+[Exact shaping prompts](../../../prompts/oss-radar-07-ai-citations.prompts.md).
 
 The record contains twenty complete prompts. The first fifteen remain unchanged. Later messages request real subscription experiments, remove internal planning and duplicate glossaries, challenge the OpenRouter wording, and redirect the entire article to AI citations. The twentieth restores the OSS Radar series prefix in the title. Each is preserved verbatim.
 

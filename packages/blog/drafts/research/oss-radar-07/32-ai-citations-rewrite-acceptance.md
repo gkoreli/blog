@@ -44,3 +44,9 @@ The [live release receipt](ai-citations-rewrite-verification.json) records relea
 The first multi-surface probe observed the earlier footprint-scope paragraph on the prompts page while the article body was already current. A fresh check and the full repeated probe returned the new scope and passed. This was a transient mixed-version observation during release checking; its cause was not diagnosed. The receipt records the fully matching result, not that initial partial state. Whole-page byte equality is unnecessary because Cloudflare may inject scripts; the complete article body is compared. The original generation scripts and code findings remain separate from publication verification.
 
 The larger citation-frequency study and a distinct analytics engineering continuation remain open work. They are not prerequisites for publishing these completed findings and are not counted as completed by this article.
+
+## URL correction — September 22, 2026
+
+The owner corrected the earlier decision to retain the Promptfoo URL. The canonical route is now `/oss-radar-07-ai-citations`, matching the rewritten article's subject. Permanent redirects preserve the old article, prompts, Markdown, CSL JSON, BibTeX, social image, and HTML path variants. Current internal links and sharing copy use the new route; historical verification captures retain their original URLs. The prompt file follows the new slug, with the owner's correction appended verbatim. The frozen research footprint is unchanged.
+
+Validation: production build and both blog/Worker TypeScript checks passed. All ten redirect rules returned 301 and their destinations returned 200 through local Wrangler. Generated canonical metadata, posts index, sitemap, RSS, and llms.txt use the new slug.

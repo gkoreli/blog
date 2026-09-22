@@ -82,3 +82,12 @@ I want to rewrite entire article, i feel like the objective that i have in mind 
 ---
 
 it should say oss radar and number in the title, dont you agree? please see other articles and follow similarly
+
+
+---
+
+why is this blog's url still the old one? https://gkoreli.com/oss-radar-07-promptfoo
+
+---
+
+we should have changed it to reflect the new title
