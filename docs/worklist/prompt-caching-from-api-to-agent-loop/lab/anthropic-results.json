@@ -1,0 +1,1264 @@
+{
+  "method": "Synthetic direct Anthropic Messages API; 3 serial replicates of 9 ordered variants; 5m explicit markers; low effort; no automatic retries",
+  "recorded_models": [
+    "claude-sonnet-5-5"
+  ],
+  "run": "20260929T055924Z",
+  "prices_per_million": {
+    "input": 2.0,
+    "write_5m": 2.5,
+    "write_1h": 4.0,
+    "read": 0.2,
+    "output": 10.0
+  },
+  "estimated_total_usd": 0.1777092,
+  "billing_limit": "Computed from returned token counters and dated list rates; not an invoice reconciliation",
+  "summary": [
+    {
+      "case": "baseline",
+      "n": 3,
+      "read_tokens": [
+        0
+      ],
+      "write_tokens": [
+        7870
+      ],
+      "ordinary_input_tokens": [
+        13
+      ],
+      "median_first_text_s": 1.27,
+      "first_text_range_s": [
+        1.155,
+        1.423
+      ],
+      "median_elapsed_s": 1.328,
+      "mean_estimated_cost_usd": 0.019921,
+      "correct": 3
+    },
+    {
+      "case": "warm_repeat",
+      "n": 3,
+      "read_tokens": [
+        7870
+      ],
+      "write_tokens": [
+        0
+      ],
+      "ordinary_input_tokens": [
+        13
+      ],
+      "median_first_text_s": 1.214,
+      "first_text_range_s": [
+        1.143,
+        1.297
+      ],
+      "median_elapsed_s": 1.291,
+      "mean_estimated_cost_usd": 0.00182,
+      "correct": 3
+    },
+    {
+      "case": "early_edit",
+      "n": 3,
+      "read_tokens": [
+        0
+      ],
+      "write_tokens": [
+        7871
+      ],
+      "ordinary_input_tokens": [
+        13
+      ],
+      "median_first_text_s": 1.432,
+      "first_text_range_s": [
+        1.407,
+        1.447
+      ],
+      "median_elapsed_s": 1.433,
+      "mean_estimated_cost_usd": 0.0199335,
+      "correct": 3
+    },
+    {
+      "case": "early_edit_repeat",
+      "n": 3,
+      "read_tokens": [
+        7871
+      ],
+      "write_tokens": [
+        0
+      ],
+      "ordinary_input_tokens": [
+        13
+      ],
+      "median_first_text_s": 1.312,
+      "first_text_range_s": [
+        1.124,
+        1.329
+      ],
+      "median_elapsed_s": 1.347,
+      "mean_estimated_cost_usd": 0.0018302000000000001,
+      "correct": 3
+    },
+    {
+      "case": "old_branch_revisit",
+      "n": 3,
+      "read_tokens": [
+        7870
+      ],
+      "write_tokens": [
+        0
+      ],
+      "ordinary_input_tokens": [
+        13
+      ],
+      "median_first_text_s": 1.209,
+      "first_text_range_s": [
+        1.124,
+        1.332
+      ],
+      "median_elapsed_s": 1.21,
+      "mean_estimated_cost_usd": 0.00182,
+      "correct": 3
+    },
+    {
+      "case": "middle_edit",
+      "n": 3,
+      "read_tokens": [
+        5371
+      ],
+      "write_tokens": [
+        2499
+      ],
+      "ordinary_input_tokens": [
+        13
+      ],
+      "median_first_text_s": 1.442,
+      "first_text_range_s": [
+        1.184,
+        1.492
+      ],
+      "median_elapsed_s": 1.503,
+      "mean_estimated_cost_usd": 0.0075677,
+      "correct": 3
+    },
+    {
+      "case": "middle_edit_repeat",
+      "n": 3,
+      "read_tokens": [
+        7870
+      ],
+      "write_tokens": [
+        0
+      ],
+      "ordinary_input_tokens": [
+        13
+      ],
+      "median_first_text_s": 1.304,
+      "first_text_range_s": [
+        1.128,
+        1.379
+      ],
+      "median_elapsed_s": 1.365,
+      "mean_estimated_cost_usd": 0.00182,
+      "correct": 3
+    },
+    {
+      "case": "appended_system",
+      "n": 3,
+      "read_tokens": [
+        7870
+      ],
+      "write_tokens": [
+        0
+      ],
+      "ordinary_input_tokens": [
+        46
+      ],
+      "median_first_text_s": 1.761,
+      "first_text_range_s": [
+        1.459,
+        2.116
+      ],
+      "median_elapsed_s": 1.859,
+      "mean_estimated_cost_usd": 0.002486,
+      "correct": 3
+    },
+    {
+      "case": "inline_tool_addition",
+      "n": 3,
+      "read_tokens": [
+        7870
+      ],
+      "write_tokens": [
+        0
+      ],
+      "ordinary_input_tokens": [
+        122
+      ],
+      "median_first_text_s": 1.289,
+      "first_text_range_s": [
+        1.218,
+        1.369
+      ],
+      "median_elapsed_s": 1.324,
+      "mean_estimated_cost_usd": 0.002038,
+      "correct": 3
+    }
+  ],
+  "rows": [
+    {
+      "replicate": 0,
+      "case": "baseline",
+      "at_utc": "2026-09-29T05:59:24.110003+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 7870,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 7870,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.2702606250004465,
+      "elapsed_seconds": 1.328167124999709,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.019921,
+      "request_sha256": "6a6a1e7434adaf56749823e074bdcd798a3b9d29ccfcf6aa0908d1b4624ba2f9"
+    },
+    {
+      "replicate": 0,
+      "case": "warm_repeat",
+      "at_utc": "2026-09-29T05:59:25.440175+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.1426992919996337,
+      "elapsed_seconds": 1.143033166999885,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.00182,
+      "request_sha256": "6a6a1e7434adaf56749823e074bdcd798a3b9d29ccfcf6aa0908d1b4624ba2f9"
+    },
+    {
+      "replicate": 0,
+      "case": "early_edit",
+      "at_utc": "2026-09-29T05:59:26.584230+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 7871,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 7871,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 23,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.4322118750005757,
+      "elapsed_seconds": 1.4327162919998955,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.0199335,
+      "request_sha256": "aae4a449afb5ee7f44a17acf2a7342881ec618187e921c03cc71ded89bf91730"
+    },
+    {
+      "replicate": 0,
+      "case": "early_edit_repeat",
+      "at_utc": "2026-09-29T05:59:28.018454+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7871,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 23,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.124490875000447,
+      "elapsed_seconds": 1.5332705840000926,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.0018302000000000001,
+      "request_sha256": "aae4a449afb5ee7f44a17acf2a7342881ec618187e921c03cc71ded89bf91730"
+    },
+    {
+      "replicate": 0,
+      "case": "old_branch_revisit",
+      "at_utc": "2026-09-29T05:59:29.553848+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.1241190829996413,
+      "elapsed_seconds": 1.1655466659995,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.00182,
+      "request_sha256": "6a6a1e7434adaf56749823e074bdcd798a3b9d29ccfcf6aa0908d1b4624ba2f9"
+    },
+    {
+      "replicate": 0,
+      "case": "middle_edit",
+      "at_utc": "2026-09-29T05:59:30.720795+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 2499,
+        "cache_read_input_tokens": 5371,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 2499,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.4924562079995667,
+      "elapsed_seconds": 1.5033999580000454,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "REVISED-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "REVISED-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.0075677,
+      "request_sha256": "ef310b4b5e1412f4c4e5fbd8e6885e83a15e84a865acd2831f7380049d7b705f"
+    },
+    {
+      "replicate": 0,
+      "case": "middle_edit_repeat",
+      "at_utc": "2026-09-29T05:59:32.225765+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.304340499999853,
+      "elapsed_seconds": 1.3653752090003763,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "REVISED-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "REVISED-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.00182,
+      "request_sha256": "ef310b4b5e1412f4c4e5fbd8e6885e83a15e84a865acd2831f7380049d7b705f"
+    },
+    {
+      "replicate": 0,
+      "case": "appended_system",
+      "at_utc": "2026-09-29T05:59:33.592584+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 46,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 93,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 70
+        }
+      },
+      "first_text_seconds": 1.7605242089994135,
+      "elapsed_seconds": 1.8594596249995448,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.002596,
+      "request_sha256": "427e3c232cc84cfcdcbe8a48524bb3ffdf4674a74e9235c46135383ab4fc19ca"
+    },
+    {
+      "replicate": 0,
+      "case": "inline_tool_addition",
+      "at_utc": "2026-09-29T05:59:35.454390+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 122,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.3692210409999461,
+      "elapsed_seconds": 1.4286874999997963,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.002038,
+      "request_sha256": "4088a3bfe712a325a63f62065a35e56a27be7816b5bf631ac4162f1c36d951c8"
+    },
+    {
+      "replicate": 1,
+      "case": "baseline",
+      "at_utc": "2026-09-29T05:59:36.883680+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 7870,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 7870,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.4234263750004175,
+      "elapsed_seconds": 1.478404500000579,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.019921,
+      "request_sha256": "572dc1468ba6b45f792acab2ad90b1feae94384b502779da85904a0088097920"
+    },
+    {
+      "replicate": 1,
+      "case": "warm_repeat",
+      "at_utc": "2026-09-29T05:59:38.364578+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.2974930830005178,
+      "elapsed_seconds": 1.350409208000201,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.00182,
+      "request_sha256": "572dc1468ba6b45f792acab2ad90b1feae94384b502779da85904a0088097920"
+    },
+    {
+      "replicate": 1,
+      "case": "early_edit",
+      "at_utc": "2026-09-29T05:59:39.715998+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 7871,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 7871,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 23,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.4072328749998633,
+      "elapsed_seconds": 1.4253112500000498,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.0199335,
+      "request_sha256": "b89062f8f2dad8a8bc5d8815b2b667be6282d1a5be8f6dc0f3df53a065bf0202"
+    },
+    {
+      "replicate": 1,
+      "case": "early_edit_repeat",
+      "at_utc": "2026-09-29T05:59:41.143094+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7871,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 23,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.3117505410000376,
+      "elapsed_seconds": 1.3385815829997227,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.0018302000000000001,
+      "request_sha256": "b89062f8f2dad8a8bc5d8815b2b667be6282d1a5be8f6dc0f3df53a065bf0202"
+    },
+    {
+      "replicate": 1,
+      "case": "old_branch_revisit",
+      "at_utc": "2026-09-29T05:59:42.483764+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.3317669999996724,
+      "elapsed_seconds": 1.3933508330001132,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.00182,
+      "request_sha256": "572dc1468ba6b45f792acab2ad90b1feae94384b502779da85904a0088097920"
+    },
+    {
+      "replicate": 1,
+      "case": "middle_edit",
+      "at_utc": "2026-09-29T05:59:43.879587+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 2499,
+        "cache_read_input_tokens": 5371,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 2499,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.44228162500076,
+      "elapsed_seconds": 1.8034017090003545,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "REVISED-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "REVISED-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.0075677,
+      "request_sha256": "4fdc50fd53e4b0948729742ac082f1f32778e764763fc45644e2fb04cb0128a9"
+    },
+    {
+      "replicate": 1,
+      "case": "middle_edit_repeat",
+      "at_utc": "2026-09-29T05:59:45.684299+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.3786065829999643,
+      "elapsed_seconds": 1.4123999579996962,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "REVISED-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "REVISED-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.00182,
+      "request_sha256": "4fdc50fd53e4b0948729742ac082f1f32778e764763fc45644e2fb04cb0128a9"
+    },
+    {
+      "replicate": 1,
+      "case": "appended_system",
+      "at_utc": "2026-09-29T05:59:47.097925+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 46,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 130,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 107
+        }
+      },
+      "first_text_seconds": 2.1155453340006716,
+      "elapsed_seconds": 2.153275874999963,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.002966,
+      "request_sha256": "fa1dd1b497b9317e8ce38dc4fb861b7377d0c7b2169dec2db994a1ba53192a91"
+    },
+    {
+      "replicate": 1,
+      "case": "inline_tool_addition",
+      "at_utc": "2026-09-29T05:59:49.255367+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 122,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.288993125000161,
+      "elapsed_seconds": 1.3242625420007244,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.002038,
+      "request_sha256": "9e5a913c73f6939ebf8c492cbb8a0ee2e59729e59ee428a9dab7bd9e2af408ef"
+    },
+    {
+      "replicate": 2,
+      "case": "baseline",
+      "at_utc": "2026-09-29T05:59:50.581281+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 7870,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 7870,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.1553040829994643,
+      "elapsed_seconds": 1.2147471250000308,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.019921,
+      "request_sha256": "ea1d25a444bc20c639bdbe9a27b9fce08e0233639a395613849656a2f6982ad5"
+    },
+    {
+      "replicate": 2,
+      "case": "warm_repeat",
+      "at_utc": "2026-09-29T05:59:51.798543+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.2141426670004876,
+      "elapsed_seconds": 1.2909633750005014,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.00182,
+      "request_sha256": "ea1d25a444bc20c639bdbe9a27b9fce08e0233639a395613849656a2f6982ad5"
+    },
+    {
+      "replicate": 2,
+      "case": "early_edit",
+      "at_utc": "2026-09-29T05:59:53.091038+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 7871,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 7871,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 23,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.4472163330001422,
+      "elapsed_seconds": 1.4477290419999918,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.0199335,
+      "request_sha256": "e098517b0dd90663e3070c4a04ffc6532f4506ae7c471b177cc87efa39bd1ac5"
+    },
+    {
+      "replicate": 2,
+      "case": "early_edit_repeat",
+      "at_utc": "2026-09-29T05:59:54.541095+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7871,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 23,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.3290278750000653,
+      "elapsed_seconds": 1.346612250000362,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.0018302000000000001,
+      "request_sha256": "e098517b0dd90663e3070c4a04ffc6532f4506ae7c471b177cc87efa39bd1ac5"
+    },
+    {
+      "replicate": 2,
+      "case": "old_branch_revisit",
+      "at_utc": "2026-09-29T05:59:55.889042+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.209301584000059,
+      "elapsed_seconds": 1.209620666999399,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.00182,
+      "request_sha256": "ea1d25a444bc20c639bdbe9a27b9fce08e0233639a395613849656a2f6982ad5"
+    },
+    {
+      "replicate": 2,
+      "case": "middle_edit",
+      "at_utc": "2026-09-29T05:59:57.099763+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 2499,
+        "cache_read_input_tokens": 5371,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 2499,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.1840582089998861,
+      "elapsed_seconds": 1.2410459999991872,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "REVISED-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "REVISED-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.0075677,
+      "request_sha256": "c3e1549a658741b37871691f3bce5f0a3fb7af38fd483d09e3778ce87ae5c646"
+    },
+    {
+      "replicate": 2,
+      "case": "middle_edit_repeat",
+      "at_utc": "2026-09-29T05:59:58.341905+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 13,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.1284634579997146,
+      "elapsed_seconds": 1.1867225409996536,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "REVISED-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "REVISED-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.00182,
+      "request_sha256": "c3e1549a658741b37871691f3bce5f0a3fb7af38fd483d09e3778ce87ae5c646"
+    },
+    {
+      "replicate": 2,
+      "case": "appended_system",
+      "at_utc": "2026-09-29T05:59:59.531397+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 46,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 23,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.4589544999998907,
+      "elapsed_seconds": 1.5388802919997033,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "EUR",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.001896,
+      "request_sha256": "d7dc2679a87f456dfa5596c51cd531d65fafec5cd2cf3abe90a4bfbc6d9dbe9b"
+    },
+    {
+      "replicate": 2,
+      "case": "inline_tool_addition",
+      "at_utc": "2026-09-29T06:00:01.072803+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 122,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 7870,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 22,
+        "service_tier": "standard",
+        "inference_geo": "global",
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        }
+      },
+      "first_text_seconds": 1.217554084000767,
+      "elapsed_seconds": 1.2580302920005124,
+      "stop_reason": "end_turn",
+      "expected": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "answer": {
+        "currency": "USD",
+        "code": "VALUE-137"
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.002038,
+      "request_sha256": "c8d9e84f836300b6c2557f36afdb90ff41ae510631625e451d23986f3cdf7d37"
+    }
+  ],
+  "private_raw_receipts": [
+    {
+      "file": "0-appended_system.json",
+      "sha256": "1b2db363d4f41b7d1f7c055730c4ed70ab91d691a284c363919afe9d8eca946f"
+    },
+    {
+      "file": "0-baseline.json",
+      "sha256": "76e0fce2f6c49c85504913a02a6988bbdfb547fc37000883a607306698556d3f"
+    },
+    {
+      "file": "0-early_edit.json",
+      "sha256": "80bc7c2c392c5e987bbea1a972b63407ea18b6acc433079ec752d1d618695d3f"
+    },
+    {
+      "file": "0-early_edit_repeat.json",
+      "sha256": "75a2ce2c35d6854498ea086fcdd145f79b4613362171890f7d8157093d28cf3b"
+    },
+    {
+      "file": "0-inline_tool_addition.json",
+      "sha256": "4d9ea163020947a96cc5cf1e099ec1f1c3f7e6d1f458c52ae4dcf4177f4f6aba"
+    },
+    {
+      "file": "0-middle_edit.json",
+      "sha256": "fdef08a156675a55a5ea6b9e73c8b3f39abb4c1770e673f5687995dce026a682"
+    },
+    {
+      "file": "0-middle_edit_repeat.json",
+      "sha256": "dee37c0362cc7bc5f4dc124bed34af459b964737aecf849c04a9961856a8364e"
+    },
+    {
+      "file": "0-old_branch_revisit.json",
+      "sha256": "a70015eb9430b94af0cbaaf7c6fd042095a3b5c18aee244bbd7432f8c763a33c"
+    },
+    {
+      "file": "0-warm_repeat.json",
+      "sha256": "725c75261e37b95aaff0601524d2224ab16fe8636c34254a86f13d88e85b3c1b"
+    },
+    {
+      "file": "1-appended_system.json",
+      "sha256": "933fdc558163b9070c51df8dd2e0eeb4b9ef67a03c76f0f8faaf02ce16c5a5ab"
+    },
+    {
+      "file": "1-baseline.json",
+      "sha256": "d26b6cea85ecff1e551a001b9bebe84da8d6fc066d950ec4b19d74e4dfb823c7"
+    },
+    {
+      "file": "1-early_edit.json",
+      "sha256": "ba88a0608c7a50cf6eda62a0b3573264418e2c24b6fdef72cc15cad56de63449"
+    },
+    {
+      "file": "1-early_edit_repeat.json",
+      "sha256": "bdc5063b94384a542629060c4328ca982fb046b8cfe1971a869b92fe5a44ecb7"
+    },
+    {
+      "file": "1-inline_tool_addition.json",
+      "sha256": "ab11eea439df57140ad608cd9551f51d1b030035ebcd16becd07bb89ad356ef2"
+    },
+    {
+      "file": "1-middle_edit.json",
+      "sha256": "dad35b6009841a71712c42aed14a73222237a04761a74848acabeb609d0e1cc2"
+    },
+    {
+      "file": "1-middle_edit_repeat.json",
+      "sha256": "f5fff7efd924215c9c53b23a6c3331addfbfa56336bc1c7ba02192b9fe0093be"
+    },
+    {
+      "file": "1-old_branch_revisit.json",
+      "sha256": "35fe355299d272f03438446980f03c713108daaf9d8669fbfbcc9275d56712d8"
+    },
+    {
+      "file": "1-warm_repeat.json",
+      "sha256": "5f7315a53a1f0671d0982f90679b0466023038f4f33a430d8ed8a4f4d939326e"
+    },
+    {
+      "file": "2-appended_system.json",
+      "sha256": "e94d43e4e9287f56f2790c0a82b0456f8df4f7843a96478d7768cc95e22545bb"
+    },
+    {
+      "file": "2-baseline.json",
+      "sha256": "6662fbb13b13b46cd4d0459a9b6adfa787680f7c615e2b5079bce0bb5151e85b"
+    },
+    {
+      "file": "2-early_edit.json",
+      "sha256": "0a703e3eb776dff62efff76e94929909e4ab2ddbc7c8c3ea3837cfa17ca9565f"
+    },
+    {
+      "file": "2-early_edit_repeat.json",
+      "sha256": "ad543595fabac76aaea33953355cd7e32ec6637ab39bbe35df1cdc47933f6d9a"
+    },
+    {
+      "file": "2-inline_tool_addition.json",
+      "sha256": "bb32cdaf08c8110167315eefe90c91f3115a5d8dc54d53dfee6b758a3d1be80e"
+    },
+    {
+      "file": "2-middle_edit.json",
+      "sha256": "19224c7c4c69447acc762e00522f5419e9d8404a40b9fc32de41d92bcc28a58d"
+    },
+    {
+      "file": "2-middle_edit_repeat.json",
+      "sha256": "8e906297c64193456c86328f2752a131fcba85572a4db6010fdb8916867960f6"
+    },
+    {
+      "file": "2-old_branch_revisit.json",
+      "sha256": "5dafddb4acbc47cbab9053f9b1ac0085967fe584f316758e0fe194e8393132ef"
+    },
+    {
+      "file": "2-warm_repeat.json",
+      "sha256": "031623211324aea2179ac297c479183862beb8702e61e51bcac3d7f624586c3e"
+    }
+  ]
+}

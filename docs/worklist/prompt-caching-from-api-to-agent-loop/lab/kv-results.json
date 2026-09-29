@@ -1,0 +1,41 @@
+{
+  "experiment": "synthetic numerical dependency demonstration; no trained model or API",
+  "seed": 73,
+  "layers": 3,
+  "width": 8,
+  "original": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "replacement": [
+    1,
+    9,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "query": [
+    8
+  ],
+  "unchanged_prefix_tokens": 1,
+  "cold_vs_valid_prefix_reuse_max_logit_delta": 0.0,
+  "cold_vs_stale_suffix_splice_max_logit_delta": 0.3399351139175004,
+  "unchanged_token_position": 5,
+  "kv_delta_by_layer_at_unchanged_token": [
+    0.0,
+    0.14263336329948884,
+    0.4358405552301371
+  ],
+  "append_vs_cold_max_logit_delta": 0.0,
+  "old_branch_revisit_vs_cold_max_logit_delta": 0.0,
+  "old_branch_retained": true,
+  "dependency_hash_common_prefix_blocks": 1,
+  "checks": "passed"
+}

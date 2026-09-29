@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 650" role="img" aria-labelledby="pc-svg-title pc-svg-description">
+  <title id="pc-svg-title">An edit changes downstream state; retained branches can still be reused</title>
+  <desc id="pc-svg-description">In a three-layer toy transformer, changing token B at the same position leaves first-layer keys and values for other tokens unchanged, but changes deeper-layer state for B through F. A second diagram shows a common prefix with old and new instruction branches. The old branch remains a valid cache entry for its original history.</desc>
+  <style>
+    .ink { fill:#2d2a24 } .muted { fill:#7a7568 }
+    .paper { fill:#faf8f5 } .line { stroke:#ddd8cf; fill:none }
+    .keep { fill:#1a6b4e } .change { fill:#b04a24 } .white { fill:#fff }
+    .title { font:600 22px Georgia,serif } .body { font:15px ui-monospace,monospace }
+    .small { font:13px ui-monospace,monospace } .token { font:600 18px ui-monospace,monospace }
+  </style>
+  <rect class="paper" width="720" height="650" rx="8"/>
+  <text x="28" y="40" class="title ink">1. Same text can have different state.</text>
+  <text x="28" y="67" class="body muted">Toy model · replace B in place · positions unchanged</text>
+  <text x="28" y="111" class="small muted">INPUT TOKENS</text>
+  <g class="token ink" text-anchor="middle"><text x="215" y="112">A</text><text x="289" y="112">B*</text><text x="363" y="112">C</text><text x="437" y="112">D</text><text x="511" y="112">E</text><text x="585" y="112">F</text></g>
+  <g class="body ink"><text x="28" y="157">Layer 1 K/V</text><text x="28" y="210">Layer 2 K/V</text><text x="28" y="263">Layer 3 K/V</text></g>
+  <g class="keep"><rect x="185" y="132" width="60" height="36" rx="4"/><rect x="333" y="132" width="60" height="36" rx="4"/><rect x="407" y="132" width="60" height="36" rx="4"/><rect x="481" y="132" width="60" height="36" rx="4"/><rect x="555" y="132" width="60" height="36" rx="4"/><rect x="185" y="185" width="60" height="36" rx="4"/><rect x="185" y="238" width="60" height="36" rx="4"/></g>
+  <g class="change"><rect x="259" y="132" width="60" height="36" rx="4"/><rect x="259" y="185" width="60" height="36" rx="4"/><rect x="333" y="185" width="60" height="36" rx="4"/><rect x="407" y="185" width="60" height="36" rx="4"/><rect x="481" y="185" width="60" height="36" rx="4"/><rect x="555" y="185" width="60" height="36" rx="4"/><rect x="259" y="238" width="60" height="36" rx="4"/><rect x="333" y="238" width="60" height="36" rx="4"/><rect x="407" y="238" width="60" height="36" rx="4"/><rect x="481" y="238" width="60" height="36" rx="4"/><rect x="555" y="238" width="60" height="36" rx="4"/></g>
+  <g class="body white" text-anchor="middle"><text x="215" y="156">=</text><text x="289" y="156">≠</text><text x="363" y="156">=</text><text x="437" y="156">=</text><text x="511" y="156">=</text><text x="585" y="156">=</text><text x="215" y="209">=</text><text x="289" y="209">≠</text><text x="363" y="209">≠</text><text x="437" y="209">≠</text><text x="511" y="209">≠</text><text x="585" y="209">≠</text><text x="215" y="262">=</text><text x="289" y="262">≠</text><text x="363" y="262">≠</text><text x="437" y="262">≠</text><text x="511" y="262">≠</text><text x="585" y="262">≠</text></g>
+  <rect x="28" y="301" width="13" height="13" rx="2" class="keep"/><text x="49" y="313" class="small ink">unchanged</text><rect x="190" y="301" width="13" height="13" rx="2" class="change"/><text x="211" y="313" class="small ink">changed in this toy computation</text>
+  <path d="M28 342H692" class="line"/>
+  <text x="28" y="384" class="title ink">2. An edit does not erase the old branch.</text>
+  <text x="28" y="411" class="body muted">Reuse follows a compatible path, not a bag of chunks.</text>
+  <g stroke-width="2" fill="none"><path d="M194 515H224V474H257" stroke="#1a6b4e"/><path d="M224 515V560H257" stroke="#b04a24"/><path d="M417 474H451" stroke="#1a6b4e"/><path d="M417 560H451" stroke="#b04a24"/></g>
+  <rect x="28" y="491" width="166" height="48" rx="6" fill="none" stroke="#4a7a94"/><text x="111" y="520" class="body ink" text-anchor="middle">shared prefix</text>
+  <rect x="257" y="450" width="160" height="48" rx="6" class="keep"/><text x="337" y="479" class="body white" text-anchor="middle">old instruction</text>
+  <rect x="257" y="536" width="160" height="48" rx="6" class="change"/><text x="337" y="565" class="body white" text-anchor="middle">new instruction</text>
+  <rect x="451" y="450" width="239" height="48" rx="6" fill="none" stroke="#1a6b4e"/><text x="570" y="479" class="body ink" text-anchor="middle">old history → reusable</text>
+  <rect x="451" y="536" width="239" height="48" rx="6" fill="none" stroke="#b04a24"/><text x="570" y="565" class="body ink" text-anchor="middle">recomputed history</text>
+  <text x="28" y="622" class="small muted">Returning to the old path can hit while its entries remain available.</text>
+</svg>

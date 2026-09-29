@@ -1,0 +1,83 @@
+{
+  "checked_local_date": "2026-09-28",
+  "timezone": "America/Los_Angeles",
+  "repositories": [
+    {
+      "name": "ai",
+      "url": "https://github.com/vercel/ai.git",
+      "commit": "546a6f8876b0de68452d71a3e49716bcdf7f40c9",
+      "commit_date": "2026-09-28T19:25:18-07:00",
+      "inspected_checkout": "/tmp/prompt-cache-parent-20260928/ai"
+    },
+    {
+      "name": "codex",
+      "url": "https://github.com/openai/codex.git",
+      "commit": "c248f6d48b97eb4a2aa56147a0b11b7d763278b9",
+      "commit_date": "2026-09-29T05:10:13Z",
+      "inspected_checkout": "/tmp/prompt-cache-parent-20260928/codex"
+    },
+    {
+      "name": "openai-node",
+      "url": "https://github.com/openai/openai-node.git",
+      "commit": "b3c71cb023a8fdd15b90a00c9e37a6cf259a3d57",
+      "commit_date": "2026-09-28T09:19:23-07:00",
+      "inspected_checkout": "/tmp/prompt-cache-parent-20260928/openai-node"
+    },
+    {
+      "name": "gemini-cli",
+      "url": "https://github.com/google-gemini/gemini-cli.git",
+      "commit": "fe6350238c1862dade66a9dea9080c6508475bec",
+      "commit_date": "2026-09-28T21:31:41Z",
+      "inspected_checkout": "/tmp/prompt-cache-harnesses-20260928/gemini-cli"
+    },
+    {
+      "name": "omp",
+      "url": "https://github.com/can1357/oh-my-pi.git",
+      "commit": "d1932a6ff85613dde1160b87a73ddcdc3beb01f6",
+      "commit_date": "2026-09-29T06:10:00+02:00",
+      "inspected_checkout": "/tmp/prompt-cache-harnesses-20260928/omp"
+    },
+    {
+      "name": "opencode",
+      "url": "https://github.com/anomalyco/opencode.git",
+      "commit": "7945de208964a49300d7f770d1a71d078db9a4c4",
+      "commit_date": "2026-09-28T18:59:34-04:00",
+      "inspected_checkout": "/tmp/prompt-cache-harnesses-20260928/opencode"
+    },
+    {
+      "name": "pi",
+      "url": "https://github.com/badlogic/pi-mono.git",
+      "commit": "cb7969d212836b8939001dce159fbd2ed6ad395f",
+      "commit_date": "2026-09-28T23:55:24+02:00",
+      "inspected_checkout": "/tmp/prompt-cache-harnesses-20260928/pi"
+    },
+    {
+      "name": "lmcache",
+      "url": "https://github.com/LMCache/LMCache.git",
+      "commit": "1d8716508371ab5c95de0d963160e1e64de467ef",
+      "commit_date": "2026-09-29T05:15:22Z",
+      "inspected_checkout": "/tmp/prompt-cache-inference-20260928/lmcache"
+    },
+    {
+      "name": "prompt-cache",
+      "url": "https://github.com/yale-sys/prompt-cache.git",
+      "commit": "9027040d4b4e3fce911b060590dd4a71783b12b9",
+      "commit_date": "2024-11-09T06:39:50-08:00",
+      "inspected_checkout": "/tmp/prompt-cache-inference-20260928/prompt-cache"
+    },
+    {
+      "name": "sglang",
+      "url": "https://github.com/sgl-project/sglang.git",
+      "commit": "2ff52e3ceb0bcfdc8ba1dd0367b39ce0370bbfaf",
+      "commit_date": "2026-09-29T13:28:25+08:00",
+      "inspected_checkout": "/tmp/prompt-cache-inference-20260928/sglang"
+    },
+    {
+      "name": "vllm",
+      "url": "https://github.com/vllm-project/vllm.git",
+      "commit": "28f673957671d8d4c5672c2085b3f22c79c0b0b5",
+      "commit_date": "2026-09-29T05:40:41Z",
+      "inspected_checkout": "/tmp/prompt-cache-inference-20260928/vllm"
+    }
+  ]
+}

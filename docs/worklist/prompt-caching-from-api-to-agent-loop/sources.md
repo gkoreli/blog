@@ -1,4 +1,20 @@
-# Initial source register
+# Source register
+
+## Completed first-pass research
+
+The sections below preserve the initial discovery queue. Its current results are in these dated records:
+
+| Question | Evidence record |
+|---|---|
+| What does the inference cache depend on? Can chunks be repaired? | [Mechanism, serving source, and original papers](research/01-inference-and-cache-repair.md) |
+| What do provider APIs promise? | [Provider contracts and official links](research/02-provider-contracts.md), [OpenAI contract](research/04-openai-sdk-codex.md) |
+| What do harnesses and adapters actually construct? | [Harness source audit](research/03-harness-audit.md), [SDK/Codex source and wire audit](research/04-openai-sdk-codex.md) |
+| What was measured against a provider? | [Sonnet 5.5 methods and results](research/05-live-anthropic-experiment.md) |
+| Which conclusions are justified? | [Claim ledger and rejected claims](research/06-claim-ledger.md) |
+
+[sources.lock.json](sources.lock.json) records eleven repository SHAs and inspected checkout locations. Code citations use commit permalinks. Live documentation is dated, not immutable; recheck it before publication or a new experiment. Installed SDK package versions and a reproduction lockfile are separate from repository HEAD revisions in [the lab](lab/README.md).
+
+## Historical discovery record
 
 Started 2026-09-28. These are research entry points, not a completed claim audit. Recheck dates and versions when using them. Repository landing pages establish identity; they do not establish cache implementation behavior.
 

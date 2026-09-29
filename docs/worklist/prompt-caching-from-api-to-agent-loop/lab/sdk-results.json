@@ -1,0 +1,73 @@
+{
+  "boundary": "Mocked SDK serialization only; no provider acceptance or cache hit measured",
+  "openai": {
+    "model": "gpt-6-astra",
+    "input": [
+      {
+        "role": "developer",
+        "content": [
+          {
+            "type": "input_text",
+            "text": "Stable policy.",
+            "prompt_cache_breakpoint": {
+              "mode": "explicit"
+            }
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "input_text",
+            "text": "Question."
+          }
+        ]
+      }
+    ],
+    "prompt_cache_options": {
+      "mode": "explicit",
+      "ttl": "30m"
+    }
+  },
+  "anthropic": {
+    "model": "claude-sonnet-5-5",
+    "max_tokens": 128000,
+    "system": [
+      {
+        "type": "text",
+        "text": "Stable policy."
+      }
+    ],
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Question."
+          }
+        ]
+      },
+      {
+        "role": "system",
+        "content": [
+          {
+            "type": "text",
+            "text": "New policy applies from here."
+          },
+          {
+            "type": "tool_removal",
+            "tool": {
+              "type": "tool_reference",
+              "name": "lookup"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "anthropicBeta": "mid-conversation-system-2026-04-07,mid-conversation-tool-changes-2026-07-01",
+  "diagnosticsOption": "Unknown comparisonResponseId stripped by provider options schema",
+  "checks": "passed"
+}

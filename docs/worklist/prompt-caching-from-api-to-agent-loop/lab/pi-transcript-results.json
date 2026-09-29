@@ -1,0 +1,80 @@
+{
+  "upstreamCommit": "cb7969d212836b8939001dce159fbd2ed6ad395f",
+  "runtime": "v24.14.1",
+  "passed": true,
+  "conditions": "Actual pinned upstream pure functions; synthetic input; no dependencies installed or inference called.",
+  "baseline": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a coding assistant.",
+        "sections": {
+          "output": "Explain the result in English."
+        },
+        "timestamp": 0
+      },
+      {
+        "role": "user",
+        "content": "Explain this function.",
+        "timestamp": 1
+      }
+    ]
+  },
+  "supported": {
+    "transcript": {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a coding assistant.",
+          "sections": {
+            "output": "Explain the result in English."
+          },
+          "timestamp": 0
+        },
+        {
+          "role": "user",
+          "content": "Explain this function.",
+          "timestamp": 1
+        },
+        {
+          "role": "system",
+          "content": "",
+          "sections": {
+            "output": "Explain the result in Spanish."
+          },
+          "timestamp": 2
+        }
+      ]
+    },
+    "renderedHead": "You are a coding assistant.\n\nExplain the result in English.",
+    "renderedUpdate": "Updated system prompt section \"output\":\n\nExplain the result in Spanish."
+  },
+  "unsupported": {
+    "transcript": {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a coding assistant.",
+          "sections": {
+            "output": "Explain the result in Spanish."
+          },
+          "timestamp": 0
+        },
+        {
+          "role": "user",
+          "content": "Explain this function.",
+          "timestamp": 1
+        }
+      ]
+    },
+    "renderedHead": "You are a coding assistant.\n\nExplain the result in Spanish."
+  },
+  "checks": {
+    "supportedKeepsOriginalPrefix": true,
+    "unsupportedRewritesHead": true,
+    "unspecifiedCapabilityAlsoCollapses": true,
+    "sourceTranscriptUnmodified": true,
+    "replayedCurrentSystemPromptMatches": true
+  },
+  "limits": "Equal replayed current system text is not proof of equivalent model behavior. This tests transcript dispatch, not final provider serialization, cache hits, billed tokens, latency, or correctness."
+}

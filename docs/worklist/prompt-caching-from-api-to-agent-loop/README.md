@@ -1,6 +1,27 @@
 # Prompt caching from inference API to agent loop
 
-Started: 2026-09-28. Status: worklist established; detailed research, code audits, experiments, and article drafting remain open.
+Started: 2026-09-28. Status: first research pass, local reproductions, 27-request live experiment, and illustrated TypeScript draft complete. Article remains unpublished. The original plan and initial checkpoint below are historical; [the latest checkpoint](checkpoint-2026-09-28.md) records accepted work, limits, and remaining actions.
+
+## Start reading here
+
+1. [Article draft](article-draft.md): the explanation, findings, and implications for a harness. [TypeScript layout](../../../packages/blog/drafts/prompt-cache-context-edits.ts) adds a causal-dependency infographic, four-layer map, and expandable measured comparisons, all readable without JavaScript.
+2. [Inference and cache repair](research/01-inference-and-cache-repair.md): causal dependencies, vLLM/SGLang internals, retained branches, modular caching, approximation, and architecture-specific exceptions.
+3. [Provider contracts](research/02-provider-contracts.md) plus [OpenAI, SDK, and Codex](research/04-openai-sdk-codex.md): exact API surfaces, counters, controls, translation, and current limitations.
+4. [Harness audit](research/03-harness-audit.md): Pi, Oh My Pi, OpenCode, and Gemini CLI. Codex is covered separately above; Claude Code has a documented-product evidence boundary in the provider report.
+5. [Live experiment](research/05-live-anthropic-experiment.md): all nine cases, conditions, pricing, timing, and correctness limits. [Runnable labs](lab/README.md) include numerical state dependencies, actual Pi transformation, actual mocked SDK serialization, and the paid probe.
+6. [Claim ledger](research/06-claim-ledger.md): which claims are documented, source-inspected, locally reproduced, provider-observed, inferred, or still proposed.
+
+The direct Sonnet 5.5 run cost an estimated **$0.1777092**. It observed 7,870-token reuse after an appended system update, zero reads after an early replacement, and 5,371-token reuse after a middle edit. It did not establish general instruction equivalence or a speedup. No additional paid run is needed to reproduce the retained analysis.
+
+The [source register](sources.md) points into the reports; [the lock file](sources.lock.json) pins eleven cloned repositories and their inspected local paths. Exact shaping prompts are preserved in [the initial request](initial.prompt.md), [research direction](research-direction.prompt.md), and [follow-up messages](follow-up.prompts.md).
+
+To render the isolated draft preview from the repository root:
+
+```sh
+pnpm -C packages/blog exec node --import tsx drafts/prompt-cache-preview.ts
+```
+
+Open `/tmp/prompt-cache-article-preview/index.html`. The preview writes only its own temporary directory. Full desktop/mobile browser review remains open; see the checkpoint for the environment restriction.
 
 ## Purpose and article center
 
@@ -15,7 +36,9 @@ Working form: a learning journal that can become an evidence-led engineering exp
 
 Keep [the original prompt](initial.prompt.md) verbatim. Use [the source register](sources.md) to start research and record provenance. This directory owns the worklist; link future research and draft artifacts here as they are created.
 
-## Worklist
+## Original investigation plan
+
+The checkboxes preserve the initial plan, rather than suggesting every broad research question is closed. Use the latest checkpoint and claim ledger for the completed first-pass scope. Additional provider tests, retention/concurrency work, and end-to-end agent quality evaluation are proposed follow-ups, not missing results silently assumed by the draft.
 
 ### 1. Build the inference model
 
@@ -103,7 +126,9 @@ The research is ready for synthesis when the mechanism is explainable, the provi
 
 The article is a separate deliverable: it must teach from the evidence, preserve Goga's real learning, link its artifacts, and distinguish explanation from measurement. Creating this worklist does not complete that deliverable.
 
-## Checkpoint — 2026-09-28
+## Initial checkpoint — 2026-09-28 (superseded)
+
+Superseded by [the research-and-draft checkpoint](checkpoint-2026-09-28.md); retained as the starting state.
 
 - Completed: scope and sequence, provider and harness coverage, experiment design, initial source entry points, and exact initial prompt preservation.
 - Evidence so far: documentation/repository discovery only. No pinned harness audit, benchmark, live inference request, cost saving, or article draft.
