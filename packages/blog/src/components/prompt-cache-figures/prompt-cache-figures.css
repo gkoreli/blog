@@ -19,6 +19,7 @@
 .pc-article .pc-caption > span:last-child { font-size: 0.8rem; line-height: 1.7; }
 .pc-article .pc-kicker { display: block; font: 0.65rem/1.6 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-muted); }
 .pc-article .pc-figure-note { margin: 0; padding: 1rem var(--pc-space); border-top: 1px solid var(--color-border); background: var(--color-surface); font-size: 0.75rem; line-height: 1.7; }
+.pc-article .pc-figure h3 { color: var(--color-text); font-style: normal; font-weight: 600; }
 .pc-flow-stage { padding: var(--pc-space); border-top: 1px solid var(--color-border); }
 .pc-flow-heading { display: flex; align-items: baseline; gap: 0.75rem; }
 .pc-step, .pc-layer-number { color: var(--color-text-muted); font: 0.7rem/1.6 var(--font-mono); }
