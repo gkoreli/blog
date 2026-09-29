@@ -2,12 +2,6 @@
 
 Read before publishing a continuation or changing a series or contextual article link.
 
-## Series Trails and Editorial Cross-References
-
-Some posts are not standalone artifacts — they are part of a thread of thinking. When a post extends, revisits, or bounds an earlier post, connect them explicitly. Cross-references preserve the publication's memory: readers follow the evolution of an idea, agents understand which posts belong together, future posts become part of a visible body of work instead of isolated pages.
-
-The goal is continuity, not "related posts" spam.
-
 ### Mechanisms
 
 | Mechanism | Use when | Output |
@@ -15,7 +9,7 @@ The goal is continuity, not "related posts" spam.
 | `series` metadata | Posts form a deliberate reading sequence | Auto-renders trail in HTML article + `.md` endpoint |
 | Hard prose link | One post directly continues, corrects, or bounds another | One sentence in the body where it naturally belongs |
 
-These are complementary, not alternatives. A series trail at the bottom + one contextual link in the prose is the full pattern.
+Use both a series trail and a contextual prose link when posts have a direct relationship.
 
 ### `series` metadata
 

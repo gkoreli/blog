@@ -7,7 +7,7 @@ description: Research, write, edit, and review OSS Radar issues for gkoreli.com 
 
 Find what a project built, reconstruct why, test its bet, and give a verdict backed by code.
 
-Before drafting or reviewing the opening, read [opening discipline](../shape-article/references/opening-discipline.md). Before attributing a quotation to Goga, read [owner quotations](../blog-writing/references/owner-quotations.md). These shared owner rules retain their authority after relocation from `AGENTS.md`.
+Before drafting or reviewing the opening, read [opening discipline](../shape-article/references/opening-discipline.md). Before attributing a quotation to Goga, read [owner quotations](../blog-writing/references/owner-quotations.md).
 
 ## Pick one article focus
 
@@ -169,7 +169,7 @@ Review every prose output against these rules before publication.
 
 Also:
 
-- No mannered prose: when a literal phrase is available, use it. "A parameter worth varying," not "a dial worth turning"; "this point still matters," not "this point earns its keep." The full rule, in the owner's words, is in `polish-prose` ("No Mannered Prose").
+- No mannered prose: when a literal phrase is available, use it. "A parameter worth varying," not "a dial worth turning"; "this point still matters," not "this point earns its keep." Apply [polish-prose](../polish-prose/SKILL.md).
 - Keep a joke only when it adds value. Never add one to meet a quota.
 - Never explain why a joke, title, or line works.
 - Delete prose such as “the line works,” “the real bet,” “this section shows,” and “before the analysis.”

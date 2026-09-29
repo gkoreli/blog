@@ -1,345 +1,119 @@
 ---
 name: blog-writing
-description: Blog post writing guidelines for gkoreli.com. Use when writing, editing, or reviewing blog posts. Covers voice, structure, content format, sourcing, exact prompts, research footprint accounting, reader feedback, and technical writing standards for an engineering audience.
+description: Write, edit, and review gkoreli.com engineering posts. Covers evidence, structure, formatting, exact prompts, research footprint accounting, and reader feedback. Use the personal-essays or oss-radar skill when those forms govern.
 license: MIT
 metadata:
   author: gkoreli
-  version: "2.4.1"
+  version: "2.5.0"
 ---
 
-# Blog Writing — Agent Skill
+# Blog Writing
 
-Guidelines for writing blog posts on gkoreli.com — a builder's journal about agentic engineering, open source tools, and the craft of software.
-
-## When to Apply
-
-Reference these guidelines when:
-- Writing a new blog post in `packages/blog/posts/`
-- Editing or reviewing existing posts
-- Drafting post outlines or structures
-- Cross-posting to dev.to or other platforms
+Use [shape-article](../shape-article/SKILL.md) before drafting. For substantive practical articles, apply [earned-trust-writing](../earned-trust-writing/SKILL.md): teach something useful through explanation connected to Goga's actual work and judgment.
 
 ## Task-specific references
 
-- Before drafting or reviewing an opening, read [opening discipline](../shape-article/references/opening-discipline.md).
-- For exact author quotations in any artifact, read [owner quotations](references/owner-quotations.md).
-- For footprint extraction, freezing, or provenance review, read [research footprint accounting](references/research-footprint.md).
-- For reader feedback, post-publication measurement, or shared editorial lessons, read [editorial learning](references/editorial-learning-loop.md).
-- For metadata or publication links, read the [metadata contract](../article-discovery-positioning/references/metadata-and-discovery.md) and, when connecting articles, [series contract](../article-discovery-positioning/references/series-and-cross-references.md).
-- For a post's file format or rendering, read [content and build](../blog-maintenance/references/content-and-build.md).
+| Work | Reference |
+|---|---|
+| Openings and section structure | [Opening discipline](../shape-article/references/opening-discipline.md) |
+| Quotes attributed to Goga | [Owner quotations](references/owner-quotations.md) |
+| Research usage measurement or release freeze | [Footprint accounting](references/research-footprint.md) |
+| Reader feedback and post-publication measurement | [Editorial learning](references/editorial-learning-loop.md) |
+| Titles, dates, and search presentation | [Metadata contract](../article-discovery-positioning/references/metadata-and-discovery.md) |
+| Connecting articles | [Series contract](../article-discovery-positioning/references/series-and-cross-references.md) |
+| File formats, custom components, rendering, validation | [Content and build](../blog-maintenance/references/content-and-build.md) |
+| Firsthand evidence, credibility, or AI source use | [Evidence and credibility](references/firsthand-evidence-and-credibility.md) |
+| Testing a disputed claim about the author's system | [Engineering investigations](references/evidence-led-engineering-investigations.md) |
 
-These references are conditional; do not load them all for every prose edit.
+Read the references relevant to the current task.
 
-## Voice & Identity
+## Voice and substance
 
-- **Author**: Goga Koreli — builder, not thought leader
-- **Tone**: Direct, technical, conversational. Write like explaining to a sharp colleague, not lecturing a classroom.
-- **Perspective**: Use first person for the author's own work, decisions, and observations. Ownership clarifies who had access to the evidence; it does not prove the claim. Do not invent firsthand experience or force every title into first person.
-- **Honesty**: Show failures and wrong turns, not just wins. "This didn't work because..." is more valuable than "Here's how to do it right."
-- **No fluff**: Skip intros like "In today's fast-paced world..." — lead with the thing.
-- **Transparency**: AI-assisted collaborative posts include the raw prompts that generated them. The author provides the substance — experience, perspective, lessons. The agent helps write. Exposed essays and OSS Radar issues do not ship prompts under their governing skills.
+Write directly and conversationally for an engineering reader. Use first person for Goga's supplied work, decisions, and observations; do not invent them or use ownership as proof of accuracy.
 
-## What Makes a Great Article
+Explain the problem, relevant mechanism, actual decisions, tradeoffs, and evidence. Include useful practices, failure modes, corrections, and lessons where the material supports them. Successful work and unresolved work are both valid subjects. A tutorial can stand alone while remaining grounded in the author's experience.
 
-A great engineering blog post does several of these:
+Past lessons, present uncertainty, and future intentions may coexist. Do not impose a personal confession, fixed technical/personal ratio by word count, or an unresolved ending on every article.
 
-- **States a problem clearly** — the reader should feel the pain before seeing the solution
-- **Introduces novel ideas or perspectives** — not rehashing what everyone already knows
-- **Debunks myths** — challenges popular but wrong assumptions with evidence
-- **Showcases best practices AND anti-patterns** — what to do and what to avoid, from experience
-- **Highlights gotchas** — the things nobody warns you about until you hit them
-- **Shares personal growth** — what changed in your thinking and why
-- **Is transparent** — about process, tools, trade-offs, and limitations
+When presenting a repair as a lesson, explain what existed, what failed, the current implementation or decision, why that repair was chosen, its remaining tradeoff, and the bounded lesson. State what the repair is intended to make possible. When no repair has been established, present the diagnosis and open question accurately rather than promising a completed solution.
 
-The goal: a reader finishes the post knowing something they didn't before, or seeing something familiar from a new angle.
+## Structure and formatting
 
-## Formatting Balance
+- Use the opening and section rules for the chosen form. Put the significance before background in explanatory engineering work.
+- Use prose for connected reasoning and narrative, bullets for parallel items, and numbered lists for ordered steps. Paragraph and sentence counts are not fixed limits.
+- Use a table for comparisons and a diagram for relationships when they clarify the explanation. Do not add a visual merely to vary the page.
+- Reserve quotation marks and attributed blockquotes for actual quotations. Strong author opinions can use ordinary prose or emphasis; styling does not authorize invented quotations.
+- Keep necessary qualifications in emphatic statements. Do not strengthen a claim by removing its conditions.
+- Specify code-block languages. Include enough code to explain or reproduce the behavior, with brief comments where needed. Separate before/after examples with an explanation.
+- Add interactivity only when it improves understanding. Register custom elements in the loaded client bundle.
+- Vary punctuation naturally. Avoid repeated em-dash constructions that obscure clause relationships.
 
-### Prose vs Structure
+For an explanatory article, read the title, opening, headings, main visual, and section endings together. They should convey the problem, response or question, principal evidence, and limits. Exposed essays retain their author's chosen structure.
 
-Not everything should be a paragraph. Not everything should be a bullet list. The rule:
+## Post format
 
-- **Prose** — for narrative, arguments that build, origin stories, personal reflections. When the reader needs to follow a thread of reasoning.
-- **Bullet points** — for enumerating distinct items, features, comparisons, lists of things. When each point is independent and the reader benefits from scanning.
-- **Numbered lists** — for sequences, ranked items, or when order matters.
-- **Blockquotes** — for strong opinion statements that deserve visual emphasis. The "quotable" lines. Always wrap the text in literal `"` quote characters inside the blockquote: `> "The actual quote here."`
-- **Bold lead-ins** — `**Label:**` followed by the point. Lets readers scan sections quickly.
-
-### Anti-pattern: Wall of Prose
-
-If a section has 3+ paragraphs of continuous prose making distinct points, it probably needs restructuring. Break it up with:
-- A bullet list for the enumerable parts
-- A blockquote for the strongest claim
-- Shorter paragraphs (2-3 sentences max per paragraph)
-
-### Anti-pattern: Everything is Bullets
-
-If the whole post reads like a slide deck, it loses voice and narrative. The personal sections — origin stories, reflections, arguments — need prose to land.
-
-### Skimming and Human Draft Feedback
-
-Read the title, opening, headings, principal table or diagram, and section endings without the intervening prose. They should convey the main problem, response or live question, strongest evidence, and the limits needed to interpret it. Repair missing connections rather than adding more headings. Choose a table for a comparison and a diagram for a relationship or decision path; use a visual when it explains something the reader otherwise has to reconstruct.
-
-When a willing human reader is available, use the actual draft to learn what they understood its main claim to be, where they lost the thread, and what evidence they still need. Record their feedback and the decision it led to. Agent review checks the draft; it does not establish human reception. Human feedback is a useful opportunity, not a standing publication gate.
-
-Disclosure of AI assistance preserves provenance. It does not excuse repetitive, mannered, or generic prose; apply `polish-prose` to the writing itself. The [reader-feedback worklist](../../../packages/blog/drafts/research/referrer-spam/07-reader-feedback-and-article-focus.md) records the owner correction and practitioner advice behind this focused update, without claiming a measured effect on readership.
-
-### Hyperlinks
-
-Use inline contextual links. Don't make readers go find things.
-
-- Link to repos, READMEs, npm packages, the blog itself
-- Link to specific pages when referencing tools or concepts
-- External links open in new tabs (handled by the markdown renderer)
-- Internal links (other posts, homepage) stay in same tab
-
-## Post Format
+Files live in `packages/blog/posts/`. Use `NNN-slug-title.md` for Markdown posts; the number is removed from the URL slug. Custom-layout TypeScript posts follow the build reference.
 
 ```markdown
 ---
-title: "Exact title — specific, not clickbait"
+title: "Exact title naming the subject"
 date: 2026-03-05
-description: "One sentence that makes someone want to read it"
+description: "A concrete statement of what this article explains"
 section: engineering
-tags: [nisli, web-components, framework]
+tags: [nisli, web-components]
 ---
 
-Content starts immediately. No preamble.
+Start with the article's opening paragraph.
 ```
 
-### Frontmatter Rules
+`section` must be `essays`, `engineering`, or `oss-radar`. Use a truthful publication date and lowercase, kebab-case tags; two to five relevant tags are usually enough. The shell renders the H1 from `title`; do not repeat it in the body. Apply the metadata contract for optional fields and modification dates.
 
-- `title` — specific and descriptive. "A Reactive Web Component Framework in 660 Lines" not "My New Framework"
-- `date` — ISO format, publish date
-- `description` — one sentence, used for SEO meta and social cards
-- `section` — required: `essays`, `engineering`, or `oss-radar`
-- The shell renders the H1 from `title`; do not duplicate it in the Markdown body.
-- `tags` — lowercase, kebab-case, 2-5 tags
+## Prompt provenance
 
-### File Naming
+AI-assisted collaborative posts include the complete human prompts that materially shaped the article, research, claims, metadata, provenance, or publication decision. Exposed essays and OSS Radar omit prompt files under their governing authorship rules.
 
-`NNN-slug-title.md` — numbered prefix for ordering, slug for URL.
-- `001-the-agentic-product-engineer.md`
-- `002-why-i-built-nisli-core.md`
-- `003-backlog-mcp-how-agents-manage-tasks.md`
+Save prompts at `packages/blog/prompts/{slug}.prompts.md`, matching the article slug. Separate complete messages with a line containing `---`; add no frontmatter and do not alter message formatting. Preserve chronological order. Exclude later repository housekeeping that changes none of the published artifacts.
 
-### Prompt Files
+`parsePrompts()` creates the `/{slug}/prompts` page and the article header/teaser links. The label is “Thoughts by human, co-written by AI.” A post without prompts has no prompt page or teaser. Use the footprint reference when publishing measured research usage; private session logs stay outside Git.
 
-Every AI-assisted collaborative post ships with its raw prompts — the human thinking that shaped the AI output. This is the blog's core transparency feature. Exposed essays have no prompt file because the author writes every word; OSS Radar issues are research-driven and also omit prompts.
+## Evidence and sources
 
-**Location**: `prompts/{slug}.prompts.md` (matches the post slug, not the numbered filename)
-- Post: `posts/001-the-agentic-product-engineer.md` (slug: `the-agentic-product-engineer`)
-- Prompts: `prompts/the-agentic-product-engineer.prompts.md`
+Match the source to the claim:
 
-**Format**: Raw `---`-delimited blocks. No frontmatter, no formatting. Stream-of-consciousness as written.
+| Claim | Appropriate basis |
+|---|---|
+| What happened in the author's system | Dated observations and reproducible artifacts, with versions, conditions, units, and exclusions |
+| How a system works | Applicable standard, pinned implementation, or maintainer documentation; distinguish specified, implemented, and observed behavior |
+| What someone said or originated | Original publication, message, or repository; attribution does not validate the statement itself |
+| How people or models behave | Relevant primary studies with methods, tested populations/models, and material counterevidence |
+| Whether a result generalizes | Independent evidence testing the same claim |
 
-```markdown
-raw brain dump, corrections, direction for the first iteration...
----
-second prompt with more specific feedback...
----
-third prompt pushing back on something...
-```
+Use freely accessible primary sources. If the relevant evidence is inaccessible or insufficient, state the gap rather than substituting a weak citation. Use Wikipedia to find originals; cite it only when the original cannot be found. Avoid aggregators, content farms, and claims based on reputation alone.
 
-**How it renders** (ADR-0003):
-- **Article header**: `March 5, 2026 · 🔍 Prompted by human, generated by AI — 10 prompts` (fingerprint icon, italic slogan, link to prompts page)
-- **Article footer**: Teaser card with slogan, preview of first prompt, "See behind the scenes →" link
-- **Prompts page**: `/{slug}/prompts` — standalone page with all prompts in numbered monospace blocks, own meta tags, independently shareable URL
+Check whether a source still applies to the version and conditions discussed; age alone does not invalidate it. Use as many relevant sources as the claims require, with no arbitrary cap. The author's blog, repository, and notes share authorship and are not independent corroboration.
 
-**Architecture**: Prompts are a first-class route, not a widget. `parsePrompts()` is separate from `parsePost()`. The prompts page template evolves independently from the article template. Posts without a prompts file get no teaser and no prompts route — zero empty states.
+Place contextual links beside the claims they support. Use root-relative internal links; external Markdown links receive the renderer's new-tab attributes. Raw HTML and TypeScript templates need their own attributes.
 
-**Slogan**: "Prompted by human, generated by AI" — appears in the article header, teaser card, and as the prompts page title.
+When an article relies on external terminology or evidence, include a concise reference glossary after a horizontal rule:
 
-## Content Principles
-
-### Build in Public
-
-Engineering posts and build logs should feel like chapters in an ongoing journey, not standalone tutorials.
-
-Build in public is a growth practice. It invites a third-person eye into the projects and the person making them so the author can understand his own work and readers can grow alongside it. The material is broader than failure: architecture, methods, tenets, bets, plans, vision, ambition, and attempts to change the world all belong.
-
-Use time according to the article's context:
-
-- **Past:** analyze experience, share lessons, and show growth.
-- **Present:** expose active judgment, ambiguity, bets, conditioning, pain, or uncertainty.
-- **Future:** state intent, vision, and what the project is trying to make possible.
-
-One article may braid all three. Do not impose a tense, wound, lesson, or open loop as a house formula.
-
-- **Show real decisions**: "I chose X over Y because Z" with actual trade-offs
-- **Show real numbers**: bundle sizes, line counts, npm downloads, build times
-- **Show real failures**: "This approach failed because..." with what you learned
-- **Open loops**: when the governing form calls for one, end with what remains live or comes next
-
-### Complete the Engineering Lesson
-
-A failure report is not yet a lesson. For every load-bearing mistake, the reader must be able to reconstruct:
-
-1. **Before:** what was built, believed, or measured.
-2. **Break:** what evidence exposed the mismatch and why the old mechanism could not answer the question.
-3. **Now:** the current implementation or decision, shown with the same level of concrete detail as the failure.
-4. **Why:** alternatives considered, decision rationale, and the tradeoff deliberately accepted.
-5. **Tenet:** the bounded rule another engineer can carry without turning it into dogma.
-6. **Vision:** what the repair is trying to make possible and which tension remains open.
-
-Do not force these into six headings. Do make the comparison reconstructable through prose, code, diagrams, or tables. Present tense is not reserved for pain; it also names the system that exists now, the judgment behind it, and the bet it embodies. Critique without the repair teaches diagnosis but withholds growth.
-
-### Specificity Over Polish
-
-Weak: "I've been working on my framework, things are going well."
-
-Strong: "Week 3: Rewrote the component lifecycle. Old approach created 47 orphaned event listeners in a 10-component page. New approach: zero. Here's the diff."
-
-### Choose the Form First
-
-Run `shape-article` before imposing structure. An exposed essay, essay of inquiry, field note, engineering argument, and research synthesis move differently and earn different endings. Never force a lesson, verdict, or open loop because a generic article template expects one.
-
-### Evidence-led Engineering Investigations
-
-When an article starts from a system the author built or used and tests a disputed claim through implementation evidence, reproductions, primary documentation, and outside research, read [references/evidence-led-engineering-investigations.md](references/evidence-led-engineering-investigations.md) before research fan-out or drafting.
-
-This is a conditional research mode, not the default structure for every sourced post. Use `oss-radar` instead when the article's subject and verdict are an open-source project or cohort.
-
-### Structure for Engineering Arguments and Build Logs
-
-1. **Lead with the thing** — what you built, what you found, what broke. No preamble.
-2. **Context** — why this matters, what problem it solves. Keep it short.
-3. **The meat** — code, decisions, trade-offs, results. This is 70% of the post.
-4. **What I learned** — honest reflection, not a summary.
-5. **What's next** — open the loop for the next post.
-
-Use this sequence only when it fits the material. Field notes may end at a blocker. Inquiry essays may deepen a question. Exposed essays end without a bow under `personal-essays`.
-
-### Code Blocks
-
-- Always specify language for syntax highlighting: ` ```typescript ` not ` ``` `
-- Keep code blocks focused — show the relevant 10 lines, not the whole file
-- Add brief comments in code only when the code isn't self-explanatory
-- For before/after comparisons, use two separate blocks with a sentence between
-
-### Interactive Elements
-
-When a concept benefits from interactivity, embed a web component:
-
-```markdown
-Here's the reactive counter in action:
-
-<nisli-counter initial="0"></nisli-counter>
-```
-
-Use sparingly — only when interactivity genuinely helps understanding. Most posts are fine with just text and code blocks.
-
-## Sourcing Rules
-
-When firsthand experience supports a claim, or the task concerns credibility for readers or AI systems, read [Firsthand Evidence and Credibility](references/firsthand-evidence-and-credibility.md). It separates inspectable evidence from persuasive cues and records the limits of the research.
-
-### When to Use External Sources
-
-This is a builder's blog, not a news outlet. External sources serve as **evidence for claims**, not as content filler. Use them when:
-
-- Backing a specific claim that readers might question
-- Attributing a concept or term to its originator
-- Pointing readers to deeper exploration on a topic
-
-Use as many sources as the claims require. Remove irrelevant or redundant links; do not impose a numerical cap on a research-heavy article.
-
-### Source Selection (match the evidence to the claim)
-
-- **What happened in our system:** dated observations and reproducible artifacts, with versions, conditions, units, and exclusions where relevant. Our capture establishes its recorded events, not universal behavior.
-- **How something works:** the applicable standard, pinned source code, or maintainer documentation. Distinguish specified behavior, implemented behavior, and observed behavior.
-- **What someone said or originated:** the original publication, post, or repository. Attribution does not independently validate the speaker's claim.
-- **How people or models behave:** relevant primary studies, their methods and tested populations/models, and material replications or counterevidence. Do not infer a causal effect from a famous builder's preference or a company's reputation.
-- **Whether a conclusion generalizes:** independent evidence that tests the same claim. Vendor documentation describes the vendor's account; our own blog, repository, and research notes share authorship and are not independent corroboration.
-
-Prefer freely accessible primary sources. Evaluate expertise for the particular claim, methods, incentives, and relevance; do not rank sources by fame or institution alone. State when the best available evidence leaves the question open.
-
-### Source Anti-Patterns
-
-- **Never use subscription-gated articles** — if the reader can't access it freely, don't link it
-- **Avoid Wikipedia as a source** — find the original. Wikipedia is a starting point for research, not a citation. Exception: only if the original source is genuinely unfindable.
-- **Avoid generic SEO content farms** — sites that exist to rank for keywords, not to inform
-- **Avoid outdated sources without context** — agentic engineering moves fast. A 2-year-old article about AI agents is likely outdated. If you must use it, note the date and acknowledge what may have changed.
-- **Avoid news aggregators** — link to the original, not the outlet that summarized it
-
-### Glossary Section
-
-Posts that make claims backed by external evidence should end with a `## Glossary` section. This is NOT part of the article narrative — it's a reference appendix.
-
-Format:
 ```markdown
 ---
 
 ## Glossary
 
-| Term / Claim | Source | Date |
+| Term / Claim | Primary source | Date |
 |---|---|---|
-| Context engineering | [Andrej Karpathy](https://link) — "the delicate art and science of filling the context window..." | Jun 2025 |
-| Vibe coding | [Andrej Karpathy on X](https://link) — coined the term | Feb 2025 |
 ```
 
-Rules:
-- **Always include dates** — the industry evolves fast, readers need to know how fresh the source is
-- **Use a table format** — visually distinct from the article body, scannable
-- **Link to the original source** — not a summary or aggregator
-- **Keep descriptions brief** — one line per entry
-- **Separate from article with a horizontal rule** (`---`) — the glossary is a reference section, not a continuation of the narrative
+Fill it with checked sources, relevant publication dates, and brief descriptions. Keep the evidence needed to understand the argument in the body as well. Do not add an empty glossary or use an appendix to conceal missing support.
 
-## Content Topics
+## Publication checks
 
-### Core Topics (what the blog is about)
+- Verify every consequential technical claim, number, date, attribution, quotation, and link against its source. Keep observed findings, interpretation, and proposed experiments distinct.
+- Check that the title, description, opening, and body promise the same content.
+- Confirm formatting and visuals help comprehension, metadata validates, and internal relationships are linked where useful.
+- Match the ending to the actual experience or result. Do not add a lesson, future plan, or request for replies solely to fill a template.
+- Confirm the appropriate prompt record exists and excludes unrelated private material.
+- Apply [polish-prose](../polish-prose/SKILL.md) and the engineering publication review where applicable. Human draft feedback is useful when available, but not a mandatory release gate.
 
-- `@nisli/core` — framework internals, design decisions, zero-dep philosophy
-- `backlog-mcp` — MCP server design, how agents use it, task management for LLMs
-- Agentic engineering — multi-agent delegation, context engineering, design-first workflows
-- Monorepo architecture, TypeScript tooling, open source maintenance
-
-### Post Types
-
-- **Deep dive** — technical exploration of one system/decision (e.g. "How nisli/core's template engine works")
-- **Build log** — what happened this week/month, real progress and setbacks
-- **Decision record** — why we chose X over Y, with full trade-off analysis
-- **Lessons learned** — retrospective on a completed project or milestone
-
-## Anti-Patterns
-
-- Don't write generic tutorials that could be about anyone's code — write from YOUR experience
-- Don't use "we" when you mean "I" — this is a personal blog
-- Don't pad posts with background the reader already knows — link to it instead
-- Don't bury the lede — if the interesting thing is in paragraph 5, move it to paragraph 1
-- Don't write engineering posts without concrete technical material. Personal essays do not need code.
-- Don't use AI-generated filler text — every sentence should carry information
-- Don't write walls of prose when bullets would be clearer — match format to content
-- Don't make every section bullets either — narrative sections need prose to land
-- Don't make unsubstantiated claims — if it's an opinion, own it. If it's a fact, source it.
-- Don't link to paywalled or subscription-gated sources
-- Don't use Wikipedia when the original source exists
-
-### Punctuation Rhythm
-
-- **Em dashes are spice, not structure.** Use them for genuine dramatic pauses or pivots, not as a default connector between clauses. If more than ~1 in 3 sentences has an em dash, the rhythm is monotonous. Replace the weaker ones with commas, periods, or parentheses.
-- Read paragraphs aloud — if every sentence has the same pause pattern, vary the punctuation.
-
-## Cross-Posting
-
-- Always publish on `gkoreli.com` first
-- Cross-post to dev.to with `canonical_url` pointing back to `gkoreli.com`
-- Share on X with a specific hook (not just the title) + `#BuildInPublic`
-- LinkedIn for milestone posts (launched, hit N downloads, etc.)
-
-## Quality Checklist
-
-Before publishing:
-- [ ] Title is specific and descriptive
-- [ ] Description works as a standalone sentence
-- [ ] Post leads with the interesting thing, not preamble
-- [ ] Code blocks have language specified
-- [ ] At least one concrete number, metric, or specific detail
-- [ ] Formatting balance — prose for narrative, bullets for lists, blockquotes for strong claims
-- [ ] No walls of prose — sections with 3+ paragraphs of distinct points are restructured
-- [ ] External sources follow sourcing rules (original author, no paywalls, no Wikipedia)
-- [ ] For an evidence-led investigation, the claim table separates evidence states, stages, limits, counterevidence, and inference
-- [ ] Glossary has dates on all sources
-- [ ] Hyperlinks are contextual and useful (repos, READMEs, npm, blog pages)
-- [ ] Ending fits the governing form — no forced lesson, verdict, redemption, or open loop
-- [ ] Read it out loud — does it sound like you talking?
-- [ ] For AI-assisted collaborative posts, prompts file exists in `prompts/` with all raw prompts that shaped the post; exposed essays and OSS Radar issues omit it
+When distribution is requested, publish on `gkoreli.com` first. Cross-posts use its canonical URL. Choose channels and copy appropriate to the article; do not send posts or messages merely because this skill lists distribution options.

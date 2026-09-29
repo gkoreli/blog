@@ -73,7 +73,7 @@ This is movement, not a mandatory heading template. Keep the governing form from
 
 An evidence-led investigation does not require a completed adoption curve, clean benchmark window, or retrospective verdict. Publish the current article when the owned failure, mechanism, action, and claim boundaries are supported—even if the outcome of the repair can still change.
 
-This does not make every investigation an open-wound field note. A completed experiment may be best served by a retrospective, a decision record, or a practical guide. Preserve resolved lessons and earned expertise when they are what matters. The article may combine past lessons, present uncertainty, and future tests; the governing form decides which layer carries the piece.
+A completed experiment may suit a retrospective, a decision record, or a practical guide. Preserve resolved lessons when they matter. The article may combine past lessons, present uncertainty, and future tests.
 
 Treat present uncertainty as an evidence state:
 
@@ -81,15 +81,15 @@ Treat present uncertainty as an evidence state:
 - **Unknown now:** the outcome or measurement that time has not produced.
 - **Declared continuation:** the later window and the result branches that would change the decision. It may report this work in the past tense while naming a different present uncertainty.
 
-When the current material is live, never recommend waiting merely to replace “I do not know yet” with expert hindsight. That move destroys transparency and converts work-in-progress contact into a postmortem. A later data window can earn a second article when it changes the state; it is not automatically a prerequisite for the first.
+Do not recommend waiting solely for a completed outcome. Wait when a material claim lacks evidence or publication presents a concrete risk. A later measurement window may justify a follow-up article when it changes the result.
 
 Release still requires every material claim made now to be grounded. Unresolved does not mean unsupported.
 
-## Close the Repair Loop Without Closing the Question
+## Explain the Current Implementation
 
-An article may remain unresolved while its engineering explanation is complete. Do not confuse open tension with an incomplete mechanism.
+An article may explain a repair while its eventual outcome remains unknown. A diagnosis published before a repair must identify what is still unknown or unimplemented.
 
-For each central failure, preserve a symmetric evidence chain:
+When claiming a repair or an engineering lesson, explain:
 
 ```text
 before state
@@ -104,7 +104,7 @@ before state
 
 Give the current implementation the same evidentiary standard as the old one: code, flow, schema, production state, and claim boundary. If a field changed—identity, referrer, timestamp, source, privacy, or retention—show how it is produced now, why the new shape was chosen, and what capability was lost. A critique that never reaches the present system cannot support a lesson learned.
 
-This is not a victory-arc requirement. The repair may be provisional, costly, or wrong. The article can still explain what exists, why the author chose it, and what would reverse the decision.
+The repair may be provisional, costly, or wrong. Explain what exists, why the author chose it, and what would reverse the decision; do not invent a completed repair to satisfy this sequence.
 
 
 ## Make the result evergreen without hiding time

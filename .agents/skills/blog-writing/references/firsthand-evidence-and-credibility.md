@@ -24,6 +24,8 @@ This is a selection guide, not a mandatory article template. A simple implementa
 
 Make verification practical. An author page, repository, and dated research notes can clarify identity and methods, but they share authorship. A self-authored link is not independent corroboration. In a small study of 45 participants, professional fact checkers investigated outside context instead of relying on a site's own presentation. [Wineburg and McGrew, published 2019; author manuscript](https://stacks.stanford.edu/file/druid:yk133ht8603/Wineburg%20McGrew_Lateral%20Reading%20and%20the%20Nature%20of%20Expertise.pdf).
 
+State what an observation usefully supports before its limits. A referrer can inform attribution without authenticating a visitor or proving a click. Put relevant test results beside the practices they support; a linked research ledger alone does not explain what worked. See [the referrer-article corrections](../../../../packages/blog/drafts/research/referrer-spam/07-reader-feedback-and-article-focus.md#current-release-and-break-checkpoint).
+
 ## Separate useful disclosure from persuasive appearance
 
 Perceived credibility is an outcome to measure separately from correctness. Visual polish, confidence, source prestige, concrete wording, and apparent expertise can become shortcuts. Do not imitate authority or add decorative precision to obtain trust.
@@ -48,15 +50,3 @@ Some source cues also affect models. A 2026 ICLR study tested 12 LLMs on three s
 Preserve a firsthand title when the article supplies the corresponding work. Narrow an unsupported claim even if its wording sounds credible. Prefer evidence relevant to the claim over a prestigious speaker. Keep a correction or limitation that changes interpretation. Reject guarantees about human trust, AI preference, or discovery unless the actual experiment supports that specific outcome.
 
 Our own pronoun and evidence-access experiments are [designed but unrun](../../../../packages/blog/drafts/research/engineering-credibility/02-experiments.md). A new result may change the guidance; it should not be retroactively claimed as the reason for this editorial decision.
-
-### Firsthand Evidence and Credibility
-
-Make the author's relationship to the evidence explicit when it matters. First person can identify work Goga built, operated, tested, or observed; it does not authenticate the author or prove the result. Keep the subject searchable, and use ownership where it clarifies the claim's source and scope. Do not force every title into first person.
-
-Support consequential engineering claims with the relevant method, conditions, date/version, result, and inspectable artifact. Distinguish observation from interpretation and generalization. Choose sources by what can establish the particular claim, not the speaker's fame. Preserve limitations, counterevidence, and material corrections; neither confident prose nor a large research footprint substitutes for evidence.
-
-State what a signal usefully supports before explaining its limits. A referrer can inform attribution even though it cannot authenticate a visitor or conclusively prove a click. Do not turn lack of conclusive proof into dismissal of useful evidence. Put selected consequential test results beside the practices they support, with their conditions and sources; a linked research ledger alone does not teach what worked. The [article 025 corrections](../../../../packages/blog/drafts/research/referrer-spam/07-reader-feedback-and-article-focus.md#current-release-and-break-checkpoint) record both owner-directed repairs.
-
-Aim to produce references that other engineers and their agents can inspect, challenge, and reuse in real work. Evidence should serve that engineering purpose and remain proportionate to the claim. Predictions about future LLM preferences do not establish a publishing strategy or make ordinary search support obsolete.
-
-Separate human judgments of credibility, search eligibility/ranking, crawler access, and an agent's source use or citation. No pronoun, citation count, schema, or author biography guarantees trust or discovery. Apply the evidence distinctions in this reference. Its [research record](../../../../packages/blog/drafts/research/engineering-credibility/00-research-brief.md) separates studies, provider documentation, editorial judgments, and experiments still to run.

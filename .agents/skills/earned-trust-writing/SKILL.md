@@ -4,7 +4,7 @@ description: Shape gkoreli.com articles that deliver independently useful teachi
 license: MIT
 metadata:
   author: gkoreli
-  version: "1.1.0"
+  version: "1.2.0"
   owner-direction-date: "2026-09-19"
 ---
 
@@ -14,15 +14,7 @@ metadata:
 
 This is the owner's preferred model for substantive articles at gkoreli.com, including practical essays and engineering pieces. A reader should not need to know Goga, trust his reputation, or read previous posts to benefit. The article should provide reasons to accept, question, or reject its claims on the page. Through the same explanation, the reader encounters Goga's decisions, projects, mistakes, convictions, growth, and live uncertainties.
 
-## Origin and Authority
-
-The [complete owner prompt](../../../docs/editorial/2026-09-19-earned-trust-writing.prompt.md) is preserved verbatim. It is historical source material; do not silently tidy, excerpt, splice, or overwrite it. Record later changes in a new dated document.
-
-The owner's reference is [Bot Detection Without JavaScript: What My Blog Measured](https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript), source at `packages/blog/posts/024-how-i-separate-readers-from-bots-without-javascript.md`. It combines a reader's practical problem with the author's implementation, measurements, corrections, and unresolved measurement boundaries. The useful pattern is the relationship between explanation and evidence, not its exact headings, length, title punctuation, or chronology.
-
-This direction clarifies earlier rules against generic tutorials: **teach the reader directly; do not publish interchangeable instruction detached from evidence and the author's work.** A builder's journal can be a useful tutorial. Being unfamiliar with the author must not be an obstacle to learning.
-
-This is a model for earning warranted confidence, not a claim that a format guarantees trust, search rankings, subscriptions, or audience growth.
+The [bot-detection article](../../../packages/blog/posts/024-how-i-separate-readers-from-bots-without-javascript.md) is a useful example of explanation connected to implementation, measurements, corrections, and limits. Use that relationship where appropriate, rather than copying its structure.
 
 ## The Two Perspectives
 
@@ -59,11 +51,11 @@ A small amount of directly relevant evidence is better than decorative research.
 
 Give a cold reader a recognizable subject and a reason to read. Where it fits, a title can combine **the reader problem or method + the author's actual contribution**.
 
-Use words such as *measured*, *tested*, and *learned* only when the record earns them. For a proposed practice, describe a rule to try or a question under investigation. Do not imply successful treatment, guaranteed outcomes, or completed experiments to improve a headline.
+Use words such as *measured*, *tested*, and *learned* only when the evidence supports them. For a proposed practice, describe a rule to try or a question under investigation. Do not imply successful treatment, guaranteed outcomes, or completed experiments to improve a headline.
 
 ### Discovery and payoff must be visible in the title
 
-The owner's follow-up correction is preserved in full in [the first walk dictation](../../../packages/blog/drafts/research/excitement-is-not-an-emergency/02-walk-dictation.prompt.md). A title can be clearer than the old title and still fail to tell a stranger how the article relates to their problem or why to open it.
+The title should identify the reader's problem and what the article helps them understand or do.
 
 Before accepting a title, record:
 
@@ -72,9 +64,7 @@ Before accepting a title, record:
 3. **Concrete payoff:** what will the reader understand, distinguish, do, or assess after reading? The title must communicate enough of that payoff on its own. A description can add detail; it cannot rescue a title with no subject or value.
 4. **Earned scope:** does the body deliver the title's actual promise? Do not advertise a solved problem when the evidence only supports an explanation, a bounded proposal, or a failed attempt.
 
-For example, *Saving Ideas Without Derailing Your Plans: A Rule I Want to Practice* named an intended activity but gave little reason to choose this particular article. *Distracted by New Ideas? Why Writing Them Down Isn't Enough* names the reader's problem and the failure the article explains. This is an editorial judgment about clarity and fit, not a measured traffic improvement.
-
-Do not force a personal suffix such as *a rule I want to practice* into every title to imitate a 50/50 split. The author's half needs substantive evidence and judgment in the article, not equal headline space. A personal phrase earns headline space when it adds a concrete contribution, such as measurements or a specific failed attempt.
+Do not force a personal suffix such as *a rule I want to practice* into every title to imitate a 50/50 split. The author's half needs substantive evidence and judgment in the article, not equal headline space. A personal phrase belongs in the headline when it adds a concrete contribution, such as measurements or a specific failed attempt.
 
 Keep the H1, description, proposed publication slug, and opening aligned. Use `article-discovery-positioning` to evaluate the actual article; do not rewrite it around an unrelated popular term. [Google's title guidance](https://developers.google.com/search/docs/appearance/title-link) supports descriptive, concise titles and warns against keyword stuffing; it does not certify any particular title or predict this publication's growth.
 
@@ -82,11 +72,11 @@ The opening should explain the practical value and bring the author into the act
 
 ## Working Sequence
 
-1. **Shape first.** Identify the living center and governing form with `shape-article`. Use this model when the piece can truthfully teach and show the author's work together.
+1. **Shape first.** Identify the central question or experience and governing form with `shape-article`. Use this model when the piece can truthfully teach and show the author's work together.
 2. **Write the two promises.** What can a stranger take away? What will the reader discover about Goga through the work itself?
 3. **Inventory support.** Separate existing sources, actual experiences/artifacts, opinions, proposals, and missing evidence. Do not convert gaps into confident prose.
 4. **Interview for missing substance.** Ask a small set of walk-friendly questions about concrete scenes, costs, counterexamples, actual attempts, changed beliefs, and live stakes. Use what is already known; do not repeat answered questions. Ask neutrally rather than feeding the author a flattering or embarrassing story to confirm.
-5. **Draft with both perspectives in contact.** A concept should help interpret the experience; an experience should test, illustrate, or complicate the concept. A method needs its rationale and failure modes. Keep a reusable rule, example, or decision aid visible.
+5. **Connect explanation and experience.** A concept should help interpret the experience; an experience should test, illustrate, or complicate the concept. A method needs its rationale and failure modes. Keep a reusable rule, example, or decision aid visible.
 6. **Audit the claims.** Verify citations and provenance. Distinguish a laboratory result from real-world validation of the article's full practice. Keep proposed tests future-facing.
 7. **Position and polish.** Apply `article-discovery-positioning` after the substance is stable, then `polish-prose`. Check title language, discovery route, payoff, and earned scope. Preserve Goga's voice and the actual state of the work.
 
@@ -102,7 +92,7 @@ These are editorial checks, not evidence that real readers trust the result. Hum
 
 ## Exceptions and Collaboration Boundaries
 
-This is the default direction, not a requirement to turn every poem, exposed essay, announcement, or narrow reference into a tutorial. `shape-article` still chooses the honest form. A genuinely exposed essay remains author-written under `personal-essays`; the agent does not originate its prose. Other inquiry and collaborative forms may combine research and supplied personal material with transparent AI assistance. The no-invented-feelings rule applies everywhere.
+This is the default direction, not a requirement to turn every poem, exposed essay, announcement, or narrow reference into a tutorial. `shape-article` still chooses the honest form. An exposed essay remains author-written under `personal-essays`; the agent does not originate its prose. Other inquiry and collaborative forms may combine research and supplied personal material with transparent AI assistance. The no-invented-feelings rule applies everywhere.
 
 Keep roughly equal substance when this model is selected. Do not dilute a useful method to hit a personal-word quota, or pad a personal essay with research to imitate authority. Explain an intentional departure in the working notes when needed; do not silently abandon the owner's two-perspective goal.
 

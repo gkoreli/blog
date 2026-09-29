@@ -1,20 +1,13 @@
-# Editorial Learning and Private Feedback
+# Editorial Feedback and Measurement
 
-Read for post-publication measurement, reader feedback, corrections, or deciding whether a lesson belongs in shared guidance. Metadata mechanics live in [metadata and discovery](../../article-discovery-positioning/references/metadata-and-discovery.md).
+After publishing a substantive engineering article:
 
-### Editorial Learning Loop
+1. Set a measurement window before interpreting performance.
+2. Save page-filtered search queries, replies, corrections, attributable referrals, source changes, and relevant reports of use in the article's research directory.
+3. Choose a content correction, metadata change, distribution change, experiment, or no action based on that evidence.
+4. Apply the [metadata date rules](../../article-discovery-positioning/references/metadata-and-discovery.md#the-metadata-split) when the served page changes. Correct known factual errors without waiting for the performance window.
+5. Keep article-specific lessons with the article. Update shared guidance for a recurring failure, an explicit owner direction, or a costly error caused by a missing rule.
 
-After publishing a material engineering article:
+When a willing reader is available, ask what they understood, where the explanation became difficult, and what evidence they still need. Record the feedback and editorial decision. Reader feedback is useful but is not a mandatory release gate; agent review does not establish human reception.
 
-1. Define a measurement window before reacting; do not churn the article from day-to-day noise.
-2. Capture page-filtered search queries, reader replies, corrections, attributable referrals, source changes, and relevant implementer evidence in the article's research directory.
-3. Decide explicitly between a content correction, discoverability change, distribution change, new experiment, or no action.
-4. Update `lastModified` only when the served page changes materially under the [metadata contract](../../article-discovery-positioning/references/metadata-and-discovery.md#the-metadata-split).
-5. Keep one-off lessons in the article artifact. Update a shared reference or skill when a failure recurs across articles or when one missing rule caused a costly, preventable error.
-6. Prefer a focused reference inside the governing skill first. Create a standalone skill only after the workflow has repeated use and needs distinct automatic routing.
-
-When a willing human reader is available, get feedback on the actual draft: what claim they understood, where the explanation became hard to follow, and what evidence they still need. Record the response and the resulting editorial decision. Prepare a reviewable draft without making outside feedback a mandatory release gate. Agent review and human reception are separate evidence. Use `blog-writing`'s skim check to make the title, opening, headings, useful visuals, and section endings intelligible together.
-
-Private reader messages belong in the private evidence archive, with a descriptive filename and a worklist reference. Preserve original bytes and the receipt date; do not infer a conversation date from clock times alone. Public worklists can summarize the advice and resulting changes without republishing a private conversation. The [article 025 feedback worklist](../../../../packages/blog/drafts/research/referrer-spam/07-reader-feedback-and-article-focus.md) records this application.
-
-This loop improves the publication from reader and evidence contact, not from token volume or pageviews alone.
+Store private messages outside Git, preserving original bytes and the receipt date. Use a descriptive filename and a worklist reference. Do not infer a conversation date from clock times alone. Public notes may summarize advice and resulting changes without republishing the conversation.

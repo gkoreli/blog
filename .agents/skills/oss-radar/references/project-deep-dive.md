@@ -4,7 +4,7 @@ Use five parts. Adapt headings to the project. Research each part; combine headi
 
 ## 1. Verdict
 
-Open with the significance before anything else: why this release matters, why the reader is here, what they will learn. Then a short bullet list of the issue's main findings, each a promise the body keeps. Only then the background. This is the owner’s [opening discipline](../../shape-article/references/opening-discipline.md); it binds every issue. Read it before choosing the opening, including the result-first correction.
+Open with the significance before anything else: why this release matters, why the reader is here, what they will learn. Then a short bullet list of the issue's main findings, each a promise the body keeps. Only then the background. Apply [opening discipline](../../shape-article/references/opening-discipline.md) when choosing the result and explanation.
 
 Name the project, date, job, market focus, and present limit inside the first 100 words. Write one claim that the evidence can prove wrong. Keep jargon out of the opening; put it where it does the most work.
 

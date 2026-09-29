@@ -1,7 +1,6 @@
 # AGENTS.md — gkoreli.com
 
 Personal engineering publication by Goga Koreli, built with `@nisli/core` and deployed to Cloudflare Workers.
-Skills are discovered from `.agents/skills/`; this file contains only shared repository constraints.
 
 ## Repository essentials
 
@@ -15,9 +14,9 @@ Skills are discovered from `.agents/skills/`; this file contains only shared rep
 
 ## Publication integrity
 
-- Teach something useful, show the evidence, and let the reader encounter the author through his actual work.
+- In practical articles, teach something useful and show the basis in the author's work. Personal essays follow their experience and form.
 - Do not invent experiences, feelings, measurements, quotations, or a completed outcome.
-- Preserve exact shaping prompts; article prompt files exclude unrelated later repository housekeeping.
+- Preserve exact shaping prompts for collaborative articles; exposed essays and OSS Radar have no prompt file. Exclude unrelated repository housekeeping.
 
 ## Evidence and continuity
 
@@ -48,4 +47,4 @@ Skills are discovered from `.agents/skills/`; this file contains only shared rep
 - Keep proposed experiments separate from accepted work; do not silently reopen completed tasks.
 - Every moved reference needs a working link from its owning skill or document.
 - Update active callers when paths move; keep historical records intact and provide a migration map.
-- [ADR-0017](docs/adr/0017-on-demand-project-guidance.md) defines this structure; the [migration record](docs/editorial/2026-09-28-instruction-migration.md) maps the former 666-line instructions.
+- Keep active guidance limited to current, actionable rules. Store rationale and superseded guidance in decision or history records.

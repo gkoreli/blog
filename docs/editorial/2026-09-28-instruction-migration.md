@@ -44,7 +44,7 @@ The source ranges below cover every line exactly once, including grouping headin
 | 629–637 | Anti-Patterns (Design) | [.agents/skills/blog-maintenance/references/design-system.md](../../.agents/skills/blog-maintenance/references/design-system.md) |
 | 638–666 | Current State; Tech Stack; Newsletter State and Future Vision | [docs/handoffs/2026-09-28-instruction-state-snapshot.md](../handoffs/2026-09-28-instruction-state-snapshot.md) |
 
-## Consolidation and corrections
+## Initial migration: consolidation and corrections
 
 - **No Mannered Prose, lines 106–111:** the complete owner paragraph already exists in `polish-prose`; retain that copy instead of creating a duplicate. Root and Best Practices grouping headings now serve a short root and a maintenance skill.
 - **Earned trust and article roles:** preserve the September 19 direction, original context, and link to the complete founding prompt. The role reference explicitly marks the earlier literary-H1 permission as superseded by the September 1 subject-first rule. Practical teaching remains welcome; only interchangeable instruction detached from evidence and the author is rejected. The consolidated workflow includes the earned-trust pass after shaping so its older ordering list agrees with the September 19 direction.
@@ -56,7 +56,7 @@ The source ranges below cover every line exactly once, including grouping headin
 - **Agent navigation:** align the old “inert for AI search” shorthand with the existing `shareable-engineering` distinction: known-site use can be useful without establishing organic ranking or citation benefit.
 - **Active callers:** update writing-skill references, the OSS deep-dive reference, `NORTH_STAR.md`, `README.md`, and the active publication-lane folder. Existing historical tasks, memories, handoffs, and research citations remain receipts of their time; this map resolves their former AGENTS headings without rewriting their history.
 
-## Consistency audit requested during review
+## Initial migration: consistency audit requested during review
 
 The owner also requested correction of wrong, misleading, or missing guidance. The audit checked the relocated working instructions against current source, not just whether their text survived. These repairs change documentation only; historical originals remain recoverable from the source commit above.
 
@@ -89,3 +89,23 @@ The decision register locates established architecture choices and their existin
 Validation is recorded in [TASK-0148](../tasks/TASK-0148-reorganize-project-guidance-on-demand.md). The checks cover the root line limit and absence of a skill catalogue, complete source-range coverage, preserved owner quotations and accounting text, local links and anchors, skill frontmatter, representative task routes, and the scoped diff. They do not claim to revalidate every external research source or production receipt preserved here.
 
 The existing user deletion of `CLAUDE.md` is outside this change. No post, prompt file, production configuration, private capture, or frozen footprint is edited.
+
+## Follow-up: instruction content audit
+
+The owner found mannered prose, conflicting rules, and unnecessary editorial conversation in the first migration. This follow-up reviews the working guidance at `842585f3e9e5e9a104fef252cacc415aa0579235`; retrieve any previous file with `git show <revision>:<path>`. The section destinations above remain the owners of the maintained knowledge, not copies of every historical sentence. The initial migration findings and validation receipts above describe that earlier revision.
+
+| Conflicting or wasteful guidance | Current instruction |
+|---|---|
+| Literary titles could omit the subject while a later rule required it | H1 identifies the subject; literary phrasing may accompany it |
+| Emphatic blockquotes prohibited hedging while evidence rules required uncertainty | Preserve material qualifications in every format; quotation marks require actual quotations |
+| “Not a tutorial site” discouraged teaching despite the earned-trust direction | Practical teaching is welcome when grounded in evidence and the author's work |
+| Engineering openings and technical ratios were imposed across forms | Engineering explains significance first; exposed essays retain author-written structure and need no summary bullets |
+| Publishing unfinished work was encouraged while hindsight and settled experience were dismissed | Publish supported unfinished work; retrospectives and resolved lessons remain valid |
+| A repair explanation could imply every investigation needed a completed repair | Explain an established repair fully; label an unresolved diagnosis and its missing evidence accurately |
+| Protecting passages could be read as overruling the author's later decision | Explain the editorial cost and respect the author's decision |
+| A skill biography, owner conversation, and subsequent correction surrounded a usable rule | Keep the current rule in its owning skill; preserve the original conversation in Git and historical records |
+| Required candidate counts, title scores, and formatting quotas added routine work without a decision need | Compare alternatives when useful; judge clarity, fidelity, and evidence rather than a fixed score or quota |
+
+The follow-up also condenses `NORTH_STAR.md` and the project decision register to current direction and decision links. It preserves the distinction between approximate portfolio accessibility, article roles without quotas, and substantive earned-trust balance. Operational invariants, accounting methods, exact prompt files, published articles, and immutable research records remain intact.
+
+The active prose no longer repeats the founding quotations; their exact originals remain in the source revisions and the founding prompt document. This replaces the initial migration's choice to retain every quotation in working instructions. [ADR-0017](../adr/0017-on-demand-project-guidance.md) records the maintenance rule, and [TASK-0148](../tasks/TASK-0148-reorganize-project-guidance-on-demand.md) records follow-up checks.

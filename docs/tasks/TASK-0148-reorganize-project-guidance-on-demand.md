@@ -4,7 +4,7 @@ title: Reorganize project guidance for on-demand loading
 status: done
 parent_id: FLDR-0003
 created_at: '2026-09-29T05:15:46Z'
-updated_at: '2026-09-29T05:22:46Z'
+updated_at: '2026-09-29T05:40:47Z'
 type: task
 ---
 
@@ -28,9 +28,9 @@ Reduce `AGENTS.md` to 50–100 lines without losing accumulated owner direction,
 - [Migration map](../editorial/2026-09-28-instruction-migration.md): exact source identity, complete line-range destinations, corrections, and historical scope.
 - [Maintenance skill](../../.agents/skills/blog-maintenance/SKILL.md): repository workflow and conditional references.
 
-## Verification
+## Initial migration verification
 
-Completed local verification:
+Completed for the initial migration (`d72df3a`):
 
 - `AGENTS.md`: 51 lines; no skill catalogue or skill-entrypoint links.
 - All 666 original lines mapped exactly once; baseline bytes match the recorded Git blob and SHA-256.
@@ -43,3 +43,16 @@ Completed local verification:
 - `git diff --cached --check` passed. Only repository instructions and bookkeeping are in scope; the existing `CLAUDE.md` deletion remains unstaged.
 
 Delivery follows the existing checked commit-and-push preference. The commit containing this record identifies the delivered documentation set. No production build, service probe, broad external-source re-audit, or article release was needed or claimed.
+
+## Follow-up: current rules and conflict cleanup
+
+The owner requested a further audit of mannered prose, conflicting instructions, and editorial conversation left in active guidance. The reviewed baseline is `842585f3e9e5e9a104fef252cacc415aa0579235`.
+
+- Replaced historical debates and rule-plus-rebuttal passages with current instructions. Removed duplicated skill descriptions, rigid paragraph/character quotas, and unsupported claims about title performance.
+- Reconciled clear subject titles with literary phrasing; necessary uncertainty with emphatic prose; practical teaching with personal essays; unfinished investigations with repair explanations; and author-written prose with agent editing.
+- Kept exact prompts and research accounting intact. Historical owner wording remains in the recorded source revisions; the active rules need not repeat those quotations.
+- Removed the remaining skill-discovery explanation from the root. `AGENTS.md` is 50 lines.
+- Follow-up checks passed: 29 Markdown files, 198 relative links, four anchors, closed code fences, reference discovery, and all nine changed skills' metadata.
+- The original 666-line source and complete migration map remain recoverable and verified. The footprint contract and founding prompt are unchanged; no article, article prompt, or research artifact was edited.
+- Both documented Markdown examples still pass the actual `parsePost()` schema with no duplicate H1. `git diff --check` passed.
+- Reviewed the changed rules together for titles, truthful uncertainty, authorship, practical teaching, openings, unfinished work, and maintenance delivery. These checks validate documentation consistency, not production behavior or external research claims.

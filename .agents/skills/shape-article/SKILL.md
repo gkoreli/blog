@@ -1,155 +1,54 @@
 ---
 name: shape-article
-description: Identify and protect an article's living center before drafting, editing, or reviewing it. Use for any gkoreli.com article to choose its governing form, preserve unresolved experience and load-bearing roughness, give humans and AI agents enough context to follow the work, and route the draft through the correct writing skills without forcing a lesson, verdict, or narrative arc.
+description: Choose the central question, claim, or experience and the appropriate form for a gkoreli.com article before drafting or editing. Preserve supplied personal material, unresolved questions, and evidence limits; select the relevant writing workflow.
 ---
 
 # Shape Article
 
-Choose the form before shaping the prose. Judge the article by whether its form tells the truth about the state in which it was written.
+Identify what the article needs to explain or express before choosing its structure. Use the draft, prompts, and documented work to establish:
 
-## Task-specific references
+- The main reader problem, result, question, or personal experience.
+- Why the author is writing it now and what remains unresolved.
+- Which statements, contradictions, details, and passages must survive editing.
+- What evidence supports the article and what it cannot establish.
 
-- For publication purpose, reader-growth/signature/bridge roles, or editorial scope, read [publication context](references/publication-context.md).
-- When planning an article or resolving skill responsibilities, read [editorial workflow](references/editorial-workflow.md).
-- Before drafting or reviewing openings and section structure, read [opening discipline](references/opening-discipline.md), including the September 22 result-first correction.
-- Before quoting Goga, read [owner quotations](../blog-writing/references/owner-quotations.md). Use the same rule in non-article artifacts.
+Ask for material gaps; do not invent a motive, feeling, or conclusion. Give supporting incidents and implementation constraints only the space needed to explain the central subject. Include a constraint in the title when it defines the problem or materially limits the result.
 
-Read only what the task needs; the governing form determines subsequent passes.
+## Choose the form
 
-## Find the Living Center
-
-Inspect the draft, prompts, and author context. Determine:
-
-- What remains alive, unresolved, or capable of changing after publication?
-- What does the author want, fear, risk, or resist saying?
-- Which contradiction must remain strong on both sides?
-- Where does thought occur on the page instead of being reported after the fact?
-- Which passage costs status or could only have been written from this moment?
-- What would conventional editing falsely settle, explain, or smooth away?
-
-Do not invent a stake or feeling when the source material lacks one. Name the gap and return it to the author.
-
-Separate the main reader problem or result from the implementation choices and constraints that support it. A detail can be true, concrete, and important without being the reason someone should read the article. Carry that priority into the title, opening, and ending. A constraint belongs in the headline when it defines the reader's problem or a necessary boundary of the result.
-
-Apply that priority to body space too. Explain a supporting repair or incident only as deeply as the article's reader decision requires; a short tradeoff paragraph and a link may suffice. Work sharing a codebase or session does not automatically deserve equal weight in the article.
-
-## Choose the Governing Form
-
-Let forms mix, but choose one to govern movement and the ending.
-
-| Form | Required movement | Honest ending | Governing skill |
+| Form | Development | Ending | Skill |
 |---|---|---|---|
-| Exposed essay | Stay with a live wound; let contradictions and self-discovery remain visible | Stop at the deepest honest point without a lesson | `personal-essays` |
-| Essay of inquiry | Think against the starting belief; make the question more precise or difficult | Leave a better question, tension, or possibility | `personal-essays` |
-| Field note or build journal | Record a time-bound state, pressure, attempt, or blocker | Mark what changed and what remains unknown | `blog-writing`, then `personal-essays` when a human spine is present |
-| Engineering argument or decision record | Test a claim against evidence, alternatives, failures, and constraints | Give a bounded verdict, trade-off, or decision rule | `blog-writing`, then `shareable-engineering` |
-| Evidence-led engineering investigation | Start from an owned system or failure; test a disputed claim across implementation, reproduction, and outside evidence | Give a bounded verdict, provenance, limits, and evidence that would change it | `blog-writing` with its investigation reference, then `shareable-engineering` |
-| OSS Radar research synthesis | Reconstruct an open-source project or cohort's competing theories and audit them against code and primary evidence | Give a calibrated product or adoption verdict with provenance and limits | `oss-radar`, then `shareable-engineering` |
+| Exposed essay | Examine a supplied, unresolved personal experience and its contradictions | Preserve what remains unresolved | [personal-essays](../personal-essays/SKILL.md) |
+| Essay of inquiry | Examine the starting belief and competing explanations | A more precise question or supported change in understanding | [personal-essays](../personal-essays/SKILL.md) |
+| Field note or build journal | Explain a dated attempt, decision, result, or blocker | What changed and what remains unknown | [blog-writing](../blog-writing/SKILL.md) |
+| Engineering argument or decision | Test a position against evidence and alternatives | A bounded conclusion or decision rule | [blog-writing](../blog-writing/SKILL.md) |
+| Evidence-led investigation | Test a disputed claim about a system the author built or used | Result, method, limits, and evidence that would change the conclusion | [Investigation reference](../blog-writing/references/evidence-led-engineering-investigations.md) |
+| OSS Radar | Reconstruct and test a project's or cohort's competing product theories | A supported adoption or product verdict | [oss-radar](../oss-radar/SKILL.md) |
 
-Do not punish one form for lacking another form's payoff. An exposed essay needs no takeaway. A research verdict needs more than emotional truth.
+Forms can mix. Choose the one that governs the ending; do not require an exposed essay to teach a lesson or an inquiry to produce a verdict.
 
-## Earned-Trust Writing: Two Perspectives in One Article
+For substantive practical articles, apply [earned-trust-writing](../earned-trust-writing/SKILL.md) after choosing the form. Give useful teaching and the author's documented work roughly equal substantive weight. A proposed method may be useful while the author's personal problem remains unresolved.
 
-The owner's September 19, 2026 direction makes [earned-trust-writing](../earned-trust-writing/SKILL.md) the preferred model for substantive practical articles. It is compatible with several forms above, rather than a replacement for their truth or endings. Apply it after identifying the living center and before drafting or substantial restructuring.
+## Preserve the material
 
-Write down two promises: what can a stranger learn or use without knowing Goga, and what will the same reader discover about Goga through his actual work, decisions, mistakes, opinions, or unresolved experience? Give these roughly equal substantive weight, with permission to weave them together. Do not impose a literal midpoint, and do not quietly drop either perspective.
+Before editing, identify supplied uncertainty, specific emotions, admissions, contradictions, self-interruptions, meaningful repetition, concrete evidence, and distinctive phrasing. Retain these when they contribute to the article; improve accidental disorder and unclear connections.
 
-The teaching must stand on explanation and appropriately scoped evidence. The personal material must be supplied or documented, not manufactured to make the author credible. Separate external findings, firsthand observation, interpretation, and proposed tests. When a gap matters, ask a small set of concrete questions about events, costs, actual attempts, counterexamples, and live stakes; do not re-ask what the supplied material already answers.
+An article can develop through explanation, a tested claim, a changed interpretation, an action, a deepened question, or a recurring detail whose meaning changes. Use headings and sequence to help the reader follow that development. Do not force a prescribed narrative arc.
 
-A usable method and an unresolved personal ending can coexist. Do not turn a proposed practice into a success story or strip out the practical value merely because the author is still learning. Genuinely exposed essays retain their author-written boundary and need not become tutorials. The [founding prompt](../../../docs/editorial/2026-09-19-earned-trust-writing.prompt.md) records the owner's intended shift verbatim.
+Exposed prose is author-written. Identify passages by location and explain the editorial issue instead of drafting replacements. Follow [owner quotations](../blog-writing/references/owner-quotations.md) before attributing exact words to Goga.
 
-## Protect the Live State Without Making It a Formula
+## Write unfinished work accurately
 
-When an owned engineering failure is active, consider the article that can be written truthfully now. Do not recommend waiting for a benchmark, adoption curve, clean measurement window, or completed outcome merely so the author can sound more authoritative later.
+An unfinished project can support an article when the evidence establishes what existed, what happened, what the author did and why, and what remains uncertain. If the mechanism is unknown, say so. Do not wait solely for a success story or cleaner hindsight; wait when a material claim lacks evidence, publication presents a concrete risk, or necessary personal substance is missing.
 
-This is a routing safeguard, not a house style. Do not force every piece into open-wound form. Earned expertise, past-tense lessons, growth, resolved tradeoffs, and retrospective synthesis are valuable when they are the truth of the material. An article may braid all three time layers: past experience for lessons, present tension for contact, and future intention for what remains possible. Choose the governing form from context.
+Past lessons, present uncertainty, and future intentions can coexist. A later follow-up reports changed evidence without replacing the earlier state or forcing the same form.
 
-Current evidence is enough when it can establish:
+## Context and review
 
-- what was built or believed;
-- what failed, hurt, or became ambiguous;
-- which mechanism explains the failure;
-- what action the author took and why;
-- which tensions or outcomes remain unresolved.
+Use consistent names, dates, and technical terms. Put sources near factual claims and distinguish observation, interpretation, and proposal. Keep metadata, Markdown representations, and provenance accurate without rewriting the article as a machine summary.
 
-The unresolved outcome is part of the article's evidence boundary. Name it. A later measurement can earn a continuation without replacing the open-wound article.
+- For purpose and publication roles, read [publication context](references/publication-context.md).
+- For openings and section review, read [opening discipline](references/opening-discipline.md).
+- For the sequence of editorial passes and prompt provenance, read [editorial workflow](references/editorial-workflow.md).
 
-One valid pattern, when time itself creates two meaningful states:
-
-1. **Now:** publish the active pain, present-tense reasoning, implementation, available evidence, and unresolved tensions.
-2. **Later:** publish changed evidence and earned lessons in the past tense while naming whatever new tension is alive then. The continuation is not required to imitate the first article's form.
-
-Waiting is justified only when a material factual claim lacks enough evidence to publish safely, publication would cause concrete harm, or the author has not supplied the human stake. “The data will be cleaner later” is not enough. Do not launder vulnerability into retrospective authority.
-
-## Protect Before Editing
-
-Mark load-bearing material before changing the draft:
-
-- Present-tense uncertainty and unresolved stakes
-- Precise emotional naming
-- Confessions that risk status
-- Contradictions the author genuinely holds
-- Self-interruptions where the mind catches itself
-- Repetition whose pressure changes on each return
-- Sentences closest to the author's arguing voice
-- Concrete names, dates, numbers, scenes, code, and technical evidence
-
-For an exposed essay, do not draft or replace the author's prose. Quote the alive passage back, flag weak or armored passages, and let the author rewrite them.
-
-## Create Movement Without Demanding Resolution
-
-Require movement, not a universal arc. Let the article move by:
-
-- Deepening a question
-- Revealing a contradiction
-- Changing the meaning of an earlier detail
-- Raising the personal or technical stakes
-- Testing one explanation against another
-- Recording an action taken while the outcome remains unknown
-- Returning to a phrase or image under new pressure
-
-Allow linear argument, circling, fragments, accumulation, juxtaposition, or a single sustained block when the form carries the experience. Cut accidental disorder. Preserve deliberate disorder that lets the reader feel how the mind or problem behaves.
-
-## Serve Humans and Agents With the Same Article
-
-Do not flatten the body into a separate machine-facing summary. Preserve the full thinking process and add anchors around it:
-
-- Use a truthful title, concrete description, date, section, and tags. Every H1 names its subject in plain words; a signature title can carry a literary phrase alongside that subject. `article-discovery-positioning` aligns the other surfaces with the same article.
-- Name projects, people, concepts, and time shifts consistently.
-- Keep factual claims close to their sources.
-- Distinguish observation, external evidence, inference, fear, and judgment through natural language.
-- Use headings when they aid navigation and do not violate the chosen form.
-- Add an orientation sentence when a cold reader needs context, but do not reveal an answer the article does not have.
-- Keep the `.md` endpoint, semantic HTML, structured data, and provenance accurate.
-
-Treat lived uncertainty as information. It exposes constraints, competing explanations, abandoned paths, and open questions that a polished conclusion may erase.
-
-## Run the Editorial Passes in Order
-
-1. Diagnose the living center and governing form.
-2. Mark protected passages and failure risks.
-3. Apply the governing skill without importing another form's ending. For practical articles, apply `earned-trust-writing` and state both the reader-value and author-present promises.
-4. Shape movement, recurrence, and reader orientation.
-5. Verify facts, dates, references, quotations, and claim boundaries.
-6. Apply `article-discovery-positioning` after the article's truth and claim boundaries are stable; accept a narrow or no-op doorway when that protects the form.
-7. Apply `shareable-engineering` only where its engineering trust and share rules fit.
-8. Apply `polish-prose` last. Restore any edit that reduced aliveness, precision, or voice.
-9. Read the result as both a human reader and an agent reconstructing state, evidence, uncertainty, and time. For earned-trust articles, run the stranger, author, and connection tests.
-
-## Reject These Failure Modes
-
-- Forcing a lesson, redemption arc, verdict, or action plan
-- Treating unresolved writing as incomplete writing
-- Treating rawness as permission for shapelessness or avoidable confusion
-- Manufacturing vulnerability or making pain admirable
-- Converting live contradiction into a balanced survey
-- Cutting repetition before checking its function
-- Adding a quotable claim only to satisfy a checklist
-- Researching the feeling away instead of sourcing the factual frame
-- Requiring readers to trust the byline before the article offers useful explanation or evidence
-- Appending an unrelated personal story to a generic tutorial and calling that earned trust
-- Building more editorial machinery instead of helping the current article exist
-
-## Improve From Real Use
-
-After publication or author review, record what helped the piece and what harmed it. Update a skill when the same failure recurs across articles or the owner explicitly changes the publication's governing direction. Keep one-off preferences with the article instead of turning them into universal law.
+After shaping and fact-checking, apply [article-discovery-positioning](../article-discovery-positioning/SKILL.md), the engineering review where relevant, and [polish-prose](../polish-prose/SKILL.md) last. Review that the edits preserved the article's meaning, evidence limits, and authorship.

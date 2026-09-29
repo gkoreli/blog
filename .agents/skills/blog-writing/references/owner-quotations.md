@@ -1,13 +1,7 @@
-# Owner Quotations and Exact Prompt Preservation
+# Owner Quotations
 
-Read before quoting Goga in any repository artifact, including code comments, ADRs, tasks, or commit messages. This applies beyond article prose. Historical quotations moved during housekeeping remain historical records; moving them does not establish that a fragment was a complete original message.
+A quotation attributed to Goga in any artifact must reproduce a complete prompt message exactly. Check it against the transcript or preserved prompt file. Keep spelling, punctuation, and ellipses; do not trim, splice messages, or insert context inside the quotation.
 
-### Quote the Owner Only Verbatim (owner tenet, 2026-09-03)
+If only a fragment or unchecked recollection is available, paraphrase without quotation marks and disclose that the exact message was not preserved. During draft review, identify a passage by location or paraphrase it; do not present an excerpt as a verified prompt quotation.
 
-Never put words in Goga's mouth. A quotation attributed to him, anywhere (posts, prompts files, ADRs, task files, research artifacts, code comments, commit messages), must be a complete prompt message he typed, reproduced exactly: same spelling, same punctuation, same ellipses, no splicing of two messages, no trimming to the good part, no bracketed context inserted inside the quote. If only a fragment is known, or the message cannot be checked against the transcript or a prompts file, paraphrase without quotation marks and say the exact text was not preserved. Full messages may be long; that is fine. The prompts page exists so readers can check.
-
-The owner's words, verbatim, 2026-09-03:
-
-> do not quote me anywhere unless it was literally my verbatim prompt message
-
-Why: his voice is the publication's identity, and a spliced or trimmed quote is a fabrication in his byline even when every word was his once. This applies with the `personal-essays` collaboration protocol, which already forbids the agent from originating his opinions or feelings.
+This applies to articles, prompts, ADRs, tasks, research notes, code comments, and commit messages. Never invent his opinions, experiences, or feelings.

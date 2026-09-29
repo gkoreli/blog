@@ -17,7 +17,6 @@ Work from the relevant implementation, accepted decision, and latest task eviden
 | Production queries, incidents, acceptance, checkpoints, worktree recovery | [Operations and handoffs](references/operations-and-handoffs.md) |
 | Existing technology choices or architecture rationale | [Project decision register](../../../docs/reference/project-decisions.md), then the relevant ADR |
 | Documentation organization or instruction changes | [ADR-0017](../../../docs/adr/0017-on-demand-project-guidance.md) |
-| Historical state formerly kept in the root instructions | [Dated snapshot](../../../docs/handoffs/2026-09-28-instruction-state-snapshot.md), only when tracing history |
 
 For article work, start with [shape-article](../shape-article/SKILL.md). Read the [metadata contract](../article-discovery-positioning/references/metadata-and-discovery.md) when implementation changes metadata behavior, and the [research-footprint contract](../blog-writing/references/research-footprint.md) when changing provenance extraction. Before quoting Goga, read [owner quotations](../blog-writing/references/owner-quotations.md).
 
@@ -26,9 +25,9 @@ For article work, start with [shape-article](../shape-article/SKILL.md). Read th
 - Find the existing task/worklist and latest handoff before creating another record. Update the requested outcome, acceptance evidence, remaining work, and next bounded action there.
 - Keep implementation, deployment, and measured acceptance distinct. A saved historical result does not prove present service health.
 - Keep reusable procedures in skills or focused references; decisions and their rationale in ADRs; dated results in research artifacts, tasks, or handoffs. Private captures and logs stay outside Git.
-- Amend a decision deliberately when it changes. Preserve the superseded rationale and date instead of silently rewriting history.
+- Amend a decision deliberately when it changes. Keep the current rule in active guidance and the dated rationale in the ADR; do not require readers to reconcile old and new rules.
 - Keep `AGENTS.md` at 50–100 lines. Rely on `.agents/skills/` for skill discovery; do not add a skill catalogue or copy detailed procedures back into the root.
-- Repair active callers when guidance moves. Leave historical receipts intact, and record their replacement locations in a migration map.
+- Repair active callers when guidance moves. Keep historical receipts intact. Remove migration commentary, repeated skill summaries, and superseded alternatives from working instructions.
 
 ## Validate the actual change
 

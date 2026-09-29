@@ -40,3 +40,9 @@ The root should grow only for a broadly applicable constraint. Add new detailed 
 ## Migration and acceptance
 
 The [migration record](../editorial/2026-09-28-instruction-migration.md) identifies the exact original Git source, maps every source range, lists corrections, and records validation. [TASK-0148](../tasks/TASK-0148-reorganize-project-guidance-on-demand.md) tracks this work. This change does not publish or revise an article and adds no material to a released article's prompt file or research footprint.
+
+## Amendment — Active guidance
+
+Working instructions state the current rule directly. Keep change narratives, superseded alternatives, source conversations, and implementation receipts in decision or history records. Preserve the original files through their recorded Git revisions; do not retain contradictory prose in an active skill merely to preserve its wording.
+
+When rules conflict, resolve their scope in the rule itself. Authorship, factual accuracy, metadata mechanics, article form, and sentence style have different responsibilities. A preference for voice does not override evidence limits; an engineering structure does not apply automatically to an exposed essay.
