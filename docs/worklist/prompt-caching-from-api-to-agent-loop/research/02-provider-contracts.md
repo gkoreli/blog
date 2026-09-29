@@ -4,6 +4,18 @@ Official sources accessed 2026-09-28. This report covers documentation, not paid
 
 The important discovery: some APIs now directly support changing instructions and tool availability prospectively while preserving the existing prefix. This does not mean retroactively replacing an earlier instruction and treating the remaining KV state as equivalent.
 
+## Four controls that are easy to confuse
+
+A **cache boundary**, often called a breakpoint or anchor, marks how far into the input a provider should save or look for reusable state. It does not make the marked block independent of everything before it.
+
+A **TTL** is a time to live: the requested retention period. A longer TTL can make reuse possible after a longer pause, but can have a higher write price or storage charge. It does not make different input match.
+
+A **cache key** is an identity or routing hint whose meaning depends on the API. Giving two changed prompts the same key does not make their model computations equal. A **cache object** is different: it names a fixed saved piece of context that later requests can reference.
+
+Finally, **automatic caching** can mean the service chooses eligible prefixes without caller markers, or that an SDK/API keeps advancing a marker for you. Read the endpoint's rules before assuming which one applies.
+
+For a changing agent session, trace two requests: what prefix stayed the same, where did each request ask to save it, and what did the usage counters report? These questions connect the controls below to an observable result.
+
 ## Provider contract notes
 
 | Surface | Controls and thresholds | Lifetime and economics | Important limit |
@@ -61,13 +73,15 @@ The registry still goes in every request. References are expanded from the suppl
 
 Anthropic supports `diagnostics.previous_message_id`; the former beta header is no longer required. Opt in on the first request with a null previous ID, then carry response IDs forward. Diagnostics compare request fingerprints independently of actual hits. Reasons include model, tools, system, or history changes. Missing fingerprints and unavailable comparisons are inconclusive. `cache_missed_input_tokens` is a byte-derived estimate, not a billing counter. [Cache diagnostics](https://platform.claude.com/docs/en/build-with-claude/cache-diagnostics).
 
-## Counter normalization and limits
+## Read the usage counters without counting tokens twice
 
 - Anthropic total input = `input_tokens + cache_creation_input_tokens + cache_read_input_tokens`. Cached reads normally do not consume ITPM; Haiku 3.5 is a documented exception. Writes consume ITPM. [Rate limits](https://platform.claude.com/docs/en/api/rate-limits).
 - All three buckets count toward Anthropic's context window. [Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows).
 - Gemini GenerateContent `promptTokenCount` already includes `cachedContentTokenCount`; adding them double-counts. Python uses corresponding snake_case names. [Usage schema](https://ai.google.dev/api/generate-content#UsageMetadata).
 - Gemini Interactions reports `usage.total_cached_tokens`, a different response surface. [Interactions caching](https://ai.google.dev/gemini-api/docs/caching).
 - Bedrock Converse total = `inputTokens + cacheReadInputTokens + cacheWriteInputTokens`. Bedrock Responses has a different, OpenAI-shaped schema. [Bedrock caching](https://docs.aws.amazon.com/us_en/bedrock/latest/userguide/prompt-caching.html).
+
+For example, an Anthropic response with 100 ordinary input tokens, 900 cache reads, and no writes represents 1,000 input tokens. A Gemini GenerateContent response with `promptTokenCount: 1000` and `cachedContentTokenCount: 900` also represents 1,000 input tokens, not 1,900. The field names differ, and so does the arithmetic. Keep the original counters when building a cross-provider dashboard.
 
 ## Gemini's cache object is immutable context
 

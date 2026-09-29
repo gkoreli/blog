@@ -14,7 +14,7 @@
     "noImplicitReturns": true
   },
   "include": [
-    "../../../packages/blog/drafts/prompt-cache-context-edits.ts",
+    "../../../packages/blog/posts/prompt-cache-context-edits.ts",
     "../../../packages/blog/drafts/prompt-cache-preview.ts"
   ]
 }

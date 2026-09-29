@@ -9,7 +9,7 @@ Recorded September 28, 2026 America/Los_Angeles; live requests occurred Septembe
 - Compared direct-provider and routed contracts, including differing counters, boundaries, retention, and prospective system/tool controls. Reports retain primary-source and commit links.
 - Executed actual Pi transcript functions and published Vercel provider packages with mocked network calls. No provider behavior is inferred from those local outputs alone.
 - Completed 27 direct Sonnet 5.5 requests for an estimated **$0.1777092**, inside the user's $5–10 allowance. The independent review recalculated usage costs and checked request hashes/model identity against private receipts. All 27 answers passed the fixture's two-field check; no general quality or speed improvement is claimed.
-- Wrote [the article](article-draft.md) and [TypeScript presentation](../../../packages/blog/drafts/prompt-cache-context-edits.ts), with shared-theme CSS, native expandable measurement rows, a layer map, and an inline dependency infographic. The article and its important numbers remain readable without JavaScript. No new package dependency was added to the blog.
+- Wrote [the article](article-draft.md) and [TypeScript presentation](../../../packages/blog/posts/prompt-cache-context-edits.ts), with shared-theme CSS, native expandable measurement rows, a layer map, and an inline dependency infographic. The article and its important numbers remain readable without JavaScript. No new package dependency was added to the blog.
 - Preserved complete substantive user messages in the three linked prompt records. The initial docs-only preference was superseded by explicit paid-API authorization. No credential values are in those records.
 
 ## Editorial assessment

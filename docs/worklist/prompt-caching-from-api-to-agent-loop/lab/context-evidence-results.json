@@ -1,0 +1,423 @@
+{
+  "run": "20260929T065558Z",
+  "prices_per_million_usd": {
+    "input": "2",
+    "write_5m": "2.5",
+    "write_1h": "4",
+    "read": "0.2",
+    "output": "10"
+  },
+  "conservative_plan_reserve_usd": 0.94096,
+  "budget_cap_usd": 1,
+  "estimated_total_usd": 0.0308808,
+  "rows": [
+    {
+      "replicate": 0,
+      "case": "original_v1",
+      "at_utc": "2026-09-29T06:55:58.381821+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 116,
+        "cache_creation_input_tokens": 3586,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3586,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 54,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "service_tier": "standard",
+        "inference_geo": "global"
+      },
+      "elapsed_seconds": 2.0813902919999236,
+      "stop_reason": "end_turn",
+      "expected": {
+        "unit_price_usd": 17,
+        "units": 6,
+        "total_usd": 102,
+        "source_id": "inventory:v1",
+        "stale_assistant_answer_present": false
+      },
+      "answer": {
+        "unit_price_usd": 17,
+        "units": 6,
+        "total_usd": 102,
+        "source_id": "inventory:v1",
+        "stale_assistant_answer_present": false
+      },
+      "field_matches": {
+        "unit_price_usd": true,
+        "units": true,
+        "total_usd": true,
+        "source_id": true,
+        "stale_assistant_answer_present": true
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.009737,
+      "request_sha256": "61b550dc21b4477409c0b855befe0e9399a55e37cb09964ef866800ef24c139d",
+      "request_bytes": 12755,
+      "assistant_content_sha256": "6ba08d7c0e7eb86fb2bbfb72804c8eee48b0a9d3dc661cdcb4ff45263749c92c",
+      "replayed_assistant_sha256": null,
+      "private_receipt_sha256": "afc132ca465c2dd2e3b11bb48c95afe52c990f4874d290a980e3b219c6a50256"
+    },
+    {
+      "replicate": 0,
+      "case": "replace_and_drop_answer",
+      "at_utc": "2026-09-29T06:56:00.465091+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 116,
+        "cache_creation_input_tokens": 76,
+        "cache_read_input_tokens": 3510,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 76,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 54,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "service_tier": "standard",
+        "inference_geo": "global"
+      },
+      "elapsed_seconds": 1.750080374999925,
+      "stop_reason": "end_turn",
+      "expected": {
+        "unit_price_usd": 23,
+        "units": 9,
+        "total_usd": 207,
+        "source_id": "inventory:v2",
+        "stale_assistant_answer_present": false
+      },
+      "answer": {
+        "unit_price_usd": 23,
+        "units": 9,
+        "total_usd": 207,
+        "source_id": "inventory:v2",
+        "stale_assistant_answer_present": false
+      },
+      "field_matches": {
+        "unit_price_usd": true,
+        "units": true,
+        "total_usd": true,
+        "source_id": true,
+        "stale_assistant_answer_present": true
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.001664,
+      "request_sha256": "1747cb25f2462d0969286b8250d018b46c654d732e4c4479e646dc6659a31bbe",
+      "request_bytes": 12755,
+      "assistant_content_sha256": "b72b83c4e08d2c86912e0fe7b0970870b817878735e954ca9bd93f8a2cb73c4e",
+      "replayed_assistant_sha256": null,
+      "private_receipt_sha256": "c5c104ad56b9e687035828eaec43ca8a891bf8159b2a4a29806b06e5469632c0"
+    },
+    {
+      "replicate": 0,
+      "case": "append_and_keep_answer",
+      "at_utc": "2026-09-29T06:56:02.216853+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 116,
+        "cache_creation_input_tokens": 290,
+        "cache_read_input_tokens": 3586,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 290,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 54,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "service_tier": "standard",
+        "inference_geo": "global"
+      },
+      "elapsed_seconds": 1.8500445829995442,
+      "stop_reason": "end_turn",
+      "expected": {
+        "unit_price_usd": 23,
+        "units": 9,
+        "total_usd": 207,
+        "source_id": "inventory:v2",
+        "stale_assistant_answer_present": true
+      },
+      "answer": {
+        "unit_price_usd": 23,
+        "units": 9,
+        "total_usd": 207,
+        "source_id": "inventory:v2",
+        "stale_assistant_answer_present": true
+      },
+      "field_matches": {
+        "unit_price_usd": true,
+        "units": true,
+        "total_usd": true,
+        "source_id": true,
+        "stale_assistant_answer_present": true
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.0022142,
+      "request_sha256": "a5ed9cb822b45c77fe3ecab073edc65f79bd10f6315f5b541c95ea31fefb0010",
+      "request_bytes": 13718,
+      "assistant_content_sha256": "56e71909e98cdef9372a16944e8988c07b1e85c886fa120ecd89f4a11951de3e",
+      "replayed_assistant_sha256": "6ba08d7c0e7eb86fb2bbfb72804c8eee48b0a9d3dc661cdcb4ff45263749c92c",
+      "private_receipt_sha256": "ccbc7b41799ccb9670fffbf9c4c6a4836fc30d793982fb1f0d0b5e25197d0ba2"
+    },
+    {
+      "replicate": 0,
+      "case": "replace_and_keep_answer",
+      "at_utc": "2026-09-29T06:56:04.068965+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 284,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 3586,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 54,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "service_tier": "standard",
+        "inference_geo": "global"
+      },
+      "elapsed_seconds": 1.8193999160002932,
+      "stop_reason": "end_turn",
+      "expected": {
+        "unit_price_usd": 23,
+        "units": 9,
+        "total_usd": 207,
+        "source_id": "inventory:v2",
+        "stale_assistant_answer_present": true
+      },
+      "answer": {
+        "unit_price_usd": 23,
+        "units": 9,
+        "total_usd": 207,
+        "source_id": "inventory:v2",
+        "stale_assistant_answer_present": true
+      },
+      "field_matches": {
+        "unit_price_usd": true,
+        "units": true,
+        "total_usd": true,
+        "source_id": true,
+        "stale_assistant_answer_present": true
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.0018252,
+      "request_sha256": "2bda19660f9c4891a6d67c7f7edca035c8dac2a9591d3ec7cab31939dbb50fc7",
+      "request_bytes": 13342,
+      "assistant_content_sha256": "56e71909e98cdef9372a16944e8988c07b1e85c886fa120ecd89f4a11951de3e",
+      "replayed_assistant_sha256": "6ba08d7c0e7eb86fb2bbfb72804c8eee48b0a9d3dc661cdcb4ff45263749c92c",
+      "private_receipt_sha256": "e99db50d805cf77fb57e6972db1a1a2723fdfc41a1ab92482f476af9918692af"
+    },
+    {
+      "replicate": 1,
+      "case": "original_v1",
+      "at_utc": "2026-09-29T06:56:05.891019+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 116,
+        "cache_creation_input_tokens": 3586,
+        "cache_read_input_tokens": 0,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 3586,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 54,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "service_tier": "standard",
+        "inference_geo": "global"
+      },
+      "elapsed_seconds": 2.0674103330002254,
+      "stop_reason": "end_turn",
+      "expected": {
+        "unit_price_usd": 17,
+        "units": 6,
+        "total_usd": 102,
+        "source_id": "inventory:v1",
+        "stale_assistant_answer_present": false
+      },
+      "answer": {
+        "unit_price_usd": 17,
+        "units": 6,
+        "total_usd": 102,
+        "source_id": "inventory:v1",
+        "stale_assistant_answer_present": false
+      },
+      "field_matches": {
+        "unit_price_usd": true,
+        "units": true,
+        "total_usd": true,
+        "source_id": true,
+        "stale_assistant_answer_present": true
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.009737,
+      "request_sha256": "f35d88871d86a48736788c50a7c5d04bd17254c9e0f473c9257990b4b3c29ac1",
+      "request_bytes": 12755,
+      "assistant_content_sha256": "6ba08d7c0e7eb86fb2bbfb72804c8eee48b0a9d3dc661cdcb4ff45263749c92c",
+      "replayed_assistant_sha256": null,
+      "private_receipt_sha256": "9745f65a977081fe37b0d67898fd683dcb1910dfc6cf31c20415da79585dbbd3"
+    },
+    {
+      "replicate": 1,
+      "case": "replace_and_drop_answer",
+      "at_utc": "2026-09-29T06:56:07.959120+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 116,
+        "cache_creation_input_tokens": 76,
+        "cache_read_input_tokens": 3510,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 76,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 54,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "service_tier": "standard",
+        "inference_geo": "global"
+      },
+      "elapsed_seconds": 2.007030334000774,
+      "stop_reason": "end_turn",
+      "expected": {
+        "unit_price_usd": 23,
+        "units": 9,
+        "total_usd": 207,
+        "source_id": "inventory:v2",
+        "stale_assistant_answer_present": false
+      },
+      "answer": {
+        "unit_price_usd": 23,
+        "units": 9,
+        "total_usd": 207,
+        "source_id": "inventory:v2",
+        "stale_assistant_answer_present": false
+      },
+      "field_matches": {
+        "unit_price_usd": true,
+        "units": true,
+        "total_usd": true,
+        "source_id": true,
+        "stale_assistant_answer_present": true
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.001664,
+      "request_sha256": "852d5c14540d5a07b116164ace55e54c90e561f1fa60ae5f3a99fd99f972e5ff",
+      "request_bytes": 12755,
+      "assistant_content_sha256": "b72b83c4e08d2c86912e0fe7b0970870b817878735e954ca9bd93f8a2cb73c4e",
+      "replayed_assistant_sha256": null,
+      "private_receipt_sha256": "040b393612752af0fcb8f7d2853402ba0ad7dffecd2b02f9f6d4984159a02926"
+    },
+    {
+      "replicate": 1,
+      "case": "append_and_keep_answer",
+      "at_utc": "2026-09-29T06:56:09.966871+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 116,
+        "cache_creation_input_tokens": 290,
+        "cache_read_input_tokens": 3586,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 290,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 54,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "service_tier": "standard",
+        "inference_geo": "global"
+      },
+      "elapsed_seconds": 1.6111679170007847,
+      "stop_reason": "end_turn",
+      "expected": {
+        "unit_price_usd": 23,
+        "units": 9,
+        "total_usd": 207,
+        "source_id": "inventory:v2",
+        "stale_assistant_answer_present": true
+      },
+      "answer": {
+        "unit_price_usd": 23,
+        "units": 9,
+        "total_usd": 207,
+        "source_id": "inventory:v2",
+        "stale_assistant_answer_present": true
+      },
+      "field_matches": {
+        "unit_price_usd": true,
+        "units": true,
+        "total_usd": true,
+        "source_id": true,
+        "stale_assistant_answer_present": true
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.0022142,
+      "request_sha256": "b4611a665ea67f28b4578a4edcf00c03ad924f6fd8045de74f5b87bf42d4ae09",
+      "request_bytes": 13718,
+      "assistant_content_sha256": "56e71909e98cdef9372a16944e8988c07b1e85c886fa120ecd89f4a11951de3e",
+      "replayed_assistant_sha256": "6ba08d7c0e7eb86fb2bbfb72804c8eee48b0a9d3dc661cdcb4ff45263749c92c",
+      "private_receipt_sha256": "13f58acee7b9d7d8bed833d00712fc4392855cd83546cd334ea7a06af6eb9c77"
+    },
+    {
+      "replicate": 1,
+      "case": "replace_and_keep_answer",
+      "at_utc": "2026-09-29T06:56:11.578870+00:00",
+      "model": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 284,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 3586,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 54,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "service_tier": "standard",
+        "inference_geo": "global"
+      },
+      "elapsed_seconds": 1.7274682920005944,
+      "stop_reason": "end_turn",
+      "expected": {
+        "unit_price_usd": 23,
+        "units": 9,
+        "total_usd": 207,
+        "source_id": "inventory:v2",
+        "stale_assistant_answer_present": true
+      },
+      "answer": {
+        "unit_price_usd": 23,
+        "units": 9,
+        "total_usd": 207,
+        "source_id": "inventory:v2",
+        "stale_assistant_answer_present": true
+      },
+      "field_matches": {
+        "unit_price_usd": true,
+        "units": true,
+        "total_usd": true,
+        "source_id": true,
+        "stale_assistant_answer_present": true
+      },
+      "correct": true,
+      "estimated_cost_usd": 0.0018252,
+      "request_sha256": "16c2a05aba7da1702b73d7754af33ca702292913965056247d2b6c4f619735ae",
+      "request_bytes": 13342,
+      "assistant_content_sha256": "56e71909e98cdef9372a16944e8988c07b1e85c886fa120ecd89f4a11951de3e",
+      "replayed_assistant_sha256": "6ba08d7c0e7eb86fb2bbfb72804c8eee48b0a9d3dc661cdcb4ff45263749c92c",
+      "private_receipt_sha256": "c25bbd23194011d7d8bf131eec2f035000a1cd414677bcf6060a152bcaebf982"
+    }
+  ]
+}

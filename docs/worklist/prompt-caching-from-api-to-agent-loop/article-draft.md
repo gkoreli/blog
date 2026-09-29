@@ -1,44 +1,60 @@
 # Can You Change an Agent’s Context Without Losing Its Prompt Cache?
 
-Working draft, September 28, 2026. Prepared for author review; not published. Provider contracts and source revisions are dated in the linked research.
+Historical prose draft, September 28–29, 2026. Superseded by [the canonical TypeScript article](../../../packages/blog/posts/prompt-cache-context-edits.ts), which now owns the prose and layout. Kept to preserve the drafting history; later edits belong in the TypeScript post.
 
-Changing an agent's instructions does not always require paying to process its whole conversation again. In a small Sonnet 5.5 experiment, replacing an instruction near the beginning caused a complete cache miss. Appending the same requested policy change as a new system message preserved **7,870 cached tokens**. Both returned the two fields the test expected. Those are different representations of the task, though, and that distinction matters more than the cache-hit number.
+I'm building an agent harness, and I want to change its instructions, tools, and retrieved documents without paying to process the whole conversation again. The catch is correctness. A cheap request is no use if the model is still working from an outdated instruction or a document I meant to remove.
 
-I'm building a harness. I want instruction changes, tools, and retrieved documents to be flexible without turning every adjustment into another expensive prefill. I also want correctness: keeping a cache is useless if the model is now reasoning from state that no longer represents its input.
+My starting picture was a Jenga tower: change something near the bottom of the prompt and everything above it needs rebuilding. That is mostly right for an edit to earlier text. But an agent has other ways to handle change. It can append a new instruction, return to an earlier conversation branch, or deliberately replace a long history with a shorter one.
 
-The investigation produced four findings:
+In a small Sonnet 5.5 test, changing an instruction near the start caused a complete cache miss. Appending the new instruction instead preserved **7,870 cached tokens**. Both requests produced the expected answer. Understanding why those requests differ is the key to building a flexible harness without treating every change as a fresh conversation.
 
-- Editing history generally invalidates downstream state in a conventional causal transformer. Similar meaning does not establish reusable computation.
-- APIs can support **prospective updates** that preserve history. Some SDKs and harnesses already implement them; support depends on the exact route and version.
-- A provider can reuse less than the mathematically unchanged prefix because of stored boundaries, lookup rules, routing, or expiry.
-- Cache hits reduce input work and cost. They do not guarantee a faster complete response, a smaller context window, or correct task behavior.
+## What the model saves
 
-The evidence includes pinned source audits, a numerical dependency experiment, actual Pi and SDK reproductions, and 27 direct Anthropic requests. The live run cost an estimated **$0.1777**. It covers one synthetic task on one model, not a ranking of inference providers. [Methods and all observations](research/05-live-anthropic-experiment.md).
+A prompt first becomes **tokens**: numbers representing pieces of text and the message structure around them. Tokens are often shorter than words. The model turns those numbers into vectors, which are lists of values, then processes them through a stack of layers.
 
-## The cache stores a computation with a history
+At an attention layer, it creates three kinds of vectors. A **query** is used to decide which earlier positions to attend to. Each earlier position has a **key** used in that comparison and a **value** carrying information to combine into the result. The names are usually shortened to Q, K, and V. These are learned numerical representations, not a database of facts.
 
-An LLM does work before it can produce the first output token. During **prefill**, it processes the input and creates per-layer key/value state. During **decode**, it generates additional tokens while attending to permitted earlier state. Prompt caching makes compatible state available to another request so the service can skip some repeated prefill.
+When generating the next token, the model needs keys and values for the text already processed. Saving them avoids computing them again. That saved state is the **KV cache**. It exists during ordinary generation even when no provider offers a prompt-caching discount. Reusing compatible state in a later request is the additional step called prompt caching. [Attention mechanism](https://arxiv.org/abs/1706.03762), [walkthrough of the serving code](research/08-kv-cache-walkthrough.md).
 
-For a conventional causal transformer, the important dependency is:
+There are two stages to keep separate:
+
+- **Prefill:** process the input and create its KV state. A prompt-cache hit can skip much of this work for an unchanged beginning.
+- **Decode:** produce new output tokens. With ordinary full attention, each new token still attends over the earlier keys and values. Keeping 100,000 tokens cached does not make them disappear from the next token's computation or from the context window.
+
+<!-- cache:prefill:start -->
+![Prefill creates saved state; decoding still reads earlier state](assets/prefill-decode.svg)
+<!-- cache:prefill:end -->
+
+That helps explain why a cache hit can be cheap without making the whole response fast. The server may still queue the request, move saved state into GPU memory, process new input, and generate a long answer.
+
+## Why one earlier edit affects later text
+
+A **prefix** is the beginning of the input. A **suffix** is what follows it. For ordinary causal attention, each position can use earlier positions but cannot use future ones. Appending a message therefore leaves the earlier computation valid. Changing an earlier message can change what later positions compute.
+
+Imagine an instruction followed by a document:
 
 ```text
-token + position
-    → representation after attention to earlier tokens
-    → deeper-layer keys and values
-    → later tokens' computations
+Original:  [Report prices in USD.] [A long document about prices…]
+Edited:    [Report prices in EUR.] [The same document…]
 ```
 
-The causal mask prevents future text from changing earlier representations. That is why appending another turn can preserve the previous prefix. It does not prevent earlier text from influencing later representations. An unchanged paragraph following a changed system instruction can therefore have different deep-layer state. [Transformer decoder masking and attention](https://arxiv.org/abs/1706.03762).
+The document's words are unchanged. Its deeper-layer representations need not be: those layers processed the document with the earlier instruction available. Reusing the old document state after replacing USD with EUR can feed the model numbers from a different input than the one requested. Similar meaning, a small text diff, or an unchanged document hash cannot prove the computation is interchangeable.
 
-This is where my initial picture of a stack collapsing after an edit was useful, but incomplete. A server can retain multiple histories. Changing one request need not delete the old request's cache. Returning to an already computed branch can work, provided its entries are still available. What does not generally work is attaching that branch's downstream state to a different beginning.
+The serving code tracks this dependency. In vLLM, the identifier for a cached block combines its tokens with the previous block's identifier and other relevant inputs. In simplified pseudocode:
 
-The indexing reflects this dependency. In the audited vLLM source, a block hash includes the preceding block's hash, current tokens, and relevant extra keys. SGLang walks a prefix tree and splits at divergence. These structures preserve compatible histories; they do not make arbitrary suffix transplantation valid. [vLLM hash construction](https://github.com/vllm-project/vllm/blob/28f673957671d8d4c5672c2085b3f22c79c0b0b5/vllm/v1/core/kv_cache_utils.py#L650), [SGLang matching](https://github.com/sgl-project/sglang/blob/2ff52e3ceb0bcfdc8ba1dd0367b39ce0370bbfaf/python/sglang/srt/mem_cache/radix_cache.py#L639).
+```text
+block_id = hash(previous_block_id, token_ids, extra_keys)
+```
+
+Changing an early block changes the identifiers of later blocks even when their own tokens stay the same. SGLang organizes cached prefixes as a tree, so requests can share the beginning and branch where they differ. [vLLM block hashing](https://github.com/vllm-project/vllm/blob/28f673957671d8d4c5672c2085b3f22c79c0b0b5/vllm/v1/core/kv_cache_utils.py#L650), [SGLang prefix matching](https://github.com/sgl-project/sglang/blob/2ff52e3ceb0bcfdc8ba1dd0367b39ce0370bbfaf/python/sglang/srt/mem_cache/radix_cache.py#L639).
+
+A new branch does not have to destroy the old one. If I later send the original USD request again, the server may still have its cached state. The limit is availability: entries can expire or be evicted to make room for other work.
 
 <!-- cache:dependencies:start -->
 ![A causal dependency grid and retained prefix branches](assets/cache-dependencies.svg)
 <!-- cache:dependencies:end -->
 
-The [local lab](lab/kv_dependency.py) makes this numerical. It uses an untrained three-layer transformer, edits one early token without changing sequence length, and compares three computations:
+A [small numerical example](lab/kv_dependency.py) shows the difference. It uses an untrained three-layer transformer and replaces one early token without changing the input length. The table compares its final output scores, called logits, with a fresh calculation:
 
 | Computation | Maximum difference from fresh final logits |
 |---|---:|
@@ -46,13 +62,13 @@ The [local lab](lab/kv_dependency.py) makes this numerical. It uses an untrained
 | Recompute the changed token, splice the old suffix state back in | 0.339935 |
 | Append new context to a valid cached prefix | 0 |
 
-The number has no language-quality meaning; the model is untrained. It demonstrates that the shortcut computes something different. At an unchanged later token, first-layer K/V remained identical while deeper layers changed. That is a useful correction to the loose claim that every cached value after an edit must change.
+Reusing the valid beginning gives the same result. Reattaching the old later state gives a different result. This does not measure answer quality: the tiny model has never learned language. It also shows why “every value after an edit changes” is too strong. At an unchanged later token, the first layer’s keys and values stayed equal; deeper layers changed.
 
-The zero differences come from the toy's identical arithmetic order. They do not promise bitwise identity across GPU kernels, batching, precision, or sampled responses. [Recorded result and reproduction limits](lab/README.md).
+The exact zeros come from running the same arithmetic in the same order. Real serving systems can use different numerical precision or GPU execution orders, so this is not a promise of bit-for-bit identical outputs. [Recorded result and reproduction limits](lab/README.md).
 
-## Four layers decide whether reusable work is actually reused
+## Follow one request through the four layers
 
-A harness can construct an eligible request without receiving a cache hit. A server can hold useful state that the API offers no way to select. Each layer controls a different part of the result.
+Suppose the user asks an agent to inspect a file. The harness chooses the messages and tools, an SDK turns them into an API request, and the provider runs the model. When the model asks to read the file, the harness executes that tool and sends another request with the result attached.
 
 <!-- cache:layers:start -->
 | Layer | What it controls | What to inspect |
@@ -63,13 +79,15 @@ A harness can construct an eligible request without receiving a cache hit. A ser
 | Agent harness | History, prompt versions, tools, retrieved context, compaction, retries | The operation before and after provider conversion |
 <!-- cache:layers:end -->
 
-Consider a two-turn tool interaction. The first request contains instructions, tool definitions, and the user's question. The model generates a tool call. The harness executes it and sends a second request containing the prior conversation plus the tool result. The service can potentially reuse the earlier prefix and process the new suffix. The fact that this was one UI conversation does not itself provide that reuse: the adapter must preserve the relevant input, the API must recognize an eligible boundary, and the serving path must have the entry.
+The second request contains the earlier instructions and conversation, followed by the tool call and result. That repeated beginning is a candidate for reuse. The provider still has to recognize an allowed cache boundary and find the saved state. A conversation in the UI is not proof that either happened.
 
-Likewise, a conversation ID can restore history without guaranteeing cached inference. An explicit cache object can represent a fixed prefix without supporting arbitrary edits. A response cache can return an old answer without running the model at all. These mechanisms solve different problems; calling all of them caching obscures the useful distinctions.
+The API's JSON is also not the model's literal input. Providers render roles, tool definitions, images, and messages into their own model input. An SDK can move instructions or transform a tool schema before that rendering happens. To explain a miss, inspect what was actually sent, then compare the returned usage counters.
 
-## What the live experiment established
+A conversation ID may tell a provider which history to restore. A named cache object may refer to a fixed saved prefix. A response cache may return a previous answer without running the model. None of these names, on its own, means that arbitrary edited text can reuse old KV state.
 
-The synthetic task asked Sonnet 5.5 for a currency and the value of one record. The prompt had a system policy, reference text, two blocks of records, and explicit five-minute cache boundaries. Each variant kept the same model, low effort, and output cap. Three distinct baseline prefixes separated the repetitions.
+## Changing the request in six different ways
+
+The test asked Sonnet 5.5 to return two fields: a currency from the system instruction and a value from record 137. The input contained instructions, reference text, and two blocks of records. Each block ended at an explicit cache boundary: a place where the API was asked to save the preceding input for five minutes. The nine-case sequence ran three times, for 27 requests costing about $0.18. Six of the cases show the useful contrasts:
 
 <!-- cache:measurements:start -->
 | Change | Cache reads | New cache writes | Mean estimated whole-request cost |
@@ -84,49 +102,67 @@ The synthetic task asked Sonnet 5.5 for a currency and the value of one record. 
 
 Read/write counts were the same in all three repetitions of each case. Every answer matched its expected currency and record value. The early edit and appended instruction both changed the expected currency from USD to EUR; the middle edit changed the expected record value.
 
-The middle edit is especially instructive. Reuse stopped at the earlier stored boundary. The second record block was processed again, including unchanged records before the edited record. The mathematical dependency boundary and the API's reusable boundary were not identical.
+Changing record 137 preserved the earlier 5,371-token boundary. The entire second record block was processed again, including its unchanged records before 137. The provider had a saved entry at the block boundary; it did not expose reuse at every unchanged token. “How much text is unchanged?” and “where can this API resume?” can have different answers.
 
 The inline tool request was accepted and kept the prefix hit. It did **not** test whether the model could select or correctly call that tool: the prompt prohibited tool calls. Nor did the test cache the appended control messages for a future turn; all explicit markers were before them.
 
-Cheap also did not mean faster in this sample. The appended-system case had median time to first visible text of **1.761 seconds**, versus **1.432 seconds** for the early edit. Two appended requests generated extra thinking tokens. Timing includes transport, queueing and reasoning; with three ordered samples per case, it would be misleading to claim a general latency result. The measured result is preserved input reuse with lower estimated request cost and a narrow successful behavior check. [Complete method, timing ranges, and counters](research/05-live-anthropic-experiment.md).
+Cheap also did not mean faster in this sample. The appended-system case had median time to first visible text of **1.761 seconds**, versus **1.432 seconds** for the early edit. Two appended requests generated extra thinking tokens. Timing includes transport, queueing and reasoning; with three ordered samples per case, it would be misleading to claim a general latency result. Appending the update preserved input reuse and cost less here. The two answer fields passed; broader instruction-following behavior was not tested. [Complete method, timing ranges, and counters](research/05-live-anthropic-experiment.md).
 
 For budgeting, separate the stable prefix from everything else. If it contains `P` tokens, appears in `N` requests, and is written once then successfully read on every repeat, its cost is `P × (write price + (N − 1) × read price)`, with prices expressed per token. The uncached comparison is `P × N × ordinary input price`. Add new input, output, and any storage charges separately.
 
 At the tested Sonnet rates, a five-minute write costs 1.25 times ordinary input and a read costs 0.1 times. One successful reuse already pays back the write premium: 1.25 + 0.1 is less than two ordinary prefills. A one-hour write at twice ordinary input would need two successful reuses: 2 + 0.1 is still more than two prefills, but 2 + 0.1 + 0.1 is less than three. These are prefix-only calculations assuming hits inside retention, not measured whole-task savings. Keeping irrelevant text merely to improve hit rate can still cost more than shortening the context. [Dated prices and counter rules](research/05-live-anthropic-experiment.md).
 
-## APIs can represent change without rewriting the past
+## Add an instruction for the next turn
 
 Anthropic's current API supports system messages within the conversation on selected models, including the tested Sonnet 5.5. A new instruction retains system authority while leaving the preceding prefix intact. Tool additions and removals have their own protocol, including beta inline definitions. This is useful for tools unknown at session start or a schema that changes later. The inline path has constraints, including an initially present non-deferred tool to avoid changing the rendered head when the first new tool appears. [Official update contract](https://platform.claude.com/docs/en/build-with-claude/mid-conversation-system-messages).
 
-OpenAI also documents prospective controls: restrict callable tools while keeping their definitions stable, load deferred tools later, or append supported reasoning-configuration updates. Its current caching behavior differs by model generation; older advice about automatic interval caching and retention keys does not fully describe newer explicit boundaries. [OpenAI cache controls](https://developers.openai.com/api/docs/guides/prompt-caching).
+The important change is where the new instruction goes. This shortened request shows the shape; the omitted document must be long enough to meet the model's caching threshold:
 
-The providers do not expose one interchangeable abstraction:
+```json
+{
+  "system": [{"type": "text", "text": "Report prices in USD."}],
+  "messages": [
+    {"role": "user", "content": [{
+      "type": "text",
+      "text": "The original document…",
+      "cache_control": {"type": "ephemeral", "ttl": "5m"}
+    }]},
+    {"role": "system", "content": "From now on, report prices in EUR."}
+  ]
+}
+```
+
+The USD instruction and document remain where they were. The new system message changes the instruction for what follows. This is a supported API operation on the tested model; putting the same words in an ordinary user message would give them a different role.
+
+OpenAI also documents controls for later turns: restrict callable tools while keeping their definitions stable, load deferred tools later, or append supported reasoning-configuration updates. Its current caching behavior differs by model generation; older advice about automatic interval caching and retention keys does not fully describe newer explicit boundaries. [OpenAI cache controls](https://developers.openai.com/api/docs/guides/prompt-caching).
+
+The details differ across APIs:
 
 | Surface | Distinction that changes harness design |
 |---|---|
-| OpenAI | Model-dependent implicit/explicit boundaries and configuration updates; API generation matters |
-| Anthropic | Explicit or automatically advancing boundaries, plus supported mid-conversation system/tool controls |
-| Gemini | Implicit reuse versus named explicit cache resources; contents of an explicit resource are immutable |
-| DeepSeek | Persisted prefix units; a common prefix can become reusable only after the corresponding unit is stored |
-| OpenRouter | Upstream translation and provider affinity; staying on a route and hitting an inference cache are separate |
+| OpenAI | Some models select boundaries automatically; newer models also let callers mark them explicitly. Supported configuration updates can be appended. |
+| Anthropic | Mark blocks yourself or use an automatically advancing boundary. Supported models accept later system and tool updates. |
+| Gemini | Automatic reuse and named cache objects are different features. A named object’s stored content cannot be edited. |
+| DeepSeek | Matching text is reusable only where the service has stored a suitable prefix unit. |
+| OpenRouter | Routes requests to other providers. Staying with the same provider helps locality but does not prove a cache hit. |
 
 The [dated provider report](research/02-provider-contracts.md) records endpoints, limits, counters, hosted-platform distinctions, and authoritative links. In particular, current Gemini Interactions and GenerateContent expose different caching surfaces. Do not transfer the contract of one endpoint to another because both use the same model family. [Gemini caching](https://ai.google.dev/gemini-api/docs/caching), [explicit resources](https://ai.google.dev/api/caching), [DeepSeek persistence](https://api-docs.deepseek.com/guides/kv_cache/), [OpenRouter routing](https://openrouter.ai/docs/guides/best-practices/prompt-caching).
 
-For my harness, the useful operation is often *apply this policy from now on*. That can fit an append-only protocol. *Pretend the earlier instruction never existed* is a different requirement. So is deleting sensitive context. An appended correction does not remove old information from the input or its cached representations.
+For my harness, *apply this policy from now on* is often enough. A supported system message can express that without changing earlier messages. Removing earlier information is a separate operation: an appended correction leaves the old text and its saved representations in place.
 
-## The SDK can preserve a feature—or hide it
+## Check what the SDK actually sends
 
-Provider support is not enough. The request has to survive the SDK's model of the world.
+An API feature is useful only if the SDK sends the right fields.
 
-The [mocked SDK experiment](lab/sdk-wire.mjs) executed published Vercel provider packages and captured their outgoing requests. OpenAI explicit breakpoints and TTL controls survived. An Anthropic mid-conversation system message and tool-removal reference survived too. These are implemented features, not hypothetical improvements.
+The [mocked SDK experiment](lab/sdk-wire.mjs) executed published Vercel provider packages and captured their outgoing requests. OpenAI explicit breakpoints and TTL controls survived. An Anthropic mid-conversation system message and tool-removal reference survived too. Those controls reached the outgoing JSON.
 
-There was a smaller gap: the tested OpenAI provider-options schema accepted `mode` and `ttl`, but had no diagnostics comparison-ID field. Supplying an invented JavaScript option did not forward it. The official OpenAI SDK exposed the underlying field. That is a reason to inspect the adapter, use a supported escape hatch, or add an explicit capability—not evidence that the SDK's caching is generally defective. [Versioned SDK findings](research/04-openai-sdk-codex.md).
+There was a smaller gap: the tested OpenAI provider-options schema accepted `mode` and `ttl`, but had no diagnostics comparison-ID field. Supplying an invented JavaScript option did not forward it. The official OpenAI SDK exposed the underlying field. Adding a property to a JavaScript object does not guarantee that an adapter will forward it. This particular gap affected diagnostics; the tested caching controls worked. [Versioned SDK findings](research/04-openai-sdk-codex.md).
 
-A cache-aware abstraction should make unsupported operations visible. Silently treating an update as a full prompt rebuild can preserve functionality while surprising the caller with very different cost. Discarding an unsupported diagnostics option is another kind of surprise. Capturing the serialized request is how to tell which happened.
+When an adapter cannot express a requested update, the caller needs to know what it did instead. Rebuilding the leading prompt may apply the new instruction but change the cost of every following token. A capture of the outgoing request makes that fallback visible.
 
-## Harnesses are already doing substantial work here
+## How existing harnesses handle changes
 
-My suspicion was that these layers might leave useful caching features unused. The source audit narrowed that suspicion. Several harnesses already implement careful, provider-specific behavior.
+The implementations already contain useful ideas to borrow. They also show why a single `cache: true` option cannot describe every operation.
 
 | Harness | Finding at the audited revision |
 |---|---|
@@ -141,23 +177,67 @@ The [harness audit](research/03-harness-audit.md), [Codex audit](research/04-ope
 
 Pi supplied the clearest local reproduction. Using its actual pinned transcript functions, the same system-section change kept the original prefix when native mid-conversation support was enabled. With that capability disabled or unspecified, it replaced the section in the leading system message. Both representations replayed to the same current system text in Pi's helper, but that does not make them identical model inputs. [Fixture and returned transcripts](lab/pi-transcript-results.json).
 
-That is a concrete requirement for a harness API: expose the difference between an append, a history rewrite, and a provider fallback. The user should not need to discover it from a bill.
+A harness can expose that result directly: the update was appended, earlier history was rewritten, or the provider does not support the requested operation. That lets callers choose whether the fallback is acceptable before sending the request.
 
-## Research does attempt reusable pieces of context
+## Replacing a document can be cheaper than appending a correction
 
-The inference question remains interesting even after the API improvements. Could independently cached pieces be assembled with only a little repair?
+Instructions are only half the problem. An agent also needs to replace evidence: a file changes, a search result is outdated, or a tool returns a newer record. Keeping the old version can preserve cache hits while leaving more work for the model.
+
+A second experiment used an inventory record. Version 1 said 6 items at $17 each, for a total of $102. The model answered from that record. Version 2 then changed the values to 9 items at $23, for a total of $207. The next request either replaced the old source and dropped its answer, or retained both and appended an explicit correction.
+
+| Next request | Cache reads | Cache writes | Full request cost |
+|---|---:|---:|---:|
+| Replace the source and drop the old answer | 3,510 | 76 | $0.0016640 |
+| Keep the old source and answer; append the correction | 3,586 | 290 | $0.0022142 |
+
+The appended correction read 76 more cached tokens but cost about **33% more** in this fixture. A cache boundary immediately before the small source let the replacement keep the long background prefix. Only 76 tokens needed rewriting. Appending instead retained the previous question and answer and added the correction, producing a larger new suffix.
+
+Both layouts returned the correct current price, quantity, total, and source identifier in both repetitions. The instructions explicitly told the model to use the highest source revision and recompute from it. There was no answer failure here, and no test of ambiguous source precedence. A larger document, an earlier edit, or a longer remaining conversation could change the cost comparison. [Requests, results, and all eight calls](research/09-changing-retrieved-evidence.md).
+
+A third branch replaced the source but kept the actual old assistant answer. The model corrected the answer and identified it as stale. That branch was already warm from the earlier replacement, so its cache hit is evidence of returning to a computed branch—not of preserving the old source's state through an edit.
+
+The important design issue is that a source and the work based on it are separate objects. Updating a file does not update an earlier summary, plan, or proposed patch. Removing a source does not remove facts copied into those objects. If the operation really means “do not include this old value in the next request,” the harness has to check those copies too.
+
+## What pruning and compaction actually change
+
+**Truncation** shortens an item before or while it enters the context. **Pruning** removes selected older items. **Compaction** builds a smaller continuation, often from a summary plus recent messages. They can all reduce token count, but they do different things to the next request.
+
+```text
+Before:
+  instructions → long build log → assistant diagnosis → recent work
+
+After pruning:
+  instructions → [old log cleared] → assistant diagnosis → recent work
+
+After summarizing:
+  instructions → summary of the earlier work → recent work
+```
+
+In both rewritten histories, the text of “recent work” may be identical. Its preceding context is different, so unchanged recent messages do not make the old later KV state reusable. The earlier stable instructions may still hit.
+
+OpenCode makes the distinction between stored history and active context easy to see. Its pruning pass stamps an old tool result as compacted. Later, the request converter replaces that result with <code>[Old tool result content cleared]</code> and drops its attachments. The original output string remains in the stored record on that path. [Pruning](https://github.com/anomalyco/opencode/blob/7945de208964a49300d7f770d1a71d078db9a4c4/packages/opencode/src/session/compaction.ts#L269), [request conversion](https://github.com/anomalyco/opencode/blob/7945de208964a49300d7f770d1a71d078db9a4c4/packages/opencode/src/session/message-v2.ts#L294).
+
+Oh My Pi also considers how much already-sent conversation follows a pruning candidate. Deleting a small old result can disturb a much larger cached suffix. Its pruning configuration can protect such a result rather than treating every removed token as an immediate saving. When it does change a message, it invalidates local cached token estimates and message conversions too. Provider caching is only one cache that must stay consistent. [OMP pruning and local invalidation](research/07-context-management.md).
+
+The runnable local examples execute Pi's session-context projection and OMP's pruning functions. Pi drops the old source from active context while retaining a supplied summary that contains its conclusion. OMP removes old tool text while retaining an assistant statement based on it. Neither function has erased the information. That is usually the purpose of summarization, but it matters when the original evidence was wrong or must be removed. [Upstream functions and returned messages](lab/context-harness.mjs), [recorded output](lab/context-results.json).
+
+Compaction also has a cost of its own. It may pay for a summary and a new cache write now to reduce later reads. Under illustrative prices of 1.25 units per written token and 0.1 per cached-read token, retaining 100,000 tokens costs 10,000 units each turn. Replacing them with 20,000 tokens costs 25,000 units once, then 2,000 per later turn. Over three turns those input costs are 30,000 versus 29,000 units, before paying to generate the summary. A summary that loses the key error can erase those savings by causing another investigation. [Calculation and code walkthrough](research/07-context-management.md).
+
+## Can the engine repair and reuse later chunks?
+
+There are research systems that assemble separately cached chunks or repair only some of the state after a change. Their tradeoff is how closely the reused calculation matches processing the complete new input.
 
 **Prompt Cache** uses schema-defined modules and positions. Its paper explicitly describes an attention approximation: independent modules omit some dependencies that ordinary concatenated attention would have computed. **CacheBlend** instead reuses chunks and selectively recomputes tokens to reduce deviation from full recomputation. **PIE**, designed for code edits, repairs positional effects while treating suffix reuse as an approximation. [Prompt Cache](https://arxiv.org/html/2311.04934v2), [CacheBlend](https://arxiv.org/html/2405.16444v3), [PIE](https://proceedings.iclr.cc/paper_files/paper/2025/file/9530635032b95cea9585bd800d308300-Paper-Conference.pdf).
 
-Those results are relevant, but their correctness baseline needs to be explicit. Matching a benchmark score is weaker than reproducing the same conditional distribution. A position correction is not a recomputation of what the token learned from the old context. Moving or compressing a cache also does not establish that its contents remain valid after an edit.
+A system can answer a test set just as well while producing different token probabilities. That is weaker than preserving the calculation a fresh request would perform. A position correction is not a recomputation of what the token learned from the old context. Moving or compressing a cache also does not establish that its contents remain valid after an edit.
 
 There are architecture-specific exceptions. A deliberately independent attention mask changes which dependencies exist. Pure local attention can bound their reach, while hybrid or recurrent models require different checkpoint reasoning. None supplies a universal hosted-API operation for editing arbitrary old text while retaining the entire suffix unchanged. [Inference report, implementation details, and research limits](research/01-inference-and-cache-repair.md).
 
-I would keep approximate cache repair behind a separate evaluation decision. It may be useful for a workload willing to measure and accept a quality tradeoff. It does not yet satisfy my demand for a generally correctness-preserving replacement operation.
+Approximate repair may be useful when a workload can measure and accept its errors. The papers do not establish a general way to replace any earlier text while preserving exactly the computation that a fresh request would perform.
 
 ## What I would build into a harness
 
-For an implementer, the first useful artifact is an operation matrix, not a cache-hit target.
+I would make the requested change explicit before choosing how to preserve the cache:
 
 | Requested operation | Candidate implementation | Required correctness check |
 |---|---|---|
@@ -169,11 +249,9 @@ For an implementer, the first useful artifact is an operation matrix, not a cach
 
 Stable instructions, deterministic tool ordering, versioned context, and unchanged history avoid accidental misses. Supported prospective controls provide flexibility. Meaningful rewrites should remain visible, even when they cost more.
 
-Observability then needs both sides of the boundary: a sanitized request comparison and the provider's returned usage. Log the model, route, adapter version, requested retention, selected boundaries, read/write/ordinary-input buckets, output tokens, time to first text, and task outcome. Keep raw counters because providers disagree about whether total input already includes cached tokens. Use diagnostics where available; a zero hit alone does not identify the cause. [OpenAI diagnostics](https://developers.openai.com/api/docs/guides/prompt-caching/diagnostics), [Anthropic diagnostics](https://platform.claude.com/docs/en/build-with-claude/cache-diagnostics).
+To diagnose a miss, record the model and serving route, the adapter version, the selected cache boundaries, and a sanitized comparison of consecutive requests. Keep the provider's original usage counters alongside any normalized totals: some APIs include cached tokens in total input and others report separate buckets. Diagnostics can help identify changed instructions or tools, but an eligible request can still miss because its saved state is unavailable. [OpenAI diagnostics](https://developers.openai.com/api/docs/guides/prompt-caching/diagnostics), [Anthropic diagnostics](https://platform.claude.com/docs/en/build-with-claude/cache-diagnostics).
 
-The question I started with was whether I could swap pieces out without the rest falling over. I now need to name the operation more carefully. Updating an instruction from this point onward can be cache-friendly today. Revisiting an old exact branch can be too. Replacing the past while pretending its downstream computation has not changed is the operation the ordinary cache cannot generally give me.
-
-That leaves useful work for the harness: make the supported operation easy, make the fallback visible, and evaluate the behavior separately from the savings.
+For the harness I'm building, the goal is to preserve useful work while making real changes correctly. Appended instructions and old conversation branches can reuse saved work. Replacing evidence or compacting a session may require a new prefix. That cost can be worth paying when it gives the model a shorter, more accurate context.
 
 ---
 

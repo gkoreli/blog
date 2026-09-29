@@ -45,4 +45,20 @@ The completed run has [sanitized results](anthropic-results.json) and [full meth
 
 `CLAUDE_API_KEY` (or `ANTHROPIC_API_KEY`) and optionally `ANTHROPIC_WORKSPACE_ID` are the only dotenv fields read. Credentials are never included in outputs. A hard authorization budget still requires tracking all runs; the script enforces its own plan and recorded run cost, not account-wide spend.
 
+## Context pruning and summary projection
+
+```sh
+node docs/worklist/prompt-caching-from-api-to-agent-loop/lab/context-harness.mjs /path/to/pinned/pi /path/to/pinned/omp
+```
+
+Run from the repository root with Node 24. The fixture checks upstream commits and imported files, executes actual Pi and OMP functions, and verifies retained/removed content and local memo invalidation. The tokenizer estimate is synthetic; no provider call or summary-quality evaluation runs. [Teaching chapter](../research/07-context-management.md), [recorded output](context-results.json).
+
+## Corrected retrieved evidence
+
+```sh
+python3 -B docs/worklist/prompt-caching-from-api-to-agent-loop/lab/context-evidence-probe.py
+```
+
+This dry-run reads no credentials. The completed eight-request experiment used actual previous assistant content and cost $0.0308808. [Methods and reproduction](../research/09-changing-retrieved-evidence.md) explain the branch order, the already-warm case, and why a larger cache hit was not the cheapest request. [Sanitized results](context-evidence-results.json). Do not rerun the paid experiment merely to review existing evidence.
+
 Return to [the worklist](../README.md).

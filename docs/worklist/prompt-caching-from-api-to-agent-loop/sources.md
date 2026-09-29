@@ -14,6 +14,12 @@ The sections below preserve the initial discovery queue. Its current results are
 
 [sources.lock.json](sources.lock.json) records eleven repository SHAs and inspected checkout locations. Code citations use commit permalinks. Live documentation is dated, not immutable; recheck it before publication or a new experiment. Installed SDK package versions and a reproduction lockfile are separate from repository HEAD revisions in [the lab](lab/README.md).
 
+## Further learning
+
+- [From tokens to KV memory, eviction, and routing](research/08-kv-cache-walkthrough.md)
+- [Context pruning and compaction, with actual upstream fixtures](research/07-context-management.md)
+- [Live comparison: replace a source or append a correction](research/09-changing-retrieved-evidence.md)
+
 ## Historical discovery record
 
 Started 2026-09-28. These are research entry points, not a completed claim audit. Recheck dates and versions when using them. Repository landing pages establish identity; they do not establish cache implementation behavior.

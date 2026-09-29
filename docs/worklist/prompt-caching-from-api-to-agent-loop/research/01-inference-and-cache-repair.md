@@ -1,10 +1,12 @@
 # Inference cache dependencies and alternatives
 
-Research checked on **2026-09-28 America/Los_Angeles**; fetched repository HEAD timestamps fall on September 29 UTC. This inference sub-investigation ran no paid API calls or trained-model inference; the separate [live API experiment](05-live-anthropic-experiment.md) ran afterward. The research worker treated the blog repository as read-only. Scratch clones are under `/tmp/prompt-cache-inference-20260928/`.
+Start with [the KV-cache walkthrough](08-kv-cache-walkthrough.md) for tokenization, query/key/value vectors, prefill, decoding, memory costs and eviction. This report examines what happens when earlier context changes and what research proposes beyond exact-prefix reuse.
+
+Research checked on **2026-09-28 America/Los_Angeles**; fetched repository HEAD timestamps fall on September 29 UTC. This inference sub-investigation ran no paid API calls or trained-model inference; the separate [live API experiment](05-live-anthropic-experiment.md) ran afterward. Scratch clones are under `/tmp/prompt-cache-inference-20260928/`.
 
 The central answer: **ordinary prefix caching preserves computation whose causal inputs remain unchanged. Arbitrary edits to an earlier system prompt generally invalidate downstream deep-layer KV state. Real approaches to modular reuse and cache repair exist, but the approaches reviewed here modify the attention computation or approximate the fully recomputed state. They do not establish a universal correctness-preserving hot-swap operation.**
 
-## 1. The mechanism worth teaching
+## 1. A later layer has already incorporated earlier context
 
 For a conventional causal transformer, a simplified dependency is:
 
@@ -18,7 +20,9 @@ h[i, layer] =
     + residual/MLP processing
 ```
 
-This is a dependency graph, not a cache of token strings. The causal mask prevents later tokens from changing earlier states. Earlier tokens can influence later hidden states, which become later layers' K/V vectors. The foundation is decoder masking and attention in [Attention Is All You Need, §3.1–3.2](https://arxiv.org/abs/1706.03762).
+Here `i` identifies a token position, `layer` identifies a stage of the model, and `h` is that position's current vector of numbers. A projection is a learned matrix multiplication. The first line begins with the token's embedding; the later lines repeatedly mix information from permitted positions and transform the result.
+
+The causal mask prevents later tokens from changing earlier states. Earlier tokens can influence later hidden states, which become later layers' K/V vectors. The foundation is decoder masking and attention in [Attention Is All You Need, §3.1–3.2](https://arxiv.org/abs/1706.03762).
 
 Derived implications, under fixed weights, tokenization, positions, attention mask and relevant model configuration:
 
@@ -33,7 +37,7 @@ In ordinary architectures, first-layer K/V projections of unchanged token embedd
 
 Exact reuse should mean preserving the intended reference computation. It should not promise universal bitwise equality across GPU kernels, batching, precision, hardware or random sampling. vLLM treats batch-invariant execution as a separate feature with kernel/configuration requirements. [vLLM batch invariance](https://docs.vllm.ai/en/stable/features/batch_invariance/)
 
-## 2. Improve the Jenga analogy
+## 2. Old and new histories can coexist
 
 **Changing one tower does not destroy every other tower.** A server can retain a tree of histories:
 
@@ -57,7 +61,7 @@ Commit: `28f673957671d8d4c5672c2085b3f22c79c0b0b5`.
 - [`FullAttentionManager.find_longest_cache_hit`, lines 743–838](https://github.com/vllm-project/vllm/blob/28f673957671d8d4c5672c2085b3f22c79c0b0b5/vllm/v1/core/single_type_kv_cache_manager.py#L743): traverses a contiguous prefix and stops when a required block is absent.
 - [`KVCacheManager.get_computed_blocks`, lines 264–321](https://github.com/vllm-project/vllm/blob/28f673957671d8d4c5672c2085b3f22c79c0b0b5/vllm/v1/core/kv_cache_manager.py#L264): caps reusable length at `request.num_tokens - 1`, explaining that the final token must be recomputed to obtain logits.
 
-Interpretation: parent hashes encode causal provenance. Removing the parent hash would increase apparent matches while allowing reuse of state computed under different prefixes. That would be an incorrect cache key, not a cache optimization.
+The parent hash ties a block to the history before it. Removing it would allow matching text blocks that were computed under different prefixes, even though their deeper-layer state can differ. That would give the cache more matches by letting it return incompatible state.
 
 Documentation/code discrepancy: the live [design page](https://docs.vllm.ai/en/latest/design/prefix_caching/) says only full blocks are cached. Inspected current code also has a fine-grained lookup path when `alignment_tokens < block_size`, probing interior hash boundaries. The pinned [feature documentation](https://github.com/vllm-project/vllm/blob/28f673957671d8d4c5672c2085b3f22c79c0b0b5/docs/features/automatic_prefix_caching.md) describes `--prefix-match-unit` and hybrid Mamba checkpoint conditions. Avoid an eternal full-block-only claim.
 
@@ -135,7 +139,7 @@ Self-hosting:
 - Validate edits changing negation, permissions, amounts, identity, tool parameters and cited evidence. Aggregate benchmark agreement does not settle those cases.
 - Measure cold/warm TTFT, output latency, end-to-end latency, bytes retained, cache-hit tokens, repair cost and task correctness separately.
 
-Useful article sentence: **An avoidable cache miss is an engineering defect only after we establish that the computation was actually reusable.**
+Before diagnosing an avoidable cache miss as an engineering defect, establish that the computation was actually reusable.
 
 ## 9. Recent leads, not accepted conclusions
 
@@ -143,18 +147,17 @@ Useful article sentence: **An avoidable cache miss is an engineering defect only
 
 [PatchKV](https://arxiv.org/abs/2609.26219) targets edited interior spans with preserved suffixes, predicted repair regions and offloaded-state restoration. Abstract only inspected. August submission date versus September arXiv identifier is an unresolved metadata oddity. Omit numerical claims until verified through paper/code.
 
-## 10. Suggested experiment and infographic
+## 10. Reproduce the dependency in a small model
 
-A small deterministic multi-layer causal-attention program can demonstrate:
+The [numerical lab](../lab/kv_dependency.py) and [recorded results](../lab/README.md) demonstrate:
 
 - Original sequence, equal-length early edit.
 - Fresh recomputation versus stale suffix reuse.
 - First-layer token-local KV agreeing while deeper suffix KV diverges.
 - Prefix reuse plus suffix recomputation matching the fresh path.
 - Appending and revisiting branches.
-- Optional extension: explicit block-diagonal mask and its changed reference computation.
 
-Label it a toy dependency demonstration, not a provider benchmark or language-quality test. A paired infographic should show token × layer dependency propagation and a prefix tree of retained branches.
+The [dependency infographic](../assets/cache-dependencies.svg) shows changes by token and layer alongside a tree of retained branches. These are a toy dependency demonstration, not a provider benchmark or language-quality test. An explicit block-diagonal attention mask, which prevents selected groups of tokens from attending to one another, remains an optional extension; it would change the reference computation.
 
 ## 11. Independent audit of parent's numerical lab
 

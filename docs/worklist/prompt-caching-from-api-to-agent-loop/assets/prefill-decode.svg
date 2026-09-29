@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 690" role="img" aria-labelledby="pd-title pd-desc">
+  <title id="pd-title">Prefill builds state; decode reads and extends it</title>
+  <desc id="pd-desc">First, known prompt tokens A, B and C pass through the model and produce per-layer keys and values. Logits at C select output token D. Next, D passes through the model while attending to cached A, B and C, adds its own keys and values, and predicts E. A prefix hit skips rebuilding compatible old state, but the new query still reads that state.</desc>
+  <defs>
+    <marker id="pd-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#5c625c"/></marker>
+  </defs>
+  <style>
+    .bg{fill:#faf8f5}.ink{fill:#282f29}.muted{fill:#555e56}.green{fill:#246a50}.blue{fill:#345f8b}.white{fill:#fff}
+    .title{font-family:Georgia,serif;font-size:23px;font-weight:600}.body{font-family:Arial,sans-serif;font-size:17px}.small{font-family:Arial,sans-serif;font-size:15px}.token{font-family:monospace;font-size:20px;font-weight:600}
+    .box{fill:#fff;stroke:#abb3a9;stroke-width:1.5}.flow{fill:none;stroke:#5c625c;stroke-width:2;marker-end:url(#pd-arrow)}
+  </style>
+  <rect class="bg" width="800" height="690" rx="10"/>
+  <text x="28" y="40" class="title ink">1. Prefill: the input is already known</text>
+  <text x="28" y="70" class="body muted">A, B and C are token labels. Attention still respects their order.</text>
+  <g class="blue"><rect x="30" y="108" width="46" height="42" rx="5"/><rect x="88" y="108" width="46" height="42" rx="5"/><rect x="146" y="108" width="46" height="42" rx="5"/></g>
+  <g class="token white" text-anchor="middle"><text x="53" y="136">A</text><text x="111" y="136">B</text><text x="169" y="136">C</text></g>
+  <path d="M201 129H239" class="flow"/>
+  <rect x="248" y="105" width="235" height="52" rx="6" class="box"/>
+  <text x="365" y="137" text-anchor="middle" class="body ink">Embedding → model layers</text>
+  <path d="M494 129H532" class="flow"/>
+  <rect x="541" y="105" width="224" height="52" rx="6" class="box"/>
+  <text x="653" y="137" text-anchor="middle" class="body ink">Scores at C → select D</text>
+  <path d="M365 166V207" class="flow"/>
+  <rect x="209" y="218" width="312" height="62" rx="6" class="green"/>
+  <text x="365" y="244" text-anchor="middle" class="body white">Keep K/V for A, B and C</text>
+  <text x="365" y="266" text-anchor="middle" class="small white">Separate state at each attention layer</text>
+  <text x="541" y="236" class="small muted">D is an output ID.</text>
+  <text x="541" y="258" class="small muted">Its K/V is built next.</text>
+  <path d="M28 312H772" stroke="#d1d6cd"/>
+  <text x="28" y="355" class="title ink">2. Decode: process D to predict the next token</text>
+  <rect x="57" y="398" width="46" height="42" rx="5" class="blue"/>
+  <text x="80" y="426" text-anchor="middle" class="token white">D</text>
+  <path d="M113 419H207" class="flow"/>
+  <rect x="218" y="390" width="300" height="70" rx="6" class="box"/>
+  <text x="368" y="418" text-anchor="middle" class="body ink">At each layer: D's query attends</text>
+  <text x="368" y="444" text-anchor="middle" class="body ink">to old K/V and D's new K/V</text>
+  <path d="M528 425H551" class="flow"/>
+  <rect x="562" y="398" width="205" height="54" rx="6" class="box"/>
+  <text x="665" y="431" text-anchor="middle" class="body ink">New scores → select E</text>
+  <path d="M278 520V469" class="flow"/>
+  <path d="M464 470V520" class="flow"/>
+  <rect x="209" y="531" width="319" height="62" rx="6" class="green"/>
+  <text x="368" y="557" text-anchor="middle" class="body white">Read existing A/B/C state</text>
+  <text x="368" y="580" text-anchor="middle" class="body white">and retain D's state</text>
+  <text x="31" y="633" class="body ink">A prefix hit skips rebuilding compatible old K/V.</text>
+  <text x="31" y="661" class="body ink">Reading it, processing new input and generating output still take work.</text>
+</svg>

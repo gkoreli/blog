@@ -2,6 +2,7 @@
 @import '../components/animations/animations.css';
 @import '../components/article-grid/article-grid.css';
 @import '../components/bun-fusion-hero/bun-fusion-hero.css';
+@import '../components/cache-dependency/cache-dependency.css';
 @import '../components/callout/callout.css';
 @import '../components/closing/closing.css';
 @import '../components/code-block/code-block.css';
@@ -20,6 +21,7 @@
 @import '../components/postscript/postscript.css';
 @import '../components/pr-stream-hero/pr-stream-hero.css';
 @import '../components/prognosis/prognosis.css';
+@import '../components/prompt-cache-figures/prompt-cache-figures.css';
 @import '../components/pull-quote/pull-quote.css';
 @import '../components/research-note/research-note.css';
 @import '../components/rich-headings/rich-headings.css';

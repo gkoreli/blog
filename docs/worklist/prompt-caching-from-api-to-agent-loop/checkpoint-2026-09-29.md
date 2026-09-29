@@ -1,0 +1,27 @@
+# Publication checkpoint — September 29, 2026
+
+Supersedes [the first-pass checkpoint](checkpoint-2026-09-28.md). The [reading guide](README.md) owns the investigation; the [TypeScript post](../../../packages/blog/posts/prompt-cache-context-edits.ts) is the canonical article source.
+
+## Completed research and implementation
+
+- Added the KV-cache walkthrough, actual harness context-management reproductions, and a second live experiment comparing replaced evidence with appended corrections and retained assistant answers. Read [07](research/07-context-management.md), [08](research/08-kv-cache-walkthrough.md), and [09](research/09-changing-retrieved-evidence.md).
+- The 27-request and eight-request runs together cost an estimated **$0.20859**. This is inference spend only, within the authorized $5–10 allowance. No further paid call was needed for publication. All 35 synthetic responses passed their respective narrow answer checks; these are not general correctness or speed benchmarks.
+- An independent review checked the second experiment against private receipts: exact replay of earlier assistant content, request hashes, token counters, model identity, answer checks, ordering, and Decimal cost arithmetic. The last case was already warm and is not a cold cost comparison. Mutable provider documentation was rechecked on September 29.
+- Replaced the draft's Markdown-backed renderer with the established literal `staticHtml`, `PostMeta`, `preamble()`, and `article()` pattern. The post uses shared hero, stat row, table, separator, and source templates. The earlier Markdown draft remains explicitly historical.
+- Expanded the dependency figure into token state, parent hashes, and available checkpoints. After owner feedback, unified all four figures around shared type, squared frames, spacing, blue reuse and rust recomputation. Replaced the fixed-width prefill SVG in the article with responsive HTML; the standalone SVG remains a research artifact.
+- Preserved exact shaping prompts, including the styling feedback and explicit authorization for one X post without tags and one Hacker News submission. Social copy and publication records live separately in [the launch folder](../../../packages/blog/drafts/social/prompt-cache-context-edits/launch-brief.md).
+- Archived both raw synthetic run directories under `/Users/goga/.codex/artifacts/prompt-cache-20260929/`, outside Git; archive hashes matched the originals. Public JSON contains sanitized results and hashes, not credentials or raw operational captures.
+
+## Checks and publication state
+
+- Final repository typecheck, scoped post TypeScript check, and Markdown validator passed. The latter validates 17 Markdown posts; the full build discovers 28 posts including TypeScript. Actual Pi/OMP fixture rerun exactly matched retained JSON. The paid probe dry-run passed without reading credentials.
+- Isolated production build passed, including HTML output validation, discovering 28 posts. Build location: `/tmp/prompt-cache-publication-20260929`; the shared development `dist/` was not touched.
+- HTML checks passed: one H1, unique IDs, valid fragment targets, seven native disclosures, and generated Markdown/citation/prompt/discovery files. Relative Markdown links and JSON parsed; configured private values were absent from 32 changed files. Whitespace check excludes one exact supplied prompt line with a preserved trailing space.
+- Browser review reached the desktop article body and accessible figure text. Further visual/mobile/theme/disclosure acceptance is blocked temporarily by macOS capture failures (`noWindowsAvailable`, `cgWindowNotFound`) and frozen screenshots. Reconnecting/resetting the computer-use session did not restore control. The owner has been asked to keep the Mac awake/unlocked with Chrome visible. No deployment or live acceptance has occurred; no earlier build receipt establishes current production behavior.
+- X and Hacker News copies are prepared but not yet published.
+
+## Limits and next action
+
+The samples do not establish speedups, equivalence of instruction updates and historical rewrites, long-term residency, or end-to-end agent quality. Additional providers, paid cross-provider experiments, retention/concurrency studies, and approximation quality tests remain proposed follow-ups, not missing measurements silently assumed complete.
+
+Next bounded action: finish desktop/mobile visual and disclosure checks, commit and push scoped changes, deploy the isolated build, check the live article and generated representations, then publish and verify the authorized X and Hacker News links. Record each stage separately here.

@@ -1,17 +1,18 @@
 # Prompt caching from inference API to agent loop
 
-Started: 2026-09-28. Status: first research pass, local reproductions, 27-request live experiment, and illustrated TypeScript draft complete. Article remains unpublished. The original plan and initial checkpoint below are historical; [the latest checkpoint](checkpoint-2026-09-28.md) records accepted work, limits, and remaining actions.
+Started: 2026-09-28. Status: expanded teaching chapters, upstream context-management reproductions, and 35 live requests complete. Publication and distribution checks are in progress. The original plan and initial checkpoint below are historical; [the latest checkpoint](checkpoint-2026-09-29.md) records accepted work, limits, and remaining actions.
 
 ## Start reading here
 
-1. [Article draft](article-draft.md): the explanation, findings, and implications for a harness. [TypeScript layout](../../../packages/blog/drafts/prompt-cache-context-edits.ts) adds a causal-dependency infographic, four-layer map, and expandable measured comparisons, all readable without JavaScript.
-2. [Inference and cache repair](research/01-inference-and-cache-repair.md): causal dependencies, vLLM/SGLang internals, retained branches, modular caching, approximation, and architecture-specific exceptions.
+1. [Canonical TypeScript article](../../../packages/blog/posts/prompt-cache-context-edits.ts): the prose and presentation, using the site’s shared article templates. It includes a worked dependency/hash/checkpoint diagram, prefill/decode visual, four-layer map, and expandable measured comparisons. The [earlier Markdown draft](article-draft.md) is retained as history, not a second editable source.
+2. Start with [the KV-cache walkthrough](research/08-kv-cache-walkthrough.md), which defines tokens, vectors, attention, saved state, and memory costs from actual serving code. Then read [inference and cache repair](research/01-inference-and-cache-repair.md): causal dependencies, vLLM/SGLang internals, retained branches, modular caching, approximation, and architecture-specific exceptions.
 3. [Provider contracts](research/02-provider-contracts.md) plus [OpenAI, SDK, and Codex](research/04-openai-sdk-codex.md): exact API surfaces, counters, controls, translation, and current limitations.
 4. [Harness audit](research/03-harness-audit.md): Pi, Oh My Pi, OpenCode, and Gemini CLI. Codex is covered separately above; Claude Code has a documented-product evidence boundary in the provider report.
 5. [Live experiment](research/05-live-anthropic-experiment.md): all nine cases, conditions, pricing, timing, and correctness limits. [Runnable labs](lab/README.md) include numerical state dependencies, actual Pi transformation, actual mocked SDK serialization, and the paid probe.
-6. [Claim ledger](research/06-claim-ledger.md): which claims are documented, source-inspected, locally reproduced, provider-observed, inferred, or still proposed.
+6. [Context management](research/07-context-management.md): what pruning, truncation, and compaction actually send next in Pi, OMP, OpenCode, and Codex. [Changing retrieved evidence](research/09-changing-retrieved-evidence.md) compares replacement, appended corrections, and old assistant answers against the live API.
+7. [Claim ledger](research/06-claim-ledger.md): which claims are documented, source-inspected, locally reproduced, provider-observed, inferred, or still proposed.
 
-The direct Sonnet 5.5 run cost an estimated **$0.1777092**. It observed 7,870-token reuse after an appended system update, zero reads after an early replacement, and 5,371-token reuse after a middle edit. It did not establish general instruction equivalence or a speedup. No additional paid run is needed to reproduce the retained analysis.
+The direct Sonnet 5.5 run cost an estimated **$0.1777092**. It observed 7,870-token reuse after an appended system update, zero reads after an early replacement, and 5,371-token reuse after a middle edit. It did not establish general instruction equivalence or a speedup. The second eight-request experiment cost $0.0308808; total inference spend is **$0.20859**. Appending corrected evidence reused more cached input but cost more than replacing a short late source in that layout. No further paid run is needed to inspect the retained analysis.
 
 The [source register](sources.md) points into the reports; [the lock file](sources.lock.json) pins eleven cloned repositories and their inspected local paths. Exact shaping prompts are preserved in [the initial request](initial.prompt.md), [research direction](research-direction.prompt.md), and [follow-up messages](follow-up.prompts.md).
 
@@ -21,7 +22,7 @@ To render the isolated draft preview from the repository root:
 pnpm -C packages/blog exec node --import tsx drafts/prompt-cache-preview.ts
 ```
 
-Open `/tmp/prompt-cache-article-preview/index.html`. The preview writes only its own temporary directory. Full desktop/mobile browser review remains open; see the checkpoint for the environment restriction.
+Open `/tmp/prompt-cache-article-preview/index.html`. The preview writes only its own temporary directory. The production build and browser checks are recorded in the latest checkpoint.
 
 ## Purpose and article center
 
