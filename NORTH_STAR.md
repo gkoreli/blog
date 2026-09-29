@@ -1,6 +1,6 @@
 # North Star
 
-This document is the direction of gkoreli.com. Every design change, section decision, and content call gets steered against it. When a proposal conflicts with this document, the proposal loses — or this document gets deliberately revised first. `AGENTS.md` holds the rules; this holds the *why* and the *where to*.
+This document is the direction of gkoreli.com. Every design change, section decision, and content call gets steered against it. When a proposal conflicts with this document, the proposal loses — or this document gets deliberately revised first. [AGENTS.md](AGENTS.md) holds shared constraints, while task-specific skills, references, and ADRs hold the detailed rules; this holds the *why* and the *where to*.
 
 Last revised: 2026-07-05 (the second pivot).
 

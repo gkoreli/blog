@@ -7,6 +7,8 @@ description: Draft and polish concise, direct, natural prose. Use when writing, 
 
 Use this skill as a final prose pass. Preserve the author's meaning, facts, voice, and degree of certainty.
 
+For quotations attributed to Goga in repository artifacts, read the [exact owner-quotation rule](../blog-writing/references/owner-quotations.md) before editing or adding one.
+
 ## Protect Precision
 
 - Leave code, commands, paths, identifiers, API names, and other literal technical text unchanged.
@@ -31,6 +33,8 @@ Use this skill as a final prose pass. Preserve the author's meaning, facts, voic
 12. Break any rule before writing like a machine.
 
 ## No Mannered Prose (owner rule, 2026-09-02)
+
+This owner rule applies to every article and every skill that edits prose. The paragraph below preserves the recorded wording.
 
 Mannered prose substitutes metaphor and flourish for direct statement. Instead of "a parameter worth varying," the mannered writer produces "a dial worth turning." Instead of "this point still matters," they write "this point earns its keep." The phrases exist to display the writer, not to convey the idea, and readers can tell. That is why mannered prose irritates: it makes the reader work harder so the writer can perform. It is also imprecise. Metaphors drag in connotations the writer did not choose and cannot control. The fix is to say what you mean. When a literal phrase is available, use it.
 

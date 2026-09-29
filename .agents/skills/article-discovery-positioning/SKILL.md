@@ -5,7 +5,7 @@ description: >-
 license: MIT
 metadata:
   author: gkoreli
-  version: "1.2.0"
+  version: "1.2.1"
   evidence-audited: "2026-08-26"
   credibility-reviewed: "2026-09-06"
 ---
@@ -15,6 +15,10 @@ metadata:
 Translate the article that exists into truthful ways outsiders can recognize, find, choose, link, and share it.
 
 This skill optimizes the invitation, not the body. It cannot guarantee impressions, rankings, clicks, backlinks, readers, or contact.
+
+## Task-specific contracts
+
+Read [metadata and discovery](references/metadata-and-discovery.md) when changing titles, metadata, dates, orientation, or diagnosing search traffic. Read [series and cross-references](references/series-and-cross-references.md) when connecting articles or publishing a continuation. For measured reader response, feedback privacy, or shared lessons, read [editorial learning](../blog-writing/references/editorial-learning-loop.md).
 
 ## Authority and Order
 
@@ -32,7 +36,7 @@ Conflict rules:
 - `personal-essays` wins on voice, aliveness, exposed prose, and whether search intervention is appropriate.
 - `blog-writing` wins on sourcing, post structure, prompts, and evidence ledgers.
 - `oss-radar` wins on research synthesis and product/adoption verdicts.
-- `AGENTS.md` wins on metadata mechanics, series trails, links, dates, canonical behavior, and project decisions.
+- The [metadata contract](references/metadata-and-discovery.md) and [series contract](references/series-and-cross-references.md) govern metadata mechanics, links, dates, and canonical behavior. The [decision register](../../../docs/reference/project-decisions.md) routes project decisions to their ADRs.
 - This skill owns article role, content-to-intent translation, doorway packages, heading/keyword placement, internal relationship links, link-worthy assets, and the discovery learning loop.
 
 Never rewrite a body around a keyword discovered after shaping. If the apparent doorway needs a different article, reject it and create a separate article candidate.
@@ -92,7 +96,7 @@ The article makes Goga's voice, thinking, identity, vision, or live state more l
 
 Default:
 
-- preserve the voice-bearing phrase, but the H1 still names its subject in plain words first (`AGENTS.md`, "Titles Name the Subject", 2026-09-01); a title that needs the article to explain it fails;
+- preserve the voice-bearing phrase, but the H1 still names its subject in plain words first ([Titles Name the Subject](references/metadata-and-discovery.md#titles-name-the-subject-owner-tenet-2026-09-01), 2026-09-01); a title that needs the article to explain it fails;
 - let the description orient a cold reader honestly;
 - add `seoTitle` only when a real doorway can describe the same piece without changing its meaning;
 - return **no search intervention** when concrete handles would corrupt the form.
@@ -423,7 +427,7 @@ Classify the next action:
 - new experiment;
 - no action.
 
-Do not churn metadata from daily noise. Search recrawl and learning take time. Update `lastModified` only for a material served-page change under `AGENTS.md`.
+Do not churn metadata from daily noise. Search recrawl and learning take time. Update `lastModified` only for a material served-page change under the [metadata contract](references/metadata-and-discovery.md#the-metadata-split).
 
 ## Sources and Evidence Boundary
 
@@ -433,7 +437,7 @@ Normative project sources:
 - `personal-essays`
 - `blog-writing`
 - `shareable-engineering`
-- `AGENTS.md` metadata split, series, linking, and editorial learning loop
+- [Metadata split](references/metadata-and-discovery.md), [series and linking](references/series-and-cross-references.md), and [editorial learning](../blog-writing/references/editorial-learning-loop.md)
 
 Primary external anchors:
 

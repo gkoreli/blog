@@ -1,10 +1,10 @@
 ---
 name: blog-writing
-description: Blog post writing guidelines for gkoreli.com. Use when writing, editing, or reviewing blog posts. Covers voice, structure, content format, sourcing rules, formatting balance, transparency, and technical writing standards for an engineering audience.
+description: Blog post writing guidelines for gkoreli.com. Use when writing, editing, or reviewing blog posts. Covers voice, structure, content format, sourcing, exact prompts, research footprint accounting, reader feedback, and technical writing standards for an engineering audience.
 license: MIT
 metadata:
   author: gkoreli
-  version: "2.4.0"
+  version: "2.4.1"
 ---
 
 # Blog Writing — Agent Skill
@@ -18,6 +18,17 @@ Reference these guidelines when:
 - Editing or reviewing existing posts
 - Drafting post outlines or structures
 - Cross-posting to dev.to or other platforms
+
+## Task-specific references
+
+- Before drafting or reviewing an opening, read [opening discipline](../shape-article/references/opening-discipline.md).
+- For exact author quotations in any artifact, read [owner quotations](references/owner-quotations.md).
+- For footprint extraction, freezing, or provenance review, read [research footprint accounting](references/research-footprint.md).
+- For reader feedback, post-publication measurement, or shared editorial lessons, read [editorial learning](references/editorial-learning-loop.md).
+- For metadata or publication links, read the [metadata contract](../article-discovery-positioning/references/metadata-and-discovery.md) and, when connecting articles, [series contract](../article-discovery-positioning/references/series-and-cross-references.md).
+- For a post's file format or rendering, read [content and build](../blog-maintenance/references/content-and-build.md).
+
+These references are conditional; do not load them all for every prose edit.
 
 ## Voice & Identity
 
@@ -89,6 +100,7 @@ Use inline contextual links. Don't make readers go find things.
 title: "Exact title — specific, not clickbait"
 date: 2026-03-05
 description: "One sentence that makes someone want to read it"
+section: engineering
 tags: [nisli, web-components, framework]
 ---
 
@@ -100,6 +112,8 @@ Content starts immediately. No preamble.
 - `title` — specific and descriptive. "A Reactive Web Component Framework in 660 Lines" not "My New Framework"
 - `date` — ISO format, publish date
 - `description` — one sentence, used for SEO meta and social cards
+- `section` — required: `essays`, `engineering`, or `oss-radar`
+- The shell renders the H1 from `title`; do not duplicate it in the Markdown body.
 - `tags` — lowercase, kebab-case, 2-5 tags
 
 ### File Naming

@@ -7,6 +7,8 @@ description: Research, write, edit, and review OSS Radar issues for gkoreli.com 
 
 Find what a project built, reconstruct why, test its bet, and give a verdict backed by code.
 
+Before drafting or reviewing the opening, read [opening discipline](../shape-article/references/opening-discipline.md). Before attributing a quotation to Goga, read [owner quotations](../blog-writing/references/owner-quotations.md). These shared owner rules retain their authority after relocation from `AGENTS.md`.
+
 ## Pick one article focus
 
 | Mode | Use it for | Read |

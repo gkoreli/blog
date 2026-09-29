@@ -22,8 +22,8 @@ Built with [@nisli/core](https://www.npmjs.com/package/@nisli/core) — a zero-d
 ## Stack
 
 - **Framework**: [@nisli/core](https://www.npmjs.com/package/@nisli/core) — signals, templates, web components
-- **Content**: Markdown + YAML frontmatter in `posts/`
-- **Prompts**: Raw author prompts in `prompts/` — rendered at `/{slug}/prompts`
+- **Content**: Markdown + YAML frontmatter, or TypeScript for custom layouts, in `packages/blog/posts/`
+- **Prompts**: Raw author prompts in `packages/blog/prompts/` — rendered at `/{slug}/prompts`
 - **Syntax highlighting**: [Shiki](https://shiki.style) — dual themes, build-time, zero client JS
 - **Validation**: [Zod](https://zod.dev) — frontmatter schema validation at build time
 - **Bundler**: [esbuild](https://esbuild.github.io) — JS + CSS bundling
@@ -46,18 +46,23 @@ The build warns and skips Markdown posts with invalid frontmatter. Run the expli
 
 ```
 packages/blog/
-├── posts/           # Markdown blog posts
+├── posts/           # Markdown and TypeScript blog posts
 ├── prompts/         # Raw author prompts per post (transparency feature)
 ├── public/          # Static assets (icons, images, Cloudflare headers)
 └── src/
     ├── pipeline/    # Build scripts (prod, dev, validate)
     ├── lib/         # Markdown, frontmatter, paths, fs utilities
-    ├── templates/   # Page shell, post, index, about, prompts, RSS
+    ├── templates/   # Shared shell, representations, RSS, structured data
+    ├── pages/       # Home, articles, sections, prompts, stats, and other pages
     ├── client/      # @nisli/core components (theme toggle)
     └── styles/      # Vanilla CSS — warm cream/dark palette
 ```
 
 Every post can have a companion `prompts/{slug}.prompts.md` file with the raw `---`-delimited prompts that shaped it. The build generates a dedicated prompts page at `/{slug}/prompts` and adds a "Thoughts by human, co-written by AI" link in the article header.
+
+## Project guidance
+
+[AGENTS.md](AGENTS.md) holds shared repository constraints. Agents discover task-specific guidance in `.agents/skills/`; [project decisions](docs/reference/project-decisions.md) route to the relevant ADRs. The [instruction migration record](docs/editorial/2026-09-28-instruction-migration.md) preserves the locations of the accumulated guidance.
 
 ## Research and operating records
 

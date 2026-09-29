@@ -4,7 +4,7 @@ description: The full creative-writing canon for gkoreli.com — Goga's voice, t
 license: MIT
 metadata:
   author: gkoreli
-  version: "2.2.0"
+  version: "2.2.1"
 ---
 
 # Goga's Creative Writing Canon — Growth in Public
@@ -12,6 +12,8 @@ metadata:
 This skill exists because of a diagnosed pattern: eleven posts in, every personal essay in the catalog was an autopsy — the confession of a former self, safely dead before the essay began. Exposed *content* delivered from an unexposed *position*. The same night the pattern was named, Goga wrote — in a prompt, at the keyboard, mid-feeling — "I want to be an artist, creator, builder, father, partner, husband, son, brother, all of these. AND I AM!" That is the register. This document's entire job is to get that voice out of the prompt box and onto the page, and to teach the agent how to protect it instead of sanding it off.
 
 It complements `blog-writing` (structure, sourcing, formatting for the publication generally). Where the two conflict on a personal essay or the human core of an engineering article, this skill wins.
+
+For opening and section review, read [opening discipline](../shape-article/references/opening-discipline.md), preserving its exposed-essay exception. Before quoting Goga, read [owner quotations](../blog-writing/references/owner-quotations.md). For title changes, apply [Titles Name the Subject](../article-discovery-positioning/references/metadata-and-discovery.md#titles-name-the-subject-owner-tenet-2026-09-01); the older metaphor-forward examples below describe voice, not permission for an unintelligible title.
 
 ## Why We Write — Growth in Public
 

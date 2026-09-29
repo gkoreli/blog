@@ -4,7 +4,7 @@ description: Evidence-based mechanics for engineering articles that get read, sh
 license: MIT
 metadata:
   author: gkoreli
-  version: "1.4.0"
+  version: "1.4.1"
   evidence-audited: 2026-08-25
   credibility-reviewed: "2026-09-06"
 ---
@@ -27,7 +27,7 @@ Run `shape-article` first. Apply this skill to the engineering and discovery lay
 
 ## Titles
 
-The architecture is the metadata split (see `AGENTS.md`), amended 2026-09-01 by "Titles Name the Subject": the H1/`og:title` names the subject in plain, searchable words first, with any voice-bearing phrase after it; the `seoTitle` is a snippet supplement, not a substitute for a clear H1. The evidence tunes the `seoTitle`:
+The architecture is the metadata split (see the [metadata contract](../article-discovery-positioning/references/metadata-and-discovery.md)), amended 2026-09-01 by "Titles Name the Subject": the H1/`og:title` names the subject in plain, searchable words first, with any voice-bearing phrase after it; the `seoTitle` is a snippet supplement, not a substitute for a clear H1. The evidence tunes the `seoTitle`:
 
 - **Use 40–60 characters and 6–9 words as a starting range, not a hard rule.** Backlinko found the highest CTR inside that band, but its summary reports a 33.3% lift while its detailed section reports 8.9%. Do not cite either as settled. Google sets no limit — truncation is device-width — so longer isn't penalized, just unseen. Whatever must be *seen* lives in the first ~57 chars.
 - **Front-load the handles.** Tool names, the topic noun, the artifact ("MCP server," "UI framework") come first; the hook number or verdict closes.
@@ -45,7 +45,7 @@ The publishing goal is useful engineering material that people and their agents 
 - **Source preference is not demonstrated credibility.** Controlled model studies can reveal sensitivity to source labels without showing factual reliability or organic discovery. Provider source labels describe that provider's review, not a guarantee about every claim. Preserve the source's qualifications and evaluate citation support separately from citation presence; use the [credibility reference](../blog-writing/references/firsthand-evidence-and-credibility.md) for the evidence and limits.
 - **Evidence-rich writing can change use after retrieval; it is not a universal acquisition recipe.** The KDD 2024 GEO benchmark began with Google's top five results, and its Perplexity test supplied source files. ACL/SIGIR 2026 studies likewise freeze candidates or retrieval to isolate content effects. Citations, relevant evidence, clear claims, and qualifications remain good human-facing trust mechanics, but their effects on generated answers are conditional and engine-specific. Do not promise discovery or repeat the “up to 40%” result without its supplied-source boundary.
 - **Give the first 100 words a self-contained anchor.** The standfirst (`.post-lede`) names the artifact and the story in one declarative sentence a machine can lift. It may state a finding, a live question, or the current state; never supply an answer the article does not have. Weak-source but directionally consistent with GEO; cost is zero.
-- **Durable URLs with visible dates are the long game.** ChatGPT-class engines cite years-old content; freshness mainly matters for Perplexity-style engines. Update posts with real changes and honest `lastModified`, never cosmetic date-bumping (see `AGENTS.md` metadata rules).
+- **Durable URLs with visible dates are the long game.** ChatGPT-class engines cite years-old content; freshness mainly matters for Perplexity-style engines. Update posts with real changes and honest `lastModified`, never cosmetic date-bumping (see the [metadata rules](../article-discovery-positioning/references/metadata-and-discovery.md#the-metadata-split)).
 - **Give `llms.txt` the job the evidence supports.** Google Search says it neither helps nor hurts Search or AI-feature visibility, and Ahrefs found 97% of valid files received no requests in its May 2026 sample. But maintained coding-agent workflows demonstrably use a small index followed by targeted Markdown, while other bounded tasks cache and search a full dump. Treat it as optional known-site agent navigation, not an organic ranking or citation lever. Keep a generated, synchronized index when cheap; invest further only for a real client or measured task benefit.
 - **Page-level Markdown is a separate product from the root index.** It may reduce representation noise or token cost after a client selects a page. Measure answer quality, qualifications, failed navigation, total resources, bytes, and tokens; a smaller response alone is not a task win.
 - **Do not add FAQ schema to essays.** The citation-rate claims for it come from unverifiable sources, and question-boxes bolted onto a narrative are schema spam. BlogPosting JSON-LD (auto-generated) is enough.

@@ -7,6 +7,15 @@ description: Identify and protect an article's living center before drafting, ed
 
 Choose the form before shaping the prose. Judge the article by whether its form tells the truth about the state in which it was written.
 
+## Task-specific references
+
+- For publication purpose, reader-growth/signature/bridge roles, or editorial scope, read [publication context](references/publication-context.md).
+- When planning an article or resolving skill responsibilities, read [editorial workflow](references/editorial-workflow.md).
+- Before drafting or reviewing openings and section structure, read [opening discipline](references/opening-discipline.md), including the September 22 result-first correction.
+- Before quoting Goga, read [owner quotations](../blog-writing/references/owner-quotations.md). Use the same rule in non-article artifacts.
+
+Read only what the task needs; the governing form determines subsequent passes.
+
 ## Find the Living Center
 
 Inspect the draft, prompts, and author context. Determine:
