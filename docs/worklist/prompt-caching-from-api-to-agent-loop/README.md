@@ -1,6 +1,6 @@
 # Prompt caching from inference API to agent loop
 
-Started: 2026-09-28. Status: expanded teaching chapters, upstream context-management reproductions, and 35 live requests complete. Publication and distribution checks are in progress. The original plan and initial checkpoint below are historical; [the latest checkpoint](checkpoint-2026-09-29.md) records accepted work, limits, and remaining actions.
+Started: 2026-09-28. Status: expanded teaching chapters, upstream context-management reproductions, and 35 live requests complete. The article is [published](https://gkoreli.com/prompt-cache-context-edits), with verified [X](https://x.com/GogaKoreli/status/2104837268376576489) and [Hacker News](https://news.ycombinator.com/item?id=49889529) posts. The original plan and initial checkpoint below are historical; [the latest checkpoint](checkpoint-2026-09-29.md) records accepted work, limits, and remaining actions.
 
 ## Start reading here
 
