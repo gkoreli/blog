@@ -1,6 +1,6 @@
 # ChatGPT plugin apps: research and article
 
-Started September 29, 2026, Pacific time. Status: article published October 4, 2026 UTC; the owner has also explicitly authorized its process files. Earlier development and approval records below remain historical.
+Started September 29, 2026, Pacific time. Status: article and approved process files published and verified October 4, 2026 UTC. Earlier development and approval records below remain historical.
 
 ## Read here
 
@@ -112,3 +112,13 @@ Automatic approval review initially rejected uploading the research worklist, th
 Initial live acceptance: the article, Markdown twin, SVG, `posts.json`, RSS, and sitemap returned HTTP 200 at `gkoreli.com`. HTML contains the October 4 date, one H1, canonical URL, and direct AI credit. Live Markdown and SVG bytes match the validated isolated build. The feed and index contain the new article and correct date. This verifies public content, not plugin runtime behavior or a particular Worker deployment version; the combined GitHub status endpoint returned no legacy status records.
 
 The next release includes the canonical seven-prompt record, dated research/worklist evidence, historical draft pointer, and AgentPort forward-link edit under the expanded approval. Private raw page captures, connector payloads, and operational logs remain outside Git. Final checks and public prompt-page acceptance are recorded after that release completes.
+
+### Complete publication receipt
+
+Expanded process-file release: [`ccabd6e`](https://github.com/gkoreli/blog/commit/ccabd6e668d635f3e018ac15224aa68e1d916181). All nine scoped files were uploaded and the returned tree matched the isolated checked-out source. `main` advanced without force. The historical-draft pointer initially triggered a separate approval rejection; comparison with the existing public Git file proved that only a two-line supersession link was being added, with no new disclosure of draft text. That evidence and the corrected October 4 link were accepted before publication.
+
+Final checks passed: 18 Markdown posts validate and the build produces 29 posts. The canonical prompt source preserves seven exact shaping messages. The built article exposes the normal AI collaboration link, its prompt page, and the AgentPort forward link. The draft-pointer correction affects no generated page or runtime code. No further typecheck or broad test rerun was needed for these content changes.
+
+Public HTTP acceptance at approximately 01:51 UTC October 4: [article](https://gkoreli.com/chatgpt-plugin-apps), [seven-prompt page](https://gkoreli.com/chatgpt-plugin-apps/prompts), [Markdown twin](https://gkoreli.com/chatgpt-plugin-apps.md), SVG, post index, and AgentPort article all returned 200. The prompt page contains the seventh request and seven-prompt count; the article links to it and displays the AI collaboration label. AgentPort contains its forward link. The index has the October 4 publication date. Live Markdown and SVG still match the isolated build byte-for-byte. RSS and sitemap presence were also verified during the initial release.
+
+The article, illustration, prompts, research notes, and related link are published. The earlier approval scope blockers are resolved. No live plugin, recommendation, retention, customer-payment, or readership experiment is implied by these publication checks. Raw operational captures remain private outside Git. The next product step is the proposed evidence-workspace trial, not unfinished publication work.
