@@ -1,5 +1,7 @@
 # ChatGPT Plugins: What Can We Build Beyond Tool Calls?
 
+*Historical September 29 exploratory draft. Superseded by [the published October 4 article](../posts/028-chatgpt-plugin-apps.md). Retained to show the initial research and editorial development.*
+
 *Working draft, September 29, 2026. Documentation and source review; no live plugin test or distribution measurement yet.*
 
 OpenAI now documents ways for plugins to open from ChatGPT’s sidebar, sit beside a conversation, and handle files in their own interface. That makes a different kind of product possible: an application someone can work in while their assistant reads its state and acts on it. The interesting question is what becomes worth building when the application can share the assistant the user already uses.

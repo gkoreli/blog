@@ -3,6 +3,7 @@ title: "Bring Your Own AI Agent Everywhere"
 seoTitle: "AgentPort: One AI Agent Across Every Application"
 alternativeHeadline: "One private agent, one subscription, every application surface"
 date: "2026-08-20"
+lastModified: "2026-10-04"
 description: "AgentPort lets applications attach a user-owned AI agent with scoped grants, private transport, and no new model subscription per app."
 section: engineering
 tags: [agentport, webmcp, ai-agents, privacy, agentic-engineering]
@@ -32,6 +33,8 @@ The split should be much simpler:
 - The user supplies the agent: their model, subscription, memory, prompts, and tools.
 
 The application lends a small set of capabilities for one session. The user's agent does the work, then disconnects.
+
+[ChatGPT plugin apps](/chatgpt-plugin-apps) explore the relationship from the host's side: an application contributes its interface and actions inside an assistant the user already uses.
 
 This is what AgentPort does.
 
