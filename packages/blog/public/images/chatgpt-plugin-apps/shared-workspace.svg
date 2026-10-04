@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="650" viewBox="0 0 660 650" role="img" aria-labelledby="title desc">
+  <title id="title">A shared workspace and assistant</title>
+  <desc id="desc">You select an item in the app. The app shares relevant information with the assistant, which calls actions on the open app. You review the result. Saving checks the file version.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#536b65"/></marker>
+  </defs>
+  <rect width="660" height="650" rx="16" fill="#f7f3eb"/>
+  <g font-family="system-ui, sans-serif" fill="#263a35">
+    <text x="34" y="48" font-size="23" font-weight="700">Work in the app. Talk to the assistant.</text>
+    <text x="34" y="77" font-size="17" fill="#536b65">An interaction pattern suggested by the CAD example</text>
+    <rect x="34" y="105" width="592" height="94" rx="10" fill="#fffdf8" stroke="#cfc6b6"/>
+    <text x="56" y="139" font-size="23" font-weight="650">You select and review</text>
+    <text x="56" y="170" font-size="19">A claim, a paragraph, a part, or an open file</text>
+    <path d="M330 201V237" stroke="#536b65" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="34" y="245" width="592" height="116" rx="10" fill="#e5eee7" stroke="#a8bbae"/>
+    <text x="56" y="280" font-size="23" font-weight="650">The app tracks the work</text>
+    <text x="56" y="313" font-size="19">Selected item · available actions · current result</text>
+    <text x="56" y="340" font-size="19">It keeps track of saved and unsaved changes</text>
+    <path d="M170 365V435" stroke="#536b65" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="192" y="399" font-size="18">Selected information ↓</text>
+    <path d="M490 437V368" stroke="#536b65" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="300" y="425" font-size="18">↑ Edit or inspect</text>
+    <rect x="34" y="445" width="592" height="94" rx="10" fill="#e9edf4" stroke="#acbacd"/>
+    <text x="56" y="480" font-size="23" font-weight="650">The assistant reads your request</text>
+    <text x="56" y="513" font-size="19">Uses the information and calls the app's tools</text>
+    <path d="M34 575H626" stroke="#d4cbbc"/>
+    <text x="34" y="607" font-size="20" font-weight="650">Saving checks the file version.</text>
+    <text x="34" y="632" font-size="17" fill="#536b65">A changed file produces a conflict instead of an overwrite.</text>
+  </g>
+</svg>
