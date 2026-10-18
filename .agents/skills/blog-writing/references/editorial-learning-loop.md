@@ -1,5 +1,13 @@
 # Editorial Feedback and Measurement
 
+## Owner direction: growth through reader value
+
+Goga's direction of October 18, 2026 is to prioritize sustained reader value and adoption when planning growth and distribution. Define the intended reader and useful continuation before choosing a success measure. For practical engineering work, seek specific evidence of understanding, application, corrections, recommendations to relevant peers, return reading, and confirmed subscriptions where appropriate. Treat impressions, likes, follower totals, and launch attention as distribution context; they do not establish these outcomes by themselves.
+
+Prefer bounded learning with willing readers facing the actual question: understand their task, find where the explanation or artifact fails them, and improve the relevant work. Keep hypotheses separate from reported use and observed behavior. This direction does not impose utility metrics on personal essays, require positive feedback before publishing, or make difficulty itself a sign of valuable growth. Preserve the article's form and authorship.
+
+## Publication feedback
+
 After publishing a substantive engineering article:
 
 1. Set a measurement window before interpreting performance.
