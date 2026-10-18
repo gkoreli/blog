@@ -1,0 +1,16 @@
+url,interaction_object,observed_statement_or_action,evidence_limit
+https://x.com/yash_patidar_ai/status/2111149094777614538,story distribution,Attributes more user acquisition to the Reddit story itself,No referral or signup data supplied
+https://x.com/hridoyreh/status/2111151237697827202,story distribution,Briefly agrees with the preceding Reddit acquisition comment,Agreement adds no acquisition evidence
+https://x.com/LiqFlowApp/status/2111493375174013172,own acquisition,Reports about half of own users come from ChatGPT,Different product and no cohort or attribution export
+https://x.com/hridoyreh/status/2111503228173169125,own acquisition,Responds encouragingly to LiqFlow anecdote,Social affirmation is not verification
+https://x.com/USD_ryan/status/2111184217379934439,measurement,Asks how to learn what visitors asked after seeing chatgpt.com referrers,Referrer does not supply the original prompt
+https://x.com/erenatli/status/2111478160860631151,blog discovery,Reports roughly half of own Istanbul blog traffic from AI services for practical questions,External public anecdote with no analytics or exact prompts
+https://x.com/Sokosumi/status/2111418084972237095,source selection,Reports own category test selected third party review and analyst sources rather than brand websites,No exact prompt or saved answer and cannot generalize to all categories
+https://x.com/thecosmicskye/status/2111238039628612071,novelty,Dismisses novelty by calling it SEO,Classification opinion rather than evidence against the reported channel
+https://x.com/ARP4Freedom/status/2111222827248427237,novelty and standards,Calls it SEO with a newer engine and anticipates standards,Opinion and prediction rather than measured platform behavior
+https://x.com/AmrTawfik160/status/2111522918228205615,causal explanation,Credits the comparison post with doing all the work,Causal certainty exceeds the supplied attribution evidence
+https://x.com/bil0090/status/2111563911417778294,story distribution,Comments on a growth story producing more attention,No measured product acquisition from the post
+https://x.com/PositivityShot1/status/2111298197620404239,story appeal,Expresses strong excitement about the anecdote,Does not express quiz need or product use
+https://x.com/jarivizero/status/2111298112220541257,technical speculation,Labels it SEO and prompt injection,No evidence that FluoTest used prompt injection
+https://x.com/TatabusaR/status/2111486384225821165,technical speculation,Suggests hidden instructions could bias recommendations,Unsubstantiated technique claim and no evidence about this product
+https://x.com/CogginsKaitlin/status/2111598037898526872,headline transmission,Repeats the claim that one assistant sent 131 customers,Shows the headline error traveling rather than independent validation

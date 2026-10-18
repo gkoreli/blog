@@ -1,12 +1,43 @@
 # FluoTest: acquisition, publishing, and the story that spread
 
-Research checked October 17, 2026 (America/Los_Angeles). Requested by Goga after seeing Hridoy Reh's X screenshot. This is a completed public-source investigation, not a published article or a live analytics audit. [Distribution census](distribution-census.md) · [58-entry content census](content-census.csv).
+Research checked October 17, 2026 (America/Los_Angeles), with a deeper follow-up the same day at Goga's request. This is a public-source investigation, not a published article or a live analytics audit. It covers the founder, his product and content, human exchanges, and the people who repackaged the story.
+
+## Reading path and evidence inventory
+
+Start with the findings below, then follow the specific conversation or acquisition question:
+
+| Report | What it adds | Data |
+|---|---|---|
+| [Founder X history and interactions](x-history-and-interactions.md) | What he posted; reach; six reconstructed conversations; feedback, reciprocity, and useful participation. | [89 post observations](x-post-sample.csv) |
+| [Reddit interactions](reddit-interactions.md) | Seven threads; authenticity accusations; failed replication; practical questions; other sellers capturing interest. | [31 selected evidence nodes](reddit-interactions.csv) |
+| [Who signed up and used it](signup-and-product-evidence.md) | Early activation problems, external deployments, five reviews, actual jobs, payment and support. | Source-linked tables and evidence levels |
+| [How the story spread](amplification-analysis.md) | Hridoy's professional context, publishing history, native X neighbors/replies, newsletters, directories, semantic changes. | [18 amplification events](amplification-events.csv), [20 publisher posts](hridoy-post-sample.csv), [15 selected viral replies](x-viral-replies.csv) |
+| [Distribution census](distribution-census.md) | Dated milestones and placements from the initial reconstruction. | Source-linked table |
+| Current English content archive | What the product publishes, with mutable displayed dates. | [58 entries](content-census.csv) |
+
+These are bounded inventories, not a complete export of every historical post, comment, customer, or referral. The social samples overlap; do not add them into a unique-person or unique-interaction total. Analysis distinguishes observed artifacts, public participant statements, founder claims, and interpretation. Detailed exchanges and qualifications belong in the linked reports rather than being compressed out of the account.
 
 ## Finding
 
 There is a real product and a plausible AI acquisition channel behind the screenshot. The viral headline overstates the available evidence. FluoTest's founder reported 131 **total users**, with roughly half attributed to ChatGPT; Hridoy relabelled that as 131 customers sent by ChatGPT. No public cohort export or customer conversation validates that headline. The useful case is several months of product work, comparison content, community promotion, and a product badge, followed by amplification of the story by other publishers.
 
 There are two outcomes to explain: people adopting the product, and people sharing a story about AI acquisition. The second cannot be used as a measurement of the first.
+
+## What the deeper investigation changes
+
+**His own X account did not experience the screenshot's scale.** In 89 observed Posts entries, median displayed views were 51 and 69 were below 100. His more discussed posts often invited other founders to compare progress or introduce projects. A useful authentication bug report in someone else's thread reached 4,481 views; a product link under a large startup invitation showed 11. This is evidence about different interactions, not an experiment proving a growth tactic. The [X report](x-history-and-interactions.md) reconstructs the questions and replies rather than treating their counters as customers.
+
+**Some signups became real workflows; many stalled.** External leadership and coaching pages place FluoTest assessments inside their own services. One public reviewer reports ChatGPT discovery for a specific need. Those artifacts make the channel more credible than repeated marketing anecdotes, while still leaving identity, payment, retention, and cohort totals unverified. Early founder posts describe only two or three power users among 24 accounts, with 17 people building without launching. Later changes still address people who do not know what to build or how to get respondents. The product was solving an activation and distribution problem after signup, not merely collecting free accounts. [Product evidence](signup-and-product-evidence.md).
+
+**The audience for the story often wanted a different product.** In Reddit replies, people ask where to publish, how to be cited, and how to reproduce the acquisition. One asks a commenter whether they can pay for SEO integration; that commenter invites a DM. These are explicit commercial intentions toward someone else's service, not FluoTest sales. A discussion can create real value while directing it to participants other than the original author. The 335-comment counter collapses several different conversations. [Reddit analysis](reddit-interactions.md).
+
+**Slop distrust appears as a social cost, not an authorship detector.** One commenter praises the post's human voice and asks a practical publishing question. Another accuses both post and praise of being GPT-generated; the first commenter says this is why they avoid replying. The founder responds defensively in that branch. No evidence settles AI authorship. What is observable is a useful question turning into an authenticity dispute, and a participant describing withdrawal. Generic enthusiasm, accusations, concrete implementation questions, and negative replication all coexist; a positive/negative sentiment percentage would obscure their different objects.
+
+**The founder learned from explanations that were missing.** A launch commenter asks how scoring works and requests examples; he explains weights, links the showcase, and reports adding more to the launch page. Elsewhere he says people like the tool but do not know what to use it for, so he expands working templates. These are more actionable interactions than a like: they identify the gap between the builder's vocabulary and the visitor's understanding. Reported changes are not verified before/after outcomes.
+
+**Amplification improved portability while losing precision.** The original anecdote becomes a blueprint in a newsletter, an AI-discovery example in a service provider's guide, and finally “131 customers” on X. Hridoy's feed already mixes striking business numbers, SEO steps, backlink lists, tool collections, and his own paid resource. His older posts show continuity of that editorial format. His native recent history also shows substantial unevenness: the FluoTest screenshot greatly exceeds nearby posts. Neither the original source nor his earlier June share predicts October's magnitude. [Amplification analysis](amplification-analysis.md).
+
+The strongest synthesis is a small, active business experiment surrounded by a much larger market for stories about getting attention. That interpretation explains why people can be enthusiastic about the case without needing its software. It does not establish anyone's private motive or a causal model of platform virality.
 
 ## Who built what
 
@@ -41,7 +72,7 @@ The [changelog](https://fluotest.com/en/changelog) dates Pro at €12/month or �
 
 Milestone links and attribution qualifications are in the [distribution census](distribution-census.md). Reddit dates above came from rendered page `time[datetime]` elements, not “months ago” labels. Early dates remain UTC; the original post was May 30 at 1:29 PM PDT.
 
-The [October account](https://fluotest.com/en/blog/from-a-problem-to-500-users) predates Hridoy's October 16 viral post. It therefore rules out the later repost as the cause of the first 500 reported signups. It does not tell us how many additional signups that repost produced.
+The [October retrospective](https://fluotest.com/en/blog/from-a-problem-to-500-users) displays an October 7 date, which is mutable. More firmly, the founder's native [October 12 X update](https://x.com/sikora_dominik_/status/2109808355984249236) already reports 529 users before Hridoy's October 16 repost. The later repost cannot explain those already-reported accounts. The public record does not tell us how many additional signups it produced, or independently audit the earlier totals.
 
 ## What he wrote
 
@@ -122,6 +153,10 @@ We therefore cannot establish “ChatGPT never recommends the blog,” or explai
 
 ### Next bounded experiment — proposed, not executed
 
+The deeper social reading adds a second research track alongside visibility: seek evidence of **reader use**. For a practical article, record the exact problem, where it was discussed, the self-contained finding shared, the question a reader asked, the author's answer, and any later reported application. Keep “interesting,” “saved,” “will try,” “tried,” and “changed my implementation” as different states. A reader can be valuable without becoming a subscriber, and a subscriber can remain inactive. This is a proposed observation method; no outreach has been sent.
+
+For the AI fetcher article, that could mean a person using the header table or checking a classifier. For prompt-cache work, it could mean a reproduction or a concrete context-editing decision. For the code-context article, it could mean a reader explaining why a particular repository needs mapping, search, or packing. Those are closer to FluoTest's externally published assessments than to a marketer liking its growth story. If the discussion keeps returning to article distribution rather than the engineering problem, that is evidence of which audience the framing attracted—not proof that the engineering work is uninteresting.
+
 Start with three existing practical articles above. Use page-filtered Search Console queries to identify real relevant language before editing. Record a small set of unbranded questions, including one broad question, one narrow implementation problem, one comparison, and one request for original evidence per topic. Examples to refine from actual reader evidence:
 
 - Which HTTP headers identify ChatGPT and Claude requests to a website?
@@ -137,8 +172,10 @@ Compare the sources selected and the passages that answer the question. Revise o
 
 ## Method, completion, and remaining access limits
 
-Completed: browser reading of the X post and a substantial set of visible replies; original Reddit post, visible comments and extended search-rendered discussion; founder/product identity; linked milestone posts; Product Hunt listing/comments; current archive census; principal comparison and growth articles; changelog; amplification examples; comparison with saved blog evidence and live discoverability.
+Completed: native-browser reading of the original X post and selected reply branches; 89 founder Posts entries, selected full conversations, and 62 nodes on the Replies surface including other authors' ancestors; 20 Hridoy timeline entries including the pinned post; seven Reddit interaction threads plus earlier usage posts; founder/product identity; milestones; Product Hunt; archive census; comparison and growth articles; changelog; five review bodies; external assessment placements; launch invitations and directories; newsletter and marketer repackaging; comparison with saved blog evidence and live discoverability. The linked reports state their separate retrieval conditions and limits.
 
-The current Reddit submissions browser view reported hidden posts. A search-rendered historical profile exposed older submissions and supplied links to individual posts; it is explicitly a historical discovery aid, not a complete current account export. Removed and deleted comments were not reconstructed. Facebook group names, private analytics, raw signup questionnaires, and every historical social post remain unavailable. No historical archive snapshots were acquired. The 58-entry census covers the current English archive, not every site URL or translation; not all 58 bodies were read. No product account was created or app workflow tested.
+The current Reddit submissions browser view reported hidden posts. A search-rendered historical profile exposed older submissions and supplied links to individual posts; it is explicitly a historical discovery aid, not a complete current account export. Removed and deleted comments were not reconstructed. Facebook group names, private analytics, raw signup questionnaires, and a complete social history remain unavailable. No historical archive snapshots were acquired. The 58-entry census covers the current English archive, not every site URL or translation; not all 58 bodies were read. No product account was created or app workflow tested. Research agents sent no public posts, messages, or reactions.
 
-Research is complete for the public-source reconstruction. Further causal claims require new evidence, not more retellings of the same post. The next action, if this direction is pursued, is the bounded blog visibility experiment above; it is not an unfinished acceptance check on this report.
+The initial reconstruction and requested deeper follow-up are complete within these public-source limits. The follow-up supersedes the initial stopping point by adding interactions, usage evidence, and publishing history; it does not silently turn the proposed experiments into accepted work. The next bounded action, if this direction is pursued, is the visibility diagnostic or the reader-use observation track above. No remaining document acceptance check depends on those experiments. Further causal claims require new evidence, rather than more copies of the same anecdote.
+
+Document validation: all local file links resolve; the six CSV files parse with the stated row counts; native X permalink uniqueness and founder-sample statistics were checked; a separate review checked source independence, timing, counter snapshots, and denominator language. No production code or article prose changed, so no site build or application test was required.
