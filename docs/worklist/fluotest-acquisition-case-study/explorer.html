@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Explore the FluoTest acquisition story: its chronology, human interactions, evidence limits, and proposed lessons for Goga's blog.">
+  <title>A useful product, a much bigger story — FluoTest field guide</title>
+  <style>
+    :root { color-scheme: light; --paper:#faf8f5; --surface:#fffdfa; --ink:#2d2a24; --muted:#69645c; --line:#dcd7cf; --wash:#eeeae3; --product:#1a6b4e; --product-wash:#e5efe8; --story:#a34e2d; --story-wash:#f5e9df; --focus:#245f9b; --shadow:0 14px 40px #2d2a2409; --serif:Georgia,'Times New Roman',serif; --sans:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; --mono:ui-monospace,SFMono-Regular,Consolas,monospace; }
+    @media (prefers-color-scheme:dark) { :root:not([data-theme="light"]) { color-scheme:dark; --paper:#1a1a1a; --surface:#232321; --ink:#f0ece4; --muted:#b7b1a7; --line:#46443f; --wash:#30302b; --product:#83cdb0; --product-wash:#253b31; --story:#efb18c; --story-wash:#423026; --focus:#97c8ef; --shadow:none; } }
+    :root[data-theme="dark"] { color-scheme:dark; --paper:#1a1a1a; --surface:#232321; --ink:#f0ece4; --muted:#b7b1a7; --line:#46443f; --wash:#30302b; --product:#83cdb0; --product-wash:#253b31; --story:#efb18c; --story-wash:#423026; --focus:#97c8ef; --shadow:none; }
+    * { box-sizing:border-box; }
+    fluotest-explorer { display:block; }
+    html { scroll-behavior:smooth; scroll-padding-top:92px; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.65; }
+    a { color:var(--product); text-underline-offset:4px; }
+    a:hover { text-decoration-thickness:2px; }
+    button,select { font:inherit; color:inherit; }
+    button { cursor:pointer; }
+    button:disabled { cursor:default; opacity:.45; }
+    :focus-visible { outline:3px solid var(--focus); outline-offset:4px; }
+    h1,h2,h3,p { margin-top:0; }
+    h1,h2,h3 { font-family:var(--serif); font-weight:400; line-height:1.15; text-wrap:balance; }
+    h1 { font-size:clamp(2.8rem,5.7vw,5.7rem); letter-spacing:-.045em; margin-bottom:28px; }
+    h2 { font-size:clamp(2rem,3.6vw,3.25rem); letter-spacing:-.035em; margin-bottom:18px; }
+    h3 { font-size:1.65rem; margin-bottom:15px; }
+    p { margin-bottom:16px; }
+    strong { font-weight:650; }
+    small,.small { font-size:.82rem; line-height:1.55; }
+    .muted { color:var(--muted); }
+    .eyebrow { display:block; font: .7rem/1.5 var(--mono); letter-spacing:.11em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+    .wrap { max-width:1200px; margin:auto; padding:0 40px; }
+    .topbar { position:sticky; top:0; z-index:5; border-bottom:1px solid var(--line); background:var(--paper); }
+    .topbar-inner { display:flex; align-items:center; justify-content:space-between; gap:24px; min-height:76px; }
+    .brand { color:var(--ink); font: .77rem/1.4 var(--mono); text-decoration:none; letter-spacing:.04em; white-space:nowrap; }
+    .brand span { color:var(--product); }
+    nav { display:flex; gap:23px; flex-wrap:wrap; }
+    nav a { font-size:.8rem; text-decoration:none; color:var(--muted); }
+    nav a:hover { color:var(--ink); }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; padding:9px 15px; border:1px solid var(--line); border-radius:4px; background:var(--surface); text-decoration:none; font-size:.82rem; line-height:1.4; }
+    .btn:hover { border-color:var(--muted); }
+    .btn.primary { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+    .btn[aria-pressed="true"] { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+    .hero { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(250px,.8fr); gap:70px; padding-top:78px; padding-bottom:70px; }
+    .hero .lead { max-width:610px; font:1.15rem/1.75 var(--serif); }
+    .hero-note { align-self:end; padding:24px 0 4px 25px; border-left:2px solid var(--product); }
+    .hero-note p { font-size:.9rem; }
+    .hero-note .big { font-family:var(--serif); font-size:2rem; line-height:1.2; }
+    .section { border-top:1px solid var(--line); padding:65px 0; }
+    .section-head { display:grid; grid-template-columns:1.1fr 1fr; gap:50px; margin-bottom:34px; align-items:end; }
+    .section-head p { color:var(--muted); max-width:520px; margin-bottom:3px; font-size:.94rem; }
+    .section-number { color:var(--product); font-family:var(--mono); font-size:.75rem; margin-right:10px; }
+    .legend { display:flex; gap:20px; flex-wrap:wrap; color:var(--muted); font-size:.78rem; margin:20px 0; }
+    .legend span { display:inline-flex; align-items:center; gap:7px; }
+    .key { width:10px; height:10px; border-radius:50%; display:inline-block; background:var(--product); }
+    .key.story { background:var(--story); }
+    .two-paths { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:35px; }
+    .path { padding:25px; background:var(--product-wash); border-top:3px solid var(--product); }
+    .path.story { background:var(--story-wash); border-color:var(--story); }
+    .path-title { font-size:.7rem; letter-spacing:.09em; text-transform:uppercase; font-family:var(--mono); margin-bottom:16px; color:var(--product); }
+    .path.story .path-title { color:var(--story); }
+    .path p { font-size:.84rem; margin:16px 0 0; }
+    .path-flow { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+    .path-flow a { color:var(--ink); font-size:.85rem; text-decoration:none; border-bottom:1px solid currentColor; }
+    .arrow { color:var(--muted); font-size:1rem; }
+    .chronology { display:grid; grid-template-columns:320px minmax(0,1fr); gap:38px; align-items:start; }
+    .timeline-nav { display:grid; position:relative; border-left:1px solid var(--line); margin-left:5px; }
+    .timeline-nav a { display:grid; grid-template-columns:64px 1fr; gap:12px; padding:10px 15px 10px 20px; color:var(--muted); text-decoration:none; font-size:.81rem; position:relative; border-radius:0 4px 4px 0; }
+    .timeline-nav a::before { content:''; width:7px; height:7px; position:absolute; left:-4px; top:21px; border-radius:50%; background:var(--line); }
+    .timeline-nav a:hover { color:var(--ink); background:var(--wash); }
+    .timeline-nav a[aria-current="step"] { background:var(--product-wash); color:var(--ink); }
+    .timeline-nav a[aria-current="step"]::before { background:var(--product); width:9px; height:9px; left:-5px; }
+    .timeline-nav time { font: .67rem/1.9 var(--mono); text-transform:uppercase; }
+    .timeline-body { min-width:0; }
+    .event-toolbar { display:none; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+    .enhanced .event-toolbar { display:flex; }
+    .event-toolbar .controls { display:flex; gap:8px; }
+    .event-position { font: .72rem/1.5 var(--mono); color:var(--muted); }
+    .event { background:var(--surface); border:1px solid var(--line); padding:32px; margin-bottom:22px; box-shadow:var(--shadow); border-radius:5px; scroll-margin-top:100px; }
+    .event .date { font: .72rem/1.5 var(--mono); color:var(--muted); margin-bottom:15px; }
+    .event h3 { font-size:1.9rem; }
+    .event p { font-size:.94rem; }
+    .evidence { display:inline-block; padding:3px 8px; border:1px solid var(--line); font: .64rem/1.6 var(--mono); text-transform:uppercase; letter-spacing:.035em; border-radius:3px; vertical-align:middle; }
+    .evidence.observed { background:var(--product-wash); border-color:transparent; }
+    .event-row { padding-top:16px; margin-top:20px; border-top:1px solid var(--line); }
+    .event-row .label { font: .66rem/1.5 var(--mono); text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
+    .event-row p { margin:0; }
+    .event .source { margin-top:23px; font-size:.8rem; }
+    .quiet-note { margin-top:22px; padding-left:15px; border-left:2px solid var(--line); color:var(--muted); font-size:.84rem; }
+    .chart-head { display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; margin-bottom:30px; }
+    .chart-head p { margin:0; max-width:620px; font-size:.9rem; }
+    .chart-row { display:grid; grid-template-columns:230px minmax(0,1fr) 94px; align-items:center; gap:20px; margin-bottom:22px; }
+    .chart-label { font-size:.83rem; line-height:1.45; }
+    .chart-label span { display:block; color:var(--muted); font-size:.73rem; }
+    .chart-track { height:24px; position:relative; border-bottom:1px solid var(--line); }
+    .chart-fill { position:absolute; height:3px; left:0; top:10px; background:var(--product); width:var(--extent); }
+    .chart-fill.story { background:var(--story); }
+    .chart-dot { position:absolute; width:12px; height:12px; border-radius:50%; left:var(--extent); top:6px; transform:translateX(-6px); background:var(--product); }
+    .chart-dot.story { background:var(--story); }
+    .chart-value { text-align:right; font:1rem/1.4 var(--mono); }
+    .chart-axis { display:flex; justify-content:space-between; margin-left:250px; margin-right:114px; font: .65rem/1.4 var(--mono); color:var(--muted); }
+    .chart-caption { margin-top:22px; font-size:.8rem; color:var(--muted); max-width:830px; }
+    .split-insight { display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:40px; }
+    .split-insight > div { padding-top:20px; border-top:1px solid var(--line); }
+    .split-insight h3 { font-size:1.3rem; }
+    .split-insight p { font-size:.9rem; }
+    .case-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    details.case { border:1px solid var(--line); background:var(--surface); align-self:start; border-radius:5px; }
+    details.case summary { padding:22px 24px; cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:20px; font-family:var(--serif); font-size:1.25rem; line-height:1.35; }
+    details.case summary::-webkit-details-marker { display:none; }
+    details.case summary::after { content:'+'; font:1.3rem/1.4 var(--mono); color:var(--muted); }
+    details.case[open] summary::after { content:'−'; }
+    .case-body { padding:0 24px 24px; }
+    .case-type { display:block; font: .65rem/1.5 var(--mono); color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:7px; }
+    .conversation { padding:0 0 0 20px; margin:12px 0 22px; }
+    .conversation li { padding:0 0 20px 25px; border-left:1px solid var(--line); position:relative; font-size:.88rem; }
+    .conversation li::marker { font-family:var(--mono); color:var(--product); }
+    .conversation li:last-child { padding-bottom:0; }
+    .conversation b { display:block; font-size:.76rem; margin-bottom:3px; font-weight:600; }
+    .case-end { padding:15px; background:var(--wash); font-size:.85rem; }
+    .case-end p:last-child { margin-bottom:0; }
+    .case-sources { display:flex; gap:13px; flex-wrap:wrap; margin-top:17px; font-size:.75rem; }
+    .numbers-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:25px; margin:30px 0; }
+    .number { padding:23px 0; border-top:2px solid var(--line); }
+    .number .value { font:2.9rem/1.2 var(--serif); display:block; margin-bottom:9px; letter-spacing:-.03em; }
+    .number .label { font-size:.9rem; display:block; margin-bottom:10px; }
+    .number p { color:var(--muted); font-size:.78rem; margin-bottom:0; }
+    .calc { background:var(--surface); border:1px solid var(--line); padding:25px; border-radius:5px; }
+    .calc-controls { display:flex; gap:9px; flex-wrap:wrap; margin-bottom:22px; }
+    .calc-result { display:grid; grid-template-columns:150px 1fr; gap:25px; align-items:start; }
+    .calc-result .value { font:2.8rem/1.2 var(--serif); }
+    .calc-result p { margin:0; font-size:.9rem; }
+    .calc-result h3 { font-size:1.3rem; }
+    .formula { color:var(--muted); font: .7rem/1.5 var(--mono); margin-bottom:10px; }
+    .lesson-switch { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:25px; }
+    .lesson { border:1px solid var(--line); background:var(--surface); padding:32px; margin-bottom:25px; border-radius:5px; }
+    .lesson h3 { font-size:1.8rem; }
+    .lesson-intro { max-width:750px; }
+    .lesson-flow { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:25px; margin:25px 0; }
+    .lesson-flow > div { border-top:2px solid var(--product); padding-top:16px; }
+    .lesson-flow h4 { font-weight:600; font-size:.88rem; margin:0 0 10px; }
+    .lesson-flow p { font-size:.88rem; margin:0; }
+    .translation { padding:20px; background:var(--product-wash); font-size:.88rem; }
+    .reader-states { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:20px 0; }
+    .reader-states span { padding:8px 12px; font-size:.81rem; border:1px solid var(--line); border-radius:3px; }
+    .reader-states i { color:var(--muted); font-style:normal; }
+    .guardrail { display:grid; grid-template-columns:1fr 1fr; gap:25px; margin-top:30px; }
+    .guardrail > div { border-top:1px solid var(--line); padding-top:20px; }
+    .guardrail h3 { font-size:1.35rem; }
+    .guardrail p { font-size:.9rem; }
+    .source-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+    .source-grid h3 { font-size:1.35rem; }
+    .source-grid ul { padding-left:18px; font-size:.85rem; }
+    .source-grid li { padding-bottom:7px; }
+    .content-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; }
+    .content-type { border-top:2px solid var(--line); }
+    .content-type summary { cursor:pointer; padding:20px 0; font-family:var(--serif); font-size:1.3rem; }
+    .content-count { font-family:var(--mono); font-size:.85rem; color:var(--product); margin-right:8px; }
+    .content-type p,.content-type li { font-size:.85rem; }
+    .content-type ul { padding-left:18px; }
+    .content-type li { margin-bottom:9px; }
+    .diagnostic { border-top:1px solid var(--line); padding-top:18px; margin-top:15px; }
+    .diagnostic summary { cursor:pointer; font-size:.86rem; }
+    .diagnostic ol { font-size:.85rem; padding-left:20px; }
+    .diagnostic li { margin-bottom:10px; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+    .footer { padding:28px 0 50px; border-top:1px solid var(--line); font-size:.75rem; color:var(--muted); display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; }
+    .js-only { display:none; }
+    .enhanced .js-only { display:inline-flex; }
+    [hidden] { display:none !important; }
+    @media (max-width:950px) { .wrap {padding:0 25px;} .hero {gap:35px;} nav {gap:15px;} .chronology {grid-template-columns:260px minmax(0,1fr);gap:25px;} .event {padding:25px;} .chart-row {grid-template-columns:190px minmax(0,1fr) 88px;gap:15px;} .chart-axis {margin-left:205px;margin-right:103px;} }
+    @media (max-width:740px) { html {scroll-padding-top:20px;} .topbar {position:static;} .topbar-inner {flex-wrap:wrap;gap:10px;padding-top:14px;padding-bottom:12px;} nav {order:3;width:100%;gap:10px;} nav a {min-height:44px;display:inline-flex;align-items:center;} .hero {grid-template-columns:1fr;padding-top:45px;padding-bottom:42px;gap:20px;} .hero-note {padding-top:5px;} .section {padding:42px 0;} .section-head {grid-template-columns:1fr;gap:10px;} .two-paths,.case-grid,.split-insight,.guardrail,.source-grid {grid-template-columns:1fr;} .content-grid {grid-template-columns:1fr 1fr;gap:20px;} .chronology {grid-template-columns:1fr;gap:20px;} .enhanced .timeline-nav {grid-template-columns:1fr 1fr;gap:2px;border-left:0;margin:0;} .enhanced .timeline-nav a {grid-template-columns:1fr;gap:2px;padding:9px 12px;border:1px solid var(--line);border-radius:3px;} .enhanced .timeline-nav a::before {display:none;} .timeline-nav time {line-height:1.4;} .chart-row {grid-template-columns:minmax(0,1fr) 85px;gap:8px;margin-bottom:26px;} .chart-label {grid-column:1/-1;} .chart-axis {margin-left:0;margin-right:93px;font-size:.6rem;} .numbers-grid {grid-template-columns:1fr 1fr;gap:14px;} .number {padding:15px 0;} .number .value {font-size:2.5rem;} .lesson-flow {grid-template-columns:1fr;gap:20px;} .lesson {padding:23px;} .calc-result {grid-template-columns:1fr;gap:12px;} }
+    @media (max-width:380px) { .wrap {padding:0 18px;} nav {gap:13px;} nav a {font-size:.73rem;} .event {padding:21px;} .event-toolbar .btn {padding:9px 11px;} }
+    @media (prefers-reduced-motion:reduce) { html {scroll-behavior:auto;} }
+    @media print { .topbar,.event-toolbar,.timeline-nav,.lesson-switch,.calc-controls,.js-only {display:none!important;} [hidden] {display:block!important;} .wrap {max-width:none;padding:0;} .hero,.section-head,.chronology,.case-grid,.lesson-flow {display:block;} .section {padding:25px 0;} .event,details.case,.lesson {box-shadow:none;break-inside:avoid;} .case-body {display:block!important;} body {color:#222;background:white;} a {color:inherit;} .hero {padding-top:20px;} }
+  </style>
+</head>
+<body>
+<fluotest-explorer>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#top"><span>GK</span> / FIELD GUIDE 01</a>
+    <nav aria-label="Explore the study"><a href="#chain">The chain</a><a href="#attention">Attention</a><a href="#writing">Writing</a><a href="#people">People</a><a href="#numbers">Numbers</a><a href="#blog">Your blog</a></nav>
+    <button class="btn js-only" id="theme-button" type="button" aria-label="Switch color theme">Theme</button>
+  </div>
+</header>
+<main class="wrap" id="top">
+  <section class="hero" aria-labelledby="title">
+    <div>
+      <span class="eyebrow">FluoTest / February → October 2026</span>
+      <h1>A useful product.<br>A much bigger story.</h1>
+      <p class="lead">How a quiz builder found users, how an AI acquisition anecdote traveled, and what Goga can learn from the people in between.</p>
+      <a class="btn primary" href="#chain">Follow what happened <span aria-hidden="true">↓</span></a>
+    </div>
+    <aside class="hero-note" aria-label="The central correction">
+      <span class="eyebrow">The number that changed meaning</span>
+      <p class="big">131 total accounts.<br>Roughly half attributed to ChatGPT.</p>
+      <p>The viral headline turned that into <strong>131 customers sent by ChatGPT</strong>. The product is real; that headline exceeds its source.</p>
+      <p class="small muted">Research observed October 17, 2026. Guide assembled October 18. Public statements and saved counters; no customer or analytics audit.</p>
+    </aside>
+  </section>
+
+  <section class="section" id="chain" aria-labelledby="chain-title">
+    <div class="section-head">
+      <div><span class="eyebrow"><span class="section-number">01</span>Sequence & connection</span><h2 id="chain-title">Two journeys<br>share one story.</h2></div>
+      <p>One journey concerns someone choosing and using software. The other concerns people sharing a surprising growth story. Select an event to inspect the connection—and the evidence behind it.</p>
+    </div>
+    <div class="two-paths">
+      <div class="path">
+        <div class="path-title">Product adoption</div>
+        <div class="path-flow"><a href="#e01" data-jump="e01">Own studio problem</a><span class="arrow" aria-hidden="true">→</span><a href="#e02" data-jump="e02">Useful free option</a><span class="arrow" aria-hidden="true">→</span><a href="#e03" data-jump="e03">Reported discovery</a><span class="arrow" aria-hidden="true">→</span><a href="#e05" data-jump="e05">Help people use it</a><span class="arrow" aria-hidden="true">→</span><a href="#e10" data-jump="e10">First payment</a></div>
+        <p>Founder-described mechanism. Individual sources support parts of the path; no complete customer cohort validates every transition.</p>
+      </div>
+      <div class="path story">
+        <div class="path-title">Story circulation</div>
+        <div class="path-flow"><a href="#e08" data-jump="e08">Reddit anecdote</a><span class="arrow" aria-hidden="true">→</span><a href="#e09" data-jump="e09">Newsletter lesson</a><span class="arrow" aria-hidden="true">→</span><a href="#e11" data-jump="e11">June screenshot</a><span class="arrow" aria-hidden="true">→</span><a href="#e14" data-jump="e14">October breakout</a></div>
+        <p>Arrows show publication order and reuse of the case, not proof that each publisher found it through the previous one. Product adoption from each share remains unknown.</p>
+      </div>
+    </div>
+    <div class="chronology">
+      <div class="timeline-nav" aria-label="Case chronology">
+        <a href="#e01" data-jump="e01"><time>Feb 16</time><span>Build for an existing problem</span></a>
+        <a href="#e02" data-jump="e02"><time>Mar 07</time><span>Answer a switching decision</span></a>
+        <a href="#e03" data-jump="e03"><time>Mar 12</time><span>Notice a reported AI referral</span></a>
+        <a href="#e04" data-jump="e04"><time>Apr 03</time><span>Try several ways to find people</span></a>
+        <a href="#e05" data-jump="e05"><time>Apr 17</time><span>Work on the steps after signup</span></a>
+        <a href="#e06" data-jump="e06"><time>May 19</time><span>Launch and ask for support</span></a>
+        <a href="#e07" data-jump="e07"><time>May 24</time><span>Introduce a paid plan</span></a>
+        <a href="#e08" data-jump="e08"><time>May 30</time><span>The Reddit story breaks out</span></a>
+        <a href="#e09" data-jump="e09"><time>Jun 03</time><span>Anecdote becomes a blueprint</span></a>
+        <a href="#e10" data-jump="e10"><time>Jun 17</time><span>A person helps a buyer pay</span></a>
+        <a href="#e11" data-jump="e11"><time>Jun 29</time><span>Hridoy shares the case</span></a>
+        <a href="#e12" data-jump="e12"><time>Oct 07</time><span>More accounts; uneven use</span></a>
+        <a href="#e13" data-jump="e13"><time>Oct 12</time><span>A pre-viral milestone</span></a>
+        <a href="#e14" data-jump="e14"><time>Oct 16</time><span>The same case travels much further</span></a>
+      </div>
+      <div class="timeline-body">
+        <div class="event-toolbar"><span class="event-position" id="event-position" aria-live="polite">Event 1 of 14</span><div class="controls"><button class="btn" id="event-prev" type="button">← Previous</button><button class="btn" id="event-next" type="button">Next →</button></div><button class="btn" id="event-all" type="button" aria-pressed="false">Read all events</button></div>
+        <article class="event" id="e01" data-event>
+          <div class="date">FEBRUARY 16 · RETROSPECTIVE LAUNCH DATE</div><h3>A tool starts with the founder's own problem.</h3><span class="evidence">Founder report</span>
+          <p>Dominik Sikora says he built FluoTest for his web studio, FluoSite, to qualify people before discovery calls. It assigns points to answers, groups respondents by score, and offers a relevant next step.</p>
+          <div class="event-row"><div class="label">How this connects</div><p>A concrete job gives the tool an initial use. The early free offer also serves the studio's lead generation; subscriptions become another model later.</p></div>
+          <div class="event-row"><div class="label">Keep the limit</div><p>The launch date is retrospective. A product origin story does not establish demand, paid adoption, or resulting studio contracts.</p></div>
+          <div class="source"><a href="https://fluotest.com/en/about" target="_blank" rel="noopener noreferrer">Founder account ↗</a> · <a href="https://www.reddit.com/r/buildinpublic/comments/1rx33uu/one_month_building_fluotest_24_users_chatgpt_1/" target="_blank" rel="noopener noreferrer">Month-one report ↗</a></div>
+        </article>
+        <article class="event" id="e02" data-event>
+          <div class="date">MARCH 7 · CURRENT PAGE METADATA</div><h3>He writes for an existing choice.</h3><span class="evidence observed">Page observed</span>
+          <p>The current ScoreApp and Typeform comparisons carry March 7 dates. The offer is recognizable: a free option for someone already looking for scored quizzes or an alternative to another tool.</p>
+          <div class="event-row"><div class="label">Founder explanation → next event</div><p>He later attributes an AI referral to comparison content, then writes more comparisons and use-case pages. This is his explanation, not a controlled test of what a model selected.</p></div>
+          <div class="event-row"><div class="label">Keep the limit</div><p>The pages contain later features. Their dates do not preserve what was live in March, and present-day copy cannot be treated as a historical snapshot.</p></div>
+          <div class="source"><a href="https://fluotest.com/en/blog/fluotest-vs-scoreapp" target="_blank" rel="noopener noreferrer">Current comparison ↗</a> · <a href="content-census.csv">58-entry archive census</a></div>
+        </article>
+        <article class="event" id="e03" data-event>
+          <div class="date">MARCH 12 · SESSION DESCRIBED LATER</div><h3>A referral becomes a theory about discovery.</h3><span class="evidence">Founder report</span>
+          <p>The founder describes user #26 arriving from ChatGPT, landing on the ScoreApp comparison, browsing for about 19 minutes, and signing up. A supplied Clarity image supports his account of a referral session.</p>
+          <div class="event-row"><div class="label">What is inferred</div><p>The visitor's exact question was not recovered. In the Reddit discussion, Dominik says he can imagine what they probably typed. Referral, prompt, recommendation, and signup attribution are separate observations.</p></div>
+          <div class="event-row"><div class="label">Why it matters</div><p>The narrow mechanism is plausible: a person with a specific software need reaches a page useful for that decision. The session does not establish that FAQ schema or comparison tables caused selection.</p></div>
+          <div class="source"><a href="https://fluotest.com/en/blog/from-a-problem-to-500-users" target="_blank" rel="noopener noreferrer">Retrospective and supplied image ↗</a> · <a href="reddit-interactions.md">Discussion qualifications</a></div>
+        </article>
+        <article class="event" id="e04" data-event>
+          <div class="date">APRIL 3 · PUBLIC REDDIT POST</div><h3>Discovery already involves deliberate work.</h3><span class="evidence">Founder report</span>
+          <p>At 41 users across 14 countries, he reports Facebook groups, Reddit answers, comparison articles, and unsuccessful mass outreach. Later he describes 400 LinkedIn messages producing zero registrations.</p>
+          <div class="event-row"><div class="label">Documented sequence</div><p>Community promotion and content preceded the breakout story. “Zero ad spend” does not mean zero distribution work or a single acquisition channel.</p></div>
+          <div class="event-row"><div class="label">Keep the limit</div><p>Facebook groups, raw outreach records, and channel-specific conversion exports were unavailable. Failed outreach is a reported result, not a recommendation to repeat it.</p></div>
+          <div class="source"><a href="https://www.reddit.com/r/Entrepreneurs/comments/1sbm63p/14_countries_in_6_weeks_with_0_ad_spend_is_this/" target="_blank" rel="noopener noreferrer">41-user post ↗</a> · <a href="https://x.com/sikora_dominik_/status/2045922313074565337" target="_blank" rel="noopener noreferrer">Outreach clarification ↗</a></div>
+        </article>
+        <article class="event" id="e05" data-event>
+          <div class="date">APRIL 17 · DISPLAYED ARTICLE DATE</div><h3>Signing up does not finish the customer's job.</h3><span class="evidence">Founder report</span>
+          <p>Early accounts describe many people creating without launching and only a few daily users. He adds publication prompts, a sharing checklist, and an email when a published quiz has no responses.</p>
+          <div class="event-row"><div class="label">The next uncertainty</div><p>A user still needs a use case, worthwhile questions, a useful result, and an audience. Software access solves only part of that work. Later templates and onboarding address the same gaps.</p></div>
+          <div class="event-row"><div class="label">Keep the limit</div><p>The claimed activation rise from about 10% to 65% lacks a stable event definition, cohort, and window. It cannot safely be equated with quiz creation or credited to one email.</p></div>
+          <div class="source"><a href="https://fluotest.com/cs/blog/from-0-to-users-in-15-countries" target="_blank" rel="noopener noreferrer">April account ↗</a> · <a href="signup-and-product-evidence.md">Usage and definition audit</a></div>
+        </article>
+        <article class="event" id="e06" data-event>
+          <div class="date">MAY 19 · LAUNCH</div><h3>He promotes a launch and asks early users for help.</h3><span class="evidence observed">Placement observed</span>
+          <p>FluoTest launches on Product Hunt, with public posts in launch communities. His LinkedIn retrospective reports sharing to 50+ groups and emailing users. Early users reportedly received lifetime Pro and were asked for launch support.</p>
+          <div class="event-row"><div class="label">What we can observe</div><p>The saved Product Hunt page showed 21 points. A launch provides another public surface and conversation; its votes are not a count of customers.</p></div>
+          <div class="event-row"><div class="label">Keep the limit</div><p>No group list or channel conversion export validates the reported promotion scope. The record does not establish a conditional exchange of free access for reviews.</p></div>
+          <div class="source"><a href="https://www.producthunt.com/products/fluotest" target="_blank" rel="noopener noreferrer">Product Hunt ↗</a> · <a href="https://www.reddit.com/r/buildinpublic/comments/1tc8i6x/comment/olqc9yw/" target="_blank" rel="noopener noreferrer">Early-user relationship ↗</a></div>
+        </article>
+        <article class="event" id="e07" data-event>
+          <div class="date">MAY 24 · CHANGELOG DATE</div><h3>A paid plan changes the meaning of conversion.</h3><span class="evidence">Product-authored release</span>
+          <p>The changelog records Pro at €12/month or €120/year, with early users grandfathered. Free accounts, Pro entitlement, and paying subscriptions now describe different groups.</p>
+          <div class="event-row"><div class="label">Documented sequence</div><p>The paid tier precedes the first reported payment. Some early users can use Pro without paying, so total accounts are not the denominator of an upgrade cohort.</p></div>
+          <div class="event-row"><div class="label">Keep the limit</div><p>The release record describes the offer. It does not supply plan eligibility, exposure, payment history, or retention for each account.</p></div>
+          <div class="source"><a href="https://fluotest.com/en/changelog" target="_blank" rel="noopener noreferrer">Product changelog ↗</a></div>
+        </article>
+        <article class="event" id="e08" data-event>
+          <div class="date">MAY 30 · 20:29:39 UTC / 1:29 PM PDT</div><h3>The story finds people with an audience problem.</h3><span class="evidence observed">Post and discussion observed</span>
+          <p>The r/SaaS post reports <strong>131 total users</strong>, roughly half attributed to ChatGPT. Its saved display showed 999 score and 335 comments. The vacation discovery and concrete numbers make the story easy to retell.</p>
+          <div class="event-row"><div class="label">What the replies reveal</div><p>Readers ask where to publish, how to choose topics, how attribution works, and how to reproduce it. Others promote tools, report failed replication, or argue about AI authorship.</p></div>
+          <div class="event-row"><div class="label">Interpretation</div><p>The growth-story audience includes people who may never need quizzes. A large discussion is not a product-prospect count or an independent audit of the mechanism.</p></div>
+          <div class="source"><a href="https://www.reddit.com/r/SaaS/comments/1tsam1y/i_accidentally_discovered_that_chatgpt_was/" target="_blank" rel="noopener noreferrer">Original discussion ↗</a> · <a href="#people">Explore six exchanges ↓</a></div>
+        </article>
+        <article class="event" id="e09" data-event>
+          <div class="date">JUNE 3 · DATED NEWSLETTER</div><h3>A reported experience becomes a marketing blueprint.</h3><span class="evidence observed">Documented reuse</span>
+          <p>GoToMarket.news retells the Spain story as an AI discovery lesson. The inferred buyer question becomes more definite, while the product and founder are unnamed in the spotlight.</p>
+          <div class="event-row"><div class="label">How the meaning changes</div><p>The useful object for this audience is a portable acquisition technique. Later guides reuse the same example to support their own AI-search advice.</p></div>
+          <div class="event-row"><div class="label">Keep the limit</div><p>Another publication does not create another acquisition dataset. No newsletter clicks, attributable FluoTest users, or paid relationship were established.</p></div>
+          <div class="source"><a href="https://gotomarket.news/articles/2026-06-03-ai-shortlist-citations-ramp-agents-distribution-moat/" target="_blank" rel="noopener noreferrer">Newsletter issue ↗</a> · <a href="amplification-analysis.md">Repackaging analysis</a></div>
+        </article>
+        <article class="event" id="e10" data-event>
+          <div class="date">JUNE 17 · PUBLIC PAYMENT ACCOUNT</div><h3>The first payment has a human middle.</h3><span class="evidence">Founder report</span>
+          <p>At 170 users, Dominik describes a Dutch educator who found the tool through ChatGPT. A payment attempt failed authentication. He noticed the failure, emailed personally, and the buyer returned to pay.</p>
+          <div class="event-row"><div class="label">Founder-described sequence</div><p>Discovery → intent → payment failure → personal help → completed payment. The headline compresses several consequential steps into “AI sent a customer.”</p></div>
+          <div class="event-row"><div class="label">Keep the limit</div><p>No buyer interview or transaction audit was available. A later frictionless payment narrative may concern another person or different wording; we did not force the accounts to agree.</p></div>
+          <div class="source"><a href="https://www.reddit.com/r/buildinpublic/comments/1u8ms7u/0_to_first_paying_customer_in_4_months_heres_what/" target="_blank" rel="noopener noreferrer">First-payment account ↗</a></div>
+        </article>
+        <article class="event" id="e11" data-event>
+          <div class="date">JUNE 29 · EARLIER X SHARE</div><h3>The same case already circulated months earlier.</h3><span class="evidence observed">Post observed</span>
+          <p>Hridoy shares the 131-user story. The saved observation showed 8,843 views, 108 likes, seven reposts, and six replies. The founder also publishes an explicit AI-discovery playbook.</p>
+          <div class="event-row"><div class="label">Chronological constraint</div><p>The source story and screenshot format existed well before October. Their existence alone cannot explain why October's share became much larger.</p></div>
+          <div class="event-row"><div class="label">Keep the limit</div><p>Observation windows, audience size, timing, presentation, and network exposure differ. This is not a controlled test of a repeatable virality recipe.</p></div>
+          <div class="source"><a href="https://x.com/hridoyreh/status/2071549488792064365" target="_blank" rel="noopener noreferrer">Earlier share ↗</a> · <a href="https://fluotest.com/en/blog/how-we-got-cited-by-chatgpt-and-perplexity" target="_blank" rel="noopener noreferrer">Founder playbook ↗</a></div>
+        </article>
+        <article class="event" id="e12" data-event>
+          <div class="date">OCTOBER 7 · DISPLAYED RETROSPECTIVE DATE</div><h3>More accounts reveal a complicated usage picture.</h3><span class="evidence">Founder report</span>
+          <p>The retrospective reports 500 signups, 553 quizzes, 4,206 “quiz answers,” and four paying customers. Of 499 source answers, 205 name ChatGPT or another assistant. It also reports 103 aged accounts without a quiz.</p>
+          <div class="event-row"><div class="label">Outside the founder's counters</div><p>A leadership site and a coaching newsletter publish FluoTest assessments in their own workflows. One external reviewer reports useful ChatGPT discovery. These corroborate particular artifacts and statements, not the totals.</p></div>
+          <div class="event-row"><div class="label">Keep the limit</div><p>Created quizzes are not creators. “Answers” has an unresolved unit. Total accounts do not define paid eligibility. The article date is mutable. See the number explorer below.</p></div>
+          <div class="source"><a href="https://fluotest.com/en/blog/from-a-problem-to-500-users" target="_blank" rel="noopener noreferrer">Retrospective ↗</a> · <a href="https://www.delerendeleider.nl/scan-aan-de-leiding/" target="_blank" rel="noopener noreferrer">External leadership workflow ↗</a></div>
+        </article>
+        <article class="event" id="e13" data-event>
+          <div class="date">OCTOBER 12 PDT · NATIVE X TIMESTAMP</div><h3>The reported user base already predates the viral repost.</h3><span class="evidence observed">Dated post; reported totals</span>
+          <p>A native X update reports 529 users, including 232 attributed to ChatGPT. This timestamp gives a firmer ordering than the retrospective's editable publication date.</p>
+          <div class="event-row"><div class="label">What chronology rules out</div><p>The October 16 repost cannot have caused accounts already reported on October 12. It may have brought later users; their number is unknown.</p></div>
+          <div class="event-row"><div class="label">Keep the limit</div><p>A dated post establishes when a claim was public, not the accuracy of the underlying account count. Other revenue snapshots differ and should not be merged into an audited series.</p></div>
+          <div class="source"><a href="https://x.com/sikora_dominik_/status/2109808355984249236" target="_blank" rel="noopener noreferrer">Pre-repost update ↗</a></div>
+        </article>
+        <article class="event" id="e14" data-event>
+          <div class="date">OCTOBER 16 · VIRAL X REPOST</div><h3>The story's audience becomes much bigger than the builder's.</h3><span class="evidence observed">Post and counters observed</span>
+          <p>Hridoy's screenshot reaches about 695,000 displayed views. The saved recent-profile sample records 694,867. His headline calls the 131 accounts “customers” and assigns all of them to ChatGPT.</p>
+          <div class="event-row"><div class="label">Interpretation, with context</div><p>His established feed mixes surprising business results, SEO instructions, lists, and a paid resource. This case fits that format. Its exceptional reach still has no isolated explanation, and sponsorship was not established.</p></div>
+          <div class="event-row"><div class="label">What remains unknown</div><p>Views are not unique or qualified readers. We do not know which people clicked, tried the tool, published a quiz, paid, or returned because of this post.</p></div>
+          <div class="source"><a href="https://x.com/hridoyreh/status/2111145144506352107" target="_blank" rel="noopener noreferrer">Viral post ↗</a> · <a href="hridoy-post-sample.csv">Saved publisher observations</a></div>
+        </article>
+      </div>
+    </div>
+    <p class="quiet-note"><strong>Reading the connections:</strong> a dated sequence tells us what preceded what. A founder explanation tells us what the builder believes happened. An interpretation suggests a mechanism. None is automatically a measured causal effect.</p>
+  </section>
+
+  <section class="section" id="attention" aria-labelledby="attention-title">
+    <div class="section-head"><div><span class="eyebrow"><span class="section-number">02</span>Different scales of attention</span><h2 id="attention-title">The founder did not<br>become a large X account.</h2></div><p>His profile showed 71 followers. Hridoy's showed 36.2K. Even within each account, individual posts traveled very unevenly.</p></div>
+    <div class="chart-head"><p><strong>Displayed X views</strong> · Saved October 17 observations. A sample median is a summary; the other rows are individual posts.</p><button class="btn js-only" id="scale-button" type="button" aria-pressed="false">Show linear scale</button></div>
+    <div id="reach-chart" role="img" aria-label="On a logarithmic scale: founder sample median 51 views, founder sample maximum 2,052, Hridoy June share 8,843, Hridoy October share 694,867. These are different observations, not a controlled comparison.">
+      <div class="chart-row" data-views="51"><div class="chart-label">Founder: sample median<span>89 Posts entries · summary</span></div><div class="chart-track" style="--extent:28.46%"><div class="chart-fill"></div><div class="chart-dot"></div></div><div class="chart-value">51</div></div>
+      <div class="chart-row" data-views="2052"><div class="chart-label">Founder: sample maximum<span>Progress question · April 19</span></div><div class="chart-track" style="--extent:55.20%"><div class="chart-fill"></div><div class="chart-dot"></div></div><div class="chart-value">2,052</div></div>
+      <div class="chart-row" data-views="8843"><div class="chart-label">Hridoy: earlier share<span>Same case · June 29</span></div><div class="chart-track" style="--extent:65.78%"><div class="chart-fill story"></div><div class="chart-dot story"></div></div><div class="chart-value">8,843</div></div>
+      <div class="chart-row" data-views="694867"><div class="chart-label">Hridoy: later share<span>Same case · October 16</span></div><div class="chart-track" style="--extent:97.37%"><div class="chart-fill story"></div><div class="chart-dot story"></div></div><div class="chart-value">694,867</div></div>
+      <div class="chart-axis" id="chart-axis"><span>1</span><span>10</span><span>100</span><span>1K</span><span>10K</span><span>100K</span><span>1M</span></div>
+    </div>
+    <p class="chart-caption" id="scale-caption" aria-live="polite">Logarithmic scale: equal distances represent tenfold changes. This makes small posts visible beside the viral one. Different post ages, audiences, and observation windows prevent a controlled comparison. <a href="x-post-sample.csv">Founder data</a> · <a href="hridoy-post-sample.csv">Publisher data</a></p>
+    <div class="split-insight"><div><h3>Useful participation can travel.</h3><p>A specific authentication bug report in Marc Lou's thread showed <strong>4,481 views</strong>. The exchange narrowed the issue to X's browser and Google login. This reply is outside the Posts sample above. <a href="https://x.com/sikora_dominik_/status/2094794673768255609" target="_blank" rel="noopener noreferrer">Read the exchange ↗</a></p></div><div><h3>A large parent post transfers no guaranteed audience.</h3><p>His product link under a startup invitation showed <strong>11 views</strong>, while the parent showed 342,813. The contrast does not prove why one reply traveled further. It does show why “reply to large accounts” is an incomplete explanation. <a href="https://x.com/sikora_dominik_/status/2070087864415621513" target="_blank" rel="noopener noreferrer">See the reply ↗</a></p></div></div>
+  </section>
+
+  <section class="section" id="writing" aria-labelledby="writing-title">
+    <div class="section-head"><div><span class="eyebrow"><span class="section-number">03</span>The publishing work</span><h2 id="writing-title">He wrote around<br>different reader decisions.</h2></div><p>The current English archive contains 58 entries. Open a category for representative pages. This describes today's archive, not the exact content a model could have read months earlier.</p></div>
+    <div class="content-grid">
+      <details class="content-type"><summary><span class="content-count">29</span>Guides</summary><p>Help someone build, embed, score, migrate, or start from an assessment template.</p><ul><li><a href="https://fluotest.com/en/blog/how-to-embed-a-quiz-on-your-website" target="_blank" rel="noopener noreferrer">Embedding a quiz ↗</a></li><li><a href="https://fluotest.com/en/blog/how-to-migrate-from-scoreapp-to-fluotest" target="_blank" rel="noopener noreferrer">Migrating from ScoreApp ↗</a></li><li><a href="https://fluotest.com/en/blog/lead-qualification-questions" target="_blank" rel="noopener noreferrer">Lead-qualification questions ↗</a></li></ul><p class="muted">The practical action follows the explanation.</p></details>
+      <details class="content-type" open><summary><span class="content-count">14</span>Comparisons</summary><p>Meet an existing choice between named products, prices, limits, and workflows.</p><ul><li><a href="https://fluotest.com/en/blog/fluotest-vs-scoreapp" target="_blank" rel="noopener noreferrer">FluoTest and ScoreApp ↗</a></li><li><a href="https://fluotest.com/en/blog/fluotest-vs-typeform" target="_blank" rel="noopener noreferrer">FluoTest and Typeform ↗</a></li><li><a href="https://fluotest.com/en/blog/fluotest-vs-google-forms" target="_blank" rel="noopener noreferrer">FluoTest and Google Forms ↗</a></li></ul><p class="muted">Useful positioning is observable; a model-selection effect was not isolated.</p></details>
+      <details class="content-type"><summary><span class="content-count">7</span>Use cases</summary><p>Make an application recognizable to someone who does not yet know why they need a scored quiz.</p><ul><li><a href="https://fluotest.com/en/blog/scored-quizzes-for-education" target="_blank" rel="noopener noreferrer">Education ↗</a></li><li><a href="https://fluotest.com/en/blog/scored-quiz-for-fitness-coaches" target="_blank" rel="noopener noreferrer">Fitness coaching ↗</a></li><li><a href="https://fluotest.com/en/blog/how-to-use-scored-quizzes-for-hiring" target="_blank" rel="noopener noreferrer">Hiring workflows ↗</a></li></ul><p class="muted">A proposed use is not evidence that an organization adopted it.</p></details>
+      <details class="content-type"><summary><span class="content-count">4</span>Founder updates</summary><p>Explain milestones, unexpected discovery, product decisions, and how the business is developing.</p><ul><li><a href="https://fluotest.com/en/blog/how-chatgpt-became-our-biggest-acquisition-channel" target="_blank" rel="noopener noreferrer">The longer acquisition account ↗</a></li><li><a href="https://fluotest.com/en/blog/from-a-problem-to-500-users" target="_blank" rel="noopener noreferrer">The 500-user retrospective ↗</a></li></ul><p class="muted">This attracts people interested in building and growth, beyond quiz buyers.</p></details>
+      <details class="content-type"><summary><span class="content-count">1</span>Pricing article</summary><p>Explain a named competitor's cost and the switching decision it creates.</p><ul><li><a href="https://fluotest.com/en/blog/scoreapp-pricing" target="_blank" rel="noopener noreferrer">ScoreApp pricing ↗</a></li></ul><p class="muted">Competitor prices were not independently verified in this investigation.</p></details>
+      <details class="content-type"><summary><span class="content-count">3</span>Role pages</summary><p>Connect the general tool to a professional's recognizable job.</p><ul><li><a href="https://fluotest.com/en/for-coaches" target="_blank" rel="noopener noreferrer">Coaches ↗</a></li><li><a href="https://fluotest.com/en/for-consultants" target="_blank" rel="noopener noreferrer">Consultants ↗</a></li><li><a href="https://fluotest.com/en/for-agencies" target="_blank" rel="noopener noreferrer">Agencies ↗</a></li></ul><p class="muted">These are three landing pages included in the archive, alongside 55 blog URLs.</p></details>
+    </div>
+    <p class="quiet-note">Twenty-one entries carry dates before the May 30 story. Dates and bodies are mutable, so that is not proof that all 21 were live then. The original discussion does establish that comparison content already existed. <a href="content-census.csv">Inspect all 58 dated entries</a>.</p>
+  </section>
+
+  <section class="section" id="people" aria-labelledby="people-title">
+    <div class="section-head"><div><span class="eyebrow"><span class="section-number">04</span>People, needs & responses</span><h2 id="people-title">A comment count hides<br>several conversations.</h2></div><p>Open an exchange to follow the human sequence. These are paraphrases of public statements. A promise, a reported action, and a verified outcome stay separate.</p></div>
+    <div class="case-grid">
+      <details class="case" open><summary><span><span class="case-type">Product comprehension / X</span>“How does the scoring work?”</span></summary><div class="case-body"><ol class="conversation"><li><b>Kat asks for an example.</b>What questions can be asked, how does scoring work, and is there a demo?</li><li><b>Dominik makes it concrete.</b>He explains points and weights, links the showcase, and says he added more to the launch page.</li><li><b>The visible result is clarification.</b>No before/after page capture or Kat signup was observed.</li></ol><div class="case-end"><p><strong>For the blog:</strong> a comprehension question can identify a missing example more clearly than praise identifies what worked.</p></div><div class="case-sources"><a href="https://x.com/kraniakat/status/2058725143543955598" target="_blank" rel="noopener noreferrer">Question ↗</a><a href="https://x.com/sikora_dominik_/status/2058828443207262558" target="_blank" rel="noopener noreferrer">Answer ↗</a></div></div></details>
+      <details class="case"><summary><span><span class="case-type">Reader understanding / X</span>“What stayed in your head?”</span></summary><div class="case-body"><ol class="conversation"><li><b>Shivam praises the article.</b>Dominik asks which part stayed with him.</li><li><b>The reader names AI distribution.</b>He says he intends to apply the methods to his own project.</li><li><b>The remembered subject is the tactic.</b>Successful replication and a need for quiz software remain unestablished.</li></ol><div class="case-end"><p><strong>For the blog:</strong> ask what a reader understood or used. A compliment alone cannot tell you what the article taught.</p></div><div class="case-sources"><a href="https://x.com/sikora_dominik_/status/2061428518936793399" target="_blank" rel="noopener noreferrer">Follow-up question ↗</a><a href="https://x.com/ShivamhunXD/status/2061430038088790243" target="_blank" rel="noopener noreferrer">Reader's answer ↗</a></div></div></details>
+      <details class="case"><summary><span><span class="case-type">Professional reciprocity / X & newsletter</span>A listing starts with an invitation.</span></summary><div class="case-body"><ol class="conversation"><li><b>Nick invites him to list.</b>Dominik expresses interest in the launch platform.</li><li><b>The listing gets redistributed.</b>Dominik announces it, asks for support, and recommends the platform to peers.</li><li><b>A recap supplies another surface.</b>Nick's weekly newsletter later includes FluoTest. Incremental product users are unknown.</li></ol><div class="case-end"><p><strong>For the blog:</strong> distribution may involve a sequence of useful professional interactions. A placement is one step, not the final outcome.</p></div><div class="case-sources"><a href="https://x.com/nicklaunches/status/2058965171968807041" target="_blank" rel="noopener noreferrer">Invitation ↗</a><a href="https://x.com/sikora_dominik_/status/2061410270296100944" target="_blank" rel="noopener noreferrer">Peer recommendation ↗</a><a href="https://nicklaunches.com/blog/week-5-recap-june-07-2026/" target="_blank" rel="noopener noreferrer">Recap ↗</a></div></div></details>
+      <details class="case"><summary><span><span class="case-type">Intent & friction / founder report</span>A buyer wanted to pay. Something failed.</span></summary><div class="case-body"><ol class="conversation"><li><b>An educator reportedly finds the product.</b>The founder attributes discovery to ChatGPT.</li><li><b>Authentication interrupts payment.</b>He notices a failed 3-D Secure attempt and sends a personal email.</li><li><b>The buyer reportedly returns and pays.</b>This is his account, without a buyer interview or transaction audit.</li></ol><div class="case-end"><p><strong>For the blog:</strong> examine the step after arrival. Reading, applying, replying, and subscribing can each stall for a different reason.</p></div><div class="case-sources"><a href="https://www.reddit.com/r/buildinpublic/comments/1u8ms7u/0_to_first_paying_customer_in_4_months_heres_what/" target="_blank" rel="noopener noreferrer">Payment-recovery account ↗</a></div></div></details>
+      <details class="case"><summary><span><span class="case-type">Authenticity & participation / Reddit</span>A useful question becomes an AI argument.</span></summary><div class="case-body"><ol class="conversation"><li><b>A reader praises the human voice.</b>They ask where the comparisons were published because their own blog rarely gets visitors.</li><li><b>Another reader accuses both of using GPT.</b>The founder responds defensively.</li><li><b>The original reader describes withdrawal.</b>They say these accusations are why they avoid replying. Actual authorship is unknown.</li></ol><div class="case-end"><p><strong>For the blog:</strong> put inspectable work within reach and answer the question. A dispute over whether prose sounds human can displace the reader's actual need.</p></div><div class="case-sources"><a href="https://www.reddit.com/r/SaaS/comments/1tsam1y/comment/oouhg91/" target="_blank" rel="noopener noreferrer">Publishing question ↗</a><a href="https://www.reddit.com/r/SaaS/comments/1tsam1y/comment/oouiysr/" target="_blank" rel="noopener noreferrer">Accusation ↗</a><a href="https://www.reddit.com/r/SaaS/comments/1tsam1y/comment/ooujouv/" target="_blank" rel="noopener noreferrer">Stated participation cost ↗</a></div></div></details>
+      <details class="case"><summary><span><span class="case-type">Commercial intent / Reddit</span>The prospective buyer wants another person's service.</span></summary><div class="case-body"><ol class="conversation"><li><b>A commenter recommends an SEO plugin.</b>The branch attracts implementation questions.</li><li><b>Someone asks to pay for integration.</b>The commenter invites a DM. Others question whether the branch is advertising.</li><li><b>Commercial intent is visible; a sale is not.</b>The intended provider is a commenter, not FluoTest. Hidden coordination was not established.</li></ol><div class="case-end"><p><strong>For the blog:</strong> ask whose problem the discussion is solving. Growth-story engagement can create value for people selling distribution help.</p></div><div class="case-sources"><a href="https://www.reddit.com/r/SaaS/comments/1tsam1y/comment/oou3azu/" target="_blank" rel="noopener noreferrer">Plugin recommendation ↗</a><a href="https://www.reddit.com/r/SaaS/comments/1tsam1y/comment/op1x240/" target="_blank" rel="noopener noreferrer">Paid-help request ↗</a><a href="https://www.reddit.com/r/SaaS/comments/1tsam1y/comment/op1zyv9/" target="_blank" rel="noopener noreferrer">DM invitation ↗</a></div></div></details>
+    </div>
+    <p class="quiet-note">This is a purposive sample of informative exchanges, not a sentiment survey. Praise, curiosity, suspicion, technical disagreement, and service-buying intent can coexist. Public replies cannot fully reveal silent readers' behavior or private motives.</p>
+  </section>
+
+  <section class="section" id="numbers" aria-labelledby="numbers-title">
+    <div class="section-head"><div><span class="eyebrow"><span class="section-number">05</span>Accounts, use & payment</span><h2 id="numbers-title">The numbers don't<br>form a complete funnel.</h2></div><p>These are founder-reported October retrospective counters. Their different units and eligibility rules are part of the story.</p></div>
+    <div class="numbers-grid"><div class="number"><span class="value">500</span><span class="label">Signups</span><p>Accounts, including people who have not created or published a quiz.</p></div><div class="number"><span class="value">553</span><span class="label">Quizzes</span><p>Artifacts across accounts. Distinct creators and draft exclusions are unknown.</p></div><div class="number"><span class="value">4,206</span><span class="label">“Quiz answers”</span><p>Counter unit unresolved: individual question answers or completed submissions?</p></div><div class="number"><span class="value">4</span><span class="label">Paying customers</span><p>Reported at this milestone. Some early users had lifetime Pro without paying.</p></div></div>
+    <div class="calc">
+      <span class="eyebrow">Inspect a tempting calculation</span>
+      <div class="calc-controls js-only" id="calc-controls"><button class="btn" type="button" data-calc="paid" aria-pressed="true">4 ÷ 500</button><button class="btn" type="button" data-calc="quizzes" aria-pressed="false">553 ÷ 500</button><button class="btn" type="button" data-calc="source" aria-pressed="false">205 ÷ 499</button><button class="btn" type="button" data-calc="answers" aria-pressed="false">4,206 ÷ 553</button></div>
+      <div id="calc-result" class="calc-result" aria-live="polite"><div><div class="formula">4 paying / 500 accounts</div><div class="value">0.8%</div></div><div><h3>An account-level ratio.</h3><p>It is not an eligible-cohort upgrade rate. Plan entitlement, exposure, account age, cancellations, and retention were not supplied. Grandfathered users complicate the denominator.</p></div></div>
+    </div>
+    <noscript><p>553/500 is 1.106 created quizzes per account, not an activation rate. 205/499 is 41.1% of the stated source-answer cohort naming an AI assistant, not all ChatGPT-only verified referrals. 4,206/553 is about 7.61 reported answers per quiz, with an unresolved unit and no typical-user interpretation.</p></noscript>
+    <p class="quiet-note">Stronger qualitative evidence includes a customer publishing a leadership scan and explaining around cookie-dialog friction, a newsletter offering its own assessment, and a reviewer describing useful ChatGPT discovery. None supplies a retention cohort or validates the aggregate counts. <a href="signup-and-product-evidence.md">Read the product-use evidence</a>.</p>
+  </section>
+
+  <section class="section" id="blog" aria-labelledby="blog-title">
+    <div class="section-head"><div><span class="eyebrow"><span class="section-number">06</span>Transfer the useful part</span><h2 id="blog-title">Give the right reader<br>something they can use.</h2></div><p>These are proposed applications to existing practical articles. They are not a diagnosis of current traffic or proven growth interventions. Personal essays need not become software-comparison pages.</p></div>
+    <div class="lesson-switch js-only" id="lesson-switch" aria-label="Choose an article"><button class="btn" data-lesson="headers" aria-pressed="true" type="button">AI fetcher headers</button><button class="btn" data-lesson="cache" aria-pressed="false" type="button">Prompt-cache context edits</button><button class="btn" data-lesson="context" aria-pressed="false" type="button">Code-context tools</button></div>
+    <p class="sr-only" id="lesson-status" role="status"></p>
+    <article class="lesson" id="lesson-headers" data-lesson-panel="headers"><span class="eyebrow">A narrow implementation question</span><h3>Which requests came from an AI fetcher?</h3><p class="lesson-intro">A site operator needs evidence for a classification decision. The closest equivalent to FluoTest's decision page is your measured header table, source data, and method.</p><div class="lesson-flow"><div><h4>1. Make the useful answer recognizable.</h4><p>State which headers were observed, under what conditions, and what they can identify. Keep fetches separate from citations and human readership.</p></div><div><h4>2. Share a finding where the problem exists.</h4><p>In a relevant bot-classification discussion, give a self-contained observation and its limit. Link the article for the data and reproduction method.</p></div><div><h4>3. Look for application.</h4><p>Did someone check their logs, use the table, question a rule, or report a mismatch? A classifier correction is different evidence from a like.</p></div></div><div class="translation"><strong>What carries over:</strong> a specific need → inspectable evidence → an immediately useful action. <strong>What stays uncertain:</strong> how often an AI selects the article and whether clearer framing changes that.</div><p class="source"><a href="https://gkoreli.com/which-ai-fetchers-send-which-headers" target="_blank" rel="noopener noreferrer">Open the article ↗</a></p></article>
+    <article class="lesson" id="lesson-cache" data-lesson-panel="cache"><span class="eyebrow">A decision inside an agent workflow</span><h3>Which context edits preserve a cached prefix?</h3><p class="lesson-intro">A builder wants to change context without guessing about cache behavior. Your practical value is the connection between provider contracts, harness behavior, and inspectable experiments.</p><div class="lesson-flow"><div><h4>1. Name the precise decision.</h4><p>Which edit, provider, model, harness version, and measured condition does the result concern? Keep test size and freshness close to the finding.</p></div><div><h4>2. Contribute the result, not just the link.</h4><p>Answer an existing context-editing question with the relevant observed behavior. Offer the trace or reproduction path for someone who wants to check it.</p></div><div><h4>3. Seek a reproduction or counterexample.</h4><p>Did another builder reproduce it, discover a version difference, or change how they construct requests? Record the exact conditions.</p></div></div><div class="translation"><strong>What carries over:</strong> useful detail removes uncertainty at the moment of a decision. <strong>What stays uncertain:</strong> demand size, source competition, and the incremental reach of any share.</div><p class="source"><a href="https://gkoreli.com/prompt-cache-context-edits" target="_blank" rel="noopener noreferrer">Open the article ↗</a></p></article>
+    <article class="lesson" id="lesson-context" data-lesson-panel="context"><span class="eyebrow">A comparison with a real choice</span><h3>Does this repository need mapping, search, or packing?</h3><p class="lesson-intro">A named comparison is useful when it helps a reader choose an approach for their repository. Preserve the tradeoffs rather than turning your tool into the winner for every workflow.</p><div class="lesson-flow"><div><h4>1. Explain the job before the tool.</h4><p>Show how mapping, targeted search, and repository packing answer different needs. Use the actual evidence and conditions from the article.</p></div><div><h4>2. Meet a concrete repository problem.</h4><p>Give a relevant comparison in a coding-agent discussion. Ask what the reader needs to locate or understand before proposing an approach.</p></div><div><h4>3. Record the decision it enabled.</h4><p>Did someone choose a method, try it on a repository, or explain why it failed? That feedback can improve the comparison itself.</p></div></div><div class="translation"><strong>What carries over:</strong> content serving an existing switching or implementation decision. <strong>What stays uncertain:</strong> whether the same comparison format earns citations in this different category.</div><p class="source"><a href="https://gkoreli.com/you-dont-need-codemap" target="_blank" rel="noopener noreferrer">Open the article ↗</a></p></article>
+    <h3>Measure the continuation.</h3>
+    <div class="reader-states" aria-label="Reader statements are different states, not guaranteed transitions"><span>Interesting</span><i aria-hidden="true">≠</i><span>Saved</span><i aria-hidden="true">≠</i><span>Will try</span><i aria-hidden="true">≠</i><span>Tried</span><i aria-hidden="true">≠</i><span>Changed my implementation</span></div>
+    <p class="small muted">A useful reply, correction, reproduction, or return can matter without a subscription. These states do not form a mandatory linear journey. Record what the person actually says or does.</p>
+    <div class="guardrail"><div><h3>Keep the evidence close to the claim.</h3><p>A skeptical reader should be able to inspect the result, conditions, artifact, and limit. Human-sounding prose alone cannot resolve an authenticity accusation. Answering the substantive question gives the conversation somewhere useful to go.</p></div><div><h3>Test AI visibility as a separate question.</h3><p>We have not established that ChatGPT never recommends your blog. A proposed diagnostic uses fixed unbranded questions in fresh conversations and records retrieval, citation, recommendation, visits, use, and subscriptions separately.</p><details class="diagnostic"><summary>A bounded diagnostic · proposed, not run</summary><ol><li>Use Search Console queries to refine unbranded questions for three existing practical articles. A starting design is 12 questions × three fresh conversations.</li><li>Record the exact prompt, date, product/model, search state, answer, selected sources, and whether the article was retrieved, cited, or recommended.</li><li>Retain failures. Compare what the chosen sources answer. Revise only where the article's evidence supports a clearer answer or a real omission.</li><li>Measure subsequent visits, reported use, useful replies, and confirmed subscriptions separately. A later observation alone does not isolate an edit's effect.</li></ol><a href="README.md">Full proposal and measurement limits</a></details></div></div>
+  </section>
+
+  <section class="section" id="sources" aria-labelledby="sources-title">
+    <div class="section-head"><div><span class="eyebrow"><span class="section-number">07</span>Go back to the evidence</span><h2 id="sources-title">A source trail,<br>not a growth formula.</h2></div><p>Saved observations are dated October 17, 2026. None of the counters here is live. No messages, reactions, purchases, or signup submissions were performed for the investigation.</p></div>
+    <div class="source-grid"><div><h3>Read the full investigation</h3><ul><li><a href="README.md">Synthesis, chronology, method, and blog experiments</a></li><li><a href="x-history-and-interactions.md">Founder X history and reconstructed exchanges</a></li><li><a href="reddit-interactions.md">Reddit questions, distrust, and competing interests</a></li><li><a href="signup-and-product-evidence.md">Accounts, real workflows, reviews, and activation</a></li><li><a href="amplification-analysis.md">Publishers, repackaging, and native viral replies</a></li><li><a href="distribution-census.md">Distribution and milestone census</a></li></ul></div><div><h3>Inspect the inventories</h3><ul><li><a href="content-census.csv">58 current English archive entries</a> · dates can accompany revised copy</li><li><a href="x-post-sample.csv">89 founder Posts entries</a> · selected rendered timeline</li><li><a href="hridoy-post-sample.csv">20 publisher entries</a> · pinned post and recent neighbors</li><li><a href="reddit-interactions.csv">31 Reddit evidence nodes</a> · purposive selection</li><li><a href="x-viral-replies.csv">15 viral-reply nodes</a> · several different conversation objects</li><li><a href="amplification-events.csv">18 amplification events</a> · repeated URLs may describe different events</li></ul></div></div>
+    <p class="quiet-note">Coverage is incomplete: no full social export, deleted-comment reconstruction, private communities, raw source questionnaires, current analytics audit, retention series, or complete customer journeys. The social inventories overlap. Multiple retellings of the same founder claim do not create independent measurements.</p>
+  </section>
+  <footer class="footer"><span>Goga Koreli / research field guide / 18 October 2026</span><span>Self-contained · works offline · <a href="#top">Back to the beginning ↑</a></span></footer>
+</main>
+</fluotest-explorer>
+<script>
+customElements.define('fluotest-explorer', class extends HTMLElement {
+  connectedCallback() {
+  if (this.dataset.ready === 'true') return;
+  this.dataset.ready = 'true';
+  const root = document.documentElement;
+  const events = [...document.querySelectorAll('[data-event]')];
+  const jumps = [...document.querySelectorAll('[data-jump]')];
+  const position = document.getElementById('event-position');
+  const previous = document.getElementById('event-prev');
+  const next = document.getElementById('event-next');
+  const all = document.getElementById('event-all');
+  const theme = document.getElementById('theme-button');
+  let index = 0;
+  let showAll = false;
+  function selectEvent(id) {
+    const found = events.findIndex(event => event.id === id);
+    if (found < 0) return;
+    index = found;
+    events.forEach((event, i) => { event.hidden = !showAll && i !== index; });
+    jumps.forEach(jump => {
+      if (jump.dataset.jump === id) jump.setAttribute('aria-current', 'step');
+      else jump.removeAttribute('aria-current');
+    });
+    position.textContent = `Event ${index + 1} of ${events.length}`;
+    previous.disabled = index === 0;
+    next.disabled = index === events.length - 1;
+  }
+  jumps.forEach(jump => jump.addEventListener('click', () => selectEvent(jump.dataset.jump)));
+  previous.addEventListener('click', () => selectEvent(events[Math.max(0,index - 1)].id));
+  next.addEventListener('click', () => selectEvent(events[Math.min(events.length - 1,index + 1)].id));
+  all.addEventListener('click', () => {
+    showAll = !showAll;
+    all.setAttribute('aria-pressed', String(showAll));
+    all.textContent = showAll ? 'Show one event' : 'Read all events';
+    selectEvent(events[index].id);
+  });
+  window.addEventListener('hashchange', () => {
+    const id = location.hash.slice(1);
+    if (events.some(event => event.id === id)) selectEvent(id);
+    if (id.startsWith('lesson-')) selectLesson(id.slice(7));
+  });
+  theme.addEventListener('click', () => {
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : window.matchMedia('(prefers-color-scheme:dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    theme.textContent = dark ? 'Dark theme' : 'Light theme';
+  });
+  const scaleButton = document.getElementById('scale-button');
+  const axis = document.getElementById('chart-axis');
+  const caption = document.getElementById('scale-caption');
+  const chart = document.getElementById('reach-chart');
+  let linear = false;
+  scaleButton.addEventListener('click', () => {
+    linear = !linear;
+    document.querySelectorAll('[data-views]').forEach(row => {
+      const value = Number(row.dataset.views);
+      const extent = linear ? value / 1000000 * 100 : Math.log10(value) / 6 * 100;
+      row.querySelector('.chart-track').style.setProperty('--extent', `${extent}%`);
+    });
+    axis.replaceChildren(...(linear ? ['0','250K','500K','750K','1M'] : ['1','10','100','1K','10K','100K','1M']).map(label => {
+      const span = document.createElement('span'); span.textContent = label; return span;
+    }));
+    scaleButton.textContent = linear ? 'Show logarithmic scale' : 'Show linear scale';
+    scaleButton.setAttribute('aria-pressed', String(linear));
+    caption.textContent = linear ? 'Linear scale: equal distances represent equal view counts. The smaller observations sit very close to zero. This is reach, not product use; post ages and exposure differ.' : 'Logarithmic scale: equal distances represent tenfold changes. Different post ages, audiences, and observation windows prevent a controlled comparison. Data links are in the source inventory below.';
+    chart.setAttribute('aria-label', `${linear ? 'Linear' : 'Logarithmic'} scale: founder sample median 51 views, sample maximum 2,052; Hridoy June share 8,843 and October share 694,867. Not a controlled comparison.`);
+  });
+  const calculations = {
+    paid: ['4 paying / 500 accounts','0.8%','An account-level ratio.','It is not an eligible-cohort upgrade rate. Plan entitlement, exposure, account age, cancellations, and retention were not supplied. Grandfathered users complicate the denominator.'],
+    quizzes: ['553 quizzes / 500 accounts','1.106','Artifacts per account, not activation.','A person can create more than one quiz. Drafts, duplicates, templates, and tests may be present. This division does not tell us how many people published, received respondents, or returned.'],
+    source: ['205 AI source answers / 499 source answers','41.1%','A source-answer cohort.','The stated denominator makes this arithmetic interpretable. The numerator includes ChatGPT or another assistant, and comes from onboarding answers. It is not a ChatGPT-only, referrer-verified conversion share.'],
+    answers: ['4,206 reported answers / 553 quizzes','7.61','A ratio with an unresolved unit.','The research did not establish whether “answers” means completed submissions or individual question answers. Aggregate concentration and test exclusions are also unknown; this is not typical quiz usage.']
+  };
+  document.querySelectorAll('[data-calc]').forEach(button => button.addEventListener('click', () => {
+    const data = calculations[button.dataset.calc];
+    document.querySelectorAll('[data-calc]').forEach(other => other.setAttribute('aria-pressed', String(other === button)));
+    const result = document.getElementById('calc-result');
+    result.querySelector('.formula').textContent = data[0];
+    result.querySelector('.value').textContent = data[1];
+    result.querySelector('h3').textContent = data[2];
+    result.querySelector('p').textContent = data[3];
+  }));
+  const lessonButtons = [...document.querySelectorAll('[data-lesson]')];
+  const lessons = [...document.querySelectorAll('[data-lesson-panel]')];
+  function selectLesson(id) {
+    if (!lessons.some(lesson => lesson.dataset.lessonPanel === id)) return;
+    lessons.forEach(lesson => { lesson.hidden = lesson.dataset.lessonPanel !== id; });
+    lessonButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lesson === id)));
+  }
+  lessonButtons.forEach(button => button.addEventListener('click', () => {
+    selectLesson(button.dataset.lesson);
+    document.getElementById('lesson-status').textContent = `Showing proposed applications for ${button.textContent}.`;
+  }));
+  selectLesson(location.hash.startsWith('#lesson-') ? location.hash.slice(8) : 'headers');
+  selectEvent(events.some(event => `#${event.id}` === location.hash) ? location.hash.slice(1) : 'e01');
+  root.classList.add('enhanced');
+  }
+});
+</script>
+</body>
+</html>

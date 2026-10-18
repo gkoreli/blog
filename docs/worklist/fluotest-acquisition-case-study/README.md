@@ -2,6 +2,8 @@
 
 Research checked October 17, 2026 (America/Los_Angeles), with a deeper follow-up the same day at Goga's request. This is a public-source investigation, not a published article or a live analytics audit. It covers the founder, his product and content, human exchanges, and the people who repackaged the story.
 
+[Explore the interactive HTML field guide](explorer.html) — a self-contained adaptation created October 18: two connected journeys, 14 events, publishing categories, reach comparison, six exchanges, denominator explorer, and proposed applications to three existing blog articles. Source dates and uncertainty remain visible. The guide does not add new acquisition evidence.
+
 ## Reading path and evidence inventory
 
 Start with the findings below, then follow the specific conversation or acquisition question:
@@ -179,3 +181,11 @@ The current Reddit submissions browser view reported hidden posts. A search-rend
 The initial reconstruction and requested deeper follow-up are complete within these public-source limits. The follow-up supersedes the initial stopping point by adding interactions, usage evidence, and publishing history; it does not silently turn the proposed experiments into accepted work. The next bounded action, if this direction is pursued, is the visibility diagnostic or the reader-use observation track above. No remaining document acceptance check depends on those experiments. Further causal claims require new evidence, rather than more copies of the same anecdote.
 
 Document validation: all local file links resolve; the six CSV files parse with the stated row counts; native X permalink uniqueness and founder-sample statistics were checked; a separate review checked source independence, timing, counter snapshots, and denominator language. No production code or article prose changed, so no site build or application test was required.
+
+### October 18 — interactive guide delivery
+
+Created [explorer.html](explorer.html) as a standalone learning artifact, outside the production publication. It uses a native web component with progressively enhanced static content and no external assets or runtime dependencies. It links the existing source reports and inventories. The diagram labels publication order separately from a demonstrated transmission path; the blog applications and visibility diagnostic remain proposals.
+
+Acceptance: checked previous/next and direct event selection, full-timeline mode, linear/log view comparison, arithmetic selection, expandable exchanges, keyboard article selection, and theme switching in the browser. Layout checks found no horizontal overflow at 1280, 390, and 320 CSS pixels. A script-free preview exposed all 14 events and all three article plans; native disclosures still work. JavaScript syntax, local links/anchors, unique IDs, and runtime warning/error logs passed. The temporary QA copy was removed. This does not claim a full assistive-technology, print, or cross-browser audit. No production build or deployment was needed.
+
+Completed: requested HTML adaptation and review. Remaining evidence gaps are unchanged from the research. Next bounded action is user exploration of the guide; no experiment or distribution action has been started.
