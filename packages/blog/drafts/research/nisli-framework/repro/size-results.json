@@ -1,0 +1,30 @@
+{
+  "capturedAt": "2026-10-21T05:21:17.290Z",
+  "method": "One counter application per independent Vite production build. Sum emitted JS bytes; gzip each file with Node default zlib options. Excludes HTML, source maps, transfer headers, server compression variation, and build tool dependencies.",
+  "results": [
+    {
+      "variant": "lit",
+      "bytes": 15505,
+      "gzipBytes": 5939,
+      "javascriptFiles": 1
+    },
+    {
+      "variant": "lit-signals",
+      "bytes": 27899,
+      "gzipBytes": 9693,
+      "javascriptFiles": 1
+    },
+    {
+      "variant": "solid",
+      "bytes": 29248,
+      "gzipBytes": 11516,
+      "javascriptFiles": 1
+    },
+    {
+      "variant": "nisli",
+      "bytes": 23737,
+      "gzipBytes": 8237,
+      "javascriptFiles": 1
+    }
+  ]
+}

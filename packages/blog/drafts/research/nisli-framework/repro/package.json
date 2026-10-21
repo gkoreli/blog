@@ -1,0 +1,22 @@
+{
+  "name": "nisli-article-comparison-runtime",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "lit": "3.3.3",
+    "@lit-labs/signals": "0.3.0",
+    "@lit/task": "1.0.3",
+    "solid-js": "2.0.0-rc.14",
+    "@solidjs/web": "2.0.0-rc.14",
+    "@solidjs/signals": "2.0.0-rc.14",
+    "@solidjs/compiler": "2.0.0-rc.14",
+    "@solidjs/babel-plugin": "2.0.0-rc.14",
+    "@solidjs/vite-plugin": "3.0.0-next.49",
+    "vite": "8.3.2"
+  },
+  "overrides": {
+    "@solidjs/signals": "2.0.0-rc.14",
+    "@solidjs/compiler": "2.0.0-rc.14",
+    "@solidjs/babel-plugin": "2.0.0-rc.14"
+  }
+}
