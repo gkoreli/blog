@@ -36,3 +36,19 @@ Goga explicitly supplied the framework’s origin in this conversation: long exp
 - The current HTML standard's preserving-custom-element-state-when-moved section was read. The DOM specification URL timed out in the web fetcher; the article cites the successfully read HTML section and its actual Chrome fixture, not a newly verified DOM-algorithm claim.
 - The source implementation of Lit Task 1.0.3 was inspected along with its public documentation. Its no-abort-on-disconnect observation is limited to the bare Task in the fixture; applications may implement disconnect cleanup.
 - Reproduced results are in [browser-results.json](repro/browser-results.json) and [size-results.json](repro/size-results.json). Their method is [documented separately](repro/README.md).
+
+## Release-review additions
+
+- Public npm 0.56.0 was downloaded and compared with a locally packed 0.56.1
+  candidate. Registry metadata identified 0.56.0 as latest and no existing
+  0.56.1 at preparation time. This is version-availability evidence, not a
+  publication; recheck it before releasing.
+- The benchmark pin's `packages/core/src` matches tag `core-v0.56.0` exactly.
+  The [candidate patch](release/candidate.patch) reproduces the six changed
+  core source/test/release files exactly from that baseline. Each browser run
+  records the production-source and harness fingerprints.
+- Four compatibility cases passed on baseline source and their failures were
+  observed on the prototype before repairs. The [release review](release/README.md)
+  records those repairs, final workspace gates, browser checks, package audit,
+  fresh paired measurements, and size artifact. Historical prototype evidence
+  remains separate; no published release or deployed behavior is inferred.

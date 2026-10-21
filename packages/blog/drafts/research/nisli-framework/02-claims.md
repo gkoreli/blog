@@ -34,3 +34,18 @@
 | Standalone counter gzip bytes: Lit 5,939; Lit-signals 9,693; Solid 11,516; Nisli 8,237 | Independent production builds; each button also clicked | Program-specific emitted JS, not universal package size |
 
 Raw records and exact conditions: [reproduction](repro/README.md). No OpenClaw surface was ported. An “ultrafast web apps” superiority headline remains unsupported; the selected title expresses the author's framework preference.
+
+## Hardened 0.56.1 candidate, October 20 release review
+
+| Finding | Evidence | Disposition |
+|---|---|---|
+| Runtime binding-location caching reduces repeated native-template discovery | Exact patch; two paired browser runs with rotating cases | Warm ordinary/static-heavy/binding-heavy mounts fall 19%/23%/13%; still runtime parsing, clone traversal, binding/effect creation |
+| All templates gain faster mounting | Rejected by conservative fallback and samples | Dynamic refs, literal custom elements, customized built-ins, HTML sinks, and missing TreeWalker retain live discovery |
+| Prototype was safe because its first suite passed | Rejected | Release audit reproduced DOM-shim and synchronous custom-prop/ref failures that pass on 0.56.0; repaired and regression-tested |
+| Candidate's 10,000 verified writes fall 6.10 → 3.50 ms | Thirty raw samples per case; queue-only 5.90, bare-Promise 3.70, scheduling controls 5.30/2.55 | Local transport ablation supports update improvement; narrow Lit still wins at 2.70; no input/paint or cross-engine speed claim |
+| No public type/export/dependency break detected | Exact byte comparison of 22 declarations and structural manifests from actual packed artifacts | Supports patch-release preparation; not proof of universal behavioral compatibility |
+| Scheduler behavior is entirely unobservable | Rejected | Unexpected escaping failure reports one microtask later; ordinary effect containment preserved; instrumentation can distinguish Promise jobs |
+| Cache adds no cost | Rejected | Counter +455 gzip bytes (+5.5%); added metadata unprofiled; fresh-callsite batch 2.80 → 2.60 ms is limited to one shape, not startup |
+| Candidate is released and production-accepted | False at this review | Local 2,349-test/build/typecheck gates, 168-preview sweep and three-engine move proof are distinct from main CI, npm and deployment |
+
+Methods, exact limits, raw results, and next action: [pre-landing review](release/README.md).

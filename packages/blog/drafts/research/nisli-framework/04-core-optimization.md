@@ -49,3 +49,11 @@ The counter bundle grows by 393 gzip bytes, from 8,237 to 8,630 (+4.8%). The cac
 - Nisli changes are saved in local commit `b463683` on the isolated branch `codex/core-rendering-performance`, with no package-version bump, main merge, main-CI claim, or release. The exact candidate including its regression tests is preserved in [candidate.patch](optimization/variants/candidate.patch).
 
 The requested investigation and measured prototype are complete. The next bounded action is reviewing that candidate for landing. A real application CPU/heap and interaction profile is a separate experiment; these synthetic results do not reopen the article's completed OpenClaw research or establish a whole-workspace win.
+## Release-review continuation
+
+The prototype results above remain historical. The subsequent request to land
+and release required a compatibility audit, which found real prototype
+regressions and produced a hardened 0.56.1 candidate. Its repaired behavior,
+fresh measurements, package audit, and pre-landing status are recorded in the
+[release review](release/README.md). Use that record to assess the release;
+do not substitute the earlier prototype's timings or size for the hardened code.

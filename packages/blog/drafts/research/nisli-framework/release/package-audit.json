@@ -1,0 +1,18 @@
+{
+  "baseline": {
+    "version": "0.56.0",
+    "sha256": "b9e6bfbf44559a63836712fbcb68856b91b648f1bbe79934b22d18efd69f1b3b"
+  },
+  "candidate": {
+    "version": "0.56.1",
+    "sha256": "995614cb961e2105029e4bb6e83c9371fa72f32aeecc3192d3cb047b72a9a657"
+  },
+  "declarationFilesCompared": 22,
+  "declarationsChanged": [],
+  "declarationsAdded": [],
+  "exportsIdentical": true,
+  "runtimeDependenciesIdentical": true,
+  "allExportTargetsPresentInDist": true,
+  "sourceAndTestsExcluded": true,
+  "method": "Published npm 0.56.0 tarball versus local pnpm-pack 0.56.1 release candidate after build. Exact byte comparison of declaration files and structural manifest export/dependency comparison; no publish performed."
+}

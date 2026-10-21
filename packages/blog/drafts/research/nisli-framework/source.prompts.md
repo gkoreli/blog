@@ -53,3 +53,7 @@ i feel like i want a bit more clickbaity title, why choose Nisli for ultrafast w
 ---
 
 why is Nisli slower to mount and narrow Lit faster at updates? lets dig into the benchmarks and see what we can optimize in nisli/core
+
+---
+
+lets land these optimizations in nisli/core, release a new version, and update the article with the optimization story and before/after benchmarks, but i need to fully understand the optimizations before we land it. Are there any breaking changes, regressions or implications potentially?

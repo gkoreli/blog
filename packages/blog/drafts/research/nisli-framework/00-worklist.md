@@ -45,3 +45,11 @@ Delivery target: a scoped commit and push of this unpublished directory to `main
 Next bounded action: Goga's editorial review of the draft. A representative OpenClaw port is an optional future experiment if a stronger whole-application claim is wanted; it is not accepted work or a condition for completing this draft. Publication and distribution have not been requested.
 
 October 20 follow-up: Goga requested an investigation of the mount/update costs and possible core optimizations. That separately scoped work is recorded in [the optimization report](04-core-optimization.md); it preserves the original results and provides a measured candidate rather than changing the release baseline retroactively.
+
+October 20 release preparation: Goga requested landing and a release, with
+understanding the changes before landing as a condition. The [release review](release/README.md)
+records the repaired prototype regressions, final 0.56.1 candidate, all thirty
+samples per timing case, package compatibility, and local gates. The article now
+includes that optimization story and before/after table. No main merge or npm
+release has occurred. Next bounded action: Goga reviews the concrete candidate
+and its tradeoffs; then complete the authorized delivery and verify main CI/npm.

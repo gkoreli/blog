@@ -44,3 +44,35 @@ Goga's supplied framework history is protected: years across Angular, React, Vue
 Only this research directory belongs to this task. Concurrent site, SSG, design, guidance, and content changes in the shared checkout belong to another session and must remain untouched by staging or integration.
 
 The delivery is an unpublished draft with inspectable source and measured evidence. No route, RSS entry, publication date, site activation, or distribution post is part of this work. The next bounded action is Goga's editorial review. A real OpenClaw transcript-pane port, other browser engines, long-session memory tests, or production adoption would be separate experiments with their own workload and acceptance criteria.
+
+## October 20 release-review continuation
+
+The initial draft and prototype records above remain historical. Goga then
+requested landing/releasing the optimization and updating the story, with a
+pre-landing understanding condition. The [0.56.1 review](release/README.md)
+supersedes the prototype for release assessment: its actual regressions were
+repaired, the hardened source was remeasured, and its package contract audited.
+
+Final local core/workspace acceptance is recorded there; the original baseline
+results remain intact. The article adds the mechanisms, losses and tradeoffs,
+repaired regressions, a seven-case before/after table, remaining narrow-Lit win,
+and the additional 455 gzip bytes. Release preparation is isolated on
+`codex/core-rendering-performance`; main/npm have not changed. The complete
+shaping record now contains twelve messages.
+
+Next bounded action: Goga reviews the concrete candidate and exceptional timing,
+cache/size, and fallback implications before landing. Once confirmed, integrate
+against current main, watch main CI and auto-tag/npm, verify the public package,
+and update the article's candidate/release status. Publishing the article is
+still outside the request. Temporary benchmark servers/tabs are stopped;
+the isolated core worktree remains available for review.
+
+The hardened candidate is saved in local Nisli commit `f40a217` after the
+prototype commit, with a clean isolated worktree. Blog validation passes for
+all 18 published Markdown posts; the actual Markdown/Shiki render separately
+passes for the unpublished article (five tables, three code blocks) and release
+review (two tables). Both existing table tests pass. The release fixture passes
+strict TypeScript checking and script syntax checks; local links, twelve full
+prompt messages, reported medians, source/harness fingerprints, exact patch
+reconstruction, and package metadata were checked. No production build was
+run into the blog's active output.

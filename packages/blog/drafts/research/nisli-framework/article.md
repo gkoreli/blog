@@ -14,7 +14,7 @@ Three findings shape that argument:
 
 - Web Components and fine-grained reactivity are independent choices. Nisli combines them; modern Lit can combine them too.
 - Resource ownership changes how much coordination reaches application code. Async correctness and a consistent pending view are separate responsibilities.
-- Native rendering still has costs. In the local fixture, narrowly scoped Lit updates were faster than Nisli, and Solid mounted the panel faster. The case for Nisli has to survive those results.
+- Native rendering still has costs. The initial fixture exposed slower Nisli mounts and faster narrow Lit updates. Investigating those results produced a faster candidate and exposed compatibility regressions that the release review had to repair.
 
 ## The rendering library disappeared before the old architecture did
 
@@ -79,7 +79,7 @@ That result explains the work being avoided. It also prevents the easy, wrong ex
 
 For this draft, I had Codex inspect the pinned implementations, build the comparison fixtures, and operate the browser. The resulting five production variants use one Lit component, Lit with pinpoint signals, a Lit component per row, compiled Solid 2, and Nisli. Each mounted 1,000 rows, then changed the first value 10,000 times. Every update received the same six microtask turns, followed by a check that the expected text was visible. Instrumentation counters were disabled for timing.
 
-This ran in Chrome 155 on an arm64 Mac with macOS 27.0.1. Each variant had one unreported warmup and seven measured samples, with run order rotated. The table reports medians. The [full method and individual samples](repro/README.md) are part of the draft’s evidence.
+This initial comparison used Nisli core 0.56.0 and ran in Chrome 155 on an arm64 Mac with macOS 27.0.1. Each variant had one unreported warmup and seven measured samples, with run order rotated. The table reports medians. The [full method and individual samples](repro/README.md) are part of the draft’s evidence.
 
 | Variant | Mount 1,000 rows, ms | 10,000 verified updates, ms |
 |---|---:|---:|
@@ -93,9 +93,45 @@ Nisli and Solid are in the same small range for hot updates here. I would not tu
 
 These are DOM-update throughput measurements with scheduling and verification overhead. The loop does not wait for paint, measure input latency, exercise Markdown parsing, or reproduce OpenClaw’s workspace. It changes one fixed cell; it is not a general list or UI benchmark. Passing every update check establishes that the implementations performed the requested updates, not that a person would perceive a difference.
 
-The Nisli mount result is a real cost I own. Current core caches parsed templates, but a new mount still clones and walks the DOM to establish bindings. Solid’s compiler can prepare more of that work ahead of time. The old [compiled-positional-template proposal](https://github.com/gkoreli/nisli/blob/4afde49c728a330e10ce887a38b8013d63b58498/docs/adr/0014-compiled-positional-templates.md) describes a more ambitious binding blueprint; it is not the implementation measured here.
+The Nisli mount result is a real cost I own. Core 0.56.0 caches parsed templates, but a new mount still clones and walks the DOM to establish bindings. Solid’s compiler can prepare more of that work ahead of time. The old [compiled-positional-template proposal](https://github.com/gkoreli/nisli/blob/4afde49c728a330e10ce887a38b8013d63b58498/docs/adr/0014-compiled-positional-templates.md) describes a more ambitious binding blueprint; it is not the implementation measured here.
 
 The result I can defend is that Nisli offers narrow updates as its normal authoring model without a framework-specific compiler. It does not establish that Nisli wins every operation.
+
+## Then I asked what Nisli could optimize
+
+I asked Codex to investigate those costs before landing an optimization. The resulting core 0.56.1 candidate is prepared for review; it has not been merged or published. The [release record](release/README.md) keeps the candidate, methods, and acceptance evidence separate from the initial benchmark.
+
+The mount path repeated discovery work. Each cloned row visited its static nodes, copied child lists, inspected attributes, and recognized the same markers again. The candidate caches binding locations alongside the parsed template. A native TreeWalker locates the target elements and comments in each clone; every target is resolved before binding expands or removes earlier siblings. The browser still parses HTML, and mounts still clone nodes and create bindings and effects. This is a smaller runtime optimization than the old compiler proposal.
+
+The update investigation found a different cost. Core 0.56.0 enqueues effect flushes through `queueMicrotask`. Narrow Lit's ReactiveElement uses a Promise-based update path. A comparison that changed only Nisli's scheduling primitive, alongside a single-effect queue fast path, produced a substantial improvement in the tested Chrome workload. A separate framework-free comparison scheduled the same reused callback through each primitive and found the same direction of difference. That establishes a local measurement, not a general rule that Promise callbacks are faster in every browser.
+
+The queue fast path is straightforward. When no effects are pending, return. When one is pending, copying and sorting cannot improve its order. Remove it from the pending set before running it so work it schedules belongs to a later pass. Multiple pending effects still use the existing creation-order sort. Source signal reads remain synchronous, normal writes still coalesce, and `flush()` still drains synchronously.
+
+The release review changed the template patch. It reproduced failures that passed against the 0.56.0 source: missing global DOM constructors or TreeWalker in a minimal shim, and custom-prop/ref setters that replaced descendants while binding. Pre-collected targets could point into the discarded subtree. The hardened candidate uses node-type guards and keeps the old live walk when TreeWalker is absent or a template contains dynamic refs, literal custom elements, customized built-ins, or `html:inner`. Those templates preserve their existing discovery behavior and do not receive the location-cache mount optimization.
+
+There is one deliberate exceptional-path difference. Ordinary effect errors retain their containment. An unexpected failure escaping the scheduler is caught and rethrown through a queued callback, preserving the uncaught-exception channel rather than producing an unhandled Promise rejection. Its report arrives one additional microtask later. That timing difference belongs in the release notes even though the public API stays the same.
+
+The cache retains extra location metadata per parsed callsite. It stores indices rather than mounted nodes or signal values, but that does not establish a retained-heap result. The follow-up includes cache-miss batches and templates that take the live-walk fallback, alongside the warm native-row comparison.
+
+The hardened candidate was rebuilt and measured in two fresh Chrome page loads: three warmups and fifteen measured rounds per load, with case order rotated. These are pooled medians of all thirty samples; the original five-framework results above stay intact.
+
+| Operation | Core 0.56.0 | Prepared 0.56.1 | Change in elapsed time |
+|---|---:|---:|---:|
+| Mount 1,000 ordinary rows | 8.90 ms | 7.20 ms | −19% |
+| Mount 1,000 rows with more static markup | 39.10 ms | 30.30 ms | −23% |
+| Mount 1,000 rows with more bindings | 16.40 ms | 14.20 ms | −13% |
+| 10,000 individually verified updates | 6.10 ms | 3.50 ms | −43% |
+| Mount 1,000 rows containing refs | 8.60 ms | 8.65 ms | Approximately unchanged |
+| Mount 1,000 rows containing literal custom elements | 10.90 ms | 10.70 ms | Approximately unchanged |
+| Parse and mount 300 fresh template identities | 2.80 ms | 2.60 ms | No first-use penalty observed here |
+
+Narrow Lit still finished the update loop faster, at 2.70 ms, and mounted in 6.45 ms in the paired update fixture. Nisli's queue-only ablation moved updates from 6.10 to 5.90 ms; the bare-Promise ablation reached 3.70 ms. A framework-free scheduling control also favored the settled Promise, 2.55 versus 5.30 ms. Together those results point to scheduling transport as the larger update cost in this browser. They do not make the entire difference an isolated measure of scheduler overhead. [Raw runs, method, and pooled results](release/README.md).
+
+The counter pays for the optimization: 8,237 → 8,692 gzip bytes, an extra 455 bytes (+5.5%). The fresh-callsite result includes parse, mount, and the common drain; it is not a cold navigation or complete startup benchmark. All timing results remain single-engine synthetic throughput measurements, without input, paint, retained-heap, or OpenClaw application evidence. The fallback samples also vary between runs; their pooled values support retaining the old cost, not claiming a new speedup there.
+
+The release package was compared with the published 0.56.0 tarball: all 22 declaration files were byte-identical, and exports and runtime dependencies matched. That is useful evidence of API compatibility. It does not replace the behavioral tests that caught the template regressions. [Package audit](release/package-audit.json).
+
+The candidate passes root typecheck, build, and 2,349 tests, including 476 in core. The existing production preview sweep passes 168 checks, and the final-source move proof passes in Chromium, Firefox, and WebKit, including WebKit's existing fallback limits. These are local acceptance results; main CI, npm publication, and production activation remain separate delivery steps.
 
 ## A small API still needs a scheduler
 
@@ -200,5 +236,6 @@ I still prefer Nisli’s combination for the applications I want to build. If I 
 | Integrated async reactivity and held updates | [Solid 2 async documentation](https://v2.solidjs.com/concepts/async-reactivity) | 2.0.0-rc.14 tested |
 | Custom-element state during moves | [HTML standard](https://html.spec.whatwg.org/multipage/custom-elements.html#preserving-custom-element-state-when-moved) | Checked October 20; Chrome native and forced-fallback paths tested |
 | Nisli’s implemented behavior | [Pinned core source](https://github.com/gkoreli/nisli/tree/4afde49c728a330e10ce887a38b8013d63b58498/packages/core/src) | Core 0.56.0 at `4afde49c728a330e10ce887a38b8013d63b58498` |
+| Prepared optimization and release review | [Core 0.56.1 candidate record](release/README.md) | October 20, 2026; unmerged and unpublished |
 
 The [claim ledger](02-claims.md) separates inspected, documented, reproduced, reported, and untested claims. The [reproduction](repro/README.md) includes source, dependency lock, individual samples, and limitations. Complete shaping prompts are retained in [source.prompts.md](source.prompts.md).
