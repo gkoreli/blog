@@ -301,3 +301,41 @@ The requested article publication, source preservation, additional validation,
 and conditional merge assessment are complete. Future allocation/JIT/heap
 profiles, new queue implementations, or separate binding-cache landing are
 backlog proposals, not unfinished acceptance checks for this request.
+
+## October 21 practical rewrite — local acceptance
+
+The revised article is 2,388 whitespace-delimited words, down from 4,120 (42%
+shorter by the same count). Actual OpenClaw source now anchors the argument:
+original Lit chat page, intermediate Solid bridge, component-owned state, and
+abbreviated before/after configuration-subscription code. The source ledger
+pins those changes and the newly merged rc.16 upgrade. Existing rc.14 results
+remain historical and explicitly versioned.
+
+Two complete public-API examples show streaming text alongside an untouched
+draft and a cancellable session preview. The harness extracts those exact
+snippets from the article, strictly typechecks them against public 0.57.0, and
+checks their behavior in Chromium, Firefox, and WebKit. All pass;
+[method, limitations, and hashes](examples/README.md) accompany the results.
+The initial microtask-only harness omitted the browser task turn needed by
+Response.text(); that test-harness failure was corrected before acceptance.
+
+The prose retains Goga's frontend experience and backlog-mcp origin. It gives
+practical comparisons without claiming a real OpenClaw port, and keeps narrow
+Lit's win, Nisli's mount cost, Solid's coordinated async advantage, and the
+rejected optimization history. The article now has three tables, four code
+blocks, and parallel/ordered lists. No prompt material is captured. Title,
+URL, publication date, and bounded architectural preference remain stable;
+description and alternative headline describe the practical examples.
+
+Local checks: frontmatter validation, workspace typecheck, isolated production
+build (30 posts), generated metadata/representations, research links and pinned
+source paths, historical medians, and absent prompt output all pass. Desktop
+1280×900 and mobile 390×844 Chromium views were inspected with JavaScript
+disabled. Neither had page-width overflow; code blocks scroll independently.
+A long component declaration was then wrapped; the exact-snippet checks passed
+again and the final article was rebuilt in isolation.
+
+The restored managed preview checkout owns the build output. The primary dev
+server and dist were untouched. The temporary preview server was stopped before
+the final source sync/build. Commit, deployment activation, and current HTTP
+acceptance are recorded separately after delivery.

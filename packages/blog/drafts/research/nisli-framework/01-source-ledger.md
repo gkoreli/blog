@@ -75,3 +75,20 @@ Goga explicitly supplied the framework’s origin in this conversation: long exp
   in the actual browser. Its settled-view, shared-input hold, isPending/latest,
   and Loading behavior support the explanation, alongside the freshly rerun
   pinned rc.14 fixture. The article names the tested RC.
+
+## October 21 practical rewrite: actual migration before and after
+
+GitHub connector reads checked these sources on October 21, 2026. Source/diff
+inspection is separate from executing OpenClaw's tests; no OpenClaw port was made.
+
+| Source | What was checked | Use and limit |
+|---|---|---|
+| [Original chat page](https://github.com/openclaw/openclaw/blob/88b4ae9fba33/ui/src/pages/chat/chat-page.ts) | Lines 1–160: Lit imports/base, state decorators, SubscriptionsController and viewer-presence controller | First stage in the chat-page comparison; historical inventory commit |
+| [PR #173833](https://github.com/openclaw/openclaw/pull/173833/files) | `chat-page.ts`, `chat-viewer-presence.ts`, changed-file inventory; merged October 16 at `58a7c2650be63414c9a8f2c5fc7203c7cf59b93f` | Before is already an intermediate Solid bridge; afterward state is created inside the Solid lifetime and presence registers `onCleanup(clear)`. Do not describe the diff's old side as pure Lit. |
+| [PR #175006](https://github.com/openclaw/openclaw/pull/175006/files) | `memory-panel-state.ts` removes syncConfigSnapshot/copy/notify subscription, adds projectOwner/read and direct config getter; merged October 17 at `36ef0864884df88d4d3a1435435e136c7973b2a1` | Abbreviated before/after excerpts in article omit unrelated lifecycle statements; not complete executable replacements |
+| [Projection at c70a4fd](https://github.com/openclaw/openclaw/blob/c70a4fd2252072c4f55b200c5c8cc68a94a1085c/ui/src/lib/reactive/projection.ts) | projectOwner delegates to projectSource, underlying subscription and revision machinery, onCleanup disposal | This is OpenClaw application code; Solid has not eliminated the external-store adapter |
+| [PR #179116](https://github.com/openclaw/openclaw/pull/179116) | Upgrade to rc.16, merged October 21 at `09cbdfea87849c465c398202b4164cfc1cd979f3` | Existing timings and async comparisons remain explicitly rc.14, not current OpenClaw-dependency measurements |
+
+The [new example checks](examples/README.md) execute the article's exact Nisli
+snippets on the public 0.57.0 package in three browser engines. They establish
+small-example behavior, not OpenClaw integration or comparative application speed.

@@ -116,3 +116,20 @@ Final acceptance: Nisli main `45e009e` passed
 October 21. The preservation and cross-validation request is complete. Current
 runtime remains the baseline; proposed optimization work is explicitly held in
 the linked backlog. Article publication and live follow-up acceptance are complete.
+
+## October 21 practical rewrite
+
+A new editorial continuation makes the article shorter and more concrete.
+It does not reopen the completed core optimization investigation.
+
+- [x] Inspect real OpenClaw migration before/after code and merged PRs.
+- [x] Replace abstract explanation with two practical Nisli examples and
+  distinguish its advantages from capabilities Lit and Solid already provide.
+- [x] Extract and strictly typecheck the actual article snippets; validate their
+  behavior in Chromium, Firefox, and WebKit against public core 0.57.0.
+- [x] Preserve measured losses, async tradeoffs, rejected optimizations, and the
+  explicit no-prompts exception; reduce the article from 4,120 to about 2,380 words.
+- [ ] Finish isolated publication checks, commit/push, and verify activation.
+
+Next bounded action: isolated build and rendered-article review, then publish
+through the existing main-branch delivery path.

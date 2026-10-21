@@ -1,0 +1,63 @@
+{
+  "checkedAt": "2026-10-21T15:41:28.707Z",
+  "version": "0.57.0",
+  "method": "Exact article examples; strict typecheck and deterministic browser assertions; fetch stub deliberately ignores abort; no timing claim",
+  "entrySha256": "91c7db592650db12d9689222c8b104e5e58bccdc886d7ab091028c65081101e1",
+  "exampleSha256": {
+    "reply": "20ab334be86ebf1e7581e10f3345d320cf429bc393548abc2bf67b2eacc5b538",
+    "preview": "8ec245f530b0a62dbcd8cdf8dbce9d6d7bb61025de483fd63344991f252936b4"
+  },
+  "browsers": [
+    {
+      "engine": "chromium",
+      "version": "149.0.7827.55",
+      "result": {
+        "streamWrites": 100,
+        "reactiveProps": true,
+        "immediateStateReads": true,
+        "textNodePreserved": true,
+        "draftNodeValueFocusAndSelectionPreserved": true,
+        "loadingHidesOldData": true,
+        "supersededRequestAborted": true,
+        "abortIgnoringStaleResultSuppressed": true,
+        "httpErrorPresented": true,
+        "removalAborts": true,
+        "noWorkAfterRemoval": true
+      }
+    },
+    {
+      "engine": "firefox",
+      "version": "151.0",
+      "result": {
+        "streamWrites": 100,
+        "reactiveProps": true,
+        "immediateStateReads": true,
+        "textNodePreserved": true,
+        "draftNodeValueFocusAndSelectionPreserved": true,
+        "loadingHidesOldData": true,
+        "supersededRequestAborted": true,
+        "abortIgnoringStaleResultSuppressed": true,
+        "httpErrorPresented": true,
+        "removalAborts": true,
+        "noWorkAfterRemoval": true
+      }
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5",
+      "result": {
+        "streamWrites": 100,
+        "reactiveProps": true,
+        "immediateStateReads": true,
+        "textNodePreserved": true,
+        "draftNodeValueFocusAndSelectionPreserved": true,
+        "loadingHidesOldData": true,
+        "supersededRequestAborted": true,
+        "abortIgnoringStaleResultSuppressed": true,
+        "httpErrorPresented": true,
+        "removalAborts": true,
+        "noWorkAfterRemoval": true
+      }
+    }
+  ]
+}

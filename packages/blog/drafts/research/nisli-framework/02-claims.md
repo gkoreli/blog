@@ -67,3 +67,25 @@ in the raw results. No old/new runs are pooled.
 
 No prompt file, prompt route, or token-footprint claim is prepared, following
 the owner's explicit instruction. The AI-assistance disclosure remains.
+
+## October 21 practical rewrite
+
+- Actual OpenClaw history now anchors the argument: original Lit chat page,
+  intermediate Solid host/controller bridge, then component-owned state;
+  memory configuration loses its copied snapshot/redraw subscription. Source
+  identities and merged PRs are in the [source ledger](01-source-ledger.md).
+- The displayed Nisli reply and preview examples pass strict typechecking and
+  [three-engine browser checks](examples/README.md) against public 0.57.0.
+  Draft identity/value/focus/input selection, typed prop updates, immediate
+  state reads, cancellation, ignored-abort races, errors, and removal are checked.
+- Preference: native custom elements + direct signal bindings + local resource
+  ownership without a required compiler. This is an authoring/design case,
+  not evidence that Solid lacks fine-grained updates or Lit cannot preserve DOM.
+- Solid's coordinated async advantage and narrow Lit's update win remain in
+  the body. Runtime template discovery and incomplete tagged-HTML typing are
+  explicit costs of Nisli's chosen authoring model.
+- OpenClaw has merged rc.16. Historical rc.14 results are retained and labeled;
+  no rerun or current-version performance conclusion is invented.
+- Dense optimization history is condensed, with measured gains, costs,
+  non-release status, rollback, and links preserved. No proposal is reopened.
+- No prompts are captured, following the owner's continuing exception.
