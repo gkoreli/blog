@@ -16,6 +16,8 @@ TypeScript articles export template factories. Their modules and metadata are va
 
 Trusted, rendered Markdown uses `html:inner` with `raw()`. Ordinary text, prompts, and attributes use normal bindings. Attribute fragments and `raw()` values interpolated as children belonged to the old string renderer and must not be carried into DOM templates.
 
+Browser builds explicitly define `import.meta.env` through the shared client-mode helper. Production sets `DEV: false, PROD: true`; development sets the reverse. Otherwise Nisli's buildless-browser fallback enables development audits. Disabling those audits at runtime does not remove their code; the package's mutable diagnostic gates are a separate bundle-size limitation. The production/development distinction has an executable regression test.
+
 The sidebar contains publication navigation and follow controls. Project links live on About, alongside links to Design Language and Animations Lab. Keep the Nisli footer credit. The owner approved this placement during the design session; the experiments and routes remain available.
 
 ## Consequences and evidence

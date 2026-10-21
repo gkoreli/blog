@@ -34,6 +34,7 @@ import { licensePage } from '../pages/license.js';
 import { cslJson, bibtex, citationMarkdown } from '../templates/citation.js';
 import { robotsTxt } from '../templates/robots.js';
 import { CONTENT_LICENSE } from '../lib/license.js';
+import { clientDefines } from './client-mode.js';
 
 export { DIST } from '../lib/paths.js';
 
@@ -621,6 +622,7 @@ export async function bundleClient(minify = true): Promise<void> {
     entryNames: '[name]',
     format: 'esm',
     minify,
+    define: clientDefines(true),
     target: 'es2024',
   });
 }

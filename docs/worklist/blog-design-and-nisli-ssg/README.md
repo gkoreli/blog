@@ -30,3 +30,17 @@ Local implementation and verification complete. Used Node 24.14.1 and pnpm 9.15.
 The source changes follow the repository's scoped commit-and-push workflow on main. Local verification is not evidence of deployment activation or current production behavior; those remain unverified.
 
 The next bounded design action is to review the homepage's featured-story hierarchy and chronological stream with the owner, now that project and experiment links have a quieter location. No additional homepage composition or search interface was introduced during this migration.
+
+## October 20 follow-up: bundle attribution and native TypeScript
+
+The owner asked why gzip grew and requested the latest native TypeScript. The registry's current stable native release is `typescript` 7.0.2, using the regular `tsc` command; `@typescript/native-preview` has an older release. [Microsoft's TypeScript 7 announcement](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/) documents the package transition.
+
+All five workspace compiler dependencies now use `^7.0.2`. Existing commands are unchanged. Added an empty ambient stylesheet-module declaration for esbuild's side-effect CSS imports, which the newer compiler checks; no strictness setting was relaxed.
+
+Three workspace typecheck runs per compiler, with build-info files removed before each run, gave medians of 2.172 seconds on 5.9.3 and 0.775 seconds on 7.0.2: approximately 2.8× faster locally. The source snapshot was ebca917 plus the client-mode fix; the native run also included the stylesheet declaration. This measures the typecheck command, not page loading or the esbuild/SSG production pipeline.
+
+The browser-bundle increase came from core's component, template, signal, and audit code. The SSG package is not in the browser bundle. Found and fixed production mode falling through to Nisli's development default: both bundlers now use the shared `import.meta.env` definition. A real bundled-template test verifies development emits N102 for a misspelled event while production does not. Runtime gating still retains the audit code: main.js gzip changed from 11,252 to 11,261 bytes after the flag fix, using gzip level 9. No size reduction is claimed. [Derived measurements](compiler-and-bundle-check.json) preserve conditions and samples.
+
+Checks passed: all workspace typechecks; 104 blog tests; 53 analytics tests, including test-code emission by the native compiler; 18 Markdown posts validated; 29 posts built in the isolated production build. Analytics initially failed a September fixture tested against today's rolling window. The same assertion failed under 5.9.3; its filter-only API call now explicitly selects all time. Production analytics behavior was not changed.
+
+Remaining: production activation and live acceptance are unverified. The next design action remains the homepage review above; further reduction of Nisli's common runtime and statically removable diagnostics is separate work.

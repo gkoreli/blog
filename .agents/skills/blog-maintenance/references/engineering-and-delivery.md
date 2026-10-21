@@ -1,6 +1,7 @@
 # Engineering and Delivery
 
 - Use strict TypeScript. No `any` or type assertions except `as const`; fix schemas, type guards, or upstream types.
+- Workspace checks use the native compiler in TypeScript 7 through the existing `tsc` commands. Use `pnpm typecheck`; analytics tests also compile their fixtures through `tsc`.
 - Use Markdown for standard posts and TypeScript for custom layouts. Use registered native web components for interactivity. Follow [content and build](content-and-build.md) for formats and commands.
 - Keep dependencies and infrastructure proportionate to the publication. The `blog-analytics` D1 binding serves analytics, newsletter state, and client-error reports; do not assume each package has a separate database.
 - Preserve complete readable HTML without client JavaScript. Add interactivity through `@nisli/core` components.

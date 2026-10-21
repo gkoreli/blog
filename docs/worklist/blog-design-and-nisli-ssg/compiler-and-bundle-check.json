@@ -1,0 +1,70 @@
+{
+  "localDate": "2026-10-20",
+  "sourceBase": "ebca917",
+  "conditions": "Three workspace pnpm typecheck runs, build-info files removed before each run; same machine and Node 24.14.1.",
+  "typecheck": {
+    "before": {
+      "version": "Version 5.9.3",
+      "seconds": [
+        2.4134625419974327,
+        2.1718345830158796,
+        2.031968458002666
+      ],
+      "median_seconds": 2.1718345830158796,
+      "conditions": "Three workspace pnpm typecheck runs, build-info files removed before each run; same machine and Node 24.14.1."
+    },
+    "after": {
+      "version": "Version 7.0.2",
+      "seconds": [
+        0.8024582499929238,
+        0.7748891670198645,
+        0.7656532079854514
+      ],
+      "median_seconds": 0.7748891670198645,
+      "conditions": "Three workspace pnpm typecheck runs, build-info files removed before each run; same machine and Node 24.14.1."
+    },
+    "medianSpeedup": 2.802768028579504
+  },
+  "browserBundle": {
+    "coreUpgrade": {
+      "beforeCore": "0.47.4",
+      "afterCore": "0.56.0",
+      "mainGzipBytesBefore": 7328,
+      "mainGzipBytesAfter": 11252,
+      "minifiedModuleBytes": {
+        "component": [
+          2216,
+          6038
+        ],
+        "template": [
+          6723,
+          8868
+        ],
+        "signal": [
+          2864,
+          4697
+        ],
+        "templateAudit": [
+          0,
+          2810
+        ],
+        "diagnostics": [
+          0,
+          374
+        ]
+      }
+    },
+    "productionModeFix": {
+      "gzipLevel": 9,
+      "mainGzipBytesBefore": 11252,
+      "mainGzipBytesAfter": 11261,
+      "result": "Development audits disabled in production; audit code remains behind mutable runtime gates."
+    }
+  },
+  "limits": [
+    "Local compiler command timings with warm filesystem caches and cold build-info state; not a general speedup estimate.",
+    "The native source check includes a CSS side-effect module declaration; strictness flags unchanged.",
+    "Per-module sizes are minified uncompressed esbuild attribution, not additive gzip attribution.",
+    "No measured page-speed, reader-engagement, or production-activation result."
+  ]
+}

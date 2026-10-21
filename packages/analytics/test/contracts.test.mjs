@@ -1189,7 +1189,8 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
   const classConflict = await handleStats(request('/api/stats?agent=GPTBot&traffic=automation'), { DB: d1 });
   assert.equal(classConflict.status, 400);
   assert.match((await classConflict.json()).error, /cannot be combined/);
-  const kindOk = await handleStats(request('/api/stats?kind=ai-crawler'), { DB: d1 });
+  // This filter assertion uses fixed historical rows, outside a rolling window.
+  const kindOk = await handleStats(request('/api/stats?kind=ai-crawler&range=all'), { DB: d1 });
   assert.equal(kindOk.status, 200);
   const kindBody = await kindOk.json();
   assert.equal(kindBody.filters.traffic, 'all');

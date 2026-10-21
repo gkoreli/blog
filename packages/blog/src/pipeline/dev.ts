@@ -6,6 +6,7 @@ import { context } from 'esbuild';
 import browserSync from 'browser-sync';
 import { DIST, SRC, POSTS_DIR, PROMPTS_DIR, PUBLIC_DIR, ROOT, ESBUILD_ENTRIES } from '../lib/paths.js';
 import { loadLocalEnv } from './env.js';
+import { clientDefines } from './client-mode.js';
 
 loadLocalEnv();
 process.env['DEV'] = '1';
@@ -89,6 +90,7 @@ const ctx = await context({
   entryNames: '[name]',
   format: 'esm',
   target: 'es2024',
+  define: clientDefines(false),
 });
 await ctx.rebuild();
 
