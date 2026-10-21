@@ -229,6 +229,7 @@ That makes Nisli a concrete option for this kind of application. It does not est
 
 | Term / claim | Primary source | Date / scope |
 |---|---|---|
+| OpenClaw’s reported Lit-to-Solid migration | [Peter Steinberger’s original post on X](https://x.com/steipete/status/2112597162924351909) | October 20, 2026; firsthand report |
 | OpenClaw’s migration goals | [Plan #168114](https://github.com/openclaw/openclaw/issues/168114) | Historical inventory at `88b4ae9fba33` |
 | Component-owned chat state | [PR #173833](https://github.com/openclaw/openclaw/pull/173833) | Merged October 16, 2026 |
 | Removing copied configuration and redraw subscriptions | [PR #175006](https://github.com/openclaw/openclaw/pull/175006) | Merged October 17, 2026 |
