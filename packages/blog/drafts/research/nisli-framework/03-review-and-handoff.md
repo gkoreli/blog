@@ -156,3 +156,25 @@ test command was corrected to run from its owning package so tsx resolves.
 Git delivery, deployment activation, and current public acceptance remain to be
 recorded below. Goga subsequently requested preserving and further validating
 the core optimization; that work is separate from this article release.
+
+### Article delivery and public acceptance
+
+Article commit [`29a76af`](https://github.com/gkoreli/blog/commit/29a76af)
+was pushed to main. Cloudflare’s Workers Builds check succeeded at
+2026-10-21 07:02:01 UTC: build `6ed6b065-d41d-4397-b000-7ca74d5b42e0`,
+Worker version `8530df4b-88a7-4d24-aae0-f7d0112b5c09`.
+
+Current HTTP acceptance at 07:02:29 UTC (October 21 Pacific): the
+[article](https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli),
+Markdown, CSL, BibTeX, social card, homepage, post index, RSS, sitemap, and
+llms.txt all return 200. HTML contains the expected title, one H1, five tables,
+three code blocks, October 21 publication date, canonical URL, and AI credit.
+All discovery surfaces include the slug. Markdown, CSL, BibTeX, and the social
+card match the validated isolated build byte-for-byte. The prompts route returns
+404 and no prompts link or discovery entry exists. Raw HTTP captures and the
+verification receipt stay outside Git.
+
+Article publication is complete. No social distribution, OpenClaw adoption, or
+experimental core release is implied by this acceptance. The follow-up core
+request is being cross-validated in its own Nisli worktree; the historical
+optimization remains saved at local commit `f40a217`.

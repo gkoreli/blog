@@ -96,3 +96,9 @@ Next bounded action: validate the promoted article in the isolated site build,
 commit and push the active blog changes to main, then verify deployment and
 current public content. The [handoff](03-review-and-handoff.md) records the
 actual delivery and acceptance separately. No social post is requested.
+
+Publication completed: article commit `29a76af` is pushed; Cloudflare’s build
+succeeded and current public acceptance passed. See the
+[delivery receipt](03-review-and-handoff.md#article-delivery-and-public-acceptance).
+The separate core preservation/cross-validation request does not reopen article
+publication or authorize social distribution.
