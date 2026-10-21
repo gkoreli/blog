@@ -110,3 +110,9 @@ change was briefly integrated, then reverted after the fresh Firefox result;
 no npm release shipped it. Complete source recovery, new regression tests, and
 all benchmark samples are retained. The article follow-up is deployed and
 publicly verified; the final remote core-CI receipt is in the handoff.
+
+Final acceptance: Nisli main `45e009e` passed
+[CI](https://github.com/gkoreli/nisli/actions/runs/39560950654) at 07:31:57 UTC
+October 21. The preservation and cross-validation request is complete. Current
+runtime remains the baseline; proposed optimization work is explicitly held in
+the linked backlog. Article publication and live follow-up acceptance are complete.

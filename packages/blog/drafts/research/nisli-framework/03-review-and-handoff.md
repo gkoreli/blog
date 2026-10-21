@@ -279,3 +279,25 @@ retained locally as `codex/core-rendering-queue-only-rejected` at `9e9d546`;
 the full current-main candidate remains at `f671dcd`. The temporary article build
 checkout was removed after its source matched the committed article and live
 acceptance passed. The original managed preview is archived and recoverable.
+
+### Final core acceptance
+
+The corrected [main CI run](https://github.com/gkoreli/nisli/actions/runs/39560950654)
+completed successfully at 07:31:57 UTC October 21 for exact Nisli commit
+`45e009ed6c813e8d3c75c221e92304e9c57a0adc`. Both jobs passed, including build,
+typecheck, packed-core contract, compound lifecycle in three browsers, the full
+UI preview sweep, UI package-shape e2e, workspace tests, and the published UI
+consumer e2e. This supersedes the pending checkpoint above. The earlier
+queue-integration run was canceled by the superseding rollback, not accepted
+as final source evidence.
+
+Main's signal runtime and core changelog are byte-identical to `5728ee4`; only
+the four new scheduling regression tests and durable recovery/research records
+remain from this integration. The optimization implementations are preserved
+and explicitly held, with their exact commits, patches, conditions, counterevidence,
+and next experiments. No new npm release shipped an optimization.
+
+The requested article publication, source preservation, additional validation,
+and conditional merge assessment are complete. Future allocation/JIT/heap
+profiles, new queue implementations, or separate binding-cache landing are
+backlog proposals, not unfinished acceptance checks for this request.
