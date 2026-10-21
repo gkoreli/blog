@@ -1,0 +1,168 @@
+--- a/packages/core/src/signal.ts
++++ b/packages/core/src/signal.ts
+@@ -116,16 +116,26 @@
+ 
+ const pendingEffects = new Set<EffectNode>();
+ let flushScheduled = false;
++const resolved = Promise.resolve();
+ 
+ function scheduleFlush(): void {
+   if (!flushScheduled) {
+     flushScheduled = true;
+-    queueMicrotask(flushPendingEffects);
++    void resolved.then(flushPendingEffects);
+   }
+ }
+ 
+ function flushPendingEffects(): void {
+   flushScheduled = false;
++  if (pendingEffects.size === 0) return;
++  if (pendingEffects.size === 1) {
++    // A single pending effect is already in creation order. Remove it before
++    // running so writes during the effect belong to the next flush pass.
++    const effect = pendingEffects.values().next().value;
++    pendingEffects.clear();
++    if (effect) runEffect(effect);
++    return;
++  }
+   // Copy to avoid mutation during iteration; sort by creation index so
+   // identical writes produce identical run order forever (ADR 0030.2 T5).
+   const effects = [...pendingEffects].sort((a, b) => a.order - b.order);
+--- a/packages/core/src/template.ts
++++ b/packages/core/src/template.ts
+@@ -223,7 +223,20 @@
+  * Since tagged templates always produce the same static strings array
+  * reference per call site, we use WeakMap for efficient caching.
+  */
+-const templateCache = new WeakMap<TemplateStringsArray, HTMLTemplateElement>();
++interface BindingTarget {
++  path: number[];
++  kind: 'child' | 'attributes';
++  index: number;
++}
++
++interface ParsedTemplate {
++  element: HTMLTemplateElement;
++  // null retains the live walk for html:inner, which replaces descendants
++  // before the old walker discovers their bindings.
++  targets: BindingTarget[] | null;
++}
++
++const templateCache = new WeakMap<TemplateStringsArray, ParsedTemplate>();
+ 
+ /** Parses performed since module load — test-only regression hook (issue 0015). */
+ let parseCount = 0;
+@@ -244,7 +257,7 @@
+  * over the pristine parsed element — it still carries the raw `@event`/
+  * `class:`/marker attributes that processAttributes later strips from clones.
+  */
+-function parseTemplate(strings: TemplateStringsArray, valueCount: number): HTMLTemplateElement {
++function parseTemplate(strings: TemplateStringsArray, valueCount: number): ParsedTemplate {
+   let template = templateCache.get(strings);
+   if (template) return template;
+ 
+@@ -274,12 +287,13 @@
+   }
+ 
+   parseCount++;
+-  template = document.createElement('template');
+-  template.innerHTML = htmlStr;
++  const element = document.createElement('template');
++  element.innerHTML = htmlStr;
++  template = { element, targets: discoverBindingTargets(element.content) };
+   templateCache.set(strings, template);
+ 
+   // Dev-only first-parse audit (N101–N104); no-op when disabled.
+-  auditTemplate(strings, template);
++  auditTemplate(strings, element);
+ 
+   return template;
+ }
+@@ -390,15 +404,12 @@
+       }
+       mounted = true;
+ 
+-      // Parse-once: the parsed template is cached per callsite; each mount
+-      // only pays the clone + binding walk. The per-mount processNode walk
+-      // below REMAINS by design until the ADR 0014-class work — caching
+-      // removes the *parse*, not the walk (ADR 0030.2 §8).
++      // Cache binding locations from the browser-parsed DOM, not from a
++      // second HTML parser. Resolve them all before binding mutates siblings.
+       const template = parseTemplate(strings, values.length);
+-      const fragment = template.content.cloneNode(true) as DocumentFragment;
+-
+-      // Walk the DOM tree and replace markers with bindings
+-      processNode(fragment, values, bindings, disposers);
++      const fragment = template.element.content.cloneNode(true);
++
++      bindTemplate(fragment, template.targets, values, bindings, disposers);
+ 
+       // Mount into host
+       host.appendChild(fragment);
+@@ -421,6 +432,66 @@
+ }
+ 
+ // ── DOM walking and binding creation ────────────────────────────────
++
++function discoverBindingTargets(root: Node): BindingTarget[] | null {
++  const targets: BindingTarget[] = [];
++  const visit = (node: Node, path: number[]): boolean => {
++    if (node instanceof Element) {
++      let hasBindings = false;
++      for (const attr of node.attributes) {
++        if (attr.name === 'html:inner') return false;
++        if (attr.name.startsWith('@') || attr.name.startsWith('class:')
++          || attr.value.includes(MARKER_PREFIX)) hasBindings = true;
++      }
++      if (hasBindings) targets.push({ path, kind: 'attributes', index: 0 });
++    } else if (node instanceof Comment) {
++      const text = node.textContent || '';
++      if (text.startsWith('bk-') && !isNaN(Number(text.slice(3)))) {
++        targets.push({ path, kind: 'child', index: Number(text.slice(3)) });
++      }
++    }
++    let index = 0;
++    for (let child = node.firstChild; child; child = child.nextSibling) {
++      if (!visit(child, [...path, index++])) return false;
++    }
++    return true;
++  };
++  return visit(root, []) ? targets : null;
++}
++
++function bindTemplate(
++  fragment: Node,
++  targets: BindingTarget[] | null,
++  values: unknown[],
++  bindings: Binding[],
++  disposers: (() => void)[],
++): void {
++  if (targets === null) {
++    processNode(fragment, values, bindings, disposers);
++    return;
++  }
++  const nodes: Node[] = [];
++  for (const target of targets) {
++    let node: Node | undefined = fragment;
++    for (const index of target.path) node = node?.childNodes[index];
++    if (!node || (target.kind === 'child' ? !(node instanceof Comment) : !(node instanceof Element))) {
++      // A custom-element constructor can alter a clone. No binding has run
++      // yet, so the original live walker remains a safe fallback.
++      processNode(fragment, values, bindings, disposers);
++      return;
++    }
++    nodes.push(node);
++  }
++  for (let i = 0; i < targets.length; i++) {
++    const target = targets[i];
++    const node = nodes[i];
++    if (target?.kind === 'child' && node instanceof Comment) {
++      replaceMarkerWithBinding(node, values[target.index], bindings, disposers);
++    } else if (node instanceof Element) {
++      processAttributes(node, values, bindings, disposers);
++    }
++  }
++}
+ 
+ function processNode(
+   node: Node,

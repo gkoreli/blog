@@ -49,3 +49,7 @@ yes lets draft it, dig into nisli's code and ADRs for the actual design decision
 ---
 
 i feel like i want a bit more clickbaity title, why choose Nisli for ultrafast web apps over lit or solid. Or OpenClaw should have chosen Nisli instead of Solid here is why, or something like that
+
+---
+
+why is Nisli slower to mount and narrow Lit faster at updates? lets dig into the benchmarks and see what we can optimize in nisli/core

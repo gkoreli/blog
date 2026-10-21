@@ -1,0 +1,208 @@
+{
+  "method": "Pooled median of 30 samples across two fresh page loads; three warmups and fifteen measured rounds per load. One browser/host, no paint or application-performance claim.",
+  "source": {
+    "baselineCommit": "4afde49c728a330e10ce887a38b8013d63b58498",
+    "baseline": "cf88938e5dc86d5b79af72515b6dbf077909f8ba27d07d51c652cf6281a3c5a3",
+    "schedulerOnly": "76ec05e100d85824cd737cecbc89f8812ee732f4e506d98edf891a6ac3660dd8",
+    "promiseScheduler": "4645c3717241468ee6e6d75c76c3b41974c40ffbebabbe3abd8adaa6df0dd368",
+    "pathCache": "2f5cac87152d16da4b0a0dda78e1c89abc93f0984c85ec090c883b7a75631308",
+    "candidate": "ec87e1d162d0611bbf0fdf1fae802a096d6b81123ed57a8be84ab0cb175514c7",
+    "harness": "b620da0c7a1c72675bf00e03e9e7e4c0218de42b427b7d95412791ca72953f8a"
+  },
+  "runs": [
+    "2026-10-21T05:45:30.145Z",
+    "2026-10-21T05:46:06.275Z"
+  ],
+  "updates": [
+    {
+      "name": "baseline",
+      "mountMs": 9.049999997019768,
+      "updateMs": 6.1500000059604645
+    },
+    {
+      "name": "scheduler",
+      "mountMs": 8.900000005960464,
+      "updateMs": 5.9000000059604645
+    },
+    {
+      "name": "promise",
+      "mountMs": 8.799999997019768,
+      "updateMs": 3.5
+    },
+    {
+      "name": "path-cache",
+      "mountMs": 7.799999997019768,
+      "updateMs": 3.5999999940395355
+    },
+    {
+      "name": "candidate",
+      "mountMs": 7.25,
+      "updateMs": 3.5
+    },
+    {
+      "name": "Lit: component per row",
+      "mountMs": 6.5,
+      "updateMs": 2.7999999970197678
+    }
+  ],
+  "mounts": [
+    {
+      "name": "baseline",
+      "shape": "original",
+      "signalsMs": 0.0,
+      "templateCreationMs": 0.0,
+      "remainderMs": 8.900000005960464,
+      "mountMs": 9.0
+    },
+    {
+      "name": "scheduler",
+      "shape": "original",
+      "signalsMs": 0.04999999701976776,
+      "templateCreationMs": 0.0,
+      "remainderMs": 8.799999982118607,
+      "mountMs": 8.799999982118607
+    },
+    {
+      "name": "promise",
+      "shape": "original",
+      "signalsMs": 0.04999999701976776,
+      "templateCreationMs": 0.0,
+      "remainderMs": 8.700000002980232,
+      "mountMs": 8.800000011920929
+    },
+    {
+      "name": "path-cache",
+      "shape": "original",
+      "signalsMs": 0.09999999403953552,
+      "templateCreationMs": 0.0,
+      "remainderMs": 7.5,
+      "mountMs": 7.699999988079071
+    },
+    {
+      "name": "candidate",
+      "shape": "original",
+      "signalsMs": 0.04999999701976776,
+      "templateCreationMs": 0.0,
+      "remainderMs": 7.200000002980232,
+      "mountMs": 7.25
+    },
+    {
+      "name": "baseline",
+      "shape": "static-heavy",
+      "signalsMs": 0.04999999701976776,
+      "templateCreationMs": 0.0,
+      "remainderMs": 40.24999998509884,
+      "mountMs": 40.24999998509884
+    },
+    {
+      "name": "scheduler",
+      "shape": "static-heavy",
+      "signalsMs": 0.0,
+      "templateCreationMs": 0.0,
+      "remainderMs": 39.05000001192093,
+      "mountMs": 39.1000000089407
+    },
+    {
+      "name": "promise",
+      "shape": "static-heavy",
+      "signalsMs": 0.09999999403953552,
+      "templateCreationMs": 0.0,
+      "remainderMs": 38.29999999701977,
+      "mountMs": 38.349999994039536
+    },
+    {
+      "name": "path-cache",
+      "shape": "static-heavy",
+      "signalsMs": 0.09999999403953552,
+      "templateCreationMs": 0.0,
+      "remainderMs": 30.549999997019768,
+      "mountMs": 30.649999991059303
+    },
+    {
+      "name": "candidate",
+      "shape": "static-heavy",
+      "signalsMs": 0.0,
+      "templateCreationMs": 0.0,
+      "remainderMs": 30.0,
+      "mountMs": 30.049999997019768
+    },
+    {
+      "name": "baseline",
+      "shape": "binding-heavy",
+      "signalsMs": 0.09999999403953552,
+      "templateCreationMs": 0.0,
+      "remainderMs": 16.599999994039536,
+      "mountMs": 16.69999998807907
+    },
+    {
+      "name": "scheduler",
+      "shape": "binding-heavy",
+      "signalsMs": 0.09999999403953552,
+      "templateCreationMs": 0.0,
+      "remainderMs": 16.80000001192093,
+      "mountMs": 16.900000005960464
+    },
+    {
+      "name": "promise",
+      "shape": "binding-heavy",
+      "signalsMs": 0.09999999403953552,
+      "templateCreationMs": 0.0,
+      "remainderMs": 16.5,
+      "mountMs": 16.600000008940697
+    },
+    {
+      "name": "path-cache",
+      "shape": "binding-heavy",
+      "signalsMs": 0.09999999403953552,
+      "templateCreationMs": 0.0,
+      "remainderMs": 14.850000008940697,
+      "mountMs": 14.950000002980232
+    },
+    {
+      "name": "candidate",
+      "shape": "binding-heavy",
+      "signalsMs": 0.0,
+      "templateCreationMs": 0.0,
+      "remainderMs": 14.100000008940697,
+      "mountMs": 14.25
+    }
+  ],
+  "synchronous": [
+    {
+      "name": "baseline",
+      "effectMs": 24.75000001490116,
+      "templateMs": 29.599999994039536
+    },
+    {
+      "name": "scheduler",
+      "effectMs": 23.75000001490116,
+      "templateMs": 25.099999994039536
+    },
+    {
+      "name": "promise",
+      "effectMs": 13.349999979138374,
+      "templateMs": 15.299999982118607
+    },
+    {
+      "name": "path-cache",
+      "effectMs": 13.700000017881393,
+      "templateMs": 15.300000011920929
+    },
+    {
+      "name": "candidate",
+      "effectMs": 14.049999997019768,
+      "templateMs": 15.750000014901161
+    }
+  ],
+  "microtasks": [
+    {
+      "name": "queueMicrotask",
+      "milliseconds": 5.149999991059303
+    },
+    {
+      "name": "resolved-Promise",
+      "milliseconds": 2.5999999940395355
+    }
+  ],
+  "controlMs": 2.2000000178813934
+}

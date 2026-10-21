@@ -43,3 +43,5 @@ The requested draft and bounded experiments are complete. The article includes c
 Delivery target: a scoped commit and push of this unpublished directory to `main`. Git history and the delivery response record that operation separately from the completed draft and experiments.
 
 Next bounded action: Goga's editorial review of the draft. A representative OpenClaw port is an optional future experiment if a stronger whole-application claim is wanted; it is not accepted work or a condition for completing this draft. Publication and distribution have not been requested.
+
+October 20 follow-up: Goga requested an investigation of the mount/update costs and possible core optimizations. That separately scoped work is recorded in [the optimization report](04-core-optimization.md); it preserves the original results and provides a measured candidate rather than changing the release baseline retroactively.
