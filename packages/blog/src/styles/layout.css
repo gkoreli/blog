@@ -62,7 +62,7 @@ body { min-height: 100vh; }
   flex-direction: column;
 }
 
-/* Category labels — "Contents" / "Studio" */
+/* Navigation label */
 .sb-cat {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
@@ -110,35 +110,6 @@ body { min-height: 100vh; }
 }
 
 .sidebar-section a.active .sb-dot { opacity: 1; }
-
-.sidebar-section-sep { margin: 0.6rem 0 0.2rem; }
-
-/* ── Studio project links ── */
-.sb-proj {
-  display: flex;
-  flex-direction: column;
-  gap: 0.22rem;
-  margin-bottom: 1rem;
-}
-
-.sb-proj-link {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--color-text-muted);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: color 0.15s;
-  padding: 0.18rem 0;
-  text-decoration: none;
-}
-
-.sb-proj-link:hover { color: var(--color-link); }
-
-.sb-proj-arrow {
-  opacity: 0.35;
-  font-size: 0.6rem;
-}
 
 /* ── Bottom social row ── */
 .sidebar-spacer { flex: 1; }

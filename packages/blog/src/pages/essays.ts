@@ -1,4 +1,4 @@
-import { staticHtml as html } from '@nisli/core/static';
+import { html } from '@nisli/core';
 import type { PostMeta } from '../lib/frontmatter.js';
 import { SECTION_LABELS, SECTION_DESCRIPTIONS } from '../lib/frontmatter.js';
 import { PageHero, LitItem } from '../components/index.js';

@@ -1,4 +1,4 @@
-import { staticHtml as html } from '@nisli/core/static';
+import { html } from '@nisli/core';
 
 export function Scoreboard({ title, rows }: { title: string; rows: { company: string; items: { label: string; isNew?: boolean }[] }[] }) {
   return html`<div class="scoreboard">

@@ -1,11 +1,11 @@
-import { staticHtml as html, raw } from '@nisli/core/static';
+import { html } from '@nisli/core';
 import { ANALYTICS_EVIDENCE_SINCE } from '@gkoreli/analytics/contracts';
 
 export const statsHead = `<link rel="stylesheet" href="/stats.css">
   <script type="module" src="/stats.js"></script>`;
 
-function listSkeleton(rows: number): string {
-  return Array.from({ length: rows }, () => '<div class="skeleton skeleton-row"></div>').join('');
+function listSkeleton(rows: number) {
+  return Array.from({ length: rows }, () => html`<div class="skeleton skeleton-row"></div>`);
 }
 
 const evidenceDate = new Intl.DateTimeFormat('en-US', {
@@ -79,36 +79,36 @@ export function statsPage() {
 
     <section class="stats-section" id="stats-pages">
       <h2>Top pages <span>by views</span></h2>
-      ${raw(listSkeleton(3))}
+      ${listSkeleton(3)}
     </section>
 
     <section class="stats-section" id="stats-referrers">
       <h2>Reported referrers <span>by views</span></h2>
-      ${raw(listSkeleton(2))}
+      ${listSkeleton(2)}
     </section>
 
     <section class="stats-section" id="stats-transitions">
       <h2>Between blog pages <span>reported transitions</span></h2>
-      ${raw(listSkeleton(2))}
+      ${listSkeleton(2)}
     </section>
     <section class="stats-section" id="stats-previous-pages" hidden>
       <h2>Previous blog pages <span>reported transitions</span></h2>
-      ${raw(listSkeleton(2))}
+      ${listSkeleton(2)}
     </section>
     <section class="stats-section" id="stats-next-pages" hidden>
       <h2>Next blog pages <span>reported transitions</span></h2>
-      ${raw(listSkeleton(2))}
+      ${listSkeleton(2)}
     </section>
     <p class="stats-transition-details" id="stats-transition-details"></p>
 
     <section class="stats-section" id="stats-countries">
       <h2>Countries <span>by views</span></h2>
-      ${raw(listSkeleton(2))}
+      ${listSkeleton(2)}
     </section>
 
     <section class="stats-section" id="stats-composition">
       <h2>Who fetched these pages <span>by kind and reason</span></h2>
-      ${raw(listSkeleton(3))}
+      ${listSkeleton(3)}
     </section>
   </div>
 

@@ -1,5 +1,5 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
 type DependencyJob = {
   packageName: string;
@@ -29,7 +29,7 @@ const DEPENDENCY_JOBS: DependencyJob[] = [
   { packageName: 'wrap-ansi', bunSurface: 'Bun.wrapAnsi' },
 ];
 
-function dependencyRows(): StaticResult[] {
+function dependencyRows(): TemplateResult[] {
   return DEPENDENCY_JOBS.map((job, index) => html`
     <li class="bun-fusion-row" style="--bun-fusion-row-delay: ${650 + index * 115}ms">
       <span class="bun-fusion-package">
@@ -69,7 +69,7 @@ export function BunFusionHero({
   issueNum: string;
   date: string;
   tags: string;
-  title: StaticResult;
+  title: TemplateResult;
   subtitle: string;
   author: string;
   readTime: string;

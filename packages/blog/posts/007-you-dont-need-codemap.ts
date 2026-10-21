@@ -1,5 +1,5 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 import type { PostMeta } from '../src/lib/frontmatter.js';
 import {
   Callout,
@@ -26,7 +26,7 @@ export const meta: PostMeta = {
   series: { id: 'ghx-field-notes', title: 'ghx field notes', order: 2 },
 };
 
-function Section({ label, children, final = false }: { label: string; children: StaticResult; final?: boolean }) {
+function Section({ label, children, final = false }: { label: string; children: TemplateResult; final?: boolean }) {
   return html`
     ${ScrollReveal({
       content: html`

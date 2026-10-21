@@ -1,7 +1,7 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
-export function StatRow({ items }: { items: { value: string; label: StaticResult }[] }) {
+export function StatRow({ items }: { items: { value: string; label: TemplateResult }[] }) {
   const columns = Math.max(1, Math.min(items.length, 4));
 
   return html`<div class="stat-row" style="--stat-columns: ${columns}">

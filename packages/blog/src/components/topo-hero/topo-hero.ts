@@ -1,7 +1,7 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
-export function TopoHero({ kicker, title, byline }: { kicker: string; title: StaticResult; byline: StaticResult }) {
+export function TopoHero({ kicker, title, byline }: { kicker: string; title: TemplateResult; byline: TemplateResult }) {
   return html`<div class="topo-hero">
     <canvas></canvas>
     <nisli-topo-hero></nisli-topo-hero>

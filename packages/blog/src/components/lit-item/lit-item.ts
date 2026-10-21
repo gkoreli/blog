@@ -1,11 +1,10 @@
-import { staticHtml as html, raw } from '@nisli/core/static';
+import { html } from '@nisli/core';
 import type { PostMeta } from '../../lib/frontmatter.js';
 import { formatDateShort } from '../../lib/dates.js';
 
 export function LitItem({ post, accentColor }: { post: PostMeta; accentColor?: string }) {
-  const metaStyle = accentColor ? raw(`style="color:${accentColor}"`) : '';
   return html`<a href="/${post.slug}" class="lit">
-  <div class="lit-meta" ${metaStyle}>
+  <div class="lit-meta" style=${accentColor ? `color:${accentColor}` : undefined}>
     <span>${formatDateShort(post.date)}</span>
     ${post.promptCount ? html`<span>·</span><span>${post.promptCount} prompts</span>` : ''}
   </div>

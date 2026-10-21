@@ -1,4 +1,4 @@
-import { staticHtml as html } from '@nisli/core/static';
+import { html } from '@nisli/core';
 
 // Measurements from the linked 27-request Sonnet run; no simulated timing.
 const observations = {

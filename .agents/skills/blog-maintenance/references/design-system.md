@@ -7,6 +7,7 @@ Use [shared tokens](../../../../packages/design/tokens.css), [layout CSS](../../
 - Keep sidebar navigation visible on articles and other pages using the shared shell. Pass `currentSection` so articles highlight their section.
 - Use the centered grid `1fr minmax(0, var(--content-max)) 1fr`. The sidebar sizes to content and aligns right inside `.sidebar-wrapper`; the opposite column balances it.
 - The sticky sidebar uses section spacing. Preserve its header, navigation, follow links, and social controls.
+- Keep project links on About, with Design Language and Animations Lab under its site-exploration section. Preserve the Nisli footer credit. [ADR-0018](../../../../docs/adr/0018-nisli-ssg-and-publication-navigation.md) records the placement decision.
 - At 768px the shell becomes one column with a mobile header and burger menu. Components may have additional breakpoints. Prefer intrinsic sizing where possible.
 - The burger menu must support Escape, scroll locking, and `aria-expanded`.
 - The homepage shows a featured article followed by a chronological stream. `/about` holds the biography, projects, and contact links.

@@ -1,4 +1,4 @@
-import { staticHtml as html } from '@nisli/core/static';
+import { html } from '@nisli/core';
 
 const PALETTE = [
   { name: 'Paper',        token: '--color-bg',           light: '#faf8f5', dark: '#1a1a1a',  role: 'Page background — warm, not white' },

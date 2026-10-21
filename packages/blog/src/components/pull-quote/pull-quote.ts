@@ -1,7 +1,7 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
-export function PullQuote({ content, cite }: { content: StaticResult; cite?: string }) {
+export function PullQuote({ content, cite }: { content: TemplateResult; cite?: string }) {
   return html`<blockquote class="pull-quote">
     ${content}
     ${cite ? html`<cite>${cite}</cite>` : ''}

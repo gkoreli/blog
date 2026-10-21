@@ -1,5 +1,5 @@
-import { staticHtml as html, raw } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
 /**
  * PrStreamHero — animated merge-stream preamble for the backlog-mcp
@@ -75,8 +75,8 @@ const DRAW = 5.5; // full line draw duration
 const xForDay = (day: number): number => ERA_X0 + (day * (ERA_X1 - ERA_X0)) / DAYS;
 const delayAtX = (x: number): number => START + ((x - LINE_X0) / (LINE_X1 - LINE_X0)) * DRAW;
 
-function mergeMarks(): StaticResult[] {
-  const marks: StaticResult[] = [];
+function mergeMarks(): TemplateResult[] {
+  const marks: TemplateResult[] = [];
   for (const { day, prs } of MERGE_DAYS) {
     const x = xForDay(day);
     const d = delayAtX(x);
@@ -93,8 +93,8 @@ function mergeMarks(): StaticResult[] {
 }
 
 /** Plain commit ticks after the last PR — the direct-commit era. */
-function directCommitTicks(): StaticResult[] {
-  const ticks: StaticResult[] = [];
+function directCommitTicks(): TemplateResult[] {
+  const ticks: TemplateResult[] = [];
   for (let i = 0; i < 18; i++) {
     const x = 778 + i * 9.5;
     const d = delayAtX(x);
@@ -134,9 +134,9 @@ const MONTHS: { x: number; label: string }[] = [
   { x: xForDay(75), label: 'APR 3' },
 ];
 
-export function PrStreamHero({ kicker, title, byline }: { kicker: string; title: StaticResult; byline: StaticResult }) {
+export function PrStreamHero({ kicker, title, byline }: { kicker: string; title: TemplateResult; byline: TemplateResult }) {
   return html`<div class="prs-hero">
-    <style>${raw(counterKeyframes())}</style>
+    <style>${counterKeyframes()}</style>
     <div class="prs-hero-inner">
       <span class="prs-kicker">${kicker}</span>
       ${title}

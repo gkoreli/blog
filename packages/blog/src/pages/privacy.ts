@@ -1,7 +1,5 @@
-import { staticHtml as html, raw } from '@nisli/core/static';
+import { html } from '@nisli/core';
 import { ANALYTICS_EVIDENCE_SINCE } from '@gkoreli/analytics/contracts';
-
-const ext = (url: string) => raw(`href="${url}" target="_blank" rel="noopener"`);
 
 const evidenceDate = new Intl.DateTimeFormat('en-US', {
   timeZone: 'UTC',
@@ -30,7 +28,7 @@ export function privacyPage() {
 
   <h2>Cloudflare Web Analytics</h2>
 
-  <p>Cloudflare Web Analytics is separate from the first-party dataset above. Its JavaScript beacon supplies Cloudflare's performance dashboard and does not feed this site's public <a href="/stats">stats</a>. Cloudflare may process request and browser data for that service; see <a ${ext('https://www.cloudflare.com/privacypolicy/')}>Cloudflare's Privacy Policy</a>.</p>
+  <p>Cloudflare Web Analytics is separate from the first-party dataset above. Its JavaScript beacon supplies Cloudflare's performance dashboard and does not feed this site's public <a href="/stats">stats</a>. Cloudflare may process request and browser data for that service; see <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's Privacy Policy</a>.</p>
 
   <h2>Newsletter</h2>
 
@@ -42,7 +40,7 @@ export function privacyPage() {
 
   <h2>Bot protection</h2>
 
-  <p>The newsletter signup form uses <a ${ext('https://www.cloudflare.com/products/turnstile/')}>Cloudflare Turnstile</a> when you submit a request. Turnstile analyses browser and network signals to assess automated abuse. Verification may require interaction and can fail; the form reports a problem and lets you retry. Cloudflare may process data as part of this assessment — see <a ${ext('https://www.cloudflare.com/privacypolicy/')}>Cloudflare's Privacy Policy</a>.</p>
+  <p>The newsletter signup form uses <a href="https://www.cloudflare.com/products/turnstile/" target="_blank" rel="noopener">Cloudflare Turnstile</a> when you submit a request. Turnstile analyses browser and network signals to assess automated abuse. Verification may require interaction and can fail; the form reports a problem and lets you retry. Cloudflare may process data as part of this assessment — see <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's Privacy Policy</a>.</p>
 
   <h2>Error diagnostics</h2>
 
@@ -54,7 +52,7 @@ export function privacyPage() {
 
   <h2>Contact</h2>
 
-  <p>Questions? Reach out on <a ${ext('https://x.com/GogaKoreli')}>X</a> or <a ${ext('https://www.linkedin.com/in/goga-koreli/')}>LinkedIn</a>.</p>
+  <p>Questions? Reach out on <a href="https://x.com/GogaKoreli" target="_blank" rel="noopener">X</a> or <a href="https://www.linkedin.com/in/goga-koreli/" target="_blank" rel="noopener">LinkedIn</a>.</p>
 
   <p>The license for everything published here is on the <a href="/license">license page</a>.</p>
 </article>`;

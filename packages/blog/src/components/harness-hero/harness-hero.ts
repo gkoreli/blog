@@ -1,7 +1,7 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
-export function HarnessHero({ kicker, title, subtitle, author }: { kicker: string; title: StaticResult; subtitle: StaticResult; author: string }) {
+export function HarnessHero({ kicker, title, subtitle, author }: { kicker: string; title: TemplateResult; subtitle: TemplateResult; author: string }) {
   return html`<div class="topo-hero">
     <nisli-neural-canvas mode="flow"></nisli-neural-canvas>
     <div class="topo-hero-inner">

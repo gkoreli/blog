@@ -1,4 +1,4 @@
-import { staticHtml as html, raw } from '@nisli/core/static';
+import { html } from '@nisli/core';
 import type { PostMeta, PromptsData } from '../lib/frontmatter.js';
 
 export function promptsPage(meta: PostMeta, prompts: PromptsData) {
@@ -39,7 +39,7 @@ export function promptsPage(meta: PostMeta, prompts: PromptsData) {
     ${prompts.prompts.map((p, i) => html`
     <div class="prompt-block">
       <div class="prompt-label">Prompt ${i + 1}</div>
-      <div class="prompt-text">${raw(escapeHtml(p))}</div>
+      <div class="prompt-text">${p}</div>
     </div>`)}
   </div>
 </article>`;
@@ -69,9 +69,4 @@ function formatTimestamp(value: string): string {
     timeZoneName: 'short',
     timeZone: 'America/Los_Angeles',
   }).format(new Date(value));
-}
-
-function escapeHtml(s: string): string {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/\n/g, '<br>');
 }

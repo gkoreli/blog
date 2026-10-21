@@ -1,7 +1,7 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
-export function EisenhowerMatrix({ quads }: { quads: { num: string; tag: string; title: string; body: StaticResult; cls: string }[] }) {
+export function EisenhowerMatrix({ quads }: { quads: { num: string; tag: string; title: string; body: TemplateResult; cls: string }[] }) {
   return html`<div class="matrix-wrap">
     <div class="matrix-label">The Eisenhower / Urgency-Importance Matrix</div>
     <div class="matrix-grid">

@@ -420,9 +420,6 @@
   white-space: pre-wrap;
 }
 
-.sb-proj-link.active {
-  color: var(--color-link);
-}
 
 @media (max-width: 1060px) {
   .al-page {

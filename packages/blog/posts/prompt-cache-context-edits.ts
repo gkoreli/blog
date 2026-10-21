@@ -1,4 +1,4 @@
-import { staticHtml as html } from '@nisli/core/static';
+import { html } from '@nisli/core';
 import type { PostMeta } from '../src/lib/frontmatter.js';
 import { CompareTable, OssRadarHero, SectionBreak, StatRow, Sources } from '../src/templates/components.js';
 import { CacheDependencyFigure } from '../src/components/cache-dependency/cache-dependency.js';

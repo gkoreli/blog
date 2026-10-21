@@ -1,5 +1,5 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
 interface ReplySlipProps {
   turnstileSiteKey: string;
@@ -165,7 +165,7 @@ export function DispatchSchlierenBrand({ turnstileSiteKey }: ReplySlipProps) {
   return schlierenShell('brand', turnstileSiteKey, 'sch-brand-email');
 }
 
-export function SchlierenMark({ children, palette = 'brand' }: { children: StaticResult; palette?: 'heat' | 'brand' }) {
+export function SchlierenMark({ children, palette = 'brand' }: { children: TemplateResult; palette?: 'heat' | 'brand' }) {
   return html`<div class="sch-mark" data-schlieren-host>
     <canvas class="sch-canvas" data-schlieren data-palette="${palette}" aria-hidden="true"></canvas>
     <div class="sch-content">${children}</div>

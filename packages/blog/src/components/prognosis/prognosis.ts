@@ -1,7 +1,7 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
-export function Prognosis({ tag, title, body }: { tag: 'watch' | 'signal' | 'risk'; title: string; body: StaticResult }) {
+export function Prognosis({ tag, title, body }: { tag: 'watch' | 'signal' | 'risk'; title: string; body: TemplateResult }) {
   return html`<div class="prognosis">
     <div class="prognosis-header">
       <span class="prognosis-tag prognosis-${tag}">${tag}</span>

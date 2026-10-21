@@ -1,4 +1,4 @@
-import { staticHtml as html } from '@nisli/core/static';
+import { html } from '@nisli/core';
 
 export function Sources({ items }: { items: { claim: string; why?: string; ref: string; url?: string }[] }) {
   return html`<div class="radar-sources">

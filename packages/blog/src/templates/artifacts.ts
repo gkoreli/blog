@@ -1,5 +1,5 @@
-import { staticHtml as html, raw } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
 interface ArtifactMeta {
   label: string;
@@ -13,18 +13,16 @@ interface ArtifactSurfaceProps {
   label: string;
   code?: string;
   meta?: ArtifactMeta[];
-  body: StaticResult;
-  action: StaticResult;
+  body: TemplateResult;
+  action: TemplateResult;
   mark?: string;
-  stamp?: StaticResult;
+  stamp?: TemplateResult;
 }
 
 export function ArtifactSurface({ id, className, labelledBy, label, code, meta = [], body, action, mark, stamp }: ArtifactSurfaceProps) {
   const classes = className ? `artifact-surface ${className}` : 'artifact-surface';
-  const idAttr = id ? raw(` id="${id}"`) : '';
-  const labelledByAttr = labelledBy ? raw(` aria-labelledby="${labelledBy}"`) : '';
 
-  return html`<section${idAttr} class="${classes}"${labelledByAttr}>
+  return html`<section id=${id} class="${classes}" aria-labelledby=${labelledBy}>
     ${stamp ? html`<div class="artifact-stamp" aria-hidden="true">${stamp}</div>` : ''}
     <header class="artifact-header">
       <div class="artifact-topline">

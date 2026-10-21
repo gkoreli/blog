@@ -30,6 +30,8 @@ Built with [@nisli/core](https://www.npmjs.com/package/@nisli/core) — a zero-d
 - **Hosting**: Cloudflare Workers with static assets
 - **CI/CD**: Cloudflare Workers Git integration — push to `main` → build → deploy
 
+Static generation uses `@nisli/ssg` with ordinary `@nisli/core` templates; the blog owns content discovery, document metadata, and publication files. See [ADR-0018](docs/adr/0018-nisli-ssg-and-publication-navigation.md).
+
 ## Development
 
 ```bash

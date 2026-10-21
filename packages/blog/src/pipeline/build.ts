@@ -1,8 +1,12 @@
-import { rmSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { html, type TemplateResult } from '@nisli/core';
+import { cleanOutDir } from '@nisli/ssg';
+import { buildDocuments, renderContent, type PageDocument } from '../lib/ssg.js';
+import { parsePostModule } from '../lib/post-module.js';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { basename, join, relative } from 'node:path';
 import { build as esbuild } from 'esbuild';
 import { DIST, SRC, ESBUILD_ENTRIES, REPO_ROOT } from '../lib/paths.js';
-import { discoverPosts, writeOutput, writeRoot, copyAssets } from '../lib/fs.js';
+import { discoverPosts, writeRoot, copyAssets } from '../lib/fs.js';
 import { initMarkdown, renderMarkdown } from '../lib/markdown.js';
 import { parsePost, validatePosts, parsePrompts } from '../lib/frontmatter.js';
 import type { Post } from '../lib/frontmatter.js';
@@ -51,8 +55,7 @@ function contentLicenseMarkdown(): string {
 
 /** Step 1: Clean and prepare dist */
 export function cleanDist(): void {
-  if (existsSync(DIST)) rmSync(DIST, { recursive: true });
-  mkdirSync(DIST, { recursive: true });
+  cleanOutDir(DIST);
 }
 
 /** Step 2: Scan src/components/ and regenerate src/styles/components.css import manifest */
@@ -127,6 +130,10 @@ export async function buildHTML(): Promise<void> {
   mkdirSync(DIST, { recursive: true });
 
   await initMarkdown();
+  const pages: { path: string; document: PageDocument }[] = [];
+  const addPage = (slug: string, document: PageDocument) => {
+    pages.push({ path: slug === '/' ? '/' : `/${slug}`, document });
+  };
 
   const files = discoverPosts();
   const mdFiles = files.filter(f => f.endsWith('.md'));
@@ -142,15 +149,22 @@ export async function buildHTML(): Promise<void> {
     .map(r => parsePost(r.file));
 
   // Load TypeScript posts via dynamic import
-  const tsPosts: { post: Post; htmlContent: string; preamble?: string }[] = [];
+  const tsPosts: {
+    post: Post;
+    article: () => TemplateResult;
+    preamble?: () => TemplateResult;
+    htmlContent: string;
+  }[] = [];
   for (const f of tsFiles) {
-    const mod = await import(f) as { meta: Post['meta']; article: () => { toString(): string }; preamble?: () => { toString(): string } };
-    const htmlContent = mod.article().toString();
-    const preamble = mod.preamble?.().toString();
+    const candidate: unknown = await import(f);
+    const mod = parsePostModule(candidate, f);
+    const [htmlContent] = await renderContent([mod.article()]);
+    if (htmlContent === undefined) throw new Error(`No rendered content for ${f}`);
     tsPosts.push({
       post: { meta: mod.meta, content: '' },
+      article: mod.article,
       htmlContent,
-      ...(preamble && { preamble }),
+      ...(mod.preamble && { preamble: mod.preamble }),
     });
   }
 
@@ -202,21 +216,21 @@ export async function buildHTML(): Promise<void> {
     const body = postPage(post.meta, htmlContent, prompts, allPosts);
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
     const ogImageAlt = postOgImageAlt(post.meta.title);
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body.toString(), canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: 'post', ogType: 'article', postSlug: post.meta.slug, ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
-    writeOutput(post.meta.slug, page.toString());
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body, canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: 'post', ogType: 'article', postSlug: post.meta.slug, ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
+    addPage(post.meta.slug, page);
     writeRoot(`${post.meta.slug}.md`, mdRawContents[i]! + seriesTrailMarkdown(post.meta, allPosts) + citationMarkdown(post.meta));
     writeRoot(`${post.meta.slug}.csl.json`, cslJson(post.meta));
     writeRoot(`${post.meta.slug}.bib`, `${bibtex(post.meta)}\n`);
 
     if (prompts) {
       const promptsBody = promptsPage(post.meta, prompts);
-      const promptsShell = pageShell({ title: `Thoughts by human, co-written by AI — ${post.meta.title}`, description: `${prompts.count} raw notes that shaped "${post.meta.title}"`, content: promptsBody.toString(), canonicalPath: `/${post.meta.slug}/prompts`, currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogImage, ogImageAlt, ogType: 'website' });
-      writeOutput(`${post.meta.slug}/prompts`, promptsShell.toString());
+      const promptsShell = pageShell({ title: `Thoughts by human, co-written by AI — ${post.meta.title}`, description: `${prompts.count} raw notes that shaped "${post.meta.title}"`, content: promptsBody, canonicalPath: `/${post.meta.slug}/prompts`, currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogImage, ogImageAlt, ogType: 'website' });
+      addPage(`${post.meta.slug}/prompts`, promptsShell);
     }
   }
 
   // Build TypeScript posts — content controls its own structure
-  for (const { post, htmlContent, preamble } of tsPosts) {
+  for (const { post, article, preamble: renderPreamble, htmlContent } of tsPosts) {
     const ogImage = await generateOgImage(post.meta.title, post.meta.slug);
     const prompts = parsePrompts(post.meta.slug);
     if (prompts) post.meta.promptCount = prompts.count;
@@ -224,18 +238,19 @@ export async function buildHTML(): Promise<void> {
     const scripts = post.meta.layout === 'immersive' ? ['/immersive.js'] : [];
     const trail = seriesTrailBlock(post.meta, allPosts);
     const afterword = postAfterword(post.meta, allPosts);
-    const content = `${htmlContent}${trail}${afterword}`;
+    const content = html`${article()}${trail}${afterword}`;
+    const preamble = renderPreamble?.();
     const ogImageAlt = postOgImageAlt(post.meta.title);
     const page = pageShell({ title: post.meta.title, description: post.meta.description, content, canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', postSlug: post.meta.slug, ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
-    writeOutput(post.meta.slug, page.toString());
+    addPage(post.meta.slug, page);
     writeRoot(`${post.meta.slug}.md`, htmlToMarkdown(htmlContent, post.meta) + seriesTrailMarkdown(post.meta, allPosts) + citationMarkdown(post.meta));
     writeRoot(`${post.meta.slug}.csl.json`, cslJson(post.meta));
     writeRoot(`${post.meta.slug}.bib`, `${bibtex(post.meta)}\n`);
 
     if (prompts) {
       const promptsBody = promptsPage(post.meta, prompts);
-      const promptsShell = pageShell({ title: `Thoughts by human, co-written by AI — ${post.meta.title}`, description: `${prompts.count} raw notes that shaped "${post.meta.title}"`, content: promptsBody.toString(), canonicalPath: `/${post.meta.slug}/prompts`, currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogImage, ogImageAlt, ogType: 'website' });
-      writeOutput(`${post.meta.slug}/prompts`, promptsShell.toString());
+      const promptsShell = pageShell({ title: `Thoughts by human, co-written by AI — ${post.meta.title}`, description: `${prompts.count} raw notes that shaped "${post.meta.title}"`, content: promptsBody, canonicalPath: `/${post.meta.slug}/prompts`, currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogImage, ogImageAlt, ogType: 'website' });
+      addPage(`${post.meta.slug}/prompts`, promptsShell);
     }
   }
 
@@ -250,48 +265,48 @@ export async function buildHTML(): Promise<void> {
     title: 'Agentic Engineering Field Notes',
     seoTitle: 'Goga Koreli — Agentic Engineering Field Notes',
     description: 'Field notes from building and evaluating AI agents, developer tools, and agentic systems — including experiments that fail.',
-    content: indexBody.toString(),
+    content: indexBody,
     canonicalPath: '/',
     ogImage: publicationOgImage,
     ogImageAlt: PUBLICATION_OG_IMAGE_ALT,
     head: websiteJsonLd(),
   });
-  writeRoot('index.html', indexShell.toString());
+  addPage('/', indexShell);
 
   const essaysBody = essaysPage(sortedPosts.filter(p => p.section === 'essays'));
-  writeOutput('essays', pageShell({ title: SECTION_LABELS['essays'], description: SECTION_DESCRIPTIONS['essays'], content: essaysBody.toString(), canonicalPath: '/essays', currentSection: 'essays', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }).toString());
+  addPage('essays', pageShell({ title: SECTION_LABELS['essays'], description: SECTION_DESCRIPTIONS['essays'], content: essaysBody, canonicalPath: '/essays', currentSection: 'essays', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }));
 
   const engineeringBody = engineeringPage(sortedPosts.filter(p => p.section === 'engineering'));
-  writeOutput('engineering', pageShell({ title: SECTION_LABELS['engineering'], description: SECTION_DESCRIPTIONS['engineering'], content: engineeringBody.toString(), canonicalPath: '/engineering', currentSection: 'engineering', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }).toString());
+  addPage('engineering', pageShell({ title: SECTION_LABELS['engineering'], description: SECTION_DESCRIPTIONS['engineering'], content: engineeringBody, canonicalPath: '/engineering', currentSection: 'engineering', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }));
 
   const ossRadarBody = ossRadarPage(sortedPosts.filter(p => p.section === 'oss-radar'));
-  writeOutput('oss-radar', pageShell({ title: SECTION_LABELS['oss-radar'], description: SECTION_DESCRIPTIONS['oss-radar'], content: ossRadarBody.toString(), canonicalPath: '/oss-radar', currentSection: 'oss-radar', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }).toString());
+  addPage('oss-radar', pageShell({ title: SECTION_LABELS['oss-radar'], description: SECTION_DESCRIPTIONS['oss-radar'], content: ossRadarBody, canonicalPath: '/oss-radar', currentSection: 'oss-radar', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }));
 
   const aboutBody = aboutPage();
-  const aboutShell = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody.toString(), canonicalPath: '/about', currentSlug: 'about', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: profilePageJsonLd() });
-  writeOutput('about', aboutShell.toString());
+  const aboutShell = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody, canonicalPath: '/about', currentSlug: 'about', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: profilePageJsonLd() });
+  addPage('about', aboutShell);
 
   const statsBody = statsPage();
-  const statsShell = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody.toString(), canonicalPath: '/stats', currentSlug: 'stats', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: statsHead, noindex: true });
-  writeOutput('stats', statsShell.toString());
+  const statsShell = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody, canonicalPath: '/stats', currentSlug: 'stats', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: statsHead, noindex: true });
+  addPage('stats', statsShell);
 
   const privacyBody = privacyPage();
-  const privacyShell = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody.toString(), canonicalPath: '/privacy', currentSlug: 'privacy', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
-  writeOutput('privacy', privacyShell.toString());
+  const privacyShell = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody, canonicalPath: '/privacy', currentSlug: 'privacy', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
+  addPage('privacy', privacyShell);
 
   const licenseBody = licensePage(await renderMarkdown(contentLicenseMarkdown()));
-  const licenseShell = pageShell({ title: 'Content License', description: 'The license for articles, essays, images, and prompts published on gkoreli.com.', content: licenseBody.toString(), canonicalPath: '/license', currentSlug: 'license', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
-  writeOutput('license', licenseShell.toString());
+  const licenseShell = pageShell({ title: 'Content License', description: 'The license for articles, essays, images, and prompts published on gkoreli.com.', content: licenseBody, canonicalPath: '/license', currentSlug: 'license', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
+  addPage('license', licenseShell);
 
   const dlBody = designLanguagePage();
-  const dlShell = pageShell({ title: 'Design Language', description: 'The design substrate of gkoreli.com — palette, typography, glass surfaces, canvas moods, section identities, and philosophy.', content: dlBody.toString(), canonicalPath: '/design-language', currentSlug: 'design-language', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, noindex: true, scripts: ['/canvas.js'] });
-  writeOutput('design-language', dlShell.toString());
+  const dlShell = pageShell({ title: 'Design Language', description: 'The design substrate of gkoreli.com — palette, typography, glass surfaces, canvas moods, section identities, and philosophy.', content: dlBody, canonicalPath: '/design-language', currentSlug: 'design-language', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, noindex: true, scripts: ['/canvas.js'] });
+  addPage('design-language', dlShell);
 
   const animationsLabBody = animationsLabPage();
   const animationsLabShell = pageShell({
     title: 'Animations Lab',
     description: 'Live motion experiments for the gkoreli.com animation runtime.',
-    content: animationsLabBody.toString(),
+    content: animationsLabBody,
     canonicalPath: '/animations-lab',
     currentSlug: 'animations-lab',
     ogImage: publicationOgImage,
@@ -299,7 +314,9 @@ export async function buildHTML(): Promise<void> {
     scripts: ['/animations-lab.js'],
     noindex: true,
   });
-  writeOutput('animations-lab', animationsLabShell.toString());
+  addPage('animations-lab', animationsLabShell);
+
+  await buildDocuments(DIST, pages);
 
   writeRoot('feed.xml', rssFeed(sortedPosts));
   writeRoot('sitemap.xml', sitemapXml(sortedPosts));

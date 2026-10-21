@@ -1,6 +1,4 @@
-import { staticHtml as html, raw } from '@nisli/core/static';
-
-const ext = (url: string) => raw(`href="${url}" target="_blank" rel="noopener"`);
+import { html } from '@nisli/core';
 
 export function aboutPage() {
   return html`<article class="post-content">
@@ -18,16 +16,20 @@ export function aboutPage() {
 
   <h2>Projects</h2>
 
-  <p><a ${ext('https://github.com/gkoreli/ghx')}>ghx</a> — Auditable code reconnaissance for AI agents. A specialized sidecar explores GitHub and returns schema-validated claims, evidence, commands, and uncertainty instead of a transcript.</p>
+  <p><a href="https://github.com/gkoreli/ghx" target="_blank" rel="noopener">ghx</a> — Auditable code reconnaissance for AI agents. A specialized sidecar explores GitHub and returns schema-validated claims, evidence, commands, and uncertainty instead of a transcript.</p>
 
-  <p><a ${ext('https://github.com/gkoreli/backlog-mcp')}>backlog-mcp</a> — Local-first context, memory, and work history for AI agents. Agents orient, recall decisions, attach artifacts, and search their own history while humans retain plain markdown they can read and diff.</p>
+  <p><a href="https://github.com/gkoreli/backlog-mcp" target="_blank" rel="noopener">backlog-mcp</a> — Local-first context, memory, and work history for AI agents. Agents orient, recall decisions, attach artifacts, and search their own history while humans retain plain markdown they can read and diff.</p>
 
-  <p><a ${ext('https://www.npmjs.com/package/@nisli/core')}>@nisli/core</a> — A zero-dependency reactive web component framework. Born from building backlog-mcp's web viewer, with fine-grained signals, light-DOM templates, dependency injection, routing, and static generation.</p>
+  <p><a href="https://www.npmjs.com/package/@nisli/core" target="_blank" rel="noopener">@nisli/core</a> — A zero-dependency reactive web component framework. Born from building backlog-mcp's web viewer, with fine-grained signals, light-DOM templates, dependency injection, routing, and static generation.</p>
 
-  <p><a ${ext('https://github.com/gkoreli/blog')}>gkoreli.com</a> — This publication. Built with @nisli/core and deployed on Cloudflare Workers. The source is public.</p>
+  <p><a href="https://github.com/gkoreli/blog" target="_blank" rel="noopener">gkoreli.com</a> — This publication. Built with @nisli/core and deployed on Cloudflare Workers. The source is public.</p>
+
+  <h2>Explore the site</h2>
+
+  <p>The <a href="/design-language">Design Language</a> collects the site's typography, colors, and visual ideas. The <a href="/animations-lab">Animations Lab</a> is a collection of motion experiments behind the articles.</p>
 
   <h2>Connect</h2>
 
-  <p>Find me on <a ${ext('https://github.com/gkoreli')}>GitHub</a>, <a ${ext('https://x.com/GogaKoreli')}>X</a> and <a ${ext('https://www.linkedin.com/in/goga-koreli/')}>LinkedIn</a>.</p>
+  <p>Find me on <a href="https://github.com/gkoreli" target="_blank" rel="noopener">GitHub</a>, <a href="https://x.com/GogaKoreli" target="_blank" rel="noopener">X</a> and <a href="https://www.linkedin.com/in/goga-koreli/" target="_blank" rel="noopener">LinkedIn</a>.</p>
 </article>`;
 }

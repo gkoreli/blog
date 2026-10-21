@@ -1,7 +1,7 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
-export function Steps({ items }: { items: { title: string; body: StaticResult }[] }) {
+export function Steps({ items }: { items: { title: string; body: TemplateResult }[] }) {
   return html`<div class="proc-steps">
     ${items.map((s, i) => html`<div class="proc-step">
       <div class="proc-step-n">${String(i + 1)}</div>

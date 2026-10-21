@@ -1,7 +1,7 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
-export function Timeline({ items }: { items: { date: string; event: StaticResult; note?: string }[] }) {
+export function Timeline({ items }: { items: { date: string; event: TemplateResult; note?: string }[] }) {
   return html`<div class="radar-timeline">
     ${items.map(t => html`<div class="tl-item">
       <div class="tl-date">${t.date}</div>

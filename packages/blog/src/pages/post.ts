@@ -1,4 +1,4 @@
-import { staticHtml as html, raw } from '@nisli/core/static';
+import { html, raw, type TemplateResult } from '@nisli/core';
 import type { PostMeta, PromptsData, Section } from '../lib/frontmatter.js';
 import { formatDateLong } from '../lib/dates.js';
 import { SectionLabel } from '../components/index.js';
@@ -69,7 +69,7 @@ function feedbackUrl(meta: PostMeta): string {
   return `${feedbackRepository(meta)}/issues/new?${params.toString()}`;
 }
 
-export function seriesTrailBlock(meta: PostMeta, allPosts: PostMeta[]): string {
+export function seriesTrailBlock(meta: PostMeta, allPosts: PostMeta[]): TemplateResult | string {
   const posts = resolveSeriesPosts(meta, allPosts);
   if (!posts) return '';
 
@@ -82,7 +82,7 @@ export function seriesTrailBlock(meta: PostMeta, allPosts: PostMeta[]): string {
   return html`<nav class="series-trail" aria-label="More in this series">
   <p class="series-trail-label">More in <em>${meta.series!.title}</em></p>
   <ol class="series-trail-list">${items}</ol>
-</nav>`.toString();
+</nav>`;
 }
 
 export function seriesTrailMarkdown(meta: PostMeta, allPosts: PostMeta[]): string {
@@ -97,7 +97,7 @@ export function seriesTrailMarkdown(meta: PostMeta, allPosts: PostMeta[]): strin
   return `\n\n## More in ${meta.series!.title}\n\n${items}\n`;
 }
 
-export function postAfterword(meta: PostMeta, allPosts: PostMeta[]): string {
+export function postAfterword(meta: PostMeta, allPosts: PostMeta[]): TemplateResult | string {
   const nextRead = resolveNextRead(meta, allPosts);
   const acceptsTechnicalFeedback = meta.section !== 'essays';
   if (!nextRead && !acceptsTechnicalFeedback) return '';
@@ -115,7 +115,7 @@ export function postAfterword(meta: PostMeta, allPosts: PostMeta[]): string {
     <p>Found a weak assumption, broken baseline, or technical mistake?</p>
     <a href="${feedbackUrl(meta)}" target="_blank" rel="noopener">Open a critique on GitHub <span aria-hidden="true">↗</span></a>
   </div>` : ''}
-</section>`.toString();
+</section>`;
 }
 
 export function postPage(meta: PostMeta, htmlContent: string, prompts?: PromptsData | null, allPosts?: PostMeta[]) {
@@ -130,10 +130,8 @@ export function postPage(meta: PostMeta, htmlContent: string, prompts?: PromptsD
       ? html`<div class="tags">${meta.tags.map(t => html`<span class="tag">${t}</span>`)}</div>`
       : ''}
   </header>
-  <div class="post-content">
-    ${raw(htmlContent)}
-  </div>
-  ${allPosts ? raw(seriesTrailBlock(meta, allPosts)) : ''}
+  <div class="post-content" html:inner=${raw(htmlContent)}></div>
+  ${allPosts ? seriesTrailBlock(meta, allPosts) : ''}
   ${prompts ? html`
   <section class="prompts-teaser">
     <div class="prompts-teaser-header">
@@ -144,6 +142,6 @@ export function postPage(meta: PostMeta, htmlContent: string, prompts?: PromptsD
     <p class="prompts-teaser-preview">"${prompts.preview}"</p>
     <a href="/${meta.slug}/prompts" class="prompts-teaser-link">See behind the scenes →</a>
   </section>` : ''}
-  ${allPosts ? raw(postAfterword(meta, allPosts)) : ''}
+  ${allPosts ? postAfterword(meta, allPosts) : ''}
 </article>`;
 }

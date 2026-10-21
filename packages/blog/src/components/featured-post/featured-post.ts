@@ -1,4 +1,4 @@
-import { staticHtml as html } from '@nisli/core/static';
+import { html } from '@nisli/core';
 
 export function FeaturedPost({ title, description, date, slug, promptCount }: {
   title: string;

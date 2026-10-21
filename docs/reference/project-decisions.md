@@ -7,8 +7,8 @@ Consult the relevant ADR before changing an established choice. Implementation f
 | Concern | Decision and reason | Reference |
 |---|---|---|
 | Framework | `@nisli/core` as a standalone dependency; readable HTML with interactive web components | [Architecture](../adr/0001-blog-architecture.md) |
-| Content | Markdown and YAML frontmatter for prose; TypeScript tagged templates for custom layouts | [Static templates](../adr/0002-nisli-static.md), [rich posts](../adr/0009-layout-system.md) |
-| Rendering | Build-time HTML, Markdown and citation representations; client code enhances complete content | [Generated representations](../adr/0006-ai-readable-blog.md) |
+| Content | Markdown and YAML frontmatter for prose; ordinary Nisli templates for custom layouts | [SSG adoption](../adr/0018-nisli-ssg-and-publication-navigation.md), [rich posts](../adr/0009-layout-system.md) |
+| Rendering | `@nisli/ssg` snapshots and output; blog-owned documents, Markdown and citation representations; client code enhances complete content | [SSG adoption](../adr/0018-nisli-ssg-and-publication-navigation.md), [generated representations](../adr/0006-ai-readable-blog.md) |
 | Hosting | Cloudflare Workers static assets and server APIs, with the shared `blog-analytics` D1 binding | [Worker configuration](../../wrangler.jsonc) |
 | Analytics | Edge observations with source-marked legacy continuity, pseudonymous daily clients, and request-based reader categories | [Observation semantics](../adr/0016-analytics-observation-semantics.md), [composition](../adr/0016.3-audience-composition-and-citable-articles.md) |
 | Analytics purpose | Inform a publication decision; add a metric only when it can change that decision | [Decision loop](../adr/0016.1-analytics-purpose-and-decision-loop.md) |

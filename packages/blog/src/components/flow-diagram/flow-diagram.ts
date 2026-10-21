@@ -1,12 +1,12 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
 export type FlowDiagramTone = 'neutral' | 'blue' | 'warm' | 'rust';
 
 export interface FlowDiagramStep {
   eyebrow?: string;
-  title: string | StaticResult;
-  detail?: StaticResult;
+  title: string | TemplateResult;
+  detail?: TemplateResult;
   connector?: string;
   tone?: FlowDiagramTone;
 }

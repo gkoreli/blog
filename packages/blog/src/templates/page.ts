@@ -1,4 +1,5 @@
-import { staticHtml as html, raw } from '@nisli/core/static';
+import { html, type TemplateResult } from '@nisli/core';
+import type { PageDocument } from '../lib/ssg.js';
 import type { Section } from '../lib/frontmatter.js';
 import { typedLinkElements } from '../lib/typed-links.js';
 import { DispatchSlip } from './artifacts.js';
@@ -20,13 +21,13 @@ function canonicalUrl(path: string): string {
 interface PageShellBaseProps {
   title: string;
   description: string;
-  content: string;
+  content: TemplateResult;
   canonicalPath: string;
   currentSlug?: string;
   currentSection?: Section;
   head?: string;
-  gutter?: string;
-  preamble?: string;
+  gutter?: TemplateResult;
+  preamble?: TemplateResult;
   layout?: string;
   scripts?: string[];
   ogType?: 'website' | 'article';
@@ -40,7 +41,7 @@ type PageShellProps = PageShellBaseProps & (
   | { ogImage?: undefined; ogImageAlt?: undefined }
 );
 
-export function pageShell({ title, description, content, canonicalPath, currentSlug, currentSection, ogImage, ogImageAlt, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false, seoTitle, postSlug }: PageShellProps) {
+export function pageShell({ title, description, content, canonicalPath, currentSlug, currentSection, ogImage, ogImageAlt, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false, seoTitle, postSlug }: PageShellProps): PageDocument {
   const TURNSTILE_SITE_KEY = turnstileSiteKey();
   const canonical = canonicalUrl(canonicalPath);
   const layoutClass = layout && layout !== 'default' ? ` layout-${layout}` : '';
@@ -52,32 +53,30 @@ export function pageShell({ title, description, content, canonicalPath, currentS
     ...(postSlug ? { markdownPath: `/${postSlug}.md`, postSlug } : {}),
   });
 
-  return html`<!DOCTYPE html>
-<html lang="en">
-<head>
+  const documentHead = `
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${pageTitle}</title>
-  <meta name="description" content="${description}">
-  ${noindex ? html`<meta name="robots" content="noindex">` : ''}
-  <link rel="canonical" href="${canonical}">
-  ${raw(typedLinks)}
-  <meta property="og:title" content="${title}">
-  <meta property="og:description" content="${description}">
+  <title>${escapeHtml(pageTitle)}</title>
+  <meta name="description" content="${escapeHtml(description)}">
+  ${noindex ? `<meta name="robots" content="noindex">` : ''}
+  <link rel="canonical" href="${escapeHtml(canonical)}">
+  ${typedLinks}
+  <meta property="og:title" content="${escapeHtml(title)}">
+  <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:site_name" content="gkoreli.com">
-  <meta property="og:type" content="${ogType}">
-  <meta property="og:url" content="${canonical}">
+  <meta property="og:type" content="${escapeHtml(ogType)}">
+  <meta property="og:url" content="${escapeHtml(canonical)}">
   <meta name="twitter:card" content="${ogImage ? 'summary_large_image' : 'summary'}">
   <meta name="twitter:creator" content="@GogaKoreli">
-  <meta name="twitter:title" content="${title}">
-  <meta name="twitter:description" content="${description}">
-  ${ogImage ? html`<meta property="og:image" content="https://gkoreli.com${ogImage}">
+  <meta name="twitter:title" content="${escapeHtml(title)}">
+  <meta name="twitter:description" content="${escapeHtml(description)}">
+  ${ogImage ? `<meta property="og:image" content="https://gkoreli.com${escapeHtml(ogImage)}">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="600">
-  <meta property="og:image:alt" content="${ogImageAlt}">
-  <meta name="twitter:image" content="https://gkoreli.com${ogImage}">
-  <meta name="twitter:image:alt" content="${ogImageAlt}">` : ''}
+  <meta property="og:image:alt" content="${escapeHtml(ogImageAlt)}">
+  <meta name="twitter:image" content="https://gkoreli.com${escapeHtml(ogImage)}">
+  <meta name="twitter:image:alt" content="${escapeHtml(ogImageAlt)}">` : ''}
   <meta name="author" content="Goga Koreli">
   <link rel="icon" href="/icons/logo.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="Goga Koreli" href="/feed.xml">
@@ -86,12 +85,13 @@ export function pageShell({ title, description, content, canonicalPath, currentS
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
   <link rel="stylesheet" href="/main.css">
   <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
-  ${TURNSTILE_SITE_KEY ? html`<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>` : ''}
-  ${head ? raw(head) : ''}
-</head>
-<body>
-  ${preamble ? raw(preamble) : ''}
-  <div class="layout${layoutClass}"${currentSection ? raw(` data-section="${currentSection}"`) : ''}>
+  ${TURNSTILE_SITE_KEY ? `<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>` : ''}
+  ${head ?? ''}
+`;
+
+  const body = html`
+  ${preamble ?? ''}
+  <div class="layout${layoutClass}" data-section=${currentSection}>
     <div class="sidebar-wrapper">
     <aside class="sidebar">
       <div class="sidebar-bar">
@@ -116,17 +116,6 @@ export function pageShell({ title, description, content, canonicalPath, currentS
           <a href="/stats" class="${currentSlug === 'stats' ? 'active' : ''}"><span class="sb-dot"></span>Stats</a>
         </nav>
 
-        <div class="sidebar-section-sep"></div>
-
-        <div class="sb-cat">Studio</div>
-        <div class="sb-proj">
-          <a href="https://github.com/gkoreli/ghx" class="sb-proj-link" target="_blank" rel="noopener">ghx<span class="sb-proj-arrow">↗</span></a>
-          <a href="https://github.com/gkoreli/backlog-mcp" class="sb-proj-link" target="_blank" rel="noopener">backlog-mcp<span class="sb-proj-arrow">↗</span></a>
-          <a href="https://www.npmjs.com/package/@nisli/core" class="sb-proj-link" target="_blank" rel="noopener">@nisli/core<span class="sb-proj-arrow">↗</span></a>
-          <a href="https://github.com/gkoreli/blog" class="sb-proj-link" target="_blank" rel="noopener">gkoreli.com<span class="sb-proj-arrow">↗</span></a>
-          <a href="/design-language" class="sb-proj-link ${currentSlug === 'design-language' ? 'active' : ''}">Design Language</a>
-          <a href="/animations-lab" class="sb-proj-link ${currentSlug === 'animations-lab' ? 'active' : ''}">Animations Lab</a>
-        </div>
       </div>
 
       <div class="sidebar-spacer"></div>
@@ -147,7 +136,7 @@ export function pageShell({ title, description, content, canonicalPath, currentS
     </div>
 
     <main class="content">
-      ${raw(content)}
+      ${content}
 
       ${subscribe}
 
@@ -155,11 +144,15 @@ export function pageShell({ title, description, content, canonicalPath, currentS
         <p>Built with <a href="https://www.npmjs.com/package/@nisli/core">@nisli/core</a> · <a href="/privacy">Privacy</a></p>
       </footer>
     </main>
-    <div class="gutter">${gutter ? raw(gutter) : ''}</div>
+    <div class="gutter">${gutter ?? ''}</div>
   </div>
 
   <script type="module" src="/main.js"></script>
   ${scripts?.map(s => html`<script type="module" src="${s}"></script>`) ?? ''}
-</body>
-</html>`;
+`;
+  return { head: documentHead, body };
+}
+
+function escapeHtml(value: string): string {
+  return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#39;");
 }

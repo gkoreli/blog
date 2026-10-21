@@ -55,6 +55,11 @@ const frontmatterSchema = z.object({
 
 export type PostMeta = z.infer<typeof frontmatterSchema> & { slug: string; date: string; promptCount?: number };
 
+export const postMetaSchema = frontmatterSchema.extend({
+  slug: z.string().min(1),
+  date: z.string(),
+});
+
 export interface Post {
   meta: PostMeta;
   content: string;

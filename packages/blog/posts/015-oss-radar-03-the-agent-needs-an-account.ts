@@ -1,4 +1,4 @@
-import { staticHtml as html } from '@nisli/core/static';
+import { html } from '@nisli/core';
 import type { PostMeta } from '../src/lib/frontmatter.js';
 import {
   OssRadarHero,

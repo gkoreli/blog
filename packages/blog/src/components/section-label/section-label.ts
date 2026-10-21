@@ -1,4 +1,4 @@
-import { staticHtml as html } from '@nisli/core/static';
+import { html } from '@nisli/core';
 import type { Section } from '../../lib/frontmatter.js';
 import { SECTION_LABELS } from '../../lib/frontmatter.js';
 

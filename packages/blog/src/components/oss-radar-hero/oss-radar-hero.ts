@@ -1,11 +1,11 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
 export function OssRadarHero({ issueNum, date, tags, title, subtitle, author, readTime, footprint, canvasMode = 'flow', canvasSeed }: {
   issueNum: string;
   date: string;
   tags: string;
-  title: StaticResult;
+  title: TemplateResult;
   subtitle: string;
   author: string;
   readTime: string;

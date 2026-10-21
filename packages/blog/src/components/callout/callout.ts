@@ -1,7 +1,7 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
-export function Callout({ label, body }: { label: string; body: StaticResult }) {
+export function Callout({ label, body }: { label: string; body: TemplateResult }) {
   return html`<nisli-callout>
     <span class="callout-label">${label}</span>
     ${body}

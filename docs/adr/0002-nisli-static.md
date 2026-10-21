@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted — 2026-03-05
+Superseded — 2026-10-20 by [ADR-0018: Nisli SSG and publication navigation](0018-nisli-ssg-and-publication-navigation.md). The original decision below is retained as history; current templates use `html` from `@nisli/core` and render through `@nisli/ssg`.
 
 ## Context
 

@@ -1,7 +1,7 @@
-import { staticHtml as html } from '@nisli/core/static';
-import type { StaticResult } from '@nisli/core/static';
+import { html } from '@nisli/core';
+import type { TemplateResult } from '@nisli/core';
 
-export function ProcrastinationHero({ kicker, title, subtitle, author, note }: { kicker: string; title: StaticResult; subtitle: StaticResult; author: string; note: string }) {
+export function ProcrastinationHero({ kicker, title, subtitle, author, note }: { kicker: string; title: TemplateResult; subtitle: TemplateResult; author: string; note: string }) {
   return html`<div class="topo-hero topo-hero--long-title">
     <nisli-neural-canvas mode="threshold"></nisli-neural-canvas>
     <div class="topo-hero-inner">
