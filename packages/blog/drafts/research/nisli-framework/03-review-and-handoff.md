@@ -178,3 +178,80 @@ Article publication is complete. No social distribution, OpenClaw adoption, or
 experimental core release is implied by this acceptance. The follow-up core
 request is being cross-validated in its own Nisli worktree; the historical
 optimization remains saved at local commit `f40a217`.
+
+## Core optimization preservation and integration
+
+Goga requested keeping the three optimizations in a local backlog, further
+cross-validation, and main integration only where correctness is established.
+The full current-main port is preserved at local Nisli commit `f671dcd`; the
+original hardened candidate remains at `f40a217`. The
+[Nisli worklist](https://github.com/gkoreli/nisli/blob/main/docs/worklists/core-rendering-performance/README.md)
+now owns the backlog, a complete runtime/test recovery patch, reproducible
+cross-check, and distinct full-candidate/queue-only results. The recovery patch
+was applied to its pinned baseline and reconstructed all four saved runtime/test
+files byte-for-byte. The obsolete 0.56.1 bump and conflicting historical ADR
+number were not integrated into current main.
+
+The full port passed local typecheck, 2,349 tests, build, and the three-engine move
+proof. A new production-mode differential fixture compared baseline and candidate
+in Chromium 149, Firefox 151, and WebKit 26.5: 100 deterministic seeds × 50 writes
+per engine, twelve repeated mounts × ten updates, conditional dependencies,
+cleanup, disposal, cascades, mixed attributes, events, and microtask ordering.
+Normal traces match. A deliberately throwing diagnostic transport reproduces
+the exceptional timing difference in all three engines: the full candidate
+reports after callbacks that run after the baseline error report. Passing the
+ordinary suite therefore does not establish full behavioral equivalence.
+
+Only the zero/one-effect queue fast path was isolated and integrated. An empty
+set has no effects; sorting one member cannot change its order; clearing it
+before runEffect preserves next-pass scheduling, and runEffect retains its
+disposed guard. Multi-effect sorting and queueMicrotask/error transport remain
+unchanged. The binding cache and Promise scheduler remain backlog candidates.
+
+After rebasing over concurrent Nisli main `5728ee4`, pinned Node 22.23.2, pnpm
+10.17.1, and Bun 1.4.0 pass the toolchain guard, frozen install, typecheck,
+all 2,342 workspace tests (469 core), build, the three-engine differential
+fixture including exceptional order, and the compound lifecycle proof. The
+queue-only source fingerprint matches the checked final code.
+
+Nisli implementation commit `b858949` and final evidence commit
+[`9e9d546`](https://github.com/gkoreli/nisli/commit/9e9d546) were fast-forwarded
+and pushed to main. The package version remains 0.57.0, and the changelog labels
+this subset Unreleased; no new npm package was published. No new speed or size
+result is attributed to this subset or pooled into the historical article data.
+
+That integration's [main CI](https://github.com/gkoreli/nisli/actions/runs/39560368884)
+was subsequently superseded by the runtime rollback below; it is not final
+acceptance for the current source.
+
+### Throughput result and correction
+
+The fresh [queue-only throughput check](integration/README.md) retains all 84
+measured samples across three browser engines and two queue sizes. Firefox's
+single-effect median increased from 86 to 108 ms, with non-overlapping sample
+ranges in this run. Other cases show no convincing overall win; Firefox's
+eight-effect samples are highly variable. The method, exact source, raw results,
+and limits are saved separately from the article's measurements.
+
+Integrating before this fresh performance check was premature. The runtime fast
+path and its Unreleased changelog entry were reverted before any npm release.
+The four scheduling regressions remain as tests. Main retains its original
+copy/sort/queueMicrotask implementation. Both the full candidate and queue-only
+source remain recoverable, with explicit backlog actions and counterevidence;
+behavioral equivalence alone did not establish an optimization.
+
+The correction is pushed as Nisli commit
+[`45e009e`](https://github.com/gkoreli/nisli/commit/45e009e). The article adds the
+negative result, the temporary integration and rollback, and a methods link,
+without altering or pooling its historical before/after table. Main-CI acceptance
+is recorded after verification.
+
+The follow-up article passes a fresh isolated production build (30 posts) and
+the representation/metadata/source/benchmark-link audit, including absent prompt
+output. One initial build command accidentally ran from the primary checkout
+and was interrupted after clearing output. The existing development server was
+kept running; touching the owned article source triggered its normal watcher,
+which restored the homepage, article, and their CSS/JS assets. Those routes and
+assets returned 200 afterward. The accepted production build ran from the
+isolated follow-up checkout. No live production change was caused by that local
+build error.

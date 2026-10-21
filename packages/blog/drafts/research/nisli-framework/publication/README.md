@@ -119,3 +119,8 @@ and current public acceptance separately. No prompt file or prompt route is
 included, following Goga's explicit direction.
 A short AI-assistance disclosure and inspectable methods remain in the article.
 No research-token footprint is published.
+
+The later queue-only main integration is recorded in the
+[core delivery receipt](../03-review-and-handoff.md#core-optimization-preservation-and-integration).
+It is Unreleased and is not part of the npm 0.57.0 artifact measured here.
+The binding-cache/Promise experiment remains separate.

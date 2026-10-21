@@ -1,0 +1,211 @@
+{
+  "baseline": "4fa636031a3dc0796fb2172e1bada15391299d1d",
+  "candidate": "9e9d5467dfdd8465a00e9f317bdf4ec06a9d0c11",
+  "candidateSignalSha256": "99d7380f6ba07103bf79b6b85ed159510631b8237f129958c896f824d1f54671",
+  "node": "v22.23.2",
+  "platform": "darwin",
+  "arch": "arm64",
+  "method": {
+    "writes": 10000,
+    "warmups": 3,
+    "rounds": 7,
+    "effectsPerWrite": [
+      1,
+      8
+    ],
+    "sharedMicrotaskTurns": 6,
+    "order": "alternating baseline/candidate by round",
+    "production": true,
+    "headed": false,
+    "measures": "DOM text writes and microtask throughput; no layout, paint, input or whole-application result"
+  },
+  "browsers": [
+    {
+      "engine": "chromium",
+      "version": "149.0.7827.55",
+      "cases": [
+        {
+          "effects": 1,
+          "samples": {
+            "baseline": [
+              7,
+              6.4000000059604645,
+              5.5999999940395355,
+              5.799999982118607,
+              6.300000011920929,
+              6.200000017881393,
+              6.0999999940395355
+            ],
+            "queueOnly": [
+              6.5,
+              6.300000011920929,
+              5.200000017881393,
+              6.0999999940395355,
+              6.299999982118607,
+              5.800000011920929,
+              6
+            ]
+          },
+          "medianBaselineMs": 6.200000017881393,
+          "medianQueueOnlyMs": 6.0999999940395355,
+          "visibility": [
+            "visible"
+          ]
+        },
+        {
+          "effects": 8,
+          "samples": {
+            "baseline": [
+              24.5,
+              22,
+              20.69999998807907,
+              21.69999998807907,
+              23.599999994039536,
+              21.30000001192093,
+              21.400000005960464
+            ],
+            "queueOnly": [
+              23.5,
+              23,
+              25.599999994039536,
+              22.299999982118607,
+              20.900000005960464,
+              26.19999998807907,
+              21.200000017881393
+            ]
+          },
+          "medianBaselineMs": 21.69999998807907,
+          "medianQueueOnlyMs": 23,
+          "visibility": [
+            "visible"
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "version": "151.0",
+      "cases": [
+        {
+          "effects": 1,
+          "samples": {
+            "baseline": [
+              72,
+              68,
+              96,
+              89,
+              75,
+              88,
+              86
+            ],
+            "queueOnly": [
+              111,
+              108,
+              130,
+              154,
+              107,
+              103,
+              107
+            ]
+          },
+          "medianBaselineMs": 86,
+          "medianQueueOnlyMs": 108,
+          "visibility": [
+            "visible"
+          ]
+        },
+        {
+          "effects": 8,
+          "samples": {
+            "baseline": [
+              454,
+              1235,
+              1311,
+              1339,
+              1471,
+              98,
+              101
+            ],
+            "queueOnly": [
+              613,
+              1250,
+              1343,
+              1370,
+              1508,
+              839,
+              100
+            ]
+          },
+          "medianBaselineMs": 1235,
+          "medianQueueOnlyMs": 1250,
+          "visibility": [
+            "visible"
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5",
+      "cases": [
+        {
+          "effects": 1,
+          "samples": {
+            "baseline": [
+              5,
+              5,
+              5,
+              5,
+              6,
+              5,
+              5
+            ],
+            "queueOnly": [
+              6,
+              5,
+              5,
+              5,
+              5,
+              5,
+              5
+            ]
+          },
+          "medianBaselineMs": 5,
+          "medianQueueOnlyMs": 5,
+          "visibility": [
+            "visible"
+          ]
+        },
+        {
+          "effects": 8,
+          "samples": {
+            "baseline": [
+              22,
+              23,
+              22,
+              22,
+              22,
+              23,
+              23
+            ],
+            "queueOnly": [
+              23,
+              24,
+              24,
+              23,
+              23,
+              23,
+              23
+            ]
+          },
+          "medianBaselineMs": 22,
+          "medianQueueOnlyMs": 23,
+          "visibility": [
+            "visible"
+          ]
+        }
+      ]
+    }
+  ],
+  "checkedAt": "2026-10-21T07:16:15.244Z"
+}
