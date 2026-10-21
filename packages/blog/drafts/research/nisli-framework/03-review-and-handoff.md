@@ -365,3 +365,20 @@ is stopped; its managed checkout can be archived after this receipt is saved.
 The practical rewrite and publication are complete. This receipt does not claim
 that the automatic deployment integration has recovered, that rc.16 was
 benchmarked, or that an OpenClaw surface was ported.
+
+### Glossary-link correction and delayed automatic activation
+
+Commit `4cdac53` restores the original Peter Steinberger X post to the glossary.
+Its isolated build and live check passed after direct activation of Worker
+`3a791b16-9d66-4fde-83da-8e78bc7c4d2b`. During the subsequent social launch,
+a delayed automatic deployment temporarily superseded that correction.
+The automatic build of `4cdac53` then succeeded: build
+`59e4b69d-a24b-4f03-8acf-5537a3f2f365`, Worker
+`b5b745ca-6c54-4e5b-8b2b-76c162239875`. Current HTTP acceptance at
+16:01:06 UTC October 21 confirms the glossary link is present again.
+This supersedes the earlier uncertainty about whether automatic builds would
+start: they did start late. No integration configuration was changed.
+
+The [social launch record](../../social/openclaw-chose-solid-why-id-choose-nisli/metrics.md)
+records the published X post and the manually completed HN login/form handoff.
+HN submission remains the user's final action under its no-automation guideline.
