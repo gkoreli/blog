@@ -129,7 +129,11 @@ It does not reopen the completed core optimization investigation.
   behavior in Chromium, Firefox, and WebKit against public core 0.57.0.
 - [x] Preserve measured losses, async tradeoffs, rejected optimizations, and the
   explicit no-prompts exception; reduce the article from 4,120 to about 2,380 words.
-- [ ] Finish isolated publication checks, commit/push, and verify activation.
+- [x] Finish isolated publication checks, commit/push, and verify activation.
 
-Next bounded action: isolated build and rendered-article review, then publish
-through the existing main-branch delivery path.
+The revision is published and live acceptance passed. Source commit `ebb2534`
+was pushed to main. The automatic build had not started at the delivery check,
+so the validated isolated build was deployed directly; the deployment receipt
+is in [the handoff](03-review-and-handoff.md#practical-rewrite-activation).
+No article work remains pending. The missing automatic trigger is an observed
+operational limit, not a diagnosed cause or an open core-optimization task.

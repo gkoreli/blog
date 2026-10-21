@@ -339,3 +339,29 @@ The restored managed preview checkout owns the build output. The primary dev
 server and dist were untouched. The temporary preview server was stopped before
 the final source sync/build. Commit, deployment activation, and current HTTP
 acceptance are recorded separately after delivery.
+
+### Practical rewrite activation
+
+Source commit [`ebb2534`](https://github.com/gkoreli/blog/commit/ebb2534) was
+pushed to main. GitHub's connector and CLI returned no check runs for that
+commit during delivery, and live HTTP initially still served the old article.
+Cloudflare deployment history also showed no new activation. The cause of the
+missing automatic trigger was not diagnosed; no integration settings changed.
+
+The validated isolated build was deployed directly through the repository's
+pinned Wrangler 4.71.0, with `--keep-vars`, using the unchanged Worker source
+and configuration from main. Its deployment message identifies `ebb2534`.
+Activated Worker version: `e5fde991-5a0e-4887-af57-ba913fb87911`.
+
+Live HTTP acceptance passed at 15:45:59 UTC October 21: revised article,
+Markdown, CSL, BibTeX, posts.json, RSS, sitemap, and llms.txt returned 200;
+the excluded prompts route returned 404. The article contained both examples,
+the actual-migration section, one H1 and three tables, with no prompt teaser,
+header link, or typed prompt link. Markdown/CSL/BibTeX bytes matched the accepted
+isolated build. Discovery outputs contained the article without a prompts entry.
+Private logs and screenshots remain outside Git. The temporary preview server
+is stopped; its managed checkout can be archived after this receipt is saved.
+
+The practical rewrite and publication are complete. This receipt does not claim
+that the automatic deployment integration has recovered, that rc.16 was
+benchmarked, or that an OpenClaw surface was ported.
