@@ -49,3 +49,21 @@ Raw records and exact conditions: [reproduction](repro/README.md). No OpenClaw s
 | Candidate is released and production-accepted | False at this review | Local 2,349-test/build/typecheck gates, 168-preview sweep and three-engine move proof are distinct from main CI, npm and deployment |
 
 Methods, exact limits, raw results, and next action: [pre-landing review](release/README.md).
+
+## Publication comparison on the released 0.57.0 artifact
+
+The [new record](publication/README.md) governs the main article tables; the
+older findings above remain dated observations. All 35 measured trials remain
+in the raw results. No old/new runs are pooled.
+
+| Finding | Evidence | Article treatment |
+|---|---|---|
+| Current npm core 0.57.0 is published | npm metadata, downloaded public tarball, GitHub release and pinned commit | Use published artifact for the main comparison; do not call the experimental branch released |
+| Current mount/update medians: broad Lit 3.8/355.6 ms; signals 4.8/29.3; narrow Lit 6.4/3.9; Solid 3.6/6.0; Nisli 8.6/6.2 | Seven samples each; original workload and adapters | Preserve Nisli's mount loss, narrow Lit's update win, and the small Nisli/Solid difference |
+| Current counter gzip bytes: Lit 5,939; signals 9,693; Solid 11,516; Nisli 6,295 | Independent builds; new Nisli button clicked; other three match previously clicked bytes exactly | Attribute Nisli's reduction to released production-artifact work, separate from old branch's +455 bytes |
+| Resource/lifetime/async-state findings still reproduce on 0.57.0 | Full behavior probes against the npm artifact | Preserve scoped ownership differences and Solid's settled-view behavior |
+| Promise transport gets a different queue or higher priority | Rejected by platform semantics | Both use browser microtasks; observed engine path is unprofiled; error adapter remains under review |
+| Cached locations are missing from the optimization branch | Rejected by source | Branch implements them already; complete binding-instruction caching remains a separate proposal |
+
+No prompt file, prompt route, or token-footprint claim is prepared, following
+the owner's explicit instruction. The AI-assistance disclosure remains.

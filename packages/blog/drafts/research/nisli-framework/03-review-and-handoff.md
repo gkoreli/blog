@@ -76,3 +76,60 @@ strict TypeScript checking and script syntax checks; local links, twelve full
 prompt messages, reported medians, source/harness fingerprints, exact patch
 reconstruction, and package metadata were checked. No production build was
 run into the blog's active output.
+
+## October 20 publication-preparation handoff
+
+Goga requested article iteration and publication preparation, explicitly omitting
+his prompts. The article now has publication metadata and a body H1 matching its
+title. The existing prompt capture is removed from the current tree; no prompt
+file, generated route, header link, teaser, or research-token footprint is
+prepared. Earlier committed prompt content remains in Git history; no rewrite
+was requested. A short AI-assistance disclosure remains. This scoped owner
+direction overrides the normal prompt-provenance workflow for this article.
+
+The main comparison now uses the actual published 0.57.0 npm artifact. Its
+35 measured trials, package hashes, exact adapter, byte counts, and method are
+recorded in [publication/](publication/README.md). The original 0.56.0 results
+and unmerged optimization experiment stay separate. The article explains that
+parsing was already cached, target locations are implemented in the branch,
+and complete binding instructions are only a further proposal. Both scheduling
+transports use browser microtasks; the error adapter remains under review.
+No experimental core change was merged or released by this preparation pass.
+
+Editorial pass: retain the OpenClaw opening and Goga's broader framework origin;
+preserve narrow Lit's win, Nisli's slower mounts, Solid's coordinated async
+advantage, callback-ordering concerns, added bytes, and unprofiled heap. Tighten
+the separation between stale-result suppression and retained old data. Put
+package-release checks in the research record. Keep the title as an attributed
+architectural preference rather than a whole-OpenClaw speed claim.
+
+Acceptance: the final site build passes against blog main `29ad92f`, which
+includes the separate 0.57.0 integration. The isolated build contains 30 posts;
+all 19 Markdown posts validate and both existing table tests pass. The actual
+HTML has one H1, five tables, three highlighted code blocks, matching SEO/OG
+metadata, canonical URL, JSON-LD, publication date, RSS/sitemap/index entry, and
+Markdown/CSL/BibTeX representations. Automated checks confirm no prompt output,
+exact source/preview agreement, local evidence links, pinned source files/line
+bounds, and all reported medians. The new fixture passes strict TypeScript
+against the published declarations and its three scripts pass syntax checking.
+
+Visual review checked the opening at desktop width, the comparison table at
+571px (page width equals viewport), and a real 390px iframe viewport containing
+the opening, code block, and table. The generated social card is legible without
+clipping. The temporary iframe wrapper is local-only. A stale claim in the two
+writing references said the shell supplied H1; the failed HTML check and actual
+renderer established that the Markdown body must supply it. Both references
+and their examples were corrected, preserving the other instructions.
+
+The canonical draft is [article.md](article.md). The preview copy is
+`029-openclaw-chose-solid-why-id-choose-nisli.md` in the managed
+`nisli-article-preview` worktree, served locally on port 48178. Primary `posts/`
+remains unchanged, so this is not production activation. The expected public
+article URL is absent until promotion. Source links to new evidence become
+available with the scoped repository push.
+
+Next bounded action: Goga reviews and edits the rendered candidate. On an actual
+publication request, use the truthful client-local publication date, promote the
+canonical file into primary `posts/`, build/check the resulting representations,
+then distinguish Git delivery, deployment activation, and measured acceptance.
+No social distribution or messaging has been requested.

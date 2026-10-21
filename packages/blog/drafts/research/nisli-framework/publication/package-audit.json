@@ -1,0 +1,8 @@
+{
+  "version": "0.57.0",
+  "sourceCommit": "1d055cabdffbea8ff8d82cbfd88a6081882ca8b2",
+  "releaseUrl": "https://github.com/gkoreli/nisli/releases/tag/core-v0.57.0",
+  "tarballSha256": "653a63e199c454bb026e4be2436e8d558df97843deb399ffee34801c199bc78d",
+  "artifactEntry": "dist/bundler/index.js",
+  "method": "Downloaded the public npm tarball; safely extracted it; all current comparison and size builds alias @nisli/core to the published bundler entry. npm metadata identified 0.57.0 as latest at preparation time."
+}

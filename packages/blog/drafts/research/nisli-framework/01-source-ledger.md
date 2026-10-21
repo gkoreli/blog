@@ -52,3 +52,26 @@ Goga explicitly supplied the framework’s origin in this conversation: long exp
   records those repairs, final workspace gates, browser checks, package audit,
   fresh paired measurements, and size artifact. Historical prototype evidence
   remains separate; no published release or deployed behavior is inferred.
+
+## Publication preparation: current-release recheck
+
+- The X post and public OpenClaw timeline were reread in the actual browser
+  after the text fetcher could not access them. The post supports the roughly
+  six-day/week/600-PR account and the reported asset/responsiveness result. The
+  live timeline still reports 666 → zero requestUpdate references in its stated
+  source scope. Tool result text and reasoning remain omitted; the article
+  keeps the reconstruction and its counts attributed. No engagement metrics,
+  signed-in state, raw browser capture, or private material is committed.
+- GitHub's connected API rechecked issue #168114 and merged PRs #174213 and
+  #173590. The quote, historical 833/47 counts, direct-dependency boundary,
+  Canvas exception, and paired Web Awesome CSS/JS figures match their sources.
+- npm and the GitHub release identify core 0.57.0, commit
+  `1d055cabdffbea8ff8d82cbfd88a6081882ca8b2`. The article's runtime links now
+  pin that public commit. Its production-diagnostic/artifact changes are
+  separate from the still-unmerged rendering branch. New public-package
+  measurements and package hashes live in [publication/](publication/README.md).
+- Lit Task/signals and Solid fine-grained documentation were reopened. Solid
+  2's async URL did not respond to the text fetcher, then loaded successfully
+  in the actual browser. Its settled-view, shared-input hold, isPending/latest,
+  and Loading behavior support the explanation, alongside the freshly rerun
+  pinned rc.14 fixture. The article names the tested RC.

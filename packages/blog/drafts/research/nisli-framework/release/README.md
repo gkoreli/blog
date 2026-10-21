@@ -1,5 +1,18 @@
 # Core 0.56.1 — pre-landing review
 
+**Historical snapshot, superseded for release planning.** Core 0.57.0 has since
+been published with separate production-diagnostic/artifact changes. The branch
+below remains unmerged on its 0.56.0 base; 0.56.1 is its old preparation label,
+not the next release proposal. The owner is still reviewing the Promise error
+adapter and possible better designs. Local gates do not settle that decision.
+Any future integration needs a current base, a fresh version decision, and new
+measurements. The [publication comparison](../publication/README.md) measures
+the actual 0.57.0 package without these experimental changes. Further design
+review also noted that the template patch changes traversal and caching
+together: a TreeWalker-only ablation has not run, so the separate contribution
+of cached metadata is not quantified. That is a proposed experiment, not
+accepted runtime work.
+
 October 20, 2026 Pacific; captures continue October 21 UTC. **Prepared candidate;
 not merged or published.** Goga asked to understand the changes and implications
 before landing. This record supports that review; it does not claim a release,

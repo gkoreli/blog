@@ -1,0 +1,37 @@
+{
+  "capturedAt": "2026-10-21T06:40:00.478Z",
+  "artifact": {
+    "version": "0.57.0",
+    "sourceCommit": "1d055cabdffbea8ff8d82cbfd88a6081882ca8b2",
+    "artifact": "Published npm tarball; dist/bundler/index.js; standard production define",
+    "bundledEntrySha256": "91c7db592650db12d9689222c8b104e5e58bccdc886d7ab091028c65081101e1",
+    "originalHarnessSha256": "67d3d2d8b71be920496032203d793f68deb5d671a283fe58a4e9013e67639d98"
+  },
+  "method": "Independent production counter builds; sum emitted JS and gzip each file with Node defaults. Same fixture and dependency lock as the original comparison. Excludes HTML, source maps, tooling, and transfer headers.",
+  "results": [
+    {
+      "variant": "lit",
+      "bytes": 15505,
+      "gzipBytes": 5939,
+      "javascriptFiles": 1
+    },
+    {
+      "variant": "lit-signals",
+      "bytes": 27899,
+      "gzipBytes": 9693,
+      "javascriptFiles": 1
+    },
+    {
+      "variant": "solid",
+      "bytes": 29248,
+      "gzipBytes": 11516,
+      "javascriptFiles": 1
+    },
+    {
+      "variant": "nisli",
+      "bytes": 18890,
+      "gzipBytes": 6295,
+      "javascriptFiles": 1
+    }
+  ]
+}

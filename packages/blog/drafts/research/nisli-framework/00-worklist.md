@@ -53,3 +53,31 @@ samples per timing case, package compatibility, and local gates. The article now
 includes that optimization story and before/after table. No main merge or npm
 release has occurred. Next bounded action: Goga reviews the concrete candidate
 and its tradeoffs; then complete the authorized delivery and verify main CI/npm.
+
+## October 20 publication-preparation pass
+
+Goga returned to article iteration and asked to prepare it for publication. His
+explicit instruction for this article is to omit human prompts. The existing
+research prompt capture is removed from the current tree; no matching file in
+`packages/blog/prompts/` or generated prompt page is prepared. This is a scoped
+owner exception to normal collaborative-post provenance. A brief AI-assistance
+disclosure and public methods remain; no research-token footprint is published.
+Earlier committed prompt content remains in Git history; no history rewrite was
+requested or performed.
+
+Current draft: [article.md](article.md), now with publication metadata. Proposed
+publication filename: `029-openclaw-chose-solid-why-id-choose-nisli.md`; slug
+`openclaw-chose-solid-why-id-choose-nisli`. It remains outside primary `posts/`
+discovery. A full site build in a separate managed worktree provides the review
+preview without touching the active development output.
+
+Fact-checking found the newly published core 0.57.0. The main table and bundle
+comparison were refreshed against the actual npm artifact using the unchanged
+workload: [publication evidence](publication/README.md). The old 0.56.0 source
+comparison and its unmerged optimization branch remain historical and separate.
+The Promise error adapter is still under review; this article request does not
+land that branch or authorize another core release.
+
+Next bounded action: inspect the rendered publication candidate and iterate on
+Goga's editorial feedback. Publishing the site and distributing the article are
+separate from this preparation pass.
