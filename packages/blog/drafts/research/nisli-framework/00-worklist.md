@@ -1,6 +1,7 @@
 # Nisli framework article — worklist
 
-Started October 20, 2026 (America/Los_Angeles). Working draft; not a publication request.
+Started October 20, 2026 (America/Los_Angeles). Publication authorized October 21;
+latest release status is recorded below. Earlier scope statements are historical.
 
 ## Intended article
 
@@ -81,3 +82,17 @@ land that branch or authorize another core release.
 Next bounded action: inspect the rendered publication candidate and iterate on
 Goga's editorial feedback. Publishing the site and distributing the article are
 separate from this preparation pass.
+
+## October 21 authorized publication
+
+Goga requested release and committing all active changes. The authoritative
+article now lives in [posts/](../../../posts/029-openclaw-chose-solid-why-id-choose-nisli.md);
+[article.md](article.md) is a supersession pointer, avoiding two editable copies.
+The publication date is October 21 in the updated client’s Pacific timezone. No human
+prompts or prompt page are included. The held core optimization branch remains
+a separate experiment; this release publishes the article and its evidence.
+
+Next bounded action: validate the promoted article in the isolated site build,
+commit and push the active blog changes to main, then verify deployment and
+current public content. The [handoff](03-review-and-handoff.md) records the
+actual delivery and acceptance separately. No social post is requested.

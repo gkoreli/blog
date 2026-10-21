@@ -133,3 +133,26 @@ publication request, use the truthful client-local publication date, promote the
 canonical file into primary `posts/`, build/check the resulting representations,
 then distinguish Git delivery, deployment activation, and measured acceptance.
 No social distribution or messaging has been requested.
+
+## October 21 authorized publication
+
+Goga requested release and committing all active changes. The primary checkout
+was clean at `25b3832` before promotion. The article is promoted to
+[its authoritative post source](../../../posts/029-openclaw-chose-solid-why-id-choose-nisli.md),
+with an October 21 client-local date after the client date rolled over. The former draft is a short supersession
+pointer; the original drafts and observations remain in Git history. No prompt
+file or prompt route is included. No core optimization is landed by this release.
+
+Local release acceptance passed with Node 24.14.1 and pnpm 9.15.4: the isolated
+production build contains 30 posts, all 19 Markdown posts validate, and both
+Markdown table tests pass. The promoted source exactly matches the checked
+preview source. Audits verify one H1, five tables, three code blocks, October 21
+metadata, canonical/JSON-LD, feed/sitemap/index discovery, Markdown/CSL/BibTeX,
+local evidence links, pinned source lines, all 35 timing trials, and no prompt
+output. Git whitespace checks pass. The first local build attempt hit the
+sandbox’s tsx IPC restriction; the approved isolated build passed. The table
+test command was corrected to run from its owning package so tsx resolves.
+
+Git delivery, deployment activation, and current public acceptance remain to be
+recorded below. Goga subsequently requested preserving and further validating
+the core optimization; that work is separate from this article release.

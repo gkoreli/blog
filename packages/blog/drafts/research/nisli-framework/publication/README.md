@@ -112,8 +112,10 @@ to the 0.57.0 result as a prediction for a combined build.
 
 ## Publication status
 
-The article is prepared for review in an isolated site build. It remains outside
-the primary checkout's `posts/` discovery until publication is requested.
-No prompt file or prompt route is prepared, following Goga's explicit direction.
+Publication was authorized October 21, 2026. The authoritative article is now
+[in posts/](../../../../posts/029-openclaw-chose-solid-why-id-choose-nisli.md).
+The [release handoff](../03-review-and-handoff.md) records Git delivery, deployment,
+and current public acceptance separately. No prompt file or prompt route is
+included, following Goga's explicit direction.
 A short AI-assistance disclosure and inspectable methods remain in the article.
 No research-token footprint is published.
