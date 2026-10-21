@@ -18,6 +18,8 @@ section: engineering
 tags: [nisli, web-components, framework]
 ---
 
+# Why I built @nisli/core
+
 Regular markdown prose, code blocks, images, links...
 
 And when you need interactivity, drop in a web component:
@@ -25,7 +27,7 @@ And when you need interactivity, drop in a web component:
 <nisli-counter initial="0"></nisli-counter>
 ```
 
-The page shell renders the H1 from `title`; do not repeat it in the Markdown body. `section` is required and must be `essays`, `engineering`, or `oss-radar`. The counter tag illustrates the syntax; an interactive custom element also needs an implementation registered in the loaded client bundle.
+The current Markdown post renderer expects one H1 in the body, matching `title`; the page shell does not add it. The built-HTML validator requires exactly one H1. `section` is required and must be `essays`, `engineering`, or `oss-radar`. The counter tag illustrates the syntax; an interactive custom element also needs an implementation registered in the loaded client bundle.
 
 ### Content and interactivity
 

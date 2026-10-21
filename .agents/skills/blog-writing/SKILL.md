@@ -63,10 +63,12 @@ section: engineering
 tags: [nisli, web-components]
 ---
 
+# Exact title naming the subject
+
 Start with the article's opening paragraph.
 ```
 
-`section` must be `essays`, `engineering`, or `oss-radar`. Use a truthful publication date and lowercase, kebab-case tags; two to five relevant tags are usually enough. The shell renders the H1 from `title`; do not repeat it in the body. Apply the metadata contract for optional fields and modification dates.
+`section` must be `essays`, `engineering`, or `oss-radar`. Use a truthful publication date and lowercase, kebab-case tags; two to five relevant tags are usually enough. The current Markdown post renderer expects one H1 in the body, matching `title`; it renders metadata above the body without adding a heading. The built-HTML validator requires exactly one H1. Apply the metadata contract for optional fields and modification dates.
 
 ## Prompt provenance
 
