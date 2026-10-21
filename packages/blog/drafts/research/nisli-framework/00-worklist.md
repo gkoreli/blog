@@ -102,3 +102,11 @@ succeeded and current public acceptance passed. See the
 [delivery receipt](03-review-and-handoff.md#article-delivery-and-public-acceptance).
 The separate core preservation/cross-validation request does not reopen article
 publication or authorize social distribution.
+
+The preservation/cross-validation follow-up is recorded in the
+[Nisli backlog](https://github.com/gkoreli/nisli/blob/main/docs/worklists/core-rendering-performance/README.md)
+and [negative throughput result](integration/README.md). The queue-only runtime
+change was briefly integrated, then reverted after the fresh Firefox result;
+no npm release shipped it. Complete source recovery, new regression tests, and
+all benchmark samples are retained. The article follow-up is deployed and
+publicly verified; the final remote core-CI receipt is in the handoff.

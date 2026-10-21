@@ -255,3 +255,27 @@ which restored the homepage, article, and their CSS/JS assets. Those routes and
 assets returned 200 afterward. The accepted production build ran from the
 isolated follow-up checkout. No live production change was caused by that local
 build error.
+
+### Follow-up article activation
+
+Blog commit [`367e330`](https://github.com/gkoreli/blog/commit/367e330) publishes
+the negative-result paragraph and complete follow-up evidence. Cloudflare build
+`0f31b93a-6d23-4ded-a3ee-933e744e7e0d` succeeded at 07:21:36 UTC October 21,
+activating Worker version `4b8bea5f-8487-4e64-abf5-3f0efe2bfd4a`.
+
+Current HTTP acceptance at 07:22:19 UTC passed for eleven endpoints: article,
+Markdown, CSL, BibTeX, social card, homepage, posts index, RSS, sitemap, llms.txt,
+and the deliberately absent prompts route (404). The article contains the
+follow-up and expected metadata/structure. Markdown, CSL, BibTeX, and social-card
+bytes match the isolated build. No prompts link or discovery entry exists.
+Raw HTTP captures and operational logs remain outside Git.
+
+The corrected [Nisli main CI](https://github.com/gkoreli/nisli/actions/runs/39560950654)
+is still in progress at this checkpoint. Build, typecheck, packed-core contract,
+three-browser compound lifecycle, and the published UI consumer job have passed;
+the full UI preview sweep and remaining workspace checks are pending. Its final
+outcome will supersede this checkpoint below. The rejected queue-only branch is
+retained locally as `codex/core-rendering-queue-only-rejected` at `9e9d546`;
+the full current-main candidate remains at `f671dcd`. The temporary article build
+checkout was removed after its source matched the committed article and live
+acceptance passed. The original managed preview is archived and recoverable.

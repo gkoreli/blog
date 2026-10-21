@@ -122,5 +122,6 @@ No research-token footprint is published.
 
 The later queue-only main integration is recorded in the
 [core delivery receipt](../03-review-and-handoff.md#core-optimization-preservation-and-integration).
-It is Unreleased and is not part of the npm 0.57.0 artifact measured here.
+It was reverted before any npm release and is not part of the npm 0.57.0
+artifact measured here.
 The binding-cache/Promise experiment remains separate.
