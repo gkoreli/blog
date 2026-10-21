@@ -44,3 +44,11 @@ The browser-bundle increase came from core's component, template, signal, and au
 Checks passed: all workspace typechecks; 104 blog tests; 53 analytics tests, including test-code emission by the native compiler; 18 Markdown posts validated; 29 posts built in the isolated production build. Analytics initially failed a September fixture tested against today's rolling window. The same assertion failed under 5.9.3; its filter-only API call now explicitly selects all time. Production analytics behavior was not changed.
 
 Remaining: production activation and live acceptance are unverified. The next design action remains the homepage review above; further reduction of Nisli's common runtime and statically removable diagnostics is separate work.
+
+## October 20 follow-up: upstream production-diagnostics reproduction
+
+The owner requested a clean upstream issue with evidence. The [standalone reproduction](nisli-production-diagnostics-repro/README.md) uses pinned published packages, contains no blog or SSG imports, and preserves executable checks and derived results. All five cases passed diagnostic and counter-interaction assertions in browser-like VM contexts with esbuild 0.27.3 and current 0.28.2. Both bundlers emitted byte-identical corresponding bundles. A real browser independently confirmed all five cases with 0.27.3 and no process global.
+
+Confirmed a production-detection compatibility defect: Nisli reads `globalThis.process?.env?.NODE_ENV`, which esbuild's ordinary `process.env.NODE_ENV` replacement does not match. Minified browser builds emit development-only N102 even with the ordinary production definition. Providing the `import.meta.env` object or calling `setDevMode(false)` silences the audit, but retains approximately 2.8 KB of minified, uncompressed template-audit code. The latter is a related removal/design gap; the published README promises silence, and the zero-production-weight ADRs are marked Proposed. The evidence does not classify all runtime growth as a defect or claim recoverable gzip savings.
+
+No upstream fix or deployment acceptance is claimed. The fixture does not touch the main development server's output.
