@@ -49,11 +49,11 @@ importers:
         specifier: workspace:*
         version: link:../newsletter
       '@nisli/core':
-        specifier: ^0.56.0
-        version: 0.56.0
+        specifier: ^0.57.0
+        version: 0.57.0
       '@nisli/ssg':
         specifier: ^0.4.0
-        version: 0.4.0(@nisli/core@0.56.0)
+        version: 0.4.0(@nisli/core@0.57.0)
       esbuild:
         specifier: ^0.27.3
         version: 0.27.3
@@ -488,8 +488,8 @@ packages:
   '@mixmark-io/domino@2.2.0':
     resolution: {integrity: sha512-Y28PR25bHXUg88kCV7nivXrP2Nj2RueZ3/l/jdx6J9f8J4nsEGcgX0Qe6lt7Pa+J79+kPiJU3LguR6O/6zrLOw==}
 
-  '@nisli/core@0.56.0':
-    resolution: {integrity: sha512-0F55rA9lABTKj1Y053coM1QvYwHrQF8716LIf1GGGUipRpkK8D7ZGuanC20wWpPj44IdzTSPrEas45B7smor8Q==}
+  '@nisli/core@0.57.0':
+    resolution: {integrity: sha512-mXZuVkg4xt51Hoywf5eIvmQqF5FeY18k5SfyM92hjSs5Svn8GYdEB11MRwq/1HuNC/OqMkF9Apdw43F8EyguGA==}
 
   '@nisli/ssg@0.4.0':
     resolution: {integrity: sha512-uLemCSEQuXlewY8sS2OWMFPw0A4mqHEVdgV7YyHK5x2N4kNCIN1hhD5cCcFDgYTQp6v1nMAKZ5Fd8Qc75pqxBA==}
@@ -1916,11 +1916,11 @@ snapshots:
 
   '@mixmark-io/domino@2.2.0': {}
 
-  '@nisli/core@0.56.0': {}
+  '@nisli/core@0.57.0': {}
 
-  '@nisli/ssg@0.4.0(@nisli/core@0.56.0)':
+  '@nisli/ssg@0.4.0(@nisli/core@0.57.0)':
     dependencies:
-      '@nisli/core': 0.56.0
+      '@nisli/core': 0.57.0
       happy-dom: 20.14.6
     transitivePeerDependencies:
       - bufferutil

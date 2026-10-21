@@ -19,7 +19,7 @@
     "@gkoreli/client-observability": "workspace:*",
     "@gkoreli/design": "workspace:*",
     "@gkoreli/newsletter": "workspace:*",
-    "@nisli/core": "^0.56.0",
+    "@nisli/core": "^0.57.0",
     "@nisli/ssg": "^0.4.0",
     "esbuild": "^0.27.3",
     "gray-matter": "^4.0.3",

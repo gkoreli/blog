@@ -1,6 +1,6 @@
-/** Nisli probes the import.meta.env object before its buildless dev fallback. */
+/** Standard NODE_ENV guards retain dev diagnostics and remove them in production. */
 export function clientDefines(production: boolean): Record<string, string> {
   return {
-    'import.meta.env': JSON.stringify({ DEV: !production, PROD: production }),
+    'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'development'),
   };
 }

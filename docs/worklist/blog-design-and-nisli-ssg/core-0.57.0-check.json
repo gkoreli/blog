@@ -1,0 +1,478 @@
+{
+  "localDate": "2026-10-20",
+  "sourceBase": "bb8424d",
+  "coreBefore": "0.56.0",
+  "coreAfter": "0.57.0",
+  "releaseCommit": "1d055cabdffbea8ff8d82cbfd88a6081882ca8b2",
+  "conditions": "Node 24.14.1, pnpm 9.15.4, esbuild 0.27.3, macOS arm64. Two isolated production builds from the same blog source snapshot; after changes only core dependency/lockfile and standard NODE_ENV build definition. Gzip comparison uses Python gzip level 9, mtime 0.",
+  "comparisonZlib": "1.2.12",
+  "blog": {
+    "bundles": [
+      {
+        "file": "main.js",
+        "before": {
+          "bytes": 31961,
+          "gzipLevel9Bytes": 11261,
+          "sha256": "f827aecbcd694b0c2e9b985825a9d1ff4ffbeda3a78ec90c21656902e3807e2e",
+          "containsN102": true
+        },
+        "after": {
+          "bytes": 26779,
+          "gzipLevel9Bytes": 9236,
+          "sha256": "0ac021050d36a971505ebcbc0a90c3bc47c489b14cf4b45a02e75bc88a4d94d1",
+          "containsN102": false
+        },
+        "gzipReductionPercent": 17.98
+      },
+      {
+        "file": "immersive.js",
+        "before": {
+          "bytes": 47142,
+          "gzipLevel9Bytes": 17109,
+          "sha256": "3082c07727989ce476eea70bd4a427d59f655e8944e94d314cf5dce31b3a0cdd",
+          "containsN102": true
+        },
+        "after": {
+          "bytes": 41948,
+          "gzipLevel9Bytes": 15038,
+          "sha256": "12ce39f9f3ac4340d907af2174105eff50f67509e2c1ae2e1d8317b1525f9b3b",
+          "containsN102": false
+        },
+        "gzipReductionPercent": 12.1
+      },
+      {
+        "file": "stats.js",
+        "before": {
+          "bytes": 70651,
+          "gzipLevel9Bytes": 29231,
+          "sha256": "53c11e676aa9f9464b2608452661ed15214c793da842510c6e12ee1cd11535d3",
+          "containsN102": false
+        },
+        "after": {
+          "bytes": 70651,
+          "gzipLevel9Bytes": 29230,
+          "sha256": "a8ca743efa9d37569d7b92d872b43e494288f24881eddb967098735f5ee10544",
+          "containsN102": false
+        },
+        "gzipReductionPercent": 0.0
+      },
+      {
+        "file": "animations-lab.js",
+        "before": {
+          "bytes": 583716,
+          "gzipLevel9Bytes": 169897,
+          "sha256": "64c4e7e7502dcd17d64f52a571b0233b45e8bb775334aed71d38a41297e3f042",
+          "containsN102": false
+        },
+        "after": {
+          "bytes": 581862,
+          "gzipLevel9Bytes": 169714,
+          "sha256": "f0a706de36468b9648fda94cb3283da8ab13d2c9fbc71dad6f01261026dbb8fb",
+          "containsN102": false
+        },
+        "gzipReductionPercent": 0.11
+      },
+      {
+        "file": "canvas.js",
+        "before": {
+          "bytes": 41938,
+          "gzipLevel9Bytes": 15499,
+          "sha256": "0d0fba9ce26100baaceccee45a566b5452fc615f718337d646f63a02fabbd520",
+          "containsN102": true
+        },
+        "after": {
+          "bytes": 36746,
+          "gzipLevel9Bytes": 13424,
+          "sha256": "0e54353d11f9c64002a1df1dac8ea95cf69acc2352f6cdcc664250961695a78c",
+          "containsN102": false
+        },
+        "gzipReductionPercent": 13.39
+      }
+    ],
+    "changed": [
+      "main.js",
+      "animations-lab.js",
+      "canvas.js",
+      "immersive.js",
+      "stats.js"
+    ],
+    "added": [],
+    "removed": [],
+    "htmlCount": 57,
+    "comparedFiles": 209
+  },
+  "standalonePrimary": {
+    "node": "v24.14.1",
+    "zlib": "1.3.1-e00f703",
+    "platform": "darwin",
+    "arch": "arm64",
+    "results": [
+      {
+        "name": "explicit-development",
+        "core": "0.57.0",
+        "esbuild": "0.27.3",
+        "expectedN102": true,
+        "bytes": 23322,
+        "gzipLevel9Bytes": 8242,
+        "templateAuditMinifiedBytes": null,
+        "containsN102": true,
+        "sha256": "9152f04a742589d32aa57cbf709a65de19106c6cf35f814fce22497df48c6622",
+        "warnings": [],
+        "observedCodes": [
+          "N102"
+        ],
+        "counterAfterClick": "Count: 1",
+        "passed": true
+      },
+      {
+        "name": "legacy-env-development",
+        "core": "0.57.0",
+        "esbuild": "0.27.3",
+        "expectedN102": false,
+        "bytes": 18490,
+        "gzipLevel9Bytes": 6298,
+        "templateAuditMinifiedBytes": null,
+        "containsN102": false,
+        "sha256": "56526a73e4af0957c9f557ae9142b4ddd66d2d343e6ca2ff7fed20246cb5150a",
+        "warnings": [],
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "passed": true
+      },
+      {
+        "name": "default-minify",
+        "core": "0.57.0",
+        "esbuild": "0.27.3",
+        "expectedN102": false,
+        "bytes": 18488,
+        "gzipLevel9Bytes": 6297,
+        "templateAuditMinifiedBytes": null,
+        "containsN102": false,
+        "sha256": "4612b2e05ad4f561a8c9a07829c88cfbad05296a898bba99dcb261e6d13bfce6",
+        "warnings": [],
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "passed": true
+      },
+      {
+        "name": "node-env-production",
+        "core": "0.57.0",
+        "esbuild": "0.27.3",
+        "expectedN102": false,
+        "bytes": 18488,
+        "gzipLevel9Bytes": 6297,
+        "templateAuditMinifiedBytes": null,
+        "containsN102": false,
+        "sha256": "4612b2e05ad4f561a8c9a07829c88cfbad05296a898bba99dcb261e6d13bfce6",
+        "warnings": [],
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "passed": true
+      },
+      {
+        "name": "import-meta-production",
+        "core": "0.57.0",
+        "esbuild": "0.27.3",
+        "expectedN102": false,
+        "bytes": 18490,
+        "gzipLevel9Bytes": 6298,
+        "templateAuditMinifiedBytes": null,
+        "containsN102": false,
+        "sha256": "56526a73e4af0957c9f557ae9142b4ddd66d2d343e6ca2ff7fed20246cb5150a",
+        "warnings": [],
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "passed": true
+      },
+      {
+        "name": "runtime-off",
+        "core": "0.57.0",
+        "esbuild": "0.27.3",
+        "expectedN102": false,
+        "bytes": 18488,
+        "gzipLevel9Bytes": 6297,
+        "templateAuditMinifiedBytes": null,
+        "containsN102": false,
+        "sha256": "4612b2e05ad4f561a8c9a07829c88cfbad05296a898bba99dcb261e6d13bfce6",
+        "warnings": [],
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "passed": true
+      }
+    ]
+  },
+  "standaloneLatestEsbuild": {
+    "node": "v24.14.1",
+    "zlib": "1.3.1-e00f703",
+    "platform": "darwin",
+    "arch": "arm64",
+    "results": [
+      {
+        "name": "explicit-development",
+        "core": "0.57.0",
+        "esbuild": "0.28.2",
+        "expectedN102": true,
+        "bytes": 23322,
+        "gzipLevel9Bytes": 8242,
+        "templateAuditMinifiedBytes": null,
+        "containsN102": true,
+        "sha256": "9152f04a742589d32aa57cbf709a65de19106c6cf35f814fce22497df48c6622",
+        "warnings": [],
+        "observedCodes": [
+          "N102"
+        ],
+        "counterAfterClick": "Count: 1",
+        "passed": true
+      },
+      {
+        "name": "legacy-env-development",
+        "core": "0.57.0",
+        "esbuild": "0.28.2",
+        "expectedN102": false,
+        "bytes": 18490,
+        "gzipLevel9Bytes": 6298,
+        "templateAuditMinifiedBytes": null,
+        "containsN102": false,
+        "sha256": "56526a73e4af0957c9f557ae9142b4ddd66d2d343e6ca2ff7fed20246cb5150a",
+        "warnings": [],
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "passed": true
+      },
+      {
+        "name": "default-minify",
+        "core": "0.57.0",
+        "esbuild": "0.28.2",
+        "expectedN102": false,
+        "bytes": 18488,
+        "gzipLevel9Bytes": 6297,
+        "templateAuditMinifiedBytes": null,
+        "containsN102": false,
+        "sha256": "4612b2e05ad4f561a8c9a07829c88cfbad05296a898bba99dcb261e6d13bfce6",
+        "warnings": [],
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "passed": true
+      },
+      {
+        "name": "node-env-production",
+        "core": "0.57.0",
+        "esbuild": "0.28.2",
+        "expectedN102": false,
+        "bytes": 18488,
+        "gzipLevel9Bytes": 6297,
+        "templateAuditMinifiedBytes": null,
+        "containsN102": false,
+        "sha256": "4612b2e05ad4f561a8c9a07829c88cfbad05296a898bba99dcb261e6d13bfce6",
+        "warnings": [],
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "passed": true
+      },
+      {
+        "name": "import-meta-production",
+        "core": "0.57.0",
+        "esbuild": "0.28.2",
+        "expectedN102": false,
+        "bytes": 18490,
+        "gzipLevel9Bytes": 6298,
+        "templateAuditMinifiedBytes": null,
+        "containsN102": false,
+        "sha256": "56526a73e4af0957c9f557ae9142b4ddd66d2d343e6ca2ff7fed20246cb5150a",
+        "warnings": [],
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "passed": true
+      },
+      {
+        "name": "runtime-off",
+        "core": "0.57.0",
+        "esbuild": "0.28.2",
+        "expectedN102": false,
+        "bytes": 18488,
+        "gzipLevel9Bytes": 6297,
+        "templateAuditMinifiedBytes": null,
+        "containsN102": false,
+        "sha256": "4612b2e05ad4f561a8c9a07829c88cfbad05296a898bba99dcb261e6d13bfce6",
+        "warnings": [],
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "passed": true
+      }
+    ]
+  },
+  "standaloneMarkerRetention": [
+    {
+      "name": "explicit-development",
+      "markers": {
+        "N101": true,
+        "N102": true,
+        "N103": true,
+        "N104": true,
+        "nisli-audit": true,
+        "allow-undefined:": true,
+        "N105": true,
+        "N106": true,
+        "N107": true,
+        "N401": true,
+        "N402": true
+      }
+    },
+    {
+      "name": "legacy-env-development",
+      "markers": {
+        "N101": false,
+        "N102": false,
+        "N103": false,
+        "N104": false,
+        "nisli-audit": false,
+        "allow-undefined:": false,
+        "N105": true,
+        "N106": true,
+        "N107": true,
+        "N401": true,
+        "N402": true
+      }
+    },
+    {
+      "name": "default-minify",
+      "markers": {
+        "N101": false,
+        "N102": false,
+        "N103": false,
+        "N104": false,
+        "nisli-audit": false,
+        "allow-undefined:": false,
+        "N105": true,
+        "N106": true,
+        "N107": true,
+        "N401": true,
+        "N402": true
+      }
+    },
+    {
+      "name": "node-env-production",
+      "markers": {
+        "N101": false,
+        "N102": false,
+        "N103": false,
+        "N104": false,
+        "nisli-audit": false,
+        "allow-undefined:": false,
+        "N105": true,
+        "N106": true,
+        "N107": true,
+        "N401": true,
+        "N402": true
+      }
+    },
+    {
+      "name": "import-meta-production",
+      "markers": {
+        "N101": false,
+        "N102": false,
+        "N103": false,
+        "N104": false,
+        "nisli-audit": false,
+        "allow-undefined:": false,
+        "N105": true,
+        "N106": true,
+        "N107": true,
+        "N401": true,
+        "N402": true
+      }
+    },
+    {
+      "name": "runtime-off",
+      "markers": {
+        "N101": false,
+        "N102": false,
+        "N103": false,
+        "N104": false,
+        "nisli-audit": false,
+        "allow-undefined:": false,
+        "N105": true,
+        "N106": true,
+        "N107": true,
+        "N401": true,
+        "N402": true
+      }
+    }
+  ],
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "method": "Read generated per-iframe results through browser accessibility state; six independent runtime instances with no process global.",
+    "esbuild": "0.27.3",
+    "results": [
+      {
+        "name": "explicit-development",
+        "observedCodes": [
+          "N102"
+        ],
+        "counterAfterClick": "Count: 1",
+        "processType": "undefined",
+        "passed": true
+      },
+      {
+        "name": "legacy-env-development",
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "processType": "undefined",
+        "passed": true
+      },
+      {
+        "name": "default-minify",
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "processType": "undefined",
+        "passed": true
+      },
+      {
+        "name": "node-env-production",
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "processType": "undefined",
+        "passed": true
+      },
+      {
+        "name": "import-meta-production",
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "processType": "undefined",
+        "passed": true
+      },
+      {
+        "name": "runtime-off",
+        "observedCodes": [],
+        "counterAfterClick": "Count: 1",
+        "processType": "undefined",
+        "passed": true
+      }
+    ],
+    "blogDevPreview": {
+      "articlePresent": true,
+      "componentErrors": [],
+      "menuExpanded": "false",
+      "consoleWarningsAndErrors": []
+    }
+  },
+  "checks": {
+    "workspaceTypecheck": "pass",
+    "blogTests": {
+      "pass": 104,
+      "fail": 0
+    },
+    "markdownValidation": {
+      "pass": 18
+    },
+    "productionPosts": 29
+  },
+  "limits": [
+    "No deployed-site activation, production acceptance, or page-speed measurement.",
+    "Whole-bundle gzip comparison includes all changes in the new release and its build contract; it does not allocate savings per framework feature.",
+    "Audit source attribution is null for 0.57.0 because the published bundler entry is one prebundled ESM file; retained code is checked by markers and observable behavior.",
+    "N105-N107 and N401-N402 strings remain in the standalone production bundle; this static check alone does not prove every runtime safety path.",
+    "Only JavaScript outputs differ; all other 204 output files, including 57 HTML pages, are byte-identical.",
+    "Browser interaction proof is the counter fixture; the article preview check reads content, error stamps, menu state, and console output without submitting forms."
+  ]
+}

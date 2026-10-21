@@ -13,10 +13,11 @@ test('browser builds enable Nisli development audits only in development', async
   for (const production of [false, true]) {
     const result = await build({
       stdin: {
-        contents: 'import { html } from "@nisli/core"; html`<button @clik=${() => {}}>Test</button>`.mount(document.createElement("div"));',
+        contents: 'import { html, setDevMode } from "@nisli/core"; setDevMode(true); html`<button @clik=${() => {}}>Test</button>`.mount(document.createElement("div"));',
         resolveDir: ROOT,
       },
       bundle: true,
+      platform: 'browser',
       write: false,
       minify: true,
       format: 'iife',
@@ -25,6 +26,7 @@ test('browser builds enable Nisli development audits only in development', async
     });
     const output = result.outputFiles[0];
     assert.ok(output);
+    if (production) assert.ok(!output.text.includes('N102'), 'production removes the template audit');
     const messages: string[] = [];
     const previous = console.error;
     console.error = (message: unknown) => { messages.push(String(message)); };

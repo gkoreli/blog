@@ -2,11 +2,11 @@
 
 ## Status
 
-Accepted — 2026-10-20. Supersedes the rendering API in [ADR-0002](0002-nisli-static.md).
+Accepted — 2026-10-20; amended for core 0.57.0 the same day. Supersedes the rendering API in [ADR-0002](0002-nisli-static.md).
 
 ## Decision
 
-Use `@nisli/core` 0.56.0 and `@nisli/ssg` 0.4.0, the npm latest releases verified on October 20, 2026. Templates use ordinary `html` and `TemplateResult` from core. The removed `@nisli/core/static` entry point and string-valued `StaticResult` are no longer part of the blog.
+Use `@nisli/core` 0.57.0 and `@nisli/ssg` 0.4.0, the published versions verified on October 20, 2026. The initial migration used core 0.56.0; the follow-up adopts 0.57.0's removable production diagnostics. Templates use ordinary `html` and `TemplateResult` from core. The removed `@nisli/core/static` entry point and string-valued `StaticResult` are no longer part of the blog.
 
 The framework owns template snapshots and generic output through its public `buildStaticSite`, `cleanOutDir`, `copyPublicAssets`, `writeRoute`, and `writeRoot` APIs. The blog keeps post discovery, Markdown conversion, frontmatter, prompts, feeds, citations, metadata, OG images, HTML validation, and bundle selection.
 
@@ -16,7 +16,7 @@ TypeScript articles export template factories. Their modules and metadata are va
 
 Trusted, rendered Markdown uses `html:inner` with `raw()`. Ordinary text, prompts, and attributes use normal bindings. Attribute fragments and `raw()` values interpolated as children belonged to the old string renderer and must not be carried into DOM templates.
 
-Browser builds explicitly define `import.meta.env` through the shared client-mode helper. Production sets `DEV: false, PROD: true`; development sets the reverse. Otherwise Nisli's buildless-browser fallback enables development audits. Disabling those audits at runtime does not remove their code; the package's mutable diagnostic gates are a separate bundle-size limitation. The production/development distinction has an executable regression test.
+Browser builds explicitly define standard `process.env.NODE_ENV` through the shared client-mode helper: `"production"` or `"development"`. Core 0.57.0 exposes statically removable guards around optional diagnostics and bookkeeping. This replaces the earlier `import.meta.env` workaround, which only silenced core 0.56.0's audits. Production artifacts cannot restore removed diagnostics through `setDevMode(true)`. The executable regression test verifies development reporting and production silence/code removal. The [release check](../worklist/blog-design-and-nisli-ssg/core-0.57.0-check.json) records the standalone/browser proof and actual bundle reduction; production activation remains separate.
 
 The sidebar contains publication navigation and follow controls. Project links live on About, alongside links to Design Language and Animations Lab. Keep the Nisli footer credit. The owner approved this placement during the design session; the experiments and routes remain available.
 

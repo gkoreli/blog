@@ -74,3 +74,21 @@ These are minified, uncompressed module bytes. They cannot be added to allocate 
 Inspection of the published old/new modules shows substantial additions to their shared paths: attribute parsing/defaults/pinning and lifecycle error containment in components; signal scheduling/error recovery and disposal support; template binding/disposal and branded HTML checks; and development auditing. Generic `component()`, `html()`, and signal implementations retain supporting branches even when this counter does not use every option. Export-level tree shaking does not specialize them for each call. The audit payload explains part of the growth; the evidence does not classify all of it as a defect or establish how much a future fix would recover.
 
 No upstream code is changed by this fixture. No deployed-site behavior or browser speed improvement is claimed.
+
+## Verify the 0.57.0 release
+
+The original fixture and 0.56.0 results above remain unchanged. [The replay patch](verify-0.57.0.patch) selects the published 0.57.0 package and checks the new production contract. Apply it in a disposable copy, not over this historical fixture:
+
+```sh
+mkdir /tmp/nisli-057-repro
+git archive HEAD:docs/worklist/blog-design-and-nisli-ssg/nisli-production-diagnostics-repro | tar -x -C /tmp/nisli-057-repro
+cd /tmp/nisli-057-repro
+git apply verify-0.57.0.patch
+pnpm install --frozen-lockfile
+pnpm test
+pnpm serve
+```
+
+The six cases cover explicit development, the old development env definition, default minification, ordinary NODE_ENV production, the old production env definition, and runtime suppression. The ordinary entry attempts `setDevMode(true)` before creating the counter; removed production diagnostics stay unavailable. The runtime-suppression entry separately calls `setDevMode(false)`. Explicit NODE_ENV development reports N102. The old `import.meta.env` definition no longer selects the mode; esbuild's automatic production definition determines those minified cases.
+
+Both esbuild 0.27.3 and 0.28.2 passed with byte-identical corresponding bundles; all six cases independently passed in Chrome 155. Default/explicit production counter gzip is 6,297 bytes and contains no N102, while explicit development is 8,242 bytes and reports N102. Per-module audit attribution is unavailable for the new prebundled root, so the replay records it as null. [Release evidence](../core-0.57.0-check.json) contains hashes, marker checks, browser observations, the actual blog before/after comparison, and limits. The blog uses the standard NODE_ENV definition after this migration.

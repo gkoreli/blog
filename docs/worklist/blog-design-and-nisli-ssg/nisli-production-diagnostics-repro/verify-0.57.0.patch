@@ -1,0 +1,108 @@
+--- a/package.json
++++ b/package.json
+@@ -3,16 +3,18 @@
+   "private": true,
+   "type": "module",
+   "packageManager": "pnpm@9.15.4",
+-  "engines": { "node": ">=24 <25" },
++  "engines": {
++    "node": ">=24 <25"
++  },
+   "scripts": {
+     "build": "node build.mjs",
+     "test": "pnpm build && node --experimental-vm-modules check.mjs",
+     "serve": "node serve.mjs"
+   },
+   "devDependencies": {
+-    "@nisli/core": "0.56.0",
+-    "nisli-old": "npm:@nisli/core@0.47.4",
++    "@nisli/core": "0.57.0",
+     "esbuild": "0.27.3",
+-    "happy-dom": "20.14.6"
++    "happy-dom": "20.14.6",
++    "nisli-old": "npm:@nisli/core@0.47.4"
+   }
+ }
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -9,8 +9,8 @@
+   .:
+     devDependencies:
+       '@nisli/core':
+-        specifier: 0.56.0
+-        version: 0.56.0
++        specifier: 0.57.0
++        version: 0.57.0
+       esbuild:
+         specifier: 0.27.3
+         version: 0.27.3
+@@ -182,8 +182,8 @@
+   '@nisli/core@0.47.4':
+     resolution: {integrity: sha512-ZEd+GysBuoi8BPSe7gNsPbEuyDlblRyts87hWKc9iEmVa/yyjTLGLYvy5Ghg5pF8oxINfdnrcuOMnTEi4sSE8A==}
+
+-  '@nisli/core@0.56.0':
+-    resolution: {integrity: sha512-0F55rA9lABTKj1Y053coM1QvYwHrQF8716LIf1GGGUipRpkK8D7ZGuanC20wWpPj44IdzTSPrEas45B7smor8Q==}
++  '@nisli/core@0.57.0':
++    resolution: {integrity: sha512-mXZuVkg4xt51Hoywf5eIvmQqF5FeY18k5SfyM92hjSs5Svn8GYdEB11MRwq/1HuNC/OqMkF9Apdw43F8EyguGA==}
+
+   '@types/node@26.6.5':
+     resolution: {integrity: sha512-uMzsv9stDdofIZBx4UGh4Z9ZgXnGC9seRDscilBcTHAeOFk67MZg/k9bWVfO+bk4qZmG+l52hRnLwUiH2LnJTg==}
+@@ -312,7 +312,7 @@
+
+   '@nisli/core@0.47.4': {}
+
+-  '@nisli/core@0.56.0': {}
++  '@nisli/core@0.57.0': {}
+
+   '@types/node@26.6.5':
+     dependencies:
+--- a/build.mjs
++++ b/build.mjs
+@@ -4,11 +4,12 @@
+ import { createHash } from 'node:crypto';
+
+ const variants = [
+-  { name: 'old-core', version: '0.47.4', alias: { '@nisli/core': 'nisli-old' }, expectedN102: false },
+-  { name: 'default-minify', version: '0.56.0', expectedN102: true },
+-  { name: 'node-env-production', version: '0.56.0', define: { 'process.env.NODE_ENV': '"production"' }, expectedN102: true },
+-  { name: 'import-meta-production', version: '0.56.0', define: { 'import.meta.env': '{"DEV":false,"PROD":true}' }, expectedN102: false },
+-  { name: 'runtime-off', version: '0.56.0', entry: 'entry-off.js', expectedN102: false },
++  { name: 'explicit-development', version: '0.57.0', define: { 'process.env.NODE_ENV': '"development"' }, expectedN102: true },
++  { name: 'legacy-env-development', version: '0.57.0', define: { 'import.meta.env': '{"DEV":true,"PROD":false}' }, expectedN102: false },
++  { name: 'default-minify', version: '0.57.0', expectedN102: false },
++  { name: 'node-env-production', version: '0.57.0', define: { 'process.env.NODE_ENV': '"production"' }, expectedN102: false },
++  { name: 'import-meta-production', version: '0.57.0', define: { 'import.meta.env': '{"DEV":false,"PROD":true}' }, expectedN102: false },
++  { name: 'runtime-off', version: '0.57.0', entry: 'entry-off.js', expectedN102: false },
+ ];
+
+ await rm('output', { recursive: true, force: true });
+@@ -41,7 +42,7 @@
+     expectedN102: variant.expectedN102,
+     bytes: file.contents.length,
+     gzipLevel9Bytes: gzipSync(file.contents, { level: 9 }).length,
+-    templateAuditMinifiedBytes: auditBytes,
++    templateAuditMinifiedBytes: variant.version === '0.57.0' ? null : auditBytes,
+     containsN102: file.text.includes('N102'),
+     sha256: createHash('sha256').update(file.contents).digest('hex'),
+     warnings: result.warnings.map(warning => warning.text),
+--- a/check.mjs
++++ b/check.mjs
+@@ -39,9 +39,8 @@
+   button.click();
+   await new Promise(resolve => setTimeout(resolve, 0));
+   assert.equal(button.textContent, 'Count: 1', `${row.name}: interactivity preserved`);
+-  if (row.core === '0.56.0') {
+-    assert.ok(row.templateAuditMinifiedBytes > 0, `${row.name}: audit module retention`);
+-    assert.equal(row.containsN102, true, `${row.name}: N102 code retention`);
++  if (row.core === '0.57.0') {
++    assert.equal(row.containsN102, row.expectedN102, `${row.name}: development audit removal`);
+   }
+   results.push({ ...row, observedCodes: codes, counterAfterClick: button.textContent, passed: true });
+   await window.happyDOM.close();
+--- a/entry.js
++++ b/entry.js
+@@ -1,2 +1,4 @@
++import { setDevMode } from '@nisli/core';
+ import { start } from './counter.js';
++setDevMode(true); // Cannot restore removed production audits.
+ start();
