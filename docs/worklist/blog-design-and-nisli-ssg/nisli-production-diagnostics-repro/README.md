@@ -2,6 +2,8 @@
 
 Verified October 20, 2026. This standalone counter imports only published Nisli core. The blog, its build pipeline, and `@nisli/ssg` are absent.
 
+Filed upstream as [Nisli #3](https://github.com/gkoreli/nisli/issues/3), with the reproduction pinned to blog commit `4e7bc14`.
+
 ## Run
 
 Use Node 24 and pnpm 9.15.4. This directory has its own workspace boundary and lockfile.
