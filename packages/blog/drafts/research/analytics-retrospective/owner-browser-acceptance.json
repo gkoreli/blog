@@ -92,5 +92,15 @@
     "Daily identity depends on host, UTC date, network address and User-Agent; no person identity or future-day coverage.",
     "One verification navigation; not the paired JavaScript/beacon calibration matrix.",
     "Cold report and matching rows reconciled at the stated capture time; not continuing production monitoring."
-  ]
+  ],
+  "articlePublication": {
+    "sourceCommit": "d870aed",
+    "checkedAt": "2026-10-26T03:10:08.796914+00:00",
+    "owner": 200,
+    "article": 200,
+    "markdownMatches": true,
+    "prompts": 14,
+    "markdownSha256": "6f9e7071c73e31d79ab0e8471972100c659cc6a5bbcfd3fb3dffae446356fab5",
+    "scope": "HEAD availability, exact Markdown/build match and public fourteen-prompt index; no rendered article-layout claim"
+  }
 }
