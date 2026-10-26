@@ -1,0 +1,135 @@
+{
+  "checkedAt": "2026-10-26T02:41:28.421161+00:00",
+  "sourceCommit": "9b9799c8953c05f0e02099b24f8d2bcd6f5d8266",
+  "versions": {
+    "collection": "2026-10-26.2",
+    "classifier": "2026-10-26.2",
+    "report": "2026-10-26.2"
+  },
+  "migration": {
+    "name": "0010_observation_versions.sql",
+    "appliedAt": "2026-10-26 02:30:42",
+    "beforeCodePublication": true,
+    "historicalWindowRows": 14866,
+    "stampedHistoricalRows": 0,
+    "metering": "Migration/schema bookkeeping writes are separate and not itemized by the captured CLI summary."
+  },
+  "deployment": {
+    "createdAt": "2026-10-26T02:34:46.863146Z",
+    "versions": [
+      {
+        "version_id": "c1e39a28-4f62-403f-883d-af5302808d90",
+        "percentage": 100
+      }
+    ],
+    "limit": "Observed activation metadata; no direct Git-to-Worker attestation inferred."
+  },
+  "controls": {
+    "startedAt": "2026-10-26T02:36:40.491Z",
+    "finishedAt": "2026-10-26T02:36:41.460Z",
+    "requests": 2,
+    "synthetic": true,
+    "policyHash": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+    "preflight": "Local assessor exclude and matching live policy before any control.",
+    "stored": [
+      {
+        "section": "control",
+        "collectionVersion": "2026-10-26.2",
+        "classifierVersion": "2026-10-26.2",
+        "referrerState": "external",
+        "views": 2
+      }
+    ],
+    "limit": "Externally referred unsigned controls test future version writes. Root-source behavior has local-D1 acceptance; no unexcluded root-referrer trial was generated."
+  },
+  "publicReport": {
+    "selection": "range=30d&traffic=all&path=/privacy",
+    "includedViews": 78,
+    "excludedViews": 6,
+    "updatedAt": "2026-10-26T02:39:10.109Z",
+    "firstCache": "MISS",
+    "repeatCache": "HIT",
+    "sameBytes": true
+  },
+  "ownerPage": {
+    "headStatus": 200,
+    "cacheControl": "no-store",
+    "robots": "noindex",
+    "renderedReadyStateChecked": true,
+    "actualOwnerBrowser": "Awaiting the human credential entry and verification navigation; no accepted owner flow claimed."
+  },
+  "publication": {
+    "articleHead": 200,
+    "markdownMatchesIsolatedBuild": true,
+    "markdownSha256": "635c88c1d984f17e75a3a3dbb7016bc8aedd7eeec02aeccf1486ebfa84ab4656",
+    "promptCount": 12,
+    "scope": "Source 9b9799c article; subsequent native-access paragraph is a later update."
+  },
+  "metering": {
+    "fullIntervalSelect": 361147,
+    "verificationSelects": [
+      5,
+      1,
+      14867
+    ],
+    "totalMeteredSelectReads": 376020,
+    "selectWrites": 0,
+    "publicColdFills": 2,
+    "publicCacheHits": 1,
+    "unmeteredAdditional": "Migration/schema bookkeeping, two observation insertions, and HTTP report fills; not an account-wide total."
+  },
+  "localChecks": {
+    "analyticsTests": 59,
+    "blogTests": 106,
+    "typechecks": "pass",
+    "isolatedBuildPosts": 31,
+    "prompts": 12,
+    "ownerFixtureUi": "rejection/success/clearing/verification-pending states pass"
+  },
+  "limits": [
+    "Historical data remains unversioned; versions identify future method, not authenticated values.",
+    "Native access is a separate UI receipt; sampler/retention/field population and request joins remain unaccepted.",
+    "No actual owner credential was read or entered by the agent.",
+    "No paired browser/beacon calibration or new signature conformance acceptance."
+  ],
+  "captureHashes": {
+    "public-report-repeat.headers.json": "0075f884467a9568eeccca2f6ac51ad1c44caa3b2897bd84d4f3a5c4f4706588",
+    "controls.json": "efd4384b3958b14ad2699aaa667894e5e69df8ce2cdf93d789ad564136f28d89",
+    "owner-head.body": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "article-markdown.headers.json": "07afc7c9f397ef5c3077b97f3c4cbedb6f8b74d26f1db3dc238c4e95181e6368",
+    "public-report.headers.json": "1edc9a16ff8dc6d111d46bb85bae6b2a583f788a112a69896f083ca2b0c22e2c",
+    "version-control-1.body": "69d6522ef32d048d689181e82c1ba261cc065d4bce780f15395a55e6af5e303b",
+    "version-control-0.body": "69d6522ef32d048d689181e82c1ba261cc065d4bce780f15395a55e6af5e303b",
+    "public-report.body": "5bc26ded654d59bb7573a67b126fbfc8c9a955088b9f54bde58e5021b4993da6",
+    "article-markdown.body": "635c88c1d984f17e75a3a3dbb7016bc8aedd7eeec02aeccf1486ebfa84ab4656",
+    "verify.sql": "78a89be32be00df210572175ad8b1f694a464864a6b1ff27d53aeb873e41a1b4",
+    "posts-index.headers.json": "d04f7922bc91fa08d5ec509897b959b14ec85ad4692f907f7075d3703d824ba9",
+    "article-head.body": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "policy-preflight.body": "940eb4b4b7570314854ce80fe0ff8c65f281ef1998f045a2e4261a48aedbe0b0",
+    "posts-index.body": "ca3241d8fd50066b9c0ad42e9b6d442c12c15672e40c4d1bd911745e9f033652",
+    "version-control-0.headers.json": "235bd075ad24efc255cdbf67fa937ac5faedb0e4477c9274f433ae2533753544",
+    "version-control-1.headers.json": "d21cb3d92fe9737c76eb3af2fde7d403b935b666f427e1da26707d62cd9fa45a",
+    "public-report-repeat.body": "5bc26ded654d59bb7573a67b126fbfc8c9a955088b9f54bde58e5021b4993da6",
+    "verification.json": "e770282810d59808a69aee02a1c9f19b58677dfc854022e3c466978a9299a691",
+    "verification.stderr": "c04ef7524268f8ecf9b23a83c01bb12bd9f0fab1140f48d92c77c4ba618cce3c",
+    "policy-preflight.headers.json": "5db62ce899575d2354072e154eb95eeb8987eb02cffcb21a2e53d69e585b2acd",
+    "article-head.headers.json": "80ad96171c9347aa8a1b45fb48c47f343ad14b0ef00e126ae78947c66e5d1430",
+    "owner-head.headers.json": "ee3eb559126916e70d571eceb6aca9f92a272a6864778d7610f9fcf5d2e4bff6"
+  },
+  "nativeAccess": {
+    "receipt": "11-native-access-receipt.md",
+    "method": "Signed-in native Chrome UI, not a provider API export",
+    "zonePlan": "Free",
+    "workersSubscription": "Workers Paid",
+    "aiMetricsLoaded": true,
+    "recentHttpRequestViewLoaded": true,
+    "datasetAndSampling": "Not established; current documentation distinguishes sampled analytics from enabled log datasets.",
+    "captureHashes": {
+      "gk-native-zone-plan.jpg": "010f42bd8ccde69525575f4c30f9a8e8b0226d24e0aafc4811d6bbcfa783223e",
+      "gk-native-crawler-state.txt": "1117fec87fcaf004f82c9a7545e116982bd27b846220acd2d8763d4bb7ddc347",
+      "gk-native-crawler.jpg": "681c3a525340b1eae464afd427b1910d2386cb5ea0fe464420867570c283174e",
+      "gk-native-http-logs-state.txt": "521d0ffd3f835217c39fdd97bc2a92b0abc21b34e5b39625fe34dd42f4513160",
+      "gk-native-http-logs.jpg": "c1c968ce72342d67884f65760688419389cb8bfee5081a7e64b0787e7755b0e8"
+    }
+  }
+}

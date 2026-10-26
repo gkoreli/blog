@@ -59,3 +59,7 @@ The [Web Analytics limits page](https://developers.cloudflare.com/web-analytics/
 5. [September zone-state notes](../readers-vs-bots/07-cloudflare-agent-readiness-and-zone-state.md) are a dated dashboard observation. Their bot categories, access settings, roadmap panels, and recommendations are not a current native capability inventory.
 
 No historical ADR or capture was rewritten during this review. Next bounded evidence collection should first establish current product state and retained field coverage, then use those fields only for the question they can answer.
+
+## Subsequent actual-access update
+
+The [native access receipt](11-native-access-receipt.md) supersedes the earlier no-current-UI-access boundary for the inspected surfaces: the dashboard shows a Free zone with Workers Paid, loaded AI Crawl Control metrics and a recent HTTP-request view. It does not establish Enterprise Bot Management fields or unsampled retention. Current Logs documentation explicitly includes sampled analytics alongside enabled log datasets; establish dataset identity before joining or counting.

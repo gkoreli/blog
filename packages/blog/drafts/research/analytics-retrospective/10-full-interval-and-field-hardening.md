@@ -60,3 +60,11 @@ Migration application, source delivery, activation and measured post-release acc
 Remaining: actual-browser exclusion and paired navigation/beacon trials, native entitlement/retained-log coverage, supported signature-profile acceptance and R1 attribution/reporting policy. Complete retained-data interval coverage does not establish unrecorded-request coverage or authenticate readership.
 
 **Pre-delivery checkpoint:** migration 0010 was the only pending migration and was applied successfully through Wrangler before code publication. The isolated 31-post build caught missing owner-page social metadata and a live-region tag collision with the existing subscription validator; both were corrected and the final build passed. The local browser check exercised rejected and successful fixture credentials, field clearing and the explicit still-pending verification state. RUM comparison filtering now also excludes /owner and descendants.
+
+## Accepted release boundaries
+
+Source `9b9799c` was pushed. Migration 0010 applied at **02:30:42 UTC** before source publication. Wrangler observed version `c1e39a28-4f62-403f-883d-af5302808d90` at 100% from **02:34:46 UTC**. [Sanitized release receipt](field-hardening-release.json) records activation separately from source and behavior.
+
+Two deliberately excluded unsigned controls persisted both versions as `2026-10-26.2`. The historical interval still contains 14,866 rows and zero stamped versions. Verification SELECTs used 5 + 1 + 14,867 reads, zero writes; together with the interval query, **376,020 metered SELECT reads**. Migration work, observation insertions and two public cold fills are additional. The `/privacy` report included 78 events and excluded six controls (four earlier plus two new); an equivalent repeat was HIT with identical bytes. Root ambiguity is accepted locally; no unexcluded root-referrer probe was generated.
+
+The live article Markdown matched the isolated build and twelve-prompt metadata. /owner returned 200 with no-store/noindex, and its rendered ready state was checked without a credential. Actual owner-browser marking/navigation is still pending. [Native access receipt](11-native-access-receipt.md) now confirms Free-zone/Workers-Paid state and accessible AI metrics/request-event views while preserving dataset/sampling/retention limits.
