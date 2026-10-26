@@ -1,3 +1,5 @@
+import type { PublicSignerName } from './signers.js';
+
 /** Prepared private-evidence policy shared by collector and disclosure. */
 export const DIAGNOSTIC_RETENTION_DAYS = 60;
 
@@ -99,7 +101,7 @@ export interface StatsResponse {
   };
   byDevice: Array<{ deviceType: DeviceType; views: number }>;
   byAgent: Array<{ agentName: string; trafficClass: Exclude<TrafficClass, 'browser'>; views: number }>;
-  /** Verified-key outcomes within the same included selection; independent of declared role. */
-  bySigner: Array<{ signatureAgent: string; views: number }>;
+  /** Reviewed display names or Other, never arbitrary signing origins; independent of role. */
+  bySigner: Array<{ signatureAgent: PublicSignerName; views: number }>;
   byKind: Array<{ kind: ReaderKind; reason: string; views: number; dailyClients: number }>;
 }

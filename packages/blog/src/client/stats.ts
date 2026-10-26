@@ -61,7 +61,9 @@ function reasonLabel(kind: ReaderKind, reason: string): string {
     const provider = HOSTING_NETWORKS.find((network) => network.asn === asn)?.provider;
     return provider === undefined ? `hosting network AS${asn}` : `${provider} (AS${asn})`;
   }
-  if (kind === 'signed-agent') return `signed by ${reason}`;
+  if (kind === 'signed-agent') return reason === 'Other'
+    ? 'verified signature; signer not publicly named'
+    : `signing directory: ${reason}`;
   if (reason.startsWith('signature-') || reason.startsWith('missing-') || reason.startsWith('invalid-')) {
     return `signature not verified: ${reason.replace(/-/g, ' ')}`;
   }

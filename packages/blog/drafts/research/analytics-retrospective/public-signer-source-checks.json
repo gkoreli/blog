@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-26T07:22:49.396227+00:00",
+  "analyticsTests": 83,
+  "siteTests": 106,
+  "workspaceTypes": "pass",
+  "isolatedBuildPosts": 31,
+  "articleWordsIncludingGlossary": 1262,
+  "articleH1s": 1,
+  "shapingPrompts": 22,
+  "changedDocumentLocalReferences": 89,
+  "statsTitleAndClientLabelPresent": true,
+  "articleMarkdownSha256": "882f6c65a827b874c458302776bd55e82e282d14d40a45f30739849d627777a7",
+  "expandedCapture": "off; no activation setting changed"
+}

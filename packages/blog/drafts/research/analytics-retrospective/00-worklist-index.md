@@ -114,3 +114,11 @@ Delivery checkpoint: [source checks](request-evidence-source-checks.json) record
 
 
 Off-mode source delivery is accepted in [the release receipt](request-evidence-off-release.json): code `e455766`, migration 0011, active Worker metadata, live article match and one excluded control stored as collection version .3 without optional evidence. Verification used two direct SELECT reads, zero SELECT writes; the cold public preflight is additional. Expanded capture remains disabled. The next action is the collection/disclosure boundary and lawful-basis review, followed by deliberately enabled acceptance; the active request and TASK-0119/0120 remain unfinished.
+
+
+## Public signer display continuation — October 26 UTC
+
+[Display review](14-public-signer-display.md) closes the implementation gap in both `bySigner` and signed-agent reasons: exact reviewed service names or Other, mapped before grouping, with private source origins and original history preserved. [Native D1 acceptance](public-signer-local.json) exercises shared daily clients, exclusions and both report channels. Analytics 83/83, site 106/106 and workspace types pass. Source delivery, metered production acceptance, cache reuse and the served article remain to verify. Expanded diagnostics stay off; indefinite linked-row retention and the collection/disclosure basis remain open.
+
+
+Pre-publication acceptance: [one native-accepted production report SELECT](public-signer-production-query.json) returns 273 stored signed-agent outcomes under the proposed name mapping (Exa 243, Ahrefs 30), using 41,993 metered reads and zero writes. The direct-query allowance was 50,000; the planned single cold HTTP fill/repeat is additional service work. [Source/build acceptance](public-signer-source-checks.json) passes. Source push, observed Worker activation and HTTP/cache checks remain separate.

@@ -3,7 +3,7 @@ title: "Building Blog Analytics: What the Numbers Can Prove"
 seoTitle: "Building Blog Analytics with Cloudflare Workers and D1"
 alternativeHeadline: "What a misleading traffic spike taught me about page counts, bot identity, and the cost of trustworthy analytics"
 date: "2026-10-25"
-lastModified: "2026-10-25"
+lastModified: "2026-10-26"
 description: "Cloudflare Workers and D1 analytics lessons: investigate misleading traffic growth, separate signed crawlers from assistants, and preserve evidence behind the counts."
 section: engineering
 tags: [analytics, cloudflare-workers, d1, bots, observability]
@@ -63,7 +63,7 @@ Referrers needed the same discipline. Among 2,365 included internal-referrer eve
 
 New observations retain the internal category but omit that ambiguous root source path. Historical rows remain intact and get an explicit label. The tradeoff loses some genuine homepage transitions while avoiding false precision.
 
-The [referrer-abuse policy](/filter-referrer-spam-without-deleting-analytics-history) also separates retained observations from public reporting. Exclusions are versioned and disclosed; unapproved names appear as Other. This prevents automatic promotion of untrusted destinations while preserving evidence for review. It does not authenticate every referral or resolve R1.
+The [referrer-abuse policy](/filter-referrer-spam-without-deleting-analytics-history) also separates retained observations from public reporting. Exclusions are versioned and disclosed; unapproved names appear as Other. This prevents automatic promotion of untrusted destinations while preserving evidence for review. Verified signing origins now get public names only after review; other origins stay private and count as Other. R1 remains unresolved.
 
 ## Correct totals can still break production
 

@@ -1,0 +1,55 @@
+[
+  {
+    "origin": "https://crawler.exa.ai",
+    "url": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+    "checkedAt": "2026-10-26T07:08:43.959Z",
+    "status": 200,
+    "contentType": "application/http-message-signatures-directory+json",
+    "bytes": 274,
+    "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+    "keys": [
+      {
+        "kty": "OKP",
+        "crv": "Ed25519"
+      },
+      {
+        "kty": "OKP",
+        "crv": "Ed25519"
+      }
+    ]
+  },
+  {
+    "origin": "https://ahrefs.com",
+    "url": "https://ahrefs.com/.well-known/http-message-signatures-directory",
+    "checkedAt": "2026-10-26T07:08:44.124Z",
+    "status": 200,
+    "contentType": "application/http-message-signatures-directory+json",
+    "bytes": 298,
+    "sha256": "a647d3d54713f9299e73dec67cdd28175cfb488ebc9692d245b82821244eb0cc",
+    "keys": [
+      {
+        "kty": "OKP",
+        "crv": "Ed25519"
+      },
+      {
+        "kty": "OKP",
+        "crv": "Ed25519"
+      }
+    ]
+  },
+  {
+    "origin": "https://assistbot.duckduckgo.com",
+    "url": "https://assistbot.duckduckgo.com/.well-known/http-message-signatures-directory",
+    "checkedAt": "2026-10-26T07:08:44.211Z",
+    "status": 200,
+    "contentType": "application/http-message-signatures-directory+json",
+    "bytes": 142,
+    "sha256": "faddfe101daff707d0c605e8669a5e88fc0dbeb1dbb5639761b4d4f794110a22",
+    "keys": [
+      {
+        "kty": "OKP",
+        "crv": "Ed25519"
+      }
+    ]
+  }
+]

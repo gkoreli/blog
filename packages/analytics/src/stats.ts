@@ -11,6 +11,7 @@ import {
 import type { Env } from './db.js';
 import { KNOWN_AGENT_NAMES } from './classify.js';
 import { agentReaderKind } from './readerkind.js';
+import { PUBLIC_SIGNERS, isPublicSignerName } from './signers.js';
 import {
   completeTimeSeries,
   createStatsWindow,
@@ -178,6 +179,7 @@ function kindRows(rows: Record<string, unknown>[]): StatsResponse['byKind'] {
     const kind = stringField(row, 'key1');
     const reason = stringField(row, 'key2');
     if (kind !== null && isReaderKind(kind) && reason !== null) {
+      if (kind === 'signed-agent' && !isPublicSignerName(reason)) return malformedReport();
       result.push({ kind, reason, views: numberField(row, 'views'), dailyClients: numberField(row, 'dailyClients') });
     }
   }
@@ -229,7 +231,16 @@ function requiredSection(sections: Map<string, Record<string, unknown>[]>, secti
   return sections.get(section) ?? malformedReport();
 }
 
+/** Exact origins only: no suffix matching, normalization or caller-controlled SQL. */
+function signerLabelSql(column: 'signature_agent' | 'reader_reason'): string {
+  const cases = PUBLIC_SIGNERS.map(({ origin, name }) =>
+    `WHEN '${origin.replaceAll("'", "''")}' THEN '${name.replaceAll("'", "''")}'`);
+  return `CASE ${column} ${cases.join(' ')} ELSE 'Other' END`;
+}
+
 function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary: boolean): QueryPredicate {
+  const publicReason = `CASE WHEN reader_kind = 'signed-agent' THEN ${signerLabelSql('reader_reason')} ELSE reader_reason END`;
+  const publicSigner = signerLabelSql('signature_agent');
   const boundaryCte = includeBoundary
     ? `, boundary AS MATERIALIZED (
         SELECT MIN(observed_at) AS first_observed_at
@@ -327,17 +338,17 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         )
         WHEN 'kind' THEN (
           SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', reader_kind, 'key2', reader_reason, 'views', COUNT(*),
+            SELECT json_object('key1', reader_kind, 'key2', ${publicReason}, 'views', COUNT(*),
               'dailyClients', COUNT(DISTINCT daily_client_id)) AS row_json
             FROM included WHERE reader_kind IS NOT NULL
-            GROUP BY reader_kind, reader_reason ORDER BY COUNT(*) DESC, reader_kind, reader_reason
+            GROUP BY reader_kind, ${publicReason} ORDER BY COUNT(*) DESC, reader_kind, ${publicReason}
           )
         )
         WHEN 'signer' THEN (
           SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', signature_agent, 'views', COUNT(*)) AS row_json
+            SELECT json_object('key1', ${publicSigner}, 'views', COUNT(*)) AS row_json
             FROM included WHERE signature_status = 'verified' AND signature_agent IS NOT NULL
-            GROUP BY signature_agent ORDER BY COUNT(*) DESC, signature_agent
+            GROUP BY ${publicSigner} ORDER BY COUNT(*) DESC, ${publicSigner}
           )
         )
         WHEN 'excluded' THEN (
@@ -441,7 +452,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     byAgent: agentRows(requiredSection(sections, 'agent')),
     bySigner: requiredSection(sections, 'signer').map(row => {
       const signatureAgent = stringField(row, 'key1');
-      if (signatureAgent === null) return malformedReport();
+      if (!isPublicSignerName(signatureAgent)) return malformedReport();
       return { signatureAgent, views: numberField(row, 'views') };
     }),
     byKind: kindRows(requiredSection(sections, 'kind')),

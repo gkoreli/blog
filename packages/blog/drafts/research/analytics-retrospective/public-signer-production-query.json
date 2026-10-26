@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-10-26T07:21:24.566019+00:00",
+  "query": {
+    "range": "7d",
+    "traffic": "agents",
+    "kind": "signed-agent"
+  },
+  "rowsRead": 41993,
+  "rowsWritten": 0,
+  "totals": {
+    "views": 273,
+    "dailyClients": 173,
+    "unattributedViews": 273
+  },
+  "bySigner": [
+    {
+      "signatureAgent": "Exa",
+      "views": 243
+    },
+    {
+      "signatureAgent": "Ahrefs",
+      "views": 30
+    }
+  ],
+  "bySignedReason": [
+    {
+      "reason": "Exa",
+      "views": 243,
+      "dailyClients": 143
+    },
+    {
+      "reason": "Ahrefs",
+      "views": 30,
+      "dailyClients": 30
+    }
+  ],
+  "limit": "Direct locally prepared SELECT under the proposed report source; code activation and public HTTP/cache acceptance are separate.",
+  "plan": {
+    "query": {
+      "range": "7d",
+      "traffic": "agents",
+      "kind": "signed-agent"
+    },
+    "start": "2026-10-20",
+    "end": "2026-10-26",
+    "sqlBytes": 70063,
+    "sqlSha256": "8f42265271a735fe3cc76e7d0790d3db9b8417f00709e54792ae7c499065edd0",
+    "nativeLiteralPass": true,
+    "selectReadCeiling": 50000,
+    "productionCalls": 1
+  }
+}

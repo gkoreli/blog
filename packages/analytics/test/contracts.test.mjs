@@ -1737,8 +1737,8 @@ test('named role and signer reports preserve historical unknowns and share every
   const stats = await queryStats(d1, { range: '7d', traffic: 'all' }, now);
   assert.equal(stats.totals.views, 9);
   assert.deepEqual(stats.bySigner, [
-    { signatureAgent: 'https://signer.example', views: 4 },
-    { signatureAgent: 'https://crawler.exa.ai', views: 1 },
+    { signatureAgent: 'Other', views: 4 },
+    { signatureAgent: 'Exa', views: 1 },
   ]);
   assert.equal(stats.byKind.reduce((n, r) => n + r.views, 0), 9);
   assert.equal(stats.byAgent.reduce((n, r) => n + r.views, 0), 8);
@@ -1747,7 +1747,7 @@ test('named role and signer reports preserve historical unknowns and share every
     assert.equal(typeof query, 'object');
     const selected = await queryStats(d1, query, now);
     assert.equal(selected.totals.views, 2, name);
-    assert.deepEqual(selected.bySigner, [{ signatureAgent: 'https://signer.example', views: 1 }]);
+    assert.deepEqual(selected.bySigner, [{ signatureAgent: 'Other', views: 1 }]);
     assert.equal(parseStatsQuery(new URLSearchParams({ agent: name, kind: 'signed-agent', traffic: 'agents' })).kind, 'signed-agent');
   }
   assert.equal((await queryStats(d1, { range: '7d', traffic: 'crawlers' }, now)).totals.views, 6);
@@ -1803,7 +1803,7 @@ test('real signed ingestion retains named role and independent key evidence; unc
     assert.equal(directories, 1, 'all controlled signatures use the cached test directory');
     const stats = await queryStats(d1, { range: '7d', traffic: 'all' });
     assert.equal(stats.totals.views, 4);
-    assert.deepEqual(stats.bySigner, [{ signatureAgent: signer, views: 4 }]);
+    assert.deepEqual(stats.bySigner, [{ signatureAgent: 'Other', views: 4 }]);
     assert.equal(stats.byAgent.length, 4);
   } finally {
     globalThis.fetch = originalFetch;

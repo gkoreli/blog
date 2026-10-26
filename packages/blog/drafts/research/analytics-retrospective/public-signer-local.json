@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-26T07:17:13.237Z",
+  "runtime": "Actual report code with Miniflare/workerd local D1",
+  "productionCalls": 0,
+  "fixtureRows": 10,
+  "reportExecutions": 7,
+  "reports": [
+    {
+      "range": "7d",
+      "views": 6,
+      "signerViews": 6,
+      "unknownSignerViews": 2,
+      "unknownSignerDailyClients": 1
+    },
+    {
+      "range": "all",
+      "views": 6,
+      "signerViews": 6,
+      "unknownSignerViews": 2,
+      "unknownSignerDailyClients": 1
+    }
+  ],
+  "ownerReferralFutureAndPathExclusionsPass": true,
+  "originsPrivateInBothPublicChannels": true,
+  "namedRoleIndependentOfSigner": true,
+  "storedObservationsUnchanged": true,
+  "limit": "Synthetic rows and stored verifier statuses; no real-vendor re-verification, production billing or anonymous-data claim."
+}
