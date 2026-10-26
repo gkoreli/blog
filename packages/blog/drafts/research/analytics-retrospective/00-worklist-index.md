@@ -64,6 +64,6 @@ The later explicit Exa/Ahrefs repair request authorizes implementation and artic
 - [Classification repair](08-classification-repair.md), [after probe](ua-coverage-after.json), [Cloudflare-local D1 results](classification-local-d1.json) and [reproducer](check-classification-local-d1.mjs) preserve the new evidence alongside the unchanged baseline.
 - [ADR-0016.8](../../../../../docs/adr/0016.8-declared-client-roles-and-signer-evidence.md) records the changed precedence, public labels, independent signer aggregate and no-backfill decision.
 - The article now includes this bounded repair and six complete shaping messages. It retains the frozen audit's totals, unknown historical roles and unresolved R1 attribution.
-- Local checks pass; deployment and measured live acceptance are tracked separately in the repair record. TASK-0119 is in progress, not complete. No recurring capture is scheduled.
+- Local checks pass. Source `0d12382` was pushed; Wrangler activation, four excluded live UA controls, the separate signer report and a cache MISS/HIT are accepted in the [release receipt](classification-release-acceptance.json). Signed-role preservation uses a local fixture key; no organic vendor-signature acceptance is claimed. TASK-0119 is in progress, not complete. No recurring capture is scheduled.
 
 Next bounded action after this repair: verify actual owner-browser exclusion before calibration. Per-observation versions, native entitlement/field acceptance and signature-profile work remain open.

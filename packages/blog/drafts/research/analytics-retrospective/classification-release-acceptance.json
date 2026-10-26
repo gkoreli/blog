@@ -1,0 +1,143 @@
+{
+  "checkedAt": "2026-10-26T01:57:19.609725+00:00",
+  "sourceCommit": "0d1238261a7fb0424e465e56c003d34ffade58b4",
+  "reportVersion": "2026-10-26.1",
+  "deployment": {
+    "createdAt": "2026-10-26T01:55:44.857857Z",
+    "versions": [
+      {
+        "version_id": "59e2f198-624f-4f42-a819-f9b3b297e7ad",
+        "percentage": 100
+      }
+    ],
+    "versionCreatedAt": "2026-10-26T01:55:43.742806Z",
+    "limit": "Activation metadata observed separately; no direct Git-to-Worker attestation inferred."
+  },
+  "syntheticControls": {
+    "startedAt": "2026-10-26T01:56:08.528Z",
+    "finishedAt": "2026-10-26T01:56:08.948Z",
+    "requests": 4,
+    "responseStatus": 200,
+    "policyHash": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+    "exclusion": "Unique labelled host under existing reviewed subtree; local assessor and current public policy hash verified before any control. No new exclusion policy.",
+    "storedAggregates": [
+      {
+        "agent_name": "AhrefsBot",
+        "reader_kind": "seo-crawler",
+        "reader_reason": "AhrefsBot",
+        "signature_status": null,
+        "signature_agent": null,
+        "events": 1
+      },
+      {
+        "agent_name": "AhrefsSiteAudit",
+        "reader_kind": "seo-crawler",
+        "reader_reason": "AhrefsSiteAudit",
+        "signature_status": null,
+        "signature_agent": null,
+        "events": 1
+      },
+      {
+        "agent_name": "ExaSearchBot",
+        "reader_kind": "ai-search",
+        "reader_reason": "ExaSearchBot",
+        "signature_status": null,
+        "signature_agent": null,
+        "events": 1
+      },
+      {
+        "agent_name": "ExaUser",
+        "reader_kind": "ai-assistant",
+        "reader_reason": "ExaUser",
+        "signature_status": null,
+        "signature_agent": null,
+        "events": 1
+      }
+    ],
+    "directSelect": {
+      "statements": 1,
+      "rowsRead": 12,
+      "rowsWritten": 0
+    }
+  },
+  "publicReport": {
+    "query": "range=30d&traffic=all&path=/privacy",
+    "updatedAt": "2026-10-26T01:56:29.158Z",
+    "includedViews": 78,
+    "excludedViews": 4,
+    "controlNamesAbsentFromIncludedAgentPanel": true,
+    "bySigner": [
+      {
+        "signatureAgent": "https://crawler.exa.ai",
+        "views": 14
+      },
+      {
+        "signatureAgent": "https://ahrefs.com",
+        "views": 1
+      }
+    ],
+    "compositionReconciles": true,
+    "firstCache": "MISS",
+    "repeatCache": "HIT",
+    "equivalentQuerySameBytes": true
+  },
+  "initialPublication": {
+    "sourceCommit": "0d1238261a7fb0424e465e56c003d34ffade58b4",
+    "articleHead": 200,
+    "promptsHead": 200,
+    "markdownMatchesIsolatedBuild": true,
+    "markdownSha256": "7a8af828b76d603831ec39984c91003e49e740c88f2af8e40c7f0044cbfa3e0b",
+    "prompts": 6,
+    "scope": "Article as delivered in the runtime repair commit; the later live-acceptance paragraph is a subsequent source update."
+  },
+  "accounting": {
+    "meteredDirectReadsThisRepair": 12,
+    "directSQLWrites": 0,
+    "publicReportCalls": 3,
+    "coldFills": 2,
+    "cacheHits": 1,
+    "publicFillReads": "Additional; not metered by these HTTP captures.",
+    "syntheticPageObservations": 4,
+    "ingestionMeteredWrites": "Not captured; do not confuse the zero-write SELECT with the four observed insertions.",
+    "priorInvestigationDirectReads": 630169,
+    "limit": "Separate dated workloads, not account-wide usage."
+  },
+  "limits": [
+    "Live controls are copied vendor declarations sent by the author, not vendor traffic.",
+    "Live unsigned ingestion is accepted. Signed-role preservation is accepted with a local fixture key; no new organic vendor signature was reverified for this repair.",
+    "Historical rows and frozen captures remain unchanged.",
+    "Per-observation versions, owner-browser calibration, native/vendor recognition, signature-profile work and R1 attribution remain open.",
+    "No production rendered-browser layout check; generated HTML, API, stored aggregates and article Markdown are the acceptance scope."
+  ],
+  "captureHashes": {
+    "public-report-repeat.headers.json": "9ed9af483361bbb8883bc04b775ee9d77d4c62b9c1a139f2b58b97799c53969c",
+    "controls.json": "c9b9e109436fe67d08a5f81f3c44a6e15a888e0967c5f6f458df1a0ec71a0b2d",
+    "d1-controls.stderr": "c04ef7524268f8ecf9b23a83c01bb12bd9f0fab1140f48d92c77c4ba618cce3c",
+    "control-AhrefsSiteAudit.body": "69d6522ef32d048d689181e82c1ba261cc065d4bce780f15395a55e6af5e303b",
+    "article-markdown.headers.json": "4b1352e971fb4d50bc7731027293e48d2f77011175110012243cf5d5880c8c1f",
+    "public-report.headers.json": "a43e14c767923680a63aff7e31f9ee3d9ccdcde550c7e580bb92601dd8a20d1f",
+    "control-AhrefsSiteAudit.headers.json": "130d73a64acab83aa3c863e513b1eb43d13e664f2b5f5ab33028ee45d4b68cea",
+    "control-ExaUser.headers.json": "90a6884110a5e9cc0b39196254df750d4a13c5a94dfcf73d2062de0814837e69",
+    "control-AhrefsBot.headers.json": "537a2259309a7e90a947927742184eeb4a005d66f238a8373d69fb929fae1f8b",
+    "control-ExaSearchBot.headers.json": "d7e3eaf4549c2a6bbe90a03662448ce75a24493bad2efeed5a931f30945aa34d",
+    "public-report.body": "08ee9a2ecb252042796f16783a72afdb34d7a9b0ef9c34886c7f80c737992fe0",
+    "article-markdown.body": "7a8af828b76d603831ec39984c91003e49e740c88f2af8e40c7f0044cbfa3e0b",
+    "posts-index.headers.json": "d295f3f44f6c74d666455a91bb545a161fbaf2cc1ab9e18b99329a5077a0bab2",
+    "article-head.body": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "prompts-head.body": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "control-ExaUser.body": "69d6522ef32d048d689181e82c1ba261cc065d4bce780f15395a55e6af5e303b",
+    "policy-preflight.body": "25dec22bdfe896433edc8506fbe93387c6a9a3c6123cdbbc44c2886a20bc08a9",
+    "posts-index.body": "b98b379a9d7bb1bfbdd36ff69fda9d235fce84f1a07887431f846ac92531e958",
+    "control-ExaSearchBot.body": "69d6522ef32d048d689181e82c1ba261cc065d4bce780f15395a55e6af5e303b",
+    "d1-controls.json": "fed63621f97bfb0968912a61629231c90327f084bc2726abe7b89e0366f5ec28",
+    "control-AhrefsBot.body": "69d6522ef32d048d689181e82c1ba261cc065d4bce780f15395a55e6af5e303b",
+    "prompts-head.headers.json": "84c66e9220c0836ddabd2191d8492f08abdfa97ae90a0dc1a00c1513ab2118be",
+    "public-report-repeat.body": "08ee9a2ecb252042796f16783a72afdb34d7a9b0ef9c34886c7f80c737992fe0",
+    "policy-preflight.headers.json": "b715ec9ac9564df5363bce4015fc2d3fa8bef131393b2e080fabfb0528af9764",
+    "article-head.headers.json": "0d938e815ad7f0f21bb05ec433ddcb13ef3d8fdd2fabf0b7adaf94e0b669af4c",
+    "verify-controls.sql": "ee875ce3c48bd0f7aa42217c1a24190c3fbd5ffe8a72038767b48922c6b01c5b",
+    "gk-classification-deployments-after.json": "3af7e1f0c025e75253c7547a301b72803d5737f932a6d96252611fc5421e0e75",
+    "gk-classification-version.json": "5fcb4fd09fd073cd777927af53c30f4e274f2eeecb9632a3a87993460022042b",
+    "gk-classification-control.json": "f4ea01d6b16c5ed14b81ee834899f7ba49694f1169db9ac3bebfe49c79264cdf"
+  }
+}
