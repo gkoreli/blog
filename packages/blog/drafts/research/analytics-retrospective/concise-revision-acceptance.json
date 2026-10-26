@@ -1,0 +1,23 @@
+{
+  "sourceCommit": "c7685c5",
+  "checkedAt": "2026-10-26T05:32:38.218Z",
+  "markdownStatus": 200,
+  "markdownMatchesIsolatedBuild": true,
+  "markdownSha256": "435325fb42139a1d5f5d37bf630e9df1fa48dc3e2a8486af0977457a7c2ac653",
+  "articleHead": 200,
+  "promptsHead": 200,
+  "prompts": 15,
+  "accepted": true,
+  "editorialChecks": {
+    "wordsBefore": 4583,
+    "wordsAfter": 1153,
+    "estimatedMinutesAt200To225WordsPerMinute": [
+      5.1,
+      5.8
+    ],
+    "prompts": 15,
+    "sourceLinksExist": true,
+    "runtimeChanges": false
+  },
+  "scope": "Generated article/Markdown and internal-link checks; live Markdown exactly equals the isolated build, article/prompts HEAD availability and public prompt count. No rendered-browser layout or new analytics-runtime acceptance claimed."
+}
