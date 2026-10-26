@@ -33,3 +33,26 @@ use wrangler cli to look and analyze our data
 ---
 
 fix the Exa and Ahrefs classification gaps. preserve the evidence and update the article as we learn.
+
+---
+
+Whats remaining? What did we learn afterall?
+
+---
+
+When was the last time we made work around the analytics? What did we build and why
+
+---
+
+Whats the delta since then? Did we analyze the entire data since then?
+
+---
+
+# Response annotations:
+Each item contains text selected from an earlier Codex response and may include a user comment. Treat items as Annotation 1, Annotation 2, and so on in array order. Use every selection as context and address every comment. For every annotation you address, include its inline directive `:codex-annotation{index="N"}`, where N is its one-based array position (for example, `:codex-annotation{index="1"}`). Do not use unstructured annotation labels.
+<response-annotations>
+[{"text":"Recent inspected events contain the new referrer categories and network-source provenance"}]
+</response-annotations>
+
+## My request:
+Exactly what we need to harden in our understanding and read more authoritative docs

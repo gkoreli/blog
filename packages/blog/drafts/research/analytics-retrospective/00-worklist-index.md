@@ -67,3 +67,13 @@ The later explicit Exa/Ahrefs repair request authorizes implementation and artic
 - Local checks pass. Source `0d12382` was pushed; Wrangler activation, four excluded live UA controls, the separate signer report and a cache MISS/HIT are accepted in the [release receipt](classification-release-acceptance.json). Signed-role preservation uses a local fixture key; no organic vendor-signature acceptance is claimed. TASK-0119 is in progress, not complete. No recurring capture is scheduled.
 
 Next bounded action after this repair: verify actual owner-browser exclusion before calibration. Per-observation versions, native entitlement/field acceptance and signature-profile work remain open.
+
+## Follow-up understanding — October 25 Pacific / October 26 UTC
+
+[Field semantics and evidence boundaries](09-field-semantics-and-evidence-boundaries.md) cross-references seven primary documentation sources with the current extractor, parser, writer, route lookup and background lifecycle. [Eleven referrer and five simulated network cases](field-semantics.json), [reproducer](probe-field-semantics.mjs), establish local transformations; analytics tests pass 57/57. This review makes no production calls and does not complete native/runtime or browser acceptance.
+
+The article now distinguishes populated fields from validated values, hostname grouping from browser origin, origin-only root ambiguity and unsupported legitimate referrer forms. It also explicitly limits the original audit to September 27–partial October 26: the September 9–26 gap is still unanalysed. Four subsequent shaping messages, including the annotated request, bring provenance to ten complete messages. Baseline capture files and original release receipts remain frozen.
+
+Next bounded analysis: a locally checked, budgeted release-to-cutoff aggregate for the complete interval, preserving windows and method boundaries. Actual owner-browser exclusion remains the gate before navigation/calibration experiments. Meaning/validation changes identified by this probe are proposals, not deployed repairs.
+
+Validation for this follow-up: 57 analytics tests; frontmatter validation; 78 local document links; saved JSON and source commitments; isolated production generation of 31 posts; one article H1 and ten escaped prompt blocks. Shared dist and other servers were untouched. Source publication and subsequent live article verification remain separate from this local acceptance.

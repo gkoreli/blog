@@ -1,0 +1,177 @@
+{
+  "capturedAt": "2026-10-26T02:12:56.067Z",
+  "sourceCommit": "4f569b12653bb42ba3d5c5fc90bab3e7877ccd31",
+  "runtime": "v24.14.1",
+  "sourceHashes": {
+    "src/referrals.ts": "ef88c074ac2018aa02a7ce793d2aa1c2b1d6f941bc35bda7d8a282df52de8495",
+    "src/metadata.ts": "71b9952f6e35abcdcbd680b497f1fa9ad2d9c38c152d425cd28ce8ecc7b4da51",
+    "src/db.ts": "457275eff44251b6e64c72d93db0a67684320a1baab917672b98f32bc8a4b7fb"
+  },
+  "networkCalls": 0,
+  "productionObservations": 0,
+  "databaseCalls": 0,
+  "referrers": [
+    {
+      "name": "missing",
+      "supplied": null,
+      "result": {
+        "referrerHost": null,
+        "internalReferrerPath": null,
+        "referrerState": "absent"
+      },
+      "browserSameOrigin": null
+    },
+    {
+      "name": "empty",
+      "supplied": "",
+      "result": {
+        "referrerHost": null,
+        "internalReferrerPath": null,
+        "referrerState": "absent"
+      },
+      "browserSameOrigin": null
+    },
+    {
+      "name": "external-full",
+      "supplied": "https://source.example/post?q=fixture#fragment",
+      "result": {
+        "referrerHost": "source.example",
+        "internalReferrerPath": null,
+        "referrerState": "external"
+      },
+      "browserSameOrigin": false
+    },
+    {
+      "name": "external-origin-only",
+      "supplied": "https://source.example/",
+      "result": {
+        "referrerHost": "source.example",
+        "internalReferrerPath": null,
+        "referrerState": "external"
+      },
+      "browserSameOrigin": false
+    },
+    {
+      "name": "internal-full",
+      "supplied": "https://gkoreli.com/engineering?q=fixture#fragment",
+      "result": {
+        "referrerHost": null,
+        "internalReferrerPath": "/engineering",
+        "referrerState": "internal"
+      },
+      "browserSameOrigin": true
+    },
+    {
+      "name": "internal-origin-only",
+      "supplied": "https://gkoreli.com/",
+      "result": {
+        "referrerHost": null,
+        "internalReferrerPath": "/",
+        "referrerState": "internal"
+      },
+      "browserSameOrigin": true
+    },
+    {
+      "name": "hostname-alias-different-origin",
+      "supplied": "http://www.gkoreli.com:8080/engineering",
+      "result": {
+        "referrerHost": null,
+        "internalReferrerPath": "/engineering",
+        "referrerState": "internal"
+      },
+      "browserSameOrigin": false
+    },
+    {
+      "name": "unrecognized-internal-path",
+      "supplied": "https://gkoreli.com/unregistered",
+      "result": {
+        "referrerHost": null,
+        "internalReferrerPath": null,
+        "referrerState": "internal"
+      },
+      "browserSameOrigin": true
+    },
+    {
+      "name": "relative-reference",
+      "supplied": "/engineering",
+      "result": {
+        "referrerHost": null,
+        "internalReferrerPath": null,
+        "referrerState": "unusable"
+      },
+      "browserSameOrigin": null
+    },
+    {
+      "name": "about-blank",
+      "supplied": "about:blank",
+      "result": {
+        "referrerHost": null,
+        "internalReferrerPath": null,
+        "referrerState": "unusable"
+      },
+      "browserSameOrigin": null
+    },
+    {
+      "name": "malformed",
+      "supplied": "not a valid absolute URL",
+      "result": {
+        "referrerHost": null,
+        "internalReferrerPath": null,
+        "referrerState": "unusable"
+      },
+      "browserSameOrigin": null
+    }
+  ],
+  "networks": [
+    {
+      "name": "provider-shaped-fixture",
+      "extracted": {
+        "asn": 64512,
+        "asOrg": "Fixture ASN owner",
+        "country": "US"
+      },
+      "sourceMarker": "request"
+    },
+    {
+      "name": "no-cf",
+      "extracted": {
+        "asn": null,
+        "asOrg": null,
+        "country": null
+      },
+      "sourceMarker": null
+    },
+    {
+      "name": "nonfinite-asn",
+      "extracted": {
+        "asn": null,
+        "asOrg": null,
+        "country": null
+      },
+      "sourceMarker": null
+    },
+    {
+      "name": "finite-negative-not-rejected",
+      "extracted": {
+        "asn": -1,
+        "asOrg": null,
+        "country": null
+      },
+      "sourceMarker": "request"
+    },
+    {
+      "name": "finite-fraction-not-rejected",
+      "extracted": {
+        "asn": 1.5,
+        "asOrg": null,
+        "country": null
+      },
+      "sourceMarker": "request"
+    }
+  ],
+  "limits": [
+    "Constructed inputs establish local parser/marker behavior, not frequency or validity of production values.",
+    "Native cf metadata is simulated; negative/fractional ASN fixtures are validation boundary tests, not observed provider outputs.",
+    "No real browser navigation, native ASN verification or release-to-date audit is performed."
+  ]
+}
