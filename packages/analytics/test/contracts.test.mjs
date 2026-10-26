@@ -1841,3 +1841,33 @@ test('migration 0010 preserves historical rows and never guesses their implement
   assert.deepEqual({ ...sqlite.prepare('SELECT * FROM page_observations').get() }, { id: 1, path: '/historical', collection_version: null, classifier_version: null });
   assert.throws(() => sqlite.prepare("UPDATE page_observations SET collection_version='' WHERE id=1").run());
 });
+
+test('a temporary owner-only grant works without the broader admin token and expires at its exact boundary', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  const issuedAt = Date.parse('2026-10-26T02:00:00Z');
+  const token = 'a'.repeat(64);
+  const env = { DB: d1, ANALYTICS_HASH_KEY: 'fixture-key', OWNER_MARK_GRANT: JSON.stringify({ token, issuedAt, expiresAt: issuedAt + 900_000 }) };
+  const makeRequest = bearer => request('/api/owner', { method: 'POST', headers: { Authorization: `Bearer ${bearer}` } });
+  assert.equal((await handleOwner(makeRequest(token), env, new Date(NaN))).status, 401);
+  assert.equal((await handleOwner(makeRequest(token), env, new Date(issuedAt - 1))).status, 401);
+  assert.equal((await handleOwner(makeRequest('wrong'), env, new Date(issuedAt))).status, 401);
+  const accepted = await handleOwner(makeRequest(token), env, new Date(issuedAt));
+  assert.equal(accepted.status, 200);
+  assert.deepEqual(await accepted.json(), { marked: true, utcDate: '2026-10-26' });
+  assert.equal(sqlite.prepare('SELECT COUNT(*) count FROM owner_clients').get().count, 1);
+  assert.equal((await handleOwner(makeRequest(token), env, new Date(issuedAt + 900_000))).status, 401);
+});
+
+test('malformed or overlong temporary grants do not bypass owner authentication and admin auth remains valid', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  const issuedAt = Date.parse('2026-10-26T02:00:00Z');
+  const token = 'b'.repeat(64);
+  const req = () => request('/api/owner', { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
+  for (const grant of ['invalid', JSON.stringify(null), JSON.stringify({ token, issuedAt, expiresAt: issuedAt + 900_001 }), JSON.stringify({ token, issuedAt: String(issuedAt), expiresAt: issuedAt + 60_000 }), 'x'.repeat(513)]) {
+    const response = await handleOwner(req(), { DB: d1, ANALYTICS_HASH_KEY: 'fixture-key', OWNER_MARK_GRANT: grant }, new Date(issuedAt));
+    assert.equal(response.status, 401);
+  }
+  assert.equal(sqlite.prepare('SELECT COUNT(*) count FROM owner_clients').get().count, 0);
+  const response = await handleOwner(request('/api/owner', { method: 'POST', headers: { Authorization: 'Bearer original-admin' } }), { DB: d1, ANALYTICS_HASH_KEY: 'fixture-key', ADMIN_SECRET: 'original-admin', OWNER_MARK_GRANT: 'expired-or-malformed' }, new Date(issuedAt));
+  assert.equal(response.status, 200);
+});

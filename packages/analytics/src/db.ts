@@ -6,6 +6,7 @@ export interface Env {
   DB: D1Database;
   ANALYTICS_HASH_KEY: string;
   ADMIN_SECRET?: string;
+  OWNER_MARK_GRANT?: string;
   OWNER_IPS?: string;
 }
 

@@ -51,11 +51,11 @@ test('D1 evidence refuses write metadata, failed statements and absent results',
   assert.throws(() => d1Schema.parse([{ success: true, meta: { rows_written: 0 } }]));
 });
 
-test('RUM comparison excludes stats and APIs, retains all other loads, and does not use visits as views', () => {
+test('RUM comparison excludes stats, owner setup and APIs, retains all other loads, and does not use visits as views', () => {
   const rum = group('/', 2); rum.sum.visits = 1;
   const c = compareDay(day, daily, paths, [rum, group('/stats', 3), group('/stats/detail'), group('/api/stats'), group('/owner'), group('/owner/setup')]);
   assert.equal(c.rumLoads, 2);
-  assert.equal(c.excludedRumLoads, 5);
+  assert.equal(c.excludedRumLoads, 7);
   assert.equal(c.ratio, 3.5);
 });
 

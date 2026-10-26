@@ -6,7 +6,7 @@ export async function markOwner(credential: string, send: typeof fetch = fetch):
     cache: 'no-store', credentials: 'omit', redirect: 'error',
     signal: AbortSignal.timeout(10_000),
   });
-  if (response.status === 401) throw new Error('The owner credential was not accepted.');
+  if (response.status === 401) throw new Error('The owner code was not accepted or has expired.');
   if (!response.ok) throw new Error('Owner marking could not be confirmed. Please try again.');
   const result: unknown = await response.json();
   if (typeof result !== 'object' || result === null || !('marked' in result) || result.marked !== true

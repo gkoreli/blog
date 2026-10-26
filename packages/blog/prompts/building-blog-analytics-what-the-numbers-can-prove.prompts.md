@@ -66,3 +66,13 @@ Proceed
 <send_user_message_question_reply>
 [{"questionItemId":"[\"request_user_input_async\",\"call_732f8fa748d94b8a9098663cdf720419\",0]","answer":"Yes, I can enter it in my browser","question":"The actual-browser exclusion check needs the existing owner/admin credential, which is not available in the local environment. Can you enter it directly in your normal browser when the owner-marking page is ready? Please keep the credential out of chat."}]
 </send_user_message_question_reply>
+
+---
+
+<send_user_message_question_reply>
+[{"questionItemId":"[\"request_user_input_async\",\"call_0f7f2badc9274e38b25b480eb1ed42c3\",0]","question":"The owner page is live: open https://gkoreli.com/owner in your normal browser, enter the existing owner credential, then click “open the verification page.” Let me know when those steps are done so I can check persistence and public exclusion.","answer":"what should i enter?"}]
+</send_user_message_question_reply>
+
+---
+
+can i type something else? i don't remember that value

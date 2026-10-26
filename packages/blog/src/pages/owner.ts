@@ -6,9 +6,9 @@ export function ownerPage() {
     <p>Mark this browser’s current daily identity as yours so its recorded requests are excluded from public analytics.</p>
     <p>This applies to this browser, its current network address and User-Agent, and the current UTC day. Repeat after midnight UTC or when those inputs change. Existing cached reports can take up to one hour to reflect the mark.</p>
     <form id="owner-form" method="post" action="/api/owner">
-      <label for="owner-credential">Owner credential</label>
+      <label for="owner-credential">Owner code</label>
       <input id="owner-credential" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" required>
-      <p>The credential is sent only to this site’s owner endpoint. This page clears the field after submission and does not save it in browser storage.</p>
+      <p>Use the temporary owner code for this check; an existing admin token is also accepted. Never enter your Cloudflare account password. The code is sent only to this site’s owner endpoint. This page clears the field after submission and does not save it in browser storage. Temporary codes expire after at most 15 minutes.</p>
       <button type="submit" id="owner-submit" disabled>Exclude this browser for today</button>
     </form>
     <noscript><p>Enable JavaScript to submit the credential securely through the owner endpoint.</p></noscript>

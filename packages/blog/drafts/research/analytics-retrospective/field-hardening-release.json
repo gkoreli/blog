@@ -80,7 +80,7 @@
   },
   "localChecks": {
     "analyticsTests": 59,
-    "blogTests": 106,
+    "blogTests": "Originally reported 106; final-source run was 105 pass / 1 stale-expectation failure. See verificationCorrection.",
     "typechecks": "pass",
     "isolatedBuildPosts": 31,
     "prompts": 12,
@@ -131,5 +131,15 @@
       "gk-native-http-logs-state.txt": "521d0ffd3f835217c39fdd97bc2a92b0abc21b34e5b39625fe34dd42f4513160",
       "gk-native-http-logs.jpg": "c1c968ce72342d67884f65760688419389cb8bfee5081a7e64b0787e7755b0e8"
     }
+  },
+  "verificationCorrection": {
+    "reportedBlogTests": 106,
+    "actualFinalSourceRun": {
+      "passed": 105,
+      "failed": 1
+    },
+    "cause": "Two owner-path RUM fixtures were added without updating expected excluded loads from five to seven; a subsequent successful typecheck masked the failed test exit in a combined command.",
+    "repair": "Expected excluded count corrected to seven; runtime filter unchanged. Separate follow-up suite passes 106/106.",
+    "evidence": "12-owner-code-and-verification-correction.md"
   }
 }
