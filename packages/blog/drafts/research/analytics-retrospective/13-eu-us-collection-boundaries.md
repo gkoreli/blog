@@ -111,3 +111,6 @@ Next bounded action: settle the requested direct-identifier versus personal-data
 
 
 The [public signer display continuation](14-public-signer-display.md) implements the proposed naming boundary in both signer and signed-agent reason outputs, with SQL grouping and history preservation accepted locally. This supersedes the implementation gap above; production delivery/acceptance remains separate. It does not settle the expanded-capture boundary or existing linked-row retention.
+
+
+[Production signer-display acceptance](public-signer-release.json) now closes that public-output gap: reviewed names in both channels, 273 reconciled selected events, MISS/HIT with identical bytes and the served article match. Private original rows remain intact. This supersedes the pending delivery status for public naming only; expanded diagnostics stay off and the other collection, retention, rights and applicability work remains open.

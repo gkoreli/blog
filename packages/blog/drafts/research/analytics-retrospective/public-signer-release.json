@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-10-26T07:24:50.502Z",
+  "sourceCommit": "f0e7613019c6c7d8b9e7c19ee41bd31796caf00f",
+  "articleStatus": 200,
+  "articleMarkdownMatchesBuild": true,
+  "articleSha256": "882f6c65a827b874c458302776bd55e82e282d14d40a45f30739849d627777a7",
+  "statsPageStatus": 200,
+  "reviewedNamesInBothChannels": true,
+  "query": {
+    "range": "7d",
+    "traffic": "agents",
+    "kind": "signed-agent"
+  },
+  "totals": {
+    "views": 273,
+    "dailyClients": 173,
+    "unattributedViews": 273
+  },
+  "bySigner": [
+    {
+      "signatureAgent": "Exa",
+      "views": 243
+    },
+    {
+      "signatureAgent": "Ahrefs",
+      "views": 30
+    }
+  ],
+  "bySignedReason": [
+    {
+      "reason": "Exa",
+      "views": 243,
+      "dailyClients": 143
+    },
+    {
+      "reason": "Ahrefs",
+      "views": 30,
+      "dailyClients": 30
+    }
+  ],
+  "matchesPreparedSqlCounts": true,
+  "publicReportCalculatedAt": "2026-10-26T07:24:50.194Z",
+  "cache": {
+    "first": "MISS",
+    "repeat": "HIT",
+    "sameBytes": true
+  },
+  "reportRequests": 2,
+  "limit": "Public selected report and generated content; no rendered browser, vendor re-verification, optional capture activation or global privacy-compliance claim.",
+  "deployment": {
+    "createdAt": "2026-10-26T07:24:05.141Z",
+    "versionId": "6d113c39-748e-4ba9-a89b-5d0c58c05828",
+    "percentage": 100,
+    "limit": "Observed activation metadata and live source behavior; no direct Git-to-binary attestation."
+  },
+  "reportVersion": "2026-10-26.3",
+  "metering": {
+    "directReportSelectReads": 41993,
+    "directReportSelectWrites": 0,
+    "directSelectReadCeiling": 50000,
+    "publicColdFills": 1,
+    "publicCacheHits": 1,
+    "limit": "Cold HTTP fill work is additional, not included in the direct SELECT meter or an account-wide total."
+  },
+  "limits": [
+    "Live selected cohort has Exa/Ahrefs only; Other-name and daily-client overlap acceptance is native-fixture evidence, not an organic Other-signer observation.",
+    "Existing source origins and classifications were not rewritten.",
+    "Expanded request diagnostics remain disabled; linked-row retention and collection/disclosure basis remain unresolved."
+  ]
+}

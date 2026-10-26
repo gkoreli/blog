@@ -83,7 +83,9 @@ try {
   assert.equal(literalTotals.views, 5);
   assert.equal(JSON.stringify(literal).includes('private-'), false);
   const productionPlan = { query, start: current.period.start, end: current.period.end, sqlBytes,
-    sqlSha256: createHash('sha256').update(sql).digest('hex'), nativeLiteralPass: true,
+    sqlSha256: createHash('sha256').update(sql).digest('hex'),
+    executionFileBytes: new TextEncoder().encode(sql + ';\n').byteLength,
+    executionFileSha256: createHash('sha256').update(sql + ';\n').digest('hex'), nativeLiteralPass: true,
     selectReadCeiling: 50000, productionCalls: 0 };
   writeFileSync('/tmp/gk-public-signers-production.sql', sql + ';\n');
   writeFileSync('/tmp/gk-public-signers-production-plan.json', JSON.stringify(productionPlan, null, 2) + '\n');

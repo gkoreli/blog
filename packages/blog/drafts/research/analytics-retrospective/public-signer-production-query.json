@@ -47,6 +47,9 @@
     "sqlSha256": "8f42265271a735fe3cc76e7d0790d3db9b8417f00709e54792ae7c499065edd0",
     "nativeLiteralPass": true,
     "selectReadCeiling": 50000,
-    "productionCalls": 1
+    "productionCalls": 1,
+    "executionFileBytes": 70065,
+    "executionFileSha256": "27e8133d3c7fc36c8063b7795bb6304fc5c99b93d2826b0f8df82fc358e616d1",
+    "sqlSha256Scope": "Report statement before the appended semicolon/newline; executionFileSha256 commits the complete CLI input file."
   }
 }

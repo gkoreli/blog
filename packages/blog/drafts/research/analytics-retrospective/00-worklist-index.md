@@ -122,3 +122,6 @@ Off-mode source delivery is accepted in [the release receipt](request-evidence-o
 
 
 Pre-publication acceptance: [one native-accepted production report SELECT](public-signer-production-query.json) returns 273 stored signed-agent outcomes under the proposed name mapping (Exa 243, Ahrefs 30), using 41,993 metered reads and zero writes. The direct-query allowance was 50,000; the planned single cold HTTP fill/repeat is additional service work. [Source/build acceptance](public-signer-source-checks.json) passes. Source push, observed Worker activation and HTTP/cache checks remain separate.
+
+
+The [public signer release](public-signer-release.json) is accepted: source f0e7613, observed 100% activation, both live name channels, the same 273-event selected population as the prepared SELECT, cache MISS/HIT with identical bytes, and article byte match. The native-only Other and overlapping-client branch is not presented as organic acceptance. The article is 1,262 words with 22 prompts. This closes the public signer-display gap while retaining private source evidence. Next bounded action: settle the still-pending collection boundary/basis and aggregate-preserving linked-row retention plan before deliberately enabling optional diagnostics. No active expanded capture or completion of the overall privacy/capture request is claimed.
