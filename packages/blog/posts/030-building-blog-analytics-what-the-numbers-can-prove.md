@@ -15,9 +15,9 @@ series:
 
 # Building Blog Analytics: What the Numbers Can Prove
 
-My blog’s Browser traffic more than doubled between two complete weeks. The totals added up. Yet one unexplained referrer supplied more than half the later week’s events. A dashboard could turn that into a story about audience growth without establishing that more people were reading.
+My blog’s Browser traffic more than doubled between two complete weeks. Yet one unexplained referrer supplied more than half the later week’s events. The totals added up; the audience-growth story did not follow.
 
-That matters when I’m trying to understand which articles are useful and where to spend my writing time. Building analytics with Cloudflare Workers and D1 has meant revisiting three decisions:
+To understand which articles are useful, I’ve had to revisit three analytics decisions:
 
 - What event deserves to be counted?
 - What does a bot’s identity actually establish?
@@ -31,7 +31,7 @@ I [moved collection to the HTTP response boundary](/first-party-analytics-for-a-
 
 The counter now accepts successful, non-prefetch page GETs serving HTML or negotiated Markdown. APIs, feeds, redirects, errors and direct `.md` assets stay outside it. Persistence is best effort. Browser means the request matched our header and network rules. **A stored event establishes a recorded delivery; it cannot establish attention or understanding.**
 
-Daily client IDs have a similar boundary. A keyed hash groups requests by site, UTC date, IP address and User-Agent. The main observation table retains neither raw IPs nor raw User-Agent strings. Changed inputs can split one person’s activity; shared inputs can combine people. Calling those IDs unique readers would introduce another unsupported claim.
+A keyed hash groups requests by site, UTC date, IP address and User-Agent. The observation table retains neither raw IPs nor raw User-Agent strings. Changed inputs can split one person’s activity; shared inputs can combine people. Daily client IDs are not unique readers.
 
 ## One referrer changed the growth story
 
@@ -41,7 +41,7 @@ Browser events rose from **306** in the complete UTC week beginning September 14
 
 That is a sensitivity check. R1 remains included, and the subtraction does not produce a corrected human count. Its operator and authenticity are unresolved.
 
-The request evidence complicates attribution: 124 of R1’s events declared `same-origin` (from this site) while supplying an external referrer. I can count that combination exactly. I cannot identify its operator from it. **Investigating what dominates a metric comes before explaining what the metric means.** Otherwise, an unexplained cohort can drive article rankings and publishing decisions.
+[Recent Cloudflare logs](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/15-native-input-recovery.md) recovered 381 R1 requests over October 24–25, with 29 User-Agent strings. All matched our Browser rules when replayed; none identified a known client. Their operator remains unknown. Those logs and D1 have different, incompletely reconciled populations. **More evidence can test a rule without authenticating its subject.**
 
 ## A signed crawler was being counted as an assistant
 
@@ -49,7 +49,7 @@ The classifier had a quieter error. A verified signature replaced the client’s
 
 Our catalogue also missed four documented names. [ExaSearchBot](https://crawler.exa.ai/) crawls for search; [ExaUser](https://crawler.exa.ai/exauser) retrieves pages requested by users or applications. [AhrefsBot and AhrefsSiteAudit](https://ahrefs.com/robot) declare crawling and auditing roles. Their signing evidence cannot substitute for those distinctions.
 
-The repair recognizes all four names, preserves the declared role when a signature verifies, and reports signing evidence separately. A request can belong to a crawler group and a signer breakdown without being counted twice in the total. Local signed fixtures and excluded live User-Agent controls passed; organic vendor-signed acceptance remains open. The [repair evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/08-classification-repair.md) records that boundary.
+The repair recognizes all four names, preserves declared roles across verified signatures, and reports signing evidence separately without double-counting totals. Local signed fixtures and excluded live User-Agent controls passed; organic vendor-signed acceptance remains open. The [repair evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/08-classification-repair.md) records that boundary.
 
 **Identity, role and trigger answer different questions.** [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) verify covered message components against a key. A User-Agent declares a role and can be copied; it may not be covered by the signature. Neither establishes that a person asked to read this article. Exa’s clients share a signing directory, so the 1,003 historical Exa signer outcomes cannot recover the roles we failed to retain.
 
@@ -57,13 +57,13 @@ The repair recognizes all four names, preserves the declared role when a signatu
 
 I kept the old beacon archive and marked its copied rows by source. New observations now carry collection and classifier versions. That lets a later report distinguish a measurement change from a traffic change without inventing missing historical evidence.
 
-We also discarded the User-Agent after classification, leaving us unable to replay the Exa/Ahrefs gap against its original inputs. Established systems make different choices: [Plausible](https://plausible.io/data-policy) retains parsed software facts and discards raw UA; [the IETF](https://www.ietf.org/policies/web-analytics/) keeps raw visitor data for five days and aggregates for twelve months. I’ve prepared a separate, expiring diagnostic store with bounded, filtered UA evidence; collection remains off while its privacy boundary is settled. Filtering cannot prove arbitrary text contains no personal information. Evidence needed to fix a rule and facts needed for long-term reporting deserve different lifecycles.
+D1 discarded User-Agent after classification, so that table alone cannot replay the Exa/Ahrefs gap. Recent provider logs retained some original inputs; complete historical recovery remains unproven. [Plausible](https://plausible.io/data-policy) keeps parsed software facts; [the IETF](https://www.ietf.org/policies/web-analytics/) keeps raw visitor data for five days and aggregates for twelve months. I’ve prepared an expiring diagnostic store with bounded, filtered UA evidence; collection remains off while its privacy boundary is settled. Filtering cannot prove arbitrary text is free of personal information. Debugging evidence and long-term reports deserve different lifecycles.
 
 Referrers needed the same discipline. Among 2,365 included internal-referrer events, **1,540 recorded `/` as their source**. That can mean the homepage, but it can also mean an origin-only URL whose path was omitted. [Referrer Policy](https://www.w3.org/TR/referrer-policy/) allows detail to be withheld. We had stored more certainty than the input supported.
 
 New observations retain the internal category but omit that ambiguous root source path. Historical rows remain intact and get an explicit label. The tradeoff loses some genuine homepage transitions while avoiding false precision.
 
-The [referrer-abuse policy](/filter-referrer-spam-without-deleting-analytics-history) also separates retained observations from public reporting. Exclusions are versioned and disclosed; unapproved names appear as Other. This prevents automatic promotion of untrusted destinations while preserving evidence for review. Verified signing origins now get public names only after review; other origins stay private and count as Other. R1 remains unresolved.
+The [referrer-abuse policy](/filter-referrer-spam-without-deleting-analytics-history) separates retained observations from public reporting. Exclusions are versioned and disclosed; unapproved names appear as Other, preventing automatic promotion of untrusted destinations. Signing origins also require review before public naming. Original evidence stays private; R1 remains unresolved.
 
 ## Correct totals can still break production
 
@@ -73,13 +73,19 @@ Sharing the selected population and assessment reduced the same report to **33,2
 
 [D1 row reads](https://developers.cloudflare.com/d1/platform/pricing/#definitions) measure query work. A fast response and a correct total don’t tell you what serving that report costs. Acceptance now includes Cloudflare’s local D1 runtime and production-metered reads. Versioned reports are cached for at most an hour, with their original calculation time preserved.
 
-## Next, explain where the measurements diverge
+## Test the stages, not counter agreement
 
-For October 20–25 UTC, D1 recorded **694 Browser HTML events** while Cloudflare’s dashboard showed **117 non-bot beacon loads** after stats/API exclusions. Sampling and path reconciliation were incomplete. Neither number is a human ground truth, and their difference cannot be assigned wholesale to bots. [Beacon blocking, loss and sampling](https://developers.cloudflare.com/web-analytics/faq/) give us mechanisms to test.
+For October 20–25 UTC, D1 recorded **694 Browser HTML events** versus Cloudflare’s **117 non-bot beacon loads** after stats/API exclusions. Sampling and path reconciliation remain incomplete. Neither is human ground truth. Agreement is not the goal; explaining what each instrument observes is.
 
-The next experiment will follow labelled visits through page delivery, script execution, beacon attempt and receipt, including JavaScript-off and blocked-beacon cases. Owner exclusion has passed an agent-operated browser check; my normal browser profile still needs verification before those trials.
+I ran [18 controlled local trials](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/06-controlled-stage-experiment.md), three per condition, using the actual collector and Cloudflare’s local D1 runtime. Three results expose independent failure points:
 
-That is the next useful improvement: explain which collection stage accounts for a discrepancy. The system already makes its events, classifications, exclusions and costs more inspectable. A stronger readership claim will need evidence beyond a request reaching the server.
+- Blocking the beacon left Browser observations intact. `sendBeacon()` returned true in all three cases; the server received none. True means [queued](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon#return_value), not received.
+- Blocking scripts still produced three Browser observations.
+- Injected database failures lost three observations while pages and beacons succeeded.
+
+All browser visits were agent-operated. Twelve stored as Browser; nine delivered beacons. **Neither a browser-shaped request nor successful JavaScript authenticates a human reader.**
+
+These mechanisms do not explain the historical gap’s proportions. Real phones, human-operated browsers, actual JavaScript-off and production beacon receipt remain to test. The next iteration must distinguish delivery, execution, queueing, receipt and persistence, preserving unknowns at every stage.
 
 ---
 
@@ -92,4 +98,4 @@ That is the next useful improvement: explain which collection stage accounts for
 | Message signature | Verification of covered components against a key; [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html), February 2024. |
 | D1 row reads | Database work, separate from audience size; [metering definitions](https://developers.cloudflare.com/d1/platform/pricing/#definitions). |
 
-Sources checked October 25, 2026 Pacific. The [research index](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-retrospective) retains the detailed methods, release receipts, verification corrections and remaining work.
+Sources checked October 25–26, 2026 Pacific. The [research index](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-retrospective) retains methods, receipts, corrections and remaining work.

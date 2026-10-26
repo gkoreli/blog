@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-26T16:15:33.783Z",
+  "home": {
+    "canonical": "https://gkoreli.com/",
+    "description": "Field notes from building and evaluating AI agents, developer tools, and agentic systems — including experiments that fail.",
+    "headings": [
+      "I Am Lost Right Now"
+    ],
+    "identity": [
+      "{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"gkoreli.com\",\"url\":\"https://gkoreli.com\",\"author\":{\"@id\":\"https://gkoreli.com/about#goga-koreli\",\"@type\":\"Person\",\"name\":\"Goga Koreli\",\"url\":\"https://gkoreli.com/about\",\"sameAs\":[\"https://github.com/gkoreli\",\"https://x.com/GogaKoreli\",\"https://www.linkedin.com/in/goga-koreli/\"]}}"
+    ],
+    "title": "Goga Koreli — Agentic Engineering Field Notes"
+  },
+  "about": {
+    "description": "About Goga Koreli — agentic product engineer",
+    "identity": [
+      "{\"@context\":\"https://schema.org\",\"@type\":\"ProfilePage\",\"url\":\"https://gkoreli.com/about\",\"mainEntity\":{\"@id\":\"https://gkoreli.com/about#goga-koreli\",\"@type\":\"Person\",\"name\":\"Goga Koreli\",\"url\":\"https://gkoreli.com/about\",\"sameAs\":[\"https://github.com/gkoreli\",\"https://x.com/GogaKoreli\",\"https://www.linkedin.com/in/goga-koreli/\"]}}"
+    ],
+    "title": "About — Goga Koreli"
+  }
+}

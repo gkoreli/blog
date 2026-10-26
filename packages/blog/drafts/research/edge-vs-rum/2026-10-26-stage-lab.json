@@ -1,0 +1,128 @@
+{
+  "checkedAt": "2026-10-26T16:01:36.435Z",
+  "verifiedAt": "2026-10-26T16:16:06.724Z",
+  "environment": "Node HTTP server, actual analytics collector, native local D1",
+  "collectionVersion": "2026-10-26.3",
+  "classifierVersion": "2026-10-26.3",
+  "node": "v24.14.1",
+  "source": "packages/blog/scripts/analytics-calibration-lab.mjs",
+  "sourceSha256": "17895ebc9cda62e8e28452b25b7fc0760cfa3bd3793d29e78eb3bb3ed5e46108",
+  "productionCalls": 0,
+  "operator": "Agent-operated browser for 15 trials; controlled curl for 3.",
+  "byCondition": [
+    {
+      "condition": "normal",
+      "trials": 3,
+      "deliveries": 3,
+      "acknowledgedObservations": 3,
+      "failedObservations": 0,
+      "scriptReports": 3,
+      "beaconAttemptReports": 3,
+      "queuedTrue": 3,
+      "beaconReceipts": 3,
+      "storedKind": "browser"
+    },
+    {
+      "condition": "block-beacon",
+      "trials": 3,
+      "deliveries": 3,
+      "acknowledgedObservations": 3,
+      "failedObservations": 0,
+      "scriptReports": 3,
+      "beaconAttemptReports": 3,
+      "queuedTrue": 3,
+      "beaconReceipts": 0,
+      "storedKind": "browser"
+    },
+    {
+      "condition": "block-script",
+      "trials": 3,
+      "deliveries": 3,
+      "acknowledgedObservations": 3,
+      "failedObservations": 0,
+      "scriptReports": 0,
+      "beaconAttemptReports": 0,
+      "queuedTrue": 0,
+      "beaconReceipts": 0,
+      "storedKind": "browser"
+    },
+    {
+      "condition": "fail-write",
+      "trials": 3,
+      "deliveries": 3,
+      "acknowledgedObservations": 0,
+      "failedObservations": 3,
+      "scriptReports": 3,
+      "beaconAttemptReports": 3,
+      "queuedTrue": 3,
+      "beaconReceipts": 3,
+      "storedKind": "not-stored"
+    },
+    {
+      "condition": "http-client",
+      "trials": 3,
+      "deliveries": 3,
+      "acknowledgedObservations": 3,
+      "failedObservations": 0,
+      "scriptReports": 0,
+      "beaconAttemptReports": 0,
+      "queuedTrue": 0,
+      "beaconReceipts": 0,
+      "storedKind": "other-bot"
+    },
+    {
+      "condition": "narrow-viewport",
+      "trials": 3,
+      "deliveries": 3,
+      "acknowledgedObservations": 3,
+      "failedObservations": 0,
+      "scriptReports": 3,
+      "beaconAttemptReports": 3,
+      "queuedTrue": 3,
+      "beaconReceipts": 3,
+      "storedKind": "browser"
+    }
+  ],
+  "browser": {
+    "declaredFamily": "chromium",
+    "declaredMajor": 156,
+    "declaredOs": "macos",
+    "declaredOsMajor": 10,
+    "defaultViewportWidth": 1280,
+    "narrowViewport": {
+      "width": 390,
+      "height": 844
+    },
+    "actualMobileHardware": false
+  },
+  "privateArtifacts": {
+    "report.json": "6e5ffe37e7de600c74dfd19ae13c06d895d7ac95a95c682f51c8555aafcc5916",
+    "manifest.json": "ae936c91b2af8643ef8e9cf9804176bcd0619237299bf01f017e1de632253e1e",
+    "browser-visible-results.json": "5d1c8c85141a30766a641ccccbca92a036f4af5372ae678cbc32372f6e47b35e",
+    "negative-checks.json": "9ddaf253a099875cb4761aac351cb3a8d06195fdbc7daa452ad35fd16b852c17",
+    "browser-console.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "stage-browser-proof.png": "58a0426544140e3917fb64496cf6734e6731c5af5f6595218ad76615f717128b"
+  },
+  "negativeChecks": {
+    "checks": [
+      {
+        "case": "cross-origin",
+        "status": 403
+      },
+      {
+        "case": "oversized-body",
+        "status": 400
+      }
+    ],
+    "trialEvidenceUnchanged": true
+  },
+  "limits": [
+    "Agent-operated browser and controlled curl; no human label inferred.",
+    "CSP script blocking is not a browser JavaScript-off setting.",
+    "A narrow viewport is not a real mobile device.",
+    "Local first-party beacon; not Cloudflare ingestion or a historical error-rate estimate.",
+    "Stored kind reads the latest native D1 row for each unique trial path; acknowledgement counts are not an independent exactly-once row-count proof.",
+    "Collection events and beacons came from known automation, so neither authenticates human readership.",
+    "No historical discrepancy prevalence or provider receipt rate follows from deliberately chosen cases."
+  ]
+}

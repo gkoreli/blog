@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-26T16:23:14.378746+00:00",
+  "analyticsTests": {
+    "passed": 86,
+    "failed": 0,
+    "privateLog": "gk-20261026-cohort-replay-tests.txt"
+  },
+  "workspaceTypes": "passed",
+  "frontmatter": "passed",
+  "isolatedBuiltPosts": 31,
+  "articleWordsIncludingGlossary": 1211,
+  "promptCount": 26,
+  "articleH1Count": 1,
+  "relativeDocumentationReferences": 180,
+  "jsonAndFences": "passed",
+  "articleInternalDestinations": "passed",
+  "labCasesAsserted": 18,
+  "labSourceSha256": "17895ebc9cda62e8e28452b25b7fc0760cfa3bd3793d29e78eb3bb3ed5e46108",
+  "limits": [
+    "No production lab instrumentation or optional diagnostics activation.",
+    "Local mechanisms do not establish historical prevalence, human authentication or physical-device coverage.",
+    "Homepage and Trakkr setup changes remain proposed."
+  ]
+}
