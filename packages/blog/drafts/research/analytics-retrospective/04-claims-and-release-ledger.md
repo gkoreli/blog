@@ -44,6 +44,15 @@ This is a retrospective with an unresolved engineering question, not a complete 
 - The local verifier uses native cryptography but local protocol parsing. Matomo is a data source/comparison, not our runtime; Zod and uPlot do not authenticate the data they validate/display.
 - A historical test, release or source pin is not current production health. Today's audit and Wrangler reads supply dated current evidence for their own questions only.
 
-## Release audit to complete
+## Release audit — completed October 25 Pacific
 
-Check every article number against this ledger and the machine-readable captures; verify the complete prompt record and contextual links. Build in isolation, inspect HTML and Markdown representations, and keep deployment activation separate from the source commit. Do not attribute an unmeasured token total, new signature conformance result, browser experiment or R1 classification to this writing pass.
+The article numbers and conclusions were checked against this ledger and the machine-readable captures. Source checks, workspace typechecks, the isolated 31-post build, generated HTML/Markdown/prompts and internal cross-references passed. Both reviews' four precision recommendations are incorporated. The source release is `c4a8ae8`; [the later publication receipt](publication-acceptance.json) separately records observed Worker activation, route availability, live Markdown equality and public five-prompt metadata. No live rendered-browser or HTML-body acceptance is claimed. No unmeasured token total, new signature conformance result, browser experiment or R1 classification is attributed to this writing pass.
+
+| Requested outcome | Current authoritative evidence | Result |
+|---|---|---|
+| Explore and capture today's findings | Original audit plus six Wrangler SELECT receipts, sanitized aggregates, exact SQL templates, private captures and rechecked commitments | Complete for the stated windows and predicates; no actor/reading proof inferred |
+| Read authoritative native and library sources | Capability and standards/library matrices with primary links, versions/check dates, local implementation and measured-receipt cross-references; installed versions rechecked | Complete; actual native entitlements remain a proposed access check |
+| Make an improvement plan | Dependency-ordered plan with existing owners, acceptance evidence, boundaries and stop conditions | Complete as a plan; future implementation remains open |
+| Write the retrospective builder's article | Article 030, historical/current claim ledger, source glossary, concrete mechanisms, corrections, limits and next experiments | Complete; supported first-person work and unresolved outcomes retained |
+| Preserve transparency and provenance | Five full shaping messages, public methods/selected aggregates, private raw records, unchanged earlier frozen footprints | Complete; private hashes are not independent provider authentication |
+| Validate and deliver | Source on main, isolated generated representations and checks, later live Markdown/index equality and HEAD availability | Complete for the publication scope recorded in the receipt |

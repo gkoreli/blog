@@ -1,0 +1,100 @@
+{
+  "checkedAt": "2026-10-26T01:32:53.440Z",
+  "sourceCommit": "c4a8ae834be74dab9a1231291126ced3844c9734",
+  "articleUrl": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove",
+  "sourcePublication": "Committed and pushed to main",
+  "deployment": {
+    "createdAt": "2026-10-26T01:31:31.03036Z",
+    "versions": [
+      {
+        "version_id": "80e49a49-cc47-478b-9983-4ddadab316e6",
+        "percentage": 100
+      }
+    ],
+    "scope": "Activation metadata observed separately; no direct Git-to-Worker attestation inferred.",
+    "versionMetadata": {
+      "id": "80e49a49-cc47-478b-9983-4ddadab316e6",
+      "createdAt": "2026-10-26T01:31:29.877459Z",
+      "annotations": {
+        "workers/triggered_by": "version_upload"
+      }
+    }
+  },
+  "responses": {
+    "article-head": {
+      "status": 200,
+      "date": "Mon, 26 Oct 2026 01:32:04 GMT",
+      "contentType": "text/html"
+    },
+    "markdown": {
+      "status": 200,
+      "date": "Mon, 26 Oct 2026 01:32:04 GMT",
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    "prompts-head": {
+      "status": 200,
+      "date": "Mon, 26 Oct 2026 01:32:04 GMT",
+      "contentType": "text/html"
+    }
+  },
+  "markdown": {
+    "bytes": 26402,
+    "sha256": "a927b0f319efb9d9c507d95b74e1a7fe3cc721368121fbd537bf8149a05787d3",
+    "matchesIsolatedBuild": true
+  },
+  "publicMetadata": {
+    "slug": "building-blog-analytics-what-the-numbers-can-prove",
+    "title": "Building Blog Analytics: What the Numbers Can Prove",
+    "date": "2026-10-25",
+    "section": "engineering",
+    "description": "Lessons from building Cloudflare Workers and D1 blog analytics: define page events, separate agent identity from purpose, preserve history, and measure query costs.",
+    "tags": [
+      "analytics",
+      "cloudflare-workers",
+      "d1",
+      "bots",
+      "observability"
+    ],
+    "featured": false,
+    "alternativeHeadline": "A retrospective on page events, bot identity, referrer abuse, query costs, and the evidence still missing from my blog analytics",
+    "series": {
+      "id": "measurement-boundaries",
+      "title": "Measurement boundaries",
+      "order": 6
+    },
+    "url": "/building-blog-analytics-what-the-numbers-can-prove",
+    "markdown": "/building-blog-analytics-what-the-numbers-can-prove.md",
+    "prompts": "/building-blog-analytics-what-the-numbers-can-prove/prompts",
+    "promptCount": 5
+  },
+  "validation": {
+    "receiptHashesRechecked": 16,
+    "probeAndClassifierHashes": "match retained source",
+    "dependencyVersions": {
+      "node": "v24.14.1",
+      "zod": "4.3.6",
+      "uplot": "1.6.32",
+      "wrangler": "4.71.0",
+      "cloudflareWorkersTypes": "4.20260306.1"
+    },
+    "isolatedBuildPosts": 31,
+    "articleH1": 1,
+    "escapedPromptBlocks": 5,
+    "articleInternalLinks": 30,
+    "initialAuditHashesRechecked": 8
+  },
+  "limits": [
+    "HTML route and prompt availability were checked with HEAD, not a live rendered-browser or HTML-body test.",
+    "Markdown bytes and public metadata match the delivered article; they do not prove every HTML display behavior.",
+    "No canonical HTML-page GET, synthetic browser trial, new SQL or runtime analytics change was performed for this acceptance; only HEAD and direct static Markdown/index requests."
+  ],
+  "captureHashes": {
+    "deployments.json": "896e40a7ad13f54168e7ce4ee8c52735e2ae42989fdbdfce2a66b1c03133b1d1",
+    "article-head.headers": "ea802ff62164c49255de4afad7f768daf9d1fbc6729c9426b5077dba1b57f109",
+    "markdown.headers": "fa7666dfbe52b3606e38aed83396f3b6d77e0ef1c4579a5da0663a251e53b034",
+    "prompts-head.headers": "3fcfb3028605562a78ae3734d368191013626e9e5ec2b9afececf63c683f2273",
+    "article.md": "a927b0f319efb9d9c507d95b74e1a7fe3cc721368121fbd537bf8149a05787d3",
+    "posts.json": "72dc3d308f87b9550aa849121628f02e0f20cd7f1032903ae56c4bd04d49b975",
+    "version.json": "f44924d6c3b1c10060a3d1f3434cf3c2408c4817a93ece2ceccefb041187ee40"
+  }
+}
