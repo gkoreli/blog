@@ -1,3 +1,6 @@
+/** Prepared private-evidence policy shared by collector and disclosure. */
+export const DIAGNOSTIC_RETENTION_DAYS = 60;
+
 export type TrafficClass = 'browser' | 'bot' | 'ai';
 /** Public filters group stored request evidence and declared roles. */
 export type TrafficFilter = 'browser' | 'agents' | 'crawlers' | 'automation' | 'all';

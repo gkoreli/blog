@@ -1,3 +1,5 @@
+import { recordDiagnostic, type ObservationDiagnostic } from './diagnostics.js';
+import type { RequestEvidence } from './request-evidence.js';
 import { COLLECTION_VERSION, CLASSIFIER_VERSION } from './versions.js';
 import type { DeviceType, ReferrerState, Representation, SignatureStatus, TrafficClass } from './contracts.js';
 import type { ReaderKind } from './readerkind.js';
@@ -8,6 +10,7 @@ export interface Env {
   ADMIN_SECRET?: string;
   OWNER_MARK_GRANT?: string;
   OWNER_IPS?: string;
+  ANALYTICS_DIAGNOSTICS?: string;
 }
 
 export interface PageObservation {
@@ -35,6 +38,7 @@ export interface PageObservation {
   readerKind: ReaderKind;
   readerReason: string;
   observedAt: string;
+  requestEvidence?: RequestEvidence;
 }
 
 const INSERT_OBSERVATION = `INSERT INTO page_observations (
@@ -64,11 +68,12 @@ const INSERT_OBSERVATION = `INSERT INTO page_observations (
   referrer_state,
   internal_referrer_path,
   collection_version,
-  classifier_version
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  classifier_version,
+  request_evidence
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-export async function recordPageObservation(db: D1Database, observation: PageObservation): Promise<void> {
-  await db.prepare(INSERT_OBSERVATION).bind(
+export async function recordPageObservation(db: D1Database, observation: PageObservation, diagnostic?: ObservationDiagnostic): Promise<void> {
+  const result = await db.prepare(INSERT_OBSERVATION).bind(
     observation.path,
     observation.referrerHost,
     observation.country,
@@ -96,5 +101,14 @@ export async function recordPageObservation(db: D1Database, observation: PageObs
     observation.internalReferrerPath,
     COLLECTION_VERSION,
     CLASSIFIER_VERSION,
+    observation.requestEvidence === undefined ? null : JSON.stringify(observation.requestEvidence),
   ).run();
+  if (diagnostic !== undefined) {
+    // Preserve the acknowledged base observation if its optional diagnostic fails.
+    try {
+      await recordDiagnostic(db, result.meta.last_row_id, observation.observedAt, diagnostic);
+    } catch {
+      console.warn('analytics.diagnostic_write_failed', { operationId: diagnostic.operationId, collectionVersion: COLLECTION_VERSION });
+    }
+  }
 }

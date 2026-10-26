@@ -1,3 +1,6 @@
+import { allowsDiagnostics } from './diagnostics.js';
+import { extractRequestEvidence, extractDiagnosticInputs } from './request-evidence.js';
+import { COLLECTION_VERSION, VERIFIER_PROFILE_VERSION } from './versions.js';
 import { classifyDevice, classifyTraffic } from './classify.js';
 import type { Representation } from './contracts.js';
 import { recordPageObservation, type Env, type PageObservation } from './db.js';
@@ -12,6 +15,7 @@ export type { Env } from './db.js';
 export { ANALYTICS_EVIDENCE_SINCE } from './contracts.js';
 export type { ReaderKind, Representation, StatsResponse, TrafficFilter } from './contracts.js';
 export { READER_GROUPS, READER_KINDS, isReaderKind, readerGroupOf } from './contracts.js';
+export { purgeExpiredDiagnostics, DIAGNOSTIC_RETENTION_DAYS } from './diagnostics.js';
 export { handleOwner } from './owner.js';
 export { handleStats, parseStatsQuery } from './stats.js';
 export { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
@@ -20,25 +24,61 @@ function sqliteTimestamp(date: Date): string {
   return date.toISOString().replace('T', ' ').slice(0, 19);
 }
 
-async function verifyRequestSignature(request: Request, headersPresent: boolean): Promise<WebBotAuthResult> {
+export const SIGNATURE_DEADLINE_MS = 2000;
+export const PUBLIC_PATHS_DEADLINE_MS = 500;
+
+class ObservationConfigurationError extends Error {}
+
+async function verifyRequestSignature(request: Request, headersPresent: boolean, verifier?: ObservationOptions['verifySignature']): Promise<WebBotAuthResult> {
   if (!headersPresent) return { status: 'absent' };
-  return verifyWebBotAuth(request);
+  const controller = new AbortController();
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const deadline = new Promise<WebBotAuthResult>(resolve => {
+    timer = setTimeout(() => {
+      resolve({ status: 'unverified', reason: 'verification-timeout' });
+      controller.abort();
+    }, SIGNATURE_DEADLINE_MS);
+  });
+  const verification = Promise.resolve().then(() => verifier
+    ? verifier(request)
+    : verifyWebBotAuth(request, { fetcher: (input, init) => fetch(input, { ...init, signal: controller.signal }) }))
+    .catch((): WebBotAuthResult => ({ status: 'unverified', reason: 'verification-error' }));
+  try { return await Promise.race([verification, deadline]); }
+  finally {
+    if (timer !== undefined) clearTimeout(timer);
+    controller.abort();
+  }
 }
 
 async function persistObservation(
   request: Request,
   representation: Representation,
+  response: Response,
   env: Env,
   observedAt: Date,
+  operationId: string,
   options: ObservationOptions,
 ): Promise<void> {
   const hashKey = env.ANALYTICS_HASH_KEY;
   if (typeof hashKey !== 'string' || hashKey.length === 0) {
-    throw new Error('ANALYTICS_HASH_KEY must not be empty');
+    throw new ObservationConfigurationError('ANALYTICS_HASH_KEY must not be empty');
   }
 
   const internal = parseReferrer(request.headers.get('Referer'), new URL(request.url).hostname).referrerState === 'internal';
-  const publicPaths = internal && options.publicPagePaths ? await options.publicPagePaths() : undefined;
+  const diagnosticsRequested = allowsDiagnostics(env.ANALYTICS_DIAGNOSTICS, request);
+  let publicPaths: ReadonlySet<string> | undefined;
+  if ((internal || diagnosticsRequested) && options.publicPagePaths) {
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    try {
+      const timeout = new Promise<undefined>(resolve => {
+        timer = setTimeout(() => resolve(undefined), PUBLIC_PATHS_DEADLINE_MS);
+      });
+      publicPaths = await Promise.race([options.publicPagePaths(), timeout]);
+      if (publicPaths === undefined) console.warn('analytics.public_path_index_timeout', { operationId, collectionVersion: COLLECTION_VERSION });
+    } catch { console.warn('analytics.public_path_index_unavailable', { operationId, collectionVersion: COLLECTION_VERSION }); }
+    finally { if (timer !== undefined) clearTimeout(timer); }
+  }
+  const captureEvidence = diagnosticsRequested && publicPaths?.has(new URL(request.url).pathname) === true;
   const metadata = extractRequestMetadata(request, env.OWNER_IPS, publicPaths);
   const classification = classifyTraffic(metadata.userAgent);
   const utcDate = observedAt.toISOString().slice(0, 10);
@@ -50,7 +90,7 @@ async function persistObservation(
       ip: metadata.ip,
       userAgent: metadata.userAgent,
     }),
-    verifyRequestSignature(request, metadata.hasSignatureHeaders),
+    verifyRequestSignature(request, metadata.hasSignatureHeaders, options.verifySignature),
   ]);
   const reader = classifyReaderKind({
     trafficClass: classification.trafficClass,
@@ -91,12 +131,23 @@ async function persistObservation(
     readerKind: reader.kind,
     readerReason: reader.reason,
     observedAt: sqliteTimestamp(observedAt),
+    ...(captureEvidence ? { requestEvidence: extractRequestEvidence(request, response) } : {}),
   };
-  await recordPageObservation(env.DB, observation);
+  const diagnostic = captureEvidence ? {
+    ...extractDiagnosticInputs(request),
+    operationId,
+    requestRayId: /^[a-f0-9]{16,32}(?:-[A-Z]{3})?$/i.test(request.headers.get('CF-Ray') ?? '') ? request.headers.get('CF-Ray') : null,
+    verifierProfile: VERIFIER_PROFILE_VERSION,
+    signatureOutcome: signature.status,
+    signatureReason: signature.status === 'unverified' ? signature.reason : null,
+  } : undefined;
+  await recordPageObservation(env.DB, observation, diagnostic);
 }
 
 export interface ObservationOptions {
   publicPagePaths?: () => Promise<ReadonlySet<string>>;
+  /** Dependency injection for controlled acceptance; production uses the native verifier. */
+  verifySignature?: (request: Request) => Promise<WebBotAuthResult>;
 }
 
 export function observePageResponse(
@@ -108,5 +159,16 @@ export function observePageResponse(
   options: ObservationOptions = {},
 ): void {
   if (!isEligiblePageResponse(request, response, representation)) return;
-  ctx.waitUntil(persistObservation(request, representation, env, new Date(), options));
+  const operationId = crypto.randomUUID();
+  console.log('analytics.observation_attempt', { operationId, collectionVersion: COLLECTION_VERSION });
+  const work = persistObservation(request, representation, response, env, new Date(), operationId, options)
+    .then(() => { console.log('analytics.observation_stored', { operationId, collectionVersion: COLLECTION_VERSION }); })
+    .catch((error: unknown) => {
+      const reason = error instanceof ObservationConfigurationError ? 'missing-hash-key' : 'persistence-or-processing';
+      console.warn('analytics.observation_write_failed', { operationId, collectionVersion: COLLECTION_VERSION, reason });
+      // Keep failure observable to waitUntil and fixtures without serializing private DB errors.
+      if (error instanceof ObservationConfigurationError) throw error;
+      throw new Error('Analytics observation could not be stored');
+    });
+  ctx.waitUntil(work);
 }

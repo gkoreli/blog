@@ -37,6 +37,7 @@ CREATE TABLE page_observations (
   asn_source TEXT CHECK (asn_source IN ('request', 'zone-sample')),
   collection_version TEXT CHECK (collection_version IS NULL OR length(collection_version) BETWEEN 1 AND 32),
   classifier_version TEXT CHECK (classifier_version IS NULL OR length(classifier_version) BETWEEN 1 AND 32),
+  request_evidence TEXT CHECK (request_evidence IS NULL OR (json_valid(request_evidence) AND length(CAST(request_evidence AS BLOB)) <= 2048)),
   observed_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
@@ -77,3 +78,13 @@ CREATE TABLE reader_kind_revisions (
 
 CREATE INDEX idx_reader_kind_revisions_observation
   ON reader_kind_revisions(observation_id);
+
+-- Private diagnostic evidence has a separate lifecycle from audience events.
+CREATE TABLE page_observation_diagnostics (
+  observation_id INTEGER PRIMARY KEY REFERENCES page_observations(id) ON DELETE CASCADE,
+  evidence_version TEXT NOT NULL CHECK (length(evidence_version) BETWEEN 1 AND 32),
+  captured_at TEXT NOT NULL,
+  expires_at TEXT NOT NULL CHECK (expires_at > captured_at),
+  payload TEXT NOT NULL CHECK (json_valid(payload) AND length(CAST(payload AS BLOB)) <= 4096)
+);
+CREATE INDEX idx_page_observation_diagnostics_expiry ON page_observation_diagnostics(expires_at);

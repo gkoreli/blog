@@ -80,3 +80,33 @@ can i type something else? i don't remember that value
 ---
 
 Can you iterate on the article make it concise and more reader human centric, we need to cut out the bloat and meta conversations. This is a builder’s log but we need to make it interesting state the problem, whats the big deal why am i reading this, call out the critical details along the article. Provide the highest value concise paragraphs across the board. We need to distill the highest value information into a shorter format i am thinking at maximum 5-6 min read.
+
+---
+
+Who is that referrer btw that spiked the traffic? Is it a legit site or sus?
+
+---
+
+Why didnt we retain use agents?
+
+---
+
+How is user agent a privacy information lmao, are we for real?
+
+---
+
+Is it due to pii guidance from europe or somewhere lmao why are we discarding high value information lol
+
+---
+
+Please capture important information lmao, we can’t restore whats lost but at least going forward we are not going to lose more data and also we will be able to better understand our readers. Like as long as we respect pii wr should save this information properly. Please explore with evidences and best practice wgat can we capture without crossing the boundary into saving PII ir anything like that. I feel like we should be capturing lot more data while still fully respecting PII and european guidances.
+
+---
+
+We need to respect both EU and US guidance
+
+---
+
+<send_user_message_question_reply>
+[{"questionItemId":"[\"request_user_input_async\",\"call_062b9c17244a4c2eb19a68e501bf7891\",0]","answer":"Read some authoritative docs, we are noth the only ones facing these questions","question":"For the collection boundary, should we exclude direct identifiers (names, emails, raw IPs, credentials) while allowing private, time-limited pseudonymous diagnostics such as User-Agent evidence? EU and California definitions can still treat those linked records as personal data; “zero personal data” would require a much stricter aggregate-only design."}]
+</send_user_message_question_reply>

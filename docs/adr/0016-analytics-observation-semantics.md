@@ -121,7 +121,7 @@ Requirements:
 - Encode fields structurally; do not concatenate ambiguous delimiters.
 - Scope by host and UTC date.
 - Store 128 bits as 32 lowercase hexadecimal characters.
-- Never store raw IP or raw User-Agent.
+- Never persist raw IP in this analytics model. Raw User-Agent stays out of long-lived observation rows. The owner’s later diagnostic exception permits bounded private UA evidence; the [separate-layer proposal and activation gates](0016.10-private-request-evidence.md) preserve that direction without treating private linked data as anonymous. The optional layer is not active merely because this exception is documented.
 - Do not call the result anonymous. It is a cookieless, daily pseudonymous client estimate.
 - Do not claim cross-day, cross-device, or cross-network uniqueness.
 

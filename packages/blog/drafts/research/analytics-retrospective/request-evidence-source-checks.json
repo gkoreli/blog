@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-26T06:56:51.488872+00:00",
+  "analyticsTests": 80,
+  "blogTests": 106,
+  "workspaceTypes": "pass",
+  "frontmatterPosts": 20,
+  "isolatedBuildPosts": 31,
+  "articleWordsIncludingGlossary": 1250,
+  "articleH1s": 1,
+  "shapingPrompts": 22,
+  "changedDocumentLinksChecked": 145,
+  "missingDocumentLinks": 0,
+  "articleMarkdownSha256": "dcb20079e5305b9484aac2f035d80994955ea77d39a7bf086522cfb333a5f8e2",
+  "profileActivation": "off; no new configuration value",
+  "productionMigration": "0011 applied before source publication; no expanded configuration value",
+  "scope": "Prepared source and local synthetic acceptance; production activation is separate.",
+  "migrationSqlSha256": "f40e7fb6ef235b4f9ef833a3e5003a8a7179a8eac1ba435b5e116e48b15b747f",
+  "migrationMetering": "Wrangler reported four executed commands and success; schema/migration bookkeeping is not an itemized audience SELECT cost."
+}

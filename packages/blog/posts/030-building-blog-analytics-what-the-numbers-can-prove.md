@@ -31,7 +31,7 @@ I [moved collection to the HTTP response boundary](/first-party-analytics-for-a-
 
 The counter now accepts successful, non-prefetch page GETs serving HTML or negotiated Markdown. APIs, feeds, redirects, errors and direct `.md` assets stay outside it. Persistence is best effort. Browser means the request matched our header and network rules. **A stored event establishes a recorded delivery; it cannot establish attention or understanding.**
 
-Daily client IDs have a similar boundary. A keyed hash groups requests by site, UTC date, IP address and User-Agent without retaining the raw IP or User-Agent. Changed inputs can split one person’s activity; shared inputs can combine people. Calling those IDs unique readers would introduce another unsupported claim.
+Daily client IDs have a similar boundary. A keyed hash groups requests by site, UTC date, IP address and User-Agent. The main observation table retains neither raw IPs nor raw User-Agent strings. Changed inputs can split one person’s activity; shared inputs can combine people. Calling those IDs unique readers would introduce another unsupported claim.
 
 ## One referrer changed the growth story
 
@@ -56,6 +56,8 @@ The repair recognizes all four names, preserves the declared role when a signatu
 ## Preserve uncertainty in the data
 
 I kept the old beacon archive and marked its copied rows by source. New observations now carry collection and classifier versions. That lets a later report distinguish a measurement change from a traffic change without inventing missing historical evidence.
+
+We also discarded the User-Agent after classification, leaving us unable to replay the Exa/Ahrefs gap against its original inputs. Established systems make different choices: [Plausible](https://plausible.io/data-policy) retains parsed software facts and discards raw UA; [the IETF](https://www.ietf.org/policies/web-analytics/) keeps raw visitor data for five days and aggregates for twelve months. I’ve prepared a separate, expiring diagnostic store with bounded, filtered UA evidence; collection remains off while its privacy boundary is settled. Filtering cannot prove arbitrary text contains no personal information. Evidence needed to fix a rule and facts needed for long-term reporting deserve different lifecycles.
 
 Referrers needed the same discipline. Among 2,365 included internal-referrer events, **1,540 recorded `/` as their source**. That can mean the homepage, but it can also mean an origin-only URL whose path was omitted. [Referrer Policy](https://www.w3.org/TR/referrer-policy/) allows detail to be withheld. We had stored more certainty than the input supported.
 

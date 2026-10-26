@@ -2,6 +2,7 @@ import {
   handleOwner,
   handleStats,
   observePageResponse,
+  purgeExpiredDiagnostics,
   type Env as AnalyticsEnv,
   type Representation,
 } from '@gkoreli/analytics';
@@ -254,6 +255,10 @@ export default {
   async scheduled(controller: ScheduledController, env: Env, _ctx: ExecutionContext): Promise<void> {
     await Promise.all([
       handleScheduled(controller, env),
+      purgeExpiredDiagnostics(env.DB).then(result => {
+        console.log('analytics.diagnostic_cleanup', result);
+        if (result.atLimit) console.warn('analytics.diagnostic_cleanup_limit_reached');
+      }).catch(() => console.warn('analytics.diagnostic_cleanup_failed')),
       purgeOldClientErrors(env.DB).then(count =>
         console.log(`[client:error:cron] Purged ${count} old client errors.`),
       ).catch(err =>

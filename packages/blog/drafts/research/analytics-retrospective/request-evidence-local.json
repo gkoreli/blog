@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-26T06:47:51.838Z",
+  "runtime": "Actual collector code with Miniflare/workerd local D1",
+  "productionCalls": 0,
+  "migration": "0011_request_evidence.sql",
+  "legacyEvidenceUnchanged": true,
+  "currentObservationCases": 9,
+  "structuredRows": 4,
+  "privateDiagnosticRows": 3,
+  "diagnosticFailurePreservesBase": true,
+  "signatureTimeoutPreservesBase": true,
+  "optOutModeAndUnknownPathCasesOmitOptionalEvidence": true,
+  "identifyingCanariesAbsent": true,
+  "publicReportViews": 9,
+  "privateCanariesAbsentFromReport": true,
+  "expiryReadVisibleRows": 0,
+  "cleanupDeleted": 3,
+  "audienceRowsAfterCleanup": 10,
+  "candidateRetentionDays": 60,
+  "privateSummaryCoveragePasses": true,
+  "serializedPayloadBytes": {
+    "min": 518,
+    "max": 540
+  },
+  "limits": "Synthetic fixtures; no production metering, legal applicability, real vendor identity or zero-loss guarantee."
+}

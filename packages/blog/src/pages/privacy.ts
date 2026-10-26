@@ -1,5 +1,5 @@
 import { html } from '@nisli/core';
-import { ANALYTICS_EVIDENCE_SINCE } from '@gkoreli/analytics/contracts';
+import { ANALYTICS_EVIDENCE_SINCE, DIAGNOSTIC_RETENTION_DAYS } from '@gkoreli/analytics/contracts';
 
 const evidenceDate = new Intl.DateTimeFormat('en-US', {
   timeZone: 'UTC',
@@ -16,15 +16,25 @@ export function privacyPage() {
 
   <h2>First-party analytics</h2>
 
-  <p>For a successful, non-prefetch GET that serves an HTML page, this site records the page path, referring hostname, country, a daily pseudonymous client ID, a heuristic traffic class (browser, bot, or AI User-Agent), the matched User-Agent rule name when available, device type, the request's network (autonomous system number and organization name, such as an internet provider or cloud host), the values of the Fetch Metadata headers Sec-Fetch-Mode, Sec-Fetch-Dest, Sec-Fetch-Site, and Sec-Fetch-User when a browser sends them, whether the Accept header included HTML, and whether an Accept-Language header was present (the Accept and Accept-Language values themselves are not stored), whether the request is mine, and the UTC observation time. It does not record query strings, full referrer URLs, city, continent, raw IP addresses, or raw User-Agent strings for these edge observations. This request evidence has been collected since ${evidenceDate}.</p>
+  <p>For a successful, non-prefetch GET that serves an HTML page or negotiated Markdown, this site records the page path, referring hostname, country, a daily pseudonymous client ID, a heuristic traffic class (browser, bot, or AI User-Agent), the matched User-Agent rule name when available, device type, the request's network (autonomous system number and organization name, such as an internet provider or cloud host), the values of the Fetch Metadata headers Sec-Fetch-Mode, Sec-Fetch-Dest, Sec-Fetch-Site, and Sec-Fetch-User when a browser sends them, whether the Accept header included HTML, and whether an Accept-Language header was present (the Accept and Accept-Language values themselves are not stored), whether the request is mine, and the UTC observation time. It does not record query strings, full referrer URLs, city, continent, raw IP addresses, or raw User-Agent strings in the main observation table. This request evidence has been collected since ${evidenceDate}.</p>
 
-  <p>The edge daily client ID is the first 128 bits of an HMAC-SHA-256 value derived from the site host, UTC date, IP address, and User-Agent using a secret key. The IP address and User-Agent are processed transiently to create it but are not stored. The ID can link requests within one UTC day; it is not anonymous, does not identify a person, and cannot establish the same client across dates, devices, or networks. Public stats exclude rows marked as mine; owner marking depends on server-side configuration and may not identify every request I make. Recording is best effort and uses no cookies.</p>
+  <p>The edge daily client ID is the first 128 bits of an HMAC-SHA-256 value derived from the site host, UTC date, IP address, and User-Agent using a secret key. The IP address and User-Agent are processed to create it. Raw IP addresses are not retained by this analytics model; User-Agent evidence, when retained, follows the separate diagnostic policy below. The ID can link requests within one UTC day; it is not anonymous, does not identify a person, and cannot establish the same client across dates, devices, or networks. Public stats exclude rows marked as mine; owner marking depends on server-side configuration and may not identify every request I make. Recording is best effort and uses no cookies.</p>
 
   <p>New page observations also distinguish external, internal, absent, and unusable referrers. For an internal referrer, only a recognized public blog page path is retained, without query strings or fragments. This supports aggregate reports of movement between pages. Arbitrary internal URLs, API paths, and confirmation or unsubscribe tokens are not retained as referring paths. Older records did not preserve this distinction and remain unknown where the original value was discarded.</p>
 
   <p>The browser-beacon dataset collected before August 26, 2026 remains intact. Its source table stores page path, cleaned referrer host/path, country, city, continent, a daily date-derived IP + User-Agent hash, heuristic traffic and device classes, owner status, and UTC time; it never stored raw IP addresses or raw User-Agent strings. A minimized, source-marked copy is included in public stats so the historical trends are not lost.</p>
 
-  <p>First-party analytics rows are retained until I delete them; there is currently no automatic expiration. The source marker distinguishes historical beacon events from newer edge observations.</p>
+  <p>Routine first-party observation rows are retained until I delete them; there is currently no automatic expiration for those rows. The source marker distinguishes historical beacon events from newer edge observations.</p>
+
+  <h2>Private request diagnostics</h2>
+
+  <p>To investigate collection errors and incorrect traffic classifications, an optional private diagnostic layer can retain bounded, filtered User-Agent and Accept header evidence, claimed browser and operating-system family and major version, client form, coarse preferred language, response status, HTTP and TLS version/cipher, Cloudflare data-center code, request correlation references, and collection/verifier versions and outcomes. Capture is limited to recognized public pages. It does not request additional device information through browser probes.</p>
+
+  <p>Names, email addresses, cookies, authorization, form bodies, unrestricted URL queries, full external referrers and precise location are not requested for this layer. Familiar identifying and credential patterns are filtered from header evidence; arbitrary client-supplied text is still treated as potentially personal. Redaction and truncation are recorded so incomplete evidence is not presented as an exact original. These records are private and are not included in public stats or joined to newsletter/account records.</p>
+
+  <p>The optional layer is omitted when the request carries Global Privacy Control or Do Not Track. That does not disable the separate routine page counter described above. Diagnostic source records expire from private reads after ${DIAGNOSTIC_RETENTION_DAYS} days and are removed by scheduled cleanup; cleanup failure can delay physical removal. Cloudflare's database backup history can retain earlier states for up to thirty additional days. Restored copies must be cleaned before diagnostic access resumes. Routine operational logs and Cloudflare Web Analytics have separate retention and processing.</p>
+
+  <p>For access, correction, deletion or objections concerning this processing, use the contact links below. A daily pseudonymous client ID does not establish a person's identity; I do not create a cross-day identity solely to answer such requests.</p>
 
   <h2>Cloudflare Web Analytics</h2>
 
