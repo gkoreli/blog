@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-26T16:26:50.949263+00:00",
+  "sourceCommit": "24c7c5010f6f41d8c8c81ac5a6b9e2cad65614fc",
+  "articleHeadStatus": 200,
+  "promptsHeadStatus": 200,
+  "markdownStatus": 200,
+  "indexStatus": 200,
+  "markdownMatchesIsolatedBuild": true,
+  "markdownSha256": "46162a5d5534ec903aac6ec95a31b7b9c32aa6ed28bf10dce164b7f9a5a42d48",
+  "promptCount": 26,
+  "deployment": {
+    "createdAt": "2026-10-26T16:26:18.551999Z",
+    "versionId": "43d5a10b-51b4-42a3-8005-00bd3d686008",
+    "percentage": 100
+  },
+  "buildUi": {
+    "observedCommit": "24c7c50",
+    "buildId": "de6c52c7-d8e0-473a-b1d8-e0c3ecfb40bb",
+    "observedBuildNode": "24.22.1",
+    "localCheckNode": "24.14.1"
+  },
+  "limits": [
+    "Served Markdown and metadata acceptance, not a new rendered production browser/collector trial.",
+    "Observed build-source and activation metadata plus exact served-content match; no independent Git-to-binary attestation.",
+    "No additional direct production SQL or analytics report fills for this publication check.",
+    "Homepage/Trakkr configuration remain unchanged; expanded diagnostic collection remains off."
+  ]
+}
