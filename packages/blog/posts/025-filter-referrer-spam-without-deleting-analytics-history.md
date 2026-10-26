@@ -3,7 +3,7 @@ title: "How I Defend My Analytics Against Referrer Spam"
 seoTitle: "Referrer Spam Defense for Public Analytics"
 alternativeHeadline: "Public analytics need reviewed referrer names, consistent spam exclusions, and honest limits on what requests prove."
 date: "2026-09-06"
-lastModified: "2026-09-08"
+lastModified: "2026-10-25"
 description: "Suspected referrer spam gave an untrusted site exposure in my public analytics. Matomo rules and reviewed names now limit that abuse."
 section: engineering
 tags: [analytics, http, cloudflare-workers, open-source]
@@ -161,6 +161,8 @@ I want to know whether people are reading the blog and which sources bring them 
 The rules can still be wrong: clients can change headers, and a legitimate visit from an excluded domain will also be omitted. Reviewing evidence and reversing mistaken decisions remains part of the work. Keeping that correction path is how I can report suspected abuse honestly without promoting it or counting it as proof of an audience.
 
 For a new suspicious source, the [maintenance workflow](https://github.com/gkoreli/blog/blob/fe9456e011e3e2dd7c0f691fe8ba8c247cd03a6d/packages/analytics/policies/README.md) is to inspect private aggregates, record the evidence for a rule, rerun the boundary and reconciliation checks, version the policy, and capture the deployed report. An unfamiliar name can stay grouped while I investigate. That gives me a practical way to improve the analytics without either rewarding spam or discarding every source I do not yet recognize.
+
+The later [analytics retrospective](/building-blog-analytics-what-the-numbers-can-prove) audits what these defenses establish, investigates another unexplained referral cohort, and lays out the next identity and calibration work.
 
 ---
 

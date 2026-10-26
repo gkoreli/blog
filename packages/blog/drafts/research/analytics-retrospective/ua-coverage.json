@@ -1,0 +1,48 @@
+{
+  "capturedAt": "2026-10-26T01:26:35.693Z",
+  "runtime": "v24.14.1",
+  "sourceCommit": "a04ee04d1911b042d261ca3c6e6c5e1c1c38a7e7",
+  "classifierSha256": "1375820bebfa8697a9612261fdea0241c98b2422b260da2dfb96607d624cb4be",
+  "probeSha256": "66bda11d42c1e2184e732cf7f40e43c4154655fcccf3165d5c04a6d1958f0692",
+  "networkCalls": 0,
+  "productionObservations": 0,
+  "results": [
+    {
+      "name": "ExaSearchBot",
+      "source": "https://crawler.exa.ai/",
+      "userAgent": "Mozilla/5.0 (compatible; ExaSearchBot/1.0; +https://crawler.exa.ai/)",
+      "result": {
+        "trafficClass": "bot",
+        "agentName": null
+      }
+    },
+    {
+      "name": "ExaUser",
+      "source": "https://crawler.exa.ai/exauser",
+      "userAgent": "Mozilla/5.0 (compatible; ExaUser/1.0; +https://crawler.exa.ai/exauser)",
+      "result": {
+        "trafficClass": "bot",
+        "agentName": null
+      }
+    },
+    {
+      "name": "AhrefsBot",
+      "source": "https://ahrefs.com/robot",
+      "userAgent": "Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)",
+      "result": {
+        "trafficClass": "bot",
+        "agentName": null
+      }
+    },
+    {
+      "name": "AhrefsSiteAudit",
+      "source": "https://ahrefs.com/robot",
+      "userAgent": "Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)",
+      "result": {
+        "trafficClass": "bot",
+        "agentName": null
+      }
+    }
+  ],
+  "limit": "Known supplied inputs test the local matcher; they do not reconstruct historical User-Agents or validate vendor identity."
+}

@@ -1,0 +1,599 @@
+{
+  "localReviewDate": "2026-10-25",
+  "method": "Wrangler 4.71.0 d1 execute --remote --json --command; existing CLI authentication; six SELECTs",
+  "sourceCommit": "a04ee04d1911b042d261ca3c6e6c5e1c1c38a7e7",
+  "window": {
+    "startInclusive": "2026-09-27T00:00:00Z",
+    "endExclusive": "2026-10-26T01:03:18Z",
+    "scope": "Frozen at the earlier Browser report calculation time; differs from later All-report cutoff."
+  },
+  "queriedAt": "2026-10-26 01:18:09",
+  "cohortAlias": "R1",
+  "r1Daily": [
+    {
+      "day": "2026-10-14",
+      "views": 2,
+      "dailyIds": 2,
+      "paths": 2,
+      "countries": 2,
+      "asns": 2,
+      "firstAt": "2026-10-14 16:36:56",
+      "lastAt": "2026-10-14 23:35:48"
+    },
+    {
+      "day": "2026-10-15",
+      "views": 3,
+      "dailyIds": 3,
+      "paths": 2,
+      "countries": 2,
+      "asns": 3,
+      "firstAt": "2026-10-15 01:57:13",
+      "lastAt": "2026-10-15 18:59:32"
+    },
+    {
+      "day": "2026-10-16",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1,
+      "countries": 1,
+      "asns": 1,
+      "firstAt": "2026-10-16 06:58:22",
+      "lastAt": "2026-10-16 06:58:22"
+    },
+    {
+      "day": "2026-10-17",
+      "views": 3,
+      "dailyIds": 3,
+      "paths": 3,
+      "countries": 3,
+      "asns": 3,
+      "firstAt": "2026-10-17 04:23:24",
+      "lastAt": "2026-10-17 14:08:56"
+    },
+    {
+      "day": "2026-10-23",
+      "views": 10,
+      "dailyIds": 10,
+      "paths": 9,
+      "countries": 8,
+      "asns": 9,
+      "firstAt": "2026-10-23 18:36:37",
+      "lastAt": "2026-10-23 19:34:56"
+    },
+    {
+      "day": "2026-10-24",
+      "views": 286,
+      "dailyIds": 286,
+      "paths": 21,
+      "countries": 43,
+      "asns": 188,
+      "firstAt": "2026-10-24 01:06:15",
+      "lastAt": "2026-10-24 22:57:13"
+    },
+    {
+      "day": "2026-10-25",
+      "views": 92,
+      "dailyIds": 92,
+      "paths": 19,
+      "countries": 26,
+      "asns": 78,
+      "firstAt": "2026-10-25 00:00:02",
+      "lastAt": "2026-10-25 19:53:07"
+    }
+  ],
+  "r1Shape": [
+    {
+      "mode": "navigate",
+      "destination": "document",
+      "site": "cross-site",
+      "userActivation": 1,
+      "acceptsHtml": 1,
+      "hasLanguage": 1,
+      "representation": "html",
+      "signatureStatus": null,
+      "signer": null,
+      "reason": "navigation-shaped",
+      "asnSource": "request",
+      "views": 138
+    },
+    {
+      "mode": "navigate",
+      "destination": "document",
+      "site": "none",
+      "userActivation": 1,
+      "acceptsHtml": 1,
+      "hasLanguage": 1,
+      "representation": "html",
+      "signatureStatus": null,
+      "signer": null,
+      "reason": "navigation-shaped",
+      "asnSource": "request",
+      "views": 135
+    },
+    {
+      "mode": "navigate",
+      "destination": "document",
+      "site": "same-origin",
+      "userActivation": 1,
+      "acceptsHtml": 1,
+      "hasLanguage": 1,
+      "representation": "html",
+      "signatureStatus": null,
+      "signer": null,
+      "reason": "navigation-shaped",
+      "asnSource": "request",
+      "views": 124
+    }
+  ],
+  "r1ClientContext": [
+    {
+      "kind": "browser",
+      "referrerState": "external",
+      "hostClass": "R1",
+      "views": 397,
+      "dailyIds": 397,
+      "paths": 28
+    }
+  ],
+  "r1Hours": [
+    {
+      "hour": "2026-10-14T16:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-14T23:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-15T01:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-15T18:00:00Z",
+      "views": 2,
+      "dailyIds": 2,
+      "paths": 2
+    },
+    {
+      "hour": "2026-10-16T06:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-17T04:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-17T05:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-17T14:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-23T18:00:00Z",
+      "views": 4,
+      "dailyIds": 4,
+      "paths": 4
+    },
+    {
+      "hour": "2026-10-23T19:00:00Z",
+      "views": 6,
+      "dailyIds": 6,
+      "paths": 5
+    },
+    {
+      "hour": "2026-10-24T01:00:00Z",
+      "views": 5,
+      "dailyIds": 5,
+      "paths": 4
+    },
+    {
+      "hour": "2026-10-24T02:00:00Z",
+      "views": 24,
+      "dailyIds": 24,
+      "paths": 7
+    },
+    {
+      "hour": "2026-10-24T03:00:00Z",
+      "views": 28,
+      "dailyIds": 28,
+      "paths": 11
+    },
+    {
+      "hour": "2026-10-24T04:00:00Z",
+      "views": 3,
+      "dailyIds": 3,
+      "paths": 2
+    },
+    {
+      "hour": "2026-10-24T05:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-24T06:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-24T07:00:00Z",
+      "views": 2,
+      "dailyIds": 2,
+      "paths": 2
+    },
+    {
+      "hour": "2026-10-24T09:00:00Z",
+      "views": 9,
+      "dailyIds": 9,
+      "paths": 4
+    },
+    {
+      "hour": "2026-10-24T10:00:00Z",
+      "views": 55,
+      "dailyIds": 55,
+      "paths": 15
+    },
+    {
+      "hour": "2026-10-24T11:00:00Z",
+      "views": 6,
+      "dailyIds": 6,
+      "paths": 4
+    },
+    {
+      "hour": "2026-10-24T14:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-24T15:00:00Z",
+      "views": 10,
+      "dailyIds": 10,
+      "paths": 5
+    },
+    {
+      "hour": "2026-10-24T16:00:00Z",
+      "views": 69,
+      "dailyIds": 69,
+      "paths": 15
+    },
+    {
+      "hour": "2026-10-24T17:00:00Z",
+      "views": 15,
+      "dailyIds": 15,
+      "paths": 8
+    },
+    {
+      "hour": "2026-10-24T18:00:00Z",
+      "views": 2,
+      "dailyIds": 2,
+      "paths": 2
+    },
+    {
+      "hour": "2026-10-24T19:00:00Z",
+      "views": 6,
+      "dailyIds": 6,
+      "paths": 5
+    },
+    {
+      "hour": "2026-10-24T20:00:00Z",
+      "views": 28,
+      "dailyIds": 28,
+      "paths": 10
+    },
+    {
+      "hour": "2026-10-24T21:00:00Z",
+      "views": 14,
+      "dailyIds": 14,
+      "paths": 8
+    },
+    {
+      "hour": "2026-10-24T22:00:00Z",
+      "views": 7,
+      "dailyIds": 7,
+      "paths": 6
+    },
+    {
+      "hour": "2026-10-25T00:00:00Z",
+      "views": 2,
+      "dailyIds": 2,
+      "paths": 2
+    },
+    {
+      "hour": "2026-10-25T01:00:00Z",
+      "views": 2,
+      "dailyIds": 2,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-25T02:00:00Z",
+      "views": 30,
+      "dailyIds": 30,
+      "paths": 9
+    },
+    {
+      "hour": "2026-10-25T03:00:00Z",
+      "views": 20,
+      "dailyIds": 20,
+      "paths": 9
+    },
+    {
+      "hour": "2026-10-25T04:00:00Z",
+      "views": 8,
+      "dailyIds": 8,
+      "paths": 6
+    },
+    {
+      "hour": "2026-10-25T05:00:00Z",
+      "views": 3,
+      "dailyIds": 3,
+      "paths": 2
+    },
+    {
+      "hour": "2026-10-25T06:00:00Z",
+      "views": 3,
+      "dailyIds": 3,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-25T08:00:00Z",
+      "views": 2,
+      "dailyIds": 2,
+      "paths": 2
+    },
+    {
+      "hour": "2026-10-25T09:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-25T11:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-25T12:00:00Z",
+      "views": 5,
+      "dailyIds": 5,
+      "paths": 3
+    },
+    {
+      "hour": "2026-10-25T13:00:00Z",
+      "views": 5,
+      "dailyIds": 5,
+      "paths": 4
+    },
+    {
+      "hour": "2026-10-25T14:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    },
+    {
+      "hour": "2026-10-25T15:00:00Z",
+      "views": 4,
+      "dailyIds": 4,
+      "paths": 3
+    },
+    {
+      "hour": "2026-10-25T16:00:00Z",
+      "views": 4,
+      "dailyIds": 4,
+      "paths": 4
+    },
+    {
+      "hour": "2026-10-25T19:00:00Z",
+      "views": 1,
+      "dailyIds": 1,
+      "paths": 1
+    }
+  ],
+  "signedRoles": [
+    {
+      "signer": "https://crawler.exa.ai",
+      "signatureStatus": "verified",
+      "trafficClass": "bot",
+      "agentName": null,
+      "kind": "signed-agent",
+      "reason": "https://crawler.exa.ai",
+      "views": 1003,
+      "dailyIds": 607
+    },
+    {
+      "signer": "https://ahrefs.com",
+      "signatureStatus": "verified",
+      "trafficClass": "bot",
+      "agentName": null,
+      "kind": "signed-agent",
+      "reason": "https://ahrefs.com",
+      "views": 42,
+      "dailyIds": 42
+    }
+  ],
+  "allSignedOutcomeEvents": 1054,
+  "receipts": {
+    "plannedReadCeiling": 300000,
+    "totalReads": 213067,
+    "statements": [
+      {
+        "name": "clock",
+        "startedAt": "2026-10-26T01:18:08.934Z",
+        "capturedAt": "2026-10-26T01:18:09.942Z",
+        "rowsRead": 0,
+        "rowsWritten": 0,
+        "returnedRows": 1
+      },
+      {
+        "name": "r1-daily",
+        "startedAt": "2026-10-26T01:18:09.943Z",
+        "capturedAt": "2026-10-26T01:18:10.722Z",
+        "rowsRead": 40716,
+        "rowsWritten": 0,
+        "returnedRows": 7
+      },
+      {
+        "name": "r1-shape",
+        "startedAt": "2026-10-26T01:18:10.722Z",
+        "capturedAt": "2026-10-26T01:18:11.542Z",
+        "rowsRead": 40719,
+        "rowsWritten": 0,
+        "returnedRows": 3
+      },
+      {
+        "name": "r1-client-context",
+        "startedAt": "2026-10-26T01:18:11.542Z",
+        "capturedAt": "2026-10-26T01:18:12.386Z",
+        "rowsRead": 58278,
+        "rowsWritten": 0,
+        "returnedRows": 1
+      },
+      {
+        "name": "r1-hours",
+        "startedAt": "2026-10-26T01:18:12.387Z",
+        "capturedAt": "2026-10-26T01:18:13.217Z",
+        "rowsRead": 40716,
+        "rowsWritten": 0,
+        "returnedRows": 45
+      },
+      {
+        "name": "signed-roles",
+        "startedAt": "2026-10-26T01:18:13.218Z",
+        "capturedAt": "2026-10-26T01:18:13.939Z",
+        "rowsRead": 32638,
+        "rowsWritten": 0,
+        "returnedRows": 11
+      }
+    ]
+  },
+  "combinedWithEarlierAuditDirectReads": 630169,
+  "localValidation": {
+    "runtime": "Isolated Wrangler/Miniflare local D1, plus Node SQLite preparation",
+    "fixture": {
+      "targetEvents": 2,
+      "sameDayContextEvents": 1,
+      "excludedOwnerEvents": 1,
+      "excludedAtCutoffEvents": 1
+    },
+    "localMetering": "Local CLI meta provides duration only; production meter fields not inferred."
+  },
+  "metadata": {
+    "d1Info24HourFields": {
+      "uuid": "56fd8321-3499-48ba-bb45-a1a80a5a9b94",
+      "name": "blog-analytics",
+      "created_at": "2026-03-07T01:08:07.131Z",
+      "num_tables": 9,
+      "running_in_region": "WNAM",
+      "read_replication": {
+        "mode": "disabled"
+      },
+      "jurisdiction": null,
+      "database_size": 13127680,
+      "read_queries_24h": 0,
+      "write_queries_24h": 0,
+      "rows_read_24h": 0,
+      "rows_written_24h": 0
+    },
+    "insights": [
+      {
+        "avgRowsRead": 260131,
+        "totalRowsRead": 260131,
+        "avgRowsWritten": 0,
+        "totalRowsWritten": 0,
+        "avgDurationMs": 246.5677,
+        "totalDurationMs": 246.5677,
+        "numberOfTimesRun": 1,
+        "queryEfficiency": 0.00004613060342673499
+      },
+      {
+        "avgRowsRead": 40741,
+        "totalRowsRead": 81482,
+        "avgRowsWritten": 0,
+        "totalRowsWritten": 0,
+        "avgDurationMs": 50.8048,
+        "totalDurationMs": 101.6096,
+        "numberOfTimesRun": 2,
+        "queryEfficiency": 0.020127144645443164
+      },
+      {
+        "avgRowsRead": 39921,
+        "totalRowsRead": 79842,
+        "avgRowsWritten": 0,
+        "totalRowsWritten": 0,
+        "avgDurationMs": 34.9779,
+        "totalDurationMs": 69.9558,
+        "numberOfTimesRun": 2,
+        "queryEfficiency": 0.0003005936725031938
+      },
+      {
+        "avgRowsRead": 76894,
+        "totalRowsRead": 76894,
+        "avgRowsWritten": 0,
+        "totalRowsWritten": 0,
+        "avgDurationMs": 84.7417,
+        "totalDurationMs": 84.7417,
+        "numberOfTimesRun": 1,
+        "queryEfficiency": 0.00015605899029833277
+      },
+      {
+        "avgRowsRead": 34202,
+        "totalRowsRead": 34202,
+        "avgRowsWritten": 0,
+        "totalRowsWritten": 0,
+        "avgDurationMs": 19.588,
+        "totalDurationMs": 19.588,
+        "numberOfTimesRun": 1,
+        "queryEfficiency": 0.00377170925676861
+      }
+    ],
+    "limits": "d1 info returned zeros while the separately captured limited rolling query profile and successful SQL receipts showed nonzero work. Neither is a complete UTC-day/account total; do not infer zero traffic or zero cost."
+  },
+  "historicalLogs": {
+    "installedCli": "No historical log-query command advertised in Wrangler 4.71.0 --help; tail is a live stream",
+    "inspected": false,
+    "attribution": "No exact Cloudflare-log join claimed"
+  },
+  "limits": [
+    "No raw IP, UA, daily ID, full signature message, or unapproved referrer hostname exported publicly.",
+    "R1 identifies a supplied-host cohort, not an authenticated requester.",
+    "No new test page traffic or runtime deployment.",
+    "Same-origin/none metadata alongside an external referrer requires explanation; it does not identify an operator or establish every event as abuse.",
+    "Historical roles and signature coverage cannot be reconstructed from the retained coarse outcomes."
+  ],
+  "captureHashes": {
+    "clock.json": "9b2bd83b65e0536edb41adecd5cb66c1673b0547ffb42c8d73d3b6ec254ccf61",
+    "clock.sql": "4d540d07be4af839567ef4e77f80dcdb0424e9e8081bbeaa6a964aff6ec8b798",
+    "r1-daily.json": "fa48223102c7384276f96638532f83eea9019034c18b5aa516b9db77f283d9fc",
+    "r1-daily.sql": "6845ffb2e62e6b6010cd539f3af3a238519ce7ffc3596fb66e6075b86006d2f1",
+    "r1-shape.json": "3587aa2c555b0cd7969da8bee86c5b43dd18065572ae316d8c2e7d35588bab95",
+    "r1-shape.sql": "28301f5851dd314c0c493aff8bca931154d084f57e19afd35f750d6dcb33e962",
+    "r1-client-context.json": "fa51dc7b8d4dba2ac65f5538936857afc52f1e001d87929b87f56de1cfc4ad80",
+    "r1-client-context.sql": "f2fdbeaeb08c8be36e5ba930ee4a7746585c695dd848ad0aa3668f6810710038",
+    "r1-hours.json": "7c12070e9ae06e7fc7a85f57f781ea1bee23d0574bbb23ed079245b056023162",
+    "r1-hours.sql": "f1a9daa91c3d5bf9df56d71795169975b142c36b6156b002e6dcd3ae80a05c60",
+    "signed-roles.json": "a5de0a8951952a3f1338916196bbd844c8192267d28a67efea487ec9a4f78774",
+    "signed-roles.sql": "205939175ca7d77b4d8c598c5c08c34019ae2c5dbbdc6a556cb1b9acd6a755dd",
+    "query-receipts.json": "f137db7e34c34d553c8937087ed07be7bc45980128a228c422e4ae23fb355ede",
+    "d1-info.json": "b9c22046569035945f606b2c169769fd59c9c1b1bfe4c850a516425c2019b2bc",
+    "d1-insights.json": "a1536a2f341f5b790ac7470a0fef3274177123a1067a1f3215a431898495bd0f",
+    "local-fixture-results.json": "adc57fae0100c76f0ea419d57e6417a54e51ef115ee3f99c5b2a81345b211954"
+  }
+}
