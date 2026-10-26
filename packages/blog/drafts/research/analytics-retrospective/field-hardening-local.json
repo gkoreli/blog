@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-26T02:25:35.030Z",
+  "runtime": "Miniflare/workerd local D1",
+  "migration": "0010_observation_versions.sql",
+  "legacyVersionsUnchanged": true,
+  "ingestionRows": [
+    {
+      "path": "/fixture-0",
+      "asn": 64512,
+      "asn_source": "request",
+      "referrer_state": "internal",
+      "internal_referrer_path": null,
+      "collection_version": "2026-10-26.2",
+      "classifier_version": "2026-10-26.2"
+    },
+    {
+      "path": "/fixture-1",
+      "asn": null,
+      "asn_source": null,
+      "referrer_state": "internal",
+      "internal_referrer_path": null,
+      "collection_version": "2026-10-26.2",
+      "classifier_version": "2026-10-26.2"
+    }
+  ],
+  "productionCalls": 0
+}

@@ -24,6 +24,7 @@ import { aboutPage } from '../pages/about.js';
 import { postAfterword, postPage, seriesTrailBlock, seriesTrailMarkdown } from '../pages/post.js';
 import { promptsPage } from '../pages/prompts.js';
 import { privacyPage } from '../pages/privacy.js';
+import { ownerPage } from '../pages/owner.js';
 import { statsPage, statsHead } from '../pages/stats.js';
 import { designLanguagePage } from '../pages/design-language.js';
 import { animationsLabPage } from '../pages/animations-lab.js';
@@ -290,6 +291,8 @@ export async function buildHTML(): Promise<void> {
   const statsBody = statsPage();
   const statsShell = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody, canonicalPath: '/stats', currentSlug: 'stats', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: statsHead, noindex: true });
   addPage('stats', statsShell);
+
+  addPage('owner', pageShell({ title: 'Exclude my browser', description: 'Owner browser exclusion for analytics', content: ownerPage(), canonicalPath: '/owner', currentSlug: 'owner', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, noindex: true, scripts: ['/owner.js'] }));
 
   const privacyBody = privacyPage();
   const privacyShell = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody, canonicalPath: '/privacy', currentSlug: 'privacy', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });

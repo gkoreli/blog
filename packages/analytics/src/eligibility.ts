@@ -16,7 +16,7 @@ export function isEligiblePageResponse(
   if (request.method !== 'GET' || !response.ok) return false;
 
   const path = new URL(request.url).pathname;
-  if (path === '/stats' || path.startsWith('/stats/') || path === '/api' || path.startsWith('/api/')) {
+  if (path === '/owner' || path.startsWith('/owner/') || path === '/stats' || path.startsWith('/stats/') || path === '/api' || path.startsWith('/api/')) {
     return false;
   }
   if (isPrefetch(request)) return false;

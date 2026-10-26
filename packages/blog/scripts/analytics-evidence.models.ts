@@ -75,7 +75,7 @@ export function parseRum(value: unknown, day: string): RumGroup[] {
 }
 
 export function excludedRumPath(path: string): boolean {
-  return path === '/stats' || path.startsWith('/stats/') || path === '/api' || path.startsWith('/api/');
+  return path === '/owner' || path.startsWith('/owner/') || path === '/stats' || path.startsWith('/stats/') || path === '/api' || path.startsWith('/api/');
 }
 
 const dailySchema = z.array(z.object({ day: z.string(), reader_kind: z.string().nullable(), representation: z.string().nullable(), views: count }));

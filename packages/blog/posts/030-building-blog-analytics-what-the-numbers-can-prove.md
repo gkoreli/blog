@@ -19,7 +19,7 @@ My blog analytics reported 1,423 Browser page events and 1,107 daily client IDs.
 
 Those are the results of an October 25, 2026 Pacific audit, captured just after midnight October 26 UTC. The report covers September 27 through October 26 UTC, with the last day partial. I am freezing that window here rather than treating a live dashboard as a permanent result. The [audit, queries and sanitized measurements](https://github.com/gkoreli/blog/blob/a04ee04/packages/blog/drafts/research/edge-vs-rum/05-analytics-audit-2026-10-25.md) preserve the details.
 
-This is a current-state audit, not a complete analysis of the interval since the previous analytics feature release on September 8 Pacific, September 9 UTC. September 9–26 remains outside its detailed queries. The database inventory counted 31,536 stored observations; counting that inventory did not analyze every historical event. A comparable release-to-date delta remains open.
+The initial audit did not cover the whole interval since the previous analytics feature release on September 8 Pacific, September 9 UTC. Its database inventory counted 31,536 stored observations; counting that inventory did not analyze every historical event. The later full-interval follow-up below closes the September 9–26 aggregate-analysis gap while preserving the original snapshot.
 
 This system has moved from a browser beacon to Cloudflare Workers and D1, gained request classifications and signature verification, acquired a referrer-abuse policy, exhausted a database read allowance, and received several corrections. The useful lessons extend beyond a personal blog:
 
@@ -85,9 +85,9 @@ That is a bounded repair, not a production accuracy estimate. The original Accep
 
 The recent audit found a referrer category and request-source ASN marker on every inspected event. That establishes population among stored rows. It does not independently validate the network, authenticate a referral or reveal eligible responses that never reached storage.
 
-Reading the collector made the distinction concrete. `asn_source = request` is a marker our writer sets whenever the extracted ASN is non-null. The [native Cloudflare property](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties) identifies the request's network; the organization field names the ASN owner. Neither identifies the operator behind a request. A local probe also showed that our finite-number check accepts negative or fractional fixtures. Those are validation-boundary tests, not bad values observed from Cloudflare.
+Reading the collector made the distinction concrete. `asn_source = request` is a marker our writer sets whenever the extracted ASN is non-null. The [native Cloudflare property](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties) identifies the request's network; the organization field names the ASN owner. Neither identifies the operator behind a request. At that review, a local probe showed that our finite-number check accepted negative or fractional fixtures. The subsequent integer/range guard rejects them. The full-interval production aggregate found zero invalid non-null ASNs; this is preventive validation, not a measured correction to historical traffic.
 
-The referrer fields contain application policy too. Our internal category compares normalized hostnames and treats `www` as an alias. A supplied `http://www.gkoreli.com:8080/engineering` is internal under that rule while having a different origin from the HTTPS blog. `internal` therefore does not mean browser `same-origin`. An origin-only internal URL also becomes `/`, which cannot tell me whether the source was the homepage or another page whose path was removed by policy. The [Referrer Policy draft](https://w3c.github.io/webappsec-referrer-policy/#referrer-policy-strict-origin-when-cross-origin) explains why a referrer can lose detail. The policy on my response governs subsequent requests from that document; it cannot authenticate incoming referrals from someone else's site.
+The referrer fields contain application policy too. Our internal category compares normalized hostnames and treats `www` as an alias. A supplied `http://www.gkoreli.com:8080/engineering` is internal under that rule while having a different origin from the HTTPS blog. `internal` therefore does not mean browser `same-origin`. Historical origin-only internal URLs became `/`, which cannot tell me whether the source was the homepage or another page whose path was removed by policy. New collection keeps the internal category but omits that ambiguous source path; the dashboard labels old root sources explicitly. The [Referrer Policy draft](https://w3c.github.io/webappsec-referrer-policy/#referrer-policy-strict-origin-when-cross-origin) explains why a referrer can lose detail. The policy on my response governs subsequent requests from that document; it cannot authenticate incoming referrals from someone else's site.
 
 The [field-semantics study and supplied-input probe](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/09-field-semantics-and-evidence-boundaries.md) preserve these cases, including legitimate HTTP referrer forms our parser currently groups as unusable. None establishes how often the cases occur in production. The next acceptance needs four distinct checks: fields populated, transformations correct for supplied inputs, actual browser behavior observed, and production collection coverage measured. More filled columns cannot substitute for the last two.
 
@@ -112,6 +112,27 @@ All have navigation-shaped flags and no stored signature outcome. The same-origi
 What can I determine exactly? The supplied-host cohort and its recorded distribution. What remains unknown? Its operator, whether every event was automated, and whether that external site caused a real navigation. Synthetic clients or modified headers are possibilities, not an attribution result.
 
 Keeping more request characteristics might narrow a future investigation. It would not automatically identify a person. The daily HMAC cannot recover fields never retained, and a time/path match against another dataset remains a correlation unless a reliable join establishes the same request.
+
+## Extend the audit to the whole interval
+
+The [complete retained-data follow-up](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/10-full-interval-and-field-hardening.md) covers September 9 at 02:07:43 UTC through October 26 at 02:17 UTC, with the first and last days partial. Its eleven aggregate sections reconcile **14,835 included events**, with nine owner-excluded controls and 22 referral-policy exclusions. The previously missed interval contributes 6,431 included events. This closes the aggregate-analysis gap; it does not recover requests that were never persisted.
+
+Equal complete weeks make the change easier to assess:
+
+| UTC week beginning | All included events | Browser events |
+|---|---:|---:|
+| September 14 | 2,286 | 306 |
+| September 21 | 2,087 | 259 |
+| September 28 | 1,860 | 253 |
+| October 5 | 2,090 | 266 |
+| October 12 | 1,738 | 168 |
+| October 19 | 2,507 | 711 |
+
+The last week's Browser count is 2.32 times the first complete week's. But R1 supplies **388 of its 711 events**. A sensitivity calculation without that cohort gives **323 versus 306**, only 5.6% higher. That subtraction is not an accepted exclusion or a corrected human count. Repeated requests, owner activity and other unknowns remain.
+
+The wider window also changes the provenance claim: all retained rows have referrer categories, but three included early events lack ASN provenance. Of 2,365 included internal-referrer events, **1,540** record `/` as source. That scale makes the root-path ambiguity worth fixing. Historical rows remain intact; new observations carry collection and classifier versions, both initially `2026-10-26.2`, so the method boundary can be queried directly.
+
+The single aggregate statement used **361,147 D1 reads and zero writes**, within its declared 750,000-read ceiling. It passed local D1 boundary/exclusion fixtures first. A failed initial metadata authentication call is retained in the method record; ordinary CLI status checking and one metadata retry recovered access before the aggregate ran. No credential was extracted and no audience-query retry was needed.
 
 ## Separate agent identity from role and authorization
 
@@ -197,8 +218,8 @@ The calibration question is still live too. For October 20–25 UTC, D1 recorded
 
 The [improvement plan](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/05-improvement-plan.md) orders the work by the evidence needed:
 
-1. **Complete the interval and inspect retained native evidence.** The September 9–26 gap needs bounded analysis before a release-to-date delta. Record native fields, retention, sampling and join quality; this pass did not retrieve historical invocation logs.
-2. **Verify owner/test exclusion for the actual browser and UTC day.** Stop before generating trials if the mark is missing, and account for cached-report freshness.
+1. **Inspect retained native evidence.** Full-interval stored-data aggregation is complete above. Native field availability, retained logs, sampling and reliable joins still need actual-access evidence.
+2. **Verify owner/test exclusion for the actual browser and UTC day.** The new owner-marking page exposes the existing authenticated endpoint. A successful form submission still needs stored-event and public-report acceptance before calibration; cached reports can be stale.
 3. **Extend the role/signer repair.** The Exa/Ahrefs catalogue gaps and signature precedence are repaired in the follow-up above. Collection/classifier versions on each observation, broader catalogue review and native vendor recognition remain open. Keep historical roles unknown where inputs are missing.
 4. **Test the supported signature profile and native verification paths.** Keep recognition, coverage, freshness and unavailable fields explicit.
 5. **Make a reviewed R1 reporting decision.** Preserve its evidence and the false-exclusion tradeoff; do not turn a policy into an identity claim.

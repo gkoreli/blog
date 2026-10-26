@@ -1,0 +1,23 @@
+.owner-page form {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 34rem;
+  margin-block: 2rem;
+}
+.owner-page input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  font: inherit;
+}
+.owner-page button {
+  width: fit-content;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  cursor: pointer;
+}
+.owner-page button:disabled { cursor: default; opacity: 0.6; }

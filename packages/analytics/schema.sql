@@ -35,6 +35,8 @@ CREATE TABLE page_observations (
   reader_kind TEXT,
   reader_reason TEXT,
   asn_source TEXT CHECK (asn_source IN ('request', 'zone-sample')),
+  collection_version TEXT CHECK (collection_version IS NULL OR length(collection_version) BETWEEN 1 AND 32),
+  classifier_version TEXT CHECK (classifier_version IS NULL OR length(classifier_version) BETWEEN 1 AND 32),
   observed_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 

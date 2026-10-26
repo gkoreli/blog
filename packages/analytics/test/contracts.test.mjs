@@ -1809,3 +1809,35 @@ test('real signed ingestion retains named role and independent key evidence; unc
     globalThis.fetch = originalFetch;
   }
 });
+
+test('field hardening preserves unknown roots, validates ASN input, and versions actual ingestion', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  let id = 0;
+  for (const asn of [0, -1, 1.5, Infinity, 4_294_967_295, 4_294_967_296, 64512, 4_294_967_294]) {
+    const req = request(`/versioned-${id++}`, { headers: { Referer: 'https://gkoreli.com/', Accept: 'text/html' } });
+    Object.defineProperty(req, 'cf', { value: { asn } });
+    const work = [];
+    observePageResponse(req, html, 'html', { DB: d1, ANALYTICS_HASH_KEY: 'fixture' }, { waitUntil: p => work.push(p) }, { publicPagePaths: async () => new Set(['/']) });
+    await Promise.all(work);
+    const row = sqlite.prepare('SELECT asn,asn_source,referrer_state,internal_referrer_path,collection_version,classifier_version FROM page_observations ORDER BY id DESC LIMIT 1').get();
+    const accepted = Number.isInteger(asn) && asn > 0 && asn < 4_294_967_295;
+    assert.equal(row.asn, accepted ? asn : null);
+    assert.equal(row.asn_source, accepted ? 'request' : null);
+    assert.equal(row.referrer_state, 'internal');
+    assert.equal(row.internal_referrer_path, null);
+    assert.equal(row.collection_version, '2026-10-26.2');
+    assert.equal(row.classifier_version, '2026-10-26.2');
+  }
+  for (const url of ['https://gkoreli.com/', 'http://www.gkoreli.com:8080/']) assert.equal(parseReferrer(url, 'gkoreli.com', new Set(['/'])).internalReferrerPath, null);
+  assert.equal(parseReferrer('http://www.gkoreli.com:8080/article', 'gkoreli.com', new Set(['/article'])).internalReferrerPath, '/article');
+  for (const value of ['/article', 'about:blank']) assert.equal(parseReferrer(value, 'gkoreli.com', new Set(['/article'])).referrerState, 'unusable');
+  for (const path of ['/owner', '/owner/']) assert.equal(isEligiblePageResponse(request(path), html, 'html'), false);
+});
+
+test('migration 0010 preserves historical rows and never guesses their implementation versions', () => {
+  const sqlite = new DatabaseSync(':memory:');
+  sqlite.exec("CREATE TABLE page_observations(id INTEGER PRIMARY KEY,path TEXT); INSERT INTO page_observations VALUES(1,'/historical');");
+  sqlite.exec(readFileSync(new URL('../migrations/0010_observation_versions.sql', import.meta.url), 'utf8'));
+  assert.deepEqual({ ...sqlite.prepare('SELECT * FROM page_observations').get() }, { id: 1, path: '/historical', collection_version: null, classifier_version: null });
+  assert.throws(() => sqlite.prepare("UPDATE page_observations SET collection_version='' WHERE id=1").run());
+});

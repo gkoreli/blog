@@ -34,7 +34,8 @@ export function parseReferrer(raw: string | null, siteHostname: string, publicPa
       const path = url.pathname.replace(/\/+$/, '') || '/';
       return {
         ...empty, referrerState: 'internal',
-        internalReferrerPath: publicPaths.has(path) ? path : null,
+        // A root URL can be an origin-only referrer. Its source page is ambiguous.
+        internalReferrerPath: path !== '/' && publicPaths.has(path) ? path : null,
       };
     }
     return { ...empty, referrerState: 'external', referrerHost: host };

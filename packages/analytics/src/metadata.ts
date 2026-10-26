@@ -50,7 +50,7 @@ export function extractRequestMetadata(request: Request, ownerIps: string | unde
     country: typeof country === 'string' && country.length > 0 ? country : null,
     userAgent: request.headers.get('User-Agent') ?? '',
     isOwner: owners.includes(ip),
-    asn: typeof asn === 'number' && Number.isFinite(asn) ? asn : null,
+    asn: typeof asn === 'number' && Number.isInteger(asn) && asn > 0 && asn < 4_294_967_295 ? asn : null,
     asOrg: typeof asOrganization === 'string' ? asOrganization.trim().slice(0, 128) : null,
     secFetchMode: boundedHeader(request, 'Sec-Fetch-Mode'),
     secFetchDest: boundedHeader(request, 'Sec-Fetch-Dest'),

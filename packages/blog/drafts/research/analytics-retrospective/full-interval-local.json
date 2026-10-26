@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-26T02:19:58.365Z",
+  "runtime": "Miniflare/workerd local D1",
+  "fixtureRows": 9,
+  "sections": 11,
+  "selected": 7,
+  "included": 5,
+  "ownerExcluded": 1,
+  "referralExcluded": 1,
+  "invalidAsn": 1,
+  "rootSource": 1,
+  "cutoffCases": "inclusive start and exclusive end pass",
+  "reconciled": true,
+  "productionCalls": 0
+}

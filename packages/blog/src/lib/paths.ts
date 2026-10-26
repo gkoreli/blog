@@ -45,7 +45,9 @@ export const ANIMATIONS_LAB_ENTRY = join(SRC, 'client', 'animations-lab.ts');
 export const CANVAS_ENTRY = join(SRC, 'client', 'canvas.ts');
 
 /** All esbuild entry points — single source of truth for dev and prod builds */
-export const ESBUILD_ENTRIES = [CLIENT_ENTRY, STATS_ENTRY, IMMERSIVE_ENTRY, ANIMATIONS_LAB_ENTRY, CANVAS_ENTRY, STYLES_SRC];
+export const OWNER_ENTRY = join(SRC, 'client', 'owner.ts');
+
+export const ESBUILD_ENTRIES = [OWNER_ENTRY, CLIENT_ENTRY, STATS_ENTRY, IMMERSIVE_ENTRY, ANIMATIONS_LAB_ENTRY, CANVAS_ENTRY, STYLES_SRC];
 
 /** Section archive route slugs */
 export const ESSAYS_PAGE = 'essays';

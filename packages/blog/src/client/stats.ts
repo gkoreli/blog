@@ -572,12 +572,12 @@ function renderTransitions(data: StatsResponse, state: ViewState): void {
   element('stats-next-pages').hidden = state.path === null;
   if (state.path === null) {
     replaceSectionRows('stats-transitions', data.internalTransitions.map(row => ({
-      label: `${row.fromPath} → ${row.toPath}`, views: row.views,
+      label: `${row.fromPath === '/' ? '/ (homepage or origin-only)' : row.fromPath} → ${row.toPath}`, views: row.views,
       href: stateHref({ ...state, path: row.fromPath }),
     })));
   } else {
     replaceSectionRows('stats-previous-pages', data.internalTransitions.filter(row => row.toPath === state.path).map(row => ({
-      label: row.fromPath, views: row.views, href: stateHref({ ...state, path: row.fromPath }),
+      label: row.fromPath === '/' ? '/ (homepage or origin-only)' : row.fromPath, views: row.views, href: stateHref({ ...state, path: row.fromPath }),
     })));
     replaceSectionRows('stats-next-pages', data.internalTransitions.filter(row => row.fromPath === state.path).map(row => ({
       label: row.toPath, views: row.views, href: stateHref({ ...state, path: row.toPath }),

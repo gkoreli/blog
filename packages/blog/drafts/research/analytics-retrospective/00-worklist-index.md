@@ -77,3 +77,9 @@ The article now distinguishes populated fields from validated values, hostname g
 Next bounded analysis: a locally checked, budgeted release-to-cutoff aggregate for the complete interval, preserving windows and method boundaries. Actual owner-browser exclusion remains the gate before navigation/calibration experiments. Meaning/validation changes identified by this probe are proposals, not deployed repairs.
 
 Validation for this follow-up: 57 analytics tests; frontmatter validation; 78 local document links; saved JSON and source commitments; isolated production generation of 31 posts; one article H1 and ten escaped prompt blocks. Shared dist and other servers were untouched. Source publication and subsequent live article verification remain separate from this local acceptance.
+
+## Proceeded implementation — October 25 Pacific / October 26 UTC
+
+[Complete interval and field hardening](10-full-interval-and-field-hardening.md), [aggregate JSON](full-interval.json), [exact SQL](full-interval.sql), [local query acceptance](full-interval-local.json) and [migration/ingestion acceptance](field-hardening-local.json) supersede the pending aggregate gap and proposed field repairs above. The full retained population is 14,866 rows: 14,835 included, nine owner-excluded and 22 referral-excluded. The 361,147-read SELECT wrote zero rows and stayed within its 750,000 ceiling. No daily IDs or unapproved real referrer names are published.
+
+The article gains the complete-week comparison, the 388-event R1 sensitivity, corrected provenance scope and version/root repair. Provenance now contains twelve complete shaping messages. Per-observation versions remain null for history and explicit on new writes. The owner confirmed they can enter the existing credential in their actual browser once /owner is available; no successful actual-browser mark is claimed yet. Release activation and future-write acceptance are separate from local checks.

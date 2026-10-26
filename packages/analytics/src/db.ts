@@ -1,3 +1,4 @@
+import { COLLECTION_VERSION, CLASSIFIER_VERSION } from './versions.js';
 import type { DeviceType, ReferrerState, Representation, SignatureStatus, TrafficClass } from './contracts.js';
 import type { ReaderKind } from './readerkind.js';
 
@@ -60,8 +61,10 @@ const INSERT_OBSERVATION = `INSERT INTO page_observations (
   observed_at,
   asn_source,
   referrer_state,
-  internal_referrer_path
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  internal_referrer_path,
+  collection_version,
+  classifier_version
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
 export async function recordPageObservation(db: D1Database, observation: PageObservation): Promise<void> {
   await db.prepare(INSERT_OBSERVATION).bind(
@@ -90,5 +93,7 @@ export async function recordPageObservation(db: D1Database, observation: PageObs
     observation.asn === null ? null : 'request',
     observation.referrerState,
     observation.internalReferrerPath,
+    COLLECTION_VERSION,
+    CLASSIFIER_VERSION,
   ).run();
 }

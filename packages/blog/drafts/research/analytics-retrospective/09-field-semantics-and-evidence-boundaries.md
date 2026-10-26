@@ -2,6 +2,8 @@
 
 Follow-up to the owner's annotation on populated referrer categories and network-source provenance. Purpose: strengthen the meaning of those fields against authoritative documentation and the actual collector. This is documentation/code review plus a supplied-input experiment. No production SQL, live navigation, native account inspection, row rewrite or new telemetry. The complete release-to-audit interval remains unanalysed.
 
+**Superseded implementation state:** the probe and results below preserve source `2587a70`; reproduce the baseline from that revision. [The subsequent complete-interval and hardening record](10-full-interval-and-field-hardening.md) records prospective changes. Do not rerun baseline expectations against the repaired parser and call the difference a regression.
+
 ## Correct the strength of the claim
 
 The frozen September 27–partial October 26 audit found referrer categories and request-source ASN markers on all 8,385 inspected events. This establishes field population among stored observations in that window. It does not independently validate ASN values, authenticate a referrer, establish collection completeness, or cover September 9–26. Counting the whole database's 31,536 rows was inventory, not detailed all-history analysis. [Original scope and SQL](../edge-vs-rum/05-analytics-audit-2026-10-25.md).
