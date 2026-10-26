@@ -111,3 +111,6 @@ Current continuation: analytics 80/80, blog 106/106 and workspace types pass. [N
 
 
 Delivery checkpoint: [source checks](request-evidence-source-checks.json) record 80/80 analytics tests, 106/106 site tests, passing workspace types, 31 isolated built posts, 1,250 article words and 22 shaping prompts. All 145 changed-document local references resolve. The initial isolated build attempt hit the tsx CLI's restricted local socket; using the existing node --import tsx entry point passed. Migration 0011 was the only pending migration and applied successfully before source publication. Expanded configuration is absent from both the checked source and deployed secret names. Migration acceptance is distinct from code activation; no source diagnostics are newly collected by this checkpoint.
+
+
+Off-mode source delivery is accepted in [the release receipt](request-evidence-off-release.json): code `e455766`, migration 0011, active Worker metadata, live article match and one excluded control stored as collection version .3 without optional evidence. Verification used two direct SELECT reads, zero SELECT writes; the cold public preflight is additional. Expanded capture remains disabled. The next action is the collection/disclosure boundary and lawful-basis review, followed by deliberately enabled acceptance; the active request and TASK-0119/0120 remain unfinished.

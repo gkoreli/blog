@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-10-26T07:05:11.501825+00:00",
+  "sourceCommit": "e455766b8edae362caa1e8bc6d81cc676431932c",
+  "migration": {
+    "name": "0011_request_evidence.sql",
+    "appliedBeforeSourcePush": true,
+    "cliReportedExecutedCommands": 4,
+    "status": "success",
+    "limit": "Schema and migration bookkeeping not itemized as audience SELECT work."
+  },
+  "deployment": {
+    "createdAt": "2026-10-26T06:59:30.652Z",
+    "versionId": "978a6087-5f17-4729-8679-9a28c7d008d7",
+    "percentage": 100,
+    "limit": "Observed activation metadata, served article match and prospective collector version; no direct Git-to-binary attestation."
+  },
+  "optionalCollection": {
+    "configurationPresentInSource": false,
+    "secretNamePresent": false,
+    "structuredCapturesInControl": 0,
+    "diagnosticRows": 0,
+    "status": "off; expanded capture not activated"
+  },
+  "control": {
+    "startedAt": "2026-10-26T07:02:10.504Z",
+    "finishedAt": "2026-10-26T07:02:10.881Z",
+    "syntheticControlRequests": 1,
+    "policyHash": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+    "policyPreflightCache": "MISS",
+    "status": 200,
+    "privacyRetentionTextMatches": true,
+    "prompts": 22,
+    "scope": "Excluded unsigned supplied-UA control; no expanded profile activation or human calibration."
+  },
+  "storedControl": {
+    "collection_version": "2026-10-26.3",
+    "views": 1,
+    "structured_captures": 0
+  },
+  "publication": {
+    "checkedAt": "2026-10-26T07:00:24.998966+00:00",
+    "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove.md",
+    "status": 200,
+    "matchesIsolatedBuild": true,
+    "sha256": "dcb20079e5305b9484aac2f035d80994955ea77d39a7bf086522cfb333a5f8e2"
+  },
+  "metering": {
+    "selectReadCeiling": 5000,
+    "selectReadsByStatement": [
+      2,
+      0
+    ],
+    "totalMeteredAcceptanceSelectReads": 2,
+    "selectWrites": 0,
+    "publicReportColdFills": 1,
+    "publicReportMetering": "Not included in direct SELECT count; not an account-wide total.",
+    "controlWrites": "One eligible observation, separate from the read-only acceptance queries."
+  },
+  "limits": [
+    "Synthetic unsigned supplied-header control, excluded by matching local and live referral policy; no human-operated browser or organic signature acceptance.",
+    "No independent after-control public count reconciliation; policy exclusion and private-payload isolation have separate fixtures.",
+    "Local expiry checks passed; no sixty-day production expiry claim or newly retained raw source evidence.",
+    "Lawful basis, applicable consent/exemption, rights procedures, transfer review, indefinite linked-row retention and public signer-name review remain open."
+  ]
+}

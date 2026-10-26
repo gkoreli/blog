@@ -99,3 +99,12 @@ For routine private review, [the summary generator](build-request-evidence-summa
 
 
 [Final source/build checks](request-evidence-source-checks.json) pass: 80 analytics tests, 106 site tests, workspace types, 31 isolated built posts, 145 local references, one article H1 and 22 shaping prompts. The article remains 1,250 words including its glossary. Migration 0011 was the only pending migration and is now applied before source publication; the optional collection setting is absent from source and deployed secret names. This supersedes the earlier unapplied-schema status only. Expanded capture remains off; activation is still unaccepted.
+
+
+## Delivered with expanded capture off — October 26 UTC
+
+Source `e455766` was pushed after migration 0011. [Off-mode release acceptance](request-evidence-off-release.json) records the 100% Worker version, live article byte match, updated privacy text, 22 prompts and one excluded supplied-UA control. The exact [bounded verification SELECTs](request-evidence-off-verification.sql) passed native local D1 first, then used **two metered reads and zero SELECT writes**, within a 5,000-read ceiling. The control is stored under collection version `2026-10-26.3` with no structured capture, and the new diagnostic table is empty. One cold public policy preflight is additional unmetered report work; the two-read figure is not an account total.
+
+The source profile is absent from both checked configuration and deployed secret names. This accepts the off-mode delivery, not expanded capture or worldwide legal compliance. The article remains 1,250 words and is served byte-for-byte equal to the isolated build. An extra stdin-based native query check stalled; the same query ran successfully from a file, and the task-owned stalled process was stopped. No production SQL ran before that native pass. Original logs remain private.
+
+Next bounded action: settle the requested direct-identifier versus personal-data boundary and the applicable collection/disclosure basis, including retention and rights handling; then accept a deliberately enabled private profile with excluded controls. The pending owner question is not consent from site visitors or a substitute for that assessment. Existing native log recoverability and human-operated calibration remain unaccepted.
