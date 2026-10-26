@@ -1,0 +1,686 @@
+{
+  "capturedUtcDate": "2026-10-26",
+  "localReviewDate": "2026-10-25",
+  "publicReportTimes": {
+    "browser": "2026-10-26T01:03:18.263Z",
+    "all": "2026-10-26T01:03:50.528Z"
+  },
+  "window": {
+    "startInclusive": "2026-09-27T00:00:00Z",
+    "endExclusive": "2026-10-27T00:00:00Z",
+    "currentDayPartial": true,
+    "lastStoredAt": "2026-10-26 01:03:34"
+  },
+  "groups": {
+    "browser": 1423,
+    "agents": 1145,
+    "crawlers": 1320,
+    "automation": 4497,
+    "all": 8385
+  },
+  "browser": {
+    "views": 1423,
+    "dailyClients": 1107,
+    "unattributedViews": 915,
+    "daily": [
+      {
+        "bucket": "2026-09-27",
+        "views": 24,
+        "dailyClients": 24
+      },
+      {
+        "bucket": "2026-09-28",
+        "views": 27,
+        "dailyClients": 27
+      },
+      {
+        "bucket": "2026-09-29",
+        "views": 49,
+        "dailyClients": 38
+      },
+      {
+        "bucket": "2026-09-30",
+        "views": 45,
+        "dailyClients": 44
+      },
+      {
+        "bucket": "2026-10-01",
+        "views": 36,
+        "dailyClients": 33
+      },
+      {
+        "bucket": "2026-10-02",
+        "views": 26,
+        "dailyClients": 25
+      },
+      {
+        "bucket": "2026-10-03",
+        "views": 32,
+        "dailyClients": 24
+      },
+      {
+        "bucket": "2026-10-04",
+        "views": 38,
+        "dailyClients": 30
+      },
+      {
+        "bucket": "2026-10-05",
+        "views": 47,
+        "dailyClients": 46
+      },
+      {
+        "bucket": "2026-10-06",
+        "views": 16,
+        "dailyClients": 12
+      },
+      {
+        "bucket": "2026-10-07",
+        "views": 40,
+        "dailyClients": 33
+      },
+      {
+        "bucket": "2026-10-08",
+        "views": 18,
+        "dailyClients": 18
+      },
+      {
+        "bucket": "2026-10-09",
+        "views": 38,
+        "dailyClients": 35
+      },
+      {
+        "bucket": "2026-10-10",
+        "views": 19,
+        "dailyClients": 16
+      },
+      {
+        "bucket": "2026-10-11",
+        "views": 88,
+        "dailyClients": 31
+      },
+      {
+        "bucket": "2026-10-12",
+        "views": 31,
+        "dailyClients": 24
+      },
+      {
+        "bucket": "2026-10-13",
+        "views": 29,
+        "dailyClients": 25
+      },
+      {
+        "bucket": "2026-10-14",
+        "views": 30,
+        "dailyClients": 23
+      },
+      {
+        "bucket": "2026-10-15",
+        "views": 22,
+        "dailyClients": 20
+      },
+      {
+        "bucket": "2026-10-16",
+        "views": 26,
+        "dailyClients": 24
+      },
+      {
+        "bucket": "2026-10-17",
+        "views": 16,
+        "dailyClients": 16
+      },
+      {
+        "bucket": "2026-10-18",
+        "views": 14,
+        "dailyClients": 14
+      },
+      {
+        "bucket": "2026-10-19",
+        "views": 17,
+        "dailyClients": 16
+      },
+      {
+        "bucket": "2026-10-20",
+        "views": 22,
+        "dailyClients": 21
+      },
+      {
+        "bucket": "2026-10-21",
+        "views": 195,
+        "dailyClients": 17
+      },
+      {
+        "bucket": "2026-10-22",
+        "views": 22,
+        "dailyClients": 22
+      },
+      {
+        "bucket": "2026-10-23",
+        "views": 33,
+        "dailyClients": 27
+      },
+      {
+        "bucket": "2026-10-24",
+        "views": 303,
+        "dailyClients": 302
+      },
+      {
+        "bucket": "2026-10-25",
+        "views": 119,
+        "dailyClients": 119
+      },
+      {
+        "bucket": "2026-10-26",
+        "views": 1,
+        "dailyClients": 1
+      }
+    ],
+    "referrerStates": [
+      {
+        "state": "absent",
+        "views": 586
+      },
+      {
+        "state": "external",
+        "views": 508
+      },
+      {
+        "state": "internal",
+        "views": 329
+      }
+    ],
+    "otherReportedReferrerViews": 465,
+    "referralPolicy": {
+      "version": "2026-09-06.2",
+      "sha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+      "evaluator": "host-suffix-v1",
+      "source": {
+        "provider": "matomo",
+        "revision": "e65db652cade6882aa9a76bbb65c9bb17e079f4b",
+        "sha256": "83d2f174807c72987e73611fd7b36776bab02ee85fccc7b705d3be1bfa2a80b5"
+      },
+      "excludedViews": 0
+    }
+  },
+  "inventory": {
+    "totalStored": 31536,
+    "firstAt": "2026-03-07 01:10:23",
+    "lastAt": "2026-10-26 01:03:34",
+    "recentRows": 8385,
+    "recentIngestOwner": 0,
+    "recentExcludedOwner": 0,
+    "ownerMarks": 1,
+    "latestOwnerDay": "2026-09-09"
+  },
+  "unreviewedCohort": {
+    "alias": "R1",
+    "views": 397,
+    "countries": 45,
+    "asns": 247,
+    "daily": [
+      {
+        "day": "2026-10-24",
+        "dailyClients": 286,
+        "views": 286,
+        "maxPerClient": 1,
+        "singleEventClients": 286,
+        "viewsFrom10Plus": 0,
+        "maxPathsPerClient": 1
+      },
+      {
+        "day": "2026-10-25",
+        "dailyClients": 92,
+        "views": 92,
+        "maxPerClient": 1,
+        "singleEventClients": 92,
+        "viewsFrom10Plus": 0,
+        "maxPathsPerClient": 1
+      },
+      {
+        "day": "2026-10-23",
+        "dailyClients": 10,
+        "views": 10,
+        "maxPerClient": 1,
+        "singleEventClients": 10,
+        "viewsFrom10Plus": 0,
+        "maxPathsPerClient": 1
+      },
+      {
+        "day": "2026-10-15",
+        "dailyClients": 3,
+        "views": 3,
+        "maxPerClient": 1,
+        "singleEventClients": 3,
+        "viewsFrom10Plus": 0,
+        "maxPathsPerClient": 1
+      },
+      {
+        "day": "2026-10-17",
+        "dailyClients": 3,
+        "views": 3,
+        "maxPerClient": 1,
+        "singleEventClients": 3,
+        "viewsFrom10Plus": 0,
+        "maxPathsPerClient": 1
+      },
+      {
+        "day": "2026-10-14",
+        "dailyClients": 2,
+        "views": 2,
+        "maxPerClient": 1,
+        "singleEventClients": 2,
+        "viewsFrom10Plus": 0,
+        "maxPathsPerClient": 1
+      },
+      {
+        "day": "2026-10-16",
+        "dailyClients": 1,
+        "views": 1,
+        "maxPerClient": 1,
+        "singleEventClients": 1,
+        "viewsFrom10Plus": 0,
+        "maxPathsPerClient": 1
+      }
+    ],
+    "paths": [
+      {
+        "path": "/oss-radar-02-the-toolchain-is-the-moat",
+        "views": 103
+      },
+      {
+        "path": "/chatgpt-plugin-apps",
+        "views": 91
+      },
+      {
+        "path": "/how-ghx-was-born",
+        "views": 37
+      },
+      {
+        "path": "/oss-radar-05-bun-1-4",
+        "views": 27
+      },
+      {
+        "path": "/does-llms-txt-work",
+        "views": 17
+      },
+      {
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "views": 16
+      },
+      {
+        "path": "/oss-radar-07-ai-citations",
+        "views": 16
+      },
+      {
+        "path": "/oss-radar-06-interp-engine",
+        "views": 15
+      },
+      {
+        "path": "/one-hundred-pull-requests",
+        "views": 12
+      },
+      {
+        "path": "/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+        "views": 9
+      },
+      {
+        "path": "/you-dont-need-codemap",
+        "views": 8
+      },
+      {
+        "path": "/first-party-analytics-for-a-personal-blog",
+        "views": 7
+      },
+      {
+        "path": "/bring-your-own-ai-agent",
+        "views": 6
+      },
+      {
+        "path": "/topologies-of-thoughts",
+        "views": 4
+      },
+      {
+        "path": "/which-ai-fetchers-send-which-headers",
+        "views": 4
+      },
+      {
+        "path": "/oss-radar-01-vercel-winter-2026-cohort",
+        "views": 3
+      },
+      {
+        "path": "/oss-radar-07-ai-citations/prompts",
+        "views": 3
+      },
+      {
+        "path": "/i-thought-building-was-enough",
+        "views": 3
+      },
+      {
+        "path": "/productive-procrastination",
+        "views": 3
+      },
+      {
+        "path": "/productive-procrastination/prompts",
+        "views": 3
+      },
+      {
+        "path": "/i-am-lost-right-now",
+        "views": 2
+      },
+      {
+        "path": "/prompt-cache-context-edits/prompts",
+        "views": 2
+      },
+      {
+        "path": "/which-ai-fetchers-send-which-headers/prompts",
+        "views": 1
+      },
+      {
+        "path": "/my-evals-say-it-works-i-dont-use-it",
+        "views": 1
+      },
+      {
+        "path": "/openwiki-validates-my-bet",
+        "views": 1
+      },
+      {
+        "path": "/procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+        "views": 1
+      },
+      {
+        "path": "/oss-radar-03-buzz-is-slack-on-airoids",
+        "views": 1
+      },
+      {
+        "path": "/the-agentic-product-engineer",
+        "views": 1
+      }
+    ],
+    "action": "No new exclusion or display approval; authenticity and automation unresolved."
+  },
+  "repetition": {
+    "october21NoExternalHost": [
+      {
+        "day": "2026-10-21",
+        "dailyClients": 15,
+        "views": 191,
+        "maxPerClient": 59,
+        "singleEventClients": 11,
+        "viewsFrom10Plus": 180,
+        "maxPathsPerClient": 56
+      }
+    ],
+    "october11NoExternalHost": [
+      {
+        "day": "2026-10-11",
+        "dailyClients": 31,
+        "views": 88,
+        "maxPerClient": 52,
+        "singleEventClients": 25,
+        "viewsFrom10Plus": 52,
+        "maxPathsPerClient": 38
+      }
+    ]
+  },
+  "signers": [
+    {
+      "signer": "https://ahrefs.com",
+      "views": 42
+    },
+    {
+      "signer": "https://crawler.exa.ai",
+      "views": 1003
+    },
+    {
+      "signer": "https://assistbot.duckduckgo.com",
+      "views": 1
+    },
+    {
+      "signer": "https://chatgpt.com",
+      "views": 7
+    },
+    {
+      "signer": "https://domainsbot.com",
+      "views": 1
+    }
+  ],
+  "provenance": [
+    {
+      "source": "edge",
+      "asnSource": "request",
+      "kind": "ai-assistant",
+      "views": 91,
+      "missingAsn": 0,
+      "missingReferrerState": 0
+    },
+    {
+      "source": "edge",
+      "asnSource": "request",
+      "kind": "ai-crawler",
+      "views": 590,
+      "missingAsn": 0,
+      "missingReferrerState": 0
+    },
+    {
+      "source": "edge",
+      "asnSource": "request",
+      "kind": "ai-search",
+      "views": 442,
+      "missingAsn": 0,
+      "missingReferrerState": 0
+    },
+    {
+      "source": "edge",
+      "asnSource": "request",
+      "kind": "browser",
+      "views": 1423,
+      "missingAsn": 0,
+      "missingReferrerState": 0
+    },
+    {
+      "source": "edge",
+      "asnSource": "request",
+      "kind": "cloud-browser",
+      "views": 2133,
+      "missingAsn": 0,
+      "missingReferrerState": 0
+    },
+    {
+      "source": "edge",
+      "asnSource": "request",
+      "kind": "headless-browser",
+      "views": 4,
+      "missingAsn": 0,
+      "missingReferrerState": 0
+    },
+    {
+      "source": "edge",
+      "asnSource": "request",
+      "kind": "http-client",
+      "views": 1001,
+      "missingAsn": 0,
+      "missingReferrerState": 0
+    },
+    {
+      "source": "edge",
+      "asnSource": "request",
+      "kind": "legacy-browser",
+      "views": 304,
+      "missingAsn": 0,
+      "missingReferrerState": 0
+    },
+    {
+      "source": "edge",
+      "asnSource": "request",
+      "kind": "other-bot",
+      "views": 1055,
+      "missingAsn": 0,
+      "missingReferrerState": 0
+    },
+    {
+      "source": "edge",
+      "asnSource": "request",
+      "kind": "preview-or-feed",
+      "views": 32,
+      "missingAsn": 0,
+      "missingReferrerState": 0
+    },
+    {
+      "source": "edge",
+      "asnSource": "request",
+      "kind": "search-crawler",
+      "views": 256,
+      "missingAsn": 0,
+      "missingReferrerState": 0
+    },
+    {
+      "source": "edge",
+      "asnSource": "request",
+      "kind": "signed-agent",
+      "views": 1054,
+      "missingAsn": 0,
+      "missingReferrerState": 0
+    }
+  ],
+  "migrations": [
+    {
+      "name": "0001_create_page_observations.sql",
+      "applied_at": "2026-09-03 01:39:10"
+    },
+    {
+      "name": "0002_backfill_legacy_page_views.sql",
+      "applied_at": "2026-09-03 01:39:10"
+    },
+    {
+      "name": "0003_add_request_evidence.sql",
+      "applied_at": "2026-09-03 01:39:10"
+    },
+    {
+      "name": "0004_add_representation.sql",
+      "applied_at": "2026-09-03 05:04:02"
+    },
+    {
+      "name": "0005_add_reader_identity.sql",
+      "applied_at": "2026-09-03 05:04:03"
+    },
+    {
+      "name": "0006_backfill_reader_kind.sql",
+      "applied_at": "2026-09-03 05:04:03"
+    },
+    {
+      "name": "0007_reconstruct_pre_evidence_asn.sql",
+      "applied_at": "2026-09-03 05:04:03"
+    },
+    {
+      "name": "0008_owner_clients_and_network_reclassification.sql",
+      "applied_at": "2026-09-04 18:30:09"
+    },
+    {
+      "name": "0009_referrer_context.sql",
+      "applied_at": "2026-09-09 01:57:41"
+    }
+  ],
+  "cloudflareRum": {
+    "method": "Signed-in dashboard observation; no GraphQL response captured",
+    "startInclusive": "2026-10-20T00:00:00Z",
+    "endExclusive": "2026-10-26T00:00:00Z",
+    "botsExcluded": true,
+    "host": "gkoreli.com",
+    "pathPrefixExclusions": [
+      "/stats",
+      "/api"
+    ],
+    "unfilteredPageLoads": 137,
+    "filteredPageLoads": 117,
+    "comparableD1BrowserHtml": 694,
+    "sampling": "Not inspected at group level",
+    "ratio": null,
+    "ratioWithheldReasons": [
+      "Dashboard observation has no sampleInterval receipt",
+      "Full per-path eligibility reconciliation not captured",
+      "Different collection and owner filters; no authenticated event join"
+    ]
+  },
+  "cache": {
+    "initial": "MISS",
+    "equivalent": "HIT",
+    "sameBytes": true,
+    "updatedAtPreserved": true,
+    "scope": "One Cloudflare data center (SEA); not a global hit-rate measurement"
+  },
+  "deployment": {
+    "createdAt": "2026-10-21T16:21:07.953949Z",
+    "versions": [
+      {
+        "version_id": "23a32f14-ba45-45b6-a6d9-70418c04db86",
+        "percentage": 100
+      }
+    ]
+  },
+  "readBudget": {
+    "plannedCeiling": 1000000,
+    "resultBatch": [
+      {
+        "query": "inventory",
+        "rowsRead": 31538,
+        "rowsWritten": 0
+      },
+      {
+        "query": "daily-kinds",
+        "rowsRead": 40741,
+        "rowsWritten": 0
+      },
+      {
+        "query": "browser-dimensions",
+        "rowsRead": 33965,
+        "rowsWritten": 0
+      },
+      {
+        "query": "browser-client-distribution",
+        "rowsRead": 34202,
+        "rowsWritten": 0
+      },
+      {
+        "query": "browser-paths-by-referrer",
+        "rowsRead": 33643,
+        "rowsWritten": 0
+      },
+      {
+        "query": "provenance",
+        "rowsRead": 39921,
+        "rowsWritten": 0
+      },
+      {
+        "query": "migrations",
+        "rowsRead": 9,
+        "rowsWritten": 0
+      }
+    ],
+    "fileEndpointExecution": {
+      "rowsRead": 203083,
+      "rowsWritten": 0,
+      "results": "Summary only; individual aggregates unavailable",
+      "changedDbReported": true
+    },
+    "totalMeasuredSqlRowsRead": 417102,
+    "publicReportCost": "Two cold HTTP reports have no per-statement read receipt in this audit; excluded from 417102"
+  },
+  "sourceCommit": "8b71d3bdd7598fe9d007faea1f9e765c4e69e4d8",
+  "captureHashes": {
+    "30d.json": "f50c40a9a6925387690963ae6092f74a95075880166bbd206e3c7f3b13fc478a",
+    "30d-all.json": "e227ae979d77c8f668c5b663c01352a7a129dddd8179576b1b1862741db54bd0",
+    "cache.json": "f50c40a9a6925387690963ae6092f74a95075880166bbd206e3c7f3b13fc478a",
+    "d1.json": "b54a53f612f8afa363e415e1e9b4dfe14d831d29282629dc2de12ec3c3c327e6",
+    "d1-import-summary.txt": "cca2de4fab94131bb442bd448a26a0af2ccedce6a614c0d0162ba6c74f130c1b",
+    "audit-queries.sql": "398a5e9ce73346e85d8224aa6bc394a583f69f6c95d317dc6474ee8348d20b59",
+    "d1-info.json": "2412ab8563161e1879d814137f83c668dc996c226d5b04d82976393e4c587b2c",
+    "deployments.json": "4bcdb906be253d5d9834fd7fbe128535f794cb83fd5f696904bce4ed86dbe4f6"
+  },
+  "privateCaptureFileTimes": {
+    "30d.json": "2026-10-26T01:03:18.607Z",
+    "30d-all.json": "2026-10-26T01:03:50.848Z",
+    "d1.json": "2026-10-26T01:04:46.780Z",
+    "d1-info.json": "2026-10-26T01:03:29.377Z",
+    "deployments.json": "2026-10-26T01:03:30.146Z",
+    "dashboard-observation.json": "2026-10-26T01:09:00.289Z"
+  }
+}
