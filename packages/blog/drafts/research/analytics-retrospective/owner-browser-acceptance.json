@@ -1,0 +1,96 @@
+{
+  "checkedAt": "2026-10-26T03:05:42.660Z",
+  "sourceCommit": "f23f470",
+  "codeActivation": {
+    "activatedAt": "2026-10-26T03:01:23.595758Z",
+    "versions": [
+      {
+        "version_id": "917823e7-3b7a-4739-ab87-d8b2bc63c10b",
+        "percentage": 100
+      }
+    ]
+  },
+  "grantActivation": {
+    "activatedAt": "2026-10-26T03:02:10.03356Z",
+    "versions": [
+      {
+        "version_id": "38516888-25a6-4488-ac9d-7fc795a0c69f",
+        "percentage": 100
+      }
+    ]
+  },
+  "revocationActivation": {
+    "activatedAt": "2026-10-26T03:03:43.87265Z",
+    "versions": [
+      {
+        "version_id": "ba0ac4a0-4fa8-4cc4-8978-d6b3190a24ae",
+        "percentage": 100
+      }
+    ]
+  },
+  "grant": {
+    "issuedAt": 1792983729181,
+    "expiresAt": 1792984629181,
+    "durationMinutes": 15,
+    "scope": "POST /api/owner only",
+    "existingAdminChanged": false
+  },
+  "temporaryBindingAbsentAfterRevocation": true,
+  "localGrantFileRemoved": true,
+  "browser": {
+    "startedAt": "2026-10-26T03:02:26.142Z",
+    "browser": "Codex in-app browser",
+    "operator": "agent using browser UI",
+    "markConfirmedUtcDate": "2026-10-26",
+    "verificationPath": "/privacy",
+    "credentialPersistedInBrowser": false
+  },
+  "localD1": {
+    "checkedAt": "2026-10-26T03:05:15.906Z",
+    "runtime": "Miniflare/workerd local D1",
+    "ownerEndpoint": 200,
+    "newMarks": 1,
+    "matchingViews": 1,
+    "publiclyEligible": 0,
+    "productionCalls": 0
+  },
+  "markVerification": {
+    "newMarks": 1,
+    "matchingPath": "/privacy",
+    "matchingViews": 1,
+    "collectionVersion": "2026-10-26.2",
+    "referrerState": "internal",
+    "internalReferrerPath": null,
+    "publiclyEligible": 0
+  },
+  "publicReport": {
+    "checkedAt": "2026-10-26T03:05:42.660Z",
+    "rawViews": 3,
+    "ownerExcludedViews": 1,
+    "referralExcludedViews": 0,
+    "includedViews": 2,
+    "publicViews": 2,
+    "publicUpdatedAt": "2026-10-26T03:04:29.916Z",
+    "firstCache": "MISS",
+    "repeatCache": "HIT",
+    "sameBytes": true,
+    "policyHash": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+    "reportVerificationReads": 2292,
+    "verificationWrites": 0
+  },
+  "meteredSql": {
+    "ceiling": 20000,
+    "initialFileModeSummaryReads": 6,
+    "resultRetrievalReads": 6,
+    "reportReconciliationReads": 2292,
+    "totalReads": 2304,
+    "rowsWritten": 0,
+    "publicReportFillsAdditional": true
+  },
+  "limits": [
+    "Agent-operated Codex in-app browser UI; no claim that the owner manually operated it or that another normal-browser profile is marked.",
+    "Daily identity depends on host, UTC date, network address and User-Agent; no person identity or future-day coverage.",
+    "One verification navigation; not the paired JavaScript/beacon calibration matrix.",
+    "Cold report and matching rows reconciled at the stated capture time; not continuing production monitoring."
+  ]
+}

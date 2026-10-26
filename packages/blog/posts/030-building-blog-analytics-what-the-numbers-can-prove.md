@@ -212,24 +212,24 @@ The transferable check is concrete: verify output, measure the complete report's
 
 ## The next iteration starts with a known client
 
-Making owner exclusion usable exposed another gap: the setup page initially required the broader admin token, which I did not remember. The follow-up adds a privately issued code valid for at most fifteen minutes, accepted only by the owner-marking endpoint. The existing admin token stays unchanged. A successful mark still needs a real-browser navigation and public-report check; possession of a credential does not identify a person.
+Making owner exclusion usable exposed another gap: the setup page initially required the broader admin token, which I did not remember. The follow-up adds a privately issued code valid for at most fifteen minutes, accepted only by the owner-marking endpoint. The existing admin token stays unchanged. The agent then drove that form in the Codex browser and opened its verification link. D1 confirmed one owned event; a fresh report reconciled three raw Browser events to two public views, with the owned event excluded. An equivalent repeat reused identical cached bytes. The code was removed afterward. This verifies that browser’s current-day flow, not my separate normal-browser profile or a human-operated calibration trial. The [browser receipt](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/12-owner-code-and-verification-correction.md) preserves those limits.
 
-Owner exclusion is the first gate. The current query supports it, but today's window contains zero excluded owner events and the only daily mark is from September 9. A mark for one client/day cannot cover a later date or changed address/User-Agent. I cannot assign the October 21 spike to my own tools just because that explanation is plausible.
+Owner exclusion is the first gate. The original September 27–October 26 audit window contained zero excluded owner events and its only daily mark was from September 9. The new browser check does not change that frozen capture. A mark for one client/day cannot cover a later date or changed address/User-Agent. I cannot assign the October 21 spike to my own tools just because that explanation is plausible.
 
 The calibration question is still live too. For October 20–25 UTC, D1 recorded **694 Browser HTML events**, while Cloudflare's signed-in dashboard showed **117 non-bot beacon loads** after stats/API path exclusions. That was a UI observation without group-level sampling and complete path-reconciliation receipts, so I am not publishing an accepted ratio or a bot estimate. Cloudflare documents [beacon blocking, loss and sampling](https://developers.cloudflare.com/web-analytics/faq/); those are mechanisms to test, not causes already allocated to this gap.
 
 The [improvement plan](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/05-improvement-plan.md) orders the work by the evidence needed:
 
 1. **Inspect retained native evidence.** Full-interval stored-data aggregation is complete above. Native field availability, retained logs, sampling and reliable joins still need actual-access evidence.
-2. **Verify owner/test exclusion for the actual browser and UTC day.** The new owner-marking page exposes the existing authenticated endpoint. A successful form submission still needs stored-event and public-report acceptance before calibration; cached reports can be stale.
-3. **Extend the role/signer repair.** The Exa/Ahrefs catalogue gaps and signature precedence are repaired in the follow-up above. Collection/classifier versions on each observation, broader catalogue review and native vendor recognition remain open. Keep historical roles unknown where inputs are missing.
+2. **Verify owner/test exclusion for the actual browser and UTC day.** The agent-operated in-app flow is accepted above; the human-operated normal-browser profile still needs its own mark and stored-event/public-report check before calibration. Cached reports can be stale.
+3. **Extend the role/signer repair.** The Exa/Ahrefs catalogue gaps and signature precedence are repaired in the follow-up above. New observations now carry collection/classifier versions; broader catalogue review and native vendor recognition remain open. Keep historical roles unknown where inputs are missing.
 4. **Test the supported signature profile and native verification paths.** Keep recognition, coverage, freshness and unavailable fields explicit.
 5. **Make a reviewed R1 reporting decision.** Preserve its evidence and the false-exclusion tradeoff; do not turn a policy into an identity claim.
 6. **Run labelled browser/beacon experiments.** Pair normal, blocked-beacon, JavaScript-off and warm-cache cases, recording each collection stage and unknown join.
 
 An optional scoped task receipt comes later, only for a real cooperative client whose question needs it. A new authentication service, custom beacon or queue has to earn its maintenance cost by answering something the current native tools cannot.
 
-I have a more inspectable counter than the one that displayed AI Reads. I can explain its event, classification rules, policy effects and query costs, and I can point to specific missing evidence. I still cannot use it to count people reading. The next useful result is a verified owner flow and a labelled collection experiment, with the same care for what failed or remained unknown as for what worked.
+I have a more inspectable counter than the one that displayed AI Reads. I can explain its event, classification rules, policy effects and query costs, and I can point to specific missing evidence. I still cannot use it to count people reading. The next useful result is the human-operated browser check and a labelled collection experiment, with the same care for what failed or remained unknown as for what worked.
 
 ---
 
