@@ -56,3 +56,14 @@ Completed: source research, Wrangler evidence extension, cross-references, prosp
 The requested evidence exploration, capture, authoritative native/library references, implementation cross-references, improvement plan and retrospective are delivered. The current article source and plan were inspected against the claim ledger; current installed dependency versions match the review; eight initial-audit and sixteen follow-up capture commitments match the private originals; the maintained probe and classifier hashes match the saved run. Source `c4a8ae8` is on main, and the live Markdown/index checks establish publication of the same article content and five-prompt provenance. The publication receipt records these checks and their limits.
 
 Implementation of the proposed iterations is a future objective, not a missing deliverable of this research/plan/article request. Owner/browser calibration, role-model changes, R1 policy decisions, native-field availability and historical log access remain open exactly where the plan says they do. No additional production SQL or test page traffic was needed to close this publication audit.
+
+## Follow-up implementation — October 25 Pacific / October 26 UTC
+
+The later explicit Exa/Ahrefs repair request authorizes implementation and article revision. The original research/publication completion audit above remains a dated receipt, not the current implementation status.
+
+- [Classification repair](08-classification-repair.md), [after probe](ua-coverage-after.json), [Cloudflare-local D1 results](classification-local-d1.json) and [reproducer](check-classification-local-d1.mjs) preserve the new evidence alongside the unchanged baseline.
+- [ADR-0016.8](../../../../../docs/adr/0016.8-declared-client-roles-and-signer-evidence.md) records the changed precedence, public labels, independent signer aggregate and no-backfill decision.
+- The article now includes this bounded repair and six complete shaping messages. It retains the frozen audit's totals, unknown historical roles and unresolved R1 attribution.
+- Local checks pass; deployment and measured live acceptance are tracked separately in the repair record. TASK-0119 is in progress, not complete. No recurring capture is scheduled.
+
+Next bounded action after this repair: verify actual owner-browser exclusion before calibration. Per-observation versions, native entitlement/field acceptance and signature-profile work remain open.

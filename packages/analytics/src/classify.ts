@@ -25,6 +25,10 @@ import type { DeviceType, TrafficClass } from './contracts.js';
  *   https://support.apple.com/en-us/119829
  * - DuckDuckGo — DuckAssistBot:
  *   https://duckduckgo.com/duckduckgo-help-pages/results/duckassistbot/
+ * - Exa — ExaSearchBot and ExaUser (added 2026-10-25):
+ *   https://crawler.exa.ai/ and https://crawler.exa.ai/exauser
+ * - Ahrefs — AhrefsBot and AhrefsSiteAudit (added 2026-10-25):
+ *   https://ahrefs.com/robot
  *
  * Google-Extended and Applebot-Extended are robots.txt product tokens that the
  * vendors say are not request User-Agents. A request containing either is stored
@@ -49,6 +53,8 @@ interface AgentRule {
 }
 
 const AI_RULES: readonly AgentRule[] = [
+  { name: 'ExaUser', pattern: /(?:^|[\s;(])ExaUser(?=\/|[\s;)]|$)/i },
+  { name: 'ExaSearchBot', pattern: /(?:^|[\s;(])ExaSearchBot(?=\/|[\s;)]|$)/i },
   { name: 'ChatGPT-User', pattern: /ChatGPT-User/i },
   { name: 'Claude-User', pattern: /Claude-User/i },
   { name: 'Perplexity-User', pattern: /Perplexity-User/i },
@@ -80,6 +86,8 @@ const AI_RULES: readonly AgentRule[] = [
 ];
 
 const BOT_RULES: readonly AgentRule[] = [
+  { name: 'AhrefsSiteAudit', pattern: /(?:^|[\s;(])AhrefsSiteAudit(?=\/|[\s;)]|$)/i },
+  { name: 'AhrefsBot', pattern: /(?:^|[\s;(])AhrefsBot(?=\/|[\s;)]|$)/i },
   { name: 'Google-Extended', pattern: /Google-Extended/i },
   { name: 'Applebot-Extended', pattern: /Applebot-Extended/i },
   { name: 'Googlebot', pattern: /Googlebot/i },

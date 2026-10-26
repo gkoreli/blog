@@ -32,6 +32,8 @@ Consult the relevant ADR before changing an established choice. Implementation f
 
 ## Analytics invariants
 
+Current role/signer semantics: [ADR-0016.8](../adr/0016.8-declared-client-roles-and-signer-evidence.md) preserves named declared roles across verification and reports signer evidence independently.
+
 Retain method boundaries and source provenance when classifications change. Public labels describe request evidence, not a claim to identify a human. Reader groups must remain disjoint and add up to All; use `READER_GROUPS` and the stored `reader_kind` contract. Preserve documented legacy evidence levels rather than deleting history.
 
 Do not add AS13335, AS36183, AS20940, AS54113, or AS15169 to the hosting-ASN list. Follow the network-evidence ADRs before modifying classification. Do not store raw IP or User-Agent in edge observations. Keep audience measurement, crawler access, and abuse protection distinct.

@@ -1,5 +1,5 @@
 export type TrafficClass = 'browser' | 'bot' | 'ai';
-/** Public stats filters: what the client was doing, not how confident we are. */
+/** Public filters group stored request evidence and declared roles. */
 export type TrafficFilter = 'browser' | 'agents' | 'crawlers' | 'automation' | 'all';
 
 /** Closed set of reader kinds, one per row, with one reason (ADR-0016.3 section A). */
@@ -9,6 +9,7 @@ export const READER_KINDS = [
   'ai-search',
   'ai-crawler',
   'search-crawler',
+  'seo-crawler',
   'preview-or-feed',
   'headless-browser',
   'other-bot',
@@ -23,7 +24,7 @@ export type ReaderKind = typeof READER_KINDS[number];
 export const READER_GROUPS: Record<Exclude<TrafficFilter, 'all'>, readonly ReaderKind[]> = {
   browser: ['browser'],
   agents: ['signed-agent', 'ai-assistant'],
-  crawlers: ['search-crawler', 'ai-search', 'ai-crawler', 'preview-or-feed'],
+  crawlers: ['search-crawler', 'seo-crawler', 'ai-search', 'ai-crawler', 'preview-or-feed'],
   automation: ['cloud-browser', 'headless-browser', 'http-client', 'other-bot', 'legacy-browser'],
 };
 
@@ -95,5 +96,7 @@ export interface StatsResponse {
   };
   byDevice: Array<{ deviceType: DeviceType; views: number }>;
   byAgent: Array<{ agentName: string; trafficClass: Exclude<TrafficClass, 'browser'>; views: number }>;
+  /** Verified-key outcomes within the same included selection; independent of declared role. */
+  bySigner: Array<{ signatureAgent: string; views: number }>;
   byKind: Array<{ kind: ReaderKind; reason: string; views: number; dailyClients: number }>;
 }

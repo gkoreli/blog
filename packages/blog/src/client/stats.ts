@@ -27,11 +27,12 @@ const DEFAULT_STATE: ViewState = { range: '30d', traffic: 'browser', path: null,
 /** Public names for the reader kinds: what the client is, in plain words. */
 const KIND_LABELS: Record<ReaderKind, string> = {
   browser: 'Browsers',
-  'signed-agent': 'Signed agents',
+  'signed-agent': 'Signed clients — historical or unknown role',
   'ai-assistant': 'AI assistants',
   'ai-search': 'AI search',
   'ai-crawler': 'AI crawlers',
   'search-crawler': 'Search engines',
+  'seo-crawler': 'SEO and site-audit crawlers',
   'preview-or-feed': 'Link previews',
   'cloud-browser': 'Cloud browsers',
   'headless-browser': 'Headless browsers',
@@ -173,6 +174,7 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   if (data.byReferrerState === undefined || data.internalTransitions === undefined || data.internalReferrerDetails === undefined) {
     throw new Error('Updated referral details are unavailable. Please reload.');
   }
+  if (data.bySigner === undefined) throw new Error('Updated signer evidence is unavailable. Please reload.');
   return data;
 }
 
@@ -491,7 +493,7 @@ function renderChart(data: StatsResponse): void {
 /** Only a named User-Agent rule scopes the page further; other reasons are facts, not filters. */
 function reasonHref(kind: ReaderKind, reason: string, state: ViewState): string | undefined {
   if (state.kind !== null || state.agent !== null) return undefined;
-  const namedAgentKinds: ReaderKind[] = ['ai-assistant', 'ai-search', 'ai-crawler', 'search-crawler', 'preview-or-feed', 'headless-browser', 'other-bot'];
+  const namedAgentKinds: ReaderKind[] = ['ai-assistant', 'ai-search', 'ai-crawler', 'search-crawler', 'seo-crawler', 'preview-or-feed', 'headless-browser', 'other-bot'];
   if (!namedAgentKinds.includes(kind) || reason === 'generic-bot' || reason.includes(':')) return undefined;
   return stateHref({ ...state, agent: reason, traffic: 'all' });
 }
@@ -618,6 +620,11 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   replaceSectionRows('stats-referrers', referrers, null);
   renderTransitions(data, state);
   replaceSectionRows('stats-countries', data.byCountry.map(row => ({ label: countryLabel(row.country), views: row.views })));
+  replaceSectionRows('stats-declarations', data.byAgent.map(row => ({
+    label: row.agentName, views: row.views,
+    href: stateHref({ ...state, agent: row.agentName, kind: null, traffic: 'all' }),
+  })), null);
+  replaceSectionRows('stats-signers', data.bySigner.map(row => ({ label: row.signatureAgent, views: row.views })), null);
   renderComposition(data, state);
 
   setStatus(`Showing ${formatViewCount(data.totals.views, true)}.${exclusionNotice}`, 'ready');
@@ -668,8 +675,8 @@ document.querySelector('.stats-controls')?.addEventListener('click', event => {
   let agent = currentState.agent;
   let kind = currentState.kind;
   if (traffic && nextTraffic !== currentState.traffic && nextTraffic !== 'all') {
-    const agentKind = agent === null ? null : currentData?.byKind.find((row) => row.reason === agent)?.kind ?? null;
-    if (agent !== null && (agentKind === null || readerGroupOf(agentKind) !== nextTraffic)) agent = null;
+    const agentFits = currentData?.byKind.some(row => readerGroupOf(row.kind) === nextTraffic) ?? false;
+    if (agent !== null && !agentFits) agent = null;
     if (kind !== null && !READER_GROUPS[nextTraffic].includes(kind)) kind = null;
   }
   const state: ViewState = {

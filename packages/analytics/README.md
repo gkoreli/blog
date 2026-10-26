@@ -24,15 +24,16 @@ Cloudflare Worker logs/traces, client-error collection, and RUM are separate ope
 
 ## The reader kinds
 
-Twelve kinds, one per row, derived from the available request evidence (`contracts.ts`, `READER_KINDS`). The public stats page groups them into four disjoint filters that add up to All (`READER_GROUPS`). These are deterministic rule outcomes, not authenticated statements of human activity. The current AI agents group conflates verified signatures with assistant roles; grouping/wording repair is pending in TASK-0119. A signed crawler remains a crawler by documented role even when the current group puts it under AI agents.
+Thirteen kinds, one per row, derived from the available request evidence (`contracts.ts`, `READER_KINDS`). The public stats page groups them into four disjoint filters that add up to All (`READER_GROUPS`). These are deterministic rule outcomes, not authenticated statements of human activity. Since the October 26, 2026 UTC catalogue repair, recognized declared roles survive signature verification. Signer evidence is reported independently in `bySigner`. The `agents` filter is labelled Assistants & signed clients and retains historical/unknown-role signed rows without rewriting them. A declared role remains a claim, independent of signature coverage or human intent.
 
 | Group | Kind | Condition | Reason recorded |
 |---|---|---|---|
-| AI agents | `signed-agent` | Web Bot Auth signature verified against the signer's `/.well-known/http-message-signatures-directory` | the signer origin |
-| AI agents | `ai-assistant` | named on-demand fetcher: ChatGPT-User, Claude-User, Perplexity-User, Meta-ExternalFetcher, MistralAI-User, DuckAssistBot, Amzn-User, Google-Agent, Google-GeminiNotebook | the agent name |
-| Crawlers | `ai-search` | OAI-SearchBot, Claude-SearchBot, PerplexityBot, MistralAI-Index, Amzn-SearchBot, Meta-WebIndexer, Applebot | the agent name |
+| Assistants & signed clients | `signed-agent` | Historical or unrecognized-role Web Bot Auth signature verified against the signer's `/.well-known/http-message-signatures-directory` | the signer origin |
+| Assistants & signed clients | `ai-assistant` | named on-demand fetcher: ExaUser, ChatGPT-User, Claude-User, Perplexity-User, Meta-ExternalFetcher, MistralAI-User, DuckAssistBot, Amzn-User, Google-Agent, Google-GeminiNotebook | the agent name |
+| Crawlers | `ai-search` | ExaSearchBot, OAI-SearchBot, Claude-SearchBot, PerplexityBot, MistralAI-Index, Amzn-SearchBot, Meta-WebIndexer, Applebot | the agent name |
 | Crawlers | `ai-crawler` | GPTBot, ClaudeBot, MistralAI-Training, Meta-ExternalAgent, Amazonbot, CCBot, Google-CloudVertexBot, Bytespider, PetalBot, Cohere-AI | the agent name |
 | Crawlers | `search-crawler` | Googlebot, Bingbot, DuckDuckBot, YandexBot, Baiduspider | the agent name |
+| Crawlers | `seo-crawler` | AhrefsBot, AhrefsSiteAudit | the declared client name |
 | Crawlers | `preview-or-feed` | FacebookBot, LinkedInBot, Slackbot; or an unnamed request from an archiver network | the agent name or `archiver-asn:<asn>` |
 | Automation | `headless-browser` | `HeadlessChrome/`, `Cypress/`, `Lightpanda/` in the User-Agent | the token |
 | Automation | `other-bot` | any other bot-class match, including generic tokens | rule name or `generic-bot` |
@@ -41,7 +42,7 @@ Twelve kinds, one per row, derived from the available request evidence (`contrac
 | Automation | `legacy-browser` | no `Sec-Fetch-Mode` and a User-Agent that predates Fetch Metadata or cannot be versioned | `pre-fetch-metadata-ua` |
 | Browsers | `browser` | navigation-shaped request from outside hosting networks; or a beacon-era row; or a pre-evidence edge row | `navigation-shaped`, `beacon-script-ran`, `user-agent-only` |
 
-Order of evaluation: verified signature, named agent rules, headless tokens, archiver network for unnamed requests, bot class, beacon and pre-evidence cases, hosting network, then request shape. The hosting network runs before shape because, in a three-day sample of the site's raw logs, the largest single cluster (374 of 844 page loads) was navigation-shaped traffic from Google Cloud that passed every header check.
+Order of evaluation: derive the declared role from named rules, headless tokens, archiver network for unnamed requests, bot class, beacon/pre-evidence cases, hosting network and request shape. A verified signature preserves a recognized named role; otherwise it selects the signed-client fallback. An unverified signature keeps the role with a failure reason. Key outcomes stay in their existing signature fields; no historical reclassification or schema migration accompanies this repair. The hosting network runs before shape because, in a three-day sample of the site's raw logs, the largest single cluster (374 of 844 page loads) was navigation-shaped traffic from Google Cloud that passed every header check.
 
 The implemented navigation predicate requires `Sec-Fetch-Mode: navigate`, `Sec-Fetch-Dest: document`, `accepts_html = 1`, and `has_accept_language = 1`. `Sec-Fetch-Site` is recorded but not restricted; `Sec-Fetch-User` is not required. Safari's compatibility evidence is discussed in research artifact 09.
 
@@ -129,3 +130,10 @@ The [controlled local experiment](../blog/drafts/research/edge-vs-rum/03-local-e
 [Release verification](../blog/drafts/research/edge-vs-rum/04-release-verification.md) records the activated Worker version and a read-only check of subsequent production provenance.
 
 The completed [Matomo comparison](../blog/drafts/research/agent-readership/01-matomo-and-agent-subscriptions.md) documents established overlap in server collection, AI reports, cookieless operation, and page transitions. It identifies a narrower verification difference against Matomo 5.13.0's ChatGPT provider and preserves a local reproducer. Overall accuracy, reliability, and cost advantages have not been measured. The [agent-authorization and subscription research](../blog/drafts/research/agent-readership/00-worklist-index.md) is also complete; its proposed integration experiments have not run, and this package does not implement an account-authorized agent subscription service.
+
+
+### October 26 catalogue repair
+
+ExaSearchBot and ExaUser are distinct named declarations; AhrefsBot and AhrefsSiteAudit map to the SEO/site-audit crawler kind. Token boundaries reject prefixed/suffixed lookalikes. Existing `agent_name`, `reader_kind`/reason and `signature_status`/agent columns retain these independent facts prospectively. Original rows with null names remain unknown.
+
+`byAgent` exposes included matched declarations; `bySigner` aggregates only stored verified-key outcomes under the same owner, time, traffic, path and referral-policy selection. They overlap rather than partition each other. The dashboard shows both, and names can be filtered across role groups and the historical signed fallback. Report cache version `2026-10-26.1` prevents reuse of older semantics. The saved before/after evidence and acceptance are maintained in [the retrospective repair record](../blog/drafts/research/analytics-retrospective/08-classification-repair.md). Broader TASK-0119 version/authorization/native-field work and real-browser owner exclusion remain separate.

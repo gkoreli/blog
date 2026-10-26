@@ -29,3 +29,7 @@ how can we solve who they are? We would love to know deterministically.
 ---
 
 use wrangler cli to look and analyze our data
+
+---
+
+fix the Exa and Ahrefs classification gaps. preserve the evidence and update the article as we learn.

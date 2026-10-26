@@ -6,6 +6,7 @@ export { READER_KINDS } from './contracts.js';
 export type { ReaderKind } from './contracts.js';
 
 export const ON_DEMAND_FETCHERS = [
+  'ExaUser',
   'ChatGPT-User',
   'Claude-User',
   'Perplexity-User',
@@ -18,6 +19,7 @@ export const ON_DEMAND_FETCHERS = [
 ] as const;
 
 export const AI_SEARCH_CRAWLERS = [
+  'ExaSearchBot',
   'OAI-SearchBot',
   'Claude-SearchBot',
   'PerplexityBot',
@@ -48,6 +50,8 @@ export const SEARCH_CRAWLERS = [
   'Baiduspider',
 ] as const;
 
+export const SEO_CRAWLERS = ['AhrefsBot', 'AhrefsSiteAudit'] as const;
+
 export const PREVIEW_OR_FEED_AGENTS = [
   'FacebookBot',
   'LinkedInBot',
@@ -64,6 +68,7 @@ const onDemandFetchers: ReadonlySet<string> = new Set(ON_DEMAND_FETCHERS);
 const aiSearchCrawlers: ReadonlySet<string> = new Set(AI_SEARCH_CRAWLERS);
 const aiCrawlers: ReadonlySet<string> = new Set(AI_CRAWLERS);
 const searchCrawlers: ReadonlySet<string> = new Set(SEARCH_CRAWLERS);
+const seoCrawlers: ReadonlySet<string> = new Set(SEO_CRAWLERS);
 const previewOrFeedAgents: ReadonlySet<string> = new Set(PREVIEW_OR_FEED_AGENTS);
 const headlessBrowsers: ReadonlySet<string> = new Set(HEADLESS_BROWSERS);
 
@@ -127,6 +132,7 @@ export function agentReaderKind(agentName: string): ReaderKind {
   if (aiSearchCrawlers.has(agentName)) return 'ai-search';
   if (aiCrawlers.has(agentName)) return 'ai-crawler';
   if (searchCrawlers.has(agentName)) return 'search-crawler';
+  if (seoCrawlers.has(agentName)) return 'seo-crawler';
   if (previewOrFeedAgents.has(agentName)) return 'preview-or-feed';
   if (headlessBrowsers.has(agentName)) return 'headless-browser';
   return 'other-bot';
@@ -145,6 +151,9 @@ function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
   }
   if (agentName !== null && searchCrawlers.has(agentName)) {
     return { kind: 'search-crawler', reason: agentName };
+  }
+  if (agentName !== null && seoCrawlers.has(agentName)) {
+    return { kind: 'seo-crawler', reason: agentName };
   }
   if (agentName !== null && previewOrFeedAgents.has(agentName)) {
     return { kind: 'preview-or-feed', reason: agentName };
@@ -192,10 +201,14 @@ function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
 }
 
 export function classifyReaderKind(facts: ReaderKindFacts): ReaderKindResult {
+  const result = unsignedReaderKind(facts);
   if (facts.signature.status === 'verified') {
+    // A declared named role and a verified signing key are independent evidence.
+    // Preserve the role; signature_status/signature_agent retain verification.
+    // Unrecognized signed clients keep the historical signed-agent fallback.
+    if (facts.agentName !== null && agentReaderKind(facts.agentName) !== 'other-bot') return result;
     return { kind: 'signed-agent', reason: facts.signature.agent };
   }
-  const result = unsignedReaderKind(facts);
   if (facts.signature.status === 'unverified') {
     return { ...result, reason: `${result.reason}; signature:${facts.signature.reason}` };
   }

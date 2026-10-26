@@ -208,7 +208,7 @@ function payloadRows(row: Record<string, unknown>): Record<string, unknown>[] {
 function reportSections(rows: Record<string, unknown>[], includeBoundary: boolean): Map<string, Record<string, unknown>[]> {
   const expected = new Set([
     'totals', 'path', 'country', 'series', 'referrer', 'device', 'agent', 'kind', 'excluded',
-    'referrer-state', 'transitions', 'referrer-details',
+    'referrer-state', 'transitions', 'referrer-details', 'signer',
   ]);
   if (includeBoundary) expected.add('boundary');
   const sections = new Map<string, Record<string, unknown>[]>();
@@ -245,15 +245,16 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     "('totals', 0)", "('path', 1)", "('country', 2)", "('series', 3)", "('referrer', 4)",
     "('device', 5)", "('agent', 6)", "('kind', 7)", "('excluded', 8)",
     "('referrer-state', 9)", "('transitions', 10)", "('referrer-details', 11)",
+    "('signer', 12)",
   ];
-  if (includeBoundary) sectionValues.push("('boundary', 12)");
+  if (includeBoundary) sectionValues.push("('boundary', 13)");
 
   return {
     sql: `WITH RECURSIVE
       selected AS MATERIALIZED (
         SELECT path, country, daily_client_id, traffic_class, agent_name, device_type,
                reader_kind, reader_reason, referrer_host, observed_at,
-               referrer_state, internal_referrer_path, representation
+               referrer_state, internal_referrer_path, representation, signature_status, signature_agent
         FROM page_observations WHERE ${selected.sql}
       ),
       ${referralAssessmentCtes(`
@@ -330,6 +331,13 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
               'dailyClients', COUNT(DISTINCT daily_client_id)) AS row_json
             FROM included WHERE reader_kind IS NOT NULL
             GROUP BY reader_kind, reader_reason ORDER BY COUNT(*) DESC, reader_kind, reader_reason
+          )
+        )
+        WHEN 'signer' THEN (
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', signature_agent, 'views', COUNT(*)) AS row_json
+            FROM included WHERE signature_status = 'verified' AND signature_agent IS NOT NULL
+            GROUP BY signature_agent ORDER BY COUNT(*) DESC, signature_agent
           )
         )
         WHEN 'excluded' THEN (
@@ -431,6 +439,11 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     },
     byDevice: deviceRows(requiredSection(sections, 'device')),
     byAgent: agentRows(requiredSection(sections, 'agent')),
+    bySigner: requiredSection(sections, 'signer').map(row => {
+      const signatureAgent = stringField(row, 'key1');
+      if (signatureAgent === null) return malformedReport();
+      return { signatureAgent, views: numberField(row, 'views') };
+    }),
     byKind: kindRows(requiredSection(sections, 'kind')),
   };
 }
@@ -459,13 +472,14 @@ export function parseStatsQuery(params: URLSearchParams): StatsQuery | string {
     ? scoped ? 'all' : 'browser'
     : parseTrafficFilter(trafficValue);
   if (traffic === null) return 'traffic must be browser, agents, crawlers, automation, or all';
-  if (agent !== undefined && kind !== undefined && agentReaderKind(agent) !== kind) {
+  if (agent !== undefined && kind !== undefined && kind !== 'signed-agent' && agentReaderKind(agent) !== kind) {
     return `agent ${agent} cannot be combined with kind=${kind}`;
   }
   if (kind !== undefined && traffic !== 'all' && !READER_GROUPS[traffic].includes(kind)) {
     return `kind ${kind} cannot be combined with traffic=${traffic}`;
   }
-  if (agent !== undefined && traffic !== 'all' && readerGroupOf(agentReaderKind(agent)) !== traffic) {
+  // Historical named/signed rows retain their original fallback classification.
+  if (agent !== undefined && traffic !== 'all' && traffic !== 'agents' && readerGroupOf(agentReaderKind(agent)) !== traffic) {
     return `agent ${agent} cannot be combined with traffic=${traffic}`;
   }
 

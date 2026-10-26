@@ -17,6 +17,7 @@ import {
   isHostingAsn,
 } from '../.test-dist/networks.js';
 import { partitionPredicate } from '../.test-dist/partition.js';
+import { buildSignatureBase, ed25519JwkThumbprint } from '../.test-dist/webbotauth.js';
 import { classifyReaderKind, READER_KINDS } from '../.test-dist/readerkind.js';
 import { READER_GROUPS, readerGroupOf } from '../.test-dist/contracts.js';
 import { handleStats, parseStatsQuery, queryStats } from '../.test-dist/stats.js';
@@ -614,6 +615,7 @@ test('reader-kind classifier maps every closed-set code and records one reason',
     [{ ...base, trafficClass: 'ai', agentName: 'OAI-SearchBot' }, 'ai-search', 'OAI-SearchBot'],
     [{ ...base, trafficClass: 'ai', agentName: 'GPTBot' }, 'ai-crawler', 'GPTBot'],
     [{ ...base, trafficClass: 'bot', agentName: 'Googlebot' }, 'search-crawler', 'Googlebot'],
+    [{ ...base, trafficClass: 'bot', agentName: 'AhrefsBot' }, 'seo-crawler', 'AhrefsBot'],
     [{ ...base, trafficClass: 'bot', agentName: 'Slackbot' }, 'preview-or-feed', 'Slackbot'],
     [{ ...base, trafficClass: 'bot', agentName: 'HeadlessChrome', userAgent: 'HeadlessChrome/152' }, 'headless-browser', 'HeadlessChrome'],
     [{ ...base, trafficClass: 'bot', agentName: null }, 'other-bot', 'generic-bot'],
@@ -923,6 +925,7 @@ test('stats result decoding rejects malformed, duplicate, missing, and misplaced
     { section: 'referrer', payload: '[]' },
     { section: 'device', payload: '[]' },
     { section: 'agent', payload: '[]' },
+    { section: 'signer', payload: '[]' },
     { section: 'kind', payload: '[]' },
     { section: 'excluded', payload: '[{"views":0}]' },
     { section: 'referrer-state', payload: '[]' },
@@ -1183,9 +1186,8 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
   const browserConflict = await handleStats(request('/api/stats?agent=GPTBot&traffic=browser'), { DB: d1 });
   assert.equal(browserConflict.status, 400);
   assert.match((await browserConflict.json()).error, /cannot be combined/);
-  const agentsConflict = await handleStats(request('/api/stats?agent=GPTBot&traffic=agents'), { DB: d1 });
-  assert.equal(agentsConflict.status, 400);
-  assert.match((await agentsConflict.json()).error, /cannot be combined/);
+  const historicalSigned = await handleStats(request('/api/stats?agent=GPTBot&traffic=agents'), { DB: d1 });
+  assert.equal(historicalSigned.status, 200, 'historical signed fallback is a valid subset');
   const classConflict = await handleStats(request('/api/stats?agent=GPTBot&traffic=automation'), { DB: d1 });
   assert.equal(classConflict.status, 400);
   assert.match((await classConflict.json()).error, /cannot be combined/);
@@ -1585,7 +1587,8 @@ test('SQL reader-kind backfill uses the same closed-set mapping as ingestion', (
       .map(row => row.reader_kind),
     // The raw User-Agent is not stored, so history cannot be version-gated:
     // the backfill never emits legacy-browser and labels those rows http-client.
-    READER_KINDS.filter(kind => kind !== 'legacy-browser'),
+    // seo-crawler was added prospectively in October; the September migration is frozen.
+    READER_KINDS.filter(kind => kind !== 'legacy-browser' && kind !== 'seo-crawler'),
   );
 });
 
@@ -1672,4 +1675,137 @@ test('migration 0009 leaves old evidence unknown and rejects unsafe internal pat
     assert.throws(() => sqlite.prepare("INSERT INTO page_observations (referrer_state, internal_referrer_path) VALUES ('internal', ?)").run(path));
   }
   assert.throws(() => sqlite.prepare("INSERT INTO page_observations (internal_referrer_path) VALUES ('/article')").run());
+});
+
+
+const VENDOR_UAS = [
+  ['ExaUser', 'ai', 'ai-assistant', 'Mozilla/5.0 (compatible; ExaUser/1.0; +https://crawler.exa.ai/exauser)'],
+  ['ExaSearchBot', 'ai', 'ai-search', 'Mozilla/5.0 (compatible; ExaSearchBot/1.0; +https://crawler.exa.ai/)'],
+  ['AhrefsBot', 'bot', 'seo-crawler', 'Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)'],
+  ['AhrefsSiteAudit', 'bot', 'seo-crawler', 'Mozilla/5.0 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)'],
+];
+
+test('vendor declarations use token boundaries and keep declared roles across signature outcomes', () => {
+  for (const [name, trafficClass, kind, userAgent] of VENDOR_UAS) {
+    assert.deepEqual(classifyTraffic(userAgent), { trafficClass, agentName: name });
+    assert.deepEqual(classifyTraffic(userAgent.toLowerCase()), { trafficClass, agentName: name });
+    for (const signature of [
+      { status: 'absent' },
+      { status: 'verified', agent: 'https://unrelated-signer.example' },
+      { status: 'unverified', reason: 'signature-invalid' },
+    ]) {
+      const facts = { trafficClass, agentName: name, observationSource: 'edge', asn: 16509,
+        secFetchMode: null, secFetchDest: null, secFetchSite: null, secFetchUser: null,
+        acceptsHtml: null, hasAcceptLanguage: 0, signature, userAgent };
+      const before = structuredClone(facts);
+      assert.deepEqual(classifyReaderKind(facts), { kind,
+        reason: signature.status === 'unverified' ? `${name}; signature:signature-invalid` : name });
+      assert.deepEqual(facts, before, 'classification must not change signer evidence');
+    }
+    for (const lookalike of [`Not${name}/1.0`, `${name}Impostor/1.0`, `https://example.test/${name}/1.0`]) {
+      assert.equal(classifyTraffic(lookalike).agentName, null, lookalike);
+    }
+  }
+  const mobile = 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.7922.173 Mobile Safari/537.36 (compatible; AhrefsSiteAudit/6.1; +http://ahrefs.com/robot/site-audit)';
+  assert.deepEqual(classifyTraffic(mobile), { trafficClass: 'bot', agentName: 'AhrefsSiteAudit' });
+});
+
+test('named role and signer reports preserve historical unknowns and share every selection boundary', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  const at = '2026-10-26 02:00:00';
+  let id = 1000;
+  for (const [name, trafficClass, , userAgent] of VENDOR_UAS) {
+    for (const signed of [false, true]) insertObservation(sqlite, {
+      path: '/vendor-page', country: 'US', dailyClientId: (++id).toString(16).padStart(32, '0'),
+      trafficClass, agentName: name, userAgent, hasAcceptLanguage: 0,
+      signatureStatus: signed ? 'verified' : null,
+      signatureAgent: signed ? 'https://signer.example' : null,
+      observedAt: at,
+    });
+  }
+  // This original unknown row must never acquire a role from its signer.
+  insertObservation(sqlite, { path: '/legacy', dailyClientId: (++id).toString(16).padStart(32, '0'),
+    trafficClass: 'bot', readerKind: 'signed-agent', readerReason: 'https://crawler.exa.ai',
+    signatureStatus: 'verified', signatureAgent: 'https://crawler.exa.ai', observedAt: at });
+  for (const extra of [{ isOwner: true }, { referrerHost: 'uniuit.com' }, { observedAt: '2026-10-27 00:00:00' }]) {
+    insertObservation(sqlite, { path: '/excluded', dailyClientId: (++id).toString(16).padStart(32, '0'),
+      trafficClass: 'bot', agentName: 'AhrefsBot', signatureStatus: 'verified',
+      signatureAgent: 'https://excluded.example', observedAt: at, ...extra });
+  }
+  const before = sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all();
+  const now = new Date('2026-10-26T12:00:00Z');
+  const stats = await queryStats(d1, { range: '7d', traffic: 'all' }, now);
+  assert.equal(stats.totals.views, 9);
+  assert.deepEqual(stats.bySigner, [
+    { signatureAgent: 'https://signer.example', views: 4 },
+    { signatureAgent: 'https://crawler.exa.ai', views: 1 },
+  ]);
+  assert.equal(stats.byKind.reduce((n, r) => n + r.views, 0), 9);
+  assert.equal(stats.byAgent.reduce((n, r) => n + r.views, 0), 8);
+  for (const [name, , kind] of VENDOR_UAS) {
+    const query = parseStatsQuery(new URLSearchParams({ range: '7d', agent: name, kind }));
+    assert.equal(typeof query, 'object');
+    const selected = await queryStats(d1, query, now);
+    assert.equal(selected.totals.views, 2, name);
+    assert.deepEqual(selected.bySigner, [{ signatureAgent: 'https://signer.example', views: 1 }]);
+    assert.equal(parseStatsQuery(new URLSearchParams({ agent: name, kind: 'signed-agent', traffic: 'agents' })).kind, 'signed-agent');
+  }
+  assert.equal((await queryStats(d1, { range: '7d', traffic: 'crawlers' }, now)).totals.views, 6);
+  assert.equal((await queryStats(d1, { range: '7d', traffic: 'agents' }, now)).totals.views, 3);
+  assert.deepEqual((await queryStats(d1, { range: '7d', traffic: 'all', path: '/legacy' }, now)).byAgent, []);
+  assert.deepEqual(sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all(), before);
+});
+
+test('real unsigned ingestion records the four vendor declarations and their declared kinds', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  const pending = [];
+  for (const [, , , userAgent] of VENDOR_UAS) observePageResponse(request('/vendor', {
+    headers: { 'User-Agent': userAgent, 'CF-Connecting-IP': '203.0.113.10' },
+  }), html, 'html', { DB: d1, ANALYTICS_HASH_KEY: 'fixture-key' }, { waitUntil(p) { pending.push(p); } });
+  await Promise.all(pending);
+  const rows = sqlite.prepare('SELECT agent_name, reader_kind, signature_status, signature_agent FROM page_observations ORDER BY id').all();
+  assert.deepEqual(rows.map(r => [r.agent_name, r.reader_kind]).sort(), VENDOR_UAS.map(([n, , k]) => [n, k]).sort());
+  assert.equal(rows.every(r => r.signature_status === null && r.signature_agent === null), true);
+});
+
+
+test('real signed ingestion retains named role and independent key evidence; uncovered claims stay declarations', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  const keys = await crypto.subtle.generateKey('Ed25519', true, ['sign', 'verify']);
+  const jwk = await crypto.subtle.exportKey('jwk', keys.publicKey);
+  const keyid = await ed25519JwkThumbprint(jwk);
+  const signer = 'https://role-ingestion-fixture.example';
+  const created = Math.floor(Date.now() / 1000);
+  const input = `sig1=("@method" "@authority" "@path" "user-agent" "signature-agent";key="sig1");created=${created};expires=${created + 300};keyid="${keyid}";alg="ed25519";tag="web-bot-auth"`;
+  const originalFetch = globalThis.fetch;
+  let directories = 0;
+  globalThis.fetch = async url => {
+    assert.equal(String(url), `${signer}/.well-known/http-message-signatures-directory`);
+    directories++;
+    return Response.json({ keys: [jwk] });
+  };
+  try {
+    for (const [name, , kind, userAgent] of VENDOR_UAS) {
+      const headers = { 'User-Agent': userAgent, 'CF-Connecting-IP': '203.0.113.11',
+        'Signature-Agent': `sig1="${signer}"`, 'Signature-Input': input };
+      const base = buildSignatureBase(request('/signed-vendor', { headers }), 'sig1');
+      assert.notEqual(base, null);
+      const bytes = await crypto.subtle.sign('Ed25519', keys.privateKey, new TextEncoder().encode(base));
+      headers.Signature = `sig1=:${Buffer.from(bytes).toString('base64')}:`;
+      const pending = [];
+      observePageResponse(request('/signed-vendor', { headers }), html, 'html',
+        { DB: d1, ANALYTICS_HASH_KEY: 'fixture-key' }, { waitUntil(p) { pending.push(p); } });
+      await Promise.all(pending);
+      const row = sqlite.prepare('SELECT agent_name,reader_kind,reader_reason,signature_status,signature_agent FROM page_observations ORDER BY id DESC LIMIT 1').get();
+      assert.deepEqual({ ...row }, { agent_name: name, reader_kind: kind, reader_reason: name,
+        signature_status: 'verified', signature_agent: signer });
+    }
+    assert.equal(directories, 1, 'all controlled signatures use the cached test directory');
+    const stats = await queryStats(d1, { range: '7d', traffic: 'all' });
+    assert.equal(stats.totals.views, 4);
+    assert.deepEqual(stats.bySigner, [{ signatureAgent: signer, views: 4 }]);
+    assert.equal(stats.byAgent.length, 4);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 });

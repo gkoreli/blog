@@ -1,6 +1,6 @@
 # Analytics improvement plan — October 25, 2026 Pacific
 
-This is a proposed engineering sequence derived from [today's audit](../edge-vs-rum/05-analytics-audit-2026-10-25.md), [Wrangler follow-up](03-wrangler-followup.md), [native capabilities](01-native-capabilities.md), and [standards/library review](02-standards-and-libraries.md). No row rewrite, new reporting policy, authentication service or instrumentation below has been implemented by this writing request. Existing accepted releases stay accepted; existing tasks retain their scope.
+This is a proposed engineering sequence derived from [today's audit](../edge-vs-rum/05-analytics-audit-2026-10-25.md), [Wrangler follow-up](03-wrangler-followup.md), [native capabilities](01-native-capabilities.md), and [standards/library review](02-standards-and-libraries.md). The original writing request implemented none of the proposed runtime changes. A later explicit repair request completed part of step 2; see the dated update below. Existing accepted releases stay accepted; existing tasks retain their scope.
 
 ## Decisions the plan must improve
 
@@ -40,3 +40,9 @@ These are semantic design candidates, not final column names or permission to co
 ## First implementation boundary
 
 The first implementation should close owner/test exclusion acceptance and deliver the model/catalogue correction in TASK-0119. It should not simultaneously replace the verifier, add an auth system, activate a new R1 exclusion and introduce new collection infrastructure. Those changes have different acceptance evidence and rollback behavior. This plan schedules no background work or automatic capture.
+
+## October 25 Pacific / October 26 UTC implementation update
+
+Step 2 is partly implemented in the [catalogue and role/signer repair](08-classification-repair.md): four official declared names, a distinct SEO/site-audit kind, preservation of recognized named roles across successful signatures, an independent signer aggregate and public wording, and a report-cache version bump. No schema migration or historical rewrite. Local signed/unsigned ingestion, selection boundaries and Cloudflare-local D1 checks pass. Source, activation and live acceptance are recorded separately in the repair receipt.
+
+Step 2 remains open for per-observation classifier/collection version fields and broader independent native/vendor evidence. Steps 0/1 and 3–6 have not been accepted by this repair. Scripted controls under an established referral exclusion do not verify the actual authenticated owner-browser flow.

@@ -3,6 +3,7 @@ title: "Building Blog Analytics: What the Numbers Can Prove"
 seoTitle: "Building Blog Analytics with Cloudflare Workers and D1"
 alternativeHeadline: "A retrospective on page events, bot identity, referrer abuse, query costs, and the evidence still missing from my blog analytics"
 date: "2026-10-25"
+lastModified: "2026-10-25"
 description: "Lessons from building Cloudflare Workers and D1 blog analytics: define page events, separate agent identity from purpose, preserve history, and measure query costs."
 section: engineering
 tags: [analytics, cloudflare-workers, d1, bots, observability]
@@ -102,9 +103,9 @@ Keeping more request characteristics might narrow a future investigation. It wou
 
 ## Separate agent identity from role and authorization
 
-The current **AI agents** group contains 1,054 stored signed-agent outcomes and 91 declared on-demand-fetcher matches. Most of the signed outcomes are associated with Exa. The grouping joins evidence that answers different questions.
+At the initial audit, the **AI agents** group contained 1,054 stored signed-agent outcomes and 91 declared on-demand-fetcher matches. Most of the signed outcomes are associated with Exa. The grouping joins evidence that answers different questions.
 
-Wrangler confirmed that all **1,003 Exa-signed events** retain a generic `bot` class and a null client name. The current matcher has no named Exa rules. A local test of the official ExaSearchBot, ExaUser, AhrefsBot and AhrefsSiteAudit User-Agents returns that same generic result for all four inputs.
+Wrangler confirmed that all **1,003 Exa-signed events** retain a generic `bot` class and a null client name. At that point, the matcher had no named Exa rules. The [preserved baseline probe](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/ua-coverage.json) returned that same generic result for the official ExaSearchBot, ExaUser, AhrefsBot and AhrefsSiteAudit User-Agents.
 
 [Exa documents search crawling](https://crawler.exa.ai/) separately from [ExaUser retrieval](https://crawler.exa.ai/exauser), requested by users or applications. Both document the same signing directory. The signer origin therefore cannot recover the historical role we failed to retain. [Ahrefs](https://ahrefs.com/robot) likewise distinguishes client roles and publishes network verification information. A declared name and verified service infrastructure would still need separate evidence.
 
@@ -117,6 +118,18 @@ The model I need is clearer when split into questions:
 | What role does the client declare? | Versioned UA rule or provider category | A declaration/assessment; its signature coverage matters |
 | What action was authorized? | Validated scoped credential or cooperative task receipt | Permission/credential use, not a measured human trigger |
 | Was the article read or understood? | No current telemetry establishes this | A fetch is insufficient |
+
+### The first repair: preserve the role when a signature verifies
+
+The follow-up on October 25 Pacific, October 26 UTC, fixes those four catalogue gaps. ExaUser now maps to the declared on-demand-fetcher kind, ExaSearchBot to AI search, and AhrefsBot and AhrefsSiteAudit to a new SEO/site-audit crawler kind. Token boundaries reject prefixed and suffixed lookalikes. Anyone can still copy a valid-looking User-Agent; matching a name does not authenticate its operator.
+
+Adding names alone would have left a second error. Signature verification previously overrode the declared role with `signed-agent`. A signed Ahrefs crawler would still enter the AI agents group. The collector now retains a recognized named role and keeps the signature outcome in its existing separate fields. The report adds a signer aggregate over the same included selection. A request can therefore appear under a declared crawler role and a signing directory without adding an extra event to the total.
+
+The public filter is now **Assistants & signed clients**, with the signed-client fallback explicitly covering historical or unknown roles. The four main groups remain disjoint. Declared names and stored verified-key outcomes are separate panels that overlap those groups; they are evidence dimensions, not additional audience totals.
+
+The [repair record](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/08-classification-repair.md) preserves the before/after probe, exact source commitments and acceptance boundaries. Tests exercise all four official declarations unsigned, signed and with failed verification, including real ingestion through a locally generated Ed25519 fixture key. The report also passes Cloudflare's local D1 runtime with owner/referral exclusions and a historical unknown-role row. That fixture proves behavior for a controlled key, not that Exa or Ahrefs sent it.
+
+There is no historical rewrite. The 1,003 Exa and 42 Ahrefs signer outcomes in the frozen audit keep their original classifications. Exa's shared signing directory cannot tell me which of its two roles those old rows declared. This is a prospective collection repair with an explicit boundary; it does not turn unknown history into a cleaner story.
 
 Our verifier uses native Ed25519 through `crypto.subtle`, but its protocol parsing and policy are local code. [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html) is the published HTTP Message Signatures standard; the bot-specific [working-group protocol](https://datatracker.ietf.org/doc/draft-ietf-webbotauth-httpsig-protocol/) is still a draft.
 
@@ -172,7 +185,7 @@ The [improvement plan](https://github.com/gkoreli/blog/blob/main/packages/blog/d
 
 1. **Inspect retained native evidence and actual access.** Record fields, retention, sampling and join quality. The installed Wrangler exposes live tailing; this pass did not retrieve historical invocation logs.
 2. **Verify owner/test exclusion for the actual browser and UTC day.** Stop before generating trials if the mark is missing, and account for cached-report freshness.
-3. **Preserve client role independently of signer verification.** Add the known catalogue gaps, version the derivation, and keep historical roles unknown where inputs are missing.
+3. **Extend the role/signer repair.** The Exa/Ahrefs catalogue gaps and signature precedence are repaired in the follow-up above. Collection/classifier versions on each observation, broader catalogue review and native vendor recognition remain open. Keep historical roles unknown where inputs are missing.
 4. **Test the supported signature profile and native verification paths.** Keep recognition, coverage, freshness and unavailable fields explicit.
 5. **Make a reviewed R1 reporting decision.** Preserve its evidence and the false-exclusion tradeoff; do not turn a policy into an identity claim.
 6. **Run labelled browser/beacon experiments.** Pair normal, blocked-beacon, JavaScript-off and warm-cache cases, recording each collection stage and unknown join.
@@ -193,6 +206,7 @@ I have a more inspectable counter than the one that displayed AI Reads. I can ex
 | Daily HMAC identity | [Web Crypto HMAC](https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/#hmac): keyed computation; our grouping and privacy choices are application policy. | January 2017 Recommendation; checked October 25, 2026 |
 | Agent message signatures | [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html) and [Web Bot Auth protocol draft](https://datatracker.ietf.org/doc/draft-ietf-webbotauth-httpsig-protocol/): signature scope and an evolving bot-specific profile. | February 2024 RFC / September 2026 draft `-00`; checked October 25 |
 | Exa client roles | [ExaSearchBot](https://crawler.exa.ai/) and [ExaUser](https://crawler.exa.ai/exauser): documented role distinction and signing directory. | Pages dated July 30 / September 30, 2026; checked October 25 |
+| Ahrefs client roles | [Ahrefs crawler documentation](https://ahrefs.com/robot): SEO/database crawling and site auditing; declarations remain separate from network or signature verification. | Checked October 25, 2026 Pacific |
 | Native bot evidence | [Cloudflare variables](https://developers.cloudflare.com/bots/reference/bot-management-variables/), [Verified bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/), and [signed-agent entitlement](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.signed_agent/): documented surfaces, not a receipt of this zone's access. | Checked October 25, 2026 Pacific |
 | Referral source list | [Matomo snapshot `e65db652`](https://github.com/matomo-org/referrer-spam-list/tree/e65db652cade6882aa9a76bbb65c9bb17e079f4b): pinned data, separate from local overrides and public name approval. | 2,348 archived entries; rechecked October 25, 2026 |
 | Query work and caching | [D1 pricing definitions](https://developers.cloudflare.com/d1/platform/pricing/#definitions), [SQLite materialization](https://www.sqlite.org/lang_with.html#materialization_hints), and [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/): metering and execution/cache boundaries. | Checked October 25, 2026 Pacific |
