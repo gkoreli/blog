@@ -76,3 +76,7 @@ Proceed
 ---
 
 can i type something else? i don't remember that value
+
+---
+
+Can you iterate on the article make it concise and more reader human centric, we need to cut out the bloat and meta conversations. This is a builder’s log but we need to make it interesting state the problem, whats the big deal why am i reading this, call out the critical details along the article. Provide the highest value concise paragraphs across the board. We need to distill the highest value information into a shorter format i am thinking at maximum 5-6 min read.
