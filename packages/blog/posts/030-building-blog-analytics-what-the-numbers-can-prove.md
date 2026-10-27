@@ -65,7 +65,7 @@ New observations omit that ambiguous source path; history gets an explicit label
 
 The [referrer-abuse policy](/filter-referrer-spam-without-deleting-analytics-history) versions public exclusions. Unapproved referrers and signing origins appear as Other; original evidence stays private.
 
-Unknowns must survive aggregation. A [local D1 counterexample](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/29-unreported-classifications-and-denominators.md) counted ten events but displayed only five in its classification breakdown. Missing kinds and reasons had disappeared. Reports now label those gaps and reject incomplete composition. This fixture establishes a defect, not its production prevalence.
+Unknowns must survive aggregation. A [local D1 counterexample](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/29-unreported-classifications-and-denominators.md) counted ten events but displayed only five in its classification breakdown. Missing kinds and reasons had disappeared. Reports now label those gaps and reject incomplete composition. Production prevalence remains unmeasured.
 
 ## Correct totals can still break production
 
@@ -85,7 +85,7 @@ I [reconciled 12 production controls](https://github.com/gkoreli/blog/blob/main/
 - Blocking the beacon preserved three observations. `sendBeacon()` returned true three times; the server received none. True means [queued](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon#return_value), not received.
 - Blocking scripts still stored three observations. The curl controls stored as Other bot without executing JavaScript.
 
-All nine automated browser visits matched Browser. **Neither browser-shaped requests nor successful JavaScript authenticate human reading.** Our first-party receiver proves arrival; Cloudflare’s receipt remains separate. Human false-positive rates remain unmeasured.
+Nine automated visits matched Browser. **Browser shape and JavaScript do not authenticate humans.** [Agent-driven input](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/30-filter-pointer-targets-and-browser-trust.md) also produced `isTrusted=true` events locally. Our first-party receiver proves arrival; Cloudflare’s receipt remains separate. Human false-positive rates remain unmeasured.
 
 A separate [local failure experiment](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/07-matched-classifier-calibration.md) lost three observations while pages and beacons succeeded. No database failure was injected into production.
 

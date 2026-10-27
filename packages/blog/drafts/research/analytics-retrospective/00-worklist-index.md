@@ -190,3 +190,8 @@ The [public signer release](public-signer-release.json) is accepted: source f0e7
 
 
 [Denominator release acceptance](unreported-kinds-release.json) closes the source/activation/live report/cache/article gates for this iteration. The bounded actual selection has fifteen complete classifications; no unknown-kind prevalence across all history is inferred. Direct SELECT: 8,013 reads/zero writes, command mode; HTTP cold work is additional. Source `345a653`, 100% Worker rollout, same-connection SJC MISS/HIT and served/build article equality are observed. Private captures remain outside Git; owned preview stopped and viewport reset. Pointer activation sometimes had no observed effect in automated preview checks while keyboard controls passed; isolate that behavior before changing code. Broader purpose/vendor/human/privacy work and TASK-0119 remain open; human trials remain deferred.
+
+
+## October 27 pointer-target follow-up
+
+[Research 30](30-filter-pointer-targets-and-browser-trust.md) and [closed local traces](filter-pointer-local.json) reproduce the open pointer problem from research 29. At 390px, the no-wrap summary has 483px of content in 354px; pointer events target its scrolling paragraph. Wrapping keeps the summary at 354px and pointer clearing changes five synthetic events to ten. Controls remain native; no extra detection data is collected. The agent-generated trusted-event counterexample is now linked from the concise article. No human trial or real-device label. Source delivery, activation and live acceptance remain separate.

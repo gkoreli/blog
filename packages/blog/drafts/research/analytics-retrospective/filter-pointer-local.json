@@ -1,0 +1,170 @@
+{
+  "checkedAt": "2026-10-27",
+  "method": "Actual isolated built page/client; fixed native-accepted synthetic corpus, pinned baseline CSS versus wrapping source CSS. Agent-operated in-app browser, not a human trial. Visible control-only trace; CSS comparison uses the same query and viewport.",
+  "baseline": "baf6c2e",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "before": {
+    "cssSourceSha256": "1457a324d825a576511e1ea2671b42eb0e8d6b0ab0f22f8a132340d9e0717d69",
+    "scopeClientWidth": 354,
+    "scopeScrollWidth": 483,
+    "pageWidth": 390,
+    "clearAttemptKeptKind": true,
+    "selectedViews": 5,
+    "events": [
+      {
+        "type": "pointerdown",
+        "trusted": true,
+        "target": {
+          "tag": "P",
+          "id": "stats-scope",
+          "button": null
+        },
+        "x": 347,
+        "y": 422,
+        "key": null,
+        "button": 0,
+        "detail": 0,
+        "width": 390,
+        "height": 844,
+        "defaultPrevented": false
+      },
+      {
+        "type": "pointerup",
+        "trusted": true,
+        "target": {
+          "tag": "P",
+          "id": "stats-scope",
+          "button": null
+        },
+        "x": 347,
+        "y": 422,
+        "key": null,
+        "button": 0,
+        "detail": 0,
+        "width": 390,
+        "height": 844,
+        "defaultPrevented": false
+      }
+    ]
+  },
+  "after": {
+    "cssSourceSha256": "6554cb03d885550c8406695b1e16d8a9643e45445d10a51e6eded5528ad6b352",
+    "geometry": {
+      "pageWidth": 390,
+      "scope": {
+        "height": 58.84375,
+        "overflowX": "visible",
+        "scrollWidth": 354,
+        "whiteSpace": "normal",
+        "width": 354
+      },
+      "viewport": 390
+    },
+    "clearAttemptRemovedKind": true,
+    "selectedViews": 10,
+    "events": [
+      {
+        "type": "pointerdown",
+        "trusted": true,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "button": "Clear kind filter"
+        },
+        "x": 120,
+        "y": 422,
+        "key": null,
+        "button": 0,
+        "detail": 0,
+        "width": 390,
+        "height": 844,
+        "defaultPrevented": false
+      },
+      {
+        "type": "pointerup",
+        "trusted": true,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "button": "Clear kind filter"
+        },
+        "x": 120,
+        "y": 422,
+        "key": null,
+        "button": 0,
+        "detail": 0,
+        "width": 390,
+        "height": 844,
+        "defaultPrevented": false
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "button": "Clear kind filter"
+        },
+        "x": 120,
+        "y": 422,
+        "key": null,
+        "button": 0,
+        "detail": 1,
+        "width": 390,
+        "height": 844,
+        "defaultPrevented": false
+      }
+    ]
+  },
+  "otherControls": {
+    "narrowPointerUnresolvedViews": 5,
+    "narrowPointerAllViews": 10,
+    "narrowKeyboardAssistantViews": 1,
+    "narrowKeyboardClearViews": 10,
+    "events": [
+      {
+        "type": "keydown",
+        "trusted": true,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "button": "Clear kind filter"
+        },
+        "x": null,
+        "y": null,
+        "key": "Enter",
+        "button": null,
+        "detail": 0,
+        "width": 390,
+        "height": 844,
+        "defaultPrevented": false
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "button": "Clear kind filter"
+        },
+        "x": 0,
+        "y": 0,
+        "key": null,
+        "button": 0,
+        "detail": 0,
+        "width": 390,
+        "height": 844,
+        "defaultPrevented": false
+      }
+    ]
+  },
+  "limits": [
+    "Native overlay geometry plus the CSS comparison support interception; exact engine-internal hit testing is unestablished.",
+    "Agent-generated trusted events are a counterexample to a human-label claim, not population accuracy.",
+    "No collection, classifier, verifier, report SQL, cache version or data change.",
+    "No production database access or human trial in this local phase."
+  ]
+}

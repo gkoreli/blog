@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-27T21:43:13.425057+00:00",
+  "changes": [
+    "One CSS rule wraps the stats scope summary",
+    "Local-only instrumented fixture preview",
+    "Concise article lesson and dated evidence"
+  ],
+  "nodeSyntaxCheck": "pass",
+  "frontmatterValidation": "pass",
+  "isolatedProductionBuild": {
+    "posts": 32,
+    "result": "pass",
+    "path": "/tmp/gk-production-stage-build-20261027/packages/blog"
+  },
+  "articleBodyWords": 1249,
+  "shapingPrompts": 31,
+  "unchangedAnalyticsAndSiteSuites": {
+    "lastAcceptedAnalytics": 172,
+    "lastAcceptedSite": 106,
+    "source": "345a653",
+    "rerun": false,
+    "reason": "No analytics or client/Worker logic changed. CSS acceptance uses actual rendered pointer and keyboard behavior; preview JavaScript uses native runtime and syntax check."
+  },
+  "local": "filter-pointer-local.json",
+  "limits": [
+    "Source delivery and live activation remain separate.",
+    "Narrow viewport controls are agent-operated synthetic trials, not humans or hardware."
+  ],
+  "finalBoundedPreviewAccepted": true,
+  "finalEventProjectionEqualsAcceptedAfter": true
+}

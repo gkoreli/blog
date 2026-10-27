@@ -32,7 +32,7 @@
 .stats-status-error { padding: 1.25rem; border: 1px solid var(--color-border); border-radius: 0.5rem; text-align: center; }
 .stats-retry { margin-left: 0.4rem; color: var(--color-text); }
 .stats-period { margin-bottom: 1rem; color: var(--color-text-muted); font-size: 0.8rem; }
-.stats-scope { margin: -0.35rem 0 1rem; color: var(--color-text-muted); font-size: 0.8rem; white-space: nowrap; overflow-x: auto; }
+.stats-scope { margin: -0.35rem 0 1rem; color: var(--color-text-muted); font-size: 0.8rem; overflow-wrap: anywhere; }
 .stats-scope-value { color: var(--color-text); font-family: var(--font-mono); font-weight: 600; }
 .stats-scope-clear { margin-left: 0.2rem; padding: 0.15rem 0.45rem; font-size: 0.72rem; }
 
