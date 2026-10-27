@@ -1,0 +1,81 @@
+{
+  "acceptedAt": "2026-10-27T21:09:44.984192+00:00",
+  "sourceCommit": "e286a771f0713322ebcf402cec085e134059ef65",
+  "build": {
+    "id": "e19614c1-7dd9-4051-92ba-71f9f471fcf4",
+    "nativeStatus": "Ready",
+    "durationSeconds": 39
+  },
+  "activation": {
+    "createdOn": "2026-10-27T21:05:05.548353Z",
+    "versions": [
+      {
+        "version_id": "769db02e-e608-4685-b792-ad1aad2d3a16",
+        "percentage": 100
+      }
+    ]
+  },
+  "receiptVersion": "2026-10-27.2",
+  "collectionVersionUnchanged": "2026-10-27.8",
+  "databaseEvidenceUnchanged": true,
+  "optionalBindings": {
+    "OWNER_MARK_GRANT": false,
+    "ANALYTICS_CALIBRATION": false,
+    "ANALYTICS_DIAGNOSTICS": false
+  },
+  "controlledConditions": [
+    {
+      "label": "unsigned-no-declaration",
+      "operator": "agent-operated curl",
+      "readerKind": "other-bot",
+      "candidateCount": 0,
+      "candidateNames": "none",
+      "signatureOutcome": "absent"
+    },
+    {
+      "label": "synthetic-conflicting-exa-roles",
+      "operator": "agent-operated curl; not Exa",
+      "readerKind": "unresolved",
+      "candidateCount": 2,
+      "candidateNames": "ExaSearchBot,ExaUser",
+      "categoryAgreement": "multiple-categories",
+      "signatureOutcome": "absent"
+    }
+  ],
+  "matchedLiveRetained": {
+    "pairs": 2,
+    "identicalKnownFieldPairs": 2,
+    "differingPairs": 0,
+    "fullReceiptObjectEquality": true,
+    "omittedNulls": 0,
+    "omittedEmptyArrays": 0,
+    "omittedOther": 0,
+    "ambiguousOperations": 0,
+    "invalidPairs": 0
+  },
+  "tailStopped": true,
+  "tailExitCode": 1,
+  "tailExitReason": "Intentional Ctrl-C after both controls; not a failed control.",
+  "productionSelects": 0,
+  "newPageViewControls": 2,
+  "additionalServiceWork": "Observation writes, native tail/dashboard queries/export, publication inspection and other service work are additional; not a zero-total-cost claim.",
+  "exclusionBasis": "Reviewed referral marker and unchanged policy; no new owner or public-report exclusion acceptance.",
+  "publication": {
+    "articleUrl": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove",
+    "servedMarkdownMatchesIsolatedBuild": true,
+    "sha256": "22c92d4a5f7c0257a760603351f595634c0dfe0de957d3fb4a11644776eec247",
+    "articleWords": 1250,
+    "shapingPrompts": 31,
+    "renderedEvidenceLink": true,
+    "screenshot": "analytics-receipt-export-fidelity.png"
+  },
+  "privateArchive": "~/.local/share/gkoreli/analytics-evidence/2026-10-27-receipt-fidelity/",
+  "privateCopyReviewAt": "2026-10-31T00:00:00Z",
+  "limits": [
+    "Two unsigned automated controls validate their live/retained encoding; not all values, signed coverage branches, requests or provider pipelines.",
+    "Omission cause remains unlocated between provider ingestion, storage, API, UI and export.",
+    "These controls are not organic Exa authentication or native verifier agreement. No human/device accuracy, request purpose or citation is established.",
+    "Existing private operation references pair logs; no new identifier, row-ID join, raw-diagnostic activation or historical backfill.",
+    "Human trials remain deferred. Remote build runtime parity was not freshly inspected. A later receipt-only source commit is not this accepted activation."
+  ]
+}

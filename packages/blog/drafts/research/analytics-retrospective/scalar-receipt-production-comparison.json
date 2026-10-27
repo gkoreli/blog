@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-27T21:06:48.584Z",
+  "method": "Compare known receipt fields only, matched by unique existing operation reference, exact log timestamp, collection and receipt versions; no timestamp-only or D1-row join.",
+  "inputs": [
+    {
+      "bytes": 13262,
+      "sha256": "fdcd9a0aa385f27566f3431d045437c26191fcbc5472dfe4ff277d38d4e3c2f2"
+    },
+    {
+      "bytes": 4448,
+      "sha256": "6ef4442e29be8bea60e30ac8841d330ad5ef9cc23538f0b1520e484c49eee0fe"
+    }
+  ],
+  "liveStoredRecords": 2,
+  "retainedStoredRecords": 2,
+  "missingOperationRecords": 0,
+  "unmatchedLiveRecords": 0,
+  "unmatchedRetainedRecords": 0,
+  "ambiguousOperations": 0,
+  "invalidPairs": 0,
+  "matchedPairs": 2,
+  "identicalPairs": 2,
+  "differingPairs": 0,
+  "omittedNulls": 0,
+  "omittedEmptyArrays": 0,
+  "omittedOther": 0,
+  "missingFields": {},
+  "addedFields": {},
+  "changedFields": {},
+  "versions": {
+    "2026-10-27.2": 2
+  },
+  "limits": [
+    "Known-field comparison, not complete raw-log equality or authentication of provider captures.",
+    "Unknown receipt versions and ambiguous/invalid pairs cannot supply accepted matches.",
+    "Observed differences do not locate their cause within provider ingestion, storage, API, UI or export.",
+    "No raw values, arbitrary field names, operation/provider identifiers or request context appear in this aggregate."
+  ],
+  "fullReceiptObjectEquality": true
+}
