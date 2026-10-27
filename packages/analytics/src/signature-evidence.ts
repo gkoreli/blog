@@ -2,6 +2,7 @@ import { VERIFIER_PROFILE_VERSION } from './versions.js';
 import type { SignatureEvidence, WebBotAuthResult } from './webbotauth.js';
 import type { KnownAgentName } from './classify.js';
 import { vendorSignatureEvidence, type VendorSignatureEvidence } from './vendor-signatures.js';
+import { nativeCategoryEvidence, type NativeCategoryEvidence } from './native-bot-evidence.js';
 
 /** These are local-profile outcomes, not universal RFC validity or intent verdicts. */
 export const FAILURE_OUTCOMES = {
@@ -28,7 +29,7 @@ export function verificationOutcome(result: WebBotAuthResult, injected = false):
 }
 
 export interface VerificationEvidence {
-  version: '2026-10-27.3';
+  version: '2026-10-27.4';
   source: 'local-webbotauth' | 'test-injected';
   verifierProfile: string | null;
   localStatus: WebBotAuthResult['status'];
@@ -37,7 +38,7 @@ export interface VerificationEvidence {
   localOutcome: VerificationOutcome;
   vendor: VendorSignatureEvidence;
   coverage: SignatureEvidence | null;
-  native: { verifiedBot: boolean | null; signedAgent: boolean | null };
+  native: { verifiedBot: boolean | null; signedAgent: boolean | null; category: NativeCategoryEvidence };
 }
 
 function record(value: unknown): value is Record<string, unknown> {
@@ -49,7 +50,7 @@ export function verificationEvidence(request: Request, result: WebBotAuthResult,
   const cf: unknown = request.cf;
   const management = record(cf) && record(cf.botManagement) ? cf.botManagement : null;
   return {
-    version: '2026-10-27.3', source: injected ? 'test-injected' : 'local-webbotauth',
+    version: '2026-10-27.4', source: injected ? 'test-injected' : 'local-webbotauth',
     verifierProfile: injected ? null : VERIFIER_PROFILE_VERSION,
     localStatus: result.status,
     localReason: result.status === 'unverified' ? knownReason(result.reason) ? result.reason : 'unrecognized-verifier-reason' : null,
@@ -60,6 +61,7 @@ export function verificationEvidence(request: Request, result: WebBotAuthResult,
     native: {
       verifiedBot: typeof management?.verifiedBot === 'boolean' ? management.verifiedBot : null,
       signedAgent: typeof management?.signedAgent === 'boolean' ? management.signedAgent : null,
+      category: nativeCategoryEvidence(cf),
     },
   };
 }

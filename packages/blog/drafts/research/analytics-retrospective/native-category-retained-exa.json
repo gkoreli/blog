@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-27T20:06:57.829Z",
+  "method": "Offline category-only replay of retained native request.cf metadata through the actual closed-value normalizer. No signature re-verification or native method inference.",
+  "records": 19,
+  "invalidRows": 0,
+  "distinctProviderIds": 18,
+  "duplicateProviderIds": 1,
+  "missingProviderIds": 0,
+  "providerCategories": {
+    "Search Engine Crawler": 19
+  },
+  "nativeBooleanRecords": 0,
+  "inputSha256": "95c065d14ec6099503453b6d849b7434b324093aa607f367890b6f5f33509b98",
+  "inputBytes": 109412,
+  "normalizerSha256": "87c7db61eeffab90aa814fafab67cade6f8b1aa27e5e5a1ab7b90f01ae6969a2",
+  "networkCalls": 0,
+  "productionPageRequests": 0,
+  "limits": [
+    "Provider category does not establish which native verification method ran, request purpose or a human trigger.",
+    "Raw provider IDs, request context and arbitrary category strings are absent from this aggregate.",
+    "Retained export coverage, unique-event counts, exact D1 joins and current organic collection acceptance remain unproven."
+  ]
+}

@@ -26,6 +26,7 @@ test('signature basis separates proof, absent coverage, injection, future schema
   const cases = [
     [null, null, 'not-recorded'], [null, 'verified', 'verified-outcome-only'],
     [verified, 'verified', 'verified-ua-covered'],
+    [{ ...verified, version: '2026-10-27.4' }, 'verified', 'verified-ua-covered'],
     [{ ...verified, coverage: { ...verified.coverage, covered: { userAgent: false } } }, 'verified', 'verified-ua-uncovered'],
     [{ ...verified, coverage: null }, 'verified', 'verified-coverage-unknown'],
     [{ ...verified, coverage: { ...verified.coverage, covered: { userAgent: 1 } } }, 'verified', 'verified-coverage-unknown'],

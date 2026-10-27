@@ -27,7 +27,7 @@ export function signatureBasisSql(): string {
   return `CASE
     WHEN signature_evidence IS NULL THEN CASE WHEN signature_status = 'verified'
       THEN 'verified-outcome-only' ELSE 'not-recorded' END
-    WHEN COALESCE(json_extract(signature_evidence, '$.version'), '') NOT IN ('2026-10-27.1', '2026-10-27.3') THEN 'unrecognized-record'
+    WHEN COALESCE(json_extract(signature_evidence, '$.version'), '') NOT IN ('2026-10-27.1', '2026-10-27.3', '2026-10-27.4') THEN 'unrecognized-record'
     WHEN json_extract(signature_evidence, '$.source') = 'test-injected' THEN 'test-injected'
     WHEN COALESCE(json_extract(signature_evidence, '$.source'), '') <> 'local-webbotauth' THEN 'unrecognized-record'
     WHEN json_extract(signature_evidence, '$.localStatus') = 'verified' AND signature_status IS NOT 'verified' THEN 'unrecognized-record'

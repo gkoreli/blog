@@ -104,10 +104,10 @@ test('directory concurrency is bounded while an existing origin shares its pendi
 
 test('native unavailability stays null, false stays false, and injected verdicts do not claim cryptographic coverage', () => {
   const request = new Request('https://publication.example');
-  assert.deepEqual(verificationEvidence(request, { status: 'absent' }).native, { verifiedBot: null, signedAgent: null });
+  assert.deepEqual(verificationEvidence(request, { status: 'absent' }).native, { verifiedBot: null, signedAgent: null, category: { version: '2026-10-27.1', status: 'unavailable', value: null } });
   Object.defineProperty(request, 'cf', { value: { botManagement: { verifiedBot: false, signedAgent: true, secret: 'private-native-canary' } } });
   const evidence = verificationEvidence(request, { status: 'verified', agent: 'https://private-origin.example' }, true);
-  assert.deepEqual(evidence.native, { verifiedBot: false, signedAgent: true });
+  assert.deepEqual(evidence.native, { verifiedBot: false, signedAgent: true, category: { version: '2026-10-27.1', status: 'unavailable', value: null } });
   assert.equal(evidence.source, 'test-injected'); assert.equal(evidence.coverage, null); assert.equal(evidence.verifierProfile, null);
   assert.equal(JSON.stringify(evidence).includes('private-'), false);
 });

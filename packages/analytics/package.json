@@ -10,7 +10,8 @@
     "./contracts": "./src/contracts.ts",
     "./networks": "./src/networks.ts",
     "./client-form": "./src/client-form.ts",
-    "./signature-basis": "./src/signature-basis.ts"
+    "./signature-basis": "./src/signature-basis.ts",
+    "./native-bot-evidence": "./src/native-bot-evidence.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",

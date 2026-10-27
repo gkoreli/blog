@@ -3,6 +3,7 @@ import 'uplot/dist/uPlot.min.css';
 import { READER_GROUPS, isReaderKind, readerGroupOf, type ReaderKind, type ReportedReferrerState, type StatsResponse, type TrafficFilter } from '@gkoreli/analytics/contracts';
 import { CLIENT_FORM_LABELS } from '@gkoreli/analytics/client-form';
 import { SIGNATURE_BASIS_LABELS } from '@gkoreli/analytics/signature-basis';
+import { nativeCategoryLabel } from '@gkoreli/analytics/native-bot-evidence';
 import { HOSTING_NETWORKS } from '@gkoreli/analytics/networks';
 import '../styles/stats.css';
 
@@ -573,30 +574,35 @@ function renderComposition(data: StatsResponse, state: ViewState): void {
   }
 }
 
-function renderKindSignatures(data: StatsResponse, state: ViewState): void {
-  const container = element('stats-kind-signature-rows');
+function renderClassificationEvidenceTable(containerId: string, evidenceLabel: string, rows: Array<{ kind: ReaderKind | null; label: string; views: number }>, state: ViewState): void {
+  const container = element(containerId);
   const table = document.createElement('table');
   const caption = document.createElement('caption');
   caption.textContent = 'Rows sum to the selected total';
   const head = document.createElement('thead');
   const header = document.createElement('tr');
-  for (const text of ['Classification', 'Local signature evidence', 'Events']) {
+  for (const text of ['Classification', evidenceLabel, 'Events']) {
     const cell = document.createElement('th'); cell.scope = 'col'; cell.textContent = text; header.appendChild(cell);
   }
   head.appendChild(header);
   const body = document.createElement('tbody');
-  for (const row of data.byKindSignature) {
+  for (const row of rows) {
     const tr = document.createElement('tr');
     const kind = document.createElement('th'); kind.scope = 'row';
     const name = row.kind === null ? 'Kind unrecorded or unrecognized' : KIND_LABELS[row.kind];
     if (row.kind !== null && state.kind === null && state.agent === null) {
       const link = document.createElement('a'); link.href = stateHref({ ...state, kind: row.kind, traffic: 'all' }); link.textContent = name; kind.appendChild(link);
     } else kind.textContent = name;
-    const basis = document.createElement('td'); basis.textContent = SIGNATURE_BASIS_LABELS[row.basis];
+    const basis = document.createElement('td'); basis.textContent = row.label;
     const count = document.createElement('td'); count.textContent = formatNumber(row.views);
     tr.append(kind, basis, count); body.appendChild(tr);
   }
   table.append(caption, head, body); container.replaceChildren(table);
+}
+
+function renderKindSignatures(data: StatsResponse, state: ViewState): void {
+  renderClassificationEvidenceTable('stats-kind-signature-rows', 'Local signature evidence', data.byKindSignature.map(row => ({ ...row, label: SIGNATURE_BASIS_LABELS[row.basis] })), state);
+  renderClassificationEvidenceTable('stats-native-category-rows', 'Cloudflare category evidence', data.byKindNativeCategory.map(row => ({ ...row, label: nativeCategoryLabel(row.basis) })), state);
 }
 
 function renderTransitions(data: StatsResponse, state: ViewState): void {
@@ -671,7 +677,7 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     { label: 'Path or full URL covered', views: verification.resourceBoundViews },
     { label: 'Method covered', views: verification.methodBoundViews },
     { label: 'Host-only request binding', views: verification.authorityOnlyViews },
-    { label: 'Native assessment fields available', views: verification.nativeAvailableViews },
+    { label: 'Native boolean fields available', views: verification.nativeAvailableViews },
     { label: 'Native verified-bot result true', views: verification.nativeVerifiedBotViews },
     { label: 'Native signed-agent result true', views: verification.nativeSignedAgentViews },
     { label: 'Local verified; native verified-bot false', views: verification.localVerifiedNativeNotVerifiedViews },

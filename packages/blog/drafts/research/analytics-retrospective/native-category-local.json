@@ -1,0 +1,154 @@
+{
+  "checkedAt": "2026-10-27T20:12:57.384Z",
+  "runtime": "v24.14.1",
+  "baselineCommit": "ce2eecd",
+  "method": "Actual collector and persistence in native local workerd/D1 with deliberately supplied cf fixtures. No native Cloudflare verdict, vendor request or human label. Baseline SQL compiled from pinned source with current helpers; the cost dataset contains only older null evidence, exercising unchanged shared-helper behavior.",
+  "trials": [
+    {
+      "label": "known",
+      "category": {
+        "version": "2026-10-27.1",
+        "status": "known",
+        "value": "Search Engine Crawler"
+      },
+      "nativeVerifiedBot": null,
+      "localOutcome": "absent"
+    },
+    {
+      "label": "empty",
+      "category": {
+        "version": "2026-10-27.1",
+        "status": "empty",
+        "value": null
+      },
+      "nativeVerifiedBot": null,
+      "localOutcome": "absent"
+    },
+    {
+      "label": "unavailable",
+      "category": {
+        "version": "2026-10-27.1",
+        "status": "unavailable",
+        "value": null
+      },
+      "nativeVerifiedBot": null,
+      "localOutcome": "absent"
+    },
+    {
+      "label": "unrecognized",
+      "category": {
+        "version": "2026-10-27.1",
+        "status": "unrecognized",
+        "value": null
+      },
+      "nativeVerifiedBot": null,
+      "localOutcome": "absent"
+    },
+    {
+      "label": "known-false",
+      "category": {
+        "version": "2026-10-27.1",
+        "status": "known",
+        "value": "AI Search"
+      },
+      "nativeVerifiedBot": false,
+      "localOutcome": "absent"
+    },
+    {
+      "label": "owner",
+      "category": {
+        "version": "2026-10-27.1",
+        "status": "known",
+        "value": "AI Assistant"
+      },
+      "nativeVerifiedBot": null,
+      "localOutcome": "absent"
+    },
+    {
+      "label": "referral",
+      "category": {
+        "version": "2026-10-27.1",
+        "status": "known",
+        "value": "AI Crawler"
+      },
+      "nativeVerifiedBot": null,
+      "localOutcome": "absent"
+    }
+  ],
+  "checks": {
+    "historyUnrecorded": true,
+    "categoryIndependentOfBooleans": true,
+    "closedPrivateOutput": true,
+    "ownerAndReferralExclusion": true,
+    "scopedAndEmpty": true,
+    "partitionInvariant": true,
+    "commonReportUnchanged": true,
+    "optionalCaptureOff": true
+  },
+  "reportCategories": [
+    {
+      "kind": "other-bot",
+      "basis": "not-recorded",
+      "views": 1
+    },
+    {
+      "kind": "unresolved",
+      "basis": "AI Search",
+      "views": 1
+    },
+    {
+      "kind": "unresolved",
+      "basis": "Search Engine Crawler",
+      "views": 1
+    },
+    {
+      "kind": "unresolved",
+      "basis": "empty",
+      "views": 1
+    },
+    {
+      "kind": "unresolved",
+      "basis": "unavailable",
+      "views": 1
+    },
+    {
+      "kind": "unresolved",
+      "basis": "unrecognized",
+      "views": 1
+    }
+  ],
+  "measurements": {
+    "storedFixtureRows": 512,
+    "oldReads": 21648,
+    "currentReads": 22675,
+    "delta": 1027
+  },
+  "queryPlan": [
+    {
+      "id": 5,
+      "parent": 0,
+      "notused": 59,
+      "detail": "SEARCH page_observations USING INDEX idx_page_observations_public_path_time (is_owner=? AND path=? AND observed_at>? AND observed_at<?)"
+    },
+    {
+      "id": 63,
+      "parent": 0,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    }
+  ],
+  "sourceSha256": {
+    "packages/analytics/src/native-bot-evidence.ts": "87c7db61eeffab90aa814fafab67cade6f8b1aa27e5e5a1ab7b90f01ae6969a2",
+    "packages/analytics/src/signature-evidence.ts": "87eb6422ba48563a71feb16535b2a359aae09b416f237b3aae76261bd44c11c1",
+    "packages/analytics/src/signature-basis.ts": "cec253013445bbbdf843e00c900e7a7758b85d7a1244782867b81f25fdf44c9b",
+    "packages/analytics/src/stats.ts": "de521cc87a6df8e472d84ec3354bcbf9d729d772e1764bee2b22c9ab907d3cde",
+    "packages/analytics/src/versions.ts": "4fe6b4340c33ffa29208bfb1f338eb4df5605e0a8aa03c235895511d007e56ee",
+    "packages/blog/drafts/research/analytics-retrospective/native-category-control-acceptance.sql": "506ab8f0dbbdcd0ddb0e18605f1bd36c73cd258b80620567582658fc07826355"
+  },
+  "networkCalls": 0,
+  "productionCalls": 0,
+  "limits": [
+    "Fixture metering is not a production cost forecast. The report adds a grouped scan within the same statement.",
+    "Provider category does not establish a native Web Bot Auth verdict, exact vendor product, actual purpose, human trigger or permission."
+  ]
+}

@@ -25,6 +25,7 @@ import { publicReferrers } from './referrals.js';
 import { referralAssessmentCtes, referralRulesJson } from './referral-sql.js';
 import { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
 import { signatureBasisSql, isSignatureBasis } from './signature-basis.js';
+import { nativeCategoryBasisSql, isNativeCategoryBasis } from './native-bot-evidence.js';
 import type { ReferralPolicy } from './referral-policy.js';
 
 export type { StatsResponse, TrafficFilter } from './contracts.js';
@@ -125,6 +126,18 @@ function kindSignatureRows(rows: Record<string, unknown>[], total: number): Stat
     if (typeof views !== 'number' || !Number.isSafeInteger(views) || views <= 0 || keys.has(key)) return malformedReport();
     keys.add(key);
     result.push({ kind, basis, views });
+  }
+  if (result.reduce((sum, row) => sum + row.views, 0) !== total) return malformedReport();
+  return result;
+}
+
+function nativeCategoryRows(rows: Record<string, unknown>[], total: number): StatsResponse['byKindNativeCategory'] {
+  const result: StatsResponse['byKindNativeCategory'] = [], keys = new Set<string>();
+  for (const row of rows) {
+    const kind = row.key1, basis = row.key2, views = row.views;
+    const key = JSON.stringify([kind, basis]);
+    if ((kind !== null && (typeof kind !== 'string' || !isReaderKind(kind))) || !isNativeCategoryBasis(basis) || typeof views !== 'number' || !Number.isSafeInteger(views) || views <= 0 || keys.has(key)) return malformedReport();
+    keys.add(key); result.push({ kind, basis, views });
   }
   if (result.reduce((sum, row) => sum + row.views, 0) !== total) return malformedReport();
   return result;
@@ -240,7 +253,7 @@ function payloadRows(row: Record<string, unknown>): Record<string, unknown>[] {
 function reportSections(rows: Record<string, unknown>[], includeBoundary: boolean): Map<string, Record<string, unknown>[]> {
   const expected = new Set([
     'totals', 'path', 'country', 'series', 'referrer', 'device', 'agent', 'kind', 'excluded',
-    'referrer-state', 'transitions', 'referrer-details', 'signer', 'verification', 'vendor-ip', 'kind-signature',
+    'referrer-state', 'transitions', 'referrer-details', 'signer', 'verification', 'vendor-ip', 'kind-signature', 'native-category',
   ]);
   if (includeBoundary) expected.add('boundary');
   const sections = new Map<string, Record<string, unknown>[]>();
@@ -294,7 +307,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     "('totals', 0)", "('path', 1)", "('country', 2)", "('series', 3)", "('referrer', 4)",
     "('device', 5)", "('agent', 6)", "('kind', 7)", "('excluded', 8)",
     "('referrer-state', 9)", "('transitions', 10)", "('referrer-details', 11)",
-    "('signer', 12)", "('verification', 14)", "('vendor-ip', 15)", "('kind-signature', 16)",
+    "('signer', 12)", "('verification', 14)", "('vendor-ip', 15)", "('kind-signature', 16)", "('native-category', 17)",
   ];
   if (includeBoundary) sectionValues.push("('boundary', 13)");
 
@@ -328,6 +341,12 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
       )
     SELECT section,
       CASE section
+        WHEN 'native-category' THEN (
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', CASE WHEN reader_kind IN (${READER_KINDS.map(kind => "'" + kind + "'").join(',')}) THEN reader_kind ELSE NULL END, 'key2', ${nativeCategoryBasisSql()}, 'views', COUNT(*)) AS row_json
+            FROM included GROUP BY CASE WHEN reader_kind IN (${READER_KINDS.map(kind => "'" + kind + "'").join(',')}) THEN reader_kind ELSE NULL END, ${nativeCategoryBasisSql()} ORDER BY COUNT(*) DESC, reader_kind, ${nativeCategoryBasisSql()}
+          )
+        )
         WHEN 'totals' THEN (
           SELECT json_array(json_object(
             'views', COUNT(*), 'dailyClients', COUNT(DISTINCT daily_client_id),
@@ -562,6 +581,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     }),
     byKind: kindRows(requiredSection(sections, 'kind')),
     byKindSignature: kindSignatureRows(requiredSection(sections, 'kind-signature'), numberField(totalsRow, 'views')),
+    byKindNativeCategory: nativeCategoryRows(requiredSection(sections, 'native-category'), numberField(totalsRow, 'views')),
     vendorNetwork: {
       recordedViews: numberField(vendorNetworkRow, 'recordedViews'),
       notRecordedViews: numberField(vendorNetworkRow, 'notRecordedViews'),

@@ -1,6 +1,7 @@
 import type { PublicSignerName } from './signers.js';
 import type { ReportedClientForm } from './client-form.js';
 import type { SignatureBasis } from './signature-basis.js';
+import type { NativeCategoryBasis } from './native-bot-evidence.js';
 
 /** Prepared private-evidence policy shared by collector and disclosure. */
 export const DIAGNOSTIC_RETENTION_DAYS = 60;
@@ -131,6 +132,8 @@ export interface StatsResponse {
   };
   byPath: Array<{ path: string; views: number; dailyClients: number }>;
   byCountry: Array<{ country: string; views: number }>;
+  /** Provider category only, independent of local crypto and nullable native booleans. */
+  byKindNativeCategory: Array<{ kind: ReaderKind | null; basis: NativeCategoryBasis; views: number }>;
   timeSeries: TimeSeriesPoint[];
   byReferrer: Array<{ referrerHost: string; views: number }>;
   /** Included views with a referrer whose name is not approved for public display. */

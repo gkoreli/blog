@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-10-27T20:16:32.787175+00:00",
+  "sourceBaseCommit": "ce2eecd",
+  "analyticsTests": 151,
+  "siteTests": 106,
+  "workspaceTypecheck": true,
+  "postValidation": true,
+  "isolatedBuiltPosts": 32,
+  "articleWords": 1249,
+  "promptCount": 30,
+  "relativeLinksChecked": 267,
+  "localBrowser": {
+    "columns": 3,
+    "documentWidth": 390,
+    "rows": 6,
+    "tableWidth": 354,
+    "viewport": 390,
+    "checkedAt": "2026-10-27T20:14:39.617Z",
+    "fixtureEvents": 6,
+    "emptyStatus": "No page views to show for this selection.",
+    "emptyBusy": "true",
+    "emptyRows": 0,
+    "viewportReset": true,
+    "limit": "Stored native fixtures, not real devices, vendor/native verdicts or operator labels",
+    "emptyDashboardBehavior": "Existing zero-total branch hides the dashboard and leaves aria-busy true; acceptance is the visible empty status and backend empty array, not a rendered category table."
+  },
+  "nativeLocalReceipt": "native-category-local.json",
+  "retainedSourceReceipt": "native-category-retained-exa.json",
+  "directProductionSelectPlan": {
+    "template": "native-category-control-acceptance.sql",
+    "readCeiling": 50,
+    "executed": false
+  },
+  "publicationAcceptancePending": true,
+  "sourceSha256": {
+    "packages/analytics/src/native-bot-evidence.ts": "87c7db61eeffab90aa814fafab67cade6f8b1aa27e5e5a1ab7b90f01ae6969a2",
+    "packages/analytics/src/signature-evidence.ts": "87eb6422ba48563a71feb16535b2a359aae09b416f237b3aae76261bd44c11c1",
+    "packages/analytics/src/signature-basis.ts": "cec253013445bbbdf843e00c900e7a7758b85d7a1244782867b81f25fdf44c9b",
+    "packages/analytics/src/contracts.ts": "bd1fb761f21f465137256c47b6d0283f01f57ee8fff9c633fdd711edd3e253de",
+    "packages/analytics/src/stats.ts": "de521cc87a6df8e472d84ec3354bcbf9d729d772e1764bee2b22c9ab907d3cde",
+    "packages/analytics/src/versions.ts": "4fe6b4340c33ffa29208bfb1f338eb4df5605e0a8aa03c235895511d007e56ee",
+    "packages/blog/src/client/stats.ts": "3b96eac3b4af7393d897933ad43f307a03e09387f31757f25597f698baa92b6d",
+    "packages/blog/src/pages/stats.ts": "844f90fecee038be024ceeb4b62191e44307adbfee4dd480a4f2a089b3dab6c6",
+    "packages/blog/src/pages/privacy.ts": "6ce7c1f234cca1a124c5f884713e8975aaa1ee52987d7d0d7edad8cd6004983c",
+    "packages/blog/src/worker/stats-cache.ts": "712a1be283816bf694aadcbc4011a2c0e7b1a095d70a553e8071978e076b2967",
+    "packages/blog/scripts/check-native-category.mjs": "40f8eb829ec727f5c14526ca2ad55304427b387bf9220fe8c8f15b0dbe097984",
+    "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "56d060ac8343088ba47580e1fa0dc3d4476d0dea1657d189f59b640f2c8a75df"
+  },
+  "limits": [
+    "Read-only zone UI, retained vendor categories and synthetic native metadata do not establish an organic signed Worker/native comparison.",
+    "Human trials deferred by owner; no new label or trial window.",
+    "Local viewport width is a layout check, not physical-device or operator evidence."
+  ],
+  "analyticsTestLogSha256": "396515ec241813dd88b2ea8c321e6fa0245f525d699864807dc427e551819594",
+  "blogTestLogSha256": "6f276e0d36588ab5c347d12c73600840f30096f2ff6b152627c330b668b10eb0"
+}
