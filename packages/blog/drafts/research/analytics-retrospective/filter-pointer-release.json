@@ -1,0 +1,85 @@
+{
+  "acceptedAt": "2026-10-27T21:48:24.860009+00:00",
+  "sourceCommit": "89de0f7d96fddb3838c374eea5c8e231e60959bf",
+  "nativeBuild": {
+    "id": "69843364-3cff-4768-a334-73ad71b92bcb",
+    "state": "Ready",
+    "durationSeconds": 68,
+    "sourceCommitLinkObserved": true
+  },
+  "activation": {
+    "createdOn": "2026-10-27T21:45:07.343858Z",
+    "versionId": "6001adc8-e781-46fb-b2f2-d9d8533a6d1a",
+    "percentage": 100
+  },
+  "bindingCount": 7,
+  "optionalGrantCalibrationDiagnosticsBindingsAbsent": true,
+  "servedBuildEquality": {
+    "stats.css": {
+      "status": 200,
+      "buildMatch": true,
+      "sha256": "337703b280e9565cd304619a41b2b8a9f6939ff2e0e8adb4497664994bcbe8e3"
+    },
+    "building-blog-analytics-what-the-numbers-can-prove.md": {
+      "status": 200,
+      "buildMatch": true,
+      "sha256": "b8f2a32139cc1a4e711e903352d18d6baf662604bcab6cd7408b4b6614c1095c"
+    }
+  },
+  "local": "filter-pointer-local.json",
+  "sourceChecks": "filter-pointer-source-checks.json",
+  "productionUi": {
+    "scope": {
+      "range": "7d",
+      "path": "/privacy"
+    },
+    "before": {
+      "kind": "unresolved",
+      "views": 0,
+      "excludedViews": 7,
+      "viewport": {
+        "height": 844,
+        "pageWidth": 390,
+        "width": 390
+      },
+      "scopeLayout": {
+        "height": 58.84375,
+        "overflowX": "visible",
+        "scrollWidth": 354,
+        "whiteSpace": "normal",
+        "width": 354
+      }
+    },
+    "after": {
+      "kind": null,
+      "traffic": "all",
+      "views": 15,
+      "excludedViews": 24,
+      "pointerClearingObserved": true,
+      "diagnosticProbeAbsent": true
+    },
+    "desktopClearingAlsoObserved": true,
+    "viewportReset": true
+  },
+  "article": {
+    "bodyWords": 1249,
+    "shapingPrompts": 31,
+    "trustedEventLessonAndResearchLinkRendered": true
+  },
+  "productionDirectD1Selects": 0,
+  "costLimits": [
+    "Live stats/API inspection consumes service work and may cold-fill a cache. No new production read-cost or cache-hit measurement is claimed.",
+    "Served CSS and direct Markdown asset checks do not require an analytics report query."
+  ],
+  "cleanup": {
+    "allOwnedPreviewServersStopped": true,
+    "temporaryViewportReset": true
+  },
+  "limits": [
+    "Narrow viewport acceptance is agent-operated, not real-phone or human input.",
+    "Trusted agent events do not define error rates or identify a real operator.",
+    "No collector/classifier/verifier/report SQL/cache semantics or raw collection changes.",
+    "Broader history completeness, organic signed/native agreement, sampling/loss, replay/DNS and privacy/retention questions remain open."
+  ],
+  "nextBoundedAction": "Prepare a fixed-cutoff, native-tested completeness census across retained history, including owner/referral exclusions and explicit unknowns, with a read ceiling before remote execution. Human trials remain deferred."
+}
