@@ -66,6 +66,20 @@ export interface TimeSeriesPoint {
 export const ANALYTICS_EVIDENCE_SINCE = '2026-09-03';
 
 export interface VerificationSummary {
+  localInvalidViews: number;
+  localUnsupportedViews: number;
+  localUnavailableViews: number;
+  localPolicyRejectedViews: number;
+  localNotApplicableViews: number;
+  localIndeterminateViews: number;
+  unverifiedOutcomeNotRecordedViews: number;
+  vendorDocumentedViews: number;
+  vendorMatchingOriginViews: number;
+  vendorDifferentOriginViews: number;
+  vendorNotVerifiedViews: number;
+  vendorUnmappedDeclarationViews: number;
+  vendorUserAgentBoundViews: number;
+  vendorCheckNotRecordedViews: number;
   recordedViews: number;
   notRecordedViews: number;
   localVerifiedViews: number;

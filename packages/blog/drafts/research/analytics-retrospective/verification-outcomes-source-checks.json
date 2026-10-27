@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-27T16:27:52.836099+00:00",
+  "analyticsTests": 111,
+  "siteTests": 106,
+  "workspaceTypes": "pass",
+  "frontmatter": "21 Markdown posts pass",
+  "isolatedBuildPosts": 32,
+  "changedDocumentRelativeLinksChecked": 183,
+  "articleWordsWithLinksRemoved": 1250,
+  "articleH1": 1,
+  "prompts": 30,
+  "articleMarkdownSha256": "43d52bd8b12fd7276d746638687dcbca00b51c7faa2371702702267dab16a939",
+  "nativeD1": "verification-outcomes-local.json",
+  "productionBudget": "verification-outcomes-pre-release.json: failed 50000 ceiling, 109116 reads/zero writes",
+  "limits": [
+    "Source/local checks; activation and prospective controls separate.",
+    "Node crypto with native workerd D1; no organic vendor or human-accuracy acceptance.",
+    "Initial pnpm build hit sandbox tsx IPC restriction; direct node --import tsx checks and isolated production build pass."
+  ]
+}

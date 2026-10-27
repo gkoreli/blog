@@ -660,6 +660,24 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     { label: 'Native signed-agent result true', views: verification.nativeSignedAgentViews },
     { label: 'Local verified; native verified-bot false', views: verification.localVerifiedNativeNotVerifiedViews },
   ], null);
+  replaceSectionRows('stats-verification-outcomes', [
+    { label: 'Invalid input or cryptographic mismatch', views: verification.localInvalidViews },
+    { label: 'Unsupported format or algorithm', views: verification.localUnsupportedViews },
+    { label: 'Directory, key or verifier unavailable', views: verification.localUnavailableViews },
+    { label: 'Rejected by local time or coverage policy', views: verification.localPolicyRejectedViews },
+    { label: 'Signature outside Web Bot Auth', views: verification.localNotApplicableViews },
+    { label: 'Indeterminate, mixed or internal error', views: verification.localIndeterminateViews },
+    { label: 'Earlier unsuccessful result — detail unrecorded', views: verification.unverifiedOutcomeNotRecordedViews },
+  ], null);
+  replaceSectionRows('stats-vendor-signatures', [
+    { label: 'Declaration with a documented signing method', views: verification.vendorDocumentedViews },
+    { label: 'Verified key from the documented origin', views: verification.vendorMatchingOriginViews },
+    { label: 'Verified key from a different origin', views: verification.vendorDifferentOriginViews },
+    { label: 'Documented declaration; key not verified', views: verification.vendorNotVerifiedViews },
+    { label: 'Matching origin and User-Agent covered', views: verification.vendorUserAgentBoundViews },
+    { label: 'Has declarations without a configured method', views: verification.vendorUnmappedDeclarationViews },
+    { label: 'Vendor check not recorded', views: verification.vendorCheckNotRecordedViews },
+  ], null);
   renderComposition(data, state);
 
   setStatus(`Showing ${formatViewCount(data.totals.views, true)}.${exclusionNotice}`, 'ready');

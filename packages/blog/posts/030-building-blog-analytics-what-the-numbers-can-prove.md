@@ -45,13 +45,13 @@ That is a sensitivity check. R1 remains included, and the subtraction does not p
 
 ## A signed crawler was being counted as an assistant
 
-The classifier had a quieter error. A verified signature replaced the client’s declared role with `signed-agent`. That let a signed SEO crawler enter the AI agents group.
+A verified signature replaced the client’s declared role with `signed-agent`, letting a signed SEO crawler enter the AI agents group.
 
 Our catalogue also missed four documented names. [ExaSearchBot](https://crawler.exa.ai/) crawls for search; [ExaUser](https://crawler.exa.ai/exauser) retrieves pages requested by users or applications. [AhrefsBot and AhrefsSiteAudit](https://ahrefs.com/robot) declare crawling and auditing roles. Their signing evidence cannot substitute for those distinctions.
 
 The repair recognizes all four names, preserves declared roles across verified signatures, and reports signing evidence separately without double-counting totals. Local signed fixtures and excluded live User-Agent controls passed; organic vendor-signed acceptance remains open. The [repair evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/08-classification-repair.md) records that boundary.
 
-**Identity, role and trigger answer different questions.** [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) verify selected components against a key. I [reverified 19 retained Exa records](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/18-webbotauth-verification.md): every signature protected the host, none the User-Agent or article path. A local mutation test confirmed those unsigned fields could change without invalidating the signature. Two records shared a provider ID; the sample does not establish 19 unique events. Native verification booleans were unavailable. New code preserves coverage, validity and native availability instead of reducing this evidence to verified. Human triggers and the roles lost from 1,003 historical Exa outcomes remain unknown.
+**Identity, role and trigger answer different questions.** [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) verify selected components against a key. I [reverified 19 retained Exa records](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/18-webbotauth-verification.md): every signature protected the host, none the User-Agent or article path. A mutation test confirmed those unsigned fields could change without invalidating the signature. Two records shared a provider ID; the sample does not establish 19 unique events. Native verification booleans were unavailable. Records separate invalid, unsupported, unavailable and policy-rejected signatures, and compare Exa declarations with its documented signing origin. Coverage stays explicit: matching keys cannot authenticate unsigned roles or human triggers. Roles lost from 1,003 historical Exa outcomes remain unknown.
 
 ## Preserve uncertainty in the data
 

@@ -109,6 +109,16 @@ export function statsPage() {
       <h2>Verified signing outcomes <span>reviewed names</span></h2>
       ${listSkeleton(2)}
     </section>
+    <section class="stats-section" id="stats-verification-outcomes">
+      <h2>Unsuccessful verification <span>local profile outcomes</span></h2>
+      <p class="stats-section-note">Invalid input, unsupported features, unavailable keys and policy rejection differ. Mixed candidate outcomes remain indeterminate. None establishes impersonation or intent.</p>
+      ${listSkeleton(3)}
+    </section>
+    <section class="stats-section" id="stats-vendor-signatures">
+      <h2>Declared vendor checks <span>documented signing origins</span></h2>
+      <p class="stats-section-note">Currently configured for ExaSearchBot and ExaUser using Exa’s published key origin. A matching key does not bind an unsigned User-Agent, identify the initiating user or prevent replay. Counts overlap; other declarations remain unmapped. No IP or DNS verification is performed here.</p>
+      ${listSkeleton(3)}
+    </section>
     <section class="stats-section" id="stats-verification">
       <h2>Signature verification <span>coverage and availability</span></h2>
       <p class="stats-section-note">Local key verification and Cloudflare assessments are separate. Coverage counts overlap; none establishes a human trigger.</p>

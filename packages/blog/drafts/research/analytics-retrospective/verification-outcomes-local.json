@@ -1,0 +1,151 @@
+{
+  "at": "2026-10-27T16:27:29.720Z",
+  "runtime": "v24.14.1",
+  "conditions": "Node collector/crypto with actual workerd D1, ephemeral keys and intercepted public-directory fetches; no vendor or production authenticity claim",
+  "trials": [
+    {
+      "label": "minimal",
+      "outcome": "verified",
+      "vendorStatus": "matching-origin",
+      "source": "local-webbotauth",
+      "userAgentCovered": false,
+      "bytes": 695
+    },
+    {
+      "label": "bound",
+      "outcome": "verified",
+      "vendorStatus": "matching-origin",
+      "source": "local-webbotauth",
+      "userAgentCovered": true,
+      "bytes": 691
+    },
+    {
+      "label": "different-origin",
+      "outcome": "verified",
+      "vendorStatus": "different-origin",
+      "source": "local-webbotauth",
+      "userAgentCovered": false,
+      "bytes": 696
+    },
+    {
+      "label": "tampered",
+      "outcome": "invalid",
+      "vendorStatus": "not-verified",
+      "source": "local-webbotauth",
+      "userAgentCovered": null,
+      "bytes": 456
+    },
+    {
+      "label": "unsupported",
+      "outcome": "unsupported",
+      "vendorStatus": "not-verified",
+      "source": "local-webbotauth",
+      "userAgentCovered": null,
+      "bytes": 456
+    },
+    {
+      "label": "unavailable",
+      "outcome": "unavailable",
+      "vendorStatus": "not-verified",
+      "source": "local-webbotauth",
+      "userAgentCovered": null,
+      "bytes": 468
+    },
+    {
+      "label": "expired",
+      "outcome": "policy-rejected",
+      "vendorStatus": "not-verified",
+      "source": "local-webbotauth",
+      "userAgentCovered": null,
+      "bytes": 444
+    },
+    {
+      "label": "unsigned",
+      "outcome": "absent",
+      "vendorStatus": "not-verified",
+      "source": "local-webbotauth",
+      "userAgentCovered": null,
+      "bytes": 417
+    },
+    {
+      "label": "non-webbotauth",
+      "outcome": "not-applicable",
+      "vendorStatus": "not-verified",
+      "source": "local-webbotauth",
+      "userAgentCovered": null,
+      "bytes": 479
+    },
+    {
+      "label": "unmapped",
+      "outcome": "absent",
+      "vendorStatus": "not-configured",
+      "source": "local-webbotauth",
+      "userAgentCovered": null,
+      "bytes": 419
+    },
+    {
+      "label": "mixed",
+      "outcome": "indeterminate",
+      "vendorStatus": "not-verified",
+      "source": "local-webbotauth",
+      "userAgentCovered": null,
+      "bytes": 478
+    },
+    {
+      "label": "injected",
+      "outcome": "test-injected",
+      "vendorStatus": "test-injected",
+      "source": "test-injected",
+      "userAgentCovered": null,
+      "bytes": 414
+    }
+  ],
+  "directoryCalls": 4,
+  "verification": {
+    "localInvalidViews": 1,
+    "localUnsupportedViews": 1,
+    "localUnavailableViews": 1,
+    "localPolicyRejectedViews": 1,
+    "localNotApplicableViews": 1,
+    "localIndeterminateViews": 1,
+    "unverifiedOutcomeNotRecordedViews": 0,
+    "vendorDocumentedViews": 10,
+    "vendorMatchingOriginViews": 2,
+    "vendorDifferentOriginViews": 1,
+    "vendorNotVerifiedViews": 7,
+    "vendorUnmappedDeclarationViews": 1,
+    "vendorUserAgentBoundViews": 1,
+    "vendorCheckNotRecordedViews": 1,
+    "recordedViews": 12,
+    "notRecordedViews": 1,
+    "localVerifiedViews": 3,
+    "localUnverifiedViews": 6,
+    "localAbsentViews": 2,
+    "testVerdictViews": 1,
+    "coverageRecordedViews": 3,
+    "userAgentBoundViews": 1,
+    "resourceBoundViews": 1,
+    "methodBoundViews": 1,
+    "authorityOnlyViews": 2,
+    "nativeAvailableViews": 0,
+    "nativeVerifiedBotViews": 0,
+    "nativeSignedAgentViews": 0,
+    "localVerifiedNativeNotVerifiedViews": 0
+  },
+  "checks": {
+    "nativeD1": true,
+    "historyPreserved": true,
+    "ownerAndReferralExclusion": true,
+    "emptyReport": true,
+    "literalizedProductionSql": true,
+    "optionalCaptureOff": true,
+    "narrowControlSql": true
+  },
+  "sourceSha256": {
+    "packages/analytics/src/webbotauth.ts": "e6cea5647f580dd0d3c38498094b908f11a28a7f419a2bf1b330fd3c568a9312",
+    "packages/analytics/src/signature-evidence.ts": "3e1ccd7a954e07f56b219d632d03ab80d98f90d78052c3bdf3a690ca5d49dba4",
+    "packages/analytics/src/vendor-signatures.ts": "d8e5d0479f930b0a80e8b04540c8853b620ff0771fc949e06c3804c33683fe18",
+    "packages/analytics/src/stats.ts": "b81ca83716b72d20cd73917c6beaf5d6b2344acf41ba8e109e0d8aa14ffc1a00"
+  },
+  "productionCalls": 0
+}

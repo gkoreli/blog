@@ -16,7 +16,7 @@ export interface SignatureEvidence {
 
 export type WebBotAuthResult =
   | { status: 'verified'; agent: string; evidence?: SignatureEvidence }
-  | { status: 'unverified'; reason: string }
+  | { status: 'unverified'; reason: string; reasons?: readonly string[] }
   | { status: 'absent' };
 
 type BareItem =
@@ -773,7 +773,8 @@ async function verifyCandidate(
       validitySeconds: expires - created, ageSeconds: Math.max(0, nowSeconds - created), replayPolicy: 'expiry-only',
     } };
   } catch {
-    return { status: 'unverified', reason: 'signature-invalid' };
+    // A crypto/runtime failure is not a negative cryptographic verdict.
+    return { status: 'unverified', reason: 'verification-error' };
   }
 }
 
@@ -820,14 +821,18 @@ export async function verifyWebBotAuth(
     const cache = options.cache ?? sharedCache;
     const nowMs = (options.now ?? new Date()).getTime();
     let lastFailure: WebBotAuthResult = { status: 'unverified', reason: 'signature-invalid' };
+    const reasons = new Set<string>();
     for (const candidate of tagged) {
       const result = await verifyCandidate(request, candidate, parsedAgent, fetcher, cache, nowMs, options);
       if (result.status === 'verified') return result;
       lastFailure = result;
+      if (result.status === 'unverified') reasons.add(result.reason);
     }
     return parsedAgent.form === 'bare-uri'
       ? { status: 'unverified', reason: 'bare-uri-signature-agent' }
-      : lastFailure;
+      : lastFailure.status === 'unverified' && reasons.size > 1
+        ? { ...lastFailure, reasons: [...reasons].sort() }
+        : lastFailure;
   } catch {
     return { status: 'unverified', reason: 'verification-error' };
   }

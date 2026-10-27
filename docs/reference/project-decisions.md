@@ -47,3 +47,5 @@ Do not add AS13335, AS36183, AS20940, AS54113, or AS15169 to the hosting-ASN lis
 Use the Georgian გკ logo and SVG icon set in `packages/blog/public/icons/`. The logo uses Georgian letterforms cut out of a green-gradient square and also serves as the favicon. Use the established green/sky brand gradient and section accent tokens; see the [design reference](../../.agents/skills/blog-maintenance/references/design-system.md) for values and layout rules.
 
 Exact declarations, independent category agreement and explicit classification uncertainty: [ADR-0016.12](../adr/0016.12-explicit-classification-uncertainty.md).
+
+Verification outcome categories and documented vendor-signing methods: [ADR-0016.13](../adr/0016.13-verification-outcomes-and-vendor-methods.md).

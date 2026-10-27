@@ -1,0 +1,11 @@
+{
+  "query": {
+    "range": "7d",
+    "traffic": "all"
+  },
+  "start": "2026-10-21",
+  "end": "2026-10-27",
+  "sqlSha256": "88c01583f95210f121b96d501eaf980baeafeed9a4ec706c8d8dd95acf6d50c6",
+  "directSelectReadCeiling": 50000,
+  "productionCalls": 0
+}

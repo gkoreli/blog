@@ -137,7 +137,7 @@ async function persistObservation(
     readerKind: reader.kind,
     readerReason: reader.reason,
     observedAt: sqliteTimestamp(observedAt),
-    signatureEvidence: verificationEvidence(request, signature, options.verifySignature !== undefined),
+    signatureEvidence: verificationEvidence(request, signature, options.verifySignature !== undefined, classification.declarations.candidates),
     classificationEvidence: classificationEvidence(readerFacts, classification.declarations),
     ...(captureEvidence ? { requestEvidence: extractRequestEvidence(request, response) } : {}),
   };
