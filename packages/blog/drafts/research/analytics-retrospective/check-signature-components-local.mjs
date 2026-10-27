@@ -36,10 +36,11 @@ try {
     });
     if (label === 'excluded') headers.Referer = 'https://traffic2cash.xyz/';
     const pending = [];
-    observePageResponse(new Request(`https://publication.example/${label}`, { headers }), new Response('fixture', { headers: { 'Content-Type': 'text/html' } }), 'html',
+    const path = label === 'excluded' ? '/privacy' : '/' + label;
+    observePageResponse(new Request(`https://publication.example${path}`, { headers }), new Response('fixture', { headers: { 'Content-Type': 'text/html' } }), 'html',
       { DB: db, ANALYTICS_HASH_KEY: 'local-fixture-only' }, { waitUntil: p => pending.push(p) });
     await Promise.all(pending);
-    const row = await db.prepare('SELECT signature_evidence,request_evidence,collection_version,classifier_version FROM page_observations WHERE path=?').bind('/' + label).first();
+    const row = await db.prepare('SELECT signature_evidence,request_evidence,collection_version,classifier_version FROM page_observations WHERE path=?').bind(path).first();
     const evidence = JSON.parse(row.signature_evidence);
     assert.equal(evidence.verifierProfile, VERIFIER_PROFILE_VERSION);
     assert.equal(evidence.localOutcome, label === 'unsigned' ? 'absent' : 'invalid');
@@ -54,11 +55,15 @@ try {
   assert.equal(report.totals.views, 5); assert.equal(report.referralPolicy.excludedViews, 1);
   assert.equal(report.verification.localInvalidViews, 3); assert.equal(report.verification.localAbsentViews, 1); assert.equal(report.verification.notRecordedViews, 1);
   assert.equal((await db.prepare("SELECT signature_evidence FROM page_observations WHERE path='/historical'").first()).signature_evidence, null);
+  const controlSql = readFileSync('packages/blog/drafts/research/analytics-retrospective/signature-components-control-acceptance.sql', 'utf8');
+  const controls = (await db.prepare(controlSql).bind('2000-01-01 00:00:00', '2100-01-01 00:00:00').all()).results;
+  assert.equal(controls.length, 1); assert.equal(controls[0].outcome, 'invalid'); assert.equal(controls[0].verifierProfile, VERIFIER_PROFILE_VERSION);
+  assert.equal(controls[0].coverageAbsent, 1); assert.equal(controls[0].optionalCaptureAbsent, 1);
   const files = ['webbotauth.ts', 'signature-evidence.ts', 'versions.ts', 'index.ts', 'stats.ts'];
   writeFileSync(output, JSON.stringify({ checkedAt: new Date().toISOString(), runtime: process.version,
     method: 'Actual Node collector and workerd D1; malformed-component controls have dummy signature bytes, not vendor proofs; independent signed cases are in the separate component probe',
     collectionVersion: COLLECTION_VERSION, classifierVersion: CLASSIFIER_VERSION, verifierProfile: VERIFIER_PROFILE_VERSION, trials,
-    checks: { nativeD1: true, closedReasonPersisted: true, invalidSummary: true, referralExclusion: true, historyUnchanged: true, optionalCaptureOff: true, noDirectoryFetch: true },
+    checks: { nativeD1: true, closedReasonPersisted: true, invalidSummary: true, referralExclusion: true, historyUnchanged: true, optionalCaptureOff: true, noDirectoryFetch: true, narrowProductionSql: true },
     sourceSha256: Object.fromEntries(files.map(file => [file, createHash('sha256').update(readFileSync('packages/analytics/src/' + file)).digest('hex')])),
     directoryFetches, productionCalls: 0,
   }, null, 2) + '\n', { flag: 'wx' });

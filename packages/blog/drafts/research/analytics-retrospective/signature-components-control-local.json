@@ -1,0 +1,67 @@
+{
+  "checkedAt": "2026-10-27T17:44:36.966Z",
+  "runtime": "v24.14.1",
+  "method": "Actual Node collector and workerd D1; malformed-component controls have dummy signature bytes, not vendor proofs; independent signed cases are in the separate component probe",
+  "collectionVersion": "2026-10-27.4",
+  "classifierVersion": "2026-10-27.4",
+  "verifierProfile": "2026-10-27.4",
+  "trials": [
+    {
+      "label": "authority",
+      "outcome": "invalid",
+      "reasons": [
+        "duplicate-component"
+      ],
+      "bytes": 462
+    },
+    {
+      "label": "header",
+      "outcome": "invalid",
+      "reasons": [
+        "duplicate-component"
+      ],
+      "bytes": 462
+    },
+    {
+      "label": "member",
+      "outcome": "invalid",
+      "reasons": [
+        "duplicate-component"
+      ],
+      "bytes": 462
+    },
+    {
+      "label": "unsigned",
+      "outcome": "absent",
+      "reasons": [],
+      "bytes": 419
+    },
+    {
+      "label": "excluded",
+      "outcome": "invalid",
+      "reasons": [
+        "duplicate-component"
+      ],
+      "bytes": 462
+    }
+  ],
+  "checks": {
+    "nativeD1": true,
+    "closedReasonPersisted": true,
+    "invalidSummary": true,
+    "referralExclusion": true,
+    "historyUnchanged": true,
+    "optionalCaptureOff": true,
+    "noDirectoryFetch": true,
+    "narrowProductionSql": true
+  },
+  "sourceSha256": {
+    "webbotauth.ts": "c62ee12675354561a8261e3daefeab387da9b05ed9e3bd1da051bc395ef279d6",
+    "signature-evidence.ts": "34ae0f424a590932d5d97a4df6407aeab2e6ff5d5e6ccb534db3acbdd092f68e",
+    "versions.ts": "f46fc185ce0df25ca0b7fb8d3d4e7b8009262241d2d258c4e587d41734e52a40",
+    "index.ts": "934b7f3230004a89e2b28ca639a51cb0fac1582470462c5362bcd4595a269a65",
+    "stats.ts": "0d56ec0c86cea7189080643f6a14ba281e82b26494b5490f53c804171e35a7b9"
+  },
+  "directoryFetches": 0,
+  "productionCalls": 0
+}

@@ -1,0 +1,85 @@
+{
+  "checkedAt": "2026-10-27T17:46:39.008413+00:00",
+  "sourceCommit": "a8d88fb38a65141e291ffb52fc3c67349cc23732",
+  "build": {
+    "id": "841f1dec-401e-46b3-b100-d39bdabcc2c9",
+    "observedSource": "a8d88fb",
+    "durationSeconds": 58,
+    "remoteNode": "24.22.1",
+    "localNode": "24.14.1",
+    "limit": "Native UI source association, deployment metadata and prospective persisted outcome; no binary attestation or runtime parity claim"
+  },
+  "deployment": {
+    "createdAt": "2026-10-27T17:44:44.303146Z",
+    "versions": [
+      {
+        "version_id": "46c86085-8297-4ee5-aacb-e37dc36c3746",
+        "percentage": 100
+      }
+    ]
+  },
+  "controls": {
+    "startedAt": "2026-10-27T17:45:15.958070+00:00",
+    "finishedAt": "2026-10-27T17:45:16.331115+00:00",
+    "queryStart": "2026-10-27 17:45:13",
+    "queryEndExclusive": "2026-10-27 17:45:21",
+    "httpStatus": 200,
+    "controls": 1,
+    "method": "Excluded malformed-component control with dummy signature bytes; proves rejection/persistence before key discovery, not vendor crypto or native verification",
+    "directReadCeiling": 50
+  },
+  "persistedResults": [
+    {
+      "collectionVersion": "2026-10-27.4",
+      "classifierVersion": "2026-10-27.4",
+      "verifierProfile": "2026-10-27.4",
+      "outcome": "invalid",
+      "reasons": "[\"duplicate-component\"]",
+      "coverageAbsent": 1,
+      "nativeVerifiedBot": null,
+      "nativeSignedAgent": null,
+      "optionalCaptureAbsent": 1,
+      "readerKind": "unresolved"
+    }
+  ],
+  "directSelect": {
+    "rowsRead": 2,
+    "rowsWritten": 0,
+    "ceiling": 50,
+    "sqlSha256": "c2ce617d9356766527e0b3bb89c614d9e6b02cc7af042cdaf8e5da4832255e11",
+    "nativeLocalAcceptance": "signature-components-control-local.json"
+  },
+  "publicReport": {
+    "selection": {
+      "range": "7d",
+      "traffic": "unresolved",
+      "kind": "unresolved",
+      "path": "/privacy"
+    },
+    "includedViews": 0,
+    "excludedViews": 3,
+    "limit": "Three exclusions in the selected population, including the one new control; not three new controls",
+    "policySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+    "identicalResponses": true,
+    "cacheResults": [
+      "MISS",
+      "HIT"
+    ],
+    "sameColo": "SJC",
+    "bodySha256": "a9884df979ccc1c1ff63e66e2056cbf770b43245a93ec355e8cec8985f283cfd"
+  },
+  "checks": {
+    "noMigrationNeeded": true,
+    "optionalCaptureOff": true,
+    "coverageAbsent": true,
+    "nativeUnavailablePreserved": true,
+    "historyNotRewritten": true
+  },
+  "limits": [
+    "Malformed control uses dummy signature bytes and proves pre-crypto rejection/persistence, not Exa authenticity",
+    "Actual independent Ed25519 signatures and distinct dictionary members accepted locally only",
+    "Organic signed Worker acceptance, native/local comparison, broader conformance vectors, complete SSRF policy and replay policy remain open",
+    "Public cold fill, one observation write and unrelated account work are additional to direct SELECT metering",
+    "Public-report assertion initially used the wrong JSON field name definitionHash; inspecting the already captured sha256 field corrected the assertion without another request"
+  ]
+}
