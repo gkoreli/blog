@@ -1,0 +1,40 @@
+{
+  "acceptedAt": "2026-10-27T23:29:31.526637+00:00",
+  "sourceCommit": "369c78a6b1d938d61a1750c7de3e69f693951a02",
+  "build": {
+    "id": "1a426140-1d7f-49e0-bdc6-2fed758697a3",
+    "nativeStatus": "Ready",
+    "durationSeconds": 37
+  },
+  "activation": {
+    "createdOn": "2026-10-27T23:28:06.673582Z",
+    "versions": [
+      {
+        "version_id": "dc0a76a0-d020-4905-ad92-74dc3b608f19",
+        "percentage": 100
+      }
+    ]
+  },
+  "recovery": "retained-v3-recovery.json",
+  "checks": "retained-v3-recovery-source-checks.json",
+  "article": {
+    "exactBuildBytes": true,
+    "sha256": "17b12f950d16dd23e6fa4f188873a5d4e5846a663c53e87e8f45056ca1be1498",
+    "renderedEvidenceHrefVerified": true,
+    "bodyWords": 1250,
+    "shapingPrompts": 31,
+    "screenshot": "analytics-retained-receipt-recovery.png"
+  },
+  "newControlRequests": 0,
+  "directProductionSelects": 0,
+  "runtimeSemanticsChanged": false,
+  "ownedTailOrPreviewStarted": false,
+  "viewportOverrideUsed": false,
+  "limits": [
+    "Recovery accepts known fields for the one existing control and observed copy paths, not complete retention or a provider failure cause.",
+    "Six visible text-query results versus one copied record remains an unestablished selection/export scope.",
+    "The initial empty clipboard is weaker evidence than later acknowledged copies.",
+    "No organic signed/native cryptographic agreement or human/device accuracy claim.",
+    "Ordinary publication/dashboard inspection is additional service work; prior D1 readback stays dated separately."
+  ]
+}
