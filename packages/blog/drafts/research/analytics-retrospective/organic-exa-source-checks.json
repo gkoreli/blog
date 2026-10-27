@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-27T20:35:57.490402+00:00",
+  "runtime": "Node 24.14.1; pnpm 9.15.4",
+  "analyticsTests": 156,
+  "finalReconciliationTests": 5,
+  "workspaceTypes": "passed",
+  "markdownValidation": 21,
+  "isolatedBuiltPosts": 32,
+  "articleWords": 1246,
+  "shapingPrompts": 31,
+  "generatedHtmlH1": 1,
+  "builtArticleSha256": "9e6de67b250aef5fe6cbe20338cd1798321f674ddeac2c911f53b4d58278117b",
+  "buildDirectory": "/tmp/gk-production-stage-build-20261027/packages/blog",
+  "directProductionSelect": {
+    "reads": 8,
+    "rowWrites": 0,
+    "changes": 0,
+    "changedDb": false
+  },
+  "runtimePolicyChanged": false,
+  "sourcePublicationPending": true,
+  "productionActivationPending": true,
+  "humanTrialsDeferred": true
+}

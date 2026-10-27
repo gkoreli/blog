@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-27T20:33:48.891145+00:00",
+  "method": "One Wrangler --command SELECT of a time/path candidate cohort, not an invocation-to-row join. SQL comments stripped before passing the SQL as one argv value.",
+  "sqlSha256": "4b47514d4f461e6388d4cea6c51bd8d365fb3c0a1e28b31292e82db87fe8beec",
+  "window": {
+    "startInclusive": "2026-10-27T20:16:44Z",
+    "endExclusive": "2026-10-27T20:16:48Z"
+  },
+  "readCeiling": 100,
+  "executionsWithReportedMetering": 1,
+  "meta": {
+    "rows_read": 8,
+    "rows_written": 0,
+    "changes": 0,
+    "changed_db": false
+  },
+  "results": [
+    {
+      "collectionVersion": "2026-10-27.6",
+      "readerKind": "ai-search",
+      "signatureStatus": "verified",
+      "evidenceVersion": "2026-10-27.3",
+      "evidenceSource": "local-webbotauth",
+      "verifierProfile": "2026-10-27.6",
+      "localOutcome": "verified",
+      "vendorStatus": "matching-origin",
+      "authorityCovered": 1,
+      "userAgentCovered": 0,
+      "pathCovered": 0,
+      "nativeVerifiedBot": null,
+      "nativeSignedAgent": null,
+      "routineSourceEventIdAbsent": 1,
+      "optionalCaptureAbsent": 1,
+      "observations": 2
+    }
+  ],
+  "exactInvocationJoins": 0,
+  "initialCliAttempt": {
+    "result": "Rejected by CLI argument parser before a result was returned: leading SQL comment interpreted as an option.",
+    "meteringReturned": false,
+    "importPathUsed": false
+  },
+  "limits": [
+    "Two matching stored observations do not supply a deterministic per-request identity join.",
+    "Storage-log pairing, recorded-time offline replay, stored cohort facts and native fields are separate evidence.",
+    "No new test visit, raw diagnostic activation or new human label. Existing observation writes and other service activity are additional."
+  ]
+}

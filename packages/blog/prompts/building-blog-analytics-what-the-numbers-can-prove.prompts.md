@@ -152,3 +152,7 @@ Are we respecting and do we have a dedicated sub module or capabilties for this 
 Every request is signed with Web Bot Auth (RFC 9421) and is verified automatically on Cloudflare, Akamai, and other providers that support it. Keys are published at https://crawler.exa.ai/.well-known/http-message-signatures-directory.
 
 We might even write another dedicated article on it
+
+---
+
+Continue without human trials for now

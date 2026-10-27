@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-27T20:34:56.219Z",
+  "method": "Native local workerd/D1 query acceptance with five synthetic stored rows. Executed after the production SELECT; not a pre-production acceptance claim.",
+  "fixtureRows": 5,
+  "selectedRows": 2,
+  "results": [
+    {
+      "collectionVersion": "2026-10-27.6",
+      "readerKind": "ai-search",
+      "signatureStatus": "verified",
+      "evidenceVersion": "2026-10-27.3",
+      "evidenceSource": "local-webbotauth",
+      "verifierProfile": "2026-10-27.6",
+      "localOutcome": "verified",
+      "vendorStatus": "matching-origin",
+      "authorityCovered": 1,
+      "userAgentCovered": 0,
+      "pathCovered": 0,
+      "nativeVerifiedBot": null,
+      "nativeSignedAgent": null,
+      "routineSourceEventIdAbsent": 1,
+      "optionalCaptureAbsent": 1,
+      "observations": 2
+    }
+  ],
+  "meta": {
+    "served_by": "miniflare.db",
+    "duration": 0,
+    "changes": 0,
+    "last_row_id": 5,
+    "changed_db": false,
+    "size_after": 81920,
+    "rows_read": 7,
+    "rows_written": 0
+  },
+  "productionRequests": 0,
+  "limits": [
+    "Synthetic query-window/owner/path controls, not real vendor collection or a deterministic invocation join."
+  ]
+}

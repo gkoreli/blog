@@ -1,0 +1,63 @@
+{
+  "checkedAt": "2026-10-27T20:32:56.521Z",
+  "method": "Offline declaration selection, native requestId/operationId log reconciliation and recorded-time cryptographic replay; no D1 identity join.",
+  "input": {
+    "records": 552,
+    "bytes": 1986402,
+    "sha256": "e040c3fe17ff451c1298eb60a60f68abd8806697c22000527791b9ad1427c859"
+  },
+  "integrity": {
+    "missingIds": 0,
+    "duplicateIds": 9,
+    "truncatedRecords": 0
+  },
+  "selectedRecordIntegrity": {
+    "missingIds": 0,
+    "collidingIdRecords": 0,
+    "truncatedRecords": 0
+  },
+  "selectedInvocationRecords": 2,
+  "completeAttemptStoredPairs": 2,
+  "matchingReplayOrigins": 2,
+  "observedInvocationTimestampRange": {
+    "first": "2026-10-27T20:16:44.662Z",
+    "last": "2026-10-27T20:16:47.963Z"
+  },
+  "counts": {
+    "replayStatus": {
+      "verified": 2
+    },
+    "coverage": {
+      "authority": 2
+    },
+    "categories": {
+      "Search Engine Crawler": 2
+    },
+    "nativeVerifiedBot": {
+      "unavailable": 2
+    },
+    "nativeSignedAgent": {
+      "unavailable": 2
+    },
+    "collections": {
+      "2026-10-27.6": 2
+    }
+  },
+  "verifierProfile": "2026-10-27.6",
+  "directory": {
+    "url": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+    "bytes": 274,
+    "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52"
+  },
+  "networkCalls": 0,
+  "productionRequests": 0,
+  "exactD1Joins": 0,
+  "limits": [
+    "The dashboard search count and exported record population differ; selection is reapplied to invocation request declarations offline.",
+    "Successful storage logs establish completion of the observation operation; they contain no signature verdict or row identifier.",
+    "Replay uses recorded invocation times and separately captured later keys, not proof of the original directory or original Worker verdict.",
+    "Provider categories do not establish native cryptographic verification; unavailable booleans remain unknown.",
+    "No complete retention, unique HTTP delivery, population accuracy, human trigger, citation or new-collector organic acceptance claim.",
+    "Raw request context, IDs, addresses, signatures and operation identifiers remain private."
+  ]
+}
