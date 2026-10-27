@@ -1,0 +1,147 @@
+{
+  "checkedAt": "2026-10-27T15:52:32.838315+00:00",
+  "sourceCommit": "4aa74d449bb9597fead4b32dad3ccdc6002a1a7a",
+  "build": {
+    "id": "bbc1ac33-5a39-4d30-8e7e-7f4610c60d69",
+    "observedSource": "4aa74d4",
+    "remoteBuildNode": "24.22.1",
+    "localNode": "24.14.1",
+    "limit": "Build UI association, activation metadata and served behavior; not direct Git-to-binary attestation or Worker/Node crypto equivalence."
+  },
+  "deployment": {
+    "createdAt": "2026-10-27T15:42:37.347036Z",
+    "versionId": "a8c5aa71-fc86-4557-b2e5-b32a36b342bf",
+    "percentage": 100
+  },
+  "migration": "0013 applied before source push; classification-pre-release.json",
+  "publication": {
+    "articleMatchesIntegratedBuild": true,
+    "articleMarkdownSha256": "e13c3e0d8dfcd9fed86483380159e5d8a4ea3ee537bbd3a7c0e2312bb5458ce6",
+    "integratedBuildPosts": 32,
+    "articleWords": 1248,
+    "promptSourceCount": 30,
+    "privacyDisclosurePresent": true
+  },
+  "controls": {
+    "startedAt": "2026-10-27T15:45:46.055988+00:00",
+    "finishedAt": "2026-10-27T15:45:47.062756+00:00",
+    "queryStart": "2026-10-27 15:45:44",
+    "queryEndExclusive": "2026-10-27 15:45:50",
+    "requests": [
+      {
+        "label": "lookalike",
+        "status": "200",
+        "curlExit": 0
+      },
+      {
+        "label": "conflicting-categories",
+        "status": "200",
+        "curlExit": 0
+      },
+      {
+        "label": "common-category",
+        "status": "200",
+        "curlExit": 0
+      }
+    ],
+    "policySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+    "privacyDisclosurePresent": true,
+    "scope": "Three unsigned synthetic requests; supplied referrer matches the locally tested exclusion rule and live policy hash. No owner credential, human trial or vendor verification.",
+    "storedGroups": [
+      {
+        "kind": "headless-browser",
+        "reason": "multiple-declarations-same-category",
+        "selectedName": null,
+        "candidates": "[\"Cypress\",\"HeadlessChrome\"]",
+        "declarationStatus": "multiple",
+        "categoryAgreement": "multiple-same-category",
+        "networkEvidence": "not-listed",
+        "signatureStatus": "absent",
+        "observations": 1,
+        "optionalStructuredCaptures": 0,
+        "largestEvidenceBytes": 415
+      },
+      {
+        "kind": "unresolved",
+        "reason": "multiple-client-declarations",
+        "selectedName": null,
+        "candidates": "[\"ChatGPT-User\",\"GPTBot\"]",
+        "declarationStatus": "multiple",
+        "categoryAgreement": "multiple-categories",
+        "networkEvidence": "not-listed",
+        "signatureStatus": "absent",
+        "observations": 1,
+        "optionalStructuredCaptures": 0,
+        "largestEvidenceBytes": 415
+      },
+      {
+        "kind": "unresolved",
+        "reason": "unrecognized-browser-claim",
+        "selectedName": null,
+        "candidates": "[]",
+        "declarationStatus": "none",
+        "categoryAgreement": "no-match",
+        "networkEvidence": "not-listed",
+        "signatureStatus": "absent",
+        "observations": 1,
+        "optionalStructuredCaptures": 0,
+        "largestEvidenceBytes": 327
+      }
+    ]
+  },
+  "publicReports": {
+    "unresolvedGlobal": {
+      "filters": {
+        "traffic": "unresolved",
+        "range": "7d",
+        "path": null,
+        "agent": null,
+        "kind": null
+      },
+      "totals": {
+        "views": 0,
+        "dailyClients": 0,
+        "unattributedViews": 0
+      },
+      "calculatedAt": "2026-10-27T15:45:04.134Z",
+      "repeatCache": "HIT",
+      "identicalRepeatBytes": true
+    },
+    "freshUnresolvedPrivacy": {
+      "filters": {
+        "traffic": "unresolved",
+        "range": "7d",
+        "path": "/privacy",
+        "agent": null,
+        "kind": null
+      },
+      "totals": {
+        "views": 0,
+        "dailyClients": 0,
+        "unattributedViews": 0
+      },
+      "calculatedAt": "2026-10-27T15:48:32.580Z",
+      "referralExcludedViews": 2,
+      "browser": "Selected Unresolved; zero public views and two referral exclusions render with no console warnings/errors."
+    }
+  },
+  "metering": {
+    "preparedSelectReads": 32150,
+    "controlRetrievalReads": 6,
+    "totalAcknowledgedAcceptanceSelectReads": 32156,
+    "selectWrites": 0,
+    "curlPublicColdReports": 2,
+    "additionalWork": "Public/browser report fills, migration/list bookkeeping, three synthetic observation writes and other account activity are additional. Preactivation invalid-filter response had no metering receipt."
+  },
+  "uiFollowup": {
+    "status": "Source fix prepared; production acceptance pending",
+    "issue": "Empty reports hid the selected page/agent/kind scope and report calculation time.",
+    "repair": "Keep scope and calculation metadata outside the hidden data panels; update scope during loading and hide stale period metadata until response."
+  },
+  "limits": [
+    "Unsigned synthetic controls, not authenticated vendor traffic, humans or an accuracy-rate experiment.",
+    "Native local crypto ran in Node with native D1; no production signed-crypto interoperability established here.",
+    "The offline R1 result is separate from production history; operator/purpose and original population reconciliation remain unknown.",
+    "No raw diagnostics activation, historical rewrite, device authentication or complete privacy/compliance claim."
+  ]
+}

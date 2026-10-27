@@ -277,6 +277,7 @@ function renderPeriod(period: StatsResponse['period']): void {
   const granularity = period.granularity === 'hour' ? 'Hourly buckets' : 'Daily buckets';
   const partial = period.granularity === 'hour' ? 'current UTC hour is partial' : 'current UTC day is partial';
   element('stats-period').textContent = `${period.start} through ${period.end} UTC · ${granularity} · ${partial} · Updated ${formatUpdatedAt(period.updatedAt)}`;
+  element('stats-period').hidden = false;
 }
 
 function renderTotals(totals: StatsResponse['totals']): void {
@@ -606,6 +607,8 @@ function renderTransitions(data: StatsResponse, state: ViewState): void {
 }
 
 function renderDashboard(data: StatsResponse, state: ViewState): void {
+  renderPeriod(data.period);
+  renderScope(data.filters);
   const excluded = data.referralPolicy.excludedViews;
   const exclusionNotice = excluded > 0
     ? ` ${formatNumber(excluded)} ${excluded === 1 ? 'observation excluded' : 'observations excluded'} by the referral-abuse policy for this selection.`
@@ -616,8 +619,6 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     return;
   }
   setDashboardVisible(true);
-  renderPeriod(data.period);
-  renderScope(data.filters);
   renderTotals(data.totals);
   renderDevices(data.byDevice, data.totals.views, state.traffic);
   renderChart(data);
@@ -676,6 +677,8 @@ async function load(state: ViewState): Promise<void> {
   currentData = null;
   destroyChart();
   updateControls(state);
+  renderScope(state);
+  element('stats-period').hidden = true;
   setDashboardVisible(false);
   setStatus('Loading stats…', 'loading');
 

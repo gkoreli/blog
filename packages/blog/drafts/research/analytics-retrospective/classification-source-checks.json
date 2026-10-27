@@ -4,7 +4,7 @@
   "siteTests": 106,
   "workspaceTypes": "pass",
   "frontmatter": "20 Markdown posts pass",
-  "isolatedBuildPosts": 31,
+  "isolatedBuildPosts": 32,
   "changedDocumentRelativeLinksChecked": 183,
   "articleWordsWithLinksRemoved": 1248,
   "articleH1": 1,
@@ -16,5 +16,8 @@
     "Source/local/replay acceptance, not production activation or independent human/bot accuracy.",
     "No historical rewrite or raw diagnostic profile activation."
   ],
-  "fullCatalogueJsonBudget": "All 50 reviewed product aliases, all 47 canonical names and longest derived states fit the 2048-byte constraint."
+  "fullCatalogueJsonBudget": "All 50 reviewed product aliases, all 47 canonical names and longest derived states fit the 2048-byte constraint.",
+  "initialSelectiveOverlayPosts": 31,
+  "integrationNote": "Final integrated build includes the concurrently committed Bun AOT article; original 31-post selective-overlay check was narrower.",
+  "integratedCheckAt": "2026-10-27T15:52:32.839286+00:00"
 }

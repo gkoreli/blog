@@ -39,12 +39,10 @@ export function statsPage() {
   </div>
 
   <p class="stats-status" id="stats-status" role="status" aria-atomic="true">Loading stats…</p>
+  <div class="stats-period" id="stats-period" hidden></div>
+  <p class="stats-scope" id="stats-scope" hidden></p>
 
   <div id="stats-dashboard" aria-busy="true">
-    <div class="stats-period" id="stats-period"><span class="skeleton skeleton-text"></span></div>
-
-    <p class="stats-scope" id="stats-scope" hidden></p>
-
     <div class="stats-totals" id="stats-totals">
       <div class="stats-card"><div class="skeleton skeleton-value"></div><div class="stats-card-label">Page views</div></div>
       <div class="stats-card"><div class="skeleton skeleton-value"></div><div class="stats-card-label">Daily clients</div></div>
