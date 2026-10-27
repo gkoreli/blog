@@ -1,0 +1,95 @@
+{
+  "acceptedAt": "2026-10-27T22:22:49.963684+00:00",
+  "dataSourceCommit": "a43c8add7f3fa17cef7dd4a136e7788dbfdee2e9",
+  "initialPublication": {
+    "sourceCommit": "a43c8add7f3fa17cef7dd4a136e7788dbfdee2e9",
+    "nativeBuild": {
+      "id": "c81e8795-7b94-41f7-b09b-cfcdbcf27a3c",
+      "state": "Ready",
+      "durationSeconds": 69
+    },
+    "activation": {
+      "versionId": "9f4ab282-4e90-44d5-a785-4a92237850ee",
+      "createdOn": "2026-10-27T22:14:04.051164Z",
+      "percentage": 100
+    },
+    "article": {
+      "sha256": "281dcf9602bc78e3c4a5b3c961153b024a7b323bd460e57e2a32e507dced4d84",
+      "buildMatch": true,
+      "status": 200,
+      "censusLinkAndCountsRendered": true
+    }
+  },
+  "finalProseSourceCommit": "4b68c837c174981736d503306d517c4cb083dc6e",
+  "nativeFinalBuild": {
+    "id": "8fb70b26-7076-4098-9818-209d278dc1c4",
+    "state": "Ready",
+    "durationSeconds": 59,
+    "exactSourceLinkObserved": true
+  },
+  "finalActivation": {
+    "createdOn": "2026-10-27T22:19:03.010988Z",
+    "versionId": "bf601bfa-e9f4-43c0-a847-e766264fd135",
+    "percentage": 100
+  },
+  "bindingCount": 7,
+  "optionalGrantCalibrationDiagnosticsBindingsAbsent": true,
+  "dataAcceptance": {
+    "cutoffExclusive": "2026-10-27 21:49:00",
+    "mainRetainedRows": 32272,
+    "currentlyIncludedRows": 32122,
+    "earlierThanPriorAudit": 16693,
+    "sincePriorAudit": {
+      "stored": 713,
+      "included": 651
+    },
+    "legacyBeaconRows": 2564,
+    "edgeRows": 29708,
+    "missingKindOrReasonRows": 0,
+    "includedOutcomeOnlyVerificationRows": 1181,
+    "includedUnknownRoleExaRows": 1025,
+    "targetedLegacyExaNamesMissing": 1025,
+    "mainSnapshotNativeBooleanValuesAvailable": 0,
+    "sourceSupplementPostCutoffRows": 2,
+    "statementCount": 3,
+    "rowsRead": 457426,
+    "rowsWritten": 0,
+    "reviewedReadCeiling": 500000,
+    "readCeilingDatabaseEnforced": false,
+    "productionDataset": "completeness-census-production.json"
+  },
+  "article": {
+    "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove",
+    "bodyWords": 1250,
+    "shapingPrompts": 31,
+    "status": 200,
+    "servedBuildEqual": true,
+    "sha256": "a911c48bc79f63dbff2f707ece059b9d1c69b0cb7f58a833636b716c19413f7e",
+    "scopeCountsAndNewResearchLinkRendered": true,
+    "eligibleEdgeResponseAndLegacyBeaconGlossaryRendered": true
+  },
+  "checks": {
+    "native": "completeness-census-local.json",
+    "sourceChecks": "completeness-census-source-checks.json",
+    "finalFrontmatterValidation": "pass",
+    "finalIsolatedBuildPosts": 32,
+    "changedLinksAndJson": "pass",
+    "runtimeCollectionClassificationVerificationReportUnchanged": true
+  },
+  "costLimits": [
+    "Three direct SELECTs are metered here; static article publication/browser inspection and other service activity are additional.",
+    "No new public report cold-fill/cache acceptance or account-wide quota claim."
+  ],
+  "cleanup": {
+    "noOwnedPreviewOrTailStarted": true,
+    "noTemporaryViewportSet": true
+  },
+  "limits": [
+    "Complete stored kinds/reasons are not evidence of correct operator, purpose, attention or human classification.",
+    "Original page_views archive-copy completeness and exact per-record history/native-log joins remain unproven.",
+    "Census and supplements are separate snapshots; matching counts do not establish exact-row identity.",
+    "The original release-window capture is preserved; current owner-registry inclusion differs by one.",
+    "Human trials remain deferred and error rates unmeasured."
+  ],
+  "nextBoundedAction": "Read authoritative vendor methods and inspect retained native receipts for the four current-collection Exa outcomes and the detailed Ahrefs outcome. Preserve absent fields and join limits; do not promote a category to a native cryptographic verdict."
+}

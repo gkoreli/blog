@@ -77,3 +77,10 @@ Next bounded investigation: correlate the four current-collection Exa observatio
 
 
 **Collection-stage wording follow-up:** The source-aware census also narrows the article's generic “stored event” sentence to an edge event recording an eligible response. Copied beacon observations do not establish the same server-response boundary, and response eligibility does not prove client receipt or attention. The glossary likewise distinguishes edge responses from legacy beacons. This precision changes article prose only; no collection rule or stored history changes.
+
+
+## Publication acceptance
+
+[Publication receipt](completeness-census-publication.json) records the initial census source `a43c8ad` and final response/beacon wording source `4b68c83`, separate Ready builds and observed 100% activations. Final served Markdown matches the isolated build. The rendered article shows the complete-table count, updated Exa fallback count, census link and response-versus-beacon glossary. It stays 1,250 words with 31 shaping prompts. No additional direct SELECT was needed for publication; all three investigated statements remain 457,426 reads/zero writes. Ordinary article inspection is additional service work. No preview, tail or viewport override was started in this phase.
+
+This closes the retained-table completeness census and its publication. It does not close the broader detection goal, current native/vendor receipt correlation, original archive-copy completeness, historical exact-row identities, privacy/retention decisions or human/device accuracy. The next bounded action remains current Exa/Ahrefs receipt and authoritative-method investigation. Human trials stay deferred. Private captures are retained outside Git with review dated October 31, 2026; this is not a verified erasure/backup guarantee.
