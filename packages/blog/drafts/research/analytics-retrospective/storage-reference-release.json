@@ -1,0 +1,98 @@
+{
+  "acceptedAt": "2026-10-27T22:53:50.433259+00:00",
+  "sourceCommit": "6c591b5cf966e1b6580043bdd5ce97e1ebb408dd",
+  "build": {
+    "id": "ca72504e-4bef-4ea7-aa71-affd0fe3cd10",
+    "nativeStatus": "Ready",
+    "durationSeconds": 70
+  },
+  "activation": {
+    "createdOn": "2026-10-27T22:51:11.506166Z",
+    "versions": [
+      {
+        "version_id": "5312ef16-1924-4cd1-8c31-0c5ab6a4f5c7",
+        "percentage": 100
+      }
+    ]
+  },
+  "collectionVersion": "2026-10-27.9",
+  "optionalBindings": {
+    "OWNER_MARK_GRANT": false,
+    "ANALYTICS_CALIBRATION": false,
+    "ANALYTICS_DIAGNOSTICS": false
+  },
+  "nativeTail": {
+    "records": 1,
+    "selectedAttemptStoredPairs": 1,
+    "inputSha256": "05540f14bf7d5b25eb92322d5ef00bc3ea04dd1a80f027b2228bbdd2e752f264",
+    "stopped": true,
+    "exitCode": 1,
+    "exitReason": "Intentional Ctrl-C after the control; not a failed invocation.",
+    "privateReferencesPublished": false
+  },
+  "control": {
+    "method": "One automated unsigned GET with an already-excluded referral host; no forced database failure or signature injection.",
+    "requestStatus": 200,
+    "workerOutcome": "ok",
+    "receiptVersion": "2026-10-27.2",
+    "storageReferenceVersion": "2026-10-27.1",
+    "storageReferenceStatus": "returned",
+    "exactReturnedTextReferenceReadback": true,
+    "closedFieldsMatch": true,
+    "storedFacts": {
+      "collectionVersion": "2026-10-27.9",
+      "readerKind": "other-bot",
+      "evidenceVersion": "2026-10-27.4",
+      "evidenceSource": "local-webbotauth",
+      "localOutcome": "absent",
+      "verifierProfile": "2026-10-27.6",
+      "categoryStatus": "empty",
+      "categoryValue": null,
+      "nativeVerifiedBot": null,
+      "nativeSignedAgent": null,
+      "optionalCaptureAbsent": 1,
+      "referralControl": 1
+    },
+    "publicExclusionBasis": "Existing unchanged approved referral policy contains the control host; no cold public report fill needed."
+  },
+  "select": {
+    "nativeAcceptance": "storage-reference-local.json",
+    "query": "storage-reference-control.sql",
+    "querySha256": "0d4458a71bcb3498de0839814fd21f19b683cb76af8806cd0253ae93b5f3c9c2",
+    "postExecutionReadCeiling": 100,
+    "rowsRead": 1,
+    "rowsWritten": 0,
+    "changes": 0,
+    "changedDb": false,
+    "commandMode": true,
+    "exactReferenceStayedPrivate": true
+  },
+  "phaseDirectSelectWork": {
+    "statements": 2,
+    "rowsRead": 414,
+    "rowsWritten": 0,
+    "scope": "413-read vendor cohort plus one-read exact control. Native dashboard/service work is additional."
+  },
+  "article": {
+    "exactBuildMatch": true,
+    "sha256": "a956c00c10a76cc6cf44bf935bb7ec0c044cc57546f5782ce54a30bb53dfc394",
+    "client": "curl/8.7.1",
+    "status": 200,
+    "priorDefaultPythonClientStatus": 403,
+    "bodyWords": 1250,
+    "shapingPrompts": 31,
+    "renderedNewVendorParagraph": true,
+    "screenshot": "analytics-vendor-storage-evidence.png"
+  },
+  "privacy": {
+    "newDatabaseReferenceDisclosureServed": true
+  },
+  "limits": [
+    "No organic signed collection .9 exact-row join accepted yet.",
+    "Historical chains still have no exact D1 row linkage.",
+    "Native cryptographic verdict agreement, complete retention and sampling/loss proportions remain unmeasured.",
+    "No human/device or population accuracy claim; human trials remain deferred.",
+    "Production per-insert D1 cost was not returned by the operational receipt; local added-read comparison remains local.",
+    "Retention, collection basis and linked-record rights/backup questions remain open."
+  ]
+}
