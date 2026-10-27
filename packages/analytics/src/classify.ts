@@ -145,13 +145,13 @@ export interface TrafficAnalysis extends TrafficClassification {
  * by documented crawler UAs. This is lexical identification, not a full UA
  * grammar validator. URLs, name substrings and malformed versions do not match.
  */
-function productNames(userAgent: string): Set<string> {
+export function userAgentProductNames(userAgent: string): Set<string> {
   const pattern = /(?:^|[ \t;(])([!#$%&'*+.^_`|~0-9A-Za-z-]+)(?:\/[!#$%&'*+.^_`|~0-9A-Za-z-]+)?(?=$|[ \t;)])/g;
   return new Set([...userAgent.matchAll(pattern)].flatMap(match => match[1] === undefined ? [] : [match[1].toLowerCase()]));
 }
 
 export function analyzeTraffic(userAgent: string): TrafficAnalysis {
-  const products = productNames(userAgent);
+  const products = userAgentProductNames(userAgent);
   const matches = [...AI_RULES, ...BOT_RULES].filter(rule => rule.products.some(product => products.has(product.toLowerCase())));
   const declarations: ClientDeclarations = {
     status: matches.length === 0 ? 'none' : matches.length === 1 ? 'single' : 'multiple',
@@ -173,6 +173,7 @@ export function classifyTraffic(userAgent: string): TrafficClassification {
   return { trafficClass, agentName };
 }
 
+/** Historical compatibility rule only. New form claims use client-form.ts. */
 export function classifyDevice(userAgent: string): DeviceType {
   if (/iPad|Tablet|PlayBook|Silk/i.test(userAgent) || (/Android/i.test(userAgent) && !/Mobile/i.test(userAgent))) {
     return 'tablet';

@@ -6,6 +6,7 @@ import type { ReaderKind } from './readerkind.js';
 import type { VerificationEvidence } from './signature-evidence.js';
 import type { ClassificationEvidence } from './classification-evidence.js';
 import type { VendorIpEvidence } from './vendor-ip.js';
+import type { ClientFormEvidence } from './client-form.js';
 
 export interface Env {
   DB: D1Database;
@@ -25,6 +26,7 @@ export interface PageObservation {
   dailyClientId: string;
   trafficClass: TrafficClass;
   agentName: string | null;
+  /** Deprecated compatibility column; clientFormEvidence is the current interpretation. */
   deviceType: DeviceType;
   isOwner: boolean;
   asn: number | null;
@@ -45,6 +47,7 @@ export interface PageObservation {
   signatureEvidence?: VerificationEvidence;
   classificationEvidence?: ClassificationEvidence;
   vendorIpEvidence?: VendorIpEvidence;
+  clientFormEvidence?: ClientFormEvidence;
 }
 
 const INSERT_OBSERVATION = `INSERT INTO page_observations (
@@ -78,8 +81,9 @@ const INSERT_OBSERVATION = `INSERT INTO page_observations (
   request_evidence,
   signature_evidence,
   classification_evidence,
-  vendor_ip_evidence
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  vendor_ip_evidence,
+  client_form_evidence
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
 export async function recordPageObservation(db: D1Database, observation: PageObservation, diagnostic?: ObservationDiagnostic): Promise<void> {
   const result = await db.prepare(INSERT_OBSERVATION).bind(
@@ -114,6 +118,7 @@ export async function recordPageObservation(db: D1Database, observation: PageObs
     observation.signatureEvidence === undefined ? null : JSON.stringify(observation.signatureEvidence),
     observation.classificationEvidence === undefined ? null : JSON.stringify(observation.classificationEvidence),
     observation.vendorIpEvidence === undefined ? null : JSON.stringify(observation.vendorIpEvidence),
+    observation.clientFormEvidence === undefined ? null : JSON.stringify(observation.clientFormEvidence),
   ).run();
   if (diagnostic !== undefined) {
     // Preserve the acknowledged base observation if its optional diagnostic fails.

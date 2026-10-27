@@ -1,0 +1,246 @@
+{
+  "at": "2026-10-27T17:49:05.273Z",
+  "runtime": "v24.14.1",
+  "conditions": "Actual Node collector and native workerd D1, synthetic header/ASN fixtures, no vendor fetches or production traffic",
+  "trials": [
+    {
+      "label": "empty",
+      "evidence": {
+        "profile": "2026-10-27.1",
+        "form": "unknown",
+        "markers": [],
+        "browserFamily": "unrecognized",
+        "mobileHint": "absent",
+        "comparison": "not-comparable",
+        "legacyCompatibility": {
+          "value": "desktop",
+          "defaulted": true
+        }
+      },
+      "bytes": 198
+    },
+    {
+      "label": "curl",
+      "evidence": {
+        "profile": "2026-10-27.1",
+        "form": "unknown",
+        "markers": [],
+        "browserFamily": "unrecognized",
+        "mobileHint": "absent",
+        "comparison": "not-comparable",
+        "legacyCompatibility": {
+          "value": "desktop",
+          "defaulted": true
+        }
+      },
+      "bytes": 198
+    },
+    {
+      "label": "browser-no-hint",
+      "evidence": {
+        "profile": "2026-10-27.1",
+        "form": "no-form-marker",
+        "markers": [],
+        "browserFamily": "chromium",
+        "mobileHint": "absent",
+        "comparison": "not-comparable",
+        "legacyCompatibility": {
+          "value": "desktop",
+          "defaulted": true
+        }
+      },
+      "bytes": 201
+    },
+    {
+      "label": "non-mobile",
+      "evidence": {
+        "profile": "2026-10-27.1",
+        "form": "non-mobile-preference",
+        "markers": [],
+        "browserFamily": "chromium",
+        "mobileHint": "non-mobile",
+        "comparison": "not-comparable",
+        "legacyCompatibility": {
+          "value": "desktop",
+          "defaulted": true
+        }
+      },
+      "bytes": 212
+    },
+    {
+      "label": "mobile-preference",
+      "evidence": {
+        "profile": "2026-10-27.1",
+        "form": "mobile-preference",
+        "markers": [],
+        "browserFamily": "chromium",
+        "mobileHint": "mobile",
+        "comparison": "different-indicators",
+        "legacyCompatibility": {
+          "value": "desktop",
+          "defaulted": true
+        }
+      },
+      "bytes": 210
+    },
+    {
+      "label": "mobile-different",
+      "evidence": {
+        "profile": "2026-10-27.1",
+        "form": "mobile-marker",
+        "markers": [
+          "Mobile",
+          "iPhone"
+        ],
+        "browserFamily": "unrecognized",
+        "mobileHint": "non-mobile",
+        "comparison": "different-indicators",
+        "legacyCompatibility": {
+          "value": "mobile",
+          "defaulted": false
+        }
+      },
+      "bytes": 231
+    },
+    {
+      "label": "ipad-compatible",
+      "evidence": {
+        "profile": "2026-10-27.1",
+        "form": "tablet-marker",
+        "markers": [
+          "Mobile",
+          "iPad"
+        ],
+        "browserFamily": "unrecognized",
+        "mobileHint": "non-mobile",
+        "comparison": "not-comparable",
+        "legacyCompatibility": {
+          "value": "tablet",
+          "defaulted": false
+        }
+      },
+      "bytes": 223
+    },
+    {
+      "label": "conflict",
+      "evidence": {
+        "profile": "2026-10-27.1",
+        "form": "conflicting-markers",
+        "markers": [
+          "iPhone",
+          "iPad"
+        ],
+        "browserFamily": "unrecognized",
+        "mobileHint": "mobile",
+        "comparison": "not-comparable",
+        "legacyCompatibility": {
+          "value": "tablet",
+          "defaulted": false
+        }
+      },
+      "bytes": 225
+    },
+    {
+      "label": "unsupported-hint",
+      "evidence": {
+        "profile": "2026-10-27.1",
+        "form": "unknown",
+        "markers": [],
+        "browserFamily": "unrecognized",
+        "mobileHint": "unsupported",
+        "comparison": "not-comparable",
+        "legacyCompatibility": {
+          "value": "desktop",
+          "defaulted": true
+        }
+      },
+      "bytes": 203
+    },
+    {
+      "label": "android-no-mobile",
+      "evidence": {
+        "profile": "2026-10-27.1",
+        "form": "non-mobile-preference",
+        "markers": [],
+        "browserFamily": "chromium",
+        "mobileHint": "non-mobile",
+        "comparison": "not-comparable",
+        "legacyCompatibility": {
+          "value": "tablet",
+          "defaulted": false
+        }
+      },
+      "bytes": 212
+    }
+  ],
+  "report": {
+    "views": 13,
+    "byClientForm": [
+      {
+        "form": "unknown",
+        "views": 3
+      },
+      {
+        "form": "non-mobile-preference",
+        "views": 2
+      },
+      {
+        "form": "conflicting-markers",
+        "views": 1
+      },
+      {
+        "form": "historical-desktop-default",
+        "views": 1
+      },
+      {
+        "form": "historical-mobile-heuristic",
+        "views": 1
+      },
+      {
+        "form": "historical-tablet-heuristic",
+        "views": 1
+      },
+      {
+        "form": "mobile-marker",
+        "views": 1
+      },
+      {
+        "form": "mobile-preference",
+        "views": 1
+      },
+      {
+        "form": "no-form-marker",
+        "views": 1
+      },
+      {
+        "form": "tablet-marker",
+        "views": 1
+      }
+    ],
+    "clientFormEvidence": {
+      "recordedViews": 10,
+      "historicalViews": 3,
+      "unrecognizedRecordViews": 0,
+      "unsupportedHintViews": 1,
+      "differingSignalsViews": 2,
+      "legacyDefaultedViews": 6
+    }
+  },
+  "checks": {
+    "migrationHistoryPreserved": true,
+    "nativeD1": true,
+    "ownerAndReferralExclusion": true,
+    "emptyReport": true,
+    "byteBudget": true,
+    "optionalCaptureOff": true,
+    "narrowControlSql": true
+  },
+  "sourceSha256": {
+    "packages/analytics/src/client-form.ts": "dc15738e02cacf441630c5874d4b0c9e727776c984faac14cbd9f5baabda595b",
+    "packages/analytics/src/classify.ts": "de1420a8d401d5e643c3ce6fc5a534701da1a4ffe8af4868e54ce24ee473d6c1",
+    "packages/analytics/src/index.ts": "112ea20322305b1489974eb02b00243001d91759b8f6ff700c805a29e11ecaff",
+    "packages/analytics/src/stats.ts": "a83320ba1c388a291b5bb6c3311bc2643aa551554798e278a339bbb2209271d0",
+    "packages/analytics/src/versions.ts": "769ab6043736b1c8b00b9720809d98ceae81e8e0c685004e407e568fca377b3a"
+  },
+  "productionCalls": 0
+}

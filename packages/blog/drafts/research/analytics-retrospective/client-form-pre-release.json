@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-10-27T17:52:24.001493+00:00",
+  "migration": "0015_client_form_evidence.sql",
+  "onlyPendingMigration": true,
+  "commandExit": 0,
+  "limit": "Migration bookkeeping is additional database work, separate from later direct SELECT metering",
+  "migrationSha256": "22d1a2e60f03ca029a7732528a72e5424086a158106a1bbab926a0313619cd7b",
+  "sourceChecks": "client-form-source-checks.json",
+  "nativeAcceptance": "client-form-local.json",
+  "directProductionSelects": 0
+}

@@ -59,7 +59,7 @@ function describe(rows: readonly Group[]) {
     views: sum(rows), byDay: counts(rows, row => row.day),
     byFetchSite: counts(rows, row => row.fetchSite),
     byFetchUser: counts(rows, row => row.fetchUser),
-    byDevice: counts(rows, row => row.deviceType),
+    byLegacyDeviceHeuristic: counts(rows, row => row.deviceType),
     byRepresentation: counts(rows, row => row.representation),
     byAsnSource: counts(rows, row => row.asnSource),
     countryCount: new Set(rows.flatMap(row => row.country === null ? [] : [row.country])).size,

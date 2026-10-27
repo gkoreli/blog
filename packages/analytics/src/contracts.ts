@@ -1,4 +1,5 @@
 import type { PublicSignerName } from './signers.js';
+import type { ReportedClientForm } from './client-form.js';
 
 /** Prepared private-evidence policy shared by collector and disclosure. */
 export const DIAGNOSTIC_RETENTION_DAYS = 60;
@@ -49,6 +50,7 @@ export function readerGroupOf(kind: ReaderKind): Exclude<TrafficFilter, 'all'> {
   }
   throw new Error(`Reader kind ${kind} belongs to no group`);
 }
+/** Deprecated storage heuristic, not a current physical-device claim. */
 export type DeviceType = 'desktop' | 'mobile' | 'tablet';
 export type Representation = 'html' | 'markdown';
 export type StatsRange = '7d' | '30d' | '90d' | 'all';
@@ -148,7 +150,9 @@ export interface StatsResponse {
     source: { provider: 'matomo'; revision: string; sha256: string };
     excludedViews: number;
   };
-  byDevice: Array<{ deviceType: DeviceType; views: number }>;
+  /** Client-form claims and explicit historical heuristic groups; no hardware authentication. */
+  byClientForm: Array<{ form: ReportedClientForm; views: number }>;
+  clientFormEvidence: { recordedViews: number; historicalViews: number; unrecognizedRecordViews: number; unsupportedHintViews: number; differingSignalsViews: number; legacyDefaultedViews: number };
   byAgent: Array<{ agentName: string; trafficClass: Exclude<TrafficClass, 'browser'>; views: number }>;
   /** Reviewed display names or Other, never arbitrary signing origins; independent of role. */
   bySigner: Array<{ signatureAgent: PublicSignerName; views: number }>;

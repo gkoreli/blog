@@ -1,6 +1,7 @@
 import uPlot from 'uplot';
 import 'uplot/dist/uPlot.min.css';
 import { READER_GROUPS, isReaderKind, readerGroupOf, type ReaderKind, type ReportedReferrerState, type StatsResponse, type TrafficFilter } from '@gkoreli/analytics/contracts';
+import { CLIENT_FORM_LABELS } from '@gkoreli/analytics/client-form';
 import { HOSTING_NETWORKS } from '@gkoreli/analytics/networks';
 import '../styles/stats.css';
 
@@ -188,7 +189,7 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
     throw new Error('Updated referral details are unavailable. Please reload.');
   }
   if (data.bySigner === undefined) throw new Error('Updated signer evidence is unavailable. Please reload.');
-  if (data.verification === undefined || data.vendorNetwork === undefined) throw new Error('Updated verification evidence is unavailable. Please reload.');
+  if (data.verification === undefined || data.vendorNetwork === undefined || data.byClientForm === undefined || data.clientFormEvidence === undefined) throw new Error('Updated verification evidence is unavailable. Please reload.');
   return data;
 }
 
@@ -400,24 +401,12 @@ function pageItem(row: StatsResponse['byPath'][number], state: ViewState): Ranke
   return { ...item, openHref, openAriaLabel: `Open ${row.path}` };
 }
 
-function renderDevices(rows: StatsResponse['byDevice'], totalViews: number, traffic: TrafficFilter): void {
-  const section = element('stats-device-section');
-  section.hidden = traffic !== 'browser';
-  if (traffic !== 'browser') return;
-
-  const viewsByType = new Map(rows.map(row => [row.deviceType, row.views]));
-  const order = ['desktop', 'mobile', 'tablet'] as const;
-  element('stats-devices').querySelectorAll<HTMLElement>('.stats-device').forEach((item, index) => {
-    const device = order[index];
-    if (!device) return;
-    const views = viewsByType.get(device) ?? 0;
-    const percentage = totalViews > 0 ? Math.round((views / totalViews) * 100) : 0;
-    const value = item.querySelector<HTMLElement>('.skeleton, .stats-device-value');
-    if (!value) return;
-    value.className = 'stats-device-value';
-    value.textContent = `${percentage}%`;
-    value.title = formatViewCount(views, true);
-  });
+function renderClientForms(rows: StatsResponse['byClientForm'], evidence: StatsResponse['clientFormEvidence']): void {
+  const section = element('stats-client-form-section');
+  section.hidden = false;
+  const note = section.querySelector('.stats-section-note');
+  if (note) note.textContent = `Request headers describe software claims and preferences; hardware is unverified. ${formatNumber(evidence.recordedViews)} current records, ${formatNumber(evidence.historicalViews)} earlier heuristic records, ${formatNumber(evidence.unrecognizedRecordViews)} unrecognized records. Earlier desktop includes default guesses. ${formatNumber(evidence.unsupportedHintViews)} unsupported hints and ${formatNumber(evidence.differingSignalsViews)} differing indicators stay explicit; differing indicators can reflect preferences.`;
+  replaceSectionRows('stats-client-form-section', rows.map(row => ({ label: CLIENT_FORM_LABELS[row.form], views: row.views })), null);
 }
 
 let chart: uPlot | null = null;
@@ -620,7 +609,7 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   }
   setDashboardVisible(true);
   renderTotals(data.totals);
-  renderDevices(data.byDevice, data.totals.views, state.traffic);
+  renderClientForms(data.byClientForm, data.clientFormEvidence);
   renderChart(data);
   replaceSectionRows('stats-pages', data.byPath.map((row) => pageItem(row, state)));
   const referrers: RankedItem[] = data.byReferrer.map(row => ({ label: row.referrerHost, views: row.views }));

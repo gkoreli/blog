@@ -7,25 +7,27 @@ import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { observePageResponse } from '../../analytics/.test-dist/index.js';
 import { extractRequestEvidence } from '../../analytics/.test-dist/request-evidence.js';
+import { COLLECTION_VERSION, CLASSIFIER_VERSION } from '../../analytics/.test-dist/versions.js';
 const req = createRequire(resolve('package.json'));
 const { Miniflare } = await import(pathToFileURL(req.resolve('miniflare', { paths: [dirname(req.resolve('wrangler/package.json'))] })));
 const output = resolve(process.argv[2] ?? '/tmp/gk-analytics-stage-lab');
+const baseline = process.argv[3] ? await import(pathToFileURL(resolve(process.argv[3]))) : null;
 mkdirSync(output, { recursive: true, mode: 0o700 });
 const mf = new Miniflare({ modules: true, script: 'export default {fetch(){return new Response("fixture")}}', compatibilityDate: '2026-03-06', d1Databases: { DB: 'stage-lab' } });
 const db = await mf.getD1Database('DB');
-const schema = readFileSync('packages/analytics/schema.sql', 'utf8').replace(/^--.*$/gm, '');
+const schema = readFileSync('packages/analytics/schema.sql', 'utf8').replace(/^\s*--.*$/gm, '');
 await db.batch(schema.split(';').map(s => s.trim()).filter(Boolean).map(s => db.prepare(s)));
 const trials = new Map();
-for (const mode of ['normal', 'block-beacon', 'block-script', 'fail-write', 'http-client', 'narrow-viewport']) {
+for (const mode of ['normal', 'block-beacon', 'block-script', 'fail-write', 'http-client', 'narrow-viewport', 'fixture-unlisted-network', 'fixture-hosting-network']) {
   for (let repeat = 1; repeat <= 3; repeat++) {
     const id = randomUUID();
-    trials.set(id, { id, mode, repeat, operator: mode === 'http-client' ? 'curl-controlled' : 'agent-operated-browser', received: 0, observationAcknowledged: 0, observationFailed: 0, scriptReports: 0, beaconAttemptReports: 0, queueResults: [], beaconReceipts: 0, softwareClaims: null, storedKind: null });
+    trials.set(id, { id, mode, repeat, operator: mode === 'http-client' ? 'curl-controlled' : 'agent-operated-browser', received: 0, observationAcknowledged: 0, observationFailed: 0, scriptReports: 0, beaconAttemptReports: 0, queueResults: [], beaconReceipts: 0, softwareClaims: null, baselinePrediction: null, storedKind: null, storedRows: 0, formEvidence: null, networkInput: mode === 'fixture-unlisted-network' ? 'injected-unlisted-asn' : mode === 'fixture-hosting-network' ? 'injected-hosting-asn' : 'absent-in-local-server' });
   }
 }
 let origin;
 function snapshot() {
-  const report = { checkedAt: new Date().toISOString(), origin, productionCalls: 0, environment: 'Node HTTP server, actual analytics collector, native local D1',
-    limits: ['Agent-operated browser and controlled curl; no human label inferred.', 'CSP script blocking is not a browser JavaScript-off setting.', 'A narrow viewport is not a real mobile device.', 'Local first-party beacon; not Cloudflare ingestion or a historical error-rate estimate.'], trials: [...trials.values()] };
+  const report = { checkedAt: new Date().toISOString(), origin, productionCalls: 0, environment: 'Node HTTP server, actual analytics collector, native local D1', collectionVersion: COLLECTION_VERSION, classifierVersion: CLASSIFIER_VERSION, baselineCommit: baseline?.baselineCommit ?? null,
+    limits: ['Agent-operated browser and controlled curl; no human label inferred.', 'CSP script blocking is not a browser JavaScript-off setting.', 'A narrow viewport is not a real mobile device.', 'Local first-party beacon; not Cloudflare ingestion or a historical error-rate estimate.', 'Network fixtures inject an ASN for a rule comparison; they do not measure the browser actual network.', 'No human-operated negative controls or physical mobile/tablet observations.'], trials: [...trials.values()] };
   writeFileSync(resolve(output, 'report.json'), JSON.stringify(report, null, 2) + '\n', { mode: 0o600 });
   return report;
 }
@@ -65,17 +67,21 @@ const server = createServer(async (incoming, outgoing) => {
       const headers = new Headers();
       for (const [key, value] of Object.entries(incoming.headers)) if (typeof value === 'string') headers.set(key, value);
       const request = new Request(url, { headers });
+      if (trial.mode === 'fixture-unlisted-network' || trial.mode === 'fixture-hosting-network') Object.defineProperty(request, 'cf', { value: { asn: trial.mode === 'fixture-hosting-network' ? 16509 : 12345 } });
       const csp = `default-src 'none'; style-src 'unsafe-inline'; script-src ${trial.mode === 'block-script' ? "'none'" : "'self'"}; connect-src ${trial.mode === 'block-beacon' ? origin + '/stage/ ' + origin + '/receipt/' : "'self'"}; base-uri 'none'; frame-ancestors 'none'`;
       const response = new Response(page(trial), { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Content-Security-Policy': csp } });
       trial.softwareClaims = extractRequestEvidence(request, response);
+      trial.baselinePrediction = baseline?.baselinePrediction(request) ?? null;
       const targetDb = trial.mode === 'fail-write' ? { prepare(sql) { if (sql.startsWith('INSERT INTO page_observations')) throw new Error('Injected local write failure'); return db.prepare(sql); } } : db;
       const work = [];
       observePageResponse(request, response, 'html', { DB: targetDb, ANALYTICS_HASH_KEY: 'local-fixture-only' }, { waitUntil(promise) { work.push(promise); } });
       outgoing.writeHead(response.status, Object.fromEntries(response.headers)); outgoing.end(await response.text());
       try { await Promise.all(work); trial.observationAcknowledged++; }
       catch { trial.observationFailed++; }
-      const row = await db.prepare('SELECT reader_kind FROM page_observations WHERE path=? ORDER BY id DESC LIMIT 1').bind(url.pathname).first();
-      trial.storedKind = row?.reader_kind ?? null; snapshot(); return;
+      const row = await db.prepare('SELECT reader_kind,client_form_evidence FROM page_observations WHERE path=? ORDER BY id DESC LIMIT 1').bind(url.pathname).first();
+      trial.storedKind = row?.reader_kind ?? null;
+      trial.formEvidence = row?.client_form_evidence ? JSON.parse(row.client_form_evidence) : null;
+      trial.storedRows = (await db.prepare('SELECT COUNT(*) AS n FROM page_observations WHERE path=?').bind(url.pathname).first()).n; snapshot(); return;
     }
     if (match[1] === 'receipt' && incoming.method === 'GET') {
       outgoing.setHeader('Content-Type','application/json'); outgoing.end(JSON.stringify({ observationAcknowledged: trial.observationAcknowledged, observationFailed: trial.observationFailed, beaconReceipts: trial.beaconReceipts })); return;

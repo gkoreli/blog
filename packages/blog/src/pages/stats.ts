@@ -48,13 +48,10 @@ export function statsPage() {
       <div class="stats-card"><div class="skeleton skeleton-value"></div><div class="stats-card-label">Daily clients</div></div>
     </div>
 
-    <section class="stats-device-section" id="stats-device-section" aria-labelledby="stats-device-heading">
-      <h2 id="stats-device-heading">Device mix <span>Browsers only</span></h2>
-      <div class="stats-devices" id="stats-devices">
-        <div class="stats-device"><img src="/icons/desktop.svg" width="20" height="20" alt=""><span class="stats-device-label">Desktop</span><span class="skeleton skeleton-device-val"></span></div>
-        <div class="stats-device"><img src="/icons/phone.svg" width="20" height="20" alt=""><span class="stats-device-label">Mobile</span><span class="skeleton skeleton-device-val"></span></div>
-        <div class="stats-device"><img src="/icons/tablet.svg" width="20" height="20" alt=""><span class="stats-device-label">Tablet</span><span class="skeleton skeleton-device-val"></span></div>
-      </div>
+    <section class="stats-client-form-section" id="stats-client-form-section" aria-labelledby="stats-client-form-heading">
+      <h2 id="stats-client-form-heading">Client form claims <span>selected traffic</span></h2>
+      <p class="stats-section-note">These are User-Agent markers and mobile-experience preferences, not authenticated hardware. Non-mobile does not establish desktop; Android without Mobile does not establish tablet. Missing/conflicting evidence and earlier heuristics remain explicit.</p>
+      ${listSkeleton(3)}
     </section>
 
     <section class="stats-chart-section" aria-labelledby="stats-chart-heading">

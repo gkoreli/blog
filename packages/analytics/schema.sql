@@ -16,6 +16,7 @@ CREATE TABLE page_observations (
   ),
   traffic_class TEXT NOT NULL CHECK (traffic_class IN ('browser', 'bot', 'ai')),
   agent_name TEXT CHECK (agent_name IS NULL OR traffic_class IN ('bot', 'ai')),
+  -- Deprecated compatibility heuristic. Current claims live in client_form_evidence.
   device_type TEXT NOT NULL CHECK (device_type IN ('desktop', 'mobile', 'tablet')),
   is_owner INTEGER NOT NULL CHECK (is_owner IN (0, 1)),
   observation_source TEXT NOT NULL DEFAULT 'edge'
@@ -41,6 +42,7 @@ CREATE TABLE page_observations (
   signature_evidence TEXT CHECK (signature_evidence IS NULL OR (json_valid(signature_evidence) AND length(CAST(signature_evidence AS BLOB)) <= 2048)),
   classification_evidence TEXT CHECK (classification_evidence IS NULL OR (json_valid(classification_evidence) AND length(CAST(classification_evidence AS BLOB)) <= 2048)),
   vendor_ip_evidence TEXT CHECK (vendor_ip_evidence IS NULL OR (json_valid(vendor_ip_evidence) AND length(CAST(vendor_ip_evidence AS BLOB)) <= 4096)),
+  client_form_evidence TEXT CHECK (client_form_evidence IS NULL OR (json_valid(client_form_evidence) AND length(CAST(client_form_evidence AS BLOB)) <= 1024)),
   observed_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 

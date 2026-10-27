@@ -805,7 +805,7 @@ test('referral abuse is excluded consistently from every group and aggregate wit
     assert.equal(stats.referralPolicy.sha256, ACTIVE_REFERRAL_POLICY.sha256);
     assert.equal(stats.referralPolicy.source.revision, ACTIVE_REFERRAL_POLICY.source.revision);
     assert.equal(stats.referralPolicy.excludedViews, included * 3);
-    for (const key of ['byPath', 'byCountry', 'byDevice', 'byKind', 'byReferrer', 'timeSeries']) {
+    for (const key of ['byPath', 'byCountry', 'byClientForm', 'byKind', 'byReferrer', 'timeSeries']) {
       assert.equal(stats[key].reduce((sum, row) => sum + row.views, 0), included, `${traffic}/${key}`);
     }
     assert.equal(stats.otherReferrerViews, 0);
@@ -1112,7 +1112,7 @@ test('stats exclude marked daily clients from every aggregate and the all-time b
   assert.deepEqual(stats.byPath, [{ path: '/reader', views: 1, dailyClients: 1 }]);
   assert.deepEqual(stats.byCountry, [{ country: 'US', views: 1 }]);
   assert.deepEqual(stats.byReferrer, [{ referrerHost: 'github.com', views: 1 }]);
-  assert.deepEqual(stats.byDevice, [{ deviceType: 'desktop', views: 1 }]);
+  assert.deepEqual(stats.byClientForm, [{ form: 'historical-desktop-default', views: 1 }]);
   assert.deepEqual(stats.byAgent, []);
   assert.deepEqual(stats.byKind, [{
     kind: 'browser',
@@ -1150,7 +1150,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
   assert.deepEqual(path.byPath.map((row) => row.path), ['/article']);
   assert.deepEqual(path.byCountry.map((row) => row.country).sort(), ['CA', 'US']);
   assert.deepEqual(path.byReferrer.map((row) => row.referrerHost).sort(), ['google.com', 'news.ycombinator.com']);
-  assert.deepEqual(path.byDevice.map((row) => row.deviceType).sort(), ['desktop', 'tablet']);
+  assert.deepEqual(path.byClientForm.map((row) => row.form).sort(), ['historical-desktop-default', 'historical-tablet-heuristic']);
   assert.deepEqual(path.byAgent.map((row) => row.agentName).sort(), ['GPTBot', 'Googlebot']);
   assert.equal(path.timeSeries.reduce((sum, row) => sum + row.views, 0), 2);
 
@@ -1160,7 +1160,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
   assert.deepEqual(agent.byPath.map((row) => row.path).sort(), ['/article', '/other']);
   assert.deepEqual(agent.byCountry.map((row) => row.country).sort(), ['DE', 'US']);
   assert.deepEqual(agent.byReferrer.map((row) => row.referrerHost), ['news.ycombinator.com']);
-  assert.deepEqual(agent.byDevice.map((row) => row.deviceType).sort(), ['desktop', 'mobile']);
+  assert.deepEqual(agent.byClientForm.map((row) => row.form).sort(), ['historical-desktop-default', 'historical-mobile-heuristic']);
   assert.deepEqual(agent.byAgent.map((row) => row.agentName), ['GPTBot']);
   assert.equal(agent.timeSeries.reduce((sum, row) => sum + row.views, 0), 2);
   assert.equal(
@@ -1178,7 +1178,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
   assert.deepEqual(composed.byPath.map((row) => row.path), ['/article']);
   assert.deepEqual(composed.byCountry.map((row) => row.country), ['US']);
   assert.deepEqual(composed.byReferrer.map((row) => row.referrerHost), ['news.ycombinator.com']);
-  assert.deepEqual(composed.byDevice.map((row) => row.deviceType), ['desktop']);
+  assert.deepEqual(composed.byClientForm.map((row) => row.form), ['historical-desktop-default']);
   assert.deepEqual(composed.byAgent.map((row) => row.agentName), ['GPTBot']);
   assert.equal(composed.timeSeries.reduce((sum, row) => sum + row.views, 0), 1);
 
@@ -1828,8 +1828,8 @@ test('field hardening preserves unknown roots, validates ASN input, and versions
     assert.equal(row.asn_source, accepted ? 'request' : null);
     assert.equal(row.referrer_state, 'internal');
     assert.equal(row.internal_referrer_path, null);
-    assert.equal(row.collection_version, '2026-10-27.4');
-    assert.equal(row.classifier_version, '2026-10-27.4');
+    assert.equal(row.collection_version, '2026-10-27.5');
+    assert.equal(row.classifier_version, '2026-10-27.5');
   }
   for (const url of ['https://gkoreli.com/', 'http://www.gkoreli.com:8080/']) assert.equal(parseReferrer(url, 'gkoreli.com', new Set(['/'])).internalReferrerPath, null);
   assert.equal(parseReferrer('http://www.gkoreli.com:8080/article', 'gkoreli.com', new Set(['/article'])).internalReferrerPath, '/article');

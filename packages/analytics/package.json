@@ -8,7 +8,8 @@
   "exports": {
     ".": "./src/index.ts",
     "./contracts": "./src/contracts.ts",
-    "./networks": "./src/networks.ts"
+    "./networks": "./src/networks.ts",
+    "./client-form": "./src/client-form.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",

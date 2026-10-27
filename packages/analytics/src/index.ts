@@ -1,8 +1,9 @@
 import { allowsDiagnostics } from './diagnostics.js';
 import { extractRequestEvidence, extractDiagnosticInputs } from './request-evidence.js';
 import { COLLECTION_VERSION, VERIFIER_PROFILE_VERSION } from './versions.js';
-import { analyzeTraffic, classifyDevice } from './classify.js';
+import { analyzeTraffic } from './classify.js';
 import { classificationEvidence } from './classification-evidence.js';
+import { clientFormEvidence } from './client-form.js';
 import type { Representation } from './contracts.js';
 import { recordPageObservation, type Env, type PageObservation } from './db.js';
 import { isEligiblePageResponse } from './eligibility.js';
@@ -114,6 +115,7 @@ async function persistObservation(
     referrerState: metadata.referrerState,
   };
   const reader = classifyReaderKind(readerFacts);
+  const clientForm = clientFormEvidence(metadata.userAgent, request.headers.get('Sec-CH-UA-Mobile'), classification.declarations.browserFamily);
   const observation: PageObservation = {
     path: metadata.path,
     referrerHost: metadata.referrerHost,
@@ -123,7 +125,7 @@ async function persistObservation(
     dailyClientId,
     trafficClass: classification.trafficClass,
     agentName: classification.agentName,
-    deviceType: classifyDevice(metadata.userAgent),
+    deviceType: clientForm.legacyCompatibility.value,
     isOwner: metadata.isOwner,
     asn: metadata.asn,
     asOrg: metadata.asOrg,
@@ -142,6 +144,7 @@ async function persistObservation(
     signatureEvidence: verificationEvidence(request, signature, options.verifySignature !== undefined, classification.declarations.candidates),
     classificationEvidence: classificationEvidence(readerFacts, classification.declarations),
     vendorIpEvidence: vendorIp,
+    clientFormEvidence: clientForm,
     ...(captureEvidence ? { requestEvidence: extractRequestEvidence(request, response) } : {}),
   };
   const diagnostic = captureEvidence ? {

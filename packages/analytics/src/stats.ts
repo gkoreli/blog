@@ -10,6 +10,7 @@ import {
 } from './contracts.js';
 import type { Env } from './db.js';
 import { KNOWN_AGENT_NAMES } from './classify.js';
+import { CLIENT_FORMS, CLIENT_FORM_PROFILE, isReportedClientForm } from './client-form.js';
 import { agentReaderKinds } from './readerkind.js';
 import { PUBLIC_SIGNERS, isPublicSignerName } from './signers.js';
 import {
@@ -151,15 +152,24 @@ function transitionRows(rows: Record<string, unknown>[]): StatsResponse['interna
   return result;
 }
 
-function deviceRows(rows: Record<string, unknown>[]): StatsResponse['byDevice'] {
-  const result: StatsResponse['byDevice'] = [];
+function clientFormRows(rows: Record<string, unknown>[]): { rows: StatsResponse['byClientForm']; evidence: StatsResponse['clientFormEvidence'] } {
+  const result: StatsResponse['byClientForm'] = [];
+  const evidence: StatsResponse['clientFormEvidence'] = { recordedViews: 0, historicalViews: 0, unrecognizedRecordViews: 0, unsupportedHintViews: 0, differingSignalsViews: 0, legacyDefaultedViews: 0 };
   for (const row of rows) {
-    const deviceType = stringField(row, 'key1');
-    if (deviceType === 'desktop' || deviceType === 'mobile' || deviceType === 'tablet') {
-      result.push({ deviceType, views: numberField(row, 'views') });
-    }
+    const form = stringField(row, 'key1');
+    if (form === null || !isReportedClientForm(form)) return malformedReport();
+    const views = numberField(row, 'views');
+    const recorded = numberField(row, 'recordedViews');
+    if (recorded > views) return malformedReport();
+    result.push({ form, views });
+    evidence.recordedViews += recorded;
+    evidence.historicalViews += form === 'unrecognized-record' ? 0 : views - recorded;
+    if (form === 'unrecognized-record') evidence.unrecognizedRecordViews += views;
+    evidence.unsupportedHintViews += numberField(row, 'unsupportedHintViews');
+    evidence.differingSignalsViews += numberField(row, 'differingSignalsViews');
+    evidence.legacyDefaultedViews += numberField(row, 'legacyDefaultedViews');
   }
-  return result;
+  return { rows: result, evidence };
 }
 
 function agentRows(rows: Record<string, unknown>[]): StatsResponse['byAgent'] {
@@ -253,6 +263,14 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         SELECT json_array(json_object('firstObservedAt', first_observed_at)) FROM boundary
       )`
     : '';
+  const formProfile = `json_extract(client_form_evidence, '$.profile') = '${CLIENT_FORM_PROFILE}'`;
+  const currentForm = `${formProfile} AND json_extract(client_form_evidence, '$.form') IN (${CLIENT_FORMS.map(value => `'${value}'`).join(', ')})`;
+  const form = `CASE WHEN client_form_evidence IS NOT NULL THEN
+    CASE WHEN ${currentForm}
+      THEN json_extract(client_form_evidence, '$.form') ELSE 'unrecognized-record' END
+    WHEN device_type = 'desktop' THEN 'historical-desktop-default'
+    WHEN device_type = 'mobile' THEN 'historical-mobile-heuristic'
+    WHEN device_type = 'tablet' THEN 'historical-tablet-heuristic' ELSE 'unrecognized-record' END`;
   const sectionValues = [
     "('totals', 0)", "('path', 1)", "('country', 2)", "('series', 3)", "('referrer', 4)",
     "('device', 5)", "('agent', 6)", "('kind', 7)", "('excluded', 8)",
@@ -266,7 +284,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
       selected AS MATERIALIZED (
         SELECT path, country, daily_client_id, traffic_class, agent_name, device_type,
                reader_kind, reader_reason, referrer_host, observed_at,
-               referrer_state, internal_referrer_path, representation, signature_status, signature_agent, signature_evidence, vendor_ip_evidence
+               referrer_state, internal_referrer_path, representation, signature_status, signature_agent, signature_evidence, vendor_ip_evidence, client_form_evidence
         FROM page_observations WHERE ${selected.sql}
       ),
       ${referralAssessmentCtes(`
@@ -326,8 +344,12 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         )
         WHEN 'device' THEN (
           SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', device_type, 'views', COUNT(*)) AS row_json
-            FROM included GROUP BY device_type ORDER BY COUNT(*) DESC, device_type
+            SELECT json_object('key1', ${form}, 'views', COUNT(*),
+              'recordedViews', SUM(COALESCE(${currentForm}, 0)),
+              'unsupportedHintViews', SUM(${formProfile} AND json_extract(client_form_evidence, '$.mobileHint') = 'unsupported'),
+              'differingSignalsViews', SUM(${formProfile} AND json_extract(client_form_evidence, '$.comparison') = 'different-indicators'),
+              'legacyDefaultedViews', SUM(${formProfile} AND json_extract(client_form_evidence, '$.legacyCompatibility.defaulted') = 1)) AS row_json
+            FROM included GROUP BY ${form} ORDER BY COUNT(*) DESC, ${form}
           )
         )
         WHEN 'agent' THEN (
@@ -462,6 +484,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
   const referrerDetails = requiredSection(sections, 'referrer-details')[0];
   const verificationRow = requiredSection(sections, 'verification')[0];
   const vendorNetworkRow = requiredSection(sections, 'vendor-ip')[0];
+  const clientForms = clientFormRows(requiredSection(sections, 'device'));
 
   return {
     period: {
@@ -502,7 +525,8 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
       source: { provider: policy.source.provider, revision: policy.source.revision, sha256: policy.source.sha256 },
       excludedViews: numberField(requiredSection(sections, 'excluded')[0], 'views'),
     },
-    byDevice: deviceRows(requiredSection(sections, 'device')),
+    byClientForm: clientForms.rows,
+    clientFormEvidence: clientForms.evidence,
     byAgent: agentRows(requiredSection(sections, 'agent')),
     bySigner: requiredSection(sections, 'signer').map(row => {
       const signatureAgent = stringField(row, 'key1');

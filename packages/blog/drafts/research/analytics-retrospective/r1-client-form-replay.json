@@ -1,0 +1,115 @@
+{
+  "checkedAt": "2026-10-27T17:20:33.650Z",
+  "source": "Native Workers event export; not a D1 or RUM event join",
+  "inputRows": 381,
+  "invalidRows": 0,
+  "duplicateEventIds": 0,
+  "missingEventIds": 0,
+  "truncatedEvents": 0,
+  "classifierVersion": "2026-10-27.5",
+  "dimensions": {
+    "day": {
+      "2026-10-25": 93,
+      "2026-10-24": 288
+    },
+    "status": {
+      "200": 375,
+      "301": 6
+    },
+    "method": {
+      "GET": 381
+    },
+    "dataset": {
+      "cloudflare-workers": 381
+    },
+    "trafficClass": {
+      "browser": 381
+    },
+    "readerKind": {
+      "unresolved": 118,
+      "browser": 263
+    },
+    "successfulReaderKind": {
+      "unresolved": 117,
+      "browser": 258
+    },
+    "browserFamily": {
+      "edge": 93,
+      "chromium": 88,
+      "firefox": 90,
+      "safari": 110
+    },
+    "osFamily": {
+      "windows-nt": 133,
+      "linux": 57,
+      "macos": 165,
+      "ios": 26
+    },
+    "clientForm": {
+      "non-mobile-preference": 181,
+      "no-form-marker": 174,
+      "mobile-marker": 26
+    },
+    "mobilePreference": {
+      "non-mobile": 181,
+      "absent": 200
+    },
+    "legacyDeviceCompatibility": {
+      "desktop": 355,
+      "mobile": 26
+    },
+    "fetchMode": {
+      "navigate": 381
+    },
+    "fetchDest": {
+      "document": 381
+    },
+    "fetchSite": {
+      "same-origin": 118,
+      "none": 129,
+      "cross-site": 134
+    },
+    "fetchUser": {
+      "1": 381
+    },
+    "knownClient": {
+      "not-present": 381
+    },
+    "declarationStatus": {
+      "none": 381
+    },
+    "categoryAgreement": {
+      "no-match": 381
+    },
+    "networkEvidence": {
+      "not-listed": 381
+    },
+    "referrerContext": {
+      "external-with-same-origin": 118,
+      "no-conflict-observed": 263
+    }
+  },
+  "distinctDeclaredUserAgents": 29,
+  "distinctObservedAddresses": 381,
+  "distinctObservedAsns": 238,
+  "distinctObservedCountries": 44,
+  "distinctReferrerHosts": 1,
+  "signatureHeaderEvents": 0,
+  "populatedVerifiedBotCategoryEvents": 0,
+  "limits": [
+    "Current-rule replay on retained request inputs, not a historical classification rewrite or measured human/bot error rate.",
+    "Native log retention/sampling and original eligibility/representation are not proven by this export. No raw content type is inferred from a 200 response.",
+    "A declaration, header consistency or source network does not establish the operator, purpose or human trigger.",
+    "Distinct source addresses, daily clients and people are different units."
+  ],
+  "sourceSha256": {
+    "classify.ts": "de1420a8d401d5e643c3ce6fc5a534701da1a4ffe8af4868e54ce24ee473d6c1",
+    "client-form.ts": "dc15738e02cacf441630c5874d4b0c9e727776c984faac14cbd9f5baabda595b",
+    "readerkind.ts": "4dfab5541520cd4e463676bb9078e5cf3f5212100ea085fab3bcf844de0f91cb",
+    "classification-evidence.ts": "3b424ee44a8c9d2361562550fd6b4f436afcc93b9d9bc3e2edc0d9907c1b6b18",
+    "networks.ts": "7f22716a31ffd9caaf45eb741a3eb2778b99688cdd9418e53de19e6f7baf7cc2",
+    "metadata.ts": "4113558b365dddad98f455529313fcd77349acd5e33c8d5526e1fb85f4076bb7"
+  },
+  "inputSha256": "e4c9446c2d143c5a1893fce8654e19e1ea3d985f9437d1a9167834ef24eecf66",
+  "inputBytes": 2203760
+}

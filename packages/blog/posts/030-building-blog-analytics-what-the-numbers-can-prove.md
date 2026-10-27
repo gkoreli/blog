@@ -17,7 +17,7 @@ series:
 
 My blog’s Browser traffic more than doubled between two complete weeks. Yet one unexplained referrer supplied more than half the later week’s events. The totals added up; the audience-growth story did not follow.
 
-Understanding which articles are useful starts with three decisions:
+Understanding which articles help starts with three decisions:
 
 - What event deserves to be counted?
 - What does a bot’s identity actually establish?
@@ -25,13 +25,13 @@ Understanding which articles are useful starts with three decisions:
 
 ## Count the event you can observe
 
-The original dashboard displayed **97 AI Reads**. Its data came from a browser script. A crawler could fetch an article without executing that script and never enter the table. The label promised visibility the collector didn’t have.
+The original dashboard displayed **97 AI Reads**. A browser script supplied its data. Crawlers skipping that script never entered the table. The label promised visibility the collector didn’t have.
 
 I [moved collection to the HTTP response boundary](/first-party-analytics-for-a-personal-blog). The Worker serves the page, checks the response, and records an eligible delivery in D1. [Worker-first routing](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/) puts the collector in that path, including for clients that never run JavaScript.
 
 The counter now accepts successful, non-prefetch page GETs serving HTML or negotiated Markdown. APIs, feeds, redirects, errors and direct `.md` assets stay outside it. Persistence is best effort. Browser means the request matched our header and network rules. **A stored event establishes a recorded delivery; it cannot establish attention or understanding.**
 
-A keyed hash groups requests by site, UTC date, IP address and User-Agent. The observation table retains neither raw IPs nor raw User-Agent strings. Changed inputs can split one person’s activity; shared inputs can combine people. Daily client IDs are not unique readers.
+A keyed hash groups requests by site, UTC date, IP address and User-Agent. The table retains neither raw IPs nor User-Agent strings. Changed inputs can split one person’s activity; shared inputs can combine people. Daily client IDs are not unique readers.
 
 ## One referrer changed the growth story
 
@@ -55,9 +55,9 @@ The repair recognizes all four names, preserves declared roles across verified s
 
 ## Preserve uncertainty in the data
 
-I kept the beacon archive and versioned new classifications. Requests now retain every recognized client declaration and distinguish missing network evidence from a hosting-list nonmatch. Conflicting categories enter Unresolved; historical classifications remain intact. **A list nonmatch is not a residential-network verdict.**
+Requests retain recognized declarations and missing-network states; conflicting categories enter Unresolved. History stays intact. [R1 replay](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/22-client-form-and-calibration.md) yields **355 desktop defaults**: 181 non-mobile preferences and 174 requests without form markers. Neither authenticates desktop hardware. A hosting-list nonmatch likewise establishes no residential source.
 
-D1 discarded User-Agent after classification, so that table alone cannot replay the Exa/Ahrefs gap. Recent provider logs retained some original inputs; complete historical recovery remains unproven. [Plausible](https://plausible.io/data-policy) keeps parsed software facts; [the IETF](https://www.ietf.org/policies/web-analytics/) keeps raw visitor data for five days and aggregates for twelve months. I’ve prepared an expiring diagnostic store with bounded, filtered UA evidence; collection remains off while its privacy boundary is settled. Filtering cannot prove arbitrary text is free of personal information. Debugging evidence and long-term reports deserve different lifecycles.
+D1 discarded User-Agent after classification, so that table alone cannot replay the Exa/Ahrefs gap. Provider logs retained some inputs; complete historical recovery remains unproven. [Plausible](https://plausible.io/data-policy) keeps parsed software facts; [the IETF](https://www.ietf.org/policies/web-analytics/) keeps raw visitor data for five days and aggregates for twelve months. I’ve prepared an expiring diagnostic store with bounded, filtered UA evidence; collection remains off while its privacy boundary is settled. Filtering cannot prove arbitrary text is free of personal information. Debugging evidence and long-term reports deserve different lifecycles.
 
 Referrers needed the same discipline. Among 2,365 included internal-referrer events, **1,540 recorded `/` as their source**. That can mean the homepage, but it can also mean an origin-only URL whose path was omitted. [Referrer Policy](https://www.w3.org/TR/referrer-policy/) allows detail to be withheld. We had stored more certainty than the input supported.
 
@@ -77,15 +77,15 @@ Sharing the selected population and assessment reduced the same report to **33,2
 
 For October 20–25 UTC, D1 recorded **694 Browser HTML events** versus Cloudflare’s **117 non-bot beacon loads** after stats/API exclusions. Sampling and path reconciliation remain incomplete. Neither is human ground truth. Agreement is not the goal; explaining what each instrument observes is.
 
-I ran [18 controlled local trials](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/06-controlled-stage-experiment.md), three per condition, using the actual collector and Cloudflare’s local D1 runtime. Three results expose independent failure points:
+I reran [24 controlled local trials](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/07-matched-classifier-calibration.md), three per condition, through the actual collector and Cloudflare’s local D1 runtime:
 
-- Blocking the beacon left Browser observations intact. `sendBeacon()` returned true in all three cases; the server received none. True means [queued](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon#return_value), not received.
-- Blocking scripts still produced three Browser observations.
+- Blocking the beacon preserved server observations. `sendBeacon()` returned true three times; the server received none. True means [queued](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon#return_value), not received.
+- Blocking scripts still produced three observations.
 - Injected database failures lost three observations while pages and beacons succeeded.
 
-All browser visits were agent-operated. Twelve stored as Browser; nine delivered beacons. **Neither a browser-shaped request nor successful JavaScript authenticates a human reader.**
+All browser visits were agent-operated. On the same inputs, twelve earlier Browser results now become Unresolved because network evidence is missing. Three with injected unlisted-ASN evidence still match Browser; fifteen beacons arrived. **Neither browser-shaped requests nor successful JavaScript authenticate human reading.** Without human controls, human false-positive rates remain unmeasured.
 
-These mechanisms do not explain the historical gap’s proportions. Real phones, human-operated browsers, actual JavaScript-off and production beacon receipt remain to test. The next iteration must distinguish delivery, execution, queueing, receipt and persistence, preserving unknowns at every stage.
+These mechanisms do not explain the historical gap’s proportions. Real phones, human-operated browsers, actual JavaScript-off and production beacon receipt remain to test. The next iteration must distinguish delivery, execution, queueing, receipt and persistence.
 
 ---
 

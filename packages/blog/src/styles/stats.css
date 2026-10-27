@@ -41,20 +41,14 @@
 .stats-card-value { font-size: 1.8rem; font-weight: 700; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .stats-card-label { font-size: 0.8rem; color: var(--color-text-muted); }
 
-.stats-device-section,
+.stats-client-form-section,
 .stats-chart-section,
 .stats-section { margin-bottom: 2rem; }
-.stats-device-section h2,
+.stats-client-form-section h2,
 .stats-chart-section h2,
 .stats-section h2 { font-size: 1.1rem; margin-bottom: 0.75rem; }
-.stats-device-section h2 span,
+.stats-client-form-section h2 span,
 .stats-section h2 span { font-size: 0.75rem; font-weight: 400; color: var(--color-text-muted); }
-.stats-devices { display: flex; flex-wrap: wrap; gap: 1.5rem; }
-.stats-device { display: flex; align-items: center; gap: 0.5rem; }
-.stats-device img { opacity: 0.6; }
-.stats-device-value { font-size: 1.1rem; font-weight: 600; font-variant-numeric: tabular-nums; }
-.stats-device-label { font-size: 0.8rem; color: var(--color-text-muted); }
-.skeleton-device-val { display: inline-block; width: 2.5rem; height: 1.1rem; }
 
 .stats-chart { min-height: 300px; max-width: 100%; }
 .stats-chart .uplot { max-width: 100%; font-family: var(--font-sans); }

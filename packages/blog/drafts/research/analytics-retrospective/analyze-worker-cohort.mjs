@@ -2,11 +2,12 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { resolve } from 'node:path';
-import { analyzeTraffic, classifyDevice } from '../../../../analytics/.test-dist/classify.js';
+import { analyzeTraffic } from '../../../../analytics/.test-dist/classify.js';
 import { extractRequestMetadata } from '../../../../analytics/.test-dist/metadata.js';
 import { classifyReaderKind } from '../../../../analytics/.test-dist/readerkind.js';
 import { extractRequestEvidence } from '../../../../analytics/.test-dist/request-evidence.js';
 import { classificationEvidence } from '../../../../analytics/.test-dist/classification-evidence.js';
+import { clientFormEvidence } from '../../../../analytics/.test-dist/client-form.js';
 import { CLASSIFIER_VERSION } from '../../../../analytics/.test-dist/versions.js';
 
 function vocabulary(value, allowed) { return value === null ? null : allowed.includes(value) ? value : 'unrecognized'; }
@@ -16,7 +17,7 @@ function increment(map, value) { const key = value === null || value === undefin
 /** An aggregate-only report: no original UA, origin, IP, IDs, URLs or per-request rows. */
 export function analyzeWorkerCohort(rows) {
   if (!Array.isArray(rows)) throw new Error('Expected a native JSON event array');
-  const dimensions = { day: {}, status: {}, method: {}, dataset: {}, trafficClass: {}, readerKind: {}, successfulReaderKind: {}, browserFamily: {}, osFamily: {}, deviceType: {}, fetchMode: {}, fetchDest: {}, fetchSite: {}, fetchUser: {}, knownClient: {}, declarationStatus: {}, categoryAgreement: {}, networkEvidence: {}, referrerContext: {} };
+  const dimensions = { day: {}, status: {}, method: {}, dataset: {}, trafficClass: {}, readerKind: {}, successfulReaderKind: {}, browserFamily: {}, osFamily: {}, clientForm: {}, mobilePreference: {}, legacyDeviceCompatibility: {}, fetchMode: {}, fetchDest: {}, fetchSite: {}, fetchUser: {}, knownClient: {}, declarationStatus: {}, categoryAgreement: {}, networkEvidence: {}, referrerContext: {} };
   const userAgents = new Set(), addresses = new Set(), networks = new Set(), countries = new Set(), referrerHosts = new Set(), eventIds = new Set();
   let invalidRows = 0, duplicateEventIds = 0, missingEventIds = 0, truncatedEvents = 0, signatureHeaderEvents = 0, populatedVerifiedBotCategoryEvents = 0;
   for (const row of rows) {
@@ -32,6 +33,7 @@ export function analyzeWorkerCohort(rows) {
     Object.defineProperty(request, 'cf', { value: { asn: cf.asn, country: cf.country, asOrganization: cf.asOrganization } });
     const metadata = extractRequestMetadata(request);
     const classification = analyzeTraffic(metadata.userAgent);
+    const clientForm = clientFormEvidence(metadata.userAgent, headers.get('sec-ch-ua-mobile'), classification.declarations.browserFamily);
     const signaturePresent = metadata.hasSignatureHeaders;
     const signature = signaturePresent ? { status: 'unverified', reason: 'historical-not-reverified' } : { status: 'absent' };
     const facts = { ...classification, observationSource: 'edge', asn: metadata.asn,
@@ -44,7 +46,7 @@ export function analyzeWorkerCohort(rows) {
     const pairs = [ ['day', String(row.timestamp).slice(0,10)], ['status', status], ['method', vocabulary(requestData.method, ['GET','HEAD','POST','PUT','PATCH','DELETE','OPTIONS'])], ['dataset', vocabulary(row.dataset, ['cloudflare-workers'])],
       ['declarationStatus', classification.declarations.status], ['categoryAgreement', derived.categoryAgreement], ['networkEvidence', derived.network], ['referrerContext', derived.referrerContext],
       ['trafficClass', classification.trafficClass], ['readerKind', reader.kind], ['browserFamily', evidence.browserFamily],
-      ['osFamily', evidence.osFamily], ['deviceType', classifyDevice(metadata.userAgent)], ['knownClient', classification.agentName],
+      ['osFamily', evidence.osFamily], ['clientForm', clientForm.form], ['mobilePreference', clientForm.mobileHint], ['legacyDeviceCompatibility', clientForm.legacyCompatibility.value], ['knownClient', classification.agentName],
       ['fetchMode', vocabulary(metadata.secFetchMode, ['navigate','cors','no-cors','same-origin','websocket'])], ['fetchDest', vocabulary(metadata.secFetchDest, ['document','empty','iframe','script','style','image','font','worker','sharedworker','serviceworker','audio','video','manifest','object','embed','report','track'])], ['fetchSite', vocabulary(metadata.secFetchSite, ['same-origin','same-site','cross-site','none'])], ['fetchUser', metadata.secFetchUser] ];
     for (const [key, value] of pairs) increment(dimensions[key], value);
     if (status >= 200 && status < 300) increment(dimensions.successfulReaderKind, reader.kind);
@@ -71,7 +73,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   const input = process.argv[2], output = process.argv[3];
   if (!input || !output) throw new Error('Usage: node analyze-worker-cohort.mjs PRIVATE_EXPORT_JSON OUTPUT_JSON');
   const bytes = readFileSync(input); const summary = analyzeWorkerCohort(JSON.parse(bytes.toString()));
-  summary.sourceSha256 = Object.fromEntries(['classify.ts', 'readerkind.ts', 'classification-evidence.ts', 'networks.ts', 'metadata.ts'].map(name => [name, createHash('sha256').update(readFileSync(`packages/analytics/src/${name}`)).digest('hex')]));
+  summary.sourceSha256 = Object.fromEntries(['classify.ts', 'client-form.ts', 'readerkind.ts', 'classification-evidence.ts', 'networks.ts', 'metadata.ts'].map(name => [name, createHash('sha256').update(readFileSync(`packages/analytics/src/${name}`)).digest('hex')]));
   summary.inputSha256 = createHash('sha256').update(bytes).digest('hex'); summary.inputBytes = bytes.length;
   writeFileSync(output, JSON.stringify(summary, null, 2) + '\n', { flag: 'wx' });
   console.log(JSON.stringify(summary, null, 2));

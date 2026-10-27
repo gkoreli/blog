@@ -1,0 +1,247 @@
+{
+  "checkedAt": "2026-10-27T17:35:51.148Z",
+  "sourceReportAt": "2026-10-27T17:31:44.694Z",
+  "environment": "Node HTTP server, actual analytics collector, native local D1",
+  "collectionVersion": "2026-10-27.5",
+  "classifierVersion": "2026-10-27.5",
+  "node": "v24.14.1",
+  "baselineCommit": "24c7c5010f6f41d8c8c81ac5a6b9e2cad65614fc",
+  "baselineAdapterSha256": "62095991b0c156657f1d2ee4672e1b8b60b190ae1e209e3edec670c81922f4bd",
+  "sourceSha256": {
+    "packages/blog/scripts/analytics-calibration-lab.mjs": "a76ae385d11fc72364de3d0d52456ff7195929c137deeb63119e9610fc8df7dd",
+    "packages/analytics/src/client-form.ts": "dc15738e02cacf441630c5874d4b0c9e727776c984faac14cbd9f5baabda595b",
+    "packages/analytics/src/classify.ts": "de1420a8d401d5e643c3ce6fc5a534701da1a4ffe8af4868e54ce24ee473d6c1",
+    "packages/analytics/src/readerkind.ts": "4dfab5541520cd4e463676bb9078e5cf3f5212100ea085fab3bcf844de0f91cb",
+    "packages/analytics/src/metadata.ts": "4113558b365dddad98f455529313fcd77349acd5e33c8d5526e1fb85f4076bb7",
+    "packages/analytics/src/index.ts": "112ea20322305b1489974eb02b00243001d91759b8f6ff700c805a29e11ecaff",
+    "packages/analytics/src/versions.ts": "3a6283b056ec9160be1f4a07f71af667be94d289f78dde78d0bbe28675a582fc"
+  },
+  "privateReportSha256": "511c67470ff2f560559430f411dbe4f3e60f63ed4c5be5b34231d5b3b1605977",
+  "privateManifestSha256": "5d6fc11e9d56727422983899de971bdbdd1d6baeebc4bda2eb40c5d8f70c703d",
+  "productionCalls": 0,
+  "byCondition": [
+    {
+      "condition": "normal",
+      "trials": 3,
+      "operator": "agent-operated-browser",
+      "networkInput": "absent-in-local-server",
+      "deliveries": 3,
+      "acknowledgedObservations": 3,
+      "failedObservations": 0,
+      "storedRows": 3,
+      "scriptReports": 3,
+      "beaconAttempts": 3,
+      "queuedTrue": 3,
+      "beaconReceipts": 3,
+      "baselineKinds": {
+        "browser": 3
+      },
+      "storedKinds": {
+        "unresolved": 3
+      },
+      "clientForms": {
+        "non-mobile-preference": 3
+      }
+    },
+    {
+      "condition": "block-beacon",
+      "trials": 3,
+      "operator": "agent-operated-browser",
+      "networkInput": "absent-in-local-server",
+      "deliveries": 3,
+      "acknowledgedObservations": 3,
+      "failedObservations": 0,
+      "storedRows": 3,
+      "scriptReports": 3,
+      "beaconAttempts": 3,
+      "queuedTrue": 3,
+      "beaconReceipts": 0,
+      "baselineKinds": {
+        "browser": 3
+      },
+      "storedKinds": {
+        "unresolved": 3
+      },
+      "clientForms": {
+        "non-mobile-preference": 3
+      }
+    },
+    {
+      "condition": "block-script",
+      "trials": 3,
+      "operator": "agent-operated-browser",
+      "networkInput": "absent-in-local-server",
+      "deliveries": 3,
+      "acknowledgedObservations": 3,
+      "failedObservations": 0,
+      "storedRows": 3,
+      "scriptReports": 0,
+      "beaconAttempts": 0,
+      "queuedTrue": 0,
+      "beaconReceipts": 0,
+      "baselineKinds": {
+        "browser": 3
+      },
+      "storedKinds": {
+        "unresolved": 3
+      },
+      "clientForms": {
+        "non-mobile-preference": 3
+      }
+    },
+    {
+      "condition": "fail-write",
+      "trials": 3,
+      "operator": "agent-operated-browser",
+      "networkInput": "absent-in-local-server",
+      "deliveries": 3,
+      "acknowledgedObservations": 0,
+      "failedObservations": 3,
+      "storedRows": 0,
+      "scriptReports": 3,
+      "beaconAttempts": 3,
+      "queuedTrue": 3,
+      "beaconReceipts": 3,
+      "baselineKinds": {
+        "browser": 3
+      },
+      "storedKinds": {
+        "not-stored": 3
+      },
+      "clientForms": {
+        "not-stored": 3
+      }
+    },
+    {
+      "condition": "http-client",
+      "trials": 3,
+      "operator": "curl-controlled",
+      "networkInput": "absent-in-local-server",
+      "deliveries": 3,
+      "acknowledgedObservations": 3,
+      "failedObservations": 0,
+      "storedRows": 3,
+      "scriptReports": 0,
+      "beaconAttempts": 0,
+      "queuedTrue": 0,
+      "beaconReceipts": 0,
+      "baselineKinds": {
+        "other-bot": 3
+      },
+      "storedKinds": {
+        "other-bot": 3
+      },
+      "clientForms": {
+        "unknown": 3
+      }
+    },
+    {
+      "condition": "narrow-viewport",
+      "trials": 3,
+      "operator": "agent-operated-browser",
+      "networkInput": "absent-in-local-server",
+      "deliveries": 3,
+      "acknowledgedObservations": 3,
+      "failedObservations": 0,
+      "storedRows": 3,
+      "scriptReports": 3,
+      "beaconAttempts": 3,
+      "queuedTrue": 3,
+      "beaconReceipts": 3,
+      "baselineKinds": {
+        "browser": 3
+      },
+      "storedKinds": {
+        "unresolved": 3
+      },
+      "clientForms": {
+        "non-mobile-preference": 3
+      }
+    },
+    {
+      "condition": "fixture-unlisted-network",
+      "trials": 3,
+      "operator": "agent-operated-browser",
+      "networkInput": "injected-unlisted-asn",
+      "deliveries": 3,
+      "acknowledgedObservations": 3,
+      "failedObservations": 0,
+      "storedRows": 3,
+      "scriptReports": 3,
+      "beaconAttempts": 3,
+      "queuedTrue": 3,
+      "beaconReceipts": 3,
+      "baselineKinds": {
+        "browser": 3
+      },
+      "storedKinds": {
+        "browser": 3
+      },
+      "clientForms": {
+        "non-mobile-preference": 3
+      }
+    },
+    {
+      "condition": "fixture-hosting-network",
+      "trials": 3,
+      "operator": "agent-operated-browser",
+      "networkInput": "injected-hosting-asn",
+      "deliveries": 3,
+      "acknowledgedObservations": 3,
+      "failedObservations": 0,
+      "storedRows": 3,
+      "scriptReports": 3,
+      "beaconAttempts": 3,
+      "queuedTrue": 3,
+      "beaconReceipts": 3,
+      "baselineKinds": {
+        "cloud-browser": 3
+      },
+      "storedKinds": {
+        "cloud-browser": 3
+      },
+      "clientForms": {
+        "non-mobile-preference": 3
+      }
+    }
+  ],
+  "storedPairedTransitions": {
+    "browser -> unresolved": 12,
+    "other-bot -> other-bot": 3,
+    "browser -> browser": 3,
+    "cloud-browser -> cloud-browser": 3
+  },
+  "operatorEvaluation": {
+    "profile": "evaluation-only-kind-to-operator-v1",
+    "target": "Known automated operation, not human trigger or readership",
+    "mapping": "browser/legacy-browser/unresolved abstain; other kinds are automation candidates for this evaluation only, not a deployed human predictor",
+    "deliveredControls": 24,
+    "storedKnownAutomatedControls": 21,
+    "failedStorageControlsExcluded": 3,
+    "decidedPredictions": 6,
+    "agreementsOnDecided": 6,
+    "disagreementsOnDecided": 0,
+    "abstentions": 15,
+    "knownHumanControls": 0,
+    "humanFalsePositiveRate": null,
+    "physicalDeviceAccuracy": null,
+    "unsafeBrowserAsHumanInterpretation": {
+      "baselineWrongLabels": 15,
+      "currentWrongLabels": 3,
+      "denominator": 21,
+      "scope": "Hypothetical interpretation only; neither runtime class authenticates a human"
+    }
+  },
+  "limits": [
+    "Agent-operated browser and controlled curl; no human label inferred.",
+    "CSP script blocking is not a browser JavaScript-off setting.",
+    "A narrow viewport is not a real mobile device.",
+    "Local first-party beacon; not Cloudflare ingestion or a historical error-rate estimate.",
+    "Network fixtures inject an ASN for a rule comparison; they do not measure the browser actual network.",
+    "No human-operated negative controls or physical mobile/tablet observations.",
+    "Paired baseline receives the same live request inputs, but its classifier is evaluated without a baseline D1 write.",
+    "ASN fixtures are injected policy inputs, not measured source networks.",
+    "Positive-only, selected local controls do not establish human false-positive rates or population prevalence.",
+    "New form claims and hints do not authenticate physical devices."
+  ]
+}

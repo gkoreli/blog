@@ -65,6 +65,12 @@ Method changes are dated boundaries, never deletions.
 - Pre-evidence edge browser-UA rows retain `user-agent-only` provenance unless reconstructed network evidence changes their kind. Migration 0007 reconstructed an ASN for 1,429 of 1,962 pre-evidence observations using the retained zone sample, matched by UTC hour/path/country/device, with assignment only when sampled candidates agreed. It marks them `asn_source = 'zone-sample'`; applicable browser-UA rows on hosting networks became `cloud-browser`. The method is correlation, not a shared-ID request join.
 - Migration 0007 marked applicable existing request-derived ASNs as `request`, but the original subsequent ingestion omitted `asn_source`. All 1,797 observations in the inspected September 3 05:05:22–September 6 01:29:53 UTC cohort had NULL. The local future-write repair now records a request source when an ASN is present. Subsequent production writes have been checked; historical reconstruction remains open; do not silently infer a provenance marker for every missing row.
 
+## Client-form claims
+
+[`client-form.ts`](src/client-form.ts) records existing exact UA markers and the already-sent mobile-experience preference, with explicit unknown, unsupported and conflicting states. It never authenticates physical hardware. `?0` does not establish desktop; Android without Mobile does not establish tablet. No additional hints or device probes are requested.
+
+Migration 0015 adds bounded `client_form_evidence`; old rows stay null and the old three-value column is a deprecated compatibility heuristic. Public API `byClientForm` replaces `byDevice`, with `{form, views}` rows. Current, historical-heuristic and unrecognized record counts partition the selected total. Other evidence subsets overlap. Dashboard labels apply to all traffic filters. See [the decision](../../docs/adr/0016.15-client-form-claims.md) and [dated replay/calibration evidence](../blog/drafts/research/analytics-retrospective/22-client-form-and-calibration.md); source, migration and deployment acceptance remain separate.
+
 ## Web Bot Auth
 
 The dedicated module is [`src/webbotauth.ts`](src/webbotauth.ts), called before classification from [`src/index.ts`](src/index.ts). It verifies an Ed25519/directory-discovery subset of [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html); Web Bot Auth remains a separate [evolving protocol draft](https://datatracker.ietf.org/doc/html/draft-ietf-webbotauth-httpsig-protocol-00). Neither full conformance nor native-provider equivalence is claimed.
@@ -109,7 +115,7 @@ The two SELECTs retain the current UTC day and preceding 29 days, owner exclusio
 
 ### Queries
 
-`GET /api/stats?range=7d|30d|90d|all&traffic=browser|agents|crawlers|automation|unresolved|all&path=/slug&agent=<rule name>&kind=<reader kind>`. `path`, `agent`, and `kind` scope every panel; combinations whose kind lies outside the chosen group return 400. The response carries totals, per-path, per-country, per-referrer, per-device, per-agent, and per-kind-and-reason aggregates over exact UTC windows. Every query excludes rows marked by `is_owner` at ingestion and daily client IDs recorded in `owner_clients`.
+`GET /api/stats?range=7d|30d|90d|all&traffic=browser|agents|crawlers|automation|unresolved|all&path=/slug&agent=<rule name>&kind=<reader kind>`. `path`, `agent`, and `kind` scope every panel; combinations whose kind lies outside the chosen group return 400. The response carries totals, per-path, per-country, per-referrer, per-client-form, per-agent, and per-kind-and-reason aggregates over exact UTC windows. Every query excludes rows marked by `is_owner` at ingestion and daily client IDs recorded in `owner_clients`.
 
 ### Internal referral context and page transitions
 
