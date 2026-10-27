@@ -4,7 +4,7 @@ October 26, 2026 Pacific / October 27 UTC. Follow-up to the owner's observation 
 
 ## Executed counterexamples
 
-The [maintained probe](probe-detection-boundaries.mjs) runs eight rule cases and four cryptographic variants against the actual compiled classifier, metadata extractor, reader-kind classifier and verifier. [Saved output](detection-boundaries.json) pins source/probe hashes, classifier `2026-10-26.3`, Node 24.14.1 and base source `d5b7561`. The analytics package was freshly compiled through its test command: 86 pass, zero failures. All twelve probe assertions pass. No network or production request was made. Inputs, origins and ephemeral keys are synthetic; no vendor was impersonated or verified. The JSON writer refuses an existing output path.
+The [maintained probe](probe-detection-boundaries.mjs) runs eight rule cases and four cryptographic variants against the actual compiled classifier, metadata extractor, reader-kind classifier and verifier. [Saved output](detection-boundaries.json) pins source/probe hashes, classifier `2026-10-26.3`, Node 24.14.1 and base source `d5b7561`. The analytics package was freshly compiled through its test command: 86 pass, zero failures. All twelve probe cases pass their assertions. No network or production request was made. Inputs, origins and ephemeral keys are synthetic; no vendor was impersonated or verified. The JSON writer refuses an existing output path.
 
 Reproduce from the repository root:
 
@@ -70,3 +70,5 @@ Sources read October 26 Pacific / October 27 UTC. Documentation establishes docu
 The [privacy/collection review](13-eu-us-collection-boundaries.md) still governs any new linked collection. Parsed facts, private diagnostics, provider logs and public aggregates have different access/retention needs. No fingerprint, cross-session tracking, expanded capture or new reporting exclusion has been activated. R1 remains unresolved; this audit does not establish its operator or purpose.
 
 [Source acceptance](detection-source-checks.json): 86 analytics tests pass; all twelve probe cases pass; the probe hash matches its receipt. Frontmatter and the isolated 31-post build pass, with one article H1, 28 shaping prompts and approximately 1,200 article words. All 115 relative document links checked in the changed files resolve. The article now reports the measured local signature-coverage result without claiming vendor acceptance or a cryptographic break. Code delivery and served-publication acceptance remain separate from these local checks.
+
+[Publication acceptance](detection-publication.json) subsequently verifies source `52d883a`, a 100% Worker activation, exact served Markdown match and 28 public prompts. The article update is accepted; the detector repairs and broader experiments above remain proposed. No production accuracy, vendor verification or expanded capture follows from publishing the findings.

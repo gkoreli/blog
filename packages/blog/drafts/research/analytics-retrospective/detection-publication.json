@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-27T00:48:19.551373+00:00",
+  "sourceCommit": "52d883a6118e0916d70694792a13a6c3e359cbb4",
+  "markdownStatus": 200,
+  "articleHeadStatus": 200,
+  "promptsHeadStatus": 200,
+  "indexStatus": 200,
+  "promptCount": 28,
+  "markdownMatchesIsolatedBuild": true,
+  "markdownSha256": "c5871daa843b637643fdf2510cd2ca0c96c3652983d6b93430e91c6af4c69b92",
+  "deployment": {
+    "createdAt": "2026-10-27T00:47:16.426999Z",
+    "versionId": "7090c8bf-2782-4d41-94f5-f72ae672deea",
+    "percentage": 100
+  },
+  "limits": [
+    "Served Markdown and metadata, not rendered production browser or detector accuracy acceptance.",
+    "No new detector rule, historical reclassification, signature policy or expanded collection activated.",
+    "No new production SQL or public analytics report fill.",
+    "Observed activation and byte match, not independent Git-to-binary attestation."
+  ]
+}
