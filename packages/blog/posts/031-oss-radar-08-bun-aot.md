@@ -1,10 +1,10 @@
 ---
 title: "OSS Radar #08: Bun AOT — Don't Rewrite TypeScript in Rust Yet"
 seoTitle: "Bun AOT: Before You Rewrite TypeScript in Rust"
-alternativeHeadline: "Bun AOT cuts memory and run time on an existing TypeScript compiler, with limits for servers and dependencies"
+alternativeHeadline: "Bun AOT cuts memory, run time and executable size on existing TypeScript applications, with limits for servers and dependencies"
 date: "2026-10-27"
 lastModified: "2026-10-27"
-description: "Bun AOT made the TypeScript compiler 3.3× faster with 64% less peak physical memory in my test. Here is where that promise holds—and breaks."
+description: "Bun AOT made my TypeScript compiler 3.3× faster with 64% less peak memory. A server executable shrank from 121.5 MB to 30.3 MB with AOT and --trim."
 section: oss-radar
 tags: [oss-radar, bun, typescript, rust, performance]
 researchFootprint:
@@ -24,7 +24,9 @@ researchFootprint:
 
 # Bun AOT: Don't Rewrite TypeScript in Rust Yet
 
-The TypeScript compiler I tested finished **3.3× faster with 64% less peak physical memory**, without rewriting its source. Before moving a TypeScript application to Rust for efficiency, I would try Bun's ahead-of-time compiler.
+The TypeScript compiler I tested finished **3.3× faster with 64% less peak physical memory**, without rewriting its source. My server executable shrank from **121.5 MB with JIT to 51.8 MB with AOT, then 30.3 MB with `--trim`**.
+
+Before moving a TypeScript application to Rust for efficiency, I would try Bun's ahead-of-time compiler.
 
 That recommendation has limits:
 
@@ -74,7 +76,7 @@ Try it on a test deployment first. On October 27, [the AOT pull request remained
 
 My computed-import test loaded plugins included at build time. Loading an unembedded plugin from disk required an opt-in; that code is interpreted. I also reproduced [a reported CommonJS/declaration-file case](https://github.com/oven-sh/bun/issues/47044): plain compilation worked, while the pinned AOT compiler crashed during the build.
 
-The executable is also smaller. My server executable shrank from **121.5 MB with JIT to 51.8 MB with AOT, then 30.3 MB with `--trim`**. Trimming barely changed its warmed RSS. [Removing unused runtime features](https://github.com/oven-sh/bun/blob/06888611e2cf51ef28fd7b19eba61cbbf3cdf4ea/docs/compiler/size.mdx) saves disk bytes; it doesn't promise the same RAM saving.
+The server's AOT executable was **51.8 MB** before trimming and **30.3 MB** afterward. [Trimming removes unused runtime features](https://github.com/oven-sh/bun/blob/06888611e2cf51ef28fd7b19eba61cbbf3cdf4ea/docs/compiler/size.mdx). It barely changed the server's warmed RSS: savings on disk and in RAM need separate measurements.
 
 [My Bun 1.4 review](/oss-radar-05-bun-1-4) covered the runtime's Rust rewrite. AOT targets the applications running on it. It hasn't made TypeScript equivalent to Rust. Bun's own server comparison still puts Rust ahead in throughput and memory.
 
