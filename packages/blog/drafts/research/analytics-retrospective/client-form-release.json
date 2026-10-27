@@ -1,0 +1,174 @@
+{
+  "checkedAt": "2026-10-27T17:58:59.771610+00:00",
+  "sourceCommit": "63204dcc36ab74e6d6dedf020ceed44d77b20184",
+  "build": {
+    "id": "73ec9114-1d70-45af-8ec4-59658c1c0a26",
+    "observedSource": "63204dc",
+    "durationSeconds": 113,
+    "limit": "Native UI source/build association, active metadata, served outputs and prospective writes; no binary attestation or runtime-parity claim"
+  },
+  "migration": "0015 applied before source push, client-form-pre-release.json",
+  "deployment": {
+    "createdAt": "2026-10-27T17:55:21.406178Z",
+    "versions": [
+      {
+        "version_id": "897f66d7-1350-45b2-a1bb-d3ffd70ea074",
+        "percentage": 100
+      }
+    ]
+  },
+  "controls": {
+    "startedAt": "2026-10-27T17:55:43.580428+00:00",
+    "finishedAt": "2026-10-27T17:55:44.866401+00:00",
+    "queryStart": "2026-10-27 17:55:41",
+    "queryEndExclusive": "2026-10-27 17:55:49",
+    "trials": [
+      {
+        "label": "unknown",
+        "httpStatus": 200
+      },
+      {
+        "label": "non-mobile",
+        "httpStatus": 200
+      },
+      {
+        "label": "conflict",
+        "httpStatus": 200
+      }
+    ],
+    "method": "Synthetic supplied UA/hint claims with excluded referrer; no physical-device or vendor identity claim",
+    "directReadCeiling": 50
+  },
+  "persistedResults": [
+    {
+      "collectionVersion": "2026-10-27.5",
+      "classifierVersion": "2026-10-27.5",
+      "legacyDeviceType": "desktop",
+      "readerKind": "unresolved",
+      "profile": "2026-10-27.1",
+      "clientForm": "unknown",
+      "markers": "[]",
+      "mobileHint": "absent",
+      "comparison": "not-comparable",
+      "legacyDefaulted": 1,
+      "evidenceBytes": 198,
+      "optionalCaptureAbsent": 1
+    },
+    {
+      "collectionVersion": "2026-10-27.5",
+      "classifierVersion": "2026-10-27.5",
+      "legacyDeviceType": "desktop",
+      "readerKind": "unresolved",
+      "profile": "2026-10-27.1",
+      "clientForm": "non-mobile-preference",
+      "markers": "[]",
+      "mobileHint": "non-mobile",
+      "comparison": "not-comparable",
+      "legacyDefaulted": 1,
+      "evidenceBytes": 212,
+      "optionalCaptureAbsent": 1
+    },
+    {
+      "collectionVersion": "2026-10-27.5",
+      "classifierVersion": "2026-10-27.5",
+      "legacyDeviceType": "tablet",
+      "readerKind": "unresolved",
+      "profile": "2026-10-27.1",
+      "clientForm": "conflicting-markers",
+      "markers": "[\"iPhone\",\"iPad\"]",
+      "mobileHint": "mobile",
+      "comparison": "not-comparable",
+      "legacyDefaulted": 0,
+      "evidenceBytes": 225,
+      "optionalCaptureAbsent": 1
+    }
+  ],
+  "directSelect": {
+    "acknowledgedRowsRead": 6,
+    "acknowledgedRowsWritten": 0,
+    "ceiling": 50,
+    "sqlSha256": "35247b1a8d5f4cea79ff1d221fd54ffe307438314e7ae11d29bf937cc191aeda",
+    "attempts": [
+      {
+        "status": "API rejected",
+        "code": 7403,
+        "rowsRead": null,
+        "rowsWritten": null,
+        "limit": "No query metering returned; root cause not established"
+      },
+      {
+        "status": "success",
+        "rowsRead": 6,
+        "rowsWritten": 0
+      }
+    ],
+    "authorizationCheck": "Wrangler remained authenticated and listed D1 scope; one identical retry succeeded"
+  },
+  "publicReport": {
+    "selection": {
+      "range": "7d",
+      "traffic": "agents",
+      "kind": "signed-agent"
+    },
+    "views": 225,
+    "forms": [
+      {
+        "form": "historical-desktop-default",
+        "views": 225
+      }
+    ],
+    "summary": {
+      "recordedViews": 0,
+      "historicalViews": 225,
+      "unrecognizedRecordViews": 0,
+      "unsupportedHintViews": 0,
+      "differingSignalsViews": 0,
+      "legacyDefaultedViews": 0
+    },
+    "legacyByDeviceAbsent": true,
+    "partitionReconciles": true,
+    "cacheResults": [
+      "MISS",
+      "HIT"
+    ],
+    "sameColo": "SJC",
+    "identicalResponseBodies": true,
+    "bodySha256": "1bb102cef1b64e7f5a4e5139d74b592332557cfb678234a82dce8ce5e4d0ddb7"
+  },
+  "exclusionReport": {
+    "selection": {
+      "range": "7d",
+      "traffic": "unresolved",
+      "kind": "unresolved",
+      "path": "/privacy"
+    },
+    "includedViews": 0,
+    "referralExcludedViews": 6,
+    "policySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+    "limit": "Six exclusions describe the full selection, not six new controls; no per-record public join or owner-versus-referral attribution is claimed"
+  },
+  "article": {
+    "servedMatchesIsolatedBuild": true,
+    "sha256": "38a754226198f526d6ff7e75ed10262da95ce442b0af7e73823c93432c0122a7",
+    "words": 1248,
+    "prompts": 30
+  },
+  "browser": {
+    "panelVisibleForSignedClientTraffic": true,
+    "historicalDefaultLabelVisible": true,
+    "selectedCount": 225,
+    "consoleWarningsOrErrors": 0,
+    "screenshot": "Private/browser deliverable analytics-client-form-claims.png; no user identifiers added to Git"
+  },
+  "checks": {
+    "privacyDisclosureInAllControlResponses": true,
+    "optionalCaptureOff": true,
+    "newHistoryNotStamped": true
+  },
+  "limits": [
+    "Synthetic supplied headers test claim handling, not physical devices or vendor identities",
+    "Legacy device_type remains a deprecated compatibility heuristic with an explicit default flag in new evidence",
+    "Acknowledged direct SELECT work is six reads; rejected attempt has no returned metering. Migration bookkeeping, public cold fills, three observation writes and unrelated account work are additional",
+    "Human/device negatives, actual JavaScript-off, production stage/beacon acceptance, organic vendor/native comparison and complete sampling/retention remain open"
+  ]
+}
