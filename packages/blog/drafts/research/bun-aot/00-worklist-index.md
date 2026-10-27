@@ -35,7 +35,8 @@ Official artifact: [Buildkite 133741, macOS arm64](https://buildkite.com/bun/bun
 - [x] Write and iterate the full article, including title/metadata and checked sources.
 - [x] Verify the rendered article on desktop/mobile, five-minute length, one H1, readable evidence, and absence of a prompt page.
 - [x] Run repository checks in the isolated checkout; audit links, numbers and scoped diff.
-- [ ] Freeze the research footprint without prompts if used; commit and push scoped work to main.
+- [x] Freeze the research footprint without prompts; see [manifest](research-footprint.json).
+- [ ] Commit and push scoped work to main.
 - [ ] Verify actual deployment and the live article separately from code delivery.
 
 Raw media, extraction captures and command logs remain in `/tmp/bun-aot-experiments` and the earlier video directories outside Git. Public results must retain measurement conditions and code hashes. The test sources and accepted result tables belong in this research folder.

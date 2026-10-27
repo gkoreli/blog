@@ -6,6 +6,19 @@ date: "2026-10-27"
 description: "Bun AOT made the TypeScript compiler 3.3× faster with 64% less peak physical memory in my test. Here is where that promise holds—and breaks."
 section: oss-radar
 tags: [oss-radar, bun, typescript, rust, performance]
+researchFootprint:
+  sessions: 1
+  artifacts: 6
+  totalTokens: 36800373
+  inputTokens: 36723676
+  cachedInputTokens: 36072064
+  outputTokens: 76697
+  reasoningOutputTokens: 27036
+  wallClockMinutes: 46
+  startedAt: "2026-10-27T14:49:02.355Z"
+  measuredAt: "2026-10-27T15:34:24.348Z"
+  provenanceUrl: "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-aot"
+  scope: "One linked session through the frozen research cutoff, including experiments, writing and publication preparation. Tokens count cumulative usage epochs, including cached input; elapsed time is not human hands-on time. Six committed Markdown research artifacts, plus reproduction sources and numeric results. Prompts are omitted at the author's request. Private logs stay private; the linked manifest records accounting and prefix commitments. Later deployment checks are outside this cutoff."
 ---
 
 # Don't rewrite TypeScript in Rust yet. Try Bun AOT.

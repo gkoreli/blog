@@ -24,6 +24,10 @@ No prompt transcript or prompt file is published. Historical research direction 
 - The related Bun 1.4 article gains one contextual forward link after its original opening paragraph.
 - Public reproduction Python files pass syntax checks. `prepare.py` assembles the observed setup steps; its complete fresh-download workflow has not been independently rerun. Accepted measurement/manual runners were executed locally; the known compiler failure is retained.
 
+## Frozen research accounting
+
+[The manifest](research-footprint.json) uses the existing repository extractor on this root's complete metadata-linked closure. An unrelated oversized log prevented a full-root scan, so byte-identical copies of the included logs supplied a filtered temporary root. Prefix commitments retain the selected bytes. One session and six committed Markdown artifacts are included. No descendant sessions were found. No prompts are published; the zero prompt-file count records omission, not the count of human requests. The measurement window includes research, experiments, writing and publication preparation; later deployment checks fall outside its frozen prefix. Cached input is a subset of input, and reasoning output is a subset of output. These totals describe usage and elapsed time, not quality or human effort.
+
 ## Delivery status
 
 Prepared and locally verified. Code commit, remote push, deployment activation and live acceptance are pending and must be recorded separately after they occur. No local preview or previous deployment is treated as evidence for the new public page.

@@ -1,0 +1,100 @@
+{
+  "rulesVersion": 4,
+  "rootThread": "01a17dd6-0c77-71f2-b43b-397d4c581c75",
+  "rootThreads": [
+    "01a17dd6-0c77-71f2-b43b-397d4c581c75"
+  ],
+  "claudeTranscripts": [],
+  "startedAt": "2026-10-27T14:49:02.355Z",
+  "measuredAt": "2026-10-27T15:34:24.348Z",
+  "frozenAt": "2026-10-27T15:34:42.798Z",
+  "wallClockMinutes": 46,
+  "sessionCount": 1,
+  "promptCount": 0,
+  "artifactCount": 6,
+  "committedArtifactCount": 6,
+  "uncommittedArtifactCount": 0,
+  "totals": {
+    "inputTokens": 36723676,
+    "cachedInputTokens": 36072064,
+    "cacheWriteInputTokens": 0,
+    "outputTokens": 76697,
+    "reasoningOutputTokens": 27036,
+    "totalTokens": 36800373,
+    "nonCachedInputTokens": 651612
+  },
+  "sources": [
+    {
+      "kind": "codex",
+      "id": "01a17dd6-0c77-71f2-b43b-397d4c581c75",
+      "path": null,
+      "startedAt": "2026-10-27T14:49:02.355Z",
+      "usageAt": "2026-10-27T15:34:24.348Z",
+      "sessions": [
+        "01a17dd6-0c77-71f2-b43b-397d4c581c75"
+      ],
+      "sessionCount": 1,
+      "responses": null,
+      "epochs": {
+        "count": 1,
+        "resetCount": 0,
+        "note": "Codex token_count values are cumulative within each monotonic epoch."
+      },
+      "tokens": {
+        "inputTokens": 36723676,
+        "cachedInputTokens": 36072064,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 76697,
+        "reasoningOutputTokens": 27036,
+        "totalTokens": 36800373,
+        "nonCachedInputTokens": 651612
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "kind": "codex",
+      "sourceId": "01a17dd6-0c77-71f2-b43b-397d4c581c75",
+      "id": "01a17dd6-0c77-71f2-b43b-397d4c581c75",
+      "parentId": null,
+      "agentPath": "/root",
+      "startedAt": "2026-10-27T14:49:02.355Z",
+      "cwd": "/Users/goga/Documents/goga/blog",
+      "log": "2026/10/27/rollout-2026-10-27T07-49-02-01a17dd6-0c77-71f2-b43b-397d4c581c75.jsonl",
+      "logBytes": 8551805,
+      "usageRecordLine": 1105,
+      "usageAt": "2026-10-27T15:34:24.348Z",
+      "prefixSha256": "d75577fbce45288e84dfb87abd4b6ef737d27e92e03ee838417dd70da98fc201",
+      "usageEpochCount": 1,
+      "usageEpochs": [
+        {
+          "endLine": 1105,
+          "endAt": "2026-10-27T15:34:24.348Z",
+          "prefixSha256": "d75577fbce45288e84dfb87abd4b6ef737d27e92e03ee838417dd70da98fc201",
+          "usage": {
+            "input_tokens": 36723676,
+            "cached_input_tokens": 36072064,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 76697,
+            "reasoning_output_tokens": 27036,
+            "total_tokens": 36800373
+          }
+        }
+      ],
+      "usage": {
+        "input_tokens": 36723676,
+        "cached_input_tokens": 36072064,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 76697,
+        "reasoning_output_tokens": 27036,
+        "total_tokens": 36800373
+      }
+    }
+  ],
+  "trustBoundary": "Private Codex and Claude logs are not committed. Prefix hashes commit to the measured private log prefixes, so the totals are auditable by the author with integrity commitments, not publicly reconstructible.",
+  "publicationPolicy": {
+    "prompts": "Omitted at the author\u2019s request. promptCount=0 counts an empty temporary publication file, not the number of human messages.",
+    "sessionSnapshot": "The normal full-root scan hit an unrelated log above Node\u2019s string limit. Session metadata was streamed to select the root\u2019s complete descendant closure, then those logs were copied byte-for-byte into a temporary root. The existing extractor computed every usage value and prefix commitment. There was one included session and no descendants.",
+    "scope": "The full root thread through measuredAt, including initial research, experiments, writing, rendering and publication preparation. Later deployment verification and bookkeeping are outside this frozen prefix. Elapsed wall-clock window is not human hands-on time."
+  }
+}
