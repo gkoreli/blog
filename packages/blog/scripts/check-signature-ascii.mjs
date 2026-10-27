@@ -53,7 +53,7 @@ try {
     assert.equal((await mf.dispatchFetch('https://publication.example' + path, { headers })).status, 200);
     let row;
     for (let attempt = 0; attempt < 40; attempt++) {
-      row = await db.prepare('SELECT collection_version,signature_agent,signature_evidence,request_evidence FROM page_observations WHERE path=?').bind(path).first();
+      row = await db.prepare('SELECT id,collection_version,signature_agent,signature_evidence,request_evidence FROM page_observations WHERE path=?').bind(path).first();
       if (row) break; await new Promise(resolve => setTimeout(resolve, 25));
     }
     assert.ok(row); const evidence = JSON.parse(row.signature_evidence);
@@ -77,11 +77,19 @@ try {
   assert.equal(rows.length, 1); assert.equal(rows[0].outcome, 'unsupported'); assert.equal(rows[0].coverageAbsent, 1);
   const plan = (await db.prepare('EXPLAIN QUERY PLAN ' + sql).bind(...bindings).all()).results;
   assert.ok(plan.some(row => row.detail.includes('idx_page_observations_public_path_time')));
-  const files = ['packages/analytics/src/webbotauth.ts', 'packages/analytics/src/signature-evidence.ts', 'packages/analytics/src/versions.ts', 'packages/analytics/test/fixtures/signature-ascii.mjs', 'packages/blog/drafts/research/analytics-retrospective/signature-ascii-control-acceptance.sql'];
+  const exactSql = readFileSync('packages/blog/drafts/research/analytics-retrospective/signature-ascii-storage-reference.sql', 'utf8');
+  const excluded = await db.prepare("SELECT CAST(id AS TEXT) AS reference FROM page_observations WHERE path='/privacy'").first();
+  assert.ok(excluded);
+  const exact = await db.prepare(exactSql).bind(excluded.reference, COLLECTION_VERSION).all();
+  assert.equal(exact.results.length, 1); assert.equal(exact.results[0].reason, 'non-ascii-signature-base');
+  assert.equal(exact.meta.rows_read, 1); assert.equal(exact.meta.rows_written, 0);
+  const exactPlan = (await db.prepare('EXPLAIN QUERY PLAN ' + exactSql).bind(excluded.reference, COLLECTION_VERSION).all()).results;
+  assert.ok(exactPlan.some(row => row.detail.includes('INTEGER PRIMARY KEY')));
+  const files = ['packages/analytics/src/webbotauth.ts', 'packages/analytics/src/signature-evidence.ts', 'packages/analytics/src/versions.ts', 'packages/analytics/test/fixtures/signature-ascii.mjs', 'packages/blog/drafts/research/analytics-retrospective/signature-ascii-control-acceptance.sql', 'packages/blog/drafts/research/analytics-retrospective/signature-ascii-storage-reference.sql'];
   writeFileSync(output, JSON.stringify({ checkedAt: new Date().toISOString(), method: 'Actual bundled collector in native local workerd/D1/WebCrypto; independent ephemeral signer, intercepted directory and explicitly empty fixture cf metadata, not a provider request.',
     collectionVersion: COLLECTION_VERSION, verifierProfile: VERIFIER_PROFILE_VERSION, trials, directoryFetches: directory.directoryFetches,
     checks: { closedPersistence: true, noCoverageForUnsupported: true, historicalUnknown: true, completeReport: true, referralExclusion: true, optionalCaptureOff: true, indexedAcceptanceSql: true },
-    queryPlan: plan, networkCalls: 0, productionCalls: 0,
+    queryPlan: plan, exactReference: { rows: exact.results.length, rowsRead: exact.meta.rows_read, rowsWritten: exact.meta.rows_written, queryPlan: exactPlan }, networkCalls: 0, productionCalls: 0,
     sourceSha256: Object.fromEntries(files.map(file => [file, createHash('sha256').update(readFileSync(file)).digest('hex')])),
     limits: ['No production/provider-native or human acceptance.', 'Raw UTF-8 crypto validity is not RFC-valid signature-base construction.', 'Binary-wrapped ;bs remains unsupported.'] }, null, 2) + '\n', { flag: 'wx' });
   console.log(JSON.stringify({ controls: trials.length, directoryFetches: directory.directoryFetches, productionCalls: 0 }));

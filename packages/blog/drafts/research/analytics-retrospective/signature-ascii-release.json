@@ -1,0 +1,128 @@
+{
+  "acceptedAt": "2026-10-27T23:54:13.685609+00:00",
+  "sourceCommit": "5da4bc985e581895ac03d1de6834e092ce7829fb",
+  "build": {
+    "id": "15e558ca-f74c-4f96-a677-7e5837de6125",
+    "nativeStatus": "Ready",
+    "durationSeconds": 55,
+    "remoteBuildNode": "24.22.1",
+    "localPinnedNode": "24.14.1",
+    "runtimeParityClaim": false
+  },
+  "activation": {
+    "createdOn": "2026-10-27T23:49:37.708462Z",
+    "versions": [
+      {
+        "version_id": "a009fc68-99c5-4b00-8a0c-f4e8f730f3e8",
+        "percentage": 100
+      }
+    ]
+  },
+  "versions": {
+    "collection": "2026-10-27.11",
+    "verifier": "2026-10-27.7",
+    "classifier": "2026-10-27.5",
+    "signatureEvidence": "2026-10-27.5",
+    "receipt": "2026-10-27.3",
+    "reportCache": "2026-10-27.9"
+  },
+  "control": {
+    "startedAt": "2026-10-27T23:51:14.137628+00:00",
+    "finishedAt": "2026-10-27T23:51:14.479857+00:00",
+    "curlExit": 0,
+    "httpStatus": "200",
+    "controls": 1,
+    "method": "GET",
+    "path": "/privacy",
+    "referralExcludedByPolicy": true,
+    "userAgentBytes": "Latin-1 NBSP at each boundary; no claim about upstream preservation",
+    "signatureBytes": "64 zero bytes; rejection must precede key discovery",
+    "humanOperated": false,
+    "vendorAuthenticated": false
+  },
+  "persistence": {
+    "rowsRead": 1,
+    "rowsWritten": 0,
+    "changedDb": false,
+    "rows": 1,
+    "stored": {
+      "collectionVersion": "2026-10-27.11",
+      "classifierVersion": "2026-10-27.5",
+      "readerKind": "unresolved",
+      "evidenceVersion": "2026-10-27.5",
+      "verifierProfile": "2026-10-27.7",
+      "outcome": "unsupported",
+      "reason": "non-ascii-signature-base",
+      "reasons": "[\"non-ascii-signature-base\"]",
+      "coverageAbsent": 1,
+      "authenticatedSignerAbsent": 1,
+      "optionalCaptureAbsent": 1,
+      "categoryStatus": "empty",
+      "categoryValue": null,
+      "nativeVerifiedBot": null,
+      "nativeSignedAgent": null,
+      "referralControl": 1
+    },
+    "exactPrivateReferenceMatched": true
+  },
+  "receiptComparison": {
+    "pairs": 1,
+    "closedFieldsCompared": 10,
+    "differences": 0,
+    "tailExplicitlyTruncated": false,
+    "workerVersionMatchesActive": true
+  },
+  "requestHeaderCapture": {
+    "matchesSentFixtureUserAgent": false,
+    "expectedBoundaryCodePoint": 160,
+    "capturedBoundaryCodePoints": [
+      65533,
+      65533
+    ],
+    "cause": "unestablished",
+    "rawTransportFidelityAccepted": false
+  },
+  "directProductionSelects": 1,
+  "rowsRead": 1,
+  "rowsWritten": 0,
+  "reviewedRowsReadThreshold": 100,
+  "thresholdMeaning": "post-execution acceptance check, not an enforced cap",
+  "queryMode": "Wrangler --command, one SQL argv loaded from private file",
+  "nativeExactAcceptance": "signature-ascii-local-exact.json",
+  "optionalBindings": {
+    "OWNER_MARK_GRANT": false,
+    "ANALYTICS_DIAGNOSTICS": false,
+    "ANALYTICS_CALIBRATION": false
+  },
+  "article": {
+    "exactServedBuildBytes": true,
+    "sha256": "56a1cfa125e7dcbab9db4853c0050d8734654794ec18cb5c461d639d7e7bc394",
+    "bodyWords": 1251,
+    "shapingPrompts": 31,
+    "renderedNewEvidenceLink": true,
+    "screenshot": "analytics-signature-ascii-repair.png"
+  },
+  "ownedTailStopped": true,
+  "previewStarted": false,
+  "viewportOverrideUsed": false,
+  "newPublicReportFill": false,
+  "nativeRuleChanged": false,
+  "permissionExpanded": false,
+  "limits": [
+    "One operator-generated unsupported control; not vendor authentication or human accuracy.",
+    "Referral control stored as expected and excluded by tested policy; no separate fresh public-report fill.",
+    "Native bot booleans unavailable; no native cryptographic agreement.",
+    "Tail context has replacement characters at sent Latin-1 boundaries; no exact header-byte fidelity or responsible-stage claim.",
+    "No historical vendor impact or exploitation established.",
+    "Production directory traffic was not independently measured; pre-discovery sequence is established by source/local controls.",
+    "HTTP/dashboard/CLI metadata and identity activity are additional service work."
+  ],
+  "finalDocumentationChecks": {
+    "relativeFileLinks": 281,
+    "missing": 0,
+    "codeFences": "balanced",
+    "gitDiffCheck": "pass",
+    "exactHelperSyntax": "pass",
+    "exactHelperNativeControls": 6
+  }
+}
