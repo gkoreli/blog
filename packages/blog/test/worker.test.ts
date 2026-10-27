@@ -42,6 +42,7 @@ function harness() {
             return {
               async run() {
                 writes.push(values);
+                return { success: true, meta: { changes: 1, last_row_id: writes.length } };
               },
             };
           },
@@ -76,7 +77,7 @@ test('Worker negotiates Markdown and records the page-path representation', asyn
 });
 
 test('Worker keeps HTML on ties and advertises every typed post link', async () => {
-  const { ctx, env } = harness();
+  const { ctx, env, pending } = harness();
   const response = await worker.fetch(postRequest('/post', {
     headers: { Accept: 'text/markdown, text/html' },
   }), env, ctx);
@@ -88,6 +89,7 @@ test('Worker keeps HTML on ties and advertises every typed post link', async () 
   assert.match(link, /<\/about>; rel="author"/);
   assert.match(link, /rel="license"/);
   assert.match(link, /<\/post\.csl\.json>; rel="alternate"; type="application\/vnd\.citationstyles\.csl\+json"/);
+  await Promise.all(pending);
 });
 
 test('Worker negotiates CSL-JSON and does not observe direct Markdown assets', async () => {

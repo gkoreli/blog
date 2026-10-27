@@ -49,7 +49,8 @@ class D1Statement {
   }
 
   run() {
-    return this.database.prepare(this.sql).run(...this.values);
+    const result = this.database.prepare(this.sql).run(...this.values);
+    return { success: true, meta: { changes: Number(result.changes), last_row_id: Number(result.lastInsertRowid) } };
   }
 }
 
@@ -1830,7 +1831,7 @@ test('field hardening preserves unknown roots, validates ASN input, and versions
     assert.equal(row.asn_source, accepted ? 'request' : null);
     assert.equal(row.referrer_state, 'internal');
     assert.equal(row.internal_referrer_path, null);
-    assert.equal(row.collection_version, '2026-10-27.7');
+    assert.equal(row.collection_version, '2026-10-27.8');
     assert.equal(row.classifier_version, '2026-10-27.5');
   }
   for (const url of ['https://gkoreli.com/', 'http://www.gkoreli.com:8080/']) assert.equal(parseReferrer(url, 'gkoreli.com', new Set(['/'])).internalReferrerPath, null);

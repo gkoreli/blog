@@ -7,6 +7,7 @@ import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
 import { queryStats } from '../../analytics/.test-dist/stats.js';
+import { COLLECTION_VERSION } from '../../analytics/.test-dist/versions.js';
 
 const [output, fixtureOutput] = process.argv.slice(2); assert.ok(output && fixtureOutput);
 assert.equal(existsSync(output) || existsSync(fixtureOutput), false, 'Use new receipt/fixture paths');
@@ -43,7 +44,7 @@ try {
       row = await db.prepare('SELECT collection_version,signature_evidence,request_evidence FROM page_observations WHERE path=?').bind(path).first();
       if (row) break; await new Promise(resolve => setTimeout(resolve, 25));
     }
-    assert.ok(row, 'Missing stored fixture: ' + label); assert.equal(row.collection_version, '2026-10-27.7'); assert.equal(row.request_evidence, null);
+    assert.ok(row, 'Missing stored fixture: ' + label); assert.equal(row.collection_version, COLLECTION_VERSION); assert.equal(row.request_evidence, null);
     assert.equal(row.signature_evidence.includes('private-canary'), false);
     const evidence = JSON.parse(row.signature_evidence); assert.equal(evidence.version, '2026-10-27.4');
     assert.equal(evidence.localOutcome, 'absent');
@@ -60,7 +61,7 @@ try {
   assert.equal(report.byKindNativeCategory.reduce((n,r)=>n+r.views,0),6); assert.equal(report.verification.nativeAvailableViews,1);
   const empty = await queryStats(tap,{...query,path:'/missing'},now); assert.deepEqual(empty.byKindNativeCategory,[]);
   const scoped = await queryStats(tap,{...query,path:'/known'},now); assert.deepEqual(scoped.byKindNativeCategory,[{kind:'unresolved',basis:'Search Engine Crawler',views:1}]);
-  const sql = readFileSync('packages/blog/drafts/research/analytics-retrospective/native-category-control-acceptance.sql','utf8');
+  const sql = readFileSync('packages/blog/drafts/research/analytics-retrospective/native-category-control-acceptance.sql','utf8').replace("collection_version='2026-10-27.7'", "collection_version='" + COLLECTION_VERSION + "'");
   const binds=['2000-01-01 00:00:00','2100-01-01 00:00:00'];
   const selected=(await db.prepare(sql).bind(...binds).all()).results;assert.equal(selected.length,1);assert.equal(selected[0].categoryStatus,'known');
   const plan=(await db.prepare('EXPLAIN QUERY PLAN '+sql).bind(...binds).all()).results;assert.ok(plan.some(r=>r.detail.includes('idx_page_observations_public_path_time')));

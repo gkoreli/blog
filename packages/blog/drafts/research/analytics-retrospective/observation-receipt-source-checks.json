@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-27T20:47:47.649945+00:00",
+  "analyticsTests": 163,
+  "siteTests": 106,
+  "workspaceTypes": "passed",
+  "validatedMarkdownPosts": 21,
+  "isolatedBuiltPosts": 32,
+  "collectionVersion": "2026-10-27.8",
+  "classifierVersion": "2026-10-27.5",
+  "verifierProfile": "2026-10-27.6",
+  "signatureEvidenceVersion": "2026-10-27.4",
+  "articleWords": 1248,
+  "shapingPrompts": 31,
+  "builtArticleSha256": "bcdffa687b20b444ad61bd0125bbedb83b71bc246d92d475b4a2ed002cd83509",
+  "nativeFixtureControls": 14,
+  "nativeFixtureRows": 11,
+  "nativeFixtureReceipts": 9,
+  "maximumObservedFixtureReceiptBytes": 722,
+  "sourcePublicationPending": true,
+  "productionAcceptancePending": true,
+  "humanTrialsDeferred": true
+}

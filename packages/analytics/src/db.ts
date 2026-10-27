@@ -52,6 +52,9 @@ export interface PageObservation {
   clientFormEvidence?: ClientFormEvidence;
 }
 
+/** An uncertain acknowledgement is not proof that the database wrote nothing. */
+export class ObservationAcknowledgementError extends Error {}
+
 const INSERT_OBSERVATION = `INSERT INTO page_observations (
   path,
   referrer_host,
@@ -122,6 +125,9 @@ export async function recordPageObservation(db: D1Database, observation: PageObs
     observation.vendorIpEvidence === undefined ? null : JSON.stringify(observation.vendorIpEvidence),
     observation.clientFormEvidence === undefined ? null : JSON.stringify(observation.clientFormEvidence),
   ).run();
+  if (result?.success !== true || result.meta?.changes !== 1) {
+    throw new ObservationAcknowledgementError('Observation insert was not acknowledged');
+  }
   if (diagnostic !== undefined) {
     // Preserve the acknowledged base observation if its optional diagnostic fails.
     try {

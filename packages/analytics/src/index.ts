@@ -5,7 +5,7 @@ import { analyzeTraffic } from './classify.js';
 import { classificationEvidence } from './classification-evidence.js';
 import { clientFormEvidence } from './client-form.js';
 import type { Representation } from './contracts.js';
-import { recordPageObservation, type Env, type PageObservation } from './db.js';
+import { recordPageObservation, ObservationAcknowledgementError, type Env, type PageObservation } from './db.js';
 import { isEligiblePageResponse } from './eligibility.js';
 import { createDailyClientId } from './hash.js';
 import { extractRequestMetadata } from './metadata.js';
@@ -14,6 +14,7 @@ import { parseReferrer } from './referrals.js';
 import { verifyWebBotAuth, type WebBotAuthResult } from './webbotauth.js';
 import { verificationEvidence } from './signature-evidence.js';
 import { verifyVendorIp } from './vendor-ip.js';
+import { storedObservationReceipt, type StoredObservationReceipt } from './observation-receipt.js';
 
 export type { Env } from './db.js';
 export { ANALYTICS_EVIDENCE_SINCE } from './contracts.js';
@@ -64,7 +65,7 @@ async function persistObservation(
   observedAt: Date,
   operationId: string,
   options: ObservationOptions,
-): Promise<void> {
+): Promise<StoredObservationReceipt> {
   const hashKey = env.ANALYTICS_HASH_KEY;
   if (typeof hashKey !== 'string' || hashKey.length === 0) {
     throw new ObservationConfigurationError('ANALYTICS_HASH_KEY must not be empty');
@@ -117,7 +118,7 @@ async function persistObservation(
   };
   const reader = classifyReaderKind(readerFacts);
   const clientForm = clientFormEvidence(metadata.userAgent, request.headers.get('Sec-CH-UA-Mobile'), classification.declarations.browserFamily);
-  const observation: PageObservation = {
+  const observation = {
     path: metadata.path,
     referrerHost: metadata.referrerHost,
     referrerState: metadata.referrerState,
@@ -147,7 +148,7 @@ async function persistObservation(
     vendorIpEvidence: vendorIp,
     clientFormEvidence: clientForm,
     ...(captureEvidence ? { requestEvidence: extractRequestEvidence(request, response) } : {}),
-  };
+  } satisfies PageObservation;
   const diagnostic = captureEvidence ? {
     ...extractDiagnosticInputs(request),
     operationId,
@@ -156,7 +157,9 @@ async function persistObservation(
     signatureOutcome: signature.status,
     signatureReason: signature.status === 'unverified' ? signature.reason : null,
   } : undefined;
+  const receipt = storedObservationReceipt(observation);
   await recordPageObservation(env.DB, observation, diagnostic);
+  return receipt;
 }
 
 export interface ObservationOptions {
@@ -179,9 +182,10 @@ export function observePageResponse(
   const operationId = crypto.randomUUID();
   console.log('analytics.observation_attempt', { operationId, collectionVersion: COLLECTION_VERSION });
   const work = persistObservation(request, representation, response, env, new Date(), operationId, options)
-    .then(() => { console.log('analytics.observation_stored', { operationId, collectionVersion: COLLECTION_VERSION }); })
+    .then(receipt => { console.log('analytics.observation_stored', { operationId, collectionVersion: COLLECTION_VERSION, receipt }); })
     .catch((error: unknown) => {
-      const reason = error instanceof ObservationConfigurationError ? 'missing-hash-key' : 'persistence-or-processing';
+      const reason = error instanceof ObservationConfigurationError ? 'missing-hash-key'
+        : error instanceof ObservationAcknowledgementError ? 'unacknowledged-insert' : 'persistence-or-processing';
       console.warn('analytics.observation_write_failed', { operationId, collectionVersion: COLLECTION_VERSION, reason });
       // Keep failure observable to waitUntil and fixtures without serializing private DB errors.
       if (error instanceof ObservationConfigurationError) throw error;

@@ -15,7 +15,7 @@ function setup() {
   const DB = { prepare(sql) { return { bind(...values) { const statement = sqlite.prepare(sql); return {
     async first() { return statement.get(...values) ?? null; },
     async all() { return {results:statement.all(...values)}; },
-    async run() { const r=statement.run(...values); return {meta:{changes:Number(r.changes),last_row_id:Number(r.lastInsertRowid)}}; },
+    async run() { const r=statement.run(...values); return {success:true,meta:{changes:Number(r.changes),last_row_id:Number(r.lastInsertRowid)}}; },
   }; } }; }, async batch(statements) { return Promise.all(statements.map(s=>s.all())); } };
   const config = {issuedAt:now.getTime()-1000,expiresAt:now.getTime()+600000,trials:[{id,condition:'normal',operator:'agent-browser'}]};
   const env = {DB,ANALYTICS_HASH_KEY:'local-only',OWNER_MARK_GRANT:JSON.stringify({token,issuedAt:config.issuedAt,expiresAt:config.expiresAt}),ANALYTICS_CALIBRATION:JSON.stringify(config)};
