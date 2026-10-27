@@ -182,3 +182,8 @@ Pre-publication acceptance: [one native-accepted production report SELECT](publi
 
 
 The [public signer release](public-signer-release.json) is accepted: source f0e7613, observed 100% activation, both live name channels, the same 273-event selected population as the prepared SELECT, cache MISS/HIT with identical bytes, and article byte match. The native-only Other and overlapping-client branch is not presented as organic acceptance. The article is 1,262 words with 22 prompts. This closes the public signer-display gap while retaining private source evidence. Next bounded action: settle the still-pending collection boundary/basis and aggregate-preserving linked-row retention plan before deliberately enabling optional diagnostics. No active expanded capture or completion of the overall privacy/capture request is claimed.
+
+
+## October 27 denominator completeness
+
+[Research 29](29-unreported-classifications-and-denominators.md) and [native acceptance](unreported-kinds-local.json) preserve the missing-kind/reason counterexample and report-only repair. Native headline/composition 10/5 becomes 10/10; five groups now sum to ten. Explicit provenance and strict decoding preserve unknowns; source rows and the existing combined signed-client filter remain unchanged. Analytics 172/site 106/type checks pass. Isolated build, rendered local controls, delivery/activation and a bounded live selection remain separate acceptance gates. No production prevalence or human/device accuracy claim; human trials remain deferred.

@@ -163,6 +163,9 @@ export interface StatsResponse {
   /** Independent local and native outcomes; overlapping counts, never people. */
   verification: VerificationSummary;
   vendorNetwork: VendorNetworkSummary;
+  /** Missing/unrecognized stored kinds report as Unresolved with closed provenance reasons.
+   * Original values remain unchanged; the raw-kind intersections below retain null.
+   */
   byKind: Array<{ kind: ReaderKind; reason: string; views: number; dailyClients: number }>;
   /** Disjoint event counts by classification and signature basis; no person/intent claim. */
   byKindSignature: Array<{ kind: ReaderKind | null; basis: SignatureBasis; views: number }>;

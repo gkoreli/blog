@@ -1,0 +1,110 @@
+{
+  "checkedAt": "2026-10-27T21:24:22.605Z",
+  "method": "Native local D1; pinned baseline stats/partition/contracts, current unchanged shared helpers, same fifteen synthetic stored rows. Known-valid control uses four rows.",
+  "baseline": "0badd15",
+  "baselineSource": {
+    "stats.ts": "de521cc87a6df8e472d84ec3354bcbf9d729d772e1764bee2b22c9ab907d3cde",
+    "partition.ts": "3e06a3422383b9057ac5f67d46b98f227bd0a4a0991a4bcf2a524c03a46c1bac",
+    "contracts.ts": "bd1fb761f21f465137256c47b6d0283f01f57ee8fff9c633fdd711edd3e253de"
+  },
+  "counts": {
+    "before": {
+      "all": {
+        "views": 10,
+        "compositionViews": 5,
+        "rowsRead": 7489,
+        "rowsWritten": 0
+      },
+      "browser": {
+        "views": 2,
+        "compositionViews": 1,
+        "rowsRead": 4837,
+        "rowsWritten": 0
+      },
+      "agents": {
+        "views": 3,
+        "compositionViews": 3,
+        "rowsRead": 4874,
+        "rowsWritten": 0
+      },
+      "crawlers": {
+        "views": 0,
+        "compositionViews": 0,
+        "rowsRead": 90,
+        "rowsWritten": 0
+      },
+      "automation": {
+        "views": 0,
+        "compositionViews": 0,
+        "rowsRead": 90,
+        "rowsWritten": 0
+      },
+      "unresolved": {
+        "views": 1,
+        "compositionViews": 1,
+        "rowsRead": 4802,
+        "rowsWritten": 0
+      }
+    },
+    "after": {
+      "all": {
+        "views": 10,
+        "compositionViews": 10,
+        "rowsRead": 7513,
+        "rowsWritten": 0
+      },
+      "browser": {
+        "views": 2,
+        "compositionViews": 2,
+        "rowsRead": 4843,
+        "rowsWritten": 0
+      },
+      "agents": {
+        "views": 3,
+        "compositionViews": 3,
+        "rowsRead": 4883,
+        "rowsWritten": 0
+      },
+      "crawlers": {
+        "views": 0,
+        "compositionViews": 0,
+        "rowsRead": 90,
+        "rowsWritten": 0
+      },
+      "automation": {
+        "views": 0,
+        "compositionViews": 0,
+        "rowsRead": 90,
+        "rowsWritten": 0
+      },
+      "unresolved": {
+        "views": 5,
+        "compositionViews": 5,
+        "rowsRead": 7324,
+        "rowsWritten": 0
+      }
+    }
+  },
+  "knownControl": {
+    "fullResponseEqual": true,
+    "beforeReads": 4905,
+    "afterReads": 4917
+  },
+  "checks": {
+    "storedHistoryUnchanged": true,
+    "ownerReferralPathFutureBoundaries": true,
+    "allTimeUnknownScope": true,
+    "namedUnknownScopeCoveredByUnitTests": true,
+    "sqlGroupingDistinctClients": true,
+    "rawCanariesWithheld": true,
+    "legacyCombinedAndKindOnlySelectionsPreserved": true,
+    "prospectiveStatementNativeAccepted": true
+  },
+  "productionRequests": 0,
+  "limits": [
+    "Synthetic storage/report fixtures, not measured prevalence of missing classifications in production.",
+    "All totals and known-kind groups are preserved; unknown-role composition and Unresolved selections intentionally change.",
+    "Current shared helpers are unchanged in behavior; the old partition is pinned so it cannot silently use the new Unresolved semantics.",
+    "Observed reads are local fixture costs, not production forecasts. Daily-client counts must not be summed across groups."
+  ]
+}

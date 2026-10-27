@@ -1,0 +1,81 @@
+{
+  "method": "One native-accepted prepared report SELECT through Wrangler --command argv; no mutation or synthetic production seeding",
+  "query": {
+    "range": "7d",
+    "traffic": "all",
+    "path": "/privacy"
+  },
+  "readCeiling": 50000,
+  "meta": {
+    "rows_read": 8013,
+    "rows_written": 0,
+    "changes": 0,
+    "changed_db": false,
+    "duration": 36.9944
+  },
+  "totals": [
+    {
+      "views": 15,
+      "dailyClients": 15,
+      "unattributedViews": 15
+    }
+  ],
+  "composition": [
+    {
+      "key1": "other-bot",
+      "key2": "generic-bot",
+      "views": 4,
+      "dailyClients": 4
+    },
+    {
+      "key1": "browser",
+      "key2": "navigation-shaped",
+      "views": 3,
+      "dailyClients": 3
+    },
+    {
+      "key1": "cloud-browser",
+      "key2": "hosting-asn:132203",
+      "views": 2,
+      "dailyClients": 2
+    },
+    {
+      "key1": "cloud-browser",
+      "key2": "hosting-asn:24940",
+      "views": 2,
+      "dailyClients": 2
+    },
+    {
+      "key1": "ai-crawler",
+      "key2": "Amazonbot",
+      "views": 1,
+      "dailyClients": 1
+    },
+    {
+      "key1": "cloud-browser",
+      "key2": "hosting-asn:14061",
+      "views": 1,
+      "dailyClients": 1
+    },
+    {
+      "key1": "http-client",
+      "key2": "not-navigation-shaped",
+      "views": 1,
+      "dailyClients": 1
+    },
+    {
+      "key1": "signed-agent",
+      "key2": "Ahrefs",
+      "views": 1,
+      "dailyClients": 1
+    }
+  ],
+  "compositionViews": 15,
+  "missingOrUnrecognizedKindViews": 0,
+  "missingReasonViews": 0,
+  "limits": [
+    "Bounded privacy-page seven-day selection, not all retained observations.",
+    "HTTP cold fills and unrelated traffic consume additional work.",
+    "No human or device labels."
+  ]
+}

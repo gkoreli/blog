@@ -1,4 +1,5 @@
 import { READER_GROUPS, type TrafficFilter } from './contracts.js';
+import { unresolvedKindSql } from './reporting-kind.js';
 
 export interface PartitionPredicate {
   sql: string;
@@ -13,9 +14,11 @@ function kindList(kinds: readonly string[]): string {
  * Public filters partition rows by reader_kind, which ingestion assigns from the
  * request evidence (readerkind.ts) and migrations 0006 and 0007 assigned to history
  * with the historical mapping. New unresolved evidence has its own group.
- * The five groups are disjoint and cover every kind; their views sum to All.
+ * Unresolved also includes missing/unrecognized stored classifications. No row
+ * is rewritten; the groups remain a disjoint reporting partition of All.
  */
 export function partitionPredicate(traffic: TrafficFilter): PartitionPredicate {
   if (traffic === 'all') return { sql: '', values: [] };
+  if (traffic === 'unresolved') return { sql: unresolvedKindSql(), values: [] };
   return { sql: `reader_kind IN (${kindList(READER_GROUPS[traffic])})`, values: [] };
 }

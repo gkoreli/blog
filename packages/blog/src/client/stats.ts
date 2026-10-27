@@ -47,6 +47,9 @@ const KIND_LABELS: Record<ReaderKind, string> = {
 
 /** Public wording for the reason codes that are not agent names. */
 const REASON_LABELS: Record<string, string> = {
+  'classification-not-recorded': 'stored classification not recorded',
+  'unrecognized-stored-classification': 'unrecognized stored classification',
+  'classification-reason-unavailable': 'stored reason missing or empty',
   'navigation-shaped': 'navigation headers; network unlisted or unavailable (earlier rule)',
   'navigation-shaped-network-unlisted': 'browser claim and navigation headers; network not on hosting list',
   'multiple-client-declarations': 'multiple recognized client declarations; no name selected',

@@ -21,6 +21,7 @@ import {
   type StatsWindow,
 } from './dates.js';
 import { partitionPredicate } from './partition.js';
+import { reportedKindSql, reportedReasonSql, unresolvedKindSql, CLASSIFICATION_REASON_UNAVAILABLE } from './reporting-kind.js';
 import { publicReferrers } from './referrals.js';
 import { referralAssessmentCtes, referralRulesJson } from './referral-sql.js';
 import { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
@@ -80,8 +81,8 @@ function predicateFor(window: StatsWindow, query: StatsQuery, includeOutgoing = 
     values.push(query.agent);
   }
   if (query.kind !== undefined) {
-    sql += ' AND reader_kind = ?';
-    values.push(query.kind);
+    if (query.kind === 'unresolved') sql += ` AND ${unresolvedKindSql()}`;
+    else { sql += ' AND reader_kind = ?'; values.push(query.kind); }
   }
   return { sql, values };
 }
@@ -216,16 +217,20 @@ function agentRows(rows: Record<string, unknown>[]): StatsResponse['byAgent'] {
   return result;
 }
 
-function kindRows(rows: Record<string, unknown>[]): StatsResponse['byKind'] {
+function kindRows(rows: Record<string, unknown>[], total: number): StatsResponse['byKind'] {
   const result: StatsResponse['byKind'] = [];
+  const keys = new Set<string>();
   for (const row of rows) {
     const kind = stringField(row, 'key1');
     const reason = stringField(row, 'key2');
-    if (kind !== null && isReaderKind(kind) && reason !== null) {
-      if (kind === 'signed-agent' && !isPublicSignerName(reason)) return malformedReport();
-      result.push({ kind, reason, views: numberField(row, 'views'), dailyClients: numberField(row, 'dailyClients') });
-    }
+    if (kind === null || !isReaderKind(kind) || reason === null || reason.length === 0) return malformedReport();
+    if (kind === 'signed-agent' && !isPublicSignerName(reason) && reason !== CLASSIFICATION_REASON_UNAVAILABLE) return malformedReport();
+    const views = row.views, dailyClients = row.dailyClients, key = JSON.stringify([kind, reason]);
+    if (typeof views !== 'number' || !Number.isSafeInteger(views) || views <= 0
+      || typeof dailyClients !== 'number' || !Number.isSafeInteger(dailyClients) || dailyClients < 1 || dailyClients > views || keys.has(key)) return malformedReport();
+    keys.add(key); result.push({ kind, reason, views, dailyClients });
   }
+  if (result.reduce((sum, row) => sum + row.views, 0) !== total) return malformedReport();
   return result;
 }
 
@@ -282,7 +287,8 @@ function signerLabelSql(column: 'signature_agent' | 'reader_reason'): string {
 }
 
 function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary: boolean): QueryPredicate {
-  const publicReason = `CASE WHEN reader_kind = 'signed-agent' THEN ${signerLabelSql('reader_reason')} ELSE reader_reason END`;
+  const publicReason = reportedReasonSql();
+  const publicKind = reportedKindSql();
   const publicSigner = signerLabelSql('signature_agent');
   const boundaryCte = includeBoundary
     ? `, boundary AS MATERIALIZED (
@@ -399,10 +405,10 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         )
         WHEN 'kind' THEN (
           SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', reader_kind, 'key2', ${publicReason}, 'views', COUNT(*),
+            SELECT json_object('key1', ${publicKind}, 'key2', ${publicReason}, 'views', COUNT(*),
               'dailyClients', COUNT(DISTINCT daily_client_id)) AS row_json
-            FROM included WHERE reader_kind IS NOT NULL
-            GROUP BY reader_kind, ${publicReason} ORDER BY COUNT(*) DESC, reader_kind, ${publicReason}
+            FROM included
+            GROUP BY ${publicKind}, ${publicReason} ORDER BY COUNT(*) DESC, ${publicKind}, ${publicReason}
           )
         )
         WHEN 'signer' THEN (
@@ -579,7 +585,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
       if (!isPublicSignerName(signatureAgent)) return malformedReport();
       return { signatureAgent, views: numberField(row, 'views') };
     }),
-    byKind: kindRows(requiredSection(sections, 'kind')),
+    byKind: kindRows(requiredSection(sections, 'kind'), numberField(totalsRow, 'views')),
     byKindSignature: kindSignatureRows(requiredSection(sections, 'kind-signature'), numberField(totalsRow, 'views')),
     byKindNativeCategory: nativeCategoryRows(requiredSection(sections, 'native-category'), numberField(totalsRow, 'views')),
     vendorNetwork: {
@@ -643,14 +649,14 @@ export function parseStatsQuery(params: URLSearchParams): StatsQuery | string {
     ? scoped ? 'all' : 'browser'
     : parseTrafficFilter(trafficValue);
   if (traffic === null) return 'traffic must be browser, agents, crawlers, automation, unresolved, or all';
-  if (agent !== undefined && kind !== undefined && kind !== 'signed-agent' && !agentReaderKinds(agent).includes(kind)) {
+  if (agent !== undefined && kind !== undefined && kind !== 'signed-agent' && kind !== 'unresolved' && !agentReaderKinds(agent).includes(kind)) {
     return `agent ${agent} cannot be combined with kind=${kind}`;
   }
   if (kind !== undefined && traffic !== 'all' && !READER_GROUPS[traffic].includes(kind)) {
     return `kind ${kind} cannot be combined with traffic=${traffic}`;
   }
   // Historical named/signed rows retain their original fallback classification.
-  if (agent !== undefined && traffic !== 'all' && traffic !== 'agents' && !agentReaderKinds(agent).some(kind => readerGroupOf(kind) === traffic)) {
+  if (agent !== undefined && traffic !== 'all' && traffic !== 'agents' && traffic !== 'unresolved' && !agentReaderKinds(agent).some(kind => readerGroupOf(kind) === traffic)) {
     return `agent ${agent} cannot be combined with traffic=${traffic}`;
   }
 

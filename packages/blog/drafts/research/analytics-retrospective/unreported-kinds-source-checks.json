@@ -1,0 +1,35 @@
+{
+  "analyticsTests": 172,
+  "siteTests": 106,
+  "workspaceTypecheck": "pass",
+  "frontmatterValidation": "pass",
+  "isolatedProductionBuild": {
+    "path": "/tmp/gk-production-stage-build-20261027/packages/blog",
+    "posts": 32,
+    "result": "pass"
+  },
+  "articleBodyWords": 1250,
+  "shapingPrompts": 31,
+  "gitDiffCheck": "pass",
+  "nativeLocal": "unreported-kinds-local.json",
+  "productionSelect": "unreported-kinds-production-query.json",
+  "limits": [
+    "Browser interaction and production activation are separate acceptance gates.",
+    "No human trials or production seeding of unknown classifications."
+  ],
+  "ui": {
+    "fixtureOnly": true,
+    "allCompositionViews": 10,
+    "unresolvedViews": 5,
+    "assistantUnionViews": 3,
+    "declaredAssistantSubsetViews": 1,
+    "keyboardClearRestoresAllViews": 10,
+    "pointerActivation": "Some automated pointer activations had no observed effect; keyboard activation succeeded. Cause unestablished, no pointer/lifecycle fix claimed.",
+    "narrowViewportWidth": 390,
+    "narrowSettledPageWidth": 390,
+    "limits": [
+      "Initial resize inspection saw transient overflow before settled layout.",
+      "No actual mobile hardware or human operator."
+    ]
+  }
+}
