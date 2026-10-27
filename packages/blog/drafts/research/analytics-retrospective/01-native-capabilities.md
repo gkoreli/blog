@@ -2,6 +2,8 @@
 
 Checked October 25, 2026 Pacific / October 26 UTC against official Cloudflare documentation and the local implementation at `a04ee04`. This is a documentation/code review: no production request, SQL, credential read, entitlement change, or new instrumentation was performed in this lane. [Today's measured audit](../edge-vs-rum/05-analytics-audit-2026-10-25.md) owns the live observations; documentation does not establish which products this zone currently has enabled.
 
+**October 27 continuation:** [Research 35](35-goal-coverage-and-native-signal-boundary.md) records actual Free-zone request-header editor access and the unvalidated `cf.client.bot` bridge candidate. [Research 25](25-native-category-and-entitlement.md) owns delivered category collection and the separate unavailable Worker booleans. This original inventory remains dated evidence.
+
 ## Identity, role, and trigger are separate questions
 
 Cloudflare now has a richer native vocabulary than the September ADRs describe. Its [Verified bots documentation](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) (updated October 8) says that signed agents were folded into Verified bots and agents on July 1. BotBase distinguishes behaviors such as Search, Agent, Training, SEO, and Monitoring, and Direct versus Intermediary operation. The same page warns that the new behaviors are not individual WAF custom-rule fields: the older category taxonomy remains supported there.

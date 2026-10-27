@@ -11,6 +11,42 @@ function request(cf) {
   if (cf !== undefined) Object.defineProperty(req, 'cf', { value: cf });
   return req;
 }
+test('claimed native headers and Ruleset aliases cannot manufacture Worker bot evidence', () => {
+  const spoofed = new Request('https://publication.example/article', { headers: {
+    'CF-Verified-Bot': 'true', 'CF-Signed-Agent': 'true',
+    'Verified-Bot-Category': 'AI Assistant', 'X-Analytics-Known-Bot': 'true',
+    'cf.client.bot': 'true',
+  } });
+  const absent = { status: 'absent' };
+  assert.deepEqual(verificationEvidence(spoofed, absent).native, {
+    verifiedBot: null, signedAgent: null,
+    category: { version: '2026-10-27.1', status: 'unavailable', value: null },
+  });
+  // A Ruleset expression name is not an IncomingRequestCfProperties field.
+  Object.defineProperty(spoofed, 'cf', { configurable: true, value: {
+    'cf.client.bot': true, client: { bot: true },
+    botManagement: { verifiedBot: 'true', signedAgent: 1 },
+  } });
+  assert.equal(verificationEvidence(spoofed, absent).native.verifiedBot, null);
+  assert.equal(verificationEvidence(spoofed, absent).native.signedAgent, null);
+  Object.defineProperty(spoofed, 'cf', { configurable: true, value: {
+    botManagement: { verifiedBot: false, signedAgent: false }, verifiedBotCategory: '',
+  } });
+  const negative = verificationEvidence(spoofed, absent);
+  assert.equal(negative.native.verifiedBot, false);
+  assert.equal(negative.native.signedAgent, false);
+  assert.equal(negative.native.category.status, 'empty');
+  assert.equal(negative.localOutcome, 'absent');
+  Object.defineProperty(spoofed, 'cf', { value: {
+    botManagement: { verifiedBot: true, signedAgent: true }, verifiedBotCategory: 'AI Search',
+  } });
+  const independent = verificationEvidence(spoofed, { status: 'unverified', reason: 'signature-invalid' });
+  assert.equal(independent.native.verifiedBot, true);
+  assert.equal(independent.native.signedAgent, true);
+  assert.equal(independent.native.category.value, 'AI Search');
+  assert.equal(independent.localOutcome, 'invalid');
+  assert.equal(independent.coverage, null);
+});
 test('provider category is exact closed metadata, independent of booleans and request headers', () => {
   for (const value of NATIVE_BOT_CATEGORIES) {
     const e = verificationEvidence(request({ verifiedBotCategory: value }), { status: 'absent' });

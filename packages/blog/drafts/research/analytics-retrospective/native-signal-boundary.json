@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-10-27T23:38:21.341261+00:00",
+  "baseSource": "5153086",
+  "method": "official documentation plus read-only native dashboard and in-process synthetic regression",
+  "zonePlanObserved": "free",
+  "requestHeaderEditor": {
+    "accessible": true,
+    "displayedUsedRules": 0,
+    "displayedAvailableRules": 10,
+    "visiblePickerOptions": 17,
+    "visibleBotPickerOptions": 0,
+    "candidate": "to_string(cf.client.bot)",
+    "candidateValidated": false,
+    "savedDraft": false,
+    "deployed": false,
+    "cancelReturnObserved": true
+  },
+  "workerEvidence": {
+    "nativeSource": "request.cf",
+    "headerBridgeTrusted": false,
+    "runtimeChanged": false,
+    "profilesChanged": false
+  },
+  "checks": {
+    "analyticsTests": {
+      "pass": 189,
+      "fail": 0
+    },
+    "postValidation": "pass",
+    "newRegressionTests": 1
+  },
+  "activity": {
+    "directD1Statements": 0,
+    "newLabelledControls": 0,
+    "humanTrials": 0,
+    "ordinaryDashboardActivity": "additional service activity"
+  },
+  "article": {
+    "changed": false,
+    "priorAcceptedBodyWords": 1250,
+    "priorAcceptedShapingPrompts": 31,
+    "acceptance": "retained-v3-recovery-publication.json"
+  },
+  "captureSha256": {
+    "header-editor-blank.txt": "676ed1fc40f3fc93b54b60760443c5aa9a259f833553647fd84a0eb2e61ed38a",
+    "header-field-options.txt": "fe1c2099d422e075309138d794d5c433ffce7f812bf3ae60deecd783ebc9419b",
+    "rules-after-cancel.txt": "47ddefece1fad1cd59d4c4de62c3d1e01e3735c43d04c8b3c1ae3318b00f183d"
+  },
+  "sourceSha256": {
+    "packages/analytics/src/signature-evidence.ts": "2dc1fc24957ae7cff7e4cf4a0383342932210fb1c925e3e63df0c1febe61d73c",
+    "packages/analytics/src/native-bot-evidence.ts": "3577e51bb9c8107427c9609f3c5e08f052a564c1a7dc519ef7692d61c9270fae",
+    "packages/analytics/test/native-category.test.mjs": "d76291e36c5be646f810942e24e4e3589e4a41783b01daefd23bbf13ce01b44b"
+  },
+  "limits": [
+    "Editor access and picker omission do not establish expression acceptance or rejection.",
+    "Fixtures do not establish actual provider header sanitization or product entitlement.",
+    "No human labels, native cryptographic agreement or population accuracy.",
+    "Historical census and releases remain dated evidence."
+  ],
+  "nextGate": "Validate the exact candidate for the zone before designing capture-only ingress and overwrite acceptance."
+}

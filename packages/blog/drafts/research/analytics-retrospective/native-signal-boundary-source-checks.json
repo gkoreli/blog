@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-27T23:38:21.349543+00:00",
+  "analytics": {
+    "pass": 189,
+    "fail": 0,
+    "logSha256": "2343c3c50c612c4935e8a3f904bfa6520de663ea59e86a7c8b94b131c82a3739"
+  },
+  "postValidation": {
+    "result": "pass",
+    "logSha256": "ab22c74b5cc7f8dc3ac1e5c27228f48aa54768c533f4221b59f3268eaf15c11d"
+  },
+  "relativeFileLinks": {
+    "checked": 236,
+    "missing": 0
+  },
+  "runtimeChanged": false,
+  "productionBuild": "not required: research, cross-references and test only",
+  "articleChanged": false,
+  "newProductionAcceptanceClaim": false,
+  "gitDiffCheck": "pass",
+  "codeFences": "balanced"
+}
