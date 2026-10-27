@@ -8,6 +8,7 @@ const encoder = new TextEncoder();
 export interface SignatureEvidence {
   version: '2026-10-27.1';
   headerForm: 'dictionary' | 'legacy-string' | 'bare-uri';
+  /** contentDigest records signed header coverage, not a body/digest comparison. */
   covered: { authority: boolean; targetUri: boolean; method: boolean; path: boolean; query: boolean; userAgent: boolean; contentDigest: boolean };
   otherComponentCount: number;
   validitySeconds: number;
@@ -439,6 +440,8 @@ function signatureAgentComponentValue(
   if (component.parameters.length !== 1 || component.parameters[0]?.name !== 'key') return null;
   const memberKey = stringValue(component.parameters[0]?.value);
   if (memberKey === null) return null;
+  // Resolve only the covered member. An unsigned member cannot rename the
+  // signer; the outer Signature label can be relabelled (RFC 9421 section 7.2.5).
   const entry = parsedAgent.entries.find((candidate) => candidate.key === memberKey);
   if (entry?.member.type !== 'item' || entry.member.value.bare.type !== 'string') return null;
   const discoveryType = parameter(entry.member.value.parameters, 'type');

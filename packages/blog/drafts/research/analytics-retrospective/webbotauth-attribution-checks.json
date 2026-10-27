@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-27T19:50:43.346633+00:00",
+  "baseCommit": "4222587",
+  "runtime": "v24.14.1",
+  "checks": {
+    "scopedAnalyticsTests": {
+      "passed": 145,
+      "failed": 0,
+      "method": "Compiled analytics sources, then node --test on test/*.test.mjs excluding the separately unfinished calibration-evaluation.test.mjs"
+    },
+    "workspaceTypecheck": "passed",
+    "relativeDocumentLinksChecked": 233,
+    "diffWhitespace": "passed",
+    "independentSignedControls": 12
+  },
+  "scope": {
+    "runtimeBehaviorChanged": false,
+    "schemaChanged": false,
+    "policyVersionChanged": false,
+    "articleChanged": false,
+    "networkCalls": 0,
+    "productionPageRequests": 0,
+    "d1Statements": 0
+  },
+  "sourcesRead": [
+    "https://crawler.exa.ai/",
+    "https://crawler.exa.ai/exauser",
+    "https://www.rfc-editor.org/rfc/rfc9421.html#section-7.2",
+    "https://datatracker.ietf.org/doc/html/draft-ietf-webbotauth-httpsig-protocol-00#section-5.2.1",
+    "https://datatracker.ietf.org/doc/html/draft-ietf-webbotauth-httpsig-protocol-00#section-6.6.1",
+    "https://datatracker.ietf.org/doc/html/draft-ietf-webbotauth-httpsig-protocol-00#appendix-E.2.1",
+    "https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/",
+    "https://developers.cloudflare.com/bots/reference/bot-management-variables/"
+  ],
+  "limits": [
+    "No fresh vendor-request verification, native Cloudflare/Akamai acceptance, production prevalence or conformance certification.",
+    "The first fixture attempted replacement with case-variant object keys, causing duplicate header values and a malformed-agent failure. Headers.set corrected the fixture; the verifier was not changed.",
+    "The concurrent calibration-ledger changes remain outside this delivery."
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "checkedAt": "2026-10-27T19:50:43.283Z",
+  "runtime": "v24.14.1",
+  "verifierProfile": "2026-10-27.6",
+  "method": "Independently assembled signing bytes; ephemeral Ed25519 fixture key, fixed clock, intercepted directory. Exa tokens are declarations only. No native provider, vendor request or human trial.",
+  "trials": [
+    {
+      "label": "minimal-selected-member",
+      "status": "verified",
+      "reason": null,
+      "authenticatedFixtureOrigin": true,
+      "declaredClient": "ExaSearchBot",
+      "documentedVendorOrigin": "different-origin",
+      "userAgentCovered": false,
+      "contentDigestHeaderCovered": false,
+      "replayPolicy": "expiry-only"
+    },
+    {
+      "label": "bound-role-and-path-positive",
+      "status": "verified",
+      "reason": null,
+      "authenticatedFixtureOrigin": true,
+      "declaredClient": "ExaSearchBot",
+      "documentedVendorOrigin": "different-origin",
+      "userAgentCovered": true,
+      "contentDigestHeaderCovered": false,
+      "replayPolicy": "expiry-only"
+    },
+    {
+      "label": "unsigned-role-and-path-change",
+      "status": "verified",
+      "reason": null,
+      "authenticatedFixtureOrigin": true,
+      "declaredClient": "ExaUser",
+      "documentedVendorOrigin": "different-origin",
+      "userAgentCovered": false,
+      "contentDigestHeaderCovered": false,
+      "replayPolicy": "expiry-only"
+    },
+    {
+      "label": "unsigned-exa-member-injection",
+      "status": "verified",
+      "reason": null,
+      "authenticatedFixtureOrigin": true,
+      "declaredClient": "ExaSearchBot",
+      "documentedVendorOrigin": "different-origin",
+      "userAgentCovered": false,
+      "contentDigestHeaderCovered": false,
+      "replayPolicy": "expiry-only"
+    },
+    {
+      "label": "outer-label-renamed",
+      "status": "verified",
+      "reason": null,
+      "authenticatedFixtureOrigin": true,
+      "declaredClient": "ExaSearchBot",
+      "documentedVendorOrigin": "different-origin",
+      "userAgentCovered": false,
+      "contentDigestHeaderCovered": false,
+      "replayPolicy": "expiry-only"
+    },
+    {
+      "label": "same-nonce-repeat",
+      "status": "verified",
+      "reason": null,
+      "authenticatedFixtureOrigin": true,
+      "declaredClient": "ExaSearchBot",
+      "documentedVendorOrigin": "different-origin",
+      "userAgentCovered": false,
+      "contentDigestHeaderCovered": false,
+      "replayPolicy": "expiry-only"
+    },
+    {
+      "label": "digest-header-positive",
+      "status": "verified",
+      "reason": null,
+      "authenticatedFixtureOrigin": true,
+      "declaredClient": "ExaSearchBot",
+      "documentedVendorOrigin": "different-origin",
+      "userAgentCovered": false,
+      "contentDigestHeaderCovered": true,
+      "replayPolicy": "expiry-only"
+    },
+    {
+      "label": "body-changed-digest-header-unchanged",
+      "status": "verified",
+      "reason": null,
+      "authenticatedFixtureOrigin": true,
+      "declaredClient": "ExaSearchBot",
+      "documentedVendorOrigin": "different-origin",
+      "userAgentCovered": false,
+      "contentDigestHeaderCovered": true,
+      "replayPolicy": "expiry-only"
+    },
+    {
+      "label": "covered-role-change",
+      "status": "unverified",
+      "reason": "signature-invalid",
+      "authenticatedFixtureOrigin": false,
+      "declaredClient": "ExaUser",
+      "documentedVendorOrigin": "not-verified",
+      "userAgentCovered": null,
+      "contentDigestHeaderCovered": null,
+      "replayPolicy": null
+    },
+    {
+      "label": "covered-path-change",
+      "status": "unverified",
+      "reason": "signature-invalid",
+      "authenticatedFixtureOrigin": false,
+      "declaredClient": "ExaSearchBot",
+      "documentedVendorOrigin": "not-verified",
+      "userAgentCovered": null,
+      "contentDigestHeaderCovered": null,
+      "replayPolicy": null
+    },
+    {
+      "label": "covered-authority-change",
+      "status": "unverified",
+      "reason": "signature-invalid",
+      "authenticatedFixtureOrigin": false,
+      "declaredClient": "ExaSearchBot",
+      "documentedVendorOrigin": "not-verified",
+      "userAgentCovered": null,
+      "contentDigestHeaderCovered": null,
+      "replayPolicy": null
+    },
+    {
+      "label": "expired-beyond-skew",
+      "status": "unverified",
+      "reason": "expired",
+      "authenticatedFixtureOrigin": false,
+      "declaredClient": "ExaSearchBot",
+      "documentedVendorOrigin": "not-verified",
+      "userAgentCovered": null,
+      "contentDigestHeaderCovered": null,
+      "replayPolicy": null
+    }
+  ],
+  "interceptedDirectoryFetches": 1,
+  "networkCalls": 0,
+  "productionCalls": 0,
+  "probeSha256": "4643e8edbbdfc64d125e9a558c45bb97a15464cd68f0f9339b272e458e8f3489",
+  "sourceSha256": {
+    "src/webbotauth.ts": "8c7d45209641d3ec4d6c51459b481a12b1539d64ac77235ad219215c896c8043",
+    "src/vendor-signatures.ts": "d8e5d0479f930b0a80e8b04540c8853b620ff0771fc949e06c3804c33683fe18",
+    "src/versions.ts": "9bcde9c8032c1a4d4e2938ee3f05c389e3e061efae108b3dbedfbe5bd5d4542d",
+    "test/fixtures/webbotauth-attribution.mjs": "5ebfae8b99ac8c08b7e3cd8d70043b7d6d34a2669a2f982300e869dc805a7e0f"
+  },
+  "limits": [
+    "Selected local controls, not full RFC/draft conformance or production prevalence.",
+    "Same-nonce acceptance demonstrates existing expiry-only policy, not observed exploitation.",
+    "Covered Content-Digest means the header is signed; this verifier does not compare its digest with body bytes. The page collector only admits GET.",
+    "Outer-label acceptance follows RFC relabelling and published draft vectors; draft section 5.2.1 label wording requires clarification."
+  ]
+}
