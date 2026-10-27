@@ -139,3 +139,16 @@ What to improve further? What are we still guessing?
 ---
 
 There is more learnings to be made in ai agent and bot detections
+
+---
+
+The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.
+
+Continue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.
+
+---
+
+Are we respecting and do we have a dedicated sub module or capabilties for this specification? If not we need to learn all about it and improve our code and visibility into it: Verification
+Every request is signed with Web Bot Auth (RFC 9421) and is verified automatically on Cloudflare, Akamai, and other providers that support it. Keys are published at https://crawler.exa.ai/.well-known/http-message-signatures-directory.
+
+We might even write another dedicated article on it

@@ -1,0 +1,84 @@
+{
+  "checkedAt": "2026-10-27T06:28:22.342Z",
+  "runtime": "Miniflare/workerd native local D1; actual collector, verifier, persistence and report code",
+  "migration": "0012_signature_evidence.sql",
+  "historicalEvidenceRemainsNull": true,
+  "rows": [
+    {
+      "mode": "minimal",
+      "status": "verified",
+      "coverage": {
+        "version": "2026-10-27.1",
+        "headerForm": "dictionary",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 300,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only"
+      }
+    },
+    {
+      "mode": "bound",
+      "status": "verified",
+      "coverage": {
+        "version": "2026-10-27.1",
+        "headerForm": "dictionary",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": true,
+          "path": true,
+          "query": false,
+          "userAgent": true,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 300,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only"
+      }
+    },
+    {
+      "mode": "tampered",
+      "status": "unverified",
+      "coverage": null
+    },
+    {
+      "mode": "unsigned",
+      "status": "absent",
+      "coverage": null
+    }
+  ],
+  "directoryCalls": 1,
+  "verification": {
+    "recordedViews": 4,
+    "notRecordedViews": 1,
+    "localVerifiedViews": 2,
+    "localUnverifiedViews": 1,
+    "localAbsentViews": 1,
+    "testVerdictViews": 0,
+    "coverageRecordedViews": 2,
+    "userAgentBoundViews": 1,
+    "resourceBoundViews": 1,
+    "methodBoundViews": 1,
+    "authorityOnlyViews": 1,
+    "nativeAvailableViews": 4,
+    "nativeVerifiedBotViews": 0,
+    "nativeSignedAgentViews": 0,
+    "localVerifiedNativeNotVerifiedViews": 2
+  },
+  "preparedProductionSelectAccepted": true,
+  "productionCalls": 0,
+  "limits": [
+    "Synthetic signatures and injected directory responses, not real-vendor or native-provider verification.",
+    "Native booleans are labelled fixture inputs; no Cloudflare verdict is simulated as observed production evidence."
+  ]
+}

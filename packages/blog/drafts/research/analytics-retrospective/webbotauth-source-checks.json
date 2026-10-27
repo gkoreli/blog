@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-27T14:54:42.938674+00:00",
+  "analyticsTests": 97,
+  "siteTests": 106,
+  "workspaceTypes": "pass",
+  "frontmatter": "20 Markdown posts pass; 31 total posts validated by build",
+  "isolatedBuildPosts": 31,
+  "relativeDocumentLinksChecked": 314,
+  "articleWordsWithLinkTargetsRemoved": 1232,
+  "articleH1": 1,
+  "prompts": 30,
+  "nativeD1": "webbotauth-local.json",
+  "realRetainedVendorEvidence": "exa-native-verification.json",
+  "articleMarkdownSha256": "a51eb1e5596fb504bdec9d94786558b517ee4eff317e9c306c1c644864939c5f",
+  "limits": [
+    "Source/local checks, not production activation or future-write acceptance.",
+    "No raw diagnostic activation, historical proof backfill, full conformance or detector-accuracy claim."
+  ]
+}

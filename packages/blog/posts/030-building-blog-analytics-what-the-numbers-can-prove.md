@@ -3,7 +3,7 @@ title: "Building Blog Analytics: What the Numbers Can Prove"
 seoTitle: "Building Blog Analytics with Cloudflare Workers and D1"
 alternativeHeadline: "What a misleading traffic spike taught me about page counts, bot identity, and the cost of trustworthy analytics"
 date: "2026-10-25"
-lastModified: "2026-10-26"
+lastModified: "2026-10-27"
 description: "Cloudflare Workers and D1 analytics lessons: investigate misleading traffic growth, separate signed crawlers from assistants, and preserve evidence behind the counts."
 section: engineering
 tags: [analytics, cloudflare-workers, d1, bots, observability]
@@ -17,7 +17,7 @@ series:
 
 My blog’s Browser traffic more than doubled between two complete weeks. Yet one unexplained referrer supplied more than half the later week’s events. The totals added up; the audience-growth story did not follow.
 
-To understand which articles are useful, I’ve had to revisit three analytics decisions:
+Understanding which articles are useful starts with three decisions:
 
 - What event deserves to be counted?
 - What does a bot’s identity actually establish?
@@ -41,7 +41,7 @@ Browser events rose from **306** in the complete UTC week beginning September 14
 
 That is a sensitivity check. R1 remains included, and the subtraction does not produce a corrected human count. Its operator and authenticity are unresolved.
 
-[Recent Cloudflare logs](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/15-native-input-recovery.md) recovered 381 R1 requests over October 24–25, with 29 User-Agent strings. All matched our Browser rules when replayed; none identified a known client. Their operator remains unknown. Those logs and D1 have different, incompletely reconciled populations. **More evidence can test a rule without authenticating its subject.**
+[Recent Cloudflare logs](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/15-native-input-recovery.md) recovered 381 R1 requests over October 24–25, with 29 User-Agent strings. All matched our Browser rules when replayed; none identified a known client. Their operator and the population difference from D1 remain unresolved. **More evidence can test a rule without authenticating its subject.**
 
 ## A signed crawler was being counted as an assistant
 
@@ -51,7 +51,7 @@ Our catalogue also missed four documented names. [ExaSearchBot](https://crawler.
 
 The repair recognizes all four names, preserves declared roles across verified signatures, and reports signing evidence separately without double-counting totals. Local signed fixtures and excluded live User-Agent controls passed; organic vendor-signed acceptance remains open. The [repair evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/08-classification-repair.md) records that boundary.
 
-**Identity, role and trigger answer different questions.** [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) verify covered message components against a key. In a [local coverage experiment](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/17-detection-assumptions-and-experiments.md), changing an unsigned User-Agent changed the declared role while the same signature still verified. Neither establishes a human trigger. Exa’s clients share a signing directory, so the 1,003 historical Exa signer outcomes cannot recover the roles we failed to retain.
+**Identity, role and trigger answer different questions.** [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) verify selected components against a key. I [reverified 19 retained Exa records](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/18-webbotauth-verification.md): every signature protected the host, none the User-Agent or article path. A local mutation test confirmed those unsigned fields could change without invalidating the signature. Two records shared a provider ID; the sample does not establish 19 unique events. Native verification booleans were unavailable. New code preserves coverage, validity and native availability instead of reducing this evidence to verified. Human triggers and the roles lost from 1,003 historical Exa outcomes remain unknown.
 
 ## Preserve uncertainty in the data
 
@@ -98,4 +98,4 @@ These mechanisms do not explain the historical gap’s proportions. Real phones,
 | Message signature | Verification of covered components against a key; [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html), February 2024. |
 | D1 row reads | Database work, separate from audience size; [metering definitions](https://developers.cloudflare.com/d1/platform/pricing/#definitions). |
 
-Sources checked October 25–26, 2026 Pacific. The [research index](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-retrospective) retains methods, receipts, corrections and remaining work.
+Sources checked October 25–27, 2026. The [research index](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-retrospective) retains methods, receipts, corrections and remaining work.

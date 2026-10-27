@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-10-27T14:55:30.613646+00:00",
+  "migration": {
+    "name": "0012_signature_evidence.sql",
+    "appliedBeforeSourcePush": true,
+    "status": "success",
+    "cliExecutedCommands": 2
+  },
+  "directReport": {
+    "query": {
+      "range": "7d",
+      "traffic": "agents",
+      "kind": "signed-agent"
+    },
+    "start": "2026-10-21",
+    "end": "2026-10-27",
+    "rowsRead": 41274,
+    "rowsWritten": 0,
+    "readCeiling": 50000,
+    "totals": {
+      "views": 225,
+      "dailyClients": 147,
+      "unattributedViews": 225
+    },
+    "verification": {
+      "recordedViews": 0,
+      "notRecordedViews": 225,
+      "localVerifiedViews": null,
+      "localUnverifiedViews": null,
+      "localAbsentViews": null,
+      "testVerdictViews": null,
+      "coverageRecordedViews": null,
+      "userAgentBoundViews": null,
+      "resourceBoundViews": null,
+      "methodBoundViews": null,
+      "authorityOnlyViews": null,
+      "nativeAvailableViews": null,
+      "nativeVerifiedBotViews": null,
+      "nativeSignedAgentViews": null,
+      "localVerifiedNativeNotVerifiedViews": null
+    }
+  },
+  "schemaInspectionReads": {
+    "fileSummary": 32,
+    "retrievedResults": [
+      11,
+      31
+    ]
+  },
+  "limits": [
+    "Pre-release direct SELECT acceptance; no new collection code active yet.",
+    "Native missing and historical coverage absence remain unknown.",
+    "Schema/migration bookkeeping and later public report fills are additional; not an account-wide cost total."
+  ]
+}

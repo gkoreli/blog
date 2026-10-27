@@ -61,6 +61,24 @@ export interface TimeSeriesPoint {
 
 export const ANALYTICS_EVIDENCE_SINCE = '2026-09-03';
 
+export interface VerificationSummary {
+  recordedViews: number;
+  notRecordedViews: number;
+  localVerifiedViews: number;
+  localUnverifiedViews: number;
+  localAbsentViews: number;
+  testVerdictViews: number;
+  coverageRecordedViews: number;
+  userAgentBoundViews: number;
+  resourceBoundViews: number;
+  methodBoundViews: number;
+  authorityOnlyViews: number;
+  nativeAvailableViews: number;
+  nativeVerifiedBotViews: number;
+  nativeSignedAgentViews: number;
+  localVerifiedNativeNotVerifiedViews: number;
+}
+
 export interface StatsResponse {
   period: {
     start: string;
@@ -103,5 +121,7 @@ export interface StatsResponse {
   byAgent: Array<{ agentName: string; trafficClass: Exclude<TrafficClass, 'browser'>; views: number }>;
   /** Reviewed display names or Other, never arbitrary signing origins; independent of role. */
   bySigner: Array<{ signatureAgent: PublicSignerName; views: number }>;
+  /** Independent local and native outcomes; overlapping counts, never people. */
+  verification: VerificationSummary;
   byKind: Array<{ kind: ReaderKind; reason: string; views: number; dailyClients: number }>;
 }

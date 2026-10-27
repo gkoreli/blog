@@ -3,8 +3,19 @@ const DIRECTORY_TTL_MS = 60 * 60 * 1_000;
 const CLOCK_SKEW_SECONDS = 60;
 const encoder = new TextEncoder();
 
+/** Closed derived facts only: never header values, nonces or signature bytes. */
+export interface SignatureEvidence {
+  version: '2026-10-27.1';
+  headerForm: 'dictionary' | 'legacy-string' | 'bare-uri';
+  covered: { authority: boolean; targetUri: boolean; method: boolean; path: boolean; query: boolean; userAgent: boolean; contentDigest: boolean };
+  otherComponentCount: number;
+  validitySeconds: number;
+  ageSeconds: number;
+  replayPolicy: 'expiry-only';
+}
+
 export type WebBotAuthResult =
-  | { status: 'verified'; agent: string }
+  | { status: 'verified'; agent: string; evidence?: SignatureEvidence }
   | { status: 'unverified'; reason: string }
   | { status: 'absent' };
 
@@ -54,7 +65,7 @@ interface SignatureCandidate {
 
 interface DirectoryEntry {
   expiresAt: number;
-  keys: JsonWebKey[];
+  keys: Array<{ jwk: JsonWebKey; notBefore: number | null; expires: number | null }>;
 }
 
 interface KeyEntry {
@@ -66,12 +77,16 @@ export interface WebBotAuthCache {
   directories: Map<string, DirectoryEntry>;
   keys: Map<string, KeyEntry>;
   pendingDirectories: Map<string, Promise<DirectoryEntry | null>>;
+  forcedRefreshes: Map<string, number>;
 }
 
 export interface WebBotAuthOptions {
   now?: Date;
   fetcher?: typeof fetch;
   cache?: WebBotAuthCache;
+  includeEvidence?: boolean;
+  /** Application policy, distinct from the RFC's configurable validity rules. */
+  maxAgeSeconds?: number;
 }
 
 export interface SignatureAgentMember {
@@ -555,6 +570,7 @@ export function createWebBotAuthCache(): WebBotAuthCache {
     directories: new Map(),
     keys: new Map(),
     pendingDirectories: new Map(),
+    forcedRefreshes: new Map(),
   };
 }
 
@@ -572,6 +588,7 @@ async function fetchDirectory(
 
   const pending = cache.pendingDirectories.get(directoryUrl);
   if (pending !== undefined) return pending;
+  if (cache.pendingDirectories.size >= 64) return null;
 
   const load = async (): Promise<DirectoryEntry | null> => {
     try {
@@ -581,14 +598,47 @@ async function fetchDirectory(
         headers: { Accept: 'application/http-message-signatures-directory+json' },
       });
       if (response.status !== 200) return null;
-      const body: unknown = await response.json();
+      if (response.headers.get('Content-Type')?.split(';')[0]?.trim().toLowerCase() !== 'application/http-message-signatures-directory+json') return null;
+      if (Number(response.headers.get('Content-Length') ?? 0) > 65536) return null;
+      const reader = response.body?.getReader();
+      if (reader === undefined) return null;
+      let size = 0;
+      const chunks: Uint8Array[] = [];
+      try {
+        for (;;) {
+          const part = await reader.read();
+          if (part.done) break;
+          size += part.value.byteLength;
+          if (size > 65536) { await reader.cancel(); return null; }
+          chunks.push(part.value);
+        }
+      } finally { reader.releaseLock(); }
+      const bytes = new Uint8Array(size);
+      let offset = 0;
+      for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+      const body: unknown = JSON.parse(new TextDecoder().decode(bytes));
       if (!isRecord(body) || !Array.isArray(body.keys)) return null;
-      const keys: JsonWebKey[] = [];
+      if (body.keys.length > 128) return null;
+      const keys: DirectoryEntry['keys'] = [];
       for (const value of body.keys) {
         const jwk = okpJwk(value);
-        if (jwk !== null) keys.push(jwk);
+        if (jwk === null || !isRecord(value)) continue;
+        if (value.nbf !== undefined && !Number.isSafeInteger(value.nbf)) continue;
+        if (value.exp !== undefined && !Number.isSafeInteger(value.exp)) continue;
+        const notBefore = typeof value.nbf === 'number' ? value.nbf : null;
+        const expires = typeof value.exp === 'number' ? value.exp : null;
+        if (notBefore !== null && expires !== null && expires <= notBefore) continue;
+        keys.push({ jwk, notBefore, expires });
       }
-      const entry = { keys, expiresAt: nowMs + DIRECTORY_TTL_MS };
+      const control = response.headers.get('Cache-Control') ?? '';
+      const maxAge = /(?:^|,)\s*max-age\s*=\s*"?(\d+)"?(?:\s*,|\s*$)/i.exec(control);
+      const age = Number(response.headers.get('Age') ?? 0);
+      const seconds = /(?:^|,)\s*(?:no-cache|no-store)\b/i.test(control) ? 0
+        : Math.max(0, Math.min(DIRECTORY_TTL_MS / 1000, maxAge?.[1] === undefined ? 300 : Number(maxAge[1])) - (Number.isFinite(age) && age > 0 ? age : 0));
+      const entry = { keys, expiresAt: nowMs + seconds * 1000 };
+      // A newly fetched directory also invalidates imported removed/revoked keys.
+      for (const key of cache.keys.keys()) if (key.startsWith(`${directoryUrl}\n`)) cache.keys.delete(key);
+      if (cache.directories.size >= 256) cache.directories.delete(cache.directories.keys().next().value ?? '');
       cache.directories.set(directoryUrl, entry);
       return entry;
     } catch {
@@ -612,31 +662,52 @@ async function resolveVerificationKey(
   fetcher: typeof fetch,
   cache: WebBotAuthCache,
   nowMs: number,
-): Promise<CryptoKey | null> {
+): Promise<{ key: CryptoKey } | { reason: string }> {
   const cacheKey = pairKey(directoryUrl, keyid);
   const cached = cache.keys.get(cacheKey);
-  if (cached !== undefined && cached.expiresAt > nowMs) return cached.key;
+  if (cached !== undefined && cached.expiresAt > nowMs) return { key: cached.key };
   if (cached !== undefined) cache.keys.delete(cacheKey);
 
-  const directory = await fetchDirectory(directoryUrl, fetcher, cache, nowMs);
-  if (directory === null) return null;
-  for (const jwk of directory.keys) {
-    if (await ed25519JwkThumbprint(jwk) !== keyid) continue;
+  const hadFreshDirectory = (cache.directories.get(directoryUrl)?.expiresAt ?? 0) > nowMs;
+  let directory = await fetchDirectory(directoryUrl, fetcher, cache, nowMs);
+  if (directory === null) return { reason: 'directory-unavailable' };
+  const find = async (entry: DirectoryEntry) => {
+    for (const candidate of entry.keys) if (await ed25519JwkThumbprint(candidate.jwk) === keyid) return candidate;
+    return null;
+  };
+  let selected = await find(directory);
+  // One forced refresh per origin per 30 seconds handles overlapping key rotation
+  // without turning every random keyid into an unbounded directory fetch loop.
+  if (selected === null && hadFreshDirectory && nowMs - (cache.forcedRefreshes.get(directoryUrl) ?? -Infinity) >= 30000) {
+    if (cache.forcedRefreshes.size >= 256) cache.forcedRefreshes.delete(cache.forcedRefreshes.keys().next().value ?? '');
+    cache.forcedRefreshes.set(directoryUrl, nowMs);
+    cache.directories.delete(directoryUrl);
+    directory = await fetchDirectory(directoryUrl, fetcher, cache, nowMs);
+    if (directory === null) return { reason: 'directory-unavailable' };
+    selected = await find(directory);
+  }
+  if (selected === null) return { reason: 'key-not-found' };
+  if (selected.notBefore !== null && nowMs / 1000 < selected.notBefore) return { reason: 'key-not-yet-valid' };
+  if (selected.expires !== null && nowMs / 1000 >= selected.expires) return { reason: 'key-expired' };
+  {
     try {
-      const key = await crypto.subtle.importKey('jwk', jwk, 'Ed25519', false, ['verify']);
-      cache.keys.set(cacheKey, { key, expiresAt: directory.expiresAt });
-      return key;
+      const key = await crypto.subtle.importKey('jwk', selected.jwk, 'Ed25519', false, ['verify']);
+      if (cache.keys.size >= 256) cache.keys.delete(cache.keys.keys().next().value ?? '');
+      cache.keys.set(cacheKey, { key, expiresAt: Math.min(directory.expiresAt, selected.expires === null ? Infinity : selected.expires * 1000) });
+      return { key };
     } catch {
-      return null;
+      return { reason: 'key-invalid' };
     }
   }
-  return null;
 }
 
 function agentLocation(uri: string): { agent: string; directoryUrl: string } | null {
   try {
     const url = new URL(uri);
     if (url.protocol !== 'https:' || url.username.length > 0 || url.password.length > 0) return null;
+    // This implementation supports directory discovery only, not arbitrary URI
+    // or JWKS discovery. Never silently reinterpret a path as an origin.
+    if (url.pathname !== '/' || url.search !== '' || url.hash !== '') return null;
     return { agent: url.origin, directoryUrl: `${url.origin}${DIRECTORY_PATH}` };
   } catch {
     return null;
@@ -650,6 +721,7 @@ async function verifyCandidate(
   fetcher: typeof fetch,
   cache: WebBotAuthCache,
   nowMs: number,
+  options: WebBotAuthOptions,
 ): Promise<WebBotAuthResult> {
   const tag = stringValue(parameter(candidate.input.parameters, 'tag'));
   if (tag !== 'web-bot-auth') return { status: 'unverified', reason: 'not-web-bot-auth' };
@@ -660,6 +732,8 @@ async function verifyCandidate(
   const nowSeconds = Math.floor(nowMs / 1_000);
   if (created > nowSeconds + CLOCK_SKEW_SECONDS) return { status: 'unverified', reason: 'not-yet-valid' };
   if (expires < nowSeconds - CLOCK_SKEW_SECONDS) return { status: 'unverified', reason: 'expired' };
+  if (options.maxAgeSeconds !== undefined && (!Number.isSafeInteger(options.maxAgeSeconds) || options.maxAgeSeconds < 0)) return { status: 'unverified', reason: 'invalid-max-age-policy' };
+  if (options.maxAgeSeconds !== undefined && (expires - created > options.maxAgeSeconds || nowSeconds - created > options.maxAgeSeconds + CLOCK_SKEW_SECONDS)) return { status: 'unverified', reason: 'validity-policy-exceeded' };
 
   const algorithm = parameter(candidate.input.parameters, 'alg');
   if (algorithm !== undefined && stringValue(algorithm) !== 'ed25519') {
@@ -679,27 +753,35 @@ async function verifyCandidate(
   const location = agentLocation(signatureBase.signatureAgentUri);
   if (location === null) return { status: 'unverified', reason: 'invalid-signature-agent' };
 
-  const key = await resolveVerificationKey(location.directoryUrl, keyid, fetcher, cache, nowMs);
-  if (key === null) return { status: 'unverified', reason: 'key-unavailable' };
+  const resolvedKey = await resolveVerificationKey(location.directoryUrl, keyid, fetcher, cache, nowMs);
+  if ('reason' in resolvedKey) return { status: 'unverified', reason: resolvedKey.reason };
   try {
     const verified = await crypto.subtle.verify(
       'Ed25519',
-      key,
+      resolvedKey.key,
       candidate.signature,
       encoder.encode(signatureBase.base),
     );
-    return verified
-      ? { status: 'verified', agent: location.agent }
-      : { status: 'unverified', reason: 'signature-invalid' };
+    if (!verified) return { status: 'unverified', reason: 'signature-invalid' };
+    if (!options.includeEvidence) return { status: 'verified', agent: location.agent };
+    const names = new Set(candidate.input.items.flatMap(item => item.bare.type === 'string' ? [item.bare.value] : []));
+    const recorded = ['@authority', '@target-uri', '@method', '@path', '@query', 'user-agent', 'content-digest', 'signature-agent'];
+    return { status: 'verified', agent: location.agent, evidence: {
+      version: '2026-10-27.1', headerForm: parsedAgent.form,
+      covered: { authority: names.has('@authority'), targetUri: names.has('@target-uri'), method: names.has('@method'), path: names.has('@path'), query: names.has('@query'), userAgent: names.has('user-agent'), contentDigest: names.has('content-digest') },
+      otherComponentCount: [...names].filter(name => !recorded.includes(name)).length,
+      validitySeconds: expires - created, ageSeconds: Math.max(0, nowSeconds - created), replayPolicy: 'expiry-only',
+    } };
   } catch {
     return { status: 'unverified', reason: 'signature-invalid' };
   }
 }
 
 /**
- * Implements draft-ietf-webbotauth-httpsig-protocol-00 on RFC 9421 request
- * components. The implementation was checked against Cloudflare's Apache-2.0
- * reference, but is dependency-free and independently written:
+ * Ed25519/directory-discovery subset on RFC 9421 request components, with
+ * dictionary and legacy wire compatibility. Not full RFC/draft conformance.
+ * The independently written implementation is compared with the Apache-2.0
+ * reference; unsupported discovery/algorithms/components remain explicit:
  * https://github.com/cloudflare/web-bot-auth
  */
 export async function verifyWebBotAuth(
@@ -739,7 +821,7 @@ export async function verifyWebBotAuth(
     const nowMs = (options.now ?? new Date()).getTime();
     let lastFailure: WebBotAuthResult = { status: 'unverified', reason: 'signature-invalid' };
     for (const candidate of tagged) {
-      const result = await verifyCandidate(request, candidate, parsedAgent, fetcher, cache, nowMs);
+      const result = await verifyCandidate(request, candidate, parsedAgent, fetcher, cache, nowMs, options);
       if (result.status === 'verified') return result;
       lastFailure = result;
     }

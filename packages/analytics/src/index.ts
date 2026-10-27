@@ -10,6 +10,7 @@ import { extractRequestMetadata } from './metadata.js';
 import { classifyReaderKind } from './readerkind.js';
 import { parseReferrer } from './referrals.js';
 import { verifyWebBotAuth, type WebBotAuthResult } from './webbotauth.js';
+import { verificationEvidence } from './signature-evidence.js';
 
 export type { Env } from './db.js';
 export { ANALYTICS_EVIDENCE_SINCE } from './contracts.js';
@@ -41,7 +42,8 @@ async function verifyRequestSignature(request: Request, headersPresent: boolean,
   });
   const verification = Promise.resolve().then(() => verifier
     ? verifier(request)
-    : verifyWebBotAuth(request, { fetcher: (input, init) => fetch(input, { ...init, signal: controller.signal }) }))
+    : verifyWebBotAuth(request, { includeEvidence: true, maxAgeSeconds: 86400,
+      fetcher: (input, init) => fetch(input, { ...init, signal: controller.signal }) }))
     .catch((): WebBotAuthResult => ({ status: 'unverified', reason: 'verification-error' }));
   try { return await Promise.race([verification, deadline]); }
   finally {
@@ -131,6 +133,7 @@ async function persistObservation(
     readerKind: reader.kind,
     readerReason: reader.reason,
     observedAt: sqliteTimestamp(observedAt),
+    signatureEvidence: verificationEvidence(request, signature, options.verifySignature !== undefined),
     ...(captureEvidence ? { requestEvidence: extractRequestEvidence(request, response) } : {}),
   };
   const diagnostic = captureEvidence ? {

@@ -210,7 +210,7 @@ function payloadRows(row: Record<string, unknown>): Record<string, unknown>[] {
 function reportSections(rows: Record<string, unknown>[], includeBoundary: boolean): Map<string, Record<string, unknown>[]> {
   const expected = new Set([
     'totals', 'path', 'country', 'series', 'referrer', 'device', 'agent', 'kind', 'excluded',
-    'referrer-state', 'transitions', 'referrer-details', 'signer',
+    'referrer-state', 'transitions', 'referrer-details', 'signer', 'verification',
   ]);
   if (includeBoundary) expected.add('boundary');
   const sections = new Map<string, Record<string, unknown>[]>();
@@ -218,7 +218,7 @@ function reportSections(rows: Record<string, unknown>[], includeBoundary: boolea
     const section = stringField(row, 'section');
     if (section === null || !expected.has(section) || sections.has(section)) return malformedReport();
     const payload = payloadRows(row);
-    if ((section === 'totals' || section === 'excluded' || section === 'boundary' || section === 'referrer-details') && payload.length !== 1) {
+    if ((section === 'totals' || section === 'excluded' || section === 'boundary' || section === 'referrer-details' || section === 'verification') && payload.length !== 1) {
       return malformedReport();
     }
     sections.set(section, payload);
@@ -256,7 +256,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     "('totals', 0)", "('path', 1)", "('country', 2)", "('series', 3)", "('referrer', 4)",
     "('device', 5)", "('agent', 6)", "('kind', 7)", "('excluded', 8)",
     "('referrer-state', 9)", "('transitions', 10)", "('referrer-details', 11)",
-    "('signer', 12)",
+    "('signer', 12)", "('verification', 14)",
   ];
   if (includeBoundary) sectionValues.push("('boundary', 13)");
 
@@ -265,7 +265,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
       selected AS MATERIALIZED (
         SELECT path, country, daily_client_id, traffic_class, agent_name, device_type,
                reader_kind, reader_reason, referrer_host, observed_at,
-               referrer_state, internal_referrer_path, representation, signature_status, signature_agent
+               referrer_state, internal_referrer_path, representation, signature_status, signature_agent, signature_evidence
         FROM page_observations WHERE ${selected.sql}
       ),
       ${referralAssessmentCtes(`
@@ -355,6 +355,29 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
           SELECT json_array(json_object('views', COUNT(*)))
           FROM report_scope WHERE referral_excluded = 1
         )
+        WHEN 'verification' THEN (
+          SELECT json_array(json_object(
+            'recordedViews', SUM(signature_evidence IS NOT NULL),
+            'notRecordedViews', SUM(signature_evidence IS NULL),
+            'localVerifiedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.localStatus') = 'verified'),
+            'localUnverifiedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.localStatus') = 'unverified'),
+            'localAbsentViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.localStatus') = 'absent'),
+            'testVerdictViews', SUM(json_extract(signature_evidence, '$.source') = 'test-injected'),
+            'coverageRecordedViews', SUM(json_type(signature_evidence, '$.coverage') = 'object'),
+            'userAgentBoundViews', SUM(json_extract(signature_evidence, '$.coverage.covered.userAgent') = 1),
+            'resourceBoundViews', SUM(json_extract(signature_evidence, '$.coverage.covered.path') = 1 OR json_extract(signature_evidence, '$.coverage.covered.targetUri') = 1),
+            'methodBoundViews', SUM(json_extract(signature_evidence, '$.coverage.covered.method') = 1),
+            'authorityOnlyViews', SUM(json_extract(signature_evidence, '$.coverage.covered.authority') = 1
+              AND COALESCE(json_extract(signature_evidence, '$.coverage.covered.targetUri'), 0) = 0
+              AND COALESCE(json_extract(signature_evidence, '$.coverage.covered.path'), 0) = 0
+              AND COALESCE(json_extract(signature_evidence, '$.coverage.covered.method'), 0) = 0
+              AND COALESCE(json_extract(signature_evidence, '$.coverage.covered.query'), 0) = 0),
+            'nativeAvailableViews', SUM(json_type(signature_evidence, '$.native.verifiedBot') IN ('true','false') OR json_type(signature_evidence, '$.native.signedAgent') IN ('true','false')),
+            'nativeVerifiedBotViews', SUM(json_extract(signature_evidence, '$.native.verifiedBot') = 1),
+            'nativeSignedAgentViews', SUM(json_extract(signature_evidence, '$.native.signedAgent') = 1),
+            'localVerifiedNativeNotVerifiedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.localStatus') = 'verified' AND json_type(signature_evidence, '$.native.verifiedBot') = 'false')
+          )) FROM included
+        )
         WHEN 'referrer-state' THEN (
           SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
             SELECT json_object('key1', COALESCE(referrer_state,
@@ -408,6 +431,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
   const populatedSeries = seriesRows(requiredSection(sections, 'series'));
   const referrals = publicReferrers(referrerRows(requiredSection(sections, 'referrer')), policy);
   const referrerDetails = requiredSection(sections, 'referrer-details')[0];
+  const verificationRow = requiredSection(sections, 'verification')[0];
 
   return {
     period: {
@@ -456,6 +480,13 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
       return { signatureAgent, views: numberField(row, 'views') };
     }),
     byKind: kindRows(requiredSection(sections, 'kind')),
+    verification: {
+      recordedViews: numberField(verificationRow, 'recordedViews'), notRecordedViews: numberField(verificationRow, 'notRecordedViews'),
+      localVerifiedViews: numberField(verificationRow, 'localVerifiedViews'), localUnverifiedViews: numberField(verificationRow, 'localUnverifiedViews'), localAbsentViews: numberField(verificationRow, 'localAbsentViews'),
+      testVerdictViews: numberField(verificationRow, 'testVerdictViews'),
+      coverageRecordedViews: numberField(verificationRow, 'coverageRecordedViews'), userAgentBoundViews: numberField(verificationRow, 'userAgentBoundViews'), resourceBoundViews: numberField(verificationRow, 'resourceBoundViews'), methodBoundViews: numberField(verificationRow, 'methodBoundViews'), authorityOnlyViews: numberField(verificationRow, 'authorityOnlyViews'),
+      nativeAvailableViews: numberField(verificationRow, 'nativeAvailableViews'), nativeVerifiedBotViews: numberField(verificationRow, 'nativeVerifiedBotViews'), nativeSignedAgentViews: numberField(verificationRow, 'nativeSignedAgentViews'), localVerifiedNativeNotVerifiedViews: numberField(verificationRow, 'localVerifiedNativeNotVerifiedViews'),
+    },
   };
 }
 

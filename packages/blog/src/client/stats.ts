@@ -177,6 +177,7 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
     throw new Error('Updated referral details are unavailable. Please reload.');
   }
   if (data.bySigner === undefined) throw new Error('Updated signer evidence is unavailable. Please reload.');
+  if (data.verification === undefined) throw new Error('Updated verification evidence is unavailable. Please reload.');
   return data;
 }
 
@@ -322,8 +323,10 @@ function renderScope(filters: StatsResponse['filters']): void {
 function replaceSectionRows(containerId: string, items: RankedItem[], limit: number | null = MAX_ITEMS): void {
   const section = element(containerId);
   const heading = section.querySelector('h2');
+  const note = section.querySelector('.stats-section-note');
   section.replaceChildren();
   if (heading) section.appendChild(heading);
+  if (note) section.appendChild(note);
 
   if (items.length === 0) {
     const empty = document.createElement('p');
@@ -627,6 +630,24 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     href: stateHref({ ...state, agent: row.agentName, kind: null, traffic: 'all' }),
   })), null);
   replaceSectionRows('stats-signers', data.bySigner.map(row => ({ label: row.signatureAgent, views: row.views })), null);
+  const verification = data.verification;
+  replaceSectionRows('stats-verification', [
+    { label: 'New verification record available', views: verification.recordedViews },
+    { label: 'No new record — historical or unreported', views: verification.notRecordedViews },
+    { label: 'Locally verified key', views: verification.localVerifiedViews },
+    { label: 'Local verification unsuccessful', views: verification.localUnverifiedViews },
+    { label: 'No signature headers', views: verification.localAbsentViews },
+    { label: 'Injected test verdict — not local verification', views: verification.testVerdictViews },
+    { label: 'Verified coverage recorded', views: verification.coverageRecordedViews },
+    { label: 'User-Agent covered', views: verification.userAgentBoundViews },
+    { label: 'Path or full URL covered', views: verification.resourceBoundViews },
+    { label: 'Method covered', views: verification.methodBoundViews },
+    { label: 'Host-only request binding', views: verification.authorityOnlyViews },
+    { label: 'Native assessment fields available', views: verification.nativeAvailableViews },
+    { label: 'Native verified-bot result true', views: verification.nativeVerifiedBotViews },
+    { label: 'Native signed-agent result true', views: verification.nativeSignedAgentViews },
+    { label: 'Local verified; native verified-bot false', views: verification.localVerifiedNativeNotVerifiedViews },
+  ], null);
   renderComposition(data, state);
 
   setStatus(`Showing ${formatViewCount(data.totals.views, true)}.${exclusionNotice}`, 'ready');

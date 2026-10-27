@@ -68,3 +68,7 @@ The [complete-period analysis](10-full-interval-and-field-hardening.md) closes t
 ## Owner UI acceptance — subsequent check
 
 [Owner-code and browser evidence](12-owner-code-and-verification-correction.md) accepts the form/endpoint/navigation/public-selection path in an agent-operated Codex browser. One owned verification event is excluded; the fresh report reconciles three raw events to two public views and reuses its cache. The temporary credential has been removed. Keep the separate human-operated normal-browser check and the paired collection-stage matrix open; one client/day does not cover other profiles, changed network inputs or tomorrow.
+
+## October 27 protocol iteration
+
+The [Web Bot Auth audit](18-webbotauth-verification.md) and [decision](../../../../../docs/adr/0016.11-signature-verification-evidence.md) implement prospective signature-coverage facts and independent native availability, plus directory freshness/rotation/input bounds. Local native D1 accepts the collector, migration and report. Real retained Exa evidence validates the supported quoted-string profile under its recorded-time/later-directory limits. Migration, delivery, activation and future organic writes require separate release evidence. This does not close explicit network unknowns, exact token/all-match conflicts, vendor IP validation or labelled accuracy/abstention experiments. Keep those requirements intact.

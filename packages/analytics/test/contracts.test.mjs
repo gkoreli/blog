@@ -926,6 +926,7 @@ test('stats result decoding rejects malformed, duplicate, missing, and misplaced
     { section: 'device', payload: '[]' },
     { section: 'agent', payload: '[]' },
     { section: 'signer', payload: '[]' },
+    { section: 'verification', payload: '[{}]' },
     { section: 'kind', payload: '[]' },
     { section: 'excluded', payload: '[{"views":0}]' },
     { section: 'referrer-state', payload: '[]' },
@@ -949,6 +950,7 @@ test('stats result decoding rejects malformed, duplicate, missing, and misplaced
     emptyReportRows().map(row => row.section === 'path' ? { section: 'path', payload: '{"not":"an array"}' } : row),
     emptyReportRows().map(row => row.section === 'path' ? { section: 'path', payload: '[null]' } : row),
     emptyReportRows().map(row => row.section === 'totals' ? { section: 'totals', payload: '[]' } : row),
+    emptyReportRows().map(row => row.section === 'verification' ? { section: 'verification', payload: '[]' } : row),
     [...emptyReportRows(), { section: 'boundary', payload: '[{"firstObservedAt":null}]' }],
   ];
   for (const rows of malformedCases) {
@@ -1782,7 +1784,7 @@ test('real signed ingestion retains named role and independent key evidence; unc
   globalThis.fetch = async url => {
     assert.equal(String(url), `${signer}/.well-known/http-message-signatures-directory`);
     directories++;
-    return Response.json({ keys: [jwk] });
+    return Response.json({ keys: [jwk] }, { headers: { 'Content-Type': 'application/http-message-signatures-directory+json' } });
   };
   try {
     for (const [name, , kind, userAgent] of VENDOR_UAS) {
@@ -1825,7 +1827,7 @@ test('field hardening preserves unknown roots, validates ASN input, and versions
     assert.equal(row.asn_source, accepted ? 'request' : null);
     assert.equal(row.referrer_state, 'internal');
     assert.equal(row.internal_referrer_path, null);
-    assert.equal(row.collection_version, '2026-10-26.3');
+    assert.equal(row.collection_version, '2026-10-27.1');
     assert.equal(row.classifier_version, '2026-10-26.3');
   }
   for (const url of ['https://gkoreli.com/', 'http://www.gkoreli.com:8080/']) assert.equal(parseReferrer(url, 'gkoreli.com', new Set(['/'])).internalReferrerPath, null);

@@ -1,0 +1,30 @@
+{
+  "repository": "cloudflare/web-bot-auth",
+  "commit": "e4d3167886d0e7508d55fc5c501f1e498a3d4f5c",
+  "files": [
+    {
+      "path": "packages/web-bot-auth/src/index.ts",
+      "url": "https://raw.githubusercontent.com/cloudflare/web-bot-auth/e4d3167886d0e7508d55fc5c501f1e498a3d4f5c/packages/web-bot-auth/src/index.ts",
+      "sha256": "35207ccb6699ffa2fd4ba27f144b7c90d6257d9149f69bb5e5261bf070dd9918",
+      "bytes": 12766
+    },
+    {
+      "path": "packages/http-message-sig/src/core.ts",
+      "url": "https://raw.githubusercontent.com/cloudflare/web-bot-auth/e4d3167886d0e7508d55fc5c501f1e498a3d4f5c/packages/http-message-sig/src/core.ts",
+      "sha256": "81d8586901f895a3c6dc5e6f0dba6c44c9c6ee89998e7de70043fd7e334789b4",
+      "bytes": 32530
+    },
+    {
+      "path": "packages/http-message-sig/src/types.ts",
+      "url": "https://raw.githubusercontent.com/cloudflare/web-bot-auth/e4d3167886d0e7508d55fc5c501f1e498a3d4f5c/packages/http-message-sig/src/types.ts",
+      "sha256": "2ecab61767bc9984c94ea86d0dc0e6fb7677dbd4a03641c63bd5ea43a7830647",
+      "bytes": 3591
+    },
+    {
+      "path": "packages/web-bot-auth/src/registry.ts",
+      "url": "https://raw.githubusercontent.com/cloudflare/web-bot-auth/e4d3167886d0e7508d55fc5c501f1e498a3d4f5c/packages/web-bot-auth/src/registry.ts",
+      "sha256": "5d66fae981e40e03b2a9333712dab5f404a415215120a75fec9c6e5cb56e814c",
+      "bytes": 9193
+    }
+  ]
+}
