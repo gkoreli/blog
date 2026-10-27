@@ -1,0 +1,135 @@
+{
+  "checkedAt": "2026-10-27T16:35:34.478017+00:00",
+  "sourceCommit": "87b381f48aad79218bfe3fbcf2cf4bc2ed2982aa",
+  "build": {
+    "id": "75eb75fd-2958-4073-87c8-757dc18097cb",
+    "observedSource": "87b381f",
+    "remoteNode": "24.22.1",
+    "localNode": "24.14.1",
+    "limit": "Native UI source/build association, activation metadata and served evidence; not binary attestation or runtime parity."
+  },
+  "deployment": {
+    "createdAt": "2026-10-27T16:32:20.963686Z",
+    "versionId": "88973b69-e916-4112-982d-9131bf205bf3",
+    "percentage": 100
+  },
+  "migration": "None; reuse existing bounded signature JSON. History unchanged.",
+  "controls": {
+    "startedAt": "2026-10-27T16:33:20.291367+00:00",
+    "finishedAt": "2026-10-27T16:33:21.194619+00:00",
+    "queryStart": "2026-10-27 16:33:18",
+    "queryEndExclusive": "2026-10-27 16:33:24",
+    "trials": [
+      {
+        "label": "unsigned-exa",
+        "httpStatus": 200
+      },
+      {
+        "label": "unmapped-ahrefs",
+        "httpStatus": 200
+      },
+      {
+        "label": "malformed-exa",
+        "httpStatus": 200
+      }
+    ],
+    "policySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+    "results": [
+      {
+        "collectionVersion": "2026-10-27.3",
+        "classifierVersion": "2026-10-27.2",
+        "source": "local-webbotauth",
+        "localStatus": "absent",
+        "localOutcome": "absent",
+        "localReasons": "[]",
+        "vendorStatus": "not-verified",
+        "documentedDeclarations": 1,
+        "unmappedDeclarations": 0,
+        "readerKind": "ai-assistant",
+        "optionalCaptureAbsent": 1
+      },
+      {
+        "collectionVersion": "2026-10-27.3",
+        "classifierVersion": "2026-10-27.2",
+        "source": "local-webbotauth",
+        "localStatus": "absent",
+        "localOutcome": "absent",
+        "localReasons": "[]",
+        "vendorStatus": "not-configured",
+        "documentedDeclarations": 0,
+        "unmappedDeclarations": 1,
+        "readerKind": "seo-crawler",
+        "optionalCaptureAbsent": 1
+      },
+      {
+        "collectionVersion": "2026-10-27.3",
+        "classifierVersion": "2026-10-27.2",
+        "source": "local-webbotauth",
+        "localStatus": "unverified",
+        "localOutcome": "invalid",
+        "localReasons": "[\"missing-signature-agent\"]",
+        "vendorStatus": "not-verified",
+        "documentedDeclarations": 1,
+        "unmappedDeclarations": 0,
+        "readerKind": "ai-assistant",
+        "optionalCaptureAbsent": 1
+      }
+    ],
+    "rowsRead": 6,
+    "rowsWritten": 0,
+    "scope": "Three synthetic excluded requests; no vendor authenticity or human-accuracy claim."
+  },
+  "publicReport": {
+    "query": {
+      "range": "7d",
+      "traffic": "agents",
+      "kind": "signed-agent"
+    },
+    "totals": {
+      "views": 225,
+      "dailyClients": 147,
+      "unattributedViews": 225
+    },
+    "vendorCheckNotRecordedViews": 225,
+    "cache": "MISS then byte-identical HIT; original calculation time preserved",
+    "publicExclusion": {
+      "query": {
+        "range": "7d",
+        "traffic": "agents",
+        "agent": "ExaUser",
+        "path": "/privacy"
+      },
+      "views": 0,
+      "excludedViews": 3,
+      "limit": "Three excluded observations in this historical selection, including two current Exa-labelled controls; not all three are new."
+    }
+  },
+  "article": {
+    "matchesIsolatedMarkdown": true,
+    "markdownSha256": "c8c117e8a66ff33c73fa9ec9d61852e4142ac53b65e29a7ec4fc53d348a1dece",
+    "wordsWithLinksRemoved": 1250,
+    "promptSourceMessages": 30
+  },
+  "browser": {
+    "url": "https://gkoreli.com/stats?range=7d&traffic=agents&kind=signed-agent",
+    "views": 225,
+    "newSectionsRendered": true,
+    "vendorCheckNotRecordedViews": 225,
+    "consoleErrorsOrWarnings": 0,
+    "screenshot": "analytics-vendor-signature-methods.png"
+  },
+  "directSelectWork": {
+    "rowsRead": 109122,
+    "rowsWritten": 0,
+    "broadReportPlannedReadCeiling": 50000,
+    "broadReportBudgetAcceptance": "failed-ceiling-exceeded",
+    "narrowControlReads": 6,
+    "additionalWork": "Public cold report fills, three observation writes and unrelated account activity are additional."
+  },
+  "limits": [
+    "Organic signed persistence/origin acceptance under actual Worker crypto remains open; ephemeral local keys are not vendors.",
+    "No full RFC/draft conformance, nonce replay database, human-trigger proof or accuracy-rate claim.",
+    "Other vendors remain unmapped by the signing-origin method; IP/DNS methods are not implemented.",
+    "No optional raw diagnostics activation or historical rewrite."
+  ]
+}

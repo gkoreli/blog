@@ -1,6 +1,6 @@
 # Analytics retrospective — worklist and shaping notes
 
-**October 27 verification continuation:** [Research 20](20-verification-outcomes-and-vendor-methods.md) separates failure outcomes, preserves multiple-candidate reasons and adds a documented Exa signing-origin method without authenticating unsigned declarations. [Local native acceptance](verification-outcomes-local.json) passes twelve fixtures; [production report](verification-outcomes-pre-release.json) succeeds but exceeds its 50,000-read plan at 109,116 reads/zero writes. Do not repeat that broad check. Source activation, prospective controls, organic signed acceptance, IP/DNS methods and labelled calibration remain open.
+**October 27 verification continuation:** [Research 20](20-verification-outcomes-and-vendor-methods.md) separates failure outcomes, preserves multiple-candidate reasons and adds a documented Exa signing-origin method without authenticating unsigned declarations. [Local native acceptance](verification-outcomes-local.json) passes twelve fixtures; [production report](verification-outcomes-pre-release.json) succeeds but exceeds its 50,000-read plan at 109,116 reads/zero writes. Do not repeat that broad check. [Release acceptance](verification-outcomes-release.json) now verifies source `87b381f`, 100% activation, three excluded controls (six direct reads), live API/UI/article and cache reuse. Organic signed acceptance, IP/DNS methods and labelled calibration remain open.
 
 ## Latest continuation — October 27, 2026 UTC
 
