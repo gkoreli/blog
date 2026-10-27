@@ -1,5 +1,7 @@
 # Web Bot Auth: what our verifier authenticates
 
+**October 27 ASCII/HTTP-whitespace follow-up:** [Research 36](36-signature-ascii-and-http-whitespace.md) reproduces an accepted non-ASCII mutation and raw UTF-8 bases, then records the HTTP-only trim/ASCII guard, explicit unsupported reason and verifier `.7`. The original historical observations below retain their dated profiles; current source/local acceptance and production gates are separate.
+
 **October 27 attribution follow-up:** [Research 24](24-webbotauth-attribution-boundaries.md) adds twelve independent signed regression controls and documents selected-member attribution, permitted outer relabelling, expiry-only replay and the distinction between signing a Content-Digest header and checking a body. Runtime/profile and published prose remain unchanged. The current draft's label wording and examples are recorded as a tension requiring clarification, not silently converted into a new rejection policy.
 
 October 26 Pacific / October 27, 2026 UTC. Extends the [assumption audit](17-detection-assumptions-and-experiments.md), [original protocol review](02-standards-and-libraries.md) and [classification task](../../../../../docs/tasks/TASK-0119.md). This is a dated implementation/evidence audit, not a full conformance certificate.

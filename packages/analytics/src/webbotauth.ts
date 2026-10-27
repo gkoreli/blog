@@ -353,8 +353,13 @@ function serializeInnerList(innerList: InnerList): string {
   return `(${innerList.items.map(serializeItem).join(' ')})${serializeParameters(innerList.parameters)}`;
 }
 
+/** HTTP OWS is SP/HTAB, not JavaScript's wider Unicode whitespace set. */
+function trimHttpWhitespace(value: string): string {
+  return value.replace(/^[ \t]+|[ \t]+$/g, '');
+}
+
 function parseSignatureAgentEntries(value: string): ParsedSignatureAgent | null {
-  const trimmed = value.trim();
+  const trimmed = trimHttpWhitespace(value);
   if (trimmed.startsWith('"')) {
     const item = new StructuredFieldParser(trimmed).parseSingleItem();
     if (item === null || item.bare.type !== 'string' || item.parameters.length !== 0) return null;
@@ -420,7 +425,7 @@ function signatureCandidates(signatureInput: string, signature: string): Signatu
 }
 
 function normalizeFieldValue(value: string): string {
-  return value.replace(/[ \t]*\r?\n[ \t]+/g, ' ').trim();
+  return trimHttpWhitespace(value.replace(/[ \t]*\r?\n[ \t]+/g, ' '));
 }
 
 function signatureAgentComponentValue(
@@ -507,7 +512,7 @@ function createSignatureBase(
   request: Request,
   input: InnerList,
   parsedAgent: ParsedSignatureAgent | null,
-): SignatureBaseResult | null {
+): SignatureBaseResult | { reason: 'non-ascii-signature-base' } | null {
   if (hasDuplicateComponent(input)) return null;
   const lines: string[] = [];
   let signatureAgentUri: string | null = null;
@@ -527,7 +532,11 @@ function createSignatureBase(
     lines.push(`${serializeItem(component)}: ${resolved.value}`);
   }
   lines.push(`"@signature-params": ${serializeInnerList(input)}`);
-  return { base: lines.join('\n'), signatureAgentUri, coveredAuthority, coveredTargetUri };
+  const base = lines.join('\n');
+  // RFC 9421 section 2.5 step 4. Non-ASCII HTTP values need an ASCII
+  // representation such as ;bs, which this verifier profile does not support.
+  if (/[^\x00-\x7f]/.test(base)) return { reason: 'non-ascii-signature-base' };
+  return { base, signatureAgentUri, coveredAuthority, coveredTargetUri };
 }
 
 export function buildSignatureBase(request: Request, label: string): string | null {
@@ -540,7 +549,8 @@ export function buildSignatureBase(request: Request, label: string): string | nu
   if (inputs === null) return null;
   const entry = inputs.find((candidate) => candidate.key === label);
   if (entry?.member.type !== 'inner-list') return null;
-  return createSignatureBase(request, entry.member.value, parsedAgent)?.base ?? null;
+  const result = createSignatureBase(request, entry.member.value, parsedAgent);
+  return result !== null && !('reason' in result) ? result.base : null;
 }
 
 function base64Url(bytes: Uint8Array): string {
@@ -746,6 +756,7 @@ async function verifyCandidate(
   if (hasDuplicateComponent(candidate.input)) return { status: 'unverified', reason: 'duplicate-component' };
   const signatureBase = createSignatureBase(request, candidate.input, parsedAgent);
   if (signatureBase === null) return { status: 'unverified', reason: 'unsupported-or-missing-component' };
+  if ('reason' in signatureBase) return { status: 'unverified', reason: signatureBase.reason };
   if (!signatureBase.coveredAuthority && !signatureBase.coveredTargetUri) {
     return { status: 'unverified', reason: 'missing-target-component' };
   }

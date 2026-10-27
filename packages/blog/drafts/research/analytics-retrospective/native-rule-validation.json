@@ -1,0 +1,35 @@
+{
+  "startedAt": "2026-10-27T23:40:38.099991+00:00",
+  "finishedAt": "2026-10-27T23:40:38.249978+00:00",
+  "method": "POST",
+  "endpointTemplate": "/zones/{zone}/rulesets?dry_run=true",
+  "redirectsFollowed": false,
+  "httpStatus": 403,
+  "success": false,
+  "resultIsNull": true,
+  "errorCodes": [
+    10000
+  ],
+  "requestPayloadSha256": "7fe0f104bce56ca504fcc8e7a99644aef5520c0a121ea3d346544f23cd64cb6e",
+  "responseSha256": "1ca77d4f3b0365808a8636297b7825339090c162d41c8492cc9a4579d1c02f1b",
+  "validationAccepted": false,
+  "zoneReadControl": {
+    "checkedAt": "2026-10-27T23:41:32.399094+00:00",
+    "method": "GET",
+    "endpointTemplate": "/zones/{zone}",
+    "httpStatus": 200,
+    "success": true,
+    "expectedZoneName": true,
+    "planName": "Free Website",
+    "errorCodes": [],
+    "responseSha256": "374f3efc2daab13ecc1de8be6fc7b5d31648d0ef673829f85b43fd1273cf0c34"
+  },
+  "advertisedRulesetTransformWriteScopes": [],
+  "permissionExpanded": false,
+  "rulesPersisted": false,
+  "limits": [
+    "API authorization failure, not field/entitlement rejection.",
+    "Null result in failed response is not successful validation.",
+    "One POST, one separate zone GET; identity refresh is additional service work."
+  ]
+}

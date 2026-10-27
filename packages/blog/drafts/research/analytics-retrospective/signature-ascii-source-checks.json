@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-27T23:48:32.259261+00:00",
+  "analytics": {
+    "pass": 191,
+    "fail": 0,
+    "logSha256": "e32c9cd8f05e63af33b2f92433bf454f4869877239a21eaeb7af99c7de47a187"
+  },
+  "site": {
+    "pass": 106,
+    "fail": 0,
+    "logSha256": "b88b244cdf37194748b64a92d6491b6f0413aa7913fc57a0335c3b85666b20c1"
+  },
+  "workspaceTypes": "pass",
+  "postValidation": "pass",
+  "syntax": "pass",
+  "newRegressionTests": 2,
+  "nativeControls": 6,
+  "isolatedBuild": {
+    "posts": 32,
+    "result": "pass",
+    "warning": "Mise tracking symlink outside writable roots denied; build exited zero."
+  },
+  "articleBodyWords": 1251,
+  "shapingPrompts": 31,
+  "productionAcceptance": "pending",
+  "versions": {
+    "collection": "2026-10-27.11",
+    "verifier": "2026-10-27.7"
+  },
+  "sourceSha256": {
+    "packages/analytics/src/webbotauth.ts": "901043d4f3d468a7105f7339a391ab10e4c342221b3e009415511f33a8b2030a",
+    "packages/analytics/src/signature-evidence.ts": "101ff450dca3c0b3892764591dc845d6d0df78ae49c80487b7d7761bab8980ab",
+    "packages/analytics/src/versions.ts": "209f9ac0e7c1bf5d0eaee0a91518b73e4b3c386d0753dacb1fd7acedff520143",
+    "packages/analytics/test/signature-ascii.test.mjs": "4989630f0e3efc36164a423c9da85e3c7108ddf6a333a9414910604f1e873d42",
+    "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "29f3b09a132199a2ea6fb33626840a336cafb4b04872fd1f05cf71bcaff00ca9"
+  },
+  "limits": [
+    "Fixtures do not establish organic vendor/native agreement or human accuracy.",
+    "Raw UTF-8 mathematical validity is not RFC-valid base encoding.",
+    "Rulesets authorization failure does not reject the candidate field."
+  ],
+  "relativeFileLinks": {
+    "checked": 276,
+    "missing": 0
+  },
+  "gitDiffCheck": "pass"
+}

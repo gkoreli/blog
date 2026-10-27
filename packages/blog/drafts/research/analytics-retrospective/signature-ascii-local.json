@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-10-27T23:44:51.721Z",
+  "method": "Actual bundled collector in native local workerd/D1/WebCrypto; independent ephemeral signer, intercepted directory and explicitly empty fixture cf metadata, not a provider request.",
+  "collectionVersion": "2026-10-27.11",
+  "verifierProfile": "2026-10-27.7",
+  "trials": [
+    {
+      "label": "ascii",
+      "outcome": "verified",
+      "reasons": [],
+      "coverageRecorded": true
+    },
+    {
+      "label": "http-ows",
+      "outcome": "verified",
+      "reasons": [],
+      "coverageRecorded": true
+    },
+    {
+      "label": "nbsp-mutation",
+      "outcome": "unsupported",
+      "reasons": [
+        "non-ascii-signature-base"
+      ],
+      "coverageRecorded": false
+    },
+    {
+      "label": "raw-utf8",
+      "outcome": "unsupported",
+      "reasons": [
+        "non-ascii-signature-base"
+      ],
+      "coverageRecorded": false
+    },
+    {
+      "label": "signer-whitespace",
+      "outcome": "invalid",
+      "reasons": [
+        "malformed-signature-agent"
+      ],
+      "coverageRecorded": false
+    },
+    {
+      "label": "excluded",
+      "outcome": "unsupported",
+      "reasons": [
+        "non-ascii-signature-base"
+      ],
+      "coverageRecorded": false
+    }
+  ],
+  "directoryFetches": 1,
+  "checks": {
+    "closedPersistence": true,
+    "noCoverageForUnsupported": true,
+    "historicalUnknown": true,
+    "completeReport": true,
+    "referralExclusion": true,
+    "optionalCaptureOff": true,
+    "indexedAcceptanceSql": true
+  },
+  "queryPlan": [
+    {
+      "id": 5,
+      "parent": 0,
+      "notused": 59,
+      "detail": "SEARCH page_observations USING INDEX idx_page_observations_public_path_time (is_owner=? AND path=? AND observed_at>? AND observed_at<?)"
+    },
+    {
+      "id": 73,
+      "parent": 0,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    }
+  ],
+  "networkCalls": 0,
+  "productionCalls": 0,
+  "sourceSha256": {
+    "packages/analytics/src/webbotauth.ts": "901043d4f3d468a7105f7339a391ab10e4c342221b3e009415511f33a8b2030a",
+    "packages/analytics/src/signature-evidence.ts": "101ff450dca3c0b3892764591dc845d6d0df78ae49c80487b7d7761bab8980ab",
+    "packages/analytics/src/versions.ts": "209f9ac0e7c1bf5d0eaee0a91518b73e4b3c386d0753dacb1fd7acedff520143",
+    "packages/analytics/test/fixtures/signature-ascii.mjs": "1776dce0673b8279e44d9aa352bf41330299441ff08de404fa032d485db44820",
+    "packages/blog/drafts/research/analytics-retrospective/signature-ascii-control-acceptance.sql": "f0f8b94f93c7b14aee5c4a020ef8a9ef0df9471756e77c7302bec6237f560201"
+  },
+  "limits": [
+    "No production/provider-native or human acceptance.",
+    "Raw UTF-8 crypto validity is not RFC-valid signature-base construction.",
+    "Binary-wrapped ;bs remains unsupported."
+  ]
+}

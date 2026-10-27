@@ -1,0 +1,110 @@
+{
+  "beforeCore": {
+    "base": "e3e6c50",
+    "sourceSha256": "8c7d45209641d3ec4d6c51459b481a12b1539d64ac77235ad219215c896c8043",
+    "dependencies": "Bundled from current unchanged directory-discovery.ts and known-test-keys.ts; no production-release equivalence claim."
+  },
+  "before": {
+    "checkedAt": "2026-10-27T23:46:16.416Z",
+    "method": "Independent fixed-layout ephemeral signer; directory intercepted in process. Raw UTF-8 crypto controls are not RFC-valid ASCII bases.",
+    "moduleSha256": "92498974f2bf0318181b657d85972061b65ac8d140e1888561f0741e475ad5cb",
+    "rows": [
+      {
+        "label": "ascii",
+        "localStatus": "verified",
+        "reason": null,
+        "directoryLookups": 1,
+        "coverageRecorded": true
+      },
+      {
+        "label": "http-ows",
+        "localStatus": "verified",
+        "reason": null,
+        "directoryLookups": 1,
+        "coverageRecorded": true
+      },
+      {
+        "label": "nbsp-mutation",
+        "localStatus": "verified",
+        "reason": null,
+        "directoryLookups": 1,
+        "coverageRecorded": true
+      },
+      {
+        "label": "raw-utf8-interior",
+        "localStatus": "verified",
+        "reason": null,
+        "directoryLookups": 1,
+        "coverageRecorded": true
+      },
+      {
+        "label": "raw-utf8-boundary",
+        "localStatus": "unverified",
+        "reason": "signature-invalid",
+        "directoryLookups": 1,
+        "coverageRecorded": false
+      },
+      {
+        "label": "signer-whitespace",
+        "localStatus": "verified",
+        "reason": null,
+        "directoryLookups": 1,
+        "coverageRecorded": true
+      }
+    ],
+    "networkCalls": 0,
+    "productionCalls": 0
+  },
+  "after": {
+    "checkedAt": "2026-10-27T23:46:02.167Z",
+    "method": "Independent fixed-layout ephemeral signer; directory intercepted in process. Raw UTF-8 crypto controls are not RFC-valid ASCII bases.",
+    "moduleSha256": "397826c7c3e68e19cb4f7e4a03e799440c4ceff3c655aedfe07f952c792f2655",
+    "rows": [
+      {
+        "label": "ascii",
+        "localStatus": "verified",
+        "reason": null,
+        "directoryLookups": 1,
+        "coverageRecorded": true
+      },
+      {
+        "label": "http-ows",
+        "localStatus": "verified",
+        "reason": null,
+        "directoryLookups": 1,
+        "coverageRecorded": true
+      },
+      {
+        "label": "nbsp-mutation",
+        "localStatus": "unverified",
+        "reason": "non-ascii-signature-base",
+        "directoryLookups": 0,
+        "coverageRecorded": false
+      },
+      {
+        "label": "raw-utf8-interior",
+        "localStatus": "unverified",
+        "reason": "non-ascii-signature-base",
+        "directoryLookups": 0,
+        "coverageRecorded": false
+      },
+      {
+        "label": "raw-utf8-boundary",
+        "localStatus": "unverified",
+        "reason": "non-ascii-signature-base",
+        "directoryLookups": 0,
+        "coverageRecorded": false
+      },
+      {
+        "label": "signer-whitespace",
+        "localStatus": "unverified",
+        "reason": "malformed-signature-agent",
+        "directoryLookups": 0,
+        "coverageRecorded": false
+      }
+    ],
+    "networkCalls": 0,
+    "productionCalls": 0
+  },
+  "interpretation": "Independent ephemeral keys per run; raw UTF-8 math is not RFC-valid base encoding; no historical vendor or production exploitation claim."
+}
