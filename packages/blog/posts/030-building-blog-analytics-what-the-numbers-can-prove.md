@@ -29,7 +29,7 @@ The original dashboard displayed **97 AI Reads**. A browser script supplied its 
 
 I [moved collection to the HTTP response boundary](/first-party-analytics-for-a-personal-blog). The Worker serves the page, checks the response, and records an eligible delivery in D1. [Worker-first routing](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/) puts the collector in that path, including for clients that never run JavaScript.
 
-The counter accepts successful, non-prefetch page GETs serving HTML or negotiated Markdown. APIs, feeds, redirects, errors and direct `.md` assets stay outside it. Persistence is best effort. Browser means the request matched our header and network rules. **A stored event establishes a recorded delivery; it cannot establish attention or understanding.**
+The counter accepts successful, non-prefetch page GETs serving HTML or negotiated Markdown. APIs, feeds, redirects, errors and direct `.md` assets stay outside it. Persistence is best effort. Browser means the request matched our header and network rules. **An edge event records an eligible response; it cannot establish attention or understanding.**
 
 A keyed hash groups requests by site, UTC date, IP and User-Agent. The table retains neither raw IPs nor User-Agent strings. Changed inputs can split one person’s activity; shared inputs can combine people. Daily client IDs are not unique readers.
 
@@ -85,7 +85,7 @@ I [reconciled 12 production controls](https://github.com/gkoreli/blog/blob/main/
 - Blocking the beacon preserved three observations. `sendBeacon()` returned true three times; the server received none. True means [queued](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon#return_value), not received.
 - Blocking scripts still stored three observations. The curl controls stored as Other bot without executing JavaScript.
 
-Nine automated visits matched Browser. **Browser shape and JavaScript do not authenticate humans.** [Agent-driven input](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/30-filter-pointer-targets-and-browser-trust.md) also produced `isTrusted=true` events locally. Our first-party receiver proves arrival; Cloudflare’s receipt remains separate. Human false-positive rates remain unmeasured.
+Nine automated visits matched Browser. **Browser shape and JavaScript do not authenticate humans.** [Agent-driven input](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/30-filter-pointer-targets-and-browser-trust.md) produced `isTrusted=true` events locally. Our first-party receiver proves arrival; Cloudflare’s receipt remains separate. Human false-positive rates remain unmeasured.
 
 A separate [local failure experiment](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/07-matched-classifier-calibration.md) lost three observations while pages and beacons succeeded. No database failure was injected into production.
 
@@ -97,7 +97,7 @@ These mechanisms do not explain the historical gap’s proportions. Real phones,
 
 | Term | Meaning and source |
 |---|---|
-| Page event | An eligible recorded delivery; [collection boundary](/first-party-analytics-for-a-personal-blog). |
+| Page event | Edge response or legacy beacon; [method boundary](/first-party-analytics-for-a-personal-blog). |
 | Declared role | A client’s stated function; [Exa’s two clients](https://crawler.exa.ai/) show why one service can have several. |
 | Message signature | Verification of covered components against a key; [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html), February 2024. |
 | D1 row reads | Database work, separate from audience size; [metering definitions](https://developers.cloudflare.com/d1/platform/pricing/#definitions). |

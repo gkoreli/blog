@@ -17,7 +17,7 @@
     "rerun": false
   },
   "limits": [
-    "Source publication and live acceptance remain separate.",
+    "Final prose publication and live acceptance remain separate.",
     "Unchanged runtime suites are prior evidence, not fresh runs.",
     "No human or native-verifier ground truth."
   ],
@@ -31,5 +31,6 @@
   "gitDiffCheck": "pass",
   "fallbackSupplementNativeAndProductionValidated": true,
   "productionStatements": 3,
-  "directRowsRead": 457426
+  "directRowsRead": 457426,
+  "collectionStageWording": "Edge eligible-response evidence distinguished from legacy beacon records; no receipt/attention assertion"
 }
