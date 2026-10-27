@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-27T23:27:24.208298+00:00",
+  "analyticsTests": {
+    "pass": 188,
+    "fail": 0
+  },
+  "newRegressionTests": 4,
+  "syntax": "pass",
+  "frontmatterValidation": "pass",
+  "localLinks": "pass",
+  "gitDiffCheck": "pass",
+  "realControlCopies": "retained-v3-recovery.json",
+  "collectorClassifierVerifierReportChanged": false,
+  "priorUnchangedChecks": {
+    "siteTests": 106,
+    "workspaceTypes": "pass",
+    "source": "3519ea0",
+    "rerun": false
+  },
+  "articleBodyWords": 1250,
+  "shapingPrompts": 31,
+  "isolatedBuild": {
+    "result": "pass",
+    "posts": 32,
+    "directory": "/tmp/gk-production-stage-build-20261027/packages/blog",
+    "warning": "Mise tracking symlink outside writable roots failed; build exited zero."
+  },
+  "sourceSha256": {
+    "packages/blog/drafts/research/analytics-retrospective/compare-receipt-captures.mjs": "b23b6e48c4cc730d859ef2fe80262653fb643d48a86ef9ef30f7bd445c4fc838",
+    "packages/analytics/test/receipt-capture-comparison.test.mjs": "77eef24b024f56116400c84dc710d229ee75346356970ddba9f7cf46ee61f887",
+    "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "45d2c080e738ca8e4a0160f7367c7253dac3607fb8f9b6d038dddc34933e8bd1"
+  },
+  "newControlRequests": 0,
+  "directProductionSelects": 0,
+  "limits": [
+    "Copy matching is scoped to one existing control and does not establish population retention or unique requests.",
+    "No new vendor, human/device or native cryptographic agreement claim.",
+    "Article publication and activation remain separate gates."
+  ]
+}

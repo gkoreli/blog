@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseTailRecords, compareReceiptCopies } from '../../blog/drafts/research/analytics-retrospective/compare-receipt-captures.mjs';
+import { parseTailRecords, compareReceiptCopies, normalizeRetainedReceiptCopies } from '../../blog/drafts/research/analytics-retrospective/compare-receipt-captures.mjs';
 
 function fixture(overrides = {}) {
   const v2 = overrides.version === '2026-10-27.2';
@@ -59,4 +59,48 @@ test('v3 publication facts and separate private storage references are compared 
   assert.equal(JSON.stringify(result).includes('900719925474099'),false);
   delete value.live[0].logs[0].message[1].receipt.directoryPublication.status;
   assert.equal(compareReceiptCopies(value.live,value.retained).matchedPairs,0);
+});
+
+function individualCopy(value) {
+  return { ...structuredClone(value.retained[0].source),
+    $metadata: { type:'cf-worker',id:'private-provider-record',requestId:'private-request',timestampNs:'1700000000000000000' },
+    $workers: { truncated:false } };
+}
+
+test('individual native event copies normalize exact nanoseconds without publishing identifiers', () => {
+  const value=fixture({version:'2026-10-27.2'}),native=individualCopy(value);
+  const normalized=normalizeRetainedReceiptCopies(native);
+  assert.equal(normalized.rows[0].timestamp,value.retained[0].timestamp);
+  const result=compareReceiptCopies(value.live,native);
+  assert.equal(result.identicalPairs,1);assert.deepEqual(result.retainedFormats,{bulk:0,individual:1});
+  assert.equal(JSON.stringify(result).includes('private-'),false);assert.equal(JSON.stringify(result).includes('1700000000'),false);
+  assert.equal(compareReceiptCopies(value.live,[native]).identicalPairs,1);
+});
+
+test('native individual timestamp loss or unsupported shapes cannot establish a matching copy', () => {
+  const value=fixture({version:'2026-10-27.2'});
+  for(const ns of [undefined,null,1700000000000000000,'1700000000000000001','01700000000000000000','-1','1e18','9'.repeat(21),'private-ns']) {
+    const native=individualCopy(value);native.$metadata.timestampNs=ns;
+    const result=compareReceiptCopies(value.live,native);assert.equal(result.matchedPairs,0);assert.equal(result.rejectedRetainedRecords.timestamp,1);
+  }
+  for(const mutate of [n=>{delete n.$metadata.requestId},n=>{n.$metadata.type='span'},n=>{n.source={message:n.message}}]){
+    const native=individualCopy(value);mutate(native);const result=compareReceiptCopies(value.live,native);
+    assert.equal(result.matchedPairs,0);assert.equal(result.rejectedRetainedRecords.shape,1);
+  }
+});
+
+test('normalizing copies preserves duplicate ambiguity and refuses explicitly truncated captures', () => {
+  const value=fixture({version:'2026-10-27.2'}),native=individualCopy(value);
+  assert.equal(compareReceiptCopies(value.live,[native,structuredClone(native)]).ambiguousOperations,1);
+  native.$workers.truncated=true;assert.equal(compareReceiptCopies(value.live,native).invalidPairs,1);
+  const bulk=fixture({version:'2026-10-27.2'});bulk.live[0].truncated=true;
+  assert.equal(compareReceiptCopies(bulk.live,bulk.retained).invalidPairs,1);
+});
+
+test('bulk invocation/span context remains separate from receipt-format rejection', () => {
+  const value=fixture({version:'2026-10-27.2'});
+  value.retained.push({timestamp:value.retained[0].timestamp,$metadata:{type:'cf-worker-event'}});
+  value.retained.push({timestamp:value.retained[0].timestamp,$metadata:{type:'span'}});
+  const result=compareReceiptCopies(value.live,value.retained);assert.equal(result.identicalPairs,1);
+  assert.equal(result.retainedFormats.bulk,3);assert.deepEqual(result.rejectedRetainedRecords,{shape:0,timestamp:0});
 });

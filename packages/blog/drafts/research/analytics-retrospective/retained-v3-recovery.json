@@ -1,0 +1,174 @@
+{
+  "checkedAt": "2026-10-27T23:24:07.158Z",
+  "method": "Native individual and array copies matched to the existing actual control by unique operation reference, exact millisecond timestamp, collection and receipt version. Known receipt fields and separate storage fields compared. Flattened individual copies require exact text-nanosecond conversion.",
+  "collectionVersion": "2026-10-27.10",
+  "receiptVersion": "2026-10-27.3",
+  "liveInputSha256": "6a78de2fda20f3cde6d10965e9c753edf73aac7c18c50ffe000112ffedb90dbf",
+  "comparisons": [
+    {
+      "capture": "individual-control-copy.json",
+      "bytes": 2273,
+      "sha256": "72fe905dda10e86790a81df7b1e240860800f41158c902da30c2676fe3c1f9a5",
+      "comparison": {
+        "liveStoredRecords": 1,
+        "retainedStoredRecords": 1,
+        "retainedInputRecords": 1,
+        "retainedFormats": {
+          "bulk": 0,
+          "individual": 1
+        },
+        "rejectedRetainedRecords": {
+          "shape": 0,
+          "timestamp": 0
+        },
+        "missingOperationRecords": 0,
+        "unmatchedLiveRecords": 0,
+        "unmatchedRetainedRecords": 0,
+        "ambiguousOperations": 0,
+        "invalidPairs": 0,
+        "matchedPairs": 1,
+        "identicalPairs": 1,
+        "differingPairs": 0,
+        "omittedNulls": 0,
+        "omittedEmptyArrays": 0,
+        "omittedOther": 0,
+        "missingFields": {},
+        "addedFields": {},
+        "changedFields": {},
+        "versions": {
+          "2026-10-27.3": 1
+        }
+      }
+    },
+    {
+      "capture": "exact-receipt-bulk-copy.json",
+      "bytes": 2643,
+      "sha256": "94e82aba4154c573580eb998c7434c4addda45f56452b505d5951922334340d8",
+      "comparison": {
+        "liveStoredRecords": 1,
+        "retainedStoredRecords": 1,
+        "retainedInputRecords": 1,
+        "retainedFormats": {
+          "bulk": 1,
+          "individual": 0
+        },
+        "rejectedRetainedRecords": {
+          "shape": 0,
+          "timestamp": 0
+        },
+        "missingOperationRecords": 0,
+        "unmatchedLiveRecords": 0,
+        "unmatchedRetainedRecords": 0,
+        "ambiguousOperations": 0,
+        "invalidPairs": 0,
+        "matchedPairs": 1,
+        "identicalPairs": 1,
+        "differingPairs": 0,
+        "omittedNulls": 0,
+        "omittedEmptyArrays": 0,
+        "omittedOther": 0,
+        "missingFields": {},
+        "addedFields": {},
+        "changedFields": {},
+        "versions": {
+          "2026-10-27.3": 1
+        }
+      }
+    },
+    {
+      "capture": "fulltext-copy-acknowledged.json",
+      "bytes": 2643,
+      "sha256": "94e82aba4154c573580eb998c7434c4addda45f56452b505d5951922334340d8",
+      "comparison": {
+        "liveStoredRecords": 1,
+        "retainedStoredRecords": 1,
+        "retainedInputRecords": 1,
+        "retainedFormats": {
+          "bulk": 1,
+          "individual": 0
+        },
+        "rejectedRetainedRecords": {
+          "shape": 0,
+          "timestamp": 0
+        },
+        "missingOperationRecords": 0,
+        "unmatchedLiveRecords": 0,
+        "unmatchedRetainedRecords": 0,
+        "ambiguousOperations": 0,
+        "invalidPairs": 0,
+        "matchedPairs": 1,
+        "identicalPairs": 1,
+        "differingPairs": 0,
+        "omittedNulls": 0,
+        "omittedEmptyArrays": 0,
+        "omittedOther": 0,
+        "missingFields": {},
+        "addedFields": {},
+        "changedFields": {},
+        "versions": {
+          "2026-10-27.3": 1
+        }
+      }
+    },
+    {
+      "capture": "collapsed-fulltext-copy.json",
+      "bytes": 2643,
+      "sha256": "94e82aba4154c573580eb998c7434c4addda45f56452b505d5951922334340d8",
+      "comparison": {
+        "liveStoredRecords": 1,
+        "retainedStoredRecords": 1,
+        "retainedInputRecords": 1,
+        "retainedFormats": {
+          "bulk": 1,
+          "individual": 0
+        },
+        "rejectedRetainedRecords": {
+          "shape": 0,
+          "timestamp": 0
+        },
+        "missingOperationRecords": 0,
+        "unmatchedLiveRecords": 0,
+        "unmatchedRetainedRecords": 0,
+        "ambiguousOperations": 0,
+        "invalidPairs": 0,
+        "matchedPairs": 1,
+        "identicalPairs": 1,
+        "differingPairs": 0,
+        "omittedNulls": 0,
+        "omittedEmptyArrays": 0,
+        "omittedOther": 0,
+        "missingFields": {},
+        "addedFields": {},
+        "changedFields": {},
+        "versions": {
+          "2026-10-27.3": 1
+        }
+      }
+    }
+  ],
+  "nativeObservations": {
+    "earlierScopedQueryMatches": 0,
+    "refreshedPreset": "Last 15 minutes",
+    "refreshedScopeStartDisplayedUtc": "2026-10-27T23:00:16Z",
+    "fullTextVisibleResults": 6,
+    "initialClipboardArrayRecords": 0,
+    "initialCopyWriteAcknowledgement": "not established",
+    "individualCopyToast": true,
+    "exactStructuredVisibleResults": 1,
+    "exactArrayCopyRecords": 1,
+    "fullTextArrayCopyRecords": 1,
+    "collapsedFullTextArrayCopyRecords": 1,
+    "acknowledgedCopyMethod": "Replace the agent-owned browser clipboard with a non-sensitive marker before invoking Copy as JSON; verify its replacement before parsing. Markers are never pasted or sent."
+  },
+  "newControlRequests": 0,
+  "directProductionSelects": 0,
+  "limits": [
+    "Fresh time scope and elapsed time both changed; the cause of earlier query nonmatches is not established.",
+    "An initial unchanged empty clipboard is weaker evidence than an acknowledged new copy.",
+    "Visible-result and copied-record counts differ; the provider export/selection scope is unestablished. No general export-loss claim.",
+    "Copies describe the same existing control, not four independent controls or complete retention.",
+    "Exact receipt/storage agreement does not establish human purpose, native cryptographic agreement or organic vendor identity.",
+    "The earlier D1 readback remains a dated separate observation; no fresh database-state claim or historical backfill is made.",
+    "Private operation, row and provider references remain outside Git."
+  ]
+}

@@ -12,6 +12,41 @@ const paths = ['version','classifierProfile','readerKind','declarations.status',
 const storagePaths = ['version','status','observationId'];
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const field = (value, path) => path.split('.').reduce((value, key) => object(value) && Object.hasOwn(value, key) ? value[key] : undefined, value);
+
+/** Native individual-event copies flatten source fields and carry exact nanosecond text.
+ * Accept only an unambiguous stored-event shape and millisecond-exact timestamps.
+ * Shape validation does not authenticate the provider or a capture's provenance.
+ */
+export function normalizeRetainedReceiptCopies(input) {
+  const values = Array.isArray(input) ? input : [input];
+  const rows = [], formats = { bulk: 0, individual: 0 }, rejected = { shape: 0, timestamp: 0 };
+  for (const value of values) {
+    if (!object(value)) { rejected.shape++; continue; }
+    if (object(value.source)) {
+      if (value.message !== undefined || value.receipt !== undefined || value.storage !== undefined) { rejected.shape++; continue; }
+      rows.push(value); formats.bulk++; continue;
+    }
+    const metadata = value.$metadata;
+    if (Array.isArray(input) && typeof value.timestamp === 'string' && object(metadata)
+      && ['cf-worker-event','span'].includes(metadata.type) && value.receipt === undefined && value.storage === undefined) {
+      rows.push(value); formats.bulk++; continue;
+    }
+    if (value.message !== 'analytics.observation_stored' || !object(metadata)
+      || metadata.type !== 'cf-worker' || typeof metadata.id !== 'string' || metadata.id.length === 0
+      || typeof metadata.requestId !== 'string' || metadata.requestId.length === 0) { rejected.shape++; continue; }
+    const ns = metadata.timestampNs;
+    if (typeof ns !== 'string' || !/^[1-9][0-9]{0,19}$/.test(ns)) { rejected.timestamp++; continue; }
+    const timestamp = BigInt(ns);
+    const ms = timestamp / 1000000n;
+    if (timestamp % 1000000n !== 0n || ms > BigInt(Number.MAX_SAFE_INTEGER)
+      || !Number.isFinite(new Date(Number(ms)).getTime())) { rejected.timestamp++; continue; }
+    rows.push({ timestamp: new Date(Number(ms)).toISOString(), $metadata: metadata, $workers: value.$workers,
+      source: { message: value.message, operationId: value.operationId, collectionVersion: value.collectionVersion,
+        receipt: value.receipt, storage: value.storage } });
+    formats.individual++;
+  }
+  return { rows, inputRecords: values.length, formats, rejected };
+}
 function completeLiveReceipt(receipt) {
   if (!object(receipt) || !versions.has(receipt.version)) return false;
   const v1 = receipt.version === '2026-10-27.1';
@@ -41,12 +76,13 @@ export function parseTailRecords(text) {
   assert.equal(start, null, 'Incomplete trailing tail record'); return rows;
 }
 
-export function compareReceiptCopies(liveEvents, retainedRows) {
-  assert.ok(Array.isArray(liveEvents) && Array.isArray(retainedRows));
+export function compareReceiptCopies(liveEvents, retainedInput) {
+  assert.ok(Array.isArray(liveEvents));
+  const normalized = normalizeRetainedReceiptCopies(retainedInput), retainedRows = normalized.rows;
   const live = liveEvents.flatMap(event => (event.logs ?? []).filter(log => Array.isArray(log.message) && log.message[0] === 'analytics.observation_stored')
-    .map(log => ({ fields: log.message[1], timestamp: log.timestamp })));
+    .map(log => ({ fields: log.message[1], timestamp: log.timestamp, truncated: event.truncated === true })));
   const retained = retainedRows.filter(row => row?.source?.message === 'analytics.observation_stored')
-    .map(row => ({ fields: row.source, timestamp: Date.parse(row.timestamp) }));
+    .map(row => ({ fields: row.source, timestamp: Date.parse(row.timestamp), truncated: row.$workers?.truncated === true || row.$cloudflare?.truncated === true }));
   const valid = item => object(item.fields) && typeof item.fields.operationId === 'string' && item.fields.operationId.length > 0;
   const group = rows => {
     const result = new Map();
@@ -55,6 +91,7 @@ export function compareReceiptCopies(liveEvents, retainedRows) {
   };
   const L = group(live), R = group(retained), keys = new Set([...L.keys(), ...R.keys()]);
   const result = { liveStoredRecords: live.length, retainedStoredRecords: retained.length,
+    retainedInputRecords: normalized.inputRecords, retainedFormats: normalized.formats, rejectedRetainedRecords: normalized.rejected,
     missingOperationRecords: [...live, ...retained].filter(item => !valid(item)).length,
     unmatchedLiveRecords: 0, unmatchedRetainedRecords: 0, ambiguousOperations: 0, invalidPairs: 0,
     matchedPairs: 0, identicalPairs: 0, differingPairs: 0, omittedNulls: 0, omittedEmptyArrays: 0, omittedOther: 0,
@@ -66,7 +103,7 @@ export function compareReceiptCopies(liveEvents, retainedRows) {
     if (!right.length) { result.unmatchedLiveRecords += left.length; continue; }
     if (left.length !== 1 || right.length !== 1) { result.ambiguousOperations++; continue; }
     const a = left[0], b = right[0], ar = a.fields.receipt, br = b.fields.receipt;
-    if (!Number.isFinite(a.timestamp) || a.timestamp !== b.timestamp
+    if (a.truncated || b.truncated || !Number.isFinite(a.timestamp) || a.timestamp !== b.timestamp
       || typeof a.fields.collectionVersion !== 'string' || a.fields.collectionVersion !== b.fields.collectionVersion
       || !completeLiveReceipt(ar) || !object(br) || ar.version !== br.version) { result.invalidPairs++; continue; }
     result.matchedPairs++; add(result.versions, ar.version); let different = false;
