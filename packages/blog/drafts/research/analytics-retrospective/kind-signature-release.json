@@ -1,0 +1,144 @@
+{
+  "checkedAt": "2026-10-27T19:29:10.748433+00:00",
+  "sourceCommit": "2d900fb",
+  "nativeBuild": {
+    "id": "d470f49a-2947-4775-b963-150836e91b2a",
+    "durationSeconds": 39,
+    "versionPrefix": "e8867b60"
+  },
+  "sourceDeployment": {
+    "createdAt": "2026-10-27T19:27:48.187486Z",
+    "versions": [
+      {
+        "version_id": "e8867b60-19cf-43e5-8812-c5f62081b72a",
+        "percentage": 100
+      }
+    ]
+  },
+  "api": {
+    "selection": {
+      "traffic": "agents",
+      "range": "7d",
+      "path": null,
+      "agent": null,
+      "kind": "signed-agent"
+    },
+    "views": 225,
+    "byKindSignature": [
+      {
+        "kind": "signed-agent",
+        "basis": "verified-outcome-only",
+        "views": 225
+      }
+    ],
+    "rowSumMatches": true,
+    "requests": [
+      {
+        "request": 1,
+        "cache": "MISS",
+        "colo": "PDX",
+        "sha256": "ed1e159d1b64a6917eb771db30d3c22db415ce820f271ba7bad10879db0c7071",
+        "updatedAt": "2026-10-27T19:28:30.698Z",
+        "views": 225
+      },
+      {
+        "request": 2,
+        "cache": "MISS",
+        "colo": "SJC",
+        "sha256": "1f89dcf764b3a1b0e063a96f8a90f3b8668775ac23d58b3f604a9a41852e950e",
+        "updatedAt": "2026-10-27T19:28:31.173Z",
+        "views": 225
+      },
+      {
+        "request": 3,
+        "cache": "HIT",
+        "colo": "SJC",
+        "sha256": "1f89dcf764b3a1b0e063a96f8a90f3b8668775ac23d58b3f604a9a41852e950e",
+        "updatedAt": "2026-10-27T19:28:31.173Z",
+        "views": 225
+      },
+      {
+        "request": 4,
+        "cache": "HIT",
+        "colo": "SJC",
+        "sha256": "1f89dcf764b3a1b0e063a96f8a90f3b8668775ac23d58b3f604a9a41852e950e",
+        "updatedAt": "2026-10-27T19:28:31.173Z",
+        "views": 225
+      }
+    ],
+    "sameConnectionPair": [
+      3,
+      4
+    ],
+    "sameColoBodyReuseAccepted": true,
+    "initialPairDifferentColos": true,
+    "limit": "Initial two independent curl connections reached PDX and SJC, both MISS with different calculation times. A single curl process then reused a connection; observed same-colo bodies and timestamp match. Cache locality remains scoped, not global.",
+    "period": {
+      "start": "2026-10-21",
+      "end": "2026-10-27",
+      "timeZone": "UTC",
+      "granularity": "hour",
+      "updatedAt": "2026-10-27T19:28:31.173Z"
+    },
+    "storedSignerOutcomes": [
+      {
+        "signatureAgent": "Exa",
+        "views": 194
+      },
+      {
+        "signatureAgent": "Ahrefs",
+        "views": 30
+      },
+      {
+        "signatureAgent": "Other",
+        "views": 1
+      }
+    ]
+  },
+  "article": {
+    "words": 1249,
+    "originalShapingMessages": 30,
+    "servedBytesMatchIsolatedBuild": true,
+    "sha256": "ebf0abd0d3fd682d6b84a242b56908beaac11bd03ef6fac0865cf61df5b3700d"
+  },
+  "directSelect": {
+    "rowsRead": 42512,
+    "rowsWritten": 0,
+    "ceiling": 50000,
+    "scope": "One pre-release prepared report; no additional direct production SELECT in activation acceptance"
+  },
+  "noMigrationOrNewCollection": true,
+  "limit": "Native build/source association, metadata and observed API, not binary attestation. At least the two observed MISS fills and any browser fills are additional service work, not included in direct SELECT metering.",
+  "browser": {
+    "checkedAt": "2026-10-27T19:29:41.490Z",
+    "url": "https://gkoreli.com/stats?range=7d&traffic=agents&kind=signed-agent",
+    "status": "Showing 225 page views.",
+    "table": "Rows sum to the selected total\nClassification\tLocal signature evidence\tEvents\nSigned clients \u2014 historical or unknown role\tStored verified outcome; proof detail unrecorded\t225",
+    "period": "2026-10-21 through 2026-10-27 UTC \u00b7 Hourly buckets \u00b7 current UTC hour is partial \u00b7 Updated Oct 27, 2026, 7:28 PM UTC",
+    "screenshot": "analytics-classification-signature-evidence.png",
+    "limit": "Observed production table/selection/time; local fixture navigation/Back/empty/responsive checks are separate. Browser cache-fill cost is not directly metered."
+  },
+  "privateEvidenceSha256": {
+    "pre-release-query.json": "5bee2a9a45f58cd950d7426f6cda8ff8a7676c87d0df0f2272ad5efa9d683813",
+    "executed-pre-release.sql": "1a7e86a46e6f9caf07d6e6f71cd7eb81e5db1f9827946b736c52ecd847be66ae",
+    "report-1.body": "ed1e159d1b64a6917eb771db30d3c22db415ce820f271ba7bad10879db0c7071",
+    "report-2.body": "1f89dcf764b3a1b0e063a96f8a90f3b8668775ac23d58b3f604a9a41852e950e",
+    "report-3.body": "1f89dcf764b3a1b0e063a96f8a90f3b8668775ac23d58b3f604a9a41852e950e",
+    "report-4.body": "1f89dcf764b3a1b0e063a96f8a90f3b8668775ac23d58b3f604a9a41852e950e",
+    "production-browser-acceptance.json": "818a18008a7c0442721a5040b20a545d38f282c1fd21f200961aff8bb9e3b7fa"
+  },
+  "checks": {
+    "newContractServed": true,
+    "partitionEqualsTotal": true,
+    "historicalOutcomeOnlyExplicit": true,
+    "sameColoCacheReuse": true,
+    "renderedTableSelectionAndTime": true,
+    "articleAccepted": true,
+    "noMigrationOrCollectionChange": true
+  },
+  "remaining": [
+    "Organic signed/native comparison and independent human/device/actual-JavaScript-off labels",
+    "Resolved-address/egress/rebinding, replay policy and native beacon/sampling reconciliation",
+    "Local fixture navigation/Back/empty/390px checks remain distinct from production rendered-table acceptance"
+  ]
+}
