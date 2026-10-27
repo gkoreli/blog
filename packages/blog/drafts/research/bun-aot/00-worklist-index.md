@@ -36,8 +36,8 @@ Official artifact: [Buildkite 133741, macOS arm64](https://buildkite.com/bun/bun
 - [x] Verify the rendered article on desktop/mobile, five-minute length, one H1, readable evidence, and absence of a prompt page.
 - [x] Run repository checks in the isolated checkout; audit links, numbers and scoped diff.
 - [x] Freeze the research footprint without prompts; see [manifest](research-footprint.json).
-- [ ] Commit and push scoped work to main.
-- [ ] Verify actual deployment and the live article separately from code delivery.
+- [x] Commit and push scoped work to main.
+- [x] Verify actual deployment and the live article separately from code delivery.
 
 Raw media, extraction captures and command logs remain in `/tmp/bun-aot-experiments` and the earlier video directories outside Git. Public results must retain measurement conditions and code hashes. The test sources and accepted result tables belong in this research folder.
 
@@ -49,4 +49,4 @@ The small server does not halve memory: its result depends on retained data and 
 
 Accepted longer server result: five alternating pairs, 20,000 warm-up requests plus two million measured requests per process, all response hashes matching. Median throughput is 185,967 JIT versus 196,744 AOT requests/second; peak RSS is 51.6 versus 46.9 MB. This covers about 11–12 seconds per process, not a long production soak.
 
-The finished article is roughly 850 rendered words, under five minutes at 200 words/minute. Desktop and mobile review and repository checks pass. See [final review](04-review-and-acceptance.md). Next bounded action: freeze provenance, deliver scoped commits, and verify the actual live article; keep code delivery and deployment acceptance distinct.
+The finished article is roughly 850 rendered words, under five minutes at 200 words/minute. Desktop and mobile review and repository checks pass. See [final review](04-review-and-acceptance.md). Code delivery, successful Workers Build, activation and live HTTP/browser acceptance are recorded separately in [final review](04-review-and-acceptance.md). Publication is complete. There is no pending required action; any longer production soak or broader compatibility matrix is a new experiment, not unfinished acceptance.

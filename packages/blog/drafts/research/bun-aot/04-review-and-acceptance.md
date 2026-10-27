@@ -30,4 +30,14 @@ No prompt transcript or prompt file is published. Historical research direction 
 
 ## Delivery status
 
-Prepared and locally verified. Code commit, remote push, deployment activation and live acceptance are pending and must be recorded separately after they occur. No local preview or previous deployment is treated as evidence for the new public page.
+Code delivery: article and reproduction evidence commit `e252204`, followed by frozen provenance commit `0e0d3047c8247dd4f9cad223a27eae317c17ed7e`, were pushed directly to `main`. No prompt file or unrelated source change was staged. The primary checkout was fast-forwarded without disturbing the concurrent analytics work.
+
+Build: [Workers Build 227145cb](https://dash.cloudflare.com/7e0dc86ef69b4572a63162a52cddd269/workers/services/view/gkoreli-com/production/builds/227145cb-540d-4b88-bb12-e6f7c3e21b14) for `0e0d304` completed successfully at **2026-10-27 15:40:17 UTC**. Earlier requests returned 404 while the build was queued; they were not counted as acceptance.
+
+Activation: a fresh Wrangler observation showed deployment `30353746-c0e9-473c-9829-254fff5c889a`, created at **15:40:10.788001 UTC**, with version `4e33fde3-0c0c-4cb6-b1b1-013e6f50d41c` serving 100%. Deployment metadata and commit-specific build completion are recorded separately.
+
+Live acceptance by **15:41:11 UTC**: [the public article](https://gkoreli.com/oss-radar-08-bun-aot) returned HTTP 200. Both its server HTML and a fresh browser render contained the finished text. Browser inspection confirmed the exact title, October 27 date, canonical URL, one H1, 843 body words, the compiler/server/Zod results, document width matching the viewport and zero prompt links. The `/oss-radar-08-bun-aot/prompts` route returned 404 in a separate live check. Desktop/mobile rendering had already passed locally on this same article source.
+
+A newer concurrent analytics commit was integrated before this receipt. Its changes were not part of the article experiment or its frozen research footprint. This receipt changes research status only; it does not change the accepted article or rerun those experiments.
+
+Remaining limits: preview compiler, one macOS arm64 developer laptop, microbenchmarks and seconds of server observation. No local Rust, OpenClaw migration, multi-day soak, broad npm-compatibility or server-capacity claim. No required publication work remains; proposed future experiments stay separate from these accepted results.
