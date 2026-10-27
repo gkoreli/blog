@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-27T21:03:45.716873+00:00",
+  "analyticsTests": 168,
+  "siteTests": 106,
+  "workspaceTypes": "passed",
+  "isolatedBuiltPosts": 32,
+  "receiptVersion": "2026-10-27.2",
+  "collectionVersionUnchanged": "2026-10-27.8",
+  "databaseEvidenceUnchanged": true,
+  "articleWords": 1250,
+  "shapingPrompts": 31,
+  "builtArticleSha256": "22c92d4a5f7c0257a760603351f595634c0dfe0de957d3fb4a11644776eec247",
+  "nativeFixtureControls": 15,
+  "nativeStoredRows": 12,
+  "nativeReceipts": 10,
+  "largestFixtureReceiptBytes": 802,
+  "productionAcceptancePending": true,
+  "sourcePublicationPending": true,
+  "humanTrialsDeferred": true
+}

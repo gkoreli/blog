@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-27T21:00:37.410Z",
+  "method": "Compare known receipt fields only, matched by unique existing operation reference, exact log timestamp, collection and receipt versions; no timestamp-only or D1-row join.",
+  "inputs": [
+    {
+      "bytes": 20515,
+      "sha256": "92614f70eff78676c133d078d8e42583d5dcb6d24c5e3b7beb4b4b4a160547d2"
+    },
+    {
+      "bytes": 10964,
+      "sha256": "26b6a57e79be53c9e8d88e12fd275907dc35c731df231067785c1bd6e728b09b"
+    }
+  ],
+  "liveStoredRecords": 3,
+  "retainedStoredRecords": 6,
+  "missingOperationRecords": 0,
+  "unmatchedLiveRecords": 0,
+  "unmatchedRetainedRecords": 3,
+  "ambiguousOperations": 0,
+  "invalidPairs": 0,
+  "matchedPairs": 3,
+  "identicalPairs": 0,
+  "differingPairs": 3,
+  "omittedNulls": 21,
+  "omittedEmptyArrays": 6,
+  "omittedOther": 0,
+  "missingFields": {
+    "declarations.candidates": 3,
+    "signature.reason": 3,
+    "signature.reasons": 3,
+    "signature.signer": 3,
+    "signature.userAgentCovered": 3,
+    "signature.coverage": 3,
+    "native.verifiedBot": 3,
+    "native.signedAgent": 3,
+    "native.categoryValue": 3
+  },
+  "addedFields": {},
+  "changedFields": {},
+  "versions": {
+    "2026-10-27.1": 3
+  },
+  "limits": [
+    "Known-field comparison, not complete raw-log equality or authentication of provider captures.",
+    "Unknown receipt versions and ambiguous/invalid pairs cannot supply accepted matches.",
+    "Observed differences do not locate their cause within provider ingestion, storage, API, UI or export.",
+    "No raw values, arbitrary field names, operation/provider identifiers or request context appear in this aggregate."
+  ]
+}

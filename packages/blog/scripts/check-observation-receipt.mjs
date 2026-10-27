@@ -53,9 +53,10 @@ try {
   const schema = readFileSync('packages/analytics/schema.sql', 'utf8').replace(/^\s*--.*$/gm, '');
   await db.batch(schema.split(';').map(s => s.trim()).filter(Boolean).map(s => db.prepare(s)));
   const trials = [], captures = [];
-  for (const mode of ['verified-fixture','reviewed-origin-fixture','invalid-signature','directory-timeout','unsigned','unknown-category','injected','write-error','ack-without-write','ack-false','ack-zero','diagnostic-error','referral','ineligible']) {
+  for (const mode of ['verified-fixture','reviewed-origin-fixture','invalid-signature','directory-timeout','unsigned','conflicting-roles','unknown-category','injected','write-error','ack-without-write','ack-false','ack-zero','diagnostic-error','referral','ineligible']) {
     const path = mode === 'ineligible' ? '/api/stats' : mode === 'referral' ? '/privacy' : '/' + mode;
     const headers = { 'User-Agent': 'ExaSearchBot/1.0', Accept: 'text/html', 'X-Fixture-Mode': mode };
+    if (mode === 'conflicting-roles') headers['User-Agent'] = 'ExaUser/1.0 ExaSearchBot/1.0';
     if (mode === 'referral') headers.Referer = 'https://traffic2cash.xyz/';
     if (['verified-fixture','reviewed-origin-fixture','invalid-signature','directory-timeout','injected'].includes(mode)) {
       const origin = mode === 'reviewed-origin-fixture' || mode === 'injected' ? 'https://crawler.exa.ai' : mode === 'directory-timeout' ? 'https://timeout.example' : 'https://fixture.example';
@@ -78,25 +79,34 @@ try {
     else {
       assert.equal(rows.length, 1); assert.equal(stored.length, 1); assert.equal(capture.settlements[0], 'fulfilled');
       const row = rows[0], evidence = JSON.parse(row.signature_evidence), classification = JSON.parse(row.classification_evidence), receipt = stored[0].receipt;
+      assert.equal(receipt.version, '2026-10-27.2');
       assert.equal(stored[0].operationId, capture.logs.find(log => log.event === 'analytics.observation_attempt').operationId);
       assert.equal(stored[0].collectionVersion, row.collection_version); assert.equal(row.collection_version, COLLECTION_VERSION);
       assert.equal(receipt.readerKind, row.reader_kind); assert.equal(receipt.classifierProfile, classification.classifierProfile);
-      assert.deepEqual(receipt.declarations.candidates, classification.declarations.candidates);
-      for (const [outputKey, inputKey] of [['status','localStatus'],['outcome','localOutcome'],['source','source'],['verifierProfile','verifierProfile'],['evidenceVersion','version']])
+      assert.equal(receipt.declarations.candidateCount, classification.declarations.candidates.length);
+      assert.equal(receipt.declarations.candidateNames, [...classification.declarations.candidates].sort().join(',') || 'none');
+      for (const [outputKey, inputKey] of [['status','localStatus'],['outcome','localOutcome'],['source','source'],['evidenceVersion','version']])
         assert.equal(receipt.signature[outputKey], evidence[inputKey]);
+      assert.equal(receipt.signature.verifierProfile, evidence.verifierProfile ?? 'not-applicable');
       assert.equal(receipt.signature.documentedVendorStatus, evidence.vendor.status);
-      assert.equal(receipt.signature.reason, evidence.localReason); assert.deepEqual(receipt.signature.reasons, evidence.localReasons);
-      assert.equal(receipt.signature.userAgentCovered, evidence.vendor.userAgentCovered);
-      if (evidence.coverage === null) assert.equal(receipt.signature.coverage, null);
+      assert.equal(receipt.signature.reason, evidence.localReason ?? 'none');
+      assert.equal(receipt.signature.reasonCount, evidence.localReasons.length);
+      assert.equal(receipt.signature.reasonNames, [...evidence.localReasons].sort().join(',') || 'none');
+      const state = value => value === null ? 'unavailable' : String(value);
+      assert.equal(receipt.signature.userAgentCovered, state(evidence.vendor.userAgentCovered));
+      if (evidence.coverage === null) assert.deepEqual(receipt.signature.coverage, { status: 'unavailable' });
       else for (const [key, value] of Object.entries(evidence.coverage.covered)) assert.equal(receipt.signature.coverage[key], value);
-      assert.equal(receipt.native.verifiedBot, evidence.native.verifiedBot); assert.equal(receipt.native.signedAgent, evidence.native.signedAgent);
-      assert.equal(receipt.native.categoryStatus, evidence.native.category.status); assert.equal(receipt.native.categoryValue, evidence.native.category.value);
+      assert.equal(receipt.native.verifiedBot, state(evidence.native.verifiedBot)); assert.equal(receipt.native.signedAgent, state(evidence.native.signedAgent));
+      assert.equal(receipt.native.categoryStatus, evidence.native.category.status); assert.equal(receipt.native.categoryValue, evidence.native.category.value ?? 'none');
       const expected = ['verified-fixture','reviewed-origin-fixture'].includes(mode) ? 'verified' : mode === 'invalid-signature' ? 'invalid' : mode === 'directory-timeout' ? 'unavailable' : mode === 'injected' ? 'test-injected' : 'absent';
       assert.equal(receipt.signature.outcome, expected);
-      if (mode === 'directory-timeout') assert.ok(receipt.signature.reasons.includes('verification-timeout'));
-      assert.equal(receipt.signature.signer, mode === 'verified-fixture' ? 'Other' : mode === 'reviewed-origin-fixture' ? 'Exa' : null);
+      if (mode === 'directory-timeout') assert.ok(receipt.signature.reasonNames.split(',').includes('verification-timeout'));
+      assert.equal(receipt.signature.signer, mode === 'verified-fixture' ? 'Other' : mode === 'reviewed-origin-fixture' ? 'Exa' : 'none');
       if (mode === 'diagnostic-error') assert.ok(capture.logs.some(log => log.event === 'analytics.diagnostic_write_failed'));
       if (mode === 'unknown-category') assert.equal(receipt.native.categoryStatus, 'unrecognized');
+      if (mode === 'conflicting-roles') { assert.equal(receipt.readerKind, 'unresolved'); assert.equal(receipt.declarations.candidateCount, 2); assert.equal(receipt.declarations.candidateNames, 'ExaSearchBot,ExaUser'); assert.equal(receipt.declarations.categoryAgreement, 'multiple-categories'); }
+      const scalarOnly = value => { assert.notEqual(value, null); assert.equal(Array.isArray(value), false); assert.notEqual(value, ''); if (typeof value === 'object') for (const item of Object.values(value)) scalarOnly(item); };
+      scalarOnly(receipt);
     }
     assert.equal(JSON.stringify(capture.logs).includes('private-error'), false);
     assert.equal(JSON.stringify(capture.logs).includes('private-category'), false);

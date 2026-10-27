@@ -1,0 +1,170 @@
+{
+  "checkedAt": "2026-10-27T21:01:35.277Z",
+  "method": "Actual collector, workerd, D1 and crypto; intercepted fixture directories, supplied provider metadata and controlled acknowledgement failures. Wrapper awaits captured waitUntil work for deterministic inspection.",
+  "collectionVersion": "2026-10-27.8",
+  "trials": [
+    {
+      "mode": "verified-fixture",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "verified",
+      "failureReason": null,
+      "receiptBytes": 802
+    },
+    {
+      "mode": "reviewed-origin-fixture",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "verified",
+      "failureReason": null,
+      "receiptBytes": 799
+    },
+    {
+      "mode": "invalid-signature",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "invalid",
+      "failureReason": null,
+      "receiptBytes": 687
+    },
+    {
+      "mode": "directory-timeout",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "unavailable",
+      "failureReason": null,
+      "receiptBytes": 697
+    },
+    {
+      "mode": "unsigned",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 656
+    },
+    {
+      "mode": "conflicting-roles",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 674
+    },
+    {
+      "mode": "unknown-category",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 652
+    },
+    {
+      "mode": "injected",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "test-injected",
+      "failureReason": null,
+      "receiptBytes": 665
+    },
+    {
+      "mode": "write-error",
+      "observations": 0,
+      "receipts": 0,
+      "settlement": "rejected",
+      "outcome": null,
+      "failureReason": "persistence-or-processing",
+      "receiptBytes": 0
+    },
+    {
+      "mode": "ack-without-write",
+      "observations": 0,
+      "receipts": 0,
+      "settlement": "rejected",
+      "outcome": null,
+      "failureReason": "unacknowledged-insert",
+      "receiptBytes": 0
+    },
+    {
+      "mode": "ack-false",
+      "observations": 1,
+      "receipts": 0,
+      "settlement": "rejected",
+      "outcome": null,
+      "failureReason": "unacknowledged-insert",
+      "receiptBytes": 0
+    },
+    {
+      "mode": "ack-zero",
+      "observations": 1,
+      "receipts": 0,
+      "settlement": "rejected",
+      "outcome": null,
+      "failureReason": "unacknowledged-insert",
+      "receiptBytes": 0
+    },
+    {
+      "mode": "diagnostic-error",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 656
+    },
+    {
+      "mode": "referral",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 656
+    },
+    {
+      "mode": "ineligible",
+      "observations": 0,
+      "receipts": 0,
+      "settlement": "not-scheduled",
+      "outcome": null,
+      "failureReason": null,
+      "receiptBytes": 0
+    }
+  ],
+  "acceptanceQueryPlan": [
+    {
+      "id": 5,
+      "parent": 0,
+      "notused": 59,
+      "detail": "SEARCH page_observations USING INDEX idx_page_observations_public_path_time (is_owner=? AND path=? AND observed_at>? AND observed_at<?)"
+    },
+    {
+      "id": 66,
+      "parent": 0,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    }
+  ],
+  "sourceSha256": {
+    "packages/analytics/src/index.ts": "cfe3ddbf9314316556bd14936852a9552c1e6ea365c075cdf51940aa5fe2d9d5",
+    "packages/analytics/src/db.ts": "ccf199094597192296bc591fcb9f401e8afc1fb20b62c89c41c25ce378adf33b",
+    "packages/analytics/src/observation-receipt.ts": "b0029734c6bd514a8de8fc005862c15ef6ee58361f33974651de087d5d4019ce",
+    "packages/analytics/src/versions.ts": "476136c55ff4f47ca04dd65dd8202de0d6447e0499ee4a7f76077f0de50ddaba"
+  },
+  "productionRequests": 0,
+  "externalNetworkCalls": 0,
+  "limits": [
+    "Ephemeral fixture keys and substituted directories, including the reviewed-origin case, are not real vendor authentication.",
+    "Provider metadata is deliberately supplied, not an actual Cloudflare bot verdict.",
+    "No human/device label, complete-log guarantee or production activation is established.",
+    "An unacknowledged insert can leave a stored row; absence of a receipt does not establish absence of a write."
+  ]
+}

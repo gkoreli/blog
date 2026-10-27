@@ -6,6 +6,8 @@ import { observePageResponse } from '../.test-dist/index.js';
 import { storedObservationReceipt } from '../.test-dist/observation-receipt.js';
 import { COLLECTION_VERSION } from '../.test-dist/versions.js';
 import { ed25519JwkThumbprint } from '../.test-dist/webbotauth.js';
+import { KNOWN_AGENT_NAMES } from '../.test-dist/classify.js';
+import { FAILURE_OUTCOMES } from '../.test-dist/signature-evidence.js';
 
 function fixture(runOverride) {
   const sqlite = new DatabaseSync(':memory:'); sqlite.exec(readFileSync(new URL('../schema.sql', import.meta.url), 'utf8'));
@@ -59,13 +61,13 @@ test('actual crypto receipt reflects persisted role, coverage and nullable provi
   assert.equal(stored[0].collectionVersion, row.collection_version); assert.equal(row.collection_version, COLLECTION_VERSION);
   assert.equal(receipt.readerKind, row.reader_kind); assert.equal(receipt.readerKind, 'ai-search');
   assert.equal(receipt.signature.outcome, evidence.localOutcome); assert.equal(receipt.signature.outcome, 'verified');
-  assert.equal(receipt.signature.reason, evidence.localReason); assert.deepEqual(receipt.signature.reasons, evidence.localReasons);
+  assert.equal(receipt.signature.reason, 'none'); assert.equal(receipt.signature.reasonCount, 0); assert.equal(receipt.signature.reasonNames, 'none');
   assert.equal(receipt.signature.documentedVendorStatus, evidence.vendor.status); assert.equal(receipt.signature.documentedVendorStatus, 'matching-origin');
   assert.equal(receipt.signature.signer, 'Exa'); assert.equal(receipt.signature.source, 'local-webbotauth');
   for (const field of Object.keys(evidence.coverage.covered)) assert.equal(receipt.signature.coverage[field], evidence.coverage.covered[field]);
   assert.equal(receipt.signature.coverage.authority, true); assert.equal(receipt.signature.coverage.userAgent, false);
-  assert.equal(receipt.native.categoryValue, evidence.native.category.value); assert.equal(receipt.native.verifiedBot, false); assert.equal(receipt.native.signedAgent, null);
-  assert.deepEqual(receipt.declarations.candidates, classification.declarations.candidates);
+  assert.equal(receipt.native.categoryValue, evidence.native.category.value); assert.equal(receipt.native.verifiedBot, 'false'); assert.equal(receipt.native.signedAgent, 'unavailable');
+  assert.equal(receipt.declarations.candidateCount, 1); assert.equal(receipt.declarations.candidateNames, 'ExaSearchBot');
   for (const canary of ['192.0.2.1', 'private-token', 'secret-value', 'private-cookie', 'private-credential', 'https://crawler.exa.ai', row.daily_client_id, '"id":'])
     assert.equal(JSON.stringify(logs).includes(canary), false, canary);
   // The receipt snapshots the bound values; later mutation cannot rewrite it.
@@ -73,7 +75,7 @@ test('actual crypto receipt reflects persisted role, coverage and nullable provi
   const snapshot = storedObservationReceipt(inputObservation);
   assert.equal(snapshot.signature.signer, 'Other');
   evidence.coverage.covered.authority = false; classification.declarations.candidates.push('ExaUser');
-  assert.equal(snapshot.signature.coverage.authority, true); assert.deepEqual(snapshot.declarations.candidates, ['ExaSearchBot']);
+  assert.equal(snapshot.signature.coverage.authority, true); assert.equal(snapshot.declarations.candidateNames, 'ExaSearchBot');
 });
 
 test('stored receipt waits for the insert acknowledgement', async () => {
@@ -125,7 +127,8 @@ test('optional diagnostic failure preserves a base receipt; injected outcomes re
   assert.ok(logs.some(log => log.event === 'analytics.diagnostic_write_failed'));
   const receipt = logs.find(log => log.event === 'analytics.observation_stored').receipt;
   assert.equal(receipt.signature.source, 'test-injected'); assert.equal(receipt.signature.outcome, 'test-injected');
-  assert.equal(receipt.signature.signer, null); assert.equal(receipt.signature.coverage, null);
+  assert.equal(receipt.signature.signer, 'none'); assert.deepEqual(receipt.signature.coverage, { status: 'unavailable' });
+  assert.equal(receipt.signature.verifierProfile, 'not-applicable');
 });
 
 test('ineligible responses have neither a persistence attempt nor a stored receipt', async () => {
@@ -136,4 +139,30 @@ test('ineligible responses have neither a persistence attempt nor a stored recei
     assert.equal(work.length, 0);
   });
   assert.deepEqual(logs, []);
+});
+
+test('scalar receipts retain zero/unknown/conflict states when nulls and empty arrays are omitted', async () => {
+  for (const name of [...KNOWN_AGENT_NAMES, ...Object.keys(FAILURE_OUTCOMES)]) {
+    assert.notEqual(name, 'none'); assert.equal(name.includes(','), false);
+  }
+  const { DB } = fixture();
+  const logs = await capture(async () => { await collect(DB, request({ 'User-Agent': 'ExaUser/1.0 ExaSearchBot/1.0' })); });
+  const receipt = logs.find(log => log.event === 'analytics.observation_stored').receipt;
+  assert.equal(receipt.version, '2026-10-27.2'); assert.equal(receipt.readerKind, 'unresolved');
+  assert.equal(receipt.declarations.candidateCount, 2); assert.equal(receipt.declarations.candidateNames, 'ExaSearchBot,ExaUser');
+  assert.equal(receipt.declarations.categoryAgreement, 'multiple-categories');
+  assert.equal(receipt.signature.reasonCount, 0); assert.equal(receipt.signature.reasonNames, 'none');
+  assert.equal(receipt.native.signedAgent, 'unavailable');
+  const observedOmissionModel = value => {
+    if (value && typeof value === 'object' && !Array.isArray(value)) return Object.fromEntries(Object.entries(value)
+      .filter(([, item]) => item !== null && !(Array.isArray(item) && item.length === 0)).map(([key, item]) => [key, observedOmissionModel(item)]));
+    return value;
+  };
+  assert.deepEqual(observedOmissionModel(receipt), receipt);
+  const requireScalars = value => {
+    assert.notEqual(value, null); assert.equal(Array.isArray(value), false); assert.notEqual(value, '');
+    if (typeof value === 'object') for (const item of Object.values(value)) requireScalars(item);
+    else assert.ok(['string', 'number', 'boolean'].includes(typeof value));
+  };
+  requireScalars(receipt);
 });
