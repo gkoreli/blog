@@ -1,0 +1,120 @@
+{
+  "acceptedAt": "2026-10-27T20:52:12.945455+00:00",
+  "sourceCommit": "9e3b613fa8ef4865df80a3a0e6ecc32de4ca1e03",
+  "build": {
+    "id": "06c02084-7217-4886-b40d-832e1e73a30b",
+    "nativeStatus": "Ready",
+    "durationSeconds": 62
+  },
+  "activation": {
+    "createdOn": "2026-10-27T20:49:09.71149Z",
+    "versions": [
+      {
+        "version_id": "ceb44294-4072-4e04-9247-6845276d2c94",
+        "percentage": 100
+      }
+    ]
+  },
+  "collectionVersion": "2026-10-27.8",
+  "optionalBindings": {
+    "OWNER_MARK_GRANT": false,
+    "ANALYTICS_CALIBRATION": false,
+    "ANALYTICS_DIAGNOSTICS": false
+  },
+  "nativeTail": {
+    "invocationRecords": 3,
+    "storedEvents": 3,
+    "selectedControlledPairs": 1,
+    "verifiedSignatureRecords": 0,
+    "inputSha256": "92614f70eff78676c133d078d8e42583d5dcb6d24c5e3b7beb4b4b4a160547d2",
+    "requestFieldsAndIdsPrivate": true,
+    "stopped": true,
+    "exitCode": 1,
+    "exitReason": "Intentional Ctrl-C after capture; not a failed control.",
+    "completePopulationClaim": false
+  },
+  "control": {
+    "receipt": {
+      "version": "2026-10-27.1",
+      "classifierProfile": "2026-10-27.5",
+      "readerKind": "other-bot",
+      "declarations": {
+        "status": "none",
+        "candidates": [],
+        "categoryAgreement": "no-match"
+      },
+      "signature": {
+        "evidenceVersion": "2026-10-27.4",
+        "source": "local-webbotauth",
+        "verifierProfile": "2026-10-27.6",
+        "status": "absent",
+        "outcome": "absent",
+        "reason": null,
+        "reasons": [],
+        "signer": null,
+        "documentedVendorStatus": "no-declaration",
+        "userAgentCovered": null,
+        "coverage": null
+      },
+      "native": {
+        "verifiedBot": null,
+        "signedAgent": null,
+        "categoryStatus": "empty",
+        "categoryValue": null
+      }
+    },
+    "collectionVersion": "2026-10-27.8",
+    "matchedAttemptStoredPair": true,
+    "nativeWorkerOutcome": "ok",
+    "requestHasSignatureHeaders": false
+  },
+  "storedCandidateCohort": {
+    "rows": [
+      {
+        "collectionVersion": "2026-10-27.8",
+        "readerKind": "other-bot",
+        "evidenceVersion": "2026-10-27.4",
+        "evidenceSource": "local-webbotauth",
+        "localOutcome": "absent",
+        "verifierProfile": "2026-10-27.6",
+        "categoryStatus": "empty",
+        "categoryValue": null,
+        "nativeVerifiedBot": null,
+        "nativeSignedAgent": null,
+        "optionalCaptureAbsent": 1
+      }
+    ],
+    "agreesWithControlReceipt": true,
+    "newRowIdentityStored": false,
+    "publicExclusionBasis": "Stored reviewed referral marker and unchanged policy; no fresh public-report or owner-exclusion acceptance is claimed."
+  },
+  "directSelect": {
+    "rows_read": 6,
+    "rows_written": 0,
+    "changes": 0,
+    "changed_db": false,
+    "readCeiling": 50,
+    "commandMode": true,
+    "nativeLocalAcceptanceBeforeProduction": true
+  },
+  "publication": {
+    "articleUrl": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove",
+    "servedMarkdownMatchesIsolatedBuild": true,
+    "sha256": "bcdffa687b20b444ad61bd0125bbedb83b71bc246d92d475b4a2ed002cd83509",
+    "articleWords": 1248,
+    "shapingPrompts": 31,
+    "renderedReceiptEvidenceLink": true,
+    "renderedPrivacyDisclosure": true,
+    "screenshot": "analytics-storage-receipt-article.png"
+  },
+  "privateArchive": "~/.local/share/gkoreli/analytics-evidence/2026-10-27-observation-receipts/",
+  "privateCopyReviewAt": "2026-10-31T00:00:00Z",
+  "limits": [
+    "This accepts an actual unsigned control, not a fresh organic signed-vendor receipt or native cryptographic agreement.",
+    "Tail filtering/sampling/retention are not reconciled into a complete denominator; no population absence claim follows from zero captured verified records.",
+    "The native invocation pairs its actual receipt and attempt; the direct SELECT agrees at the candidate-cohort level without a new row-ID join.",
+    "The single direct SELECT is metered; three captured successful observation operations, tail/dashboard service work, publication reads and other work are additional.",
+    "Human trials remain deferred; no human/device accuracy, trigger, citation, full conformance or privacy certification.",
+    "Remote build runtime parity was not freshly inspected. The later bookkeeping commit is not this accepted activation."
+  ]
+}
