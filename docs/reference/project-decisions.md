@@ -49,3 +49,5 @@ Use the Georgian გკ logo and SVG icon set in `packages/blog/public/icons/`. 
 Exact declarations, independent category agreement and explicit classification uncertainty: [ADR-0016.12](../adr/0016.12-explicit-classification-uncertainty.md).
 
 Verification outcome categories and documented vendor-signing methods: [ADR-0016.13](../adr/0016.13-verification-outcomes-and-vendor-methods.md).
+
+Documented published-IP vendor methods and bounded source provenance: [ADR-0016.14](../adr/0016.14-published-vendor-ip-methods.md).

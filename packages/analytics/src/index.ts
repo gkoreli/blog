@@ -12,6 +12,7 @@ import { classifyReaderKind } from './readerkind.js';
 import { parseReferrer } from './referrals.js';
 import { verifyWebBotAuth, type WebBotAuthResult } from './webbotauth.js';
 import { verificationEvidence } from './signature-evidence.js';
+import { verifyVendorIp } from './vendor-ip.js';
 
 export type { Env } from './db.js';
 export { ANALYTICS_EVIDENCE_SINCE } from './contracts.js';
@@ -85,7 +86,7 @@ async function persistObservation(
   const metadata = extractRequestMetadata(request, env.OWNER_IPS, publicPaths);
   const classification = analyzeTraffic(metadata.userAgent);
   const utcDate = observedAt.toISOString().slice(0, 10);
-  const [dailyClientId, signature] = await Promise.all([
+  const [dailyClientId, signature, vendorIp] = await Promise.all([
     createDailyClientId({
       masterKey: hashKey,
       siteHost: metadata.siteHost,
@@ -94,6 +95,7 @@ async function persistObservation(
       userAgent: metadata.userAgent,
     }),
     verifyRequestSignature(request, metadata.hasSignatureHeaders, options.verifySignature),
+    verifyVendorIp(request, classification.declarations.candidates),
   ]);
   const readerFacts = {
     trafficClass: classification.trafficClass,
@@ -139,6 +141,7 @@ async function persistObservation(
     observedAt: sqliteTimestamp(observedAt),
     signatureEvidence: verificationEvidence(request, signature, options.verifySignature !== undefined, classification.declarations.candidates),
     classificationEvidence: classificationEvidence(readerFacts, classification.declarations),
+    vendorIpEvidence: vendorIp,
     ...(captureEvidence ? { requestEvidence: extractRequestEvidence(request, response) } : {}),
   };
   const diagnostic = captureEvidence ? {

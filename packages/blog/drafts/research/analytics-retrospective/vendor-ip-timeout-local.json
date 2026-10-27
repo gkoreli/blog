@@ -1,0 +1,151 @@
+{
+  "at": "2026-10-27T16:59:12.608Z",
+  "runtime": "v24.14.1",
+  "mode": "--timeout",
+  "conditions": "Synthetic addresses from saved public vendor ranges and negative controls; Node collector/crypto + actual workerd D1; intercepted saved-body/cache-directive/Age responses; original Date/Expires transport times are not replayed at the later test time and are tested separately; no vendor/operator authenticity or production claim",
+  "library": {
+    "version": "2.5.0",
+    "sourceCommit": "dc55282780d8702bac31ef012ca52e4a77fbca1f"
+  },
+  "sources": [
+    {
+      "id": "ahrefs-crawlers",
+      "url": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
+      "documentation": "https://ahrefs.com/robot",
+      "bytes": 3350,
+      "prefixCount": 81,
+      "publisherVersion": null,
+      "sha256": "4246eee9407d58fb030ee9f12776f974f628db4b4f91f8111847dd565fc63d45"
+    },
+    {
+      "id": "google-common",
+      "url": "https://developers.google.com/static/crawling/ipranges/common-crawlers.json",
+      "documentation": "https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests",
+      "bytes": 21768,
+      "prefixCount": 317,
+      "publisherVersion": "2026-10-27T15:46:11.000000",
+      "sha256": "1e01c762d65fb7f15ef1985bcf39061ac2a65fae57999e941996a40629774f9c"
+    },
+    {
+      "id": "openai-ads",
+      "url": "https://openai.com/adsbot.json",
+      "documentation": "https://developers.openai.com/api/docs/bots",
+      "bytes": 177,
+      "prefixCount": 2,
+      "publisherVersion": "2026-05-12T03:00:00.000000",
+      "sha256": "460b800ffb026c5ec1b9540d285f2ade8e1c4a654e65dae315e2bae650b5d74d"
+    },
+    {
+      "id": "openai-gpt",
+      "url": "https://openai.com/gptbot.json",
+      "documentation": "https://developers.openai.com/api/docs/bots",
+      "bytes": 977,
+      "prefixCount": 18,
+      "publisherVersion": "2026-09-22T02:00:07.000000",
+      "sha256": "a24d1fa34f094d303400bdf13c45c5e9726e0b553780d16a52f9ba1b790acc72"
+    },
+    {
+      "id": "openai-search",
+      "url": "https://openai.com/searchbot.json",
+      "documentation": "https://developers.openai.com/api/docs/bots",
+      "bytes": 2080,
+      "prefixCount": 39,
+      "publisherVersion": "2026-01-02T11:00:00.000000",
+      "sha256": "81806b1665e9bbbc5e0f307b847ad34f7027abc19e0d2d5d3eca1864bf361be6"
+    },
+    {
+      "id": "openai-user",
+      "url": "https://openai.com/chatgpt-user.json",
+      "documentation": "https://developers.openai.com/api/docs/bots",
+      "bytes": 8467,
+      "prefixCount": 234,
+      "publisherVersion": "2026-10-20T17:07:39.673498",
+      "sha256": "e03a9f75b53619286d990e028043ce43d223d93269f3679b28d78142b8f0e7ab"
+    },
+    {
+      "id": "perplexity-bot",
+      "url": "https://www.perplexity.ai/perplexitybot.json",
+      "documentation": "https://docs.perplexity.ai/docs/resources/perplexity-crawlers",
+      "bytes": 482,
+      "prefixCount": 8,
+      "publisherVersion": "2025-02-07T16:56:00.000000",
+      "sha256": "2688b50802b42611b412f8ac3bc614248d0eab00d74f4ceda41cb78526bde6b2"
+    },
+    {
+      "id": "perplexity-user",
+      "url": "https://www.perplexity.ai/perplexity-user.json",
+      "documentation": "https://docs.perplexity.ai/docs/resources/perplexity-crawlers",
+      "bytes": 276,
+      "prefixCount": 4,
+      "publisherVersion": "2025-10-17T10:17:00.000000",
+      "sha256": "23e55350c44ac51a8a6e7ed786d861db8bc62886fd1cfc228dfa467127223e48"
+    }
+  ],
+  "trials": [
+    {
+      "label": "timeout",
+      "evidence": {
+        "profile": "2026-10-27.1",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-27T16:59:11.061Z",
+        "address": {
+          "state": "usable",
+          "header": "cf-connecting-ip",
+          "family": "ipv4"
+        },
+        "declarationCount": 1,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": true,
+          "notAssessed": false
+        },
+        "checks": [
+          {
+            "source": "google-common",
+            "outcome": "unavailable",
+            "reason": "fetch-timeout",
+            "snapshot": null
+          }
+        ]
+      },
+      "bytes": 462,
+      "storedName": "Googlebot",
+      "storedKind": "search-crawler",
+      "elapsedMs": 1521
+    }
+  ],
+  "fetches": 1,
+  "report": {
+    "recordedViews": 1,
+    "notRecordedViews": 1,
+    "configuredDeclarationViews": 1,
+    "unmappedDeclarationViews": 0,
+    "noDeclarationViews": 0,
+    "listedViews": 0,
+    "notListedViews": 0,
+    "unavailableViews": 1,
+    "notAssessedViews": 0,
+    "addressUnavailableViews": 0
+  },
+  "checks": {
+    "nativeD1": true,
+    "migrationHistoryPreserved": true,
+    "emptyReport": true,
+    "optionalCaptureOff": true,
+    "ownerAndReferralExclusions": false,
+    "narrowProductionSql": false
+  },
+  "sourceSha256": {
+    "packages/analytics/src/vendor-ip.ts": "93a7a3f73c95487c33163d75c2eb6423230f9b4a7d825d8a74d384d7b7033784",
+    "packages/analytics/src/vendor-ip-sources.ts": "b1ab77976978e6873bdcca46515255fe5c659012fb3df976b0072bee82639d75",
+    "packages/analytics/src/index.ts": "934b7f3230004a89e2b28ca639a51cb0fac1582470462c5362bcd4595a269a65",
+    "packages/analytics/src/stats.ts": "0d56ec0c86cea7189080643f6a14ba281e82b26494b5490f53c804171e35a7b9",
+    "packages/analytics/src/classify.ts": "8a66baf13e2563cd68c16456e870a71ab6561cedd56e017ea36f830a8f7adc47",
+    "packages/analytics/src/versions.ts": "7b4cb4542a1e70aaf2825499f3e6d84ae0655acc549b7d019643f7a2ef85d393"
+  },
+  "productionCalls": 0
+}

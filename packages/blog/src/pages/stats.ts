@@ -114,6 +114,11 @@ export function statsPage() {
       <p class="stats-section-note">Invalid input, unsupported features, unavailable keys and policy rejection differ. Mixed candidate outcomes remain indeterminate. None establishes impersonation or intent.</p>
       ${listSkeleton(3)}
     </section>
+    <section class="stats-section" id="stats-vendor-network">
+      <h2>Published network checks <span>vendor IP feeds</span></h2>
+      <p class="stats-section-note">Checks compare an edge-supplied address with documented vendor ranges. Membership supports network attribution; a nonmatch does not prove impersonation. Missing addresses, Worker relay addresses, unavailable feeds and budget skips stay explicit. Outcomes can overlap when several declarations apply. Earlier records remain unknown. <a href="https://github.com/gkoreli/blog/blob/main/packages/analytics/src/vendor-ip-sources.ts" target="_blank" rel="noopener">Configured methods and sources</a>.</p>
+      ${listSkeleton(3)}
+    </section>
     <section class="stats-section" id="stats-vendor-signatures">
       <h2>Declared vendor checks <span>documented signing origins</span></h2>
       <p class="stats-section-note">Currently configured for ExaSearchBot and ExaUser using Exa’s published key origin. A matching key does not bind an unsigned User-Agent, identify the initiating user or prevent replay. Counts overlap; other declarations remain unmapped. No IP or DNS verification is performed here.</p>

@@ -17,5 +17,8 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250306.0",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "ipaddr.js": "2.5.0"
   }
 }

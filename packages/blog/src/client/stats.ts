@@ -188,7 +188,7 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
     throw new Error('Updated referral details are unavailable. Please reload.');
   }
   if (data.bySigner === undefined) throw new Error('Updated signer evidence is unavailable. Please reload.');
-  if (data.verification === undefined) throw new Error('Updated verification evidence is unavailable. Please reload.');
+  if (data.verification === undefined || data.vendorNetwork === undefined) throw new Error('Updated verification evidence is unavailable. Please reload.');
   return data;
 }
 
@@ -668,6 +668,18 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     { label: 'Signature outside Web Bot Auth', views: verification.localNotApplicableViews },
     { label: 'Indeterminate, mixed or internal error', views: verification.localIndeterminateViews },
     { label: 'Earlier unsuccessful result — detail unrecorded', views: verification.unverifiedOutcomeNotRecordedViews },
+  ], null);
+  replaceSectionRows('stats-vendor-network', [
+    { label: 'Method record available', views: data.vendorNetwork.recordedViews },
+    { label: 'Method not recorded — historical or unreported', views: data.vendorNetwork.notRecordedViews },
+    { label: 'Has a declaration with a configured IP feed', views: data.vendorNetwork.configuredDeclarationViews },
+    { label: 'Address listed in at least one applicable feed', views: data.vendorNetwork.listedViews },
+    { label: 'Address absent from at least one applicable feed', views: data.vendorNetwork.notListedViews },
+    { label: 'Check unavailable — address, feed or deadline', views: data.vendorNetwork.unavailableViews },
+    { label: 'Not assessed — refresh cooldown or request budget', views: data.vendorNetwork.notAssessedViews },
+    { label: 'Applicable declaration; address unavailable', views: data.vendorNetwork.addressUnavailableViews },
+    { label: 'Has declarations without this IP method', views: data.vendorNetwork.unmappedDeclarationViews },
+    { label: 'No recognized named declaration', views: data.vendorNetwork.noDeclarationViews },
   ], null);
   replaceSectionRows('stats-vendor-signatures', [
     { label: 'Declaration with a documented signing method', views: verification.vendorDocumentedViews },

@@ -211,7 +211,7 @@ function payloadRows(row: Record<string, unknown>): Record<string, unknown>[] {
 function reportSections(rows: Record<string, unknown>[], includeBoundary: boolean): Map<string, Record<string, unknown>[]> {
   const expected = new Set([
     'totals', 'path', 'country', 'series', 'referrer', 'device', 'agent', 'kind', 'excluded',
-    'referrer-state', 'transitions', 'referrer-details', 'signer', 'verification',
+    'referrer-state', 'transitions', 'referrer-details', 'signer', 'verification', 'vendor-ip',
   ]);
   if (includeBoundary) expected.add('boundary');
   const sections = new Map<string, Record<string, unknown>[]>();
@@ -219,7 +219,7 @@ function reportSections(rows: Record<string, unknown>[], includeBoundary: boolea
     const section = stringField(row, 'section');
     if (section === null || !expected.has(section) || sections.has(section)) return malformedReport();
     const payload = payloadRows(row);
-    if ((section === 'totals' || section === 'excluded' || section === 'boundary' || section === 'referrer-details' || section === 'verification') && payload.length !== 1) {
+    if ((section === 'totals' || section === 'excluded' || section === 'boundary' || section === 'referrer-details' || section === 'verification' || section === 'vendor-ip') && payload.length !== 1) {
       return malformedReport();
     }
     sections.set(section, payload);
@@ -257,7 +257,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     "('totals', 0)", "('path', 1)", "('country', 2)", "('series', 3)", "('referrer', 4)",
     "('device', 5)", "('agent', 6)", "('kind', 7)", "('excluded', 8)",
     "('referrer-state', 9)", "('transitions', 10)", "('referrer-details', 11)",
-    "('signer', 12)", "('verification', 14)",
+    "('signer', 12)", "('verification', 14)", "('vendor-ip', 15)",
   ];
   if (includeBoundary) sectionValues.push("('boundary', 13)");
 
@@ -266,7 +266,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
       selected AS MATERIALIZED (
         SELECT path, country, daily_client_id, traffic_class, agent_name, device_type,
                reader_kind, reader_reason, referrer_host, observed_at,
-               referrer_state, internal_referrer_path, representation, signature_status, signature_agent, signature_evidence
+               referrer_state, internal_referrer_path, representation, signature_status, signature_agent, signature_evidence, vendor_ip_evidence
         FROM page_observations WHERE ${selected.sql}
       ),
       ${referralAssessmentCtes(`
@@ -355,6 +355,20 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         WHEN 'excluded' THEN (
           SELECT json_array(json_object('views', COUNT(*)))
           FROM report_scope WHERE referral_excluded = 1
+        )
+        WHEN 'vendor-ip' THEN (
+          SELECT json_array(json_object(
+            'recordedViews', SUM(vendor_ip_evidence IS NOT NULL),
+            'notRecordedViews', SUM(vendor_ip_evidence IS NULL),
+            'configuredDeclarationViews', SUM(json_extract(vendor_ip_evidence, '$.configuredDeclarationCount') > 0),
+            'unmappedDeclarationViews', SUM(json_extract(vendor_ip_evidence, '$.unmappedDeclarationCount') > 0),
+            'noDeclarationViews', SUM(json_extract(vendor_ip_evidence, '$.declarationCount') = 0),
+            'listedViews', SUM(json_extract(vendor_ip_evidence, '$.summary.listed') = 1),
+            'notListedViews', SUM(json_extract(vendor_ip_evidence, '$.summary.notListed') = 1),
+            'unavailableViews', SUM(json_extract(vendor_ip_evidence, '$.summary.unavailable') = 1),
+            'notAssessedViews', SUM(json_extract(vendor_ip_evidence, '$.summary.notAssessed') = 1),
+            'addressUnavailableViews', SUM(json_extract(vendor_ip_evidence, '$.configuredDeclarationCount') > 0 AND json_extract(vendor_ip_evidence, '$.address.state') <> 'usable')
+          )) FROM included
         )
         WHEN 'verification' THEN (
           SELECT json_array(json_object(
@@ -447,6 +461,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
   const referrals = publicReferrers(referrerRows(requiredSection(sections, 'referrer')), policy);
   const referrerDetails = requiredSection(sections, 'referrer-details')[0];
   const verificationRow = requiredSection(sections, 'verification')[0];
+  const vendorNetworkRow = requiredSection(sections, 'vendor-ip')[0];
 
   return {
     period: {
@@ -495,6 +510,18 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
       return { signatureAgent, views: numberField(row, 'views') };
     }),
     byKind: kindRows(requiredSection(sections, 'kind')),
+    vendorNetwork: {
+      recordedViews: numberField(vendorNetworkRow, 'recordedViews'),
+      notRecordedViews: numberField(vendorNetworkRow, 'notRecordedViews'),
+      configuredDeclarationViews: numberField(vendorNetworkRow, 'configuredDeclarationViews'),
+      unmappedDeclarationViews: numberField(vendorNetworkRow, 'unmappedDeclarationViews'),
+      noDeclarationViews: numberField(vendorNetworkRow, 'noDeclarationViews'),
+      listedViews: numberField(vendorNetworkRow, 'listedViews'),
+      notListedViews: numberField(vendorNetworkRow, 'notListedViews'),
+      unavailableViews: numberField(vendorNetworkRow, 'unavailableViews'),
+      notAssessedViews: numberField(vendorNetworkRow, 'notAssessedViews'),
+      addressUnavailableViews: numberField(vendorNetworkRow, 'addressUnavailableViews'),
+    },
     verification: {
       localInvalidViews: numberField(verificationRow, 'localInvalidViews'),
       localUnsupportedViews: numberField(verificationRow, 'localUnsupportedViews'),

@@ -1,0 +1,216 @@
+{
+  "checkedAt": "2026-10-27T16:54:32.074158+00:00",
+  "library": {
+    "version": "2.5.0",
+    "license": "MIT",
+    "gitHead": "dc55282780d8702bac31ef012ca52e4a77fbca1f",
+    "integrity": "sha512-aq+t5NAc+cS6rZQQVWC2x98CPqGtKKTMDd4Gaodv0wShnItdKg/51djkGJ1hqH+Oy0ivDftCbSLCQob8zso01w==",
+    "tarballIntegrityVerified": true,
+    "publishedCodeTypesAndLicenseMatchSourceCommit": true,
+    "mainBranchVersion3NotPublished": true
+  },
+  "feeds": [
+    {
+      "id": "openai-search",
+      "url": "https://openai.com/searchbot.json",
+      "httpStatus": "200",
+      "bytes": 2080,
+      "sha256": "81806b1665e9bbbc5e0f307b847ad34f7027abc19e0d2d5d3eca1864bf361be6",
+      "keys": [
+        "creationTime",
+        "prefixes"
+      ],
+      "prefixes": 39,
+      "families": {
+        "ipv4Prefix": 39,
+        "ipv6Prefix": 0
+      },
+      "entryKeys": [
+        "ipv4Prefix"
+      ],
+      "relevantHeaders": [
+        "content-type: application/json; charset=utf-8",
+        "age: 644",
+        "cache-control: public, max-age=0, must-revalidate",
+        "last-modified: Thu, 10 Sep 2026 19:33:35 GMT"
+      ],
+      "captureFileWrittenAt": "2026-10-27T16:38:19.449275+00:00"
+    },
+    {
+      "id": "openai-gpt",
+      "url": "https://openai.com/gptbot.json",
+      "httpStatus": "200",
+      "bytes": 977,
+      "sha256": "a24d1fa34f094d303400bdf13c45c5e9726e0b553780d16a52f9ba1b790acc72",
+      "keys": [
+        "creationTime",
+        "prefixes"
+      ],
+      "prefixes": 18,
+      "families": {
+        "ipv4Prefix": 18,
+        "ipv6Prefix": 0
+      },
+      "entryKeys": [
+        "ipv4Prefix"
+      ],
+      "relevantHeaders": [
+        "content-type: application/json; charset=utf-8",
+        "age: 3517",
+        "cache-control: public, max-age=0, must-revalidate",
+        "last-modified: Tue, 22 Sep 2026 17:08:25 GMT"
+      ],
+      "captureFileWrittenAt": "2026-10-27T16:38:19.487090+00:00"
+    },
+    {
+      "id": "openai-user",
+      "url": "https://openai.com/chatgpt-user.json",
+      "httpStatus": "200",
+      "bytes": 8467,
+      "sha256": "e03a9f75b53619286d990e028043ce43d223d93269f3679b28d78142b8f0e7ab",
+      "keys": [
+        "creationTime",
+        "prefixes"
+      ],
+      "prefixes": 234,
+      "families": {
+        "ipv4Prefix": 234,
+        "ipv6Prefix": 0
+      },
+      "entryKeys": [
+        "ipv4Prefix"
+      ],
+      "relevantHeaders": [
+        "content-type: application/octet-stream",
+        "last-modified: Tue, 20 Oct 2026 17:07:40 GMT"
+      ],
+      "captureFileWrittenAt": "2026-10-27T16:38:19.795469+00:00"
+    },
+    {
+      "id": "openai-ads",
+      "url": "https://openai.com/adsbot.json",
+      "httpStatus": "200",
+      "bytes": 177,
+      "sha256": "460b800ffb026c5ec1b9540d285f2ade8e1c4a654e65dae315e2bae650b5d74d",
+      "keys": [
+        "creationTime",
+        "prefixes"
+      ],
+      "prefixes": 2,
+      "families": {
+        "ipv4Prefix": 2,
+        "ipv6Prefix": 0
+      },
+      "entryKeys": [
+        "ipv4Prefix"
+      ],
+      "relevantHeaders": [
+        "content-type: application/json; charset=utf-8",
+        "age: 2396",
+        "cache-control: public, max-age=0, must-revalidate",
+        "last-modified: Tue, 27 Oct 2026 15:58:23 GMT"
+      ],
+      "captureFileWrittenAt": "2026-10-27T16:38:19.862491+00:00"
+    },
+    {
+      "id": "google-common",
+      "url": "https://developers.google.com/static/crawling/ipranges/common-crawlers.json",
+      "httpStatus": "200",
+      "bytes": 21768,
+      "sha256": "1e01c762d65fb7f15ef1985bcf39061ac2a65fae57999e941996a40629774f9c",
+      "keys": [
+        "creationTime",
+        "prefixes"
+      ],
+      "prefixes": 317,
+      "families": {
+        "ipv4Prefix": 170,
+        "ipv6Prefix": 147
+      },
+      "entryKeys": [
+        "ipv4Prefix",
+        "ipv6Prefix"
+      ],
+      "relevantHeaders": [
+        "content-type: application/json",
+        "last-modified: Tue, 27 Oct 2026 15:46:39 GMT",
+        "cache-control: no-cache, must-revalidate"
+      ],
+      "captureFileWrittenAt": "2026-10-27T16:38:20.735612+00:00"
+    },
+    {
+      "id": "ahrefs-crawlers",
+      "url": "https://api.ahrefs.com/v3/public/crawler-ip-ranges",
+      "httpStatus": "200",
+      "bytes": 3350,
+      "sha256": "4246eee9407d58fb030ee9f12776f974f628db4b4f91f8111847dd565fc63d45",
+      "keys": [
+        "prefixes"
+      ],
+      "prefixes": 81,
+      "families": {
+        "ipv4Prefix": 81,
+        "ipv6Prefix": 0
+      },
+      "entryKeys": [
+        "ipv4Prefix"
+      ],
+      "relevantHeaders": [
+        "content-type: application/json"
+      ],
+      "captureFileWrittenAt": "2026-10-27T16:38:20.957360+00:00"
+    },
+    {
+      "id": "perplexity-bot",
+      "url": "https://www.perplexity.ai/perplexitybot.json",
+      "httpStatus": "200",
+      "bytes": 482,
+      "sha256": "2688b50802b42611b412f8ac3bc614248d0eab00d74f4ceda41cb78526bde6b2",
+      "keys": [
+        "creationTime",
+        "prefixes"
+      ],
+      "prefixes": 8,
+      "families": {
+        "ipv4Prefix": 8,
+        "ipv6Prefix": 0
+      },
+      "entryKeys": [
+        "ipv4Prefix"
+      ],
+      "relevantHeaders": [
+        "content-type: application/json"
+      ],
+      "captureFileWrittenAt": "2026-10-27T16:38:21.027218+00:00"
+    },
+    {
+      "id": "perplexity-user",
+      "url": "https://www.perplexity.ai/perplexity-user.json",
+      "httpStatus": "200",
+      "bytes": 276,
+      "sha256": "23e55350c44ac51a8a6e7ed786d861db8bc62886fd1cfc228dfa467127223e48",
+      "keys": [
+        "creationTime",
+        "prefixes"
+      ],
+      "prefixes": 4,
+      "families": {
+        "ipv4Prefix": 4,
+        "ipv6Prefix": 0
+      },
+      "entryKeys": [
+        "ipv4Prefix"
+      ],
+      "relevantHeaders": [
+        "content-type: application/json"
+      ],
+      "captureFileWrittenAt": "2026-10-27T16:38:21.070289+00:00"
+    }
+  ],
+  "totalPrefixes": 703,
+  "limits": [
+    "Public source snapshots, not visitor observations.",
+    "Capture-file timestamps record local download completion, not vendor publication times.",
+    "Raw bodies and execution logs stay outside Git."
+  ]
+}

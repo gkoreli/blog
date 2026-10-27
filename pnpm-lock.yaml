@@ -13,6 +13,10 @@ importers:
         version: 4.71.0(@cloudflare/workers-types@4.20260306.1)
 
   packages/analytics:
+    dependencies:
+      ipaddr.js:
+        specifier: 2.5.0
+        version: 2.5.0
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20250306.0
@@ -1176,6 +1180,10 @@ packages:
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
+
+  ipaddr.js@2.5.0:
+    resolution: {integrity: sha512-aq+t5NAc+cS6rZQQVWC2x98CPqGtKKTMDd4Gaodv0wShnItdKg/51djkGJ1hqH+Oy0ivDftCbSLCQob8zso01w==}
+    engines: {node: '>= 10'}
 
   is-binary-path@2.1.0:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
@@ -2589,6 +2597,8 @@ snapshots:
   immutable@3.8.2: {}
 
   inherits@2.0.4: {}
+
+  ipaddr.js@2.5.0: {}
 
   is-binary-path@2.1.0:
     dependencies:

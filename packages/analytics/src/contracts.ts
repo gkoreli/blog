@@ -65,6 +65,19 @@ export interface TimeSeriesPoint {
 
 export const ANALYTICS_EVIDENCE_SINCE = '2026-09-03';
 
+export interface VendorNetworkSummary {
+  recordedViews: number;
+  notRecordedViews: number;
+  configuredDeclarationViews: number;
+  unmappedDeclarationViews: number;
+  noDeclarationViews: number;
+  listedViews: number;
+  notListedViews: number;
+  unavailableViews: number;
+  notAssessedViews: number;
+  addressUnavailableViews: number;
+}
+
 export interface VerificationSummary {
   localInvalidViews: number;
   localUnsupportedViews: number;
@@ -141,5 +154,6 @@ export interface StatsResponse {
   bySigner: Array<{ signatureAgent: PublicSignerName; views: number }>;
   /** Independent local and native outcomes; overlapping counts, never people. */
   verification: VerificationSummary;
+  vendorNetwork: VendorNetworkSummary;
   byKind: Array<{ kind: ReaderKind; reason: string; views: number; dailyClients: number }>;
 }

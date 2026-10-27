@@ -12,7 +12,7 @@ import type { DeviceType, TrafficClass } from './contracts.js';
  * documentation recorded in research artifact 06 is the source for each current
  * AI rule family:
  *
- * - OpenAI — GPTBot, ChatGPT-User, OAI-SearchBot:
+ * - OpenAI — GPTBot, ChatGPT-User, OAI-SearchBot, OAI-AdsBot (ad validation, not training):
  *   https://developers.openai.com/api/docs/bots
  * - Anthropic — ClaudeBot, Claude-User, Claude-SearchBot:
  *   https://support.claude.com/en/articles/8896518
@@ -93,6 +93,7 @@ const AI_RULES = [
 const BOT_RULES = [
   { name: 'AhrefsSiteAudit', products: ['AhrefsSiteAudit'] },
   { name: 'AhrefsBot', products: ['AhrefsBot'] },
+  { name: 'OAI-AdsBot', products: ['OAI-AdsBot'] },
   { name: 'Google-Extended', products: ['Google-Extended'] },
   { name: 'Applebot-Extended', products: ['Applebot-Extended'] },
   { name: 'Googlebot', products: ['Googlebot', 'Googlebot-Image', 'Googlebot-Video'] },

@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-27T16:58:04.634878+00:00",
+  "migration": "0014_vendor_ip_evidence.sql",
+  "onlyPendingMigration": true,
+  "appliedBeforeSourcePush": true,
+  "status": "success",
+  "directAnalyticsSelects": 0,
+  "limits": [
+    "Migration bookkeeping is additional DB work; no broad report SELECT repeated.",
+    "Source activation and prospective runtime acceptance remain separate."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-27T16:59:45.660784+00:00",
+  "analyticsTests": 123,
+  "siteTests": 106,
+  "workspaceTypes": "pass",
+  "frontmatter": "21 Markdown posts pass",
+  "isolatedBuildPosts": 32,
+  "changedRelativeLinksChecked": 189,
+  "articleWordsWithLinksRemoved": 1250,
+  "articleH1": 1,
+  "promptSourceMessages": 30,
+  "articleSourceSha256": "9cca6a75f48d6120a0f6ceaedd297ccd56ec76ff12b05ea74ae7f04545bdcb7d",
+  "nativeSavedFeedTrials": 15,
+  "nativeTimeoutTrials": 1,
+  "nativeInterceptedFetches": 8,
+  "officialCapturedPrefixes": 803,
+  "maxObservedMethodEvidenceBytes": 1344,
+  "nativeReceipt": "vendor-ip-local.json",
+  "timeoutReceipt": "vendor-ip-timeout-local.json",
+  "migration": "vendor-ip-pre-release.json",
+  "limits": [
+    "Node collector/crypto with workerd D1; production Worker acceptance separate.",
+    "Synthetic public-range and negative controls, not independent vendor/operator or population-accuracy labels.",
+    "No broad production analytics SELECT repeated."
+  ],
+  "canonicalNames": 48,
+  "productAliases": 51
+}

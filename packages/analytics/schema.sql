@@ -40,6 +40,7 @@ CREATE TABLE page_observations (
   request_evidence TEXT CHECK (request_evidence IS NULL OR (json_valid(request_evidence) AND length(CAST(request_evidence AS BLOB)) <= 2048)),
   signature_evidence TEXT CHECK (signature_evidence IS NULL OR (json_valid(signature_evidence) AND length(CAST(signature_evidence AS BLOB)) <= 2048)),
   classification_evidence TEXT CHECK (classification_evidence IS NULL OR (json_valid(classification_evidence) AND length(CAST(classification_evidence AS BLOB)) <= 2048)),
+  vendor_ip_evidence TEXT CHECK (vendor_ip_evidence IS NULL OR (json_valid(vendor_ip_evidence) AND length(CAST(vendor_ip_evidence AS BLOB)) <= 4096)),
   observed_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
