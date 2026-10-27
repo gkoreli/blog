@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-10-27T19:04:27.725Z",
+  "runtime": "v24.14.1",
+  "expectation": "after",
+  "verifierProfile": "2026-10-27.6",
+  "method": "Independently assembled short-lived method/path-bound requests; published RFC demonstration signing values and one ephemeral positive. Raw native WebCrypto checks precede local policy. Every directory lookup intercepted; no network or production calls.",
+  "sources": [
+    "https://www.rfc-editor.org/rfc/rfc9421.html#appendix-B.1.4",
+    "https://www.rfc-editor.org/rfc/rfc8037.html#appendix-A.1"
+  ],
+  "trials": [
+    {
+      "label": "rfc9421",
+      "rawCryptoValid": true,
+      "localStatus": "unverified",
+      "reason": "known-test-key",
+      "directoryFetches": 0,
+      "importedKeys": 0
+    },
+    {
+      "label": "rfc9421-padded-x-alias",
+      "rawCryptoValid": true,
+      "localStatus": "unverified",
+      "reason": "known-test-key",
+      "directoryFetches": 1,
+      "importedKeys": 0
+    },
+    {
+      "label": "rfc8037",
+      "rawCryptoValid": true,
+      "localStatus": "unverified",
+      "reason": "known-test-key",
+      "directoryFetches": 0,
+      "importedKeys": 0
+    },
+    {
+      "label": "rfc8037-padded-x-alias",
+      "rawCryptoValid": true,
+      "localStatus": "unverified",
+      "reason": "known-test-key",
+      "directoryFetches": 1,
+      "importedKeys": 0
+    },
+    {
+      "label": "ephemeral-positive",
+      "rawCryptoValid": true,
+      "localStatus": "verified",
+      "reason": null,
+      "directoryFetches": 1,
+      "importedKeys": 1
+    }
+  ],
+  "sourceSha256": {
+    "webbotauth.ts": "332db7cf765865d73018c39e7253c8a6aef5ffe65cebe68df0c2e698b649036d",
+    "signature-evidence.ts": "4479623c7dca94dccd6f291b496bad7a3c46b9509e71b38c81656597357e9524",
+    "versions.ts": "9bcde9c8032c1a4d4e2938ee3f05c389e3e061efae108b3dbedfbe5bd5d4542d",
+    "known-test-keys.ts": "7da9bba3927b2c6e88855e648d80cfb2fd917877a623f4fabe7735a5c43492bc"
+  },
+  "networkCalls": 0,
+  "productionCalls": 0,
+  "limits": [
+    "Two reviewed public example keys; not an exhaustive weak-key detector, vendor impersonation or evidence of exploitation.",
+    "Padded JWK x is a compatibility acceptance probe, not a recommendation for JWK publishers."
+  ]
+}

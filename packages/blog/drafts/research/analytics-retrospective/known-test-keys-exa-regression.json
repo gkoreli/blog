@@ -1,0 +1,79 @@
+{
+  "checkedAt": "2026-10-27T19:07:25.220Z",
+  "verifierProfile": "2026-10-27.6",
+  "eventWindow": {
+    "start": "2026-10-26T00:00:00Z",
+    "endExclusive": "2026-10-27T00:00:00Z"
+  },
+  "inputRows": 19,
+  "invalidRows": 0,
+  "distinctProviderIds": 18,
+  "duplicateProviderIds": 1,
+  "missingProviderIds": 0,
+  "truncated": 0,
+  "nativeCategoryPresentRecords": 19,
+  "counts": {
+    "status": {
+      "verified": 19
+    },
+    "failureReason": {},
+    "headerForm": {
+      "legacy-string": 19
+    },
+    "declaredClient": {
+      "ExaSearchBot": 19
+    },
+    "nativeVerifiedBot": {
+      "unavailable": 19
+    },
+    "nativeSignedAgent": {
+      "unavailable": 19
+    },
+    "coverage": {
+      "userAgent": 0,
+      "path": 0,
+      "method": 0,
+      "targetUri": 0,
+      "query": 0,
+      "authority": 19
+    }
+  },
+  "validitySeconds": {
+    "min": 300,
+    "max": 300
+  },
+  "ageSeconds": {
+    "min": 0,
+    "max": 3
+  },
+  "inputSha256": "95c065d14ec6099503453b6d849b7434b324093aa607f367890b6f5f33509b98",
+  "inputBytes": 109412,
+  "directory": {
+    "url": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+    "captureFileModifiedAt": "2026-10-27T06:30:57.462Z",
+    "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+    "observedMediaType": "application/http-message-signatures-directory+json",
+    "observedMaxAgeSeconds": 300,
+    "publishedKeys": [
+      {
+        "kid": "sDCpsJpgItYcmF_KhZozOUGIGL6a49yxE3f0yQR5SIA",
+        "thumbprintMatches": true,
+        "algorithm": "Ed25519"
+      },
+      {
+        "kid": "fEcp7SI5JcfvpiZ1M638-CDmUFO6m0fTqc8_Outh7U4",
+        "thumbprintMatches": true,
+        "algorithm": "Ed25519"
+      }
+    ]
+  },
+  "networkCalls": 0,
+  "productionPageRequests": 0,
+  "limits": [
+    "Retained native request messages reverified at recorded event time with a separately captured later public directory, not current-time freshness or proof of directory contents at original receipt.",
+    "Provider ID collisions are retained, not silently deduplicated; row counts are not proven unique-event counts.",
+    "No complete log sampling/retention guarantee, exact D1 join, provider-verifier equivalence or proof that every Exa request is signed.",
+    "Native unavailable is null; declared roles are not authenticated unless covered, and key verification proves no human trigger or citation.",
+    "Original request context, headers, addresses, URLs, signatures and nonces remain in the restricted private archive, not this aggregate result."
+  ]
+}

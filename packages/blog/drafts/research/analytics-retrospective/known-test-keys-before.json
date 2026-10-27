@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-10-27T19:03:42.740Z",
+  "runtime": "v24.14.1",
+  "expectation": "before",
+  "verifierProfile": "2026-10-27.5",
+  "method": "Independently assembled short-lived method/path-bound requests; published RFC demonstration signing values and one ephemeral positive. Raw native WebCrypto checks precede local policy. Every directory lookup intercepted; no network or production calls.",
+  "sources": [
+    "https://www.rfc-editor.org/rfc/rfc9421.html#appendix-B.1.4",
+    "https://www.rfc-editor.org/rfc/rfc8037.html#appendix-A.1"
+  ],
+  "trials": [
+    {
+      "label": "rfc9421",
+      "rawCryptoValid": true,
+      "localStatus": "verified",
+      "reason": null,
+      "directoryFetches": 1,
+      "importedKeys": 1
+    },
+    {
+      "label": "rfc9421-padded-x-alias",
+      "rawCryptoValid": true,
+      "localStatus": "verified",
+      "reason": null,
+      "directoryFetches": 1,
+      "importedKeys": 1
+    },
+    {
+      "label": "rfc8037",
+      "rawCryptoValid": true,
+      "localStatus": "verified",
+      "reason": null,
+      "directoryFetches": 1,
+      "importedKeys": 1
+    },
+    {
+      "label": "rfc8037-padded-x-alias",
+      "rawCryptoValid": true,
+      "localStatus": "verified",
+      "reason": null,
+      "directoryFetches": 1,
+      "importedKeys": 1
+    },
+    {
+      "label": "ephemeral-positive",
+      "rawCryptoValid": true,
+      "localStatus": "verified",
+      "reason": null,
+      "directoryFetches": 1,
+      "importedKeys": 1
+    }
+  ],
+  "sourceSha256": {
+    "webbotauth.ts": "2f945d42440ca546cebecb160660ce6b8df7896007f939b2ddc8c4f1b14de8ab",
+    "signature-evidence.ts": "1d88be967c13b43debf4446ef65fbd92ff5ee07bb6897039c5abad506df17d87",
+    "versions.ts": "97d42ef19e0a1685cfed5558437dd48806df21cce6d719cf845ffd1112cbcf1a"
+  },
+  "networkCalls": 0,
+  "productionCalls": 0,
+  "limits": [
+    "Two reviewed public example keys; not an exhaustive weak-key detector, vendor impersonation or evidence of exploitation.",
+    "Padded JWK x is a compatibility acceptance probe, not a recommendation for JWK publishers."
+  ]
+}

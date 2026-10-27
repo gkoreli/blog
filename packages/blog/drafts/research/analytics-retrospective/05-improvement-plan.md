@@ -84,3 +84,7 @@ The [Web Bot Auth audit](18-webbotauth-verification.md) and [decision](../../../
 ## October 27 classification continuation
 
 [Research 19](19-explicit-classification-uncertainty.md) and [ADR-0016.12](../../../../../docs/adr/0016.12-explicit-classification-uncertainty.md) implement the proposed token/all-match conflict and missing-network repairs prospectively. Same-category declarations retain shared evidence; incompatible categories and insufficient browser context abstain. The same retained R1 capture now exposes 118 inconsistent requests without changing history. Source/native and production acceptance remain separate; vendor-source validation, outcome distinctions, device-default interpretation and independent labelled calibration remain open.
+
+## October 27 verifier-policy continuation
+
+The [public demonstration-key experiment](18-webbotauth-verification.md#public-demonstration-key-policy--october-27-utc) separates raw signature math from acceptable key material. Two reviewed RFC examples and padded encodings now have an explicit policy rejection; the independently signed genuine control stays accepted. This complements the already released URL-admission guard and does not close resolved-address/egress/rebinding, replay, broader algorithm/discovery/profile conformance or organic vendor/native comparison. Source activation and actual-Worker acceptance remain separate from local fixtures. Human/device/actual-JavaScript-off controls are still unaccepted; automatic operation or a viewport change cannot supply those labels.

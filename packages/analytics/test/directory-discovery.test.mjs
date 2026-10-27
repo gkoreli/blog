@@ -38,7 +38,7 @@ test('both supported wire forms reject discovery before cached keys or a fetch a
       Signature: `sig=:${Buffer.alloc(64).toString('base64')}:`,
     } });
     const cache = createWebBotAuthCache();
-    cache.keys.set('https://127.0.0.1/.well-known/http-message-signatures-directory\nfixture', { key: pair.publicKey, expiresAt: now.getTime() + 60000 });
+    cache.keys.set('https://127.0.0.1/.well-known/http-message-signatures-directory\nfixture', { key: pair.publicKey, keyPolicy: '2026-10-27.1', expiresAt: now.getTime() + 60000 });
     const result = await verifyWebBotAuth(request, { now, includeEvidence: true, cache, fetcher: async () => { fetches++; throw Error('must not fetch'); } });
     assert.deepEqual(result, { status: 'unverified', reason: 'discovery-policy-rejected' });
     assert.equal(fetches, 0);

@@ -1,0 +1,89 @@
+{
+  "checkedAt": "2026-10-27T19:05:54.939Z",
+  "runtime": "v24.14.1",
+  "method": "Actual bundled collector in native local workerd/D1/crypto with fixture HTTP wrapper and intercepted directory. Genuine positive is independently signed with an ephemeral key; rejected controls use dummy bytes. Real example-key signing is checked separately.",
+  "verifierProfile": "2026-10-27.6",
+  "trials": [
+    {
+      "label": "canonical",
+      "outcome": "policy-rejected",
+      "reasons": [
+        "known-test-key"
+      ],
+      "vendorStatus": "no-declaration",
+      "coverageRecorded": false
+    },
+    {
+      "label": "padded-alias",
+      "outcome": "policy-rejected",
+      "reasons": [
+        "known-test-key"
+      ],
+      "vendorStatus": "no-declaration",
+      "coverageRecorded": false
+    },
+    {
+      "label": "declared-exa",
+      "outcome": "policy-rejected",
+      "reasons": [
+        "known-test-key"
+      ],
+      "vendorStatus": "not-verified",
+      "coverageRecorded": false
+    },
+    {
+      "label": "genuine-positive",
+      "outcome": "verified",
+      "reasons": [],
+      "vendorStatus": "no-declaration",
+      "coverageRecorded": true
+    },
+    {
+      "label": "excluded",
+      "outcome": "policy-rejected",
+      "reasons": [
+        "known-test-key"
+      ],
+      "vendorStatus": "not-verified",
+      "coverageRecorded": false
+    }
+  ],
+  "queryPlan": [
+    {
+      "id": 5,
+      "parent": 0,
+      "notused": 59,
+      "detail": "SEARCH page_observations USING INDEX idx_page_observations_public_path_time (is_owner=? AND path=? AND observed_at>? AND observed_at<?)"
+    },
+    {
+      "id": 80,
+      "parent": 0,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    }
+  ],
+  "checks": {
+    "closedOutcomePersistence": true,
+    "policySummary": true,
+    "genuineSignatureAccepted": true,
+    "noAuthenticatedExaFromRejectedKey": true,
+    "historicalNull": true,
+    "referralExclusion": true,
+    "optionalCaptureOff": true,
+    "indexedAcceptanceSql": true
+  },
+  "sourceSha256": {
+    "packages/analytics/src/known-test-keys.ts": "7da9bba3927b2c6e88855e648d80cfb2fd917877a623f4fabe7735a5c43492bc",
+    "packages/analytics/src/webbotauth.ts": "332db7cf765865d73018c39e7253c8a6aef5ffe65cebe68df0c2e698b649036d",
+    "packages/analytics/src/signature-evidence.ts": "4479623c7dca94dccd6f291b496bad7a3c46b9509e71b38c81656597357e9524",
+    "packages/analytics/src/versions.ts": "9bcde9c8032c1a4d4e2938ee3f05c389e3e061efae108b3dbedfbe5bd5d4542d",
+    "packages/blog/drafts/research/analytics-retrospective/known-test-key-control-acceptance.sql": "a1cf10d2e1169049d23e91841a0cf6b1a92ba595aa0d73b4e78921d9a169209a"
+  },
+  "directoryFetches": 1,
+  "networkCalls": 0,
+  "productionCalls": 0,
+  "limits": [
+    "Two reviewed public example keys, not all possible demonstration or compromised keys.",
+    "Fixture wrapper does not execute blog routing or native Cloudflare verification; no vendor identity/human proof."
+  ]
+}

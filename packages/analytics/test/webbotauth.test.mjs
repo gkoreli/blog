@@ -157,9 +157,14 @@ test('Ed25519 JWK thumbprint matches RFC 8037 Appendix A.3', async () => {
   }), 'kPrK_qmxVWaYVA9wwBF6Iuo3vVzz7TxHCTwXBygrS4k');
 });
 
-test('Web Bot Auth verifier accepts the draft Ed25519 test vector', async () => {
+test('draft Ed25519 vector is cryptographically valid but its public demonstration key is rejected by policy', async () => {
+  const request = draftRequest();
+  const key = await crypto.subtle.importKey('jwk', DRAFT_PUBLIC_KEY, 'Ed25519', false, ['verify']);
+  const bytes = Buffer.from(request.headers.get('Signature').slice(6, -1), 'base64');
+  // Base bytes are independently asserted against the published vector above.
+  assert.equal(await crypto.subtle.verify('Ed25519', key, bytes, new TextEncoder().encode(buildSignatureBase(request, 'sig2'))), true);
   const requested = [];
-  const result = await verifyWebBotAuth(draftRequest(), {
+  const result = await verifyWebBotAuth(request, {
     now: new Date('2026-09-03T00:00:00Z'),
     cache: createWebBotAuthCache(),
     async fetcher(url) {
@@ -167,10 +172,8 @@ test('Web Bot Auth verifier accepts the draft Ed25519 test vector', async () => 
       return jsonDirectory();
     },
   });
-  assert.deepEqual(result, { status: 'verified', agent: 'https://signature-agent.test' });
-  assert.deepEqual(requested, [
-    'https://signature-agent.test/.well-known/http-message-signatures-directory',
-  ]);
+  assert.deepEqual(result, { status: 'unverified', reason: 'known-test-key' });
+  assert.deepEqual(requested, []);
 });
 
 test('captured DuckDuckBot bare-URI signatures verify with injected directory and fixed clocks', async () => {
@@ -256,18 +259,21 @@ test('Web Bot Auth verifier enforces expiry and future-created skew before disco
 });
 
 test('Web Bot Auth cache isolates the same key by directory URL and key', async () => {
+  const pair = await crypto.subtle.generateKey('Ed25519', true, ['sign', 'verify']);
+  const jwk = await crypto.subtle.exportKey('jwk', pair.publicKey);
+  const kid = await ed25519JwkThumbprint(jwk);
   const cache = createWebBotAuthCache();
   const fetches = new Map();
   const fetcher = async (url) => {
     const value = String(url);
     fetches.set(value, (fetches.get(value) ?? 0) + 1);
-    return jsonDirectory();
+    return jsonDirectory([jwk]);
   };
   const now = new Date('2026-09-03T00:00:00Z');
   const nowSeconds = Math.floor(now.getTime() / 1_000);
   const signed = agent => new Request('https://example.com', { headers: {
     'Signature-Agent': `sig="${agent}"`,
-    'Signature-Input': `sig=("@authority" "signature-agent";key="sig");created=${nowSeconds};expires=${nowSeconds + 300};keyid="${DRAFT_KEY_ID}";alg="ed25519";tag="web-bot-auth"`,
+    'Signature-Input': `sig=("@authority" "signature-agent";key="sig");created=${nowSeconds};expires=${nowSeconds + 300};keyid="${kid}";alg="ed25519";tag="web-bot-auth"`,
     Signature: `sig=:${EMPTY_SIGNATURE}:`,
   } });
 

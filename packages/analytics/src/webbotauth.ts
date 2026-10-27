@@ -1,4 +1,5 @@
 import { directoryLocation } from './directory-discovery.js';
+import { knownTestKeyId, knownTestPublicKey, PUBLIC_KEY_POLICY_VERSION } from './known-test-keys.js';
 const DIRECTORY_TTL_MS = 60 * 60 * 1_000;
 const CLOCK_SKEW_SECONDS = 60;
 const encoder = new TextEncoder();
@@ -71,6 +72,7 @@ interface DirectoryEntry {
 interface KeyEntry {
   expiresAt: number;
   key: CryptoKey;
+  keyPolicy: typeof PUBLIC_KEY_POLICY_VERSION;
 }
 
 export interface WebBotAuthCache {
@@ -672,7 +674,7 @@ async function resolveVerificationKey(
 ): Promise<{ key: CryptoKey } | { reason: string }> {
   const cacheKey = pairKey(directoryUrl, keyid);
   const cached = cache.keys.get(cacheKey);
-  if (cached !== undefined && cached.expiresAt > nowMs) return { key: cached.key };
+  if (cached !== undefined && cached.expiresAt > nowMs && cached.keyPolicy === PUBLIC_KEY_POLICY_VERSION) return { key: cached.key };
   if (cached !== undefined) cache.keys.delete(cacheKey);
 
   const hadFreshDirectory = (cache.directories.get(directoryUrl)?.expiresAt ?? 0) > nowMs;
@@ -694,13 +696,15 @@ async function resolveVerificationKey(
     selected = await find(directory);
   }
   if (selected === null) return { reason: 'key-not-found' };
+  // The same bytes can have another thumbprint if their x encoding changes.
+  if (knownTestPublicKey(selected.jwk)) return { reason: 'known-test-key' };
   if (selected.notBefore !== null && nowMs / 1000 < selected.notBefore) return { reason: 'key-not-yet-valid' };
   if (selected.expires !== null && nowMs / 1000 >= selected.expires) return { reason: 'key-expired' };
   {
     try {
       const key = await crypto.subtle.importKey('jwk', selected.jwk, 'Ed25519', false, ['verify']);
       if (cache.keys.size >= 256) cache.keys.delete(cache.keys.keys().next().value ?? '');
-      cache.keys.set(cacheKey, { key, expiresAt: Math.min(directory.expiresAt, selected.expires === null ? Infinity : selected.expires * 1000) });
+      cache.keys.set(cacheKey, { key, keyPolicy: PUBLIC_KEY_POLICY_VERSION, expiresAt: Math.min(directory.expiresAt, selected.expires === null ? Infinity : selected.expires * 1000) });
       return { key };
     } catch {
       return { reason: 'key-invalid' };
@@ -747,6 +751,7 @@ async function verifyCandidate(
   }
   const location = directoryLocation(signatureBase.signatureAgentUri);
   if ('reason' in location) return { status: 'unverified', reason: location.reason };
+  if (knownTestKeyId(keyid)) return { status: 'unverified', reason: 'known-test-key' };
 
   const resolvedKey = await resolveVerificationKey(location.directoryUrl, keyid, fetcher, cache, nowMs);
   if ('reason' in resolvedKey) return { status: 'unverified', reason: resolvedKey.reason };
