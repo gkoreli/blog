@@ -61,6 +61,12 @@ try {
   assert.equal(stats.verification.localVerifiedViews,2);assert.equal(stats.verification.localUnverifiedViews,1);assert.equal(stats.verification.localAbsentViews,1);
   assert.equal(stats.verification.localVerifiedNativeNotVerifiedViews,2);assert.equal(stats.verification.authorityOnlyViews,1);assert.equal(stats.verification.userAgentBoundViews,1);
   assert.equal(JSON.stringify(stats).includes('SyntheticClient'),false);
+  const prospectiveSql = readFileSync('packages/blog/drafts/research/analytics-retrospective/webbotauth-prospective-acceptance.sql', 'utf8');
+  const prospective = await db.prepare(prospectiveSql).first();
+  assert.equal(prospective.inspectedRecentRows, 5); assert.equal(prospective.prospectiveViews, 4);
+  assert.equal(prospective.evidenceRecordedViews, 4); assert.equal(prospective.localVerifierSourceViews, 4);
+  assert.equal(prospective.verifiedViews, 2); assert.equal(prospective.unverifiedViews, 1); assert.equal(prospective.absentViews, 1);
+  assert.equal(prospective.optionalStructuredCaptures, 0);
   let captured;
   const tapped={prepare(sql){return{bind(...values){captured={sql,values};return db.prepare(sql).bind(...values);}}},batch(statements){return db.batch(statements);}};
   const query={range:'7d',traffic:'agents',kind:'signed-agent'};
@@ -76,9 +82,18 @@ try {
   assert.equal(JSON.parse(replay.find(row=>row.section==='verification').payload)[0].coverageRecordedViews,2);
   const sql=literal+';\n';
   assert.ok(Buffer.byteLength(sql)<100000);
-  writeFileSync('/tmp/gk-webbotauth-production.sql',sql,{flag:'wx'});
-  writeFileSync('/tmp/gk-webbotauth-production-plan.json',JSON.stringify({query,start:selected.period.start,end:selected.period.end,sqlSha256:createHash('sha256').update(sql).digest('hex'),sqlBytes:Buffer.byteLength(sql),directSelectReadCeiling:50000,productionCalls:0},null,2)+'\n',{flag:'wx'});
-  const receipt={checkedAt:new Date().toISOString(),runtime:'Miniflare/workerd native local D1; actual collector, verifier, persistence and report code',migration:'0012_signature_evidence.sql',historicalEvidenceRemainsNull:true,rows,directoryCalls,verification:stats.verification,preparedProductionSelectAccepted:true,productionCalls:0,limits:['Synthetic signatures and injected directory responses, not real-vendor or native-provider verification.','Native booleans are labelled fixture inputs; no Cloudflare verdict is simulated as observed production evidence.']};
+  const artifactPrefix = resolve(output).replace(/\.json$/, '');
+  writeFileSync(`${artifactPrefix}-production.sql`,sql,{flag:'wx'});
+  writeFileSync(`${artifactPrefix}-production-plan.json`,JSON.stringify({query,start:selected.period.start,end:selected.period.end,sqlSha256:createHash('sha256').update(sql).digest('hex'),sqlBytes:Buffer.byteLength(sql),directSelectReadCeiling:50000,productionCalls:0},null,2)+'\n',{flag:'wx'});
+  const controlPending = [];
+  observePageResponse(new Request('https://publication.example/privacy', { headers: { Referer: 'https://traffic2cash.xyz/' } }), new Response('fixture', { headers: { 'Content-Type': 'text/html' } }), 'html', { DB: db, ANALYTICS_HASH_KEY: 'local-only' }, { waitUntil: p => controlPending.push(p) });
+  await Promise.all(controlPending);
+  await db.prepare("UPDATE page_observations SET observed_at='2026-10-27 15:03:17' WHERE path='/privacy'").run();
+  const controlAcceptance = await db.prepare(readFileSync('packages/blog/drafts/research/analytics-retrospective/webbotauth-control-acceptance.sql', 'utf8')).first();
+  assert.equal(controlAcceptance.controlViews, 1); assert.equal(controlAcceptance.evidenceRecordedViews, 1);
+  assert.equal(controlAcceptance.absentViews, 1); assert.equal(controlAcceptance.localVerifierSourceViews, 1);
+  assert.equal(controlAcceptance.optionalStructuredCaptures, 0); assert.equal(controlAcceptance.nativeAvailableViews, 0);
+  const receipt={checkedAt:new Date().toISOString(),runtime:'Miniflare/workerd native local D1; actual collector, verifier, persistence and report code',migration:'0012_signature_evidence.sql',historicalEvidenceRemainsNull:true,rows,directoryCalls,verification:stats.verification,preparedProductionSelectAccepted:true,prospectiveSelectAccepted:prospective,controlSelectAccepted:controlAcceptance,productionCalls:0,limits:['Synthetic signatures and injected directory responses, not real-vendor or native-provider verification.','Native booleans are labelled fixture inputs; no Cloudflare verdict is simulated as observed production evidence.']};
   writeFileSync(output,JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});
   console.log(JSON.stringify(receipt));
 } finally {globalThis.fetch=originalFetch;await mf.dispose();}

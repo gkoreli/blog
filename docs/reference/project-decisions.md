@@ -32,6 +32,8 @@ Consult the relevant ADR before changing an established choice. Implementation f
 
 ## Analytics invariants
 
+Signature-verification evidence, coverage and independent native availability: [ADR-0016.11](../adr/0016.11-signature-verification-evidence.md).
+
 Current observation provenance and referrer interpretation: [ADR-0016.9](../adr/0016.9-observation-provenance-and-referrer-boundaries.md).
 
 Current role/signer semantics: [ADR-0016.8](../adr/0016.8-declared-client-roles-and-signer-evidence.md) preserves named declared roles across verification and reports signer evidence independently.

@@ -1,0 +1,108 @@
+{
+  "checkedAt": "2026-10-27T15:06:13.317573+00:00",
+  "sourceCommit": "d723a88a1a4053d80a21583e582ec72172083a4c",
+  "build": {
+    "id": "7d93f1f0-077d-4858-b992-306bc69c748c",
+    "observedSource": "d723a88",
+    "remoteNode": "24.22.1",
+    "localPinnedNode": "24.14.1",
+    "limit": "Native build UI/source association, activation metadata and served evidence; not a direct Git-to-binary attestation or runtime parity."
+  },
+  "deployment": {
+    "createdAt": "2026-10-27T14:58:00.520508Z",
+    "versionId": "0f855ae3-c9ac-4b49-b3bc-13123fd37e4e",
+    "percentage": 100
+  },
+  "migration": "0012 applied before source push; webbotauth-pre-release.json",
+  "publicReport": {
+    "query": {
+      "traffic": "agents",
+      "range": "7d",
+      "path": null,
+      "agent": null,
+      "kind": "signed-agent"
+    },
+    "totals": {
+      "views": 225,
+      "dailyClients": 147,
+      "unattributedViews": 225
+    },
+    "verification": {
+      "recordedViews": 0,
+      "notRecordedViews": 225,
+      "localVerifiedViews": 0,
+      "localUnverifiedViews": 0,
+      "localAbsentViews": 0,
+      "testVerdictViews": 0,
+      "coverageRecordedViews": 0,
+      "userAgentBoundViews": 0,
+      "resourceBoundViews": 0,
+      "methodBoundViews": 0,
+      "authorityOnlyViews": 0,
+      "nativeAvailableViews": 0,
+      "nativeVerifiedBotViews": 0,
+      "nativeSignedAgentViews": 0,
+      "localVerifiedNativeNotVerifiedViews": 0
+    },
+    "firstCache": "MISS",
+    "repeatCache": "HIT",
+    "identicalBytes": true,
+    "calculatedAt": "2026-10-27T14:59:48.420Z",
+    "browser": "Rendered all 15 rows, retained note and unavailable-history explanation; same 225 views and calculation time. No browser response header captured."
+  },
+  "publication": {
+    "articleMatchesIsolatedBuild": true,
+    "articleSha256": "a51eb1e5596fb504bdec9d94786558b517ee4eff317e9c306c1c644864939c5f",
+    "prompts": 30,
+    "privacyDisclosurePresent": true
+  },
+  "prospectiveInspectionBeforeControl": {
+    "inspectedRecentRows": 1,
+    "prospectiveViews": 0,
+    "evidenceRecordedViews": 0,
+    "localVerifierSourceViews": 0,
+    "verifiedViews": 0,
+    "unverifiedViews": 0,
+    "absentViews": 0,
+    "coverageRecordedViews": 0,
+    "nativeAvailableViews": 0,
+    "optionalStructuredCaptures": 0,
+    "largestEvidenceBytes": null
+  },
+  "unsignedReleaseControl": {
+    "startedAt": "2026-10-27T15:03:16.696020+00:00",
+    "finishedAt": "2026-10-27T15:03:17.056588+00:00",
+    "status": "200",
+    "curlExit": 0,
+    "requests": 1,
+    "control": "Unsigned synthetic request, excluded by the locally tested referral rule and matching live policy hash; no owner credential needed.",
+    "policySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+    "privacyDisclosurePresent": true,
+    "stored": {
+      "controlViews": 1,
+      "evidenceRecordedViews": 1,
+      "absentViews": 1,
+      "localVerifierSourceViews": 1,
+      "nativeAvailableViews": 0,
+      "optionalStructuredCaptures": 0
+    }
+  },
+  "metering": {
+    "preparedReportSelectReads": 41274,
+    "schemaInspectionReads": 74,
+    "recentInspectionReads": 3,
+    "controlRetrievalReads": 1,
+    "totalAcknowledgedDirectSelectReads": 41352,
+    "selectWrites": 0,
+    "curlPublicColdFills": 1,
+    "curlPublicHits": 1,
+    "scope": "Migration bookkeeping, one synthetic observation write, public report fills/browser reads and unrelated account work are additional. Failed attempts have no metering receipt."
+  },
+  "limits": [
+    "No organic post-release signed message has been accepted; recent inspection before the synthetic control had no new-profile rows.",
+    "Unsigned control establishes prospective persistence and native unavailability, not production coverage verification.",
+    "Control matches locally tested exclusion rule and live policy hash; no separate fresh All-report reconciliation was performed.",
+    "Retained real Exa verification is a separate recorded-time/later-key-set result; no current-time freshness, universal signature prevalence or native verifier equivalence.",
+    "No raw diagnostics activation, historical proof backfill, nonce replay database, full RFC/draft conformance or human/intent/citation accuracy claim."
+  ]
+}
