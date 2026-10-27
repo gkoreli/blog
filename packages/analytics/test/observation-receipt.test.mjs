@@ -8,11 +8,17 @@ import { COLLECTION_VERSION } from '../.test-dist/versions.js';
 import { ed25519JwkThumbprint } from '../.test-dist/webbotauth.js';
 import { KNOWN_AGENT_NAMES } from '../.test-dist/classify.js';
 import { FAILURE_OUTCOMES } from '../.test-dist/signature-evidence.js';
+import { isObservationId, observationStorageReference } from '../.test-dist/observation-storage.js';
 
 function fixture(runOverride) {
   const sqlite = new DatabaseSync(':memory:'); sqlite.exec(readFileSync(new URL('../schema.sql', import.meta.url), 'utf8'));
   const DB = { prepare(sql) { return { bind(...values) { return { async run() {
-    const perform = () => { const result = sqlite.prepare(sql).run(...values); return { success: true, meta: { changes: Number(result.changes), last_row_id: Number(result.lastInsertRowid) } }; };
+    const perform = () => {
+      const statement = sqlite.prepare(sql);
+      const results = sql.includes('RETURNING') ? statement.all(...values) : (statement.run(...values), []);
+      const metadata = sqlite.prepare('SELECT changes() changes, CAST(last_insert_rowid() AS TEXT) last_row_id').get();
+      return { success: true, results, meta: { changes: metadata.changes, last_row_id: Number(metadata.last_row_id) } };
+    };
     return runOverride ? runOverride(sql, perform) : perform();
   } }; } }; } };
   return { sqlite, DB };
@@ -59,6 +65,7 @@ test('actual crypto receipt reflects persisted role, coverage and nullable provi
   const evidence = JSON.parse(row.signature_evidence), classification = JSON.parse(row.classification_evidence), receipt = stored[0].receipt;
   assert.equal(stored[0].operationId, logs.find(log => log.event === 'analytics.observation_attempt').operationId);
   assert.equal(stored[0].collectionVersion, row.collection_version); assert.equal(row.collection_version, COLLECTION_VERSION);
+  assert.deepEqual(stored[0].storage, { version: '2026-10-27.1', status: 'returned', observationId: String(row.id) });
   assert.equal(receipt.readerKind, row.reader_kind); assert.equal(receipt.readerKind, 'ai-search');
   assert.equal(receipt.signature.outcome, evidence.localOutcome); assert.equal(receipt.signature.outcome, 'verified');
   assert.equal(receipt.signature.reason, 'none'); assert.equal(receipt.signature.reasonCount, 0); assert.equal(receipt.signature.reasonNames, 'none');
@@ -76,6 +83,41 @@ test('actual crypto receipt reflects persisted role, coverage and nullable provi
   assert.equal(snapshot.signature.signer, 'Other');
   evidence.coverage.covered.authority = false; classification.declarations.candidates.push('ExaUser');
   assert.equal(snapshot.signature.coverage.authority, true); assert.equal(snapshot.declarations.candidateNames, 'ExaSearchBot');
+});
+
+test('storage references accept only one canonical positive signed-64-bit text rowid', () => {
+  for (const value of ['1', '9007199254740993', '9223372036854775807']) {
+    assert.equal(isObservationId(value), true);
+    assert.equal(observationStorageReference([{ observation_id: value }]).observationId, value);
+  }
+  for (const value of [null, undefined, 1, 9007199254740992, 0n, '', '0', '-1', '01', '+1', '1e2', '1.0', ' 1', '9223372036854775808', '9'.repeat(100), 'private@example.invalid']) {
+    assert.equal(isObservationId(value), false);
+    assert.deepEqual(observationStorageReference([{ observation_id: value }]), { version: '2026-10-27.1', status: 'unavailable', observationId: 'unavailable' });
+  }
+  for (const rows of [undefined, {}, [], [null], [{}], [{ observation_id: '1' }, { observation_id: '2' }]])
+    assert.equal(observationStorageReference(rows).status, 'unavailable');
+});
+
+test('acknowledged writes preserve the base receipt when the returned row reference is unavailable', async () => {
+  for (const results of [undefined, [], [{}], [{ observation_id: 1 }], [{ observation_id: '1' }, { observation_id: '2' }]]) {
+    let writes = 0;
+    const { sqlite, DB } = fixture((_sql, perform) => { writes++; return { ...perform(), results }; });
+    const logs = await capture(async () => { assert.equal((await collect(DB, request()))[0].status, 'fulfilled'); });
+    assert.equal(writes, 1); assert.equal(sqlite.prepare('SELECT COUNT(*) n FROM page_observations').get().n, 1);
+    assert.equal(logs.find(log => log.event === 'analytics.observation_stored').storage.status, 'unavailable');
+  }
+});
+
+test('exact large row reference also links optional diagnostics without numeric rounding', async () => {
+  const { sqlite, DB } = fixture();
+  sqlite.exec("INSERT INTO sqlite_sequence(name,seq) VALUES('page_observations',9007199254740994)");
+  const logs = await capture(async () => { assert.equal((await collect(DB, request(),
+    { publicPagePaths: async () => new Set(['/article']) }, { ANALYTICS_DIAGNOSTICS: 'private-v1' }))[0].status, 'fulfilled'); });
+  const storage = logs.find(log => log.event === 'analytics.observation_stored').storage;
+  assert.equal(storage.observationId, '9007199254740995'); assert.equal(storage.status, 'returned');
+  assert.equal(sqlite.prepare('SELECT CAST(id AS TEXT) ref FROM page_observations').get().ref, storage.observationId);
+  assert.equal(sqlite.prepare('SELECT CAST(observation_id AS TEXT) ref FROM page_observation_diagnostics').get().ref, storage.observationId);
+  assert.equal(logs.some(log => log.event === 'analytics.diagnostic_write_failed'), false);
 });
 
 test('stored receipt waits for the insert acknowledgement', async () => {

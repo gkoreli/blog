@@ -15,8 +15,10 @@ function fixture() {
         bind(...values) {
           return {
             async run() {
-              const r = sqlite.prepare(sql).run(...values);
-              return { success: true, meta: { last_row_id: Number(r.lastInsertRowid), changes: Number(r.changes) } };
+              const statement = sqlite.prepare(sql);
+              const results = sql.includes('RETURNING') ? statement.all(...values) : (statement.run(...values), []);
+              const metadata = sqlite.prepare('SELECT changes() changes, CAST(last_insert_rowid() AS TEXT) last_row_id').get();
+              return { success: true, results, meta: { last_row_id: Number(metadata.last_row_id), changes: metadata.changes } };
             },
             async all() { return { success: true, results: sqlite.prepare(sql).all(...values) }; },
           };
@@ -117,7 +119,7 @@ test('public reports never expose the original UA, replay payload, transport or 
   await observe(db, request('/article', { 'User-Agent': 'distinctive-private-browser/1.0', 'CF-Ray': '1234567890abcdef-SJC' }));
   const report = await queryStats(db, { range: '7d', traffic: 'all' });
   const text = JSON.stringify(report);
-  for (const excluded of ['distinctive-private-browser', '1234567890abcdef', 'request_evidence', 'browserMajor', '"userAgent":', 'verifierProfile', 'transport']) assert.equal(text.includes(excluded), false, excluded);
+  for (const excluded of ['distinctive-private-browser', '1234567890abcdef', 'request_evidence', 'browserMajor', '"userAgent":', 'verifierProfile', 'transport', 'observationId', 'observation_id', 'storageReference']) assert.equal(text.includes(excluded), false, excluded);
   assert.equal(typeof report.verification.userAgentBoundViews, 'number');
   assert.equal(report.totals.views, 1);
 });

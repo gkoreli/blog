@@ -15,6 +15,7 @@ import { verifyWebBotAuth, type WebBotAuthResult } from './webbotauth.js';
 import { verificationEvidence } from './signature-evidence.js';
 import { verifyVendorIp } from './vendor-ip.js';
 import { storedObservationReceipt, type StoredObservationReceipt } from './observation-receipt.js';
+import type { ObservationStorageReference } from './observation-storage.js';
 
 export type { Env } from './db.js';
 export { ANALYTICS_EVIDENCE_SINCE } from './contracts.js';
@@ -65,7 +66,7 @@ async function persistObservation(
   observedAt: Date,
   operationId: string,
   options: ObservationOptions,
-): Promise<StoredObservationReceipt> {
+): Promise<{ receipt: StoredObservationReceipt; storage: ObservationStorageReference }> {
   const hashKey = env.ANALYTICS_HASH_KEY;
   if (typeof hashKey !== 'string' || hashKey.length === 0) {
     throw new ObservationConfigurationError('ANALYTICS_HASH_KEY must not be empty');
@@ -158,8 +159,8 @@ async function persistObservation(
     signatureReason: signature.status === 'unverified' ? signature.reason : null,
   } : undefined;
   const receipt = storedObservationReceipt(observation);
-  await recordPageObservation(env.DB, observation, diagnostic);
-  return receipt;
+  const storage = await recordPageObservation(env.DB, observation, diagnostic);
+  return { receipt, storage };
 }
 
 export interface ObservationOptions {
@@ -182,7 +183,7 @@ export function observePageResponse(
   const operationId = crypto.randomUUID();
   console.log('analytics.observation_attempt', { operationId, collectionVersion: COLLECTION_VERSION });
   const work = persistObservation(request, representation, response, env, new Date(), operationId, options)
-    .then(receipt => { console.log('analytics.observation_stored', { operationId, collectionVersion: COLLECTION_VERSION, receipt }); })
+    .then(({ receipt, storage }) => { console.log('analytics.observation_stored', { operationId, collectionVersion: COLLECTION_VERSION, receipt, storage }); })
     .catch((error: unknown) => {
       const reason = error instanceof ObservationConfigurationError ? 'missing-hash-key'
         : error instanceof ObservationAcknowledgementError ? 'unacknowledged-insert' : 'persistence-or-processing';

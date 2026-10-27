@@ -73,3 +73,25 @@ test('public aggregates omit raw context and unrecognized collection versions', 
   assert.deepEqual(result.counts.collections, { 'unrecognized-or-unreconciled': 1 });
   assert.equal(result.exactD1Joins, 0);
 });
+
+test('Ahrefs selection is explicit and does not silently enter the Exa cohort', () => {
+  const rows = fixture();
+  rows[0].$workers.event.request.headers['User-Agent'] = 'AhrefsBot/7.0';
+  assert.equal(reconcileInvocations(rows).reconciliations.length, 0);
+  const result = reconcileInvocations(rows, new Set(['AhrefsBot','AhrefsSiteAudit']));
+  assert.equal(result.reconciliations.length, 1);
+  assert.equal(result.reconciliations[0].complete, true);
+});
+
+test('closed replay reports distinguish current stored verdicts from older success logs', async () => {
+  const old = await analyzeExport(Buffer.from(JSON.stringify(fixture())), Buffer.from('{"keys":[]}'));
+  assert.deepEqual(old.counts.storedReceiptOutcomes, { 'unavailable-or-unrecognized': 1 });
+  const rows = fixture();
+  rows[2].source.receipt = { version: '2026-10-27.2', signature: { source: 'local-webbotauth', outcome: 'verified' } };
+  const current = await analyzeExport(Buffer.from(JSON.stringify(rows)), Buffer.from('{"keys":[]}'));
+  assert.deepEqual(current.counts.storedReceiptOutcomes, { verified: 1 });
+  assert.deepEqual(current.counts.replayStatus, { absent: 1 });
+  assert.equal(current.exactD1Joins, 0);
+  rows[2].source.receipt.signature.outcome = 'private-outcome@example.invalid';
+  assert.equal(JSON.stringify(await analyzeExport(Buffer.from(JSON.stringify(rows)), Buffer.from('{"keys":[]}'))).includes('private-outcome'), false);
+});

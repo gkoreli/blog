@@ -1,0 +1,50 @@
+{
+  "method": "Direct HTTPS GET with redirects disabled; closed key shapes and body commitments only.",
+  "publications": [
+    {
+      "host": "ahrefs.com",
+      "checkedAt": "2026-10-27T22:25:59.196381+00:00",
+      "status": 200,
+      "bytes": 298,
+      "contentType": "application/http-message-signatures-directory+json",
+      "keyShapes": [
+        {
+          "kty": "OKP",
+          "crv": "Ed25519"
+        },
+        {
+          "kty": "OKP",
+          "crv": "Ed25519"
+        }
+      ],
+      "responseSignature": true,
+      "responseSignatureInput": true,
+      "sha256": "a647d3d54713f9299e73dec67cdd28175cfb488ebc9692d245b82821244eb0cc"
+    },
+    {
+      "host": "crawler.exa.ai",
+      "checkedAt": "2026-10-27T22:25:59.337605+00:00",
+      "status": 200,
+      "bytes": 274,
+      "contentType": "application/http-message-signatures-directory+json",
+      "keyShapes": [
+        {
+          "kty": "OKP",
+          "crv": "Ed25519"
+        },
+        {
+          "kty": "OKP",
+          "crv": "Ed25519"
+        }
+      ],
+      "responseSignature": true,
+      "responseSignatureInput": true,
+      "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52"
+    }
+  ],
+  "limits": [
+    "Response Signature and Signature-Input presence is not a verified response signature.",
+    "Current keys do not prove historical distribution or a per-client vendor signing guarantee.",
+    "No new telemetry integration, grants or token creation performed."
+  ]
+}

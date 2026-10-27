@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-27T22:34:14.344Z",
+  "method": "Native local D1 query-boundary and RETURNING capability controls; no production calls or real vendor authentication.",
+  "querySha256": "37a5c9b869bf16c9ea118bf303fbb9aa165498ae962a88ff80178df5ae5f0a14",
+  "fixtures": {
+    "rows": 12,
+    "selected": 7,
+    "ahrefs": 1,
+    "rowsRead": 11,
+    "rowsWritten": 0
+  },
+  "checks": {
+    "timeAndOriginBoundaries": true,
+    "legacyNullEvidenceOmitted": true,
+    "malformedRowsReject": true,
+    "emptyCohort": true
+  },
+  "returning": {
+    "runReturnsTextReference": true,
+    "allReturnsTextReference": true,
+    "oneRowAcknowledgements": true,
+    "beyondSafeIntegerReturnedExactly": true,
+    "unsafeNumericMetadataDiffersFromExactReturnedText": true
+  },
+  "productionReadCeiling": 5000,
+  "limits": [
+    "Private query output contains exact paths/times for correlation and must not be committed.",
+    "A time/path cohort is not an exact invocation-to-row join.",
+    "RETURNING controls do not establish production behavior."
+  ]
+}

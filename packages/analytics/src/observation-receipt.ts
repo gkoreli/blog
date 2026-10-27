@@ -14,7 +14,7 @@ function booleanState(value: boolean | null): 'true' | 'false' | 'unavailable' {
 
 /** Closed projections of the values passed to the insert, never a second verdict.
  * Snapshot before the insert; emit only after D1 acknowledges its one-row write.
- * The caller supplies the existing operationId, not a new reader/row correlator.
+ * The caller adds operation and returned database references outside this projection.
  */
 export function storedObservationReceipt(observation: ReceiptInput) {
   const evidence = observation.signatureEvidence;

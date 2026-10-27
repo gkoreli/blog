@@ -27,24 +27,29 @@ const bundle = await build({ stdin: { resolveDir: process.cwd(), contents: `
     return Response.json({keys:[${JSON.stringify(jwk)}]},{headers:{'Content-Type':'application/http-message-signatures-directory+json','Cache-Control':'max-age=300'}});
   };
   export default { async fetch(request,env,ctx) {
-    const mode=request.headers.get('X-Fixture-Mode'), start=logs.length, pending=[];
-    const DB={prepare(sql){return{bind(...values){const bound=env.DB.prepare(sql).bind(...values);return{async run(){
+    const mode=request.headers.get('X-Fixture-Mode'), start=logs.length, pending=[], databaseWork=[];
+    const DB={prepare(sql){return{bind(...values){const effectiveSql=mode==='without-returning-baseline'?sql.split('RETURNING CAST(id AS TEXT) AS observation_id')[0]:sql;
+      const bound=env.DB.prepare(effectiveSql).bind(...values);return{async run(){
       if(mode==='write-error'||mode==='diagnostic-error'&&sql.includes('INSERT INTO page_observation_diagnostics')) throw Error('private-error@example.invalid');
       if(mode==='ack-without-write')return{success:false,meta:{changes:0}};
       const result=await bound.run();
+      databaseWork.push({returning:effectiveSql.includes('RETURNING'),rowsRead:result.meta.rows_read,rowsWritten:result.meta.rows_written,changes:result.meta.changes});
       if(mode==='ack-false')return{...result,success:false};
       if(mode==='ack-zero')return{...result,meta:{...result.meta,changes:0}};
+      if(mode==='missing-reference')return{...result,results:[]};
+      if(mode==='numeric-reference')return{...result,results:[{observation_id:result.meta.last_row_id}]};
+      if(mode==='duplicate-reference')return{...result,results:[...result.results,...result.results]};
       return result;
     }}}}}};
     const copy=new Request(request);
     Object.defineProperty(copy,'cf',{value:mode==='unknown-category'?{verifiedBotCategory:'private-category@example.invalid'}:{verifiedBotCategory:'Search Engine Crawler',botManagement:{verifiedBot:false}}});
     const options=mode==='injected'?{verifySignature:async()=>({status:'verified',agent:'https://crawler.exa.ai'})}
-      :mode==='diagnostic-error'?{publicPagePaths:async()=>new Set([new URL(request.url).pathname])}:{};
-    const environment={...env,DB,...mode==='diagnostic-error'?{ANALYTICS_DIAGNOSTICS:'private-v1'}:{}};
+      :['diagnostic-error','large-rowid'].includes(mode)?{publicPagePaths:async()=>new Set([new URL(request.url).pathname])}:{};
+    const environment={...env,DB,...['diagnostic-error','large-rowid'].includes(mode)?{ANALYTICS_DIAGNOSTICS:'private-v1'}:{}};
     observePageResponse(copy,new Response('Native receipt fixture',{headers:{'Content-Type':'text/html'}}),'html',environment,
       {waitUntil(p){pending.push(p);ctx.waitUntil(p.catch(()=>{}));}},options);
     const settled=await Promise.allSettled(pending);
-    return Response.json({logs:logs.slice(start),settlements:settled.map(item=>item.status),directoryFetches});
+    return Response.json({logs:logs.slice(start),settlements:settled.map(item=>item.status),directoryFetches,databaseWork});
   }};
 ` }, bundle: true, write: false, format: 'esm', platform: 'browser', logLevel: 'silent' });
 const mf = new Miniflare({ modules: true, script: bundle.outputFiles[0].text, compatibilityDate: '2026-03-06', d1Databases: { DB: 'observation-receipts' }, bindings: { ANALYTICS_HASH_KEY: 'local-fixture-only' } });
@@ -53,7 +58,8 @@ try {
   const schema = readFileSync('packages/analytics/schema.sql', 'utf8').replace(/^\s*--.*$/gm, '');
   await db.batch(schema.split(';').map(s => s.trim()).filter(Boolean).map(s => db.prepare(s)));
   const trials = [], captures = [];
-  for (const mode of ['verified-fixture','reviewed-origin-fixture','invalid-signature','directory-timeout','unsigned','conflicting-roles','unknown-category','injected','write-error','ack-without-write','ack-false','ack-zero','diagnostic-error','referral','ineligible']) {
+  for (const mode of ['verified-fixture','reviewed-origin-fixture','invalid-signature','directory-timeout','unsigned','without-returning-baseline','conflicting-roles','unknown-category','injected','write-error','ack-without-write','ack-false','ack-zero','diagnostic-error','referral','ineligible','missing-reference','numeric-reference','duplicate-reference','large-rowid']) {
+    if (mode === 'large-rowid') await db.prepare("UPDATE sqlite_sequence SET seq=9007199254740994 WHERE name='page_observations'").run();
     const path = mode === 'ineligible' ? '/api/stats' : mode === 'referral' ? '/privacy' : '/' + mode;
     const headers = { 'User-Agent': 'ExaSearchBot/1.0', Accept: 'text/html', 'X-Fixture-Mode': mode };
     if (mode === 'conflicting-roles') headers['User-Agent'] = 'ExaUser/1.0 ExaSearchBot/1.0';
@@ -68,7 +74,7 @@ try {
     }
     const response = await mf.dispatchFetch('https://publication.example' + path, { headers }); assert.equal(response.status, 200);
     const capture = await response.json(); captures.push({ mode, ...capture });
-    const rows = (await db.prepare('SELECT reader_kind,collection_version,signature_status,signature_evidence,classification_evidence FROM page_observations WHERE path=?').bind(path).all()).results;
+    const rows = (await db.prepare('SELECT CAST(id AS TEXT) observation_id,reader_kind,collection_version,signature_status,signature_evidence,classification_evidence FROM page_observations WHERE path=?').bind(path).all()).results;
     const stored = capture.logs.filter(log => log.event === 'analytics.observation_stored');
     const failure = capture.logs.find(log => log.event === 'analytics.observation_write_failed');
     if (['write-error','ack-without-write','ack-false','ack-zero'].includes(mode)) {
@@ -82,6 +88,19 @@ try {
       assert.equal(receipt.version, '2026-10-27.2');
       assert.equal(stored[0].operationId, capture.logs.find(log => log.event === 'analytics.observation_attempt').operationId);
       assert.equal(stored[0].collectionVersion, row.collection_version); assert.equal(row.collection_version, COLLECTION_VERSION);
+      const storage = stored[0].storage;
+      assert.equal(storage.version, '2026-10-27.1');
+      if (['without-returning-baseline','missing-reference','numeric-reference','duplicate-reference'].includes(mode)) {
+        assert.deepEqual(storage, { version: '2026-10-27.1', status: 'unavailable', observationId: 'unavailable' });
+      } else {
+        assert.deepEqual(storage, { version: '2026-10-27.1', status: 'returned', observationId: row.observation_id });
+      }
+      if (mode === 'large-rowid') {
+        assert.equal(storage.observationId, '9007199254740995');
+        const diagnostic = await db.prepare('SELECT CAST(observation_id AS TEXT) observation_id FROM page_observation_diagnostics').first();
+        assert.equal(diagnostic.observation_id, storage.observationId);
+        assert.equal(capture.logs.some(log => log.event === 'analytics.diagnostic_write_failed'), false);
+      }
       assert.equal(receipt.readerKind, row.reader_kind); assert.equal(receipt.classifierProfile, classification.classifierProfile);
       assert.equal(receipt.declarations.candidateCount, classification.declarations.candidates.length);
       assert.equal(receipt.declarations.candidateNames, [...classification.declarations.candidates].sort().join(',') || 'none');
@@ -112,17 +131,23 @@ try {
     assert.equal(JSON.stringify(capture.logs).includes('private-category'), false);
     trials.push({ mode, observations: rows.length, receipts: stored.length, settlement: capture.settlements[0] ?? 'not-scheduled',
       outcome: stored[0]?.receipt.signature.outcome ?? null, failureReason: failure?.reason ?? null,
-      receiptBytes: stored[0] ? Buffer.byteLength(JSON.stringify(stored[0].receipt)) : 0 });
+      receiptBytes: stored[0] ? Buffer.byteLength(JSON.stringify(stored[0].receipt)) : 0,
+      databaseWork: capture.databaseWork,
+      storageReference: stored[0]?.storage.status ?? 'no-receipt', exactReferenceMatches: stored[0]?.storage.status === 'returned' ? stored[0].storage.observationId === rows[0].observation_id : null });
   }
-  const sql = readFileSync('packages/blog/drafts/research/analytics-retrospective/observation-receipt-control.sql','utf8');
-  const controls = (await db.prepare(sql).bind('2000-01-01 00:00:00','2100-01-01 00:00:00').all()).results;
+  const sql = readFileSync('packages/blog/drafts/research/analytics-retrospective/storage-reference-control.sql','utf8');
+  const controlReference = captures.find(capture => capture.mode === 'referral').logs.find(log => log.event === 'analytics.observation_stored').storage.observationId;
+  const controlResult = await db.prepare(sql).bind(controlReference, COLLECTION_VERSION).all();
+  const controls = controlResult.results;
   assert.equal(controls.length, 1); assert.equal(controls[0].localOutcome, 'absent');
   assert.equal(controls[0].categoryValue, 'Search Engine Crawler'); assert.equal(controls[0].optionalCaptureAbsent, 1);
-  const plan = (await db.prepare('EXPLAIN QUERY PLAN '+sql).bind('2000-01-01 00:00:00','2100-01-01 00:00:00').all()).results;
-  assert.ok(plan.some(row => row.detail.includes('idx_page_observations_public_path_time')));
+  assert.equal(controls[0].referralControl, 1);
+  assert.equal((await db.prepare(sql).bind('9223372036854775807', COLLECTION_VERSION).all()).results.length, 0);
+  const plan = (await db.prepare('EXPLAIN QUERY PLAN '+sql).bind(controlReference, COLLECTION_VERSION).all()).results;
+  assert.ok(plan.some(row => row.detail.includes('INTEGER PRIMARY KEY')));
   writeFileSync(privateOutput, JSON.stringify({ captures }, null, 2)+'\n', {flag:'wx',mode:0o600});
-  const files = ['packages/analytics/src/index.ts','packages/analytics/src/db.ts','packages/analytics/src/observation-receipt.ts','packages/analytics/src/versions.ts'];
-  writeFileSync(output, JSON.stringify({checkedAt:new Date().toISOString(),method:'Actual collector, workerd, D1 and crypto; intercepted fixture directories, supplied provider metadata and controlled acknowledgement failures. Wrapper awaits captured waitUntil work for deterministic inspection.',collectionVersion:COLLECTION_VERSION,trials,acceptanceQueryPlan:plan,
+  const files = ['packages/analytics/src/index.ts','packages/analytics/src/db.ts','packages/analytics/src/observation-receipt.ts','packages/analytics/src/observation-storage.ts','packages/analytics/src/diagnostics.ts','packages/analytics/src/versions.ts'];
+  writeFileSync(output, JSON.stringify({checkedAt:new Date().toISOString(),method:'Actual collector, workerd, D1 and crypto; intercepted fixture directories, supplied provider metadata and controlled acknowledgement failures. Wrapper awaits captured waitUntil work for deterministic inspection.',collectionVersion:COLLECTION_VERSION,trials,acceptanceQueryPlan:plan,acceptanceQuery:{sha256:createHash('sha256').update(sql).digest('hex'),rowsRead:controlResult.meta.rows_read,rowsWritten:controlResult.meta.rows_written,productionReadCeiling:100},
     sourceSha256:Object.fromEntries(files.map(file=>[file,createHash('sha256').update(readFileSync(file)).digest('hex')])),productionRequests:0,externalNetworkCalls:0,
     limits:['Ephemeral fixture keys and substituted directories, including the reviewed-origin case, are not real vendor authentication.','Provider metadata is deliberately supplied, not an actual Cloudflare bot verdict.','No human/device label, complete-log guarantee or production activation is established.','An unacknowledged insert can leave a stored row; absence of a receipt does not establish absence of a write.']},null,2)+'\n',{flag:'wx'});
   console.log(JSON.stringify({trials:trials.length,acceptedReceipts:trials.reduce((n,t)=>n+t.receipts,0),externalNetworkCalls:0}));

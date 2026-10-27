@@ -1,0 +1,110 @@
+{
+  "checkedAt": "2026-10-27T22:47:01.942Z",
+  "method": "Offline retained requestId/operationId chain reconciliation, recorded-time Ed25519 replay and scalar-receipt comparisons.",
+  "verifierProfile": "2026-10-27.6",
+  "results": [
+    {
+      "vendor": "Exa",
+      "input": {
+        "records": 12,
+        "bytes": 38934,
+        "sha256": "f6b62e91406130ac4d3411d218a026887d3fb376828d7f1733adb4aa2966bc49"
+      },
+      "integrity": {
+        "missingIds": 0,
+        "duplicateIds": 0,
+        "truncatedRecords": 0
+      },
+      "selectedInvocations": 3,
+      "completeAttemptStoredPairs": 3,
+      "scalarReceipts": 3,
+      "replayReceiptAgreements": 3,
+      "counts": {
+        "replayStatus": {
+          "verified": 3
+        },
+        "declarations": {
+          "ExaSearchBot": 3
+        },
+        "nativeCategory": {
+          "Search Engine Crawler": 3
+        },
+        "nativeVerifiedBot": {
+          "unavailable": 3
+        },
+        "nativeSignedAgent": {
+          "unavailable": 3
+        },
+        "coveredComponents": {
+          "authority": 3
+        },
+        "collections": {
+          "2026-10-27.8": 3
+        }
+      },
+      "directory": {
+        "url": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+        "bytes": 274,
+        "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52"
+      },
+      "exactD1Joins": 0
+    },
+    {
+      "vendor": "Ahrefs",
+      "input": {
+        "records": 10,
+        "bytes": 37075,
+        "sha256": "b1052908ece743a16277040f65d9cceb280a9c075960c1930978445c97431ea5"
+      },
+      "integrity": {
+        "missingIds": 0,
+        "duplicateIds": 0,
+        "truncatedRecords": 0
+      },
+      "selectedInvocations": 4,
+      "completeAttemptStoredPairs": 1,
+      "scalarReceipts": 0,
+      "replayReceiptAgreements": 0,
+      "counts": {
+        "replayStatus": {
+          "verified": 4
+        },
+        "declarations": {
+          "AhrefsBot": 4
+        },
+        "nativeCategory": {
+          "Search Engine Optimization": 4
+        },
+        "nativeVerifiedBot": {
+          "unavailable": 4
+        },
+        "nativeSignedAgent": {
+          "unavailable": 4
+        },
+        "coveredComponents": {
+          "authority": 4
+        },
+        "collections": {
+          "no-complete-pair": 3,
+          "2026-10-27.6": 1
+        }
+      },
+      "directory": {
+        "url": "https://ahrefs.com/.well-known/http-message-signatures-directory",
+        "bytes": 298,
+        "sha256": "a647d3d54713f9299e73dec67cdd28175cfb488ebc9692d245b82821244eb0cc"
+      },
+      "exactD1Joins": 0
+    }
+  ],
+  "networkCalls": 0,
+  "databaseCalls": 0,
+  "limits": [
+    "Later captured HTTPS keys do not prove the keys originally served at request time.",
+    "Uncovered User-Agent and path remain unauthenticated; replay does not establish purpose, operator intent or a human trigger.",
+    "Provider categories are independent catalog evidence, not native cryptographic verdicts. Missing booleans remain unavailable.",
+    "No retained historical chain supplies an exact D1 row reference. Time/path agreement establishes a cohort only.",
+    "Assets and robots requests need not have eligible page-observation logs. Missing logs alone do not establish collection loss.",
+    "Record counts are scoped exports, not complete retention or unique HTTP-delivery counts. Raw inputs remain private."
+  ]
+}

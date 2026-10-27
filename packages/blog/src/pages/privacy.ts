@@ -30,7 +30,7 @@ export function privacyPage() {
 
   <p>Routine first-party observation rows are retained until I delete them; there is currently no automatic expiration for those rows. The source marker distinguishes historical beacon events from newer edge observations.</p>
 
-  <p>Private operational logs record observation attempts and outcomes. Successful storage logs repeat a limited subset of the recorded classification, reviewed client declarations, verification outcome/profile, signature-coverage flags, reviewed signer name and provider bot facts. The existing operation reference connects this receipt to its request's Cloudflare log context; it is not added to public stats. These linked records follow separate provider-log retention and sampling, and restricted investigation-copy lifecycles. A missing receipt does not prove that a database write is missing.</p>
+  <p>Private operational logs record observation attempts and outcomes. Successful storage logs repeat a limited subset of the recorded classification, reviewed client declarations, verification outcome/profile, signature-coverage flags, reviewed signer name and provider bot facts. The operation reference connects the receipt to its request's Cloudflare log context. From October 27, 2026 UTC, an available database row reference also links it to the exact stored event. Neither reference is included in public stats. These linked records follow separate provider-log retention and sampling, and restricted investigation-copy lifecycles. A missing receipt does not prove that a database write is missing.</p>
 
   <h2>Private request diagnostics</h2>
 

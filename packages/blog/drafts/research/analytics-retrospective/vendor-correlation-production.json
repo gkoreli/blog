@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-27T22:48:35.409238+00:00",
+  "method": "One native-accepted Wrangler --command SELECT; SQL passed as private argv, no file/import execution. Exact paths/times remain private.",
+  "window": {
+    "startInclusive": "2026-10-27 00:00:00",
+    "endExclusive": "2026-10-27 21:49:00"
+  },
+  "selectedRows": 7,
+  "cohorts": [
+    {
+      "vendor": "Ahrefs",
+      "collectionVersion": "2026-10-27.6",
+      "readerKind": "seo-crawler",
+      "signatureEvidenceVersion": "2026-10-27.3",
+      "documentedVendorStatus": "not-configured",
+      "rows": 1
+    },
+    {
+      "vendor": "Exa",
+      "collectionVersion": "2026-10-27.6",
+      "readerKind": "ai-search",
+      "signatureEvidenceVersion": "2026-10-27.3",
+      "documentedVendorStatus": "matching-origin",
+      "rows": 2
+    },
+    {
+      "vendor": "Exa",
+      "collectionVersion": "2026-10-27.8",
+      "readerKind": "ai-search",
+      "signatureEvidenceVersion": "2026-10-27.4",
+      "documentedVendorStatus": "matching-origin",
+      "rows": 4
+    }
+  ],
+  "statement": {
+    "rowsRead": 413,
+    "rowsWritten": 0,
+    "changes": 0,
+    "changedDb": false,
+    "postExecutionReadCeiling": 5000
+  },
+  "metadataPreflight": "D1 info authentication error 10000; separate SELECT succeeded. No reset/retry inferred.",
+  "querySha256": "37a5c9b869bf16c9ea118bf303fbb9aa165498ae962a88ff80178df5ae5f0a14",
+  "limits": [
+    "No historical invocation-to-row identity join.",
+    "Same time/path or closed facts can establish a cohort only.",
+    "Operator read ceiling is not a database-enforced cap."
+  ]
+}

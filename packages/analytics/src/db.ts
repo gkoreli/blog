@@ -7,6 +7,7 @@ import type { VerificationEvidence } from './signature-evidence.js';
 import type { ClassificationEvidence } from './classification-evidence.js';
 import type { VendorIpEvidence } from './vendor-ip.js';
 import type { ClientFormEvidence } from './client-form.js';
+import { observationStorageReference, type ObservationStorageReference } from './observation-storage.js';
 
 export interface Env {
   DB: D1Database;
@@ -88,9 +89,10 @@ const INSERT_OBSERVATION = `INSERT INTO page_observations (
   classification_evidence,
   vendor_ip_evidence,
   client_form_evidence
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+RETURNING CAST(id AS TEXT) AS observation_id`;
 
-export async function recordPageObservation(db: D1Database, observation: PageObservation, diagnostic?: ObservationDiagnostic): Promise<void> {
+export async function recordPageObservation(db: D1Database, observation: PageObservation, diagnostic?: ObservationDiagnostic): Promise<ObservationStorageReference> {
   const result = await db.prepare(INSERT_OBSERVATION).bind(
     observation.path,
     observation.referrerHost,
@@ -124,16 +126,19 @@ export async function recordPageObservation(db: D1Database, observation: PageObs
     observation.classificationEvidence === undefined ? null : JSON.stringify(observation.classificationEvidence),
     observation.vendorIpEvidence === undefined ? null : JSON.stringify(observation.vendorIpEvidence),
     observation.clientFormEvidence === undefined ? null : JSON.stringify(observation.clientFormEvidence),
-  ).run();
+  ).run<{ observation_id: unknown }>();
   if (result?.success !== true || result.meta?.changes !== 1) {
     throw new ObservationAcknowledgementError('Observation insert was not acknowledged');
   }
+  const storage = observationStorageReference(result.results);
   if (diagnostic !== undefined) {
     // Preserve the acknowledged base observation if its optional diagnostic fails.
     try {
-      await recordDiagnostic(db, result.meta.last_row_id, observation.observedAt, diagnostic);
+      if (storage.status !== 'returned') throw new Error('Observation reference unavailable');
+      await recordDiagnostic(db, storage.observationId, observation.observedAt, diagnostic);
     } catch {
       console.warn('analytics.diagnostic_write_failed', { operationId: diagnostic.operationId, collectionVersion: COLLECTION_VERSION });
     }
   }
+  return storage;
 }

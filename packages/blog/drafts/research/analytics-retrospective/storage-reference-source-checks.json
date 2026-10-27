@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-27T22:49:58.552200+00:00",
+  "analyticsTests": {
+    "pass": 177,
+    "fail": 0
+  },
+  "siteTests": {
+    "pass": 106,
+    "fail": 0
+  },
+  "workspaceTypecheck": "pass",
+  "frontmatterValidation": "pass",
+  "nativeControls": "storage-reference-local.json",
+  "vendorReconciliation": "vendor-retained-reconciliation.json",
+  "nativeVendorCohort": "vendor-correlation-local.json",
+  "syntax": "pass",
+  "localLinks": "pass",
+  "gitDiffCheck": "pass",
+  "articleBodyWords": 1250,
+  "shapingPrompts": 31,
+  "isolatedBuild": {
+    "result": "pass",
+    "posts": 32,
+    "directory": "/tmp/gk-production-stage-build-20261027/packages/blog",
+    "warning": "Mise tracking symlink outside writable roots failed; build exited zero."
+  },
+  "sourceSha256": {
+    "packages/analytics/src/db.ts": "ecf01ab301bdaa59ce8ede864782af12a8727d7d2134ddbc6601f6c45e71d773",
+    "packages/analytics/src/index.ts": "4855e909b081faf3471fe1abe903a659e67ed5a3304f78742cec2c2d2f54c237",
+    "packages/analytics/src/observation-storage.ts": "7aa870beeebcdcd1c432e7c9d67ba7acddb018dbdfedd4c778aca4550fa3b9ff",
+    "packages/analytics/src/diagnostics.ts": "408d6bf6cc22f38f0940e54f0dcfc692bd317a675733e9619419c664a243f6c1",
+    "packages/blog/scripts/check-observation-receipt.mjs": "3184739118b6ea4b69c0285ecee76a6eaf215c9842c20c61b252aa3d21159672",
+    "packages/blog/scripts/check-vendor-correlation.mjs": "02a129710f463c4ad01fc0666c4b4b40f50212b7378b99052eabd99020868d6b",
+    "packages/blog/scripts/reconcile-retained-vendors.mjs": "038e7b2bc17fe1c12b76896539f9f290779e3cd2d2db7fa9c877ffb92d590c24"
+  },
+  "limits": [
+    "Local acceptance does not establish activation or production row linkage.",
+    "Native metadata is supplied in fixtures; vendor directory requests are intercepted.",
+    "Human trials remain deferred; no population accuracy claim."
+  ]
+}

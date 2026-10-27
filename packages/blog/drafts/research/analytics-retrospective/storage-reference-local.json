@@ -1,0 +1,402 @@
+{
+  "checkedAt": "2026-10-27T22:48:04.290Z",
+  "method": "Actual collector, workerd, D1 and crypto; intercepted fixture directories, supplied provider metadata and controlled acknowledgement failures. Wrapper awaits captured waitUntil work for deterministic inspection.",
+  "collectionVersion": "2026-10-27.9",
+  "trials": [
+    {
+      "mode": "verified-fixture",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "verified",
+      "failureReason": null,
+      "receiptBytes": 802,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "returned",
+      "exactReferenceMatches": true
+    },
+    {
+      "mode": "reviewed-origin-fixture",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "verified",
+      "failureReason": null,
+      "receiptBytes": 799,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "returned",
+      "exactReferenceMatches": true
+    },
+    {
+      "mode": "invalid-signature",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "invalid",
+      "failureReason": null,
+      "receiptBytes": 687,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "returned",
+      "exactReferenceMatches": true
+    },
+    {
+      "mode": "directory-timeout",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "unavailable",
+      "failureReason": null,
+      "receiptBytes": 697,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "returned",
+      "exactReferenceMatches": true
+    },
+    {
+      "mode": "unsigned",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 656,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "returned",
+      "exactReferenceMatches": true
+    },
+    {
+      "mode": "without-returning-baseline",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 656,
+      "databaseWork": [
+        {
+          "returning": false,
+          "rowsRead": 4,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "unavailable",
+      "exactReferenceMatches": null
+    },
+    {
+      "mode": "conflicting-roles",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 674,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "returned",
+      "exactReferenceMatches": true
+    },
+    {
+      "mode": "unknown-category",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 652,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "returned",
+      "exactReferenceMatches": true
+    },
+    {
+      "mode": "injected",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "test-injected",
+      "failureReason": null,
+      "receiptBytes": 665,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "returned",
+      "exactReferenceMatches": true
+    },
+    {
+      "mode": "write-error",
+      "observations": 0,
+      "receipts": 0,
+      "settlement": "rejected",
+      "outcome": null,
+      "failureReason": "persistence-or-processing",
+      "receiptBytes": 0,
+      "databaseWork": [],
+      "storageReference": "no-receipt",
+      "exactReferenceMatches": null
+    },
+    {
+      "mode": "ack-without-write",
+      "observations": 0,
+      "receipts": 0,
+      "settlement": "rejected",
+      "outcome": null,
+      "failureReason": "unacknowledged-insert",
+      "receiptBytes": 0,
+      "databaseWork": [],
+      "storageReference": "no-receipt",
+      "exactReferenceMatches": null
+    },
+    {
+      "mode": "ack-false",
+      "observations": 1,
+      "receipts": 0,
+      "settlement": "rejected",
+      "outcome": null,
+      "failureReason": "unacknowledged-insert",
+      "receiptBytes": 0,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "no-receipt",
+      "exactReferenceMatches": null
+    },
+    {
+      "mode": "ack-zero",
+      "observations": 1,
+      "receipts": 0,
+      "settlement": "rejected",
+      "outcome": null,
+      "failureReason": "unacknowledged-insert",
+      "receiptBytes": 0,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "no-receipt",
+      "exactReferenceMatches": null
+    },
+    {
+      "mode": "diagnostic-error",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 656,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "returned",
+      "exactReferenceMatches": true
+    },
+    {
+      "mode": "referral",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 656,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "returned",
+      "exactReferenceMatches": true
+    },
+    {
+      "mode": "ineligible",
+      "observations": 0,
+      "receipts": 0,
+      "settlement": "not-scheduled",
+      "outcome": null,
+      "failureReason": null,
+      "receiptBytes": 0,
+      "databaseWork": [],
+      "storageReference": "no-receipt",
+      "exactReferenceMatches": null
+    },
+    {
+      "mode": "missing-reference",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 656,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "unavailable",
+      "exactReferenceMatches": null
+    },
+    {
+      "mode": "numeric-reference",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 656,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "unavailable",
+      "exactReferenceMatches": null
+    },
+    {
+      "mode": "duplicate-reference",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 656,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        }
+      ],
+      "storageReference": "unavailable",
+      "exactReferenceMatches": null
+    },
+    {
+      "mode": "large-rowid",
+      "observations": 1,
+      "receipts": 1,
+      "settlement": "fulfilled",
+      "outcome": "absent",
+      "failureReason": null,
+      "receiptBytes": 656,
+      "databaseWork": [
+        {
+          "returning": true,
+          "rowsRead": 5,
+          "rowsWritten": 6,
+          "changes": 1
+        },
+        {
+          "returning": false,
+          "rowsRead": 2,
+          "rowsWritten": 2,
+          "changes": 1
+        }
+      ],
+      "storageReference": "returned",
+      "exactReferenceMatches": true
+    }
+  ],
+  "acceptanceQueryPlan": [
+    {
+      "id": 2,
+      "parent": 0,
+      "notused": 33,
+      "detail": "SEARCH page_observations USING INTEGER PRIMARY KEY (rowid=?)"
+    }
+  ],
+  "acceptanceQuery": {
+    "sha256": "0d4458a71bcb3498de0839814fd21f19b683cb76af8806cd0253ae93b5f3c9c2",
+    "rowsRead": 1,
+    "rowsWritten": 0,
+    "productionReadCeiling": 100
+  },
+  "sourceSha256": {
+    "packages/analytics/src/index.ts": "4855e909b081faf3471fe1abe903a659e67ed5a3304f78742cec2c2d2f54c237",
+    "packages/analytics/src/db.ts": "ecf01ab301bdaa59ce8ede864782af12a8727d7d2134ddbc6601f6c45e71d773",
+    "packages/analytics/src/observation-receipt.ts": "e24cce03430428ec4436619d51cfa7a1ae162e884d91aa1cab776ab15d203665",
+    "packages/analytics/src/observation-storage.ts": "7aa870beeebcdcd1c432e7c9d67ba7acddb018dbdfedd4c778aca4550fa3b9ff",
+    "packages/analytics/src/diagnostics.ts": "408d6bf6cc22f38f0940e54f0dcfc692bd317a675733e9619419c664a243f6c1",
+    "packages/analytics/src/versions.ts": "474f9373d9a339acc195f45e4b05f081f3fbeac7d0f55025fb6f7f1e784a7e05"
+  },
+  "productionRequests": 0,
+  "externalNetworkCalls": 0,
+  "limits": [
+    "Ephemeral fixture keys and substituted directories, including the reviewed-origin case, are not real vendor authentication.",
+    "Provider metadata is deliberately supplied, not an actual Cloudflare bot verdict.",
+    "No human/device label, complete-log guarantee or production activation is established.",
+    "An unacknowledged insert can leave a stored row; absence of a receipt does not establish absence of a write."
+  ]
+}

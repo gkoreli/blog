@@ -15,7 +15,7 @@ const add = (counts, value) => { counts[value] = (counts[value] ?? 0) + 1; };
  * Select actual invocation request declarations, then join custom logs by requestId.
  * Never use time/path proximity, a shared operationId, or a replay as a D1 identity join.
  */
-export function reconcileInvocations(rows) {
+export function reconcileInvocations(rows, declaredNames = declarations) {
   assert.ok(Array.isArray(rows));
   const ids = new Map();
   let missingIds = 0, duplicateIds = 0, truncatedRecords = 0;
@@ -33,7 +33,7 @@ export function reconcileInvocations(rows) {
     const request = row?.$workers?.event?.request;
     if (!request || typeof request.url !== 'string' || typeof request.method !== 'string') return false;
     const ua = new Headers(request.headers).get('user-agent') ?? '';
-    return analyzeTraffic(ua).declarations.candidates.some(name => declarations.has(name));
+    return analyzeTraffic(ua).declarations.candidates.some(name => declaredNames.has(name));
   });
   const requestIds = new Map();
   for (const row of candidates) {
@@ -64,6 +64,7 @@ export function reconcileInvocations(rows) {
       && Date.parse(attempts[0].timestamp) <= Date.parse(stored[0].timestamp);
     return { row, complete: matched && Object.values(scopedIntegrity).every(count => count === 0), scopedIntegrity,
       collectionVersion: matched ? stored[0].source.collectionVersion : null,
+      receipt: matched ? stored[0].source.receipt : undefined,
       attempts: attempts.length, stored: stored.length, failures: failures.length };
   });
   return { integrity, reconciliations };
@@ -72,7 +73,7 @@ export function reconcileInvocations(rows) {
 export async function analyzeExport(bytes, directoryBytes) {
   const rows = JSON.parse(bytes.toString());
   const { integrity, reconciliations } = reconcileInvocations(rows);
-  const counts = { replayStatus: {}, coverage: {}, categories: {}, nativeVerifiedBot: {}, nativeSignedAgent: {}, collections: {} };
+  const counts = { replayStatus: {}, coverage: {}, categories: {}, nativeVerifiedBot: {}, nativeSignedAgent: {}, collections: {}, storedReceiptVersions: {}, storedReceiptOutcomes: {} };
   let complete = 0, matchingOrigins = 0;
   const times = [];
   for (const item of reconciliations) {
@@ -98,6 +99,12 @@ export async function analyzeExport(bytes, directoryBytes) {
     add(counts.collections, typeof item.collectionVersion === 'string' && /^2026-\d{2}-\d{2}\.\d{1,4}$/.test(item.collectionVersion)
       ? item.collectionVersion : 'unrecognized-or-unreconciled');
     if (item.complete) complete++;
+    const receipt = item.complete ? item.receipt : undefined;
+    const knownReceipt = ['2026-10-27.1', '2026-10-27.2'].includes(receipt?.version);
+    add(counts.storedReceiptVersions, knownReceipt ? receipt.version : 'unavailable-or-unrecognized');
+    add(counts.storedReceiptOutcomes, knownReceipt && receipt.signature?.source === 'local-webbotauth'
+      && ['absent','verified','invalid','unavailable','policy-rejected','unsupported','not-verified'].includes(receipt.signature?.outcome)
+      ? receipt.signature.outcome : 'unavailable-or-unrecognized');
   }
   return { checkedAt: new Date().toISOString(), method: 'Offline declaration selection, native requestId/operationId log reconciliation and recorded-time cryptographic replay; no D1 identity join.',
     input: { records: rows.length, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') },
@@ -111,10 +118,10 @@ export async function analyzeExport(bytes, directoryBytes) {
     directory: { url: directoryUrl, bytes: directoryBytes.length, sha256: createHash('sha256').update(directoryBytes).digest('hex') },
     networkCalls: 0, productionRequests: 0, exactD1Joins: 0,
     limits: ['The dashboard search count and exported record population differ; selection is reapplied to invocation request declarations offline.',
-      'Successful storage logs establish completion of the observation operation; they contain no signature verdict or row identifier.',
+      'Receipt presence/outcomes are counted separately; older success logs have no verdict. This replay tool does not establish an exact D1 row join.',
       'Replay uses recorded invocation times and separately captured later keys, not proof of the original directory or original Worker verdict.',
       'Provider categories do not establish native cryptographic verification; unavailable booleans remain unknown.',
-      'No complete retention, unique HTTP delivery, population accuracy, human trigger, citation or new-collector organic acceptance claim.',
+      'No complete retention, unique HTTP delivery, population accuracy, human trigger or citation claim. Current receipt facts require separate field validation.',
       'Raw request context, IDs, addresses, signatures and operation identifiers remain private.'] };
 }
 

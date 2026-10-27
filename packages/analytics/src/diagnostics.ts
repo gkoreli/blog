@@ -1,5 +1,6 @@
 import type { RequestDiagnosticInputs } from './request-evidence.js';
 import { REQUEST_EVIDENCE_VERSION } from './request-evidence.js';
+import { isObservationId } from './observation-storage.js';
 
 import { DIAGNOSTIC_RETENTION_DAYS } from './contracts.js';
 export { DIAGNOSTIC_RETENTION_DAYS } from './contracts.js';
@@ -30,17 +31,18 @@ export function allowsDiagnostics(mode: string | undefined, request: Request): b
 
 export async function recordDiagnostic(
   db: D1Database,
-  observationId: number,
+  observationId: number | string,
   observedAt: string,
   diagnostic: ObservationDiagnostic,
 ): Promise<void> {
-  if (!Number.isSafeInteger(observationId) || observationId < 1) throw new Error('Invalid diagnostic observation reference');
+  const reference = typeof observationId === 'number' && Number.isSafeInteger(observationId) ? String(observationId) : observationId;
+  if (!isObservationId(reference)) throw new Error('Invalid diagnostic observation reference');
   const payload = JSON.stringify(diagnostic);
   if (new TextEncoder().encode(payload).byteLength > MAX_DIAGNOSTIC_BYTES) throw new Error('Diagnostic exceeds its byte budget');
   await db.prepare(`INSERT INTO page_observation_diagnostics
     (observation_id, evidence_version, captured_at, expires_at, payload)
     VALUES (?, ?, ?, ?, ?)`)
-    .bind(observationId, REQUEST_EVIDENCE_VERSION, observedAt, diagnosticExpiry(observedAt), payload).run();
+    .bind(reference, REQUEST_EVIDENCE_VERSION, observedAt, diagnosticExpiry(observedAt), payload).run();
 }
 
 /** Read-side expiry is enforced before exposing even private source evidence. */
