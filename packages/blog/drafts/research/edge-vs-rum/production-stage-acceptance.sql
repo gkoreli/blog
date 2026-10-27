@@ -4,9 +4,12 @@ WITH selected AS MATERIALIZED (
 ), observed AS MATERIALIZED (
   SELECT t.id, COUNT(*) AS stored, SUM(o.is_owner) AS owner_excluded,
     MIN(o.collection_version) AS min_collection, MAX(o.collection_version) AS max_collection,
-    json_group_array(json_object('kind',o.reader_kind,'ownerExcluded',o.is_owner)) AS kinds
-  FROM selected t JOIN page_observations o ON o.path='/analytics-check/' || t.id
-  WHERE o.observed_at >= ? AND o.observed_at < ?
+    json_group_array(json_object('kind',o.reader_kind,'reason',o.reader_reason,'ownerExcluded',o.is_owner,
+      'network',json_extract(o.classification_evidence,'$.network'),
+      'navigationShaped',json_extract(o.classification_evidence,'$.navigationShaped'))) AS kinds
+  FROM selected t JOIN page_observations o INDEXED BY idx_page_observations_public_path_time
+    ON o.path='/analytics-check/' || t.id
+  WHERE o.is_owner IN (0,1) AND o.observed_at >= ? AND o.observed_at < ?
   GROUP BY t.id
 )
 SELECT t.condition, t.operator AS plannedOperator, COUNT(*) AS trials,

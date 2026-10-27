@@ -25,17 +25,17 @@ Understanding which articles help starts with three decisions:
 
 ## Count the event you can observe
 
-The original dashboard displayed **97 AI Reads**. A browser script supplied its data. Crawlers skipping that script never entered the table. The label promised visibility the collector didn’t have.
+The original dashboard displayed **97 AI Reads**. A browser script supplied its data. Crawlers skipping that script never entered the table. The label overstated its coverage.
 
 I [moved collection to the HTTP response boundary](/first-party-analytics-for-a-personal-blog). The Worker serves the page, checks the response, and records an eligible delivery in D1. [Worker-first routing](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/) puts the collector in that path, including for clients that never run JavaScript.
 
-The counter now accepts successful, non-prefetch page GETs serving HTML or negotiated Markdown. APIs, feeds, redirects, errors and direct `.md` assets stay outside it. Persistence is best effort. Browser means the request matched our header and network rules. **A stored event establishes a recorded delivery; it cannot establish attention or understanding.**
+The counter accepts successful, non-prefetch page GETs serving HTML or negotiated Markdown. APIs, feeds, redirects, errors and direct `.md` assets stay outside it. Persistence is best effort. Browser means the request matched our header and network rules. **A stored event establishes a recorded delivery; it cannot establish attention or understanding.**
 
-A keyed hash groups requests by site, UTC date, IP address and User-Agent. The table retains neither raw IPs nor User-Agent strings. Changed inputs can split one person’s activity; shared inputs can combine people. Daily client IDs are not unique readers.
+A keyed hash groups requests by site, UTC date, IP and User-Agent. The table retains neither raw IPs nor User-Agent strings. Changed inputs can split one person’s activity; shared inputs can combine people. Daily client IDs are not unique readers.
 
 ## One referrer changed the growth story
 
-The October audit now covers the retained data from September 9 through partial October 26, 2026 UTC: **14,835 included events** after owner and referral-policy exclusions. The [complete-period evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/10-full-interval-and-field-hardening.md) preserves the queries, boundaries and partial-day limits.
+The audit covers September 9 through partial October 26, 2026 UTC: **14,835 included events** after owner and referral-policy exclusions. The [complete-period evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/10-full-interval-and-field-hardening.md) preserves the queries, boundaries and partial-day limits.
 
 Browser events rose from **306** in the complete UTC week beginning September 14 to **711** in the week beginning October 19. One unexplained referrer, R1, supplied **388** of the later week’s events. Setting that cohort aside gives **323 versus 306**, a 5.6% increase instead of a 2.32-fold count.
 
@@ -51,7 +51,7 @@ Our catalogue also missed four documented names. [ExaSearchBot](https://crawler.
 
 The repair recognizes all four names, preserves declared roles across verified signatures, and reports signing evidence separately without double-counting totals. Local signed fixtures and excluded live User-Agent controls passed; organic vendor-signed acceptance remains open. The [repair evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/08-classification-repair.md) records that boundary.
 
-**Identity, role and trigger answer different questions.** [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) verify selected components against a key. I [reverified 19 retained Exa records](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/18-webbotauth-verification.md): every signature protected the host, none the User-Agent or article path. A mutation test confirmed those unsigned fields could change without invalidating the signature. Two records shared a provider ID; the sample does not establish 19 unique events. Native verification booleans were unavailable. Records distinguish signature failures and compare Exa signing origins and documented vendor IP ranges; coverage and source age remain explicit. Matching keys cannot authenticate unsigned roles or human triggers. Roles lost from 1,003 historical Exa outcomes remain unknown.
+**Identity, role and trigger answer different questions.** [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) verify selected components against a key. I [reverified 19 retained Exa records](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/18-webbotauth-verification.md) at their recorded times using later-captured keys: every signature protected the host, none the User-Agent or article path. A mutation test confirmed those unsigned fields could change without invalidating the signature. Two records shared a provider ID; the sample does not establish 19 unique events. Native verification booleans were unavailable. Records distinguish failures, signed coverage, documented origins and vendor IP methods. Matching keys cannot authenticate unsigned roles or human triggers. Roles lost from 1,003 historical Exa outcomes remain unknown.
 
 ## Preserve uncertainty in the data
 
@@ -63,7 +63,7 @@ Referrers needed the same discipline. Among 2,365 included internal-referrer eve
 
 New observations retain the internal category but omit that ambiguous root source path. Historical rows remain intact and get an explicit label. The tradeoff loses some genuine homepage transitions while avoiding false precision.
 
-The [referrer-abuse policy](/filter-referrer-spam-without-deleting-analytics-history) separates retained observations from public reporting. Exclusions are versioned and disclosed; unapproved names appear as Other, preventing automatic promotion of untrusted destinations. Signing origins also require review before public naming. Original evidence stays private; R1 remains unresolved.
+The [referrer-abuse policy](/filter-referrer-spam-without-deleting-analytics-history) separates retained observations from public reporting. Exclusions are versioned and disclosed; unapproved names appear as Other, preventing automatic promotion of untrusted destinations. Signing origins also require review before public naming. Original evidence stays private.
 
 ## Correct totals can still break production
 
@@ -71,21 +71,23 @@ The first referral assessment repeated work across nine report queries. One hist
 
 Sharing the selected population and assessment reduced the same report to **33,259 reads**, an **81.8% reduction**, with identical output. The [recovery measurements](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md) preserve the comparison.
 
-[D1 row reads](https://developers.cloudflare.com/d1/platform/pricing/#definitions) measure query work. A fast response and a correct total don’t tell you what serving that report costs. Acceptance now includes Cloudflare’s local D1 runtime and production-metered reads. Versioned reports are cached for at most an hour, with their original calculation time preserved.
+[D1 row reads](https://developers.cloudflare.com/d1/platform/pricing/#definitions) measure query work. A fast response and a correct total don’t tell you what serving that report costs. Acceptance includes local D1 and production-metered reads. Versioned reports are cached for at most an hour, with their original calculation time preserved.
 
 ## Test the stages, not counter agreement
 
 For October 20–25 UTC, D1 recorded **694 Browser HTML events** versus Cloudflare’s **117 non-bot beacon loads** after stats/API exclusions. Sampling and path reconciliation remain incomplete. Neither is human ground truth. Agreement is not the goal; explaining what each instrument observes is.
 
-I reran [24 controlled local trials](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/07-matched-classifier-calibration.md), three per condition, through the actual collector and Cloudflare’s local D1 runtime:
+I followed [12 controlled production visits](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/08-production-stage-protocol.md): nine agent-operated browser visits and three actual curl requests, all excluded from public totals. Each stage had its own counter:
 
-- Blocking the beacon preserved server observations. `sendBeacon()` returned true three times; the server received none. True means [queued](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon#return_value), not received.
-- Blocking scripts still produced three observations.
-- Injected database failures lost three observations while pages and beacons succeeded.
+- Three normal visits stored observations and delivered three beacons.
+- Blocking the beacon preserved three observations. `sendBeacon()` returned true three times; the server received none. True means [queued](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon#return_value), not received.
+- Blocking scripts still stored three observations. The curl controls stored as Other bot without executing JavaScript.
 
-All browser visits were agent-operated. On the same inputs, twelve earlier Browser results now become Unresolved because network evidence is missing. Three with injected unlisted-ASN evidence still match Browser; fifteen beacons arrived. **Neither browser-shaped requests nor successful JavaScript authenticate human reading.** Without human controls, human false-positive rates remain unmeasured.
+All nine automated browser visits matched Browser with actual production network metadata. **Neither browser-shaped requests nor successful JavaScript authenticate human reading.** Our first-party receiver proves arrival; Cloudflare’s receipt remains separate. Human false-positive rates remain unmeasured.
 
-These mechanisms do not explain the historical gap’s proportions. Real phones, human-operated browsers, actual JavaScript-off and production beacon receipt remain to test. The next iteration must distinguish delivery, execution, queueing, receipt and persistence.
+A separate [local failure experiment](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/07-matched-classifier-calibration.md) lost three observations while pages and beacons succeeded. No database failure was injected into production.
+
+These mechanisms do not explain the historical gap’s proportions. Real phones, human-operated browsers, actual JavaScript-off and Cloudflare beacon receipt remain to test. Missing stages and independently labelled outcomes must survive reporting.
 
 ---
 

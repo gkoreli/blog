@@ -1,0 +1,132 @@
+{
+  "checkedAt": "2026-10-27T18:30:56.679Z",
+  "method": "Twelve independently executed known-automation controls through actual production Worker/D1: nine agent-operated browser visits and three actual curl page requests. Planned labels are reconciled with private controller execution evidence.",
+  "cutoff": "2026-10-27T18:28:40.611972+00:00",
+  "byCondition": [
+    {
+      "condition": "block-beacon",
+      "plannedOperator": "agent-browser",
+      "trials": 3,
+      "responsesPrepared": 3,
+      "scriptReports": 3,
+      "beaconAttemptReports": 3,
+      "queuedReports": 3,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 0,
+      "storedObservations": 3,
+      "ownerExcludedObservations": 3,
+      "minCollectionVersion": "2026-10-27.6",
+      "maxCollectionVersion": "2026-10-27.6",
+      "knownOperator": "agent-browser",
+      "observedKinds": {
+        "browser": 3
+      }
+    },
+    {
+      "condition": "block-script",
+      "plannedOperator": "agent-browser",
+      "trials": 3,
+      "responsesPrepared": 3,
+      "scriptReports": 0,
+      "beaconAttemptReports": 0,
+      "queuedReports": 0,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 0,
+      "storedObservations": 3,
+      "ownerExcludedObservations": 3,
+      "minCollectionVersion": "2026-10-27.6",
+      "maxCollectionVersion": "2026-10-27.6",
+      "knownOperator": "agent-browser",
+      "observedKinds": {
+        "browser": 3
+      }
+    },
+    {
+      "condition": "http-client",
+      "plannedOperator": "controlled-curl",
+      "trials": 3,
+      "responsesPrepared": 3,
+      "scriptReports": 0,
+      "beaconAttemptReports": 0,
+      "queuedReports": 0,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 0,
+      "storedObservations": 3,
+      "ownerExcludedObservations": 3,
+      "minCollectionVersion": "2026-10-27.6",
+      "maxCollectionVersion": "2026-10-27.6",
+      "knownOperator": "controlled-curl",
+      "observedKinds": {
+        "other-bot": 3
+      }
+    },
+    {
+      "condition": "normal",
+      "plannedOperator": "agent-browser",
+      "trials": 3,
+      "responsesPrepared": 3,
+      "scriptReports": 3,
+      "beaconAttemptReports": 3,
+      "queuedReports": 3,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 3,
+      "storedObservations": 3,
+      "ownerExcludedObservations": 3,
+      "minCollectionVersion": "2026-10-27.6",
+      "maxCollectionVersion": "2026-10-27.6",
+      "knownOperator": "agent-browser",
+      "observedKinds": {
+        "browser": 3
+      }
+    }
+  ],
+  "kinds": {
+    "browser": 9,
+    "other-bot": 3
+  },
+  "reasons": {
+    "navigation-shaped-network-unlisted": 9,
+    "generic-bot": 3
+  },
+  "networks": {
+    "not-listed": 12
+  },
+  "operatorEvaluation": {
+    "profile": "evaluation-only-kind-to-operator-v1",
+    "storedKnownAutomatedControls": 12,
+    "automationCandidateDecisions": 3,
+    "agreementsOnDecided": 3,
+    "disagreementsOnDecided": 0,
+    "abstentions": 9,
+    "acceptedHumanControls": 0,
+    "humanFalsePositiveRate": null,
+    "humanStatus": "Pending independent operation/attestation; no human evidence is imported into this automated cohort",
+    "unsafeBrowserAsHumanWrongLabels": 9
+  },
+  "directSelect": {
+    "rowsRead": 178,
+    "rowsWritten": 0,
+    "ceiling": 500
+  },
+  "privateEvidenceSha256": {
+    "trial-plan.json": "d7411ca5d5f390a1175e337ffbef880ed5a6baec2beb3a7c886f310e9a84234b",
+    "browser-executed.json": "431e6c394b8efed266bff88899ce0f759bc0ecdb8b21c9825a6165fc9ce97292",
+    "browser-ui.json": "a9575e4514ca610e9771fa5f5662a0a1d554dd33bead2985d26975efad556c20",
+    "curl-executed.json": "0d8e785a874d7fd50db20886e64d0dac22d572b3c3fd03f60ed05593e53a4c7f",
+    "automated-query.json": "246abcb18d7f0f302f9fcd71fb431c8a79418d73a6ebe7b0be1abc87b57460e4",
+    "automated-production.sql": "789670c3bc6d87e5871861b48cb84c0a6c66aca86525e0dd6c8cafb2dfa51b2d"
+  },
+  "limits": [
+    "Selected, repeated positive controls do not estimate general accuracy, human false-positive rates or population prevalence",
+    "A real production Browser outcome can still be known automation; current metadata does not authenticate an operator",
+    "First-party beacon receipt is not Cloudflare Web Analytics ingestion",
+    "CSP script blocking is not browser JavaScript-off; no physical-device claim",
+    "Native stage counters and actual stored rows are separate. No production write failure was injected",
+    "Guard reads, stage/collector writes, receipt queries, migration bookkeeping and cache fills are additional to direct SELECT metering",
+    "Temporary activation/cleanup and human acceptance are recorded separately"
+  ]
+}

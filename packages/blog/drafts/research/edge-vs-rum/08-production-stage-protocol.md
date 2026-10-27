@@ -42,8 +42,33 @@ These fixtures supply stage reports from a Node harness: they do not establish b
 
 Direct operational acceptance SELECTs must be time/path bounded and locally accepted before production, with a 500-read ceiling for this phase. Per-request guard checks, stage writes, receipt queries, ordinary collector writes, migration bookkeeping and public cache fills are additional service work; direct-query metering is not the experiment's total database cost. No broad all-traffic report is needed. Native log sampling/retention, actual Cloudflare beacon ingestion and original historical population reconciliation remain separate open work.
 
-## Current acceptance state
+## Prepared-state checkpoint before activation
 
 Prepared code and native tests only. Migration, source activation, actual production controls, human participation and temporary-binding removal have not yet been accepted in this record. Do not promote the planned procedure into an executed experiment.
 
 [Source checks](production-stage-source-checks.json) pass 133 analytics tests, 106 site tests, workspace types, four bundled native workerd fixtures, a 32-post isolated build and the linked reference checks. The [pre-release receipt](production-stage-pre-release.json) records migration 0016 as the only pending migration and successfully applied before source publication. Optional owner/calibration/raw-diagnostic binding names were absent at preflight, preserving existing configuration. Source activation, actual production controls and removal of any later temporary bindings remain to verify.
+
+## Executed production controls — October 27 UTC
+
+[Release receipt](production-stage-release.json) accepts migration 0016, checked source `87ed725`, native build `1e0460a8`, 100% source activation at 18:17:54 UTC and the subsequent temporary configuration. Off-mode returned 404 before activation. An unmarked controlled request returned 403. The actual browser was marked through the owner form; actual curl was marked through the real endpoint. No existing admin credential was read or rotated.
+
+The [aggregate automated receipt](2026-10-27-production-automated-controls.json), produced by [the maintained summarizer](../../../scripts/summarize-production-calibration.mjs), reconciles the private controller actions with twelve registered trial IDs and actual stored rows. Nine visits were agent-operated in the real browser and three used actual curl. Each has one observed response and one stored owner-excluded observation. These are repeated selected controls from two marked profiles, not independent people or a population sample.
+
+| Condition, three repeats each | Stored observations | Script reports | Queued true | Server beacon receipts | Actual stored kind |
+|---|---:|---:|---:|---:|---|
+| Normal browser | 3 | 3 | 3 | 3 | Browser |
+| Beacon blocked by CSP | 3 | 3 | 3 | 0 | Browser |
+| Scripts blocked by CSP | 3 | 0 | 0 | 0 | Browser |
+| Actual curl | 3 | 0 | 0 | 0 | Other bot |
+
+All nine automated browser requests retained `navigation-shaped-network-unlisted`, network `not-listed` and navigation shape true from actual production inputs. Browser therefore remains a descriptive rule match even with the missing-network gap repaired. The earlier local Unresolved results used different, missing edge inputs; these runs are not a paired accuracy comparison. Script/beacon execution also cannot authenticate a human operator. The first-party receiver is proven, not Cloudflare's separate beacon ingestion.
+
+The evaluation-only operator mapping makes three agreeing automation-candidate decisions and nine abstentions across twelve known-automated stored controls. It does not turn Browser into a human prediction. No human false-positive rate follows. A ready screen was shown and human action requested; at closing cutoff, no server trial rows existed for the six planned human IDs and no human execution was accepted. Absence does not establish that nobody attempted after expiry.
+
+The [final acceptance SQL](production-stage-acceptance.sql) explicitly uses the existing owner/path/time index and checks **both** owner values, so a leaked `is_owner=0` row would not disappear from verification. [Native query-plan acceptance](production-stage-query-local.json) confirms indexed owner/path/time searches. The automated check uses 178 direct reads and the closing human-plan check 14: **192 acknowledged reads, zero SELECT writes**, within the 500-read phase ceiling. Per-request guard/receipt queries, stage/collector writes, migration bookkeeping and public fills are additional work. A fresh All/7d public report for one completed trial path is empty; all twelve D1 observations have permanent owner flags.
+
+An early UI read raced the asynchronous receipt; the same trial completed without a reload or duplicate response. A later broad status locator matched both analytics and subscription status elements; scoping the locator fixed screenshot capture without another visit. No CSP console message was captured at the final ready page, so the blocked-condition finding rests on delivered policies and measured stages, not a fabricated console trace.
+
+Configured expiry was 18:34:54 UTC. A subsequent ready-endpoint check returned 404 before configuration removal. Both temporary bindings are removed and absent; optional raw diagnostics remain absent/off. The revoked code file was removed locally, with no secure-erasure or provider-log-retention claim. Counter deletion eligibility, the later nightly cleanup and routine excluded-row retention remain distinct.
+
+Completed: actual production routing/collector/D1, marked-client exclusion, normal and CSP script/beacon controls, actual curl, bounded stage receipts, indexed metered acceptance, public exclusion, natural expiry and temporary-binding cleanup. Next: reopen a short window when a human is available, accept independently operated browser/actual-JavaScript-off/real-device controls, and separately reconcile Cloudflare native sampling/beacon receipt and organic signed vendor inputs. Neither task nor the full objective is complete.

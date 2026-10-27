@@ -1,0 +1,188 @@
+{
+  "checkedAt": "2026-10-27T18:28:27.698Z",
+  "runtime": "v24.14.1",
+  "environment": "Bundled actual blog Worker executed in local workerd with native D1 and crypto; HTTP/stage inputs supplied by Node harness",
+  "limits": [
+    "These are synthetic native-Worker HTTP/stage fixtures, not browser CSP enforcement or actual curl/human operation",
+    "Operator labels are planned only; independent execution evidence is required",
+    "No production calls, native Cloudflare beacon ingestion or physical-device proof"
+  ],
+  "trials": [
+    {
+      "condition": "normal",
+      "counters": {
+        "page_responses": 1,
+        "script": 1,
+        "attempt": 1,
+        "queued": 1,
+        "not_queued": 0,
+        "threw": 0,
+        "beacon": 1
+      },
+      "observations": [
+        {
+          "kind": "unresolved",
+          "ownerExcluded": 1,
+          "observations": 1
+        }
+      ]
+    },
+    {
+      "condition": "block-script",
+      "counters": {
+        "page_responses": 1,
+        "script": 0,
+        "attempt": 0,
+        "queued": 0,
+        "not_queued": 0,
+        "threw": 0,
+        "beacon": 0
+      },
+      "observations": [
+        {
+          "kind": "unresolved",
+          "ownerExcluded": 1,
+          "observations": 1
+        }
+      ]
+    },
+    {
+      "condition": "block-beacon",
+      "counters": {
+        "page_responses": 1,
+        "script": 1,
+        "attempt": 1,
+        "queued": 1,
+        "not_queued": 0,
+        "threw": 0,
+        "beacon": 0
+      },
+      "observations": [
+        {
+          "kind": "unresolved",
+          "ownerExcluded": 1,
+          "observations": 1
+        }
+      ]
+    },
+    {
+      "condition": "http-client",
+      "counters": {
+        "page_responses": 1,
+        "script": 0,
+        "attempt": 0,
+        "queued": 0,
+        "not_queued": 0,
+        "threw": 0,
+        "beacon": 0
+      },
+      "observations": [
+        {
+          "kind": "unresolved",
+          "ownerExcluded": 1,
+          "observations": 1
+        }
+      ]
+    }
+  ],
+  "queryPlan": [
+    {
+      "id": 3,
+      "parent": 0,
+      "notused": 0,
+      "detail": "MATERIALIZE selected"
+    },
+    {
+      "id": 7,
+      "parent": 3,
+      "notused": 92,
+      "detail": "SEARCH analytics_calibration_trials USING INDEX sqlite_autoindex_analytics_calibration_trials_1 (id=?)"
+    },
+    {
+      "id": 11,
+      "parent": 3,
+      "notused": 0,
+      "detail": "LIST SUBQUERY 1"
+    },
+    {
+      "id": 14,
+      "parent": 11,
+      "notused": 0,
+      "detail": "SCAN json_each VIRTUAL TABLE INDEX 1:"
+    },
+    {
+      "id": 23,
+      "parent": 11,
+      "notused": 0,
+      "detail": "CREATE BLOOM FILTER"
+    },
+    {
+      "id": 51,
+      "parent": 0,
+      "notused": 0,
+      "detail": "MATERIALIZE observed"
+    },
+    {
+      "id": 61,
+      "parent": 51,
+      "notused": 216,
+      "detail": "SCAN t"
+    },
+    {
+      "id": 63,
+      "parent": 51,
+      "notused": 59,
+      "detail": "SEARCH o USING INDEX idx_page_observations_public_path_time (is_owner=? AND path=? AND observed_at>? AND observed_at<?)"
+    },
+    {
+      "id": 90,
+      "parent": 51,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR GROUP BY"
+    },
+    {
+      "id": 166,
+      "parent": 0,
+      "notused": 62,
+      "detail": "SCAN t"
+    },
+    {
+      "id": 183,
+      "parent": 0,
+      "notused": 47,
+      "detail": "SEARCH o USING AUTOMATIC COVERING INDEX (id=?) LEFT-JOIN"
+    },
+    {
+      "id": 190,
+      "parent": 0,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR GROUP BY"
+    }
+  ],
+  "checks": {
+    "migrationPreservesHistory": true,
+    "unmarkedDenied": true,
+    "ownerMarkAccepted": true,
+    "actualWorkerRouting": true,
+    "actualCollectorPersistence": true,
+    "permanentOwnerExclusionAfterMarksRemoved": true,
+    "closedStageCounters": true,
+    "cspHeaders": true,
+    "clientScriptParses": true,
+    "nonJsReceipt": true,
+    "crossOriginDenied": true,
+    "nativeExpirySql": true,
+    "narrowProductionSql": true
+  },
+  "bundleSha256": "7a006c3cb9aec66efbac2862c4d51750420349df68e052134aab65c41498a9cb",
+  "sourceSha256": {
+    "packages/analytics/src/calibration.ts": "cff62c8b66b518c1396cfc158dba1b72a842fda9d1225e31459f853eb10ec63d",
+    "packages/analytics/src/index.ts": "f406d4238fb5515e45018701e3ea88d98baa236402832a7471b2953158f9a4eb",
+    "packages/analytics/src/owner.ts": "3698aa626b3d71966b3e3b45fe34e6720c2d8b4d23c8b2b67d894441c5f681d8",
+    "packages/analytics/src/versions.ts": "d0b47e486b5c19ddeea335c124f04ba918db3a3663a07a21776b0f11c3af8262",
+    "packages/analytics/migrations/0016_calibration_trials.sql": "0d713ff9e9d1dc0c6560fe8fd5efa36b7445b2acefe22f490e761a0071e2b845",
+    "packages/blog/src/worker/index.ts": "6a9e857a3af116829b13ad2dfd7c3fe8d082caea29626db9f014271a2c748f50",
+    "packages/blog/drafts/research/edge-vs-rum/production-stage-acceptance.sql": "7dcc56970780f07f0ddb473cbffa578aa0dbaaebd0259c6a722b02cefd9be588"
+  },
+  "productionCalls": 0
+}

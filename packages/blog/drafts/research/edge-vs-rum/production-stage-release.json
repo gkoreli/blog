@@ -1,0 +1,107 @@
+{
+  "checkedAt": "2026-10-27T18:41:39.537708+00:00",
+  "sourceCommit": "87ed72564e6edd2f47eaec3cdc3b4e8ee36952e6",
+  "build": {
+    "id": "1e0460a8-12c4-4214-8135-131a8e651628",
+    "observedSourceTitle": "Add guarded production collection-stage trials with durable receipts",
+    "observedVersionPrefix": "060112fa",
+    "durationSeconds": 38,
+    "limit": "Native build/source association, deployment metadata and actual behavior; no binary attestation"
+  },
+  "sourceDeployment": {
+    "createdAt": "2026-10-27T18:17:54.274725Z",
+    "versions": [
+      {
+        "version_id": "060112fa-6bb5-49c6-ad48-74eb1b6fa3c9",
+        "percentage": 100
+      }
+    ]
+  },
+  "migration": "0016 applied before source push; production-stage-pre-release.json",
+  "activation": {
+    "activatedAt": "2026-10-27T18:19:57.003542+00:00",
+    "issuedAt": 1793125194429,
+    "expiresAt": 1793126094429,
+    "trialsPlanned": 18,
+    "automatedTrialsPlanned": 12,
+    "humanTrialsPlanned": 6,
+    "ownerGrantSha256": "ff718c6f033bce3213ba56b3ba0c6bf6fac3d9f331a4c23ab80eac72aca395b1",
+    "configSha256": "1dadb1b45f7c235041dd08f1e3cf15a7d95f9624bdeb8bcb78986b8c08e72919",
+    "offMode404": true,
+    "preexistingBindingsAbsent": true
+  },
+  "profiles": {
+    "browserOwnerMark": "UI accepted 2026-10-27 UTC; guarded trial admission and stored owner flags subsequently accepted",
+    "curlOwnerMark": "Actual curl profile marked through the real owner endpoint; its three guarded requests returned 200",
+    "unmarkedTrialRequestStatus": 403
+  },
+  "automatedControls": "2026-10-27-production-automated-controls.json",
+  "directSelect": {
+    "automatedReads": 178,
+    "closingHumanPlanReads": 14,
+    "totalAcknowledgedReads": 192,
+    "writes": 0,
+    "ceiling": 500,
+    "queryIndex": "idx_page_observations_public_path_time",
+    "bothOwnerValuesIncluded": true,
+    "localAcceptance": "production-stage-query-local.json"
+  },
+  "humanControls": {
+    "planned": 6,
+    "accepted": 0,
+    "observedTrialGroupsAtClosingCutoff": 0,
+    "limit": "No server trial rows observed for planned IDs; not proof nobody attempted after expiry. Human labels require a response and independent execution/receipt evidence."
+  },
+  "cleanup": {
+    "removedAt": "2026-10-27T18:36:07.544742+00:00",
+    "expiredBeforeRemoval": true,
+    "expiredReadyStatus": 404,
+    "temporaryOwnerGrantAbsent": true,
+    "calibrationActivationAbsent": true,
+    "rawDiagnosticsBindingAbsent": true
+  },
+  "publicExclusion": {
+    "sample": "One completed normal-trial path in fresh All/7d selection",
+    "includedViews": 0,
+    "proofScope": "Actual browser sample plus all twelve stored is_owner=1 flags and shared public predicate/native exclusion tests; no broad all-traffic production report",
+    "screenshot": "analytics-production-trial-excluded.png; controlled UUID stays outside Git",
+    "storedObservations": 12,
+    "ownerExcludedObservations": 12
+  },
+  "instrumentationLimits": [
+    "One initial UI read preceded stage completion; the same trial later completed without reload, and all response counters remained one per trial",
+    "The browser console capture at the ready page has zero entries; it is not evidence of no earlier CSP violations",
+    "The public-report status locator matched both analytics and subscription statuses; the scoped locator corrected capture without another visit",
+    "First-party beacon receipt is not Cloudflare Web Analytics ingestion; no production DB failure or actual JavaScript-off was injected",
+    "Owner/guard queries, stage/collector writes, receipt reads, migration bookkeeping and public cache fills are additional database work",
+    "Physical cleanup after expiry is not accepted by a future cron promise; native cleanup SQL is tested and production eligibility occurs a day after activation ends"
+  ],
+  "privateEvidenceSha256": {
+    "activation-config.json": "1dadb1b45f7c235041dd08f1e3cf15a7d95f9624bdeb8bcb78986b8c08e72919",
+    "browser-executed.json": "431e6c394b8efed266bff88899ce0f759bc0ecdb8b21c9825a6165fc9ce97292",
+    "curl-executed.json": "0d8e785a874d7fd50db20886e64d0dac22d572b3c3fd03f60ed05593e53a4c7f",
+    "automated-query.json": "246abcb18d7f0f302f9fcd71fb431c8a79418d73a6ebe7b0be1abc87b57460e4",
+    "pending-human-query.json": "bbddd861f088e361438555012e8e0ce7af3848f6bf688ffb5e5931d1623e7a79",
+    "cleanup.json": "d983490bbb46d4fd26c92bbca2abc7833d532153a9cf7d1592c660c1a18c718d"
+  },
+  "cleanupDeployment": {
+    "createdAt": "2026-10-27T18:36:06.383423Z",
+    "versions": [
+      {
+        "version_id": "af824610-b706-4bf2-8065-1a7c3448ac4b",
+        "percentage": 100
+      }
+    ]
+  },
+  "article": {
+    "words": 1249,
+    "originalShapingMessages": 30,
+    "isolatedBuiltPosts": 32,
+    "livePublicationAccepted": false,
+    "limit": "Actual served article must be accepted after this editorial publication"
+  },
+  "checks": {
+    "trialDisclosureServed": true,
+    "publicationStillPending": true
+  }
+}

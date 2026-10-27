@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { isReaderKind } from '../../analytics/.test-dist/contracts.js';
+
+const [directory,output]=process.argv.slice(2);if(!directory||!output)throw Error('Provide private production evidence directory and new aggregate path');
+const read=name=>readFileSync(directory+'/'+name);const parse=name=>JSON.parse(read(name));const hash=name=>createHash('sha256').update(read(name)).digest('hex');
+const plan=parse('trial-plan.json'),browser=parse('browser-executed.json'),curl=parse('curl-executed.json'),query=parse('automated-query.json')[0],budget=parse('query-plan.json');
+assert.equal(browser.length,9);assert.equal(curl.length,3);const executed=[...browser,...curl];assert.equal(new Set(executed.map(t=>t.id)).size,12);
+for(const t of executed){const p=plan.trials.find(p=>p.id===t.id);assert.ok(p);assert.equal(t.actualOperator,p.operator);assert.equal(t.condition,p.condition);if(t.actualOperator==='controlled-curl')assert.equal(t.httpStatus,200);}
+assert.equal(query.success,true);assert.ok(query.meta.rows_read<=budget.readCeiling);assert.equal(query.meta.rows_written,0);assert.equal(query.results.length,4);
+const add=(hist,key,count=1)=>hist[key]=(hist[key]??0)+count;
+const kinds={},reasons={},networks={};const byCondition=[];
+for(const row of query.results){
+ const controller=executed.filter(t=>t.condition===row.condition&&t.actualOperator===row.plannedOperator);assert.equal(controller.length,3);assert.equal(row.trials,3);assert.equal(row.responsesPrepared,3);assert.equal(row.storedObservations,3);assert.equal(row.ownerExcludedObservations,3);
+ assert.equal(row.minCollectionVersion,'2026-10-27.6');assert.equal(row.maxCollectionVersion,'2026-10-27.6');
+ const running=['normal','block-beacon'].includes(row.condition);assert.equal(row.scriptReports,running?3:0);assert.equal(row.beaconAttemptReports,running?3:0);assert.equal(row.queuedReports,running?3:0);assert.equal(row.notQueuedReports,0);assert.equal(row.thrownReports,0);assert.equal(row.beaconReceipts,row.condition==='normal'?3:0);
+ const records=JSON.parse(row.observedKinds).flat();assert.equal(records.length,3);const observedKinds={};
+ for(const r of records){assert.ok(isReaderKind(r.kind));assert.equal(r.ownerExcluded,1);assert.ok(['missing','hosting-listed','archiver-listed','not-listed'].includes(r.network));assert.ok(['navigation-shaped-network-unlisted','generic-bot'].includes(r.reason));add(kinds,r.kind);add(observedKinds,r.kind);add(reasons,r.reason);add(networks,r.network);}
+ const {observedKinds:raw,...counts}=row;byCondition.push({...counts,knownOperator:row.plannedOperator,observedKinds});
+}
+const abstaining=new Set(['browser','legacy-browser','unresolved']);let decided=0,abstained=0;for(const [kind,count]of Object.entries(kinds))if(abstaining.has(kind))abstained+=count;else decided+=count;
+const receipt={checkedAt:new Date().toISOString(),method:'Twelve independently executed known-automation controls through actual production Worker/D1: nine agent-operated browser visits and three actual curl page requests. Planned labels are reconciled with private controller execution evidence.',cutoff:budget.cutoff,byCondition,kinds,reasons,networks,operatorEvaluation:{profile:'evaluation-only-kind-to-operator-v1',storedKnownAutomatedControls:12,automationCandidateDecisions:decided,agreementsOnDecided:decided,disagreementsOnDecided:0,abstentions:abstained,acceptedHumanControls:0,humanFalsePositiveRate:null,humanStatus:'Pending independent operation/attestation; no human evidence is imported into this automated cohort',unsafeBrowserAsHumanWrongLabels:kinds.browser??0},directSelect:{rowsRead:query.meta.rows_read,rowsWritten:query.meta.rows_written,ceiling:budget.readCeiling},privateEvidenceSha256:Object.fromEntries(['trial-plan.json','browser-executed.json','browser-ui.json','curl-executed.json','automated-query.json','automated-production.sql'].map(name=>[name,hash(name)])),limits:['Selected, repeated positive controls do not estimate general accuracy, human false-positive rates or population prevalence','A real production Browser outcome can still be known automation; current metadata does not authenticate an operator','First-party beacon receipt is not Cloudflare Web Analytics ingestion','CSP script blocking is not browser JavaScript-off; no physical-device claim','Native stage counters and actual stored rows are separate. No production write failure was injected','Guard reads, stage/collector writes, receipt queries, migration bookkeeping and cache fills are additional to direct SELECT metering','Temporary activation/cleanup and human acceptance are recorded separately']};
+writeFileSync(output,JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({trials:12,kinds,evaluation:receipt.operatorEvaluation,rowsRead:query.meta.rows_read}));
