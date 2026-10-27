@@ -1,5 +1,6 @@
 import {
   READER_GROUPS,
+  READER_KINDS,
   isReaderKind,
   readerGroupOf,
   type ReaderKind,
@@ -23,6 +24,7 @@ import { partitionPredicate } from './partition.js';
 import { publicReferrers } from './referrals.js';
 import { referralAssessmentCtes, referralRulesJson } from './referral-sql.js';
 import { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
+import { signatureBasisSql, isSignatureBasis } from './signature-basis.js';
 import type { ReferralPolicy } from './referral-policy.js';
 
 export type { StatsResponse, TrafficFilter } from './contracts.js';
@@ -108,6 +110,23 @@ function countryRows(rows: Record<string, unknown>[]): StatsResponse['byCountry'
     const country = stringField(row, 'key1');
     if (country !== null) result.push({ country, views: numberField(row, 'views') });
   }
+  return result;
+}
+
+function kindSignatureRows(rows: Record<string, unknown>[], total: number): StatsResponse['byKindSignature'] {
+  const result: StatsResponse['byKindSignature'] = [];
+  const keys = new Set<string>();
+  for (const row of rows) {
+    const kind = stringField(row, 'key1');
+    const basis = stringField(row, 'key2');
+    if ((kind !== null && !isReaderKind(kind)) || basis === null || !isSignatureBasis(basis)) return malformedReport();
+    const views = row.views;
+    const key = JSON.stringify([kind, basis]);
+    if (typeof views !== 'number' || !Number.isSafeInteger(views) || views <= 0 || keys.has(key)) return malformedReport();
+    keys.add(key);
+    result.push({ kind, basis, views });
+  }
+  if (result.reduce((sum, row) => sum + row.views, 0) !== total) return malformedReport();
   return result;
 }
 
@@ -221,7 +240,7 @@ function payloadRows(row: Record<string, unknown>): Record<string, unknown>[] {
 function reportSections(rows: Record<string, unknown>[], includeBoundary: boolean): Map<string, Record<string, unknown>[]> {
   const expected = new Set([
     'totals', 'path', 'country', 'series', 'referrer', 'device', 'agent', 'kind', 'excluded',
-    'referrer-state', 'transitions', 'referrer-details', 'signer', 'verification', 'vendor-ip',
+    'referrer-state', 'transitions', 'referrer-details', 'signer', 'verification', 'vendor-ip', 'kind-signature',
   ]);
   if (includeBoundary) expected.add('boundary');
   const sections = new Map<string, Record<string, unknown>[]>();
@@ -275,7 +294,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     "('totals', 0)", "('path', 1)", "('country', 2)", "('series', 3)", "('referrer', 4)",
     "('device', 5)", "('agent', 6)", "('kind', 7)", "('excluded', 8)",
     "('referrer-state', 9)", "('transitions', 10)", "('referrer-details', 11)",
-    "('signer', 12)", "('verification', 14)", "('vendor-ip', 15)",
+    "('signer', 12)", "('verification', 14)", "('vendor-ip', 15)", "('kind-signature', 16)",
   ];
   if (includeBoundary) sectionValues.push("('boundary', 13)");
 
@@ -372,6 +391,14 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
             SELECT json_object('key1', ${publicSigner}, 'views', COUNT(*)) AS row_json
             FROM included WHERE signature_status = 'verified' AND signature_agent IS NOT NULL
             GROUP BY ${publicSigner} ORDER BY COUNT(*) DESC, ${publicSigner}
+          )
+        )
+        WHEN 'kind-signature' THEN (
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', evidence_kind, 'key2', basis, 'views', COUNT(*)) AS row_json
+            FROM (SELECT CASE WHEN reader_kind IN (${READER_KINDS.map(kind => `'${kind}'`).join(', ')})
+              THEN reader_kind ELSE NULL END AS evidence_kind, ${signatureBasisSql()} AS basis FROM included)
+            GROUP BY evidence_kind, basis ORDER BY COUNT(*) DESC, evidence_kind, basis
           )
         )
         WHEN 'excluded' THEN (
@@ -534,6 +561,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
       return { signatureAgent, views: numberField(row, 'views') };
     }),
     byKind: kindRows(requiredSection(sections, 'kind')),
+    byKindSignature: kindSignatureRows(requiredSection(sections, 'kind-signature'), numberField(totalsRow, 'views')),
     vendorNetwork: {
       recordedViews: numberField(vendorNetworkRow, 'recordedViews'),
       notRecordedViews: numberField(vendorNetworkRow, 'notRecordedViews'),

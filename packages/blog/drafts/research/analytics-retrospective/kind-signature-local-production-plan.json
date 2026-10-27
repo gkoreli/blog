@@ -1,0 +1,11 @@
+{
+  "query": {
+    "range": "7d",
+    "traffic": "agents",
+    "kind": "signed-agent"
+  },
+  "sqlSha256": "f56d3fcac91421f91a44c4976dd142ca9994b0f76a9c3abf06dde3e9ae689929",
+  "directReadCeiling": 50000,
+  "productionCalls": 0,
+  "limit": "One known signed-client cohort, not a broad all-traffic report. Public fills/browser work are additional."
+}

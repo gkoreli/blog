@@ -2,6 +2,7 @@ import uPlot from 'uplot';
 import 'uplot/dist/uPlot.min.css';
 import { READER_GROUPS, isReaderKind, readerGroupOf, type ReaderKind, type ReportedReferrerState, type StatsResponse, type TrafficFilter } from '@gkoreli/analytics/contracts';
 import { CLIENT_FORM_LABELS } from '@gkoreli/analytics/client-form';
+import { SIGNATURE_BASIS_LABELS } from '@gkoreli/analytics/signature-basis';
 import { HOSTING_NETWORKS } from '@gkoreli/analytics/networks';
 import '../styles/stats.css';
 
@@ -73,8 +74,8 @@ function reasonLabel(kind: ReaderKind, reason: string): string {
     return provider === undefined ? `hosting network AS${asn}` : `${provider} (AS${asn})`;
   }
   if (kind === 'signed-agent') return reason === 'Other'
-    ? 'verified signature; signer not publicly named'
-    : `signing directory: ${reason}`;
+    ? 'stored verified outcome; signer not publicly named'
+    : `stored signing outcome: ${reason}`;
   if (reason.startsWith('signature-') || reason.startsWith('missing-') || reason.startsWith('invalid-')) {
     return `signature not verified: ${reason.replace(/-/g, ' ')}`;
   }
@@ -189,7 +190,7 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
     throw new Error('Updated referral details are unavailable. Please reload.');
   }
   if (data.bySigner === undefined) throw new Error('Updated signer evidence is unavailable. Please reload.');
-  if (data.verification === undefined || data.vendorNetwork === undefined || data.byClientForm === undefined || data.clientFormEvidence === undefined) throw new Error('Updated verification evidence is unavailable. Please reload.');
+  if (data.verification === undefined || data.vendorNetwork === undefined || data.byClientForm === undefined || data.clientFormEvidence === undefined || data.byKindSignature === undefined) throw new Error('Updated verification evidence is unavailable. Please reload.');
   return data;
 }
 
@@ -572,6 +573,32 @@ function renderComposition(data: StatsResponse, state: ViewState): void {
   }
 }
 
+function renderKindSignatures(data: StatsResponse, state: ViewState): void {
+  const container = element('stats-kind-signature-rows');
+  const table = document.createElement('table');
+  const caption = document.createElement('caption');
+  caption.textContent = 'Rows sum to the selected total';
+  const head = document.createElement('thead');
+  const header = document.createElement('tr');
+  for (const text of ['Classification', 'Local signature evidence', 'Events']) {
+    const cell = document.createElement('th'); cell.scope = 'col'; cell.textContent = text; header.appendChild(cell);
+  }
+  head.appendChild(header);
+  const body = document.createElement('tbody');
+  for (const row of data.byKindSignature) {
+    const tr = document.createElement('tr');
+    const kind = document.createElement('th'); kind.scope = 'row';
+    const name = row.kind === null ? 'Kind unrecorded or unrecognized' : KIND_LABELS[row.kind];
+    if (row.kind !== null && state.kind === null && state.agent === null) {
+      const link = document.createElement('a'); link.href = stateHref({ ...state, kind: row.kind, traffic: 'all' }); link.textContent = name; kind.appendChild(link);
+    } else kind.textContent = name;
+    const basis = document.createElement('td'); basis.textContent = SIGNATURE_BASIS_LABELS[row.basis];
+    const count = document.createElement('td'); count.textContent = formatNumber(row.views);
+    tr.append(kind, basis, count); body.appendChild(tr);
+  }
+  table.append(caption, head, body); container.replaceChildren(table);
+}
+
 function renderTransitions(data: StatsResponse, state: ViewState): void {
   element('stats-transitions').hidden = state.path !== null;
   element('stats-previous-pages').hidden = state.path === null;
@@ -653,7 +680,7 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     { label: 'Invalid input or cryptographic mismatch', views: verification.localInvalidViews },
     { label: 'Unsupported format or algorithm', views: verification.localUnsupportedViews },
     { label: 'Directory, key or verifier unavailable', views: verification.localUnavailableViews },
-    { label: 'Rejected by local time or coverage policy', views: verification.localPolicyRejectedViews },
+    { label: 'Rejected by local verifier policy', views: verification.localPolicyRejectedViews },
     { label: 'Signature outside Web Bot Auth', views: verification.localNotApplicableViews },
     { label: 'Indeterminate, mixed or internal error', views: verification.localIndeterminateViews },
     { label: 'Earlier unsuccessful result — detail unrecorded', views: verification.unverifiedOutcomeNotRecordedViews },
@@ -680,6 +707,7 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     { label: 'Vendor check not recorded', views: verification.vendorCheckNotRecordedViews },
   ], null);
   renderComposition(data, state);
+  renderKindSignatures(data, state);
 
   setStatus(`Showing ${formatViewCount(data.totals.views, true)}.${exclusionNotice}`, 'ready');
 }

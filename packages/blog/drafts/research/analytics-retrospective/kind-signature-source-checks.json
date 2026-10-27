@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-27T19:25:53.867404+00:00",
+  "analyticsTests": 144,
+  "siteTests": 106,
+  "workspaceTypecheck": true,
+  "postValidation": true,
+  "isolatedBuiltPosts": 32,
+  "articleWords": 1249,
+  "relativeLinksChecked": 186,
+  "nativeLocalReceipt": "kind-signature-local.json",
+  "preReleaseProductionReceipt": "kind-signature-pre-release.json",
+  "localBrowser": {
+    "checkedAt": "2026-10-27T19:25:12.875Z",
+    "fixtureViews": 9,
+    "scopedKindViews": 4,
+    "historyRestoredViews": 9,
+    "emptyStatus": "No page views to show for this selection.",
+    "mobile": {
+      "viewport": 390,
+      "document": 390,
+      "table": 354,
+      "rows": 9
+    },
+    "viewportReset": true,
+    "limits": [
+      "Stored-record UI fixtures; not operator labels or physical devices",
+      "Production HTML/CSS/JS are used; external scripts removed in the fixture server"
+    ]
+  },
+  "sourceSha256": {
+    "packages/analytics/src/signature-basis.ts": "912783f0be9f513310e49fa0c1922b3605ffa088d6949a1e80e5432d21a66438",
+    "packages/analytics/src/stats.ts": "86b97dafa58ae941fc3bf102dcc30ce1067e59aa850047bd852a406ee5965f54",
+    "packages/analytics/src/contracts.ts": "dc78081382a9accd0ba8ed08ae26e73654ec20f14cd73dfdb9c6a555c4280574",
+    "packages/analytics/test/kind-signature.test.mjs": "39a7eb6c848cd45de5a87d324ebfad39978ffb58c6eb1f62e25bbba26130c9d2",
+    "packages/blog/src/client/stats.ts": "3ffe159153d5a1775d1c680a60596d7cb31c2e7d6dd7ec6947512b60e3430d4f",
+    "packages/blog/src/pages/stats.ts": "a3c8f94eca158c61b071c119654381f1fe37ce67d7eec8265d8b99072dc08a94",
+    "packages/blog/src/styles/stats.css": "1457a324d825a576511e1ea2671b42eb0e8d6b0ab0f22f8a132340d9e0717d69",
+    "packages/blog/src/worker/stats-cache.ts": "f1ebde3923f874c3867c76d78a346aced6843eb0a29e81d3720bd0fc41a5c0d2",
+    "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "3261bcbab2ab4f04bef95173b0ad71b59343adb68f81b2a52713f8c705a9db93",
+    "packages/blog/scripts/check-kind-signature-report.mjs": "d3c809ce7565ad1379c73704c92e8a5473d0ea436a69a4a837cd018fb85be89c"
+  },
+  "sourceFixes": [
+    "Initial report decoder omitted the new required section; whitelist and contract fixtures corrected before release",
+    "Narrow UI review prompted shorter note and existing link-color token; stored-outcome/policy labels corrected",
+    "Generated SQL trailing whitespace trimmed before delivery; exact pre-release execution hash and private raw statement preserved"
+  ],
+  "productionActivationStillPending": true
+}

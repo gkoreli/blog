@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-10-27T19:20:00.101Z",
+  "runtime": "v24.14.1",
+  "baselineCommit": "ad5133a",
+  "method": "Supplied stored-record fixtures in native local D1, not operator-labelled requests or signature verification. Baseline SQL is compiled from the pinned repository source; other runtime dependencies use the current unchanged helper behavior.",
+  "oldMarginalsIdentical": true,
+  "newJointEvidenceDifferent": true,
+  "datasets": [
+    [
+      {
+        "kind": "ai-assistant",
+        "basis": "unsigned",
+        "views": 256
+      },
+      {
+        "kind": "ai-search",
+        "basis": "verified-ua-covered",
+        "views": 256
+      }
+    ],
+    [
+      {
+        "kind": "ai-assistant",
+        "basis": "verified-ua-covered",
+        "views": 256
+      },
+      {
+        "kind": "ai-search",
+        "basis": "unsigned",
+        "views": 256
+      }
+    ]
+  ],
+  "measurements": [
+    {
+      "dataset": "A",
+      "storedFixtureRows": 512,
+      "oldReads": 21132,
+      "currentReads": 22160,
+      "delta": 1028
+    },
+    {
+      "dataset": "B",
+      "storedFixtureRows": 512,
+      "oldReads": 21132,
+      "currentReads": 22160,
+      "delta": 1028
+    }
+  ],
+  "checks": {
+    "commonReportOutputUnchanged": true,
+    "nineClosedBases": true,
+    "totalPartition": true,
+    "missingKindPreserved": true,
+    "ownerAndReferralExclusion": true,
+    "scopedAndEmpty": true,
+    "boundedProductionSql": true
+  },
+  "sourceSha256": {
+    "baselineStats": "a83320ba1c388a291b5bb6c3311bc2643aa551554798e278a339bbb2209271d0",
+    "currentStats": "86b97dafa58ae941fc3bf102dcc30ce1067e59aa850047bd852a406ee5965f54",
+    "signatureBasis": "912783f0be9f513310e49fa0c1922b3605ffa088d6949a1e80e5432d21a66438"
+  },
+  "productionCalls": 0,
+  "networkCalls": 0,
+  "limits": [
+    "Local row-read counters are fixture measurements, not a production cost forecast or account-wide cost.",
+    "No human accuracy, organic vendor/native agreement or authenticated purpose follows from these stored fixtures."
+  ]
+}

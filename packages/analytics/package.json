@@ -9,7 +9,8 @@
     ".": "./src/index.ts",
     "./contracts": "./src/contracts.ts",
     "./networks": "./src/networks.ts",
-    "./client-form": "./src/client-form.ts"
+    "./client-form": "./src/client-form.ts",
+    "./signature-basis": "./src/signature-basis.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",

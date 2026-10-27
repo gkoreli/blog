@@ -97,6 +97,10 @@ A verified key association does not authenticate unsigned UA/path values, human 
 
 See the [protocol audit and retained Exa evidence](../blog/drafts/research/analytics-retrospective/18-webbotauth-verification.md), its [new before/after component experiment](../blog/drafts/research/analytics-retrospective/signature-components-after.json), [outcome/origin-method audit](../blog/drafts/research/analytics-retrospective/20-verification-outcomes-and-vendor-methods.md) and [ADR-0016.11](../../docs/adr/0016.11-signature-verification-evidence.md). Source checks, activation and organic signed-request acceptance are separate claims.
 
+## Classification and signature intersection
+
+`byKindSignature` uses the same included population as totals and partitions it by stored kind and a closed signature basis. [`signature-basis.ts`](src/signature-basis.ts) preserves UA covered/uncovered/unknown, unverified/unsigned, outcome-only history, missing detail, injection and inconsistent/unrecognized records. Missing kind projects to null. The row sum must equal the selected total. No new collection or historical rewrite; no operator, purpose or human claim. [Research and native comparison](../blog/drafts/research/analytics-retrospective/23-classification-and-signature-basis.md) record the added query cost and separate release acceptance. Native/vendor/IP methods remain independent; kind links scope them to the same cohort.
+
 ## Public API
 
 ### Referral-abuse defense

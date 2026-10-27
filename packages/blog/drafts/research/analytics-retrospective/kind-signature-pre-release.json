@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-27T19:22:01.509267+00:00",
+  "query": {
+    "range": "7d",
+    "traffic": "agents",
+    "kind": "signed-agent"
+  },
+  "cutoff": "Exact fixed UTC window and report calculation time are in the prepared SQL",
+  "sqlSha256": "1a7e86a46e6f9caf07d6e6f71cd7eb81e5db1f9827946b736c52ecd847be66ae",
+  "directSelect": {
+    "rowsRead": 42512,
+    "rowsWritten": 0,
+    "ceiling": 50000
+  },
+  "selectedViews": 225,
+  "kindSignatureRows": [
+    {
+      "key1": "signed-agent",
+      "key2": "verified-outcome-only",
+      "views": 225
+    }
+  ],
+  "limit": "Prepared new report SQL against retained production records before source deployment. This accepts SQL and bounded historical findings, not deployed UI or organic new-profile writes. Public fills/browser work are additional.",
+  "publishedSqlSha256": "f56d3fcac91421f91a44c4976dd142ca9994b0f76a9c3abf06dde3e9ae689929",
+  "normalization": "Published SQL differs from the exact executed statement only by removed line-ending whitespace. The original execution hash and raw statement remain preserved privately."
+}

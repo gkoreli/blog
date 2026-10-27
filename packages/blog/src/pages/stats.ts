@@ -95,15 +95,21 @@ export function statsPage() {
     </section>
 
     <section class="stats-section" id="stats-composition">
-      <h2>Who fetched these pages <span>by kind and reason</span></h2>
+      <h2>Request classifications <span>by kind and reason</span></h2>
       ${listSkeleton(3)}
+    </section>
+    <section class="stats-section stats-signature-basis" id="stats-kind-signature">
+      <h2>Signature evidence by classification</h2>
+      <p class="stats-section-note">Each included observation appears once. Classifications describe declared roles or request rules. A signature covering User-Agent protects the declaration; it does not establish the operator, human involvement or purpose. Select a kind to inspect its vendor and network checks.</p>
+      <div id="stats-kind-signature-rows">${listSkeleton(3)}</div>
     </section>
     <section class="stats-section" id="stats-declarations">
       <h2>Selected client declarations <span>single stored name</span></h2>
       ${listSkeleton(2)}
     </section>
     <section class="stats-section" id="stats-signers">
-      <h2>Verified signing outcomes <span>reviewed names</span></h2>
+      <h2>Stored verified signing outcomes <span>reviewed names</span></h2>
+      <p class="stats-section-note">These counts follow stored outcomes, including earlier records without coverage detail. The classification table separates detailed local results, outcome-only history, injected verdicts and unrecognized records. A reviewed display name does not establish a request’s role or purpose.</p>
       ${listSkeleton(2)}
     </section>
     <section class="stats-section" id="stats-verification-outcomes">

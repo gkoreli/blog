@@ -928,6 +928,7 @@ test('stats result decoding rejects malformed, duplicate, missing, and misplaced
     { section: 'signer', payload: '[]' },
     { section: 'verification', payload: '[{}]' },
     { section: 'vendor-ip', payload: '[{}]' },
+    { section: 'kind-signature', payload: '[]' },
     { section: 'kind', payload: '[]' },
     { section: 'excluded', payload: '[{"views":0}]' },
     { section: 'referrer-state', payload: '[]' },

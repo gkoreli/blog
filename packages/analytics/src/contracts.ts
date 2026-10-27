@@ -1,5 +1,6 @@
 import type { PublicSignerName } from './signers.js';
 import type { ReportedClientForm } from './client-form.js';
+import type { SignatureBasis } from './signature-basis.js';
 
 /** Prepared private-evidence policy shared by collector and disclosure. */
 export const DIAGNOSTIC_RETENTION_DAYS = 60;
@@ -160,4 +161,6 @@ export interface StatsResponse {
   verification: VerificationSummary;
   vendorNetwork: VendorNetworkSummary;
   byKind: Array<{ kind: ReaderKind; reason: string; views: number; dailyClients: number }>;
+  /** Disjoint event counts by classification and signature basis; no person/intent claim. */
+  byKindSignature: Array<{ kind: ReaderKind | null; basis: SignatureBasis; views: number }>;
 }
