@@ -1,0 +1,275 @@
+{
+  "checkedAt": "2026-10-27T17:09:42.468501+00:00",
+  "sourceCommit": "6124fab52d8013a619a1ed4a1239e3255dce4d7a",
+  "integration": {
+    "initialLocalCommit": "ad2001015dec6c62d1a959d33053a992c35b59f2",
+    "initialPush": "non-fast-forward, not deployed",
+    "preservedConcurrentHead": "4338815",
+    "integration": "Clean rebase of one analytics commit; combined 32-post build passed before push."
+  },
+  "build": {
+    "id": "e31c928d-55c5-46f5-a75b-a54f38d3fb87",
+    "observedSource": "6124fab",
+    "remoteNode": "24.22.1",
+    "localNode": "24.14.1",
+    "limit": "Native UI source/build association, activation metadata and served outputs; no binary attestation/runtime-parity claim."
+  },
+  "deployment": {
+    "createdAt": "2026-10-27T17:01:54.494238Z",
+    "versionId": "ae7bac65-8bc4-4f87-86ca-2cd801dc1958",
+    "percentage": 100
+  },
+  "migration": "0014 applied before source push, vendor-ip-pre-release.json",
+  "controls": {
+    "startedAt": "2026-10-27T17:04:18.507805+00:00",
+    "finishedAt": "2026-10-27T17:04:25.304078+00:00",
+    "queryStart": "2026-10-27 17:04:16",
+    "queryEndExclusive": "2026-10-27 17:04:28",
+    "trials": [
+      {
+        "label": "ahrefs-nonmember",
+        "httpStatus": "200"
+      },
+      {
+        "label": "ads-nonmember",
+        "httpStatus": "200"
+      },
+      {
+        "label": "supplied-worker-marker",
+        "httpStatus": "200"
+      },
+      {
+        "label": "unmapped-exa-ip",
+        "httpStatus": "200"
+      }
+    ],
+    "policyHash": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+    "privacyDisclosurePresent": true,
+    "results": [
+      {
+        "collectionVersion": "2026-10-27.4",
+        "classifierVersion": "2026-10-27.4",
+        "declaration": "AhrefsBot",
+        "readerKind": "seo-crawler",
+        "profile": "2026-10-27.1",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": [
+          {
+            "source": "ahrefs-crawlers",
+            "outcome": "not-listed",
+            "reason": null,
+            "snapshot": {
+              "sha256": "4246eee9407d58fb030ee9f12776f974f628db4b4f91f8111847dd565fc63d45",
+              "fetchedAt": "2026-10-27T17:04:18.849Z",
+              "validatedAt": "2026-10-27T17:04:18.849Z",
+              "freshUntil": "2026-10-27T17:09:18.000Z",
+              "publisherVersion": null,
+              "prefixCount": 81
+            }
+          }
+        ],
+        "evidenceBytes": 686,
+        "optionalCaptureAbsent": 1
+      },
+      {
+        "collectionVersion": "2026-10-27.4",
+        "classifierVersion": "2026-10-27.4",
+        "declaration": "OAI-AdsBot",
+        "readerKind": "other-bot",
+        "profile": "2026-10-27.1",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": [
+          {
+            "source": "openai-ads",
+            "outcome": "not-listed",
+            "reason": null,
+            "snapshot": {
+              "sha256": "460b800ffb026c5ec1b9540d285f2ade8e1c4a654e65dae315e2bae650b5d74d",
+              "fetchedAt": "2026-10-27T17:04:19.234Z",
+              "validatedAt": "2026-10-27T17:04:19.234Z",
+              "freshUntil": "2026-10-27T17:04:19.234Z",
+              "publisherVersion": "2026-05-12T03:00:00.000000",
+              "prefixCount": 2
+            }
+          }
+        ],
+        "evidenceBytes": 704,
+        "optionalCaptureAbsent": 1
+      },
+      {
+        "collectionVersion": "2026-10-27.4",
+        "classifierVersion": "2026-10-27.4",
+        "declaration": "AhrefsSiteAudit",
+        "readerKind": "seo-crawler",
+        "profile": "2026-10-27.1",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": [
+          {
+            "source": "ahrefs-crawlers",
+            "outcome": "not-listed",
+            "reason": null,
+            "snapshot": {
+              "sha256": "4246eee9407d58fb030ee9f12776f974f628db4b4f91f8111847dd565fc63d45",
+              "fetchedAt": "2026-10-27T17:04:23.300Z",
+              "validatedAt": "2026-10-27T17:04:23.300Z",
+              "freshUntil": "2026-10-27T17:09:23.000Z",
+              "publisherVersion": null,
+              "prefixCount": 81
+            }
+          }
+        ],
+        "evidenceBytes": 686,
+        "optionalCaptureAbsent": 1
+      },
+      {
+        "collectionVersion": "2026-10-27.4",
+        "classifierVersion": "2026-10-27.4",
+        "declaration": "ExaUser",
+        "readerKind": "ai-assistant",
+        "profile": "2026-10-27.1",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": [],
+        "evidenceBytes": 372,
+        "optionalCaptureAbsent": 1
+      }
+    ],
+    "selectRowsRead": 8,
+    "selectRowsWritten": 0,
+    "selectReadCeiling": 50,
+    "scope": "Four synthetic excluded declarations, actual caller addresses processed only in memory; not vendor/operator or human labels.",
+    "markerLimit": "Supplied CF-Worker marker was not visible to the collector; its row remained usable/nonlisted. Responsible hop and genuine Worker-subrequest behavior are not established."
+  },
+  "publicReport": {
+    "query": {
+      "range": "7d",
+      "traffic": "agents",
+      "kind": "signed-agent"
+    },
+    "totals": {
+      "views": 225,
+      "dailyClients": 147,
+      "unattributedViews": 225
+    },
+    "vendorNetwork": {
+      "recordedViews": 0,
+      "notRecordedViews": 225,
+      "configuredDeclarationViews": 0,
+      "unmappedDeclarationViews": 0,
+      "noDeclarationViews": 0,
+      "listedViews": 0,
+      "notListedViews": 0,
+      "unavailableViews": 0,
+      "notAssessedViews": 0,
+      "addressUnavailableViews": 0
+    },
+    "exclusion": {
+      "query": {
+        "range": "7d",
+        "traffic": "automation",
+        "agent": "OAI-AdsBot",
+        "path": "/privacy"
+      },
+      "views": 0,
+      "excludedViews": 1,
+      "vendorNetwork": {
+        "recordedViews": 0,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    "cacheCaptures": [
+      {
+        "capture": "preflight",
+        "cache": "miss",
+        "colo": "dfw",
+        "updatedAt": "2026-10-27T17:03:40.983Z"
+      },
+      {
+        "capture": "public-exclusion",
+        "cache": "miss",
+        "colo": "dub",
+        "updatedAt": "2026-10-27T17:05:56.661Z"
+      },
+      {
+        "capture": "cache-hit",
+        "cache": "miss",
+        "colo": "dub",
+        "updatedAt": "2026-10-27T17:05:57.507Z"
+      },
+      {
+        "capture": "cache-pair-a",
+        "cache": "miss",
+        "colo": "bos",
+        "updatedAt": "2026-10-27T17:06:38.936Z"
+      },
+      {
+        "capture": "cache-pair-b",
+        "cache": "hit",
+        "colo": "bos",
+        "updatedAt": "2026-10-27T17:06:38.936Z"
+      }
+    ],
+    "cacheAcceptance": "Narrow AdsBot /privacy same-connection MISS then HIT, identical bytes and calculation time. Earlier broad-repeat attempt crossed DFW to DUB and correctly missed separate per-colo caches.",
+    "costScope": "Four CLI-observed MISS responses plus one HIT; public cold fills and browser/other data-center work are additional to the direct control SELECT."
+  },
+  "article": {
+    "matchesIsolatedMarkdown": true,
+    "markdownSha256": "e06183038484fec56a1e95ec6cdec71b92703365ebd781883326f0134a1c7f49",
+    "wordsWithLinksRemoved": 1250,
+    "promptSourceMessages": 30
+  },
+  "browser": {
+    "url": "https://gkoreli.com/stats?range=7d&traffic=agents&kind=signed-agent",
+    "newSectionRendered": true,
+    "historicalMethodNotRecordedViews": 225,
+    "capturedErrorsOrWarnings": 0,
+    "screenshot": "analytics-published-ip-methods.png"
+  },
+  "directAnalyticsSelectWork": {
+    "statements": 1,
+    "rowsRead": 8,
+    "rowsWritten": 0,
+    "limits": "No broad direct analytics SELECT repeated. Migration bookkeeping, public fills, four control observation writes and unrelated account activity are additional."
+  },
+  "limits": [
+    "Three real production nonmatches, no production listed-vendor authenticity or accuracy claim.",
+    "Exa remains unmapped by IP method and retains its separate signature method.",
+    "Real Worker relay abstention, organic signed coverage, default-desktop repair and independent human/device/network calibration remain open.",
+    "No raw diagnostic activation, reader address retention or historical rewrite."
+  ]
+}

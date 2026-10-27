@@ -24,5 +24,8 @@
     "No broad production analytics SELECT repeated."
   ],
   "canonicalNames": 48,
-  "productAliases": 51
+  "productAliases": 51,
+  "integratedConcurrentHead": "4338815",
+  "integratedBuildPosts": 32,
+  "integratedBuildNote": "Four non-overlapping Bun article updates preserved through clean rebase; full combined checkout rebuilt before successful push."
 }
