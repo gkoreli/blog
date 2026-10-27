@@ -20,7 +20,9 @@
     "integratedBuildPosts": 32,
     "articleWords": 1248,
     "promptSourceCount": 30,
-    "privacyDisclosurePresent": true
+    "privacyDisclosurePresent": true,
+    "livePostIndexCount": 32,
+    "livePromptCount": 30
   },
   "controls": {
     "startedAt": "2026-10-27T15:45:46.055988+00:00",
@@ -134,14 +136,33 @@
     "additionalWork": "Public/browser report fills, migration/list bookkeeping, three synthetic observation writes and other account activity are additional. Preactivation invalid-filter response had no metering receipt."
   },
   "uiFollowup": {
-    "status": "Source fix prepared; production acceptance pending",
-    "issue": "Empty reports hid the selected page/agent/kind scope and report calculation time.",
-    "repair": "Keep scope and calculation metadata outside the hidden data panels; update scope during loading and hide stale period metadata until response."
+    "status": "accepted",
+    "sourceCommit": "ff0d66367dcc9f25d5a5550c8a17dc3217044623",
+    "buildId": "d139783f-1351-4c0e-a8a8-2c2e90b876ce",
+    "deployment": {
+      "createdAt": "2026-10-27T15:56:32.959963Z",
+      "versionId": "a0470c9e-0de8-4d6b-8fc7-5481605444fd",
+      "percentage": 100
+    },
+    "browser": {
+      "period": "2026-10-21 through 2026-10-27 UTC \u00b7 Hourly buckets \u00b7 current UTC hour is partial \u00b7 Updated Oct 27, 2026, 3:48 PM UTC",
+      "periodHidden": false,
+      "scope": "Page /privacy Clear",
+      "scopeHidden": false,
+      "status": "No page views to show for this selection. 2 observations excluded by the referral-abuse policy for this selection.",
+      "url": "https://gkoreli.com/stats?range=7d&traffic=unresolved&path=%2Fprivacy"
+    },
+    "clearFilterAndHistoryBack": "pass: no stale page scope, period hidden while loading and displayed on success",
+    "siteTests": 106,
+    "workspaceTypes": "pass",
+    "integratedBuildPosts": 32,
+    "scope": "Empty-result scope/time disclosures; no analytics data model, collection policy or classifier change from this UI repair."
   },
   "limits": [
     "Unsigned synthetic controls, not authenticated vendor traffic, humans or an accuracy-rate experiment.",
     "Native local crypto ran in Node with native D1; no production signed-crypto interoperability established here.",
     "The offline R1 result is separate from production history; operator/purpose and original population reconciliation remain unknown.",
     "No raw diagnostics activation, historical rewrite, device authentication or complete privacy/compliance claim."
-  ]
+  ],
+  "finalAcceptanceAt": "2026-10-27T16:03:22.356508+00:00"
 }
