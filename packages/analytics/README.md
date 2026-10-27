@@ -71,6 +71,10 @@ Method changes are dated boundaries, never deletions.
 
 Migration 0015 adds bounded `client_form_evidence`; old rows stay null and the old three-value column is a deprecated compatibility heuristic. Public API `byClientForm` replaces `byDevice`, with `{form, views}` rows. Current, historical-heuristic and unrecognized record counts partition the selected total. Other evidence subsets overlap. Dashboard labels apply to all traffic filters. See [the decision](../../docs/adr/0016.15-client-form-claims.md) and [dated replay/calibration evidence](../blog/drafts/research/analytics-retrospective/22-client-form-and-calibration.md); source, migration and deployment acceptance remain separate.
 
+## Controlled production-stage trials
+
+`calibration.ts` is off by default. An expiring allowlist plus a verified current-day owner mark gates every trial/asset/stage/receipt. The actual collector persists the verified owner exclusion; labels remain planned until independent execution evidence exists. Counter storage is separate from ordinary observations, bounded, expiring and disclosed. The ready screen creates no visit and the receipt works without JavaScript. A missing row is not a failed-write verdict. No raw diagnostic mode, extra device probe or Cloudflare-beacon claim is introduced. See [ADR-0016.16](../../docs/adr/0016.16-controlled-production-stages.md) and [production-stage protocol](../blog/drafts/research/edge-vs-rum/08-production-stage-protocol.md) for local, activation and actual-client acceptance boundaries.
+
 ## Web Bot Auth
 
 The dedicated module is [`src/webbotauth.ts`](src/webbotauth.ts), called before classification from [`src/index.ts`](src/index.ts). It verifies an Ed25519/directory-discovery subset of [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html); Web Bot Auth remains a separate [evolving protocol draft](https://datatracker.ietf.org/doc/html/draft-ietf-webbotauth-httpsig-protocol-00). Neither full conformance nor native-provider equivalence is claimed.

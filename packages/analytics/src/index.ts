@@ -23,6 +23,7 @@ export { purgeExpiredDiagnostics, DIAGNOSTIC_RETENTION_DAYS } from './diagnostic
 export { handleOwner } from './owner.js';
 export { handleStats, parseStatsQuery } from './stats.js';
 export { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
+export { handleCalibration, purgeExpiredCalibration } from './calibration.js';
 
 function sqliteTimestamp(date: Date): string {
   return date.toISOString().replace('T', ' ').slice(0, 19);
@@ -126,7 +127,7 @@ async function persistObservation(
     trafficClass: classification.trafficClass,
     agentName: classification.agentName,
     deviceType: clientForm.legacyCompatibility.value,
-    isOwner: metadata.isOwner,
+    isOwner: metadata.isOwner || options.verifiedOwnerExclusion === true,
     asn: metadata.asn,
     asOrg: metadata.asOrg,
     secFetchMode: metadata.secFetchMode,
@@ -159,6 +160,8 @@ async function persistObservation(
 }
 
 export interface ObservationOptions {
+  /** Internal calibration route only, after the same request's owner mark is verified. */
+  verifiedOwnerExclusion?: boolean;
   publicPagePaths?: () => Promise<ReadonlySet<string>>;
   /** Dependency injection for controlled acceptance; production uses the native verifier. */
   verifySignature?: (request: Request) => Promise<WebBotAuthResult>;

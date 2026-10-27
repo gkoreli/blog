@@ -42,6 +42,7 @@ export function privacyPage() {
 
   <h2>Cloudflare Web Analytics</h2>
 
+  <p>Explicitly activated owner-excluded measurement trials can retain closed stage counters, a random trial reference, planned condition/operator labels and an expiration time. These references join to routine excluded observations and are not anonymous. Activation lasts at most fifteen minutes and receipt access requires the current-day owner mark. Counters become deletion-eligible 24 hours after activation ends; the nightly job performs bounded cleanup, so eligibility is not a maximum physical retention guarantee. The routine excluded observations retain the lifecycle described above. Planned labels do not establish actual human operation. These trials request no additional device probes and do not enable the optional raw diagnostic layer.</p>
   <p>Cloudflare Web Analytics is separate from the first-party dataset above. Its JavaScript beacon supplies Cloudflare's performance dashboard and does not feed this site's public <a href="/stats">stats</a>. Cloudflare may process request and browser data for that service; see <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's Privacy Policy</a>.</p>
 
   <h2>Newsletter</h2>

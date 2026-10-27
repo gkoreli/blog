@@ -1,5 +1,7 @@
 import {
   handleOwner,
+  handleCalibration,
+  purgeExpiredCalibration,
   handleStats,
   observePageResponse,
   purgeExpiredDiagnostics,
@@ -202,6 +204,13 @@ export default {
     if (pathname === '/api/owner') {
       return handleOwner(request, env);
     }
+    if (pathname.startsWith('/analytics-check/') || pathname.startsWith('/api/analytics-calibration/')) {
+      const calibration = await handleCalibration(request, env);
+      if (calibration) {
+        if (calibration.collect) observePageResponse(request, calibration.response, 'html', env, ctx, { verifiedOwnerExclusion: true });
+        return calibration.response;
+      }
+    }
     if (pathname === '/api/client-error' && method === 'POST') {
       return handleClientError(request, env, ctx);
     }
@@ -259,6 +268,9 @@ export default {
         console.log('analytics.diagnostic_cleanup', result);
         if (result.atLimit) console.warn('analytics.diagnostic_cleanup_limit_reached');
       }).catch(() => console.warn('analytics.diagnostic_cleanup_failed')),
+      purgeExpiredCalibration(env.DB).then(deleted => {
+        console.log('analytics.calibration_cleanup', { deleted });
+      }).catch(() => console.warn('analytics.calibration_cleanup_failed')),
       purgeOldClientErrors(env.DB).then(count =>
         console.log(`[client:error:cron] Purged ${count} old client errors.`),
       ).catch(err =>

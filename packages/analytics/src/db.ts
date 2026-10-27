@@ -15,6 +15,8 @@ export interface Env {
   OWNER_MARK_GRANT?: string;
   OWNER_IPS?: string;
   ANALYTICS_DIAGNOSTICS?: string;
+  /** Expiring allowlist for explicitly controlled, owner-excluded stage trials. */
+  ANALYTICS_CALIBRATION?: string;
 }
 
 export interface PageObservation {

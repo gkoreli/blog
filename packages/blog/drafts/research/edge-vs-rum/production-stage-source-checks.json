@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-27T18:16:25.320518+00:00",
+  "checks": {
+    "analyticsTests": 133,
+    "blogTests": 106,
+    "workspaceTypes": true,
+    "nativeBundledWorkerFixtures": 4,
+    "nativeD1AndCrypto": true,
+    "isolatedBuiltPosts": 32,
+    "relativeLinks": 266,
+    "diffWhitespace": true,
+    "readyPageCreatesNoObservationOrCounters": true
+  },
+  "sourceSha256": {
+    "packages/analytics/src/calibration.ts": "cff62c8b66b518c1396cfc158dba1b72a842fda9d1225e31459f853eb10ec63d",
+    "packages/analytics/src/index.ts": "f406d4238fb5515e45018701e3ea88d98baa236402832a7471b2953158f9a4eb",
+    "packages/analytics/src/versions.ts": "d0b47e486b5c19ddeea335c124f04ba918db3a3663a07a21776b0f11c3af8262",
+    "packages/analytics/migrations/0016_calibration_trials.sql": "0d713ff9e9d1dc0c6560fe8fd5efa36b7445b2acefe22f490e761a0071e2b845",
+    "packages/blog/src/worker/index.ts": "6a9e857a3af116829b13ad2dfd7c3fe8d082caea29626db9f014271a2c748f50",
+    "packages/blog/src/pages/privacy.ts": "1bb904df2d49882ef4959538e1c6931870e44fc6969c3211ccae8c8c5f13d1d6"
+  },
+  "limits": [
+    "Native fixtures supply stage reports; browser CSP enforcement and production acceptance are separate",
+    "Planned labels do not authenticate human execution",
+    "Isolated build passed with a sandboxed mise config-tracking warning; shared dist untouched"
+  ],
+  "productionStageTrials": 0
+}
