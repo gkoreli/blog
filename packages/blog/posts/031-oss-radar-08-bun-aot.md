@@ -1,8 +1,9 @@
 ---
-title: "Don't rewrite TypeScript in Rust yet. Try Bun AOT."
+title: "OSS Radar #08: Bun AOT — Don't Rewrite TypeScript in Rust Yet"
 seoTitle: "Bun AOT: Before You Rewrite TypeScript in Rust"
 alternativeHeadline: "Bun AOT cuts memory and run time on an existing TypeScript compiler, with limits for servers and dependencies"
 date: "2026-10-27"
+lastModified: "2026-10-27"
 description: "Bun AOT made the TypeScript compiler 3.3× faster with 64% less peak physical memory in my test. Here is where that promise holds—and breaks."
 section: oss-radar
 tags: [oss-radar, bun, typescript, rust, performance]
@@ -21,7 +22,7 @@ researchFootprint:
   scope: "One linked session through the frozen research cutoff, including experiments, writing and publication preparation. Tokens count cumulative usage epochs, including cached input; elapsed time is not human hands-on time. Six committed Markdown research artifacts, plus reproduction sources and numeric results. Prompts are omitted at the author's request. Private logs stay private; the linked manifest records accounting and prefix commitments. Later deployment checks are outside this cutoff."
 ---
 
-# Don't rewrite TypeScript in Rust yet. Try Bun AOT.
+# Bun AOT: Don't Rewrite TypeScript in Rust Yet
 
 The TypeScript compiler I tested finished **3.3× faster with 64% less peak physical memory**, without rewriting its source. Before moving a TypeScript application to Rust for efficiency, I would try Bun's ahead-of-time compiler.
 

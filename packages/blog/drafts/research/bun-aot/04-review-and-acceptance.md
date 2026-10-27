@@ -41,3 +41,11 @@ Live acceptance by **15:41:11 UTC**: [the public article](https://gkoreli.com/os
 A newer concurrent analytics commit was integrated before this receipt. Its changes were not part of the article experiment or its frozen research footprint. This receipt changes research status only; it does not change the accepted article or rerun those experiments.
 
 Remaining limits: preview compiler, one macOS arm64 developer laptop, microbenchmarks and seconds of server observation. No local Rust, OpenClaw migration, multi-day soak, broad npm-compatibility or server-capacity claim. No required publication work remains; proposed future experiments stay separate from these accepted results.
+
+## Title consistency correction — October 27
+
+Goga flagged that the published title omitted the established series format. Issues #05–#07 use `OSS Radar #NN:` in their metadata titles, a subject-first heading without that prefix, and a separate concise search title. Issue #08 now follows that pattern: metadata title **OSS Radar #08: Bun AOT — Don't Rewrite TypeScript in Rust Yet**; H1 **Bun AOT: Don't Rewrite TypeScript in Rust Yet**. The existing search title already follows the series' separate search-title convention. The article's claims, measurements and frozen research manifest are unchanged.
+
+Local acceptance: content validation and the isolated production build passed. Generated HTML has one matching H1; Open Graph metadata, the OSS Radar listing and RSS contain the corrected series title. No prompt page was generated. `git diff --check` passed. A full typecheck or benchmark rerun is unnecessary for this title-only correction.
+
+Next bounded action: push the scoped correction and verify the live title. The prior publication receipt above records the earlier title and is historical evidence.
