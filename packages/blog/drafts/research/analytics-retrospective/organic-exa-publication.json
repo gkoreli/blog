@@ -1,0 +1,51 @@
+{
+  "acceptedAt": "2026-10-27T20:38:44.895736+00:00",
+  "sourceCommit": "15ae70b540e8dc7d4fffcd4b6396b6859c5ead39",
+  "build": {
+    "id": "0d75bf18-1245-4e4a-8cd6-1b78fba7b949",
+    "nativeStatus": "Ready",
+    "durationSeconds": 46
+  },
+  "activation": {
+    "createdOn": "2026-10-27T20:37:18.306451Z",
+    "versions": [
+      {
+        "version_id": "7d8d6674-b2e6-4cc9-a5ff-5a69c01b1d59",
+        "percentage": 100
+      }
+    ]
+  },
+  "optionalBindings": {
+    "OWNER_MARK_GRANT": false,
+    "ANALYTICS_CALIBRATION": false,
+    "ANALYTICS_DIAGNOSTICS": false
+  },
+  "article": {
+    "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove",
+    "servedMarkdownMatchesIsolatedBuild": true,
+    "sha256": "9e6de67b250aef5fe6cbe20338cd1798321f674ddeac2c911f53b4d58278117b",
+    "words": 1246,
+    "shapingPrompts": 31,
+    "renderedBoundedCohortParagraphAccepted": true,
+    "renderedEvidenceLinkAccepted": true,
+    "screenshot": "analytics-organic-exa-article.png"
+  },
+  "directSelectMetering": {
+    "rowsRead": 8,
+    "rowsWritten": 0,
+    "changes": 0,
+    "changedDb": false
+  },
+  "humanTrialsDeferred": true,
+  "runtimePolicyChanged": false,
+  "exactInvocationToD1Joins": 0,
+  "limits": [
+    "Acceptance concerns the article and research/tool publication. Organic records inspected earlier used collection .6, not the newly retained native-category collector .7.",
+    "Native verification booleans remain unavailable. No human rate, unique-delivery or complete-log claim.",
+    "One successful direct SELECT is metered; prior CLI-parser rejection returned no metering. Native query fixture acceptance followed that SELECT.",
+    "Public directory retrieval, dashboard/export, article fetch/browser inspection, original observation writes and other service work are additional.",
+    "No fresh remote build-runtime parity inspection. The later receipt-only source commit is not this activation."
+  ],
+  "privateArchive": "~/.local/share/gkoreli/analytics-evidence/2026-10-27-organic-exa/",
+  "privateCopyReviewAt": "2026-10-31T00:00:00Z"
+}
