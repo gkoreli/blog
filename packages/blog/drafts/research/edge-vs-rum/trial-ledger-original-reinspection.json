@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-27T19:41:49.075693+00:00",
+  "method": "Reinspection of original saved Wrangler grouped observation arrays; no new query or page request",
+  "conditions": [
+    {
+      "condition": "block-beacon",
+      "perSelectedTrialObservationCounts": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "condition": "block-script",
+      "perSelectedTrialObservationCounts": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "condition": "http-client",
+      "perSelectedTrialObservationCounts": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "condition": "normal",
+      "perSelectedTrialObservationCounts": [
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "eachSelectedTrialHasOneObservation": true,
+  "limit": "Original grouped observation arrays have no per-trial IDs or per-trial stage counters. This supports the original stored-count result while identifying the missing harness assertion.",
+  "productionCalls": 0
+}

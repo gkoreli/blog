@@ -1,5 +1,7 @@
 # Controlled production-stage protocol — October 27, 2026 UTC
 
+**Per-trial acceptance follow-up:** [Research 09](09-trial-ledger-and-selective-evaluation.md) strengthens the aggregate harness without changing the original twelve-control result. It preserves missing requested trials, distinguishes integrity failures from classifier abstentions, and records the separately metered 166-read reinspection with later counter-capture time. The original receipts below remain frozen.
+
 Continues [matched local calibration](07-matched-classifier-calibration.md), [TASK-0120](../../../../../docs/tasks/TASK-0120.md), [TASK-0119](../../../../../docs/tasks/TASK-0119.md) and [ADR-0016.16](../../../../../docs/adr/0016.16-controlled-production-stages.md). The objective is to observe stages through the real Worker and preserve disagreements, errors and missing evidence. This document separates prepared capability from executed production controls.
 
 ## Why the local results are insufficient

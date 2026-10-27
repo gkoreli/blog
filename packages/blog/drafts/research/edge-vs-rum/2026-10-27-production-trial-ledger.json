@@ -1,0 +1,188 @@
+{
+  "checkedAt": "2026-10-27T19:52:54.587Z",
+  "method": "Per-trial reinspection of the original twelve production controls, joined to saved independently operated controller/curl manifests. No new page visits or human labels. The adapter accepts only the original nine agent-controller and three curl-receipt executions.",
+  "observationWindow": {
+    "start": "2026-10-27 18:19:52",
+    "endExclusive": "2026-10-27 18:28:40"
+  },
+  "counterCaptureCompletedAt": "2026-10-27T19:43:03.319307+00:00",
+  "evaluation": {
+    "profile": "evaluation-only-kind-to-operator-v2",
+    "accounting": {
+      "planned": 18,
+      "executed": 12,
+      "noAcceptedExecution": 6,
+      "completeExecuted": 12,
+      "incompleteExecuted": 0,
+      "executedCohortComplete": true,
+      "completeUnlabeled": 0,
+      "labeledEvaluable": 12,
+      "humanLabels": 0,
+      "automationLabels": 12
+    },
+    "issueCounts": {
+      "measurement-missing": 0,
+      "trial-record-missing": 0,
+      "plan-mismatch": 0,
+      "response-count": 0,
+      "observation-missing": 0,
+      "observation-duplicate": 0,
+      "owner-exclusion": 0,
+      "kind-unrecognized": 0
+    },
+    "confusion": {
+      "automation": {
+        "automation": 3,
+        "human": 0,
+        "abstain": 9
+      },
+      "human": {
+        "automation": 0,
+        "human": 0,
+        "abstain": 0
+      }
+    },
+    "decisions": {
+      "committed": 3,
+      "correct": 3,
+      "wrong": 0,
+      "abstained": 9
+    },
+    "rates": {
+      "decisionCoverage": 0.25,
+      "abstentionRate": 0.75,
+      "errorAmongDecisions": 0,
+      "automationFalsePositiveRateAmongDecidedHumans": null,
+      "humanAbstentionRate": null,
+      "automationAbstentionRate": 0.75
+    }
+  },
+  "counterfactualBrowserAsHuman": {
+    "profile": "counterfactual-browser-as-human-v1",
+    "accounting": {
+      "planned": 18,
+      "executed": 12,
+      "noAcceptedExecution": 6,
+      "completeExecuted": 12,
+      "incompleteExecuted": 0,
+      "executedCohortComplete": true,
+      "completeUnlabeled": 0,
+      "labeledEvaluable": 12,
+      "humanLabels": 0,
+      "automationLabels": 12
+    },
+    "issueCounts": {
+      "measurement-missing": 0,
+      "trial-record-missing": 0,
+      "plan-mismatch": 0,
+      "response-count": 0,
+      "observation-missing": 0,
+      "observation-duplicate": 0,
+      "owner-exclusion": 0,
+      "kind-unrecognized": 0
+    },
+    "confusion": {
+      "automation": {
+        "automation": 3,
+        "human": 9,
+        "abstain": 0
+      },
+      "human": {
+        "automation": 0,
+        "human": 0,
+        "abstain": 0
+      }
+    },
+    "decisions": {
+      "committed": 12,
+      "correct": 3,
+      "wrong": 9,
+      "abstained": 0
+    },
+    "rates": {
+      "decisionCoverage": 1,
+      "abstentionRate": 0,
+      "errorAmongDecisions": 0.75,
+      "automationFalsePositiveRateAmongDecidedHumans": null,
+      "humanAbstentionRate": null,
+      "automationAbstentionRate": 0
+    }
+  },
+  "byCondition": [
+    {
+      "condition": "normal",
+      "executedTrials": 3,
+      "responsesPrepared": 3,
+      "storedObservations": 3,
+      "ownerExcludedObservations": 3,
+      "scriptReports": 3,
+      "beaconAttemptReports": 3,
+      "queuedReports": 3,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 3
+    },
+    {
+      "condition": "block-script",
+      "executedTrials": 3,
+      "responsesPrepared": 3,
+      "storedObservations": 3,
+      "ownerExcludedObservations": 3,
+      "scriptReports": 0,
+      "beaconAttemptReports": 0,
+      "queuedReports": 0,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 0
+    },
+    {
+      "condition": "block-beacon",
+      "executedTrials": 3,
+      "responsesPrepared": 3,
+      "storedObservations": 3,
+      "ownerExcludedObservations": 3,
+      "scriptReports": 3,
+      "beaconAttemptReports": 3,
+      "queuedReports": 3,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 0
+    },
+    {
+      "condition": "http-client",
+      "executedTrials": 3,
+      "responsesPrepared": 3,
+      "storedObservations": 3,
+      "ownerExcludedObservations": 3,
+      "scriptReports": 0,
+      "beaconAttemptReports": 0,
+      "queuedReports": 0,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 0
+    }
+  ],
+  "directSelect": {
+    "rowsRead": 166,
+    "rowsWritten": 0,
+    "ceiling": 500
+  },
+  "privateEvidenceSha256": {
+    "trial-plan.json": "d7411ca5d5f390a1175e337ffbef880ed5a6baec2beb3a7c886f310e9a84234b",
+    "browser-executed.json": "431e6c394b8efed266bff88899ce0f759bc0ecdb8b21c9825a6165fc9ce97292",
+    "curl-executed.json": "0d8e785a874d7fd50db20886e64d0dac22d572b3c3fd03f60ed05593e53a4c7f",
+    "trial-ledger-plan.json": "dffafacabd92fcd0ddcff03261a51ad939784574ce753343c5fbac7a135efffe",
+    "trial-ledger-production.sql": "4bff097e4cf5e7efe0e673b02857b53667d6460fb487ecc6fbc7ad3b5b619768",
+    "trial-ledger-query.json": "10a885dc8d341d1f24c2b823e9427c5366bc4a94c959d032e45465ff434ffa40",
+    "trial-ledger-query-metadata.json": "08671126914ca523e0b18d8198a403b8fda4b39bf4bd34750ca02e8454021d39"
+  },
+  "limits": [
+    "Repeated selected positive controls from two profiles are not a population accuracy estimate or independent sample of readers",
+    "No accepted human labels: human false-positive rates remain null; six planned human trials have no accepted execution in these inputs, not proven absence of requests",
+    "The operator mapping is evaluation-only; Browser/legacy/Unresolved abstain, other kinds are automation candidates",
+    "The counterfactual Browser-as-human policy is not deployed; its wrong decisions diagnose an unsafe interpretation",
+    "Missing/duplicate observations and counter failures are integrity failures, not classifier abstentions or proven database write failures",
+    "Observation timestamps use the original fixed window; counters are reinspected later before expiry cleanup, not reconstructed at the original cutoff",
+    "Native Cloudflare beacon receipt, real devices and actual JavaScript-off remain unaccepted; no temporary activation or new diagnostic mode is used"
+  ]
+}

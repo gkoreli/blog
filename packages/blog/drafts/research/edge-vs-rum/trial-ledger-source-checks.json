@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-27T19:55:14.107335+00:00",
+  "sourceBaseCommit": "ce1de33",
+  "analyticsTests": 149,
+  "siteTests": 106,
+  "workspaceTypecheck": true,
+  "postValidation": true,
+  "isolatedBuiltPosts": 32,
+  "articleWords": 1250,
+  "promptCount": 30,
+  "relativeLinksChecked": 273,
+  "nativeLocalReceipt": "trial-ledger-local.json",
+  "productionReinspectionReceipt": "2026-10-27-production-trial-ledger.json",
+  "productionSelectCapturedEarlier": true,
+  "newProductionCallsDuringFinalization": 0,
+  "sourceSha256": {
+    "packages/analytics/src/calibration-evaluation.ts": "14cb49966cb6c500f130a9e867b230c439d0177f61a073217b5bc49c9f704fa4",
+    "packages/analytics/src/calibration.ts": "8428e3d24adcfed7cdd63e5d477d415b92704704ccdee714b781bb53d3c69674",
+    "packages/analytics/test/calibration-evaluation.test.mjs": "4654f6e23d9ffe5b13db8e2d81776bd5c43c381e8aa8eae4cc427806b8c64b15",
+    "packages/blog/scripts/check-calibration-ledger.mjs": "9609d1412fe221d315aeb1658c0f19078c7ba3311ad0100f0194833730e1cc62",
+    "packages/blog/scripts/summarize-production-calibration.mjs": "bb7bdaea78c91c3c73f202985c5a88ad66a3126e4b789e3e415e7b8c45fa726b",
+    "packages/blog/scripts/summarize-production-trial-ledger.mjs": "f00f8c334808d668bb411a84c4378c076cb9ad66c6f84f8f5856075d3c90334f",
+    "packages/blog/drafts/research/edge-vs-rum/production-trial-ledger.sql": "b2b2bfc892ac3a07db1c2f1c687129a7ca244208ba6086c9375c2e668ef669da",
+    "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "181f708421aa1d22f0dbc2db529298a543671af4fedcc3f41e617d55afb70f3f"
+  },
+  "publicationAcceptancePending": true,
+  "limits": [
+    "Offline evaluation and acceptance tooling, not a deployed operator classifier or new collection profile.",
+    "No independent human, actual-JavaScript-off, real-device or Cloudflare receipt acceptance.",
+    "The single 166-read production SELECT was executed at 19:43 UTC; finalization reuses its saved capture."
+  ],
+  "analyticsTestLogSha256": "3e07cd4f55e98f4ca8cfa358073a1da9cd9cd0f54ba8f8769ad8517d5ef65b85",
+  "siteTestLogSha256": "d5b8e70bfd8b72f7f6f6ed1f9c38123b92d23415adc561e2287cfdab7fa547c5",
+  "nativeLocalLogSha256": "7c12271d0d447fcd456c4021a7a4e33ce925127711c1bdab18637cf6534ca9ee"
+}

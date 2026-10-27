@@ -77,7 +77,7 @@ Sharing the selected population and assessment reduced the same report to **33,2
 
 For October 20–25 UTC, D1 recorded **694 Browser HTML events** versus Cloudflare’s **117 non-bot beacon loads** after stats/API exclusions. Sampling and path reconciliation remain incomplete. Neither is human ground truth. Agreement is not the goal; explaining what each instrument observes is.
 
-I followed [12 controlled production visits](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/08-production-stage-protocol.md): nine agent-operated browser visits and three actual curl requests, all excluded from public totals. Each stage had its own counter:
+I [reconciled 12 production controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/09-trial-ledger-and-selective-evaluation.md): nine agent-operated browser visits and three curl requests, all excluded from public totals. Each trial had one stored observation and separate stage counts:
 
 - Three normal visits stored observations and delivered three beacons.
 - Blocking the beacon preserved three observations. `sendBeacon()` returned true three times; the server received none. True means [queued](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon#return_value), not received.
@@ -87,7 +87,7 @@ All nine automated browser visits matched Browser with actual production network
 
 A separate [local failure experiment](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/07-matched-classifier-calibration.md) lost three observations while pages and beacons succeeded. No database failure was injected into production.
 
-These mechanisms do not explain the historical gap’s proportions. Real phones, human-operated browsers, actual JavaScript-off and Cloudflare beacon receipt remain to test. Missing stages and independently labelled outcomes must survive reporting.
+These mechanisms do not explain the historical gap’s proportions. Real phones, human-operated browsers, actual JavaScript-off and Cloudflare beacon receipt remain to test. Count missing measurements, abstentions and wrong decisions separately.
 
 ---
 

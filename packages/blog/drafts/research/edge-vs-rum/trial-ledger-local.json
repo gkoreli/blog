@@ -1,0 +1,241 @@
+{
+  "checkedAt": "2026-10-27T19:55:05.401Z",
+  "runtime": "v24.14.1",
+  "method": "Native local D1 and synthetic stored trial/observation/controller fixtures. No real browser/curl/human operation or production calls. The legacy helper is compiled from pinned repository source with only its import path relocated.",
+  "baselineCommit": "4222587",
+  "baselineHelperSha256": "0169df89874337b5ac935179aadf371d7b35baffacdd1e4464e6db1a290353dc",
+  "clean": {
+    "profile": "evaluation-only-kind-to-operator-v2",
+    "accounting": {
+      "planned": 12,
+      "executed": 12,
+      "noAcceptedExecution": 0,
+      "completeExecuted": 12,
+      "incompleteExecuted": 0,
+      "executedCohortComplete": true,
+      "completeUnlabeled": 0,
+      "labeledEvaluable": 12,
+      "humanLabels": 0,
+      "automationLabels": 12
+    },
+    "issueCounts": {
+      "measurement-missing": 0,
+      "trial-record-missing": 0,
+      "plan-mismatch": 0,
+      "response-count": 0,
+      "observation-missing": 0,
+      "observation-duplicate": 0,
+      "owner-exclusion": 0,
+      "kind-unrecognized": 0
+    },
+    "confusion": {
+      "automation": {
+        "automation": 3,
+        "human": 0,
+        "abstain": 9
+      },
+      "human": {
+        "automation": 0,
+        "human": 0,
+        "abstain": 0
+      }
+    },
+    "decisions": {
+      "committed": 3,
+      "correct": 3,
+      "wrong": 0,
+      "abstained": 9
+    },
+    "rates": {
+      "decisionCoverage": 0.25,
+      "abstentionRate": 0.75,
+      "errorAmongDecisions": 0,
+      "automationFalsePositiveRateAmongDecidedHumans": null,
+      "humanAbstentionRate": null,
+      "automationAbstentionRate": 0.75
+    }
+  },
+  "balancedObservations": {
+    "aggregateTotal": 12,
+    "legacyHelperAccepted": true,
+    "repairedAggregateHelperRejected": true,
+    "ledger": {
+      "profile": "evaluation-only-kind-to-operator-v2",
+      "accounting": {
+        "planned": 12,
+        "executed": 12,
+        "noAcceptedExecution": 0,
+        "completeExecuted": 10,
+        "incompleteExecuted": 2,
+        "executedCohortComplete": false,
+        "completeUnlabeled": 0,
+        "labeledEvaluable": 10,
+        "humanLabels": 0,
+        "automationLabels": 10
+      },
+      "issueCounts": {
+        "measurement-missing": 0,
+        "trial-record-missing": 0,
+        "plan-mismatch": 0,
+        "response-count": 0,
+        "observation-missing": 1,
+        "observation-duplicate": 1,
+        "owner-exclusion": 0,
+        "kind-unrecognized": 0
+      },
+      "confusion": {
+        "automation": {
+          "automation": 3,
+          "human": 0,
+          "abstain": 7
+        },
+        "human": {
+          "automation": 0,
+          "human": 0,
+          "abstain": 0
+        }
+      },
+      "decisions": {
+        "committed": 3,
+        "correct": 3,
+        "wrong": 0,
+        "abstained": 7
+      },
+      "rates": {
+        "decisionCoverage": 0.3,
+        "abstentionRate": 0.7,
+        "errorAmongDecisions": 0,
+        "automationFalsePositiveRateAmongDecidedHumans": null,
+        "humanAbstentionRate": null,
+        "automationAbstentionRate": 0.7
+      }
+    }
+  },
+  "balancedResponses": {
+    "profile": "evaluation-only-kind-to-operator-v2",
+    "accounting": {
+      "planned": 12,
+      "executed": 12,
+      "noAcceptedExecution": 0,
+      "completeExecuted": 10,
+      "incompleteExecuted": 2,
+      "executedCohortComplete": false,
+      "completeUnlabeled": 0,
+      "labeledEvaluable": 10,
+      "humanLabels": 0,
+      "automationLabels": 10
+    },
+    "issueCounts": {
+      "measurement-missing": 0,
+      "trial-record-missing": 0,
+      "plan-mismatch": 0,
+      "response-count": 2,
+      "observation-missing": 0,
+      "observation-duplicate": 0,
+      "owner-exclusion": 0,
+      "kind-unrecognized": 0
+    },
+    "confusion": {
+      "automation": {
+        "automation": 3,
+        "human": 0,
+        "abstain": 7
+      },
+      "human": {
+        "automation": 0,
+        "human": 0,
+        "abstain": 0
+      }
+    },
+    "decisions": {
+      "committed": 3,
+      "correct": 3,
+      "wrong": 0,
+      "abstained": 7
+    },
+    "rates": {
+      "decisionCoverage": 0.3,
+      "abstentionRate": 0.7,
+      "errorAmongDecisions": 0,
+      "automationFalsePositiveRateAmongDecidedHumans": null,
+      "humanAbstentionRate": null,
+      "automationAbstentionRate": 0.7
+    }
+  },
+  "missingCounterRecordRemainsInRequestedLedger": true,
+  "queryPlan": [
+    {
+      "id": 3,
+      "parent": 0,
+      "notused": 0,
+      "detail": "MATERIALIZE requested"
+    },
+    {
+      "id": 6,
+      "parent": 3,
+      "notused": 0,
+      "detail": "SCAN json_each VIRTUAL TABLE INDEX 1:"
+    },
+    {
+      "id": 19,
+      "parent": 0,
+      "notused": 0,
+      "detail": "MATERIALIZE observed"
+    },
+    {
+      "id": 29,
+      "parent": 19,
+      "notused": 216,
+      "detail": "SCAN r"
+    },
+    {
+      "id": 31,
+      "parent": 19,
+      "notused": 59,
+      "detail": "SEARCH o USING INDEX idx_page_observations_public_path_time (is_owner=? AND path=? AND observed_at>? AND observed_at<?)"
+    },
+    {
+      "id": 58,
+      "parent": 19,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR GROUP BY"
+    },
+    {
+      "id": 125,
+      "parent": 0,
+      "notused": 62,
+      "detail": "SCAN r"
+    },
+    {
+      "id": 127,
+      "parent": 0,
+      "notused": 46,
+      "detail": "SEARCH t USING INDEX sqlite_autoindex_analytics_calibration_trials_1 (id=?) LEFT-JOIN"
+    },
+    {
+      "id": 139,
+      "parent": 0,
+      "notused": 0,
+      "detail": "BLOOM FILTER ON o (id=?)"
+    },
+    {
+      "id": 153,
+      "parent": 0,
+      "notused": 47,
+      "detail": "SEARCH o USING AUTOMATIC COVERING INDEX (id=?) LEFT-JOIN"
+    },
+    {
+      "id": 197,
+      "parent": 0,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    }
+  ],
+  "querySha256": "b2b2bfc892ac3a07db1c2f1c687129a7ca244208ba6086c9375c2e668ef669da",
+  "productionCalls": 0,
+  "networkCalls": 0,
+  "limits": [
+    "This demonstrates an acceptance-harness gap, not corruption of the original production cohort.",
+    "Source labels here are intentionally supplied fixtures, not independently accepted human labels or a population accuracy estimate."
+  ]
+}

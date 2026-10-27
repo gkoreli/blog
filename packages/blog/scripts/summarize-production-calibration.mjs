@@ -15,7 +15,8 @@ for(const row of query.results){
  const controller=executed.filter(t=>t.condition===row.condition&&t.actualOperator===row.plannedOperator);assert.equal(controller.length,3);assert.equal(row.trials,3);assert.equal(row.responsesPrepared,3);assert.equal(row.storedObservations,3);assert.equal(row.ownerExcludedObservations,3);
  assert.equal(row.minCollectionVersion,'2026-10-27.6');assert.equal(row.maxCollectionVersion,'2026-10-27.6');
  const running=['normal','block-beacon'].includes(row.condition);assert.equal(row.scriptReports,running?3:0);assert.equal(row.beaconAttemptReports,running?3:0);assert.equal(row.queuedReports,running?3:0);assert.equal(row.notQueuedReports,0);assert.equal(row.thrownReports,0);assert.equal(row.beaconReceipts,row.condition==='normal'?3:0);
- const records=JSON.parse(row.observedKinds).flat();assert.equal(records.length,3);const observedKinds={};
+ const grouped=JSON.parse(row.observedKinds);assert.equal(grouped.length,3);assert.ok(grouped.every(records=>Array.isArray(records)&&records.length===1),'Aggregate totals cannot replace one observation per selected trial');
+ const records=grouped.flat();assert.equal(records.length,3);const observedKinds={};
  for(const r of records){assert.ok(isReaderKind(r.kind));assert.equal(r.ownerExcluded,1);assert.ok(['missing','hosting-listed','archiver-listed','not-listed'].includes(r.network));assert.ok(['navigation-shaped-network-unlisted','generic-bot'].includes(r.reason));add(kinds,r.kind);add(observedKinds,r.kind);add(reasons,r.reason);add(networks,r.network);}
  const {observedKinds:raw,...counts}=row;byCondition.push({...counts,knownOperator:row.plannedOperator,observedKinds});
 }
