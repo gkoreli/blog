@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-10-27T23:01:33.895Z",
+  "method": "Native D1 synthetic stored-evidence/report controls. Real-signature collector controls are separate. Pinned baseline stats source with current shared helpers; scale data contains only historical null evidence, where shared helper behavior is unchanged.",
+  "baseline": "c30a661",
+  "checks": {
+    "allEightStatuses": true,
+    "explicitHistory": true,
+    "malformedRecordsClosed": true,
+    "ownerFlagAndRegistryExcluded": true,
+    "referralPathTimeExcluded": true,
+    "emptyScope": true,
+    "publicCanaryAbsent": true,
+    "distributionReconciles": true,
+    "unchangedHistoricalCommonReport": true,
+    "prospectiveReportNativeAccepted": true
+  },
+  "distribution": [
+    {
+      "basis": "not-recorded",
+      "views": 2
+    },
+    {
+      "basis": "unrecognized-record",
+      "views": 2
+    },
+    {
+      "basis": "conflicting-publishers",
+      "views": 1
+    },
+    {
+      "basis": "different-publisher",
+      "views": 1
+    },
+    {
+      "basis": "matching-publisher",
+      "views": 1
+    },
+    {
+      "basis": "no-declaration",
+      "views": 1
+    },
+    {
+      "basis": "not-configured",
+      "views": 1
+    },
+    {
+      "basis": "not-verified",
+      "views": 1
+    },
+    {
+      "basis": "partial-mapping",
+      "views": 1
+    },
+    {
+      "basis": "test-injected",
+      "views": 1
+    }
+  ],
+  "measurements": {
+    "fixtureReads": 7617,
+    "scaleRows": 512,
+    "beforeReads": 23190,
+    "afterReads": 24217,
+    "addedReads": 1027
+  },
+  "prospective": {
+    "query": {
+      "range": "7d",
+      "traffic": "all",
+      "path": "/privacy"
+    },
+    "querySha256": "f95735d900dd3fb8ee27823d9ee7ab9f3cad9733f531f11f1ed4759de54ff41a",
+    "postExecutionReadCeiling": 20000
+  },
+  "sourceSha256": {
+    "packages/analytics/src/directory-publication.ts": "46fcc3709960e355b7225f16cc6c3f6c917910e8555b128ac9351461bb9fefcf",
+    "packages/analytics/src/directory-publication-contract.ts": "7ec6bfc79948eeef536a041c67c4a02d083a2aa2905fcbc53dbe71c3428c1c5e",
+    "packages/analytics/src/signature-evidence.ts": "2dc1fc24957ae7cff7e4cf4a0383342932210fb1c925e3e63df0c1febe61d73c",
+    "packages/analytics/src/stats.ts": "4cbf8d493a683c192af4f486d83e5a1b39aa5f34781d4f60fef984c4d0a4909a",
+    "packages/analytics/src/observation-receipt.ts": "308b471caf26f485e5842194c1ea0712dd363250309ff5a048b932660797a114"
+  },
+  "networkCalls": 0,
+  "productionCalls": 0,
+  "limits": [
+    "Synthetic stored assertions do not authenticate a real vendor or establish purpose/human accuracy.",
+    "New grouped assessment adds query work; native local cost is not production metering.",
+    "No historical assessment is inferred from a later registry; missing evidence remains not-recorded.",
+    "Read ceiling is an operator post-execution threshold, not a D1-enforced cap."
+  ]
+}

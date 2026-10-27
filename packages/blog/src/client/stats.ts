@@ -4,6 +4,7 @@ import { READER_GROUPS, isReaderKind, readerGroupOf, type ReaderKind, type Repor
 import { CLIENT_FORM_LABELS } from '@gkoreli/analytics/client-form';
 import { SIGNATURE_BASIS_LABELS } from '@gkoreli/analytics/signature-basis';
 import { nativeCategoryLabel } from '@gkoreli/analytics/native-bot-evidence';
+import { DIRECTORY_PUBLICATION_LABELS } from '@gkoreli/analytics/directory-publication';
 import { HOSTING_NETWORKS } from '@gkoreli/analytics/networks';
 import '../styles/stats.css';
 
@@ -194,7 +195,7 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
     throw new Error('Updated referral details are unavailable. Please reload.');
   }
   if (data.bySigner === undefined) throw new Error('Updated signer evidence is unavailable. Please reload.');
-  if (data.verification === undefined || data.vendorNetwork === undefined || data.byClientForm === undefined || data.clientFormEvidence === undefined || data.byKindSignature === undefined) throw new Error('Updated verification evidence is unavailable. Please reload.');
+  if (data.verification === undefined || data.vendorNetwork === undefined || data.byClientForm === undefined || data.clientFormEvidence === undefined || data.byKindSignature === undefined || data.byDirectoryPublication === undefined) throw new Error('Updated verification evidence is unavailable. Please reload.');
   return data;
 }
 
@@ -715,6 +716,7 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     { label: 'Has declarations without a configured method', views: verification.vendorUnmappedDeclarationViews },
     { label: 'Vendor check not recorded', views: verification.vendorCheckNotRecordedViews },
   ], null);
+  replaceSectionRows('stats-directory-publication', data.byDirectoryPublication.map(row => ({ label: DIRECTORY_PUBLICATION_LABELS[row.basis], views: row.views })), null);
   renderComposition(data, state);
   renderKindSignatures(data, state);
 

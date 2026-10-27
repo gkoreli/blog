@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-27T23:03:58.615907+00:00",
+  "method": "One native-accepted prepared report SELECT via Wrangler --command; SQL is one argv value, no import/file mode.",
+  "scope": {
+    "range": "7d",
+    "traffic": "all",
+    "path": "/privacy"
+  },
+  "preparedAt": "2026-10-27T23:01:33.515Z",
+  "selectedViews": 15,
+  "directoryPublicationDistribution": [
+    {
+      "basis": "not-recorded",
+      "views": 15
+    }
+  ],
+  "statement": {
+    "rowsRead": 8048,
+    "rowsWritten": 0,
+    "changes": 0,
+    "changedDb": false,
+    "postExecutionReadCeiling": 20000
+  },
+  "querySha256": "f95735d900dd3fb8ee27823d9ee7ab9f3cad9733f531f11f1ed4759de54ff41a",
+  "limits": [
+    "Pre-deployment retained rows have no new publication assessment; no historical backfill inferred.",
+    "A narrow path selection is not population prevalence or full-history cost.",
+    "Read threshold is a reviewed post-execution check, not a service-enforced cap.",
+    "HTTP report/cache acceptance is additional service work."
+  ]
+}

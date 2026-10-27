@@ -3,6 +3,7 @@ import type { SignatureEvidence, WebBotAuthResult } from './webbotauth.js';
 import type { KnownAgentName } from './classify.js';
 import { vendorSignatureEvidence, type VendorSignatureEvidence } from './vendor-signatures.js';
 import { nativeCategoryEvidence, type NativeCategoryEvidence } from './native-bot-evidence.js';
+import { directoryPublicationEvidence, type DirectoryPublicationEvidence } from './directory-publication.js';
 
 /** These are local-profile outcomes, not universal RFC validity or intent verdicts. */
 export const FAILURE_OUTCOMES = {
@@ -29,7 +30,7 @@ export function verificationOutcome(result: WebBotAuthResult, injected = false):
 }
 
 export interface VerificationEvidence {
-  version: '2026-10-27.4';
+  version: '2026-10-27.5';
   source: 'local-webbotauth' | 'test-injected';
   verifierProfile: string | null;
   localStatus: WebBotAuthResult['status'];
@@ -37,6 +38,7 @@ export interface VerificationEvidence {
   localReasons: string[];
   localOutcome: VerificationOutcome;
   vendor: VendorSignatureEvidence;
+  directoryPublication: DirectoryPublicationEvidence;
   coverage: SignatureEvidence | null;
   native: { verifiedBot: boolean | null; signedAgent: boolean | null; category: NativeCategoryEvidence };
 }
@@ -50,13 +52,14 @@ export function verificationEvidence(request: Request, result: WebBotAuthResult,
   const cf: unknown = request.cf;
   const management = record(cf) && record(cf.botManagement) ? cf.botManagement : null;
   return {
-    version: '2026-10-27.4', source: injected ? 'test-injected' : 'local-webbotauth',
+    version: '2026-10-27.5', source: injected ? 'test-injected' : 'local-webbotauth',
     verifierProfile: injected ? null : VERIFIER_PROFILE_VERSION,
     localStatus: result.status,
     localReason: result.status === 'unverified' ? knownReason(result.reason) ? result.reason : 'unrecognized-verifier-reason' : null,
     localReasons: result.status === 'unverified' ? [...new Set([result.reason, ...result.reasons ?? []].map(reason => knownReason(reason) ? reason : 'unrecognized-verifier-reason'))].sort() : [],
     localOutcome: verificationOutcome(result, injected),
     vendor: vendorSignatureEvidence(declarations, result, injected),
+    directoryPublication: directoryPublicationEvidence(declarations, result, injected),
     coverage: result.status === 'verified' && !injected ? result.evidence ?? null : null,
     native: {
       verifiedBot: typeof management?.verifiedBot === 'boolean' ? management.verifiedBot : null,

@@ -8,6 +8,7 @@ import { analyzeTraffic } from '../../analytics/.test-dist/classify.js';
 import { verifyWebBotAuth, createWebBotAuthCache } from '../../analytics/.test-dist/webbotauth.js';
 import { nativeCategoryEvidence } from '../../analytics/.test-dist/native-bot-evidence.js';
 import { VERIFIER_PROFILE_VERSION } from '../../analytics/.test-dist/versions.js';
+import { directoryPublicationEvidence } from '../../analytics/.test-dist/directory-publication.js';
 
 const vendors = {
   Exa: { origin: 'https://crawler.exa.ai', names: ['ExaSearchBot','ExaUser'] },
@@ -46,7 +47,7 @@ export async function reconcileVendor(name, bytes, directory) {
     increment(counts.nativeSignedAgent, booleanState(data.cf?.botManagement?.signedAgent));
     increment(counts.collections, /^2026-\d{2}-\d{2}\.\d{1,4}$/.test(item.collectionVersion ?? '') ? item.collectionVersion : 'no-complete-pair');
     if (item.complete) pairs++;
-    if (item.complete && item.receipt?.version === '2026-10-27.2') {
+    if (item.complete && ['2026-10-27.2','2026-10-27.3'].includes(item.receipt?.version)) {
       const receipt = item.receipt;
       scalarReceipts++;
       assert.equal(result.status, 'verified');
@@ -63,6 +64,8 @@ export async function reconcileVendor(name, bytes, directory) {
       assert.equal(receipt.native.categoryValue, category.value ?? 'none');
       assert.equal(receipt.native.verifiedBot, booleanState(data.cf?.botManagement?.verifiedBot));
       assert.equal(receipt.native.signedAgent, booleanState(data.cf?.botManagement?.signedAgent));
+      if (receipt.version === '2026-10-27.3') assert.deepEqual(receipt.directoryPublication,
+        directoryPublicationEvidence(declaration.candidates, result));
       replayReceiptAgreements++;
     }
   }

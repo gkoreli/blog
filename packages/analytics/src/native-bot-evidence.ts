@@ -35,7 +35,7 @@ export function nativeCategoryEvidence(cf: unknown): NativeCategoryEvidence {
 export function nativeCategoryBasisSql(): string {
   return `CASE
     WHEN json_type(signature_evidence, '$.native.category') IS NULL THEN 'not-recorded'
-    WHEN json_extract(signature_evidence, '$.version') IS NOT '2026-10-27.4'
+    WHEN COALESCE(json_extract(signature_evidence, '$.version'), '') NOT IN ('2026-10-27.4','2026-10-27.5')
       OR COALESCE(json_extract(signature_evidence, '$.source'), '') NOT IN ('local-webbotauth','test-injected')
       OR json_extract(signature_evidence, '$.native.category.version') IS NOT '2026-10-27.1' THEN 'unrecognized'
     WHEN json_extract(signature_evidence, '$.native.category.status') = 'known'

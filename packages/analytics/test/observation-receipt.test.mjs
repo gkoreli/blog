@@ -82,7 +82,9 @@ test('actual crypto receipt reflects persisted role, coverage and nullable provi
   const snapshot = storedObservationReceipt(inputObservation);
   assert.equal(snapshot.signature.signer, 'Other');
   evidence.coverage.covered.authority = false; classification.declarations.candidates.push('ExaUser');
+  evidence.directoryPublication.status = 'different-publisher';
   assert.equal(snapshot.signature.coverage.authority, true); assert.equal(snapshot.declarations.candidateNames, 'ExaSearchBot');
+  assert.equal(snapshot.directoryPublication.status, 'matching-publisher');
 });
 
 test('storage references accept only one canonical positive signed-64-bit text rowid', () => {
@@ -190,7 +192,7 @@ test('scalar receipts retain zero/unknown/conflict states when nulls and empty a
   const { DB } = fixture();
   const logs = await capture(async () => { await collect(DB, request({ 'User-Agent': 'ExaUser/1.0 ExaSearchBot/1.0' })); });
   const receipt = logs.find(log => log.event === 'analytics.observation_stored').receipt;
-  assert.equal(receipt.version, '2026-10-27.2'); assert.equal(receipt.readerKind, 'unresolved');
+  assert.equal(receipt.version, '2026-10-27.3'); assert.equal(receipt.readerKind, 'unresolved');
   assert.equal(receipt.declarations.candidateCount, 2); assert.equal(receipt.declarations.candidateNames, 'ExaSearchBot,ExaUser');
   assert.equal(receipt.declarations.categoryAgreement, 'multiple-categories');
   assert.equal(receipt.signature.reasonCount, 0); assert.equal(receipt.signature.reasonNames, 'none');

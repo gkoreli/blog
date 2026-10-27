@@ -23,7 +23,7 @@ const bundle = await build({ stdin: { resolveDir: process.cwd(), contents: `
     directoryFetches++;
     const origin=new URL(String(url)).origin;
     if(origin==='https://timeout.example') return new Promise(()=>{});
-    if(!['https://fixture.example','https://crawler.exa.ai'].includes(origin)) throw Error('Unexpected fixture discovery');
+    if(!['https://fixture.example','https://crawler.exa.ai','https://ahrefs.com'].includes(origin)) throw Error('Unexpected fixture discovery');
     return Response.json({keys:[${JSON.stringify(jwk)}]},{headers:{'Content-Type':'application/http-message-signatures-directory+json','Cache-Control':'max-age=300'}});
   };
   export default { async fetch(request,env,ctx) {
@@ -58,14 +58,19 @@ try {
   const schema = readFileSync('packages/analytics/schema.sql', 'utf8').replace(/^\s*--.*$/gm, '');
   await db.batch(schema.split(';').map(s => s.trim()).filter(Boolean).map(s => db.prepare(s)));
   const trials = [], captures = [];
-  for (const mode of ['verified-fixture','reviewed-origin-fixture','invalid-signature','directory-timeout','unsigned','without-returning-baseline','conflicting-roles','unknown-category','injected','write-error','ack-without-write','ack-false','ack-zero','diagnostic-error','referral','ineligible','missing-reference','numeric-reference','duplicate-reference','large-rowid']) {
+  for (const mode of ['verified-fixture','reviewed-origin-fixture','invalid-signature','directory-timeout','unsigned','without-returning-baseline','conflicting-roles','unknown-category','injected','write-error','ack-without-write','ack-false','ack-zero','diagnostic-error','referral','ineligible','missing-reference','numeric-reference','duplicate-reference','no-declaration','unconfigured-declaration','partial-mapping','conflicting-publishers','ahrefs-origin-fixture','large-rowid']) {
     if (mode === 'large-rowid') await db.prepare("UPDATE sqlite_sequence SET seq=9007199254740994 WHERE name='page_observations'").run();
     const path = mode === 'ineligible' ? '/api/stats' : mode === 'referral' ? '/privacy' : '/' + mode;
     const headers = { 'User-Agent': 'ExaSearchBot/1.0', Accept: 'text/html', 'X-Fixture-Mode': mode };
     if (mode === 'conflicting-roles') headers['User-Agent'] = 'ExaUser/1.0 ExaSearchBot/1.0';
+    if (mode === 'no-declaration') headers['User-Agent'] = 'curl/8.7.1';
+    if (mode === 'unconfigured-declaration') headers['User-Agent'] = 'GPTBot/1.0';
+    if (mode === 'partial-mapping') headers['User-Agent'] = 'ExaSearchBot/1.0 GPTBot/1.0';
+    if (mode === 'conflicting-publishers') headers['User-Agent'] = 'ExaSearchBot/1.0 AhrefsBot/7.0';
+    if (mode === 'ahrefs-origin-fixture') headers['User-Agent'] = 'AhrefsBot/7.0';
     if (mode === 'referral') headers.Referer = 'https://traffic2cash.xyz/';
-    if (['verified-fixture','reviewed-origin-fixture','invalid-signature','directory-timeout','injected'].includes(mode)) {
-      const origin = mode === 'reviewed-origin-fixture' || mode === 'injected' ? 'https://crawler.exa.ai' : mode === 'directory-timeout' ? 'https://timeout.example' : 'https://fixture.example';
+    if (['verified-fixture','reviewed-origin-fixture','invalid-signature','directory-timeout','injected','conflicting-publishers','ahrefs-origin-fixture'].includes(mode)) {
+      const origin = mode === 'ahrefs-origin-fixture' ? 'https://ahrefs.com' : mode === 'reviewed-origin-fixture' || mode === 'injected' || mode === 'conflicting-publishers' ? 'https://crawler.exa.ai' : mode === 'directory-timeout' ? 'https://timeout.example' : 'https://fixture.example';
       const epoch = Math.floor(Date.now() / 1000), agent = JSON.stringify(origin);
       const input = `("@authority" "signature-agent");created=${epoch};expires=${epoch + 300};keyid="${kid}";alg="ed25519";tag="web-bot-auth"`;
       const base = `"@authority": ${mode === 'invalid-signature' ? 'changed.example' : 'publication.example'}\n"signature-agent": ${agent}\n"@signature-params": ${input}`;
@@ -85,7 +90,7 @@ try {
     else {
       assert.equal(rows.length, 1); assert.equal(stored.length, 1); assert.equal(capture.settlements[0], 'fulfilled');
       const row = rows[0], evidence = JSON.parse(row.signature_evidence), classification = JSON.parse(row.classification_evidence), receipt = stored[0].receipt;
-      assert.equal(receipt.version, '2026-10-27.2');
+      assert.equal(receipt.version, '2026-10-27.3');
       assert.equal(stored[0].operationId, capture.logs.find(log => log.event === 'analytics.observation_attempt').operationId);
       assert.equal(stored[0].collectionVersion, row.collection_version); assert.equal(row.collection_version, COLLECTION_VERSION);
       const storage = stored[0].storage;
@@ -101,6 +106,11 @@ try {
         assert.equal(diagnostic.observation_id, storage.observationId);
         assert.equal(capture.logs.some(log => log.event === 'analytics.diagnostic_write_failed'), false);
       }
+      assert.deepEqual(receipt.directoryPublication, evidence.directoryPublication);
+      if (mode === 'ahrefs-origin-fixture') { assert.equal(receipt.directoryPublication.status,'matching-publisher'); assert.equal(receipt.signature.documentedVendorStatus,'not-configured'); }
+      if (mode === 'conflicting-publishers') assert.equal(receipt.directoryPublication.status,'conflicting-publishers');
+      if (['partial-mapping','no-declaration'].includes(mode)) assert.equal(receipt.directoryPublication.status,mode);
+      if (mode === 'unconfigured-declaration') assert.equal(receipt.directoryPublication.status,'not-configured');
       assert.equal(receipt.readerKind, row.reader_kind); assert.equal(receipt.classifierProfile, classification.classifierProfile);
       assert.equal(receipt.declarations.candidateCount, classification.declarations.candidates.length);
       assert.equal(receipt.declarations.candidateNames, [...classification.declarations.candidates].sort().join(',') || 'none');
@@ -117,10 +127,10 @@ try {
       else for (const [key, value] of Object.entries(evidence.coverage.covered)) assert.equal(receipt.signature.coverage[key], value);
       assert.equal(receipt.native.verifiedBot, state(evidence.native.verifiedBot)); assert.equal(receipt.native.signedAgent, state(evidence.native.signedAgent));
       assert.equal(receipt.native.categoryStatus, evidence.native.category.status); assert.equal(receipt.native.categoryValue, evidence.native.category.value ?? 'none');
-      const expected = ['verified-fixture','reviewed-origin-fixture'].includes(mode) ? 'verified' : mode === 'invalid-signature' ? 'invalid' : mode === 'directory-timeout' ? 'unavailable' : mode === 'injected' ? 'test-injected' : 'absent';
+      const expected = ['verified-fixture','reviewed-origin-fixture','conflicting-publishers','ahrefs-origin-fixture'].includes(mode) ? 'verified' : mode === 'invalid-signature' ? 'invalid' : mode === 'directory-timeout' ? 'unavailable' : mode === 'injected' ? 'test-injected' : 'absent';
       assert.equal(receipt.signature.outcome, expected);
       if (mode === 'directory-timeout') assert.ok(receipt.signature.reasonNames.split(',').includes('verification-timeout'));
-      assert.equal(receipt.signature.signer, mode === 'verified-fixture' ? 'Other' : mode === 'reviewed-origin-fixture' ? 'Exa' : 'none');
+      assert.equal(receipt.signature.signer, mode === 'verified-fixture' ? 'Other' : ['reviewed-origin-fixture','conflicting-publishers'].includes(mode) ? 'Exa' : mode === 'ahrefs-origin-fixture' ? 'Ahrefs' : 'none');
       if (mode === 'diagnostic-error') assert.ok(capture.logs.some(log => log.event === 'analytics.diagnostic_write_failed'));
       if (mode === 'unknown-category') assert.equal(receipt.native.categoryStatus, 'unrecognized');
       if (mode === 'conflicting-roles') { assert.equal(receipt.readerKind, 'unresolved'); assert.equal(receipt.declarations.candidateCount, 2); assert.equal(receipt.declarations.candidateNames, 'ExaSearchBot,ExaUser'); assert.equal(receipt.declarations.categoryAgreement, 'multiple-categories'); }
@@ -133,6 +143,7 @@ try {
       outcome: stored[0]?.receipt.signature.outcome ?? null, failureReason: failure?.reason ?? null,
       receiptBytes: stored[0] ? Buffer.byteLength(JSON.stringify(stored[0].receipt)) : 0,
       databaseWork: capture.databaseWork,
+      directoryPublication: stored[0]?.receipt.directoryPublication.status ?? 'no-receipt',
       storageReference: stored[0]?.storage.status ?? 'no-receipt', exactReferenceMatches: stored[0]?.storage.status === 'returned' ? stored[0].storage.observationId === rows[0].observation_id : null });
   }
   const sql = readFileSync('packages/blog/drafts/research/analytics-retrospective/storage-reference-control.sql','utf8');
@@ -145,9 +156,17 @@ try {
   assert.equal((await db.prepare(sql).bind('9223372036854775807', COLLECTION_VERSION).all()).results.length, 0);
   const plan = (await db.prepare('EXPLAIN QUERY PLAN '+sql).bind(controlReference, COLLECTION_VERSION).all()).results;
   assert.ok(plan.some(row => row.detail.includes('INTEGER PRIMARY KEY')));
+  const publicationSql = readFileSync('packages/blog/drafts/research/analytics-retrospective/directory-publication-control.sql','utf8');
+  const publicationControl = await db.prepare(publicationSql).bind(controlReference, COLLECTION_VERSION).all();
+  assert.equal(publicationControl.results.length,1);
+  assert.equal(publicationControl.results[0].publicationStatus,'not-verified');
+  assert.equal(publicationControl.results[0].publicationProfile,'2026-10-27.1');
+  assert.equal(publicationControl.results[0].configuredDeclarationCount,1);
+  assert.equal(publicationControl.results[0].optionalCaptureAbsent,1);
   writeFileSync(privateOutput, JSON.stringify({ captures }, null, 2)+'\n', {flag:'wx',mode:0o600});
   const files = ['packages/analytics/src/index.ts','packages/analytics/src/db.ts','packages/analytics/src/observation-receipt.ts','packages/analytics/src/observation-storage.ts','packages/analytics/src/diagnostics.ts','packages/analytics/src/versions.ts'];
   writeFileSync(output, JSON.stringify({checkedAt:new Date().toISOString(),method:'Actual collector, workerd, D1 and crypto; intercepted fixture directories, supplied provider metadata and controlled acknowledgement failures. Wrapper awaits captured waitUntil work for deterministic inspection.',collectionVersion:COLLECTION_VERSION,trials,acceptanceQueryPlan:plan,acceptanceQuery:{sha256:createHash('sha256').update(sql).digest('hex'),rowsRead:controlResult.meta.rows_read,rowsWritten:controlResult.meta.rows_written,productionReadCeiling:100},
+    publicationAcceptanceQuery:{sha256:createHash('sha256').update(publicationSql).digest('hex'),rowsRead:publicationControl.meta.rows_read,rowsWritten:publicationControl.meta.rows_written,productionReadCeiling:100},
     sourceSha256:Object.fromEntries(files.map(file=>[file,createHash('sha256').update(readFileSync(file)).digest('hex')])),productionRequests:0,externalNetworkCalls:0,
     limits:['Ephemeral fixture keys and substituted directories, including the reviewed-origin case, are not real vendor authentication.','Provider metadata is deliberately supplied, not an actual Cloudflare bot verdict.','No human/device label, complete-log guarantee or production activation is established.','An unacknowledged insert can leave a stored row; absence of a receipt does not establish absence of a write.']},null,2)+'\n',{flag:'wx'});
   console.log(JSON.stringify({trials:trials.length,acceptedReceipts:trials.reduce((n,t)=>n+t.receipts,0),externalNetworkCalls:0}));

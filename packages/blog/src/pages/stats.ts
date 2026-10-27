@@ -132,6 +132,11 @@ export function statsPage() {
       <p class="stats-section-note">Local key verification and Cloudflare assessments are separate. Coverage counts overlap; none establishes a human trigger.</p>
       ${listSkeleton(3)}
     </section>
+    <section class="stats-section" id="stats-directory-publication">
+      <h2>Published key directories <span>reviewed publisher origins</span></h2>
+      <p class="stats-section-note">Exa and Ahrefs publish key directories at reviewed first-party endpoints. This assessment compares the locally verified key publisher with the declared client's reviewed endpoint; it does not establish a per-client signing promise or authenticate an unsigned User-Agent. Conflicting publishers, partial mappings and missing history stay separate. Each included event appears once. <a href="https://github.com/gkoreli/blog/blob/main/packages/analytics/src/directory-publication.ts" target="_blank" rel="noopener">Reviewed endpoints and sources</a>.</p>
+      ${listSkeleton(3)}
+    </section>
     <section class="stats-section stats-signature-basis" id="stats-native-category">
       <h2>Cloudflare categories by classification</h2>
       <p class="stats-section-note">Categories can be available without native verification booleans. They are Cloudflare’s classification, not our signature verdict or proof of a human trigger. Empty, unavailable and earlier unrecorded values stay distinct. Each included event appears once.</p>

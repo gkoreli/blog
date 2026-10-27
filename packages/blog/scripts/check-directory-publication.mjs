@@ -1,0 +1,60 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,existsSync}from'node:fs';
+import{execFileSync}from'node:child_process';
+import{createRequire}from'node:module';
+import{dirname,resolve}from'node:path';
+import{pathToFileURL}from'node:url';
+import{createHash}from'node:crypto';
+import{build}from'esbuild';
+import{queryStats}from'../../analytics/.test-dist/stats.js';
+import{verificationEvidence}from'../../analytics/.test-dist/signature-evidence.js';
+import{DIRECTORY_PUBLICATION_STATUSES}from'../../analytics/.test-dist/directory-publication-contract.js';
+const[output,privateFixtures,privatePlan]=process.argv.slice(2);assert.ok(output&&privateFixtures&&privatePlan&&![output,privateFixtures,privatePlan].some(existsSync));
+const baseline='c30a661';
+const oldSource=execFileSync('git',['show',baseline+':packages/analytics/src/stats.ts'],{encoding:'utf8'});
+const bundle=await build({stdin:{contents:oldSource,resolveDir:resolve('packages/analytics/src'),loader:'ts'},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
+const{queryStats:oldQueryStats}=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].contents).toString('base64'));
+const req=createRequire(resolve('package.json'));
+const{Miniflare}=await import(pathToFileURL(req.resolve('miniflare',{paths:[dirname(req.resolve('wrangler/package.json'))]})));
+const mf=new Miniflare({modules:true,script:'export default{fetch(){return new Response("local fixture")}}',compatibilityDate:'2026-03-06',d1Databases:{DB:'directory-publication',SCALE:'directory-scale'}});
+try{
+ const db=await mf.getD1Database('DB'),scale=await mf.getD1Database('SCALE');
+ const schema=readFileSync('packages/analytics/schema.sql','utf8').replace(/^\s*--.*$/gm,'');
+ for(const database of[db,scale])await database.batch(schema.split(';').map(s=>s.trim()).filter(Boolean).map(s=>database.prepare(s)));
+ const insert=`INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner,reader_kind,reader_reason,observed_at,signature_status,signature_evidence,referrer_host) VALUES(?,?,'bot','desktop',?,'unresolved','fixture',?,?,?,?)`;
+ let next=0;
+ const add=async(evidence,options={})=>{const id=(++next).toString(16).padStart(32,'0');await db.prepare(insert).bind(options.path??'/publication',id,options.owner??0,options.at??'2026-10-27 22:00:00',evidence?.localStatus==='verified'?'verified':null,evidence===null?null:JSON.stringify(evidence),options.referrer??null).run();return id;};
+ const verified={status:'verified',agent:'https://ahrefs.com'},request=new Request('https://publication.example');
+ const cases=[[[],verified,false],[['GPTBot'],verified,false],[['AhrefsBot'],{status:'absent'},false],[['AhrefsBot'],verified,false],[['AhrefsBot'],{status:'verified',agent:'https://crawler.exa.ai'},false],[['AhrefsBot','GPTBot'],verified,false],[['AhrefsBot','ExaSearchBot'],verified,false],[['AhrefsBot'],verified,true]];
+ for(const[names,result,injected]of cases)await add(verificationEvidence(request,result,injected,names));
+ await add(null);await add({version:'2026-10-27.4',source:'local-webbotauth',localStatus:'absent'});
+ for(const mutate of[e=>{e.directoryPublication.status='private-canary@example.invalid'},e=>{e.directoryPublication.configuredDeclarationCount=-1}]){const e=verificationEvidence(request,verified,false,['AhrefsBot']);mutate(e);await add(e);}
+ const valid=verificationEvidence(request,verified,false,['AhrefsBot']);
+ await add(valid,{owner:1});await add(valid,{referrer:'traffic2cash.xyz'});await add(valid,{at:'2026-10-28 00:00:00'});await add(valid,{path:'/other'});
+ const owner=await add(valid);await db.prepare("INSERT INTO owner_clients(daily_client_id,utc_date,marked_at) VALUES(?,'2026-10-27','2026-10-27 22:00:00')").bind(owner).run();
+ let last;
+ const tap=database=>({prepare(sql){return{bind(...values){last={sql,values};return database.prepare(sql).bind(...values)}}},async batch(statements){const results=await database.batch(statements);last.meta=results[0].meta;return results}});
+ const query={range:'7d',traffic:'all',path:'/publication'},now=new Date('2026-10-27T23:00:00Z');
+ const report=await queryStats(tap(db),query,now),fixtureReads=last.meta.rows_read;
+ assert.equal(report.totals.views,12);assert.equal(report.referralPolicy.excludedViews,1);
+ const counts=Object.fromEntries(report.byDirectoryPublication.map(row=>[row.basis,row.views]));
+ for(const status of DIRECTORY_PUBLICATION_STATUSES)assert.equal(counts[status],1,status);
+ assert.equal(counts['not-recorded'],2);assert.equal(counts['unrecognized-record'],2);assert.equal(Object.values(counts).reduce((a,b)=>a+b,0),12);
+ assert.equal(JSON.stringify(report).includes('private-canary'),false);
+ assert.deepEqual((await queryStats(db,{...query,path:'/missing'},now)).byDirectoryPublication,[]);
+ const unsigned=verificationEvidence(request,{status:'absent'});await add(unsigned,{path:'/privacy'});
+ const prospective={range:'7d',traffic:'all',path:'/privacy'},prospectiveNow=new Date();
+ const narrow=await queryStats(tap(db),prospective,prospectiveNow);assert.equal(narrow.totals.views,1);assert.deepEqual(narrow.byDirectoryPublication,[{basis:'no-declaration',views:1}]);
+ const plan={sql:last.sql,values:last.values,query:prospective,now:prospectiveNow.toISOString(),readCeiling:20000,method:'One native-accepted report SELECT; private argv command mode, no imports or retries. HTTP cold/repeat acceptance is additional service work.'};
+ for(let i=0;i<8;i++)await scale.batch(Array.from({length:64},()=>scale.prepare(insert).bind('/publication','00000000000000000000000000000000',0,'2026-10-27 22:00:00',null,null,null)));
+ const before=await oldQueryStats(tap(scale),query,now),beforeReads=last.meta.rows_read;
+ const after=await queryStats(tap(scale),query,now),afterReads=last.meta.rows_read;
+ const{byDirectoryPublication,...common}=after;assert.deepEqual(common,before);assert.deepEqual(byDirectoryPublication,[{basis:'not-recorded',views:512}]);
+ writeFileSync(privateFixtures,JSON.stringify({report,narrow},null,2)+'\n',{flag:'wx',mode:0o600});
+ writeFileSync(privatePlan,JSON.stringify(plan,null,2)+'\n',{flag:'wx',mode:0o600});
+ const files=['packages/analytics/src/directory-publication.ts','packages/analytics/src/directory-publication-contract.ts','packages/analytics/src/signature-evidence.ts','packages/analytics/src/stats.ts','packages/analytics/src/observation-receipt.ts'];
+ const result={checkedAt:new Date().toISOString(),method:'Native D1 synthetic stored-evidence/report controls. Real-signature collector controls are separate. Pinned baseline stats source with current shared helpers; scale data contains only historical null evidence, where shared helper behavior is unchanged.',baseline,
+ checks:{allEightStatuses:true,explicitHistory:true,malformedRecordsClosed:true,ownerFlagAndRegistryExcluded:true,referralPathTimeExcluded:true,emptyScope:true,publicCanaryAbsent:true,distributionReconciles:true,unchangedHistoricalCommonReport:true,prospectiveReportNativeAccepted:true},distribution:report.byDirectoryPublication,measurements:{fixtureReads,scaleRows:512,beforeReads,afterReads,addedReads:afterReads-beforeReads},prospective:{query:prospective,querySha256:createHash('sha256').update(plan.sql).digest('hex'),postExecutionReadCeiling:plan.readCeiling},sourceSha256:Object.fromEntries(files.map(p=>[p,createHash('sha256').update(readFileSync(p)).digest('hex')])),networkCalls:0,productionCalls:0,
+ limits:['Synthetic stored assertions do not authenticate a real vendor or establish purpose/human accuracy.','New grouped assessment adds query work; native local cost is not production metering.','No historical assessment is inferred from a later registry; missing evidence remains not-recorded.','Read ceiling is an operator post-execution threshold, not a D1-enforced cap.']};
+ writeFileSync(output,JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({fixtureViews:report.totals.views,beforeReads,afterReads,addedReads:afterReads-beforeReads}));
+}finally{await mf.dispose()}

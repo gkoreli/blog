@@ -3,17 +3,20 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 
-const versions = new Set(['2026-10-27.1', '2026-10-27.2']);
+const versions = new Set(['2026-10-27.1', '2026-10-27.2', '2026-10-27.3']);
 const paths = ['version','classifierProfile','readerKind','declarations.status','declarations.candidates','declarations.candidateCount','declarations.candidateNames','declarations.categoryAgreement',
   'signature.evidenceVersion','signature.source','signature.verifierProfile','signature.status','signature.outcome','signature.reason','signature.reasons','signature.reasonCount','signature.reasonNames','signature.signer','signature.documentedVendorStatus','signature.userAgentCovered',
   'signature.coverage','signature.coverage.status','signature.coverage.authority','signature.coverage.targetUri','signature.coverage.method','signature.coverage.path','signature.coverage.query','signature.coverage.userAgent','signature.coverage.contentDigest','signature.coverage.replayPolicy',
-  'native.verifiedBot','native.signedAgent','native.categoryStatus','native.categoryValue'];
+  'native.verifiedBot','native.signedAgent','native.categoryStatus','native.categoryValue',
+  'directoryPublication.profile','directoryPublication.method','directoryPublication.reviewedOn','directoryPublication.configuredDeclarationCount','directoryPublication.unmappedDeclarationCount','directoryPublication.status'];
+const storagePaths = ['version','status','observationId'];
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const field = (value, path) => path.split('.').reduce((value, key) => object(value) && Object.hasOwn(value, key) ? value[key] : undefined, value);
 function completeLiveReceipt(receipt) {
   if (!object(receipt) || !versions.has(receipt.version)) return false;
   const v1 = receipt.version === '2026-10-27.1';
   const required = paths.filter(path => !path.startsWith('signature.coverage.')
+    && (receipt.version === '2026-10-27.3' || !path.startsWith('directoryPublication.'))
     && !(v1 ? ['declarations.candidateCount','declarations.candidateNames','signature.reasonCount','signature.reasonNames']
       : ['declarations.candidates','signature.reasons']).includes(path));
   if (!required.every(path => field(receipt, path) !== undefined)) return false;
@@ -67,8 +70,11 @@ export function compareReceiptCopies(liveEvents, retainedRows) {
       || typeof a.fields.collectionVersion !== 'string' || a.fields.collectionVersion !== b.fields.collectionVersion
       || !completeLiveReceipt(ar) || !object(br) || ar.version !== br.version) { result.invalidPairs++; continue; }
     result.matchedPairs++; add(result.versions, ar.version); let different = false;
-    for (const path of paths) {
-      const av = field(ar, path), bv = field(br, path);
+    const comparisons = paths.map(path => ({ path, av: field(ar, path), bv: field(br, path) }));
+    if (a.fields.storage !== undefined || b.fields.storage !== undefined) {
+      for (const path of storagePaths) comparisons.push({ path: 'storage.' + path, av: field(a.fields.storage, path), bv: field(b.fields.storage, path) });
+    }
+    for (const {path, av, bv} of comparisons) {
       if (object(av) && object(bv) || object(av) && bv === undefined) continue;
       if (av === undefined && bv === undefined) continue;
       if (JSON.stringify(av) === JSON.stringify(bv)) continue;

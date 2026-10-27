@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-27T23:02:05.762Z",
+  "method": "One native positive-control query/export matched to the earlier actual live control by operation and exact timestamp; receipt and separate private storage-reference fields compared.",
+  "liveSha256": "05540f14bf7d5b25eb92322d5ef00bc3ea04dd1a80f027b2228bbdd2e752f264",
+  "retainedSha256": "6e44a5094ce9e5bb3fd7183d4d444527f47702d94af321a821ca95c6ed519387",
+  "comparison": {
+    "liveStoredRecords": 1,
+    "retainedStoredRecords": 1,
+    "missingOperationRecords": 0,
+    "unmatchedLiveRecords": 0,
+    "unmatchedRetainedRecords": 0,
+    "ambiguousOperations": 0,
+    "invalidPairs": 0,
+    "matchedPairs": 1,
+    "identicalPairs": 1,
+    "differingPairs": 0,
+    "omittedNulls": 0,
+    "omittedEmptyArrays": 0,
+    "omittedOther": 0,
+    "missingFields": {},
+    "addedFields": {},
+    "changedFields": {},
+    "versions": {
+      "2026-10-27.2": 1
+    }
+  },
+  "limits": [
+    "This accepts the earlier collection .9 receipt .2 storage reference, not prospective receipt .3 publication fields.",
+    "Zero signed matches in the separate scoped query is not complete retention or population absence.",
+    "No additional D1 SELECT."
+  ]
+}

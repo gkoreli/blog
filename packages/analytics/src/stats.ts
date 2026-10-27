@@ -27,6 +27,7 @@ import { referralAssessmentCtes, referralRulesJson } from './referral-sql.js';
 import { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
 import { signatureBasisSql, isSignatureBasis } from './signature-basis.js';
 import { nativeCategoryBasisSql, isNativeCategoryBasis } from './native-bot-evidence.js';
+import { directoryPublicationBasisSql, isDirectoryPublicationBasis } from './directory-publication.js';
 import type { ReferralPolicy } from './referral-policy.js';
 
 export type { StatsResponse, TrafficFilter } from './contracts.js';
@@ -153,6 +154,17 @@ function seriesRows(rows: Record<string, unknown>[]): TimeSeriesPoint[] {
   return result;
 }
 
+function directoryPublicationRows(rows: Record<string, unknown>[], total: number): StatsResponse['byDirectoryPublication'] {
+  const result: StatsResponse['byDirectoryPublication'] = [], keys = new Set<string>();
+  for (const row of rows) {
+    const basis = row.key1, views = row.views;
+    if (!isDirectoryPublicationBasis(basis) || typeof views !== 'number' || !Number.isSafeInteger(views) || views <= 0 || keys.has(basis)) return malformedReport();
+    keys.add(basis); result.push({ basis, views });
+  }
+  if (result.reduce((sum, row) => sum + row.views, 0) !== total) return malformedReport();
+  return result;
+}
+
 function referrerRows(rows: Record<string, unknown>[]): StatsResponse['byReferrer'] {
   const result: StatsResponse['byReferrer'] = [];
   for (const row of rows) {
@@ -258,7 +270,7 @@ function payloadRows(row: Record<string, unknown>): Record<string, unknown>[] {
 function reportSections(rows: Record<string, unknown>[], includeBoundary: boolean): Map<string, Record<string, unknown>[]> {
   const expected = new Set([
     'totals', 'path', 'country', 'series', 'referrer', 'device', 'agent', 'kind', 'excluded',
-    'referrer-state', 'transitions', 'referrer-details', 'signer', 'verification', 'vendor-ip', 'kind-signature', 'native-category',
+    'referrer-state', 'transitions', 'referrer-details', 'signer', 'verification', 'vendor-ip', 'kind-signature', 'native-category', 'directory-publication',
   ]);
   if (includeBoundary) expected.add('boundary');
   const sections = new Map<string, Record<string, unknown>[]>();
@@ -313,7 +325,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     "('totals', 0)", "('path', 1)", "('country', 2)", "('series', 3)", "('referrer', 4)",
     "('device', 5)", "('agent', 6)", "('kind', 7)", "('excluded', 8)",
     "('referrer-state', 9)", "('transitions', 10)", "('referrer-details', 11)",
-    "('signer', 12)", "('verification', 14)", "('vendor-ip', 15)", "('kind-signature', 16)", "('native-category', 17)",
+    "('signer', 12)", "('verification', 14)", "('vendor-ip', 15)", "('kind-signature', 16)", "('native-category', 17)", "('directory-publication', 18)",
   ];
   if (includeBoundary) sectionValues.push("('boundary', 13)");
 
@@ -347,6 +359,13 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
       )
     SELECT section,
       CASE section
+        WHEN 'directory-publication' THEN (
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', basis, 'views', COUNT(*)) AS row_json
+            FROM (SELECT ${directoryPublicationBasisSql()} AS basis FROM included)
+            GROUP BY basis ORDER BY COUNT(*) DESC, basis
+          )
+        )
         WHEN 'native-category' THEN (
           SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
             SELECT json_object('key1', CASE WHEN reader_kind IN (${READER_KINDS.map(kind => "'" + kind + "'").join(',')}) THEN reader_kind ELSE NULL END, 'key2', ${nativeCategoryBasisSql()}, 'views', COUNT(*)) AS row_json
@@ -588,6 +607,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     byKind: kindRows(requiredSection(sections, 'kind'), numberField(totalsRow, 'views')),
     byKindSignature: kindSignatureRows(requiredSection(sections, 'kind-signature'), numberField(totalsRow, 'views')),
     byKindNativeCategory: nativeCategoryRows(requiredSection(sections, 'native-category'), numberField(totalsRow, 'views')),
+    byDirectoryPublication: directoryPublicationRows(requiredSection(sections, 'directory-publication'), numberField(totalsRow, 'views')),
     vendorNetwork: {
       recordedViews: numberField(vendorNetworkRow, 'recordedViews'),
       notRecordedViews: numberField(vendorNetworkRow, 'notRecordedViews'),

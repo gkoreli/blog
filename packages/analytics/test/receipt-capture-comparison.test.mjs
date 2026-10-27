@@ -42,3 +42,21 @@ test('tail parser accepts complete JSON sequences and rejects partial/prefixed d
   assert.deepEqual(parseTailRecords(values.map(x => JSON.stringify(x, null, 2)).join('\n')), values);
   assert.throws(() => parseTailRecords('{"logs":[')); assert.throws(() => parseTailRecords('Connected\n{}'));
 });
+
+test('v3 publication facts and separate private storage references are compared without disclosure', () => {
+  const value = fixture({ version: '2026-10-27.2' });
+  for (const fields of [value.live[0].logs[0].message[1], value.retained[0].source]) {
+    fields.receipt.version = '2026-10-27.3';
+    fields.receipt.directoryPublication = { profile:'2026-10-27.1',method:'reviewed-first-party-directory',reviewedOn:'2026-10-27',configuredDeclarationCount:0,unmappedDeclarationCount:0,status:'no-declaration' };
+    fields.storage = { version:'2026-10-27.1',status:'returned',observationId:'9007199254740995' };
+  }
+  assert.equal(compareReceiptCopies(value.live,value.retained).identicalPairs,1);
+  value.retained[0].source.storage.observationId='9007199254740996';
+  delete value.retained[0].source.receipt.directoryPublication.status;
+  const result=compareReceiptCopies(value.live,value.retained);
+  assert.equal(result.differingPairs,1);assert.equal(result.changedFields['storage.observationId'],1);
+  assert.equal(result.missingFields['directoryPublication.status'],1);
+  assert.equal(JSON.stringify(result).includes('900719925474099'),false);
+  delete value.live[0].logs[0].message[1].receipt.directoryPublication.status;
+  assert.equal(compareReceiptCopies(value.live,value.retained).matchedPairs,0);
+});

@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-10-27T23:05:50.382574+00:00",
+  "analyticsTests": {
+    "pass": 184,
+    "fail": 0
+  },
+  "siteTests": {
+    "pass": 106,
+    "fail": 0
+  },
+  "workspaceTypecheck": "pass",
+  "frontmatterValidation": "pass",
+  "syntax": "pass",
+  "localLinks": "pass",
+  "gitDiffCheck": "pass",
+  "nativeCollector": "directory-publication-collector.json",
+  "nativeReport": "directory-publication-local.json",
+  "preparedProductionReport": "directory-publication-production.json",
+  "articleBodyWords": 1250,
+  "shapingPrompts": 31,
+  "isolatedBuild": {
+    "result": "pass",
+    "posts": 32,
+    "directory": "/tmp/gk-production-stage-build-20261027/packages/blog",
+    "warning": "Mise tracking symlink outside writable roots failed; build exited zero."
+  },
+  "browser": {
+    "source": "Native synthetic D1 report served by an owned isolated localhost preview",
+    "headlineViews": 12,
+    "distributionViews": 12,
+    "allTenBasisLabelsVisibleInDom": true,
+    "screenshot": "directory-publication-local-fixture.png",
+    "previewStopped": true,
+    "viewportOverrideUsed": false,
+    "syntheticNotVendorOrHumanAcceptance": true
+  },
+  "sourceSha256": {
+    "packages/analytics/src/directory-publication.ts": "46fcc3709960e355b7225f16cc6c3f6c917910e8555b128ac9351461bb9fefcf",
+    "packages/analytics/src/directory-publication-contract.ts": "7ec6bfc79948eeef536a041c67c4a02d083a2aa2905fcbc53dbe71c3428c1c5e",
+    "packages/analytics/src/signature-evidence.ts": "2dc1fc24957ae7cff7e4cf4a0383342932210fb1c925e3e63df0c1febe61d73c",
+    "packages/analytics/src/observation-receipt.ts": "308b471caf26f485e5842194c1ea0712dd363250309ff5a048b932660797a114",
+    "packages/analytics/src/stats.ts": "4cbf8d493a683c192af4f486d83e5a1b39aa5f34781d4f60fef984c4d0a4909a",
+    "packages/blog/src/client/stats.ts": "e2938b38af85a44e2ca8a4176b23561a797ae740141a0d9977776a6ececee605",
+    "packages/blog/src/pages/stats.ts": "980267363e35491b03b2332bd2a862aaaa5e0ac8b37c6830a2de7ed4921c89b3",
+    "packages/blog/src/worker/stats-cache.ts": "63cc49047f05492557cd46d7f2d1f293378877b829443488db1d490928524e88"
+  },
+  "limits": [
+    "Production activation and prospective capture remain separate gates.",
+    "No human trial, native cryptographic agreement or population accuracy claim.",
+    "Positive vendor origins in collector controls use substituted fixture directories."
+  ]
+}
