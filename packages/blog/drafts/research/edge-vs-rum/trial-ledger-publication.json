@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-10-27T19:58:21.082871+00:00",
+  "sourceCommit": "01516b21e0df16a2c52e659a555fe785f7bee296",
+  "build": {
+    "id": "b0ce697b-eae3-4bf9-b71c-50108fd48901",
+    "observedSource": "01516b2",
+    "status": "Ready",
+    "durationSeconds": 34,
+    "remoteNode": "24.22.1",
+    "localNode": "24.14.1",
+    "limit": "Native UI source/build association and deployment metadata, not a binary attestation or runtime-parity claim"
+  },
+  "deployment": {
+    "createdAt": "2026-10-27T19:55:52.018963Z",
+    "versions": [
+      {
+        "version_id": "e14b33b3-e494-4959-95d8-cb6a7eba0ce3",
+        "percentage": 100
+      }
+    ]
+  },
+  "article": {
+    "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove",
+    "httpStatus": 200,
+    "servedMarkdownMatchesIsolatedBuild": true,
+    "bytes": 12060,
+    "sha256": "df88600ac0b009dbc2477024ad616b32697846b59833d5bbf063c078675086c6",
+    "articleWords": 1250,
+    "promptCount": 30,
+    "h1Count": 1,
+    "reconciliationHref": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/09-trial-ledger-and-selective-evaluation.md",
+    "screenshot": "analytics-per-trial-reconciliation.png"
+  },
+  "checks": {
+    "offlineEvaluatorNotImportedByWorker": true,
+    "runtimePolicyUnchanged": true,
+    "noMigrationNeeded": true,
+    "newExperimentalVisits": 0,
+    "newD1StatementsDuringPublication": 0,
+    "privateArchivePermissions": "directories 0700, files 0600",
+    "investigationCopyReviewOn": "2026-10-31"
+  },
+  "acceptanceCorrection": "The first role query selected all ten headings; the explicit h1 selector confirms one article H1. No additional navigation.",
+  "limits": [
+    "The twelve-control production SELECT was captured earlier at 19:43 UTC using 166 reads/zero writes; this publication acceptance reuses it.",
+    "One ordinary browser article navigation and one direct Markdown asset fetch are publication checks, not new labelled controls; ordinary collection work is additional to direct SELECT metering.",
+    "No new lab activation, human label, raw diagnostic mode, population accuracy, native/vendor agreement or Cloudflare receipt claim.",
+    "The source-check receipt retains its prepared-state publicationAcceptancePending flag at that earlier cutoff; this receipt supplies the later acceptance."
+  ]
+}
