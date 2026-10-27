@@ -1,0 +1,20 @@
+{
+  "preparedAt": "2026-10-27T21:59:11.485704+00:00",
+  "reason": "The March-dated rows predate the current collection boundary, requiring a source-aware explanation of the whole-table total. Legacy page_views remains a separate archive and must not be counted again.",
+  "statementCount": 1,
+  "priorCensusRowsRead": 328331,
+  "supplementalReadCeiling": 100000,
+  "combinedPlannedCeiling": 500000,
+  "readCeilingIsDatabaseEnforced": false,
+  "native": {
+    "fixtureRows": 23,
+    "beaconRows": 1,
+    "fixtureReads": 69,
+    "scaleRows": 20000,
+    "scaleReads": 60000,
+    "rowsWritten": 0
+  },
+  "cutoffExclusive": "2026-10-27 21:49:00",
+  "sqlSha256": "769b5cd84a9afd9a67589bb25a1a9a500841ff0e17781396c2ae0217f10213fd",
+  "snapshotLimit": "Separate query execution; matching counts do not establish exact-row identity or no intervening changes."
+}

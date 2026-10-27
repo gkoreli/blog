@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-10-27T22:09:59.559Z",
+  "cutoffExclusive": "2026-10-27 21:49:00",
+  "policy": {
+    "version": "2026-09-06.2",
+    "sha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4"
+  },
+  "querySha256": "acc88e1e32185fbc95e6a1c877be50abe124e95bf7c507e17346a83d0911d8e2",
+  "fixture": {
+    "rows": 23,
+    "unrecognizedTime": 2,
+    "atOrAfterCutoff": 2,
+    "ownerExcluded": 3,
+    "referralExcluded": 1,
+    "rowsRead": 7331,
+    "rowsWritten": 0
+  },
+  "scale": {
+    "rows": 20000,
+    "syntheticDistinctReferrers": 901,
+    "rowsRead": 193362,
+    "rowsWritten": 0,
+    "groups": 21
+  },
+  "sourceSupplement": {
+    "fixtureRows": 23,
+    "beaconRows": 1,
+    "fixtureReads": 69,
+    "scaleRows": 20000,
+    "scaleReads": 60000,
+    "rowsWritten": 0
+  },
+  "fallbackSupplement": {
+    "fixtureRows": 1,
+    "fixtureReads": 21,
+    "scaleTableRows": 20000,
+    "scaleMatchedRows": 1000,
+    "scaleReads": 20000,
+    "rowsWritten": 0
+  },
+  "checks": {
+    "allRowsPartition": true,
+    "ownerMarkAndRowFlags": true,
+    "ownerReferralOverlap": true,
+    "suffixNormalizationAndLookalikes": true,
+    "priorAndCurrentCutoffEdges": true,
+    "unrecognizedTimesRetained": true,
+    "missingUnknownKindsAndEmptyReasons": true,
+    "signatureAndNativeFieldShapes": true,
+    "independentDeclaredAgreement": true,
+    "reviewedSignerDisplay": true,
+    "originalRowsUnchanged": true,
+    "rawCanariesWithheld": true,
+    "emptyCensus": true,
+    "malformedDecoderInputsReject": true,
+    "sourceBoundaries": true
+  },
+  "plannedProductionReadCeiling": 500000,
+  "limits": [
+    "Native synthetic cost is not production metering.",
+    "Read ceiling is an operator threshold checked after execution, not a D1-enforced scan cap.",
+    "No production calls in this helper. Evidence presence and stored outcomes are not fresh cryptographic verification or human labels."
+  ]
+}

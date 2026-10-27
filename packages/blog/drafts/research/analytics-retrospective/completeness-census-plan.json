@@ -1,0 +1,36 @@
+{
+  "preparedAt": "2026-10-27T21:55:04.443421+00:00",
+  "sourceBase": "cfed4d9",
+  "querySha256": "acc88e1e32185fbc95e6a1c877be50abe124e95bf7c507e17346a83d0911d8e2",
+  "helperSha256": "8e620aa0eac219acb3cbd9058f0dce6be27f50cfd473db38b409f6dc0a3bf074",
+  "cutoffExclusive": "2026-10-27 21:49:00",
+  "priorAuditStartInclusive": "2026-09-09 02:07:43",
+  "priorAuditEndExclusive": "2026-10-26 02:17:00",
+  "policy": {
+    "version": "2026-09-06.2",
+    "sha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4"
+  },
+  "plannedStatementCount": 1,
+  "plannedReadCeiling": 500000,
+  "readCeilingIsDatabaseEnforced": false,
+  "nativeScale": {
+    "rows": 20000,
+    "syntheticDistinctReferrers": 901,
+    "rowsRead": 193362,
+    "rowsWritten": 0,
+    "groups": 21
+  },
+  "serviceMetadata": {
+    "window": "rolling 24h, not UTC-day or account-wide attribution",
+    "rowsRead": 1203990,
+    "rowsWritten": 2820,
+    "readQueries": 146,
+    "readReplication": "disabled"
+  },
+  "scope": "Every retained page_observations row; date and inclusion groups partition the whole result, including unrecognized timestamps and owner/referral overlap. No raw reader identifiers/referrers/signing origins/reasons projected.",
+  "limits": [
+    "No remote SQL has run when this plan was prepared.",
+    "Costs depend on actual population and host diversity. Stop without retry after rejection or ceiling overrun.",
+    "Current owner marks/policy determine inclusion; comparison with frozen history may differ without raw-row loss."
+  ]
+}

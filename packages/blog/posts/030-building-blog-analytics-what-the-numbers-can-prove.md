@@ -35,7 +35,7 @@ A keyed hash groups requests by site, UTC date, IP and User-Agent. The table ret
 
 ## One referrer changed the growth story
 
-The audit covers September 9 through partial October 26, 2026 UTC: **14,835 included events** after owner and referral-policy exclusions. The [complete-period evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/10-full-interval-and-field-hardening.md) preserves the queries, boundaries and partial-day limits.
+The October 26 audit counted **[14,835 included events](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/10-full-interval-and-field-hardening.md)** from partial September 9 through partial October 26 UTC. A [whole-table census](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/31-retained-history-completeness-and-delta.md) found **32,272 stored observations**: 16,693 predate that window, including 2,564 legacy beacons.
 
 Browser events rose from **306** in the complete UTC week beginning September 14 to **711** in the week beginning October 19. One unexplained referrer, R1, supplied **388** of the later week’s events. Setting that cohort aside gives **323 versus 306**, a 5.6% increase instead of a 2.32-fold count.
 
@@ -51,7 +51,7 @@ Our catalogue also missed four documented names. [ExaSearchBot](https://crawler.
 
 The repair recognizes all four names, preserves declared roles across verified signatures, and reports signing evidence separately. [A four-second production cohort](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/26-organic-exa-and-join-boundaries.md) contains two AI-search observations with verified Exa-origin evidence. Exact request joins and native-verifier agreement remain open.
 
-**Identity, role and trigger answer different questions.** [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) verify selected components against a key. I [reverified 19 retained Exa records](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/18-webbotauth-verification.md) at recorded times using later-captured keys: every signature protected the host, none the User-Agent or article path. A mutation test confirmed those unsigned fields could change without invalidating the signature. Two records shared a provider ID; the sample does not establish 19 unique events. [Cloudflare labelled them search crawlers](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/25-native-category-and-entitlement.md); verification booleans were unavailable. [Receipts](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/28-receipt-export-fidelity.md) preserve unknowns explicitly after a retained export omitted nulls. The verifier rejects reviewed public demonstration keys; unsigned roles and human triggers remain unauthenticated. Roles lost from 1,003 historical Exa outcomes remain unknown.
+**Identity, role and trigger answer different questions.** [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) verify selected components against a key. I [reverified 19 retained Exa records](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/18-webbotauth-verification.md) at recorded times using later-captured keys: every signature protected the host, none the User-Agent or article path. A mutation test confirmed those unsigned fields could change without invalidating the signature. Two records shared a provider ID; the sample does not establish 19 unique events. [Cloudflare labelled them search crawlers](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/25-native-category-and-entitlement.md); verification booleans were unavailable. [Receipts](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/28-receipt-export-fidelity.md) preserve unknowns explicitly after a retained export omitted nulls. The verifier rejects reviewed public demonstration keys; unsigned roles and human triggers remain unauthenticated. The census leaves **1,025 included records labelled Exa with unknown roles**.
 
 ## Preserve uncertainty in the data
 
@@ -65,11 +65,11 @@ New observations omit that ambiguous source path; history gets an explicit label
 
 The [referrer-abuse policy](/filter-referrer-spam-without-deleting-analytics-history) versions public exclusions. Unapproved referrers and signing origins appear as Other; original evidence stays private.
 
-Unknowns must survive aggregation. A [local D1 counterexample](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/29-unreported-classifications-and-denominators.md) counted ten events but displayed only five in its classification breakdown. Missing kinds and reasons had disappeared. Reports now label those gaps and reject incomplete composition. Production prevalence remains unmeasured.
+A [native D1 fixture](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/29-unreported-classifications-and-denominators.md) exposed a gap: ten headline events but only five in the classification breakdown. Reports preserve unknowns and reject incomplete composition. The census found no missing kinds or reasons; **1,181 stored verification outcomes lacked proof detail**.
 
 ## Correct totals can still break production
 
-The first referral assessment repeated work across nine report queries. One historical report consumed **182,388 D1 row reads**. The account later exhausted its allowance.
+One report repeated referral assessment across nine queries, consuming **182,388 D1 row reads**. The account later exhausted its allowance.
 
 Sharing the selected population and assessment reduced the same report to **33,259 reads**, an **81.8% reduction**, with identical output. The [recovery measurements](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md) preserve the comparison.
 

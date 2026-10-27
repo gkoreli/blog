@@ -2,6 +2,9 @@
 
 The owner authorized proceeding from the field-semantics review. This extends the detailed audit to the entire period after the last feature release and implements bounded prospective repairs. Existing snapshots stay frozen. [ADR-0016.9](../../../../../docs/adr/0016.9-observation-provenance-and-referrer-boundaries.md) records the semantic choices.
 
+**Scope clarification — October 27:** This record covers the stated September 9 release-to-cutoff window, not the complete table. The [later whole-table census](31-retained-history-completeness-and-delta.md) finds 16,693 earlier-dated rows and 713 since this cutoff. It re-evaluates the same 14,866-row interval as 14,834 included/ten owner-excluded/22 referral-excluded under the current owner registry. The original 14,835/nine/22 result remains a frozen capture. Neither matching totals nor later-dated evidence establishes exact row identity or when the earlier rows entered the database.
+
+
 ## Complete retained-data coverage
 
 Window: **September 9, 2026 02:07:43 UTC inclusive through October 26 02:17:00 UTC exclusive**. Start is the observed September release version's activation; first/last days are partial. The original audit's September 27 start and October 26 01:03:18 cutoff remain explicit segment boundaries. One statement uses a shared materialized population and eleven aggregate sections, including daily/weekly composition, paths, referrers, kinds/signatures, provenance, repeated-client distributions, transitions, owner marks and migrations. It aggregates daily IDs inside D1 without exporting identifiers. It analyzes all retained events in the window through those dimensions, not every HTTP request ever served.

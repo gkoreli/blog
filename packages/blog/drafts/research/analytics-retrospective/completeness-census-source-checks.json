@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-27T22:05:50.647578+00:00",
+  "syntax": "pass",
+  "analyticsFixtureCompilation": "pass",
+  "native": "completeness-census-local.json",
+  "mainStatementUnchangedAfterDecoderTightening": true,
+  "productionResultsRevalidatedWithStrictDecoder": true,
+  "data": "completeness-census-production.json",
+  "articleBodyWords": 1250,
+  "shapingPrompts": 31,
+  "helperSha256": "278f1ec35f7970f0ba457b5eff441092fd707b056e516a326ba6ea54fffc742b",
+  "runtimeChanged": false,
+  "unchangedAnalyticsAndSiteSuites": {
+    "lastAcceptedAnalytics": 172,
+    "lastAcceptedSite": 106,
+    "source": "345a653",
+    "rerun": false
+  },
+  "limits": [
+    "Source publication and live acceptance remain separate.",
+    "Unchanged runtime suites are prior evidence, not fresh runs.",
+    "No human or native-verifier ground truth."
+  ],
+  "frontmatterValidation": "pass",
+  "isolatedProductionBuild": {
+    "posts": 32,
+    "result": "pass",
+    "path": "/tmp/gk-production-stage-build-20261027/packages/blog"
+  },
+  "localLinkChecks": "pass",
+  "gitDiffCheck": "pass",
+  "fallbackSupplementNativeAndProductionValidated": true,
+  "productionStatements": 3,
+  "directRowsRead": 457426
+}

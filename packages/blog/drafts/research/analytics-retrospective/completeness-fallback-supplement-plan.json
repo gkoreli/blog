@@ -1,0 +1,26 @@
+{
+  "preparedAt": "2026-10-27T22:10:22.635382+00:00",
+  "reason": "A fallback kind alone does not prove absence of retained declarations. Verify NULL/empty/name and evidence-record presence for the raw Exa signed-agent subset, without returning values.",
+  "scope": "Canonical stored dates before the same cutoff; reader_kind signed-agent, stored verified outcome, exact reviewed Exa origin. Raw subset, without repeating referral assessment.",
+  "cutoffExclusive": "2026-10-27 21:49:00",
+  "native": {
+    "fixtureRows": 1,
+    "fixtureReads": 21,
+    "scaleTableRows": 20000,
+    "scaleMatchedRows": 1000,
+    "scaleReads": 20000,
+    "rowsWritten": 0
+  },
+  "priorStatements": 2,
+  "priorRowsRead": 425153,
+  "plannedStatementCount": 1,
+  "remainingReviewedReadCeiling": 74847,
+  "combinedCeiling": 500000,
+  "ceilingDatabaseEnforced": false,
+  "sqlSha256": "98669b6e1a38fadf6897575859dc78c3443417fe2ea7cf3c73863e21f734593d",
+  "limits": [
+    "Separate snapshot and raw subset; compare counts with the main result without claiming exact-row identity.",
+    "No original names, header evidence or signing URI returned.",
+    "Presence of a field would not authenticate a role or operator."
+  ]
+}
