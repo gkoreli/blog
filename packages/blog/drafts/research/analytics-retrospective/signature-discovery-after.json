@@ -1,0 +1,116 @@
+{
+  "checkedAt": "2026-10-27T18:54:54.688Z",
+  "runtime": "v24.14.1",
+  "expectation": "after",
+  "verifierProfile": "2026-10-27.5",
+  "method": "Independent synthetic signing with ephemeral keys; every directory fetch intercepted in process. No connection to any listed target.",
+  "trials": [
+    {
+      "label": "public-dns",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "localhost",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "localhost-subdomain-dot",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "private-ipv4",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "loopback-integer",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "loopback-hex",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "loopback-octal",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "link-local",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "ipv6-loopback",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "ipv6-mapped",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "public-ip-literal",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "nondefault-port",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "single-label",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "local-name",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "internal-name",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    },
+    {
+      "label": "home-arpa",
+      "status": "unverified",
+      "reason": "discovery-policy-rejected",
+      "directoryFetches": 0
+    }
+  ],
+  "sourceSha256": {
+    "webbotauth.ts": "2f945d42440ca546cebecb160660ce6b8df7896007f939b2ddc8c4f1b14de8ab",
+    "signature-evidence.ts": "1d88be967c13b43debf4446ef65fbd92ff5ee07bb6897039c5abad506df17d87",
+    "versions.ts": "97d42ef19e0a1685cfed5558437dd48806df21cce6d719cf845ffd1112cbcf1a",
+    "directory-discovery.ts": "48a15a0f4c839cecb649660b75e051a2aa6fa46b3be513acc20072abf9579a09"
+  },
+  "networkCalls": 0,
+  "productionCalls": 0,
+  "limits": [
+    "This tests URL admission, not DNS resolution, rebinding, network egress or vendor/native verification."
+  ]
+}

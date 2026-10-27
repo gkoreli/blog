@@ -82,16 +82,17 @@ The dedicated module is [`src/webbotauth.ts`](src/webbotauth.ts), called before 
 | Responsibility | Module / observable evidence |
 |---|---|
 | Parse headers, reconstruct covered components, verify Ed25519 | `webbotauth.ts`; quoted-string and dictionary compatibility, explicit unsupported cases |
-| Discover and cache keys | Same module; HTTPS origin-only directory, no redirects, 64 KiB/128-key limits, freshness, rotation and key-validity checks |
+| Admit directory URLs | [`directory-discovery.ts`](src/directory-discovery.ts); default-port HTTPS DNS origins, explicit literal/local-name/port rejection before caches or fetch |
+| Discover and cache keys | `webbotauth.ts`; no redirects, 64 KiB/128-key limits, freshness, rotation and key-validity checks |
 | Preserve outcome and proof boundaries | [`signature-evidence.ts`](src/signature-evidence.ts); invalid, unsupported, unavailable, policy-rejected, not-applicable and indeterminate; coverage/age/validity/profile |
 | Check documented Exa identity | [`vendor-signatures.ts`](src/vendor-signatures.ts); ExaSearchBot and ExaUser map to `https://crawler.exa.ai`, independently of the display catalogue |
 | Preserve native evidence independently | `signature-evidence.ts`; Cloudflare booleans stay null when absent, false when false |
 | Persist and report | `db.ts` / `stats.ts`; bounded derived JSON, same report selection/exclusions, explicit unrecorded history |
 | Attribute a declared network | `vendor-ip.ts`; separate published-range method, not a replacement for Exa's signatures |
 
-Verification runs in `waitUntil` after the response, with a two-second collector deadline and versioned 24-hour lifetime/age policy. Repeated covered identifiers are rejected before discovery, following RFC 9421 §2.5; different dictionary member parameters remain distinct. The failure is retained as `duplicate-component` / `invalid` under verifier profile `2026-10-27.4`.
+Verification runs in `waitUntil` after the response, with a two-second collector deadline and versioned 24-hour lifetime/age policy. Repeated covered identifiers are rejected before discovery, following RFC 9421 §2.5; different dictionary member parameters remain distinct. The failure is retained as `duplicate-component` / `invalid` under verifier profile `2026-10-27.4`. Profile `2026-10-27.5` additionally rejects disallowed discovery URLs as `discovery-policy-rejected` / `policy-rejected`; this is local policy, not a failed cryptographic proof.
 
-A verified key association does not authenticate unsigned UA/path values, human intent, a unique request, reading, citation or permission to access content. Replay mitigation is expiry-only; there is no nonce database. Discovery bounds do not constitute complete SSRF protection. Native Cloudflare currently documents a quoted-string profile that rejects the later dictionary form. No Akamai interoperability acceptance is claimed.
+A verified key association does not authenticate unsigned UA/path values, human intent, a unique request, reading, citation or permission to access content. Replay mitigation is expiry-only; there is no nonce database. URL admission rejects IP literals, local-name suffixes, single-label hosts and nondefault ports; permitted DNS names can still resolve internally or rebind. Discovery bounds do not constitute complete SSRF protection. Native Cloudflare currently documents a quoted-string profile that rejects the later dictionary form. No Akamai interoperability acceptance is claimed.
 
 See the [protocol audit and retained Exa evidence](../blog/drafts/research/analytics-retrospective/18-webbotauth-verification.md), its [new before/after component experiment](../blog/drafts/research/analytics-retrospective/signature-components-after.json), [outcome/origin-method audit](../blog/drafts/research/analytics-retrospective/20-verification-outcomes-and-vendor-methods.md) and [ADR-0016.11](../../docs/adr/0016.11-signature-verification-evidence.md). Source checks, activation and organic signed-request acceptance are separate claims.
 

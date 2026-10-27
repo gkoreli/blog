@@ -1,0 +1,115 @@
+{
+  "checkedAt": "2026-10-27T18:54:30.987Z",
+  "runtime": "v24.14.1",
+  "expectation": "before",
+  "verifierProfile": "2026-10-27.4",
+  "method": "Independent synthetic signing with ephemeral keys; every directory fetch intercepted in process. No connection to any listed target.",
+  "trials": [
+    {
+      "label": "public-dns",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "localhost",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "localhost-subdomain-dot",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "private-ipv4",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "loopback-integer",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "loopback-hex",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "loopback-octal",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "link-local",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "ipv6-loopback",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "ipv6-mapped",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "public-ip-literal",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "nondefault-port",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "single-label",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "local-name",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "internal-name",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    },
+    {
+      "label": "home-arpa",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1
+    }
+  ],
+  "sourceSha256": {
+    "webbotauth.ts": "c62ee12675354561a8261e3daefeab387da9b05ed9e3bd1da051bc395ef279d6",
+    "signature-evidence.ts": "34ae0f424a590932d5d97a4df6407aeab2e6ff5d5e6ccb534db3acbdd092f68e",
+    "versions.ts": "d0b47e486b5c19ddeea335c124f04ba918db3a3663a07a21776b0f11c3af8262"
+  },
+  "networkCalls": 0,
+  "productionCalls": 0,
+  "limits": [
+    "This tests URL admission, not DNS resolution, rebinding, network egress or vendor/native verification."
+  ]
+}

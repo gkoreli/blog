@@ -97,11 +97,29 @@
     "words": 1249,
     "originalShapingMessages": 30,
     "isolatedBuiltPosts": 32,
-    "livePublicationAccepted": false,
-    "limit": "Actual served article must be accepted after this editorial publication"
+    "livePublicationAccepted": true,
+    "limit": "Served Markdown matches checked isolated build after editorial publication",
+    "publication": {
+      "checkedAt": "2026-10-27T18:57:11.685940+00:00",
+      "sourceCommit": "72e1d49",
+      "buildId": "937be393-f522-4f82-8924-54f3ee4c31e2",
+      "buildVersionPrefix": "b9bbeee5",
+      "durationSeconds": 19,
+      "articleSha256": "7a44c1f60891c935c9d9230b2bba963baaa858beee5dc1277eb4900150c2b49b",
+      "servedBytesMatchIsolatedBuild": true
+    },
+    "publicationDeployment": {
+      "createdAt": "2026-10-27T18:56:04.906499Z",
+      "versions": [
+        {
+          "version_id": "b9bbeee5-b37a-4fa7-b31d-e9f5d3161f14",
+          "percentage": 100
+        }
+      ]
+    }
   },
   "checks": {
     "trialDisclosureServed": true,
-    "publicationStillPending": true
+    "publicationStillPending": false
   }
 }

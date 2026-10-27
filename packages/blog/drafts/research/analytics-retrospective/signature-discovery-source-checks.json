@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-27T18:58:07.742690+00:00",
+  "analyticsTests": 137,
+  "siteTests": 106,
+  "workspaceTypecheck": true,
+  "postValidation": {
+    "valid": true,
+    "reportedPosts": 21
+  },
+  "isolatedBuiltPosts": 32,
+  "relativeLinksChecked": 221,
+  "nativeLocalReceipt": "signature-discovery-local.json",
+  "independentBefore": "signature-discovery-before.json",
+  "independentAfter": "signature-discovery-after.json",
+  "sourceSha256": {
+    "packages/analytics/src/directory-discovery.ts": "48a15a0f4c839cecb649660b75e051a2aa6fa46b3be513acc20072abf9579a09",
+    "packages/analytics/src/webbotauth.ts": "2f945d42440ca546cebecb160660ce6b8df7896007f939b2ddc8c4f1b14de8ab",
+    "packages/analytics/src/signature-evidence.ts": "1d88be967c13b43debf4446ef65fbd92ff5ee07bb6897039c5abad506df17d87",
+    "packages/analytics/src/versions.ts": "97d42ef19e0a1685cfed5558437dd48806df21cce6d719cf845ffd1112cbcf1a",
+    "packages/analytics/test/directory-discovery.test.mjs": "6dd03575d2071cf5cb3e164d56ce625383d1477d6dca93a4fbf00b95092b3554",
+    "packages/blog/scripts/check-signature-discovery.mjs": "ef2a7302829d79e46f936adbfa5320e80fe5b499d988d4ef3c6cad2f36d60f9e"
+  },
+  "operationalCorrections": [
+    "Native Miniflare initially could not bind localhost in the sandbox; rerun with permission passed",
+    "pnpm build could not create tsx CLI IPC in the sandbox; the same policy check and build entrypoints passed via node --import tsx in the isolated tree"
+  ],
+  "productionAcceptanceStillPending": true
+}

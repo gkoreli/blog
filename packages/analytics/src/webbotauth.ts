@@ -1,4 +1,4 @@
-const DIRECTORY_PATH = '/.well-known/http-message-signatures-directory';
+import { directoryLocation } from './directory-discovery.js';
 const DIRECTORY_TTL_MS = 60 * 60 * 1_000;
 const CLOCK_SKEW_SECONDS = 60;
 const encoder = new TextEncoder();
@@ -708,19 +708,6 @@ async function resolveVerificationKey(
   }
 }
 
-function agentLocation(uri: string): { agent: string; directoryUrl: string } | null {
-  try {
-    const url = new URL(uri);
-    if (url.protocol !== 'https:' || url.username.length > 0 || url.password.length > 0) return null;
-    // This implementation supports directory discovery only, not arbitrary URI
-    // or JWKS discovery. Never silently reinterpret a path as an origin.
-    if (url.pathname !== '/' || url.search !== '' || url.hash !== '') return null;
-    return { agent: url.origin, directoryUrl: `${url.origin}${DIRECTORY_PATH}` };
-  } catch {
-    return null;
-  }
-}
-
 async function verifyCandidate(
   request: Request,
   candidate: SignatureCandidate,
@@ -758,8 +745,8 @@ async function verifyCandidate(
   if (signatureBase.signatureAgentUri === null) {
     return { status: 'unverified', reason: 'unsupported-or-missing-component' };
   }
-  const location = agentLocation(signatureBase.signatureAgentUri);
-  if (location === null) return { status: 'unverified', reason: 'invalid-signature-agent' };
+  const location = directoryLocation(signatureBase.signatureAgentUri);
+  if ('reason' in location) return { status: 'unverified', reason: location.reason };
 
   const resolvedKey = await resolveVerificationKey(location.directoryUrl, keyid, fetcher, cache, nowMs);
   if ('reason' in resolvedKey) return { status: 'unverified', reason: resolvedKey.reason };
