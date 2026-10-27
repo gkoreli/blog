@@ -1,0 +1,198 @@
+{
+  "acceptedAt": "2026-10-27T23:14:00.901155+00:00",
+  "sourceCommit": "3519ea0ad7681d768e2bfaaf03af5f823b9c5ef2",
+  "build": {
+    "id": "ad003200-a498-4478-b1af-fef8895bfd2f",
+    "nativeStatus": "Ready",
+    "durationSeconds": 48
+  },
+  "activation": {
+    "createdOn": "2026-10-27T23:07:10.808764Z",
+    "versions": [
+      {
+        "version_id": "61f43d01-bf25-43a0-a2a4-a8fa8ee55ded",
+        "percentage": 100
+      }
+    ]
+  },
+  "versions": {
+    "collection": "2026-10-27.10",
+    "signatureEvidence": "2026-10-27.5",
+    "receipt": "2026-10-27.3",
+    "reportCache": "2026-10-27.9",
+    "classifier": "2026-10-27.5",
+    "verifier": "2026-10-27.6"
+  },
+  "optionalBindings": {
+    "OWNER_MARK_GRANT": false,
+    "ANALYTICS_DIAGNOSTICS": false,
+    "ANALYTICS_CALIBRATION": false
+  },
+  "control": {
+    "method": "Single operator-generated unsigned Ahrefs declaration with an existing excluded referral host. No vendor-signature claim or verifier injection.",
+    "httpStatus": 200,
+    "workerOutcome": "ok",
+    "receipt": {
+      "version": "2026-10-27.3",
+      "classifierProfile": "2026-10-27.5",
+      "readerKind": "seo-crawler",
+      "directoryPublication": {
+        "profile": "2026-10-27.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-27",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "not-verified"
+      },
+      "declarations": {
+        "status": "single",
+        "candidateCount": 1,
+        "candidateNames": "AhrefsBot",
+        "categoryAgreement": "single-match"
+      },
+      "signature": {
+        "evidenceVersion": "2026-10-27.5",
+        "source": "local-webbotauth",
+        "verifierProfile": "2026-10-27.6",
+        "status": "absent",
+        "outcome": "absent",
+        "reason": "none",
+        "reasonCount": 0,
+        "reasonNames": "none",
+        "signer": "none",
+        "documentedVendorStatus": "not-configured",
+        "userAgentCovered": "unavailable",
+        "coverage": {
+          "status": "unavailable"
+        }
+      },
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable",
+        "categoryStatus": "empty",
+        "categoryValue": "none"
+      }
+    },
+    "exactReturnedReferenceReadback": true,
+    "storedFields": {
+      "collectionVersion": "2026-10-27.10",
+      "readerKind": "seo-crawler",
+      "evidenceVersion": "2026-10-27.5",
+      "evidenceSource": "local-webbotauth",
+      "localOutcome": "absent",
+      "verifierProfile": "2026-10-27.6",
+      "documentedVendorStatus": "not-configured",
+      "publicationProfile": "2026-10-27.1",
+      "publicationMethod": "reviewed-first-party-directory",
+      "publicationReviewedOn": "2026-10-27",
+      "publicationStatus": "not-verified",
+      "configuredDeclarationCount": 1,
+      "unmappedDeclarationCount": 0,
+      "optionalCaptureAbsent": 1,
+      "referralControl": 1
+    },
+    "privateReferencesPublished": false,
+    "privacyDisclosureServed": true
+  },
+  "nativeTail": {
+    "records": 1,
+    "selectedControls": 1,
+    "matchedAttemptStored": true,
+    "stopped": true,
+    "exitCode": 1,
+    "exitReason": "Intentional Ctrl-C after capture.",
+    "inputSha256": "6a78de2fda20f3cde6d10965e9c753edf73aac7c18c50ffe000112ffedb90dbf"
+  },
+  "controlSelect": {
+    "query": "directory-publication-control.sql",
+    "querySha256": "14ef1648f312aa9f7bc28845e91ec4b64f0f7cd58fa8b49416516a4d34992a85",
+    "rowsRead": 1,
+    "rowsWritten": 0,
+    "changes": 0,
+    "changedDb": false,
+    "postExecutionReadCeiling": 100
+  },
+  "directSelectWork": {
+    "statements": 2,
+    "rowsRead": 8049,
+    "rowsWritten": 0,
+    "scope": "Prepared fifteen-event report plus exact excluded-control readback. The control causes a normal insertion. HTTP/native service work is additional."
+  },
+  "apiCache": {
+    "sameConnection": true,
+    "responses": [
+      {
+        "status": 200,
+        "cache": "MISS",
+        "colo": "DFW",
+        "sha256": "0b7499e563868a9d630ce8f5c7ab90349cb73e2893158328d5651e81e868a0cc",
+        "views": 15,
+        "directoryPublication": [
+          {
+            "basis": "not-recorded",
+            "views": 15
+          }
+        ],
+        "updatedAt": "2026-10-27T23:09:31.211Z"
+      },
+      {
+        "status": 200,
+        "cache": "HIT",
+        "colo": "DFW",
+        "sha256": "0b7499e563868a9d630ce8f5c7ab90349cb73e2893158328d5651e81e868a0cc",
+        "views": 15,
+        "directoryPublication": [
+          {
+            "basis": "not-recorded",
+            "views": 15
+          }
+        ],
+        "updatedAt": "2026-10-27T23:09:31.211Z"
+      }
+    ],
+    "bytesEqual": true,
+    "calculationTimePreserved": true
+  },
+  "browser": {
+    "scope": "7d/all/path=/privacy",
+    "views": 15,
+    "directoryDistribution": [
+      {
+        "basis": "not-recorded",
+        "views": 15
+      }
+    ],
+    "explanationVisible": true,
+    "screenshot": "directory-publication-production.png",
+    "viewportOverrideUsed": false
+  },
+  "article": {
+    "exactBuildBytes": true,
+    "sha256": "9aaabf5981e862b315691bce66d885f5c5ce549f23b6efc1e4333b85bcba9086",
+    "newPublisherEvidenceLink": true,
+    "bodyWords": 1250,
+    "shapingPrompts": 31,
+    "deployedEvidenceHrefVerified": true
+  },
+  "retainedV3": {
+    "status": "not-accepted",
+    "scope": "Last 1 hour; exact operation + v3 receipt, v3 version alone, and labelled-client invocation text query.",
+    "structuredExactMatches": 0,
+    "structuredExactCopyRecords": 0,
+    "versionMatches": 0,
+    "invocationTextMatches": 0,
+    "controlEventUtc": "2026-10-27T23:08:46.390Z",
+    "queryStartDisplayedUtc": "2026-10-27T22:12:44Z",
+    "limits": [
+      "Scoped nonmatches do not identify loss, ingestion/indexing delay, sampling, export behavior or disabled persistence.",
+      "The live receipt and exact D1 row match; retained v3 fidelity remains unverified.",
+      "No extra control, billing acceptance, log export integration or token creation performed."
+    ]
+  },
+  "limits": [
+    "No organic signed .10 exact-row acceptance, native cryptographic agreement or human/device accuracy claim.",
+    "Publisher matching does not authenticate an uncovered UA or per-client signing promise.",
+    "Historical rows stay unrecorded; narrow data is not whole-history prevalence.",
+    "Retention, lawful basis, rights/backups, replay and DNS/egress remain open; human trials deferred."
+  ]
+}
