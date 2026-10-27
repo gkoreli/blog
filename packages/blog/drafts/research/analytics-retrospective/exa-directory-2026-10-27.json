@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-10-27T17:40:44.695Z",
+  "url": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+  "statusLines": [
+    "HTTP/2 200 "
+  ],
+  "contentType": [
+    "application/http-message-signatures-directory+json"
+  ],
+  "cacheControl": [
+    "max-age=300"
+  ],
+  "date": [
+    "Tue, 27 Oct 2026 17:40:22 GMT"
+  ],
+  "age": [],
+  "bytes": 274,
+  "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+  "keyCount": 2,
+  "keys": [
+    {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "thumbprint": "sDCpsJpgItYcmF_KhZozOUGIGL6a49yxE3f0yQR5SIA"
+    },
+    {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "thumbprint": "fEcp7SI5JcfvpiZ1M638-CDmUFO6m0fTqc8_Outh7U4"
+    }
+  ],
+  "directoryResponseSignaturePresent": true,
+  "directoryResponseSignatureInputPresent": true,
+  "limits": [
+    "Live HTTPS directory format/key inspection only",
+    "No current request signature, historical directory-at-receipt or native verdict proven",
+    "Directory response signature not verified by this capture"
+  ]
+}

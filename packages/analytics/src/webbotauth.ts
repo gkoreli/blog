@@ -492,11 +492,18 @@ interface SignatureBaseResult {
   coveredTargetUri: boolean;
 }
 
+/** RFC 9421 section 2.5 step 2.1 includes parameters in component identity. */
+function hasDuplicateComponent(input: InnerList): boolean {
+  const identifiers = input.items.map(serializeItem);
+  return new Set(identifiers).size !== identifiers.length;
+}
+
 function createSignatureBase(
   request: Request,
   input: InnerList,
   parsedAgent: ParsedSignatureAgent | null,
 ): SignatureBaseResult | null {
+  if (hasDuplicateComponent(input)) return null;
   const lines: string[] = [];
   let signatureAgentUri: string | null = null;
   let coveredAuthority = false;
@@ -742,6 +749,7 @@ async function verifyCandidate(
   const keyid = stringValue(parameter(candidate.input.parameters, 'keyid'));
   if (keyid === null || keyid.length === 0) return { status: 'unverified', reason: 'missing-keyid' };
 
+  if (hasDuplicateComponent(candidate.input)) return { status: 'unverified', reason: 'duplicate-component' };
   const signatureBase = createSignatureBase(request, candidate.input, parsedAgent);
   if (signatureBase === null) return { status: 'unverified', reason: 'unsupported-or-missing-component' };
   if (!signatureBase.coveredAuthority && !signatureBase.coveredTargetUri) {

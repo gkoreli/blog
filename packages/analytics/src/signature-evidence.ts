@@ -7,6 +7,7 @@ import { vendorSignatureEvidence, type VendorSignatureEvidence } from './vendor-
 export const FAILURE_OUTCOMES = {
   'missing-signature-agent': 'invalid', 'missing-signature-input': 'invalid', 'missing-signature': 'invalid',
   'malformed-signature-agent': 'invalid', 'malformed-signature-fields': 'invalid',
+  'duplicate-component': 'invalid',
   'invalid-validity-window': 'invalid', 'missing-keyid': 'invalid', 'invalid-signature-agent': 'invalid', 'signature-invalid': 'invalid',
   'bare-uri-signature-agent': 'unsupported', 'unsupported-alg': 'unsupported',
   'directory-unavailable': 'unavailable', 'key-not-found': 'unavailable', 'key-not-yet-valid': 'unavailable', 'key-expired': 'unavailable', 'key-invalid': 'unavailable', 'verification-timeout': 'unavailable',

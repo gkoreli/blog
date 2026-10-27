@@ -4,4 +4,4 @@ export const COLLECTION_VERSION = '2026-10-27.4';
 export const CLASSIFIER_VERSION = '2026-10-27.4';
 
 /** Local verifier implementation/profile; not a claim of complete draft conformance. */
-export const VERIFIER_PROFILE_VERSION = '2026-10-27.3';
+export const VERIFIER_PROFILE_VERSION = '2026-10-27.4';

@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-27T17:39:50.493Z",
+  "runtime": "v24.14.1",
+  "expectation": "before",
+  "verifierProfile": "2026-10-27.3",
+  "method": "Independently assembled signature bases, ephemeral Ed25519 key and in-process directory; no vendor identity or native-edge acceptance claim",
+  "sourceSha256": {
+    "webbotauth.ts": "e6cea5647f580dd0d3c38498094b908f11a28a7f419a2bf1b330fd3c568a9312",
+    "signature-evidence.ts": "3e1ccd7a954e07f56b219d632d03ab80d98f90d78052c3bdf3a690ca5d49dba4",
+    "versions.ts": "3a6283b056ec9160be1f4a07f71af667be94d289f78dde78d0bbe28675a582fc"
+  },
+  "trials": [
+    {
+      "label": "unique-components",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1,
+      "outcome": "verified"
+    },
+    {
+      "label": "repeated-authority",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1,
+      "outcome": "verified"
+    },
+    {
+      "label": "repeated-header",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1,
+      "outcome": "verified"
+    },
+    {
+      "label": "repeated-dictionary-member",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1,
+      "outcome": "verified"
+    }
+  ],
+  "networkCalls": 0,
+  "productionCalls": 0
+}

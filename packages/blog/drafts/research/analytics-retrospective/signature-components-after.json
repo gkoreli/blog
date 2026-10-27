@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-27T17:40:27.875Z",
+  "runtime": "v24.14.1",
+  "expectation": "after",
+  "verifierProfile": "2026-10-27.4",
+  "method": "Independently assembled signature bases, ephemeral Ed25519 key and in-process directory; no vendor identity or native-edge acceptance claim",
+  "sourceSha256": {
+    "webbotauth.ts": "c62ee12675354561a8261e3daefeab387da9b05ed9e3bd1da051bc395ef279d6",
+    "signature-evidence.ts": "34ae0f424a590932d5d97a4df6407aeab2e6ff5d5e6ccb534db3acbdd092f68e",
+    "versions.ts": "769ab6043736b1c8b00b9720809d98ceae81e8e0c685004e407e568fca377b3a"
+  },
+  "trials": [
+    {
+      "label": "unique-components",
+      "status": "verified",
+      "reason": null,
+      "directoryFetches": 1,
+      "outcome": "verified"
+    },
+    {
+      "label": "repeated-authority",
+      "status": "unverified",
+      "reason": "duplicate-component",
+      "directoryFetches": 0,
+      "outcome": "invalid"
+    },
+    {
+      "label": "repeated-header",
+      "status": "unverified",
+      "reason": "duplicate-component",
+      "directoryFetches": 0,
+      "outcome": "invalid"
+    },
+    {
+      "label": "repeated-dictionary-member",
+      "status": "unverified",
+      "reason": "duplicate-component",
+      "directoryFetches": 0,
+      "outcome": "invalid"
+    }
+  ],
+  "networkCalls": 0,
+  "productionCalls": 0
+}
