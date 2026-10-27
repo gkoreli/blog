@@ -1,0 +1,126 @@
+{
+  "checkedAt": "2026-10-27T20:25:54.199594+00:00",
+  "sourceCommit": "fcfaa75cd686d79046e1e3ba39771d3d959fa323",
+  "build": {
+    "id": "7b710383-befd-4522-abe0-74bf6ec1ddf7",
+    "status": "Ready",
+    "durationSeconds": 38,
+    "limit": "Native UI source/build association and deployment metadata, not binary attestation"
+  },
+  "deployment": {
+    "createdAt": "2026-10-27T20:17:18.590217Z",
+    "versions": [
+      {
+        "version_id": "68737118-56b7-497f-84e7-6b444f641f5b",
+        "percentage": 100
+      }
+    ]
+  },
+  "controlledRequest": {
+    "requests": 1,
+    "method": "One actual curl GET /privacy with the reviewed referral exclusion; no vendor declaration, signature, owner grant or human label",
+    "window": {
+      "start": "2026-10-27 20:19:06",
+      "endExclusive": "2026-10-27 20:19:14"
+    },
+    "privacyDisclosurePresent": true,
+    "storedResults": [
+      {
+        "collectionVersion": "2026-10-27.7",
+        "evidenceVersion": "2026-10-27.4",
+        "localOutcome": "absent",
+        "categoryVersion": "2026-10-27.1",
+        "categoryStatus": "empty",
+        "categoryValue": null,
+        "nativeVerifiedBot": null,
+        "nativeSignedAgent": null,
+        "optionalCaptureAbsent": 1
+      }
+    ]
+  },
+  "directDatabaseWork": {
+    "reportedRowsRead": 12,
+    "reportedRowsWritten": 0,
+    "readCeiling": 50,
+    "executions": [
+      {
+        "mode": "remote-file-import",
+        "rowsRead": 6,
+        "rowsWritten": 0,
+        "changes": 1,
+        "changedDb": true
+      },
+      {
+        "mode": "remote-command-query",
+        "rowsRead": 6,
+        "rowsWritten": 0,
+        "changes": 0,
+        "changedDb": false
+      }
+    ],
+    "sqlSha256": "27694f4086f11ebb82747af8e893164cf1b94f4b2cd6a30711f047429901ee93",
+    "limit": "File mode uses the import endpoint and flagged a database change despite zero reported row writes. Do not equate zero row writes with absence of all changes or availability impact."
+  },
+  "publicReport": {
+    "selection": {
+      "traffic": "automation",
+      "range": "7d",
+      "path": "/privacy",
+      "agent": null,
+      "kind": "other-bot"
+    },
+    "includedViews": 4,
+    "excludedViews": 3,
+    "byKindNativeCategory": [
+      {
+        "kind": "other-bot",
+        "basis": "not-recorded",
+        "views": 4
+      }
+    ],
+    "cacheResults": [
+      "MISS",
+      "HIT"
+    ],
+    "colo": "PDX",
+    "identicalBytes": true,
+    "updatedAt": "2026-10-27T20:19:55.484Z",
+    "bodySha256": "588da656893eee1b1a187e578f0e4fa9fdca9ca140902c90373242d4551c72f1",
+    "limit": "Four included historical events remain unrecorded; three exclusions include historical controls, not three new requests. Browser cache state was not captured."
+  },
+  "article": {
+    "servedMatchesIsolatedBuild": true,
+    "sha256": "270457fbfb7c79328e98a3ae997c48bf7fb91fd8c352a41017e13eb28158c7e9",
+    "words": 1249,
+    "promptCount": 30
+  },
+  "checks": {
+    "liveUiAndScope": true,
+    "temporaryOwnerGrantAbsent": true,
+    "calibrationBindingAbsent": true,
+    "rawDiagnosticBindingAbsent": true,
+    "controlOptionalCaptureAbsent": true,
+    "viewportReset": true,
+    "ownedPreviewStopped": true
+  },
+  "wranglerExecutionSource": {
+    "version": "4.71.0",
+    "installedBundleSha256": "66de0d2d36ede4d9ded6cfaecee2b1e496c2ad8f97bb2258c5dd0f14bcc48d8b",
+    "source": "https://github.com/cloudflare/workers-sdk/blob/wrangler@4.71.0/packages/wrangler/src/d1/execute.ts",
+    "inspectedInstalledLines": [
+      170025,
+      170166
+    ],
+    "fileEndpoint": "import",
+    "commandEndpoint": "query",
+    "claimLimit": "Client routing and summary construction inspected; server-side reason for changes=1/changed_db=true is not established."
+  },
+  "screenshot": "analytics-native-category-evidence.png",
+  "limits": [
+    "The original retained nineteen Exa records supply category metadata, not a fresh vendor signature or production verification-method agreement.",
+    "One observation write, file-import overhead, public cache fills and unrelated service work are additional to reported direct SELECT rows.",
+    "Later successful checks do not prove no request was affected during file import; server-side reason for its change flags remains unestablished.",
+    "Remote diagnostic SELECT guidance now uses --command with argv, preserving explicit import/local/migration workflows.",
+    "Human trials deferred by owner; no human accuracy, real-device, actual-JavaScript-off, native beacon receipt, privacy compliance or full-goal completion claim."
+  ]
+}
