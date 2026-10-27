@@ -1,0 +1,174 @@
+{
+  "acceptedAt": "2026-10-27T21:36:13.261463+00:00",
+  "sourceCommit": "345a653610b5f6180e0ec096cd8da2026eed68bf",
+  "nativeBuild": {
+    "id": "4cbd40a7-ad67-4fad-8ec9-4e651bb8d4ac",
+    "state": "Ready",
+    "durationSeconds": 39,
+    "sourceCommitLinkObserved": true
+  },
+  "activation": {
+    "createdOn": "2026-10-27T21:34:07.802735Z",
+    "versionId": "0f04af2c-287e-49fc-8634-e3c884e8d7e8",
+    "percentage": 100
+  },
+  "reportVersion": "2026-10-27.8",
+  "unchangedProfiles": {
+    "collection": "2026-10-27.8",
+    "classifier": "2026-10-27.5",
+    "verifier": "2026-10-27.6",
+    "signatureEvidence": "2026-10-27.4",
+    "receipt": "2026-10-27.2"
+  },
+  "optionalBindingsAbsent": [
+    "OWNER_MARK_GRANT",
+    "ANALYTICS_CALIBRATION",
+    "ANALYTICS_DIAGNOSTICS"
+  ],
+  "bindingCount": 7,
+  "productionQuery": {
+    "method": "One native-accepted prepared report SELECT through Wrangler --command argv; no mutation or synthetic production seeding",
+    "query": {
+      "range": "7d",
+      "traffic": "all",
+      "path": "/privacy"
+    },
+    "readCeiling": 50000,
+    "meta": {
+      "rows_read": 8013,
+      "rows_written": 0,
+      "changes": 0,
+      "changed_db": false,
+      "duration": 36.9944
+    },
+    "totals": [
+      {
+        "views": 15,
+        "dailyClients": 15,
+        "unattributedViews": 15
+      }
+    ],
+    "composition": [
+      {
+        "key1": "other-bot",
+        "key2": "generic-bot",
+        "views": 4,
+        "dailyClients": 4
+      },
+      {
+        "key1": "browser",
+        "key2": "navigation-shaped",
+        "views": 3,
+        "dailyClients": 3
+      },
+      {
+        "key1": "cloud-browser",
+        "key2": "hosting-asn:132203",
+        "views": 2,
+        "dailyClients": 2
+      },
+      {
+        "key1": "cloud-browser",
+        "key2": "hosting-asn:24940",
+        "views": 2,
+        "dailyClients": 2
+      },
+      {
+        "key1": "ai-crawler",
+        "key2": "Amazonbot",
+        "views": 1,
+        "dailyClients": 1
+      },
+      {
+        "key1": "cloud-browser",
+        "key2": "hosting-asn:14061",
+        "views": 1,
+        "dailyClients": 1
+      },
+      {
+        "key1": "http-client",
+        "key2": "not-navigation-shaped",
+        "views": 1,
+        "dailyClients": 1
+      },
+      {
+        "key1": "signed-agent",
+        "key2": "Ahrefs",
+        "views": 1,
+        "dailyClients": 1
+      }
+    ],
+    "compositionViews": 15,
+    "missingOrUnrecognizedKindViews": 0,
+    "missingReasonViews": 0,
+    "limits": [
+      "Bounded privacy-page seven-day selection, not all retained observations.",
+      "HTTP cold fills and unrelated traffic consume additional work.",
+      "No human or device labels."
+    ],
+    "capturedAt": "2026-10-27T21:29:36.517338+00:00",
+    "preparedSqlSha256": "f1a0e87df9f9a99070efe7dfce2e5e7c5444dfaee996b3517c568f457e7c6f5c",
+    "preparedStatementSha256": "d15571e77bdc74c7ec8fdacccca2d80501b47a90f038e9d2787292401fc5ac33"
+  },
+  "http": {
+    "scope": {
+      "range": "7d",
+      "traffic": "all",
+      "path": "/privacy"
+    },
+    "statuses": [
+      200,
+      200
+    ],
+    "cache": [
+      "MISS",
+      "HIT"
+    ],
+    "colos": [
+      "SJC",
+      "SJC"
+    ],
+    "sameConnection": true,
+    "byteEqual": true,
+    "bodySha256": "7ef02b873a11b2acdd21cf6b6fb29978fb1fa4eaa4256e10209ea97ac0077533",
+    "views": 15,
+    "compositionViews": 15,
+    "signatureIntersectionViews": 15,
+    "nativeCategoryIntersectionViews": 15,
+    "matchesPreparedTotalsAndComposition": true,
+    "calculatedAt": "2026-10-27T21:34:55.504Z",
+    "limits": [
+      "Cold API fills, browser inspection and unrelated service work are additional to the direct SELECT metering.",
+      "A cache hit demonstrates reuse at the observed colo, not a global read budget."
+    ]
+  },
+  "article": {
+    "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove",
+    "servedMarkdownStatus": 200,
+    "matchesIsolatedBuild": true,
+    "sha256": "8771c212a406dada90720fcf98706d5088cace5dd59c98b3d905784d4916c620",
+    "bodyWords": 1250,
+    "shapingPrompts": 31,
+    "newResearchLinkObserved": true,
+    "renderedParagraphAccepted": true
+  },
+  "checks": {
+    "analyticsTests": 172,
+    "siteTests": 106,
+    "workspaceTypes": "pass",
+    "frontmatterValidation": "pass",
+    "isolatedBuildPosts": 32,
+    "nativeLocal": "unreported-kinds-local.json",
+    "sourceChecks": "unreported-kinds-source-checks.json",
+    "liveUiViews": 15,
+    "liveMethodologyObserved": true,
+    "ownedPreviewStopped": true,
+    "viewportReset": true
+  },
+  "limits": [
+    "Missing-classification production prevalence remains unmeasured beyond the bounded privacy-page selection, where it is zero.",
+    "Some automated pointer activations in the synthetic preview had no observed effect. Keyboard filter/scoping/clearing passed; cause is unestablished and no pointer/lifecycle repair is claimed.",
+    "No human trials, real-device accuracy, organic signed/native agreement, whole-history recovery or privacy compliance claim."
+  ],
+  "nextBoundedAction": "Investigate the observed pointer-activation discrepancy using an isolated actual-renderer repro before changing event handling; then budget any broader completeness census separately. Human trials remain deferred."
+}

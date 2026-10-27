@@ -51,3 +51,10 @@ The [single bounded production SELECT](unreported-kinds-production-query.json), 
 ## Remaining limits
 
 This does not recover discarded User-Agents or establish R1's operator. Organic signed/native agreement, full loss/sampling attribution, replay/DNS boundaries, retention/lawful-basis work and human/device error rates remain open. The bounded actual selection establishes report completeness for that scope. The next acceptance step is the activated public report/cache and served article; broader history prevalence needs its own budgeted investigation. Human trials remain deferred.
+
+
+## Activated release acceptance
+
+[Release receipt](unreported-kinds-release.json) accepts source `345a653`, native Ready build and 100% activation. The scoped API matches the prepared SELECT's fifteen events and all composition rows; both evidence intersections sum to fifteen. A same-connection SJC MISS/HIT pair is byte-identical. Live methodology includes the unknown-kind projection; served Markdown matches the isolated build and the rendered article links this record. The article remains 1,250 words with 31 shaping prompts. No extra direct SELECT was needed for release acceptance; cold API fills/browser inspection are additional service work. The owned preview is stopped and viewport reset.
+
+This completes the reporting repair's release, not the wider investigation. Next bounded work: isolate the observed pointer-activation discrepancy before changing event handling; any wider historical completeness census needs a separate budget. Human trials remain deferred. Private operational captures remain outside Git with a review date of October 31, 2026; that date is not a verified erasure/backup guarantee.
