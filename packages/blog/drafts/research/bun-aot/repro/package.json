@@ -1,0 +1,11 @@
+{
+  "name": "bun-aot-evidence",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@types/node": "26.6.5",
+    "@types/source-map-support": "0.5.10",
+    "typescript": "6.0.3",
+    "zod": "4.3.6"
+  }
+}

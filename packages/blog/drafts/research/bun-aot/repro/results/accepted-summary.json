@@ -1,0 +1,94 @@
+{
+  "compiler": {
+    "jit": {
+      "runs": 5,
+      "real_s": 5.02,
+      "peak_rss_bytes": 2741862400,
+      "peak_footprint_bytes": 2624866896
+    },
+    "aot": {
+      "runs": 5,
+      "real_s": 1.54,
+      "peak_rss_bytes": 979828736,
+      "peak_footprint_bytes": 934413800
+    }
+  },
+  "pointer_control": {
+    "aot": {
+      "runs": 3,
+      "real_s": 1.48,
+      "peak_rss_bytes": 997244928,
+      "peak_footprint_bytes": 951109120
+    },
+    "aot-wide": {
+      "runs": 3,
+      "real_s": 1.65,
+      "peak_rss_bytes": 1353973760,
+      "peak_footprint_bytes": 1303365384
+    }
+  },
+  "server": {
+    "jit": {
+      "runs": 5,
+      "median_rps": 185966.8035,
+      "median_peak_rss_bytes": 51609600,
+      "median_first_response_ms": 23.94624997396022,
+      "sample_count": 286,
+      "seconds_observed": [
+        11.783624875009991,
+        11.577135249972343,
+        11.775494333007373,
+        12.02537995899911,
+        12.031964416004485
+      ]
+    },
+    "aot": {
+      "runs": 5,
+      "median_rps": 196744.21600000001,
+      "median_peak_rss_bytes": 46923776,
+      "median_first_response_ms": 21.193374996073544,
+      "sample_count": 273,
+      "seconds_observed": [
+        11.186667750007473,
+        11.147057624999434,
+        11.109121290995972,
+        11.331775375001598,
+        11.583358667005086
+      ]
+    },
+    "all_response_hashes": [
+      "0f55af3e97b1f0a31876909ddc1d4beed6570c80da30c570a74fa66ac2b92361"
+    ],
+    "checked_requests": 20200000
+  },
+  "validators": {
+    "zod-default-jit": {
+      "runs": 5,
+      "median_seconds": 0.058578208001563326
+    },
+    "zod-default-aot": {
+      "runs": 5,
+      "median_seconds": 0.27835833400604315
+    },
+    "zod-jitless-jit": {
+      "runs": 5,
+      "median_seconds": 0.10891854102374054
+    },
+    "zod-jitless-aot": {
+      "runs": 5,
+      "median_seconds": 0.20377141700009815
+    }
+  },
+  "binary_bytes": {
+    "jit": 121463442,
+    "aot": 51848850,
+    "aot-wide": 51815826,
+    "aot-trim": 30333730
+  },
+  "computed": {
+    "compiler_speed_ratio": 3.2597402597402594,
+    "compiler_physical_reduction_percent": 64.40147874073384,
+    "server_rss_reduction_percent": 9.079365079365076,
+    "server_rps_change_percent": 5.795342124058189
+  }
+}

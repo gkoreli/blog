@@ -1,0 +1,158 @@
+{
+  "checked_at": "2026-10-27",
+  "bun_revision": "06888611e2cf51ef28fd7b19eba61cbbf3cdf4ea",
+  "webkit_revision": "3c80db265b51f90243aba1fa141e03d551a6e80b",
+  "sources": {
+    "README.md": "a00ffa3be61df8f1a373ee51192f321d770aa5f589fe52a7db499640f50de814",
+    "builtin-mutation.ts": "952f2bf1150ce5c8ff5eb09b334cf48b30ccdfa81901a82d511cf7e13c70711a",
+    "commonjs-case/library.d.ts": "131c677b6321836c741e7d6c264c48e5db49bf96c3805b8f1f55c6d50e94f2e5",
+    "commonjs-case/library.js": "9f7771f60f3fd603178deada6180a6a44d6b80bcc7eb1bed388b8e39ee7d9c16",
+    "commonjs-case/main.mjs": "6c780ec435e462451c5cc8a7650d2face87aa256e01cc4b022102d341842bfb9",
+    "commonjs-case/package.json": "dbf8353f77358bc12169b7bb7301e1978d5b503e002ee927229a8993672818fc",
+    "dynamic-folder.ts": "e9c48c32c0d2006ca9689327808c5f98e0d5afd99a41dc28249d6f1108cfa048",
+    "http-load.c": "1e6d7a755d36f92890f91bf6dc8fa3a1c278db2f2cf51f68529fe88f8fd912b2",
+    "late-host.ts": "878cd32f52dffd7c3d2513c5ab2736c5fe5076f65bd953023ef8615f95a8f497",
+    "measure-compiler.py": "d788cb82a3286ee5b81a17b94c68c6ee75406fd62f7197d5c57b25aa8f3d00ea",
+    "measure-pointer-control.py": "b29f6797662750910279b3d8ac972971c02e5bf71a6eeecc1ec787b608f67c29",
+    "measure-servers.py": "2a20ee8c804c2014e17da6caae34b83ed612e71b6e18ce09d6f9022339533d50",
+    "measure-throughput.py": "d065841e6fde3d25dca4fa7361d9399d5844517f3e835bb1ab412a81a62b9f3d",
+    "measure-trim-memory.py": "11fd24f42b403d9ee59e207cc0cf126aa284a92b57241b310fdbd8ac335a4b81",
+    "measure-validators.py": "348d833778b238697b842bc9a025f31698a0d27ebd9fed320de5cef9d9510b77",
+    "package-lock.json": "08e7429a10604b9828710f0bf917156ecbad4e50f93b4004075c65accae89daf",
+    "package.json": "114add9961e81fee8cd2ad2d43418294ffbb9a296ab8b24042227e1ff820fce4",
+    "plugins/alpha.ts": "69b776d7caa99fdd9996fa90ca204c9f843f402fa395d267234c95b63a636196",
+    "plugins/beta.ts": "92a98b28f6052aac024283135b792d72ff8f2010ea6ec6935b16615b17217db7",
+    "prepare.py": "14e10297c4d0f50e6e77159105cda229cb849ffdfede55b90c9294102316c5fe",
+    "results/accepted-summary.json": "7a2e65c9e0d6953758ac8f0934097d19a17d542d62d3aabc28cae3d8c9a035e7",
+    "results/compiler-pointer-results.json": "fed09b6b8b15078b06581f7f60b9d3f83062ae6f805bbb9c6cf1717b11936e05",
+    "results/compiler-results.json": "c5cfcbb289a313b7e3ed5adc2eb8febb0d1861e4dd6f782a2de18e01e1af6c77",
+    "results/determinism-results.json": "80020ee6f7640a64fbd1c4166360aae3bdefabeecfaa8e92a86ec3af87d254e6",
+    "results/manual-results.json": "983f4c19b8f1284681fb2b59ce48d0842fe2bfcce6d968f1cd80a1ace61655cd",
+    "results/server-memory-results.json": "ffb3643c0ee1352efed9548cae93cfc91700c51fc38b6f2dcbffd67b4664877a",
+    "results/server-throughput-results.json": "c5fc7e9819c2164a9a5cc28294f6d34aa5aa7a70e339c5358e3ce75a9518a514",
+    "results/trim-memory-results.json": "7f8ecda6c8e872c351d11b430e2879a202d94a9e5b196906f1ba9ac37f07644c",
+    "results/validator-results.json": "16ad624341ea7d2c73fbff99cf2346ee2d8e98952d2f4d431edfcc6d69e0e897",
+    "run-manual.py": "5bc52d9e3a274569a271a9659989662e483c367f9477205ccd4658cc3e571ad0",
+    "semantics.ts": "d4a4ecf0365e8a196c18c52c7e95a856d1627216bd95768d96c300c5d8ed1d69",
+    "server.ts": "7026094a4450f976272debbcca07613fa05b52cfc3127bf483067de84f492e11",
+    "zod-default.ts": "54ac831703af85a1e7ac7793463831f75c58d5f9b5234578d52ad36c1039f9b2",
+    "zod-jitless.ts": "33da2fff9b0962f8f4b8423bc14af06d3f7f35e87ebd743c84a3b4ad4a4f3413"
+  },
+  "local_binaries": {
+    "bun-darwin-aarch64/bun": {
+      "bytes": 121464575,
+      "sha256": "6f3f644be027638c560bad1e728cfb0bf3cb7b2c40dca2acbdf03c757090c834"
+    },
+    "server-jit": {
+      "bytes": 121463442,
+      "sha256": "f9c9797ba817cfd4a364df5634d45d07fdf44fda535e1d81472813aca6fc185a"
+    },
+    "server-aot": {
+      "bytes": 51848850,
+      "sha256": "274cdd154ef088c117dc6d4dc09fec372939327d3955342e42d4136ca1730fc9"
+    },
+    "server-aot-wide": {
+      "bytes": 51815826,
+      "sha256": "6846e968e0dc3a6dcc40c802d74d111674f4f7b74810b0153faaf0a39982725b"
+    },
+    "server-aot-trim": {
+      "bytes": 30333730,
+      "sha256": "20ecef55af90044539e510f47041a05ca199d9fe0dbd982cbf1edda786b41a13"
+    },
+    "tsc-jit": {
+      "bytes": 123923730,
+      "sha256": "ab49f58d3f9976389a283ffc9442ce02b63b5b55dbf338dae824b83d37b3612f"
+    },
+    "tsc-aot": {
+      "bytes": 81768594,
+      "sha256": "2c414447e39d6a97360d06204318fb7821530cfeda466a953e02eaa40291c6fb"
+    },
+    "tsc-aot-wide": {
+      "bytes": 81075090,
+      "sha256": "7753e7123bcbeb3656160d2dddcf0a52a6ddf9a241ea3c409c94a1e6dd449aad"
+    },
+    "zod-default-jit": {
+      "bytes": 121579026,
+      "sha256": "bda8b059f1db7a3e75365dcfc64befdd0e9a6a4b54215bcf405abac1ddcc98e6"
+    },
+    "zod-default-aot": {
+      "bytes": 53103762,
+      "sha256": "78698b1471ffbb6d1dd99c1238169892abc5874bdaf17b5225669a4fb8711e4a"
+    },
+    "zod-jitless-jit": {
+      "bytes": 121595538,
+      "sha256": "f908cf21df1a8355e296c2e1cd7f8d19e45196c9c45e7267c6c330e8c2d015de"
+    },
+    "zod-jitless-aot": {
+      "bytes": 53120274,
+      "sha256": "f2a7e15876d15abdd9aae9d16d5e82f224ce04e395238231ae576b1f165767b1"
+    },
+    "http-load": {
+      "bytes": 34296,
+      "sha256": "aae18492d3ec0bd3af3435fe8cf802e04f6ff0074e88f1b3be6b829b311054ea"
+    }
+  },
+  "input_configs": {
+    "aot-tsconfig.json": {
+      "sha256": "93237ac70ef9d6990076614f589fb1b23464feb9e167d01922f6f55d43983011",
+      "content": {
+        "extends": "./TypeScript/src/tsconfig-base.json",
+        "compilerOptions": {
+          "rootDir": "./TypeScript/src",
+          "types": [
+            "node"
+          ],
+          "typeRoots": [
+            "./node_modules/@types"
+          ],
+          "composite": false,
+          "declaration": false,
+          "declarationMap": false,
+          "emitDeclarationOnly": false,
+          "isolatedDeclarations": false,
+          "noEmit": true
+        },
+        "files": [
+          "./TypeScript/src/tsc/tsc.ts"
+        ]
+      }
+    },
+    "effect-tsconfig.json": {
+      "sha256": "4659cab3b12ed7ff81e21387cb87340575ba16c3320f7faca8524082f9fc4499",
+      "content": {
+        "include": [
+          "/tmp/bun-aot-experiments/effect/packages/effect/src"
+        ],
+        "compilerOptions": {
+          "noEmit": true,
+          "incremental": false,
+          "composite": false,
+          "rootDir": "/tmp/bun-aot-experiments/effect/packages/effect/src",
+          "target": "ES2022",
+          "module": "NodeNext",
+          "moduleDetection": "force",
+          "verbatimModuleSyntax": true,
+          "allowJs": false,
+          "rewriteRelativeImportExtensions": true,
+          "erasableSyntaxOnly": true,
+          "strict": true,
+          "exactOptionalPropertyTypes": true,
+          "noUnusedLocals": true,
+          "noUnusedParameters": true,
+          "noImplicitOverride": true,
+          "noFallthroughCasesInSwitch": true,
+          "stripInternal": false,
+          "skipLibCheck": true,
+          "noErrorTruncation": true,
+          "jsx": "react-jsx",
+          "types": [
+            "node"
+          ],
+          "typeRoots": [
+            "/tmp/bun-aot-experiments/node_modules/@types"
+          ]
+        }
+      }
+    }
+  }
+}

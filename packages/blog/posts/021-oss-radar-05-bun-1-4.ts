@@ -96,6 +96,7 @@ export function article() {
     using Rust, upstream compatibility tests, and production canaries to make that larger boundary safer. Try 1.4 as
     a pinned, measured migration. Do not swap it blindly for Node.
   </p>
+  <p>For the next step, see <a href="/oss-radar-08-bun-aot">my Bun AOT experiments</a>: native compilation of an existing TypeScript application, including memory savings and compatibility failures.</p>
 
   <p>
     This is not a story about dependencies disappearing. A line can leave <code>package.json</code> while its

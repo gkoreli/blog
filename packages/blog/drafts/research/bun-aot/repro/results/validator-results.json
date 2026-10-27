@@ -1,0 +1,194 @@
+[
+  {
+    "app": "zod-default",
+    "mode": "jit",
+    "repeat": 0,
+    "warmup": true,
+    "seconds": 0.8659653330105357,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-default",
+    "mode": "aot",
+    "repeat": 0,
+    "warmup": true,
+    "seconds": 0.685462124994956,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-jitless",
+    "mode": "jit",
+    "repeat": 0,
+    "warmup": true,
+    "seconds": 0.8746738329937216,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-jitless",
+    "mode": "aot",
+    "repeat": 0,
+    "warmup": true,
+    "seconds": 0.635871042002691,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-jitless",
+    "mode": "aot",
+    "repeat": 1,
+    "warmup": false,
+    "seconds": 0.20170579198747873,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-jitless",
+    "mode": "jit",
+    "repeat": 1,
+    "warmup": false,
+    "seconds": 0.10692358299274929,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-default",
+    "mode": "aot",
+    "repeat": 1,
+    "warmup": false,
+    "seconds": 0.27975866600172594,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-default",
+    "mode": "jit",
+    "repeat": 1,
+    "warmup": false,
+    "seconds": 0.058482374995946884,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-default",
+    "mode": "jit",
+    "repeat": 2,
+    "warmup": false,
+    "seconds": 0.058578208001563326,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-default",
+    "mode": "aot",
+    "repeat": 2,
+    "warmup": false,
+    "seconds": 0.27822341601131484,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-jitless",
+    "mode": "jit",
+    "repeat": 2,
+    "warmup": false,
+    "seconds": 0.10891854102374054,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-jitless",
+    "mode": "aot",
+    "repeat": 2,
+    "warmup": false,
+    "seconds": 0.20714941699407063,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-jitless",
+    "mode": "aot",
+    "repeat": 3,
+    "warmup": false,
+    "seconds": 0.20235966698965058,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-jitless",
+    "mode": "jit",
+    "repeat": 3,
+    "warmup": false,
+    "seconds": 0.10795908299041912,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-default",
+    "mode": "aot",
+    "repeat": 3,
+    "warmup": false,
+    "seconds": 0.27835833400604315,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-default",
+    "mode": "jit",
+    "repeat": 3,
+    "warmup": false,
+    "seconds": 0.05859129101736471,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-default",
+    "mode": "jit",
+    "repeat": 4,
+    "warmup": false,
+    "seconds": 0.058419042004970834,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-default",
+    "mode": "aot",
+    "repeat": 4,
+    "warmup": false,
+    "seconds": 0.2773802499868907,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-jitless",
+    "mode": "jit",
+    "repeat": 4,
+    "warmup": false,
+    "seconds": 0.11051254198537208,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-jitless",
+    "mode": "aot",
+    "repeat": 4,
+    "warmup": false,
+    "seconds": 0.20377141700009815,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-jitless",
+    "mode": "aot",
+    "repeat": 5,
+    "warmup": false,
+    "seconds": 0.21221249998779967,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-jitless",
+    "mode": "jit",
+    "repeat": 5,
+    "warmup": false,
+    "seconds": 0.10897545798798092,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-default",
+    "mode": "aot",
+    "repeat": 5,
+    "warmup": false,
+    "seconds": 0.27864487501210533,
+    "stdout": "{\"passed\":2000000}\n"
+  },
+  {
+    "app": "zod-default",
+    "mode": "jit",
+    "repeat": 5,
+    "warmup": false,
+    "seconds": 0.058916957990732044,
+    "stdout": "{\"passed\":2000000}\n"
+  }
+]

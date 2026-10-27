@@ -1,0 +1,126 @@
+[
+  {
+    "case": "semantics",
+    "mode": "jit",
+    "build_exit": 0,
+    "known_diagnostic": null,
+    "run": {
+      "exit": 0,
+      "stdout": "{\"actualType\":\"string\",\"result\":6,\"generated\":8}\n",
+      "stderr_summary": null
+    }
+  },
+  {
+    "case": "semantics",
+    "mode": "aot",
+    "build_exit": 0,
+    "known_diagnostic": null,
+    "run": {
+      "exit": 0,
+      "stdout": "{\"actualType\":\"string\",\"result\":6,\"generated\":8}\n",
+      "stderr_summary": null
+    }
+  },
+  {
+    "case": "builtin-mutation",
+    "mode": "jit",
+    "build_exit": 0,
+    "known_diagnostic": null,
+    "run": {
+      "exit": 0,
+      "stdout": "{\"replaced\":true}\n",
+      "stderr_summary": null
+    }
+  },
+  {
+    "case": "builtin-mutation",
+    "mode": "aot",
+    "build_exit": 0,
+    "known_diagnostic": null,
+    "run": {
+      "exit": 0,
+      "stdout": "{\"replaced\":false}\n",
+      "stderr_summary": null
+    }
+  },
+  {
+    "case": "dynamic-folder",
+    "mode": "jit",
+    "build_exit": 0,
+    "known_diagnostic": null,
+    "run": {
+      "exit": 0,
+      "stdout": "{\"result\":42}\n",
+      "stderr_summary": null
+    }
+  },
+  {
+    "case": "dynamic-folder",
+    "mode": "aot",
+    "build_exit": 0,
+    "known_diagnostic": null,
+    "run": {
+      "exit": 0,
+      "stdout": "{\"result\":42}\n",
+      "stderr_summary": null
+    }
+  },
+  {
+    "case": "late-embedded",
+    "mode": "aot",
+    "build_exit": 0,
+    "known_diagnostic": null,
+    "run": {
+      "exit": 0,
+      "stdout": "{\"result\":42}\n",
+      "stderr_summary": null
+    }
+  },
+  {
+    "case": "late-default",
+    "mode": "aot",
+    "build_exit": 0,
+    "known_diagnostic": null,
+    "run": {
+      "exit": 1,
+      "stdout": "",
+      "stderr_summary": "ERR_MODULE_NOT_FOUND"
+    }
+  },
+  {
+    "case": "late-disk",
+    "mode": "aot",
+    "build_exit": 0,
+    "known_diagnostic": null,
+    "run": {
+      "exit": 0,
+      "stdout": "{\"result\":42}\n",
+      "stderr_summary": null
+    }
+  },
+  {
+    "case": "commonjs",
+    "mode": "jit",
+    "build_exit": 0,
+    "known_diagnostic": null,
+    "run": {
+      "exit": 0,
+      "stdout": "42\n",
+      "stderr_summary": null
+    }
+  },
+  {
+    "case": "commonjs",
+    "mode": "aot",
+    "build_exit": -6,
+    "known_diagnostic": "the file was bound without BindOptions::runtime",
+    "run": null
+  },
+  {
+    "case": "commonjs",
+    "mode": "aot-trim",
+    "build_exit": -6,
+    "known_diagnostic": "the file was bound without BindOptions::runtime",
+    "run": null
+  }
+]
