@@ -48,4 +48,6 @@ Goga flagged that the published title omitted the established series format. Iss
 
 Local acceptance: content validation and the isolated production build passed. Generated HTML has one matching H1; Open Graph metadata, the OSS Radar listing and RSS contain the corrected series title. No prompt page was generated. `git diff --check` passed. A full typecheck or benchmark rerun is unnecessary for this title-only correction.
 
-Next bounded action: push the scoped correction and verify the live title. The prior publication receipt above records the earlier title and is historical evidence.
+Code delivery: `f8f221b` was pushed directly to `main`. [Workers Build 68008cef](https://dash.cloudflare.com/7e0dc86ef69b4572a63162a52cddd269/workers/services/view/gkoreli-com/production/builds/68008cef-7d4f-44ae-8e36-3d0fab9f38f7) completed successfully at **16:54:49 UTC**. Deployment `37bdbc9f-3b43-47a8-845d-b6e2634a8c5b` activated at **16:54:43.064686 UTC**, with version `8b09bbac-dce7-4443-9438-25f784af4a3c` serving 100% at the fresh observation.
+
+Live acceptance before **16:55:44 UTC**: a fresh public HTML response contained the exact corrected H1 and numbered metadata title. The correction is complete; no further title work remains. The prior publication receipt above records the earlier title and is historical evidence. This follow-up falls outside the frozen research footprint.
