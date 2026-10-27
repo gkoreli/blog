@@ -72,3 +72,7 @@ The [complete-period analysis](10-full-interval-and-field-hardening.md) closes t
 ## October 27 protocol iteration
 
 The [Web Bot Auth audit](18-webbotauth-verification.md) and [decision](../../../../../docs/adr/0016.11-signature-verification-evidence.md) implement prospective signature-coverage facts and independent native availability, plus directory freshness/rotation/input bounds. Local native D1 accepts the collector, migration and report. Real retained Exa evidence validates the supported quoted-string profile under its recorded-time/later-directory limits. Migration, delivery, activation and future organic writes require separate release evidence. This does not close explicit network unknowns, exact token/all-match conflicts, vendor IP validation or labelled accuracy/abstention experiments. Keep those requirements intact.
+
+## October 27 classification continuation
+
+[Research 19](19-explicit-classification-uncertainty.md) and [ADR-0016.12](../../../../../docs/adr/0016.12-explicit-classification-uncertainty.md) implement the proposed token/all-match conflict and missing-network repairs prospectively. Same-category declarations retain shared evidence; incompatible categories and insufficient browser context abstain. The same retained R1 capture now exposes 118 inconsistent requests without changing history. Source/native and production acceptance remain separate; vendor-source validation, outcome distinctions, device-default interpretation and independent labelled calibration remain open.

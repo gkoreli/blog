@@ -153,11 +153,11 @@ test('eligibility accepts HTML and negotiated Markdown page GETs but rejects dir
   assert.equal(isEligiblePageResponse(request('/article'), html, 'markdown'), false);
 });
 
-test('AI rules have priority and classifiers return nullable named matches', () => {
+test('named classifiers abstain on conflicts and return nullable single matches', () => {
   assert.deepEqual(classifyTraffic('Mozilla/5.0 Chrome/130'), { trafficClass: 'browser', agentName: null });
   assert.deepEqual(classifyTraffic('Googlebot/2.1'), { trafficClass: 'bot', agentName: 'Googlebot' });
   assert.deepEqual(classifyTraffic('custom-crawler/1.0'), { trafficClass: 'bot', agentName: null });
-  assert.deepEqual(classifyTraffic('Googlebot GPTBot/1.0'), { trafficClass: 'ai', agentName: 'GPTBot' });
+  assert.deepEqual(classifyTraffic('Googlebot GPTBot/1.0'), { trafficClass: 'bot', agentName: null });
   assert.deepEqual(classifyTraffic('ChatGPT-User/1.0'), { trafficClass: 'ai', agentName: 'ChatGPT-User' });
   assert.deepEqual(classifyTraffic('Google-CloudVertexBot/1.0'), { trafficClass: 'ai', agentName: 'Google-CloudVertexBot' });
   assert.equal(KNOWN_AGENT_NAMES.has('GPTBot'), true);
@@ -552,8 +552,8 @@ test('ingestion stores an unverified signature reason without trusting its claim
     reader_kind, reader_reason FROM page_observations`).get() }, {
     signature_agent: null,
     signature_status: 'unverified',
-    reader_kind: 'http-client',
-    reader_reason: 'no-fetch-metadata; signature:missing-signature-input',
+    reader_kind: 'unresolved',
+    reader_reason: 'fetch-metadata-absent',
   });
 });
 
@@ -568,7 +568,7 @@ test('hosting list excludes relay/CDN ASNs and partition SQL inlines only valida
   assert.equal(browser.values.length, 0);
   assert.equal(browser.sql, "reader_kind IN ('browser')");
   assert.equal(partitionPredicate('all').sql, '');
-  const grouped = ['browser', 'agents', 'crawlers', 'automation'].flatMap((group) => READER_GROUPS[group]);
+  const grouped = ['browser', 'agents', 'crawlers', 'automation', 'unresolved'].flatMap((group) => READER_GROUPS[group]);
   assert.deepEqual([...grouped].sort(), [...READER_KINDS].sort(), 'groups are disjoint and cover every kind');
   for (const kind of READER_KINDS) assert.equal(READER_GROUPS[readerGroupOf(kind)].includes(kind), true);
 });
@@ -616,12 +616,12 @@ test('reader-kind classifier maps every closed-set code and records one reason',
     [{ ...base, trafficClass: 'ai', agentName: 'GPTBot' }, 'ai-crawler', 'GPTBot'],
     [{ ...base, trafficClass: 'bot', agentName: 'Googlebot' }, 'search-crawler', 'Googlebot'],
     [{ ...base, trafficClass: 'bot', agentName: 'AhrefsBot' }, 'seo-crawler', 'AhrefsBot'],
-    [{ ...base, trafficClass: 'bot', agentName: 'Slackbot' }, 'preview-or-feed', 'Slackbot'],
+    [{ ...base, trafficClass: 'bot', agentName: 'Slackbot-LinkExpanding' }, 'preview-or-feed', 'Slackbot-LinkExpanding'],
     [{ ...base, trafficClass: 'bot', agentName: 'HeadlessChrome', userAgent: 'HeadlessChrome/152' }, 'headless-browser', 'HeadlessChrome'],
     [{ ...base, trafficClass: 'bot', agentName: null }, 'other-bot', 'generic-bot'],
     [{ ...base, asn: 16509 }, 'cloud-browser', 'hosting-asn:16509'],
     [{ ...base, secFetchMode: 'cors', secFetchDest: 'empty' }, 'http-client', 'not-navigation-shaped'],
-    [{ ...base, secFetchMode: null, secFetchDest: null, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148' }, 'legacy-browser', 'pre-fetch-metadata-ua'],
+    [{ ...base, secFetchMode: null, secFetchDest: null, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148' }, 'unresolved', 'fetch-metadata-support-unknown'],
     [{ ...base, observationSource: 'beacon', hasAcceptLanguage: null }, 'browser', 'beacon-script-ran'],
     [{ ...base, hasAcceptLanguage: null }, 'browser', 'user-agent-only'],
   ];
@@ -631,14 +631,14 @@ test('reader-kind classifier maps every closed-set code and records one reason',
     assert.deepEqual(classifyReaderKind(facts), { kind, reason });
     seen.push(kind);
   }
-  assert.deepEqual([...new Set(seen)], [...READER_KINDS]);
+  assert.deepEqual([...new Set(seen)].sort(), READER_KINDS.filter(kind => kind !== 'legacy-browser').slice().sort());
   assert.deepEqual(
     classifyReaderKind({ ...base, secFetchMode: null, secFetchDest: null, userAgent: 'Mozilla/5.0 (Windows NT 10.0) Chrome/152.0.0.0 Safari/537.36' }),
-    { kind: 'http-client', reason: 'no-fetch-metadata' },
+    { kind: 'unresolved', reason: 'fetch-metadata-absent' },
   );
   assert.deepEqual(
     classifyReaderKind({ ...base, secFetchMode: null, secFetchDest: null, userAgent: 'Mozilla/5.0 (Windows NT 6.1) Chrome/49.0.2623.112 Safari/537.36' }),
-    { kind: 'legacy-browser', reason: 'pre-fetch-metadata-ua' },
+    { kind: 'unresolved', reason: 'fetch-metadata-support-unknown' },
   );
   assert.deepEqual(
     classifyReaderKind({ ...base, asn: 132203, secFetchMode: null, secFetchDest: null, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2 like Mac OS X) AppleWebKit/605.1.15 Version/13.0.3 Mobile/15E148 Safari/604.1' }),
@@ -650,13 +650,13 @@ test('reader-kind classifier maps every closed-set code and records one reason',
     trafficClass: 'ai',
     agentName: 'GPTBot',
     signature: { status: 'unverified', reason: 'expired' },
-  }), { kind: 'ai-crawler', reason: 'GPTBot; signature:expired' });
+  }), { kind: 'ai-crawler', reason: 'GPTBot' });
   assert.deepEqual(classifyReaderKind({
     ...base,
     trafficClass: 'bot',
     agentName: 'DuckDuckBot',
     signature: { status: 'unverified', reason: 'bare-uri-signature-agent' },
-  }), { kind: 'search-crawler', reason: 'DuckDuckBot; signature:bare-uri-signature-agent' });
+  }), { kind: 'search-crawler', reason: 'DuckDuckBot' });
 });
 
 test('archiver ASN classifies unnamed requests while named agents retain priority', () => {
@@ -746,7 +746,7 @@ test('browser partition keeps beacons, pre-evidence edge rows, and navigation-sh
   assert.deepEqual(automation.byPath.map((row) => row.path).sort(), failures.map((row) => row.path).sort());
   assert.deepEqual(
     browsers.byKind.map((row) => [row.kind, row.reason]).sort(),
-    [['browser', 'beacon-script-ran'], ['browser', 'navigation-shaped'], ['browser', 'user-agent-only']],
+    [['browser', 'beacon-script-ran'], ['browser', 'navigation-shaped-network-unlisted'], ['browser', 'user-agent-only']],
   );
   assert.deepEqual(
     automation.byKind.map((row) => [row.kind, row.reason, row.views]).sort(),
@@ -1115,7 +1115,7 @@ test('stats exclude marked daily clients from every aggregate and the all-time b
   assert.deepEqual(stats.byAgent, []);
   assert.deepEqual(stats.byKind, [{
     kind: 'browser',
-    reason: 'navigation-shaped',
+    reason: 'navigation-shaped-network-unlisted',
     views: 1,
     dailyClients: 1,
   }]);
@@ -1590,7 +1590,7 @@ test('SQL reader-kind backfill uses the same closed-set mapping as ingestion', (
     // The raw User-Agent is not stored, so history cannot be version-gated:
     // the backfill never emits legacy-browser and labels those rows http-client.
     // seo-crawler was added prospectively in October; the September migration is frozen.
-    READER_KINDS.filter(kind => kind !== 'legacy-browser' && kind !== 'seo-crawler'),
+    READER_KINDS.filter(kind => kind !== 'legacy-browser' && kind !== 'seo-crawler' && kind !== 'unresolved'),
   );
 });
 
@@ -1701,7 +1701,7 @@ test('vendor declarations use token boundaries and keep declared roles across si
         acceptsHtml: null, hasAcceptLanguage: 0, signature, userAgent };
       const before = structuredClone(facts);
       assert.deepEqual(classifyReaderKind(facts), { kind,
-        reason: signature.status === 'unverified' ? `${name}; signature:signature-invalid` : name });
+        reason: name });
       assert.deepEqual(facts, before, 'classification must not change signer evidence');
     }
     for (const lookalike of [`Not${name}/1.0`, `${name}Impostor/1.0`, `https://example.test/${name}/1.0`]) {
@@ -1827,8 +1827,8 @@ test('field hardening preserves unknown roots, validates ASN input, and versions
     assert.equal(row.asn_source, accepted ? 'request' : null);
     assert.equal(row.referrer_state, 'internal');
     assert.equal(row.internal_referrer_path, null);
-    assert.equal(row.collection_version, '2026-10-27.1');
-    assert.equal(row.classifier_version, '2026-10-26.3');
+    assert.equal(row.collection_version, '2026-10-27.2');
+    assert.equal(row.classifier_version, '2026-10-27.2');
   }
   for (const url of ['https://gkoreli.com/', 'http://www.gkoreli.com:8080/']) assert.equal(parseReferrer(url, 'gkoreli.com', new Set(['/'])).internalReferrerPath, null);
   assert.equal(parseReferrer('http://www.gkoreli.com:8080/article', 'gkoreli.com', new Set(['/article'])).internalReferrerPath, '/article');

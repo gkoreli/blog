@@ -3,7 +3,12 @@ import type { DeviceType, TrafficClass } from './contracts.js';
 /**
  * Named rule catalogue (reviewed 2026-09-03).
  *
- * These are literal User-Agent token matches, not verified identities. The vendor
+ * These are exact lexical User-Agent product claims, not verified identities.
+ * All canonical candidates and matched product aliases are retained; multiple
+ * candidates abstain from selecting a name. Reviewed boundaries 2026-10-27.
+ * Googlebot Image/Video aliases: https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers
+ * Slack variants: https://api.slack.com/robots. The general Slackbot token
+ * does not establish link expansion; its historical role remains reportable. The vendor
  * documentation recorded in research artifact 06 is the source for each current
  * AI rule family:
  *
@@ -49,59 +54,61 @@ export interface TrafficClassification {
 
 interface AgentRule {
   name: string;
-  pattern: RegExp;
+  products: readonly string[];
 }
 
-const AI_RULES: readonly AgentRule[] = [
-  { name: 'ExaUser', pattern: /(?:^|[\s;(])ExaUser(?=\/|[\s;)]|$)/i },
-  { name: 'ExaSearchBot', pattern: /(?:^|[\s;(])ExaSearchBot(?=\/|[\s;)]|$)/i },
-  { name: 'ChatGPT-User', pattern: /ChatGPT-User/i },
-  { name: 'Claude-User', pattern: /Claude-User/i },
-  { name: 'Perplexity-User', pattern: /Perplexity-User/i },
-  { name: 'Meta-ExternalFetcher', pattern: /Meta-ExternalFetcher/i },
-  { name: 'MistralAI-User', pattern: /MistralAI-User/i },
-  { name: 'DuckAssistBot', pattern: /DuckAssistBot/i },
-  { name: 'Amzn-User', pattern: /Amzn-User/i },
-  { name: 'Google-GeminiNotebook', pattern: /Google-GeminiNotebook/i },
-  { name: 'Google-Agent', pattern: /Google-Agent/i },
-  { name: 'OAI-SearchBot', pattern: /OAI-SearchBot/i },
-  { name: 'Claude-SearchBot', pattern: /Claude-SearchBot/i },
-  { name: 'PerplexityBot', pattern: /PerplexityBot/i },
-  { name: 'MistralAI-Index', pattern: /MistralAI-Index/i },
-  { name: 'Amzn-SearchBot', pattern: /Amzn-SearchBot/i },
-  { name: 'Meta-WebIndexer', pattern: /Meta-WebIndexer/i },
-  { name: 'Applebot', pattern: /Applebot(?!-Extended)(?:\/|\b)/i },
-  { name: 'GPTBot', pattern: /GPTBot/i },
-  { name: 'ClaudeBot', pattern: /ClaudeBot/i },
-  { name: 'MistralAI-Training', pattern: /MistralAI-Training/i },
-  { name: 'Meta-ExternalAgent', pattern: /Meta-ExternalAgent/i },
-  { name: 'Amazonbot', pattern: /Amazonbot/i },
-  { name: 'CCBot', pattern: /CCBot/i },
-  { name: 'Google-CloudVertexBot', pattern: /Google-CloudVertexBot/i },
-  { name: 'Bytespider', pattern: /Bytespider/i },
-  { name: 'PetalBot', pattern: /PetalBot/i },
-  { name: 'Cohere-AI', pattern: /Cohere-AI/i },
-  { name: 'Claude-Web', pattern: /Claude-Web/i },
-  { name: 'GoogleOther', pattern: /GoogleOther/i },
-];
+const AI_RULES = [
+  { name: 'ExaUser', products: ['ExaUser'] },
+  { name: 'ExaSearchBot', products: ['ExaSearchBot'] },
+  { name: 'ChatGPT-User', products: ['ChatGPT-User'] },
+  { name: 'Claude-User', products: ['Claude-User'] },
+  { name: 'Perplexity-User', products: ['Perplexity-User'] },
+  { name: 'Meta-ExternalFetcher', products: ['Meta-ExternalFetcher'] },
+  { name: 'MistralAI-User', products: ['MistralAI-User'] },
+  { name: 'DuckAssistBot', products: ['DuckAssistBot'] },
+  { name: 'Amzn-User', products: ['Amzn-User'] },
+  { name: 'Google-GeminiNotebook', products: ['Google-GeminiNotebook'] },
+  { name: 'Google-Agent', products: ['Google-Agent'] },
+  { name: 'OAI-SearchBot', products: ['OAI-SearchBot'] },
+  { name: 'Claude-SearchBot', products: ['Claude-SearchBot'] },
+  { name: 'PerplexityBot', products: ['PerplexityBot'] },
+  { name: 'MistralAI-Index', products: ['MistralAI-Index'] },
+  { name: 'Amzn-SearchBot', products: ['Amzn-SearchBot'] },
+  { name: 'Meta-WebIndexer', products: ['Meta-WebIndexer'] },
+  { name: 'Applebot', products: ['Applebot'] },
+  { name: 'GPTBot', products: ['GPTBot'] },
+  { name: 'ClaudeBot', products: ['ClaudeBot'] },
+  { name: 'MistralAI-Training', products: ['MistralAI-Training'] },
+  { name: 'Meta-ExternalAgent', products: ['Meta-ExternalAgent'] },
+  { name: 'Amazonbot', products: ['Amazonbot'] },
+  { name: 'CCBot', products: ['CCBot'] },
+  { name: 'Google-CloudVertexBot', products: ['Google-CloudVertexBot'] },
+  { name: 'Bytespider', products: ['Bytespider'] },
+  { name: 'PetalBot', products: ['PetalBot'] },
+  { name: 'Cohere-AI', products: ['Cohere-AI'] },
+  { name: 'Claude-Web', products: ['Claude-Web'] },
+  { name: 'GoogleOther', products: ['GoogleOther'] },
+] as const satisfies readonly AgentRule[];
 
-const BOT_RULES: readonly AgentRule[] = [
-  { name: 'AhrefsSiteAudit', pattern: /(?:^|[\s;(])AhrefsSiteAudit(?=\/|[\s;)]|$)/i },
-  { name: 'AhrefsBot', pattern: /(?:^|[\s;(])AhrefsBot(?=\/|[\s;)]|$)/i },
-  { name: 'Google-Extended', pattern: /Google-Extended/i },
-  { name: 'Applebot-Extended', pattern: /Applebot-Extended/i },
-  { name: 'Googlebot', pattern: /Googlebot/i },
-  { name: 'Bingbot', pattern: /bingbot/i },
-  { name: 'DuckDuckBot', pattern: /DuckDuckBot/i },
-  { name: 'YandexBot', pattern: /YandexBot/i },
-  { name: 'Baiduspider', pattern: /Baiduspider/i },
-  { name: 'FacebookBot', pattern: /facebookexternalhit|Facebot/i },
-  { name: 'LinkedInBot', pattern: /LinkedInBot/i },
-  { name: 'Slackbot', pattern: /Slackbot/i },
-  { name: 'HeadlessChrome', pattern: /HeadlessChrome\//i },
-  { name: 'Cypress', pattern: /Cypress\//i },
-  { name: 'Lightpanda', pattern: /Lightpanda\//i },
-];
+const BOT_RULES = [
+  { name: 'AhrefsSiteAudit', products: ['AhrefsSiteAudit'] },
+  { name: 'AhrefsBot', products: ['AhrefsBot'] },
+  { name: 'Google-Extended', products: ['Google-Extended'] },
+  { name: 'Applebot-Extended', products: ['Applebot-Extended'] },
+  { name: 'Googlebot', products: ['Googlebot', 'Googlebot-Image', 'Googlebot-Video'] },
+  { name: 'Bingbot', products: ['Bingbot'] },
+  { name: 'DuckDuckBot', products: ['DuckDuckBot'] },
+  { name: 'YandexBot', products: ['YandexBot'] },
+  { name: 'Baiduspider', products: ['Baiduspider'] },
+  { name: 'FacebookBot', products: ['facebookexternalhit', 'Facebot'] },
+  { name: 'LinkedInBot', products: ['LinkedInBot'] },
+  { name: 'Slackbot', products: ['Slackbot'] },
+  { name: 'Slackbot-LinkExpanding', products: ['Slackbot-LinkExpanding'] },
+  { name: 'Slack-ImgProxy', products: ['Slack-ImgProxy'] },
+  { name: 'HeadlessChrome', products: ['HeadlessChrome'] },
+  { name: 'Cypress', products: ['Cypress'] },
+  { name: 'Lightpanda', products: ['Lightpanda'] },
+] as const satisfies readonly AgentRule[];
 
 const GENERIC_BOT = /bot\b|spider|crawler|crawl\b|slurp|scrapy|headless|phantom|selenium|wget|curl\/|python-requests|Go-http-client|UptimeRobot|Lighthouse/i;
 
@@ -116,22 +123,53 @@ export function knownAgentTrafficClass(agentName: string): Exclude<TrafficClass,
   return null;
 }
 
-function namedMatch(userAgent: string, rules: readonly AgentRule[]): string | null {
-  for (const rule of rules) {
-    if (rule.pattern.test(userAgent)) return rule.name;
-  }
-  return null;
+export type KnownAgentName = typeof AI_RULES[number]['name'] | typeof BOT_RULES[number]['name'];
+export type KnownProduct = typeof AI_RULES[number]['products'][number] | typeof BOT_RULES[number]['products'][number];
+export const KNOWN_CLIENT_PRODUCTS: ReadonlySet<KnownProduct> = new Set([...AI_RULES, ...BOT_RULES].flatMap(rule => rule.products));
+
+/** Closed catalogue matches, not vendor or human authentication. */
+export interface ClientDeclarations {
+  status: 'none' | 'single' | 'multiple';
+  candidates: KnownAgentName[];
+  matchedProducts: KnownProduct[];
+  browserFamily: 'chromium' | 'firefox' | 'webkit' | 'unrecognized';
+}
+
+export interface TrafficAnalysis extends TrafficClassification {
+  declarations: ClientDeclarations;
+}
+
+/**
+ * RFC 9110 token characters, with explicit comment-compatible separators used
+ * by documented crawler UAs. This is lexical identification, not a full UA
+ * grammar validator. URLs, name substrings and malformed versions do not match.
+ */
+function productNames(userAgent: string): Set<string> {
+  const pattern = /(?:^|[ \t;(])([!#$%&'*+.^_`|~0-9A-Za-z-]+)(?:\/[!#$%&'*+.^_`|~0-9A-Za-z-]+)?(?=$|[ \t;)])/g;
+  return new Set([...userAgent.matchAll(pattern)].flatMap(match => match[1] === undefined ? [] : [match[1].toLowerCase()]));
+}
+
+export function analyzeTraffic(userAgent: string): TrafficAnalysis {
+  const products = productNames(userAgent);
+  const matches = [...AI_RULES, ...BOT_RULES].filter(rule => rule.products.some(product => products.has(product.toLowerCase())));
+  const declarations: ClientDeclarations = {
+    status: matches.length === 0 ? 'none' : matches.length === 1 ? 'single' : 'multiple',
+    candidates: matches.map(rule => rule.name).sort(),
+    matchedProducts: matches.flatMap(rule => rule.products.filter(product => products.has(product.toLowerCase()))).sort(),
+    browserFamily: products.has('chrome') || products.has('chromium') || products.has('crios') ? 'chromium'
+      : products.has('firefox') || products.has('fxios') ? 'firefox'
+        : products.has('applewebkit') && (products.has('safari') || products.has('mobile')) ? 'webkit' : 'unrecognized',
+  };
+  const only = declarations.candidates.length === 1 ? declarations.candidates[0] : undefined;
+  if (only !== undefined) return { trafficClass: knownAgentTrafficClass(only) ?? 'bot', agentName: only, declarations };
+  if (matches.length > 1 || GENERIC_BOT.test(userAgent)) return { trafficClass: 'bot', agentName: null, declarations };
+  // The coarse legacy UA column remains compatible; reader_kind carries unknowns.
+  return { trafficClass: 'browser', agentName: null, declarations };
 }
 
 export function classifyTraffic(userAgent: string): TrafficClassification {
-  const aiName = namedMatch(userAgent, AI_RULES);
-  if (aiName !== null) return { trafficClass: 'ai', agentName: aiName };
-
-  const botName = namedMatch(userAgent, BOT_RULES);
-  if (botName !== null) return { trafficClass: 'bot', agentName: botName };
-
-  if (GENERIC_BOT.test(userAgent)) return { trafficClass: 'bot', agentName: null };
-  return { trafficClass: 'browser', agentName: null };
+  const { trafficClass, agentName } = analyzeTraffic(userAgent);
+  return { trafficClass, agentName };
 }
 
 export function classifyDevice(userAgent: string): DeviceType {

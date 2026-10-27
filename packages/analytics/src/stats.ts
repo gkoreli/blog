@@ -10,7 +10,7 @@ import {
 } from './contracts.js';
 import type { Env } from './db.js';
 import { KNOWN_AGENT_NAMES } from './classify.js';
-import { agentReaderKind } from './readerkind.js';
+import { agentReaderKinds } from './readerkind.js';
 import { PUBLIC_SIGNERS, isPublicSignerName } from './signers.js';
 import {
   completeTimeSeries,
@@ -50,6 +50,7 @@ function parseTrafficFilter(value: string | null): TrafficFilter | null {
     case 'agents':
     case 'crawlers':
     case 'automation':
+    case 'unresolved':
     case 'all':
       return value;
     default:
@@ -513,15 +514,15 @@ export function parseStatsQuery(params: URLSearchParams): StatsQuery | string {
   const traffic = trafficValue === null
     ? scoped ? 'all' : 'browser'
     : parseTrafficFilter(trafficValue);
-  if (traffic === null) return 'traffic must be browser, agents, crawlers, automation, or all';
-  if (agent !== undefined && kind !== undefined && kind !== 'signed-agent' && agentReaderKind(agent) !== kind) {
+  if (traffic === null) return 'traffic must be browser, agents, crawlers, automation, unresolved, or all';
+  if (agent !== undefined && kind !== undefined && kind !== 'signed-agent' && !agentReaderKinds(agent).includes(kind)) {
     return `agent ${agent} cannot be combined with kind=${kind}`;
   }
   if (kind !== undefined && traffic !== 'all' && !READER_GROUPS[traffic].includes(kind)) {
     return `kind ${kind} cannot be combined with traffic=${traffic}`;
   }
   // Historical named/signed rows retain their original fallback classification.
-  if (agent !== undefined && traffic !== 'all' && traffic !== 'agents' && readerGroupOf(agentReaderKind(agent)) !== traffic) {
+  if (agent !== undefined && traffic !== 'all' && traffic !== 'agents' && !agentReaderKinds(agent).some(kind => readerGroupOf(kind) === traffic)) {
     return `agent ${agent} cannot be combined with traffic=${traffic}`;
   }
 

@@ -1,5 +1,6 @@
-import type { ReaderKind, TrafficClass } from './contracts.js';
-import { isArchiverAsn, isHostingAsn } from './networks.js';
+import type { ReaderKind, TrafficClass, ReferrerState } from './contracts.js';
+import { isArchiverAsn, isHostingAsn, networkEvidence } from './networks.js';
+import { analyzeTraffic, type ClientDeclarations } from './classify.js';
 import type { WebBotAuthResult } from './webbotauth.js';
 
 export { READER_KINDS } from './contracts.js';
@@ -55,7 +56,8 @@ export const SEO_CRAWLERS = ['AhrefsBot', 'AhrefsSiteAudit'] as const;
 export const PREVIEW_OR_FEED_AGENTS = [
   'FacebookBot',
   'LinkedInBot',
-  'Slackbot',
+  'Slackbot-LinkExpanding',
+  'Slack-ImgProxy',
 ] as const;
 
 export const HEADLESS_BROWSERS = [
@@ -85,6 +87,8 @@ export interface ReaderKindFacts {
   hasAcceptLanguage: number | null;
   signature: WebBotAuthResult;
   userAgent: string;
+  declarations?: ClientDeclarations;
+  referrerState?: ReferrerState;
 }
 
 export interface ReaderKindResult {
@@ -92,19 +96,12 @@ export interface ReaderKindResult {
   reason: string;
 }
 
-function userAgentHeadlessName(userAgent: string): string | null {
-  if (/HeadlessChrome\//i.test(userAgent)) return 'HeadlessChrome';
-  if (/Cypress\//i.test(userAgent)) return 'Cypress';
-  if (/Lightpanda\//i.test(userAgent)) return 'Lightpanda';
-  return null;
-}
-
 /**
  * Whether the User-Agent claims an engine version that ships Fetch Metadata on
- * every request: Chromium >= 76 (2019, including Android WebView), Firefox >= 90
+ * potentially trustworthy requests under supporting transport/context: Chromium >= 76 (2019, including Android WebView), Firefox >= 90
  * (2021), WebKit on Safari/iOS >= 16.4 (2023, including WKWebView). Sources are
- * in research artifact 09. A claim at or above these versions with no
- * Sec-Fetch-Mode is a verdict; an older or unreadable claim proves nothing.
+ * in research artifact 09. This is a version claim, not proof of emission or
+ * human operation. Missing headers now abstain instead of proving automation.
  */
 export function claimsFetchMetadataBrowser(userAgent: string): boolean {
   const chromium = /\bChrome\/(\d+)/.exec(userAgent);
@@ -140,6 +137,14 @@ export function agentReaderKind(agentName: string): ReaderKind {
 
 function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
   const agentName = facts.agentName;
+  const declarations = facts.declarations ?? analyzeTraffic(facts.userAgent).declarations;
+  if (declarations.status === 'multiple') {
+    const categories = new Set(declarations.candidates.map(agentReaderKind));
+    const onlyCategory = categories.size === 1 ? categories.values().next().value : undefined;
+    return onlyCategory === undefined
+      ? { kind: 'unresolved', reason: 'multiple-client-declarations' }
+      : { kind: onlyCategory, reason: 'multiple-declarations-same-category' };
+  }
   if (agentName !== null && onDemandFetchers.has(agentName)) {
     return { kind: 'ai-assistant', reason: agentName };
   }
@@ -161,7 +166,7 @@ function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
 
   const headlessName = agentName !== null && headlessBrowsers.has(agentName)
     ? agentName
-    : userAgentHeadlessName(facts.userAgent);
+    : declarations.candidates.find(name => headlessBrowsers.has(name)) ?? null;
   if (headlessName !== null) return { kind: 'headless-browser', reason: headlessName };
 
   if (agentName === null && isArchiverAsn(facts.asn)) {
@@ -185,32 +190,34 @@ function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
   // hits from Tencent Cloud (research artifact 09, section "Site measurement").
   if (isHostingAsn(facts.asn)) return { kind: 'cloud-browser', reason: `hosting-asn:${facts.asn}` };
 
-  // A page navigation from a browser carries navigate/document Fetch Metadata,
-  // an Accept that admits HTML, and an Accept-Language. A client that sends the
-  // Fetch Metadata but not the other two is a script imitating one.
+  if (declarations.browserFamily === 'unrecognized') return { kind: 'unresolved', reason: 'unrecognized-browser-claim' };
+  if (facts.secFetchSite === 'same-origin' && facts.referrerState === 'external') return { kind: 'unresolved', reason: 'request-context-conflict' };
+  if (facts.secFetchMode !== null && !['navigate', 'cors', 'no-cors', 'same-origin', 'websocket'].includes(facts.secFetchMode)) return { kind: 'unresolved', reason: 'fetch-metadata-unrecognized' };
   const navigationShaped = facts.secFetchMode === 'navigate' && facts.secFetchDest === 'document'
     && facts.acceptsHtml === 1 && facts.hasAcceptLanguage === 1;
   if (!navigationShaped) {
     if (facts.secFetchMode !== null) return { kind: 'http-client', reason: 'not-navigation-shaped' };
-    if (claimsFetchMetadataBrowser(facts.userAgent)) {
-      return { kind: 'http-client', reason: 'no-fetch-metadata' };
-    }
-    return { kind: 'legacy-browser', reason: 'pre-fetch-metadata-ua' };
+    return { kind: 'unresolved', reason: claimsFetchMetadataBrowser(facts.userAgent) ? 'fetch-metadata-absent' : 'fetch-metadata-support-unknown' };
   }
-  return { kind: 'browser', reason: 'navigation-shaped' };
+  if (networkEvidence(facts.asn) === 'missing') return { kind: 'unresolved', reason: 'network-evidence-missing' };
+  return { kind: 'browser', reason: 'navigation-shaped-network-unlisted' };
 }
 
 export function classifyReaderKind(facts: ReaderKindFacts): ReaderKindResult {
   const result = unsignedReaderKind(facts);
+  if (result.reason === 'multiple-client-declarations' || result.reason === 'multiple-declarations-same-category') return result;
   if (facts.signature.status === 'verified') {
     // A declared named role and a verified signing key are independent evidence.
     // Preserve the role; signature_status/signature_agent retain verification.
     // Unrecognized signed clients keep the historical signed-agent fallback.
-    if (facts.agentName !== null && agentReaderKind(facts.agentName) !== 'other-bot') return result;
+    if (facts.agentName !== null) return result;
     return { kind: 'signed-agent', reason: facts.signature.agent };
   }
-  if (facts.signature.status === 'unverified') {
-    return { ...result, reason: `${result.reason}; signature:${facts.signature.reason}` };
-  }
+  // Verification failures have their own persisted evidence, not a role suffix.
   return result;
+}
+
+/** Filter compatibility spans retained historical mappings without rewriting rows. */
+export function agentReaderKinds(agentName: string): readonly ReaderKind[] {
+  return agentName === 'Slackbot' ? ['other-bot', 'preview-or-feed'] : [agentReaderKind(agentName)];
 }

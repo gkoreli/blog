@@ -106,7 +106,8 @@ test('a stalled signature verifier has a deadline and cannot prevent the eligibl
   assert.ok(Date.now() - start >= SIGNATURE_DEADLINE_MS - 25);
   const row = sqlite.prepare('SELECT * FROM page_observations').get();
   assert.equal(row.signature_status, 'unverified');
-  assert.ok(row.reader_reason.includes('verification-timeout'));
+  assert.equal(JSON.parse(row.signature_evidence).localReason, 'verification-timeout');
+  assert.equal(row.reader_reason.includes('verification-timeout'), false);
   const payload = JSON.parse(sqlite.prepare('SELECT payload FROM page_observation_diagnostics').get().payload);
   assert.equal(payload.signatureReason, 'verification-timeout');
 });

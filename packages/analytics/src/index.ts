@@ -1,7 +1,8 @@
 import { allowsDiagnostics } from './diagnostics.js';
 import { extractRequestEvidence, extractDiagnosticInputs } from './request-evidence.js';
 import { COLLECTION_VERSION, VERIFIER_PROFILE_VERSION } from './versions.js';
-import { classifyDevice, classifyTraffic } from './classify.js';
+import { analyzeTraffic, classifyDevice } from './classify.js';
+import { classificationEvidence } from './classification-evidence.js';
 import type { Representation } from './contracts.js';
 import { recordPageObservation, type Env, type PageObservation } from './db.js';
 import { isEligiblePageResponse } from './eligibility.js';
@@ -82,7 +83,7 @@ async function persistObservation(
   }
   const captureEvidence = diagnosticsRequested && publicPaths?.has(new URL(request.url).pathname) === true;
   const metadata = extractRequestMetadata(request, env.OWNER_IPS, publicPaths);
-  const classification = classifyTraffic(metadata.userAgent);
+  const classification = analyzeTraffic(metadata.userAgent);
   const utcDate = observedAt.toISOString().slice(0, 10);
   const [dailyClientId, signature] = await Promise.all([
     createDailyClientId({
@@ -94,10 +95,10 @@ async function persistObservation(
     }),
     verifyRequestSignature(request, metadata.hasSignatureHeaders, options.verifySignature),
   ]);
-  const reader = classifyReaderKind({
+  const readerFacts = {
     trafficClass: classification.trafficClass,
     agentName: classification.agentName,
-    observationSource: 'edge',
+    observationSource: 'edge' as const,
     asn: metadata.asn,
     secFetchMode: metadata.secFetchMode,
     secFetchDest: metadata.secFetchDest,
@@ -107,7 +108,10 @@ async function persistObservation(
     hasAcceptLanguage: metadata.hasAcceptLanguage,
     signature,
     userAgent: metadata.userAgent,
-  });
+    declarations: classification.declarations,
+    referrerState: metadata.referrerState,
+  };
+  const reader = classifyReaderKind(readerFacts);
   const observation: PageObservation = {
     path: metadata.path,
     referrerHost: metadata.referrerHost,
@@ -134,6 +138,7 @@ async function persistObservation(
     readerReason: reader.reason,
     observedAt: sqliteTimestamp(observedAt),
     signatureEvidence: verificationEvidence(request, signature, options.verifySignature !== undefined),
+    classificationEvidence: classificationEvidence(readerFacts, classification.declarations),
     ...(captureEvidence ? { requestEvidence: extractRequestEvidence(request, response) } : {}),
   };
   const diagnostic = captureEvidence ? {

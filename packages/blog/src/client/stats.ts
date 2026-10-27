@@ -33,17 +33,27 @@ const KIND_LABELS: Record<ReaderKind, string> = {
   'ai-crawler': 'AI crawlers',
   'search-crawler': 'Search engines',
   'seo-crawler': 'SEO and site-audit crawlers',
-  'preview-or-feed': 'Link previews',
-  'cloud-browser': 'Cloud browsers',
+  'preview-or-feed': 'Previews & service fetches',
+  'cloud-browser': 'Hosting-list matches',
   'headless-browser': 'Headless browsers',
   'http-client': 'HTTP clients',
   'other-bot': 'Other bots',
-  'legacy-browser': 'Old browsers',
+  'legacy-browser': 'Older browser claims — earlier rule',
+  unresolved: 'Unresolved request evidence',
 };
 
 /** Public wording for the reason codes that are not agent names. */
 const REASON_LABELS: Record<string, string> = {
-  'navigation-shaped': 'page navigation from a normal network',
+  'navigation-shaped': 'navigation headers; network unlisted or unavailable (earlier rule)',
+  'navigation-shaped-network-unlisted': 'browser claim and navigation headers; network not on hosting list',
+  'multiple-client-declarations': 'multiple recognized client declarations; no name selected',
+  'multiple-declarations-same-category': 'multiple names declare this category; no single identity selected',
+  'request-context-conflict': 'external referrer with same-origin Fetch Metadata',
+  'fetch-metadata-unrecognized': 'unrecognized Fetch Metadata mode',
+  'unrecognized-browser-claim': 'no recognized browser-family product claim',
+  'network-evidence-missing': 'navigation-shaped browser claim; network evidence missing',
+  'fetch-metadata-absent': 'supporting browser-version claim; Fetch Metadata absent',
+  'fetch-metadata-support-unknown': 'browser/version support unresolved; Fetch Metadata absent',
   'beacon-script-ran': 'site script ran in the page (before Aug 26, 2026)',
   'user-agent-only': 'User-Agent only (Aug 26 to Sep 3, 2026)',
   'not-navigation-shaped': 'not shaped like a page navigation',
@@ -101,6 +111,7 @@ function parseTraffic(value: string | null, fallback: TrafficFilter): TrafficFil
     case 'agents':
     case 'crawlers':
     case 'automation':
+    case 'unresolved':
     case 'all':
       return value;
     default:

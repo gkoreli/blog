@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-27T15:36:01.546588+00:00",
+  "analyticsTests": 107,
+  "siteTests": 106,
+  "workspaceTypes": "pass",
+  "frontmatter": "20 Markdown posts pass",
+  "isolatedBuildPosts": 31,
+  "changedDocumentRelativeLinksChecked": 183,
+  "articleWordsWithLinksRemoved": 1248,
+  "articleH1": 1,
+  "prompts": 30,
+  "articleMarkdownSha256": "e13c3e0d8dfcd9fed86483380159e5d8a4ea3ee537bbd3a7c0e2312bb5458ce6",
+  "nativeD1": "classification-local.json",
+  "retainedReplay": "r1-classification-v2-replay.json",
+  "limits": [
+    "Source/local/replay acceptance, not production activation or independent human/bot accuracy.",
+    "No historical rewrite or raw diagnostic profile activation."
+  ],
+  "fullCatalogueJsonBudget": "All 50 reviewed product aliases, all 47 canonical names and longest derived states fit the 2048-byte constraint."
+}

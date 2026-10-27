@@ -72,3 +72,7 @@ The [privacy/collection review](13-eu-us-collection-boundaries.md) still governs
 [Source acceptance](detection-source-checks.json): 86 analytics tests pass; all twelve probe cases pass; the probe hash matches its receipt. Frontmatter and the isolated 31-post build pass, with one article H1, 28 shaping prompts and approximately 1,200 article words. All 115 relative document links checked in the changed files resolve. The article now reports the measured local signature-coverage result without claiming vendor acceptance or a cryptographic break. Code delivery and served-publication acceptance remain separate from these local checks.
 
 [Publication acceptance](detection-publication.json) subsequently verifies source `52d883a`, a 100% Worker activation, exact served Markdown match and 28 public prompts. The article update is accepted; the detector repairs and broader experiments above remain proposed. No production accuracy, vendor verification or expanded capture follows from publishing the findings.
+
+## Superseding prospective implementation
+
+[Research 19](19-explicit-classification-uncertainty.md) owns the October 27 classifier repair and current reproduction. The twelve-case probe and results above remain frozen to their recorded source/classifier; reproduce those assertions from that checkout. New regression cases/native acceptance and the same-input R1 replay preserve the changed behavior without rewriting the historical capture.

@@ -68,3 +68,13 @@ export const ARCHIVER_NETWORKS: ReadonlyMap<number, string> = new Map([
 export function isArchiverAsn(asn: number | null): boolean {
   return asn !== null && ARCHIVER_NETWORKS.has(asn);
 }
+
+export type NetworkEvidence = 'missing' | 'hosting-listed' | 'archiver-listed' | 'not-listed';
+
+/** List nonmembership is not a normal/residential-network verdict. */
+export function networkEvidence(asn: number | null): NetworkEvidence {
+  if (asn === null || !Number.isInteger(asn) || asn <= 0 || asn >= 4294967295) return 'missing';
+  if (isHostingAsn(asn)) return 'hosting-listed';
+  if (isArchiverAsn(asn)) return 'archiver-listed';
+  return 'not-listed';
+}

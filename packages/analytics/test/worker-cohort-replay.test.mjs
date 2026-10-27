@@ -35,3 +35,12 @@ test('retains invalid, missing-ID and truncation counts instead of silently drop
   assert.equal(report.inputRows, 3); assert.equal(report.invalidRows, 2); assert.equal(report.missingEventIds, 1); assert.equal(report.truncatedEvents, 1);
   assert.equal(Object.values(report.dimensions.readerKind).reduce((a,b)=>a+b,0), 1);
 });
+
+
+test('replay retains declaration conflicts, missing networks and external/same-origin inconsistencies', () => {
+  const report = analyzeWorkerCohort([event({ 'sec-fetch-site': 'same-origin' }), event({}, { asn: undefined }), event({ 'user-agent': 'GPTBot/1.0 ChatGPT-User/1.0' })]);
+  assert.deepEqual(report.dimensions.readerKind, { unresolved: 3 });
+  assert.equal(report.dimensions.referrerContext['external-with-same-origin'], 1);
+  assert.equal(report.dimensions.networkEvidence.missing, 1);
+  assert.equal(report.dimensions.categoryAgreement['multiple-categories'], 1);
+});

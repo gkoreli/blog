@@ -1,0 +1,335 @@
+{
+  "checkedAt": "2026-10-27T15:31:03.165Z",
+  "collectionVersion": "2026-10-27.2",
+  "classifierVersion": "2026-10-27.2",
+  "runtime": "Node runs actual compiled collector/verifier/report; D1 executes in Miniflare/workerd",
+  "migration": "0013_classification_evidence.sql",
+  "historicalKindUnchanged": true,
+  "rows": [
+    {
+      "label": "navigation",
+      "kind": "browser",
+      "reason": "navigation-shaped-network-unlisted",
+      "classification": {
+        "version": "2026-10-27.2",
+        "classifierProfile": "2026-10-27.2",
+        "declarations": {
+          "status": "none",
+          "candidates": [],
+          "matchedProducts": [],
+          "browserFamily": "chromium"
+        },
+        "declaredCategories": [],
+        "categoryAgreement": "no-match",
+        "network": "not-listed",
+        "navigationShaped": true,
+        "activation": "absent",
+        "referrerContext": "no-conflict-observed"
+      },
+      "signatureStatus": "absent"
+    },
+    {
+      "label": "missing-network",
+      "kind": "unresolved",
+      "reason": "network-evidence-missing",
+      "classification": {
+        "version": "2026-10-27.2",
+        "classifierProfile": "2026-10-27.2",
+        "declarations": {
+          "status": "none",
+          "candidates": [],
+          "matchedProducts": [],
+          "browserFamily": "chromium"
+        },
+        "declaredCategories": [],
+        "categoryAgreement": "no-match",
+        "network": "missing",
+        "navigationShaped": true,
+        "activation": "absent",
+        "referrerContext": "no-conflict-observed"
+      },
+      "signatureStatus": "absent"
+    },
+    {
+      "label": "lookalike",
+      "kind": "unresolved",
+      "reason": "unrecognized-browser-claim",
+      "classification": {
+        "version": "2026-10-27.2",
+        "classifierProfile": "2026-10-27.2",
+        "declarations": {
+          "status": "none",
+          "candidates": [],
+          "matchedProducts": [],
+          "browserFamily": "unrecognized"
+        },
+        "declaredCategories": [],
+        "categoryAgreement": "no-match",
+        "network": "not-listed",
+        "navigationShaped": true,
+        "activation": "absent",
+        "referrerContext": "no-conflict-observed"
+      },
+      "signatureStatus": "absent"
+    },
+    {
+      "label": "context-conflict",
+      "kind": "unresolved",
+      "reason": "request-context-conflict",
+      "classification": {
+        "version": "2026-10-27.2",
+        "classifierProfile": "2026-10-27.2",
+        "declarations": {
+          "status": "none",
+          "candidates": [],
+          "matchedProducts": [],
+          "browserFamily": "chromium"
+        },
+        "declaredCategories": [],
+        "categoryAgreement": "no-match",
+        "network": "not-listed",
+        "navigationShaped": true,
+        "activation": "absent",
+        "referrerContext": "external-with-same-origin"
+      },
+      "signatureStatus": "absent"
+    },
+    {
+      "label": "signed-category-conflict",
+      "kind": "unresolved",
+      "reason": "multiple-client-declarations",
+      "classification": {
+        "version": "2026-10-27.2",
+        "classifierProfile": "2026-10-27.2",
+        "declarations": {
+          "status": "multiple",
+          "candidates": [
+            "ChatGPT-User",
+            "GPTBot"
+          ],
+          "matchedProducts": [
+            "ChatGPT-User",
+            "GPTBot"
+          ],
+          "browserFamily": "unrecognized"
+        },
+        "declaredCategories": [
+          "ai-assistant",
+          "ai-crawler"
+        ],
+        "categoryAgreement": "multiple-categories",
+        "network": "not-listed",
+        "navigationShaped": true,
+        "activation": "absent",
+        "referrerContext": "no-conflict-observed"
+      },
+      "signatureStatus": "verified"
+    },
+    {
+      "label": "signed-common-category",
+      "kind": "headless-browser",
+      "reason": "multiple-declarations-same-category",
+      "classification": {
+        "version": "2026-10-27.2",
+        "classifierProfile": "2026-10-27.2",
+        "declarations": {
+          "status": "multiple",
+          "candidates": [
+            "Cypress",
+            "HeadlessChrome"
+          ],
+          "matchedProducts": [
+            "Cypress",
+            "HeadlessChrome"
+          ],
+          "browserFamily": "unrecognized"
+        },
+        "declaredCategories": [
+          "headless-browser"
+        ],
+        "categoryAgreement": "multiple-same-category",
+        "network": "not-listed",
+        "navigationShaped": true,
+        "activation": "absent",
+        "referrerContext": "no-conflict-observed"
+      },
+      "signatureStatus": "verified"
+    },
+    {
+      "label": "signed-named-crawler",
+      "kind": "ai-search",
+      "reason": "ExaSearchBot",
+      "classification": {
+        "version": "2026-10-27.2",
+        "classifierProfile": "2026-10-27.2",
+        "declarations": {
+          "status": "single",
+          "candidates": [
+            "ExaSearchBot"
+          ],
+          "matchedProducts": [
+            "ExaSearchBot"
+          ],
+          "browserFamily": "unrecognized"
+        },
+        "declaredCategories": [
+          "ai-search"
+        ],
+        "categoryAgreement": "single-match",
+        "network": "not-listed",
+        "navigationShaped": true,
+        "activation": "absent",
+        "referrerContext": "no-conflict-observed"
+      },
+      "signatureStatus": "verified"
+    },
+    {
+      "label": "slack-general",
+      "kind": "other-bot",
+      "reason": "Slackbot",
+      "classification": {
+        "version": "2026-10-27.2",
+        "classifierProfile": "2026-10-27.2",
+        "declarations": {
+          "status": "single",
+          "candidates": [
+            "Slackbot"
+          ],
+          "matchedProducts": [
+            "Slackbot"
+          ],
+          "browserFamily": "unrecognized"
+        },
+        "declaredCategories": [
+          "other-bot"
+        ],
+        "categoryAgreement": "single-match",
+        "network": "not-listed",
+        "navigationShaped": true,
+        "activation": "absent",
+        "referrerContext": "no-conflict-observed"
+      },
+      "signatureStatus": "absent"
+    },
+    {
+      "label": "slack-link",
+      "kind": "preview-or-feed",
+      "reason": "Slackbot-LinkExpanding",
+      "classification": {
+        "version": "2026-10-27.2",
+        "classifierProfile": "2026-10-27.2",
+        "declarations": {
+          "status": "single",
+          "candidates": [
+            "Slackbot-LinkExpanding"
+          ],
+          "matchedProducts": [
+            "Slackbot-LinkExpanding"
+          ],
+          "browserFamily": "unrecognized"
+        },
+        "declaredCategories": [
+          "preview-or-feed"
+        ],
+        "categoryAgreement": "single-match",
+        "network": "not-listed",
+        "navigationShaped": true,
+        "activation": "absent",
+        "referrerContext": "no-conflict-observed"
+      },
+      "signatureStatus": "absent"
+    },
+    {
+      "label": "headerless",
+      "kind": "unresolved",
+      "reason": "fetch-metadata-absent",
+      "classification": {
+        "version": "2026-10-27.2",
+        "classifierProfile": "2026-10-27.2",
+        "declarations": {
+          "status": "none",
+          "candidates": [],
+          "matchedProducts": [],
+          "browserFamily": "chromium"
+        },
+        "declaredCategories": [],
+        "categoryAgreement": "no-match",
+        "network": "not-listed",
+        "navigationShaped": false,
+        "activation": "absent",
+        "referrerContext": "not-assessed"
+      },
+      "signatureStatus": "absent"
+    },
+    {
+      "label": "referral-excluded",
+      "kind": "unresolved",
+      "reason": "multiple-client-declarations",
+      "classification": {
+        "version": "2026-10-27.2",
+        "classifierProfile": "2026-10-27.2",
+        "declarations": {
+          "status": "multiple",
+          "candidates": [
+            "ChatGPT-User",
+            "GPTBot"
+          ],
+          "matchedProducts": [
+            "ChatGPT-User",
+            "GPTBot"
+          ],
+          "browserFamily": "unrecognized"
+        },
+        "declaredCategories": [
+          "ai-assistant",
+          "ai-crawler"
+        ],
+        "categoryAgreement": "multiple-categories",
+        "network": "not-listed",
+        "navigationShaped": true,
+        "activation": "absent",
+        "referrerContext": "no-conflict-observed"
+      },
+      "signatureStatus": "absent"
+    },
+    {
+      "label": "owner-excluded",
+      "kind": "browser",
+      "reason": "navigation-shaped-network-unlisted",
+      "classification": {
+        "version": "2026-10-27.2",
+        "classifierProfile": "2026-10-27.2",
+        "declarations": {
+          "status": "none",
+          "candidates": [],
+          "matchedProducts": [],
+          "browserFamily": "chromium"
+        },
+        "declaredCategories": [],
+        "categoryAgreement": "no-match",
+        "network": "not-listed",
+        "navigationShaped": true,
+        "activation": "absent",
+        "referrerContext": "no-conflict-observed"
+      },
+      "signatureStatus": "absent"
+    }
+  ],
+  "publicViews": 11,
+  "partitions": {
+    "browser": 2,
+    "agents": 0,
+    "crawlers": 2,
+    "automation": 2,
+    "unresolved": 5
+  },
+  "directoryCalls": 1,
+  "preparedProductionSelectAccepted": true,
+  "productionCalls": 0,
+  "limits": [
+    "Collector and WebCrypto run in Node 24.14.1, not inside a production Worker isolate.",
+    "Synthetic inputs and ephemeral signing key; not vendor or native-provider acceptance.",
+    "Multiple compatible declarations retain their category without authenticating an identity or trigger.",
+    "No historical rewrite, raw-profile activation, human count or population accuracy rate."
+  ]
+}

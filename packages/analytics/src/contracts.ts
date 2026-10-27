@@ -5,7 +5,7 @@ export const DIAGNOSTIC_RETENTION_DAYS = 60;
 
 export type TrafficClass = 'browser' | 'bot' | 'ai';
 /** Public filters group stored request evidence and declared roles. */
-export type TrafficFilter = 'browser' | 'agents' | 'crawlers' | 'automation' | 'all';
+export type TrafficFilter = 'browser' | 'agents' | 'crawlers' | 'automation' | 'unresolved' | 'all';
 
 /** Closed set of reader kinds, one per row, with one reason (ADR-0016.3 section A). */
 export const READER_KINDS = [
@@ -22,6 +22,7 @@ export const READER_KINDS = [
   'http-client',
   'legacy-browser',
   'browser',
+  'unresolved',
 ] as const;
 export type ReaderKind = typeof READER_KINDS[number];
 
@@ -31,16 +32,19 @@ export const READER_GROUPS: Record<Exclude<TrafficFilter, 'all'>, readonly Reade
   agents: ['signed-agent', 'ai-assistant'],
   crawlers: ['search-crawler', 'seo-crawler', 'ai-search', 'ai-crawler', 'preview-or-feed'],
   automation: ['cloud-browser', 'headless-browser', 'http-client', 'other-bot', 'legacy-browser'],
+  unresolved: ['unresolved'],
 };
 
+const readerKindNames: ReadonlySet<string> = new Set(READER_KINDS);
+
 export function isReaderKind(value: string): value is ReaderKind {
-  return (READER_KINDS as readonly string[]).includes(value);
+  return readerKindNames.has(value);
 }
 
 export function readerGroupOf(kind: ReaderKind): Exclude<TrafficFilter, 'all'> {
   for (const [group, kinds] of Object.entries(READER_GROUPS)) {
     if (kinds.includes(kind)) {
-      if (group === 'browser' || group === 'agents' || group === 'crawlers' || group === 'automation') return group;
+      if (group === 'browser' || group === 'agents' || group === 'crawlers' || group === 'automation' || group === 'unresolved') return group;
     }
   }
   throw new Error(`Reader kind ${kind} belongs to no group`);

@@ -39,6 +39,7 @@ CREATE TABLE page_observations (
   classifier_version TEXT CHECK (classifier_version IS NULL OR length(classifier_version) BETWEEN 1 AND 32),
   request_evidence TEXT CHECK (request_evidence IS NULL OR (json_valid(request_evidence) AND length(CAST(request_evidence AS BLOB)) <= 2048)),
   signature_evidence TEXT CHECK (signature_evidence IS NULL OR (json_valid(signature_evidence) AND length(CAST(signature_evidence AS BLOB)) <= 2048)),
+  classification_evidence TEXT CHECK (classification_evidence IS NULL OR (json_valid(classification_evidence) AND length(CAST(classification_evidence AS BLOB)) <= 2048)),
   observed_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 

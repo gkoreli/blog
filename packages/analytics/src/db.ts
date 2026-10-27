@@ -4,6 +4,7 @@ import { COLLECTION_VERSION, CLASSIFIER_VERSION } from './versions.js';
 import type { DeviceType, ReferrerState, Representation, SignatureStatus, TrafficClass } from './contracts.js';
 import type { ReaderKind } from './readerkind.js';
 import type { VerificationEvidence } from './signature-evidence.js';
+import type { ClassificationEvidence } from './classification-evidence.js';
 
 export interface Env {
   DB: D1Database;
@@ -41,6 +42,7 @@ export interface PageObservation {
   observedAt: string;
   requestEvidence?: RequestEvidence;
   signatureEvidence?: VerificationEvidence;
+  classificationEvidence?: ClassificationEvidence;
 }
 
 const INSERT_OBSERVATION = `INSERT INTO page_observations (
@@ -72,8 +74,9 @@ const INSERT_OBSERVATION = `INSERT INTO page_observations (
   collection_version,
   classifier_version,
   request_evidence,
-  signature_evidence
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  signature_evidence,
+  classification_evidence
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
 export async function recordPageObservation(db: D1Database, observation: PageObservation, diagnostic?: ObservationDiagnostic): Promise<void> {
   const result = await db.prepare(INSERT_OBSERVATION).bind(
@@ -106,6 +109,7 @@ export async function recordPageObservation(db: D1Database, observation: PageObs
     CLASSIFIER_VERSION,
     observation.requestEvidence === undefined ? null : JSON.stringify(observation.requestEvidence),
     observation.signatureEvidence === undefined ? null : JSON.stringify(observation.signatureEvidence),
+    observation.classificationEvidence === undefined ? null : JSON.stringify(observation.classificationEvidence),
   ).run();
   if (diagnostic !== undefined) {
     // Preserve the acknowledged base observation if its optional diagnostic fails.

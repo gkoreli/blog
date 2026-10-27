@@ -41,7 +41,7 @@ Browser events rose from **306** in the complete UTC week beginning September 14
 
 That is a sensitivity check. R1 remains included, and the subtraction does not produce a corrected human count. Its operator and authenticity are unresolved.
 
-[Recent Cloudflare logs](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/15-native-input-recovery.md) recovered 381 R1 requests over October 24–25, with 29 User-Agent strings. All matched our Browser rules when replayed; none identified a known client. Their operator and the population difference from D1 remain unresolved. **More evidence can test a rule without authenticating its subject.**
+[Recent Cloudflare logs](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/15-native-input-recovery.md) recovered 381 R1 requests over October 24–25, with 29 User-Agent strings. Earlier rules called all Browser. [New-rule replay](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/19-explicit-classification-uncertainty.md) leaves 118 unresolved: their headers claim same-origin context while supplying an external referrer. This includes redirects and changes no stored history. Operator and population differences from D1 remain unknown. **More evidence can test a rule without authenticating its subject.**
 
 ## A signed crawler was being counted as an assistant
 
@@ -55,7 +55,7 @@ The repair recognizes all four names, preserves declared roles across verified s
 
 ## Preserve uncertainty in the data
 
-I kept the old beacon archive and marked its copied rows by source. New observations now carry collection and classifier versions. That lets a later report distinguish a measurement change from a traffic change without inventing missing historical evidence.
+I kept the beacon archive and versioned new classifications. Requests now retain every recognized client declaration and distinguish missing network evidence from a hosting-list nonmatch. Conflicting categories enter Unresolved; historical classifications remain intact. **A list nonmatch is not a residential-network verdict.**
 
 D1 discarded User-Agent after classification, so that table alone cannot replay the Exa/Ahrefs gap. Recent provider logs retained some original inputs; complete historical recovery remains unproven. [Plausible](https://plausible.io/data-policy) keeps parsed software facts; [the IETF](https://www.ietf.org/policies/web-analytics/) keeps raw visitor data for five days and aggregates for twelve months. I’ve prepared an expiring diagnostic store with bounded, filtered UA evidence; collection remains off while its privacy boundary is settled. Filtering cannot prove arbitrary text is free of personal information. Debugging evidence and long-term reports deserve different lifecycles.
 
