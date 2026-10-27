@@ -1,0 +1,175 @@
+{
+  "checkedAt": "2026-10-27T00:45:25.612Z",
+  "sourceCommit": "d5b75619b29fd50a32ced3a015fd05fd82f8f218",
+  "runtime": "v24.14.1",
+  "classifierVersion": "2026-10-26.3",
+  "productionCalls": 0,
+  "networkCalls": 0,
+  "sourceSha256": {
+    "classifier": "9089e6562e7a7753135e3b47ec0d88da730d0068571b1e0d6636558c6e8016be",
+    "readerKind": "a3dcae06d4b42a4ebc88b8d15b65f8358ccb80c1c81d41009511acfd1c8823bd",
+    "verifier": "91f7923ebd11fa1f1d1363b94c3f1882c75df94060cd8947f7b4bfb596f1b73d",
+    "probe": "539a33a96e2d3788a0a2a2c00e6a3617c7712327a3a5c226c0a6b514607f33b5"
+  },
+  "ruleCases": [
+    {
+      "name": "network-missing",
+      "changed": "No ASN available",
+      "declared": {
+        "trafficClass": "browser",
+        "agentName": null
+      },
+      "result": {
+        "kind": "browser",
+        "reason": "navigation-shaped"
+      }
+    },
+    {
+      "name": "network-unlisted",
+      "changed": "Private-use fixture ASN 64512",
+      "declared": {
+        "trafficClass": "browser",
+        "agentName": null
+      },
+      "result": {
+        "kind": "browser",
+        "reason": "navigation-shaped"
+      }
+    },
+    {
+      "name": "network-listed",
+      "changed": "Listed hosting ASN 16509",
+      "declared": {
+        "trafficClass": "browser",
+        "agentName": null
+      },
+      "result": {
+        "kind": "cloud-browser",
+        "reason": "hosting-asn:16509"
+      }
+    },
+    {
+      "name": "activation-absent",
+      "changed": "Sec-Fetch-User omitted",
+      "declared": {
+        "trafficClass": "browser",
+        "agentName": null
+      },
+      "result": {
+        "kind": "browser",
+        "reason": "navigation-shaped"
+      }
+    },
+    {
+      "name": "contradictory-referral",
+      "changed": "External referrer with same-origin metadata",
+      "declared": {
+        "trafficClass": "browser",
+        "agentName": null
+      },
+      "result": {
+        "kind": "browser",
+        "reason": "navigation-shaped"
+      }
+    },
+    {
+      "name": "substring-name",
+      "changed": "UA is NotChatGPT-Userish/1.0",
+      "declared": {
+        "trafficClass": "ai",
+        "agentName": "ChatGPT-User"
+      },
+      "result": {
+        "kind": "ai-assistant",
+        "reason": "ChatGPT-User"
+      }
+    },
+    {
+      "name": "conflicting-role-tokens",
+      "changed": "UA is GPTBot/1.0 ChatGPT-User/1.0",
+      "declared": {
+        "trafficClass": "ai",
+        "agentName": "ChatGPT-User"
+      },
+      "result": {
+        "kind": "ai-assistant",
+        "reason": "ChatGPT-User"
+      }
+    },
+    {
+      "name": "bounded-exa-lookalike",
+      "changed": "UA is NotExaUserish/1.0",
+      "declared": {
+        "trafficClass": "browser",
+        "agentName": null
+      },
+      "result": {
+        "kind": "browser",
+        "reason": "navigation-shaped"
+      }
+    }
+  ],
+  "signatureCases": [
+    {
+      "name": "original",
+      "verification": {
+        "status": "verified",
+        "agent": "https://agent.example"
+      },
+      "declaredRole": "ai-search"
+    },
+    {
+      "name": "unsigned-ua-changed",
+      "verification": {
+        "status": "verified",
+        "agent": "https://agent.example"
+      },
+      "declaredRole": "ai-assistant"
+    },
+    {
+      "name": "unsigned-path-changed",
+      "verification": {
+        "status": "verified",
+        "agent": "https://agent.example"
+      },
+      "declaredRole": "ai-search"
+    },
+    {
+      "name": "covered-authority-changed",
+      "verification": {
+        "status": "unverified",
+        "reason": "signature-invalid"
+      },
+      "declaredRole": "ai-search"
+    }
+  ],
+  "injectedDirectoryCalls": 4,
+  "signatureProfile": "Ephemeral local Ed25519 key; only authority and Signature-Agent covered; fixed clock; injected directory responses.",
+  "syntheticVerificationFixture": {
+    "now": "2026-10-26T17:00:00.000Z",
+    "url": "https://publication.example/article-a",
+    "headers": {
+      "signature-agent": "sig=\"https://agent.example\";type=directory",
+      "signature-input": "sig=(\"@authority\" \"signature-agent\";key=\"sig\");created=1793034000;expires=1793034300;keyid=\"limtnBK5B7XHh-C8nswGL39wQFwNNH9OmCVJUF14L-g\";alg=\"ed25519\";tag=\"web-bot-auth\"",
+      "signature": "sig=:wSZMxASot1jeCWTjzZ6G519jxW40JkHqXeMovKhrA5JYp6sCTEwk1fhi1yKw0QIIxdRXMCHVwn0OK+fA6bHZAw==:"
+    },
+    "publicKey": {
+      "key_ops": [
+        "verify"
+      ],
+      "ext": true,
+      "alg": "Ed25519",
+      "crv": "Ed25519",
+      "x": "AF4vecm_ZnT3H6wK44frbukWELMy1acmlwvSwuhFMh4",
+      "kty": "OKP",
+      "kid": "limtnBK5B7XHh-C8nswGL39wQFwNNH9OmCVJUF14L-g",
+      "use": "sig"
+    }
+  },
+  "limits": [
+    "Counterexamples and sensitivity tests, not production prevalence or measured human/bot error rates.",
+    "All names, inputs, keys and request origins are synthetic; no vendor signature, infrastructure verification or impersonation is performed.",
+    "Changing an unsigned component is expected signature behavior, not a cryptographic break or a claim of verifier nonconformance.",
+    "Unlisted ASN is not proof of residential access, missing ASN is not measured network evidence, and role declarations can conflict."
+  ]
+}

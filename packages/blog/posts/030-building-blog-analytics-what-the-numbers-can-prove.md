@@ -51,7 +51,7 @@ Our catalogue also missed four documented names. [ExaSearchBot](https://crawler.
 
 The repair recognizes all four names, preserves declared roles across verified signatures, and reports signing evidence separately without double-counting totals. Local signed fixtures and excluded live User-Agent controls passed; organic vendor-signed acceptance remains open. The [repair evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/08-classification-repair.md) records that boundary.
 
-**Identity, role and trigger answer different questions.** [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) verify covered message components against a key. A User-Agent declares a role and can be copied; it may not be covered by the signature. Neither establishes that a person asked to read this article. Exa’s clients share a signing directory, so the 1,003 historical Exa signer outcomes cannot recover the roles we failed to retain.
+**Identity, role and trigger answer different questions.** [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) verify covered message components against a key. In a [local coverage experiment](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/17-detection-assumptions-and-experiments.md), changing an unsigned User-Agent changed the declared role while the same signature still verified. Neither establishes a human trigger. Exa’s clients share a signing directory, so the 1,003 historical Exa signer outcomes cannot recover the roles we failed to retain.
 
 ## Preserve uncertainty in the data
 

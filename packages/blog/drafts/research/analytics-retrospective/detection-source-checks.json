@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-27T00:46:24.308275+00:00",
+  "analyticsTestsPassed": 86,
+  "analyticsTestsFailed": 0,
+  "ruleCases": 8,
+  "signatureVariants": 4,
+  "networkCalls": 0,
+  "productionCalls": 0,
+  "frontmatter": "passed",
+  "isolatedBuiltPosts": 31,
+  "articleWordsIncludingGlossary": 1208,
+  "promptCount": 28,
+  "articleH1Count": 1,
+  "relativeDocumentLinks": 115,
+  "probeHashMatchesReceipt": true,
+  "runtimeChanges": false,
+  "expandedCollectionActivated": false,
+  "limit": "Source/probe/build acceptance; deployment activation and live served article remain separate."
+}

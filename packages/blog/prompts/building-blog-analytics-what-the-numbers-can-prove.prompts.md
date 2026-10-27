@@ -131,3 +131,11 @@ just logged in in your browser
 ---
 
 whats this? is this a legit representation of us? Just makes me wonder if we are presenting and promoting ourselves correctly to the AI agent searchers?
+
+---
+
+What to improve further? What are we still guessing?
+
+---
+
+There is more learnings to be made in ai agent and bot detections
