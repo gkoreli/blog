@@ -1,0 +1,83 @@
+{
+  "checkedAt": "2026-10-27T18:59:30.543656+00:00",
+  "sourceCommit": "6d8c10f",
+  "nativeBuild": {
+    "id": "00921cc0-6d3d-4425-ab91-9b01cf5b0f62",
+    "durationSeconds": 43,
+    "versionPrefix": "6934f274"
+  },
+  "sourceDeployment": {
+    "createdAt": "2026-10-27T18:59:02.68549Z",
+    "versions": [
+      {
+        "version_id": "6934f274-b286-46e2-905b-f0970a846cb0",
+        "percentage": 100
+      }
+    ]
+  },
+  "control": {
+    "responseStatus": 200,
+    "windowStart": "2026-10-27T18:59:27.706484+00:00",
+    "windowEndExclusive": "2026-10-27T18:59:29.607464+00:00",
+    "rows": [
+      {
+        "collectionVersion": "2026-10-27.6",
+        "classifierVersion": "2026-10-27.5",
+        "verifierProfile": "2026-10-27.5",
+        "outcome": "policy-rejected",
+        "reasons": "[\"discovery-policy-rejected\"]",
+        "coverageAbsent": 1,
+        "nativeVerifiedBot": null,
+        "nativeSignedAgent": null,
+        "optionalCaptureAbsent": 1,
+        "readerKind": "other-bot",
+        "ownerExcluded": 0
+      }
+    ],
+    "method": "Synthetic excluded actual-Worker control with dummy signature bytes; tests pre-discovery policy/persistence, not vendor crypto or an actual internal connection"
+  },
+  "directSelect": {
+    "rowsRead": 6,
+    "rowsWritten": 0,
+    "ceiling": 50
+  },
+  "noTemporaryActivation": true,
+  "privateEvidenceSha256": {
+    "query-plan.json": "e5ea551d87f0620e9f4e26980f0baf6f22ab5cfa3721783979fb2d22bdc4e975",
+    "source-deployment.json": "50617d3e06c77fa074d29326f8fc1ded73520363d775ed28563f5d029924d6c6",
+    "control-production.sql": "eead33f82e961b2fec7eebd12b44d8e8f7603d9f6ab6b0f6828af1572ce9197c",
+    "query.stdout": "712744772617f947874ecc7084c4c8278700faae20fec4aabde4232fd9d9fcf5"
+  },
+  "publicExclusion": {
+    "checkedAt": "2026-10-27T19:00:08.015383+00:00",
+    "selection": {
+      "range": "7d",
+      "traffic": "all",
+      "kind": "other-bot",
+      "path": "/privacy"
+    },
+    "policySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+    "matchedSourcePolicy": true,
+    "controlSourcePolicyAction": "exclude",
+    "includedViews": 4,
+    "excludedCohortViews": 3,
+    "localPolicyRejectedIncludedViews": 0,
+    "limit": "Stored control host is selected by exact SQL; source predicate and matching live policy establish its referral exclusion. Cohort totals can contain older events. No fresh owner mark or owner exclusion is claimed. Public report query cost is additional to six direct SELECT reads."
+  },
+  "checks": {
+    "noMigrationNeeded": true,
+    "noTemporaryActivation": true,
+    "optionalRawCaptureAbsent": true,
+    "nativeUnavailablePreserved": true,
+    "coverageAbsent": true,
+    "actualWorkerPolicyRejection": true,
+    "publicControlExcludedByReferralPolicy": true
+  },
+  "limits": [
+    "Control uses dummy signature bytes, not a vendor signature; no actual private-network lookup or native bot-verdict acceptance is claimed",
+    "Production control has ownerExcluded=0 and is excluded by the versioned referral policy; earlier owner marks are not current proof",
+    "Six direct SELECT reads exclude the observation write, guard checks, public report fill and unrelated account work",
+    "URL admission is partial hardening: resolved-address/egress protection, rebinding and global budgets remain open",
+    "Organic signed/native agreement, known demonstration-key rejection, replay prevention and broader conformance remain open"
+  ]
+}
