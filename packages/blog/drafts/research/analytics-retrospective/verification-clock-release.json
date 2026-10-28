@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-10-28T01:47:10.908511+00:00",
+  "sourceCommit": "eac41e3d497201e1d2763c5b51d407013c2025bd",
+  "pushedBranch": "main",
+  "workerVersion": "d3b5e223-3fd8-4b9a-b4e8-0cafc6b9c6a3",
+  "nativeBuild": {
+    "status": "Ready",
+    "duration": "1m 0s",
+    "sourceAssociation": "Exact commit-message row and GitHub commit link; native Copy acknowledged fresh marker replacement"
+  },
+  "productionDeployment": {
+    "createdOn": "2026-10-28T01:45:56.020155Z",
+    "percentage": 100,
+    "method": "Wrangler deployments list, latest created_on; version matches native copied UUID"
+  },
+  "bindingNames": [
+    "ADMIN_SECRET",
+    "ANALYTICS_HASH_KEY",
+    "ASSETS",
+    "DB",
+    "RESEND_API_KEY",
+    "SUBSCRIBE_RATE_LIMITER",
+    "TURNSTILE_SECRET_KEY"
+  ],
+  "optionalBindingsAbsent": true,
+  "articleChanged": false,
+  "isolatedBuiltArticleSha256": "c2bb633159ceccc3b8841ab6b20787329d82a0833e5cee6c874a3c9283eaac01",
+  "articleFreshlyFetched": false,
+  "productionBehaviorTested": false,
+  "productionSelects": 0,
+  "humanTrials": "deferred",
+  "limits": [
+    "Activation proves deployed code, not production exercise of an invalid caller-clock option.",
+    "No affected production clock or row is identified.",
+    "Earlier .2 signed persistence stays accepted; .3 signed production persistence remains prospective."
+  ]
+}
