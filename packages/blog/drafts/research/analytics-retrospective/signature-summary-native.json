@@ -1,0 +1,1097 @@
+{
+  "checkedAt": "2026-10-28T05:14:12.320Z",
+  "baselineCommit": "8b35baa",
+  "baselineGraph": "All loaded analytics source modules pinned, not only stats.ts.",
+  "queryStrategy": "Materialize assessed facts and the vendor/selection summary once; inlined-summary candidate preserved separately.",
+  "jsonTyping": {
+    "booleanValue": 1,
+    "numberValue": 1,
+    "booleanType": "true",
+    "numberType": "integer"
+  },
+  "method": "Actual native D1 with supplied stored-record fixtures. No cryptographic replay, operator label or production prevalence.",
+  "controls": [
+    {
+      "name": "current-valid",
+      "expected": {
+        "local": "verified",
+        "coverage": "known",
+        "native": "available",
+        "vendor": "matching-origin"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-ua-covered",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-valid",
+      "expected": {
+        "local": "verified",
+        "coverage": "known",
+        "native": "available",
+        "vendor": "matching-origin"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-ua-covered",
+          "profile": "2026-10-26.1",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "outcome-conflict",
+      "expected": {
+        "local": "unrecognized",
+        "coverage": "not-applicable",
+        "native": "available",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "unrecognized-record",
+          "profile": "unrecognized-record",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "top-level-conflict",
+      "expected": {
+        "local": "unrecognized",
+        "coverage": "not-applicable",
+        "native": "available",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "unrecognized-record",
+          "profile": "unrecognized-record",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "injected-with-copied-proof",
+      "expected": {
+        "local": "test-injected",
+        "coverage": "not-applicable",
+        "native": "available",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "test-injected",
+          "profile": "test-injected",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "coverage-number-instead-of-boolean",
+      "expected": {
+        "local": "verified",
+        "coverage": "unrecognized",
+        "native": "available",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-coverage-unknown",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "future-coverage",
+      "expected": {
+        "local": "verified",
+        "coverage": "unrecognized",
+        "native": "available",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-coverage-unknown",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "partial-coverage",
+      "expected": {
+        "local": "verified",
+        "coverage": "unrecognized",
+        "native": "available",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-coverage-unknown",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "native-number-instead-of-boolean",
+      "expected": {
+        "local": "verified",
+        "coverage": "known",
+        "native": "unrecognized",
+        "vendor": "matching-origin"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 0,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-ua-covered",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "partial-native",
+      "expected": {
+        "local": "verified",
+        "coverage": "known",
+        "native": "unrecognized",
+        "vendor": "matching-origin"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 0,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-ua-covered",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "future-envelope",
+      "expected": {
+        "local": "unrecognized",
+        "coverage": "not-applicable",
+        "native": "unrecognized",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 0,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "unrecognized-record",
+          "profile": "unrecognized-record",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "outcome-only-history",
+      "expected": {
+        "local": "outcome-only",
+        "coverage": "not-applicable",
+        "native": "not-recorded",
+        "vendor": "not-recorded"
+      },
+      "before": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 0,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 0,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-outcome-only",
+          "profile": "not-recorded",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "unsigned-with-native-true",
+      "expected": {
+        "local": "absent",
+        "coverage": "not-applicable",
+        "native": "available",
+        "vendor": "not-verified"
+      },
+      "before": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "unsigned",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "invalid-with-native-true",
+      "expected": {
+        "local": "unverified",
+        "coverage": "not-applicable",
+        "native": "available",
+        "vendor": "not-verified"
+      },
+      "before": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "not-verified",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "bad-selection",
+      "expected": {
+        "local": "verified",
+        "coverage": "known",
+        "native": "available",
+        "vendor": "matching-origin"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-ua-covered",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "future-vendor",
+      "expected": {
+        "local": "verified",
+        "coverage": "known",
+        "native": "available",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 1
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-ua-covered",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "vendor-count-conflict",
+      "expected": {
+        "local": "verified",
+        "coverage": "known",
+        "native": "available",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 1
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-ua-covered",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "vendor-numeric-coverage",
+      "expected": {
+        "local": "verified",
+        "coverage": "known",
+        "native": "available",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 1
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-ua-covered",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "old-optional-outcome-conflict",
+      "expected": {
+        "local": "unrecognized",
+        "coverage": "not-applicable",
+        "native": "available",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "unrecognized-record",
+          "profile": "unrecognized-record",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "string-validity",
+      "expected": {
+        "local": "verified",
+        "coverage": "unrecognized",
+        "native": "available",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-coverage-unknown",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "fractional-age",
+      "expected": {
+        "local": "verified",
+        "coverage": "unrecognized",
+        "native": "available",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-coverage-unknown",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "empty-native-object",
+      "expected": {
+        "local": "verified",
+        "coverage": "known",
+        "native": "unrecognized",
+        "vendor": "matching-origin"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 0,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 0,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-ua-covered",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "conflicting-origins-verified",
+      "expected": {
+        "local": "verified",
+        "coverage": "known",
+        "native": "available",
+        "vendor": "conflicting-origins"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 1
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-ua-covered",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "conflicting-origins-unsigned",
+      "expected": {
+        "local": "absent",
+        "coverage": "not-applicable",
+        "native": "available",
+        "vendor": "conflicting-origins"
+      },
+      "before": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "unsigned",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "conflicting-origins-injected",
+      "expected": {
+        "local": "test-injected",
+        "coverage": "not-applicable",
+        "native": "available",
+        "vendor": "test-injected"
+      },
+      "before": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "test-injected",
+          "profile": "test-injected",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "known-native-negative",
+      "expected": {
+        "local": "verified",
+        "coverage": "known",
+        "native": "available",
+        "vendor": "matching-origin"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 0,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 0,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-ua-covered",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "known-native-unavailable",
+      "expected": {
+        "local": "verified",
+        "coverage": "known",
+        "native": "unavailable",
+        "vendor": "matching-origin"
+      },
+      "before": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 0,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "after": {
+        "localVerifiedViews": 1,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 0,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 1
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "verified-ua-covered",
+          "profile": "2026-10-28.7",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "name": "absent-with-copied-coverage",
+      "expected": {
+        "local": "unrecognized",
+        "coverage": "not-applicable",
+        "native": "available",
+        "vendor": "unrecognized"
+      },
+      "before": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 1,
+        "userAgentBoundViews": 1,
+        "authorityOnlyViews": 1,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 1,
+        "selectionRecordedViews": 0
+      },
+      "after": {
+        "localVerifiedViews": 0,
+        "coverageRecordedViews": 0,
+        "userAgentBoundViews": 0,
+        "authorityOnlyViews": 0,
+        "nativeVerifiedBotViews": 1,
+        "vendorMatchingOriginViews": 0,
+        "selectionRecordedViews": 0
+      },
+      "afterJoint": [
+        {
+          "kind": "ai-search",
+          "basis": "unrecognized-record",
+          "profile": "unrecognized-record",
+          "views": 1
+        }
+      ]
+    }
+  ],
+  "cohort": {
+    "included": 28,
+    "ownerExcluded": 1,
+    "referralExcluded": 1,
+    "outsideWindow": 1,
+    "before": {
+      "localInvalidViews": 3,
+      "localUnsupportedViews": 0,
+      "localUnavailableViews": 0,
+      "localPolicyRejectedViews": 0,
+      "localNotApplicableViews": 0,
+      "localIndeterminateViews": 0,
+      "unverifiedOutcomeNotRecordedViews": 0,
+      "vendorDocumentedViews": 25,
+      "vendorMatchingOriginViews": 21,
+      "vendorDifferentOriginViews": 0,
+      "vendorOriginConflictViews": 2,
+      "vendorConflictWithMatchingOriginViews": 1,
+      "vendorNotVerifiedViews": 2,
+      "vendorUnmappedDeclarationViews": 0,
+      "vendorUserAgentBoundViews": 21,
+      "vendorCheckNotRecordedViews": 1,
+      "recordedViews": 27,
+      "notRecordedViews": 1,
+      "localVerifiedViews": 21,
+      "localUnverifiedViews": 1,
+      "localAbsentViews": 3,
+      "testVerdictViews": 2,
+      "selectionUnrecognizedVerifiedViews": 5,
+      "selectionRecordedViews": 14,
+      "selectionNotRecordedVerifiedViews": 2,
+      "multipleTaggedCandidateViews": 14,
+      "unassessedCandidateViews": 14,
+      "coverageRecordedViews": 23,
+      "userAgentBoundViews": 23,
+      "resourceBoundViews": 0,
+      "methodBoundViews": 0,
+      "authorityOnlyViews": 23,
+      "nativeAvailableViews": 24,
+      "nativeVerifiedBotViews": 24,
+      "nativeSignedAgentViews": 0,
+      "localVerifiedNativeNotVerifiedViews": 1
+    },
+    "after": {
+      "vendorCheckUnrecognizedViews": 14,
+      "vendorCheckRecognizedViews": 13,
+      "unrecognizedLocalViews": 5,
+      "coverageNotRecordedVerifiedViews": 0,
+      "coverageUnrecognizedVerifiedViews": 5,
+      "nativeUnavailableViews": 1,
+      "nativeNotRecordedViews": 1,
+      "nativeUnrecognizedViews": 4,
+      "localInvalidViews": 1,
+      "localUnsupportedViews": 0,
+      "localUnavailableViews": 0,
+      "localPolicyRejectedViews": 0,
+      "localNotApplicableViews": 0,
+      "localIndeterminateViews": 0,
+      "unverifiedOutcomeNotRecordedViews": 0,
+      "vendorDocumentedViews": 12,
+      "vendorMatchingOriginViews": 8,
+      "vendorDifferentOriginViews": 0,
+      "vendorOriginConflictViews": 2,
+      "vendorConflictWithMatchingOriginViews": 1,
+      "vendorNotVerifiedViews": 2,
+      "vendorUnmappedDeclarationViews": 0,
+      "vendorUserAgentBoundViews": 8,
+      "vendorCheckNotRecordedViews": 1,
+      "recordedViews": 27,
+      "notRecordedViews": 1,
+      "localVerifiedViews": 17,
+      "localUnverifiedViews": 1,
+      "localAbsentViews": 2,
+      "testVerdictViews": 2,
+      "selectionUnrecognizedVerifiedViews": 6,
+      "selectionRecordedViews": 10,
+      "selectionNotRecordedVerifiedViews": 1,
+      "multipleTaggedCandidateViews": 10,
+      "unassessedCandidateViews": 10,
+      "coverageRecordedViews": 12,
+      "userAgentBoundViews": 12,
+      "resourceBoundViews": 0,
+      "methodBoundViews": 0,
+      "authorityOnlyViews": 12,
+      "nativeAvailableViews": 22,
+      "nativeVerifiedBotViews": 21,
+      "nativeSignedAgentViews": 0,
+      "localVerifiedNativeNotVerifiedViews": 1
+    }
+  },
+  "valid512": {
+    "oldReads": 27306,
+    "newReads": 35510,
+    "delta": 8204,
+    "oldDurationMs": 19,
+    "newDurationMs": 21,
+    "durationScope": "Single native fixture execution; not a production latency benchmark",
+    "commonOutputUnchanged": true
+  },
+  "emptySelectionAllZero": true,
+  "productionCalls": 0,
+  "scriptSha256": "cd1c587e755dd533ff257184485695672b8474cb555377845f6fd93460bdb57c"
+}

@@ -110,12 +110,12 @@ export function statsPage() {
     </section>
     <section class="stats-section" id="stats-signers">
       <h2>Stored verified signing outcomes <span>reviewed names</span></h2>
-      <p class="stats-section-note">These counts follow stored outcomes, including earlier records without coverage detail. The classification table separates evidence and stored verifier profiles. Reports do not reverify historical requests. A reviewed display name does not establish a request’s role or purpose.</p>
+      <p class="stats-section-note">These counts follow the top-level stored verified flag, including earlier records without proof detail or with inconsistent detailed records. The classification table separates those cases and stored verifier profiles. Reports do not reverify historical requests. A reviewed display name does not establish a request’s role or purpose.</p>
       ${listSkeleton(2)}
     </section>
     <section class="stats-section" id="stats-verification-outcomes">
       <h2>Unsuccessful verification <span>local profile outcomes</span></h2>
-      <p class="stats-section-note">Invalid input, unsupported features, unavailable keys and policy rejection differ. Mixed candidate outcomes remain indeterminate. None establishes impersonation or intent.</p>
+      <p class="stats-section-note">Consistent stored unsuccessful outcomes distinguish invalid input, unsupported features, unavailable keys and policy rejection. Inconsistent local records appear in the verification panel. Mixed candidate outcomes remain indeterminate. None establishes impersonation or intent.</p>
       ${listSkeleton(3)}
     </section>
     <section class="stats-section" id="stats-vendor-network">
@@ -125,12 +125,12 @@ export function statsPage() {
     </section>
     <section class="stats-section" id="stats-vendor-signatures">
       <h2>Declared vendor checks <span>documented signing origins</span></h2>
-      <p class="stats-section-note">Configured for ExaSearchBot, ExaUser and Google-Agent using their documented signing origins. Google’s rollout is experimental; unsigned does not mean impersonation. Conflicting declared origins stay visible even when the selected proof matches one. A matching key does not bind an unsigned User-Agent, identify the initiating user or prevent replay. Counts overlap; other declarations remain unmapped. IP checks are separate; no DNS verification is performed here.</p>
+      <p class="stats-section-note">Recognized stored method assessments cover ExaSearchBot, ExaUser and Google-Agent using their documented signing origins. Inconsistent method records remain separate. Google’s rollout is experimental; unsigned does not mean impersonation. Conflicting declared origins stay visible even when the selected proof matches one. A matching key does not bind an unsigned User-Agent, identify the initiating user or prevent replay. Counts overlap; other declarations remain unmapped. IP checks are separate; no DNS verification is performed here.</p>
       ${listSkeleton(3)}
     </section>
     <section class="stats-section" id="stats-verification">
       <h2>Signature verification <span>coverage and availability</span></h2>
-      <p class="stats-section-note">Local key verification and Cloudflare assessments are separate. Coverage counts overlap; none establishes a human trigger. Selection counts describe detailed locally verified events, not signer totals. Outcome-only signing history remains in the classification table above. Verification stops at the first valid paired candidate tagged Web Bot Auth; other candidates can remain unassessed. Historical absence and unrecognized assessments stay separate.</p>
+      <p class="stats-section-note">Consistent stored local results and Cloudflare assessments are separate. Missing and inconsistent records remain explicit. Coverage facts require recognized, typed detail; their counts overlap. Native boolean availability is assessed independently of the local result. None establishes a human trigger. Selection counts describe detailed locally verified events, not signer totals. Outcome-only signing history remains in the classification table above. Verification stops at the first valid paired candidate tagged Web Bot Auth; other candidates can remain unassessed. Historical absence and unrecognized assessments stay separate.</p>
       ${listSkeleton(3)}
     </section>
     <section class="stats-section" id="stats-directory-publication">

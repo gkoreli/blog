@@ -1,0 +1,42 @@
+{
+  "method": "Native local D1 supplied fixtures. Each variant uses its own source snapshot; original outputs remain privately preserved. No production latency or affected-population claim.",
+  "baselineCommit": "8b35baa",
+  "variants": [
+    {
+      "strategy": "materialized assessed facts and final summary; initial 22-control run",
+      "oldReads": 27306,
+      "newReads": 35510,
+      "delta": 8204,
+      "accepted": false,
+      "reason": "Expanded controls and source commitments recorded in final run."
+    },
+    {
+      "strategy": "materialized facts, inlined final summary; 22 controls",
+      "measurement": {
+        "oldReads": 27306,
+        "newReads": 50358,
+        "delta": 23052,
+        "oldDurationMs": 18,
+        "newDurationMs": 66,
+        "durationScope": "Single native fixture execution; not a production latency benchmark",
+        "commonOutputUnchanged": true
+      },
+      "accepted": false,
+      "reason": "Higher metered reads than the materialized form."
+    },
+    {
+      "strategy": "materialized assessed facts and final summary; final 28 controls",
+      "measurement": {
+        "oldReads": 27306,
+        "newReads": 35510,
+        "delta": 8204,
+        "oldDurationMs": 19,
+        "newDurationMs": 21,
+        "durationScope": "Single native fixture execution; not a production latency benchmark",
+        "commonOutputUnchanged": true
+      },
+      "accepted": true
+    }
+  ],
+  "productionCalls": 0
+}

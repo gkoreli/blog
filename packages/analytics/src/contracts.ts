@@ -85,6 +85,15 @@ export interface VendorNetworkSummary {
 }
 
 export interface VerificationSummary {
+  vendorCheckUnrecognizedViews: number;
+  vendorCheckRecognizedViews: number;
+  unrecognizedLocalViews: number;
+  coverageNotRecordedVerifiedViews: number;
+  coverageUnrecognizedVerifiedViews: number;
+  nativeUnavailableViews: number;
+  nativeNotRecordedViews: number;
+  nativeUnrecognizedViews: number;
+
   localInvalidViews: number;
   localUnsupportedViews: number;
   localUnavailableViews: number;

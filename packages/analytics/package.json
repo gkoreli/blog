@@ -10,6 +10,7 @@
     "./contracts": "./src/contracts.ts",
     "./networks": "./src/networks.ts",
     "./client-form": "./src/client-form.ts",
+    "./signature-summary": "./src/signature-summary.ts",
     "./signature-basis": "./src/signature-basis.ts",
     "./verifier-profile": "./src/verifier-profile.ts",
     "./native-bot-evidence": "./src/native-bot-evidence.ts",

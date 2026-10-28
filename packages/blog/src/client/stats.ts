@@ -1,3 +1,4 @@
+import { consistentSignatureSummary } from '@gkoreli/analytics/signature-summary';
 import uPlot from 'uplot';
 import 'uplot/dist/uPlot.min.css';
 import { READER_GROUPS, isReaderKind, readerGroupOf, type ReaderKind, type ReportedReferrerState, type StatsResponse, type TrafficFilter } from '@gkoreli/analytics/contracts';
@@ -200,6 +201,7 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   if (data.verifierProfile?.assessment !== 'stored-profile-not-reverified'
     || !REVIEWED_VERIFIER_PROFILES.some(profile => profile === data.verifierProfile.current)
     || !data.byKindSignature.every(row => isReportedVerifierProfile(row.profile))) throw new Error('Updated verifier profile provenance is unavailable. Please reload.');
+  if (!consistentSignatureSummary(data.verification, data.totals.views, data.byKindSignature)) throw new Error('Inconsistent signature summary. Please reload.');
   if (!Number.isSafeInteger(data.verification.vendorOriginConflictViews) || data.verification.vendorOriginConflictViews < 0
     || !Number.isSafeInteger(data.verification.vendorConflictWithMatchingOriginViews) || data.verification.vendorConflictWithMatchingOriginViews < 0) {
     throw new Error('Updated signing-origin conflicts are unavailable. Please reload.');
@@ -680,11 +682,14 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   replaceSectionRows('stats-signers', data.bySigner.map(row => ({ label: row.signatureAgent, views: row.views })), null);
   const verification = data.verification;
   replaceSectionRows('stats-verification', [
-    { label: 'New verification record available', views: verification.recordedViews },
-    { label: 'No new record — historical or unreported', views: verification.notRecordedViews },
-    { label: 'Stored local status: verified', views: verification.localVerifiedViews },
+    { label: 'Stored verification record present', views: verification.recordedViews },
+    { label: 'Verification record not recorded', views: verification.notRecordedViews },
+    { label: 'Consistent stored local result: verified', views: verification.localVerifiedViews },
     { label: 'Local verification unsuccessful', views: verification.localUnverifiedViews },
     { label: 'No signature headers', views: verification.localAbsentViews },
+    { label: 'Unrecognized or inconsistent local record', views: verification.unrecognizedLocalViews },
+    { label: 'Verified result; coverage not recorded', views: verification.coverageNotRecordedVerifiedViews },
+    { label: 'Verified result; coverage unrecognized', views: verification.coverageUnrecognizedVerifiedViews },
     { label: 'Injected test verdict — not local verification', views: verification.testVerdictViews },
     { label: 'Verified coverage recorded', views: verification.coverageRecordedViews },
     { label: 'Selected-signature assessment recorded', views: verification.selectionRecordedViews },
@@ -696,6 +701,9 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     { label: 'Path or full URL covered', views: verification.resourceBoundViews },
     { label: 'Method covered', views: verification.methodBoundViews },
     { label: 'Host-only request binding', views: verification.authorityOnlyViews },
+    { label: 'Native boolean fields unavailable', views: verification.nativeUnavailableViews },
+    { label: 'Native boolean record not recorded', views: verification.nativeNotRecordedViews },
+    { label: 'Native boolean record unrecognized', views: verification.nativeUnrecognizedViews },
     { label: 'Native boolean fields available', views: verification.nativeAvailableViews },
     { label: 'Native verified-bot result true', views: verification.nativeVerifiedBotViews },
     { label: 'Native signed-agent result true', views: verification.nativeSignedAgentViews },
@@ -731,6 +739,8 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     { label: 'Documented declaration; key not verified', views: verification.vendorNotVerifiedViews },
     { label: 'Matching origin and User-Agent covered', views: verification.vendorUserAgentBoundViews },
     { label: 'Has declarations without a configured method', views: verification.vendorUnmappedDeclarationViews },
+    { label: 'Recognized stored method assessment', views: verification.vendorCheckRecognizedViews },
+    { label: 'Unrecognized or inconsistent method assessment', views: verification.vendorCheckUnrecognizedViews },
     { label: 'Vendor check not recorded', views: verification.vendorCheckNotRecordedViews },
   ], null);
   replaceSectionRows('stats-directory-publication', data.byDirectoryPublication.map(row => ({ label: DIRECTORY_PUBLICATION_LABELS[row.basis], views: row.views })), null);

@@ -918,6 +918,7 @@ test('stats query parsing preserves endpoint defaults, empty paths, canonical sc
 });
 
 test('stats result decoding rejects malformed, duplicate, missing, and misplaced section payloads', async () => {
+  const emptyVerification = JSON.stringify([(await queryStats(analyticsDatabase().d1, { range: '30d', traffic: 'browser' }, new Date('2026-09-07T05:00:00Z'))).verification]);
   const emptyReportRows = () => [
     { section: 'totals', payload: '[{"views":0,"dailyClients":0,"unattributedViews":null}]' },
     { section: 'path', payload: '[]' },
@@ -927,7 +928,7 @@ test('stats result decoding rejects malformed, duplicate, missing, and misplaced
     { section: 'device', payload: '[]' },
     { section: 'agent', payload: '[]' },
     { section: 'signer', payload: '[]' },
-    { section: 'verification', payload: '[{}]' },
+    { section: 'verification', payload: emptyVerification },
     { section: 'vendor-ip', payload: '[{}]' },
     { section: 'kind-signature', payload: '[]' },
     { section: 'native-category', payload: '[]' },
@@ -956,6 +957,7 @@ test('stats result decoding rejects malformed, duplicate, missing, and misplaced
     emptyReportRows().map(row => row.section === 'path' ? { section: 'path', payload: '[null]' } : row),
     emptyReportRows().map(row => row.section === 'totals' ? { section: 'totals', payload: '[]' } : row),
     emptyReportRows().map(row => row.section === 'verification' ? { section: 'verification', payload: '[]' } : row),
+    emptyReportRows().map(row => row.section === 'verification' ? { section: 'verification', payload: '[{}]' } : row),
     [...emptyReportRows(), { section: 'boundary', payload: '[{"firstObservedAt":null}]' }],
   ];
   for (const rows of malformedCases) {

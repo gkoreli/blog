@@ -1,0 +1,75 @@
+{
+  "checkedAt": "2026-10-28T05:15:21.210825+00:00",
+  "baselineCommit": "8b35baa",
+  "reportVersion": "2026-10-28.5",
+  "collectorUnchanged": "2026-10-28.9",
+  "verifierUnchanged": "2026-10-28.7",
+  "classifierUnchanged": "2026-10-27.5",
+  "analyticsTests": 236,
+  "siteTests": 106,
+  "workspaceTypes": "pass",
+  "postValidation": "pass",
+  "referralPolicyOutput": "pass via node --import tsx",
+  "isolatedBuildPosts": 32,
+  "articleBodyWhitespaceWords": 1199,
+  "shapingPrompts": 31,
+  "articleMatchesBuiltMarkdownBody": true,
+  "isolatedArticleSha256": "8aabe5aee5a8d8c7c9e0f69bbea1aa9863103f2ed3e86a6efb59af52c774ee55",
+  "nativeControls": 28,
+  "nativeValid512CommonOutputUnchanged": true,
+  "nativeJsonBooleanVsIntegerProbe": "true and integer 1 extract to the same SQL integer, but retain distinct json_type results",
+  "nativeCost": {
+    "oldReads": 27306,
+    "newReads": 35510,
+    "delta": 8204,
+    "oldDurationMs": 19,
+    "newDurationMs": 21,
+    "durationScope": "Single native fixture execution; not a production latency benchmark",
+    "commonOutputUnchanged": true
+  },
+  "browser": {
+    "data": "Supplied 28-row stored-record fixture, not production requests or operator labels",
+    "expectedCoverageCount": 12,
+    "jointTotal": 28,
+    "explicitUnknownsRendered": true,
+    "narrowViewport": 390,
+    "narrowDocumentWidth": 390,
+    "narrowPanelWidth": 354,
+    "invalidSummaryApiStatus": 200,
+    "invalidSummaryDashboardHidden": true,
+    "invalidSummaryConsoleReason": "Inconsistent signature summary",
+    "publicFailureStatus": "Unable to load stats. Try again",
+    "retryRecoversValidFixture": true,
+    "finalBundleValidFixture": "pass",
+    "viewportOverrideReset": true,
+    "initialQaAssertionCorrected": "The public error is deliberately generic; the exact reason is verified through the captured browser console."
+  },
+  "directProductionSelects": 0,
+  "productionEligibleVisits": 0,
+  "humanTrials": "deferred",
+  "linkChecks": 305,
+  "privateArchives": [
+    {
+      "name": "2026-10-28-signature-summary-local",
+      "files": 35,
+      "manifestSha256": "14bd50be7e18295112a79c9a5f5228895231f29f708b810d1008ce4cd945cf24",
+      "modes": "0700/0600",
+      "reviewDate": "2026-10-31",
+      "reviewDateIsAutomaticErasure": false
+    },
+    {
+      "name": "2026-10-28-signature-summary-pre-release",
+      "files": 39,
+      "manifestSha256": "a27a5fc10514e2f21cd05d4b71226e4fa05771baa23f4fb24d3b722025a342b3",
+      "modes": "0700/0600",
+      "reviewDate": "2026-10-31",
+      "reviewDateIsAutomaticErasure": false
+    }
+  ],
+  "release": "pending source publication, activation and scoped live API/cache/static checks",
+  "artifactSha256": {
+    "signature-summary-native.json": "5bc0411b48c01c3f206fefb1f321fd833c49bb24cde77b22e816f05333791584",
+    "signature-summary-query-cost.json": "cccf99dfdccd1d9c30c52e97360b1dbfeef398c8433bf27df3ad4e603980b4ce",
+    "signature-summary-sources.json": "a27922ecf5cab0d8896597a305fa4012d5f191f72722bda73d7ecfbc746f5701"
+  }
+}

@@ -1,3 +1,4 @@
+import { signatureLocalStateSql } from './signature-basis.js';
 import type { KnownAgentName } from './classify.js';
 import type { WebBotAuthResult } from './webbotauth.js';
 import { DIRECTORY_PUBLICATION_PROFILE, DIRECTORY_PUBLICATION_STATUSES, type DirectoryPublicationEvidence, type DirectoryPublicationStatus } from './directory-publication-contract.js';
@@ -61,11 +62,11 @@ export function directoryPublicationBasisSql(): string {
         OR json_extract(signature_evidence, '$.directoryPublication.unmappedDeclarationCount') < 1) THEN 'unrecognized-record'
     WHEN ${field} = 'conflicting-publishers' AND json_extract(signature_evidence, '$.directoryPublication.configuredDeclarationCount') < 2 THEN 'unrecognized-record'
     WHEN ${field} = 'not-verified' AND
-      (COALESCE(json_extract(signature_evidence, '$.localStatus'), '') NOT IN ('absent','unverified')
+      ((${signatureLocalStateSql()}) NOT IN ('unverified','absent') OR COALESCE(json_extract(signature_evidence, '$.localStatus'), '') NOT IN ('absent','unverified')
         OR json_extract(signature_evidence, '$.directoryPublication.configuredDeclarationCount') < 1
         OR json_extract(signature_evidence, '$.directoryPublication.unmappedDeclarationCount') <> 0) THEN 'unrecognized-record'
     WHEN ${field} IN ('matching-publisher','different-publisher') AND
-      (signature_status IS NOT 'verified' OR json_extract(signature_evidence, '$.localStatus') IS NOT 'verified'
+      ((${signatureLocalStateSql()}) <> 'verified' OR signature_status IS NOT 'verified' OR json_extract(signature_evidence, '$.localStatus') IS NOT 'verified'
         OR json_extract(signature_evidence, '$.directoryPublication.configuredDeclarationCount') < 1
         OR json_extract(signature_evidence, '$.directoryPublication.unmappedDeclarationCount') <> 0) THEN 'unrecognized-record'
     WHEN ${field} IN (${DIRECTORY_PUBLICATION_STATUSES.map(status => "'" + status + "'").join(',')}) THEN ${field}

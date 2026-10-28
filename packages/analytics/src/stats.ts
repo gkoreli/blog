@@ -1,3 +1,5 @@
+import { signatureCoverageRecordedSql } from './signature-coverage-report.js';
+import { nativeBooleanStateSql, vendorSignatureStateSql, consistentSignatureSummary } from './signature-summary.js';
 import { signatureSelectionRecordedSql } from './signature-selection.js';
 import {
   READER_GROUPS,
@@ -26,7 +28,7 @@ import { reportedKindSql, reportedReasonSql, unresolvedKindSql, CLASSIFICATION_R
 import { publicReferrers } from './referrals.js';
 import { referralAssessmentCtes, referralRulesJson } from './referral-sql.js';
 import { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
-import { signatureBasisSql, isSignatureBasis } from './signature-basis.js';
+import { signatureBasisSql, signatureLocalStateSql, isSignatureBasis } from './signature-basis.js';
 import { verifierProfileSql, isReportedVerifierProfile, CURRENT_VERIFIER_PROFILE } from './verifier-profile.js';
 import { nativeCategoryBasisSql, isNativeCategoryBasis } from './native-bot-evidence.js';
 import { directoryPublicationBasisSql, isDirectoryPublicationBasis } from './directory-publication.js';
@@ -93,6 +95,14 @@ function predicateFor(window: StatsWindow, query: StatsQuery, includeOutgoing = 
 function numberField(row: Record<string, unknown> | undefined, field: string): number {
   const value = row?.[field];
   return typeof value === 'number' && Number.isFinite(value) ? value : 0;
+}
+
+/** SUM over an empty selection is null; a missing or mistyped API field is not zero. */
+function summaryNumberField(row: Record<string, unknown> | undefined, field: string): number {
+  if (!row || !Object.hasOwn(row,field)) return malformedReport();
+  const value = row[field];
+  if (value === null) return 0;
+  return typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 ? value : malformedReport();
 }
 
 function stringField(row: Record<string, unknown>, field: string): string | null {
@@ -355,6 +365,17 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
       ),
       included AS MATERIALIZED (
         SELECT * FROM report_scope WHERE referral_excluded = 0
+      ),
+      signature_facts AS MATERIALIZED (
+        SELECT signature_evidence, signature_status,
+          ${signatureLocalStateSql()} AS local_state,
+          ${signatureCoverageRecordedSql()} AS coverage_valid,
+          ${nativeBooleanStateSql()} AS native_state
+        FROM included
+      ),
+      signature_summary AS MATERIALIZED (
+        SELECT *, ${vendorSignatureStateSql()} AS vendor_state,
+          ${signatureSelectionRecordedSql()} AS selection_valid FROM signature_facts
       )
       ${boundaryCte},
       sections(section, section_order) AS MATERIALIZED (
@@ -468,47 +489,51 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         )
         WHEN 'verification' THEN (
           SELECT json_array(json_object(
-            'localInvalidViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND (json_extract(signature_evidence, '$.localOutcome') = 'invalid')),
-            'localUnsupportedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND (json_extract(signature_evidence, '$.localOutcome') = 'unsupported')),
-            'localUnavailableViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND (json_extract(signature_evidence, '$.localOutcome') = 'unavailable')),
-            'localPolicyRejectedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND (json_extract(signature_evidence, '$.localOutcome') = 'policy-rejected')),
-            'localNotApplicableViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND (json_extract(signature_evidence, '$.localOutcome') = 'not-applicable')),
-            'localIndeterminateViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND (json_extract(signature_evidence, '$.localOutcome') = 'indeterminate')),
-            'unverifiedOutcomeNotRecordedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND (json_extract(signature_evidence, '$.localStatus') = 'unverified' AND json_type(signature_evidence, '$.localOutcome') IS NULL)),
-            'vendorDocumentedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND (json_extract(signature_evidence, '$.vendor.documentedDeclarationCount') > 0)),
-            'vendorMatchingOriginViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND (json_extract(signature_evidence, '$.vendor.status') = 'matching-origin')),
-            'vendorDifferentOriginViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND (json_extract(signature_evidence, '$.vendor.status') = 'different-origin')),
-            'vendorOriginConflictViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.vendor.profile') = '2026-10-28.1' AND json_extract(signature_evidence, '$.vendor.status') = 'conflicting-origins'),
-            'vendorConflictWithMatchingOriginViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.vendor.profile') = '2026-10-28.1' AND json_extract(signature_evidence, '$.vendor.status') = 'conflicting-origins' AND json_extract(signature_evidence, '$.vendor.matchingDeclarationCount') > 0),
-            'vendorNotVerifiedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND (json_extract(signature_evidence, '$.vendor.status') = 'not-verified')),
-            'vendorUnmappedDeclarationViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND (json_extract(signature_evidence, '$.vendor.unmappedDeclarationCount') > 0)),
-            'vendorUserAgentBoundViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND (json_extract(signature_evidence, '$.vendor.status') = 'matching-origin' AND json_extract(signature_evidence, '$.vendor.userAgentCovered') = 1)),
-            'vendorCheckNotRecordedViews', SUM(json_type(signature_evidence, '$.vendor') IS NULL),
+            'localInvalidViews', SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'invalid'),
+            'localUnsupportedViews', SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'unsupported'),
+            'localUnavailableViews', SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'unavailable'),
+            'localPolicyRejectedViews', SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'policy-rejected'),
+            'localNotApplicableViews', SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'not-applicable'),
+            'localIndeterminateViews', SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'indeterminate'),
+            'unverifiedOutcomeNotRecordedViews', SUM(local_state = 'unverified' AND json_type(signature_evidence, '$.localOutcome') IS NULL),
+            'vendorDocumentedViews', SUM(vendor_state NOT IN ('not-recorded','unrecognized','test-injected') AND json_extract(signature_evidence, '$.vendor.documentedDeclarationCount') > 0),
+            'vendorMatchingOriginViews', SUM(vendor_state = 'matching-origin'),
+            'vendorDifferentOriginViews', SUM(vendor_state = 'different-origin'),
+            'vendorOriginConflictViews', SUM(vendor_state = 'conflicting-origins'),
+            'vendorConflictWithMatchingOriginViews', SUM(vendor_state = 'conflicting-origins' AND local_state = 'verified' AND json_extract(signature_evidence, '$.vendor.matchingDeclarationCount') > 0),
+            'vendorNotVerifiedViews', SUM(vendor_state = 'not-verified'),
+            'vendorUnmappedDeclarationViews', SUM(vendor_state NOT IN ('not-recorded','unrecognized','test-injected') AND json_extract(signature_evidence, '$.vendor.unmappedDeclarationCount') > 0),
+            'vendorUserAgentBoundViews', SUM(vendor_state = 'matching-origin' AND json_type(signature_evidence, '$.vendor.userAgentCovered') = 'true'),
+            'vendorCheckNotRecordedViews', SUM(vendor_state = 'not-recorded'),
+            'vendorCheckUnrecognizedViews', SUM(vendor_state = 'unrecognized'),
+            'vendorCheckRecognizedViews', SUM(vendor_state NOT IN ('unrecognized','not-recorded')),
             'recordedViews', SUM(signature_evidence IS NOT NULL),
             'notRecordedViews', SUM(signature_evidence IS NULL),
-            'localVerifiedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.localStatus') = 'verified'),
-            'localUnverifiedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.localStatus') = 'unverified'),
-            'localAbsentViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.localStatus') = 'absent'),
-            'testVerdictViews', SUM(json_extract(signature_evidence, '$.source') = 'test-injected'),
-            'coverageRecordedViews', SUM(json_type(signature_evidence, '$.coverage') = 'object'),
-            'selectionRecordedViews', SUM(${signatureSelectionRecordedSql()}),
-            'selectionNotRecordedVerifiedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.localStatus') = 'verified' AND json_type(signature_evidence, '$.coverage.selection') IS NULL AND COALESCE(json_extract(signature_evidence, '$.coverage.version'), '2026-10-27.1') = '2026-10-27.1'),
-            'selectionUnrecognizedVerifiedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.localStatus') = 'verified' AND NOT (${signatureSelectionRecordedSql()}) AND NOT (json_type(signature_evidence, '$.coverage.selection') IS NULL AND COALESCE(json_extract(signature_evidence, '$.coverage.version'), '2026-10-27.1') = '2026-10-27.1')),
-            'multipleTaggedCandidateViews', SUM((${signatureSelectionRecordedSql()}) AND json_extract(signature_evidence, '$.coverage.selection.taggedCandidates') > 1),
-            'unassessedCandidateViews', SUM((${signatureSelectionRecordedSql()}) AND json_extract(signature_evidence, '$.coverage.selection.unassessedCandidates') > 0),
-            'userAgentBoundViews', SUM(json_extract(signature_evidence, '$.coverage.covered.userAgent') = 1),
-            'resourceBoundViews', SUM(json_extract(signature_evidence, '$.coverage.covered.path') = 1 OR json_extract(signature_evidence, '$.coverage.covered.targetUri') = 1),
-            'methodBoundViews', SUM(json_extract(signature_evidence, '$.coverage.covered.method') = 1),
-            'authorityOnlyViews', SUM(json_extract(signature_evidence, '$.coverage.covered.authority') = 1
-              AND COALESCE(json_extract(signature_evidence, '$.coverage.covered.targetUri'), 0) = 0
-              AND COALESCE(json_extract(signature_evidence, '$.coverage.covered.path'), 0) = 0
-              AND COALESCE(json_extract(signature_evidence, '$.coverage.covered.method'), 0) = 0
-              AND COALESCE(json_extract(signature_evidence, '$.coverage.covered.query'), 0) = 0),
-            'nativeAvailableViews', SUM(json_type(signature_evidence, '$.native.verifiedBot') IN ('true','false') OR json_type(signature_evidence, '$.native.signedAgent') IN ('true','false')),
-            'nativeVerifiedBotViews', SUM(json_extract(signature_evidence, '$.native.verifiedBot') = 1),
-            'nativeSignedAgentViews', SUM(json_extract(signature_evidence, '$.native.signedAgent') = 1),
-            'localVerifiedNativeNotVerifiedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.localStatus') = 'verified' AND json_type(signature_evidence, '$.native.verifiedBot') = 'false')
-          )) FROM included
+            'localVerifiedViews', SUM(local_state = 'verified'),
+            'localUnverifiedViews', SUM(local_state = 'unverified'),
+            'localAbsentViews', SUM(local_state = 'absent'),
+            'unrecognizedLocalViews', SUM(local_state = 'unrecognized'),
+            'testVerdictViews', SUM(local_state = 'test-injected'),
+            'coverageRecordedViews', SUM(local_state = 'verified' AND coverage_valid = 1),
+            'coverageNotRecordedVerifiedViews', SUM(local_state = 'verified' AND COALESCE(json_type(signature_evidence, '$.coverage'), 'null') = 'null'),
+            'coverageUnrecognizedVerifiedViews', SUM(local_state = 'verified' AND coverage_valid = 0 AND COALESCE(json_type(signature_evidence, '$.coverage'), 'null') <> 'null'),
+            'selectionRecordedViews', SUM(local_state = 'verified' AND coverage_valid = 1 AND selection_valid = 1),
+            'selectionNotRecordedVerifiedViews', SUM(local_state = 'verified' AND json_type(signature_evidence, '$.coverage.selection') IS NULL AND COALESCE(json_extract(signature_evidence, '$.coverage.version'), '2026-10-27.1') = '2026-10-27.1'),
+            'selectionUnrecognizedVerifiedViews', SUM(local_state = 'verified' AND NOT (coverage_valid = 1 AND selection_valid = 1) AND NOT (json_type(signature_evidence, '$.coverage.selection') IS NULL AND COALESCE(json_extract(signature_evidence, '$.coverage.version'), '2026-10-27.1') = '2026-10-27.1')),
+            'multipleTaggedCandidateViews', SUM(local_state = 'verified' AND coverage_valid = 1 AND selection_valid = 1 AND json_extract(signature_evidence, '$.coverage.selection.taggedCandidates') > 1),
+            'unassessedCandidateViews', SUM(local_state = 'verified' AND coverage_valid = 1 AND selection_valid = 1 AND json_extract(signature_evidence, '$.coverage.selection.unassessedCandidates') > 0),
+            'userAgentBoundViews', SUM(local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.userAgent') = 'true'),
+            'resourceBoundViews', SUM(local_state = 'verified' AND coverage_valid = 1 AND (json_type(signature_evidence, '$.coverage.covered.path') = 'true' OR json_type(signature_evidence, '$.coverage.covered.targetUri') = 'true')),
+            'methodBoundViews', SUM(local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.method') = 'true'),
+            'authorityOnlyViews', SUM(local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.authority') = 'true' AND json_type(signature_evidence, '$.coverage.covered.targetUri') = 'false' AND json_type(signature_evidence, '$.coverage.covered.path') = 'false' AND json_type(signature_evidence, '$.coverage.covered.method') = 'false' AND json_type(signature_evidence, '$.coverage.covered.query') = 'false'),
+            'nativeAvailableViews', SUM(native_state = 'available'),
+            'nativeUnavailableViews', SUM(native_state = 'unavailable'),
+            'nativeNotRecordedViews', SUM(native_state = 'not-recorded'),
+            'nativeUnrecognizedViews', SUM(native_state = 'unrecognized'),
+            'nativeVerifiedBotViews', SUM(native_state = 'available' AND json_type(signature_evidence, '$.native.verifiedBot') = 'true'),
+            'nativeSignedAgentViews', SUM(native_state = 'available' AND json_type(signature_evidence, '$.native.signedAgent') = 'true'),
+            'localVerifiedNativeNotVerifiedViews', SUM(local_state = 'verified' AND native_state = 'available' AND json_type(signature_evidence, '$.native.verifiedBot') = 'false')
+          )) FROM signature_summary
         )
         WHEN 'referrer-state' THEN (
           SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
@@ -567,6 +592,42 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
   const vendorNetworkRow = requiredSection(sections, 'vendor-ip')[0];
   const clientForms = clientFormRows(requiredSection(sections, 'device'));
 
+  const verification = {
+    vendorCheckUnrecognizedViews: summaryNumberField(verificationRow, 'vendorCheckUnrecognizedViews'),
+    vendorCheckRecognizedViews: summaryNumberField(verificationRow, 'vendorCheckRecognizedViews'),
+    unrecognizedLocalViews: summaryNumberField(verificationRow, 'unrecognizedLocalViews'),
+    coverageNotRecordedVerifiedViews: summaryNumberField(verificationRow, 'coverageNotRecordedVerifiedViews'),
+    coverageUnrecognizedVerifiedViews: summaryNumberField(verificationRow, 'coverageUnrecognizedVerifiedViews'),
+    nativeUnavailableViews: summaryNumberField(verificationRow, 'nativeUnavailableViews'),
+    nativeNotRecordedViews: summaryNumberField(verificationRow, 'nativeNotRecordedViews'),
+    nativeUnrecognizedViews: summaryNumberField(verificationRow, 'nativeUnrecognizedViews'),
+    localInvalidViews: summaryNumberField(verificationRow, 'localInvalidViews'),
+    localUnsupportedViews: summaryNumberField(verificationRow, 'localUnsupportedViews'),
+    localUnavailableViews: summaryNumberField(verificationRow, 'localUnavailableViews'),
+    localPolicyRejectedViews: summaryNumberField(verificationRow, 'localPolicyRejectedViews'),
+    localNotApplicableViews: summaryNumberField(verificationRow, 'localNotApplicableViews'),
+    localIndeterminateViews: summaryNumberField(verificationRow, 'localIndeterminateViews'),
+    unverifiedOutcomeNotRecordedViews: summaryNumberField(verificationRow, 'unverifiedOutcomeNotRecordedViews'),
+    vendorDocumentedViews: summaryNumberField(verificationRow, 'vendorDocumentedViews'),
+    vendorMatchingOriginViews: summaryNumberField(verificationRow, 'vendorMatchingOriginViews'),
+    vendorDifferentOriginViews: summaryNumberField(verificationRow, 'vendorDifferentOriginViews'),
+    vendorOriginConflictViews: summaryNumberField(verificationRow, 'vendorOriginConflictViews'),
+    vendorConflictWithMatchingOriginViews: summaryNumberField(verificationRow, 'vendorConflictWithMatchingOriginViews'),
+    vendorNotVerifiedViews: summaryNumberField(verificationRow, 'vendorNotVerifiedViews'),
+    vendorUnmappedDeclarationViews: summaryNumberField(verificationRow, 'vendorUnmappedDeclarationViews'),
+    vendorUserAgentBoundViews: summaryNumberField(verificationRow, 'vendorUserAgentBoundViews'),
+    vendorCheckNotRecordedViews: summaryNumberField(verificationRow, 'vendorCheckNotRecordedViews'),
+
+    recordedViews: summaryNumberField(verificationRow, 'recordedViews'), notRecordedViews: summaryNumberField(verificationRow, 'notRecordedViews'),
+    localVerifiedViews: summaryNumberField(verificationRow, 'localVerifiedViews'), localUnverifiedViews: summaryNumberField(verificationRow, 'localUnverifiedViews'), localAbsentViews: summaryNumberField(verificationRow, 'localAbsentViews'),
+    testVerdictViews: summaryNumberField(verificationRow, 'testVerdictViews'),
+    selectionUnrecognizedVerifiedViews: summaryNumberField(verificationRow, 'selectionUnrecognizedVerifiedViews'), selectionRecordedViews: summaryNumberField(verificationRow, 'selectionRecordedViews'), selectionNotRecordedVerifiedViews: summaryNumberField(verificationRow, 'selectionNotRecordedVerifiedViews'), multipleTaggedCandidateViews: summaryNumberField(verificationRow, 'multipleTaggedCandidateViews'), unassessedCandidateViews: summaryNumberField(verificationRow, 'unassessedCandidateViews'),
+    coverageRecordedViews: summaryNumberField(verificationRow, 'coverageRecordedViews'), userAgentBoundViews: summaryNumberField(verificationRow, 'userAgentBoundViews'), resourceBoundViews: summaryNumberField(verificationRow, 'resourceBoundViews'), methodBoundViews: summaryNumberField(verificationRow, 'methodBoundViews'), authorityOnlyViews: summaryNumberField(verificationRow, 'authorityOnlyViews'),
+    nativeAvailableViews: summaryNumberField(verificationRow, 'nativeAvailableViews'), nativeVerifiedBotViews: summaryNumberField(verificationRow, 'nativeVerifiedBotViews'), nativeSignedAgentViews: summaryNumberField(verificationRow, 'nativeSignedAgentViews'), localVerifiedNativeNotVerifiedViews: summaryNumberField(verificationRow, 'localVerifiedNativeNotVerifiedViews'),
+  };
+  const signatureRows = kindSignatureRows(requiredSection(sections, 'kind-signature'), numberField(totalsRow, 'views'));
+  if (!consistentSignatureSummary(verification, numberField(totalsRow, 'views'), signatureRows)) return malformedReport();
+
   return {
     period: {
       start: window.start,
@@ -615,7 +676,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
       return { signatureAgent, views: numberField(row, 'views') };
     }),
     byKind: kindRows(requiredSection(sections, 'kind'), numberField(totalsRow, 'views')),
-    byKindSignature: kindSignatureRows(requiredSection(sections, 'kind-signature'), numberField(totalsRow, 'views')),
+    byKindSignature: signatureRows,
     verifierProfile: { current: CURRENT_VERIFIER_PROFILE, assessment: 'stored-profile-not-reverified' },
     byKindNativeCategory: nativeCategoryRows(requiredSection(sections, 'native-category'), numberField(totalsRow, 'views')),
     byDirectoryPublication: directoryPublicationRows(requiredSection(sections, 'directory-publication'), numberField(totalsRow, 'views')),
@@ -631,31 +692,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
       notAssessedViews: numberField(vendorNetworkRow, 'notAssessedViews'),
       addressUnavailableViews: numberField(vendorNetworkRow, 'addressUnavailableViews'),
     },
-    verification: {
-      localInvalidViews: numberField(verificationRow, 'localInvalidViews'),
-      localUnsupportedViews: numberField(verificationRow, 'localUnsupportedViews'),
-      localUnavailableViews: numberField(verificationRow, 'localUnavailableViews'),
-      localPolicyRejectedViews: numberField(verificationRow, 'localPolicyRejectedViews'),
-      localNotApplicableViews: numberField(verificationRow, 'localNotApplicableViews'),
-      localIndeterminateViews: numberField(verificationRow, 'localIndeterminateViews'),
-      unverifiedOutcomeNotRecordedViews: numberField(verificationRow, 'unverifiedOutcomeNotRecordedViews'),
-      vendorDocumentedViews: numberField(verificationRow, 'vendorDocumentedViews'),
-      vendorMatchingOriginViews: numberField(verificationRow, 'vendorMatchingOriginViews'),
-      vendorDifferentOriginViews: numberField(verificationRow, 'vendorDifferentOriginViews'),
-      vendorOriginConflictViews: numberField(verificationRow, 'vendorOriginConflictViews'),
-      vendorConflictWithMatchingOriginViews: numberField(verificationRow, 'vendorConflictWithMatchingOriginViews'),
-      vendorNotVerifiedViews: numberField(verificationRow, 'vendorNotVerifiedViews'),
-      vendorUnmappedDeclarationViews: numberField(verificationRow, 'vendorUnmappedDeclarationViews'),
-      vendorUserAgentBoundViews: numberField(verificationRow, 'vendorUserAgentBoundViews'),
-      vendorCheckNotRecordedViews: numberField(verificationRow, 'vendorCheckNotRecordedViews'),
-
-      recordedViews: numberField(verificationRow, 'recordedViews'), notRecordedViews: numberField(verificationRow, 'notRecordedViews'),
-      localVerifiedViews: numberField(verificationRow, 'localVerifiedViews'), localUnverifiedViews: numberField(verificationRow, 'localUnverifiedViews'), localAbsentViews: numberField(verificationRow, 'localAbsentViews'),
-      testVerdictViews: numberField(verificationRow, 'testVerdictViews'),
-      selectionUnrecognizedVerifiedViews: numberField(verificationRow, 'selectionUnrecognizedVerifiedViews'), selectionRecordedViews: numberField(verificationRow, 'selectionRecordedViews'), selectionNotRecordedVerifiedViews: numberField(verificationRow, 'selectionNotRecordedVerifiedViews'), multipleTaggedCandidateViews: numberField(verificationRow, 'multipleTaggedCandidateViews'), unassessedCandidateViews: numberField(verificationRow, 'unassessedCandidateViews'),
-      coverageRecordedViews: numberField(verificationRow, 'coverageRecordedViews'), userAgentBoundViews: numberField(verificationRow, 'userAgentBoundViews'), resourceBoundViews: numberField(verificationRow, 'resourceBoundViews'), methodBoundViews: numberField(verificationRow, 'methodBoundViews'), authorityOnlyViews: numberField(verificationRow, 'authorityOnlyViews'),
-      nativeAvailableViews: numberField(verificationRow, 'nativeAvailableViews'), nativeVerifiedBotViews: numberField(verificationRow, 'nativeVerifiedBotViews'), nativeSignedAgentViews: numberField(verificationRow, 'nativeSignedAgentViews'), localVerifiedNativeNotVerifiedViews: numberField(verificationRow, 'localVerifiedNativeNotVerifiedViews'),
-    },
+    verification,
   };
 }
 

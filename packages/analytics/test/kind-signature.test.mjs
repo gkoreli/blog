@@ -5,7 +5,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { queryStats } from '../.test-dist/stats.js';
 import { signatureBasisSql } from '../.test-dist/signature-basis.js';
 
-const verified = { version: '2026-10-27.3', source: 'local-webbotauth', localStatus: 'verified', coverage: { version: '2026-10-27.1', covered: { userAgent: true } } };
+const verified = { version: '2026-10-27.3', source: 'local-webbotauth', localStatus: 'verified', coverage: { version: '2026-10-27.1', headerForm: 'dictionary', replayPolicy: 'expiry-only', validitySeconds: 300, ageSeconds: 0, otherComponentCount: 0, covered: { authority: true, targetUri: false, method: false, path: false, query: false, userAgent: true, contentDigest: false } } };
 function fixture() {
   const sqlite = new DatabaseSync(':memory:'); sqlite.exec(readFileSync(new URL('../schema.sql', import.meta.url), 'utf8'));
   let batches = 0; let alter = rows => rows;
@@ -27,9 +27,9 @@ test('signature basis separates proof, absent coverage, injection, future schema
     [null, null, 'not-recorded'], [null, 'verified', 'verified-outcome-only'],
     [verified, 'verified', 'verified-ua-covered'],
     [{ ...verified, version: '2026-10-27.4' }, 'verified', 'verified-ua-covered'],
-    [{ ...verified, coverage: { ...verified.coverage, covered: { userAgent: false } } }, 'verified', 'verified-ua-uncovered'],
+    [{ ...verified, coverage: { ...verified.coverage, covered: { ...verified.coverage.covered, userAgent: false } } }, 'verified', 'verified-ua-uncovered'],
     [{ ...verified, coverage: null }, 'verified', 'verified-coverage-unknown'],
-    [{ ...verified, coverage: { ...verified.coverage, covered: { userAgent: 1 } } }, 'verified', 'verified-coverage-unknown'],
+    [{ ...verified, coverage: { ...verified.coverage, covered: { ...verified.coverage.covered, userAgent: 1 } } }, 'verified', 'verified-coverage-unknown'],
     [{ ...verified, source: 'test-injected' }, 'verified', 'test-injected'],
     [{ ...verified, localStatus: 'unverified', coverage: null }, 'unverified', 'not-verified'],
     [{ ...verified, localStatus: 'absent', coverage: null }, null, 'unsigned'],
@@ -47,7 +47,7 @@ test('signature basis separates proof, absent coverage, injection, future schema
 test('joint report partitions the same selected events, preserves missing kinds and excludes owners/referrals/time independently', async () => {
   const f = fixture(), sameId = '1'.repeat(32);
   f.add(verified, { id: sameId });
-  f.add({ ...verified, coverage: { ...verified.coverage, covered: { userAgent: false } } }, { id: sameId });
+  f.add({ ...verified, coverage: { ...verified.coverage, covered: { ...verified.coverage.covered, userAgent: false } } }, { id: sameId });
   f.add(null, { kind: 'signed-agent', status: 'verified' });
   f.add(null, { kind: null });
   const marked = f.add(verified); f.sqlite.prepare("INSERT INTO owner_clients(daily_client_id,utc_date) VALUES(?,'2026-10-27')").run(marked);

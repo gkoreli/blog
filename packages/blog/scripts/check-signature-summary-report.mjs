@@ -1,0 +1,56 @@
+import assert from 'node:assert/strict';
+import { readFileSync,writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import { resolve,dirname,relative } from 'node:path';
+import { createRequire } from 'node:module';
+import { pathToFileURL } from 'node:url';
+import { build } from 'esbuild';
+import { queryStats } from '../../analytics/.test-dist/stats.js';
+import { summaryCases } from '../../analytics/test/fixtures/signature-summary.mjs';
+const [output,prefix]=process.argv.slice(2);assert.ok(output&&prefix);
+const baseline='8b35baa',sourceRoot=resolve('packages/analytics/src');
+const previous=path=>execFileSync('git',['show',`${baseline}:${path}`],{encoding:'utf8'});
+const old=await build({stdin:{contents:previous('packages/analytics/src/stats.ts'),loader:'ts',resolveDir:sourceRoot},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent',plugins:[{name:'pin-entire-baseline-analytics-graph',setup(builder){builder.onLoad({filter:/[/\\]analytics[/\\]src[/\\].*\.ts$/},args=>({contents:previous('packages/analytics/src/'+relative(sourceRoot,args.path).replaceAll('\\','/')),loader:'ts',resolveDir:dirname(args.path)}));}}]});
+const oldStats=(await import('data:text/javascript;base64,'+Buffer.from(old.outputFiles[0].contents).toString('base64'))).queryStats;
+const req=createRequire(resolve('package.json'));
+const { Miniflare }=await import(pathToFileURL(req.resolve('miniflare',{paths:[dirname(req.resolve('wrangler/package.json'))]})));
+const mf=new Miniflare({modules:true,script:'export default{fetch(){return new Response("summary controls")}}',compatibilityDate:'2026-03-06',d1Databases:{DB:'signature-summary'}});
+const query={range:'7d',traffic:'all',path:'/privacy'},now=new Date('2026-10-28T05:00:00Z');
+try{
+ const db=await mf.getD1Database('DB');
+ const schema=readFileSync('packages/analytics/schema.sql','utf8').replace(/^\s*--.*$/gm,'');
+ await db.batch(schema.split(';').map(s=>s.trim()).filter(Boolean).map(s=>db.prepare(s)));
+ const insert=(id,c,options={})=>db.prepare(`INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,reader_kind,reader_reason,observed_at,signature_status,signature_agent,signature_evidence,is_owner,referrer_host) VALUES('/privacy',?,'ai','desktop','ai-search','fixture',?,?,?, ?,?,?)`).bind(String(id).padStart(32,'0'),options.at??'2026-10-28 04:00:00',c.status,c.status==='verified'?'https://crawler.exa.ai':null,c.e===null?null:JSON.stringify(c.e),options.owner??0,options.referrer??null);
+ let meta;
+ const tap={prepare(sql){return{bind(...v){return db.prepare(sql).bind(...v)}}},async batch(stmts){const results=await db.batch(stmts);meta=results[0].meta;return results;}};
+ const selectReportFields=r=>Object.fromEntries(['localVerifiedViews','coverageRecordedViews','userAgentBoundViews','authorityOnlyViews','nativeVerifiedBotViews','vendorMatchingOriginViews','selectionRecordedViews'].map(k=>[k,r.verification[k]]));
+ const typing=await db.prepare("SELECT json_extract('{\"b\":true,\"n\":1}', '$.b') AS booleanValue, json_extract('{\"b\":true,\"n\":1}', '$.n') AS numberValue, json_type('{\"b\":true,\"n\":1}', '$.b') AS booleanType, json_type('{\"b\":true,\"n\":1}', '$.n') AS numberType").first();
+ assert.deepEqual(typing,{booleanValue:1,numberValue:1,booleanType:'true',numberType:'integer'});
+ const controls=[];
+ for(const c of summaryCases){
+  await db.prepare('DELETE FROM page_observations').run();await insert(1,c).run();
+  const before=await oldStats(tap,query,now),after=await queryStats(tap,query,now);
+  const v=after.verification;
+  assert.equal(v.localVerifiedViews,Number(c.local==='verified'),c.name);assert.equal(v.coverageRecordedViews,Number(c.local==='verified'&&c.coverage==='known'),c.name);
+  assert.equal(v.nativeVerifiedBotViews,Number(c.native==='available' && c.nativeVerified!==false),c.name);assert.equal(v.vendorMatchingOriginViews,Number(c.vendor==='matching-origin'),c.name);
+  controls.push({name:c.name,expected:{local:c.local,coverage:c.coverage??'not-applicable',native:c.native,vendor:c.vendor},before:selectReportFields(before),after:selectReportFields(after),afterJoint:after.byKindSignature.map(({kind,basis,profile,views})=>({kind,basis,profile,views}))});
+ }
+ await db.prepare('DELETE FROM page_observations').run();
+ for(let group=0;group<8;group++)await db.batch(Array.from({length:64},(_,i)=>insert(group*64+i+1,summaryCases[(group*64+i)%2])));
+ const before=await oldStats(tap,query,now),oldReads=meta.rows_read,oldDurationMs=meta.duration;
+ const after=await queryStats(tap,query,now),newReads=meta.rows_read,newDurationMs=meta.duration;
+ const commonVerification=Object.fromEntries(Object.keys(before.verification).map(k=>[k,after.verification[k]]));
+ assert.deepEqual(commonVerification,before.verification);
+ const {verification:oldV,...oldRest}=before,{verification:newV,...newRest}=after;assert.deepEqual(newRest,oldRest);
+ await db.prepare('DELETE FROM page_observations').run();await db.batch(summaryCases.map((c,i)=>insert(i+1,c)));
+ await db.batch([insert(100,summaryCases[0],{owner:1}),insert(101,summaryCases[0],{referrer:'traffic2cash.xyz'}),insert(102,summaryCases[0],{at:'2026-10-29 00:00:00'})]);
+ const mixedBefore=await oldStats(tap,query,now),mixed=await queryStats(tap,query,now);
+ assert.equal(mixed.totals.views,summaryCases.length);assert.equal(mixed.referralPolicy.excludedViews,1);
+ assert.ok(!JSON.stringify(mixed).includes('future'));
+ const empty=await queryStats(tap,{...query,path:'/missing'},now);assert.ok(Object.values(empty.verification).every(n=>n===0));
+ writeFileSync(prefix+'-client-fixture.json',JSON.stringify(mixed,null,2)+'\n',{flag:'wx',mode:0o600});
+ const result={checkedAt:new Date().toISOString(),baselineCommit:baseline,baselineGraph:'All loaded analytics source modules pinned, not only stats.ts.',queryStrategy:'Materialize assessed facts and the vendor/selection summary once; inlined-summary candidate preserved separately.',jsonTyping:typing,method:'Actual native D1 with supplied stored-record fixtures. No cryptographic replay, operator label or production prevalence.',controls,cohort:{included:summaryCases.length,ownerExcluded:1,referralExcluded:1,outsideWindow:1,before:mixedBefore.verification,after:mixed.verification},valid512:{oldReads,newReads,delta:newReads-oldReads,oldDurationMs,newDurationMs,durationScope:"Single native fixture execution; not a production latency benchmark",commonOutputUnchanged:true},emptySelectionAllZero:true,productionCalls:0,scriptSha256:createHash('sha256').update(readFileSync('packages/blog/scripts/check-signature-summary-report.mjs')).digest('hex')};
+ writeFileSync(output,JSON.stringify(result,null,2)+'\n',{flag:'wx'});
+ console.log(JSON.stringify({controls:controls.length,valid512:result.valid512,mixedBefore:selectReportFields(mixedBefore),mixedAfter:selectReportFields(mixed),productionCalls:0}));
+}finally{await mf.dispose();}

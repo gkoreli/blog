@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-10-28T05:06:52.296430+00:00",
+  "primarySourceCaptures": [
+    {
+      "url": "https://api.github.com/repos/sqlite/sqlite/commits/master",
+      "status": 200,
+      "bytes": 7411,
+      "sha256": "5a119696f4e1c4aee3d23c83e80224c83891d1f5d13d3eed26a3a6103cd804ee",
+      "capturedAt": "2026-10-28T05:06:50.698419+00:00"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sqlite/sqlite/3cf93639e3685fb66149ce5f407f036fb2ea395e/src/json.c",
+      "status": 200,
+      "bytes": 184771,
+      "sha256": "52efad6f5588cfe84e1bee06f6b6d855229bb1656ed2a3c16b3acfab71a2be44",
+      "capturedAt": "2026-10-28T05:06:51.385946+00:00",
+      "repository": "sqlite/sqlite",
+      "commit": "3cf93639e3685fb66149ce5f407f036fb2ea395e",
+      "path": "src/json.c"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sqlite/sqlite/3cf93639e3685fb66149ce5f407f036fb2ea395e/test/json101.test",
+      "status": 200,
+      "bytes": 37456,
+      "sha256": "43d8f67052e469f33c479b92fed51f53fd011228098d238ee21483238711f6e1",
+      "capturedAt": "2026-10-28T05:06:51.733393+00:00",
+      "repository": "sqlite/sqlite",
+      "commit": "3cf93639e3685fb66149ce5f407f036fb2ea395e",
+      "path": "test/json101.test"
+    },
+    {
+      "url": "https://www.sqlite.org/json1.html",
+      "status": 200,
+      "bytes": 71070,
+      "sha256": "bca8f665a03ab34e83ed8965b7dee2e12f1a6ffa4202d6bf2acc0f574becafb9",
+      "capturedAt": "2026-10-28T05:06:52.296387+00:00"
+    }
+  ],
+  "limits": [
+    "The inspected upstream SQLite revision is not asserted to be the production D1 engine revision.",
+    "Native D1 execution supplies compatibility evidence for the exact expressions used.",
+    "No downloaded source was executed or dependency added."
+  ],
+  "appliedFindings": [
+    {
+      "source": "src/json.c",
+      "symbol": "jsonReturnFromBlob / JSONB_TRUE and JSONB_FALSE",
+      "linesAtPinnedSource": [
+        3419,
+        3427
+      ],
+      "finding": "JSON booleans return SQL integers 1/0; numeric equality cannot enforce JSON boolean provenance.",
+      "appliedCode": "packages/analytics/src/signature-summary.ts"
+    },
+    {
+      "source": "src/json.c",
+      "symbol": "jsonTypeFunc",
+      "linesAtPinnedSource": [
+        4752,
+        4784
+      ],
+      "finding": "Returns distinct JSON type names; missing paths do not fabricate false.",
+      "appliedCode": "packages/analytics/src/signature-coverage-report.ts"
+    },
+    {
+      "source": "test/json101.test",
+      "finding": "Inspected upstream literal/container/type tests. This investigation did not execute the full upstream SQLite test suite."
+    }
+  ]
+}
