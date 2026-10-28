@@ -978,3 +978,42 @@ export async function verifyWebBotAuthCandidate(request: Request, label: string,
     return await verifyCandidate(request, candidate, context.parsedAgent, options.fetcher ?? fetch, options.cache ?? createWebBotAuthCache(), nowMs, options);
   } catch { return { status: 'unverified', reason: 'verification-error' }; }
 }
+
+/** Internal diagnostic tokens only. The caller must first verify this exact
+ * candidate against the same immutable request. Never persist or publish these
+ * linkable digests. Outer dictionary labels and unsigned fields are excluded.
+ * This does not verify a signature or enforce replay policy.
+ */
+export async function webBotAuthCandidateReuseTokens(request: Request, label: string, verifiedAgent: string, cache: WebBotAuthCache): Promise<{
+  proof: string; nonce: string | null; nonceState: 'string' | 'absent' | 'unusable'; context: string;
+} | null> {
+  const context = candidateContext(request);
+  if (context.status !== 'ready') return null;
+  const candidate = context.tagged.find(candidate => candidate.label === label);
+  if (candidate === undefined) return null;
+  const base = createSignatureBase(request, candidate.input, context.parsedAgent);
+  if (base === null || 'reason' in base || base.signatureAgentUri === null) return null;
+  const location = directoryLocation(base.signatureAgentUri);
+  if ('reason' in location || location.agent !== verifiedAgent) return null;
+  const key = stringValue(parameter(candidate.input.parameters, 'keyid'));
+  if (key === null) return null;
+  // RFC thumbprints include the JWK x spelling. Two admitted encodings can
+  // resolve to the same Ed25519 bytes; don't split their nonce scope by keyid.
+  let material: string | null = null;
+  for (const entry of cache.directories.get(location.directoryUrl)?.keys ?? []) {
+    if (typeof entry.jwk.x !== 'string' || await ed25519JwkThumbprint(entry.jwk) !== key) continue;
+    const bytes = Uint8Array.from(atob(entry.jwk.x.replace(/-/g, '+').replace(/_/g, '/')), char => char.charCodeAt(0));
+    if (bytes.length === 32) material = base64Url(bytes);
+    break;
+  }
+  if (material === null) return null;
+  const nonce = parameter(candidate.input.parameters, 'nonce');
+  const digest = async (values: readonly (string | null)[]) => base64Url(new Uint8Array(await crypto.subtle.digest('SHA-256', encoder.encode(JSON.stringify(values)))));
+  const usableNonce = nonce?.type === 'string' && nonce.value.length > 0 ? nonce.value : null;
+  return {
+    proof: await digest([verifiedAgent, key, base.base, base64Url(candidate.signature)]),
+    nonce: usableNonce === null ? null : await digest([verifiedAgent, material, usableNonce]),
+    nonceState: nonce === undefined ? 'absent' : usableNonce === null ? 'unusable' : 'string',
+    context: await digest([request.method, request.url, request.headers.get('user-agent')]),
+  };
+}

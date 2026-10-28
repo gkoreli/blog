@@ -1,0 +1,36 @@
+{
+  "sources": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9421.txt",
+      "capturedAt": "2026-10-28T04:04:12.556910+00:00",
+      "status": 200,
+      "sha256": "612655786bf4293bfc486e4177571467fbb3de6e6f0eea90cb74c346a34fdf3c",
+      "bytes": 241160
+    },
+    {
+      "url": "https://www.ietf.org/archive/id/draft-meunier-webbotauth-httpsig-protocol-02.txt",
+      "capturedAt": "2026-10-28T04:04:12.450433+00:00",
+      "status": 200,
+      "sha256": "e85e295f0b2bba21fb45215ea828ebb2765994723790609143741d9622f13b9e",
+      "bytes": 95615
+    },
+    {
+      "url": "https://pyauth.github.io/http-message-signatures/",
+      "capturedAt": "2026-10-28T04:04:12.853981+00:00",
+      "status": 200,
+      "sha256": "65d50bec38e74226b977a79c44d4f9330e6fb3ea148baf8da00c61b00a77e9a8",
+      "bytes": 182223
+    },
+    {
+      "url": "https://www.ietf.org/archive/id/draft-ietf-webbotauth-httpsig-protocol-00.txt",
+      "capturedAt": "2026-10-28T04:10:55.551190+00:00",
+      "status": 200,
+      "sha256": "3021fd94cdffdb2eb030dec68b1a5c968f2348502dd94c481e2085ec7ddd90a0",
+      "bytes": 95603,
+      "statusAtReview": "Active WG draft; replaces individual revision 02"
+    }
+  ],
+  "pinnedReferenceSource": "complete-audit-sources.json",
+  "readerTelemetryForwarded": false,
+  "initialIndividualProtocolCapture": "Superseded individual revision 02 retained as history; current-protocol claims checked against active WG revision 00."
+}

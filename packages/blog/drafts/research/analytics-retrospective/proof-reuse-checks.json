@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-28T04:10:16.537304+00:00",
+  "baseCommit": "0bb301f",
+  "analyticsTests": 231,
+  "workspaceTypecheck": "pass",
+  "nativeCohorts": 13,
+  "pinnedPythonMessageCalls": 18,
+  "pinnedPythonSourceFilesRechecked": 18,
+  "newProductionDiagnosticStatements": 0,
+  "newLabelledProductionVisits": 0,
+  "newProductionPageRequestsBeforePublication": 0,
+  "runtimeProfilesChanged": false,
+  "collectorImportsReuseAudit": false,
+  "workerDryRunJavaScriptEqual": true,
+  "workerBeforeAndAfterSha256": "92b8f01543c7b1b41c20aace908528bdc680be8a3a3c2335b4e1e8aa109388e4",
+  "workerComparisonScope": "Local Wrangler dry-run generated JavaScript, not a capture of deployed Worker bytes. Source map/asset equality is not claimed.",
+  "isolatedBuildPosts": 32,
+  "frontmatterValidation": "pass, 21 Markdown posts",
+  "articleWords": 1195,
+  "shapingPrompts": 31,
+  "isolatedArticleSha256": "f71a9ea948c04cddb408416941e92a5d8d097deb83a664f0dcee09f4b7325be0",
+  "humanTrials": "deferred",
+  "privateArchive": {
+    "archive": "2026-10-28-proof-reuse",
+    "privateFiles": 37,
+    "manifestSha256": "9548a33fa99ac00ba1b8c6f46ccfe7bc43de7cc621b7652daa0227266c973210",
+    "modes": "0700 directories / 0600 files",
+    "reviewDate": "2026-10-31",
+    "reviewDateIsAutomaticErasure": false
+  },
+  "artifactSha256": {
+    "proof-reuse-native.json": "0974f804c54b4b8afe70ff2d4271f2e8a0a85a213dbbaa5f9113f4eb7000aa76",
+    "proof-reuse-retained.json": "734a46b97141ce687b37d314584ab5b52df684a4231c3f0e72232b9de1ff19c7",
+    "proof-reuse-reference.json": "aee108b73d6f169774041d1f34ad485da6e5542107111177d21f43bffe872cee",
+    "proof-reuse-doc-sources.json": "9304e4463ffa99135b6d983e4e8d40996a1d43b7e632f8ca8d93d1f8794139bf"
+  },
+  "relativeAndRepositoryLinksChecked": 343,
+  "privateHeaderAndReferenceScan": "pass",
+  "activeProtocolSource": "draft-ietf-webbotauth-httpsig-protocol-00; replaced individual revision 02 retained as history"
+}
