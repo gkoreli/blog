@@ -30,7 +30,7 @@ Exploration initially inspected pnpm main `4a263ca48fea43e15f313b6357cbb224c8bf4
 - [x] Trace current T3 setup and pnpm's shared-store path.
 - [x] Run a separate, small, offline install comparison on the available Mac, with functional checks and frozen lockfile.
 - [x] Finish draft, claim check and scoped documentation checks.
-- [ ] Commit and push the unpublished research and draft.
+- [x] Commit and push the unpublished research and draft.
 
 ## Limits and next action
 
@@ -42,6 +42,8 @@ Next bounded action after draft review: obtain the exact chart harness, optimiza
 
 ## Draft acceptance, October 28
 
-Draft: [Why Setting Up a Worktree Can Be Slow on a Mac](../../why-worktree-setup-is-slow-on-macos.md). Approximately 815 rendered words, about 4.1 minutes at 200 words per minute, including the source glossary. The opening states the reported gap and five-machine aggregation. The measured local contribution is 122 ms versus 66 ms on a small fixture, explicitly not a Linux comparison or T3 reproduction. No live site article or social share was created.
+Draft: [Why Setting Up a Worktree Can Be Slow on a Mac](../../why-worktree-setup-is-slow-on-macos.md). 813 rendered words, about 4.1 minutes at 200 words per minute, including the source glossary. The opening states the reported gap and five-machine aggregation. The measured local contribution is 122 ms versus 66 ms on a small fixture, explicitly not a Linux comparison or T3 reproduction. No live site article or social share was created.
 
 Checks passed: all twelve accepted installs, CommonJS and ESM library checks, unchanged complete lockfile bytes, independent median/file-count calculations, Python syntax, local research links, fenced code blocks, one rendered H1, existing published-post validation (21 Markdown posts). The draft directory is outside site discovery; a production build and deployment probe would not validate this unpublished draft and were not run. Before publishing it as engineering prose, preserve its shaping prompts under the engineering article contract and assign a truthful publication date.
+
+Delivery: commit `643f637` pushed directly to `main` after rebasing on concurrent commit `913b496`; only the nine draft/research files were added. The following receipt-only update closes this worklist. Remaining evidence gaps above are limits on a future causal reproduction, not a claim that this draft measured the original chart.
