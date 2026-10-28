@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-28T17:10:44.122842+00:00",
+  "checkedAt": "2026-10-28T17:15:12.317304+00:00",
   "baselineCommit": "913b49612f0bfcc1d72e04c0155d490ba9ea82c0",
-  "sourceCommit": null,
-  "productionActivation": "pending",
+  "sourceCommit": "e3e0d60b1c2e83841cf23f5074f1b8fd74217b06",
+  "productionActivation": "accepted",
   "checks": {
     "analyticsTests": 259,
     "siteTests": 116,
@@ -14,7 +14,8 @@
     "historicalReplayComparedTotals": 11,
     "historicalReplayUnestablished503": 1,
     "frontendBuild": "not run: frontend/article unchanged; actual composed Worker bundle accepted",
-    "protectedSourcesUnchanged": true
+    "protectedSourcesUnchanged": true,
+    "deliveryPipelineBuildPosts": 32
   },
   "sourceSha256": {
     "packages/analytics/src/native-bot-capture.ts": "ce5682fec955f42cfaf15217844ed419bea9c2519eece9c1d8d1c95282618449",
@@ -31,12 +32,13 @@
     "freshServedCheck": false
   },
   "production": {
-    "ownSiteGets": 0,
+    "ownSiteGets": 1,
     "diagnosticStatements": 0,
     "reportFills": 0,
     "ownerMarkPosts": 0,
     "humanLabels": 0,
-    "configurationMutations": 0
+    "configurationMutations": 0,
+    "collectionEligibleGets": 0
   },
   "privateArchive": {
     "files": 12,
@@ -51,5 +53,46 @@
     "Genuine provider-positive, relay and isolated disabled-before-expiry live controls remain unexecuted",
     "Human-operated trials remain deferred"
   ],
-  "nextBoundedAction": "Source delivery and exact-build activation/off-mode acceptance, then prerequisite-qualified missing controls"
+  "nextBoundedAction": "Prepare a fresh, smaller controlled run isolating dynamic replacement versus disabled-before-expiry; execute genuine provider-positive/relay controls only with accepted prerequisites. Human trials remain deferred.",
+  "activation": {
+    "checkedAt": "2026-10-28T17:15:12.317304+00:00",
+    "sourceCommit": "e3e0d60b1c2e83841cf23f5074f1b8fd74217b06",
+    "buildId": "d313490e-bd80-42e5-918a-0c3a88f81abf",
+    "workerVersion": "8482029c-4028-495d-b889-e6161da99346",
+    "activation": "Source-linked Ready rollout at 100%, same build page and full log version",
+    "buildPosts": 32,
+    "ciRuntime": "Node 24.22.1",
+    "localRuntime": "Node 24.14.1",
+    "noUpdatedAssetsUploaded": true,
+    "offMode": {
+      "checkedAt": "2026-10-28T17:14:04.234092+00:00",
+      "request": "Single direct GET to the native-capture readiness path with a supplied true candidate; no HTML navigation",
+      "status": 404,
+      "emptyJson": true,
+      "noStore": true,
+      "bodySha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "productionOwnSiteGets": 1,
+      "collectionEligibleGets": 0,
+      "directDiagnosticStatements": 0,
+      "reportFills": 0,
+      "ownerGuardReached": "No: the optional configuration is absent; source-bound routing rejects before guard/collector",
+      "limit": "This off-mode response does not exercise new failure reasons or prove source activation by itself"
+    },
+    "optionalBindingsAbsentAfterDeployment": true,
+    "secretValuesRead": false,
+    "productionFailureReasonObserved": false,
+    "checks": {
+      "buildLogSha256": "c2292e94f58f8a78d05b23f1b981dbf8c458a20a8b4f381077bd1dd3e2438c18",
+      "rolloutAxSha256": "e99367a1d3284e8d4215edbdae1ae3e11628dc3e01ad425267f37b1e980a2f60",
+      "rolloutScreenshotSha256": "2978e6bf83613dfd4dc6e9e5c8975d79f1cfea334b821e1701114af81852089d"
+    },
+    "humanTrials": "deferred",
+    "newHumanLabels": 0
+  },
+  "publicationArchive": {
+    "files": 9,
+    "manifestSha256": "ea4d5c90ede02e7cb77d7013794d1224ff4bb11ec57707d16835fd6ae2ca7cb7",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  }
 }

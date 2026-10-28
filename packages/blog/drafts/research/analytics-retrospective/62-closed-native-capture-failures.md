@@ -44,3 +44,11 @@ The route stays off by default. No binding or request-header rule is activated; 
 Source delivery and production activation are recorded separately in [the release receipt](native-capture-failure-release.json). Production activation and an off-mode check are pending at this local checkpoint; local tests cannot establish them. A frontend build is unnecessary for this route-only source change; composed Worker bundling and workspace types validate its imports, while the normal delivery pipeline performs the publication build.
 
 Next: verify activation and closed off-mode behavior, then execute only missing, independently eligible live controls. Isolated disabling before expiry, genuine provider-positive and relay cases remain unexecuted. Generic known-bot delivery still does not establish managed cryptographic agreement, operator intent or a human reader. Human/device trials and the full analytics goal remain open.
+
+## Production acceptance
+
+Source `e3e0d60` is pushed after preserving two unrelated concurrent Mac-worktree research commits. Build `d313490e` completes its 32-post build and deployment; the full log identifies Worker `8482029c`. The same source-linked rollout is Ready at 100%. CI runs Node 24.22.1 versus local pinned 24.14.1. No updated asset files are uploaded; the article and client remain unchanged.
+
+A single direct, collection-ineligible readiness GET supplies a true candidate and receives empty JSON 404 with no-store. Fresh name-only Wrangler metadata after deployment confirms the temporary capture and owner-grant bindings absent; no credential values are read or changed. This proves off-mode rejection alongside source activation, not execution of a new production failure reason. There is no direct D1 diagnostic SELECT, report fill, owner POST or human label.
+
+The nine-file private publication archive and screenshot manifest are recorded in the release receipt, separately from twelve frozen local evidence files. Both use restricted modes and October 31 review rather than automatic deletion. The original unexplained 503 and all missing live conditions remain open. Next is a fresh, smaller dynamic-versus-disabled experiment entirely before rule expiry; no expired configuration is replayed.

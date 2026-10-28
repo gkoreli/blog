@@ -73,7 +73,7 @@
     "Activation, natural expiry, configuration cleanup and persistence/retention are separate recorded operations."
   ],
   "managedSignatureComparison": "Still blocked on the separate request-level signed-agent oracle and accepted controlled identity; this generic bit does not satisfy either gate.",
-  "nextBoundedAction": "Verify source activation and unchanged off-mode behavior; then independently isolate disabled-before-expiry and execute genuine positive/relay controls only with accepted prerequisites. Human trials remain deferred.",
+  "nextBoundedAction": "Prepare a fresh, smaller controlled run isolating dynamic replacement versus disabled-before-expiry; execute genuine provider-positive/relay controls only with accepted prerequisites. Human trials remain deferred.",
   "humanTrials": "Deferred by owner.",
   "localAcceptance": {
     "receipt": "native-capture-local.json",
@@ -95,7 +95,8 @@
     "controller": "native-capture-controller-v3",
     "research": "62-closed-native-capture-failures.md",
     "localReceipt": "native-capture-failures.json",
-    "activation": "pending",
-    "historical503": "unestablished"
+    "activation": "accepted; off-mode only; new reasons not observed in production",
+    "historical503": "unestablished",
+    "releaseReceipt": "native-capture-failure-release.json"
   }
 }

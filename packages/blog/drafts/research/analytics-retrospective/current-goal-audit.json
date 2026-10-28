@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-28T17:09:48.605529+00:00",
+  "checkedAt": "2026-10-28T17:15:12.317304+00:00",
   "sourceBaseline": "913b496",
   "goalAchieved": false,
   "previousTurn": "progress",
@@ -45,7 +45,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Verify source activation and unchanged off-mode behavior; then independently isolate disabled-before-expiry and execute genuine positive/relay controls only with accepted prerequisites. Human trials remain deferred.",
+  "nextBoundedAction": "Prepare a fresh, smaller controlled run isolating dynamic replacement versus disabled-before-expiry; execute genuine provider-positive/relay controls only with accepted prerequisites. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1280,
     "prompts": 31,
@@ -57,10 +57,10 @@
   "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": false,
+  "liveAccountInspection": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
-    "runtimeDelivery": "Research 61: 23 live controls; 19 exact capture/log pairs; candidate remains untrusted. Research 62: closed unavailable diagnostics accepted locally, deployment acceptance pending.",
+    "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
     "trustedAdoption": false,
     "rulePublished": true,
     "receipt": "native-expression-validation.json",
@@ -79,10 +79,11 @@
       "composedWorkerConditions": 20,
       "receipt": "native-capture-failures.json",
       "historical503": "unestablished; offline replay preserves all eleven compared totals",
-      "productionActivation": "pending"
+      "productionActivation": "accepted; off-mode verified; no new production failure cause observed",
+      "releaseReceipt": "native-capture-failure-release.json"
     }
   },
-  "productionOwnSiteGets": 0,
+  "productionOwnSiteGets": 1,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0
 }
