@@ -1,0 +1,115 @@
+{
+  "acceptedAt": "2026-10-28T00:10:08.529120+00:00",
+  "sourceCommit": "1804550190315dd4bc19c21f8e108b34383d8b4a",
+  "build": {
+    "id": "f76dc246-2697-4066-90a4-de2779686bba",
+    "nativeStatus": "Ready",
+    "durationSeconds": 46,
+    "nativeRowAssociatesSourceVersionAnd100Percent": true
+  },
+  "activation": {
+    "createdOn": "2026-10-28T00:07:45.324478Z",
+    "versions": [
+      {
+        "version_id": "af6bce34-e6a0-4bd2-bdc0-b7c6bdaf1a4f",
+        "percentage": 100
+      }
+    ]
+  },
+  "versions": {
+    "collection": "2026-10-28.1",
+    "verifier": "2026-10-28.1",
+    "classifier": "2026-10-27.5",
+    "signatureEvidence": "2026-10-27.5",
+    "receipt": "2026-10-27.3",
+    "reportCache": "2026-10-27.9"
+  },
+  "control": {
+    "startedAt": "2026-10-28T00:08:53.168740+00:00",
+    "finishedAt": "2026-10-28T00:08:53.481951+00:00",
+    "curlExit": 0,
+    "httpStatus": "200",
+    "controls": 1,
+    "kind": "ordinary unsigned ASCII request",
+    "path": "/privacy",
+    "referralExcludedByPolicy": true,
+    "malformedProductionRequest": false,
+    "purpose": "new-profile/storage integration only",
+    "humanOperated": false,
+    "vendorAuthenticated": false
+  },
+  "persistence": {
+    "rowsRead": 1,
+    "rowsWritten": 0,
+    "changedDb": false,
+    "rows": 1,
+    "exactPrivateReferenceMatched": true,
+    "stored": {
+      "collectionVersion": "2026-10-28.1",
+      "classifierVersion": "2026-10-27.5",
+      "readerKind": "unresolved",
+      "evidenceVersion": "2026-10-27.5",
+      "verifierProfile": "2026-10-28.1",
+      "outcome": "absent",
+      "reason": null,
+      "reasons": "[]",
+      "coverageAbsent": 1,
+      "authenticatedSignerAbsent": 1,
+      "optionalCaptureAbsent": 1,
+      "categoryStatus": "empty",
+      "categoryValue": null,
+      "nativeVerifiedBot": null,
+      "nativeSignedAgent": null,
+      "referralControl": 1
+    }
+  },
+  "receiptComparison": {
+    "pairs": 1,
+    "closedFieldsCompared": 10,
+    "differences": 0,
+    "explicitTailTruncation": false,
+    "workerVersionMatchesActive": true,
+    "asciiFixtureUserAgentCaptureMatches": true
+  },
+  "directProductionSelects": 1,
+  "directSelectRowsRead": 1,
+  "directSelectRowsWritten": 0,
+  "reviewedRowsReadThreshold": 100,
+  "thresholdMeaning": "post-execution acceptance check, not database-enforced cap",
+  "queryMode": "Wrangler --command with one SQL argv from a private file",
+  "nativeExactSql": "signature-ascii-storage-reference.sql",
+  "nativeAcceptance": "request-context-local.json",
+  "optionalBindings": {
+    "OWNER_MARK_GRANT": false,
+    "ANALYTICS_DIAGNOSTICS": false,
+    "ANALYTICS_CALIBRATION": false
+  },
+  "article": {
+    "sourceChanged": false,
+    "exactServedBuildBytes": true,
+    "sha256": "56a1cfa125e7dcbab9db4853c0050d8734654794ec18cb5c461d639d7e7bc394",
+    "bodyWords": 1251,
+    "shapingPrompts": 31,
+    "followUpLinkedFromResearch36": true
+  },
+  "ownedTailStopped": true,
+  "previewStarted": false,
+  "viewportOverrideUsed": false,
+  "newPublicReportFill": false,
+  "nativeRulesChanged": false,
+  "permissionExpanded": false,
+  "limits": [
+    "Production control checks ordinary unsigned profile/storage integration only.",
+    "Malformed fields/targets are accepted as repaired in local constructed-request experiments, not demonstrated production ingress.",
+    "No human/vendor label, native cryptographic agreement or population accuracy claim.",
+    "ASCII fixture capture does not close earlier Latin-1/raw-header fidelity limits.",
+    "Diagnostic SELECT cost excludes collection writes and HTTP/dashboard/CLI activity.",
+    "Library comparison covers selected inputs, not complete conformance or all current upstream releases."
+  ],
+  "finalDocumentationChecks": {
+    "relativeFileLinks": 226,
+    "missing": 0,
+    "codeFences": "balanced",
+    "gitDiffCheck": "pass"
+  }
+}
