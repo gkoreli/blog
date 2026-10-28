@@ -26,3 +26,7 @@ The [report](traction-2026-10-27.md), [derived observations](traction-summary.js
 - **Shared-skill change needed:** completed for destination rules, independent public checks and quote/reply classification. The earlier browser-automated HN submission did not follow HN's current rules; no new HN write was performed in this investigation.
 
 The requested investigation is complete. Owner-operated moderator contact and a future controlled X experiment are proposed actions, not completed or scheduled work. No new post, deletion, repost, comment, message or vote solicitation was sent.
+
+## Proposed next actions
+
+[Three concrete actions](next-actions.md) replace the earlier broad adoption suggestions with two checked conversation URLs, exact short reply drafts and a specific HN clarification route. All remain unsent. They are new proposals, separate from completed publication and measurement work.
