@@ -1,5 +1,206 @@
 {
-  "status": "pending",
-  "recordedAt": "2026-10-28T00:49:38.362593+00:00",
-  "limits": "Source, activation and measured production acceptance remain separate."
+  "acceptedAt": "2026-10-28T00:58:20.016320+00:00",
+  "sourceCommit": "610841ac517d8f5ddf9fb3fe098558f5c0d61801",
+  "sourcePushedTo": "main",
+  "runtimeDeployment": {
+    "versionId": "53ac1a16-305f-4c5d-8b09-187c7c6d5d84",
+    "nativeStatus": "Ready",
+    "durationSeconds": 44,
+    "observedPercentage": 100,
+    "nativeRowAssociatesSourceVersionAnd100Percent": true
+  },
+  "scopeNoteFollowUp": {
+    "sourceCommit": "edebbcf80ea00b44077acc757e245eae7077fd4f",
+    "change": "UI copy and source-check record only; API/collector/verifier/report profiles unchanged.",
+    "nativeStatus": "Ready",
+    "durationSeconds": 44,
+    "nativeRowAssociatesSourceVersionAnd100Percent": true,
+    "activation": {
+      "id": "e426481c-9c02-4303-89c6-c6a57997dddc",
+      "source": "wrangler",
+      "strategy": "percentage",
+      "versions": [
+        {
+          "version_id": "7a172b39-adbe-4283-90c2-58b2b68efc95",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-10-28T00:56:15.231052Z"
+    },
+    "renderedDenominatorNoteVerified": true
+  },
+  "versions": {
+    "collection": "2026-10-28.2",
+    "verifier": "2026-10-28.2",
+    "classifier": "2026-10-27.5",
+    "verificationEnvelope": "2026-10-27.5",
+    "coverageWithSelection": "2026-10-28.1",
+    "receiptWithSelection": "2026-10-28.1",
+    "receiptWithoutSelection": "2026-10-27.3",
+    "reportCache": "2026-10-28.1"
+  },
+  "control": {
+    "startedAt": "2026-10-28T00:52:57.514102+00:00",
+    "finishedAt": "2026-10-28T00:52:57.896105+00:00",
+    "httpStatus": 200,
+    "controls": 1,
+    "kind": "ordinary unsigned excluded integration",
+    "privacySelectionDisclosureServed": true,
+    "humanOperated": false,
+    "vendorAuthenticated": false
+  },
+  "persistence": {
+    "rows": 1,
+    "rowsRead": 1,
+    "rowsWritten": 0,
+    "changedDb": false,
+    "stored": {
+      "collectionVersion": "2026-10-28.2",
+      "classifierVersion": "2026-10-27.5",
+      "readerKind": "unresolved",
+      "evidenceVersion": "2026-10-27.5",
+      "verifierProfile": "2026-10-28.2",
+      "outcome": "absent",
+      "reason": null,
+      "reasons": "[]",
+      "coverageAbsent": 1,
+      "authenticatedSignerAbsent": 1,
+      "optionalCaptureAbsent": 1,
+      "categoryStatus": "empty",
+      "categoryValue": null,
+      "nativeVerifiedBot": null,
+      "nativeSignedAgent": null,
+      "referralControl": 1
+    }
+  },
+  "receiptComparison": {
+    "pairs": 1,
+    "closedFields": 13,
+    "differences": 0,
+    "activeVersionMatches": true,
+    "truncated": false,
+    "selectionAbsentForUnsigned": true
+  },
+  "directProductionSelects": 1,
+  "directSelectRowsRead": 1,
+  "directSelectRowsWritten": 0,
+  "queryMode": "Wrangler --command; prepared SQL loaded from private file into one argv",
+  "reviewedRowsReadThreshold": 100,
+  "thresholdMeaning": "Post-execution acceptance, not a database-enforced cap.",
+  "filteredReport": {
+    "checkedAt": "2026-10-28T00:53:35.787414+00:00",
+    "scope": "7d all traffic /privacy only",
+    "responses": [
+      {
+        "status": 200,
+        "headers": {
+          "X-Stats-Cache": "MISS",
+          "Expires": "Wed, 28 Oct 2026 01:53:35 GMT",
+          "Cache-Control": "public, max-age=60"
+        },
+        "sha256": "4661e1841b3139d61b7fa7332d15ec8c41b3c2f1409573997fb571471e73918e",
+        "verification": {
+          "selectionRecordedViews": 0,
+          "selectionNotRecordedVerifiedViews": 0,
+          "selectionUnrecognizedVerifiedViews": 0,
+          "multipleTaggedCandidateViews": 0,
+          "unassessedCandidateViews": 0,
+          "localVerifiedViews": 0
+        },
+        "views": 12,
+        "calculatedAt": "2026-10-28T00:53:35.455Z"
+      },
+      {
+        "status": 200,
+        "headers": {
+          "X-Stats-Cache": "HIT",
+          "Expires": "Wed, 28 Oct 2026 01:53:35 GMT",
+          "Cache-Control": "public, max-age=60"
+        },
+        "sha256": "4661e1841b3139d61b7fa7332d15ec8c41b3c2f1409573997fb571471e73918e",
+        "verification": {
+          "selectionRecordedViews": 0,
+          "selectionNotRecordedVerifiedViews": 0,
+          "selectionUnrecognizedVerifiedViews": 0,
+          "multipleTaggedCandidateViews": 0,
+          "unassessedCandidateViews": 0,
+          "localVerifiedViews": 0
+        },
+        "views": 12,
+        "calculatedAt": "2026-10-28T00:53:35.455Z"
+      }
+    ],
+    "sameColo": true,
+    "exactBodyReuse": true,
+    "rowCost": "Not available through this HTTP surface; separate from the one-read direct SELECT.",
+    "populationAcceptance": false
+  },
+  "filteredHistory": {
+    "outcomeOnlyVerifiedViews": 1,
+    "detailedLocalVerifiedViews": 0,
+    "interpretation": "One outcome-only Ahrefs history row is not detailed local verification; zero new assessments do not mean no signed history."
+  },
+  "article": {
+    "checkedAt": "2026-10-28T00:55:39.852211+00:00",
+    "httpStatus": 200,
+    "exactServedBuildBytes": true,
+    "sha256": "8197645ce2d0829e678e8f4e5f40d5b7ea68053b971d6b5a8ac0ef5fbf9d5d32",
+    "earlierDefaultPythonUserAgentStatus": 403,
+    "earlierResponseBodyCaptured": false,
+    "earlier403Cause": "unestablished; not attributed to a particular layer or policy",
+    "acceptedClientUserAgent": "gkoreli-publication-verification/1.0",
+    "bodyWords": 1257,
+    "shapingPrompts": 31,
+    "renderedSelectionLearningAndLink": true
+  },
+  "ui": {
+    "newRowsRendered": 5,
+    "publicFilteredScope": "7d all traffic /privacy",
+    "denominatorNoteVisible": true,
+    "screenshotSha256": "e64736b234ed6d5d2cf2f0b12c25b58e10e70f7be2aa00ad41e2e6d13522c45c",
+    "privateRenderedCaptureSha256": "23a6585cd0e8835e6f604fb763da756e862f05c8eac8f7466f0d3a1841a0d609"
+  },
+  "checks": {
+    "analyticsPass": 202,
+    "sitePass": 106,
+    "workspaceTypes": "pass",
+    "postValidation": "pass",
+    "isolatedBuildPosts": 32,
+    "nativeSignedControls": 9,
+    "nativeExactReceiptPairs": 9,
+    "referenceApiCalls": 24
+  },
+  "optionalBindings": {
+    "OWNER_MARK_GRANT": false,
+    "ANALYTICS_DIAGNOSTICS": false,
+    "ANALYTICS_CALIBRATION": false
+  },
+  "ownedFilteredTailStopped": true,
+  "tailStopMethod": "Normal interrupt did not terminate the handle; SIGTERM targeted only processes matching the unique owned filter, and the handle returned terminal.",
+  "previewStarted": false,
+  "viewportOverrideUsed": false,
+  "nativeRulesChanged": false,
+  "permissionExpanded": false,
+  "humanTrials": "deferred by owner",
+  "privateArchive": {
+    "path": "~/.local/share/gkoreli/analytics-evidence/2026-10-28-signature-selection/",
+    "directoryMode": "0700",
+    "filesMode": "0600",
+    "reviewTarget": "2026-10-31",
+    "limit": "Investigation-copy review, not provider-wide erasure proof."
+  },
+  "limits": [
+    "Actual production control is unsigned profile/storage integration, not selection-bearing organic persistence.",
+    "Positive multi-signature and report-validator results are independently signed synthetic native-local controls.",
+    "First-valid selection does not enumerate all valid signers or authenticate purpose/human intent.",
+    "One direct-read cost excludes collection writes and HTTP/dashboard/CLI work; the filtered HTTP report does not expose metered row cost.",
+    "Same-key cache reuse is observed for the selected scope/colo, not global caching or a cost guarantee.",
+    "Native cryptographic agreement, full conformance, DNS/egress, replay uniqueness and human error rates remain open."
+  ],
+  "finalDocumentationChecks": {
+    "relativeLinks": 297,
+    "missing": 0,
+    "codeFences": "balanced",
+    "gitDiffCheck": "pass"
+  }
 }

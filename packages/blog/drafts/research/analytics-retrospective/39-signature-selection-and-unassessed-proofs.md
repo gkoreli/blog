@@ -54,4 +54,15 @@ On that same native fixture, the old and new complete report each execute one st
 
 The system still does not enumerate all valid signers or authenticate an unsigned role/human trigger. Remaining candidates may succeed, fail or be unavailable. A future complete assessment needs its own bounded resolver/deadline policy; a timeout must not masquerade as exhaustive verification. No genuine multi-signature production population, provider cryptographic agreement, DNS/egress safety, replay uniqueness or human error rate is established here.
 
-Next bounded acceptance is the checked release, one ordinary excluded new-profile integration control and the filtered public assessment UI/cache. An actual signed current-profile event remains a separate prospective gate; do not synthesize vendor identity or repeat broad history scans to replace it. Human trials stay deferred. The dedicated protocol article remains proposed, and the wider goal stays open.
+Next bounded work is an actual signed current-profile assessment, or a separately designed bounded complete-signer experiment. Do not synthesize vendor identity or repeat broad history scans to replace missing production evidence. Human trials stay deferred. The dedicated protocol article remains proposed, and the wider goal stays open.
+
+
+## Production acceptance
+
+[The release receipt](signature-selection-release.json) records source `610841a`, a Ready/100% deployment and one ordinary unsigned referral-excluded integration request. Thirteen closed receipt/storage facts match at one exact D1 read/zero diagnostic writes. The control retains unavailable coverage and no selection assessment, as expected; it does not prove signed production persistence. Optional owner-grant, diagnostic and calibration bindings remain absent in that version. The filtered tail is stopped.
+
+The `/privacy` seven-day report exposes all five new fields and returns identical MISS/HIT bodies with unchanged calculation time and expiry. Its twelve included events contain one outcome-only Ahrefs signing record and zero detailed locally verified records. Therefore zero new assessments do not mean no signed history. This live observation prompted a copy-only denominator clarification in source `edebbcf`, separately accepted Ready/100% and visibly rendered. No whole-history requery is performed; filtered HTTP report metering is unavailable and is not folded into the one-read direct SELECT claim.
+
+The served article exactly matches the checked Markdown build and visibly links this learning. A preliminary request with the default Python client received HTTP 403; the established truthful publication-verification client returned matching HTTP 200 content. The first response body was not saved, so its cause is unestablished. Neither status is silently treated as a successful page count or attributed to a provider rule without evidence.
+
+Private sources, check logs and release captures are preserved outside Git at `~/.local/share/gkoreli/analytics-evidence/2026-10-28-signature-selection/`, with mode 0700/0600 and a hash manifest. October 31 is an investigation-copy review target, not a provider-wide erasure guarantee. No human trial, rule change, new permission, optional raw activation or owned preview is introduced.
