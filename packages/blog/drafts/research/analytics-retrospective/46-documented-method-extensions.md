@@ -50,3 +50,5 @@ Analytics 226/site 106 tests, workspace type checks, content validation, helper 
 Private evidence is preserved in the restricted `2026-10-28-documented-methods` archive with a hash manifest and three references to the prior public-source captures. Raw responses and fixture records stay outside Git. October 31 is a review date, not an automatic erasure claim.
 
 Next: improve the separate Google directory/display visibility and test genuine signed traffic when available. Do not manufacture a vendor proof or reopen human trials. Keep replay, native agreement, human/device accuracy and privacy/retention decisions open.
+
+[Research 47](47-google-publisher-and-display-history.md) completes the separate Google publisher/display mapping and versions historical receipt projections. This release remains the pre-extension record.

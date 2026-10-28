@@ -1,0 +1,33 @@
+import assert from 'node:assert/strict';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { createRequire } from 'node:module';
+import { resolve, dirname } from 'node:path';
+import { pathToFileURL } from 'node:url';
+const [output, privatePlan] = process.argv.slice(2); assert.ok(output && privatePlan);
+const sql = readFileSync('packages/blog/drafts/research/analytics-retrospective/recent-methods.sql', 'utf8');
+const start = '2026-10-28 02:51:51', end = new Date().toISOString().slice(0, 19).replace('T', ' ');
+assert.ok(Date.parse(end + 'Z') > Date.parse(start + 'Z') && Date.parse(end + 'Z') - Date.parse(start + 'Z') < 8 * 3600000);
+const req = createRequire(resolve('package.json'));
+const { Miniflare } = await import(pathToFileURL(req.resolve('miniflare', { paths: [dirname(req.resolve('wrangler/package.json'))] })));
+const mf = new Miniflare({ modules: true, script: 'export default{fetch(){return new Response("SQL control")}}', compatibilityDate: '2026-03-06', d1Databases: { DB: 'recent-method-controls' } });
+try {
+  const db = await mf.getD1Database('DB');
+  const schema = readFileSync('packages/analytics/schema.sql', 'utf8').replace(/^\s*--.*$/gm, '');
+  await db.batch(schema.split(';').map(s => s.trim()).filter(Boolean).map(s => db.prepare(s)));
+  const insert = db.prepare(`INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner,observed_at,collection_version,signature_status,signature_agent,signature_evidence,vendor_ip_evidence,agent_name) VALUES('/local','00000000000000000000000000000000','bot','desktop',?,?,?,?,?,?,?,?)`);
+  const evidence = JSON.stringify({ source: 'local-webbotauth', verifierProfile: '2026-10-28.6', native: { verifiedBot: false } });
+  for (const at of ['2026-10-28 02:51:50', start, end]) await insert.bind(0, at, '2026-10-28.7', 'verified', 'https://agent.bot.goog', evidence, null, 'Google-Agent').run();
+  await insert.bind(0, start, '2026-10-28.7', null, null, null, JSON.stringify({ checks: [{ source: 'duckduckbot', outcome: 'listed' }] }), 'DuckDuckBot').run();
+  await insert.bind(1, start, '2026-10-28.8', null, null, null, null, null).run();
+  const result = await db.prepare(sql).bind(start, end).all();
+  const row = result.results[0]; assert.equal(row.storedRows, 3); assert.equal(row.collection7Rows, 2); assert.equal(row.collection8Rows, 1);
+  assert.equal(row.googleOriginVerifiedRows, 1); assert.equal(row.verifier6DetailedVerifiedRows, 1); assert.equal(row.duckDuckBotListedRows, 1); assert.equal(row.ownerFlagRows, 1); assert.equal(row.nativeBooleanAvailableRows, 1);
+  const plan = (await db.prepare('EXPLAIN QUERY PLAN ' + sql).bind(start, end).all()).results;
+  assert.ok(plan.some(r => r.detail.includes('idx_page_observations_observed_at')));
+  const command = sql.replace('?', "'" + start + "'").replace('?', "'" + end + "'");
+  const commitment = createHash('sha256').update(command).digest('hex');
+  writeFileSync(privatePlan, JSON.stringify({ sql: command, sqlSha256: commitment, start, endExclusive: end, postExecutionReadThreshold: 5000, expectedFields: Object.keys(row), method: 'One Wrangler remote --command SELECT; all stored rows in a fixed recent interval, irrespective of public inclusion. Threshold is reviewed, not enforced by D1.' }, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
+  writeFileSync(output, JSON.stringify({ checkedAt: new Date().toISOString(), start, endExclusive: end, sqlSha256: commitment, nativeRows: row, fixtureRows: 5, nativeRowsRead: result.meta.rows_read, nativeRowsWritten: result.meta.rows_written, timeIndexUsed: true, productionStatements: 0, postExecutionReadThreshold: 5000, limits: ['Stored outcomes are not packet replays, human labels or exact provider-receipt joins.', 'The scope includes owner/referral-excluded rows; ownerFlagRows omits later registry exclusion.', 'A zero in this short interval does not establish historical absence.'] }, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
+  console.log(JSON.stringify({ nativeRowsRead: result.meta.rows_read, nativeRowsWritten: result.meta.rows_written, timeIndexUsed: true, start, end }));
+} finally { await mf.dispose(); }

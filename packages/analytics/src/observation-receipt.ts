@@ -1,7 +1,7 @@
 import type { PageObservation } from './db.js';
 import type { ClassificationEvidence } from './classification-evidence.js';
 import type { VerificationEvidence } from './signature-evidence.js';
-import { PUBLIC_SIGNERS, type PublicSignerName } from './signers.js';
+import { publicSignerName, SIGNER_DISPLAY_PROFILE, type PublicSignerName } from './signers.js';
 
 type ReceiptInput = Pick<PageObservation, 'readerKind' | 'signatureStatus' | 'signatureAgent'> & {
   classificationEvidence: ClassificationEvidence;
@@ -23,11 +23,11 @@ export function storedObservationReceipt(observation: ReceiptInput) {
   const selection = coverage?.version === '2026-10-28.1' ? coverage.selection : null;
   const signer: PublicSignerName | 'none' = evidence.source === 'local-webbotauth'
     && evidence.localOutcome === 'verified' && observation.signatureStatus === 'verified'
-    ? PUBLIC_SIGNERS.find(signer => signer.origin === observation.signatureAgent)?.name ?? 'Other' : 'none';
+    ? publicSignerName(observation.signatureAgent) : 'none';
   return {
     // One retained export omitted nulls/empty arrays from the same v1 operations. Scalars
     // make those states queryable without reconstructing missing fields.
-    version: selection === null ? '2026-10-27.3' as const : '2026-10-28.1' as const,
+    version: '2026-10-28.2' as const,
     classifierProfile: classification.classifierProfile,
     readerKind: observation.readerKind,
     directoryPublication: { ...evidence.directoryPublication },
@@ -47,6 +47,7 @@ export function storedObservationReceipt(observation: ReceiptInput) {
       reasonCount: evidence.localReasons.length,
       reasonNames: [...evidence.localReasons].sort().join(',') || 'none',
       signer,
+      signerDisplayProfile: SIGNER_DISPLAY_PROFILE,
       documentedVendorStatus: evidence.vendor.status,
       userAgentCovered: booleanState(evidence.vendor.userAgentCovered),
       ...(selection === null ? {} : { selection: { ...selection } }),

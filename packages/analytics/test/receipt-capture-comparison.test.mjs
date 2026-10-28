@@ -61,6 +61,20 @@ test('v3 publication facts and separate private storage references are compared 
   assert.equal(compareReceiptCopies(value.live,value.retained).matchedPairs,0);
 });
 
+test('display-version receipts require and compare the exact signer catalogue stamp', () => {
+  const value=fixture({version:'2026-10-27.2'});
+  for(const fields of [value.live[0].logs[0].message[1],value.retained[0].source]) {
+    fields.receipt.version='2026-10-28.2';
+    fields.receipt.directoryPublication={profile:'2026-10-28.1',method:'reviewed-first-party-directory',reviewedOn:'2026-10-28',configuredDeclarationCount:0,unmappedDeclarationCount:0,status:'no-declaration'};
+    fields.receipt.signature.signerDisplayProfile='2026-10-28.1';
+  }
+  assert.equal(compareReceiptCopies(value.live,value.retained).identicalPairs,1);
+  delete value.retained[0].source.receipt.signature.signerDisplayProfile;
+  assert.equal(compareReceiptCopies(value.live,value.retained).missingFields['signature.signerDisplayProfile'],1);
+  value.live[0].logs[0].message[1].receipt.signature.signerDisplayProfile='future';
+  assert.equal(compareReceiptCopies(value.live,value.retained).matchedPairs,0);
+});
+
 test('v4 selection scalars compare exactly while malformed live assessments remain unaccepted', () => {
   const value=fixture({version:'2026-10-27.2'});
   for(const fields of [value.live[0].logs[0].message[1],value.retained[0].source]) {

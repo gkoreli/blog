@@ -1,5 +1,5 @@
 /** Shared closed display vocabulary; no verifier or discovery dependency. */
-export const DIRECTORY_PUBLICATION_PROFILE = '2026-10-27.1';
+export const DIRECTORY_PUBLICATION_PROFILE = '2026-10-28.1';
 export const DIRECTORY_PUBLICATION_STATUSES = [
   'no-declaration', 'not-configured', 'not-verified', 'matching-publisher',
   'different-publisher', 'partial-mapping', 'conflicting-publishers', 'test-injected',
@@ -9,7 +9,7 @@ export type DirectoryPublicationBasis = DirectoryPublicationStatus | 'not-record
 export interface DirectoryPublicationEvidence {
   profile: typeof DIRECTORY_PUBLICATION_PROFILE;
   method: 'reviewed-first-party-directory';
-  reviewedOn: '2026-10-27';
+  reviewedOn: '2026-10-28';
   configuredDeclarationCount: number;
   unmappedDeclarationCount: number;
   status: DirectoryPublicationStatus;

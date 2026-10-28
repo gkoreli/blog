@@ -23,7 +23,7 @@ test('first-valid selection records its scope without claiming all candidates or
     const evidence = verificationEvidence(request, result, false, ['ExaSearchBot']);
     const receipt = storedObservationReceipt({ readerKind: 'ai-search', signatureStatus: 'verified', signatureAgent: result.agent,
       classificationEvidence: { version: '2026-10-27.2', classifierProfile: '2026-10-27.5', declarations: analyzeTraffic('ExaSearchBot/1.0').declarations, categoryAgreement: 'single-match' }, signatureEvidence: evidence });
-    assert.equal(receipt.version, '2026-10-28.1'); assert.deepEqual(receipt.signature.selection, result.evidence.selection);
+    assert.equal(receipt.version, '2026-10-28.2'); assert.deepEqual(receipt.signature.selection, result.evidence.selection);
     const closed = JSON.stringify(receipt); for (const secret of [trial.selectedOrigin, 'one.fixture.example', trial.headers.Signature, trial.headers['Signature-Input']]) assert.equal(closed.includes(secret), false);
   }
 });

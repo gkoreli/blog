@@ -25,10 +25,35 @@ test('published directory provenance is separate from documented signing promise
   const before = JSON.stringify(verified);
   for (const [names,result,injected,status] of cases) assert.equal(directoryPublicationEvidence(names,result,injected).status,status);
   assert.equal(JSON.stringify(verified),before);
-  for (const name of ['AhrefsBot','AhrefsSiteAudit','ExaSearchBot','ExaUser']) {
-    const origin=name.startsWith('Ahrefs')?'https://ahrefs.com':'https://crawler.exa.ai';
+  for (const name of ['AhrefsBot','AhrefsSiteAudit','ExaSearchBot','ExaUser','Google-Agent']) {
+    const origin=name.startsWith('Ahrefs')?'https://ahrefs.com':name==='Google-Agent'?'https://agent.bot.goog':'https://crawler.exa.ai';
     assert.equal(directoryPublicationEvidence([name],{status:'verified',agent:origin}).status,'matching-publisher');
   }
+});
+
+test('Google publisher review stays separate from client declarations, injected verdicts and related products', () => {
+  const result={status:'verified',agent:'https://agent.bot.goog'};
+  const evidence=directoryPublicationEvidence(['Google-Agent'],result);
+  assert.equal(evidence.profile,'2026-10-28.1');assert.equal(evidence.reviewedOn,'2026-10-28');
+  assert.equal(evidence.status,'matching-publisher');assert.equal(evidence.configuredDeclarationCount,1);
+  assert.equal(directoryPublicationEvidence(['Google-Agent'],{status:'absent'}).status,'not-verified');
+  assert.equal(directoryPublicationEvidence(['Google-GeminiNotebook'],result).status,'not-configured');
+  assert.equal(directoryPublicationEvidence(['Google-Agent','Google-GeminiNotebook'],result).status,'partial-mapping');
+  assert.equal(directoryPublicationEvidence(['Google-Agent','ExaUser'],result).status,'conflicting-publishers');
+  assert.equal(directoryPublicationEvidence(['Google-Agent'],result,true).status,'test-injected');
+  assert.equal(directoryPublicationEvidence(['Google-Agent'],{status:'verified',agent:'https://agent.bot.goog.evil.example'}).status,'different-publisher');
+});
+
+test('legacy directory profile/date pairs remain readable, but hybrid profiles cannot inherit review', () => {
+  const {sqlite,add}=fixture();
+  const current=verificationEvidence(new Request('https://publication.example'),verified,false,['AhrefsBot']);
+  const legacy=structuredClone(current);legacy.directoryPublication.profile='2026-10-27.1';legacy.directoryPublication.reviewedOn='2026-10-27';
+  add(legacy);add(current);
+  for(const [profile,date]of [['2026-10-27.1','2026-10-28'],['2026-10-28.1','2026-10-27'],['future','2026-10-28']]){
+    const hybrid=structuredClone(current);hybrid.directoryPublication.profile=profile;hybrid.directoryPublication.reviewedOn=date;add(hybrid);
+  }
+  assert.deepEqual(sqlite.prepare(`SELECT ${directoryPublicationBasisSql()} basis FROM page_observations`).all().map(r=>r.basis),
+    ['matching-publisher','matching-publisher','unrecognized-record','unrecognized-record','unrecognized-record']);
 });
 
 test('duplicates, partial mappings, competing publishers and injected verdicts retain uncertainty', () => {

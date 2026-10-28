@@ -26,7 +26,7 @@ test('versioned selection receipts preserve the old projection and compare the n
   row.collectionVersion='2026-10-28.2';record.source.collectionVersion=row.collectionVersion;e.verifierProfile='2026-10-28.2';
   e.coverage.version='2026-10-28.1';e.coverage.selection={policy:'first-valid-in-input-order',matchedCandidates:2,taggedCandidates:2,attemptedCandidates:1,unassessedCandidates:1};
   row.signatureEvidence=JSON.stringify(e);resnapshot(row,record);
-  assert.equal(record.source.receipt.version,'2026-10-28.1');
+  assert.equal(record.source.receipt.version,'2026-10-28.2');
   assert.equal(reconcileReceiptStorage(f.candidates,f.receipts).identicalProjectionPairs,2);
   record.source.receipt.signature.selection.unassessedCandidates=0;
   const changed=reconcileReceiptStorage(f.candidates,f.receipts);
@@ -82,4 +82,23 @@ test('matching copied facts do not turn contradictory stored status into a verif
   const injectedResult=reconcileReceiptStorage(injected.candidates,injected.receipts);
   assert.equal(injectedResult.identicalProjectionPairs,2);assert.equal(injectedResult.testInjectedPairs,1);
   assert.equal(injectedResult.conflictingStoredStatusPairs,0);assert.equal(injectedResult.storedLocalVerifiedPairs,1);
+});
+
+test('new Google display keeps legacy receipt comparisons exact and rejects changed catalogue stamps',()=>{
+  for(const version of ['2026-10-27.3','2026-10-28.1','2026-10-28.2']) {
+    const f=fixture(),row=f.candidates[0],record=f.receipts[0],e=JSON.parse(row.signatureEvidence);
+    row.collectionVersion='2026-10-28.8';record.source.collectionVersion=row.collectionVersion;
+    row.signatureAgent='https://agent.bot.goog';
+    if(version==='2026-10-28.1') {
+      e.coverage.version='2026-10-28.1';e.coverage.selection={policy:'first-valid-in-input-order',matchedCandidates:1,taggedCandidates:1,attemptedCandidates:1,unassessedCandidates:0};
+    }
+    row.signatureEvidence=JSON.stringify(e);resnapshot(row,record);
+    if(version!=='2026-10-28.2') {
+      record.source.receipt.version=version;record.source.receipt.signature.signer='Other';delete record.source.receipt.signature.signerDisplayProfile;
+    }
+    assert.equal(reconcileReceiptStorage(f.candidates,f.receipts).identicalProjectionPairs,2);
+    if(version==='2026-10-28.2')record.source.receipt.signature.signerDisplayProfile='future';
+    else record.source.receipt.signature.signer='Google';
+    assert.equal(reconcileReceiptStorage(f.candidates,f.receipts).identicalProjectionPairs,1);
+  }
 });

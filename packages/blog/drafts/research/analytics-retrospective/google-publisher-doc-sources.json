@@ -1,0 +1,21 @@
+{
+  "capturedAt": "2026-10-28T03:01:41.242166+00:00",
+  "sources": [
+    {
+      "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/web-bot-auth",
+      "status": 200,
+      "sha256": "421effd0a150564fcff0ea4f06241a940351b27038ea53e99459691298adffc6",
+      "bytes": 70698
+    },
+    {
+      "url": "https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/",
+      "status": 200,
+      "sha256": "a2d94f74f2902ac1ad0c5616af4a281f0f48032d67a3a297566be7e305e6d1f3",
+      "bytes": 156617
+    }
+  ],
+  "limits": [
+    "Documentation snapshots describe advertised profiles, not a measured current Cloudflare managed-verifier verdict.",
+    "The generated-key local workerd controls are our application implementation, not Cloudflare managed bot verification."
+  ]
+}

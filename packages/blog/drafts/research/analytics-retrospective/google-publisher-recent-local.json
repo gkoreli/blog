@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-28T02:59:52.766Z",
+  "start": "2026-10-28 02:51:51",
+  "endExclusive": "2026-10-28 02:59:52",
+  "sqlSha256": "2aac83bf7033030765d53baebca85d59063c8c44ab99f7276b0c0a80bcda4af6",
+  "nativeRows": {
+    "storedRows": 3,
+    "collection7Rows": 2,
+    "collection8Rows": 1,
+    "ownerFlagRows": 1,
+    "storedVerifiedRows": 1,
+    "googleOriginVerifiedRows": 1,
+    "exaOriginVerifiedRows": 0,
+    "ahrefsOriginVerifiedRows": 0,
+    "verifier6DetailedVerifiedRows": 1,
+    "singleGoogleAgentDeclarationRows": 1,
+    "singleDuckDuckBotDeclarationRows": 1,
+    "nativeBooleanAvailableRows": 1,
+    "googleAgentListedRows": 0,
+    "duckDuckBotListedRows": 1
+  },
+  "fixtureRows": 5,
+  "nativeRowsRead": 5,
+  "nativeRowsWritten": 0,
+  "timeIndexUsed": true,
+  "productionStatements": 0,
+  "postExecutionReadThreshold": 5000,
+  "limits": [
+    "Stored outcomes are not packet replays, human labels or exact provider-receipt joins.",
+    "The scope includes owner/referral-excluded rows; ownerFlagRows omits later registry exclusion.",
+    "A zero in this short interval does not establish historical absence."
+  ]
+}
