@@ -4,7 +4,7 @@
   "nativeBuildId": "3f551b9e-da61-466f-895a-b5d07fef9bd5",
   "workerVersionPrefix": "5b9ea64d",
   "nativeBuildStatus": "Ready",
-  "nativeBuildDurationSeconds": 104,
+  "nativeBuildDurationSeconds": 51,
   "trafficPercentage": 100,
   "servedArticleStatus": 200,
   "servedArticleSha256": "8c61865f516aad734172fdcaf19021286759598309c8e6564e0dfab5fb401c4d",
@@ -22,5 +22,13 @@
   ],
   "privatePublicationArchive": "2026-10-28-current-verifier-publication",
   "privatePublicationFiles": 3,
-  "privatePublicationManifestSha256": "1802d7a3588cec549b188f5db9e856562de55de2743b6edc5c5ba8302887a015"
+  "privatePublicationManifestSha256": "1802d7a3588cec549b188f5db9e856562de55de2743b6edc5c5ba8302887a015",
+  "durationCorrection": {
+    "checkedAt": "2026-10-28T04:12:37.893848+00:00",
+    "previousRecordedSeconds": 104,
+    "correctedFinalNativeSeconds": 51,
+    "basis": "The saved final native capture for source 104223d already records Ready 51s; 104 came from a transient status display. Current native history also reads 51s.",
+    "finalNativeCaptureSha256": "0174d579f65b874b412f0130774afea77a5b8dc34c27ae3fdc182c12935b8351",
+    "originalPublishedRecordPreservedInCommit": "0bb301fe464830d3385047ce1ed4dc0f55ea0113"
+  }
 }

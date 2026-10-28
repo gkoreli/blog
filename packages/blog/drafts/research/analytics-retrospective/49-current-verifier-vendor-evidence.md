@@ -61,6 +61,8 @@ Next bounded work can proceed without people: assess duplicate-proof diagnostics
 
 [Checks and archive commitments](recent-signed-checks.json) distinguish this evidence iteration from source publication and production activation.
 
-[Publication acceptance](recent-signed-release.json) records source `104223d`, native Ready in 104 seconds, 100% rollout and exact served/build Markdown equality with the new evidence link. One collection-ineligible direct Markdown GET adds no eligible observation or diagnostic SELECT. Private publication captures have a separate restricted archive and manifest; the main evidence manifest remains unchanged. This checkpoint changes no article or runtime bytes.
+[Publication acceptance](recent-signed-release.json) records source `104223d`, native Ready in 51 seconds, 100% rollout and exact served/build Markdown equality with the new evidence link. One collection-ineligible direct Markdown GET adds no eligible observation or diagnostic SELECT. Private publication captures have a separate restricted archive and manifest; the main evidence manifest remains unchanged. This checkpoint changes no article or runtime bytes.
 
 [Research 50](50-proof-reuse-and-nonce-boundaries.md) executes the bounded reuse diagnostic follow-up. The selected three requests have distinct proofs and nonces; no global replay or unique-action conclusion follows. Existing acceptance and native-verifier limits remain unchanged.
+
+Duration correction in research 50: the initial receipt used 104 seconds from a transient status display. The saved final native capture already records 51 seconds, also shown by current history. The corrected receipt preserves the original value and source commit; signature, rollout and served-byte acceptance are unchanged.
