@@ -75,7 +75,7 @@ One report repeated referral assessment across nine queries, consuming **182,388
 
 Sharing the selected population and assessment reduced the same report to **33,259 reads**, an **81.8% reduction**, with identical output. The [recovery measurements](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md) preserve the comparison.
 
-[D1 row reads](https://developers.cloudflare.com/d1/platform/pricing/#definitions) measure query work. A fast response and a correct total don’t tell you what serving that report costs. Acceptance includes local D1 and production-metered reads. Versioned reports are cached for at most an hour, with their original calculation time preserved.
+[D1 row reads](https://developers.cloudflare.com/d1/platform/pricing/#definitions) measure query work. A fast response and a correct total don’t tell you what serving that report costs. Acceptance includes [local D1 and production-metered reads](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/48-query-access-and-native-comparison-boundaries.md). Versioned reports are cached for at most an hour, with their original calculation time preserved.
 
 ## Test the stages, not counter agreement
 

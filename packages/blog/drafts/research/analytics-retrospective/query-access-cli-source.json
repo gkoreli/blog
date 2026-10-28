@@ -1,0 +1,19 @@
+{
+  "installedVersion": "4.71.0",
+  "bundleSha256": "66de0d2d36ede4d9ded6cfaecee2b1e496c2ad8f97bb2258c5dd0f14bcc48d8b",
+  "inspectedSymbol": "d1InfoCommand",
+  "implementation": "src/d1/info.ts",
+  "primarySource": "https://github.com/cloudflare/workers-sdk/blob/wrangler@4.71.0/packages/wrangler/src/d1/info.ts",
+  "facts": {
+    "databaseMetadataRead": true,
+    "additionalGraphqlMetricsRequest": true,
+    "metricsDataset": "d1AnalyticsAdaptiveGroups",
+    "metricsWindow": "yesterday/today ISO bounds on datetimeHour",
+    "directObservationSelect": false,
+    "defaultMetricAccumulatorsAreZero": true
+  },
+  "limits": [
+    "No source claim establishes the cause of the earlier live authorization failure.",
+    "An empty or unavailable metrics response must not be treated as measured zero usage."
+  ]
+}

@@ -8,6 +8,8 @@ Record code commit, deployment activation, local checks, and observed production
 
 For recovery claims, identify the stores, fields, and windows inspected and histories still inaccessible. A request rejected before persistence creates no row from that attempt; it does not prove no older provider record exists. Error counts and shared browser properties cannot identify people. Keep addresses and tokens out of public evidence and ordinary diagnostics.
 
+Separate Worker binding access from CLI/API authorization. After an authorization error, inspect existing account/database metadata before repeating a data query; metadata success alone does not establish query access. A native-tested constant SELECT can check that endpoint without scanning observations. Preserve the original error and unavailable metering; retry a bounded data query only after fresh positive evidence, without inferring a specific repaired credential, role or service cause. [Measured example](../../../../packages/blog/drafts/research/analytics-retrospective/48-query-access-and-native-comparison-boundaries.md).
+
 ## D1 reads and report caching
 
 Follow [ADR-0016.7](../../../../docs/adr/0016.7-budget-d1-reads-and-cache-public-reports.md).

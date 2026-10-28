@@ -1,0 +1,99 @@
+{
+  "status": "proposed-not-executed",
+  "question": "Does the managed Cloudflare verifier accept the documented Google-style dictionary form, and can a request-level result be paired with the exact proof?",
+  "scope": "One controlled own-site identity, not Google/Exa impersonation, and no human-detection claim.",
+  "readiness": {
+    "ready": false,
+    "acceptedRequestLevelSignedAgentSignal": false,
+    "acceptedControlledBotRegistration": false,
+    "exactReceiptReadbackCapability": true,
+    "existingReferralExclusionAccepted": true,
+    "controlledTrialProvisioned": false
+  },
+  "requiredEvidence": [
+    {
+      "gate": "native-signal",
+      "acceptance": "An actual inbound request exposes a boolean request.cf.botManagement.signedAgent, with provider provenance. A category, generic verifiedBot, injected fixture or null is insufficient."
+    },
+    {
+      "gate": "controlled-identity",
+      "acceptance": "A controlled own-domain public key directory and accepted provider registration, with reviewed scope. Local key generation is not provider enrollment; no public enrollment or persistent credential operation is performed by saving this proposal."
+    },
+    {
+      "gate": "paired-proof",
+      "acceptance": "Exactly one eligible paired Web Bot Auth candidate, one selected origin/key, clock and expiry recorded; raw signing bytes/headers remain private."
+    },
+    {
+      "gate": "exclusion-and-storage",
+      "acceptance": "All controls excluded from public traffic, actual request/receipt/exact-row links match, optional raw capture remains off."
+    }
+  ],
+  "cases": [
+    {
+      "id": "legacy-valid",
+      "wireForm": "structured-string",
+      "localCryptographicOracle": "valid",
+      "managedExpected": "measure after registration, do not infer from docs"
+    },
+    {
+      "id": "dictionary-valid",
+      "wireForm": "g dictionary member, g signature label",
+      "localCryptographicOracle": "valid",
+      "managedExpected": "measure; this is the disputed advertised profile"
+    },
+    {
+      "id": "bad-signature",
+      "wireForm": "both forms in separate requests",
+      "localCryptographicOracle": "invalid",
+      "managedExpected": "record actual result; unexpected positive is an investigation, not a human false positive"
+    },
+    {
+      "id": "expired",
+      "wireForm": "both forms in separate requests",
+      "localCryptographicOracle": "policy rejection using an unambiguously elapsed interval",
+      "managedExpected": "record actual expiry enforcement"
+    },
+    {
+      "id": "unsigned",
+      "wireForm": "no signature fields",
+      "localCryptographicOracle": "absent",
+      "managedExpected": "record baseline; a generic verified-bot result is not signature verification"
+    },
+    {
+      "id": "unregistered-key",
+      "wireForm": "both forms in separate requests",
+      "localCryptographicOracle": "valid mathematical signature under controlled discoverable key",
+      "managedExpected": "tests registration/trust separately; preserve unavailable versus rejected"
+    }
+  ],
+  "comparisonRules": [
+    "Keep URL, source, declaration, covered components and key identity constant where the wire encoding permits; sign each encoding independently.",
+    "Use the controlled identity and truthful test UA; never claim a Google or Exa private key.",
+    "Capture true, false, unavailable and unrecognized native results separately.",
+    "One proof per request prevents first-valid signer-selection differences from masquerading as provider disagreement.",
+    "Do not override request.cf in production or count workerd fixtures as the managed service.",
+    "Nonce presence is not a uniqueness guarantee; repeat/expiry controls need a separate interpretation.",
+    "Native authentication error/abstention rates apply only to the labelled authentication cohort, not people or production prevalence.",
+    "A native boolean is a provider assertion, not proof of full draft conformance, exact covered components or human intent. Negative controls must test its interpretation."
+  ],
+  "proposedBounds": {
+    "maximumRequests": 12,
+    "maximumDiagnosticSelects": 12,
+    "reviewedRowsReadThresholdTotal": 100,
+    "readThresholdIsD1Enforced": false,
+    "tails": "exact trial/header/version filters; stop owned process after capture"
+  },
+  "execution": "No production experiment, registration, rule, credential, permission or plan change is performed by saving this proposal.",
+  "measurementContract": {
+    "denominators": [
+      "planned controls",
+      "actually executed controls",
+      "valid local oracle and accepted identity prerequisites",
+      "native boolean available",
+      "native unavailable/unrecognized"
+    ],
+    "nullRatesWhenNoEligibleControls": true,
+    "nativeDisagreements": "Report by condition and wire form; investigate registration, timing and field semantics before attributing a cryptographic failure.",
+    "populationAccuracyClaim": false
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-10-28T03:16:41.228Z",
+  "method": "Exact returned-row primary-key SELECT followed by full closed receipt projection equality; same saved live operation/reference from research 47. No time/path surrogate join or new request.",
+  "workerVersion": "e1c22f11-287c-4f07-b089-5da11862e22e",
+  "collectionVersion": "2026-10-28.8",
+  "receiptVersion": "2026-10-28.2",
+  "signerDisplayProfile": "2026-10-28.1",
+  "directoryPublicationProfile": "2026-10-28.1",
+  "identicalReceiptFields": 30,
+  "allReceiptFieldsMatch": true,
+  "canonicalPathAndMarkdownMatch": true,
+  "optionalCaptureAbsent": true,
+  "ownerFlag": false,
+  "publicReferralPolicy": {
+    "version": "2026-09-06.2",
+    "sha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+    "action": "exclude"
+  },
+  "native": {
+    "verifiedBot": "unavailable",
+    "signedAgent": "unavailable",
+    "categoryStatus": "empty",
+    "categoryValue": "none"
+  },
+  "signatureStatus": "absent",
+  "rowsRead": 1,
+  "rowsWritten": 0,
+  "changedDatabase": false,
+  "postExecutionReadThreshold": 100,
+  "privateSqlSha256": "76ff06777630db4fad1f2fa2f85f5eb1b4a60802f5e35f0808e3f6988f83b57d",
+  "productionRequests": 0,
+  "limits": [
+    "One unsigned current-profile integration control, not authentic vendor traffic or a human label.",
+    "The public exclusion follows the exact stored referrer and current versioned assessor, not a new full report fetch.",
+    "Provider collection/retention completeness and native cryptographic agreement remain unproven."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-28T03:20:58.098638+00:00",
+  "sources": [
+    {
+      "url": "https://developers.cloudflare.com/workers/authorization/",
+      "status": 200,
+      "bytes": 192410,
+      "sha256": "3f3899bfcaa2a83fe3f792f6755272c2587294a309a46db5091b25e2da48f1a3"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/runtime-apis/request/",
+      "status": 200,
+      "bytes": 267476,
+      "sha256": "f7dc0f412565824a5e981c3af301b318085600d49765746b79ccef0245c90ad5"
+    },
+    {
+      "url": "https://developers.cloudflare.com/bots/reference/bot-management-variables/",
+      "status": 200,
+      "bytes": 115566,
+      "sha256": "ff0d8ea69d78b287604af5e9aeb227c5b606f716c33a9f46ecc4f4aefeba3218"
+    }
+  ],
+  "limits": [
+    "Documentation is not measured managed-verifier behavior or an account-role diagnosis."
+  ]
+}

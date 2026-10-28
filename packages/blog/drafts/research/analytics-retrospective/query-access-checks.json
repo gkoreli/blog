@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-28T03:21:35.923502+00:00",
+  "sourceBeforeInvestigation": "e7c9db3",
+  "runtimeChanged": false,
+  "profilesChanged": false,
+  "previousAcceptance": {
+    "analyticsTests": 230,
+    "siteTests": 106,
+    "notRerunForEvidenceAndLinkOnlyChange": true
+  },
+  "freshNativeChecks": [
+    "isolated local constant query",
+    "exact primary-key SQL with unsafe-integer neighbor controls"
+  ],
+  "successfulRemoteDiagnosticStatements": 3,
+  "acknowledgedRowsRead": 8,
+  "acknowledgedRowsWritten": 0,
+  "exactLiveReceiptFieldsMatched": 30,
+  "queryProtocolReadiness": "proposed and not ready; no managed-verifier experiment",
+  "relativeLinksChecked": 259,
+  "artifactSha256": {
+    "query-access-recovery.json": "1405aaf3b89d1232e48cb8f3458804f393e589e8e8c8f24ecb691706dfe159ce",
+    "query-access-exact-readback.json": "0d23b017c35fd90ddee1ff31b2fdd84d760f6ff104da2b88e5ade6d0bb870682",
+    "query-access-cli-source.json": "dfd8c663d0eaa3635cbea88afa47c3c857ddde3e77aaecd6e558d572c50896b2",
+    "query-access-doc-sources.json": "7a40b83dfc584f9848881aa299b49b7c24184af8c0e9e9168ed23fa3f11ebf01",
+    "native-verifier-comparison-plan.json": "a4279a933b5ccef4e477a8e34069b5e716f7011b3711ab09413f679e8d45170b"
+  },
+  "humanTrials": "deferred",
+  "newProductionPageRequests": 0,
+  "isolatedBuildPosts": 32,
+  "isolatedArticleSha256": "f28a26e96ddcfc7e42c544a7a118de472159ae2182199ce93220af66f59cff5d",
+  "instructionDiffReviewed": "One additive operational paragraph; query/import/quota/build/owner exceptions preserved.",
+  "privateArchive": "2026-10-28-query-access",
+  "reviewDate": "2026-10-31",
+  "reviewDateIsAutomaticErasure": false
+}
