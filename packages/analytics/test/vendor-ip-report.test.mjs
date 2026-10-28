@@ -59,3 +59,12 @@ test('actual producer output including fanout skips remains recognized by the st
  const db={prepare(sql){return{bind(...values){return{execute(){return{results:sqlite.prepare(sql).all(...values)}}}}}},async batch(s){return s.map(x=>x.execute())}};
  const r=await queryStats(db,{range:'7d',traffic:'all'},new Date('2026-10-28T05:00:00Z'));assert.equal(r.vendorNetwork.recognizedViews,1);assert.equal(r.vendorNetwork.notAssessedViews,1);assert.equal(r.vendorNetwork.listedViews,1);
 });
+
+test('revalidation failure is recognized only in its producing method profile', async () => {
+ const sqlite=new DatabaseSync(':memory:');sqlite.exec(readFileSync(new URL('../schema.sql',import.meta.url),'utf8'));
+ const insert=sqlite.prepare("INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner,reader_kind,reader_reason,observed_at,vendor_ip_evidence) VALUES('/a',?,'browser','desktop',0,'browser','fixture','2026-10-28 04:00:00',?)");
+ for(const [i,profile] of ['2026-10-27.1','2026-10-28.1','2026-10-28.2'].entries()){const e=networkEvidence('unavailable',{profile});e.checks[0].reason='revalidation-mismatch';insert.run(String(i).padStart(32,'0'),JSON.stringify(e));}
+ const db={prepare(sql){return{bind(...values){return{execute(){return{results:sqlite.prepare(sql).all(...values)}}}}}},async batch(s){return s.map(x=>x.execute())}};
+ const r=await queryStats(db,{range:'7d',traffic:'all'},new Date('2026-10-28T05:00:00Z'));
+ assert.equal(r.totals.views,3);assert.equal(r.vendorNetwork.recordedViews,3);assert.equal(r.vendorNetwork.recognizedViews,1);assert.equal(r.vendorNetwork.unrecognizedViews,2);assert.equal(r.vendorNetwork.unavailableViews,1);
+});

@@ -728,7 +728,7 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     { label: 'Has a declaration with a configured IP feed', views: data.vendorNetwork.configuredDeclarationViews },
     { label: 'Address listed in at least one applicable feed', views: data.vendorNetwork.listedViews },
     { label: 'Address absent from at least one applicable feed', views: data.vendorNetwork.notListedViews },
-    { label: 'Check unavailable — address, feed or deadline', views: data.vendorNetwork.unavailableViews },
+    { label: 'Check unavailable — address, feed, validation or deadline', views: data.vendorNetwork.unavailableViews },
     { label: 'Not assessed — refresh cooldown or request budget', views: data.vendorNetwork.notAssessedViews },
     { label: 'Applicable declaration; address unavailable', views: data.vendorNetwork.addressUnavailableViews },
     { label: 'Has declarations without this IP method', views: data.vendorNetwork.unmappedDeclarationViews },

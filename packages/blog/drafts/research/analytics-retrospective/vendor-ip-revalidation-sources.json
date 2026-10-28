@@ -1,0 +1,30 @@
+{
+  "reviewedAt": "2026-10-28T06:26:04.449323+00:00",
+  "standards": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#section-15.4.5",
+      "applied": "304 is a conditional-response status; this application rejects unsolicited validation."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.html#section-4.3.4",
+      "applied": "Select an identified stored representation before refreshing it; strict strong-tag correspondence, weak correspondence and one stored representation are distinguished."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.html#section-4.2.3",
+      "applied": "Request-start expiry is algebraically equivalent to response-age timing for fresh responses. Forty-eight simulated arithmetic controls; age code unchanged."
+    }
+  ],
+  "openSource": {
+    "repository": "https://github.com/kornelski/http-cache-semantics",
+    "revision": "b1d4bd682fbab0252985de45219f4e7497c0067c",
+    "source": "https://github.com/kornelski/http-cache-semantics/blob/b1d4bd682fbab0252985de45219f4e7497c0067c/index.js#L791",
+    "applied": "Separate revalidation matches from HTTP status. Source inspected, not executed or added as dependency.",
+    "difference": "Its strong-tag branch strips the stored weak marker; ours requires an exact stored strong validator.",
+    "resolution": "Public Git HEAD resolved after absent old master ref. GitHub API and v4.2.0 tag page were unavailable; no pinned release-version claim."
+  },
+  "policyLimits": [
+    "ASCII entity tags; canonical IMF-fixdate only. Other validators cause a full fetch rather than relaxed parsing.",
+    "No general HTTP-cache conformance, current publisher occurrence, or historical re-attribution inferred.",
+    "Existing fixed endpoints, deadline, cooldown, no stale fallback and capture settings preserved."
+  ]
+}

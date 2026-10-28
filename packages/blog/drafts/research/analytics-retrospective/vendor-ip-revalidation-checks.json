@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-28T06:27:21.581234+00:00",
+  "analyticsTests": 248,
+  "siteTests": 108,
+  "workspaceTypes": "pass",
+  "postValidation": "pass",
+  "policyCheck": "pass",
+  "isolatedBuildPosts": 32,
+  "nodeWorkerdMatrixCasesEach": 13,
+  "matchingCasesEach": 4,
+  "rejectedCasesEach": 9,
+  "arithmeticAgeControlsNode": 48,
+  "nativeCollectorControls": 4,
+  "nativeReadbackParameterizedAndConcrete": "Same selected rows, one read each per control; eight local reads total, zero SELECT writes.",
+  "nativeReportCost": {
+    "valid512Reads": 32921,
+    "previousAcceptedReads": 32409,
+    "delta": 512,
+    "writes": 0,
+    "existingOutputUnchanged": true
+  },
+  "productionCalls": 0,
+  "articleBodyWhitespaceWords": 1196,
+  "shapingPrompts": 31,
+  "promptsUnchanged": true,
+  "profiles": {
+    "collection": "2026-10-28.10",
+    "ip": "2026-10-28.2",
+    "reportCache": "2026-10-28.7"
+  },
+  "classifierVerifierSchemaCaptureUnchanged": true,
+  "browserScope": "No new browser fixture or viewport override; only copy changes in the existing network panel. Served assets remain a separate acceptance gate.",
+  "sourceHelpers": {
+    "check-vendor-ip-revalidation.mjs": "a771dbee51d7de7b3001882b050e4fdb53cddc43087f63d4745e4eb64391073d",
+    "check-vendor-ip-revalidation-storage.mjs": "dec52b8dbc8006ad4884067718f57c012ebe7f0b54bd753d946b4c65c1eab1c5"
+  },
+  "setupCorrections": [
+    "Updated one explicit collection-version test expectation and gave the existing matching-304 fixture its ETag.",
+    "Resolved official repository HEAD after old master ref and guessed release page were absent; no release-tag claim."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-10-28T06:26:54.584Z",
+  "controls": [
+    {
+      "name": "Googlebot",
+      "collectionVersion": "2026-10-28.10",
+      "ipProfile": "2026-10-28.2",
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "exactReferenceRead": 1,
+      "concreteRead": 1,
+      "concreteMatchesParameterized": true
+    },
+    {
+      "name": "AhrefsBot",
+      "collectionVersion": "2026-10-28.10",
+      "ipProfile": "2026-10-28.2",
+      "outcome": "listed",
+      "reason": null,
+      "exactReferenceRead": 1,
+      "concreteRead": 1,
+      "concreteMatchesParameterized": true
+    },
+    {
+      "name": "DuckDuckBot",
+      "collectionVersion": "2026-10-28.10",
+      "ipProfile": "2026-10-28.2",
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "exactReferenceRead": 1,
+      "concreteRead": 1,
+      "concreteMatchesParameterized": true
+    },
+    {
+      "name": "ExaSearchBot",
+      "collectionVersion": "2026-10-28.10",
+      "ipProfile": "2026-10-28.2",
+      "outcome": "no-configured-method",
+      "reason": null,
+      "exactReferenceRead": 1,
+      "concreteRead": 1,
+      "concreteMatchesParameterized": true
+    }
+  ],
+  "report": {
+    "included": 3,
+    "referralExcluded": 1,
+    "vendorNetwork": {
+      "recognizedViews": 3,
+      "unrecognizedViews": 0,
+      "recordedViews": 3,
+      "notRecordedViews": 0,
+      "configuredDeclarationViews": 2,
+      "unmappedDeclarationViews": 1,
+      "noDeclarationViews": 0,
+      "listedViews": 1,
+      "notListedViews": 0,
+      "unavailableViews": 1,
+      "notAssessedViews": 0,
+      "addressUnavailableViews": 0
+    }
+  },
+  "actualNativeCollector": true,
+  "syntheticEdgeContext": true,
+  "interceptedVendorTransport": true,
+  "clockCondition": "Prime shared feed caches with an expired request-start timestamp; actual collector uses its normal current clock.",
+  "newExternalRequests": 0,
+  "productionCalls": 0,
+  "limits": "No vendor identity or production malformed-304 occurrence is established."
+}

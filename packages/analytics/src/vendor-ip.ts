@@ -1,8 +1,9 @@
+import { feedEntityTag, feedLastModified, matchingFeedValidation } from './vendor-ip-cache.js';
 import ipaddr from 'ipaddr.js';
 import type { KnownAgentName } from './classify.js';
 import { VENDOR_IP_SOURCES, type VendorIpSource, type VendorIpSourceId } from './vendor-ip-sources.js';
 
-export const VENDOR_IP_PROFILE = '2026-10-28.1';
+export const VENDOR_IP_PROFILE = '2026-10-28.2';
 export const VENDOR_IP_FETCH_DEADLINE_MS = 1500;
 export const VENDOR_IP_MAX_REQUEST_SOURCES = 4;
 export const VENDOR_IP_MAX_BODY_BYTES = 262144;
@@ -13,7 +14,7 @@ const MAX_TTL_SECONDS = 3600;
 type Address = ipaddr.IPv4 | ipaddr.IPv6;
 type Prefix = [Address, number];
 type AddressState = 'usable' | 'missing' | 'invalid' | 'special-range' | 'worker-subrequest' | 'edge-context-unavailable';
-type Failure = 'fetch-failed' | 'fetch-timeout' | 'http-status' | 'media-type' | 'body-limit' | 'invalid-feed' | 'refresh-cooldown' | 'address-unavailable' | 'request-budget';
+type Failure = 'revalidation-mismatch' | 'fetch-failed' | 'fetch-timeout' | 'http-status' | 'media-type' | 'body-limit' | 'invalid-feed' | 'refresh-cooldown' | 'address-unavailable' | 'request-budget';
 interface Snapshot {
   sha256: string;
   fetchedAt: string;
@@ -99,11 +100,6 @@ export function parseVendorIpFeed(value: unknown): { prefixes: Prefix[]; publish
   return { prefixes, publisherVersion: Number.isFinite(version) && typeof value.creationTime === 'string' && value.creationTime.length <= 32 ? value.creationTime : null };
 }
 
-function validator(response: Response, header: string, limit: number): string | null {
-  const value = response.headers.get(header);
-  return value !== null && value.length <= limit && /^[\x20-\x7e]+$/.test(value) ? value : null;
-}
-
 function freshness(response: Response, now: number, previous?: Feed): { until: number; store: boolean; cacheControl: string; expires: string | null } {
   const policy = response.headers.get('Cache-Control') ?? previous?.cacheControl ?? '';
   const store = !/(?:^|,)\s*(?:no-store|private)\b/i.test(policy);
@@ -145,12 +141,18 @@ async function fetchFeed(source: VendorIpSource, cache: VendorIpCache, fetcher: 
   const work = (async (): Promise<FeedResult> => {
     try {
       const headers = new Headers({ Accept: 'application/json' });
-      if (old?.etag) headers.set('If-None-Match', old.etag); else if (old?.modified) headers.set('If-Modified-Since', old.modified);
+      if (old?.etag) headers.set('If-None-Match', old.etag);
+      if (old?.modified) headers.set('If-Modified-Since', old.modified);
       const response = await fetcher(source.url, { headers, redirect: 'manual', signal: controller.signal });
       const policy = freshness(response, now, response.status === 304 ? old : undefined);
-      if (response.status === 304 && old) {
+      if (response.status === 304) {
         await response.body?.cancel();
-        const feed = { ...old, snapshot: { ...old.snapshot, validatedAt: new Date(now).toISOString(), freshUntil: new Date(policy.until).toISOString() }, cacheControl: policy.cacheControl, expires: policy.expires, etag: validator(response, 'ETag', 512) ?? old.etag, modified: validator(response, 'Last-Modified', 128) ?? old.modified };
+        if (controller.signal.aborted) return { reason: 'fetch-timeout' };
+        if (old === undefined || !matchingFeedValidation(response, headers, old)) {
+          cache.feeds.delete(source.id);
+          return { reason: 'revalidation-mismatch' };
+        }
+        const feed = { ...old, snapshot: { ...old.snapshot, validatedAt: new Date(now).toISOString(), freshUntil: new Date(policy.until).toISOString() }, cacheControl: policy.cacheControl, expires: policy.expires, etag: feedEntityTag(response) ?? old.etag, modified: feedLastModified(response) ?? old.modified };
         if (!controller.signal.aborted) { if (policy.store) cache.feeds.set(source.id, feed); else cache.feeds.delete(source.id); }
         return controller.signal.aborted ? { reason: 'fetch-timeout' } : { feed };
       }
@@ -162,7 +164,7 @@ async function fetchFeed(source: VendorIpSource, cache: VendorIpCache, fetcher: 
       try { parsed = JSON.parse(new TextDecoder('utf-8', { fatal: true, ignoreBOM: false }).decode(bytes)); } catch { return { reason: 'invalid-feed' }; }
       const parsedFeed = parseVendorIpFeed(parsed); if (parsedFeed === null) return { reason: 'invalid-feed' };
       const sha256 = [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))].map(b => b.toString(16).padStart(2, '0')).join('');
-      const feed: Feed = { snapshot: { sha256, fetchedAt: new Date(now).toISOString(), validatedAt: new Date(now).toISOString(), freshUntil: new Date(policy.until).toISOString(), publisherVersion: parsedFeed.publisherVersion, prefixCount: parsedFeed.prefixes.length }, prefixes: parsedFeed.prefixes, etag: validator(response, 'ETag', 512), modified: validator(response, 'Last-Modified', 128), cacheControl: policy.cacheControl, expires: policy.expires };
+      const feed: Feed = { snapshot: { sha256, fetchedAt: new Date(now).toISOString(), validatedAt: new Date(now).toISOString(), freshUntil: new Date(policy.until).toISOString(), publisherVersion: parsedFeed.publisherVersion, prefixCount: parsedFeed.prefixes.length }, prefixes: parsedFeed.prefixes, etag: feedEntityTag(response), modified: feedLastModified(response), cacheControl: policy.cacheControl, expires: policy.expires };
       if (controller.signal.aborted) return { reason: 'fetch-timeout' };
       if (policy.store) cache.feeds.set(source.id, feed); else cache.feeds.delete(source.id);
       return { feed };

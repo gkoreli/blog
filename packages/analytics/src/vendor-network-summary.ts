@@ -19,7 +19,7 @@ export function vendorNetworkStateSql(): string {
   const flags = outcomes.map(([key,outcome]) => `${t(`summary.${key}`)} IN ('true','false') AND ${v(`summary.${key}`)} = EXISTS (SELECT 1 FROM json_each(vendor_ip_evidence, '$.checks') AS flag_row WHERE CASE WHEN flag_row.type = 'object' THEN json_extract(flag_row.value, '$.outcome') = '${outcome}' ELSE 0 END)`).join(' AND ');
   const validCheck = `
     ${ct('source')} = 'text'
-    AND (${c('source')} IN (${list(ORIGINAL_SOURCES)}) OR (${v('profile')} = '2026-10-28.1' AND ${c('source')} IN (${list(ADDED_SOURCES)})))
+    AND (${c('source')} IN (${list(ORIGINAL_SOURCES)}) OR (${v('profile')} IN ('2026-10-28.1','2026-10-28.2') AND ${c('source')} IN (${list(ADDED_SOURCES)})))
     AND CASE
       WHEN ${v('address.state')} <> 'usable' THEN ${c('outcome')} = 'unavailable' AND ${c('reason')} = 'address-unavailable' AND ${ct('snapshot')} = 'null'
       WHEN check_row.key >= 4 THEN ${c('outcome')} = 'not-assessed' AND ${c('reason')} = 'request-budget' AND ${ct('snapshot')} = 'null'
@@ -30,12 +30,12 @@ export function vendorNetworkStateSql(): string {
         AND ${c('snapshot.fetchedAt')} <= ${c('snapshot.validatedAt')} AND ${c('snapshot.validatedAt')} <= ${v('checkedAt')}
         AND (${ct('snapshot.publisherVersion')} = 'null' OR (${ct('snapshot.publisherVersion')} = 'text' AND length(${c('snapshot.publisherVersion')}) <= 32))
       WHEN ${c('outcome')} = 'not-assessed' THEN ${c('reason')} = 'refresh-cooldown' AND ${ct('snapshot')} = 'null'
-      WHEN ${c('outcome')} = 'unavailable' THEN ${c('reason')} IN ('fetch-failed','fetch-timeout','http-status','media-type','body-limit','invalid-feed') AND ${ct('snapshot')} = 'null'
+      WHEN ${c('outcome')} = 'unavailable' THEN (${c('reason')} IN ('fetch-failed','fetch-timeout','http-status','media-type','body-limit','invalid-feed') OR (${v('profile')} = '2026-10-28.2' AND ${c('reason')} = 'revalidation-mismatch')) AND ${ct('snapshot')} = 'null'
       ELSE 0 END`;
   return `CASE WHEN vendor_ip_evidence IS NULL THEN 'not-recorded'
     WHEN NOT COALESCE((
       json_type(vendor_ip_evidence) = 'object' AND ${v('source')} = 'local-vendor-ip' AND ${v('method')} = 'published-ip-feed'
-      AND ${v('profile')} IN ('2026-10-27.1','2026-10-28.1') AND ${timestamp(v('checkedAt'))}
+      AND ${v('profile')} IN ('2026-10-27.1','2026-10-28.1','2026-10-28.2') AND ${timestamp(v('checkedAt'))}
       AND ${integer('declarationCount',9007199254740991)} AND ${integer('configuredDeclarationCount',11)} AND ${integer('unmappedDeclarationCount',9007199254740991)}
       AND ${v('configuredDeclarationCount')} + ${v('unmappedDeclarationCount')} = ${v('declarationCount')}
       AND ${t('address')} = 'object'

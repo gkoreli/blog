@@ -56,7 +56,7 @@ test('DuckDuckBot and Google-Agent methods use dedicated fixed feeds without exp
         assert.equal(actual, url); assert.equal(init.redirect, 'manual');
         assert.equal(init.headers.has('CF-Connecting-IP'), false); calls++; return feed();
       }));
-      assert.equal(calls, 1); assert.equal(evidence.profile, '2026-10-28.1');
+      assert.equal(calls, 1); assert.equal(evidence.profile, '2026-10-28.2');
       assert.equal(evidence.configuredDeclarationCount, 1); assert.equal(evidence.checks[0].source, source);
       assert.equal(evidence.checks[0].outcome, outcome);
     }
@@ -80,7 +80,7 @@ test('cache respects max-age/Age, per-source coalescing, expiry, validation and 
 });
 
 test('no-cache revalidates conditionally after bounded cooldown; 304 inherits policy, no-store retains no feed', async () => {
-  const cache=createVendorIpCache();let calls=0;const fetcher=async(url,init)=>{calls++;if(calls===1)return feed(undefined,{'Cache-Control':'no-cache',ETag:'"v1"'});assert.equal(init.headers.get('If-None-Match'),'"v1"');return new Response(null,{status:304})};
+  const cache=createVendorIpCache();let calls=0;const fetcher=async(url,init)=>{calls++;if(calls===1)return feed(undefined,{'Cache-Control':'no-cache',ETag:'"v1"'});assert.equal(init.headers.get('If-None-Match'),'"v1"');return new Response(null,{status:304,headers:{ETag:'"v1"'}})};
   const first=await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache));const limited=await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache,new Date(now.getTime()+1000)));assert.equal(limited.checks[0].outcome,'not-assessed');
   const fresh=await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache,new Date(now.getTime()+31000)));assert.equal(fresh.checks[0].snapshot.sha256,first.checks[0].snapshot.sha256);assert.equal(fresh.checks[0].snapshot.fetchedAt,first.checks[0].snapshot.fetchedAt);assert.equal(fresh.checks[0].snapshot.validatedAt,new Date(now.getTime()+31000).toISOString());assert.equal(fresh.checks[0].snapshot.freshUntil,new Date(now.getTime()+31000).toISOString());assert.equal(calls,2);
   const noStore=createVendorIpCache();await verifyVendorIp(request(),['Googlebot'],options(async()=>feed(undefined,{'Cache-Control':'no-store'}),noStore));assert.equal(noStore.feeds.size,0);
@@ -111,4 +111,54 @@ test('HTTP apparent age, Expires, malformed/duplicate max-age and private respon
     const next=await verifyVendorIp(request(),['Googlebot'],options(async()=>{throw new Error('cooldown must prevent fetch')},cache,new Date(now.getTime()+1000)));assert.equal(next.checks[0].outcome,'not-assessed');
   }
   const positive=await verifyVendorIp(request(),['Googlebot'],options(async()=>feed(undefined,{'Cache-Control':'',Date:now.toUTCString(),Expires:new Date(now.getTime()+200000).toUTCString()})));assert.equal(positive.checks[0].snapshot.freshUntil,new Date(now.getTime()+200000).toISOString());
+});
+
+test('304 selection requires a matching validator and invalidates mismatched cached feeds', async () => {
+  const { runValidationCases } = await import('./fixtures/vendor-ip-revalidation.mjs');
+  for(const c of await runValidationCases(verifyVendorIp,createVendorIpCache)){
+    assert.equal(c.accepted,c.expectedAccepted,c.name);assert.equal(c.calls,2,c.name);
+    if(!c.expectedAccepted){assert.equal(c.reason,'revalidation-mismatch',c.name);assert.equal(c.cacheEntries,0,c.name);}
+  }
+});
+
+test('revalidation mismatch recovers with a full rotated representation after cooldown', async () => {
+  const cache=createVendorIpCache();let calls=0;
+  const fetcher=async(url,init)=>{calls++;if(calls===1)return feed(undefined,{'Cache-Control':'no-cache',ETag:'"v1"'});
+    if(calls===2){assert.equal(init.headers.get('If-None-Match'),'"v1"');return new Response(null,{status:304,headers:{ETag:'"v2"'}});}
+    assert.equal(init.headers.has('If-None-Match'),false);assert.equal(init.headers.has('If-Modified-Since'),false);
+    return feed([{ipv4Prefix:'8.8.8.0/24'}],{'Cache-Control':'max-age=300',ETag:'"v2"'});};
+  const first=await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache));
+  const bad=await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache,new Date(now.getTime()+31000)));assert.equal(bad.checks[0].reason,'revalidation-mismatch');
+  const skipped=await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache,new Date(now.getTime()+32000)));assert.equal(skipped.checks[0].reason,'refresh-cooldown');assert.equal(calls,2);
+  const rotated=await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache,new Date(now.getTime()+62000)));assert.equal(rotated.checks[0].outcome,'not-listed');assert.notEqual(rotated.checks[0].snapshot.sha256,first.checks[0].snapshot.sha256);assert.equal(calls,3);
+});
+
+test('malformed stored validators are not forwarded and body rotation needs no 304', async () => {
+  const cache=createVendorIpCache();let calls=0;
+  const fetcher=async(url,init)=>{calls++;if(calls===1)return feed(undefined,{'Cache-Control':'no-cache',ETag:'unquoted-canary','Last-Modified':'2026'});
+    assert.equal(init.headers.has('If-None-Match'),false);assert.equal(init.headers.has('If-Modified-Since'),false);return feed([{ipv4Prefix:'8.8.8.0/24'}]);};
+  await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache));const rotated=await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache,new Date(now.getTime()+31000)));assert.equal(rotated.checks[0].outcome,'not-listed');
+});
+
+test('a late mismatched 304 cannot evict a newer feed after its deadline', async () => {
+  const cache=createVendorIpCache();let calls=0,release;
+  const gate=new Promise(resolve=>{release=resolve;});
+  const fetcher=async()=>{calls++;if(calls===1)return feed(undefined,{'Cache-Control':'no-cache',ETag:'"v1"'});
+    if(calls===2){await gate;return new Response(null,{status:304,headers:{ETag:'"v2"'}});}
+    return feed([{ipv4Prefix:'8.8.8.0/24'}],{'Cache-Control':'max-age=300',ETag:'"v3"'});};
+  await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache));
+  const timeout=await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache,new Date(now.getTime()+31000)));assert.equal(timeout.checks[0].reason,'fetch-timeout');
+  const newest=await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache,new Date(now.getTime()+62000)));assert.equal(newest.checks[0].outcome,'not-listed');
+  release();await new Promise(resolve=>setTimeout(resolve,0));assert.equal(cache.feeds.get('google-common').snapshot.sha256,newest.checks[0].snapshot.sha256);assert.equal(calls,3);
+});
+
+test('request-start expiry agrees with independent response-age calculations without extending stale data', async () => {
+  for(const delay of [0,250,1000])for(const dateOffset of [-500000,-100000,0,1000])for(const age of [0,1,150,400]){
+    const start=now.getTime(),received=start+delay,date=start+dateOffset;
+    const correctedAge=Math.max(0,received-date,age*1000+delay);
+    const referenceRemaining=300000-correctedAge;
+    const e=await verifyVendorIp(request(),['Googlebot'],options(async()=>feed(undefined,{'Cache-Control':'max-age=300',Date:new Date(date).toUTCString(),Age:String(age)})));
+    const until=Date.parse(e.checks[0].snapshot.freshUntil);
+    if(referenceRemaining>0)assert.equal(until,received+referenceRemaining);else assert.ok(until<=received);
+  }
 });

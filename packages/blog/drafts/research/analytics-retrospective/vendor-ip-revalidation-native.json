@@ -1,0 +1,559 @@
+{
+  "checkedAt": "2026-10-28T06:20:17.373Z",
+  "baselineCommit": "faa9d65",
+  "mode": "compare",
+  "nodeBefore": [
+    {
+      "name": "same-strong-tag",
+      "expectedAccepted": true,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "same-weak-tag",
+      "expectedAccepted": true,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "W/\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "new-weak-old-strong",
+      "expectedAccepted": true,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "new-strong-old-weak",
+      "expectedAccepted": false,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "W/\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "changed-strong-tag",
+      "expectedAccepted": false,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "changed-weak-tag",
+      "expectedAccepted": false,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "W/\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "missing-304-validator",
+      "expectedAccepted": false,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "malformed-304-tag",
+      "expectedAccepted": false,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "unsolicited-304",
+      "expectedAccepted": false,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": null,
+        "modified": null
+      }
+    },
+    {
+      "name": "unsolicited-tagged-304",
+      "expectedAccepted": false,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": null,
+        "modified": null
+      }
+    },
+    {
+      "name": "matching-modification-date",
+      "expectedAccepted": true,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": null,
+        "modified": "Mon, 26 Oct 2026 00:00:00 GMT"
+      }
+    },
+    {
+      "name": "changed-modification-date",
+      "expectedAccepted": false,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": null,
+        "modified": "Mon, 26 Oct 2026 00:00:00 GMT"
+      }
+    },
+    {
+      "name": "strong-tag-mismatch-overrides-date-match",
+      "expectedAccepted": false,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    }
+  ],
+  "nodeAfter": [
+    {
+      "name": "same-strong-tag",
+      "expectedAccepted": true,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "same-weak-tag",
+      "expectedAccepted": true,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "W/\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "new-weak-old-strong",
+      "expectedAccepted": true,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "new-strong-old-weak",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": "W/\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "changed-strong-tag",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "changed-weak-tag",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": "W/\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "missing-304-validator",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "malformed-304-tag",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "unsolicited-304",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": null,
+        "modified": null
+      }
+    },
+    {
+      "name": "unsolicited-tagged-304",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": null,
+        "modified": null
+      }
+    },
+    {
+      "name": "matching-modification-date",
+      "expectedAccepted": true,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": null,
+        "modified": "Mon, 26 Oct 2026 00:00:00 GMT"
+      }
+    },
+    {
+      "name": "changed-modification-date",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": null,
+        "modified": "Mon, 26 Oct 2026 00:00:00 GMT"
+      }
+    },
+    {
+      "name": "strong-tag-mismatch-overrides-date-match",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": "Mon, 26 Oct 2026 00:00:00 GMT"
+      }
+    }
+  ],
+  "workerd": [
+    {
+      "name": "same-strong-tag",
+      "expectedAccepted": true,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "same-weak-tag",
+      "expectedAccepted": true,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "W/\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "new-weak-old-strong",
+      "expectedAccepted": true,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "new-strong-old-weak",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": "W/\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "changed-strong-tag",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "changed-weak-tag",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": "W/\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "missing-304-validator",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "malformed-304-tag",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": null
+      }
+    },
+    {
+      "name": "unsolicited-304",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": null,
+        "modified": null
+      }
+    },
+    {
+      "name": "unsolicited-tagged-304",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": null,
+        "modified": null
+      }
+    },
+    {
+      "name": "matching-modification-date",
+      "expectedAccepted": true,
+      "outcome": "listed",
+      "reason": null,
+      "accepted": true,
+      "sameDigest": true,
+      "cacheEntries": 1,
+      "calls": 2,
+      "conditionals": {
+        "etag": null,
+        "modified": "Mon, 26 Oct 2026 00:00:00 GMT"
+      }
+    },
+    {
+      "name": "changed-modification-date",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": null,
+        "modified": "Mon, 26 Oct 2026 00:00:00 GMT"
+      }
+    },
+    {
+      "name": "strong-tag-mismatch-overrides-date-match",
+      "expectedAccepted": false,
+      "outcome": "unavailable",
+      "reason": "revalidation-mismatch",
+      "accepted": false,
+      "sameDigest": false,
+      "cacheEntries": 0,
+      "calls": 2,
+      "conditionals": {
+        "etag": "\"v1\"",
+        "modified": "Mon, 26 Oct 2026 00:00:00 GMT"
+      }
+    }
+  ],
+  "productionCalls": 0,
+  "limits": "Synthetic local transports and edge context; not production publisher behavior or vendor identity."
+}
