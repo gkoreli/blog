@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-28T06:40:13.632396+00:00",
-  "sourceBaseline": "08c0b05",
+  "checkedAt": "2026-10-28T06:49:57.756990+00:00",
+  "sourceBaseline": "5b831b1ee1cc393c1c20a3d4bebfffce10638dc9",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,7 +45,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Revalidate actual zone editor access and candidate native cf.client.bot expression; prepare capture-only overwrite/drift controls if supported. No rule activation or trust promotion inferred.",
+  "nextBoundedAction": "Implement and locally accept the proposed off-by-default native-header capture route/harness. Exact candidate passes actual-zone dashboard validation; no rule published or trust promotion. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1196,
     "prompts": 31,
@@ -57,5 +57,13 @@
   "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": false
+  "liveAccountInspection": true,
+  "nativeKnownBotPath": {
+    "expressionValidation": "accepted-dashboard",
+    "runtimeDelivery": "not-executed",
+    "trustedAdoption": false,
+    "rulePublished": false,
+    "receipt": "native-expression-validation.json",
+    "plan": "native-bot-capture-plan.json"
+  }
 }

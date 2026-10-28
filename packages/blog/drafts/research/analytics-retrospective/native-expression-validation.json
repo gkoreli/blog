@@ -1,0 +1,68 @@
+{
+  "checkedAt": "2026-10-28T06:49:57.756990+00:00",
+  "sourceBaseline": "5b831b1ee1cc393c1c20a3d4bebfffce10638dc9",
+  "status": "dashboard-expression-validated-no-rule-published",
+  "zonePlanObserved": "Free",
+  "workersSubscriptionObserved": "Paid",
+  "transformQuotaObserved": {
+    "used": 0,
+    "available": 10
+  },
+  "candidate": {
+    "operation": "Set dynamic",
+    "header": "x-gk-native-bot-candidate",
+    "valueExpression": "to_string(cf.client.bot)",
+    "filter": "(http.host eq \"gkoreli.com\" and http.host ne \"gkoreli.com\")"
+  },
+  "validation": {
+    "surface": "Signed-in Rules Overview request-header Transform Rule editor",
+    "statusText": "Rule validation passed",
+    "initialFilter": "false",
+    "initialResult": "Unknown identifier; filter parse rejection",
+    "draftSaveAttempts": 1,
+    "successfulDraftSaves": 0,
+    "correctedSaveAttempts": 0,
+    "deployAttempts": 0,
+    "correctedResult": "Automatic visible validation after filter edit",
+    "independentApiSuccessBodyCaptured": false,
+    "exit": "Cancel returned to Rules Overview"
+  },
+  "claims": {
+    "exactConfigurationValidated": true,
+    "ruleSavedOrEnabled": false,
+    "runtimeHeaderDeliveryAccepted": false,
+    "trustedHeaderProvenanceAccepted": false,
+    "nativeCryptographicAgreementAccepted": false,
+    "cliAuthorizationRepairInferred": false
+  },
+  "proposedPlan": "native-bot-capture-plan.json",
+  "planImplemented": false,
+  "planActivated": false,
+  "privateArchive": {
+    "name": "2026-10-28-native-expression-validation",
+    "files": 7,
+    "manifestSha256": "82349f2e5b6650eda422d4d777e30feead7f68cfbf3d48c9335ee8ad9157734a",
+    "modes": "0700/0600",
+    "reviewDate": "2026-10-31",
+    "reviewDateIsAutomaticErasure": false
+  },
+  "runtimeChanged": false,
+  "articleChanged": false,
+  "articleSha256": "ea36825ed7ba04d56a4fe8dc2fba400ffc4c24734185273cc20325c711a94f9d",
+  "productionD1Statements": 0,
+  "ownSiteVisits": 0,
+  "vendorFeedRetrievals": 0,
+  "humanLabels": 0,
+  "dashboardActivity": true,
+  "dashboardInternalCosts": "unavailable",
+  "tailPreviewNewTabViewport": false,
+  "checks": {
+    "jsonAndRelativeLinks": "pass",
+    "relativeFileLinksChecked": 290,
+    "balancedCodeFences": "pass",
+    "publicUuidScan": "pass",
+    "runtimeAndArticleUnchanged": "pass",
+    "scopedDiff": "pass"
+  },
+  "goalAchieved": false
+}

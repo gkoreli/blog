@@ -1,0 +1,58 @@
+{
+  "status": "proposed-not-implemented-or-activated",
+  "question": "What does the validated known-bot transform deliver across ingress, spoofing and configuration-drift conditions?",
+  "expressionValidation": "Actual zone dashboard reports Rule validation passed for to_string(cf.client.bot), dynamic Set, with contradictory host filter; form cancelled unsaved.",
+  "signalMeaning": "Generic provider known-good-bot/crawler assessment; not a signed-agent verdict, product identity, purpose or human label.",
+  "candidateHeader": "x-gk-native-bot-candidate",
+  "trust": "Untrusted header observation only. No assignment to native booleans, classifier, authorization or public verified-bot counts.",
+  "prerequisites": [
+    "Off-by-default dedicated non-HTML route, native-local tested before publication; no page collector invocation or observation writes on success or rejection.",
+    "At most fifteen minutes, registered control IDs and accepted existing exclusion/guard mechanism; expired human window stays expired.",
+    "Prepare exact rule scope and source before activation; time guard in both rule expression and receiver; initial state disabled.",
+    "Retain rule order/configuration and exact private control references; no credentials or raw diagnostics in Git.",
+    "Inventory actually available ingress and controlled relay prerequisites. Missing routes stay unexecuted, not passing.",
+    "No new plan, permission, credential, provider enrollment or third-party action inferred from this plan."
+  ],
+  "capture": {
+    "candidateStates": ["missing", "literal-true", "literal-false", "other"],
+    "rawCandidateValueRetained": false,
+    "nativeBooleanStates": ["true", "false", "unavailable", "unrecognized"],
+    "independentNativeFields": ["request.cf.botManagement.verifiedBot", "request.cf.botManagement.signedAgent"],
+    "privateReferences": ["control", "rule configuration", "Worker source/activation", "exact response/log join"],
+    "noRawReaderIpOrUserAgent": true,
+    "wireMultiplicity": "Client harness records what it sent; Worker captures only resulting closed state. Header coalescing can erase wire multiplicity.",
+    "publicOutput": "Closed aggregate counts by condition; no trial IDs or account metadata."
+  },
+  "conditions": [
+    "Direct zone without supplied header",
+    "Supplied true, false and malformed single headers",
+    "Duplicate headers in both value orders and comma-combined value",
+    "Rule disabled and rule absent, with supplied true",
+    "Rule time expired and receiver time expired",
+    "Controlled later-rule overwrite",
+    "workers.dev ingress, if actually enabled",
+    "Controlled same-zone relay, if available",
+    "Controlled cross-zone relay, if available without broader access",
+    "Genuine provider-positive control, only with actual provider evidence; no impersonation or injected metadata"
+  ],
+  "bounds": {
+    "maximumWindowMinutes": 15,
+    "maximumExecutedRequests": 32,
+    "maximumRegisteredControls": 32,
+    "plannedDiagnosticD1Statements": 0,
+    "plannedObservationWrites": 0,
+    "guardStorageCosts": "If implementation reuses D1 guards, record native-tested and measured costs separately; zero diagnostic statements is not zero service cost.",
+    "logs": "Exact control scope, private closed captures, stop owned tail after bounded run. Missing/sampled logs remain incomplete."
+  },
+  "acceptance": [
+    "Planned, executed, response-received, matched-log and eligible results have separate denominators.",
+    "Success and negative controls preserve no-collection boundary and expiry; no human label is generated.",
+    "Capture true/false/missing/malformed independently from configuration; literal true never authenticates itself.",
+    "Native-positive and unavailable ingress prerequisites are reported explicitly, with rates null where denominator is zero.",
+    "No trusted adoption follows automatically: configuration checks and marker headers cannot attest each request during drift/bypass.",
+    "Activation, natural expiry, configuration cleanup and persistence/retention are separate recorded operations."
+  ],
+  "managedSignatureComparison": "Still blocked on the separate request-level signed-agent oracle and accepted controlled identity; this generic bit does not satisfy either gate.",
+  "nextBoundedAction": "Implement and locally accept the off-by-default route and harness; no live activation in this checkpoint.",
+  "humanTrials": "Deferred by owner."
+}
