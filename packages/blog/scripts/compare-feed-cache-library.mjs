@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {createRequire} from 'node:module';
+import {resolve} from 'node:path';
+import {validationCases,runValidationCases} from '../../analytics/test/fixtures/vendor-ip-revalidation.mjs';
+import {verifyVendorIp,createVendorIpCache} from '../../analytics/.test-dist/vendor-ip.js';
+import {matchingFeedValidation,feedEntityTag,feedLastModified} from '../../analytics/.test-dist/vendor-ip-cache.js';
+const [source,output]=process.argv.slice(2);assert.ok(source&&output);
+const bytes=readFileSync(source),sha256=createHash('sha256').update(bytes).digest('hex');
+assert.equal(sha256,'ede1cc404a492fa348eb9d97a3007a0d72aa717bd22cd86a56bd0824c19729ca','Pinned source bytes changed');
+const require=createRequire(import.meta.url);const CachePolicy=require(resolve(source));
+const lower=headers=>Object.fromEntries(Object.entries(headers).map(([k,v])=>[k.toLowerCase(),v]));
+const observed=await runValidationCases(verifyVendorIp,createVendorIpCache);
+const rows=[];
+for(const [i,c] of validationCases.entries()){
+ const request={method:'GET',url:'https://feed.fixture.example/ranges.json',headers:{host:'feed.fixture.example',accept:'application/json'}};
+ const initial={status:200,headers:lower({'Cache-Control':'no-cache',...c.old})};
+ const policy=new CachePolicy(request,initial);
+ const conditional=policy.revalidationHeaders(request);
+ assert.equal(conditional['if-none-match']??null,observed[i].conditionals.etag,c.name);
+ assert.equal(conditional['if-modified-since']??null,observed[i].conditionals.modified,c.name);
+ const validation={status:304,headers:lower(c.next)};
+ const outcome=policy.revalidatedPolicy({...request,headers:conditional},validation);
+ const typed=typeof outcome.matches==='boolean';
+ const oldResponse=new Response(null,{headers:c.old});
+ const ours=matchingFeedValidation(new Response(null,{status:304,headers:c.next}),new Headers(conditional),{etag:feedEntityTag(oldResponse),modified:feedLastModified(oldResponse)});
+ assert.equal(ours,observed[i].accepted,c.name);assert.equal(ours,c.accepted,c.name);
+ rows.push({name:c.name,applicationAccepted:ours,applicationOutcome:observed[i].outcome,libraryMatches:typed?outcome.matches:null,libraryMatchesAvailability:typed?'boolean':'unavailable',libraryModified:typeof outcome.modified==='boolean'?outcome.modified:null,sameAcceptedDecision:(outcome.matches===true)===ours,conditionalHeadersAgree:true});
+}
+const disagreements=rows.filter(r=>!r.sameAcceptedDecision);
+assert.deepEqual(disagreements.map(r=>r.name),['new-strong-old-weak','unsolicited-304']);
+assert.equal(rows.filter(r=>r.applicationAccepted).length,4);assert.equal(rows.filter(r=>r.libraryMatches===true).length,6);
+assert.ok(rows.every(r=>r.libraryMatchesAvailability==='boolean'));
+assert.ok(rows.every(r=>r.libraryModified===false));
+const r={checkedAt:new Date().toISOString(),reference:{repository:'https://github.com/kornelski/http-cache-semantics',revision:'b1d4bd682fbab0252985de45219f4e7497c0067c',sourceSha256:sha256,scope:'Exact downloaded source, isolated CommonJS execution; not installed as a project dependency.'},applicationSource:'08c0b05',conditions:'One stored GET response with no-cache, generated conditional headers, then supplied 304. Synthetic transport and representation; no vendor calls.',cases:rows.length,applicationAccepted:4,libraryMatched:6,sameAcceptedDecision:rows.filter(r=>r.sameAcceptedDecision).length,disagreements:disagreements.map(r=>r.name),rows,productionRequests:0,d1Statements:0,externalRequestsDuringExperiment:0,limits:['matches=true is a library selection result, not an authenticated vendor outcome.','The application also requires a conditional request; the library models cache update selection, not the server validity of the supplied 304.','Library modified=false on all thirteen cases must not be interpreted as matches=true.','All observed matches values are booleans; the wrapper preserves nonbooleans as unavailable if encountered.','One bounded matrix is not general HTTP conformance or universal library equivalence.']};
+writeFileSync(output,JSON.stringify(r,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({cases:r.cases,applicationAccepted:r.applicationAccepted,libraryMatched:r.libraryMatched,disagreements:r.disagreements,sourceSha256:sha256}));

@@ -1,5 +1,7 @@
 # Analytics capability and measurement audit
 
+**Current continuation:** [Research 58](58-independent-cache-comparison-and-goal-audit.md) refreshes the method denominator, source continuity, labelled replay and full remaining-goal audit after research 57. The dated inventory and proposed work below remain historical.
+
 October 27 Pacific / October 28 UTC. Rechecks the original goal after [wire-form failure acceptance](44-wire-form-failure-fidelity.md). The previous turn was progress: source, deployment and one exact live failure/persistence check were delivered. Human trials remain explicitly deferred. This audit creates no new trial window or production query.
 
 ## The remaining gap is measurement coverage

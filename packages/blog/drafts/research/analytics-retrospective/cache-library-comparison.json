@@ -1,0 +1,161 @@
+{
+  "checkedAt": "2026-10-28T06:35:01.320Z",
+  "reference": {
+    "repository": "https://github.com/kornelski/http-cache-semantics",
+    "revision": "b1d4bd682fbab0252985de45219f4e7497c0067c",
+    "sourceSha256": "ede1cc404a492fa348eb9d97a3007a0d72aa717bd22cd86a56bd0824c19729ca",
+    "scope": "Exact downloaded source, isolated CommonJS execution; not installed as a project dependency."
+  },
+  "applicationSource": "08c0b05",
+  "conditions": "One stored GET response with no-cache, generated conditional headers, then supplied 304. Synthetic transport and representation; no vendor calls.",
+  "cases": 13,
+  "applicationAccepted": 4,
+  "libraryMatched": 6,
+  "sameAcceptedDecision": 11,
+  "disagreements": [
+    "new-strong-old-weak",
+    "unsolicited-304"
+  ],
+  "rows": [
+    {
+      "name": "same-strong-tag",
+      "applicationAccepted": true,
+      "applicationOutcome": "listed",
+      "libraryMatches": true,
+      "libraryMatchesAvailability": "boolean",
+      "libraryModified": false,
+      "sameAcceptedDecision": true,
+      "conditionalHeadersAgree": true
+    },
+    {
+      "name": "same-weak-tag",
+      "applicationAccepted": true,
+      "applicationOutcome": "listed",
+      "libraryMatches": true,
+      "libraryMatchesAvailability": "boolean",
+      "libraryModified": false,
+      "sameAcceptedDecision": true,
+      "conditionalHeadersAgree": true
+    },
+    {
+      "name": "new-weak-old-strong",
+      "applicationAccepted": true,
+      "applicationOutcome": "listed",
+      "libraryMatches": true,
+      "libraryMatchesAvailability": "boolean",
+      "libraryModified": false,
+      "sameAcceptedDecision": true,
+      "conditionalHeadersAgree": true
+    },
+    {
+      "name": "new-strong-old-weak",
+      "applicationAccepted": false,
+      "applicationOutcome": "unavailable",
+      "libraryMatches": true,
+      "libraryMatchesAvailability": "boolean",
+      "libraryModified": false,
+      "sameAcceptedDecision": false,
+      "conditionalHeadersAgree": true
+    },
+    {
+      "name": "changed-strong-tag",
+      "applicationAccepted": false,
+      "applicationOutcome": "unavailable",
+      "libraryMatches": false,
+      "libraryMatchesAvailability": "boolean",
+      "libraryModified": false,
+      "sameAcceptedDecision": true,
+      "conditionalHeadersAgree": true
+    },
+    {
+      "name": "changed-weak-tag",
+      "applicationAccepted": false,
+      "applicationOutcome": "unavailable",
+      "libraryMatches": false,
+      "libraryMatchesAvailability": "boolean",
+      "libraryModified": false,
+      "sameAcceptedDecision": true,
+      "conditionalHeadersAgree": true
+    },
+    {
+      "name": "missing-304-validator",
+      "applicationAccepted": false,
+      "applicationOutcome": "unavailable",
+      "libraryMatches": false,
+      "libraryMatchesAvailability": "boolean",
+      "libraryModified": false,
+      "sameAcceptedDecision": true,
+      "conditionalHeadersAgree": true
+    },
+    {
+      "name": "malformed-304-tag",
+      "applicationAccepted": false,
+      "applicationOutcome": "unavailable",
+      "libraryMatches": false,
+      "libraryMatchesAvailability": "boolean",
+      "libraryModified": false,
+      "sameAcceptedDecision": true,
+      "conditionalHeadersAgree": true
+    },
+    {
+      "name": "unsolicited-304",
+      "applicationAccepted": false,
+      "applicationOutcome": "unavailable",
+      "libraryMatches": true,
+      "libraryMatchesAvailability": "boolean",
+      "libraryModified": false,
+      "sameAcceptedDecision": false,
+      "conditionalHeadersAgree": true
+    },
+    {
+      "name": "unsolicited-tagged-304",
+      "applicationAccepted": false,
+      "applicationOutcome": "unavailable",
+      "libraryMatches": false,
+      "libraryMatchesAvailability": "boolean",
+      "libraryModified": false,
+      "sameAcceptedDecision": true,
+      "conditionalHeadersAgree": true
+    },
+    {
+      "name": "matching-modification-date",
+      "applicationAccepted": true,
+      "applicationOutcome": "listed",
+      "libraryMatches": true,
+      "libraryMatchesAvailability": "boolean",
+      "libraryModified": false,
+      "sameAcceptedDecision": true,
+      "conditionalHeadersAgree": true
+    },
+    {
+      "name": "changed-modification-date",
+      "applicationAccepted": false,
+      "applicationOutcome": "unavailable",
+      "libraryMatches": false,
+      "libraryMatchesAvailability": "boolean",
+      "libraryModified": false,
+      "sameAcceptedDecision": true,
+      "conditionalHeadersAgree": true
+    },
+    {
+      "name": "strong-tag-mismatch-overrides-date-match",
+      "applicationAccepted": false,
+      "applicationOutcome": "unavailable",
+      "libraryMatches": false,
+      "libraryMatchesAvailability": "boolean",
+      "libraryModified": false,
+      "sameAcceptedDecision": true,
+      "conditionalHeadersAgree": true
+    }
+  ],
+  "productionRequests": 0,
+  "d1Statements": 0,
+  "externalRequestsDuringExperiment": 0,
+  "limits": [
+    "matches=true is a library selection result, not an authenticated vendor outcome.",
+    "The application also requires a conditional request; the library models cache update selection, not the server validity of the supplied 304.",
+    "Library modified=false on all thirteen cases must not be interpreted as matches=true.",
+    "All observed matches values are booleans; the wrapper preserves nonbooleans as unavailable if encountered.",
+    "One bounded matrix is not general HTTP conformance or universal library equivalence."
+  ]
+}

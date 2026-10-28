@@ -1,0 +1,220 @@
+{
+  "checkedAt": "2026-10-28T06:37:32.405735+00:00",
+  "method": "Fresh offline replay of hash-matched original 12-control evidence; no new operator labels, traffic, packet replay or production query.",
+  "historicalObservationWindow": {
+    "start": "2026-10-27 18:19:52",
+    "endExclusive": "2026-10-27 18:28:40"
+  },
+  "historicalCounterCaptureCompletedAt": "2026-10-27T19:43:03.319307+00:00",
+  "evaluation": {
+    "profile": "evaluation-only-kind-to-operator-v2",
+    "accounting": {
+      "planned": 18,
+      "executed": 12,
+      "noAcceptedExecution": 6,
+      "completeExecuted": 12,
+      "incompleteExecuted": 0,
+      "executedCohortComplete": true,
+      "completeUnlabeled": 0,
+      "labeledEvaluable": 12,
+      "humanLabels": 0,
+      "automationLabels": 12
+    },
+    "issueCounts": {
+      "measurement-missing": 0,
+      "trial-record-missing": 0,
+      "plan-mismatch": 0,
+      "response-count": 0,
+      "observation-missing": 0,
+      "observation-duplicate": 0,
+      "owner-exclusion": 0,
+      "kind-unrecognized": 0
+    },
+    "confusion": {
+      "automation": {
+        "automation": 3,
+        "human": 0,
+        "abstain": 9
+      },
+      "human": {
+        "automation": 0,
+        "human": 0,
+        "abstain": 0
+      }
+    },
+    "decisions": {
+      "committed": 3,
+      "correct": 3,
+      "wrong": 0,
+      "abstained": 9
+    },
+    "rates": {
+      "decisionCoverage": 0.25,
+      "abstentionRate": 0.75,
+      "errorAmongDecisions": 0,
+      "automationFalsePositiveRateAmongDecidedHumans": null,
+      "humanAbstentionRate": null,
+      "automationAbstentionRate": 0.75
+    }
+  },
+  "counterfactualBrowserAsHuman": {
+    "profile": "counterfactual-browser-as-human-v1",
+    "accounting": {
+      "planned": 18,
+      "executed": 12,
+      "noAcceptedExecution": 6,
+      "completeExecuted": 12,
+      "incompleteExecuted": 0,
+      "executedCohortComplete": true,
+      "completeUnlabeled": 0,
+      "labeledEvaluable": 12,
+      "humanLabels": 0,
+      "automationLabels": 12
+    },
+    "issueCounts": {
+      "measurement-missing": 0,
+      "trial-record-missing": 0,
+      "plan-mismatch": 0,
+      "response-count": 0,
+      "observation-missing": 0,
+      "observation-duplicate": 0,
+      "owner-exclusion": 0,
+      "kind-unrecognized": 0
+    },
+    "confusion": {
+      "automation": {
+        "automation": 3,
+        "human": 9,
+        "abstain": 0
+      },
+      "human": {
+        "automation": 0,
+        "human": 0,
+        "abstain": 0
+      }
+    },
+    "decisions": {
+      "committed": 12,
+      "correct": 3,
+      "wrong": 9,
+      "abstained": 0
+    },
+    "rates": {
+      "decisionCoverage": 1,
+      "abstentionRate": 0,
+      "errorAmongDecisions": 0.75,
+      "automationFalsePositiveRateAmongDecidedHumans": null,
+      "humanAbstentionRate": null,
+      "automationAbstentionRate": 0
+    }
+  },
+  "byCondition": [
+    {
+      "condition": "normal",
+      "executedTrials": 3,
+      "responsesPrepared": 3,
+      "storedObservations": 3,
+      "ownerExcludedObservations": 3,
+      "scriptReports": 3,
+      "beaconAttemptReports": 3,
+      "queuedReports": 3,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 3
+    },
+    {
+      "condition": "block-script",
+      "executedTrials": 3,
+      "responsesPrepared": 3,
+      "storedObservations": 3,
+      "ownerExcludedObservations": 3,
+      "scriptReports": 0,
+      "beaconAttemptReports": 0,
+      "queuedReports": 0,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 0
+    },
+    {
+      "condition": "block-beacon",
+      "executedTrials": 3,
+      "responsesPrepared": 3,
+      "storedObservations": 3,
+      "ownerExcludedObservations": 3,
+      "scriptReports": 3,
+      "beaconAttemptReports": 3,
+      "queuedReports": 3,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 0
+    },
+    {
+      "condition": "http-client",
+      "executedTrials": 3,
+      "responsesPrepared": 3,
+      "storedObservations": 3,
+      "ownerExcludedObservations": 3,
+      "scriptReports": 0,
+      "beaconAttemptReports": 0,
+      "queuedReports": 0,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 0
+    }
+  ],
+  "originalPrivateInputHashesMatch": true,
+  "privateInputHashes": {
+    "trial-plan.json": "d7411ca5d5f390a1175e337ffbef880ed5a6baec2beb3a7c886f310e9a84234b",
+    "browser-executed.json": "431e6c394b8efed266bff88899ce0f759bc0ecdb8b21c9825a6165fc9ce97292",
+    "curl-executed.json": "0d8e785a874d7fd50db20886e64d0dac22d572b3c3fd03f60ed05593e53a4c7f",
+    "trial-ledger-plan.json": "dffafacabd92fcd0ddcff03261a51ad939784574ce753343c5fbac7a135efffe",
+    "trial-ledger-production.sql": "4bff097e4cf5e7efe0e673b02857b53667d6460fb487ecc6fbc7ad3b5b619768",
+    "trial-ledger-query.json": "10a885dc8d341d1f24c2b823e9427c5366bc4a94c959d032e45465ff434ffa40",
+    "trial-ledger-query-metadata.json": "08671126914ca523e0b18d8198a403b8fda4b39bf4bd34750ca02e8454021d39"
+  },
+  "classifierComponentContinuity": [
+    {
+      "file": "packages/analytics/src/classify.ts",
+      "sha256": "de1420a8d401d5e643c3ce6fc5a534701da1a4ffe8af4868e54ce24ee473d6c1",
+      "unchangedFromAcceptedCalibrationAudit": true
+    },
+    {
+      "file": "packages/analytics/src/readerkind.ts",
+      "sha256": "4dfab5541520cd4e463676bb9078e5cf3f5212100ea085fab3bcf844de0f91cb",
+      "unchangedFromAcceptedCalibrationAudit": true
+    },
+    {
+      "file": "packages/analytics/src/networks.ts",
+      "sha256": "7f22716a31ffd9caaf45eb741a3eb2778b99688cdd9418e53de19e6f7baf7cc2",
+      "unchangedFromAcceptedCalibrationAudit": true
+    },
+    {
+      "file": "packages/analytics/src/metadata.ts",
+      "sha256": "4113558b365dddad98f455529313fcd77349acd5e33c8d5526e1fb85f4076bb7",
+      "unchangedFromAcceptedCalibrationAudit": true
+    },
+    {
+      "file": "packages/analytics/src/classification-evidence.ts",
+      "sha256": "3b424ee44a8c9d2361562550fd6b4f436afcc93b9d9bc3e2edc0d9907c1b6b18",
+      "unchangedFromAcceptedCalibrationAudit": true
+    },
+    {
+      "file": "packages/analytics/src/client-form.ts",
+      "sha256": "dc15738e02cacf441630c5874d4b0c9e727776c984faac14cbd9f5baabda595b",
+      "unchangedFromAcceptedCalibrationAudit": true
+    }
+  ],
+  "evaluatorUnchangedSinceAcceptedSource": "01516b21e0df16a2c52e659a555fe785f7bee296",
+  "historicalReadCostReused": {
+    "rowsRead": 166,
+    "rowsWritten": 0
+  },
+  "newProductionStatements": 0,
+  "newVisits": 0,
+  "newHumanLabels": 0,
+  "limits": [
+    "Stored-kind evaluation; not a new end-to-end test of the changed collector/verifier.",
+    "Zero human labels leave human rates null.",
+    "Repeated selected automation controls are not population accuracy or independent readers."
+  ]
+}

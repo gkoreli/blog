@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-10-28T06:40:13.632396+00:00",
+  "sourceBaseline": "08c0b05",
+  "goalAchieved": false,
+  "previousTurn": "progress",
+  "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
+  "staticCatalogue": {
+    "recognizedDeclarations": 48,
+    "ipFeedSources": 10,
+    "declarationsWithConfiguredIpMethod": 11,
+    "documentedSigningOrigins": 2,
+    "declarationsWithDocumentedSigningMethod": 3,
+    "declarationsWithAnyConfiguredPerDeclarationMethod": 13,
+    "declarationsWithoutConfiguredPerDeclarationMethod": 35,
+    "reviewedDirectoryOrigins": 3,
+    "declarationsWithReviewedDirectoryPublisher": 5,
+    "publicDisplayApprovals": 4
+  },
+  "calibration": {
+    "executed": 12,
+    "automationLabels": 12,
+    "humanLabels": 0,
+    "correctDecisions": 3,
+    "wrongDecisions": 0,
+    "abstentions": 9,
+    "humanFalsePositiveRate": null,
+    "humanAbstentionRate": null,
+    "newEndToEndCollectorRun": false
+  },
+  "delivered": [
+    "Explicit unknown/conflict and exact declaration matching",
+    "Signature coverage, outcome and stored-profile provenance",
+    "Bounded documented IP/signing methods and reviewed publishers",
+    "Typed/reconciled report summaries, metered calculations and cache reuse",
+    "Concise article and preserved source/evidence trail"
+  ],
+  "incomplete": [
+    "Genuine signed persistence under latest collector",
+    "Request-level native managed-verifier comparison",
+    "Human/device/actual-JavaScript-off and Cloudflare RUM-receipt measurements",
+    "R1 operator/authenticity/trigger attribution",
+    "Historical proof/nonce recovery and whole-history cryptographic correctness",
+    "Applicable privacy basis, aggregate-preserving retention, rights/contact and account/provider review"
+  ],
+  "deferredByOwner": [
+    "Human-operated trials and separate owner-browser verification"
+  ],
+  "nextBoundedAction": "Revalidate actual zone editor access and candidate native cf.client.bot expression; prepare capture-only overwrite/drift controls if supported. No rule activation or trust promotion inferred.",
+  "article": {
+    "bodyWhitespaceWords": 1196,
+    "prompts": 31,
+    "sourceSha256": "ea36825ed7ba04d56a4fe8dc2fba400ffc4c24734185273cc20325c711a94f9d",
+    "unchanged": true,
+    "freshServedCheck": false
+  },
+  "runtimeUnchanged": true,
+  "productionStatements": 0,
+  "newVisits": 0,
+  "newHumanLabels": 0,
+  "liveAccountInspection": false
+}
