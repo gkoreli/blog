@@ -1,0 +1,131 @@
+{
+  "acceptedAt": "2026-10-28T06:02:24.569687+00:00",
+  "sourceCommit": "dc8df2296261dd84e5ce33100c85f4cb72301538",
+  "httpGets": 4,
+  "collectionEligibleGets": 0,
+  "reportRequests": 2,
+  "selection": {
+    "range": "7d",
+    "traffic": "all",
+    "agent": "ExaSearchBot",
+    "kind": "ai-search"
+  },
+  "cacheSequence": [
+    "MISS",
+    "HIT"
+  ],
+  "sameSocketForPair": true,
+  "sameResponseBytes": true,
+  "sameCalculationTime": true,
+  "selectedTotal": 59,
+  "jointAndClassificationSumToTotal": true,
+  "publicCostFieldsAbsent": true,
+  "articleMatchesIsolatedBuild": true,
+  "articleSha256": "3f4583bf1793da7f3aeaa7c7ddc65e5413e752d24b3ce80c55766e1c5c012a5e",
+  "articleBodyWhitespaceWords": 1200,
+  "directDiagnosticStatements": 0,
+  "humanTrials": "deferred",
+  "liveMeter": {
+    "version": "2026-10-28.1",
+    "event": "stats-report-calculation",
+    "outcome": "returned",
+    "submittedStatements": 1,
+    "returnedResults": 1,
+    "metadata": "complete",
+    "counterScope": "last-attempt",
+    "reportedRowsRead": 42672,
+    "reportedRowsWritten": 0,
+    "totalAttempts": 1,
+    "unexpectedWrites": false
+  },
+  "readinessRequest": {
+    "status": 400,
+    "state": "INVALID",
+    "measuredBeforeReportPair": true,
+    "sourceRejectsBeforeD1": true
+  },
+  "exactPrivateRayJoins": 4,
+  "tailEvents": 4,
+  "tailFilter": "Exact deployed version and dedicated acceptance header.",
+  "tailTruncatedEvents": 0,
+  "calculationEvents": 1,
+  "cacheHitCalculationEvents": 0,
+  "limits": [
+    "Last-attempt provider counters, not account billing.",
+    "Native instrumentation proves no loader invocation on HIT; log absence alone cannot prove zero global work.",
+    "One report selection, one data center and one measured attempt; no production cost benchmark or history-wide latency claim.",
+    "Extra invalid-query readiness GET proves receipt before the pair and invokes no D1."
+  ],
+  "workerVersion": "e4774cb2-6aec-4e4a-a605-d4ef9fe0b627",
+  "buildId": "ecb7acd3-99fe-473d-95a4-cabbd0bba676",
+  "nativeBuildState": "Exact downloaded build log plus source-linked Ready/100% deployment row.",
+  "nativeTrafficPercentage": 100,
+  "buildRetries": 0,
+  "buildLogSha256": "24fc1d291bf027bcf25818ac1a402116dc3117b492605269fbe3104d268b1f3d",
+  "directDiagnosticReads": 0,
+  "directDiagnosticWrites": 0,
+  "reportVersionUnchanged": "2026-10-28.5",
+  "newDiagnosticCaptureActivation": false,
+  "existingLoggingConfigurationUnchanged": true,
+  "collectorClassifierVerifierUnchanged": true,
+  "newOperationalEvents": "Closed calculation/caching metrics in existing Worker logs.",
+  "tailStopped": true,
+  "ownedTailProcessGroupAbsent": true,
+  "localPreviewStarted": false,
+  "viewportChanged": false,
+  "shapingPrompts": 31,
+  "checks": "report-cost-checks.json",
+  "privateAcceptanceArchive": {
+    "name": "2026-10-28-report-cost-acceptance",
+    "files": 36,
+    "manifestSha256": "4ae335c3284c37ab492eecd9fdcbeef4d4361ec7c9b774e0d05f3337dad56323",
+    "modes": "0700/0600",
+    "reviewDate": "2026-10-31",
+    "reviewDateIsAutomaticErasure": false
+  },
+  "selectedStoredEvidence": {
+    "declarationFilter": "ExaSearchBot; not an authenticated role",
+    "total": 59,
+    "outcomeOnlyHistory": 35,
+    "detailedHistoricalVerified": 24,
+    "userAgentBound": 0,
+    "authorityOnly": 24,
+    "nativeUnavailable": 24,
+    "nativeNotRecorded": 35,
+    "jointStoredProfiles": [
+      {
+        "kind": "ai-search",
+        "basis": "verified-outcome-only",
+        "profile": "not-recorded",
+        "views": 35
+      },
+      {
+        "kind": "ai-search",
+        "basis": "verified-ua-uncovered",
+        "profile": "2026-10-27.6",
+        "views": 11
+      },
+      {
+        "kind": "ai-search",
+        "basis": "verified-ua-uncovered",
+        "profile": "2026-10-28.6",
+        "views": 8
+      },
+      {
+        "kind": "ai-search",
+        "basis": "verified-ua-uncovered",
+        "profile": "2026-10-28.2",
+        "views": 3
+      },
+      {
+        "kind": "ai-search",
+        "basis": "verified-ua-uncovered",
+        "profile": "2026-10-28.1",
+        "views": 2
+      }
+    ],
+    "limit": "Stored outcomes, no current cryptographic replay or operator/purpose claim."
+  },
+  "additionalStatementsPerReport": 0,
+  "submittedReportStatements": 1
+}
