@@ -1,0 +1,80 @@
+{
+  "checkedAt": "2026-10-28T04:20:28.561Z",
+  "method": "Reuse the three exact-chain research-49 requests at their recorded invocation times, with the same later-captured publisher directory bytes. No new production query or visit.",
+  "result": {
+    "version": "2026-10-28.1",
+    "verifierProfile": "2026-10-28.7",
+    "scope": "supplied-observations-publisher-key",
+    "enforcement": "none",
+    "assessment": "complete",
+    "termination": "exhausted",
+    "policy": {
+      "maxObservations": 64,
+      "maxCandidatesPerObservation": 8,
+      "deadlineMs": 2000,
+      "maxAgeSeconds": 86400,
+      "headerBudgetUnits": 32768
+    },
+    "submittedObservations": 3,
+    "assessedObservations": 3,
+    "unassessedObservations": 0,
+    "missingReferenceRecords": 0,
+    "duplicateReferenceRecords": 0,
+    "invalidContextRecords": 0,
+    "headerBudgetRecords": 0,
+    "incompleteObservations": 0,
+    "verifiedObservations": 3,
+    "knownTaggedCandidates": 3,
+    "attemptedCandidates": 3,
+    "unassessedKnownCandidates": 0,
+    "verifiedCandidates": 3,
+    "notVerifiedByProfileCandidates": 0,
+    "unresolvedCandidates": 0,
+    "nonceStringCandidates": 3,
+    "nonceAbsentCandidates": 0,
+    "nonceUnusableCandidates": 0,
+    "distinctVerifiedProofs": 3,
+    "repeatedProofGroups": 0,
+    "observationsInRepeatedProofGroups": 0,
+    "repeatedProofGroupsWithChangedMethodUrlOrUserAgent": 0,
+    "distinctUsableNonces": 3,
+    "repeatedNonceGroups": 0,
+    "repeatedNonceGroupsWithDifferentProofs": 0,
+    "directoryFetches": 2
+  },
+  "parentPrivateManifestSha256": "bfab910b5cfd24f664fc70a21261b53e8a1850d51307e518e9bba83ccc81a5e1",
+  "nativeInputCommitments": [
+    {
+      "bytes": 9836,
+      "sha256": "c47e74a0ca6a066732f970614171358c3d83ca355a1c4e5fb6383214fcda7bd3"
+    },
+    {
+      "bytes": 10350,
+      "sha256": "61e6ac30522c4dfcca7ebe2b460f72804913ba9bed05d00366143bb5383fa3fe"
+    },
+    {
+      "bytes": 10370,
+      "sha256": "ba2ce9f0bc820ae421dfd12a10c91933817b58549fd48b60d63877510d0c4c96"
+    }
+  ],
+  "directories": [
+    {
+      "source": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+      "capturedAt": "2026-10-28T03:41:19.929072+00:00",
+      "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52"
+    },
+    {
+      "source": "https://ahrefs.com/.well-known/http-message-signatures-directory",
+      "capturedAt": "2026-10-28T03:41:19.852854+00:00",
+      "sha256": "a647d3d54713f9299e73dec67cdd28175cfb488ebc9692d245b82821244eb0cc"
+    }
+  ],
+  "externalRequests": 0,
+  "productionRequests": 0,
+  "d1Statements": 0,
+  "limits": [
+    "Selected three-request historical cohort, not replay prevalence or attack attribution.",
+    "No nonce or proof digests are retained in this result.",
+    "A nonrepeated proof does not establish a unique action, person or trigger."
+  ]
+}

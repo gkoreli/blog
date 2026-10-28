@@ -1,0 +1,2217 @@
+{
+  "checkedAt": "2026-10-28T04:22:21.710Z",
+  "verifierProfile": "2026-10-28.7",
+  "policyExpectationEnforced": true,
+  "method": "Independently constructed Ed25519 signatures, fixed recorded clock, default/selected/all-candidate APIs in Node and actual local workerd. No production traffic or remote discovery.",
+  "node": [
+    {
+      "name": "dictionary/string-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/absent-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/empty-string-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/integer-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/boolean-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/token-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/bytes-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/created-string",
+      "expectedReason": "invalid-created-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-created-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-created-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/expires-boolean",
+      "expectedReason": "invalid-expires-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-expires-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-expires-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/algorithm-token",
+      "expectedReason": "invalid-alg-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-alg-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-alg-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/keyid-integer",
+      "expectedReason": "invalid-keyid-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-keyid-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-keyid-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/tag-token",
+      "expectedReason": "invalid-tag-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-tag-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-tag-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "negative": 0,
+          "unresolved": null,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/missing-created",
+      "expectedReason": "missing-validity",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "missing-validity",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "missing-validity",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/other-string-tag",
+      "expectedReason": "no-web-bot-auth-signature",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "outcome": "not-applicable",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "outcome": "not-applicable",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-applicable",
+          "termination": "no-eligible-candidate",
+          "verified": 0,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/future-at-local-skew",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/future-beyond-local-skew",
+      "expectedReason": "not-yet-valid",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/expiry-at-local-skew",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/expiry-beyond-local-skew",
+      "expectedReason": "expired",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "expired",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "expired",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/one-day-lifetime",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/lifetime-over-one-day",
+      "expectedReason": "validity-policy-exceeded",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "validity-policy-exceeded",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "validity-policy-exceeded",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/zero-duration-window",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/inverted-window",
+      "expectedReason": "invalid-validity-window",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-validity-window",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-validity-window",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/string-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/absent-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/empty-string-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/integer-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/boolean-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/token-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/bytes-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/tag-token",
+      "expectedReason": "invalid-tag-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-tag-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-tag-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "negative": 0,
+          "unresolved": null,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/string-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/absent-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/empty-string-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/integer-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/boolean-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/token-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/bytes-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/tag-token",
+      "expectedReason": "invalid-tag-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-tag-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-tag-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "negative": 0,
+          "unresolved": null,
+          "fetches": 0
+        }
+      ]
+    }
+  ],
+  "native": [
+    {
+      "name": "dictionary/string-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/absent-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/empty-string-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/integer-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/boolean-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/token-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/bytes-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/created-string",
+      "expectedReason": "invalid-created-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-created-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-created-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/expires-boolean",
+      "expectedReason": "invalid-expires-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-expires-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-expires-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/algorithm-token",
+      "expectedReason": "invalid-alg-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-alg-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-alg-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/keyid-integer",
+      "expectedReason": "invalid-keyid-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-keyid-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-keyid-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/tag-token",
+      "expectedReason": "invalid-tag-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-tag-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-tag-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "negative": 0,
+          "unresolved": null,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/missing-created",
+      "expectedReason": "missing-validity",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "missing-validity",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "missing-validity",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/other-string-tag",
+      "expectedReason": "no-web-bot-auth-signature",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "outcome": "not-applicable",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "outcome": "not-applicable",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-applicable",
+          "termination": "no-eligible-candidate",
+          "verified": 0,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/future-at-local-skew",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/future-beyond-local-skew",
+      "expectedReason": "not-yet-valid",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/expiry-at-local-skew",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/expiry-beyond-local-skew",
+      "expectedReason": "expired",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "expired",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "expired",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/one-day-lifetime",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/lifetime-over-one-day",
+      "expectedReason": "validity-policy-exceeded",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "validity-policy-exceeded",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "validity-policy-exceeded",
+          "outcome": "policy-rejected",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/zero-duration-window",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/inverted-window",
+      "expectedReason": "invalid-validity-window",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-validity-window",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-validity-window",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/string-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/absent-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/empty-string-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/integer-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/boolean-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/token-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/bytes-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/tag-token",
+      "expectedReason": "invalid-tag-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-tag-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-tag-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "negative": 0,
+          "unresolved": null,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/string-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/absent-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/empty-string-nonce",
+      "expectedReason": null,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "outcome": "verified",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "negative": 0,
+          "unresolved": 0,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/integer-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/boolean-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/token-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/bytes-nonce",
+      "expectedReason": "invalid-nonce-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-nonce-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "negative": 1,
+          "unresolved": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/tag-token",
+      "expectedReason": "invalid-tag-type",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-tag-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-tag-type",
+          "outcome": "invalid",
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "negative": 0,
+          "unresolved": null,
+          "fetches": 0
+        }
+      ]
+    }
+  ],
+  "externalRequests": 0,
+  "productionRequests": 0,
+  "d1Statements": 0
+}

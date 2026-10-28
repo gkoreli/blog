@@ -9,6 +9,9 @@ import { directoryPublicationEvidence, type DirectoryPublicationEvidence } from 
 export const FAILURE_OUTCOMES = {
   'missing-signature-agent': 'invalid', 'missing-signature-input': 'invalid', 'missing-signature': 'invalid',
   'malformed-signature-agent': 'invalid', 'malformed-signature-fields': 'invalid',
+  'invalid-created-type': 'invalid', 'invalid-expires-type': 'invalid',
+  'invalid-alg-type': 'invalid', 'invalid-keyid-type': 'invalid',
+  'invalid-nonce-type': 'invalid', 'invalid-tag-type': 'invalid',
   'duplicate-component': 'invalid',
   'malformed-field-component': 'invalid', 'invalid-request-target': 'invalid',
   'invalid-validity-window': 'invalid', 'missing-keyid': 'invalid', 'invalid-signature-agent': 'invalid', 'signature-invalid': 'invalid',

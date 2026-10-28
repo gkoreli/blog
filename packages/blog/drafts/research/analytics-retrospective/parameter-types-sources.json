@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-28T04:24:39.892095+00:00",
+  "method": "Read RFC sections and active WG status online; reuse immutable/versioned primary-source captures and execute the existing pinned Python checkout after all eighteen source hashes match.",
+  "reusedPrimaryCaptures": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9421.txt",
+      "capturedAt": "2026-10-28T04:04:12.556910+00:00",
+      "status": 200,
+      "sha256": "612655786bf4293bfc486e4177571467fbb3de6e6f0eea90cb74c346a34fdf3c",
+      "bytes": 241160
+    },
+    {
+      "url": "https://www.ietf.org/archive/id/draft-ietf-webbotauth-httpsig-protocol-00.txt",
+      "capturedAt": "2026-10-28T04:10:55.551190+00:00",
+      "status": 200,
+      "sha256": "3021fd94cdffdb2eb030dec68b1a5c968f2348502dd94c481e2085ec7ddd90a0",
+      "bytes": 95603,
+      "statusAtReview": "Active WG draft; replaces individual revision 02"
+    }
+  ],
+  "pinnedImplementation": {
+    "repository": "pyauth/http-message-signatures",
+    "commit": "1de433d9a49fd608475c6054ab14a1652c088844",
+    "sourceFilesRecheckedPerReferenceRun": 18,
+    "relevantCode": {
+      "path": "http_message_signatures/signatures.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/signatures.py",
+      "sha256": "1261a57ecbf11af40fd24d0c1139c0d6b673f8f8bf95aec8bbde064f922f71cc",
+      "bytes": 33670
+    }
+  },
+  "referenceClockPolicies": [
+    {
+      "defaultSeconds": 5,
+      "source": "Pinned HTTPMessageVerifier.max_clock_skew"
+    },
+    {
+      "explicitComparisonSeconds": 60,
+      "reason": "Match the local profile policy without replacing the default result."
+    }
+  ],
+  "newPrimaryNetworkCaptures": 0,
+  "limits": [
+    "RFC and WG source hashes are reused captures, not fresh downloads.",
+    "Pinned generic RFC results are not a Cloudflare/Akamai managed-verifier oracle."
+  ]
+}

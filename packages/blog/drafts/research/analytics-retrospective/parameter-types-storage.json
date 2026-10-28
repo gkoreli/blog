@@ -1,0 +1,166 @@
+{
+  "checkedAt": "2026-10-28T04:22:24.605Z",
+  "fixtureProfile": "parameters",
+  "method": "Actual collector, local workerd/WebCrypto and D1; independent proofs, intercepted no-store directory per control, awaited actual waitUntil work and exact returned text row reference. All controls referral-excluded; optional diagnostics off.",
+  "trials": [
+    {
+      "name": "dictionary/string-nonce",
+      "collectionVersion": "2026-10-28.9",
+      "verifierProfile": "2026-10-28.7",
+      "status": "verified",
+      "outcome": "verified",
+      "reason": null,
+      "reasons": [],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "dictionary/absent-nonce",
+      "collectionVersion": "2026-10-28.9",
+      "verifierProfile": "2026-10-28.7",
+      "status": "verified",
+      "outcome": "verified",
+      "reason": null,
+      "reasons": [],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "dictionary/integer-nonce",
+      "collectionVersion": "2026-10-28.9",
+      "verifierProfile": "2026-10-28.7",
+      "status": "unverified",
+      "outcome": "invalid",
+      "reason": "invalid-nonce-type",
+      "reasons": [
+        "invalid-nonce-type"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "dictionary/boolean-nonce",
+      "collectionVersion": "2026-10-28.9",
+      "verifierProfile": "2026-10-28.7",
+      "status": "unverified",
+      "outcome": "invalid",
+      "reason": "invalid-nonce-type",
+      "reasons": [
+        "invalid-nonce-type"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "dictionary/token-nonce",
+      "collectionVersion": "2026-10-28.9",
+      "verifierProfile": "2026-10-28.7",
+      "status": "unverified",
+      "outcome": "invalid",
+      "reason": "invalid-nonce-type",
+      "reasons": [
+        "invalid-nonce-type"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "dictionary/bytes-nonce",
+      "collectionVersion": "2026-10-28.9",
+      "verifierProfile": "2026-10-28.7",
+      "status": "unverified",
+      "outcome": "invalid",
+      "reason": "invalid-nonce-type",
+      "reasons": [
+        "invalid-nonce-type"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "dictionary/created-string",
+      "collectionVersion": "2026-10-28.9",
+      "verifierProfile": "2026-10-28.7",
+      "status": "unverified",
+      "outcome": "invalid",
+      "reason": "invalid-created-type",
+      "reasons": [
+        "invalid-created-type"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "dictionary/expires-boolean",
+      "collectionVersion": "2026-10-28.9",
+      "verifierProfile": "2026-10-28.7",
+      "status": "unverified",
+      "outcome": "invalid",
+      "reason": "invalid-expires-type",
+      "reasons": [
+        "invalid-expires-type"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "dictionary/algorithm-token",
+      "collectionVersion": "2026-10-28.9",
+      "verifierProfile": "2026-10-28.7",
+      "status": "unverified",
+      "outcome": "invalid",
+      "reason": "invalid-alg-type",
+      "reasons": [
+        "invalid-alg-type"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "dictionary/keyid-integer",
+      "collectionVersion": "2026-10-28.9",
+      "verifierProfile": "2026-10-28.7",
+      "status": "unverified",
+      "outcome": "invalid",
+      "reason": "invalid-keyid-type",
+      "reasons": [
+        "invalid-keyid-type"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "dictionary/tag-token",
+      "collectionVersion": "2026-10-28.9",
+      "verifierProfile": "2026-10-28.7",
+      "status": "unverified",
+      "outcome": "invalid",
+      "reason": "invalid-tag-type",
+      "reasons": [
+        "invalid-tag-type"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    }
+  ],
+  "exactReferenceQueryControl": {
+    "templateSha256": "ec574d135ba3f6ea3917c97b9c91d8bbbd0b28cb6baa58aa7b69b06178dbd775",
+    "unsafeIntegerNeighborsPreserved": true,
+    "primaryKeyPlan": true,
+    "rowsRead": 1,
+    "rowsWritten": 0
+  },
+  "externalRequests": 0,
+  "productionRequests": 0
+}

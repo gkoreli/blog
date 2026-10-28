@@ -49,8 +49,12 @@ for trial in json.load(sys.stdin)["trials"]:
                 return super().validate_created_and_expires(sig_input, max_age)
 
     verifier = RecordedVerifier(signature_algorithm=algorithms.ED25519, key_resolver=CapturedKeys())
+    if "clockSkewSeconds" in trial:
+        assert type(trial["clockSkewSeconds"]) is int and 0 <= trial["clockSkewSeconds"] <= 60
+        verifier.max_clock_skew = datetime.timedelta(seconds=trial["clockSkewSeconds"])
     message = SimpleNamespace(method=trial["method"], url=trial["url"], headers=trial["headers"])
     result = {"vendor": trial["vendor"], "variant": trial["variant"]}
+    result["referenceClockSkewSeconds"] = int(verifier.max_clock_skew.total_seconds())
     try:
         proofs = verifier.verify(message, expect_tag="web-bot-auth", max_age=datetime.timedelta(days=1), require_components=("@authority",))
         result.update(returnedResults=len(proofs), error=None)

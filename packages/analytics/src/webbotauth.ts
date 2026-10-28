@@ -78,6 +78,28 @@ interface SignatureCandidate {
   signature: Uint8Array;
 }
 
+/** RFC 9421 §2.3 types are distinct from Structured Field syntax and from
+ * application presence/algorithm/age policy. Unknown extension parameters are
+ * not assigned a type by this registry.
+ */
+function malformedSignatureParameterReason(input: InnerList): string | null {
+  for (const parameter of input.parameters) {
+    switch (parameter.name) {
+      case 'created': if (parameter.value.type !== 'integer') return 'invalid-created-type'; break;
+      case 'expires': if (parameter.value.type !== 'integer') return 'invalid-expires-type'; break;
+      case 'alg': if (parameter.value.type !== 'string') return 'invalid-alg-type'; break;
+      case 'keyid': if (parameter.value.type !== 'string') return 'invalid-keyid-type'; break;
+      case 'nonce': if (parameter.value.type !== 'string') return 'invalid-nonce-type'; break;
+      case 'tag': if (parameter.value.type !== 'string') return 'invalid-tag-type'; break;
+    }
+  }
+  return null;
+}
+
+function malformedTag(candidates: readonly SignatureCandidate[]): boolean {
+  return candidates.some(candidate => candidate.input.parameters.some(parameter => parameter.name === 'tag' && parameter.value.type !== 'string'));
+}
+
 interface DirectoryEntry {
   expiresAt: number;
   keyPolicy: typeof PUBLIC_KEY_POLICY_VERSION;
@@ -797,6 +819,8 @@ async function verifyCandidate(
   nowMs: number,
   options: WebBotAuthOptions,
 ): Promise<WebBotAuthResult> {
+  const parameterReason = malformedSignatureParameterReason(candidate.input);
+  if (parameterReason !== null) return { status: 'unverified', reason: parameterReason };
   const tag = stringValue(parameter(candidate.input.parameters, 'tag'));
   if (tag !== 'web-bot-auth') return { status: 'unverified', reason: 'not-web-bot-auth' };
   const created = integerValue(parameter(candidate.input.parameters, 'created'));
@@ -890,7 +914,7 @@ export async function verifyWebBotAuth(
     if (tagged.length === 0) {
       return {
         status: 'unverified',
-        reason: 'no-web-bot-auth-signature',
+        reason: malformedTag(candidates) ? 'invalid-tag-type' : 'no-web-bot-auth-signature',
       };
     }
 
@@ -948,7 +972,9 @@ function candidateContext(request: Request): CandidateContext {
   if (candidates === null) return { status: 'unverified', reason: 'malformed-signature-fields' };
   const inputs = parseDictionary(input), signatures = parseDictionary(signature);
   if (inputs === null || signatures === null) return { status: 'unverified', reason: 'malformed-signature-fields' };
-  return { status: 'ready', parsedAgent, candidates, inputMembers: inputs.length, signatureMembers: signatures.length, tagged: candidates.filter(candidate => stringValue(parameter(candidate.input.parameters, 'tag')) === 'web-bot-auth') };
+  const tagged = candidates.filter(candidate => stringValue(parameter(candidate.input.parameters, 'tag')) === 'web-bot-auth');
+  if (tagged.length === 0 && malformedTag(candidates)) return { status: 'unverified', reason: 'invalid-tag-type' };
+  return { status: 'ready', parsedAgent, candidates, inputMembers: inputs.length, signatureMembers: signatures.length, tagged };
 }
 
 /** Labels are private, untrusted selectors. Never put this inspection in public telemetry. */
@@ -972,7 +998,10 @@ export async function verifyWebBotAuthCandidate(request: Request, label: string,
     const context = candidateContext(request);
     if (context.status !== 'ready') return context;
     const candidate = context.tagged.find(candidate => candidate.label === label);
-    if (candidate === undefined) return { status: 'unverified', reason: 'no-web-bot-auth-signature' };
+    if (candidate === undefined) {
+      const selected = context.candidates.find(candidate => candidate.label === label);
+      return { status: 'unverified', reason: selected !== undefined && malformedTag([selected]) ? 'invalid-tag-type' : 'no-web-bot-auth-signature' };
+    }
     const nowMs = verificationTime(options.now);
     if (nowMs === null) return { status: 'unverified', reason: 'invalid-verification-time' };
     return await verifyCandidate(request, candidate, context.parsedAgent, options.fetcher ?? fetch, options.cache ?? createWebBotAuthCache(), nowMs, options);
