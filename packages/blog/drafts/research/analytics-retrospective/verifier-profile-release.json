@@ -1,0 +1,66 @@
+{
+  "acceptedAt": "2026-10-28T04:57:12.633712+00:00",
+  "sourceCommit": "281dcdd956799ca44c290f555e78b14d026f3f77",
+  "httpGets": 6,
+  "collectionEligibleGets": 0,
+  "reportRequests": 2,
+  "cacheSequence": [
+    "MISS",
+    "HIT"
+  ],
+  "sameConnection": true,
+  "sameResponseBytes": true,
+  "sameCalculationTime": true,
+  "selectedTotal": 12,
+  "jointProfileRows": 5,
+  "jointAndClassificationSumToTotal": true,
+  "verifierProfile": {
+    "current": "2026-10-28.7",
+    "assessment": "stored-profile-not-reverified"
+  },
+  "closedProfileValuesOnly": true,
+  "articleMatchesIsolatedBuild": true,
+  "articleSha256": "1fa371b329e2570e310639bfd6071f4409a83934319edcb30b85dd72a0eb665b",
+  "servedStatsClientMatchesIsolatedBuild": true,
+  "statsClientSha256": "574bb12e166c41984f870f34f08f026bcaf3fd635bd7228993a1219333800448",
+  "servedMainCssMatchesIsolatedBuild": true,
+  "mainCssSha256": "2b4cdaee8761a007fd2e34e3842433ff3d127b9d94077a5318f909404f7d4fd9",
+  "servedStaticMethodologyPresent": true,
+  "livePublicFillRowsRead": "not available from this endpoint; additional to 8163 direct diagnostic reads",
+  "newDirectDiagnosticStatements": 0,
+  "humanTrials": "deferred",
+  "limits": [
+    "The synthetic local browser fixture is not production operator evidence.",
+    "No eligible page visit, signature replay, native-verifier agreement or current signed persistence is inferred.",
+    "HTTP cache reuse is one connection and data center, not a global read budget.",
+    "The collector/verifier profiles did not change; no new optional-capture activation or exact-version binding inspection was performed in this report-only iteration."
+  ],
+  "workerVersion": "1d5ffb99-e733-4f87-bc7b-9587c5ea18eb",
+  "buildId": "6fbe2000-c98f-41d6-a114-142989cf28ae",
+  "buildState": "Ready; source-linked deployment row and downloaded exact-build log",
+  "nativeTrafficPercentage": 100,
+  "buildRetries": 0,
+  "versionJoin": "Source-linked Ready/100% deployment row matches the full Current Version ID in the directly downloaded exact-build log. Stale copied clipboard content was rejected.",
+  "selectedFilters": {
+    "range": "7d",
+    "traffic": "all",
+    "path": "/privacy"
+  },
+  "articleBodyWhitespaceWords": 1200,
+  "shapingPrompts": 31,
+  "directDeltaDiagnosticReads": 8163,
+  "directDeltaDiagnosticWrites": 0,
+  "localFixtureServerStopped": true,
+  "localQaTabClosed": true,
+  "viewportOverrideReset": true,
+  "newTailProcesses": 0,
+  "privateAcceptanceArchive": {
+    "name": "2026-10-28-verifier-profile-acceptance",
+    "files": 50,
+    "manifestSha256": "de279fe75fb4d19cb8b0b53ca026e59c3e95e2c01abbdeb834a4f384bea2a6c9",
+    "modes": "0700/0600",
+    "reviewDate": "2026-10-31",
+    "reviewDateIsAutomaticErasure": false
+  },
+  "checks": "verifier-profile-checks.json"
+}
