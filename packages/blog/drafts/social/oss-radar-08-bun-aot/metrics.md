@@ -29,4 +29,14 @@ The requested investigation is complete. Owner-operated moderator contact and a 
 
 ## Proposed next actions
 
-[Three concrete actions](next-actions.md) replace the earlier broad adoption suggestions with two checked conversation URLs, exact short reply drafts and a specific HN clarification route. All remain unsent. They are new proposals, separate from completed publication and measurement work.
+[Three concrete actions](next-actions.md) replaced the earlier broad adoption suggestions with two checked conversation URLs, exact short reply drafts and a specific HN clarification route. They were initially unsent proposals; the October 28 execution record below supersedes that state, separately from the earlier publication and measurement work.
+
+## October 28 follow-up execution
+
+Goga approved the final plain-language drafts and explicitly requested posting both replies and sending the email. All three actions are complete:
+
+- [Reply to karn](https://x.com/GogaKoreli/status/2115486760872665345): text, article card and thread context verified on the permanent page.
+- [Reply to Colin](https://x.com/GogaKoreli/status/2115486762508415228): text, reproduction link and thread context verified on the permanent page.
+- HN clarification email: sent to `hn@ycombinator.com` with subject `Are my submissions being blocked?`; Gmail's `SENT` label, recipient, subject and send date verified by a separate metadata read. Delivery, reading and a moderator response are unverified. The private receipt retains the message identifiers and exact outgoing text.
+
+See [the executed copy and receipts](next-actions.md). These follow-ups do not update the earlier traction snapshot or establish new adoption. No new HN post, vote solicitation, deletion, repost or monitoring automation was performed. Private proof files are outside Git under `~/.local/share/gkoreli/social-evidence/2026-10-28-bun-aot-followups/`.
