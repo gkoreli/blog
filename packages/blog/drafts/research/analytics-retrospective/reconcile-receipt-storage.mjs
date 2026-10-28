@@ -7,8 +7,8 @@ import { normalizeRetainedReceiptCopies } from './compare-receipt-captures.mjs';
 import { isDeepStrictEqual } from 'node:util';
 
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
-const profiles = new Set(['2026-10-27.6','2026-10-27.7','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','not-applicable']);
-const collections = new Set(['2026-10-27.9','2026-10-27.10','2026-10-27.11','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4']);
+const profiles = new Set(['2026-10-27.6','2026-10-27.7','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','not-applicable']);
+const collections = new Set(['2026-10-27.9','2026-10-27.10','2026-10-27.11','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5']);
 const paths = ['version','classifierProfile','readerKind',
   ...['profile','method','reviewedOn','configuredDeclarationCount','unmappedDeclarationCount','status'].map(key=>'directoryPublication.'+key),
   ...['status','candidateCount','candidateNames','categoryAgreement'].map(key=>'declarations.'+key),

@@ -86,6 +86,7 @@ interface DirectoryEntry {
 
 interface KeyEntry {
   expiresAt: number;
+  notBefore: number | null;
   key: CryptoKey;
   keyPolicy: typeof PUBLIC_KEY_POLICY_VERSION;
 }
@@ -606,9 +607,9 @@ function directoryKey(value: unknown): { jwk: JsonWebKey; metadataRejected: bool
     jwk.use = value.use;
   }
   if (value.alg !== undefined) {
-    if (value.alg !== 'EdDSA' && value.alg !== 'Ed25519') return rejected;
-    // Both JOSE names denote this fixed curve. Older workerd imports accept
-    // EdDSA only; validate the original constraint before adapting its alias.
+    if (value.alg !== 'EdDSA' && value.alg !== 'Ed25519' && value.alg !== 'ed25519') return rejected;
+    // JOSE names and the WG draft's HTTP Signature Algorithm token denote this
+    // fixed curve. Validate first, then adapt the older workerd import alias.
     jwk.alg = 'EdDSA';
   }
   if (value.key_ops !== undefined) {
@@ -694,12 +695,12 @@ async function fetchDirectory(
       for (const value of body.keys) {
         const key = directoryKey(value);
         if (key === null || !isRecord(value)) continue;
-        if (value.nbf !== undefined && !Number.isSafeInteger(value.nbf)) continue;
-        if (value.exp !== undefined && !Number.isSafeInteger(value.exp)) continue;
-        const notBefore = typeof value.nbf === 'number' ? value.nbf : null;
-        const expires = typeof value.exp === 'number' ? value.exp : null;
-        if (notBefore !== null && expires !== null && expires <= notBefore) continue;
-        keys.push({ ...key, notBefore, expires });
+        const notBefore = typeof value.nbf === 'number' && Number.isSafeInteger(value.nbf) ? value.nbf : null;
+        const expires = typeof value.exp === 'number' && Number.isSafeInteger(value.exp) ? value.exp : null;
+        const validityRejected = value.nbf !== undefined && notBefore === null
+          || value.exp !== undefined && expires === null
+          || notBefore !== null && expires !== null && expires <= notBefore;
+        keys.push({ ...key, metadataRejected: key.metadataRejected || validityRejected, notBefore, expires });
       }
       const control = response.headers.get('Cache-Control') ?? '';
       const maxAge = /(?:^|,)\s*max-age\s*=\s*"?(\d+)"?(?:\s*,|\s*$)/i.exec(control);
@@ -736,7 +737,10 @@ async function resolveVerificationKey(
 ): Promise<{ key: CryptoKey } | { reason: string }> {
   const cacheKey = pairKey(directoryUrl, keyid);
   const cached = cache.keys.get(cacheKey);
-  if (cached !== undefined && cached.expiresAt > nowMs && cached.keyPolicy === PUBLIC_KEY_POLICY_VERSION) return { key: cached.key };
+  if (cached !== undefined && cached.expiresAt > nowMs && cached.keyPolicy === PUBLIC_KEY_POLICY_VERSION) {
+    if (cached.notBefore !== null && nowMs / 1000 < cached.notBefore) return { reason: 'key-not-yet-valid' };
+    return { key: cached.key };
+  }
   if (cached !== undefined) cache.keys.delete(cacheKey);
 
   const previousDirectory = cache.directories.get(directoryUrl);
@@ -767,13 +771,16 @@ async function resolveVerificationKey(
   if (matching.some(key => key.metadataRejected)) return { reason: matching.some(key => !key.metadataRejected) ? 'key-metadata-conflict' : 'key-metadata-rejected' };
   // The same bytes can have another thumbprint if their x encoding changes.
   if (knownTestPublicKey(selected.jwk)) return { reason: 'known-test-key' };
+  // Local admission policy: do not choose between different advertised windows
+  // for one key identity by directory order, even if both are currently active.
+  if (matching.some(key => key.notBefore !== selected.notBefore || key.expires !== selected.expires)) return { reason: 'key-validity-conflict' };
   if (selected.notBefore !== null && nowMs / 1000 < selected.notBefore) return { reason: 'key-not-yet-valid' };
   if (selected.expires !== null && nowMs / 1000 >= selected.expires) return { reason: 'key-expired' };
   {
     try {
       const key = await crypto.subtle.importKey('jwk', selected.jwk, 'Ed25519', false, ['verify']);
       if (cache.keys.size >= 256) cache.keys.delete(cache.keys.keys().next().value ?? '');
-      cache.keys.set(cacheKey, { key, keyPolicy: PUBLIC_KEY_POLICY_VERSION, expiresAt: Math.min(directory.expiresAt, selected.expires === null ? Infinity : selected.expires * 1000) });
+      cache.keys.set(cacheKey, { key, notBefore: selected.notBefore, keyPolicy: PUBLIC_KEY_POLICY_VERSION, expiresAt: Math.min(directory.expiresAt, selected.expires === null ? Infinity : selected.expires * 1000) });
       return { key };
     } catch {
       return { reason: 'key-invalid' };

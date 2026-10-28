@@ -1,0 +1,1205 @@
+{
+  "checkedAt": "2026-10-28T02:01:52.999Z",
+  "verifierProfile": "2026-10-28.5",
+  "policyExpectationEnforced": true,
+  "method": "Actual independent proof across default, selected and audit APIs; directory order/validity/algorithm metadata varies. Separate warmed-versus-fresh cache traces move caller time across key activation or expiry. Node and local workerd, intercepted transport only. No production clock failure or native-provider agreement claim.",
+  "node": {
+    "rows": [
+      {
+        "name": "single-active",
+        "expectedReason": null,
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "profileNegative": 0,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "identical-duplicates",
+        "expectedReason": null,
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "profileNegative": 0,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "expired-first",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "active-first-expired-second",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "future-first",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "active-first-future-second",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "different-active-windows",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "unbounded-first",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "bounded-first",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "malformed-activation",
+        "expectedReason": "key-metadata-rejected",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "fractional-expiry",
+        "expectedReason": "key-metadata-rejected",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "empty-window",
+        "expectedReason": "key-metadata-rejected",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "malformed-duplicate-first",
+        "expectedReason": "key-metadata-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-metadata-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-metadata-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "malformed-duplicate-second",
+        "expectedReason": "key-metadata-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-metadata-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-metadata-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "unrelated-expired-key",
+        "expectedReason": null,
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "profileNegative": 0,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "activation-equality",
+        "expectedReason": null,
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "profileNegative": 0,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "expiry-equality",
+        "expectedReason": "key-expired",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-expired",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-expired",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "profileNegative": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "absent-window",
+        "expectedReason": null,
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "profileNegative": 0,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "draft-algorithm-name",
+        "expectedReason": null,
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "profileNegative": 0,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "unknown-algorithm",
+        "expectedReason": "key-metadata-rejected",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      }
+    ],
+    "traces": [
+      {
+        "mode": "default",
+        "boundary": "activation",
+        "warm": {
+          "status": "verified",
+          "reason": null
+        },
+        "cached": {
+          "status": "unverified",
+          "reason": "key-not-yet-valid"
+        },
+        "fresh": {
+          "status": "unverified",
+          "reason": "key-not-yet-valid"
+        },
+        "fetches": 2,
+        "expectedReason": "key-not-yet-valid"
+      },
+      {
+        "mode": "default",
+        "boundary": "expiry",
+        "warm": {
+          "status": "verified",
+          "reason": null
+        },
+        "cached": {
+          "status": "unverified",
+          "reason": "key-expired"
+        },
+        "fresh": {
+          "status": "unverified",
+          "reason": "key-expired"
+        },
+        "fetches": 2,
+        "expectedReason": "key-expired"
+      },
+      {
+        "mode": "selected",
+        "boundary": "activation",
+        "warm": {
+          "status": "verified",
+          "reason": null
+        },
+        "cached": {
+          "status": "unverified",
+          "reason": "key-not-yet-valid"
+        },
+        "fresh": {
+          "status": "unverified",
+          "reason": "key-not-yet-valid"
+        },
+        "fetches": 2,
+        "expectedReason": "key-not-yet-valid"
+      },
+      {
+        "mode": "selected",
+        "boundary": "expiry",
+        "warm": {
+          "status": "verified",
+          "reason": null
+        },
+        "cached": {
+          "status": "unverified",
+          "reason": "key-expired"
+        },
+        "fresh": {
+          "status": "unverified",
+          "reason": "key-expired"
+        },
+        "fetches": 2,
+        "expectedReason": "key-expired"
+      }
+    ]
+  },
+  "native": {
+    "rows": [
+      {
+        "name": "single-active",
+        "expectedReason": null,
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "profileNegative": 0,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "identical-duplicates",
+        "expectedReason": null,
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "profileNegative": 0,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "expired-first",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "active-first-expired-second",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "future-first",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "active-first-future-second",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "different-active-windows",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "unbounded-first",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "bounded-first",
+        "expectedReason": "key-validity-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-validity-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "malformed-activation",
+        "expectedReason": "key-metadata-rejected",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "fractional-expiry",
+        "expectedReason": "key-metadata-rejected",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "empty-window",
+        "expectedReason": "key-metadata-rejected",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "malformed-duplicate-first",
+        "expectedReason": "key-metadata-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-metadata-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-metadata-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "malformed-duplicate-second",
+        "expectedReason": "key-metadata-conflict",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-metadata-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-metadata-conflict",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "unrelated-expired-key",
+        "expectedReason": null,
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "profileNegative": 0,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "activation-equality",
+        "expectedReason": null,
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "profileNegative": 0,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "expiry-equality",
+        "expectedReason": "key-expired",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-expired",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-expired",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "profileNegative": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "absent-window",
+        "expectedReason": null,
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "profileNegative": 0,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "draft-algorithm-name",
+        "expectedReason": null,
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "profileNegative": 0,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "unknown-algorithm",
+        "expectedReason": "key-metadata-rejected",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-metadata-rejected",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 0,
+            "profileNegative": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      }
+    ],
+    "traces": [
+      {
+        "mode": "default",
+        "boundary": "activation",
+        "warm": {
+          "status": "verified",
+          "reason": null
+        },
+        "cached": {
+          "status": "unverified",
+          "reason": "key-not-yet-valid"
+        },
+        "fresh": {
+          "status": "unverified",
+          "reason": "key-not-yet-valid"
+        },
+        "fetches": 2,
+        "expectedReason": "key-not-yet-valid"
+      },
+      {
+        "mode": "default",
+        "boundary": "expiry",
+        "warm": {
+          "status": "verified",
+          "reason": null
+        },
+        "cached": {
+          "status": "unverified",
+          "reason": "key-expired"
+        },
+        "fresh": {
+          "status": "unverified",
+          "reason": "key-expired"
+        },
+        "fetches": 2,
+        "expectedReason": "key-expired"
+      },
+      {
+        "mode": "selected",
+        "boundary": "activation",
+        "warm": {
+          "status": "verified",
+          "reason": null
+        },
+        "cached": {
+          "status": "unverified",
+          "reason": "key-not-yet-valid"
+        },
+        "fresh": {
+          "status": "unverified",
+          "reason": "key-not-yet-valid"
+        },
+        "fetches": 2,
+        "expectedReason": "key-not-yet-valid"
+      },
+      {
+        "mode": "selected",
+        "boundary": "expiry",
+        "warm": {
+          "status": "verified",
+          "reason": null
+        },
+        "cached": {
+          "status": "unverified",
+          "reason": "key-expired"
+        },
+        "fresh": {
+          "status": "unverified",
+          "reason": "key-expired"
+        },
+        "fetches": 2,
+        "expectedReason": "key-expired"
+      }
+    ]
+  },
+  "externalRequests": 0,
+  "productionRequests": 0,
+  "d1Statements": 0
+}

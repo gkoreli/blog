@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-28T02:04:25.870934+00:00",
+  "sources": [
+    {
+      "url": "https://datatracker.ietf.org/doc/html/draft-ietf-webbotauth-httpsig-protocol-00#section-5.5",
+      "scope": "Active September 2026 Internet-Draft; directory example, rotation and directory alg HTTP Signature Algorithm namespace. Does not dictate our duplicate-window policy."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7517.html#section-4.5",
+      "scope": "Different-key identifier recommendations and exceptions; not a MUST banning all duplicate identities."
+    },
+    {
+      "url": "https://www.w3.org/TR/webcrypto/#ed25519-operations",
+      "scope": "Previously reviewed Level 2 working draft uses EdDSA/Ed25519 import aliases; contrast with the WG HTTP algorithm token, not an assertion of namespace identity."
+    }
+  ],
+  "runtimeReference": "key-metadata-runtime.json",
+  "runtimeChanged": false,
+  "noProductionNativeEquivalenceClaim": true
+}
