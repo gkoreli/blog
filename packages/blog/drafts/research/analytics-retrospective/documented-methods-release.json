@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-28T02:52:46.741531+00:00",
+  "sourceCommit": "af9604835d3d424f4d931cd880db745d59ce3265",
+  "workerVersion": "7493e47d-3c4f-4057-88fd-29ea7637fa12",
+  "deploymentId": "49ffbda7-7ece-4847-9774-f7f6b3c6740a",
+  "deploymentActivatedAt": "2026-10-28T02:51:51.239375Z",
+  "trafficPercentage": 100,
+  "nativeBuildStatus": "Ready",
+  "nativeBuildDurationSeconds": 44,
+  "served": [
+    {
+      "path": "/building-blog-analytics-what-the-numbers-can-prove.md",
+      "status": 200,
+      "sha256": "081c2ff160cd3b2cb678b6f54a9b9443b0095eaaf0d37a32831c8850d52c73e4",
+      "bytes": 13669,
+      "matchesIsolatedBuild": true,
+      "newResearchLink": true
+    },
+    {
+      "path": "/stats",
+      "status": 200,
+      "sha256": "90da602c35df4ca81f7b78ae2292b1d646042a0453f19879e62e7bc9b0b476cf",
+      "bytes": 25763,
+      "newMethodNotePresent": true
+    },
+    {
+      "path": "/stats.js",
+      "status": 200,
+      "sha256": "d08635f176d6cae68d28a9fc78c1755993c1aea5dbdda15c031aaf5c6e88add9",
+      "bytes": 83822,
+      "matchesIsolatedBuild": true,
+      "conflictLabelsPresent": true
+    }
+  ],
+  "diagnosticD1Statements": 0,
+  "productionHttpGets": 3,
+  "eligiblePublicationProbeGets": 1,
+  "probeReferrerPolicy": "traffic2cash.xyz exclusion supplied; persistence/exclusion of this particular probe not read back",
+  "liveReportApiCalls": 0,
+  "humanTrials": "deferred",
+  "limits": [
+    "HTTP assets and activation do not establish authentic vendor proof or new-method production persistence.",
+    "Local native controls remain distinct from production measurements."
+  ],
+  "optionalBindingsAbsent": true
+}
