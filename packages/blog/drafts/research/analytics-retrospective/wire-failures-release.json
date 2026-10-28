@@ -1,0 +1,114 @@
+{
+  "acceptedAt": "2026-10-28T02:23:45.236534+00:00",
+  "sourceCommit": "ad18af6ce0630234c4f2b2378b6467233b594cda",
+  "branch": "main",
+  "workerVersion": "e6073f71-c4c0-4a83-85ed-8c66ea986e4c",
+  "collectionVersion": "2026-10-28.6",
+  "verifierProfile": "2026-10-28.6",
+  "keyPolicyUnchanged": "2026-10-28.2",
+  "nativeBuild": {
+    "status": "Ready",
+    "duration": "56s",
+    "sourceAssociation": "Exact native source row commit link and fresh acknowledged UUID Copy"
+  },
+  "activation": {
+    "createdOn": "2026-10-28T02:19:23.302819Z",
+    "percentage": 100,
+    "method": "Wrangler latest created_on, matching native copied UUID"
+  },
+  "bindingNames": [
+    "ADMIN_SECRET",
+    "ANALYTICS_HASH_KEY",
+    "ASSETS",
+    "DB",
+    "RESEND_API_KEY",
+    "SUBSCRIBE_RATE_LIMITER",
+    "TURNSTILE_SECRET_KEY"
+  ],
+  "optionalBindingsAbsent": true,
+  "control": {
+    "count": 1,
+    "startedAt": "2026-10-28T02:20:58.006737+00:00",
+    "finishedAt": "2026-10-28T02:20:58.207208+00:00",
+    "httpStatus": 200,
+    "kind": "Referral-excluded scripted GET; bare-URI agent field and malformed signature Structured Field",
+    "humanOperated": false,
+    "vendorAuthenticated": false,
+    "acknowledgedBaseObservations": 1
+  },
+  "transport": {
+    "checkedAt": "2026-10-28T02:23:13.061Z",
+    "asciiSignatureFieldsCompared": 3,
+    "asciiSignatureFieldsMatch": true,
+    "uniqueControlHeaderMatches": true,
+    "eventWorkerMatchesAcceptedVersion": true,
+    "truncated": false,
+    "limits": [
+      "Exact control ASCII values only; no general Latin-1/header transformation fidelity claim.",
+      "One filtered event does not establish provider retention or collection completeness."
+    ]
+  },
+  "persistence": {
+    "checkedAt": "2026-10-28T02:21:53.899Z",
+    "exactReferenceMatches": true,
+    "receiptPairs": 1,
+    "closedReceiptFieldsCompared": 29,
+    "receiptDifferences": 0,
+    "collectionVersion": "2026-10-28.6",
+    "verifierProfile": "2026-10-28.6",
+    "status": "unverified",
+    "reason": "malformed-signature-fields",
+    "reasons": [
+      "malformed-signature-fields"
+    ],
+    "outcome": "invalid",
+    "authenticatedSignerAbsent": true,
+    "coverageAbsent": true,
+    "optionalCaptureAbsent": true,
+    "referralExcluded": true,
+    "owner": false,
+    "nativeAvailability": {
+      "verifiedBot": "unavailable",
+      "signedAgent": "unavailable",
+      "categoryStatus": "empty",
+      "categoryValue": "none"
+    },
+    "rowsRead": 1,
+    "rowsWritten": 0,
+    "changedDb": false
+  },
+  "diagnosticQuery": {
+    "statements": 1,
+    "mode": "Wrangler --command; prepared private SQL in one argv",
+    "templateSha256": "ec574d135ba3f6ea3917c97b9c91d8bbbd0b28cb6baa58aa7b69b06178dbd775",
+    "rowsRead": 1,
+    "rowsWritten": 0,
+    "changedDb": false,
+    "reviewedRowsReadThreshold": 100,
+    "thresholdIsEnforcedCap": false,
+    "normalCollectionAndProviderCostsAdditional": true,
+    "quotaRetry": false,
+    "broadScan": false
+  },
+  "tail": {
+    "filteredToPrivateControlHeader": true,
+    "events": 1,
+    "attemptLogs": 1,
+    "storedLogs": 1,
+    "stopped": true,
+    "parentHandleTerminalExitCode": 241,
+    "stopMethod": "Targeted SIGTERM after checking the exact owned command marker and process group; terminal parent-handle result observed."
+  },
+  "articleChanged": false,
+  "builtArticleSha256": "c2bb633159ceccc3b8841ab6b20787329d82a0833e5cee6c874a3c9283eaac01",
+  "articleFreshlyFetched": false,
+  "retainedExaReplays": 2,
+  "storedReplayProfile": "2026-10-28.2",
+  "humanTrials": "deferred",
+  "limits": [
+    "One parser-failure control is not a valid cryptographic request, vendor identity, population prevalence or human-detection result.",
+    "Current-profile organic signed persistence and native cryptographic agreement remain separate.",
+    "ASCII header matching does not close general Latin-1 fidelity.",
+    "One diagnostic read is not the total cost of collection/provider activity."
+  ]
+}
