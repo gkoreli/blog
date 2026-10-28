@@ -1,0 +1,482 @@
+{
+  "snapshotLabel": "October 27, 2026 Pacific; refreshed October 28 at about 02:40 UTC",
+  "x": {
+    "url": "https://x.com/GogaKoreli/status/2115127031583371718",
+    "analyticsUrl": "https://x.com/GogaKoreli/status/2115127031583371718/analytics",
+    "capturedAt": "2026-10-28T02:40:04.246Z",
+    "approximateAgeHours": 9.63,
+    "impressions": 12,
+    "engagements": 3,
+    "detailExpands": 3,
+    "profileVisits": 0,
+    "linkClicks": 0,
+    "likes": 0,
+    "reposts": 0,
+    "replies": 0,
+    "followersOnProfile": 51,
+    "initialAnalytics": {
+      "capturedAt": "2026-10-27T20:09:41.443Z",
+      "impressions": 7,
+      "engagements": 1,
+      "detailExpands": 1,
+      "linkClicks": 0
+    }
+  },
+  "xBaseline": {
+    "method": "Ten most recent other original posts, in reverse date order, verified as non-native-quotes/non-replies in the visible Posts timeline. Native quote posts and reposts are excluded. Numeric observations come from the selected 3M content export. Manual quotation inside an original is not treated as a native quote post.",
+    "exportWindow": "2026-07-30 through 2026-10-27",
+    "exportRowCount": 137,
+    "downloadCompletedAt": "2026-10-28T02:38:09.331Z",
+    "cutoffLimit": "The download tool call stalled for about six hours. The CSV Bun row is 8 impressions/2 detail expands, while a fresh owner analytics view later shows 12/3. The export data cutoff is not established by its filesystem download time.",
+    "medianImpressions": 56.0,
+    "minimumImpressions": 6,
+    "maximumImpressions": 105,
+    "ageLimit": "Not a fixed-age comparison. Older posts had longer exposure, and topics/media vary. Do not derive a relative-performance verdict or causal claim from this median.",
+    "posts": [
+      {
+        "id": "2114739462664343832",
+        "url": "https://x.com/GogaKoreli/status/2114739462664343832",
+        "exportDate": "Mon, Oct 26, 2026",
+        "nativeQuote": false,
+        "impressions": 6,
+        "likes": 0,
+        "replies": 0,
+        "reposts": 0,
+        "urlClicks": 0,
+        "topic": "blog analytics",
+        "opening": "personal measurement",
+        "media": "article card",
+        "linkPlacement": "main post",
+        "qualifiedContact": "Not independently assessed; reactions and clicks are not proof of use."
+      },
+      {
+        "id": "2112936675940966700",
+        "url": "https://x.com/GogaKoreli/status/2112936675940966700",
+        "exportDate": "Wed, Oct 21, 2026",
+        "nativeQuote": false,
+        "impressions": 26,
+        "likes": 0,
+        "replies": 0,
+        "reposts": 0,
+        "urlClicks": 0,
+        "topic": "UI framework choice",
+        "opening": "project comparison",
+        "media": "article card",
+        "linkPlacement": "main post",
+        "qualifiedContact": "Not independently assessed; reactions and clicks are not proof of use."
+      },
+      {
+        "id": "2110230152659775886",
+        "url": "https://x.com/GogaKoreli/status/2110230152659775886",
+        "exportDate": "Wed, Oct 14, 2026",
+        "nativeQuote": false,
+        "impressions": 27,
+        "likes": 0,
+        "replies": 0,
+        "reposts": 0,
+        "urlClicks": 0,
+        "topic": "agent interfaces",
+        "opening": "manual source quotation",
+        "media": "article card",
+        "linkPlacement": "main post",
+        "qualifiedContact": "Not independently assessed; reactions and clicks are not proof of use."
+      },
+      {
+        "id": "2106564920838144124",
+        "url": "https://x.com/GogaKoreli/status/2106564920838144124",
+        "exportDate": "Sun, Oct 4, 2026",
+        "nativeQuote": false,
+        "impressions": 43,
+        "likes": 0,
+        "replies": 0,
+        "reposts": 0,
+        "urlClicks": 0,
+        "topic": "ChatGPT plugin apps",
+        "opening": "announcement and question",
+        "media": "article card",
+        "linkPlacement": "main post",
+        "qualifiedContact": "Not independently assessed; reactions and clicks are not proof of use."
+      },
+      {
+        "id": "2104837268376576489",
+        "url": "https://x.com/GogaKoreli/status/2104837268376576489",
+        "exportDate": "Tue, Sep 29, 2026",
+        "nativeQuote": false,
+        "impressions": 39,
+        "likes": 1,
+        "replies": 1,
+        "reposts": 0,
+        "urlClicks": 3,
+        "topic": "prompt-cache experiments",
+        "opening": "measured result",
+        "media": "article card",
+        "linkPlacement": "main post",
+        "qualifiedContact": "Not independently assessed; reactions and clicks are not proof of use."
+      },
+      {
+        "id": "2104830577727967518",
+        "url": "https://x.com/GogaKoreli/status/2104830577727967518",
+        "exportDate": "Tue, Sep 29, 2026",
+        "nativeQuote": false,
+        "impressions": 88,
+        "likes": 1,
+        "replies": 0,
+        "reposts": 0,
+        "urlClicks": 3,
+        "topic": "Ghostty project",
+        "opening": "artifact announcement",
+        "media": "native video",
+        "linkPlacement": "main post",
+        "qualifiedContact": "Not independently assessed; reactions and clicks are not proof of use."
+      },
+      {
+        "id": "2102923747154165927",
+        "url": "https://x.com/GogaKoreli/status/2102923747154165927",
+        "exportDate": "Thu, Sep 24, 2026",
+        "nativeQuote": false,
+        "impressions": 69,
+        "likes": 2,
+        "replies": 2,
+        "reposts": 0,
+        "urlClicks": 2,
+        "topic": "AI citation experiment",
+        "opening": "measured result",
+        "media": "article card",
+        "linkPlacement": "main post",
+        "qualifiedContact": "Not independently assessed; reactions and clicks are not proof of use."
+      },
+      {
+        "id": "2102053928372441520",
+        "url": "https://x.com/GogaKoreli/status/2102053928372441520",
+        "exportDate": "Mon, Sep 21, 2026",
+        "nativeQuote": false,
+        "impressions": 78,
+        "likes": 1,
+        "replies": 0,
+        "reposts": 0,
+        "urlClicks": 1,
+        "topic": "productive procrastination",
+        "opening": "personal question",
+        "media": "article card",
+        "linkPlacement": "main post",
+        "qualifiedContact": "Not independently assessed; reactions and clicks are not proof of use."
+      },
+      {
+        "id": "2098822872840200567",
+        "url": "https://x.com/GogaKoreli/status/2098822872840200567",
+        "exportDate": "Sat, Sep 12, 2026",
+        "nativeQuote": false,
+        "impressions": 105,
+        "likes": 4,
+        "replies": 1,
+        "reposts": 0,
+        "urlClicks": 0,
+        "topic": "model effort levels",
+        "opening": "personal question",
+        "media": "text only",
+        "linkPlacement": "none",
+        "qualifiedContact": "Not independently assessed; reactions and clicks are not proof of use."
+      },
+      {
+        "id": "2098456765453226198",
+        "url": "https://x.com/GogaKoreli/status/2098456765453226198",
+        "exportDate": "Fri, Sep 11, 2026",
+        "nativeQuote": false,
+        "impressions": 98,
+        "likes": 3,
+        "replies": 2,
+        "reposts": 0,
+        "urlClicks": 3,
+        "topic": "article feedback",
+        "opening": "feedback request",
+        "media": "article card",
+        "linkPlacement": "main post",
+        "qualifiedContact": "Not independently assessed; reactions and clicks are not proof of use."
+      }
+    ],
+    "nativeQuoteCounterexample": {
+      "id": "2115087543247196172",
+      "textStartsWithMention": true,
+      "observedType": "native quote",
+      "excludedFromOriginalCohort": true
+    }
+  },
+  "hackerNews": {
+    "url": "https://news.ycombinator.com/item?id=50262191",
+    "apiUrl": "https://hacker-news.firebaseio.com/v0/item/50262191.json",
+    "capturedAt": "2026-10-28T02:40:28.663Z",
+    "dead": true,
+    "score": 1,
+    "visiblePublicDiscussion": false,
+    "child": {
+      "id": 50262192,
+      "dead": true,
+      "deleted": true,
+      "textRecoverableFromPublicAPI": false
+    },
+    "stories": [
+      {
+        "id": "50262191",
+        "title": "Bun AOT ran the TypeScript compiler 3.3× faster with 64% less peak memory",
+        "url": "https://gkoreli.com/oss-radar-08-bun-aot",
+        "dead": true,
+        "score": 1,
+        "descendants": null,
+        "time": 1793120567
+      },
+      {
+        "id": "50183223",
+        "title": "OpenClaw Chose Solid. Here's Why I'd Choose Nisli",
+        "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli",
+        "dead": true,
+        "score": 1,
+        "descendants": null,
+        "time": 1792598475
+      },
+      {
+        "id": "49949864",
+        "title": "ChatGPT Plugin Apps: What Changed, and What I'd Build",
+        "url": "https://gkoreli.com/chatgpt-plugin-apps",
+        "dead": true,
+        "score": 1,
+        "descendants": null,
+        "time": 1791079200
+      },
+      {
+        "id": "49889529",
+        "title": "Can You Change an Agent's Context Without Losing Its Prompt Cache?",
+        "url": "https://gkoreli.com/prompt-cache-context-edits",
+        "dead": true,
+        "score": 1,
+        "descendants": null,
+        "time": 1790667315
+      },
+      {
+        "id": "49889335",
+        "title": "Show HN: Ghostty-vt-JS – Ghostty's VT engine for JavaScript and the web",
+        "url": "https://github.com/gkoreli/ghostty-vt-js",
+        "dead": true,
+        "score": 1,
+        "descendants": null,
+        "time": 1790665900
+      },
+      {
+        "id": "49824780",
+        "title": "AI Citations: Do Agents Preserve the Evidence Behind an Answer?",
+        "url": "https://gkoreli.com/oss-radar-07-ai-citations",
+        "dead": true,
+        "score": 1,
+        "descendants": null,
+        "time": 1790211085
+      },
+      {
+        "id": "49788316",
+        "title": "Productive Procrastination: When Meaningful Work Costs You Sleep",
+        "url": "https://gkoreli.com/productive-procrastination",
+        "dead": true,
+        "score": 1,
+        "descendants": null,
+        "time": 1790003429
+      },
+      {
+        "id": "49653021",
+        "title": "How I Defend My Analytics Against Referrer Spam",
+        "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history",
+        "dead": true,
+        "score": 1,
+        "descendants": null,
+        "time": 1789095341
+      },
+      {
+        "id": "49618029",
+        "title": "How I Built First-Party Analytics for a Personal Blog",
+        "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog",
+        "dead": false,
+        "score": 1,
+        "descendants": 0,
+        "time": 1788906307
+      },
+      {
+        "id": "49594130",
+        "title": "Bot Detection Without JavaScript: What My Blog Measured",
+        "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+        "dead": false,
+        "score": 14,
+        "descendants": 0,
+        "time": 1788758002
+      },
+      {
+        "id": "49546499",
+        "title": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+        "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+        "dead": false,
+        "score": 1,
+        "descendants": 1,
+        "time": 1788416114
+      },
+      {
+        "id": "48229058",
+        "title": "One bitmask in task_struct fixes 15 years of Linux signal conflicts",
+        "url": "https://gkoreli.com/linux-signal-stack-conflict",
+        "dead": false,
+        "score": 3,
+        "descendants": 0,
+        "time": 1779398747
+      }
+    ],
+    "latestEightDead": true,
+    "earlierFourLive": true,
+    "rootCause": "Not disclosed by public API. Account-associated filtering/moderation is consistent with the pattern, including a GitHub URL, but an account ban or exact trigger is not proven."
+  },
+  "site": {
+    "all": {
+      "period": {
+        "start": "2026-10-22",
+        "end": "2026-10-28",
+        "timeZone": "UTC",
+        "granularity": "hour",
+        "updatedAt": "2026-10-28T02:40:46.895Z"
+      },
+      "totals": {
+        "views": 23,
+        "dailyClients": 21,
+        "unattributedViews": 19
+      },
+      "referrers": [
+        {
+          "referrerHost": "google.com",
+          "views": 3
+        },
+        {
+          "referrerHost": "t.co",
+          "views": 1
+        }
+      ],
+      "kinds": [
+        {
+          "kind": "other-bot",
+          "reason": "generic-bot",
+          "views": 5,
+          "dailyClients": 5
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:396982",
+          "views": 4,
+          "dailyClients": 2
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:16509",
+          "views": 3,
+          "dailyClients": 3
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:132203",
+          "views": 2,
+          "dailyClients": 2
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:24940",
+          "views": 2,
+          "dailyClients": 2
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "ClaudeBot",
+          "views": 1,
+          "dailyClients": 1
+        },
+        {
+          "kind": "ai-search",
+          "reason": "Applebot",
+          "views": 1,
+          "dailyClients": 1
+        },
+        {
+          "kind": "browser",
+          "reason": "navigation-shaped-network-unlisted",
+          "views": 1,
+          "dailyClients": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:16276",
+          "views": 1,
+          "dailyClients": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:31898",
+          "views": 1,
+          "dailyClients": 1
+        },
+        {
+          "kind": "unresolved",
+          "reason": "fetch-metadata-absent",
+          "views": 1,
+          "dailyClients": 1
+        },
+        {
+          "kind": "unresolved",
+          "reason": "unrecognized-browser-claim",
+          "views": 1,
+          "dailyClients": 1
+        }
+      ]
+    },
+    "browser": {
+      "period": {
+        "start": "2026-10-22",
+        "end": "2026-10-28",
+        "timeZone": "UTC",
+        "granularity": "hour",
+        "updatedAt": "2026-10-28T02:40:54.309Z"
+      },
+      "totals": {
+        "views": 1,
+        "dailyClients": 1,
+        "unattributedViews": 0
+      },
+      "referrers": [
+        {
+          "referrerHost": "t.co",
+          "views": 1
+        }
+      ],
+      "kinds": [
+        {
+          "kind": "browser",
+          "reason": "navigation-shaped-network-unlisted",
+          "views": 1,
+          "dailyClients": 1
+        }
+      ],
+      "nonzeroBuckets": [
+        {
+          "bucket": "2026-10-27T20:00:00Z",
+          "views": 1,
+          "dailyClients": 1
+        }
+      ]
+    },
+    "limits": "These are request observations, not confirmed people or readers. The Browser category is a heuristic. Referrers are reported claims. The one t.co Browser observation cannot be joined to a particular X user/post click and does not reconcile X's zero tracked link clicks. The selection includes pre-launch article requests."
+  },
+  "actions": {
+    "newPosts": false,
+    "reposts": false,
+    "deletions": false,
+    "moderatorContact": false,
+    "automationScheduled": false
+  },
+  "sources": {
+    "hnApiDocs": "https://github.com/HackerNews/API",
+    "hnFaq": "https://news.ycombinator.com/newsfaq.html",
+    "hnGuidelines": "https://news.ycombinator.com/newsguidelines.html",
+    "xViewCounts": "https://help.x.com/en/using-x/view-counts",
+    "articleStats": "https://gkoreli.com/api/stats?range=7d&traffic=all&path=%2Foss-radar-08-bun-aot",
+    "browserStats": "https://gkoreli.com/api/stats?range=7d&traffic=browser&path=%2Foss-radar-08-bun-aot"
+  }
+}

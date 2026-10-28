@@ -1,6 +1,6 @@
 # Launch copy
 
-Status: published on X and submitted as a Hacker News link. Permanent URLs and live checks are in [metrics.md](metrics.md). Each number is supported by the linked article's accepted experiment records.
+Status: published on X; the Hacker News submission record exists but is now confirmed dead and hidden from ordinary public display. See the superseding [traction investigation](traction-2026-10-27.md). Permanent URLs and historical launch checks are in [metrics.md](metrics.md). Each number is supported by the linked article's accepted experiment records.
 
 ## X
 

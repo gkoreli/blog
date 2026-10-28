@@ -44,7 +44,7 @@ A copy request can finish with supported text, checked links, and recorded lengt
 
 Read the article, launch metadata, preamble implementation, and relevant evidence artifacts. State in one sentence why a technically serious reader should care now.
 
-When the user asks what performs on their account, inspect 10–20 recent original posts. Prefer the X analytics export (Premium: Analytics → Content → export CSV, columns Post id, Date, Post text, Post Link, Impressions, Likes, Engagements, Bookmarks, Shares, New follows, Replies, Reposts, Profile visits, Detail Expands, URL Clicks) over reading the profile in a browser; it gives exact counts for every post in the window. Treat a post whose text starts with `@` as a reply. The export path is `~/Downloads/account_analytics_content_<from>_<to>.csv`; do not commit it. Separate originals from replies, reposts, and quote posts. Compare posts at similar ages; a six-month total is not comparable to a one-hour total. Record visible impressions, likes, replies, reposts, bookmarks when available, media type, opening move, topic, link placement, and whether the post created qualified conversation.
+When the user asks what performs on their account, inspect 10–20 recent original posts. Prefer the X analytics export (Premium: Analytics → Content → export CSV, columns Post id, Date, Post text, Post Link, Impressions, Likes, Engagements, Bookmarks, Shares, New follows, Replies, Reposts, Profile visits, Detail Expands, URL Clicks) over reading the profile in a browser; it gives exact counts for every post in the window. Check visible reply and native-quote context when the export does not identify post type: a leading `@` is only a clue, since native quote posts can also start with a mention. The export path is `~/Downloads/account_analytics_content_<from>_<to>.csv`; do not commit it. Separate originals from replies, reposts, and quote posts. Compare posts at similar ages; a six-month total is not comparable to a one-hour total. Record visible impressions, likes, replies, reposts, bookmarks when available, media type, opening move, topic, link placement, and whether the post created qualified conversation. Record the export's acquisition time and any unknown data cutoff; refresh per-post analytics after a delayed export instead of treating file arrival as fresh measurement.
 
 Use one focused current X search when external examples could change the decision. Do not imitate a large account's absolute numbers or infer causation from a handful of posts.
 
@@ -101,6 +101,8 @@ Thread length and layout conventions:
 Do not repeat the same claim across the thread, delay all value until the link, or use engagement bait. Keep each post independently legible if a reply is shown out of context.
 
 ### 5. Preview and publish safely
+
+Read [destination rules and public visibility](references/publication-verification.md) before adapting this X workflow to another platform or claiming public availability from an owner-only view.
 
 For a publication request, inspect any final media at phone width and full resolution, and check the composer. Confirm the URL, title, alt text, media order, and thread reply chain as applicable. Use descriptive alt text for meaningful visuals. For spoken or sound-dependent video, attach captions; for a silent visual, make every claim legible without audio. A copy-only delivery records that composer and live checks have not occurred.
 
