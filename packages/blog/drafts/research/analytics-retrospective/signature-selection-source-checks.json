@@ -73,5 +73,14 @@
     "Synthetic selection fixtures and stored-snapshot counterexamples are not vendor or human labels.",
     "No production multi-signature prevalence or exhaustive signer assessment.",
     "Native fixture read parity does not establish production cost or latency parity."
-  ]
+  ],
+  "scopeNoteFollowUp": {
+    "checkedAt": "2026-10-28T00:55:23.789903+00:00",
+    "reason": "Live narrow report contains outcome-only signing history but zero detailed local verification; make the selection denominator explicit.",
+    "change": "Copy only; API, report semantics and runtime profiles unchanged.",
+    "statsSourceSha256": "6bddd75fccc837bae74289534b055ef4ed46e51bbf097f4ccfa20e811a73b331",
+    "builtStatsSha256": "95c094f1e8de243d09936ebf6a530137f394cc63264e4fb004cdd0a4a388acaf",
+    "isolatedBuild": "32 posts, pass",
+    "initialAttempt": "Build entry was invoked from the repository root and failed before building; corrected isolated invocation supplies acceptance."
+  }
 }
