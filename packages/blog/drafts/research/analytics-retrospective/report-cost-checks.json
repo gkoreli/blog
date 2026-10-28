@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-28T05:59:35.280855+00:00",
+  "analyticsTests": 240,
+  "siteTests": 108,
+  "workspaceTypes": "pass",
+  "postValidation": "pass",
+  "referralPolicyCheck": "pass",
+  "isolatedBuild": {
+    "posts": 32,
+    "directory": "owned isolated stage; no shared dist"
+  },
+  "nativeReceipt": "report-cost-native.json",
+  "articleBodyWhitespaceWords": 1200,
+  "shapingPrompts": 31,
+  "promptsUnchanged": true,
+  "reportVersion": "2026-10-28.5",
+  "noVersionBumpReason": "No public output, selection, storage binding or cache-payload semantics change.",
+  "setupCorrections": [
+    "Root has no tsx import; rerun with workspace-pinned loader.",
+    "Native seed requires explicit is_owner=0.",
+    "First stage build preceded current source copy; final isolated build is the accepted one.",
+    "Policy check rerun from package directory."
+  ],
+  "limits": "Native fixture acceptance does not establish production logging/activation."
+}

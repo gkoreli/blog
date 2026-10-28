@@ -171,3 +171,39 @@ test('distinct cold fills are bounded per isolate without blocking a coalesced r
   assert.equal((await same).status, 200);
   assert.equal(generations, 8);
 });
+
+test('telemetry separates the single calculation from coalescing and cache reuse', async () => {
+  const outcomes: { state: string; status: number }[] = [];
+  let release: (() => void) | undefined;
+  const gate = new Promise<void>(resolve => { release = resolve; });
+  let calculations = 0;
+  const serve = createStatsHandler(memoryCache(), async () => {
+    calculations++; await gate; return Response.json({ originalCalculation: calculations });
+  }, { onOutcome: event => { outcomes.push(event); } });
+  const first = serve(request(), {}), second = serve(request(), {});
+  await new Promise(resolve => setTimeout(resolve, 0));
+  release?.();
+  const responses = await Promise.all([first, second]);
+  const hit = await serve(request(), {});
+  assert.equal(calculations, 1);
+  assert.deepEqual(outcomes.map(e => e.state).sort(), ['COALESCED', 'HIT', 'MISS']);
+  assert.ok(outcomes.every(e => e.status === 200));
+  assert.deepEqual(await responses[0].json(), await hit.json());
+  assert.ok(!JSON.stringify(outcomes).includes('gkoreli.com'));
+});
+
+test('telemetry failures preserve responses and invalid requests do not invoke calculations', async () => {
+  let calls = 0;
+  const serve = createStatsHandler(memoryCache(), async () => { calls++; return Response.json({ ok: true }); }, {
+    onOutcome: () => { throw new Error('private observer'); },
+  });
+  assert.equal((await serve(request('range=invalid'), {})).status, 400);
+  assert.equal(calls, 0);
+  assert.equal((await serve(request(), {})).status, 200);
+  assert.equal((await serve(request(), {})).status, 200);
+  assert.equal(calls, 1);
+  const events: { state: string; status: number }[] = [];
+  const failed = createStatsHandler(memoryCache(), async () => { throw new Error('private db'); }, { onOutcome: e => { events.push(e); } });
+  assert.equal((await failed(request(), {})).status, 503);
+  assert.deepEqual(events.map(e => [e.state, e.status]), [['MISS', 503]]);
+});

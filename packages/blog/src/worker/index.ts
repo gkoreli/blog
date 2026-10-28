@@ -37,7 +37,9 @@ type Env = AnalyticsEnv & NewsletterEnv & ClientObservabilityEnv & { ASSETS: Fet
 const cachedStats = createStatsHandler({
   match: request => caches.default.match(request),
   put: (request, response) => caches.default.put(request, response),
-}, handleStats);
+}, (request, env: Env) => handleStats(request, env, event => console.info('stats-report-calculation', event)), {
+  onOutcome: event => console.info('stats-report-cache', event),
+});
 
 function trailingSegment(pathname: string, prefix: string): string {
   return pathname.slice(prefix.length);

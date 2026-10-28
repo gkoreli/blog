@@ -14,6 +14,14 @@ interface StatsCacheOptions {
   now?: () => number;
   policyHash?: string;
   reportVersion?: string;
+  onOutcome?: (event: StatsCacheOutcome) => void;
+}
+
+export interface StatsCacheOutcome {
+  version: '2026-10-28.1';
+  event: 'stats-report-cache';
+  state: 'HIT' | 'MISS' | 'COALESCED' | 'CAPACITY' | 'INVALID';
+  status: number;
 }
 
 function unavailable(): Response {
@@ -47,13 +55,18 @@ export function createStatsHandler<Environment>(
   const reportVersion = options.reportVersion ?? STATS_REPORT_VERSION;
   // Coalesces cold fills only within this isolate. Cache storage is local to the Cloudflare data center.
   const pending = new Map<string, Promise<Response>>();
+  const observed = (response: Response, state: StatsCacheOutcome['state']): Response => {
+    try { options.onOutcome?.({ version: '2026-10-28.1', event: 'stats-report-cache', state, status: response.status }); }
+    catch { /* Logging failure must not affect report delivery. */ }
+    return response;
+  };
 
   return async (request, env) => {
-    if (request.method !== 'GET') return new Response(null, { status: 405, headers: { Allow: 'GET' } });
+    if (request.method !== 'GET') return observed(new Response(null, { status: 405, headers: { Allow: 'GET' } }), 'INVALID');
     const url = new URL(request.url);
     const query = parseStatsQuery(url.searchParams);
     if (typeof query === 'string') {
-      return Response.json({ error: query }, { status: 400, headers: { 'Cache-Control': 'no-store' } });
+      return observed(Response.json({ error: query }, { status: 400, headers: { 'Cache-Control': 'no-store' } }), 'INVALID');
     }
     const startedAt = now();
     const day = new Date(startedAt).toISOString().slice(0, 10);
@@ -72,15 +85,15 @@ export function createStatsHandler<Environment>(
       if (cached !== undefined && cached.status === 200
           && Date.parse(cached.headers.get('Expires') ?? '') > now()
           && !cached.headers.has('Set-Cookie')) {
-        return publicResponse(cached, 'HIT', now());
+        return observed(publicResponse(cached, 'HIT', now()), 'HIT');
       }
     } catch {
       console.warn('stats-cache: lookup unavailable');
     }
 
     const existing = pending.get(key.url);
-    if (existing !== undefined) return publicResponse((await existing).clone(), 'COALESCED', now());
-    if (pending.size >= MAX_PENDING_REPORTS) return unavailable();
+    if (existing !== undefined) return observed(publicResponse((await existing).clone(), 'COALESCED', now()), 'COALESCED');
+    if (pending.size >= MAX_PENDING_REPORTS) return observed(unavailable(), 'CAPACITY');
 
     const fill = (async () => {
       let response: Response;
@@ -109,7 +122,7 @@ export function createStatsHandler<Environment>(
     })();
     pending.set(key.url, fill);
     try {
-      return publicResponse((await fill).clone(), 'MISS', now());
+      return observed(publicResponse((await fill).clone(), 'MISS', now()), 'MISS');
     } finally {
       pending.delete(key.url);
     }

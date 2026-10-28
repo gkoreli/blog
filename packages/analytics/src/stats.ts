@@ -1,4 +1,5 @@
 import { signatureCoverageRecordedSql } from './signature-coverage-report.js';
+import { measuredReportBatch, type ReportCalculationObserver } from './report-cost.js';
 import { nativeBooleanStateSql, vendorSignatureStateSql, consistentSignatureSummary } from './signature-summary.js';
 import { signatureSelectionRecordedSql } from './signature-selection.js';
 import {
@@ -570,7 +571,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
   };
 }
 
-export async function queryStats(db: D1Database, query: StatsQuery, now = new Date(), policy: ReferralPolicy = ACTIVE_REFERRAL_POLICY): Promise<StatsResponse> {
+export async function queryStats(db: D1Database, query: StatsQuery, now = new Date(), policy: ReferralPolicy = ACTIVE_REFERRAL_POLICY, observeCalculation?: ReportCalculationObserver): Promise<StatsResponse> {
   const initialWindow = createStatsWindow(query.range, now);
   const selected = predicateFor(initialWindow, query, true);
   const bucketSql = initialWindow.granularity === 'hour'
@@ -578,7 +579,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     : "strftime('%Y-%m-%d', observed_at)";
   const report = reportSql(selected, bucketSql, query.range === 'all');
   const statement = db.prepare(report.sql).bind(...report.values, referralRulesJson(policy), query.path ?? null, query.path ?? null);
-  const results = await db.batch<Record<string, unknown>>([statement]);
+  const results = await measuredReportBatch(db, statement, observeCalculation);
   const rows = results[0]?.results ?? [];
   const sections = reportSections(rows, query.range === 'all');
   const firstObservedRow = query.range === 'all' ? requiredSection(sections, 'boundary')[0] : undefined;
@@ -740,9 +741,9 @@ export function parseStatsQuery(params: URLSearchParams): StatsQuery | string {
   return query;
 }
 
-export async function handleStats(request: Request, env: Pick<Env, 'DB'>): Promise<Response> {
+export async function handleStats(request: Request, env: Pick<Env, 'DB'>, observeCalculation?: ReportCalculationObserver): Promise<Response> {
   const query = parseStatsQuery(new URL(request.url).searchParams);
   if (typeof query === 'string') return jsonError(query);
-  const response = await queryStats(env.DB, query);
+  const response = await queryStats(env.DB, query, new Date(), ACTIVE_REFERRAL_POLICY, observeCalculation);
   return Response.json(response, { headers: { 'Cache-Control': 'public, max-age=60' } });
 }

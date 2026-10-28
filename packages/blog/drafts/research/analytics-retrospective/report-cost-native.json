@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-10-28T05:58:01.268Z",
+  "baselineCommit": "8825937",
+  "fixtureRows": 512,
+  "baselineScope": "Pinned stats.ts; all imported modules unchanged from baseline in this scoped diff.",
+  "native": "Miniflare/workerd D1, real production SELECT",
+  "baselineReads": 35510,
+  "instrumentedReads": 35510,
+  "statementAndBindingsUnchanged": true,
+  "publicOutputUnchanged": true,
+  "calculation": {
+    "version": "2026-10-28.1",
+    "event": "stats-report-calculation",
+    "outcome": "returned",
+    "submittedStatements": 1,
+    "returnedResults": 1,
+    "metadata": "partial",
+    "counterScope": "last-attempt",
+    "reportedRowsRead": 35510,
+    "reportedRowsWritten": 0,
+    "totalAttempts": null,
+    "unexpectedWrites": false
+  },
+  "nativeMetadataExactMatch": true,
+  "cache": {
+    "states": [
+      "MISS",
+      "COALESCED",
+      "HIT"
+    ],
+    "additionalBatches": 1,
+    "additionalCalculations": 1,
+    "allBodiesEqual": true,
+    "publicCostFieldsAbsent": true
+  },
+  "productionCalls": 0,
+  "scriptSha256": "68b16dd7acf2cf0f746533224c2eb4b1bb9b31f9bff3a6fbb1852ce359a48a74"
+}

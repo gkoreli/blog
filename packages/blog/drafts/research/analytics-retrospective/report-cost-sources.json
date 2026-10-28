@@ -1,0 +1,38 @@
+{
+  "reviewedAt": "2026-10-28T05:59:35.280096+00:00",
+  "primaryDocumentation": [
+    {
+      "url": "https://developers.cloudflare.com/d1/worker-api/return-object/",
+      "pageUpdated": "2026-04-21",
+      "appliedReading": "One result per statement; row/read/write and attempts metadata; SQL duration excludes network.",
+      "implementation": "packages/analytics/src/report-cost.ts"
+    },
+    {
+      "url": "https://github.com/cloudflare/workerd/blob/main/src/cloudflare/internal/d1-api.ts",
+      "appliedReading": "D1Meta documents other response metadata as last-attempt-only; attempts may be omitted. Moving main observed on review date, not a pinned deployed-server implementation.",
+      "crossReference": "Installed Workers types have the same contract; local native D1 omits attempts.",
+      "localTypesVersion": "4.20260306.1",
+      "localTypesSha256": "6b9fb1124c7d34e3b21c8838e24aee0f5e72b602312f426d95048d3b99d3153d"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/runtime-apis/cache/",
+      "pageUpdated": "2026-08-14",
+      "appliedReading": "Cache storage is local to a data center; resolved put does not prove persistence. Subsequent valid match is the hit evidence.",
+      "implementation": "packages/blog/src/worker/stats-cache.ts"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
+      "appliedReading": "Sampling, size/volume and finite plan retention constrain completeness; console events also consume logging allowance. No immutable all-account billing ledger is inferred.",
+      "implementation": "Existing wrangler.jsonc logs settings unchanged."
+    }
+  ],
+  "newDependency": false,
+  "newProductionCaptureSetting": false,
+  "newDatabaseQuery": false,
+  "unmeasured": [
+    "Earlier retry attempts",
+    "Thrown query cost without returned metadata",
+    "Log losses or expiry",
+    "Work by other requests/databases"
+  ]
+}

@@ -24,6 +24,7 @@ export { READER_GROUPS, READER_KINDS, isReaderKind, readerGroupOf } from './cont
 export { purgeExpiredDiagnostics, DIAGNOSTIC_RETENTION_DAYS } from './diagnostics.js';
 export { handleOwner } from './owner.js';
 export { handleStats, parseStatsQuery } from './stats.js';
+export type { ReportCalculation, ReportCalculationObserver } from './report-cost.js';
 export { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
 export { handleCalibration, purgeExpiredCalibration } from './calibration.js';
 
