@@ -1,5 +1,123 @@
 {
-  "status": "pending",
-  "recordedAt": "2026-10-28T01:19:45.940649+00:00",
-  "limits": "Checked source, publication activation and the separately captured signed-production evidence have distinct scopes."
+  "acceptedAt": "2026-10-28T01:33:23.182329+00:00",
+  "sourceCommit": "aec71d349ad34d57994025ecb74a52d788ec278d",
+  "sourcePushedTo": "main",
+  "sourcePublication": {
+    "nativeStatus": "Ready",
+    "durationSeconds": 55,
+    "versionId": "5a973913-0220-4faf-92fc-6e9e5a473873",
+    "observedPercentage": 100,
+    "nativeRowAssociatesSourceVersionAnd100Percent": true
+  },
+  "articleQualification": {
+    "sourceCommit": "17d7760d51998d6145184ebf9c007a7aad65d4b1",
+    "nativeStatus": "Ready",
+    "durationSeconds": 35,
+    "versionId": "f57a6269-02f0-4654-9973-53e02f0dbf5e",
+    "observedPercentage": 100,
+    "nativeRowAssociatesSourceVersionAnd100Percent": true,
+    "reason": "Some older observations already have exact links; qualify the remaining historical gap.",
+    "renderedQualificationVerified": true
+  },
+  "article": {
+    "acceptedAt": "2026-10-28T01:30:26.389909+00:00",
+    "httpStatus": 200,
+    "exactServedBuildBytes": true,
+    "sha256": "c2bb633159ceccc3b8841ab6b20787329d82a0833e5cee6c874a3c9283eaac01",
+    "bodyWords": 1257,
+    "shapingPrompts": 31,
+    "qualificationServed": true,
+    "evidenceLinkServed": true,
+    "renderedResearch40LinkVerified": true,
+    "screenshotSha256": "87b849c1326b38a6bceaa9c842155f1ba1387b5979e6faa0908824e607d605bd"
+  },
+  "checks": {
+    "analyticsPass": 210,
+    "sitePass": 106,
+    "workspaceTypes": "pass",
+    "postValidation": "pass",
+    "isolatedBuildPosts": 32,
+    "nativeAudits": 11,
+    "nativeComplete": 6,
+    "nativePartial": 5,
+    "independentPythonCalls": 24
+  },
+  "collectorRuntimeComparison": {
+    "checkedAt": "2026-10-28T01:12:54.079Z",
+    "entry": "packages/analytics/src/index.ts",
+    "baselineSourceCommit": "3cb3860",
+    "method": "Same esbuild configuration/isolated path and exact Git baseline, then changed source. Emitted collector runtime only, not remote Worker bytes/source maps.",
+    "bytes": 254119,
+    "sha256": "6230e9d8c99b170e2d28aee22d8af2849929f30e93909b20fcd333d7d034ef20",
+    "exactRuntimeBytesEqual": true,
+    "newAuditCalledByCollector": false
+  },
+  "runtimeProfilesChanged": false,
+  "schemaChanged": false,
+  "lockfileOrProductionDependenciesChanged": false,
+  "auditCalledByCollector": false,
+  "productionSignedAcceptance": {
+    "evidence": "current-signed-acceptance.json",
+    "exactAnalysis": "current-signed-exact-analysis.json",
+    "allProofAudit": "complete-audit-current.json",
+    "observations": 2,
+    "storedCollectionAndVerifier": "2026-10-28.2",
+    "observedWorkerVersion": "7a172b39-adbe-4283-90c2-58b2b68efc95",
+    "observedSourceCommit": "edebbcf80ea00b44077acc757e245eae7077fd4f",
+    "knownReceiptProjectionsEqual": 2,
+    "nativeInvocationChainsComplete": 2,
+    "replayedVerified": 2,
+    "scopedAuditsComplete": 2,
+    "selectionPerObservation": {
+      "matched": 1,
+      "tagged": 1,
+      "attempted": 1,
+      "unassessed": 0
+    },
+    "currentProfileSignedPersistenceGate": "accepted for these two observations",
+    "nativeCryptographicAgreement": "unmeasured"
+  },
+  "directProductionSelects": 1,
+  "directSelectRowsRead": 4,
+  "directSelectRowsWritten": 0,
+  "reviewedRowsReadThreshold": 100,
+  "thresholdMeaning": "Post-execution check, not enforced database cap.",
+  "queryMode": "Wrangler --command, one SQL argv loaded from private file",
+  "broadHistoryScans": 0,
+  "newLabelledProductionControls": 0,
+  "newPublicReportFill": false,
+  "optionalBindings": {
+    "OWNER_MARK_GRANT": false,
+    "ANALYTICS_DIAGNOSTICS": false,
+    "ANALYTICS_CALIBRATION": false
+  },
+  "nativeRulesChanged": false,
+  "permissionExpanded": false,
+  "liveTailStarted": false,
+  "previewStarted": false,
+  "viewportOverrideUsed": false,
+  "ownedNativeRuntimesDisposed": true,
+  "humanTrials": "deferred by owner",
+  "privateArchive": {
+    "path": "~/.local/share/gkoreli/analytics-evidence/2026-10-28-bounded-signature-audit/",
+    "modes": "0700 directories / 0600 files",
+    "historicalInputs": "Five hash-matched files remain in the previous exact-links archive; no unnecessary raw duplicates.",
+    "reviewTarget": "2026-10-31",
+    "limit": "Investigation-copy review, not provider-wide erasure or future-registry availability guarantee."
+  },
+  "limits": [
+    "Production observations are separate from source publication; their original Worker/source/profile remain recorded.",
+    "Later-key recorded-time replay does not reconstruct the directory at receipt time.",
+    "Verified Exa-origin proofs do not establish a fresh Exa-operated action, unique event, human trigger, citation, reading or authorization.",
+    "Audit completeness is scoped to supported profile/candidates and conclusive context; it is not full RFC or expected-operator conformance.",
+    "Collector-entry byte identity is not a remote Worker byte/source-map equivalence claim.",
+    "Four direct diagnostic reads exclude collection writes and dashboard/HTTP/CLI work.",
+    "Human error rates, native cryptographic agreement, replay uniqueness, DNS/egress and privacy/retention remain open."
+  ],
+  "finalDocumentationChecks": {
+    "relativeLinks": 310,
+    "missing": 0,
+    "codeFences": "balanced",
+    "gitDiffCheck": "pass"
+  }
 }

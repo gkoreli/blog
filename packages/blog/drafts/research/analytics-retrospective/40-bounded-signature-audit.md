@@ -62,3 +62,12 @@ At 01:15:40 UTC, a fresh public Exa directory capture returns HTTP 200, the expe
 The concise retrospective points its existing two-observation claim to this stronger evidence. Its prose remains **1,257 words / 31 shaping prompts**. [Publication acceptance](complete-audit-release.json) separates source delivery and served content from the production capture above. No human trial, rule, permission, raw diagnostic activation or live tail is introduced.
 
 Remaining questions concern actual operator/purpose, unsigned role/path claims, replay uniqueness, expected-signer authorization, broader conformance, native cryptographic agreement and privacy/retention decisions. A scoped complete proof assessment cannot answer those questions. The dedicated protocol article remains proposed; the full goal stays active. Next bounded work should use the current evidence, not repeat a broad census or replace unavailable human labels with automated visits.
+
+
+## Publication acceptance
+
+[The release receipt](complete-audit-release.json) accepts source `aec71d3` at native Ready/100% and the copy-only article qualification `17d7760`, separately Ready/100%. The served Markdown equals the checked isolated build; the rendered article links this evidence and says that some earlier rows still lack links. This avoids implying that all older signed observations remain unlinked. The article stays at 1,257 words/31 prompts. Seven active bindings include no optional owner grant, diagnostic capture or calibration activation.
+
+Private sources, exact current captures, native fixtures and publication checks are preserved in `~/.local/share/gkoreli/analytics-evidence/2026-10-28-bounded-signature-audit/`, with mode 0700/0600 and a hash manifest. Five older inputs remain hash-linked to their previous archive. Disposable environments, external Git data and third-party guidance are excluded. October 31 is a review target, not automatic/provider-wide erasure. All owned native runtimes have exited; no tail or preview was started.
+
+Next bounded experiment: compare clock and input admission across the default verifier and explicit-candidate/audit entry points, retaining any mismatches as evidence before changing policy. Human trials remain deferred; current `.2` signed persistence must not be silently reopened as unmeasured.
