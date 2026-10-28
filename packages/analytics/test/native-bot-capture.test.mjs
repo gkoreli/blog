@@ -111,12 +111,70 @@ test('expiry during owner lookup, backward clock and midnight boundary cannot em
   assert.equal(events.length, 0);
 }));
 
-test('owner storage rejection and stalled lookup return closed unavailable, without capture', async () => quiet(async events => {
+test('owner storage rejection and stalled lookup have distinct closed, exactly joined unavailable results', async () => quiet(async events => {
   for (const stalled of [false, true]) {
     const { env } = environment();
     env.DB = { prepare() { return { bind() { return { first() { return stalled ? new Promise(() => {}) : Promise.reject(Error('private-db-canary')); } }; } }; } };
     const result = await handleNativeBotCapture(request(), env, () => now);
-    assert.equal(result.status, 503); assert.deepEqual(await result.json(), {});
+    assert.equal(result.status, 503); const body = await result.json();
+    assert.equal(body.profile, 'native-bot-capture-unavailable-v1');
+    assert.equal(body.reason, stalled ? 'owner-check-timeout' : 'owner-check-error');
+    assert.equal(body.outcome, 'unavailable'); assert.equal(body.controlId, id);
+    assert.deepEqual(events.at(-1), ['analytics.native_bot_capture_unavailable', body]);
+    assert.equal(JSON.stringify(body).includes('private-db-canary'), false);
+    assert.equal(result.headers.get('Cache-Control'), 'no-store');
+    assert.deepEqual(Object.keys(body).sort(), ['controlId', 'outcome', 'plannedCondition', 'profile', 'reason', 'responseId', 'startedAt']);
   }
+  assert.equal(events.length, 2);
+}));
+
+test('late owner success or rejection cannot change a deadline result or emit a capture', async () => quiet(async events => {
+  for (const reject of [false, true]) {
+    const { env } = environment(); let settle;
+    const pending = new Promise((resolve, fail) => { settle = reject ? fail : resolve; });
+    env.DB = { prepare() { return { bind() { return { first() { return pending; } }; } }; } };
+    const result = await handleNativeBotCapture(request(), env, () => now);
+    const body = await result.json(); assert.equal(body.reason, 'owner-check-timeout');
+    const count = events.length;
+    settle(reject ? Error('private-late-canary') : { marked: 1 });
+    await new Promise(resolve => setImmediate(resolve));
+    assert.equal(events.length, count); assert.equal(result.status, 503);
+  }
+  assert.equal(events.filter(event => event[0] === 'analytics.native_bot_capture').length, 0);
+}));
+
+test('post-guard failure remains distinct and logger failure preserves a closed response', async () => quiet(async events => {
+  const { env } = environment(); let calls = 0;
+  const result = await handleNativeBotCapture(request(), env, () => {
+    if (calls++ === 0) return now;
+    throw Error('private-clock-canary');
+  });
+  const body = await result.json(); assert.equal(body.reason, 'capture-error');
+  assert.deepEqual(events[0], ['analytics.native_bot_capture_unavailable', body]);
+  const original = console.info;
+  try {
+    console.info = () => { throw Error('private-logger-canary'); };
+    const failedLog = await handleNativeBotCapture(request(), env, () => now);
+    const failedBody = await failedLog.json();
+    assert.equal(failedLog.status, 503); assert.equal(failedBody.reason, 'capture-error');
+    assert.equal(JSON.stringify(failedBody).includes('private-logger-canary'), false);
+  } finally { console.info = original; }
+}));
+
+test('expiry still closes failed owner checks before emitting diagnostics', async () => quiet(async events => {
+  const { env } = environment(); let calls = 0;
+  env.DB = { prepare() { throw Error('private-db-canary'); } };
+  const result = await handleNativeBotCapture(request(), env, () => calls++ === 0 ? now : new Date(config.expiresAt));
+  assert.equal(result.status, 404); assert.deepEqual(await result.json(), {});
   assert.equal(events.length, 0);
+}));
+
+test('response-ID failure closes before owner lookup and remains unjoined unavailable', async () => quiet(async events => {
+  const original = crypto.randomUUID; const { env, queries } = environment();
+  try {
+    crypto.randomUUID = () => { throw Error('private-id-canary'); };
+    const result = await handleNativeBotCapture(request(), env, () => now);
+    assert.equal(result.status, 503); assert.deepEqual(await result.json(), {});
+    assert.equal(queries.length, 0); assert.equal(events.length, 0);
+  } finally { crypto.randomUUID = original; }
 }));

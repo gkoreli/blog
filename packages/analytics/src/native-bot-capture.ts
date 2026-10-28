@@ -4,6 +4,8 @@ import { hasCurrentOwnerMark } from './owner.js';
 export const NATIVE_CAPTURE_PREFIX = '/api/analytics-native-capture';
 export const NATIVE_CAPTURE_HEADER = 'x-gk-native-bot-candidate';
 export const NATIVE_CAPTURE_PROFILE = 'native-bot-capture-v1';
+export const NATIVE_CAPTURE_UNAVAILABLE_PROFILE = 'native-bot-capture-unavailable-v1';
+type UnavailableReason = 'owner-check-timeout' | 'owner-check-error' | 'capture-error';
 const CONDITIONS = [
   'direct', 'spoof-single', 'spoof-duplicate', 'rule-disabled', 'rule-absent',
   'rule-expired', 'later-overwrite', 'workers-dev', 'same-zone-relay',
@@ -107,27 +109,45 @@ export async function handleNativeBotCapture(request: Request, env: Env, clock =
   if (request.method !== 'GET') return response({}, 405);
   const origin = request.headers.get('Origin');
   if (origin !== null && origin !== url.origin) return response({}, 403);
+  // One request-scoped ID joins either result; it does not identify a reader.
+  let responseId: string;
+  try { responseId = crypto.randomUUID(); } catch { return response({}, 503); }
+  const unavailable = (reason: UnavailableReason): Response => {
+    const body = {
+      profile: NATIVE_CAPTURE_UNAVAILABLE_PROFILE, responseId, controlId: control.id,
+      plannedCondition: control.condition, startedAt: started.toISOString(),
+      outcome: 'unavailable' as const, reason,
+    };
+    // Logging failure must not replace the closed response or expose an exception.
+    try { console.info('analytics.native_bot_capture_unavailable', body); } catch { /* best effort */ }
+    return response(body, 503);
+  };
   let timer: ReturnType<typeof setTimeout> | undefined;
   try {
-    const marked = await Promise.race([
-      hasCurrentOwnerMark(request, env, started),
-      new Promise<null>(resolve => { timer = setTimeout(() => resolve(null), GUARD_DEADLINE_MS); }),
+    const guard = await Promise.race([
+      hasCurrentOwnerMark(request, env, started).then(
+        marked => ({ kind: 'checked' as const, marked }),
+        () => ({ kind: 'error' as const }),
+      ),
+      new Promise<{ kind: 'timeout' }>(resolve => { timer = setTimeout(() => resolve({ kind: 'timeout' }), GUARD_DEADLINE_MS); }),
     ]);
     const completed = clock();
     // A midnight boundary changes the owner profile; require a fresh guarded request.
     if (!activeAt(config, completed) || completed.getTime() < started.getTime()
       || started.toISOString().slice(0, 10) !== completed.toISOString().slice(0, 10)) return response({}, 404);
-    if (marked === null) return response({}, 503);
-    if (!marked) return response({}, 403);
+    // The deadline covers metadata, hashing and storage. It does not cancel them.
+    if (guard.kind === 'timeout') return unavailable('owner-check-timeout');
+    if (guard.kind === 'error') return unavailable('owner-check-error');
+    if (!guard.marked) return response({}, 403);
     const capture = {
-      profile: NATIVE_CAPTURE_PROFILE, responseId: crypto.randomUUID(), controlId: control.id,
+      profile: NATIVE_CAPTURE_PROFILE, responseId, controlId: control.id,
       plannedCondition: control.condition, observedAt: completed.toISOString(),
       ...nativeBotCaptureInputs(request),
     };
     console.info('analytics.native_bot_capture', capture);
     return response(capture, 200);
   } catch {
-    return response({}, 503);
+    return unavailable('capture-error');
   } finally {
     if (timer !== undefined) clearTimeout(timer);
   }

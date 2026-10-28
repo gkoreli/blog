@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-28T17:08:53.938Z",
+  "method": "Offline replay of the exact original plan, ledger and saved tail; no network or retry",
+  "comparedFields": {
+    "planned": 23,
+    "attempted": 23,
+    "received": 23,
+    "validCaptures": 19,
+    "expectedOutcomes": 22,
+    "unexpectedOutcomes": 0,
+    "unavailable": 1,
+    "exactLogJoins": 19,
+    "ambiguousLogJoins": 0,
+    "httpUnavailable": 1,
+    "transportUnavailable": 0
+  },
+  "allComparedFieldsEqual": true,
+  "unavailableReasons": {
+    "owner-check-timeout": 0,
+    "owner-check-error": 0,
+    "capture-error": 0,
+    "unestablished": 1
+  },
+  "validUnavailableResponses": 0,
+  "sourceHashes": {
+    "plan.json": "84a9a1c8cf6aafcc7ca1c829b7404ad2e36011c5ff81a8d3f42e7ff9ac942d13",
+    "ledger.json": "5ecee2f91c136c1cc7ecad32db0ab4c49f64062fc18dc4850f3ec3f4602327f1",
+    "gk-native61-tail.json": "8f694713446399859e1657a7745d7c43a6b46f135dbc630cbe386681255c1427"
+  },
+  "productionCalls": 0,
+  "humanLabels": 0
+}

@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-10-28T17:10:44.122842+00:00",
+  "baselineCommit": "913b49612f0bfcc1d72e04c0155d490ba9ea82c0",
+  "sourceCommit": null,
+  "productionActivation": "pending",
+  "checks": {
+    "analyticsTests": 259,
+    "siteTests": 116,
+    "workspaceTypes": true,
+    "workerdFaultControls": 5,
+    "composedWorkerD1Controls": 20,
+    "composedSuccessfulCaptures": 7,
+    "additionalNativeMetadataFixtures": 3,
+    "historicalReplayComparedTotals": 11,
+    "historicalReplayUnestablished503": 1,
+    "frontendBuild": "not run: frontend/article unchanged; actual composed Worker bundle accepted",
+    "protectedSourcesUnchanged": true
+  },
+  "sourceSha256": {
+    "packages/analytics/src/native-bot-capture.ts": "ce5682fec955f42cfaf15217844ed419bea9c2519eece9c1d8d1c95282618449",
+    "packages/analytics/test/native-bot-capture.test.mjs": "9839f8bdf0b0ea211064736e309843537f0480965e82bef74dc554e2b33a9488",
+    "packages/blog/scripts/run-native-bot-capture.mjs": "3192c95276ef43e3b51c558a5bd180663b6d32a857d5f9ffb3719b7075adefb6",
+    "packages/blog/scripts/check-native-bot-capture.mjs": "f906709ba4bae38891c2a65c93a8a8f7f45e40b15751aca19d6975a280baa6a3",
+    "packages/blog/scripts/check-native-capture-failures.mjs": "592e1f93fefe474d3733bcc44352b936dbac9266a34fee2b9477bf21f794f94c",
+    "packages/blog/test/native-capture-controller.test.mjs": "51023869f8be38436603249e94ba8db1047847e03c23965e52c1bd93d56be57e"
+  },
+  "article": {
+    "bodyWhitespaceWords": 1280,
+    "prompts": 31,
+    "unchanged": true,
+    "freshServedCheck": false
+  },
+  "production": {
+    "ownSiteGets": 0,
+    "diagnosticStatements": 0,
+    "reportFills": 0,
+    "ownerMarkPosts": 0,
+    "humanLabels": 0,
+    "configurationMutations": 0
+  },
+  "privateArchive": {
+    "files": 12,
+    "manifestSha256": "6186a88184b9f07f870d54e0d648df2a8a97dd2028a9008c472e0ea202e78582",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  },
+  "limits": [
+    "Historical 503 cause remains unestablished",
+    "No new failure reason has been measured in production",
+    "Deadline does not cancel underlying owner work or bound its cost",
+    "Genuine provider-positive, relay and isolated disabled-before-expiry live controls remain unexecuted",
+    "Human-operated trials remain deferred"
+  ],
+  "nextBoundedAction": "Source delivery and exact-build activation/off-mode acceptance, then prerequisite-qualified missing controls"
+}

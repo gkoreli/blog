@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-28T16:54:22.692236+00:00",
-  "sourceBaseline": "2997d9892b6d02bab26d7a0cc8c22065df2fa23b",
+  "checkedAt": "2026-10-28T17:09:48.605529+00:00",
+  "sourceBaseline": "913b496",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,22 +45,22 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Add closed reason diagnostics for the observed guard-unavailable response without raw inputs or native trust promotion; isolate missing disabled-before-expiry and positive/relay controls only when prerequisites are available. Human trials remain deferred.",
+  "nextBoundedAction": "Verify source activation and unchanged off-mode behavior; then independently isolate disabled-before-expiry and execute genuine positive/relay controls only with accepted prerequisites. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1280,
     "prompts": 31,
     "sourceSha256": "42eacfa30f362d2567e433317b24f562cbfc21bc4c0b5a7b5dc06d9aa7c9f537",
-    "unchanged": false,
-    "freshServedCheck": true
+    "unchanged": true,
+    "freshServedCheck": false
   },
-  "runtimeUnchanged": true,
+  "runtimeUnchanged": false,
   "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": true,
+  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
-    "runtimeDelivery": "Cloudflare delivery not executed; native local capture accepted",
+    "runtimeDelivery": "Research 61: 23 live controls; 19 exact capture/log pairs; candidate remains untrusted. Research 62: closed unavailable diagnostics accepted locally, deployment acceptance pending.",
     "trustedAdoption": false,
     "rulePublished": true,
     "receipt": "native-expression-validation.json",
@@ -72,9 +72,17 @@
     "liveReceipt": "native-capture-live.json",
     "positiveAndRelays": "unexecuted",
     "disabledBeforeExpiry": "unexecuted; measured disabled cases overlap expiry",
-    "publicationReceipt": "native-capture-live-checks.json"
+    "publicationReceipt": "native-capture-live-checks.json",
+    "failureDiagnostics": {
+      "profile": "native-bot-capture-unavailable-v1",
+      "localFaultConditions": 5,
+      "composedWorkerConditions": 20,
+      "receipt": "native-capture-failures.json",
+      "historical503": "unestablished; offline replay preserves all eleven compared totals",
+      "productionActivation": "pending"
+    }
   },
-  "productionOwnSiteGets": 24,
+  "productionOwnSiteGets": 0,
   "collectionEligibleGets": 0,
-  "ownerMarkPosts": 1
+  "ownerMarkPosts": 0
 }

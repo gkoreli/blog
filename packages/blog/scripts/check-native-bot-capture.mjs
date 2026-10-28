@@ -5,6 +5,7 @@ import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
+import { validateUnavailable } from './run-native-bot-capture.mjs';
 
 // Run from repository root. The private file contains synthetic control IDs only;
 // neither output is an actual Cloudflare Transform Rule/managed-verifier test.
@@ -48,8 +49,12 @@ try {
       assert.ok(typeof body.responseId === 'string');
       for (const value of ['private-ua-canary', '192.0.2.99', 'synthetic-only', 'private-header-canary']) assert.equal(JSON.stringify(body).includes(value), false);
       privateResponses.push(body);
+    } else if (status === 503) {
+      assert.equal(validateUnavailable(body, { id, condition: 'direct' }), true);
+      assert.equal(body.reason, 'owner-check-error');
+      for (const value of ['owner_clients', 'private-ua-canary', '192.0.2.99', 'synthetic-only']) assert.equal(JSON.stringify(body).includes(value), false);
     } else assert.deepEqual(body, {});
-    results.push({ condition: name, status, ...(candidate ? { candidate, native: body.native } : {}) });
+    results.push({ condition: name, status, ...(candidate ? { candidate, native: body.native } : status === 503 ? { unavailableReason: body.reason } : {}) });
   }
   await check('unmarked', path, {}, 403);
   assert.equal((await call('/api/owner', { method: 'POST', headers: { Authorization: 'Bearer ' + token } })).status, 200);
@@ -94,7 +99,8 @@ try {
     } finally { await fixture.dispose(); }
   }
   const sources = ['packages/analytics/src/native-bot-capture.ts', 'packages/analytics/src/owner.ts', 'packages/analytics/src/calibration.ts',
-    'packages/analytics/src/index.ts', 'packages/analytics/src/db.ts', 'packages/blog/src/worker/index.ts', 'packages/blog/scripts/check-native-bot-capture.mjs'];
+    'packages/analytics/src/index.ts', 'packages/analytics/src/db.ts', 'packages/blog/src/worker/index.ts',
+    'packages/blog/scripts/check-native-bot-capture.mjs', 'packages/blog/scripts/run-native-bot-capture.mjs'];
   const receipt = { checkedAt: new Date().toISOString(), runtime: process.version,
     environment: 'Actual composed blog Worker in local workerd with native D1; supplied synthetic HTTP controls',
     conditions: results, successfulCaptures: privateResponses.length, metadataFixtureControls,

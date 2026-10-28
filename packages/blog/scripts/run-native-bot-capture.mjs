@@ -31,7 +31,7 @@ export function preparePlan(now = Date.now()) {
   for (const values of [['true'], []]) add('receiver-expired', 'rule-expired', values, 'expired');
   const issuedAt = Math.floor(now / 1000) * 1000, ruleExpiresAt = issuedAt + 4 * 60_000, expiresAt = issuedAt + 8 * 60_000;
   const filter = ids => `(http.host eq "gkoreli.com" and http.request.uri.path in {${ids.map(id => JSON.stringify(PREFIX + id)).join(' ')}} and http.request.timestamp.sec ge ${issuedAt / 1000} and http.request.timestamp.sec lt ${ruleExpiresAt / 1000})`;
-  return { version: 'native-capture-controller-v2', origin: ORIGIN, issuedAt, ruleExpiresAt, expiresAt, maximumAttempts: 32,
+  return { version: 'native-capture-controller-v3', origin: ORIGIN, issuedAt, ruleExpiresAt, expiresAt, maximumAttempts: 32,
     controls, ruleExpression: filter(controls.map(control => control.id)),
     overwriteExpression: filter(controls.filter(control => control.phase === 'overwrite').map(control => control.id)),
     tailTag: randomBytes(16).toString('hex'), expectedCandidateTrust: 'untrusted-header', operator: 'controlled-curl', humanLabels: 0 };
@@ -49,6 +49,15 @@ export function validateCapture(body, control) {
     && Object.keys(body.native).sort().join(',') === 'signedAgent,verifiedBot';
 }
 
+export function validateUnavailable(body, control) {
+  return record(body) && body.profile === 'native-bot-capture-unavailable-v1'
+    && body.controlId === control.id && body.plannedCondition === control.condition
+    && typeof body.responseId === 'string' && UUID.test(body.responseId)
+    && body.outcome === 'unavailable' && ['owner-check-timeout', 'owner-check-error', 'capture-error'].includes(body.reason)
+    && typeof body.startedAt === 'string' && Number.isFinite(Date.parse(body.startedAt))
+    && Object.keys(body).sort().join(',') === 'controlId,outcome,plannedCondition,profile,reason,responseId,startedAt';
+}
+
 export function assertPhaseWindow(plan, phase, now = Date.now()) {
   assert.ok(plan.controls.some(control => control.phase === phase), 'Unknown phase');
   assert.ok(now >= plan.issuedAt, 'Not yet issued');
@@ -59,13 +68,16 @@ export function assertPhaseWindow(plan, phase, now = Date.now()) {
   if (['dynamic', 'overwrite', 'disabled'].includes(phase)) assert.ok(now < plan.ruleExpiresAt - 5000, 'Rule expired or near boundary');
 }
 
-export function summarize(plan, ledger, logCaptures = []) {
+export function summarize(plan, ledger, logCaptures = [], logUnavailable = []) {
   const controls = new Map(plan.controls.map(control => [control.id, control]));
   assert.equal(controls.size, plan.controls.length);
   const seen = new Set();
   const result = { planned: plan.controls.length, attempted: ledger.length, received: 0, captureResponses: 0,
     validCaptures: 0, expectedOutcomes: 0, unexpectedOutcomes: 0, unavailable: 0, exactLogJoins: 0, ambiguousLogJoins: 0,
     transportUnavailable: 0, httpUnavailable: 0, malformedCaptures: 0,
+    validUnavailableResponses: 0, exactUnavailableLogJoins: 0, ambiguousUnavailableLogJoins: 0,
+    unavailableWithReusedResponseId: 0,
+    unavailableReasons: { 'owner-check-timeout': 0, 'owner-check-error': 0, 'capture-error': 0, unestablished: 0 },
     capturesWithReusedResponseId: 0, conditions: [], humanLabels: 0, providerAccuracyRate: null, humanAccuracyRate: null };
   for (const entry of ledger) {
     const control = controls.get(entry.id); assert.ok(control, 'Unknown ledger control');
@@ -74,13 +86,28 @@ export function summarize(plan, ledger, logCaptures = []) {
     result.received += Number(received);
     const condition = { phase: control.phase, plannedCondition: control.condition, status: received ? entry.status : null, measurement: 'unavailable', expected: null };
     result.conditions.push(condition);
-    if (received && entry.status >= 500) { result.unavailable++; result.httpUnavailable++; continue; }
+    if (received && entry.status >= 500) {
+      result.unavailable++; result.httpUnavailable++;
+      const valid = entry.status === 503 && validateUnavailable(entry.body, control);
+      const reason = valid ? entry.body.reason : 'unestablished';
+      result.unavailableReasons[reason]++;
+      condition.unavailableReason = reason;
+      if (valid) {
+        result.validUnavailableResponses++;
+        const duplicates = ledger.filter(other => other.body?.responseId === entry.body.responseId).length;
+        if (duplicates > 1) result.unavailableWithReusedResponseId++;
+        const joins = logUnavailable.filter(body => body.responseId === entry.body.responseId && body.controlId === entry.id);
+        if (joins.length === 1 && isDeepStrictEqual(joins[0], entry.body)) result.exactUnavailableLogJoins++;
+        else if (joins.length > 0) result.ambiguousUnavailableLogJoins++;
+      }
+      continue;
+    }
     let expected = false;
     if (entry.status === 200) {
       result.captureResponses++;
       if (!validateCapture(entry.body, control)) { result.unavailable++; result.malformedCaptures++; condition.measurement = 'malformed-capture'; continue; }
       result.validCaptures++;
-      const duplicates = ledger.filter(other => other.status === 200 && other.body?.responseId === entry.body.responseId).length;
+      const duplicates = ledger.filter(other => other.body?.responseId === entry.body.responseId).length;
       if (duplicates > 1) result.capturesWithReusedResponseId++;
       const joins = logCaptures.filter(body => body.responseId === entry.body.responseId && body.controlId === entry.id);
       if (joins.length === 1 && isDeepStrictEqual(joins[0], entry.body)) result.exactLogJoins++;
@@ -97,7 +124,7 @@ export function summarize(plan, ledger, logCaptures = []) {
 
 export function parseCaptureLogStream(text) {
   assert.ok(Buffer.byteLength(text) <= 4 * 1024 * 1024, 'Tail exceeds bounded parser input');
-  const captures = []; let depth = 0, start = -1, quoted = false, escaped = false, envelopes = 0, malformed = 0;
+  const captures = [], unavailable = []; let depth = 0, start = -1, quoted = false, escaped = false, envelopes = 0, malformed = 0;
   for (let index = 0; index < text.length; index++) {
     const char = text[index];
     if (start < 0) { if (char === '{') { start = index; depth = 1; quoted = false; } continue; }
@@ -108,15 +135,16 @@ export function parseCaptureLogStream(text) {
       try {
         const envelope = JSON.parse(text.slice(start, index + 1)); envelopes++;
         if (Array.isArray(envelope.logs)) for (const log of envelope.logs) {
-          if (!record(log) || !Array.isArray(log.message) || log.message[0] !== 'analytics.native_bot_capture') continue;
+          if (!record(log) || !Array.isArray(log.message)
+            || !['analytics.native_bot_capture', 'analytics.native_bot_capture_unavailable'].includes(log.message[0])) continue;
           if (log.message.length !== 2 || !record(log.message[1])) { malformed++; continue; }
-          captures.push(log.message[1]);
+          (log.message[0] === 'analytics.native_bot_capture' ? captures : unavailable).push(log.message[1]);
         }
       } catch { malformed++; }
       start = -1;
     }
   }
-  return { captures, envelopes, malformed, incompleteFragments: Number(start >= 0) };
+  return { captures, unavailable, envelopes, malformed, incompleteFragments: Number(start >= 0) };
 }
 
 function curl(directory, path, headers, method = 'GET') {
@@ -155,7 +183,7 @@ function main() {
   }
   if (command === 'summarize') {
     const logs = phase ? parseCaptureLogStream(readFileSync(resolve(phase), 'utf8')) : null;
-    const summary = { ...summarize(plan, ledger, logs?.captures), ...(logs ? { tail: { envelopes: logs.envelopes, malformed: logs.malformed, incompleteFragments: logs.incompleteFragments } } : {}) };
+    const summary = { ...summarize(plan, ledger, logs?.captures, logs?.unavailable), ...(logs ? { tail: { envelopes: logs.envelopes, malformed: logs.malformed, incompleteFragments: logs.incompleteFragments } } : {}) };
     save(resolve(directory, 'summary.json'), summary); console.log(JSON.stringify(summary)); return;
   }
   assert.equal(command, 'run'); const selected = plan.controls.filter(control => control.phase === phase); assert.ok(selected.length);

@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-28T17:08:02.535Z",
+  "runtime": "v24.14.1",
+  "environment": "Local workerd; actual handler with deliberately injected owner/clock/logger faults; no native D1 faults here",
+  "conditions": [
+    {
+      "mode": "owner-error",
+      "status": 503,
+      "reason": "owner-check-error",
+      "exactLogJoins": 1
+    },
+    {
+      "mode": "owner-timeout",
+      "status": 503,
+      "reason": "owner-check-timeout",
+      "exactLogJoins": 1
+    },
+    {
+      "mode": "clock-error",
+      "status": 503,
+      "reason": "capture-error",
+      "exactLogJoins": 1
+    },
+    {
+      "mode": "logger-error",
+      "status": 503,
+      "reason": "capture-error",
+      "exactLogJoins": 0
+    },
+    {
+      "mode": "expired",
+      "status": 404,
+      "reason": null,
+      "exactLogJoins": 0
+    }
+  ],
+  "checks": {
+    "reasonsClosed": true,
+    "noRawCanaries": true,
+    "exactAvailableLogJoins": true,
+    "loggerFailurePreservesResponse": true,
+    "expiryRejectsBeforeDiagnostics": true,
+    "successfulCaptures": 0
+  },
+  "sourceSha256": {
+    "packages/analytics/src/native-bot-capture.ts": "ce5682fec955f42cfaf15217844ed419bea9c2519eece9c1d8d1c95282618449",
+    "packages/analytics/src/owner.ts": "ca615f0bff690b32581c36d69036775967a6c10d91233c3e7025c59c81940530",
+    "packages/blog/scripts/check-native-capture-failures.mjs": "592e1f93fefe474d3733bcc44352b936dbac9266a34fee2b9477bf21f794f94c",
+    "packages/blog/scripts/run-native-bot-capture.mjs": "3192c95276ef43e3b51c558a5bd180663b6d32a857d5f9ffb3719b7075adefb6"
+  },
+  "productionCalls": 0,
+  "humanLabels": 0,
+  "limits": [
+    "Controlled failures establish instrument behavior, not production prevalence or the cause of the historical 503",
+    "The deadline does not cancel underlying owner work; native D1 rejection is tested separately by the composed Worker harness"
+  ]
+}
