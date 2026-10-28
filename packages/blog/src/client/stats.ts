@@ -1,3 +1,4 @@
+import { consistentVendorNetworkSummary } from '@gkoreli/analytics/vendor-network-summary';
 import { consistentSignatureSummary } from '@gkoreli/analytics/signature-summary';
 import uPlot from 'uplot';
 import 'uplot/dist/uPlot.min.css';
@@ -201,6 +202,7 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   if (data.verifierProfile?.assessment !== 'stored-profile-not-reverified'
     || !REVIEWED_VERIFIER_PROFILES.some(profile => profile === data.verifierProfile.current)
     || !data.byKindSignature.every(row => isReportedVerifierProfile(row.profile))) throw new Error('Updated verifier profile provenance is unavailable. Please reload.');
+  if (!consistentVendorNetworkSummary(data.vendorNetwork, data.totals.views)) throw new Error('Inconsistent vendor network summary. Please reload.');
   if (!consistentSignatureSummary(data.verification, data.totals.views, data.byKindSignature)) throw new Error('Inconsistent signature summary. Please reload.');
   if (!Number.isSafeInteger(data.verification.vendorOriginConflictViews) || data.verification.vendorOriginConflictViews < 0
     || !Number.isSafeInteger(data.verification.vendorConflictWithMatchingOriginViews) || data.verification.vendorConflictWithMatchingOriginViews < 0) {
@@ -719,7 +721,9 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     { label: 'Earlier unsuccessful result — detail unrecorded', views: verification.unverifiedOutcomeNotRecordedViews },
   ], null);
   replaceSectionRows('stats-vendor-network', [
-    { label: 'Method record available', views: data.vendorNetwork.recordedViews },
+    { label: 'Stored method record present', views: data.vendorNetwork.recordedViews },
+    { label: 'Recognized, consistent stored assessment', views: data.vendorNetwork.recognizedViews },
+    { label: 'Unrecognized or inconsistent method record', views: data.vendorNetwork.unrecognizedViews },
     { label: 'Method not recorded — historical or unreported', views: data.vendorNetwork.notRecordedViews },
     { label: 'Has a declaration with a configured IP feed', views: data.vendorNetwork.configuredDeclarationViews },
     { label: 'Address listed in at least one applicable feed', views: data.vendorNetwork.listedViews },

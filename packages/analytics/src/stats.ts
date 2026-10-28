@@ -1,3 +1,4 @@
+import { vendorNetworkStateSql, consistentVendorNetworkSummary } from './vendor-network-summary.js';
 import { signatureCoverageRecordedSql } from './signature-coverage-report.js';
 import { measuredReportBatch, type ReportCalculationObserver } from './report-cost.js';
 import { nativeBooleanStateSql, vendorSignatureStateSql, consistentSignatureSummary } from './signature-summary.js';
@@ -367,6 +368,9 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
       included AS MATERIALIZED (
         SELECT * FROM report_scope WHERE referral_excluded = 0
       ),
+      vendor_network_facts AS MATERIALIZED (
+        SELECT vendor_ip_evidence, ${vendorNetworkStateSql()} AS network_state FROM included
+      ),
       signature_facts AS MATERIALIZED (
         SELECT signature_evidence, signature_status,
           ${signatureLocalStateSql()} AS local_state,
@@ -477,16 +481,18 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         WHEN 'vendor-ip' THEN (
           SELECT json_array(json_object(
             'recordedViews', SUM(vendor_ip_evidence IS NOT NULL),
-            'notRecordedViews', SUM(vendor_ip_evidence IS NULL),
-            'configuredDeclarationViews', SUM(json_extract(vendor_ip_evidence, '$.configuredDeclarationCount') > 0),
-            'unmappedDeclarationViews', SUM(json_extract(vendor_ip_evidence, '$.unmappedDeclarationCount') > 0),
-            'noDeclarationViews', SUM(json_extract(vendor_ip_evidence, '$.declarationCount') = 0),
-            'listedViews', SUM(json_extract(vendor_ip_evidence, '$.summary.listed') = 1),
-            'notListedViews', SUM(json_extract(vendor_ip_evidence, '$.summary.notListed') = 1),
-            'unavailableViews', SUM(json_extract(vendor_ip_evidence, '$.summary.unavailable') = 1),
-            'notAssessedViews', SUM(json_extract(vendor_ip_evidence, '$.summary.notAssessed') = 1),
-            'addressUnavailableViews', SUM(json_extract(vendor_ip_evidence, '$.configuredDeclarationCount') > 0 AND json_extract(vendor_ip_evidence, '$.address.state') <> 'usable')
-          )) FROM included
+            'notRecordedViews', SUM(network_state = 'not-recorded'),
+            'recognizedViews', SUM(network_state = 'recognized'),
+            'unrecognizedViews', SUM(network_state = 'unrecognized'),
+            'configuredDeclarationViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.configuredDeclarationCount') > 0),
+            'unmappedDeclarationViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.unmappedDeclarationCount') > 0),
+            'noDeclarationViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.declarationCount') = 0),
+            'listedViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.listed') = 1),
+            'notListedViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.notListed') = 1),
+            'unavailableViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.unavailable') = 1),
+            'notAssessedViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.notAssessed') = 1),
+            'addressUnavailableViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.configuredDeclarationCount') > 0 AND json_extract(vendor_ip_evidence, '$.address.state') <> 'usable')
+          )) FROM vendor_network_facts
         )
         WHEN 'verification' THEN (
           SELECT json_array(json_object(
@@ -629,6 +635,21 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
   const signatureRows = kindSignatureRows(requiredSection(sections, 'kind-signature'), numberField(totalsRow, 'views'));
   if (!consistentSignatureSummary(verification, numberField(totalsRow, 'views'), signatureRows)) return malformedReport();
 
+  const vendorNetwork = {
+    recognizedViews: summaryNumberField(vendorNetworkRow, 'recognizedViews'),
+    unrecognizedViews: summaryNumberField(vendorNetworkRow, 'unrecognizedViews'),
+    recordedViews: summaryNumberField(vendorNetworkRow, 'recordedViews'),
+    notRecordedViews: summaryNumberField(vendorNetworkRow, 'notRecordedViews'),
+    configuredDeclarationViews: summaryNumberField(vendorNetworkRow, 'configuredDeclarationViews'),
+    unmappedDeclarationViews: summaryNumberField(vendorNetworkRow, 'unmappedDeclarationViews'),
+    noDeclarationViews: summaryNumberField(vendorNetworkRow, 'noDeclarationViews'),
+    listedViews: summaryNumberField(vendorNetworkRow, 'listedViews'),
+    notListedViews: summaryNumberField(vendorNetworkRow, 'notListedViews'),
+    unavailableViews: summaryNumberField(vendorNetworkRow, 'unavailableViews'),
+    notAssessedViews: summaryNumberField(vendorNetworkRow, 'notAssessedViews'),
+    addressUnavailableViews: summaryNumberField(vendorNetworkRow, 'addressUnavailableViews'),
+  };
+  if (!consistentVendorNetworkSummary(vendorNetwork, numberField(totalsRow, 'views'))) return malformedReport();
   return {
     period: {
       start: window.start,
@@ -681,18 +702,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     verifierProfile: { current: CURRENT_VERIFIER_PROFILE, assessment: 'stored-profile-not-reverified' },
     byKindNativeCategory: nativeCategoryRows(requiredSection(sections, 'native-category'), numberField(totalsRow, 'views')),
     byDirectoryPublication: directoryPublicationRows(requiredSection(sections, 'directory-publication'), numberField(totalsRow, 'views')),
-    vendorNetwork: {
-      recordedViews: numberField(vendorNetworkRow, 'recordedViews'),
-      notRecordedViews: numberField(vendorNetworkRow, 'notRecordedViews'),
-      configuredDeclarationViews: numberField(vendorNetworkRow, 'configuredDeclarationViews'),
-      unmappedDeclarationViews: numberField(vendorNetworkRow, 'unmappedDeclarationViews'),
-      noDeclarationViews: numberField(vendorNetworkRow, 'noDeclarationViews'),
-      listedViews: numberField(vendorNetworkRow, 'listedViews'),
-      notListedViews: numberField(vendorNetworkRow, 'notListedViews'),
-      unavailableViews: numberField(vendorNetworkRow, 'unavailableViews'),
-      notAssessedViews: numberField(vendorNetworkRow, 'notAssessedViews'),
-      addressUnavailableViews: numberField(vendorNetworkRow, 'addressUnavailableViews'),
-    },
+    vendorNetwork,
     verification,
   };
 }

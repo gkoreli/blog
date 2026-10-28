@@ -120,7 +120,7 @@ export function statsPage() {
     </section>
     <section class="stats-section" id="stats-vendor-network">
       <h2>Published network checks <span>vendor IP feeds</span></h2>
-      <p class="stats-section-note">Checks compare an edge-supplied address with documented vendor ranges. Membership supports network attribution; a nonmatch does not prove impersonation. Missing addresses, Worker relay addresses, unavailable feeds and budget skips stay explicit. Outcomes can overlap when several declarations apply. Earlier records remain unknown. <a href="https://github.com/gkoreli/blog/blob/main/packages/analytics/src/vendor-ip-sources.ts" target="_blank" rel="noopener">Configured methods and sources</a>.</p>
+      <p class="stats-section-note">Checks compare an edge-supplied address with documented vendor ranges. Membership supports network attribution; a nonmatch does not prove impersonation. Missing addresses, Worker relay addresses, unavailable feeds and budget skips stay explicit. Only recognized, consistent stored assessments support outcome counts; inconsistent records stay separate. Historical profiles retain their recorded source scope, without fresh address verification. Outcomes can overlap when several declarations apply. Earlier records remain unknown. <a href="https://github.com/gkoreli/blog/blob/main/packages/analytics/src/vendor-ip-sources.ts" target="_blank" rel="noopener">Configured methods and sources</a>.</p>
       ${listSkeleton(3)}
     </section>
     <section class="stats-section" id="stats-vendor-signatures">

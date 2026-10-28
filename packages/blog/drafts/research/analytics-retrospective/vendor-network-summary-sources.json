@@ -1,0 +1,36 @@
+{
+  "reviewedAt": "2026-10-28T06:11:59.772846+00:00",
+  "sources": [
+    {
+      "url": "https://www.sqlite.org/json1.html#jex",
+      "applied": "json_extract maps boolean true and number one to SQL integer one. json_type preserves true/false versus integer. Explicit guards protect scalar check values from JSON re-parsing.",
+      "implementation": "packages/analytics/src/vendor-network-summary.ts"
+    },
+    {
+      "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests",
+      "applied": "Automatic verification matches the accessing IP against the appropriate published feed; a declared name alone does not establish source. No new DNS implementation."
+    },
+    {
+      "url": "https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-connecting-ip",
+      "applied": "Address/header behavior differs for Worker subrequests and pseudo IPv4. Existing collection abstentions remain unchanged; these report checks validate recorded availability, not original ingress authenticity."
+    }
+  ],
+  "historicalImplementation": [
+    {
+      "commit": "6124fab",
+      "profile": "2026-10-27.1",
+      "sources": 8
+    },
+    {
+      "commit": "af96048",
+      "profile": "2026-10-28.1",
+      "sources": 10
+    }
+  ],
+  "currentCollectorUnchanged": true,
+  "limits": [
+    "Stored address and ranges are absent; cannot independently re-run the comparison.",
+    "Coherent stored metadata is not independently authenticated execution.",
+    "Assessed supporting fields are not complete JSON canonicalization/conformance."
+  ]
+}

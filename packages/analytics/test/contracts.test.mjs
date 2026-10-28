@@ -919,6 +919,7 @@ test('stats query parsing preserves endpoint defaults, empty paths, canonical sc
 
 test('stats result decoding rejects malformed, duplicate, missing, and misplaced section payloads', async () => {
   const emptyVerification = JSON.stringify([(await queryStats(analyticsDatabase().d1, { range: '30d', traffic: 'browser' }, new Date('2026-09-07T05:00:00Z'))).verification]);
+  const emptyNetwork = JSON.stringify([(await queryStats(analyticsDatabase().d1, { range: '30d', traffic: 'browser' }, new Date('2026-09-07T05:00:00Z'))).vendorNetwork]);
   const emptyReportRows = () => [
     { section: 'totals', payload: '[{"views":0,"dailyClients":0,"unattributedViews":null}]' },
     { section: 'path', payload: '[]' },
@@ -929,7 +930,7 @@ test('stats result decoding rejects malformed, duplicate, missing, and misplaced
     { section: 'agent', payload: '[]' },
     { section: 'signer', payload: '[]' },
     { section: 'verification', payload: emptyVerification },
-    { section: 'vendor-ip', payload: '[{}]' },
+    { section: 'vendor-ip', payload: emptyNetwork },
     { section: 'kind-signature', payload: '[]' },
     { section: 'native-category', payload: '[]' },
     { section: 'directory-publication', payload: '[]' },
@@ -950,6 +951,7 @@ test('stats result decoding rejects malformed, duplicate, missing, and misplaced
   assert.deepEqual(valid.byPath, []);
 
   const malformedCases = [
+    emptyReportRows().map(row => row.section === 'vendor-ip' ? { section: 'vendor-ip', payload: '[{}]' } : row),
     emptyReportRows().slice(1),
     [...emptyReportRows(), emptyReportRows()[0]],
     emptyReportRows().map(row => row.section === 'path' ? { section: 'path', payload: null } : row),

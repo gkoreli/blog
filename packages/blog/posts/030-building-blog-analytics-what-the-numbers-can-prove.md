@@ -65,7 +65,7 @@ New observations omit that ambiguous source path; history gets an explicit label
 
 The [referrer-abuse policy](/filter-referrer-spam-without-deleting-analytics-history) versions public exclusions. Unapproved referrers and signing origins appear as Other; evidence stays private.
 
-A [native D1 fixture](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/29-unreported-classifications-and-denominators.md) exposed a gap: ten headline events but only five in the classification breakdown. Reports preserve unknowns and reject incomplete composition. The census found no missing kinds or reasons; **1,181 stored verification outcomes lacked proof detail**.
+A [native D1 fixture](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/29-unreported-classifications-and-denominators.md) reported ten events but classified five. A [network-summary audit](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/56-vendor-network-summary-consistency.md) found “listed” flags counted without supporting checks; inconsistent records now stay separate. These fixtures establish no production inflation. **1,181 historical verification outcomes lack proof detail**.
 
 ## Correct totals can still break production
 

@@ -1,0 +1,1077 @@
+{
+  "checkedAt": "2026-10-28T06:09:50.236Z",
+  "baselineCommit": "c8e6bec",
+  "mode": "compare",
+  "controls": [
+    {
+      "name": "missing-history",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 0,
+        "notRecordedViews": 1,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 0,
+        "recordedViews": 0,
+        "notRecordedViews": 1,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "current-listed",
+      "expectedRecognized": true,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 1,
+        "unrecognizedViews": 0,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "historical-listed",
+      "expectedRecognized": true,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 1,
+        "unrecognizedViews": 0,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "nonlisted",
+      "expectedRecognized": true,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 1,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 1,
+        "unrecognizedViews": 0,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 1,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "deadline-unavailable",
+      "expectedRecognized": true,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 1,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 1,
+        "unrecognizedViews": 0,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 1,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "address-unavailable",
+      "expectedRecognized": true,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 1,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 1
+      },
+      "after": {
+        "recognizedViews": 1,
+        "unrecognizedViews": 0,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 1,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 1
+      }
+    },
+    {
+      "name": "cooldown-not-assessed",
+      "expectedRecognized": true,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 1,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 1,
+        "unrecognizedViews": 0,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 1,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "unmapped-declaration",
+      "expectedRecognized": true,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 1,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 1,
+        "unrecognizedViews": 0,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 1,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "no-declaration",
+      "expectedRecognized": true,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 1,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 1,
+        "unrecognizedViews": 0,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 1,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "mixed-outcomes",
+      "expectedRecognized": true,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 1,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 1,
+        "unrecognizedViews": 0,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 1,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "two-ahrefs-declarations-one-feed",
+      "expectedRecognized": true,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 1,
+        "unrecognizedViews": 0,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "new-profile-google-agent",
+      "expectedRecognized": true,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 1,
+        "unrecognizedViews": 0,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "number-instead-of-boolean",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "no-check-behind-positive",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "summary-disagrees-with-check",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "unknown-profile",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "wrong-method",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "wrong-source",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "string-count",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "unsafe-count",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "counts-do-not-add",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 1,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "no-declaration-positive",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 1,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "unknown-address",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 1
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "relay-with-success",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 1
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "unknown-check-source",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "duplicate-check-source",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "legacy-profile-new-source",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "no-snapshot-behind-success",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "success-with-failure-reason",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "scalar-check",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "non-array-checks",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "fake-digest",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "name": "missing-time",
+      "expectedRecognized": false,
+      "before": {
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      },
+      "after": {
+        "recognizedViews": 0,
+        "unrecognizedViews": 1,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 0,
+        "unmappedDeclarationViews": 0,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 0
+      }
+    }
+  ],
+  "mixed": {
+    "before": {
+      "recordedViews": 32,
+      "notRecordedViews": 1,
+      "configuredDeclarationViews": 29,
+      "unmappedDeclarationViews": 2,
+      "noDeclarationViews": 2,
+      "listedViews": 25,
+      "notListedViews": 2,
+      "unavailableViews": 2,
+      "notAssessedViews": 1,
+      "addressUnavailableViews": 3
+    },
+    "after": {
+      "recognizedViews": 11,
+      "unrecognizedViews": 21,
+      "recordedViews": 32,
+      "notRecordedViews": 1,
+      "configuredDeclarationViews": 9,
+      "unmappedDeclarationViews": 1,
+      "noDeclarationViews": 1,
+      "listedViews": 5,
+      "notListedViews": 2,
+      "unavailableViews": 2,
+      "notAssessedViews": 1,
+      "addressUnavailableViews": 1
+    }
+  },
+  "scale": {
+    "rows": 512,
+    "beforeReads": 27289,
+    "afterReads": 32409,
+    "delta": 5120,
+    "writes": 0,
+    "commonOutputUnchanged": true
+  },
+  "producerControls": [
+    {
+      "case": "fanout-budget",
+      "nativeWorkerdProducer": true,
+      "syntheticEdgeContext": true,
+      "checks": 5,
+      "summary": {
+        "recognizedViews": 1,
+        "unrecognizedViews": 0,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 1,
+        "noDeclarationViews": 0,
+        "listedViews": 1,
+        "notListedViews": 0,
+        "unavailableViews": 0,
+        "notAssessedViews": 1,
+        "addressUnavailableViews": 0
+      }
+    },
+    {
+      "case": "worker-relay",
+      "nativeWorkerdProducer": true,
+      "syntheticEdgeContext": true,
+      "checks": 5,
+      "summary": {
+        "recognizedViews": 1,
+        "unrecognizedViews": 0,
+        "recordedViews": 1,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 1,
+        "unmappedDeclarationViews": 1,
+        "noDeclarationViews": 0,
+        "listedViews": 0,
+        "notListedViews": 0,
+        "unavailableViews": 1,
+        "notAssessedViews": 0,
+        "addressUnavailableViews": 1
+      }
+    }
+  ],
+  "productionCalls": 0,
+  "limits": "Synthetic stored-record consistency controls, not production prevalence or fresh address attribution."
+}

@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-28T06:11:59.773039+00:00",
+  "analyticsTests": 242,
+  "siteTests": 108,
+  "workspaceTypes": "pass",
+  "postValidation": "pass",
+  "policyCheck": "pass",
+  "isolatedBuildPosts": 32,
+  "nativeStoredCases": 33,
+  "nativeWorkerdProducerCases": 2,
+  "nativeResult": "vendor-network-summary-native.json",
+  "browserFixture": {
+    "total": 33,
+    "recordPresent": 32,
+    "recognized": 11,
+    "unrecognized": 21,
+    "missing": 1,
+    "listed": 5,
+    "warningsAndErrors": 0,
+    "ownedTabClosed": true,
+    "noViewportOverride": true
+  },
+  "articleBodyWhitespaceWords": 1199,
+  "shapingPrompts": 31,
+  "promptsUnchanged": true,
+  "reportCacheVersion": "2026-10-28.6",
+  "producerAndCaptureUnchanged": true,
+  "productionCalls": 0,
+  "limits": "No current production prevalence or vendor/native/human accuracy supplied.",
+  "nativeScriptSha256": "05066b0cb995444e1b8cd8d5444bb36b6c6dc0a6e452042d22138c62f52c7b8e"
+}

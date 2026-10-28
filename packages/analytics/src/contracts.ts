@@ -72,6 +72,8 @@ export interface TimeSeriesPoint {
 export const ANALYTICS_EVIDENCE_SINCE = '2026-09-03';
 
 export interface VendorNetworkSummary {
+  recognizedViews: number;
+  unrecognizedViews: number;
   recordedViews: number;
   notRecordedViews: number;
   configuredDeclarationViews: number;
