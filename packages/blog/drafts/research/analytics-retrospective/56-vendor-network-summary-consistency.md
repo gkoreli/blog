@@ -33,3 +33,18 @@ Analytics 242/site 108 and workspace types pass. The old test-only network fixtu
 The larger goal stays open: current signed organic persistence, managed-native cryptographic agreement, R1 attribution, human/device accuracy and privacy/retention decisions remain unresolved. Human trials stay deferred. Next: accept the built UI on the mixed native fixture, exact source activation, and one metered narrow live report/reuse pair; preserve raw captures outside Git.
 
 [Checks](vendor-network-summary-checks.json) record the 1,199-word article and built fixture UI. [Primary-source cross-references](vendor-network-summary-sources.json) separate JSON typing, vendor methods and address provenance. Private pre-release captures are preserved in `2026-10-28-vendor-network-summary-pre-release`: twenty files, 0700/0600 modes, manifest `544b2b9b3cbaf0d7a2ff3c7d66551aec4ce3c919b08e05262dccfa1663a8b900`. October 31 remains a review date, not automatic erasure.
+
+
+## Production acceptance
+
+[The release receipt](vendor-network-summary-release.json) joins source `b8b264e`, exact-build Worker `012c88de`, the source-linked Ready/100% deployment row and six private response/tail joins. The dedicated-header, exact-version tail first receives a 400 invalid-query control, which the source rejects before D1. No tail event is truncated or exceptional.
+
+The seven-day All-events AhrefsBot declaration selection contains **nine events**: three recognized network assessments, all listed; six missing records; zero inconsistent records. All pre-existing network-summary fields match the frozen research-53 response. Equal counts do not prove unchanged membership, and this is no history-wide prevalence audit or fresh source comparison. The three assessments retain their stored evidence; no initiating user or authenticated AhrefsBot role is inferred.
+
+Its MISS reports **40,056 reads / zero writes / one attempt**. The same-socket second request returns HIT with identical bytes and calculation time. This is one report fill, not a production cost benchmark. Existing telemetry labels the provider's last-attempt scope. No diagnostic SELECT is performed. Six GETs are collection-ineligible: readiness, the report pair, direct article Markdown, stats JavaScript and static stats HTML.
+
+The served 1,199-word article and stats JavaScript match the isolated build; the served static methodology includes the new stored-assessment boundary. The mixed synthetic UI already displays 11 recognized, 21 inconsistent and one missing record, with five listed outcomes and no browser warnings/errors. The owned QA tab, fixture server and tail process group are stopped; viewport was unchanged. Optional settings are unchanged in source; no fresh binding-inspection claim is made.
+
+Private acceptance and final operational captures are in `2026-10-28-vendor-network-summary-acceptance`: 43 files, 0700/0600 modes, manifest `0db74d7bfd16f5c2e02492937aef2de4a456e92ce71550f2f24e56b7b553abd3`. October 31 remains a review date, not automatic erasure. This closes the consistency repair and measured narrow acceptance, without turning native counterexamples into production-inflation claims.
+
+The full goal remains open and human trials stay deferred. Next bounded investigation: read HTTP caching requirements and test vendor-IP feed freshness/revalidation under expiry, rotation and transport failures. This is a proposed method audit; no new freshness defect is claimed in advance. Reuse existing data and feed captures before any new production trial.
