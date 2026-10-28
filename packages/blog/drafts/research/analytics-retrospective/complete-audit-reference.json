@@ -1,0 +1,455 @@
+{
+  "checkedAt": "2026-10-28T01:12:53.987Z",
+  "verifierProfile": "2026-10-28.2",
+  "method": "Compare the bounded local profile audit with the pinned Python generic RFC verifier. Both use real Ed25519 math and explicit fixture-key resolvers. Generic tag/label policy, strict label-set matching and Web Bot Auth discovery/trust are different capabilities.",
+  "pythonSourceCommit": "1de433d9a49fd608475c6054ab14a1652c088844",
+  "privateFixtureSha256": "403b29b50c207fedfecd19b7f218c22b3a552b6ac76932578d571b99afdf1be6",
+  "rows": [
+    {
+      "name": "single",
+      "audit": {
+        "version": "2026-10-28.1",
+        "verifierProfile": "2026-10-28.2",
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "headerBudgetUnits": 32768,
+          "clockSource": "caller-supplied"
+        },
+        "scope": "paired-web-bot-auth-candidates",
+        "assessment": "complete",
+        "termination": "exhausted",
+        "inputMembers": 1,
+        "signatureMembers": 1,
+        "unpairedInputs": 0,
+        "unpairedSignatures": 0,
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "verifiedCandidates": 1,
+        "notVerifiedByProfileCandidates": 0,
+        "unavailableCandidates": 0,
+        "unsupportedCandidates": 0,
+        "indeterminateCandidates": 0,
+        "unassessedCandidates": 0,
+        "unresolvedCandidates": 0,
+        "verifiedPublisherOriginLowerBound": 1,
+        "directoryFetches": 1
+      },
+      "independentReference": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        }
+      ]
+    },
+    {
+      "name": "both-valid",
+      "audit": {
+        "version": "2026-10-28.1",
+        "verifierProfile": "2026-10-28.2",
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "headerBudgetUnits": 32768,
+          "clockSource": "caller-supplied"
+        },
+        "scope": "paired-web-bot-auth-candidates",
+        "assessment": "complete",
+        "termination": "exhausted",
+        "inputMembers": 2,
+        "signatureMembers": 2,
+        "unpairedInputs": 0,
+        "unpairedSignatures": 0,
+        "matchedCandidates": 2,
+        "taggedCandidates": 2,
+        "attemptedCandidates": 2,
+        "verifiedCandidates": 2,
+        "notVerifiedByProfileCandidates": 0,
+        "unavailableCandidates": 0,
+        "unsupportedCandidates": 0,
+        "indeterminateCandidates": 0,
+        "unassessedCandidates": 0,
+        "unresolvedCandidates": 0,
+        "verifiedPublisherOriginLowerBound": 2,
+        "directoryFetches": 2
+      },
+      "independentReference": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": 2,
+          "fixtureLabels": [
+            "one",
+            "two"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "two"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "name": "both-valid-reversed-input",
+      "audit": {
+        "version": "2026-10-28.1",
+        "verifierProfile": "2026-10-28.2",
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "headerBudgetUnits": 32768,
+          "clockSource": "caller-supplied"
+        },
+        "scope": "paired-web-bot-auth-candidates",
+        "assessment": "complete",
+        "termination": "exhausted",
+        "inputMembers": 2,
+        "signatureMembers": 2,
+        "unpairedInputs": 0,
+        "unpairedSignatures": 0,
+        "matchedCandidates": 2,
+        "taggedCandidates": 2,
+        "attemptedCandidates": 2,
+        "verifiedCandidates": 2,
+        "notVerifiedByProfileCandidates": 0,
+        "unavailableCandidates": 0,
+        "unsupportedCandidates": 0,
+        "indeterminateCandidates": 0,
+        "unassessedCandidates": 0,
+        "unresolvedCandidates": 0,
+        "verifiedPublisherOriginLowerBound": 2,
+        "directoryFetches": 2
+      },
+      "independentReference": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": 2,
+          "fixtureLabels": [
+            "two",
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "two"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "name": "first-invalid",
+      "audit": {
+        "version": "2026-10-28.1",
+        "verifierProfile": "2026-10-28.2",
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "headerBudgetUnits": 32768,
+          "clockSource": "caller-supplied"
+        },
+        "scope": "paired-web-bot-auth-candidates",
+        "assessment": "complete",
+        "termination": "exhausted",
+        "inputMembers": 2,
+        "signatureMembers": 2,
+        "unpairedInputs": 0,
+        "unpairedSignatures": 0,
+        "matchedCandidates": 2,
+        "taggedCandidates": 2,
+        "attemptedCandidates": 2,
+        "verifiedCandidates": 1,
+        "notVerifiedByProfileCandidates": 1,
+        "unavailableCandidates": 0,
+        "unsupportedCandidates": 0,
+        "indeterminateCandidates": 0,
+        "unassessedCandidates": 0,
+        "unresolvedCandidates": 0,
+        "verifiedPublisherOriginLowerBound": 1,
+        "directoryFetches": 2
+      },
+      "independentReference": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "two"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "name": "later-invalid-unassessed",
+      "audit": {
+        "version": "2026-10-28.1",
+        "verifierProfile": "2026-10-28.2",
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "headerBudgetUnits": 32768,
+          "clockSource": "caller-supplied"
+        },
+        "scope": "paired-web-bot-auth-candidates",
+        "assessment": "complete",
+        "termination": "exhausted",
+        "inputMembers": 2,
+        "signatureMembers": 2,
+        "unpairedInputs": 0,
+        "unpairedSignatures": 0,
+        "matchedCandidates": 2,
+        "taggedCandidates": 2,
+        "attemptedCandidates": 2,
+        "verifiedCandidates": 1,
+        "notVerifiedByProfileCandidates": 1,
+        "unavailableCandidates": 0,
+        "unsupportedCandidates": 0,
+        "indeterminateCandidates": 0,
+        "unassessedCandidates": 0,
+        "unresolvedCandidates": 0,
+        "verifiedPublisherOriginLowerBound": 1,
+        "directoryFetches": 2
+      },
+      "independentReference": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        }
+      ]
+    },
+    {
+      "name": "unrelated-tag",
+      "audit": {
+        "version": "2026-10-28.1",
+        "verifierProfile": "2026-10-28.2",
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "headerBudgetUnits": 32768,
+          "clockSource": "caller-supplied"
+        },
+        "scope": "paired-web-bot-auth-candidates",
+        "assessment": "complete",
+        "termination": "exhausted",
+        "inputMembers": 2,
+        "signatureMembers": 2,
+        "unpairedInputs": 0,
+        "unpairedSignatures": 0,
+        "matchedCandidates": 2,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "verifiedCandidates": 1,
+        "notVerifiedByProfileCandidates": 0,
+        "unavailableCandidates": 0,
+        "unsupportedCandidates": 0,
+        "indeterminateCandidates": 0,
+        "unassessedCandidates": 0,
+        "unresolvedCandidates": 0,
+        "verifiedPublisherOriginLowerBound": 1,
+        "directoryFetches": 1
+      },
+      "independentReference": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        }
+      ]
+    },
+    {
+      "name": "unpaired-input",
+      "audit": {
+        "version": "2026-10-28.1",
+        "verifierProfile": "2026-10-28.2",
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "headerBudgetUnits": 32768,
+          "clockSource": "caller-supplied"
+        },
+        "scope": "paired-web-bot-auth-candidates",
+        "assessment": "partial",
+        "termination": "exhausted",
+        "inputMembers": 2,
+        "signatureMembers": 1,
+        "unpairedInputs": 1,
+        "unpairedSignatures": 0,
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "verifiedCandidates": 1,
+        "notVerifiedByProfileCandidates": 0,
+        "unavailableCandidates": 0,
+        "unsupportedCandidates": 0,
+        "indeterminateCandidates": 0,
+        "unassessedCandidates": 0,
+        "unresolvedCandidates": 0,
+        "verifiedPublisherOriginLowerBound": 1,
+        "directoryFetches": 1
+      },
+      "independentReference": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        }
+      ]
+    },
+    {
+      "name": "unpaired-signature",
+      "audit": {
+        "version": "2026-10-28.1",
+        "verifierProfile": "2026-10-28.2",
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "headerBudgetUnits": 32768,
+          "clockSource": "caller-supplied"
+        },
+        "scope": "paired-web-bot-auth-candidates",
+        "assessment": "partial",
+        "termination": "exhausted",
+        "inputMembers": 1,
+        "signatureMembers": 2,
+        "unpairedInputs": 0,
+        "unpairedSignatures": 1,
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "verifiedCandidates": 1,
+        "notVerifiedByProfileCandidates": 0,
+        "unavailableCandidates": 0,
+        "unsupportedCandidates": 0,
+        "indeterminateCandidates": 0,
+        "unassessedCandidates": 0,
+        "unresolvedCandidates": 0,
+        "verifiedPublisherOriginLowerBound": 1,
+        "directoryFetches": 1
+      },
+      "independentReference": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        }
+      ]
+    }
+  ],
+  "referenceCalls": 24,
+  "externalRequests": 0,
+  "productionRequests": 0,
+  "limits": [
+    "A complete assessment can include failed proofs; it is not message authorization.",
+    "A failed all-signature reference call returns no result list, not proof that all signatures are invalid.",
+    "Public-key fixtures do not authenticate Exa, Ahrefs or native providers."
+  ]
+}

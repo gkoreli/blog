@@ -1,0 +1,151 @@
+{
+  "capturedAt": "2026-10-28T01:12:25.009498+00:00",
+  "repository": "pyauth/http-message-signatures",
+  "commit": "1de433d9a49fd608475c6054ab14a1652c088844",
+  "sourceFiles": [
+    {
+      "path": "http_message_signatures/__init__.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/__init__.py",
+      "sha256": "45f84ce6ad8cd8efd089be8a66623ddacff3f52fad5d192b35b318806d691692",
+      "bytes": 627
+    },
+    {
+      "path": "http_message_signatures/_algorithms.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/_algorithms.py",
+      "sha256": "3222b39a3dc6cb902478c67c740d6f77b9bc52ae6dff42483cb826983e0b92a1",
+      "bytes": 9308
+    },
+    {
+      "path": "http_message_signatures/_components.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/_components.py",
+      "sha256": "396c9b9acdcbc8c5b1fb2ed1bfb9ccf9bc46f4e32925ca92122b2f5b5ab7ca51",
+      "bytes": 1400
+    },
+    {
+      "path": "http_message_signatures/_integrations.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/_integrations.py",
+      "sha256": "2d2415c777dcd9602a48da9edb82e5c0a48668212250b50dfee87d19976f5b00",
+      "bytes": 5064
+    },
+    {
+      "path": "http_message_signatures/_messages.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/_messages.py",
+      "sha256": "ce8f8026a227e27bfdd99ddc5bfcb08dfaa5737b99a4c559cefe1b96bc103e6b",
+      "bytes": 2701
+    },
+    {
+      "path": "http_message_signatures/_url.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/_url.py",
+      "sha256": "cbf13827c397a4cbc26962161aff7370f87aa305a833e24983f344d674916782",
+      "bytes": 2980
+    },
+    {
+      "path": "http_message_signatures/aiohttp.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/aiohttp.py",
+      "sha256": "26187a36f33710b52e810a6a3b6aca627c9886a35fc0f49ad4c07079cf13b216",
+      "bytes": 29526
+    },
+    {
+      "path": "http_message_signatures/algorithms.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/algorithms.py",
+      "sha256": "c4b45da78e25eb5cd20fed80f698ee20cd806dc51e1efdef74f170b2abde2cc6",
+      "bytes": 214
+    },
+    {
+      "path": "http_message_signatures/digests.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/digests.py",
+      "sha256": "608a1ed81eabb6a1c00fe6a5fb29daa556e1510a862b0eed85e25cb84096f732",
+      "bytes": 6087
+    },
+    {
+      "path": "http_message_signatures/exceptions.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/exceptions.py",
+      "sha256": "904175fbcf8009240bf7bbdf228fdbc2ff8787ca5db635e34436ecac52a5800e",
+      "bytes": 260
+    },
+    {
+      "path": "http_message_signatures/httpx2.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/httpx2.py",
+      "sha256": "6caad22fd6453504208adfbbec9ad172b2b0cb7e647b1a94b5a5f03b7deddf1e",
+      "bytes": 13679
+    },
+    {
+      "path": "http_message_signatures/resolvers.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/resolvers.py",
+      "sha256": "77a01a27ad7d6e519f9c00f7fb83be42037e09cea0706a87e8cbdcf0518a892a",
+      "bytes": 14700
+    },
+    {
+      "path": "http_message_signatures/signatures.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/signatures.py",
+      "sha256": "1261a57ecbf11af40fd24d0c1139c0d6b673f8f8bf95aec8bbde064f922f71cc",
+      "bytes": 33670
+    },
+    {
+      "path": "http_message_signatures/structures.py",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/http_message_signatures/structures.py",
+      "sha256": "648992195f0114577ecf2250f5cf1f697116dad824ee257167ef9137fa27d87b",
+      "bytes": 4417
+    },
+    {
+      "path": "pyproject.toml",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/pyproject.toml",
+      "sha256": "6c81aaba7239507059d64c1f338cf200bf2e18ee786975a01f8cdb08e72608c5",
+      "bytes": 1712
+    },
+    {
+      "path": "README.rst",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/README.rst",
+      "sha256": "34084c8c6195ef6b65b43fb8c91a9e867534df29cb2f20c4d504978aba8ba0ab",
+      "bytes": 34226
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/LICENSE",
+      "sha256": "87edf00eb3adb7b328bbd302d87cf4eda0743f0bc36c60189d52c05e516a0402",
+      "bytes": 9144
+    },
+    {
+      "path": "NOTICE",
+      "url": "https://github.com/pyauth/http-message-signatures/blob/1de433d9a49fd608475c6054ab14a1652c088844/NOTICE",
+      "sha256": "b9f7e7237294cde9f17fecef70e04421b692867464d5f327be04b3772d42d8cd",
+      "bytes": 634
+    }
+  ],
+  "execution": "Pinned source via PYTHONPATH in a disposable venv; not a claimed named release or production dependency.",
+  "dependencies": [
+    {
+      "name": "cryptography",
+      "version": "50.0.2",
+      "artifactSha256": "fa8f5efb344d6908a1ce62f4a24e2e5780f825d6f53f5f50ec5ffacac72936cb",
+      "url": "https://files.pythonhosted.org/packages/e5/56/d194340cc4a57535e82e1bee9e89667ac4b7c13b5d3f59686deae3094dd5/cryptography-50.0.2-cp311-abi3-macosx_11_0_arm64.whl"
+    },
+    {
+      "name": "http-sf",
+      "version": "1.5.0",
+      "artifactSha256": "031282bd376549b04fcaa397d9ef351acdc5bd383435cccd1d8ea17b1661c80e",
+      "url": "https://files.pythonhosted.org/packages/f4/4a/5a1d3b0fcb58cbd827a968f69d6139c1af419dd008f2c4caf8a8ab78b7bd/http_sf-1.5.0-py3-none-any.whl"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "artifactSha256": "661c298b4821edebead0c91edd2b00374d67ad7c5a1f7a91d4442633b79d6a72",
+      "url": "https://files.pythonhosted.org/packages/b3/a9/9db617d05d7367c1ad0ab00b3aa6e6f9281edd689b4ee9ea0e5a84e89c97/cffi-2.1.1-cp314-cp314-macosx_11_0_arm64.whl"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "artifactSha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.12",
+      "artifactSha256": "a076f3f489b39b43ed13563a1dafe42447445bec2e294154ec5c57fcdda4c85e",
+      "url": "https://files.pythonhosted.org/packages/b6/ae/315bbeee126a769cbde43cf4908acb4b40408d8bf8bbf334dd7368d8dadf/pycparser-3.12-py3-none-any.whl"
+    }
+  ],
+  "python": "Python 3.14.6",
+  "initialApiResult": "Unauthenticated GitHub API returned 403 rate-limit exceeded; immutable source was resolved/captured through Git instead.",
+  "runtimeLockfileChanged": false
+}

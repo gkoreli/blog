@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-10-28T01:12:54.079Z",
+  "entry": "packages/analytics/src/index.ts",
+  "baselineSourceCommit": "3cb3860",
+  "method": "Same esbuild configuration/isolated path and exact Git baseline, then changed source. Emitted collector runtime only, not remote Worker bytes/source maps.",
+  "bytes": 254119,
+  "sha256": "6230e9d8c99b170e2d28aee22d8af2849929f30e93909b20fcd333d7d034ef20",
+  "exactRuntimeBytesEqual": true,
+  "newAuditCalledByCollector": false
+}

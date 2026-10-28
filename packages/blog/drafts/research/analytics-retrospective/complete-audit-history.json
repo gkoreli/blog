@@ -1,0 +1,95 @@
+{
+  "checkedAt": "2026-10-28T01:17:25.929Z",
+  "method": "Repeat the supplied exact chain/storage and directory commitment gates, then audit eligible proofs at retained invocation timestamps. The audit performs no production request, D1 execution or fresh key capture.",
+  "storedCollections": {
+    "2026-10-27.10": 2
+  },
+  "storedVerifierProfiles": {
+    "2026-10-27.6": 2
+  },
+  "currentReplayVerifier": "2026-10-28.2",
+  "exactChains": 2,
+  "originalFirstValidReplaysVerified": 2,
+  "directoryCapture": {
+    "capturedAt": "2026-10-28T00:20:03.853805+00:00",
+    "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+    "source": "https://crawler.exa.ai/.well-known/http-message-signatures-directory"
+  },
+  "assessments": [
+    {
+      "version": "2026-10-28.1",
+      "verifierProfile": "2026-10-28.2",
+      "policy": {
+        "maxCandidates": 8,
+        "deadlineMs": 2000,
+        "maxAgeSeconds": 86400,
+        "headerBudgetUnits": 32768,
+        "clockSource": "caller-supplied"
+      },
+      "scope": "paired-web-bot-auth-candidates",
+      "assessment": "complete",
+      "termination": "exhausted",
+      "inputMembers": 1,
+      "signatureMembers": 1,
+      "unpairedInputs": 0,
+      "unpairedSignatures": 0,
+      "matchedCandidates": 1,
+      "taggedCandidates": 1,
+      "attemptedCandidates": 1,
+      "verifiedCandidates": 1,
+      "notVerifiedByProfileCandidates": 0,
+      "unavailableCandidates": 0,
+      "unsupportedCandidates": 0,
+      "indeterminateCandidates": 0,
+      "unassessedCandidates": 0,
+      "unresolvedCandidates": 0,
+      "verifiedPublisherOriginLowerBound": 1,
+      "directoryFetches": 1
+    },
+    {
+      "version": "2026-10-28.1",
+      "verifierProfile": "2026-10-28.2",
+      "policy": {
+        "maxCandidates": 8,
+        "deadlineMs": 2000,
+        "maxAgeSeconds": 86400,
+        "headerBudgetUnits": 32768,
+        "clockSource": "caller-supplied"
+      },
+      "scope": "paired-web-bot-auth-candidates",
+      "assessment": "complete",
+      "termination": "exhausted",
+      "inputMembers": 1,
+      "signatureMembers": 1,
+      "unpairedInputs": 0,
+      "unpairedSignatures": 0,
+      "matchedCandidates": 1,
+      "taggedCandidates": 1,
+      "attemptedCandidates": 1,
+      "verifiedCandidates": 1,
+      "notVerifiedByProfileCandidates": 0,
+      "unavailableCandidates": 0,
+      "unsupportedCandidates": 0,
+      "indeterminateCandidates": 0,
+      "unassessedCandidates": 0,
+      "unresolvedCandidates": 0,
+      "verifiedPublisherOriginLowerBound": 1,
+      "directoryFetches": 1
+    }
+  ],
+  "inputSha256": [
+    "202edbe0ff12ffe36434220ebb22ee8710be36a28180a20d9603368f542ed46c",
+    "dc9701a1b31d485dc2253829caa7835b976e3b68c0086135dbff1341cce51761",
+    "0377265f458e364907b94cfeb7d4c4b11877be1dba33c78ec331eeec7ea8e732",
+    "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+    "36eb4eb2d0d84a57e65a63a48245261a8ffaccaa2fcf1310e81ce61492b01600"
+  ],
+  "productionRequests": 0,
+  "d1Statements": 0,
+  "externalReplayRequests": 0,
+  "limits": [
+    "Later captured keys do not reconstruct the directory at request time.",
+    "Audit replay is separate from the supplied stored-profile evidence; it does not itself perform a current production write.",
+    "Complete scoped proof assessment is not a person, action, role, purpose, native-provider or authorization verdict."
+  ]
+}

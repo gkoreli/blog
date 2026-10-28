@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-10-28T01:15:57.081Z",
+  "rows": 2,
+  "rowsRead": 4,
+  "rowsWritten": 0,
+  "exactUnsafeIntegerTextReferencesPreserved": true,
+  "contradictoryStatusAndVersionRetained": true,
+  "plan": "INTEGER PRIMARY KEY",
+  "productionStatements": 0
+}

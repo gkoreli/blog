@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-10-28T01:23:40.763173+00:00",
+  "analytics": {
+    "pass": 210,
+    "fail": 0,
+    "logSha256": "8122bb7f8f52e3b6c16a8e4d48df29b81c74108b5f483f05a9e13278d3214180"
+  },
+  "site": {
+    "pass": 106,
+    "fail": 0,
+    "logSha256": "2d3342b0199416bea3962ab9cf8eb718659ebdc2fbf40f029e4168e5631545bf"
+  },
+  "workspaceTypes": "pass",
+  "postValidation": "pass",
+  "newRegressionTests": 8,
+  "nativeAudits": 11,
+  "nativeComplete": 6,
+  "nativePartial": 5,
+  "independentPythonCalls": 24,
+  "historicalExactAuditCohort": {
+    "collection": "2026-10-27.10",
+    "storedVerifier": "2026-10-27.6",
+    "complete": 2
+  },
+  "currentExactAuditCohort": {
+    "collection": "2026-10-28.2",
+    "storedVerifier": "2026-10-28.2",
+    "complete": 2
+  },
+  "defaultCollectorRuntime": "byte-identical under isolated entry comparison; complete-audit-bundle.json",
+  "runtimeProfilesChanged": false,
+  "schemaOrLockfileChanged": false,
+  "isolatedBuild": {
+    "posts": 32,
+    "result": "pass",
+    "logSha256": "b2635ef1e73e80aef6c49a31328034b7fa7ec769ccda71e62f133b825dc4ca5b",
+    "warning": "Mise tracking symlink outside writable roots denied; build exited zero."
+  },
+  "sourceSha256": {
+    "packages/analytics/src/webbotauth.ts": "1bdf9970beef60f8427cf7cf776b9c974ae38f5337e1e0d60f4f0cfea338c8f7",
+    "packages/analytics/src/webbotauth-audit.ts": "ace6edeb5b3cda2eb971938402aedcb571fb2a1d3ebad34ecf115208d6fc4f83",
+    "packages/analytics/test/webbotauth-audit.test.mjs": "7738be115b12a8862da09b53311d290eca039191880dc7c867ddfa4dad1c0bb9",
+    "packages/analytics/package.json": "c028f95de8217aa29b296291c827b7afff33f7add22cd5cc25ddf4d32b74b4a4",
+    "packages/blog/scripts/check-signature-audit.mjs": "ee9c049b78ea0b822a5b78b9949f40100ff3075f909655397a91f7598b104649",
+    "packages/blog/scripts/check-current-signed-storage.mjs": "6c1801aa23584aa3195290675e3fe2db5f7d697738560bc14043ed80cb3fea7b",
+    "packages/blog/drafts/research/analytics-retrospective/audit-retained-signatures.mjs": "f32e7d36c13f38c4246f236202bfaf199453b622b3cf4b65dd1749c4b7f54c91",
+    "packages/blog/drafts/research/analytics-retrospective/probe-complete-audit.mjs": "bf621ff3e561eedef7ac29b81f34bf37e9477c72763ac234dc72d87e7ab843ea",
+    "packages/blog/drafts/research/analytics-retrospective/probe-pyauth-audit.py": "1b32a5e1bf9ae3f65c630e91c88cd5f0b2f62855cdea77918a5e3bc753e9a439",
+    "packages/blog/drafts/research/analytics-retrospective/current-signed-storage.sql": "f94f54784b1ef93b199c6620cd485d6cea03a424d7f128276a61be745944211b"
+  },
+  "article": {
+    "bodyWords": 1257,
+    "shapingPrompts": 31,
+    "proseChanged": false,
+    "evidenceLinkUpdated": true,
+    "builtMarkdownSha256": "d9a7bc26873f1514ca3229231b599abf05a10608e524a56beaaea492058f7afd"
+  },
+  "relativeFileLinks": {
+    "checked": 309,
+    "missing": 0
+  },
+  "codeFences": "balanced",
+  "gitDiffCheck": "pass",
+  "publicationAcceptance": "pending; complete-audit-release.json",
+  "limits": [
+    "The byte comparison concerns the collector entry, not remote Worker bytes/source maps.",
+    "Conclusive scoped proofs are not authorization, human labels or full RFC conformance.",
+    "Current-profile production evidence precedes this diagnostic source release and retains its own Worker/source provenance."
+  ]
+}

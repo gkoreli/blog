@@ -66,3 +66,6 @@ The `/privacy` seven-day report exposes all five new fields and returns identica
 The served article exactly matches the checked Markdown build and visibly links this learning. A preliminary request with the default Python client received HTTP 403; the established truthful publication-verification client returned matching HTTP 200 content. The first response body was not saved, so its cause is unestablished. Neither status is silently treated as a successful page count or attributed to a provider rule without evidence.
 
 Private sources, check logs and release captures are preserved outside Git at `~/.local/share/gkoreli/analytics-evidence/2026-10-28-signature-selection/`, with mode 0700/0600 and a hash manifest. October 31 is an investigation-copy review target, not a provider-wide erasure guarantee. No human trial, rule change, new permission, optional raw activation or owned preview is introduced.
+
+
+[Follow-up 40](40-bounded-signature-audit.md) accepts a separate bounded proof audit and two actual `.2` signed selection/receipt/row chains. This supersedes the pending current-profile persistence gate above, while preserving first-valid collector policy and the native/human/purpose limits.

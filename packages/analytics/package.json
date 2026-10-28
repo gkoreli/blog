@@ -12,7 +12,8 @@
     "./client-form": "./src/client-form.ts",
     "./signature-basis": "./src/signature-basis.ts",
     "./native-bot-evidence": "./src/native-bot-evidence.ts",
-    "./directory-publication": "./src/directory-publication-contract.ts"
+    "./directory-publication": "./src/directory-publication-contract.ts",
+    "./webbotauth-audit": "./src/webbotauth-audit.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
