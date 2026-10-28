@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-28T04:54:15.221188+00:00",
+  "baselineCommit": "aa937d5",
+  "reportVersion": "2026-10-28.4",
+  "verifierProfileUnchanged": "2026-10-28.7",
+  "collectionUnchanged": "2026-10-28.9",
+  "analyticsTests": 234,
+  "siteTests": 106,
+  "workspaceTypecheck": "pass",
+  "postValidation": "pass",
+  "referralPolicyGeneratedOutput": "pass via node --import tsx; CLI wrapper IPC denied in sandbox",
+  "isolatedBuildPosts": 32,
+  "articleBodyWhitespaceWords": 1200,
+  "shapingPrompts": 31,
+  "articleBodyMatchesBuiltMarkdownPrefixAfterLeadingWhitespace": true,
+  "isolatedArticleSha256": "1fa371b329e2570e310639bfd6071f4409a83934319edcb30b85dd72a0eb665b",
+  "localBrowser": {
+    "method": "Synthetic stored-record API fixture, actual bundled client and built page; no production report fetch or labelled visit",
+    "narrowViewportWidth": 390,
+    "narrowDocumentWidth": 390,
+    "tableContainerWidth": 354,
+    "tableScrollWidth": 720,
+    "keyboardScrollObserved": true,
+    "keyboardRegionFocused": true,
+    "normalViewportWidth": 1280,
+    "normalTableFits": true,
+    "signatureColumns": 4,
+    "nativeCategoryColumnsUnchanged": 3,
+    "explicitProfiles": [
+      "current",
+      "historical",
+      "not-recorded",
+      "unrecognized-record",
+      "test-injected"
+    ],
+    "rowsSumToFixtureTotal": 9,
+    "viewportOverrideReset": true
+  },
+  "sourceDocumentation": "verifier-profile-sources.json",
+  "nativeAcceptance": "verifier-profile-native.json",
+  "productionDelta": "verifier-profile-delta.json",
+  "privateArchive": {
+    "name": "2026-10-28-verifier-profile-local",
+    "files": 23,
+    "manifestSha256": "5e6163c4e5cea80b8fc4bb4985eadc48f4ee1d6293828f4f829fad8d255d46bf",
+    "modes": "0700/0600",
+    "reviewDate": "2026-10-31",
+    "reviewDateIsAutomaticErasure": false
+  },
+  "linksChecked": 296,
+  "publicationAcceptance": "pending source delivery, activation and one scoped public API/cache check; no human trial",
+  "artifactSha256": {
+    "verifier-profile-native.json": "606f215821cb935c8e527f5d46a3bf8ea5b7280bd99303bf4f0e399dcb4b4603",
+    "verifier-profile-delta.json": "4d17a6d61eb4f651294305f06e5b3ffc5cdae6f4ed8c15d937fb090ab24cc363",
+    "verifier-profile-sources.json": "6542fa598f8f6671e4b27ea294fa02795e8f4dbb68e464afd7eacad0aafe269a"
+  }
+}

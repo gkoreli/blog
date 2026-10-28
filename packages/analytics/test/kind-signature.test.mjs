@@ -57,10 +57,10 @@ test('joint report partitions the same selected events, preserves missing kinds 
   const report = await queryStats(f.db, query, now); assert.equal(f.batches(), 1);
   assert.equal(report.totals.views, 4); assert.equal(report.referralPolicy.excludedViews, 1);
   assert.deepEqual(report.byKindSignature, [
-    { kind: null, basis: 'not-recorded', views: 1 },
-    { kind: 'ai-search', basis: 'verified-ua-covered', views: 1 },
-    { kind: 'ai-search', basis: 'verified-ua-uncovered', views: 1 },
-    { kind: 'signed-agent', basis: 'verified-outcome-only', views: 1 },
+    { kind: null, basis: 'not-recorded', profile: 'not-recorded', views: 1 },
+    { kind: 'ai-search', basis: 'verified-ua-covered', profile: 'not-recorded', views: 1 },
+    { kind: 'ai-search', basis: 'verified-ua-uncovered', profile: 'not-recorded', views: 1 },
+    { kind: 'signed-agent', basis: 'verified-outcome-only', profile: 'not-recorded', views: 1 },
   ]);
   assert.equal(report.byKindSignature.reduce((n, row) => n + row.views, 0), report.totals.views);
   const scoped = await queryStats(f.db, { ...query, kind: 'ai-search' }, now);

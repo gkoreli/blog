@@ -1,6 +1,7 @@
 import type { PublicSignerName } from './signers.js';
 import type { ReportedClientForm } from './client-form.js';
 import type { SignatureBasis } from './signature-basis.js';
+import type { ReportedVerifierProfile } from './verifier-profile.js';
 import type { NativeCategoryBasis } from './native-bot-evidence.js';
 import type { DirectoryPublicationBasis } from './directory-publication-contract.js';
 
@@ -178,5 +179,7 @@ export interface StatsResponse {
    */
   byKind: Array<{ kind: ReaderKind; reason: string; views: number; dailyClients: number }>;
   /** Disjoint event counts by classification and signature basis; no person/intent claim. */
-  byKindSignature: Array<{ kind: ReaderKind | null; basis: SignatureBasis; views: number }>;
+  byKindSignature: Array<{ kind: ReaderKind | null; basis: SignatureBasis; profile: ReportedVerifierProfile; views: number }>;
+  /** Reporting compares stored identifiers; it never re-verifies historical requests. */
+  verifierProfile: { current: string; assessment: 'stored-profile-not-reverified' };
 }

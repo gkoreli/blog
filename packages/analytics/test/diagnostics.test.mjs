@@ -119,7 +119,9 @@ test('public reports never expose the original UA, replay payload, transport or 
   await observe(db, request('/article', { 'User-Agent': 'distinctive-private-browser/1.0', 'CF-Ray': '1234567890abcdef-SJC' }));
   const report = await queryStats(db, { range: '7d', traffic: 'all' });
   const text = JSON.stringify(report);
-  for (const excluded of ['distinctive-private-browser', '1234567890abcdef', 'request_evidence', 'browserMajor', '"userAgent":', 'verifierProfile', 'transport', 'observationId', 'observation_id', 'storageReference']) assert.equal(text.includes(excluded), false, excluded);
+  for (const excluded of ['distinctive-private-browser', '1234567890abcdef', 'request_evidence', 'browserMajor', '"userAgent":', 'transport', 'observationId', 'observation_id', 'storageReference']) assert.equal(text.includes(excluded), false, excluded);
+  assert.equal(report.verifierProfile.assessment, 'stored-profile-not-reverified');
+  assert.equal(report.byKindSignature[0].profile, report.verifierProfile.current);
   assert.equal(typeof report.verification.userAgentBoundViews, 'number');
   assert.equal(report.totals.views, 1);
 });

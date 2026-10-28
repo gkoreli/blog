@@ -17,7 +17,7 @@ series:
 
 My blog’s Browser traffic more than doubled between two complete weeks. Yet one unexplained referrer supplied more than half the later week’s events. The totals added up; the audience-growth story did not follow.
 
-Understanding which articles help starts with three decisions:
+Readership analytics starts with three decisions:
 
 - What event deserves to be counted?
 - What does a bot’s identity actually establish?
@@ -25,7 +25,7 @@ Understanding which articles help starts with three decisions:
 
 ## Count the event you can observe
 
-The original dashboard displayed **97 AI Reads**. A browser script supplied its data. Crawlers skipping that script never entered the table. The label overstated its coverage.
+The dashboard displayed **97 AI Reads**, supplied by a browser script. Crawlers skipping that script never entered the table. The label overstated its coverage.
 
 I [moved collection to the HTTP response boundary](/first-party-analytics-for-a-personal-blog). The Worker serves the page, checks the response, and records an eligible delivery in D1. [Worker-first routing](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/) puts the collector in that path, including for clients that never run JavaScript.
 
@@ -51,7 +51,7 @@ Our catalogue also missed four documented names. [ExaSearchBot](https://crawler.
 
 The repair separates declared roles from [signing evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/33-reviewed-directory-publishers.md). I [traced three requests](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/49-current-verifier-vendor-evidence.md), two ExaSearchBot and one AhrefsBot, from retained headers through receipts to exact D1 rows. All replay under the current verifier using later-captured publisher keys; an independent RFC 9421 implementation agrees. Native-verifier agreement remains unmeasured.
 
-**Identity, role and trigger answer different questions.** All three signatures protected the host. User-Agent and article path were unsigned. Changing those unsigned fields left each signature valid. [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) authenticate covered components against a key; an unsigned role or human trigger needs separate evidence. Local controls exposed a [nonce type-check gap](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/51-signed-parameter-types-and-freshness.md), now fixed; unique actions remain unproven. Cloudflare’s categories matched the declared functions, but verification booleans were unavailable. The census leaves **1,025 included records labelled Exa with unknown roles**.
+**Identity, role and trigger answer different questions.** All three signatures protected the host. User-Agent and article path were unsigned. Changing those unsigned fields left each signature valid. [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) authenticate covered components against a key; an unsigned role or human trigger needs separate evidence. Local controls exposed a [nonce type-check gap](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/51-signed-parameter-types-and-freshness.md), now fixed; unique actions remain unproven. Reports [show stored verifier profiles](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/52-stored-verifier-provenance-and-retained-delta.md) without rechecking history. The census leaves **1,025 included records labelled Exa with unknown roles**.
 
 ## Preserve uncertainty in the data
 
@@ -59,7 +59,7 @@ Requests retain declarations and missing-network states; conflicts enter Unresol
 
 D1 discarded User-Agent after classification, so that table alone cannot replay the Exa/Ahrefs gap. Provider logs retained some inputs; complete historical recovery remains unproven. [Plausible](https://plausible.io/data-policy) keeps parsed software facts; [the IETF](https://www.ietf.org/policies/web-analytics/) keeps raw visitor data for five days and aggregates for twelve months. I’ve prepared an expiring diagnostic store; collection remains off pending privacy decisions. Filtering arbitrary text cannot guarantee the absence of personal information.
 
-Referrers needed the same discipline. Among 2,365 included internal-referrer events, **1,540 recorded `/` as their source**. That can mean the homepage, but it can also mean an origin-only URL whose path was omitted. [Referrer Policy](https://www.w3.org/TR/referrer-policy/) allows detail to be withheld. We had stored more certainty than the input supported.
+Referrers needed this too. Among 2,365 included internal-referrer events, **1,540 recorded `/` as their source**. That can mean the homepage, but it can also mean an origin-only URL whose path was omitted. [Referrer Policy](https://www.w3.org/TR/referrer-policy/) allows detail to be withheld. We had stored more certainty than the input supported.
 
 New observations omit that ambiguous source path; history gets an explicit label. Genuine transitions are lost.
 
@@ -73,7 +73,7 @@ One report repeated referral assessment across nine queries, consuming **182,388
 
 Sharing the selected population and assessment reduced the same report to **33,259 reads**, an **81.8% reduction**, with identical output. The [recovery measurements](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md) preserve the comparison.
 
-[D1 row reads](https://developers.cloudflare.com/d1/platform/pricing/#definitions) measure query work. A fast response and a correct total don’t tell you what serving that report costs. Acceptance includes [local D1 and production-metered reads](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/48-query-access-and-native-comparison-boundaries.md). Versioned reports are cached for at most an hour, with their original calculation time preserved.
+[D1 row reads](https://developers.cloudflare.com/d1/platform/pricing/#definitions) measure query work. A fast response and correct total don’t reveal what serving the report costs. Acceptance includes [local D1 and production-metered reads](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/48-query-access-and-native-comparison-boundaries.md). Versioned reports are cached for at most an hour, preserving their calculation time.
 
 ## Test the stages, not counter agreement
 
@@ -85,9 +85,9 @@ I [reconciled 12 production controls](https://github.com/gkoreli/blog/blob/main/
 - Blocking the beacon preserved three observations. `sendBeacon()` returned true three times; the server received none. True means [queued](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon#return_value), not received.
 - Blocking scripts still stored three observations. The curl controls stored as Other bot without executing JavaScript.
 
-Nine automated visits matched Browser. **Browser shape and JavaScript do not authenticate humans.** [Agent-driven input](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/30-filter-pointer-targets-and-browser-trust.md) produced `isTrusted=true` events locally. Our first-party receiver proves arrival; Cloudflare’s receipt remains separate. Human false-positive rates remain unmeasured.
+Nine automated visits matched Browser. **Browser shape and JavaScript do not authenticate humans.** [Agent-driven input](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/30-filter-pointer-targets-and-browser-trust.md) produced `isTrusted=true` events locally. Our receiver proves arrival; Cloudflare’s receipt remains separate. Human false-positive rates remain unmeasured.
 
-A separate [local failure experiment](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/07-matched-classifier-calibration.md) lost three observations while pages and beacons succeeded. No database failure was injected into production.
+A [local failure experiment](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/07-matched-classifier-calibration.md) lost three observations while pages and beacons succeeded. No database failure was injected into production.
 
 These mechanisms do not explain the historical gap’s proportions. Real phones, human-operated browsers, actual JavaScript-off and Cloudflare beacon receipt remain to test. Count missing measurements, abstentions and wrong decisions separately.
 
@@ -102,4 +102,4 @@ These mechanisms do not explain the historical gap’s proportions. Real phones,
 | Message signature | Verification of covered components against a key; [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html), February 2024. |
 | D1 row reads | Database work, separate from audience size; [metering definitions](https://developers.cloudflare.com/d1/platform/pricing/#definitions). |
 
-Sources checked October 25–27, 2026. The [research index](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-retrospective) retains methods, receipts, corrections and remaining work.
+Sources checked October 25–28, 2026 UTC. The [research index](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-retrospective) retains methods, receipts, corrections and remaining work.

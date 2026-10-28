@@ -1,0 +1,550 @@
+{
+  "method": "Fixed observed_at interval selected once through Wrangler --command after native D1 acceptance. Closed aggregated dimensions only; stored provenance, not signature replay or population labels.",
+  "startInclusive": "2026-10-27 21:49:00",
+  "endExclusive": "2026-10-28 04:40:00",
+  "rawRows": 87,
+  "distinctRecordedReferrers": 2,
+  "groups": 43,
+  "inclusion": {
+    "included": 73,
+    "owner-excluded": 7,
+    "referral-excluded": 7
+  },
+  "included": {
+    "kind": {
+      "ai-assistant": 1,
+      "ai-crawler": 8,
+      "ai-search": 24,
+      "browser": 8,
+      "cloud-browser": 20,
+      "other-bot": 4,
+      "search-crawler": 3,
+      "seo-crawler": 2,
+      "unresolved": 3
+    },
+    "basis": {
+      "unsigned": 53,
+      "verified-ua-uncovered": 20
+    },
+    "profile": {
+      "2026-10-27.6": 15,
+      "2026-10-27.7": 6,
+      "2026-10-28.1": 14,
+      "2026-10-28.2": 11,
+      "2026-10-28.3": 1,
+      "2026-10-28.4": 2,
+      "2026-10-28.6": 22,
+      "2026-10-28.7": 2
+    },
+    "source": {
+      "edge": 73
+    },
+    "collectionState": {
+      "current": 2,
+      "other-recorded": 71
+    },
+    "timeState": {
+      "canonical": 73
+    },
+    "nativeBooleans": {
+      "unavailable": 73
+    }
+  },
+  "rows": [
+    {
+      "inclusion": "included",
+      "kind": "ai-assistant",
+      "basis": "unsigned",
+      "profile": "2026-10-28.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "ai-crawler",
+      "basis": "unsigned",
+      "profile": "2026-10-27.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "ai-crawler",
+      "basis": "unsigned",
+      "profile": "2026-10-27.7",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "ai-crawler",
+      "basis": "unsigned",
+      "profile": "2026-10-28.1",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 5
+    },
+    {
+      "inclusion": "included",
+      "kind": "ai-crawler",
+      "basis": "unsigned",
+      "profile": "2026-10-28.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "ai-search",
+      "basis": "unsigned",
+      "profile": "2026-10-27.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "ai-search",
+      "basis": "unsigned",
+      "profile": "2026-10-27.7",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "ai-search",
+      "basis": "unsigned",
+      "profile": "2026-10-28.1",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "ai-search",
+      "basis": "unsigned",
+      "profile": "2026-10-28.2",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 2
+    },
+    {
+      "inclusion": "included",
+      "kind": "ai-search",
+      "basis": "unsigned",
+      "profile": "2026-10-28.7",
+      "source": "edge",
+      "collectionState": "current",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "ai-search",
+      "basis": "verified-ua-uncovered",
+      "profile": "2026-10-27.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 5
+    },
+    {
+      "inclusion": "included",
+      "kind": "ai-search",
+      "basis": "verified-ua-uncovered",
+      "profile": "2026-10-28.1",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 2
+    },
+    {
+      "inclusion": "included",
+      "kind": "ai-search",
+      "basis": "verified-ua-uncovered",
+      "profile": "2026-10-28.2",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 3
+    },
+    {
+      "inclusion": "included",
+      "kind": "ai-search",
+      "basis": "verified-ua-uncovered",
+      "profile": "2026-10-28.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 8
+    },
+    {
+      "inclusion": "included",
+      "kind": "browser",
+      "basis": "unsigned",
+      "profile": "2026-10-28.1",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 2
+    },
+    {
+      "inclusion": "included",
+      "kind": "browser",
+      "basis": "unsigned",
+      "profile": "2026-10-28.2",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 3
+    },
+    {
+      "inclusion": "included",
+      "kind": "browser",
+      "basis": "unsigned",
+      "profile": "2026-10-28.4",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "browser",
+      "basis": "unsigned",
+      "profile": "2026-10-28.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "browser",
+      "basis": "unsigned",
+      "profile": "2026-10-28.7",
+      "source": "edge",
+      "collectionState": "current",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "cloud-browser",
+      "basis": "unsigned",
+      "profile": "2026-10-27.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 4
+    },
+    {
+      "inclusion": "included",
+      "kind": "cloud-browser",
+      "basis": "unsigned",
+      "profile": "2026-10-28.1",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 4
+    },
+    {
+      "inclusion": "included",
+      "kind": "cloud-browser",
+      "basis": "unsigned",
+      "profile": "2026-10-28.2",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "cloud-browser",
+      "basis": "unsigned",
+      "profile": "2026-10-28.3",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "cloud-browser",
+      "basis": "unsigned",
+      "profile": "2026-10-28.4",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "cloud-browser",
+      "basis": "unsigned",
+      "profile": "2026-10-28.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 9
+    },
+    {
+      "inclusion": "included",
+      "kind": "other-bot",
+      "basis": "unsigned",
+      "profile": "2026-10-27.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "other-bot",
+      "basis": "unsigned",
+      "profile": "2026-10-27.7",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "other-bot",
+      "basis": "unsigned",
+      "profile": "2026-10-28.2",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 2
+    },
+    {
+      "inclusion": "included",
+      "kind": "search-crawler",
+      "basis": "unsigned",
+      "profile": "2026-10-27.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 2
+    },
+    {
+      "inclusion": "included",
+      "kind": "search-crawler",
+      "basis": "unsigned",
+      "profile": "2026-10-27.7",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "seo-crawler",
+      "basis": "verified-ua-uncovered",
+      "profile": "2026-10-28.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 2
+    },
+    {
+      "inclusion": "included",
+      "kind": "unresolved",
+      "basis": "unsigned",
+      "profile": "2026-10-27.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "kind": "unresolved",
+      "basis": "unsigned",
+      "profile": "2026-10-27.7",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 2
+    },
+    {
+      "inclusion": "owner-excluded",
+      "kind": "browser",
+      "basis": "unsigned",
+      "profile": "2026-10-27.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 5
+    },
+    {
+      "inclusion": "owner-excluded",
+      "kind": "browser",
+      "basis": "unsigned",
+      "profile": "2026-10-27.7",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "owner-excluded",
+      "kind": "other-bot",
+      "basis": "unsigned",
+      "profile": "2026-10-27.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "referral-excluded",
+      "kind": "seo-crawler",
+      "basis": "unsigned",
+      "profile": "2026-10-27.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "referral-excluded",
+      "kind": "unresolved",
+      "basis": "not-verified",
+      "profile": "2026-10-27.7",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "referral-excluded",
+      "kind": "unresolved",
+      "basis": "not-verified",
+      "profile": "2026-10-28.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "referral-excluded",
+      "kind": "unresolved",
+      "basis": "not-verified",
+      "profile": "2026-10-28.7",
+      "source": "edge",
+      "collectionState": "current",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "referral-excluded",
+      "kind": "unresolved",
+      "basis": "unsigned",
+      "profile": "2026-10-28.1",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "referral-excluded",
+      "kind": "unresolved",
+      "basis": "unsigned",
+      "profile": "2026-10-28.2",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "referral-excluded",
+      "kind": "unresolved",
+      "basis": "unsigned",
+      "profile": "2026-10-28.6",
+      "source": "edge",
+      "collectionState": "other-recorded",
+      "timeState": "canonical",
+      "nativeBooleans": "unavailable",
+      "views": 1
+    }
+  ],
+  "directDiagnostics": {
+    "countStatements": 1,
+    "deltaStatements": 1,
+    "countReads": 87,
+    "deltaReads": 8076,
+    "totalReads": 8163,
+    "rowsWritten": 0,
+    "totalAttemptsPerStatement": 1,
+    "postExecutionReadThreshold": 50000,
+    "thresholdIsServerEnforced": false
+  },
+  "querySha256": "9251eb80902d9ec55a132171b72ae4ba2007bd1d3a82db4a30337a3f3b1db174",
+  "countSha256": "2ef25d9ec5f00d1c10cf4168eea4b4337f3f9243ee4ae0ba6598e2e12924fd02",
+  "limits": [
+    "Stored historical verified outcomes are not current-policy acceptance and are not established errors.",
+    "Only two included events have current collection/verifier identifiers; neither has signature headers.",
+    "observed_at selection is not insertion history or an entire-table recount. Do not add this interval to research 31 and call it an exact current census.",
+    "Lexical interval selection cannot census malformed dates outside its bounds.",
+    "No human/device/operator labels, historical stage attribution or managed-native agreement.",
+    "Native verification fields unavailable does not mean false.",
+    "Collection, report fills and provider work are additional to acknowledged diagnostic reads."
+  ]
+}

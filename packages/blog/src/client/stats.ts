@@ -3,6 +3,7 @@ import 'uplot/dist/uPlot.min.css';
 import { READER_GROUPS, isReaderKind, readerGroupOf, type ReaderKind, type ReportedReferrerState, type StatsResponse, type TrafficFilter } from '@gkoreli/analytics/contracts';
 import { CLIENT_FORM_LABELS } from '@gkoreli/analytics/client-form';
 import { SIGNATURE_BASIS_LABELS } from '@gkoreli/analytics/signature-basis';
+import { REVIEWED_VERIFIER_PROFILES, isReportedVerifierProfile, verifierProfileLabel } from '@gkoreli/analytics/verifier-profile';
 import { nativeCategoryLabel } from '@gkoreli/analytics/native-bot-evidence';
 import { DIRECTORY_PUBLICATION_LABELS } from '@gkoreli/analytics/directory-publication';
 import { HOSTING_NETWORKS } from '@gkoreli/analytics/networks';
@@ -196,6 +197,9 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   }
   if (data.bySigner === undefined) throw new Error('Updated signer evidence is unavailable. Please reload.');
   if (data.verification === undefined || data.vendorNetwork === undefined || data.byClientForm === undefined || data.clientFormEvidence === undefined || data.byKindSignature === undefined || data.byDirectoryPublication === undefined) throw new Error('Updated verification evidence is unavailable. Please reload.');
+  if (data.verifierProfile?.assessment !== 'stored-profile-not-reverified'
+    || !REVIEWED_VERIFIER_PROFILES.some(profile => profile === data.verifierProfile.current)
+    || !data.byKindSignature.every(row => isReportedVerifierProfile(row.profile))) throw new Error('Updated verifier profile provenance is unavailable. Please reload.');
   if (!Number.isSafeInteger(data.verification.vendorOriginConflictViews) || data.verification.vendorOriginConflictViews < 0
     || !Number.isSafeInteger(data.verification.vendorConflictWithMatchingOriginViews) || data.verification.vendorConflictWithMatchingOriginViews < 0) {
     throw new Error('Updated signing-origin conflicts are unavailable. Please reload.');
@@ -582,14 +586,14 @@ function renderComposition(data: StatsResponse, state: ViewState): void {
   }
 }
 
-function renderClassificationEvidenceTable(containerId: string, evidenceLabel: string, rows: Array<{ kind: ReaderKind | null; label: string; views: number }>, state: ViewState): void {
+function renderClassificationEvidenceTable(containerId: string, evidenceLabel: string, rows: Array<{ kind: ReaderKind | null; label: string; views: number; profileLabel?: string }>, state: ViewState, includeProfile = false): void {
   const container = element(containerId);
   const table = document.createElement('table');
   const caption = document.createElement('caption');
   caption.textContent = 'Rows sum to the selected total';
   const head = document.createElement('thead');
   const header = document.createElement('tr');
-  for (const text of ['Classification', evidenceLabel, 'Events']) {
+  for (const text of ['Classification', evidenceLabel, ...(includeProfile ? ['Stored verifier'] : []), 'Events']) {
     const cell = document.createElement('th'); cell.scope = 'col'; cell.textContent = text; header.appendChild(cell);
   }
   head.appendChild(header);
@@ -603,13 +607,15 @@ function renderClassificationEvidenceTable(containerId: string, evidenceLabel: s
     } else kind.textContent = name;
     const basis = document.createElement('td'); basis.textContent = row.label;
     const count = document.createElement('td'); count.textContent = formatNumber(row.views);
-    tr.append(kind, basis, count); body.appendChild(tr);
+    tr.append(kind, basis);
+    if (includeProfile) { const profile = document.createElement('td'); profile.textContent = row.profileLabel ?? 'Profile unavailable'; tr.appendChild(profile); }
+    tr.appendChild(count); body.appendChild(tr);
   }
   table.append(caption, head, body); container.replaceChildren(table);
 }
 
 function renderKindSignatures(data: StatsResponse, state: ViewState): void {
-  renderClassificationEvidenceTable('stats-kind-signature-rows', 'Local signature evidence', data.byKindSignature.map(row => ({ ...row, label: SIGNATURE_BASIS_LABELS[row.basis] })), state);
+  renderClassificationEvidenceTable('stats-kind-signature-rows', 'Stored local signature evidence', data.byKindSignature.map(row => ({ ...row, label: SIGNATURE_BASIS_LABELS[row.basis], profileLabel: verifierProfileLabel(row.profile, data.verifierProfile.current) })), state, true);
   renderClassificationEvidenceTable('stats-native-category-rows', 'Cloudflare category evidence', data.byKindNativeCategory.map(row => ({ ...row, label: nativeCategoryLabel(row.basis) })), state);
 }
 
@@ -676,7 +682,7 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   replaceSectionRows('stats-verification', [
     { label: 'New verification record available', views: verification.recordedViews },
     { label: 'No new record — historical or unreported', views: verification.notRecordedViews },
-    { label: 'Locally verified key', views: verification.localVerifiedViews },
+    { label: 'Stored local status: verified', views: verification.localVerifiedViews },
     { label: 'Local verification unsuccessful', views: verification.localUnverifiedViews },
     { label: 'No signature headers', views: verification.localAbsentViews },
     { label: 'Injected test verdict — not local verification', views: verification.testVerdictViews },

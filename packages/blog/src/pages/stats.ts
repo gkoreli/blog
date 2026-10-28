@@ -101,7 +101,8 @@ export function statsPage() {
     <section class="stats-section stats-signature-basis" id="stats-kind-signature">
       <h2>Signature evidence by classification</h2>
       <p class="stats-section-note">Each included observation appears once. Classifications describe declared roles or request rules. A signature covering User-Agent protects the declaration; it does not establish the operator, human involvement or purpose. Select a kind to inspect its vendor and network checks.</p>
-      <div id="stats-kind-signature-rows">${listSkeleton(3)}</div>
+      <div id="stats-kind-signature-rows" role="region" aria-label="Signature evidence table; scroll horizontally if needed" tabindex="0">${listSkeleton(3)}</div>
+      <p class="stats-section-note">The stored verifier profile shows which implementation produced each result. Current means its identifier matches today's verifier; it does not mean this report reverified the request. Historical profiles can have different checks. Missing profiles, inconsistent records and injected verdicts remain explicit. Each included event appears once across this table.</p>
     </section>
     <section class="stats-section" id="stats-declarations">
       <h2>Selected client declarations <span>single stored name</span></h2>
@@ -109,7 +110,7 @@ export function statsPage() {
     </section>
     <section class="stats-section" id="stats-signers">
       <h2>Stored verified signing outcomes <span>reviewed names</span></h2>
-      <p class="stats-section-note">These counts follow stored outcomes, including earlier records without coverage detail. The classification table separates detailed local results, outcome-only history, injected verdicts and unrecognized records. A reviewed display name does not establish a request’s role or purpose.</p>
+      <p class="stats-section-note">These counts follow stored outcomes, including earlier records without coverage detail. The classification table separates evidence and stored verifier profiles. Reports do not reverify historical requests. A reviewed display name does not establish a request’s role or purpose.</p>
       ${listSkeleton(2)}
     </section>
     <section class="stats-section" id="stats-verification-outcomes">

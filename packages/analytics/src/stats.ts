@@ -27,6 +27,7 @@ import { publicReferrers } from './referrals.js';
 import { referralAssessmentCtes, referralRulesJson } from './referral-sql.js';
 import { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
 import { signatureBasisSql, isSignatureBasis } from './signature-basis.js';
+import { verifierProfileSql, isReportedVerifierProfile, CURRENT_VERIFIER_PROFILE } from './verifier-profile.js';
 import { nativeCategoryBasisSql, isNativeCategoryBasis } from './native-bot-evidence.js';
 import { directoryPublicationBasisSql, isDirectoryPublicationBasis } from './directory-publication.js';
 import type { ReferralPolicy } from './referral-policy.js';
@@ -123,12 +124,13 @@ function kindSignatureRows(rows: Record<string, unknown>[], total: number): Stat
   for (const row of rows) {
     const kind = stringField(row, 'key1');
     const basis = stringField(row, 'key2');
-    if ((kind !== null && !isReaderKind(kind)) || basis === null || !isSignatureBasis(basis)) return malformedReport();
+    const profile = row.key3;
+    if ((kind !== null && !isReaderKind(kind)) || basis === null || !isSignatureBasis(basis) || !isReportedVerifierProfile(profile)) return malformedReport();
     const views = row.views;
-    const key = JSON.stringify([kind, basis]);
+    const key = JSON.stringify([kind, basis, profile]);
     if (typeof views !== 'number' || !Number.isSafeInteger(views) || views <= 0 || keys.has(key)) return malformedReport();
     keys.add(key);
-    result.push({ kind, basis, views });
+    result.push({ kind, basis, profile, views });
   }
   if (result.reduce((sum, row) => sum + row.views, 0) !== total) return malformedReport();
   return result;
@@ -440,10 +442,10 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         )
         WHEN 'kind-signature' THEN (
           SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', evidence_kind, 'key2', basis, 'views', COUNT(*)) AS row_json
+            SELECT json_object('key1', evidence_kind, 'key2', basis, 'key3', profile, 'views', COUNT(*)) AS row_json
             FROM (SELECT CASE WHEN reader_kind IN (${READER_KINDS.map(kind => `'${kind}'`).join(', ')})
-              THEN reader_kind ELSE NULL END AS evidence_kind, ${signatureBasisSql()} AS basis FROM included)
-            GROUP BY evidence_kind, basis ORDER BY COUNT(*) DESC, evidence_kind, basis
+              THEN reader_kind ELSE NULL END AS evidence_kind, ${signatureBasisSql()} AS basis, ${verifierProfileSql()} AS profile FROM included)
+            GROUP BY evidence_kind, basis, profile ORDER BY COUNT(*) DESC, evidence_kind, basis, profile
           )
         )
         WHEN 'excluded' THEN (
@@ -614,6 +616,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     }),
     byKind: kindRows(requiredSection(sections, 'kind'), numberField(totalsRow, 'views')),
     byKindSignature: kindSignatureRows(requiredSection(sections, 'kind-signature'), numberField(totalsRow, 'views')),
+    verifierProfile: { current: CURRENT_VERIFIER_PROFILE, assessment: 'stored-profile-not-reverified' },
     byKindNativeCategory: nativeCategoryRows(requiredSection(sections, 'native-category'), numberField(totalsRow, 'views')),
     byDirectoryPublication: directoryPublicationRows(requiredSection(sections, 'directory-publication'), numberField(totalsRow, 'views')),
     vendorNetwork: {

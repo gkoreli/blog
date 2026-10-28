@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-28T04:44:40.776Z",
+  "baselineCommit": "aa937d5",
+  "method": "Supplied stored-record fixtures and actual local D1. No cryptographic, operator or population label.",
+  "measurements": [
+    {
+      "rows": 512,
+      "oldReads": 25753,
+      "currentReads": 27820,
+      "delta": 2067
+    }
+  ],
+  "commonOutputAndCollapsedBasisUnchanged": true,
+  "profileJointSeparatesSameBasis": true,
+  "fixtureIncludedViews": 9,
+  "deltaFixtureRows": 9,
+  "deltaTimeIndexUsed": true,
+  "deltaNativeScale": {
+    "rows": 2048,
+    "distinctReferrers": 2048,
+    "rowsRead": 43916,
+    "rowsWritten": 0
+  },
+  "startInclusive": "2026-10-27 21:49:00",
+  "endExclusive": "2026-10-28 04:40:00",
+  "querySha256": "9251eb80902d9ec55a132171b72ae4ba2007bd1d3a82db4a30337a3f3b1db174",
+  "countSha256": "2ef25d9ec5f00d1c10cf4168eea4b4337f3f9243ee4ae0ba6598e2e12924fd02",
+  "productionPlan": {
+    "countStatements": 1,
+    "deltaStatements": 1,
+    "postExecutionReadThreshold": 50000,
+    "maxCountBeforeDelta": 2048,
+    "thresholdIsServerEnforced": false
+  },
+  "productionCalls": 0
+}

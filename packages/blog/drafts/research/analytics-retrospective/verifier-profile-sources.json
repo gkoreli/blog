@@ -1,0 +1,109 @@
+{
+  "reviewedAt": "2026-10-28T04:49:00Z",
+  "method": "Read primary documentation bodies online; verify each reviewed literal against repository source at an immutable commit. Observed source commits are not asserted first introductions or deployment times. No OpenTelemetry dependency added.",
+  "primaryDocumentation": [
+    {
+      "url": "https://opentelemetry.io/docs/concepts/instrumentation-scope/",
+      "pageModified": "2026-06-19",
+      "appliedIdea": "Associate telemetry with its producing module/version and group signals by that provenance.",
+      "code": "packages/analytics/src/verifier-profile.ts",
+      "limits": "Our identifier is stored producer provenance, not OpenTelemetry instrumentation or current cryptographic proof."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/specs/otel/schemas/",
+      "observedSpecVersion": "1.62.0",
+      "observedStatus": "Stable",
+      "appliedIdea": "Consumers must interpret versioned telemetry explicitly; mixed historical semantics cannot silently become current semantics.",
+      "code": "packages/analytics/src/signature-basis.ts",
+      "limits": "A version label does not supply transformations or replay missing historical signature inputs; no claim of adopting the OTel schema protocol."
+    }
+  ],
+  "reviewedProfiles": [
+    {
+      "profile": "2026-10-26.1",
+      "inspectedSourceCommit": "e455766b8edae362caa1e8bc6d81cc676431932c",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "7dbdec18b190cef17f3a7d579060c01d159f9c596c9b92903bd58ecc52acf81c"
+    },
+    {
+      "profile": "2026-10-27.1",
+      "inspectedSourceCommit": "4aa74d449bb9597fead4b32dad3ccdc6002a1a7a",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "a7027ba96a7c1db643ad766a319352d4a356e6639bcdcee306dee1bb9bb7099d"
+    },
+    {
+      "profile": "2026-10-27.3",
+      "inspectedSourceCommit": "6124fab52d8013a619a1ed4a1239e3255dce4d7a",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "7b4cb4542a1e70aaf2825499f3e6d84ae0655acc549b7d019643f7a2ef85d393"
+    },
+    {
+      "profile": "2026-10-27.4",
+      "inspectedSourceCommit": "87ed72564e6edd2f47eaec3cdc3b4e8ee36952e6",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "d0b47e486b5c19ddeea335c124f04ba918db3a3663a07a21776b0f11c3af8262"
+    },
+    {
+      "profile": "2026-10-27.5",
+      "inspectedSourceCommit": "6d8c10f51fa1c91c133d7b0a9a7934cfccc74514",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "97d42ef19e0a1685cfed5558437dd48806df21cce6d719cf845ffd1112cbcf1a"
+    },
+    {
+      "profile": "2026-10-27.6",
+      "inspectedSourceCommit": "3519ea0ad7681d768e2bfaaf03af5f823b9c5ef2",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "3eed10b1ed7490303ab80ec7f86dd5b7fcb81d0dab223371c75b9802b3c11b35"
+    },
+    {
+      "profile": "2026-10-27.7",
+      "inspectedSourceCommit": "5da4bc985e581895ac03d1de6834e092ce7829fb",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "209f9ac0e7c1bf5d0eaee0a91518b73e4b3c386d0753dacb1fd7acedff520143"
+    },
+    {
+      "profile": "2026-10-28.1",
+      "inspectedSourceCommit": "1804550190315dd4bc19c21f8e108b34383d8b4a",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "2ce2e34e0fc3d9428b6c66be0d39c5be83018262cd29f8a25513551e46dbd30d"
+    },
+    {
+      "profile": "2026-10-28.2",
+      "inspectedSourceCommit": "610841ac517d8f5ddf9fb3fe098558f5c0d61801",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "2a0de378d62fc5022a2955b5756f0c0722fbdcbc32fd2e83beba1bac490eab65"
+    },
+    {
+      "profile": "2026-10-28.3",
+      "inspectedSourceCommit": "eac41e3d497201e1d2763c5b51d407013c2025bd",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "9d66b271bf18131a51093a1fe3d855c3f553ad5cf9e2da34dfd78e28737bfacc"
+    },
+    {
+      "profile": "2026-10-28.4",
+      "inspectedSourceCommit": "3f32c2634872fe26bfe1273659b7e55c88a1b098",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "6ae271c0fc576dafd03e6b98aeb39fcb942f75c971e043927a6fd58be69cdcb8"
+    },
+    {
+      "profile": "2026-10-28.5",
+      "inspectedSourceCommit": "23792d3bb88cb81eaff91c13912bcaf6ebc0d49a",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "c3a162573ac7d23f755763c6caf41ff6838659151f06c0c0cd678f202b8d1567"
+    },
+    {
+      "profile": "2026-10-28.6",
+      "inspectedSourceCommit": "590f646626b50c8530ca60bcb92f15c7d44cdbb8",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "7fa9533f77de5fd96bf44f707ee52b7429e6f3ff50660c3ba3fe621d0f85c442"
+    },
+    {
+      "profile": "2026-10-28.7",
+      "inspectedSourceCommit": "934533b85be4defa0ed6b55c1baa34d8722fcbd4",
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "3c7fe283dc5b4c75822b0201b609118cc78f5044201d6b06141cf407163dc0de"
+    }
+  ],
+  "historicalTypeGap": "51-signed-parameter-types-and-freshness.md",
+  "productionCensusBoundary": "31-retained-history-completeness-and-delta.md"
+}

@@ -130,6 +130,10 @@ a.stats-label { color: var(--color-link); }
 
 .stats-signature-basis { grid-column: 1 / -1; }
 .stats-signature-basis table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+#stats-kind-signature-rows { overflow-x: auto; }
+#stats-kind-signature-rows table { min-width: 40rem; }
+#stats-kind-signature-rows th,
+#stats-kind-signature-rows td { overflow-wrap: normal; }
 .stats-signature-basis caption { text-align: left; color: var(--color-text-muted); padding: 0.5rem 0; }
 .stats-signature-basis a { color: var(--color-link); }
 .stats-signature-basis th,
