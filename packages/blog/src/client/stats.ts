@@ -196,6 +196,10 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   }
   if (data.bySigner === undefined) throw new Error('Updated signer evidence is unavailable. Please reload.');
   if (data.verification === undefined || data.vendorNetwork === undefined || data.byClientForm === undefined || data.clientFormEvidence === undefined || data.byKindSignature === undefined || data.byDirectoryPublication === undefined) throw new Error('Updated verification evidence is unavailable. Please reload.');
+  if (!Number.isSafeInteger(data.verification.vendorOriginConflictViews) || data.verification.vendorOriginConflictViews < 0
+    || !Number.isSafeInteger(data.verification.vendorConflictWithMatchingOriginViews) || data.verification.vendorConflictWithMatchingOriginViews < 0) {
+    throw new Error('Updated signing-origin conflicts are unavailable. Please reload.');
+  }
   return data;
 }
 
@@ -716,6 +720,8 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     { label: 'Declaration with a documented signing method', views: verification.vendorDocumentedViews },
     { label: 'Verified key from the documented origin', views: verification.vendorMatchingOriginViews },
     { label: 'Verified key from a different origin', views: verification.vendorDifferentOriginViews },
+    { label: 'Declarations name conflicting signing origins', views: verification.vendorOriginConflictViews },
+    { label: 'Selected proof matches one conflicting origin', views: verification.vendorConflictWithMatchingOriginViews },
     { label: 'Documented declaration; key not verified', views: verification.vendorNotVerifiedViews },
     { label: 'Matching origin and User-Agent covered', views: verification.vendorUserAgentBoundViews },
     { label: 'Has declarations without a configured method', views: verification.vendorUnmappedDeclarationViews },

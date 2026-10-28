@@ -12,6 +12,10 @@ export const VENDOR_IP_SOURCES = [
   { id: 'openai-user', vendor: 'OpenAI', declarations: ['ChatGPT-User'], url: 'https://openai.com/chatgpt-user.json', documentation: 'https://developers.openai.com/api/docs/bots', mediaTypes: ['application/json', 'application/octet-stream'] },
   { id: 'perplexity-bot', vendor: 'Perplexity', declarations: ['PerplexityBot'], url: 'https://www.perplexity.ai/perplexitybot.json', documentation: 'https://docs.perplexity.ai/docs/resources/perplexity-crawlers', mediaTypes: ['application/json'] },
   { id: 'perplexity-user', vendor: 'Perplexity', declarations: ['Perplexity-User'], url: 'https://www.perplexity.ai/perplexity-user.json', documentation: 'https://docs.perplexity.ai/docs/resources/perplexity-crawlers', mediaTypes: ['application/json'] },
+  // Append new sources to preserve the existing bounded fanout order.
+  // These per-client methods do not extend to DuckAssistBot or Gemini Notebook.
+  { id: 'duckduckbot', vendor: 'DuckDuckGo', declarations: ['DuckDuckBot'], url: 'https://duckduckgo.com/duckduckbot.json', documentation: 'https://duckduckgo.com/duckduckgo-help-pages/results/duckduckbot', mediaTypes: ['application/json'] },
+  { id: 'google-agent', vendor: 'Google', declarations: ['Google-Agent'], url: 'https://developers.google.com/static/crawling/ipranges/user-triggered-agents.json', documentation: 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers#google-agent', mediaTypes: ['application/json'] },
 ] as const;
 export type VendorIpSource = typeof VENDOR_IP_SOURCES[number];
 export type VendorIpSourceId = VendorIpSource['id'];

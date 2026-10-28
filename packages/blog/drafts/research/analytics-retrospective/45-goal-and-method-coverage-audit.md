@@ -55,3 +55,5 @@ Next: implement the dedicated Google-Agent and DuckDuckBot published-IP sources,
 Adding a second documented signing origin also requires mixed-declaration controls: one selected proof may match one expected origin while another declaration names a different one. Preserve the current overlapping unmapped counts, keep selected-proof scope explicit, and expose that conflict instead of turning a partial match into a global vendor verdict. The current catalogue has only one such origin, so this is a required extension test, not a claimed production failure.
 
 Private captures and offline reinspection are preserved in the restricted `2026-10-28-goal-method-audit` archive: 17 files plus a hash manifest, with seven hash-checked references to the existing trial-ledger archive. The October 31 review date is not an automatic erasure promise. Public artifacts contain closed results and source commitments; raw response captures remain outside Git.
+
+[Research 46](46-documented-method-extensions.md) implements the documented-method extension with explicit mixed-origin evidence. This inventory remains the frozen pre-extension baseline.

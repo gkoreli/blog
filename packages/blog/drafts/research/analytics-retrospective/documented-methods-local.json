@@ -1,0 +1,350 @@
+{
+  "checkedAt": "2026-10-28T02:48:04.051Z",
+  "baselineCommit": "96fab49",
+  "method": "Native workerd collector + local D1 with saved public IP feeds, intercepted generated keys, independently constructed g-labelled signature bytes. No authentic Google action, production request or vendor fetch.",
+  "baseline": {
+    "googleDeclarationWasUnmapped": true,
+    "mixedExaGoogleWasGlobalMatch": true
+  },
+  "ipChecks": [
+    {
+      "name": "DuckDuckBot",
+      "mode": "listed",
+      "outcome": "listed",
+      "reason": null
+    },
+    {
+      "name": "DuckDuckBot",
+      "mode": "not-listed",
+      "outcome": "not-listed",
+      "reason": null
+    },
+    {
+      "name": "DuckDuckBot",
+      "mode": "unavailable",
+      "outcome": "unavailable",
+      "reason": "http-status"
+    },
+    {
+      "name": "DuckDuckBot",
+      "mode": "relay",
+      "outcome": "unavailable",
+      "reason": "address-unavailable"
+    },
+    {
+      "name": "Google-Agent",
+      "mode": "listed",
+      "outcome": "listed",
+      "reason": null
+    },
+    {
+      "name": "Google-Agent",
+      "mode": "not-listed",
+      "outcome": "not-listed",
+      "reason": null
+    },
+    {
+      "name": "Google-Agent",
+      "mode": "unavailable",
+      "outcome": "unavailable",
+      "reason": "http-status"
+    },
+    {
+      "name": "Google-Agent",
+      "mode": "relay",
+      "outcome": "unavailable",
+      "reason": "address-unavailable"
+    }
+  ],
+  "collectorControls": [
+    {
+      "mode": "duck-listed",
+      "signatureStatus": "absent",
+      "vendor": {
+        "profile": "2026-10-28.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 0,
+        "unmappedDeclarationCount": 1,
+        "expectedOriginCount": 0,
+        "matchingDeclarationCount": null,
+        "differentOriginDeclarationCount": null,
+        "status": "not-configured",
+        "userAgentCovered": null
+      },
+      "ipOutcomes": [
+        {
+          "source": "duckduckbot",
+          "outcome": "listed"
+        }
+      ],
+      "receiptMatchesStoredStatus": true
+    },
+    {
+      "mode": "duck-not-listed",
+      "signatureStatus": "absent",
+      "vendor": {
+        "profile": "2026-10-28.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 0,
+        "unmappedDeclarationCount": 1,
+        "expectedOriginCount": 0,
+        "matchingDeclarationCount": null,
+        "differentOriginDeclarationCount": null,
+        "status": "not-configured",
+        "userAgentCovered": null
+      },
+      "ipOutcomes": [
+        {
+          "source": "duckduckbot",
+          "outcome": "not-listed"
+        }
+      ],
+      "receiptMatchesStoredStatus": true
+    },
+    {
+      "mode": "google-unsigned",
+      "signatureStatus": "absent",
+      "vendor": {
+        "profile": "2026-10-28.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": null,
+        "differentOriginDeclarationCount": null,
+        "status": "not-verified",
+        "userAgentCovered": null
+      },
+      "ipOutcomes": [
+        {
+          "source": "google-agent",
+          "outcome": "listed"
+        }
+      ],
+      "receiptMatchesStoredStatus": true
+    },
+    {
+      "mode": "google-signed",
+      "signatureStatus": "verified",
+      "vendor": {
+        "profile": "2026-10-28.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "ipOutcomes": [
+        {
+          "source": "google-agent",
+          "outcome": "listed"
+        }
+      ],
+      "receiptMatchesStoredStatus": true
+    },
+    {
+      "mode": "google-other-origin",
+      "signatureStatus": "verified",
+      "vendor": {
+        "profile": "2026-10-28.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 0,
+        "differentOriginDeclarationCount": 1,
+        "status": "different-origin",
+        "userAgentCovered": false
+      },
+      "ipOutcomes": [
+        {
+          "source": "google-agent",
+          "outcome": "listed"
+        }
+      ],
+      "receiptMatchesStoredStatus": true
+    },
+    {
+      "mode": "mixed-google",
+      "signatureStatus": "verified",
+      "vendor": {
+        "profile": "2026-10-28.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 2,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 2,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 1,
+        "status": "conflicting-origins",
+        "userAgentCovered": false
+      },
+      "ipOutcomes": [
+        {
+          "source": "google-agent",
+          "outcome": "listed"
+        }
+      ],
+      "receiptMatchesStoredStatus": true
+    },
+    {
+      "mode": "mixed-exa",
+      "signatureStatus": "verified",
+      "vendor": {
+        "profile": "2026-10-28.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 2,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 2,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 1,
+        "status": "conflicting-origins",
+        "userAgentCovered": false
+      },
+      "ipOutcomes": [
+        {
+          "source": "google-agent",
+          "outcome": "listed"
+        }
+      ],
+      "receiptMatchesStoredStatus": true
+    },
+    {
+      "mode": "mixed-unsigned",
+      "signatureStatus": "absent",
+      "vendor": {
+        "profile": "2026-10-28.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 2,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 2,
+        "matchingDeclarationCount": null,
+        "differentOriginDeclarationCount": null,
+        "status": "conflicting-origins",
+        "userAgentCovered": null
+      },
+      "ipOutcomes": [
+        {
+          "source": "google-agent",
+          "outcome": "listed"
+        }
+      ],
+      "receiptMatchesStoredStatus": true
+    },
+    {
+      "mode": "mixed-other",
+      "signatureStatus": "verified",
+      "vendor": {
+        "profile": "2026-10-28.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 2,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 2,
+        "matchingDeclarationCount": 0,
+        "differentOriginDeclarationCount": 2,
+        "status": "conflicting-origins",
+        "userAgentCovered": false
+      },
+      "ipOutcomes": [
+        {
+          "source": "google-agent",
+          "outcome": "listed"
+        }
+      ],
+      "receiptMatchesStoredStatus": true
+    },
+    {
+      "mode": "related-unmapped",
+      "signatureStatus": "absent",
+      "vendor": {
+        "profile": "2026-10-28.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 0,
+        "unmappedDeclarationCount": 2,
+        "expectedOriginCount": 0,
+        "matchingDeclarationCount": null,
+        "differentOriginDeclarationCount": null,
+        "status": "not-configured",
+        "userAgentCovered": null
+      },
+      "ipOutcomes": [],
+      "receiptMatchesStoredStatus": true
+    },
+    {
+      "mode": "owner-excluded",
+      "signatureStatus": "verified",
+      "vendor": {
+        "profile": "2026-10-28.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "ipOutcomes": [
+        {
+          "source": "google-agent",
+          "outcome": "listed"
+        }
+      ],
+      "receiptMatchesStoredStatus": true
+    },
+    {
+      "mode": "referral-excluded",
+      "signatureStatus": "verified",
+      "vendor": {
+        "profile": "2026-10-28.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "ipOutcomes": [
+        {
+          "source": "google-agent",
+          "outcome": "listed"
+        }
+      ],
+      "receiptMatchesStoredStatus": true
+    }
+  ],
+  "report": {
+    "includedViews": 10,
+    "ownerExcluded": 1,
+    "referralExcluded": 1,
+    "conflictingOrigins": 4,
+    "conflictWithSelectedMatch": 2,
+    "otherCommonOutputUnchanged": true,
+    "beforeReads": 7547,
+    "afterReads": 7547,
+    "deltaReads": 0,
+    "diagnosticWrites": 0,
+    "scopedAndEmpty": true
+  },
+  "feedSha256": {
+    "duckduckbot": "fd9039362dfaaad236d50c07ddd12bf0cc7f0d530fbff59b8feb1b22e0db2459",
+    "google-agent": "f24a9728ef3774aa61941248531341903a7288ee2228a6949831c2f02669c016"
+  },
+  "baselineSourceSha256": {
+    "vendor": "d8e5d0479f930b0a80e8b04540c8853b620ff0771fc949e06c3804c33683fe18",
+    "stats": "c6890895f1df8393c38400a36a031ac5d078c828e517e4cf4f09db29caa3dc87"
+  },
+  "productionRequests": 0,
+  "externalRequests": 0,
+  "humanLabels": 0,
+  "limits": [
+    "Selected fixtures are not population accuracy.",
+    "Listed IP ranges support network attribution, not purpose.",
+    "Generated keys substituted at a vendor origin are fixtures, not vendor authentication.",
+    "Stored historical profiles are not rewritten."
+  ]
+}

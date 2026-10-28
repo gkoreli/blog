@@ -94,6 +94,8 @@ export interface VerificationSummary {
   vendorDocumentedViews: number;
   vendorMatchingOriginViews: number;
   vendorDifferentOriginViews: number;
+  vendorOriginConflictViews: number;
+  vendorConflictWithMatchingOriginViews: number;
   vendorNotVerifiedViews: number;
   vendorUnmappedDeclarationViews: number;
   vendorUserAgentBoundViews: number;

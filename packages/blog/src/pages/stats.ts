@@ -124,7 +124,7 @@ export function statsPage() {
     </section>
     <section class="stats-section" id="stats-vendor-signatures">
       <h2>Declared vendor checks <span>documented signing origins</span></h2>
-      <p class="stats-section-note">Currently configured for ExaSearchBot and ExaUser using Exa’s published key origin. A matching key does not bind an unsigned User-Agent, identify the initiating user or prevent replay. Counts overlap; other declarations remain unmapped. No IP or DNS verification is performed here.</p>
+      <p class="stats-section-note">Configured for ExaSearchBot, ExaUser and Google-Agent using their documented signing origins. Google’s rollout is experimental; unsigned does not mean impersonation. Conflicting declared origins stay visible even when the selected proof matches one. A matching key does not bind an unsigned User-Agent, identify the initiating user or prevent replay. Counts overlap; other declarations remain unmapped. IP checks are separate; no DNS verification is performed here.</p>
       ${listSkeleton(3)}
     </section>
     <section class="stats-section" id="stats-verification">

@@ -2,7 +2,7 @@ import ipaddr from 'ipaddr.js';
 import type { KnownAgentName } from './classify.js';
 import { VENDOR_IP_SOURCES, type VendorIpSource, type VendorIpSourceId } from './vendor-ip-sources.js';
 
-export const VENDOR_IP_PROFILE = '2026-10-27.1';
+export const VENDOR_IP_PROFILE = '2026-10-28.1';
 export const VENDOR_IP_FETCH_DEADLINE_MS = 1500;
 export const VENDOR_IP_MAX_REQUEST_SOURCES = 4;
 export const VENDOR_IP_MAX_BODY_BYTES = 262144;

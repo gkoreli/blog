@@ -45,6 +45,34 @@ test('documented Exa methods do not grant trust to arbitrary keys, unmapped decl
   assert.equal(vendorSignatureEvidence(['ExaUser'], { ...verified, evidence: { covered: { userAgent: true } } }).userAgentCovered, true);
 });
 
+test('Google experimental signing and conflicting declarations preserve selected-proof scope', () => {
+  const google = { status: 'verified', agent: 'https://agent.bot.goog' };
+  const match = vendorSignatureEvidence(['Google-Agent'], google);
+  assert.equal(match.status, 'matching-origin'); assert.equal(match.expectedOriginCount, 1);
+  assert.equal(match.matchingDeclarationCount, 1); assert.equal(match.differentOriginDeclarationCount, 0);
+  assert.equal(match.userAgentCovered, null);
+  const unsigned = vendorSignatureEvidence(['Google-Agent'], { status: 'absent' });
+  assert.equal(unsigned.status, 'not-verified'); assert.equal(unsigned.matchingDeclarationCount, null);
+  assert.equal(unsigned.differentOriginDeclarationCount, null);
+  const related = vendorSignatureEvidence(['Google-GeminiNotebook'], google);
+  assert.equal(related.status, 'not-configured'); assert.equal(related.matchingDeclarationCount, null);
+  for (const names of [['ExaUser', 'Google-Agent', 'GPTBot', 'ExaUser'], ['GPTBot', 'Google-Agent', 'ExaUser']]) {
+    for (const agent of ['https://agent.bot.goog', 'https://crawler.exa.ai', 'https://private-canary.example']) {
+      const mixed = vendorSignatureEvidence(names, { status: 'verified', agent });
+      assert.equal(mixed.status, 'conflicting-origins'); assert.equal(mixed.expectedOriginCount, 2);
+      assert.equal(mixed.documentedDeclarationCount, 2); assert.equal(mixed.unmappedDeclarationCount, 1);
+      assert.equal(mixed.matchingDeclarationCount, agent.includes('private-canary') ? 0 : 1);
+      assert.equal(mixed.matchingDeclarationCount + mixed.differentOriginDeclarationCount, 2);
+      assert.equal(JSON.stringify(mixed).includes(agent), false);
+    }
+    const absent = vendorSignatureEvidence(names, { status: 'absent' });
+    assert.equal(absent.status, 'conflicting-origins'); assert.equal(absent.matchingDeclarationCount, null);
+    const injected = vendorSignatureEvidence(names, google, true);
+    assert.equal(injected.status, 'test-injected'); assert.equal(injected.matchingDeclarationCount, null);
+    assert.equal(injected.differentOriginDeclarationCount, null);
+  }
+});
+
 test('real multiple-signature failures preserve all outcomes independent of label order; crypto runtime errors abstain', async () => {
   const now = new Date('2026-10-27T01:00:00Z'); const epoch = now.getTime() / 1000;
   const pair = await crypto.subtle.generateKey('Ed25519', true, ['sign', 'verify']);

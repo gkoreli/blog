@@ -40,9 +40,33 @@ test('IPv4, IPv6, mapped IPv4 and pseudo-IPv4 original IPv6 use family-correct C
 test('source selection deduplicates shared feeds, bounds fanout and retains unmapped declarations', async () => {
   const names=VENDOR_IP_SOURCES.flatMap(s=>s.declarations);let fetches=0;
   const e=await verifyVendorIp(request(),[...names,'ExaUser'],options(async()=>{fetches++;return feed()}));
-  assert.equal(fetches,4);assert.equal(e.checks.length,8);assert.equal(e.configuredDeclarationCount,9);assert.equal(e.unmappedDeclarationCount,1);assert.equal(e.checks.filter(c=>c.reason==='request-budget').length,4);assert.ok(Buffer.byteLength(JSON.stringify(e))<=4096);
+  assert.equal(fetches,4);assert.equal(e.checks.length,10);assert.equal(e.configuredDeclarationCount,11);assert.equal(e.unmappedDeclarationCount,1);assert.equal(e.checks.filter(c=>c.reason==='request-budget').length,6);assert.ok(Buffer.byteLength(JSON.stringify(e))<=4096);
   const single=await verifyVendorIp(request(),['AhrefsBot','AhrefsSiteAudit'],options(async()=>feed()));assert.equal(single.checks.length,1);assert.equal(single.configuredDeclarationCount,2);
   const none=await verifyVendorIp(request(),[],options(async()=>{throw new Error('must not fetch')}));assert.equal(none.checks.length,0);assert.equal(none.declarationCount,0);
+});
+
+test('DuckDuckBot and Google-Agent methods use dedicated fixed feeds without expanding to related products', async () => {
+  for (const [name, source, url] of [
+    ['DuckDuckBot', 'duckduckbot', 'https://duckduckgo.com/duckduckbot.json'],
+    ['Google-Agent', 'google-agent', 'https://developers.google.com/static/crawling/ipranges/user-triggered-agents.json'],
+  ]) {
+    for (const [r, outcome] of [[request(), 'listed'], [request('8.8.8.8'), 'not-listed']]) {
+      let calls = 0;
+      const evidence = await verifyVendorIp(r, [name], options(async (actual, init) => {
+        assert.equal(actual, url); assert.equal(init.redirect, 'manual');
+        assert.equal(init.headers.has('CF-Connecting-IP'), false); calls++; return feed();
+      }));
+      assert.equal(calls, 1); assert.equal(evidence.profile, '2026-10-28.1');
+      assert.equal(evidence.configuredDeclarationCount, 1); assert.equal(evidence.checks[0].source, source);
+      assert.equal(evidence.checks[0].outcome, outcome);
+    }
+    const unavailable = await verifyVendorIp(request(), [name], options(async () => new Response(null, { status: 503 })));
+    assert.equal(unavailable.checks[0].outcome, 'unavailable'); assert.equal(unavailable.checks[0].reason, 'http-status');
+    const relay = await verifyVendorIp(request('66.249.66.1', { 'CF-Worker': 'relay.example' }), [name], options(async () => { assert.fail('relay must not fetch'); }));
+    assert.equal(relay.address.state, 'worker-subrequest'); assert.equal(relay.checks[0].outcome, 'unavailable');
+  }
+  const unmapped = await verifyVendorIp(request(), ['DuckAssistBot', 'Google-GeminiNotebook'], options(async () => { assert.fail('related products must not inherit feeds'); }));
+  assert.equal(unmapped.configuredDeclarationCount, 0); assert.equal(unmapped.unmappedDeclarationCount, 2); assert.deepEqual(unmapped.checks, []);
 });
 
 test('cache respects max-age/Age, per-source coalescing, expiry, validation and no stale fallback', async () => {
