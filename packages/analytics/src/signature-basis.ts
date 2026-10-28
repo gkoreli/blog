@@ -35,9 +35,9 @@ export function signatureBasisSql(): string {
     WHEN json_extract(signature_evidence, '$.localStatus') = 'absent' AND signature_status IS NOT NULL THEN 'unrecognized-record'
     WHEN json_extract(signature_evidence, '$.localStatus') <> 'verified' AND json_type(signature_evidence, '$.coverage') NOT IN ('null') THEN 'unrecognized-record'
     WHEN json_extract(signature_evidence, '$.localStatus') = 'verified' THEN CASE
-      WHEN json_extract(signature_evidence, '$.coverage.version') = '2026-10-27.1'
+      WHEN json_extract(signature_evidence, '$.coverage.version') IN ('2026-10-27.1','2026-10-28.1')
         AND json_type(signature_evidence, '$.coverage.covered.userAgent') = 'true' THEN 'verified-ua-covered'
-      WHEN json_extract(signature_evidence, '$.coverage.version') = '2026-10-27.1'
+      WHEN json_extract(signature_evidence, '$.coverage.version') IN ('2026-10-27.1','2026-10-28.1')
         AND json_type(signature_evidence, '$.coverage.covered.userAgent') = 'false' THEN 'verified-ua-uncovered'
       ELSE 'verified-coverage-unknown' END
     WHEN json_extract(signature_evidence, '$.localStatus') = 'unverified' THEN 'not-verified'

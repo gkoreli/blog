@@ -1,0 +1,77 @@
+{
+  "checkedAt": "2026-10-28T00:51:12.666625+00:00",
+  "analytics": {
+    "pass": 202,
+    "fail": 0,
+    "logSha256": "094ee435691ff430498594f59b7175042f80a3d3b0e9a2152d597d3a054fd6d0"
+  },
+  "site": {
+    "pass": 106,
+    "fail": 0,
+    "logSha256": "d1133f8ea1a24b4e002ebe1e1304da66271176fc7301a204c8f02afb86d0a135"
+  },
+  "workspaceTypes": "pass",
+  "postValidation": "pass",
+  "newRegressionTests": 4,
+  "nativeCollectorControls": 9,
+  "exactNativeReceiptPairs": 9,
+  "nativeReferenceSelect": {
+    "rows": 1,
+    "rowsRead": 1,
+    "rowsWritten": 0
+  },
+  "referenceApiExecutions": 24,
+  "referenceModuleSha256": "8070a2351799e250ce6ef8ce55006dc8636c97e920f08c9d7c78a2f894f8ac0a",
+  "referenceCodeAndDependencyManifest": "reference-components-sources.json",
+  "nativeReportCost": {
+    "before": {
+      "rowsRead": 7665,
+      "rowsWritten": 0,
+      "statements": 1
+    },
+    "after": {
+      "rowsRead": 7665,
+      "rowsWritten": 0,
+      "statements": 1
+    },
+    "extraReads": 0
+  },
+  "isolatedBuild": {
+    "result": "pass",
+    "posts": 32,
+    "logSha256": "22c11dc5e83cc68d54ff1bba33eecddad1541a6e8eed9b758b98621ddaaba619",
+    "warning": "Mise tracking symlink outside writable roots denied; build exited zero."
+  },
+  "sourceSha256": {
+    "packages/analytics/src/webbotauth.ts": "39ec42a0bed787ba7bcea900cb796693b1e4c37f42095525054d7a15a300a725",
+    "packages/analytics/src/signature-selection.ts": "5f6ab30ea9ad8dfd2abe5775d8ce61ed92d5df3ef543542a0a82b4244f016c4b",
+    "packages/analytics/src/signature-basis.ts": "c10a95e2d1ba0e38f125e168a3649ed12ef44d6499cf744ed4bd0fb8ba0ade9e",
+    "packages/analytics/src/observation-receipt.ts": "002a2e530e7e6341290b77b0bdf9c1ba2b9d9cdadfca14bc87614e6a6e9200df",
+    "packages/analytics/src/stats.ts": "c6890895f1df8393c38400a36a031ac5d078c828e517e4cf4f09db29caa3dc87",
+    "packages/analytics/src/contracts.ts": "d3d66ee99a590c54c4e3de6e8d56d3f971dc6a6e2b3e706cf211091a97549566",
+    "packages/analytics/src/versions.ts": "2a0de378d62fc5022a2955b5756f0c0722fbdcbc32fd2e83beba1bac490eab65",
+    "packages/blog/src/client/stats.ts": "7d57f8460ca55075219ac84f0e71ebb2276d819c8b94bc772e4488f34c3c18cc",
+    "packages/blog/src/pages/stats.ts": "7fa02aba5d022a0cca38b16b6fe3f1a2f45c6cfa376582e248070073d3b1e726",
+    "packages/blog/src/pages/privacy.ts": "6d5181d00a83a9c98c317d644530785238da16b1a0fc6fce114c0de47c4ac05b",
+    "packages/blog/src/worker/stats-cache.ts": "f0f8a2c327317e90a0a0fed0f9031fc4718283c399ce72b1b1a560d4b9e6460c",
+    "packages/blog/scripts/check-signature-selection.mjs": "cf8539843ac97dbbd2fb8b28345557826e9850b2ad27efa1af497ca8f027cdb3",
+    "packages/blog/drafts/research/analytics-retrospective/probe-signature-selection.mjs": "cb82b6a24f34268281203c7b14a0b146c82d4584bf626a73f50a0871f61414ab"
+  },
+  "article": {
+    "bodyWords": 1257,
+    "shapingPrompts": 31,
+    "builtMarkdownSha256": "8197645ce2d0829e678e8f4e5f40d5b7ea68053b971d6b5a8ac0ef5fbf9d5d32"
+  },
+  "relativeFileLinks": {
+    "checked": 296,
+    "missing": 0
+  },
+  "codeFences": "balanced",
+  "gitDiffCheck": "pass",
+  "activationAcceptance": "pending; separate signature-selection-release.json",
+  "limits": [
+    "Synthetic selection fixtures and stored-snapshot counterexamples are not vendor or human labels.",
+    "No production multi-signature prevalence or exhaustive signer assessment.",
+    "Native fixture read parity does not establish production cost or latency parity."
+  ]
+}

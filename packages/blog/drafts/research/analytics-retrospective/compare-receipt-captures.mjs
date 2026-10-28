@@ -3,9 +3,10 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 
-const versions = new Set(['2026-10-27.1', '2026-10-27.2', '2026-10-27.3']);
+const versions = new Set(['2026-10-27.1', '2026-10-27.2', '2026-10-27.3', '2026-10-28.1']);
 const paths = ['version','classifierProfile','readerKind','declarations.status','declarations.candidates','declarations.candidateCount','declarations.candidateNames','declarations.categoryAgreement',
   'signature.evidenceVersion','signature.source','signature.verifierProfile','signature.status','signature.outcome','signature.reason','signature.reasons','signature.reasonCount','signature.reasonNames','signature.signer','signature.documentedVendorStatus','signature.userAgentCovered',
+  ...['policy','matchedCandidates','taggedCandidates','attemptedCandidates','unassessedCandidates'].map(key=>'signature.selection.'+key),
   'signature.coverage','signature.coverage.status','signature.coverage.authority','signature.coverage.targetUri','signature.coverage.method','signature.coverage.path','signature.coverage.query','signature.coverage.userAgent','signature.coverage.contentDigest','signature.coverage.replayPolicy',
   'native.verifiedBot','native.signedAgent','native.categoryStatus','native.categoryValue',
   'directoryPublication.profile','directoryPublication.method','directoryPublication.reviewedOn','directoryPublication.configuredDeclarationCount','directoryPublication.unmappedDeclarationCount','directoryPublication.status'];
@@ -49,13 +50,21 @@ export function normalizeRetainedReceiptCopies(input) {
 }
 function completeLiveReceipt(receipt) {
   if (!object(receipt) || !versions.has(receipt.version)) return false;
-  const v1 = receipt.version === '2026-10-27.1';
+  const v1 = receipt.version === '2026-10-27.1', selectionVersion = receipt.version === '2026-10-28.1';
   const required = paths.filter(path => !path.startsWith('signature.coverage.')
-    && (receipt.version === '2026-10-27.3' || !path.startsWith('directoryPublication.'))
+    && (['2026-10-27.3','2026-10-28.1'].includes(receipt.version) || !path.startsWith('directoryPublication.'))
+    && (selectionVersion || !path.startsWith('signature.selection.'))
     && !(v1 ? ['declarations.candidateCount','declarations.candidateNames','signature.reasonCount','signature.reasonNames']
       : ['declarations.candidates','signature.reasons']).includes(path));
   if (!required.every(path => field(receipt, path) !== undefined)) return false;
   const coverage = receipt.signature.coverage;
+  if (selectionVersion) {
+    const s=receipt.signature.selection;
+    if (!object(s)||s.policy!=='first-valid-in-input-order'||coverage?.status!=='recorded'
+      ||!['matchedCandidates','taggedCandidates','attemptedCandidates','unassessedCandidates'].every(key=>Number.isSafeInteger(s[key])&&s[key]>=0)
+      ||s.taggedCandidates<1||s.attemptedCandidates<1||s.matchedCandidates<s.taggedCandidates||s.taggedCandidates<s.attemptedCandidates
+      ||s.unassessedCandidates!==s.taggedCandidates-s.attemptedCandidates)return false;
+  }
   if (v1 && coverage === null) return true;
   if (!v1 && object(coverage) && coverage.status === 'unavailable') return true;
   return object(coverage) && (v1 || coverage.status === 'recorded') && paths.filter(path => path.startsWith('signature.coverage.') && path !== 'signature.coverage.status')

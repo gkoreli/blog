@@ -21,6 +21,17 @@ function fixture() {
 function resnapshot(row,record) {
   record.source.receipt=storedObservationReceipt({readerKind:row.readerKind,signatureStatus:row.signatureStatus,signatureAgent:row.signatureAgent,classificationEvidence:JSON.parse(row.classificationEvidence),signatureEvidence:JSON.parse(row.signatureEvidence)});
 }
+test('versioned selection receipts preserve the old projection and compare the new closed counts',()=>{
+  const f=fixture(),row=f.candidates[0],record=f.receipts[0],e=JSON.parse(row.signatureEvidence);
+  row.collectionVersion='2026-10-28.2';record.source.collectionVersion=row.collectionVersion;e.verifierProfile='2026-10-28.2';
+  e.coverage.version='2026-10-28.1';e.coverage.selection={policy:'first-valid-in-input-order',matchedCandidates:2,taggedCandidates:2,attemptedCandidates:1,unassessedCandidates:1};
+  row.signatureEvidence=JSON.stringify(e);resnapshot(row,record);
+  assert.equal(record.source.receipt.version,'2026-10-28.1');
+  assert.equal(reconcileReceiptStorage(f.candidates,f.receipts).identicalProjectionPairs,2);
+  record.source.receipt.signature.selection.unassessedCandidates=0;
+  const changed=reconcileReceiptStorage(f.candidates,f.receipts);
+  assert.equal(changed.differentProjectionPairs,1);assert.equal(changed.changedFields['signature.selection.unassessedCandidates'],1);
+});
 test('exact text references distinguish unsafe-integer neighbors without a time/path surrogate',()=>{
   const {candidates,receipts}=fixture();const result=reconcileReceiptStorage(candidates,receipts);
   assert.equal(Number(candidates[0].privateReference),Number(candidates[1].privateReference));

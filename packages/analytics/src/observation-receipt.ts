@@ -20,13 +20,14 @@ export function storedObservationReceipt(observation: ReceiptInput) {
   const evidence = observation.signatureEvidence;
   const classification = observation.classificationEvidence;
   const coverage = evidence.coverage;
+  const selection = coverage?.version === '2026-10-28.1' ? coverage.selection : null;
   const signer: PublicSignerName | 'none' = evidence.source === 'local-webbotauth'
     && evidence.localOutcome === 'verified' && observation.signatureStatus === 'verified'
     ? PUBLIC_SIGNERS.find(signer => signer.origin === observation.signatureAgent)?.name ?? 'Other' : 'none';
   return {
     // One retained export omitted nulls/empty arrays from the same v1 operations. Scalars
     // make those states queryable without reconstructing missing fields.
-    version: '2026-10-27.3' as const,
+    version: selection === null ? '2026-10-27.3' as const : '2026-10-28.1' as const,
     classifierProfile: classification.classifierProfile,
     readerKind: observation.readerKind,
     directoryPublication: { ...evidence.directoryPublication },
@@ -48,6 +49,7 @@ export function storedObservationReceipt(observation: ReceiptInput) {
       signer,
       documentedVendorStatus: evidence.vendor.status,
       userAgentCovered: booleanState(evidence.vendor.userAgentCovered),
+      ...(selection === null ? {} : { selection: { ...selection } }),
       coverage: coverage === null ? { status: 'unavailable' as const } : {
         status: 'recorded' as const,
         authority: coverage.covered.authority, targetUri: coverage.covered.targetUri,

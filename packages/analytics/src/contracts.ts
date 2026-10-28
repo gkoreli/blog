@@ -105,6 +105,11 @@ export interface VerificationSummary {
   localAbsentViews: number;
   testVerdictViews: number;
   coverageRecordedViews: number;
+  selectionRecordedViews: number;
+  selectionNotRecordedVerifiedViews: number;
+  selectionUnrecognizedVerifiedViews: number;
+  multipleTaggedCandidateViews: number;
+  unassessedCandidateViews: number;
   userAgentBoundViews: number;
   resourceBoundViews: number;
   methodBoundViews: number;

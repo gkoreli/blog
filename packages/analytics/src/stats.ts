@@ -1,3 +1,4 @@
+import { signatureSelectionRecordedSql } from './signature-selection.js';
 import {
   READER_GROUPS,
   READER_KINDS,
@@ -486,6 +487,11 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
             'localAbsentViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.localStatus') = 'absent'),
             'testVerdictViews', SUM(json_extract(signature_evidence, '$.source') = 'test-injected'),
             'coverageRecordedViews', SUM(json_type(signature_evidence, '$.coverage') = 'object'),
+            'selectionRecordedViews', SUM(${signatureSelectionRecordedSql()}),
+            'selectionNotRecordedVerifiedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.localStatus') = 'verified' AND json_type(signature_evidence, '$.coverage.selection') IS NULL AND COALESCE(json_extract(signature_evidence, '$.coverage.version'), '2026-10-27.1') = '2026-10-27.1'),
+            'selectionUnrecognizedVerifiedViews', SUM(json_extract(signature_evidence, '$.source') = 'local-webbotauth' AND json_extract(signature_evidence, '$.localStatus') = 'verified' AND NOT (${signatureSelectionRecordedSql()}) AND NOT (json_type(signature_evidence, '$.coverage.selection') IS NULL AND COALESCE(json_extract(signature_evidence, '$.coverage.version'), '2026-10-27.1') = '2026-10-27.1')),
+            'multipleTaggedCandidateViews', SUM((${signatureSelectionRecordedSql()}) AND json_extract(signature_evidence, '$.coverage.selection.taggedCandidates') > 1),
+            'unassessedCandidateViews', SUM((${signatureSelectionRecordedSql()}) AND json_extract(signature_evidence, '$.coverage.selection.unassessedCandidates') > 0),
             'userAgentBoundViews', SUM(json_extract(signature_evidence, '$.coverage.covered.userAgent') = 1),
             'resourceBoundViews', SUM(json_extract(signature_evidence, '$.coverage.covered.path') = 1 OR json_extract(signature_evidence, '$.coverage.covered.targetUri') = 1),
             'methodBoundViews', SUM(json_extract(signature_evidence, '$.coverage.covered.method') = 1),
@@ -639,6 +645,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
       recordedViews: numberField(verificationRow, 'recordedViews'), notRecordedViews: numberField(verificationRow, 'notRecordedViews'),
       localVerifiedViews: numberField(verificationRow, 'localVerifiedViews'), localUnverifiedViews: numberField(verificationRow, 'localUnverifiedViews'), localAbsentViews: numberField(verificationRow, 'localAbsentViews'),
       testVerdictViews: numberField(verificationRow, 'testVerdictViews'),
+      selectionUnrecognizedVerifiedViews: numberField(verificationRow, 'selectionUnrecognizedVerifiedViews'), selectionRecordedViews: numberField(verificationRow, 'selectionRecordedViews'), selectionNotRecordedVerifiedViews: numberField(verificationRow, 'selectionNotRecordedVerifiedViews'), multipleTaggedCandidateViews: numberField(verificationRow, 'multipleTaggedCandidateViews'), unassessedCandidateViews: numberField(verificationRow, 'unassessedCandidateViews'),
       coverageRecordedViews: numberField(verificationRow, 'coverageRecordedViews'), userAgentBoundViews: numberField(verificationRow, 'userAgentBoundViews'), resourceBoundViews: numberField(verificationRow, 'resourceBoundViews'), methodBoundViews: numberField(verificationRow, 'methodBoundViews'), authorityOnlyViews: numberField(verificationRow, 'authorityOnlyViews'),
       nativeAvailableViews: numberField(verificationRow, 'nativeAvailableViews'), nativeVerifiedBotViews: numberField(verificationRow, 'nativeVerifiedBotViews'), nativeSignedAgentViews: numberField(verificationRow, 'nativeSignedAgentViews'), localVerifiedNativeNotVerifiedViews: numberField(verificationRow, 'localVerifiedNativeNotVerifiedViews'),
     },

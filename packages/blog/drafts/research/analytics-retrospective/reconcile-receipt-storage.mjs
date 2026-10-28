@@ -7,12 +7,13 @@ import { normalizeRetainedReceiptCopies } from './compare-receipt-captures.mjs';
 import { isDeepStrictEqual } from 'node:util';
 
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
-const profiles = new Set(['2026-10-27.6','2026-10-27.7','2026-10-28.1','not-applicable']);
-const collections = new Set(['2026-10-27.9','2026-10-27.10','2026-10-27.11','2026-10-28.1']);
+const profiles = new Set(['2026-10-27.6','2026-10-27.7','2026-10-28.1','2026-10-28.2','not-applicable']);
+const collections = new Set(['2026-10-27.9','2026-10-27.10','2026-10-27.11','2026-10-28.1','2026-10-28.2']);
 const paths = ['version','classifierProfile','readerKind',
   ...['profile','method','reviewedOn','configuredDeclarationCount','unmappedDeclarationCount','status'].map(key=>'directoryPublication.'+key),
   ...['status','candidateCount','candidateNames','categoryAgreement'].map(key=>'declarations.'+key),
   ...['evidenceVersion','source','verifierProfile','status','outcome','reason','reasonCount','reasonNames','signer','documentedVendorStatus','userAgentCovered'].map(key=>'signature.'+key),
+  ...['policy','matchedCandidates','taggedCandidates','attemptedCandidates','unassessedCandidates'].map(key=>'signature.selection.'+key),
   ...['status','authority','targetUri','method','path','query','userAgent','contentDigest','replayPolicy'].map(key=>'signature.coverage.'+key),
   ...['verifiedBot','signedAgent','categoryStatus','categoryValue'].map(key=>'native.'+key)];
 const field = (value,path) => path.split('.').reduce((value,key)=>object(value)&&Object.hasOwn(value,key)?value[key]:undefined,value);
@@ -60,12 +61,19 @@ function projection(row) {
       const signer=new URL(row.signatureAgent);
       if(signer.protocol!=='https:'||signer.origin!==row.signatureAgent)return null;
     }
-    if(e.coverage!==null&&(!object(e.coverage)||e.coverage.version!=='2026-10-27.1'
+    if(e.coverage!==null&&(!object(e.coverage)||!['2026-10-27.1','2026-10-28.1'].includes(e.coverage.version)
       ||!['dictionary','legacy-string','bare-uri'].includes(e.coverage.headerForm)
       ||![e.coverage.validitySeconds,e.coverage.ageSeconds,e.coverage.otherComponentCount].every(integer)))return null;
+    if(e.coverage?.version==='2026-10-28.1') {
+      const s=e.coverage.selection;
+      if(!object(s)||s.policy!=='first-valid-in-input-order'
+        ||!['matchedCandidates','taggedCandidates','attemptedCandidates','unassessedCandidates'].every(key=>integer(s[key]))
+        ||s.taggedCandidates<1||s.attemptedCandidates<1||s.matchedCandidates<s.taggedCandidates||s.taggedCandidates<s.attemptedCandidates
+        ||s.unassessedCandidates!==s.taggedCandidates-s.attemptedCandidates)return null;
+    }
     const r=storedObservationReceipt({readerKind:row.readerKind,signatureStatus:row.signatureStatus,signatureAgent:row.signatureAgent,classificationEvidence:c,signatureEvidence:e});
     const d=r.directoryPublication,s=r.signature,n=r.native,v=r.declarations;
-    if(extraFields(r)!==0||r.version!=='2026-10-27.3'||r.classifierProfile!=='2026-10-27.5'
+    if(extraFields(r)!==0||!['2026-10-27.3','2026-10-28.1'].includes(r.version)||r.classifierProfile!=='2026-10-27.5'
       ||d.profile!=='2026-10-27.1'||d.method!=='reviewed-first-party-directory'||d.reviewedOn!=='2026-10-27'
       ||!integer(d.configuredDeclarationCount)||!integer(d.unmappedDeclarationCount)
       ||!['no-declaration','not-configured','not-verified','matching-publisher','different-publisher','partial-mapping','conflicting-publishers','test-injected'].includes(d.status)
@@ -121,7 +129,7 @@ export function reconcileReceiptStorage(candidates,retainedInput) {
     if(!object(metadata)||metadata.type!=='cf-worker'||!nonempty(metadata.id)||!nonempty(metadata.requestId)
       ||recordIds.get(metadata.id)?.length!==1||!nonempty(source.operationId)||operations.get(source.operationId)?.length!==1
       ||!Number.isFinite(Date.parse(record.timestamp))||record.$workers?.truncated===true||record.$cloudflare?.truncated===true
-      ||!collections.has(row.collectionVersion)||source.collectionVersion!==row.collectionVersion||source.receipt?.version!=='2026-10-27.3') {result.invalidPairMetadata++;continue;}
+      ||!collections.has(row.collectionVersion)||source.collectionVersion!==row.collectionVersion||!['2026-10-27.3','2026-10-28.1'].includes(source.receipt?.version)) {result.invalidPairMetadata++;continue;}
     result.matchedReferencePairs++;
     const expected=projection(row);
     if(expected===null){result.unprojectableCandidateRows++;continue;}

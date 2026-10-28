@@ -5,8 +5,7 @@ const CLOCK_SKEW_SECONDS = 60;
 const encoder = new TextEncoder();
 
 /** Closed derived facts only: never header values, nonces or signature bytes. */
-export interface SignatureEvidence {
-  version: '2026-10-27.1';
+interface SignatureCoverageFacts {
   headerForm: 'dictionary' | 'legacy-string' | 'bare-uri';
   /** contentDigest records signed header coverage, not a body/digest comparison. */
   covered: { authority: boolean; targetUri: boolean; method: boolean; path: boolean; query: boolean; userAgent: boolean; contentDigest: boolean };
@@ -15,6 +14,19 @@ export interface SignatureEvidence {
   ageSeconds: number;
   replayPolicy: 'expiry-only';
 }
+
+/** Counts concern paired Signature/Signature-Input members, not all header members or signers. */
+export interface SignatureSelection {
+  policy: 'first-valid-in-input-order';
+  matchedCandidates: number;
+  taggedCandidates: number;
+  attemptedCandidates: number;
+  unassessedCandidates: number;
+}
+export type SignatureEvidence = SignatureCoverageFacts & (
+  | { version: '2026-10-27.1' }
+  | { version: '2026-10-28.1'; selection: SignatureSelection }
+);
 
 export type WebBotAuthResult =
   | { status: 'verified'; agent: string; evidence?: SignatureEvidence }
@@ -846,9 +858,20 @@ export async function verifyWebBotAuth(
     const nowMs = (options.now ?? new Date()).getTime();
     let lastFailure: WebBotAuthResult = { status: 'unverified', reason: 'signature-invalid' };
     const reasons = new Set<string>();
+    let attemptedCandidates = 0;
     for (const candidate of tagged) {
+      attemptedCandidates++;
       const result = await verifyCandidate(request, candidate, parsedAgent, fetcher, cache, nowMs, options);
-      if (result.status === 'verified') return result;
+      if (result.status === 'verified') {
+        if (!options.includeEvidence || result.evidence === undefined) return result;
+        // This is one selected proof. Later candidates may also verify, fail, or
+        // name another signer; short-circuiting does not assess them.
+        return { ...result, evidence: { ...result.evidence, version: '2026-10-28.1', selection: {
+          policy: 'first-valid-in-input-order', matchedCandidates: candidates.length,
+          taggedCandidates: tagged.length, attemptedCandidates,
+          unassessedCandidates: tagged.length - attemptedCandidates,
+        } } };
+      }
       lastFailure = result;
       if (result.status === 'unverified') reasons.add(result.reason);
     }

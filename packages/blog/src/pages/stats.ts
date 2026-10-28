@@ -129,7 +129,7 @@ export function statsPage() {
     </section>
     <section class="stats-section" id="stats-verification">
       <h2>Signature verification <span>coverage and availability</span></h2>
-      <p class="stats-section-note">Local key verification and Cloudflare assessments are separate. Coverage counts overlap; none establishes a human trigger.</p>
+      <p class="stats-section-note">Local key verification and Cloudflare assessments are separate. Coverage counts overlap; none establishes a human trigger. Selection counts describe events, not signer totals. Verification stops at the first valid paired candidate tagged Web Bot Auth; other candidates can remain unassessed. Historical absence and unrecognized assessments stay separate.</p>
       ${listSkeleton(3)}
     </section>
     <section class="stats-section" id="stats-directory-publication">

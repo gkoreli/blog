@@ -79,6 +79,8 @@ For offline labelled evaluation of controlled visits, see [`calibration-evaluati
 
 ## Web Bot Auth
 
+The verifier selects the first valid paired member tagged `web-bot-auth` in Signature-Input order. Coverage evidence `2026-10-28.1` records matched, tagged, attempted and unassessed candidate counts; these are not counts of verified signers or all header members. Reversing two valid proofs can select another origin. The public report separates recorded, missing historical and unrecognized assessments, and counts events with several tagged or unassessed candidates. Receipt `2026-10-28.1` includes this closed selection projection; older/unsigned projections retain receipt `2026-10-27.3`. [Selection experiment and reference comparison](../blog/drafts/research/analytics-retrospective/39-signature-selection-and-unassessed-proofs.md).
+
 The dedicated module is [`src/webbotauth.ts`](src/webbotauth.ts), called before the final reader-kind decision from [`src/index.ts`](src/index.ts). It verifies an Ed25519/directory-discovery subset of [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html); Web Bot Auth remains a separate [evolving protocol draft](https://datatracker.ietf.org/doc/html/draft-ietf-webbotauth-httpsig-protocol-00). Neither full conformance nor native-provider equivalence is claimed.
 
 | Responsibility | Module / observable evidence |

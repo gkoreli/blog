@@ -1,0 +1,137 @@
+{
+  "checkedAt": "2026-10-28T00:50:52.184Z",
+  "collectionVersion": "2026-10-28.2",
+  "verifierProfile": "2026-10-28.2",
+  "method": "Actual native local workerd/collector/WebCrypto/D1 with independently signed controls, intercepted directories, exact receipt/row references and versioned historical/malformed stored snapshots. Not vendor traffic or human labels.",
+  "trials": [
+    {
+      "name": "single",
+      "knownSelectionMatches": true,
+      "counts": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "both-valid",
+      "knownSelectionMatches": true,
+      "counts": [
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "both-valid-reversed-input",
+      "knownSelectionMatches": true,
+      "counts": [
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "first-invalid",
+      "knownSelectionMatches": true,
+      "counts": [
+        2,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "name": "later-invalid-unassessed",
+      "knownSelectionMatches": true,
+      "counts": [
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "unrelated-tag",
+      "knownSelectionMatches": true,
+      "counts": [
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "unpaired-input",
+      "knownSelectionMatches": true,
+      "counts": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "unpaired-signature",
+      "knownSelectionMatches": true,
+      "counts": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "excluded",
+      "knownSelectionMatches": true,
+      "counts": [
+        2,
+        2,
+        1,
+        1
+      ]
+    }
+  ],
+  "exactReceiptPairs": 9,
+  "directoryFetches": 2,
+  "report": {
+    "total": 13,
+    "excluded": 1,
+    "localVerified": 12,
+    "selectionRecorded": 8,
+    "selectionNotRecorded": 1,
+    "selectionUnrecognized": 3,
+    "multipleTagged": 4,
+    "unassessed": 3,
+    "testInjected": 1
+  },
+  "exactReferenceSql": {
+    "rows": 1,
+    "rowsRead": 1,
+    "rowsWritten": 0
+  },
+  "nativeReportCost": {
+    "before": {
+      "rowsRead": 7665,
+      "rowsWritten": 0,
+      "statements": 1
+    },
+    "after": {
+      "rowsRead": 7665,
+      "rowsWritten": 0,
+      "statements": 1
+    },
+    "extraReads": 0
+  },
+  "newProductionRequests": 0,
+  "externalDirectoryRequests": 0,
+  "optionalRawCaptureActivated": false,
+  "limits": [
+    "Counts describe paired and tagged candidates, not all header members or verified signers.",
+    "A chosen proof does not establish uniqueness, purpose or human intent.",
+    "These selected synthetic controls do not measure production prevalence."
+  ]
+}

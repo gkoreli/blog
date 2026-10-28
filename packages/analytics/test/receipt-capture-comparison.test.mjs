@@ -61,6 +61,21 @@ test('v3 publication facts and separate private storage references are compared 
   assert.equal(compareReceiptCopies(value.live,value.retained).matchedPairs,0);
 });
 
+test('v4 selection scalars compare exactly while malformed live assessments remain unaccepted', () => {
+  const value=fixture({version:'2026-10-27.2'});
+  for(const fields of [value.live[0].logs[0].message[1],value.retained[0].source]) {
+    fields.receipt.version='2026-10-28.1';
+    fields.receipt.directoryPublication={profile:'2026-10-27.1',method:'reviewed-first-party-directory',reviewedOn:'2026-10-27',configuredDeclarationCount:0,unmappedDeclarationCount:0,status:'no-declaration'};
+    fields.receipt.signature.coverage={status:'recorded',authority:true,targetUri:false,method:false,path:false,query:false,userAgent:false,contentDigest:false,replayPolicy:'expiry-only'};
+    fields.receipt.signature.selection={policy:'first-valid-in-input-order',matchedCandidates:2,taggedCandidates:2,attemptedCandidates:1,unassessedCandidates:1};
+  }
+  assert.equal(compareReceiptCopies(value.live,value.retained).identicalPairs,1);
+  delete value.retained[0].source.receipt.signature.selection.unassessedCandidates;
+  assert.equal(compareReceiptCopies(value.live,value.retained).missingFields['signature.selection.unassessedCandidates'],1);
+  value.live[0].logs[0].message[1].receipt.signature.selection.attemptedCandidates=-1;
+  assert.equal(compareReceiptCopies(value.live,value.retained).matchedPairs,0);
+});
+
 function individualCopy(value) {
   return { ...structuredClone(value.retained[0].source),
     $metadata: { type:'cf-worker',id:'private-provider-record',requestId:'private-request',timestampNs:'1700000000000000000' },

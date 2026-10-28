@@ -1,0 +1,62 @@
+{
+  "profile": "2026-10-28.1",
+  "rows": [
+    {
+      "name": "single",
+      "verified": true,
+      "expectedFixtureOrigin": true,
+      "selectionRecorded": false,
+      "fetches": 1
+    },
+    {
+      "name": "both-valid",
+      "verified": true,
+      "expectedFixtureOrigin": true,
+      "selectionRecorded": false,
+      "fetches": 1
+    },
+    {
+      "name": "both-valid-reversed-input",
+      "verified": true,
+      "expectedFixtureOrigin": true,
+      "selectionRecorded": false,
+      "fetches": 1
+    },
+    {
+      "name": "first-invalid",
+      "verified": true,
+      "expectedFixtureOrigin": true,
+      "selectionRecorded": false,
+      "fetches": 2
+    },
+    {
+      "name": "later-invalid-unassessed",
+      "verified": true,
+      "expectedFixtureOrigin": true,
+      "selectionRecorded": false,
+      "fetches": 1
+    },
+    {
+      "name": "unrelated-tag",
+      "verified": true,
+      "expectedFixtureOrigin": true,
+      "selectionRecorded": false,
+      "fetches": 1
+    },
+    {
+      "name": "unpaired-input",
+      "verified": true,
+      "expectedFixtureOrigin": true,
+      "selectionRecorded": false,
+      "fetches": 1
+    },
+    {
+      "name": "unpaired-signature",
+      "verified": true,
+      "expectedFixtureOrigin": true,
+      "selectionRecorded": false,
+      "fetches": 1
+    }
+  ],
+  "externalCalls": 0
+}

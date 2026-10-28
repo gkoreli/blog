@@ -28,7 +28,7 @@ test('verified evidence records actual signed fields; unsigned UA/path changes r
   const options = { now, includeEvidence: true, cache: createWebBotAuthCache(), fetcher: async () => directory([key.jwk]) };
   const original = await verifyWebBotAuth(request, options);
   assert.equal(original.status, 'verified');
-  assert.deepEqual(original.evidence, { version: '2026-10-27.1', headerForm: 'dictionary',
+  assert.deepEqual(original.evidence, { version: '2026-10-28.1', selection: { policy: 'first-valid-in-input-order', matchedCandidates: 1, taggedCandidates: 1, attemptedCandidates: 1, unassessedCandidates: 0 }, headerForm: 'dictionary',
     covered: { authority: true, targetUri: false, method: false, path: false, query: false, userAgent: false, contentDigest: false },
     otherComponentCount: 0, validitySeconds: 300, ageSeconds: 0, replayPolicy: 'expiry-only' });
   assert.equal((await verifyWebBotAuth(altered(request, 'https://publication.example/b', { 'User-Agent': 'AnotherClaim/1.0' }), options)).status, 'verified');

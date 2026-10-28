@@ -1,0 +1,258 @@
+{
+  "checkedAt": "2026-10-28T00:47:17.415Z",
+  "profile": "2026-10-28.2",
+  "method": "Execute the pinned generic reference verifySignature API with actual WebCrypto fixture verification, default and explicit labels. It is not the complete Web Bot Auth profile, production Cloudflare, or a vendor resolver.",
+  "moduleSha256": "8070a2351799e250ce6ef8ce55006dc8636c97e920f08c9d7c78a2f894f8ac0a",
+  "rows": [
+    {
+      "name": "single",
+      "localStatus": "verified",
+      "localSelection": {
+        "policy": "first-valid-in-input-order",
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "unassessedCandidates": 0
+      },
+      "reference": [
+        {
+          "requestedLabel": "default",
+          "verified": true,
+          "selectedFixtureLabel": "one",
+          "verifications": 1
+        },
+        {
+          "requestedLabel": "one",
+          "verified": true,
+          "selectedFixtureLabel": "one",
+          "verifications": 1
+        },
+        {
+          "requestedLabel": "two",
+          "verified": false,
+          "error": "LabelMismatch",
+          "verifications": 0
+        }
+      ]
+    },
+    {
+      "name": "both-valid",
+      "localStatus": "verified",
+      "localSelection": {
+        "policy": "first-valid-in-input-order",
+        "matchedCandidates": 2,
+        "taggedCandidates": 2,
+        "attemptedCandidates": 1,
+        "unassessedCandidates": 1
+      },
+      "reference": [
+        {
+          "requestedLabel": "default",
+          "verified": false,
+          "error": "LabelRequired",
+          "verifications": 0
+        },
+        {
+          "requestedLabel": "one",
+          "verified": true,
+          "selectedFixtureLabel": "one",
+          "verifications": 1
+        },
+        {
+          "requestedLabel": "two",
+          "verified": true,
+          "selectedFixtureLabel": "two",
+          "verifications": 1
+        }
+      ]
+    },
+    {
+      "name": "both-valid-reversed-input",
+      "localStatus": "verified",
+      "localSelection": {
+        "policy": "first-valid-in-input-order",
+        "matchedCandidates": 2,
+        "taggedCandidates": 2,
+        "attemptedCandidates": 1,
+        "unassessedCandidates": 1
+      },
+      "reference": [
+        {
+          "requestedLabel": "default",
+          "verified": false,
+          "error": "LabelRequired",
+          "verifications": 0
+        },
+        {
+          "requestedLabel": "one",
+          "verified": true,
+          "selectedFixtureLabel": "one",
+          "verifications": 1
+        },
+        {
+          "requestedLabel": "two",
+          "verified": true,
+          "selectedFixtureLabel": "two",
+          "verifications": 1
+        }
+      ]
+    },
+    {
+      "name": "first-invalid",
+      "localStatus": "verified",
+      "localSelection": {
+        "policy": "first-valid-in-input-order",
+        "matchedCandidates": 2,
+        "taggedCandidates": 2,
+        "attemptedCandidates": 2,
+        "unassessedCandidates": 0
+      },
+      "reference": [
+        {
+          "requestedLabel": "default",
+          "verified": false,
+          "error": "LabelRequired",
+          "verifications": 0
+        },
+        {
+          "requestedLabel": "one",
+          "verified": false,
+          "error": "VerificationFailed",
+          "verifications": 1
+        },
+        {
+          "requestedLabel": "two",
+          "verified": true,
+          "selectedFixtureLabel": "two",
+          "verifications": 1
+        }
+      ]
+    },
+    {
+      "name": "later-invalid-unassessed",
+      "localStatus": "verified",
+      "localSelection": {
+        "policy": "first-valid-in-input-order",
+        "matchedCandidates": 2,
+        "taggedCandidates": 2,
+        "attemptedCandidates": 1,
+        "unassessedCandidates": 1
+      },
+      "reference": [
+        {
+          "requestedLabel": "default",
+          "verified": false,
+          "error": "LabelRequired",
+          "verifications": 0
+        },
+        {
+          "requestedLabel": "one",
+          "verified": true,
+          "selectedFixtureLabel": "one",
+          "verifications": 1
+        },
+        {
+          "requestedLabel": "two",
+          "verified": false,
+          "error": "VerificationFailed",
+          "verifications": 1
+        }
+      ]
+    },
+    {
+      "name": "unrelated-tag",
+      "localStatus": "verified",
+      "localSelection": {
+        "policy": "first-valid-in-input-order",
+        "matchedCandidates": 2,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "unassessedCandidates": 0
+      },
+      "reference": [
+        {
+          "requestedLabel": "default",
+          "verified": false,
+          "error": "LabelRequired",
+          "verifications": 0
+        },
+        {
+          "requestedLabel": "one",
+          "verified": true,
+          "selectedFixtureLabel": "one",
+          "verifications": 1
+        },
+        {
+          "requestedLabel": "two",
+          "verified": true,
+          "selectedFixtureLabel": "two",
+          "verifications": 1
+        }
+      ]
+    },
+    {
+      "name": "unpaired-input",
+      "localStatus": "verified",
+      "localSelection": {
+        "policy": "first-valid-in-input-order",
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "unassessedCandidates": 0
+      },
+      "reference": [
+        {
+          "requestedLabel": "default",
+          "verified": false,
+          "error": "LabelMismatch",
+          "verifications": 0
+        },
+        {
+          "requestedLabel": "one",
+          "verified": false,
+          "error": "LabelMismatch",
+          "verifications": 0
+        },
+        {
+          "requestedLabel": "two",
+          "verified": false,
+          "error": "LabelMismatch",
+          "verifications": 0
+        }
+      ]
+    },
+    {
+      "name": "unpaired-signature",
+      "localStatus": "verified",
+      "localSelection": {
+        "policy": "first-valid-in-input-order",
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "unassessedCandidates": 0
+      },
+      "reference": [
+        {
+          "requestedLabel": "default",
+          "verified": false,
+          "error": "LabelMismatch",
+          "verifications": 0
+        },
+        {
+          "requestedLabel": "one",
+          "verified": false,
+          "error": "LabelMismatch",
+          "verifications": 0
+        },
+        {
+          "requestedLabel": "two",
+          "verified": false,
+          "error": "LabelMismatch",
+          "verifications": 0
+        }
+      ]
+    }
+  ],
+  "productionRequests": 0,
+  "externalRequests": 0
+}
