@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-28T03:26:55.994628+00:00",
+  "sourceCommit": "542bd50042cd919459bcb92743911df2f1380501",
+  "workerVersion": "ad4d2bb2-3ffd-403c-908d-93351df3ad82",
+  "deploymentId": "8509aa39-17ff-494a-90c1-fa2b4f6a5dc2",
+  "activatedAt": "2026-10-28T03:25:41.804521Z",
+  "trafficPercentage": 100,
+  "nativeBuildStatus": "Ready",
+  "nativeBuildDurationSeconds": 46,
+  "servedArticleStatus": 200,
+  "servedArticleSha256": "f28a26e96ddcfc7e42c544a7a118de472159ae2182199ce93220af66f59cff5d",
+  "matchesIsolatedBuild": true,
+  "articleContainsNewEvidenceLink": true,
+  "publicationHttpGets": 1,
+  "collectionEligibleGets": 0,
+  "eligibilityBasis": "Direct .md alias deliberately excluded by unchanged eligibility.ts; this is delivery acceptance, not a new stored observation.",
+  "newDiagnosticStatementsForPublication": 0,
+  "runtimeChanged": false,
+  "limits": [
+    "Publication acceptance does not add a native-verifier trial or human label.",
+    "The earlier failed-query metering remains unavailable; successful direct diagnostics are recorded separately."
+  ]
+}

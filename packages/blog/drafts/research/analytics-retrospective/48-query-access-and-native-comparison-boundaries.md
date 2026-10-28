@@ -40,7 +40,7 @@ Research 47 retained an actual `.28.8` canonical-Markdown publication control, i
 
 We reuse that saved reference, native-test the single-primary-key SQL and execute it once through Wrangler command mode. [All thirty closed receipt fields match](query-access-exact-readback.json), including receipt `.28.2`, signer-display `.28.1` and the new directory profile/date. Canonical path, Markdown representation and absent optional capture also match. The exact stored referrer is excluded by the current versioned assessor. This is a row-and-policy check, not a new public report fetch or owner-browser test.
 
-That read costs **one read / zero writes**. The three successful remote diagnostics together acknowledge **eight reads and zero writes**: constant, aggregate and exact readback. Local tests, metadata/GraphQL, prior normal collection and provider costs are additional. The old failed attempt's metering remains unknown. No new publication request is needed in this iteration.
+That read costs **one read / zero writes**. The three successful remote diagnostics together acknowledge **eight reads and zero writes**: constant, aggregate and exact readback. Local tests, metadata/GraphQL, prior normal collection and provider costs are additional. The old failed attempt's metering remains unknown. No new eligible publication control is needed for this readback.
 
 This closes independent persistence acceptance for that one **unsigned** current-profile control. It does not authenticate a vendor, count a human, prove complete provider retention or establish native cryptographic agreement.
 
@@ -61,3 +61,5 @@ Runtime and the thirty-one shaping prompts remain unchanged. The article's exist
 [Checks and commitments](query-access-checks.json) retain fresh SQL/readback controls and the unchanged runtime-suite boundary. [Primary-source captures](query-access-doc-sources.json) commit to the current authorization/request-variable documentation.
 
 Private captures are archived under `2026-10-28-query-access` with a hash manifest and four links to the earlier failed-query/control evidence. The October 31 review date is not an automatic erasure claim.
+
+[Publication acceptance](query-access-release.json) records source `542bd50`, Ready in 46 seconds and 100% activation on Worker `ad4d2bb2-3ffd-403c-908d-93351df3ad82`. One direct `.md` alias GET confirms the article bytes and new evidence link against the isolated build; that route is intentionally collection-ineligible. It adds no D1 diagnostic query or eligible observation. Runtime and native-comparison readiness remain unchanged.
