@@ -1,5 +1,5 @@
 {
-  "status": "proposed-not-implemented-or-activated",
+  "status": "implemented-locally-accepted-off-no-live-capture",
   "question": "What does the validated known-bot transform deliver across ingress, spoofing and configuration-drift conditions?",
   "expressionValidation": "Actual zone dashboard reports Rule validation passed for to_string(cf.client.bot), dynamic Set, with contradictory host filter; form cancelled unsaved.",
   "signalMeaning": "Generic provider known-good-bot/crawler assessment; not a signed-agent verdict, product identity, purpose or human label.",
@@ -11,14 +11,33 @@
     "Prepare exact rule scope and source before activation; time guard in both rule expression and receiver; initial state disabled.",
     "Retain rule order/configuration and exact private control references; no credentials or raw diagnostics in Git.",
     "Inventory actually available ingress and controlled relay prerequisites. Missing routes stay unexecuted, not passing.",
-    "No new plan, permission, credential, provider enrollment or third-party action inferred from this plan."
+    "No new plan, permission, credential, provider enrollment or third-party action inferred from this plan.",
+    "Genuine vendor-positive case needs its own eligible guard/control. Do not mark unrelated vendor traffic as owner traffic to manufacture acceptance."
   ],
   "capture": {
-    "candidateStates": ["missing", "literal-true", "literal-false", "other"],
+    "candidateStates": [
+      "missing",
+      "literal-true",
+      "literal-false",
+      "other"
+    ],
     "rawCandidateValueRetained": false,
-    "nativeBooleanStates": ["true", "false", "unavailable", "unrecognized"],
-    "independentNativeFields": ["request.cf.botManagement.verifiedBot", "request.cf.botManagement.signedAgent"],
-    "privateReferences": ["control", "rule configuration", "Worker source/activation", "exact response/log join"],
+    "nativeBooleanStates": [
+      "true",
+      "false",
+      "unavailable",
+      "unrecognized"
+    ],
+    "independentNativeFields": [
+      "request.cf.botManagement.verifiedBot",
+      "request.cf.botManagement.signedAgent"
+    ],
+    "privateReferences": [
+      "control",
+      "rule configuration",
+      "Worker source/activation",
+      "exact response/log join"
+    ],
     "noRawReaderIpOrUserAgent": true,
     "wireMultiplicity": "Client harness records what it sent; Worker captures only resulting closed state. Header coalescing can erase wire multiplicity.",
     "publicOutput": "Closed aggregate counts by condition; no trial IDs or account metadata."
@@ -42,7 +61,8 @@
     "plannedDiagnosticD1Statements": 0,
     "plannedObservationWrites": 0,
     "guardStorageCosts": "If implementation reuses D1 guards, record native-tested and measured costs separately; zero diagnostic statements is not zero service cost.",
-    "logs": "Exact control scope, private closed captures, stop owned tail after bounded run. Missing/sampled logs remain incomplete."
+    "logs": "Exact control scope, private closed captures, stop owned tail after bounded run. Missing/sampled logs remain incomplete.",
+    "requestLimitEnforcement": "Controller budget only; 32 registered controls do not globally limit repeat requests."
   },
   "acceptance": [
     "Planned, executed, response-received, matched-log and eligible results have separate denominators.",
@@ -53,6 +73,12 @@
     "Activation, natural expiry, configuration cleanup and persistence/retention are separate recorded operations."
   ],
   "managedSignatureComparison": "Still blocked on the separate request-level signed-agent oracle and accepted controlled identity; this generic bit does not satisfy either gate.",
-  "nextBoundedAction": "Implement and locally accept the off-by-default route and harness; no live activation in this checkpoint.",
-  "humanTrials": "Deferred by owner."
+  "nextBoundedAction": "Accept source/activation/off-mode and article delivery, then prepare exact excluded live window. No live rule or capture is activated by local acceptance.",
+  "humanTrials": "Deferred by owner.",
+  "localAcceptance": {
+    "receipt": "native-capture-local.json",
+    "routingControls": 20,
+    "metadataFixtureControls": 3,
+    "notManagedProviderVerdicts": true
+  }
 }

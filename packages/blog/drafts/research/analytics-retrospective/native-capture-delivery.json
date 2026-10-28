@@ -1,0 +1,12 @@
+{
+  "sourceBaseline": "b5fb1a0170b85e664c7cb2b4371084c603966162",
+  "sourceDelivery": "pending",
+  "deploymentActivation": "not-yet-inspected",
+  "productionAcceptance": "not-executed",
+  "captureWindowActivated": false,
+  "ruleActivated": false,
+  "humanTrials": "deferred by owner",
+  "runtimeProfilesUnchanged": true,
+  "localChecks": "native-capture-source-checks.json",
+  "privateEvidence": "2026-10-28-native-capture-local"
+}

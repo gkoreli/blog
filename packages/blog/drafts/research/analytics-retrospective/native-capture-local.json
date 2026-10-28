@@ -1,0 +1,179 @@
+{
+  "checkedAt": "2026-10-28T06:59:57.778Z",
+  "runtime": "v24.14.1",
+  "environment": "Actual composed blog Worker in local workerd with native D1; supplied synthetic HTTP controls",
+  "conditions": [
+    {
+      "condition": "unmarked",
+      "status": 403
+    },
+    {
+      "condition": "missing-candidate",
+      "status": 200,
+      "candidate": "missing",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "condition": "supplied-literal-true-2",
+      "status": 200,
+      "candidate": "literal-true",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "condition": "supplied-literal-false-3",
+      "status": 200,
+      "candidate": "literal-false",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "condition": "supplied-other-4",
+      "status": 200,
+      "candidate": "other",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "condition": "supplied-other-5",
+      "status": 200,
+      "candidate": "other",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "condition": "supplied-other-6",
+      "status": 200,
+      "candidate": "other",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "condition": "supplied-other-7",
+      "status": 200,
+      "candidate": "other",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "condition": "cross-origin",
+      "status": 403
+    },
+    {
+      "condition": "post",
+      "status": 405
+    },
+    {
+      "condition": "query",
+      "status": 404
+    },
+    {
+      "condition": "unknown-control",
+      "status": 404
+    },
+    {
+      "condition": "extra-segment",
+      "status": 404
+    },
+    {
+      "condition": "bare-prefix",
+      "status": 404
+    },
+    {
+      "condition": "off",
+      "status": 404
+    },
+    {
+      "condition": "expired",
+      "status": 404
+    },
+    {
+      "condition": "future",
+      "status": 404
+    },
+    {
+      "condition": "malformed",
+      "status": 404
+    },
+    {
+      "condition": "mark-removed",
+      "status": 403
+    },
+    {
+      "condition": "guard-storage-unavailable",
+      "status": 503
+    }
+  ],
+  "successfulCaptures": 7,
+  "metadataFixtureControls": [
+    {
+      "fixture": "explicit-empty",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      },
+      "providerVerdict": false
+    },
+    {
+      "fixture": "fetch-disabled-fallback",
+      "native": {
+        "verifiedBot": "false",
+        "signedAgent": "unavailable"
+      },
+      "providerVerdict": false
+    },
+    {
+      "fixture": "explicit-positive-fixture",
+      "native": {
+        "verifiedBot": "true",
+        "signedAgent": "false"
+      },
+      "providerVerdict": false
+    }
+  ],
+  "checks": {
+    "exactWorkerRouting": true,
+    "noAssetBindingRequired": true,
+    "unchangedObservationCount": true,
+    "zeroDiagnosticRows": true,
+    "zeroCalibrationRows": true,
+    "ownerGuard": true,
+    "expiryOffAndMalformed": true,
+    "privateResponseIdsUnique": true,
+    "closedPayloadCanariesAbsent": true,
+    "explicitEmptyCfFixture": true
+  },
+  "limits": [
+    "No Cloudflare Transform Rule execution or provider verification",
+    "Combined values are single HTTP header values here; wire duplicates need a live curl harness",
+    "No native-positive or human labels",
+    "32-control configuration cap is not a global admission counter; repeat controls remain possible",
+    "Owner marking/setup/deletion are fixture writes; diagnostic route performs only owner lookup"
+  ],
+  "bundleSha256": "f926258a1b0a88651d2a9095fb2a021b4a739442015e6a6058259095fd4e629a",
+  "sourceSha256": {
+    "packages/analytics/src/native-bot-capture.ts": "1916060383677db9e6bd40ecd1ecd026600b498a9f9bde5a5cad62da5fb322d6",
+    "packages/analytics/src/owner.ts": "ca615f0bff690b32581c36d69036775967a6c10d91233c3e7025c59c81940530",
+    "packages/analytics/src/calibration.ts": "8bea27644f8381efda3222c0adc0fbfa9c36b76d328a4343196b2ebdbe889d4e",
+    "packages/analytics/src/index.ts": "c5b8236c174981a1c8821cd557ad8910bed4a37e483400e12308ac760226f8d4",
+    "packages/analytics/src/db.ts": "bfa4692279bd06bc958f063d3bd725243cef76384ec2c482a6453e227aa58955",
+    "packages/blog/src/worker/index.ts": "ee7c6f08eeaae077cb9bdc538f7b5d0ad135846a9db04cea3dd2394c49fbfe40",
+    "packages/blog/scripts/check-native-bot-capture.mjs": "195527fd2fc0785107ef5049b3d5759c13f0a579c6b511e2c6ab785a8c4649d4"
+  },
+  "productionCalls": 0
+}

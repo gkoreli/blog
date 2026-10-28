@@ -3,7 +3,7 @@ title: "Building Blog Analytics: What the Numbers Can Prove"
 seoTitle: "Building Blog Analytics with Cloudflare Workers and D1"
 alternativeHeadline: "What a misleading traffic spike taught me about page counts, bot identity, and the cost of trustworthy analytics"
 date: "2026-10-25"
-lastModified: "2026-10-27"
+lastModified: "2026-10-28"
 description: "Cloudflare Workers and D1 analytics lessons: investigate misleading traffic growth, separate signed crawlers from assistants, and preserve evidence behind the counts."
 section: engineering
 tags: [analytics, cloudflare-workers, d1, bots, observability]
@@ -88,6 +88,8 @@ I [reconciled 12 production controls](https://github.com/gkoreli/blog/blob/main/
 Nine automated visits matched Browser. **Browser shape and JavaScript do not authenticate humans.** [Agent-driven input](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/30-filter-pointer-targets-and-browser-trust.md) produced `isTrusted=true` events locally. Our receiver proves arrival; Cloudflare’s receipt remains separate. Human false-positive rates remain unmeasured.
 
 A [local failure experiment](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/07-matched-classifier-calibration.md) lost three observations while pages and beacons succeeded. No database failure was injected into production.
+
+Local provider metadata needs scrutiny too. [Miniflare's fallback](https://github.com/cloudflare/workers-sdk/blob/ea57dfd56f2e82079927ce0b6fe690713e794a78/packages/miniflare/src/cf.ts) includes `verifiedBot: false`; `cf: false` selects it. Our [capture harness](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/60-guarded-native-capture-and-fixture-provenance.md) supplies `cf: {}` explicitly. **Executing our code in the native runtime does not reproduce the provider's detection service.**
 
 These mechanisms do not explain the historical gap’s proportions. Real phones, human-operated browsers, actual JavaScript-off and Cloudflare beacon receipt remain to test. Count missing measurements, abstentions and wrong decisions separately.
 

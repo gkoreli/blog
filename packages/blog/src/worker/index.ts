@@ -1,6 +1,8 @@
 import {
   handleOwner,
   handleCalibration,
+  handleNativeBotCapture,
+  NATIVE_CAPTURE_PREFIX,
   purgeExpiredCalibration,
   handleStats,
   observePageResponse,
@@ -205,6 +207,9 @@ export default {
     }
     if (pathname === '/api/owner') {
       return handleOwner(request, env);
+    }
+    if (pathname === NATIVE_CAPTURE_PREFIX || pathname.startsWith(NATIVE_CAPTURE_PREFIX + '/')) {
+      return handleNativeBotCapture(request, env);
     }
     if (pathname.startsWith('/analytics-check/') || pathname.startsWith('/api/analytics-calibration/')) {
       const calibration = await handleCalibration(request, env);

@@ -27,6 +27,7 @@ export { handleStats, parseStatsQuery } from './stats.js';
 export type { ReportCalculation, ReportCalculationObserver } from './report-cost.js';
 export { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
 export { handleCalibration, purgeExpiredCalibration } from './calibration.js';
+export { handleNativeBotCapture, NATIVE_CAPTURE_PREFIX } from './native-bot-capture.js';
 
 function sqliteTimestamp(date: Date): string {
   return date.toISOString().replace('T', ' ').slice(0, 19);

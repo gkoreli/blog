@@ -58,6 +58,18 @@ function postRequest(path = '/post', init: RequestInit = {}): Request {
   return new Request(`https://gkoreli.com${path}`, init);
 }
 
+test('inactive native-capture namespace never reaches assets or the page collector', async () => {
+  const { ctx, env, pending, writes } = harness();
+  for (const path of ['/api/analytics-native-capture', '/api/analytics-native-capture/unknown', '/api/analytics-native-capture/unknown/extra']) {
+    const response = await worker.fetch(postRequest(path, { headers: { Accept: 'text/html' } }), env, ctx);
+    assert.equal(response.status, 404);
+    assert.match(response.headers.get('Content-Type') ?? '', /^application\/json/);
+    assert.equal(response.headers.get('Cache-Control'), 'no-store');
+  }
+  assert.equal(pending.length, 0);
+  assert.equal(writes.length, 0);
+});
+
 test('Worker negotiates Markdown and records the page-path representation', async () => {
   const { ctx, env, pending, writes } = harness();
   const response = await worker.fetch(postRequest('/post', {

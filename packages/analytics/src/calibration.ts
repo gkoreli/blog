@@ -1,6 +1,5 @@
 import type { Env } from './db.js';
-import { createDailyClientId } from './hash.js';
-import { extractRequestMetadata } from './metadata.js';
+import { hasCurrentOwnerMark } from './owner.js';
 import { isReaderKind } from './contracts.js';
 
 const CONDITIONS = ['normal', 'block-script', 'block-beacon', 'http-client', 'javascript-off'] as const;
@@ -38,13 +37,6 @@ function response(body: string, status = 200, type = 'application/json'): Respon
   return new Response(body, { status, headers: { 'Content-Type': type + '; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'X-Robots-Tag': 'noindex, nofollow' } });
 }
 function result(body: string, status = 200): CalibrationResponse { return { response: response(body, status), collect: false }; }
-async function ownerMarked(request: Request, env: Env, now: Date): Promise<boolean> {
-  if (!env.ANALYTICS_HASH_KEY) return false;
-  const m = extractRequestMetadata(request, env.OWNER_IPS);
-  const day = now.toISOString().slice(0, 10);
-  const id = await createDailyClientId({ masterKey: env.ANALYTICS_HASH_KEY, siteHost: m.siteHost, utcDate: day, ip: m.ip, userAgent: m.userAgent });
-  return await env.DB.prepare('SELECT 1 AS marked FROM owner_clients WHERE daily_client_id = ? AND utc_date = ?').bind(id, day).first() !== null;
-}
 async function unitBody(request: Request): Promise<boolean> {
   const reader = request.body?.getReader(); if (!reader) return false;
   let value = '';
@@ -71,7 +63,7 @@ export async function handleCalibration(request: Request, env: Env, now = new Da
   const id = pageMatch?.[1] ?? apiMatch?.[1];
   const trial = active.trials.find(t => t.id === id);
   if (!trial) return result('{}', 404);
-  if (!await ownerMarked(request, env, now)) return result('{"error":"Current-day owner mark required"}', 403);
+  if (!await hasCurrentOwnerMark(request, env, now)) return result('{"error":"Current-day owner mark required"}', 403);
   const action = apiMatch?.[2];
   const peers = active.trials.filter(t => t.condition === trial.condition && t.operator === trial.operator);
   const position = peers.findIndex(t => t.id === trial.id);

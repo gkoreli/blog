@@ -49,6 +49,18 @@ function temporaryGrantMatches(actual: string, raw: string | undefined, now: Dat
   return timingSafeCompare(actual, `Bearer ${grant.token}`);
 }
 
+/** Same current-day profile guard used by controlled diagnostics; not a human identity. */
+export async function hasCurrentOwnerMark(request: Request, env: Env, now: Date): Promise<boolean> {
+  if (!env.ANALYTICS_HASH_KEY || !Number.isFinite(now.getTime())) return false;
+  const metadata = extractRequestMetadata(request, env.OWNER_IPS);
+  const day = now.toISOString().slice(0, 10);
+  const id = await createDailyClientId({
+    masterKey: env.ANALYTICS_HASH_KEY, siteHost: metadata.siteHost, utcDate: day,
+    ip: metadata.ip, userAgent: metadata.userAgent,
+  });
+  return await env.DB.prepare('SELECT 1 AS marked FROM owner_clients WHERE daily_client_id = ? AND utc_date = ?').bind(id, day).first() !== null;
+}
+
 export async function handleOwner(
   request: Request,
   env: Env,

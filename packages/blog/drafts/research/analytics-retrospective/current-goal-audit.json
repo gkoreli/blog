@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-28T06:49:57.756990+00:00",
-  "sourceBaseline": "5b831b1ee1cc393c1c20a3d4bebfffce10638dc9",
+  "checkedAt": "2026-10-28T06:59:29.382341+00:00",
+  "sourceBaseline": "b5fb1a0170b85e664c7cb2b4371084c603966162",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,25 +45,27 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Implement and locally accept the proposed off-by-default native-header capture route/harness. Exact candidate passes actual-zone dashboard validation; no rule published or trust promotion. Human trials remain deferred.",
+  "nextBoundedAction": "Accept source/activation/off-mode and article delivery, then prepare exact excluded live window. No live rule or capture is activated by local acceptance.",
   "article": {
-    "bodyWhitespaceWords": 1196,
+    "bodyWhitespaceWords": 1232,
     "prompts": 31,
-    "sourceSha256": "ea36825ed7ba04d56a4fe8dc2fba400ffc4c24734185273cc20325c711a94f9d",
-    "unchanged": true,
+    "sourceSha256": "373294b3b9935d51042c1bc0e6733c43105a8961cf011d0a6937a4aaff73dceb",
+    "unchanged": false,
     "freshServedCheck": false
   },
-  "runtimeUnchanged": true,
+  "runtimeUnchanged": false,
   "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": true,
+  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
-    "runtimeDelivery": "not-executed",
+    "runtimeDelivery": "Cloudflare delivery not executed; native local capture accepted",
     "trustedAdoption": false,
     "rulePublished": false,
     "receipt": "native-expression-validation.json",
-    "plan": "native-bot-capture-plan.json"
+    "plan": "native-bot-capture-plan.json",
+    "runtimeCapture": "off-by-default local acceptance",
+    "captureReceipt": "native-capture-local.json"
   }
 }

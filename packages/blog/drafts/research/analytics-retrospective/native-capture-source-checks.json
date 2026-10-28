@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-28T06:59:29.382341+00:00",
+  "sourceBaseline": "b5fb1a0170b85e664c7cb2b4371084c603966162",
+  "analyticsTests": 255,
+  "siteTests": 109,
+  "workspaceTypes": "pass",
+  "postValidation": "pass",
+  "referralPolicy": "pass",
+  "isolatedBuildPosts": 32,
+  "routingControls": 20,
+  "successfulRoutingCaptures": 7,
+  "separateMetadataFixtureControls": 3,
+  "articleBodyWhitespaceWords": 1232,
+  "prompts": 31,
+  "articleSha256": "373294b3b9935d51042c1bc0e6733c43105a8961cf011d0a6937a4aaff73dceb",
+  "miniflare": {
+    "version": "4.20260301.1",
+    "installedModuleSha256": "27b5e672616d45a0f8a5600c3bd0839404ca418a2d54129e934509bec1b8d42f",
+    "releaseCommit": "ea57dfd56f2e82079927ce0b6fe690713e794a78",
+    "referenceFile": "packages/miniflare/src/cf.ts",
+    "referenceSha256": "5b04fbbfcbec3b97677d0d9545894af09a77a74d88de35e001117c694526174e",
+    "acceptedHarnessCf": "explicit empty object",
+    "initialDefaultMetadataSource": "cache/fetch/fallback branch not instrumented"
+  },
+  "productionOwnSiteCalls": 0,
+  "productionD1Statements": 0,
+  "liveCaptureActivation": false,
+  "liveRuleActivation": false,
+  "newHumanLabels": 0,
+  "checks": {
+    "relativeFileLinks": 293,
+    "jsonAndCodeFences": "pass",
+    "scopedDiff": "pass",
+    "publicUuidScan": "pass",
+    "coreClassifierVerifierProfilesUnchanged": true,
+    "builtArticleNewParagraphAndSourceLink": true
+  },
+  "privateArchive": {
+    "name": "2026-10-28-native-capture-local",
+    "files": 21,
+    "manifestSha256": "57909e7c395d2e0549d846c83f753efdd60bb88f81b5e052351477457c79c029",
+    "modes": "0700/0600",
+    "reviewDate": "2026-10-31",
+    "reviewDateIsAutomaticErasure": false
+  }
+}

@@ -18,6 +18,8 @@ export interface Env {
   ANALYTICS_DIAGNOSTICS?: string;
   /** Expiring allowlist for explicitly controlled, owner-excluded stage trials. */
   ANALYTICS_CALIBRATION?: string;
+  /** Separate off-by-default, expiring owner-gated native-header experiment. */
+  ANALYTICS_NATIVE_CAPTURE?: string;
 }
 
 export interface PageObservation {
