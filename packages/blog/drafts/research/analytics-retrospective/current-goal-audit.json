@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-28T07:05:29.439962+00:00",
+  "checkedAt": "2026-10-28T07:35:52.841187+00:00",
   "sourceBaseline": "90d6173d935a72dd6b54a31152d1bc56e738227a",
   "goalAchieved": false,
   "previousTurn": "progress",
@@ -45,15 +45,15 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Prepare exact excluded live native-header capture with receiver/rule expiry and controller budget; actual delivery/spoof/drift/relay/positive cases remain unexecuted. Human trials deferred.",
+  "nextBoundedAction": "Add closed reason diagnostics for the observed guard-unavailable response without raw inputs or native trust promotion; isolate missing disabled-before-expiry and positive/relay controls only when prerequisites are available. Human trials remain deferred.",
   "article": {
-    "bodyWhitespaceWords": 1232,
+    "bodyWhitespaceWords": 1280,
     "prompts": 31,
-    "sourceSha256": "373294b3b9935d51042c1bc0e6733c43105a8961cf011d0a6937a4aaff73dceb",
+    "sourceSha256": "42eacfa30f362d2567e433317b24f562cbfc21bc4c0b5a7b5dc06d9aa7c9f537",
     "unchanged": false,
-    "freshServedCheck": true
+    "freshServedCheck": false
   },
-  "runtimeUnchanged": false,
+  "runtimeUnchanged": true,
   "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
@@ -62,13 +62,18 @@
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Cloudflare delivery not executed; native local capture accepted",
     "trustedAdoption": false,
-    "rulePublished": false,
+    "rulePublished": true,
     "receipt": "native-expression-validation.json",
     "plan": "native-bot-capture-plan.json",
-    "runtimeCapture": "deployed, local acceptance and production off-mode accepted; live capture not activated",
+    "runtimeCapture": "23 actual controls / 19 valid capture+log pairs / one guard unavailable; cleanup accepted",
     "captureReceipt": "native-capture-local.json",
-    "deliveryReceipt": "native-capture-delivery.json"
+    "deliveryReceipt": "native-capture-delivery.json",
+    "ruleCurrentlyActive": false,
+    "liveReceipt": "native-capture-live.json",
+    "positiveAndRelays": "unexecuted",
+    "disabledBeforeExpiry": "unexecuted; measured disabled cases overlap expiry"
   },
-  "productionOwnSiteGets": 2,
-  "collectionEligibleGets": 0
+  "productionOwnSiteGets": 23,
+  "collectionEligibleGets": 0,
+  "ownerMarkPosts": 1
 }

@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-28T07:35:52.841187+00:00",
+  "sourceBaseline": "ffc4dad5bdfd0050e7d32874a18031c96630d9ca",
+  "siteTests": 115,
+  "controllerTests": 6,
+  "runtimeUnchangedFromAcceptedSource": "90d6173",
+  "analyticsTests": "Prior 255 acceptance retained; runtime unchanged, no fresh suite claim",
+  "postValidation": "pass",
+  "isolatedBuildPosts": 32,
+  "articleWords": 1280,
+  "prompts": 31,
+  "articleSha256": "42eacfa30f362d2567e433317b24f562cbfc21bc4c0b5a7b5dc06d9aa7c9f537",
+  "controllerExecutedProfile": "native-capture-controller-v1",
+  "controllerCurrentProfile": "native-capture-controller-v2",
+  "controllerExecutedSha256": "0bc2b805d1b37f8a4b46e272cfa69388a974767299cab8048e430279d76aee1c",
+  "controllerCurrentSha256": "a2bf96198a733fd7e52d37339774a857dbcf017e27eb623900fef0a18b97f425",
+  "dynamicBeforeOriginalDeadline": true,
+  "overwriteBeforeAmendedDeadline": true,
+  "disabledTimingConfounded": true,
+  "automaticApproval": "Initial unspecified-file rejection; exact keys/hash/expiry and inherited bindings validated; same scoped upload then approved",
+  "privateArchive": {
+    "name": "2026-10-28-native-header-live",
+    "files": 96,
+    "manifestSha256": "23f5e7bf376e9a1890814a70c81dc7b0c9727bacceb923234743c456048edfd9",
+    "modes": "0700/0600",
+    "reviewDate": "2026-10-31",
+    "reviewDateIsAutomaticErasure": false
+  },
+  "sourceDelivery": "pending",
+  "publicationAcceptance": "pending",
+  "relativeLinks": {
+    "checked": 296,
+    "status": "pass"
+  },
+  "publicPrivateIdScan": "pass"
+}

@@ -1,5 +1,5 @@
 {
-  "status": "implemented-local-and-production-off-mode-accepted-no-live-capture",
+  "status": "partial-live-controls-executed-cleaned-up-untrusted",
   "question": "What does the validated known-bot transform deliver across ingress, spoofing and configuration-drift conditions?",
   "expressionValidation": "Actual zone dashboard reports Rule validation passed for to_string(cf.client.bot), dynamic Set, with contradictory host filter; form cancelled unsaved.",
   "signalMeaning": "Generic provider known-good-bot/crawler assessment; not a signed-agent verdict, product identity, purpose or human label.",
@@ -73,7 +73,7 @@
     "Activation, natural expiry, configuration cleanup and persistence/retention are separate recorded operations."
   ],
   "managedSignatureComparison": "Still blocked on the separate request-level signed-agent oracle and accepted controlled identity; this generic bit does not satisfy either gate.",
-  "nextBoundedAction": "Prepare the exact excluded live window and controller budget, receiver/rule expiry, rule order and negative controls before activation. Human trials remain deferred; generic header evidence remains untrusted.",
+  "nextBoundedAction": "Guard-unavailable cause diagnostics; independently isolate disabled-before-expiry and execute positive/relay controls only with accepted prerequisites.",
   "humanTrials": "Deferred by owner.",
   "localAcceptance": {
     "receipt": "native-capture-local.json",
@@ -81,5 +81,13 @@
     "metadataFixtureControls": 3,
     "notManagedProviderVerdicts": true
   },
-  "delivery": "native-capture-delivery.json"
+  "delivery": "native-capture-delivery.json",
+  "liveReceipt": "native-capture-live.json",
+  "unexecuted": [
+    "Disabled before original expiry",
+    "Genuine provider-positive",
+    "workers.dev",
+    "same-zone relay",
+    "cross-zone relay"
+  ]
 }

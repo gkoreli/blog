@@ -1,0 +1,313 @@
+{
+  "planned": 23,
+  "attempted": 23,
+  "received": 23,
+  "captureResponses": 19,
+  "validCaptures": 19,
+  "expectedOutcomes": 22,
+  "unexpectedOutcomes": 0,
+  "unavailable": 1,
+  "exactLogJoins": 19,
+  "ambiguousLogJoins": 0,
+  "transportUnavailable": 0,
+  "httpUnavailable": 1,
+  "malformedCaptures": 0,
+  "capturesWithReusedResponseId": 0,
+  "conditions": [
+    {
+      "phase": "unmarked",
+      "plannedCondition": "direct",
+      "status": 403,
+      "measurement": "rejection",
+      "expected": true
+    },
+    {
+      "phase": "absent",
+      "plannedCondition": "direct",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "missing",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "absent",
+      "plannedCondition": "spoof-single",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "literal-true",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "absent",
+      "plannedCondition": "spoof-single",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "literal-false",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "absent",
+      "plannedCondition": "spoof-single",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "other",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "absent",
+      "plannedCondition": "spoof-duplicate",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "other",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "absent",
+      "plannedCondition": "spoof-duplicate",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "other",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "absent",
+      "plannedCondition": "spoof-duplicate",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "other",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "dynamic",
+      "plannedCondition": "direct",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "literal-false",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "dynamic",
+      "plannedCondition": "spoof-single",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "literal-false",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "dynamic",
+      "plannedCondition": "spoof-single",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "literal-false",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "dynamic",
+      "plannedCondition": "spoof-single",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "literal-false",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "dynamic",
+      "plannedCondition": "spoof-duplicate",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "literal-false",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "dynamic",
+      "plannedCondition": "spoof-duplicate",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "literal-false",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "dynamic",
+      "plannedCondition": "spoof-duplicate",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "literal-false",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "disabled",
+      "plannedCondition": "rule-disabled",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "literal-true",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "disabled",
+      "plannedCondition": "rule-disabled",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "other",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "rule-expired",
+      "plannedCondition": "rule-expired",
+      "status": 503,
+      "measurement": "unavailable",
+      "expected": null
+    },
+    {
+      "phase": "rule-expired",
+      "plannedCondition": "rule-expired",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "missing",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "overwrite",
+      "plannedCondition": "later-overwrite",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "other",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "overwrite",
+      "plannedCondition": "later-overwrite",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "other",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "receiver-expired",
+      "plannedCondition": "rule-expired",
+      "status": 404,
+      "measurement": "rejection",
+      "expected": true
+    },
+    {
+      "phase": "receiver-expired",
+      "plannedCondition": "rule-expired",
+      "status": 404,
+      "measurement": "rejection",
+      "expected": true
+    }
+  ],
+  "humanLabels": 0,
+  "providerAccuracyRate": null,
+  "humanAccuracyRate": null,
+  "tail": {
+    "envelopes": 23,
+    "malformed": 0,
+    "incompleteFragments": 0
+  },
+  "checkedAt": "2026-10-28T07:30:49.518123+00:00",
+  "question": "Measured delivery and drift of a generic known-bot header; no trusted adoption",
+  "operator": "controlled-curl",
+  "diagnosticGets": 23,
+  "ownerMarkPosts": 1,
+  "diagnosticSelects": 0,
+  "reportFills": 0,
+  "collectionEligibleGets": 0,
+  "guardEvaluationsBeforeReceiverExpiry": 21,
+  "guardMetering": "unavailable; additional request-side owner lookup/marking work",
+  "sourceBoundNoPageCollector": true,
+  "qualifications": [
+    "Two disabled controls ran after original expiry; disabling is not independently isolated.",
+    "One supplied-true expired-rule control returned guard unavailable; cause unestablished; no retry.",
+    "Genuine provider-positive, workers.dev and same/cross-zone relays unexecuted.",
+    "Capture-only candidate remains untrusted; managed cryptographic agreement unmeasured."
+  ],
+  "timing": {
+    "receiverMinutes": 8,
+    "originalRuleMinutes": 4,
+    "amendedRuleMinutes": 7,
+    "amendmentAfterOriginalExpiryControls": true,
+    "receiverWindowUnchanged": true
+  },
+  "cleanup": {
+    "optionalBindingNamesRestored": true,
+    "experimentalRulesDisabled": 2,
+    "activeRules": 0,
+    "rulesDeleted": false,
+    "ownedTailProcessesRemaining": 0
+  }
+}

@@ -91,6 +91,8 @@ A [local failure experiment](https://github.com/gkoreli/blog/blob/main/packages/
 
 Local provider metadata needs scrutiny too. [Miniflare's fallback](https://github.com/cloudflare/workers-sdk/blob/ea57dfd56f2e82079927ce0b6fe690713e794a78/packages/miniflare/src/cf.ts) includes `verifiedBot: false`; `cf: false` selects it. Our [capture harness](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/60-guarded-native-capture-and-fixture-provenance.md) supplies `cf: {}` explicitly. **Executing our code in the native runtime does not reproduce the provider's detection service.**
 
+In [seven live controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/61-live-native-header-boundaries.md), a transform delivered Cloudflare's known-bot result as `false` while Worker-native bot booleans stayed unavailable. It replaced single and duplicate caller headers. With the rule disabled and expired, a caller's `true` survived. **A forwarded flag needs trusted provenance before it can support a verified-bot count.**
+
 These mechanisms do not explain the historical gap’s proportions. Real phones, human-operated browsers, actual JavaScript-off and Cloudflare beacon receipt remain to test. Count missing measurements, abstentions and wrong decisions separately.
 
 ---
