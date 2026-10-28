@@ -1,0 +1,63 @@
+{
+  "plan": {
+    "createdAt": "2026-10-28T00:13:21.205450+00:00",
+    "startInclusiveUtc": "2026-10-27 22:51:11",
+    "endExclusiveUtc": "2026-10-28 00:13:21",
+    "collections": [
+      "2026-10-27.9",
+      "2026-10-27.10",
+      "2026-10-27.11",
+      "2026-10-28.1"
+    ],
+    "candidateLimit": 21,
+    "candidateMeaning": "Retained edge rows with stored signature_status=verified; evidence consistency and organic provenance not assumed",
+    "reviewedRowsReadThreshold": 5000,
+    "thresholdMeaning": "post-execution check, not enforced database cap",
+    "plannedStatements": 1,
+    "noRetryAfterQuotaOrThresholdFailure": true,
+    "nativeAcceptance": "candidates-local.json",
+    "sqlSha256": "b005d90e3b63d210a8a54a077f39d5284753a0411d9a0a44d04168ec6e4e1db6"
+  },
+  "result": {
+    "rows": 2,
+    "rowsRead": 28,
+    "rowsWritten": 0,
+    "changedDb": false,
+    "capped": false,
+    "byCollection": {
+      "2026-10-27.9": 0,
+      "2026-10-27.10": 2,
+      "2026-10-27.11": 0,
+      "2026-10-28.1": 0
+    },
+    "method": "Stored verified-status candidates only; exact receipt match and organic provenance not inferred"
+  },
+  "candidateInterpretation": "Two selected non-owner .10 observations with detailed local verified outcomes; no newest-profile persistence or human/trigger claim.",
+  "nativeQueries": {
+    "timePreset": "Last 1 hour",
+    "exactReferenceVisible": 2,
+    "exactReferenceCopied": 2,
+    "requestReferenceVisible": 8,
+    "requestReferenceCopied": 8,
+    "freshClipboardWriteAcknowledged": true
+  },
+  "furtherDiagnosticSelects": 0,
+  "newLabelledControls": 0,
+  "nativeRulesChanged": false,
+  "optionalCaptureActivated": false,
+  "limits": [
+    "The fixed SQL predicate is not a whole-history/current-state census.",
+    "21 is a truncation sentinel; this two-row capture is uncapped.",
+    "No live tail is substituted for these retained events.",
+    "Dashboard/source/HTTP activity is additional to the one SELECT."
+  ],
+  "nativeNewestProfileFollowUp": {
+    "capturedAt": "2026-10-28T00:37:11.034270+00:00",
+    "selectedPreset": "Last 1 hour",
+    "query": "receipt.signature.verifierProfile = \"2026-10-28.1\" AND receipt.signature.outcome = \"verified\"",
+    "visibleSuccessfulRecords": 0,
+    "visibleState": "No events found",
+    "scopeLimit": "Selected dashboard query/preset only; not a whole-history absence claim or proof of ingestion/retention completeness.",
+    "privateSnapshotSha256": "6330561476ff9e9e488843ae8227da5dadef6236bdb6c7eb3222434fead651f0"
+  }
+}

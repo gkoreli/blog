@@ -67,3 +67,6 @@ The ASCII fixture's User-Agent round-trips through its request-context capture, 
 The filtered tail is stopped; no preview or viewport override is active. These observations supersede the pending source/activation/integration gates above. Next bounded work: recover and compare an organic signed observation through the current collector using the exact private reference, without replacing absent provider booleans with synthetic facts or aggregate joins. Human trials remain deferred; the broader standards, capture and privacy limits remain open.
 
 Private raw captures, pinned source, compiled reference, dependency lock/integrity and check logs are preserved in `~/.local/share/gkoreli/analytics-evidence/2026-10-28-reference-components/`: 52 files plus a hash manifest, directory mode 0700 and file mode 0600. Disposable `node_modules` is excluded; source and compiled artifacts preserve the executed reference. October 31 is a review date, not automatic erasure or a backup guarantee. Private operation/database references and operational request context stay outside Git.
+
+
+[Follow-up 38](38-signed-observations-and-exact-row-links.md) recovers two older signed observations with exact row references and current-profile offline replays; it keeps newest-profile organic persistence and native cryptographic agreement open.

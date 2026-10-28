@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-28T00:37:24.950958+00:00",
+  "analytics": {
+    "pass": 198,
+    "fail": 0,
+    "logSha256": "b15cb4b98a550a9f54d78c31e2cf1930f1ba83429dea280b517e2102f4d1bdfa"
+  },
+  "actualCapturedAnalysis": {
+    "exactNativeChains": 2,
+    "matchingKnownProjections": 2,
+    "currentProfileRecordedTimeReplaysVerified": 2,
+    "externalReplayRequests": 0
+  },
+  "nativeSqlAcceptance": "organic-candidates-local.json",
+  "postValidation": "pass",
+  "javaScriptSyntax": "pass",
+  "newRegressionTests": 4,
+  "runtimeSourceChanged": false,
+  "schemaOrProfilesChanged": false,
+  "priorRuntimeChecks": {
+    "sourceCommit": "1804550190315dd4bc19c21f8e108b34383d8b4a",
+    "siteTests": 106,
+    "workspaceTypes": "pass",
+    "evidence": "request-context-source-checks.json",
+    "freshThisPhase": false
+  },
+  "isolatedBuild": {
+    "result": "pass",
+    "posts": 32,
+    "logSha256": "9ec97d1af645907df0b6572d2285f9e0fadca90a7b923c609b4cb90e90f56a4b",
+    "warning": "Mise tracking symlink outside writable roots denied; build exited zero."
+  },
+  "sourceSha256": {
+    "packages/blog/drafts/research/analytics-retrospective/reconcile-receipt-storage.mjs": "6df37875aa5f277ce60022c8203be7eb6a861f7f34e8a4064fc02aa6d82a256e",
+    "packages/blog/drafts/research/analytics-retrospective/analyze-organic-exact.mjs": "c3fa345899fa65756648f867a3b551b9d2d85fd755373c9f56248b2666f49bfa",
+    "packages/blog/drafts/research/analytics-retrospective/organic-receipt-candidates.sql": "2d45e5ca8196f1f94c9c176ade70648a5fbc9a91d3ced38919be274e6a5f4771",
+    "packages/blog/drafts/research/analytics-retrospective/organic-exact-analysis.json": "8197a62aaabf7af9154e108e3ded28d612ee096d90a2e66752c5722df8a0a392",
+    "packages/blog/drafts/research/analytics-retrospective/organic-candidates-local.json": "300d5266350602624a3573ba75bb0061838c5812586d314aad49002626495e99",
+    "packages/blog/drafts/research/analytics-retrospective/organic-candidates-production.json": "512d944d5b07ec436062a70920e11c1564cfae38eb8dfa80db6020f9313230e2",
+    "packages/blog/scripts/check-organic-receipt-candidates.mjs": "93debe9ff396c0e11f18593d5cd6807027ae37862e896a3d6883bd8433f94fce",
+    "packages/analytics/test/receipt-storage-reconciliation.test.mjs": "3d2f18d55872ef854756692fee95d88d875908dc5bebdbdbb0f0790a9ef563a3",
+    "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "c408e339ebdc046a83901bc03afa9c927a6840ae6f2fa18d7e0d23d9b9e0dd9c"
+  },
+  "article": {
+    "bodyWords": 1248,
+    "shapingPrompts": 31,
+    "builtMarkdownSha256": "b9f5271790eef48fd2c10cec102f5a3d7f50e5126251bf982bc8b020a20d008a",
+    "sourceChanged": true
+  },
+  "publicationAcceptance": "organic-exact-publication.json",
+  "limits": [
+    "Selected two-record dated cohort; not population accuracy or newest-profile organic persistence.",
+    "Current-profile replay uses later keys and recorded times.",
+    "Native category agreement does not establish native signature-verifier agreement.",
+    "No human trial or expanded raw collection."
+  ],
+  "relativeFileLinks": {
+    "checked": 228,
+    "missing": 0
+  },
+  "codeFences": "balanced"
+}

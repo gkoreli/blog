@@ -1,0 +1,114 @@
+{
+  "checkedAt": "2026-10-28T00:37:15.628Z",
+  "method": "Join retained native invocation/attempt/stored records by provider request and operation references, then actual returned text row references to the captured D1 rows. Compare the known v3 receipt projection; replay separately at invocation-record time with later-captured Exa keys and captured response headers.",
+  "replayVerifierProfile": "2026-10-28.1",
+  "directoryCaptureLaterThanRequests": true,
+  "directoryCapture": {
+    "capturedAt": "2026-10-28T00:20:03.853805+00:00",
+    "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+    "source": "https://crawler.exa.ai/.well-known/http-message-signatures-directory"
+  },
+  "candidateRows": 2,
+  "comparison": {
+    "candidateRows": 2,
+    "retainedInputRecords": 8,
+    "retainedStoredRecords": 2,
+    "rejectedRetainedRecords": {
+      "shape": 0,
+      "timestamp": 0
+    },
+    "invalidCandidateReferences": 0,
+    "unavailableReceiptReferences": 0,
+    "invalidReceiptReferences": 0,
+    "unmatchedCandidateRows": 0,
+    "unmatchedReceiptRecords": 0,
+    "ambiguousReferenceGroups": 0,
+    "invalidPairMetadata": 0,
+    "unprojectableCandidateRows": 0,
+    "matchedReferencePairs": 2,
+    "identicalProjectionPairs": 2,
+    "differentProjectionPairs": 0,
+    "storedLocalVerifiedPairs": 2,
+    "testInjectedPairs": 0,
+    "conflictingStoredStatusPairs": 0,
+    "changedFields": {},
+    "unexpectedFields": 0
+  },
+  "nativeExportIntegrity": {
+    "missingIds": 0,
+    "duplicateIds": 0,
+    "truncatedRecords": 0
+  },
+  "exactNativeChains": 2,
+  "matchingSeparateCopies": 2,
+  "replayVerified": 2,
+  "coverageFlagsEqual": 2,
+  "nativeFactsEqual": 2,
+  "nativeBooleanAvailable": 0,
+  "cardinalities": {
+    "urls": 1,
+    "signatures": 2,
+    "signatureInputs": 2,
+    "requestIds": 2,
+    "operations": 2
+  },
+  "counts": {
+    "collections": {
+      "2026-10-27.10": 2
+    },
+    "storedVerifierProfiles": {
+      "2026-10-27.6": 2
+    },
+    "readerKinds": {
+      "ai-search": 2
+    },
+    "representations": {
+      "html": 1,
+      "markdown": 1
+    },
+    "replayStatus": {
+      "verified": 2
+    },
+    "nativeCategories": {
+      "Search Engine Crawler": 2
+    },
+    "directoryPublisherStates": {
+      "matching-publisher": 2
+    },
+    "documentedVendorStates": {
+      "matching-origin": 2
+    }
+  },
+  "externalReplayRequests": 0,
+  "newControlRequests": 0,
+  "limits": [
+    "Local verification in these stored rows is the dated original profile; current-profile offline replay is not organic current-profile persistence.",
+    "Later keys do not reconstruct the directory or provider configuration at request time.",
+    "The receipt comparison is a projection, not equality of the entire D1 row or raw log.",
+    "Provider category agreement is not native cryptographic-verifier agreement.",
+    "Different signatures/requests do not establish distinct people, triggers, sessions or unique agent actions.",
+    "No raw request values, provider/operation/database references or signature fingerprints appear in this aggregate."
+  ],
+  "inputCommitments": [
+    {
+      "bytes": 4643,
+      "sha256": "202edbe0ff12ffe36434220ebb22ee8710be36a28180a20d9603368f542ed46c"
+    },
+    {
+      "bytes": 26845,
+      "sha256": "dc9701a1b31d485dc2253829caa7835b976e3b68c0086135dbff1341cce51761"
+    },
+    {
+      "bytes": 5952,
+      "sha256": "0377265f458e364907b94cfeb7d4c4b11877be1dba33c78ec331eeec7ea8e732"
+    },
+    {
+      "bytes": 274,
+      "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52"
+    },
+    {
+      "bytes": 423,
+      "sha256": "36eb4eb2d0d84a57e65a63a48245261a8ffaccaa2fcf1310e81ce61492b01600"
+    }
+  ]
+}

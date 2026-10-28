@@ -1,0 +1,15 @@
+{
+  "status": "source-checked-publication-pending",
+  "checkedAt": "2026-10-28T00:37:24.950958+00:00",
+  "sourceDelivery": "pending",
+  "activation": "pending",
+  "servedContent": "pending",
+  "runtimeChanged": false,
+  "directDiagnosticSelects": 1,
+  "directSelectRowsRead": 28,
+  "directSelectRowsWritten": 0,
+  "newLabelledControls": 0,
+  "humanTrials": "deferred by owner",
+  "currentProfileOrganicPersistence": "open",
+  "nativeCryptographicAgreement": "unmeasured"
+}

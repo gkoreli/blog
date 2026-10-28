@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-28T00:14:23.220Z",
+  "method": "Native local D1 with synthetic stored records; not cryptographic, vendor or organic labels.",
+  "baselineRows": 4,
+  "missingProofRetained": true,
+  "contradictoryProofRetained": true,
+  "ownerRowsRetainedForAssessment": true,
+  "emptyRows": 0,
+  "cappedRows": 21,
+  "capMeaning": "21 is a truncation sentinel, not a complete-population count",
+  "queryPlan": [
+    {
+      "id": 5,
+      "parent": 0,
+      "notused": 163,
+      "detail": "SEARCH page_observations USING INDEX idx_page_observations_observed_at (observed_at>? AND observed_at<?)"
+    }
+  ],
+  "baselineWork": {
+    "rowsRead": 8,
+    "rowsWritten": 0
+  },
+  "cappedWork": {
+    "rowsRead": 21,
+    "rowsWritten": 0
+  },
+  "sqlSha256": "2d45e5ca8196f1f94c9c176ade70648a5fbc9a91d3ced38919be274e6a5f4771",
+  "sourceSha256": "93debe9ff396c0e11f18593d5cd6807027ae37862e896a3d6883bd8433f94fce",
+  "productionCalls": 0,
+  "externalCalls": 0
+}

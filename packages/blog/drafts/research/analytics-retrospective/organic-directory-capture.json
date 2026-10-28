@@ -1,0 +1,12 @@
+{
+  "capturedAt": "2026-10-28T00:20:03.853805+00:00",
+  "source": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+  "keys": 2,
+  "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+  "laterThanRequests": true,
+  "responseStatus": 200,
+  "responseHeaders": {
+    "content-type": "application/http-message-signatures-directory+json",
+    "cache-control": "max-age=300"
+  }
+}
