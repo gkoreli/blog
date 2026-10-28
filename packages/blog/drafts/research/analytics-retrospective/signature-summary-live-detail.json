@@ -1,0 +1,71 @@
+{
+  "acceptedAt": "2026-10-28T05:19:55.793Z",
+  "selection": {
+    "range": "7d",
+    "traffic": "all",
+    "agent": "AhrefsBot"
+  },
+  "selectedViews": 9,
+  "summaryConsistencyAccepted": true,
+  "detailedVerifiedViews": 3,
+  "coverageRecordedViews": 3,
+  "unrecognizedLocalViews": 0,
+  "coverageUnrecognizedVerifiedViews": 0,
+  "nativeAvailableViews": 0,
+  "nativeUnavailableViews": 3,
+  "nativeNotRecordedViews": 6,
+  "nativeUnrecognizedViews": 0,
+  "vendorCheckRecognizedViews": 3,
+  "vendorCheckUnrecognizedViews": 0,
+  "vendorCheckNotRecordedViews": 6,
+  "joint": [
+    {
+      "kind": "seo-crawler",
+      "basis": "verified-outcome-only",
+      "profile": "not-recorded",
+      "views": 6
+    },
+    {
+      "kind": "seo-crawler",
+      "basis": "verified-ua-uncovered",
+      "profile": "2026-10-28.6",
+      "views": 2
+    },
+    {
+      "kind": "seo-crawler",
+      "basis": "verified-ua-uncovered",
+      "profile": "2026-10-27.6",
+      "views": 1
+    }
+  ],
+  "directory": [
+    {
+      "basis": "not-recorded",
+      "views": 7
+    },
+    {
+      "basis": "matching-publisher",
+      "views": 2
+    }
+  ],
+  "cacheSequence": [
+    "MISS",
+    "HIT"
+  ],
+  "sameActualSocket": true,
+  "identicalApiBytes": true,
+  "apiSha256": "5a7fb18dfb9be33ce9794c66fccb3213ed6baba70fe2e22bc683de3f81d90b67",
+  "httpGets": 2,
+  "collectionEligibleGets": 0,
+  "newDirectDiagnosticStatements": 0,
+  "livePublicFillRowsRead": "Not exposed by this endpoint; any cold fill is additional work.",
+  "limits": [
+    "Stored detailed outcomes are not current-policy cryptographic replays.",
+    "This declared-name selection is not authenticated client identity or an affected-row census.",
+    "Unavailable native booleans are not false; reviewed directory publication is not a documented per-client signing promise."
+  ],
+  "userAgentBoundViews": 0,
+  "authorityOnlyViews": 3,
+  "resourceBoundViews": 0,
+  "methodBoundViews": 0
+}
