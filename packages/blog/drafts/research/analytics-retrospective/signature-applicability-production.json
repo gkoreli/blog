@@ -1,0 +1,976 @@
+{
+  "capturedAt": "2026-10-28T05:30:08.891Z",
+  "cutoffExclusive": "2026-10-28 05:22:00",
+  "method": "All retained rows at or below the private textual preflight maximum ID; inventory and detailed assessment share one census statement. No shared transaction with the preflight.",
+  "rows": 32363,
+  "detailedRows": 281,
+  "countMatchesPreflight": true,
+  "detailCountMatchesPreflight": true,
+  "inventory": [
+    {
+      "time_scope": "at-or-after-cutoff",
+      "evidence_state": "detailed-record",
+      "views": 1
+    },
+    {
+      "time_scope": "before-census31",
+      "evidence_state": "detailed-record",
+      "views": 190
+    },
+    {
+      "time_scope": "before-census31",
+      "evidence_state": "no-detail-or-status",
+      "views": 30792
+    },
+    {
+      "time_scope": "before-census31",
+      "evidence_state": "unverified-outcome-only",
+      "views": 109
+    },
+    {
+      "time_scope": "before-census31",
+      "evidence_state": "verified-outcome-only",
+      "views": 1181
+    },
+    {
+      "time_scope": "census31-to52",
+      "evidence_state": "detailed-record",
+      "views": 87
+    },
+    {
+      "time_scope": "census52-to-cutoff",
+      "evidence_state": "detailed-record",
+      "views": 3
+    }
+  ],
+  "detailed": [
+    {
+      "time_scope": "at-or-after-cutoff",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-28.7",
+      "collection_state": "current",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.3",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 16
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.4",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 18
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.5",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 5
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.6",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 47
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-27.3",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 7
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-27.4",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 5
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-27.6",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 9
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-recorded",
+      "profile": "2026-10-27.1",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 21
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "included",
+      "local_state": "verified",
+      "coverage_state": "recognized",
+      "native_state": "unavailable",
+      "vendor_state": "matching-origin",
+      "profile": "2026-10-27.6",
+      "collection_state": "other-recorded",
+      "old_claims": 2595,
+      "new_claims": 2595,
+      "views": 6
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "included",
+      "local_state": "verified",
+      "coverage_state": "recognized",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-27.6",
+      "collection_state": "other-recorded",
+      "old_claims": 515,
+      "new_claims": 515,
+      "views": 1
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "owner-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.3",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 11
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "owner-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.4",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 12
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "owner-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.6",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 12
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "owner-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-recorded",
+      "profile": "2026-10-27.1",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 2
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "owner-excluded",
+      "local_state": "unverified",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.5",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "referral-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.4",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 3
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "referral-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-27.3",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 4
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "referral-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-recorded",
+      "profile": "2026-10-27.1",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 4
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "referral-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-verified",
+      "profile": "2026-10-27.3",
+      "collection_state": "other-recorded",
+      "old_claims": 2048,
+      "new_claims": 2048,
+      "views": 2
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "referral-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-verified",
+      "profile": "2026-10-27.6",
+      "collection_state": "other-recorded",
+      "old_claims": 2048,
+      "new_claims": 2048,
+      "views": 1
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "referral-excluded",
+      "local_state": "unverified",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.4",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "referral-excluded",
+      "local_state": "unverified",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-verified",
+      "profile": "2026-10-27.3",
+      "collection_state": "other-recorded",
+      "old_claims": 2048,
+      "new_claims": 2048,
+      "views": 1
+    },
+    {
+      "time_scope": "before-census31",
+      "inclusion": "referral-excluded",
+      "local_state": "unverified",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-verified",
+      "profile": "2026-10-27.6",
+      "collection_state": "other-recorded",
+      "old_claims": 2048,
+      "new_claims": 2048,
+      "views": 1
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.6",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 6
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.7",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 3
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-28.1",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 6
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-28.2",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 6
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-28.3",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-28.4",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 2
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-28.6",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 10
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-28.7",
+      "collection_state": "current",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-27.6",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 4
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-27.7",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 3
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-28.1",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 6
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-28.2",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 2
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-28.6",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 2
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-28.7",
+      "collection_state": "current",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "verified",
+      "coverage_state": "recognized",
+      "native_state": "unavailable",
+      "vendor_state": "matching-origin",
+      "profile": "2026-10-27.6",
+      "collection_state": "other-recorded",
+      "old_claims": 2595,
+      "new_claims": 2595,
+      "views": 5
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "verified",
+      "coverage_state": "recognized",
+      "native_state": "unavailable",
+      "vendor_state": "matching-origin",
+      "profile": "2026-10-28.1",
+      "collection_state": "other-recorded",
+      "old_claims": 2595,
+      "new_claims": 2595,
+      "views": 2
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "verified",
+      "coverage_state": "recognized",
+      "native_state": "unavailable",
+      "vendor_state": "matching-origin",
+      "profile": "2026-10-28.2",
+      "collection_state": "other-recorded",
+      "old_claims": 2659,
+      "new_claims": 2659,
+      "views": 3
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "verified",
+      "coverage_state": "recognized",
+      "native_state": "unavailable",
+      "vendor_state": "matching-origin",
+      "profile": "2026-10-28.6",
+      "collection_state": "other-recorded",
+      "old_claims": 2659,
+      "new_claims": 2659,
+      "views": 8
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "included",
+      "local_state": "verified",
+      "coverage_state": "recognized",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-28.6",
+      "collection_state": "other-recorded",
+      "old_claims": 579,
+      "new_claims": 579,
+      "views": 2
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "owner-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.6",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 6
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "owner-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.7",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "referral-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-28.1",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "referral-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-28.2",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "referral-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-28.6",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "referral-excluded",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-27.6",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "referral-excluded",
+      "local_state": "unverified",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-27.7",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "referral-excluded",
+      "local_state": "unverified",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-28.6",
+      "collection_state": "other-recorded",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "census31-to52",
+      "inclusion": "referral-excluded",
+      "local_state": "unverified",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "no-declaration",
+      "profile": "2026-10-28.7",
+      "collection_state": "current",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 1
+    },
+    {
+      "time_scope": "census52-to-cutoff",
+      "inclusion": "included",
+      "local_state": "absent",
+      "coverage_state": "not-applicable",
+      "native_state": "unavailable",
+      "vendor_state": "not-configured",
+      "profile": "2026-10-28.7",
+      "collection_state": "current",
+      "old_claims": 0,
+      "new_claims": 0,
+      "views": 3
+    }
+  ],
+  "includedCanonicalBeforeCutoff": {
+    "views": 211,
+    "local": {
+      "absent": 184,
+      "verified": 27
+    },
+    "coverage": {
+      "not-applicable": 184,
+      "recognized": 27
+    },
+    "native": {
+      "unavailable": 211
+    },
+    "vendor": {
+      "matching-origin": 24,
+      "no-declaration": 121,
+      "not-configured": 45,
+      "not-recorded": 21
+    },
+    "profile": {
+      "2026-10-27.1": 21,
+      "2026-10-27.3": 23,
+      "2026-10-27.4": 23,
+      "2026-10-27.5": 5,
+      "2026-10-27.6": 78,
+      "2026-10-27.7": 6,
+      "2026-10-28.1": 14,
+      "2026-10-28.2": 11,
+      "2026-10-28.3": 1,
+      "2026-10-28.4": 2,
+      "2026-10-28.6": 22,
+      "2026-10-28.7": 5
+    },
+    "oldClaims": {
+      "localVerifiedViews": 27,
+      "coverageRecordedViews": 27,
+      "userAgentBoundViews": 0,
+      "nativeVerifiedBotViews": 0,
+      "nativeSignedAgentViews": 0,
+      "vendorMatchingOriginViews": 24,
+      "selectionRecordedViews": 13,
+      "methodBoundViews": 0,
+      "resourceBoundViews": 0,
+      "authorityOnlyViews": 27,
+      "nativeAvailableViews": 0,
+      "vendorDocumentedViews": 24
+    },
+    "newClaims": {
+      "localVerifiedViews": 27,
+      "coverageRecordedViews": 27,
+      "userAgentBoundViews": 0,
+      "nativeVerifiedBotViews": 0,
+      "nativeSignedAgentViews": 0,
+      "vendorMatchingOriginViews": 24,
+      "selectionRecordedViews": 13,
+      "methodBoundViews": 0,
+      "resourceBoundViews": 0,
+      "authorityOnlyViews": 27,
+      "nativeAvailableViews": 0,
+      "vendorDocumentedViews": 24
+    }
+  },
+  "diagnostics": {
+    "preflightStatements": 1,
+    "censusStatements": 1,
+    "preflightReads": 32363,
+    "censusReads": 110119,
+    "totalReads": 142482,
+    "rowsWritten": 0,
+    "postExecutionReview": 400000,
+    "withinReview": true,
+    "thresholdIsServerEnforced": false
+  },
+  "allDetailed": {
+    "views": 281,
+    "inclusion": {
+      "included": 212,
+      "owner-excluded": 45,
+      "referral-excluded": 24
+    },
+    "local": {
+      "absent": 247,
+      "unverified": 7,
+      "verified": 27
+    },
+    "native": {
+      "unavailable": 281
+    },
+    "oldClaims": {
+      "localVerifiedViews": 27,
+      "coverageRecordedViews": 27,
+      "userAgentBoundViews": 0,
+      "nativeVerifiedBotViews": 0,
+      "nativeSignedAgentViews": 0,
+      "vendorMatchingOriginViews": 24,
+      "selectionRecordedViews": 13,
+      "methodBoundViews": 0,
+      "resourceBoundViews": 0,
+      "authorityOnlyViews": 27,
+      "nativeAvailableViews": 0,
+      "vendorDocumentedViews": 29
+    },
+    "newClaims": {
+      "localVerifiedViews": 27,
+      "coverageRecordedViews": 27,
+      "userAgentBoundViews": 0,
+      "nativeVerifiedBotViews": 0,
+      "nativeSignedAgentViews": 0,
+      "vendorMatchingOriginViews": 24,
+      "selectionRecordedViews": 13,
+      "methodBoundViews": 0,
+      "resourceBoundViews": 0,
+      "authorityOnlyViews": 27,
+      "nativeAvailableViews": 0,
+      "vendorDocumentedViews": 29
+    },
+    "recordsWithChangedComparedClaimBits": 0
+  },
+  "verifiedIncludedCanonicalBeforeCutoff": {
+    "views": 27,
+    "profiles": {
+      "2026-10-27.6": 12,
+      "2026-10-28.1": 2,
+      "2026-10-28.2": 3,
+      "2026-10-28.6": 10
+    },
+    "collection": {
+      "other-recorded": 27
+    },
+    "currentProfileViews": 0
+  },
+  "currentProfileIncludedCanonicalBeforeCutoff": {
+    "views": 5,
+    "local": {
+      "absent": 5
+    }
+  },
+  "timeBands": {
+    "at-or-after-cutoff": 1,
+    "before-census31": 32272,
+    "census31-to52": 87,
+    "census52-to-cutoff": 3
+  },
+  "evidenceStates": {
+    "detailed-record": 281,
+    "no-detail-or-status": 30792,
+    "unverified-outcome-only": 109,
+    "verified-outcome-only": 1181
+  },
+  "claims": [
+    {
+      "name": "localVerifiedViews",
+      "bit": 1
+    },
+    {
+      "name": "coverageRecordedViews",
+      "bit": 2
+    },
+    {
+      "name": "userAgentBoundViews",
+      "bit": 4
+    },
+    {
+      "name": "nativeVerifiedBotViews",
+      "bit": 8
+    },
+    {
+      "name": "nativeSignedAgentViews",
+      "bit": 16
+    },
+    {
+      "name": "vendorMatchingOriginViews",
+      "bit": 32
+    },
+    {
+      "name": "selectionRecordedViews",
+      "bit": 64
+    },
+    {
+      "name": "methodBoundViews",
+      "bit": 128
+    },
+    {
+      "name": "resourceBoundViews",
+      "bit": 256
+    },
+    {
+      "name": "authorityOnlyViews",
+      "bit": 512
+    },
+    {
+      "name": "nativeAvailableViews",
+      "bit": 1024
+    },
+    {
+      "name": "vendorDocumentedViews",
+      "bit": 2048
+    }
+  ],
+  "plan": {
+    "maxRows": 40000,
+    "maxDetailedRows": 4096,
+    "maxReferralLabels": 16384,
+    "combinedPostExecutionReadThreshold": 400000,
+    "thresholdIsServerEnforced": false,
+    "preflightStatements": 1,
+    "censusStatements": 1
+  },
+  "sqlTemplateSha256": "69d3ab1c8c743eff92fd83ca7d83e391590620a0fb125085925ecc859760145a",
+  "preparedCensusSqlSha256": "aa04bf7087d3f875c626483e7e9de48d4217d43079ee126753443e14ce63f5a5",
+  "preparedCensusSqlBytes": 84904,
+  "preflightSqlSha256": "7e350da9fe9c2928058e52e8223d30ec330a95ced8c0291cf1c893ef97e40c5a",
+  "providerReportedAttempts": {
+    "preflight": 1,
+    "census": 1
+  },
+  "nativeAcceptance": "signature-applicability-native.json",
+  "metadataBeforeDataQueries": {
+    "fileUpdatedAt": "2026-10-28T05:24:23.737231+00:00",
+    "window": "Provider rolling 24 hours for this database; not UTC-day/account totals or task attribution.",
+    "rowsRead": 1773146,
+    "rowsWritten": 2232,
+    "readQueries": 175,
+    "writeQueries": 412,
+    "readReplication": "disabled"
+  },
+  "limits": [
+    "Inventory covers rows at or below a private preflight maximum ID, not rows inserted above that bound later.",
+    "Preflight and census are separate statements; equal counts do not prove unchanged exact membership or a historical snapshot.",
+    "Old/new comparison covers twelve declared summary predicates, not every analytics field or whole-record schema authentication.",
+    "A stored historical verifier result is not current cryptographic verification. Routine D1 does not retain full signature inputs for replay.",
+    "The 32082 rows without detailed signature records are inventoried, not repaired or reverified.",
+    "No human labels, device accuracy, operator identity, trigger, purpose or unique-action evidence is supplied.",
+    "Unavailable native booleans establish neither a false native verdict nor whether a provider verifier ran.",
+    "Current exclusion policy is applied to detailed rows only; raw inventory is not a new all-traffic public-included headline.",
+    "Direct diagnostic reads are acknowledged separately from ordinary collection, previous public cold fills and other database activity.",
+    "The prior nonce-type admission bug can produce coherent metadata; this census cannot count historical malformed-nonce admissions because nonce types and complete proofs are not retained.",
+    "Retained D1 observations do not census every delivered response or recover best-effort persistence losses."
+  ]
+}

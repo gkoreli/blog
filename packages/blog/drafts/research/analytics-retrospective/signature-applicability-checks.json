@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-10-28T05:43:11.874065+00:00",
+  "baseCommit": "20f4f44",
+  "runtimeSourceUnchanged": "ea0bc20961dd7bd9b570ebf4ea6686efc9bc4709",
+  "freshAnalyticsFixtureCompilation": "pass",
+  "newDiagnosticScriptSyntax": "pass",
+  "nativeStoredRecordControls": 28,
+  "nativeOldAndNewPredicatesMatchFullReports": true,
+  "nativeScaleRows": 40000,
+  "nativeScaleDetailedRows": 4096,
+  "nativeDeepReferrerLabelWork": 16128,
+  "nativeUnsafeIntegerConcreteAndParameterizedBoundAgreement": true,
+  "nativeEmptyMalformedPrivateAndContradictoryResultControls": "pass",
+  "savedProductionOutputRevalidatedUnderFinalStateAndClaimInvariants": true,
+  "directStatements": 2,
+  "acknowledgedRowsRead": 142482,
+  "rowsWritten": 0,
+  "postValidation": "pass",
+  "isolatedBuildPosts": 32,
+  "articleBodyWhitespaceWords": 1199,
+  "shapingPrompts": 31,
+  "articleSourceMatchesBuiltMarkdown": true,
+  "isolatedArticleSha256": "e2f7c830ffa19f46586d30771b4fc058cb588b7a0e5fc19a1d428785909ec44a",
+  "statsClientAndCssMatchPriorAcceptedRelease": true,
+  "runtimeSuites": "Unchanged runtime retains research 53 acceptance: analytics 236/site 106/types. Those suites were not rerun for this diagnostic/content-only slice.",
+  "noHumanTrialOrEligibleVisitForDataInvestigation": true,
+  "linkChecks": 301,
+  "privateArchive": {
+    "name": "2026-10-28-signature-applicability-pre-release",
+    "files": 27,
+    "manifestSha256": "edf4f28438ebd006aebfe442eb49c6f401f8fa0576dbbb1c9f81b16a76616e2a",
+    "modes": "0700/0600",
+    "reviewDate": "2026-10-31",
+    "reviewDateIsAutomaticErasure": false
+  },
+  "publication": "pending source delivery, deployment activation and one collection-ineligible Markdown equality check",
+  "artifactSha256": {
+    "signature-applicability-native.json": "61044d771b8c8a85e1373f7ff7f651577c046ad268c5436f329d147d6478aeef",
+    "signature-applicability-production.json": "bfd2872f399ef887e21ac30f3400a050535fa37c2898c697f1d9c3ee3aaaade2",
+    "signature-applicability-sources.json": "fcf2ae82c067d729e5c5b6ed9ca4fcffc00f55d6011adf0983baca7576b62c54"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "reviewedAt": "2026-10-28T05:37:43.824241+00:00",
+  "primaryDocumentation": [
+    {
+      "url": "https://www.sqlite.org/isolation.html",
+      "appliedReading": "Transactions define read visibility. The separate preflight and census do not share an explicitly held read transaction. A maximum-ID bound is not an immutable historical snapshot.",
+      "implementation": "packages/blog/scripts/check-signature-applicability.mjs"
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/platform/pricing/#definitions",
+      "pageUpdated": "2026-04-21",
+      "appliedReading": "rows_read measures scanned database work, not returned events or people; meta reports the measured query work.",
+      "implementation": "Wrangler --command execution, exact result.meta preservation and explicit post-execution threshold."
+    }
+  ],
+  "reusedSourceComparisons": {
+    "baselineCommit": "8b35baa",
+    "currentRuntimeSource": "ea0bc20961dd7bd9b570ebf4ea6686efc9bc4709",
+    "knownScope": "Twelve old raw-marginal predicates versus current assessments, independently matched to full native old/current reports on 28 controls.",
+    "primarySqliteTypeSource": "signature-summary-sources.json"
+  },
+  "newVendorFetches": 0,
+  "newRuntimeDependency": false,
+  "limits": [
+    "Neither SQLite documentation nor native fixtures establish D1 retention completeness or unchanged rows across separate calls.",
+    "No inference of account-wide quota headroom from per-database rolling usage."
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "checkedAt": "2026-10-28T05:33:24.578Z",
+  "cutoff": "2026-10-28 05:22:00",
+  "baselineCommit": "8b35baa",
+  "plan": {
+    "maxRows": 40000,
+    "maxDetailedRows": 4096,
+    "maxReferralLabels": 16384,
+    "combinedPostExecutionReadThreshold": 400000,
+    "thresholdIsServerEnforced": false,
+    "preflightStatements": 1,
+    "censusStatements": 1
+  },
+  "nativeControls": 28,
+  "emptyAndMalformedAggregateControls": true,
+  "oldAndNewClaimBitsMatchFullNativeReports": true,
+  "ownerReferralAndDateEdges": true,
+  "unsafeIntegerUpperBoundPreserved": true,
+  "privateSqlInjectionInputsRejected": true,
+  "scale": {
+    "rows": 40000,
+    "detailedRows": 4096,
+    "referralLabels": 12288,
+    "preflightReads": 40000,
+    "censusReads": 237646,
+    "combinedReads": 277646,
+    "rowsWritten": 0
+  },
+  "deepScale": {
+    "referralLabels": 16128,
+    "preflightReads": 40000,
+    "censusReads": 245326,
+    "combinedReads": 285326
+  },
+  "claims": [
+    {
+      "name": "localVerifiedViews",
+      "bit": 1
+    },
+    {
+      "name": "coverageRecordedViews",
+      "bit": 2
+    },
+    {
+      "name": "userAgentBoundViews",
+      "bit": 4
+    },
+    {
+      "name": "nativeVerifiedBotViews",
+      "bit": 8
+    },
+    {
+      "name": "nativeSignedAgentViews",
+      "bit": 16
+    },
+    {
+      "name": "vendorMatchingOriginViews",
+      "bit": 32
+    },
+    {
+      "name": "selectionRecordedViews",
+      "bit": 64
+    },
+    {
+      "name": "methodBoundViews",
+      "bit": 128
+    },
+    {
+      "name": "resourceBoundViews",
+      "bit": 256
+    },
+    {
+      "name": "authorityOnlyViews",
+      "bit": 512
+    },
+    {
+      "name": "nativeAvailableViews",
+      "bit": 1024
+    },
+    {
+      "name": "vendorDocumentedViews",
+      "bit": 2048
+    }
+  ],
+  "sqlTemplateSha256": "69d3ab1c8c743eff92fd83ca7d83e391590620a0fb125085925ecc859760145a",
+  "preflightSha256": "7e350da9fe9c2928058e52e8223d30ec330a95ced8c0291cf1c893ef97e40c5a",
+  "productionCalls": 0
+}
