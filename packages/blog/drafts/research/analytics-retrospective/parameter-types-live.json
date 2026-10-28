@@ -1,0 +1,74 @@
+{
+  "checkedAt": "2026-10-28T04:33:57.743Z",
+  "sourceCommit": "934533b85be4defa0ed6b55c1baa34d8722fcbd4",
+  "workerVersion": "0cb5df7a-b5c2-4281-835a-3b959e258503",
+  "publication": {
+    "startedAt": "2026-10-28T04:33:50.168643+00:00",
+    "finishedAt": "2026-10-28T04:33:50.726071+00:00",
+    "status": 200
+  },
+  "eligibleControl": {
+    "startedAt": "2026-10-28T04:33:50.990683+00:00",
+    "finishedAt": "2026-10-28T04:33:51.321279+00:00",
+    "status": 200
+  },
+  "publicationSha256": "1570922a8ff1360f05375842d487922f405b92b341bf3f8839a0cf41f9f17474",
+  "httpGets": 2,
+  "collectionEligibleGets": 1,
+  "actualControlEvents": 1,
+  "matchedAsciiSigningHeaders": 3,
+  "attemptLogs": 1,
+  "storedLogs": 1,
+  "productionDiagnosticStatements": 1,
+  "rowsRead": 1,
+  "rowsWritten": 0,
+  "databaseChanged": false,
+  "collectionVersion": "2026-10-28.9",
+  "verifierProfile": "2026-10-28.7",
+  "reason": "invalid-nonce-type",
+  "outcome": "invalid",
+  "humanTrial": false,
+  "validCryptographicProof": false,
+  "vendorAuthenticated": false,
+  "exactReceiptProjectionMatches": true,
+  "closedReceiptScalarFields": 30,
+  "signatureAgentAbsent": true,
+  "coverageAbsent": true,
+  "optionalCaptureAbsent": true,
+  "owner": false,
+  "referralExcludedByCurrentAssessor": true,
+  "native": {
+    "verifiedBot": null,
+    "signedAgent": null,
+    "category": {
+      "version": "2026-10-27.1",
+      "status": "empty",
+      "value": null
+    }
+  },
+  "queryTemplateSha256": "ec574d135ba3f6ea3917c97b9c91d8bbbd0b28cb6baa58aa7b69b06178dbd775",
+  "reviewedRowsReadThreshold": 100,
+  "thresholdIsServerEnforcedCap": false,
+  "tail": {
+    "returncode": -15,
+    "stopped": true,
+    "processGroupSurvivors": 0
+  },
+  "limits": [
+    "One dummy-signature integer-nonce control, not vendor authentication or a valid cryptographic request.",
+    "Current-policy exclusion assessment, not a new public-report population fetch.",
+    "One diagnostic read is additional to normal collection and provider work.",
+    "ASCII signing-header equality does not establish general header fidelity."
+  ],
+  "acceptedVersionBindingNames": [
+    "ADMIN_SECRET",
+    "ANALYTICS_HASH_KEY",
+    "ASSETS",
+    "DB",
+    "RESEND_API_KEY",
+    "SUBSCRIBE_RATE_LIMITER",
+    "TURNSTILE_SECRET_KEY"
+  ],
+  "optionalBindingsAbsent": true,
+  "optionalBindingNamesPresent": []
+}

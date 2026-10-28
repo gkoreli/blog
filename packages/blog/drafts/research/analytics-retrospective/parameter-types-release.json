@@ -1,0 +1,54 @@
+{
+  "acceptedAt": "2026-10-28T04:36:14.007404+00:00",
+  "sourceCommit": "934533b85be4defa0ed6b55c1baa34d8722fcbd4",
+  "workerVersion": "0cb5df7a-b5c2-4281-835a-3b959e258503",
+  "collectionVersion": "2026-10-28.9",
+  "verifierProfile": "2026-10-28.7",
+  "nativeBuild": {
+    "initialId": "5cffa448-0859-4ee9-8c8a-d6f8fdd59981",
+    "initialState": "failed fetching repository, before install/build",
+    "retryId": "dbacd0ec-4d56-48e9-b9c3-1e3238be05c4",
+    "retryCount": 1,
+    "retrySameSourceVerified": true,
+    "retryState": "Ready; deploy command completed",
+    "versionJoin": "Fresh acknowledged Copy build log Current Version ID matches the native active deployment and filtered tail."
+  },
+  "nativeTrafficPercentage": 100,
+  "sourceIntegration": {
+    "nonFastForwardPreservedRemoteCommit": "827500c037c9628e75d79fce9d08a3e80bfb3d43",
+    "remoteScope": "Two unrelated Bun social-note files; no overlap with the 23-file analytics change.",
+    "forcePush": false
+  },
+  "articleMatchesIsolatedBuild": true,
+  "servedArticleSha256": "1570922a8ff1360f05375842d487922f405b92b341bf3f8839a0cf41f9f17474",
+  "articleWords": 1200,
+  "shapingPrompts": 31,
+  "httpGets": 2,
+  "collectionEligibleGets": 1,
+  "referralExcludedControls": 1,
+  "newDiagnosticStatements": 1,
+  "rowsRead": 1,
+  "rowsWritten": 0,
+  "receiptFieldsCompared": 30,
+  "receiptProjectionMatches": true,
+  "liveAcceptanceArtifactSha256": "64df254368d8c1cea4296899b241f9da999b956837901cb115c9a777d475122c",
+  "tailStopped": true,
+  "ownedTailGroupSurvivors": 0,
+  "optionalBindingsAbsent": true,
+  "humanTrials": "deferred",
+  "privateAcceptanceArchive": {
+    "name": "2026-10-28-signature-parameter-acceptance",
+    "files": 25,
+    "manifestSha256": "f6b92dfe88df7cdcf06db1e863585e640208d7f604d23d52f235a618e1900803",
+    "modes": "0700/0600",
+    "reviewDate": "2026-10-31",
+    "reviewDateIsAutomaticErasure": false
+  },
+  "limits": [
+    "The type-failure request uses dummy signature bytes; it is not a vendor or valid-proof label.",
+    "The failed initial build cause is not established beyond the provider fetching-repository error; a successful retry does not identify a credential or permission repair.",
+    "Three historical vendor proofs replay under the new verifier; organic signed collection .9 persistence remains separate.",
+    "Native cryptographic agreement and human/device accuracy are unmeasured.",
+    "Normal collection and provider work are additional to the one direct diagnostic read."
+  ]
+}

@@ -8,8 +8,8 @@ import { normalizeRetainedReceiptCopies } from './compare-receipt-captures.mjs';
 import { isDeepStrictEqual } from 'node:util';
 
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
-const profiles = new Set(['2026-10-27.6','2026-10-27.7','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','not-applicable']);
-const collections = new Set(['2026-10-27.9','2026-10-27.10','2026-10-27.11','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','2026-10-28.7','2026-10-28.8']);
+const profiles = new Set(['2026-10-27.6','2026-10-27.7','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','2026-10-28.7','not-applicable']);
+const collections = new Set(['2026-10-27.9','2026-10-27.10','2026-10-27.11','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','2026-10-28.7','2026-10-28.8','2026-10-28.9']);
 const paths = ['version','classifierProfile','readerKind',
   ...['profile','method','reviewedOn','configuredDeclarationCount','unmappedDeclarationCount','status'].map(key=>'directoryPublication.'+key),
   ...['status','candidateCount','candidateNames','categoryAgreement'].map(key=>'declarations.'+key),
@@ -43,7 +43,7 @@ function extraFields(value,prefix='') {
   }
   return count;
 }
-function projection(row,receiptVersion) {
+export function projectStoredReceipt(row,receiptVersion) {
   try {
     const c=JSON.parse(row.classificationEvidence),e=JSON.parse(row.signatureEvidence);
     if(!isReaderKind(row.readerKind)||!['verified','unverified',null].includes(row.signatureStatus)
@@ -139,7 +139,7 @@ export function reconcileReceiptStorage(candidates,retainedInput) {
       ||!Number.isFinite(Date.parse(record.timestamp))||record.$workers?.truncated===true||record.$cloudflare?.truncated===true
       ||!collections.has(row.collectionVersion)||source.collectionVersion!==row.collectionVersion||!['2026-10-27.3','2026-10-28.1','2026-10-28.2'].includes(source.receipt?.version)) {result.invalidPairMetadata++;continue;}
     result.matchedReferencePairs++;
-    const expected=projection(row,source.receipt.version);
+    const expected=projectStoredReceipt(row,source.receipt.version);
     if(expected===null){result.unprojectableCandidateRows++;continue;}
     const differences=paths.filter(path=>!isDeepStrictEqual(field(expected,path),field(source.receipt,path)));
     const extras=extraFields(source.receipt);result.unexpectedFields+=extras;
