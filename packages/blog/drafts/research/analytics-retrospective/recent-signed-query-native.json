@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-28T03:31:24.024Z",
+  "method": "Native local D1 stored-record query controls, not cryptographic or operator labels.",
+  "baselineRows": 3,
+  "unsafeIntegerNeighborsPreserved": true,
+  "missingAndContradictoryEvidenceRetained": true,
+  "ownerRowsRetained": true,
+  "timeAndOriginBoundaries": true,
+  "cap": 4,
+  "capIsTruncationSentinel": true,
+  "timeIndexUsed": true,
+  "baselineRowsRead": 6,
+  "cappedRowsRead": 6,
+  "rowsWritten": 0,
+  "sqlSha256": "5bd204c55589e503dfbe1207743cf706d76bc01e3f29bc58b1f1a93a94c66cf1",
+  "productionStatements": 0,
+  "limits": [
+    "Returned-row cap does not enforce a read-cost cap.",
+    "Stored verified status is not independent packet verification.",
+    "Scope deliberately includes public-excluded records."
+  ]
+}

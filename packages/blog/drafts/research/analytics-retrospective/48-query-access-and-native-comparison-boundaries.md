@@ -63,3 +63,5 @@ Runtime and the thirty-one shaping prompts remain unchanged. The article's exist
 Private captures are archived under `2026-10-28-query-access` with a hash manifest and four links to the earlier failed-query/control evidence. The October 31 review date is not an automatic erasure claim.
 
 [Publication acceptance](query-access-release.json) records source `542bd50`, Ready in 46 seconds and 100% activation on Worker `ad4d2bb2-3ffd-403c-908d-93351df3ad82`. One direct `.md` alias GET confirms the article bytes and new evidence link against the isolated build; that route is intentionally collection-ineligible. It adds no D1 diagnostic query or eligible observation. Runtime and native-comparison readiness remain unchanged.
+
+The bounded vendor follow-up is now accepted in [research 49](49-current-verifier-vendor-evidence.md): three exact chains, current-verifier replay and an independent RFC comparison. This supersedes the proposed correlation step for these three records only; native agreement and current collection `.8` signed persistence remain separate.

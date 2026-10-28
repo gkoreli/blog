@@ -1,0 +1,378 @@
+{
+  "checkedAt": "2026-10-28T03:48:35.220Z",
+  "replayVerifierProfile": "2026-10-28.6",
+  "candidateRows": 3,
+  "exactCompleteNativeChains": 3,
+  "matchingSeparateReceiptCopies": 3,
+  "comparison": {
+    "candidateRows": 3,
+    "retainedInputRecords": 9,
+    "retainedStoredRecords": 3,
+    "rejectedRetainedRecords": {
+      "shape": 0,
+      "timestamp": 0
+    },
+    "invalidCandidateReferences": 0,
+    "unavailableReceiptReferences": 0,
+    "invalidReceiptReferences": 0,
+    "unmatchedCandidateRows": 0,
+    "unmatchedReceiptRecords": 0,
+    "ambiguousReferenceGroups": 0,
+    "invalidPairMetadata": 0,
+    "unprojectableCandidateRows": 0,
+    "matchedReferencePairs": 3,
+    "identicalProjectionPairs": 3,
+    "differentProjectionPairs": 0,
+    "storedLocalVerifiedPairs": 3,
+    "testInjectedPairs": 0,
+    "conflictingStoredStatusPairs": 0,
+    "changedFields": {},
+    "unexpectedFields": 0
+  },
+  "nativeExportIntegrity": {
+    "missingIds": 0,
+    "duplicateIds": 0,
+    "truncatedRecords": 0
+  },
+  "rows": [
+    {
+      "vendor": "ahrefs",
+      "collectionVersion": "2026-10-28.7",
+      "storedVerifierProfile": "2026-10-28.6",
+      "readerKind": "seo-crawler",
+      "representation": "html",
+      "documentedVendor": "not-configured",
+      "directoryPublisher": "matching-publisher",
+      "optionalCaptureAbsent": true,
+      "native": {
+        "verifiedBot": null,
+        "signedAgent": null,
+        "category": {
+          "version": "2026-10-27.1",
+          "status": "known",
+          "value": "Search Engine Optimization"
+        }
+      },
+      "ip": {
+        "configuredDeclarations": 1,
+        "unmappedDeclarations": 0,
+        "checks": 1,
+        "summary": {
+          "listed": true,
+          "notListed": false,
+          "unavailable": false,
+          "notAssessed": false
+        }
+      },
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 60,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      },
+      "audit": {
+        "version": "2026-10-28.1",
+        "verifierProfile": "2026-10-28.6",
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "headerBudgetUnits": 32768,
+          "clockSource": "caller-supplied"
+        },
+        "scope": "paired-web-bot-auth-candidates",
+        "assessment": "complete",
+        "termination": "exhausted",
+        "inputMembers": 1,
+        "signatureMembers": 1,
+        "unpairedInputs": 0,
+        "unpairedSignatures": 0,
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "verifiedCandidates": 1,
+        "notVerifiedByProfileCandidates": 0,
+        "unavailableCandidates": 0,
+        "unsupportedCandidates": 0,
+        "indeterminateCandidates": 0,
+        "unassessedCandidates": 0,
+        "unresolvedCandidates": 0,
+        "verifiedPublisherOriginLowerBound": 1,
+        "directoryFetches": 1
+      },
+      "outcomes": {
+        "original": {
+          "status": "verified",
+          "reason": null
+        },
+        "changed-authority": {
+          "status": "unverified",
+          "reason": "signature-invalid"
+        },
+        "changed-unsigned-role-and-path": {
+          "status": "verified",
+          "reason": null
+        }
+      }
+    },
+    {
+      "vendor": "exa",
+      "collectionVersion": "2026-10-28.7",
+      "storedVerifierProfile": "2026-10-28.6",
+      "readerKind": "ai-search",
+      "representation": "html",
+      "documentedVendor": "matching-origin",
+      "directoryPublisher": "matching-publisher",
+      "optionalCaptureAbsent": true,
+      "native": {
+        "verifiedBot": null,
+        "signedAgent": null,
+        "category": {
+          "version": "2026-10-27.1",
+          "status": "known",
+          "value": "Search Engine Crawler"
+        }
+      },
+      "ip": {
+        "configuredDeclarations": 0,
+        "unmappedDeclarations": 1,
+        "checks": 0,
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": false,
+          "notAssessed": false
+        }
+      },
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 300,
+        "ageSeconds": 1,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      },
+      "audit": {
+        "version": "2026-10-28.1",
+        "verifierProfile": "2026-10-28.6",
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "headerBudgetUnits": 32768,
+          "clockSource": "caller-supplied"
+        },
+        "scope": "paired-web-bot-auth-candidates",
+        "assessment": "complete",
+        "termination": "exhausted",
+        "inputMembers": 1,
+        "signatureMembers": 1,
+        "unpairedInputs": 0,
+        "unpairedSignatures": 0,
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "verifiedCandidates": 1,
+        "notVerifiedByProfileCandidates": 0,
+        "unavailableCandidates": 0,
+        "unsupportedCandidates": 0,
+        "indeterminateCandidates": 0,
+        "unassessedCandidates": 0,
+        "unresolvedCandidates": 0,
+        "verifiedPublisherOriginLowerBound": 1,
+        "directoryFetches": 1
+      },
+      "outcomes": {
+        "original": {
+          "status": "verified",
+          "reason": null
+        },
+        "changed-authority": {
+          "status": "unverified",
+          "reason": "signature-invalid"
+        },
+        "changed-unsigned-role-and-path": {
+          "status": "verified",
+          "reason": null
+        }
+      }
+    },
+    {
+      "vendor": "exa",
+      "collectionVersion": "2026-10-28.7",
+      "storedVerifierProfile": "2026-10-28.6",
+      "readerKind": "ai-search",
+      "representation": "markdown",
+      "documentedVendor": "matching-origin",
+      "directoryPublisher": "matching-publisher",
+      "optionalCaptureAbsent": true,
+      "native": {
+        "verifiedBot": null,
+        "signedAgent": null,
+        "category": {
+          "version": "2026-10-27.1",
+          "status": "known",
+          "value": "Search Engine Crawler"
+        }
+      },
+      "ip": {
+        "configuredDeclarations": 0,
+        "unmappedDeclarations": 1,
+        "checks": 0,
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": false,
+          "notAssessed": false
+        }
+      },
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 300,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      },
+      "audit": {
+        "version": "2026-10-28.1",
+        "verifierProfile": "2026-10-28.6",
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "headerBudgetUnits": 32768,
+          "clockSource": "caller-supplied"
+        },
+        "scope": "paired-web-bot-auth-candidates",
+        "assessment": "complete",
+        "termination": "exhausted",
+        "inputMembers": 1,
+        "signatureMembers": 1,
+        "unpairedInputs": 0,
+        "unpairedSignatures": 0,
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "verifiedCandidates": 1,
+        "notVerifiedByProfileCandidates": 0,
+        "unavailableCandidates": 0,
+        "unsupportedCandidates": 0,
+        "indeterminateCandidates": 0,
+        "unassessedCandidates": 0,
+        "unresolvedCandidates": 0,
+        "verifiedPublisherOriginLowerBound": 1,
+        "directoryFetches": 1
+      },
+      "outcomes": {
+        "original": {
+          "status": "verified",
+          "reason": null
+        },
+        "changed-authority": {
+          "status": "unverified",
+          "reason": "signature-invalid"
+        },
+        "changed-unsigned-role-and-path": {
+          "status": "verified",
+          "reason": null
+        }
+      }
+    }
+  ],
+  "cardinalities": {
+    "urls": 2,
+    "signatures": 3,
+    "signatureInputs": 3,
+    "requests": 3,
+    "operations": 3
+  },
+  "directories": [
+    {
+      "capturedAt": "2026-10-28T03:41:19.929072+00:00",
+      "source": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+      "responseStatus": 200,
+      "responseHeaders": {
+        "content-type": "application/http-message-signatures-directory+json",
+        "cache-control": "max-age=300"
+      },
+      "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+      "bytes": 274,
+      "publicKeyCount": 2,
+      "curlExitCode": 0,
+      "incomingReaderTelemetryForwarded": false
+    },
+    {
+      "capturedAt": "2026-10-28T03:41:19.852854+00:00",
+      "source": "https://ahrefs.com/.well-known/http-message-signatures-directory",
+      "responseStatus": 200,
+      "responseHeaders": {
+        "content-type": "application/http-message-signatures-directory+json",
+        "cache-control": "max-age=86400"
+      },
+      "sha256": "a647d3d54713f9299e73dec67cdd28175cfb488ebc9692d245b82821244eb0cc",
+      "bytes": 298,
+      "publicKeyCount": 2,
+      "curlExitCode": 0,
+      "incomingReaderTelemetryForwarded": false
+    }
+  ],
+  "externalReplayRequests": 0,
+  "newControlRequests": 0,
+  "limits": [
+    "Selected stored events, not unique people, sessions, triggers or actions.",
+    "Directory keys were captured later; original discovery snapshots and native cryptographic agreement are unavailable.",
+    "Stored collection .7 differs from current .8; only verifier .6 is shared.",
+    "Offline request mutations are signature-coverage controls, not production visits or authenticated roles."
+  ]
+}

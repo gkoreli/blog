@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-28T03:53:42.786291+00:00",
+  "sourceBeforeInvestigation": "5e8c197",
+  "runtimeChanged": false,
+  "profilesChanged": false,
+  "humanTrials": "deferred",
+  "newProductionPageRequests": 0,
+  "directRemoteStatements": 1,
+  "acknowledgedRowsRead": 5,
+  "acknowledgedRowsWritten": 0,
+  "exactCompleteChains": 3,
+  "laterKeyReplaysVerified": 3,
+  "independentReferenceCalls": 9,
+  "independentReferenceSourceFilesRechecked": 18,
+  "offlineCoverageVariantsPerImplementation": 9,
+  "negativeEvidenceGatesRejected": 2,
+  "frontmatterValidation": "pass, 21 Markdown posts",
+  "isolatedBuildPosts": 32,
+  "isolatedArticleSha256": "8c61865f516aad734172fdcaf19021286759598309c8e6564e0dfab5fb401c4d",
+  "articleWords": 1198,
+  "shapingPrompts": 31,
+  "previousRuntimeAcceptance": {
+    "analyticsTests": 230,
+    "siteTests": 106,
+    "notRerunBecauseRuntimeUnchanged": true
+  },
+  "privateArchive": "2026-10-28-current-verifier-vendors",
+  "privateFiles": 23,
+  "privateManifestSha256": "bfab910b5cfd24f664fc70a21261b53e8a1850d51307e518e9bba83ccc81a5e1",
+  "privateModes": "0700 directory / 0600 files",
+  "reviewDate": "2026-10-31",
+  "reviewDateIsAutomaticErasure": false,
+  "artifactSha256": {
+    "recent-signed-query.json": "88a1577002d0e82799b4907ea16a4b155ec2d0c8847e93d2884641a71fb9ccab",
+    "recent-signed-query-native.json": "858afbc180e2492a1e44b72093e881531d4d75bcdb0103db6939f2a7ac992986",
+    "recent-signed-analysis.json": "1f3ddcb05f87e9c130da6cee0f47106add1e96aca9ca3d69cb7292dc6e67fd8e",
+    "recent-signed-reference.json": "c9d89ba86734e00b5a10f2d620f8a7893ead5e2d758586bbe8652e58d4421713",
+    "recent-signed-analysis-gates.json": "c8067c7a5bf3b483fd935da9391f82fb9206d9f80d2d6361d4313a9fcb0f6c9a",
+    "analyze-recent-signed-outcomes.mjs": "16037c80337d02e142becc7717827bab305dc5fbe9f9debc92fff0dbab337351",
+    "probe-pyauth-retained.py": "ec46fa81f35553ddb436f785d813519c923d4116f03e0343c5bb0657e27416a6",
+    "recent-signed-outcomes.sql": "73f0a11000b6e20a0a174c3234846c711e5ccac72b28edef7088a6355afa4256"
+  },
+  "localAndRepositoryLinksChecked": 278,
+  "estimatedMinutesAt200To225WordsPerMinute": [
+    5.32,
+    5.99
+  ],
+  "privateIdentifierAndHeaderValueScan": "pass"
+}

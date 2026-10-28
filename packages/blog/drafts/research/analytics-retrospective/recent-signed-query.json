@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-28T03:50:38.013805+00:00",
+  "sourceBeforeInvestigation": "5e8c197",
+  "method": "One fixed-window native-tested Wrangler command-mode SELECT, no retry; exact returned text row references are private.",
+  "startInclusive": "2026-10-28 02:51:51",
+  "endExclusive": "2026-10-28 02:59:52",
+  "sqlSha256": "5bd204c55589e503dfbe1207743cf706d76bc01e3f29bc58b1f1a93a94c66cf1",
+  "rowsReturned": 3,
+  "rowCap": 4,
+  "capIsTruncationSentinel": true,
+  "postExecutionReadThreshold": 100,
+  "thresholdIsEnforcedServerCap": false,
+  "remoteStatements": 1,
+  "rowsRead": 5,
+  "rowsWritten": 0,
+  "databaseChanged": false,
+  "providerTotalAttempts": 1,
+  "privateQuerySha256": "1b61fcac99099611b7ddd9e10ee9bf7fee370531130792d363de39a8357e7d0f",
+  "newProductionPageRequests": 0,
+  "limits": [
+    "Includes public-excluded observations.",
+    "Stored verified status alone does not establish packet validity.",
+    "This iteration does not rerun a whole-table census or count people."
+  ]
+}

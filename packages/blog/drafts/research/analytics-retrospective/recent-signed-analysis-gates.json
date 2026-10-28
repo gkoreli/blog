@@ -1,0 +1,15 @@
+{
+  "cases": [
+    {
+      "case": "wrong-row",
+      "rejected": true,
+      "noAcceptedOutput": true
+    },
+    {
+      "case": "unreviewed-directory",
+      "rejected": true,
+      "noAcceptedOutput": true
+    }
+  ],
+  "externalRequests": 0
+}
