@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-28T02:08:14.545026+00:00",
+  "sourceCommit": "23792d3bb88cb81eaff91c13912bcaf6ebc0d49a",
+  "branch": "main",
+  "workerVersion": "8ca80e34-7a24-4dc4-b3a3-972daa1b6c8d",
+  "collectionVersion": "2026-10-28.5",
+  "verifierProfile": "2026-10-28.5",
+  "keyPolicy": "2026-10-28.2",
+  "nativeBuild": {
+    "status": "Ready",
+    "duration": "56s",
+    "sourceAssociation": "Exact native source row links the full GitHub commit; fresh clipboard marker replaced by copied UUID"
+  },
+  "activation": {
+    "createdOn": "2026-10-28T02:06:54.689654Z",
+    "percentage": 100,
+    "method": "Wrangler deployments list, latest created_on and matching native-copied version"
+  },
+  "bindingNames": [
+    "ADMIN_SECRET",
+    "ANALYTICS_HASH_KEY",
+    "ASSETS",
+    "DB",
+    "RESEND_API_KEY",
+    "SUBSCRIBE_RATE_LIMITER",
+    "TURNSTILE_SECRET_KEY"
+  ],
+  "optionalBindingsAbsent": true,
+  "productionBehaviorTested": false,
+  "newProductionVisits": 0,
+  "productionSelects": 0,
+  "retainedExaReplays": 2,
+  "storedReplayProfile": "2026-10-28.2",
+  "replayIsNewPersistence": false,
+  "articleChanged": false,
+  "builtArticleSha256": "c2bb633159ceccc3b8841ab6b20787329d82a0833e5cee6c874a3c9283eaac01",
+  "articleFreshlyFetched": false,
+  "humanTrials": "deferred",
+  "limits": [
+    "Activation is separate from testing conflicting windows or a changed caller clock on production.",
+    "No affected production cohort or new .5 signed persistence is established.",
+    "Earlier accepted .2 signed persistence stays accepted; later-key replay does not reconstruct receipt-time keys.",
+    "Duplicate-window refusal is a local policy, not a universal RFC-invalid verdict."
+  ]
+}
