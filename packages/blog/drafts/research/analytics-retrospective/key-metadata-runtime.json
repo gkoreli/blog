@@ -1,0 +1,21 @@
+{
+  "node": "v24.14.1",
+  "compatibilityDate": "2026-03-06",
+  "runtime": [
+    {
+      "name": "wrangler",
+      "version": "4.71.0",
+      "manifestSha256": "5725ab3564b3bf2eab96737db6723f9fc911adcbaa96f7242148c53807acec3f"
+    },
+    {
+      "name": "miniflare",
+      "version": "4.20260301.1",
+      "manifestSha256": "1e8e4d03d902a2367f93ca442b5509f7a252db9fceffe512665c81d566a99536"
+    },
+    {
+      "name": "workerd",
+      "version": "1.20260301.1",
+      "manifestSha256": "ca11e241fa235d04d683cb1f761fea8c66e80dbc1d4a3f14e114c6cd42f6fa21"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "checkedAt": "2026-10-28T01:54:41.341282+00:00",
+  "baselineCommit": "c23298c",
+  "collectionVersion": "2026-10-28.4",
+  "verifierProfile": "2026-10-28.4",
+  "publicKeyPolicy": "2026-10-28.1",
+  "analyticsTests": 217,
+  "siteTests": 106,
+  "workspaceTypes": "passed",
+  "validation": "passed",
+  "isolatedBuild": {
+    "posts": 32,
+    "rootDistUsed": false,
+    "sourceFilesMatch": true
+  },
+  "metadataCasesPerRuntime": 16,
+  "nativeCollectorControls": 6,
+  "retainedExaExactReplays": 2,
+  "productionRequests": 0,
+  "productionSelects": 0,
+  "humanTrials": "deferred",
+  "articleChanged": false,
+  "correctedSetupFailures": [
+    {
+      "stage": "first compile",
+      "result": "missing DirectoryEntry type annotation corrected; no accepted tests from this run"
+    },
+    {
+      "stage": "first native storage check",
+      "result": "nonexistent exclusion column; replaced by stored referrer plus active policy evaluator before accepted run"
+    }
+  ],
+  "acceptedLogs": {
+    "tests-accepted.log": {
+      "sha256": "3d61de6ea10053783547570cbf8eda18609940c29c90f1adc84984520a55dd01"
+    },
+    "site-tests.log": {
+      "sha256": "25cd4a5b1eefb72560c4b8c66ec00d70417c7a71b42bb108836477a1de0f722e"
+    },
+    "typecheck-accepted.log": {
+      "sha256": "00dcdd0993d26f09e1ef7f56a2849a71540a86bc336c7fbf8eff1cb2cb6a7594"
+    },
+    "validate.log": {
+      "sha256": "ab22c74b5cc7f8dc3ac1e5c27228f48aa54768c533f4221b59f3268eaf15c11d"
+    },
+    "build-final.log": {
+      "sha256": "5c3ec25b9d5299634529a328b2fe579eb054e7ae08b05ab8a0fbb428a0e10ced"
+    }
+  },
+  "sourceSha256": {
+    "webbotauth.ts": "816950149c1ae6339eaf38d1d5eee9b81a7b101992a4f801878ad56fb1cc725e",
+    "known-test-keys.ts": "4fb70e8aa49a17089637626dd37f044d9345bc21f036d67931d0bbee85950eeb",
+    "signature-evidence.ts": "67c8978159964b47379e5441a10fc6f9ffe932a73c90716e9786efa45bde66ec",
+    "versions.ts": "6ae271c0fc576dafd03e6b98aeb39fcb942f75c971e043927a6fd58be69cdcb8",
+    "verification-clock.ts": "cbe3d3c4903ef82e5185685dde12b2fd1dba254f9b9c239df4acd72ef16cac90"
+  },
+  "relativeLinksChecked": 302
+}

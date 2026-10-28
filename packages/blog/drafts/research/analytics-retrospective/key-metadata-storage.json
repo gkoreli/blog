@@ -1,0 +1,74 @@
+{
+  "checkedAt": "2026-10-28T01:55:28.180Z",
+  "method": "Actual collector, local workerd/WebCrypto and D1; independent proofs, intercepted no-store directory per control, awaited actual waitUntil work and exact returned text row reference. All controls referral-excluded; optional diagnostics off.",
+  "trials": [
+    {
+      "name": "ed25519-algorithm",
+      "collectionVersion": "2026-10-28.4",
+      "verifierProfile": "2026-10-28.4",
+      "status": "verified",
+      "outcome": "verified",
+      "reason": null,
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "incompatible-algorithm",
+      "collectionVersion": "2026-10-28.4",
+      "verifierProfile": "2026-10-28.4",
+      "status": "unverified",
+      "outcome": "policy-rejected",
+      "reason": "key-metadata-rejected",
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "duplicate-operations",
+      "collectionVersion": "2026-10-28.4",
+      "verifierProfile": "2026-10-28.4",
+      "status": "unverified",
+      "outcome": "policy-rejected",
+      "reason": "key-metadata-rejected",
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "conflicting-key-rejected-first",
+      "collectionVersion": "2026-10-28.4",
+      "verifierProfile": "2026-10-28.4",
+      "status": "unverified",
+      "outcome": "policy-rejected",
+      "reason": "key-metadata-conflict",
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "conflicting-key-accepted-first",
+      "collectionVersion": "2026-10-28.4",
+      "verifierProfile": "2026-10-28.4",
+      "status": "unverified",
+      "outcome": "policy-rejected",
+      "reason": "key-metadata-conflict",
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "unknown-optional-member",
+      "collectionVersion": "2026-10-28.4",
+      "verifierProfile": "2026-10-28.4",
+      "status": "verified",
+      "outcome": "verified",
+      "reason": null,
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    }
+  ],
+  "externalRequests": 0,
+  "productionRequests": 0
+}

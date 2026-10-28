@@ -15,7 +15,7 @@ export const FAILURE_OUTCOMES = {
   'bare-uri-signature-agent': 'unsupported', 'unsupported-alg': 'unsupported',
   'non-ascii-signature-base': 'unsupported',
   'directory-unavailable': 'unavailable', 'key-not-found': 'unavailable', 'key-not-yet-valid': 'unavailable', 'key-expired': 'unavailable', 'key-invalid': 'unavailable', 'verification-timeout': 'unavailable',
-  'missing-validity': 'policy-rejected', 'not-yet-valid': 'policy-rejected', 'expired': 'policy-rejected', 'validity-policy-exceeded': 'policy-rejected', 'missing-target-component': 'policy-rejected', 'discovery-policy-rejected': 'policy-rejected', 'known-test-key': 'policy-rejected',
+  'missing-validity': 'policy-rejected', 'not-yet-valid': 'policy-rejected', 'expired': 'policy-rejected', 'validity-policy-exceeded': 'policy-rejected', 'missing-target-component': 'policy-rejected', 'discovery-policy-rejected': 'policy-rejected', 'known-test-key': 'policy-rejected', 'key-metadata-rejected': 'policy-rejected', 'key-metadata-conflict': 'policy-rejected',
   'not-web-bot-auth': 'not-applicable', 'no-web-bot-auth-signature': 'not-applicable',
   'unsupported-or-missing-component': 'indeterminate', 'invalid-max-age-policy': 'indeterminate', 'invalid-verification-time': 'indeterminate', 'verification-error': 'indeterminate',
 } as const;

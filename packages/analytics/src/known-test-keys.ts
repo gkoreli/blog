@@ -1,5 +1,6 @@
+/** Directory-key admission and reviewed demonstration-key policy. */
+export const PUBLIC_KEY_POLICY_VERSION = '2026-10-28.1';
 /** Reviewed public demonstration keys for our Ed25519 subset, not all weak keys. */
-export const PUBLIC_KEY_POLICY_VERSION = '2026-10-27.1';
 export const KNOWN_TEST_KEYS = [
   {
     id: 'poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U',

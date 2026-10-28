@@ -80,7 +80,8 @@ interface SignatureCandidate {
 
 interface DirectoryEntry {
   expiresAt: number;
-  keys: Array<{ jwk: JsonWebKey; notBefore: number | null; expires: number | null }>;
+  keyPolicy: typeof PUBLIC_KEY_POLICY_VERSION;
+  keys: Array<{ jwk: JsonWebKey; metadataRejected: boolean; notBefore: number | null; expires: number | null }>;
 }
 
 interface KeyEntry {
@@ -586,21 +587,46 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
-function okpJwk(value: unknown): JsonWebKey | null {
+function ed25519Material(value: unknown): JsonWebKey | null {
   if (!isRecord(value)) return null;
   if (value.kty !== 'OKP' || value.crv !== 'Ed25519' || typeof value.x !== 'string') return null;
-  if (value.use !== undefined && value.use !== 'sig') return null;
-  if (value.key_ops !== undefined) {
-    if (!Array.isArray(value.key_ops) || !value.key_ops.every((operation) => typeof operation === 'string')) return null;
-    if (!value.key_ops.includes('verify')) return null;
+  return { kty: value.kty, crv: value.crv, x: value.x };
+}
+
+/** Thumbprint identity excludes optional metadata. Admission must not discard
+ * a matching key's constraints or confuse a forbidden key with a missing key.
+ */
+function directoryKey(value: unknown): { jwk: JsonWebKey; metadataRejected: boolean } | null {
+  const jwk = ed25519Material(value);
+  if (jwk === null || !isRecord(value)) return null;
+  const rejected = { jwk, metadataRejected: true };
+  if (Object.hasOwn(value, 'd')) return rejected;
+  if (value.use !== undefined) {
+    if (value.use !== 'sig') return rejected;
+    jwk.use = value.use;
   }
-  const result: JsonWebKey = { kty: value.kty, crv: value.crv, x: value.x };
-  return result;
+  if (value.alg !== undefined) {
+    if (value.alg !== 'EdDSA' && value.alg !== 'Ed25519') return rejected;
+    // Both JOSE names denote this fixed curve. Older workerd imports accept
+    // EdDSA only; validate the original constraint before adapting its alias.
+    jwk.alg = 'EdDSA';
+  }
+  if (value.key_ops !== undefined) {
+    if (!Array.isArray(value.key_ops) || !value.key_ops.every((operation): operation is string => typeof operation === 'string')) return rejected;
+    if (!value.key_ops.includes('verify') || new Set(value.key_ops).size !== value.key_ops.length) return rejected;
+    if (value.use === 'sig' && value.key_ops.some(operation => operation !== 'sign' && operation !== 'verify')) return rejected;
+    jwk.key_ops = [...value.key_ops];
+  }
+  if (value.ext !== undefined) {
+    if (typeof value.ext !== 'boolean') return rejected;
+    jwk.ext = value.ext;
+  }
+  return { jwk, metadataRejected: false };
 }
 
 export async function ed25519JwkThumbprint(value: unknown): Promise<string | null> {
   try {
-    const jwk = okpJwk(value);
+    const jwk = ed25519Material(value);
     if (jwk === null || jwk.crv !== 'Ed25519' || jwk.kty !== 'OKP' || typeof jwk.x !== 'string') return null;
     const canonical = `{"crv":"Ed25519","kty":"OKP","x":${JSON.stringify(jwk.x)}}`;
     const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', encoder.encode(canonical)));
@@ -628,7 +654,7 @@ async function fetchDirectory(
   nowMs: number,
 ): Promise<DirectoryEntry | null> {
   const cached = cache.directories.get(directoryUrl);
-  if (cached !== undefined && cached.expiresAt > nowMs) return cached;
+  if (cached !== undefined && cached.expiresAt > nowMs && cached.keyPolicy === PUBLIC_KEY_POLICY_VERSION) return cached;
   if (cached !== undefined) cache.directories.delete(directoryUrl);
 
   const pending = cache.pendingDirectories.get(directoryUrl);
@@ -666,21 +692,21 @@ async function fetchDirectory(
       if (body.keys.length > 128) return null;
       const keys: DirectoryEntry['keys'] = [];
       for (const value of body.keys) {
-        const jwk = okpJwk(value);
-        if (jwk === null || !isRecord(value)) continue;
+        const key = directoryKey(value);
+        if (key === null || !isRecord(value)) continue;
         if (value.nbf !== undefined && !Number.isSafeInteger(value.nbf)) continue;
         if (value.exp !== undefined && !Number.isSafeInteger(value.exp)) continue;
         const notBefore = typeof value.nbf === 'number' ? value.nbf : null;
         const expires = typeof value.exp === 'number' ? value.exp : null;
         if (notBefore !== null && expires !== null && expires <= notBefore) continue;
-        keys.push({ jwk, notBefore, expires });
+        keys.push({ ...key, notBefore, expires });
       }
       const control = response.headers.get('Cache-Control') ?? '';
       const maxAge = /(?:^|,)\s*max-age\s*=\s*"?(\d+)"?(?:\s*,|\s*$)/i.exec(control);
       const age = Number(response.headers.get('Age') ?? 0);
       const seconds = /(?:^|,)\s*(?:no-cache|no-store)\b/i.test(control) ? 0
         : Math.max(0, Math.min(DIRECTORY_TTL_MS / 1000, maxAge?.[1] === undefined ? 300 : Number(maxAge[1])) - (Number.isFinite(age) && age > 0 ? age : 0));
-      const entry = { keys, expiresAt: nowMs + seconds * 1000 };
+      const entry: DirectoryEntry = { keys, keyPolicy: PUBLIC_KEY_POLICY_VERSION, expiresAt: nowMs + seconds * 1000 };
       // A newly fetched directory also invalidates imported removed/revoked keys.
       for (const key of cache.keys.keys()) if (key.startsWith(`${directoryUrl}\n`)) cache.keys.delete(key);
       if (cache.directories.size >= 256) cache.directories.delete(cache.directories.keys().next().value ?? '');
@@ -713,25 +739,32 @@ async function resolveVerificationKey(
   if (cached !== undefined && cached.expiresAt > nowMs && cached.keyPolicy === PUBLIC_KEY_POLICY_VERSION) return { key: cached.key };
   if (cached !== undefined) cache.keys.delete(cacheKey);
 
-  const hadFreshDirectory = (cache.directories.get(directoryUrl)?.expiresAt ?? 0) > nowMs;
+  const previousDirectory = cache.directories.get(directoryUrl);
+  const hadFreshDirectory = previousDirectory?.keyPolicy === PUBLIC_KEY_POLICY_VERSION && previousDirectory.expiresAt > nowMs;
   let directory = await fetchDirectory(directoryUrl, fetcher, cache, nowMs);
   if (directory === null) return { reason: 'directory-unavailable' };
   const find = async (entry: DirectoryEntry) => {
-    for (const candidate of entry.keys) if (await ed25519JwkThumbprint(candidate.jwk) === keyid) return candidate;
-    return null;
+    for (const candidate of entry.keys) if (await ed25519JwkThumbprint(candidate.jwk) === keyid) {
+      // Equal fixed kty/crv/x members have the same RFC 7638 identity. A second
+      // publication of that identity must not hide a rejected constraint by order.
+      return entry.keys.filter(key => key.jwk.x === candidate.jwk.x);
+    }
+    return [];
   };
-  let selected = await find(directory);
+  let matching = await find(directory);
   // One forced refresh per origin per 30 seconds handles overlapping key rotation
   // without turning every random keyid into an unbounded directory fetch loop.
-  if (selected === null && hadFreshDirectory && nowMs - (cache.forcedRefreshes.get(directoryUrl) ?? -Infinity) >= 30000) {
+  if (matching.length === 0 && hadFreshDirectory && nowMs - (cache.forcedRefreshes.get(directoryUrl) ?? -Infinity) >= 30000) {
     if (cache.forcedRefreshes.size >= 256) cache.forcedRefreshes.delete(cache.forcedRefreshes.keys().next().value ?? '');
     cache.forcedRefreshes.set(directoryUrl, nowMs);
     cache.directories.delete(directoryUrl);
     directory = await fetchDirectory(directoryUrl, fetcher, cache, nowMs);
     if (directory === null) return { reason: 'directory-unavailable' };
-    selected = await find(directory);
+    matching = await find(directory);
   }
-  if (selected === null) return { reason: 'key-not-found' };
+  const selected = matching[0];
+  if (selected === undefined) return { reason: 'key-not-found' };
+  if (matching.some(key => key.metadataRejected)) return { reason: matching.some(key => !key.metadataRejected) ? 'key-metadata-conflict' : 'key-metadata-rejected' };
   // The same bytes can have another thumbprint if their x encoding changes.
   if (knownTestPublicKey(selected.jwk)) return { reason: 'known-test-key' };
   if (selected.notBefore !== null && nowMs / 1000 < selected.notBefore) return { reason: 'key-not-yet-valid' };

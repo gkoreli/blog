@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-28T01:53:56.066710+00:00",
+  "sources": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7517.html#section-4.3",
+      "scope": "Duplicate operation prohibition; consistency of use and operations; optional algorithm declaration in 4.4."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7638.html#section-3.2",
+      "scope": "Key identity is computed from required public-key members, independent of optional admission constraints."
+    },
+    {
+      "url": "https://www.w3.org/TR/webcrypto/#ed25519-operations",
+      "scope": "Published Level 2 working draft, Ed25519 JWK import: both algorithm aliases, use, operations, extraction and private/public usage constraints. Work in progress, not a final recommendation."
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/runtime-apis/web-crypto/",
+      "scope": "Native API/algorithm support; general documentation is not proof of every JWK alias in an installed runtime."
+    }
+  ],
+  "runtime": "See key-metadata-runtime.json for tested package versions and manifests; no runtime upgrade or claim of production binary equality.",
+  "sourceFetchLimit": "Pinned workerd GitHub source page could not be retrieved; native execution proves the scoped runtime behavior, not a source-line attribution."
+}

@@ -1,0 +1,470 @@
+{
+  "checkedAt": "2026-10-28T01:50:28.484Z",
+  "verifierProfile": "2026-10-28.3",
+  "method": "Independent Ed25519 proof; directory metadata varies while material and signed request stay fixed. Direct import and application normalization are separate paths. Node and actual local workerd; intercepted directories only.",
+  "node": [
+    {
+      "name": "minimal-public",
+      "applicationPolicyAccepts": true,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "eddsa-algorithm",
+      "applicationPolicyAccepts": true,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "ed25519-algorithm",
+      "applicationPolicyAccepts": true,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "incompatible-algorithm",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "malformed-algorithm",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "duplicate-operations",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "verify-operation",
+      "applicationPolicyAccepts": true,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "sign-only-operation",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "unverified",
+        "reason": "key-not-found",
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "encryption-use",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "unverified",
+        "reason": "key-not-found",
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "nonextractable-public",
+      "applicationPolicyAccepts": true,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "malformed-extractable",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "private-member",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "SyntaxError"
+      }
+    },
+    {
+      "name": "inconsistent-signature-operations",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "unknown-optional-member",
+      "applicationPolicyAccepts": true,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "conflicting-key-rejected-first",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "conflicting-key-accepted-first",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    }
+  ],
+  "native": [
+    {
+      "name": "minimal-public",
+      "applicationPolicyAccepts": true,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "eddsa-algorithm",
+      "applicationPolicyAccepts": true,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "ed25519-algorithm",
+      "applicationPolicyAccepts": true,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "incompatible-algorithm",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "malformed-algorithm",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "duplicate-operations",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "verify-operation",
+      "applicationPolicyAccepts": true,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "sign-only-operation",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "unverified",
+        "reason": "key-not-found",
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "encryption-use",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "unverified",
+        "reason": "key-not-found",
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "nonextractable-public",
+      "applicationPolicyAccepts": true,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "malformed-extractable",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "private-member",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "SyntaxError"
+      }
+    },
+    {
+      "name": "inconsistent-signature-operations",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "unknown-optional-member",
+      "applicationPolicyAccepts": true,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "imported",
+        "type": "public",
+        "usages": [
+          "verify"
+        ]
+      }
+    },
+    {
+      "name": "conflicting-key-rejected-first",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    },
+    {
+      "name": "conflicting-key-accepted-first",
+      "applicationPolicyAccepts": false,
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "fetches": 1
+      },
+      "direct": {
+        "status": "rejected",
+        "error": "DataError"
+      }
+    }
+  ],
+  "externalRequests": 0,
+  "productionRequests": 0,
+  "d1Statements": 0
+}
