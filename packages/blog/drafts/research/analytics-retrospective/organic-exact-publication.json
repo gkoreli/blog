@@ -1,15 +1,83 @@
 {
-  "status": "source-checked-publication-pending",
-  "checkedAt": "2026-10-28T00:37:24.950958+00:00",
-  "sourceDelivery": "pending",
-  "activation": "pending",
-  "servedContent": "pending",
-  "runtimeChanged": false,
+  "status": "accepted-for-scoped-publication",
+  "acceptedAt": "2026-10-28T00:40:23.060414+00:00",
+  "sourceCommit": "04bb9c1c9baddc5610a1327cd84373f927f27c23",
+  "sourcePushedTo": "main",
+  "deployment": {
+    "nativeStatus": "Ready",
+    "durationSeconds": 55,
+    "versionId": "b34793b7-2048-48fc-8689-05a1d6f2caba",
+    "observedPercentage": 100,
+    "nativeRowAssociatesSourceVersionAnd100Percent": true,
+    "acceptance": "Native dashboard observation; no exact activation-created timestamp claimed.",
+    "privateSnapshotSha256": "ab07bc76bd339fe1bbf209fa503286985257544daf589b2ba38c730ac8bf98aa"
+  },
+  "article": {
+    "checkedAt": "2026-10-28T00:40:05.685134+00:00",
+    "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove.md",
+    "status": 200,
+    "exactServedBuildBytes": true,
+    "sha256": "b9f5271790eef48fd2c10cec102f5a3d7f50e5126251bf982bc8b020a20d008a",
+    "containsNewFinding": true,
+    "renderedNewLinkVerified": true,
+    "newLinkTarget": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/38-signed-observations-and-exact-row-links.md",
+    "bodyWords": 1248,
+    "shapingPrompts": 31,
+    "screenshotSha256": "9f84b6cce0985395031883dec7abecb00da8cf9a5b3ae58fcdc93dda2b5449a4"
+  },
+  "analyticsTests": {
+    "pass": 198,
+    "fail": 0
+  },
+  "datedEvidence": {
+    "exactSignedChains": 2,
+    "storedCollection": "2026-10-27.10",
+    "storedVerifierProfile": "2026-10-27.6",
+    "currentOfflineReplayProfile": "2026-10-28.1",
+    "replayVerifiedWithLaterKeys": 2,
+    "knownReceiptProjectionsEqual": 2,
+    "nativeBooleanAvailable": 0
+  },
   "directDiagnosticSelects": 1,
   "directSelectRowsRead": 28,
   "directSelectRowsWritten": 0,
+  "furtherDiagnosticSelects": 0,
+  "reviewedRowsReadThreshold": 5000,
+  "thresholdMeaning": "Post-execution acceptance threshold, not database-enforced cap.",
+  "queryMode": "Wrangler --command, one SQL argv loaded from private file",
   "newLabelledControls": 0,
+  "externalReplayRequests": 0,
+  "runtimeChanged": false,
+  "schemaOrProfilesChanged": false,
+  "nativeRulesChanged": false,
+  "optionalCaptureActivated": false,
+  "permissionExpanded": false,
+  "newPublicReportFill": false,
+  "liveTailStarted": false,
+  "previewStarted": false,
+  "viewportOverrideUsed": false,
   "humanTrials": "deferred by owner",
   "currentProfileOrganicPersistence": "open",
-  "nativeCryptographicAgreement": "unmeasured"
+  "nativeCryptographicAgreement": "unmeasured",
+  "privateArchive": {
+    "path": "~/.local/share/gkoreli/analytics-evidence/2026-10-28-organic-exact-links/",
+    "initialEvidenceFiles": 37,
+    "publicationFilesAdded": 4,
+    "directoryMode": "0700",
+    "fileModes": "0600",
+    "investigationCopyReview": "2026-10-31",
+    "limit": "Not a provider-wide erasure guarantee."
+  },
+  "limits": [
+    "The two exact chains are a dated selected cohort, not newest-profile organic persistence or population accuracy.",
+    "Later-key replay does not reconstruct the historical key directory or prove a human trigger.",
+    "Native category matching is not native cryptographic-verifier agreement.",
+    "Diagnostic SELECT cost excludes collection writes and HTTP/dashboard/CLI work."
+  ],
+  "finalDocumentationChecks": {
+    "relativeFileLinks": 228,
+    "missing": 0,
+    "codeFences": "balanced",
+    "gitDiffCheck": "pass"
+  }
 }
