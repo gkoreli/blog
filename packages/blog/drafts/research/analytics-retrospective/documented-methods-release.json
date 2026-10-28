@@ -34,7 +34,7 @@
   ],
   "diagnosticD1Statements": 0,
   "productionHttpGets": 3,
-  "eligiblePublicationProbeGets": 1,
+  "eligiblePublicationProbeGets": 0,
   "probeReferrerPolicy": "traffic2cash.xyz exclusion supplied; persistence/exclusion of this particular probe not read back",
   "liveReportApiCalls": 0,
   "humanTrials": "deferred",
@@ -42,5 +42,11 @@
     "HTTP assets and activation do not establish authentic vendor proof or new-method production persistence.",
     "Local native controls remain distinct from production measurements."
   ],
-  "optionalBindingsAbsent": true
+  "optionalBindingsAbsent": true,
+  "eligibilityCorrection": {
+    "recordedAt": "2026-10-28T03:08:53.879787+00:00",
+    "supersededEligiblePublicationProbeGets": 1,
+    "correctEligiblePublicationProbeGets": 0,
+    "reason": "The only article request used the direct .md alias. eligibility.ts excludes that path; canonical negotiated Markdown is a different eligible route. Research 47 records a matched live control."
+  }
 }

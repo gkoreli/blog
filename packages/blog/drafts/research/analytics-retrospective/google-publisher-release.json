@@ -1,0 +1,77 @@
+{
+  "checkedAt": "2026-10-28T03:08:53.879787+00:00",
+  "sourceCommit": "590f646626b50c8530ca60bcb92f15c7d44cdbb8",
+  "workerVersion": "e1c22f11-287c-4f07-b089-5da11862e22e",
+  "deploymentId": "09c7c77e-e1f3-415b-95e0-206936988217",
+  "activatedAt": "2026-10-28T03:04:19.935458Z",
+  "trafficPercentage": 100,
+  "nativeBuildStatus": "Ready",
+  "nativeBuildDurationSeconds": 39,
+  "served": [
+    {
+      "path": "/building-blog-analytics-what-the-numbers-can-prove.md",
+      "status": 200,
+      "sha256": "ffb98bbc6d34fbd3d8de6caec4c10c54239f801b4ad5735ec191f5ec5f48beba",
+      "bytes": 13860,
+      "matchesIsolatedBuild": true
+    },
+    {
+      "path": "/stats",
+      "status": 200,
+      "sha256": "843c121eb847e2939793bac15fc9374e9cc3012093789932f8ec6c4ccd26330e",
+      "bytes": 25823,
+      "newPublisherNote": true
+    },
+    {
+      "path": "/stats.js",
+      "status": 200,
+      "sha256": "d08635f176d6cae68d28a9fc78c1755993c1aea5dbdda15c031aaf5c6e88add9",
+      "bytes": 83822,
+      "matchesIsolatedBuild": true
+    }
+  ],
+  "liveControl": {
+    "nativeInvocations": 2,
+    "collectorStoredReceipts": 1,
+    "directAliasNoAnalyticsLogs": 1,
+    "canonicalNegotiatedMarkdownReceipt": 1,
+    "workerVersion": "e1c22f11-287c-4f07-b089-5da11862e22e",
+    "collectionVersion": "2026-10-28.8",
+    "receiptVersion": "2026-10-28.2",
+    "signerDisplayProfile": "2026-10-28.1",
+    "directoryPublicationProfile": "2026-10-28.1",
+    "directoryReviewDate": "2026-10-28",
+    "signatureStatus": "absent",
+    "signer": "none",
+    "returnedStorageReference": true,
+    "independentD1Readback": false,
+    "limits": [
+      "One unsigned canonical publication control, not authentic Google traffic.",
+      "A successful collector receipt and exact returned reference do not replace independent stored-row readback.",
+      "Direct .md aliases are intentionally outside analytics eligibility; the same body at the canonical negotiated route is eligible."
+    ]
+  },
+  "productionHttpGets": 5,
+  "directMarkdownAliasGets": 2,
+  "eligibleCanonicalMarkdownGets": 1,
+  "statsHtmlGets": 1,
+  "statsClientGets": 1,
+  "successfulDiagnosticD1Statements": 0,
+  "failedDiagnosticD1Attempts": 1,
+  "failedDiagnosticMetering": null,
+  "independentD1Readback": false,
+  "optionalBindingsAbsent": true,
+  "tailCapture": {
+    "firstSession": "terminal before first direct-alias request; no receipt claim",
+    "secondSession": "confirmed live before direct-alias and canonical requests",
+    "nativeEvents": 2,
+    "ownedProcessGroupValidatedAndStopped": true,
+    "terminalExitCodeAfterSigterm": 241
+  },
+  "humanTrials": "deferred",
+  "limits": [
+    "One actual unsigned current-profile collector receipt is acknowledged with an exact returned row reference; independent row readback is unavailable.",
+    "No authentic Google proof or managed-native verifier agreement is established.",
+    "HTTP delivery, collection eligibility, persistence acknowledgement and diagnostic query access are different stages."
+  ]
+}
