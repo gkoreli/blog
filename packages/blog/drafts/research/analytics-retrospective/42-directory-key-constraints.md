@@ -37,3 +37,10 @@ Imported-key and directory caches now carry public-key policy `2026-10-28.1`; ol
 All experimental directories are intercepted. No rule, permission, migration, raw-capture activation or human trial occurs. Source delivery and deployment activation require their own receipt. The main article remains unchanged, with this learning linked through its existing research trail.
 
 Expected-operator authorization, human trigger, replay uniqueness, DNS/egress safety and native cryptographic agreement remain open. Duplicate entries whose metadata is admissible but whose validity windows differ still use the existing first-match time policy; this experiment does not prove those semantics order-independent. That is the next bounded test, using the existing independent fixture before proposing a policy. No broad production census is needed for it.
+
+
+## Delivery checkpoint
+
+[Release metadata](key-metadata-release.json) accepts source `3f32c26`, native Ready in 41 seconds and Worker `58bf641b` at 100% production traffic. Seven bindings retain no optional owner grant, diagnostics or calibration. No new visit, direct production SELECT, tail, preview, rule or permission change occurs. Activation is separate from a production metadata-rejection test; no affected production cohort or new `.4` signed persistence is claimed. The isolated article still has the preceding accepted bytes, without a fresh served-content claim.
+
+Private captures and ephemeral signed fixtures are preserved outside Git in `~/.local/share/gkoreli/analytics-evidence/2026-10-28-directory-key-constraints/` with 0700/0600 permissions and a hash manifest. Five retained replay inputs are hash-linked to the previous archive. October 31 is a review target, not automatic erasure. All owned native test/build/CLI processes have exited. The broader goal remains open; next is the declared duplicate-validity experiment, with human trials still deferred.

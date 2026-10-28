@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-28T01:58:28.832819+00:00",
+  "sourceCommit": "3f32c2634872fe26bfe1273659b7e55c88a1b098",
+  "branch": "main",
+  "workerVersion": "58bf641b-eff9-43e7-9c91-87f25fbc76d9",
+  "collectionVersion": "2026-10-28.4",
+  "verifierProfile": "2026-10-28.4",
+  "keyPolicy": "2026-10-28.1",
+  "nativeBuild": {
+    "status": "Ready",
+    "duration": "41s",
+    "sourceAssociation": "Exact native row links the full GitHub commit; Copy replaced a fresh clipboard marker with this UUID"
+  },
+  "activation": {
+    "createdOn": "2026-10-28T01:57:17.561626Z",
+    "percentage": 100,
+    "method": "Wrangler deployments list, maximum created_on, matching native-copied version"
+  },
+  "bindingNames": [
+    "ADMIN_SECRET",
+    "ANALYTICS_HASH_KEY",
+    "ASSETS",
+    "DB",
+    "RESEND_API_KEY",
+    "SUBSCRIBE_RATE_LIMITER",
+    "TURNSTILE_SECRET_KEY"
+  ],
+  "optionalBindingsAbsent": true,
+  "productionBehaviorTested": false,
+  "productionSelects": 0,
+  "newProductionVisits": 0,
+  "retainedExaReplays": 2,
+  "storedReplayProfile": "2026-10-28.2",
+  "replayIsNewPersistence": false,
+  "articleChanged": false,
+  "builtArticleSha256": "c2bb633159ceccc3b8841ab6b20787329d82a0833e5cee6c874a3c9283eaac01",
+  "articleFreshlyFetched": false,
+  "humanTrials": "deferred",
+  "limits": [
+    "Activation is not a production metadata-rejection experiment or a claim of native verification agreement.",
+    "No affected production cohort or new .4 signed persistence is established.",
+    "Earlier accepted .2 signed evidence stays accepted; later-key replay does not reconstruct receipt-time keys."
+  ]
+}
