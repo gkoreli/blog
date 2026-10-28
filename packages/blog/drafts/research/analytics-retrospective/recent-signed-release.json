@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-28T03:56:08.947000+00:00",
+  "sourceCommit": "104223dfce7127d1eb3fca2b817a7086911933bb",
+  "nativeBuildId": "3f551b9e-da61-466f-895a-b5d07fef9bd5",
+  "workerVersionPrefix": "5b9ea64d",
+  "nativeBuildStatus": "Ready",
+  "nativeBuildDurationSeconds": 104,
+  "trafficPercentage": 100,
+  "servedArticleStatus": 200,
+  "servedArticleSha256": "8c61865f516aad734172fdcaf19021286759598309c8e6564e0dfab5fb401c4d",
+  "matchesIsolatedBuild": true,
+  "articleContainsNewEvidenceLink": true,
+  "publicationHttpGets": 1,
+  "collectionEligibleGets": 0,
+  "eligibilityBasis": "Direct .md alias is intentionally collection-ineligible under unchanged eligibility policy.",
+  "newDiagnosticStatementsForPublication": 0,
+  "runtimeChanged": false,
+  "humanTrials": "deferred",
+  "limits": [
+    "This publication does not add a managed-provider verification trial or human label.",
+    "Signed persistence accepted here uses stored collection .7 and current verifier .6, not signed collection .8."
+  ],
+  "privatePublicationArchive": "2026-10-28-current-verifier-publication",
+  "privatePublicationFiles": 3,
+  "privatePublicationManifestSha256": "1802d7a3588cec549b188f5db9e856562de55de2743b6edc5c5ba8302887a015"
+}
