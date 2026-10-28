@@ -66,5 +66,15 @@
     "The byte comparison concerns the collector entry, not remote Worker bytes/source maps.",
     "Conclusive scoped proofs are not authorization, human labels or full RFC conformance.",
     "Current-profile production evidence precedes this diagnostic source release and retains its own Worker/source provenance."
-  ]
+  ],
+  "articleQualificationFollowUp": {
+    "checkedAt": "2026-10-28T01:28:51.384383+00:00",
+    "change": "Qualify the missing-link sentence because older .10 observations already have accepted links.",
+    "bodyWords": 1257,
+    "shapingPrompts": 31,
+    "postValidation": "pass",
+    "isolatedBuildPosts": 32,
+    "builtMarkdownSha256": "c2bb633159ceccc3b8841ab6b20787329d82a0833e5cee6c874a3c9283eaac01",
+    "runtimeChanged": false
+  }
 }
