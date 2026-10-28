@@ -1,0 +1,120 @@
+{
+  "checkedAt": "2026-10-28T02:14:26.734Z",
+  "fixtureProfile": "wire",
+  "method": "Actual collector, local workerd/WebCrypto and D1; independent proofs, intercepted no-store directory per control, awaited actual waitUntil work and exact returned text row reference. All controls referral-excluded; optional diagnostics off.",
+  "trials": [
+    {
+      "name": "bare-uri/valid",
+      "collectionVersion": "2026-10-28.6",
+      "verifierProfile": "2026-10-28.6",
+      "status": "verified",
+      "outcome": "verified",
+      "reason": null,
+      "reasons": [],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "bare-uri/tampered",
+      "collectionVersion": "2026-10-28.6",
+      "verifierProfile": "2026-10-28.6",
+      "status": "unverified",
+      "outcome": "invalid",
+      "reason": "signature-invalid",
+      "reasons": [
+        "signature-invalid"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "bare-uri/directory-unavailable",
+      "collectionVersion": "2026-10-28.6",
+      "verifierProfile": "2026-10-28.6",
+      "status": "unverified",
+      "outcome": "unavailable",
+      "reason": "directory-unavailable",
+      "reasons": [
+        "directory-unavailable"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "bare-uri/unsupported-alg",
+      "collectionVersion": "2026-10-28.6",
+      "verifierProfile": "2026-10-28.6",
+      "status": "unverified",
+      "outcome": "unsupported",
+      "reason": "unsupported-alg",
+      "reasons": [
+        "unsupported-alg"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "bare-uri/malformed-fields",
+      "collectionVersion": "2026-10-28.6",
+      "verifierProfile": "2026-10-28.6",
+      "status": "unverified",
+      "outcome": "invalid",
+      "reason": "malformed-signature-fields",
+      "reasons": [
+        "malformed-signature-fields"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "bare-uri/unrelated-tag",
+      "collectionVersion": "2026-10-28.6",
+      "verifierProfile": "2026-10-28.6",
+      "status": "unverified",
+      "outcome": "not-applicable",
+      "reason": "no-web-bot-auth-signature",
+      "reasons": [
+        "no-web-bot-auth-signature"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "bare-uri/key-metadata",
+      "collectionVersion": "2026-10-28.6",
+      "verifierProfile": "2026-10-28.6",
+      "status": "unverified",
+      "outcome": "policy-rejected",
+      "reason": "key-metadata-rejected",
+      "reasons": [
+        "key-metadata-rejected"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    },
+    {
+      "name": "bare-uri/mixed-failures",
+      "collectionVersion": "2026-10-28.6",
+      "verifierProfile": "2026-10-28.6",
+      "status": "unverified",
+      "outcome": "indeterminate",
+      "reason": "unsupported-alg",
+      "reasons": [
+        "signature-invalid",
+        "unsupported-alg"
+      ],
+      "receiptMatches": true,
+      "optionalEvidenceAbsent": true,
+      "excluded": true
+    }
+  ],
+  "externalRequests": 0,
+  "productionRequests": 0
+}

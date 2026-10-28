@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-28T02:17:56.619484+00:00",
+  "baselineCommit": "602a50cc6897b2694234a5960891e17a2951defe",
+  "collectionVersion": "2026-10-28.6",
+  "verifierProfile": "2026-10-28.6",
+  "keyPolicyUnchanged": "2026-10-28.2",
+  "analyticsTests": 224,
+  "siteTests": 106,
+  "workspaceTypes": "passed",
+  "validation": "passed",
+  "isolatedBuild": {
+    "posts": 32,
+    "rootDistUsed": false,
+    "sourceFilesMatch": true
+  },
+  "casesPerRuntime": 42,
+  "apiPathsPerRuntime": 126,
+  "nativeWireStorageControls": 8,
+  "nativeMetadataCompatibilityControls": 6,
+  "nativeValidityCompatibilityControls": 6,
+  "independentReferenceCalls": 18,
+  "pinnedPythonSourceFilesMatched": 18,
+  "retainedExaExactReplays": 2,
+  "productionVisitsDuringTheseChecks": 0,
+  "productionSelectsDuringTheseChecks": 0,
+  "plannedLiveControls": 1,
+  "plannedDirectSelects": 1,
+  "reviewedRowsReadThreshold": 100,
+  "thresholdIsEnforcedDatabaseCap": false,
+  "nativeReadPerExactStatement": 1,
+  "humanTrials": "deferred",
+  "articleChanged": false,
+  "acceptedLogSha256": {
+    "tests.log": "e4471290cdddcc05498596f8dd5e6603b8c5b38293b04ce2c2309a53a1143916",
+    "site-tests.log": "2d889d3fcc9c802bee99a582ba48b05b1f7de51b1def4c644acc6eb03a670902",
+    "typecheck.log": "f8f18c057a6d62ebb86d7cfdc4aa4ded1140c44aeb79d8fce0c1db94fcbf4af1",
+    "validate.log": "ab22c74b5cc7f8dc3ac1e5c27228f48aa54768c533f4221b59f3268eaf15c11d",
+    "build.log": "00c474ec85bc7422f473e35d94aa3d8cbf23e686908e058ec6701fd58f11d5ec"
+  },
+  "sourceSha256": {
+    "webbotauth.ts": "691c6029d237ed4dfb711befd84d764374acaefa99ebc38fa6bc44b53446e87c",
+    "signature-evidence.ts": "8ac2e326fb02f9263b406aa05581293b85151464ca7c80343ddfe9849b58571b",
+    "versions.ts": "6fe6fc7f28bf15a692dfdd074b6a0296572e369bcde05d8b7a0cfbc7ddbb142d"
+  },
+  "exactSqlSha256": "ec574d135ba3f6ea3917c97b9c91d8bbbd0b28cb6baa58aa7b69b06178dbd775",
+  "relativeLinksChecked": 318
+}

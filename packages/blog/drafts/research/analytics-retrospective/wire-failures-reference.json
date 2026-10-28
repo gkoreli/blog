@@ -1,0 +1,149 @@
+{
+  "rows": [
+    {
+      "name": "dictionary/valid",
+      "calls": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        }
+      ]
+    },
+    {
+      "name": "dictionary/tampered",
+      "calls": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/valid",
+      "calls": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/tampered",
+      "calls": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/valid",
+      "calls": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": 1,
+          "fixtureLabels": [
+            "one"
+          ],
+          "error": null
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/tampered",
+      "calls": [
+        {
+          "selectedLabel": "tagged-set",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        },
+        {
+          "selectedLabel": "one",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        },
+        {
+          "selectedLabel": "two",
+          "returnedResults": null,
+          "error": "InvalidSignature"
+        }
+      ]
+    }
+  ],
+  "referenceCalls": 18,
+  "externalRequests": 0,
+  "checkedAt": "2026-10-28T02:12:53.119895+00:00",
+  "sourceCommit": "1de433d9a49fd608475c6054ab14a1652c088844",
+  "sourceFilesMatched": 18,
+  "scope": "Generic RFC message verification over exact raw fields/member components, not Web Bot Auth parsing, directory policy or native service behavior. Three valid and three covered-field mutations; absent-label failures stay separate.",
+  "inputSha256": "5b52022aaa71740689a24b2cd5678b8d0f69a9c20b7b8e36ad0280b368e17586"
+}

@@ -198,7 +198,7 @@ test('captured DuckDuckBot bare-URI signatures verify with injected directory an
   }
 });
 
-test('failed bare-URI Signature-Agent verification records the legacy-form reason', async () => {
+test('failed bare-URI Signature-Agent verification preserves the actual signature failure', async () => {
   const capture = DUCKDUCKBOT_CAPTURES[0];
   const result = await verifyWebBotAuth(duckDuckBotRequest(capture, '/changed'), {
     now: new Date(capture.now),
@@ -207,7 +207,7 @@ test('failed bare-URI Signature-Agent verification records the legacy-form reaso
       return jsonDirectory([DUCKDUCKBOT_PUBLIC_KEY]);
     },
   });
-  assert.deepEqual(result, { status: 'unverified', reason: 'bare-uri-signature-agent' });
+  assert.deepEqual(result, { status: 'unverified', reason: 'signature-invalid' });
 });
 
 test('captured AhrefsBot sf-string signature with nonce verifies with injected directory and fixed clock', async () => {

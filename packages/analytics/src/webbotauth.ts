@@ -881,7 +881,7 @@ export async function verifyWebBotAuth(
     if (candidates === null) {
       return {
         status: 'unverified',
-        reason: parsedAgent.form === 'bare-uri' ? 'bare-uri-signature-agent' : 'malformed-signature-fields',
+        reason: 'malformed-signature-fields',
       };
     }
     const tagged = candidates.filter((candidate) => (
@@ -890,7 +890,7 @@ export async function verifyWebBotAuth(
     if (tagged.length === 0) {
       return {
         status: 'unverified',
-        reason: parsedAgent.form === 'bare-uri' ? 'bare-uri-signature-agent' : 'no-web-bot-auth-signature',
+        reason: 'no-web-bot-auth-signature',
       };
     }
 
@@ -917,9 +917,7 @@ export async function verifyWebBotAuth(
       lastFailure = result;
       if (result.status === 'unverified') reasons.add(result.reason);
     }
-    return parsedAgent.form === 'bare-uri'
-      ? { status: 'unverified', reason: 'bare-uri-signature-agent' }
-      : lastFailure.status === 'unverified' && reasons.size > 1
+    return lastFailure.status === 'unverified' && reasons.size > 1
         ? { ...lastFailure, reasons: [...reasons].sort() }
         : lastFailure;
   } catch {
@@ -937,7 +935,7 @@ type CandidateContext = CandidateInspectionFailure | {
   tagged: SignatureCandidate[];
 };
 
-/** Diagnostic path only. The collector's existing first-valid path above is unchanged. */
+/** Diagnostic input context; failure semantics agree with the collector path. */
 function candidateContext(request: Request): CandidateContext {
   const agent = request.headers.get('Signature-Agent'), input = request.headers.get('Signature-Input'), signature = request.headers.get('Signature');
   if (agent === null && input === null && signature === null) return { status: 'absent' };
@@ -947,7 +945,7 @@ function candidateContext(request: Request): CandidateContext {
   const parsedAgent = parseSignatureAgentEntries(agent);
   if (parsedAgent === null) return { status: 'unverified', reason: 'malformed-signature-agent' };
   const candidates = signatureCandidates(input, signature);
-  if (candidates === null) return { status: 'unverified', reason: parsedAgent.form === 'bare-uri' ? 'bare-uri-signature-agent' : 'malformed-signature-fields' };
+  if (candidates === null) return { status: 'unverified', reason: 'malformed-signature-fields' };
   const inputs = parseDictionary(input), signatures = parseDictionary(signature);
   if (inputs === null || signatures === null) return { status: 'unverified', reason: 'malformed-signature-fields' };
   return { status: 'ready', parsedAgent, candidates, inputMembers: inputs.length, signatureMembers: signatures.length, tagged: candidates.filter(candidate => stringValue(parameter(candidate.input.parameters, 'tag')) === 'web-bot-auth') };
@@ -977,8 +975,6 @@ export async function verifyWebBotAuthCandidate(request: Request, label: string,
     if (candidate === undefined) return { status: 'unverified', reason: 'no-web-bot-auth-signature' };
     const nowMs = verificationTime(options.now);
     if (nowMs === null) return { status: 'unverified', reason: 'invalid-verification-time' };
-    const result = await verifyCandidate(request, candidate, context.parsedAgent, options.fetcher ?? fetch, options.cache ?? createWebBotAuthCache(), nowMs, options);
-    return context.parsedAgent.form === 'bare-uri' && result.status !== 'verified'
-      ? { status: 'unverified', reason: 'bare-uri-signature-agent' } : result;
+    return await verifyCandidate(request, candidate, context.parsedAgent, options.fetcher ?? fetch, options.cache ?? createWebBotAuthCache(), nowMs, options);
   } catch { return { status: 'unverified', reason: 'verification-error' }; }
 }

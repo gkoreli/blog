@@ -12,6 +12,8 @@ export const FAILURE_OUTCOMES = {
   'duplicate-component': 'invalid',
   'malformed-field-component': 'invalid', 'invalid-request-target': 'invalid',
   'invalid-validity-window': 'invalid', 'missing-keyid': 'invalid', 'invalid-signature-agent': 'invalid', 'signature-invalid': 'invalid',
+  // Retain the old fallback for historical evidence; supported bare-URI
+  // compatibility no longer overwrites a current verifier's failure cause.
   'bare-uri-signature-agent': 'unsupported', 'unsupported-alg': 'unsupported',
   'non-ascii-signature-base': 'unsupported',
   'directory-unavailable': 'unavailable', 'key-not-found': 'unavailable', 'key-not-yet-valid': 'unavailable', 'key-expired': 'unavailable', 'key-invalid': 'unavailable', 'verification-timeout': 'unavailable',

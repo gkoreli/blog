@@ -1,0 +1,3941 @@
+{
+  "checkedAt": "2026-10-28T02:11:04.356Z",
+  "verifierProfile": "2026-10-28.5",
+  "policyExpectationEnforced": false,
+  "method": "Three independently signed wire forms, fourteen scenarios each, actual default/selected/audit/inspection paths in Node and local workerd. Closed reason/outcome counts only; intercepted discovery, no vendor key or injected verification verdict.",
+  "node": [
+    {
+      "name": "dictionary/valid",
+      "form": "dictionary",
+      "scenario": "valid",
+      "expectedReason": null,
+      "expectedOutcome": "verified",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "reasons": [],
+          "outcome": "verified",
+          "headerForm": "dictionary",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "reasons": [],
+          "outcome": "verified",
+          "headerForm": "dictionary",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/tampered",
+      "form": "dictionary",
+      "scenario": "tampered",
+      "expectedReason": "signature-invalid",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "signature-invalid",
+          "reasons": [
+            "signature-invalid"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "signature-invalid",
+          "reasons": [
+            "signature-invalid"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/expired",
+      "form": "dictionary",
+      "scenario": "expired",
+      "expectedReason": "expired",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "expired",
+          "reasons": [
+            "expired"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "expired",
+          "reasons": [
+            "expired"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/future",
+      "form": "dictionary",
+      "scenario": "future",
+      "expectedReason": "not-yet-valid",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "reasons": [
+            "not-yet-valid"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "reasons": [
+            "not-yet-valid"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/directory-unavailable",
+      "form": "dictionary",
+      "scenario": "directory-unavailable",
+      "expectedReason": "directory-unavailable",
+      "expectedOutcome": "unavailable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "directory-unavailable",
+          "reasons": [
+            "directory-unavailable"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "directory-unavailable",
+          "reasons": [
+            "directory-unavailable"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 1,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/key-missing",
+      "form": "dictionary",
+      "scenario": "key-missing",
+      "expectedReason": "key-not-found",
+      "expectedOutcome": "unavailable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-not-found",
+          "reasons": [
+            "key-not-found"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-not-found",
+          "reasons": [
+            "key-not-found"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 1,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/unsupported-alg",
+      "form": "dictionary",
+      "scenario": "unsupported-alg",
+      "expectedReason": "unsupported-alg",
+      "expectedOutcome": "unsupported",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "unsupported-alg",
+          "reasons": [
+            "unsupported-alg"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "unsupported-alg",
+          "reasons": [
+            "unsupported-alg"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/malformed-fields",
+      "form": "dictionary",
+      "scenario": "malformed-fields",
+      "expectedReason": "malformed-signature-fields",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "unverified",
+        "reason": "malformed-signature-fields"
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "malformed-signature-fields",
+          "reasons": [
+            "malformed-signature-fields"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "malformed-signature-fields",
+          "reasons": [
+            "malformed-signature-fields"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/unrelated-tag",
+      "form": "dictionary",
+      "scenario": "unrelated-tag",
+      "expectedReason": "no-web-bot-auth-signature",
+      "expectedOutcome": "not-applicable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "reasons": [
+            "no-web-bot-auth-signature"
+          ],
+          "outcome": "not-applicable",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "reasons": [
+            "no-web-bot-auth-signature"
+          ],
+          "outcome": "not-applicable",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-applicable",
+          "termination": "no-eligible-candidate",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/invalid-clock",
+      "form": "dictionary",
+      "scenario": "invalid-clock",
+      "expectedReason": "invalid-verification-time",
+      "expectedOutcome": "indeterminate",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "reasons": [
+            "invalid-verification-time"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "reasons": [
+            "invalid-verification-time"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "invalid-options",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/key-metadata",
+      "form": "dictionary",
+      "scenario": "key-metadata",
+      "expectedReason": "key-metadata-rejected",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-metadata-rejected",
+          "reasons": [
+            "key-metadata-rejected"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-metadata-rejected",
+          "reasons": [
+            "key-metadata-rejected"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/key-window",
+      "form": "dictionary",
+      "scenario": "key-window",
+      "expectedReason": "key-validity-conflict",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-validity-conflict",
+          "reasons": [
+            "key-validity-conflict"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-validity-conflict",
+          "reasons": [
+            "key-validity-conflict"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/mixed-failures",
+      "form": "dictionary",
+      "scenario": "mixed-failures",
+      "expectedReason": "unsupported-alg",
+      "expectedOutcome": "indeterminate",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "unsupported-alg",
+          "reasons": [
+            "signature-invalid",
+            "unsupported-alg"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "signature-invalid",
+          "reasons": [
+            "signature-invalid"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 2,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/missing-input",
+      "form": "dictionary",
+      "scenario": "missing-input",
+      "expectedReason": "missing-signature-input",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "unverified",
+        "reason": "missing-signature-input"
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "missing-signature-input",
+          "reasons": [
+            "missing-signature-input"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "missing-signature-input",
+          "reasons": [
+            "missing-signature-input"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/valid",
+      "form": "legacy-string",
+      "scenario": "valid",
+      "expectedReason": null,
+      "expectedOutcome": "verified",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "reasons": [],
+          "outcome": "verified",
+          "headerForm": "legacy-string",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "reasons": [],
+          "outcome": "verified",
+          "headerForm": "legacy-string",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/tampered",
+      "form": "legacy-string",
+      "scenario": "tampered",
+      "expectedReason": "signature-invalid",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "signature-invalid",
+          "reasons": [
+            "signature-invalid"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "signature-invalid",
+          "reasons": [
+            "signature-invalid"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/expired",
+      "form": "legacy-string",
+      "scenario": "expired",
+      "expectedReason": "expired",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "expired",
+          "reasons": [
+            "expired"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "expired",
+          "reasons": [
+            "expired"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/future",
+      "form": "legacy-string",
+      "scenario": "future",
+      "expectedReason": "not-yet-valid",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "reasons": [
+            "not-yet-valid"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "reasons": [
+            "not-yet-valid"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/directory-unavailable",
+      "form": "legacy-string",
+      "scenario": "directory-unavailable",
+      "expectedReason": "directory-unavailable",
+      "expectedOutcome": "unavailable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "directory-unavailable",
+          "reasons": [
+            "directory-unavailable"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "directory-unavailable",
+          "reasons": [
+            "directory-unavailable"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 1,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/key-missing",
+      "form": "legacy-string",
+      "scenario": "key-missing",
+      "expectedReason": "key-not-found",
+      "expectedOutcome": "unavailable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-not-found",
+          "reasons": [
+            "key-not-found"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-not-found",
+          "reasons": [
+            "key-not-found"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 1,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/unsupported-alg",
+      "form": "legacy-string",
+      "scenario": "unsupported-alg",
+      "expectedReason": "unsupported-alg",
+      "expectedOutcome": "unsupported",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "unsupported-alg",
+          "reasons": [
+            "unsupported-alg"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "unsupported-alg",
+          "reasons": [
+            "unsupported-alg"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/malformed-fields",
+      "form": "legacy-string",
+      "scenario": "malformed-fields",
+      "expectedReason": "malformed-signature-fields",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "unverified",
+        "reason": "malformed-signature-fields"
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "malformed-signature-fields",
+          "reasons": [
+            "malformed-signature-fields"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "malformed-signature-fields",
+          "reasons": [
+            "malformed-signature-fields"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/unrelated-tag",
+      "form": "legacy-string",
+      "scenario": "unrelated-tag",
+      "expectedReason": "no-web-bot-auth-signature",
+      "expectedOutcome": "not-applicable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "reasons": [
+            "no-web-bot-auth-signature"
+          ],
+          "outcome": "not-applicable",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "reasons": [
+            "no-web-bot-auth-signature"
+          ],
+          "outcome": "not-applicable",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-applicable",
+          "termination": "no-eligible-candidate",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/invalid-clock",
+      "form": "legacy-string",
+      "scenario": "invalid-clock",
+      "expectedReason": "invalid-verification-time",
+      "expectedOutcome": "indeterminate",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "reasons": [
+            "invalid-verification-time"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "reasons": [
+            "invalid-verification-time"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "invalid-options",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/key-metadata",
+      "form": "legacy-string",
+      "scenario": "key-metadata",
+      "expectedReason": "key-metadata-rejected",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-metadata-rejected",
+          "reasons": [
+            "key-metadata-rejected"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-metadata-rejected",
+          "reasons": [
+            "key-metadata-rejected"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/key-window",
+      "form": "legacy-string",
+      "scenario": "key-window",
+      "expectedReason": "key-validity-conflict",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-validity-conflict",
+          "reasons": [
+            "key-validity-conflict"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-validity-conflict",
+          "reasons": [
+            "key-validity-conflict"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/mixed-failures",
+      "form": "legacy-string",
+      "scenario": "mixed-failures",
+      "expectedReason": "unsupported-alg",
+      "expectedOutcome": "indeterminate",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "unsupported-alg",
+          "reasons": [
+            "signature-invalid",
+            "unsupported-alg"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "signature-invalid",
+          "reasons": [
+            "signature-invalid"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 2,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/missing-input",
+      "form": "legacy-string",
+      "scenario": "missing-input",
+      "expectedReason": "missing-signature-input",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "unverified",
+        "reason": "missing-signature-input"
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "missing-signature-input",
+          "reasons": [
+            "missing-signature-input"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "missing-signature-input",
+          "reasons": [
+            "missing-signature-input"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/valid",
+      "form": "bare-uri",
+      "scenario": "valid",
+      "expectedReason": null,
+      "expectedOutcome": "verified",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "reasons": [],
+          "outcome": "verified",
+          "headerForm": "bare-uri",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "reasons": [],
+          "outcome": "verified",
+          "headerForm": "bare-uri",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/tampered",
+      "form": "bare-uri",
+      "scenario": "tampered",
+      "expectedReason": "signature-invalid",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/expired",
+      "form": "bare-uri",
+      "scenario": "expired",
+      "expectedReason": "expired",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/future",
+      "form": "bare-uri",
+      "scenario": "future",
+      "expectedReason": "not-yet-valid",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/directory-unavailable",
+      "form": "bare-uri",
+      "scenario": "directory-unavailable",
+      "expectedReason": "directory-unavailable",
+      "expectedOutcome": "unavailable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/key-missing",
+      "form": "bare-uri",
+      "scenario": "key-missing",
+      "expectedReason": "key-not-found",
+      "expectedOutcome": "unavailable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/unsupported-alg",
+      "form": "bare-uri",
+      "scenario": "unsupported-alg",
+      "expectedReason": "unsupported-alg",
+      "expectedOutcome": "unsupported",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/malformed-fields",
+      "form": "bare-uri",
+      "scenario": "malformed-fields",
+      "expectedReason": "malformed-signature-fields",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "unverified",
+        "reason": "bare-uri-signature-agent"
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/unrelated-tag",
+      "form": "bare-uri",
+      "scenario": "unrelated-tag",
+      "expectedReason": "no-web-bot-auth-signature",
+      "expectedOutcome": "not-applicable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "reasons": [
+            "no-web-bot-auth-signature"
+          ],
+          "outcome": "not-applicable",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-applicable",
+          "termination": "no-eligible-candidate",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/invalid-clock",
+      "form": "bare-uri",
+      "scenario": "invalid-clock",
+      "expectedReason": "invalid-verification-time",
+      "expectedOutcome": "indeterminate",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "reasons": [
+            "invalid-verification-time"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "reasons": [
+            "invalid-verification-time"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "invalid-options",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/key-metadata",
+      "form": "bare-uri",
+      "scenario": "key-metadata",
+      "expectedReason": "key-metadata-rejected",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/key-window",
+      "form": "bare-uri",
+      "scenario": "key-window",
+      "expectedReason": "key-validity-conflict",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/mixed-failures",
+      "form": "bare-uri",
+      "scenario": "mixed-failures",
+      "expectedReason": "unsupported-alg",
+      "expectedOutcome": "indeterminate",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 2,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 2,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/missing-input",
+      "form": "bare-uri",
+      "scenario": "missing-input",
+      "expectedReason": "missing-signature-input",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "unverified",
+        "reason": "missing-signature-input"
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "missing-signature-input",
+          "reasons": [
+            "missing-signature-input"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "missing-signature-input",
+          "reasons": [
+            "missing-signature-input"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    }
+  ],
+  "native": [
+    {
+      "name": "dictionary/valid",
+      "form": "dictionary",
+      "scenario": "valid",
+      "expectedReason": null,
+      "expectedOutcome": "verified",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "reasons": [],
+          "outcome": "verified",
+          "headerForm": "dictionary",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "reasons": [],
+          "outcome": "verified",
+          "headerForm": "dictionary",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/tampered",
+      "form": "dictionary",
+      "scenario": "tampered",
+      "expectedReason": "signature-invalid",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "signature-invalid",
+          "reasons": [
+            "signature-invalid"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "signature-invalid",
+          "reasons": [
+            "signature-invalid"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/expired",
+      "form": "dictionary",
+      "scenario": "expired",
+      "expectedReason": "expired",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "expired",
+          "reasons": [
+            "expired"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "expired",
+          "reasons": [
+            "expired"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/future",
+      "form": "dictionary",
+      "scenario": "future",
+      "expectedReason": "not-yet-valid",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "reasons": [
+            "not-yet-valid"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "reasons": [
+            "not-yet-valid"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/directory-unavailable",
+      "form": "dictionary",
+      "scenario": "directory-unavailable",
+      "expectedReason": "directory-unavailable",
+      "expectedOutcome": "unavailable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "directory-unavailable",
+          "reasons": [
+            "directory-unavailable"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "directory-unavailable",
+          "reasons": [
+            "directory-unavailable"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 1,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/key-missing",
+      "form": "dictionary",
+      "scenario": "key-missing",
+      "expectedReason": "key-not-found",
+      "expectedOutcome": "unavailable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-not-found",
+          "reasons": [
+            "key-not-found"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-not-found",
+          "reasons": [
+            "key-not-found"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 1,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/unsupported-alg",
+      "form": "dictionary",
+      "scenario": "unsupported-alg",
+      "expectedReason": "unsupported-alg",
+      "expectedOutcome": "unsupported",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "unsupported-alg",
+          "reasons": [
+            "unsupported-alg"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "unsupported-alg",
+          "reasons": [
+            "unsupported-alg"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/malformed-fields",
+      "form": "dictionary",
+      "scenario": "malformed-fields",
+      "expectedReason": "malformed-signature-fields",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "unverified",
+        "reason": "malformed-signature-fields"
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "malformed-signature-fields",
+          "reasons": [
+            "malformed-signature-fields"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "malformed-signature-fields",
+          "reasons": [
+            "malformed-signature-fields"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/unrelated-tag",
+      "form": "dictionary",
+      "scenario": "unrelated-tag",
+      "expectedReason": "no-web-bot-auth-signature",
+      "expectedOutcome": "not-applicable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "reasons": [
+            "no-web-bot-auth-signature"
+          ],
+          "outcome": "not-applicable",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "reasons": [
+            "no-web-bot-auth-signature"
+          ],
+          "outcome": "not-applicable",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-applicable",
+          "termination": "no-eligible-candidate",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/invalid-clock",
+      "form": "dictionary",
+      "scenario": "invalid-clock",
+      "expectedReason": "invalid-verification-time",
+      "expectedOutcome": "indeterminate",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "reasons": [
+            "invalid-verification-time"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "reasons": [
+            "invalid-verification-time"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "invalid-options",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "dictionary/key-metadata",
+      "form": "dictionary",
+      "scenario": "key-metadata",
+      "expectedReason": "key-metadata-rejected",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-metadata-rejected",
+          "reasons": [
+            "key-metadata-rejected"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-metadata-rejected",
+          "reasons": [
+            "key-metadata-rejected"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/key-window",
+      "form": "dictionary",
+      "scenario": "key-window",
+      "expectedReason": "key-validity-conflict",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-validity-conflict",
+          "reasons": [
+            "key-validity-conflict"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-validity-conflict",
+          "reasons": [
+            "key-validity-conflict"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/mixed-failures",
+      "form": "dictionary",
+      "scenario": "mixed-failures",
+      "expectedReason": "unsupported-alg",
+      "expectedOutcome": "indeterminate",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "unsupported-alg",
+          "reasons": [
+            "signature-invalid",
+            "unsupported-alg"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "signature-invalid",
+          "reasons": [
+            "signature-invalid"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 2,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "dictionary/missing-input",
+      "form": "dictionary",
+      "scenario": "missing-input",
+      "expectedReason": "missing-signature-input",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "unverified",
+        "reason": "missing-signature-input"
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "missing-signature-input",
+          "reasons": [
+            "missing-signature-input"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "missing-signature-input",
+          "reasons": [
+            "missing-signature-input"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/valid",
+      "form": "legacy-string",
+      "scenario": "valid",
+      "expectedReason": null,
+      "expectedOutcome": "verified",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "reasons": [],
+          "outcome": "verified",
+          "headerForm": "legacy-string",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "reasons": [],
+          "outcome": "verified",
+          "headerForm": "legacy-string",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/tampered",
+      "form": "legacy-string",
+      "scenario": "tampered",
+      "expectedReason": "signature-invalid",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "signature-invalid",
+          "reasons": [
+            "signature-invalid"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "signature-invalid",
+          "reasons": [
+            "signature-invalid"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/expired",
+      "form": "legacy-string",
+      "scenario": "expired",
+      "expectedReason": "expired",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "expired",
+          "reasons": [
+            "expired"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "expired",
+          "reasons": [
+            "expired"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/future",
+      "form": "legacy-string",
+      "scenario": "future",
+      "expectedReason": "not-yet-valid",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "reasons": [
+            "not-yet-valid"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "reasons": [
+            "not-yet-valid"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/directory-unavailable",
+      "form": "legacy-string",
+      "scenario": "directory-unavailable",
+      "expectedReason": "directory-unavailable",
+      "expectedOutcome": "unavailable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "directory-unavailable",
+          "reasons": [
+            "directory-unavailable"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "directory-unavailable",
+          "reasons": [
+            "directory-unavailable"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 1,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/key-missing",
+      "form": "legacy-string",
+      "scenario": "key-missing",
+      "expectedReason": "key-not-found",
+      "expectedOutcome": "unavailable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-not-found",
+          "reasons": [
+            "key-not-found"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-not-found",
+          "reasons": [
+            "key-not-found"
+          ],
+          "outcome": "unavailable",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 1,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/unsupported-alg",
+      "form": "legacy-string",
+      "scenario": "unsupported-alg",
+      "expectedReason": "unsupported-alg",
+      "expectedOutcome": "unsupported",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "unsupported-alg",
+          "reasons": [
+            "unsupported-alg"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "unsupported-alg",
+          "reasons": [
+            "unsupported-alg"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/malformed-fields",
+      "form": "legacy-string",
+      "scenario": "malformed-fields",
+      "expectedReason": "malformed-signature-fields",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "unverified",
+        "reason": "malformed-signature-fields"
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "malformed-signature-fields",
+          "reasons": [
+            "malformed-signature-fields"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "malformed-signature-fields",
+          "reasons": [
+            "malformed-signature-fields"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/unrelated-tag",
+      "form": "legacy-string",
+      "scenario": "unrelated-tag",
+      "expectedReason": "no-web-bot-auth-signature",
+      "expectedOutcome": "not-applicable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "reasons": [
+            "no-web-bot-auth-signature"
+          ],
+          "outcome": "not-applicable",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "reasons": [
+            "no-web-bot-auth-signature"
+          ],
+          "outcome": "not-applicable",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-applicable",
+          "termination": "no-eligible-candidate",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/invalid-clock",
+      "form": "legacy-string",
+      "scenario": "invalid-clock",
+      "expectedReason": "invalid-verification-time",
+      "expectedOutcome": "indeterminate",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "reasons": [
+            "invalid-verification-time"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "reasons": [
+            "invalid-verification-time"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "invalid-options",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/key-metadata",
+      "form": "legacy-string",
+      "scenario": "key-metadata",
+      "expectedReason": "key-metadata-rejected",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-metadata-rejected",
+          "reasons": [
+            "key-metadata-rejected"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-metadata-rejected",
+          "reasons": [
+            "key-metadata-rejected"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/key-window",
+      "form": "legacy-string",
+      "scenario": "key-window",
+      "expectedReason": "key-validity-conflict",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-validity-conflict",
+          "reasons": [
+            "key-validity-conflict"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-validity-conflict",
+          "reasons": [
+            "key-validity-conflict"
+          ],
+          "outcome": "policy-rejected",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/mixed-failures",
+      "form": "legacy-string",
+      "scenario": "mixed-failures",
+      "expectedReason": "unsupported-alg",
+      "expectedOutcome": "indeterminate",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "unsupported-alg",
+          "reasons": [
+            "signature-invalid",
+            "unsupported-alg"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "signature-invalid",
+          "reasons": [
+            "signature-invalid"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 1,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 2,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "legacy-string/missing-input",
+      "form": "legacy-string",
+      "scenario": "missing-input",
+      "expectedReason": "missing-signature-input",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "unverified",
+        "reason": "missing-signature-input"
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "missing-signature-input",
+          "reasons": [
+            "missing-signature-input"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "missing-signature-input",
+          "reasons": [
+            "missing-signature-input"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/valid",
+      "form": "bare-uri",
+      "scenario": "valid",
+      "expectedReason": null,
+      "expectedOutcome": "verified",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "reasons": [],
+          "outcome": "verified",
+          "headerForm": "bare-uri",
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "reasons": [],
+          "outcome": "verified",
+          "headerForm": "bare-uri",
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "verified": 1,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/tampered",
+      "form": "bare-uri",
+      "scenario": "tampered",
+      "expectedReason": "signature-invalid",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/expired",
+      "form": "bare-uri",
+      "scenario": "expired",
+      "expectedReason": "expired",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/future",
+      "form": "bare-uri",
+      "scenario": "future",
+      "expectedReason": "not-yet-valid",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/directory-unavailable",
+      "form": "bare-uri",
+      "scenario": "directory-unavailable",
+      "expectedReason": "directory-unavailable",
+      "expectedOutcome": "unavailable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/key-missing",
+      "form": "bare-uri",
+      "scenario": "key-missing",
+      "expectedReason": "key-not-found",
+      "expectedOutcome": "unavailable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/unsupported-alg",
+      "form": "bare-uri",
+      "scenario": "unsupported-alg",
+      "expectedReason": "unsupported-alg",
+      "expectedOutcome": "unsupported",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/malformed-fields",
+      "form": "bare-uri",
+      "scenario": "malformed-fields",
+      "expectedReason": "malformed-signature-fields",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "unverified",
+        "reason": "bare-uri-signature-agent"
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/unrelated-tag",
+      "form": "bare-uri",
+      "scenario": "unrelated-tag",
+      "expectedReason": "no-web-bot-auth-signature",
+      "expectedOutcome": "not-applicable",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "no-web-bot-auth-signature",
+          "reasons": [
+            "no-web-bot-auth-signature"
+          ],
+          "outcome": "not-applicable",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-applicable",
+          "termination": "no-eligible-candidate",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/invalid-clock",
+      "form": "bare-uri",
+      "scenario": "invalid-clock",
+      "expectedReason": "invalid-verification-time",
+      "expectedOutcome": "indeterminate",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "reasons": [
+            "invalid-verification-time"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "reasons": [
+            "invalid-verification-time"
+          ],
+          "outcome": "indeterminate",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "invalid-options",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/key-metadata",
+      "form": "bare-uri",
+      "scenario": "key-metadata",
+      "expectedReason": "key-metadata-rejected",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/key-window",
+      "form": "bare-uri",
+      "scenario": "key-window",
+      "expectedReason": "key-validity-conflict",
+      "expectedOutcome": "policy-rejected",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 1,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 1,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/mixed-failures",
+      "form": "bare-uri",
+      "scenario": "mixed-failures",
+      "expectedReason": "unsupported-alg",
+      "expectedOutcome": "indeterminate",
+      "inspection": {
+        "status": "ready",
+        "reason": null
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "bare-uri-signature-agent",
+          "reasons": [
+            "bare-uri-signature-agent"
+          ],
+          "outcome": "unsupported",
+          "headerForm": null,
+          "fetches": 1
+        },
+        {
+          "mode": "audit",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 2,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 2,
+          "fetches": 1
+        }
+      ]
+    },
+    {
+      "name": "bare-uri/missing-input",
+      "form": "bare-uri",
+      "scenario": "missing-input",
+      "expectedReason": "missing-signature-input",
+      "expectedOutcome": "invalid",
+      "inspection": {
+        "status": "unverified",
+        "reason": "missing-signature-input"
+      },
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "missing-signature-input",
+          "reasons": [
+            "missing-signature-input"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "missing-signature-input",
+          "reasons": [
+            "missing-signature-input"
+          ],
+          "outcome": "invalid",
+          "headerForm": null,
+          "fetches": 0
+        },
+        {
+          "mode": "audit",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "verified": 0,
+          "profileNegative": 0,
+          "unsupported": 0,
+          "unavailable": 0,
+          "indeterminate": 0,
+          "attempted": 0,
+          "fetches": 0
+        }
+      ]
+    }
+  ],
+  "externalRequests": 0,
+  "productionRequests": 0,
+  "d1Statements": 0
+}
