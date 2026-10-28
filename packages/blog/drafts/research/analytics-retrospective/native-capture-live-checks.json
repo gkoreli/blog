@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-28T07:35:52.841187+00:00",
+  "checkedAt": "2026-10-28T16:54:22.692236+00:00",
   "sourceBaseline": "ffc4dad5bdfd0050e7d32874a18031c96630d9ca",
   "siteTests": 115,
   "controllerTests": 6,
@@ -26,11 +26,61 @@
     "reviewDate": "2026-10-31",
     "reviewDateIsAutomaticErasure": false
   },
-  "sourceDelivery": "pending",
-  "publicationAcceptance": "pending",
+  "sourceDelivery": {
+    "commit": "2997d9892b6d02bab26d7a0cc8c22065df2fa23b",
+    "status": "committed-and-pushed-main"
+  },
+  "publicationAcceptance": {
+    "accepted": true,
+    "failedBuild": "d68d9edb-14d1-47a6-bfc5-eb78051a6965",
+    "failure": "Repository fetch; no Worker version created",
+    "retryBuild": "8ce824c5-1b5c-4ee1-b7ba-5c390c9833d4",
+    "workerVersion": "c57eca36-596e-4084-994d-182c54fcbe13",
+    "ready": true,
+    "rolloutPercent": 100,
+    "sourceAttribution": "Retry build page identifies commit 2997d98; full log yields this Worker version; its Ready/100% rollout row links that retry build. Row commit message is empty.",
+    "failedLogSha256": "c050cbd21867bf3b050e9386c8769b2f0d3e88da5999f2189f8b3bb703ae99db",
+    "retryLogSha256": "3d4582b9d7df49a807082b133110e8a7ddd211323d26d782f21337a6d0571431",
+    "http": {
+      "checkedAt": "2026-10-28T16:52:45.228746+00:00",
+      "status": 200,
+      "servedMatchesIsolatedBuild": true,
+      "servedSha256": "c7eef39d0feb31d41e0cc02fa70cba7b39f6dc34937e9672f0d4ff16a53635c1",
+      "liveLessonPresent": true,
+      "publicationGets": 1,
+      "collectionEligibleGets": 0,
+      "diagnosticSelects": 0,
+      "reportFills": 0,
+      "articleBodyWords": 1280,
+      "prompts": 31
+    },
+    "retryApproval": "Initial retry rejection; unchanged runtime/dependencies/pipeline/config and absent temporary bindings verified, then same native retry approved.",
+    "ciNode": "24.22.1",
+    "localNode": "24.14.1"
+  },
   "relativeLinks": {
-    "checked": 296,
+    "checked": 298,
     "status": "pass"
   },
-  "publicPrivateIdScan": "pass"
+  "publicPrivateIdScan": "pass",
+  "articleReadingTime": {
+    "bodyWhitespaceWords": 1280,
+    "minutesAt220WordsPerMinute": 5.82,
+    "estimateOnly": true,
+    "renderedReadingTimeLabel": "none"
+  },
+  "publicationPrivateArchive": {
+    "name": "2026-10-28-native-header-publication",
+    "files": 18,
+    "manifestSha256": "0d70d89f3c65e55b471cf94fd4eba85d36e062f567023e8b02879266aaade99a",
+    "modes": "0700/0600",
+    "reviewDate": "2026-10-31",
+    "reviewDateIsAutomaticErasure": false
+  },
+  "publicationScreenshot": {
+    "file": "gk-native61-published-rollout.png",
+    "sha256": "af7ad5da90e21274be5028eb55fe4f65dac2df3f797360ac6b7ea32793c42693",
+    "baseManifestSha256": "0d70d89f3c65e55b471cf94fd4eba85d36e062f567023e8b02879266aaade99a",
+    "supplementalManifestSha256": "8ca7ef2222c3122a2aaa012c3103f1d8e584ae2c825e9d3f3105a7607c77db0c"
+  }
 }

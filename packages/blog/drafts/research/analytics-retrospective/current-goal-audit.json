@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-28T07:35:52.841187+00:00",
-  "sourceBaseline": "90d6173d935a72dd6b54a31152d1bc56e738227a",
+  "checkedAt": "2026-10-28T16:54:22.692236+00:00",
+  "sourceBaseline": "2997d9892b6d02bab26d7a0cc8c22065df2fa23b",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -51,7 +51,7 @@
     "prompts": 31,
     "sourceSha256": "42eacfa30f362d2567e433317b24f562cbfc21bc4c0b5a7b5dc06d9aa7c9f537",
     "unchanged": false,
-    "freshServedCheck": false
+    "freshServedCheck": true
   },
   "runtimeUnchanged": true,
   "productionStatements": 0,
@@ -71,9 +71,10 @@
     "ruleCurrentlyActive": false,
     "liveReceipt": "native-capture-live.json",
     "positiveAndRelays": "unexecuted",
-    "disabledBeforeExpiry": "unexecuted; measured disabled cases overlap expiry"
+    "disabledBeforeExpiry": "unexecuted; measured disabled cases overlap expiry",
+    "publicationReceipt": "native-capture-live-checks.json"
   },
-  "productionOwnSiteGets": 23,
+  "productionOwnSiteGets": 24,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 1
 }
