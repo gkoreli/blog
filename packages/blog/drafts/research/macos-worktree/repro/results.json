@@ -1,0 +1,166 @@
+{
+  "measuredAt": "2026-10-28T17:04:15Z",
+  "os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "pnpm": "12.14.0",
+  "node": "24.14.1",
+  "machine": {
+    "cpu": "Apple M5",
+    "memoryGiB": 24,
+    "logicalCpus": 10,
+    "filesystem": "APFS",
+    "macos": "27.0.1"
+  },
+  "packages": 90,
+  "rows": [
+    {
+      "mode": "default",
+      "label": "warmup",
+      "seconds": 0.16298662501503713,
+      "regularFilesInLocalNodeModules": 3124,
+      "symlinksInLocalNodeModules": 197,
+      "directoriesInLocalNodeModules": 487,
+      "smokeCheck": "passed",
+      "esmCheck": "passed",
+      "lockfileUnchanged": true,
+      "zodRealpath": "<scratch>/warmup-default/node_modules/.pnpm/zod@4.3.6/node_modules/zod"
+    },
+    {
+      "mode": "shared",
+      "label": "warmup",
+      "seconds": 0.077998499997193,
+      "regularFilesInLocalNodeModules": 9,
+      "symlinksInLocalNodeModules": 89,
+      "directoriesInLocalNodeModules": 9,
+      "smokeCheck": "passed",
+      "esmCheck": "passed",
+      "lockfileUnchanged": true,
+      "zodRealpath": "<store>/v11/links/@/zod/4.3.6/34ca8090fc19a7aa3086dbba397b422284871ef1185ab9d2817222213785d366/node_modules/zod"
+    },
+    {
+      "mode": "default",
+      "label": "pair-0",
+      "seconds": 0.12208545798785053,
+      "regularFilesInLocalNodeModules": 3124,
+      "symlinksInLocalNodeModules": 197,
+      "directoriesInLocalNodeModules": 487,
+      "smokeCheck": "passed",
+      "esmCheck": "passed",
+      "lockfileUnchanged": true,
+      "zodRealpath": "<scratch>/pair-0-default/node_modules/.pnpm/zod@4.3.6/node_modules/zod"
+    },
+    {
+      "mode": "shared",
+      "label": "pair-0",
+      "seconds": 0.07190404200810008,
+      "regularFilesInLocalNodeModules": 9,
+      "symlinksInLocalNodeModules": 89,
+      "directoriesInLocalNodeModules": 9,
+      "smokeCheck": "passed",
+      "esmCheck": "passed",
+      "lockfileUnchanged": true,
+      "zodRealpath": "<store>/v11/links/@/zod/4.3.6/34ca8090fc19a7aa3086dbba397b422284871ef1185ab9d2817222213785d366/node_modules/zod"
+    },
+    {
+      "mode": "shared",
+      "label": "pair-1",
+      "seconds": 0.06688037500134669,
+      "regularFilesInLocalNodeModules": 9,
+      "symlinksInLocalNodeModules": 89,
+      "directoriesInLocalNodeModules": 9,
+      "smokeCheck": "passed",
+      "esmCheck": "passed",
+      "lockfileUnchanged": true,
+      "zodRealpath": "<store>/v11/links/@/zod/4.3.6/34ca8090fc19a7aa3086dbba397b422284871ef1185ab9d2817222213785d366/node_modules/zod"
+    },
+    {
+      "mode": "default",
+      "label": "pair-1",
+      "seconds": 0.1243785830156412,
+      "regularFilesInLocalNodeModules": 3124,
+      "symlinksInLocalNodeModules": 197,
+      "directoriesInLocalNodeModules": 487,
+      "smokeCheck": "passed",
+      "esmCheck": "passed",
+      "lockfileUnchanged": true,
+      "zodRealpath": "<scratch>/pair-1-default/node_modules/.pnpm/zod@4.3.6/node_modules/zod"
+    },
+    {
+      "mode": "default",
+      "label": "pair-2",
+      "seconds": 0.12668537499848753,
+      "regularFilesInLocalNodeModules": 3124,
+      "symlinksInLocalNodeModules": 197,
+      "directoriesInLocalNodeModules": 487,
+      "smokeCheck": "passed",
+      "esmCheck": "passed",
+      "lockfileUnchanged": true,
+      "zodRealpath": "<scratch>/pair-2-default/node_modules/.pnpm/zod@4.3.6/node_modules/zod"
+    },
+    {
+      "mode": "shared",
+      "label": "pair-2",
+      "seconds": 0.0653734999941662,
+      "regularFilesInLocalNodeModules": 9,
+      "symlinksInLocalNodeModules": 89,
+      "directoriesInLocalNodeModules": 9,
+      "smokeCheck": "passed",
+      "esmCheck": "passed",
+      "lockfileUnchanged": true,
+      "zodRealpath": "<store>/v11/links/@/zod/4.3.6/34ca8090fc19a7aa3086dbba397b422284871ef1185ab9d2817222213785d366/node_modules/zod"
+    },
+    {
+      "mode": "shared",
+      "label": "pair-3",
+      "seconds": 0.06636058300500736,
+      "regularFilesInLocalNodeModules": 9,
+      "symlinksInLocalNodeModules": 89,
+      "directoriesInLocalNodeModules": 9,
+      "smokeCheck": "passed",
+      "esmCheck": "passed",
+      "lockfileUnchanged": true,
+      "zodRealpath": "<store>/v11/links/@/zod/4.3.6/34ca8090fc19a7aa3086dbba397b422284871ef1185ab9d2817222213785d366/node_modules/zod"
+    },
+    {
+      "mode": "default",
+      "label": "pair-3",
+      "seconds": 0.11882920900825411,
+      "regularFilesInLocalNodeModules": 3124,
+      "symlinksInLocalNodeModules": 197,
+      "directoriesInLocalNodeModules": 487,
+      "smokeCheck": "passed",
+      "esmCheck": "passed",
+      "lockfileUnchanged": true,
+      "zodRealpath": "<scratch>/pair-3-default/node_modules/.pnpm/zod@4.3.6/node_modules/zod"
+    },
+    {
+      "mode": "default",
+      "label": "pair-4",
+      "seconds": 0.1194492079957854,
+      "regularFilesInLocalNodeModules": 3124,
+      "symlinksInLocalNodeModules": 197,
+      "directoriesInLocalNodeModules": 487,
+      "smokeCheck": "passed",
+      "esmCheck": "passed",
+      "lockfileUnchanged": true,
+      "zodRealpath": "<scratch>/pair-4-default/node_modules/.pnpm/zod@4.3.6/node_modules/zod"
+    },
+    {
+      "mode": "shared",
+      "label": "pair-4",
+      "seconds": 0.06588920799549669,
+      "regularFilesInLocalNodeModules": 9,
+      "symlinksInLocalNodeModules": 89,
+      "directoriesInLocalNodeModules": 9,
+      "smokeCheck": "passed",
+      "esmCheck": "passed",
+      "lockfileUnchanged": true,
+      "zodRealpath": "<store>/v11/links/@/zod/4.3.6/34ca8090fc19a7aa3086dbba397b422284871ef1185ab9d2817222213785d366/node_modules/zod"
+    }
+  ],
+  "medianSeconds": {
+    "default": 0.12208545798785053,
+    "shared": 0.06636058300500736
+  },
+  "lockfileSha256": "5a1eb32523188c6360f184c9356210ff255cc4ce5a67b8a8b01fbc2c696998d0",
+  "conditions": "Fresh directories; shared warm store; offline; scripts disabled; five alternating pairs after one warmup per mode. Install process wall time only; file creation outside install, smoke checks and traversal excluded. Shared host, no CPU isolation. Not T3 Code; no Git checkout, build, native install scripts, Linux leg or cold-cache measurement."
+}

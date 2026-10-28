@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-28",
+  "files": {
+    "measure.py": "08459d440a160ec2163f190d78b91f7aaa2c1f895beec08de7a4750ca92b1d6d",
+    "package.json": "8f489183ae6a298129dbf88333ad8b977dcbf45f52dcdc295552880b4560c601",
+    "pnpm-lock.yaml": "5a1eb32523188c6360f184c9356210ff255cc4ce5a67b8a8b01fbc2c696998d0",
+    "results.json": "24442241d2833cc81aa1bcdf30fd65f84f49442c5b878593159d5c4b15c76b79"
+  },
+  "externalEvidence": {
+    "methodImage": {
+      "source": "https://x.com/theo/status/2115338762830184877/photo/1",
+      "sha256": "64edfad349747d4500412509f3649c93d4c0bd3cabb04fc3adfd5e06e86ea9d8",
+      "note": "Public image inspected at full resolution; bytes retained outside Git. Screenshot is a disclosed method, not original run data."
+    }
+  },
+  "scope": "Selected test sources and derived results. No private session logs, browser profiles, full social captures or model-usage total."
+}
