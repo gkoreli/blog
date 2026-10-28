@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-28T02:39:31.179876+00:00",
+  "sourceCommitBeforeAudit": "70e579e40c79cd1ba06691e1b74b972e472be9ee",
+  "analyticsCompilation": "passed",
+  "catalogueAssertions": "passed",
+  "savedCalibrationMatchesAcceptedEvaluation": true,
+  "classifierComponentsUnchanged": 6,
+  "evaluatorSourceUnchanged": true,
+  "publicFeedParserControls": 2,
+  "forgedGoogleKeyControls": 10,
+  "realGoogleProofs": 0,
+  "newD1Statements": 0,
+  "newProductionVisits": 0,
+  "externalPublicResourceCaptures": 3,
+  "humanTrials": "deferred",
+  "runtimeChanged": false,
+  "articleChanged": false,
+  "priorRuntimeAcceptance": {
+    "analyticsTests": 224,
+    "siteTests": 106,
+    "notRerunForThisDocumentationAudit": true
+  },
+  "exactArticleByteClaim": "No new fetch/build or production-render acceptance in this audit",
+  "artifactSha256": {
+    "goal-audit-catalogue.json": "529e091436ee09896c4698a65f749ccda097e5b8c9e37329655eb742deddbb61",
+    "goal-audit-calibration.json": "af856fa0bcc07e4296a937db18b942e52c1456e6d3a7596739d779dcc447a6d1",
+    "goal-audit-source-compatibility.json": "f382ab008e6af2c343e8043d5cf03ae98ad649e8259711794788247acef5d8d7"
+  },
+  "relativeLinksChecked": 318,
+  "helperSyntaxChecks": "passed",
+  "diffWhitespaceCheck": "passed",
+  "privateArchive": {
+    "directory": "2026-10-28-goal-method-audit",
+    "files": 17,
+    "hashLinkedHistoricalInputs": 7,
+    "permissions": "0700 directory / 0600 files",
+    "reviewDate": "2026-10-31",
+    "reviewDateIsAutomaticErasure": false
+  }
+}

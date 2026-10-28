@@ -14,7 +14,7 @@ One observation is scheduled per eligible successful, non-prefetch `GET` that se
 | `sec_fetch_mode`, `sec_fetch_dest`, `sec_fetch_site`, `sec_fetch_user` | Fetch Metadata request headers, NULL when absent |
 | `accepts_html`, `has_accept_language` | HTML acceptance for UTF-8 HTML using media-range quality and specificity; whether a nonempty `Accept-Language` is present |
 | `agent_name`, `traffic_class` | Named User-Agent rule match (`classify.ts`) and its class |
-| `signature_agent`, `signature_status` | Web Bot Auth: the verified signer origin, or `unverified` with the failure reason in `reader_reason` |
+| `signature_agent`, `signature_status` | Verified signer origin and local status. Current failure reasons/outcomes live in `signature_evidence`; `reader_reason` preserves the role/rule. Earlier records can lack failure detail. |
 | `representation` | `html` or `markdown`, the representation served |
 | `reader_kind`, `reader_reason` | One kind from the closed set below and one reason, assigned at ingestion (`readerkind.ts`) |
 | `asn_source` | Migration 0007 assigned `request` or `zone-sample` to applicable existing rows. New writes record `request` when an ASN is supplied, otherwise NULL |
@@ -219,3 +219,5 @@ Directory-key identity and metadata admission are separate. Rejected matching ke
 Differing validity windows for one directory key identity are explicit policy conflicts. Imported keys retain activation bounds on cache hits; malformed bounds cannot disappear as missing keys. The compatibility profile accepts exact JOSE aliases plus the WG HTTP token `ed25519`. [Before/after, cache boundaries and native persistence](../blog/drafts/research/analytics-retrospective/43-key-validity-and-cache-boundaries.md).
 
 Supported compatibility forms preserve actual verifier failures. A bare-URI value no longer overwrites invalid, unavailable, policy or mixed outcomes with a format fallback; the old reason remains readable for historical records. [Wire-format matrix, independent library and native persistence](../blog/drafts/research/analytics-retrospective/44-wire-form-failure-fidelity.md).
+
+[Capability and measurement inventory](../blog/drafts/research/analytics-retrospective/45-goal-and-method-coverage-audit.md) distinguishes configured per-declaration methods from display approvals, generic proof verification and traffic-weighted coverage. It preserves the separate human-label and native-agreement gaps.
