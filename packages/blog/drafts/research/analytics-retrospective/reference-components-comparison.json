@@ -1,0 +1,398 @@
+{
+  "before": {
+    "sourceCommit": "d205cc7",
+    "verifierProfile": "2026-10-27.7",
+    "method": "Initial exploratory string comparison after UTF-8 decoding; fixtures only. No signature verification or time-policy test.",
+    "result": {
+      "checkedAt": "2026-10-27T23:57:40.974Z",
+      "rows": [
+        {
+          "name": "ordinary",
+          "nativeReferenceProducedBase": true,
+          "descriptorReferenceProducedBase": true,
+          "nativeReferenceError": null,
+          "descriptorReferenceError": null,
+          "localProducedBase": true,
+          "localEqualsNative": true,
+          "localEqualsDescriptor": true,
+          "nativeBaseContainsNonAscii": false,
+          "nativeBaseContainsInvalidFieldControl": false
+        },
+        {
+          "name": "empty-query",
+          "nativeReferenceProducedBase": true,
+          "descriptorReferenceProducedBase": true,
+          "nativeReferenceError": null,
+          "descriptorReferenceError": null,
+          "localProducedBase": true,
+          "localEqualsNative": true,
+          "localEqualsDescriptor": true,
+          "nativeBaseContainsNonAscii": false,
+          "nativeBaseContainsInvalidFieldControl": false
+        },
+        {
+          "name": "no-query",
+          "nativeReferenceProducedBase": true,
+          "descriptorReferenceProducedBase": true,
+          "nativeReferenceError": null,
+          "descriptorReferenceError": null,
+          "localProducedBase": true,
+          "localEqualsNative": true,
+          "localEqualsDescriptor": true,
+          "nativeBaseContainsNonAscii": false,
+          "nativeBaseContainsInvalidFieldControl": false
+        },
+        {
+          "name": "encoded-target",
+          "nativeReferenceProducedBase": true,
+          "descriptorReferenceProducedBase": true,
+          "nativeReferenceError": null,
+          "descriptorReferenceError": null,
+          "localProducedBase": true,
+          "localEqualsNative": true,
+          "localEqualsDescriptor": true,
+          "nativeBaseContainsNonAscii": false,
+          "nativeBaseContainsInvalidFieldControl": false
+        },
+        {
+          "name": "default-port",
+          "nativeReferenceProducedBase": true,
+          "descriptorReferenceProducedBase": true,
+          "nativeReferenceError": null,
+          "descriptorReferenceError": null,
+          "localProducedBase": true,
+          "localEqualsNative": true,
+          "localEqualsDescriptor": true,
+          "nativeBaseContainsNonAscii": false,
+          "nativeBaseContainsInvalidFieldControl": false
+        },
+        {
+          "name": "ipv6",
+          "nativeReferenceProducedBase": true,
+          "descriptorReferenceProducedBase": true,
+          "nativeReferenceError": null,
+          "descriptorReferenceError": null,
+          "localProducedBase": true,
+          "localEqualsNative": true,
+          "localEqualsDescriptor": true,
+          "nativeBaseContainsNonAscii": false,
+          "nativeBaseContainsInvalidFieldControl": false
+        },
+        {
+          "name": "mixed-method",
+          "nativeReferenceProducedBase": true,
+          "descriptorReferenceProducedBase": true,
+          "nativeReferenceError": null,
+          "descriptorReferenceError": null,
+          "localProducedBase": true,
+          "localEqualsNative": true,
+          "localEqualsDescriptor": true,
+          "nativeBaseContainsNonAscii": false,
+          "nativeBaseContainsInvalidFieldControl": false
+        },
+        {
+          "name": "interior-whitespace",
+          "nativeReferenceProducedBase": true,
+          "descriptorReferenceProducedBase": true,
+          "nativeReferenceError": null,
+          "descriptorReferenceError": null,
+          "localProducedBase": true,
+          "localEqualsNative": true,
+          "localEqualsDescriptor": true,
+          "nativeBaseContainsNonAscii": false,
+          "nativeBaseContainsInvalidFieldControl": false
+        },
+        {
+          "name": "non-ascii-covered",
+          "nativeReferenceProducedBase": true,
+          "descriptorReferenceProducedBase": false,
+          "nativeReferenceError": null,
+          "descriptorReferenceError": {
+            "name": "SignatureError",
+            "code": "MalformedField"
+          },
+          "localProducedBase": false,
+          "localEqualsNative": null,
+          "localEqualsDescriptor": null,
+          "nativeBaseContainsNonAscii": true,
+          "nativeBaseContainsInvalidFieldControl": false
+        },
+        {
+          "name": "non-ascii-uncovered",
+          "nativeReferenceProducedBase": true,
+          "descriptorReferenceProducedBase": false,
+          "nativeReferenceError": null,
+          "descriptorReferenceError": {
+            "name": "SignatureError",
+            "code": "MalformedField"
+          },
+          "localProducedBase": true,
+          "localEqualsNative": true,
+          "localEqualsDescriptor": null,
+          "nativeBaseContainsNonAscii": false,
+          "nativeBaseContainsInvalidFieldControl": false
+        },
+        {
+          "name": "ascii-control-covered",
+          "nativeReferenceProducedBase": true,
+          "descriptorReferenceProducedBase": false,
+          "nativeReferenceError": null,
+          "descriptorReferenceError": {
+            "name": "SignatureError",
+            "code": "MalformedField"
+          },
+          "localProducedBase": true,
+          "localEqualsNative": true,
+          "localEqualsDescriptor": null,
+          "nativeBaseContainsNonAscii": false,
+          "nativeBaseContainsInvalidFieldControl": true
+        },
+        {
+          "name": "del-covered",
+          "nativeReferenceProducedBase": true,
+          "descriptorReferenceProducedBase": false,
+          "nativeReferenceError": null,
+          "descriptorReferenceError": {
+            "name": "SignatureError",
+            "code": "MalformedField"
+          },
+          "localProducedBase": true,
+          "localEqualsNative": true,
+          "localEqualsDescriptor": null,
+          "nativeBaseContainsNonAscii": false,
+          "nativeBaseContainsInvalidFieldControl": true
+        },
+        {
+          "name": "fragment",
+          "nativeReferenceProducedBase": false,
+          "descriptorReferenceProducedBase": false,
+          "nativeReferenceError": {
+            "name": "SignatureError",
+            "code": "InvalidComponent"
+          },
+          "descriptorReferenceError": {
+            "name": "SignatureError",
+            "code": "InvalidComponent"
+          },
+          "localProducedBase": true,
+          "localEqualsNative": null,
+          "localEqualsDescriptor": null,
+          "nativeBaseContainsNonAscii": null,
+          "nativeBaseContainsInvalidFieldControl": null
+        }
+      ]
+    }
+  },
+  "after": {
+    "checkedAt": "2026-10-28T00:03:48.413Z",
+    "runtime": "v24.14.1",
+    "verifierProfile": "2026-10-28.1",
+    "method": "Execute pinned reference public createSignature with a base-capturing fixture signer and compare actual bytes. Static signature parameters test construction, not verification or time policy.",
+    "nativeReferenceMeaning": "JavaScript Request input path in Node; not a Cloudflare edge/native bot verdict.",
+    "referenceModuleSha256": "8070a2351799e250ce6ef8ce55006dc8636c97e920f08c9d7c78a2f894f8ac0a",
+    "rows": [
+      {
+        "name": "ordinary",
+        "nativeReferenceProducedBase": true,
+        "descriptorReferenceProducedBase": true,
+        "nativeReferenceError": null,
+        "descriptorReferenceError": null,
+        "localProducedBase": true,
+        "localEqualsNative": true,
+        "localEqualsDescriptor": true,
+        "nativeBaseSha256": "428ee623b4e2dceabd5221d1134b19475977915cc063a33e61109597e2e936f5",
+        "descriptorBaseSha256": "428ee623b4e2dceabd5221d1134b19475977915cc063a33e61109597e2e936f5",
+        "localBaseSha256": "428ee623b4e2dceabd5221d1134b19475977915cc063a33e61109597e2e936f5",
+        "nativeBaseContainsNonAscii": false,
+        "nativeBaseContainsInvalidFieldControl": false
+      },
+      {
+        "name": "empty-query",
+        "nativeReferenceProducedBase": true,
+        "descriptorReferenceProducedBase": true,
+        "nativeReferenceError": null,
+        "descriptorReferenceError": null,
+        "localProducedBase": true,
+        "localEqualsNative": true,
+        "localEqualsDescriptor": true,
+        "nativeBaseSha256": "532e335bddd3131bc25a028d1fd4c4115742fff8be3b5ad8888a2cbc812fd705",
+        "descriptorBaseSha256": "532e335bddd3131bc25a028d1fd4c4115742fff8be3b5ad8888a2cbc812fd705",
+        "localBaseSha256": "532e335bddd3131bc25a028d1fd4c4115742fff8be3b5ad8888a2cbc812fd705",
+        "nativeBaseContainsNonAscii": false,
+        "nativeBaseContainsInvalidFieldControl": false
+      },
+      {
+        "name": "no-query",
+        "nativeReferenceProducedBase": true,
+        "descriptorReferenceProducedBase": true,
+        "nativeReferenceError": null,
+        "descriptorReferenceError": null,
+        "localProducedBase": true,
+        "localEqualsNative": true,
+        "localEqualsDescriptor": true,
+        "nativeBaseSha256": "532e335bddd3131bc25a028d1fd4c4115742fff8be3b5ad8888a2cbc812fd705",
+        "descriptorBaseSha256": "532e335bddd3131bc25a028d1fd4c4115742fff8be3b5ad8888a2cbc812fd705",
+        "localBaseSha256": "532e335bddd3131bc25a028d1fd4c4115742fff8be3b5ad8888a2cbc812fd705",
+        "nativeBaseContainsNonAscii": false,
+        "nativeBaseContainsInvalidFieldControl": false
+      },
+      {
+        "name": "encoded-target",
+        "nativeReferenceProducedBase": true,
+        "descriptorReferenceProducedBase": true,
+        "nativeReferenceError": null,
+        "descriptorReferenceError": null,
+        "localProducedBase": true,
+        "localEqualsNative": true,
+        "localEqualsDescriptor": true,
+        "nativeBaseSha256": "8ac11454b785ce6408d5d192f50500f0a70a30b04d1d44164d92f29dcb84a1e3",
+        "descriptorBaseSha256": "8ac11454b785ce6408d5d192f50500f0a70a30b04d1d44164d92f29dcb84a1e3",
+        "localBaseSha256": "8ac11454b785ce6408d5d192f50500f0a70a30b04d1d44164d92f29dcb84a1e3",
+        "nativeBaseContainsNonAscii": false,
+        "nativeBaseContainsInvalidFieldControl": false
+      },
+      {
+        "name": "default-port",
+        "nativeReferenceProducedBase": true,
+        "descriptorReferenceProducedBase": true,
+        "nativeReferenceError": null,
+        "descriptorReferenceError": null,
+        "localProducedBase": true,
+        "localEqualsNative": true,
+        "localEqualsDescriptor": true,
+        "nativeBaseSha256": "532e335bddd3131bc25a028d1fd4c4115742fff8be3b5ad8888a2cbc812fd705",
+        "descriptorBaseSha256": "532e335bddd3131bc25a028d1fd4c4115742fff8be3b5ad8888a2cbc812fd705",
+        "localBaseSha256": "532e335bddd3131bc25a028d1fd4c4115742fff8be3b5ad8888a2cbc812fd705",
+        "nativeBaseContainsNonAscii": false,
+        "nativeBaseContainsInvalidFieldControl": false
+      },
+      {
+        "name": "ipv6",
+        "nativeReferenceProducedBase": true,
+        "descriptorReferenceProducedBase": true,
+        "nativeReferenceError": null,
+        "descriptorReferenceError": null,
+        "localProducedBase": true,
+        "localEqualsNative": true,
+        "localEqualsDescriptor": true,
+        "nativeBaseSha256": "4ed721231060efab37d7292a6ea04805b4a2ea2ed054638a103aa7b826898493",
+        "descriptorBaseSha256": "4ed721231060efab37d7292a6ea04805b4a2ea2ed054638a103aa7b826898493",
+        "localBaseSha256": "4ed721231060efab37d7292a6ea04805b4a2ea2ed054638a103aa7b826898493",
+        "nativeBaseContainsNonAscii": false,
+        "nativeBaseContainsInvalidFieldControl": false
+      },
+      {
+        "name": "mixed-method",
+        "nativeReferenceProducedBase": true,
+        "descriptorReferenceProducedBase": true,
+        "nativeReferenceError": null,
+        "descriptorReferenceError": null,
+        "localProducedBase": true,
+        "localEqualsNative": true,
+        "localEqualsDescriptor": true,
+        "nativeBaseSha256": "78ada238f44abe31eb3518e1f59c1e443c5df9fc23be87066f86963c65db2af4",
+        "descriptorBaseSha256": "78ada238f44abe31eb3518e1f59c1e443c5df9fc23be87066f86963c65db2af4",
+        "localBaseSha256": "78ada238f44abe31eb3518e1f59c1e443c5df9fc23be87066f86963c65db2af4",
+        "nativeBaseContainsNonAscii": false,
+        "nativeBaseContainsInvalidFieldControl": false
+      },
+      {
+        "name": "interior-whitespace",
+        "nativeReferenceProducedBase": true,
+        "descriptorReferenceProducedBase": true,
+        "nativeReferenceError": null,
+        "descriptorReferenceError": null,
+        "localProducedBase": true,
+        "localEqualsNative": true,
+        "localEqualsDescriptor": true,
+        "nativeBaseSha256": "d52f29d5a0c80b2b8398f65f131602dabcfbf74fd64324c0974c50f9361ba472",
+        "descriptorBaseSha256": "d52f29d5a0c80b2b8398f65f131602dabcfbf74fd64324c0974c50f9361ba472",
+        "localBaseSha256": "d52f29d5a0c80b2b8398f65f131602dabcfbf74fd64324c0974c50f9361ba472",
+        "nativeBaseContainsNonAscii": false,
+        "nativeBaseContainsInvalidFieldControl": false
+      },
+      {
+        "name": "non-ascii-covered",
+        "nativeReferenceProducedBase": true,
+        "descriptorReferenceProducedBase": false,
+        "nativeReferenceError": null,
+        "descriptorReferenceError": "MalformedField",
+        "localProducedBase": false,
+        "localEqualsNative": null,
+        "localEqualsDescriptor": null,
+        "nativeBaseSha256": "7aa5cdb8e4c128b2e4bc656ffba3348187364759ca4f8af63be9b8a484802b52",
+        "descriptorBaseSha256": null,
+        "localBaseSha256": null,
+        "nativeBaseContainsNonAscii": true,
+        "nativeBaseContainsInvalidFieldControl": false
+      },
+      {
+        "name": "non-ascii-uncovered",
+        "nativeReferenceProducedBase": true,
+        "descriptorReferenceProducedBase": false,
+        "nativeReferenceError": null,
+        "descriptorReferenceError": "MalformedField",
+        "localProducedBase": true,
+        "localEqualsNative": true,
+        "localEqualsDescriptor": null,
+        "nativeBaseSha256": "532e335bddd3131bc25a028d1fd4c4115742fff8be3b5ad8888a2cbc812fd705",
+        "descriptorBaseSha256": null,
+        "localBaseSha256": "532e335bddd3131bc25a028d1fd4c4115742fff8be3b5ad8888a2cbc812fd705",
+        "nativeBaseContainsNonAscii": false,
+        "nativeBaseContainsInvalidFieldControl": false
+      },
+      {
+        "name": "ascii-control-covered",
+        "nativeReferenceProducedBase": true,
+        "descriptorReferenceProducedBase": false,
+        "nativeReferenceError": null,
+        "descriptorReferenceError": "MalformedField",
+        "localProducedBase": false,
+        "localEqualsNative": null,
+        "localEqualsDescriptor": null,
+        "nativeBaseSha256": "deb407b506aa6c95f09d08f8abada3e139ee091488634d2cfdfea15fa889bba1",
+        "descriptorBaseSha256": null,
+        "localBaseSha256": null,
+        "nativeBaseContainsNonAscii": false,
+        "nativeBaseContainsInvalidFieldControl": true
+      },
+      {
+        "name": "del-covered",
+        "nativeReferenceProducedBase": true,
+        "descriptorReferenceProducedBase": false,
+        "nativeReferenceError": null,
+        "descriptorReferenceError": "MalformedField",
+        "localProducedBase": false,
+        "localEqualsNative": null,
+        "localEqualsDescriptor": null,
+        "nativeBaseSha256": "e7b295e853f5f0ec2b9849882397c6be493297fe8a91649c2a9b04ff9fcb562d",
+        "descriptorBaseSha256": null,
+        "localBaseSha256": null,
+        "nativeBaseContainsNonAscii": false,
+        "nativeBaseContainsInvalidFieldControl": true
+      },
+      {
+        "name": "fragment",
+        "nativeReferenceProducedBase": false,
+        "descriptorReferenceProducedBase": false,
+        "nativeReferenceError": "InvalidComponent",
+        "descriptorReferenceError": "InvalidComponent",
+        "localProducedBase": false,
+        "localEqualsNative": null,
+        "localEqualsDescriptor": null,
+        "nativeBaseSha256": null,
+        "descriptorBaseSha256": null,
+        "localBaseSha256": null,
+        "nativeBaseContainsNonAscii": null,
+        "nativeBaseContainsInvalidFieldControl": null
+      }
+    ],
+    "networkCalls": 0,
+    "productionCalls": 0
+  },
+  "limits": [
+    "nativeReference means a JavaScript Request API path in Node, not a Cloudflare provider verdict.",
+    "Only selected supported components and boundary inputs are exercised.",
+    "A base-capturing dummy signer does not establish signature-verification correctness."
+  ]
+}

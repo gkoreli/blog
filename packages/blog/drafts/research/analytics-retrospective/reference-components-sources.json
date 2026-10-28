@@ -1,0 +1,45 @@
+{
+  "repository": "cloudflare/web-bot-auth",
+  "commit": "e4d3167886d0e7508d55fc5c501f1e498a3d4f5c",
+  "files": [
+    {
+      "file": "core.ts",
+      "upstreamPath": "packages/http-message-sig/src/core.ts",
+      "sha256": "81d8586901f895a3c6dc5e6f0dba6c44c9c6ee89998e7de70043fd7e334789b4",
+      "bytes": 32530
+    },
+    {
+      "file": "errors.ts",
+      "upstreamPath": "packages/http-message-sig/src/errors.ts",
+      "sha256": "a4decc66313fedd0b62889badbd39c0d68df5f2245aa7a8faeaa46ac59c1aae6",
+      "bytes": 1026
+    },
+    {
+      "file": "types.ts",
+      "upstreamPath": "packages/http-message-sig/src/types.ts",
+      "sha256": "2ecab61767bc9984c94ea86d0dc0e6fb7677dbd4a03641c63bd5ea43a7830647",
+      "bytes": 3591
+    },
+    {
+      "file": "upstream-package.json",
+      "upstreamPath": "packages/http-message-sig/package.json",
+      "sha256": "f5b2787fbbd4978fd3d269dbf3b4ef4fc1ac32ac90e9bf61812b98d8cc17e072",
+      "bytes": 1337
+    }
+  ],
+  "upstreamDependency": "structured-headers@2.1.1",
+  "lockfileRetrieval": "pnpm-lock.yaml returned 404; dependency is exact in pinned package.json",
+  "compiledModuleSha256": "8070a2351799e250ce6ef8ce55006dc8636c97e920f08c9d7c78a2f894f8ac0a",
+  "parser": {
+    "name": "structured-headers",
+    "version": "2.1.1",
+    "license": "MIT",
+    "packageJsonSha256": "913cb4e2b36e7a06d22549a05613870b4abc051fad7d78216d45243ab388df1d",
+    "entrySha256": "7607367d8cfc12d2d1ca32c6a68ab2f824b4b8648b3c959e242263df86a98b39",
+    "lockSha256": "c5d713df7d76110e16b0e2d4a8ae27ce53cd1ec259574875217f1f602dffedf4",
+    "integrity": "sha512-Ub9mpW7mtzUC7yM7Vrl+CwvHvXa4WhKWROUM9YKmkOsI55dMSg2rhiA7Q5vwRixQk1ndQ2m8YiM6YhO+GJn9LQ==",
+    "pnpmVersion": "9.15.4",
+    "lifecycleScriptsEnabled": false,
+    "productionDependencyAdded": false
+  }
+}

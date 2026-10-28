@@ -10,6 +10,7 @@ export const FAILURE_OUTCOMES = {
   'missing-signature-agent': 'invalid', 'missing-signature-input': 'invalid', 'missing-signature': 'invalid',
   'malformed-signature-agent': 'invalid', 'malformed-signature-fields': 'invalid',
   'duplicate-component': 'invalid',
+  'malformed-field-component': 'invalid', 'invalid-request-target': 'invalid',
   'invalid-validity-window': 'invalid', 'missing-keyid': 'invalid', 'invalid-signature-agent': 'invalid', 'signature-invalid': 'invalid',
   'bare-uri-signature-agent': 'unsupported', 'unsupported-alg': 'unsupported',
   'non-ascii-signature-base': 'unsupported',

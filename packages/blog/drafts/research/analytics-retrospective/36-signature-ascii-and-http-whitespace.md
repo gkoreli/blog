@@ -1,5 +1,7 @@
 # A canonicalization error behind a verified signature
 
+**October 28 UTC follow-up:** [Research 37](37-reference-vectors-and-request-context.md) executes the pinned reference through both Request and descriptor APIs, preserving their differences and the construction/HTTP-delivery boundary. It strengthens component/context validation without treating library agreement as a conformance oracle. This phase's original `.7` production acceptance remains dated evidence.
+
 October 27, 2026 UTC. Continues [coverage audit 35](35-goal-coverage-and-native-signal-boundary.md), [protocol review 18](18-webbotauth-verification.md) and [TASK-0119](../../../../../docs/tasks/TASK-0119.md). Human trials remain deferred. Source/local acceptance below is separate from deployment and actual-Worker acceptance.
 
 ## The reproduced defect

@@ -1,0 +1,118 @@
+{
+  "checkedAt": "2026-10-27T23:58:24.471Z",
+  "rows": [
+    {
+      "code": 0,
+      "construct": {
+        "constructorRejected": true,
+        "errorName": "TypeError"
+      },
+      "wire": {
+        "errorName": "TypeError",
+        "errorCode": null
+      },
+      "workerWireInvocations": 0
+    },
+    {
+      "code": 1,
+      "construct": {
+        "constructorRejected": false,
+        "fieldPreserved": true,
+        "localProducedBase": true
+      },
+      "wire": {
+        "errorName": "TypeError",
+        "errorCode": "UND_ERR_INVALID_ARG"
+      },
+      "workerWireInvocations": 0
+    },
+    {
+      "code": 9,
+      "construct": {
+        "constructorRejected": false,
+        "fieldPreserved": true,
+        "localProducedBase": true
+      },
+      "wire": {
+        "status": 200
+      },
+      "workerWireInvocations": 1
+    },
+    {
+      "code": 10,
+      "construct": {
+        "constructorRejected": true,
+        "errorName": "TypeError"
+      },
+      "wire": {
+        "errorName": "TypeError",
+        "errorCode": null
+      },
+      "workerWireInvocations": 0
+    },
+    {
+      "code": 13,
+      "construct": {
+        "constructorRejected": true,
+        "errorName": "TypeError"
+      },
+      "wire": {
+        "errorName": "TypeError",
+        "errorCode": null
+      },
+      "workerWireInvocations": 0
+    },
+    {
+      "code": 31,
+      "construct": {
+        "constructorRejected": false,
+        "fieldPreserved": true,
+        "localProducedBase": true
+      },
+      "wire": {
+        "errorName": "TypeError",
+        "errorCode": "UND_ERR_INVALID_ARG"
+      },
+      "workerWireInvocations": 0
+    },
+    {
+      "code": 32,
+      "construct": {
+        "constructorRejected": false,
+        "fieldPreserved": true,
+        "localProducedBase": true
+      },
+      "wire": {
+        "status": 200
+      },
+      "workerWireInvocations": 1
+    },
+    {
+      "code": 127,
+      "construct": {
+        "constructorRejected": false,
+        "fieldPreserved": true,
+        "localProducedBase": true
+      },
+      "wire": {
+        "errorName": "TypeError",
+        "errorCode": "UND_ERR_INVALID_ARG"
+      },
+      "workerWireInvocations": 0
+    },
+    {
+      "code": 160,
+      "construct": {
+        "constructorRejected": false,
+        "fieldPreserved": true,
+        "localProducedBase": false
+      },
+      "wire": {
+        "status": 200
+      },
+      "workerWireInvocations": 1
+    }
+  ],
+  "productionCalls": 0,
+  "externalCalls": 0
+}

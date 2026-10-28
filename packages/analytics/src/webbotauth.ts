@@ -460,7 +460,7 @@ function componentValue(
   request: Request,
   component: Item,
   parsedAgent: ParsedSignatureAgent | null,
-): { value: string; signatureAgentUri: string | null } | null {
+): { value: string; signatureAgentUri: string | null } | { reason: 'malformed-field-component' } | null {
   if (component.bare.type !== 'string') return null;
   const name = component.bare.value;
   if (name !== name.toLowerCase()) return null;
@@ -492,7 +492,12 @@ function componentValue(
   }
   if (component.parameters.length !== 0) return null;
   const value = request.headers.get(name);
-  return value === null ? null : { value: normalizeFieldValue(value), signatureAgentUri: null };
+  if (value === null) return null;
+  const normalized = normalizeFieldValue(value);
+  // RFC 9110 section 5.5: ASCII controls other than HTAB are not field content.
+  // Request constructors can admit them even when an HTTP client rejects them.
+  if (/[\x00-\x08\x0a-\x1f\x7f]/.test(normalized)) return { reason: 'malformed-field-component' };
+  return { value: normalized, signatureAgentUri: null };
 }
 
 interface SignatureBaseResult {
@@ -512,8 +517,12 @@ function createSignatureBase(
   request: Request,
   input: InnerList,
   parsedAgent: ParsedSignatureAgent | null,
-): SignatureBaseResult | { reason: 'non-ascii-signature-base' } | null {
+): SignatureBaseResult | { reason: 'non-ascii-signature-base' | 'malformed-field-component' | 'invalid-request-target' } | null {
   if (hasDuplicateComponent(input)) return null;
+  const target = new URL(request.url);
+  // RFC 9110 section 4.2.5: fragments cannot be part of the HTTP target URI.
+  // Checking href also catches an empty trailing fragment marker.
+  if (!['http:', 'https:'].includes(target.protocol) || target.href.includes('#')) return { reason: 'invalid-request-target' };
   const lines: string[] = [];
   let signatureAgentUri: string | null = null;
   let coveredAuthority = false;
@@ -522,6 +531,7 @@ function createSignatureBase(
   for (const component of input.items) {
     const resolved = componentValue(request, component, parsedAgent);
     if (resolved === null) return null;
+    if ('reason' in resolved) return resolved;
     if (component.bare.type !== 'string') return null;
     if (component.bare.value === '@authority') coveredAuthority = true;
     if (component.bare.value === '@target-uri') coveredTargetUri = true;

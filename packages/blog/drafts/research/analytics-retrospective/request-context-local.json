@@ -1,0 +1,173 @@
+{
+  "checkedAt": "2026-10-28T00:03:59.393Z",
+  "collectionVersion": "2026-10-28.1",
+  "verifierProfile": "2026-10-28.1",
+  "method": "Actual local workerd/collector/D1/WebCrypto with independent signer, intercepted directory and empty fixture cf. Invalid contexts are constructed inside the Worker; boundary matrix measures a local HTTP client, not Cloudflare production ingress.",
+  "trials": [
+    {
+      "mode": "ascii",
+      "outcome": "verified",
+      "reason": null,
+      "coverageRecorded": true
+    },
+    {
+      "mode": "control",
+      "outcome": "invalid",
+      "reason": "malformed-field-component",
+      "coverageRecorded": false
+    },
+    {
+      "mode": "del",
+      "outcome": "invalid",
+      "reason": "malformed-field-component",
+      "coverageRecorded": false
+    },
+    {
+      "mode": "fragment",
+      "outcome": "invalid",
+      "reason": "invalid-request-target",
+      "coverageRecorded": false
+    },
+    {
+      "mode": "empty-fragment",
+      "outcome": "invalid",
+      "reason": "invalid-request-target",
+      "coverageRecorded": false
+    },
+    {
+      "mode": "non-ascii",
+      "outcome": "unsupported",
+      "reason": "non-ascii-signature-base",
+      "coverageRecorded": false
+    },
+    {
+      "mode": "excluded",
+      "outcome": "invalid",
+      "reason": "malformed-field-component",
+      "coverageRecorded": false
+    }
+  ],
+  "boundaries": [
+    {
+      "code": 0,
+      "construct": {
+        "constructorRejected": true
+      },
+      "wireStatus": null,
+      "clientRejected": true,
+      "workerWireInvocations": 0
+    },
+    {
+      "code": 1,
+      "construct": {
+        "constructorRejected": false,
+        "fieldPreserved": true,
+        "localProducedBase": false
+      },
+      "wireStatus": null,
+      "clientRejected": true,
+      "workerWireInvocations": 0
+    },
+    {
+      "code": 9,
+      "construct": {
+        "constructorRejected": false,
+        "fieldPreserved": true,
+        "localProducedBase": true
+      },
+      "wireStatus": 200,
+      "clientRejected": false,
+      "workerWireInvocations": 1
+    },
+    {
+      "code": 10,
+      "construct": {
+        "constructorRejected": true
+      },
+      "wireStatus": null,
+      "clientRejected": true,
+      "workerWireInvocations": 0
+    },
+    {
+      "code": 13,
+      "construct": {
+        "constructorRejected": true
+      },
+      "wireStatus": null,
+      "clientRejected": true,
+      "workerWireInvocations": 0
+    },
+    {
+      "code": 31,
+      "construct": {
+        "constructorRejected": false,
+        "fieldPreserved": true,
+        "localProducedBase": false
+      },
+      "wireStatus": null,
+      "clientRejected": true,
+      "workerWireInvocations": 0
+    },
+    {
+      "code": 32,
+      "construct": {
+        "constructorRejected": false,
+        "fieldPreserved": true,
+        "localProducedBase": true
+      },
+      "wireStatus": 200,
+      "clientRejected": false,
+      "workerWireInvocations": 1
+    },
+    {
+      "code": 127,
+      "construct": {
+        "constructorRejected": false,
+        "fieldPreserved": true,
+        "localProducedBase": false
+      },
+      "wireStatus": null,
+      "clientRejected": true,
+      "workerWireInvocations": 0
+    },
+    {
+      "code": 160,
+      "construct": {
+        "constructorRejected": false,
+        "fieldPreserved": true,
+        "localProducedBase": false
+      },
+      "wireStatus": 200,
+      "clientRejected": false,
+      "workerWireInvocations": 1
+    }
+  ],
+  "fragmentTransport": [
+    {
+      "kind": "fragment",
+      "workerSawFragment": false
+    },
+    {
+      "kind": "empty-fragment",
+      "workerSawFragment": false
+    }
+  ],
+  "directoryFetches": 1,
+  "exactReference": {
+    "rows": 1,
+    "rowsRead": 1,
+    "rowsWritten": 0
+  },
+  "sourceSha256": {
+    "packages/analytics/src/webbotauth.ts": "9c19e15dba8b4f1d39868401e458e2b96b613f32115021ff2396016d7b7c1f3d",
+    "packages/analytics/src/signature-evidence.ts": "ab75097685eb7f0b6af2729b89a1e75c0aa51de0d5c6704ef5350e7b97b98e19",
+    "packages/analytics/src/versions.ts": "2ce2e34e0fc3d9428b6c66be0d39c5be83018262cd29f8a25513551e46dbd30d",
+    "packages/blog/scripts/check-signature-context.mjs": "1daa307836076a23781331a14f21688a27529506b0c071172dd64dc1c9bec7ef"
+  },
+  "productionCalls": 0,
+  "externalCalls": 0,
+  "limits": [
+    "No malformed production input or human/vendor label.",
+    "Native constructor acceptance and local HTTP client rejection are separate boundaries."
+  ]
+}

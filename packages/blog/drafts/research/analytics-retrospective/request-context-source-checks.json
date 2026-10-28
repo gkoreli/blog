@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-10-28T00:06:27.279704+00:00",
+  "analytics": {
+    "pass": 194,
+    "fail": 0,
+    "logSha256": "01c846d4bfa958313a176a75bbf894144051ba338cda4a4a90b47f3e78b23675"
+  },
+  "site": {
+    "pass": 106,
+    "fail": 0,
+    "logSha256": "b1a4a6d8d0661f897fbb9a3572de1c26329e5c4711e6d6a04ecd837ed74c2dad"
+  },
+  "workspaceTypes": "pass",
+  "postValidation": "pass",
+  "nativeCollectorControls": 7,
+  "nativeFieldBoundaryControls": 9,
+  "fragmentTransportControls": 2,
+  "referenceControls": 13,
+  "ordinaryThreeWayBaseAgreements": 8,
+  "newRegressionTests": 3,
+  "isolatedBuild": {
+    "posts": 32,
+    "result": "pass",
+    "logSha256": "f2c65ff7d9e448d7dd5645a7779fffcfe0f0463abe6ee4f456b5cdb3a72fa552",
+    "warning": "Mise tracking symlink outside writable roots denied; build exited zero."
+  },
+  "sourceSha256": {
+    "packages/analytics/src/webbotauth.ts": "9c19e15dba8b4f1d39868401e458e2b96b613f32115021ff2396016d7b7c1f3d",
+    "packages/analytics/src/signature-evidence.ts": "ab75097685eb7f0b6af2729b89a1e75c0aa51de0d5c6704ef5350e7b97b98e19",
+    "packages/analytics/src/versions.ts": "2ce2e34e0fc3d9428b6c66be0d39c5be83018262cd29f8a25513551e46dbd30d",
+    "packages/analytics/test/signature-ascii.test.mjs": "5ef8c6a5b401a6f0e001a22e1ce6f779242d09fb952b2b77de12a9e17d254cbf",
+    "packages/blog/drafts/research/analytics-retrospective/probe-reference-components.mjs": "ee48f0e9dca2a1c9fd94e135f3179e46c7e51c5336d9999ae0d7e66b664fc2d7",
+    "packages/blog/scripts/check-signature-context.mjs": "1daa307836076a23781331a14f21688a27529506b0c071172dd64dc1c9bec7ef"
+  },
+  "article": {
+    "bodyWords": 1251,
+    "shapingPrompts": 31,
+    "sourceChanged": false,
+    "builtMarkdownSha256": "56a1cfa125e7dcbab9db4853c0050d8734654794ec18cb5c461d639d7e7bc394"
+  },
+  "activationAcceptance": "pending",
+  "limits": [
+    "Selected construction vectors, not complete conformance or population accuracy.",
+    "Malformed contexts constructed inside local workerd are not malformed production ingress.",
+    "No new native Rulesets validation or human trial."
+  ],
+  "relativeFileLinks": {
+    "checked": 223,
+    "missing": 0
+  }
+}
