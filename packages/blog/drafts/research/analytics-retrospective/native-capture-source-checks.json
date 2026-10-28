@@ -28,12 +28,13 @@
   "liveRuleActivation": false,
   "newHumanLabels": 0,
   "checks": {
-    "relativeFileLinks": 293,
+    "relativeFileLinks": 296,
     "jsonAndCodeFences": "pass",
     "scopedDiff": "pass",
     "publicUuidScan": "pass",
     "coreClassifierVerifierProfilesUnchanged": true,
-    "builtArticleNewParagraphAndSourceLink": true
+    "builtArticleNewParagraphAndSourceLink": true,
+    "acceptedNativeSourceHashesMatch": true
   },
   "privateArchive": {
     "name": "2026-10-28-native-capture-local",

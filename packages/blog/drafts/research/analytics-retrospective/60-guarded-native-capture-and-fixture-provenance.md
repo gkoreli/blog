@@ -1,6 +1,6 @@
 # Capture the native candidate without granting it trust
 
-October 27 Pacific / October 28 UTC. Continues [actual-zone expression validation](59-native-expression-validation-and-capture-design.md). The previous turn cleared that gate; this turn implements and locally accepts the capture route. Human trials remain deferred. Cloudflare rule execution, genuine native-positive traffic and managed cryptographic agreement remain unmeasured.
+October 27–28 Pacific / October 28 UTC. Continues [actual-zone expression validation](59-native-expression-validation-and-capture-design.md). The previous turn cleared that gate; this turn implements and locally accepts the capture route. Human trials remain deferred. Cloudflare rule execution, genuine native-positive traffic and managed cryptographic agreement remain unmeasured.
 
 ## A separate, guarded instrument
 
@@ -29,3 +29,13 @@ Analytics **255**, site **109**, workspace types, post validation, referral-poli
 This changes the Worker source and article, while collection/classifier/verifier/report profiles, registries, storage schema and optional expanded raw diagnostics remain unchanged. No production request, direct D1 statement, vendor-feed retrieval, human label or live rule/capture activation occurs during local acceptance. Source delivery, observed deployment and production off-mode/article checks are separate in [the delivery receipt](native-capture-delivery.json). Private logs, failed attempts, synthetic control references and the source capture are archived outside Git; October 31 is a review date, not automatic erasure.
 
 The [capture plan](native-bot-capture-plan.json) now distinguishes locally accepted capability from unexecuted live conditions. The next bounded work is source/activation acceptance, followed by an excluded, expiring live capture only after exact scope and configuration are prepared. True/false delivery, caller single/duplicate values, disabled/overwritten rules, workers.dev and controlled relays still need actual execution. A genuine known-bot positive needs its own available control; the owner guard does not automatically make a vendor request eligible. Do not mark unrelated vendor traffic as owner traffic to manufacture that case. Native cryptographic comparison retains its separate oracle/identity gates. The broader audit remains incomplete.
+
+## Source and production off-mode accepted
+
+The [delivery receipt](native-capture-delivery.json) accepts source `90d6173`, its exact native build, Worker `99c8f3f0`, Ready/100% and the full downloaded build log. CI uses Node 24.22.1; local acceptance uses pinned 24.14.1. The current production variable inventory shows no native-capture, calibration, expanded-diagnostic or temporary owner-grant binding; no configuration is changed.
+
+Two collection-ineligible GETs complete acceptance: an invalid readiness path with a supplied candidate `true` returns 404, empty JSON and no-store; direct article Markdown returns 200 and exactly matches the isolated build, including the new fixture lesson. These make no direct D1 statement or public report fill. The readiness path is rejected before owner lookup; this is off-mode/routing acceptance, not execution of a registered live capture or proof of transform overwrite.
+
+Private local evidence comprises 21 files in `2026-10-28-native-capture-local`, manifest `57909e7c395d2e0549d846c83f753efdd60bb88f81b5e052351477457c79c029`; closing acceptance adds 13 files in `2026-10-28-native-capture-acceptance`, manifest `5a93369147f81afd525514078f65f25067c24e2463bda0f9eaaded0e81a7cc86`. Both retain 0700/0600 modes and October 31 review, without automatic erasure. No owned preview, tail or new tab is left; the existing dashboard tab is marked for continuation.
+
+Next: prepare the exact expiring live scope and controller budget before activation, then measure actual delivery and spoof/drift paths. The generic bit stays untrusted; no human/native-managed accuracy rate follows from these fixtures. The full goal remains active.

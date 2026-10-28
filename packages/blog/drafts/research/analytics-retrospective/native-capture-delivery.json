@@ -1,12 +1,64 @@
 {
   "sourceBaseline": "b5fb1a0170b85e664c7cb2b4371084c603966162",
-  "sourceDelivery": "pending",
-  "deploymentActivation": "not-yet-inspected",
-  "productionAcceptance": "not-executed",
+  "sourceDelivery": "committed-and-pushed-main",
+  "deploymentActivation": {
+    "accepted": true,
+    "buildId": "7a5576b8-509b-477d-9512-4b705cd18f8a",
+    "workerVersion": "99c8f3f0-f286-4174-beb0-4201ad144ace",
+    "sourceLinkedReady": true,
+    "rolloutPercent": 100,
+    "buildLogSha256": "75736d55ab15b91f16812f3893a2e7098a26154b658e6b09753a936deecfbf47",
+    "ciNode": "24.22.1",
+    "localNode": "24.14.1"
+  },
+  "productionAcceptance": {
+    "checkedAt": "2026-10-28T07:04:28.521191+00:00",
+    "requests": [
+      {
+        "name": "readiness",
+        "status": 404,
+        "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "closedEmptyJson": true,
+        "noStore": true,
+        "suppliedTrueDoesNotCreateCapture": true
+      },
+      {
+        "name": "article",
+        "status": 200,
+        "sha256": "9d5f74a671f5160ee06be978c18124c931bc8d6067db0da8f5bafe3117af2cb7",
+        "matchesBuild": true,
+        "newFixtureLessonPresent": true
+      }
+    ],
+    "ownSiteGets": 2,
+    "collectionEligibleGets": 0,
+    "directD1Statements": 0,
+    "reportFills": 0,
+    "captureActivated": false,
+    "ruleActivated": false,
+    "humanLabels": 0
+  },
   "captureWindowActivated": false,
   "ruleActivated": false,
   "humanTrials": "deferred by owner",
-  "runtimeProfilesUnchanged": true,
   "localChecks": "native-capture-source-checks.json",
-  "privateEvidence": "2026-10-28-native-capture-local"
+  "privateEvidence": "2026-10-28-native-capture-local",
+  "checkedAt": "2026-10-28T07:05:29.439962+00:00",
+  "sourceCommit": "90d6173d935a72dd6b54a31152d1bc56e738227a",
+  "optionalBindingsObservedAbsent": [
+    "ANALYTICS_NATIVE_CAPTURE",
+    "ANALYTICS_CALIBRATION",
+    "ANALYTICS_DIAGNOSTICS",
+    "OWNER_MARK_GRANT"
+  ],
+  "configurationMutation": false,
+  "privateAcceptanceArchive": {
+    "name": "2026-10-28-native-capture-acceptance",
+    "files": 13,
+    "manifestSha256": "5a93369147f81afd525514078f65f25067c24e2463bda0f9eaaded0e81a7cc86",
+    "modes": "0700/0600",
+    "reviewDate": "2026-10-31",
+    "reviewDateIsAutomaticErasure": false
+  },
+  "collectionClassifierVerifierReportProfilesUnchanged": true
 }
