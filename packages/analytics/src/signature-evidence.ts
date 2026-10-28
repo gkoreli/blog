@@ -17,7 +17,7 @@ export const FAILURE_OUTCOMES = {
   'directory-unavailable': 'unavailable', 'key-not-found': 'unavailable', 'key-not-yet-valid': 'unavailable', 'key-expired': 'unavailable', 'key-invalid': 'unavailable', 'verification-timeout': 'unavailable',
   'missing-validity': 'policy-rejected', 'not-yet-valid': 'policy-rejected', 'expired': 'policy-rejected', 'validity-policy-exceeded': 'policy-rejected', 'missing-target-component': 'policy-rejected', 'discovery-policy-rejected': 'policy-rejected', 'known-test-key': 'policy-rejected',
   'not-web-bot-auth': 'not-applicable', 'no-web-bot-auth-signature': 'not-applicable',
-  'unsupported-or-missing-component': 'indeterminate', 'invalid-max-age-policy': 'indeterminate', 'verification-error': 'indeterminate',
+  'unsupported-or-missing-component': 'indeterminate', 'invalid-max-age-policy': 'indeterminate', 'invalid-verification-time': 'indeterminate', 'verification-error': 'indeterminate',
 } as const;
 
 type FailureReason = keyof typeof FAILURE_OUTCOMES;

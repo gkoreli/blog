@@ -211,3 +211,5 @@ Receipt `.3` adds the closed directory-publication assessment to scalar receipt 
 ### Reviewed public signer names
 
 `src/signers.ts` approves exact signing origins for public display. `bySigner.signatureAgent` now holds Exa, Ahrefs, DuckDuckGo or Other; `byKind.reason` uses the same display boundary for signed-agent rows. Original origins and reasons remain in private D1 rows. Mapping precedes SQL grouping and distinct-client counting. Other means the origin is not publicly named; it neither reverses verification nor asserts maliciousness. Declared-role reasons remain independent. Report cache version 2026-10-26.3 prevents reuse of the earlier raw-origin response. [Display evidence and acceptance](../blog/drafts/research/analytics-retrospective/14-public-signer-display.md).
+
+Verification time is guarded and snapshotted once across verifier/audit paths. An unusable caller clock produces an indeterminate `invalid-verification-time` verdict (audit: not-assessed / invalid-options), before discovery. [Before/after and native controls](../blog/drafts/research/analytics-retrospective/41-verification-clock-admission.md).

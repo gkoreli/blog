@@ -1,6 +1,7 @@
 import { inspectWebBotAuthCandidates, verifyWebBotAuthCandidate, createWebBotAuthCache, type WebBotAuthResult } from './webbotauth.js';
 import { verificationOutcome } from './signature-evidence.js';
 import { VERIFIER_PROFILE_VERSION } from './versions.js';
+import { verificationTime } from './verification-clock.js';
 
 export interface SignatureAuditOptions {
   /** Explicit resolver transport is required. No implicit remote discovery. */
@@ -52,10 +53,11 @@ export async function auditWebBotAuth(request: Request, options: SignatureAuditO
     unassessedCandidates: null, unresolvedCandidates: null, verifiedPublisherOriginLowerBound: 0, directoryFetches: 0,
   };
   const maxCandidates = options.maxCandidates ?? 8, deadlineMs = options.deadlineMs ?? 2000;
-  const now = new Date((options.now ?? new Date()).getTime()), maxAgeSeconds = options.maxAgeSeconds ?? 86400;
+  const nowMs = verificationTime(options.now), maxAgeSeconds = options.maxAgeSeconds ?? 86400;
   if (typeof options.fetcher !== 'function' || !Number.isSafeInteger(maxCandidates) || maxCandidates < 1 || maxCandidates > 16
     || !Number.isSafeInteger(deadlineMs) || deadlineMs < 1 || deadlineMs > 10000
-    || !Number.isFinite(now.getTime()) || !Number.isSafeInteger(maxAgeSeconds) || maxAgeSeconds < 0) return result;
+    || nowMs === null || !Number.isSafeInteger(maxAgeSeconds) || maxAgeSeconds < 0) return result;
+  const now = new Date(nowMs);
   result.policy = { maxCandidates, deadlineMs, maxAgeSeconds, headerBudgetUnits: MAX_HEADER_UNITS, clockSource: options.now === undefined ? 'current-at-start' : 'caller-supplied' };
   const headerUnits = ['Signature-Agent', 'Signature-Input', 'Signature'].reduce((size, name) => size + (request.headers.get(name)?.length ?? 0), 0);
   if (headerUnits > MAX_HEADER_UNITS) return { ...result, termination: 'header-budget' };

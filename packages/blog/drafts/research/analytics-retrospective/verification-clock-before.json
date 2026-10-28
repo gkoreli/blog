@@ -1,0 +1,385 @@
+{
+  "checkedAt": "2026-10-28T01:41:45.324Z",
+  "verifierProfile": "2026-10-28.2",
+  "method": "Independently signed fixture across default, explicit-candidate and bounded-audit APIs. Clock options constructed in-process, never malformed HTTP clocks or claimed production clock failures. Generic pinned reference numeric-clock API has separate scope.",
+  "rows": [
+    {
+      "name": "valid",
+      "unusableClock": false,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "fetches": 1,
+          "ageFinite": true,
+          "serializedAgeNull": false
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "fetches": 1,
+          "ageFinite": true,
+          "serializedAgeNull": false
+        },
+        {
+          "mode": "audit",
+          "status": "complete",
+          "reason": "exhausted",
+          "fetches": 1,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        }
+      ]
+    },
+    {
+      "name": "expired-signature",
+      "unusableClock": false,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "expired",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "expired",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "audit",
+          "status": "complete",
+          "reason": "exhausted",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        }
+      ]
+    },
+    {
+      "name": "future-signature",
+      "unusableClock": false,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "audit",
+          "status": "complete",
+          "reason": "exhausted",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        }
+      ]
+    },
+    {
+      "name": "invalid-date",
+      "unusableClock": true,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "fetches": 1,
+          "ageFinite": false,
+          "serializedAgeNull": true
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "verification-error",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        }
+      ]
+    },
+    {
+      "name": "nan-clock",
+      "unusableClock": true,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "fetches": 1,
+          "ageFinite": false,
+          "serializedAgeNull": true
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "verification-error",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        }
+      ]
+    },
+    {
+      "name": "infinite-clock",
+      "unusableClock": true,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "expired",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "verification-error",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        }
+      ]
+    },
+    {
+      "name": "negative-infinite-clock",
+      "unusableClock": true,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "verification-error",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        }
+      ]
+    },
+    {
+      "name": "string-clock",
+      "unusableClock": true,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "verification-error",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "verification-error",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "audit",
+          "status": "threw",
+          "error": "TypeError",
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "throwing-clock",
+      "unusableClock": true,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "verification-error",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "verification-error",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "audit",
+          "status": "threw",
+          "error": "Error",
+          "fetches": 0
+        }
+      ]
+    },
+    {
+      "name": "invalid-clock-expired-key",
+      "unusableClock": true,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "fetches": 1,
+          "ageFinite": false,
+          "serializedAgeNull": true
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "verification-error",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        }
+      ]
+    },
+    {
+      "name": "valid-clock-expired-key",
+      "unusableClock": false,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-expired",
+          "fetches": 1,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-expired",
+          "fetches": 1,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "audit",
+          "status": "partial",
+          "reason": "exhausted",
+          "fetches": 1,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        }
+      ]
+    },
+    {
+      "name": "unsigned-invalid-clock",
+      "unusableClock": true,
+      "paths": [
+        {
+          "mode": "default",
+          "status": "absent",
+          "reason": null,
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "selected",
+          "status": "absent",
+          "reason": null,
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "ageFinite": null,
+          "serializedAgeNull": null
+        }
+      ]
+    }
+  ],
+  "reference": [
+    {
+      "name": "finite",
+      "status": "verified",
+      "resolutions": 1
+    },
+    {
+      "name": "nan",
+      "status": "rejected",
+      "error": "PolicyViolation",
+      "resolutions": 0
+    },
+    {
+      "name": "infinite",
+      "status": "rejected",
+      "error": "PolicyViolation",
+      "resolutions": 0
+    }
+  ],
+  "referenceModuleSha256": "8070a2351799e250ce6ef8ce55006dc8636c97e920f08c9d7c78a2f894f8ac0a",
+  "externalRequests": 0,
+  "productionRequests": 0
+}

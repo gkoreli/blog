@@ -1,4 +1,5 @@
 import { directoryLocation } from './directory-discovery.js';
+import { verificationTime } from './verification-clock.js';
 import { knownTestKeyId, knownTestPublicKey, PUBLIC_KEY_POLICY_VERSION } from './known-test-keys.js';
 const DIRECTORY_TTL_MS = 60 * 60 * 1_000;
 const CLOCK_SKEW_SECONDS = 60;
@@ -855,7 +856,8 @@ export async function verifyWebBotAuth(
 
     const fetcher = options.fetcher ?? fetch;
     const cache = options.cache ?? sharedCache;
-    const nowMs = (options.now ?? new Date()).getTime();
+    const nowMs = verificationTime(options.now);
+    if (nowMs === null) return { status: 'unverified', reason: 'invalid-verification-time' };
     let lastFailure: WebBotAuthResult = { status: 'unverified', reason: 'signature-invalid' };
     const reasons = new Set<string>();
     let attemptedCandidates = 0;
@@ -933,8 +935,8 @@ export async function verifyWebBotAuthCandidate(request: Request, label: string,
     if (context.status !== 'ready') return context;
     const candidate = context.tagged.find(candidate => candidate.label === label);
     if (candidate === undefined) return { status: 'unverified', reason: 'no-web-bot-auth-signature' };
-    const nowMs = (options.now ?? new Date()).getTime();
-    if (!Number.isFinite(nowMs)) return { status: 'unverified', reason: 'verification-error' };
+    const nowMs = verificationTime(options.now);
+    if (nowMs === null) return { status: 'unverified', reason: 'invalid-verification-time' };
     const result = await verifyCandidate(request, candidate, context.parsedAgent, options.fetcher ?? fetch, options.cache ?? createWebBotAuthCache(), nowMs, options);
     return context.parsedAgent.form === 'bare-uri' && result.status !== 'verified'
       ? { status: 'unverified', reason: 'bare-uri-signature-agent' } : result;

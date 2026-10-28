@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-10-28T01:44:32.834756+00:00",
+  "baselineCommit": "e3ae16e6f97245b3699af6ff682ec54c3dd206fd",
+  "collectionVersion": "2026-10-28.3",
+  "verifierProfile": "2026-10-28.3",
+  "analyticsTests": 213,
+  "siteTests": 106,
+  "workspaceTypes": "passed",
+  "validation": "passed",
+  "isolatedBuild": {
+    "posts": 32,
+    "changedSourcesCopiedBeforeAcceptedRun": true,
+    "rootDistUsed": false
+  },
+  "nativeClockPaths": 36,
+  "nativeCollectorControls": 9,
+  "productionRequests": 0,
+  "productionSelects": 0,
+  "humanTrials": "deferred by owner",
+  "articleChanged": false,
+  "setupFailures": [
+    {
+      "stage": "native first attempt",
+      "reason": "sandbox loopback listener denied",
+      "accepted": false
+    },
+    {
+      "stage": "first isolated build",
+      "reason": "relative copy paths used build cwd; changed sources were not copied",
+      "accepted": false
+    }
+  ],
+  "acceptedLogs": {
+    "tests-final.log": {
+      "sha256": "4e0add48debeb00102ae2caf8ae27715acb0e09b950acc5628d6ba48d344ce2b"
+    },
+    "site-tests.log": {
+      "sha256": "c2ced82c9ebdc5e5ad4812b11a6207d615ae8ddcdee54391b176d4f7a61b9a09"
+    },
+    "typecheck.log": {
+      "sha256": "5b1aff32cf75ad5114629c0472366e0ec811a2482a70c7fd9196a38209084496"
+    },
+    "validate.log": {
+      "sha256": "ab22c74b5cc7f8dc3ac1e5c27228f48aa54768c533f4221b59f3268eaf15c11d"
+    },
+    "build-accepted.log": {
+      "sha256": "b85469a49c32f121a9872c35d2bb8135835dfc52376aa0f293a3ab7a2cc9905d"
+    }
+  },
+  "relativeLinksChecked": 180
+}

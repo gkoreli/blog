@@ -71,3 +71,6 @@ Remaining questions concern actual operator/purpose, unsigned role/path claims, 
 Private sources, exact current captures, native fixtures and publication checks are preserved in `~/.local/share/gkoreli/analytics-evidence/2026-10-28-bounded-signature-audit/`, with mode 0700/0600 and a hash manifest. Five older inputs remain hash-linked to their previous archive. Disposable environments, external Git data and third-party guidance are excluded. October 31 is a review target, not automatic/provider-wide erasure. All owned native runtimes have exited; no tail or preview was started.
 
 Next bounded experiment: compare clock and input admission across the default verifier and explicit-candidate/audit entry points, retaining any mismatches as evidence before changing policy. Human trials remain deferred; current `.2` signed persistence must not be silently reopened as unmeasured.
+
+
+[Clock-admission follow-up](41-verification-clock-admission.md) reproduces and repairs a caller-clock mismatch across the three APIs. It preserves the `.2` signed-persistence acceptance above and separates the new `.3` local results from production evidence.

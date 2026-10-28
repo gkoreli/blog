@@ -1,0 +1,381 @@
+{
+  "checkedAt": "2026-10-28T01:42:48.931Z",
+  "method": "Actual local workerd/WebCrypto with independent proofs and in-process caller clock options; intercepted directories, no collector or D1. No malformed HTTP clock or production failure claim.",
+  "rows": [
+    {
+      "name": "valid",
+      "unusableClock": false,
+      "verifierProfile": "2026-10-28.3",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "verified",
+          "reason": null,
+          "fetches": 1,
+          "verifiedCandidates": null,
+          "ageFinite": true
+        },
+        {
+          "mode": "selected",
+          "status": "verified",
+          "reason": null,
+          "fetches": 1,
+          "verifiedCandidates": null,
+          "ageFinite": true
+        },
+        {
+          "mode": "audit",
+          "status": "complete",
+          "reason": "exhausted",
+          "fetches": 1,
+          "verifiedCandidates": 1,
+          "ageFinite": null
+        }
+      ]
+    },
+    {
+      "name": "expired-signature",
+      "unusableClock": false,
+      "verifierProfile": "2026-10-28.3",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "expired",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "expired",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "audit",
+          "status": "complete",
+          "reason": "exhausted",
+          "fetches": 0,
+          "verifiedCandidates": 0,
+          "ageFinite": null
+        }
+      ]
+    },
+    {
+      "name": "future-signature",
+      "unusableClock": false,
+      "verifierProfile": "2026-10-28.3",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "not-yet-valid",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "audit",
+          "status": "complete",
+          "reason": "exhausted",
+          "fetches": 0,
+          "verifiedCandidates": 0,
+          "ageFinite": null
+        }
+      ]
+    },
+    {
+      "name": "invalid-date",
+      "unusableClock": true,
+      "verifierProfile": "2026-10-28.3",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "verifiedCandidates": 0,
+          "ageFinite": null
+        }
+      ]
+    },
+    {
+      "name": "nan-clock",
+      "unusableClock": true,
+      "verifierProfile": "2026-10-28.3",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "verifiedCandidates": 0,
+          "ageFinite": null
+        }
+      ]
+    },
+    {
+      "name": "infinite-clock",
+      "unusableClock": true,
+      "verifierProfile": "2026-10-28.3",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "verifiedCandidates": 0,
+          "ageFinite": null
+        }
+      ]
+    },
+    {
+      "name": "negative-infinite-clock",
+      "unusableClock": true,
+      "verifierProfile": "2026-10-28.3",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "verifiedCandidates": 0,
+          "ageFinite": null
+        }
+      ]
+    },
+    {
+      "name": "string-clock",
+      "unusableClock": true,
+      "verifierProfile": "2026-10-28.3",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "verifiedCandidates": 0,
+          "ageFinite": null
+        }
+      ]
+    },
+    {
+      "name": "throwing-clock",
+      "unusableClock": true,
+      "verifierProfile": "2026-10-28.3",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "verifiedCandidates": 0,
+          "ageFinite": null
+        }
+      ]
+    },
+    {
+      "name": "invalid-clock-expired-key",
+      "unusableClock": true,
+      "verifierProfile": "2026-10-28.3",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "invalid-verification-time",
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "verifiedCandidates": 0,
+          "ageFinite": null
+        }
+      ]
+    },
+    {
+      "name": "valid-clock-expired-key",
+      "unusableClock": false,
+      "verifierProfile": "2026-10-28.3",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "unverified",
+          "reason": "key-expired",
+          "fetches": 1,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "selected",
+          "status": "unverified",
+          "reason": "key-expired",
+          "fetches": 1,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "audit",
+          "status": "partial",
+          "reason": "exhausted",
+          "fetches": 1,
+          "verifiedCandidates": 0,
+          "ageFinite": null
+        }
+      ]
+    },
+    {
+      "name": "unsigned-invalid-clock",
+      "unusableClock": true,
+      "verifierProfile": "2026-10-28.3",
+      "paths": [
+        {
+          "mode": "default",
+          "status": "absent",
+          "reason": null,
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "selected",
+          "status": "absent",
+          "reason": null,
+          "fetches": 0,
+          "verifiedCandidates": null,
+          "ageFinite": null
+        },
+        {
+          "mode": "audit",
+          "status": "not-assessed",
+          "reason": "invalid-options",
+          "fetches": 0,
+          "verifiedCandidates": 0,
+          "ageFinite": null
+        }
+      ]
+    }
+  ],
+  "externalRequests": 0,
+  "productionRequests": 0,
+  "d1Statements": 0
+}
