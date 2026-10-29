@@ -52,3 +52,12 @@ The [native collector fixture](parallel-declarations-native.json) stores seven o
 The concise article replaces an existing paragraph with the variable-coverage lesson: **1,375 words, 31 shaping prompts**. Production activation and served acceptance are separate from these source/local checks. No production D1 statement, site visit, optional capture or human label occurs in this research slice. Private captures remain restricted outside Git; October 31 is a review date, not automatic erasure.
 
 Next: deliver and accept the exact source, then implement Parallel's documented per-client signing methods with versioned publisher provenance and native positive/negative controls. Historical joins, failed-context causes, managed verification, R1 attribution, privacy decisions and human/device calibration remain open. Human trials stay deferred.
+
+
+## Exact-source release acceptance
+
+[Release acceptance](parallel-declarations-release.json) records source `cc7c5a9`, successful build `70fb783d`, Worker `0a40debd` at 100%, and absent optional capture bindings. Two referral-excluded synthetic ShapBot/Shap-User requests produce acknowledged receipts and exact primary-key D1 rows: names, roles, category bits and new profiles agree; signature absent and documented signing method unconfigured remain explicit. The single native-tested, privately frozen `--command` SELECT returns two rows for **six reads/zero writes**. Normal ingestion is separate provider work. No genuine Parallel or human action is claimed.
+
+The served Markdown is byte-identical to the isolated build, as is the HTML article element. Full HTML equality is rejected: production adds exactly two Turnstile hooks absent from the local environment; all other HTML bytes agree. The exact downloaded HTML is visually inspected in a temporary local preview. Four own-site GETs comprise two controls and two article fetches; three are collection-eligible and supply the active excluded referrer. Only the two control rows receive exact readback. Provider build Node 24.22.1 differs from local pinned 24.14.1. These are recorded conditions, not runtime equivalence or RUM acceptance. The tail and preview stop; the temporary tab closes.
+
+This closes the source/activation/selected-control/served-article gates for this iteration. Next: register the two documented Parallel signing methods and publisher provenance with native positive, mismatch and conflict cases. Whole-history validity, original-wire failure causes and human/device rates remain unmeasured; human trials stay deferred.

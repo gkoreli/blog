@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-29T15:48:19.725134+00:00",
+  "checkedAt": "2026-10-29T15:59:43.662045+00:00",
   "sourceBaseline": "3d245a0",
   "goalAchieved": false,
   "previousTurn": "progress",
@@ -44,24 +44,25 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Deliver checked Parallel declaration/evidence changes, accept the exact activated source separately, then register its documented signing methods with bounded native controls before any further production capture. Human trials remain deferred.",
+  "nextBoundedAction": "Configure Parallel ShapBot and Shap-User documented signing origins and reviewed-publisher provenance with bounded native positive/negative/conflict controls; no new raw capture or human trials.",
   "article": {
     "bodyWhitespaceWords": 1375,
     "prompts": 31,
     "sourceSha256": "efb458c18aa509537f1faf077b404695b8d4e06b21fc769b471b7ee64fd9feaf",
     "unchanged": false,
-    "freshServedCheck": false,
-    "publicationReceipt": "retained-population-release.json",
-    "servedMatchesCheckedBuild": false,
-    "lastServedCheckReceipt": "retained-population-release.json",
-    "publicationStatus": "Phase 83 source article changed; new isolated build passed, fresh served acceptance pending. Prior receipt remains dated.",
-    "previousPublicationReceipt": "frozen-signed-release.json"
+    "freshServedCheck": true,
+    "publicationReceipt": "parallel-declarations-release.json",
+    "servedMatchesCheckedBuild": true,
+    "lastServedCheckReceipt": "parallel-declarations-release.json",
+    "publicationStatus": "cc7c5a9 accepted through successful build/100% activation, exact served Markdown/article element and local visual preview of downloaded HTML.",
+    "previousPublicationReceipt": "retained-population-release.json",
+    "servedMatchScope": "Exact Markdown and article element; full HTML differs by exactly two production Turnstile hooks."
   },
   "runtimeUnchanged": false,
-  "productionStatements": 0,
-  "newVisits": 0,
+  "productionStatements": 1,
+  "newVisits": 4,
   "newHumanLabels": 0,
-  "liveAccountInspection": false,
+  "liveAccountInspection": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -90,8 +91,8 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 0,
-  "collectionEligibleGets": 0,
+  "productionOwnSiteGets": 4,
+  "collectionEligibleGets": 3,
   "ownerMarkPosts": 0,
   "retainedDelta": {
     "receipt": "retained-delta-production.json",
@@ -165,13 +166,14 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 0,
+  "productionReportedReads": 6,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
-    "acknowledgedApplicationRows": 0,
-    "providerWriteMetering": "No production observation requested by this investigation; natural ingestion and provider costs are separate."
+    "acknowledgedControlRows": 2,
+    "articleHtmlStorageNotSeparatelyReadBack": true,
+    "providerWriteMetering": "Not returned; additional to the diagnostic SELECT meter."
   },
-  "newVisitsScope": "Offline replay of 19 retained request contexts, plus local synthetic collector/D1 fixtures. No production visit or authenticated D1 join.",
+  "newVisitsScope": "Two agent-supplied referral-excluded client controls plus direct Markdown and excluded-referrer HTML article fetches; no human labels. Historical contexts remain separate.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -377,7 +379,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "No live account/configuration changes in this phase; public vendor documents and fixed directories only.",
+  "liveAccountInspectionScope": "Exact source/build/100% Worker allocation and bindings; two referral-excluded synthetic controls with six-read exact-ID lookup. No configuration change.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -485,11 +487,12 @@
     "authenticatedD1Joins": 0,
     "managedAgreementMeasured": false,
     "humanTriggerEstablished": false,
-    "collectorAdoption": "local accepted; activation pending",
+    "collectorAdoption": "Production exact source activation and two excluded exact receipt/row controls accepted.",
     "newDeclarations": [
       "ShapBot",
       "Shap-User"
     ],
-    "documentedParallelSigningConfigured": false
+    "documentedParallelSigningConfigured": false,
+    "release": "parallel-declarations-release.json"
   }
 }

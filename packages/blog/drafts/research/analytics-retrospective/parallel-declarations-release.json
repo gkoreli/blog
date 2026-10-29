@@ -1,0 +1,122 @@
+{
+  "checkedAt": "2026-10-29T15:59:43.662045+00:00",
+  "sourceCommit": "cc7c5a98156e098f3c2162df753b97f16a3308ad",
+  "buildId": "70fb783d-46b2-4eb2-8ccc-4d0506c9df67",
+  "workerVersion": "0a40debd-dbff-4f0f-83d5-0f8f73f8533d",
+  "sourceBuildSucceeded": true,
+  "allocationPercentage": 100,
+  "optionalCaptureBindingsAbsent": true,
+  "controls": [
+    {
+      "name": "ShapBot",
+      "kind": "ai-search",
+      "collectionVersion": "2026-10-29.4",
+      "classifierVersion": "2026-10-29.2",
+      "evidenceVersion": "2026-10-29.1",
+      "categoryBits": 4,
+      "signature": "absent",
+      "documentedSigningMethod": "not-configured",
+      "referralExcluded": true,
+      "exactReturnedRowReference": true,
+      "receiptKindAndProfileMatch": true
+    },
+    {
+      "name": "Shap-User",
+      "kind": "ai-assistant",
+      "collectionVersion": "2026-10-29.4",
+      "classifierVersion": "2026-10-29.2",
+      "evidenceVersion": "2026-10-29.1",
+      "categoryBits": 2,
+      "signature": "absent",
+      "documentedSigningMethod": "not-configured",
+      "referralExcluded": true,
+      "exactReturnedRowReference": true,
+      "receiptKindAndProfileMatch": true
+    }
+  ],
+  "diagnostic": {
+    "statements": 1,
+    "attempts": 1,
+    "rowsReturned": 2,
+    "reportedReads": 6,
+    "reportedWrites": 0,
+    "postExecutionReadReviewThreshold": 100,
+    "serverEnforcedCap": false,
+    "mode": "Wrangler --command"
+  },
+  "ownSiteGetAttempts": 4,
+  "syntheticControls": 2,
+  "articleFetches": 2,
+  "collectionEligibleGets": 3,
+  "eligibleFetchesSupplyActiveExcludedReferrer": true,
+  "normalIngestion": {
+    "acknowledgedControlRows": 2,
+    "articleHtmlStorageNotSeparatelyReadBack": true,
+    "providerWriteMetering": "Not returned; additional to the diagnostic SELECT meter."
+  },
+  "article": {
+    "checkedAt": "2026-10-29T15:57:26.151909+00:00",
+    "markdownExactBuiltEquality": true,
+    "servedMarkdownSha256": "2d0bb64653de62fdaef8e2e8b748a743de3d30c1f11110a94046c8920f98e2ae",
+    "fullHtmlExactBuiltEquality": false,
+    "articleElementExactEquality": true,
+    "servedHtmlSha256": "56d56cae1768ad847925898aa3a860733296463e0602b061acaeddf35aa14515",
+    "isolatedHtmlSha256": "b6326da6e4d012a4c6385c40cb6a5254db44630ca0d66abe97aad4020da1b6b1",
+    "exactlyTwoFullDocumentDifferences": [
+      "<script src=\"https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit\" defer></script>",
+      "<div class=\"turnstile-slot\"></div>"
+    ],
+    "allOtherHtmlBytesEqual": true,
+    "newParagraphPresent": true,
+    "ownSiteRequests": 2,
+    "collectionEligibleRequests": 1,
+    "eligibleRequestReferralExcluded": true,
+    "noJavascriptExecuted": true
+  },
+  "localPreview": {
+    "exactDownloadedHtml": true,
+    "isolatedAssets": true,
+    "newParagraphVisible": true,
+    "productionJavaScriptOrRumReceiptMeasured": false
+  },
+  "ownedTailStopped": true,
+  "ownedPreviewStopped": true,
+  "temporaryPreviewTabClosed": true,
+  "publicReportFills": 0,
+  "ownerMarkPosts": 0,
+  "newHumanLabels": 0,
+  "providerRuntime": "Node.js 24.22.1 reported by build",
+  "localRuntime": "Node.js 24.14.1 pinned for local checks",
+  "privateReadPlanArchive": {
+    "files": 6,
+    "manifestSha256": "386b959554eb0bb40a3c4b8dda518fba86b780616547bd62fd08ed44b84041c2",
+    "beforeControlsAndSelect": true
+  },
+  "privateConcreteReadPlanArchive": {
+    "files": 5,
+    "manifestSha256": "cd698f60edcfa04729607d5b2987689da6e30c7882f72fdf1efc3e0aed2b8941",
+    "beforeProductionSelect": true
+  },
+  "privateReleaseArchive": {
+    "files": 36,
+    "manifestSha256": "223189e51545c5a7cf4a2230c2bff30a5e26b445101c518f0c0018a226d97dc1",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "offlineCorrections": {
+    "nativeQueryFixture": "Initial traffic-class literal corrected from ai-agent to existing ai before production SELECT.",
+    "receiptRead": "Closed readerKind is a string, not an object; corrected offline without another SELECT.",
+    "htmlComparison": "Full-document equality correctly rejected: local env omitted two Turnstile hooks. Exact Markdown, article element and remaining document bytes then checked without another HTTP fetch."
+  },
+  "limits": [
+    "Both client declarations were agent supplied; no genuine Parallel action, human trigger, managed-provider accuracy or population rate is measured.",
+    "Receipt/row identity is exact for these two controls only; the nineteen historical publisher contexts still have no authenticated D1 joins.",
+    "No production signed Parallel positive was generated, and its documented signing registry remains unconfigured.",
+    "The served article content and Markdown agree; full-document byte equality fails because the local build omitted exactly two production Turnstile hooks.",
+    "Native build UI says Node 24.22.1 while local checks use pinned 24.14.1; runtime equivalence is not claimed.",
+    "Six reported reads covers the direct SELECT only; ingestion, build/provider UI activity and other database work are additional.",
+    "Acceptance covers cc7c5a9 and the observed version, not every later documentation receipt deployment."
+  ]
+}
