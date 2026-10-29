@@ -1,0 +1,135 @@
+{
+  "checkedAt": "2026-10-29T20:19:58.650503+00:00",
+  "sourceCommit": "5247fc4830ca616f4d12bc398cae9dc61ad85e6b",
+  "build": "17189508-cd5b-48d1-b720-52eba2021b49",
+  "workerVersion": "6e69f6f9-4847-4cbe-9571-07e2cdf4e572",
+  "successfulSourceBuild": true,
+  "freshCliAllocationPercentage": 100,
+  "actualRequestsOnExpectedWorker": 6,
+  "runtime": {
+    "localNode": "24.14.1",
+    "providerBuildNode": "24.22.1",
+    "productionBinaryEquivalenceEstablished": false
+  },
+  "cacheVersion": "2026-10-29.5",
+  "report": {
+    "selection": "Fresh empty seven-day all-traffic path selection; no page visit to that path.",
+    "coldCache": "MISS",
+    "coldStatus": 200,
+    "includedObservations": 0,
+    "fetchMetadataSummaryPresentAndAllZero": true,
+    "calculation": {
+      "version": "2026-10-28.1",
+      "event": "stats-report-calculation",
+      "outcome": "returned",
+      "submittedStatements": 1,
+      "returnedResults": 1,
+      "metadata": "complete",
+      "counterScope": "last-attempt",
+      "reportedRowsRead": 94,
+      "reportedRowsWritten": 0,
+      "totalAttempts": 1,
+      "unexpectedWrites": false
+    },
+    "warmCache": "HIT",
+    "warmStatus": 200,
+    "warmCalculationRecords": 0,
+    "identicalResponseBodies": true,
+    "calculationTimePreserved": true,
+    "expiryPreserved": true,
+    "nativeMissingSelectionReads": 95,
+    "productionMissingSelectionReads": 94,
+    "serverEnforcedReadCap": false
+  },
+  "assets": [
+    {
+      "label": "stats-page",
+      "status": 200,
+      "bytes": 28473,
+      "sha256": "6c7bd2d5f50cc68031f503bed4c44a3dd3c00ca4dc81787bd24ddea02357e6dc",
+      "comparison": "new Fetch Metadata section only",
+      "matchesCheckedBuild": true
+    },
+    {
+      "label": "stats-script",
+      "status": 200,
+      "bytes": 92575,
+      "sha256": "801173fbfd56a0033c2115825bae451896335c158fb8f8e63ea7e36ec64ddf9b",
+      "comparison": "exact built bytes",
+      "matchesCheckedBuild": true
+    },
+    {
+      "label": "stats-style",
+      "status": 200,
+      "bytes": 8905,
+      "sha256": "5df7bffc2df2d795e804e32cb3f6013c161445028854d28cdecf4d5be4cdaa82",
+      "comparison": "exact built bytes",
+      "matchesCheckedBuild": true
+    },
+    {
+      "label": "article",
+      "status": 200,
+      "bytes": 16486,
+      "sha256": "5431b00b4268f46c81db41f03d2a84d13c727f35dff56e91684aef451dc2c80b",
+      "comparison": "exact built bytes",
+      "matchesCheckedBuild": true
+    }
+  ],
+  "article": {
+    "bodyWhitespaceWords": 1450,
+    "prompts": 31,
+    "sourceSha256": "7b44f831ba0d60113a5c6104f3de333ac842a9e5d1537e0833bec83151385a4e",
+    "servedMarkdownMatchesBuild": true,
+    "fullServedHtmlCompared": false
+  },
+  "controls": {
+    "linkageNegatives": 9,
+    "meterNegatives": 4,
+    "booleanCountNegative": 1,
+    "eligibilityControls": 6
+  },
+  "requests": {
+    "ownSiteGets": 6,
+    "agentAttemptsPerRequest": 1,
+    "diagnosticSelects": 0,
+    "reportStatements": 1,
+    "collectionEligibleRequests": 0,
+    "tailObservationAttempts": 0,
+    "ingestionReadback": false,
+    "humanLabels": 0
+  },
+  "tail": {
+    "stopped": true,
+    "elapsedSeconds": 18.08,
+    "ownedGroupMembersRemaining": 0,
+    "providerTailDeletionIndependentlyVerified": false,
+    "expandedCapture": false
+  },
+  "privateEvidence": {
+    "data": {
+      "files": 107,
+      "bytes": 40810458,
+      "manifestSha256": "5247033c9fc28cf7572a72bd54acd5c093caf8ffafb59b73812b631ce61bcdcc"
+    },
+    "plan": {
+      "files": 11,
+      "manifestSha256": "9cc2ec1ace6a0ea66146c7fff1e6e3a7bb3cb0aae73989ba9a6e24731b370d8e"
+    },
+    "release": {
+      "files": 65,
+      "bytes": 392324,
+      "manifestSha256": "69aad834b98fdede93834e578a2fb3dd42421ce76bceaa4de7485733f2fb1a4d"
+    }
+  },
+  "reviewDate": "2026-10-31",
+  "automaticDeletion": false,
+  "goalAchieved": false,
+  "humanTrialsDeferred": true,
+  "limits": [
+    "Empty production selection proves response contract and one calculation/cache reuse, not populated report prevalence or historical classification correctness.",
+    "The matched six traces are provider evidence, not an independent wire capture or a global Ray uniqueness guarantee.",
+    "The new stats HTML section, JS, CSS and direct article Markdown are checked; no fresh production browser rendering or whole-HTML equality claim.",
+    "One complete last-attempt meter does not establish account-wide billing or global cache coverage.",
+    "No human/device accuracy, request-level native managed-verifier agreement or R1 attribution follows."
+  ]
+}

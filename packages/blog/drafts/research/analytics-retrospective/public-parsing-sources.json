@@ -40,7 +40,8 @@
     "initialCandidateReads": 33247,
     "groupedCandidateReads": 25857,
     "selection": "7d, all traffic, /fixture",
-    "scope": "Same synthetic stored observations; private captures preserve both SQL statements. Final 25-case fixture remains separate."
+    "scope": "Same synthetic stored observations; private captures preserve both SQL statements. Final 25-case fixture remains separate.",
+    "storedInputsAndSchemaIdentical": true
   },
   "privateEvidence": {
     "files": 107,

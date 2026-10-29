@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T20:13:44.202928+00:00",
-  "sourceBaseline": "e5fbbd72e1966ce88bd4325529e28d6c2d355e90",
+  "checkedAt": "2026-10-29T20:19:58.650503+00:00",
+  "sourceBaseline": "5247fc4830ca616f4d12bc398cae9dc61ad85e6b",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,27 +45,27 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Accept exact-source activation, then one frozen empty-path calculation and one same-key cache request plus ineligible stats/article assets. No human trials. Preserve meters and cache/activation limits separately.",
+  "nextBoundedAction": "Native-test and freeze the next new-ID delta from Research 85\u2019s upper bound, keeping collection/classifier profiles distinct. Reuse saved evidence before bounded exact-context recovery. Human trials stay deferred.",
   "article": {
     "bodyWhitespaceWords": 1450,
     "prompts": 31,
     "sourceSha256": "7b44f831ba0d60113a5c6104f3de333ac842a9e5d1537e0833bec83151385a4e",
     "unchanged": false,
-    "freshServedCheck": false,
-    "publicationReceipt": "metadata-collector-release.json",
-    "servedMatchesCheckedBuild": false,
-    "lastServedCheckReceipt": "metadata-collector-release.json",
-    "publicationStatus": "Research 92 Browser signals and unassessed-history sentence checked locally; source delivery and served acceptance pending.",
-    "previousPublicationReceipt": "fetch-metadata-parsing-release.json",
-    "servedMatchScope": "Exact direct Markdown; no fresh served HTML/layout or per-request publication version trace.",
+    "freshServedCheck": true,
+    "publicationReceipt": "public-parsing-release.json",
+    "servedMatchesCheckedBuild": true,
+    "lastServedCheckReceipt": "public-parsing-release.json",
+    "publicationStatus": "Research 92 concise Browser signals/history sentence published; exact served direct Markdown matches the isolated build at 1450 words/31 prompts.",
+    "previousPublicationReceipt": "metadata-collector-release.json",
+    "servedMatchScope": "Exact direct Markdown. Stats new section/JS/CSS also checked separately; no production browser layout or full HTML equality claim.",
     "localBuildAccepted": true,
     "localBuildReceipt": "public-parsing-checks.json"
   },
   "runtimeUnchanged": false,
-  "productionStatements": 0,
+  "productionStatements": 1,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": false,
+  "liveAccountInspection": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -756,6 +756,13 @@
     "collectorSemanticsChanged": false,
     "humanLabels": 0,
     "receipt": "public-parsing-checks.json",
-    "productionAccepted": false
-  }
+    "productionAccepted": true,
+    "releaseReceipt": "public-parsing-release.json",
+    "emptySelectionReads": 94,
+    "warmCache": "HIT",
+    "populationPrevalenceMeasured": false
+  },
+  "ownSiteGetRequests": 6,
+  "collectionEligibleRequests": 0,
+  "diagnosticSelects": 0
 }
