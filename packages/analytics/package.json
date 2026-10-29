@@ -21,7 +21,9 @@
     "./forwarded-purpose": "./src/forwarded-purpose.ts",
     "./retained-signature-audit": "./src/retained-signature-audit.ts",
     "./native-bot-comparison": "./src/native-bot-comparison.ts",
-    "./fetch-metadata-summary": "./src/fetch-metadata-report-contract.ts"
+    "./fetch-metadata-summary": "./src/fetch-metadata-report-contract.ts",
+    "./article-reach": "./src/article-reach.ts",
+    "./article-reach-contract": "./src/article-reach-contract.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",

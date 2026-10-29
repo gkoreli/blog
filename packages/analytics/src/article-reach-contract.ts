@@ -1,0 +1,124 @@
+/** Request evidence for editorial decisions; no reader, session or identity claims. */
+export const ARTICLE_REACH_VERSION = '2026-10-29.1';
+export const REACH_METRIC_KEYS = ['views', 'externalViews', 'internalViews', 'unattributedViews', 'unknownSourceViews', 'largestSourceViews', 'unrecognizedTimeViews'] as const;
+export interface ReachMetrics {
+  views: number;
+  externalViews: number;
+  internalViews: number;
+  unattributedViews: number;
+  unknownSourceViews: number;
+  largestSourceViews: number;
+  unrecognizedTimeViews: number;
+}
+export interface ReachArticle {
+  path: string;
+  title: string;
+  publishedOn: string;
+}
+export interface ArticleReachReport {
+  version: typeof ARTICLE_REACH_VERSION;
+  period: { startInclusive: string; endExclusive: string; updatedAt: string; timeZone: 'UTC' };
+  selection: 'stored-browser-signals';
+  catalogueSize: number;
+  site: ReachMetrics;
+  articleTotals: ReachMetrics;
+  weeks: Array<{ startInclusive: string; endExclusive: string; site: ReachMetrics; articles: ReachMetrics }>;
+  articles: Array<ReachArticle & { totals: ReachMetrics; weeks: ReachMetrics[] }>;
+  largestExternalSource: { selection: 'largest-in-whole-window'; name: string | null; views: number };
+  classification: { recordedProfiles: number; unversionedViews: number };
+  referralPolicy: { version: string; sha256: string; excludedViews: number };
+}
+
+export function emptyReachMetrics(): ReachMetrics {
+  return { views: 0, externalViews: 0, internalViews: 0, unattributedViews: 0, unknownSourceViews: 0, largestSourceViews: 0, unrecognizedTimeViews: 0 };
+}
+function record(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+function keys(value: Record<string, unknown>, expected: readonly string[]): boolean {
+  return Object.keys(value).length === expected.length && expected.every(key => Object.hasOwn(value, key));
+}
+function count(value: unknown): value is number { return typeof value === 'number' && Number.isSafeInteger(value) && value >= 0; }
+export function reachDay(value: unknown): value is string {
+  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
+    && Number.isFinite(Date.parse(value + 'T00:00:00Z')) && new Date(value + 'T00:00:00Z').toISOString().slice(0, 10) === value;
+}
+export function validReachCatalogue(value: unknown): value is ReachArticle[] {
+  if (!Array.isArray(value) || value.length === 0 || value.length > 256) return false;
+  const paths = new Set<string>();
+  return value.every(post => {
+    if (!record(post) || !keys(post, ['path', 'title', 'publishedOn'])
+      || typeof post.path !== 'string' || post.path.length > 256 || !/^\/[a-z0-9]+(?:-[a-z0-9]+)*$/.test(post.path)
+      || typeof post.title !== 'string' || post.title.trim().length === 0 || post.title.length > 240
+      || !reachDay(post.publishedOn) || paths.has(post.path)) return false;
+    paths.add(post.path); return true;
+  });
+}
+function metrics(value: unknown): value is ReachMetrics {
+  if (!record(value) || !keys(value, REACH_METRIC_KEYS) || !REACH_METRIC_KEYS.every(key => count(value[key]))) return false;
+  // Narrow individually rather than trusting a cast after generic key iteration.
+  const { views, externalViews, internalViews, unattributedViews, unknownSourceViews, largestSourceViews, unrecognizedTimeViews } = value;
+  return count(views) && count(externalViews) && count(internalViews) && count(unattributedViews) && count(unknownSourceViews)
+    && count(largestSourceViews) && count(unrecognizedTimeViews)
+    && externalViews + internalViews + unattributedViews + unknownSourceViews === views
+    && largestSourceViews <= externalViews && unrecognizedTimeViews <= views;
+}
+function sum(rows: ReachMetrics[]): ReachMetrics {
+  const total = emptyReachMetrics();
+  for (const row of rows) for (const key of REACH_METRIC_KEYS) total[key] += row[key];
+  return total;
+}
+function contained(part: ReachMetrics, whole: ReachMetrics): boolean { return REACH_METRIC_KEYS.every(key => part[key] <= whole[key]); }
+function equal(left: ReachMetrics, right: ReachMetrics): boolean { return REACH_METRIC_KEYS.every(key => left[key] === right[key]); }
+function completedWeeks(weeks: ReachMetrics[], total: ReachMetrics): boolean {
+  const combined = sum(weeks);
+  return weeks.length === 4 && weeks.every(week => week.unrecognizedTimeViews === 0)
+    && contained(combined, total) && combined.views + total.unrecognizedTimeViews === total.views;
+}
+
+/** Reject stale, incomplete or contradictory responses at both server and browser boundaries. */
+export function consistentArticleReach(value: unknown): value is ArticleReachReport {
+  if (!record(value) || !keys(value, ['version', 'period', 'selection', 'catalogueSize', 'site', 'articleTotals', 'weeks', 'articles', 'largestExternalSource', 'classification', 'referralPolicy'])
+    || value.version !== ARTICLE_REACH_VERSION || value.selection !== 'stored-browser-signals'
+    || !metrics(value.site) || !metrics(value.articleTotals) || !contained(value.articleTotals, value.site)) return false;
+  const { period, classification, referralPolicy, largestExternalSource } = value;
+  if (!record(period) || !keys(period, ['startInclusive', 'endExclusive', 'updatedAt', 'timeZone'])
+    || !reachDay(period.startInclusive) || !reachDay(period.endExclusive) || period.timeZone !== 'UTC'
+    || typeof period.updatedAt !== 'string' || !Number.isFinite(Date.parse(period.updatedAt))) return false;
+  const start = Date.parse(period.startInclusive + 'T00:00:00Z'), end = Date.parse(period.endExclusive + 'T00:00:00Z');
+  const updated = new Date(period.updatedAt);
+  if (end - start !== 28 * 86_400_000 || updated.toISOString() !== period.updatedAt || period.updatedAt.slice(0, 10) !== period.endExclusive) return false;
+  if (!record(classification) || !keys(classification, ['recordedProfiles', 'unversionedViews']) || !count(classification.recordedProfiles)
+    || !count(classification.unversionedViews) || classification.unversionedViews > value.site.views
+    || classification.recordedProfiles > value.site.views - classification.unversionedViews
+    || (classification.recordedProfiles === 0) !== (classification.unversionedViews === value.site.views)) return false;
+  if (!record(referralPolicy) || !keys(referralPolicy, ['version', 'sha256', 'excludedViews']) || typeof referralPolicy.version !== 'string'
+    || !/^\d{4}-\d{2}-\d{2}\.\d+$/.test(referralPolicy.version) || typeof referralPolicy.sha256 !== 'string' || !/^[0-9a-f]{64}$/.test(referralPolicy.sha256) || !count(referralPolicy.excludedViews)) return false;
+  if (!record(largestExternalSource) || !keys(largestExternalSource, ['selection', 'name', 'views']) || largestExternalSource.selection !== 'largest-in-whole-window'
+    || !(largestExternalSource.name === null || (typeof largestExternalSource.name === 'string' && largestExternalSource.name.length <= 253 && /^(?:[a-z0-9-]+\.)+[a-z0-9-]+$/.test(largestExternalSource.name)))
+    || largestExternalSource.views !== value.site.largestSourceViews || (largestExternalSource.views === 0 && largestExternalSource.name !== null)
+    || (value.site.largestSourceViews === 0) !== (value.site.externalViews === 0)) return false;
+  if (!Array.isArray(value.weeks) || value.weeks.length !== 4 || !Array.isArray(value.articles) || value.articles.length === 0 || value.articles.length > 256 || value.catalogueSize !== value.articles.length) return false;
+  const siteWeeks: ReachMetrics[] = [], articleWeeks: ReachMetrics[] = [];
+  for (let index = 0; index < 4; index++) {
+    const week: unknown = value.weeks[index];
+    if (!record(week) || !keys(week, ['startInclusive', 'endExclusive', 'site', 'articles']) || !metrics(week.site) || !metrics(week.articles)
+      || !contained(week.articles, week.site) || week.startInclusive !== new Date(start + index * 7 * 86_400_000).toISOString().slice(0, 10)
+      || week.endExclusive !== new Date(start + (index + 1) * 7 * 86_400_000).toISOString().slice(0, 10)) return false;
+    siteWeeks.push(week.site); articleWeeks.push(week.articles);
+  }
+  if (!completedWeeks(siteWeeks, value.site) || !completedWeeks(articleWeeks, value.articleTotals)) return false;
+  const catalogue: ReachArticle[] = [], totals: ReachMetrics[] = [], perWeek: ReachMetrics[][] = [[], [], [], []];
+  for (const article of value.articles) {
+    if (!record(article) || !keys(article, ['path', 'title', 'publishedOn', 'totals', 'weeks']) || typeof article.path !== 'string'
+      || typeof article.title !== 'string' || typeof article.publishedOn !== 'string' || !metrics(article.totals)
+      || !Array.isArray(article.weeks) || !article.weeks.every(metrics) || !completedWeeks(article.weeks, article.totals)) return false;
+    catalogue.push({ path: article.path, title: article.title, publishedOn: article.publishedOn }); totals.push(article.totals);
+    for (let i = 0; i < 4; i++) {
+      const week = article.weeks[i], peers = perWeek[i];
+      if (!week || !peers) return false;
+      peers.push(week);
+    }
+  }
+  return validReachCatalogue(catalogue) && equal(sum(totals), value.articleTotals) && perWeek.every((week, i) => equal(sum(week), articleWeeks[i] ?? emptyReachMetrics()));
+}

@@ -34,6 +34,7 @@ export const CLIENT_ENTRY = join(SRC, 'client', 'main.ts');
 
 /** packages/blog/src/client/stats.ts — stats page entry point (loads only on /stats) */
 export const STATS_ENTRY = join(SRC, 'client', 'stats.ts');
+export const ARTICLE_REACH_ENTRY = join(SRC, 'client', 'article-reach.ts');
 
 /** packages/blog/src/client/immersive.ts — rich post components (loads only on immersive posts) */
 export const IMMERSIVE_ENTRY = join(SRC, 'client', 'immersive.ts');
@@ -47,7 +48,7 @@ export const CANVAS_ENTRY = join(SRC, 'client', 'canvas.ts');
 /** All esbuild entry points — single source of truth for dev and prod builds */
 export const OWNER_ENTRY = join(SRC, 'client', 'owner.ts');
 
-export const ESBUILD_ENTRIES = [OWNER_ENTRY, CLIENT_ENTRY, STATS_ENTRY, IMMERSIVE_ENTRY, ANIMATIONS_LAB_ENTRY, CANVAS_ENTRY, STYLES_SRC];
+export const ESBUILD_ENTRIES = [OWNER_ENTRY, CLIENT_ENTRY, STATS_ENTRY, ARTICLE_REACH_ENTRY, IMMERSIVE_ENTRY, ANIMATIONS_LAB_ENTRY, CANVAS_ENTRY, STYLES_SRC];
 
 /** Section archive route slugs */
 export const ESSAYS_PAGE = 'essays';

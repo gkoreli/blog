@@ -31,6 +31,7 @@ import {
 import { typedLinkHeaderValue } from '../lib/typed-links.js';
 import { negotiateRepresentation, type NegotiatedRepresentation } from './negotiate.js';
 import { createStatsHandler } from './stats-cache.js';
+import { createArticleReachHandler } from './article-reach.js';
 import { publicPagePaths } from './referrer-pages.js';
 
 /** Merged bindings for the packages composed by this Worker. */
@@ -41,6 +42,11 @@ const cachedStats = createStatsHandler({
   put: (request, response) => caches.default.put(request, response),
 }, (request, env: Env) => handleStats(request, env, event => console.info('stats-report-calculation', event)), {
   onOutcome: event => console.info('stats-report-cache', event),
+});
+
+const cachedArticleReach = createArticleReachHandler({
+  match: request => caches.default.match(request),
+  put: (request, response) => caches.default.put(request, response),
 });
 
 function trailingSegment(pathname: string, prefix: string): string {
@@ -205,6 +211,7 @@ export default {
     if (pathname === '/api/stats' && method === 'GET') {
       return cachedStats(request, env);
     }
+    if (pathname === '/api/readership') return cachedArticleReach(request, env);
     if (pathname === '/api/owner') {
       return handleOwner(request, env);
     }

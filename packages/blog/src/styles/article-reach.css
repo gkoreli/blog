@@ -1,0 +1,22 @@
+@import './stats.css';
+
+.article-reach header { margin-bottom: 1.5rem; }
+.article-reach h1 { font-size: 1.8rem; }
+.article-reach a { color: var(--color-link); }
+.article-reach .stats-section-note { font-size: 0.78rem; line-height: 1.65; color: var(--color-text-muted); margin: 0.65rem 0; }
+.article-reach .stats-totals { gap: 0.6rem; }
+.article-reach .stats-card { flex-basis: 130px; padding: 0.8rem; }
+.article-reach .stats-card-value { font-size: 1.5rem; }
+.reach-table { overflow-x: auto; margin: 0.8rem 0; }
+.reach-table:focus-visible { outline: 2px solid var(--color-link); outline-offset: 2px; }
+.reach-table table { width: 100%; border-collapse: collapse; font-size: 0.82rem; line-height: 1.5; }
+.reach-table caption { text-align: left; color: var(--color-text-muted); margin-bottom: 0.6rem; }
+.reach-table th, .reach-table td { padding: 0.6rem 0.45rem; border-bottom: 1px solid var(--color-border); vertical-align: top; text-align: right; font-variant-numeric: tabular-nums; }
+.reach-table th:first-child { text-align: left; min-width: 15rem; }
+.reach-table thead th { color: var(--color-text-muted); font-weight: 500; }
+#reach-articles table { min-width: 40rem; }
+#reach-weeks table { min-width: 38rem; }
+.reach-published { display: block; margin-top: 0.3rem; font-weight: 400; color: var(--color-text-muted); font-size: 0.74rem; }
+.reach-sort { font-size: 0.82rem; }
+.reach-sort select { max-width: 100%; margin: 0.3rem 0.4rem; padding: 0.35rem; background: var(--color-bg); color: var(--color-text); border: 1px solid var(--color-border); border-radius: 0.25rem; }
+.reach-sort select:focus-visible { outline: 2px solid var(--color-link); outline-offset: 2px; }

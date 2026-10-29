@@ -13,6 +13,7 @@ export function statsPage() {
     <div>
       <h1>Stats</h1>
       <p class="stats-intro">A public view of pages served by this site.</p>
+      <p class="stats-section-note"><a href="/stats/readership">Article reach and completed-week source comparisons</a></p>
       <p class="stats-section-note">Classifications describe request signals and declared roles. Browser signals can come from browsers, automated clients or relays; they do not identify people.</p>
     </div>
     <div class="stats-controls" aria-label="Stats filters">

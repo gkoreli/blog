@@ -147,6 +147,8 @@ test('eligibility accepts HTML and negotiated Markdown page GETs but rejects dir
   assert.equal(isEligiblePageResponse(request('/article.md'), markdown, 'markdown'), false);
   assert.equal(isEligiblePageResponse(request('/api/stats'), html, 'html'), false);
   assert.equal(isEligiblePageResponse(request('/stats'), html, 'html'), false);
+  assert.equal(isEligiblePageResponse(request('/stats/readership'), html, 'html'), false);
+  assert.equal(isEligiblePageResponse(request('/api/readership'), html, 'html'), false);
   assert.equal(isEligiblePageResponse(request('/article', { method: 'HEAD' }), html, 'html'), false);
   assert.equal(isEligiblePageResponse(request('/article', { headers: { Purpose: 'prefetch' } }), html, 'html'), false);
   assert.equal(isEligiblePageResponse(request('/article'), new Response('no', { status: 500, headers: { 'Content-Type': 'text/html' } }), 'html'), false);

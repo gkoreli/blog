@@ -4,7 +4,7 @@ import { z } from 'zod';
 // from the published posts.json asset, never from the incoming Referer value.
 const fixedPaths = [
   '/', '/about', '/engineering', '/essays', '/oss-radar', '/privacy', '/license',
-  '/stats', '/design-language', '/animations-lab',
+  '/stats', '/stats/readership', '/design-language', '/animations-lab',
 ];
 const publicPath = z.string().regex(/^\/[a-z0-9-]+(?:\/prompts)?$/);
 const indexSchema = z.array(z.object({ url: publicPath, prompts: publicPath.optional() }));

@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-29T21:20:00.697Z",
+  "sourceManifestSha256": "cdb08bd84b2ff00c05fc60174dfe23d73c5297245b3f660fa496ad2206a4a23e",
+  "frozenRows": 1463,
+  "articleComparisons": 32,
+  "catalogueArticles": 33,
+  "weeklyAndSourceMetricsEqual": true,
+  "privateValuesAbsent": true,
+  "nativeMeter": {
+    "version": "2026-10-28.1",
+    "event": "stats-report-calculation",
+    "outcome": "returned",
+    "submittedStatements": 1,
+    "returnedResults": 1,
+    "metadata": "partial",
+    "counterScope": "last-attempt",
+    "reportedRowsRead": 26574,
+    "reportedRowsWritten": 0,
+    "totalAttempts": null,
+    "unexpectedWrites": false
+  },
+  "analysisRelation": "Selected scalar fields with synthetic defaults for unselected required columns; not a complete production snapshot or new production read.",
+  "productionCalls": 0,
+  "humanLabels": 0
+}

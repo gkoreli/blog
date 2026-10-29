@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-29T21:08:38.513868+00:00",
-  "sourceBaseline": "c0f2ce46dfe40d6eac0f1ea991262b101ba9e0a5",
+  "checkedAt": "2026-10-29T21:28:47.421547+00:00",
+  "sourceBaseline": "57b7b37eeb8a37c9afeb60df1378ae8bbf949c78",
   "goalAchieved": false,
   "previousTurn": "progress",
-  "scope": "Research 93 frozen new-ID audit plus owner-directed Research 94 readership/editorial analysis; original correctness requirements retained. Latest top-level counters describe only these two slices.",
+  "scope": "Research 95 implements article/source reach visibility from Research 94. Latest top-level counters cover this local implementation slice; original identity/correctness requirements retained.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -41,12 +41,12 @@
     "R1 operator/authenticity/trigger attribution",
     "Historical proof/nonce recovery and whole-history cryptographic correctness",
     "Applicable privacy basis, aggregate-preserving retention, rights/contact and account/provider review",
-    "Authenticated search query/page comparisons, sustained readership and article-attributed usefulness/following; owner-facing article/source growth view remains prepared, not implemented."
+    "Authenticated search query/page comparisons, sustained readership and article-attributed usefulness/following; article/source growth view is locally implemented with production acceptance pending."
   ],
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Authenticated Search Console page/query comparisons when the owner signs in; independently prepare the article-focused completed-week/source-concentration report against frozen evidence, with native read/cache acceptance. Do not substitute bot-catalogue expansion for editorial decisions. Human trials stay deferred.",
+  "nextBoundedAction": "Deliver exact source, verify Worker activation, then freeze a small live API/cache/assets plan with matched native meter evidence. Continue authenticated Search Console evidence when the owner signs in. Human trials stay deferred.",
   "article": {
     "bodyWhitespaceWords": 1450,
     "prompts": 31,
@@ -62,11 +62,11 @@
     "localBuildAccepted": true,
     "localBuildReceipt": "public-parsing-checks.json"
   },
-  "runtimeUnchanged": true,
-  "productionStatements": 5,
+  "runtimeUnchanged": false,
+  "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": true,
+  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -170,13 +170,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 17745,
+  "productionReportedReads": 0,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No collection-eligible own-site request; no D1 ingestion readback. Natural/provider activity remains additional."
   },
-  "newVisitsScope": "No own-site visits, collector trials, report fills, human labels or new collection in Research 93/94. Earlier live/publication/control cohorts retain their own receipts.",
+  "newVisitsScope": "Synthetic local browser preview only, using the saved sanitized report. No production request or human/device label.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -382,7 +382,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Fresh same-binding Wrangler queries/metadata for the audits and signed-out Google account page observed in IAB. No authenticated Search Console property, account setting, entitlement or native verdict changed.",
+  "liveAccountInspectionScope": "No fresh production behavior or account inspection in local implementation.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -629,9 +629,9 @@
     "exactRetainedRequestVersionMatched": true,
     "liveEmptyCounters": 44
   },
-  "productionDirectDiagnosticSelects": 5,
+  "productionDirectDiagnosticSelects": 0,
   "productionReportCalculations": 0,
-  "productionReadScope": "Research 93 two frozen new-ID SELECTs: 194 reads. Research 94 two Browser window SELECTs: 17548; one aggregate subscriber SELECT: 3. All one agent/provider attempt, zero writes. No whole-table census or search-query data refreshed.",
+  "productionReadScope": "No production calculation or SELECT in the Research 95 local implementation slice. Research 93/94 retain their own 17745-read receipt.",
   "unresolvedMetadata": {
     "research": "88-unresolved-metadata-and-retained-inputs.md",
     "production": "unresolved-metadata-production.json",
@@ -659,7 +659,7 @@
     "checks": "unresolved-metadata-checks.json",
     "release": "unresolved-metadata-release.json"
   },
-  "runtimeUnchangedScope": "Research 93/94 change offline diagnostic helpers, evidence and the decision brief; production collector/classifier/verifier/report/schema/configuration and article remain unchanged.",
+  "runtimeUnchangedScope": "New focused report/API/page and report-cache namespace; collector, classifier, verifier, schema, referral policy, optional collection and article unchanged.",
   "localMetadataRelay": {
     "research": "89-local-browser-relays-and-fetch-metadata.md",
     "experiment": "local-metadata-relay-experiment.json",
@@ -765,7 +765,7 @@
   },
   "ownSiteGetRequests": 0,
   "collectionEligibleRequests": 0,
-  "diagnosticSelects": 5,
+  "diagnosticSelects": 0,
   "evidenceDelta": {
     "research": "93-frozen-delta-and-reusable-evidence.md",
     "production": "evidence-delta-production.json",
@@ -817,7 +817,19 @@
     "statements": 3,
     "runtimeChanged": false,
     "articleChanged": false,
-    "sourceAwareReportImplemented": false,
-    "privateDataManifestSha256": "cdb08bd84b2ff00c05fc60174dfe23d73c5297245b3f660fa496ad2206a4a23e"
+    "sourceAwareReportImplemented": true,
+    "privateDataManifestSha256": "cdb08bd84b2ff00c05fc60174dfe23d73c5297245b3f660fa496ad2206a4a23e",
+    "sourceAwareReportAcceptance": "Research 95 local checks accepted; production activation/API/cache/assets pending"
+  },
+  "articleReach": {
+    "research": "95-article-reach-report.md",
+    "native": "article-reach-native.json",
+    "frozen": "article-reach-frozen.json",
+    "checks": "article-reach-checks.json",
+    "reportVersion": "2026-10-29.1",
+    "productionAccepted": false,
+    "humanLabels": 0,
+    "articleChanged": false,
+    "collectorChanged": false
   }
 }
