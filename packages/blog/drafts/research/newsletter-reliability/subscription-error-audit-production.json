@@ -1,0 +1,318 @@
+{
+  "checkedAt": "2026-10-29T23:00:26.119Z",
+  "sourceBaseline": "c0dd9504ba190830c1f844632acb0e33bb875c05",
+  "window": {
+    "start": "2026-10-01 00:00:00",
+    "end": "2026-10-29 22:59:00"
+  },
+  "timeMeaning": "created_at is server ingestion time; client occurredAt not persisted",
+  "table": "client_errors",
+  "component": "subscribe_form",
+  "coverage": {
+    "rowKind": "coverage",
+    "day": "",
+    "stage": "all-retained-component",
+    "reportCount": 45,
+    "windowReports": 35,
+    "outsideWindowReports": 10,
+    "invalidTimeReports": 0,
+    "missingBuildReports": 35,
+    "unexpectedTypeReports": 0
+  },
+  "stageCounts": {
+    "subscribe_widget_configuration_missing": 0,
+    "subscribe_widget_unavailable": 0,
+    "subscribe_widget_error": 35,
+    "subscribe_widget_expired": 0,
+    "subscribe_widget_timeout": 0,
+    "subscribe_widget_unsupported": 0,
+    "subscribe_widget_render_exception": 0,
+    "subscribe_widget_execute_exception": 0,
+    "subscribe_widget_deadline": 0,
+    "subscribe_widget_empty_token": 0,
+    "subscribe_request_timeout": 0,
+    "subscribe_api_rejected": 0,
+    "subscribe_network_error": 0,
+    "subscribe_widget_remove_exception": 0,
+    "other-stage": 0
+  },
+  "dailyGroups": [
+    {
+      "rowKind": "stage",
+      "day": "2026-10-01",
+      "stage": "subscribe_widget_error",
+      "reportCount": 2,
+      "windowReports": 2,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 2,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-02",
+      "stage": "subscribe_widget_error",
+      "reportCount": 1,
+      "windowReports": 1,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 1,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-03",
+      "stage": "subscribe_widget_error",
+      "reportCount": 1,
+      "windowReports": 1,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 1,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-04",
+      "stage": "subscribe_widget_error",
+      "reportCount": 1,
+      "windowReports": 1,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 1,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-05",
+      "stage": "subscribe_widget_error",
+      "reportCount": 2,
+      "windowReports": 2,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 2,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-06",
+      "stage": "subscribe_widget_error",
+      "reportCount": 2,
+      "windowReports": 2,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 2,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-07",
+      "stage": "subscribe_widget_error",
+      "reportCount": 4,
+      "windowReports": 4,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 4,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-08",
+      "stage": "subscribe_widget_error",
+      "reportCount": 2,
+      "windowReports": 2,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 2,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-09",
+      "stage": "subscribe_widget_error",
+      "reportCount": 2,
+      "windowReports": 2,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 2,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-10",
+      "stage": "subscribe_widget_error",
+      "reportCount": 1,
+      "windowReports": 1,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 1,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-11",
+      "stage": "subscribe_widget_error",
+      "reportCount": 1,
+      "windowReports": 1,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 1,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-12",
+      "stage": "subscribe_widget_error",
+      "reportCount": 2,
+      "windowReports": 2,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 2,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-13",
+      "stage": "subscribe_widget_error",
+      "reportCount": 3,
+      "windowReports": 3,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 3,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-14",
+      "stage": "subscribe_widget_error",
+      "reportCount": 3,
+      "windowReports": 3,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 3,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-15",
+      "stage": "subscribe_widget_error",
+      "reportCount": 1,
+      "windowReports": 1,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 1,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-16",
+      "stage": "subscribe_widget_error",
+      "reportCount": 2,
+      "windowReports": 2,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 2,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-17",
+      "stage": "subscribe_widget_error",
+      "reportCount": 1,
+      "windowReports": 1,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 1,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-18",
+      "stage": "subscribe_widget_error",
+      "reportCount": 1,
+      "windowReports": 1,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 1,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-19",
+      "stage": "subscribe_widget_error",
+      "reportCount": 1,
+      "windowReports": 1,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 1,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-20",
+      "stage": "subscribe_widget_error",
+      "reportCount": 1,
+      "windowReports": 1,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 1,
+      "unexpectedTypeReports": 0
+    },
+    {
+      "rowKind": "stage",
+      "day": "2026-10-21",
+      "stage": "subscribe_widget_error",
+      "reportCount": 1,
+      "windowReports": 1,
+      "outsideWindowReports": 0,
+      "invalidTimeReports": 0,
+      "missingBuildReports": 1,
+      "unexpectedTypeReports": 0
+    }
+  ],
+  "sqlSha256": "8fd458b35938391d62fc0cc6f04a7a02e95343538a93f1f279a72796ef5106a2",
+  "planManifestSha256": "ceedc2bdd742ed521d6084631c218835a74246b2886a2cf540b4a24aa9378aa0",
+  "nativeReceiptSha256": "dd837a36a60f9aae36a70f8ccab2e8d3950ccbaf0c237278fc067edcd3db8af5",
+  "meter": {
+    "reportedRowsRead": 341,
+    "reportedRowsWritten": 0,
+    "providerTotalAttempts": 1,
+    "agentAttempts": 1,
+    "thresholdNotDatabaseCap": true
+  },
+  "retainedScopeCompleteBelowSentinel": true,
+  "cap": {
+    "acceptedMaximum": 1000,
+    "overflowSentinel": 1001,
+    "databaseEnforcedReadCap": false,
+    "readReviewThreshold": 15000
+  },
+  "rawDiagnosticRecordsExported": 0,
+  "personalFieldsReturned": 0,
+  "controlledSiteVisits": 0,
+  "diagnosticWrites": 0,
+  "productionEmails": 0,
+  "humanLabels": 0,
+  "localAcceptance": {
+    "nativeFixtureRows": 12,
+    "transportNegatives": 8,
+    "siteTests": 129,
+    "workspaceTypes": true,
+    "idleWidgetCounterexample": {
+      "reports": 1,
+      "formSubmits": 0,
+      "challengeExecutions": 0,
+      "signupRequests": 0
+    },
+    "missingConfigurationInitializationSilent": true
+  },
+  "runtimeChanged": false,
+  "newProductionActivationClaim": false,
+  "historicalSignupLossEstablished": false,
+  "limits": [
+    "Stored reports can be repeated or spoofed and are not distinct attempts, people or bots.",
+    "No preserved event build, occurrence time, operation phase or provider error code for this cohort.",
+    "Delivery/persistence completeness and earliest affected release remain unknown.",
+    "Zero configuration-stage reports does not establish zero affected attempts."
+  ],
+  "privateDataManifestSha256": "0278725bbc293d80cc1390621d8ba65aa6ace2078a3e745e0cf0ca910d781edb"
+}

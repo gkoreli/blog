@@ -4,7 +4,7 @@ title: Close client error reporting gaps for Turnstile and subscription failures
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.781Z'
-updated_at: '2026-10-29T22:55:54.903961+00:00'
+updated_at: '2026-10-29T23:03:41.536731+00:00'
 type: task
 ---
 
@@ -24,3 +24,5 @@ The form now handles late/missing widgets, fresh retry identity, stale callbacks
 The authorized native Chrome flow passed a real Turnstile challenge and signup, preserving a usable form after the earlier service failure and generic 202. The server log's opaque attempt ID links the accepted request to its ledger entry. [Live receipt](../../packages/blog/drafts/research/newsletter-reliability/15-live-signup-acceptance.md). This does not complete occurredAt/build identity, browser-to-server error correlation, early bootstrap coverage or shared logger transport/ingestion acceptance listed above; those remain open.
 
 **October 29 rendered-key acceptance:** [Receipt](../../packages/blog/drafts/research/newsletter-reliability/rendered-sitekey-release.json) joins source `75bb999` / successful build / full allocated Worker. Excluded HTTP and agent-browser DOM checks confirm public-key delivery and handler initialization; no widget readiness, challenge, email or human accuracy claim. Existing reporting and broader analytics requirements remain open.
+
+**October 29 retained-error audit:** [Evidence](../../packages/blog/drafts/research/newsletter-reliability/18-retained-widget-errors-and-conversion-limits.md) finds 35 generic widget-error reports in the fixed October window, all without build identity. A new idle-callback counterexample emits one report with no submit/execution/signup request; missing-key/slot controls assert silent initialization before a submission. All 129 site tests and workspace types pass. One native-tested production aggregate costs 341 reads/zero writes; no raw reports or new visits. Next: bounded operation-phase and provider-error metadata with missing/unknown states. Occurrence/build identity, correlation and delivery requirements above remain open; no historical attempt/human count is inferred.

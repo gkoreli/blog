@@ -183,6 +183,7 @@ for (const missing of ['sitekey', 'slot']) {
     if (missing === 'sitekey') delete h.form.dataset['turnstileSitekey'];
     else h.form.slot = null;
     h.initialize();
+    assert.equal(h.reports.length, 0, 'unconfigured initialization alone is silent');
     h.submit();
     assert.equal(h.requests.length, 0);
     assert.equal(h.reports[0]?.message, 'subscribe_widget_configuration_missing');
@@ -248,6 +249,22 @@ for (const [callbackName, stage] of [
     assert.doesNotMatch(JSON.stringify(h.reports), /private-callback-payload|challenge-token|example.invalid/);
   });
 }
+
+test('an idle widget error is a diagnostic without a submitted signup', t => {
+  const h = harness(t);
+  h.form.input.value = '';
+  h.initialize();
+  assert.equal(h.reports.length, 0);
+  const callback = h.options()['error-callback'];
+  assert.ok(callback);
+  callback('synthetic-widget-error');
+  assert.deepEqual(h.reports.map(event => event.message), ['subscribe_widget_error']);
+  assert.equal(h.executions.length, 0);
+  assert.equal(h.requests.length, 0);
+  assert.equal(h.form.input.value, '');
+  assert.equal(h.form.button.disabled, false);
+  assert.equal(h.timers.size, 0);
+});
 
 test('a synchronous render callback failure never starts execution or leaves a timer', t => {
   const h = harness(t, false);

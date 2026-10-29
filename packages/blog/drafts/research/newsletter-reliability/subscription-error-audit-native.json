@@ -1,0 +1,130 @@
+{
+  "checkedAt": "2026-10-29T22:59:52.168Z",
+  "window": {
+    "start": "2026-10-01 00:00:00",
+    "end": "2026-10-29 22:59:00"
+  },
+  "emptyAccepted": true,
+  "fixtureRows": 12,
+  "scopeRows": 11,
+  "windowRows": 6,
+  "invalidCanonicalTimes": 3,
+  "unrelatedRows": 4097,
+  "indexConfirmed": true,
+  "baseReads": 73,
+  "afterUnrelatedReads": 73,
+  "clippedReads": 7992,
+  "readReviewThreshold": 15000,
+  "databaseEnforcedReadCap": false,
+  "maximumAcceptedRows": 1000,
+  "clippingRejectedAt": 1001,
+  "transportNegatives": 8,
+  "allowlistedCurrentStages": 14,
+  "rawMessageProjection": false,
+  "writes": 0,
+  "sqlSha256": "8fd458b35938391d62fc0cc6f04a7a02e95343538a93f1f279a72796ef5106a2",
+  "plan": [
+    {
+      "id": 1,
+      "parent": 0,
+      "notused": 0,
+      "detail": "MERGE (UNION ALL)"
+    },
+    {
+      "id": 3,
+      "parent": 1,
+      "notused": 0,
+      "detail": "LEFT"
+    },
+    {
+      "id": 6,
+      "parent": 3,
+      "notused": 0,
+      "detail": "MATERIALIZE assessed"
+    },
+    {
+      "id": 9,
+      "parent": 6,
+      "notused": 0,
+      "detail": "MATERIALIZE bounded"
+    },
+    {
+      "id": 14,
+      "parent": 9,
+      "notused": 61,
+      "detail": "SEARCH client_errors USING INDEX idx_client_errors_component (component=?)"
+    },
+    {
+      "id": 32,
+      "parent": 6,
+      "notused": 49,
+      "detail": "SCAN bounded"
+    },
+    {
+      "id": 112,
+      "parent": 3,
+      "notused": 49,
+      "detail": "SCAN assessed"
+    },
+    {
+      "id": 160,
+      "parent": 3,
+      "notused": 0,
+      "detail": "SCALAR SUBQUERY 4"
+    },
+    {
+      "id": 164,
+      "parent": 160,
+      "notused": 0,
+      "detail": "MATERIALIZE eligible"
+    },
+    {
+      "id": 168,
+      "parent": 164,
+      "notused": 216,
+      "detail": "SCAN assessed"
+    },
+    {
+      "id": 187,
+      "parent": 160,
+      "notused": 214,
+      "detail": "SCAN eligible"
+    },
+    {
+      "id": 210,
+      "parent": 3,
+      "notused": 0,
+      "detail": "SCALAR SUBQUERY 5"
+    },
+    {
+      "id": 216,
+      "parent": 210,
+      "notused": 216,
+      "detail": "SCAN eligible"
+    },
+    {
+      "id": 239,
+      "parent": 1,
+      "notused": 0,
+      "detail": "RIGHT"
+    },
+    {
+      "id": 247,
+      "parent": 239,
+      "notused": 216,
+      "detail": "SCAN eligible"
+    },
+    {
+      "id": 249,
+      "parent": 239,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR GROUP BY"
+    },
+    {
+      "id": 326,
+      "parent": 239,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    }
+  ]
+}

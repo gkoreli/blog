@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-29T22:55:54.904849+00:00",
-  "sourceBaseline": "75bb999fe0fcb25b81dc926a232a2dad9b28e906",
+  "checkedAt": "2026-10-29T23:02:24.282370+00:00",
+  "sourceBaseline": "c0dd9504ba190830c1f844632acb0e33bb875c05",
   "goalAchieved": false,
   "previousTurn": "progress",
-  "scope": "Research97prompt provenance accepted; Research98public-key rendering repair deployed and accepted for key delivery/handler initialization. Full signup and original analytics requirements retained.",
+  "scope": "Retained subscription-error aggregate and labelled idle-callback counterexample; original analytics and readership requirements retained.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Native-test and freeze a bounded aggregate of retained subscription configuration-error reports, without identifiers or arbitrary messages; keep errors, attempts and human demand distinct. GSC login and Duck.ai terms approval remain pending; human trials deferred.",
+  "nextBoundedAction": "Implement and natively test bounded operation-phase/provider-error metadata with explicit unknown states; keep historical data unfilled and failures separate from readership. Occurrence/build identity and acknowledgment remain TASK-0125/0126. GSC login and Duck.ai terms approval pending; human trials deferred.",
   "article": {
     "bodyWhitespaceWords": 1450,
     "prompts": 31,
@@ -62,8 +62,8 @@
     "localBuildAccepted": true,
     "localBuildReceipt": "public-parsing-checks.json"
   },
-  "runtimeUnchanged": false,
-  "productionStatements": 0,
+  "runtimeUnchanged": true,
+  "productionStatements": 1,
   "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
@@ -95,7 +95,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 3,
+  "productionOwnSiteGets": 0,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -170,13 +170,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 0,
+  "productionReportedReads": 341,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No collection-eligible own-site request or ingestion readback. No per-request write trace; natural/provider activity additional."
   },
-  "newVisitsScope": "One earlier prefetch prompt-page GET plus one rendering-fix HTTP GET and one agent-browser navigation; browser assets/provider activity additional. No human visit.",
+  "newVisitsScope": "No own-site request or browser operation in the retained-error audit. Local callback labels are not added to population calibration.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -629,9 +629,9 @@
     "exactRetainedRequestVersionMatched": true,
     "liveEmptyCounters": 44
   },
-  "productionDirectDiagnosticSelects": 0,
+  "productionDirectDiagnosticSelects": 1,
   "productionReportCalculations": 0,
-  "productionReadScope": "One exactly captured controlled owner-page GET; web tool operation lacks an accepted native match. Browser assets/additional events are outside this page-level counter.",
+  "productionReadScope": "One one-attempt aggregate of retained subscribe_form reports; no raw records returned.",
   "unresolvedMetadata": {
     "research": "88-unresolved-metadata-and-retained-inputs.md",
     "production": "unresolved-metadata-production.json",
@@ -659,7 +659,7 @@
     "checks": "unresolved-metadata-checks.json",
     "release": "unresolved-metadata-release.json"
   },
-  "runtimeUnchangedScope": "Build-only template bindings/guard and tests; analytics collection/classification/verifier/report/schema unchanged. No server newsletter verification, credentials, limits or sender change.",
+  "runtimeUnchangedScope": "Only tests/research/status records changed; no collection, report, template, verifier, schema, server or client runtime change.",
   "localMetadataRelay": {
     "research": "89-local-browser-relays-and-fetch-metadata.md",
     "experiment": "local-metadata-relay-experiment.json",
@@ -718,7 +718,7 @@
     "productionCollectorReadbackReceipt": "metadata-collector-production.json",
     "productionCollectorReadbackScope": "Four matched requests on d65be377; the later article-only publication Worker is accepted separately, without repeating collector trials."
   },
-  "newControlledRequests": 3,
+  "newControlledRequests": 0,
   "liveMetadataControls": {
     "research": "91-live-metadata-controls-and-redacted-correlation.md",
     "native": "metadata-collector-native.json",
@@ -763,9 +763,9 @@
     "warmCache": "HIT",
     "populationPrevalenceMeasured": false
   },
-  "ownSiteGetRequests": 3,
+  "ownSiteGetRequests": 0,
   "collectionEligibleRequests": 0,
-  "diagnosticSelects": 0,
+  "diagnosticSelects": 1,
   "evidenceDelta": {
     "research": "93-frozen-delta-and-reusable-evidence.md",
     "production": "evidence-delta-production.json",
@@ -838,9 +838,9 @@
     "unmeteredCalculations": 1,
     "productionBrowserLayoutMeasured": false
   },
-  "productionStatementsScope": "No diagnostic D1 statement or report request in this slice.",
-  "productionReportedReadsCoverage": "No diagnostic statements to meter; no account-wide or normal/provider activity cost claim.",
-  "productionReadTotal": 0,
+  "productionStatementsScope": "One direct diagnostic aggregate SELECT; no report calculation or diagnostic writes.",
+  "productionReportedReadsCoverage": "341 reported query reads, not account-wide cost or distinct reports.",
+  "productionReadTotal": 341,
   "publicationDateRepair": {
     "receipt": "article-reach-date-checks.json",
     "siteTests": 120,
@@ -906,5 +906,26 @@
     "clientHandlerInitializationAccepted": true,
     "widgetReadinessEstablished": false,
     "browserTabClosed": true
+  },
+  "productionDiagnosticD1Statements": 1,
+  "retainedSubscriptionErrors": {
+    "research": "../newsletter-reliability/18-retained-widget-errors-and-conversion-limits.md",
+    "production": "../newsletter-reliability/subscription-error-audit-production.json",
+    "native": "../newsletter-reliability/subscription-error-audit-native.json",
+    "retainedComponentReports": 45,
+    "windowReports": 35,
+    "missingBuildReports": 35,
+    "genericWidgetErrors": 35,
+    "configurationStageReports": 0,
+    "historicalSignupLossEstablished": false,
+    "reportedReads": 341,
+    "reportedWrites": 0,
+    "statements": 1,
+    "siteTests": 129,
+    "localIdleReports": 1,
+    "localIdleSubmits": 0,
+    "localIdleSignupRequests": 0,
+    "runtimeChanged": false,
+    "humanLabels": 0
   }
 }
