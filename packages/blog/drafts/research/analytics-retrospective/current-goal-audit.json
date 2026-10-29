@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T18:39:30.490885+00:00",
-  "sourceBaseline": "fb83e99",
+  "checkedAt": "2026-10-29T18:58:38.733294+00:00",
+  "sourceBaseline": "e3f3f37",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -25,7 +25,8 @@
     "abstentions": 9,
     "humanFalsePositiveRate": null,
     "humanAbstentionRate": null,
-    "newEndToEndCollectorRun": false
+    "newEndToEndCollectorRun": false,
+    "scope": "Earlier twelve production automation controls, unchanged; local relay experiment is a separate cohort and not added to this denominator."
   },
   "delivered": [
     "Explicit unknown/conflict and exact declaration matching",
@@ -44,24 +45,24 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Prepare a local labelled automation experiment comparing an agent-operated browser direct request with a controlled relay that removes Fetch Metadata. Preserve both stages and count decisions/abstentions. Do not infer the historical cause or request human trials.",
+  "nextBoundedAction": "Audit current Fetch Metadata value trim/lowercase normalization against versioned Fetch Metadata and Structured Fields semantics. Native-test case variants, duplicates and invalid values before changing production classification. Keep human trials deferred.",
   "article": {
-    "bodyWhitespaceWords": 1407,
+    "bodyWhitespaceWords": 1427,
     "prompts": 31,
-    "sourceSha256": "d21b1c42552248dcd898bec484ae121c3b2320aad67b8db0477b1527d104f53c",
+    "sourceSha256": "edd80383e41d1f2e52127bce09411dc2c4ba916f61c4b05daa96d133191a3243",
     "unchanged": false,
-    "freshServedCheck": true,
-    "publicationReceipt": "unresolved-metadata-release.json",
-    "servedMatchesCheckedBuild": true,
+    "freshServedCheck": false,
+    "publicationReceipt": null,
+    "servedMatchesCheckedBuild": false,
     "lastServedCheckReceipt": "unresolved-metadata-release.json",
-    "publicationStatus": "Research 88 paragraph published and exact served Markdown accepted, 1407 words/31 prompts.",
-    "previousPublicationReceipt": "parallel-methods-release.json",
-    "servedMatchScope": "Fresh exact direct Markdown only; no new served article-HTML/layout check.",
+    "publicationStatus": "Research 89 replaces the existing uncertainty paragraph with retained-context recovery and the local relay result; source delivery/served acceptance pending.",
+    "previousPublicationReceipt": "unresolved-metadata-release.json",
+    "servedMatchScope": "No fresh served acceptance for this edit yet.",
     "localBuildAccepted": true,
-    "localBuildReceipt": "unresolved-metadata-checks.json"
+    "localBuildReceipt": "local-metadata-relay-checks.json"
   },
   "runtimeUnchanged": true,
-  "productionStatements": 1,
+  "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
@@ -168,13 +169,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 1453,
+  "productionReportedReads": 0,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No collection-eligible own-site requests; natural/provider activity additional and not attributed to the SELECT."
   },
-  "newVisitsScope": "No experimental own-site request or human label; one direct Markdown publication GET excluded by current eligibility control. No D1 ingestion readback.",
+  "newVisitsScope": "Fifteen agent-operated local browser trials and fifteen native receiver requests; twelve synthetic startup comparisons across three harness starts. No experimental own-site request or human label. Article publication acceptance remains separate.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -380,7 +381,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Read-only D1/observability and source-linked build, exact-version/fresh CLI allocation; one excluded direct Markdown GET matches the checked isolated build. No configuration changes.",
+  "liveAccountInspectionScope": "No production account read or configuration change in the local experiment.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -627,9 +628,9 @@
     "exactRetainedRequestVersionMatched": true,
     "liveEmptyCounters": 44
   },
-  "productionDirectDiagnosticSelects": 1,
+  "productionDirectDiagnosticSelects": 0,
   "productionReportCalculations": 0,
-  "productionReadScope": "Research 88 single bounded direct SELECT only; earlier metering remains in per-phase artifacts.",
+  "productionReadScope": "Research 89 local experiment; no production D1 statement. Earlier reported costs remain in phase-specific receipts.",
   "unresolvedMetadata": {
     "research": "88-unresolved-metadata-and-retained-inputs.md",
     "production": "unresolved-metadata-production.json",
@@ -657,5 +658,44 @@
     "checks": "unresolved-metadata-checks.json",
     "release": "unresolved-metadata-release.json"
   },
-  "runtimeUnchangedScope": "Research 88 investigation and article publication; earlier runtime changes retain their per-phase records."
+  "runtimeUnchangedScope": "Research 89 local harness and article edit; production collector/classifier/verifier/report behavior unchanged.",
+  "localMetadataRelay": {
+    "research": "89-local-browser-relays-and-fetch-metadata.md",
+    "experiment": "local-metadata-relay-experiment.json",
+    "sources": "local-metadata-relay-sources.json",
+    "labelledTrials": 15,
+    "knownAgentOperated": 15,
+    "humanLabels": 0,
+    "conditions": 5,
+    "repetitions": 3,
+    "nativeReceiverRequests": 15,
+    "exactUiNativePairs": 15,
+    "relayStageTriples": 12,
+    "nodeReplays": 30,
+    "negativeControls": 10,
+    "syntheticAsnKinds": {
+      "browser": 9,
+      "unresolved": 3,
+      "http-client": 3
+    },
+    "asnAbsentKinds": {
+      "unresolved": 12,
+      "http-client": 3
+    },
+    "operatorDecisions": 0,
+    "operatorAbstentions": 15,
+    "historicalCauseEstablished": false,
+    "productionNativeAgreementMeasured": false,
+    "productionRequests": 0,
+    "d1Statements": 0,
+    "nativeStartupComparisons": 12,
+    "initialTerminalExit": 130,
+    "initialGracefulReceipt": false,
+    "ownedPortsClosed": true,
+    "startupOnlyTtyShutdownExit": 0,
+    "nativeWorkerBundleUnchanged": true,
+    "runtimeChanged": false,
+    "articleChanged": true,
+    "checks": "local-metadata-relay-checks.json"
+  }
 }

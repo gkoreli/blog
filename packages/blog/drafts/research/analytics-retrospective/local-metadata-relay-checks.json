@@ -1,0 +1,63 @@
+{
+  "checkedAt": "2026-10-29T19:01:33.014896+00:00",
+  "sourceBaseline": "e3f3f37",
+  "mjsSyntax": "pass, both new scripts",
+  "contentValidation": {
+    "status": "pass",
+    "markdownPosts": 22
+  },
+  "nativeHarness": {
+    "labelledBrowserRuns": 1,
+    "browserTrials": 15,
+    "receiverRequests": 15,
+    "startupOnlyRuns": 2,
+    "startupComparisonsPerRun": 4,
+    "totalStartupComparisons": 12,
+    "workerBundleUnchanged": true
+  },
+  "analysis": {
+    "exactUiNativePairs": 15,
+    "exactRelayTriples": 12,
+    "nodeReplays": 30,
+    "negativeControls": 10,
+    "allPass": true
+  },
+  "isolatedBuild": {
+    "checkedAt": "2026-10-29T19:00:40.488503+00:00",
+    "isolated": true,
+    "sharedDistTouched": false,
+    "postsBuilt": 33,
+    "articleWords": 1427,
+    "prompts": 31,
+    "articleSourceSha256": "edd80383e41d1f2e52127bce09411dc2c4ba916f61c4b05daa96d133191a3243",
+    "builtMarkdownSha256": "344a09b7bd3fe279b62405b64c2df31dc46b0bb4c0c89afb5e479f411eabba22",
+    "builtMarkdownBytes": 15905,
+    "builtHtmlSha256": "e64f71be779ae85cdd38f9fa8bd11ff2a6c8397333e859804ed5f5273c5b39bd",
+    "oneH1": true,
+    "newParagraphPresent": true
+  },
+  "sourcePins": {
+    "immutableTagCommitFilesMatched": 3,
+    "runtimeNode": "24.14.1",
+    "runtimeUndici": "7.24.4"
+  },
+  "typescriptAndProductionSource": "Unchanged; no additional broad package test/typecheck run. Prior Research 88 typecheck remains dated; new native bundle, executing JS and isolated publication checks are accepted here.",
+  "articleReview": "Existing uncertainty paragraph replaced, 1427 body whitespace words/31 unchanged prompts; retained-input recovery, fifteen local controls and synthetic-network limit remain explicit. H1/title/metadata and scope unchanged.",
+  "privateEvidence": {
+    "planManifestSha256": "0af1129bce4be6a869bcb8030db40a75daeb8142a8f72d6088578bd89c5e2f24",
+    "dataManifestSha256": "7f13f5c3fc352f8c9554b48a0cf8632e68646a767d61bb041543faac9cc02052",
+    "dataFiles": 109,
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "ownedListenersVerifiedClosed": 6,
+  "originalSignalExit": 130,
+  "originalGracefulReceipt": false,
+  "startupOnlyNonTtyExit": 143,
+  "startupOnlyTtyExit": 0,
+  "startupOnlyTtyTerminalReceipt": true,
+  "productionRequestsInExperiment": 0,
+  "D1Statements": 0,
+  "humanLabels": 0,
+  "goalAchieved": false
+}

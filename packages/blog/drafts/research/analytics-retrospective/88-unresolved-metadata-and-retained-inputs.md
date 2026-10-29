@@ -56,3 +56,6 @@ Private recovery commitments: initial-plan manifest `76185bd1c97f57cdeee4c747c82
 
 
 Live-plan manifest `1b8df5f0dec998b75248c18bce77bc28d436c511956ed6c4676212edc5d7dd61`; live acceptance manifest `5886de72a1ac721d0bdf634bf2700461afbb0acc3f433aa25a37b76524d1cb52` (19 files). Local Node 24.14.1 differs from the provider build's 24.22.1; both are recorded.
+
+
+[Research 89](89-local-browser-relays-and-fetch-metadata.md) completes the proposed local experiment: fifteen agent-operated trials show header removal and Fetch-added mode changing receiver evidence. The historical cohort remains unchanged; no historical cause or human rate is established.

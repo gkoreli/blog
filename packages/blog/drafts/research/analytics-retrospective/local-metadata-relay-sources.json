@@ -1,0 +1,99 @@
+{
+  "capturedAt": "2026-10-29T18:55:30.842387+00:00",
+  "sources": [
+    {
+      "file": "secure-contexts.html",
+      "url": "https://www.w3.org/TR/2023/CRD-secure-contexts-20231110/",
+      "finalUrl": "https://www.w3.org/TR/2023/CRD-secure-contexts-20231110/",
+      "status": 200,
+      "bytes": 130259,
+      "sha256": "97b9b74ab1035922a34f762fe23e84760f41046ec6f428215ce07076355a0f49"
+    },
+    {
+      "file": "fetch-metadata.html",
+      "url": "https://www.w3.org/TR/2026/WD-fetch-metadata-20260921/",
+      "finalUrl": "https://www.w3.org/TR/2026/WD-fetch-metadata-20260921/",
+      "status": 200,
+      "bytes": 140739,
+      "sha256": "4849a4cd48035165d5336315ba8461cf8640364878073766e2cb56b37d9d63f3"
+    },
+    {
+      "file": "node-globals.md",
+      "url": "https://raw.githubusercontent.com/nodejs/node/v24.14.1/doc/api/globals.md",
+      "finalUrl": "https://raw.githubusercontent.com/nodejs/node/v24.14.1/doc/api/globals.md",
+      "status": 200,
+      "bytes": 33116,
+      "sha256": "d827149c8e2b260437ff23308e2b23e8fef89a91008dfd3410e334cd1f8c2e4b",
+      "immutableUrl": "https://raw.githubusercontent.com/nodejs/node/d89bb1b482fa09245c4f2cbb3b5b6a70bea6deaf/doc/api/globals.md",
+      "resolvedCommit": "d89bb1b482fa09245c4f2cbb3b5b6a70bea6deaf",
+      "immutableBytesMatch": true
+    },
+    {
+      "file": "undici-fetch-index.js",
+      "url": "https://raw.githubusercontent.com/nodejs/undici/v7.24.4/lib/web/fetch/index.js",
+      "finalUrl": "https://raw.githubusercontent.com/nodejs/undici/v7.24.4/lib/web/fetch/index.js",
+      "status": 200,
+      "bytes": 88232,
+      "sha256": "ea4fe02f123529f0845f5191c72a348e4147858bb4d515422eff6890bd917abf",
+      "immutableUrl": "https://raw.githubusercontent.com/nodejs/undici/4991f3e1fbb93c8243fe072a69b08c47fd5d0e24/lib/web/fetch/index.js",
+      "resolvedCommit": "4991f3e1fbb93c8243fe072a69b08c47fd5d0e24",
+      "immutableBytesMatch": true
+    },
+    {
+      "file": "undici-fetch-util.js",
+      "url": "https://raw.githubusercontent.com/nodejs/undici/v7.24.4/lib/web/fetch/util.js",
+      "finalUrl": "https://raw.githubusercontent.com/nodejs/undici/v7.24.4/lib/web/fetch/util.js",
+      "status": 200,
+      "bytes": 47975,
+      "sha256": "d75d7066a20bbaaa7b80eca46186d5e84f597907542dcc8c1b0189a9f29ef204",
+      "immutableUrl": "https://raw.githubusercontent.com/nodejs/undici/4991f3e1fbb93c8243fe072a69b08c47fd5d0e24/lib/web/fetch/util.js",
+      "resolvedCommit": "4991f3e1fbb93c8243fe072a69b08c47fd5d0e24",
+      "immutableBytesMatch": true
+    }
+  ],
+  "checkedAt": "2026-10-29T18:57:22.918046+00:00",
+  "runtime": {
+    "node": "24.14.1",
+    "undici": "7.24.4",
+    "bundledUndiciSha256": "23b61b0a87994a38cc6ad6a6fa5fbf140c60b8496e170b7983a839e57f72ae59",
+    "defaultConstructedRequestMode": "cors",
+    "bundledAppendFetchMetadataLines": [
+      5483,
+      5486
+    ],
+    "supportedVersionInspection": "process.versions.undici, per Node documentation",
+    "bundledSourceInspection": "Read-only process.binding native-source extraction for this investigation; not a recommended application API."
+  },
+  "crossReferences": [
+    {
+      "source": "secure-contexts.html",
+      "supports": "Loopback 127.0.0.0/8 can be potentially trustworthy over HTTP; this is no claim of encrypted transport."
+    },
+    {
+      "source": "fetch-metadata.html",
+      "supports": "Request context and conditional Sec-Fetch-User, not authenticated human operation."
+    },
+    {
+      "source": "node-globals.md",
+      "supports": "Node fetch is based on Undici; process.versions.undici reports the bundled version."
+    },
+    {
+      "source": "undici-fetch-index.js",
+      "supports": "The HTTP-network path calls appendFetchMetadata before sending, and preserves a provided UA."
+    },
+    {
+      "source": "undici-fetch-util.js",
+      "supports": "Version 7.24.4 writes request.mode to sec-fetch-mode; other metadata operations and trustworthy-URL assertion are TODOs in this function. Local loopback trials do not test behavior on untrustworthy URLs."
+    }
+  ],
+  "sourceTags": {
+    "undici": {
+      "tag": "v7.24.4",
+      "resolvedCommit": "4991f3e1fbb93c8243fe072a69b08c47fd5d0e24"
+    },
+    "node": {
+      "tag": "v24.14.1",
+      "resolvedCommit": "d89bb1b482fa09245c4f2cbb3b5b6a70bea6deaf"
+    }
+  }
+}
