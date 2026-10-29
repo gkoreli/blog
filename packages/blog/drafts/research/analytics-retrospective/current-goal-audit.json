@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T06:13:01.977170+00:00",
-  "sourceBaseline": "a53114f7eab51f55f240b7cff029073c107e9ccc",
+  "checkedAt": "2026-10-29T06:27:34.354224+00:00",
+  "sourceBaseline": "f88468d",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -44,17 +44,17 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Explain the frozen new-ID cohort\u2019s nine Unresolved labels and declaration/method coverage using the saved exact bounds, without repeating the full population scan. Human trials remain deferred.",
+  "nextBoundedAction": "Reconcile already recovered proof cohorts with the seven signed ExaSearchBot outcomes in Research 78\u2019s frozen new-ID slice before retrieving more inputs; preserve exact references/profile boundaries. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 31,
     "sourceSha256": "7a042af095bb61d1963c96d9af7bccf58efcbd61d7e8a244f2341051eabae4dc",
-    "unchanged": false,
-    "freshServedCheck": true,
+    "unchanged": true,
+    "freshServedCheck": false,
     "publicationReceipt": "retained-population-release.json",
     "servedMatchesCheckedBuild": true,
     "lastServedCheckReceipt": "retained-population-release.json",
-    "publicationStatus": "Accepted source a53114f: Ready build, log-linked Worker/100% allocation, exact served Markdown and HTML article text/links matching the isolated build.",
+    "publicationStatus": "No article/source change or fresh served check in phase 79; prior 1376-word acceptance remains dated in retained-population-release.json.",
     "previousPublicationReceipt": "frozen-signed-release.json"
   },
   "runtimeUnchanged": true,
@@ -90,7 +90,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 2,
+  "productionOwnSiteGets": 0,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -377,5 +377,28 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Wrangler D1 resource metadata only; no new plan/account entitlement audit."
+  "liveAccountInspectionScope": "Wrangler D1 resource metadata only; rolling zero counters are ambiguous without raw GraphQL response coverage.",
+  "cohortContextAndMethods": {
+    "receipt": "cohort-context-production.json",
+    "native": "cohort-context-native.json",
+    "sources": "cohort-context-sources.json",
+    "checks": "cohort-context-checks.json",
+    "retainedRows": 114,
+    "included": 110,
+    "unresolved": 9,
+    "fetchMetadataAbsent": 5,
+    "unrecognizedBrowserClaim": 4,
+    "coherentOlderIncluded": 58,
+    "namedIncluded": 23,
+    "namedWithCurrentConfiguredMethod": 12,
+    "namedWithoutCurrentConfiguredMethod": 11,
+    "ExaSearchBotVerified": 7,
+    "ExaUserDeclarations": 0,
+    "reportedReads": 16815,
+    "reportedWrites": 0,
+    "statements": 3,
+    "originalWireOrHumanTruthEstablished": false,
+    "collectorAdoption": false,
+    "ambiguousWranglerZero": true
+  }
 }

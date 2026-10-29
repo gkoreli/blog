@@ -1,0 +1,556 @@
+{
+  "checkedAt": "2026-10-29T06:23:07.935Z",
+  "scope": "The same frozen 114-row ID slice accepted in Research 78, with current owner/referral assessment; no held historical snapshot.",
+  "sourceBaseline": "f88468d",
+  "rows": 114,
+  "included": 110,
+  "referralExcluded": 4,
+  "ownerExcluded": 0,
+  "contextRows": 9,
+  "contexts": [
+    {
+      "classifier_state": "current",
+      "mode_state": "missing",
+      "family_state": "chromium",
+      "navigation_state": "incomplete",
+      "activation_state": "absent",
+      "inclusion": "included",
+      "stored_kind": "unresolved",
+      "local_state": "absent",
+      "unresolved_reason": "fetch-metadata-absent",
+      "context_support": "inputs-not-assessed",
+      "failure_outcome": "not-applicable",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "mode_state": "missing",
+      "family_state": "firefox",
+      "navigation_state": "incomplete",
+      "activation_state": "absent",
+      "inclusion": "included",
+      "stored_kind": "unresolved",
+      "local_state": "absent",
+      "unresolved_reason": "fetch-metadata-absent",
+      "context_support": "inputs-not-assessed",
+      "failure_outcome": "not-applicable",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "mode_state": "missing",
+      "family_state": "unrecognized",
+      "navigation_state": "incomplete",
+      "activation_state": "absent",
+      "inclusion": "included",
+      "stored_kind": "unresolved",
+      "local_state": "absent",
+      "unresolved_reason": "unrecognized-browser-claim",
+      "context_support": "inputs-not-assessed",
+      "failure_outcome": "not-applicable",
+      "views": 4
+    },
+    {
+      "classifier_state": "other-recorded",
+      "mode_state": "missing",
+      "family_state": "chromium",
+      "navigation_state": "incomplete",
+      "activation_state": "absent",
+      "inclusion": "included",
+      "stored_kind": "unresolved",
+      "local_state": "absent",
+      "unresolved_reason": "fetch-metadata-absent",
+      "context_support": "inputs-not-assessed",
+      "failure_outcome": "not-applicable",
+      "views": 3
+    }
+  ],
+  "methodGroups": [
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Amazonbot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-crawler",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "ExaSearchBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 2,
+      "local_state": "verified",
+      "vendor_state": "matching-origin",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 4
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Meta-WebIndexer",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 2
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "YandexBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "search-crawler",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "browser",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 16
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "cloud-browser",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 15
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "other-bot",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 7
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "unresolved",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 6
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "referral-excluded",
+      "declaration": "Amzn-SearchBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 2,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 2
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "referral-excluded",
+      "declaration": "Meta-ExternalAds",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "other-bot",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 2
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "Amazonbot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-crawler",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 2
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "Applebot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "ExaSearchBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 2,
+      "local_state": "verified",
+      "vendor_state": "matching-origin",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 3
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "Googlebot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "search-crawler",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "Meta-WebIndexer",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 4
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "PetalBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-crawler",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 4
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "browser",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 6
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "cloud-browser",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 5
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "other-bot",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 29
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "unresolved",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 3
+    }
+  ],
+  "includedDeclarations": {
+    "Amazonbot": {
+      "views": 3,
+      "methodMask": 1,
+      "local": {
+        "absent": 3
+      },
+      "network": {
+        "0": 2,
+        "1": 1
+      },
+      "profile": {
+        "current": 1,
+        "other-recorded": 2
+      }
+    },
+    "ExaSearchBot": {
+      "views": 7,
+      "methodMask": 2,
+      "local": {
+        "verified": 7
+      },
+      "network": {
+        "0": 7
+      },
+      "profile": {
+        "current": 4,
+        "other-recorded": 3
+      }
+    },
+    "Meta-WebIndexer": {
+      "views": 6,
+      "methodMask": 0,
+      "local": {
+        "absent": 6
+      },
+      "network": {
+        "0": 6
+      },
+      "profile": {
+        "current": 2,
+        "other-recorded": 4
+      }
+    },
+    "YandexBot": {
+      "views": 1,
+      "methodMask": 0,
+      "local": {
+        "absent": 1
+      },
+      "network": {
+        "0": 1
+      },
+      "profile": {
+        "current": 1
+      }
+    },
+    "none": {
+      "views": 87,
+      "methodMask": 0,
+      "local": {
+        "absent": 87
+      },
+      "network": {
+        "0": 87
+      },
+      "profile": {
+        "current": 44,
+        "other-recorded": 43
+      }
+    },
+    "Applebot": {
+      "views": 1,
+      "methodMask": 1,
+      "local": {
+        "absent": 1
+      },
+      "network": {
+        "0": 1
+      },
+      "profile": {
+        "other-recorded": 1
+      }
+    },
+    "Googlebot": {
+      "views": 1,
+      "methodMask": 1,
+      "local": {
+        "absent": 1
+      },
+      "network": {
+        "1": 1
+      },
+      "profile": {
+        "other-recorded": 1
+      }
+    },
+    "PetalBot": {
+      "views": 4,
+      "methodMask": 0,
+      "local": {
+        "absent": 4
+      },
+      "network": {
+        "0": 4
+      },
+      "profile": {
+        "other-recorded": 4
+      }
+    }
+  },
+  "metering": {
+    "statements": [
+      {
+        "name": "control",
+        "startedAt": "2026-10-29T06:22:09.368387+00:00",
+        "completedAt": "2026-10-29T06:22:10.240580+00:00",
+        "reads": 0,
+        "writes": 0,
+        "providerAttempts": 1,
+        "changedDb": false
+      },
+      {
+        "name": "context",
+        "startedAt": "2026-10-29T06:22:10.241038+00:00",
+        "completedAt": "2026-10-29T06:22:11.028877+00:00",
+        "reads": 7573,
+        "writes": 0,
+        "providerAttempts": 1,
+        "changedDb": false
+      },
+      {
+        "name": "methods",
+        "startedAt": "2026-10-29T06:22:11.029336+00:00",
+        "completedAt": "2026-10-29T06:22:11.909375+00:00",
+        "reads": 9242,
+        "writes": 0,
+        "providerAttempts": 1,
+        "changedDb": false
+      }
+    ],
+    "reads": 16815,
+    "writes": 0
+  },
+  "sourceCommitments": {
+    "context": "30b9628caba8bcd603bc19eca8c4c617d867cc6b9af7bec9e97e01f6aa51eff4",
+    "methods": "3d5985185a70c9eb74508f1cd4a5020942124e1aa504ab924d1b4706159bbb6c",
+    "script": "c6ee96275efeb3ed82f6afff2b2c5d5df813ba096d80009a01f78afddb003c5f"
+  },
+  "ownSiteRequests": 0,
+  "newHumanLabels": 0,
+  "limits": [
+    "Stored labels and structural coherence do not replay original inputs or validate historical classifiers.",
+    "Current method coverage is a current registry comparison, not historical feed resolution or vendor identity."
+  ],
+  "acceptance": {
+    "namedIncluded": 23,
+    "namedWithCurrentConfiguredMethod": 12,
+    "namedWithoutCurrentConfiguredMethod": 11,
+    "noNamedDeclaration": 87,
+    "coherentOlderIncluded": 58,
+    "legacyNameDisagreements": 0,
+    "sevenExaMatchingOrigin": true,
+    "ExaUserDeclarations": 0,
+    "humanErrorRates": null
+  }
+}

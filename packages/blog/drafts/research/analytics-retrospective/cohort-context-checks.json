@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-29T06:26:31.371562+00:00",
+  "sourceBaseline": "f88468d",
+  "nativeReceipt": "cohort-context-native.json",
+  "productionReceipt": "cohort-context-production.json",
+  "sourceReceipt": "cohort-context-sources.json",
+  "scriptSha256": "c6ee96275efeb3ed82f6afff2b2c5d5df813ba096d80009a01f78afddb003c5f",
+  "nativeFixtureCases": 16,
+  "nativeScaleRows": 114,
+  "nativeScaleReads": 16864,
+  "productionStatements": 3,
+  "productionReads": 16815,
+  "productionWrites": 0,
+  "providerAttempts": 3,
+  "ownSiteRequests": 0,
+  "newHumanLabels": 0,
+  "publicReportFills": 0,
+  "collectorChanged": false,
+  "articleChanged": false,
+  "bodyWords": 1376,
+  "prompts": 31,
+  "nativeAttempts": [
+    {
+      "attempt": 1,
+      "result": "Stopped before database setup: guarded SQL whitespace did not match the saved methods helper."
+    },
+    {
+      "attempt": 2,
+      "result": "Fixture INSERT placeholder count rejected locally."
+    },
+    {
+      "attempt": 3,
+      "result": "Native acceptance passes before production execution."
+    }
+  ],
+  "sourceCaptureCorrection": "npm metadata has no gitHead; no source URL was guessed. Published tarball integrity and installed-bundle byte equality supply provenance.",
+  "readPlanArchive": {
+    "capturedFiles": 12,
+    "manifestSha256": "8619540ad1bdfe8eeb74d0be70a7b9c321e9356d018e0873cd12b46d3cc2df11",
+    "beforeProductionSelects": true,
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "privateArchive": {
+    "capturedFiles": 34,
+    "manifestSha256": "5bc369bd7028a6769d686829d9d26d3e734b4623fd7442243effbe7bd342fb4a",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false,
+    "preExecutionPlanArchiveUnchanged": true
+  },
+  "syntax": "pass",
+  "links": 365,
+  "markdownValidation": "pass, 22 posts",
+  "runtimeTests": "Prior phase 77 285 tests/types; unchanged collector suites not rerun. Current diagnostic native checks are fresh.",
+  "operationalGuidanceDiffReviewed": "One evidence-backed bullet added; existing owner direction, command path and import exceptions preserved.",
+  "privateFieldScan": "pass",
+  "siteBuild": "Not run: offline diagnostic/records/guidance only; article and collector unchanged."
+}

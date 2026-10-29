@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-29T06:19:50.267688+00:00",
+  "sources": [
+    {
+      "name": "fetch-metadata",
+      "url": "https://www.w3.org/TR/2026/WD-fetch-metadata-20260921/",
+      "status": 200,
+      "bytes": 140739,
+      "sha256": "4849a4cd48035165d5336315ba8461cf8640364878073766e2cb56b37d9d63f3"
+    },
+    {
+      "name": "sec-fetch-user",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-User",
+      "status": 200,
+      "bytes": 211622,
+      "sha256": "381d1def64a51d5464da9a54941ddcb1de7fd4497ebfa4226278d636b4688350"
+    },
+    {
+      "name": "sec-fetch-site",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Site",
+      "status": 200,
+      "bytes": 213546,
+      "sha256": "4b32d9cda3bb3ed25c8904c45a6d057366350e6a8dedbaaee43c6f0517bf077a"
+    }
+  ],
+  "attemptsPerSource": 1,
+  "wranglerPublishedBundle": {
+    "checkedAt": "2026-10-29T06:24:02.579837+00:00",
+    "version": "4.71.0",
+    "packageMetadataUrl": "https://registry.npmjs.org/wrangler/4.71.0",
+    "publishedTarballUrl": "https://registry.npmjs.org/wrangler/-/wrangler-4.71.0.tgz",
+    "status": 200,
+    "tarballBytes": 2416683,
+    "registryIntegrity": "sha512-j6pSGAncOLNQDRzqtp0EqzYj52CldDP7uz/C9cxVrIgqa5p+cc0b4pIwnapZZAGv9E1Loa3tmPD0aXonH7KTkw==",
+    "registryIntegrityMatches": true,
+    "publishedBundleSha256": "66de0d2d36ede4d9ded6cfaecee2b1e496c2ad8f97bb2258c5dd0f14bcc48d8b",
+    "installedBundleByteIdentical": true,
+    "sourceModule": "src/d1/info.ts, compiled into wrangler-dist/cli.js",
+    "gitHeadAvailable": false,
+    "rawGraphqlCauseEstablished": false,
+    "downloadedCodeExecuted": false
+  },
+  "wptLink": {
+    "url": "https://github.com/web-platform-tests/wpt/tree/master/fetch/sec-metadata",
+    "webReaderResult": "404 Not Found",
+    "browserConformanceTestExecuted": false
+  }
+}
