@@ -40,3 +40,13 @@ Site tests: 117. Post validation: 21 Markdown posts. An isolated source-copy bui
 Next: reconcile the retained-data delta since the frozen census through a native-tested bounded query and an explicit read budget. Genuine provider-positive and relay controls, latest-profile signed persistence, native managed-verifier comparison, attribution, privacy/retention decisions and deferred human/device trials remain open. The full analytics goal is not complete.
 
 Publication resumes on October 29 UTC after a pause. The October 28 experiment stays frozen. A fresh rule-page reload still shows zero active rules, and new name-only metadata confirms both temporary names absent. Origin/main is unchanged. No expired control is issued again.
+
+## Publication accepted on October 29 UTC
+
+Source `2923754` completes build `733981f9` without a retry. The full log identifies Worker `dacad568`; its source-linked rollout is Ready at 100%. CI builds all 32 posts with Node 24.22.1, versus local pinned 24.14.1. One direct, collection-ineligible Markdown GET returns 200 and exactly matches the checked isolated build, including the corrected sentence. The article remains 1,280 words/31 prompts.
+
+Offline inspection of the frozen tail also establishes that all four experiment envelopes identify Worker `4974dcaf`. A script-version change therefore does not explain the selected enabled/disabled difference. That execution version is separate from the later article-publication version. This adds provenance, not another request or a cryptographic code attestation.
+
+The full phase has five own-site GETs—four diagnostic and one publication—and one owner-mark POST. None of the GETs is collection-eligible. No direct diagnostic SELECT, report fill or human label is added. Fresh post-publication name-only metadata again confirms both temporary names absent. The 49-file execution archive remains frozen; fifteen publication files are separately manifested with restricted modes and an October 31 review date.
+
+Next: recover the private frozen observation-ID bound and native-test a budgeted retained-data delta before querying production. This analysis has not run yet. The original unexplained 503, provider/native comparisons, privacy decisions and deferred human measurements remain open.

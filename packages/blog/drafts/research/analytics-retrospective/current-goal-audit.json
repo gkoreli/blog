@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-29T01:21:37.908696+00:00",
+  "checkedAt": "2026-10-29T01:24:52.568358+00:00",
   "sourceBaseline": "e1b9a54",
   "goalAchieved": false,
   "previousTurn": "progress",
@@ -45,13 +45,13 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Accept article publication, then reconcile the retained-data delta since the frozen census using native-tested bounded SQL and an explicit D1 read budget. Genuine positive/relay and human gates remain open.",
+  "nextBoundedAction": "Recover the frozen private observation-ID bound, native-test a bounded retained-data delta query and its cost, then reconcile new rows under an explicit D1 budget without rewriting history. Genuine positive/relay and deferred human gates remain open.",
   "article": {
     "bodyWhitespaceWords": 1280,
     "prompts": 31,
     "sourceSha256": "4d84dfbaf3a94ee6625f3d3189cae193346ef9e860daf485c62288fc4db3b601",
     "unchanged": false,
-    "freshServedCheck": false
+    "freshServedCheck": true
   },
   "runtimeUnchanged": true,
   "productionStatements": 0,
@@ -82,9 +82,10 @@
       "productionActivation": "accepted; off-mode verified; no new production failure cause observed",
       "releaseReceipt": "native-capture-failure-release.json"
     },
-    "disabledBeforeExpiryReceipt": "disabled-before-expiry-live.json"
+    "disabledBeforeExpiryReceipt": "disabled-before-expiry-live.json",
+    "disabledBeforeExpiryPublication": "disabled-before-expiry-release.json"
   },
-  "productionOwnSiteGets": 4,
+  "productionOwnSiteGets": 5,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 1
 }

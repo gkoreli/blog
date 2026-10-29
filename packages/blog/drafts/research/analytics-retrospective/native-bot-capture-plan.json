@@ -73,7 +73,7 @@
     "Activation, natural expiry, configuration cleanup and persistence/retention are separate recorded operations."
   ],
   "managedSignatureComparison": "Still blocked on the separate request-level signed-agent oracle and accepted controlled identity; this generic bit does not satisfy either gate.",
-  "nextBoundedAction": "Accept article publication, then reconcile the retained-data delta since the frozen census using native-tested bounded SQL and an explicit D1 read budget. Genuine positive/relay and human gates remain open.",
+  "nextBoundedAction": "Recover the frozen private observation-ID bound, native-test a bounded retained-data delta query and its cost, then reconcile new rows under an explicit D1 budget without rewriting history. Genuine positive/relay and deferred human gates remain open.",
   "humanTrials": "Deferred by owner.",
   "localAcceptance": {
     "receipt": "native-capture-local.json",
@@ -103,6 +103,7 @@
     "controls": 4,
     "exactLogPairs": 4,
     "extension": false,
-    "originalCohortUnchanged": true
+    "originalCohortUnchanged": true,
+    "publication": "disabled-before-expiry-release.json"
   }
 }

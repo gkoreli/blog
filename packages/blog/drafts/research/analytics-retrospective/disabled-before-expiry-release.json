@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-29T01:21:37.908696+00:00",
+  "checkedAt": "2026-10-29T01:24:52.568358+00:00",
   "baselineCommit": "e1b9a5439832c2bccac152012bd64b4461cf9ca8",
-  "sourceCommit": null,
-  "publication": "pending",
+  "sourceCommit": "29237542dcc8e0f5a1ad0f68c769d9a41a097823",
+  "publication": "accepted",
   "experiment": "disabled-before-expiry-live.json",
   "checks": {
     "siteTests": 117,
@@ -34,7 +34,7 @@
   "article": {
     "bodyWhitespaceWords": 1280,
     "prompts": 31,
-    "freshServedCheck": false
+    "freshServedCheck": true
   },
   "scope": {
     "diagnosticGets": 4,
@@ -43,7 +43,9 @@
     "reportFills": 0,
     "collectionEligibleGets": 0,
     "newHumanLabels": 0,
-    "naturalExpiryTested": false
+    "naturalExpiryTested": false,
+    "publicationGets": 1,
+    "ownSiteGets": 5
   },
   "cleanup": {
     "originalFourBindingNamesRestored": true,
@@ -59,7 +61,8 @@
     "reviewDate": "2026-10-31",
     "automaticDeletion": false,
     "directoryMode": "0700",
-    "fileModes": "0600"
+    "fileModes": "0600",
+    "name": "2026-10-28-disabled-before-expiry"
   },
   "limits": [
     "Selected instrument cohort, not provider or human accuracy",
@@ -68,7 +71,7 @@
     "No natural-expiry experiment in this cohort",
     "Human trials deferred"
   ],
-  "nextBoundedAction": "Publish and accept the concise article correction, then plan a bounded retained-data delta with native SQL and a read budget.",
+  "nextBoundedAction": "Recover the frozen private observation-ID bound, native-test a bounded retained-data delta query and its cost, then reconcile new rows under an explicit D1 budget without rewriting history. Genuine positive/relay and deferred human gates remain open.",
   "resumption": {
     "checkedAt": "2026-10-29T01:21:37.908696+00:00",
     "ruleOverviewRefreshed": true,
@@ -76,5 +79,64 @@
     "temporaryBindingNamesAbsent": true,
     "originMainDivergence": "0/0",
     "expiredTrialReissued": false
-  }
+  },
+  "activation": {
+    "checkedAt": "2026-10-29T01:24:52.568358+00:00",
+    "sourceCommit": "29237542dcc8e0f5a1ad0f68c769d9a41a097823",
+    "buildId": "733981f9-4794-4e27-8ccd-c228bd0781a0",
+    "workerVersion": "dacad568-d57b-4ec4-b4a0-617491b172a3",
+    "nativeTrafficPercentage": 100,
+    "nativeState": "Source-linked Ready/100% row joins exact build and log version",
+    "buildRetries": 0,
+    "buildPosts": 32,
+    "ciRuntime": "Node 24.22.1",
+    "localRuntime": "Node 24.14.1",
+    "served": {
+      "checkedAt": "2026-10-29T01:24:00.768501+00:00",
+      "status": 200,
+      "servedMatchesCheckedBuild": true,
+      "servedSha256": "9e8af3b55ead12aa85e66edb67bd4ce5ab06b6918d65c7d5ca139f6b16ff685c",
+      "bodyWhitespaceWords": 1280,
+      "shapingPrompts": 31,
+      "publicationGets": 1,
+      "collectionEligibleGets": 0,
+      "diagnosticStatements": 0,
+      "reportFills": 0,
+      "method": "Direct Markdown asset; no HTML rendering or new traffic-classification acceptance inferred"
+    },
+    "temporaryBindingNamesAbsentAfterPublication": true,
+    "ruleCleanupRevalidatedAfterPause": true,
+    "experimentWorker": {
+      "checkedAt": "2026-10-29T01:24:27.448051+00:00",
+      "capturedEnvelopes": 4,
+      "sameExecutionWorkerVersion": "4974dcaf-d5b0-450b-8698-e16c3a4222c6",
+      "versionUnavailable": 0,
+      "tailSha256": "5c131a8c278900214ad575273185472a555440b16c97d0a16abaf4fdd734749f",
+      "method": "Offline inspection of actual invocation envelope scriptVersion.id; no new request"
+    },
+    "productionTotals": {
+      "ownSiteGets": 5,
+      "diagnosticGets": 4,
+      "publicationGets": 1,
+      "ownerPosts": 1,
+      "collectionEligibleGets": 0,
+      "directDiagnosticStatements": 0,
+      "reportFills": 0,
+      "newHumanLabels": 0
+    },
+    "sha256": {
+      "gk-native63-ci-build.log": "6967a5056a18993031f84092108bf9260fc302a2581dea1df47261c05e67040e",
+      "gk-native63-publication-ready.txt": "ae894a0fd6867cd6f59c580eac450d55bdc290ed1d9b09b3b045d534b18d0009",
+      "gk-native63-publication-ready.png": "393c91e035bf7c601ead94be030ce3932c46ac27dd944d908f9577fcec78997d"
+    }
+  },
+  "publicationArchive": {
+    "name": "2026-10-29-disabled-before-expiry-publication",
+    "files": 15,
+    "manifestSha256": "6d143d16a686da058a32904b92a471adb00f6791b041ab7d6dbe960e4538f6a0",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false,
+    "modes": "0700/0600"
+  },
+  "executionWorkerVersion": "4974dcaf-d5b0-450b-8698-e16c3a4222c6"
 }

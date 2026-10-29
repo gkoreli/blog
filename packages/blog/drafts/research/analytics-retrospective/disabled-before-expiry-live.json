@@ -116,5 +116,12 @@
     "activeRules": 0,
     "ownedFilteredTailProcessesRemaining": 0,
     "rulesDeleted": false
+  },
+  "executionVersionAssessment": {
+    "checkedAt": "2026-10-29T01:24:27.448051+00:00",
+    "workerVersion": "4974dcaf-d5b0-450b-8698-e16c3a4222c6",
+    "envelopesWithVersion": 4,
+    "versionUnavailable": 0,
+    "source": "Frozen invocation envelopes; no new request"
   }
 }
