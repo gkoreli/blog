@@ -4,7 +4,18 @@ October 29, 2026 UTC. The owner asks who reads, whether readership grows, what p
 
 ## The apparent doubling depends on one source
 
-The screenshot totals 1,551 visible referrer events but shows no date/filter. This separate audit covers **four complete UTC weeks, October 1–28**: all 1,463 retained stored-Browser rows, 1,429 after 34 owner exclusions. These are rule matches, not identified readers. There are no referral-policy exclusions in this selection.
+The screenshot totals 1,551 visible referrer events but shows no date/filter. Its source breakdown explains why the familiar platforms seem unable to account for the total:
+
+| Screenshot source category | Events | Share |
+|---|---:|---:|
+| No referrer sent | 680 | 43.8% |
+| Other reported referrers | 479 | 30.9% |
+| Within this blog | 350 | 22.6% |
+| Google, X, GitHub, Hacker News, Reddit and Kagi combined | 42 | 2.7% |
+
+These are event shares, not shares of people. Internal navigation can generate further page events after arrival. Missing referrers leave the acquisition source unknown; they do not establish direct visits or a hidden audience. HTTP explicitly permits referrer omission under several conditions ([RFC 9110 §10.1.3](https://www.rfc-editor.org/rfc/rfc9110.html#section-10.1.3)). The screenshot alone cannot tell how much came from bookmarks, private sharing, search, relays or automation. Its Other bucket concerns public display approval, not missing hostnames or an authenticity verdict.
+
+This separate audit covers **four complete UTC weeks, October 1–28**: all 1,463 retained stored-Browser rows, 1,429 after 34 owner exclusions. These are rule matches, not identified readers. There are no referral-policy exclusions in this selection. The screenshot and audit must not be reconciled as though their windows were known to match.
 
 | UTC dates | Browser signals | R1-reported source | Other sources |
 |---|---:|---:|---:|
