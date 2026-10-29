@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-29T21:47:45.386Z",
+  "runtime": "v24.14.1",
+  "grayMatterVersion": "4.0.3",
+  "yamlVersion": "3.14.2",
+  "yamlTimestampSourceSha256": "9e4f77c8d504a3a8319108343d6d6b2b6ed95ba6e96f4fe9b204208d04cfd691",
+  "zones": [
+    {
+      "timezone": "UTC",
+      "yamlProducesDate": true,
+      "iso": "2026-10-28T00:00:00.000Z",
+      "previousLocalFormat": "2026-10-28",
+      "fixedPublishedDate": "2026-10-28"
+    },
+    {
+      "timezone": "America/Los_Angeles",
+      "yamlProducesDate": true,
+      "iso": "2026-10-28T00:00:00.000Z",
+      "previousLocalFormat": "2026-10-27",
+      "fixedPublishedDate": "2026-10-28"
+    },
+    {
+      "timezone": "Pacific/Kiritimati",
+      "yamlProducesDate": true,
+      "iso": "2026-10-28T00:00:00.000Z",
+      "previousLocalFormat": "2026-10-28",
+      "fixedPublishedDate": "2026-10-28"
+    }
+  ],
+  "quotedAndLeapDayControls": "Full subprocess regression in frontmatter-dates.test.ts; three timezones, three inputs.",
+  "articleSourceDateUnchanged": true,
+  "productionRequests": 0
+}

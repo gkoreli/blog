@@ -1,0 +1,191 @@
+{
+  "checkedAt": "2026-10-29T21:51:59.141743+00:00",
+  "source": {
+    "checkedAt": "2026-10-29T21:38:11.479163+00:00",
+    "sourceCommit": "d43863c29ee79ef779c10c0cc22e069f815f0ce3",
+    "workerVersion": "f3e3f5f1-5f99-414e-b8bd-fd5167fcd7f5",
+    "build": "791e0f8d-92bb-4631-872e-eeee1398025b",
+    "allocation": 100,
+    "deployedAt": "2026-10-29T21:32:17.735868Z",
+    "exactSourceBuildLinked": true,
+    "linkageScope": "Native deployment row links full Git SHA, Ready build URL and Worker prefix; the prefix uniquely matches the allocated full UUID in the returned CLI deployment history. Full build log not inspected.",
+    "buildLogInspected": false,
+    "dashboardLimit": "Initial deep route returned Page not found; observed native overview navigation and one backoff/retry yielded the source/Ready/version row. Build-detail/back navigation again yielded Page not found or Too many requests; no further UI retry.",
+    "allocationSource": "Fresh Wrangler deployments list, latest by timestamp, not array order."
+  },
+  "acceptedOnWorker": "f3e3f5f1-5f99-414e-b8bd-fd5167fcd7f5",
+  "reportVersion": "2026-10-29.1",
+  "report": {
+    "siteEvents": 1429,
+    "articleEvents": 931,
+    "largestSourceSiteEvents": 397,
+    "largestSourceArticleEvents": 388,
+    "catalogueArticles": 33,
+    "allFrozenTrafficAndSourceMetricsEqual": true,
+    "onePublicationDateCorrected": true,
+    "sharedGuardPasses": true
+  },
+  "requests": {
+    "ownSiteGets": 8,
+    "singleAttemptGets": 8,
+    "exactMarkerRayVersionJoins": 7,
+    "unmatchedResponse": 1,
+    "collectionEligible": 0,
+    "newHumanLabels": 0,
+    "replayedOriginalRequests": 0,
+    "diagnosticSelects": 0,
+    "ingestionReadback": false
+  },
+  "initialControl": {
+    "status": 200,
+    "cache": "MISS",
+    "colo": "DFW",
+    "driverStoppedOn": "Frozen metadata expected October27 for one article; production/authored value October28. Parser timezone issue established separately; original body reused after review.",
+    "meter": {
+      "version": "2026-10-28.1",
+      "event": "stats-report-calculation",
+      "outcome": "returned",
+      "submittedStatements": 1,
+      "returnedResults": 1,
+      "metadata": "complete",
+      "counterScope": "last-attempt",
+      "reportedRowsRead": 33868,
+      "reportedRowsWritten": 0,
+      "totalAttempts": 1,
+      "unexpectedWrites": false
+    }
+  },
+  "nominalWarmControl": {
+    "status": 200,
+    "cache": "MISS",
+    "colo": "SJC",
+    "reportedReads": null,
+    "reportedWrites": null,
+    "exactRequestVersionJoin": false,
+    "limit": "No event returned in the filtered tail before its controller stopped. No read cost or sole cause is inferred.",
+    "sameRayLocationAsInitial": false,
+    "workerExecutionPlacementMeasured": false
+  },
+  "connectionControlled": {
+    "nativeFixture": "article-reach-connection-native.json",
+    "oneCurlProcess": true,
+    "httpVersion": "1.1",
+    "secondNewConnections": 0,
+    "bothColos": "DFW",
+    "states": [
+      "HIT",
+      "HIT"
+    ],
+    "bodiesCalculationTimesAndExpiryEqual": true,
+    "calculationLogs": 0,
+    "requestsCreateNoNewReportState": true,
+    "locationEvidence": "Both response Ray suffixes and matched request.cf.colo are DFW. Worker execution placement was not independently measured; HIT/body/time/expiry reuse is directly observed."
+  },
+  "served": {
+    "reportArticleFragmentMatchesBuild": true,
+    "statsLinkPresent": true,
+    "scriptBytesMatch": true,
+    "styleBytesMatch": true,
+    "fullHtmlEqualityClaimed": false,
+    "productionBrowserLayoutMeasured": false,
+    "responses": [
+      {
+        "label": "connection-first",
+        "status": 200,
+        "newConnections": 1,
+        "cache": "HIT",
+        "expires": "Thu, 29 Oct 2026 22:38:50 GMT",
+        "bytes": 31002,
+        "sha256": "8014aee48096e7366a5dff5424577698ee783becc5e1c2ef30fb505d47152059"
+      },
+      {
+        "label": "connection-second",
+        "status": 200,
+        "newConnections": 0,
+        "cache": "HIT",
+        "expires": "Thu, 29 Oct 2026 22:38:50 GMT",
+        "bytes": 31002,
+        "sha256": "8014aee48096e7366a5dff5424577698ee783becc5e1c2ef30fb505d47152059"
+      },
+      {
+        "label": "report-page",
+        "status": 200,
+        "newConnections": 1,
+        "cache": null,
+        "expires": null,
+        "bytes": 10301,
+        "sha256": "eb29baba075ba5069783224da5cb968dbd3b29714256cde22e2fb5addc447cfa"
+      },
+      {
+        "label": "stats-link",
+        "status": 200,
+        "newConnections": 1,
+        "cache": null,
+        "expires": null,
+        "bytes": 28597,
+        "sha256": "c65f4b336294dfd7f09e1b5050bb928ab6710dc8791bcc63edb9fd5c1ec96375"
+      },
+      {
+        "label": "report-script",
+        "status": 200,
+        "newConnections": 1,
+        "cache": null,
+        "expires": null,
+        "bytes": 9050,
+        "sha256": "d7911b06c9657dfd674ea2fa440f426835743ee60484d1a7a3440824f639cbc7"
+      },
+      {
+        "label": "report-style",
+        "status": 200,
+        "newConnections": 1,
+        "cache": null,
+        "expires": null,
+        "bytes": 8734,
+        "sha256": "dc6a9ef4fbdbafe1dd581c9bd5bac178886e3094318aaacef26a19d66b539d11"
+      }
+    ]
+  },
+  "meterCoverage": {
+    "returnedCalculationsIndicatedByMiss": 2,
+    "calculationsWithCompleteMatchedMeter": 1,
+    "calculationsWithMissingMeter": 1,
+    "knownReportedReads": 33868,
+    "knownReportedWrites": 0,
+    "totalReportedReadsAcrossBothFills": null,
+    "counterScope": "last-attempt",
+    "reviewThresholdPerCalculation": 500000,
+    "serverEnforcedReadCap": false,
+    "unknownCostIsNotZero": true
+  },
+  "plans": {
+    "initial": "939005aae835159ebc0fba8ba6b2fdfe65056c5f69387ceba6b01b1a0096cc81",
+    "remaining": "30e34444d7e5a7f75bc4c0cd36a5962552d58ba60a2ae56e38918360b0ae17ce",
+    "connectionControlled": "4dbffb7078dd9365333d3dec27b45e331c45f1c4e8c1e5d275f145122f8d8655"
+  },
+  "tailCleanup": {
+    "controllers": 3,
+    "allTerminated": true,
+    "ownedGroupsEmpty": true,
+    "providerTailDeletionIndependentlyInspected": false
+  },
+  "dateParserFix": {
+    "sourceArticleDateUnchanged": true,
+    "sourceFiles": [
+      "packages/blog/src/lib/frontmatter.ts",
+      "packages/blog/test/frontmatter-dates.test.ts"
+    ],
+    "siteTests": 120,
+    "workspaceTypes": true,
+    "isolatedBuildPosts": 33,
+    "localMetadataChanges": 1,
+    "sameWorkerJavaScript": true,
+    "productionAlreadyReturnedAuthoredDay": true,
+    "productionBuildTimezoneIndependentlyInspected": false,
+    "delivery": "Included in the acceptance commit; no new source activation or served claim for that commit."
+  },
+  "article030Changed": false,
+  "humanTrials": "deferred",
+  "goalAchieved": false,
+  "privateReleaseManifestSha256": "aae0db57e13da731058bc9ddc386e207bf20a741146b1ddb239060c16f9109a4",
+  "privateReleaseFiles": 141
+}

@@ -1,0 +1,13 @@
+{
+  "isolatedBuildExit": 0,
+  "posts": 33,
+  "metadataChanges": [
+    {
+      "slug": "why-worktree-setup-is-slow-on-macos",
+      "field": "date",
+      "before": "2026-10-27",
+      "after": "2026-10-28"
+    }
+  ],
+  "productionRequests": 0
+}

@@ -1,0 +1,6 @@
+{
+  "sameWorkerJavaScript": true,
+  "bytes": 946250,
+  "sha256": "e740fd2ece28df006dc3279b891efa989aa0d2b160e3aebd7c352a3d3d2572f9",
+  "scope": "Wrangler dry-run JavaScript bundle, excluding source map and static assets. Publication metadata correction changes the local generated article date; production already returned the authored date. Production build timezone was not independently inspected."
+}

@@ -3,7 +3,6 @@ import { join } from 'node:path';
 import matter from 'gray-matter';
 import { z } from 'zod/v4';
 import { PROMPTS_DIR } from './paths.js';
-import { localDateStr } from './dates.js';
 
 export const sectionSchema = z.enum(['essays', 'engineering', 'oss-radar']);
 export type Section = z.infer<typeof sectionSchema>;
@@ -78,7 +77,9 @@ export function parsePost(filePath: string): Post {
   const filename = filePath.split('/').pop() ?? '';
   const slug = filename.replace(/^\d+-/, '').replace(/\.(md|ts|html)$/, '');
   const date = result.data.date instanceof Date
-    ? localDateStr(result.data.date)
+    // YAML timestamps are UTC instants. Local getters shift a bare date back a
+    // day on machines west of UTC, making local and production indexes differ.
+    ? result.data.date.toISOString().slice(0, 10)
     : result.data.date;
 
   return {

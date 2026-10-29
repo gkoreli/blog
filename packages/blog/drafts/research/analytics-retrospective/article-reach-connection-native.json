@@ -1,0 +1,13 @@
+{
+  "localOnly": true,
+  "httpVersion": "1.1",
+  "requests": 2,
+  "newConnections": [
+    1,
+    0
+  ],
+  "sameServerSocket": true,
+  "oneCurlProcess": true,
+  "productionCalls": 0,
+  "humanLabels": 0
+}
