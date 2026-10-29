@@ -60,7 +60,7 @@ Acceptance for this iteration:
 - [x] Test plausible mechanisms with matched controls: installer version, local package creation versus shared reuse, filesystem/store placement, and scripts/network work where relevant. Select further tests from the first results rather than running an indiscriminate matrix.
 - [x] Inspect the relevant source path and profile or count real work where supported; do not infer mechanism from elapsed time alone.
 - [x] Revise or remove the tiny-fixture-centered argument according to the stronger evidence, retain counterexamples, and keep the readable draft within five minutes.
-- [ ] Independently check derived values, claims, evidence links and reproduction instructions; commit/push scoped work and leave a dated handoff with concrete remaining limits.
+- [x] Independently check derived values, claims, evidence links and reproduction instructions; commit/push scoped work and leave a dated handoff with concrete remaining limits.
 
 Previous goal turn classification: progress. It produced the initial draft and a small controlled install test, but did not establish the full workload result. Current next actions: materialize the pinned full benchmark, prewarm the exact pnpm 10.2.1 toolchain, prepare a temporary Linux VM with only the research folder shared, and inspect the original thread beyond the earlier small reply sample. No outreach is authorized or needed for those actions.
 
@@ -78,4 +78,6 @@ Checks: all 21 accepted installs complete with matching expected inventories and
 
 Resources: the research Lima VM was stopped cleanly, private guest evidence archived outside Git, and only the newly created failed Podman guest removed. Lima remains installed; temporary images and caches are retained for review. The known material shaping messages are preserved verbatim in the [draft prompt record](../../prompts/why-worktree-setup-is-slow-on-macos.prompts.md): the two applicable voice instructions, the new-topic request with its attachment reference, and the explicit deeper-research goal objective. The new-topic/voice messages were checked against the thread; the last item uses the exact stored user goal text. Before engineering-post publication, move that record into the normal prompts directory and set a truthful publication date. This task delivers an unpublished draft.
 
-Next bounded action: finish scoped Git delivery, then record its verified receipt below. Further source research is only needed if the article's claims or tested versions change.
+Delivery: scoped commit `81186d65ed82f52037186ac3d0ea4e4e3a8bb746` was rebased over concurrent main changes and pushed directly to `main`. The remote GitHub file at that exact revision was read back successfully and contains all seven series / 21 accepted installs. Frozen artifact hashes survived rebase unchanged; the checkout was clean after the source push. This receipt update records that verified delivery.
+
+This deeper research iteration is complete. No site article or social share was published. The next authoring step, if requested, is review or publication of the saved draft; further source research is needed only if its claims or tested versions change.
