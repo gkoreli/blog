@@ -50,7 +50,7 @@ try {
   assert.equal(observed.receipts.length, 9); assert.equal(observed.directoryFetches, 2);
   for (const row of rows) {
     const matches = observed.receipts.filter(record => record.storage.observationId === row.reference); assert.equal(matches.length, 1);
-    assert.equal(matches[0].receipt.version, '2026-10-28.2');
+    assert.equal(matches[0].receipt.version, '2026-10-29.1');
     assert.deepEqual(matches[0].receipt.signature.selection, JSON.parse(row.signature_evidence).coverage.selection);
   }
   const exactSql = readFileSync('packages/blog/drafts/research/analytics-retrospective/signature-ascii-storage-reference.sql','utf8');

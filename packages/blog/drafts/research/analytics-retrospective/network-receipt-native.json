@@ -1,0 +1,256 @@
+{
+  "checkedAt": "2026-10-29T03:14:08.137Z",
+  "baseline": "697c8a7",
+  "collectionVersion": "2026-10-29.3",
+  "receiptVersion": "2026-10-29.1",
+  "method": "Before/after actual local collector/workerd/D1; intercepted synthetic feeds and supplied edge context. Receipt/storage equality is not independent vendor or native truth.",
+  "controls": [
+    {
+      "name": "no-declaration",
+      "checks": [],
+      "storedKind": "unresolved",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    },
+    {
+      "name": "unconfigured",
+      "checks": [],
+      "storedKind": "other-bot",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    },
+    {
+      "name": "listed",
+      "checks": [
+        {
+          "source": "google-common",
+          "outcome": "listed",
+          "reason": null
+        }
+      ],
+      "storedKind": "search-crawler",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    },
+    {
+      "name": "cooldown",
+      "checks": [
+        {
+          "source": "google-common",
+          "outcome": "not-assessed",
+          "reason": "refresh-cooldown"
+        }
+      ],
+      "storedKind": "search-crawler",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    },
+    {
+      "name": "not-listed",
+      "checks": [
+        {
+          "source": "openai-search",
+          "outcome": "not-listed",
+          "reason": null
+        }
+      ],
+      "storedKind": "ai-search",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    },
+    {
+      "name": "timeout",
+      "checks": [
+        {
+          "source": "openai-gpt",
+          "outcome": "unavailable",
+          "reason": "fetch-timeout"
+        }
+      ],
+      "storedKind": "ai-crawler",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    },
+    {
+      "name": "http-error",
+      "checks": [
+        {
+          "source": "perplexity-bot",
+          "outcome": "unavailable",
+          "reason": "http-status"
+        }
+      ],
+      "storedKind": "ai-search",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    },
+    {
+      "name": "relay",
+      "checks": [
+        {
+          "source": "duckduckbot",
+          "outcome": "unavailable",
+          "reason": "address-unavailable"
+        }
+      ],
+      "storedKind": "search-crawler",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    },
+    {
+      "name": "wrong-media",
+      "checks": [
+        {
+          "source": "bingbot",
+          "outcome": "unavailable",
+          "reason": "media-type"
+        }
+      ],
+      "storedKind": "search-crawler",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    },
+    {
+      "name": "invalid-feed",
+      "checks": [
+        {
+          "source": "applebot",
+          "outcome": "unavailable",
+          "reason": "invalid-feed"
+        }
+      ],
+      "storedKind": "ai-search",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    },
+    {
+      "name": "shared-ahrefs",
+      "checks": [
+        {
+          "source": "ahrefs-crawlers",
+          "outcome": "listed",
+          "reason": null
+        }
+      ],
+      "storedKind": "seo-crawler",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    },
+    {
+      "name": "owner",
+      "checks": [
+        {
+          "source": "openai-user",
+          "outcome": "listed",
+          "reason": null
+        }
+      ],
+      "storedKind": "ai-assistant",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    },
+    {
+      "name": "referral",
+      "checks": [
+        {
+          "source": "google-agent",
+          "outcome": "listed",
+          "reason": null
+        }
+      ],
+      "storedKind": "ai-assistant",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    },
+    {
+      "name": "mixed-budget",
+      "checks": [
+        {
+          "source": "ahrefs-crawlers",
+          "outcome": "not-assessed",
+          "reason": "refresh-cooldown"
+        },
+        {
+          "source": "google-common",
+          "outcome": "not-assessed",
+          "reason": "refresh-cooldown"
+        },
+        {
+          "source": "openai-ads",
+          "outcome": "listed",
+          "reason": null
+        },
+        {
+          "source": "openai-gpt",
+          "outcome": "not-assessed",
+          "reason": "refresh-cooldown"
+        },
+        {
+          "source": "openai-search",
+          "outcome": "not-assessed",
+          "reason": "request-budget"
+        },
+        {
+          "source": "perplexity-bot",
+          "outcome": "not-assessed",
+          "reason": "request-budget"
+        },
+        {
+          "source": "duckduckbot",
+          "outcome": "not-assessed",
+          "reason": "request-budget"
+        },
+        {
+          "source": "applebot",
+          "outcome": "not-assessed",
+          "reason": "request-budget"
+        },
+        {
+          "source": "bingbot",
+          "outcome": "not-assessed",
+          "reason": "request-budget"
+        }
+      ],
+      "storedKind": "unresolved",
+      "storedReceiptMatches": true,
+      "baseReceiptUnchanged": true,
+      "networkComparisonExcludesClockFields": true
+    }
+  ],
+  "collectorPairs": 14,
+  "exactReceiptStoragePairs": 14,
+  "modeledLiveRetainedPairs": 14,
+  "maximumReceiptBytes": 2801,
+  "storedNetworkRecognized": 14,
+  "publicReportTotalsUnchanged": true,
+  "publicNetworkSummaryUnchanged": true,
+  "publicKindCountsUnchanged": true,
+  "reportIncluded": 12,
+  "exactReferenceSql": {
+    "sha256": "df102e7eb6e2618e72e23c5aba1fd582b66d0e5a3be5345acdf5ce95d574ccc4",
+    "rowsRead": 4,
+    "rowsWritten": 0,
+    "primaryKeyPlan": true
+  },
+  "externalRequests": 0,
+  "productionRequests": 0,
+  "newHumanLabels": 0,
+  "limits": [
+    "Four clock fields are excluded only from before/after network equivalence, never exact receipt/storage comparison.",
+    "Constructed live/retained metadata tests reconciler behavior; it is not an actual provider export.",
+    "No signed-vendor proof chain, native bot verdict or human detection accuracy is measured."
+  ]
+}

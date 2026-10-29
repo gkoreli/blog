@@ -192,7 +192,7 @@ test('scalar receipts retain zero/unknown/conflict states when nulls and empty a
   const { DB } = fixture();
   const logs = await capture(async () => { await collect(DB, request({ 'User-Agent': 'ExaUser/1.0 ExaSearchBot/1.0' })); });
   const receipt = logs.find(log => log.event === 'analytics.observation_stored').receipt;
-  assert.equal(receipt.version, '2026-10-28.2'); assert.equal(receipt.readerKind, 'unresolved');
+  assert.equal(receipt.version, '2026-10-29.1'); assert.equal(receipt.readerKind, 'unresolved');
   assert.equal(receipt.declarations.candidateCount, 2); assert.equal(receipt.declarations.candidateNames, 'ExaSearchBot,ExaUser');
   assert.equal(receipt.declarations.categoryAgreement, 'multiple-categories');
   assert.equal(receipt.signature.reasonCount, 0); assert.equal(receipt.signature.reasonNames, 'none');

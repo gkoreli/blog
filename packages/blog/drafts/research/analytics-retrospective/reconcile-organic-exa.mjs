@@ -100,7 +100,7 @@ export async function analyzeExport(bytes, directoryBytes) {
       ? item.collectionVersion : 'unrecognized-or-unreconciled');
     if (item.complete) complete++;
     const receipt = item.complete ? item.receipt : undefined;
-    const knownReceipt = ['2026-10-27.1', '2026-10-27.2', '2026-10-27.3', '2026-10-28.1'].includes(receipt?.version);
+    const knownReceipt = ['2026-10-27.1', '2026-10-27.2', '2026-10-27.3', '2026-10-28.1', '2026-10-28.2', '2026-10-29.1'].includes(receipt?.version);
     add(counts.storedReceiptVersions, knownReceipt ? receipt.version : 'unavailable-or-unrecognized');
     add(counts.storedReceiptOutcomes, knownReceipt && receipt.signature?.source === 'local-webbotauth'
       && ['absent','verified','invalid','unavailable','policy-rejected','unsupported','not-verified'].includes(receipt.signature?.outcome)

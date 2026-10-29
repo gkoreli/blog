@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { parseTailRecords, compareReceiptCopies, normalizeRetainedReceiptCopies } from '../../blog/drafts/research/analytics-retrospective/compare-receipt-captures.mjs';
+import { vendorIpReceipt } from '../.test-dist/vendor-ip-receipt.js';
+import { networkEvidence } from './fixtures/vendor-network-summary.mjs';
 
 function fixture(overrides = {}) {
   const v2 = overrides.version === '2026-10-27.2';
@@ -132,4 +134,25 @@ test('bulk invocation/span context remains separate from receipt-format rejectio
   value.retained.push({timestamp:value.retained[0].timestamp,$metadata:{type:'span'}});
   const result=compareReceiptCopies(value.live,value.retained);assert.equal(result.identicalPairs,1);
   assert.equal(result.retainedFormats.bulk,3);assert.deepEqual(result.rejectedRetainedRecords,{shape:0,timestamp:0});
+});
+
+test('network copies require complete scalar facts and compare source snapshots and ordered names',()=>{
+  const value=fixture({version:'2026-10-27.2'});
+  for(const fields of [value.live[0].logs[0].message[1],value.retained[0].source]){
+    fields.receipt.version='2026-10-29.1';
+    fields.receipt.signature.signerDisplayProfile='2026-10-28.1';
+    fields.receipt.directoryPublication={profile:'2026-10-28.1',method:'reviewed-first-party-directory',reviewedOn:'2026-10-28',configuredDeclarationCount:0,unmappedDeclarationCount:0,status:'no-declaration'};
+    fields.receipt.vendorNetwork=vendorIpReceipt(networkEvidence('listed',{profile:'2026-10-29.1',source:'amazon-search'}));
+  }
+  assert.equal(compareReceiptCopies(value.live,value.retained).identicalPairs,1);
+  const extra=structuredClone(value.retained);extra[0].source.receipt.vendorNetwork.checks.sources['private-key']='private-value';
+  const extraResult=compareReceiptCopies(value.live,extra);
+  assert.equal(extraResult.differingPairs,1);assert.equal(extraResult.unexpectedNetworkFields,1);
+  assert.equal(JSON.stringify(extraResult).includes('private-'),false);
+  delete value.retained[0].source.receipt.vendorNetwork.checks.sources['amazon-search'].snapshot.publisherVersionStatus;
+  const changed=compareReceiptCopies(value.live,value.retained);
+  assert.equal(changed.differingPairs,1);
+  assert.equal(changed.missingFields['vendorNetwork.checks.sources.amazon-search.snapshot.publisherVersionStatus'],1);
+  delete value.live[0].logs[0].message[1].receipt.vendorNetwork.checkCount;
+  assert.equal(compareReceiptCopies(value.live,value.retained).matchedPairs,0);
 });

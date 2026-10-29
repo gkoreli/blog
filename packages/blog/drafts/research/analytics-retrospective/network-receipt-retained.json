@@ -1,0 +1,372 @@
+{
+  "checkedAt": "2026-10-29T03:30:36.843Z",
+  "sourceBaseline": "3b6d36678b2b0d02f0a268d6e91d0c0094604548",
+  "previousGoalTurn": "progress",
+  "method": "Exact two existing synthetic controls, fixed UTC window; actual native retained download + two marker-confirmed individual copies compared with prior live tail and saved exact-row readback. No new observation or D1 query.",
+  "collectionVersion": "2026-10-29.3",
+  "receiptVersion": "2026-10-29.1",
+  "executionWorkerVersion": "2c8ab95c-e591-4877-98b5-0f8a2576a6b1",
+  "queryWindow": {
+    "from": "2026-10-29T03:16:00.000Z",
+    "to": "2026-10-29T03:19:00.000Z"
+  },
+  "distinctExistingControls": 2,
+  "download": {
+    "configuredLimit": 100,
+    "visibleEvents": 4,
+    "exportedEvents": 4,
+    "storedEvents": 2,
+    "attemptEvents": 2
+  },
+  "individualCopies": {
+    "count": 2,
+    "freshMarkerReplacementAndUiAcknowledgement": 2,
+    "format": "flattened source fields with exact nanosecond timestamp text",
+    "completeReceiptObjectEqualityPairs": 2,
+    "storageObjectEqualityPairs": 2,
+    "exactTimestampPairs": 2
+  },
+  "bulkAcceptance": {
+    "checkedAt": "2026-10-29T03:25:31.542Z",
+    "method": "Existing two controls only: actual retained JSON download compared with archived live tail and cached exact-row readback; no new D1 query",
+    "observedUiRecords": 4,
+    "downloadLimit": 100,
+    "downloadedRecords": 4,
+    "retainedStoredRecords": 2,
+    "completeReceiptObjectEqualityPairs": 2,
+    "storageObjectEqualityPairs": 2,
+    "exactStoredProjectionPairs": 2,
+    "reconciliation": {
+      "candidateRows": 2,
+      "retainedInputRecords": 4,
+      "retainedStoredRecords": 2,
+      "rejectedRetainedRecords": {
+        "shape": 0,
+        "timestamp": 0
+      },
+      "invalidCandidateReferences": 0,
+      "unavailableReceiptReferences": 0,
+      "invalidReceiptReferences": 0,
+      "unmatchedCandidateRows": 0,
+      "unmatchedReceiptRecords": 0,
+      "ambiguousReferenceGroups": 0,
+      "invalidPairMetadata": 0,
+      "unprojectableCandidateRows": 0,
+      "matchedReferencePairs": 2,
+      "identicalProjectionPairs": 2,
+      "differentProjectionPairs": 0,
+      "storedLocalVerifiedPairs": 0,
+      "testInjectedPairs": 0,
+      "conflictingStoredStatusPairs": 0,
+      "changedFields": {},
+      "unexpectedFields": 0
+    },
+    "inputs": [
+      {
+        "name": "live-tail",
+        "bytes": 23500,
+        "sha256": "1292c3c96fe9df620b14d0781f7a0ae70321d7dd4d55445f1690f5572f47cdf3"
+      },
+      {
+        "name": "retained-array",
+        "bytes": 10504,
+        "sha256": "1a5e72c5ee2b63a792374c0ce5740c270de2b776b1724b674eaacf5e84a135b3"
+      }
+    ],
+    "newProductionStatements": 0,
+    "newSiteRequests": 0,
+    "newHumanLabels": 0,
+    "limits": [
+      "Only the two unsigned synthetic controls and this observed export path are accepted.",
+      "The 100-record limit is an export limit, not a D1 read cap or population completeness proof.",
+      "No cause is assigned to the initial zero/stale query view, changed time scope, elapsed ingestion time or autocomplete behavior.",
+      "No full provider envelope equality, genuine vendor identity or native/human accuracy claim."
+    ]
+  },
+  "comparisons": {
+    "array": {
+      "checkedAt": "2026-10-29T03:24:38.528Z",
+      "method": "Compare known receipt fields only, matched by unique existing operation reference, exact log timestamp, collection and receipt versions; no timestamp-only or D1-row join.",
+      "inputs": [
+        {
+          "bytes": 23500,
+          "sha256": "1292c3c96fe9df620b14d0781f7a0ae70321d7dd4d55445f1690f5572f47cdf3"
+        },
+        {
+          "bytes": 10504,
+          "sha256": "1a5e72c5ee2b63a792374c0ce5740c270de2b776b1724b674eaacf5e84a135b3"
+        }
+      ],
+      "liveStoredRecords": 2,
+      "retainedStoredRecords": 2,
+      "retainedInputRecords": 4,
+      "retainedFormats": {
+        "bulk": 4,
+        "individual": 0
+      },
+      "rejectedRetainedRecords": {
+        "shape": 0,
+        "timestamp": 0
+      },
+      "missingOperationRecords": 0,
+      "unmatchedLiveRecords": 0,
+      "unmatchedRetainedRecords": 0,
+      "ambiguousOperations": 0,
+      "invalidPairs": 0,
+      "matchedPairs": 2,
+      "identicalPairs": 2,
+      "differingPairs": 0,
+      "omittedNulls": 0,
+      "omittedEmptyArrays": 0,
+      "omittedOther": 0,
+      "missingFields": {},
+      "addedFields": {},
+      "changedFields": {},
+      "versions": {
+        "2026-10-29.1": 2
+      },
+      "unexpectedNetworkFields": 0,
+      "limits": [
+        "Known-field comparison, not complete raw-log equality or authentication of provider captures.",
+        "Unknown receipt versions and ambiguous/invalid pairs cannot supply accepted matches.",
+        "Observed differences do not locate their cause within provider ingestion, storage, API, UI or export.",
+        "No raw values, arbitrary field names, operation/provider identifiers or request context appear in this aggregate."
+      ]
+    },
+    "amazon-individual": {
+      "checkedAt": "2026-10-29T03:27:40.071Z",
+      "method": "Compare known receipt fields only, matched by unique existing operation reference, exact log timestamp, collection and receipt versions; no timestamp-only or D1-row join.",
+      "inputs": [
+        {
+          "bytes": 23500,
+          "sha256": "1292c3c96fe9df620b14d0781f7a0ae70321d7dd4d55445f1690f5572f47cdf3"
+        },
+        {
+          "bytes": 3747,
+          "sha256": "bcb0b753d0a3045efa060a073ffe80e2191f5112973f4684e43e79fddbd94bf8"
+        }
+      ],
+      "liveStoredRecords": 2,
+      "retainedStoredRecords": 1,
+      "retainedInputRecords": 1,
+      "retainedFormats": {
+        "bulk": 0,
+        "individual": 1
+      },
+      "rejectedRetainedRecords": {
+        "shape": 0,
+        "timestamp": 0
+      },
+      "missingOperationRecords": 0,
+      "unmatchedLiveRecords": 1,
+      "unmatchedRetainedRecords": 0,
+      "ambiguousOperations": 0,
+      "invalidPairs": 0,
+      "matchedPairs": 1,
+      "identicalPairs": 1,
+      "differingPairs": 0,
+      "omittedNulls": 0,
+      "omittedEmptyArrays": 0,
+      "omittedOther": 0,
+      "missingFields": {},
+      "addedFields": {},
+      "changedFields": {},
+      "versions": {
+        "2026-10-29.1": 1
+      },
+      "unexpectedNetworkFields": 0,
+      "limits": [
+        "Known-field comparison, not complete raw-log equality or authentication of provider captures.",
+        "Unknown receipt versions and ambiguous/invalid pairs cannot supply accepted matches.",
+        "Observed differences do not locate their cause within provider ingestion, storage, API, UI or export.",
+        "No raw values, arbitrary field names, operation/provider identifiers or request context appear in this aggregate."
+      ]
+    },
+    "meta-individual": {
+      "checkedAt": "2026-10-29T03:28:53.756Z",
+      "method": "Compare known receipt fields only, matched by unique existing operation reference, exact log timestamp, collection and receipt versions; no timestamp-only or D1-row join.",
+      "inputs": [
+        {
+          "bytes": 23500,
+          "sha256": "1292c3c96fe9df620b14d0781f7a0ae70321d7dd4d55445f1690f5572f47cdf3"
+        },
+        {
+          "bytes": 3101,
+          "sha256": "0079e502633fc50b23f9fd1bd647a7e2f6d29dac8972d6ea47be6febed33b54d"
+        }
+      ],
+      "liveStoredRecords": 2,
+      "retainedStoredRecords": 1,
+      "retainedInputRecords": 1,
+      "retainedFormats": {
+        "bulk": 0,
+        "individual": 1
+      },
+      "rejectedRetainedRecords": {
+        "shape": 0,
+        "timestamp": 0
+      },
+      "missingOperationRecords": 0,
+      "unmatchedLiveRecords": 1,
+      "unmatchedRetainedRecords": 0,
+      "ambiguousOperations": 0,
+      "invalidPairs": 0,
+      "matchedPairs": 1,
+      "identicalPairs": 1,
+      "differingPairs": 0,
+      "omittedNulls": 0,
+      "omittedEmptyArrays": 0,
+      "omittedOther": 0,
+      "missingFields": {},
+      "addedFields": {},
+      "changedFields": {},
+      "versions": {
+        "2026-10-29.1": 1
+      },
+      "unexpectedNetworkFields": 0,
+      "limits": [
+        "Known-field comparison, not complete raw-log equality or authentication of provider captures.",
+        "Unknown receipt versions and ambiguous/invalid pairs cannot supply accepted matches.",
+        "Observed differences do not locate their cause within provider ingestion, storage, API, UI or export.",
+        "No raw values, arbitrary field names, operation/provider identifiers or request context appear in this aggregate."
+      ]
+    },
+    "individuals": {
+      "checkedAt": "2026-10-29T03:28:53.823Z",
+      "method": "Compare known receipt fields only, matched by unique existing operation reference, exact log timestamp, collection and receipt versions; no timestamp-only or D1-row join.",
+      "inputs": [
+        {
+          "bytes": 23500,
+          "sha256": "1292c3c96fe9df620b14d0781f7a0ae70321d7dd4d55445f1690f5572f47cdf3"
+        },
+        {
+          "bytes": 7327,
+          "sha256": "18fcb7258da097126e0f1023c5afe12b8717afa3d4ad392b0e9bb87db3ba328e"
+        }
+      ],
+      "liveStoredRecords": 2,
+      "retainedStoredRecords": 2,
+      "retainedInputRecords": 2,
+      "retainedFormats": {
+        "bulk": 0,
+        "individual": 2
+      },
+      "rejectedRetainedRecords": {
+        "shape": 0,
+        "timestamp": 0
+      },
+      "missingOperationRecords": 0,
+      "unmatchedLiveRecords": 0,
+      "unmatchedRetainedRecords": 0,
+      "ambiguousOperations": 0,
+      "invalidPairs": 0,
+      "matchedPairs": 2,
+      "identicalPairs": 2,
+      "differingPairs": 0,
+      "omittedNulls": 0,
+      "omittedEmptyArrays": 0,
+      "omittedOther": 0,
+      "missingFields": {},
+      "addedFields": {},
+      "changedFields": {},
+      "versions": {
+        "2026-10-29.1": 2
+      },
+      "unexpectedNetworkFields": 0,
+      "limits": [
+        "Known-field comparison, not complete raw-log equality or authentication of provider captures.",
+        "Unknown receipt versions and ambiguous/invalid pairs cannot supply accepted matches.",
+        "Observed differences do not locate their cause within provider ingestion, storage, API, UI or export.",
+        "No raw values, arbitrary field names, operation/provider identifiers or request context appear in this aggregate."
+      ]
+    }
+  },
+  "indexedQueries": [
+    {
+      "key": "receipt.vendorNetwork.checks.sources.amazon-search.outcome",
+      "type": "string",
+      "operation": "eq",
+      "value": "not-listed",
+      "receiptVersion": "2026-10-29.1",
+      "visibleEvents": 1,
+      "expectedExistingControl": "amazon-search-claim"
+    },
+    {
+      "key": "receipt.vendorNetwork.checkCount",
+      "type": "number",
+      "operation": "eq",
+      "value": 0,
+      "receiptVersion": "2026-10-29.1",
+      "visibleEvents": 1,
+      "expectedExistingControl": "meta-ads-claim"
+    }
+  ],
+  "checks": {
+    "targetedTests": 25,
+    "markdownLinksAndJson": "pass: relative links, fences, JSON, source hashes, article unchanged and private-reference exclusion"
+  },
+  "article": {
+    "bodyWhitespaceWords": 1358,
+    "prompts": 31,
+    "unchanged": true,
+    "freshServedCheck": false,
+    "lastServedCheckReceipt": "network-receipt-release.json"
+  },
+  "newProductionStatements": 0,
+  "newOwnSiteGets": 0,
+  "newHumanLabels": 0,
+  "newPublicReportFills": 0,
+  "runtimeChanged": false,
+  "sourceSha256": {
+    "packages/blog/drafts/research/analytics-retrospective/compare-receipt-captures.mjs": "3027df2051f263f3a02eb2c72baa27066e691529bd32b2d969db8e2ab9d84451",
+    "packages/blog/drafts/research/analytics-retrospective/network-receipt-fields.mjs": "6122276db1ea32e7a9e16984fc175e3a810b0b6f91fea9c6ab1b3a258d294f0f",
+    "packages/blog/drafts/research/analytics-retrospective/reconcile-receipt-storage.mjs": "7c2a504b9cdb1bb0b7a083dfd6e291883645a0e1f67f7fcd0c17e135212d0242",
+    "packages/analytics/src/vendor-ip-receipt.ts": "6cde271132945f1cc86f1ba91bc234d8bc751d8b311835c89cc711551105f9cb",
+    "packages/analytics/src/observation-receipt.ts": "5ea4a5120f74747b756bcfdb81e18f7fafe119d504dd40d1ddd41f981751f598"
+  },
+  "limits": [
+    "Repeated representations cover the same two unsigned synthetic requests, not six new trials.",
+    "No complete log-population, provider-envelope or sampling guarantee. Initial zero/stale query views do not establish missing records or a cause.",
+    "Raw references, request context, row IDs and exports remain private. The query/export service has its own unreturned cost; no zero total cost claim.",
+    "Actual retained signed-proof, failure, multi-source and native-provider branches remain separate from this accepted cohort.",
+    "No new runtime deployment or fresh production health claim is required for this documentation/evidence-only closure."
+  ],
+  "primarySources": {
+    "checkedAt": "2026-10-29T03:29:40.239434+00:00",
+    "captures": [
+      {
+        "name": "query-builder",
+        "url": "https://developers.cloudflare.com/workers/observability/query-builder/",
+        "finalUrl": "https://developers.cloudflare.com/workers/observability/query-builder/",
+        "status": 200,
+        "bytes": 215754,
+        "sha256": "f204586c8c754370784637506c0ecd60ccd35573010b19c895dfb25175b7de9d"
+      },
+      {
+        "name": "telemetry-query",
+        "url": "https://developers.cloudflare.com/api/resources/workers/subresources/observability/subresources/telemetry/methods/query/",
+        "finalUrl": "https://developers.cloudflare.com/api/resources/workers/subresources/observability/subresources/telemetry/methods/query/",
+        "status": 200,
+        "bytes": 3666596,
+        "sha256": "37baf9bcd2bbb839363b05fd0fce9cfae6168389f12e3f0bc6981f2bfdc810f8"
+      },
+      {
+        "name": "workers-logs",
+        "url": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
+        "finalUrl": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
+        "status": 200,
+        "bytes": 228933,
+        "sha256": "a6a8a35da57aab2fc28ac141e92579e80e92fd7ae16b94892d18d11582b5761c"
+      }
+    ]
+  },
+  "privateArchive": {
+    "name": "2026-10-29-network-receipt-retention",
+    "capturedFiles": 31,
+    "files": 32,
+    "manifestSha256": "9159fae5c23cdecba9e81911a5a9442673d79670db948a21cae7aaceee1c2b36",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false,
+    "modes": "0700/0600"
+  }
+}

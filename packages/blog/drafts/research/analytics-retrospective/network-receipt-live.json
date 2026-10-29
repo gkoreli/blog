@@ -1,0 +1,81 @@
+{
+  "checkedAt": "2026-10-29T03:18:19.700Z",
+  "method": "Two synthetic, referral-excluded UA claims; exact Worker invocation/attempt/stored receipt/private text-reference D1 row joins. Known receipt projection agreement, not independent address/vendor truth.",
+  "workerVersion": "2c8ab95c-e591-4877-98b5-0f8a2576a6b1",
+  "sourceCommit": "7793f1430587881da7e5dff33447b34aad956a9c",
+  "ownSiteGetAttempts": 3,
+  "collectionIneligibleReadinessGets": 1,
+  "eligibleControls": 2,
+  "controls": [
+    {
+      "name": "meta-ads-claim",
+      "storedKind": "other-bot",
+      "collectionVersion": "2026-10-29.3",
+      "receiptVersion": "2026-10-29.1",
+      "classifierProfile": "2026-10-29.1",
+      "signatureOutcome": "absent",
+      "networkProfile": "2026-10-29.1",
+      "networkAddressState": "usable",
+      "configuredDeclarations": 0,
+      "receiptContainsNetworkAssessment": true,
+      "exactKnownReceiptProjectionMatches": true,
+      "networkChecks": [],
+      "nativeVerifiedBot": null,
+      "nativeSignedAgent": null,
+      "referralMatchesActiveExclusion": true,
+      "ownerMarked": false
+    },
+    {
+      "name": "amazon-search-claim",
+      "storedKind": "ai-search",
+      "collectionVersion": "2026-10-29.3",
+      "receiptVersion": "2026-10-29.1",
+      "classifierProfile": "2026-10-29.1",
+      "signatureOutcome": "absent",
+      "networkProfile": "2026-10-29.1",
+      "networkAddressState": "usable",
+      "configuredDeclarations": 1,
+      "receiptContainsNetworkAssessment": true,
+      "exactKnownReceiptProjectionMatches": true,
+      "networkChecks": [
+        {
+          "source": "amazon-search",
+          "outcome": "not-listed",
+          "reason": null,
+          "prefixCount": 816,
+          "publisherVersion": "2026-09-08T05:24:10.610952Z"
+        }
+      ],
+      "nativeVerifiedBot": null,
+      "nativeSignedAgent": null,
+      "referralMatchesActiveExclusion": true,
+      "ownerMarked": false
+    }
+  ],
+  "diagnostic": {
+    "statements": 1,
+    "reportedReads": 4,
+    "reportedWrites": 0,
+    "reportedAttempts": 1,
+    "agentRetries": 0,
+    "postExecutionReviewThreshold": 100,
+    "serverEnforcedCap": false
+  },
+  "normalIngestion": {
+    "acknowledgedApplicationRows": 2,
+    "providerWriteMetering": "not returned; additional to diagnostic meter"
+  },
+  "ownedTailExited": true,
+  "ownedProcessGroupAbsent": true,
+  "servedArticleMatchesCheckedBuild": true,
+  "servedArticleSha256": "7e1cf80295e891fbacb047d5457be31573cec8819b207ab52974c10b54a8beff",
+  "newHumanLabels": 0,
+  "publicReportFills": 0,
+  "retainedProviderCopyCompared": false,
+  "limits": [
+    "Receipt is a pre-insert projection emitted after acknowledgement; exact comparison is not independent cryptographic/network authentication.",
+    "Both UA claims are agent supplied; no genuine vendor, human or native-provider accuracy measurement.",
+    "Raw controls, references and operation IDs stay private. No population rescan.",
+    "Provider retention/indexing fidelity for these new fields is a separate remaining measurement."
+  ]
+}

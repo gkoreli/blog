@@ -93,7 +93,7 @@ try {
     else {
       assert.equal(rows.length, 1); assert.equal(stored.length, 1); assert.equal(capture.settlements[0], 'fulfilled');
       const row = rows[0], evidence = JSON.parse(row.signature_evidence), classification = JSON.parse(row.classification_evidence), receipt = stored[0].receipt;
-      assert.equal(receipt.version, '2026-10-28.2');
+      assert.equal(receipt.version, '2026-10-29.1');
       assert.equal(stored[0].operationId, capture.logs.find(log => log.event === 'analytics.observation_attempt').operationId);
       assert.equal(stored[0].collectionVersion, row.collection_version); assert.equal(row.collection_version, COLLECTION_VERSION);
       const storage = stored[0].storage;

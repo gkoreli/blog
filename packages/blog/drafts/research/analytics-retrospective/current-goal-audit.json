@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T02:44:50.024826+00:00",
-  "sourceBaseline": "c379c79",
+  "checkedAt": "2026-10-29T03:46:36.445870+00:00",
+  "sourceBaseline": "7403fc776e91040b2aa1ebbe4c266ab5104d40a5",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -35,7 +35,7 @@
     "Concise article and preserved source/evidence trail"
   ],
   "incomplete": [
-    "Complete newest-profile signed-input/receipt/proof acceptance; 52 stored .28.7 verified outcomes remain observed without complete inputs or fresh cryptographic replay",
+    "Newest-collector .29.3 signed-input/receipt/proof acceptance remains open; four genuine .29.1-verifier proofs under collectors .29.1/.29.2 are now exact-joined and replayed. The 52 old .28.7 outcome-only records remain unrecovered.",
     "Request-level native managed-verifier comparison",
     "Human/device/actual-JavaScript-off and Cloudflare RUM-receipt measurements",
     "R1 operator/authenticity/trigger attribution",
@@ -45,20 +45,22 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Accept documented-feed activation and two scoped synthetic integration controls; then add versioned published-address receipt visibility. Human trials remain deferred.",
+  "nextBoundedAction": "Native-test candidate replay-enforcement policies offline against retained genuine proofs and repeated/unsigned-field variants; measure storage cost and false-positive boundaries before proposing runtime enforcement. Latest-collector signed acceptance and request-level managed-provider verdicts remain separate open gates. Human trials remain deferred.",
   "article": {
-    "bodyWhitespaceWords": 1347,
+    "bodyWhitespaceWords": 1358,
     "prompts": 31,
-    "sourceSha256": "2936fb16691e3c1b0e666a2d8209ed8cbdd2a7c361cad24be6017d659e4524d4",
-    "unchanged": false,
+    "sourceSha256": "3c51458d27908a851e629bde089c14f4e8f3f650396052d9484804d6fcd9ed73",
+    "unchanged": true,
     "freshServedCheck": false,
-    "publicationReceipt": "documented-feeds-release.json"
+    "publicationReceipt": "network-receipt-release.json",
+    "servedMatchesCheckedBuild": true,
+    "lastServedCheckReceipt": "network-receipt-release.json"
   },
-  "runtimeUnchanged": false,
-  "productionStatements": 0,
+  "runtimeUnchanged": true,
+  "productionStatements": 1,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": false,
+  "liveAccountInspection": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -85,7 +87,7 @@
     "disabledBeforeExpiryReceipt": "disabled-before-expiry-live.json",
     "disabledBeforeExpiryPublication": "disabled-before-expiry-release.json",
     "lastObservedRuleActive": false,
-    "ruleInspectionReference": "disabled-before-expiry-release.json; not re-inspected in the retained-data/publication slice"
+    "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
   "productionOwnSiteGets": 0,
   "collectionEligibleGets": 0,
@@ -144,13 +146,68 @@
     "sourceReceipt": "documented-feeds-sources.json",
     "newSources": 5,
     "localAccepted": true,
-    "productionActivation": "pending",
+    "productionActivation": "accepted",
     "ipControls": 36,
     "concurrentMixedSources": 5,
     "collectorControls": 14,
     "historicalPayloadUnchanged": true,
     "newMetaAdsClaim": "other-bot",
     "MetaWebIndexerMethod": "not configured; checked primary page supplies no per-client method",
-    "nativeOrHumanAccuracyMeasured": false
+    "nativeOrHumanAccuracyMeasured": false,
+    "releaseReceipt": "documented-feeds-release.json",
+    "liveReceipt": "documented-feeds-live.json",
+    "syntheticIntegrationControls": 2,
+    "metaAdsStoredKind": "other-bot",
+    "amazonSearchAddressOutcome": "not-listed",
+    "amazonSearchSourceEntries": 816,
+    "networkAssessmentInReceipt": false,
+    "optionalCaptureBindingsAbsent": true
+  },
+  "productionReportedReads": 8,
+  "productionDiagnosticWrites": 0,
+  "normalIngestion": {
+    "acknowledgedApplicationRows": 0,
+    "providerWriteMetering": "No new observation requested by this investigation."
+  },
+  "newVisitsScope": "No new site observations requested; four selected existing Exa chains, one exact four-reference SELECT and offline replay.",
+  "networkReceipt": {
+    "releaseReceipt": "network-receipt-release.json",
+    "receiptVersion": "2026-10-29.1",
+    "localAccepted": true,
+    "productionActivation": "accepted",
+    "nativeBeforeAfterPairs": 14,
+    "archivedLiveLegacyProjections": 2,
+    "independentTruthMeasured": false,
+    "liveReceipt": "network-receipt-live.json",
+    "productionExactProjectionPairs": 2,
+    "retainedProviderCopyCompared": true,
+    "retainedReceipt": "network-receipt-retained.json",
+    "retainedDistinctControls": 2,
+    "retainedBulkEqualityPairs": 2,
+    "retainedIndividualEqualityPairs": 2,
+    "indexedPositiveQueries": 2
+  },
+  "retainedNetworkVisibility": {
+    "receipt": "network-receipt-retained.json",
+    "newD1Statements": 0,
+    "newObservations": 0,
+    "providerQueryCost": "not returned",
+    "signedFailureOrMultiSourceRetainedBranchesMeasured": false
+  },
+  "currentVerifierCohort": {
+    "receipt": "current-verifier-cohort.json",
+    "verifierProfile": "2026-10-29.1",
+    "collections": {
+      "2026-10-29.1": 2,
+      "2026-10-29.2": 2
+    },
+    "exactStoredChains": 4,
+    "independentAndNativeDistinctContexts": 12,
+    "signedAuthority": 4,
+    "unsignedUserAgentAndResource": 4,
+    "nativeBooleanValuesAvailable": 0,
+    "newestCollectorAccepted": false,
+    "wholeHistoricalCohortRecovered": false,
+    "humanTriggerEstablished": false
   }
 }

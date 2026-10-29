@@ -1,0 +1,300 @@
+{
+  "checkedAt": "2026-10-29T03:44:57.883Z",
+  "verifierProfile": "2026-10-29.1",
+  "candidateRows": 4,
+  "exactCompleteChains": 4,
+  "matchingSeparateReceiptCopies": 4,
+  "comparison": {
+    "candidateRows": 4,
+    "retainedInputRecords": 16,
+    "retainedStoredRecords": 4,
+    "rejectedRetainedRecords": {
+      "shape": 0,
+      "timestamp": 0
+    },
+    "invalidCandidateReferences": 0,
+    "unavailableReceiptReferences": 0,
+    "invalidReceiptReferences": 0,
+    "unmatchedCandidateRows": 0,
+    "unmatchedReceiptRecords": 0,
+    "ambiguousReferenceGroups": 0,
+    "invalidPairMetadata": 0,
+    "unprojectableCandidateRows": 0,
+    "matchedReferencePairs": 4,
+    "identicalProjectionPairs": 4,
+    "differentProjectionPairs": 0,
+    "storedLocalVerifiedPairs": 4,
+    "testInjectedPairs": 0,
+    "conflictingStoredStatusPairs": 0,
+    "changedFields": {},
+    "unexpectedFields": 0
+  },
+  "nativeExportIntegrity": {
+    "missingIds": 0,
+    "duplicateIds": 0,
+    "truncatedRecords": 0
+  },
+  "collections": {
+    "2026-10-29.1": 2,
+    "2026-10-29.2": 2
+  },
+  "receiptVersion": "2026-10-28.2",
+  "executionWorkers": [
+    "71b6e9e6-cbb3-4128-b91e-eaff86f19f72",
+    "be225b66-874c-4f5c-ac39-e7306b6d8133"
+  ],
+  "directory": {
+    "source": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+    "capturedAt": "2026-10-29T03:37:50.916647+00:00",
+    "responseStatus": 200,
+    "responseHeaders": {
+      "content-type": "application/http-message-signatures-directory+json",
+      "cache-control": "max-age=300"
+    },
+    "bytes": 274,
+    "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+    "readerTelemetryForwarded": false
+  },
+  "inputSha256": "51286f29ef842e6cdfdb04545bda72ddd50635ea8e63ddf5f23b8fd531f06f4a",
+  "localAndIndependentControls": {
+    "original": 4,
+    "changed-authority": 4,
+    "changed-unsigned-role-and-path": 4
+  },
+  "originalCoverage": [
+    {
+      "version": "2026-10-28.1",
+      "headerForm": "legacy-string",
+      "covered": {
+        "authority": true,
+        "targetUri": false,
+        "method": false,
+        "path": false,
+        "query": false,
+        "userAgent": false,
+        "contentDigest": false
+      },
+      "otherComponentCount": 0,
+      "validitySeconds": 300,
+      "ageSeconds": 0,
+      "replayPolicy": "expiry-only",
+      "selection": {
+        "policy": "first-valid-in-input-order",
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "unassessedCandidates": 0
+      }
+    },
+    {
+      "version": "2026-10-28.1",
+      "headerForm": "legacy-string",
+      "covered": {
+        "authority": true,
+        "targetUri": false,
+        "method": false,
+        "path": false,
+        "query": false,
+        "userAgent": false,
+        "contentDigest": false
+      },
+      "otherComponentCount": 0,
+      "validitySeconds": 300,
+      "ageSeconds": 1,
+      "replayPolicy": "expiry-only",
+      "selection": {
+        "policy": "first-valid-in-input-order",
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "unassessedCandidates": 0
+      }
+    },
+    {
+      "version": "2026-10-28.1",
+      "headerForm": "legacy-string",
+      "covered": {
+        "authority": true,
+        "targetUri": false,
+        "method": false,
+        "path": false,
+        "query": false,
+        "userAgent": false,
+        "contentDigest": false
+      },
+      "otherComponentCount": 0,
+      "validitySeconds": 300,
+      "ageSeconds": 1,
+      "replayPolicy": "expiry-only",
+      "selection": {
+        "policy": "first-valid-in-input-order",
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "unassessedCandidates": 0
+      }
+    },
+    {
+      "version": "2026-10-28.1",
+      "headerForm": "legacy-string",
+      "covered": {
+        "authority": true,
+        "targetUri": false,
+        "method": false,
+        "path": false,
+        "query": false,
+        "userAgent": false,
+        "contentDigest": false
+      },
+      "otherComponentCount": 0,
+      "validitySeconds": 300,
+      "ageSeconds": 0,
+      "replayPolicy": "expiry-only",
+      "selection": {
+        "policy": "first-valid-in-input-order",
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "unassessedCandidates": 0
+      }
+    }
+  ],
+  "nativeBooleanValuesAvailable": 0,
+  "optionalCaptureAbsent": 4,
+  "reuse": {
+    "version": "2026-10-28.1",
+    "verifierProfile": "2026-10-29.1",
+    "scope": "supplied-observations-publisher-key",
+    "enforcement": "none",
+    "assessment": "complete",
+    "termination": "exhausted",
+    "policy": {
+      "maxObservations": 4,
+      "maxCandidatesPerObservation": 2,
+      "deadlineMs": 2000,
+      "maxAgeSeconds": 86400,
+      "headerBudgetUnits": 32768
+    },
+    "submittedObservations": 4,
+    "assessedObservations": 4,
+    "unassessedObservations": 0,
+    "missingReferenceRecords": 0,
+    "duplicateReferenceRecords": 0,
+    "invalidContextRecords": 0,
+    "headerBudgetRecords": 0,
+    "incompleteObservations": 0,
+    "verifiedObservations": 4,
+    "knownTaggedCandidates": 4,
+    "attemptedCandidates": 4,
+    "unassessedKnownCandidates": 0,
+    "verifiedCandidates": 4,
+    "notVerifiedByProfileCandidates": 0,
+    "unresolvedCandidates": 0,
+    "nonceStringCandidates": 4,
+    "nonceAbsentCandidates": 0,
+    "nonceUnusableCandidates": 0,
+    "distinctVerifiedProofs": 4,
+    "repeatedProofGroups": 0,
+    "observationsInRepeatedProofGroups": 0,
+    "repeatedProofGroupsWithChangedMethodUrlOrUserAgent": 0,
+    "distinctUsableNonces": 4,
+    "repeatedNonceGroups": 0,
+    "repeatedNonceGroupsWithDifferentProofs": 0,
+    "directoryFetches": 1
+  },
+  "metering": {
+    "statements": 1,
+    "agentAttempts": 1,
+    "reportedReads": 8,
+    "reportedWrites": 0,
+    "reportedAttempts": 1
+  },
+  "newSiteRequests": 0,
+  "newHumanLabels": 0,
+  "runtimeChanged": false,
+  "limits": [
+    "Fixed selected cohort; no whole-history or newest .29.3 collection acceptance.",
+    "Later keys and recorded clocks; original discovery snapshot unavailable.",
+    "Workerd crypto and independent RFC verification are not native managed-verifier verdicts.",
+    "Unsigned User-Agent, path, method and query do not establish purpose or a human trigger.",
+    "Four distinct proofs/nonces in this cohort do not establish four unique actions or global replay rates."
+  ],
+  "primarySources": [
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc9421.html",
+      "status": 200,
+      "sha256": "ec369a24b754be7de55e19c708fa977c1665253b0ba33a4922665b7a946c3720",
+      "bytes": 458725,
+      "capturedAt": "2026-10-29T03:45:24.448683+00:00"
+    },
+    {
+      "source": "https://crawler.exa.ai/",
+      "status": 200,
+      "sha256": "509df05b8dd9217156e197eaa580d66bd2bbdebebf8703e082242a04e370c7f3",
+      "bytes": 7108,
+      "capturedAt": "2026-10-29T03:45:24.651313+00:00"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/pyauth/http-message-signatures/1de433d9a49fd608475c6054ab14a1652c088844/README.rst",
+      "status": 200,
+      "sha256": "34084c8c6195ef6b65b43fb8c91a9e867534df29cb2f20c4d504978aba8ba0ab",
+      "bytes": 34226,
+      "capturedAt": "2026-10-29T03:45:25.177787+00:00"
+    }
+  ],
+  "negativeGates": {
+    "checkedAt": "2026-10-29T03:45:19.437368+00:00",
+    "results": [
+      {
+        "condition": "wrong-row-reference",
+        "rejected": true,
+        "acceptedOutputAbsent": true
+      },
+      {
+        "condition": "wrong-input-digest",
+        "rejected": true,
+        "acceptedOutputAbsent": true
+      },
+      {
+        "condition": "unreviewed-directory",
+        "rejected": true,
+        "acceptedOutputAbsent": true
+      }
+    ]
+  },
+  "nativeQuery": {
+    "checkedAt": "2026-10-29T03:36:59.189Z",
+    "sqlSha256": "59b7e8236135468e9a089bf23c42d961ab4e1d370dea0b0525a97c00d11dd844",
+    "nativeRows": 4,
+    "reads": 8,
+    "writes": 0,
+    "primaryKeyPlan": true,
+    "unsafeNeighborTextIdsDistinct": true,
+    "contradictoryAndMissingFieldsRetained": true,
+    "ownerIncluded": true,
+    "productionStatements": 0
+  },
+  "privateArchive": {
+    "capturedFiles": 48,
+    "manifestSha256": "cb42083b12b7d6442ecd6becec0806612116d92d525df707606f1a0dec89a4a8",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "readPlanArchiveManifestSha256": "b66e250e710371b800e299540a53c8bcc0a15c0ba67c10ac2ae0e3420d67457f",
+  "checks": {
+    "targetedTests": 24,
+    "failures": 0,
+    "distinctReplayContexts": 12,
+    "workerdPasses": 2,
+    "pythonPasses": 2,
+    "note": "Second passes bind both execution outputs to the same frozen input digest; no new contexts or production requests.",
+    "localLinks": 36,
+    "privateReferencesAbsentFromPublicReceipt": true,
+    "articleSourceShaUnchanged": true,
+    "articleValidation": {
+      "validPosts": 21,
+      "command": "pnpm -C packages/blog validate"
+    },
+    "newScriptSyntaxChecks": 3
+  }
+}

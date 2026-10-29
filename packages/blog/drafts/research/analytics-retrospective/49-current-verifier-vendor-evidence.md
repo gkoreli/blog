@@ -66,3 +66,5 @@ Next bounded work can proceed without people: assess duplicate-proof diagnostics
 [Research 50](50-proof-reuse-and-nonce-boundaries.md) executes the bounded reuse diagnostic follow-up. The selected three requests have distinct proofs and nonces; no global replay or unique-action conclusion follows. Existing acceptance and native-verifier limits remain unchanged.
 
 Duration correction in research 50: the initial receipt used 104 seconds from a transient status display. The saved final native capture already records 51 seconds, also shown by current history. The corrected receipt preserves the original value and source commit; signature, rollout and served-byte acceptance are unchanged.
+
+[Research 69](69-current-verifier-signed-cohort.md) adds a separate four-request current-verifier Exa cohort with complete retained chains, exact stored references and independent replay. The older Exa/Ahrefs cohort above remains unchanged. Neither cohort establishes newest-collector signed acceptance, a managed-provider verdict or a human trigger.
