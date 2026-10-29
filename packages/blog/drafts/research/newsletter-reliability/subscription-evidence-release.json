@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-10-29T23:19:24.451940+00:00",
+  "sourceCommit": "15a686806b3930d72725a6bbd535b55f5c190ac3",
+  "buildId": "e134eca3-6d28-4149-ae7b-c11b4e16f16a",
+  "providerCheckId": 123791509435,
+  "initialCheckId": 123791058762,
+  "checkIdentityNote": "Fresh completed check has a different ID for the same exact source/build. Original in-progress capture and plan preserved; cause not inferred.",
+  "workerVersion": "45650ef9-6f8b-405c-bd39-2a6dc8acd998",
+  "percentage": 100,
+  "responses": [
+    {
+      "name": "client",
+      "status": 200,
+      "bytes": 28162,
+      "sha256": "05f4d0a77ba0eea6a42d45dc230bcd6693bcc0eb6e5c81479e8981437aa5dfa0",
+      "matchesExpected": true
+    },
+    {
+      "name": "privacy",
+      "status": 200,
+      "bytes": 20347,
+      "sha256": "24494f85441f1ba9b9cfe94c4ba77581876362cd116afe57cdec962d29b8981d",
+      "matchesExpected": true
+    }
+  ],
+  "privacyNormalization": "Only the one public key attribute value; key ownership/validity is not checked",
+  "sourceExclusion": "Asset suffix / prefetch eligibility; no ingestion readback",
+  "perRequestVersionJoined": false,
+  "ownSiteGets": 2,
+  "productionDiagnosticSelects": 0,
+  "productionReportPosts": 0,
+  "productionEmails": 0,
+  "actualMetadataPersistenceReadback": false,
+  "planSha256": "cf2e02a5f4d1d33ad24f0f123f3905685babc532933cc11f288d2fc9d64b81be",
+  "nativeBuildStateSha256": "7ba621516e11873cccbd7d96577437cc535f60c6fe7f05fc9f0e1df93a88dcb9",
+  "nativeBuildScreenshotSha256": "053626c08933beb76542818b9154fee61a63de506898e947db90f5fcdd8014bb",
+  "schemaReceipt": "subscription-evidence-schema.json",
+  "newClientErrorMetadataPersistence": "Not exercised in production; native local logger/handler/storage accepted separately"
+}

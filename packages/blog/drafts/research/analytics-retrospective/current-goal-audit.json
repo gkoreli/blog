@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-29T23:16:07.993771+00:00",
-  "sourceBaseline": "9d1115e9d6c2ee4d2f13e6c49209fb15fb04256f",
+  "checkedAt": "2026-10-29T23:20:30.874479+00:00",
+  "sourceBaseline": "15a686806b3930d72725a6bbd535b55f5c190ac3",
   "goalAchieved": false,
   "previousTurn": "progress",
-  "scope": "Closed subscription diagnostic evidence/occurrence storage implemented and natively checked; additive production schema accepted. Writer/client publication and activation remain pending. Original analytics goal retained.",
+  "scope": "Closed subscription diagnostic evidence/occurrence implementation and schema accepted; source/build/full allocation and exact served JS/privacy accepted. Live metadata write/readback remains separate. Full analytics goal retained.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Commit/push checked client/writer; accept source/build/allocation and served JS/privacy artifacts. Then prepare a labelled ingestion write/readback/cleanup plan; do not pollute natural diagnostic counts. GSC login/Duck.ai terms approval pending; human trials deferred.",
+  "nextBoundedAction": "Native-test and freeze one labelled diagnostic write/readback/guarded-cleanup control; distinguish direct ingestion from actual browser reporting, preserve receipts, and avoid natural-error inflation. GSC login/Duck.ai terms approval pending; human trials deferred.",
   "article": {
     "bodyWhitespaceWords": 1450,
     "prompts": 31,
@@ -95,7 +95,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 0,
+  "productionOwnSiteGets": 2,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -176,7 +176,7 @@
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No collection-eligible own-site request or ingestion readback. No per-request write trace; natural/provider activity additional."
   },
-  "newVisitsScope": "No own-site request or browser operation in the retained-error audit. Local callback labels are not added to population calibration.",
+  "newVisitsScope": "Two frozen asset/privacy prefetch GETs; source-excluded, no ingestion readback. Provider account inspection additional. No human or browser page visit.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -718,7 +718,7 @@
     "productionCollectorReadbackReceipt": "metadata-collector-production.json",
     "productionCollectorReadbackScope": "Four matched requests on d65be377; the later article-only publication Worker is accepted separately, without repeating collector trials."
   },
-  "newControlledRequests": 0,
+  "newControlledRequests": 2,
   "liveMetadataControls": {
     "research": "91-live-metadata-controls-and-redacted-correlation.md",
     "native": "metadata-collector-native.json",
@@ -763,7 +763,7 @@
     "warmCache": "HIT",
     "populationPrevalenceMeasured": false
   },
-  "ownSiteGetRequests": 0,
+  "ownSiteGetRequests": 2,
   "collectionEligibleRequests": 0,
   "diagnosticSelects": 3,
   "evidenceDelta": {
@@ -940,12 +940,18 @@
     "legacyFieldsUnchanged": true,
     "legacyNewFieldsNull": true,
     "schemaAccepted": true,
-    "writerActivationAccepted": false,
+    "writerActivationAccepted": true,
     "liveMetadataReadback": false,
     "buildIdentitySupplied": false,
     "acknowledgmentContractChanged": false,
     "runtimeAnalyticsChanged": false,
     "historicalCohortRewritten": false,
-    "privateDataManifestSha256": "90bfd7b8f818b7af8160768e68b3a22b83ff2f55c3d9796731fa2081660c14bb"
+    "privateDataManifestSha256": "90bfd7b8f818b7af8160768e68b3a22b83ff2f55c3d9796731fa2081660c14bb",
+    "release": "../newsletter-reliability/subscription-evidence-release.json",
+    "sourceCommit": "15a686806b3930d72725a6bbd535b55f5c190ac3",
+    "workerVersion": "45650ef9-6f8b-405c-bd39-2a6dc8acd998",
+    "servedClientExactMatch": true,
+    "servedPrivacyNormalizedMatch": true,
+    "privateReleaseManifestSha256": "6f67ba00ec3c415dc81cfa23e5768bdc5dad2d5ba1f37c8437910edfe37ff15b"
   }
 }

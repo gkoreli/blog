@@ -4,7 +4,7 @@ title: Close client error reporting gaps for Turnstile and subscription failures
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.781Z'
-updated_at: '2026-10-29T23:16:07.993771+00:00'
+updated_at: '2026-10-29T23:21:40.637583+00:00'
 type: task
 ---
 
@@ -27,4 +27,4 @@ The authorized native Chrome flow passed a real Turnstile challenge and signup, 
 
 **October 29 retained-error audit:** [Evidence](../../packages/blog/drafts/research/newsletter-reliability/18-retained-widget-errors-and-conversion-limits.md) finds 35 generic widget-error reports in the fixed October window, all without build identity. A new idle-callback counterexample emits one report with no submit/execution/signup request; missing-key/slot controls assert silent initialization before a submission. All 129 site tests and workspace types pass. One native-tested production aggregate costs 341 reads/zero writes; no raw reports or new visits. Next: bounded operation-phase and provider-error metadata with missing/unknown states. Occurrence/build identity, correlation and delivery requirements above remain open; no historical attempt/human count is inferred.
 
-**October 29 evidence implementation:** [Research 19](../../packages/blog/drafts/research/newsletter-reliability/19-subscription-error-phase-and-provider-evidence.md) implements phase/provider evidence and occurrence persistence. Native D1/CLI checks and 137 site tests/types/validation/isolated build pass. The additive production schema is accepted, without a backfill; writer/client delivery and live metadata readback remain separate. Actual build identity, correlation, early bootstrap, budgets and transport/ingestion acknowledgment remain open. No email or human trial runs.
+**October 29 evidence implementation:** [Research 19](../../packages/blog/drafts/research/newsletter-reliability/19-subscription-error-phase-and-provider-evidence.md) implements phase/provider evidence and occurrence persistence. Native D1/CLI checks and 137 site tests/types/validation/isolated build pass. The additive production schema is accepted without a backfill. [Writer/client release](../../packages/blog/drafts/research/newsletter-reliability/subscription-evidence-release.json) joins source `15a6868`, native successful build, full Worker at 100% and exact/normalized served assets. No diagnostic report is posted, so live metadata readback remains separate. Actual build identity, correlation, early bootstrap, budgets and transport/ingestion acknowledgment remain open. No email or human trial runs.

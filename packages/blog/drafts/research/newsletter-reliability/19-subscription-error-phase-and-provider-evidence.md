@@ -29,3 +29,13 @@ Actual build identity, operation correlation, durable transport/ingestion acknow
 Next: publish the checked writer/client and join its source, successful build and full allocation. Verify the served client/privacy artifacts separately. A later labelled ingestion control needs a frozen write/readback/cleanup plan; it must not become an unexplained natural-error count.
 
 The private pre-publication archive preserves 83 files under SHA-256 manifest `90bfd7b8f818b7af8160768e68b3a22b83ff2f55c3d9796731fa2081660c14bb`, including tested source, native/CLI results, rejected invocations, schema plans/meters and handoff. Runtime hashes match both the checked source and isolated snapshot. October 31 is an evidence-review date, not automatic deletion.
+
+## Writer/client release accepted
+
+[Release receipt](subscription-evidence-release.json): source `15a6868` links through successful native build `e134eca3` to full Worker `45650ef9-6f8b-405c-bd39-2a6dc8acd998`, confirmed by fresh CLI at 100% allocation. The native build uploads exactly the changed `main.js` and privacy HTML. The fresh completed GitHub check has a different ID from the initial in-progress capture for the same source/build; both records are preserved without inferring why.
+
+Two frozen, one-attempt prefetch GETs return 200. All 28,162 bytes of client JavaScript match the checked build. Privacy HTML matches outside its single public-key attribute value; this does not verify that key's ownership or validity. Eligibility excludes the asset/prefetch requests by source; no ingestion readback or per-request Worker trace is collected. No diagnostic report is posted, so production persistence of the new metadata remains unmeasured. No challenge, subscription, email, human trial or additional D1 statement occurs during asset acceptance. Pending browser tabs are retained; no own-site browser tab is opened.
+
+Next: native-test and freeze one labelled direct-ingestion write/readback/guarded-cleanup control. It must remain separate from actual browser callback delivery and human measurements, and it must not inflate natural diagnostic totals.
+
+The private 23-file release archive has SHA-256 manifest `6f67ba00ec3c415dc81cfa23e5768bdc5dad2d5ba1f37c8437910edfe37ff15b`. It preserves both check identities, plans, native build state/screenshot, allocation and saved responses/controllers. Served artifact hashes match the acceptance receipt. The broader analytics goal remains open.
