@@ -1,0 +1,74 @@
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index 345538ca..4d8fea5d 100644
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -181,7 +181,7 @@ overrides:
+   react-is: npm:react-is@19.3.0-canary-dc9aed36-20261027
+   scheduler: npm:scheduler@0.28.0-canary-dc9aed36-20261027
+
+-packageExtensionsChecksum: sha256-kX1zOZCW412fdbsu9Bt1kGS+RKsizVtIZbp2hqLS7U8=
++packageExtensionsChecksum: sha256-o8BhGPg0azvpChuvb7MmMULy12y3tDEf/mhe9DvMtDU=
+
+ patchedDependencies:
+   '@modelcontextprotocol/sdk': 680fe4edb7abd1de29d08cdf217a22506e815a8cc1c2282201d5d47aa3e5da12
+@@ -21713,6 +21713,7 @@ snapshots:
+   '@octokit/plugin-paginate-graphql@4.0.0(@octokit/core@5.0.0)':
+     dependencies:
+       '@octokit/core': 5.0.0
++      '@octokit/graphql': 7.0.1
+
+   '@octokit/plugin-paginate-rest@14.0.0(@octokit/core@7.0.7)':
+     dependencies:
+@@ -23824,6 +23825,18 @@ snapshots:
+     transitivePeerDependencies:
+       - supports-color
+
++  '@typescript-eslint/parser@8.71.0(eslint@9.37.0(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.2)':
++    dependencies:
++      '@typescript-eslint/scope-manager': 8.71.0
++      '@typescript-eslint/types': 8.71.0
++      '@typescript-eslint/typescript-estree': 8.71.0(supports-color@8.1.1)(typescript@6.0.2)
++      '@typescript-eslint/visitor-keys': 8.71.0
++      debug: 4.4.3(supports-color@8.1.1)
++      eslint: 9.37.0(jiti@2.6.1)(supports-color@8.1.1)
++      typescript: 6.0.2
++    transitivePeerDependencies:
++      - supports-color
++
+   '@typescript-eslint/parser@8.71.0(eslint@9.37.0(jiti@2.6.1)(supports-color@9.4.0))(supports-color@9.4.0)(typescript@6.0.2)':
+     dependencies:
+       '@typescript-eslint/scope-manager': 8.71.0
+@@ -32889,6 +32902,7 @@ snapshots:
+     dependencies:
+       '@octokit/app': 14.0.0
+       '@octokit/core': 5.0.0
++      '@octokit/graphql': 7.0.1
+       '@octokit/oauth-app': 6.0.0
+       '@octokit/plugin-paginate-graphql': 4.0.0(@octokit/core@5.0.0)
+       '@octokit/plugin-paginate-rest': 8.0.0(@octokit/core@5.0.0)
+@@ -32897,6 +32911,7 @@ snapshots:
+       '@octokit/plugin-throttling': 7.0.0(@octokit/core@5.0.0)
+       '@octokit/request-error': 5.0.0
+       '@octokit/types': 11.1.0
++      '@octokit/webhooks': 12.0.3
+
+   on-finished@2.3.0:
+     dependencies:
+diff --git a/pnpm-workspace.yaml b/pnpm-workspace.yaml
+index 1a77cdd4..3c7c4995 100644
+--- a/pnpm-workspace.yaml
++++ b/pnpm-workspace.yaml
+@@ -84,6 +84,13 @@ overrides:
+   scheduler: 'npm:scheduler@0.28.0-canary-dc9aed36-20261027'
+
+ packageExtensions:
++  'octokit@3.1.0':
++    dependencies:
++      '@octokit/graphql': 7.0.1
++      '@octokit/webhooks': 12.0.3
++  '@octokit/plugin-paginate-graphql@4.0.0':
++    dependencies:
++      '@octokit/graphql': 7.0.1
+   # alex requires supports-color from its CLI but does not declare it. v9 is ESM-only.
+   alex@9.1.0:
+     dependencies:

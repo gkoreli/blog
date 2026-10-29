@@ -1,0 +1,221 @@
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index 6bdece6b..f137391f 100644
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -352,7 +352,7 @@ overrides:
+   vite-plus: 1.4.0
+   yaml: ^2.9.0
+
+-packageExtensionsChecksum: sha256-EowbsmlBFaoO0Ypufw901RnvdyjKG5dcdk2FRbc7Dr0=
++packageExtensionsChecksum: sha256-H4Mzd04wi5fNrJcNVLnTkJNHiG7tMbm4Z4AFkGKp+bw=
+
+ pnpmfileChecksum: sha256-STsbxG7+RxOFI611PrDEj1TonJgqKKllY9hYCFMLYiU=
+
+@@ -529,7 +529,7 @@ importers:
+         version: 0.4.0(patch_hash=7a808b92da8460750b85818552e13be3fb73d111691c7db76965970351e124e4)(@tsc-rs/typescript@0.8.0)(expo@58.0.14)(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(@types/react@19.3.0)(bufferutil@4.1.0)(react@19.3.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(react@19.3.0)(supports-color@8.1.1)
+       '@effect/atom-react':
+         specifier: 4.0.5
+-        version: 4.0.5(effect@4.0.5)(react@19.3.0)(scheduler@0.28.0)
++        version: 4.0.5(@types/react@19.3.0)(effect@4.0.5)(react@19.3.0)(scheduler@0.28.0)
+       '@expo-google-fonts/dm-sans':
+         specifier: ^0.4.2
+         version: 0.4.2
+@@ -541,7 +541,7 @@ importers:
+         version: 58.0.20(patch_hash=5a26480373850c1a7943919aa21f904151b335a0cb01042109e0746def37923e)(@babel/core@7.29.7(supports-color@8.1.1))(expo@58.0.14)(react-dom@19.3.0(react@19.3.0))(react-native-worklets@0.13.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(@types/react@19.3.0)(bufferutil@4.1.0)(react@19.3.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(react@19.3.0)(supports-color@8.1.1))(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(@types/react@19.3.0)(bufferutil@4.1.0)(react@19.3.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(react@19.3.0)
+       '@legendapp/list':
+         specifier: 3.3.5
+-        version: 3.3.5(patch_hash=6cbdacd8c380d9a5afb9f73d4198dc2cc44be6ef28a955b1183c781469307896)(react-dom@19.3.0(react@19.3.0))(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(@types/react@19.3.0)(bufferutil@4.1.0)(react@19.3.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(react@19.3.0)
++        version: 3.3.5(patch_hash=6cbdacd8c380d9a5afb9f73d4198dc2cc44be6ef28a955b1183c781469307896)(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(@types/react@19.3.0)(bufferutil@4.1.0)(react@19.3.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(react@19.3.0)
+       '@material/material-color-utilities':
+         specifier: 0.3.0
+         version: 0.3.0
+@@ -794,7 +794,7 @@ importers:
+         version: 4.0.5(patch_hash=2731c9c3761c595f25ddc625a7d61ca376b389d5b3049ecb837c8940f21cfa02)(@astrojs/compiler-rs@0.5.1)(@tsc-rs/typescript@0.8.0)(@types/node@24.12.4)(@vitest/browser-playwright@5.0.5)(@vitest/ui@5.0.5)(@volar/typescript@2.4.28(@tsc-rs/typescript@0.8.0))(bufferutil@4.1.0)(effect@4.0.5)(esbuild@0.28.2)(jiti@2.7.0)(jsdom@30.1.0(@noble/hashes@1.8.0))(playwright@1.60.0)(terser@5.48.0)(unrun@0.2.39)(utf-8-validate@6.0.6)(yaml@2.9.0)
+       '@pierre/trees':
+         specifier: 1.0.0-beta.6
+-        version: 1.0.0-beta.6(@pierre/theme@2.0.0)(@shikijs/themes@4.2.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(shiki@4.2.0)
++        version: 1.0.0-beta.6(@pierre/theme@2.0.0)(@shikijs/themes@4.2.0)(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(shiki@4.2.0)
+       '@types/mdast':
+         specifier: ^4.0.4
+         version: 4.0.4
+@@ -1029,13 +1029,13 @@ importers:
+         version: 3.2.2(react@19.3.0)
+       '@effect/atom-react':
+         specifier: 4.0.5
+-        version: 4.0.5(effect@4.0.5)(react@19.3.0)(scheduler@0.28.0)
++        version: 4.0.5(@types/react@19.3.0)(effect@4.0.5)(react@19.3.0)(scheduler@0.28.0)
+       '@fontsource-variable/inter':
+         specifier: ^5.3.0
+         version: 5.3.0
+       '@legendapp/list':
+         specifier: 3.3.5
+-        version: 3.3.5(patch_hash=6cbdacd8c380d9a5afb9f73d4198dc2cc44be6ef28a955b1183c781469307896)(react-dom@19.3.0(react@19.3.0))(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(@types/react@19.3.0)(bufferutil@4.1.0)(react@19.3.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(react@19.3.0)
++        version: 3.3.5(patch_hash=6cbdacd8c380d9a5afb9f73d4198dc2cc44be6ef28a955b1183c781469307896)(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(@types/react@19.3.0)(bufferutil@4.1.0)(react@19.3.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(react@19.3.0)
+       '@noble/hashes':
+         specifier: 'catalog:'
+         version: 1.8.0
+@@ -1044,7 +1044,7 @@ importers:
+         version: 1.6.1(patch_hash=4645364ddf113e48e8827f3b4966b3b1ff745317011e5a3d904e2d8672dee7dc)(@shikijs/themes@4.2.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+       '@pierre/trees':
+         specifier: 1.0.0-beta.6
+-        version: 1.0.0-beta.6(@pierre/theme@2.0.0)(@shikijs/themes@4.2.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(shiki@4.2.0)
++        version: 1.0.0-beta.6(@pierre/theme@2.0.0)(@shikijs/themes@4.2.0)(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(shiki@4.2.0)
+       '@t3tools/client-runtime':
+         specifier: workspace:*
+         version: link:../../packages/client-runtime
+@@ -1146,7 +1146,7 @@ importers:
+         version: 0.564.0
+       lucide-react:
+         specifier: ^0.564.0
+-        version: 0.564.0(react@19.3.0)
++        version: 0.564.0(@types/react@19.3.0)(react@19.3.0)
+       morphicons:
+         specifier: ^1.7.1
+         version: 1.7.1(react-native-svg@15.16.0(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(@types/react@19.3.0)(bufferutil@4.1.0)(react@19.3.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(react@19.3.0))(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(@types/react@19.3.0)(bufferutil@4.1.0)(react@19.3.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(react@19.3.0)
+@@ -3509,9 +3509,13 @@ packages:
+   '@effect/atom-react@4.0.5':
+     resolution: {integrity: sha512-tqTSiy0rWBitej7kPfvTSw29q4ipof52+txDg6bIBJx0ksHVzVXaFTsssDa+AZBeImafK0xmjm9m1XzPfE6k2A==}
+     peerDependencies:
++      '@types/react': '*'
+       effect: 4.0.5
+       react: '>=19.0.0 <20.0.0'
+       scheduler: '>=0.25.0 <0.29.0'
++    peerDependenciesMeta:
++      '@types/react':
++        optional: true
+
+   '@effect/graphql-generator@4.0.5':
+     resolution: {integrity: sha512-2QtEQxP4RRANWVJVe/wQBmG6SGePDfhgqpOeyfa7JlTsbnJbf3J25lmTz/faO3fGgicTVTTMruHTY6CR16KILg==}
+@@ -4685,10 +4689,13 @@ packages:
+   '@legendapp/list@3.3.5':
+     resolution: {integrity: sha512-XTsLYtpg41SVb5uLBYA+YcDSA3w0tgoPq/W8ZggQ2tx+3lrC/rf+ehTP9KYHea9oFaZIuePAgzACs5/auVMJlQ==}
+     peerDependencies:
++      '@types/react': '*'
+       react: '*'
+       react-dom: '*'
+       react-native: '*'
+     peerDependenciesMeta:
++      '@types/react':
++        optional: true
+       react-dom:
+         optional: true
+       react-native:
+@@ -5912,8 +5919,12 @@ packages:
+   '@pierre/trees@1.0.0-beta.6':
+     resolution: {integrity: sha512-zxeuSFM9TveM7b5XofweJALCtm/tGYV9HZzdbf7Uf+kBxIlUyz24/EHaGRjB0dsmmfDQl2ETz7AWwJ15lhSnpw==}
+     peerDependencies:
++      '@types/react': '*'
+       react: ^18.3.1 || ^19.0.0
+       react-dom: ^18.3.1 || ^19.0.0
++    peerDependenciesMeta:
++      '@types/react':
++        optional: true
+
+   '@polka/url@1.0.0-next.29':
+     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
+@@ -9751,7 +9762,11 @@ packages:
+   lucide-react@0.564.0:
+     resolution: {integrity: sha512-JJ8GVTQqFwuliifD48U6+h7DXEHdkhJ/E87kksGByII3qHxtPciVb8T8woQONHBQgHVOl7rSMrrip3SeVNy7Fg==}
+     peerDependencies:
++      '@types/react': '*'
+       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
++    peerDependenciesMeta:
++      '@types/react':
++        optional: true
+
+   lucide@0.564.0:
+     resolution: {integrity: sha512-FasyXKHWon773WIl3HeCQpd5xS6E0aLjqxiQStlHNKktni+HDncc1sqY+6vRUbCfmDsIaKQz43EEQLAUDLZO0g==}
+@@ -13472,11 +13487,13 @@ snapshots:
+
+   '@drizzle-team/brocli@0.12.0': {}
+
+-  '@effect/atom-react@4.0.5(effect@4.0.5)(react@19.3.0)(scheduler@0.28.0)':
++  '@effect/atom-react@4.0.5(@types/react@19.3.0)(effect@4.0.5)(react@19.3.0)(scheduler@0.28.0)':
+     dependencies:
+       effect: 4.0.5
+       react: 19.3.0
+       scheduler: 0.28.0
++    optionalDependencies:
++      '@types/react': 19.3.0
+
+   '@effect/graphql-generator@4.0.5(@effect/platform-node@4.0.5(bufferutil@4.1.0)(effect@4.0.5)(redis@6.2.1)(utf-8-validate@6.0.6))(effect@4.0.5)':
+     dependencies:
+@@ -14689,11 +14706,12 @@ snapshots:
+     dependencies:
+       jsbi: 4.3.2
+
+-  '@legendapp/list@3.3.5(patch_hash=6cbdacd8c380d9a5afb9f73d4198dc2cc44be6ef28a955b1183c781469307896)(react-dom@19.3.0(react@19.3.0))(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(@types/react@19.3.0)(bufferutil@4.1.0)(react@19.3.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(react@19.3.0)':
++  '@legendapp/list@3.3.5(patch_hash=6cbdacd8c380d9a5afb9f73d4198dc2cc44be6ef28a955b1183c781469307896)(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react-native@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(@types/react@19.3.0)(bufferutil@4.1.0)(react@19.3.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(react@19.3.0)':
+     dependencies:
+       react: 19.3.0
+       use-sync-external-store: 1.6.0(react@19.3.0)
+     optionalDependencies:
++      '@types/react': 19.3.0
+       react-dom: 19.3.0(react@19.3.0)
+       react-native: 0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(bufferutil@4.1.0)(supports-color@8.1.1)(utf-8-validate@6.0.6))(@types/react@19.3.0)(bufferutil@4.1.0)(react@19.3.0)(supports-color@8.1.1)(utf-8-validate@6.0.6)
+
+@@ -15461,13 +15479,15 @@ snapshots:
+       react-dom: 19.3.0(react@19.3.0)
+       shiki: 4.2.0
+
+-  '@pierre/trees@1.0.0-beta.6(@pierre/theme@2.0.0)(@shikijs/themes@4.2.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(shiki@4.2.0)':
++  '@pierre/trees@1.0.0-beta.6(@pierre/theme@2.0.0)(@shikijs/themes@4.2.0)(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(shiki@4.2.0)':
+     dependencies:
+       '@pierre/theming': 1.0.0(@pierre/theme@2.0.0)(@shikijs/themes@4.2.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(shiki@4.2.0)
+       preact: 11.0.0-beta.0
+       preact-render-to-string: 6.6.5(preact@11.0.0-beta.0)
+       react: 19.3.0
+       react-dom: 19.3.0(react@19.3.0)
++    optionalDependencies:
++      '@types/react': 19.3.0
+     transitivePeerDependencies:
+       - '@pierre/theme'
+       - '@shikijs/themes'
+@@ -19558,9 +19578,11 @@ snapshots:
+
+   lru_map@0.4.1: {}
+
+-  lucide-react@0.564.0(react@19.3.0):
++  lucide-react@0.564.0(@types/react@19.3.0)(react@19.3.0):
+     dependencies:
+       react: 19.3.0
++    optionalDependencies:
++      '@types/react': 19.3.0
+
+   lucide@0.564.0: {}
+
+diff --git a/pnpm-workspace.yaml b/pnpm-workspace.yaml
+index a07ad2b0..f96d84b9 100644
+--- a/pnpm-workspace.yaml
++++ b/pnpm-workspace.yaml
+@@ -340,6 +340,30 @@ overrides:
+   yaml: "catalog:"
+
+ packageExtensions:
++  "@legendapp/list@3.3.5":
++    peerDependencies:
++      "@types/react": "*"
++    peerDependenciesMeta:
++      "@types/react":
++        optional: true
++  "@pierre/trees@1.0.0-beta.6":
++    peerDependencies:
++      "@types/react": "*"
++    peerDependenciesMeta:
++      "@types/react":
++        optional: true
++  "lucide-react@0.564.0":
++    peerDependencies:
++      "@types/react": "*"
++    peerDependenciesMeta:
++      "@types/react":
++        optional: true
++  "@effect/atom-react@4.0.5":
++    peerDependencies:
++      "@types/react": "*"
++    peerDependenciesMeta:
++      "@types/react":
++        optional: true
+   "@clerk/expo@*":
+     dependencies:
+       "@expo/config-plugins": 58.0.9

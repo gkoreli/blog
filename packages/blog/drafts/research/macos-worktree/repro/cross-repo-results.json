@@ -1,0 +1,3293 @@
+{
+  "checkedAtUtc": "2026-10-29T04:42:40.840291+00:00",
+  "authorLocalDate": "2026-10-28",
+  "sourcePins": {
+    "vite": "cce559ab158cc6b177d0911a0bea73436b48faff",
+    "kit": "f22e6210a51bc0e43bd52882be12d759eff5a2c6",
+    "next": "7fd2d0a69534e26cfa10c7c11acc7c8450bf7cd5",
+    "t3": "125b61954dbba5822a8108c8ca47a4846b4b4328"
+  },
+  "acceptedInstallCount": 90,
+  "failedMeasuredAttempts": [
+    {
+      "id": "p0-next-default-linux",
+      "ordinal": 14,
+      "project": "next",
+      "platform": "linux",
+      "variant": "default",
+      "installSeconds": 2.0325364749999153,
+      "installExitCode": 1,
+      "reason": "ERR_PNPM_NO_OFFLINE_TARBALL for @vercel/ncc@0.38.4 after runtime writes changed content-store files",
+      "retainedSeparatelyFromSuccessfulMedians": true,
+      "repair": "pnpm store add of the exact version; same failed checkout then passes offline"
+    }
+  ],
+  "protocol": {
+    "node": "26.12.1",
+    "pnpmPins": {
+      "vite": "12.15.0",
+      "kit": "12.14.0",
+      "next": "12.9.1"
+    },
+    "sourceHashAndRequestedInventoryMatchWithinEachProject": true,
+    "freshWorktreeForEverySample": true,
+    "counterbalancedOrder": true,
+    "warmupsExcluded": 12,
+    "retainedBeforeCacheIncident": 14,
+    "continuedAfterExactCacheRepair": 76,
+    "ci": true,
+    "nextNativePostinstallSkippedByProjectInCI": true,
+    "scripts": "All project-allowed scripts enabled",
+    "offline": "--offline --frozen-lockfile plus npm_config_offline=true",
+    "timing": "Whole installer process; checkout, settle, input/inventory audit and cleanup excluded. Builds and other diagnostics did not overlap accepted install trials.",
+    "host": "M5, 10 logical CPUs, 24 GiB RAM, APFS",
+    "guest": "Same host, VZ Linux VM, 4 vCPU, 4 GiB RAM, native ext4 storage, no swap; OS/filesystem/resources change together.",
+    "priorT3Block": "validation-results.json; separate 30-trial block, never pooled into these medians.",
+    "sourceEvolution": "Collector accepts BOM in manifests; all accepted trials use the same pinned-child-launcher installer source. Controller gains an explicit resume path after one retained cache-corruption failure. Preparation errors are excluded and described in methods."
+  },
+  "series": [
+    {
+      "project": "vite",
+      "variant": "default",
+      "platform": "macos",
+      "n": 5,
+      "medianSeconds": 1.8177795409574173,
+      "rangeSeconds": [
+        1.6498620829661377,
+        2.415862916968763
+      ],
+      "samples": [
+        {
+          "id": "p0-vite-default-macos",
+          "pair": 0,
+          "ordinal": 0,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:00:16.471864+00:00",
+          "installSeconds": 2.415862916968763,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.751034,
+          "systemCpuSeconds": 4.340046,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-vite-default-macos",
+          "pair": 1,
+          "ordinal": 31,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:08:42.660100+00:00",
+          "installSeconds": 2.0754896250437014,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.755856,
+          "systemCpuSeconds": 4.112216,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-vite-default-macos",
+          "pair": 2,
+          "ordinal": 43,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:06.192406+00:00",
+          "installSeconds": 1.6498620829661377,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.761946,
+          "systemCpuSeconds": 3.4358049999999998,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-vite-default-macos",
+          "pair": 3,
+          "ordinal": 55,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:38.748180+00:00",
+          "installSeconds": 1.6745536670205183,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.750597,
+          "systemCpuSeconds": 3.172833,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-vite-default-macos",
+          "pair": 4,
+          "ordinal": 84,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:13:34.015124+00:00",
+          "installSeconds": 1.8177795409574173,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.7676569999999999,
+          "systemCpuSeconds": 4.044174,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "vite",
+      "variant": "default",
+      "platform": "linux",
+      "n": 5,
+      "medianSeconds": 0.4768414650000068,
+      "rangeSeconds": [
+        0.4414513720000741,
+        0.81456542300009
+      ],
+      "samples": [
+        {
+          "id": "p0-vite-default-linux",
+          "pair": 0,
+          "ordinal": 1,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:00:20.775478+00:00",
+          "installSeconds": 0.81456542300009,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.28653999999999996,
+          "systemCpuSeconds": 0.434382,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-vite-default-linux",
+          "pair": 1,
+          "ordinal": 30,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:08:38.688112+00:00",
+          "installSeconds": 0.4768414650000068,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.24872,
+          "systemCpuSeconds": 0.364461,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-vite-default-linux",
+          "pair": 2,
+          "ordinal": 42,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:02.712274+00:00",
+          "installSeconds": 0.4414513720000741,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.266074,
+          "systemCpuSeconds": 0.292157,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-vite-default-linux",
+          "pair": 3,
+          "ordinal": 54,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:35.175554+00:00",
+          "installSeconds": 0.5250219279998873,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.285219,
+          "systemCpuSeconds": 0.30774799999999997,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-vite-default-linux",
+          "pair": 4,
+          "ordinal": 85,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:13:37.804793+00:00",
+          "installSeconds": 0.4577661089999765,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.290631,
+          "systemCpuSeconds": 0.303442,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "vite",
+      "variant": "workers4",
+      "platform": "macos",
+      "n": 5,
+      "medianSeconds": 1.593917790974956,
+      "rangeSeconds": [
+        1.5769657919881865,
+        1.677674249978736
+      ],
+      "samples": [
+        {
+          "id": "p0-vite-workers4-macos",
+          "pair": 0,
+          "ordinal": 3,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:00:26.264001+00:00",
+          "installSeconds": 1.6108532500220463,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.676728,
+          "systemCpuSeconds": 2.285334,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-vite-workers4-macos",
+          "pair": 1,
+          "ordinal": 32,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:08:47.752047+00:00",
+          "installSeconds": 1.593917790974956,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.682294,
+          "systemCpuSeconds": 2.2967049999999998,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-vite-workers4-macos",
+          "pair": 2,
+          "ordinal": 44,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:11.322226+00:00",
+          "installSeconds": 1.5769657919881865,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.676982,
+          "systemCpuSeconds": 2.280231,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-vite-workers4-macos",
+          "pair": 3,
+          "ordinal": 56,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:43.869791+00:00",
+          "installSeconds": 1.5922860419959761,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.688309,
+          "systemCpuSeconds": 2.405765,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-vite-workers4-macos",
+          "pair": 4,
+          "ordinal": 87,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:13:43.516897+00:00",
+          "installSeconds": 1.677674249978736,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.680666,
+          "systemCpuSeconds": 2.287425,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "vite",
+      "variant": "workers4",
+      "platform": "linux",
+      "n": 5,
+      "medianSeconds": 0.4685036939999918,
+      "rangeSeconds": [
+        0.3913539459999811,
+        0.5404978750000282
+      ],
+      "samples": [
+        {
+          "id": "p0-vite-workers4-linux",
+          "pair": 0,
+          "ordinal": 2,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:00:22.800062+00:00",
+          "installSeconds": 0.4769219259999318,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.259414,
+          "systemCpuSeconds": 0.295388,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-vite-workers4-linux",
+          "pair": 1,
+          "ordinal": 33,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:08:51.454633+00:00",
+          "installSeconds": 0.4685036939999918,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.28795899999999996,
+          "systemCpuSeconds": 0.272879,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-vite-workers4-linux",
+          "pair": 2,
+          "ordinal": 45,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:14.943658+00:00",
+          "installSeconds": 0.3913539459999811,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.263959,
+          "systemCpuSeconds": 0.281709,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-vite-workers4-linux",
+          "pair": 3,
+          "ordinal": 57,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:47.618933+00:00",
+          "installSeconds": 0.4024274169998989,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.28179899999999997,
+          "systemCpuSeconds": 0.270258,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-vite-workers4-linux",
+          "pair": 4,
+          "ordinal": 86,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:13:39.959240+00:00",
+          "installSeconds": 0.5404978750000282,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.284169,
+          "systemCpuSeconds": 0.296315,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "vite",
+      "variant": "shared",
+      "platform": "macos",
+      "n": 5,
+      "medianSeconds": 0.6791799999773502,
+      "rangeSeconds": [
+        0.6404071249999106,
+        0.8099556249799207
+      ],
+      "samples": [
+        {
+          "id": "p0-vite-shared-macos",
+          "pair": 0,
+          "ordinal": 4,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:00:30.653717+00:00",
+          "installSeconds": 0.8099556249799207,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.36802799999999997,
+          "systemCpuSeconds": 1.383379,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-vite-shared-macos",
+          "pair": 1,
+          "ordinal": 35,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:08:55.857994+00:00",
+          "installSeconds": 0.76147949998267,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.361988,
+          "systemCpuSeconds": 1.342615,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-vite-shared-macos",
+          "pair": 2,
+          "ordinal": 47,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:19.169457+00:00",
+          "installSeconds": 0.6791799999773502,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.36114799999999997,
+          "systemCpuSeconds": 1.244912,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-vite-shared-macos",
+          "pair": 3,
+          "ordinal": 59,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:51.785763+00:00",
+          "installSeconds": 0.6404071249999106,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.35703199999999996,
+          "systemCpuSeconds": 1.264778,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-vite-shared-macos",
+          "pair": 4,
+          "ordinal": 88,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:13:47.765058+00:00",
+          "installSeconds": 0.6781053750310093,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.355551,
+          "systemCpuSeconds": 1.290116,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "vite",
+      "variant": "shared",
+      "platform": "linux",
+      "n": 5,
+      "medianSeconds": 0.1764867989998038,
+      "rangeSeconds": [
+        0.16533046099993953,
+        0.45656700199992883
+      ],
+      "samples": [
+        {
+          "id": "p0-vite-shared-linux",
+          "pair": 0,
+          "ordinal": 5,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:00:32.750282+00:00",
+          "installSeconds": 0.45656700199992883,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.174765,
+          "systemCpuSeconds": 0.11427999999999999,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-vite-shared-linux",
+          "pair": 1,
+          "ordinal": 34,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:08:53.304118+00:00",
+          "installSeconds": 0.24556770100002723,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.18695099999999998,
+          "systemCpuSeconds": 0.090672,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-vite-shared-linux",
+          "pair": 2,
+          "ordinal": 46,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:16.715002+00:00",
+          "installSeconds": 0.16533046099993953,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.171877,
+          "systemCpuSeconds": 0.076399,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-vite-shared-linux",
+          "pair": 3,
+          "ordinal": 58,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:49.370800+00:00",
+          "installSeconds": 0.1713813429998936,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.167325,
+          "systemCpuSeconds": 0.08589,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-vite-shared-linux",
+          "pair": 4,
+          "ordinal": 89,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:13:49.563175+00:00",
+          "installSeconds": 0.1764867989998038,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.20843199999999998,
+          "systemCpuSeconds": 0.042220999999999995,
+          "inputManifestSha256": "dfd62ce2721ccd4ae285d994c87b6e4704543f743b917e8f9b423349b213cc78",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 294,
+          "directDependencyCount": 412,
+          "inventorySha256": "25fb81675dab782367164d4d30e07f9cf89b98a7271154a2195b20799472e1ad",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.15.0",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "kit",
+      "variant": "default",
+      "platform": "macos",
+      "n": 5,
+      "medianSeconds": 0.589464417018462,
+      "rangeSeconds": [
+        0.5800965420203283,
+        0.6336506659863517
+      ],
+      "samples": [
+        {
+          "id": "p0-kit-default-macos",
+          "pair": 0,
+          "ordinal": 11,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:00:46.401174+00:00",
+          "installSeconds": 0.6336506659863517,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.256453,
+          "systemCpuSeconds": 1.879429,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-kit-default-macos",
+          "pair": 1,
+          "ordinal": 23,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:07:29.029491+00:00",
+          "installSeconds": 0.5800965420203283,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.25645,
+          "systemCpuSeconds": 1.95618,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-kit-default-macos",
+          "pair": 2,
+          "ordinal": 52,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:30.456873+00:00",
+          "installSeconds": 0.5855668329750188,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.245368,
+          "systemCpuSeconds": 2.177054,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-kit-default-macos",
+          "pair": 3,
+          "ordinal": 64,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:11:03.030842+00:00",
+          "installSeconds": 0.5933002499514259,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.255023,
+          "systemCpuSeconds": 2.139911,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-kit-default-macos",
+          "pair": 4,
+          "ordinal": 76,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:12:22.645208+00:00",
+          "installSeconds": 0.589464417018462,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.24753299999999998,
+          "systemCpuSeconds": 2.161737,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "kit",
+      "variant": "default",
+      "platform": "linux",
+      "n": 5,
+      "medianSeconds": 0.13485186100001556,
+      "rangeSeconds": [
+        0.12682703500013304,
+        0.14114892999987205
+      ],
+      "samples": [
+        {
+          "id": "p0-kit-default-linux",
+          "pair": 0,
+          "ordinal": 10,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:00:43.878500+00:00",
+          "installSeconds": 0.14114892999987205,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.136384,
+          "systemCpuSeconds": 0.19494599999999998,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-kit-default-linux",
+          "pair": 1,
+          "ordinal": 22,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:07:26.625091+00:00",
+          "installSeconds": 0.12682703500013304,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.159082,
+          "systemCpuSeconds": 0.145108,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-kit-default-linux",
+          "pair": 2,
+          "ordinal": 53,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:33.099480+00:00",
+          "installSeconds": 0.13689803400006895,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.122678,
+          "systemCpuSeconds": 0.202009,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-kit-default-linux",
+          "pair": 3,
+          "ordinal": 65,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:11:05.647371+00:00",
+          "installSeconds": 0.13485186100001556,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.127596,
+          "systemCpuSeconds": 0.18212599999999998,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-kit-default-linux",
+          "pair": 4,
+          "ordinal": 77,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:12:25.227141+00:00",
+          "installSeconds": 0.12898430500013092,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.12032999999999999,
+          "systemCpuSeconds": 0.194497,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "kit",
+      "variant": "workers4",
+      "platform": "macos",
+      "n": 5,
+      "medianSeconds": 0.5454993330058642,
+      "rangeSeconds": [
+        0.4949077499913983,
+        0.8226785829756409
+      ],
+      "samples": [
+        {
+          "id": "p0-kit-workers4-macos",
+          "pair": 0,
+          "ordinal": 7,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:00:37.266745+00:00",
+          "installSeconds": 0.8226785829756409,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.173763,
+          "systemCpuSeconds": 0.865413,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-kit-workers4-macos",
+          "pair": 1,
+          "ordinal": 19,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:07:20.186101+00:00",
+          "installSeconds": 0.7940232919645496,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.181889,
+          "systemCpuSeconds": 0.835787,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-kit-workers4-macos",
+          "pair": 2,
+          "ordinal": 48,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:21.650368+00:00",
+          "installSeconds": 0.5454993330058642,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.17638099999999998,
+          "systemCpuSeconds": 0.808423,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-kit-workers4-macos",
+          "pair": 3,
+          "ordinal": 60,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:54.180240+00:00",
+          "installSeconds": 0.4949077499913983,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.19308899999999998,
+          "systemCpuSeconds": 0.727204,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-kit-workers4-macos",
+          "pair": 4,
+          "ordinal": 72,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:12:13.669555+00:00",
+          "installSeconds": 0.5247814579633996,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.189271,
+          "systemCpuSeconds": 0.741481,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "kit",
+      "variant": "workers4",
+      "platform": "linux",
+      "n": 5,
+      "medianSeconds": 0.1782075520000035,
+      "rangeSeconds": [
+        0.15500685599999997,
+        0.22749724599998444
+      ],
+      "samples": [
+        {
+          "id": "p0-kit-workers4-linux",
+          "pair": 0,
+          "ordinal": 6,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:00:34.565382+00:00",
+          "installSeconds": 0.22749724599998444,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.158246,
+          "systemCpuSeconds": 0.16677699999999998,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-kit-workers4-linux",
+          "pair": 1,
+          "ordinal": 18,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:07:17.454585+00:00",
+          "installSeconds": 0.1782075520000035,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.136745,
+          "systemCpuSeconds": 0.179135,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-kit-workers4-linux",
+          "pair": 2,
+          "ordinal": 49,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:24.273747+00:00",
+          "installSeconds": 0.16154912000001787,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.13999699999999998,
+          "systemCpuSeconds": 0.16483399999999998,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-kit-workers4-linux",
+          "pair": 3,
+          "ordinal": 61,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:56.820680+00:00",
+          "installSeconds": 0.15500685599999997,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.122537,
+          "systemCpuSeconds": 0.180133,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-kit-workers4-linux",
+          "pair": 4,
+          "ordinal": 73,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:12:16.329913+00:00",
+          "installSeconds": 0.1827868559998933,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.151082,
+          "systemCpuSeconds": 0.15639899999999998,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "kit",
+      "variant": "shared",
+      "platform": "macos",
+      "n": 5,
+      "medianSeconds": 0.27808320900658146,
+      "rangeSeconds": [
+        0.26123366598039865,
+        0.2967739589512348
+      ],
+      "samples": [
+        {
+          "id": "p0-kit-shared-macos",
+          "pair": 0,
+          "ordinal": 8,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:00:40.368187+00:00",
+          "installSeconds": 0.26123366598039865,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.18558,
+          "systemCpuSeconds": 0.7919959999999999,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-kit-shared-macos",
+          "pair": 1,
+          "ordinal": 20,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:07:23.252135+00:00",
+          "installSeconds": 0.2967739589512348,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.19643,
+          "systemCpuSeconds": 1.4451749999999999,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-kit-shared-macos",
+          "pair": 2,
+          "ordinal": 51,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:27.903876+00:00",
+          "installSeconds": 0.2635902920155786,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.195349,
+          "systemCpuSeconds": 1.2332049999999999,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-kit-shared-macos",
+          "pair": 3,
+          "ordinal": 63,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:11:00.455368+00:00",
+          "installSeconds": 0.28266329201869667,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.205451,
+          "systemCpuSeconds": 1.370678,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-kit-shared-macos",
+          "pair": 4,
+          "ordinal": 75,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:12:20.055468+00:00",
+          "installSeconds": 0.27808320900658146,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.200435,
+          "systemCpuSeconds": 1.436609,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "kit",
+      "variant": "shared",
+      "platform": "linux",
+      "n": 5,
+      "medianSeconds": 0.12240048599983311,
+      "rangeSeconds": [
+        0.09473208300005354,
+        0.18511927299982744
+      ],
+      "samples": [
+        {
+          "id": "p0-kit-shared-linux",
+          "pair": 0,
+          "ordinal": 9,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:00:42.306147+00:00",
+          "installSeconds": 0.18511927299982744,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.110842,
+          "systemCpuSeconds": 0.08054,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-kit-shared-linux",
+          "pair": 1,
+          "ordinal": 21,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:07:25.047287+00:00",
+          "installSeconds": 0.12240048599983311,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.101807,
+          "systemCpuSeconds": 0.08619299999999999,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-kit-shared-linux",
+          "pair": 2,
+          "ordinal": 50,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:25.892333+00:00",
+          "installSeconds": 0.09834221599999182,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.10037199999999999,
+          "systemCpuSeconds": 0.075019,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-kit-shared-linux",
+          "pair": 3,
+          "ordinal": 62,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:10:58.414227+00:00",
+          "installSeconds": 0.09473208300005354,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.096009,
+          "systemCpuSeconds": 0.077489,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-kit-shared-linux",
+          "pair": 4,
+          "ordinal": 74,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:12:18.002639+00:00",
+          "installSeconds": 0.12400671299997157,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.109932,
+          "systemCpuSeconds": 0.11263799999999999,
+          "inputManifestSha256": "430d808ea4e1bb447ca3e1d39d22f8974831d491af37a491f6ebd15b726ed729",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 72,
+          "directDependencyCount": 489,
+          "inventorySha256": "2a181a52286f883c24ac90cdd75e0c463775c2e435fce37b7727854fb1417692",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.14.0",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "next",
+      "variant": "default",
+      "platform": "macos",
+      "n": 5,
+      "medianSeconds": 4.5566298750345595,
+      "rangeSeconds": [
+        4.439730542013422,
+        7.075383416027762
+      ],
+      "samples": [
+        {
+          "id": "p0-next-default-macos",
+          "pair": 0,
+          "ordinal": 15,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:06:39.691459+00:00",
+          "installSeconds": 7.075383416027762,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.9801369999999999,
+          "systemCpuSeconds": 13.646193,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-next-default-macos",
+          "pair": 1,
+          "ordinal": 27,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:07:59.779472+00:00",
+          "installSeconds": 4.646124457998667,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.981271,
+          "systemCpuSeconds": 15.375177,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-next-default-macos",
+          "pair": 2,
+          "ordinal": 39,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:09:24.109758+00:00",
+          "installSeconds": 4.467679249995854,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.955855,
+          "systemCpuSeconds": 16.5987,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-next-default-macos",
+          "pair": 3,
+          "ordinal": 68,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:11:28.611718+00:00",
+          "installSeconds": 4.439730542013422,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.953082,
+          "systemCpuSeconds": 14.377126,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-next-default-macos",
+          "pair": 4,
+          "ordinal": 80,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:12:47.879850+00:00",
+          "installSeconds": 4.5566298750345595,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.98112,
+          "systemCpuSeconds": 16.811882,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "next",
+      "variant": "default",
+      "platform": "linux",
+      "n": 5,
+      "medianSeconds": 1.5586148669999602,
+      "rangeSeconds": [
+        1.457037347000096,
+        1.7652446590000181
+      ],
+      "samples": [
+        {
+          "id": "p0-next-default-linux",
+          "pair": 0,
+          "ordinal": 14,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:06:24.324534+00:00",
+          "installSeconds": 1.7652446590000181,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.789689,
+          "systemCpuSeconds": 1.502179,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 2
+        },
+        {
+          "id": "p1-next-default-linux",
+          "pair": 1,
+          "ordinal": 26,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:07:48.261575+00:00",
+          "installSeconds": 1.457037347000096,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.7960809999999999,
+          "systemCpuSeconds": 1.189156,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-next-default-linux",
+          "pair": 2,
+          "ordinal": 38,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:09:12.934396+00:00",
+          "installSeconds": 1.5892796440000438,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.7568819999999999,
+          "systemCpuSeconds": 1.274756,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-next-default-linux",
+          "pair": 3,
+          "ordinal": 69,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:11:44.119100+00:00",
+          "installSeconds": 1.5492070200000398,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.770257,
+          "systemCpuSeconds": 1.282712,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-next-default-linux",
+          "pair": 4,
+          "ordinal": 81,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:13:03.364621+00:00",
+          "installSeconds": 1.5586148669999602,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.8022589999999999,
+          "systemCpuSeconds": 1.217061,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "next",
+      "variant": "workers4",
+      "platform": "macos",
+      "n": 5,
+      "medianSeconds": 3.902542333002202,
+      "rangeSeconds": [
+        3.6957495830138214,
+        4.082081917033065
+      ],
+      "samples": [
+        {
+          "id": "p0-next-workers4-macos",
+          "pair": 0,
+          "ordinal": 16,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:06:59.854288+00:00",
+          "installSeconds": 3.6957495830138214,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.7707259999999999,
+          "systemCpuSeconds": 6.468898,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-next-workers4-macos",
+          "pair": 1,
+          "ordinal": 28,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:08:20.253455+00:00",
+          "installSeconds": 4.082081917033065,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.790659,
+          "systemCpuSeconds": 6.907233,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-next-workers4-macos",
+          "pair": 2,
+          "ordinal": 40,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:09:44.165643+00:00",
+          "installSeconds": 3.8741295840009116,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.766247,
+          "systemCpuSeconds": 6.55238,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-next-workers4-macos",
+          "pair": 3,
+          "ordinal": 71,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:12:00.858786+00:00",
+          "installSeconds": 4.019992666959297,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.776875,
+          "systemCpuSeconds": 6.684823,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-next-workers4-macos",
+          "pair": 4,
+          "ordinal": 83,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:13:19.969535+00:00",
+          "installSeconds": 3.902542333002202,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.78928,
+          "systemCpuSeconds": 6.401512,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "next",
+      "variant": "workers4",
+      "platform": "linux",
+      "n": 5,
+      "medianSeconds": 1.5538938150000376,
+      "rangeSeconds": [
+        1.471376016000022,
+        1.6094731619998583
+      ],
+      "samples": [
+        {
+          "id": "p0-next-workers4-linux",
+          "pair": 0,
+          "ordinal": 17,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:07:14.783904+00:00",
+          "installSeconds": 1.5165352680000979,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.835757,
+          "systemCpuSeconds": 1.334662,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-next-workers4-linux",
+          "pair": 1,
+          "ordinal": 29,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:08:35.715839+00:00",
+          "installSeconds": 1.471376016000022,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.836198,
+          "systemCpuSeconds": 1.276044,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-next-workers4-linux",
+          "pair": 2,
+          "ordinal": 41,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:09:59.808200+00:00",
+          "installSeconds": 1.5697828079998999,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.8238599999999999,
+          "systemCpuSeconds": 1.303742,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-next-workers4-linux",
+          "pair": 3,
+          "ordinal": 70,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:11:50.101427+00:00",
+          "installSeconds": 1.6094731619998583,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.779797,
+          "systemCpuSeconds": 1.236407,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-next-workers4-linux",
+          "pair": 4,
+          "ordinal": 82,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:13:09.248919+00:00",
+          "installSeconds": 1.5538938150000376,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.816885,
+          "systemCpuSeconds": 1.230723,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": "4",
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "next",
+      "variant": "shared",
+      "platform": "macos",
+      "n": 5,
+      "medianSeconds": 0.9603690829826519,
+      "rangeSeconds": [
+        0.7485663749976084,
+        1.7823959580273367
+      ],
+      "samples": [
+        {
+          "id": "p0-next-shared-macos",
+          "pair": 0,
+          "ordinal": 12,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:00:55.877061+00:00",
+          "installSeconds": 1.7823959580273367,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.618582,
+          "systemCpuSeconds": 2.062374,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-next-shared-macos",
+          "pair": 1,
+          "ordinal": 24,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:07:36.866863+00:00",
+          "installSeconds": 1.0260649590054527,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.625394,
+          "systemCpuSeconds": 2.776871,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-next-shared-macos",
+          "pair": 2,
+          "ordinal": 36,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:09:02.375735+00:00",
+          "installSeconds": 0.7485663749976084,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.614611,
+          "systemCpuSeconds": 2.604677,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-next-shared-macos",
+          "pair": 3,
+          "ordinal": 67,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:11:16.176172+00:00",
+          "installSeconds": 0.8128054160042666,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.622989,
+          "systemCpuSeconds": 2.610422,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-next-shared-macos",
+          "pair": 4,
+          "ordinal": 79,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:12:35.363206+00:00",
+          "installSeconds": 0.9603690829826519,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.61549,
+          "systemCpuSeconds": 2.675803,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 10,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        }
+      ]
+    },
+    {
+      "project": "next",
+      "variant": "shared",
+      "platform": "linux",
+      "n": 5,
+      "medianSeconds": 0.39272764499992263,
+      "rangeSeconds": [
+        0.3742258929999025,
+        1.3580599190001976
+      ],
+      "samples": [
+        {
+          "id": "p0-next-shared-linux",
+          "pair": 0,
+          "ordinal": 13,
+          "retainedFromInitialController": true,
+          "checkedAtUtc": "2026-10-29T04:01:02.726336+00:00",
+          "installSeconds": 1.3580599190001976,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.515272,
+          "systemCpuSeconds": 0.29571,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p1-next-shared-linux",
+          "pair": 1,
+          "ordinal": 25,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:07:43.403979+00:00",
+          "installSeconds": 0.7130495650001194,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.47834699999999997,
+          "systemCpuSeconds": 0.262578,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p2-next-shared-linux",
+          "pair": 2,
+          "ordinal": 37,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:09:07.981697+00:00",
+          "installSeconds": 0.38049673599994094,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.439282,
+          "systemCpuSeconds": 0.16891799999999998,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p3-next-shared-linux",
+          "pair": 3,
+          "ordinal": 66,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:11:09.316659+00:00",
+          "installSeconds": 0.39272764499992263,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.428039,
+          "systemCpuSeconds": 0.173766,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        },
+        {
+          "id": "p4-next-shared-linux",
+          "pair": 4,
+          "ordinal": 78,
+          "retainedFromInitialController": false,
+          "checkedAtUtc": "2026-10-29T04:12:28.553917+00:00",
+          "installSeconds": 0.3742258929999025,
+          "installExitCode": 0,
+          "userCpuSeconds": 0.420826,
+          "systemCpuSeconds": 0.18692599999999998,
+          "inputManifestSha256": "734f639fe3d49b95702bf5c072ce403865f797b1acd25455ee6f9dd4d2fe1602",
+          "trackedInputsUnchanged": true,
+          "workspaceCount": 38,
+          "directDependencyCount": 615,
+          "inventorySha256": "5ed5bfedb3b84f2a29244eed977f89773bdbc32bb70b1fecb56265b45cf6107c",
+          "rayonThreadsEnvironment": null,
+          "nodeVersion": "v26.12.1",
+          "availableParallelism": 4,
+          "pnpm": "12.9.1",
+          "attemptNumber": 1
+        }
+      ]
+    }
+  ],
+  "cacheMutation": {
+    "registryTarballSha256": "288fd3538e04a96df50fea256e849ada51c9dfcf4541a6f637c4b6eb5facb845",
+    "publishedSourceCommit": "e72d34d97e7cb2348af19993b6cdb6fec5374ac9",
+    "fullProjectAudits": {
+      "macos": {
+        "platform": "darwin",
+        "registryTarballSha256": "288fd3538e04a96df50fea256e849ada51c9dfcf4541a6f637c4b6eb5facb845",
+        "archiveFiles": 127,
+        "changedPackagedFiles": [
+          {
+            "file": "dist/ncc/cli.js.cache",
+            "originalSha256": "c025a2dcf7dfac407d91910e1bb4289566ee192ba47570fb534e68e251d5548e",
+            "installedSha256": "a84e9349715919d72d67f0b0f314fd159068b3c80c6d297cb02c2e6c60dc08f6",
+            "installedHardlinks": 1,
+            "casOriginalAddressExists": true,
+            "sharesCasInode": false,
+            "casBytesMatchOriginal": true
+          },
+          {
+            "file": "dist/ncc/index.js.cache",
+            "originalSha256": "3e6e2bcc0d2cc436faf55509e188835c0171c85e239e5118da8064440f6fe87b",
+            "installedSha256": "557bf116dde30d3f3e414432254086e73655f38291a2036c8a190f67ea7ab98b",
+            "installedHardlinks": 1,
+            "casOriginalAddressExists": true,
+            "sharesCasInode": false,
+            "casBytesMatchOriginal": true
+          },
+          {
+            "file": "dist/ncc/loaders/relocate-loader.js.cache",
+            "originalSha256": "c0ec103983cd482066c576fe54f18541444fc0287e7b722ddf69abfc3135153e",
+            "installedSha256": "3e1aa0492cdc6fa434479a4141b88e89e046ab6df68525a20000f98df5e73860",
+            "installedHardlinks": 1,
+            "casOriginalAddressExists": true,
+            "sharesCasInode": false,
+            "casBytesMatchOriginal": true
+          },
+          {
+            "file": "dist/ncc/loaders/shebang-loader.js.cache",
+            "originalSha256": "120e1409000ab2c6a2fb8383aec26e5b49d99dca55660049f08657f9b1b55184",
+            "installedSha256": "a1343b8c5c53dc13e547cc4726362cd1a6104af86d635befc4a9b2bd613b0a64",
+            "installedHardlinks": 1,
+            "casOriginalAddressExists": true,
+            "sharesCasInode": false,
+            "casBytesMatchOriginal": true
+          },
+          {
+            "file": "dist/ncc/loaders/ts-loader.js.cache",
+            "originalSha256": "7fe2b435655a127597052aefd066002bba607d7d94817d566bec0c2e5ae97b3d",
+            "installedSha256": "4e56a0979dd4a2b637ed57c474442a08ca33c92d03211821cd5572dd3088af96",
+            "installedHardlinks": 1,
+            "casOriginalAddressExists": true,
+            "sharesCasInode": false,
+            "casBytesMatchOriginal": true
+          }
+        ]
+      },
+      "linux": {
+        "platform": "linux",
+        "registryTarballSha256": "288fd3538e04a96df50fea256e849ada51c9dfcf4541a6f637c4b6eb5facb845",
+        "archiveFiles": 127,
+        "changedPackagedFiles": [
+          {
+            "file": "dist/ncc/cli.js.cache",
+            "originalSha256": "c025a2dcf7dfac407d91910e1bb4289566ee192ba47570fb534e68e251d5548e",
+            "installedSha256": "fd48d240e2e827a9ea72fc517d5ba3099a3f5e0da3c0cefc070a73cb053f6a7e",
+            "installedHardlinks": 3,
+            "casOriginalAddressExists": true,
+            "sharesCasInode": true,
+            "casBytesMatchOriginal": false
+          },
+          {
+            "file": "dist/ncc/index.js.cache",
+            "originalSha256": "3e6e2bcc0d2cc436faf55509e188835c0171c85e239e5118da8064440f6fe87b",
+            "installedSha256": "a6daca37349c3ac203cd7e0f59f478da646d910d2567aeed2e62fd8efee52e49",
+            "installedHardlinks": 3,
+            "casOriginalAddressExists": true,
+            "sharesCasInode": true,
+            "casBytesMatchOriginal": false
+          },
+          {
+            "file": "dist/ncc/loaders/relocate-loader.js.cache",
+            "originalSha256": "c0ec103983cd482066c576fe54f18541444fc0287e7b722ddf69abfc3135153e",
+            "installedSha256": "4decd52a66ca8f08867a5696a6e2b7f3aa31af8cdffc2d0fec71b0ce0d6f2784",
+            "installedHardlinks": 3,
+            "casOriginalAddressExists": true,
+            "sharesCasInode": true,
+            "casBytesMatchOriginal": false
+          },
+          {
+            "file": "dist/ncc/loaders/shebang-loader.js.cache",
+            "originalSha256": "120e1409000ab2c6a2fb8383aec26e5b49d99dca55660049f08657f9b1b55184",
+            "installedSha256": "87a170b76800411fedb857807b06fb1eed8244b2488f53820dfd4013fe6dfd22",
+            "installedHardlinks": 3,
+            "casOriginalAddressExists": true,
+            "sharesCasInode": true,
+            "casBytesMatchOriginal": false
+          }
+        ]
+      }
+    },
+    "reducedControls": [
+      {
+        "mode": "hardlink-default",
+        "nccVersion": "0.38.4",
+        "nodeVersion": "v26.12.1",
+        "compiledOutput": "42",
+        "changedPackagedFiles": [
+          {
+            "file": "dist/ncc/index.js.cache",
+            "installedChanged": true,
+            "casChanged": true,
+            "sharesCasInode": true
+          },
+          {
+            "file": "dist/ncc/loaders/relocate-loader.js.cache",
+            "installedChanged": true,
+            "casChanged": true,
+            "sharesCasInode": true
+          },
+          {
+            "file": "dist/ncc/loaders/shebang-loader.js.cache",
+            "installedChanged": true,
+            "casChanged": true,
+            "sharesCasInode": true
+          }
+        ],
+        "readOnlyWriteBlocked": null,
+        "secondOfflineInstallExitCode": 1,
+        "secondOfflineInstallHasMissingTarball": true,
+        "tarballSha256": "288fd3538e04a96df50fea256e849ada51c9dfcf4541a6f637c4b6eb5facb845"
+      },
+      {
+        "mode": "clone-or-copy",
+        "nccVersion": "0.38.4",
+        "nodeVersion": "v26.12.1",
+        "compiledOutput": "42",
+        "changedPackagedFiles": [
+          {
+            "file": "dist/ncc/index.js.cache",
+            "installedChanged": true,
+            "casChanged": false,
+            "sharesCasInode": false
+          },
+          {
+            "file": "dist/ncc/loaders/relocate-loader.js.cache",
+            "installedChanged": true,
+            "casChanged": false,
+            "sharesCasInode": false
+          },
+          {
+            "file": "dist/ncc/loaders/shebang-loader.js.cache",
+            "installedChanged": true,
+            "casChanged": false,
+            "sharesCasInode": false
+          }
+        ],
+        "readOnlyWriteBlocked": null,
+        "secondOfflineInstallExitCode": 0,
+        "secondOfflineInstallHasMissingTarball": false,
+        "tarballSha256": "288fd3538e04a96df50fea256e849ada51c9dfcf4541a6f637c4b6eb5facb845"
+      },
+      {
+        "mode": "readonly-global",
+        "nccVersion": "0.38.4",
+        "nodeVersion": "v26.12.1",
+        "compiledOutput": "42",
+        "changedPackagedFiles": [],
+        "readOnlyWriteBlocked": true,
+        "secondOfflineInstallExitCode": 0,
+        "secondOfflineInstallHasMissingTarball": false,
+        "tarballSha256": "288fd3538e04a96df50fea256e849ada51c9dfcf4541a6f637c4b6eb5facb845"
+      },
+      {
+        "mode": "private-view-global",
+        "nccVersion": "0.38.4",
+        "nodeVersion": "v26.12.1",
+        "compiledOutput": "42",
+        "changedPackagedFiles": [
+          {
+            "file": "dist/ncc/index.js.cache",
+            "installedChanged": true,
+            "casChanged": false,
+            "sharesCasInode": false
+          },
+          {
+            "file": "dist/ncc/loaders/relocate-loader.js.cache",
+            "installedChanged": true,
+            "casChanged": false,
+            "sharesCasInode": false
+          },
+          {
+            "file": "dist/ncc/loaders/shebang-loader.js.cache",
+            "installedChanged": true,
+            "casChanged": false,
+            "sharesCasInode": false
+          }
+        ],
+        "readOnlyWriteBlocked": null,
+        "secondOfflineInstallExitCode": 0,
+        "secondOfflineInstallHasMissingTarball": false,
+        "tarballSha256": "288fd3538e04a96df50fea256e849ada51c9dfcf4541a6f637c4b6eb5facb845",
+        "platform": "linux"
+      },
+      {
+        "mode": "private-view-global",
+        "nccVersion": "0.38.4",
+        "nodeVersion": "v26.12.1",
+        "compiledOutput": "42",
+        "changedPackagedFiles": [
+          {
+            "file": "dist/ncc/index.js.cache",
+            "installedChanged": true,
+            "casChanged": false,
+            "sharesCasInode": false
+          },
+          {
+            "file": "dist/ncc/loaders/relocate-loader.js.cache",
+            "installedChanged": true,
+            "casChanged": false,
+            "sharesCasInode": false
+          },
+          {
+            "file": "dist/ncc/loaders/shebang-loader.js.cache",
+            "installedChanged": true,
+            "casChanged": false,
+            "sharesCasInode": false
+          }
+        ],
+        "readOnlyWriteBlocked": null,
+        "secondOfflineInstallExitCode": 0,
+        "secondOfflineInstallHasMissingTarball": false,
+        "tarballSha256": "288fd3538e04a96df50fea256e849ada51c9dfcf4541a6f637c4b6eb5facb845",
+        "platform": "macos"
+      }
+    ],
+    "completeMacCasAudit": {
+      "packagedFilesChecked": 127,
+      "allOriginalContentAddressesMatchPublishedBytes": true
+    }
+  },
+  "metadataRepairs": {
+    "packageAudit": [
+      {
+        "project": "t3",
+        "packageCount": 2069,
+        "allVersionsAndResolutionsUnchanged": true
+      },
+      {
+        "project": "vite",
+        "packageCount": 1345,
+        "allVersionsAndResolutionsUnchanged": true
+      },
+      {
+        "project": "next",
+        "packageCount": 3685,
+        "allVersionsAndResolutionsUnchanged": true
+      }
+    ],
+    "t3": {
+      "changes": "Four version-scoped optional @types/react peers, no compiler aliases",
+      "platforms": {
+        "macos": {
+          "typesExitCode": 0,
+          "unitExitCode": 0,
+          "buildExitCode": 0,
+          "filesPassed": 318,
+          "testsPassed": 4302,
+          "testsSkipped": 0
+        },
+        "linux": {
+          "checks": [
+            {
+              "stage": "typecheck",
+              "exitCode": 0,
+              "typeErrors": 0
+            },
+            {
+              "stage": "unit",
+              "exitCode": 0,
+              "typeErrors": 0
+            },
+            {
+              "stage": "build",
+              "exitCode": 0,
+              "typeErrors": 0
+            }
+          ],
+          "filesPassed": 318,
+          "testsPassed": 4302,
+          "testsSkipped": 0
+        }
+      },
+      "reactVersionControls": [
+        {
+          "react": "18.3.1",
+          "requestedTypes": "18.3.28",
+          "resolvedTypes": "18.3.28",
+          "case": "valid",
+          "exitCode": 0,
+          "errors": [],
+          "slot": "v11/links/@/lucide-react/0.564.0/58e1ae88c4c188cae7b97c702f804b6e76d66f0720dea4e8445ffc17d64a82ec/node_modules/lucide-react"
+        },
+        {
+          "react": "18.3.1",
+          "requestedTypes": "18.3.28",
+          "resolvedTypes": "18.3.28",
+          "case": "invalid",
+          "exitCode": 2,
+          "errors": [
+            "probe.ts(2,36): error TS2322: Type 'number' is not assignable to type 'string'."
+          ],
+          "slot": "v11/links/@/lucide-react/0.564.0/58e1ae88c4c188cae7b97c702f804b6e76d66f0720dea4e8445ffc17d64a82ec/node_modules/lucide-react"
+        },
+        {
+          "react": "19.3.0",
+          "requestedTypes": "19.3.0",
+          "resolvedTypes": "19.3.0",
+          "case": "valid",
+          "exitCode": 0,
+          "errors": [],
+          "slot": "v11/links/@/lucide-react/0.564.0/b7beb9ec7c421a31a7083fe95ff68af55628da3f7720700a087bca139d840616/node_modules/lucide-react"
+        },
+        {
+          "react": "19.3.0",
+          "requestedTypes": "19.3.0",
+          "resolvedTypes": "19.3.0",
+          "case": "invalid",
+          "exitCode": 2,
+          "errors": [
+            "probe.ts(2,36): error TS2322: Type 'number' is not assignable to type 'string'."
+          ],
+          "slot": "v11/links/@/lucide-react/0.564.0/b7beb9ec7c421a31a7083fe95ff68af55628da3f7720700a087bca139d840616/node_modules/lucide-react"
+        }
+      ]
+    },
+    "vite": {
+      "initialSharedTypeErrors": 1,
+      "intermediatePostBuildTypeErrors": 1,
+      "changes": "compiler-sfc gets its existing TypeScript 6 API dependency; fdir gets an optional picomatch type peer",
+      "platforms": {
+        "macos": {
+          "checks": [
+            {
+              "stage": "install",
+              "exitCode": 0
+            },
+            {
+              "stage": "build",
+              "exitCode": 0
+            },
+            {
+              "stage": "types",
+              "exitCode": 0
+            },
+            {
+              "stage": "unit",
+              "exitCode": 0
+            }
+          ],
+          "filesPassed": 73,
+          "testsPassed": 1089,
+          "testsSkipped": 3
+        },
+        "linux": {
+          "checks": [
+            {
+              "stage": "install",
+              "exitCode": 0
+            },
+            {
+              "stage": "build",
+              "exitCode": 0
+            },
+            {
+              "stage": "types",
+              "exitCode": 0
+            },
+            {
+              "stage": "unit",
+              "exitCode": 0
+            }
+          ],
+          "filesPassed": 73,
+          "testsPassed": 1089,
+          "testsSkipped": 3
+        }
+      }
+    },
+    "next": {
+      "initialMacSharedTypeErrors": 9,
+      "changes": "Octokit and its pagination plugin declare the existing GraphQL/Webhooks packages their types import",
+      "macos": {
+        "checks": [
+          {
+            "project": "next",
+            "stage": "install",
+            "exitCode": 0,
+            "typeErrors": 0
+          },
+          {
+            "project": "next",
+            "stage": "build",
+            "exitCode": 0,
+            "typeErrors": 0
+          },
+          {
+            "project": "next",
+            "stage": "types",
+            "exitCode": 0,
+            "typeErrors": 0
+          },
+          {
+            "project": "next",
+            "stage": "unit",
+            "exitCode": 0,
+            "typeErrors": 0
+          }
+        ],
+        "selectedCookieTestsPassed": 10
+      },
+      "linux": {
+        "latestChecks": [
+          {
+            "stage": "core-build",
+            "exitCode": 1
+          },
+          {
+            "stage": "repository-build",
+            "exitCode": 2
+          },
+          {
+            "stage": "types",
+            "exitCode": 134
+          },
+          {
+            "stage": "cookie-unit",
+            "exitCode": 0
+          }
+        ],
+        "completeBuildAccepted": false,
+        "observedLimits": [
+          "Four-GiB guest has kernel OOM kills and a later JavaScript heap exhaustion",
+          "Some build attempts fail on generated artifacts or companion-package build errors; not attributed wholly to shared storage"
+        ],
+        "selectedCookieTestsPassed": 10
+      }
+    }
+  },
+  "projectChecks": {
+    "macos": {
+      "baseline": [
+        {
+          "project": "vite",
+          "layout": "default",
+          "platform": "darwin",
+          "args": [
+            "run",
+            "build"
+          ],
+          "exitCode": 0,
+          "log": "vite-default-0.log"
+        },
+        {
+          "project": "vite",
+          "layout": "default",
+          "platform": "darwin",
+          "args": [
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0,
+          "log": "vite-default-1.log"
+        },
+        {
+          "project": "vite",
+          "layout": "default",
+          "platform": "darwin",
+          "args": [
+            "exec",
+            "vitest",
+            "run",
+            "--maxWorkers=2"
+          ],
+          "exitCode": 0,
+          "log": "vite-default-2.log"
+        },
+        {
+          "project": "kit",
+          "layout": "default",
+          "platform": "darwin",
+          "args": [
+            "--filter",
+            "@sveltejs/kit",
+            "prepublishOnly"
+          ],
+          "exitCode": 0,
+          "log": "kit-default-0.log"
+        },
+        {
+          "project": "kit",
+          "layout": "default",
+          "platform": "darwin",
+          "args": [
+            "--filter",
+            "@sveltejs/kit",
+            "check"
+          ],
+          "exitCode": 0,
+          "log": "kit-default-1.log"
+        },
+        {
+          "project": "kit",
+          "layout": "default",
+          "platform": "darwin",
+          "args": [
+            "run",
+            "test:kit:unit",
+            "--maxWorkers=2"
+          ],
+          "exitCode": 0,
+          "log": "kit-default-2.log"
+        },
+        {
+          "project": "next",
+          "layout": "default",
+          "platform": "darwin",
+          "args": [
+            "run",
+            "test-types"
+          ],
+          "exitCode": 2,
+          "log": "next-default-0.log"
+        },
+        {
+          "project": "next",
+          "layout": "default",
+          "platform": "darwin",
+          "args": [
+            "exec",
+            "jest",
+            "--runInBand",
+            "test/unit/split-cookies-string.test.ts"
+          ],
+          "exitCode": 1,
+          "log": "next-default-1.log"
+        }
+      ],
+      "unrepairedShared": [
+        {
+          "project": "vite",
+          "platform": "darwin",
+          "stage": "install",
+          "args": [
+            "install",
+            "--offline",
+            "--frozen-lockfile",
+            "--store-dir",
+            "<mac-research>/v4-store",
+            "--config.virtualStoreType=global",
+            "--yes"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "vite",
+          "platform": "darwin",
+          "stage": "check-0",
+          "args": [
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "vite",
+          "platform": "darwin",
+          "stage": "check-1",
+          "args": [
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 1
+        },
+        {
+          "project": "vite",
+          "platform": "darwin",
+          "stage": "check-2",
+          "args": [
+            "exec",
+            "vitest",
+            "run",
+            "--maxWorkers=2"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "kit",
+          "platform": "darwin",
+          "stage": "install",
+          "args": [
+            "install",
+            "--offline",
+            "--frozen-lockfile",
+            "--store-dir",
+            "<mac-research>/v4-store",
+            "--config.virtualStoreType=global",
+            "--yes"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "kit",
+          "platform": "darwin",
+          "stage": "check-0",
+          "args": [
+            "--filter",
+            "@sveltejs/kit",
+            "prepublishOnly"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "kit",
+          "platform": "darwin",
+          "stage": "check-1",
+          "args": [
+            "--filter",
+            "@sveltejs/kit",
+            "check"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "kit",
+          "platform": "darwin",
+          "stage": "check-2",
+          "args": [
+            "run",
+            "test:kit:unit",
+            "--maxWorkers=2"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "next",
+          "platform": "darwin",
+          "stage": "install",
+          "args": [
+            "install",
+            "--offline",
+            "--frozen-lockfile",
+            "--store-dir",
+            "<mac-research>/v4-store",
+            "--config.virtualStoreType=global",
+            "--yes"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "next",
+          "platform": "darwin",
+          "stage": "check-0",
+          "args": [
+            "run",
+            "build",
+            "--concurrency=1"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "next",
+          "platform": "darwin",
+          "stage": "check-1",
+          "args": [
+            "run",
+            "test-types"
+          ],
+          "exitCode": 2
+        },
+        {
+          "project": "next",
+          "platform": "darwin",
+          "stage": "check-2",
+          "args": [
+            "exec",
+            "jest",
+            "--runInBand",
+            "test/unit/split-cookies-string.test.ts"
+          ],
+          "exitCode": 0
+        }
+      ],
+      "workspaceResolutionAudits": {
+        "vite": {
+          "pointsToCurrentWorktree": true
+        },
+        "kit": {
+          "pointsToCurrentWorktree": true
+        },
+        "next": {
+          "pointsToCurrentWorktree": true
+        }
+      },
+      "kitCoreSharedUnit": {
+        "filesPassed": 75,
+        "testsPassed": 1116,
+        "testsSkipped": 1
+      }
+    },
+    "linux": {
+      "baseline": [
+        {
+          "project": "vite",
+          "layout": "default",
+          "platform": "linux",
+          "args": [
+            "run",
+            "build"
+          ],
+          "exitCode": 0,
+          "log": "vite-default-0.log"
+        },
+        {
+          "project": "vite",
+          "layout": "default",
+          "platform": "linux",
+          "args": [
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0,
+          "log": "vite-default-1.log"
+        },
+        {
+          "project": "vite",
+          "layout": "default",
+          "platform": "linux",
+          "args": [
+            "exec",
+            "vitest",
+            "run",
+            "--maxWorkers=2"
+          ],
+          "exitCode": 0,
+          "log": "vite-default-2.log"
+        },
+        {
+          "project": "kit",
+          "layout": "default",
+          "platform": "linux",
+          "args": [
+            "--filter",
+            "@sveltejs/kit",
+            "prepublishOnly"
+          ],
+          "exitCode": 0,
+          "log": "kit-default-0.log"
+        },
+        {
+          "project": "kit",
+          "layout": "default",
+          "platform": "linux",
+          "args": [
+            "--filter",
+            "@sveltejs/kit",
+            "check"
+          ],
+          "exitCode": 0,
+          "log": "kit-default-1.log"
+        },
+        {
+          "project": "kit",
+          "layout": "default",
+          "platform": "linux",
+          "args": [
+            "run",
+            "test:kit:unit",
+            "--maxWorkers=2"
+          ],
+          "exitCode": 0,
+          "log": "kit-default-2.log"
+        },
+        {
+          "project": "next",
+          "layout": "default",
+          "platform": "linux",
+          "args": [
+            "run",
+            "test-types"
+          ],
+          "exitCode": 2,
+          "log": "next-default-0.log"
+        },
+        {
+          "project": "next",
+          "layout": "default",
+          "platform": "linux",
+          "args": [
+            "exec",
+            "jest",
+            "--runInBand",
+            "test/unit/split-cookies-string.test.ts"
+          ],
+          "exitCode": 1,
+          "log": "next-default-1.log"
+        }
+      ],
+      "unrepairedShared": [
+        {
+          "project": "vite",
+          "platform": "linux",
+          "stage": "install",
+          "args": [
+            "install",
+            "--offline",
+            "--frozen-lockfile",
+            "--store-dir",
+            "<linux-research>/v4-store",
+            "--config.virtualStoreType=global",
+            "--yes"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "vite",
+          "platform": "linux",
+          "stage": "check-0",
+          "args": [
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "vite",
+          "platform": "linux",
+          "stage": "check-1",
+          "args": [
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 1
+        },
+        {
+          "project": "vite",
+          "platform": "linux",
+          "stage": "check-2",
+          "args": [
+            "exec",
+            "vitest",
+            "run",
+            "--maxWorkers=2"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "kit",
+          "platform": "linux",
+          "stage": "install",
+          "args": [
+            "install",
+            "--offline",
+            "--frozen-lockfile",
+            "--store-dir",
+            "<linux-research>/v4-store",
+            "--config.virtualStoreType=global",
+            "--yes"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "kit",
+          "platform": "linux",
+          "stage": "check-0",
+          "args": [
+            "--filter",
+            "@sveltejs/kit",
+            "prepublishOnly"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "kit",
+          "platform": "linux",
+          "stage": "check-1",
+          "args": [
+            "--filter",
+            "@sveltejs/kit",
+            "check"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "kit",
+          "platform": "linux",
+          "stage": "check-2",
+          "args": [
+            "run",
+            "test:kit:unit",
+            "--maxWorkers=2"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "next",
+          "platform": "linux",
+          "stage": "install",
+          "args": [
+            "install",
+            "--offline",
+            "--frozen-lockfile",
+            "--store-dir",
+            "<linux-research>/v4-store",
+            "--config.virtualStoreType=global",
+            "--yes"
+          ],
+          "exitCode": 0
+        },
+        {
+          "project": "next",
+          "platform": "linux",
+          "stage": "check-0",
+          "args": [
+            "run",
+            "build",
+            "--concurrency=1"
+          ],
+          "exitCode": 1
+        },
+        {
+          "project": "next",
+          "platform": "linux",
+          "stage": "check-1",
+          "args": [
+            "run",
+            "test-types"
+          ],
+          "exitCode": 2
+        },
+        {
+          "project": "next",
+          "platform": "linux",
+          "stage": "check-2",
+          "args": [
+            "exec",
+            "jest",
+            "--runInBand",
+            "test/unit/split-cookies-string.test.ts"
+          ],
+          "exitCode": 1
+        }
+      ],
+      "workspaceResolutionAudits": {
+        "vite": {
+          "pointsToCurrentWorktree": true
+        },
+        "kit": {
+          "pointsToCurrentWorktree": true
+        },
+        "next": {
+          "pointsToCurrentWorktree": true
+        }
+      },
+      "kitCoreSharedUnit": {
+        "filesPassed": 75,
+        "testsPassed": 1116,
+        "testsSkipped": 1
+      }
+    }
+  },
+  "privateCachePrototype": {
+    "scope": "Function and write isolation, not accepted performance medians. Diagnostic installs overlap image preparation or validation. No universal Mac speedup or hostile-process isolation is claimed.",
+    "baseImageBytes": 6799621927,
+    "baseImageSha256Before": "5d583a3156cadd4df94efe07716dfaba443217aca25081ce00d1afecfdf1d653",
+    "baseImageSha256After": "5d583a3156cadd4df94efe07716dfaba443217aca25081ce00d1afecfdf1d653",
+    "macImageAttachments": [
+      {
+        "view": "a",
+        "exitCode": 0,
+        "seconds": 6.40033166698413
+      },
+      {
+        "view": "b",
+        "exitCode": 0,
+        "seconds": 0.25850108300801367
+      }
+    ],
+    "platforms": {
+      "macos": {
+        "isolation": {
+          "simultaneousViews": 2,
+          "packageMutationIsolated": true,
+          "registryTargetsInsideOwnView": true,
+          "packageRelativePath": "v11/links/@/lucide-react/0.564.0/b7beb9ec7c421a31a7083fe95ff68af55628da3f7720700a087bca139d840616/node_modules/lucide-react/package.json",
+          "basePackageSha256": "505b10702c7c576341aa1bd210588adee9a8548173f5d4a8fbb07d0e2204d23b"
+        },
+        "checks": [
+          {
+            "view": "a",
+            "stage": "install",
+            "exitCode": 0,
+            "secondsDiagnosticOnly": 6.776724541967269
+          },
+          {
+            "view": "a",
+            "stage": "types",
+            "exitCode": 0,
+            "secondsDiagnosticOnly": 3.7631783750257455
+          },
+          {
+            "view": "b",
+            "stage": "install",
+            "exitCode": 0,
+            "secondsDiagnosticOnly": 7.372134040982928
+          },
+          {
+            "view": "b",
+            "stage": "types",
+            "exitCode": 0,
+            "secondsDiagnosticOnly": 3.8406861249823123
+          },
+          {
+            "stage": "unit",
+            "exitCode": 0
+          },
+          {
+            "stage": "build",
+            "exitCode": 0
+          }
+        ],
+        "unitCounts": {
+          "filesPassed": 318,
+          "testsPassed": 4302,
+          "testsSkipped": 0
+        },
+        "lockfileInvalidation": {
+          "platform": "darwin",
+          "exitCode": 1,
+          "changedManifestRejected": true,
+          "lockfileUnchanged": true,
+          "manifestRestored": true,
+          "errorCodes": [
+            "Error: ERR_PNPM_OUTDATED_LOCKFILE"
+          ]
+        }
+      },
+      "linux": {
+        "isolation": {
+          "simultaneousViews": 2,
+          "packageMutationIsolated": true,
+          "registryTargetsInsideOwnView": true,
+          "packageRelativePath": "v11/links/@/lucide-react/0.564.0/b7beb9ec7c421a31a7083fe95ff68af55628da3f7720700a087bca139d840616/node_modules/lucide-react/package.json",
+          "basePackageSha256": "505b10702c7c576341aa1bd210588adee9a8548173f5d4a8fbb07d0e2204d23b"
+        },
+        "checks": [
+          {
+            "view": "a",
+            "stage": "install",
+            "exitCode": 0,
+            "secondsDiagnosticOnly": 0.6558654519999436
+          },
+          {
+            "view": "a",
+            "stage": "types",
+            "exitCode": 0,
+            "secondsDiagnosticOnly": 2.940008209000098
+          },
+          {
+            "view": "b",
+            "stage": "install",
+            "exitCode": 0,
+            "secondsDiagnosticOnly": 1.1203182579997701
+          },
+          {
+            "view": "b",
+            "stage": "types",
+            "exitCode": 0,
+            "secondsDiagnosticOnly": 4.035384461999911
+          },
+          {
+            "stage": "unit",
+            "exitCode": 0
+          },
+          {
+            "stage": "build",
+            "exitCode": 0
+          }
+        ],
+        "unitCounts": {
+          "filesPassed": 318,
+          "testsPassed": 4302,
+          "testsSkipped": 0
+        },
+        "lockfileInvalidation": {
+          "platform": "linux",
+          "exitCode": 1,
+          "changedManifestRejected": true,
+          "lockfileUnchanged": true,
+          "manifestRestored": true,
+          "errorCodes": [
+            "Error: ERR_PNPM_OUTDATED_LOCKFILE"
+          ]
+        }
+      }
+    }
+  },
+  "readOnlyT3Refusal": {
+    "tested": true,
+    "error": "ERR_PNPM_PACKAGE_MANAGER_CREATE_SLOT_DIR; EROFS creating path-derived @t3tools/mobile-source-text slot in a new worktree",
+    "result": "Not a drop-in full-workspace solution; no workspace was filtered out to make it pass."
+  },
+  "limits": [
+    "All results are from one physical Mac and a resource-limited VM.",
+    "Install completion and matching requested inventory do not certify a complete app.",
+    "Next full Linux build remains unaccepted.",
+    "Unit counts are per suite, not summed across repeated runs as unique tests.",
+    "No entire-agent speedup, bare-metal Linux equivalence or complete APFS causal attribution is claimed."
+  ],
+  "privatePathsNormalized": true
+}

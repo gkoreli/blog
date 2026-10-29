@@ -1,6 +1,41 @@
 # Install experiment sources
 
-The current iteration is the [failure diagnosis](../03-failure-diagnosis-and-validation.md) and [30 fresh-worktree results](validation-results.json). The older 21-install ledger below remains a separate historical experiment. Do not pool those medians.
+The current iteration is the [cross-repository investigation](../04-cross-repository-and-hardened-mitigations.md) and [90-install/project-check ledger](cross-repo-results.json). The earlier [30-trial T3 block](validation-results.json), [failure diagnosis](../03-failure-diagnosis-and-validation.md), and 21-install ledger below remain separate experiments. Do not pool their medians.
+
+## Cross-repository extension
+
+The [new investigation](../04-cross-repository-and-hardened-mitigations.md) and [final cross-repository ledger](cross-repo-results.json) test the full Vite, SvelteKit and Next.js workspaces at their own pnpm 12 pins. [cross-repo-install.py](cross-repo-install.py) collects frozen install, source, inventory and runtime evidence. [cross-repo-trials.py](cross-repo-trials.py) predeclares rotating configuration/project order and alternating platform order, with five fresh paths per group. Node is 26.12.1 on both systems. Separate warmups and a start-signal barrier keep builds and diagnostics out of accepted timings.
+
+The plan supplies `pairs`, `settleSeconds`, `results`, `limaHome`, `limaMachine`, and `runner`; each `macos`/`linux` section supplies `sources` and `cli` maps keyed by `vite`, `kit`, `next`, plus `worktrees`, `store`, `node`, `results` and `browsers`. Sources and logs must be disposable, and guest files must live on its own filesystem. `startSignal` optionally holds accepted trials until preparation finishes. An explicit `resumeFrom` controller directory plus a written `resumeReason` retains successful earlier rows and preserves failed attempts separately; it never silently replaces an earlier result. The Next.js cache-write incident caused such a continuation.
+
+```sh
+python3 cross-repo-trials.py --config plan.json \
+  --allow-create-disposable-worktrees
+```
+
+All install scripts allowed by the project stay enabled. `CI=true` is explicit; Next's own hook skips its optional native compiler download in CI. Browser binaries and package/build caches are populated before timing. Accepted installs use both pnpm offline mode and npm's offline environment flag. These are installer measurements, not complete application readiness claims.
+
+## Preferred T3 declaration repair
+
+The separate declaration aliases below explain the first diagnosis. The newer [version-scoped metadata patch](t3-react-type-peers.patch) supplies four missing optional React-type peers through pnpm's existing `packageExtensions` mechanism. The [YAML snippet](t3-react-type-peers.yaml) shows only those additions; merge it with the project's existing extensions rather than replacing them. Its lockfile is intentionally regenerated and frozen afterward. No package version changes, compiler-path aliases, strictness changes or application edits are part of the patch.
+
+Apply the patch only to the tested T3 revision `125b61954dbba5822a8108c8ca47a4846b4b4328`, using its pinned runtime and package manager:
+
+```sh
+git apply /absolute/path/to/t3-react-type-peers.patch
+pnpm install --frozen-lockfile --config.virtualStoreType=global
+pnpm --dir apps/web --config.virtualStoreType=global exec tsc --noEmit
+```
+
+The original web configuration passes with the corrected graph. Positive/negative reduced controls also resolve separate React 18 and React 19 declaration versions correctly. Shared packages still need a shared trust boundary; metadata repair does not make their files independently writable.
+
+Vite's [separate metadata patch](vite-shared-type-deps.patch) supplies the existing TypeScript 6 API to compiler-sfc and an optional picomatch-type peer to fdir. Its normal build, complete typecheck and 1,089 unit tests pass on both systems. Next's [Octokit type-dependency patch](next-shared-type-deps.patch) clears the nine Mac declaration errors with no package/resolution upgrade; Mac build and the ten selected cookie tests pass. The complete Next Linux build remains unaccepted, as recorded in the ledger. Do not describe all three repositories as universally certified.
+
+## Cache-write and isolation controls
+
+[ncc-cache-write-probe.py](ncc-cache-write-probe.py) exercises one exact package, compiles output that must print `42`, compares published package files with their original content-store addresses, and attempts a second fresh offline install. The normal Linux hardlink case must reproduce the corruption/failure. `clone-or-copy`, an actual read-only global view, and private writable views preserve the original CAS bytes and pass the second install. The read-only variant additionally requires the OS mount flag and rejects a direct file write. Inputs are disposable and the driver refuses an existing root.
+
+[readonly-store-trials.py](readonly-store-trials.py) preserves the attempted full T3 read-only workflow. It fails on a new local-package slot, so its planned five-run acceptance is **not complete and is not claimed**. [cow-store-proof.py](cow-store-proof.py) is the exact bounded private-view proof from the lab paths: two distinct views, full T3 installs, normal typechecks, a write-isolation test, then unit/build checks. Prepare the mounts/shadow files using the [methods](../04-cross-repository-and-hardened-mitigations.md#private-writable-views). It is experiment source, not an install-and-forget cache service. Its recorded install durations are diagnostic; keep them out of the eighteen accepted timing series.
 
 ## New validation protocol
 

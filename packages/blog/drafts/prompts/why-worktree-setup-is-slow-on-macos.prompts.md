@@ -20,3 +20,7 @@ we need much more deepnresearch, manual investigation and evidence based explora
 ---
 
 Why did macOS fail? Also we need more validations
+
+---
+
+Can we try other notorious repos too in the benchmark, and then continue with evidence based exploration and experimentation to figure iut the why is this all happening and potentiall try out different things if it all can be mitigated in hardened ways without bandaids. This would all go really well into the article. And publish the article

@@ -1,0 +1,48 @@
+{
+  "checkedAtUtc": "2026-10-29T04:56:19.772034+00:00",
+  "authorLocalDate": "2026-10-28",
+  "status": "Cross-repository research and publication source freeze; deployment and served acceptance recorded separately in 05-publication-and-acceptance.md",
+  "previousReceipt": {
+    "file": "evidence-manifest-v3.json",
+    "sourceCommit": "6b0bad149fbdbbcf22925c8a7eff996ed05dd879",
+    "interpretation": "Previous hashes apply to that revision; historical receipts remain unchanged."
+  },
+  "files": {
+    "../../../posts/032-why-worktree-setup-is-slow-on-macos.md": "cd317f426570abd40ff4b4e8312c9df0e5057b240bb36926501a36b5101f2a1f",
+    "../../../prompts/why-worktree-setup-is-slow-on-macos.prompts.md": "faefb2905d57f45ba4e70a741188d6e9b1789278adef6c928b227c5379ce0824",
+    "../../why-worktree-setup-is-slow-on-macos.md": "4322b90127fc0c1652089ac02694c6be3e8b5c1f0e9485f141d5e8d1ece33ce5",
+    "../../prompts/why-worktree-setup-is-slow-on-macos.prompts.md": "faefb2905d57f45ba4e70a741188d6e9b1789278adef6c928b227c5379ce0824",
+    "01-claim-audit.md": "e943e98db7305480cf137cd8a1463a802e6fa834ab161f89d929544a5f654d99",
+    "02-deeper-investigation.md": "fcb89b7b5f3a674751b28125d61ff271a00aa7281eb8ca3f8c4b7c92b541fab8",
+    "03-failure-diagnosis-and-validation.md": "e98e4b790d19aab6635ed0ced7708e452856c92f4bdd2291eb7c9d7b34e5a73f",
+    "04-cross-repository-and-hardened-mitigations.md": "3ba8bd1ad45275aa95871bd4aeeeba8c9c6cf52d3753a96b731c9bfd0ecbc7cf",
+    "repro/README.md": "bcd9f47d812959f6b390d20736e57e1d228f36c8fb437b379f23be6d93cca859",
+    "evidence-manifest-v3.json": "0cf4260912194820bd03bfaded40bff361b0cb0dab08eeccc3dba9fd9bb4065b",
+    "repro/cross-repo-install.py": "2d7674f95722980fa02c4264bbf6c48f917e15467b2e94931465d079505a6290",
+    "repro/cross-repo-trials.py": "26fde66922778aecd79c8651e6ddf1b06b72c3a8eb78a415aaa442b7ec5c0d11",
+    "repro/cross-repo-results.json": "645b603fe4f6b787a05e909eaf11f9d4845afeb3a004f4430e70359c49992318",
+    "repro/ncc-cache-write-probe.py": "d5e1dede60132ed55f1aa9379e57964b11a7bd74911e4bfd57541b303118543f",
+    "repro/readonly-store-trials.py": "34df050a95c4a3a9502ed6bd1b5764f374848d5d1239df415dc6141269a0b13f",
+    "repro/cow-store-proof.py": "538f37e388f9e296dd60c41200ecac30a3cbd8c8b3153b4d52dc302550eafe61",
+    "repro/t3-react-type-peers.yaml": "cb24cc783aeebe0e50ccad8cfe2764dbe47640580da8f7b377803fbcf58a930b",
+    "repro/t3-react-type-peers.patch": "1488e7f24e1b8002a38f8ea3783d549d6235a77ba2604219422b316c4087549c",
+    "repro/vite-shared-type-deps.patch": "cb42685d21f0255e44c7fffcf1702ad596810f05b28ae78385f7ea0b0a8d11dd",
+    "repro/next-shared-type-deps.patch": "8a2b14d22270bd62e5845ffea7aa82ad0e299f56875c85999d8e8f4b122c3f35",
+    "repro/validation-results.json": "c491b65fcfe1675cf608e29c24fbaf66a82f0630bcc21a9d1309d848e93e803b",
+    "repro/full-results.json": "c5df5bd8f8d1c6a45b6d848c63f0b991d76047b9eb8c9fbf09710a3459999a9c"
+  },
+  "sourcePins": {
+    "vite": "cce559ab158cc6b177d0911a0bea73436b48faff",
+    "kit": "f22e6210a51bc0e43bd52882be12d759eff5a2c6",
+    "next": "7fd2d0a69534e26cfa10c7c11acc7c8450bf7cd5",
+    "t3": "125b61954dbba5822a8108c8ca47a4846b4b4328"
+  },
+  "readingLength": {
+    "renderedWords": 927,
+    "minutesAt200WordsPerMinute": 4.635,
+    "exactShapingMessages": 6
+  },
+  "timingBoundary": "90 accepted added installs across 18 five-sample series, one failed measured offline attempt retained separately; earlier T3 30-trial block not pooled. Diagnostic cache controls and prototype timings are not accepted series.",
+  "validationBoundary": "T3 and Vite repaired metadata passes normal types/unit/build checks on both systems; SvelteKit core checks pass unchanged. Complete Next Linux build remains unaccepted. Earlier T3 browser runs retain the same one scrolling failure out of 472. Private writable cache views demonstrate tested write isolation and invalidation, not a general Mac speed win or production cache manager.",
+  "scope": "Public article, exact shaping text, source methods, normalized ledgers, scripts and version-scoped metadata repairs. Mutable worklist and delivery receipt excluded; raw captures, archives and credentials stay outside Git."
+}

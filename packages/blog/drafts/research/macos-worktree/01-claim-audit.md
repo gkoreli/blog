@@ -1,6 +1,6 @@
 # Claims, reader questions and source rationale
 
-Checked October 28–29, 2026. Repository baselines are in the [worklist](00-worklist-index.md). Current disposition: [failure diagnosis and additional validation](03-failure-diagnosis-and-validation.md), [30 fresh-worktree trials and project checks](repro/validation-results.json). These supersede the earlier timing headline and undiagnosed shared-store rejection below. The [21-install ledger](repro/full-results.json) remains a separate historical experiment; do not pool samples.
+Checked October 28–29, 2026. Current disposition: [cross-repository methods and hardened controls](04-cross-repository-and-hardened-mitigations.md), [90-trial and validation ledger](repro/cross-repo-results.json), and the current table at the end of this file. The earlier 30-trial T3 block is retained separately; its compiler-path workaround is superseded by tested dependency metadata. Historical tables below preserve how the evidence changed.
 
 ## The chart and its missing context
 
@@ -70,6 +70,8 @@ Observed the first loaded Relevant-order reply groups plus two PageDown advances
 
 Reader language: “worktree setup slow on Mac,” “pnpm install slow macOS,” “Linux versus Mac for coding agents.” These are query hypotheses, not measured demand. The title should name worktree setup on a Mac; the payoff is a testable response to a specific delay. Do not advertise an independently reproduced 8× comparison or an OS migration verdict.
 
+<a id="deeper-pass-claim-disposition"></a>
+
 ## Deeper-pass claim disposition (historical)
 
 This table records the previous iteration. Its cleaned-directory timings and undiagnosed compatibility failure are superseded for the revised article by the current validation below.
@@ -87,6 +89,8 @@ This table records the previous iteration. Its cleaned-directory timings and und
 
 ## Current failure-diagnosis and validation disposition
 
+Historical previous iteration; the cross-repository disposition below is current. The heading is retained so historical receipts keep working links.
+
 | Claim / alternative | Stage and evidence | Counterevidence or boundary | Disposition |
 | --- | --- | --- | --- |
 | The shared-store typecheck failure is specific to macOS | Reproduced: unchanged shared layouts produce the same 64 errors on macOS and Linux | Installation itself succeeds; this failure is in declaration lookup | Reject OS-specific framing |
@@ -103,3 +107,26 @@ This table records the previous iteration. Its cleaned-directory timings and und
 | Install speed predicts complete agent-task speed | Only installer wall time is measured; typechecks and other validation are outside the timer | Model calls, checkout, app execution and end-to-end task durations unmeasured | Reject extrapolation |
 
 The source and requested dependency inventory match in all 30 new trials. The revised article uses those fresh-path medians, preserves the known browser failure, and links the separate typecheck-only recipe. No material conclusion relies on research compute volume.
+
+
+## Current cross-repository disposition
+
+| Claim / alternative | Evidence | Limit / counterevidence | Disposition |
+| --- | --- | --- | --- |
+| The install gap extends beyond T3 | Ninety added fresh-worktree installs, five per project/configuration/platform: Next 4.557/1.559 s, Vite 1.818/0.477 s, SvelteKit 0.589/0.135 s default Mac/Linux medians | Single M5 host, resource-limited guest, different pinned pnpm versions across projects; no original-chart raw data | Supported inside each tested project; no universal OS ratio |
+| A large ratio always means a large practical wait | SvelteKit ratio exceeds four but absolute median difference is 0.455 s | Installed package/workspace size and script work vary | Publish absolute times, not only ratios |
+| Worker count explains the whole gap | Four workers reduce all four Mac medians across the separate test blocks | Linux SvelteKit is slower with four; substantial Mac gap remains | Supported bounded setting to measure; not a universal prescription |
+| Default import strategies do the same work | Source and inode checks: ordinary Linux packages begin with hardlinks; Mac with independent clones | Known lifecycle-build/patch packages already get private imports | Reject equivalence; preserve write semantics in comparison |
+| Runtime tool writes cannot affect the package cache | ncc source and exact tarball audit; Linux build changes four cache files sharing CAS inodes; reduced compilation changes three and breaks the next offline install | Mac installed files change while original CAS bytes remain intact; not evidence about every package or attacker model | Reproduced specific cache mutation mechanism |
+| Disabling integrity verification is a performance fix | Restore exact ncc package and same failed checkout completes offline | Disabling validation would hide changed package bytes | Reject; keep integrity checks |
+| Independent file imports prevent the reproduced failure | Exact ncc compilation with clone-or-copy keeps CAS unchanged and next offline install passes | ext4 copies bytes; cloning availability/performance varies by filesystem | Supported correctness option; no invented full-repository speed median |
+| Shared packages are a universal drop-in | Fast installs in all three new repositories | Vite and Next typechecks fail; T3 previously failed; SvelteKit core checks pass unchanged | Reject universal compatibility |
+| Compiler aliases are required for T3 | Four optional React-type peers clear all 64 errors with original compiler settings; two React version controls preserve invalid-prop rejection | Specific tested web graph; metadata is version-scoped and frozen | Prefer dependency metadata over compiler-path workaround |
+| Metadata fixes merely upgrade packages until they work | All package keys and resolution entries unchanged: T3 2,069; Vite 1,345; Next 3,685 | Peer identities, declared dependency edges and locks intentionally change | Reject upgrade/suppression explanation |
+| Full checks pass everywhere after repair | T3 types/4,302 unit/build pass both OSes; Vite full types/build/1,089 unit pass both; Kit core types/1,116 unit pass unchanged; Next Mac build/root types/10 selected tests pass | Next complete Linux build remains unaccepted; known earlier T3 browser 471/472 in both layouts | Keep per-project gates and exclusions explicit |
+| Passing shared tests accidentally use the warmed source | Workspace resolution audits in current fresh checkouts pass for all three repositories on both OSes | Does not certify every possible dynamic import or edited branch | Reject this explanation for the inspected workspace paths |
+| A read-only store alone handles every new T3 worktree | Reduced ncc compile/second install passes against actual read-only snapshot | Full T3 install refuses a new path-derived mobile local-package slot | Reject drop-in recommendation; do not filter out a workspace to obtain green |
+| Private copy-on-write views can preserve function and isolation | Two concurrent views per OS; full T3 installs, normal types, unit/build pass; A's package write leaves B unchanged; Mac base-image hash unchanged; manifest/lock mismatch rejected; ncc controls pass | Prototype setup/mount costs, diagnostic timings, backing-source trust, no general Mac speed win | Functional bounded prototype, not turnkey production cache manager |
+| Installation improvement proves whole-agent acceleration | Only installer wall time measured; checks separate | No complete model/task benchmark | Reject extrapolation |
+
+The final article may publish these findings now with the negative results intact. Current production publication must still be measured after deployment; research completion does not prove a live route.
