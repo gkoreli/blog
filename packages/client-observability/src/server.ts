@@ -7,7 +7,7 @@ export type { ClientObservabilityEnv } from './db.js';
 
 const MAX_BODY_BYTES = 8 * 1024;
 
-function json(status: number): Response {
+function emptyResponse(status: number): Response {
   return new Response(null, {
     status,
     headers: {
@@ -42,14 +42,14 @@ export async function handleClientError(
   ctx?: ExecutionContext,
 ): Promise<Response> {
   const contentType = request.headers.get('content-type') ?? '';
-  if (!contentType.toLowerCase().includes('application/json')) return json(415);
+  if (!contentType.toLowerCase().includes('application/json')) return emptyResponse(415);
 
   const rawLength = Number(request.headers.get('content-length') ?? '0');
-  if (Number.isFinite(rawLength) && rawLength > MAX_BODY_BYTES) return json(413);
+  if (Number.isFinite(rawLength) && rawLength > MAX_BODY_BYTES) return emptyResponse(413);
 
   const payload = await request.json().catch(() => null);
   const event = enrich(request, parseClientErrorPayload(payload));
-  if (!event) return json(400);
+  if (!event) return emptyResponse(400);
 
   console.warn('[client:error]', {
     type: event.type,
@@ -60,17 +60,22 @@ export async function handleClientError(
     ray: event.ray ?? '',
     country: event.country ?? '',
     colo: event.colo ?? '',
+    stage: 'received',
+    storage: 'pending',
   });
 
-  const write = recordClientError(env.DB, event).catch(err =>
-    console.error('[client:error] D1 write failed:', err),
+  const confirmation = recordClientError(env.DB, event).then(
+    () => {
+      console.info('[client:error:storage]', { outcome: 'confirmed' });
+      return true;
+    },
+    err => {
+      // A failure to confirm the write does not prove that no commit occurred.
+      console.error('[client:error:storage]', { outcome: 'unconfirmed' }, err);
+      return false;
+    },
   );
-
-  if (ctx) {
-    ctx.waitUntil(write);
-  } else {
-    await write;
-  }
-
-  return json(204);
+  // Keep completion alive on disconnect, while awaiting it for the HTTP acknowledgment.
+  ctx?.waitUntil(confirmation);
+  return emptyResponse(await confirmation ? 204 : 503);
 }

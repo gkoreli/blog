@@ -1,0 +1,400 @@
+{
+  "checkedAt": "2026-10-29T23:51:02.709Z",
+  "baseline": "728b17efe9e18238b76f90609be1aeb00e024736",
+  "runtime": "paired workerd handlers with native D1; injected storage/HTTP faults",
+  "writeCasesPerVersion": 7,
+  "transportCasesPerVersion": 15,
+  "oldPrematureResponse": true,
+  "newPrematureResponse": false,
+  "old204WithoutInsertedRow": 4,
+  "new204WithoutInsertedRow": 0,
+  "committedRowWithUnconfirmed503": true,
+  "oneRunCallPerHandler": true,
+  "browserQueueDistinct": true,
+  "waitUntilRegistrationRetained": true,
+  "actualClientDisconnectMeasured": false,
+  "actualBrowserTransportMeasured": false,
+  "automaticRetriesAdded": false,
+  "productionCalls": 0,
+  "humanLabels": 0,
+  "before": {
+    "writes": [
+      {
+        "mode": "normal",
+        "status": 204,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 1,
+        "returnedBeforeWriteConfirmation": null
+      },
+      {
+        "mode": "delayed",
+        "status": 204,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 1,
+        "returnedBeforeWriteConfirmation": true
+      },
+      {
+        "mode": "native-rejection",
+        "status": 204,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 0,
+        "returnedBeforeWriteConfirmation": null
+      },
+      {
+        "mode": "negative-ack",
+        "status": 204,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 0,
+        "returnedBeforeWriteConfirmation": null
+      },
+      {
+        "mode": "zero-changes",
+        "status": 204,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 0,
+        "returnedBeforeWriteConfirmation": null
+      },
+      {
+        "mode": "unexpected-count",
+        "status": 204,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 0,
+        "returnedBeforeWriteConfirmation": null
+      },
+      {
+        "mode": "write-then-error",
+        "status": 204,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 1,
+        "returnedBeforeWriteConfirmation": null
+      }
+    ],
+    "transports": [
+      {
+        "mode": "200",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "201",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "202",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "204",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "205",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "301",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "400",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "429",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "500",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "503",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "network",
+        "outcome": "rejected",
+        "receiptState": "unconfirmed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "beacon-queued",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 0,
+        "beaconCalls": 1,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "beacon-fallback",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 1,
+        "beaconCalls": 1,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "beacon-rejected",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 1,
+        "beaconCalls": 1,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "noop",
+        "outcome": "resolved",
+        "receiptState": "not-exposed",
+        "fetchCalls": 0,
+        "beaconCalls": 0,
+        "redirectPolicy": null
+      }
+    ],
+    "workerSha256": "3ab7009a8c0eac6e3ff7c85747bd80003cc2d892faf3a1495174bed555b8c92b"
+  },
+  "after": {
+    "writes": [
+      {
+        "mode": "normal",
+        "status": 204,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 1,
+        "returnedBeforeWriteConfirmation": null
+      },
+      {
+        "mode": "delayed",
+        "status": 204,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 1,
+        "returnedBeforeWriteConfirmation": false
+      },
+      {
+        "mode": "native-rejection",
+        "status": 503,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 0,
+        "returnedBeforeWriteConfirmation": null
+      },
+      {
+        "mode": "negative-ack",
+        "status": 503,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 0,
+        "returnedBeforeWriteConfirmation": null
+      },
+      {
+        "mode": "zero-changes",
+        "status": 503,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 0,
+        "returnedBeforeWriteConfirmation": null
+      },
+      {
+        "mode": "unexpected-count",
+        "status": 503,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 0,
+        "returnedBeforeWriteConfirmation": null
+      },
+      {
+        "mode": "write-then-error",
+        "status": 503,
+        "bodyEmpty": true,
+        "runCalls": 1,
+        "backgroundCalls": 1,
+        "insertedRows": 1,
+        "returnedBeforeWriteConfirmation": null
+      }
+    ],
+    "transports": [
+      {
+        "mode": "200",
+        "outcome": "rejected",
+        "receiptState": "unconfirmed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": "error"
+      },
+      {
+        "mode": "201",
+        "outcome": "rejected",
+        "receiptState": "unconfirmed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": "error"
+      },
+      {
+        "mode": "202",
+        "outcome": "rejected",
+        "receiptState": "unconfirmed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": "error"
+      },
+      {
+        "mode": "204",
+        "outcome": "resolved",
+        "receiptState": "server-acknowledged",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": "error"
+      },
+      {
+        "mode": "205",
+        "outcome": "rejected",
+        "receiptState": "unconfirmed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": "error"
+      },
+      {
+        "mode": "301",
+        "outcome": "rejected",
+        "receiptState": "unconfirmed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": "error"
+      },
+      {
+        "mode": "400",
+        "outcome": "rejected",
+        "receiptState": "unconfirmed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": "error"
+      },
+      {
+        "mode": "429",
+        "outcome": "rejected",
+        "receiptState": "unconfirmed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": "error"
+      },
+      {
+        "mode": "500",
+        "outcome": "rejected",
+        "receiptState": "unconfirmed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": "error"
+      },
+      {
+        "mode": "503",
+        "outcome": "rejected",
+        "receiptState": "unconfirmed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": "error"
+      },
+      {
+        "mode": "network",
+        "outcome": "rejected",
+        "receiptState": "unconfirmed",
+        "fetchCalls": 1,
+        "beaconCalls": 0,
+        "redirectPolicy": "error"
+      },
+      {
+        "mode": "beacon-queued",
+        "outcome": "resolved",
+        "receiptState": "browser-queued",
+        "fetchCalls": 0,
+        "beaconCalls": 1,
+        "redirectPolicy": null
+      },
+      {
+        "mode": "beacon-fallback",
+        "outcome": "resolved",
+        "receiptState": "server-acknowledged",
+        "fetchCalls": 1,
+        "beaconCalls": 1,
+        "redirectPolicy": "error"
+      },
+      {
+        "mode": "beacon-rejected",
+        "outcome": "rejected",
+        "receiptState": "unconfirmed",
+        "fetchCalls": 1,
+        "beaconCalls": 1,
+        "redirectPolicy": "error"
+      },
+      {
+        "mode": "noop",
+        "outcome": "resolved",
+        "receiptState": "disabled",
+        "fetchCalls": 0,
+        "beaconCalls": 0,
+        "redirectPolicy": null
+      }
+    ],
+    "workerSha256": "32d22887caf381307b890a3caa3a80528791ee9dfc95d0bb39c40d1e3b7ec790"
+  }
+}

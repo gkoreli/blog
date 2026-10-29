@@ -24,8 +24,13 @@ export interface ClientErrorInput {
 
 export interface ClientErrorEvent extends ClientContext, ClientErrorInput {}
 
+export type ClientLogReceipt =
+  | { state: 'browser-queued' }
+  | { state: 'server-acknowledged' }
+  | { state: 'disabled' };
+
 export interface ClientLogTransport {
-  send(event: ClientErrorEvent): Promise<void>;
+  send(event: ClientErrorEvent): Promise<ClientLogReceipt>;
 }
 
 export interface ClientLogger {

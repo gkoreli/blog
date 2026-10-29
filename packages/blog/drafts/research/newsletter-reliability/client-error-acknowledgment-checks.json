@@ -1,0 +1,30 @@
+{
+  "sourceBaseline": "728b17efe9e18238b76f90609be1aeb00e024736",
+  "siteTests": 144,
+  "workspaceTypes": true,
+  "validMarkdownPosts": 22,
+  "isolatedBuildPosts": 33,
+  "privateEnvCopied": false,
+  "publicConfiguration": "synthetic sitekey",
+  "sourceHashes": {
+    "packages/client-observability/src/server.ts": "6efb0d866dc495c3394d994ee6583479a4cba2bcd3b191c67207ea0d157b7601",
+    "packages/client-observability/src/db.ts": "0b35b7465a6fa976bc68bc88c7af6e4ffb8b41034dcf0a07f58f57e636fd9b1a",
+    "packages/client-observability/src/transport.ts": "e26816564ce57c11c6b6924083d24d71664967f2cd5d301d4610ccc0973e0a96",
+    "packages/client-observability/src/types.ts": "20bd0cacdd17336d3e00037e8d6da70f83b7c0895b239e9e1b1641901806da14",
+    "packages/client-observability/src/client.ts": "d23a18e474d40f29a85a584d7255c94cd5cabba8c7b362fed41251e90b7a2412",
+    "packages/client-observability/src/index.ts": "6dc918ee800461897d9e0c0b6fa07bc84e18456eff12ad31098b100e32128d6f",
+    "packages/blog/test/client-error-acknowledgment.test.mjs": "f75356242e6950f51959dea0e8384c6a85f401c19790b9c3a0d7cb2c329e1ac4",
+    "packages/blog/test/subscription-error-evidence.test.mjs": "e1125b9de626f982b3beebf69a6037ddbfe02be758159af8a7e0317bcd1deab2",
+    "packages/blog/scripts/check-client-error-acknowledgment.mjs": "9c60ab1603a7fa0877c670cc7d73479e44e02aea26b146adae6b5908f9c088b5",
+    "packages/blog/test/fixtures/client-error-ack-worker.js": "4094da9877f93f6d4f299fe2dd208beef89bf07d36072e8f1294d7911d2b0e5a"
+  },
+  "servedClientExpectedSha256": "92805345c7a2f2eca777ee67ddafaed6177f24d80f40d785bad82985f691c8da",
+  "nativeWriteCasesPerVersion": 7,
+  "nativeTransportCasesPerVersion": 15,
+  "publicReproductionMatchesPrivateMatrix": true,
+  "productionActivationAccepted": false,
+  "productionDiagnosticPosts": 0,
+  "humanLabels": 0,
+  "schemaChanged": false,
+  "signupFlowChanged": false
+}

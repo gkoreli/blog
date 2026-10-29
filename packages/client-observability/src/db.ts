@@ -13,7 +13,7 @@ export async function recordClientError(db: D1Database, event: ServerClientError
   const subscription = event.type === 'interaction_error' && event.component === 'subscribe_form'
     ? parseSubscriptionErrorEvidence(event.subscriptionEvidence) : undefined;
   const occurred = Date.parse(event.occurredAt);
-  await db.prepare(INSERT).bind(
+  const result = await db.prepare(INSERT).bind(
     event.id,
     event.type,
     event.message,
@@ -34,6 +34,15 @@ export async function recordClientError(db: D1Database, event: ServerClientError
     Number.isFinite(occurred) ? new Date(occurred).toISOString() : null,
     subscription === undefined ? null : JSON.stringify(subscription),
   ).run();
+  if (result.success !== true || result.meta.changes !== 1) {
+    throw new Error('client_error_write_unconfirmed', {
+      cause: {
+        resultStatus: result.success === true ? 'success' : 'not-successful',
+        affectedRows: Number.isSafeInteger(result.meta.changes) && result.meta.changes >= 0
+          ? result.meta.changes : null,
+      },
+    });
+  }
 }
 
 export async function purgeOldClientErrors(db: D1Database): Promise<number> {

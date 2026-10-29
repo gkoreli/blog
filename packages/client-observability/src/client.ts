@@ -70,4 +70,5 @@ export type {
   ClientLogger,
   ClientLoggerConfig,
   ClientLogTransport,
+  ClientLogReceipt,
 } from './types.js';

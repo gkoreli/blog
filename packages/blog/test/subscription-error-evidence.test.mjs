@@ -15,7 +15,7 @@ function fixture(t){
   const sqlite=new DatabaseSync(':memory:');t.after(()=>sqlite.close());
   const migration=name=>sqlite.exec(readFileSync(new URL('../../client-observability/migrations/'+name,import.meta.url),'utf8'));
   migration('0001_create_client_errors.sql');
-  const DB={prepare(sql){return{bind(...values){return{async run(){sqlite.prepare(sql).run(...values);return{success:true,meta:{}};}};}};}};
+  const DB={prepare(sql){return{bind(...values){return{async run(){const result=sqlite.prepare(sql).run(...values);return{success:true,meta:{changes:Number(result.changes)}};}};}};}};
   return{sqlite,DB,migrate:()=>migration('0002_add_subscription_error_evidence.sql')};
 }
 

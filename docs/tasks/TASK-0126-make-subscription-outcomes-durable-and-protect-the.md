@@ -4,12 +4,14 @@ title: Make subscription outcomes durable and protect the diagnostic endpoint
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.844Z'
-updated_at: '2026-10-29T23:34:32.779008+00:00'
+updated_at: '2026-10-29T23:53:40.515329+00:00'
 type: task
 ---
 P1 remaining operations. Shared confirmation admission, bounded provider retries and the private accepted/failed/unknown attempt ledger are implemented; sending is awaited before the response. Campaign delivery_logs remains separate. The authorized live test linked a server attempt ID to one accepted send and activation, with Gmail Spam placement tracked in TASK-0145. This task still owns configuration-failure review/alerts and general diagnostic-ingestion protection: actual-byte limits instead of trusting Content-Length, server sanitization, a deliberate origin policy, bounded rate/event admission, and an honest persistence acknowledgement. Reuse local failure captures and test the fixes without repeating production scans. Keep shared-D1 quota failures distinct from verifier configuration failures; one does not establish the other's cause.
 
 ## Investigation checkpoint
+
+**October 29 acknowledgment repair:** [Research 21](../../packages/blog/drafts/research/newsletter-reliability/21-truthful-error-report-acknowledgments.md) implements confirmation-before-204 and unconfirmed 503 while preserving handled disconnect completion. Fetch requires exact 204 and reports queue/server/disabled states without retries. Seven native write conditions and fifteen transport conditions per version pass; four old no-insert 204 fixtures become unconfirmed 503. An injected post-commit failure remains unconfirmed rather than assumed lost. All 144 site tests/types/validation/isolated build pass. Production activation and live success acceptance remain separate; other admission/configuration/alerting requirements stay open.
 
 **October 29 direct-ingestion acceptance:** [Research 20](../../packages/blog/drafts/research/newsletter-reliability/20-production-diagnostic-readback-and-cleanup.md) verifies one controlled record independently of its 204 response, then removes it with an exact guard and confirms absence. The endpoint still acknowledges before its background write completes and the fallback fetch ignores rejected HTTP responses. Next: native delayed/failed persistence and non-2xx controls, followed by truthful confirmation semantics without automatic retries or duplicate reports. Other admission/configuration/alerting requirements remain open.
 
