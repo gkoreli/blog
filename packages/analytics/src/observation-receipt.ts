@@ -2,8 +2,9 @@ import type { PageObservation } from './db.js';
 import type { ClassificationEvidence } from './classification-evidence.js';
 import type { VerificationEvidence } from './signature-evidence.js';
 import { publicSignerName, SIGNER_DISPLAY_PROFILE, type PublicSignerName } from './signers.js';
+import { vendorIpReceipt } from './vendor-ip-receipt.js';
 
-type ReceiptInput = Pick<PageObservation, 'readerKind' | 'signatureStatus' | 'signatureAgent'> & {
+type ReceiptInput = Pick<PageObservation, 'readerKind' | 'signatureStatus' | 'signatureAgent' | 'vendorIpEvidence'> & {
   classificationEvidence: ClassificationEvidence;
   signatureEvidence: VerificationEvidence;
 };
@@ -27,9 +28,10 @@ export function storedObservationReceipt(observation: ReceiptInput) {
   return {
     // One retained export omitted nulls/empty arrays from the same v1 operations. Scalars
     // make those states queryable without reconstructing missing fields.
-    version: '2026-10-28.2' as const,
+    version: '2026-10-29.1' as const,
     classifierProfile: classification.classifierProfile,
     readerKind: observation.readerKind,
+    vendorNetwork: vendorIpReceipt(observation.vendorIpEvidence),
     directoryPublication: { ...evidence.directoryPublication },
     declarations: {
       status: classification.declarations.status,

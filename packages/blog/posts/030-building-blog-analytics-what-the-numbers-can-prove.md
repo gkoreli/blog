@@ -57,7 +57,7 @@ The repair separates declared roles from [signing evidence](https://github.com/g
 
 One Meta-WebIndexer claim failed during key discovery. [Local controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/65-client-methods-and-directory-failures.md#directory-failures-were-collapsed) showed that several directory failures shared one reason; a synchronous fetch error could also leave a failed lookup cached. We now preserve distinct causes and clear completed lookups. The historical cause remains unknown.
 
-Documented IP lists now cover Applebot, Bingbot and three Amazon clients. Their [source-specific parsers](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/66-documented-feed-adapters-and-meta-ads.md) reject ambiguous markup; list membership still does not authenticate a human.
+Documented lists now cover Applebot, Bingbot and three Amazon clients. [Source-specific parsing](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/66-documented-feed-adapters-and-meta-ads.md) rejects ambiguous markup. [Versioned receipts](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/67-published-address-receipts.md) preserve each address assessment, failure reason and feed snapshot after an acknowledged write. Membership cannot establish a human trigger.
 
 ## Preserve uncertainty in the data
 

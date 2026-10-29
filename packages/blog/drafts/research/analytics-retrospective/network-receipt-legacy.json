@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-10-29T03:10:55.810Z",
+  "method": "Offline re-projection of the two saved research-66 live readbacks/receipts using their exact private text references; no new provider fetch or data query",
+  "legacyReceiptVersion": "2026-10-28.2",
+  "legacyCollectionVersion": "2026-10-29.2",
+  "rows": 2,
+  "identicalProjections": 2,
+  "networkChildSynthesized": false,
+  "newProductionCalls": 0
+}

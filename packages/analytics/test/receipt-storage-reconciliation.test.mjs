@@ -4,6 +4,7 @@ import { reconcileReceiptStorage } from '../../blog/drafts/research/analytics-re
 import { storedObservationReceipt } from '../.test-dist/observation-receipt.js';
 import { verificationEvidence } from '../.test-dist/signature-evidence.js';
 import { analyzeTraffic } from '../.test-dist/classify.js';
+import { networkEvidence } from './fixtures/vendor-network-summary.mjs';
 
 function fixture() {
   const candidates=[],receipts=[];
@@ -16,10 +17,13 @@ function fixture() {
     const row={privateReference:ref,observedAt:'2026-10-27 23:45:54',path:'/same-path',collectionVersion:'2026-10-27.10',classifierVersion:'2026-10-27.5',readerKind:'ai-search',signatureStatus:'verified',signatureAgent:'https://crawler.exa.ai',classificationEvidence:JSON.stringify(c),signatureEvidence:JSON.stringify(e)};
     candidates.push(row);receipts.push({timestamp:'2026-10-27T23:45:55.000Z',$metadata:{id:'record-'+index,type:'cf-worker',requestId:'request-'+index},$workers:{truncated:false},source:{message:'analytics.observation_stored',operationId:'operation-'+index,collectionVersion:row.collectionVersion,storage:{version:'2026-10-27.1',status:'returned',observationId:ref},receipt:storedObservationReceipt({readerKind:row.readerKind,signatureStatus:row.signatureStatus,signatureAgent:row.signatureAgent,classificationEvidence:c,signatureEvidence:e})}});
   }
+  for(const record of receipts){record.source.receipt.version='2026-10-28.2';delete record.source.receipt.vendorNetwork;}
   return {candidates,receipts};
 }
 function resnapshot(row,record) {
+  const version=record.source.receipt.version;
   record.source.receipt=storedObservationReceipt({readerKind:row.readerKind,signatureStatus:row.signatureStatus,signatureAgent:row.signatureAgent,classificationEvidence:JSON.parse(row.classificationEvidence),signatureEvidence:JSON.parse(row.signatureEvidence)});
+  record.source.receipt.version=version;delete record.source.receipt.vendorNetwork;
 }
 test('versioned selection receipts preserve the old projection and compare the new closed counts',()=>{
   const f=fixture(),row=f.candidates[0],record=f.receipts[0],e=JSON.parse(row.signatureEvidence);
@@ -100,5 +104,43 @@ test('new Google display keeps legacy receipt comparisons exact and rejects chan
     if(version==='2026-10-28.2')record.source.receipt.signature.signerDisplayProfile='future';
     else record.source.receipt.signature.signer='Google';
     assert.equal(reconcileReceiptStorage(f.candidates,f.receipts).identicalProjectionPairs,1);
+  }
+});
+
+function currentNetworkFixture(network=networkEvidence('not-listed',{profile:'2026-10-29.1',source:'amazon-search'})) {
+  const f=fixture(),row=f.candidates[0],record=f.receipts[0];
+  row.collectionVersion='2026-10-29.3';record.source.collectionVersion=row.collectionVersion;
+  row.classifierVersion='2026-10-29.1';
+  const c=JSON.parse(row.classificationEvidence),e=JSON.parse(row.signatureEvidence);
+  c.classifierProfile=row.classifierVersion;e.verifierProfile='2026-10-29.1';
+  row.classificationEvidence=JSON.stringify(c);row.signatureEvidence=JSON.stringify(e);
+  row.vendorIpEvidence=network===null?null:JSON.stringify(network);
+  record.source.receipt=storedObservationReceipt({readerKind:row.readerKind,signatureStatus:row.signatureStatus,signatureAgent:row.signatureAgent,classificationEvidence:c,signatureEvidence:e,vendorIpEvidence:network??undefined});
+  return f;
+}
+
+test('current network receipt compares every known stored fact without assigning truth to the declaration',()=>{
+  const f=currentNetworkFixture();
+  assert.equal(reconcileReceiptStorage(f.candidates,f.receipts).identicalProjectionPairs,2);
+  const check=f.receipts[0].source.receipt.vendorNetwork.checks.sources['amazon-search'];
+  check.snapshot.prefixCount++;
+  const changed=reconcileReceiptStorage(f.candidates,f.receipts);
+  assert.equal(changed.identicalProjectionPairs,1);
+  assert.equal(changed.changedFields['vendorNetwork.checks.sources.amazon-search.snapshot.prefixCount'],1);
+  assert.equal(reconcileReceiptStorage(currentNetworkFixture(null).candidates,currentNetworkFixture(null).receipts).identicalProjectionPairs,2);
+});
+
+test('current missing or unsupported network evidence fails closed and never leaks private field names',()=>{
+  for(const mutate of [
+    f=>{delete f.candidates[0].vendorIpEvidence;},
+    f=>{const n=JSON.parse(f.candidates[0].vendorIpEvidence);n.profile='future-private-value';f.candidates[0].vendorIpEvidence=JSON.stringify(n);},
+    f=>{delete f.receipts[0].source.receipt.vendorNetwork;},
+    f=>{f.receipts[0].source.receipt.vendorNetwork['private-field']='private-value';},
+    f=>{f.receipts[0].source.receipt.vendorNetwork.checks.sources['private-field']='private-value';},
+  ]) {
+    const f=currentNetworkFixture();mutate(f);
+    const result=reconcileReceiptStorage(f.candidates,f.receipts);
+    assert.equal(result.identicalProjectionPairs,1);
+    assert.equal(JSON.stringify(result).includes('private-'),false);
   }
 });

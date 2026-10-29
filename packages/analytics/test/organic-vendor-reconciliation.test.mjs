@@ -92,6 +92,13 @@ test('closed replay reports distinguish current stored verdicts from older succe
   assert.deepEqual(current.counts.storedReceiptOutcomes, { verified: 1 });
   assert.deepEqual(current.counts.replayStatus, { absent: 1 });
   assert.equal(current.exactD1Joins, 0);
+  for(const version of ['2026-10-28.2','2026-10-29.1']) {
+    rows[2].source.receipt.version=version;
+    const newer=await analyzeExport(Buffer.from(JSON.stringify(rows)),Buffer.from('{"keys":[]}'));
+    assert.deepEqual(newer.counts.storedReceiptVersions,{[version]:1});
+    assert.deepEqual(newer.counts.storedReceiptOutcomes,{verified:1});
+    assert.equal(newer.exactD1Joins,0,'version recognition adds no field/proof acceptance');
+  }
   rows[2].source.receipt.signature.outcome = 'private-outcome@example.invalid';
   assert.equal(JSON.stringify(await analyzeExport(Buffer.from(JSON.stringify(rows)), Buffer.from('{"keys":[]}'))).includes('private-outcome'), false);
 });

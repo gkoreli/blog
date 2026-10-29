@@ -6,11 +6,12 @@ import { isNativeBotCategory } from '../../../../analytics/.test-dist/native-bot
 import { publicSignerName } from '../../../../analytics/.test-dist/signers.js';
 import { normalizeRetainedReceiptCopies } from './compare-receipt-captures.mjs';
 import { isDeepStrictEqual } from 'node:util';
+import { networkReceiptPaths, recognizedNetworkEvidence } from './network-receipt-fields.mjs';
 
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
-const profiles = new Set(['2026-10-27.6','2026-10-27.7','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','2026-10-28.7','not-applicable']);
-const collections = new Set(['2026-10-27.9','2026-10-27.10','2026-10-27.11','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','2026-10-28.7','2026-10-28.8','2026-10-28.9']);
-const paths = ['version','classifierProfile','readerKind',
+const profiles = new Set(['2026-10-27.6','2026-10-27.7','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','2026-10-28.7','2026-10-29.1','not-applicable']);
+const collections = new Set(['2026-10-27.9','2026-10-27.10','2026-10-27.11','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','2026-10-28.7','2026-10-28.8','2026-10-28.9','2026-10-28.10','2026-10-29.1','2026-10-29.2','2026-10-29.3']);
+const paths = [...networkReceiptPaths,'version','classifierProfile','readerKind',
   ...['profile','method','reviewedOn','configuredDeclarationCount','unmappedDeclarationCount','status'].map(key=>'directoryPublication.'+key),
   ...['status','candidateCount','candidateNames','categoryAgreement'].map(key=>'declarations.'+key),
   ...['evidenceVersion','source','verifierProfile','status','outcome','reason','reasonCount','reasonNames','signer','signerDisplayProfile','documentedVendorStatus','userAgentCovered'].map(key=>'signature.'+key),
@@ -45,6 +46,7 @@ function extraFields(value,prefix='') {
 }
 export function projectStoredReceipt(row,receiptVersion) {
   try {
+    if(!['2026-10-27.3','2026-10-28.1','2026-10-28.2','2026-10-29.1'].includes(receiptVersion))return null;
     const c=JSON.parse(row.classificationEvidence),e=JSON.parse(row.signatureEvidence);
     if(!isReaderKind(row.readerKind)||!['verified','unverified',null].includes(row.signatureStatus)
       ||!object(c)||c.version!=='2026-10-27.2'||c.classifierProfile!==row.classifierVersion
@@ -72,17 +74,21 @@ export function projectStoredReceipt(row,receiptVersion) {
         ||s.taggedCandidates<1||s.attemptedCandidates<1||s.matchedCandidates<s.taggedCandidates||s.taggedCandidates<s.attemptedCandidates
         ||s.unassessedCandidates!==s.taggedCandidates-s.attemptedCandidates)return null;
     }
-    const r=storedObservationReceipt({readerKind:row.readerKind,signatureStatus:row.signatureStatus,signatureAgent:row.signatureAgent,classificationEvidence:c,signatureEvidence:e});
-    if(receiptVersion!=='2026-10-28.2') {
+    const networkVersion=receiptVersion==='2026-10-29.1';
+    const network=networkVersion ? (row.vendorIpEvidence===null ? undefined : JSON.parse(row.vendorIpEvidence)) : undefined;
+    if(networkVersion && network!==undefined && !recognizedNetworkEvidence(network))return null;
+    const r=storedObservationReceipt({readerKind:row.readerKind,signatureStatus:row.signatureStatus,signatureAgent:row.signatureAgent,classificationEvidence:c,signatureEvidence:e,vendorIpEvidence:network});
+    if(!networkVersion) { delete r.vendorNetwork; r.version='2026-10-28.2'; }
+    if(!networkVersion && receiptVersion!=='2026-10-28.2') {
       r.version=e.coverage?.version==='2026-10-28.1'?'2026-10-28.1':'2026-10-27.3';
       delete r.signature.signerDisplayProfile;
       if(r.signature.signer!=='none')r.signature.signer=publicSignerName(row.signatureAgent,'2026-10-27.1');
     }
     const d=r.directoryPublication,s=r.signature,n=r.native,v=r.declarations;
     const reviewedPair=d.profile==='2026-10-27.1'&&d.reviewedOn==='2026-10-27'||d.profile==='2026-10-28.1'&&d.reviewedOn==='2026-10-28';
-    if(extraFields(r)!==0||!['2026-10-27.3','2026-10-28.1','2026-10-28.2'].includes(r.version)||r.classifierProfile!=='2026-10-27.5'
+    if(extraFields(r)!==0||!['2026-10-27.3','2026-10-28.1','2026-10-28.2','2026-10-29.1'].includes(r.version)||!['2026-10-27.5','2026-10-29.1'].includes(r.classifierProfile)
       ||!reviewedPair||d.method!=='reviewed-first-party-directory'
-      ||r.version==='2026-10-28.2'&&s.signerDisplayProfile!=='2026-10-28.1'
+      ||['2026-10-28.2','2026-10-29.1'].includes(r.version)&&s.signerDisplayProfile!=='2026-10-28.1'
       ||!integer(d.configuredDeclarationCount)||!integer(d.unmappedDeclarationCount)
       ||!['no-declaration','not-configured','not-verified','matching-publisher','different-publisher','partial-mapping','conflicting-publishers','test-injected'].includes(d.status)
       ||!['none','single','multiple'].includes(v.status)||!integer(v.candidateCount)
@@ -137,7 +143,7 @@ export function reconcileReceiptStorage(candidates,retainedInput) {
     if(!object(metadata)||metadata.type!=='cf-worker'||!nonempty(metadata.id)||!nonempty(metadata.requestId)
       ||recordIds.get(metadata.id)?.length!==1||!nonempty(source.operationId)||operations.get(source.operationId)?.length!==1
       ||!Number.isFinite(Date.parse(record.timestamp))||record.$workers?.truncated===true||record.$cloudflare?.truncated===true
-      ||!collections.has(row.collectionVersion)||source.collectionVersion!==row.collectionVersion||!['2026-10-27.3','2026-10-28.1','2026-10-28.2'].includes(source.receipt?.version)) {result.invalidPairMetadata++;continue;}
+      ||!collections.has(row.collectionVersion)||source.collectionVersion!==row.collectionVersion||!['2026-10-27.3','2026-10-28.1','2026-10-28.2','2026-10-29.1'].includes(source.receipt?.version)) {result.invalidPairMetadata++;continue;}
     result.matchedReferencePairs++;
     const expected=projectStoredReceipt(row,source.receipt.version);
     if(expected===null){result.unprojectableCandidateRows++;continue;}

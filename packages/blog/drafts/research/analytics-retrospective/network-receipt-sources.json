@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-29T03:11:33.099372+00:00",
+  "collectorCommit": "adbedb4fd801bee1dfc20f06bdaf845239145478",
+  "installedDependency": false,
+  "captures": [
+    {
+      "name": "otel-log-model",
+      "url": "https://opentelemetry.io/docs/specs/otel/logs/data-model/",
+      "finalUrl": "https://opentelemetry.io/docs/specs/otel/logs/data-model/",
+      "status": 200,
+      "bytes": 94736,
+      "sha256": "65d601ea893f05fe148c3286bfc1ce5af922a5db0a4d0e1b9eabedd8d7867dd3"
+    },
+    {
+      "name": "otel-common",
+      "url": "https://opentelemetry.io/docs/specs/otel/common/",
+      "finalUrl": "https://opentelemetry.io/docs/specs/otel/common/",
+      "status": 200,
+      "bytes": 92581,
+      "sha256": "d8810a5e7ca3311de3ed43ca01d8ed6d30fdd0dc92f590bec3fc251f0777a0e3"
+    },
+    {
+      "name": "cloudflare-logs",
+      "url": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
+      "finalUrl": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
+      "status": 200,
+      "bytes": 228572,
+      "sha256": "c79e6c5ef7ec37e98bf8193fd0b17f21e7effac2244682a0c1c93f9bbd373c84"
+    },
+    {
+      "name": "otel-logrecord-source",
+      "url": "https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector/adbedb4fd801bee1dfc20f06bdaf845239145478/pdata/plog/generated_logrecord.go",
+      "finalUrl": "https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector/adbedb4fd801bee1dfc20f06bdaf845239145478/pdata/plog/generated_logrecord.go",
+      "status": 200,
+      "bytes": 5379,
+      "sha256": "e45c072ac9ff7f6ed407e400b5d791ff51edafaaad9dc67690a8311d3f4adaec"
+    }
+  ],
+  "limits": "Documentation and source inspection; no OpenTelemetry dependency added and no exporter behavior inferred as Cloudflare behavior."
+}

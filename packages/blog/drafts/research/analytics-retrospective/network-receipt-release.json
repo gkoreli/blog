@@ -1,0 +1,60 @@
+{
+  "checkedAt": "2026-10-29T03:13:28.629154+00:00",
+  "sourceBaseline": "697c8a7",
+  "sourceCommit": null,
+  "publication": "pending",
+  "collectionVersion": "2026-10-29.3",
+  "receiptVersion": "2026-10-29.1",
+  "classifierVersion": "2026-10-29.1",
+  "verifierProfile": "2026-10-29.1",
+  "vendorIpProfile": "2026-10-29.1",
+  "reportCacheVersion": "2026-10-29.2",
+  "schemaChanged": false,
+  "runtimeDependenciesChanged": false,
+  "historyReclassified": false,
+  "optionalCaptureActivated": false,
+  "checks": {
+    "analyticsTests": 273,
+    "siteTests": 117,
+    "workspaceTypes": "pass",
+    "nativeBeforeAfterPairs": 14,
+    "exactReceiptStoragePairs": 14,
+    "modeledLiveRetainedPairs": 14,
+    "acknowledgementTrials": 29,
+    "acknowledgementReceipts": 24,
+    "archivedLiveLegacyProjections": 2,
+    "postValidation": "pass, 21 Markdown posts",
+    "isolatedBuild": "pass, 32 posts; shared dist untouched"
+  },
+  "article": {
+    "bodyWhitespaceWords": 1358,
+    "prompts": 31,
+    "freshServedCheck": false,
+    "checkedBuildMarkdownSha256": "7e1cf80295e891fbacb047d5457be31573cec8819b207ab52974c10b54a8beff"
+  },
+  "productionStatements": 0,
+  "productionOwnSiteGets": 0,
+  "newHumanLabels": 0,
+  "nativeReceipt": "network-receipt-native.json",
+  "legacyReceipt": "network-receipt-legacy.json",
+  "sourceReceipt": "network-receipt-sources.json",
+  "sourceSha256": {
+    "packages/analytics/src/vendor-ip-receipt.ts": "6cde271132945f1cc86f1ba91bc234d8bc751d8b311835c89cc711551105f9cb",
+    "packages/analytics/src/observation-receipt.ts": "5ea4a5120f74747b756bcfdb81e18f7fafe119d504dd40d1ddd41f981751f598",
+    "packages/analytics/src/versions.ts": "eb163c70d7cf52d9780834750366b2c9f5558bafd65314334cd680f68568b1ac",
+    "packages/analytics/src/index.ts": "c5b8236c174981a1c8821cd557ad8910bed4a37e483400e12308ac760226f8d4",
+    "packages/analytics/src/db.ts": "bfa4692279bd06bc958f063d3bd725243cef76384ec2c482a6453e227aa58955",
+    "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "3c51458d27908a851e629bde089c14f4e8f3f650396052d9484804d6fcd9ed73"
+  },
+  "nextBoundedAction": "Accept source activation and two excluded synthetic production receipts against exact stored rows. Human trials remain deferred; genuine newest-profile signed proof chains and native-provider comparison remain open.",
+  "livePlanSha256": "ef69c9b9b245e460b3bcbee49d5c45c3d6a5470569ba1115377a7994e54f48c6",
+  "privateArchive": {
+    "name": "2026-10-29-published-address-receipt-native",
+    "capturedFiles": 39,
+    "files": 40,
+    "manifestSha256": "b70294888842fcf8b35272d0872f4fe04362c2ad0f41bbffa1f5a89d4166e2f0",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false,
+    "modes": "0700/0600"
+  }
+}

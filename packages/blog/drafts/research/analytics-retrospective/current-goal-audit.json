@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T03:04:39.923678+00:00",
-  "sourceBaseline": "2f202f462cb8a6a37df095f51daa13d1a8e701a8",
+  "checkedAt": "2026-10-29T03:13:28.629154+00:00",
+  "sourceBaseline": "697c8a7",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,21 +45,21 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Add versioned published-address receipt visibility with known historical projection compatibility. Human trials remain deferred.",
+  "nextBoundedAction": "Accept source activation and two excluded synthetic production receipts against exact stored rows. Human trials remain deferred; genuine newest-profile signed proof chains and native-provider comparison remain open.",
   "article": {
-    "bodyWhitespaceWords": 1347,
+    "bodyWhitespaceWords": 1358,
     "prompts": 31,
-    "sourceSha256": "2936fb16691e3c1b0e666a2d8209ed8cbdd2a7c361cad24be6017d659e4524d4",
+    "sourceSha256": "3c51458d27908a851e629bde089c14f4e8f3f650396052d9484804d6fcd9ed73",
     "unchanged": false,
-    "freshServedCheck": true,
-    "publicationReceipt": "documented-feeds-release.json",
-    "servedMatchesCheckedBuild": true
+    "freshServedCheck": false,
+    "publicationReceipt": "network-receipt-release.json",
+    "servedMatchesCheckedBuild": false
   },
   "runtimeUnchanged": false,
-  "productionStatements": 1,
-  "newVisits": 2,
+  "productionStatements": 0,
+  "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": true,
+  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -88,8 +88,8 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the documented-feed slice. Current exact Worker optional capture bindings absent, independently checked in documented-feeds-release.json."
   },
-  "productionOwnSiteGets": 3,
-  "collectionEligibleGets": 2,
+  "productionOwnSiteGets": 0,
+  "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
     "receipt": "retained-delta-production.json",
@@ -162,11 +162,20 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 4,
+  "productionReportedReads": 0,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
-    "acknowledgedApplicationRows": 2,
-    "providerWriteMetering": "not returned; additional to diagnostic meter"
+    "acknowledgedApplicationRows": 0,
+    "providerWriteMetering": "no production control in this iteration"
   },
-  "newVisitsScope": "Two synthetic HTTP integration controls, referral-excluded; not genuine vendor requests or human trials and not added to the twelve-trial calibration cohort."
+  "newVisitsScope": "No production controls yet in the network-receipt iteration; previous recorded cohorts remain separate.",
+  "networkReceipt": {
+    "releaseReceipt": "network-receipt-release.json",
+    "receiptVersion": "2026-10-29.1",
+    "localAccepted": true,
+    "productionActivation": "pending",
+    "nativeBeforeAfterPairs": 14,
+    "archivedLiveLegacyProjections": 2,
+    "independentTruthMeasured": false
+  }
 }
