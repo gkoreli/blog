@@ -12,7 +12,7 @@ This is new work after the original article and Polkadot CLI experiment. Preserv
 - [x] Provide a small dependency-free test with exact commands; run its fresh setup and correctness checks and retain measured observations.
 - [x] Check the current Bun artifact, rerun the pinned Zod workload with default/jitless controls, search existing maintainer evidence, and prepare a minimal example/report if the slowdown persists. No duplicate report or unrequested posting.
 - [x] Research a few further adoption approaches from first-hand evidence, distinguish established practice from an untested experiment, and prepare concrete next actions beyond the newsletters/posts already done.
-- [ ] Validate, deliver scoped changes to main, verify public evidence and leave a concise handoff.
+- [x] Validate, deliver scoped changes to main, verify public evidence and leave a concise handoff.
 
 ## Existing evidence
 
@@ -35,4 +35,13 @@ The original and October 28 compiler binaries, fixtures and private results stil
 - [Adoption](../../social/oss-radar-08-bun-aot/adoption-next.md): helper-first practice and a first-party publishing workflow, then five specific next actions with exact drafts and outcome limits. The fixed-input benchmark adapter matches `RESULT 562757611` under Node, Bun source and Bun AOT; the external suite and Linux CI have not run it.
 - Goga's requested article context was restored in the maintainer draft and delivered in `7630785` before the broader experiment. The draft now also includes the newly found slow crypto path and its fix; it remains unposted.
 
-The original article, original accepted measurements and frozen research accounting remain unchanged. No new public post, email, comment, PR, paid placement or monitoring automation has been created. Next action: verify links, statistics, manifests and scoped delivery, then check public evidence URLs.
+The original article, original accepted measurements and frozen research accounting remain unchanged. No new public post, email, comment, PR, paid placement or monitoring automation has been created. The scoped changes are delivered; see the receipt below.
+
+
+## Delivery and completion
+
+Delivered in [`5e6355a`](https://github.com/gkoreli/blog/commit/5e6355a), pushed directly to main. The 48-file commit contains only these requested follow-ups and links/status in their existing worklists. Unrelated macOS-worktree drafts remained unstaged and untouched.
+
+Acceptance: all new medians, observation counts, balanced run positions, proof/output checks, source hashes and old/new manifests verified. Local links, code fences, Python syntax, TypeScript runtime outputs, the fixed adapter's AOT build and scoped diff passed. Public GETs for the optimization report, maintainer draft, quickstart guide/source/runner, Zod guide and adoption plan matched the committed bytes. The video URL returned successfully to a public HEAD request. [Selected public verification receipt](delivery-receipt.json). The local encoded video was already decoded and visually checked; a public URL is not proof of social playback or readership.
+
+All requested preparation and experiments are complete. No site post or production behavior changed, so there is no new deployment acceptance claim. No new post, email, upstream issue/comment/PR or monitor was created. The next optional action is to use the exact prepared maintainer/peer messages or choose a social draft; publication and any future two-CLI commitment remain separate decisions. Compatibility beyond the bounded tested cases and adoption outcomes are unmeasured, not promised.

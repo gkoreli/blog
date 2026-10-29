@@ -1,0 +1,45 @@
+{
+  "commit": "5e6355a59040da21634e26c99f56d4771cfc58d4",
+  "files": [
+    {
+      "path": "packages/blog/drafts/research/polkadot-bun-aot/03-optimization-experiments.md",
+      "public_get": "passed",
+      "sha256": "8901325675be5ee684024a0756bdec33cb9e3331275123c815cd8fbd4a4013ba"
+    },
+    {
+      "path": "packages/blog/drafts/research/polkadot-bun-aot/02-maintainer-draft.md",
+      "public_get": "passed",
+      "sha256": "4963fd287d418c7433e84eb4789be029a3638ff8d21209f9680b943ea52ddfd6"
+    },
+    {
+      "path": "packages/blog/drafts/research/bun-aot-followups/quickstart/README.md",
+      "public_get": "passed",
+      "sha256": "71d90c8d4e3c939ae99068b5a51079ce8c009f2a8b66ce3e2eb9248e49b47d54"
+    },
+    {
+      "path": "packages/blog/drafts/research/bun-aot-followups/quickstart/example.ts",
+      "public_get": "passed",
+      "sha256": "bb6b11c7df1a468b3e8db87efb2344f2cdfbe5632d6f3c6cd949bb6d66e5abb6"
+    },
+    {
+      "path": "packages/blog/drafts/research/bun-aot-followups/quickstart/compare.py",
+      "public_get": "passed",
+      "sha256": "ddfc9cdcb06554339d53afb77eed516d7cc1214b8172bb7d2537c5b59414b431"
+    },
+    {
+      "path": "packages/blog/drafts/research/bun-aot-followups/zod-repro/README.md",
+      "public_get": "passed",
+      "sha256": "31f1cab40c9258b8c4008dfe856e905a298054369ddcbe9edc94bb2380deaacc"
+    },
+    {
+      "path": "packages/blog/drafts/social/oss-radar-08-bun-aot/adoption-next.md",
+      "public_get": "passed",
+      "sha256": "0520376cf143005a074c8d36559ab437b6f8a0088eb247f125faf7a0f64150da"
+    },
+    {
+      "path": "packages/blog/drafts/social/oss-radar-08-bun-aot/demo-30s.mp4",
+      "public_head": "passed",
+      "limit": "No social upload or live playback check."
+    }
+  ]
+}
