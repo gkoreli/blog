@@ -1,0 +1,125 @@
+{
+  "checkedAt": "2026-10-29T17:37:35.329492+00:00",
+  "sourceBaseline": "16c8bd8",
+  "nativeSelector": {
+    "checkedAt": "2026-10-29T17:24:06.769Z",
+    "plan": {
+      "maximumScopeRows": 2048,
+      "maximumSelectedRows": 2,
+      "maximumStatements": 1,
+      "attemptsPerStatement": 1,
+      "postExecutionReadReviewThreshold": 10000,
+      "databaseEnforcedReadCap": false
+    },
+    "fixtureRows": 383,
+    "selected": 2,
+    "reads": 1156,
+    "writes": 0,
+    "checks": {
+      "exactLargeIds": true,
+      "concreteMatchesParameterized": true,
+      "rangeBoundaries": true,
+      "nullsPreserved": true,
+      "ownerPreserved": true,
+      "contradictoryClaimsPreserved": true,
+      "emptyOrTruncatedOrDuplicateOrUnsafeResultsRejected": true,
+      "indexedPrimaryKeyRange": true
+    },
+    "queryPlan": [
+      "MATERIALIZE selected",
+      "MATERIALIZE bounded",
+      "SEARCH page_observations USING INTEGER PRIMARY KEY (rowid>? AND rowid<?)",
+      "SCAN bounded",
+      "SCAN selected",
+      "SCALAR SUBQUERY 3",
+      "SCAN bounded",
+      "SCALAR SUBQUERY 4",
+      "SCAN selected",
+      "USE TEMP B-TREE FOR ORDER BY"
+    ],
+    "templateSha256": "721342e0325f729268bf18fc1beb43443011e6d73629cf49aab147d58b767e62",
+    "sourceSha256": "752abaa6068693f48e9bf8c2d609d461a44d4655062d1a8cab0b735204bb4db1",
+    "productionCalls": 0
+  },
+  "exactReconciliationNegativeControls": {
+    "checkedAt": "2026-10-29T17:32:11.229085+00:00",
+    "cases": [
+      {
+        "condition": "wrong-storage-reference",
+        "rejectedBeforeReplayInput": true
+      },
+      {
+        "condition": "changed-receipt-reason",
+        "rejectedBeforeReplayInput": true
+      },
+      {
+        "condition": "missing-attempt",
+        "rejectedBeforeReplayInput": true
+      },
+      {
+        "condition": "changed-request-path",
+        "rejectedBeforeReplayInput": true
+      }
+    ],
+    "productionRequests": 0
+  },
+  "traceNegativeControls": [
+    {
+      "condition": "trace-mismatch",
+      "rejected": true
+    },
+    {
+      "condition": "wrong-parent",
+      "rejected": true
+    },
+    {
+      "condition": "wrong-worker",
+      "rejected": true
+    },
+    {
+      "condition": "duration-mismatch",
+      "rejected": true
+    },
+    {
+      "condition": "duplicate-record",
+      "rejected": true
+    },
+    {
+      "condition": "missing-directory-span",
+      "rejected": true
+    }
+  ],
+  "independentReferenceContexts": 6,
+  "nativeReplayContexts": 6,
+  "productionQueryAttempts": 1,
+  "productionReadMeter": 1156,
+  "productionDiagnosticWrites": 0,
+  "localUnsuccessfulAttempts": [
+    "Native workerd loopback denied by sandbox; passed after approved local execution.",
+    "Initial referrer-path assumptions rejected: this retained referrer uses HTTP and the same root pathname. The path experiment was skipped rather than replaced by guessed URLs.",
+    "Archive Exa directory path corrected to its private/ prefix before replay input was emitted.",
+    "Date filter temporarily disabled Apply until end-date blur committed; no production data query was repeated.",
+    "Trace duration equality rejected DuckDuckBot: 54 reported ms versus 55 ms endpoint difference. Validation now reconciles exact nanosecond strings: 54,999,999 ns."
+  ],
+  "runtimeUnchanged": true,
+  "newHumanTrials": 0,
+  "ownSiteVisits": 0,
+  "articleUnchanged": true,
+  "fullGoalAchieved": false,
+  "syntaxFilesPassed": 4,
+  "markdownValidation": "pass",
+  "localLinks": "pass",
+  "privateFieldAndReferenceScan": "pass",
+  "frozenSqlAndSelectorHashesRechecked": true,
+  "articleSha256": "efb458c18aa509537f1faf077b404695b8d4e06b21fc769b471b7ee64fd9feaf",
+  "articleWords": 1375,
+  "prompts": 31,
+  "privateDataArchive": {
+    "files": 92,
+    "manifestSha256": "598511d096aa615ddf8c767fda96098f80a902b337d0ff5b11763ccfff69229a",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "checkedAt": "2026-10-29T17:37:35.329492+00:00",
+  "sources": [
+    {
+      "url": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
+      "capturedAt": "2026-10-29T17:34:25.052375+00:00",
+      "exitCode": 0,
+      "readerTelemetryForwarded": false,
+      "bytes": 228572,
+      "sha256": "c07067714c66c170c02fae556393c63ff513d1c32e666b8ddf2dd01b026d0738"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/observability/traces/",
+      "capturedAt": "2026-10-29T17:34:25.148696+00:00",
+      "exitCode": 0,
+      "readerTelemetryForwarded": false,
+      "bytes": 198383,
+      "sha256": "5bece943d98a41b476e6778f2dea293b57381194a9e1aefa69cda6ea5951def5"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/observability/traces/custom-spans/",
+      "capturedAt": "2026-10-29T17:34:25.237465+00:00",
+      "exitCode": 0,
+      "readerTelemetryForwarded": false,
+      "bytes": 314613,
+      "sha256": "876d426ac8843fa473777c2e561aca9b2fce3b554f1cbabde99fa5e9b646dc4a"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/",
+      "capturedAt": "2026-10-29T17:34:25.337151+00:00",
+      "exitCode": 0,
+      "readerTelemetryForwarded": false,
+      "bytes": 274046,
+      "sha256": "e003ad4215b8aba96bfc2e695b6fbeef59f11a1990c9e6d280628d618c39e8e0"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/observability/traces/known-limitations/",
+      "capturedAt": "2026-10-29T17:34:25.830295+00:00",
+      "exitCode": 0,
+      "readerTelemetryForwarded": false,
+      "bytes": 182535,
+      "sha256": "15a000b31883a4798448518eaaf1535c527737afc4579fa7ee1c88aed1813dd4"
+    },
+    {
+      "url": "https://crawler.exa.ai/",
+      "capturedAt": "2026-10-29T17:34:25.961809+00:00",
+      "exitCode": 0,
+      "readerTelemetryForwarded": false,
+      "bytes": 7108,
+      "sha256": "509df05b8dd9217156e197eaa580d66bd2bbdebebf8703e082242a04e370c7f3"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9421.html",
+      "capturedAt": "2026-10-29T17:34:26.163115+00:00",
+      "exitCode": 0,
+      "readerTelemetryForwarded": false,
+      "bytes": 458725,
+      "sha256": "ec369a24b754be7de55e19c708fa977c1665253b0ba33a4922665b7a946c3720"
+    }
+  ],
+  "pinnedReference": {
+    "repository": "https://github.com/pyauth/http-message-signatures",
+    "commit": "1de433d9a49fd608475c6054ab14a1652c088844",
+    "sourceFilesRechecked": 18,
+    "sourceManifest": "complete-audit-sources.json",
+    "freshLocalCodeReview": [
+      "http_message_signatures/signatures.py:508-625",
+      "http_message_signatures/resolvers.py:196-227"
+    ],
+    "learned": "Keep key resolution, covered-component derivation, freshness and required coverage distinct. This six-context agreement is not a general interoperability result.",
+    "freshWebRead": "Two pinned GitHub page requests failed with cache misses; authoritative local source mirror was read and its eighteen files hash-checked before execution."
+  },
+  "crossReferences": [
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc9421.html#section-1.3",
+      "application": "Changed covered values can break signatures; a retained-context failure does not independently prove original-wire invalidity."
+    },
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc9421.html#section-3.2.1",
+      "application": "Application admission and required coverage remain separate from successful cryptographic verification."
+    },
+    {
+      "source": "https://developers.cloudflare.com/workers/observability/traces/",
+      "application": "Use exact trace links to recover built-in outbound-fetch and D1 spans before adding instrumentation."
+    },
+    {
+      "source": "https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/",
+      "application": "Check parent/Worker linkage and recorded timing attributes; absent response code and unset status remain explicit."
+    },
+    {
+      "source": "https://developers.cloudflare.com/workers/observability/traces/known-limitations/",
+      "application": "Do not infer crypto CPU time from zero non-I/O durations; field names/attributes and trace completeness have limits."
+    },
+    {
+      "source": "https://crawler.exa.ai/",
+      "application": "Vendor signing and automatic-edge-validation claims do not establish the outcome of this particular local key-directory retrieval."
+    }
+  ],
+  "collectorSource": {
+    "currentSha256": "c5b8236c174981a1c8821cd557ad8910bed4a37e483400e12308ac760226f8d4",
+    "unchangedFromCommit": "05d957c6d8e207b89184383f27cdae3f1b96252c",
+    "historicalSha256": "c5b8236c174981a1c8821cd557ad8910bed4a37e483400e12308ac760226f8d4",
+    "configuredDeadlineMs": 2000,
+    "deployedBinaryAttestation": false
+  },
+  "directoryCaptures": [
+    {
+      "origin": "https://bot.duckduckgo.com",
+      "capturedAt": "2026-10-29T15:24:37.153358+00:00",
+      "relationToRequest": "later public key capture; original response body not recovered",
+      "sha256": "671d10f3fc69e03de28b820333e9d20390c63bcb14c4c82ebc4cc5addd8de84d"
+    },
+    {
+      "origin": "https://crawler.exa.ai",
+      "capturedAt": "2026-10-29T05:08:08.680529+00:00",
+      "relationToRequest": "earlier public key capture on same UTC date; original resolver state not recovered",
+      "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52"
+    }
+  ],
+  "documentationFailure": {
+    "url": "https://developers.exa.ai/reference/crawling-subpages-with-exa-api",
+    "result": "inaccessible in web tool; no claim derived from that page"
+  }
+}

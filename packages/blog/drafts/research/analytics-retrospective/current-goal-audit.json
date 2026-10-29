@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T17:14:07.745909+00:00",
-  "sourceBaseline": "e405f55",
+  "checkedAt": "2026-10-29T17:39:03.960953+00:00",
+  "sourceBaseline": "16c8bd8",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -44,7 +44,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Native-test an indexed selector for the one DuckDuckBot signature-invalid and one ExaSearchBot verification-timeout record in the frozen 383-row range, then recover their exact retained receipt/request contexts. Keep listed-address, cryptographic validity and human purpose separate. Human trials remain deferred.",
+  "nextBoundedAction": "Native-test the existing report JSON function-argument contract and an equivalent bounded builder, preserving explicit nulls and measuring query cost before adoption. Reuse exact trace links for verification failures. Human trials and owner-browser verification remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1375,
     "prompts": 31,
@@ -54,12 +54,12 @@
     "publicationReceipt": "parallel-methods-release.json",
     "servedMatchesCheckedBuild": true,
     "lastServedCheckReceipt": "parallel-methods-release.json",
-    "publicationStatus": "Article unchanged at 1375 words/31 prompts in phase 85; no new build/served check for diagnostic/evidence-only changes. Prior served acceptance remains dated.",
+    "publicationStatus": "Article unchanged at 1375 words/31 prompts in phase 86; no new publication acceptance for diagnostic/evidence-only work. Prior served acceptance remains dated.",
     "previousPublicationReceipt": "parallel-declarations-release.json",
     "servedMatchScope": "Fresh exact Markdown only; prior full article HTML acceptance remains dated in parallel-declarations-release.json."
   },
   "runtimeUnchanged": true,
-  "productionStatements": 4,
+  "productionStatements": 1,
   "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
@@ -378,7 +378,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Fresh Worker allocation/version binding and D1 metadata; four frozen new-ID aggregate SELECTs. No UI or configuration change.",
+  "liveAccountInspectionScope": "Fresh CLI allocation/D1 metadata, one frozen-range SELECT, exact receipt/request/trace browser exports; no configuration changes.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -557,5 +557,35 @@
     "originalWireOrHumanTruthEstablished": false,
     "wholeTableCountRefreshed": false,
     "observationSourceDistributionMeasured": false
+  },
+  "linkedFailureRecovery": {
+    "research": "86-linked-failures-and-directory-fetch-traces.md",
+    "production": "linked-failures-production.json",
+    "replay": "linked-failures-replay.json",
+    "reference": "linked-failures-reference.json",
+    "sources": "linked-failures-sources.json",
+    "checks": "linked-failures-checks.json",
+    "frozenScopeRows": 383,
+    "selectedRecords": 2,
+    "identicalStoredProjectionPairs": 2,
+    "matchingSeparateQueryReceiptCopies": 2,
+    "recordedCollector": "2026-10-29.3",
+    "recordedVerifier": "2026-10-29.1",
+    "nodeWorkerdContexts": 6,
+    "independentRfcContexts": 6,
+    "exactTraceRecords": 17,
+    "exaDirectoryFetchMs": 2000,
+    "exaTransportCauseEstablished": false,
+    "exaCapturedContextVerifiedOffline": true,
+    "duckCapturedContextSignatureInvalid": true,
+    "duckStoredFeedListed": true,
+    "nativeManagedAgreementMeasured": false,
+    "originalWireValidityEstablished": false,
+    "newHumanLabels": 0,
+    "reportedReads": 1156,
+    "reportedWrites": 0,
+    "statements": 1,
+    "runtimeChanged": false,
+    "articleChanged": false
   }
 }

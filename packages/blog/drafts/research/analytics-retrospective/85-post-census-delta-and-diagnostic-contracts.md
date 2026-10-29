@@ -82,3 +82,6 @@ The 500,000-read review threshold is not server-enforced. [D1 pricing](https://d
 No site visit, public report fill, human label, raw-capture activation, runtime change or old-row mutation occurs. The article stays at 1,375 words/31 prompts; no new build/served check is needed for diagnostic/evidence-only changes. Private IDs, plans, raw responses, metadata and captures remain outside Git; October 31 is a review date, not automatic erasure.
 
 Next: native-test an indexed selector for the DuckDuckBot invalid and Exa timeout records, then recover their exact retained receipt/request contexts before interpreting either failure. Missing-mode Firefox claims, the report argument contract, original-wire fidelity, native agreement, R1 attribution and human/device accuracy remain open. The full goal stays active; human trials remain deferred.
+
+
+The exact two-record recovery and trace follow-up is recorded in [Research 86](86-linked-failures-and-directory-fetch-traces.md); its evidence supersedes the aggregate-only recovery limits above without changing this census.

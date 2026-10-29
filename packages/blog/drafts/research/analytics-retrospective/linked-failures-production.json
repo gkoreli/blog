@@ -1,0 +1,177 @@
+{
+  "checkedAt": "2026-10-29T17:37:35.329492+00:00",
+  "sourceBaseline": "16c8bd8",
+  "scope": "Two selected unverified claims in the same frozen 383-row range from Research 85; no new population census.",
+  "scopeRows": 383,
+  "selected": 2,
+  "singleAttemptStatements": 1,
+  "rowsRead": 1156,
+  "rowsWritten": 0,
+  "nativeQueryReads": 1156,
+  "plan": {
+    "maximumScopeRows": 2048,
+    "maximumSelectedRows": 2,
+    "maximumStatements": 1,
+    "attemptsPerStatement": 1,
+    "postExecutionReadReviewThreshold": 10000,
+    "databaseEnforcedReadCap": false
+  },
+  "planArchive": {
+    "files": 11,
+    "manifestSha256": "18779b94041d2f05e593881b09c3db1c8061eede44bb91275ccc031b06e58dc9"
+  },
+  "reconciliation": {
+    "checkedAt": "2026-10-29T17:30:26.755Z",
+    "sourceBaseline": "16c8bd8",
+    "scriptSha256": "8a4f0f9e5718c9d29bc5a74b02a7e5bb2943e29064f0a125ff4f96d6ac9fbb45",
+    "storedRowsSha256": "1f6c4ebd177f7789ae05d9393446a2c396b588f1b088acfe5e63f997735b5eb1",
+    "inputSha256": "4561de64ed16ca05ce85a015a3246a4ca719fc22649d34a23f79b9779aa2d65f",
+    "contexts": 6,
+    "observations": 2,
+    "summaries": [
+      {
+        "declaration": "DuckDuckBot",
+        "chainRecords": 4,
+        "identicalStoredProjectionPairs": 1,
+        "matchingSeparateQueryReceiptCopies": 1,
+        "storedReason": "signature-invalid",
+        "recordedClockSource": "D1 observed_at, second precision",
+        "invocationWallTimeMs": 402,
+        "collector": "2026-10-29.3",
+        "verifier": "2026-10-29.1",
+        "originalWireValidity": "not-established",
+        "originalDirectoryState": "not-established",
+        "inputCommitments": {
+          "chain": "a6794fb73dc5528f2cbd8b7ea1c5340418e2a14c6369efa32417f58a88f43993",
+          "receiptCopy": "7c308b604f50baeaa516cc4e9770e4c64ce10d22072472e8791893e2cd8dcf03",
+          "directory": "671d10f3fc69e03de28b820333e9d20390c63bcb14c4c82ebc4cc5addd8de84d",
+          "archiveManifest": "5228bcc1aa4c02259ab065b0794c0185bf7d2c07b949848ecde173dd3c033810"
+        }
+      },
+      {
+        "declaration": "ExaSearchBot",
+        "chainRecords": 4,
+        "identicalStoredProjectionPairs": 1,
+        "matchingSeparateQueryReceiptCopies": 1,
+        "storedReason": "verification-timeout",
+        "recordedClockSource": "D1 observed_at, second precision",
+        "invocationWallTimeMs": 2233,
+        "collector": "2026-10-29.3",
+        "verifier": "2026-10-29.1",
+        "originalWireValidity": "not-established",
+        "originalDirectoryState": "not-established",
+        "inputCommitments": {
+          "chain": "21d431ff7ec1a10d41bbd3ac1bbaff349ba7cf7dbc6e758f5ee116bde99408f7",
+          "receiptCopy": "84b5cb34d5970b69d16e097136f773e26fd0cee303ac5de2e01e2ebb13914803",
+          "directory": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+          "archiveManifest": "c0a13e20250d5d04d727a72d1adb33197de4b1120fb71badcccf9f32902ac9da"
+        }
+      }
+    ],
+    "referrerPathExperiment": "skipped-identical-path",
+    "counterfactualPolicy": "Only a different same-hostname retained referrer pathname may be substituted, offline. Its HTTP scheme differs from the HTTPS destination. An identical path is skipped. No URL search, acceptance fallback or causal attribution.",
+    "newOwnSiteRequests": 0,
+    "newHumanLabels": 0
+  },
+  "trace": {
+    "checkedAt": "2026-10-29T17:35:56.116Z",
+    "sourceBaseline": "16c8bd8",
+    "scriptSha256": "b2677b9025514d699dd28ff4f9dcca6100fac680a1e8684455ff4a395d63514f",
+    "chainSha256": "21d431ff7ec1a10d41bbd3ac1bbaff349ba7cf7dbc6e758f5ee116bde99408f7",
+    "traceSha256": "0f56343ae5d53868c4ccfa947e1eca270e60af6cf588822b007a4a6344c0b1a5",
+    "accepted": {
+      "exportedTraceRecords": 8,
+      "selectedSpans": 5,
+      "uniqueRecordIds": true,
+      "exactReceiptCopy": true,
+      "traceAndParentAndWorkerLinks": true,
+      "directoryFetchMs": 2000,
+      "directoryEndpointDifferenceMs": 2000,
+      "directoryNanosecondDifference": "2000000000",
+      "directoryFetchStartsAtAttempt": true,
+      "directoryFetchEndsAtWriteStart": true,
+      "recordedHttpResponseCode": null,
+      "directorySpanStatus": "unset",
+      "followingD1SpanMs": 144,
+      "rootSpanMs": 2275,
+      "invocationWallTimeMs": 2233,
+      "interpretation": "The retained key-directory fetch spans the configured verification deadline and precedes persistence. The wait is located at directory retrieval; transport or remote-service cause remains unknown.",
+      "nativeManagedSignatureVerdict": "unavailable",
+      "originalWireValidity": "not-established"
+    },
+    "duck": {
+      "exportedTraceRecords": 9,
+      "selectedSpans": 6,
+      "uniqueRecordIds": true,
+      "exactReceiptCopy": true,
+      "traceAndParentAndWorkerLinks": true,
+      "directoryFetchMs": 54,
+      "directoryEndpointDifferenceMs": 55,
+      "directoryNanosecondDifference": "54999999",
+      "directoryFetchStartsAtAttempt": false,
+      "directoryFetchEndsAtWriteStart": true,
+      "recordedHttpResponseCode": 200,
+      "directorySpanStatus": "unset",
+      "followingD1SpanMs": 268,
+      "rootSpanMs": 430,
+      "invocationWallTimeMs": 402,
+      "interpretation": "The retained key-directory fetch records HTTP 200 within the deadline, followed by a stored signature-invalid outcome. The original response body and cryptographic-failure cause remain unknown.",
+      "nativeManagedSignatureVerdict": "unavailable",
+      "originalWireValidity": "not-established",
+      "chainSha256": "a6794fb73dc5528f2cbd8b7ea1c5340418e2a14c6369efa32417f58a88f43993",
+      "traceSha256": "a4fd4454c1fbbf8cabbe7d4b00f95445b3c85bd2317a180beb83c57a78d66fdb"
+    },
+    "negativeControls": [
+      {
+        "condition": "trace-mismatch",
+        "rejected": true
+      },
+      {
+        "condition": "wrong-parent",
+        "rejected": true
+      },
+      {
+        "condition": "wrong-worker",
+        "rejected": true
+      },
+      {
+        "condition": "duration-mismatch",
+        "rejected": true
+      },
+      {
+        "condition": "duplicate-record",
+        "rejected": true
+      },
+      {
+        "condition": "missing-directory-span",
+        "rejected": true
+      }
+    ],
+    "collectorSourceSha256": "c5b8236c174981a1c8821cd557ad8910bed4a37e483400e12308ac760226f8d4",
+    "configuredDeadlineMs": 2000,
+    "limits": [
+      "Exact retained trace, not a claim of complete tracing or independent wire capture.",
+      "No HTTP response code in the export does not establish absence of an original response.",
+      "Span status unset is not success. Root-span duration and invocation wall time differ; no cause or equivalence is inferred.",
+      "The successful offline replay does not replace the original timeout outcome."
+    ],
+    "newOwnSiteRequests": 0,
+    "d1Statements": 0,
+    "humanLabels": 0
+  },
+  "overlapWithPreviouslySelectedDuckContexts": {
+    "duckEarlierReferenceMatches": 0,
+    "equalRetainedRequestContext": false,
+    "exactD1LinkNewlyEstablishedInThisIteration": true
+  },
+  "humanLabels": 0,
+  "ownSiteRequests": 0,
+  "collectorRuntimeChanged": false,
+  "articleChanged": false,
+  "interpretationLimits": [
+    "Stored historical outcomes are preserved; later replay does not reclassify them.",
+    "Two recovered contexts do not measure failure prevalence or human accuracy.",
+    "Separate receipt/request/trace exports share Cloudflare retained storage; no independent original-wire capture.",
+    "Provider-log query and natural collection costs are additional and not attributed to this SELECT."
+  ]
+}
