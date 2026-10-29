@@ -19,7 +19,8 @@
     "./webbotauth-audit": "./src/webbotauth-audit.ts",
     "./webbotauth-reuse-audit": "./src/webbotauth-reuse-audit.ts",
     "./forwarded-purpose": "./src/forwarded-purpose.ts",
-    "./retained-signature-audit": "./src/retained-signature-audit.ts"
+    "./retained-signature-audit": "./src/retained-signature-audit.ts",
+    "./native-bot-comparison": "./src/native-bot-comparison.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",

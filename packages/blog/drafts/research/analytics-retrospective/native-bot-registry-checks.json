@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-29T05:53:03.330540+00:00",
+  "sourceBaseline": "3c3e9aa850954cc1f89bdcf58520a6d488d3b974",
+  "analyticsTests": 285,
+  "targetedTests": 17,
+  "workspaceTypes": "pass",
+  "nativeContextsPerRuntime": 64,
+  "syntheticCases": 12,
+  "archivedRows": 52,
+  "productionD1Statements": 0,
+  "ownSiteRequests": 0,
+  "humanLabels": 0,
+  "runtimeCollectionAdoption": false,
+  "workerGraphInputs": 151,
+  "articleChanged": false,
+  "negativeGates": [
+    {
+      "name": "changed-readback",
+      "rejected": true,
+      "acceptedOutputWritten": false
+    },
+    {
+      "name": "changed-archive-manifest",
+      "rejected": true,
+      "acceptedOutputWritten": false
+    }
+  ],
+  "localLinks": 353,
+  "markdownValidation": "pass, 22 posts",
+  "privateArchive": {
+    "capturedFiles": 29,
+    "manifestSha256": "4a4d2be7dbd4ffb23ddb255ac142a49594c30ba3f20108b070cdc96dd2c44885",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false,
+    "previousArchiveUnchanged": true
+  },
+  "scriptSyntax": "pass",
+  "isolatedProductionBuild": "Not run; offline-only source export is absent from the Worker graph, and site/article are unchanged.",
+  "articleSourceSha256": "a44d8777d3ec5c5671f3437553be51bbe474908cc865f01ad5b2260c04fef9ba",
+  "workspaceSubpathResolution": "pass",
+  "privateOutputScan": "pass: no raw native values, request headers, private row references or referrers in public result artifacts"
+}

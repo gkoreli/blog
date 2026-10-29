@@ -1,0 +1,92 @@
+{
+  "checkedAt": "2026-10-29T05:52:06.752Z",
+  "scriptSha256": "9d864490ed0545833f81d497ad70a88fd48e57147bf8aaa4bf5892f431736347",
+  "moduleSha256": "291eedcb5e03758ab554ab8b2091b81949346346d2a8e87facff16b22fc50a2f",
+  "bundleSha256": "5a2ded6e8c09512afb6c9df57edbdd7290cf5f240d14fdf146bbbd224f3570e9",
+  "readbackSha256": "1a993c2040815dbb763d263d24f9631626c6774a5f0c2c7fe8ede01c77a3c99b",
+  "archiveManifestSha256": "529fd9f870dd49065fd63f9eb39dfa6727f4260ed1f49ee9133c8108568e4556",
+  "acceptanceSha256": "ab8918de7efaf59729e4ee3d68ed16058cddcb472e97b65ab5b591976977eb47",
+  "nodeAndWorkerdAgree": true,
+  "contextsPerRuntime": 64,
+  "syntheticControls": [
+    {
+      "expected": "direct-field-not-crypto-oracle",
+      "basis": "direct-field-not-crypto-oracle",
+      "nativeSignedAgent": "false"
+    },
+    {
+      "expected": "direct-native-true-review",
+      "basis": "direct-native-true-review",
+      "nativeSignedAgent": "true"
+    },
+    {
+      "expected": "direct-field-not-crypto-oracle",
+      "basis": "direct-field-not-crypto-oracle",
+      "nativeSignedAgent": "false"
+    },
+    {
+      "expected": "direct-native-true-review",
+      "basis": "direct-native-true-review",
+      "nativeSignedAgent": "true"
+    },
+    {
+      "expected": "registry-unreviewed",
+      "basis": "registry-unreviewed",
+      "nativeSignedAgent": "false"
+    },
+    {
+      "expected": "registry-partial",
+      "basis": "registry-partial",
+      "nativeSignedAgent": "false"
+    },
+    {
+      "expected": "native-unavailable",
+      "basis": "native-unavailable",
+      "nativeSignedAgent": "unavailable"
+    },
+    {
+      "expected": "native-unrecognized",
+      "basis": "native-unrecognized",
+      "nativeSignedAgent": "unrecognized"
+    },
+    {
+      "expected": "test-injected",
+      "basis": "test-injected",
+      "nativeSignedAgent": "true"
+    },
+    {
+      "expected": "provenance-unestablished",
+      "basis": "provenance-unestablished",
+      "nativeSignedAgent": "true"
+    },
+    {
+      "expected": "no-declarations",
+      "basis": "no-declarations",
+      "nativeSignedAgent": "false"
+    },
+    {
+      "expected": "direct-field-not-crypto-oracle",
+      "basis": "direct-field-not-crypto-oracle",
+      "nativeSignedAgent": "false"
+    }
+  ],
+  "storedRows": 52,
+  "declaredNames": {
+    "ExaSearchBot": 51,
+    "AhrefsBot": 1
+  },
+  "storedNativeUnavailable": 52,
+  "registryDirectDeclarations": 52,
+  "managedCryptoAgreementRate": null,
+  "absentFromWorkerDependencyGraph": true,
+  "workerGraphInputs": 151,
+  "historicalRowsChanged": false,
+  "externalRequests": 0,
+  "d1Statements": 0,
+  "humanLabels": 0,
+  "limits": [
+    "Registry metadata is current review of supplied declarations, not authenticated historical role.",
+    "Archived native nulls and unestablished provenance cannot measure managed-verifier disagreement.",
+    "Synthetic request-cf provenance labels simulate the API contract; they are not real provider assertions."
+  ]
+}

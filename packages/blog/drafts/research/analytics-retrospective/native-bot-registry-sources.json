@@ -1,0 +1,174 @@
+{
+  "checkedAt": "2026-10-29T05:49:40.275168+00:00",
+  "sources": [
+    {
+      "name": "radar-exa",
+      "url": "https://radar.cloudflare.com/bots/directory/exasearchbot",
+      "status": null,
+      "errorType": "HTTPError",
+      "startedAt": "2026-10-29T05:49:39.368194+00:00",
+      "completedAt": "2026-10-29T05:49:39.444857+00:00"
+    },
+    {
+      "name": "radar-ahrefs",
+      "url": "https://radar.cloudflare.com/bots/directory/ahrefsbot",
+      "status": null,
+      "errorType": "HTTPError",
+      "startedAt": "2026-10-29T05:49:39.368458+00:00",
+      "completedAt": "2026-10-29T05:49:39.437303+00:00"
+    },
+    {
+      "name": "radar-siteaudit",
+      "url": "https://radar.cloudflare.com/bots/directory/ahrefssiteaudit",
+      "status": null,
+      "errorType": "HTTPError",
+      "startedAt": "2026-10-29T05:49:39.368539+00:00",
+      "completedAt": "2026-10-29T05:49:39.452090+00:00"
+    },
+    {
+      "name": "exa-crawler",
+      "url": "https://crawler.exa.ai/",
+      "status": 200,
+      "finalUrl": "https://crawler.exa.ai/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 7108,
+      "sha256": "509df05b8dd9217156e197eaa580d66bd2bbdebebf8703e082242a04e370c7f3",
+      "startedAt": "2026-10-29T05:49:39.368598+00:00",
+      "completedAt": "2026-10-29T05:49:39.579810+00:00"
+    },
+    {
+      "name": "exa-user",
+      "url": "https://crawler.exa.ai/exauser",
+      "status": 200,
+      "finalUrl": "https://crawler.exa.ai/exauser",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 4233,
+      "sha256": "3719b504a097cf27681f9eed5ea09624208fbd4bbbcd4b89ff06ac4baf09ae40",
+      "startedAt": "2026-10-29T05:49:39.437384+00:00",
+      "completedAt": "2026-10-29T05:49:39.579940+00:00"
+    },
+    {
+      "name": "ahrefs-crawler",
+      "url": "https://ahrefs.com/robot",
+      "status": 200,
+      "finalUrl": "https://ahrefs.com/robot",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 614807,
+      "sha256": "c1c2d7b5fbd72e34e0d4a52edb7d39a88bdfe041b2f43ed7712230551239ce73",
+      "startedAt": "2026-10-29T05:49:39.444939+00:00",
+      "completedAt": "2026-10-29T05:49:39.545420+00:00"
+    },
+    {
+      "name": "ahrefs-analytics",
+      "url": "https://help.ahrefs.com/en/articles/14297049-about-bot-analytics",
+      "status": 200,
+      "finalUrl": "https://help.ahrefs.com/en/articles/14297049-about-bot-analytics",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 142840,
+      "sha256": "8d49b6fa0a7f4c42da3005f6f8a412aeba07f07830d6d259d3fd73db2ae9806d",
+      "startedAt": "2026-10-29T05:49:39.452159+00:00",
+      "completedAt": "2026-10-29T05:49:40.274683+00:00"
+    },
+    {
+      "name": "signed-agent",
+      "url": "https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.signed_agent/index.md",
+      "status": 200,
+      "finalUrl": "https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.signed_agent/index.md",
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 2604,
+      "sha256": "f52f2ecb31e1df9a46a4b7151fa36ced751109941483461d34ebbf8f58fb473f",
+      "startedAt": "2026-10-29T05:49:39.545437+00:00",
+      "completedAt": "2026-10-29T05:49:39.653507+00:00"
+    },
+    {
+      "name": "verified-bots",
+      "url": "https://developers.cloudflare.com/bots/concepts/bot/verified-bots/index.md",
+      "status": 200,
+      "finalUrl": "https://developers.cloudflare.com/bots/concepts/bot/verified-bots/index.md",
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 13324,
+      "sha256": "d06b591bfcc4d89b4a2e06a601bd4e20d03234c619f58c209258d537586bee78",
+      "startedAt": "2026-10-29T05:49:39.579836+00:00",
+      "completedAt": "2026-10-29T05:49:39.644684+00:00"
+    },
+    {
+      "name": "exa-directory",
+      "url": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+      "status": 200,
+      "finalUrl": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+      "contentType": "application/http-message-signatures-directory+json",
+      "bytes": 274,
+      "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+      "startedAt": "2026-10-29T05:49:39.579963+00:00",
+      "completedAt": "2026-10-29T05:49:39.617958+00:00"
+    },
+    {
+      "name": "ahrefs-directory",
+      "url": "https://ahrefs.com/.well-known/http-message-signatures-directory",
+      "status": 200,
+      "finalUrl": "https://ahrefs.com/.well-known/http-message-signatures-directory",
+      "contentType": "application/http-message-signatures-directory+json",
+      "bytes": 298,
+      "sha256": "a647d3d54713f9299e73dec67cdd28175cfb488ebc9692d245b82821244eb0cc",
+      "startedAt": "2026-10-29T05:49:39.617987+00:00",
+      "completedAt": "2026-10-29T05:49:39.748997+00:00"
+    }
+  ],
+  "attemptsPerSource": 1,
+  "retries": 0,
+  "readerTelemetryForwarded": false,
+  "browserReview": {
+    "entries": [
+      {
+        "declaration": "ExaSearchBot",
+        "access": "direct",
+        "behavior": "search",
+        "signatureDirectoryShown": true,
+        "source": "https://radar.cloudflare.com/bots/directory/exasearchbot",
+        "browserDomSha256": "74f50067da5f537f399ec6d7792f991cf1d5c4875328b4c0fba7743451d4983b",
+        "capturedFileAt": "2026-10-29T05:50:02.644099+00:00"
+      },
+      {
+        "declaration": "AhrefsBot",
+        "access": "direct",
+        "behavior": "seo",
+        "signatureDirectoryShown": false,
+        "source": "https://radar.cloudflare.com/bots/directory/ahrefsbot",
+        "browserDomSha256": "1e81eac020cc9f0cb6faaf65997f14839500461feae69766c96ee31fd92feb66",
+        "capturedFileAt": "2026-10-29T05:50:17.660785+00:00"
+      },
+      {
+        "declaration": "AhrefsSiteAudit",
+        "access": "direct",
+        "behavior": "seo",
+        "signatureDirectoryShown": false,
+        "source": "https://radar.cloudflare.com/bots/directory/ahrefssiteaudit",
+        "browserDomSha256": "ddfca37331465241d5a73fa4f892eedb544f569b39fe757fc89defa6934c0c9b",
+        "capturedFileAt": "2026-10-29T05:50:18.043577+00:00"
+      }
+    ],
+    "exaUserSearch": {
+      "observedAt": "2026-10-29T05:50:12.029Z",
+      "method": "Radar public search WebMCP",
+      "query": "ExaUser",
+      "result": "No matches found.",
+      "scope": "Search result only; not proof of registry-wide absence."
+    },
+    "registryWideAbsenceProven": false,
+    "httpErrors": "Three direct CLI attempts recorded HTTPError but did not retain response status/body; do not infer a specific rejection code. Separate browser DOM captures supply the reviewed fields."
+  },
+  "keyDirectoryReview": {
+    "exa": {
+      "keys": 2,
+      "keyType": "OKP",
+      "curve": "Ed25519"
+    },
+    "ahrefs": {
+      "keys": 2,
+      "keyType": "OKP",
+      "curve": "Ed25519"
+    },
+    "responseSignatureVerification": "not-executed",
+    "originalHistoricalResolverStateEstablished": false
+  }
+}

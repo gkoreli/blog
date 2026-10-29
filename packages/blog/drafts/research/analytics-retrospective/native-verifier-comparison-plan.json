@@ -104,7 +104,7 @@
     "nativeDisagreements": "Report by condition and wire form; investigate registration, timing and field semantics before attributing a cryptographic failure.",
     "populationAccuracyClaim": false
   },
-  "reviewedAt": "2026-10-29T05:46:25.435050+00:00",
+  "reviewedAt": "2026-10-29T05:54:11.269063+00:00",
   "separatePublicDiagnostic": {
     "status": "executed-unregistered-only",
     "receipt": "managed-bot-diagnostic.json",
@@ -113,5 +113,17 @@
     "ownSiteExperimentExecuted": false,
     "nativeBooleanObserved": false,
     "managedCryptographicAgreementRate": null
+  },
+  "candidateVendorReview": {
+    "receipt": "native-bot-registry-sources.json",
+    "interpretation": "Registry access/behavior and published signature directories do not attest a request-level native verdict.",
+    "directEntries": [
+      "ExaSearchBot",
+      "AhrefsBot",
+      "AhrefsSiteAudit"
+    ],
+    "exaUser": "No match in one public search; entry unresolved, not proven absent.",
+    "nativeSignedAgentEligibilityEstablished": false,
+    "directNativeFalseProvesSignatureInvalid": false
   }
 }

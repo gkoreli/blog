@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T05:46:25.435050+00:00",
-  "sourceBaseline": "71534da55bf0b49b3d8d0f75b56d2fa305038d6f",
+  "checkedAt": "2026-10-29T05:54:11.269063+00:00",
+  "sourceBaseline": "3c3e9aa",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,7 +45,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Inspect public registry entries and current primary signing promises for Exa and Ahrefs; separate per-client commitments, provider metadata and native-field eligibility. Human trials remain deferred.",
+  "nextBoundedAction": "Prepare a refreshed whole-retained-population correctness census, including exclusions and missing/conflicting evidence; native-test and budget exact SQL before any Wrangler execution. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1362,
     "prompts": 31,
@@ -55,13 +55,13 @@
     "publicationReceipt": "frozen-signed-release.json",
     "servedMatchesCheckedBuild": true,
     "lastServedCheckReceipt": "frozen-signed-release.json",
-    "publicationStatus": "No article edit or fresh served check in phase 76; prior correction acceptance remains dated in frozen-signed-release.json."
+    "publicationStatus": "No article edit or fresh served check in phase 77; prior correction acceptance remains dated in frozen-signed-release.json."
   },
   "runtimeUnchanged": true,
   "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": true,
+  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -337,5 +337,20 @@
     "managedCryptoAgreementRate": null,
     "public401DoesNotEstablishFormatSupport": true,
     "humanTrialsDeferred": true
-  }
+  },
+  "nativeRegistryContract": {
+    "module": "packages/analytics/src/native-bot-comparison.ts",
+    "receipt": "native-bot-registry-local.json",
+    "sourceReceipt": "native-bot-registry-sources.json",
+    "checks": "native-bot-registry-checks.json",
+    "reviewedDirectDeclarations": 3,
+    "exaUserRegistryEntry": "unresolved in one scoped public search",
+    "contextsPerRuntime": 64,
+    "syntheticConditions": 12,
+    "archivedRowsReused": 52,
+    "collectorAdoption": false,
+    "managedCryptoAgreementRate": null,
+    "humanTriggerEstablished": false
+  },
+  "collectorRuntimeUnchanged": true
 }
