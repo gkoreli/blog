@@ -1,0 +1,50 @@
+{
+  "scope": "Runner, method and selected structured evidence; excludes raw operational captures, binaries, dependencies, and original article frozen research accounting.",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7365,
+      "sha256": "6cb0b5bc97c43dec66520e74b3b77b050c97eee037a1b40872c65f83f27f9ce4"
+    },
+    {
+      "path": "results/build-results.json",
+      "bytes": 3632,
+      "sha256": "1c81012cdfc9d9e66091b163186db1a55cc17e8153a8bd4afa9bd8f0537a4e70"
+    },
+    {
+      "path": "results/correctness-results.json",
+      "bytes": 25406,
+      "sha256": "c986a2a0b2790307a20ad307c0380dcd4c5b235ac3e9a1ae583a08a68e79e51a"
+    },
+    {
+      "path": "results/hardware.json",
+      "bytes": 197,
+      "sha256": "6a034aa19c38d7f3c7a5402e07369d5fca88bde3aadc1167b086217f858b5bac"
+    },
+    {
+      "path": "results/measure-metadata.json",
+      "bytes": 846,
+      "sha256": "31749f55363667c62d00bdf413003e13978893906f86ce16a13bfa42358315de"
+    },
+    {
+      "path": "results/measurements.json",
+      "bytes": 220129,
+      "sha256": "2dd29e7c534b00cc22f75da676033dc334cd527e7abb41864f06970e3e11a4e0"
+    },
+    {
+      "path": "results/standalone-results.json",
+      "bytes": 10945,
+      "sha256": "f1a26c8ecf4f80b3f2da296b92f925571f8d3388019150eb07af22079b8080c3"
+    },
+    {
+      "path": "results/summary.json",
+      "bytes": 9741,
+      "sha256": "ed2f321aedcf950d704dec338926a04f95c3688da721d1912b0503314d754023"
+    },
+    {
+      "path": "run.py",
+      "bytes": 15826,
+      "sha256": "5b8c533edfc75b052f1bba97968cde3da2878f24f3bb9d5028ff2d2cd7688f4d"
+    }
+  ]
+}

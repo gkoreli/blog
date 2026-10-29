@@ -1,0 +1,13 @@
+{
+  "cli_commit": "8e85fdac1fb81c5996a4ecc4c93178a54f37f2d5",
+  "bun_revision": "1.4.4-canary.1+73b53109f",
+  "node_version": "v24.14.1",
+  "bun_binary_sha256": "2480b715f5c61e9d0a0a0062c2435614ffadea9795d7fd24e47f0a48ee0ede15",
+  "lock_sha256": "fa2162fa9c5a2f08b7519112c3510ca122e26d998ddf78f11cb7289706e7663f",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "metadata_sha256": "8dcef47f913cd2bfaadfb35016bdcc2e25f4995f53dd38ad9ce1e7542334cd3e",
+  "payload_sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+  "method": "Fresh processes; warm filesystem caches; two untimed warmups per mode/case; balanced rotating/reversed order; elapsed includes Python launch plus /usr/bin/time wrapper; no disk-cache flush, CPU pinning or dedicated machine",
+  "started_utc": "2026-10-29T02:40:55Z"
+}

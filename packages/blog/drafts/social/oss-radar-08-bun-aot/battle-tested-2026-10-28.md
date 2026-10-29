@@ -77,3 +77,7 @@ The next measurement window is around 24 hours after these posts and editorial r
 - **Evidence limit:** two independent writers report quantified referral/registration outcomes; Julia reports an email audience and a concrete feedback workflow; the paid case has commercial selection bias. None supplies an expected result for this account.
 
 Checks: destination links and contact basis reviewed; new copy compared with the pinned accepted results; existing-subscriber source path inspected without production queries; no new external communication made after the four approved actions. This further research/preparation is complete. Editorial outcomes and proposed additional execution remain unperformed or unobserved, as labeled.
+
+## Owner-authorized real-project follow-up — October 28
+
+Goga selected a new direction: test Polkadot CLI, whose maintainers have an open TypeScript-to-Rust feasibility proposal. The [separate experiment](../../research/polkadot-bun-aot/00-worklist-index.md) now contains measured offline-command results, correctness and portability checks, exact reproduction steps and a prepared maintainer comment. It is outside the article's frozen evidence. Cached metadata inspection used 50.9% less peak physical memory with AOT than the normal Bun executable on this machine; crypto savings were smaller, and WASM packaging needed explicit handling. The follow-up prepares useful decision evidence; it does not establish reader adoption or authorize posting the comment. No additional maintainer message has been sent.

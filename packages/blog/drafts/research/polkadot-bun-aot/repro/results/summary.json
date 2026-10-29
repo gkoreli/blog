@@ -1,0 +1,502 @@
+[
+  {
+    "case": "version",
+    "mode": "node-package",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 96.812938,
+      "min": 93.495834,
+      "max": 101.394458
+    },
+    "peak_rss_bytes": {
+      "median": 107372544.0,
+      "min": 106528768,
+      "max": 108068864
+    },
+    "peak_physical_bytes": {
+      "median": 69236904.0,
+      "min": 68360312,
+      "max": 69998856
+    }
+  },
+  {
+    "case": "version",
+    "mode": "bun-source",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 54.485938,
+      "min": 52.212292,
+      "max": 59.409875
+    },
+    "peak_rss_bytes": {
+      "median": 49455104.0,
+      "min": 48775168,
+      "max": 50282496
+    },
+    "peak_physical_bytes": {
+      "median": 29606608.0,
+      "min": 29033120,
+      "max": 30704336
+    }
+  },
+  {
+    "case": "version",
+    "mode": "jit",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 30.894771,
+      "min": 29.879208,
+      "max": 33.023416
+    },
+    "peak_rss_bytes": {
+      "median": 33071104.0,
+      "min": 32751616,
+      "max": 33144832
+    },
+    "peak_physical_bytes": {
+      "median": 17449596.0,
+      "min": 17203800,
+      "max": 17531552
+    }
+  },
+  {
+    "case": "version",
+    "mode": "aot-asset",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 11.6835625,
+      "min": 11.033333,
+      "max": 12.798083
+    },
+    "peak_rss_bytes": {
+      "median": 23101440.0,
+      "min": 23085056,
+      "max": 23117824
+    },
+    "peak_physical_bytes": {
+      "median": 9765320.0,
+      "min": 9765320,
+      "max": 9765320
+    }
+  },
+  {
+    "case": "version",
+    "mode": "aot-trim-asset",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 12.687521,
+      "min": 11.593125,
+      "max": 15.215833
+    },
+    "peak_rss_bytes": {
+      "median": 23134208.0,
+      "min": 23117824,
+      "max": 23150592
+    },
+    "peak_physical_bytes": {
+      "median": 9781704.0,
+      "min": 9781704,
+      "max": 9781704
+    }
+  },
+  {
+    "case": "help",
+    "mode": "node-package",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 98.576146,
+      "min": 93.642458,
+      "max": 103.338
+    },
+    "peak_rss_bytes": {
+      "median": 107790336.0,
+      "min": 106840064,
+      "max": 108199936
+    },
+    "peak_physical_bytes": {
+      "median": 69507228.0,
+      "min": 68606120,
+      "max": 69916864
+    }
+  },
+  {
+    "case": "help",
+    "mode": "bun-source",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 55.8533955,
+      "min": 53.186667,
+      "max": 63.140083
+    },
+    "peak_rss_bytes": {
+      "median": 49627136.0,
+      "min": 48807936,
+      "max": 51314688
+    },
+    "peak_physical_bytes": {
+      "median": 29950648.0,
+      "min": 29016784,
+      "max": 32998144
+    }
+  },
+  {
+    "case": "help",
+    "mode": "jit",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 32.1116875,
+      "min": 30.450084,
+      "max": 35.302125
+    },
+    "peak_rss_bytes": {
+      "median": 33284096.0,
+      "min": 33062912,
+      "max": 33800192
+    },
+    "peak_physical_bytes": {
+      "median": 17621652.0,
+      "min": 17400456,
+      "max": 18137736
+    }
+  },
+  {
+    "case": "help",
+    "mode": "aot-asset",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 11.700812500000001,
+      "min": 10.940667,
+      "max": 14.500666
+    },
+    "peak_rss_bytes": {
+      "median": 23199744.0,
+      "min": 23183360,
+      "max": 23216128
+    },
+    "peak_physical_bytes": {
+      "median": 9765320.0,
+      "min": 9765320,
+      "max": 9765320
+    }
+  },
+  {
+    "case": "help",
+    "mode": "aot-trim-asset",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 12.537917,
+      "min": 11.628083,
+      "max": 13.921583
+    },
+    "peak_rss_bytes": {
+      "median": 23232512.0,
+      "min": 23216128,
+      "max": 23232512
+    },
+    "peak_physical_bytes": {
+      "median": 9781704.0,
+      "min": 9781704,
+      "max": 9781704
+    }
+  },
+  {
+    "case": "hash-file-16mib",
+    "mode": "node-package",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 153.6357715,
+      "min": 148.68325,
+      "max": 162.404542
+    },
+    "peak_rss_bytes": {
+      "median": 141418496.0,
+      "min": 140034048,
+      "max": 142065664
+    },
+    "peak_physical_bytes": {
+      "median": 103135388.0,
+      "min": 101865784,
+      "max": 103782544
+    }
+  },
+  {
+    "case": "hash-file-16mib",
+    "mode": "bun-source",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 122.81562500000001,
+      "min": 118.89775,
+      "max": 131.06575
+    },
+    "peak_rss_bytes": {
+      "median": 88670208.0,
+      "min": 87883776,
+      "max": 89554944
+    },
+    "peak_physical_bytes": {
+      "median": 66159336.0,
+      "min": 65274648,
+      "max": 67322624
+    }
+  },
+  {
+    "case": "hash-file-16mib",
+    "mode": "jit",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 102.76725,
+      "min": 100.166958,
+      "max": 106.643583
+    },
+    "peak_rss_bytes": {
+      "median": 71016448.0,
+      "min": 70893568,
+      "max": 71712768
+    },
+    "peak_physical_bytes": {
+      "median": 52576976.0,
+      "min": 52462288,
+      "max": 53232360
+    }
+  },
+  {
+    "case": "hash-file-16mib",
+    "mode": "aot-asset",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 70.42775,
+      "min": 68.457125,
+      "max": 75.966542
+    },
+    "peak_rss_bytes": {
+      "median": 57753600.0,
+      "min": 57720832,
+      "max": 57769984
+    },
+    "peak_physical_bytes": {
+      "median": 42861336.0,
+      "min": 42812160,
+      "max": 42877768
+    }
+  },
+  {
+    "case": "hash-file-16mib",
+    "mode": "aot-trim-asset",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 70.7638955,
+      "min": 69.472542,
+      "max": 74.793334
+    },
+    "peak_rss_bytes": {
+      "median": 57769984.0,
+      "min": 57769984,
+      "max": 57802752
+    },
+    "peak_physical_bytes": {
+      "median": 42844976.0,
+      "min": 42812160,
+      "max": 42877768
+    }
+  },
+  {
+    "case": "inspect-account",
+    "mode": "node-package",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 112.1638125,
+      "min": 109.410541,
+      "max": 118.875041
+    },
+    "peak_rss_bytes": {
+      "median": 111697920.0,
+      "min": 111230976,
+      "max": 112197632
+    },
+    "peak_physical_bytes": {
+      "median": 71530664.0,
+      "min": 71096560,
+      "max": 72014016
+    }
+  },
+  {
+    "case": "inspect-account",
+    "mode": "bun-source",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 64.76806250000001,
+      "min": 62.806875,
+      "max": 68.28125
+    },
+    "peak_rss_bytes": {
+      "median": 77316096.0,
+      "min": 76382208,
+      "max": 79986688
+    },
+    "peak_physical_bytes": {
+      "median": 53650200.0,
+      "min": 52069168,
+      "max": 56410928
+    }
+  },
+  {
+    "case": "inspect-account",
+    "mode": "jit",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 42.122021000000004,
+      "min": 41.080791,
+      "max": 43.987666
+    },
+    "peak_rss_bytes": {
+      "median": 59744256.0,
+      "min": 58998784,
+      "max": 60899328
+    },
+    "peak_physical_bytes": {
+      "median": 39592668.0,
+      "min": 38912720,
+      "max": 40600296
+    }
+  },
+  {
+    "case": "inspect-account",
+    "mode": "aot-asset",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 18.54925,
+      "min": 17.704667,
+      "max": 20.488667
+    },
+    "peak_rss_bytes": {
+      "median": 36233216.0,
+      "min": 36012032,
+      "max": 36569088
+    },
+    "peak_physical_bytes": {
+      "median": 19448600.0,
+      "min": 19284760,
+      "max": 19809096
+    }
+  },
+  {
+    "case": "inspect-account",
+    "mode": "aot-trim-asset",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 19.399875,
+      "min": 18.6225,
+      "max": 22.323958
+    },
+    "peak_rss_bytes": {
+      "median": 36233216.0,
+      "min": 36028416,
+      "max": 36356096
+    },
+    "peak_physical_bytes": {
+      "median": 19432216.0,
+      "min": 19284760,
+      "max": 19546928
+    }
+  },
+  {
+    "case": "member-full",
+    "mode": "node-package",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 102.82077050000001,
+      "min": 98.246,
+      "max": 109.306875
+    },
+    "peak_rss_bytes": {
+      "median": 108503040.0,
+      "min": 107642880,
+      "max": 109248512
+    },
+    "peak_physical_bytes": {
+      "median": 69957872.0,
+      "min": 68900792,
+      "max": 70719752
+    }
+  },
+  {
+    "case": "member-full",
+    "mode": "bun-source",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 67.2280415,
+      "min": 63.261334,
+      "max": 77.171166
+    },
+    "peak_rss_bytes": {
+      "median": 97837056.0,
+      "min": 96894976,
+      "max": 98631680
+    },
+    "peak_physical_bytes": {
+      "median": 75490084.0,
+      "min": 74072880,
+      "max": 77824816
+    }
+  },
+  {
+    "case": "member-full",
+    "mode": "jit",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 41.485583500000004,
+      "min": 39.272542,
+      "max": 44.799667
+    },
+    "peak_rss_bytes": {
+      "median": 80273408.0,
+      "min": 79708160,
+      "max": 81625088
+    },
+    "peak_physical_bytes": {
+      "median": 61604584.0,
+      "min": 61096704,
+      "max": 62964480
+    }
+  },
+  {
+    "case": "member-full",
+    "mode": "aot-asset",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 25.243083,
+      "min": 24.452542,
+      "max": 26.71875
+    },
+    "peak_rss_bytes": {
+      "median": 73646080.0,
+      "min": 73613312,
+      "max": 73662464
+    },
+    "peak_physical_bytes": {
+      "median": 48784164.0,
+      "min": 48743192,
+      "max": 48808800
+    }
+  },
+  {
+    "case": "member-full",
+    "mode": "aot-trim-asset",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 26.00425,
+      "min": 25.157917,
+      "max": 28.337041
+    },
+    "peak_rss_bytes": {
+      "median": 73678848.0,
+      "min": 73662464,
+      "max": 73695232
+    },
+    "peak_physical_bytes": {
+      "median": 48776008.0,
+      "min": 48743192,
+      "max": 48825184
+    }
+  }
+]

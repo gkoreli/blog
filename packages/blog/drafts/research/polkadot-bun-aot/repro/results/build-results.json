@@ -1,0 +1,99 @@
+[
+  {
+    "mode": "jit",
+    "flags": [],
+    "entry": "src/cli.ts",
+    "returncode": 0,
+    "elapsed_ms": 180.930917,
+    "warnings": [],
+    "bytes": 123017378,
+    "sha256": "2ea9d48c6a2939f5f1e1346c42b669ad79b1089c60b88e4ca67f6f899f096e51"
+  },
+  {
+    "mode": "jit-asset",
+    "flags": [
+      "--asset",
+      "node_modules/verifiablejs/pkg-nodejs/verifiablejs_bg.wasm"
+    ],
+    "entry": "src/cli.ts",
+    "returncode": 0,
+    "elapsed_ms": 108.113792,
+    "warnings": [],
+    "bytes": 130447778,
+    "sha256": "7db407a5bb15737b4ea146ff5bc9b9424ece50bb045bd35d4f02331307b00830"
+  },
+  {
+    "mode": "aot",
+    "flags": [
+      "--aot"
+    ],
+    "entry": "src/cli.ts",
+    "returncode": 0,
+    "elapsed_ms": 2812.592917,
+    "warnings": [
+      "Untyped code works, but runs slower. Run with --explain to see what to fix.",
+      "Dependencies: 19.3% of property accesses are one load: 2,288 free, 5,597 tested, 3,920 by name (11,805)",
+      "24.5% of property accesses are one load: 895 free, 1,591 tested, 1,158 by name (3,644)"
+    ],
+    "bytes": 63260450,
+    "sha256": "4c146294eb3318ead2b7dab512ebc9bdb5447e22ddc6d6153d56d064908246d7"
+  },
+  {
+    "mode": "aot-trim",
+    "flags": [
+      "--aot",
+      "--trim"
+    ],
+    "entry": "src/cli.ts",
+    "returncode": 0,
+    "elapsed_ms": 2961.16875,
+    "warnings": [
+      "--trim kept APIs your code doesn't call because the program calls eval() or new Function() (node_modules/verifiablejs/pkg-nodejs/verifiablejs.js:430:21)",
+      "--trim kept APIs your code doesn't call because the program calls import() or require() with a dynamic path",
+      "Untyped code works, but runs slower. Run with --explain to see what to fix.",
+      "Dependencies: 19.3% of property accesses are one load: 2,288 free, 5,597 tested, 3,920 by name (11,805)",
+      "24.5% of property accesses are one load: 895 free, 1,591 tested, 1,158 by name (3,644)"
+    ],
+    "bytes": 52313010,
+    "sha256": "e704e97a705a1a1520e724aa3e40e7b712fd7a9ffeb4805185793bb10d6121cf"
+  },
+  {
+    "mode": "aot-asset",
+    "flags": [
+      "--aot",
+      "--asset",
+      "node_modules/verifiablejs/pkg-nodejs/verifiablejs_bg.wasm"
+    ],
+    "entry": "src/cli.ts",
+    "returncode": 0,
+    "elapsed_ms": 2430.222334,
+    "warnings": [
+      "Untyped code works, but runs slower. Run with --explain to see what to fix.",
+      "Dependencies: 19.3% of property accesses are one load: 2,288 free, 5,597 tested, 3,920 by name (11,805)",
+      "24.5% of property accesses are one load: 895 free, 1,591 tested, 1,158 by name (3,644)"
+    ],
+    "bytes": 70657826,
+    "sha256": "1d4fc8e70792ef5f7eb07d6843e9268f3c630c697668d6d4d8748a66aef74b21"
+  },
+  {
+    "mode": "aot-trim-asset",
+    "flags": [
+      "--aot",
+      "--trim",
+      "--asset",
+      "node_modules/verifiablejs/pkg-nodejs/verifiablejs_bg.wasm"
+    ],
+    "entry": "src/cli.ts",
+    "returncode": 0,
+    "elapsed_ms": 2270.589167,
+    "warnings": [
+      "--trim kept APIs your code doesn't call because the program calls eval() or new Function() (node_modules/verifiablejs/pkg-nodejs/verifiablejs.js:430:21)",
+      "--trim kept APIs your code doesn't call because the program calls import() or require() with a dynamic path",
+      "Untyped code works, but runs slower. Run with --explain to see what to fix.",
+      "Dependencies: 19.3% of property accesses are one load: 2,288 free, 5,597 tested, 3,920 by name (11,805)",
+      "24.5% of property accesses are one load: 895 free, 1,591 tested, 1,158 by name (3,644)"
+    ],
+    "bytes": 59710386,
+    "sha256": "e711c48a1c6c197f6ed9a9382bb678c0c111fb0cc4259a6e89a1cdc7b2c3dbf2"
+  }
+]
