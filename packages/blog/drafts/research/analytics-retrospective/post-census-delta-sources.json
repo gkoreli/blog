@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-10-29T17:10:22.117572+00:00",
+  "sources": [
+    {
+      "name": "pricing",
+      "url": "https://developers.cloudflare.com/d1/platform/pricing/index.md",
+      "checkedAt": "2026-10-29T16:45:13.824076+00:00",
+      "status": 200,
+      "bytes": 9954,
+      "sha256": "ab06e38349130d15e25109fe9344189639a2801206a641d76d576daa9d04337b"
+    },
+    {
+      "name": "replication",
+      "url": "https://developers.cloudflare.com/d1/best-practices/read-replication/index.md",
+      "checkedAt": "2026-10-29T16:45:13.893105+00:00",
+      "status": 200,
+      "bytes": 22700,
+      "sha256": "5efd6085077806c6ff9cbbb6b2c79a2a20e46b5de3d2f91c236c05401fc2e4f9"
+    },
+    {
+      "name": "limits",
+      "url": "https://developers.cloudflare.com/d1/platform/limits/index.md",
+      "checkedAt": "2026-10-29T16:45:13.982019+00:00",
+      "status": 200,
+      "bytes": 10341,
+      "sha256": "ac57223b0970f63e073147612696552e76ba5138cc24d53e013050956f574bc1"
+    },
+    {
+      "name": "fetch-metadata",
+      "url": "https://www.w3.org/TR/fetch-metadata/",
+      "checkedAt": "2026-10-29T17:01:26.298371+00:00",
+      "status": 200,
+      "bytes": 140739,
+      "sha256": "4849a4cd48035165d5336315ba8461cf8640364878073766e2cb56b37d9d63f3"
+    },
+    {
+      "name": "sec-fetch-mode",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Mode",
+      "checkedAt": "2026-10-29T17:01:26.691099+00:00",
+      "status": 200,
+      "bytes": 213421,
+      "sha256": "97907c814337bebede71abf4fe31d1025b3c967d57f1d5e9eba178053789f62c"
+    },
+    {
+      "name": "fetch-standard",
+      "url": "https://fetch.spec.whatwg.org/",
+      "checkedAt": "2026-10-29T17:08:39.379479+00:00",
+      "status": 200,
+      "bytes": 1854393,
+      "sha256": "63b0a018753c330adf1e40417524eb70ea02d4d3e123bcb39b6770f23bad911b"
+    }
+  ],
+  "claimsAndLimits": [
+    "D1 pricing meters scanned row work, including index work; returned rows are a different quantity.",
+    "D1 documents a 100000-byte statement limit and 32 arguments per SQL function; the native local runtime accepted a larger JSON call, so the new query is constrained to the documented contract.",
+    "Separate CLI statements do not establish one held snapshot; read-replication/sequential-consistency documentation is not a transaction-freeze guarantee.",
+    "Fetch Metadata describes request mode/context and is emitted for potentially trustworthy URLs in conforming implementations. It does not authenticate a person or the UA-declared engine.",
+    "The Fetch Standard explicitly supports WebDriver BiDi emulated User-Agent values; a parsed Firefox-family claim is not an authenticated Firefox process.",
+    "The checked Fetch Metadata Working Draft section 4.2 calls these forbidden response-header names. The normative Fetch Standard instead places the sec- prefix under forbidden request-header rules, separately from Set-Cookie/Set-Cookie2 response headers. That terminology discrepancy is not copied into implementation claims."
+  ],
+  "adjacentReportContractQuestion": {
+    "fields": 44,
+    "arguments": 88,
+    "sourceSha256": "68e80b74bc11474d6766dba8fc0a69031b54140337ed157b8281344e958c8a3d",
+    "productionFailureInferred": false,
+    "scope": "Static source count only; review historical accepted captures before inferring how the documented limit is enforced."
+  },
+  "adjacentReportQuestionStatus": "Static contract review lead only; no current production failure inferred and no speculative probe executed."
+}

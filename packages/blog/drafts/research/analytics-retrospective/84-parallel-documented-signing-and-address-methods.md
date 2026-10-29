@@ -61,3 +61,6 @@ Two referral-excluded synthetic declarations receive exact acknowledged-receipt/
 The single privately frozen, native-tested `--command` lookup returns two rows for **six reads/zero writes**; normal ingestion is additional work. Three own-site GETs comprise two eligible excluded controls and one ineligible Markdown asset check. Served Markdown equals the isolated build. No fresh HTML/RUM check, report fill, owner post, raw-capture activation or human label. The exact-marker tail stops and its process is absent; no preview starts. Acceptance is limited to this source/version and selected controls.
 
 Next: native-test a bounded new-ID delta since the frozen retained census, preserve all unknown/conflict populations and freeze a costed scope before production reads. Human trials remain deferred; the full goal stays open.
+
+
+[Research 85](85-post-census-delta-and-diagnostic-contracts.md) completes the next bounded new-ID audit and repairs compact-envelope diagnostic compatibility. Research 84's live controls and source acceptance remain their dated, separate cohort.

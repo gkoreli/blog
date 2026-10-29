@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T16:30:41.418075+00:00",
-  "sourceBaseline": "3639bf6",
+  "checkedAt": "2026-10-29T17:14:07.745909+00:00",
+  "sourceBaseline": "e405f55",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -44,23 +44,23 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Native-test a bounded new-ID delta since the frozen retained census, then freeze scope/cost before production execution; assess current method provenance, unknowns and conflicts. Human trials remain deferred.",
+  "nextBoundedAction": "Native-test an indexed selector for the one DuckDuckBot signature-invalid and one ExaSearchBot verification-timeout record in the frozen 383-row range, then recover their exact retained receipt/request contexts. Keep listed-address, cryptographic validity and human purpose separate. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1375,
     "prompts": 31,
     "sourceSha256": "efb458c18aa509537f1faf077b404695b8d4e06b21fc769b471b7ee64fd9feaf",
     "unchanged": true,
-    "freshServedCheck": true,
+    "freshServedCheck": false,
     "publicationReceipt": "parallel-methods-release.json",
     "servedMatchesCheckedBuild": true,
     "lastServedCheckReceipt": "parallel-methods-release.json",
-    "publicationStatus": "Article source unchanged; direct Markdown asset matches the isolated build after source 2a0c19f activation. No new production HTML or RUM acceptance.",
+    "publicationStatus": "Article unchanged at 1375 words/31 prompts in phase 85; no new build/served check for diagnostic/evidence-only changes. Prior served acceptance remains dated.",
     "previousPublicationReceipt": "parallel-declarations-release.json",
     "servedMatchScope": "Fresh exact Markdown only; prior full article HTML acceptance remains dated in parallel-declarations-release.json."
   },
-  "runtimeUnchanged": false,
-  "productionStatements": 1,
-  "newVisits": 3,
+  "runtimeUnchanged": true,
+  "productionStatements": 4,
+  "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
   "nativeKnownBotPath": {
@@ -91,8 +91,8 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 3,
-  "collectionEligibleGets": 2,
+  "productionOwnSiteGets": 0,
+  "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
     "receipt": "retained-delta-production.json",
@@ -166,13 +166,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 6,
+  "productionReportedReads": 37655,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
-    "acknowledgedControlRows": 2,
-    "providerWriteMetering": "not returned; additional to direct SELECT"
+    "acknowledgedApplicationRows": 0,
+    "providerWriteMetering": "No own-site request; natural ingestion/provider work is additional and not attributed to these SELECTs."
   },
-  "newVisitsScope": "Two referral-excluded synthetic client declarations and one collection-ineligible Markdown asset check; no human label.",
+  "newVisitsScope": "No visits; aggregate-only new-ID delta and native synthetic SQL fixtures.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -353,7 +353,7 @@
     "managedCryptoAgreementRate": null,
     "humanTriggerEstablished": false
   },
-  "collectorRuntimeUnchanged": false,
+  "collectorRuntimeUnchanged": true,
   "retainedPopulationRefresh": {
     "receipt": "retained-population-production.json",
     "native": "retained-population-native.json",
@@ -378,7 +378,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Current source/build/100% CLI allocation/bindings; two referral-excluded controls and exact returned-row lookup. No configuration change.",
+  "liveAccountInspectionScope": "Fresh Worker allocation/version binding and D1 metadata; four frozen new-ID aggregate SELECTs. No UI or configuration change.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -520,5 +520,42 @@
     "liveShapUserAddressMethod": "not-configured",
     "liveSignatureStatus": "absent",
     "optionalCaptureBindingsAbsent": true
+  },
+  "postCensusDelta": {
+    "receipt": "post-census-delta-production.json",
+    "native": "post-census-delta-native.json",
+    "methods": "post-census-delta-methods.json",
+    "context": "post-census-delta-context.json",
+    "checks": "post-census-delta-checks.json",
+    "sources": "post-census-delta-sources.json",
+    "baselineRows": 33189,
+    "newIdRows": 383,
+    "included": 378,
+    "referralExcluded": 5,
+    "ownerExcluded": 0,
+    "detailedRows": 383,
+    "includedUnresolved": 101,
+    "includedStoredVerified": 37,
+    "includedUnverified": 2,
+    "includedUnsigned": 339,
+    "includedUserAgentOrResourceBound": 0,
+    "rawNativeUnavailable": 383,
+    "namedIncluded": 81,
+    "namedWithCurrentConfiguredMethod": 56,
+    "namedWithoutCurrentConfiguredMethod": 25,
+    "coherentCurrentClassifierRows": 32,
+    "coherentOlderClassifierRows": 351,
+    "unrecognizedOrConflictingClassifierRows": 0,
+    "metadataAbsentReasons": 91,
+    "unresolvedFirefoxFamilyClaims": 83,
+    "duckListedAssessmentWithInvalidSignature": 1,
+    "exaVerificationTimeout": 1,
+    "reportedReads": 37655,
+    "reportedWrites": 0,
+    "statements": 4,
+    "heldSnapshot": false,
+    "originalWireOrHumanTruthEstablished": false,
+    "wholeTableCountRefreshed": false,
+    "observationSourceDistributionMeasured": false
   }
 }

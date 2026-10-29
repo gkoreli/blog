@@ -34,8 +34,8 @@ export function prepareReasons(lower,upper) {
  assert.ok(BigInt(upper)>=BigInt(lower));const values=[lower,upper,referralRulesJson(ACTIVE_REFERRAL_POLICY)];let i=0;
  const sql=REASON_SQL.replace(/\?/g,()=>"'"+values[i++].replaceAll("'","''")+"'");assert.equal(i,3);return sql+';\n';
 }
-export function validateReasons(rows) {
- assert.ok(Array.isArray(rows) && rows.length<=256);const seen=new Set();
+export function validateReasons(rows, maximumGroups = 256) {
+ assert.ok(Array.isArray(rows) && rows.length<=maximumGroups);const seen=new Set();
  const allowed={inclusion:['included','owner-excluded','referral-excluded'],stored_kind:[...READER_KINDS,'not-recorded','unrecognized'],local_state:['verified','unverified','absent','test-injected','unrecognized','outcome-only','not-recorded'],unresolved_reason:[...UNRESOLVED_REASONS,'not-applicable','profile-not-current','not-recorded','unrecognized'],context_support:['matches-retained-context','contradicts-retained-context','retained-context-unavailable','inputs-not-assessed'],failure_outcome:[...OUTCOMES,'not-recorded','unrecognized']};
  for(const row of rows){assert.deepEqual(Object.keys(row).sort(),[...Object.keys(allowed),'views'].sort());for(const [key,values]of Object.entries(allowed))assert.ok(values.includes(row[key]));assert.ok(Number.isSafeInteger(row.views)&&row.views>0);
   assert.ok(row.stored_kind==='unresolved'||row.local_state==='unverified');assert.ok(row.context_support==='inputs-not-assessed'||row.stored_kind==='unresolved'&&row.unresolved_reason==='request-context-conflict');

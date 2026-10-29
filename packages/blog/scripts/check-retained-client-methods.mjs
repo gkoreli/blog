@@ -28,7 +28,7 @@ const signingNames = new Set(VENDOR_SIGNATURE_METHODS.flatMap(method => method.d
 export const methodMask = name => (ipNames.has(name) ? 1 : 0) + (signingNames.has(name) ? 2 : 0);
 const d = key => `json_extract(classification_evidence,'$.declarations.${key}')`;
 const dt = key => `json_type(classification_evidence,'$.declarations.${key}')`;
-const declarationValid = `COALESCE(json_extract(classification_evidence,'$.version')='2026-10-27.2'
+const declarationValid = `COALESCE(json_extract(classification_evidence,'$.version') IN ('2026-10-27.2','2026-10-29.1')
  AND json_extract(classification_evidence,'$.classifierProfile')='${CLASSIFIER_VERSION}'
  AND ${dt('candidates')}='array' AND json_array_length(classification_evidence,'$.declarations.candidates')<=${names.length}
  AND NOT EXISTS(SELECT 1 FROM json_each(classification_evidence,'$.declarations.candidates') AS candidate WHERE candidate.type<>'text' OR candidate.value NOT IN (${list(names)}))
@@ -70,8 +70,8 @@ export function prepareClientMethods(lower, upper) {
   assert.equal(index, values.length); return sql + ';\n';
 }
 
-export function validateClientMethods(rows) {
-  assert.ok(Array.isArray(rows) && rows.length <= PLAN.maximumGroups);
+export function validateClientMethods(rows, limits = PLAN) {
+  assert.ok(Array.isArray(rows) && rows.length <= limits.maximumGroups);
   const allowed = { inclusion: ['included','owner-excluded','referral-excluded'], declaration: [...names,'none','multiple','not-recorded','unrecognized'],
     legacy_agreement: ['matches-single','contradicts-single','matches-unselected','contradicts-unselected','not-assessed'], stored_kind: [...READER_KINDS,'not-recorded','unrecognized'],
     local_state: ['verified','unverified','absent','test-injected','unrecognized','outcome-only','not-recorded'],
@@ -92,7 +92,7 @@ export function validateClientMethods(rows) {
     assert.ok(Number.isSafeInteger(row.views) && row.views > 0); total += row.views;
     const key = JSON.stringify(fields.map(field => row[field])); assert.ok(!seen.has(key)); seen.add(key);
   }
-  assert.ok(total <= PLAN.maximumIdSpan); return rows;
+  assert.ok(total <= limits.maximumIdSpan); return rows;
 }
 
 async function main() {

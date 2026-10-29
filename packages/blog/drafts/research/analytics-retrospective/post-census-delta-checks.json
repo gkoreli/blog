@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-10-29T17:08:39.454527+00:00",
+  "previousGoalTurn": "progress",
+  "runtimeCodeChanged": false,
+  "diagnosticCompatibilityChanged": true,
+  "collectorOrRulesChanged": false,
+  "native": "post-census-delta-native.json",
+  "oldMethodCompatibility": "pass, 15 controls and 712-row fixture",
+  "oldCohortCompatibility": "pass, 16 controls and 114-row fixture",
+  "initialCorrections": [
+    "A fixture expectation counted conflicting/unsupported profiles as recognized; corrected to five current ShapBot rows.",
+    "Concrete SQL exceeded the documented 100000-byte limit before literal-preserving indentation removal.",
+    "Local workerd accepted a 38-argument json_object; the new query was split to honor documented 32-argument contract before production.",
+    "An offline summary formatting syntax error was corrected without issuing any extra query."
+  ],
+  "sqlConcreteBytes": {
+    "preflight": 466,
+    "census": 98834,
+    "methods": 91166,
+    "context": 70965
+  },
+  "maximumNewJsonFunctionArguments": 32,
+  "literalWhitespaceAndEscapedQuotesPreserved": true,
+  "productionStatements": 4,
+  "reportedReads": 37655,
+  "reportedWrites": 0,
+  "agentRetries": 0,
+  "ownSiteRequests": 0,
+  "newHumanLabels": 0,
+  "sourceActivationRequired": false,
+  "article": {
+    "unchanged": true,
+    "words": 1375,
+    "prompts": 31,
+    "freshServedCheck": false
+  },
+  "privatePreflightPlan": {
+    "files": 12,
+    "manifestSha256": "2d393a1683b5d2ed0a5ffb965dd356c415d2d7254dd82d447128d25177d13270",
+    "beforeAnyProductionSelect": true
+  },
+  "privateMainPlan": {
+    "files": 7,
+    "manifestSha256": "b5c10b0ecaab254f23d8a68cf633e7a06b77eb601da652d17e673469a834951e",
+    "beforeMainStatements": true
+  },
+  "incomplete": [
+    "Exact retained input/receipt recovery for the DuckDuckBot signature-invalid and Exa verification-timeout records.",
+    "Original-wire cause of missing mode fields and actual Firefox/human labels.",
+    "Source-method distribution was not selected; no all-edge claim.",
+    "Review existing report construction against the documented function-argument limit without inferring a live failure."
+  ],
+  "privateDataArchive": {
+    "files": 53,
+    "manifestSha256": "52d436328613cdb9ab8c4bbbd5e0b697865a177b358dc725e0faa0903c7ad9bd",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "syntax": "pass",
+  "localLinks": "pass",
+  "closedPrivateFieldScan": "pass",
+  "markdownValidation": "pass",
+  "nativeSourceAndExecutedQueryCommitmentsMatch": true,
+  "sourceSha256": {
+    "packages/blog/scripts/check-post-census-delta.mjs": "6e03c16d2aa729a0cfb1de73d8dc5daf55d9c900056f5d78042873bc5528874c",
+    "packages/blog/scripts/check-retained-client-methods.mjs": "8284e3627ef647aa708e9b631772c3d1021e10317dbc6cb1a6763cebe8958c14",
+    "packages/blog/scripts/check-retained-cohort-context.mjs": "5a5adf2baab761c01eb83622343e2207af7c3f50d33894e8fa8efda9909c5ef5",
+    "packages/blog/scripts/check-retained-delta-reasons.mjs": "2713f37559af7825d42de5cc59830525dd0d88a6a8acb3650d588bc8d6d8b9fe"
+  },
+  "unchangedRuntimeSuites": "Phase 84: 292 analytics/117 site/type checks passed; not rerun for diagnostic-only JS and evidence. Current native/compatibility gates and script syntax are fresh."
+}

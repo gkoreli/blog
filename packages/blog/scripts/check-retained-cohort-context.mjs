@@ -60,9 +60,9 @@ export function prepare(kind, lower, upper) {
   const sql=kind==='methods'?METHOD_SQL:kind==='context'?CONTEXT_SQL:null;assert.ok(sql);
   const result=sql.replace(/\?/g,()=>`'${values[n++].replaceAll("'","''")}'`)+';\n';assert.equal(n,3);assert.ok(Buffer.byteLength(result)<=100000);return result;
 }
-export function validate(kind, rows) {
+export function validate(kind, rows, limits = PLAN) {
   const base=kind==='methods'?methodFields:reasonFields, added=kind==='methods'?['classifier_state']:contextFields;
-  assert.ok(kind==='methods'||kind==='context');assert.ok(Array.isArray(rows)&&rows.length<=PLAN.maximumGroups);
+  assert.ok(kind==='methods'||kind==='context');assert.ok(Array.isArray(rows)&&rows.length<=limits.maximumGroups);
   const seen=new Set(),reduced=new Map();
   const enums={classifier_state:profileStates,mode_state:['missing','recognized','unrecognized'],family_state:['chromium','firefox','webkit','unrecognized','not-recorded','malformed'],navigation_state:['incomplete','matches-retained-shape','does-not-match'],activation_state:['absent','true-claim','other-claim']};
   for(const row of rows) {
@@ -75,8 +75,8 @@ export function validate(kind, rows) {
     if(kind==='methods'&&['conflicting','unrecognized'].includes(row.classifier_state))assert.equal(row.declaration,'unrecognized');
     if(kind==='context'&&row.classifier_state!=='current')assert.equal(row.context_support,'inputs-not-assessed');
   }
-  const projected=[...reduced.values()];if(kind==='methods')validateClientMethods(projected);else validateReasons(projected);
-  assert.ok(rows.reduce((n,row)=>n+row.views,0)<=PLAN.maximumIdSpan);return rows;
+  const projected=[...reduced.values()];if(kind==='methods')validateClientMethods(projected,limits);else validateReasons(projected,limits.maximumGroups);
+  assert.ok(rows.reduce((n,row)=>n+row.views,0)<=limits.maximumIdSpan);return rows;
 }
 
 async function main() {
