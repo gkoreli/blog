@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T02:44:50.024826+00:00",
-  "sourceBaseline": "c379c79",
+  "checkedAt": "2026-10-29T03:04:39.923678+00:00",
+  "sourceBaseline": "2f202f462cb8a6a37df095f51daa13d1a8e701a8",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,20 +45,21 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Accept documented-feed activation and two scoped synthetic integration controls; then add versioned published-address receipt visibility. Human trials remain deferred.",
+  "nextBoundedAction": "Add versioned published-address receipt visibility with known historical projection compatibility. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1347,
     "prompts": 31,
     "sourceSha256": "2936fb16691e3c1b0e666a2d8209ed8cbdd2a7c361cad24be6017d659e4524d4",
     "unchanged": false,
-    "freshServedCheck": false,
-    "publicationReceipt": "documented-feeds-release.json"
+    "freshServedCheck": true,
+    "publicationReceipt": "documented-feeds-release.json",
+    "servedMatchesCheckedBuild": true
   },
   "runtimeUnchanged": false,
-  "productionStatements": 0,
-  "newVisits": 0,
+  "productionStatements": 1,
+  "newVisits": 2,
   "newHumanLabels": 0,
-  "liveAccountInspection": false,
+  "liveAccountInspection": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -85,10 +86,10 @@
     "disabledBeforeExpiryReceipt": "disabled-before-expiry-live.json",
     "disabledBeforeExpiryPublication": "disabled-before-expiry-release.json",
     "lastObservedRuleActive": false,
-    "ruleInspectionReference": "disabled-before-expiry-release.json; not re-inspected in the retained-data/publication slice"
+    "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the documented-feed slice. Current exact Worker optional capture bindings absent, independently checked in documented-feeds-release.json."
   },
-  "productionOwnSiteGets": 0,
-  "collectionEligibleGets": 0,
+  "productionOwnSiteGets": 3,
+  "collectionEligibleGets": 2,
   "ownerMarkPosts": 0,
   "retainedDelta": {
     "receipt": "retained-delta-production.json",
@@ -144,13 +145,28 @@
     "sourceReceipt": "documented-feeds-sources.json",
     "newSources": 5,
     "localAccepted": true,
-    "productionActivation": "pending",
+    "productionActivation": "accepted",
     "ipControls": 36,
     "concurrentMixedSources": 5,
     "collectorControls": 14,
     "historicalPayloadUnchanged": true,
     "newMetaAdsClaim": "other-bot",
     "MetaWebIndexerMethod": "not configured; checked primary page supplies no per-client method",
-    "nativeOrHumanAccuracyMeasured": false
-  }
+    "nativeOrHumanAccuracyMeasured": false,
+    "releaseReceipt": "documented-feeds-release.json",
+    "liveReceipt": "documented-feeds-live.json",
+    "syntheticIntegrationControls": 2,
+    "metaAdsStoredKind": "other-bot",
+    "amazonSearchAddressOutcome": "not-listed",
+    "amazonSearchSourceEntries": 816,
+    "networkAssessmentInReceipt": false,
+    "optionalCaptureBindingsAbsent": true
+  },
+  "productionReportedReads": 4,
+  "productionDiagnosticWrites": 0,
+  "normalIngestion": {
+    "acknowledgedApplicationRows": 2,
+    "providerWriteMetering": "not returned; additional to diagnostic meter"
+  },
+  "newVisitsScope": "Two synthetic HTTP integration controls, referral-excluded; not genuine vendor requests or human trials and not added to the twelve-trial calibration cohort."
 }

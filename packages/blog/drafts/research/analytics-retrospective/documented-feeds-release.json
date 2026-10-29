@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-29T02:41:14.241355+00:00",
+  "checkedAt": "2026-10-29T03:04:39.923678+00:00",
   "sourceBaseline": "c379c79",
-  "sourceCommit": null,
-  "publication": "pending",
+  "sourceCommit": "2f202f462cb8a6a37df095f51daa13d1a8e701a8",
+  "publication": "accepted",
   "collectionVersion": "2026-10-29.2",
   "classifierVersion": "2026-10-29.1",
   "verifierProfile": "2026-10-29.1",
@@ -27,11 +27,13 @@
   "article": {
     "bodyWhitespaceWords": 1347,
     "prompts": 31,
-    "freshServedCheck": false,
-    "checkedBuildMarkdownSha256": "a7158a02bba1fd4696a20b083cdded2b354e7b99bfdc13680c31014a236c12a3"
+    "freshServedCheck": true,
+    "checkedBuildMarkdownSha256": "a7158a02bba1fd4696a20b083cdded2b354e7b99bfdc13680c31014a236c12a3",
+    "servedMarkdownSha256": "a7158a02bba1fd4696a20b083cdded2b354e7b99bfdc13680c31014a236c12a3",
+    "servedMatchesCheckedBuild": true
   },
-  "productionDataStatements": 0,
-  "productionOwnSiteGets": 0,
+  "productionDataStatements": 1,
+  "productionOwnSiteGets": 3,
   "newHumanLabels": 0,
   "privateArchive": {
     "name": "2026-10-29-documented-feeds-native",
@@ -41,8 +43,8 @@
     "automaticDeletion": false,
     "modes": "0700/0600"
   },
-  "liveAcceptance": "planned separately: two labelled non-human integration GETs, one two-reference SELECT, optional raw capture off",
-  "nextBoundedAction": "Accept publication and scoped production controls; preserve unavailable/native/human/history limits, then extend receipt visibility to published-address assessments without rewriting old receipts.",
+  "liveAcceptance": "accepted; two synthetic referral-excluded controls, exact receipt/storage joins; no genuine vendor or human accuracy claim",
+  "nextBoundedAction": "Add a versioned published-address assessment to stored receipts, preserving known historical receipt projections. Human trials remain deferred; broader goal remains open.",
   "livePlanVersion": 2,
   "livePlanSha256": "2e548d0fff877b021ae9c94dac1deee875bee593fce74fb6c0d22bb55a6c3dca",
   "sourceSha256": {
@@ -55,5 +57,43 @@
     "packages/blog/src/worker/stats-cache.ts": "843c80b4f92448165333b29113d13bf523f5314ba6bcf7ef4f3b8379d0bfe15b",
     "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "2936fb16691e3c1b0e666a2d8209ed8cbdd2a7c361cad24be6017d659e4524d4",
     "packages/blog/scripts/check-expanded-vendor-methods.mjs": "53e14e0f99105f926d35fd0dbb9b880b4add42bd54fbf8c9f2df6fc4980024aa"
-  }
+  },
+  "rebasedOver": [
+    "741a382",
+    "5c0ba36"
+  ],
+  "incomingPublishedRuntimeOrDependencyChanges": false,
+  "sourceHashesRevalidatedAfterRebase": true,
+  "activation": {
+    "checkedAt": "2026-10-29T02:54:38.334678+00:00",
+    "sourceCommit": "2f202f462cb8a6a37df095f51daa13d1a8e701a8",
+    "buildId": "12b5b4b2-f731-45cb-a444-31c14f191b8a",
+    "workerVersion": "71b6e9e6-cbb3-4128-b91e-eaff86f19f72",
+    "allocationPercentage": 100,
+    "buildCompleted": true,
+    "optionalCaptureBindingsAbsent": true,
+    "agentRetries": 0,
+    "agentManualDeployments": 0
+  },
+  "productionReportedReads": 4,
+  "productionDiagnosticWrites": 0,
+  "collectionEligibleGets": 2,
+  "collectionIneligibleReadinessGets": 1,
+  "liveReceipt": "documented-feeds-live.json",
+  "livePrivateArchive": {
+    "name": "2026-10-29-documented-feeds-live",
+    "files": 30,
+    "capturedFiles": 29,
+    "manifestSha256": "29e153e7af384805218637270757a82e9cbb5cca569329fe107b8084a8a5e06f",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false,
+    "modes": "0700/0600"
+  },
+  "normalIngestion": {
+    "acknowledgedApplicationRows": 2,
+    "providerWriteMetering": "not returned; additional to diagnostic meter"
+  },
+  "ownedTailExited": true,
+  "ownedProcessGroupAbsent": true,
+  "dashboardAttribution": "Active version is Ready; source-linked Ready build row remains unlinked. Source/version attribution uses the full build page/log, CLI allocation metadata and exact-version live invocation. Dashboard shows conflicting active traffic text."
 }

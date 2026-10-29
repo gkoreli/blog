@@ -1,0 +1,83 @@
+{
+  "checkedAt": "2026-10-29T02:58:00.401Z",
+  "method": "Two synthetic agent-operated, referral-excluded UA claims; exact version/header-filtered invocation + attempt + stored-receipt + exact text D1 reference; not genuine vendor or human trials",
+  "workerVersion": "71b6e9e6-cbb3-4128-b91e-eaff86f19f72",
+  "ownSiteGetAttempts": 3,
+  "collectionIneligibleReadinessGets": 1,
+  "eligibleControls": 2,
+  "controls": [
+    {
+      "name": "meta-ads-claim",
+      "declaredClient": "Meta-ExternalAds",
+      "storedKind": "other-bot",
+      "collectionVersion": "2026-10-29.2",
+      "classifierProfile": "2026-10-29.1",
+      "signatureOutcome": "absent",
+      "verifierProfile": "2026-10-29.1",
+      "storedReceiptProjectionMatches": true,
+      "networkAssessmentInReceipt": false,
+      "networkProfile": "2026-10-29.1",
+      "networkAddressState": "usable",
+      "configuredDeclarations": 0,
+      "networkChecks": [],
+      "networkRecordConsistency": "recognized",
+      "nativeVerifiedBot": null,
+      "nativeSignedAgent": null,
+      "referralMatchesActiveExclusion": true,
+      "ownerMarked": false
+    },
+    {
+      "name": "amazon-search-claim",
+      "declaredClient": "Amzn-SearchBot",
+      "storedKind": "ai-search",
+      "collectionVersion": "2026-10-29.2",
+      "classifierProfile": "2026-10-29.1",
+      "signatureOutcome": "absent",
+      "verifierProfile": "2026-10-29.1",
+      "storedReceiptProjectionMatches": true,
+      "networkAssessmentInReceipt": false,
+      "networkProfile": "2026-10-29.1",
+      "networkAddressState": "usable",
+      "configuredDeclarations": 1,
+      "networkChecks": [
+        {
+          "source": "amazon-search",
+          "outcome": "not-listed",
+          "reason": null,
+          "prefixCount": 816,
+          "publisherVersion": "2026-09-08T05:24:10.610952Z"
+        }
+      ],
+      "networkRecordConsistency": "recognized",
+      "nativeVerifiedBot": null,
+      "nativeSignedAgent": null,
+      "referralMatchesActiveExclusion": true,
+      "ownerMarked": false
+    }
+  ],
+  "newHumanLabels": 0,
+  "publicReportFills": 0,
+  "diagnostic": {
+    "statements": 1,
+    "reportedReads": 4,
+    "reportedWrites": 0,
+    "reportedAttempts": 1,
+    "agentRetries": 0,
+    "postExecutionReviewThreshold": 100,
+    "serverEnforcedCap": false
+  },
+  "normalIngestion": {
+    "acknowledgedApplicationRows": 2,
+    "providerWriteMetering": "not returned; additional to diagnostic meter"
+  },
+  "ownedTailExited": true,
+  "ownedProcessGroupAbsent": true,
+  "servedArticleMatchesCheckedBuild": true,
+  "servedArticleSha256": "a7158a02bba1fd4696a20b083cdded2b354e7b99bfdc13680c31014a236c12a3",
+  "limits": [
+    "Stored network consistency was replayed offline with the same production SQL projector; no independent address/crypto/native-provider truth inferred",
+    "No public stats API or whole-data census requested",
+    "Raw inputs/operation IDs/exact row references remain private",
+    "Specific HTTP failure status or cached/fresh network request cannot be reconstructed beyond the retained source facts"
+  ]
+}
