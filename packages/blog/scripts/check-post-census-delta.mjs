@@ -25,8 +25,8 @@ const extra=['collection_stamp','classifier_stamp','directory_state'];
 const fields=[...core,...extra];
 // D1 documents at most 32 arguments per SQL function; local workerd accepts more.
 assert.ok((core.length+1)*2<=32&&extra.length*2<=32);
-const collectionStamps=['2026-10-29.1','2026-10-29.2','2026-10-29.3','2026-10-29.4','2026-10-29.5'];
-const classifierStamps=['2026-10-29.1','2026-10-29.2'];
+const collectionStamps=['2026-10-29.1','2026-10-29.2','2026-10-29.3','2026-10-29.4','2026-10-29.5','2026-10-29.6'];
+const classifierStamps=['2026-10-29.1','2026-10-29.2','2026-10-29.3'];
 const list=values=>values.map(v=>"'"+v+"'").join(',');
 function once(value,before,after){assert.equal(value.split(before).length,2,'Upstream query shape changed');return value.replace(before,after)}
 function bound(sql){return once(sql,'id<=CAST(? AS INTEGER))',`id<=CAST(? AS INTEGER) ORDER BY id LIMIT ${PLAN.maximumRows+1})`)}

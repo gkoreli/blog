@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-29T21:09:12.573Z",
+  "scriptsSyntaxChecked": 8,
+  "relativeResearchLinksChecked": 18,
+  "nativeSourceHashesMatch": true,
+  "frozenCountsReconciled": true,
+  "privateDailyIdsAndUnapprovedHostsAbsent": true,
+  "latestIterationCountersReconciled": true,
+  "privacyScanScope": "All changed source/evidence checked; the generic gist.github.com channel matcher is allowed in code without publishing an observed hostname dimension.",
+  "articleUnchanged": true,
+  "articleSha256": "7b44f831ba0d60113a5c6104f3de333ac842a9e5d1537e0833bec83151385a4e",
+  "productionBuildNeeded": false,
+  "reason": "Offline research helpers/evidence only; no Worker or post change.",
+  "productionReportedReads": 17745,
+  "productionWrites": 0,
+  "humanLabels": 0
+}

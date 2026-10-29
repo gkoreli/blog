@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-29T20:31:40.334Z",
+  "plan": {
+    "maximumIdSpan": 114,
+    "maximumGroups": 114,
+    "readReviewThreshold": 20000,
+    "databaseEnforcedReadCap": false,
+    "maximumStatements": 3,
+    "attemptsPerStatement": 1
+  },
+  "fixtureCases": 16,
+  "checks": {
+    "coherentHistoricalDeclarationsRetained": true,
+    "unreviewedProfileNotAuthenticated": true,
+    "conflictingProfilesSeparated": true,
+    "storedHistoricalReasonRetained": true,
+    "currentContextSupportScoped": true,
+    "exactLargeIds": true,
+    "privateValuesClosed": true,
+    "duplicateReorderedGroupsRejected": true,
+    "concreteMatchesParameterized": true
+  },
+  "scale": {
+    "rows": 114,
+    "methodReads": 9302,
+    "contextReads": 8056,
+    "totalReads": 17358,
+    "writes": 0
+  },
+  "control": {
+    "reads": 0,
+    "writes": 0
+  },
+  "sourceHashes": {
+    "methods": "643714a22e20f3cb219816933c80340e69f752eb65df1b4a9521c29c8c523fee",
+    "reasons": "9b261869f045d9a80c2d0636009b2c04389b980055cdbc8673c27ed3344254b8"
+  },
+  "templates": {
+    "methods": "5e459d3c1f6c7a2a7af48751c96ce4edff5a439edbb52aaad1f3843d306571d9",
+    "context": "bde33c36e7889dcc2280fc04cf02f0de19c8857fd57e6610f3bc7c4658526827"
+  },
+  "concreteBytes": {
+    "methods": 91859,
+    "context": 71374
+  },
+  "productionCalls": 0
+}

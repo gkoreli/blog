@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-10-29T20:32:30.084Z",
+  "plan": {
+    "maximumRows": 1024,
+    "maximumRowSourceBytes": 16384,
+    "maximumSourceBytes": 2000000,
+    "maximumProductionStatements": 2,
+    "attemptsPerStatement": 1,
+    "readReviewThresholdPerStatement": 10000,
+    "databaseEnforcedReadCap": false
+  },
+  "fixtureCases": 64,
+  "parsingCases": 25,
+  "transportNegativeControls": 17,
+  "exactLargeIdControl": true,
+  "maximumInt64Control": true,
+  "utf8ByteControl": true,
+  "concreteMatchesParameterized": true,
+  "allSelectedRowsReconciled": true,
+  "directAndFrozenAnalysisEqual": true,
+  "sourceAndOwnerReferralPrecedence": true,
+  "closedPublicValues": true,
+  "newReasonsRetained": true,
+  "nullScalarNotHeaderAbsence": true,
+  "encodingSummaryUsesPublicProjector": true,
+  "scale": {
+    "rows": 1024,
+    "preflightReads": 1024,
+    "exportReads": 1060,
+    "productionStyleCaptureReads": 2084,
+    "localAssessmentReads": 112985,
+    "nativeRepeatedAssessmentComparisonReads": 62825,
+    "comparisonScope": "Same fixed synthetic relation and preflight; three remote-style aggregate calculations versus one exported rowset with offline calculations. Not a measured production saving.",
+    "queryWrites": 0,
+    "sourceBytes": 1310960
+  },
+  "queryPlan": [
+    "SEARCH page_observations USING INTEGER PRIMARY KEY (rowid>? AND rowid<?)",
+    "CORRELATED SCALAR SUBQUERY 1",
+    "SEARCH owner_clients USING COVERING INDEX sqlite_autoindex_owner_clients_1 (daily_client_id=?)"
+  ],
+  "sqlBytes": {
+    "preflight": 1476,
+    "export": 743
+  },
+  "sourceHashes": {
+    "evidence-delta.mjs": "44ac8eb9302dd985f75ed07cd2ba26b345989e6092456036bf7baedf569c9fdd",
+    "check-evidence-delta.mjs": "f66d95c423ae9d801bbdac710a01a0c4fcf4731ae04a77c106590734cb6b7e86",
+    "check-post-census-delta.mjs": "2cb7cdc4a15a3ea80077820d833c05edf71c048ea584f64de129abf12314b730",
+    "check-retained-client-methods.mjs": "29467cc0260d7231e697a0a55e0391e51e841a75f731e6718842c852076e0bfe",
+    "check-retained-cohort-context.mjs": "76bf1d4d41d684a5119033527e23765c99b2628c69672b1d76473b61c151506b",
+    "check-retained-delta-reasons.mjs": "dfce948b951286b5032b39d609376206b68c8ab0a2f97e0edb58236db1185794"
+  },
+  "productionCalls": 0,
+  "humanLabels": 0
+}

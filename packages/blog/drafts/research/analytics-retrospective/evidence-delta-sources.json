@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-29T21:06:41.596158+00:00",
+  "sources": [
+    {
+      "url": "https://developers.cloudflare.com/d1/platform/limits/",
+      "supports": "Bound SQL and row/argument work; native checks precede production."
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/worker-api/return-object/",
+      "supports": "Statement meta.rows_read/rows_written are metered work, not readership."
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/best-practices/read-replication/",
+      "supports": "Separate CLI statements are not a held observation snapshot; the validated export is the analysis input."
+    },
+    {
+      "url": "https://www.sqlite.org/lang_select.html#orderby",
+      "supports": "ORDER BY aliases can change ordering; qualify the integer source ID when exporting CAST(id AS TEXT). Native tests exercise IDs beyond JavaScript safe integers."
+    },
+    {
+      "path": "85-post-census-delta-and-diagnostic-contracts.md",
+      "supports": "Prior interval and exact private upper bound."
+    }
+  ]
+}

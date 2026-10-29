@@ -19,7 +19,7 @@ const reasonFields = ['inclusion','stored_kind','local_state','unresolved_reason
 const contextFields = ['classifier_state','mode_state','family_state','navigation_state','activation_state'];
 const profileStates = ['current','other-recorded','conflicting','unrecognized','not-recorded'];
 const profile = "json_extract(classification_evidence,'$.classifierProfile')";
-const profileValid = `json_extract(classification_evidence,'$.version') IN ('2026-10-27.2','2026-10-29.1') AND json_type(classification_evidence,'$.classifierProfile')='text' AND length(${profile}) BETWEEN 1 AND 32`;
+const profileValid = `json_extract(classification_evidence,'$.version') IN ('2026-10-27.2','2026-10-29.1','2026-10-29.2') AND json_type(classification_evidence,'$.classifierProfile')='text' AND length(${profile}) BETWEEN 1 AND 32`;
 const profileState = `CASE WHEN classification_evidence IS NULL THEN 'not-recorded'
  WHEN NOT COALESCE((${profileValid}),0) OR classifier_version IS NULL THEN 'unrecognized'
  WHEN ${profile} IS NOT classifier_version THEN 'conflicting'
@@ -50,7 +50,7 @@ reasons = replaceOnce(reasons, 'projected AS (SELECT', `projected AS (SELECT ${p
  CASE WHEN classification_evidence IS NULL THEN 'not-recorded' WHEN json_extract(classification_evidence,'$.declarations.browserFamily') IN ('chromium','firefox','webkit','unrecognized') THEN json_extract(classification_evidence,'$.declarations.browserFamily') ELSE 'malformed' END AS family_state,
  CASE WHEN sec_fetch_mode IS NULL OR sec_fetch_dest IS NULL OR accepts_html IS NULL OR has_accept_language IS NULL THEN 'incomplete'
  WHEN sec_fetch_mode='navigate' AND sec_fetch_dest='document' AND accepts_html=1 AND has_accept_language=1 THEN 'matches-retained-shape' ELSE 'does-not-match' END AS navigation_state,
- CASE WHEN sec_fetch_user IS NULL THEN 'absent' WHEN sec_fetch_user=1 THEN 'true-claim' ELSE 'other-claim' END AS activation_state,`);
+ CASE WHEN sec_fetch_user IS NULL THEN 'not-retained' WHEN sec_fetch_user=1 THEN 'true-claim' ELSE 'other-claim' END AS activation_state,`);
 export const CONTEXT_SQL = replaceTail(reasons, reasonFields, [...contextFields,...reasonFields], 257);
 
 export function prepare(kind, lower, upper) {
@@ -64,7 +64,7 @@ export function validate(kind, rows, limits = PLAN) {
   const base=kind==='methods'?methodFields:reasonFields, added=kind==='methods'?['classifier_state']:contextFields;
   assert.ok(kind==='methods'||kind==='context');assert.ok(Array.isArray(rows)&&rows.length<=limits.maximumGroups);
   const seen=new Set(),reduced=new Map();
-  const enums={classifier_state:profileStates,mode_state:['missing','recognized','unrecognized'],family_state:['chromium','firefox','webkit','unrecognized','not-recorded','malformed'],navigation_state:['incomplete','matches-retained-shape','does-not-match'],activation_state:['absent','true-claim','other-claim']};
+  const enums={classifier_state:profileStates,mode_state:['missing','recognized','unrecognized'],family_state:['chromium','firefox','webkit','unrecognized','not-recorded','malformed'],navigation_state:['incomplete','matches-retained-shape','does-not-match'],activation_state:['not-retained','true-claim','other-claim']};
   for(const row of rows) {
     assert.deepEqual(Object.keys(row).sort(),[...added,...base,'views'].sort());
     for(const field of added) assert.ok(enums[field].includes(row[field]),field);

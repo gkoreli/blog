@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-29T20:19:58.650503+00:00",
-  "sourceBaseline": "5247fc4830ca616f4d12bc398cae9dc61ad85e6b",
+  "checkedAt": "2026-10-29T21:08:38.513868+00:00",
+  "sourceBaseline": "c0f2ce46dfe40d6eac0f1ea991262b101ba9e0a5",
   "goalAchieved": false,
   "previousTurn": "progress",
-  "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
+  "scope": "Research 93 frozen new-ID audit plus owner-directed Research 94 readership/editorial analysis; original correctness requirements retained. Latest top-level counters describe only these two slices.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -40,29 +40,30 @@
     "Human/device/actual-JavaScript-off and Cloudflare RUM-receipt measurements",
     "R1 operator/authenticity/trigger attribution",
     "Historical proof/nonce recovery and whole-history cryptographic correctness",
-    "Applicable privacy basis, aggregate-preserving retention, rights/contact and account/provider review"
+    "Applicable privacy basis, aggregate-preserving retention, rights/contact and account/provider review",
+    "Authenticated search query/page comparisons, sustained readership and article-attributed usefulness/following; owner-facing article/source growth view remains prepared, not implemented."
   ],
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Native-test and freeze the next new-ID delta from Research 85\u2019s upper bound, keeping collection/classifier profiles distinct. Reuse saved evidence before bounded exact-context recovery. Human trials stay deferred.",
+  "nextBoundedAction": "Authenticated Search Console page/query comparisons when the owner signs in; independently prepare the article-focused completed-week/source-concentration report against frozen evidence, with native read/cache acceptance. Do not substitute bot-catalogue expansion for editorial decisions. Human trials stay deferred.",
   "article": {
     "bodyWhitespaceWords": 1450,
     "prompts": 31,
     "sourceSha256": "7b44f831ba0d60113a5c6104f3de333ac842a9e5d1537e0833bec83151385a4e",
-    "unchanged": false,
-    "freshServedCheck": true,
+    "unchanged": true,
+    "freshServedCheck": false,
     "publicationReceipt": "public-parsing-release.json",
     "servedMatchesCheckedBuild": true,
     "lastServedCheckReceipt": "public-parsing-release.json",
-    "publicationStatus": "Research 92 concise Browser signals/history sentence published; exact served direct Markdown matches the isolated build at 1450 words/31 prompts.",
+    "publicationStatus": "Unchanged at 1450 words/31 prompts. Last accepted served Markdown remains Research 92; no new publication/served claim in Research 93/94.",
     "previousPublicationReceipt": "metadata-collector-release.json",
     "servedMatchScope": "Exact direct Markdown. Stats new section/JS/CSS also checked separately; no production browser layout or full HTML equality claim.",
     "localBuildAccepted": true,
     "localBuildReceipt": "public-parsing-checks.json"
   },
-  "runtimeUnchanged": false,
-  "productionStatements": 1,
+  "runtimeUnchanged": true,
+  "productionStatements": 5,
   "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
@@ -94,7 +95,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 1,
+  "productionOwnSiteGets": 0,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -169,13 +170,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 8,
+  "productionReportedReads": 17745,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No collection-eligible own-site request; no D1 ingestion readback. Natural/provider activity remains additional."
   },
-  "newVisitsScope": "Four one-attempt controlled curl GETs, all referral-excluded, plus one separate ineligible direct Markdown publication GET. No included readership/human visit or JavaScript execution.",
+  "newVisitsScope": "No own-site visits, collector trials, report fills, human labels or new collection in Research 93/94. Earlier live/publication/control cohorts retain their own receipts.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -381,7 +382,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Source/build/version linkage for actual collector controls and separately for article publication; one exact four-ID SELECT. Optional capture bindings remain absent; no configuration or native entitlement change.",
+  "liveAccountInspectionScope": "Fresh same-binding Wrangler queries/metadata for the audits and signed-out Google account page observed in IAB. No authenticated Search Console property, account setting, entitlement or native verdict changed.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -628,9 +629,9 @@
     "exactRetainedRequestVersionMatched": true,
     "liveEmptyCounters": 44
   },
-  "productionDirectDiagnosticSelects": 1,
+  "productionDirectDiagnosticSelects": 5,
   "productionReportCalculations": 0,
-  "productionReadScope": "One exact four-ID native-tested Wrangler --command SELECT, eight reported reads and zero diagnostic writes; ordinary collector insert work is additional. No broad population read.",
+  "productionReadScope": "Research 93 two frozen new-ID SELECTs: 194 reads. Research 94 two Browser window SELECTs: 17548; one aggregate subscriber SELECT: 3. All one agent/provider attempt, zero writes. No whole-table census or search-query data refreshed.",
   "unresolvedMetadata": {
     "research": "88-unresolved-metadata-and-retained-inputs.md",
     "production": "unresolved-metadata-production.json",
@@ -658,7 +659,7 @@
     "checks": "unresolved-metadata-checks.json",
     "release": "unresolved-metadata-release.json"
   },
-  "runtimeUnchangedScope": "Research 91 changes offline research helpers and one article paragraph; production collector, classifier, verifier, report, schema and optional settings remain unchanged.",
+  "runtimeUnchangedScope": "Research 93/94 change offline diagnostic helpers, evidence and the decision brief; production collector/classifier/verifier/report/schema/configuration and article remain unchanged.",
   "localMetadataRelay": {
     "research": "89-local-browser-relays-and-fetch-metadata.md",
     "experiment": "local-metadata-relay-experiment.json",
@@ -717,7 +718,7 @@
     "productionCollectorReadbackReceipt": "metadata-collector-production.json",
     "productionCollectorReadbackScope": "Four matched requests on d65be377; the later article-only publication Worker is accepted separately, without repeating collector trials."
   },
-  "newControlledRequests": 4,
+  "newControlledRequests": 0,
   "liveMetadataControls": {
     "research": "91-live-metadata-controls-and-redacted-correlation.md",
     "native": "metadata-collector-native.json",
@@ -762,7 +763,61 @@
     "warmCache": "HIT",
     "populationPrevalenceMeasured": false
   },
-  "ownSiteGetRequests": 6,
+  "ownSiteGetRequests": 0,
   "collectionEligibleRequests": 0,
-  "diagnosticSelects": 0
+  "diagnosticSelects": 5,
+  "evidenceDelta": {
+    "research": "93-frozen-delta-and-reusable-evidence.md",
+    "production": "evidence-delta-production.json",
+    "native": "evidence-delta-native.json",
+    "rows": 97,
+    "included": 93,
+    "priorExcludedControls": 4,
+    "selectedFields": 31,
+    "reportedReads": 194,
+    "reportedWrites": 0,
+    "statements": 2,
+    "newHumanLabels": 0,
+    "newProofReplays": 0,
+    "wholeTableRefreshed": false
+  },
+  "readerDecisions": {
+    "research": "94-reader-growth-and-editorial-decisions.md",
+    "production": "audience-audit-production.json",
+    "native": "audience-audit-native.json",
+    "reanalysis": "audience-audit-reanalysis.json",
+    "window": {
+      "start": "2026-10-01 00:00:00",
+      "end": "2026-10-29 00:00:00"
+    },
+    "rawBrowserRows": 1463,
+    "includedBrowserRows": 1429,
+    "ownerExcluded": 34,
+    "weekly": [
+      235,
+      253,
+      312,
+      629
+    ],
+    "weeklyOutsideR1": [
+      235,
+      251,
+      305,
+      241
+    ],
+    "humanGrowthEstablished": false,
+    "sourcePolicyChanged": false,
+    "searchQueriesMeasured": false,
+    "searchConsole": "Signed out, owner sign-in requested; no reply yet",
+    "subscriberActive": 1,
+    "activeCreatedInWindow": 0,
+    "activeLatestConfirmedInWindow": 0,
+    "reportedReads": 17551,
+    "reportedWrites": 0,
+    "statements": 3,
+    "runtimeChanged": false,
+    "articleChanged": false,
+    "sourceAwareReportImplemented": false,
+    "privateDataManifestSha256": "cdb08bd84b2ff00c05fc60174dfe23d73c5297245b3f660fa496ad2206a4a23e"
+  }
 }

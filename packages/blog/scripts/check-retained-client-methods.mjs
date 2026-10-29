@@ -28,7 +28,7 @@ const signingNames = new Set(VENDOR_SIGNATURE_METHODS.flatMap(method => method.d
 export const methodMask = name => (ipNames.has(name) ? 1 : 0) + (signingNames.has(name) ? 2 : 0);
 const d = key => `json_extract(classification_evidence,'$.declarations.${key}')`;
 const dt = key => `json_type(classification_evidence,'$.declarations.${key}')`;
-const declarationValid = `COALESCE(json_extract(classification_evidence,'$.version') IN ('2026-10-27.2','2026-10-29.1')
+const declarationValid = `COALESCE(json_extract(classification_evidence,'$.version') IN ('2026-10-27.2','2026-10-29.1','2026-10-29.2')
  AND json_extract(classification_evidence,'$.classifierProfile')='${CLASSIFIER_VERSION}'
  AND ${dt('candidates')}='array' AND json_array_length(classification_evidence,'$.declarations.candidates')<=${names.length}
  AND NOT EXISTS(SELECT 1 FROM json_each(classification_evidence,'$.declarations.candidates') AS candidate WHERE candidate.type<>'text' OR candidate.value NOT IN (${list(names)}))

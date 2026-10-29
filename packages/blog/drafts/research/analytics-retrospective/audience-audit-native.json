@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-29T21:05:52.367Z",
+  "plan": {
+    "maximumRows": 4096,
+    "maximumSourceBytes": 1500000,
+    "maximumRowSourceBytes": 8192,
+    "maximumStatements": 2,
+    "agentAttempts": 1,
+    "readReviewThresholdPerStatement": 100000,
+    "databaseEnforcedReadCap": false
+  },
+  "window": {
+    "start": "2026-10-01 00:00:00",
+    "end": "2026-10-29 00:00:00"
+  },
+  "cases": 13,
+  "transportNegativeControls": 12,
+  "calendarBoundaries": true,
+  "ownerAndReferralPrecedence": true,
+  "internalNullHostNotDirect": true,
+  "explicitSensitivityIndependentOfDisplayApproval": true,
+  "repetitionIsNotHumanIdentity": true,
+  "invalidTimeExplicit": true,
+  "concreteMatchesParameterized": true,
+  "scale": {
+    "tableRows": 32768,
+    "selectedRows": 4096,
+    "preflightReads": 4096,
+    "exportReads": 4096,
+    "totalReads": 8192,
+    "writes": 0
+  },
+  "queryPlan": [
+    "SEARCH page_observations USING INDEX idx_page_observations_observed_at (observed_at>? AND observed_at<?)",
+    "CORRELATED SCALAR SUBQUERY 1",
+    "SEARCH owner_clients USING COVERING INDEX sqlite_autoindex_owner_clients_1 (daily_client_id=?)"
+  ],
+  "sqlBytes": {
+    "preflight": 877,
+    "export": 561
+  },
+  "sourceHashes": {
+    "audience-audit.mjs": "fc266655b53ec60803a48edaa6d3a987a7b27edc392f99bb94f325a94db7e94a",
+    "check-audience-audit.mjs": "d2b93128f8aa47324cc81f0a8feff7e0b5d7ddeba5d9db4fae61d2416784f42d"
+  },
+  "policySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+  "productionCalls": 0,
+  "humanLabels": 0
+}

@@ -1,0 +1,322 @@
+{
+  "checkedAt": "2026-10-29T20:35:51.383Z",
+  "sourceBaseline": "c0f2ce46dfe40d6eac0f1ea991262b101ba9e0a5",
+  "scope": "Every retained row above the Research 85 upper ID through the accepted new upper ID; single frozen export, no fresh whole-table count.",
+  "baselineReceipt": "post-census-delta-production.json",
+  "baselineEventCutoff": "2026-10-29 16:47:57",
+  "transportFields": 31,
+  "rowsValidated": 97,
+  "storedTimes": {
+    "rows": 97,
+    "detailedRows": 97,
+    "firstObservedAt": "2026-10-29 16:48:53",
+    "lastObservedAt": "2026-10-29 20:33:06"
+  },
+  "summary": {
+    "rows": 97,
+    "inclusion": {
+      "included": 93,
+      "referral-excluded": 4
+    },
+    "included": {
+      "time_scope": {
+        "at-or-after-baseline-event-cutoff": 93
+      },
+      "stored_kind": {
+        "ai-crawler": 4,
+        "ai-search": 5,
+        "browser": 14,
+        "cloud-browser": 21,
+        "other-bot": 42,
+        "search-crawler": 2,
+        "seo-crawler": 1,
+        "unresolved": 4
+      },
+      "collection_state": {
+        "other-recorded": 77,
+        "current": 16
+      },
+      "classifier_state": {
+        "other-recorded": 77,
+        "current": 16
+      },
+      "evidence_state": {
+        "detailed-record": 93
+      },
+      "local_state": {
+        "absent": 89,
+        "verified": 3,
+        "unverified": 1
+      },
+      "basis": {
+        "unsigned": 89,
+        "verified-ua-uncovered": 3,
+        "not-verified": 1
+      },
+      "profile": {
+        "2026-10-29.1": 93
+      },
+      "native_state": {
+        "unavailable": 93
+      },
+      "vendor_state": {
+        "not-configured": 10,
+        "matching-origin": 2,
+        "no-declaration": 81
+      },
+      "network_state": {
+        "recognized": 93
+      },
+      "binding_mask": {
+        "0": 90,
+        "8": 3
+      },
+      "native_mask": {
+        "0": 93
+      },
+      "network_mask": {
+        "0": 88,
+        "1": 5
+      },
+      "collection_stamp": {
+        "2026-10-29.5": 77,
+        "2026-10-29.6": 16
+      },
+      "classifier_stamp": {
+        "2026-10-29.2": 77,
+        "2026-10-29.3": 16
+      },
+      "directory_state": {
+        "not-configured": 9,
+        "matching-publisher": 3,
+        "no-declaration": 81
+      }
+    },
+    "all": {
+      "time_scope": {
+        "at-or-after-baseline-event-cutoff": 97
+      },
+      "stored_kind": {
+        "ai-crawler": 4,
+        "ai-search": 5,
+        "browser": 16,
+        "cloud-browser": 21,
+        "other-bot": 42,
+        "search-crawler": 2,
+        "seo-crawler": 1,
+        "unresolved": 6
+      },
+      "collection_state": {
+        "other-recorded": 77,
+        "current": 20
+      },
+      "classifier_state": {
+        "other-recorded": 77,
+        "current": 20
+      },
+      "evidence_state": {
+        "detailed-record": 97
+      },
+      "local_state": {
+        "absent": 93,
+        "verified": 3,
+        "unverified": 1
+      },
+      "basis": {
+        "unsigned": 93,
+        "verified-ua-uncovered": 3,
+        "not-verified": 1
+      },
+      "profile": {
+        "2026-10-29.1": 97
+      },
+      "native_state": {
+        "unavailable": 97
+      },
+      "vendor_state": {
+        "not-configured": 10,
+        "matching-origin": 2,
+        "no-declaration": 85
+      },
+      "network_state": {
+        "recognized": 97
+      },
+      "binding_mask": {
+        "0": 94,
+        "8": 3
+      },
+      "native_mask": {
+        "0": 97
+      },
+      "network_mask": {
+        "0": 92,
+        "1": 5
+      },
+      "collection_stamp": {
+        "2026-10-29.5": 77,
+        "2026-10-29.6": 20
+      },
+      "classifier_stamp": {
+        "2026-10-29.2": 77,
+        "2026-10-29.3": 20
+      },
+      "directory_state": {
+        "not-configured": 9,
+        "matching-publisher": 3,
+        "no-declaration": 85
+      }
+    }
+  },
+  "metadata": {
+    "raw": {
+      "records": {
+        "recognizedViews": 20,
+        "notRecordedViews": 77,
+        "unrecognizedViews": 0,
+        "inconsistentViews": 0
+      },
+      "fields": {
+        "mode": {
+          "notAssessedViews": 77,
+          "absentViews": 10,
+          "validViews": 9,
+          "unrecognizedViews": 1,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 1
+        },
+        "destination": {
+          "notAssessedViews": 77,
+          "absentViews": 10,
+          "validViews": 10,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        },
+        "site": {
+          "notAssessedViews": 77,
+          "absentViews": 10,
+          "validViews": 10,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        },
+        "activation": {
+          "notAssessedViews": 77,
+          "absentViews": 11,
+          "validViews": 8,
+          "unrecognizedViews": 0,
+          "invalidViews": 1,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        }
+      },
+      "activation": {
+        "trueClaimViews": 8,
+        "falseValueViews": 0
+      }
+    },
+    "included": {
+      "records": {
+        "recognizedViews": 16,
+        "notRecordedViews": 77,
+        "unrecognizedViews": 0,
+        "inconsistentViews": 0
+      },
+      "fields": {
+        "mode": {
+          "notAssessedViews": 77,
+          "absentViews": 10,
+          "validViews": 6,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        },
+        "destination": {
+          "notAssessedViews": 77,
+          "absentViews": 10,
+          "validViews": 6,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        },
+        "site": {
+          "notAssessedViews": 77,
+          "absentViews": 10,
+          "validViews": 6,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        },
+        "activation": {
+          "notAssessedViews": 77,
+          "absentViews": 11,
+          "validViews": 5,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        }
+      },
+      "activation": {
+        "trueClaimViews": 5,
+        "falseValueViews": 0
+      }
+    }
+  },
+  "observationSources": {
+    "raw": {
+      "edge": 97
+    },
+    "included": {
+      "edge": 93
+    }
+  },
+  "excludedControlLinkage": {
+    "rows": 4,
+    "matchedArchivedFieldsPerRow": 23,
+    "sourceManifestSha256": "bce8d7c17de111bb10ed5a37431abb0f3f06a58d1fad72e2fe45ad94d3d14860",
+    "sourceRowsSha256": "bab656c854e5ed1b25948154e8a2a1994e939fccb87ec7ce44a4cdc62c26cad5",
+    "allExcludedRowsArePreviouslyAcceptedCurlControls": true
+  },
+  "production": {
+    "statements": 2,
+    "agentAttemptsPerStatement": 1,
+    "reportedReads": 194,
+    "reportedWrites": 0,
+    "meters": [
+      {
+        "kind": "preflight",
+        "rowsReturned": 1,
+        "reportedRowsRead": 97,
+        "reportedRowsWritten": 0,
+        "providerTotalAttempts": 1,
+        "agentAttempts": 1,
+        "thresholdNotServerCap": true
+      },
+      {
+        "kind": "export",
+        "rowsReturned": 97,
+        "reportedRowsRead": 97,
+        "reportedRowsWritten": 0,
+        "providerTotalAttempts": 1,
+        "agentAttempts": 1,
+        "thresholdNotServerCap": true
+      }
+    ]
+  },
+  "privatePlanManifests": [
+    "16736fd41eaa07a516a4de8be0a09d8a0755af22ddec2ec5002dd37c9b029d97",
+    "54bf0a26b896d0541c98b8ebd3293ec07d142ec5cd4f5da58aabb7fad468e00e"
+  ],
+  "privateDataManifestSha256": "e0a88595501eb04ebaafa13e0dda9fbc7be45178c9f39f905a27e35603b6b3d9",
+  "humanLabels": 0,
+  "newProofReplays": 0,
+  "heldDatabaseSnapshot": false,
+  "metadataCorrection": "Transport field count is derived from the selected field list (31); an earlier private summary said 32. Source rows and assessments are unchanged."
+}

@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-10-29T20:26:57.456Z",
+  "sourceBaseline": "e405f55",
+  "plan": {
+    "maximumRows": 2048,
+    "maximumDetailedRows": 2048,
+    "maximumReferralLabels": 8192,
+    "maximumGroups": 2048,
+    "maximumStatements": 4,
+    "attemptsPerStatement": 1,
+    "postExecutionReadReviewThreshold": 500000,
+    "databaseEnforcedReadCap": false
+  },
+  "fixtureCases": 16,
+  "checks": {
+    "compactAndLegacyDeclarations": true,
+    "unrecognizedAndConflictingProfiles": true,
+    "coherentOlderDeclarations": true,
+    "contextSupport": true,
+    "ownerAndReferralPrecedence": true,
+    "backdatedFutureAndInvalidEventTimes": true,
+    "negativeAndZeroIdsExcludedFromPositiveDelta": true,
+    "exactLargeIds": true,
+    "concreteMatchesParameterized": true,
+    "duplicateAndPrivateValuesRejected": true,
+    "sentinelRejected": true
+  },
+  "scale": {
+    "rows": 2048,
+    "preflightReads": 2048,
+    "censusReads": 61083,
+    "methodReads": 49051,
+    "contextReads": 18079,
+    "totalReads": 130261,
+    "writes": 0
+  },
+  "queryPlan": [
+    "CO-ROUTINE (subquery-1)",
+    "SEARCH page_observations USING INTEGER PRIMARY KEY (rowid>?)",
+    "SCAN (subquery-1)"
+  ],
+  "sqlHashes": {
+    "preflight": "721b9de18578ccdc9f302d912da73aecb7ba1cf870702ebd8ac2c4a7de067b35",
+    "census": "5cbc81af33aca4a91dcbeaef85da506b3fc55035c6357d914211ed280f18fe07",
+    "methods": "45400f5ab1e93c3f399ef3fc309fb09fecc7a2181cc29ed87672c589d7be436e",
+    "context": "e24bdce6693ed0f4f5b1051eec6431c653bcc99899f6acbb3ec5f7583b8db9f9"
+  },
+  "scriptSha256": "2cb7cdc4a15a3ea80077820d833c05edf71c048ea584f64de129abf12314b730",
+  "productionCalls": 0
+}

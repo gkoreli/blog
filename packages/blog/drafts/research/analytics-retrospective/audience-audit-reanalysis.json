@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-10-29T21:05:46.175Z",
+  "frozenRows": 1463,
+  "productionCalls": 0,
+  "allExistingMetricsEqual": true,
+  "explicitSensitivityCohort": true,
+  "policySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+  "oldAnalysisSha256": "f49670ceada1eb4c7504b647e92b3dbdeafdf70ef09c9258178a0dc518ae2365",
+  "finalAnalysisSha256": "3ea1471a7f7d428a3c69d288b5355d087502c3a3cb1495d1cac68e04a7817e73",
+  "dailyIdsAbsentFromAggregate": true
+}

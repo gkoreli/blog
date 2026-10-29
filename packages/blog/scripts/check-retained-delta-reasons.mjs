@@ -11,7 +11,7 @@ import { referralAssessmentCtes, referralRulesJson } from '../../analytics/.test
 import { ACTIVE_REFERRAL_POLICY } from '../../analytics/.test-dist/referral-policy.generated.js';
 import { summaryCases } from '../../analytics/test/fixtures/signature-summary.mjs';
 
-export const UNRESOLVED_REASONS = ['multiple-client-declarations','unrecognized-browser-claim','request-context-conflict','fetch-metadata-unrecognized','fetch-metadata-absent','fetch-metadata-support-unknown','network-evidence-missing'];
+export const UNRESOLVED_REASONS = ['multiple-client-declarations','unrecognized-browser-claim','request-context-conflict','fetch-metadata-unrecognized','fetch-metadata-invalid','fetch-metadata-policy-limit','fetch-metadata-unassessed','fetch-metadata-absent','fetch-metadata-support-unknown','network-evidence-missing'];
 export const OUTCOMES = ['invalid','unsupported','unavailable','policy-rejected','not-applicable','indeterminate'];
 const list = values => values.map(v=>`'${v}'`).join(',');
 export const REASON_SQL = `WITH RECURSIVE

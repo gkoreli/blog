@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-29T21:06:41.596158+00:00",
+  "sources": [
+    {
+      "url": "https://support.google.com/webmasters/answer/7576553",
+      "supports": "Queries, pages, clicks, impressions, CTR and position are separate dimensions/metrics in Search Console; no site query data was available in this audit."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "supports": "Write for an intended audience with useful original evidence and firsthand experience; does not promise ranking gains."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#section-10.1.3",
+      "supports": "Referer can be omitted or reduced; absence cannot reconstruct acquisition origin."
+    },
+    {
+      "path": "../../../../../docs/adr/0016.1-analytics-purpose-and-decision-loop.md",
+      "supports": "Analytics must support editorial/distribution decisions; requests and daily pseudonyms do not establish people."
+    },
+    {
+      "path": "03-wrangler-followup.md",
+      "supports": "Earlier R1 metadata/context findings and unresolved attribution; no automatic source exclusion."
+    }
+  ],
+  "publicVendorIdentityPromotion": false,
+  "privateVendorReview": "Public crawler/method/about pages inspected; public identity statements do not authenticate the stored browser-classified referrer cohort. URLs and review remain in the private owner brief.",
+  "searchConsoleAuthenticated": false
+}
