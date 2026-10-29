@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-29T07:02:40.222Z",
+  "plan": {
+    "maximumCandidates": 201,
+    "maximumStatements": 2,
+    "attemptsPerStatement": 1,
+    "postExecutionReadReviewThreshold": 200000,
+    "databaseEnforcedReadCap": false
+  },
+  "sqlSha256": "ff0c4c2592fc3b76ecf508b068353621e5e294e8e4bac90347f43e971985e984",
+  "scale": {
+    "rows": 65536,
+    "candidates": 201,
+    "reads": 402,
+    "writes": 0
+  },
+  "queryPlan": [
+    "SEARCH page_observations USING INDEX idx_page_observations_observed_at (observed_at>? AND observed_at<?)",
+    "USE TEMP B-TREE FOR ORDER BY"
+  ],
+  "checks": {
+    "empty": true,
+    "negativeAndZeroIds": true,
+    "ownerRecordPreserved": true,
+    "exactDateBoundaries": true,
+    "nonClaimsExcluded": true,
+    "concreteMatchesParameterized": true,
+    "duplicateAndUnsafeIdsRejected": true,
+    "contradictoryEvidenceRejected": true,
+    "impossibleTimeRejected": true,
+    "adjacentLargeIds": true,
+    "overLimitRejected": true,
+    "constantAccessControl": true
+  },
+  "productionCalls": 0
+}

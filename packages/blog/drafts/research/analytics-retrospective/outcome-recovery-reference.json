@@ -1,0 +1,66 @@
+{
+  "checkedAt": "2026-10-29T15:05:54.613003+00:00",
+  "sourceCommit": "1de433d9a49fd608475c6054ab14a1652c088844",
+  "sourceFilesRechecked": 18,
+  "recordedClock": true,
+  "keyResolver": "per-trial captured publisher keys by RFC thumbprint",
+  "maxAgeSeconds": 86400,
+  "referenceCalls": 224,
+  "externalRequests": 0,
+  "limits": [
+    "Generic RFC verification; discovery, publisher registration and Web Bot Auth admission are separate.",
+    "An exception is not a complete census of valid candidates; this cohort has one eligible candidate per request."
+  ],
+  "groups": [
+    {
+      "vendor": "exa",
+      "variant": "retained-original",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null,
+      "contexts": 152
+    },
+    {
+      "vendor": "ahrefs",
+      "variant": "retained-original",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null,
+      "contexts": 68
+    },
+    {
+      "vendor": "exa",
+      "variant": "changed-authority",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature",
+      "contexts": 1
+    },
+    {
+      "vendor": "exa",
+      "variant": "changed-unsigned-role-and-path",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null,
+      "contexts": 1
+    },
+    {
+      "vendor": "ahrefs",
+      "variant": "changed-authority",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature",
+      "contexts": 1
+    },
+    {
+      "vendor": "ahrefs",
+      "variant": "changed-unsigned-role-and-path",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null,
+      "contexts": 1
+    }
+  ],
+  "privateFullResultSha256": "951435339670d0821c4304b5d6d5d3f04871e8037bfd535982a2d93aea994c52",
+  "privateInputSha256": "93566429f12ee97f90c9164f39d47b91b34f9c32a9b837880284a5eafe6b394b"
+}

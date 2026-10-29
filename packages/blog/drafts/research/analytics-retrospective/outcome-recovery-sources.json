@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-10-29T15:14:24.825641+00:00",
+  "sources": [
+    {
+      "name": "query-builder",
+      "url": "https://developers.cloudflare.com/workers/observability/query-builder/index.md",
+      "status": 200,
+      "exitCode": 0,
+      "attempts": 1,
+      "bytes": 13037,
+      "sha256": "80066fcffcec63caeb4e7915a630a502cb599ae3cfa30728e347435f521bf443"
+    },
+    {
+      "name": "workers-logs",
+      "url": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/index.md",
+      "status": 200,
+      "exitCode": 0,
+      "attempts": 1,
+      "bytes": 13408,
+      "sha256": "7902a6e63cc96baaa3b89fbdbbb960997bb78d3629de9248a29e87376e5b85b1"
+    }
+  ],
+  "apiDocumentationAttempt": {
+    "url": "https://developers.cloudflare.com/api/resources/workers/subresources/observability/",
+    "result": "Web reader stops at content-size limit greater than 4194305 bytes; no API authorization or response-contract conclusion."
+  },
+  "readerTelemetryForwarded": false,
+  "implementationHashes": {
+    "packages/blog/drafts/research/analytics-retrospective/analyze-outcome-recovery.mjs": "b4b845b112023d09a459d1cf50bb2432eb0561cf4df4b4796fab4f28be46d9e4",
+    "packages/blog/scripts/select-outcome-only-candidates.mjs": "dc088bbc5ae173c1334763650cd5e988dfb7c277740c22042c450a5f2f994df9"
+  },
+  "reusedDirectoryCaptures": {
+    "exa": {
+      "source": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+      "capturedAt": "2026-10-29T05:08:08.680529+00:00",
+      "responseStatus": 200,
+      "responseHeaders": {
+        "content-type": "application/http-message-signatures-directory+json",
+        "cache-control": "max-age=300",
+        "date": "Thu, 29 Oct 2026 05:08:07 GMT"
+      },
+      "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+      "readerTelemetryForwarded": false
+    },
+    "ahrefs": {
+      "source": "https://ahrefs.com/.well-known/http-message-signatures-directory",
+      "capturedAt": "2026-10-29T05:08:08.832352+00:00",
+      "responseStatus": 200,
+      "responseHeaders": {
+        "date": "Thu, 29 Oct 2026 05:08:08 GMT",
+        "content-type": "application/http-message-signatures-directory+json",
+        "cache-control": "max-age=86400"
+      },
+      "sha256": "a647d3d54713f9299e73dec67cdd28175cfb488ebc9692d245b82821244eb0cc",
+      "readerTelemetryForwarded": false
+    }
+  },
+  "referenceLibrary": {
+    "repository": "pyauth/http-message-signatures",
+    "commit": "1de433d9a49fd608475c6054ab14a1652c088844",
+    "sourceFilesRechecked": 18,
+    "sourceManifest": "complete-audit-sources.json"
+  }
+}

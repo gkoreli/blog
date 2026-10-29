@@ -1,0 +1,207 @@
+{
+  "checkedAt": "2026-10-29T15:13:01.584Z",
+  "sourceBaseline": "cd05ef0",
+  "scope": "Frozen 201 outcome-only candidates and separately selected retained request representations; no authenticated D1 join or full native export claim.",
+  "candidateSummary": {
+    "rows": 201,
+    "signers": {
+      "Exa": 171,
+      "Ahrefs": 29,
+      "Other": 1
+    },
+    "days": {
+      "2026-10-22": 45,
+      "2026-10-23": 44,
+      "2026-10-24": 35,
+      "2026-10-25": 35,
+      "2026-10-26": 24,
+      "2026-10-27": 18
+    },
+    "firstRecordedTime": "2026-10-22 06:59:07",
+    "lastRecordedTime": "2026-10-27 14:48:36",
+    "withCollectionStamp": 42,
+    "withClassifierStamp": 42,
+    "withAgentName": 41,
+    "ownerFlagged": 0,
+    "withPrivateOptionalCapture": 0
+  },
+  "nativeSelection": {
+    "checkedAt": "2026-10-29T15:03:30.194250+00:00",
+    "scope": "Native signed-header selection only; export completeness remains unestablished",
+    "query": "exists($workers.event.request.headers.signature)",
+    "window": {
+      "start": "2026-10-22T06:55:00Z",
+      "endExclusive": "2026-10-27T14:49:00Z"
+    },
+    "initialNativeCount": 277,
+    "initialCopyRecords": 100,
+    "downloadCap": 1000,
+    "downloadRecords": 240,
+    "dailyNativeCountSum": 249,
+    "dailyExportRecords": 240,
+    "sameBroadAndDailyRequestSet": true,
+    "nativeCountsAndExportsDoNotReconcile": true,
+    "pricingNoticeAccepted": false,
+    "providerMetering": "not-returned",
+    "discardedZero": "Blank query submission selected NOT autocomplete; prior request-reference filter persisted. Zero result not interpreted as missing data.",
+    "retentionClock": "See retrieval-clock.json; frozen age plan and later retrieval have different reference times."
+  },
+  "partitions": [
+    {
+      "label": "oct27",
+      "start": "2026-10-27T00:00:00Z",
+      "endExclusive": "2026-10-27T14:49:00Z",
+      "nativeCount": 25,
+      "exportCount": 25,
+      "cap": 100,
+      "acknowledged": true
+    },
+    {
+      "label": "oct26",
+      "start": "2026-10-26T00:00:00Z",
+      "endExclusive": "2026-10-27T00:00:00Z",
+      "nativeCount": 40,
+      "exportCount": 40,
+      "cap": 100,
+      "acknowledged": true
+    },
+    {
+      "label": "oct25",
+      "start": "2026-10-25T00:00:00Z",
+      "endExclusive": "2026-10-26T00:00:00Z",
+      "nativeCount": 44,
+      "exportCount": 44,
+      "cap": 100,
+      "acknowledged": true
+    },
+    {
+      "label": "oct24",
+      "start": "2026-10-24T00:00:00Z",
+      "endExclusive": "2026-10-25T00:00:00Z",
+      "nativeCount": 50,
+      "exportCount": 50,
+      "cap": 100,
+      "acknowledged": true
+    },
+    {
+      "label": "oct23",
+      "start": "2026-10-23T00:00:00Z",
+      "endExclusive": "2026-10-24T00:00:00Z",
+      "nativeCount": 58,
+      "exportCount": 49,
+      "cap": 100,
+      "acknowledged": true,
+      "countAgreement": false,
+      "file": "oct23-copy-mismatch.json"
+    },
+    {
+      "label": "oct22",
+      "start": "2026-10-22T06:55:00Z",
+      "endExclusive": "2026-10-23T00:00:00Z",
+      "nativeCount": 32,
+      "exportCount": 32,
+      "cap": 100,
+      "acknowledged": true
+    }
+  ],
+  "retrievalClock": {
+    "checkedAt": "2026-10-29T15:00:02.114063+00:00",
+    "documentedSevenDayCutoff": "2026-10-22T15:00:02.114063+00:00",
+    "frozenCandidates": 201,
+    "olderByCurrentRecordedTime": 22,
+    "remainingByCurrentRecordedTime": 179,
+    "retentionExistenceProvenByAge": false
+  },
+  "retained": {
+    "invocations": 240,
+    "distinctRequestReferences": 240,
+    "distinctLogIds": 239,
+    "duplicateLogIdGroups": 1,
+    "sourceMemberships": 580,
+    "overlappingRepresentations": 340,
+    "broadDailyRequestContextsMatch": true,
+    "fullNativeCountReconciliation": false
+  },
+  "replay": {
+    "counts": {
+      "exa:verified:none": 152,
+      "ahrefs:verified:none": 68,
+      "publisher-outside-reviewed-replay-scope": 19,
+      "signature-agent-missing": 1
+    },
+    "reviewedCapturedContextsVerified": 220,
+    "authorityOnly": 220,
+    "nodeNativeContexts": 244,
+    "independentRfcContexts": 224,
+    "independentAgreements": 224,
+    "originalDirectoryStateRecovered": false,
+    "originalWireValidityEstablished": false,
+    "managedAgreementMeasured": false
+  },
+  "unassessed": {
+    "checkedAt": "2026-10-29T15:13:01.536Z",
+    "unreviewedPublisherOrigins": 4,
+    "reviewedThirdPublisherRequests": 0,
+    "declaredClients": {
+      "no-recognized-declaration": 4,
+      "DuckDuckBot": 14,
+      "Meta-WebIndexer": 1
+    },
+    "controlHeaderPresent": 0,
+    "fixtureHeaderPresent": 0,
+    "absenceOfMarkersDoesNotProveOrganic": true,
+    "declaredNamesNotAuthenticated": true,
+    "unreviewedOriginsNotDisclosed": true
+  },
+  "correspondence": {
+    "candidates": 201,
+    "noCorrespondence": 88,
+    "singleCandidateCorrespondence": 101,
+    "multipleCandidateCorrespondences": 12,
+    "exactStorageJoins": 0,
+    "method": "Literal same UTC second, GET, site origin and URL pathname; no authenticated row reference"
+  },
+  "exampleChain": {
+    "records": 4,
+    "collectionVersion": "2026-10-26.3",
+    "storedAndAttemptOperationMatch": true,
+    "returnedStorageReferenceExposed": false,
+    "detailedReceiptExposed": false,
+    "exactD1LinkEstablished": false
+  },
+  "metering": {
+    "statements": 2,
+    "reads": 3096,
+    "writes": 0,
+    "providerAttempts": 2,
+    "nativeExportMetering": "not-returned",
+    "reviewThreshold": 200000,
+    "databaseEnforcedReadCap": false
+  },
+  "nativeScale": {
+    "rows": 65536,
+    "candidates": 201,
+    "reads": 402,
+    "writes": 0
+  },
+  "readPlanArchive": {
+    "capturedFiles": 9,
+    "manifestSha256": "b6cf7465ba75db096bf03796c5b2eb6b8b8592eb124d2eb319c4f302bcde64d2",
+    "beforeProductionSelects": true,
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "ownSiteRequests": 0,
+  "newHumanLabels": 0,
+  "runtimeChanged": false,
+  "articleChanged": false,
+  "limits": [
+    "Frozen event-age eligibility is not current retention availability; 22 records were older than the documented maximum by the later clock read.",
+    "Broad/daily request-context agreement does not resolve native counter disagreement or establish complete retention.",
+    "A single time/path correspondence remains a candidate, not exact D1 identity; absence of one is not proof of missing inputs.",
+    "Current-profile recorded-time replay uses later captured keys, not original resolver state or a managed-provider verdict.",
+    "Control/fixture header absence does not prove organic traffic; no human trigger or unique-action count is supplied."
+  ]
+}

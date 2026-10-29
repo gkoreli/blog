@@ -1,0 +1,83 @@
+{
+  "checkedAt": "2026-10-29T15:16:07.130705+00:00",
+  "sourceBaseline": "cd05ef0",
+  "previousGoalTurn": "progress",
+  "receipts": [
+    "outcome-recovery-production.json",
+    "outcome-recovery-native.json",
+    "outcome-recovery-reference.json",
+    "outcome-recovery-sources.json"
+  ],
+  "nativeCandidateChecks": {
+    "empty": true,
+    "negativeAndZeroIds": true,
+    "ownerRecordPreserved": true,
+    "exactDateBoundaries": true,
+    "nonClaimsExcluded": true,
+    "concreteMatchesParameterized": true,
+    "duplicateAndUnsafeIdsRejected": true,
+    "contradictoryEvidenceRejected": true,
+    "impossibleTimeRejected": true,
+    "adjacentLargeIds": true,
+    "overLimitRejected": true,
+    "constantAccessControl": true
+  },
+  "replayGates": {
+    "sameRequestCopiesReconciled": true,
+    "conflictingContextsRejected": true,
+    "distinctRequestsWithSameProofRetained": true,
+    "ambiguousCorrespondenceNotPromoted": true
+  },
+  "attempts": {
+    "checkedAt": "2026-10-29T15:14:24.906951+00:00",
+    "previousGoalTurn": "progress",
+    "productionQueryRetries": 0,
+    "initialZeroExcludedFromEvidence": "Empty query Enter selected NOT autocomplete; stale request-ref filter persisted. Scope inspection caught it; zero is not treated as missing logs.",
+    "wideSelection": "First result explicitly incomplete; one Load More settles the table. Copy gives 100; capped download gives 240 against the earlier 277 count.",
+    "dailySelection": "Five matching daily counts; October 23 count 58 versus acknowledged copy 49. Broad and combined daily request contexts agree at 240; full native count coverage unproven.",
+    "browserContextRecovery": "Goal continuation resets JS bindings before download click; existing tab rebound with dialog preserved; no export action was repeated.",
+    "rangeValidation": "Forward range edit leaves stale before-end validation while end field has focus; Apply disabled. Tab commits field and enables Apply; no invalid range submitted.",
+    "clockBoundary": "Frozen candidate age reference 06:55 UTC; later clock 15:00 UTC makes 22 candidates older than seven days by recorded time. No deletion cause inferred.",
+    "scopeReview": "19 parsed signing-agent claims span four unreviewed origins; current closed UA registry sees fourteen DuckDuckBot, one Meta-WebIndexer, four none. They remain unassessed and public Other."
+  },
+  "readPlanArchive": {
+    "capturedFiles": 9,
+    "manifestSha256": "b6cf7465ba75db096bf03796c5b2eb6b8b8592eb124d2eb319c4f302bcde64d2",
+    "beforeProductionSelects": true,
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "independentRfcContexts": 224,
+  "nodeWorkerdContexts": 244,
+  "exactStorageJoins": 0,
+  "productionStatements": 2,
+  "productionReads": 3096,
+  "productionWrites": 0,
+  "ownSiteRequests": 0,
+  "newHumanLabels": 0,
+  "articleChanged": false,
+  "bodyWords": 1376,
+  "prompts": 31,
+  "runtimeChanged": false,
+  "runtimeSuites": "Prior 285-test/types acceptance retained; collector unchanged. Candidate native controls and recorded-context Node/workerd/RFC comparisons are fresh.",
+  "siteBuild": "Not run: private diagnostics/records only; collector, reporting and article unchanged.",
+  "localLinks": 364,
+  "scriptSyntax": "pass",
+  "privateOperationalFieldScan": "pass",
+  "unreviewedOriginDisclosure": "absent",
+  "articleHashUnchanged": true,
+  "sourceCommitments": "pass",
+  "markdownValidation": "pass, 22 posts",
+  "diffWhitespace": "pass",
+  "privateDataArchive": {
+    "capturedFiles": 72,
+    "manifestSha256": "c0a13e20250d5d04d727a72d1adb33197de4b1120fb71badcccf9f32902ac9da",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false,
+    "preExecutionPlanRevalidated": true
+  }
+}
