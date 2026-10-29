@@ -1,0 +1,87 @@
+{
+  "checkedAt": "2026-10-29T19:42:14.141867+00:00",
+  "sourceBaseline": "7e20f0ef4c39389266e07394e7b3dce0ed8f1819",
+  "runtimeSourceCommit": "7681e2661494c1e695d17d2b717db23bd4f3f9f9",
+  "runtimeEquivalence": {
+    "runtimeSourceCommit": "7681e2661494c1e695d17d2b717db23bd4f3f9f9",
+    "buildSourceCommit": "7e20f0ef4c39389266e07394e7b3dce0ed8f1819",
+    "scopedPaths": [
+      "packages/analytics/src",
+      "packages/blog/src",
+      "packages/analytics/package.json",
+      "packages/blog/package.json",
+      "pnpm-lock.yaml",
+      "wrangler.jsonc"
+    ],
+    "changes": []
+  },
+  "productionWorker": "d65be377-c9c3-4503-a45b-6a4fa0cb758b",
+  "productionBuild": "122d6632-6a6a-4e0b-9902-1cf5034b8290",
+  "cliVersion": "4.71.0",
+  "documents": [
+    {
+      "url": "https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/",
+      "supports": "Default heuristic header/URL-ID redaction, including false positives and negatives; no unredacted access used."
+    },
+    {
+      "url": "https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/",
+      "supports": "Ray IDs identify requests but are not guaranteed globally unique."
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/observability/logs/real-time-logs/",
+      "supports": "Filtered JSON real-time capture can drop messages; it does not itself persist Workers Logs.",
+      "captureLimit": "web read succeeded; a separate urllib HTML GET returned 403, no retry/cause attribution"
+    }
+  ],
+  "privatePlans": [
+    {
+      "files": 11,
+      "manifestSha256": "009c5cec7b58a8fa54327255dde8b1d48bd37fb29525eefe0eb435407d1aacff"
+    },
+    {
+      "files": 9,
+      "manifestSha256": "51db75e20b29d5512d8af844c9c6fe067f93e4709fbe2585b682286f1d5a16b1"
+    },
+    {
+      "files": 12,
+      "manifestSha256": "943bb09e00dce416e7c3131926bd1893ba803ee766b375ae47b5c174d9281942"
+    },
+    {
+      "files": 11,
+      "manifestSha256": "27e0aebbff46ec2fec7b901ba8afe23cd2c3a32f14abdb5e86d211dcf0d93c52"
+    }
+  ],
+  "helperSha256": {
+    "packages/blog/drafts/research/analytics-retrospective/metadata-live-control.mjs": "750e2d1ee6038d1c5ea1cf1b13defc3ef3707c2322c2c02636b93482d379e29f",
+    "packages/blog/drafts/research/analytics-retrospective/check-metadata-live-control.mjs": "b5865e99bdfd5ee78c48715d1bbb40b7805638416fb6a4f51d944b37d5667f55"
+  },
+  "wranglerCompiledSource": {
+    "sha256": "66de0d2d36ede4d9ded6cfaecee2b1e496c2ad8f97bb2258c5dd0f14bcc48d8b",
+    "crossReferences": {
+      "parseHeader": [
+        227931,
+        227938
+      ],
+      "samplingRateExclusiveBounds": [
+        227898,
+        227906
+      ],
+      "jsonPrintLogsNoUrlMutation": [
+        228058,
+        228060
+      ],
+      "filterTranslationBeforeCreateTail": [
+        272976,
+        273005
+      ]
+    }
+  },
+  "independentManagedVerificationMeasured": false,
+  "privateDataArchive": {
+    "files": 94,
+    "bytes": 1429355,
+    "manifestSha256": "bce8d7c17de111bb10ed5a37431abb0f3f06a58d1fad72e2fe45ad94d3d14860",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  }
+}

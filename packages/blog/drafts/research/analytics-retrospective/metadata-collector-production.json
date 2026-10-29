@@ -1,0 +1,146 @@
+{
+  "controls": [
+    {
+      "urlQueryRedacted": true,
+      "condition": "canonical",
+      "states": [
+        "valid",
+        "valid",
+        "valid",
+        "valid"
+      ],
+      "parameters": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "readerKind": "browser",
+      "readerReason": "navigation-shaped-network-unlisted",
+      "network": "not-listed",
+      "activation": "true-claim",
+      "receiptVersion": "2026-10-29.2",
+      "signatureStatus": "absent",
+      "referralExcluded": true
+    },
+    {
+      "urlQueryRedacted": true,
+      "condition": "uppercase-mode",
+      "states": [
+        "unrecognized",
+        "valid",
+        "valid",
+        "valid"
+      ],
+      "parameters": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "readerKind": "unresolved",
+      "readerReason": "fetch-metadata-unrecognized",
+      "network": "not-listed",
+      "activation": "true-claim",
+      "receiptVersion": "2026-10-29.2",
+      "signatureStatus": "absent",
+      "referralExcluded": true
+    },
+    {
+      "urlQueryRedacted": true,
+      "condition": "valid-parameters",
+      "states": [
+        "valid",
+        "valid",
+        "valid",
+        "valid"
+      ],
+      "parameters": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "readerKind": "browser",
+      "readerReason": "navigation-shaped-network-unlisted",
+      "network": "not-listed",
+      "activation": "true-claim",
+      "receiptVersion": "2026-10-29.2",
+      "signatureStatus": "absent",
+      "referralExcluded": true
+    },
+    {
+      "urlQueryRedacted": true,
+      "condition": "invalid-activation",
+      "states": [
+        "valid",
+        "valid",
+        "valid",
+        "invalid"
+      ],
+      "parameters": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "readerKind": "unresolved",
+      "readerReason": "fetch-metadata-invalid",
+      "network": "not-listed",
+      "activation": "invalid",
+      "receiptVersion": "2026-10-29.2",
+      "signatureStatus": "absent",
+      "referralExcluded": true
+    }
+  ],
+  "exactRequestReceiptStorageChains": 4,
+  "responseRayAndPrivateMarkerPairs": 4,
+  "independentRetainedCopies": 0,
+  "metadataComparisons": 28,
+  "fieldStateComparisons": 16,
+  "operator": "controlled-curl",
+  "knownAgentControlledRequests": 4,
+  "humanLabels": 0,
+  "operatorAttributionDecisions": 0,
+  "operatorAttributionAbstentions": 4,
+  "productionPopulationErrorRate": null,
+  "scope": "Exact four controlled requests, not a population classifier rate, genuine browser/engine identity or native managed-bot agreement",
+  "checkedAt": "2026-10-29T19:39:17.020Z",
+  "meter": {
+    "rowsRead": 8,
+    "rowsWritten": 0,
+    "statements": 1,
+    "attempts": 1,
+    "readReviewThreshold": 100,
+    "serverEnforcedReadCap": false,
+    "ingestionAdditional": true
+  },
+  "requestBudget": {
+    "planned": 4,
+    "actual": 4,
+    "repeats": 0,
+    "firstCanonicalCaptureReused": true,
+    "initialUrlGateFailed": true,
+    "finalGate": "Ray identifier, private marker, compatible URL, every planned header, operation and storage reference"
+  },
+  "exclusion": {
+    "storedReferrerAndCurrentPolicy": 4,
+    "freshProductionPublicReportFills": 0,
+    "nativeReportIncluded": 0,
+    "nativeReportExcluded": 4
+  },
+  "tail": {
+    "validSessions": 2,
+    "eventsPerSession": [
+      1,
+      3
+    ],
+    "initialLocalCliRejection": true,
+    "allOwnedProcessesFinallyAbsent": true,
+    "serverResourceDeletionInspected": false
+  },
+  "ownedProcessGroupsFinalCheck": {
+    "groups": 2,
+    "membersRemaining": 0
+  }
+}

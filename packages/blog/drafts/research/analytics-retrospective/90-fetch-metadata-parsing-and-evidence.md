@@ -45,3 +45,6 @@ The next bounded check is a small excluded current-collector control with exact 
 Private data commitment: 209 files, manifest `7424e78af6e1f8bccf2e32c169c36a118cf22566961fce5330df8b9f8a34618f`; raw sources, requests and logs remain outside Git.
 
 Live-plan manifest `b225985c75f0191bb74090e0754f86204b75d29f5828a16b0fa47eecfe758c76`; live acceptance manifest `691909eff46b52e2ce8de75b30e222da00cdc9c2ccbbc8cff6152f77165cd712` (19 files). Provider build Node 24.22.1 differs from local checks on 24.14.1; production Worker execution is workerd.
+
+
+[Research 91](91-live-metadata-controls-and-redacted-correlation.md) accepts the proposed live collector check: four exact receipt/storage matches and eight read-only diagnostic reads. Browser matches on two controlled curl requests leave engine/operator identity open. Native URL redaction required an adaptive correlation repair; no request was repeated.

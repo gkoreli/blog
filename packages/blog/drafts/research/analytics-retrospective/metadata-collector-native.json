@@ -1,0 +1,142 @@
+{
+  "checkedAt": "2026-10-29T19:36:41.916Z",
+  "runtime": "Node v24.14.1 controller; native workerd collector and D1",
+  "workerSha256": "b45162cbaa0d24179f4818d9d1bf5020aa3d57b39de31970e567cf55d9453d52",
+  "fixtureNetwork": "explicit synthetic ASN 64512; cf:{} suppresses provider fallback",
+  "controls": [
+    {
+      "urlQueryRedacted": true,
+      "condition": "canonical",
+      "states": [
+        "valid",
+        "valid",
+        "valid",
+        "valid"
+      ],
+      "parameters": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "readerKind": "browser",
+      "readerReason": "navigation-shaped-network-unlisted",
+      "network": "not-listed",
+      "activation": "true-claim",
+      "receiptVersion": "2026-10-29.2",
+      "signatureStatus": "absent",
+      "referralExcluded": true
+    },
+    {
+      "urlQueryRedacted": true,
+      "condition": "uppercase-mode",
+      "states": [
+        "unrecognized",
+        "valid",
+        "valid",
+        "valid"
+      ],
+      "parameters": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "readerKind": "unresolved",
+      "readerReason": "fetch-metadata-unrecognized",
+      "network": "not-listed",
+      "activation": "true-claim",
+      "receiptVersion": "2026-10-29.2",
+      "signatureStatus": "absent",
+      "referralExcluded": true
+    },
+    {
+      "urlQueryRedacted": true,
+      "condition": "valid-parameters",
+      "states": [
+        "valid",
+        "valid",
+        "valid",
+        "valid"
+      ],
+      "parameters": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "readerKind": "browser",
+      "readerReason": "navigation-shaped-network-unlisted",
+      "network": "not-listed",
+      "activation": "true-claim",
+      "receiptVersion": "2026-10-29.2",
+      "signatureStatus": "absent",
+      "referralExcluded": true
+    },
+    {
+      "urlQueryRedacted": true,
+      "condition": "invalid-activation",
+      "states": [
+        "valid",
+        "valid",
+        "valid",
+        "invalid"
+      ],
+      "parameters": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "readerKind": "unresolved",
+      "readerReason": "fetch-metadata-invalid",
+      "network": "not-listed",
+      "activation": "invalid",
+      "receiptVersion": "2026-10-29.2",
+      "signatureStatus": "absent",
+      "referralExcluded": true
+    }
+  ],
+  "exactNativeChains": 4,
+  "metadataComparisons": 28,
+  "fieldStateComparisons": 16,
+  "query": {
+    "rows": 4,
+    "reads": 8,
+    "writes": 0,
+    "statement": "SELECT CAST(id AS TEXT) AS privateReference,path,observed_at AS observedAt,referrer_state AS referrerState,referrer_host AS referrerHost,is_owner AS isOwner,collection_version AS collectionVersion,classifier_version AS classifierVersion,reader_kind AS readerKind,reader_reason AS readerReason,traffic_class AS trafficClass,agent_name AS agentName,asn,sec_fetch_mode AS secFetchMode,sec_fetch_dest AS secFetchDest,sec_fetch_site AS secFetchSite,sec_fetch_user AS secFetchUser,accepts_html AS acceptsHtml,has_accept_language AS hasAcceptLanguage,signature_status AS signatureStatus,signature_agent AS signatureAgent,classification_evidence AS classificationEvidence,signature_evidence AS signatureEvidence,vendor_ip_evidence AS vendorIpEvidence,request_evidence IS NULL AS optionalCaptureAbsent FROM page_observations WHERE id IN (CAST('1' AS INTEGER),CAST('2' AS INTEGER),CAST('3' AS INTEGER),CAST('4' AS INTEGER)) ORDER BY id;\n"
+  },
+  "boundaries": {
+    "exactReferences": 4,
+    "reads": 8,
+    "unsafeIntegerNeighborsDistinct": true,
+    "includesMaximumInt64": true,
+    "invalidIdInputsRejected": 8
+  },
+  "reportExclusion": {
+    "views": 0,
+    "excluded": 4,
+    "scope": "native local fixture, not a production public fill"
+  },
+  "linkageNegatives": 16,
+  "productionRequests": 0,
+  "humanLabels": 0,
+  "checks": {
+    "freshFixtureCompilation": true,
+    "mjsSyntax": "pass, both research helpers",
+    "runtimeTypeScriptChanged": false,
+    "broadPackageChecks": "Not repeated; Research 90 accepted 300 analytics/117 site/types and runtime source remains unchanged.",
+    "contentValidation": "pass, 22 Markdown posts",
+    "isolatedBuild": "pass, 33 posts"
+  },
+  "article": {
+    "bodyWhitespaceWords": 1437,
+    "prompts": 31,
+    "sourceSha256": "6d37bf4ec014d94c29eaa52917e1aeece716ad214be8a20aa919c737c58bd31e",
+    "builtMarkdownSha256": "3da18788d73fbcbf7ef46fe05aaf8b1a3766c89ec1701a0d54b7721d420cd237",
+    "builtMarkdownBytes": 16248,
+    "oneH1": true,
+    "runtimeSourcesMatchBuildSnapshot": true,
+    "sharedDistTouched": false
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T19:25:55.644137+00:00",
-  "sourceBaseline": "7681e2661494c1e695d17d2b717db23bd4f3f9f9",
+  "checkedAt": "2026-10-29T19:43:26.948770+00:00",
+  "sourceBaseline": "7e20f0e",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -26,7 +26,7 @@
     "humanFalsePositiveRate": null,
     "humanAbstentionRate": null,
     "newEndToEndCollectorRun": false,
-    "scope": "Earlier twelve production automation controls, unchanged; local relay experiment is a separate cohort and not added to this denominator."
+    "scope": "Earlier twelve production automation controls, unchanged; the fifteen local relay visits and four new curl/parser controls remain separate cohorts and are not added to this accuracy denominator."
   },
   "delivered": [
     "Explicit unknown/conflict and exact declaration matching",
@@ -45,24 +45,24 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Native-test and archive a small excluded current-collector trial and exact readback plan before executing; public parsing-state denominator design follows. Human trials remain deferred.",
+  "nextBoundedAction": "Expose public parsing-state denominators and audit Browser wording against the four known curl controls. Keep historical unassessed records explicit and native-test cost/semantics before a report release. Human trials remain deferred.",
   "article": {
-    "bodyWhitespaceWords": 1434,
+    "bodyWhitespaceWords": 1437,
     "prompts": 31,
-    "sourceSha256": "0318c87f284e9e3b2a25ac0dc5f302e8ac0c5c848494ff12010d07ef4f9df388",
+    "sourceSha256": "6d37bf4ec014d94c29eaa52917e1aeece716ad214be8a20aa919c737c58bd31e",
     "unchanged": false,
-    "freshServedCheck": true,
-    "publicationReceipt": "fetch-metadata-parsing-release.json",
-    "servedMatchesCheckedBuild": true,
+    "freshServedCheck": false,
+    "publicationReceipt": null,
+    "servedMatchesCheckedBuild": false,
     "lastServedCheckReceipt": "fetch-metadata-parsing-release.json",
-    "publicationStatus": "Research 90 concise paragraph published; exact served direct Markdown matches the checked build at 1434 words/31 prompts.",
-    "previousPublicationReceipt": "local-metadata-relay-release.json",
-    "servedMatchScope": "Exact direct Markdown; no fresh served HTML/layout or per-request Worker-version trace.",
+    "publicationStatus": "Research 91 replaces the existing uncertainty paragraph with the excluded controlled-curl result; source/served acceptance pending.",
+    "previousPublicationReceipt": "fetch-metadata-parsing-release.json",
+    "servedMatchScope": "No fresh served acceptance for this paragraph yet.",
     "localBuildAccepted": true,
-    "localBuildReceipt": "fetch-metadata-parsing-checks.json"
+    "localBuildReceipt": "metadata-collector-native.json"
   },
-  "runtimeUnchanged": false,
-  "productionStatements": 0,
+  "runtimeUnchanged": true,
+  "productionStatements": 1,
   "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
@@ -169,13 +169,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 0,
+  "productionReportedReads": 8,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No collection-eligible own-site request; no D1 ingestion readback. Natural/provider activity remains additional."
   },
-  "newVisitsScope": "Research 90 replays saved inputs and uses synthetic local controls. One ineligible direct Markdown publication GET; zero new human labels or eligible production visits.",
+  "newVisitsScope": "Four controlled curl GETs, all referral-excluded; no repeated request, included readership/human visit or JavaScript execution.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -628,9 +628,9 @@
     "exactRetainedRequestVersionMatched": true,
     "liveEmptyCounters": 44
   },
-  "productionDirectDiagnosticSelects": 0,
+  "productionDirectDiagnosticSelects": 1,
   "productionReportCalculations": 0,
-  "productionReadScope": "Research 89 local experiment; no production D1 statement. Earlier reported costs remain in phase-specific receipts.",
+  "productionReadScope": "One exact four-ID native-tested Wrangler --command SELECT, eight reported reads and zero diagnostic writes; ordinary collector insert work is additional. No broad population read.",
   "unresolvedMetadata": {
     "research": "88-unresolved-metadata-and-retained-inputs.md",
     "production": "unresolved-metadata-production.json",
@@ -658,7 +658,7 @@
     "checks": "unresolved-metadata-checks.json",
     "release": "unresolved-metadata-release.json"
   },
-  "runtimeUnchangedScope": "Research 90 changes Fetch Metadata parsing, collection/classifier and closed receipt formats; verifier/report/schema unchanged.",
+  "runtimeUnchangedScope": "Research 91 changes offline research helpers and one article paragraph; production collector, classifier, verifier, report, schema and optional settings remain unchanged.",
   "localMetadataRelay": {
     "research": "89-local-browser-relays-and-fetch-metadata.md",
     "experiment": "local-metadata-relay-experiment.json",
@@ -713,6 +713,37 @@
     "productionPrevalenceMeasured": false,
     "humanLabels": 0,
     "release": "fetch-metadata-parsing-release.json",
-    "productionCollectorReadback": false
+    "productionCollectorReadback": true,
+    "productionCollectorReadbackReceipt": "metadata-collector-production.json"
+  },
+  "newControlledRequests": 4,
+  "liveMetadataControls": {
+    "research": "91-live-metadata-controls-and-redacted-correlation.md",
+    "native": "metadata-collector-native.json",
+    "production": "metadata-collector-production.json",
+    "sources": "metadata-collector-sources.json",
+    "requests": 4,
+    "repeatedRequests": 0,
+    "exactChains": 4,
+    "retainedMetadataComparisons": 28,
+    "fieldStateComparisons": 16,
+    "kinds": {
+      "browser": 2,
+      "unresolved": 2
+    },
+    "knownOperator": "controlled-curl",
+    "operatorAttributionDecisions": 0,
+    "operatorQuestionUnresolved": 4,
+    "humanLabels": 0,
+    "adaptiveCorrelation": true,
+    "initialCaptureReused": true,
+    "legacyCalibrationAdded": false,
+    "productionReadStatements": 1,
+    "reportedReads": 8,
+    "diagnosticWrites": 0,
+    "publicReportFills": 0,
+    "articleChanged": true,
+    "tailQueryRedacted": 4,
+    "privateDataManifestSha256": "bce8d7c17de111bb10ed5a37431abb0f3f06a58d1fad72e2fe45ad94d3d14860"
   }
 }
