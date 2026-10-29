@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-28T17:15:12.317304+00:00",
-  "sourceBaseline": "913b496",
+  "checkedAt": "2026-10-29T01:21:37.908696+00:00",
+  "sourceBaseline": "e1b9a54",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,15 +45,15 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Prepare a fresh, smaller controlled run isolating dynamic replacement versus disabled-before-expiry; execute genuine provider-positive/relay controls only with accepted prerequisites. Human trials remain deferred.",
+  "nextBoundedAction": "Accept article publication, then reconcile the retained-data delta since the frozen census using native-tested bounded SQL and an explicit D1 read budget. Genuine positive/relay and human gates remain open.",
   "article": {
     "bodyWhitespaceWords": 1280,
     "prompts": 31,
-    "sourceSha256": "42eacfa30f362d2567e433317b24f562cbfc21bc4c0b5a7b5dc06d9aa7c9f537",
-    "unchanged": true,
+    "sourceSha256": "4d84dfbaf3a94ee6625f3d3189cae193346ef9e860daf485c62288fc4db3b601",
+    "unchanged": false,
     "freshServedCheck": false
   },
-  "runtimeUnchanged": false,
+  "runtimeUnchanged": true,
   "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
@@ -71,7 +71,7 @@
     "ruleCurrentlyActive": false,
     "liveReceipt": "native-capture-live.json",
     "positiveAndRelays": "unexecuted",
-    "disabledBeforeExpiry": "unexecuted; measured disabled cases overlap expiry",
+    "disabledBeforeExpiry": "Research 63: two enabled plus two disabled-before-expiry controls, four exact capture/log pairs, no extension, minimum capture margin 216875 ms; accepted in this separate cohort.",
     "publicationReceipt": "native-capture-live-checks.json",
     "failureDiagnostics": {
       "profile": "native-bot-capture-unavailable-v1",
@@ -81,9 +81,10 @@
       "historical503": "unestablished; offline replay preserves all eleven compared totals",
       "productionActivation": "accepted; off-mode verified; no new production failure cause observed",
       "releaseReceipt": "native-capture-failure-release.json"
-    }
+    },
+    "disabledBeforeExpiryReceipt": "disabled-before-expiry-live.json"
   },
-  "productionOwnSiteGets": 1,
+  "productionOwnSiteGets": 4,
   "collectionEligibleGets": 0,
-  "ownerMarkPosts": 0
+  "ownerMarkPosts": 1
 }

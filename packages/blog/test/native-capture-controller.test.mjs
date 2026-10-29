@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { preparePlan, summarize, validateCapture, validateUnavailable, parseCaptureLogStream, assertPhaseWindow } from '../scripts/run-native-bot-capture.mjs';
+import { preparePlan, prepareDisabledPlan, summarize, validateCapture, validateUnavailable, parseCaptureLogStream, assertPhaseWindow } from '../scripts/run-native-bot-capture.mjs';
 
 const plan = preparePlan(Date.parse('2026-10-28T12:00:00Z'));
 const control = plan.controls.find(item => item.phase === 'dynamic');
@@ -9,12 +9,26 @@ const body = { profile: 'native-bot-capture-v1', responseId: 'cb16cdd4-36f5-4bf4
   nativeSource: 'request.cf', native: { verifiedBot: 'unavailable', signedAgent: 'unavailable' } };
 
 test('live plan bounds paths, clock windows and controller attempts without human labels', () => {
-  assert.equal(plan.version, 'native-capture-controller-v3');
+  assert.equal(plan.version, 'native-capture-controller-v4');
   assert.equal(plan.controls.length, 23); assert.equal(new Set(plan.controls.map(item => item.id)).size, 23);
   assert.equal(plan.ruleExpiresAt - plan.issuedAt, 240000); assert.equal(plan.expiresAt - plan.issuedAt, 480000);
   assert.ok(plan.ruleExpression.length < 4000); assert.ok(plan.ruleExpression.includes('http.request.timestamp.sec lt '));
   assert.equal(plan.maximumAttempts, 32); assert.equal(plan.humanLabels, 0);
   assert.deepEqual(plan.controls.filter(item => item.phase === 'absent').map(item => item.values).slice(-3), [['true', 'false'], ['false', 'true'], ['true', 'true']]);
+});
+
+test('disabled-boundary plan registers only four paired shapes inside an unchanged eight-minute receiver', () => {
+  const focused = prepareDisabledPlan(plan.issuedAt);
+  assert.equal(focused.experiment, 'disabled-before-expiry-v1'); assert.equal(focused.controls.length, 4);
+  assert.equal(focused.maximumAttempts, 4); assert.equal(focused.ruleExpiresAt - focused.issuedAt, 420000);
+  assert.equal(focused.expiresAt - focused.issuedAt, 480000); assert.equal(focused.overwriteExpression, undefined);
+  for (const phase of ['dynamic', 'disabled']) {
+    assert.deepEqual(focused.controls.filter(control => control.phase === phase).map(control => control.values), [['true'], ['capture-malformed']]);
+    assert.doesNotThrow(() => assertPhaseWindow(focused, phase, focused.issuedAt + 60000));
+    assert.throws(() => assertPhaseWindow(focused, phase, focused.ruleExpiresAt), /expired/);
+  }
+  assert.equal(new Set(focused.controls.map(control => control.id)).size, 4);
+  assert.ok(focused.controls.every(control => focused.ruleExpression.includes(control.id)));
 });
 
 test('a disabled-phase run cannot silently substitute an expired-rule experiment', () => {

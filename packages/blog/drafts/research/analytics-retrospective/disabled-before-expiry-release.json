@@ -1,0 +1,80 @@
+{
+  "checkedAt": "2026-10-29T01:21:37.908696+00:00",
+  "baselineCommit": "e1b9a5439832c2bccac152012bd64b4461cf9ca8",
+  "sourceCommit": null,
+  "publication": "pending",
+  "experiment": "disabled-before-expiry-live.json",
+  "checks": {
+    "siteTests": 117,
+    "postValidationMarkdownPosts": 21,
+    "isolatedSourceCopyBuildPosts": 32,
+    "workerRuntimeSourcesAndDependenciesUnchanged": true,
+    "sharedDistUntouched": true
+  },
+  "controller": {
+    "version": "native-capture-controller-v4",
+    "executedSha256": "79bc35b0aa7af1520c3a74a4e7329b8eeb5a43598487d54fddebef69a2d3e86c"
+  },
+  "sourceSha256": {
+    "packages/blog/scripts/run-native-bot-capture.mjs": "79bc35b0aa7af1520c3a74a4e7329b8eeb5a43598487d54fddebef69a2d3e86c",
+    "packages/blog/test/native-capture-controller.test.mjs": "fe474e72ffd6649bf7b892b9a653fd3686bf552cd5f814755aa34c6cbe72aa66",
+    "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "4d84dfbaf3a94ee6625f3d3189cae193346ef9e860daf485c62288fc4db3b601"
+  },
+  "wranglerSourceReview": {
+    "checkedAt": "2026-10-28T17:26:44.349589+00:00",
+    "package": "wrangler",
+    "version": "4.71.0",
+    "installedBundleSha256": "66de0d2d36ede4d9ded6cfaecee2b1e496c2ad8f97bb2258c5dd0f14bcc48d8b",
+    "reviewed": [
+      "parseSamplingRate rejects <=0 and >=1",
+      "Tail command installs close/signal cleanup and deleteTail",
+      "No observed source fact establishes the empty tail closure cause"
+    ]
+  },
+  "article": {
+    "bodyWhitespaceWords": 1280,
+    "prompts": 31,
+    "freshServedCheck": false
+  },
+  "scope": {
+    "diagnosticGets": 4,
+    "ownerPosts": 1,
+    "directDiagnosticStatements": 0,
+    "reportFills": 0,
+    "collectionEligibleGets": 0,
+    "newHumanLabels": 0,
+    "naturalExpiryTested": false
+  },
+  "cleanup": {
+    "originalFourBindingNamesRestored": true,
+    "rulesDisabled": 2,
+    "rulesDeleted": false,
+    "activeRules": 0,
+    "ownedFilteredProcessesRemaining": 0
+  },
+  "privateArchive": {
+    "checkedAt": "2026-10-29T01:20:13.501948+00:00",
+    "files": 49,
+    "manifestSha256": "18c1dcb05b63b66c9ead273c405871b7238d002d4ac25dbd2b9e005e920673c6",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false,
+    "directoryMode": "0700",
+    "fileModes": "0600"
+  },
+  "limits": [
+    "Selected instrument cohort, not provider or human accuracy",
+    "Generic candidate remains untrusted; native booleans unavailable",
+    "Original confounded cohort and unexplained 503 remain unchanged",
+    "No natural-expiry experiment in this cohort",
+    "Human trials deferred"
+  ],
+  "nextBoundedAction": "Publish and accept the concise article correction, then plan a bounded retained-data delta with native SQL and a read budget.",
+  "resumption": {
+    "checkedAt": "2026-10-29T01:21:37.908696+00:00",
+    "ruleOverviewRefreshed": true,
+    "activeRules": 0,
+    "temporaryBindingNamesAbsent": true,
+    "originMainDivergence": "0/0",
+    "expiredTrialReissued": false
+  }
+}

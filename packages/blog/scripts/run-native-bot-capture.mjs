@@ -15,6 +15,7 @@ const record = value => typeof value === 'object' && value !== null && !Array.is
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const load = path => JSON.parse(readFileSync(path, 'utf8'));
 const save = (path, value, exclusive = false) => writeFileSync(path, JSON.stringify(value, null, 2) + '\n', { mode: 0o600, flag: exclusive ? 'wx' : 'w' });
+const ruleFilter = (ids, issuedAt, expiresAt) => `(http.host eq "gkoreli.com" and http.request.uri.path in {${ids.map(id => JSON.stringify(PREFIX + id)).join(' ')}} and http.request.timestamp.sec ge ${issuedAt / 1000} and http.request.timestamp.sec lt ${expiresAt / 1000})`;
 
 export function preparePlan(now = Date.now()) {
   assert.ok(Number.isSafeInteger(now));
@@ -30,11 +31,20 @@ export function preparePlan(now = Date.now()) {
   for (const values of [['true'], []]) add('rule-expired', 'rule-expired', values, values.length ? 'literal-true' : 'missing');
   for (const values of [['true'], []]) add('receiver-expired', 'rule-expired', values, 'expired');
   const issuedAt = Math.floor(now / 1000) * 1000, ruleExpiresAt = issuedAt + 4 * 60_000, expiresAt = issuedAt + 8 * 60_000;
-  const filter = ids => `(http.host eq "gkoreli.com" and http.request.uri.path in {${ids.map(id => JSON.stringify(PREFIX + id)).join(' ')}} and http.request.timestamp.sec ge ${issuedAt / 1000} and http.request.timestamp.sec lt ${ruleExpiresAt / 1000})`;
-  return { version: 'native-capture-controller-v3', origin: ORIGIN, issuedAt, ruleExpiresAt, expiresAt, maximumAttempts: 32,
-    controls, ruleExpression: filter(controls.map(control => control.id)),
-    overwriteExpression: filter(controls.filter(control => control.phase === 'overwrite').map(control => control.id)),
+  return { version: 'native-capture-controller-v4', origin: ORIGIN, issuedAt, ruleExpiresAt, expiresAt, maximumAttempts: 32,
+    controls, ruleExpression: ruleFilter(controls.map(control => control.id), issuedAt, ruleExpiresAt),
+    overwriteExpression: ruleFilter(controls.filter(control => control.phase === 'overwrite').map(control => control.id), issuedAt, ruleExpiresAt),
     tailTag: randomBytes(16).toString('hex'), expectedCandidateTrust: 'untrusted-header', operator: 'controlled-curl', humanLabels: 0 };
+}
+
+/** Only the unisolated boundary: same supplied shapes, enabled then disabled before expiry. */
+export function prepareDisabledPlan(now = Date.now()) {
+  const { overwriteExpression, ...base } = preparePlan(now);
+  const controls = base.controls.filter(control => control.phase === 'disabled'
+    || control.phase === 'dynamic' && control.values.length === 1 && ['true', 'capture-malformed'].includes(control.values[0]));
+  const ruleExpiresAt = base.issuedAt + 7 * 60_000;
+  return { ...base, experiment: 'disabled-before-expiry-v1', controls, maximumAttempts: 4, ruleExpiresAt,
+    ruleExpression: ruleFilter(controls.map(control => control.id), base.issuedAt, ruleExpiresAt) };
 }
 
 export function validateCapture(body, control) {
@@ -160,8 +170,8 @@ function curl(directory, path, headers, method = 'GET') {
 function main() {
   const [command, rawDirectory, phase] = process.argv.slice(2);
   assert.ok(rawDirectory, 'Provide a private directory'); const directory = resolve(rawDirectory);
-  if (command === 'prepare') {
-    mkdirSync(directory, { mode: 0o700 }); const plan = preparePlan();
+  if (command === 'prepare' || command === 'prepare-disabled') {
+    mkdirSync(directory, { mode: 0o700 }); const plan = command === 'prepare-disabled' ? prepareDisabledPlan() : preparePlan();
     const token = randomBytes(32).toString('hex');
     save(resolve(directory, 'plan.json'), plan, true);
     save(resolve(directory, 'secrets.json'), { ANALYTICS_NATIVE_CAPTURE: JSON.stringify({ issuedAt: plan.issuedAt, expiresAt: plan.expiresAt,
@@ -169,10 +179,12 @@ function main() {
       OWNER_MARK_GRANT: JSON.stringify({ token, issuedAt: plan.issuedAt, expiresAt: plan.expiresAt }) }, true);
     writeFileSync(resolve(directory, 'owner.headers'), 'Authorization: Bearer ' + token + '\n', { mode: 0o600, flag: 'wx' });
     save(resolve(directory, 'ledger.json'), [], true);
-    console.log(JSON.stringify({ planned: plan.controls.length, receiverMinutes: 8, ruleMinutes: 4, maximumAttempts: 32 })); return;
+    console.log(JSON.stringify({ planned: plan.controls.length, receiverMinutes: (plan.expiresAt - plan.issuedAt) / 60000,
+      ruleMinutes: (plan.ruleExpiresAt - plan.issuedAt) / 60000, maximumAttempts: plan.maximumAttempts })); return;
   }
   const plan = load(resolve(directory, 'plan.json')), ledgerPath = resolve(directory, 'ledger.json'), ledger = load(ledgerPath);
-  assert.equal(plan.origin, ORIGIN); assert.equal(plan.maximumAttempts, 32); assert.ok(plan.controls.length <= 32); assert.ok(ledger.length <= plan.maximumAttempts);
+  assert.equal(plan.origin, ORIGIN); assert.equal(plan.maximumAttempts, plan.experiment === 'disabled-before-expiry-v1' ? 4 : 32);
+  assert.ok(plan.controls.length <= plan.maximumAttempts); assert.ok(ledger.length <= plan.maximumAttempts);
   if (command === 'mark-owner') {
     assert.ok(Date.now() < plan.expiresAt, 'Expired window');
     assert.ok(!existsSync(resolve(directory, 'owner-result.json')), 'Owner-mark attempt already recorded');

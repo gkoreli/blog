@@ -1,0 +1,120 @@
+{
+  "planned": 4,
+  "attempted": 4,
+  "received": 4,
+  "captureResponses": 4,
+  "validCaptures": 4,
+  "expectedOutcomes": 4,
+  "unexpectedOutcomes": 0,
+  "unavailable": 0,
+  "exactLogJoins": 4,
+  "ambiguousLogJoins": 0,
+  "transportUnavailable": 0,
+  "httpUnavailable": 0,
+  "malformedCaptures": 0,
+  "validUnavailableResponses": 0,
+  "exactUnavailableLogJoins": 0,
+  "ambiguousUnavailableLogJoins": 0,
+  "unavailableWithReusedResponseId": 0,
+  "unavailableReasons": {
+    "owner-check-timeout": 0,
+    "owner-check-error": 0,
+    "capture-error": 0,
+    "unestablished": 0
+  },
+  "capturesWithReusedResponseId": 0,
+  "conditions": [
+    {
+      "phase": "dynamic",
+      "plannedCondition": "spoof-single",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "literal-false",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "dynamic",
+      "plannedCondition": "spoof-single",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "literal-false",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "disabled",
+      "plannedCondition": "rule-disabled",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "literal-true",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    },
+    {
+      "phase": "disabled",
+      "plannedCondition": "rule-disabled",
+      "status": 200,
+      "measurement": "capture",
+      "expected": true,
+      "candidate": "other",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable"
+      }
+    }
+  ],
+  "humanLabels": 0,
+  "providerAccuracyRate": null,
+  "humanAccuracyRate": null,
+  "checkedAt": "2026-10-28T17:23:09.478Z",
+  "experiment": "disabled-before-expiry-v1",
+  "controller": "native-capture-controller-v4",
+  "tail": {
+    "envelopes": 4,
+    "malformed": 0,
+    "incompleteFragments": 0
+  },
+  "scope": {
+    "registeredControls": 4,
+    "maximumGetAttempts": 4,
+    "receiverMinutes": 8,
+    "ruleMinutes": 7,
+    "extension": false
+  },
+  "timing": {
+    "firstCaptureAt": "2026-10-28T17:21:56.029Z",
+    "lastCaptureAt": "2026-10-28T17:22:27.125Z",
+    "ruleDeadline": "2026-10-28T17:26:04.000Z",
+    "minimumCaptureMarginMs": 216875,
+    "allResponsesFinishedBeforeDeadline": true
+  },
+  "counts": {
+    "diagnosticGets": 4,
+    "ownerMarkPosts": 1,
+    "directDiagnosticStatements": 0,
+    "reportFills": 0,
+    "collectionEligibleGets": 0,
+    "ownerGuardEvaluations": 4,
+    "guardCost": "Additional owner lookup/marking work; metering unavailable"
+  },
+  "boundary": "Controlled curl header delivery; no native trust promotion or provider/human accuracy claim",
+  "historical503": "Unchanged; unestablished",
+  "cleanup": {
+    "bindingsRemovedAfterFourAttempts": true,
+    "naturalExpiryTested": false,
+    "experimentalRulesDisabled": 2,
+    "activeRules": 0,
+    "ownedFilteredTailProcessesRemaining": 0,
+    "rulesDeleted": false
+  }
+}
