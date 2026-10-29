@@ -1,0 +1,352 @@
+{
+  "parser": {
+    "checkedAt": "2026-10-29T04:07:42.388Z",
+    "repository": "lpinca/forwarded-parse",
+    "commit": "2d397f0f28b713f272c83b9c91611fc55dd858ad",
+    "sourceFilesRechecked": 7,
+    "cases": [
+      {
+        "name": "empty",
+        "localSyntax": "empty",
+        "referenceParsed": false,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": true,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "documented-example",
+        "localSyntax": "parsed",
+        "referenceParsed": true,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "token-values",
+        "localSyntax": "parsed",
+        "referenceParsed": true,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "parameter-name-case",
+        "localSyntax": "parsed",
+        "referenceParsed": true,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "value-case-is-not-normalized",
+        "localSyntax": "parsed",
+        "referenceParsed": true,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "quoted-delimiters",
+        "localSyntax": "parsed",
+        "referenceParsed": true,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "quoted-escape",
+        "localSyntax": "parsed",
+        "referenceParsed": true,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "empty-quoted-value",
+        "localSyntax": "parsed",
+        "referenceParsed": true,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "node-address-not-an-operator",
+        "localSyntax": "parsed",
+        "referenceParsed": true,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "chain-has-no-selected-actor",
+        "localSyntax": "parsed",
+        "referenceParsed": true,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "duplicate-different",
+        "localSyntax": "malformed",
+        "referenceParsed": true,
+        "distinction": "Conflicting duplicate rejected; reference uses the last value",
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "duplicate-same",
+        "localSyntax": "malformed",
+        "referenceParsed": true,
+        "distinction": "Equal duplicate rejected; reference uses the last value",
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "duplicate-purpose",
+        "localSyntax": "malformed",
+        "referenceParsed": true,
+        "distinction": "Conflicting use rejected; reference uses the last value",
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "unclosed-string",
+        "localSyntax": "malformed",
+        "referenceParsed": false,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "escaped-end",
+        "localSyntax": "malformed",
+        "referenceParsed": false,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "space-before-equals",
+        "localSyntax": "malformed",
+        "referenceParsed": false,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "space-after-equals",
+        "localSyntax": "malformed",
+        "referenceParsed": false,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "bare-nontoken",
+        "localSyntax": "malformed",
+        "referenceParsed": false,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "raw-control",
+        "localSyntax": "malformed",
+        "referenceParsed": false,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "non-byte-character",
+        "localSyntax": "malformed",
+        "referenceParsed": false,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "empty-element",
+        "localSyntax": "policy-rejected",
+        "referenceParsed": false,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "header-bound",
+        "localSyntax": "policy-rejected",
+        "referenceParsed": false,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "element-bound",
+        "localSyntax": "policy-rejected",
+        "referenceParsed": true,
+        "distinction": "Local element admission bound",
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "parameter-bound",
+        "localSyntax": "policy-rejected",
+        "referenceParsed": true,
+        "distinction": "Local parameter admission bound",
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      },
+      {
+        "name": "prototype-key-is-data",
+        "localSyntax": "parsed",
+        "referenceParsed": true,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": true
+      },
+      {
+        "name": "unknown-use",
+        "localSyntax": "parsed",
+        "referenceParsed": true,
+        "distinction": null,
+        "explicitEmptyStateInsteadOfException": false,
+        "referencePrototypeFieldLost": false
+      }
+    ],
+    "externalRequests": 0,
+    "dependenciesInstalled": 0,
+    "limits": [
+      "This independently compares syntax acceptance and closed projections, not trust, signature validity or proxy selection.",
+      "Upstream tests were inspected, not executed with their development test runner. No upstream conformance claim."
+    ]
+  },
+  "rfc9421": {
+    "checkedAt": "2026-10-29T04:08:01.210429+00:00",
+    "sourceCommit": "1de433d9a49fd608475c6054ab14a1652c088844",
+    "sourceFilesRechecked": 18,
+    "recordedClock": true,
+    "keyResolver": "per-trial captured publisher keys by RFC thumbprint",
+    "maxAgeSeconds": 86400,
+    "rows": [
+      {
+        "vendor": "synthetic",
+        "variant": "signed",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "unsigned",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "changedSigned",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": null,
+        "error": "InvalidSignature"
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "changedUnsigned",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "coveredOtherHeader",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "multi",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 2,
+        "error": null
+      },
+      {
+        "vendor": "exa-counterfactual",
+        "variant": "retained-injected-reference-0",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "exa-counterfactual",
+        "variant": "retained-injected-full-0",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "exa-counterfactual",
+        "variant": "retained-injected-reference-1",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "exa-counterfactual",
+        "variant": "retained-injected-full-1",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "exa-counterfactual",
+        "variant": "retained-injected-reference-2",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "exa-counterfactual",
+        "variant": "retained-injected-full-2",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "exa-counterfactual",
+        "variant": "retained-injected-reference-3",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "exa-counterfactual",
+        "variant": "retained-injected-full-3",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      }
+    ],
+    "referenceCalls": 14,
+    "externalRequests": 0,
+    "limits": [
+      "Generic RFC verification; discovery, publisher registration and Web Bot Auth admission are separate.",
+      "An exception is not a complete census of valid candidates; this cohort has one eligible candidate per request."
+    ],
+    "execution": {
+      "inputSha256": "aa4881791e467377551a48890af11e2f252b85fa8701a0daafc939acd8d778d3",
+      "nativeFixtureInputSha256": "218e9a1ec3db9689c06f7ba63df7416d7647ab0087e79039809dd6cbfa6d1d68",
+      "scriptSha256": "f9a687f4831239c9258dd1d54ee8943a1e714401f60bf875bfa97ba9acee7098",
+      "sourceManifestSha256": "b3b73b129b8f5424a4862bcf00528424cba91fe6874faae6648855151125ebd9",
+      "transport": "Frozen input bytes supplied directly to child stdin; case-insensitive header names normalized before submission.",
+      "dependenciesRechecked": {
+        "cryptography": "50.0.2",
+        "http-sf": "1.5.0",
+        "cffi": "2.1.1",
+        "typing_extensions": "4.16.0",
+        "pycparser": "3.12"
+      }
+    }
+  }
+}

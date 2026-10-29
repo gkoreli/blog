@@ -1,0 +1,2094 @@
+{
+  "checkedAt": "2026-10-29T04:07:07.421Z",
+  "profile": "2026-10-29.1",
+  "purpose": "Offline diagnostics only; no classifier, collector, policy or native trust adoption",
+  "retainedInputSha256": "51286f29ef842e6cdfdb04545bda72ddd50635ea8e63ddf5f23b8fd531f06f4a",
+  "fixtureInputSha256": "218e9a1ec3db9689c06f7ba63df7416d7647ab0087e79039809dd6cbfa6d1d68",
+  "scriptSha256": "5d8fb6c5f7315787d140835504812ca44afd6acfdabc746d225e9d29938d8675",
+  "moduleSha256": "af4ac16311813c2d8f35be8a0ee55e8e3588aae8d1c0f3e568af2458b4c26006",
+  "fixtureFactorySha256": "52f3d69bcdbf7145154e64b171498c5b3932771d69afbcc60b3aa0b5a92230ac",
+  "directSyntaxCases": [
+    {
+      "name": "absent",
+      "profile": "2026-10-29.1",
+      "syntax": "absent",
+      "reason": "none",
+      "duplicate": "none",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "empty",
+      "profile": "2026-10-29.1",
+      "syntax": "empty",
+      "reason": "none",
+      "duplicate": "none",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "documented-example",
+      "profile": "2026-10-29.1",
+      "syntax": "parsed",
+      "reason": "none",
+      "duplicate": "none",
+      "elements": [
+        {
+          "operator": {
+            "status": "known-claim",
+            "value": "openai"
+          },
+          "use": {
+            "status": "known-claim",
+            "value": "reference"
+          },
+          "otherParameterCount": 0
+        }
+      ],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "token-values",
+      "profile": "2026-10-29.1",
+      "syntax": "parsed",
+      "reason": "none",
+      "duplicate": "none",
+      "elements": [
+        {
+          "operator": {
+            "status": "known-claim",
+            "value": "openai"
+          },
+          "use": {
+            "status": "known-claim",
+            "value": "immediate"
+          },
+          "otherParameterCount": 0
+        }
+      ],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "parameter-name-case",
+      "profile": "2026-10-29.1",
+      "syntax": "parsed",
+      "reason": "none",
+      "duplicate": "none",
+      "elements": [
+        {
+          "operator": {
+            "status": "known-claim",
+            "value": "openai"
+          },
+          "use": {
+            "status": "known-claim",
+            "value": "full"
+          },
+          "otherParameterCount": 0
+        }
+      ],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "value-case-is-not-normalized",
+      "profile": "2026-10-29.1",
+      "syntax": "parsed",
+      "reason": "none",
+      "duplicate": "none",
+      "elements": [
+        {
+          "operator": {
+            "status": "unrecognized",
+            "value": null
+          },
+          "use": {
+            "status": "unrecognized",
+            "value": null
+          },
+          "otherParameterCount": 0
+        }
+      ],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "quoted-delimiters",
+      "profile": "2026-10-29.1",
+      "syntax": "parsed",
+      "reason": "none",
+      "duplicate": "none",
+      "elements": [
+        {
+          "operator": {
+            "status": "unrecognized",
+            "value": null
+          },
+          "use": {
+            "status": "known-claim",
+            "value": "reference"
+          },
+          "otherParameterCount": 0
+        }
+      ],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "quoted-escape",
+      "profile": "2026-10-29.1",
+      "syntax": "parsed",
+      "reason": "none",
+      "duplicate": "none",
+      "elements": [
+        {
+          "operator": {
+            "status": "known-claim",
+            "value": "openai"
+          },
+          "use": {
+            "status": "known-claim",
+            "value": "reference"
+          },
+          "otherParameterCount": 0
+        }
+      ],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "empty-quoted-value",
+      "profile": "2026-10-29.1",
+      "syntax": "parsed",
+      "reason": "none",
+      "duplicate": "none",
+      "elements": [
+        {
+          "operator": {
+            "status": "unrecognized",
+            "value": null
+          },
+          "use": {
+            "status": "unrecognized",
+            "value": null
+          },
+          "otherParameterCount": 0
+        }
+      ],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "node-address-not-an-operator",
+      "profile": "2026-10-29.1",
+      "syntax": "parsed",
+      "reason": "none",
+      "duplicate": "none",
+      "elements": [
+        {
+          "operator": {
+            "status": "unrecognized",
+            "value": null
+          },
+          "use": {
+            "status": "known-claim",
+            "value": "reference"
+          },
+          "otherParameterCount": 0
+        }
+      ],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "chain-has-no-selected-actor",
+      "profile": "2026-10-29.1",
+      "syntax": "parsed",
+      "reason": "none",
+      "duplicate": "none",
+      "elements": [
+        {
+          "operator": {
+            "status": "known-claim",
+            "value": "openai"
+          },
+          "use": {
+            "status": "known-claim",
+            "value": "reference"
+          },
+          "otherParameterCount": 0
+        },
+        {
+          "operator": {
+            "status": "unrecognized",
+            "value": null
+          },
+          "use": {
+            "status": "known-claim",
+            "value": "full"
+          },
+          "otherParameterCount": 0
+        }
+      ],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "duplicate-different",
+      "profile": "2026-10-29.1",
+      "syntax": "malformed",
+      "reason": "duplicate-parameter",
+      "duplicate": "different-values",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "duplicate-same",
+      "profile": "2026-10-29.1",
+      "syntax": "malformed",
+      "reason": "duplicate-parameter",
+      "duplicate": "same-value",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "duplicate-purpose",
+      "profile": "2026-10-29.1",
+      "syntax": "malformed",
+      "reason": "duplicate-parameter",
+      "duplicate": "different-values",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "unclosed-string",
+      "profile": "2026-10-29.1",
+      "syntax": "malformed",
+      "reason": "invalid-value",
+      "duplicate": "none",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "escaped-end",
+      "profile": "2026-10-29.1",
+      "syntax": "malformed",
+      "reason": "invalid-value",
+      "duplicate": "none",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "space-before-equals",
+      "profile": "2026-10-29.1",
+      "syntax": "malformed",
+      "reason": "invalid-pair",
+      "duplicate": "none",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "space-after-equals",
+      "profile": "2026-10-29.1",
+      "syntax": "malformed",
+      "reason": "invalid-value",
+      "duplicate": "none",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "bare-nontoken",
+      "profile": "2026-10-29.1",
+      "syntax": "malformed",
+      "reason": "invalid-separator",
+      "duplicate": "none",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "raw-control",
+      "profile": "2026-10-29.1",
+      "syntax": "malformed",
+      "reason": "invalid-value",
+      "duplicate": "none",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "non-byte-character",
+      "profile": "2026-10-29.1",
+      "syntax": "malformed",
+      "reason": "invalid-value",
+      "duplicate": "none",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "empty-element",
+      "profile": "2026-10-29.1",
+      "syntax": "policy-rejected",
+      "reason": "empty-element-not-supported",
+      "duplicate": "none",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "header-bound",
+      "profile": "2026-10-29.1",
+      "syntax": "policy-rejected",
+      "reason": "header-budget",
+      "duplicate": "none",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "element-bound",
+      "profile": "2026-10-29.1",
+      "syntax": "policy-rejected",
+      "reason": "element-limit",
+      "duplicate": "none",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "parameter-bound",
+      "profile": "2026-10-29.1",
+      "syntax": "policy-rejected",
+      "reason": "parameter-limit",
+      "duplicate": "none",
+      "elements": [],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "prototype-key-is-data",
+      "profile": "2026-10-29.1",
+      "syntax": "parsed",
+      "reason": "none",
+      "duplicate": "none",
+      "elements": [
+        {
+          "operator": {
+            "status": "known-claim",
+            "value": "openai"
+          },
+          "use": {
+            "status": "known-claim",
+            "value": "reference"
+          },
+          "otherParameterCount": 1
+        }
+      ],
+      "chainSelection": "not-performed"
+    },
+    {
+      "name": "unknown-use",
+      "profile": "2026-10-29.1",
+      "syntax": "parsed",
+      "reason": "none",
+      "duplicate": "none",
+      "elements": [
+        {
+          "operator": {
+            "status": "known-claim",
+            "value": "openai"
+          },
+          "use": {
+            "status": "unrecognized",
+            "value": null
+          },
+          "otherParameterCount": 0
+        }
+      ],
+      "chainSelection": "not-performed"
+    }
+  ],
+  "auditCases": [
+    {
+      "name": "signed",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 1,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [
+          "Other"
+        ],
+        "claimAuthentication": "verified-signer-assertion",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "unsigned",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "changedSigned",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "full"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 0,
+        "invalid": 1,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "changedUnsigned",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "full"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "coveredOtherHeader",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "multi",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 2,
+        "verified": 2,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 1,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [
+          "Other"
+        ],
+        "claimAuthentication": "verified-signer-assertion",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "spoof",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 0,
+        "verified": 0,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 0
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "conflict",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "malformed",
+          "reason": "duplicate-parameter",
+          "duplicate": "different-values",
+          "elements": [],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "not-assessed",
+        "termination": "header-not-parsed",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 0,
+        "verified": 0,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": null,
+        "unpairedMembers": null,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 0
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "limited",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 1,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "partial",
+        "termination": "candidate-limit",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 1,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "unavailable",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "partial",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 0,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 1,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "deadline",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 100,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "partial",
+        "termination": "deadline",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 0,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 1,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": true
+    },
+    {
+      "name": "mutation",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 1,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [
+          "Other"
+        ],
+        "claimAuthentication": "verified-signer-assertion",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "native-boolean-spoof",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 0,
+        "verified": 0,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 0
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "signature-budget",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "not-assessed",
+        "termination": "signature-budget",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 0,
+        "verified": 0,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": null,
+        "unpairedMembers": null,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 0
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "no-header",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "absent",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "absent",
+        "termination": "no-header",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 0,
+        "verified": 0,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": null,
+        "unpairedMembers": null,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 0
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "unpaired",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "partial",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 1,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "invalid-options",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": null,
+        "assessment": "not-assessed",
+        "termination": "invalid-options",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 0,
+        "verified": 0,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": null,
+        "unpairedMembers": null,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 0
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "header-budget",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "policy-rejected",
+          "reason": "header-budget",
+          "duplicate": "none",
+          "elements": [],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "not-assessed",
+        "termination": "header-not-parsed",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 0,
+        "verified": 0,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": null,
+        "unpairedMembers": null,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 0
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "retained-absent-0",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "absent",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "absent",
+        "termination": "no-header",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 0,
+        "verified": 0,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": null,
+        "unpairedMembers": null,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 0
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "retained-injected-reference-0",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "retained-injected-full-0",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "full"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "retained-absent-1",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "absent",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "absent",
+        "termination": "no-header",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 0,
+        "verified": 0,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": null,
+        "unpairedMembers": null,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 0
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "retained-injected-reference-1",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "retained-injected-full-1",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "full"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "retained-absent-2",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "absent",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "absent",
+        "termination": "no-header",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 0,
+        "verified": 0,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": null,
+        "unpairedMembers": null,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 0
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "retained-injected-reference-2",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "retained-injected-full-2",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "full"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "retained-absent-3",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "absent",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "absent",
+        "termination": "no-header",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 0,
+        "verified": 0,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": null,
+        "unpairedMembers": null,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 0,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 0
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "retained-injected-reference-3",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "reference"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    },
+    {
+      "name": "retained-injected-full-3",
+      "result": {
+        "version": "2026-10-29.1",
+        "verifierProfile": "2026-10-29.1",
+        "claims": {
+          "profile": "2026-10-29.1",
+          "syntax": "parsed",
+          "reason": "none",
+          "duplicate": "none",
+          "elements": [
+            {
+              "operator": {
+                "status": "known-claim",
+                "value": "openai"
+              },
+              "use": {
+                "status": "known-claim",
+                "value": "full"
+              },
+              "otherParameterCount": 0
+            }
+          ],
+          "chainSelection": "not-performed"
+        },
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "signatureHeaderUnits": 32768,
+          "forwardedHeaderUnits": 4096,
+          "elementLimit": 8,
+          "parameterLimit": 16,
+          "clockSource": "caller-supplied"
+        },
+        "assessment": "complete",
+        "termination": "exhausted",
+        "signatureScope": "paired-web-bot-auth-candidates",
+        "attempted": 1,
+        "verified": 1,
+        "invalid": 0,
+        "policyRejected": 0,
+        "unavailable": 0,
+        "unsupported": 0,
+        "indeterminate": 0,
+        "unassessedCandidates": 0,
+        "unpairedMembers": 0,
+        "verifiedWholeFieldCoverage": 0,
+        "verifiedWithoutFieldCoverage": 1,
+        "assertingPublishers": [],
+        "claimAuthentication": "not-established",
+        "nativeHeaderProvenance": "not-established",
+        "delegation": "not-established",
+        "actualUse": "not-established",
+        "humanTrigger": "not-established",
+        "directoryFetches": 1
+      },
+      "abortObserved": false
+    }
+  ],
+  "retainedOriginals": 4,
+  "retainedInjectedUnsignedCases": 8,
+  "externalRequests": 0,
+  "productionRequests": 0,
+  "d1Statements": 0,
+  "newHumanLabels": 0,
+  "limits": [
+    "Injected headers are counterfactuals, not observed vendor assertions or native Cloudflare propagation.",
+    "A verified signer assertion does not establish delegation, actual use or a human trigger.",
+    "No native trustworthy-header source has been adopted."
+  ]
+}

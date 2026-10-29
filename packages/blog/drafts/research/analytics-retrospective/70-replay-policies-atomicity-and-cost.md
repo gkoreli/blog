@@ -69,3 +69,5 @@ The article stays unchanged at 1,358 words/31 prompts. No build, activation, ser
 Next: audit native operator/content-use propagation against its first-party trust model and our current collector. Current source has no `Forwarded`/`content-use` interpretation. Test absent, spoofed and conflicting claims before considering adoption. The broader [goal audit](current-goal-audit.json), newest-collector signed acceptance and human/device/privacy requirements stay open; no human trials are reopened.
 
 The final private archive contains 53 captured files plus its manifest, 0700 directories/0600 files. Manifest SHA-256: `56065740524addeb6d8438a6fc2df48f0971bb722cc6f006d27cbeb9ae3b2996`. It includes the final explicit invalid-signature assertions and matching independent fixtures. The earlier 45-file snapshot and older archives remain unchanged. October 31 is a review date, not automatic erasure or a provider-wide retention guarantee.
+
+[Research 71](71-forwarded-operator-and-purpose-claims.md) delivers the bounded operator/use diagnostic and native/independent spoofing controls. It adopts no production header trust or purpose classification.

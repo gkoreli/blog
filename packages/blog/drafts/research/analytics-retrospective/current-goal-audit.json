@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T04:00:00.999017+00:00",
-  "sourceBaseline": "4f2750961979148b867cfe92f4e9be8b91f07982",
+  "checkedAt": "2026-10-29T04:14:02.623734+00:00",
+  "sourceBaseline": "e0e7d1024e8d360bab18099329c444f33dc06487",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,7 +45,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Audit native operator/content-use propagation against its first-party trust model and current collector; test absent, spoofed and conflicting claims offline before considering adoption. Current analytics source has no Forwarded/content-use interpretation. Latest-collector signed acceptance, native managed-verifier correlation and human trials remain separate gates; human trials stay deferred.",
+  "nextBoundedAction": "Use bounded native retained-log selection to investigate whether genuine Forwarded fields are present and queryable; preserve exact window, field queryability, input source and collector provenance before any separately planned database read. Header survival alone does not establish trusted provider propagation. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1358,
     "prompts": 31,
@@ -167,9 +167,9 @@
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
-    "providerWriteMetering": "No new observation requested in the offline policy experiment."
+    "providerWriteMetering": "No production observation requested in the offline operator/purpose audit."
   },
-  "newVisitsScope": "Offline replay-policy experiment only; four retained originals, synthetic/counterfactual contexts and disposable native D1. No new site observations or production SQL.",
+  "newVisitsScope": "Offline Forwarded/operator/use diagnostic only: four retained originals and eight injected unsigned-header counterfactuals, plus synthetic signature/syntax controls. No new site observation or production SQL.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -225,5 +225,24 @@
     "concurrentFirstObserved": 1,
     "populationErrorRatesMeasured": false,
     "productionCostMeasured": false
+  },
+  "forwardedPurpose": {
+    "profile": "2026-10-29.1",
+    "receipt": "forwarded-purpose-checks.json",
+    "nativeReceipt": "forwarded-purpose-native.json",
+    "referenceReceipt": "forwarded-purpose-reference.json",
+    "dedicatedSourceExport": true,
+    "collectorAdoption": false,
+    "nativeTrustAdoption": false,
+    "nativeSyntaxCases": 27,
+    "nativeAuditCases": 30,
+    "retainedInjectedClaims": 8,
+    "injectedClaimsAuthenticated": 0,
+    "independentParserCases": 26,
+    "independentRfcMessages": 14,
+    "actualUseOrHumanTriggerEstablished": false,
+    "articleChanged": false,
+    "retainedHeaderObjectsWithoutForwarded": 4,
+    "wireCompleteHeaderRetentionProven": false
   }
 }

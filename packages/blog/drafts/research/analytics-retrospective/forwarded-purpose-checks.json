@@ -1,0 +1,100 @@
+{
+  "checkedAt": "2026-10-29T04:10:42.994684+00:00",
+  "sourceBaseline": "e0e7d1024e8d360bab18099329c444f33dc06487",
+  "analyticsTests": 275,
+  "workspaceTypes": "pass",
+  "frontmatterValidation": {
+    "validMarkdownPosts": 21
+  },
+  "nativeSyntaxCases": 27,
+  "nativeAuditCases": 30,
+  "independentParserCases": 26,
+  "independentRfcMessages": 14,
+  "articleUnchanged": true,
+  "productionRequests": 0,
+  "productionStatements": 0,
+  "newHumanLabels": 0,
+  "privateReferenceAndProofScan": "pass",
+  "moduleScriptAndFixtureBindings": "pass",
+  "primarySources": [
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc7239.html",
+      "status": 200,
+      "sha256": "0ede2a1cf5b0295f41cde60d23598678cd2dd3bd8b45a10a2e61dfd87fac7d6c",
+      "bytes": 44280,
+      "capturedAt": "2026-10-29T04:08:19.137763+00:00"
+    },
+    {
+      "source": "https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/",
+      "status": 200,
+      "sha256": "a2d94f74f2902ac1ad0c5616af4a281f0f48032d67a3a297566be7e305e6d1f3",
+      "bytes": 156617,
+      "capturedAt": "2026-10-29T04:08:19.224600+00:00"
+    },
+    {
+      "source": "https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/",
+      "status": 200,
+      "sha256": "0e62c740451eee7d97de41bed6152c41c3091d9d71496f2800caa15321d10807",
+      "bytes": 131589,
+      "capturedAt": "2026-10-29T04:08:19.292412+00:00"
+    },
+    {
+      "source": "https://www.ietf.org/archive/id/draft-ietf-webbotauth-httpsig-protocol-00.txt",
+      "status": 200,
+      "sha256": "3021fd94cdffdb2eb030dec68b1a5c968f2348502dd94c481e2085ec7ddd90a0",
+      "bytes": 95603,
+      "capturedAt": "2026-10-29T04:08:19.375854+00:00"
+    },
+    {
+      "source": "https://developers.cloudflare.com/workers/runtime-apis/request/",
+      "status": 200,
+      "sha256": "f7dc0f412565824a5e981c3af301b318085600d49765746b79ccef0245c90ad5",
+      "bytes": 267476,
+      "capturedAt": "2026-10-29T04:10:04.967243+00:00"
+    },
+    {
+      "source": "https://developers.cloudflare.com/bots/reference/bot-management-variables/",
+      "status": 200,
+      "sha256": "ff0d8ea69d78b287604af5e9aeb227c5b606f716c33a9f46ecc4f4aefeba3218",
+      "bytes": 115566,
+      "capturedAt": "2026-10-29T04:10:05.037572+00:00"
+    }
+  ],
+  "installedTypes": {
+    "package": "@cloudflare/workers-types",
+    "version": "4.20260306.1",
+    "sourceSha256": "6b9fb1124c7d34e3b21c8838e24aee0f5e72b602312f426d95048d3b99d3153d",
+    "signedAgentMentioned": false,
+    "limit": "Installed types are not a complete or current runtime capability inventory; current Request docs list signedAgent."
+  },
+  "workerGraph": {
+    "checkedAt": "2026-10-29T04:09:14.835Z",
+    "method": "Controlled esbuild Worker entry bundle; no production build, asset or deployed-byte claim",
+    "entry": "packages/blog/src/worker/index.ts",
+    "inputs": 151,
+    "forwardedPurposeModuleIncluded": false,
+    "outputBytes": 545946,
+    "outputSha256": "557ba92431eead2bec451d71149e72abd16408eea1ba235489d00d301a1c7944"
+  },
+  "activation": "No runtime adoption; dedicated source export and offline acceptance only",
+  "retrievalLimits": [
+    "Initial unauthenticated GitHub API request returned HTTP 403/rate limit; exact master commit was resolved through Git, then seven pinned raw files captured. API not retried.",
+    "Initial parser comparison incorrectly treated two non-parsed empty outcomes as an acceptance difference; corrected before accepted output.",
+    "Initial root-level esbuild import could not resolve the workspace dependency; controlled bundle uses the blog package resolver."
+  ],
+  "finalChecks": {
+    "localLinksChecked": 87,
+    "rfcAnchorFound": true,
+    "privateProofAndAddressScan": "pass",
+    "articleSourceUnchanged": true
+  },
+  "privateArchive": {
+    "capturedFiles": 41,
+    "manifestSha256": "177affb97f13b54e53295c96829c226297be50283147c6ddb221942a53aa91d9",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "retainedRepresentationLimit": "Four retained request-header objects omit Forwarded; absence in these captures is not independent proof of wire-complete header retention."
+}

@@ -1,0 +1,49 @@
+{
+  "capturedAt": "2026-10-29T04:02:20.592105+00:00",
+  "repository": "lpinca/forwarded-parse",
+  "commit": "2d397f0f28b713f272c83b9c91611fc55dd858ad",
+  "files": [
+    {
+      "path": "index.js",
+      "url": "https://raw.githubusercontent.com/lpinca/forwarded-parse/2d397f0f28b713f272c83b9c91611fc55dd858ad/index.js",
+      "sha256": "620d533fbe76602876f1ebc646e58c5eb66a05c22e8ead65193b81a4df1196f2",
+      "bytes": 4192
+    },
+    {
+      "path": "package.json",
+      "url": "https://raw.githubusercontent.com/lpinca/forwarded-parse/2d397f0f28b713f272c83b9c91611fc55dd858ad/package.json",
+      "sha256": "de98796a31c926d9f4c3c2ecaaf1531018ebf15cfd80760ecb5dd55ff8a4a73b",
+      "bytes": 771
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/lpinca/forwarded-parse/2d397f0f28b713f272c83b9c91611fc55dd858ad/README.md",
+      "sha256": "da5acf46abd536b158d4d52c5b0fb99e76b870d485a089a5bedeb81df8dafb0f",
+      "bytes": 1636
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/lpinca/forwarded-parse/2d397f0f28b713f272c83b9c91611fc55dd858ad/LICENSE",
+      "sha256": "59607748cb2abdc9a34ad71c30e096d565246a7ac2476548c6e9d4c02ec2fe5f",
+      "bytes": 1055
+    },
+    {
+      "path": "test.js",
+      "url": "https://raw.githubusercontent.com/lpinca/forwarded-parse/2d397f0f28b713f272c83b9c91611fc55dd858ad/test.js",
+      "sha256": "244f1d1738164c6518294f2714e0b4b7cbaf7527cd588575e62e02f2a99623a4",
+      "bytes": 3715
+    },
+    {
+      "path": "lib/error.js",
+      "url": "https://raw.githubusercontent.com/lpinca/forwarded-parse/2d397f0f28b713f272c83b9c91611fc55dd858ad/lib/error.js",
+      "sha256": "93f40ac7cae83899bf6494ed300e3e0e564d41afef76e4a15528c7eb8405279a",
+      "bytes": 465
+    },
+    {
+      "path": "lib/ascii.js",
+      "url": "https://raw.githubusercontent.com/lpinca/forwarded-parse/2d397f0f28b713f272c83b9c91611fc55dd858ad/lib/ascii.js",
+      "sha256": "9beb171bffee3528c3da017b4e77defe51bba97ca913ee090ebc6b33d290a658",
+      "bytes": 2230
+    }
+  ]
+}
