@@ -1,0 +1,68 @@
+{
+  "checkedAt": "2026-10-29T19:49:35.014596+00:00",
+  "sourceCommit": "364de9e658788e4191309582845f433ade127540",
+  "runtimeChanged": false,
+  "collectorAcceptance": {
+    "worker": "d65be377-c9c3-4503-a45b-6a4fa0cb758b",
+    "receipt": "metadata-collector-production.json",
+    "exactChains": 4,
+    "controlledRequests": 4,
+    "readStatements": 1,
+    "reportedReads": 8,
+    "diagnosticWrites": 0,
+    "ingestionAdditional": true,
+    "fourStoredReferrersExcludedUnderCurrentPolicy": true,
+    "humanLabels": 0
+  },
+  "publicationBuild": {
+    "id": "7a45c1ee-25af-4dba-b90d-6ad2c6ea9394",
+    "status": "Ready; source-linked build/deploy commands succeeded",
+    "logLinkedWorker": "9653a6f6-22ce-4e24-ba92-7a3683a49894",
+    "freshCliAllocationPercentage": 100,
+    "optionalBindingsAbsent": [
+      "ANALYTICS_DIAGNOSTICS",
+      "ANALYTICS_NATIVE_CAPTURE",
+      "ANALYTICS_CALIBRATION"
+    ],
+    "node": "24.22.1",
+    "dashboardLimit": "Source Ready row says no version and a separate row is labelled manually deployed; cached Active text is older. No agent manual deployment or cause inferred. Full build-log/CLI join supplies version/allocation evidence."
+  },
+  "article": {
+    "bodyWhitespaceWords": 1437,
+    "prompts": 31,
+    "servedMarkdownStatus": 200,
+    "servedMarkdownBytes": 16248,
+    "servedMarkdownSha256": "3da18788d73fbcbf7ef46fe05aaf8b1a3766c89ec1701a0d54b7721d420cd237",
+    "exactBuiltMarkdownMatch": true,
+    "freshServedHtmlInspected": false,
+    "perRequestPublicationVersionTrace": false
+  },
+  "requestAccounting": {
+    "collectorControls": 4,
+    "collectorControlsRepeated": 0,
+    "separateIneligiblePublicationGet": 1,
+    "totalOwnSiteGets": 5,
+    "productionPublicReportFills": 0,
+    "publicationDiagnosticStatements": 0,
+    "noNewCollectorReadbackOnArticleOnlyVersion": true
+  },
+  "privateEvidence": {
+    "data": {
+      "files": 94,
+      "bytes": 1429355,
+      "manifestSha256": "bce8d7c17de111bb10ed5a37431abb0f3f06a58d1fad72e2fe45ad94d3d14860"
+    },
+    "publicationPlan": {
+      "files": 3,
+      "manifestSha256": "b8943ee9bde309d03e8b26766e5e598d099396ffc30b94b8c33974cdca73484e"
+    },
+    "publication": {
+      "files": 18,
+      "manifestSha256": "21e3747a61bd6b04ac4145fc9176e7831f7e334ff008fd0af1788092e0864fb3"
+    },
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "goalAchieved": false,
+  "nextBoundedAction": "Public parsing-state denominators and Browser wording, with explicit historical unassessed records and native cost/contract checks. Human trials remain deferred."
+}

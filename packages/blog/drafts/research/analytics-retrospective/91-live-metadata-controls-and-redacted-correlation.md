@@ -43,10 +43,14 @@ Two subsequent scoped tail sessions capture one and three requests. Both stop. T
 
 Fresh metadata and the downloaded build log link Worker `d65be377` to Ready build `122d6632` and source `7e20f0e`, at 100% allocation. Scoped Git comparison establishes unchanged runtime sources from `7681e26`; each actual tail event carries the full planned Worker ID. This is stronger request-version evidence than the earlier direct Markdown publication check.
 
-The article replaces its existing uncertainty paragraph with the controlled-curl lesson and links this evidence. Its title and scope remain unchanged; publication acceptance is recorded separately. [Native checks](metadata-collector-native.json), [live reconciliation](metadata-collector-production.json) and [source/plan commitments](metadata-collector-sources.json) retain the narrowed claims. Raw UA, source addresses, rays, markers, row references and captures stay outside Git. October 31 remains a review date, not automatic erasure.
+The article replaces its existing uncertainty paragraph with the controlled-curl lesson and links this evidence. Its title and scope remain unchanged; [publication acceptance](metadata-collector-release.json) is recorded separately. [Native checks](metadata-collector-native.json), [live reconciliation](metadata-collector-production.json) and [source/plan commitments](metadata-collector-sources.json) retain the narrowed claims. Raw UA, source addresses, rays, markers, row references and captures stay outside Git. October 31 remains a review date, not automatic erasure.
 
 ## Next useful improvement
 
 Expose the new parsing-state denominators with explicit historical unassessed records, and inspect the public Browser wording against what these controls can prove. Correct syntax is necessary for honest classification; it cannot supply engine or operator authentication. Human/device and native managed-verifier comparisons, R1 attribution and whole-history proof recovery remain open.
 
 Private data commitment: 94 files, manifest `bce8d7c17de111bb10ed5a37431abb0f3f06a58d1fad72e2fe45ad94d3d14860`. No automatic erasure.
+
+[Publication acceptance](metadata-collector-release.json) links source `364de9e`, Ready build `7a45c1ee`, its full log-linked Worker and fresh CLI 100% allocation. The separate ineligible Markdown GET matches all 16,248 built bytes; 1,437 words/31 prompts. Five total own-site GETs comprise four excluded collector controls and this publication asset. No new collector readback on the article-only version or fresh served HTML/layout is claimed. The dashboard’s unlinked source row/separate manually-labelled row is retained without inferring a manual agent deployment.
+
+Publication-plan manifest `b8943ee9bde309d03e8b26766e5e598d099396ffc30b94b8c33974cdca73484e`; publication capture manifest `21e3747a61bd6b04ac4145fc9176e7831f7e334ff008fd0af1788092e0864fb3` (18 files).

@@ -31,6 +31,10 @@
       "url": "https://developers.cloudflare.com/workers/observability/logs/real-time-logs/",
       "supports": "Filtered JSON real-time capture can drop messages; it does not itself persist Workers Logs.",
       "captureLimit": "web read succeeded; a separate urllib HTML GET returned 403, no retry/cause attribution"
+    },
+    {
+      "url": "https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ray",
+      "supports": "Cf-Ray includes a datacenter suffix; preserve observed tail/response representation differences rather than treating suffix text as the request identifier."
     }
   ],
   "privatePlans": [
@@ -83,5 +87,6 @@
     "manifestSha256": "bce8d7c17de111bb10ed5a37431abb0f3f06a58d1fad72e2fe45ad94d3d14860",
     "reviewDate": "2026-10-31",
     "automaticErasure": false
-  }
+  },
+  "publication": "metadata-collector-release.json"
 }

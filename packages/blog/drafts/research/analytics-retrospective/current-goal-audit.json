@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T19:43:26.948770+00:00",
-  "sourceBaseline": "7e20f0e",
+  "checkedAt": "2026-10-29T19:49:35.014596+00:00",
+  "sourceBaseline": "364de9e658788e4191309582845f433ade127540",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -51,13 +51,13 @@
     "prompts": 31,
     "sourceSha256": "6d37bf4ec014d94c29eaa52917e1aeece716ad214be8a20aa919c737c58bd31e",
     "unchanged": false,
-    "freshServedCheck": false,
-    "publicationReceipt": null,
-    "servedMatchesCheckedBuild": false,
-    "lastServedCheckReceipt": "fetch-metadata-parsing-release.json",
-    "publicationStatus": "Research 91 replaces the existing uncertainty paragraph with the excluded controlled-curl result; source/served acceptance pending.",
+    "freshServedCheck": true,
+    "publicationReceipt": "metadata-collector-release.json",
+    "servedMatchesCheckedBuild": true,
+    "lastServedCheckReceipt": "metadata-collector-release.json",
+    "publicationStatus": "Research 91 concise curl/control paragraph published; exact served direct Markdown matches the checked isolated build at 1437 words/31 prompts.",
     "previousPublicationReceipt": "fetch-metadata-parsing-release.json",
-    "servedMatchScope": "No fresh served acceptance for this paragraph yet.",
+    "servedMatchScope": "Exact direct Markdown; no fresh served HTML/layout or per-request publication version trace.",
     "localBuildAccepted": true,
     "localBuildReceipt": "metadata-collector-native.json"
   },
@@ -175,7 +175,7 @@
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No collection-eligible own-site request; no D1 ingestion readback. Natural/provider activity remains additional."
   },
-  "newVisitsScope": "Four controlled curl GETs, all referral-excluded; no repeated request, included readership/human visit or JavaScript execution.",
+  "newVisitsScope": "Four one-attempt controlled curl GETs, all referral-excluded, plus one separate ineligible direct Markdown publication GET. No included readership/human visit or JavaScript execution.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -381,7 +381,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Source-linked Ready build, log-linked Worker and read-only Wrangler deployment/version metadata; optional capture settings unchanged and absent.",
+  "liveAccountInspectionScope": "Source/build/version linkage for actual collector controls and separately for article publication; one exact four-ID SELECT. Optional capture bindings remain absent; no configuration or native entitlement change.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -714,7 +714,8 @@
     "humanLabels": 0,
     "release": "fetch-metadata-parsing-release.json",
     "productionCollectorReadback": true,
-    "productionCollectorReadbackReceipt": "metadata-collector-production.json"
+    "productionCollectorReadbackReceipt": "metadata-collector-production.json",
+    "productionCollectorReadbackScope": "Four matched requests on d65be377; the later article-only publication Worker is accepted separately, without repeating collector trials."
   },
   "newControlledRequests": 4,
   "liveMetadataControls": {
@@ -744,6 +745,7 @@
     "publicReportFills": 0,
     "articleChanged": true,
     "tailQueryRedacted": 4,
-    "privateDataManifestSha256": "bce8d7c17de111bb10ed5a37431abb0f3f06a58d1fad72e2fe45ad94d3d14860"
+    "privateDataManifestSha256": "bce8d7c17de111bb10ed5a37431abb0f3f06a58d1fad72e2fe45ad94d3d14860",
+    "publication": "metadata-collector-release.json"
   }
 }
