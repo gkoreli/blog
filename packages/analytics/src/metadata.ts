@@ -1,3 +1,4 @@
+import { extractFetchMetadata } from './fetch-metadata.js';
 import { htmlAcceptance } from './accept.js';
 import { parseReferrer } from './referrals.js';
 import type { ReferrerState } from './contracts.js';
@@ -14,6 +15,7 @@ export interface RequestMetadata {
   isOwner: boolean;
   asn: number | null;
   asOrg: string | null;
+  fetchMetadataBits: number;
   secFetchMode: string | null;
   secFetchDest: string | null;
   secFetchSite: string | null;
@@ -21,11 +23,6 @@ export interface RequestMetadata {
   acceptsHtml: number | null;
   hasAcceptLanguage: number;
   hasSignatureHeaders: boolean;
-}
-
-function boundedHeader(request: Request, name: string): string | null {
-  const value = request.headers.get(name);
-  return value === null ? null : value.trim().toLowerCase().slice(0, 32);
 }
 
 export function extractRequestMetadata(request: Request, ownerIps: string | undefined, publicPaths?: ReadonlySet<string>): RequestMetadata {
@@ -36,7 +33,6 @@ export function extractRequestMetadata(request: Request, ownerIps: string | unde
   const country = request.cf?.country;
   const asn = request.cf?.asn;
   const asOrganization = request.cf?.asOrganization;
-  const secFetchUser = request.headers.get('Sec-Fetch-User');
   const accept = request.headers.get('Accept');
   const acceptLanguage = request.headers.get('Accept-Language');
   const hasSignatureHeaders = ['Signature-Agent', 'Signature-Input', 'Signature']
@@ -52,10 +48,7 @@ export function extractRequestMetadata(request: Request, ownerIps: string | unde
     isOwner: owners.includes(ip),
     asn: typeof asn === 'number' && Number.isInteger(asn) && asn > 0 && asn < 4_294_967_295 ? asn : null,
     asOrg: typeof asOrganization === 'string' ? asOrganization.trim().slice(0, 128) : null,
-    secFetchMode: boundedHeader(request, 'Sec-Fetch-Mode'),
-    secFetchDest: boundedHeader(request, 'Sec-Fetch-Dest'),
-    secFetchSite: boundedHeader(request, 'Sec-Fetch-Site'),
-    secFetchUser: secFetchUser === null ? null : secFetchUser === '?1' ? 1 : 0,
+    ...extractFetchMetadata(request.headers),
     acceptsHtml: htmlAcceptance(accept),
     hasAcceptLanguage: acceptLanguage !== null && acceptLanguage.trim().length > 0 ? 1 : 0,
     hasSignatureHeaders,

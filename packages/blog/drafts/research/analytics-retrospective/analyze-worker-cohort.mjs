@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { resolve } from 'node:path';
+import { fetchMetadataFields } from '../../../../analytics/.test-dist/fetch-metadata.js';
 import { analyzeTraffic } from '../../../../analytics/.test-dist/classify.js';
 import { extractRequestMetadata } from '../../../../analytics/.test-dist/metadata.js';
 import { classifyReaderKind } from '../../../../analytics/.test-dist/readerkind.js';
@@ -17,7 +18,7 @@ function increment(map, value) { const key = value === null || value === undefin
 /** An aggregate-only report: no original UA, origin, IP, IDs, URLs or per-request rows. */
 export function analyzeWorkerCohort(rows) {
   if (!Array.isArray(rows)) throw new Error('Expected a native JSON event array');
-  const dimensions = { day: {}, status: {}, method: {}, dataset: {}, trafficClass: {}, readerKind: {}, successfulReaderKind: {}, browserFamily: {}, osFamily: {}, clientForm: {}, mobilePreference: {}, legacyDeviceCompatibility: {}, fetchMode: {}, fetchDest: {}, fetchSite: {}, fetchUser: {}, knownClient: {}, declarationStatus: {}, categoryAgreement: {}, networkEvidence: {}, referrerContext: {} };
+  const dimensions = { day: {}, status: {}, method: {}, dataset: {}, trafficClass: {}, readerKind: {}, successfulReaderKind: {}, browserFamily: {}, osFamily: {}, clientForm: {}, mobilePreference: {}, legacyDeviceCompatibility: {}, fetchModeState: {}, fetchDestState: {}, fetchSiteState: {}, fetchUserState: {}, fetchMode: {}, fetchDest: {}, fetchSite: {}, fetchUser: {}, knownClient: {}, declarationStatus: {}, categoryAgreement: {}, networkEvidence: {}, referrerContext: {} };
   const userAgents = new Set(), addresses = new Set(), networks = new Set(), countries = new Set(), referrerHosts = new Set(), eventIds = new Set();
   let invalidRows = 0, duplicateEventIds = 0, missingEventIds = 0, truncatedEvents = 0, signatureHeaderEvents = 0, populatedVerifiedBotCategoryEvents = 0;
   for (const row of rows) {
@@ -36,14 +37,15 @@ export function analyzeWorkerCohort(rows) {
     const clientForm = clientFormEvidence(metadata.userAgent, headers.get('sec-ch-ua-mobile'), classification.declarations.browserFamily);
     const signaturePresent = metadata.hasSignatureHeaders;
     const signature = signaturePresent ? { status: 'unverified', reason: 'historical-not-reverified' } : { status: 'absent' };
-    const facts = { ...classification, observationSource: 'edge', asn: metadata.asn,
+    const facts = { ...classification, observationSource: 'edge', asn: metadata.asn, fetchMetadataBits: metadata.fetchMetadataBits,
       secFetchMode: metadata.secFetchMode, secFetchDest: metadata.secFetchDest, secFetchSite: metadata.secFetchSite,
       secFetchUser: metadata.secFetchUser, acceptsHtml: metadata.acceptsHtml, hasAcceptLanguage: metadata.hasAcceptLanguage,
       signature, userAgent: metadata.userAgent, referrerState: metadata.referrerState };
     const reader = classifyReaderKind(facts);
     const derived = classificationEvidence(facts, classification.declarations);
     const evidence = extractRequestEvidence(request, new Response(null, { status }));
-    const pairs = [ ['day', String(row.timestamp).slice(0,10)], ['status', status], ['method', vocabulary(requestData.method, ['GET','HEAD','POST','PUT','PATCH','DELETE','OPTIONS'])], ['dataset', vocabulary(row.dataset, ['cloudflare-workers'])],
+    const fieldStates = fetchMetadataFields(metadata.fetchMetadataBits).states;
+    const pairs = [ ['fetchModeState', fieldStates[0]], ['fetchDestState', fieldStates[1]], ['fetchSiteState', fieldStates[2]], ['fetchUserState', fieldStates[3]], ['day', String(row.timestamp).slice(0,10)], ['status', status], ['method', vocabulary(requestData.method, ['GET','HEAD','POST','PUT','PATCH','DELETE','OPTIONS'])], ['dataset', vocabulary(row.dataset, ['cloudflare-workers'])],
       ['declarationStatus', classification.declarations.status], ['categoryAgreement', derived.categoryAgreement], ['networkEvidence', derived.network], ['referrerContext', derived.referrerContext],
       ['trafficClass', classification.trafficClass], ['readerKind', reader.kind], ['browserFamily', evidence.browserFamily],
       ['osFamily', evidence.osFamily], ['clientForm', clientForm.form], ['mobilePreference', clientForm.mobileHint], ['legacyDeviceCompatibility', clientForm.legacyCompatibility.value], ['knownClient', classification.agentName],
@@ -73,7 +75,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   const input = process.argv[2], output = process.argv[3];
   if (!input || !output) throw new Error('Usage: node analyze-worker-cohort.mjs PRIVATE_EXPORT_JSON OUTPUT_JSON');
   const bytes = readFileSync(input); const summary = analyzeWorkerCohort(JSON.parse(bytes.toString()));
-  summary.sourceSha256 = Object.fromEntries(['classify.ts', 'client-form.ts', 'readerkind.ts', 'classification-evidence.ts', 'networks.ts', 'metadata.ts'].map(name => [name, createHash('sha256').update(readFileSync(`packages/analytics/src/${name}`)).digest('hex')]));
+  summary.sourceSha256 = Object.fromEntries(['classify.ts', 'client-form.ts', 'readerkind.ts', 'classification-evidence.ts', 'networks.ts', 'metadata.ts', 'fetch-metadata.ts'].map(name => [name, createHash('sha256').update(readFileSync(`packages/analytics/src/${name}`)).digest('hex')]));
   summary.inputSha256 = createHash('sha256').update(bytes).digest('hex'); summary.inputBytes = bytes.length;
   writeFileSync(output, JSON.stringify(summary, null, 2) + '\n', { flag: 'wx' });
   console.log(JSON.stringify(summary, null, 2));

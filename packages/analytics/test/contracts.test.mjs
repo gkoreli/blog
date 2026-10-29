@@ -361,9 +361,9 @@ test('request metadata extracts bounded request evidence and reports absent valu
       'CF-Connecting-IP': '203.0.113.10',
       Referer: 'https://www.example.com/private/path?token=secret',
       'User-Agent': 'Browser/1.0',
-      'Sec-Fetch-Mode': 'Navigate',
-      'Sec-Fetch-Dest': 'DOCUMENT',
-      'Sec-Fetch-Site': 'Same-Origin',
+      'Sec-Fetch-Mode': 'navigate',
+      'Sec-Fetch-Dest': 'document',
+      'Sec-Fetch-Site': 'same-origin',
       'Sec-Fetch-User': '?1',
       Accept: 'application/xhtml+xml, text/html;q=0.9',
       'Accept-Language': 'en-US,en;q=0.9',
@@ -388,6 +388,7 @@ test('request metadata extracts bounded request evidence and reports absent valu
     isOwner: true,
     asn: 16509,
     asOrg: longOrganization.trim().slice(0, 128),
+    fetchMetadataBits: 1170,
     secFetchMode: 'navigate',
     secFetchDest: 'document',
     secFetchSite: 'same-origin',
@@ -440,7 +441,7 @@ test('request metadata extracts bounded request evidence and reports absent valu
     'Sec-Fetch-Site': 'A'.repeat(40),
   } }), undefined);
   assert.equal(wildcard.acceptsHtml, 1);
-  assert.equal(wildcard.secFetchSite, 'a'.repeat(32));
+  assert.equal(wildcard.secFetchSite, null);
   assert.equal(extractRequestMetadata(request('/signed', {
     headers: { 'Signature-Input': 'sig=("@authority")' },
   }), undefined).hasSignatureHeaders, true);
@@ -1836,8 +1837,8 @@ test('field hardening preserves unknown roots, validates ASN input, and versions
     assert.equal(row.asn_source, accepted ? 'request' : null);
     assert.equal(row.referrer_state, 'internal');
     assert.equal(row.internal_referrer_path, null);
-    assert.equal(row.collection_version, '2026-10-29.5');
-    assert.equal(row.classifier_version, '2026-10-29.2');
+    assert.equal(row.collection_version, '2026-10-29.6');
+    assert.equal(row.classifier_version, '2026-10-29.3');
   }
   for (const url of ['https://gkoreli.com/', 'http://www.gkoreli.com:8080/']) assert.equal(parseReferrer(url, 'gkoreli.com', new Set(['/'])).internalReferrerPath, null);
   assert.equal(parseReferrer('http://www.gkoreli.com:8080/article', 'gkoreli.com', new Set(['/article'])).internalReferrerPath, '/article');

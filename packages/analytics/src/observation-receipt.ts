@@ -28,7 +28,8 @@ export function storedObservationReceipt(observation: ReceiptInput) {
   return {
     // One retained export omitted nulls/empty arrays from the same v1 operations. Scalars
     // make those states queryable without reconstructing missing fields.
-    version: '2026-10-29.1' as const,
+    version: classification.fetchMetadataBits === undefined ? '2026-10-29.1' as const : '2026-10-29.2' as const,
+    ...(classification.fetchMetadataBits === undefined ? {} : { fetchMetadataBits: classification.fetchMetadataBits }),
     classifierProfile: classification.classifierProfile,
     readerKind: observation.readerKind,
     vendorNetwork: vendorIpReceipt(observation.vendorIpEvidence),

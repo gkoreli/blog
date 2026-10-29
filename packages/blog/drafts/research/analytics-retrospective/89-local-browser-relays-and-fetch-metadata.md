@@ -69,3 +69,6 @@ Private commitments: plan manifest `0af1129bce4be6a869bcb8030db40a75daeb8142a8f7
 
 
 Live-plan manifest `34cfa2fd8a89926d9d9b74167f3bc80202f27673d8e3505770a8a44de8e3a2ee`; live acceptance manifest `457e81465245b422dacbfa6801b2f054238141ca4a9e070d5d2fde48ff486587` (21 files). Provider build Node 24.22.1 differs from the local experiment's 24.14.1; neither is confused with production Worker Fetch in workerd.
+
+
+[Research 90](90-fetch-metadata-parsing-and-evidence.md) completes the proposed parsing audit and repairs demonstrated normalization/extension gaps. The fifteen visits remain agent-operated; no new human attribution follows.

@@ -1,3 +1,4 @@
+import { fetchMetadataFields } from './fetch-metadata.js';
 import type { ReaderKind, TrafficClass, ReferrerState } from './contracts.js';
 import { isArchiverAsn, isHostingAsn, networkEvidence } from './networks.js';
 import { analyzeTraffic, type ClientDeclarations } from './classify.js';
@@ -81,6 +82,7 @@ export interface ReaderKindFacts {
   agentName: string | null;
   observationSource: 'beacon' | 'edge';
   asn: number | null;
+  fetchMetadataBits?: number;
   secFetchMode: string | null;
   secFetchDest: string | null;
   secFetchSite: string | null;
@@ -193,6 +195,13 @@ function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
   if (isHostingAsn(facts.asn)) return { kind: 'cloud-browser', reason: `hosting-asn:${facts.asn}` };
 
   if (declarations.browserFamily === 'unrecognized') return { kind: 'unresolved', reason: 'unrecognized-browser-claim' };
+  if (facts.fetchMetadataBits !== undefined) {
+    const fields = fetchMetadataFields(facts.fetchMetadataBits);
+    if (fields === null || fields.states.includes('not-assessed')) return { kind: 'unresolved', reason: 'fetch-metadata-unassessed' };
+    if (fields.states.includes('policy-limit')) return { kind: 'unresolved', reason: 'fetch-metadata-policy-limit' };
+    if (fields.states.includes('invalid')) return { kind: 'unresolved', reason: 'fetch-metadata-invalid' };
+    if (fields.states.includes('unrecognized')) return { kind: 'unresolved', reason: 'fetch-metadata-unrecognized' };
+  }
   if (facts.secFetchSite === 'same-origin' && facts.referrerState === 'external') return { kind: 'unresolved', reason: 'request-context-conflict' };
   if (facts.secFetchMode !== null && !['navigate', 'cors', 'no-cors', 'same-origin', 'websocket'].includes(facts.secFetchMode)) return { kind: 'unresolved', reason: 'fetch-metadata-unrecognized' };
   const navigationShaped = facts.secFetchMode === 'navigate' && facts.secFetchDest === 'document'

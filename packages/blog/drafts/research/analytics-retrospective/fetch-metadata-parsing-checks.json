@@ -1,0 +1,483 @@
+{
+  "baseline": "b890dfda76aee0944d11fd7a0ec5844710ea394b",
+  "checkedAt": "2026-10-29T19:20:59.466Z",
+  "node": "v24.14.1",
+  "workerSha256": "d2e5a97a6cc274e06e222048655fd627fdab5c585979364604013f20e74e52bd",
+  "productionRequests": 0,
+  "humanTrials": 0,
+  "corpus": {
+    "itemCases": 854,
+    "mandatoryPass": 846,
+    "permittedRejections": 2,
+    "scope": "Item acceptance, primary token/boolean values/types and parameter presence only; not discarded parameter values or general List/Dictionary conformance"
+  },
+  "controls": [
+    {
+      "label": "canonical",
+      "old": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "current": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "fields": {
+        "states": [
+          "valid",
+          "valid",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "upper-mode",
+      "old": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "current": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-unrecognized"
+      },
+      "fields": {
+        "states": [
+          "unrecognized",
+          "valid",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "upper-dest",
+      "old": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "current": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-unrecognized"
+      },
+      "fields": {
+        "states": [
+          "valid",
+          "unrecognized",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "upper-site",
+      "old": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "current": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-unrecognized"
+      },
+      "fields": {
+        "states": [
+          "valid",
+          "valid",
+          "unrecognized",
+          "valid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "invalid-user",
+      "old": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "current": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-invalid"
+      },
+      "fields": {
+        "states": [
+          "valid",
+          "valid",
+          "valid",
+          "invalid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "duplicate-mode",
+      "old": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-unrecognized"
+      },
+      "current": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-invalid"
+      },
+      "fields": {
+        "states": [
+          "invalid",
+          "valid",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "quoted-mode",
+      "old": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-unrecognized"
+      },
+      "current": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-invalid"
+      },
+      "fields": {
+        "states": [
+          "invalid",
+          "valid",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "unicode-space",
+      "old": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "current": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-invalid"
+      },
+      "fields": {
+        "states": [
+          "invalid",
+          "valid",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "parameters",
+      "old": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-unrecognized"
+      },
+      "current": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "fields": {
+        "states": [
+          "valid",
+          "valid",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          true,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "date-parameters",
+      "old": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-unrecognized"
+      },
+      "current": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "fields": {
+        "states": [
+          "valid",
+          "valid",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          true,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "display-parameters",
+      "old": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-unrecognized"
+      },
+      "current": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "fields": {
+        "states": [
+          "valid",
+          "valid",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          true,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "invalid-extension",
+      "old": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-unrecognized"
+      },
+      "current": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-invalid"
+      },
+      "fields": {
+        "states": [
+          "invalid",
+          "valid",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "unknown-dest",
+      "old": {
+        "kind": "http-client",
+        "reason": "not-navigation-shaped"
+      },
+      "current": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-unrecognized"
+      },
+      "fields": {
+        "states": [
+          "valid",
+          "unrecognized",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "optional-site-absent",
+      "old": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "current": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "fields": {
+        "states": [
+          "valid",
+          "valid",
+          "absent",
+          "valid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "user-false",
+      "old": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "current": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "fields": {
+        "states": [
+          "valid",
+          "valid",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "label": "user-extension",
+      "old": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "current": {
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted"
+      },
+      "fields": {
+        "states": [
+          "valid",
+          "valid",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          true
+        ]
+      }
+    },
+    {
+      "label": "oversize-mode",
+      "old": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-unrecognized"
+      },
+      "current": {
+        "kind": "unresolved",
+        "reason": "fetch-metadata-policy-limit"
+      },
+      "fields": {
+        "states": [
+          "policy-limit",
+          "valid",
+          "valid",
+          "valid"
+        ],
+        "parameters": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  ],
+  "legacyReceiptPairs": 52,
+  "savedRegression": {
+    "historical": 100,
+    "agentBrowser": 15,
+    "nativeAndNode": 115,
+    "classificationChanges": 0,
+    "scope": "Two saved cohorts, original capture provenance unchanged; not a historical error-rate estimate"
+  },
+  "collector": {
+    "runtime": "native workerd collector and D1",
+    "rows": 5,
+    "exactReceiptProjectionPairs": 5,
+    "rawCanaryPersisted": false,
+    "newSchema": false,
+    "managedCloudflareCompared": false
+  },
+  "checks": {
+    "analyticsTests": 300,
+    "siteTests": 117,
+    "workspaceTypes": "pass",
+    "isolatedBuild": "pass, 33 posts",
+    "productionActivation": "not-yet-assessed",
+    "markdownValidation": "pass, 22 posts"
+  },
+  "isolatedBuild": {
+    "posts": 33,
+    "sharedDistTouched": false,
+    "bodyWhitespaceWords": 1434,
+    "prompts": 31,
+    "builtMarkdownSha256": "d3099b2205e40a4e3000c4ed943aeb60fbc9dced92ed0b3a716ea9409a2db40b",
+    "builtMarkdownBytes": 16086,
+    "builtHtmlSha256": "fda55a2b3a47c791a915c9ffb787f218499c472c55fae9ba00d3c98eb8f5d5c8",
+    "oneH1": true,
+    "runtimeSourcesMatchBuildSnapshot": true
+  },
+  "privateDataArchive": {
+    "files": 209,
+    "bytes": 6527067,
+    "manifestSha256": "7424e78af6e1f8bccf2e32c169c36a118cf22566961fce5330df8b9f8a34618f",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  }
+}

@@ -1,11 +1,12 @@
+import { fetchMetadataFields } from '../../../../analytics/.test-dist/fetch-metadata.js';
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { networkReceiptPaths, validNetworkReceipt, extraNetworkReceiptFields } from './network-receipt-fields.mjs';
 
-const versions = new Set(['2026-10-27.1', '2026-10-27.2', '2026-10-27.3', '2026-10-28.1', '2026-10-28.2', '2026-10-29.1']);
-const paths = [...networkReceiptPaths,'version','classifierProfile','readerKind','declarations.status','declarations.candidates','declarations.candidateCount','declarations.candidateNames','declarations.categoryAgreement',
+const versions = new Set(['2026-10-27.1', '2026-10-27.2', '2026-10-27.3', '2026-10-28.1', '2026-10-28.2', '2026-10-29.1', '2026-10-29.2']);
+const paths = [...networkReceiptPaths,'version','fetchMetadataBits','classifierProfile','readerKind','declarations.status','declarations.candidates','declarations.candidateCount','declarations.candidateNames','declarations.categoryAgreement',
   'signature.evidenceVersion','signature.source','signature.verifierProfile','signature.status','signature.outcome','signature.reason','signature.reasons','signature.reasonCount','signature.reasonNames','signature.signer','signature.signerDisplayProfile','signature.documentedVendorStatus','signature.userAgentCovered',
   ...['policy','matchedCandidates','taggedCandidates','attemptedCandidates','unassessedCandidates'].map(key=>'signature.selection.'+key),
   'signature.coverage','signature.coverage.status','signature.coverage.authority','signature.coverage.targetUri','signature.coverage.method','signature.coverage.path','signature.coverage.query','signature.coverage.userAgent','signature.coverage.contentDigest','signature.coverage.replayPolicy',
@@ -51,12 +52,14 @@ export function normalizeRetainedReceiptCopies(input) {
 }
 function completeLiveReceipt(receipt) {
   if (!object(receipt) || !versions.has(receipt.version)) return false;
-  const v1 = receipt.version === '2026-10-27.1', displayVersion = ['2026-10-28.2','2026-10-29.1'].includes(receipt.version);
+  const v1 = receipt.version === '2026-10-27.1', displayVersion = ['2026-10-28.2','2026-10-29.1','2026-10-29.2'].includes(receipt.version);
   const selectionVersion = receipt.version === '2026-10-28.1' || displayVersion && receipt.signature?.selection !== undefined;
-  if (receipt.version==='2026-10-29.1' && !validNetworkReceipt(receipt.vendorNetwork)) return false;
-  if (receipt.version!=='2026-10-29.1' && receipt.vendorNetwork!==undefined) return false;
-  const required = paths.filter(path => !path.startsWith('vendorNetwork.') && !path.startsWith('signature.coverage.')
-    && (['2026-10-27.3','2026-10-28.1','2026-10-28.2','2026-10-29.1'].includes(receipt.version) || !path.startsWith('directoryPublication.'))
+  if (['2026-10-29.1','2026-10-29.2'].includes(receipt.version) && !validNetworkReceipt(receipt.vendorNetwork)) return false;
+  if (!['2026-10-29.1','2026-10-29.2'].includes(receipt.version) && receipt.vendorNetwork!==undefined) return false;
+  if (receipt.version === '2026-10-29.2' && fetchMetadataFields(receipt.fetchMetadataBits) === null) return false;
+  if (receipt.version !== '2026-10-29.2' && receipt.fetchMetadataBits !== undefined) return false;
+  const required = paths.filter(path => (receipt.version === '2026-10-29.2' || path !== 'fetchMetadataBits') && !path.startsWith('vendorNetwork.') && !path.startsWith('signature.coverage.')
+    && (['2026-10-27.3','2026-10-28.1','2026-10-28.2','2026-10-29.1','2026-10-29.2'].includes(receipt.version) || !path.startsWith('directoryPublication.'))
     && (selectionVersion || !path.startsWith('signature.selection.'))
     && (displayVersion || path !== 'signature.signerDisplayProfile')
     && !(v1 ? ['declarations.candidateCount','declarations.candidateNames','signature.reasonCount','signature.reasonNames']

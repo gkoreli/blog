@@ -108,6 +108,7 @@ async function persistObservation(
     agentName: classification.agentName,
     observationSource: 'edge' as const,
     asn: metadata.asn,
+    fetchMetadataBits: metadata.fetchMetadataBits,
     secFetchMode: metadata.secFetchMode,
     secFetchDest: metadata.secFetchDest,
     secFetchSite: metadata.secFetchSite,

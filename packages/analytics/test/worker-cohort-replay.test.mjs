@@ -24,7 +24,8 @@ test('public replay summaries do not copy raw identifiers, header values, privat
   const report = analyzeWorkerCohort([input]);
   const serialized = JSON.stringify(report);
   for (const value of ['example.invalid', 'private-referrer', 'private-signer', 'private-event', '192.0.2.1', 'private-city', 'private-tls-secret', 'private-token']) assert.equal(serialized.includes(value), false, value);
-  assert.deepEqual(report.dimensions.fetchSite, { unrecognized: 1 });
+  assert.deepEqual(report.dimensions.fetchSite, { 'not-present': 1 });
+  assert.deepEqual(report.dimensions.fetchSiteState, { invalid: 1 });
   assert.deepEqual(report.dimensions.dataset, { unrecognized: 1 });
 });
 

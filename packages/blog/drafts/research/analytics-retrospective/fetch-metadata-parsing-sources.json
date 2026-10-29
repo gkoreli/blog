@@ -1,0 +1,82 @@
+{
+  "checkedAt": "2026-10-29T19:22:00.340027+00:00",
+  "standards": [
+    {
+      "name": "fetch-metadata",
+      "url": "https://www.w3.org/TR/2026/WD-fetch-metadata-20260921/",
+      "sha256": "4849a4cd48035165d5336315ba8461cf8640364878073766e2cb56b37d9d63f3",
+      "bytes": 140739
+    },
+    {
+      "name": "rfc9651",
+      "url": "https://www.rfc-editor.org/rfc/rfc9651.txt",
+      "sha256": "fe27f2ec8819911afbe4bd11f6fcb947580da4c49e5423a1fff960e252ced26d",
+      "bytes": 74086
+    },
+    {
+      "name": "rfc8941",
+      "url": "https://www.rfc-editor.org/rfc/rfc8941.txt",
+      "sha256": "92e07becbe27974319d79de6195e72e25062b4193f68623e90ea4f7deaf33bb9",
+      "bytes": 60854
+    }
+  ],
+  "fetchSnapshot": {
+    "commit": "59afe349913d56898c947576216f1c2579308be7",
+    "sha256": "5d80be13cdc78b652732acf22002c17a3be3691b7c3de2cb9c26c794aad2b881"
+  },
+  "corpus": {
+    "commit": "c1da2cafb27d125905f9b8176cc593def7a0e81d",
+    "url": "https://codeload.github.com/httpwg/structured-field-tests/tar.gz/c1da2cafb27d125905f9b8176cc593def7a0e81d",
+    "sha256": "342974c07ef799f143db47bcbe8e5709e4b2dec0162984a6715dfd9b8b01d6aa"
+  },
+  "libraryComparisons": [
+    {
+      "input": "navigate;x=@1;y=?0",
+      "structuredHeaders": "rejected",
+      "structuredFieldValues": "accepted"
+    },
+    {
+      "input": "\u00a0navigate\u00a0",
+      "structuredHeaders": "rejected",
+      "structuredFieldValues": "accepted"
+    },
+    {
+      "input": "navigate;x=%\"%c3%a9\"",
+      "structuredHeaders": "accepted",
+      "structuredFieldValues": "rejected"
+    },
+    {
+      "input": "navigate, navigate",
+      "structuredHeaders": "rejected",
+      "structuredFieldValues": "rejected"
+    }
+  ],
+  "libraryArtifacts": [
+    {
+      "name": "structured-headers",
+      "version": "2.1.1",
+      "registryReportedGitHead": "21856d7a5d0589e704c5c1398a1917ff206725c2",
+      "registryIntegrityMatched": true,
+      "tarSha256": "7504e86640124ce4147b562cdeabba2d407317041679327112e6b0d081eb704d"
+    },
+    {
+      "name": "structured-field-values",
+      "version": "2.0.4",
+      "registryReportedGitHead": "166346722beade67df486c5e2c061c35addbd060",
+      "registryIntegrityMatched": true,
+      "tarSha256": "caf979c9c1c5ae81ee8f8d94e60685cd606d0fceb691d0a8c4e8d61a242d69a4"
+    }
+  ],
+  "productionDependenciesAdded": 0,
+  "crossReferences": {
+    "fieldSemantics": "W3C Fetch Metadata sections 2.1\u20132.4",
+    "destinationVocabulary": "pinned Fetch snapshot destination type",
+    "wholeItemAndParameters": "RFC 9651 sections 2.3, 4.2, 4.2.3, 4.2.6",
+    "nativeChecks": "check-fetch-metadata-local.mjs",
+    "previousControls": "89-local-browser-relays-and-fetch-metadata.md"
+  },
+  "implementationSha256": {
+    "packages/analytics/src/fetch-metadata.ts": "46ca1be7257c7bf8f295e4f253e24d80ac20cf5fe732cfdf96ce95262be0725b",
+    "packages/blog/drafts/research/analytics-retrospective/check-fetch-metadata-local.mjs": "9c16fdea6f488b74ea788169d021064d5237e52f15e284163af46963adfd14b6"
+  }
+}

@@ -156,3 +156,21 @@ test('network copies require complete scalar facts and compare source snapshots 
   delete value.live[0].logs[0].message[1].receipt.vendorNetwork.checkCount;
   assert.equal(compareReceiptCopies(value.live,value.retained).matchedPairs,0);
 });
+
+
+test('metadata copies retain closed parsing states and reject absent or unknown encodings',()=>{
+ const value=fixture({version:'2026-10-27.2'});
+ for(const fields of [value.live[0].logs[0].message[1],value.retained[0].source]){
+  fields.receipt.version='2026-10-29.2';fields.receipt.fetchMetadataBits=1170;
+  fields.receipt.signature.signerDisplayProfile='2026-10-28.1';
+  fields.receipt.directoryPublication={profile:'2026-10-29.1',method:'reviewed-first-party-directory',reviewedOn:'2026-10-29',configuredDeclarationCount:0,unmappedDeclarationCount:0,status:'no-declaration'};
+  fields.receipt.vendorNetwork=vendorIpReceipt();
+ }
+ assert.equal(compareReceiptCopies(value.live,value.retained).identicalPairs,1);
+ value.retained[0].source.receipt.fetchMetadataBits=1171;
+ assert.equal(compareReceiptCopies(value.live,value.retained).changedFields.fetchMetadataBits,1);
+ for(const bits of [undefined,7,-1,65536]){
+  value.live[0].logs[0].message[1].receipt.fetchMetadataBits=bits;
+  assert.equal(compareReceiptCopies(value.live,value.retained).matchedPairs,0);
+ }
+});

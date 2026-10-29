@@ -144,3 +144,16 @@ test('current missing or unsupported network evidence fails closed and never lea
     assert.equal(JSON.stringify(result).includes('private-'),false);
   }
 });
+
+
+test('metadata receipt compares the new closed facts and keeps legacy projections distinct',()=>{
+ const f=currentNetworkFixture(),row=f.candidates[0],record=f.receipts[0],c=JSON.parse(row.classificationEvidence);
+ row.collectionVersion=record.source.collectionVersion='2026-10-29.6';row.classifierVersion=c.classifierProfile='2026-10-29.3';c.version='2026-10-29.2';c.fetchMetadataBits=1170;
+ row.classificationEvidence=JSON.stringify(c);
+ record.source.receipt=storedObservationReceipt({readerKind:row.readerKind,signatureStatus:row.signatureStatus,signatureAgent:row.signatureAgent,classificationEvidence:c,signatureEvidence:JSON.parse(row.signatureEvidence),vendorIpEvidence:JSON.parse(row.vendorIpEvidence)});
+ assert.equal(record.source.receipt.version,'2026-10-29.2');assert.equal(reconcileReceiptStorage(f.candidates,f.receipts).identicalProjectionPairs,2);
+ record.source.receipt.fetchMetadataBits=1171;
+ assert.equal(reconcileReceiptStorage(f.candidates,f.receipts).changedFields.fetchMetadataBits,1);
+ for(const bits of [-1,65536,7]) {c.fetchMetadataBits=bits;row.classificationEvidence=JSON.stringify(c);assert.equal(reconcileReceiptStorage(f.candidates,f.receipts).unprojectableCandidateRows,1)}
+ c.fetchMetadataBits=1170;row.classificationEvidence=JSON.stringify(c);record.source.receipt.version='2026-10-29.1';assert.equal(reconcileReceiptStorage(f.candidates,f.receipts).unprojectableCandidateRows,1);
+});

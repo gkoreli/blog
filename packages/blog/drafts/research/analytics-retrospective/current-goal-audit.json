@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T19:06:06.411305+00:00",
-  "sourceBaseline": "d097960",
+  "checkedAt": "2026-10-29T19:22:00.340027+00:00",
+  "sourceBaseline": "b890dfd",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,23 +45,23 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Audit current Fetch Metadata value trim/lowercase normalization against versioned Fetch Metadata and Structured Fields semantics. Native-test case variants, duplicates and invalid values before changing production classification. Keep human trials deferred.",
+  "nextBoundedAction": "Accept the source deployment and run a small excluded current-collector control with an immutable native-tested exact lookup plan; then assess public parsing-state denominators. Human trials remain deferred.",
   "article": {
-    "bodyWhitespaceWords": 1427,
+    "bodyWhitespaceWords": 1434,
     "prompts": 31,
-    "sourceSha256": "edd80383e41d1f2e52127bce09411dc2c4ba916f61c4b05daa96d133191a3243",
+    "sourceSha256": "0318c87f284e9e3b2a25ac0dc5f302e8ac0c5c848494ff12010d07ef4f9df388",
     "unchanged": false,
-    "freshServedCheck": true,
-    "publicationReceipt": "local-metadata-relay-release.json",
-    "servedMatchesCheckedBuild": true,
+    "freshServedCheck": false,
+    "publicationReceipt": null,
+    "servedMatchesCheckedBuild": false,
     "lastServedCheckReceipt": "local-metadata-relay-release.json",
-    "publicationStatus": "Research 89 uncertainty paragraph published and exact served Markdown accepted; 1427 words/31 prompts.",
-    "previousPublicationReceipt": "unresolved-metadata-release.json",
+    "publicationStatus": "Research 90 concise uncertainty paragraph; build/source/production acceptance pending.",
+    "previousPublicationReceipt": "local-metadata-relay-release.json",
     "servedMatchScope": "Fresh exact direct Markdown only; no new served article HTML/layout or per-request Worker-version trace.",
     "localBuildAccepted": true,
-    "localBuildReceipt": "local-metadata-relay-checks.json"
+    "localBuildReceipt": "fetch-metadata-parsing-checks.json"
   },
-  "runtimeUnchanged": true,
+  "runtimeUnchanged": false,
   "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
@@ -658,7 +658,7 @@
     "checks": "unresolved-metadata-checks.json",
     "release": "unresolved-metadata-release.json"
   },
-  "runtimeUnchangedScope": "Research 89 local harness and article edit; production collector/classifier/verifier/report behavior unchanged.",
+  "runtimeUnchangedScope": "Research 90 changes Fetch Metadata parsing, collection/classifier and closed receipt formats; verifier/report/schema unchanged.",
   "localMetadataRelay": {
     "research": "89-local-browser-relays-and-fetch-metadata.md",
     "experiment": "local-metadata-relay-experiment.json",
@@ -698,5 +698,19 @@
     "articleChanged": true,
     "checks": "local-metadata-relay-checks.json",
     "release": "local-metadata-relay-release.json"
+  },
+  "metadataParsing": {
+    "research": "90-fetch-metadata-parsing-and-evidence.md",
+    "checks": "fetch-metadata-parsing-checks.json",
+    "sources": "fetch-metadata-parsing-sources.json",
+    "corpusCases": 854,
+    "targetedControls": 17,
+    "unchangedHistoricalContexts": 100,
+    "unchangedSavedBrowserControls": 15,
+    "legacyReceiptPairs": 52,
+    "nativeCollectorPairs": 5,
+    "productionActivation": "pending",
+    "productionPrevalenceMeasured": false,
+    "humanLabels": 0
   }
 }
