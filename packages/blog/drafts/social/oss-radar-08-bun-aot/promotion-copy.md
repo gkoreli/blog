@@ -1,6 +1,6 @@
 # Prepared promotion copy
 
-October 28, 2026. All drafts below are **unsent and unpublished**. They are reviewable materials for [the checked plan](promotion-2026-10-28.md), not publication receipts. Article measurements remain tied to the October 27 macOS arm64 preview, `06888611e`.
+October 28, 2026. Initially all drafts below were unsent. **Items 1–4 have now been executed after Goga's explicit approval**; see [the separate receipts](execution-2026-10-28.md). Items 5–7 remain unsent and unpublished. Article measurements remain tied to the October 27 macOS arm64 preview, `06888611e`.
 
 ## 1. Cooperpress editorial email
 

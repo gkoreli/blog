@@ -1,6 +1,6 @@
 # Bun AOT promotion: checked opportunities, October 28
 
-Status: research and local preparation complete. Nothing in this plan has been sent or published. The earlier [two replies and HN email](next-actions.md) are completed actions, not new proposals. The article's frozen research footprint is unchanged.
+Status: initial research and local preparation complete. **Goga subsequently approved actions 1–4; all four were executed** in [the separate receipt](execution-2026-10-28.md). The new [outcome-based research](battle-tested-2026-10-28.md) continues the promotion work. The earlier [two replies and HN email](next-actions.md) remain completed actions. The article's frozen research footprint is unchanged. Proposed states and effort estimates below preserve the initial planning context; the receipt supersedes those states for actions 1–4.
 
 Goga's request: give adoption and promotion the same serious attention as building. Do the work behind a recommendation: find the actual destination, check its audience and rules, prepare the material, and define what a useful result would look like. Generic advice to “share in communities” does not meet that request.
 

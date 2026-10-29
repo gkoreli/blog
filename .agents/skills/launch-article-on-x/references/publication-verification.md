@@ -2,6 +2,8 @@
 
 User authorization establishes the requested scope. Before carrying this X workflow to another platform, read that destination's current submission rules. Do not assume that signed-in access or a successful form submission makes the same automation workflow suitable everywhere.
 
+A signed-out submission page may omit later requirements. When account access is available, inspect the signed-in path before calling a submission ready. Record account creation, required newsletter subscriptions, editorial receipt and actual selection separately; never silently turn an approved newsletter-off choice on to pass a gate. The [Changelog execution receipt](../../../../packages/blog/drafts/social/oss-radar-08-bun-aot/execution-2026-10-28.md) records one such discovery and the owner's explicit changed preference.
+
 ## Human-operated destinations
 
 [Hacker News's submission guidelines](https://news.ycombinator.com/newsguidelines.html) call for human-written submission text and prohibit automated posting. For HN, use an owner-operated submission path consistent with those rules rather than extending this skill's automated X publication route. Do not create accounts, delete/repost, solicit votes or contact moderators as an unrequested workaround. Keep proposed actions separate from authorized ones.

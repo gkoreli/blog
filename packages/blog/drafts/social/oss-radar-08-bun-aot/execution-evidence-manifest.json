@@ -1,0 +1,67 @@
+{
+  "captured_date_pacific": "2026-10-28",
+  "scope": "Four explicitly authorized promotion actions; private receipts are outside Git. File commitments do not prove reach or editorial selection.",
+  "private_archive": "/Users/goga/.local/share/gkoreli/social-evidence/2026-10-28-bun-aot-campaign",
+  "files": [
+    {
+      "name": "changelog-received.jpg",
+      "bytes": 96103,
+      "sha256": "7ebcbcff7aa36431aa3a39d3e5875df822ae33290eb15f897cfef6cc1c393ea6"
+    },
+    {
+      "name": "changelog-received.txt",
+      "bytes": 19793,
+      "sha256": "b94a648a5bc4fbc0f3e106e86f5d8787a7111e068b228c9496b9671f2face0d4"
+    },
+    {
+      "name": "changelog-subscribed.jpg",
+      "bytes": 54814,
+      "sha256": "57ca043f2fe0f84309e0ecdb0319e84e138365d6cb2b899cdd4096f699a662d5"
+    },
+    {
+      "name": "changelog-subscription-gate.jpg",
+      "bytes": 66705,
+      "sha256": "3d9ab0088fbe9a3b93be0d0c8a37f9730edbd8ddcbf80bee499334dface76a76"
+    },
+    {
+      "name": "mail-receipt.json",
+      "bytes": 448,
+      "sha256": "3830c8b460143e52bef9f8bc057eba2893803f94ee0eebbdf3a29603dfc70344"
+    },
+    {
+      "name": "reddit-post-verified.jpg",
+      "bytes": 125384,
+      "sha256": "8a2a6d8f922d3f984a93d14fa612dff2daa5b8a12b67da9fbe4a98d165e1d236"
+    },
+    {
+      "name": "reddit-post.txt",
+      "bytes": 21278,
+      "sha256": "f8263857950ece278dbad523bbf07053fc5b5fb669ef9668f2c9477dd9ac6516"
+    },
+    {
+      "name": "tldr-curator-profile.txt",
+      "bytes": 8632,
+      "sha256": "9944b8e33e43577e87a07192a1839a961d7dccd14f77648108984093ff7417e8"
+    },
+    {
+      "name": "tldr-official-profile.txt",
+      "bytes": 12426,
+      "sha256": "474bff91c445b2c3be129e2327d86121a37cbcbbbba658d15e558135978fb4c5"
+    },
+    {
+      "name": "x-image-post-verified.jpg",
+      "bytes": 94870,
+      "sha256": "f88e0b9a5cf6ea1820e6883c88cff08fb4c31a2780e812e620bf537a4460ae2a"
+    },
+    {
+      "name": "x-image-post-verified.txt",
+      "bytes": 6961,
+      "sha256": "3e37a135cff6742f61647285dd1b5b81034bc34d23946490d0379d6ff1932975"
+    },
+    {
+      "name": "x-public-oembed.json",
+      "bytes": 1021,
+      "sha256": "cb7f969ce09d491c2ffa1e497d77e42c26d8398e2906c1c510ed14067e6de07b"
+    }
+  ]
+}
