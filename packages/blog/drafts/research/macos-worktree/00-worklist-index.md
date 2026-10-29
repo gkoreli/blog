@@ -93,9 +93,9 @@ Acceptance:
 - [x] Validate the surviving configurations with actual project checks beyond two native-module loads, comparing any failures with the unchanged default layout.
 - [x] Strengthen the timing evidence with additional ordered/alternating fresh-worktree trials, source-verified concurrency controls where applicable, and a current-version profile. Keep diagnostics and warmups outside accepted timings.
 - [x] Explain the remaining Mac install cost to the degree supported by measured operations and controls, rather than attributing the whole difference to APFS from elapsed time alone.
-- [ ] Revise the four-to-five-minute draft and claim ledger, freeze a new evidence receipt, check the scope and calculations, and deliver scoped changes to main without publishing the article.
+- [x] Revise the four-to-five-minute draft and claim ledger, freeze a new evidence receipt, check the scope and calculations, and deliver scoped changes to main without publishing the article.
 
-The research and article checks are complete; delivery remains pending below. No outreach or social publishing is authorized.
+The research, article checks and repository delivery are complete. No outreach or social publishing was authorized or performed.
 
 ## Failure-diagnosis acceptance and handoff, October 28 local / October 29 UTC
 
@@ -111,4 +111,6 @@ The revised draft renders to **911 words / 4.56 minutes** at 200 words per minut
 
 Private guest evidence was archived outside Git (107 selected logs/records); the research VM was stopped cleanly after validation. Owned temporary worktrees, caches and images are retained for inspection. The new goal text is preserved verbatim in the draft prompt record. The article remains unpublished, with no date or live route, and no social post was created.
 
-Delivery pending: freeze final evidence hashes, commit and push only this draft/research scope to main, verify the remote exact revision, then close the last acceptance item. The v2 receipt describes bytes at source commit 81186d65ed82f52037186ac3d0ea4e4e3a8bb746; it is preserved, not silently rewritten to match this revision.
+Delivery: scoped source commit `6b0bad149fbdbbcf22925c8a7eff996ed05dd879` was rebased over concurrent main changes and pushed directly to `main`. All fourteen frozen artifact hashes survived rebase unchanged. The remote GitHub ledger at that exact revision was read back and verified: six series / thirty fresh trials, the 64-error launcher control, zero-error recipe, and both known browser failures. This receipt-only update closes the final acceptance item. The v2 receipt describes bytes at source commit `81186d65ed82f52037186ac3d0ea4e4e3a8bb746`; it is preserved, not silently rewritten to match this revision.
+
+This expanded goal is complete: the reported failure is explained and a bounded repair is tested; additional install, compiler, unit, build, browser and mechanism validations are saved. No publication or production acceptance is claimed. The next authoring step is review of the saved 911-word draft; rerun research only if the tested source, tools or claims change.
