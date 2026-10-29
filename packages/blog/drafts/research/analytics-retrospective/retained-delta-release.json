@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-29T01:53:21.780683+00:00",
+  "checkedAt": "2026-10-29T02:05:15.312341+00:00",
   "sourceBaseline": "d2a07b56dc2d9fc5d4ad7ae9d14286a59ad05f4e",
-  "sourceCommit": null,
-  "publication": "pending",
+  "sourceCommit": "5614a96de1ac4a223e73cfc65bcdded4bfa1881d",
+  "publication": "accepted",
   "dataAccepted": true,
   "primaryStatements": 2,
   "separatelyPlannedFollowupStatements": 1,
@@ -36,7 +36,8 @@
   "article": {
     "bodyWhitespaceWords": 1291,
     "prompts": 31,
-    "freshServedCheck": false
+    "freshServedCheck": true,
+    "servedSha256": "4d144ad80fcd1d1efaee750cf8f520d4cb305d1e274379f10d241112bfae47cc"
   },
   "sourceSha256": {
     "packages/blog/scripts/check-retained-delta.mjs": "6b2dcbfad1a788e3a4682f0abc6c741d4af22f56de099facc2680ac3fd10b94f",
@@ -58,5 +59,28 @@
     "automaticDeletion": false,
     "modes": "0700/0600"
   },
-  "nextBoundedAction": "Accept the concise article publication, then assess reviewed client labels against signature/method availability within this frozen cohort; inspect closed unavailable-verification reasons without assuming a vendor from the AI-search label."
+  "nextBoundedAction": "Assess reviewed client labels against signature/method availability within the same frozen 712-record cohort, then inspect retained closed unavailable-verification reasons. Do not infer Exa from the AI-search label; human trials remain deferred.",
+  "publicationOwnSiteGets": 1,
+  "collectionEligibleGets": 0,
+  "activation": {
+    "buildId": "ba68ea81-028e-4155-9295-f820fd377077",
+    "workerVersion": "0018e39f-3752-4fa0-b959-0c07d720db88",
+    "allocationPercentage": 100,
+    "sourceVersionJoin": "Full build-page commit plus downloaded build log; allocation from Wrangler deployment metadata",
+    "dashboardLimit": "Ready build row lacks linked version; version row says Manually deployed; active summary displays 0% beside a 100% marker. No cause inferred.",
+    "ciBuildPosts": 32,
+    "agentRetries": 0,
+    "agentManualDeployments": 0,
+    "servedMarkdownMatchesCheckedBuild": true,
+    "additionalDiagnosticStatements": 0,
+    "settingsReinspected": false
+  },
+  "publicationArchive": {
+    "name": "2026-10-29-retained-delta-publication",
+    "files": 11,
+    "manifestSha256": "4468a8a8970072726243f50146fb0f3852d79f4ef16cf164cef0a52e95d7661e",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false,
+    "modes": "0700/0600"
+  }
 }

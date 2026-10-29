@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T01:54:19.455852+00:00",
-  "sourceBaseline": "d2a07b5",
+  "checkedAt": "2026-10-29T02:05:15.312341+00:00",
+  "sourceBaseline": "5614a96de1ac4a223e73cfc65bcdded4bfa1881d",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,13 +45,14 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Accept article publication, then assess reviewed client labels against signature/method availability within this frozen cohort and inspect closed unavailable-verification reasons. Preserve raw-input and ground-truth limits; human trials remain deferred.",
+  "nextBoundedAction": "Assess reviewed client labels against signature/method availability within the same frozen 712-record cohort, then inspect retained closed unavailable-verification reasons. Do not infer Exa from the AI-search label; human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1291,
     "prompts": 31,
     "sourceSha256": "5659e2526a5f5236b92a2578f25cc02edd697d4a9c9ea4bef4bc367c5067f97e",
     "unchanged": false,
-    "freshServedCheck": false
+    "freshServedCheck": true,
+    "publicationReceipt": "retained-delta-release.json"
   },
   "runtimeUnchanged": true,
   "productionStatements": 3,
@@ -84,9 +85,9 @@
     "disabledBeforeExpiryReceipt": "disabled-before-expiry-live.json",
     "disabledBeforeExpiryPublication": "disabled-before-expiry-release.json",
     "lastObservedRuleActive": false,
-    "ruleInspectionReference": "disabled-before-expiry-release.json; not re-inspected in this D1-only slice"
+    "ruleInspectionReference": "disabled-before-expiry-release.json; not re-inspected in the retained-data/publication slice"
   },
-  "productionOwnSiteGets": 0,
+  "productionOwnSiteGets": 1,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -106,6 +107,8 @@
     "reportedReads": 37505,
     "reportedWrites": 0,
     "statements": 3,
-    "scope": "Fixed new-ID range after the archived 32363-row census; no old-row mutation or complete-database snapshot claim"
+    "scope": "Fixed new-ID range after the archived 32363-row census; no old-row mutation or complete-database snapshot claim",
+    "publicationOwnSiteGets": 1,
+    "publicationDiagnosticStatements": 0
   }
 }
