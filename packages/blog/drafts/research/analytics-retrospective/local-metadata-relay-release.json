@@ -1,0 +1,86 @@
+{
+  "checkedAt": "2026-10-29T19:06:06.411305+00:00",
+  "sourceBaseline": "e3f3f37",
+  "sourceCommit": "d097960464ebdb16324b723d4e90af9ff134ebd4",
+  "build": {
+    "id": "8202d235-c0c7-4a08-9fde-9efb3ea6c3b4",
+    "status": "Ready; build/deploy commands succeeded",
+    "sourceLinked": true,
+    "logLinkedWorkerVersion": "901ed273-a85b-4399-b826-782f47bf8308",
+    "postsBuilt": 33,
+    "node": "24.22.1"
+  },
+  "experimentRuntime": {
+    "node": "24.14.1",
+    "undici": "7.24.4",
+    "productionWorkerRunsNode": false,
+    "productionFetchEquivalenceClaimed": false
+  },
+  "activation": {
+    "workerVersion": "901ed273-a85b-4399-b826-782f47bf8308",
+    "freshCliAllocationPercentage": 100,
+    "optionalBindingsAbsent": [
+      "ANALYTICS_DIAGNOSTICS",
+      "ANALYTICS_NATIVE_CAPTURE",
+      "ANALYTICS_CALIBRATION"
+    ],
+    "dashboardCapture": "Active row names the same Worker prefix; accessibility text combines 0% 100 %. No allocation inference from that text; fresh CLI returns 100%."
+  },
+  "publication": {
+    "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove.md",
+    "status": 200,
+    "contentType": "text/markdown; charset=utf-8",
+    "bytes": 15905,
+    "sha256": "344a09b7bd3fe279b62405b64c2df31dc46b0bb4c0c89afb5e479f411eabba22",
+    "matchesCheckedIsolatedBuild": true,
+    "articleBodyWhitespaceWords": 1427,
+    "prompts": 31,
+    "freshServedHtmlInspected": false,
+    "scope": "Exact served direct Markdown and fresh allocation; no per-request Worker-version trace or fresh served HTML/layout check."
+  },
+  "publicationProbe": {
+    "ownSiteGetRequests": 1,
+    "collectionEligibleRequestsByCurrentCode": 0,
+    "newDirectD1Statements": 0,
+    "D1IngestionReadback": false,
+    "publicReportCalculations": 0,
+    "newHumanLabels": 0
+  },
+  "localExperiment": {
+    "agentOperatedTrials": 15,
+    "receiverRequests": 15,
+    "relayStageTriples": 12,
+    "exactUiNativePairs": 15,
+    "nodeReplays": 30,
+    "negativeControls": 10,
+    "syntheticAsnKinds": {
+      "browser": 9,
+      "unresolved": 3,
+      "http-client": 3
+    },
+    "asnAbsentKinds": {
+      "unresolved": 12,
+      "http-client": 3
+    },
+    "operatorAttributionAbstentions": 15,
+    "humanLabels": 0,
+    "productionRequests": 0,
+    "D1Statements": 0,
+    "populationAccuracyMeasured": false,
+    "historicalCauseEstablished": false
+  },
+  "runtimeChanged": false,
+  "newCaptureBindingActivated": false,
+  "ownedLocalListenersVerifiedClosed": 6,
+  "goalAchieved": false,
+  "humanTrialsDeferred": true,
+  "privateEvidence": {
+    "planManifestSha256": "0af1129bce4be6a869bcb8030db40a75daeb8142a8f72d6088578bd89c5e2f24",
+    "dataManifestSha256": "7f13f5c3fc352f8c9554b48a0cf8632e68646a767d61bb041543faac9cc02052",
+    "livePlanManifestSha256": "34cfa2fd8a89926d9d9b74167f3bc80202f27673d8e3505770a8a44de8e3a2ee",
+    "liveManifestSha256": "457e81465245b422dacbfa6801b2f054238141ca4a9e070d5d2fde48ff486587",
+    "liveFiles": 21,
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  }
+}

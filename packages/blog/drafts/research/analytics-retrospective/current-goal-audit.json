@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T18:58:38.733294+00:00",
-  "sourceBaseline": "e3f3f37",
+  "checkedAt": "2026-10-29T19:06:06.411305+00:00",
+  "sourceBaseline": "d097960",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -51,13 +51,13 @@
     "prompts": 31,
     "sourceSha256": "edd80383e41d1f2e52127bce09411dc2c4ba916f61c4b05daa96d133191a3243",
     "unchanged": false,
-    "freshServedCheck": false,
-    "publicationReceipt": null,
-    "servedMatchesCheckedBuild": false,
-    "lastServedCheckReceipt": "unresolved-metadata-release.json",
-    "publicationStatus": "Research 89 replaces the existing uncertainty paragraph with retained-context recovery and the local relay result; source delivery/served acceptance pending.",
+    "freshServedCheck": true,
+    "publicationReceipt": "local-metadata-relay-release.json",
+    "servedMatchesCheckedBuild": true,
+    "lastServedCheckReceipt": "local-metadata-relay-release.json",
+    "publicationStatus": "Research 89 uncertainty paragraph published and exact served Markdown accepted; 1427 words/31 prompts.",
     "previousPublicationReceipt": "unresolved-metadata-release.json",
-    "servedMatchScope": "No fresh served acceptance for this edit yet.",
+    "servedMatchScope": "Fresh exact direct Markdown only; no new served article HTML/layout or per-request Worker-version trace.",
     "localBuildAccepted": true,
     "localBuildReceipt": "local-metadata-relay-checks.json"
   },
@@ -173,9 +173,9 @@
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
-    "providerWriteMetering": "No collection-eligible own-site requests; natural/provider activity additional and not attributed to the SELECT."
+    "providerWriteMetering": "No collection-eligible own-site request; no D1 ingestion readback. Natural/provider activity remains additional."
   },
-  "newVisitsScope": "Fifteen agent-operated local browser trials and fifteen native receiver requests; twelve synthetic startup comparisons across three harness starts. No experimental own-site request or human label. Article publication acceptance remains separate.",
+  "newVisitsScope": "Fifteen agent-operated loopback browser trials and fifteen native receiver requests, separate from twelve startup comparisons. One excluded direct Markdown publication GET; no production experimental visit or human label.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -381,7 +381,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "No production account read or configuration change in the local experiment.",
+  "liveAccountInspectionScope": "Read-only source-linked build, exact Worker metadata and fresh CLI allocation; one excluded direct Markdown GET exactly matches the checked isolated build. No configuration change.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -696,6 +696,7 @@
     "nativeWorkerBundleUnchanged": true,
     "runtimeChanged": false,
     "articleChanged": true,
-    "checks": "local-metadata-relay-checks.json"
+    "checks": "local-metadata-relay-checks.json",
+    "release": "local-metadata-relay-release.json"
   }
 }
