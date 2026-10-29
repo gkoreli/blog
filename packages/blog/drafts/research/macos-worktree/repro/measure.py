@@ -9,15 +9,21 @@ import time
 
 root = pathlib.Path(os.environ['BENCH_ROOT']).resolve()
 cli = pathlib.Path(os.environ['PNPM_CLI']).resolve()
+node = pathlib.Path(os.environ['NODE_BIN']).resolve()
+child_env = dict(os.environ)
+child_env['PATH'] = str(node.parent) + os.pathsep + child_env.get('PATH', '')
 template = root / 'template'
 store = pathlib.Path(os.environ.get('BENCH_STORE', root / 'store')).resolve()
 runtime = json.loads(subprocess.check_output([
-    'node', '-e',
+    str(node), '-e',
     'const os=require("node:os");console.log(JSON.stringify({node:process.version,'
     'cpu:os.cpus()[0]?.model,logicalCpus:os.cpus().length,'
     'memoryGiB:os.totalmem()/1024**3,arch:os.arch()}))'
-], text=True))
-pnpm_version = subprocess.check_output(['node', str(cli), '--version'], text=True).strip()
+], text=True, env=child_env, cwd=root))
+if runtime['node'] != 'v24.14.1':
+    raise RuntimeError(f'This reproduction pins Node 24.14.1, got {runtime["node"]}')
+pnpm_version = subprocess.check_output([str(node), str(cli), '--version'], text=True,
+                                       env=child_env, cwd=root).strip()
 if pnpm_version != '12.14.0':
     raise RuntimeError(f'This reproduction pins pnpm 12.14.0, got {pnpm_version}')
 rows = []
@@ -38,15 +44,15 @@ def run(mode, label):
     (cwd / 'pnpm-workspace.yaml').write_text(
         f'enableGlobalVirtualStore: {str(mode == "shared").lower()}\n'
     )
-    args = ['node', str(cli), 'install', '--offline', '--frozen-lockfile',
+    args = [str(node), str(cli), 'install', '--offline', '--frozen-lockfile',
             '--ignore-scripts', '--store-dir', str(store), '--reporter', 'append-only']
     started = time.perf_counter()
-    process = subprocess.run(args, cwd=cwd, text=True, capture_output=True, timeout=60)
+    process = subprocess.run(args, cwd=cwd, env=child_env, text=True, capture_output=True, timeout=60)
     elapsed = time.perf_counter() - started
     (cwd / 'install.log').write_text(process.stdout + process.stderr)
     if process.returncode:
         raise RuntimeError(process.stdout + process.stderr)
-    verified = subprocess.run(['node', '-e', check], cwd=cwd, text=True,
+    verified = subprocess.run([str(node), '-e', check], cwd=cwd, env=child_env, text=True,
                               capture_output=True, timeout=30)
     if verified.returncode:
         raise RuntimeError(verified.stderr)
@@ -60,7 +66,7 @@ if (ts.version !== '6.0.3' || z.string().parse('ok') !== 'ok' ||
     React.createElement('p').type !== 'p' || _.chunk([1,2],1).length !== 2 ||
     typeof ESLint !== 'function') process.exit(1);
 '''
-    esm = subprocess.run(['node', '--input-type=module', '-e', esm_check], cwd=cwd,
+    esm = subprocess.run([str(node), '--input-type=module', '-e', esm_check], cwd=cwd, env=child_env,
                          text=True, capture_output=True, timeout=30)
     if esm.returncode:
         raise RuntimeError(esm.stderr)
@@ -93,6 +99,7 @@ summary = {mode: statistics.median(r['seconds'] for r in rows
            if r['mode'] == mode and r['label'] != 'warmup') for mode in ['default', 'shared']}
 result = {'measuredAt': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
           'os': platform.platform(), 'pnpm': pnpm_version, 'node': runtime.pop('node'),
+          'runtimeAttribution': 'Absolute Node binary; its directory prepended to child PATH; version checked inside scratch root',
           'machine': {**runtime, 'filesystem': os.environ.get('BENCH_FILESYSTEM', 'unreported'),
                       'macos': platform.mac_ver()[0]},
           'packages': 90, 'rows': rows, 'medianSeconds': summary,

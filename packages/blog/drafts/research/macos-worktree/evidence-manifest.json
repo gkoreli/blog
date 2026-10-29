@@ -13,5 +13,8 @@
       "note": "Public image inspected at full resolution; bytes retained outside Git. Screenshot is a disclosed method, not original run data."
     }
   },
-  "scope": "Selected test sources and derived results. No private session logs, browser profiles, full social captures or model-usage total."
+  "scope": "Selected test sources and derived results. No private session logs, browser profiles, full social captures or model-usage total.",
+  "status": "Historical first-pass receipt, superseded by evidence-manifest-v2.json",
+  "sourceCommit": "643f637",
+  "note": "Hashes record the original tiny-fixture source at that commit. The corrected current measure.py has different bytes; the revised article does not use these timings."
 }

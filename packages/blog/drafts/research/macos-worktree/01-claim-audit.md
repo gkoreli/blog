@@ -1,6 +1,6 @@
 # Claims, reader questions and source rationale
 
-Checked 2026-10-28. Repository baselines are in the [worklist](00-worklist-index.md).
+Checked October 28–29, 2026. Repository baselines are in the [worklist](00-worklist-index.md). The [deeper investigation](02-deeper-investigation.md) and [21-install ledger](repro/full-results.json) supersede the first pass's small-fixture argument.
 
 ## The chart and its missing context
 
@@ -31,14 +31,14 @@ The screenshot is an assistant's explanation posted by Theo, not the original me
 | Spotlight explains the whole gap | Some replies suggest excluding the project | Older M5 Pro and M4 Air before/after rows show little install change | Reported | No universal Spotlight cure | Present as a hypothesis to measure |
 | Linux VM can help without a different CPU/SSD | Contributor results | M5 Pro 34.9s macOS vs 14.6s OrbStack Linux, guest-native storage | Reported | Software/storage paths matter; not APFS-only isolation | Guest-native storage is a distinct experiment |
 | Reusing an installed dependency tree avoids much local file work | pnpm shared-store documentation | Release path creates graph-addressed shared slots and can skip completed immutable slots | Code-inspected | Relevant alternative to changing OS | Keep experimental compatibility limits |
-| It helped a small Mac fixture | Local comparison | [Results](repro/results.json) and [method](repro/README.md) | Reproduced | A mechanism demonstration, not reproduction of T3's gap | Publish absolute saving and exclusions |
+| The original tiny fixture proves the practical response | Historical local comparison | Child-runtime attribution was not verified; superseded during deeper investigation | Superseded | Revised article removes these timings | Use full T3 experiments and compatibility checks instead |
 
 ## Competing explanations
 
 | Explanation | Support | Counterevidence or missing test | Verdict |
 | --- | --- | --- | --- |
 | macOS storage and file monitoring are costly for this workflow | Broad contributor pattern, same-hardware VM reports, Theo's account | Not isolated from installer strategy, versions and guest configuration | Worth measuring; APFS-only causality unproven |
-| Dependency setup repeats avoidable work | Default layout rebuilds a local tree; shared-store code and local test | Shared mode is experimental; fixture excludes native builds and T3 complexity | Tested practical option on this fixture |
+| Shared dependencies make the Mac wait unnecessary | Actual T3 install drops to 0.710 s; local regular files fall from 179,943 to 266 | Web typecheck fails with 64 errors in shared mode, passes in default mode, including a fresh-path direct-compiler control | Reject the setting as a ready-to-use T3 recommendation |
 | The price or CPU explains the chart | Caption | Five-machine aggregate and guest results on Apple hardware | Not established |
 
 ## Reader questions recovered
@@ -67,3 +67,18 @@ Observed the first loaded Relevant-order reply groups plus two PageDown advances
 ## Positioning
 
 Reader language: “worktree setup slow on Mac,” “pnpm install slow macOS,” “Linux versus Mac for coding agents.” These are query hypotheses, not measured demand. The title should name worktree setup on a Mac; the payoff is a testable response to a specific delay. Do not advertise an independently reproduced 8× comparison or an OS migration verdict.
+
+## Deeper-pass claim disposition
+
+| Claim / alternative | Stage and evidence | Counterevidence or boundary | Disposition |
+| --- | --- | --- | --- |
+| A large install gap can occur on the same physical Mac | Reproduced: current pinned T3, three cached installs per OS, medians 7.753 s macOS / 1.286 s Linux guest; same 599 requested direct dependencies | CPU allocation, RAM, kernel, filesystem and virtualization differ; no original-chart raw data | Supported within this setup; report about 6×, not the original chart's exact multiplier |
+| Linux itself guarantees fast setup | Reproduced: same XFS checkout takes 7.613 s with ext4 cache / 1.380 s with byte-identical XFS cache | Nested XFS is not bare metal; small samples; store placement and file reuse are the tested intervention | Reject unconditional OS claim; show concrete configuration consequence |
+| Fast shared-store installation means the application works | Reproduced: 0.710 s Mac installs and two native modules pass, but web typecheck has 64 errors; default passes | Failure persists at a new worktree path with direct compiler; exact resolution defect undiagnosed | Reject for this T3/toolchain combination; keep time and compatibility separate |
+| Old pnpm benchmark predicts current T3 | Full 35-project workload reproduced at 44.208 / 7.904 s on Mac/Linux, using Node 24.14.1 and pnpm 10.2.1 | Different dependencies and tools. Genuine pnpm 12 attempt fails frozen configuration validation on mixed peer settings | Keep old result in research; article leads with actual current T3 |
+| The historical Linux fix is completely unknown | PR 22718 reports cross-filesystem copies on BB-1 and adds warning; source inspected | Does not prove that every chart's after-fix sample refers to this PR | Narrow the earlier unknown: one concrete project fix identified, chart linkage deferred |
+| Upgrading pnpm is the entire remedy | PR 22738 reports about fourfold improvement and current code contains Mac directory-clone optimization | Upgrade predates chart; current T3 still shows an install gap; no version-only controlled measurement succeeded | Explain version relevance without promising a universal upgrade result |
+| The VM result requires a new PC | Reproduced on same M5 physical host with guest-native files | Host-mounted folders, remote machines, Windows and bare-metal Apple Linux not tested | A VM is an evidence-backed option to evaluate; no hardware purchase recommendation |
+| This makes an agent finish work six or eight times faster | Installation boundary measured; checkout/cleanup/VM startup excluded | No model, whole application build, full suite or entire agent-task timing | Rejected extrapolation |
+
+No material conclusion relies on how much research compute was spent. The useful evidence is the inspected source, controlled interventions, saved samples and failed compatibility check.

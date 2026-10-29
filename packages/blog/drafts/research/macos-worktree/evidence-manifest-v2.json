@@ -1,0 +1,22 @@
+{
+  "checkedAtUtc": "2026-10-29",
+  "authorLocalDate": "2026-10-28",
+  "status": "Deeper-research draft receipt; supersedes the original tiny-fixture receipt for article claims",
+  "files": {
+    "../../why-worktree-setup-is-slow-on-macos.md": "4922aa947a655137427a1ce06a33f350161dd8436334c589d426ced9065dd0f6",
+    "../../prompts/why-worktree-setup-is-slow-on-macos.prompts.md": "675c6600cb0453bc33d9a757404b8ff37cdfe73935f17b6bba289651bf195e7c",
+    "01-claim-audit.md": "ed62c233ae9a8f6c75ece714428449934e85b2b40a596d3e1ee499871845fa12",
+    "02-deeper-investigation.md": "5fe2be74a5294fdd968e61ad9104867d581f600b2577a73c04293527d0e35fc2",
+    "repro/README.md": "2dcd949dae45423da19b01d752a4a76d5abccf3153b2d5745892c72fcfda5ff5",
+    "repro/full-workload.py": "1daea1161dd8a14d31d38e67f20bf212cb6b5618f074417a5d85f555762317a0",
+    "repro/full-results.json": "c5df5bd8f8d1c6a45b6d848c63f0b991d76047b9eb8c9fbf09710a3459999a9c",
+    "repro/measure.py": "3d049858f7b571e68e3b0707d0174b8afc9bd001abbe0a4e56c27f0239a36626",
+    "evidence-manifest.json": "217b36eeb7d27ef2c624f65df767f3ff589245331dcf97ffc347fbfaa192c690"
+  },
+  "sourcePins": {
+    "T3": "125b61954dbba5822a8108c8ca47a4846b4b4328",
+    "olderFrameworkFixture": "535aef76843fe52d6336604111708d884110a0e5",
+    "pnpm12ReleaseSource": "fe4a0c232384289de82be3d502896ca7e070050c"
+  },
+  "scope": "Public methods, exact shaping text, selected primary-source notes and derived measurements. Private raw captures, session logs, SSH material and credentials stay outside Git. Worklist is an evolving delivery record and is deliberately not frozen by this manifest."
+}

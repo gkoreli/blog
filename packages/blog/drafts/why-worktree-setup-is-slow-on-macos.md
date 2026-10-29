@@ -1,79 +1,77 @@
 ---
 title: "Why Setting Up a Worktree Can Be Slow on a Mac"
-description: "What Theo's Mac-versus-Linux chart measures, what it leaves out, and a pnpm setting worth testing before changing machines."
+description: "T3 installed in 7.8 seconds on macOS and 1.3 seconds in Linux on the same Mac. Cache placement changed the result, and a faster Mac setting failed the project's checks."
 section: engineering
 tags: [macos, linux, pnpm, git]
-readTime: "4 min read"
+readTime: "5 min read"
 ---
 
 # Why Setting Up a Worktree Can Be Slow on a Mac
 
-Theo's [Mac-versus-Linux chart](https://x.com/theo/status/2115338547620401326) reports **29.7 seconds on optimized Macs versus 3.8 seconds on Linux**. Repeatedly creating worktrees makes that wait add up. But the $12,000-versus-$700 caption leaves out something important: the chart combines **three Macs and two Linux machines**, and measures dependency installation inside new worktrees.
+Theo's [chart](https://x.com/theo/status/2115338547620401326) reports **29.7 seconds on optimized Macs versus 3.8 seconds on Linux**. I tested T3 Code on the same M5 Mac and got **7.8 seconds on macOS versus 1.3 seconds in a Linux VM**. The gap is real in this test, even without buying another computer.
 
-There are three useful questions here:
+But configuration changed the result too. Moving Linux's package cache onto the checkout's filesystem cut installation from **7.6 to 1.4 seconds**. Sharing installed dependencies brought the Mac below a second, then failed the project's typecheck. Those details matter before copying a setting or changing machines.
 
-- What does “8× faster” actually compare?
-- Why can a fast Mac still spend so long setting up a project?
-- Can we avoid some of that work without changing computers?
+## What took so long?
 
-## What the chart actually measures
+A Git worktree is another checkout of your project. Creating it and installing its dependencies are separate jobs. Theo's graphic says it measures `pnpm install` inside a new worktree.
 
-A Git worktree is another checkout of your project, so two tasks can change files separately. Installing its packages is a separate step. The chart's small print says it times `pnpm install` in that new checkout.
+His price caption emphasizes a $12,000 Mac and a $700 PC. The [follow-up method](https://x.com/theo/status/2115338762830184877/photo/1) describes **three Macs and two Linux machines**: take each machine's middle timing, then average those values. Linux includes only runs after a fix. I couldn't find the raw runs or all the Mac optimization commands.
 
-In a [follow-up screenshot](https://x.com/theo/status/2115338762830184877/photo/1), Theo shares the method: take the middle timing for each machine, then average those timings. The Linux results include only runs after a fix, which the graphic does not mention. It also does not explain that fix.
+That supports a large reported install gap. It doesn't establish an 8× improvement for an entire coding task, which also includes model responses, builds, tests and time spent thinking.
 
-Giving every run equal weight produces a different result: **29.2 seconds versus 4.6 seconds**, reported as 6.4×. One Linux machine contributed 233 samples; one Mac had only five after-fix samples. Giving each machine equal weight is reasonable, but readers need to know which comparison they are looking at.
+## Same Mac, different software and storage
 
-The gap remains large either way. These are reported installation results across several setups, rather than a clean two-computer test.
+I used a [pinned T3 revision](https://github.com/pingdotgg/t3code/tree/125b61954dbba5822a8108c8ca47a4846b4b4328), its required Node 26.12.1, and pnpm 12.14.0. Packages were already cached. Each run removed the installed dependencies before reinstalling with a frozen lockfile and `--offline`; allowed install scripts stayed enabled.
 
-## A fast SSD does not make every file operation fast
+| T3 dependency installation | Median of three runs |
+| --- | ---: |
+| macOS, APFS | **7.8 s** |
+| Linux VM, ext4 | **1.3 s** |
 
-Installing packages involves creating directories, files and links. A large-file disk speed test does not tell you how quickly that work finishes. Downloading packages once also leaves work to do when another checkout needs them.
+The 24 GB Mac had ten logical CPUs; Linux had four virtual CPUs and 4 GB RAM. The project and cache lived inside Linux's own filesystem. The physical computer stays the same, but the operating system, filesystem and available resources change. This test cannot tell us how much of the gap comes from APFS itself.
 
-The [older public benchmark](https://github.com/NullVoxPopuli/disk-perf-git-and-pnpm/blob/535aef76843fe52d6336604111708d884110a0e5/README.md) behind [Theo's video](https://www.youtube.com/watch?v=9tGrhrVKCrE&t=826s) makes that distinction useful. It fills pnpm's cache, removes installed files, then times installation again. It uses several generated framework projects and pins pnpm 10.2.1. It is a different test from the new chart.
+Both found all **599 requested dependencies** without changing the source or lockfile. Dependency-loading checks and the web project's typecheck passed. Git checkout, cleanup and VM startup are outside these install times. The [scripts, conditions and results](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/macos-worktree) are available to inspect.
 
-One contributor reports **34.9 seconds on an M5 Pro running macOS and 14.6 seconds in Linux inside OrbStack on that Mac**. The Linux files lived inside the guest's own filesystem. That is evidence to look beyond the processor and SSD, although it changes several software layers at once.
+## Linux can waste the same work
 
-Spotlight is not a reliable explanation by itself either. That contributor's macOS install went from 34.9 to 34.4 seconds after excluding the project. Another M4 Air report barely changed.
+T3's [October 21 install cleanup](https://github.com/pingdotgg/t3code/pull/22718) reports that one Linux machine had its package cache on ext4 and worktrees on XFS. Every worktree received full dependency copies. T3 now warns about that arrangement.
 
-These are contributor reports, with different machines and conditions. They support investigating the storage and software setup; they do not isolate APFS as the entire cause. Theo also [reports using ZFS compression on Linux](https://x.com/theo/status/2115349652195389659), another detail missing from a simple OS comparison.
+A package cache saves downloads. Installation still has to make packages available in each checkout. When the cache and checkout share a filesystem, pnpm can reuse existing file data through links or clones. Across filesystems, those operations can't do the same job, so files get copied.
 
-## Stop rebuilding the same package tree
+I tested that configuration inside Linux. With the checkout on XFS and cache on ext4, installation took **7.6 seconds**. Moving a byte-identical copy of the cache onto that same XFS filesystem brought it to **1.4 seconds**. Source, tools and checkout path stayed fixed.
 
-pnpm has an option worth testing: keep the installed dependencies in one shared place, then point each checkout at them. The setting is called the [global virtual store](https://github.com/pnpm/pnpm/blob/fe4a0c232384289de82be3d502896ca7e070050c/pnpm/docs/global-virtual-store.md).
-
-I tested it on an **M5 Mac with 24 GB RAM**, using pnpm 12.14.0 and a small project with 90 packages. Each install started in a fresh directory, used cached packages offline, and skipped install scripts. After warming both modes, I ran five alternating pairs.
-
-| Install | Middle time | Regular files in that checkout's `node_modules` |
-| --- | ---: | ---: |
-| Default | 122 ms | 3,124 |
-| Shared dependencies | 66 ms | 9 |
-
-Both loaded the five requested libraries successfully, and the lockfile stayed unchanged. The [script, lockfile and results](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/macos-worktree/repro) are available to repeat the test.
-
-That saved **56 milliseconds** here. This small test demonstrates reuse; it does not reproduce Theo's project, include native package builds, or establish a Mac-versus-Linux speedup.
-
-For the pnpm version I tested, add this to `pnpm-workspace.yaml`:
-
-```yaml
-enableGlobalVirtualStore: true
-```
-
-Run the project's actual build and tests afterward. The feature is experimental, some tools may have compatibility problems, and installed package files become shared writable state. Separate source checkouts still need care around those shared dependencies.
-
-## Measure the wait you actually have
-
-Before changing machines, time these separately in a disposable checkout:
+That's a useful fix regardless of which computer you own. Check where the cache actually lives:
 
 ```sh
-time git worktree add --detach ../install-check HEAD
-cd ../install-check
+df -h . "$(pnpm store path)"
+```
+
+Different folders on the same SSD can still belong to different filesystems.
+
+## The fastest Mac setting failed the next check
+
+Current pnpm already has a [Mac optimization](https://github.com/pnpm/pnpm/blob/fe4a0c232384289de82be3d502896ca7e070050c/pnpm/crates/deps-restorer/src/dir_clone_cache.rs) that clones eligible package directories instead of importing every file separately. Older pnpm benchmarks don't automatically describe this version.
+
+I also tested its experimental **global virtual store**: several checkouts point at shared installed package folders. After warming it, the Mac's median install dropped to **0.71 seconds**. Local dependency directories held 266 regular files instead of roughly 180,000; the package contents remained in the shared store.
+
+Installation and native-module checks passed. **The web typecheck failed with 64 errors.** Restoring default dependencies made it pass. The same errors appeared in a fresh worktree with the compiler run directly.
+
+So this saved installation time but failed the compatibility check for this project. I wouldn't recommend enabling it for T3 from these results. Other projects need their own checks; shared package files also become shared writable state.
+
+## Before changing your setup
+
+Time checkout and installation separately in a disposable worktree:
+
+```sh
+time git worktree add --detach ../setup-test HEAD
+cd ../setup-test
 time pnpm install --offline --frozen-lockfile
 ```
 
-The install needs a populated cache. Repeat with fresh checkout directories, then compare the shared-store option using the same pnpm version and build checks. An install in an already prepared directory answers a different question.
+Populate the cache first, use the project's pinned tools, and repeat in fresh checkouts. Then run the actual project checks after any change.
 
-If dependency installation accounts for your delay, test reuse first. If a comparable Linux setup still removes a meaningful wait from your actual project, that is a reason to move the work. The decision should follow the time your project saves, rather than the prices above a chart.
+A Linux VM is a practical option if this wait matters in your workflow. Keep the project and cache inside it; a Mac folder mounted into Linux follows a different storage path. My result supports investigating that option. The cache-placement test also shows why the OS name alone doesn't tell you how fast setup will be.
 
 ---
 
@@ -81,6 +79,7 @@ If dependency installation accounts for your delay, test reuse first. If a compa
 
 | Term / claim | Primary source | Date |
 | --- | --- | --- |
-| Worktree: separate checkout, shared Git history | [Git manual](https://git-scm.com/docs/git-worktree) | Checked Oct 28, 2026 |
-| Chart task and averaging | [Theo's method screenshot](https://x.com/theo/status/2115338762830184877/photo/1) | Oct 28, 2026 |
-| Dependency reuse and compatibility limits | [pnpm 12.14.0 guide](https://github.com/pnpm/pnpm/blob/fe4a0c232384289de82be3d502896ca7e070050c/pnpm/docs/global-virtual-store.md) | Checked Oct 28, 2026 |
+| Worktree: another checkout sharing Git history | [Git manual](https://git-scm.com/docs/git-worktree) | Checked Oct 28, 2026 |
+| Chart aggregation and after-fix samples | [Theo's method](https://x.com/theo/status/2115338762830184877/photo/1) | Oct 28, 2026 |
+| Cache placement and unnecessary platform packages | [T3 install cleanup](https://github.com/pingdotgg/t3code/pull/22718) | Oct 21, 2026 |
+| Shared dependencies and compatibility limits | [pnpm 12.14.0 guide](https://github.com/pnpm/pnpm/blob/fe4a0c232384289de82be3d502896ca7e070050c/pnpm/docs/global-virtual-store.md) | Checked Oct 28, 2026 |

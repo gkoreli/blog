@@ -1,0 +1,603 @@
+{
+  "checkedAtUtc": "2026-10-29",
+  "authorLocalDate": "2026-10-28",
+  "scope": "Cached dependency installs only. No original-chart reproduction, whole-application benchmark or end-to-end coding-task multiplier.",
+  "protocol": {
+    "runsPerAcceptedSeries": 3,
+    "timing": "Installer process wall time, including Node launcher. Checkout, cleanup, validation, cache seeding and VM startup excluded.",
+    "commands": {
+      "common": "<absolute-node> <absolute-pnpm-cli> install --frozen-lockfile --store-dir <isolated-store> --reporter append-only --offline --package-import-method=auto",
+      "pnpm12Additional": [
+        "--config.enableGlobalVirtualStore=false (true for shared series)",
+        "--yes"
+      ],
+      "environment": {
+        "npm_config_manage_package_manager_versions": "false",
+        "CI": "true"
+      }
+    },
+    "driver": "full-workload.py",
+    "nativeSmokeModulesForT3": [
+      "node-pty binding load",
+      "sharp PNG encoding"
+    ],
+    "seriesOrder": [
+      "frameworks-macos",
+      "frameworks-linux-ext4",
+      "t3-macos-default",
+      "t3-linux-ext4-default",
+      "t3-macos-shared",
+      "t3-linux-xfs-cross-device",
+      "t3-linux-xfs-same-device"
+    ],
+    "concurrency": "Accepted timed series do not overlap other installs, source archives, cache copies, package-manager provisioning or profiling. Unrelated host activity was not isolated.",
+    "runOrderLimit": "Three-run groups are not randomized. Later default-layout and fresh-path compatibility controls are excluded from medians."
+  },
+  "environments": {
+    "macos": {
+      "cpu": "Apple M5",
+      "logicalCpus": 10,
+      "memoryGiB": 24,
+      "os": "macOS 27.0.1",
+      "filesystem": "APFS",
+      "indexingEnabled": true
+    },
+    "linux": {
+      "host": "Same physical M5 Mac, Lima 2.2.1 / Apple Virtualization.framework",
+      "vcpus": 4,
+      "configuredMemoryGiB": 4,
+      "os": "Debian 13.7 aarch64",
+      "kernel": "6.12.111+deb13-cloud-arm64",
+      "filesystem": "Native ext4; XFS control in a new 6 GiB loop image on guest ext4",
+      "sharedHostMountUsedForTimedFiles": false
+    }
+  },
+  "series": [
+    {
+      "id": "frameworks-macos",
+      "baseline": "535aef76843fe52d6336604111708d884110a0e5",
+      "inputManifestSha256": "7b02a3c17df832a6984ca9de2b2838c0441c2b864da122811c901074b793be17",
+      "node": "v24.14.1",
+      "pnpm": "10.2.1",
+      "scriptsEnabled": true,
+      "sharedVirtualStore": false,
+      "importMethod": "auto",
+      "sampleCount": 3,
+      "medianInstallSeconds": 44.20783995799138,
+      "rangeInstallSeconds": [
+        44.18329562500003,
+        44.24580941599561
+      ],
+      "samples": [
+        {
+          "label": "accepted10-0",
+          "checkedAtUtc": "2026-10-29T01:42:05.373308+00:00",
+          "installSeconds": 44.18329562500003,
+          "installUserCpuSeconds": 16.531053,
+          "installSystemCpuSeconds": 284.628659,
+          "cleanupSeconds": 31.961576875008177,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": null,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 457,
+          "inventorySha256Raw": "03b22f9c18b3444325221f4f165c2f26c988ce7f03ae6824d966f702f8dd398e"
+        },
+        {
+          "label": "accepted10-1",
+          "checkedAtUtc": "2026-10-29T01:43:14.383699+00:00",
+          "installSeconds": 44.20783995799138,
+          "installUserCpuSeconds": 16.881592,
+          "installSystemCpuSeconds": 286.327857,
+          "cleanupSeconds": 24.685015875002136,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": null,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 457,
+          "inventorySha256Raw": "03b22f9c18b3444325221f4f165c2f26c988ce7f03ae6824d966f702f8dd398e"
+        },
+        {
+          "label": "accepted10-2",
+          "checkedAtUtc": "2026-10-29T01:44:23.391575+00:00",
+          "installSeconds": 44.24580941599561,
+          "installUserCpuSeconds": 16.604884,
+          "installSystemCpuSeconds": 290.007865,
+          "cleanupSeconds": 24.66442066701711,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": null,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 457,
+          "inventorySha256Raw": "03b22f9c18b3444325221f4f165c2f26c988ce7f03ae6824d966f702f8dd398e"
+        }
+      ]
+    },
+    {
+      "id": "frameworks-linux-ext4",
+      "baseline": "535aef76843fe52d6336604111708d884110a0e5",
+      "inputManifestSha256": "7b02a3c17df832a6984ca9de2b2838c0441c2b864da122811c901074b793be17",
+      "node": "v24.14.1",
+      "pnpm": "10.2.1",
+      "scriptsEnabled": true,
+      "sharedVirtualStore": false,
+      "importMethod": "auto",
+      "sampleCount": 3,
+      "medianInstallSeconds": 7.903739633999976,
+      "rangeInstallSeconds": [
+        7.8829027040001165,
+        9.112762601999975
+      ],
+      "samples": [
+        {
+          "label": "accepted10-0",
+          "checkedAtUtc": "2026-10-29T01:44:48.076558+00:00",
+          "installSeconds": 9.112762601999975,
+          "installUserCpuSeconds": 11.386561,
+          "installSystemCpuSeconds": 5.942897,
+          "cleanupSeconds": 2.695868077999876,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": null,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 457,
+          "inventorySha256Raw": "c42cb712ca23394dc3352614ca0475f9d1ca9b29e46e445aad0cc6f68495cf3a"
+        },
+        {
+          "label": "accepted10-1",
+          "checkedAtUtc": "2026-10-29T01:44:58.183199+00:00",
+          "installSeconds": 7.903739633999976,
+          "installUserCpuSeconds": 10.718619,
+          "installSystemCpuSeconds": 4.313773,
+          "cleanupSeconds": 2.1735433640001247,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": null,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 457,
+          "inventorySha256Raw": "c42cb712ca23394dc3352614ca0475f9d1ca9b29e46e445aad0cc6f68495cf3a"
+        },
+        {
+          "label": "accepted10-2",
+          "checkedAtUtc": "2026-10-29T01:45:08.148130+00:00",
+          "installSeconds": 7.8829027040001165,
+          "installUserCpuSeconds": 10.569524,
+          "installSystemCpuSeconds": 4.38738,
+          "cleanupSeconds": 2.0542830009999307,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": null,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 457,
+          "inventorySha256Raw": "c42cb712ca23394dc3352614ca0475f9d1ca9b29e46e445aad0cc6f68495cf3a"
+        }
+      ]
+    },
+    {
+      "id": "t3-macos-default",
+      "baseline": "125b61954dbba5822a8108c8ca47a4846b4b4328",
+      "inputManifestSha256": "6a783b3d0ab74cef7cd8766849155b8f86ffb00e243572469679ce0ff794962d",
+      "node": "v26.12.1",
+      "pnpm": "12.14.0",
+      "scriptsEnabled": true,
+      "sharedVirtualStore": false,
+      "importMethod": "auto",
+      "sampleCount": 3,
+      "medianInstallSeconds": 7.752808457997162,
+      "rangeInstallSeconds": [
+        7.420167749980465,
+        8.045731791993603
+      ],
+      "samples": [
+        {
+          "label": "default-0",
+          "checkedAtUtc": "2026-10-29T01:48:57.545870+00:00",
+          "installSeconds": 7.752808457997162,
+          "installUserCpuSeconds": 1.066039,
+          "installSystemCpuSeconds": 37.060326,
+          "cleanupSeconds": 8.457735917007085,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        },
+        {
+          "label": "default-1",
+          "checkedAtUtc": "2026-10-29T01:49:16.088532+00:00",
+          "installSeconds": 7.420167749980465,
+          "installUserCpuSeconds": 1.057939,
+          "installSystemCpuSeconds": 34.849176,
+          "cleanupSeconds": 8.363022291916423,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        },
+        {
+          "label": "default-2",
+          "checkedAtUtc": "2026-10-29T01:49:34.760376+00:00",
+          "installSeconds": 8.045731791993603,
+          "installUserCpuSeconds": 1.032577,
+          "installSystemCpuSeconds": 38.6047,
+          "cleanupSeconds": 8.583384416997433,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        }
+      ]
+    },
+    {
+      "id": "t3-linux-ext4-default",
+      "baseline": "125b61954dbba5822a8108c8ca47a4846b4b4328",
+      "inputManifestSha256": "6a783b3d0ab74cef7cd8766849155b8f86ffb00e243572469679ce0ff794962d",
+      "node": "v26.12.1",
+      "pnpm": "12.14.0",
+      "scriptsEnabled": true,
+      "sharedVirtualStore": false,
+      "importMethod": "auto",
+      "sampleCount": 3,
+      "medianInstallSeconds": 1.2855602679999265,
+      "rangeInstallSeconds": [
+        1.2166421350000292,
+        1.425370771999951
+      ],
+      "samples": [
+        {
+          "label": "default-0",
+          "checkedAtUtc": "2026-10-29T01:49:49.809653+00:00",
+          "installSeconds": 1.425370771999951,
+          "installUserCpuSeconds": 0.86634,
+          "installSystemCpuSeconds": 1.641044,
+          "cleanupSeconds": 1.3625344409999798,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        },
+        {
+          "label": "default-1",
+          "checkedAtUtc": "2026-10-29T01:49:52.545868+00:00",
+          "installSeconds": 1.2855602679999265,
+          "installUserCpuSeconds": 0.8407819999999999,
+          "installSystemCpuSeconds": 1.319078,
+          "cleanupSeconds": 0.7790203039999142,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        },
+        {
+          "label": "default-2",
+          "checkedAtUtc": "2026-10-29T01:49:55.255654+00:00",
+          "installSeconds": 1.2166421350000292,
+          "installUserCpuSeconds": 0.7323729999999999,
+          "installSystemCpuSeconds": 1.40461,
+          "cleanupSeconds": 0.7890445410000666,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        }
+      ]
+    },
+    {
+      "id": "t3-macos-shared",
+      "baseline": "125b61954dbba5822a8108c8ca47a4846b4b4328",
+      "inputManifestSha256": "6a783b3d0ab74cef7cd8766849155b8f86ffb00e243572469679ce0ff794962d",
+      "node": "v26.12.1",
+      "pnpm": "12.14.0",
+      "scriptsEnabled": true,
+      "sharedVirtualStore": true,
+      "importMethod": "auto",
+      "sampleCount": 3,
+      "medianInstallSeconds": 0.7099653749610297,
+      "rangeInstallSeconds": [
+        0.7020118329674006,
+        0.8667934999684803
+      ],
+      "samples": [
+        {
+          "label": "shared-0",
+          "checkedAtUtc": "2026-10-29T01:51:05.000647+00:00",
+          "installSeconds": 0.8667934999684803,
+          "installUserCpuSeconds": 0.573381,
+          "installSystemCpuSeconds": 2.325166,
+          "cleanupSeconds": 0.29624533402966335,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        },
+        {
+          "label": "shared-1",
+          "checkedAtUtc": "2026-10-29T01:51:06.900372+00:00",
+          "installSeconds": 0.7099653749610297,
+          "installUserCpuSeconds": 0.566336,
+          "installSystemCpuSeconds": 2.251603,
+          "cleanupSeconds": 0.29305854096310213,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        },
+        {
+          "label": "shared-2",
+          "checkedAtUtc": "2026-10-29T01:51:08.799506+00:00",
+          "installSeconds": 0.7020118329674006,
+          "installUserCpuSeconds": 0.557326,
+          "installSystemCpuSeconds": 2.079189,
+          "cleanupSeconds": 0.3051034999662079,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        }
+      ]
+    },
+    {
+      "id": "t3-linux-xfs-cross-device",
+      "baseline": "125b61954dbba5822a8108c8ca47a4846b4b4328",
+      "inputManifestSha256": "6a783b3d0ab74cef7cd8766849155b8f86ffb00e243572469679ce0ff794962d",
+      "node": "v26.12.1",
+      "pnpm": "12.14.0",
+      "scriptsEnabled": true,
+      "sharedVirtualStore": false,
+      "importMethod": "auto",
+      "sampleCount": 3,
+      "medianInstallSeconds": 7.613221766999914,
+      "rangeInstallSeconds": [
+        7.552270507999992,
+        7.9388488219999545
+      ],
+      "samples": [
+        {
+          "label": "crossfs-0",
+          "checkedAtUtc": "2026-10-29T01:53:35.769018+00:00",
+          "installSeconds": 7.9388488219999545,
+          "installUserCpuSeconds": 1.284313,
+          "installSystemCpuSeconds": 6.204464,
+          "cleanupSeconds": 2.2325432160000673,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        },
+        {
+          "label": "crossfs-1",
+          "checkedAtUtc": "2026-10-29T01:53:47.216017+00:00",
+          "installSeconds": 7.613221766999914,
+          "installUserCpuSeconds": 1.166594,
+          "installSystemCpuSeconds": 5.430187,
+          "cleanupSeconds": 2.379961179999782,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        },
+        {
+          "label": "crossfs-2",
+          "checkedAtUtc": "2026-10-29T01:53:58.458492+00:00",
+          "installSeconds": 7.552270507999992,
+          "installUserCpuSeconds": 1.17722,
+          "installSystemCpuSeconds": 6.052563,
+          "cleanupSeconds": 2.1364013549998617,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        }
+      ]
+    },
+    {
+      "id": "t3-linux-xfs-same-device",
+      "baseline": "125b61954dbba5822a8108c8ca47a4846b4b4328",
+      "inputManifestSha256": "6a783b3d0ab74cef7cd8766849155b8f86ffb00e243572469679ce0ff794962d",
+      "node": "v26.12.1",
+      "pnpm": "12.14.0",
+      "scriptsEnabled": true,
+      "sharedVirtualStore": false,
+      "importMethod": "auto",
+      "sampleCount": 3,
+      "medianInstallSeconds": 1.3797937240001374,
+      "rangeInstallSeconds": [
+        1.367097665999836,
+        1.396953424000003
+      ],
+      "samples": [
+        {
+          "label": "aligned-0",
+          "checkedAtUtc": "2026-10-29T01:57:32.250138+00:00",
+          "installSeconds": 1.3797937240001374,
+          "installUserCpuSeconds": 0.850347,
+          "installSystemCpuSeconds": 1.524641,
+          "cleanupSeconds": 0.7404940920000627,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        },
+        {
+          "label": "aligned-1",
+          "checkedAtUtc": "2026-10-29T01:57:35.437470+00:00",
+          "installSeconds": 1.396953424000003,
+          "installUserCpuSeconds": 0.8286669999999999,
+          "installSystemCpuSeconds": 1.605367,
+          "cleanupSeconds": 0.950321305999978,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        },
+        {
+          "label": "aligned-2",
+          "checkedAtUtc": "2026-10-29T01:57:38.406148+00:00",
+          "installSeconds": 1.367097665999836,
+          "installUserCpuSeconds": 0.7931429999999999,
+          "installSystemCpuSeconds": 1.5582829999999999,
+          "cleanupSeconds": 0.8359207070000139,
+          "installExitCode": 0,
+          "nativeSmokeExitCode": 0,
+          "trackedInputsUnchanged": true,
+          "directDependencyCount": 599,
+          "inventorySha256Raw": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb"
+        }
+      ]
+    }
+  ],
+  "inventoryComparison": {
+    "frameworks": {
+      "same457RequestsNamesAndVersionsAcrossOperatingSystems": true,
+      "representationNote": "Earlier host inventory uses bare project names; newer guest inventory prefixes frameworks/. Removing only this prefix makes the full lists equal. Raw hashes are retained in samples.",
+      "normalizedSha256": "03b22f9c18b3444325221f4f165c2f26c988ce7f03ae6824d966f702f8dd398e"
+    },
+    "t3": {
+      "sha256": "53d4278aac6ab72aa48cfff9e00134ddc111c80992d9554acd837f885bab1fbb",
+      "note": "599 requested direct-dependency entries across workspace projects, not 599 unique packages. Native optional/transitive packages legitimately differ by OS.",
+      "same599RequestsNamesAndVersionsAcrossAllT3SeriesAndValidationPaths": true
+    }
+  },
+  "typechecks": [
+    {
+      "environment": "macOS",
+      "layout": "default",
+      "command": "vp run --filter @t3tools/web typecheck",
+      "exitCode": 0,
+      "errors": 0
+    },
+    {
+      "environment": "macOS",
+      "layout": "shared",
+      "command": "vp run --filter @t3tools/web typecheck",
+      "exitCode": 2,
+      "errors": 64,
+      "filesWithErrors": 38,
+      "repeated": true
+    },
+    {
+      "environment": "macOS, new worktree",
+      "layout": "shared",
+      "command": "<worktree>/node_modules/.bin/tsc --noEmit --pretty false (cwd apps/web)",
+      "exitCode": 2,
+      "errors": 64
+    },
+    {
+      "environment": "macOS, same fresh worktree after restoring default",
+      "layout": "default",
+      "command": "<worktree>/node_modules/.bin/tsc --noEmit --pretty false (cwd apps/web)",
+      "exitCode": 0,
+      "errors": 0
+    },
+    {
+      "environment": "Linux ext4",
+      "layout": "default",
+      "command": "<worktree>/node_modules/.bin/tsc --noEmit --pretty false (cwd apps/web)",
+      "exitCode": 0,
+      "errors": 0
+    },
+    {
+      "environment": "Linux XFS, same-device store",
+      "layout": "default",
+      "command": "<worktree>/node_modules/.bin/tsc --noEmit --pretty false (cwd apps/web)",
+      "exitCode": 0,
+      "errors": 0
+    }
+  ],
+  "localNodeModulesEntries": {
+    "scope": "All local node_modules trees in T3, excluding .git and reference .repos, without following symlinks. Not physical disk use or removed package data.",
+    "default": {
+      "regularFiles": 179943,
+      "directories": 20250,
+      "symlinks": 5704
+    },
+    "shared": {
+      "regularFiles": 266,
+      "directories": 315,
+      "symlinks": 2110
+    }
+  },
+  "crossDeviceControl": {
+    "storeCacheFilesCheckedByteForByte": 147761,
+    "allCacheBytesIdenticalBeforeAlignedInstall": true,
+    "cacheManifestSha256": "e507cca13a7ff2c22b8bcd1f4c9ca5201ac6bbf74cd9c41abe6c94cc73226202",
+    "manifestScope": "SHA-256 of sorted relative file paths and SHA-256 content hashes under v11/files and v11/index; copied per-project tracking symlinks excluded.",
+    "crossDeviceIds": {
+      "ext4Store": 65025,
+      "xfsCheckout": 1792
+    },
+    "fileReuseProbe": {
+      "file": "node_modules/@types/node/index.d.ts",
+      "method": "SHA-512 matched installed content to its content-addressed cache entry.",
+      "ext4": {
+        "sameDevice": true,
+        "sameInode": true,
+        "installedFileHardlinks": 2
+      },
+      "xfsSameDevice": {
+        "sameDevice": true,
+        "sameInode": true,
+        "installedFileHardlinks": 2
+      },
+      "limit": "A representative file, not a count of every package import."
+    }
+  },
+  "excludedAttempts": [
+    {
+      "attempt": "Original tiny fixture",
+      "reason": "Child runtime attribution unverified; superseded, not used in the revised article."
+    },
+    {
+      "attempt": "Initial full profile",
+      "reason": "Node 20.20.2 and sampling overhead; diagnostic only."
+    },
+    {
+      "attempt": "preflight-node24",
+      "reason": "Zero exit at interactive prompt; no completed install."
+    },
+    {
+      "attempt": "warmup24",
+      "reason": "Prisma external-cache timestamp denied by command sandbox; exit 1."
+    },
+    {
+      "attempt": "seed12 on each OS",
+      "reason": "Actual executing version was 10.2.1 after automatic handoff; label did not describe the tool."
+    },
+    {
+      "attempt": "real12-seed on unchanged older workload, each OS",
+      "reason": "Frozen installation rejected mixed autoInstallPeers lock settings; no successful version comparison."
+    },
+    {
+      "attempt": "All cache seeds and shared warmup",
+      "reason": "Downloads, build-cache population, mode preparation or excluded warmups."
+    },
+    {
+      "attempt": "First XFS store copy and aligned-warmup",
+      "reason": "Image filled before old dependency copies were removed; incomplete cache made offline install fail. Excluded."
+    },
+    {
+      "attempt": "Second XFS store copy",
+      "reason": "Existing copied project-tracking symlink caused copytree error. Removed copied tracking metadata and verified all cache file bytes before the successful aligned series."
+    },
+    {
+      "attempt": "Later default-validation and fresh-path installs",
+      "reason": "Compatibility/order controls, including overlap with excluded cache preparation. Not included in timing medians."
+    }
+  ],
+  "limitations": [
+    "Small three-run samples on one shared host; no population-wide speed claim.",
+    "Guest CPU allocation, memory, kernel, filesystem and virtualization differ together.",
+    "Linux XFS is nested in a file on ext4; not bare-metal BB-1.",
+    "--offline governs package fetching, not arbitrary lifecycle-child network access. Accepted T3 logs contain no fetching/downloading messages; no packet-level exclusion is claimed.",
+    "Older public framework fixture contains a Sails Node ^22.11 engine warning under Node 24.14.1.",
+    "Install/native success does not certify an entire application; the shared-store web typecheck is a concrete counterexample.",
+    "No direct version-only timing conclusion from different repositories."
+  ]
+}
