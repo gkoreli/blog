@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T03:19:45.884216+00:00",
-  "sourceBaseline": "7793f1430587881da7e5dff33447b34aad956a9c",
+  "checkedAt": "2026-10-29T03:31:38.920041+00:00",
+  "sourceBaseline": "3b6d36678b2b0d02f0a268d6e91d0c0094604548",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,19 +45,20 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Inspect the exact two control receipts through the provider retained-log path and compare known network fields. Human trials remain deferred; signed proof/native-provider/attribution/privacy requirements remain open.",
+  "nextBoundedAction": "Seek genuine current-verifier signed records with recoverable request inputs and exact storage references, using bounded native-log selection before any separately budgeted D1 query. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1358,
     "prompts": 31,
     "sourceSha256": "3c51458d27908a851e629bde089c14f4e8f3f650396052d9484804d6fcd9ed73",
-    "unchanged": false,
-    "freshServedCheck": true,
+    "unchanged": true,
+    "freshServedCheck": false,
     "publicationReceipt": "network-receipt-release.json",
-    "servedMatchesCheckedBuild": true
+    "servedMatchesCheckedBuild": true,
+    "lastServedCheckReceipt": "network-receipt-release.json"
   },
-  "runtimeUnchanged": false,
-  "productionStatements": 1,
-  "newVisits": 2,
+  "runtimeUnchanged": true,
+  "productionStatements": 0,
+  "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
   "nativeKnownBotPath": {
@@ -88,8 +89,8 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 3,
-  "collectionEligibleGets": 2,
+  "productionOwnSiteGets": 0,
+  "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
     "receipt": "retained-delta-production.json",
@@ -162,13 +163,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 4,
+  "productionReportedReads": 0,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
-    "acknowledgedApplicationRows": 2,
-    "providerWriteMetering": "not returned; additional to diagnostic meter"
+    "acknowledgedApplicationRows": 0,
+    "providerWriteMetering": "no new observation requested in this retained-copy slice"
   },
-  "newVisitsScope": "Two synthetic referral-excluded HTTP integration controls; not added to twelve-trial calibration ledger and not genuine vendor/human labels.",
+  "newVisitsScope": "No new observations; retained download and individual copies reuse the two research-67 synthetic controls.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -179,6 +180,18 @@
     "independentTruthMeasured": false,
     "liveReceipt": "network-receipt-live.json",
     "productionExactProjectionPairs": 2,
-    "retainedProviderCopyCompared": false
+    "retainedProviderCopyCompared": true,
+    "retainedReceipt": "network-receipt-retained.json",
+    "retainedDistinctControls": 2,
+    "retainedBulkEqualityPairs": 2,
+    "retainedIndividualEqualityPairs": 2,
+    "indexedPositiveQueries": 2
+  },
+  "retainedNetworkVisibility": {
+    "receipt": "network-receipt-retained.json",
+    "newD1Statements": 0,
+    "newObservations": 0,
+    "providerQueryCost": "not returned",
+    "signedFailureOrMultiSourceRetainedBranchesMeasured": false
   }
 }

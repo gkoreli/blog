@@ -54,3 +54,5 @@ Both local signature outcomes are absent; both native booleans remain unavailabl
 The owned tail exits and its process group is confirmed absent. This is not an account-wide tail-cleanup claim. A separate private live/publication archive contains 30 captures plus its manifest with 0700/0600 modes; manifest SHA-256 `a5c549bb6581faac16141b3699287a6f8202b1ed208635e509f699b62fd51764`. October 31 is a review date, not automatic erasure. The earlier native archive remains frozen.
 
 Live receipt/storage agreement closes this release's integration gate. Whether all new scalar/source/snapshot fields survive the provider's retained-log path remains unmeasured; that exact-control comparison is the next bounded action. It establishes no complete population retention, bot/human accuracy or native cryptographic agreement.
+
+[Research 68](68-network-receipt-retention.md) supersedes the retained-copy non-acceptance above for these two exact unsigned controls: both bulk and individual receipts match, and nested outcome/zero-count filters return their expected events. Other branches and population retention remain unproven.
