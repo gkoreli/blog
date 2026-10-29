@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-29T17:53:12.084283+00:00",
+  "sourceBaseline": "b408fcf",
+  "analyticsTests": 294,
+  "blogTests": 117,
+  "typecheck": "pass",
+  "isolatedBuild": {
+    "passed": true,
+    "posts": 33,
+    "sharedDistTouched": false,
+    "baseCommit": "b408fcf",
+    "overlay": [
+      "packages/analytics/src/stats.ts",
+      "packages/analytics/src/sql-json.ts"
+    ]
+  },
+  "nativeReportComparisons": 17,
+  "rawAndDecodedOutputsEqual": true,
+  "nativeReadCostsEqual": true,
+  "strict32ArgumentComparisons": 17,
+  "emptyRawVerificationFields": 44,
+  "allEmptyFieldsRemainNull": true,
+  "helperChunkArguments": [
+    32,
+    31,
+    27
+  ],
+  "runtimeProfilesUnchanged": true,
+  "reportCacheVersionUnchanged": "2026-10-29.4",
+  "collectionVersionUnchanged": "2026-10-29.5",
+  "collectorSourceChanged": false,
+  "productionActivationAccepted": false,
+  "productionProbes": 0,
+  "humanTrialsDeferred": true,
+  "articleUnchanged": true,
+  "articleWords": 1375,
+  "prompts": 31,
+  "sourceSha256": {
+    "packages/analytics/src/stats.ts": "4a42f0bf05a72d55a1796c0e7179dcf35dbdd08c0e00a070c772ff853ffe7dc1",
+    "packages/analytics/src/sql-json.ts": "f258311bba02f16a0d93ef7da7be7aebe1710dc985e96666af2ee85b9f7e05ec",
+    "packages/analytics/test/sql-json.test.mjs": "7ef1ec91944958654fd790726c600ccaf7edbb5d4dcf8ef1e1afae8b144bc62f",
+    "packages/blog/scripts/check-report-json-contract.mjs": "00254c08a928c690fa0ba894c58f0e8720e28ebfffb00bb4888b0cf9f83929a9",
+    "packages/blog/scripts/check-report-json-limit.py": "5736df3afb62dc43c11948e374fd72b08463b1b2b0142ac64a0f34852aeb2f5e"
+  },
+  "additionalUnsuccessfulChecks": [
+    "Optional inline exact-path/EXPLAIN helper remained live without output; confirmed own idle processes explicitly terminated. No plan/result accepted, no production retry, cause unestablished.",
+    "Wrangler --version returned 4.71.0 but could not write its default diagnostic log under sandbox; this was not a query-access failure."
+  ],
+  "localLinks": "pass",
+  "publicFieldScan": "pass",
+  "markdownValidation": "pass",
+  "articleSha256": "efb458c18aa509537f1faf077b404695b8d4e06b21fc769b471b7ee64fd9feaf",
+  "optionalHelperTerminalExitCode": 137,
+  "privateDataArchive": {
+    "files": 34,
+    "manifestSha256": "c833702a1f37b77680818cbae14763d51ad9e4dea58dae6f8eb39540f269a1d0",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  }
+}

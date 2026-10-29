@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-10-29T17:50:07.925305+00:00",
+  "sources": [
+    {
+      "name": "installed-workerd-sqlite",
+      "tag": "v1.20260301.1",
+      "commit": "cce9f17db76f4c853585d3e0df096af3b8094ee4",
+      "url": "https://raw.githubusercontent.com/cloudflare/workerd/cce9f17db76f4c853585d3e0df096af3b8094ee4/src/workerd/util/sqlite.c++",
+      "bytes": 93811,
+      "sha256": "833bb2d64a26ab509f3cac0723e9c592ce06d9418cef12229f2e6e4f5f6f4a91"
+    },
+    {
+      "name": "d1-limits",
+      "url": "https://developers.cloudflare.com/d1/platform/limits/index.md",
+      "bytes": 10341,
+      "sha256": "ac57223b0970f63e073147612696552e76ba5138cc24d53e013050956f574bc1"
+    },
+    {
+      "name": "sqlite-json",
+      "url": "https://www.sqlite.org/json1.html",
+      "bytes": 71433,
+      "sha256": "b0c396d4a3fcade0b2f38de9f1bffa3463a8c38216e7d14e4ef752e540e6d02e"
+    },
+    {
+      "name": "sqlite-limits",
+      "url": "https://www.sqlite.org/limits.html",
+      "bytes": 21741,
+      "sha256": "0cdbd54a89169177c50efd15854e5c1e0df6fe1a0e0706234e034dd923e0503b"
+    },
+    {
+      "name": "python-sqlite",
+      "url": "https://docs.python.org/3/library/sqlite3.html",
+      "bytes": 315917,
+      "sha256": "c94d2e3d178544dd3c038da2eb802ca908ac16c68e29560b151fae55f15d50e6"
+    }
+  ],
+  "readerTelemetryForwarded": false
+}

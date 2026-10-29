@@ -1,0 +1,138 @@
+{
+  "checkedAt": "2026-10-29T17:52:20.877704+00:00",
+  "sqliteVersion": "3.53.4",
+  "pythonVersion": "3.14.6",
+  "statementCacheDisabled": true,
+  "initialFunctionArgumentLimit": 1000,
+  "comparisons": 17,
+  "results": [
+    {
+      "label": "empty-seven-day",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "empty-all-time",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "7d-all",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "7d-browser",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "7d-agents",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "7d-crawlers",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "7d-automation",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "7d-unresolved",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "all-all",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "all-browser",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "all-agents",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "all-crawlers",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "all-automation",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "all-unresolved",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "30d-all-paths",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "90d-all-paths",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    },
+    {
+      "label": "missing-path",
+      "enforcedFunctionArguments": 32,
+      "baselineRejectedAt32": true,
+      "candidateMatchesNativeAt32": true,
+      "baselineMatchesWhenLimitRestored": true
+    }
+  ],
+  "inputSha256": "73291592ef9752defa32185d4609804988fdc7985e74f6e9e98fceb93542d2ee",
+  "nativeReceiptSha256": "f6293cf9dcba998e09c892df937bd3068df0d6334d6c5deb1373e6a8d78affcd",
+  "scriptSha256": "5736df3afb62dc43c11948e374fd72b08463b1b2b0142ac64a0f34852aeb2f5e",
+  "productionQueries": 0,
+  "humanLabels": 0,
+  "limits": [
+    "Configured SQLite contract model; not a reproduction of current D1 enforcement.",
+    "No production cost or latency claim."
+  ]
+}

@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T17:39:03.960953+00:00",
-  "sourceBaseline": "16c8bd8",
+  "checkedAt": "2026-10-29T17:55:03.500272+00:00",
+  "sourceBaseline": "b408fcf",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -44,7 +44,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Native-test the existing report JSON function-argument contract and an equivalent bounded builder, preserving explicit nulls and measuring query cost before adoption. Reuse exact trace links for verification failures. Human trials and owner-browser verification remain deferred.",
+  "nextBoundedAction": "Accept the checked report-builder source/build and one guarded empty-path API MISS with its exact calculation receipt. Then continue the original correctness and labelled-measurement requirements; human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1375,
     "prompts": 31,
@@ -54,15 +54,15 @@
     "publicationReceipt": "parallel-methods-release.json",
     "servedMatchesCheckedBuild": true,
     "lastServedCheckReceipt": "parallel-methods-release.json",
-    "publicationStatus": "Article unchanged at 1375 words/31 prompts in phase 86; no new publication acceptance for diagnostic/evidence-only work. Prior served acceptance remains dated.",
+    "publicationStatus": "Article unchanged at 1375 words/31 prompts in phase 87. Prior publication acceptance remains dated.",
     "previousPublicationReceipt": "parallel-declarations-release.json",
     "servedMatchScope": "Fresh exact Markdown only; prior full article HTML acceptance remains dated in parallel-declarations-release.json."
   },
-  "runtimeUnchanged": true,
-  "productionStatements": 1,
+  "runtimeUnchanged": false,
+  "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": true,
+  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -378,7 +378,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Fresh CLI allocation/D1 metadata, one frozen-range SELECT, exact receipt/request/trace browser exports; no configuration changes.",
+  "liveAccountInspectionScope": "Native and constrained-SQLite report comparisons only; no production statement or site request at this checkpoint.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -586,6 +586,34 @@
     "reportedWrites": 0,
     "statements": 1,
     "runtimeChanged": false,
+    "articleChanged": false
+  },
+  "reportJsonContract": {
+    "research": "87-report-json-contract-and-null-preservation.md",
+    "native": "report-json-native.json",
+    "sqliteLimit": "report-json-sqlite-limit.json",
+    "sources": "report-json-sources.json",
+    "checks": "report-json-checks.json",
+    "fields": 44,
+    "oldFunctionArguments": 88,
+    "newFunctionArguments": [
+      32,
+      31,
+      27
+    ],
+    "nativeComparisons": 17,
+    "sqliteLimitComparisons": 17,
+    "fixtureRows": 512,
+    "nativeReadCostEqual": true,
+    "rawAndDecodedOutputEqual": true,
+    "installedWorkerdConfiguredLimit": 127,
+    "documentedD1Limit": 32,
+    "productionEnforcementEstablished": false,
+    "collectorChanged": false,
+    "runtimeProfilesChanged": false,
+    "reportCacheVersion": "2026-10-29.4",
+    "sourceActivationAccepted": false,
+    "productionProbeCount": 0,
     "articleChanged": false
   }
 }
