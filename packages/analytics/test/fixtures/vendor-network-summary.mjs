@@ -8,6 +8,13 @@ export function networkEvidence(outcome='listed', options={}) {
 const change=(mutate)=>{const e=networkEvidence();mutate(e);return e;};
 const good=(name,e)=>({name,e,recognized:true});const bad=(name,e)=>({name,e,recognized:false});
 export const networkSummaryCases=[
+ good('expanded-profile-apple',networkEvidence('listed',{profile:'2026-10-29.1',source:'applebot'})),
+ good('expanded-profile-bing',networkEvidence('listed',{profile:'2026-10-29.1',source:'bingbot'})),
+ good('expanded-profile-amazon',networkEvidence('listed',{profile:'2026-10-29.1',source:'amazonbot'})),
+ good('expanded-profile-amazon-search',networkEvidence('listed',{profile:'2026-10-29.1',source:'amazon-search'})),
+ good('expanded-profile-amazon-user',networkEvidence('listed',{profile:'2026-10-29.1',source:'amazon-user'})),
+ bad('old-profile-cannot-inherit-apple',networkEvidence('listed',{profile:'2026-10-28.2',source:'applebot'})),
+ bad('old-profile-cannot-inherit-amazon',networkEvidence('listed',{profile:'2026-10-28.2',source:'amazonbot'})),
  {name:'missing-history',e:null,recognized:false},
  good('current-listed',networkEvidence()),good('historical-listed',networkEvidence('listed',{profile:'2026-10-27.1'})),
  good('nonlisted',networkEvidence('not-listed')),good('deadline-unavailable',networkEvidence('unavailable')),

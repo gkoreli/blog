@@ -1,7 +1,7 @@
 import type { DeviceType, TrafficClass } from './contracts.js';
 
 /**
- * Named rule catalogue (reviewed 2026-09-03).
+ * Named rule catalogue (initial review 2026-09-03; Meta-ExternalAds added 2026-10-29).
  *
  * These are exact lexical User-Agent product claims, not verified identities.
  * All canonical candidates and matched product aliases are retained; multiple
@@ -20,6 +20,7 @@ import type { DeviceType, TrafficClass } from './contracts.js';
  *   https://docs.perplexity.ai/guides/bots
  * - Meta — Meta-ExternalAgent, Meta-ExternalFetcher, Meta-WebIndexer, FacebookBot:
  *   https://developers.facebook.com/docs/sharing/webmasters/web-crawlers/
+ *   Meta-ExternalAds: advertising/business crawling, not an AI training role.
  * - Mistral — MistralAI-User, MistralAI-Index, MistralAI-Training:
  *   https://docs.mistral.ai/robots
  * - Amazon — Amazonbot, Amzn-User, Amzn-SearchBot:
@@ -91,6 +92,7 @@ const AI_RULES = [
 ] as const satisfies readonly AgentRule[];
 
 const BOT_RULES = [
+  { name: 'Meta-ExternalAds', products: ['Meta-ExternalAds'] },
   { name: 'AhrefsSiteAudit', products: ['AhrefsSiteAudit'] },
   { name: 'AhrefsBot', products: ['AhrefsBot'] },
   { name: 'OAI-AdsBot', products: ['OAI-AdsBot'] },

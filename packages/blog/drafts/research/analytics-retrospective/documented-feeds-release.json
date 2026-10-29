@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-10-29T02:41:14.241355+00:00",
+  "sourceBaseline": "c379c79",
+  "sourceCommit": null,
+  "publication": "pending",
+  "collectionVersion": "2026-10-29.2",
+  "classifierVersion": "2026-10-29.1",
+  "verifierProfile": "2026-10-29.1",
+  "vendorIpProfile": "2026-10-29.1",
+  "reportCacheVersion": "2026-10-29.2",
+  "schemaChanged": false,
+  "runtimeDependenciesChanged": false,
+  "historyReclassified": false,
+  "optionalCaptureActivated": false,
+  "checks": {
+    "analyticsTests": 265,
+    "siteTests": 117,
+    "workspaceTypes": "pass",
+    "targetedDocumentTests": 3,
+    "nativeIpControls": 36,
+    "nativeConcurrentSources": 5,
+    "nativeCollectorControls": 14,
+    "nativeReportIncludedRows": 13,
+    "postValidation": "pass, 21 Markdown posts",
+    "isolatedBuild": "pass, 32 posts; shared dist untouched"
+  },
+  "article": {
+    "bodyWhitespaceWords": 1347,
+    "prompts": 31,
+    "freshServedCheck": false,
+    "checkedBuildMarkdownSha256": "a7158a02bba1fd4696a20b083cdded2b354e7b99bfdc13680c31014a236c12a3"
+  },
+  "productionDataStatements": 0,
+  "productionOwnSiteGets": 0,
+  "newHumanLabels": 0,
+  "privateArchive": {
+    "name": "2026-10-29-documented-feeds-native",
+    "files": 51,
+    "manifestSha256": "35d42f69548bf17f61a0d3f5311b67c2cedbdcc5a335253218aa68362a60b7f5",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false,
+    "modes": "0700/0600"
+  },
+  "liveAcceptance": "planned separately: two labelled non-human integration GETs, one two-reference SELECT, optional raw capture off",
+  "nextBoundedAction": "Accept publication and scoped production controls; preserve unavailable/native/human/history limits, then extend receipt visibility to published-address assessments without rewriting old receipts.",
+  "livePlanVersion": 2,
+  "livePlanSha256": "2e548d0fff877b021ae9c94dac1deee875bee593fce74fb6c0d22bb55a6c3dca",
+  "sourceSha256": {
+    "packages/analytics/src/vendor-ip-document.ts": "2533543462a96e0975d53fae65a90dafdd9673102514c64d856d867f72045951",
+    "packages/analytics/src/vendor-ip.ts": "eb2c9bb7a291d8d64075382a356edd67fb5069bcad37da7b2fe95eb6e46b71b6",
+    "packages/analytics/src/vendor-ip-sources.ts": "5d3aac97ee42c0b294de9e6508c3528d62d80c5aeed7cb0410e0b842e1e344d9",
+    "packages/analytics/src/vendor-network-summary.ts": "461256753b4085fbdd1e7fe16ae33a1329e0d4fb0eddecec85c6b8940761d9ea",
+    "packages/analytics/src/classify.ts": "cfa564fb095db1d5545e72baa1961ea627da4b24e540216969ae3e2c742ceb77",
+    "packages/analytics/src/versions.ts": "bffab67aadf32c182ffb6afb19516cf88e3ca53f8855b7731b56e8db1b54723c",
+    "packages/blog/src/worker/stats-cache.ts": "843c80b4f92448165333b29113d13bf523f5314ba6bcf7ef4f3b8379d0bfe15b",
+    "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "2936fb16691e3c1b0e666a2d8209ed8cbdd2a7c361cad24be6017d659e4524d4",
+    "packages/blog/scripts/check-expanded-vendor-methods.mjs": "53e14e0f99105f926d35fd0dbb9b880b4add42bd54fbf8c9f2df6fc4980024aa"
+  }
+}

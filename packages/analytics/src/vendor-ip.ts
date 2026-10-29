@@ -2,12 +2,13 @@ import { feedEntityTag, feedLastModified, matchingFeedValidation } from './vendo
 import ipaddr from 'ipaddr.js';
 import type { KnownAgentName } from './classify.js';
 import { VENDOR_IP_SOURCES, type VendorIpSource, type VendorIpSourceId } from './vendor-ip-sources.js';
+import { decodeVendorIpDocument, VENDOR_IP_MAX_PREFIXES } from './vendor-ip-document.js';
+export { VENDOR_IP_MAX_PREFIXES } from './vendor-ip-document.js';
 
-export const VENDOR_IP_PROFILE = '2026-10-28.2';
+export const VENDOR_IP_PROFILE = '2026-10-29.1';
 export const VENDOR_IP_FETCH_DEADLINE_MS = 1500;
 export const VENDOR_IP_MAX_REQUEST_SOURCES = 4;
 export const VENDOR_IP_MAX_BODY_BYTES = 262144;
-export const VENDOR_IP_MAX_PREFIXES = 4096;
 const REFRESH_COOLDOWN_MS = 30000;
 const DEFAULT_TTL_SECONDS = 300;
 const MAX_TTL_SECONDS = 3600;
@@ -140,7 +141,7 @@ async function fetchFeed(source: VendorIpSource, cache: VendorIpCache, fetcher: 
   const controller = new AbortController(); let timer: ReturnType<typeof setTimeout> | undefined;
   const work = (async (): Promise<FeedResult> => {
     try {
-      const headers = new Headers({ Accept: 'application/json' });
+      const headers = new Headers({ Accept: 'format' in source ? 'text/html' : 'application/json' });
       if (old?.etag) headers.set('If-None-Match', old.etag);
       if (old?.modified) headers.set('If-Modified-Since', old.modified);
       const response = await fetcher(source.url, { headers, redirect: 'manual', signal: controller.signal });
@@ -160,8 +161,7 @@ async function fetchFeed(source: VendorIpSource, cache: VendorIpCache, fetcher: 
       const media = (response.headers.get('Content-Type') ?? '').split(';')[0].trim().toLowerCase();
       if (!source.mediaTypes.some(type => type === media)) { await response.body?.cancel(); return { reason: 'media-type' }; }
       const bytes = await bodyBytes(response); if (bytes === null) return { reason: 'body-limit' };
-      let parsed: unknown;
-      try { parsed = JSON.parse(new TextDecoder('utf-8', { fatal: true, ignoreBOM: false }).decode(bytes)); } catch { return { reason: 'invalid-feed' }; }
+      const parsed = await decodeVendorIpDocument(source, bytes);
       const parsedFeed = parseVendorIpFeed(parsed); if (parsedFeed === null) return { reason: 'invalid-feed' };
       const sha256 = [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))].map(b => b.toString(16).padStart(2, '0')).join('');
       const feed: Feed = { snapshot: { sha256, fetchedAt: new Date(now).toISOString(), validatedAt: new Date(now).toISOString(), freshUntil: new Date(policy.until).toISOString(), publisherVersion: parsedFeed.publisherVersion, prefixCount: parsedFeed.prefixes.length }, prefixes: parsedFeed.prefixes, etag: feedEntityTag(response), modified: feedLastModified(response), cacheControl: policy.cacheControl, expires: policy.expires };

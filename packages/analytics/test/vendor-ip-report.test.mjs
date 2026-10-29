@@ -44,7 +44,7 @@ test('network record consistency rejects unsupported claims without losing the o
  const r=await queryStats(db,{range:'7d',traffic:'all'},new Date('2026-10-28T05:00:00Z'));
  assert.equal(r.totals.views,networkSummaryCases.length);assert.equal(r.vendorNetwork.recognizedViews,networkSummaryCases.filter(c=>c.recognized).length);
  assert.equal(r.vendorNetwork.unrecognizedViews,networkSummaryCases.filter(c=>c.e!==null&&!c.recognized).length);
- assert.equal(r.vendorNetwork.listedViews,5);assert.equal(r.vendorNetwork.notRecordedViews,1);
+ assert.equal(r.vendorNetwork.listedViews,10);assert.equal(r.vendorNetwork.notRecordedViews,1);
  assert.ok(consistentVendorNetworkSummary(r.vendorNetwork,r.totals.views));assert.ok(!JSON.stringify(r).includes('private-canary'));
  const good=r.vendorNetwork;
  for(const patch of [{recognizedViews:good.recognizedViews+1},{unrecognizedViews:NaN},{listedViews:100},{addressUnavailableViews:good.unavailableViews+1},{notRecordedViews:undefined},{configuredDeclarationViews:0}])assert.equal(consistentVendorNetworkSummary({...good,...patch},r.totals.views),false);

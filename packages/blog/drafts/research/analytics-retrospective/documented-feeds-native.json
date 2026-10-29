@@ -1,0 +1,441 @@
+{
+  "checkedAt": "2026-10-29T02:38:41.293Z",
+  "baseline": "c379c79",
+  "method": "Actual local workerd/HTMLRewriter/collector/D1 with captured public bodies and in-process fetch interception; supplied edge metadata is not provider detection",
+  "beforeConfigured": 0,
+  "afterConfigured": 5,
+  "feedPrefixCounts": {
+    "applebot": 24,
+    "bingbot": 28,
+    "amazonbot": 1292,
+    "amazon-search": 816,
+    "amazon-user": 1023
+  },
+  "feedSha256": {
+    "applebot": "5a5e12188891d998341f4fb50d2b31c80aba5002f5cff9d0fa110c13e4e2edd0",
+    "bingbot": "a2d1cf229544205a24c61fb7c459408b1afe18f9fd5b172fe181f0eb73c1594d",
+    "amazonbot": "77d04166b7b30a11204c90a4ca328dcba944fd91697d7ccd1d5c4ab74d3f9425",
+    "amazon-search": "b9375fddced7170e30f8d52efce3797198de8e30b22e921834a6b01871a6331a",
+    "amazon-user": "695299f4b667a153f238d9fe984848fd3804f4f5c3c138b4967d86a7c9561eed"
+  },
+  "ipControls": [
+    {
+      "source": "applebot",
+      "mode": "normal",
+      "outcome": "listed",
+      "reason": null,
+      "prefixCount": 24
+    },
+    {
+      "source": "applebot",
+      "mode": "not-listed",
+      "outcome": "not-listed",
+      "reason": null,
+      "prefixCount": 24
+    },
+    {
+      "source": "applebot",
+      "mode": "http-error",
+      "outcome": "unavailable",
+      "reason": "http-status",
+      "prefixCount": null
+    },
+    {
+      "source": "applebot",
+      "mode": "relay",
+      "outcome": "unavailable",
+      "reason": "address-unavailable",
+      "prefixCount": null
+    },
+    {
+      "source": "applebot",
+      "mode": "malformed",
+      "outcome": "unavailable",
+      "reason": "invalid-feed",
+      "prefixCount": null
+    },
+    {
+      "source": "applebot",
+      "mode": "chunked",
+      "outcome": "listed",
+      "reason": null,
+      "prefixCount": 24
+    },
+    {
+      "source": "bingbot",
+      "mode": "normal",
+      "outcome": "listed",
+      "reason": null,
+      "prefixCount": 28
+    },
+    {
+      "source": "bingbot",
+      "mode": "not-listed",
+      "outcome": "not-listed",
+      "reason": null,
+      "prefixCount": 28
+    },
+    {
+      "source": "bingbot",
+      "mode": "http-error",
+      "outcome": "unavailable",
+      "reason": "http-status",
+      "prefixCount": null
+    },
+    {
+      "source": "bingbot",
+      "mode": "relay",
+      "outcome": "unavailable",
+      "reason": "address-unavailable",
+      "prefixCount": null
+    },
+    {
+      "source": "bingbot",
+      "mode": "malformed",
+      "outcome": "unavailable",
+      "reason": "invalid-feed",
+      "prefixCount": null
+    },
+    {
+      "source": "bingbot",
+      "mode": "chunked",
+      "outcome": "listed",
+      "reason": null,
+      "prefixCount": 28
+    },
+    {
+      "source": "amazonbot",
+      "mode": "normal",
+      "outcome": "listed",
+      "reason": null,
+      "prefixCount": 1292
+    },
+    {
+      "source": "amazonbot",
+      "mode": "not-listed",
+      "outcome": "not-listed",
+      "reason": null,
+      "prefixCount": 1292
+    },
+    {
+      "source": "amazonbot",
+      "mode": "http-error",
+      "outcome": "unavailable",
+      "reason": "http-status",
+      "prefixCount": null
+    },
+    {
+      "source": "amazonbot",
+      "mode": "relay",
+      "outcome": "unavailable",
+      "reason": "address-unavailable",
+      "prefixCount": null
+    },
+    {
+      "source": "amazonbot",
+      "mode": "malformed",
+      "outcome": "unavailable",
+      "reason": "invalid-feed",
+      "prefixCount": null
+    },
+    {
+      "source": "amazonbot",
+      "mode": "chunked",
+      "outcome": "listed",
+      "reason": null,
+      "prefixCount": 1292
+    },
+    {
+      "source": "amazon-search",
+      "mode": "normal",
+      "outcome": "listed",
+      "reason": null,
+      "prefixCount": 816
+    },
+    {
+      "source": "amazon-search",
+      "mode": "not-listed",
+      "outcome": "not-listed",
+      "reason": null,
+      "prefixCount": 816
+    },
+    {
+      "source": "amazon-search",
+      "mode": "http-error",
+      "outcome": "unavailable",
+      "reason": "http-status",
+      "prefixCount": null
+    },
+    {
+      "source": "amazon-search",
+      "mode": "relay",
+      "outcome": "unavailable",
+      "reason": "address-unavailable",
+      "prefixCount": null
+    },
+    {
+      "source": "amazon-search",
+      "mode": "malformed",
+      "outcome": "unavailable",
+      "reason": "invalid-feed",
+      "prefixCount": null
+    },
+    {
+      "source": "amazon-search",
+      "mode": "chunked",
+      "outcome": "listed",
+      "reason": null,
+      "prefixCount": 816
+    },
+    {
+      "source": "amazon-user",
+      "mode": "normal",
+      "outcome": "listed",
+      "reason": null,
+      "prefixCount": 1023
+    },
+    {
+      "source": "amazon-user",
+      "mode": "not-listed",
+      "outcome": "not-listed",
+      "reason": null,
+      "prefixCount": 1023
+    },
+    {
+      "source": "amazon-user",
+      "mode": "http-error",
+      "outcome": "unavailable",
+      "reason": "http-status",
+      "prefixCount": null
+    },
+    {
+      "source": "amazon-user",
+      "mode": "relay",
+      "outcome": "unavailable",
+      "reason": "address-unavailable",
+      "prefixCount": null
+    },
+    {
+      "source": "amazon-user",
+      "mode": "malformed",
+      "outcome": "unavailable",
+      "reason": "invalid-feed",
+      "prefixCount": null
+    },
+    {
+      "source": "amazon-user",
+      "mode": "chunked",
+      "outcome": "listed",
+      "reason": null,
+      "prefixCount": 1023
+    },
+    {
+      "source": "amazonbot",
+      "mode": "missing-block",
+      "outcome": "unavailable",
+      "reason": "invalid-feed",
+      "prefixCount": null
+    },
+    {
+      "source": "amazonbot",
+      "mode": "multiple-blocks",
+      "outcome": "unavailable",
+      "reason": "invalid-feed",
+      "prefixCount": null
+    },
+    {
+      "source": "amazonbot",
+      "mode": "unclosed-block",
+      "outcome": "unavailable",
+      "reason": "invalid-feed",
+      "prefixCount": null
+    },
+    {
+      "source": "amazonbot",
+      "mode": "oversize",
+      "outcome": "unavailable",
+      "reason": "body-limit",
+      "prefixCount": null
+    },
+    {
+      "source": "amazonbot",
+      "mode": "wrong-media",
+      "outcome": "unavailable",
+      "reason": "media-type",
+      "prefixCount": null
+    },
+    {
+      "source": "amazonbot",
+      "mode": "no-store-repeat",
+      "outcome": "not-assessed",
+      "reason": "refresh-cooldown",
+      "prefixCount": null
+    }
+  ],
+  "concurrentMixedDeclarations": {
+    "configured": 5,
+    "fetches": 4,
+    "skipped": 1,
+    "kind": "unresolved"
+  },
+  "oldMetaAdsCandidateCount": 0,
+  "newMetaAdsCandidate": "Meta-ExternalAds",
+  "collectorControls": 14,
+  "collector": [
+    {
+      "source": "applebot",
+      "mode": "normal",
+      "storedKind": "ai-search",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    },
+    {
+      "source": "applebot",
+      "mode": "not-listed",
+      "storedKind": "ai-search",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    },
+    {
+      "source": "bingbot",
+      "mode": "normal",
+      "storedKind": "search-crawler",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    },
+    {
+      "source": "bingbot",
+      "mode": "not-listed",
+      "storedKind": "search-crawler",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    },
+    {
+      "source": "amazonbot",
+      "mode": "normal",
+      "storedKind": "ai-crawler",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    },
+    {
+      "source": "amazonbot",
+      "mode": "not-listed",
+      "storedKind": "ai-crawler",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    },
+    {
+      "source": "amazon-search",
+      "mode": "normal",
+      "storedKind": "ai-search",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    },
+    {
+      "source": "amazon-search",
+      "mode": "not-listed",
+      "storedKind": "ai-search",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    },
+    {
+      "source": "amazon-user",
+      "mode": "normal",
+      "storedKind": "ai-assistant",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    },
+    {
+      "source": "amazon-user",
+      "mode": "not-listed",
+      "storedKind": "ai-assistant",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    },
+    {
+      "source": "amazonbot",
+      "mode": "owner",
+      "storedKind": "ai-crawler",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    },
+    {
+      "source": "amazonbot",
+      "mode": "referral",
+      "storedKind": "ai-crawler",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    },
+    {
+      "source": "Meta-ExternalAds",
+      "mode": "ads",
+      "storedKind": "other-bot",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    },
+    {
+      "source": "multiple",
+      "mode": "mixed",
+      "storedKind": "unresolved",
+      "storedProfile": "2026-10-29.1",
+      "storedReceiptReferenceMatched": true,
+      "networkAssessmentReadBack": true,
+      "networkAssessmentInReceipt": false
+    }
+  ],
+  "report": {
+    "total": 13,
+    "network": {
+      "recognizedViews": 13,
+      "unrecognizedViews": 0,
+      "recordedViews": 13,
+      "notRecordedViews": 0,
+      "configuredDeclarationViews": 11,
+      "unmappedDeclarationViews": 2,
+      "noDeclarationViews": 0,
+      "listedViews": 6,
+      "notListedViews": 6,
+      "unavailableViews": 0,
+      "notAssessedViews": 1,
+      "addressUnavailableViews": 0
+    }
+  },
+  "exactReferenceQuery": {
+    "sha256": "df102e7eb6e2618e72e23c5aba1fd582b66d0e5a3be5345acdf5ce95d574ccc4",
+    "neighboringIdsAboveSafeInteger": true,
+    "primaryKeyPlan": true,
+    "reads": 4,
+    "writes": 0
+  },
+  "historicalPayloadUnchanged": true,
+  "rawRequestEvidenceAbsent": true,
+  "nativeBooleansUnavailable": true,
+  "externalRequests": 0,
+  "productionRequests": 0
+}

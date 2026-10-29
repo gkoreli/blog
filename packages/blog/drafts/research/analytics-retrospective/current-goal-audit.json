@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-10-29T02:20:45.291336+00:00",
-  "sourceBaseline": "f06e78c4caf74f9339abc55f0bf92798ecddb627",
+  "checkedAt": "2026-10-29T02:44:50.024826+00:00",
+  "sourceBaseline": "c379c79",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
   "staticCatalogue": {
-    "recognizedDeclarations": 48,
-    "ipFeedSources": 10,
-    "declarationsWithConfiguredIpMethod": 11,
+    "recognizedDeclarations": 49,
+    "ipFeedSources": 15,
+    "declarationsWithConfiguredIpMethod": 16,
     "documentedSigningOrigins": 2,
     "declarationsWithDocumentedSigningMethod": 3,
-    "declarationsWithAnyConfiguredPerDeclarationMethod": 13,
-    "declarationsWithoutConfiguredPerDeclarationMethod": 35,
+    "declarationsWithAnyConfiguredPerDeclarationMethod": 18,
+    "declarationsWithoutConfiguredPerDeclarationMethod": 31,
     "reviewedDirectoryOrigins": 3,
     "declarationsWithReviewedDirectoryPublisher": 5,
     "publicDisplayApprovals": 4
@@ -45,20 +45,20 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Research documented verification methods for the 55 named included records without either configured method, starting with Meta-WebIndexer. Preserve partial vendor rollout, unsigned roles and human/native ground-truth limits. Human trials remain deferred.",
+  "nextBoundedAction": "Accept documented-feed activation and two scoped synthetic integration controls; then add versioned published-address receipt visibility. Human trials remain deferred.",
   "article": {
-    "bodyWhitespaceWords": 1328,
+    "bodyWhitespaceWords": 1347,
     "prompts": 31,
-    "sourceSha256": "3e382c9f3b5935e5b3e67f5c77db4bf6f2d33b6e123de7a23910d6beda2e32ca",
+    "sourceSha256": "2936fb16691e3c1b0e666a2d8209ed8cbdd2a7c361cad24be6017d659e4524d4",
     "unchanged": false,
-    "freshServedCheck": true,
-    "publicationReceipt": "client-methods-release.json"
+    "freshServedCheck": false,
+    "publicationReceipt": "documented-feeds-release.json"
   },
   "runtimeUnchanged": false,
-  "productionStatements": 1,
+  "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": true,
+  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -87,7 +87,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; not re-inspected in the retained-data/publication slice"
   },
-  "productionOwnSiteGets": 1,
+  "productionOwnSiteGets": 0,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -138,5 +138,19 @@
     "activationReceipt": "client-methods-release.json",
     "productionActivationAccepted": true,
     "optionalCaptureBindingsAbsent": true
+  },
+  "documentedFeeds": {
+    "receipt": "documented-feeds-native.json",
+    "sourceReceipt": "documented-feeds-sources.json",
+    "newSources": 5,
+    "localAccepted": true,
+    "productionActivation": "pending",
+    "ipControls": 36,
+    "concurrentMixedSources": 5,
+    "collectorControls": 14,
+    "historicalPayloadUnchanged": true,
+    "newMetaAdsClaim": "other-bot",
+    "MetaWebIndexerMethod": "not configured; checked primary page supplies no per-client method",
+    "nativeOrHumanAccuracyMeasured": false
   }
 }

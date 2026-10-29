@@ -57,9 +57,11 @@ The repair separates declared roles from [signing evidence](https://github.com/g
 
 One Meta-WebIndexer claim failed during key discovery. [Local controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/65-client-methods-and-directory-failures.md#directory-failures-were-collapsed) showed that several directory failures shared one reason; a synchronous fetch error could also leave a failed lookup cached. We now preserve distinct causes and clear completed lookups. The historical cause remains unknown.
 
+Documented IP lists now cover Applebot, Bingbot and three Amazon clients. Their [source-specific parsers](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/66-documented-feed-adapters-and-meta-ads.md) reject ambiguous markup; list membership still does not authenticate a human.
+
 ## Preserve uncertainty in the data
 
-Requests retain declarations and missing-network states; conflicts enter Unresolved. [R1 replay](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/22-client-form-and-calibration.md) yields **355 desktop defaults**: 181 non-mobile preferences and 174 requests without form markers. Neither authenticates desktop hardware. A hosting-list nonmatch likewise establishes no residential source.
+Conflicts enter Unresolved. [R1 replay](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/22-client-form-and-calibration.md) yields **355 desktop defaults**: 181 non-mobile preferences and 174 requests without form markers. Neither authenticates desktop hardware. A hosting-list nonmatch likewise establishes no residential source.
 
 D1 discarded User-Agent after classification, so that table alone cannot replay the Exa/Ahrefs gap. Provider logs retained some inputs; complete historical recovery remains unproven. [Plausible](https://plausible.io/data-policy) keeps parsed software facts; [the IETF](https://www.ietf.org/policies/web-analytics/) keeps raw visitor data for five days and aggregates for twelve months. I’ve prepared an expiring diagnostic store; collection remains off pending privacy decisions. Filtering arbitrary text cannot guarantee the absence of personal information.
 

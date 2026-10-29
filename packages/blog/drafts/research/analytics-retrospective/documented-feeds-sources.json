@@ -1,0 +1,123 @@
+{
+  "checkedAt": "2026-10-29T02:41:14.241355+00:00",
+  "baseline": "c379c79",
+  "primaryDocumentation": [
+    {
+      "url": "https://developers.facebook.com/documentation/sharing/webmasters/web-crawlers",
+      "displayedUpdated": "2026-05-21",
+      "access": "Native browser after web-reader 429; no login",
+      "scope": "Meta-WebIndexer role supplied, no per-client verification method on this checked page; Meta-ExternalAds documented advertising/business purpose",
+      "privateCaptureSha256": "843ae323e2224ed1433382de29bacd2e709a5f1575561efe340fc91937e204cf"
+    },
+    {
+      "url": "https://developer.amazon.com/amazonbot",
+      "scope": "Three distinct client roles and three separately linked published address lists"
+    },
+    {
+      "url": "https://support.apple.com/en-sg/119829",
+      "scope": "Applebot CIDR method and distinction from non-crawling Applebot-Extended; US page returned web-reader 429"
+    },
+    {
+      "url": "https://blogs.bing.com/webmaster/2022/5/SEO-best-practice-for-subscription-based-and-paywall-content/",
+      "published": "2022-05-02",
+      "scope": "Links current Bingbot feed and recommends daily review"
+    },
+    {
+      "url": "https://blogs.bing.com/webmaster/2012/8/How-to-Verify-that-Bingbot-is-Bingbot/",
+      "published": "2012-08-31",
+      "scope": "Historical statement that Bing publishes no list is superseded by later linked-feed guidance"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#text-chunks",
+      "scope": "Native parser handlers, chunk concatenation and response consumption; no guarantee of one callback per text node"
+    }
+  ],
+  "formats": {
+    "checkedAt": "2026-10-29T02:25:01.201559+00:00",
+    "records": [
+      {
+        "name": "amazonbot",
+        "prefixes": 1292,
+        "entryKeys": [
+          {
+            "keys": [
+              "ipv4Prefix"
+            ],
+            "count": 1292
+          }
+        ],
+        "creationTime": "2026-09-08T05:24:10.610952+00:00"
+      },
+      {
+        "name": "amazon-search",
+        "prefixes": 816,
+        "entryKeys": [
+          {
+            "keys": [
+              "ip_prefix"
+            ],
+            "count": 816
+          }
+        ],
+        "creationTime": "2026-09-08T05:24:10.610952+00:00"
+      },
+      {
+        "name": "amazon-user",
+        "prefixes": 1023,
+        "entryKeys": [
+          {
+            "keys": [
+              "ipv4Prefix"
+            ],
+            "count": 1023
+          }
+        ],
+        "creationTime": "2025-11-04T15:57:38.092840+00:00"
+      },
+      {
+        "name": "applebot",
+        "url": "https://search.developer.apple.com/applebot.json",
+        "status": 200,
+        "contentType": "application/json",
+        "bytes": 1640,
+        "sha256": "5a5e12188891d998341f4fb50d2b31c80aba5002f5cff9d0fa110c13e4e2edd0",
+        "prefixes": 24
+      },
+      {
+        "name": "bingbot",
+        "url": "https://www.bing.com/toolbox/bingbot.json",
+        "status": 200,
+        "contentType": "application/json",
+        "bytes": 1580,
+        "sha256": "a2d1cf229544205a24c61fb7c459408b1afe18f9fd5b172fe181f0eb73c1594d",
+        "prefixes": 28
+      }
+    ]
+  },
+  "runtime": {
+    "checkedAt": "2026-10-29T02:35:53.498Z",
+    "node": "v24.14.1",
+    "wrangler": "4.71.0",
+    "miniflare": "4.20260301.1",
+    "ipaddrSourceSha256": "52bcb70a2b313469c52a511ab405a4bd73599e36581d6075bbefdb2cfc4b80d8",
+    "ipaddrVersion": "2.5.0",
+    "nativeApiDocumentation": "https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#text-chunks"
+  },
+  "libraryInspection": "Installed ipaddr.js 2.5.0 source checked: IPv4.match rejects family mismatch; isValidFourPartDecimal enforces four decimal components. Shared strict grammar, range checks and host-bit rejection remain unchanged.",
+  "transportLimits": {
+    "bodyBytes": 262144,
+    "prefixEntries": 4096,
+    "requestSources": 4,
+    "deadlineMs": 1500,
+    "sourceUrlsDerivedFromReaderInput": false,
+    "readerHeadersForwarded": false
+  },
+  "catalogue": {
+    "recognizedDeclarations": 49,
+    "ipFeedSources": 15,
+    "ipMappedDeclarations": 16,
+    "signingMappedDeclarations": 3,
+    "unionWithConfiguredMethod": 18,
+    "withoutEitherMethod": 31
+  }
+}

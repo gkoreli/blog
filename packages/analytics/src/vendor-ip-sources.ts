@@ -16,6 +16,12 @@ export const VENDOR_IP_SOURCES = [
   // These per-client methods do not extend to DuckAssistBot or Gemini Notebook.
   { id: 'duckduckbot', vendor: 'DuckDuckGo', declarations: ['DuckDuckBot'], url: 'https://duckduckgo.com/duckduckbot.json', documentation: 'https://duckduckgo.com/duckduckgo-help-pages/results/duckduckbot', mediaTypes: ['application/json'] },
   { id: 'google-agent', vendor: 'Google', declarations: ['Google-Agent'], url: 'https://developers.google.com/static/crawling/ipranges/user-triggered-agents.json', documentation: 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers#google-agent', mediaTypes: ['application/json'] },
+  { id: 'applebot', vendor: 'Apple', declarations: ['Applebot'], url: 'https://search.developer.apple.com/applebot.json', documentation: 'https://support.apple.com/en-us/119829', mediaTypes: ['application/json'] },
+  { id: 'bingbot', vendor: 'Microsoft', declarations: ['Bingbot'], url: 'https://www.bing.com/toolbox/bingbot.json', documentation: 'https://blogs.bing.com/webmaster/2022/5/SEO-best-practice-for-subscription-based-and-paywall-content/', mediaTypes: ['application/json'] },
+  // Three client-specific lists published as HTML code blocks, not AWS ranges.
+  { id: 'amazonbot', vendor: 'Amazon', declarations: ['Amazonbot'], url: 'https://developer.amazon.com/amazonbot/ip-addresses/', documentation: 'https://developer.amazon.com/amazonbot', mediaTypes: ['text/html'], format: 'amazon-hosts-html' },
+  { id: 'amazon-search', vendor: 'Amazon', declarations: ['Amzn-SearchBot'], url: 'https://developer.amazon.com/amazonbot/searchbot-ip-addresses/', documentation: 'https://developer.amazon.com/amazonbot', mediaTypes: ['text/html'], format: 'amazon-prefixes-html' },
+  { id: 'amazon-user', vendor: 'Amazon', declarations: ['Amzn-User'], url: 'https://developer.amazon.com/amazonbot/live-ip-addresses/', documentation: 'https://developer.amazon.com/amazonbot', mediaTypes: ['text/html'], format: 'amazon-hosts-html' },
 ] as const;
 export type VendorIpSource = typeof VENDOR_IP_SOURCES[number];
 export type VendorIpSourceId = VendorIpSource['id'];

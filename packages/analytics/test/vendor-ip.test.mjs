@@ -40,7 +40,7 @@ test('IPv4, IPv6, mapped IPv4 and pseudo-IPv4 original IPv6 use family-correct C
 test('source selection deduplicates shared feeds, bounds fanout and retains unmapped declarations', async () => {
   const names=VENDOR_IP_SOURCES.flatMap(s=>s.declarations);let fetches=0;
   const e=await verifyVendorIp(request(),[...names,'ExaUser'],options(async()=>{fetches++;return feed()}));
-  assert.equal(fetches,4);assert.equal(e.checks.length,10);assert.equal(e.configuredDeclarationCount,11);assert.equal(e.unmappedDeclarationCount,1);assert.equal(e.checks.filter(c=>c.reason==='request-budget').length,6);assert.ok(Buffer.byteLength(JSON.stringify(e))<=4096);
+  assert.equal(fetches,4);assert.equal(e.checks.length,15);assert.equal(e.configuredDeclarationCount,16);assert.equal(e.unmappedDeclarationCount,1);assert.equal(e.checks.filter(c=>c.reason==='request-budget').length,11);assert.ok(Buffer.byteLength(JSON.stringify(e))<=4096);
   const single=await verifyVendorIp(request(),['AhrefsBot','AhrefsSiteAudit'],options(async()=>feed()));assert.equal(single.checks.length,1);assert.equal(single.configuredDeclarationCount,2);
   const none=await verifyVendorIp(request(),[],options(async()=>{throw new Error('must not fetch')}));assert.equal(none.checks.length,0);assert.equal(none.declarationCount,0);
 });
@@ -56,7 +56,7 @@ test('DuckDuckBot and Google-Agent methods use dedicated fixed feeds without exp
         assert.equal(actual, url); assert.equal(init.redirect, 'manual');
         assert.equal(init.headers.has('CF-Connecting-IP'), false); calls++; return feed();
       }));
-      assert.equal(calls, 1); assert.equal(evidence.profile, '2026-10-28.2');
+      assert.equal(calls, 1); assert.equal(evidence.profile, '2026-10-29.1');
       assert.equal(evidence.configuredDeclarationCount, 1); assert.equal(evidence.checks[0].source, source);
       assert.equal(evidence.checks[0].outcome, outcome);
     }
