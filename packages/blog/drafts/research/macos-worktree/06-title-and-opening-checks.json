@@ -15,5 +15,82 @@
     "../../../prompts/why-worktree-setup-is-slow-on-macos.prompts.md": "4af74547b4531d6a2d70c8ee80d54e0e2fb59abe2babeb571757d6e8a097c646"
   },
   "previousSourceCommit": "3101211ff4cc90a1d89793ef46e98dcd74d15a37",
-  "previousReceiptInterpretation": "v4 manifest and first-publication receipt describe that original revision, not subsequently revised article or prompt bytes."
+  "previousReceiptInterpretation": "v4 manifest and first-publication receipt describe that original revision, not subsequently revised article or prompt bytes.",
+  "liveAcceptance": {
+    "checkedAtUtc": "2026-10-29T15:05:09.828000+00:00",
+    "sourceCommit": "b8888fd10d374bfff6468c05314265b8ea8ef214",
+    "url": "https://gkoreli.com/why-worktree-setup-is-slow-on-macos",
+    "checks": {
+      "article": {
+        "status": 200,
+        "contentType": "text/html",
+        "sha256": "0b191bee236725a156d4046090927a241274c7ceddf15d65e43d21f530150e5a",
+        "bytes": 21102
+      },
+      "prompts": {
+        "status": 200,
+        "contentType": "text/html",
+        "sha256": "77e4db7a36dbd0c5d85b6c323ca97f61c57c237801f91841dd2dad6ff7b0ff8f",
+        "bytes": 10170
+      },
+      "markdown": {
+        "status": 200,
+        "contentType": "text/markdown; charset=utf-8",
+        "sha256": "449f8b7764e6f3ae02c3c42b692bda174a3953091df17cb58cbf93a494fc7dd7",
+        "bytes": 8101
+      },
+      "negotiated": {
+        "status": 200,
+        "contentType": "text/markdown; charset=utf-8",
+        "sha256": "449f8b7764e6f3ae02c3c42b692bda174a3953091df17cb58cbf93a494fc7dd7",
+        "bytes": 8101
+      },
+      "index": {
+        "status": 200,
+        "contentType": "application/json",
+        "sha256": "f3ea70b760d1a5cf3ff2f746fbbd9f3410fd49f6e2c9457f5f2a3fd97d466ab1",
+        "bytes": 25668
+      },
+      "feed": {
+        "status": 200,
+        "contentType": "application/xml",
+        "sha256": "ee54171a2973e8cbd295e9b4f65c0b0ab7b6134e54f4c9065677c9599c1aa5a6",
+        "bytes": 16545
+      },
+      "sitemap": {
+        "status": 200,
+        "contentType": "application/xml",
+        "sha256": "ff61dc9c8acdf4d4d2dee10f247cd41c8284504c43bb85500bb6709f1a5db71b",
+        "bytes": 6136
+      }
+    },
+    "articleDate": "2026-10-28",
+    "oneH1": true,
+    "promptCount": 7
+  },
+  "releaseBuildHtmlSha256": "eefa2069df943a5d6f2b0a2694c5cdff321665305f3edac8164bc705ddaa5720",
+  "servedBuildEquality": {
+    "exact": [
+      "markdown"
+    ],
+    "afterRemovingOneInjectedCloudflareInsightsScript": [
+      "article",
+      "prompts"
+    ]
+  },
+  "deployment": {
+    "id": "6427addb-9e55-4f63-8b55-5933593b4298",
+    "created_on": "2026-10-29T15:04:25.115536Z",
+    "versions": [
+      {
+        "version_id": "5927b920-b90b-40d0-b4b3-f697cdf4442c",
+        "percentage": 100
+      }
+    ],
+    "annotations": {
+      "workers/message": "b8888fd: lead worktree article with the faster Linux VM result",
+      "workers/triggered_by": "deployment"
+    }
+  },
+  "delivery": "Direct Wrangler deployment of exact source b8888fd after no automatic build/check appeared. Rebuilt with UTC and the existing public TURNSTILE_SITE_KEY observed in Cloudflare build settings; no configuration changes were made."
 }
