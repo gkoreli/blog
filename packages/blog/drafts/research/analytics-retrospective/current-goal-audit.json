@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-29T22:46:01.870627+00:00",
-  "sourceBaseline": "4470e98",
+  "checkedAt": "2026-10-29T22:55:54.904849+00:00",
+  "sourceBaseline": "75bb999fe0fcb25b81dc926a232a2dad9b28e906",
   "goalAchieved": false,
   "previousTurn": "progress",
-  "scope": "Research97publication accepted from native source/build/log/CLI and saved configured HTML; Research98discovers and locally repairs a newsletter rendering failure that weakens conversion interpretation.",
+  "scope": "Research97prompt provenance accepted; Research98public-key rendering repair deployed and accepted for key delivery/handler initialization. Full signup and original analytics requirements retained.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Deliver checked rendering repair, accept exact source/build/Worker allocation and excluded rendered-key/browser DOM. Do not equate it with email delivery; original classification/readership goals remain open.",
+  "nextBoundedAction": "Native-test and freeze a bounded aggregate of retained subscription configuration-error reports, without identifiers or arbitrary messages; keep errors, attempts and human demand distinct. GSC login and Duck.ai terms approval remain pending; human trials deferred.",
   "article": {
     "bodyWhitespaceWords": 1450,
     "prompts": 31,
@@ -62,7 +62,7 @@
     "localBuildAccepted": true,
     "localBuildReceipt": "public-parsing-checks.json"
   },
-  "runtimeUnchanged": true,
+  "runtimeUnchanged": false,
   "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
@@ -95,7 +95,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 1,
+  "productionOwnSiteGets": 3,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -176,7 +176,7 @@
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No collection-eligible own-site request or ingestion readback. No per-request write trace; natural/provider activity additional."
   },
-  "newVisitsScope": "Two operation submissions, one confirmed controlled page GET. Not an all-request census; no human visit.",
+  "newVisitsScope": "One earlier prefetch prompt-page GET plus one rendering-fix HTTP GET and one agent-browser navigation; browser assets/provider activity additional. No human visit.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -659,7 +659,7 @@
     "checks": "unresolved-metadata-checks.json",
     "release": "unresolved-metadata-release.json"
   },
-  "runtimeUnchangedScope": "Diagnostic scripts, tests, prompt provenance and evidence only; classification/collection/verifier/report/schema/configuration unchanged.",
+  "runtimeUnchangedScope": "Build-only template bindings/guard and tests; analytics collection/classification/verifier/report/schema unchanged. No server newsletter verification, credentials, limits or sender change.",
   "localMetadataRelay": {
     "research": "89-local-browser-relays-and-fetch-metadata.md",
     "experiment": "local-metadata-relay-experiment.json",
@@ -718,7 +718,7 @@
     "productionCollectorReadbackReceipt": "metadata-collector-production.json",
     "productionCollectorReadbackScope": "Four matched requests on d65be377; the later article-only publication Worker is accepted separately, without repeating collector trials."
   },
-  "newControlledRequests": 2,
+  "newControlledRequests": 3,
   "liveMetadataControls": {
     "research": "91-live-metadata-controls-and-redacted-correlation.md",
     "native": "metadata-collector-native.json",
@@ -763,7 +763,7 @@
     "warmCache": "HIT",
     "populationPrevalenceMeasured": false
   },
-  "ownSiteGetRequests": 1,
+  "ownSiteGetRequests": 3,
   "collectionEligibleRequests": 0,
   "diagnosticSelects": 0,
   "evidenceDelta": {
@@ -838,8 +838,8 @@
     "unmeteredCalculations": 1,
     "productionBrowserLayoutMeasured": false
   },
-  "productionStatementsScope": "No D1 diagnostic statement or report request; existing source excludes /owner.",
-  "productionReportedReadsCoverage": "No diagnostic statements to meter. No ingestion readback/account-wide or natural/provider cost claim.",
+  "productionStatementsScope": "No diagnostic D1 statement or report request in this slice.",
+  "productionReportedReadsCoverage": "No diagnostic statements to meter; no account-wide or normal/provider activity cost claim.",
   "productionReadTotal": 0,
   "publicationDateRepair": {
     "receipt": "article-reach-date-checks.json",
@@ -894,10 +894,17 @@
     "canonicalWorklist": "../newsletter-reliability/17-rendered-sitekey-regression.md",
     "checks": "../newsletter-reliability/rendered-sitekey-checks.json",
     "localAccepted": true,
-    "productionActivationAccepted": false,
+    "productionActivationAccepted": true,
     "actualEmailRetested": false,
     "siteTests": 128,
     "historicalImpactEstablished": false,
-    "metricCountsRewritten": false
+    "metricCountsRewritten": false,
+    "release": "../newsletter-reliability/rendered-sitekey-release.json",
+    "sourceCommit": "75bb999fe0fcb25b81dc926a232a2dad9b28e906",
+    "workerVersion": "57e6b1c9-fe0c-403e-b1b8-c8a1d8cf0b91",
+    "publicKeyDeliveryAccepted": true,
+    "clientHandlerInitializationAccepted": true,
+    "widgetReadinessEstablished": false,
+    "browserTabClosed": true
   }
 }

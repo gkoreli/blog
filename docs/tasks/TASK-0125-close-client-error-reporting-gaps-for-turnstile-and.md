@@ -4,7 +4,7 @@ title: Close client error reporting gaps for Turnstile and subscription failures
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.781Z'
-updated_at: '2026-09-09T03:02:04.289Z'
+updated_at: '2026-10-29T22:55:54.903961+00:00'
 type: task
 ---
 
@@ -22,3 +22,5 @@ The form now handles late/missing widgets, fresh retry identity, stale callbacks
 ## Live component acceptance — September 9 UTC
 
 The authorized native Chrome flow passed a real Turnstile challenge and signup, preserving a usable form after the earlier service failure and generic 202. The server log's opaque attempt ID links the accepted request to its ledger entry. [Live receipt](../../packages/blog/drafts/research/newsletter-reliability/15-live-signup-acceptance.md). This does not complete occurredAt/build identity, browser-to-server error correlation, early bootstrap coverage or shared logger transport/ingestion acceptance listed above; those remain open.
+
+**October 29 rendered-key acceptance:** [Receipt](../../packages/blog/drafts/research/newsletter-reliability/rendered-sitekey-release.json) joins source `75bb999` / successful build / full allocated Worker. Excluded HTTP and agent-browser DOM checks confirm public-key delivery and handler initialization; no widget readiness, challenge, email or human accuracy claim. Existing reporting and broader analytics requirements remain open.
