@@ -72,3 +72,5 @@ Exact-version binding metadata and a separate secret-name listing both omit opti
 A separate 14-file private publication archive has manifest SHA-256 `4764fe0268dc59adc425ff896809a44358aec4c4e0d9fdfd64c4f33f77d5e325`. It preserves the full source page, exact build log, allocation/binding metadata, served response and screenshot with 0700/0600 modes and an October 31 review date. The first followed progress badge led to the previous commit's build; the later full page supplies the exact current source attribution. The data/native archive stays frozen.
 
 Next: research documented methods for the 55 named events without either configured method, starting with Meta-WebIndexer. Human trials remain deferred; the wider goal remains open.
+
+[Research 69](69-current-verifier-signed-cohort.md) adds a separate four-request current-verifier Exa cohort with complete retained chains, exact stored references and independent replay. It does not recover older missing proofs or establish the newest collector, managed-provider verdicts or human triggers.

@@ -44,3 +44,5 @@ This closes the retained-fidelity gate for these two unsigned controls through t
 Next: seek genuine current-verifier signed records with recoverable request inputs and exact storage references, using bounded native-log selection before any separately budgeted database query. Preserve unknowns if the inputs are missing. Human trials and the broader [goal requirements](current-goal-audit.json) remain open.
 
 The private archive contains 31 captured files plus its manifest, with 0700/0600 modes. Manifest SHA-256: `9159fae5c23cdecba9e81911a5a9442673d79670db948a21cae7aaceee1c2b36`. The prior native/live archives stay unchanged. October 31 is a review date, not automatic deletion or provider-wide erasure.
+
+[Research 69](69-current-verifier-signed-cohort.md) adds a separate four-request current-verifier Exa cohort with complete retained chains, exact stored references and independent replay. It does not recover older missing proofs or establish the newest collector, managed-provider verdicts or human triggers.

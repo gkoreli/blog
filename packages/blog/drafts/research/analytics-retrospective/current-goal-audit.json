@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T03:31:38.920041+00:00",
-  "sourceBaseline": "3b6d36678b2b0d02f0a268d6e91d0c0094604548",
+  "checkedAt": "2026-10-29T03:46:36.445870+00:00",
+  "sourceBaseline": "7403fc776e91040b2aa1ebbe4c266ab5104d40a5",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -35,7 +35,7 @@
     "Concise article and preserved source/evidence trail"
   ],
   "incomplete": [
-    "Complete newest-profile signed-input/receipt/proof acceptance; 52 stored .28.7 verified outcomes remain observed without complete inputs or fresh cryptographic replay",
+    "Newest-collector .29.3 signed-input/receipt/proof acceptance remains open; four genuine .29.1-verifier proofs under collectors .29.1/.29.2 are now exact-joined and replayed. The 52 old .28.7 outcome-only records remain unrecovered.",
     "Request-level native managed-verifier comparison",
     "Human/device/actual-JavaScript-off and Cloudflare RUM-receipt measurements",
     "R1 operator/authenticity/trigger attribution",
@@ -45,7 +45,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Seek genuine current-verifier signed records with recoverable request inputs and exact storage references, using bounded native-log selection before any separately budgeted D1 query. Human trials remain deferred.",
+  "nextBoundedAction": "Native-test candidate replay-enforcement policies offline against retained genuine proofs and repeated/unsigned-field variants; measure storage cost and false-positive boundaries before proposing runtime enforcement. Latest-collector signed acceptance and request-level managed-provider verdicts remain separate open gates. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1358,
     "prompts": 31,
@@ -57,7 +57,7 @@
     "lastServedCheckReceipt": "network-receipt-release.json"
   },
   "runtimeUnchanged": true,
-  "productionStatements": 0,
+  "productionStatements": 1,
   "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
@@ -163,13 +163,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 0,
+  "productionReportedReads": 8,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
-    "providerWriteMetering": "no new observation requested in this retained-copy slice"
+    "providerWriteMetering": "No new observation requested by this investigation."
   },
-  "newVisitsScope": "No new observations; retained download and individual copies reuse the two research-67 synthetic controls.",
+  "newVisitsScope": "No new site observations requested; four selected existing Exa chains, one exact four-reference SELECT and offline replay.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -193,5 +193,21 @@
     "newObservations": 0,
     "providerQueryCost": "not returned",
     "signedFailureOrMultiSourceRetainedBranchesMeasured": false
+  },
+  "currentVerifierCohort": {
+    "receipt": "current-verifier-cohort.json",
+    "verifierProfile": "2026-10-29.1",
+    "collections": {
+      "2026-10-29.1": 2,
+      "2026-10-29.2": 2
+    },
+    "exactStoredChains": 4,
+    "independentAndNativeDistinctContexts": 12,
+    "signedAuthority": 4,
+    "unsignedUserAgentAndResource": 4,
+    "nativeBooleanValuesAvailable": 0,
+    "newestCollectorAccepted": false,
+    "wholeHistoricalCohortRecovered": false,
+    "humanTriggerEstablished": false
   }
 }
