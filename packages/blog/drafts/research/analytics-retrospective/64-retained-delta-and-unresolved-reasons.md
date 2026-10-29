@@ -2,6 +2,8 @@
 
 October 29, 2026 UTC. Continues [the isolated header experiment](63-disabled-before-expiry.md) and recovers the frozen boundary from [research 54](54-retained-signature-applicability.md). The previous goal turn made progress through a live experiment and accepted publication. This turn reconciles the new retained population and investigates its unresolved cases without changing their classifications.
 
+**Later October 29 follow-up:** [Research 75](75-frozen-signed-cohort-and-export-boundaries.md) recovers all 52 verified outcomes' invocation inputs, replays them under recorded/current profiles and matches their exact D1 projections. It supersedes the input/replay gap below for that cohort; this original census and its limits remain dated evidence.
+
 ## What the delta covers
 
 The original private preflight's bytes match its archived manifest. Its exact text maximum ID bounds 32,363 retained rows. We select IDs strictly above that boundary and at or below a fresh preflight maximum. All **712** selected records contain detailed verification records. The main census inventories every selected record: **711 included, one referral-excluded and zero owner-excluded**, using current owner precedence and the archived referral policy. Exclusion does not delete the retained event.

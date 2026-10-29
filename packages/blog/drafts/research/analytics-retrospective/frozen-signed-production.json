@@ -1,0 +1,174 @@
+{
+  "checkedAt": "2026-10-29T05:13:49.712Z",
+  "scope": "All 52 included verified outcomes in the frozen Research 64 ID span; no whole-history or wire-completeness claim",
+  "preflight": {
+    "checkedAt": "2026-10-29T05:09:28.575Z",
+    "chainsSha256": "ec0918299cc60e073efb6348d1a7ed8d357be35390f72ba3de7b2cf6e0676532",
+    "receiptsSha256": "cc8c0ceff0040bf12e7dbed7ce14b3232d395fa2ad96cf9bac35222f592bc48a",
+    "boundarySqlSha256": "50cbc14b038f670bb07d5bedbfb8cd7811a3e88abdf4cd7a59878029d21a111c",
+    "inputSha256": "61ca677058ac43245128338a98cdad6fdb6b8dcfcb2925431b2698e88eb55bef",
+    "scriptSha256": "604242ae8635e8773955061aded06ba9f054d4ab4b9f09100136460aa2f5e47f",
+    "records": 208,
+    "invocations": 52,
+    "independentReceiptCopies": 52,
+    "exactBoundMembership": 52,
+    "declarations": {
+      "ExaSearchBot": 51,
+      "AhrefsBot": 1
+    },
+    "executionWorkers": [
+      "916ba1cb-042e-4c28-a560-73174d1f5344",
+      "1d0d6dc0-d1eb-4ecf-885f-08c65a83e325",
+      "5dd36138-f735-4743-81ce-7e22d0c963ef",
+      "dacad568-d57b-4ec4-b4a0-617491b172a3",
+      "3c81e7ad-1f4e-4373-a861-59d587620095"
+    ],
+    "surfaces": {
+      "invocationHeaders": 52,
+      "invocationPath": 0,
+      "invocationSearch": 0,
+      "sourceMessageMatches": 52,
+      "metadataMessageMatches": 52,
+      "urlMarkerShaped": 0
+    },
+    "contextCount": 156,
+    "directories": {
+      "exa": {
+        "source": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+        "capturedAt": "2026-10-29T05:08:08.680529+00:00",
+        "responseStatus": 200,
+        "responseHeaders": {
+          "content-type": "application/http-message-signatures-directory+json",
+          "cache-control": "max-age=300",
+          "date": "Thu, 29 Oct 2026 05:08:07 GMT"
+        },
+        "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+        "readerTelemetryForwarded": false
+      },
+      "ahrefs": {
+        "source": "https://ahrefs.com/.well-known/http-message-signatures-directory",
+        "capturedAt": "2026-10-29T05:08:08.832352+00:00",
+        "responseStatus": 200,
+        "responseHeaders": {
+          "date": "Thu, 29 Oct 2026 05:08:08 GMT",
+          "content-type": "application/http-message-signatures-directory+json",
+          "cache-control": "max-age=86400"
+        },
+        "sha256": "a647d3d54713f9299e73dec67cdd28175cfb488ebc9692d245b82821244eb0cc",
+        "readerTelemetryForwarded": false
+      }
+    },
+    "exactD1ProjectionCompared": false,
+    "originalWireCompletenessProven": false,
+    "productionRequests": 0,
+    "d1Statements": 0,
+    "humanLabels": 0
+  },
+  "exactD1ProjectionPairs": 52,
+  "independentReceiptCopies": 52,
+  "currentNameParsingMatchesStored": 52,
+  "historicalAndCurrentReplayOriginals": 52,
+  "contextsPerRuntimePerProfile": 156,
+  "independentRfcContexts": 156,
+  "storedComparison": {
+    "candidateRows": 52,
+    "retainedInputRecords": 208,
+    "retainedStoredRecords": 52,
+    "rejectedRetainedRecords": {
+      "shape": 0,
+      "timestamp": 0
+    },
+    "invalidCandidateReferences": 0,
+    "unavailableReceiptReferences": 0,
+    "invalidReceiptReferences": 0,
+    "unmatchedCandidateRows": 0,
+    "unmatchedReceiptRecords": 0,
+    "ambiguousReferenceGroups": 0,
+    "invalidPairMetadata": 0,
+    "unprojectableCandidateRows": 0,
+    "matchedReferencePairs": 52,
+    "identicalProjectionPairs": 52,
+    "differentProjectionPairs": 0,
+    "storedLocalVerifiedPairs": 52,
+    "testInjectedPairs": 0,
+    "conflictingStoredStatusPairs": 0,
+    "changedFields": {},
+    "unexpectedFields": 0
+  },
+  "declaredNames": {
+    "ExaSearchBot": 51,
+    "AhrefsBot": 1
+  },
+  "historicalProfile": "2026-10-28.7",
+  "currentProfile": "2026-10-29.1",
+  "historicalSourceCommit": "29237542dcc8e0f5a1ad0f68c769d9a41a097823",
+  "historicalSnapshotIsDeployedByteAttestation": false,
+  "reuse": {
+    "version": "2026-10-28.1",
+    "verifierProfile": "2026-10-29.1",
+    "scope": "supplied-observations-publisher-key",
+    "enforcement": "none",
+    "assessment": "complete",
+    "termination": "exhausted",
+    "policy": {
+      "maxObservations": 64,
+      "maxCandidatesPerObservation": 8,
+      "deadlineMs": 2000,
+      "maxAgeSeconds": 86400,
+      "headerBudgetUnits": 32768
+    },
+    "submittedObservations": 52,
+    "assessedObservations": 52,
+    "unassessedObservations": 0,
+    "missingReferenceRecords": 0,
+    "duplicateReferenceRecords": 0,
+    "invalidContextRecords": 0,
+    "headerBudgetRecords": 0,
+    "incompleteObservations": 0,
+    "verifiedObservations": 52,
+    "knownTaggedCandidates": 52,
+    "attemptedCandidates": 52,
+    "unassessedKnownCandidates": 0,
+    "verifiedCandidates": 52,
+    "notVerifiedByProfileCandidates": 0,
+    "unresolvedCandidates": 0,
+    "nonceStringCandidates": 52,
+    "nonceAbsentCandidates": 0,
+    "nonceUnusableCandidates": 0,
+    "distinctVerifiedProofs": 52,
+    "repeatedProofGroups": 0,
+    "observationsInRepeatedProofGroups": 0,
+    "repeatedProofGroupsWithChangedMethodUrlOrUserAgent": 0,
+    "distinctUsableNonces": 52,
+    "repeatedNonceGroups": 0,
+    "repeatedNonceGroupsWithDifferentProofs": 0,
+    "directoryFetches": 22
+  },
+  "metering": {
+    "controlReads": 0,
+    "dataReads": 104,
+    "writes": 0,
+    "statements": 2,
+    "providerAttempts": 2,
+    "uiAndExportCost": "not-returned"
+  },
+  "sourceCommitments": {
+    "preflight": "97c709fdc6cd1adbf07c6ecdbaf94cb4ed462c74f498025c4c2d2f785bbf0788",
+    "native": "0161269e6e0eb26e431efe46365b86ef4c56b40c393907e8a11f9f97627b0b39",
+    "reference": "7747908bbbcd4d163a84a4ab2d5ad6f6a6875c47162db6e45b9d4b4c6c9394fc",
+    "readPlan": "05b3612e5a01d820a929f048e09d06c33aa024c689b5c88fb68bec6fd4f125d3"
+  },
+  "old52InputAndReplayGapClosed": true,
+  "originalDirectorySnapshotRecovered": false,
+  "managedVerifierAgreementMeasured": false,
+  "humanTriggerOrActualUseEstablished": false,
+  "optionalCaptureAbsent": 52,
+  "newProductionObservationRequests": 0,
+  "newHumanLabels": 0,
+  "limits": [
+    "A later directory capture does not reconstruct original resolver state.",
+    "Repository snapshot carrying the recorded profile is not an attestation of each deployed Worker byte.",
+    "Authority-only signatures leave request role and resource unauthenticated.",
+    "Separate publication verification made one collection-ineligible .md GET; no new data observation was requested."
+  ]
+}

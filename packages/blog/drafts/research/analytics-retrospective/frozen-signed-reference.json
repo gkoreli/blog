@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-10-29T05:10:34.495904+00:00",
+  "sourceCommit": "1de433d9a49fd608475c6054ab14a1652c088844",
+  "sourceFilesRechecked": 18,
+  "recordedClock": true,
+  "keyResolver": "per-trial captured publisher keys by RFC thumbprint",
+  "maxAgeSeconds": 86400,
+  "referenceCalls": 156,
+  "externalRequests": 0,
+  "execution": {
+    "inputSha256": "61ca677058ac43245128338a98cdad6fdb6b8dcfcb2925431b2698e88eb55bef",
+    "scriptSha256": "f9a687f4831239c9258dd1d54ee8943a1e714401f60bf875bfa97ba9acee7098",
+    "sourceManifestSha256": "b3b73b129b8f5424a4862bcf00528424cba91fe6874faae6648855151125ebd9",
+    "dependencyVersions": {
+      "cryptography": "50.0.2",
+      "http-sf": "1.5.0",
+      "cffi": "2.1.1",
+      "typing_extensions": "4.16.0",
+      "pycparser": "3.12"
+    }
+  },
+  "limits": [
+    "Generic RFC verification; discovery, publisher registration and Web Bot Auth admission are separate.",
+    "An exception is not a complete census of valid candidates; this cohort has one eligible candidate per request."
+  ],
+  "groups": {
+    "exa:original": {
+      "contexts": 51,
+      "verified": 51,
+      "rejected": 0
+    },
+    "exa:changed-authority": {
+      "contexts": 51,
+      "verified": 0,
+      "rejected": 51
+    },
+    "exa:changed-unsigned-role-and-path": {
+      "contexts": 51,
+      "verified": 51,
+      "rejected": 0
+    },
+    "ahrefs:original": {
+      "contexts": 1,
+      "verified": 1,
+      "rejected": 0
+    },
+    "ahrefs:changed-authority": {
+      "contexts": 1,
+      "verified": 0,
+      "rejected": 1
+    },
+    "ahrefs:changed-unsigned-role-and-path": {
+      "contexts": 1,
+      "verified": 1,
+      "rejected": 0
+    }
+  },
+  "privateFullResultSha256": "7747908bbbcd4d163a84a4ab2d5ad6f6a6875c47162db6e45b9d4b4c6c9394fc"
+}

@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T04:57:54.692618+00:00",
-  "sourceBaseline": "16a3322c43b7b94a51aa37afc1e10ec08171c3f1",
+  "checkedAt": "2026-10-29T05:20:12.527306+00:00",
+  "sourceBaseline": "6b81be6525327e03c2cef0608f5719dbdb7b9c1f",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -35,33 +35,33 @@
     "Concise article and preserved source/evidence trail"
   ],
   "incomplete": [
-    "The 52 older .28.7 stored verified outcomes still lack complete recovered inputs and fresh cryptographic replay; the separate two-request latest-collector acceptance does not repair them.",
     "Request-level native managed-verifier comparison",
     "Human/device/actual-JavaScript-off and Cloudflare RUM-receipt measurements",
     "R1 operator/authenticity/trigger attribution",
     "Historical proof/nonce recovery and whole-history cryptographic correctness",
-    "Applicable privacy basis, aggregate-preserving retention, rights/contact and account/provider review"
+    "Applicable privacy basis, aggregate-preserving retention, rights/contact and account/provider review",
+    "Observations after the last frozen 712-record delta have selected-chain acceptance, not a refreshed whole-population audit."
   ],
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Inspect the retained Workers Logs/export contract and existing captured representations for URL fidelity, especially covered components. Also accept publication of the revised article separately from local build evidence. Human trials remain deferred.",
+  "nextBoundedAction": "Review native signed-agent versus known-bot semantics and account exposure before a genuine-vendor managed-verifier comparison. Accept the latest 52-proof article correction separately from local build evidence. Human trials remain deferred.",
   "article": {
-    "bodyWhitespaceWords": 1359,
+    "bodyWhitespaceWords": 1362,
     "prompts": 31,
-    "sourceSha256": "d951df00dea8bf5fd9219055a4e4138ed0925d123581a924f627025b0caf9e3a",
+    "sourceSha256": "a44d8777d3ec5c5671f3437553be51bbe474908cc865f01ad5b2260c04fef9ba",
     "unchanged": false,
     "freshServedCheck": false,
     "publicationReceipt": null,
     "servedMatchesCheckedBuild": null,
-    "lastServedCheckReceipt": "network-receipt-release.json",
-    "publicationStatus": "Source revised and isolated build accepted; live activation and served acceptance unverified."
+    "lastServedCheckReceipt": "native-trace-release.json",
+    "publicationStatus": "Prior 1,359-word source accepted in native-trace-release.json; 1,362-word 52-proof correction has an accepted isolated build and pending live publication."
   },
   "runtimeUnchanged": true,
-  "productionStatements": 0,
+  "productionStatements": 2,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": false,
+  "liveAccountInspection": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -90,7 +90,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 0,
+  "productionOwnSiteGets": 1,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -113,7 +113,8 @@
     "publicationOwnSiteGets": 1,
     "publicationDiagnosticStatements": 0,
     "censusProfileVerifiedOutcomes": 52,
-    "censusVerifierProfile": "2026-10-28.7"
+    "censusVerifierProfile": "2026-10-28.7",
+    "old52InputReplayGate": "Closed by frozen-signed-production.json; no earlier snapshot or stored row rewritten."
   },
   "clientMethods": {
     "receipt": "client-methods-production.json",
@@ -164,13 +165,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 0,
+  "productionReportedReads": 104,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No production observation requested by this investigation; natural ingestion and provider costs are separate."
   },
-  "newVisitsScope": "Thirteen synthetic local producer requests, thirteen native trace deliveries and thirty-nine independent RFC contexts; no production request/query, new readership calibration or human label.",
+  "newVisitsScope": "Historical recovery of 52 request chains; no new eligible production request or human label. One ineligible publication Markdown GET is separate. Two exact SELECTs report 104 reads and zero writes.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -260,7 +261,8 @@
     "old52ProofsRecovered": false,
     "nativeBooleanValuesAvailable": 0,
     "wholeHistoryCorrectnessProven": false,
-    "humanTriggerOrActualUseEstablished": false
+    "humanTriggerOrActualUseEstablished": false,
+    "old52RecoveryFollowup": "frozen-signed-production.json closes the separate Research 64 cohort; this does not change Research 72's two-request scope."
   },
   "retainedHeaderSelection": {
     "receipt": "latest-signed-production.json",
@@ -307,5 +309,20 @@
     "newProductionRequests": 0,
     "newHumanLabels": 0,
     "articleChanged": true
+  },
+  "frozenSignedCohort": {
+    "receipt": "frozen-signed-production.json",
+    "checks": "frozen-signed-checks.json",
+    "recordedProfile": "2026-10-28.7",
+    "currentReplayProfile": "2026-10-29.1",
+    "exactD1ProjectionPairs": 52,
+    "independentReceiptCopies": 52,
+    "contextsPerRuntimePerProfile": 156,
+    "referenceContexts": 156,
+    "old52InputReplayGapClosed": true,
+    "originalDirectorySnapshotRecovered": false,
+    "managedAgreementMeasured": false,
+    "wholeHistoryCorrectnessProven": false,
+    "actualUseOrHumanTriggerEstablished": false
   }
 }

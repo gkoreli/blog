@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-29T05:14:44.966Z",
+  "sourceSha256": "3fbabb4406e82dbe5e779107bab8c97712996206d3ec9ca53197f70f038798a1",
+  "scriptSha256": "c0fe6f018d6c76d20e0dc60cd8132bcac7b72715839ce54e3ad2b5a6dce3904d",
+  "counts": {
+    "records": 409,
+    "methods": {
+      "GET": 408,
+      "POST": 1
+    },
+    "queryUrls": 14,
+    "duplicateDecodedQueryNames": 0,
+    "markerShapedUrls": 0,
+    "fetchUrlUnchanged": 409,
+    "sourceMessageMatches": 409,
+    "metadataMessageMatches": 409,
+    "pathFieldAbsent": 409,
+    "searchFieldAbsent": 409
+  },
+  "originalWireCompletenessProven": false,
+  "messageCopiesIndependent": false,
+  "newProductionRequests": 0,
+  "d1Statements": 0,
+  "limits": [
+    "Matching URL/message copies are correlated retained representations.",
+    "Absent path/search objects are unavailable, not contradictory empty fields.",
+    "No marker shape does not rule out omission or transformation."
+  ]
+}

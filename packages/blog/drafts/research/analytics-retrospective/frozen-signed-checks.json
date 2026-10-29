@@ -1,0 +1,172 @@
+{
+  "checkedAt": "2026-10-29T05:16:23.105089+00:00",
+  "sourceBaseline": "6b81be6",
+  "primarySources": {
+    "checkedAt": "2026-10-29T05:13:53.450531+00:00",
+    "sources": [
+      {
+        "url": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/index.md",
+        "status": 200,
+        "bytes": 13408,
+        "sha256": "7902a6e63cc96baaa3b89fbdbbb960997bb78d3629de9248a29e87376e5b85b1"
+      },
+      {
+        "url": "https://developers.cloudflare.com/workers/observability/query-builder/index.md",
+        "status": 200,
+        "bytes": 13037,
+        "sha256": "80066fcffcec63caeb4e7915a630a502cb599ae3cfa30728e347435f521bf443"
+      },
+      {
+        "url": "https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/index.md",
+        "status": 200,
+        "bytes": 10226,
+        "sha256": "6c9df87cab7ee1d4eae44e3b4e3eda100b98fa751762b40df5c28fd38f57935d"
+      }
+    ]
+  },
+  "nativeQuerySelection": {
+    "start": "2026-10-28T05:41:35Z",
+    "endExclusive": "2026-10-29T01:30:47Z",
+    "receiptCount": 52,
+    "receiptExportCap": 100,
+    "exactRequestReferences": 52,
+    "chainCount": 208,
+    "chainExportCap": 500,
+    "recordsPerChain": 4,
+    "receiptCopiesEqual": 52,
+    "logIdCollisions": 0,
+    "uiAndExportCost": "not-returned",
+    "pricingNoticeAccepted": false
+  },
+  "nativeSql": {
+    "checkedAt": "2026-10-29T05:10:36.953Z",
+    "sqlSha256": "fb5450613871d1301c61e18df3ce0fa0e184384f5d53ab10d67a6f1a94f83545",
+    "rows": 52,
+    "reads": 104,
+    "writes": 0,
+    "primaryKeyPlan": true,
+    "unsafeNeighborTextReferencesDistinct": true,
+    "ownerAndContradictoryFactsRetained": true,
+    "control": {
+      "sql": "SELECT 1 AS query_access_control",
+      "reads": 0,
+      "writes": 0
+    },
+    "productionStatements": 0
+  },
+  "readPlan": {
+    "createdAt": "2026-10-29T05:11:07.317680+00:00",
+    "purpose": "Exact storage projection of all 52 recovered older-profile signed chains within the frozen Research 64 ID bound",
+    "maximumAgentIssuedControlAttempts": 1,
+    "maximumAgentIssuedDataAttempts": 1,
+    "plannedStatements": 2,
+    "writes": 0,
+    "expectedControlReads": 0,
+    "nativeExpectedDataReads": 104,
+    "postExecutionReadReviewThreshold": 208,
+    "serverEnforcedReadCap": false,
+    "maximumReturnedDataRows": 53,
+    "expectedDataRows": 52,
+    "selectsContradictoryOwnerAndMissingFacts": true,
+    "rawIpUserAgentOrOptionalCapturePayloadSelected": false,
+    "eligibilityGate": "Proceed to data SELECT only after successful constant control. Exact Worker DB binding identity matches configuration; that is not query authorization.",
+    "templateSha256": "fb5450613871d1301c61e18df3ce0fa0e184384f5d53ab10d67a6f1a94f83545",
+    "sqlSha256": "cc1add4d4955f69846e4346ffd382095035ab2eab66ba831158beaff5cc6880e",
+    "controlSqlSha256": "682b6cb7095ad7c6885980d8c52641ae44d2c2a76b4c629c3d394dc80d065b53",
+    "invocationInputSha256": "ec0918299cc60e073efb6348d1a7ed8d357be35390f72ba3de7b2cf6e0676532",
+    "receiptInputSha256": "cc8c0ceff0040bf12e7dbed7ce14b3232d395fa2ad96cf9bac35222f592bc48a",
+    "nativeSqlReceiptSha256": "92269bae96c2dd863bf23513fa3986346676a330f11357179042367c7ecb4c13",
+    "metadataInspection": "Fresh exact Worker version binding lists the configured DB; no deliberate credential/permission changes and no metadata failure cause inferred."
+  },
+  "readPlanArchive": {
+    "capturedFiles": 8,
+    "manifestSha256": "fe79b3197dafb45cafa2cc112cf26b99f675e41da94030a367e91e023e5d01c8",
+    "immutablePreExecutionPlan": true
+  },
+  "negativeGates": {
+    "cases": [
+      {
+        "name": "wrong-exact-row-reference",
+        "rejected": true,
+        "acceptedOutputWritten": false
+      },
+      {
+        "name": "native-storage-id-outside-frozen-bound",
+        "rejected": true,
+        "acceptedOutputWritten": false
+      }
+    ]
+  },
+  "acceptance": {
+    "projectionPairs": 52,
+    "recordedAndCurrentOriginalReplays": 52,
+    "nodeAndWorkerdContextsPerProfile": 156,
+    "referenceContexts": 156,
+    "old52InputReplayGapClosed": true,
+    "wholeHistoryCorrectnessProven": false,
+    "managedAgreementMeasured": false,
+    "newHumanLabels": 0
+  },
+  "article": {
+    "bodyWhitespaceWords": 1362,
+    "prompts": 31,
+    "sourceSha256": "a44d8777d3ec5c5671f3437553be51bbe474908cc865f01ad5b2260c04fef9ba",
+    "sourceChanged": true,
+    "publication": "pending",
+    "previousPublicationReceipt": "native-trace-release.json"
+  },
+  "newDataObservationRequests": 0,
+  "directProductionStatements": 2,
+  "reportedReads": 104,
+  "reportedWrites": 0,
+  "publicationOwnSiteGets": 1,
+  "collectionEligibleGets": 0,
+  "runtimePolicyChanged": false,
+  "preAcceptanceCorrections": [
+    "An initial URL scan assumed GET and showed one apparent message mismatch; the recorded POST method makes all 409 copies internally consistent.",
+    "The build-copy control returned unrelated old clipboard JSON; it is not build evidence. A native download supplies the accepted full build log.",
+    "The receipt-export dialog closed asynchronously before a Cancel click; fresh state confirmed closure before querying chains."
+  ],
+  "publicationBuild": {
+    "checkedAt": "2026-10-29T05:20:12.527306+00:00",
+    "isolatedBuild": "pass",
+    "builtPosts": 33,
+    "sourceBodyMatchesMarkdownAfterLeadingWhitespace": true,
+    "articleH1": 1,
+    "findingRendered": true,
+    "articleSourceSha256": "a44d8777d3ec5c5671f3437553be51bbe474908cc865f01ad5b2260c04fef9ba",
+    "markdownSha256": "4bbe10750da834778ec5b75fa8cf703793a2cde93de58eef495541507aad3dff",
+    "htmlSha256": "eb81ad194c3134c8d36d0584cf8f4f66b44673afabda95cbc615867eda23d502",
+    "bodyWhitespaceWords": 1362,
+    "sharedDistTouched": false
+  },
+  "checks": {
+    "targetedTests": 24,
+    "negativeAnalysisGates": 2,
+    "scriptSyntax": "pass",
+    "workspaceTypes": "pass",
+    "markdownValidation": "pass, 22 Markdown posts",
+    "isolatedBuild": "pass, 33 posts"
+  },
+  "sourceFiles": {
+    "packages/blog/drafts/research/analytics-retrospective/analyze-frozen-signed-cohort.mjs": "604242ae8635e8773955061aded06ba9f054d4ab4b9f09100136460aa2f5e47f",
+    "packages/blog/drafts/research/analytics-retrospective/accept-frozen-signed-cohort.mjs": "4d044ee2b70a06739e1a5f06a8b9a2fe63b32e4df6ad5e98ac7cc9f574c9354e",
+    "packages/blog/drafts/research/analytics-retrospective/analyze-retained-url-surface.mjs": "c0fe6f018d6c76d20e0dc60cd8132bcac7b72715839ce54e3ad2b5a6dce3904d",
+    "packages/blog/scripts/check-frozen-signed-cohort.mjs": "55de43078af962b24304677788d32e928308bd5b9eee7473a7e980c301f01891",
+    "packages/blog/scripts/check-frozen-signed-storage.mjs": "ce1de7fc0cad38c6bf989ed60f8c1e300c65d652b930dcb01d317de3816c79bf"
+  },
+  "finalChecks": {
+    "localLinksChecked": 365,
+    "privateProofAddressAndReferenceScan": "pass",
+    "historical52GapExplicitlySuperseded": true,
+    "articlePromptsUnchanged": true
+  },
+  "privateDataArchive": {
+    "capturedFiles": 124,
+    "manifestSha256": "529fd9f870dd49065fd63f9eb39dfa6727f4260ed1f49ee9133c8108568e4556",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "checkedAt": "2026-10-29T05:09:58.103Z",
+  "inputSha256": "61ca677058ac43245128338a98cdad6fdb6b8dcfcb2925431b2698e88eb55bef",
+  "preflightSha256": "97c709fdc6cd1adbf07c6ecdbaf94cb4ed462c74f498025c4c2d2f785bbf0788",
+  "scriptSha256": "55de43078af962b24304677788d32e928308bd5b9eee7473a7e980c301f01891",
+  "historicalCommit": "29237542dcc8e0f5a1ad0f68c769d9a41a097823",
+  "historicalFilesRechecked": 51,
+  "historicalManifestSha256": "27cf68b5edc3be26ae72d6c40d0bf62d3bcff3d162b46bff9ca4784ec6aa00c2",
+  "historicalBundleSha256": "0546e1935bc7fbb7761eb041c690fc1736c6276ca5c4503261b71b2f9d93fd44",
+  "historicalProfile": "2026-10-28.7",
+  "currentProfile": "2026-10-29.1",
+  "contextsPerRuntimePerProfile": 156,
+  "originals": 52,
+  "reuse": {
+    "version": "2026-10-28.1",
+    "verifierProfile": "2026-10-29.1",
+    "scope": "supplied-observations-publisher-key",
+    "enforcement": "none",
+    "assessment": "complete",
+    "termination": "exhausted",
+    "policy": {
+      "maxObservations": 64,
+      "maxCandidatesPerObservation": 8,
+      "deadlineMs": 2000,
+      "maxAgeSeconds": 86400,
+      "headerBudgetUnits": 32768
+    },
+    "submittedObservations": 52,
+    "assessedObservations": 52,
+    "unassessedObservations": 0,
+    "missingReferenceRecords": 0,
+    "duplicateReferenceRecords": 0,
+    "invalidContextRecords": 0,
+    "headerBudgetRecords": 0,
+    "incompleteObservations": 0,
+    "verifiedObservations": 52,
+    "knownTaggedCandidates": 52,
+    "attemptedCandidates": 52,
+    "unassessedKnownCandidates": 0,
+    "verifiedCandidates": 52,
+    "notVerifiedByProfileCandidates": 0,
+    "unresolvedCandidates": 0,
+    "nonceStringCandidates": 52,
+    "nonceAbsentCandidates": 0,
+    "nonceUnusableCandidates": 0,
+    "distinctVerifiedProofs": 52,
+    "repeatedProofGroups": 0,
+    "observationsInRepeatedProofGroups": 0,
+    "repeatedProofGroupsWithChangedMethodUrlOrUserAgent": 0,
+    "distinctUsableNonces": 52,
+    "repeatedNonceGroups": 0,
+    "repeatedNonceGroupsWithDifferentProofs": 0,
+    "directoryFetches": 22
+  },
+  "limits": [
+    "Later captured keys do not reconstruct original resolver state.",
+    "Two local implementations/profiles do not establish managed-provider agreement.",
+    "Reuse audit references are synthetic one-to-one ordinals after native request-reference uniqueness checks; no identities or digests are emitted."
+  ],
+  "groups": {
+    "exa:original": {
+      "contexts": 51,
+      "historicalVerified": 51,
+      "currentVerified": 51,
+      "historicalInvalid": 0,
+      "currentInvalid": 0,
+      "nodeNativeAgreements": 51
+    },
+    "exa:changed-authority": {
+      "contexts": 51,
+      "historicalVerified": 0,
+      "currentVerified": 0,
+      "historicalInvalid": 51,
+      "currentInvalid": 51,
+      "nodeNativeAgreements": 51
+    },
+    "exa:changed-unsigned-role-and-path": {
+      "contexts": 51,
+      "historicalVerified": 51,
+      "currentVerified": 51,
+      "historicalInvalid": 0,
+      "currentInvalid": 0,
+      "nodeNativeAgreements": 51
+    },
+    "ahrefs:original": {
+      "contexts": 1,
+      "historicalVerified": 1,
+      "currentVerified": 1,
+      "historicalInvalid": 0,
+      "currentInvalid": 0,
+      "nodeNativeAgreements": 1
+    },
+    "ahrefs:changed-authority": {
+      "contexts": 1,
+      "historicalVerified": 0,
+      "currentVerified": 0,
+      "historicalInvalid": 1,
+      "currentInvalid": 1,
+      "nodeNativeAgreements": 1
+    },
+    "ahrefs:changed-unsigned-role-and-path": {
+      "contexts": 1,
+      "historicalVerified": 1,
+      "currentVerified": 1,
+      "historicalInvalid": 0,
+      "currentInvalid": 0,
+      "nodeNativeAgreements": 1
+    }
+  },
+  "privateFullResultSha256": "0161269e6e0eb26e431efe46365b86ef4c56b40c393907e8a11f9f97627b0b39",
+  "completeOriginalCandidateAudits": 52,
+  "newProductionRequests": 0,
+  "headerAndResourceCoverage": {
+    "authority": 52,
+    "userAgent": 0,
+    "method": 0,
+    "resource": 0
+  }
+}

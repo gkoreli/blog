@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-10-29T05:01:42.889879+00:00",
+  "sourceCommit": "6b81be6525327e03c2cef0608f5719dbdb7b9c1f",
+  "publication": "accepted",
+  "buildId": "56cd2379-d6f8-4757-b098-f337e7b0e726",
+  "workerVersion": "e3076d6a-7c26-4c39-b34d-ed350536c8e9",
+  "allocationPercentage": 100,
+  "sourceLinkedReadyRow": true,
+  "buildCompleted": true,
+  "buildLogSha256": "e9db837a46abb8cea825b25779be5b8b1622681b29ce1b3dba7a8d796a4e6bcc",
+  "optionalCaptureBindingsAbsent": true,
+  "agentManualDeployments": 0,
+  "agentRetries": 0,
+  "served": {
+    "checkedAt": "2026-10-29T05:01:42.889879+00:00",
+    "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove.md",
+    "status": 200,
+    "contentType": "text/markdown; charset=utf-8",
+    "bytes": 15098,
+    "sha256": "d956731ee3a7514201b9502a67c462430acfd614f779ae8e69f919fd6a28548a",
+    "checkedBuildMarkdownSha256": "d956731ee3a7514201b9502a67c462430acfd614f779ae8e69f919fd6a28548a",
+    "servedMatchesCheckedBuild": true,
+    "bodyWords": 1359,
+    "ownSiteGets": 1,
+    "collectionEligibleGets": 0,
+    "scope": "Direct .md GET; source/runtime activation is separately attributed.",
+    "headers": {
+      "Date": "Thu, 29 Oct 2026 05:01:42 GMT",
+      "Content-Type": "text/markdown; charset=utf-8",
+      "CF-Cache-Status": "MISS",
+      "ETag": "\"895306edf03495f8a9223b9898cb1671\""
+    }
+  },
+  "limits": [
+    "This acceptance is for the 1,359-word native-trace article source; the subsequent 52-proof correction is a separate publication.",
+    "Dashboard active summary renders 0% alongside its 100% indicator; allocation uses CLI metadata plus the source-linked Ready row.",
+    "Copy build log returned stale clipboard data; accepted log came from a fresh native download."
+  ],
+  "productionStatements": 0,
+  "productionOwnSiteGets": 1,
+  "collectionEligibleGets": 0
+}
