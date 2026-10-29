@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-29T02:14:45.792125+00:00",
+  "checkedAt": "2026-10-29T02:20:45.291336+00:00",
   "sourceBaseline": "cf42773",
-  "sourceCommit": null,
-  "publication": "pending",
+  "sourceCommit": "f06e78c4caf74f9339abc55f0bf92798ecddb627",
+  "publication": "accepted",
   "dataAccepted": true,
   "runtimeChanged": true,
   "schemaChanged": false,
@@ -13,7 +13,7 @@
   "productionDataStatements": 1,
   "productionDataReads": 20384,
   "productionDataWrites": 0,
-  "ownSiteGets": 0,
+  "ownSiteGets": 1,
   "humanLabels": 0,
   "expandedRawCapture": false,
   "checks": {
@@ -31,8 +31,9 @@
   "article": {
     "bodyWhitespaceWords": 1328,
     "prompts": 31,
-    "freshServedCheck": false,
-    "checkedBuildMarkdownSha256": "07504e71d8a581c6c161e002695938d6c2adfdf82440e01eabefeaaafc01cd41"
+    "freshServedCheck": true,
+    "checkedBuildMarkdownSha256": "07504e71d8a581c6c161e002695938d6c2adfdf82440e01eabefeaaafc01cd41",
+    "servedSha256": "07504e71d8a581c6c161e002695938d6c2adfdf82440e01eabefeaaafc01cd41"
   },
   "privateArchive": {
     "name": "2026-10-29-client-methods-and-directory-failures",
@@ -49,7 +50,7 @@
     "R1 attribution and historical recovery",
     "Privacy/retention decisions"
   ],
-  "nextBoundedAction": "Accept source activation and article publication, then research documented methods for the 55 named included events without a configured method, starting with Meta-WebIndexer. Human trials remain deferred.",
+  "nextBoundedAction": "Research documented verification methods for the 55 named included records without either configured method, starting with Meta-WebIndexer. Preserve partial vendor rollout, unsigned roles and human/native ground-truth limits. Human trials remain deferred.",
   "sourceSha256": {
     "packages/analytics/src/webbotauth.ts": "97c6bb2fce66ddb323da2e5a566f7abb83f01473fff42cc0e03ea4e7576217f5",
     "packages/analytics/src/signature-evidence.ts": "3b0eae1a23dd89a29676886fe58715ec0b1d6423f2fa755d6aa9e79ad7877f35",
@@ -61,5 +62,45 @@
     "packages/blog/scripts/check-directory-failure-storage.mjs": "48f5eacc069fd9194504534604209d9180128ca3c3bc2eda153a84e0acbf4b65",
     "packages/analytics/test/fixtures/directory-failures.mjs": "7195834d37482b5865ebcd2b5b75d08c9f605d1c7c32915365586a2c7b2991d0",
     "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "3e382c9f3b5935e5b3e67f5c77db4bf6f2d33b6e123de7a23910d6beda2e32ca"
+  },
+  "rebasedOver": [
+    "81186d6",
+    "6f352a6",
+    "e53fc1e"
+  ],
+  "incomingChangesAffectPublishedRuntimeOrArticle": false,
+  "sourceHashesRevalidatedAfterRebase": true,
+  "collectionEligibleGets": 0,
+  "activation": {
+    "checkedAt": "2026-10-29T02:19:41.519765+00:00",
+    "sourceCommit": "f06e78c4caf74f9339abc55f0bf92798ecddb627",
+    "buildId": "76e176d1-a960-4900-b572-09474add0516",
+    "workerVersion": "462fdfc7-ee4f-4d5d-948d-23e8f0a2084b",
+    "allocationPercentage": 100,
+    "servedStatus": 200,
+    "servedMatchesCheckedBuild": true,
+    "servedSha256": "07504e71d8a581c6c161e002695938d6c2adfdf82440e01eabefeaaafc01cd41",
+    "articleBodyWhitespaceWords": 1328,
+    "prompts": 31,
+    "publicationGets": 1,
+    "collectionEligibleGets": 0,
+    "additionalDiagnosticStatements": 0,
+    "publicReportFills": 0,
+    "newHumanLabels": 0,
+    "agentRetries": 0,
+    "agentManualDeployments": 0,
+    "optionalCaptureBindingsAbsent": true,
+    "specificFailureProductionObservation": false,
+    "exactVersionOptionalBindingsAbsent": true,
+    "sourceLinkedReadyRowObserved": true,
+    "dashboardActiveSummaryLimit": "Active summary displays 0% beside a 100% marker; the source-linked version row and CLI allocation show 100%. No cause inferred."
+  },
+  "publicationArchive": {
+    "name": "2026-10-29-client-methods-publication",
+    "files": 14,
+    "manifestSha256": "4764fe0268dc59adc425ff896809a44358aec4c4e0d9fdfd64c4f33f77d5e325",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false,
+    "modes": "0700/0600"
   }
 }

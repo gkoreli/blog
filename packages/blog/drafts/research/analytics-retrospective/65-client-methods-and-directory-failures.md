@@ -62,3 +62,13 @@ Collection/verifier and report-cache profiles become `2026-10-29.1`; classifier,
 Next: accept activation, then research documented verification methods for the 55 named events without a configured method, starting with Meta-WebIndexer. Preserve human, native-verifier, R1, historical-recovery and privacy gaps from [the goal audit](current-goal-audit.json).
 
 The frozen private archive contains 45 files with 0700/0600 modes. Its manifest SHA-256 is `e6c231529f2283bc9a9bbdee855727a16be68a6cfc55dee354aefa07723ae14d`. October 31 is a review date, not automatic deletion. Raw query responses, exact bounds, failed attempts and source captures remain outside Git. The checked article builds at 1,328 words; post validation accepts 21 Markdown posts and the isolated build produces 32 posts.
+
+## Publication and activation accepted
+
+Source `f06e78c4caf74f9339abc55f0bf92798ecddb627` includes the checked repair after rebasing over three unrelated draft/distribution commits. Their published article/runtime/build inputs are unchanged, and the checked source hashes match after integration. Build `76e176d1-a960-4900-b572-09474add0516` completes successfully; its full page identifies that source and its downloaded log identifies Worker `462fdfc7-ee4f-4d5d-948d-23e8f0a2084b`. The source-linked Ready row and Wrangler deployment metadata assign this version 100%. The active summary also renders 0% beside a 100% marker; no cause is inferred from that conflicting presentation. No agent retry or manual deployment occurs.
+
+Exact-version binding metadata and a separate secret-name listing both omit optional diagnostic/native-capture names. The HTTP 200 direct Markdown response is byte-identical to the checked build, SHA-256 `07504e71d8a581c6c161e002695938d6c2adfdf82440e01eabefeaaafc01cd41`. This adds one collection-ineligible GET, zero diagnostic SELECTs, zero report fills and zero human labels. The specific new failure causes remain locally measured; no genuine new-profile signed-input/receipt/proof chain is claimed.
+
+A separate 14-file private publication archive has manifest SHA-256 `4764fe0268dc59adc425ff896809a44358aec4c4e0d9fdfd64c4f33f77d5e325`. It preserves the full source page, exact build log, allocation/binding metadata, served response and screenshot with 0700/0600 modes and an October 31 review date. The first followed progress badge led to the previous commit's build; the later full page supplies the exact current source attribution. The data/native archive stays frozen.
+
+Next: research documented methods for the 55 named events without either configured method, starting with Meta-WebIndexer. Human trials remain deferred; the wider goal remains open.

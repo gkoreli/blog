@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T02:15:55.693561+00:00",
-  "sourceBaseline": "cf42773",
+  "checkedAt": "2026-10-29T02:20:45.291336+00:00",
+  "sourceBaseline": "f06e78c4caf74f9339abc55f0bf92798ecddb627",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,13 +45,13 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Accept directory-diagnostic activation/publication, then research documented methods for the 55 named included records without a configured method, starting with Meta-WebIndexer. Human trials remain deferred.",
+  "nextBoundedAction": "Research documented verification methods for the 55 named included records without either configured method, starting with Meta-WebIndexer. Preserve partial vendor rollout, unsigned roles and human/native ground-truth limits. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1328,
     "prompts": 31,
     "sourceSha256": "3e382c9f3b5935e5b3e67f5c77db4bf6f2d33b6e123de7a23910d6beda2e32ca",
     "unchanged": false,
-    "freshServedCheck": false,
+    "freshServedCheck": true,
     "publicationReceipt": "client-methods-release.json"
   },
   "runtimeUnchanged": false,
@@ -87,7 +87,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; not re-inspected in the retained-data/publication slice"
   },
-  "productionOwnSiteGets": 0,
+  "productionOwnSiteGets": 1,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -134,6 +134,9 @@
     "nodeAndNativePathsPerRuntime": 39,
     "collectorPairs": 14,
     "historicalCauseRecovered": false,
-    "productionSpecificFailureObserved": false
+    "productionSpecificFailureObserved": false,
+    "activationReceipt": "client-methods-release.json",
+    "productionActivationAccepted": true,
+    "optionalCaptureBindingsAbsent": true
   }
 }
