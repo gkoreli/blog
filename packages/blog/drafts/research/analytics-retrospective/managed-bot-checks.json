@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-10-29T05:46:25.435050+00:00",
+  "runtimeChanged": false,
+  "articleChanged": false,
+  "articleBodyWhitespaceWords": 1362,
+  "articlePrompts": 31,
+  "scriptSyntax": "pass",
+  "localNodeAndWorkerdCases": 9,
+  "localNodeAndWorkerdAgree": true,
+  "independentRfcCases": 9,
+  "independentVerified": 5,
+  "independentPolicyDifferences": 2,
+  "negativeGates": [
+    {
+      "name": "changed-input",
+      "rejected": true,
+      "acceptedOutputWritten": false
+    },
+    {
+      "name": "duplicate-variant",
+      "rejected": true,
+      "acceptedOutputWritten": false
+    }
+  ],
+  "nativeAttempts": [
+    {
+      "attempt": 1,
+      "result": "Sandbox loopback listen EPERM before receipt; no public calls"
+    },
+    {
+      "attempt": 2,
+      "result": "Authorized local workerd replay passed; no public calls"
+    }
+  ],
+  "productionOwnSiteRequests": 0,
+  "productionD1Statements": 0,
+  "newHumanLabels": 0,
+  "liveSiteAcceptance": "No current production runtime or health claim; read-only zone plan observation only.",
+  "privateArchive": {
+    "capturedFiles": 105,
+    "manifestSha256": "0b4328db977fe269af2c6ca5821222c39f89caa40e3639459e22f0e011d8d230",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "checks": "Syntax, frozen Node/workerd replay, independent RFC comparison, negative gates and local links pass; Markdown validation recorded separately.",
+  "localLinksChecked": 352,
+  "markdownValidation": "pass, 22 posts",
+  "productionBuild": "Not run: research/helpers only; shared dist untouched.",
+  "privateProofAndIdentifierScan": "pass",
+  "articleUnchangedSha256": "a44d8777d3ec5c5671f3437553be51bbe474908cc865f01ad5b2260c04fef9ba"
+}

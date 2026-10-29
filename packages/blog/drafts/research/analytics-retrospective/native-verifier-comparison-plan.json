@@ -1,6 +1,6 @@
 {
   "status": "proposed-not-executed",
-  "question": "Does the managed Cloudflare verifier accept the documented Google-style dictionary form, and can a request-level result be paired with the exact proof?",
+  "question": "For an identity eligible for Cloudflare’s documented intermediary signed-agent classification, can an actual native field be paired with each exact proof and local outcome across advertised wire forms?",
   "scope": "One controlled own-site identity, not Google/Exa impersonation, and no human-detection claim.",
   "readiness": {
     "ready": false,
@@ -8,7 +8,8 @@
     "acceptedControlledBotRegistration": false,
     "exactReceiptReadbackCapability": true,
     "existingReferralExclusionAccepted": true,
-    "controlledTrialProvisioned": false
+    "controlledTrialProvisioned": false,
+    "providerIntermediaryEligibilityConfirmed": false
   },
   "requiredEvidence": [
     {
@@ -18,6 +19,10 @@
     {
       "gate": "controlled-identity",
       "acceptance": "A controlled own-domain public key directory and accepted provider registration, with reviewed scope. Local key generation is not provider enrollment; no public enrollment or persistent credential operation is performed by saving this proposal."
+    },
+    {
+      "gate": "field-eligibility",
+      "acceptance": "Capture the accepted identity’s provider metadata and confirm that its Direct/Intermediary classification is eligible for signedAgent. Registration or generic known-bot recognition alone does not establish this field contract."
     },
     {
       "gate": "paired-proof",
@@ -74,7 +79,10 @@
     "Do not override request.cf in production or count workerd fixtures as the managed service.",
     "Nonce presence is not a uniqueness guarantee; repeat/expiry controls need a separate interpretation.",
     "Native authentication error/abstention rates apply only to the labelled authentication cohort, not people or production prevalence.",
-    "A native boolean is a provider assertion, not proof of full draft conformance, exact covered components or human intent. Negative controls must test its interpretation."
+    "A native boolean is a provider assertion, not proof of full draft conformance, exact covered components or human intent. Negative controls must test its interpretation.",
+    "cf.client.bot and verifiedBot use broader known-bot evidence and are recorded separately from signedAgent.",
+    "The public diagnostic’s unknown-key/verification-failure HTTP 401 is not a request-level native verdict or proof that a wire form is supported.",
+    "A false signedAgent result for a Direct identity cannot by itself establish cryptographic rejection; preserve provider classification and eligibility."
   ],
   "proposedBounds": {
     "maximumRequests": 12,
@@ -95,5 +103,15 @@
     "nullRatesWhenNoEligibleControls": true,
     "nativeDisagreements": "Report by condition and wire form; investigate registration, timing and field semantics before attributing a cryptographic failure.",
     "populationAccuracyClaim": false
+  },
+  "reviewedAt": "2026-10-29T05:46:25.435050+00:00",
+  "separatePublicDiagnostic": {
+    "status": "executed-unregistered-only",
+    "receipt": "managed-bot-diagnostic.json",
+    "requests": 9,
+    "registeredPositiveControls": 0,
+    "ownSiteExperimentExecuted": false,
+    "nativeBooleanObserved": false,
+    "managedCryptographicAgreementRate": null
   }
 }

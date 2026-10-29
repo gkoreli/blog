@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-10-29T05:37:16.841132+00:00",
+  "sources": [
+    {
+      "name": "signed-agent",
+      "url": "https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.signed_agent/",
+      "captureUrl": "https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.signed_agent/index.md",
+      "status": 200,
+      "sha256": "f52f2ecb31e1df9a46a4b7151fa36ced751109941483461d34ebbf8f58fb473f",
+      "bytes": 2604
+    },
+    {
+      "name": "client-bot",
+      "url": "https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.client.bot/",
+      "captureUrl": "https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.client.bot/index.md",
+      "status": 200,
+      "sha256": "8a90980b528adac0ed277bb7388ac9fc4f0e64386a5aaf59e6e279da88449f83",
+      "bytes": 2147
+    },
+    {
+      "name": "verified-bots",
+      "url": "https://developers.cloudflare.com/bots/concepts/bot/verified-bots/",
+      "captureUrl": "https://developers.cloudflare.com/bots/concepts/bot/verified-bots/index.md",
+      "status": 200,
+      "sha256": "d06b591bfcc4d89b4a2e06a601bd4e20d03234c619f58c209258d537586bee78",
+      "bytes": 13324
+    },
+    {
+      "name": "botbase",
+      "url": "https://developers.cloudflare.com/bots/botbase/",
+      "captureUrl": "https://developers.cloudflare.com/bots/botbase/index.md",
+      "status": 200,
+      "sha256": "5d07763554baa5052fceb3e9458d2b426d46bdf0747c06e2c5ff826fed1d4809",
+      "bytes": 5309
+    },
+    {
+      "name": "web-bot-auth",
+      "url": "https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/",
+      "captureUrl": "https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/index.md",
+      "status": 200,
+      "sha256": "f8333e5e9646ce3f3dba0ad626bed6569407944832a6d860f03d3df3e9e122fa",
+      "bytes": 19073
+    },
+    {
+      "name": "request",
+      "url": "https://developers.cloudflare.com/workers/runtime-apis/request/",
+      "captureUrl": "https://developers.cloudflare.com/workers/runtime-apis/request/index.md",
+      "status": 200,
+      "sha256": "e86fea537fe94d797c2120363659a2e69e872b6db6acc1a9c3915a1af1666851",
+      "bytes": 31359
+    },
+    {
+      "name": "variables",
+      "url": "https://developers.cloudflare.com/bots/reference/bot-management-variables/",
+      "captureUrl": "https://developers.cloudflare.com/bots/reference/bot-management-variables/index.md",
+      "status": 200,
+      "sha256": "a2dbc036c3bc6d34f0ddabac5b781499a3c2d6fd2078586ac7592b8d708bb04c",
+      "bytes": 8158
+    }
+  ]
+}

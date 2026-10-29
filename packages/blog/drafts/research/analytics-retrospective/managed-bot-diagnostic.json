@@ -1,0 +1,405 @@
+{
+  "checkedAt": "2026-10-29T05:46:25.435050+00:00",
+  "publicEndpoint": "https://crawltest.com/cdn-cgi/web-bot-auth",
+  "executedAt": "2026-10-29T05:40:03.690Z",
+  "sourceBaseline": "71534da55bf0b49b3d8d0f75b56d2fa305038d6f",
+  "inputSha256": "8105a5d397a12f7963940b5f6bf4f45dddc5b3b8c8769cc713cb6429f0a104d4",
+  "planSha256": "926615b6c2f814a3be1a667e35a5c81567969c7bd3940bd67e68571bd4f55d6c",
+  "probeScriptSha256": "9aae4d944051310a1a6dbb64656f5c6a1e2e6ff809d63a74a357d89168edceb9",
+  "probeResultSha256": "a0c35dc8190b336f0d09b8ad54e7deb941103d6544df5aee5a6aa2bae96c355b",
+  "localReplay": {
+    "checkedAt": "2026-10-29T05:45:08.474Z",
+    "inputSha256": "8105a5d397a12f7963940b5f6bf4f45dddc5b3b8c8769cc713cb6429f0a104d4",
+    "probeSha256": "a0c35dc8190b336f0d09b8ad54e7deb941103d6544df5aee5a6aa2bae96c355b",
+    "referenceSha256": "472ba69dfbf758aa3d055f9fb0c6e3def1a0390e7dc882acc07b8909ec2ada4e",
+    "scriptSha256": "e32735122e6a9d579c9f42c9221634c9142e873a4d888394a05adedbd2ae7745",
+    "bundleSha256": "68ca49413195b275e8ef7f6db03d9e301829bba37ef36585edb1e1f47ce833cc",
+    "verifierProfile": "2026-10-29.1",
+    "nodeAndNativeAgree": true,
+    "contextsPerRuntime": 9,
+    "rows": [
+      {
+        "variant": "unsigned",
+        "status": "absent",
+        "reason": null,
+        "headerForm": null,
+        "referenceValid": false
+      },
+      {
+        "variant": "structured-valid",
+        "status": "verified",
+        "reason": null,
+        "headerForm": "legacy-string",
+        "referenceValid": true
+      },
+      {
+        "variant": "structured-corrupt",
+        "status": "unverified",
+        "reason": "signature-invalid",
+        "headerForm": null,
+        "referenceValid": false
+      },
+      {
+        "variant": "structured-expired",
+        "status": "unverified",
+        "reason": "expired",
+        "headerForm": null,
+        "referenceValid": false
+      },
+      {
+        "variant": "bare-uri-valid",
+        "status": "verified",
+        "reason": null,
+        "headerForm": "bare-uri",
+        "referenceValid": true
+      },
+      {
+        "variant": "dictionary-valid",
+        "status": "verified",
+        "reason": null,
+        "headerForm": "dictionary",
+        "referenceValid": true
+      },
+      {
+        "variant": "agent-not-covered",
+        "status": "unverified",
+        "reason": "unsupported-or-missing-component",
+        "headerForm": null,
+        "referenceValid": true
+      },
+      {
+        "variant": "non-https-agent",
+        "status": "unverified",
+        "reason": "invalid-signature-agent",
+        "headerForm": null,
+        "referenceValid": true
+      },
+      {
+        "variant": "missing-keyid",
+        "status": "unverified",
+        "reason": "missing-keyid",
+        "headerForm": null,
+        "referenceValid": false
+      }
+    ],
+    "externalRequests": 0,
+    "d1Statements": 0,
+    "humanLabels": 0,
+    "limits": [
+      "Mocked directory resolution is not HTTPS reachability or provider enrollment.",
+      "Generic RFC verification does not enforce the Web Bot Auth component/discovery policy.",
+      "Local workerd is not the managed Cloudflare verifier."
+    ]
+  },
+  "reference": {
+    "checkedAt": "2026-10-29T05:44:39.083795+00:00",
+    "sourceCommit": "1de433d9a49fd608475c6054ab14a1652c088844",
+    "sourceFilesRechecked": 18,
+    "recordedClock": true,
+    "keyResolver": "per-trial captured publisher keys by RFC thumbprint",
+    "maxAgeSeconds": 86400,
+    "rows": [
+      {
+        "vendor": "synthetic",
+        "variant": "unsigned",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": null,
+        "error": "InvalidSignature"
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "structured-valid",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "structured-corrupt",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": null,
+        "error": "InvalidSignature"
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "structured-expired",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": null,
+        "error": "InvalidSignature"
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "bare-uri-valid",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "dictionary-valid",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "agent-not-covered",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "non-https-agent",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "missing-keyid",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": null,
+        "error": "InvalidSignature"
+      }
+    ],
+    "referenceCalls": 9,
+    "externalRequests": 0,
+    "limits": [
+      "Generic RFC verification; discovery, publisher registration and Web Bot Auth admission are separate.",
+      "An exception is not a complete census of valid candidates; this cohort has one eligible candidate per request."
+    ],
+    "inputSha256": "8105a5d397a12f7963940b5f6bf4f45dddc5b3b8c8769cc713cb6429f0a104d4",
+    "scriptSha256": "f9a687f4831239c9258dd1d54ee8943a1e714401f60bf875bfa97ba9acee7098",
+    "sourceManifestSha256": "b3b73b129b8f5424a4862bcf00528424cba91fe6874faae6648855151125ebd9"
+  },
+  "referenceDependencies": {
+    "cryptography": "50.0.2",
+    "http-sf": "1.5.0",
+    "cffi": "2.1.1",
+    "typing_extensions": "4.16.0",
+    "pycparser": "3.12"
+  },
+  "scope": {
+    "syntheticPublicDiagnosticRequests": 9,
+    "attemptsPerVariant": 1,
+    "retries": 0,
+    "registeredPositiveControls": 0,
+    "eligibleManagedRequestComparisons": 0,
+    "managedCryptographicAgreementRate": null,
+    "managedCryptographicErrorRate": null,
+    "ownSiteRequests": 0,
+    "d1Statements": 0,
+    "newHumanLabels": 0
+  },
+  "rows": [
+    {
+      "variant": "unsigned",
+      "startedAt": "2026-10-29T05:40:02.937Z",
+      "completedAt": "2026-10-29T05:40:03.174Z",
+      "local": {
+        "status": "absent",
+        "reason": null,
+        "headerForm": null
+      },
+      "response": {
+        "status": 400,
+        "contentType": "text/plain",
+        "serverDate": "Thu, 29 Oct 2026 05:40:03 GMT",
+        "bodyBytes": 61,
+        "bodySha256": "411775f33c6e8a05212dff7c447e079711b83b6d4a02aae504f771ed04813c8b",
+        "redirected": false
+      },
+      "nativeRequestSignedAgent": "unavailable",
+      "registeredIdentityConfirmed": false,
+      "positiveManagedVerificationEstablished": false
+    },
+    {
+      "variant": "structured-valid",
+      "startedAt": "2026-10-29T05:40:03.182Z",
+      "completedAt": "2026-10-29T05:40:03.247Z",
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "headerForm": "legacy-string"
+      },
+      "response": {
+        "status": 401,
+        "contentType": "text/plain",
+        "serverDate": "Thu, 29 Oct 2026 05:40:03 GMT",
+        "bodyBytes": 55,
+        "bodySha256": "2ef392b94efc0bed6d9e9a4809c45aa0cd5cd857b790e42157863007fa61d669",
+        "redirected": false
+      },
+      "nativeRequestSignedAgent": "unavailable",
+      "registeredIdentityConfirmed": false,
+      "positiveManagedVerificationEstablished": false
+    },
+    {
+      "variant": "structured-corrupt",
+      "startedAt": "2026-10-29T05:40:03.248Z",
+      "completedAt": "2026-10-29T05:40:03.310Z",
+      "local": {
+        "status": "unverified",
+        "reason": "signature-invalid",
+        "headerForm": null
+      },
+      "response": {
+        "status": 401,
+        "contentType": "text/plain",
+        "serverDate": "Thu, 29 Oct 2026 05:40:03 GMT",
+        "bodyBytes": 55,
+        "bodySha256": "2ef392b94efc0bed6d9e9a4809c45aa0cd5cd857b790e42157863007fa61d669",
+        "redirected": false
+      },
+      "nativeRequestSignedAgent": "unavailable",
+      "registeredIdentityConfirmed": false,
+      "positiveManagedVerificationEstablished": false
+    },
+    {
+      "variant": "structured-expired",
+      "startedAt": "2026-10-29T05:40:03.311Z",
+      "completedAt": "2026-10-29T05:40:03.358Z",
+      "local": {
+        "status": "unverified",
+        "reason": "expired",
+        "headerForm": null
+      },
+      "response": {
+        "status": 401,
+        "contentType": "text/plain",
+        "serverDate": "Thu, 29 Oct 2026 05:40:03 GMT",
+        "bodyBytes": 55,
+        "bodySha256": "2ef392b94efc0bed6d9e9a4809c45aa0cd5cd857b790e42157863007fa61d669",
+        "redirected": false
+      },
+      "nativeRequestSignedAgent": "unavailable",
+      "registeredIdentityConfirmed": false,
+      "positiveManagedVerificationEstablished": false
+    },
+    {
+      "variant": "bare-uri-valid",
+      "startedAt": "2026-10-29T05:40:03.360Z",
+      "completedAt": "2026-10-29T05:40:03.406Z",
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "headerForm": "bare-uri"
+      },
+      "response": {
+        "status": 401,
+        "contentType": "text/plain",
+        "serverDate": "Thu, 29 Oct 2026 05:40:03 GMT",
+        "bodyBytes": 55,
+        "bodySha256": "2ef392b94efc0bed6d9e9a4809c45aa0cd5cd857b790e42157863007fa61d669",
+        "redirected": false
+      },
+      "nativeRequestSignedAgent": "unavailable",
+      "registeredIdentityConfirmed": false,
+      "positiveManagedVerificationEstablished": false
+    },
+    {
+      "variant": "dictionary-valid",
+      "startedAt": "2026-10-29T05:40:03.408Z",
+      "completedAt": "2026-10-29T05:40:03.468Z",
+      "local": {
+        "status": "verified",
+        "reason": null,
+        "headerForm": "dictionary"
+      },
+      "response": {
+        "status": 401,
+        "contentType": "text/plain",
+        "serverDate": "Thu, 29 Oct 2026 05:40:03 GMT",
+        "bodyBytes": 55,
+        "bodySha256": "2ef392b94efc0bed6d9e9a4809c45aa0cd5cd857b790e42157863007fa61d669",
+        "redirected": false
+      },
+      "nativeRequestSignedAgent": "unavailable",
+      "registeredIdentityConfirmed": false,
+      "positiveManagedVerificationEstablished": false
+    },
+    {
+      "variant": "agent-not-covered",
+      "startedAt": "2026-10-29T05:40:03.469Z",
+      "completedAt": "2026-10-29T05:40:03.527Z",
+      "local": {
+        "status": "unverified",
+        "reason": "unsupported-or-missing-component",
+        "headerForm": null
+      },
+      "response": {
+        "status": 400,
+        "contentType": "text/plain",
+        "serverDate": "Thu, 29 Oct 2026 05:40:03 GMT",
+        "bodyBytes": 59,
+        "bodySha256": "38bbbb9cd59027467e3dd215eb77e5ee791075c0579ba2cab930af6f9b7c3a1e",
+        "redirected": false
+      },
+      "nativeRequestSignedAgent": "unavailable",
+      "registeredIdentityConfirmed": false,
+      "positiveManagedVerificationEstablished": false
+    },
+    {
+      "variant": "non-https-agent",
+      "startedAt": "2026-10-29T05:40:03.528Z",
+      "completedAt": "2026-10-29T05:40:03.631Z",
+      "local": {
+        "status": "unverified",
+        "reason": "invalid-signature-agent",
+        "headerForm": null
+      },
+      "response": {
+        "status": 401,
+        "contentType": "text/plain",
+        "serverDate": "Thu, 29 Oct 2026 05:40:03 GMT",
+        "bodyBytes": 55,
+        "bodySha256": "2ef392b94efc0bed6d9e9a4809c45aa0cd5cd857b790e42157863007fa61d669",
+        "redirected": false
+      },
+      "nativeRequestSignedAgent": "unavailable",
+      "registeredIdentityConfirmed": false,
+      "positiveManagedVerificationEstablished": false
+    },
+    {
+      "variant": "missing-keyid",
+      "startedAt": "2026-10-29T05:40:03.632Z",
+      "completedAt": "2026-10-29T05:40:03.689Z",
+      "local": {
+        "status": "unverified",
+        "reason": "missing-keyid",
+        "headerForm": null
+      },
+      "response": {
+        "status": 400,
+        "contentType": "text/plain",
+        "serverDate": "Thu, 29 Oct 2026 05:40:03 GMT",
+        "bodyBytes": 59,
+        "bodySha256": "38bbbb9cd59027467e3dd215eb77e5ee791075c0579ba2cab930af6f9b7c3a1e",
+        "redirected": false
+      },
+      "nativeRequestSignedAgent": "unavailable",
+      "registeredIdentityConfirmed": false,
+      "positiveManagedVerificationEstablished": false
+    }
+  ],
+  "currentZoneObservation": {
+    "observedAt": "2026-10-29T05:44:24.707Z",
+    "surface": "Authenticated zone overview",
+    "zonePlan": "Free plan",
+    "workersSubscription": "Workers Paid Plan",
+    "publishedSignedAgentRequirement": "Enterprise with Bot Management",
+    "actualRequestLevelFieldRechecked": false,
+    "planOrRuleChanges": false,
+    "fullEntitlementAudit": false
+  },
+  "limits": [
+    "HTTP 401 can mean an unknown key or failed verification; it is not a negative cryptographic oracle.",
+    "HTTP 400 is the documented other-error bucket, not proof of a particular parser cause.",
+    "No captured reader/vendor input, existing private key, enrollment, plan change or own-site traffic is used.",
+    "The public endpoint is separate from our site and exposes no request.cf native boolean.",
+    "Equal unknown-identity responses do not establish wire-form support or signature/freshness evaluation.",
+    "Public diagnostic HTTP status is not request.cf.botManagement.signedAgent.",
+    "A registered identity must also meet the documented intermediary classification before interpreting the signedAgent field."
+  ]
+}

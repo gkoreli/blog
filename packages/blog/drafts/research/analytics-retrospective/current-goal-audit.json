@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T05:33:40.334038+00:00",
-  "sourceBaseline": "60afd288e70726943d40291d271a39b533241470",
+  "checkedAt": "2026-10-29T05:46:25.435050+00:00",
+  "sourceBaseline": "71534da55bf0b49b3d8d0f75b56d2fa305038d6f",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,20 +45,20 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Review native signed-agent versus known-bot semantics and account exposure before a genuine-vendor managed-verifier comparison. Human trials remain deferred.",
+  "nextBoundedAction": "Inspect public registry entries and current primary signing promises for Exa and Ahrefs; separate per-client commitments, provider metadata and native-field eligibility. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1362,
     "prompts": 31,
     "sourceSha256": "a44d8777d3ec5c5671f3437553be51bbe474908cc865f01ad5b2260c04fef9ba",
-    "unchanged": false,
-    "freshServedCheck": true,
+    "unchanged": true,
+    "freshServedCheck": false,
     "publicationReceipt": "frozen-signed-release.json",
     "servedMatchesCheckedBuild": true,
     "lastServedCheckReceipt": "frozen-signed-release.json",
-    "publicationStatus": "Accepted source 60afd28: Ready/100%, exact Markdown bytes and HTML article text/links match checked isolated build."
+    "publicationStatus": "No article edit or fresh served check in phase 76; prior correction acceptance remains dated in frozen-signed-release.json."
   },
   "runtimeUnchanged": true,
-  "productionStatements": 2,
+  "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
@@ -90,7 +90,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 3,
+  "productionOwnSiteGets": 0,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -325,5 +325,17 @@
     "wholeHistoryCorrectnessProven": false,
     "actualUseOrHumanTriggerEstablished": false,
     "publicationReceipt": "frozen-signed-release.json"
+  },
+  "managedNativeBoundary": {
+    "receipt": "managed-bot-diagnostic.json",
+    "sources": "managed-bot-sources.json",
+    "checks": "managed-bot-checks.json",
+    "zonePlan": "Free plan",
+    "syntheticEndpointRequests": 9,
+    "registeredPositiveControls": 0,
+    "eligibleRequestComparisons": 0,
+    "managedCryptoAgreementRate": null,
+    "public401DoesNotEstablishFormatSupport": true,
+    "humanTrialsDeferred": true
   }
 }
