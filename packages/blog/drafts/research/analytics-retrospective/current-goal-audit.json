@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T18:33:55.903446+00:00",
-  "sourceBaseline": "7ad2405",
+  "checkedAt": "2026-10-29T18:39:30.490885+00:00",
+  "sourceBaseline": "fb83e99",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -50,17 +50,17 @@
     "prompts": 31,
     "sourceSha256": "d21b1c42552248dcd898bec484ae121c3b2320aad67b8db0477b1527d104f53c",
     "unchanged": false,
-    "freshServedCheck": false,
-    "publicationReceipt": null,
-    "servedMatchesCheckedBuild": false,
-    "lastServedCheckReceipt": "parallel-methods-release.json",
-    "publicationStatus": "Research 88 adds one short paragraph; source delivery and served acceptance pending.",
+    "freshServedCheck": true,
+    "publicationReceipt": "unresolved-metadata-release.json",
+    "servedMatchesCheckedBuild": true,
+    "lastServedCheckReceipt": "unresolved-metadata-release.json",
+    "publicationStatus": "Research 88 paragraph published and exact served Markdown accepted, 1407 words/31 prompts.",
     "previousPublicationReceipt": "parallel-methods-release.json",
-    "servedMatchScope": "No fresh served acceptance for this edit yet.",
+    "servedMatchScope": "Fresh exact direct Markdown only; no new served article-HTML/layout check.",
     "localBuildAccepted": true,
     "localBuildReceipt": "unresolved-metadata-checks.json"
   },
-  "runtimeUnchanged": false,
+  "runtimeUnchanged": true,
   "productionStatements": 1,
   "newVisits": 0,
   "newHumanLabels": 0,
@@ -174,7 +174,7 @@
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No collection-eligible own-site requests; natural/provider activity additional and not attributed to the SELECT."
   },
-  "newVisitsScope": "No experimental own-site requests. Publication acceptance, if performed, uses only an ineligible direct Markdown asset.",
+  "newVisitsScope": "No experimental own-site request or human label; one direct Markdown publication GET excluded by current eligibility control. No D1 ingestion readback.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -380,7 +380,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Current D1 metadata and read-only retained observability selections; no configuration changes.",
+  "liveAccountInspectionScope": "Read-only D1/observability and source-linked build, exact-version/fresh CLI allocation; one excluded direct Markdown GET matches the checked isolated build. No configuration changes.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -654,6 +654,8 @@
     "runtimeChanged": false,
     "articleChanged": true,
     "originalWireOrHumanTruthEstablished": false,
-    "checks": "unresolved-metadata-checks.json"
-  }
+    "checks": "unresolved-metadata-checks.json",
+    "release": "unresolved-metadata-release.json"
+  },
+  "runtimeUnchangedScope": "Research 88 investigation and article publication; earlier runtime changes retain their per-phase records."
 }

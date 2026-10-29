@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-10-29T18:39:30.490885+00:00",
+  "sourceBaseline": "7ad2405",
+  "sourceCommit": "fb83e991f968cbf770262a7aa2372319b1559c69",
+  "build": {
+    "id": "9b1d2d61-863d-4422-beac-fb40348ad922",
+    "status": "Ready; build and deploy commands succeeded",
+    "sourceLinked": true,
+    "logLinkedWorkerVersion": "c3a7b32c-5ad3-412b-8bd1-1c8c8e79c942",
+    "postsBuilt": 33,
+    "node": "24.22.1"
+  },
+  "localNode": "24.14.1",
+  "activation": {
+    "workerVersion": "c3a7b32c-5ad3-412b-8bd1-1c8c8e79c942",
+    "freshCliAllocationPercentage": 100,
+    "optionalBindingsAbsent": [
+      "ANALYTICS_DIAGNOSTICS",
+      "ANALYTICS_NATIVE_CAPTURE",
+      "ANALYTICS_CALIBRATION"
+    ],
+    "dashboardActiveDisplay": "Captured Active row still showed preceding b11d176e while the source row was Ready; fresh CLI links current source Worker to 100%. No cause inferred."
+  },
+  "publication": {
+    "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove.md",
+    "status": 200,
+    "contentType": "text/markdown; charset=utf-8",
+    "bytes": 15612,
+    "sha256": "581c8a6721aebcb51c8b71b8b13159c50b5d9f4ed83e80dba9d6954fbd633ba7",
+    "matchesCheckedIsolatedBuild": true,
+    "articleBodyWhitespaceWords": 1407,
+    "prompts": 31,
+    "freshServedHtmlInspected": false,
+    "scope": "Exact served Markdown and current allocation. No per-request Worker-version trace or fresh served article-HTML/layout acceptance."
+  },
+  "probe": {
+    "ownSiteGetRequests": 1,
+    "collectionEligibleRequestsByCurrentCode": 0,
+    "eligibilityControlPassed": true,
+    "newDirectD1Statements": 0,
+    "publicReportCalculations": 0,
+    "humanLabels": 0,
+    "measuredD1IngestionReadback": false
+  },
+  "investigationMetering": {
+    "statements": 1,
+    "reportedReads": 1453,
+    "reportedWrites": 0,
+    "providerAttempts": 1,
+    "providerLogQueryCost": "unavailable"
+  },
+  "runtimeChanged": false,
+  "newCaptureBindingActivated": false,
+  "goalAchieved": false,
+  "humanTrialsDeferred": true,
+  "privateEvidence": {
+    "dataManifestSha256": "c1a2ae8be9f9b47ebd7a21f987eee2b0362d91a6b8ce07edb5fa940445ff64b6",
+    "livePlanManifestSha256": "1b8df5f0dec998b75248c18bce77bc28d436c511956ed6c4676212edc5d7dd61",
+    "liveManifestSha256": "5886de72a1ac721d0bdf634bf2700461afbb0acc3f433aa25a37b76524d1cb52",
+    "liveFiles": 19,
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  }
+}
