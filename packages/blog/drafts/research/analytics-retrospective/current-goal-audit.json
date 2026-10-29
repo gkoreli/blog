@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-29T23:20:30.874479+00:00",
-  "sourceBaseline": "15a686806b3930d72725a6bbd535b55f5c190ac3",
+  "checkedAt": "2026-10-29T23:34:32.779008+00:00",
+  "sourceBaseline": "36839d778ed69c20e304eda94decdc28ebef9997",
   "goalAchieved": false,
   "previousTurn": "progress",
-  "scope": "Closed subscription diagnostic evidence/occurrence implementation and schema accepted; source/build/full allocation and exact served JS/privacy accepted. Live metadata write/readback remains separate. Full analytics goal retained.",
+  "scope": "One labelled production diagnostic ingestion/readback and exact cleanup accepted. Native control helper/guards and138site tests/types pass; original analytics goal retained.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Native-test and freeze one labelled diagnostic write/readback/guarded-cleanup control; distinguish direct ingestion from actual browser reporting, preserve receipts, and avoid natural-error inflation. GSC login/Duck.ai terms approval pending; human trials deferred.",
+  "nextBoundedAction": "Native-test delayed/failed persistence and rejected HTTP responses; make error-report acknowledgment confirm completed storage, without automatic retries or duplicate reports. Build/correlation/admission/bootstrap, native verification and readership requirements remain open. GSC login/Duck.ai terms approval pending; human trials deferred.",
   "article": {
     "bodyWhitespaceWords": 1450,
     "prompts": 31,
@@ -62,8 +62,8 @@
     "localBuildAccepted": true,
     "localBuildReceipt": "public-parsing-checks.json"
   },
-  "runtimeUnchanged": false,
-  "productionStatements": 5,
+  "runtimeUnchanged": true,
+  "productionStatements": 3,
   "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
@@ -95,7 +95,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 2,
+  "productionOwnSiteGets": 0,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -170,13 +170,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 208,
-  "productionDiagnosticWrites": 0,
+  "productionReportedReads": 9,
+  "productionDiagnosticWrites": 1,
   "normalIngestion": {
-    "acknowledgedApplicationRows": 0,
-    "providerWriteMetering": "No collection-eligible own-site request or ingestion readback. No per-request write trace; natural/provider activity additional."
+    "acknowledgedApplicationRows": 1,
+    "providerWriteMetering": "One synthetic record observed through readback, then removed; no captured ingestion write meter. Natural/provider activity additional."
   },
-  "newVisitsScope": "Two frozen asset/privacy prefetch GETs; source-excluded, no ingestion readback. Provider account inspection additional. No human or browser page visit.",
+  "newVisitsScope": "One labelled direct diagnostic POST, no site GET/browser/human visit; provider-account inspection additional. Does not add a page-classifier trial.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -629,9 +629,9 @@
     "exactRetainedRequestVersionMatched": true,
     "liveEmptyCounters": 44
   },
-  "productionDirectDiagnosticSelects": 3,
+  "productionDirectDiagnosticSelects": 2,
   "productionReportCalculations": 0,
-  "productionReadScope": "Schema metadata/DDL only; no diagnostic reader records selected.",
+  "productionReadScope": "Only owned-control occurrence/ingestion/evidence fields returned; no reader records or generated identifiers exported.",
   "unresolvedMetadata": {
     "research": "88-unresolved-metadata-and-retained-inputs.md",
     "production": "unresolved-metadata-production.json",
@@ -659,7 +659,7 @@
     "checks": "unresolved-metadata-checks.json",
     "release": "unresolved-metadata-release.json"
   },
-  "runtimeUnchangedScope": "Subscription diagnostic client/parser/writer and privacy disclosure change; analytics collector/classifier/verifier/report unchanged. Production schema adds two nullable columns without a backfill. No sender/verification/limit/credential change.",
+  "runtimeUnchangedScope": "Offline control helper/test and evidence only; client/server/collector/classifier/verifier/schema/privacy runtime unchanged.",
   "localMetadataRelay": {
     "research": "89-local-browser-relays-and-fetch-metadata.md",
     "experiment": "local-metadata-relay-experiment.json",
@@ -718,7 +718,7 @@
     "productionCollectorReadbackReceipt": "metadata-collector-production.json",
     "productionCollectorReadbackScope": "Four matched requests on d65be377; the later article-only publication Worker is accepted separately, without repeating collector trials."
   },
-  "newControlledRequests": 2,
+  "newControlledRequests": 1,
   "liveMetadataControls": {
     "research": "91-live-metadata-controls-and-redacted-correlation.md",
     "native": "metadata-collector-native.json",
@@ -763,9 +763,9 @@
     "warmCache": "HIT",
     "populationPrevalenceMeasured": false
   },
-  "ownSiteGetRequests": 2,
+  "ownSiteGetRequests": 0,
   "collectionEligibleRequests": 0,
-  "diagnosticSelects": 3,
+  "diagnosticSelects": 2,
   "evidenceDelta": {
     "research": "93-frozen-delta-and-reusable-evidence.md",
     "production": "evidence-delta-production.json",
@@ -808,7 +808,7 @@
     "humanGrowthEstablished": false,
     "sourcePolicyChanged": false,
     "searchQueriesMeasured": false,
-    "searchConsole": "Signed out, owner sign-in requested; no reply yet",
+    "searchConsole": "Existing tab rechecked:accounts.google.com account chooser; no authenticated search report inspected.",
     "subscriberActive": 1,
     "activeCreatedInWindow": 0,
     "activeLatestConfirmedInWindow": 0,
@@ -838,9 +838,9 @@
     "unmeteredCalculations": 1,
     "productionBrowserLayoutMeasured": false
   },
-  "productionStatementsScope": "Two schema preflights, two ALTER statements and one final metadata query, plus one preserved CLI argument failure without a D1 result/meter.",
-  "productionReportedReadsCoverage": "208 reads/two DDL writes across five returned meters; rejected CLI has no D1 meter. No account-wide cost claim.",
-  "productionReadTotal": 208,
+  "productionStatementsScope": "One owned-control readback, one exact guarded DELETE and one absence query. API ingestion write separate and unmetered.",
+  "productionReportedReadsCoverage": "Nine measured reads/one cleanup write over three primary statements. One ingestion record observed, but its write meter and total/account-wide cost remain unavailable.",
+  "productionReadTotal": 9,
   "publicationDateRepair": {
     "receipt": "article-reach-date-checks.json",
     "siteTests": 120,
@@ -928,7 +928,7 @@
     "runtimeChanged": false,
     "humanLabels": 0
   },
-  "productionDdlWrites": 2,
+  "productionDdlWrites": 0,
   "subscriptionDiagnosticEvidence": {
     "research": "../newsletter-reliability/19-subscription-error-phase-and-provider-evidence.md",
     "native": "../newsletter-reliability/subscription-evidence-native.json",
@@ -941,7 +941,7 @@
     "legacyNewFieldsNull": true,
     "schemaAccepted": true,
     "writerActivationAccepted": true,
-    "liveMetadataReadback": false,
+    "liveMetadataReadback": true,
     "buildIdentitySupplied": false,
     "acknowledgmentContractChanged": false,
     "runtimeAnalyticsChanged": false,
@@ -952,6 +952,32 @@
     "workerVersion": "45650ef9-6f8b-405c-bd39-2a6dc8acd998",
     "servedClientExactMatch": true,
     "servedPrivacyNormalizedMatch": true,
-    "privateReleaseManifestSha256": "6f67ba00ec3c415dc81cfa23e5768bdc5dad2d5ba1f37c8437910edfe37ff15b"
+    "privateReleaseManifestSha256": "6f67ba00ec3c415dc81cfa23e5768bdc5dad2d5ba1f37c8437910edfe37ff15b",
+    "liveControl": "../newsletter-reliability/subscription-control-production.json",
+    "liveControlScope": "One direct HTTP ingestion, no actual browser callback/transport or population acceptance; fixture cleaned."
+  },
+  "ownSitePostRequests": 1,
+  "diagnosticControlPosts": 1,
+  "diagnosticControl": {
+    "research": "../newsletter-reliability/20-production-diagnostic-readback-and-cleanup.md",
+    "production": "../newsletter-reliability/subscription-control-production.json",
+    "native": "../newsletter-reliability/subscription-control-native.json",
+    "operator": "controlled-http-client",
+    "postAttempts": 1,
+    "observedStoredRows": 1,
+    "removedRows": 1,
+    "remainingMarkerRows": 0,
+    "extraPropertyDiscarded": true,
+    "primaryReceipts": 3,
+    "reportedReads": 9,
+    "reportedCleanupWrites": 1,
+    "ingestionMeterAvailable": false,
+    "runtimeChanged": false,
+    "siteTests": 138,
+    "pageClassifierTrialsAdded": 0,
+    "actualBrowserTransportAccepted": false,
+    "generalDurabilityAccepted": false,
+    "humanLabels": 0,
+    "privateDataManifestSha256": "dcb2e75560909a752457311b0e6678ec219f85125c1468735ea9ffb874214ea5"
   }
 }

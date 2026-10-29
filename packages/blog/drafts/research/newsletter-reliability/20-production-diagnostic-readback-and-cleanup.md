@@ -1,0 +1,27 @@
+# Read back the diagnostic before claiming it was stored
+
+October 29, 2026 UTC. [Research 19](19-subscription-error-phase-and-provider-evidence.md) accepted the new phase/provider/occurrence implementation and its served artifacts. This experiment closes its direct-ingestion persistence check. Browser callback delivery, human operation and population accuracy remain separate.
+
+## One labelled production record
+
+A frozen private plan authorizes one POST to `/api/client-error`, one readback, one exact guarded cleanup and one absence check. Its synthetic report uses `/owner`, a private random marker, the subscription component and a chosen `idle`/`200500` evidence value. An extra property tests whether normalization discards unrecognized data. The payload has no email, credentials, user agent, referrer, reader ID or form values. Its occurrence time is a planned synthetic claim, not an observed human event or a real provider error.
+
+[Production receipt](subscription-control-production.json): one HTTP request returns 204. That response is not used as persistence proof. A separate indexed query finds exactly one controlled record, with the expected occurrence time and normalized evidence. The extra property is absent. The ingestion time is separately generated. Cleanup removes one exact controlled row, and the final query finds no remaining match. All three SQL meters report `served_by_primary: true`; Cloudflare [documents primary/replica metadata](https://developers.cloudflare.com/d1/best-practices/read-replication/#observability). These observations establish the measured sequence, not completeness of other reports.
+
+The three statements cost **nine reported reads and one cleanup write**. The Worker ingestion created one observed application record, but its write meter was not captured; total database write cost is therefore unavailable. No POST is repeated to obtain a better receipt. Provider logs may retain the labelled control under their own lifecycle after the D1 fixture is removed. No page observation is selected or changed, and there is no signup, email, challenge, own-site GET or human trial.
+
+## Guard the cleanup as carefully as the write
+
+The [helper](../../../scripts/subscription-diagnostic-control.mjs) builds statements only. It validates a bounded reference and canonical timestamp, then selects by the complete private marker, exact path, component and event type. It reads at most two matching candidates. Cleanup deletes only when exactly one exists and returns a literal count; it exposes no generated row ID. Two candidates cause neither to be removed. A missing or incorrect metadata field does not prevent cleanup of the uniquely owned fixture. No prefix delete is used.
+
+[Native checks](subscription-control-native.json) exercise the actual handler, readback and cleanup through local D1. Four adjacent controls survive; two ambiguous candidates survive; an owned row with missing metadata is safely removed. All 4,096 unrelated fixture rows remain. The path index is confirmed. An initial assertion wrongly expected constant read cost: the observed read meter rises from two to three after those unrelated inserts, while results stay equal. The failed assertion is preserved; no cause or constant-cost guarantee is inferred. A later helper syntax error occurs before execution and is also retained. The corrected native run passes and disposes its runtime. The [repository regression test](../../../test/subscription-diagnostic-control.test.mjs), all **138 site tests** and workspace types pass.
+
+## Source and evidence limits
+
+Before execution, successful native build `d0eb8216` links exact source `36839d7` to Worker `2a8c948e-5636-4547-b065-ab7d3bfe61f0`; a fresh CLI capture confirms 100% allocation. Runtime hashes match the checked Research 19 implementation. There is no per-request version trace. The provider build observes Node 24.22.1; local checks use the pinned Node 24.14.1. This iteration changes only the offline control helper, its test and evidence; no client, server, collector, classifier, verifier, schema or privacy runtime changes.
+
+Historical reports retain their unknowns. The original page-classifier calibration cohort is unchanged. Search Console's existing tab is rechecked and remains at Google's account chooser; no authenticated query/page report is inspected. Duck.ai terms approval remains pending, and human trials remain deferred.
+
+The remaining acknowledgment gap is concrete: the handler can return 204 before its caught background write finishes; the fallback fetch ignores non-2xx status. A successful controlled round trip does not repair that contract. Next, test delayed/failed persistence and rejected HTTP responses, then make acknowledgment describe confirmed storage without adding retries or duplicate reports. TASK-0125/0126 retain build identity, correlation, admission and bootstrap work. The wider readership and native-verification goals remain open.
+
+The private 72-file archive preserves plans, source, rejected local assertions, native/production results, selected readback, cleanup and handoff under SHA-256 manifest `dcb2e75560909a752457311b0e6678ec219f85125c1468735ea9ffb874214ea5`. Its immutable eight-file pre-execution plan is linked by the production receipt. Raw control markers, request metadata and account-chooser captures stay outside Git. October 31 is a review date, not automatic deletion.

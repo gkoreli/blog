@@ -39,3 +39,5 @@ Two frozen, one-attempt prefetch GETs return 200. All 28,162 bytes of client Jav
 Next: native-test and freeze one labelled direct-ingestion write/readback/guarded-cleanup control. It must remain separate from actual browser callback delivery and human measurements, and it must not inflate natural diagnostic totals.
 
 The private 23-file release archive has SHA-256 manifest `6f67ba00ec3c415dc81cfa23e5768bdc5dad2d5ba1f37c8437910edfe37ff15b`. It preserves both check identities, plans, native build state/screenshot, allocation and saved responses/controllers. Served artifact hashes match the acceptance receipt. The broader analytics goal remains open.
+
+[Research 20](20-production-diagnostic-readback-and-cleanup.md) subsequently accepts one labelled direct-ingestion record, exact metadata readback and guarded cleanup/absence verification. This closes the planned persistence control for its measured source/Worker. It does not establish actual browser callback delivery or general transport durability.

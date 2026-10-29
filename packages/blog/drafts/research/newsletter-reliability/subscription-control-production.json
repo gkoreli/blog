@@ -1,0 +1,102 @@
+{
+  "checkedAt": "2026-10-29T23:33:40.304487+00:00",
+  "sourceCommit": "36839d778ed69c20e304eda94decdc28ebef9997",
+  "workerVersion": "2a8c948e-5636-4547-b065-ab7d3bfe61f0",
+  "allocation": 100,
+  "buildCheckId": 123793079925,
+  "buildUrl": "https://dash.cloudflare.com/7e0dc86ef69b4572a63162a52cddd269/workers/services/view/gkoreli-com/production/builds/d0eb8216-482e-43de-8f00-059b4b3dc5d1",
+  "nativeSourceVersionJoin": true,
+  "perRequestVersionTrace": false,
+  "operatorLabel": "controlled-http-client",
+  "directIngestionControls": 1,
+  "actualBrowserCallbackControls": 0,
+  "humanLabels": 0,
+  "post": {
+    "endedAt": "2026-10-29T23:28:51.397533+00:00",
+    "curlExit": 0,
+    "status": 204,
+    "bodyBytes": 0,
+    "agentPostAttempts": 1,
+    "persistenceNotProvedByStatus": true
+  },
+  "readback": {
+    "checkedAt": "2026-10-29T23:29:01.794Z",
+    "state": "matched",
+    "rows": 1,
+    "occurredAt": "2026-10-29T23:24:53.626Z",
+    "ingestedAt": "2026-10-29 23:28:51",
+    "evidence": {
+      "state": "recorded",
+      "profile": "subscribe-error-v1",
+      "phase": "idle",
+      "turnstileError": {
+        "state": "bounded-code",
+        "code": "200500"
+      }
+    }
+  },
+  "cleanup": {
+    "checkedAt": "2026-10-29T23:29:08.903Z",
+    "removedRows": 1
+  },
+  "verification": {
+    "checkedAt": "2026-10-29T23:29:16.064Z",
+    "state": "absent",
+    "rows": 0
+  },
+  "extraPropertyDiscarded": true,
+  "providerCodeMeaning": "Chosen synthetic input, not an observed vendor challenge failure",
+  "occurrenceTimeMeaning": "Planned client-reported test instant; not proof of actual occurrence time",
+  "meters": [
+    {
+      "stage": "readback",
+      "reportedRowsRead": 3,
+      "reportedRowsWritten": 0,
+      "providerTotalAttempts": 1,
+      "agentAttempts": 1,
+      "thresholdNotDatabaseCap": true,
+      "servedByPrimary": true,
+      "changes": 0
+    },
+    {
+      "stage": "cleanup",
+      "reportedRowsRead": 5,
+      "reportedRowsWritten": 1,
+      "providerTotalAttempts": 1,
+      "agentAttempts": 1,
+      "thresholdNotDatabaseCap": true,
+      "servedByPrimary": true,
+      "changes": 1
+    },
+    {
+      "stage": "verify",
+      "reportedRowsRead": 1,
+      "reportedRowsWritten": 0,
+      "providerTotalAttempts": 1,
+      "agentAttempts": 1,
+      "thresholdNotDatabaseCap": true,
+      "servedByPrimary": true,
+      "changes": 0
+    }
+  ],
+  "reportedReads": 9,
+  "reportedCleanupWrites": 1,
+  "observedIngestionRows": 1,
+  "ingestionWriteMeterAvailable": false,
+  "ownSiteGets": 0,
+  "pageObservationReadback": false,
+  "productionEmails": 0,
+  "planManifestSha256": "2dc626e67f1e2394dac94960d29063aa20d89b31b3636800dd36ba4e6d700c83",
+  "nativeControlReceipt": "subscription-control-native.json",
+  "runtimeChanged": false,
+  "actualBrowserTransportAccepted": false,
+  "allClientErrorDurabilityAccepted": false,
+  "legacyCalibrationCohortChanged": false,
+  "googleSearchConsole": "Current tab remains on accounts.google.com; no authenticated search report inspected",
+  "limits": [
+    "One direct-ingestion record persisted at the readback time; this does not establish browser or population delivery rates.",
+    "Cleanup and absence verified for the exact private marker, not every provider log or future event.",
+    "All fields are synthetic client claims, not person/bot/provider identity or an actual Turnstile failure."
+  ],
+  "privateDataManifestSha256": "dcb2e75560909a752457311b0e6678ec219f85125c1468735ea9ffb874214ea5"
+}
