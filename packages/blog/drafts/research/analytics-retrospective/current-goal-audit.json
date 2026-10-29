@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T01:24:52.568358+00:00",
-  "sourceBaseline": "e1b9a54",
+  "checkedAt": "2026-10-29T01:54:19.455852+00:00",
+  "sourceBaseline": "d2a07b5",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -35,7 +35,7 @@
     "Concise article and preserved source/evidence trail"
   ],
   "incomplete": [
-    "Genuine signed persistence under latest collector",
+    "Complete new-collector signed-input/receipt/proof acceptance; 52 current-profile stored verified outcomes are now observed, without complete inputs or fresh cryptographic replay",
     "Request-level native managed-verifier comparison",
     "Human/device/actual-JavaScript-off and Cloudflare RUM-receipt measurements",
     "R1 operator/authenticity/trigger attribution",
@@ -45,16 +45,16 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Recover the frozen private observation-ID bound, native-test a bounded retained-data delta query and its cost, then reconcile new rows under an explicit D1 budget without rewriting history. Genuine positive/relay and deferred human gates remain open.",
+  "nextBoundedAction": "Accept article publication, then assess reviewed client labels against signature/method availability within this frozen cohort and inspect closed unavailable-verification reasons. Preserve raw-input and ground-truth limits; human trials remain deferred.",
   "article": {
-    "bodyWhitespaceWords": 1280,
+    "bodyWhitespaceWords": 1291,
     "prompts": 31,
-    "sourceSha256": "4d84dfbaf3a94ee6625f3d3189cae193346ef9e860daf485c62288fc4db3b601",
+    "sourceSha256": "5659e2526a5f5236b92a2578f25cc02edd697d4a9c9ea4bef4bc367c5067f97e",
     "unchanged": false,
-    "freshServedCheck": true
+    "freshServedCheck": false
   },
   "runtimeUnchanged": true,
-  "productionStatements": 0,
+  "productionStatements": 3,
   "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
@@ -68,7 +68,6 @@
     "runtimeCapture": "23 actual controls / 19 valid capture+log pairs / one guard unavailable; cleanup accepted",
     "captureReceipt": "native-capture-local.json",
     "deliveryReceipt": "native-capture-delivery.json",
-    "ruleCurrentlyActive": false,
     "liveReceipt": "native-capture-live.json",
     "positiveAndRelays": "unexecuted",
     "disabledBeforeExpiry": "Research 63: two enabled plus two disabled-before-expiry controls, four exact capture/log pairs, no extension, minimum capture margin 216875 ms; accepted in this separate cohort.",
@@ -83,9 +82,30 @@
       "releaseReceipt": "native-capture-failure-release.json"
     },
     "disabledBeforeExpiryReceipt": "disabled-before-expiry-live.json",
-    "disabledBeforeExpiryPublication": "disabled-before-expiry-release.json"
+    "disabledBeforeExpiryPublication": "disabled-before-expiry-release.json",
+    "lastObservedRuleActive": false,
+    "ruleInspectionReference": "disabled-before-expiry-release.json; not re-inspected in this D1-only slice"
   },
-  "productionOwnSiteGets": 5,
+  "productionOwnSiteGets": 0,
   "collectionEligibleGets": 0,
-  "ownerMarkPosts": 1
+  "ownerMarkPosts": 0,
+  "retainedDelta": {
+    "receipt": "retained-delta-production.json",
+    "reasonReceipt": "retained-delta-reasons.json",
+    "newIdRows": 712,
+    "included": 711,
+    "referralExcluded": 1,
+    "ownerExcluded": 0,
+    "includedBrowserClassifications": 42,
+    "includedUnresolved": 83,
+    "currentProfileVerifiedOutcomes": 52,
+    "verifiedUserAgentOrResourceBound": 0,
+    "allNativeUnavailable": 712,
+    "reasonFollowupDistinct": 84,
+    "reasonFollowupOverlap": 2,
+    "reportedReads": 37505,
+    "reportedWrites": 0,
+    "statements": 3,
+    "scope": "Fixed new-ID range after the archived 32363-row census; no old-row mutation or complete-database snapshot claim"
+  }
 }

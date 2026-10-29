@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-29T01:53:21.780683+00:00",
+  "sourceBaseline": "d2a07b56dc2d9fc5d4ad7ae9d14286a59ad05f4e",
+  "sourceCommit": null,
+  "publication": "pending",
+  "dataAccepted": true,
+  "primaryStatements": 2,
+  "separatelyPlannedFollowupStatements": 1,
+  "reportedProductionReads": 37505,
+  "reportedProductionWrites": 0,
+  "providerReportedAttempts": [
+    1,
+    1,
+    1
+  ],
+  "agentRetries": 0,
+  "dataOwnSiteGets": 0,
+  "publicReportFills": 0,
+  "newHumanLabels": 0,
+  "runtimeSchemaAndCollectionSettingsChanged": false,
+  "checks": {
+    "freshAnalyticsFixtureCompilation": true,
+    "nativeSignatureFixtures": 28,
+    "nativeNetworkFixtures": 33,
+    "nativeReasonInputFixtures": 9,
+    "mainScaleCombinedReads": 264076,
+    "followup8192RowFixtureReads": 86629,
+    "followup8192Fits20000Budget": false,
+    "followup712RowFixtureReads": 11830,
+    "postExecutionParserReplayUnchanged": true,
+    "postValidationMarkdownPosts": 21,
+    "isolatedSourceCopyBuildPosts": 32,
+    "sharedDistUntouched": true,
+    "freshFullRuntimeSuites": "Not run: runtime source/dependencies unchanged; existing acceptance retained"
+  },
+  "article": {
+    "bodyWhitespaceWords": 1291,
+    "prompts": 31,
+    "freshServedCheck": false
+  },
+  "sourceSha256": {
+    "packages/blog/scripts/check-retained-delta.mjs": "6b2dcbfad1a788e3a4682f0abc6c741d4af22f56de099facc2680ac3fd10b94f",
+    "packages/blog/scripts/check-retained-delta-reasons.mjs": "2881afbfef3960ee4af5a77b54559699d15c2d06ce7e4b19a9d9975c26ecd643",
+    "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "5659e2526a5f5236b92a2578f25cc02edd697d4a9c9ea4bef4bc367c5067f97e"
+  },
+  "executedHelpers": {
+    "censusSha256": "6b2dcbfad1a788e3a4682f0abc6c741d4af22f56de099facc2680ac3fd10b94f",
+    "reasonSha256": "cd8bf87edf14df3e6ca7474c86f89ffe24c7aa5e4015997ccea5f9cfeeef2d6d",
+    "reasonCheckedSourceDiffersOnlyInValidationAndItsRegression": true,
+    "productionSqlTemplateUnchanged": true
+  },
+  "privateArchive": {
+    "name": "2026-10-29-retained-delta",
+    "createdAt": "2026-10-29T01:54:22.639000+00:00",
+    "files": 42,
+    "manifestSha256": "bfba684ac250c558fe433ffb0fcd60c37674002934b9601842877168084c46fc",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false,
+    "modes": "0700/0600"
+  },
+  "nextBoundedAction": "Accept the concise article publication, then assess reviewed client labels against signature/method availability within this frozen cohort; inspect closed unavailable-verification reasons without assuming a vendor from the AI-search label."
+}

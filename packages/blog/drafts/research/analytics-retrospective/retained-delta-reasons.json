@@ -1,0 +1,67 @@
+{
+  "checkedAt": "2026-10-29T01:40:44.455Z",
+  "method": "Separate bounded follow-up over the same frozen ID range; no held transaction with the earlier census",
+  "selectedDistinctRows": 84,
+  "includedUnresolved": 83,
+  "includedUnverified": 3,
+  "overlap": 2,
+  "groups": [
+    {
+      "inclusion": "included",
+      "stored_kind": "ai-search",
+      "local_state": "unverified",
+      "unresolved_reason": "not-applicable",
+      "context_support": "inputs-not-assessed",
+      "failure_outcome": "unavailable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "stored_kind": "unresolved",
+      "local_state": "absent",
+      "unresolved_reason": "fetch-metadata-absent",
+      "context_support": "inputs-not-assessed",
+      "failure_outcome": "not-applicable",
+      "views": 50
+    },
+    {
+      "inclusion": "included",
+      "stored_kind": "unresolved",
+      "local_state": "absent",
+      "unresolved_reason": "fetch-metadata-support-unknown",
+      "context_support": "inputs-not-assessed",
+      "failure_outcome": "not-applicable",
+      "views": 1
+    },
+    {
+      "inclusion": "included",
+      "stored_kind": "unresolved",
+      "local_state": "absent",
+      "unresolved_reason": "unrecognized-browser-claim",
+      "context_support": "inputs-not-assessed",
+      "failure_outcome": "not-applicable",
+      "views": 30
+    },
+    {
+      "inclusion": "included",
+      "stored_kind": "unresolved",
+      "local_state": "unverified",
+      "unresolved_reason": "unrecognized-browser-claim",
+      "context_support": "inputs-not-assessed",
+      "failure_outcome": "invalid",
+      "views": 2
+    }
+  ],
+  "metering": {
+    "additionalReads": 10346,
+    "additionalWrites": 0,
+    "additionalStatements": 1,
+    "providerReportedAttempts": 1,
+    "totalInvestigationReads": 37505,
+    "totalInvestigationStatements": 3,
+    "additionalReadReviewThreshold": 20000,
+    "serverEnforcedCap": false
+  },
+  "noNewHumanLabels": true,
+  "noRawInputsReturned": true
+}

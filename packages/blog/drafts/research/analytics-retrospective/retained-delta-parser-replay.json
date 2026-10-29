@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-29T01:49:39.780Z",
+  "oldParserAcceptsReorderedDuplicate": true,
+  "currentParserRejectsReorderedDuplicate": true,
+  "capturedResultUnchanged": true,
+  "sqlTemplateUnchanged": true,
+  "productionQueriesRepeated": 0,
+  "oldExecutedSourceSha256": "cd8bf87edf14df3e6ca7474c86f89ffe24c7aa5e4015997ccea5f9cfeeef2d6d",
+  "checkedSourceSha256": "2881afbfef3960ee4af5a77b54559699d15c2d06ce7e4b19a9d9975c26ecd643",
+  "limits": [
+    "The earlier overall-count gates also rejected changed totals; this low-level detector weakness is not evidence of production overcount",
+    "No such duplicate occurs in the captured result"
+  ]
+}

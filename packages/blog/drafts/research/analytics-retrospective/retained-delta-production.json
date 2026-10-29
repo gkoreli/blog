@@ -1,0 +1,103 @@
+{
+  "checkedAt": "2026-10-29T01:34:19.855Z",
+  "scope": "Retained IDs above the previous census upper bound through the frozen preflight upper bound; not an event-time interval or old-row change detector",
+  "totals": {
+    "rows": 712,
+    "detailedRows": 712,
+    "firstObservedAt": "2026-10-28 05:41:35",
+    "lastObservedAt": "2026-10-29 01:30:46"
+  },
+  "groupRows": 23,
+  "inclusion": {
+    "included": 711,
+    "referral-excluded": 1
+  },
+  "eventTimeScope": {
+    "at-or-after-baseline-event-cutoff": 712
+  },
+  "included": {
+    "rows": 711,
+    "storedKinds": {
+      "ai-assistant": 1,
+      "ai-crawler": 36,
+      "ai-search": 82,
+      "browser": 42,
+      "cloud-browser": 310,
+      "http-client": 61,
+      "other-bot": 89,
+      "search-crawler": 6,
+      "seo-crawler": 1,
+      "unresolved": 83
+    },
+    "collectionStates": {
+      "current": 705,
+      "other-recorded": 6
+    },
+    "classifierStates": {
+      "current": 711
+    },
+    "evidenceStates": {
+      "detailed-record": 711
+    },
+    "localStates": {
+      "absent": 656,
+      "unverified": 3,
+      "verified": 52
+    },
+    "signatureBases": {
+      "not-verified": 3,
+      "unsigned": 656,
+      "verified-ua-uncovered": 52
+    },
+    "verifierProfiles": {
+      "2026-10-28.7": 711
+    },
+    "nativeStates": {
+      "unavailable": 711
+    },
+    "vendorSignatureStates": {
+      "matching-origin": 51,
+      "no-declaration": 585,
+      "not-configured": 75
+    },
+    "networkStates": {
+      "recognized": 711
+    },
+    "verified": {
+      "rows": 52,
+      "profiles": {
+        "2026-10-28.7": 52
+      },
+      "collectionStates": {
+        "current": 52
+      },
+      "coverageUserAgent": 0,
+      "coverageMethod": 0,
+      "coverageResource": 0,
+      "coverageAuthorityOnly": 52
+    },
+    "networkOutcomes": {
+      "listed": 18,
+      "notListed": 0,
+      "unavailable": 0,
+      "notAssessed": 2
+    },
+    "nativeVerifiedBot": 0,
+    "nativeSignedAgent": 0
+  },
+  "metering": {
+    "preflightReads": 712,
+    "censusReads": 26447,
+    "totalReads": 27159,
+    "rowsWritten": 0,
+    "statements": 2,
+    "preflightAttempts": 1,
+    "censusAttempts": 1,
+    "postExecutionReviewThreshold": 300000,
+    "serverEnforcedReadCap": false
+  },
+  "runtimeChanged": false,
+  "ownSiteGets": 0,
+  "reportFills": 0,
+  "newHumanLabels": 0
+}

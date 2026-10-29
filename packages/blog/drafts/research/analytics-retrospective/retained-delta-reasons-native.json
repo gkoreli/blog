@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-29T01:47:45.020Z",
+  "runtime": "v24.14.1",
+  "fixtureRows": 9,
+  "selectedFixtureRows": 8,
+  "checks": {
+    "empty": true,
+    "currentVersusOtherProfile": true,
+    "sourceContextMatchedContradictoryAndUnavailable": true,
+    "ownerReferralPrecedence": true,
+    "closedUnknowns": true,
+    "concreteMatchesParameterized": true,
+    "malformedAndDuplicateRejected": true
+  },
+  "scale": {
+    "selectedRows": 8192,
+    "reads": 86629,
+    "writes": 0,
+    "within20000ReadBudget": false
+  },
+  "actualCohortSizeFixture": {
+    "selectedRows": 712,
+    "reads": 11830,
+    "writes": 0,
+    "within20000ReadBudget": true
+  },
+  "sqlTemplateSha256": "8b88493062b5a0a34c4475a3268d3649c4a9b5323d32c93abb4c663f2e6facb2",
+  "productionCalls": 0
+}

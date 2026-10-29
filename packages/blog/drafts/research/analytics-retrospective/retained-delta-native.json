@@ -1,0 +1,58 @@
+{
+  "checkedAt": "2026-10-29T01:32:09.562Z",
+  "runtime": "v24.14.1",
+  "plan": {
+    "maximumRows": 8192,
+    "maximumDetailedRows": 4096,
+    "maximumReferralLabels": 32768,
+    "maximumGroups": 2048,
+    "postExecutionReadReviewThreshold": 300000,
+    "databaseEnforcedReadCap": false
+  },
+  "storedProfiles": {
+    "collection": "2026-10-28.10",
+    "classifier": "2026-10-27.5"
+  },
+  "signatureControls": 28,
+  "networkControls": 33,
+  "fullCurrentReportComparisons": {
+    "localVerifiedViews": 17,
+    "userAgentBoundViews": 12,
+    "methodBoundViews": 0,
+    "resourceBoundViews": 0,
+    "authorityOnlyViews": 12,
+    "nativeAvailableViews": 22,
+    "nativeVerifiedBotViews": 21,
+    "nativeSignedAgentViews": 0,
+    "vendorMatchingOriginViews": 8
+  },
+  "checks": {
+    "emptySelection": true,
+    "inclusionPrecedence": true,
+    "eventTimeVersusIdScope": true,
+    "currentCollectionNotHardcodedToPriorVersion": true,
+    "exactAdjacentIdsAboveSafeInteger": true,
+    "concreteMatchesParameterized": true,
+    "malformedOrDuplicateAggregatesRejected": true,
+    "privateValuesClosed": true,
+    "boundedPreflightStopsAtSentinel": true,
+    "preflightPrimaryKeyRangePlan": [
+      "CO-ROUTINE (subquery-1)",
+      "SEARCH page_observations USING INTEGER PRIMARY KEY (rowid>?)",
+      "SCAN (subquery-1)"
+    ]
+  },
+  "scale": {
+    "rows": 8192,
+    "detailedRows": 4096,
+    "referralLabels": 32256,
+    "preflightReads": 8192,
+    "deltaReads": 255884,
+    "combinedReads": 264076,
+    "rowsWritten": 0
+  },
+  "sqlSha256": "22885910c73b52585096d3bb474f1d6f89914f217e9600be729b5a0bfe3cb99f",
+  "preflightSha256": "74482f4fc53897857bd06d516239246dd88ae26a2725715b87510956a9bdc028",
+  "sqlBytes": 29299,
+  "productionCalls": 0
+}

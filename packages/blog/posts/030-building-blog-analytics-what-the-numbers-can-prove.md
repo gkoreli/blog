@@ -3,7 +3,7 @@ title: "Building Blog Analytics: What the Numbers Can Prove"
 seoTitle: "Building Blog Analytics with Cloudflare Workers and D1"
 alternativeHeadline: "What a misleading traffic spike taught me about page counts, bot identity, and the cost of trustworthy analytics"
 date: "2026-10-25"
-lastModified: "2026-10-28"
+lastModified: "2026-10-29"
 description: "Cloudflare Workers and D1 analytics lessons: investigate misleading traffic growth, separate signed crawlers from assistants, and preserve evidence behind the counts."
 section: engineering
 tags: [analytics, cloudflare-workers, d1, bots, observability]
@@ -51,7 +51,9 @@ Our catalogue also missed four documented names. [ExaSearchBot](https://crawler.
 
 The repair separates declared roles from [signing evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/33-reviewed-directory-publishers.md). I [traced three requests](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/49-current-verifier-vendor-evidence.md), two ExaSearchBot and one AhrefsBot, from retained headers through receipts to exact D1 rows. All replay under the current verifier using later-captured publisher keys; an independent RFC 9421 implementation agrees. Native-verifier agreement remains unmeasured.
 
-**Identity, role and trigger answer different questions.** All three signatures protected the host. User-Agent and article path were unsigned. Changing those unsigned fields left each signature valid. [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) authenticate covered components against a key; an unsigned role or human trigger needs separate evidence. Local controls exposed a [nonce type-check gap](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/51-signed-parameter-types-and-freshness.md), now fixed; unique actions remain unproven. An [October 28 census](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/54-retained-signature-applicability.md) found verification detail in 281 of 32,363 records. The census leaves **1,025 included records labelled Exa with unknown roles**.
+**Identity, role and trigger answer different questions.** All three signatures protected the host. User-Agent and article path were unsigned. Changing those unsigned fields left each signature valid. [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) authenticate covered components against a key; an unsigned role or human trigger needs separate evidence. Local controls exposed a [nonce type-check gap](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/51-signed-parameter-types-and-freshness.md), now fixed; unique actions remain unproven.
+
+[The historical census](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/31-retained-history-completeness-and-delta.md) leaves **1,025 included records labelled Exa with unknown roles**. In the [712-record delta](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/64-retained-delta-and-unresolved-reasons.md), all **52 included verified outcomes leave User-Agent and resource unsigned**. These stored results have not been cryptographically replayed.
 
 ## Preserve uncertainty in the data
 
@@ -65,7 +67,7 @@ New observations omit that ambiguous source path; history gets an explicit label
 
 The [referrer-abuse policy](/filter-referrer-spam-without-deleting-analytics-history) versions public exclusions. Unapproved referrers and signing origins appear as Other; evidence stays private.
 
-A [native D1 fixture](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/29-unreported-classifications-and-denominators.md) reported ten events but classified five. [Network summaries](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/56-vendor-network-summary-consistency.md) now separate unsupported “listed” flags; [feed revalidation](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/57-vendor-ip-revalidation.md) rejects mismatched validators. These fixtures establish no production inflation. **1,181 historical verification outcomes lack proof detail**.
+A [native D1 fixture](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/29-unreported-classifications-and-denominators.md) reported ten events but classified five. [Network summaries](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/56-vendor-network-summary-consistency.md) now separate unsupported “listed” flags; [feed revalidation](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/57-vendor-ip-revalidation.md) rejects mismatched validators. These fixtures establish no production inflation. **[1,181 historical verification outcomes lack proof detail](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/31-retained-history-completeness-and-delta.md)**.
 
 ## Correct totals can still break production
 
