@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-10-29T19:25:55.644137+00:00",
+  "sourceCommit": "7681e2661494c1e695d17d2b717db23bd4f3f9f9",
+  "build": {
+    "id": "7d39229c-d62b-4982-8daa-f24aadf41851",
+    "status": "Ready; source-linked build/deploy commands succeeded",
+    "logLinkedWorkerVersion": "5dc7b37e-fa84-421e-9ea2-442fc23219bf",
+    "postsBuilt": 33,
+    "node": "24.22.1"
+  },
+  "activation": {
+    "workerVersion": "5dc7b37e-fa84-421e-9ea2-442fc23219bf",
+    "freshCliAllocationPercentage": 100,
+    "optionalBindingsAbsent": [
+      "ANALYTICS_DIAGNOSTICS",
+      "ANALYTICS_NATIVE_CAPTURE",
+      "ANALYTICS_CALIBRATION"
+    ],
+    "dashboardCapture": "Ready source row and Active Worker prefix agree; combined 0% 100% accessibility text is not used to infer allocation."
+  },
+  "profiles": {
+    "collection": "2026-10-29.6",
+    "classifier": "2026-10-29.3",
+    "classificationEvidence": "2026-10-29.2",
+    "receipt": "2026-10-29.2",
+    "verifierUnchanged": true,
+    "schemaUnchanged": true,
+    "reportSemanticsUnchanged": true
+  },
+  "publication": {
+    "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove.md",
+    "status": 200,
+    "contentType": "text/markdown; charset=utf-8",
+    "bytes": 16086,
+    "sha256": "d3099b2205e40a4e3000c4ed943aeb60fbc9dced92ed0b3a716ea9409a2db40b",
+    "matchesCheckedIsolatedBuild": true,
+    "bodyWhitespaceWords": 1434,
+    "prompts": 31,
+    "freshServedHtmlInspected": false
+  },
+  "probe": {
+    "ownSiteGetRequests": 1,
+    "collectionEligibleByCurrentCode": 0,
+    "newDirectD1Statements": 0,
+    "D1IngestionReadback": false,
+    "humanLabels": 0,
+    "scope": "Exact served Markdown and source-linked allocation, not actual collector/storage behavior or a per-request Worker version trace."
+  },
+  "privateEvidence": {
+    "dataArchive": {
+      "files": 209,
+      "bytes": 6527067,
+      "manifestSha256": "7424e78af6e1f8bccf2e32c169c36a118cf22566961fce5330df8b9f8a34618f"
+    },
+    "livePlan": {
+      "files": 3,
+      "manifestSha256": "b225985c75f0191bb74090e0754f86204b75d29f5828a16b0fa47eecfe758c76"
+    },
+    "liveArchive": {
+      "files": 19,
+      "manifestSha256": "691909eff46b52e2ce8de75b30e222da00cdc9c2ccbbc8cff6152f77165cd712"
+    },
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "localChecks": "fetch-metadata-parsing-checks.json",
+  "goalAchieved": false,
+  "nextBoundedAction": "Native-test and archive a small excluded current-collector trial and exact readback plan before executing; public parsing-state denominator design follows. Human trials remain deferred."
+}

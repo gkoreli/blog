@@ -9,7 +9,9 @@
     "itemCases": 854,
     "mandatoryPass": 846,
     "permittedRejections": 2,
-    "scope": "Item acceptance, primary token/boolean values/types and parameter presence only; not discarded parameter values or general List/Dictionary conformance"
+    "scope": "Item acceptance, primary token/boolean values/types and parameter presence only; not discarded parameter values or general List/Dictionary conformance",
+    "officialTarIntegrityRechecked": true,
+    "topLevelJsonFilesMatchTar": 20
   },
   "controls": [
     {
@@ -459,7 +461,7 @@
     "siteTests": 117,
     "workspaceTypes": "pass",
     "isolatedBuild": "pass, 33 posts",
-    "productionActivation": "not-yet-assessed",
+    "productionActivation": "accepted separately; fetch-metadata-parsing-release.json",
     "markdownValidation": "pass, 22 posts"
   },
   "isolatedBuild": {

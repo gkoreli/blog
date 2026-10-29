@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T19:22:00.340027+00:00",
-  "sourceBaseline": "b890dfd",
+  "checkedAt": "2026-10-29T19:25:55.644137+00:00",
+  "sourceBaseline": "7681e2661494c1e695d17d2b717db23bd4f3f9f9",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,19 +45,19 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Accept the source deployment and run a small excluded current-collector control with an immutable native-tested exact lookup plan; then assess public parsing-state denominators. Human trials remain deferred.",
+  "nextBoundedAction": "Native-test and archive a small excluded current-collector trial and exact readback plan before executing; public parsing-state denominator design follows. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1434,
     "prompts": 31,
     "sourceSha256": "0318c87f284e9e3b2a25ac0dc5f302e8ac0c5c848494ff12010d07ef4f9df388",
     "unchanged": false,
-    "freshServedCheck": false,
-    "publicationReceipt": null,
-    "servedMatchesCheckedBuild": false,
-    "lastServedCheckReceipt": "local-metadata-relay-release.json",
-    "publicationStatus": "Research 90 concise uncertainty paragraph; build/source/production acceptance pending.",
+    "freshServedCheck": true,
+    "publicationReceipt": "fetch-metadata-parsing-release.json",
+    "servedMatchesCheckedBuild": true,
+    "lastServedCheckReceipt": "fetch-metadata-parsing-release.json",
+    "publicationStatus": "Research 90 concise paragraph published; exact served direct Markdown matches the checked build at 1434 words/31 prompts.",
     "previousPublicationReceipt": "local-metadata-relay-release.json",
-    "servedMatchScope": "Fresh exact direct Markdown only; no new served article HTML/layout or per-request Worker-version trace.",
+    "servedMatchScope": "Exact direct Markdown; no fresh served HTML/layout or per-request Worker-version trace.",
     "localBuildAccepted": true,
     "localBuildReceipt": "fetch-metadata-parsing-checks.json"
   },
@@ -175,7 +175,7 @@
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No collection-eligible own-site request; no D1 ingestion readback. Natural/provider activity remains additional."
   },
-  "newVisitsScope": "Fifteen agent-operated loopback browser trials and fifteen native receiver requests, separate from twelve startup comparisons. One excluded direct Markdown publication GET; no production experimental visit or human label.",
+  "newVisitsScope": "Research 90 replays saved inputs and uses synthetic local controls. One ineligible direct Markdown publication GET; zero new human labels or eligible production visits.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -381,7 +381,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Read-only source-linked build, exact Worker metadata and fresh CLI allocation; one excluded direct Markdown GET exactly matches the checked isolated build. No configuration change.",
+  "liveAccountInspectionScope": "Source-linked Ready build, log-linked Worker and read-only Wrangler deployment/version metadata; optional capture settings unchanged and absent.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -709,8 +709,10 @@
     "unchangedSavedBrowserControls": 15,
     "legacyReceiptPairs": 52,
     "nativeCollectorPairs": 5,
-    "productionActivation": "pending",
+    "productionActivation": "accepted",
     "productionPrevalenceMeasured": false,
-    "humanLabels": 0
+    "humanLabels": 0,
+    "release": "fetch-metadata-parsing-release.json",
+    "productionCollectorReadback": false
   }
 }
