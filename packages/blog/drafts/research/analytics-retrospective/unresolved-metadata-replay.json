@@ -1,0 +1,81 @@
+{
+  "checkedAt": "2026-10-29T18:33:55.830Z",
+  "sourceBaseline": "7ad2405",
+  "scriptSha256": "163f309c4516053c1d85f216c7fb4af59aa547fbcb5125d1a0d14ca8d8d00c98",
+  "inputSha256": "fc923e44ea316eb45ef3a056fe788a9d7b544ec3aa7e9dada0129c2567ac76f8",
+  "originalNodeNativeComparisons": 100,
+  "syntheticNodeNativeComparisons": 8,
+  "syntheticResults": [
+    {
+      "condition": "missing-metadata",
+      "kind": "unresolved",
+      "reason": "fetch-metadata-absent"
+    },
+    {
+      "condition": "synthetic-navigation-shape",
+      "kind": "browser",
+      "reason": "navigation-shaped-network-unlisted"
+    },
+    {
+      "condition": "cors-subresource",
+      "kind": "http-client",
+      "reason": "not-navigation-shaped"
+    },
+    {
+      "condition": "unknown-mode",
+      "kind": "unresolved",
+      "reason": "fetch-metadata-unrecognized"
+    },
+    {
+      "condition": "old-browser-claim",
+      "kind": "unresolved",
+      "reason": "fetch-metadata-support-unknown"
+    },
+    {
+      "condition": "unknown-client-navigation",
+      "kind": "unresolved",
+      "reason": "unrecognized-browser-claim"
+    },
+    {
+      "condition": "normalization",
+      "kind": "browser",
+      "reason": "navigation-shaped-network-unlisted"
+    },
+    {
+      "condition": "missing-network",
+      "kind": "unresolved",
+      "reason": "network-evidence-missing"
+    }
+  ],
+  "linkageNegativeControls": [
+    "missing-invocation",
+    "duplicate-log-id",
+    "wrong-operation",
+    "changed-receipt-copy",
+    "truncated-context",
+    "changed-metadata",
+    "changed-stored-field",
+    "changed-browser-claim",
+    "missing-recapture",
+    "partial-recapture",
+    "duplicate-recapture"
+  ],
+  "sourceSha256": {
+    "metadata.ts": "4113558b365dddad98f455529313fcd77349acd5e33c8d5526e1fb85f4076bb7",
+    "classify.ts": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
+    "readerkind.ts": "eb4559b7459b6761aff59c993137e478078cdafbaf5cb0c32e7e7f19a7bca377",
+    "classification-evidence.ts": "b17081377299dfa34c2586af41fa96ca7aac3e4666ba4c569268bcf0063bc513",
+    "referrals.ts": "fdd978efd09c8ce3a24aa7b30cd5b2a709a1a361efac27b9ab7786cac4047946",
+    "versions.ts": "4b1f9ee4daf09b5fded91319deb3be96a14949afdb2e3ba597b6a20605dcfd63"
+  },
+  "externalRequests": 0,
+  "newOwnSiteRequests": 0,
+  "newD1Statements": 0,
+  "newHumanLabels": 0,
+  "limits": [
+    "Current replay of retained provider inputs; no original-wire completeness, actual engine, operator or purpose attribution.",
+    "A locally constructed request can satisfy Browser shape. This control measures classifier behavior, not a population false-positive rate.",
+    "Twelve separate native request-group queries resolve scoped log-ID ambiguity; the eight bulk collision groups remain recorded.",
+    "Owner configuration and the historical public-path registry are not replayed."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "capturedAt": "2026-10-29T18:30:07.023946+00:00",
+  "sources": [
+    {
+      "file": "query-builder.html",
+      "url": "https://developers.cloudflare.com/workers/observability/query-builder/",
+      "finalUrl": "https://developers.cloudflare.com/workers/observability/query-builder/",
+      "status": 200,
+      "bytes": 215754,
+      "sha256": "1e1260a5ea06978bb0528cb1ad34bea0c2dd4fdb9e5b046b1cbd8e3fdb6834d6"
+    },
+    {
+      "file": "fetch-metadata.html",
+      "url": "https://www.w3.org/TR/2026/WD-fetch-metadata-20260921/",
+      "finalUrl": "https://www.w3.org/TR/2026/WD-fetch-metadata-20260921/",
+      "status": 200,
+      "bytes": 140739,
+      "sha256": "4849a4cd48035165d5336315ba8461cf8640364878073766e2cb56b37d9d63f3"
+    },
+    {
+      "file": "sec-fetch-mode.html",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Mode",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Mode",
+      "status": 200,
+      "bytes": 213421,
+      "sha256": "97907c814337bebede71abf4fe31d1025b3c967d57f1d5e9eba178053789f62c"
+    },
+    {
+      "file": "fetch-standard.html",
+      "url": "https://fetch.spec.whatwg.org/commit-snapshots/59afe349913d56898c947576216f1c2579308be7/",
+      "finalUrl": "https://fetch.spec.whatwg.org/commit-snapshots/59afe349913d56898c947576216f1c2579308be7/",
+      "status": 200,
+      "bytes": 1855270,
+      "sha256": "5d80be13cdc78b652732acf22002c17a3be3691b7c3de2cb9c26c794aad2b881"
+    },
+    {
+      "file": "workers-logs.html",
+      "url": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
+      "finalUrl": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
+      "status": 200,
+      "bytes": 228933,
+      "sha256": "0a1320c4fb8df67a87876b035af2f26a26c4d20b0ff4685ab357c2c419cddf02"
+    }
+  ],
+  "checkedSourcesUse": [
+    {
+      "source": "query-builder.html",
+      "application": "Documented string Regex filtering and Invocations grouping; grouped export here still contains only matching receipt events. UI also exposes an In operator absent from the checked table; it was not used."
+    },
+    {
+      "source": "fetch-metadata.html",
+      "application": "Dated W3C Working Draft: context headers on potentially trustworthy URLs; Sec-Fetch-User emitted for activated navigations only. Its Sec-prefix discussion mislinks response-header terminology; use the Fetch request-header definition."
+    },
+    {
+      "source": "sec-fetch-mode.html",
+      "application": "Browser documentation describes request mode and potentially trustworthy URLs; compatibility is not proof of a particular request's actual engine or emission."
+    },
+    {
+      "source": "fetch-standard.html",
+      "application": "Pinned commit snapshot 59afe349913d56898c947576216f1c2579308be7: forbidden request-header and Sec-prefix reservation for web APIs."
+    },
+    {
+      "source": "workers-logs.html",
+      "application": "Provider retention/sampling/truncation conditions qualify recovery; an empty scoped lookup is not an explanation of missing evidence."
+    }
+  ]
+}

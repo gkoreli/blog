@@ -45,3 +45,6 @@ The actual calculation reports **86 reads, zero writes and one attempt**, with c
 Two acceptance failures remain explicit. Wrangler rejects an explicit sampling rate of `1` before the API request; the supported tail defaults are used instead. Copying the build log leaves an older clipboard value, which is rejected and preserved separately; the downloaded source build log supplies the accepted version evidence. Neither event repeats the production calculation.
 
 This closes the report-contract iteration, without establishing a human accuracy rate or whole-population correctness. Next: native-test bounded selection of unresolved records in the frozen 383-row range, then compare exact retained inputs with stored missing Fetch Metadata and parsed-UA claims. Human/device errors and abstentions, native managed agreement, original signing-context discrepancies, historical proof recovery, R1 attribution and privacy decisions remain unresolved. Human trials stay deferred; the full goal is open.
+
+
+[Research 88](88-unresolved-metadata-and-retained-inputs.md) follows the separate missing-metadata lead: 100 exact retained contexts reproduce stored fields/decisions, with one selected record unrecovered. It does not change the report JSON contract or its dated activation acceptance.

@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-10-29T18:36:31.201468+00:00",
+  "sourceBaseline": "7ad2405",
+  "node": "24.14.1",
+  "typecheck": "pass",
+  "contentValidation": {
+    "status": "pass",
+    "markdownPosts": 22
+  },
+  "nativeSelection": {
+    "status": "pass",
+    "scopeRows": 383,
+    "selectedRows": 101,
+    "queryReads": 1453,
+    "queryWrites": 0
+  },
+  "replay": {
+    "status": "pass",
+    "retainedContextsPerRuntime": 100,
+    "syntheticContextsPerRuntime": 8,
+    "linkageNegatives": 11
+  },
+  "isolatedBuild": {
+    "status": "pass",
+    "checkedAt": "2026-10-29T18:35:42.771318+00:00",
+    "isolatedSourceSnapshot": true,
+    "sharedDistTouched": false,
+    "postsBuilt": 33,
+    "articleBodyWhitespaceWords": 1407,
+    "prompts": 31,
+    "articleSourceSha256": "d21b1c42552248dcd898bec484ae121c3b2320aad67b8db0477b1527d104f53c",
+    "builtMarkdownSha256": "581c8a6721aebcb51c8b71b8b13159c50b5d9f4ed83e80dba9d6954fbd633ba7",
+    "builtMarkdownBytes": 15612,
+    "builtHtmlSha256": "27208c7d49f2216c32d46cd8a2f2d2c31a4faf37759f4a3a3aa9f6208a10f854",
+    "oneH1": true,
+    "newParagraphInHtmlAndMarkdown": true
+  },
+  "initialBuild": "Sandbox tsx IPC listen EPERM; same isolated snapshot passes with approved local runtime access.",
+  "publicRelativeLinks": "pass",
+  "publicProjections": "Reviewed closed aggregates; no raw headers, addresses, private references or row-level request contexts.",
+  "articleReview": "One 32-whitespace-word paragraph added under uncertainty; title, metadata, date, scope and authorship limits retained. Evidence links checked; 1407 body whitespace words/31 unchanged prompts. No new SEO or native-detection claim.",
+  "privateArchives": {
+    "initialPlanManifestSha256": "76185bd1c97f57cdeee4c747c8278fc27c1205afa531cb10c768a56797c03ef7",
+    "adaptivePlanManifestSha256": "ee0142aeb3d8daf386621285ae9d9a16d81c0bc87540ddecac209a7f8b2ca01b",
+    "data": {
+      "files": 99,
+      "manifestSha256": "c1a2ae8be9f9b47ebd7a21f987eee2b0362d91a6b8ce07edb5fa940445ff64b6"
+    },
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "runtimeChanged": false,
+  "humanTrialsDeferred": true,
+  "goalAchieved": false
+}

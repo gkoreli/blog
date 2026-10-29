@@ -63,6 +63,8 @@ Coverage varies by publisher. Of [fourteen retained DuckDuckBot contexts](https:
 
 Conflicts enter Unresolved. [R1 replay](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/22-client-form-and-calibration.md) yields **355 desktop defaults**: 181 non-mobile preferences and 174 requests without form markers. Neither authenticates desktop hardware. A hosting-list nonmatch likewise establishes no residential source.
 
+In a [383-observation follow-up](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/88-unresolved-metadata-and-retained-inputs.md), 101 remained Unresolved. I recovered 100 request contexts; all lacked Fetch Metadata in the retained headers. Current-code replay reproduced their stored classifications. **Original headers and operators remain unverified.**
+
 D1 discarded User-Agent after classification, so that table alone cannot replay the Exa/Ahrefs gap. Provider logs retained some inputs; complete historical recovery remains unproven. [Plausible](https://plausible.io/data-policy) keeps parsed software facts; [the IETF](https://www.ietf.org/policies/web-analytics/) keeps raw visitor data for five days and aggregates for twelve months. I’ve prepared an expiring diagnostic store; collection remains off pending privacy decisions. Filtering arbitrary text cannot guarantee the absence of personal information.
 
 Among 2,365 included internal-referrer events, **1,540 recorded `/` as their source**. That can mean the homepage, but it can also mean an origin-only URL whose path was omitted. [Referrer Policy](https://www.w3.org/TR/referrer-policy/) allows detail to be withheld. We had stored more certainty than the input supported.

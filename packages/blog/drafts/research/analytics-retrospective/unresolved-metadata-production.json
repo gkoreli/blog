@@ -1,0 +1,182 @@
+{
+  "checkedAt": "2026-10-29T18:33:52.280Z",
+  "sourceBaseline": "7ad2405",
+  "candidateRows": 101,
+  "acceptedExactContexts": 100,
+  "rejectedReasons": {
+    "stored-record-unavailable": 1
+  },
+  "collisionsResolvedByIndependentExactQuery": 12,
+  "globalDuplicateLogIdGroups": 8,
+  "counts": {
+    "storedReasons": {
+      "fetch-metadata-absent": 91,
+      "unrecognized-browser-claim": 8,
+      "fetch-metadata-support-unknown": 1
+    },
+    "browserFamilyClaims": {
+      "chromium": 7,
+      "firefox": 83,
+      "unrecognized": 8,
+      "webkit": 2
+    },
+    "claimedMetadataSupport": {
+      "true": 91,
+      "false": 9
+    },
+    "requestUrlScheme": {
+      "https:": 100
+    },
+    "forwardedProtoClaim": {
+      "https": 100
+    },
+    "retainedTlsVersion": {
+      "TLSv1.3": 100
+    },
+    "retainedHttpProtocol": {
+      "HTTP/2": 3,
+      "HTTP/1.1": 97
+    },
+    "headerPresence": {
+      "sec-fetch-mode:absent": 100,
+      "sec-fetch-dest:absent": 100,
+      "sec-fetch-site:absent": 100,
+      "sec-fetch-user:absent": 100
+    },
+    "referrerState": {
+      "absent": 96,
+      "internal": 4
+    },
+    "classifierProfiles": {
+      "2026-10-29.1": 99,
+      "2026-10-29.2": 1
+    },
+    "internalReferrerRegistryComparison": {
+      "registry-independent-null": 100
+    }
+  },
+  "metadataComparisonsPerContext": 10,
+  "evidenceComparisonsPerContext": 6,
+  "rawUserAgentStoredInPublicOutput": false,
+  "ownerSettingReplayed": false,
+  "historicalPublicPathRegistryRecovered": false,
+  "originalWireHeaderAbsenceEstablished": false,
+  "actualBrowserEnginesEstablished": false,
+  "botOrHumanTruthEstablished": false,
+  "scriptSha256": "53d913b94e8a3df58ca66b3b283821d46a845901401beb0e64f84101d5893b51",
+  "inputsSha256": {
+    "candidates": "60cea902a1cb6d2a9949845968a88c4dbf3f4bc25635a92a9b1a231c2fb751b1",
+    "receiptCopies": "372e47c0095b0f4c054404b96c93ce21e0e11a9462dcd66fe1f8f880017c9965",
+    "chains": "be388ea6a2e4a81de6d2b30fdbcb13108069ce7fa6c4617747f153b806ec41c4",
+    "replayInput": "fc923e44ea316eb45ef3a056fe788a9d7b544ec3aa7e9dada0129c2567ac76f8"
+  },
+  "replayClassifierProfile": "2026-10-29.2",
+  "newOwnSiteRequests": 0,
+  "newHumanLabels": 0,
+  "research": "88-unresolved-metadata-and-retained-inputs.md",
+  "scope": "All 101 stored unresolved rows in the frozen Research 85 383-row primary-key interval; no held snapshot or whole-table refresh.",
+  "storedSelection": {
+    "readerReason": {
+      "fetch-metadata-absent": 91,
+      "unrecognized-browser-claim": 9,
+      "fetch-metadata-support-unknown": 1
+    },
+    "observationSource": {
+      "edge": 101
+    },
+    "ownerFlag": {
+      "0": 101
+    },
+    "referrerState": {
+      "absent": 97,
+      "internal": 4
+    },
+    "secFetchMode": {
+      "null": 101
+    },
+    "secFetchDest": {
+      "null": 101
+    },
+    "secFetchSite": {
+      "null": 101
+    },
+    "secFetchUser": {
+      "null": 101
+    },
+    "acceptsHtml": {
+      "0": 1,
+      "1": 98,
+      "null": 2
+    },
+    "hasAcceptLanguage": {
+      "0": 12,
+      "1": 89
+    },
+    "classifierVersion": {
+      "2026-10-29.1": 100,
+      "2026-10-29.2": 1
+    },
+    "optionalCaptureAbsent": {
+      "1": 101
+    }
+  },
+  "scopeRows": 383,
+  "selectedRows": 101,
+  "retainedReceiptExportRecords": 101,
+  "retainedReceiptsWithinRange": 100,
+  "retainedReceiptOutsideRange": 1,
+  "chainExportRecords": 400,
+  "chainRequestGroups": 100,
+  "independentRecoveryQueries": 12,
+  "recoveryRecords": 48,
+  "exactMissingReferenceQuery": "zero returned events in the scoped window; cause and retention elsewhere unknown",
+  "retainedWindowUtc": {
+    "start": "2026-10-29T06:00:00Z",
+    "end": "2026-10-29T17:00:00Z"
+  },
+  "metadataComparisonFields": [
+    "path",
+    "secFetchMode",
+    "secFetchDest",
+    "secFetchSite",
+    "secFetchUser",
+    "acceptsHtml",
+    "hasAcceptLanguage",
+    "asn",
+    "referrerState",
+    "referrerHost"
+  ],
+  "evidenceComparisonFields": [
+    "declarations",
+    "network",
+    "navigationShaped",
+    "activation",
+    "referrerContext",
+    "categoryAgreement"
+  ],
+  "storageReceiptProjectionPairs": 100,
+  "independentStoredReceiptCopiesEqual": 100,
+  "currentReaderDecisionsEqual": 100,
+  "currentReplayScope": "99 recorded 2026-10-29.1 classifier profiles and one 2026-10-29.2, all replayed with current 2026-10-29.2; historical runtime behavior is not reconstructed.",
+  "retainedDistinctUserAgentStrings": 14,
+  "metering": {
+    "statements": 1,
+    "reportedReads": 1453,
+    "reportedWrites": 0,
+    "providerAttempts": 1,
+    "databaseEnforcedReadCap": false,
+    "providerLogQueryCost": "not returned; 17 logical filtered selections including operator discovery and 12 adaptive exact selections; exports/UI can perform additional unmeasured backend work"
+  },
+  "runtimeChanged": false,
+  "wholeHistoryCorrectnessProven": false,
+  "managedVerificationAgreementMeasured": false,
+  "limitations": [
+    "All four Fetch Metadata headers are absent from 100 retained header objects; this is not wire-completeness attestation.",
+    "HTTPS URL, forwarded-protocol and provider TLS facts narrow the retained transport context; they do not authenticate a browser engine, operator, human or purpose.",
+    "One exact storage-reference lookup returns no event; absence, sampling, retention loss or another cause is not established.",
+    "Eight bulk log-ID collision groups are preserved. Twelve independently filtered four-record exports reproduce the complete bulk chains, with unique IDs in each native selection.",
+    "Ten metadata fields, six derived evidence fields and known storage-receipt projections match. Owner configuration and the historical public-path registry are not replayed.",
+    "The empty internal source paths in this cohort require no public-path registry to remain empty; this does not recover that registry.",
+    "No collector, classifier, verifier, report semantics or optional capture setting changes. No human labels or own-site experimental requests."
+  ]
+}

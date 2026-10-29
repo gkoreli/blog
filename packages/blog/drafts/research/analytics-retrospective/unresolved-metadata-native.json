@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-29T18:16:59.756Z",
+  "sourceBaseline": "7ad2405",
+  "plan": {
+    "maximumScopeRows": 2048,
+    "maximumSelectedRows": 128,
+    "maximumStatements": 1,
+    "attemptsPerStatement": 1,
+    "postExecutionReadReviewThreshold": 10000,
+    "databaseEnforcedReadCap": false,
+    "maximumRetainedExportRecords": 1024,
+    "maximumRetainedExportBytes": 8388608
+  },
+  "fixtureRows": 383,
+  "selected": 101,
+  "reads": 1453,
+  "writes": 0,
+  "queryPlan": [
+    "MATERIALIZE selected",
+    "MATERIALIZE bounded",
+    "SEARCH page_observations USING INTEGER PRIMARY KEY (rowid>? AND rowid<?)",
+    "SCAN bounded",
+    "SCAN selected",
+    "SCALAR SUBQUERY 3",
+    "SCAN bounded",
+    "SCALAR SUBQUERY 4",
+    "SCAN selected",
+    "USE TEMP B-TREE FOR ORDER BY"
+  ],
+  "templateSha256": "4023aa91b787af926471e3ecb69e6de05fbbe6c4ba09c2ec3604e664bb33be92",
+  "scriptSha256": "368367d7e450eb4d0e86d552912b56a0dbfb49d83740d3039c3ab3a059f5b9e3",
+  "checks": {
+    "exactLargeIds": true,
+    "concreteMatchesParameterized": true,
+    "boundariesAndNulls": true,
+    "ownerAndFutureReasonPreserved": true,
+    "duplicateOrIncompleteOrUnsafeSelectionRejected": true,
+    "selectedAndScopeSentinelsRejected": true
+  },
+  "productionQueries": 0
+}
