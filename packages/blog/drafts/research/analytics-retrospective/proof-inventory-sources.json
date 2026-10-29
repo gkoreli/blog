@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-10-29T06:51:18.837689+00:00",
+  "sources": [
+    {
+      "name": "workers-logs",
+      "url": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/index.md",
+      "status": 200,
+      "exitCode": 0,
+      "client": "curl",
+      "attempts": 1,
+      "bytes": 13408,
+      "sha256": "7902a6e63cc96baaa3b89fbdbbb960997bb78d3629de9248a29e87376e5b85b1"
+    },
+    {
+      "name": "workers-logpush",
+      "url": "https://developers.cloudflare.com/workers/observability/logs/logpush/index.md",
+      "status": 200,
+      "exitCode": 0,
+      "client": "curl",
+      "attempts": 1,
+      "bytes": 10464,
+      "sha256": "364d242e6fe0baa64f672929e20a36f1fbc2ed65d7d953c58e2f5413e0e5610c"
+    },
+    {
+      "name": "rfc9421",
+      "url": "https://www.rfc-editor.org/rfc/rfc9421.txt",
+      "status": 200,
+      "exitCode": 0,
+      "client": "curl",
+      "attempts": 1,
+      "bytes": 241160,
+      "sha256": "612655786bf4293bfc486e4177571467fbb3de6e6f0eea90cb74c346a34fdf3c"
+    }
+  ],
+  "priorAttempt": {
+    "name": "workers-logs",
+    "client": "Python urllib",
+    "httpStatus": 403,
+    "attempts": 1,
+    "remainingBatchNotAttempted": true
+  },
+  "readerTelemetryForwarded": false
+}

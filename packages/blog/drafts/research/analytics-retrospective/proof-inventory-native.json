@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-29T06:55:37.672Z",
+  "plan": {
+    "maximumRows": 65536,
+    "maximumStatements": 2,
+    "attemptsPerStatement": 1,
+    "postExecutionReadReviewThreshold": 200000,
+    "databaseEnforcedReadCap": false
+  },
+  "sqlSha256": "6c53c82f2bad975823f6d13728b0146217bbb602eaeaf55184769d1b055661f6",
+  "scale": {
+    "rows": 65536,
+    "reads": 196609,
+    "writes": 0
+  },
+  "checks": {
+    "constantAccessControl": true,
+    "empty": true,
+    "dateBoundaries": true,
+    "impossibleDates": true,
+    "missingTime": true,
+    "nonClaimRowsExcluded": true,
+    "concreteEqualsParameterized": true,
+    "unreconciledOutputRejected": true,
+    "sentinelStopsAcceptance": true,
+    "injectionRejected": true
+  },
+  "productionCalls": 0
+}

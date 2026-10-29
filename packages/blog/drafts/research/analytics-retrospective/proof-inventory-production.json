@@ -1,0 +1,165 @@
+{
+  "checkedAt": "2026-10-29T06:58:38.860Z",
+  "sourceBaseline": "186f855",
+  "scope": "Deduplicated selection of archived exact-proof cohorts plus a fresh bounded raw outcome-only timestamp census; no complete archive inventory or held snapshot.",
+  "inventory": {
+    "checkedAt": "2026-10-29T06:53:17.217Z",
+    "scriptSha256": "971e1400058c979f3014c9b9045b8066036120fa77330447ecb8271a86b78354",
+    "sourceBaseline": "186f855",
+    "archives": [
+      {
+        "archive": "2026-10-29-frozen-signed-cohort",
+        "manifestSha256": "529fd9f870dd49065fd63f9eb39dfa6727f4260ed1f49ee9133c8108568e4556"
+      },
+      {
+        "archive": "2026-10-29-current-verifier-cohort",
+        "manifestSha256": "cb42083b12b7d6442ecd6becec0806612116d92d525df707606f1a0dec89a4a8"
+      },
+      {
+        "archive": "2026-10-29-latest-signed-and-header-selection",
+        "manifestSha256": "334e3e35e1c04c68bc9ea983c166520a577b319abc06b7489fd54ac708fa1f5a"
+      },
+      {
+        "archive": "2026-10-29-signed-slice-data",
+        "manifestSha256": "b31e87cff5c354362481cb5321af572564fc14898c324bf1fdce4f730b37c7a6"
+      }
+    ],
+    "recheckedArchiveFiles": 13,
+    "inputSha256": "d1ed2a468a535465cd97e525fc94a4a6c946c555d1d2b0d4a8b90e5f543cce66",
+    "inventory": {
+      "memberships": 65,
+      "distinctStoredObservations": 59,
+      "uniqueBySource": {
+        "older-52": 52,
+        "current-four": 4,
+        "latest-two": 2,
+        "seven-proof-report": 7
+      },
+      "overlappingSourceMemberships": 6
+    },
+    "exactReceiptProjectionsByCanonicalSource": {
+      "older-52": 52,
+      "current-four": 4,
+      "latest-two": 2,
+      "recovered-one": 1
+    },
+    "gates": {
+      "duplicateRepresentationsMerge": true,
+      "conflictingProjectionsRejected": true,
+      "conflictingContextsRejected": true,
+      "adjacentLargeReferencesDistinct": true,
+      "repeatedProofOnDistinctReferencesPreserved": true,
+      "unsafeNumericReferencesRejected": true
+    },
+    "nodeAndNativeReuse": {
+      "version": "2026-10-28.1",
+      "verifierProfile": "2026-10-29.1",
+      "scope": "supplied-observations-publisher-key",
+      "enforcement": "none",
+      "assessment": "complete",
+      "termination": "exhausted",
+      "policy": {
+        "maxObservations": 64,
+        "maxCandidatesPerObservation": 8,
+        "deadlineMs": 2000,
+        "maxAgeSeconds": 86400,
+        "headerBudgetUnits": 32768
+      },
+      "submittedObservations": 59,
+      "assessedObservations": 59,
+      "unassessedObservations": 0,
+      "missingReferenceRecords": 0,
+      "duplicateReferenceRecords": 0,
+      "invalidContextRecords": 0,
+      "headerBudgetRecords": 0,
+      "incompleteObservations": 0,
+      "verifiedObservations": 59,
+      "knownTaggedCandidates": 59,
+      "attemptedCandidates": 59,
+      "unassessedKnownCandidates": 0,
+      "verifiedCandidates": 59,
+      "notVerifiedByProfileCandidates": 0,
+      "unresolvedCandidates": 0,
+      "nonceStringCandidates": 59,
+      "nonceAbsentCandidates": 0,
+      "nonceUnusableCandidates": 0,
+      "distinctVerifiedProofs": 59,
+      "repeatedProofGroups": 0,
+      "observationsInRepeatedProofGroups": 0,
+      "repeatedProofGroupsWithChangedMethodUrlOrUserAgent": 0,
+      "distinctUsableNonces": 59,
+      "repeatedNonceGroups": 0,
+      "repeatedNonceGroupsWithDifferentProofs": 0,
+      "directoryFetches": 4
+    },
+    "newProductionRequests": 0,
+    "newD1Statements": 0,
+    "newHumanLabels": 0,
+    "limits": [
+      "Archived stored projections were read at different times; this is not exact membership in one held census snapshot.",
+      "No full retained-population replay denominator or detector accuracy rate follows from this selected inventory.",
+      "Captured later keys do not recover original directory resolution or managed-provider agreement.",
+      "No repeated proof/nonce in this cohort would not establish distinct actions, human triggers or global replay absence."
+    ]
+  },
+  "censusComparison": {
+    "retainedRows": 33189,
+    "detailedVerified": 86,
+    "outcomeOnly": 1181,
+    "selectedArchivedExactProofs": 59,
+    "arithmeticDetailedDifference": 27,
+    "exactUnrecoveredRemainderEstablished": false,
+    "sameSnapshotMembershipEstablished": false,
+    "proofCoverageRate": null,
+    "completeArchiveCatalogue": false
+  },
+  "recordedOutcomeAge": {
+    "boundedRows": 33189,
+    "outcomeOnly": 1181,
+    "olderThanDocumentedMaximum": 980,
+    "withinMaximumAge": 201,
+    "futureRecordedTime": 0,
+    "unrecognizedTime": 0,
+    "firstRecordedTime": "2026-09-03 06:29:44",
+    "lastRecordedTime": "2026-10-27 14:48:36",
+    "auditAt": "2026-10-29 06:55:00",
+    "documentedMaximumAgeCutoff": "2026-10-22 06:55:00",
+    "withinAgeDoesNotEstablishRetention": true,
+    "outsideAgeDoesNotEstablishAbsenceFromOtherArchives": true,
+    "originalProofsRecoveredByAgeQuery": 0
+  },
+  "metering": {
+    "statements": 2,
+    "reads": 99569,
+    "writes": 0,
+    "providerAttempts": 2,
+    "reviewThreshold": 200000,
+    "databaseEnforcedReadCap": false
+  },
+  "nativeScale": {
+    "rows": 65536,
+    "reads": 196609,
+    "writes": 0
+  },
+  "readPlanArchive": {
+    "capturedFiles": 10,
+    "manifestSha256": "1c80545a6c0da5eed495a843c84032660ce04073bced3dfbdd575d43f98afdd2",
+    "beforeProductionSelects": true,
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "runtimeChanged": false,
+  "articleChanged": false,
+  "ownSiteRequests": 0,
+  "newHumanLabels": 0,
+  "managedAgreementMeasured": false,
+  "limits": [
+    "The 59-source union is scoped, not an exhaustive search of all saved archives or the live population.",
+    "Exact projections come from different dated readbacks; aggregate census counts do not prove same-snapshot membership.",
+    "The age query returns aggregates only; no original signed inputs, original directories or current retention existence is recovered.",
+    "Stored observed_at is not independent wire time or signature creation time.",
+    "No repeated proofs/nonces in the selected 59 imply neither unique actions nor absence of replay outside the supplied observations."
+  ]
+}

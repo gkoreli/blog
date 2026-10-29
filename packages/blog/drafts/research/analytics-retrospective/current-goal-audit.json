@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T06:48:44.557193+00:00",
-  "sourceBaseline": "c79bb49",
+  "checkedAt": "2026-10-29T06:59:42.502316+00:00",
+  "sourceBaseline": "186f855",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -44,7 +44,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Consolidate proof-recovery coverage and retained-source limits across the existing frozen cohorts before another retrieval; distinguish linked proofs, outcome-only history and unavailable original directory/native evidence. Human trials remain deferred.",
+  "nextBoundedAction": "Native-test exact bounded selection and retained-source extraction for the 201 age-eligible raw outcome-only records; preserve candidate association separately from exact storage linkage. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 31,
@@ -54,7 +54,7 @@
     "publicationReceipt": "retained-population-release.json",
     "servedMatchesCheckedBuild": true,
     "lastServedCheckReceipt": "retained-population-release.json",
-    "publicationStatus": "No article/source change or fresh served check in phase 80; prior 1376-word acceptance remains dated in retained-population-release.json.",
+    "publicationStatus": "No article/source change or fresh served check in phase 81; prior 1376-word acceptance remains dated in retained-population-release.json.",
     "previousPublicationReceipt": "frozen-signed-release.json"
   },
   "runtimeUnchanged": true,
@@ -165,13 +165,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 343,
+  "productionReportedReads": 99569,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No production observation requested by this investigation; natural ingestion and provider costs are separate."
   },
-  "newVisitsScope": "Existing seven-outcome cohort reconciliation; one older request newly recovered, six prior proof cohorts reused, earlier 52-proof regression rerun offline. No own-site request or human label.",
+  "newVisitsScope": "Existing selected archive union audited offline; raw outcome-only event-age aggregates queried within the previous maximum ID. No own-site request or human label.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -377,7 +377,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Wrangler metadata, constant access control, fixed-slice D1 SELECT and native retained Observability queries; no configuration change.",
+  "liveAccountInspectionScope": "Fresh Worker allocation/binding metadata, constant access control and bounded D1 timestamp aggregate; no browser/configuration change.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -420,5 +420,29 @@
     "managedAgreementMeasured": false,
     "humanTriggerEstablished": false,
     "wholeHistoryCorrectnessProven": false
+  },
+  "proofInventoryAndRecoveryAge": {
+    "receipt": "proof-inventory-production.json",
+    "checks": "proof-inventory-checks.json",
+    "sourceMemberships": 65,
+    "distinctSelectedObservations": 59,
+    "overlappingMemberships": 6,
+    "nodeAndNativeVerified": 59,
+    "distinctProofs": 59,
+    "distinctUsableNonces": 59,
+    "repeatedProofGroups": 0,
+    "repeatedNonceGroups": 0,
+    "wholeHistoryCoverageRate": null,
+    "outcomeOnly": 1181,
+    "olderThanDocumentedMaximum": 980,
+    "withinMaximumAge": 201,
+    "futureOrUnrecognized": 0,
+    "recordedAgeProvesRetention": false,
+    "reportedReads": 99569,
+    "reportedWrites": 0,
+    "statements": 2,
+    "wholeHistoryCorrectnessProven": false,
+    "managedAgreementMeasured": false,
+    "humanTriggerEstablished": false
   }
 }

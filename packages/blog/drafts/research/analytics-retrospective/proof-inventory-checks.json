@@ -1,0 +1,82 @@
+{
+  "checkedAt": "2026-10-29T06:59:42.502316+00:00",
+  "sourceBaseline": "186f855",
+  "previousGoalTurn": "progress",
+  "receipts": [
+    "proof-inventory-production.json",
+    "proof-inventory-native.json",
+    "proof-inventory-sources.json"
+  ],
+  "implementationHashes": {
+    "packages/blog/drafts/research/analytics-retrospective/check-proof-inventory.mjs": "971e1400058c979f3014c9b9045b8066036120fa77330447ecb8271a86b78354",
+    "packages/blog/scripts/check-outcome-only-age.mjs": "528c80b6fe6582c94275505381ab4d71c7001f2cd158fd3900e02795ec1db7c1"
+  },
+  "inventoryGates": {
+    "duplicateRepresentationsMerge": true,
+    "conflictingProjectionsRejected": true,
+    "conflictingContextsRejected": true,
+    "adjacentLargeReferencesDistinct": true,
+    "repeatedProofOnDistinctReferencesPreserved": true,
+    "unsafeNumericReferencesRejected": true
+  },
+  "ageNativeChecks": {
+    "constantAccessControl": true,
+    "empty": true,
+    "dateBoundaries": true,
+    "impossibleDates": true,
+    "missingTime": true,
+    "nonClaimRowsExcluded": true,
+    "concreteEqualsParameterized": true,
+    "unreconciledOutputRejected": true,
+    "sentinelStopsAcceptance": true,
+    "injectionRejected": true
+  },
+  "readPlanArchive": {
+    "capturedFiles": 10,
+    "manifestSha256": "1c80545a6c0da5eed495a843c84032660ce04073bced3dfbdd575d43f98afdd2",
+    "beforeProductionSelects": true,
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "localAttempts": {
+    "previousGoalTurn": "progress",
+    "inventoryInitialStop": "Similarly named archive result file selected instead of input; corrected before replay/output; accepted input hash matches prior source commitment.",
+    "ageNativeStops": [
+      "Fixture omitted required is_owner.",
+      "Synthetic client key failed hexadecimal/length constraint."
+    ],
+    "nativeAccepted": "Corrected native fixture and final constant-control run pass before production SELECTs.",
+    "sourceCapture": "Python urllib received 403 on first public source; batch stopped. Web reader and curl returned content; cause of client difference unknown.",
+    "productionRetries": 0
+  },
+  "productionStatements": 2,
+  "productionReads": 99569,
+  "productionWrites": 0,
+  "ownSiteRequests": 0,
+  "newHumanLabels": 0,
+  "articleChanged": false,
+  "bodyWords": 1376,
+  "prompts": 31,
+  "runtimeChanged": false,
+  "newIndependentRfcReplay": false,
+  "nodeNativeOriginalReuseContexts": 59,
+  "runtimeSuites": "Prior 285-test/types acceptance retained; collector unchanged. Fresh Node/workerd inventory and native D1 controls are scoped diagnostics.",
+  "siteBuild": "Not run: article, collection and public reporting unchanged.",
+  "localLinks": 366,
+  "privateOperationalFieldScan": "pass",
+  "articleHashUnchanged": true,
+  "scriptSyntax": "pass",
+  "markdownValidation": "pass, 22 posts",
+  "diffWhitespace": "pass",
+  "privateDataArchive": {
+    "capturedFiles": 35,
+    "manifestSha256": "0afb36b20d811063b68b073e5d6fd674ac5284f0e5be9d6f705926b5fd7436f6",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "preExecutionPlanArchiveUnchanged": true
+}
