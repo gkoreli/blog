@@ -1,0 +1,80 @@
+{
+  "checkedAt": "2026-10-29T05:30:06.200631+00:00",
+  "sourceCommit": "60afd288e70726943d40291d271a39b533241470",
+  "publication": "accepted",
+  "buildId": "add1dea3-0b25-4cd7-9848-e8d86d1674e4",
+  "workerVersion": "f56e4e51-c773-4a0b-b054-6f0fd5c65d8d",
+  "allocationPercentage": 100,
+  "sourceLinkedReadyRow": true,
+  "buildCompleted": true,
+  "agentManualDeployments": 0,
+  "agentRetries": 0,
+  "article": {
+    "checkedAt": "2026-10-29T05:28:27.511189+00:00",
+    "bodyWhitespaceWords": 1362,
+    "prompts": 31,
+    "additionalOwnSiteGets": 2,
+    "phaseOwnSiteGets": 3,
+    "collectionEligibleGets": 0,
+    "newHumanLabels": 0,
+    "representations": [
+      {
+        "kind": "markdown",
+        "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove.md",
+        "status": 200,
+        "sha256": "4bbe10750da834778ec5b75fa8cf703793a2cde93de58eef495541507aad3dff",
+        "checkedBuildSha256": "4bbe10750da834778ec5b75fa8cf703793a2cde93de58eef495541507aad3dff",
+        "headers": {
+          "Date": "Thu, 29 Oct 2026 05:28:26 GMT",
+          "Content-Type": "text/markdown; charset=utf-8",
+          "CF-Cache-Status": "MISS",
+          "ETag": "\"4e168b2af8afd605a310d92535395577\""
+        },
+        "collectionEligible": false,
+        "bytesMatchCheckedBuild": true
+      },
+      {
+        "kind": "html-prefetch",
+        "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove",
+        "status": 200,
+        "sha256": "a9a33289d00e500cb4d4ec7254c25d7f1b1ba026c964efc5ebe6306735000d71",
+        "checkedBuildSha256": "eb81ad194c3134c8d36d0584cf8f4f66b44673afabda95cbc615867eda23d502",
+        "headers": {
+          "Date": "Thu, 29 Oct 2026 05:28:27 GMT",
+          "Content-Type": "text/html",
+          "CF-Cache-Status": "MISS"
+        },
+        "collectionEligible": false,
+        "articleTextAndLinksMatchCheckedBuild": true,
+        "requestPurpose": "prefetch"
+      }
+    ]
+  },
+  "runtimePolicyChanged": false,
+  "freshHumanLabels": 0,
+  "dataRecoveryReceipt": "frozen-signed-production.json",
+  "dataRecoveryReads": 104,
+  "dataRecoveryWrites": 0,
+  "phaseOwnSiteGets": 3,
+  "collectionEligibleGets": 0,
+  "privateSourceCommitments": {
+    "allocation": "59f2e1242fce30e9bbf3b2ea7d56fc78bcb0e775621c1766b8db91d4cc994cdf",
+    "served": "bea76635bbe49bdf97e04b99557fe4fdb45659d9f60441bb595b67d7dfd1acd5",
+    "deploymentPage": "38be30181334ae9bc3b2095580000054412906d1aa4a837877f910e8ab06699d",
+    "version": "b77a5cab78476b9db989c04704c074f6c000f3f2829d46ea0702b40b513d2e97"
+  },
+  "limits": [
+    "Accepted source activation and served representations do not establish site-wide health or native managed-verifier agreement.",
+    "The HTML check uses Purpose: prefetch and executes no JavaScript; it supplies no human or RUM label.",
+    "A later documentation-only acceptance commit does not change this source or data-measurement scope."
+  ],
+  "optionalCaptureBindingsAbsent": true,
+  "privatePublicationArchive": {
+    "capturedFiles": 14,
+    "manifestSha256": "0734608ebdd606b54a7a27466b5c3333a8ffa64042d10a78840375de733bb454",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  }
+}

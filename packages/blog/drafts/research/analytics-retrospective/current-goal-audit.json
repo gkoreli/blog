@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T05:20:12.527306+00:00",
-  "sourceBaseline": "6b81be6525327e03c2cef0608f5719dbdb7b9c1f",
+  "checkedAt": "2026-10-29T05:33:40.334038+00:00",
+  "sourceBaseline": "60afd288e70726943d40291d271a39b533241470",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,17 +45,17 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Review native signed-agent versus known-bot semantics and account exposure before a genuine-vendor managed-verifier comparison. Accept the latest 52-proof article correction separately from local build evidence. Human trials remain deferred.",
+  "nextBoundedAction": "Review native signed-agent versus known-bot semantics and account exposure before a genuine-vendor managed-verifier comparison. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1362,
     "prompts": 31,
     "sourceSha256": "a44d8777d3ec5c5671f3437553be51bbe474908cc865f01ad5b2260c04fef9ba",
     "unchanged": false,
-    "freshServedCheck": false,
-    "publicationReceipt": null,
-    "servedMatchesCheckedBuild": null,
-    "lastServedCheckReceipt": "native-trace-release.json",
-    "publicationStatus": "Prior 1,359-word source accepted in native-trace-release.json; 1,362-word 52-proof correction has an accepted isolated build and pending live publication."
+    "freshServedCheck": true,
+    "publicationReceipt": "frozen-signed-release.json",
+    "servedMatchesCheckedBuild": true,
+    "lastServedCheckReceipt": "frozen-signed-release.json",
+    "publicationStatus": "Accepted source 60afd28: Ready/100%, exact Markdown bytes and HTML article text/links match checked isolated build."
   },
   "runtimeUnchanged": true,
   "productionStatements": 2,
@@ -90,7 +90,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 1,
+  "productionOwnSiteGets": 3,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -171,7 +171,7 @@
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No production observation requested by this investigation; natural ingestion and provider costs are separate."
   },
-  "newVisitsScope": "Historical recovery of 52 request chains; no new eligible production request or human label. One ineligible publication Markdown GET is separate. Two exact SELECTs report 104 reads and zero writes.",
+  "newVisitsScope": "Historical recovery of 52 request chains; no new eligible production request or human label. Publication verification uses three collection-ineligible GETs: two direct Markdown checks and one HTML prefetch. Two SELECTs report 104 reads and zero writes.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -323,6 +323,7 @@
     "originalDirectorySnapshotRecovered": false,
     "managedAgreementMeasured": false,
     "wholeHistoryCorrectnessProven": false,
-    "actualUseOrHumanTriggerEstablished": false
+    "actualUseOrHumanTriggerEstablished": false,
+    "publicationReceipt": "frozen-signed-release.json"
   }
 }

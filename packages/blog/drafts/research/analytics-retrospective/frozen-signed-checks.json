@@ -112,14 +112,17 @@
     "prompts": 31,
     "sourceSha256": "a44d8777d3ec5c5671f3437553be51bbe474908cc865f01ad5b2260c04fef9ba",
     "sourceChanged": true,
-    "publication": "pending",
-    "previousPublicationReceipt": "native-trace-release.json"
+    "publication": "accepted",
+    "previousPublicationReceipt": "native-trace-release.json",
+    "releaseReceipt": "frozen-signed-release.json",
+    "servedMarkdownMatchesCheckedBuild": true,
+    "servedHtmlArticleTextAndLinksMatch": true
   },
   "newDataObservationRequests": 0,
   "directProductionStatements": 2,
   "reportedReads": 104,
   "reportedWrites": 0,
-  "publicationOwnSiteGets": 1,
+  "publicationOwnSiteGets": 3,
   "collectionEligibleGets": 0,
   "runtimePolicyChanged": false,
   "preAcceptanceCorrections": [
@@ -164,6 +167,14 @@
   "privateDataArchive": {
     "capturedFiles": 124,
     "manifestSha256": "529fd9f870dd49065fd63f9eb39dfa6727f4260ed1f49ee9133c8108568e4556",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "privatePublicationArchive": {
+    "capturedFiles": 14,
+    "manifestSha256": "0734608ebdd606b54a7a27466b5c3333a8ffa64042d10a78840375de733bb454",
     "directoryMode": "0700",
     "fileMode": "0600",
     "reviewDate": "2026-10-31",
