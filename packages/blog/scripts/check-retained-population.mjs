@@ -39,7 +39,7 @@ prefix = replaceOnce(prefix, 'projected AS MATERIALIZED (SELECT inclusion,', `pr
  CASE WHEN observation_source IN ('edge','beacon') THEN observation_source ELSE 'unrecognized' END AS source,
  CASE WHEN reader_reason IS NULL THEN 'missing' WHEN reader_reason='' THEN 'empty' ELSE 'present' END AS reason_state,
  CASE WHEN classification_evidence IS NULL THEN 'not-recorded'
- WHEN json_extract(classification_evidence,'$.version')='2026-10-27.2' AND json_extract(classification_evidence,'$.categoryAgreement') IN ('no-match','single-match','multiple-same-category','multiple-categories')
+ WHEN json_extract(classification_evidence,'$.version') IN ('2026-10-27.2','2026-10-29.1') AND json_extract(classification_evidence,'$.categoryAgreement') IN ('no-match','single-match','multiple-same-category','multiple-categories')
  THEN json_extract(classification_evidence,'$.categoryAgreement') ELSE 'unrecognized' END AS declaration_agreement,
  CASE WHEN reader_kind='signed-agent' AND signature_status='verified' THEN ${signers} ELSE 'none' END AS legacy_signer,
  CASE WHEN reader_kind='signed-agent' AND signature_status='verified' THEN CASE WHEN agent_name IS NULL THEN 'missing' ELSE 'present' END ELSE 'not-applicable' END AS legacy_name_state,

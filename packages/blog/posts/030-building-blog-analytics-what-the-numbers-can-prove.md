@@ -57,7 +57,7 @@ The repair separates declared roles from [signing evidence](https://github.com/g
 
 Logs can alter the evidence. In [13 synthetic producer/Tail Worker controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/74-native-trace-redaction-and-covered-urls.md), 12 requests verified before tracing; seven verified from default redacted traces. Header and URL redaction explained five lost replays. **A failed log replay alone does not prove the original signature was invalid.**
 
-Documented lists now cover Applebot, Bingbot and three Amazon clients. [Source-specific parsing](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/66-documented-feed-adapters-and-meta-ads.md) rejects ambiguous markup. [Versioned receipts](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/67-published-address-receipts.md) preserve each address assessment, failure reason and feed snapshot after an acknowledged write. Membership cannot establish a human trigger.
+Coverage varies by publisher. Of [fourteen retained DuckDuckBot contexts](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/83-additional-publishers-and-parallel-declarations.md), seven verified with method and path protected; seven failed in both implementations. The cause remains unresolved. **Inspect each proof’s covered fields before deciding what it authenticates.**
 
 ## Preserve uncertainty in the data
 

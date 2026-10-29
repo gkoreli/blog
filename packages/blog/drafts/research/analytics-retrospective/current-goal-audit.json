@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-10-29T15:16:07.130705+00:00",
-  "sourceBaseline": "cd05ef0",
+  "checkedAt": "2026-10-29T15:48:19.725134+00:00",
+  "sourceBaseline": "3d245a0",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
   "staticCatalogue": {
-    "recognizedDeclarations": 49,
+    "recognizedDeclarations": 51,
     "ipFeedSources": 15,
     "declarationsWithConfiguredIpMethod": 16,
     "documentedSigningOrigins": 2,
     "declarationsWithDocumentedSigningMethod": 3,
     "declarationsWithAnyConfiguredPerDeclarationMethod": 18,
-    "declarationsWithoutConfiguredPerDeclarationMethod": 31,
+    "declarationsWithoutConfiguredPerDeclarationMethod": 33,
     "reviewedDirectoryOrigins": 3,
     "declarationsWithReviewedDirectoryPublisher": 5,
     "publicDisplayApprovals": 4
@@ -44,24 +44,24 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Privately review the four unassessed signing origins against authoritative vendor sources before directory/key replay; retain public Other and keep client declarations, authenticated publisher facts and purpose independent. Human trials remain deferred.",
+  "nextBoundedAction": "Deliver checked Parallel declaration/evidence changes, accept the exact activated source separately, then register its documented signing methods with bounded native controls before any further production capture. Human trials remain deferred.",
   "article": {
-    "bodyWhitespaceWords": 1376,
+    "bodyWhitespaceWords": 1375,
     "prompts": 31,
-    "sourceSha256": "7a042af095bb61d1963c96d9af7bccf58efcbd61d7e8a244f2341051eabae4dc",
-    "unchanged": true,
+    "sourceSha256": "efb458c18aa509537f1faf077b404695b8d4e06b21fc769b471b7ee64fd9feaf",
+    "unchanged": false,
     "freshServedCheck": false,
     "publicationReceipt": "retained-population-release.json",
-    "servedMatchesCheckedBuild": true,
+    "servedMatchesCheckedBuild": false,
     "lastServedCheckReceipt": "retained-population-release.json",
-    "publicationStatus": "No article/source change or fresh served check in phase 82; prior 1376-word acceptance remains dated in retained-population-release.json.",
+    "publicationStatus": "Phase 83 source article changed; new isolated build passed, fresh served acceptance pending. Prior receipt remains dated.",
     "previousPublicationReceipt": "frozen-signed-release.json"
   },
-  "runtimeUnchanged": true,
-  "productionStatements": 2,
+  "runtimeUnchanged": false,
+  "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": true,
+  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -165,13 +165,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 3096,
+  "productionReportedReads": 0,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No production observation requested by this investigation; natural ingestion and provider costs are separate."
   },
-  "newVisitsScope": "Frozen 201 candidates selected and separately scoped 240 retained request contexts replayed offline; no authenticated D1 join, own-site request or human label.",
+  "newVisitsScope": "Offline replay of 19 retained request contexts, plus local synthetic collector/D1 fixtures. No production visit or authenticated D1 join.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -352,7 +352,7 @@
     "managedCryptoAgreementRate": null,
     "humanTriggerEstablished": false
   },
-  "collectorRuntimeUnchanged": true,
+  "collectorRuntimeUnchanged": false,
   "retainedPopulationRefresh": {
     "receipt": "retained-population-production.json",
     "native": "retained-population-native.json",
@@ -377,7 +377,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Fresh Worker allocation/D1 binding, constant and candidate SELECTs, native retained signed-header queries and exports; no configuration change.",
+  "liveAccountInspectionScope": "No live account/configuration changes in this phase; public vendor documents and fixed directories only.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -468,5 +468,28 @@
     "managedAgreementMeasured": false,
     "humanTriggerEstablished": false,
     "wholeHistoryCorrectnessProven": false
+  },
+  "additionalPublishers": {
+    "receipt": "additional-publishers-replay.json",
+    "reference": "additional-publishers-reference.json",
+    "native": "parallel-declarations-native.json",
+    "checks": "additional-publishers-checks.json",
+    "originals": 19,
+    "originalsAssessed": 18,
+    "originalsVerified": 11,
+    "originalsSignatureInvalid": 7,
+    "directoryUnavailable": 1,
+    "nodeAndWorkerdContexts": 55,
+    "independentRfcContexts": 54,
+    "rootPathPrimitiveContextsPerRuntime": 28,
+    "authenticatedD1Joins": 0,
+    "managedAgreementMeasured": false,
+    "humanTriggerEstablished": false,
+    "collectorAdoption": "local accepted; activation pending",
+    "newDeclarations": [
+      "ShapBot",
+      "Shap-User"
+    ],
+    "documentedParallelSigningConfigured": false
   }
 }

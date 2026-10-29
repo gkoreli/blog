@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { DatabaseSync } from 'node:sqlite';
 import { analyzeTraffic, classifyTraffic, KNOWN_AGENT_NAMES, KNOWN_CLIENT_PRODUCTS } from '../.test-dist/classify.js';
 import { classifyReaderKind } from '../.test-dist/readerkind.js';
-import { classificationEvidence } from '../.test-dist/classification-evidence.js';
+import { classificationEvidence, retainedDeclaredCategories } from '../.test-dist/classification-evidence.js';
 import { networkEvidence } from '../.test-dist/networks.js';
 import { parseStatsQuery, queryStats } from '../.test-dist/stats.js';
 import { READER_GROUPS, readerGroupOf } from '../.test-dist/contracts.js';
@@ -14,6 +14,21 @@ function facts(userAgent = chrome, changes = {}) {
   const analysis = analyzeTraffic(userAgent);
   return { ...analysis, userAgent, observationSource: 'edge', asn: 64512, secFetchMode: 'navigate', secFetchDest: 'document', secFetchSite: 'none', secFetchUser: null, acceptsHtml: 1, hasAcceptLanguage: 1, signature: { status: 'absent' }, ...changes };
 }
+
+test('Parallel declarations preserve search versus retrieval roles without authenticating a trigger', () => {
+  for (const [token,kind] of [['ShapBot','ai-search'],['Shap-User','ai-assistant']]) {
+    const f = facts(`Mozilla/5.0 (compatible; ${token}/0.1.0)`);
+    assert.equal(f.agentName, token);
+    for (const signature of [{status:'absent'},{status:'verified',agent:'https://unrelated.example'},{status:'unverified',reason:'signature-invalid'}]) {
+      assert.equal(classifyReaderKind({...f,signature}).kind, kind);
+    }
+  }
+  const mixed = facts('ShapBot/0.1.0 Shap-User/0.1.0');
+  assert.equal(mixed.agentName, null);
+  assert.deepEqual(classifyReaderKind(mixed), {kind:'unresolved',reason:'multiple-client-declarations'});
+  assert.equal(typeof parseStatsQuery(new URLSearchParams('traffic=crawlers&kind=ai-search&agent=ShapBot')), 'object');
+  assert.equal(typeof parseStatsQuery(new URLSearchParams('traffic=agents&kind=ai-assistant&agent=Shap-User')), 'object');
+});
 
 test('every catalogue identifier rejects substrings, URL placement and malformed versions', () => {
   for (const name of KNOWN_AGENT_NAMES) {
@@ -88,9 +103,25 @@ test('retained derived evidence is bounded and contains no unrecognized free-tex
   const f = facts(`${allTokens} private-reader@example.test credential-canary/very-secret 203.0.113.4`, { asn: 7941, secFetchUser: 0, secFetchSite: 'same-origin', referrerState: 'external' });
   const evidence = classificationEvidence(f, f.declarations); const json = JSON.stringify(evidence);
   assert.ok(Buffer.byteLength(json) <= 2048); assert.equal(evidence.declarations.status, 'multiple');
+  assert.deepEqual(evidence.declarations.matchedProducts, f.declarations.matchedProducts);
+  assert.deepEqual(evidence.declarations.candidates, f.declarations.candidates);
+  const sqlite = new DatabaseSync(':memory:'); sqlite.exec(readFileSync(new URL('../schema.sql', import.meta.url), 'utf8'));
+  sqlite.prepare("INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner,classification_evidence) VALUES('/bounded','00000000000000000000000000000000','bot','desktop',0,?)").run(json);
+  assert.deepEqual(JSON.parse(sqlite.prepare('SELECT classification_evidence FROM page_observations').get().classification_evidence), evidence);
   for (const canary of ['private-reader', 'credential-canary', 'very-secret', '203.0.113.4']) assert.equal(json.includes(canary), false);
   assert.equal(evidence.network, 'archiver-listed'); assert.equal(evidence.activation, 'other-value');
   assert.equal(classificationEvidence({ ...f, secFetchUser: 0 }, f.declarations).activation, 'other-value');
+});
+
+test('category encoding round-trips complete facts and preserves historical/unknown boundaries', () => {
+  const ua = [...KNOWN_CLIENT_PRODUCTS].join(' '), f = facts(ua), evidence = classificationEvidence(f, f.declarations);
+  const kinds = [...new Set(f.declarations.candidates.map(name => classifyReaderKind(facts(name)).kind))].sort();
+  assert.deepEqual(retainedDeclaredCategories(evidence), kinds);
+  assert.deepEqual(retainedDeclaredCategories({version:'2026-10-27.2',declaredCategories:kinds}), kinds);
+  assert.deepEqual(retainedDeclaredCategories({version:'2026-10-29.1',declaredCategoryBits:0}), []);
+  for (const value of [null,{}, {version:'future',declaredCategoryBits:0},
+    {version:'2026-10-27.2',declaredCategories:['private-canary']}, {version:'2026-10-27.2',declaredCategories:['ai-search','ai-search']},
+    ...[-1,1.5,16384,2**32,NaN].map(bits=>({version:'2026-10-29.1',declaredCategoryBits:bits}))]) assert.equal(retainedDeclaredCategories(value),null);
 });
 
 test('migration preserves historical kinds/evidence absence and validates the JSON budget', () => {

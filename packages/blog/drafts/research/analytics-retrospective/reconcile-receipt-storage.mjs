@@ -10,7 +10,7 @@ import { networkReceiptPaths, recognizedNetworkEvidence } from './network-receip
 
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const profiles = new Set(['2026-10-27.6','2026-10-27.7','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','2026-10-28.7','2026-10-29.1','not-applicable']);
-const collections = new Set(['2026-10-27.9','2026-10-27.10','2026-10-27.11','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','2026-10-28.7','2026-10-28.8','2026-10-28.9','2026-10-28.10','2026-10-29.1','2026-10-29.2','2026-10-29.3']);
+const collections = new Set(['2026-10-27.9','2026-10-27.10','2026-10-27.11','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','2026-10-28.7','2026-10-28.8','2026-10-28.9','2026-10-28.10','2026-10-29.1','2026-10-29.2','2026-10-29.3','2026-10-29.4']);
 const paths = [...networkReceiptPaths,'version','classifierProfile','readerKind',
   ...['profile','method','reviewedOn','configuredDeclarationCount','unmappedDeclarationCount','status'].map(key=>'directoryPublication.'+key),
   ...['status','candidateCount','candidateNames','categoryAgreement'].map(key=>'declarations.'+key),
@@ -49,7 +49,7 @@ export function projectStoredReceipt(row,receiptVersion) {
     if(!['2026-10-27.3','2026-10-28.1','2026-10-28.2','2026-10-29.1'].includes(receiptVersion))return null;
     const c=JSON.parse(row.classificationEvidence),e=JSON.parse(row.signatureEvidence);
     if(!isReaderKind(row.readerKind)||!['verified','unverified',null].includes(row.signatureStatus)
-      ||!object(c)||c.version!=='2026-10-27.2'||c.classifierProfile!==row.classifierVersion
+      ||!object(c)||!['2026-10-27.2','2026-10-29.1'].includes(c.version)||c.classifierProfile!==row.classifierVersion
       ||!object(c.declarations)||!Array.isArray(c.declarations.candidates)
       ||!c.declarations.candidates.every(name=>KNOWN_AGENT_NAMES.has(name))
       ||new Set(c.declarations.candidates).size!==c.declarations.candidates.length
@@ -86,7 +86,7 @@ export function projectStoredReceipt(row,receiptVersion) {
     }
     const d=r.directoryPublication,s=r.signature,n=r.native,v=r.declarations;
     const reviewedPair=d.profile==='2026-10-27.1'&&d.reviewedOn==='2026-10-27'||d.profile==='2026-10-28.1'&&d.reviewedOn==='2026-10-28';
-    if(extraFields(r)!==0||!['2026-10-27.3','2026-10-28.1','2026-10-28.2','2026-10-29.1'].includes(r.version)||!['2026-10-27.5','2026-10-29.1'].includes(r.classifierProfile)
+    if(extraFields(r)!==0||!['2026-10-27.3','2026-10-28.1','2026-10-28.2','2026-10-29.1'].includes(r.version)||!['2026-10-27.5','2026-10-29.1','2026-10-29.2'].includes(r.classifierProfile)
       ||!reviewedPair||d.method!=='reviewed-first-party-directory'
       ||['2026-10-28.2','2026-10-29.1'].includes(r.version)&&s.signerDisplayProfile!=='2026-10-28.1'
       ||!integer(d.configuredDeclarationCount)||!integer(d.unmappedDeclarationCount)

@@ -1,0 +1,78 @@
+{
+  "checkedAt": "2026-10-29T15:48:19.725134+00:00",
+  "sourceBaseline": "3d245a0",
+  "analyticsTests": 287,
+  "blogTests": 117,
+  "typecheck": "pass",
+  "markdownValidation": "pass",
+  "nativeCollectorControls": 7,
+  "nativeFilteredReports": 2,
+  "maximumClassificationEvidenceBytes": 1928,
+  "evidenceLimitBytes": 2048,
+  "knownDeclarations": 51,
+  "matchedProductAliases": 54,
+  "classificationEvidenceVersion": "2026-10-29.1",
+  "collectionVersion": "2026-10-29.4",
+  "classifierVersion": "2026-10-29.2",
+  "verifierProfileUnchanged": "2026-10-29.1",
+  "reportCacheVersion": "2026-10-29.3",
+  "isolatedBuild": {
+    "result": "pass",
+    "posts": 33
+  },
+  "sharedOutputBuildMistake": {
+    "happened": true,
+    "completed": true,
+    "activeDevelopmentServersFound": 0,
+    "correctedIsolatedBuild": "pass"
+  },
+  "fixtureCorrections": [
+    "Set .join corrected to an array before dispatch.",
+    "Generated signature fixture corrected to cover its Signature-Agent dictionary member.",
+    "Impostor expected generic other-bot fallback corrected; named identity remains null.",
+    "No-declaration and all-catalogue conflicting-origin expectations corrected.",
+    "Set size output metadata corrected; final receipt re-executed."
+  ],
+  "initialSuiteFailures": [
+    "Incorrect new filter group expectation.",
+    "Expanded declaration catalogue exceeded existing 2048-byte JSON CHECK.",
+    "Hardcoded collection/classifier stamps updated."
+  ],
+  "buildSandboxAttempt": "tsx local IPC denied; same isolated build rerun with approved escalation",
+  "documentationSandboxAttempt": "No body available in restricted curl attempt; public source capture repeated with approved network access",
+  "article": {
+    "words": 1375,
+    "prompts": 31,
+    "sha256": "efb458c18aa509537f1faf077b404695b8d4e06b21fc769b471b7ee64fd9feaf",
+    "changed": true,
+    "freshServedCheck": false
+  },
+  "productionRequests": 0,
+  "productionD1Statements": 0,
+  "productionDiagnosticWrites": 0,
+  "humanLabels": 0,
+  "activationAccepted": false,
+  "privateDataArchive": {
+    "capturedFiles": 47,
+    "manifestSha256": "5228bcc1aa4c02259ab065b0794c0185bf7d2c07b949848ecde173dd3c033810",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "sourceSha256": {
+    "packages/analytics/src/classification-evidence.ts": "b17081377299dfa34c2586af41fa96ca7aac3e4666ba4c569268bcf0063bc513",
+    "packages/analytics/src/classify.ts": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
+    "packages/analytics/src/readerkind.ts": "eb4559b7459b6761aff59c993137e478078cdafbaf5cb0c32e7e7f19a7bca377",
+    "packages/analytics/src/versions.ts": "e3a25e67c720e436599d83e8423dca04e54738d8c298f86402dddc7f6e53aafc",
+    "packages/blog/src/worker/stats-cache.ts": "946bd50ffe6fea9ccbee9c460d38cf619b6aa478d7de9a38e7c97f05a6b40dd2",
+    "packages/blog/scripts/check-parallel-declarations.mjs": "9beea48190a786250b25e324f65ea3d0a0e307ebc17f4c7ef139610cf8224a23"
+  },
+  "builtArticle": {
+    "md": "2d0bb64653de62fdaef8e2e8b748a743de3d30c1f11110a94046c8920f98e2ae",
+    "index.html": "b6326da6e4d012a4c6385c40cb6a5254db44630ca0d66abe97aad4020da1b6b1",
+    "newParagraphPresent": true
+  },
+  "closedArtifactScan": "pass",
+  "newLocalLinks": "pass"
+}

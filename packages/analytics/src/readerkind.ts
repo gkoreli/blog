@@ -7,6 +7,7 @@ export { READER_KINDS } from './contracts.js';
 export type { ReaderKind } from './contracts.js';
 
 export const ON_DEMAND_FETCHERS = [
+  'Shap-User',
   'ExaUser',
   'ChatGPT-User',
   'Claude-User',
@@ -20,6 +21,7 @@ export const ON_DEMAND_FETCHERS = [
 ] as const;
 
 export const AI_SEARCH_CRAWLERS = [
+  'ShapBot',
   'ExaSearchBot',
   'OAI-SearchBot',
   'Claude-SearchBot',

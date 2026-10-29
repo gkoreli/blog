@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-29T15:31:10.930Z",
+  "scriptSha256": "7c37c9d41dbe0c474b43c1de40e63918aaa0c10fcce8de05506dce8340cde2ee",
+  "inputSha256": "b6e1c5c9f245df055476027ee051db1b22648bf243c50a0edeb6479ed2eac3b8",
+  "contextsPerRuntime": 28,
+  "groups": {
+    "root:rfc-base:false": 7,
+    "root:counterfactual-empty-path-base:false": 7,
+    "other-path:rfc-base:true": 7,
+    "other-path:counterfactual-empty-path-base:false": 7
+  },
+  "httpValidityClaim": false,
+  "productionFallbackAdded": false,
+  "productionRequests": 0,
+  "limits": [
+    "Primitive signature-byte comparison only; freshness, discovery, HTTP semantics and policy are not re-evaluated here.",
+    "An empty-path base matching a signature does not make it RFC-compliant or identify which producer/transport stage created the discrepancy."
+  ]
+}

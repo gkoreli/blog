@@ -19,7 +19,7 @@ const reasonFields = ['inclusion','stored_kind','local_state','unresolved_reason
 const contextFields = ['classifier_state','mode_state','family_state','navigation_state','activation_state'];
 const profileStates = ['current','other-recorded','conflicting','unrecognized','not-recorded'];
 const profile = "json_extract(classification_evidence,'$.classifierProfile')";
-const profileValid = `json_extract(classification_evidence,'$.version')='2026-10-27.2' AND json_type(classification_evidence,'$.classifierProfile')='text' AND length(${profile}) BETWEEN 1 AND 32`;
+const profileValid = `json_extract(classification_evidence,'$.version') IN ('2026-10-27.2','2026-10-29.1') AND json_type(classification_evidence,'$.classifierProfile')='text' AND length(${profile}) BETWEEN 1 AND 32`;
 const profileState = `CASE WHEN classification_evidence IS NULL THEN 'not-recorded'
  WHEN NOT COALESCE((${profileValid}),0) OR classifier_version IS NULL THEN 'unrecognized'
  WHEN ${profile} IS NOT classifier_version THEN 'conflicting'

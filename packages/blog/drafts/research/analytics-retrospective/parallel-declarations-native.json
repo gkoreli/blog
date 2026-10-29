@@ -1,0 +1,116 @@
+{
+  "checkedAt": "2026-10-29T15:47:20.329Z",
+  "collectionVersion": "2026-10-29.4",
+  "classifierVersion": "2026-10-29.2",
+  "controls": [
+    {
+      "fixture": "search",
+      "kind": "ai-search",
+      "name": "ShapBot",
+      "signature": "absent",
+      "vendorMethod": "not-configured",
+      "evidenceBytes": 345,
+      "categories": [
+        "ai-search"
+      ]
+    },
+    {
+      "fixture": "retrieval",
+      "kind": "ai-assistant",
+      "name": "Shap-User",
+      "signature": "absent",
+      "vendorMethod": "not-configured",
+      "evidenceBytes": 349,
+      "categories": [
+        "ai-assistant"
+      ]
+    },
+    {
+      "fixture": "search-signed",
+      "kind": "ai-search",
+      "name": "ShapBot",
+      "signature": "verified",
+      "vendorMethod": "not-configured",
+      "evidenceBytes": 345,
+      "categories": [
+        "ai-search"
+      ]
+    },
+    {
+      "fixture": "retrieval-signed",
+      "kind": "ai-assistant",
+      "name": "Shap-User",
+      "signature": "verified",
+      "vendorMethod": "not-configured",
+      "evidenceBytes": 349,
+      "categories": [
+        "ai-assistant"
+      ]
+    },
+    {
+      "fixture": "conflict",
+      "kind": "unresolved",
+      "name": null,
+      "signature": "absent",
+      "vendorMethod": "not-configured",
+      "evidenceBytes": 378,
+      "categories": [
+        "ai-assistant",
+        "ai-search"
+      ]
+    },
+    {
+      "fixture": "impostor",
+      "kind": "other-bot",
+      "name": null,
+      "signature": "absent",
+      "vendorMethod": "no-declaration",
+      "evidenceBytes": 321,
+      "categories": []
+    },
+    {
+      "fixture": "all-products",
+      "kind": "unresolved",
+      "name": null,
+      "signature": "absent",
+      "vendorMethod": "conflicting-origins",
+      "evidenceBytes": 1928,
+      "categories": [
+        "ai-assistant",
+        "ai-crawler",
+        "ai-search",
+        "headless-browser",
+        "other-bot",
+        "preview-or-feed",
+        "search-crawler",
+        "seo-crawler"
+      ]
+    }
+  ],
+  "filtered": [
+    {
+      "agent": "ShapBot",
+      "kind": "ai-search",
+      "traffic": "crawlers",
+      "views": 2
+    },
+    {
+      "agent": "Shap-User",
+      "kind": "ai-assistant",
+      "traffic": "agents",
+      "views": 2
+    }
+  ],
+  "allViews": 7,
+  "knownNames": 51,
+  "knownProducts": 54,
+  "oldEvidenceReadable": true,
+  "productionRequests": 0,
+  "vendorRequests": 0,
+  "humanLabels": 0,
+  "limits": [
+    "Generated signing key at a fixture origin is not Parallel authentication.",
+    "Declared roles do not establish actual use or a human trigger.",
+    "Historical stored evidence is not rewritten."
+  ]
+}

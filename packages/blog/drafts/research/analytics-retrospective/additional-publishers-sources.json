@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-10-29T15:48:19.725134+00:00",
+  "documents": [
+    {
+      "name": "parallel-docs",
+      "url": "https://parallel.ai/parallel-web-systems-bots",
+      "checkedAt": "2026-10-29T15:46:03.979142+00:00",
+      "curlExit": 0,
+      "status": "200",
+      "sha256": "bd072af0e5dbf4f0c408375788c95e41b5e0f426cdb838d21bfe1695c3b715ae",
+      "bytes": 275107
+    },
+    {
+      "name": "duckduckbot-docs",
+      "url": "https://duckduckgo.com/duckduckgo-help-pages/results/duckduckbot",
+      "checkedAt": "2026-10-29T15:46:04.555127+00:00",
+      "curlExit": 0,
+      "status": "200",
+      "sha256": "f7434b306df7d8547815777b5dd95760844ddeb03fbc15b5c8ddc1d5f921f94a",
+      "bytes": 254960
+    },
+    {
+      "name": "rfc9421",
+      "url": "https://www.rfc-editor.org/rfc/rfc9421.html",
+      "checkedAt": "2026-10-29T15:46:04.795983+00:00",
+      "curlExit": 0,
+      "status": "200",
+      "sha256": "ec369a24b754be7de55e19c708fa977c1665253b0ba33a4922665b7a946c3720",
+      "bytes": 458725
+    },
+    {
+      "name": "meta-crawlers",
+      "url": "https://developers.facebook.com/documentation/sharing/webmasters/web-crawlers",
+      "capture": "Public native-browser DOM; no account change",
+      "sha256": "bbaf292d502f9cd0dbcfbe2100cbf35519064ee2a975df5e50ffb95df29fd95e",
+      "pageUpdated": "2026-05-21",
+      "checkedAt": "2026-10-29T15:48:19.725134+00:00"
+    }
+  ],
+  "independentLibrary": {
+    "repository": "https://github.com/pyauth/http-message-signatures",
+    "commit": "1de433d9a49fd608475c6054ab14a1652c088844",
+    "sourceManifest": "complete-audit-sources.json",
+    "filesRechecked": 18
+  },
+  "sourceBoundaries": [
+    "Parallel explicitly documents ShapBot indexing, Shap-User retrieval and distinct signing directories; implementation currently adds declarations/roles only.",
+    "The checked DuckDuckBot page documents crawling and an IP feed, but supplies no signing promise or link to the retained claimed signing origin.",
+    "The inspected Meta page documents Meta-WebIndexer and its role; no signing promise found on that page.",
+    "A scoped search found no usable authoritative source for publisher-1. This is unavailable documentation, not evidence of maliciousness.",
+    "RFC 9421 section 2.2.6 requires the empty path to be represented as /. No verifier fallback was added."
+  ],
+  "configuredSigningRegistryUnchanged": true,
+  "publicSignerDisplayApprovalsUnchanged": true
+}

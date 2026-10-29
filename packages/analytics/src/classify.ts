@@ -35,6 +35,8 @@ import type { DeviceType, TrafficClass } from './contracts.js';
  *   https://crawler.exa.ai/ and https://crawler.exa.ai/exauser
  * - Ahrefs — AhrefsBot and AhrefsSiteAudit (added 2026-10-25):
  *   https://ahrefs.com/robot
+ * - Parallel — ShapBot (search indexing), Shap-User (retrieval on behalf of users):
+ *   https://parallel.ai/parallel-web-systems-bots (checked 2026-10-29).
  *
  * Google-Extended and Applebot-Extended are robots.txt product tokens that the
  * vendors say are not request User-Agents. A request containing either is stored
@@ -59,6 +61,8 @@ interface AgentRule {
 }
 
 const AI_RULES = [
+  { name: 'Shap-User', products: ['Shap-User'] },
+  { name: 'ShapBot', products: ['ShapBot'] },
   { name: 'ExaUser', products: ['ExaUser'] },
   { name: 'ExaSearchBot', products: ['ExaSearchBot'] },
   { name: 'ChatGPT-User', products: ['ChatGPT-User'] },
