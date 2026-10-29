@@ -1,4 +1,4 @@
-import type { ClientLogger } from '@gkoreli/client-observability/client';
+import { captureSubscriptionError, type ClientLogger, type SubscriptionPhase } from '@gkoreli/client-observability/client';
 
 /** Minimal Turnstile API surface we use */
 interface Turnstile {
@@ -159,8 +159,8 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
         callback(token) {
           if (widget === current && active?.phase === 'verifying') void doSubmit(active, token);
         },
-        'error-callback'() {
-          if (widget === current) fail('subscribe_widget_error', 'Verification failed. Please try again.');
+        'error-callback'(errorCode) {
+          if (widget === current) fail('subscribe_widget_error', 'Verification failed. Please try again.', undefined, { errorCode });
           return true;
         },
         'expired-callback'() {
@@ -246,10 +246,11 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     }
   }
 
-  function report(stage: string, status?: number): void {
+  function report(stage: string, status?: number, phase: SubscriptionPhase = active?.phase ?? 'idle', provider?: { errorCode: unknown }): void {
     try {
       logger.report({
         type: 'interaction_error', component: 'subscribe_form', message: stage, status,
+        subscriptionEvidence: captureSubscriptionError(phase, provider),
       });
     } catch {
       // Reporting must not break the form's recovery path.
@@ -276,8 +277,9 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     }
   }
 
-  function fail(stage: string, text: string, status?: number): void {
+  function fail(stage: string, text: string, status?: number, provider?: { errorCode: unknown }): void {
     const attempt = active;
+    const phase = attempt?.phase ?? 'idle';
     active = null;
     if (attempt) {
       clearDeadline(attempt);
@@ -287,6 +289,6 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     msg.textContent = text;
     form.removeAttribute('aria-busy');
     btn.disabled = false;
-    report(stage, status);
+    report(stage, status, phase, provider);
   }
 }

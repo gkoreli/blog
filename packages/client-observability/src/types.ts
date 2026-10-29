@@ -1,3 +1,5 @@
+import type { SubscriptionErrorEvidence } from './subscription-evidence.js';
+
 export type ClientErrorType = 'window_error' | 'unhandled_rejection' | 'interaction_error';
 
 export interface ClientContext {
@@ -17,6 +19,7 @@ export interface ClientErrorInput {
   line?: number | undefined;
   column?: number | undefined;
   stack?: string | undefined;
+  subscriptionEvidence?: SubscriptionErrorEvidence | undefined;
 }
 
 export interface ClientErrorEvent extends ClientContext, ClientErrorInput {}

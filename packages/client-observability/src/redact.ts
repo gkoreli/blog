@@ -1,4 +1,5 @@
 import type { ClientContext, ClientErrorEvent, ClientErrorInput } from './types.js';
+import { parseSubscriptionErrorEvidence } from './subscription-evidence.js';
 
 const MAX_MESSAGE = 500;
 const MAX_PATH = 200;
@@ -88,6 +89,7 @@ export function defaultRedact(
 ): ClientErrorEvent | null {
   const path = cleanPath(context.path);
   const message = trimMax(event.message, MAX_MESSAGE);
+  const component = cleanComponent(event.component);
   if (!path || !message) return null;
 
   return {
@@ -96,7 +98,7 @@ export function defaultRedact(
     path,
     occurredAt: context.occurredAt,
     referrer: cleanReferrer(context.referrer, location.origin),
-    component: cleanComponent(event.component),
+    component,
     status: cleanStatus(event.status),
     source: cleanSource(event.source),
     line: cleanPositiveInteger(event.line),
@@ -104,5 +106,7 @@ export function defaultRedact(
     stack: cleanStack(event.stack),
     userAgent: context.userAgent ? trimMax(context.userAgent, MAX_UA) : undefined,
     buildId: context.buildId ? trimMax(context.buildId, MAX_BUILD_ID) : undefined,
+    subscriptionEvidence: event.type === 'interaction_error' && component === 'subscribe_form'
+      ? parseSubscriptionErrorEvidence(event.subscriptionEvidence) : undefined,
   };
 }

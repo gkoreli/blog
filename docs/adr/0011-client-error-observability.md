@@ -4,7 +4,11 @@
 
 Accepted — 2026-04-11. Core reporting implemented April 11. Subscription-form coverage and recovery were repaired in `86dad93`; broader transport, correlation, ingestion and alerting gaps remain open as of the September 9 UTC checkpoint.
 
-### Current checkpoint — September 9, 2026
+### Current checkpoint — October 29, 2026
+
+New subscription diagnostics have a versioned closed evidence object for active phase and a syntax-bounded provider error code, with separate unrecorded, malformed and unsupported states. Failure detection preserves phase before clearing the active attempt. Codes stay separate from HTTP status and do not establish provider authenticity, bot identity or human operation. New rows can preserve client-reported `occurred_at` separately from server ingestion time; older rows remain null. Actual build identity, correlation, transport acknowledgment, admission and bootstrap coverage remain open. [Implementation, native tests and separate schema/release acceptance](../../packages/blog/drafts/research/newsletter-reliability/19-subscription-error-phase-and-provider-evidence.md).
+
+### Historical checkpoint — September 9, 2026
 
 The form emits static failure stages and status codes, restores usable retries, bounds widget/API waits and handles late or stale widget callbacks. Twenty-five controlled initializer tests passed. One authorized native Chrome flow then completed through the real verifier, provider, mailbox and confirmation POST. That message landed in Gmail Spam. The signup receipt does not verify durable client-error delivery. [Client tests](../../packages/blog/drafts/research/newsletter-reliability/12-client-verification.md), [live acceptance](../../packages/blog/drafts/research/newsletter-reliability/15-live-signup-acceptance.md).
 

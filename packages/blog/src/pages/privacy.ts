@@ -57,11 +57,12 @@ export function privacyPage() {
 
   <h2>Bot protection</h2>
 
-  <p>The newsletter signup form uses <a href="https://www.cloudflare.com/products/turnstile/" target="_blank" rel="noopener">Cloudflare Turnstile</a> when you submit a request. Turnstile analyses browser and network signals to assess automated abuse. Verification may require interaction and can fail; the form reports a problem and lets you retry. Cloudflare may process data as part of this assessment — see <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's Privacy Policy</a>.</p>
+  <p>The newsletter form loads <a href="https://www.cloudflare.com/products/turnstile/" target="_blank" rel="noopener">Cloudflare Turnstile</a> and initializes its widget when the script is available. Verification is requested on submission. Turnstile analyses browser and network signals to assess automated abuse. Verification may require interaction and can fail; the form reports a problem and lets you retry. Cloudflare may process data as part of this assessment — see <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's Privacy Policy</a>.</p>
 
   <h2>Error diagnostics</h2>
 
-  <p>If something breaks in the browser, a small first-party error report may be sent to help debug the problem. Reports include the page path, error message, component name, browser user agent, and coarse Cloudflare request metadata. They do not include email addresses, form contents, cookies, localStorage values, Turnstile tokens, or full URLs with query strings. Error reports are deleted after 30 days.</p>
+  <p>If something breaks in the browser, a small first-party error report may be sent to help debug the problem. Reports include the page path, error message, component name, browser user agent, and coarse Cloudflare request metadata. They do not include email addresses, form contents, cookies, localStorage values, Turnstile tokens, or full URLs with query strings. Reports become eligible for nightly cleanup after 30 days; cleanup failure can delay physical removal.</p>
+  <p>From October 29, 2026 UTC, new error records can also preserve the client-reported occurrence time separately from server ingestion time. Subscription diagnostics can record whether an attempt was idle, verifying or sending, and a six-digit Turnstile callback code when available. Missing, malformed and unsupported evidence stays explicit; arbitrary callback text is discarded. These are unverified browser reports, not proof of a human, a distinct attempt or successful report delivery. Earlier records are not backfilled.</p>
 
   <h2>Other services</h2>
 

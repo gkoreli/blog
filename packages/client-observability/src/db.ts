@@ -1,14 +1,18 @@
 import type { ServerClientErrorEvent } from './types.js';
+import { parseSubscriptionErrorEvidence } from './subscription-evidence.js';
 
 export interface ClientObservabilityEnv {
   DB: D1Database;
 }
 
 const INSERT = `INSERT INTO client_errors
-  (id, type, message, path, referrer, component, status, source, line, column, stack, user_agent, build_id, ray, country, colo, as_organization)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  (id, type, message, path, referrer, component, status, source, line, column, stack, user_agent, build_id, ray, country, colo, as_organization, occurred_at, subscription_evidence)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
 export async function recordClientError(db: D1Database, event: ServerClientErrorEvent): Promise<void> {
+  const subscription = event.type === 'interaction_error' && event.component === 'subscribe_form'
+    ? parseSubscriptionErrorEvidence(event.subscriptionEvidence) : undefined;
+  const occurred = Date.parse(event.occurredAt);
   await db.prepare(INSERT).bind(
     event.id,
     event.type,
@@ -27,6 +31,8 @@ export async function recordClientError(db: D1Database, event: ServerClientError
     event.country,
     event.colo,
     event.asOrganization,
+    Number.isFinite(occurred) ? new Date(occurred).toISOString() : null,
+    subscription === undefined ? null : JSON.stringify(subscription),
   ).run();
 }
 

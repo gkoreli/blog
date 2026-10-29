@@ -2,6 +2,9 @@ import { browserContext, defaultRedact } from './redact.js';
 import { BeaconTransport } from './transport.js';
 import type { ClientErrorInput, ClientLogger, ClientLoggerConfig } from './types.js';
 
+export { captureSubscriptionError } from './subscription-evidence.js';
+export type { SubscriptionErrorEvidence, SubscriptionPhase, TurnstileErrorEvidence } from './subscription-evidence.js';
+
 function keepAll(): boolean {
   return true;
 }

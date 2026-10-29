@@ -1,0 +1,85 @@
+{
+  "nativeD1": {
+    "checkedAt": "2026-10-29T23:08:51.425Z",
+    "migrationSha256": "ac40a88d22f4554419285166bc690bd9b214c95d49d45ec574014595bd06c999",
+    "schemaBefore": {
+      "columns": 18,
+      "occurrenceColumns": 0,
+      "evidenceColumns": 0,
+      "requiredColumns": 5
+    },
+    "schemaAfter": {
+      "columns": 20,
+      "occurrenceColumns": 1,
+      "evidenceColumns": 1,
+      "requiredColumns": 5
+    },
+    "legacyScalarFieldsUnchanged": true,
+    "legacyNewFieldsNull": true,
+    "actualNativeStoredCases": 10,
+    "fullLocalLoggerHandlerStoragePairs": 1,
+    "occurrenceSeparateFromIngestion": true,
+    "malformedMetadataCannotLeakRawValues": true,
+    "unknownProfileExplicit": true,
+    "oldClientsRemainUnrecorded": true,
+    "migrationMeters": [
+      {
+        "reads": 9,
+        "writes": 1
+      },
+      {
+        "reads": 9,
+        "writes": 1
+      }
+    ],
+    "productionCalls": 0,
+    "humanLabels": 0,
+    "acknowledgmentContractChanged": false
+  },
+  "nativeWranglerCommand": {
+    "commandForm": "one --command=SQL argument",
+    "nativeWranglerLocal": true,
+    "productionCalls": 0,
+    "receipts": [
+      {
+        "mode": "base",
+        "sqlSha256": "a731b6a17c477513ef8eafa9955a875e80b0de9a7e3a2bd6c95a11c6210f1f1c",
+        "statements": 5,
+        "success": true
+      },
+      {
+        "mode": "migration",
+        "sqlSha256": "ac40a88d22f4554419285166bc690bd9b214c95d49d45ec574014595bd06c999",
+        "statements": 2,
+        "success": true
+      },
+      {
+        "mode": "schema",
+        "sqlSha256": "eaeb498bda0595f4a1f187d6df2af8dd899d7aabb572c4fd1fee885cc468bb03",
+        "statements": 1,
+        "success": true
+      }
+    ]
+  },
+  "siteTests": 137,
+  "workspaceTypes": true,
+  "validMarkdownPosts": 22,
+  "isolatedBuildPosts": 33,
+  "publicConfiguration": "synthetic nonempty sitekey",
+  "privateEnvCopied": false,
+  "failedLaunches": [
+    "tsx module not found at root before native test execution; package-scoped loader succeeds",
+    "isolated build tsx IPC denied before compilation; same snapshot passes with IPC allowed"
+  ],
+  "sourceHashes": {
+    "packages/blog/src/client/subscribe.ts": "09ae822b11cbb00e5aba8af87a1d6911efa6e3c1a2edac0ac6ace860fbcc06d9",
+    "packages/blog/src/pages/privacy.ts": "2208d5abd1082111c6d083ad76c4538fe6b004e7ae0e20210eb363c497a4767b",
+    "packages/client-observability/src/subscription-evidence.ts": "82b8b7c85a9c86d9ab31a7a60c2c52621b415c836d494c17a6b9fc38be52b1fd",
+    "packages/client-observability/src/types.ts": "7467f534acb95ec3e6d7c6482a1676cc36272fcfe6e1351fe0c64b36f3a71184",
+    "packages/client-observability/src/client.ts": "45918533910164ebbcd68910cd308df128da6b82bf710e0b610362d3896c7278",
+    "packages/client-observability/src/redact.ts": "c32b0bde721f88de3569c6b32f83b908b39a50bbc06f57012e760e7e7b898ac9",
+    "packages/client-observability/src/schema.ts": "5705f27fbae784e10758d8d6b96a5fffd2af7c1c001ba7f0c22386d79c9004ba",
+    "packages/client-observability/src/db.ts": "628ade2eb9d6a640c661fe81f99f0638466e52c0b485b05943b1e25c6d067bac",
+    "packages/client-observability/migrations/0002_add_subscription_error_evidence.sql": "ac40a88d22f4554419285166bc690bd9b214c95d49d45ec574014595bd06c999"
+  }
+}

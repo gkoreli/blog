@@ -257,13 +257,45 @@ test('an idle widget error is a diagnostic without a submitted signup', t => {
   assert.equal(h.reports.length, 0);
   const callback = h.options()['error-callback'];
   assert.ok(callback);
-  callback('synthetic-widget-error');
+  callback('110100');
   assert.deepEqual(h.reports.map(event => event.message), ['subscribe_widget_error']);
+  assert.deepEqual(h.reports[0]?.subscriptionEvidence, {
+    state: 'recorded', profile: 'subscribe-error-v1', phase: 'idle',
+    turnstileError: { state: 'bounded-code', code: '110100' },
+  });
   assert.equal(h.executions.length, 0);
   assert.equal(h.requests.length, 0);
   assert.equal(h.form.input.value, '');
   assert.equal(h.form.button.disabled, false);
   assert.equal(h.timers.size, 0);
+});
+
+test('widget diagnostics retain the active verification phase before failure clears it', t => {
+  const h = harness(t);
+  h.initialize();
+  h.submit();
+  h.options()['error-callback']?.('200500');
+  assert.deepEqual(h.reports[0]?.subscriptionEvidence, {
+    state: 'recorded', profile: 'subscribe-error-v1', phase: 'verifying',
+    turnstileError: { state: 'bounded-code', code: '200500' },
+  });
+  assert.equal(h.reports[0]?.status, undefined, 'provider codes must not become HTTP statuses');
+  assert.equal(h.requests.length, 0);
+});
+
+test('API failure diagnostics retain sending phase and keep provider errors inapplicable', async t => {
+  const h = harness(t);
+  h.initialize();
+  h.setFetch(async () => new Response(null, { status: 503 }));
+  h.submit();
+  h.options().callback?.('synthetic-token');
+  await settle();
+  assert.equal(h.reports[0]?.message, 'subscribe_api_rejected');
+  assert.equal(h.reports[0]?.status, 503);
+  assert.deepEqual(h.reports[0]?.subscriptionEvidence, {
+    state: 'recorded', profile: 'subscribe-error-v1', phase: 'sending',
+    turnstileError: { state: 'not-applicable' },
+  });
 });
 
 test('a synchronous render callback failure never starts execution or leaves a timer', t => {

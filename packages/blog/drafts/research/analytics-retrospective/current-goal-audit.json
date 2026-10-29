@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-29T23:02:24.282370+00:00",
-  "sourceBaseline": "c0dd9504ba190830c1f844632acb0e33bb875c05",
+  "checkedAt": "2026-10-29T23:16:07.993771+00:00",
+  "sourceBaseline": "9d1115e9d6c2ee4d2f13e6c49209fb15fb04256f",
   "goalAchieved": false,
   "previousTurn": "progress",
-  "scope": "Retained subscription-error aggregate and labelled idle-callback counterexample; original analytics and readership requirements retained.",
+  "scope": "Closed subscription diagnostic evidence/occurrence storage implemented and natively checked; additive production schema accepted. Writer/client publication and activation remain pending. Original analytics goal retained.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Implement and natively test bounded operation-phase/provider-error metadata with explicit unknown states; keep historical data unfilled and failures separate from readership. Occurrence/build identity and acknowledgment remain TASK-0125/0126. GSC login and Duck.ai terms approval pending; human trials deferred.",
+  "nextBoundedAction": "Commit/push checked client/writer; accept source/build/allocation and served JS/privacy artifacts. Then prepare a labelled ingestion write/readback/cleanup plan; do not pollute natural diagnostic counts. GSC login/Duck.ai terms approval pending; human trials deferred.",
   "article": {
     "bodyWhitespaceWords": 1450,
     "prompts": 31,
@@ -62,8 +62,8 @@
     "localBuildAccepted": true,
     "localBuildReceipt": "public-parsing-checks.json"
   },
-  "runtimeUnchanged": true,
-  "productionStatements": 1,
+  "runtimeUnchanged": false,
+  "productionStatements": 5,
   "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
@@ -170,7 +170,7 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 341,
+  "productionReportedReads": 208,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
@@ -629,9 +629,9 @@
     "exactRetainedRequestVersionMatched": true,
     "liveEmptyCounters": 44
   },
-  "productionDirectDiagnosticSelects": 1,
+  "productionDirectDiagnosticSelects": 3,
   "productionReportCalculations": 0,
-  "productionReadScope": "One one-attempt aggregate of retained subscribe_form reports; no raw records returned.",
+  "productionReadScope": "Schema metadata/DDL only; no diagnostic reader records selected.",
   "unresolvedMetadata": {
     "research": "88-unresolved-metadata-and-retained-inputs.md",
     "production": "unresolved-metadata-production.json",
@@ -659,7 +659,7 @@
     "checks": "unresolved-metadata-checks.json",
     "release": "unresolved-metadata-release.json"
   },
-  "runtimeUnchangedScope": "Only tests/research/status records changed; no collection, report, template, verifier, schema, server or client runtime change.",
+  "runtimeUnchangedScope": "Subscription diagnostic client/parser/writer and privacy disclosure change; analytics collector/classifier/verifier/report unchanged. Production schema adds two nullable columns without a backfill. No sender/verification/limit/credential change.",
   "localMetadataRelay": {
     "research": "89-local-browser-relays-and-fetch-metadata.md",
     "experiment": "local-metadata-relay-experiment.json",
@@ -765,7 +765,7 @@
   },
   "ownSiteGetRequests": 0,
   "collectionEligibleRequests": 0,
-  "diagnosticSelects": 1,
+  "diagnosticSelects": 3,
   "evidenceDelta": {
     "research": "93-frozen-delta-and-reusable-evidence.md",
     "production": "evidence-delta-production.json",
@@ -838,9 +838,9 @@
     "unmeteredCalculations": 1,
     "productionBrowserLayoutMeasured": false
   },
-  "productionStatementsScope": "One direct diagnostic aggregate SELECT; no report calculation or diagnostic writes.",
-  "productionReportedReadsCoverage": "341 reported query reads, not account-wide cost or distinct reports.",
-  "productionReadTotal": 341,
+  "productionStatementsScope": "Two schema preflights, two ALTER statements and one final metadata query, plus one preserved CLI argument failure without a D1 result/meter.",
+  "productionReportedReadsCoverage": "208 reads/two DDL writes across five returned meters; rejected CLI has no D1 meter. No account-wide cost claim.",
+  "productionReadTotal": 208,
   "publicationDateRepair": {
     "receipt": "article-reach-date-checks.json",
     "siteTests": 120,
@@ -907,7 +907,7 @@
     "widgetReadinessEstablished": false,
     "browserTabClosed": true
   },
-  "productionDiagnosticD1Statements": 1,
+  "productionDiagnosticD1Statements": 3,
   "retainedSubscriptionErrors": {
     "research": "../newsletter-reliability/18-retained-widget-errors-and-conversion-limits.md",
     "production": "../newsletter-reliability/subscription-error-audit-production.json",
@@ -927,5 +927,25 @@
     "localIdleSignupRequests": 0,
     "runtimeChanged": false,
     "humanLabels": 0
+  },
+  "productionDdlWrites": 2,
+  "subscriptionDiagnosticEvidence": {
+    "research": "../newsletter-reliability/19-subscription-error-phase-and-provider-evidence.md",
+    "native": "../newsletter-reliability/subscription-evidence-native.json",
+    "schema": "../newsletter-reliability/subscription-evidence-schema.json",
+    "profile": "subscribe-error-v1",
+    "siteTests": 137,
+    "nativeStoredCases": 10,
+    "fullLocalLoggerHandlerStoragePairs": 1,
+    "legacyFieldsUnchanged": true,
+    "legacyNewFieldsNull": true,
+    "schemaAccepted": true,
+    "writerActivationAccepted": false,
+    "liveMetadataReadback": false,
+    "buildIdentitySupplied": false,
+    "acknowledgmentContractChanged": false,
+    "runtimeAnalyticsChanged": false,
+    "historicalCohortRewritten": false,
+    "privateDataManifestSha256": "90bfd7b8f818b7af8160768e68b3a22b83ff2f55c3d9796731fa2081660c14bb"
   }
 }

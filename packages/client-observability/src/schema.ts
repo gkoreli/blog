@@ -1,4 +1,5 @@
 import type { ClientErrorEvent, ClientErrorType } from './types.js';
+import { parseSubscriptionErrorEvidence } from './subscription-evidence.js';
 
 const TYPES = new Set<ClientErrorType>(['window_error', 'unhandled_rejection', 'interaction_error']);
 const MAX_MESSAGE = 500;
@@ -48,6 +49,7 @@ export function parseClientErrorPayload(raw: unknown): ClientErrorEvent | null {
   const path = 'path' in raw ? stringField(raw.path, MAX_PATH) : undefined;
   const occurredAt = 'occurredAt' in raw ? dateField(raw.occurredAt) : undefined;
   if (!message || !path || !path.startsWith('/') || !occurredAt) return null;
+  const component = 'component' in raw ? stringField(raw.component, MAX_COMPONENT) : undefined;
 
   return {
     type,
@@ -55,7 +57,7 @@ export function parseClientErrorPayload(raw: unknown): ClientErrorEvent | null {
     path: path.split(/[?#]/)[0] ?? path,
     occurredAt,
     referrer: 'referrer' in raw ? stringField(raw.referrer, MAX_REFERRER) : undefined,
-    component: 'component' in raw ? stringField(raw.component, MAX_COMPONENT) : undefined,
+    component,
     status: 'status' in raw ? statusField(raw.status) : undefined,
     source: 'source' in raw ? stringField(raw.source, MAX_SOURCE) : undefined,
     line: 'line' in raw ? numberField(raw.line) : undefined,
@@ -63,5 +65,8 @@ export function parseClientErrorPayload(raw: unknown): ClientErrorEvent | null {
     stack: 'stack' in raw ? stringField(raw.stack, MAX_STACK) : undefined,
     userAgent: 'userAgent' in raw ? stringField(raw.userAgent, MAX_UA) : undefined,
     buildId: 'buildId' in raw ? stringField(raw.buildId, MAX_BUILD_ID) : undefined,
+    subscriptionEvidence: type === 'interaction_error' && component === 'subscribe_form'
+      ? parseSubscriptionErrorEvidence('subscriptionEvidence' in raw ? raw.subscriptionEvidence : undefined)
+      : undefined,
   };
 }

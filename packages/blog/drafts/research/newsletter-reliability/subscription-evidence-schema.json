@@ -1,0 +1,79 @@
+{
+  "checkedAt": "2026-10-29T23:15:20.444770+00:00",
+  "sourceBaseline": "9d1115e9d6c2ee4d2f13e6c49209fb15fb04256f",
+  "table": "client_errors",
+  "migration": "0002_add_subscription_error_evidence.sql",
+  "migrationSha256": "ac40a88d22f4554419285166bc690bd9b214c95d49d45ec574014595bd06c999",
+  "schemaBefore": {
+    "columns": 18,
+    "occurrenceColumns": 0,
+    "evidenceColumns": 0,
+    "requiredColumns": 5
+  },
+  "schemaAfter": {
+    "columns": 20,
+    "occurrenceColumns": 1,
+    "evidenceColumns": 1,
+    "requiredColumns": 5
+  },
+  "newColumnsNullable": true,
+  "defaultsAdded": false,
+  "historicalBackfill": false,
+  "diagnosticRecordsSelected": 0,
+  "meters": [
+    {
+      "operation": "schema-before",
+      "statement": 1,
+      "reportedRowsRead": 36,
+      "reportedRowsWritten": 0,
+      "providerTotalAttempts": 1
+    },
+    {
+      "operation": "recovery-schema-before",
+      "statement": 1,
+      "reportedRowsRead": 36,
+      "reportedRowsWritten": 0,
+      "providerTotalAttempts": 1
+    },
+    {
+      "operation": "recovery-migration",
+      "statement": 1,
+      "reportedRowsRead": 48,
+      "reportedRowsWritten": 1,
+      "providerTotalAttempts": 1
+    },
+    {
+      "operation": "recovery-migration",
+      "statement": 2,
+      "reportedRowsRead": 48,
+      "reportedRowsWritten": 1,
+      "providerTotalAttempts": 1
+    },
+    {
+      "operation": "recovery-schema-after",
+      "statement": 1,
+      "reportedRowsRead": 40,
+      "reportedRowsWritten": 0,
+      "providerTotalAttempts": 1
+    }
+  ],
+  "reportedReads": 208,
+  "reportedDdlWrites": 2,
+  "failedCliInvocation": {
+    "exit": 1,
+    "reason": "Leading -- SQL comment was parsed as an argument; failed before command dispatch",
+    "d1ResultOrMeterAvailable": false,
+    "sqlBlindlyRepeated": false
+  },
+  "correctedCommandForm": "One --command=SQL argument; exact commented migration passed local Wrangler; fresh schema preflight still18columns before mutation",
+  "originalPlanManifestSha256": "328b2912a8f3c228dbbd9f8712d42d5cc61816e7d0faf7736a198d623b20cda1",
+  "recoveryPlanManifestSha256": "b16f266e00a2f03462fa2c17e4ac12c74acecbb3dab1e818c6e959554c3c86f3",
+  "writerDeploymentAccepted": false,
+  "productionMetadataReportPosted": false,
+  "oldWriterCompatibleDuringSchemaChange": true,
+  "limits": [
+    "Schema metadata and DDL accepted; no historical diagnostic row readback or backfill.",
+    "No full signup, challenge or email test.",
+    "Provider error codes and phases are client-reported claims, not operator identity."
+  ]
+}
