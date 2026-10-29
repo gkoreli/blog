@@ -29,8 +29,8 @@
   "reportCacheVersionUnchanged": "2026-10-29.4",
   "collectionVersionUnchanged": "2026-10-29.5",
   "collectorSourceChanged": false,
-  "productionActivationAccepted": false,
-  "productionProbes": 0,
+  "productionActivationAccepted": true,
+  "productionProbes": 1,
   "humanTrialsDeferred": true,
   "articleUnchanged": true,
   "articleWords": 1375,
@@ -44,7 +44,10 @@
   },
   "additionalUnsuccessfulChecks": [
     "Optional inline exact-path/EXPLAIN helper remained live without output; confirmed own idle processes explicitly terminated. No plan/result accepted, no production retry, cause unestablished.",
-    "Wrangler --version returned 4.71.0 but could not write its default diagnostic log under sandbox; this was not a query-access failure."
+    "Wrangler --version returned 4.71.0 but could not write its default diagnostic log under sandbox; this was not a query-access failure.",
+    "The explicit tail sampling rate of 1 is rejected locally by Wrangler; it is omitted on the subsequent supported tail command, before the sole API request.",
+    "Copy build log leaves a stale prior clipboard value; that capture is rejected and preserved separately. The acknowledged downloaded log supplies the source/version join.",
+    "A stale deployment-page click fails; direct navigation to the observed exact build URL succeeds."
   ],
   "localLinks": "pass",
   "publicFieldScan": "pass",
@@ -58,5 +61,11 @@
     "fileMode": "0600",
     "reviewDate": "2026-10-31",
     "automaticErasure": false
-  }
+  },
+  "productionDirectDiagnosticSelects": 0,
+  "productionLastAttemptReads": 86,
+  "productionLastAttemptWrites": 0,
+  "productionDatabaseAttempts": 1,
+  "exactRetainedRequestVersionMatched": true,
+  "release": "report-json-release.json"
 }

@@ -32,4 +32,16 @@ An optional inline helper intended to add an exact-path query plan remains live 
 
 The article remains 1,375 words/31 prompts. No new readership claim follows from this change. At this checkpoint, production source activation and a bounded empty-path API calculation remain separate acceptance work; no own-site request, production diagnostic SELECT or human label has been introduced.
 
-Next: accept the exact checked source/build, then one guarded empty-path API MISS and its calculation receipt. Keep the full goal open: human/device errors and abstentions, native managed agreement, original signing-context discrepancies, historical proof recovery, R1 attribution and privacy decisions remain unresolved. Human trials stay deferred.
+At the local checkpoint, source activation and a guarded empty-path calculation are the next acceptance steps. Their completed evidence follows below.
+
+## Exact source and one live calculation accepted
+
+The [release receipt](report-json-release.json) joins checked source **`8c64212`** to successful Cloudflare build **`91e88c3b`**, its deployed Worker **`3f7ac722`**, and fresh CLI **100% allocation**. The build log reports Node **24.22.1**, while local checks use the pinned **24.14.1**; this is not an identical-runtime claim. The source-linked Ready row lacks a version, a separate new row says manually deployed, and the older Active-deployment display disagrees with CLI metadata. The exact build-log version supplies the join; no agent manual deployment or explanation for the dashboard inconsistency is inferred.
+
+An immutable six-file plan precedes the sole API request. Its path-bound report returns **HTTP 200/MISS, zero matching observations and all 44 public verification counters at zero**. The response's exact Ray ID selects four retained records; invocation URL, execution Worker, calculation receipt and cache outcome reconcile. Those are copies from the same provider source, not independent wire captures. The public response does not expose raw nulls: that preservation is established by the native and constrained-SQLite comparisons above.
+
+The actual calculation reports **86 reads, zero writes and one attempt**, with complete last-attempt metadata. The native empty-selection sample is **87 reads**; neither is rewritten to agree. The planned 1,000-read review threshold is not server-enforced. No direct diagnostic SELECT, collection-eligible request, owner mark or human label occurs. The three optional diagnostic/calibration/capture bindings remain absent. The owned tail CLI is terminal; remote tail deletion is not independently read back.
+
+Two acceptance failures remain explicit. Wrangler rejects an explicit sampling rate of `1` before the API request; the supported tail defaults are used instead. Copying the build log leaves an older clipboard value, which is rejected and preserved separately; the downloaded source build log supplies the accepted version evidence. Neither event repeats the production calculation.
+
+This closes the report-contract iteration, without establishing a human accuracy rate or whole-population correctness. Next: native-test bounded selection of unresolved records in the frozen 383-row range, then compare exact retained inputs with stored missing Fetch Metadata and parsed-UA claims. Human/device errors and abstentions, native managed agreement, original signing-context discrepancies, historical proof recovery, R1 attribution and privacy decisions remain unresolved. Human trials stay deferred; the full goal is open.

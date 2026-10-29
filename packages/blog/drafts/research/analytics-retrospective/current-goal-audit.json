@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T17:55:03.500272+00:00",
-  "sourceBaseline": "b408fcf",
+  "checkedAt": "2026-10-29T18:09:57.157652+00:00",
+  "sourceBaseline": "8c64212",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -44,7 +44,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Accept the checked report-builder source/build and one guarded empty-path API MISS with its exact calculation receipt. Then continue the original correctness and labelled-measurement requirements; human trials remain deferred.",
+  "nextBoundedAction": "Native-test bounded selection for unresolved records in the frozen 383-row range, then compare their exact retained request contexts against stored missing Fetch Metadata and parsed-UA claims. Do not infer actual engines or humans; human-operated trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1375,
     "prompts": 31,
@@ -59,10 +59,10 @@
     "servedMatchScope": "Fresh exact Markdown only; prior full article HTML acceptance remains dated in parallel-declarations-release.json."
   },
   "runtimeUnchanged": false,
-  "productionStatements": 0,
+  "productionStatements": 1,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": false,
+  "liveAccountInspection": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -91,7 +91,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 0,
+  "productionOwnSiteGets": 1,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -378,7 +378,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Native and constrained-SQLite report comparisons only; no production statement or site request at this checkpoint.",
+  "liveAccountInspectionScope": "Source-linked build, CLI allocation/version and D1 metadata; one planned ineligible API MISS and exact retained request/cost receipts. No configuration changes.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -612,8 +612,19 @@
     "collectorChanged": false,
     "runtimeProfilesChanged": false,
     "reportCacheVersion": "2026-10-29.4",
-    "sourceActivationAccepted": false,
-    "productionProbeCount": 0,
-    "articleChanged": false
-  }
+    "sourceActivationAccepted": true,
+    "productionProbeCount": 1,
+    "articleChanged": false,
+    "release": "report-json-release.json",
+    "sourceCommit": "8c64212b6d3a45ca769c9124a53cfd29ac9c744f",
+    "workerVersion": "3f7ac722-361c-4d55-acfe-96ab4abbe70e",
+    "allocationPercentage": 100,
+    "liveLastAttemptReads": 86,
+    "liveLastAttemptWrites": 0,
+    "liveDatabaseAttempts": 1,
+    "exactRetainedRequestVersionMatched": true,
+    "liveEmptyCounters": 44
+  },
+  "productionDirectDiagnosticSelects": 0,
+  "productionReportCalculations": 1
 }
