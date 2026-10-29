@@ -1,3 +1,4 @@
+import { consistentFetchMetadataSummary, FETCH_METADATA_REPORT_FIELDS } from '@gkoreli/analytics/fetch-metadata-summary';
 import { consistentVendorNetworkSummary } from '@gkoreli/analytics/vendor-network-summary';
 import { consistentSignatureSummary } from '@gkoreli/analytics/signature-summary';
 import uPlot from 'uplot';
@@ -31,9 +32,9 @@ const MAX_ITEMS = 10;
 const CHART_HEIGHT = 300;
 const DEFAULT_STATE: ViewState = { range: '30d', traffic: 'browser', path: null, agent: null, kind: null };
 
-/** Public names for the reader kinds: what the client is, in plain words. */
+/** Public names describe stored rule matches and declared roles. */
 const KIND_LABELS: Record<ReaderKind, string> = {
-  browser: 'Browsers',
+  browser: 'Browser signals',
   'signed-agent': 'Signed clients — historical or unknown role',
   'ai-assistant': 'AI assistants',
   'ai-search': 'AI search',
@@ -59,7 +60,10 @@ const REASON_LABELS: Record<string, string> = {
   'multiple-client-declarations': 'multiple recognized client declarations; no name selected',
   'multiple-declarations-same-category': 'multiple names declare this category; no single identity selected',
   'request-context-conflict': 'external referrer with same-origin Fetch Metadata',
-  'fetch-metadata-unrecognized': 'unrecognized Fetch Metadata mode',
+  'fetch-metadata-unrecognized': 'unrecognized Fetch Metadata value',
+  'fetch-metadata-invalid': 'invalid Fetch Metadata syntax or type',
+  'fetch-metadata-policy-limit': 'Fetch Metadata exceeded the parsing budget',
+  'fetch-metadata-unassessed': 'Fetch Metadata facts could not be assessed',
   'unrecognized-browser-claim': 'no recognized browser-family product claim',
   'network-evidence-missing': 'navigation-shaped browser claim; network evidence missing',
   'fetch-metadata-absent': 'supporting browser-version claim; Fetch Metadata absent',
@@ -202,6 +206,7 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   if (data.verifierProfile?.assessment !== 'stored-profile-not-reverified'
     || !REVIEWED_VERIFIER_PROFILES.some(profile => profile === data.verifierProfile.current)
     || !data.byKindSignature.every(row => isReportedVerifierProfile(row.profile))) throw new Error('Updated verifier profile provenance is unavailable. Please reload.');
+  if (!consistentFetchMetadataSummary(data.fetchMetadata, data.totals.views)) throw new Error('Request-context evidence is incomplete or inconsistent. Please reload.');
   if (!consistentVendorNetworkSummary(data.vendorNetwork, data.totals.views)) throw new Error('Inconsistent vendor network summary. Please reload.');
   if (!consistentSignatureSummary(data.verification, data.totals.views, data.byKindSignature)) throw new Error('Inconsistent signature summary. Please reload.');
   if (!Number.isSafeInteger(data.verification.vendorOriginConflictViews) || data.verification.vendorOriginConflictViews < 0
@@ -646,6 +651,31 @@ function renderTransitions(data: StatsResponse, state: ViewState): void {
     : `Recorded page transitions, with repeated requests counted separately. ${formatNumber(details.selfReferrals)} same-page referrals are separate; ${formatNumber(details.unrecognizedPathViews)} internal referrals have no recognized source path. A missing next request does not establish that someone left.`;
 }
 
+function renderFetchMetadata(data: StatsResponse): void {
+  const summary = data.fetchMetadata, records = summary.records;
+  element('stats-fetch-metadata-records').textContent = `${formatNumber(records.recognizedViews)} observations have a recognized, consistent parsing record; ${formatNumber(records.notRecordedViews)} have no parsing record, ${formatNumber(records.unrecognizedViews)} have an unsupported record or profile, and ${formatNumber(records.inconsistentViews)} have inconsistent parsing facts.`;
+  const container = element('stats-fetch-metadata-rows');
+  container.replaceChildren();
+  const table = document.createElement('table');
+  const caption = table.createCaption();
+  caption.textContent = 'Counts by request field';
+  const header = table.createTHead().insertRow();
+  for (const label of ['Field', 'Unassessed', 'Absent', 'Valid value', 'Unrecognized', 'Invalid', 'Budget limit', 'Parameters']) {
+    const cell = document.createElement('th'); cell.scope = 'col'; cell.textContent = label; header.appendChild(cell);
+  }
+  const labels = { mode: 'Mode', destination: 'Destination', site: 'Site context', activation: 'Activation' };
+  const body = table.createTBody();
+  for (const field of FETCH_METADATA_REPORT_FIELDS) {
+    const counts = summary.fields[field], row = body.insertRow(), heading = document.createElement('th');
+    heading.scope = 'row'; heading.textContent = labels[field]; row.appendChild(heading);
+    for (const value of [counts.notAssessedViews, counts.absentViews, counts.validViews, counts.unrecognizedViews, counts.invalidViews, counts.policyLimitedViews, counts.parametersViews]) {
+      const cell = row.insertCell(); cell.textContent = formatNumber(value);
+    }
+  }
+  container.appendChild(table);
+  element('stats-fetch-metadata-activation').textContent = `Parsed activation booleans: ${formatNumber(summary.activation.trueClaimViews)} true claims and ${formatNumber(summary.activation.falseValueViews)} false values. The browser generation algorithm omits this header when false. A true claim does not authenticate a human action.`;
+}
+
 function renderDashboard(data: StatsResponse, state: ViewState): void {
   renderPeriod(data.period);
   renderScope(data.filters);
@@ -750,6 +780,7 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   replaceSectionRows('stats-directory-publication', data.byDirectoryPublication.map(row => ({ label: DIRECTORY_PUBLICATION_LABELS[row.basis], views: row.views })), null);
   renderComposition(data, state);
   renderKindSignatures(data, state);
+  renderFetchMetadata(data);
 
   setStatus(`Showing ${formatViewCount(data.totals.views, true)}.${exclusionNotice}`, 'ready');
 }

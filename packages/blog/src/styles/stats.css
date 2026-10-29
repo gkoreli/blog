@@ -140,3 +140,10 @@ a.stats-label { color: var(--color-link); }
 .stats-signature-basis td { padding: 0.6rem; border-bottom: 1px solid var(--color-border); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
 .stats-signature-basis th:last-child,
 .stats-signature-basis td:last-child { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+.stats-fetch-metadata { grid-column: 1 / -1; }
+#stats-fetch-metadata-rows { overflow-x: auto; }
+.stats-fetch-metadata table { width: 100%; min-width: 40rem; border-collapse: collapse; font-size: 0.8rem; }
+.stats-fetch-metadata caption { text-align: left; color: var(--color-text-muted); padding: 0.5rem 0; }
+.stats-fetch-metadata th, .stats-fetch-metadata td { padding: 0.6rem; border-bottom: 1px solid var(--color-border); text-align: right; font-variant-numeric: tabular-nums; }
+.stats-fetch-metadata th:first-child { text-align: left; }

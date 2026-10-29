@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-10-29T20:13:44.202928+00:00",
+  "analyticsTests": 303,
+  "siteTests": 117,
+  "typecheck": "pass",
+  "markdownPostsValidated": 22,
+  "isolatedBuildPosts": 33,
+  "article": {
+    "bodyWhitespaceWords": 1450,
+    "prompts": 31,
+    "sha256": "7b44f831ba0d60113a5c6104f3de333ac842a9e5d1537e0833bec83151385a4e",
+    "promptsUnchanged": true
+  },
+  "nativeComparisons": 17,
+  "individualRecordCases": 25,
+  "encodingCohorts": 6561,
+  "contractModelComparisons": 17,
+  "ui": {
+    "syntheticRows": 512,
+    "fixture": "Earlier 22-case stored-fact population, distinct from final expanded native fixture.",
+    "desktopWidth": 1280,
+    "desktopTableWidth": 728,
+    "mobileWidth": 390,
+    "mobileBodyWidth": 390,
+    "mobileRegionWidth": 354,
+    "mobileTableWidth": 720,
+    "mobileKeyboardScrollObserved": true,
+    "browserFilterEachFieldTotal": 64,
+    "missingSummaryRejected": true,
+    "inconsistentSummaryRejected": true,
+    "newCaptionAndParameterWarningVerified": true,
+    "viewportRestored": true,
+    "temporaryTabClosed": true,
+    "ownedServersTerminal": true
+  },
+  "versions": {
+    "cache": "2026-10-29.5",
+    "collection": "2026-10-29.6",
+    "classifier": "2026-10-29.3",
+    "verifier": "2026-10-29.1",
+    "schemaChanged": false
+  },
+  "productionRequests": 0,
+  "diagnosticSelects": 0,
+  "humanLabels": 0,
+  "failuresPreserved": [
+    "Initial report fixture omitted new section; corrected.",
+    "Initial contract narrowing failed stricter site compiler; generic key-aware guard corrected.",
+    "An alleged valid-token conflict was an invalid test premise; corrected without claiming token recovery.",
+    "Owner-client fixture initially omitted required UTC date; corrected.",
+    "Sandbox denied native/build loopback IPC; approved local-only runs passed.",
+    "Malformed JSON negative first failed table CHECK; incomplete harness variants then hit NOT NULL; complete existing fixture tests CHECK explicitly.",
+    "End key did not scroll the mobile table; ArrowRight did."
+  ],
+  "publicationAccepted": false
+}

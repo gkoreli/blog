@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T19:49:35.014596+00:00",
-  "sourceBaseline": "364de9e658788e4191309582845f433ade127540",
+  "checkedAt": "2026-10-29T20:13:44.202928+00:00",
+  "sourceBaseline": "e5fbbd72e1966ce88bd4325529e28d6c2d355e90",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,27 +45,27 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Expose public parsing-state denominators and audit Browser wording against the four known curl controls. Keep historical unassessed records explicit and native-test cost/semantics before a report release. Human trials remain deferred.",
+  "nextBoundedAction": "Accept exact-source activation, then one frozen empty-path calculation and one same-key cache request plus ineligible stats/article assets. No human trials. Preserve meters and cache/activation limits separately.",
   "article": {
-    "bodyWhitespaceWords": 1437,
+    "bodyWhitespaceWords": 1450,
     "prompts": 31,
-    "sourceSha256": "6d37bf4ec014d94c29eaa52917e1aeece716ad214be8a20aa919c737c58bd31e",
+    "sourceSha256": "7b44f831ba0d60113a5c6104f3de333ac842a9e5d1537e0833bec83151385a4e",
     "unchanged": false,
-    "freshServedCheck": true,
+    "freshServedCheck": false,
     "publicationReceipt": "metadata-collector-release.json",
-    "servedMatchesCheckedBuild": true,
+    "servedMatchesCheckedBuild": false,
     "lastServedCheckReceipt": "metadata-collector-release.json",
-    "publicationStatus": "Research 91 concise curl/control paragraph published; exact served direct Markdown matches the checked isolated build at 1437 words/31 prompts.",
+    "publicationStatus": "Research 92 Browser signals and unassessed-history sentence checked locally; source delivery and served acceptance pending.",
     "previousPublicationReceipt": "fetch-metadata-parsing-release.json",
     "servedMatchScope": "Exact direct Markdown; no fresh served HTML/layout or per-request publication version trace.",
     "localBuildAccepted": true,
-    "localBuildReceipt": "metadata-collector-native.json"
+    "localBuildReceipt": "public-parsing-checks.json"
   },
-  "runtimeUnchanged": true,
-  "productionStatements": 1,
+  "runtimeUnchanged": false,
+  "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": true,
+  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -747,5 +747,15 @@
     "tailQueryRedacted": 4,
     "privateDataManifestSha256": "bce8d7c17de111bb10ed5a37431abb0f3f06a58d1fad72e2fe45ad94d3d14860",
     "publication": "metadata-collector-release.json"
+  },
+  "publicParsingVisibility": {
+    "recordCases": 25,
+    "nativeComparisons": 17,
+    "encodingCohorts": 6561,
+    "cacheVersion": "2026-10-29.5",
+    "collectorSemanticsChanged": false,
+    "humanLabels": 0,
+    "receipt": "public-parsing-checks.json",
+    "productionAccepted": false
   }
 }

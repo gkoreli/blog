@@ -1,0 +1,1163 @@
+{
+  "checkedAt": "2026-10-29T20:14:22.363Z",
+  "baseline": "e5fbbd72e1966ce88bd4325529e28d6c2d355e90",
+  "fixtureRows": 512,
+  "parsingCases": [
+    {
+      "label": "canonical",
+      "record": "recognized"
+    },
+    {
+      "label": "false",
+      "record": "recognized"
+    },
+    {
+      "label": "absent",
+      "record": "recognized"
+    },
+    {
+      "label": "future-mode",
+      "record": "recognized"
+    },
+    {
+      "label": "invalid-user",
+      "record": "recognized"
+    },
+    {
+      "label": "budget",
+      "record": "recognized"
+    },
+    {
+      "label": "parameters",
+      "record": "recognized"
+    },
+    {
+      "label": "unassessed",
+      "record": "recognized"
+    },
+    {
+      "label": "missing",
+      "record": "not-recorded"
+    },
+    {
+      "label": "old",
+      "record": "not-recorded"
+    },
+    {
+      "label": "invalid-record-0",
+      "record": "unrecognized"
+    },
+    {
+      "label": "invalid-record-1",
+      "record": "unrecognized"
+    },
+    {
+      "label": "invalid-record-2",
+      "record": "unrecognized"
+    },
+    {
+      "label": "future-record",
+      "record": "unrecognized"
+    },
+    {
+      "label": "unsupported-profile",
+      "record": "unrecognized"
+    },
+    {
+      "label": "missing-collection",
+      "record": "unrecognized"
+    },
+    {
+      "label": "boolean-bits",
+      "record": "inconsistent"
+    },
+    {
+      "label": "profile-conflict",
+      "record": "inconsistent"
+    },
+    {
+      "label": "scalar-conflict",
+      "record": "inconsistent"
+    },
+    {
+      "label": "activation-conflict",
+      "record": "inconsistent"
+    },
+    {
+      "label": "unsupported-code",
+      "record": "inconsistent"
+    },
+    {
+      "label": "required-field-missing",
+      "record": "inconsistent"
+    },
+    {
+      "label": "legacy-format-with-current-stamps",
+      "record": "inconsistent"
+    },
+    {
+      "label": "duplicate-key",
+      "record": "inconsistent"
+    },
+    {
+      "label": "decimal-bits",
+      "record": "inconsistent"
+    }
+  ],
+  "comparisons": 17,
+  "measurements": [
+    {
+      "label": "empty-seven-day",
+      "fixtureRows": 0,
+      "included": 0,
+      "baselineReads": 87,
+      "candidateReads": 95,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 0,
+          "notRecordedViews": 0,
+          "unrecognizedViews": 0,
+          "inconsistentViews": 0
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 0,
+            "absentViews": 0,
+            "validViews": 0,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "destination": {
+            "notAssessedViews": 0,
+            "absentViews": 0,
+            "validViews": 0,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 0,
+            "absentViews": 0,
+            "validViews": 0,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 0,
+            "absentViews": 0,
+            "validViews": 0,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 0,
+          "falseValueViews": 0
+        }
+      },
+      "sqlBytes": 67286,
+      "boundParameters": 7
+    },
+    {
+      "label": "empty-all-time",
+      "fixtureRows": 0,
+      "included": 0,
+      "baselineReads": 89,
+      "candidateReads": 97,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 0,
+          "notRecordedViews": 0,
+          "unrecognizedViews": 0,
+          "inconsistentViews": 0
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 0,
+            "absentViews": 0,
+            "validViews": 0,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "destination": {
+            "notAssessedViews": 0,
+            "absentViews": 0,
+            "validViews": 0,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 0,
+            "absentViews": 0,
+            "validViews": 0,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 0,
+            "absentViews": 0,
+            "validViews": 0,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 0,
+          "falseValueViews": 0
+        }
+      },
+      "sqlBytes": 67612,
+      "boundParameters": 5
+    },
+    {
+      "label": "7d-all",
+      "fixtureRows": 512,
+      "included": 382,
+      "baselineReads": 24657,
+      "candidateReads": 25900,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 122,
+          "notRecordedViews": 32,
+          "unrecognizedViews": 91,
+          "inconsistentViews": 137
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 275,
+            "absentViews": 15,
+            "validViews": 61,
+            "unrecognizedViews": 16,
+            "invalidViews": 0,
+            "policyLimitedViews": 15,
+            "parametersViews": 15
+          },
+          "destination": {
+            "notAssessedViews": 275,
+            "absentViews": 15,
+            "validViews": 92,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 275,
+            "absentViews": 15,
+            "validViews": 92,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 275,
+            "absentViews": 15,
+            "validViews": 76,
+            "unrecognizedViews": 0,
+            "invalidViews": 16,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 62,
+          "falseValueViews": 14
+        }
+      },
+      "sqlBytes": 67286,
+      "boundParameters": 7
+    },
+    {
+      "label": "7d-browser",
+      "fixtureRows": 512,
+      "included": 55,
+      "baselineReads": 10007,
+      "candidateReads": 10596,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 16,
+          "notRecordedViews": 4,
+          "unrecognizedViews": 14,
+          "inconsistentViews": 21
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 40,
+            "absentViews": 2,
+            "validViews": 8,
+            "unrecognizedViews": 3,
+            "invalidViews": 0,
+            "policyLimitedViews": 2,
+            "parametersViews": 2
+          },
+          "destination": {
+            "notAssessedViews": 40,
+            "absentViews": 2,
+            "validViews": 13,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 40,
+            "absentViews": 2,
+            "validViews": 13,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 40,
+            "absentViews": 2,
+            "validViews": 11,
+            "unrecognizedViews": 0,
+            "invalidViews": 2,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 9,
+          "falseValueViews": 2
+        }
+      },
+      "sqlBytes": 67319,
+      "boundParameters": 7
+    },
+    {
+      "label": "7d-agents",
+      "fixtureRows": 512,
+      "included": 54,
+      "baselineReads": 9972,
+      "candidateReads": 10559,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 19,
+          "notRecordedViews": 4,
+          "unrecognizedViews": 13,
+          "inconsistentViews": 18
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 38,
+            "absentViews": 2,
+            "validViews": 8,
+            "unrecognizedViews": 3,
+            "invalidViews": 0,
+            "policyLimitedViews": 3,
+            "parametersViews": 1
+          },
+          "destination": {
+            "notAssessedViews": 38,
+            "absentViews": 2,
+            "validViews": 14,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 38,
+            "absentViews": 2,
+            "validViews": 14,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 38,
+            "absentViews": 2,
+            "validViews": 11,
+            "unrecognizedViews": 0,
+            "invalidViews": 3,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 9,
+          "falseValueViews": 2
+        }
+      },
+      "sqlBytes": 67340,
+      "boundParameters": 7
+    },
+    {
+      "label": "7d-crawlers",
+      "fixtureRows": 512,
+      "included": 111,
+      "baselineReads": 12503,
+      "candidateReads": 13204,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 32,
+          "notRecordedViews": 10,
+          "unrecognizedViews": 27,
+          "inconsistentViews": 42
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 83,
+            "absentViews": 5,
+            "validViews": 15,
+            "unrecognizedViews": 4,
+            "invalidViews": 0,
+            "policyLimitedViews": 4,
+            "parametersViews": 3
+          },
+          "destination": {
+            "notAssessedViews": 83,
+            "absentViews": 5,
+            "validViews": 23,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 83,
+            "absentViews": 5,
+            "validViews": 23,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 83,
+            "absentViews": 5,
+            "validViews": 19,
+            "unrecognizedViews": 0,
+            "invalidViews": 4,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 16,
+          "falseValueViews": 3
+        }
+      },
+      "sqlBytes": 67387,
+      "boundParameters": 7
+    },
+    {
+      "label": "7d-automation",
+      "fixtureRows": 512,
+      "included": 54,
+      "baselineReads": 9963,
+      "candidateReads": 10550,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 18,
+          "notRecordedViews": 5,
+          "unrecognizedViews": 14,
+          "inconsistentViews": 17
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 38,
+            "absentViews": 2,
+            "validViews": 9,
+            "unrecognizedViews": 3,
+            "invalidViews": 0,
+            "policyLimitedViews": 2,
+            "parametersViews": 3
+          },
+          "destination": {
+            "notAssessedViews": 38,
+            "absentViews": 2,
+            "validViews": 14,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 38,
+            "absentViews": 2,
+            "validViews": 14,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 38,
+            "absentViews": 2,
+            "validViews": 12,
+            "unrecognizedViews": 0,
+            "invalidViews": 2,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 10,
+          "falseValueViews": 2
+        }
+      },
+      "sqlBytes": 67391,
+      "boundParameters": 7
+    },
+    {
+      "label": "7d-unresolved",
+      "fixtureRows": 512,
+      "included": 108,
+      "baselineReads": 12621,
+      "candidateReads": 13316,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 37,
+          "notRecordedViews": 9,
+          "unrecognizedViews": 23,
+          "inconsistentViews": 39
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 76,
+            "absentViews": 4,
+            "validViews": 21,
+            "unrecognizedViews": 3,
+            "invalidViews": 0,
+            "policyLimitedViews": 4,
+            "parametersViews": 6
+          },
+          "destination": {
+            "notAssessedViews": 76,
+            "absentViews": 4,
+            "validViews": 28,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 76,
+            "absentViews": 4,
+            "validViews": 28,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 76,
+            "absentViews": 4,
+            "validViews": 23,
+            "unrecognizedViews": 0,
+            "invalidViews": 5,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 18,
+          "falseValueViews": 5
+        }
+      },
+      "sqlBytes": 67586,
+      "boundParameters": 7
+    },
+    {
+      "label": "all-all",
+      "fixtureRows": 512,
+      "included": 403,
+      "baselineReads": 26104,
+      "candidateReads": 27389,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 130,
+          "notRecordedViews": 33,
+          "unrecognizedViews": 97,
+          "inconsistentViews": 143
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 289,
+            "absentViews": 16,
+            "validViews": 65,
+            "unrecognizedViews": 17,
+            "invalidViews": 0,
+            "policyLimitedViews": 16,
+            "parametersViews": 16
+          },
+          "destination": {
+            "notAssessedViews": 289,
+            "absentViews": 16,
+            "validViews": 98,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 289,
+            "absentViews": 16,
+            "validViews": 98,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 289,
+            "absentViews": 16,
+            "validViews": 81,
+            "unrecognizedViews": 0,
+            "invalidViews": 17,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 66,
+          "falseValueViews": 15
+        }
+      },
+      "sqlBytes": 67657,
+      "boundParameters": 7
+    },
+    {
+      "label": "all-browser",
+      "fixtureRows": 512,
+      "included": 58,
+      "baselineReads": 10647,
+      "candidateReads": 11242,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 16,
+          "notRecordedViews": 5,
+          "unrecognizedViews": 14,
+          "inconsistentViews": 23
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 43,
+            "absentViews": 2,
+            "validViews": 8,
+            "unrecognizedViews": 3,
+            "invalidViews": 0,
+            "policyLimitedViews": 2,
+            "parametersViews": 2
+          },
+          "destination": {
+            "notAssessedViews": 43,
+            "absentViews": 2,
+            "validViews": 13,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 43,
+            "absentViews": 2,
+            "validViews": 13,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 43,
+            "absentViews": 2,
+            "validViews": 11,
+            "unrecognizedViews": 0,
+            "invalidViews": 2,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 9,
+          "falseValueViews": 2
+        }
+      },
+      "sqlBytes": 67690,
+      "boundParameters": 7
+    },
+    {
+      "label": "all-agents",
+      "fixtureRows": 512,
+      "included": 57,
+      "baselineReads": 10612,
+      "candidateReads": 11205,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 20,
+          "notRecordedViews": 4,
+          "unrecognizedViews": 14,
+          "inconsistentViews": 19
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 40,
+            "absentViews": 3,
+            "validViews": 8,
+            "unrecognizedViews": 3,
+            "invalidViews": 0,
+            "policyLimitedViews": 3,
+            "parametersViews": 1
+          },
+          "destination": {
+            "notAssessedViews": 40,
+            "absentViews": 3,
+            "validViews": 14,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 40,
+            "absentViews": 3,
+            "validViews": 14,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 40,
+            "absentViews": 3,
+            "validViews": 11,
+            "unrecognizedViews": 0,
+            "invalidViews": 3,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 9,
+          "falseValueViews": 2
+        }
+      },
+      "sqlBytes": 67711,
+      "boundParameters": 7
+    },
+    {
+      "label": "all-crawlers",
+      "fixtureRows": 512,
+      "included": 116,
+      "baselineReads": 13240,
+      "candidateReads": 13951,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 35,
+          "notRecordedViews": 10,
+          "unrecognizedViews": 29,
+          "inconsistentViews": 42
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 86,
+            "absentViews": 5,
+            "validViews": 16,
+            "unrecognizedViews": 4,
+            "invalidViews": 0,
+            "policyLimitedViews": 5,
+            "parametersViews": 4
+          },
+          "destination": {
+            "notAssessedViews": 86,
+            "absentViews": 5,
+            "validViews": 25,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 86,
+            "absentViews": 5,
+            "validViews": 25,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 86,
+            "absentViews": 5,
+            "validViews": 21,
+            "unrecognizedViews": 0,
+            "invalidViews": 4,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 18,
+          "falseValueViews": 3
+        }
+      },
+      "sqlBytes": 67758,
+      "boundParameters": 7
+    },
+    {
+      "label": "all-automation",
+      "fixtureRows": 512,
+      "included": 58,
+      "baselineReads": 10647,
+      "candidateReads": 11242,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 19,
+          "notRecordedViews": 5,
+          "unrecognizedViews": 16,
+          "inconsistentViews": 18
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 41,
+            "absentViews": 2,
+            "validViews": 10,
+            "unrecognizedViews": 3,
+            "invalidViews": 0,
+            "policyLimitedViews": 2,
+            "parametersViews": 3
+          },
+          "destination": {
+            "notAssessedViews": 41,
+            "absentViews": 2,
+            "validViews": 15,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 41,
+            "absentViews": 2,
+            "validViews": 15,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 41,
+            "absentViews": 2,
+            "validViews": 12,
+            "unrecognizedViews": 0,
+            "invalidViews": 3,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 10,
+          "falseValueViews": 2
+        }
+      },
+      "sqlBytes": 67762,
+      "boundParameters": 7
+    },
+    {
+      "label": "all-unresolved",
+      "fixtureRows": 512,
+      "included": 114,
+      "baselineReads": 13415,
+      "candidateReads": 14122,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 40,
+          "notRecordedViews": 9,
+          "unrecognizedViews": 24,
+          "inconsistentViews": 41
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 79,
+            "absentViews": 4,
+            "validViews": 23,
+            "unrecognizedViews": 4,
+            "invalidViews": 0,
+            "policyLimitedViews": 4,
+            "parametersViews": 6
+          },
+          "destination": {
+            "notAssessedViews": 79,
+            "absentViews": 4,
+            "validViews": 31,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 79,
+            "absentViews": 4,
+            "validViews": 31,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 79,
+            "absentViews": 4,
+            "validViews": 26,
+            "unrecognizedViews": 0,
+            "invalidViews": 5,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 20,
+          "falseValueViews": 6
+        }
+      },
+      "sqlBytes": 67957,
+      "boundParameters": 7
+    },
+    {
+      "label": "30d-all-paths",
+      "fixtureRows": 512,
+      "included": 444,
+      "baselineReads": 27489,
+      "candidateReads": 28856,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 143,
+          "notRecordedViews": 37,
+          "unrecognizedViews": 106,
+          "inconsistentViews": 158
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 319,
+            "absentViews": 18,
+            "validViews": 71,
+            "unrecognizedViews": 18,
+            "invalidViews": 0,
+            "policyLimitedViews": 18,
+            "parametersViews": 18
+          },
+          "destination": {
+            "notAssessedViews": 319,
+            "absentViews": 18,
+            "validViews": 107,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 319,
+            "absentViews": 18,
+            "validViews": 107,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 319,
+            "absentViews": 18,
+            "validViews": 89,
+            "unrecognizedViews": 0,
+            "invalidViews": 18,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 72,
+          "falseValueViews": 17
+        }
+      },
+      "sqlBytes": 67211,
+      "boundParameters": 5
+    },
+    {
+      "label": "90d-all-paths",
+      "fixtureRows": 512,
+      "included": 444,
+      "baselineReads": 27489,
+      "candidateReads": 28856,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 143,
+          "notRecordedViews": 37,
+          "unrecognizedViews": 106,
+          "inconsistentViews": 158
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 319,
+            "absentViews": 18,
+            "validViews": 71,
+            "unrecognizedViews": 18,
+            "invalidViews": 0,
+            "policyLimitedViews": 18,
+            "parametersViews": 18
+          },
+          "destination": {
+            "notAssessedViews": 319,
+            "absentViews": 18,
+            "validViews": 107,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 319,
+            "absentViews": 18,
+            "validViews": 107,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 319,
+            "absentViews": 18,
+            "validViews": 89,
+            "unrecognizedViews": 0,
+            "invalidViews": 18,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 72,
+          "falseValueViews": 17
+        }
+      },
+      "sqlBytes": 67211,
+      "boundParameters": 5
+    },
+    {
+      "label": "missing-path",
+      "fixtureRows": 512,
+      "included": 0,
+      "baselineReads": 87,
+      "candidateReads": 95,
+      "writes": 0,
+      "existingRawAndDecodedOutputEqual": true,
+      "summary": {
+        "records": {
+          "recognizedViews": 0,
+          "notRecordedViews": 0,
+          "unrecognizedViews": 0,
+          "inconsistentViews": 0
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 0,
+            "absentViews": 0,
+            "validViews": 0,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "destination": {
+            "notAssessedViews": 0,
+            "absentViews": 0,
+            "validViews": 0,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 0,
+            "absentViews": 0,
+            "validViews": 0,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 0,
+            "absentViews": 0,
+            "validViews": 0,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 0,
+          "falseValueViews": 0
+        }
+      },
+      "sqlBytes": 67286,
+      "boundParameters": 7
+    }
+  ],
+  "encodingBoundary": {
+    "rows": 6561,
+    "cohorts": 6561,
+    "payloadBytes": 408277,
+    "allRecognized": true,
+    "nonRecognizedAdditionalCohortsMaximum": 3
+  },
+  "inputSha256": "334f2c050b266491ea7494319b3ce0554b45ef26a8d4e50af2be6d1dae5f055d",
+  "scriptSha256": "90a2015c66c1d51a9eec08d4b201ba48347548a042ff32d3a22e9966567918a5",
+  "productionCalls": 0,
+  "humanLabels": 0,
+  "limits": [
+    "Synthetic stored facts; Node decoder with native local D1 SQL, not production equivalence or human accuracy.",
+    "Common fields and raw sections match the pinned baseline; the new summary adds metered work.",
+    "Encoding exhaustion tests the report representation, not all possible request strings or classification facts."
+  ]
+}

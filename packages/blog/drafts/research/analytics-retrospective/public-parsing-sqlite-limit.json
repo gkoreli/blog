@@ -1,0 +1,102 @@
+{
+  "checkedAt": "2026-10-29T20:10:31.022629+00:00",
+  "sqliteVersion": "3.53.4",
+  "pythonVersion": "3.14.6",
+  "statementCacheDisabled": true,
+  "initialFunctionArgumentLimit": 1000,
+  "comparisons": 17,
+  "results": [
+    {
+      "label": "empty-seven-day",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "empty-all-time",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "7d-all",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "7d-browser",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "7d-agents",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "7d-crawlers",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "7d-automation",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "7d-unresolved",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "all-all",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "all-browser",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "all-agents",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "all-crawlers",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "all-automation",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "all-unresolved",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "30d-all-paths",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "90d-all-paths",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    },
+    {
+      "label": "missing-path",
+      "functionArguments": 32,
+      "rawOutputMatchesNative": true
+    }
+  ],
+  "inputSha256": "334f2c050b266491ea7494319b3ce0554b45ef26a8d4e50af2be6d1dae5f055d",
+  "scriptSha256": "f2f1eb4966a02c1169120bc3f82d1a7c8840b5be443f0c1977996cd80894dc76",
+  "productionQueries": 0,
+  "humanLabels": 0,
+  "limits": [
+    "Configured SQLite contract model, not live D1 enforcement or cost."
+  ]
+}

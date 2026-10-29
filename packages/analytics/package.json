@@ -20,7 +20,8 @@
     "./webbotauth-reuse-audit": "./src/webbotauth-reuse-audit.ts",
     "./forwarded-purpose": "./src/forwarded-purpose.ts",
     "./retained-signature-audit": "./src/retained-signature-audit.ts",
-    "./native-bot-comparison": "./src/native-bot-comparison.ts"
+    "./native-bot-comparison": "./src/native-bot-comparison.ts",
+    "./fetch-metadata-summary": "./src/fetch-metadata-report-contract.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",

@@ -1,3 +1,4 @@
+import type { FetchMetadataSummary } from './fetch-metadata-report-contract.js';
 import type { PublicSignerName } from './signers.js';
 import type { ReportedClientForm } from './client-form.js';
 import type { SignatureBasis } from './signature-basis.js';
@@ -185,6 +186,8 @@ export interface StatsResponse {
   /** Independent local and native outcomes; overlapping counts, never people. */
   verification: VerificationSummary;
   vendorNetwork: VendorNetworkSummary;
+  /** Parsing facts account for every included event; history is never header absence. */
+  fetchMetadata: FetchMetadataSummary;
   /** Missing/unrecognized stored kinds report as Unresolved with closed provenance reasons.
    * Original values remain unchanged; the raw-kind intersections below retain null.
    */

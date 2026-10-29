@@ -54,3 +54,6 @@ Private data commitment: 94 files, manifest `bce8d7c17de111bb10ed5a37431abb0f3f0
 [Publication acceptance](metadata-collector-release.json) links source `364de9e`, Ready build `7a45c1ee`, its full log-linked Worker and fresh CLI 100% allocation. The separate ineligible Markdown GET matches all 16,248 built bytes; 1,437 words/31 prompts. Five total own-site GETs comprise four excluded collector controls and this publication asset. No new collector readback on the article-only version or fresh served HTML/layout is claimed. The dashboard’s unlinked source row/separate manually-labelled row is retained without inferring a manual agent deployment.
 
 Publication-plan manifest `b8943ee9bde309d03e8b26766e5e598d099396ffc30b94b8c33974cdca73484e`; publication capture manifest `21e3747a61bd6b04ac4145fc9176e7831f7e334ff008fd0af1788092e0864fb3` (18 files).
+
+
+[Research 92](92-public-parsing-states-and-browser-signals.md) follows these controls with public parsing-state denominators and Browser signals wording. Its reporting checks do not add human labels or revise these four dated collector observations.

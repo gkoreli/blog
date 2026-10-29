@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-10-29T20:11:31.299225+00:00",
+  "baseline": "e5fbbd72e1966ce88bd4325529e28d6c2d355e90",
+  "runtime": {
+    "node": "v24.14.1",
+    "native": "Installed Wrangler/Miniflare local D1; cf:{} suppresses provider fallback",
+    "sqliteContract": "3.53.4"
+  },
+  "primarySources": [
+    {
+      "url": "https://www.w3.org/TR/2026/WD-fetch-metadata-20260921/#sec-fetch-user-header",
+      "basis": "Boolean syntax and true-only navigation generation are different claims; working draft."
+    },
+    {
+      "url": "https://www.sqlite.org/json1.html",
+      "basis": "JSON validity, type-aware extraction and table-valued key inspection."
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/sql-api/query-json/",
+      "basis": "Native D1 JSON support."
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/platform/limits/",
+      "basis": "100,000-byte SQL, 2,000,000-byte values/rows, 32 function arguments."
+    }
+  ],
+  "sourceSha256": {
+    "packages/analytics/src/fetch-metadata-report.ts": "4c67d1656de0a94364a8a00abbe121d6db5c01a920acfb1cec0e9ee1c5317b07",
+    "packages/analytics/src/fetch-metadata-report-contract.ts": "d004d96b6df66d80d701dc0556581e1a60ebb6b8c0913f3c8865ee28c14b9824",
+    "packages/analytics/src/fetch-metadata.ts": "7554360e95ce02eeec91e56fb300aa175d32f8151dccf15322e456f0e2931337",
+    "packages/blog/scripts/check-fetch-metadata-report.mjs": "90a2015c66c1d51a9eec08d4b201ba48347548a042ff32d3a22e9966567918a5",
+    "packages/blog/scripts/check-fetch-metadata-report-limit.py": "f2f1eb4966a02c1169120bc3f82d1a7c8840b5be443f0c1977996cd80894dc76"
+  },
+  "matchedOptimizationFixture": {
+    "rows": 512,
+    "parsingCases": 22,
+    "beforeInputSha256": "3089f5b505eb43963aa59beaabd5dae2a7e8322907c121190b2e3e60f66bb54d",
+    "afterInputSha256": "651df66f41acc56384e74f03603d743c20d29d235d405c7602b38f017926bcef",
+    "baselineReads": 24657,
+    "initialCandidateReads": 33247,
+    "groupedCandidateReads": 25857,
+    "selection": "7d, all traffic, /fixture",
+    "scope": "Same synthetic stored observations; private captures preserve both SQL statements. Final 25-case fixture remains separate."
+  },
+  "privateEvidence": {
+    "files": 107,
+    "bytes": 40810458,
+    "manifestSha256": "5247033c9fc28cf7572a72bd54acd5c093caf8ffafb59b73812b631ce61bcdcc",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  }
+}

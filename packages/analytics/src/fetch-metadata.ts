@@ -5,9 +5,14 @@
 export const FETCH_METADATA_STATES = ['not-assessed', 'absent', 'valid', 'unrecognized', 'invalid', 'policy-limit'] as const;
 export type FetchMetadataState = typeof FETCH_METADATA_STATES[number];
 export const FETCH_METADATA_MAX_LENGTH = 32768;
-const modes: ReadonlySet<string> = new Set(['cors', 'navigate', 'no-cors', 'same-origin', 'websocket']);
-const sites: ReadonlySet<string> = new Set(['cross-site', 'same-origin', 'same-site', 'none']);
-const destinations: ReadonlySet<string> = new Set(['empty', 'audio', 'audioworklet', 'document', 'embed', 'font', 'frame', 'iframe', 'image', 'json', 'manifest', 'object', 'paintworklet', 'report', 'script', 'serviceworker', 'sharedworker', 'style', 'text', 'track', 'video', 'webidentity', 'worker', 'xslt']);
+export const FETCH_METADATA_TOKENS = {
+  mode: ['cors', 'navigate', 'no-cors', 'same-origin', 'websocket'],
+  dest: ['empty', 'audio', 'audioworklet', 'document', 'embed', 'font', 'frame', 'iframe', 'image', 'json', 'manifest', 'object', 'paintworklet', 'report', 'script', 'serviceworker', 'sharedworker', 'style', 'text', 'track', 'video', 'webidentity', 'worker', 'xslt'],
+  site: ['cross-site', 'same-origin', 'same-site', 'none'],
+} as const;
+const modes: ReadonlySet<string> = new Set(FETCH_METADATA_TOKENS.mode);
+const destinations: ReadonlySet<string> = new Set(FETCH_METADATA_TOKENS.dest);
+const sites: ReadonlySet<string> = new Set(FETCH_METADATA_TOKENS.site);
 type BareItem = { type: 'token'; value: string } | { type: 'boolean'; value: boolean } | { type: 'other' };
 
 class ItemParser {
