@@ -1,6 +1,6 @@
 # Thirty-second Bun AOT demo
 
-New owner request: produce a shareable demo, not another publication. Status: **rendered and verified**, not posted. The original no-media launch scope is historical; this is a separately requested artifact. No new X post is authorized here.
+Initially requested as a shareable artifact. Goga subsequently authorized publication: **[posted October 29 at 8:05:57 AM Pacific](https://x.com/GogaKoreli/status/2115822454497309070)**. [Execution and playback receipt](execution-2026-10-29.md). The original no-media launch scope is historical.
 
 | Time | State | Evidence |
 | --- | --- | --- |
@@ -15,12 +15,12 @@ The timeline illustrates accepted data; it is not a filmed benchmark execution. 
 
 Render with the bundled Python/Pillow runtime, then use the skill's encoder with both input and video fps set to 30, `--no-gif`. Inspect decoded MP4 frames at 1200 px and 390 px and the loop seam; source frames alone are insufficient. Silent video, all information on screen, H.264 / yuv420p / faststart, 1200×1200. No GIF is needed for this 30-second deliverable.
 
-Delivered file: [demo-30s.mp4](demo-30s.mp4), **30.0 seconds / 900 frames / 1,120,579 bytes**. [Encoding and visual acceptance](demo-acceptance.json) records decoded-frame checks at full and phone width, the loop seam and file hash. [Poster](demo-poster.png). Browser composer and live playback checks are unperformed because publication was not requested.
+Delivered file: [demo-30s.mp4](demo-30s.mp4), **30.0 seconds / 900 frames / 1,120,579 bytes**. [Encoding and visual acceptance](demo-acceptance.json) records decoded-frame checks at full and phone width, the loop seam and file hash. [Poster](demo-poster.png). Composer, canonical status, native playback and public text checks passed on October 29; see the execution receipt.
 
-Draft post, not published:
+Published post (two sentences; 195 weighted characters):
 
 ```text
-My server executable shrank from 121.5 MB to 30.3 MB. In a separate test, the TypeScript compiler used 64% less peak memory. Same source in each comparison; preview results and the catches: https://gkoreli.com/oss-radar-08-bun-aot
+My server executable shrank from 121.5 MB to 30.3 MB. In a separate test, the TypeScript compiler used 64% less peak memory without source changes—code and preview limits: https://gkoreli.com/oss-radar-08-bun-aot
 ```
 
 Description: Two separately labeled Bun AOT tests. A tiny server's executable shrank from 121.5 MB to 51.8 MB, then 30.3 MB with trimming. The TypeScript compiler checking Effect used 2,625 MB versus 934 MB peak physical memory. Historical October 27 macOS arm64 preview; the warmed server's speed gain was only 6% and a Zod test was slower.

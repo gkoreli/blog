@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-29",
+  "private_capture_directory": "/tmp/bun-aot-distribution-20261029",
+  "files": [
+    {
+      "file": "x-published.png",
+      "bytes": 106803,
+      "sha256": "65e5389a5d3a6a474800eda1ce0b370f495a685545bb62fb6789ad9bc166b8a5"
+    },
+    {
+      "file": "polkadot-published.png",
+      "bytes": 108806,
+      "sha256": "b3cbb2abb71b66800e993677fb3ef5c8bd8ca2dc381cfac1f6574179e49c4ae5"
+    },
+    {
+      "file": "x-oembed.json",
+      "bytes": 1036,
+      "sha256": "ebe9b52067db9048b26e18e640b8c54a225297df3dcef66df9878c2702df7167"
+    },
+    {
+      "file": "x-post.txt",
+      "bytes": 215,
+      "sha256": "3cc9f77dec47e574f5b500e1d747b43d787f5573d8458c9caa7ffac0a81b6f1b"
+    },
+    {
+      "file": "polkadot-comment.md",
+      "bytes": 1331,
+      "sha256": "54f13a81453a93e5088e7fd9c40e6c7e62dc7b534960132877051cf40e475d31"
+    }
+  ]
+}

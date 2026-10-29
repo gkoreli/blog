@@ -1,6 +1,6 @@
 # Next round: promotion with actual outcome evidence
 
-Checked October 28, 2026, after executing [the four approved actions](execution-2026-10-28.md). This review replaces neither the article's research nor the earlier historical traction snapshots. New outreach below is **prepared, not sent**.
+Checked October 28, 2026, after executing [the four approved actions](execution-2026-10-28.md). This review replaces neither the article's research nor the earlier historical traction snapshots. At preparation, outreach below was **not sent**. The Assaf pitch was subsequently sent on October 29; [execution receipt](execution-2026-10-29.md). The TLDR and subscriber-dispatch proposals remain unexecuted.
 
 The useful difference from the first review: these sources describe outcomes, not just audience sizes or a Submit button. They still do not guarantee our outcome. Prefer a small number of relevant placements and actual reader exchanges to a long list of websites.
 

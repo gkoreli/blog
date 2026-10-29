@@ -1,6 +1,6 @@
-# Prepared comment for paritytech/polkadot-cli#218
+# Published comment on paritytech/polkadot-cli#218
 
-Status: **draft, not posted**. For [issue #218](https://github.com/paritytech/polkadot-cli/issues/218).
+Status: **posted October 29, 2026, at 8:01:46 AM Pacific**. [Published comment](https://github.com/paritytech/polkadot-cli/issues/218#issuecomment-6500261059); exact body below. [Execution receipt](../../social/oss-radar-08-bun-aot/execution-2026-10-29.md).
 
 ---
 

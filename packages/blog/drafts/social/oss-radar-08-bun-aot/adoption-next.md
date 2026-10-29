@@ -1,6 +1,6 @@
 # Next adoption work: give someone a result they can use
 
-Checked October 28, 2026. All outreach and posts below are **drafts, not sent**. This extends [the earlier evidence review](battle-tested-2026-10-28.md), rather than repeating the newsletter pitches and posts already executed.
+Prepared October 28, 2026. **Item 1 was posted October 29**; the other proposals below remain unsent. [Execution receipt](execution-2026-10-29.md) also records the separately authorized Assaf pitch and historical-demo X post. This extends [the earlier evidence review](battle-tested-2026-10-28.md), rather than repeating the newsletter pitches and posts already executed.
 
 ## What the evidence actually supports
 
@@ -10,7 +10,7 @@ Their [data-study handbook](https://posthog.com/handbook/content/writing-a-data-
 
 ## 1. Finish the Polkadot conversation with the new fix
 
-**Ready:** [the concise maintainer draft](../../research/polkadot-bun-aot/02-maintainer-draft.md), for [their existing rewrite proposal](https://github.com/paritytech/polkadot-cli/issues/218). It keeps the article context and now includes the important counterexample: asset-only AOT was slow on proof verification; a static WASM import changed 609 ms to 67 ms, with a larger executable and more peak memory on that command.
+**Posted:** [the public comment](https://github.com/paritytech/polkadot-cli/issues/218#issuecomment-6500261059), using [the concise maintainer draft](../../research/polkadot-bun-aot/02-maintainer-draft.md), for [their existing rewrite proposal](https://github.com/paritytech/polkadot-cli/issues/218). It keeps the article context and now includes the important counterexample: asset-only AOT was slow on proof verification; a static WASM import changed 609 ms to 67 ms, with a larger executable and more peak memory on that command.
 
 The useful result is a maintainer rerun, a correction, or a request to test one of their actual parity fixtures. A view or a polite thanks is weaker evidence. Do not ask them to share the article or say the rewrite is unnecessary. The prototype and valid/tampered proof fixture are ready; the wider transaction gate is not complete.
 
@@ -71,4 +71,4 @@ This is a proposed future commitment, not a posted promise or an open-ended supp
 - A library-wide `aot` export campaign based on one 4% hashing difference. The source-export experiment is not a complete crypto-library test.
 - The repository URL embedded in `verifiablejs`'s package metadata was not accessible through the public GitHub checks. Do not invent a maintainer contact route; the existing Polkadot discussion can carry the finding.
 
-First do #1 and #2 after authorization. Keep a manual record of replies, reruns, failures and decisions. No new service, tracking system, mass outreach or automated follow-up is needed.
+Item #1 is complete; #2 remains a proposal requiring authorization. Keep a manual record of replies, reruns, failures and decisions. No new service, tracking system, mass outreach or automated follow-up is needed.

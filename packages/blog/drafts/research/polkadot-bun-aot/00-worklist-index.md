@@ -58,3 +58,7 @@ The requested experiment and maintainer-facing preparation are complete. No main
 ## Separately requested optimization follow-up — October 28
 
 Goga subsequently requested more native-doc research and optimization experiments. [The new report](03-optimization-experiments.md) preserves this experiment and adds compiler-flag, shipped-TypeScript and statically imported WASM controls. A heavier proof verification exposed an AOT slowdown and a useful fix, with explicit file-size and memory costs. The [broader follow-up worklist](../bun-aot-followups/00-worklist-index.md) owns its demo, easy trial, current Zod counterexample, adoption materials and delivery. The maintainer draft includes the new finding and the restored article context; no upstream message has been sent.
+
+## Separately authorized distribution — October 29
+
+Goga subsequently authorized the Polkadot comment, Assaf pitch and X demo publication. All three were performed and checked; [execution receipt](../../social/oss-radar-08-bun-aot/execution-2026-10-29.md). Earlier unposted/unsent statements describe preparation-time state. The [maintainer comment](https://github.com/paritytech/polkadot-cli/issues/218#issuecomment-6500261059) and [video post](https://x.com/GogaKoreli/status/2115822454497309070) are live. No maintainer response, independent rerun or adoption result is established.

@@ -2,7 +2,7 @@
 
 Date: 2026-10-27.
 
-**Current status:** the [traction investigation](traction-2026-10-27.md), refreshed October 27 at about 7:40 PM Pacific, supersedes the owner-only HN availability check below. The HN item is dead and hidden from ordinary public display. X shows 12 impressions and no tracked link clicks or social reactions at that snapshot. The launch observations below remain historical receipts.
+**Original-launch status:** the [traction investigation](traction-2026-10-27.md), refreshed October 27 at about 7:40 PM Pacific, supersedes the owner-only HN availability check below. The HN item is dead and hidden from ordinary public display. X shows 12 impressions and no tracked link clicks or social reactions at that snapshot. The launch observations below remain historical receipts.
 
 - X account confirmed in the signed-in browser: `@GogaKoreli`.
 - Hacker News account confirmed in the signed-in browser: `gogakoreli`.
@@ -58,3 +58,7 @@ Goga requested actions 1–4 and continued research into battle-tested ideas. Th
 Changelog required a new account and then revealed a newsletter-subscriber gate. Goga separately approved account creation and the changed subscription choice. Only the free weekly Changelog News was enabled; the form then accepted the submission. Acceptance into the newsletter is unobserved. Reddit's anonymous fetch was unavailable (cache miss / HTTP 403); signed-in publication is verified, ordinary third-party visibility is not. No site/D1 query, new HN submission or unrequested cross-post was made.
 
 [Further research](battle-tested-2026-10-28.md) adds quantified firsthand newsletter/curator cases, a checked Labnotes contact and exact unsent pitch, a verified personal contact route from TLDR's official account to its named curator, and the basis for a future existing-subscriber dispatch. The alleged TLDR submission form and email routes in directories were not verified. Current outcomes for this account remain unmeasured. The article and accepted experiments are unchanged; no new outreach beyond actions 1–4 or monitoring job was scheduled.
+
+## October 29: three further actions executed
+
+[Execution receipt](execution-2026-10-29.md): the Polkadot comment is public, Assaf’s pitch is sent and separately verified, and the [30-second X demo](https://x.com/GogaKoreli/status/2115822454497309070) is published. Canonical status, text, native playback and article destination were checked; X’s public embedding service independently returned the exact text. The immediate owner view displayed one view, which is not evidence of an independent reader. No new adoption or editorial selection is established. No measurement automation was scheduled.
