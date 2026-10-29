@@ -1,0 +1,430 @@
+{
+  "checkedAt": "2026-10-29T03:59:01.733Z",
+  "prototypeOnly": true,
+  "enforcement": "none-in-production",
+  "inputSha256": "51286f29ef842e6cdfdb04545bda72ddd50635ea8e63ddf5f23b8fd531f06f4a",
+  "fixtureSha256": "48c2e9e332066172a587b9c2bae1b0d2f346815d63d27b9edb39ae837ca99386",
+  "scriptSha256": "dc85b38d84607edee250bd64f512e8099643a83bb262d17cdac9a64685edfbad",
+  "fixtureFactorySha256": "360f78603b70b4c0d47ebd8e7dfa59a50fcd54900f4d25cd23fe6ca6ec75364a",
+  "verifierSourceSha256": "97c6bb2fce66ddb323da2e5a566f7abb83f01473fff42cc0e03ea4e7576217f5",
+  "sqlSha256": "8230bcf3f7df6716c6f3ff1b2f192b073433b81e87631cdc7144aafc39527a58",
+  "cleanupSqlSha256": "a615cd21ed3e5936957c0251952a577c4f58d3fb6741d9b36334d5f2e0a230d8",
+  "retainedOriginals": 4,
+  "retainedTrialOccurrencesPerPolicy": 20,
+  "distinctRetainedRequestInputs": 16,
+  "policyRepetitions": 3,
+  "verificationCalls": 74,
+  "retained": {
+    "proof": {
+      "firstObserved": 4,
+      "seenBefore": 12,
+      "invalid": 4,
+      "notAssessed": 0,
+      "retryMarkedSeen": 4,
+      "unsignedChangesFirstObserved": 0
+    },
+    "nonce": {
+      "firstObserved": 4,
+      "seenBefore": 12,
+      "invalid": 4,
+      "notAssessed": 0,
+      "retryMarkedSeen": 4,
+      "unsignedChangesFirstObserved": 0
+    },
+    "context": {
+      "firstObserved": 8,
+      "seenBefore": 8,
+      "invalid": 4,
+      "notAssessed": 0,
+      "retryMarkedSeen": 4,
+      "unsignedChangesFirstObserved": 4
+    }
+  },
+  "checks": [
+    {
+      "name": "sixty-second-lifetime-policy-counterexample",
+      "retainedOriginalsRejectedByProposedPolicy": 4,
+      "acceptedByRecordedPolicy": 4,
+      "vendorLifetimeSeconds": 300
+    },
+    {
+      "name": "publisher-key-and-alias-scope",
+      "accepted": true
+    },
+    {
+      "name": "missing-or-empty-nonce-is-not-assessed",
+      "accepted": true,
+      "statements": 0
+    },
+    {
+      "name": "atomic-concurrent-claim",
+      "arrivals": 24,
+      "firstObserved": 1,
+      "seenBefore": 23
+    },
+    {
+      "name": "separate-check-write-counterexample",
+      "arrivals": 2,
+      "wouldAdmit": 2
+    },
+    {
+      "name": "inclusive-expiry-plus-sixty-second-skew",
+      "lastAcceptedSecondMarkedSeen": true,
+      "nextSecondRejectedBeforeClaim": true
+    },
+    {
+      "name": "no-skew-retention-counterexample",
+      "sameStillValidProofAdmittedAgain": true
+    },
+    {
+      "name": "repeated-nonce-extends-longer-acceptance-horizon",
+      "oldHorizonBypassPrevented": true
+    },
+    {
+      "name": "disconnected-isolate-map-counterexample",
+      "stores": 2,
+      "firstObserved": 2
+    },
+    {
+      "name": "per-worker-privacy-key-counterexample",
+      "localWorkerInstances": 2,
+      "sharedCandidateDatabases": 1,
+      "sameVerifiedProofFirstObserved": 2,
+      "productionConsequence": "A shared enforcement scope requires a stable cross-instance key domain; experiment-only HMAC isolation must not be deployed as replay prevention."
+    },
+    {
+      "name": "verified-proof-with-unavailable-state",
+      "verification": "verified",
+      "replay": "unavailable",
+      "statements": 0,
+      "faultInjection": true
+    },
+    {
+      "name": "native-d1-state-error",
+      "verification": "verified",
+      "replay": "unavailable",
+      "attemptedStatements": 1,
+      "returnedMetering": null,
+      "faultInjection": true
+    },
+    {
+      "name": "strict-cleanup-boundary",
+      "atHorizonDeleted": 0,
+      "nextSecondDeleted": 1
+    },
+    {
+      "name": "bounded-indexed-cleanup",
+      "suppliedRows": 512,
+      "expiredRows": 128,
+      "stillValidRows": 384,
+      "limit": 64,
+      "deletedPerStatement": [
+        64,
+        64,
+        0
+      ],
+      "perStatement": [
+        {
+          "deleted": 64,
+          "reads": 256,
+          "writes": 64
+        },
+        {
+          "deleted": 64,
+          "reads": 256,
+          "writes": 64
+        },
+        {
+          "deleted": 0,
+          "reads": 3,
+          "writes": 0
+        }
+      ]
+    }
+  ],
+  "localD1Metering": {
+    "retained-proof": {
+      "statements": 16,
+      "reads": 16,
+      "writes": 8
+    },
+    "retained-nonce": {
+      "statements": 16,
+      "reads": 16,
+      "writes": 8
+    },
+    "retained-context": {
+      "statements": 16,
+      "reads": 16,
+      "writes": 16
+    },
+    "scope": {
+      "statements": 4,
+      "reads": 4,
+      "writes": 6
+    },
+    "atomic-race": {
+      "statements": 24,
+      "reads": 24,
+      "writes": 2
+    },
+    "unsafe-race": {
+      "statements": 4,
+      "reads": 0,
+      "writes": 2
+    },
+    "skew": {
+      "statements": 2,
+      "reads": 2,
+      "writes": 2
+    },
+    "premature": {
+      "statements": 2,
+      "reads": 2,
+      "writes": 4
+    },
+    "extension": {
+      "statements": 3,
+      "reads": 3,
+      "writes": 4
+    },
+    "two-worker-privacy-keys": {
+      "statements": 2,
+      "reads": 2,
+      "writes": 4
+    },
+    "cleanup": {
+      "statements": 3,
+      "reads": 44,
+      "writes": 3
+    },
+    "cleanup-scale-setup": {
+      "statements": 512,
+      "reads": 0,
+      "writes": 1024
+    },
+    "cleanup-scale": {
+      "statements": 3,
+      "reads": 515,
+      "writes": 128
+    }
+  },
+  "expiryIndexPlan": true,
+  "additionalLocalStatements": {
+    "setupDdl": 4,
+    "queryPlans": 2,
+    "deliberatelyFailed": 1,
+    "metering": "Not included in the successful metered operation groups; failed statement returns no row metering."
+  },
+  "externalRequests": 0,
+  "productionRequests": 0,
+  "productionD1Statements": 0,
+  "newHumanLabels": 0,
+  "limits": [
+    "Constructed retry/unsigned-change labels are simulation conditions, not captured vendor retries or attacks.",
+    "Local D1 concurrency/cost does not prove production global scope, latency, service billing or failure behavior.",
+    "Candidate state has no production admission/capacity/retention approval; linkable replay identifiers are not deployed.",
+    "Seen-before does not authenticate intent, establish an attack or justify deleting analytics observations."
+  ],
+  "independentReference": {
+    "checkedAt": "2026-10-29T03:59:12.173139+00:00",
+    "sourceCommit": "1de433d9a49fd608475c6054ab14a1652c088844",
+    "sourceFilesRechecked": 18,
+    "recordedClock": true,
+    "keyResolver": "per-trial captured publisher keys by RFC thumbprint",
+    "maxAgeSeconds": 86400,
+    "rows": [
+      {
+        "vendor": "synthetic",
+        "variant": "original",
+        "referenceClockSkewSeconds": 60,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "longer",
+        "referenceClockSkewSeconds": 60,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "otherKey",
+        "referenceClockSkewSeconds": 60,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "otherPublisher",
+        "referenceClockSkewSeconds": 60,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "alias",
+        "referenceClockSkewSeconds": 60,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "absentNonce",
+        "referenceClockSkewSeconds": 60,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "emptyNonce",
+        "referenceClockSkewSeconds": 60,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "expiry-edge",
+        "referenceClockSkewSeconds": 60,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "synthetic",
+        "variant": "expiry-after",
+        "referenceClockSkewSeconds": 60,
+        "returnedResults": null,
+        "error": "InvalidSignature"
+      },
+      {
+        "vendor": "exa",
+        "variant": "retained-original",
+        "referenceClockSkewSeconds": 60,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "exa",
+        "variant": "retained-original",
+        "referenceClockSkewSeconds": 60,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "exa",
+        "variant": "retained-original",
+        "referenceClockSkewSeconds": 60,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "exa",
+        "variant": "retained-original",
+        "referenceClockSkewSeconds": 60,
+        "returnedResults": 1,
+        "error": null
+      }
+    ],
+    "referenceCalls": 13,
+    "externalRequests": 0,
+    "limits": [
+      "Generic RFC verification; discovery, publisher registration and Web Bot Auth admission are separate.",
+      "An exception is not a complete census of valid candidates; this cohort has one eligible candidate per request."
+    ],
+    "execution": {
+      "inputSha256": "ee45bba53b72161fbc455d6c53db5655391cbe207f86626b60f13693bf7ad04d",
+      "fixtureSha256": "48c2e9e332066172a587b9c2bae1b0d2f346815d63d27b9edb39ae837ca99386",
+      "scriptSha256": "f9a687f4831239c9258dd1d54ee8943a1e714401f60bf875bfa97ba9acee7098",
+      "sourceManifestSha256": "b3b73b129b8f5424a4862bcf00528424cba91fe6874faae6648855151125ebd9",
+      "dependenciesRechecked": {
+        "cryptography": "50.0.2",
+        "http-sf": "1.5.0",
+        "cffi": "2.1.1",
+        "typing_extensions": "4.16.0",
+        "pycparser": "3.12"
+      },
+      "transport": "Frozen input bytes supplied directly to child stdin; no shell interpolation"
+    }
+  },
+  "runtimeSources": {
+    "miniflare": "4.20260301.1",
+    "workerd": "1.20260301.1",
+    "d1AdapterSource": {
+      "packageRelativePath": "dist/src/workers/d1/database.worker.js",
+      "sha256": "4d2fe9209eb614a01ef5041d21140df67147b4d073053f81643bbaabff141e89",
+      "inspected": "The query result copies rows_read/rows_written from cursor.rowsRead/cursor.rowsWritten; local metrics are not production service billing."
+    }
+  },
+  "primarySources": [
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc9421.html",
+      "status": 200,
+      "sha256": "ec369a24b754be7de55e19c708fa977c1665253b0ba33a4922665b7a946c3720",
+      "bytes": 458725,
+      "capturedAt": "2026-10-29T03:54:17.215319+00:00"
+    },
+    {
+      "source": "https://www.ietf.org/archive/id/draft-ietf-webbotauth-httpsig-protocol-00.txt",
+      "status": 200,
+      "sha256": "3021fd94cdffdb2eb030dec68b1a5c968f2348502dd94c481e2085ec7ddd90a0",
+      "bytes": 95603,
+      "capturedAt": "2026-10-29T03:54:17.299958+00:00"
+    },
+    {
+      "source": "https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/",
+      "status": 200,
+      "sha256": "a2d94f74f2902ac1ad0c5616af4a281f0f48032d67a3a297566be7e305e6d1f3",
+      "bytes": 156617,
+      "capturedAt": "2026-10-29T03:54:17.391755+00:00"
+    },
+    {
+      "source": "https://developers.cloudflare.com/d1/worker-api/return-object/",
+      "status": 200,
+      "sha256": "4c6a61b6095fd02487583ef5d5b36afba39aede664775eb82027cd14eb708729",
+      "bytes": 124474,
+      "capturedAt": "2026-10-29T03:54:17.459245+00:00"
+    },
+    {
+      "source": "https://www.sqlite.org/lang_upsert.html",
+      "status": 200,
+      "sha256": "32b85ae78ce6d6aa8cf759ecc32a8b3a80f0d3600be89c2fef1952fed38a9307",
+      "bytes": 329973,
+      "capturedAt": "2026-10-29T03:54:18.191108+00:00"
+    },
+    {
+      "source": "https://developers.cloudflare.com/workers/runtime-apis/handlers/",
+      "status": 200,
+      "sha256": "eeeb8dec2b112c323b87e2fcfddc0e3452701dd5c99740cd49670a3c6aea39c0",
+      "bytes": 179534,
+      "capturedAt": "2026-10-29T03:54:18.262268+00:00"
+    }
+  ],
+  "privateArchive": {
+    "capturedFiles": 53,
+    "manifestSha256": "56065740524addeb6d8438a6fc2df48f0971bb722cc6f006d27cbeb9ae3b2996",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false,
+    "previousArchiveUnchanged": "47bfd809307edeab3118843cfa33a9390225becb1239b36d2ede8a7801a9d944"
+  },
+  "checksSummary": {
+    "localLinksChecked": 26,
+    "nativeAndReferenceFixtureDigestMatch": true,
+    "fiveNativeSourceBindingsMatch": true,
+    "acceptedRetainedInputDigestMatches": true,
+    "articleSourceUnchanged": true,
+    "privateReferencesAbsentFromClosedResults": true,
+    "currentScriptRejectsWrongInputBeforeOutputs": true,
+    "targetedTests": 10,
+    "testFailures": 0,
+    "syntaxChecks": 2,
+    "articleValidationValidPosts": 21
+  },
+  "finalMeteredGroupsTotal": {
+    "statements": 607,
+    "reads": 644,
+    "writes": 1211
+  }
+}

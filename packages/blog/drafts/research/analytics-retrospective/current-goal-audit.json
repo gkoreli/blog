@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T03:46:36.445870+00:00",
-  "sourceBaseline": "7403fc776e91040b2aa1ebbe4c266ab5104d40a5",
+  "checkedAt": "2026-10-29T04:00:00.999017+00:00",
+  "sourceBaseline": "4f2750961979148b867cfe92f4e9be8b91f07982",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,7 +45,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Native-test candidate replay-enforcement policies offline against retained genuine proofs and repeated/unsigned-field variants; measure storage cost and false-positive boundaries before proposing runtime enforcement. Latest-collector signed acceptance and request-level managed-provider verdicts remain separate open gates. Human trials remain deferred.",
+  "nextBoundedAction": "Audit native operator/content-use propagation against its first-party trust model and current collector; test absent, spoofed and conflicting claims offline before considering adoption. Current analytics source has no Forwarded/content-use interpretation. Latest-collector signed acceptance, native managed-verifier correlation and human trials remain separate gates; human trials stay deferred.",
   "article": {
     "bodyWhitespaceWords": 1358,
     "prompts": 31,
@@ -57,10 +57,10 @@
     "lastServedCheckReceipt": "network-receipt-release.json"
   },
   "runtimeUnchanged": true,
-  "productionStatements": 1,
+  "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": true,
+  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -163,13 +163,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 8,
+  "productionReportedReads": 0,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
-    "providerWriteMetering": "No new observation requested by this investigation."
+    "providerWriteMetering": "No new observation requested in the offline policy experiment."
   },
-  "newVisitsScope": "No new site observations requested; four selected existing Exa chains, one exact four-reference SELECT and offline replay.",
+  "newVisitsScope": "Offline replay-policy experiment only; four retained originals, synthetic/counterfactual contexts and disposable native D1. No new site observations or production SQL.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -209,5 +209,21 @@
     "newestCollectorAccepted": false,
     "wholeHistoricalCohortRecovered": false,
     "humanTriggerEstablished": false
+  },
+  "replayPolicyExperiment": {
+    "receipt": "replay-policy-candidate.json",
+    "prototypeOnly": true,
+    "productionEnforcement": false,
+    "nativePolicyChecks": 14,
+    "nativeVerificationCalls": 74,
+    "independentRfcComparisons": 13,
+    "retainedOriginals": 4,
+    "retainedOccurrencesPerPolicy": 20,
+    "distinctRetainedInputs": 16,
+    "sameProofAcrossTwoWorkerPrivacyScopesMarkedNew": 2,
+    "concurrentAtomicClaims": 24,
+    "concurrentFirstObserved": 1,
+    "populationErrorRatesMeasured": false,
+    "productionCostMeasured": false
   }
 }
