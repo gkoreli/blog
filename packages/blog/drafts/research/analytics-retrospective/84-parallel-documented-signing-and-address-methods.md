@@ -50,3 +50,14 @@ Two explicitly constructed old-profile records remain not-configured. The report
 The article remains **1,375 words/31 prompts**; its existing unsigned-field lesson covers this result. The isolated build uses a public placeholder solely to enable the production Turnstile markup condition, copying no credentials; its full article HTML now matches the prior served file. Provider/local runtime equality is not asserted.
 
 This research slice makes no production observation or SELECT and activates no optional capture. Raw contexts, keys, generated signatures and logs remain outside Git. October 31 is a review date, not automatic erasure. Source delivery, activation and selected live acceptance are separate gates. Next: accept the exact source, then native-test a bounded new-ID delta since the frozen retained census to assess current method provenance and unresolved cases. Human trials remain deferred.
+
+
+## Exact-source release acceptance
+
+[Release acceptance](parallel-methods-release.json) closes source `2a0c19f`, successful build `16f2da63`, Worker `209a1ecc` at 100% in the fresh CLI allocation, and absent optional capture bindings. The native dashboard simultaneously shows 0% text beside a 100% bar; that contradiction is retained without assigning its cause.
+
+Two referral-excluded synthetic declarations receive exact acknowledged-receipt/D1-row joins under collection `.29.5`. Both signing and publisher assessments are **not-verified**, with the new registry profiles and one documented declaration each. ShapBot records the ten-entry address snapshot, matching the captured hash, with **not-listed** outcome; Shap-User records zero configured IP declarations and one unmapped declaration. Neither result establishes a genuine vendor action or human trigger. Stored network/publisher/signing projections agree with their receipts.
+
+The single privately frozen, native-tested `--command` lookup returns two rows for **six reads/zero writes**; normal ingestion is additional work. Three own-site GETs comprise two eligible excluded controls and one ineligible Markdown asset check. Served Markdown equals the isolated build. No fresh HTML/RUM check, report fill, owner post, raw-capture activation or human label. The exact-marker tail stops and its process is absent; no preview starts. Acceptance is limited to this source/version and selected controls.
+
+Next: native-test a bounded new-ID delta since the frozen retained census, preserve all unknown/conflict populations and freeze a costed scope before production reads. Human trials remain deferred; the full goal stays open.

@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-29T16:16:40.699122+00:00",
+  "checkedAt": "2026-10-29T16:30:41.418075+00:00",
   "sourceBaseline": "3639bf6",
   "goalAchieved": false,
   "previousTurn": "progress",
@@ -44,25 +44,25 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Deliver and accept exact Parallel signing/IP method source, then native-test a bounded new-ID delta since the frozen retained census to assess current provenance and remaining uncertainty. Human trials remain deferred.",
+  "nextBoundedAction": "Native-test a bounded new-ID delta since the frozen retained census, then freeze scope/cost before production execution; assess current method provenance, unknowns and conflicts. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1375,
     "prompts": 31,
     "sourceSha256": "efb458c18aa509537f1faf077b404695b8d4e06b21fc769b471b7ee64fd9feaf",
     "unchanged": true,
-    "freshServedCheck": false,
-    "publicationReceipt": "parallel-declarations-release.json",
+    "freshServedCheck": true,
+    "publicationReceipt": "parallel-methods-release.json",
     "servedMatchesCheckedBuild": true,
-    "lastServedCheckReceipt": "parallel-declarations-release.json",
-    "publicationStatus": "Article unchanged at 1375 words/31 prompts in phase 84; prior served acceptance remains dated in parallel-declarations-release.json.",
-    "previousPublicationReceipt": "retained-population-release.json",
-    "servedMatchScope": "Exact Markdown and article element; full HTML differs by exactly two production Turnstile hooks."
+    "lastServedCheckReceipt": "parallel-methods-release.json",
+    "publicationStatus": "Article source unchanged; direct Markdown asset matches the isolated build after source 2a0c19f activation. No new production HTML or RUM acceptance.",
+    "previousPublicationReceipt": "parallel-declarations-release.json",
+    "servedMatchScope": "Fresh exact Markdown only; prior full article HTML acceptance remains dated in parallel-declarations-release.json."
   },
   "runtimeUnchanged": false,
-  "productionStatements": 0,
-  "newVisits": 0,
+  "productionStatements": 1,
+  "newVisits": 3,
   "newHumanLabels": 0,
-  "liveAccountInspection": false,
+  "liveAccountInspection": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -91,8 +91,8 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 0,
-  "collectionEligibleGets": 0,
+  "productionOwnSiteGets": 3,
+  "collectionEligibleGets": 2,
   "ownerMarkPosts": 0,
   "retainedDelta": {
     "receipt": "retained-delta-production.json",
@@ -166,14 +166,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 0,
+  "productionReportedReads": 6,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedControlRows": 2,
-    "articleHtmlStorageNotSeparatelyReadBack": true,
-    "providerWriteMetering": "Not returned; additional to the diagnostic SELECT meter."
+    "providerWriteMetering": "not returned; additional to direct SELECT"
   },
-  "newVisitsScope": "Two agent-supplied referral-excluded client controls plus direct Markdown and excluded-referrer HTML article fetches; no human labels. Historical contexts remain separate.",
+  "newVisitsScope": "Two referral-excluded synthetic client declarations and one collection-ineligible Markdown asset check; no human label.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -379,7 +378,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Fresh primary documentation and fixed public key/IP captures; no production observations in the local research slice.",
+  "liveAccountInspectionScope": "Current source/build/100% CLI allocation/bindings; two referral-excluded controls and exact returned-row lookup. No configuration change.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -513,6 +512,13 @@
     "authenticatedD1Joins": 0,
     "managedAgreementMeasured": false,
     "humanTriggerEstablished": false,
-    "productionActivation": "pending"
+    "productionActivation": "accepted",
+    "release": "parallel-methods-release.json",
+    "liveExcludedControls": 2,
+    "liveExactControlJoins": 2,
+    "liveShapBotAddress": "not-listed",
+    "liveShapUserAddressMethod": "not-configured",
+    "liveSignatureStatus": "absent",
+    "optionalCaptureBindingsAbsent": true
   }
 }

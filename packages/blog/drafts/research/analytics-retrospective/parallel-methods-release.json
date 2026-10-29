@@ -1,0 +1,154 @@
+{
+  "checkedAt": "2026-10-29T16:30:41.418075+00:00",
+  "sourceCommit": "2a0c19fdaa52b3a0b0419cea48445de25f1cd7c8",
+  "buildReference": "16f2da63",
+  "sourceBuildSucceeded": true,
+  "workerVersion": "209a1ecc-b814-4201-9438-a9dbf650175b",
+  "allocationPercentage": 100,
+  "allocationSource": "Fresh Wrangler deployments list, selected by created_on.",
+  "dashboardPercentageConflict": {
+    "observed": true,
+    "textPercent": 0,
+    "barPercent": 100,
+    "cause": "unestablished; fresh CLI allocation is 100%"
+  },
+  "optionalCaptureBindingsAbsent": true,
+  "controls": [
+    {
+      "name": "ShapBot",
+      "kind": "ai-search",
+      "collectionVersion": "2026-10-29.5",
+      "classifierVersion": "2026-10-29.2",
+      "signatureStatus": "absent",
+      "documentedSigningProfile": "2026-10-29.1",
+      "documentedSigningStatus": "not-verified",
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "not-verified"
+      },
+      "networkProfile": "2026-10-29.2",
+      "addressState": "usable",
+      "configuredIpDeclarations": 1,
+      "unmappedIpDeclarations": 0,
+      "networkChecks": [
+        {
+          "source": "parallel-shapbot",
+          "outcome": "not-listed",
+          "reason": null,
+          "prefixCount": 10,
+          "publisherVersion": "2026-07-14T00:00:00.000000",
+          "snapshotSha256": "93ee5f1904987470c4cd7de66c7411760b89afc017a40d5e64729065645c41fb"
+        }
+      ],
+      "exactReturnedReference": true,
+      "receiptProjectionMatch": true,
+      "referralExcluded": true,
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable",
+        "categoryStatus": "empty",
+        "categoryValue": "none"
+      }
+    },
+    {
+      "name": "Shap-User",
+      "kind": "ai-assistant",
+      "collectionVersion": "2026-10-29.5",
+      "classifierVersion": "2026-10-29.2",
+      "signatureStatus": "absent",
+      "documentedSigningProfile": "2026-10-29.1",
+      "documentedSigningStatus": "not-verified",
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "not-verified"
+      },
+      "networkProfile": "2026-10-29.2",
+      "addressState": "usable",
+      "configuredIpDeclarations": 0,
+      "unmappedIpDeclarations": 1,
+      "networkChecks": [],
+      "exactReturnedReference": true,
+      "receiptProjectionMatch": true,
+      "referralExcluded": true,
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable",
+        "categoryStatus": "empty",
+        "categoryValue": "none"
+      }
+    }
+  ],
+  "diagnostic": {
+    "statements": 1,
+    "attempts": 1,
+    "reportedReads": 6,
+    "reportedWrites": 0,
+    "returnedRows": 2,
+    "nativeFixtureReads": 6,
+    "postExecutionReadReviewThreshold": 100,
+    "serverEnforcedCap": false,
+    "mode": "Wrangler --command"
+  },
+  "normalIngestion": {
+    "acknowledgedControlRows": 2,
+    "providerWriteMetering": "not returned; additional to direct SELECT"
+  },
+  "ownSiteGetAttempts": 3,
+  "collectionEligibleGets": 2,
+  "referralExcludedControls": 2,
+  "article": {
+    "checkedAt": "2026-10-29T16:25:59.095089+00:00",
+    "status": 200,
+    "exactBuiltMarkdownEquality": true,
+    "sha256": "2d0bb64653de62fdaef8e2e8b748a743de3d30c1f11110a94046c8920f98e2ae",
+    "collectionEligible": false,
+    "javascriptExecuted": false
+  },
+  "articleSourceChanged": false,
+  "publicReportFills": 0,
+  "newHumanLabels": 0,
+  "ownerMarkPosts": 0,
+  "ownedTailStopped": true,
+  "ownedTailProcessAbsent": true,
+  "previewStarted": false,
+  "providerRuntime": "Node.js 24.22.1 reported by build",
+  "localRuntime": "Node.js 24.14.1",
+  "privateReadPlanArchive": {
+    "files": 6,
+    "manifestSha256": "fa088a8e511ed6214f223b53f09e151e460ed9bd4559a59df03d837b11d02ca8",
+    "beforeControlsAndSelect": true
+  },
+  "privateConcreteReadPlanArchive": {
+    "files": 5,
+    "manifestSha256": "323eeec24b702c24f05690c44a702e48f5c09f440ee841469f1124a80c1245cd",
+    "beforeSelect": true
+  },
+  "privateReleaseArchive": {
+    "files": 28,
+    "manifestSha256": "5df8610d83d17396cccbb80bb72ad118fb6d056932cadb4006d488886d357171",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "limits": [
+    "Agent-supplied declarations, not genuine Parallel or human actions.",
+    "Both signatures are absent, so live documented signing/publisher status is not-verified; signed positives remain local fixtures and recorded-time retained replays.",
+    "ShapBot address nonmembership is not proof of impersonation or purpose; this snapshot matches the earlier public feed hash and ten-entry count.",
+    "Shap-User has no configured IP method; no address nonmatch or sibling inheritance is inferred.",
+    "Exact storage joins apply to these two controls, not the three historical contexts.",
+    "No managed-provider accuracy, original-wire reconstruction or population error rate.",
+    "The dashboard percentage contradiction is preserved without assigning a UI cause; CLI allocation is authoritative for the stated 100%.",
+    "Fresh served acceptance is Markdown-only; full HTML was not requested in this release. Prior full HTML acceptance remains dated.",
+    "The provider and local Node versions differ; runtime equivalence is not claimed.",
+    "Acceptance scopes source 2a0c19f and this observed version, not later documentation-only receipt builds."
+  ]
+}
