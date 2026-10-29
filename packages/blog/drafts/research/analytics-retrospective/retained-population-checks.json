@@ -26,7 +26,8 @@
   ],
   "offlineAcceptanceCorrections": [
     "A display-formatter syntax error was corrected offline; no production SELECT repeated.",
-    "Initial whole-file source/Markdown equality omitted the pipeline footer; exact source prefix and generated full-file commitments are checked separately."
+    "Initial whole-file source/Markdown equality omitted the pipeline footer; exact source prefix and generated full-file commitments are checked separately.",
+    "Allocation arrays are ordered explicitly by created_on; their first element is not treated as latest."
   ],
   "legacyDefaultDecoderArchivedRowsAccepted": 712,
   "productionStatements": 3,
@@ -49,8 +50,8 @@
     "newCountsRendered": true,
     "promptsSha256": "1823503b90a437c350926cda019e6262e0af3c3c4b24fd287ce239cb9107dfc4"
   },
-  "articlePublication": "pending",
-  "ownSiteRequests": 0,
+  "articlePublication": "accepted",
+  "ownSiteRequests": 2,
   "publicReportFills": 0,
   "newHumanLabels": 0,
   "readPlanArchive": {
@@ -80,9 +81,26 @@
     "automaticErasure": false
   },
   "markdownValidation": "pass, 22 posts",
-  "localLinks": 353,
+  "localLinks": 356,
   "articlePublicationReceipt": "retained-population-release.json",
   "privateOperationalFieldScan": "pass",
   "scriptSyntax": "pass",
-  "unchangedRuntimeSuites": "Prior phase 77: 285 analytics tests/types; not rerun for diagnostic/prose-only changes. Native census/default-decoder regression and isolated site build are fresh."
+  "unchangedRuntimeSuites": "Prior phase 77: 285 analytics tests/types; not rerun for diagnostic/prose-only changes. Native census/default-decoder regression and isolated site build are fresh.",
+  "publicationSource": "a53114f7eab51f55f240b7cff029073c107e9ccc",
+  "publicationLimits": [
+    "Ready source row says no version was created while a separate active row says manually deployed; the downloaded log and allocation establish the version chain. No UI cause or manual human action is inferred.",
+    "Active summary renders 0% text beside a 100% bar; the fresh CLI allocation is 100%. No cause is inferred.",
+    "The two served checks execute no JavaScript and supply no human/RUM label.",
+    "Acceptance is scoped to this source activation and article; a later documentation-only receipt commit is not independently accepted by this record."
+  ],
+  "privatePublicationArchive": {
+    "capturedFiles": 15,
+    "manifestSha256": "5092a60f6ac8f0c5721bcf4e528c83898a24509e8747f84b8551057bfc312f74",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false,
+    "dataAndPlanArchivesUnchanged": true
+  },
+  "finalDelivery": "Source a53114f activated and served acceptance captured; a subsequent documentation-only receipt commit does not assert a new activation."
 }

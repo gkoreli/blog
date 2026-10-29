@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T06:08:22.595813+00:00",
-  "sourceBaseline": "52d9cdb",
+  "checkedAt": "2026-10-29T06:13:01.977170+00:00",
+  "sourceBaseline": "a53114f7eab51f55f240b7cff029073c107e9ccc",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -44,17 +44,17 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Accept article publication separately, then inspect the frozen new-ID cohort\u2019s Unresolved reasons and declaration/method coverage without repeating the population scan. Human trials remain deferred.",
+  "nextBoundedAction": "Explain the frozen new-ID cohort\u2019s nine Unresolved labels and declaration/method coverage using the saved exact bounds, without repeating the full population scan. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 31,
     "sourceSha256": "7a042af095bb61d1963c96d9af7bccf58efcbd61d7e8a244f2341051eabae4dc",
     "unchanged": false,
-    "freshServedCheck": false,
+    "freshServedCheck": true,
     "publicationReceipt": "retained-population-release.json",
-    "servedMatchesCheckedBuild": false,
-    "lastServedCheckReceipt": "frozen-signed-release.json",
-    "publicationStatus": "Source revision checked in isolated 33-post build; publication/activation/served acceptance pending.",
+    "servedMatchesCheckedBuild": true,
+    "lastServedCheckReceipt": "retained-population-release.json",
+    "publicationStatus": "Accepted source a53114f: Ready build, log-linked Worker/100% allocation, exact served Markdown and HTML article text/links matching the isolated build.",
     "previousPublicationReceipt": "frozen-signed-release.json"
   },
   "runtimeUnchanged": true,
@@ -90,7 +90,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 0,
+  "productionOwnSiteGets": 2,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
