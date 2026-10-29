@@ -24,7 +24,7 @@ Test a real project considering a Rust rewrite, measure Bun AOT startup, memory 
 - [x] Run repeated startup/memory measurements after correctness checks.
 - [x] Record exact commands, hashes, observations, conditions and limits in a reproduction package.
 - [x] Prepare a concise maintainer-facing result; public evidence-link acceptance is part of delivery below.
-- [ ] Validate, commit and push only this experiment's files.
+- [x] Validate, commit and push only this experiment's files.
 
 Private command captures, downloaded compiler, checkout, dependencies and executables remain under `/tmp/polkadot-aot-20261028`, `/tmp/polkadot-aot-tools-20261028` and `/tmp/polkadot-aot-results-20261028`. The earlier exploratory timing run is preserved separately at `/tmp/polkadot-aot-pre-standalone-20261028`; it is not the accepted public table. Publish scripts and selected structured observations, not raw operational logs.
 
@@ -47,4 +47,10 @@ The WASM packaging failure is important: ordinary JIT works only while it can re
 | Correct AOT packaging needs the WASM asset | Reproduced | Missing-file failure without it; 28 successful isolated checks with it |
 | AOT deserves a compatibility trial before an efficiency-only rewrite | Inference | Does not address the proposal's separate native-library and product goals |
 
-Next action: validate the evidence, links and scoped diff, commit/push this experiment, then independently verify its public evidence link. No maintainer contact has been sent.
+## Delivery and handoff
+
+Delivered in [`741a382`](https://github.com/gkoreli/blog/commit/741a382), pushed directly to main after fast-forwarding the two intervening owner commits. The 14-file commit contains only this experiment and its discovery link in the existing promotion record. Concurrent macOS-worktree research remained untouched.
+
+Acceptance: an independent calculation verified all 500 observations, the 25 summaries, balanced run positions and all 50 numeric report cells. Python syntax, local Markdown links, fences, the nine-file evidence manifest and the scoped diff passed. The report, runner and maintainer draft each returned successfully through unauthenticated public raw-GitHub requests and matched committed bytes. There was no site-content change, production analytics query, deployment acceptance claim or need to rebuild the site.
+
+The requested experiment and maintainer-facing preparation are complete. No maintainer comment or message has been sent. The [draft](02-maintainer-draft.md) is ready for review; posting it would be the next separate action. Remaining compatibility and platform checks are explicitly proposed follow-up work, not completed outcomes.
