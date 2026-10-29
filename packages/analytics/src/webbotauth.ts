@@ -1011,14 +1011,14 @@ export function inspectWebBotAuthCandidates(request: Request): CandidateInspecti
  */
 export function inspectWebBotAuthCandidateCapture(request: Request, label: string): {
   components: number; missingHeaderComponents: number;
-  placeholderShapedHeaderComponents: number; unresolvedComponents: number;
+  placeholderShapedHeaderComponents: number; placeholderShapedUrlComponents: number; unresolvedComponents: number;
 } | null {
   try {
     const context = candidateContext(request);
     if (context.status !== 'ready') return null;
     const candidate = context.tagged.find(candidate => candidate.label === label);
     if (candidate === undefined || hasDuplicateComponent(candidate.input)) return null;
-    const result = { components: candidate.input.items.length, missingHeaderComponents: 0, placeholderShapedHeaderComponents: 0, unresolvedComponents: 0 };
+    const result = { components: candidate.input.items.length, missingHeaderComponents: 0, placeholderShapedHeaderComponents: 0, placeholderShapedUrlComponents: 0, unresolvedComponents: 0 };
     for (const item of candidate.input.items) {
       if (item.bare.type === 'string' && !item.bare.value.startsWith('@') && item.parameters.length === 0 && item.bare.value === item.bare.value.toLowerCase()) {
         const value = request.headers.get(item.bare.value);
@@ -1029,6 +1029,13 @@ export function inspectWebBotAuthCandidateCapture(request: Request, label: strin
       }
       const resolved = componentValue(request, item, context.parsedAgent);
       if (resolved === null || 'reason' in resolved) result.unresolvedComponents++;
+      else if (item.bare.type === 'string' && ['@authority', '@target-uri', '@path', '@query'].includes(item.bare.value)
+        && /(?:^|[^a-z0-9+_-])REDACTED(?=$|[^a-z0-9+_-])/i.test(resolved.value)) {
+        // Native TailRequest URL views can replace an ID-like token. Request
+        // reconstruction can lowercase hostnames; accept either marker case.
+        // A literal marker can still be signed, so this is availability only.
+        result.placeholderShapedUrlComponents++;
+      }
     }
     return result;
   } catch { return null; }

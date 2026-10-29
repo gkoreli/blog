@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { auditRetainedWebBotAuth } from '../.test-dist/retained-signature-audit.js';
 import { retainedSignatureFixture } from './fixtures/retained-signature.mjs';
+import { nativeTraceSignatureFixture } from './fixtures/native-trace-signatures.mjs';
 
 export async function assessRetainedCase(row, changes = {}) {
   const request = new Request(row.url, { method: row.method, headers: row.headers });
@@ -63,4 +64,25 @@ test('request and clock mutation during resolution cannot alter availability fac
     return Response.json(row.directory, { headers: { 'Content-Type': 'application/http-message-signatures-directory+json' } });
   } });
   assert.equal(r.capturedInputAudit.verifiedCandidates, 1); assert.equal(r.availability.placeholderShapedHeaderComponents, 0);
+});
+
+test('covered URL markers expose possible capture loss without invalidating a signed literal or unsigned URL', async () => {
+  const { trials } = await nativeTraceSignatureFixture();
+  for (const row of trials) {
+    const original = await assessRetainedCase(row);
+    assert.equal(original.availability.placeholderShapedUrlComponents, row.name === 'literal-url-marker' ? 1 : 0);
+    assert.equal(original.capturedInputAudit.verifiedCandidates, Number(row.expected.producerVerified));
+    if (['covered-target-uri', 'covered-path', 'covered-query', 'unsigned-url'].includes(row.name)) {
+      const url = row.url.replace('0123456789abcdef0123456789abcdef', 'REDACTED');
+      const altered = await assessRetainedCase({ ...row, url });
+      assert.equal(altered.availability.placeholderShapedUrlComponents, row.name === 'unsigned-url' ? 0 : 1);
+      assert.equal(altered.capturedInputAudit.verifiedCandidates, row.name === 'unsigned-url' ? 1 : 0);
+      assert.equal(altered.originalRequestValidity, 'not-established');
+    }
+    if (row.name === 'baseline') {
+      const hostMarker = await assessRetainedCase({ ...row, url: 'https://REDACTED.example/fixture' });
+      assert.equal(hostMarker.availability.placeholderShapedUrlComponents, 1);
+      assert.equal(hostMarker.capturedInputAudit.verifiedCandidates, 0);
+    }
+  }
 });

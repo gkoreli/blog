@@ -1,0 +1,127 @@
+{
+  "checkedAt": "2026-10-29T04:56:15.109054+00:00",
+  "scope": "Local native producer/Tail Worker comparison; synthetic messages only",
+  "primarySources": {
+    "checkedAt": "2026-10-29T04:53:56.753524+00:00",
+    "sources": [
+      {
+        "name": "tail-handler.md",
+        "url": "https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/index.md",
+        "status": 200,
+        "sha256": "6c9df87cab7ee1d4eae44e3b4e3eda100b98fa751762b40df5c28fd38f57935d",
+        "bytes": 10226
+      },
+      {
+        "name": "tail-workers.md",
+        "url": "https://developers.cloudflare.com/workers/observability/logs/tail-workers/index.md",
+        "status": 200,
+        "sha256": "2d8e71ccdf43a832f6e3aace7d58bb494e7f79c37221268cdfa73cc35bc2b801",
+        "bytes": 8012
+      }
+    ]
+  },
+  "environment": {
+    "checkedAt": "2026-10-29T04:54:51.880Z",
+    "workerGraph": {
+      "inputs": 151,
+      "diagnosticModuleIncluded": false,
+      "inspectorIncluded": false,
+      "productionBuild": false
+    },
+    "installed": {
+      "wrangler": "4.71.0",
+      "miniflare": "4.20260301.1",
+      "workerd": "1.20260301.1",
+      "miniflareBundleSha256": "27b5e672616d45a0f8a5600c3bd0839404ca418a2d54129e934509bec1b8d42f"
+    },
+    "compatibilityDate": "2026-03-06",
+    "cfConfiguration": {},
+    "sourceBasis": "Installed Miniflare tails mapping plus the native experiment; no equivalence with current managed provider detection"
+  },
+  "diagnosticProfile": "2026-10-29.2",
+  "collectorOrVerifierPolicyChanged": false,
+  "productionRuntimeAdoption": false,
+  "acceptance": {
+    "producerCases": 13,
+    "nativeTraceViews": 26,
+    "producerVerified": 12,
+    "defaultTraceVerified": 7,
+    "unredactedTraceVerified": 12,
+    "validProofsLosingDefaultReplay": 5,
+    "nodeSerializedTraceReplays": 26,
+    "independentRfcContexts": 39,
+    "independentVerified": 31,
+    "independentRejected": 8,
+    "sourceFilesRechecked": 18,
+    "analyticsTests": 281,
+    "targetedNewTests": 6,
+    "workspaceTypecheck": "pass",
+    "validation": "pass",
+    "newProductionRequests": 0,
+    "newD1Statements": 0,
+    "humanLabels": 0
+  },
+  "preAcceptanceCorrections": [
+    "The first native test expected scriptName=producer; the installed local runtime supplies null. Final association uses the configured single producer and a unique synthetic case key.",
+    "The initial isolated build was blocked by the sandbox local IPC restriction; a separately approved isolated build runs without touching the shared dist.",
+    "Initial Markdown comparison omitted the generated leading newline; final comparison normalizes leading whitespace and binds the exact complete body."
+  ],
+  "limits": [
+    "TailRequest views do not establish the retained dashboard export contract.",
+    "No production getUnredacted or expanded collection is adopted.",
+    "Native managed-provider detection, whole-history correctness and human accuracy remain unmeasured."
+  ],
+  "article": {
+    "bodyWhitespaceWords": 1359,
+    "prompts": 31,
+    "sourceSha256": "d951df00dea8bf5fd9219055a4e4138ed0925d123581a924f627025b0caf9e3a",
+    "change": "Replace one directory-cache implementation paragraph with the bounded native trace finding; one additional body word.",
+    "positioning": "Existing title, description, opening, headings and slug still match the measurement-boundary argument; no metadata or discovery claim change.",
+    "activation": "unverified",
+    "freshServedCheck": false
+  },
+  "publicationBuild": {
+    "isolatedBuild": "pass",
+    "builtPosts": 32,
+    "validatedArticleH1": 1,
+    "articleFindingRendered": true,
+    "markdownStartsWithExactSourceBodyAfterLeadingWhitespace": true,
+    "bodyWords": 1359,
+    "prompts": 31,
+    "markdownSha256": "d956731ee3a7514201b9502a67c462430acfd614f779ae8e69f919fd6a28548a",
+    "htmlSha256": "f84e51bb46b4048ebb2c541e537db7a8217b7932d20f4a63aa11b43b37eb4c4f",
+    "sharedDistTouched": false,
+    "liveActivationOrServedCheck": false
+  },
+  "sourceBaseline": "16a3322c43b7b94a51aa37afc1e10ec08171c3f1",
+  "sourceFiles": {
+    "packages/analytics/src/webbotauth.ts": "09b32b80af81c2c70a6541046333b2d228f6c1ae55d2b2d31503842b5c49b6fb",
+    "packages/analytics/src/retained-signature-audit.ts": "2b920e76fcf15c96d148b760bf6e2bf8867386d8e256c77b1f9c2a733cfe45eb",
+    "packages/analytics/test/fixtures/native-trace-signatures.mjs": "bb9d78022e390251d51e967030fb60512f0f70c335583b95732bb83edbca2070",
+    "packages/analytics/test/retained-signature-audit.test.mjs": "67ddef7a8f7d39d4bb43ace3c7680a9282d8ec293b0affff0cf8363597739f8a",
+    "packages/blog/scripts/check-native-trace-signatures.mjs": "88747ffed644f0dc07af5845c54aadff208919082fa6a6d1ecb261ce4a866d9e"
+  },
+  "finalChecks": {
+    "localLinksChecked": 418,
+    "syntheticProofKeyAndValueScan": "pass",
+    "articlePromptFileUnchanged": true,
+    "workspaceTypecheck": "pass",
+    "scriptSyntax": "pass"
+  },
+  "privateArchive": {
+    "capturedFiles": 29,
+    "manifestSha256": "9b142346698fee9dca37caeb0df57d62b39c990f3d415a9263c4313d2535eb08",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false,
+    "priorArchivesUnchanged": true
+  },
+  "nativePairFidelity": {
+    "pairs": 13,
+    "methodsUnchanged": 13,
+    "headerNameSetsUnchanged": 13,
+    "allThreeSigningHeadersUnchanged": 13,
+    "scope": "Offline acceptance of the same frozen native capture; header values and URL differences separately measured in the harness."
+  }
+}

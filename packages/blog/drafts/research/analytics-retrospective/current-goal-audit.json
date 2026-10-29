@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T04:49:41.276938+00:00",
-  "sourceBaseline": "37a25877d1d72ab759ff069b927f54e067aaf620",
+  "checkedAt": "2026-10-29T04:57:54.692618+00:00",
+  "sourceBaseline": "16a3322c43b7b94a51aa37afc1e10ec08171c3f1",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -45,16 +45,17 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Exercise the local native tracing boundary with synthetic covered headers; compare verifier input with retained trace views before adopting a provider-specific capture profile. Human trials remain deferred.",
+  "nextBoundedAction": "Inspect the retained Workers Logs/export contract and existing captured representations for URL fidelity, especially covered components. Also accept publication of the revised article separately from local build evidence. Human trials remain deferred.",
   "article": {
-    "bodyWhitespaceWords": 1358,
+    "bodyWhitespaceWords": 1359,
     "prompts": 31,
-    "sourceSha256": "3c51458d27908a851e629bde089c14f4e8f3f650396052d9484804d6fcd9ed73",
-    "unchanged": true,
+    "sourceSha256": "d951df00dea8bf5fd9219055a4e4138ed0925d123581a924f627025b0caf9e3a",
+    "unchanged": false,
     "freshServedCheck": false,
-    "publicationReceipt": "network-receipt-release.json",
-    "servedMatchesCheckedBuild": true,
-    "lastServedCheckReceipt": "network-receipt-release.json"
+    "publicationReceipt": null,
+    "servedMatchesCheckedBuild": null,
+    "lastServedCheckReceipt": "network-receipt-release.json",
+    "publicationStatus": "Source revised and isolated build accepted; live activation and served acceptance unverified."
   },
   "runtimeUnchanged": true,
   "productionStatements": 0,
@@ -169,7 +170,7 @@
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No production observation requested by this investigation; natural ingestion and provider costs are separate."
   },
-  "newVisitsScope": "Offline reuse of Research 72 fixed 409-record export and two Exa originals; eighteen Node/workerd cases and eight independent RFC messages. No production query or site observation.",
+  "newVisitsScope": "Thirteen synthetic local producer requests, thirteen native trace deliveries and thirty-nine independent RFC contexts; no production request/query, new readership calibration or human label.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -288,5 +289,23 @@
     "newProductionRequests": 0,
     "newD1Statements": 0,
     "articleChanged": false
+  },
+  "nativeTraceDiagnostic": {
+    "receipt": "native-trace-checks.json",
+    "nativeReceipt": "native-trace-signatures.json",
+    "referenceReceipt": "native-trace-reference.json",
+    "profile": "2026-10-29.2",
+    "syntheticProducerCases": 13,
+    "producerVerified": 12,
+    "defaultTraceVerified": 7,
+    "unredactedVerified": 12,
+    "validProofsLosingDefaultReplay": 5,
+    "independentRfcContexts": 39,
+    "nodeSerializedViews": 26,
+    "collectorAdoption": false,
+    "productionExportEquivalenceProven": false,
+    "newProductionRequests": 0,
+    "newHumanLabels": 0,
+    "articleChanged": true
   }
 }

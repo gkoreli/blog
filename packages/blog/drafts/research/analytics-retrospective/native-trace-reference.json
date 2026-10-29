@@ -1,0 +1,303 @@
+{
+  "checkedAt": "2026-10-29T04:53:37.057220+00:00",
+  "sourceCommit": "1de433d9a49fd608475c6054ab14a1652c088844",
+  "sourceFilesRechecked": 18,
+  "recordedClock": true,
+  "keyResolver": "per-trial captured publisher keys by RFC thumbprint",
+  "maxAgeSeconds": 86400,
+  "rows": [
+    {
+      "vendor": "synthetic",
+      "variant": "covered-cookie::input",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-cookie::retained",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature"
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-cookie::unredacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "literal-cookie-marker::input",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "literal-cookie-marker::retained",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "literal-cookie-marker::unredacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "unsigned-cookie::input",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "unsigned-cookie::retained",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "unsigned-cookie::unredacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-benign-key-name::input",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-benign-key-name::retained",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature"
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-benign-key-name::unredacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-target-uri::input",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-target-uri::retained",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature"
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-target-uri::unredacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-path::input",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-path::retained",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature"
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-path::unredacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-query::input",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-query::retained",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature"
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "covered-query::unredacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "literal-url-marker::input",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "literal-url-marker::retained",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "literal-url-marker::unredacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "unsigned-url::input",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "unsigned-url::retained",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "unsigned-url::unredacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "signed-user-agent::input",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "signed-user-agent::retained",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "signed-user-agent::unredacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "unsigned-authorization::input",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "unsigned-authorization::retained",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "unsigned-authorization::unredacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "baseline::input",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "baseline::retained",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "baseline::unredacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "invalid-proof::input",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature"
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "invalid-proof::retained",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature"
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "invalid-proof::unredacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature"
+    }
+  ],
+  "referenceCalls": 39,
+  "externalRequests": 0,
+  "limits": [
+    "Generic RFC verification; discovery, publisher registration and Web Bot Auth admission are separate.",
+    "An exception is not a complete census of valid candidates; this cohort has one eligible candidate per request."
+  ],
+  "execution": {
+    "inputSha256": "b5c147a24a594adf9f5bbd973ecdc2192cbb1f0d64e62349bf1248dfb5bdc003",
+    "fixtureInputSha256": "4f57f1891159e58ee4ab20409492cbf226fca7d3b54902326fcc6e1433a36dee",
+    "nativeCaptureSha256": "66a784127f8c1245234c1a8cd553c73a3d1c80d3241a3b43abc01b437a863a3d",
+    "scriptSha256": "f9a687f4831239c9258dd1d54ee8943a1e714401f60bf875bfa97ba9acee7098",
+    "sourceManifestSha256": "b3b73b129b8f5424a4862bcf00528424cba91fe6874faae6648855151125ebd9",
+    "dependencyVersions": {
+      "cryptography": "50.0.2",
+      "http-sf": "1.5.0",
+      "cffi": "2.1.1",
+      "typing_extensions": "4.16.0",
+      "pycparser": "3.12"
+    }
+  }
+}

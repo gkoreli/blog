@@ -8,7 +8,7 @@ export interface RetainedSignatureAuditOptions extends Omit<SignatureAuditOption
 }
 
 export interface RetainedSignatureAudit {
-  version: '2026-10-29.1';
+  version: '2026-10-29.2';
   scope: 'retained-request-representation';
   recordedClock: 'supplied' | 'missing-or-invalid';
   originalRequestValidity: 'not-established';
@@ -18,7 +18,7 @@ export interface RetainedSignatureAudit {
   availability: {
     inspectedCandidates: number; uninspectedCandidates: number | null;
     components: number; missingHeaderComponents: number;
-    placeholderShapedHeaderComponents: number; unresolvedComponents: number;
+    placeholderShapedHeaderComponents: number; placeholderShapedUrlComponents: number; unresolvedComponents: number;
   };
 }
 
@@ -29,10 +29,10 @@ export interface RetainedSignatureAudit {
  */
 export async function auditRetainedWebBotAuth(request: Request, options: RetainedSignatureAuditOptions): Promise<RetainedSignatureAudit> {
   const result: RetainedSignatureAudit = {
-    version: '2026-10-29.1', scope: 'retained-request-representation',
+    version: '2026-10-29.2', scope: 'retained-request-representation',
     recordedClock: 'missing-or-invalid', originalRequestValidity: 'not-established', directorySnapshotEquivalence: 'not-established',
     replayInterpretation: 'not-assessed', capturedInputAudit: null,
-    availability: { inspectedCandidates: 0, uninspectedCandidates: null, components: 0, missingHeaderComponents: 0, placeholderShapedHeaderComponents: 0, unresolvedComponents: 0 },
+    availability: { inspectedCandidates: 0, uninspectedCandidates: null, components: 0, missingHeaderComponents: 0, placeholderShapedHeaderComponents: 0, placeholderShapedUrlComponents: 0, unresolvedComponents: 0 },
   };
   if (options.recordedAt === undefined || options.recordedAt === null) return result;
   const time = verificationTime(options.recordedAt);
@@ -56,6 +56,7 @@ export async function auditRetainedWebBotAuth(request: Request, options: Retaine
     result.availability.components += facts.components;
     result.availability.missingHeaderComponents += facts.missingHeaderComponents;
     result.availability.placeholderShapedHeaderComponents += facts.placeholderShapedHeaderComponents;
+    result.availability.placeholderShapedUrlComponents += facts.placeholderShapedUrlComponents;
     result.availability.unresolvedComponents += facts.unresolvedComponents;
   }
   result.availability.uninspectedCandidates = inspected.labels.length - result.availability.inspectedCandidates;
