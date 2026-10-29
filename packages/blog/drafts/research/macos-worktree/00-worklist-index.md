@@ -81,3 +81,34 @@ Resources: the research Lima VM was stopped cleanly, private guest evidence arch
 Delivery: scoped commit `81186d65ed82f52037186ac3d0ea4e4e3a8bb746` was rebased over concurrent main changes and pushed directly to `main`. The remote GitHub file at that exact revision was read back successfully and contains all seven series / 21 accepted installs. Frozen artifact hashes survived rebase unchanged; the checkout was clean after the source push. This receipt update records that verified delivery.
 
 This deeper research iteration is complete. No site article or social share was published. The next authoring step, if requested, is review or publication of the saved draft; further source research is needed only if its claims or tested versions change.
+
+## Failure diagnosis and additional validation requested
+
+New user goal: “Why did macOS fail? Also we need more validations”. The preceding goal turn was progress: it delivered 21 measured installs and exposed a reproducible compatibility failure. Its acceptance above is historical for this expanded request, which now requires explaining that failure rather than only reporting it.
+
+Acceptance:
+
+- [x] Trace the 64 shared-store type errors to concrete module/type resolution behavior; reduce the cause and test a repair or a precise limiting condition.
+- [x] Test the same shared-store configuration on Linux to distinguish an OS-specific failure from a dependency-layout failure.
+- [x] Validate the surviving configurations with actual project checks beyond two native-module loads, comparing any failures with the unchanged default layout.
+- [x] Strengthen the timing evidence with additional ordered/alternating fresh-worktree trials, source-verified concurrency controls where applicable, and a current-version profile. Keep diagnostics and warmups outside accepted timings.
+- [x] Explain the remaining Mac install cost to the degree supported by measured operations and controls, rather than attributing the whole difference to APFS from elapsed time alone.
+- [ ] Revise the four-to-five-minute draft and claim ledger, freeze a new evidence receipt, check the scope and calculations, and deliver scoped changes to main without publishing the article.
+
+The research and article checks are complete; delivery remains pending below. No outreach or social publishing is authorized.
+
+## Failure-diagnosis acceptance and handoff, October 28 local / October 29 UTC
+
+Current evidence: [diagnosis and validation methods](03-failure-diagnosis-and-validation.md), [current claim disposition](01-claim-audit.md#current-failure-diagnosis-and-validation-disposition), [30-trial/project-check ledger](repro/validation-results.json), [reproduction notes](repro/README.md), and [v3 frozen artifact receipt](evidence-manifest-v3.json). This iteration supersedes the previous undiagnosed rejection and cleaned-directory article headline; earlier records remain separate historical observations.
+
+The typecheck failure is a shared-layout React declaration lookup failure, reproduced with 64 errors on both systems. Traces, a reduced example, two compilers, fourteen positive/negative/control cases, pnpm-aware launcher control and a targeted typecheck-only repair support that diagnosis. The exact copyable recipe clears the web errors without changing base configuration, source, dependencies or strictness. A production web build also passes with the separate recipe file present. Neither preserveSymlinks nor explicit typeRoots repairs this tested project.
+
+Thirty fresh Git worktrees completed sequentially, five per configuration/OS. Default medians: 8.120 s macOS / 2.098 s Linux guest (3.87×). Four-worker medians: 6.548 / 2.019 s (3.24×). Shared-package medians: 0.943 / 0.962 s. Every trial passes native checks and the real web typecheck (with the targeted mapping in shared mode); source and all 599 requested dependency entries match. Current pnpm source, 1,621 successful Mac directory-clone events, a sampled native process and a content/inode check support the repeated-tree-creation explanation without claiming pure APFS causality. Profiling and broader validation did not overlap timed trials.
+
+Broader acceptance is explicitly bounded: default Mac and shared Mac/Linux web unit suites each pass 4,302 tests; web production builds pass in those layouts. The complete Mac browser comparison passes 471/472 tests in both layouts, with the same GuestPage scrolling failure and the same failure in targeted repeats. This is a baseline limit, not full application acceptance. No unrelated scrolling repair, mobile/desktop certification, OS-kernel causal decomposition or whole-agent speedup is claimed.
+
+The revised draft renders to **911 words / 4.56 minutes** at 200 words per minute, including its source glossary. A separate JavaScript audit recalculates six five-sample medians/ranges, all three ratios, worker reduction, schedule/order, unique fresh paths and all per-trial gate/input/inventory records against private controller output. Raw-log checks independently confirm unit counts, browser failures/repeats, compiler controls and build success. Local links/fences, JSON/Python syntax, one rendered H1, metadata, executed driver bytes and all 21 published-post validations pass. No production site build is needed for this unpublished draft.
+
+Private guest evidence was archived outside Git (107 selected logs/records); the research VM was stopped cleanly after validation. Owned temporary worktrees, caches and images are retained for inspection. The new goal text is preserved verbatim in the draft prompt record. The article remains unpublished, with no date or live route, and no social post was created.
+
+Delivery pending: freeze final evidence hashes, commit and push only this draft/research scope to main, verify the remote exact revision, then close the last acceptance item. The v2 receipt describes bytes at source commit 81186d65ed82f52037186ac3d0ea4e4e3a8bb746; it is preserved, not silently rewritten to match this revision.

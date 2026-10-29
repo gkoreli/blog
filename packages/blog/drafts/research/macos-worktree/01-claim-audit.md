@@ -1,6 +1,6 @@
 # Claims, reader questions and source rationale
 
-Checked October 28–29, 2026. Repository baselines are in the [worklist](00-worklist-index.md). The [deeper investigation](02-deeper-investigation.md) and [21-install ledger](repro/full-results.json) supersede the first pass's small-fixture argument.
+Checked October 28–29, 2026. Repository baselines are in the [worklist](00-worklist-index.md). Current disposition: [failure diagnosis and additional validation](03-failure-diagnosis-and-validation.md), [30 fresh-worktree trials and project checks](repro/validation-results.json). These supersede the earlier timing headline and undiagnosed shared-store rejection below. The [21-install ledger](repro/full-results.json) remains a separate historical experiment; do not pool samples.
 
 ## The chart and its missing context
 
@@ -33,7 +33,9 @@ The screenshot is an assistant's explanation posted by Theo, not the original me
 | Reusing an installed dependency tree avoids much local file work | pnpm shared-store documentation | Release path creates graph-addressed shared slots and can skip completed immutable slots | Code-inspected | Relevant alternative to changing OS | Keep experimental compatibility limits |
 | The original tiny fixture proves the practical response | Historical local comparison | Child-runtime attribution was not verified; superseded during deeper investigation | Superseded | Revised article removes these timings | Use full T3 experiments and compatibility checks instead |
 
-## Competing explanations
+## Competing explanations from the previous pass (historical)
+
+The shared-store rejection in this table was the correct boundary before diagnosis; the current disposition below records the tested repair.
 
 | Explanation | Support | Counterevidence or missing test | Verdict |
 | --- | --- | --- | --- |
@@ -68,7 +70,9 @@ Observed the first loaded Relevant-order reply groups plus two PageDown advances
 
 Reader language: “worktree setup slow on Mac,” “pnpm install slow macOS,” “Linux versus Mac for coding agents.” These are query hypotheses, not measured demand. The title should name worktree setup on a Mac; the payoff is a testable response to a specific delay. Do not advertise an independently reproduced 8× comparison or an OS migration verdict.
 
-## Deeper-pass claim disposition
+## Deeper-pass claim disposition (historical)
+
+This table records the previous iteration. Its cleaned-directory timings and undiagnosed compatibility failure are superseded for the revised article by the current validation below.
 
 | Claim / alternative | Stage and evidence | Counterevidence or boundary | Disposition |
 | --- | --- | --- | --- |
@@ -81,4 +85,21 @@ Reader language: “worktree setup slow on Mac,” “pnpm install slow macOS,�
 | The VM result requires a new PC | Reproduced on same M5 physical host with guest-native files | Host-mounted folders, remote machines, Windows and bare-metal Apple Linux not tested | A VM is an evidence-backed option to evaluate; no hardware purchase recommendation |
 | This makes an agent finish work six or eight times faster | Installation boundary measured; checkout/cleanup/VM startup excluded | No model, whole application build, full suite or entire agent-task timing | Rejected extrapolation |
 
-No material conclusion relies on how much research compute was spent. The useful evidence is the inspected source, controlled interventions, saved samples and failed compatibility check.
+## Current failure-diagnosis and validation disposition
+
+| Claim / alternative | Stage and evidence | Counterevidence or boundary | Disposition |
+| --- | --- | --- | --- |
+| The shared-store typecheck failure is specific to macOS | Reproduced: unchanged shared layouts produce the same 64 errors on macOS and Linux | Installation itself succeeds; this failure is in declaration lookup | Reject OS-specific framing |
+| Shared dependencies lose React's declaration lookup | Reproduced: traces follow importing libraries into the external store and resolve React to JavaScript; valid reduced case fails under both native and official JS compilers | React and its declarations are installed, both version 19.3.0 | Supported for the inspected library imports and tested web project |
+| The repair merely suppresses errors | Reproduced: separate React declaration mapping clears all 64 errors on both OSes; invalid numeric className is still rejected by both compilers | Fourteen reduced cases do not establish universal workspace compatibility | Reject suppression explanation; preserve strictness and base config |
+| Calling the compiler directly caused the failure | Reproduced: pnpm-aware launcher with shared mode explicitly enabled still gives 64 errors | Runtime loader hooks do not guarantee every compiler's declaration lookup | Reject for this control |
+| preserveSymlinks or typeRoots fixes it | Reproduced: full-project results are 2,863 and 64 errors respectively; typeRoots also fails both reduced compiler cases | Compiler options have broader effects than the missing React lookup | Reject these remedies for the tested toolchain |
+| Shared dependencies can work in this T3 web project | Reproduced: all ten new shared trials pass native checks and the repaired web typecheck; unit suites pass 4,302 tests on both OSes; web builds pass; exact copyable compiler-only recipe passes with unchanged base config | Full Mac browser suites each pass 471/472 tests and fail the same scrolling assertion; same failure repeats in isolation. Mobile/desktop acceptance not tested. Shared writes can affect other checkouts | Tested web workaround with stated limits, not general production acceptance |
+| macOS is about four times slower in the stronger trial | Reproduced: five fresh worktrees per variant/OS, 30 trials; default medians 8.120 / 2.098 s, ratio 3.87 | One M5 host; Linux is a 4-vCPU/4-GiB VM. Other host services not isolated. Earlier cleaned-directory series differs | Supported within the current method; retain all samples and ranges |
+| Default thread policy explains the whole gap | Code-inspected: pinned pnpm global pool expects 16 Mac / 8 Linux workers. Reproduced: explicit four-worker medians 6.548 / 2.019 s | Mac median improves about 19%, but ratio remains 3.24. This control does not equalize all CPU/RAM resources | Partial contribution; reject complete explanation |
+| Current Mac pnpm lacks directory cloning | Observed diagnostic: 1,621 successful distinct directory clones; native process sample contains clonefileat worker stacks | Counts span threads, not calls or wall-time shares. Diagnostic timings excluded | Reject absence claim; current optimization is active |
+| Repeated package-tree creation contributes to Mac cost | Source-inspected import strategy plus clone trace, sampled stacks, content/inode probe and 0.943-second shared median | Sharing changes multiple layout operations; no pure APFS-versus-kernel decomposition. Linux hardlinks and Mac clones differ in write semantics | Supported bounded mechanism; do not assign the entire gap to APFS |
+| Linux guarantees fast installation regardless of cache location | Separate earlier XFS control: 7.613 s with ext4 cache, 1.380 s after byte-identical cache moved to XFS | Three cleaned-directory trials; nested filesystem; not part of the new 30-run series | Retain as separate placement lesson |
+| Install speed predicts complete agent-task speed | Only installer wall time is measured; typechecks and other validation are outside the timer | Model calls, checkout, app execution and end-to-end task durations unmeasured | Reject extrapolation |
+
+The source and requested dependency inventory match in all 30 new trials. The revised article uses those fresh-path medians, preserves the known browser failure, and links the separate typecheck-only recipe. No material conclusion relies on research compute volume.

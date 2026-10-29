@@ -1,5 +1,35 @@
 # Install experiment sources
 
+The current iteration is the [failure diagnosis](../03-failure-diagnosis-and-validation.md) and [30 fresh-worktree results](validation-results.json). The older 21-install ledger below remains a separate historical experiment. Do not pool those medians.
+
+## New validation protocol
+
+[paired-worktrees.py](paired-worktrees.py) creates five fresh worktrees per platform/configuration, rotating the three configuration orders and alternating the two platforms. It runs one install at a time, then checks native modules and the real web typecheck outside the timer. Its three configurations are defaults, `RAYON_NUM_THREADS=4`, and shared dependencies. The pinned pnpm source confirms that explicit worker variable overrides its normal global file-work pool policy; it is not a CPU or memory quota.
+
+The controller takes a JSON configuration with `pairs` (at least five), `settleSeconds`, `controllerResults`, `limaHome`, `limaMachine`, and `runner`. Both `macos` and `linux` objects supply `source`, `worktreeRoot`, `results`, `store`, `node`, and `cli` absolute paths. Source checkouts must use the pinned T3 commit; all worktree/output roots must be disposable and new. `runner` is the exact full-workload script at a shared path visible to both systems. The Linux source, store, worktrees and results use guest-native storage.
+
+```sh
+python3 paired-worktrees.py --config plan.json \
+  --allow-create-disposable-worktrees
+```
+
+The controller writes its complete schedule before the first trial and refuses an existing controller results directory. It aborts on an install, inventory, native or web-typecheck failure, preserving logs. The one-second checkout settling interval used here is outside install times. Runtime, pool settings, input hash, inventory hash, complete sample order and all results are retained in the ledger. No browser suite, build, profile or package download overlapped accepted timing trials.
+
+## React declaration lookup reproduction
+
+[react-types-probe.ts](react-types-probe.ts) is the reduced valid case. The default layout accepts its string `className`; the shared layout rejects it because `react` resolves to JavaScript instead of the installed declaration package. [Selected trace excerpts](react-resolution-excerpts.json) show the lookup and final paths. Both the pinned native compiler and the official TypeScript 6.0.3 compiler reproduce this result. Replacing the string with `42` is the negative control: after the targeted repair, the compiler still rejects the number as invalid.
+
+To repeat the full **T3 web typecheck-only workaround**, copy [react-typecheck.example.json](react-typecheck.example.json) to `apps/web/tsconfig.research-typecheck.json`. Run from that `apps/web` directory with its pinned Node and pnpm:
+
+```sh
+pnpm --config.enableGlobalVirtualStore=true exec tsc \
+  --project tsconfig.research-typecheck.json --pretty false
+```
+
+This example retains T3's existing `~/*` alias and points React imports at its existing declaration files. It is a separate compiler-only configuration; the original `tsconfig.json` stays unchanged. T3's bundler reads its base path aliases, so this experiment does not endorse merging declaration-only targets into that base configuration. The exact copied example passed through pnpm, and the production web build still passed with it present. The unmodified shared-layout typecheck still fails through pnpm's own launcher, with shared mode explicitly enabled.
+
+All 30 new trials passed their checks, including the targeted typecheck configuration for shared mode. The broader unit suites passed 4,302 tests per run and production web builds passed in the recorded layouts. The complete Mac browser comparison is **not green**: both layouts passed 471/472 tests and failed the same GuestPage scrolling assertion, including targeted repeats. These gates and their limitations remain separate in [validation-results.json](validation-results.json).
+
 The active investigation uses [full-workload.py](full-workload.py) on two pinned public repositories. The driver evolved during preparation: T3 mode, symlink/Gitlink auditing and native checks were added after the older host series. Its timing function and accepted install command boundaries stayed the same. The artifact receipt hashes the final checked source; it does not claim every earlier run used byte-identical driver source. Read the [deeper source and methods notes](../02-deeper-investigation.md) and [accepted result ledger](full-results.json) before interpreting a comparison. The small fixture below is historical and is no longer the article's evidence.
 
 ## Full-workload driver

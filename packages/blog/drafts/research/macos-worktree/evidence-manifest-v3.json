@@ -1,0 +1,32 @@
+{
+  "checkedAtUtc": "2026-10-29",
+  "authorLocalDate": "2026-10-28",
+  "status": "Failure diagnosis and validation draft receipt; supersedes v2 article timing headline and undiagnosed shared-store rejection",
+  "previousReceipt": {
+    "file": "evidence-manifest-v2.json",
+    "sourceCommit": "81186d65ed82f52037186ac3d0ea4e4e3a8bb746",
+    "interpretation": "Historical hashes apply to that revision, not subsequently revised paths."
+  },
+  "files": {
+    "../../why-worktree-setup-is-slow-on-macos.md": "45fb0e9ca24197c05d4df678c1815249d24e1e94b467099150264b1d60a91d0d",
+    "../../prompts/why-worktree-setup-is-slow-on-macos.prompts.md": "f97c224d86a30e4cc5305f3e2ecc354517351a2d69d529f8aa58a9a4e40bff4d",
+    "01-claim-audit.md": "feec05fad7d04ef5966bc7468806a7bd523b955420f704a7128bf49c91d2092b",
+    "02-deeper-investigation.md": "fcb89b7b5f3a674751b28125d61ff271a00aa7281eb8ca3f8c4b7c92b541fab8",
+    "03-failure-diagnosis-and-validation.md": "e98e4b790d19aab6635ed0ced7708e452856c92f4bdd2291eb7c9d7b34e5a73f",
+    "repro/README.md": "4a37abd51a495d61c4bc53f481a02f4263bef677233e48205bc85fe3d1442b11",
+    "repro/full-workload.py": "af73ca565fd152ed4486e4e1f0b3dadb0ea360440294d48dfac037b6cbe172c7",
+    "repro/paired-worktrees.py": "fb4eadc0f26b4d0d86dd9a35ec75311a824e3f4d5445078db35eb067abf03148",
+    "repro/validation-results.json": "c491b65fcfe1675cf608e29c24fbaf66a82f0630bcc21a9d1309d848e93e803b",
+    "repro/react-types-probe.ts": "cda227422b127686d56b766c6fdf7496e034a8bb1a17d0419ba1b5cba649b612",
+    "repro/react-resolution-excerpts.json": "a659d9aa86f4ecd1375e7d1ad6d31893bebeec4d1d593e0cac7d325f6c1082b7",
+    "repro/react-typecheck.example.json": "6d3df98ae5899c98945595968fd33b6a71a9d32938c56089cb0f6014083820ec",
+    "repro/full-results.json": "c5df5bd8f8d1c6a45b6d848c63f0b991d76047b9eb8c9fbf09710a3459999a9c",
+    "evidence-manifest-v2.json": "fcd9e3e54f66414fda96c3e5ba07ddf00491ad430dcb0646f4e32e9f03d9611e"
+  },
+  "sourcePins": {
+    "T3": "125b61954dbba5822a8108c8ca47a4846b4b4328",
+    "pnpm12ReleaseSource": "fe4a0c232384289de82be3d502896ca7e070050c"
+  },
+  "scope": "Unpublished four-to-five-minute article, exact shaping text, public methods, selected normalized traces and derived measurements. Private raw captures, browser/session logs, SSH material and credentials remain outside Git. Worklist is an evolving delivery record and is deliberately not frozen by this manifest.",
+  "validationBoundary": "All 30 fresh trials pass install/native/web-typecheck gates with targeted shared-mode mapping. Broader unit/build gates pass. Both Mac browser suites retain the same one failing scrolling test out of 472; full application acceptance is not claimed."
+}

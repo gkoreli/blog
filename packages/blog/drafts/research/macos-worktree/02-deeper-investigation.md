@@ -1,5 +1,7 @@
 # Deeper investigation, October 28–29, 2026
 
+Historical first deeper pass: the subsequent [failure diagnosis and fresh-path validation](03-failure-diagnosis-and-validation.md) explains the previously unresolved type errors and supplies the revised main timings. Its receipt is superseded by the new iteration; this record retains the earlier method and results.
+
 This supersedes the first pass's tiny-fixture-centered argument. The readable article remains an unpublished four-to-five-minute draft. UTC measurement dates may be October 29 while the author's local date is October 28.
 
 ## What the source history adds

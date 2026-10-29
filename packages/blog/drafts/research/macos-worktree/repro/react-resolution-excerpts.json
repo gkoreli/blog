@@ -1,0 +1,26 @@
+[
+  {
+    "case": "default-plain-valid",
+    "excerpt": [
+      "======== Resolving module 'react' from '<research>/t3-history/node_modules/.pnpm/lucide-react@0.564.0_react@19.3.0/node_modules/lucide-react/dist/lucide-react.d.ts'. ========",
+      "Directory '<research>/t3-history/node_modules/.pnpm/lucide-react@0.564.0_react@19.3.0/node_modules/@types' does not exist, skipping all lookups in it.",
+      "======== Module name 'react' was successfully resolved to '<research>/t3-history/node_modules/.pnpm/@types+react@19.3.0/node_modules/@types/react/index.d.ts' with Package ID '@types/react/index.d.ts@19.3.0'. ========"
+    ]
+  },
+  {
+    "case": "shared-plain-valid",
+    "excerpt": [
+      "======== Resolving module 'react' from '<research>/t3-store/v11/links/@/lucide-react/0.564.0/ce88d2ee8e0123e6a52377e82b34fc19ad8faa4cf11e4920259d74adc8bf5209/node_modules/lucide-react/dist/lucide-react.d.ts'. ========",
+      "Directory '<research>/t3-store/v11/links/@/lucide-react/0.564.0/ce88d2ee8e0123e6a52377e82b34fc19ad8faa4cf11e4920259d74adc8bf5209/node_modules/@types' does not exist, skipping all lookups in it.",
+      "Directory '<research>/t3-store/v11/links/@/lucide-react/0.564.0/ce88d2ee8e0123e6a52377e82b34fc19ad8faa4cf11e4920259d74adc8bf5209/node_modules/@types' does not exist, skipping all lookups in it.",
+      "======== Module name 'react' was successfully resolved to '<research>/t3-store/v11/links/@/react/19.3.0/67e8666cdbd9023619f570a1e887a901195f69afb26361ab76a04792e2d9d769/node_modules/react/index.js' with Package ID 'react/index.js@19.3.0'. ========"
+    ]
+  },
+  {
+    "case": "shared-mapped-valid",
+    "excerpt": [
+      "======== Resolving module 'react' from '<research>/t3-store/v11/links/@/lucide-react/0.564.0/ce88d2ee8e0123e6a52377e82b34fc19ad8faa4cf11e4920259d74adc8bf5209/node_modules/lucide-react/dist/lucide-react.d.ts'. ========",
+      "======== Module name 'react' was successfully resolved to '<research>/t3-store/v11/links/@types/react/19.3.0/5f9682a500d103590084117eeddde700b3552b1d45352354cc1998fb335a1bcd/node_modules/@types/react/index.d.ts'. ========"
+    ]
+  }
+]

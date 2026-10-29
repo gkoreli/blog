@@ -16,3 +16,7 @@ Now i want to di a whole new topic but somewhat similar due dilligence on this n
 ---
 
 we need much more deepnresearch, manual investigation and evidence based exploration overall, go agead and iterate furtger
+
+---
+
+Why did macOS fail? Also we need more validations

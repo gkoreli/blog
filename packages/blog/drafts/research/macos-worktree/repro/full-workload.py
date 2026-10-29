@@ -19,6 +19,7 @@ parser.add_argument('--cli', required=True)
 parser.add_argument('--out', required=True)
 parser.add_argument('--label', required=True)
 parser.add_argument('--runs', type=int, default=1)
+parser.add_argument('--rayon-threads', type=int)
 parser.add_argument('--ignore-scripts', action='store_true')
 parser.add_argument('--shared', action='store_true')
 parser.add_argument('--import-method', choices=['auto', 'hardlink', 'copy', 'clone'], default='auto')
@@ -43,6 +44,10 @@ env.update({'CHECKPOINT_DISABLE': '1', 'PRISMA_HIDE_UPDATE_MESSAGE': '1',
             'NEXT_TELEMETRY_DISABLED': '1', 'NO_UPDATE_NOTIFIER': '1',
             'npm_config_update_notifier': 'false', 'CI': 'true'})
 env['npm_config_manage_package_manager_versions'] = 'false'
+if args.rayon_threads is not None:
+    if args.rayon_threads < 1:
+        raise RuntimeError('The worker control requires a positive thread count')
+    env['RAYON_NUM_THREADS'] = str(args.rayon_threads)
 
 def read_command(command):
     return subprocess.check_output(command, cwd=repo, env=env, text=True).strip()
@@ -54,6 +59,7 @@ if read_command(['git', 'status', '--porcelain', '--untracked-files=no']):
 runtime = json.loads(read_command([str(node), '-e',
     'const os=require("node:os"); console.log(JSON.stringify({version:process.version,'
     'execPath:process.execPath,cpu:os.cpus()[0]?.model,logicalCpus:os.cpus().length,'
+    'availableParallelism:os.availableParallelism(),'
     'memoryBytes:os.totalmem(),arch:os.arch()}))']))
 if runtime['version'] != expected_node:
     raise RuntimeError(f'Expected Node {expected_node} inside the workload, got {runtime}')
@@ -176,6 +182,7 @@ throw Error('PNG encoding');console.log(JSON.stringify({nodePty:true,sharpPngByt
               'node': runtime, 'platform': platform.platform(), 'git': read_command(['git', '--version']),
               'seedOnly': args.seed, 'ignoreScripts': args.ignore_scripts,
               'pnpmWorkersEnvironment': env.get('PNPM_WORKERS'),
+              'rayonThreadsEnvironment': env.get('RAYON_NUM_THREADS'),
               'shared': args.shared, 'importMethod': args.import_method,
               'stages': stages, 'trackedInputsUnchanged': unchanged,
               'directDependencyCount': len(inventory), 'missingDirectDependencies': missing,
