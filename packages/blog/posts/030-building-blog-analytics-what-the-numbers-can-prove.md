@@ -35,7 +35,7 @@ A keyed hash groups requests by site, UTC date, IP and User-Agent. The table ret
 
 ## One referrer changed the growth story
 
-The October 26 audit counted **[14,835 included events](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/10-full-interval-and-field-hardening.md)** from partial September 9 through partial October 26 UTC. A [whole-table census](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/31-retained-history-completeness-and-delta.md) found **32,272 stored observations**: 16,693 predate that window, including 2,564 legacy beacons.
+The October 26 audit counted **[14,835 included events](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/10-full-interval-and-field-hardening.md)** from partial September 9 through partial October 26 UTC. The [October 29 census](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/78-refreshed-retained-population.md) covers **33,189 stored observations**, including 2,564 legacy beacons. Excluding 59 owner and 110 referral events leaves **33,020 included observations** across collection methods and classifier versions.
 
 Browser events rose from **306** in the complete UTC week beginning September 14 to **711** in the week beginning October 19. One unexplained referrer, R1, supplied **388** of the later week’s events. Setting that cohort aside gives **323 versus 306**, a 5.6% increase instead of a 2.32-fold count.
 

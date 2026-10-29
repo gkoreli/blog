@@ -1,0 +1,641 @@
+{
+  "checkedAt": "2026-10-29T06:03:00.553Z",
+  "scope": "Every retained page_observations row at or below the preflight maximum; negative and zero IDs included. Independent statements do not freeze old-row edits/deletions.",
+  "sourceBaseline": "52d9cdb",
+  "dataSha256": "37285467b72d8ba99028e2680eae6701cc70e091b862dccec31497a316e10d2a",
+  "sqlSha256": "9b15b52e5d5c4f41251219abbf3d616ec99ce7bc098e71a81f612b6db34ea216",
+  "scriptSha256": "e90c41fed11e6fa62c666d785869a19b93beb9ba8f4c49ca802890931e179bfe",
+  "preflightRowsMatch": true,
+  "preflightDetailsMatch": true,
+  "groups": 192,
+  "totals": {
+    "rows": 33189,
+    "detailedRows": 1107,
+    "firstObservedAt": "2026-03-07 01:10:23",
+    "lastObservedAt": "2026-10-29 05:57:57"
+  },
+  "partitions": {
+    "all": {
+      "rows": 33189,
+      "inclusion": {
+        "included": 33020,
+        "owner-excluded": 59,
+        "referral-excluded": 110
+      },
+      "included": {
+        "stored_kind": {
+          "ai-assistant": 321,
+          "ai-crawler": 1229,
+          "ai-search": 1076,
+          "browser": 7406,
+          "cloud-browser": 7507,
+          "http-client": 3501,
+          "other-bot": 5591,
+          "search-crawler": 607,
+          "seo-crawler": 10,
+          "unresolved": 105,
+          "headless-browser": 53,
+          "legacy-browser": 4156,
+          "preview-or-feed": 318,
+          "signed-agent": 1140
+        },
+        "basis": {
+          "unsigned": 944,
+          "verified-ua-uncovered": 86,
+          "not-verified": 3,
+          "not-recorded": 30806,
+          "verified-outcome-only": 1181
+        },
+        "local_state": {
+          "absent": 944,
+          "verified": 86,
+          "unverified": 3,
+          "not-recorded": 30806,
+          "outcome-only": 1181
+        },
+        "profile": {
+          "2026-10-28.7": 764,
+          "2026-10-29.1": 63,
+          "not-recorded": 31987,
+          "2026-10-27.3": 23,
+          "2026-10-27.4": 23,
+          "2026-10-28.6": 22,
+          "2026-10-27.6": 78,
+          "2026-10-27.7": 6,
+          "2026-10-28.1": 14,
+          "2026-10-28.2": 11,
+          "2026-10-27.1": 21,
+          "2026-10-28.4": 2,
+          "2026-10-27.5": 5,
+          "2026-10-28.3": 1
+        },
+        "native_state": {
+          "unavailable": 1033,
+          "not-recorded": 31987
+        },
+        "network_state": {
+          "recognized": 1005,
+          "not-recorded": 32015
+        },
+        "reason_state": {
+          "present": 33020
+        },
+        "declaration_agreement": {
+          "single-match": 220,
+          "no-match": 805,
+          "not-recorded": 31995
+        },
+        "source": {
+          "edge": 30456,
+          "beacon": 2564
+        },
+        "collection_state": {
+          "other-recorded": 1501,
+          "current": 47,
+          "not-recorded": 31472
+        },
+        "classifier_state": {
+          "other-recorded": 1496,
+          "current": 52,
+          "not-recorded": 31472
+        },
+        "legacy_signer": {
+          "none": 31880,
+          "Ahrefs": 95,
+          "DuckDuckGo": 3,
+          "Exa": 1025,
+          "Other": 17
+        },
+        "legacy_name_state": {
+          "not-applicable": 31880,
+          "missing": 1137,
+          "present": 3
+        },
+        "exclusion_overlap": {
+          "0": 33020
+        },
+        "binding_mask": {
+          "0": 32934,
+          "8": 86
+        },
+        "native_mask": {
+          "0": 33020
+        },
+        "network_mask": {
+          "0": 32988,
+          "1": 30,
+          "8": 2
+        }
+      },
+      "allEvidence": {
+        "stored_kind": {
+          "ai-assistant": 325,
+          "ai-crawler": 1229,
+          "ai-search": 1081,
+          "browser": 7514,
+          "cloud-browser": 7507,
+          "http-client": 3504,
+          "other-bot": 5619,
+          "search-crawler": 607,
+          "seo-crawler": 16,
+          "unresolved": 118,
+          "headless-browser": 54,
+          "legacy-browser": 4157,
+          "preview-or-feed": 318,
+          "signed-agent": 1140
+        },
+        "basis": {
+          "unsigned": 1011,
+          "verified-ua-uncovered": 86,
+          "not-verified": 10,
+          "not-recorded": 30901,
+          "verified-outcome-only": 1181
+        },
+        "local_state": {
+          "absent": 1011,
+          "verified": 86,
+          "unverified": 10,
+          "not-recorded": 30901,
+          "outcome-only": 1181
+        },
+        "profile": {
+          "2026-10-28.7": 766,
+          "2026-10-29.1": 67,
+          "not-recorded": 32082,
+          "2026-10-27.3": 41,
+          "2026-10-27.4": 39,
+          "2026-10-28.6": 24,
+          "2026-10-27.6": 99,
+          "2026-10-27.7": 8,
+          "2026-10-28.1": 15,
+          "2026-10-28.2": 12,
+          "2026-10-27.1": 27,
+          "2026-10-28.4": 2,
+          "2026-10-27.5": 6,
+          "2026-10-28.3": 1
+        },
+        "native_state": {
+          "unavailable": 1107,
+          "not-recorded": 32082
+        },
+        "network_state": {
+          "recognized": 1059,
+          "not-recorded": 32130
+        },
+        "reason_state": {
+          "present": 33189
+        },
+        "declaration_agreement": {
+          "single-match": 234,
+          "no-match": 859,
+          "not-recorded": 32093,
+          "multiple-same-category": 1,
+          "multiple-categories": 2
+        },
+        "source": {
+          "edge": 30625,
+          "beacon": 2564
+        },
+        "collection_state": {
+          "other-recorded": 1580,
+          "current": 49,
+          "not-recorded": 31560
+        },
+        "classifier_state": {
+          "other-recorded": 1573,
+          "current": 56,
+          "not-recorded": 31560
+        },
+        "legacy_signer": {
+          "none": 32049,
+          "Ahrefs": 95,
+          "DuckDuckGo": 3,
+          "Exa": 1025,
+          "Other": 17
+        },
+        "legacy_name_state": {
+          "not-applicable": 32049,
+          "missing": 1137,
+          "present": 3
+        },
+        "exclusion_overlap": {
+          "0": 33183,
+          "1": 6
+        },
+        "binding_mask": {
+          "0": 33103,
+          "8": 86
+        },
+        "native_mask": {
+          "0": 33189
+        },
+        "network_mask": {
+          "0": 33151,
+          "1": 30,
+          "2": 6,
+          "8": 2
+        }
+      }
+    },
+    "at-or-below-previous-bound": {
+      "rows": 33075,
+      "inclusion": {
+        "included": 32910,
+        "owner-excluded": 59,
+        "referral-excluded": 106
+      },
+      "included": {
+        "stored_kind": {
+          "ai-assistant": 321,
+          "ai-crawler": 1222,
+          "ai-search": 1062,
+          "browser": 7384,
+          "cloud-browser": 7487,
+          "http-client": 3501,
+          "other-bot": 5555,
+          "search-crawler": 605,
+          "seo-crawler": 10,
+          "unresolved": 96,
+          "headless-browser": 53,
+          "legacy-browser": 4156,
+          "preview-or-feed": 318,
+          "signed-agent": 1140
+        },
+        "basis": {
+          "unsigned": 841,
+          "not-verified": 3,
+          "verified-ua-uncovered": 79,
+          "not-recorded": 30806,
+          "verified-outcome-only": 1181
+        },
+        "local_state": {
+          "absent": 841,
+          "unverified": 3,
+          "verified": 79,
+          "not-recorded": 30806,
+          "outcome-only": 1181
+        },
+        "profile": {
+          "2026-10-28.7": 717,
+          "not-recorded": 31987,
+          "2026-10-27.3": 23,
+          "2026-10-27.4": 23,
+          "2026-10-28.6": 22,
+          "2026-10-27.6": 78,
+          "2026-10-27.7": 6,
+          "2026-10-28.1": 14,
+          "2026-10-28.2": 11,
+          "2026-10-27.1": 21,
+          "2026-10-28.4": 2,
+          "2026-10-27.5": 5,
+          "2026-10-28.3": 1
+        },
+        "native_state": {
+          "unavailable": 923,
+          "not-recorded": 31987
+        },
+        "network_state": {
+          "recognized": 895,
+          "not-recorded": 32015
+        },
+        "reason_state": {
+          "present": 32910
+        },
+        "declaration_agreement": {
+          "single-match": 197,
+          "no-match": 718,
+          "not-recorded": 31995
+        },
+        "source": {
+          "edge": 30346,
+          "beacon": 2564
+        },
+        "collection_state": {
+          "other-recorded": 1438,
+          "not-recorded": 31472
+        },
+        "classifier_state": {
+          "other-recorded": 1438,
+          "not-recorded": 31472
+        },
+        "legacy_signer": {
+          "none": 31770,
+          "Ahrefs": 95,
+          "DuckDuckGo": 3,
+          "Exa": 1025,
+          "Other": 17
+        },
+        "legacy_name_state": {
+          "not-applicable": 31770,
+          "missing": 1137,
+          "present": 3
+        },
+        "exclusion_overlap": {
+          "0": 32910
+        },
+        "binding_mask": {
+          "0": 32831,
+          "8": 79
+        },
+        "native_mask": {
+          "0": 32910
+        },
+        "network_mask": {
+          "0": 32880,
+          "1": 28,
+          "8": 2
+        }
+      },
+      "allEvidence": {
+        "stored_kind": {
+          "ai-assistant": 325,
+          "ai-crawler": 1222,
+          "ai-search": 1065,
+          "browser": 7492,
+          "cloud-browser": 7487,
+          "http-client": 3504,
+          "other-bot": 5581,
+          "search-crawler": 605,
+          "seo-crawler": 16,
+          "unresolved": 109,
+          "headless-browser": 54,
+          "legacy-browser": 4157,
+          "preview-or-feed": 318,
+          "signed-agent": 1140
+        },
+        "basis": {
+          "unsigned": 904,
+          "not-verified": 10,
+          "verified-ua-uncovered": 79,
+          "not-recorded": 30901,
+          "verified-outcome-only": 1181
+        },
+        "local_state": {
+          "absent": 904,
+          "unverified": 10,
+          "verified": 79,
+          "not-recorded": 30901,
+          "outcome-only": 1181
+        },
+        "profile": {
+          "2026-10-28.7": 719,
+          "not-recorded": 32082,
+          "2026-10-27.3": 41,
+          "2026-10-27.4": 39,
+          "2026-10-28.6": 24,
+          "2026-10-27.6": 99,
+          "2026-10-27.7": 8,
+          "2026-10-28.1": 15,
+          "2026-10-28.2": 12,
+          "2026-10-27.1": 27,
+          "2026-10-28.4": 2,
+          "2026-10-27.5": 6,
+          "2026-10-28.3": 1
+        },
+        "native_state": {
+          "unavailable": 993,
+          "not-recorded": 32082
+        },
+        "network_state": {
+          "recognized": 945,
+          "not-recorded": 32130
+        },
+        "reason_state": {
+          "present": 33075
+        },
+        "declaration_agreement": {
+          "single-match": 207,
+          "no-match": 772,
+          "not-recorded": 32093,
+          "multiple-same-category": 1,
+          "multiple-categories": 2
+        },
+        "source": {
+          "edge": 30511,
+          "beacon": 2564
+        },
+        "collection_state": {
+          "other-recorded": 1515,
+          "not-recorded": 31560
+        },
+        "classifier_state": {
+          "other-recorded": 1515,
+          "not-recorded": 31560
+        },
+        "legacy_signer": {
+          "none": 31935,
+          "Ahrefs": 95,
+          "DuckDuckGo": 3,
+          "Exa": 1025,
+          "Other": 17
+        },
+        "legacy_name_state": {
+          "not-applicable": 31935,
+          "missing": 1137,
+          "present": 3
+        },
+        "exclusion_overlap": {
+          "0": 33069,
+          "1": 6
+        },
+        "binding_mask": {
+          "0": 32996,
+          "8": 79
+        },
+        "native_mask": {
+          "0": 33075
+        },
+        "network_mask": {
+          "0": 33041,
+          "1": 28,
+          "2": 4,
+          "8": 2
+        }
+      }
+    },
+    "above-previous-bound": {
+      "rows": 114,
+      "inclusion": {
+        "included": 110,
+        "referral-excluded": 4
+      },
+      "included": {
+        "stored_kind": {
+          "ai-crawler": 7,
+          "ai-search": 14,
+          "browser": 22,
+          "cloud-browser": 20,
+          "other-bot": 36,
+          "search-crawler": 2,
+          "unresolved": 9
+        },
+        "basis": {
+          "unsigned": 103,
+          "verified-ua-uncovered": 7
+        },
+        "local_state": {
+          "absent": 103,
+          "verified": 7
+        },
+        "profile": {
+          "2026-10-29.1": 63,
+          "2026-10-28.7": 47
+        },
+        "native_state": {
+          "unavailable": 110
+        },
+        "network_state": {
+          "recognized": 110
+        },
+        "reason_state": {
+          "present": 110
+        },
+        "declaration_agreement": {
+          "single-match": 23,
+          "no-match": 87
+        },
+        "source": {
+          "edge": 110
+        },
+        "collection_state": {
+          "current": 47,
+          "other-recorded": 63
+        },
+        "classifier_state": {
+          "current": 52,
+          "other-recorded": 58
+        },
+        "legacy_signer": {
+          "none": 110
+        },
+        "legacy_name_state": {
+          "not-applicable": 110
+        },
+        "exclusion_overlap": {
+          "0": 110
+        },
+        "binding_mask": {
+          "0": 103,
+          "8": 7
+        },
+        "native_mask": {
+          "0": 110
+        },
+        "network_mask": {
+          "0": 108,
+          "1": 2
+        }
+      },
+      "allEvidence": {
+        "stored_kind": {
+          "ai-crawler": 7,
+          "ai-search": 16,
+          "browser": 22,
+          "cloud-browser": 20,
+          "other-bot": 38,
+          "search-crawler": 2,
+          "unresolved": 9
+        },
+        "basis": {
+          "unsigned": 107,
+          "verified-ua-uncovered": 7
+        },
+        "local_state": {
+          "absent": 107,
+          "verified": 7
+        },
+        "profile": {
+          "2026-10-29.1": 67,
+          "2026-10-28.7": 47
+        },
+        "native_state": {
+          "unavailable": 114
+        },
+        "network_state": {
+          "recognized": 114
+        },
+        "reason_state": {
+          "present": 114
+        },
+        "declaration_agreement": {
+          "single-match": 27,
+          "no-match": 87
+        },
+        "source": {
+          "edge": 114
+        },
+        "collection_state": {
+          "current": 49,
+          "other-recorded": 65
+        },
+        "classifier_state": {
+          "current": 56,
+          "other-recorded": 58
+        },
+        "legacy_signer": {
+          "none": 114
+        },
+        "legacy_name_state": {
+          "not-applicable": 114
+        },
+        "exclusion_overlap": {
+          "0": 114
+        },
+        "binding_mask": {
+          "0": 107,
+          "8": 7
+        },
+        "native_mask": {
+          "0": 114
+        },
+        "network_mask": {
+          "0": 110,
+          "1": 2,
+          "2": 2
+        }
+      }
+    }
+  },
+  "metering": {
+    "statements": 3,
+    "reads": 421426,
+    "writes": 0,
+    "attempts": [
+      {
+        "name": "control",
+        "startedAt": "2026-10-29T06:01:47.362215+00:00",
+        "completedAt": "2026-10-29T06:01:48.518276+00:00",
+        "reads": 0,
+        "writes": 0,
+        "providerAttempts": 1,
+        "changedDb": false
+      },
+      {
+        "name": "preflight",
+        "startedAt": "2026-10-29T06:01:48.518620+00:00",
+        "completedAt": "2026-10-29T06:01:49.260077+00:00",
+        "reads": 33189,
+        "writes": 0,
+        "providerAttempts": 1,
+        "changedDb": false
+      },
+      {
+        "name": "census",
+        "startedAt": "2026-10-29T06:02:26.629913+00:00",
+        "completedAt": "2026-10-29T06:02:28.223421+00:00",
+        "reads": 388237,
+        "writes": 0,
+        "providerAttempts": 1,
+        "changedDb": false
+      }
+    ]
+  },
+  "limits": [
+    "Stored outcomes and classifications are not fresh cryptographic, native-provider or human truth.",
+    "ID partitions are current snapshots, not a proof that old rows stayed immutable.",
+    "No held transaction or cross-statement snapshot guarantee."
+  ],
+  "newHumanLabels": 0,
+  "ownSiteRequests": 0,
+  "publicReportFills": 0
+}

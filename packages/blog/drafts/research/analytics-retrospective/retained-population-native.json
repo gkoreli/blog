@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-10-29T05:59:48.669Z",
+  "plan": {
+    "maximumRows": 65536,
+    "maximumDetailedRows": 4096,
+    "maximumReferralLabels": 131072,
+    "maximumGroups": 1024,
+    "postExecutionReadReviewThreshold": 1500000,
+    "databaseEnforcedReadCap": false
+  },
+  "runtime": "v24.14.1",
+  "signatureCases": 28,
+  "networkCases": 40,
+  "checks": {
+    "negativeAndZeroIdsIncluded": true,
+    "exactAdjacentLargeIds": true,
+    "concreteMatchesParameterized": true,
+    "ownerReferralOverlap": true,
+    "legacyBeaconSource": true,
+    "unknownKindAndMissingReasonVisible": true,
+    "duplicateReorderedGroupsRejected": true,
+    "privateValuesClosed": true,
+    "sentinelStopsExecution": true
+  },
+  "scale": {
+    "rows": 65536,
+    "detailedRows": 4096,
+    "referralLabels": 126976,
+    "preflightReads": 65536,
+    "censusReads": 1035148,
+    "combinedReads": 1100684,
+    "writes": 0
+  },
+  "sqlBytes": 31907,
+  "sqlSha256": "bf7f010c3ec70e3c769b4ba9463bcbb6747ccebe6dfb7afe3af2b74ec82f526d",
+  "preflightSha256": "7ab8e3931c0b28fb525690fd2defcf0cd898c0168aa6bbfde8b5fe4967779738",
+  "baselineEventCutoff": "2026-10-28 05:22:00",
+  "productionCalls": 0
+}

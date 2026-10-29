@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T05:54:11.269063+00:00",
-  "sourceBaseline": "3c3e9aa",
+  "checkedAt": "2026-10-29T06:08:22.595813+00:00",
+  "sourceBaseline": "52d9cdb",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -39,29 +39,29 @@
     "Human/device/actual-JavaScript-off and Cloudflare RUM-receipt measurements",
     "R1 operator/authenticity/trigger attribution",
     "Historical proof/nonce recovery and whole-history cryptographic correctness",
-    "Applicable privacy basis, aggregate-preserving retention, rights/contact and account/provider review",
-    "Observations after the last frozen 712-record delta have selected-chain acceptance, not a refreshed whole-population audit."
+    "Applicable privacy basis, aggregate-preserving retention, rights/contact and account/provider review"
   ],
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Prepare a refreshed whole-retained-population correctness census, including exclusions and missing/conflicting evidence; native-test and budget exact SQL before any Wrangler execution. Human trials remain deferred.",
+  "nextBoundedAction": "Accept article publication separately, then inspect the frozen new-ID cohort\u2019s Unresolved reasons and declaration/method coverage without repeating the population scan. Human trials remain deferred.",
   "article": {
-    "bodyWhitespaceWords": 1362,
+    "bodyWhitespaceWords": 1376,
     "prompts": 31,
-    "sourceSha256": "a44d8777d3ec5c5671f3437553be51bbe474908cc865f01ad5b2260c04fef9ba",
-    "unchanged": true,
+    "sourceSha256": "7a042af095bb61d1963c96d9af7bccf58efcbd61d7e8a244f2341051eabae4dc",
+    "unchanged": false,
     "freshServedCheck": false,
-    "publicationReceipt": "frozen-signed-release.json",
-    "servedMatchesCheckedBuild": true,
+    "publicationReceipt": "retained-population-release.json",
+    "servedMatchesCheckedBuild": false,
     "lastServedCheckReceipt": "frozen-signed-release.json",
-    "publicationStatus": "No article edit or fresh served check in phase 77; prior correction acceptance remains dated in frozen-signed-release.json."
+    "publicationStatus": "Source revision checked in isolated 33-post build; publication/activation/served acceptance pending.",
+    "previousPublicationReceipt": "frozen-signed-release.json"
   },
   "runtimeUnchanged": true,
-  "productionStatements": 0,
+  "productionStatements": 3,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": false,
+  "liveAccountInspection": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -352,5 +352,30 @@
     "managedCryptoAgreementRate": null,
     "humanTriggerEstablished": false
   },
-  "collectorRuntimeUnchanged": true
+  "collectorRuntimeUnchanged": true,
+  "retainedPopulationRefresh": {
+    "receipt": "retained-population-production.json",
+    "native": "retained-population-native.json",
+    "checks": "retained-population-checks.json",
+    "release": "retained-population-release.json",
+    "retainedRows": 33189,
+    "included": 33020,
+    "ownerExcluded": 59,
+    "referralExcluded": 110,
+    "newIdRowsSinceResearch64": 114,
+    "newIdIncluded": 110,
+    "newIdReferralExcluded": 4,
+    "includedDetailedVerified": 86,
+    "includedUserAgentOrResourceBound": 0,
+    "includedOutcomeOnly": 1181,
+    "rawNativeUnavailable": 1107,
+    "rawNativeNotRecorded": 32082,
+    "reportedReads": 421426,
+    "reportedWrites": 0,
+    "statements": 3,
+    "lastObservedEventAt": "2026-10-29 05:57:57",
+    "heldHistoricalSnapshot": false,
+    "wholeHistoryCorrectnessProven": false
+  },
+  "liveAccountInspectionScope": "Wrangler D1 resource metadata only; no new plan/account entitlement audit."
 }

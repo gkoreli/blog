@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-29T05:59:58.898355+00:00",
+  "sources": [
+    {
+      "name": "pricing",
+      "url": "https://developers.cloudflare.com/d1/platform/pricing/index.md",
+      "status": 200,
+      "bytes": 9954,
+      "sha256": "ab06e38349130d15e25109fe9344189639a2801206a641d76d576daa9d04337b"
+    },
+    {
+      "name": "replication",
+      "url": "https://developers.cloudflare.com/d1/best-practices/read-replication/index.md",
+      "status": 200,
+      "bytes": 22700,
+      "sha256": "5efd6085077806c6ff9cbbb6b2c79a2a20e46b5de3d2f91c236c05401fc2e4f9"
+    },
+    {
+      "name": "limits",
+      "url": "https://developers.cloudflare.com/d1/platform/limits/index.md",
+      "status": 200,
+      "bytes": 10341,
+      "sha256": "ac57223b0970f63e073147612696552e76ba5138cc24d53e013050956f574bc1"
+    }
+  ],
+  "attemptsPerSource": 1
+}

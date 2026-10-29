@@ -1,0 +1,88 @@
+{
+  "checkedAt": "2026-10-29T06:07:45.946117+00:00",
+  "sourceBaseline": "52d9cdb",
+  "nativeReceipt": "retained-population-native.json",
+  "productionReceipt": "retained-population-production.json",
+  "sources": "retained-population-sources.json",
+  "nativeFailures": [
+    {
+      "attempt": 1,
+      "reason": "Decoder expected unsorted section keys; corrected before any production SELECT."
+    },
+    {
+      "attempt": 2,
+      "result": "Native full-scale pass."
+    }
+  ],
+  "buildAttempts": [
+    {
+      "attempt": 1,
+      "reason": "Sandbox denied local tsx IPC pipe."
+    },
+    {
+      "attempt": 2,
+      "result": "Authorized same-isolated-output build passes."
+    }
+  ],
+  "offlineAcceptanceCorrections": [
+    "A display-formatter syntax error was corrected offline; no production SELECT repeated.",
+    "Initial whole-file source/Markdown equality omitted the pipeline footer; exact source prefix and generated full-file commitments are checked separately."
+  ],
+  "legacyDefaultDecoderArchivedRowsAccepted": 712,
+  "productionStatements": 3,
+  "reportedReads": 421426,
+  "reportedWrites": 0,
+  "providerAttempts": 3,
+  "runtimeCollectorChanged": false,
+  "articleBuild": {
+    "checkedAt": "2026-10-29T06:07:45.945850+00:00",
+    "posts": 33,
+    "isolatedBuild": "pass",
+    "sharedDistTouched": false,
+    "articleSha256": "7a042af095bb61d1963c96d9af7bccf58efcbd61d7e8a244f2341051eabae4dc",
+    "markdownSha256": "8b5c0d412118a8408e0b260c18089f377aaa374b937e90a53a90adcafbff4058",
+    "htmlSha256": "c96515247d5716b199c98a3f8b74f8a7c4e808e0b6524ad1923da5d7bda845e5",
+    "bodyWords": 1376,
+    "prompts": 31,
+    "sourceBodyIsExactMarkdownPrefix": true,
+    "generatedMarkdownFooter": "Series/citation metadata appended by the established pipeline.",
+    "newCountsRendered": true,
+    "promptsSha256": "1823503b90a437c350926cda019e6262e0af3c3c4b24fd287ce239cb9107dfc4"
+  },
+  "articlePublication": "pending",
+  "ownSiteRequests": 0,
+  "publicReportFills": 0,
+  "newHumanLabels": 0,
+  "readPlanArchive": {
+    "capturedFiles": 11,
+    "manifestSha256": "b03f350436ba55f11bf49420d2d0cdb42c669f649fce04fef5bf308bcc3ad723",
+    "beforeAnyProductionSelect": true,
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "mainPlanArchive": {
+    "capturedFiles": 5,
+    "manifestSha256": "55c1d69d0af5d362dabd3906308cc68df0f376a6fd808e8706bd80b254e27ca1",
+    "beforeMainCensus": true,
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "privateDataArchive": {
+    "capturedFiles": 43,
+    "manifestSha256": "e028971dbcc0571afb73e3ed2ab9f8d5fb53eadeebf40e6ba7211e362ad4a8fb",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "markdownValidation": "pass, 22 posts",
+  "localLinks": 353,
+  "articlePublicationReceipt": "retained-population-release.json",
+  "privateOperationalFieldScan": "pass",
+  "scriptSyntax": "pass",
+  "unchangedRuntimeSuites": "Prior phase 77: 285 analytics tests/types; not rerun for diagnostic/prose-only changes. Native census/default-decoder regression and isolated site build are fresh."
+}

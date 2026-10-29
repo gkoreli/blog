@@ -66,14 +66,14 @@ export function validatePreflight(row,lower) {
  if(row.rows===0)assert.equal(row.upperId,null);else assert.ok(BigInt(id(row.upperId))>BigInt(lower));
  assert.ok(row.rows<=PLAN.maximumRows && row.detailedRows<=PLAN.maximumDetailedRows && row.referralLabels<=PLAN.maximumReferralLabels,'Preflight exceeds reviewed work bounds');return row;
 }
-export function validateDelta(rows) {
+export function validateDelta(rows, limits = PLAN) {
  assert.ok(Array.isArray(rows) && rows.length===2);const sections=new Map();
  for(const row of rows){keys(row,['section','payload']);assert.ok(typeof row.payload==='string' && !sections.has(row.section));sections.set(row.section,JSON.parse(row.payload));}
  const totals=sections.get('totals'),groups=sections.get('groups');keys(totals,['rows','detailedRows','firstObservedAt','lastObservedAt']);
- assert.ok(integer(totals.rows) && totals.rows<=PLAN.maximumRows && integer(totals.detailedRows) && totals.detailedRows<=totals.rows);
+ assert.ok(integer(totals.rows) && totals.rows<=limits.maximumRows && integer(totals.detailedRows) && totals.detailedRows<=totals.rows);
  for(const t of [totals.firstObservedAt,totals.lastObservedAt])assert.ok(t===null || typeof t==='string' && /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(t) && new Date(t.replace(' ','T')+'Z').toISOString().slice(0,19).replace('T',' ')===t);
  assert.ok((totals.firstObservedAt===null)===(totals.lastObservedAt===null));if(totals.firstObservedAt!==null)assert.ok(totals.firstObservedAt<=totals.lastObservedAt);
- assert.ok(Array.isArray(groups) && groups.length<=PLAN.maximumGroups);const seen=new Set();
+ assert.ok(Array.isArray(groups) && groups.length<=limits.maximumGroups);const seen=new Set();
  const enums={inclusion:['included','owner-excluded','referral-excluded'],time_scope:['before-baseline-event-cutoff','at-or-after-baseline-event-cutoff','unrecognized-time'],stored_kind:[...READER_KINDS,'not-recorded','unrecognized'],collection_state:['current','other-recorded','not-recorded'],classifier_state:['current','other-recorded','not-recorded'],evidence_state:['detailed-record','verified-outcome-only','unverified-outcome-only','no-detail-or-status'],local_state:['verified','unverified','absent','test-injected','unrecognized','outcome-only','not-recorded'],basis:SIGNATURE_BASES,native_state:['available','unavailable','not-recorded','unrecognized'],vendor_state:['not-recorded','unrecognized','no-declaration','not-configured','not-verified','matching-origin','different-origin','conflicting-origins','test-injected'],network_state:['recognized','unrecognized','not-recorded']};
  for(const row of groups){keys(row,[...fields,'views']);for(const [field,values]of Object.entries(enums))assert.ok(values.includes(row[field]),field);assert.ok(isReportedVerifierProfile(row.profile));
   assert.ok(integer(row.views) && row.views>0);for(const field of ['binding_mask','native_mask','network_mask'])assert.ok(integer(row[field]) && row[field]<(field==='native_mask'?4:16));
