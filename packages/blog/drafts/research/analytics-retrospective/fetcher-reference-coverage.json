@@ -1,0 +1,462 @@
+{
+  "checkedAt": "2026-10-29T22:03:34.867Z",
+  "sourceBaseline": "e2fdae6",
+  "capturesSha256": "9bfc590919f79b669496a7afa2da926076630e1f08a0453a88cb2656efa07728",
+  "directorySha256": "3ac35ae608471aaf669286bb2771442ff63f82002f547aa50fce798280e246a6",
+  "directoryScope": "Current saved directory key, not reconstructed September resolver state",
+  "reference": {
+    "repository": "cloudflare/web-bot-auth",
+    "commit": "e4d3167886d0e7508d55fc5c501f1e498a3d4f5c",
+    "sourceHashes": {
+      "core.ts": "81d8586901f895a3c6dc5e6f0dba6c44c9c6ee89998e7de70043fd7e334789b4",
+      "errors.ts": "a4decc66313fedd0b62889badbd39c0d68df5f2245aa7a8faeaa46ac59c1aae6",
+      "types.ts": "2ecab61767bc9984c94ea86d0dc0e6fb7677dbd4a03641c63bd5ea43a7830647"
+    },
+    "structuredHeaders": "2.1.1",
+    "bundleSha256": "8070a2351799e250ce6ef8ce55006dc8636c97e920f08c9d7c78a2f894f8ac0a"
+  },
+  "contextsPerRuntime": 20,
+  "runtimes": [
+    "Node 24.14.1 local verifier",
+    "Miniflare/workerd local verifier",
+    "pinned independent RFC implementation with WebCrypto Ed25519"
+  ],
+  "rows": [
+    {
+      "probe": "duckai-path",
+      "variant": "original",
+      "localStatus": "verified",
+      "localReason": null,
+      "independentValid": true,
+      "independentReason": null,
+      "baseUnchanged": true,
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 600,
+        "ageSeconds": 1,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "probe": "duckai-path",
+      "variant": "user-agent",
+      "localStatus": "verified",
+      "localReason": null,
+      "independentValid": true,
+      "independentReason": null,
+      "baseUnchanged": true,
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 600,
+        "ageSeconds": 1,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "probe": "duckai-path",
+      "variant": "path-query",
+      "localStatus": "verified",
+      "localReason": null,
+      "independentValid": true,
+      "independentReason": null,
+      "baseUnchanged": true,
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 600,
+        "ageSeconds": 1,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "probe": "duckai-path",
+      "variant": "method",
+      "localStatus": "verified",
+      "localReason": null,
+      "independentValid": true,
+      "independentReason": null,
+      "baseUnchanged": true,
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 600,
+        "ageSeconds": 1,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "probe": "duckai-path",
+      "variant": "all-unsigned",
+      "localStatus": "verified",
+      "localReason": null,
+      "independentValid": true,
+      "independentReason": null,
+      "baseUnchanged": true,
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 600,
+        "ageSeconds": 1,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "probe": "duckai-path",
+      "variant": "authority",
+      "localStatus": "unverified",
+      "localReason": "signature-invalid",
+      "independentValid": false,
+      "independentReason": "VerificationFailed",
+      "baseUnchanged": false,
+      "coverage": null
+    },
+    {
+      "probe": "duckai-path",
+      "variant": "publisher",
+      "localStatus": "unverified",
+      "localReason": "signature-invalid",
+      "independentValid": false,
+      "independentReason": "VerificationFailed",
+      "baseUnchanged": false,
+      "coverage": null
+    },
+    {
+      "probe": "duckai-path",
+      "variant": "signature-bytes",
+      "localStatus": "unverified",
+      "localReason": "signature-invalid",
+      "independentValid": false,
+      "independentReason": "VerificationFailed",
+      "baseUnchanged": true,
+      "coverage": null
+    },
+    {
+      "probe": "duckai-path",
+      "variant": "expired",
+      "localStatus": "unverified",
+      "localReason": "expired",
+      "independentValid": false,
+      "independentReason": "PolicyViolation",
+      "baseUnchanged": true,
+      "coverage": null
+    },
+    {
+      "probe": "duckai-path",
+      "variant": "directory-unavailable",
+      "localStatus": "unverified",
+      "localReason": "dir-fetch-failed",
+      "independentValid": false,
+      "independentReason": "ResolverFailed",
+      "baseUnchanged": true,
+      "coverage": null
+    },
+    {
+      "probe": "duckai-goga",
+      "variant": "original",
+      "localStatus": "verified",
+      "localReason": null,
+      "independentValid": true,
+      "independentReason": null,
+      "baseUnchanged": true,
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 600,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "probe": "duckai-goga",
+      "variant": "user-agent",
+      "localStatus": "verified",
+      "localReason": null,
+      "independentValid": true,
+      "independentReason": null,
+      "baseUnchanged": true,
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 600,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "probe": "duckai-goga",
+      "variant": "path-query",
+      "localStatus": "verified",
+      "localReason": null,
+      "independentValid": true,
+      "independentReason": null,
+      "baseUnchanged": true,
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 600,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "probe": "duckai-goga",
+      "variant": "method",
+      "localStatus": "verified",
+      "localReason": null,
+      "independentValid": true,
+      "independentReason": null,
+      "baseUnchanged": true,
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 600,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "probe": "duckai-goga",
+      "variant": "all-unsigned",
+      "localStatus": "verified",
+      "localReason": null,
+      "independentValid": true,
+      "independentReason": null,
+      "baseUnchanged": true,
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 600,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "probe": "duckai-goga",
+      "variant": "authority",
+      "localStatus": "unverified",
+      "localReason": "signature-invalid",
+      "independentValid": false,
+      "independentReason": "VerificationFailed",
+      "baseUnchanged": false,
+      "coverage": null
+    },
+    {
+      "probe": "duckai-goga",
+      "variant": "publisher",
+      "localStatus": "unverified",
+      "localReason": "signature-invalid",
+      "independentValid": false,
+      "independentReason": "VerificationFailed",
+      "baseUnchanged": false,
+      "coverage": null
+    },
+    {
+      "probe": "duckai-goga",
+      "variant": "signature-bytes",
+      "localStatus": "unverified",
+      "localReason": "signature-invalid",
+      "independentValid": false,
+      "independentReason": "VerificationFailed",
+      "baseUnchanged": true,
+      "coverage": null
+    },
+    {
+      "probe": "duckai-goga",
+      "variant": "expired",
+      "localStatus": "unverified",
+      "localReason": "expired",
+      "independentValid": false,
+      "independentReason": "PolicyViolation",
+      "baseUnchanged": true,
+      "coverage": null
+    },
+    {
+      "probe": "duckai-goga",
+      "variant": "directory-unavailable",
+      "localStatus": "unverified",
+      "localReason": "dir-fetch-failed",
+      "independentValid": false,
+      "independentReason": "ResolverFailed",
+      "baseUnchanged": true,
+      "coverage": null
+    }
+  ],
+  "scriptSha256": "1c39f01f631cb5b478f44d6361c53c0bc5017b804fb49f1bfc3a22170dc153b0",
+  "verifierSha256": "09b32b80af81c2c70a6541046333b2d228f6c1ae55d2b2d31503842b5c49b6fb",
+  "newOwnSiteRequests": 0,
+  "d1Statements": 0,
+  "humanLabels": 0,
+  "historicalProductionOutcomeRewritten": false
+}

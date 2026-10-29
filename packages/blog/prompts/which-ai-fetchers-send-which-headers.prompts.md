@@ -47,3 +47,9 @@ grok responded with http status 404, main heading this page doesnt exist, but i 
 ---
 
 afterall i want the researchFootprint to be measured and added to the article
+
+---
+
+The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.
+
+Continue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.
