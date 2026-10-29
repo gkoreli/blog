@@ -1,0 +1,19 @@
+{
+  "checkedAtUtc": "2026-10-29T14:59:54.478822+00:00",
+  "title": "A Linux VM on My Mac Beat macOS at Installing Dependencies",
+  "wordCount": 958,
+  "readingMinutesAt200Wpm": 4.79,
+  "promptCount": 7,
+  "renderedMetadataAndRepresentations": true,
+  "stableSlug": "why-worktree-setup-is-slow-on-macos",
+  "unchangedPublicationDate": "2026-10-28",
+  "lastModified": "2026-10-29",
+  "titleMatchesH1OgTwitterAndStructuredData": true,
+  "htmlSha256": "145a7d67d0866ec625d24b6e4164296b7c7c7a26d7beda7fb084bef2fcbe883a",
+  "frozenFiles": {
+    "../../../posts/032-why-worktree-setup-is-slow-on-macos.md": "3b3d78fd596803b94ebe76ba4b13b50dab7eff89d070566935c7848965a2bceb",
+    "../../../prompts/why-worktree-setup-is-slow-on-macos.prompts.md": "4af74547b4531d6a2d70c8ee80d54e0e2fb59abe2babeb571757d6e8a097c646"
+  },
+  "previousSourceCommit": "3101211ff4cc90a1d89793ef46e98dcd74d15a37",
+  "previousReceiptInterpretation": "v4 manifest and first-publication receipt describe that original revision, not subsequently revised article or prompt bytes."
+}

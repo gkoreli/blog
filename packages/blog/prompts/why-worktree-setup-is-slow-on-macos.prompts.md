@@ -24,3 +24,7 @@ Why did macOS fail? Also we need more validations
 ---
 
 Can we try other notorious repos too in the benchmark, and then continue with evidence based exploration and experimentation to figure iut the why is this all happening and potentiall try out different things if it all can be mitigated in hardened ways without bandaids. This would all go really well into the article. And publish the article
+
+---
+
+I feel like title undersells the article and the initial section doesnt even contain the most important reasons to why read this article. I feel like its insane that there is a vm running on macos and is faster than the macos itself. Lmao why are you underselling and hiding the main points burried into the article?

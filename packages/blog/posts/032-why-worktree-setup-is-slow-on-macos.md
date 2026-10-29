@@ -1,17 +1,24 @@
 ---
-title: "Why Setting Up a Worktree Can Be Slow on a Mac"
-description: "I tested T3 Code, Next.js, Vite and SvelteKit on the same Mac and a Linux VM. Faster dependency installs also changed type lookup and file isolation."
+title: "A Linux VM on My Mac Beat macOS at Installing Dependencies"
+description: "A Linux VM on my Mac installed T3 Code dependencies almost 4× faster than macOS. I tested four repos, traced the file work and checked the fixes."
 date: 2026-10-28
+lastModified: "2026-10-29"
 section: engineering
 tags: [macos, linux, pnpm, git]
 readTime: "5 min read"
 ---
 
-# Why Setting Up a Worktree Can Be Slow on a Mac
+# A Linux VM on My Mac Beat macOS at Installing Dependencies
 
-Linux installed dependencies faster in all four repositories I tested. But building Next.js on Linux also changed files inside pnpm's package cache, breaking the next offline install. The Mac's cached files stayed intact.
+A Linux VM running on my M5 Mac installed dependencies faster than macOS in every repository I tested. **T3 Code took 2.10 seconds inside the VM versus 8.12 seconds on macOS**—almost four times faster.
 
-That matters alongside Theo's [29.7-second Mac versus 3.8-second Linux chart](https://x.com/theo/status/2115338547620401326). There is a real wait to investigate. There are also different file-sharing choices behind those numbers, and the fastest setting needs more than a successful install.
+The VM had **four virtual CPUs and 4 GB of RAM**. The Mac had **ten logical CPUs and 24 GB**.
+
+Across T3 Code, Next.js, Vite and SvelteKit, I found:
+
+- macOS created independent package files; Linux usually shared files with its cache.
+- Using fewer installer workers made the Mac faster. Reusing installed packages cut Vite from **1.82 to 0.68 seconds**, but exposed type errors.
+- A Linux build changed cached files and broke the next install. Independent copies prevented it.
 
 ## Four repositories, one physical Mac
 
@@ -28,9 +35,9 @@ Each cell contains five runs. T3 came from an earlier 30-install block; the othe
 
 All used Node 26.12.1 and their own pinned pnpm 12 version. Package and build caches were populated; allowed install scripts stayed enabled. Timed installs used `--offline --frozen-lockfile`. CI mode skipped Next's optional native-compiler download. Checks ran outside the timer.
 
-The M5 Mac had ten logical CPUs and 24 GB RAM; its Linux guest had four virtual CPUs and 4 GB. Linux's project and cache lived inside its own filesystem. This compares software and storage paths with different resources, rather than isolating APFS alone.
+Linux's project and cache lived inside its own filesystem. This compares software and storage paths with different resources, rather than isolating APFS alone.
 
-Theo's [disclosed method](https://x.com/theo/status/2115338762830184877/photo/1) also describes five machines, averaging their individual middle timings, with Linux's after-fix runs. His price caption isn't a controlled two-machine experiment.
+Theo's [29.7-second Mac versus 3.8-second Linux chart](https://x.com/theo/status/2115338547620401326) prompted this investigation. His [disclosed method](https://x.com/theo/status/2115338762830184877/photo/1) describes five machines, averaging their individual middle timings, with Linux's after-fix runs. His price caption isn't a controlled two-machine experiment.
 
 ## The Mac creates independent files
 

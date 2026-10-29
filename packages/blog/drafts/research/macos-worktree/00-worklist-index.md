@@ -136,3 +136,7 @@ Research checkpoint: all 90 added install trials are complete, plus a retained f
 Pre-publication acceptance: the isolated Node 24.14.1 / pnpm 9.15.4 build generated 33 posts, including this one. All 22 Markdown posts validate. Rendered article, six-message prompt page, Markdown twin, post index, sitemap and feed pass local checks; browser review confirms one title and October 28, 2026. The isolated build used `TZ=UTC`, matching the publication calendar date. The [v4 manifest](evidence-manifest-v4.json) freezes the checked source and evidence; deployment/live acceptance is still pending.
 
 Publication accepted: source commit `3101211ff4cc90a1d89793ef46e98dcd74d15a37` is on `main`, its Cloudflare build passed, and the actual article plus six-prompt page and discovery/Markdown representations passed HTTP and browser checks. See the [publication and acceptance receipt](05-publication-and-acceptance.md) for deployment, served-content evidence, research limits and resource cleanup. This expanded goal is complete.
+
+## Title and opening correction requested, October 29
+
+Goga's feedback: the original title and first section buried the same-Mac Linux VM result and failed to explain why to read the article. The [editorial correction](06-title-and-opening.md) leads with that measured result, resource allocation and practical findings. Local rendered/metadata checks pass; delivery and actual live acceptance are pending. Prior completion records and frozen manifests remain historical for their source revisions.
