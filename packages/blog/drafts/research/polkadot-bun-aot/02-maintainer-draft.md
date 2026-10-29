@@ -4,7 +4,7 @@ Status: **draft, not posted**. For [issue #218](https://github.com/paritytech/po
 
 ---
 
-I tried Bun AOT on `polkadot-cli` v1.25.1 since startup and memory came up here. No source changes.
+I've been testing Bun AOT for [this article](https://gkoreli.com/oss-radar-08-bun-aot). Since startup and memory came up here, I tried it on `polkadot-cli` v1.25.1 too. No source changes.
 
 Compared with a regular Bun executable:
 
