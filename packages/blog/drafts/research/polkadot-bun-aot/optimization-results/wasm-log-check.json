@@ -1,0 +1,18 @@
+[
+  {
+    "mode": "baseline",
+    "returncode": 0,
+    "valid": true,
+    "interpreter_fallback_lines": [],
+    "type_mismatch_lines": 0,
+    "limit": "Absence of a fallback log is not independent disassembly proof of native execution."
+  },
+  {
+    "mode": "wasm-import",
+    "returncode": 0,
+    "valid": true,
+    "interpreter_fallback_lines": [],
+    "type_mismatch_lines": 0,
+    "limit": "Absence of a fallback log is not independent disassembly proof of native execution."
+  }
+]

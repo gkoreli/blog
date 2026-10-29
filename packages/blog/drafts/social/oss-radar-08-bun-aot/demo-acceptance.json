@@ -1,0 +1,20 @@
+{
+  "artifact": "demo-30s.mp4",
+  "bytes": 1120579,
+  "sha256": "564b65194e2da4793865ddfd16b18da7a457f9968763f2f85eaf458499231fbb",
+  "duration_s": 30,
+  "frames": 900,
+  "codec": "h264",
+  "pixel_format": "yuv420p",
+  "width": 1200,
+  "height": 1200,
+  "fps": 30,
+  "silent": true,
+  "faststart": true,
+  "visual_check": "Decoded frames at 0, 5, 17, 26 and 29.966 seconds; server, compiler and closing frames inspected at 1200px and 390px. Workload labels, values, footer and limits fit. First/last decoded mean channel differences under 0.84/255; no hard-cut flash.",
+  "input": "Original accepted-summary.json, Bun 06888611e, October 27. New CLI/Zod data deliberately excluded.",
+  "publication": "Prepared, not uploaded or posted; live playback/composer checks have not occurred.",
+  "accepted_input_sha256": "7a2e65c9e0d6953758ac8f0934097d19a17d542d62d3aabc28cae3d8c9a035e7",
+  "renderer_sha256": "34999b3474c2a6b4796a2623582074956601e1e39876ea2582c73d6b631fbd61",
+  "poster_sha256": "8e49fab0356c6ab61ac84c91b08a35e9e044d995d8d7a8f3e3594420a9b88a27"
+}

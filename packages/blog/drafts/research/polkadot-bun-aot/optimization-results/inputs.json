@@ -1,0 +1,15 @@
+{
+  "cli_commit": "8e85fdac1fb81c5996a4ecc4c93178a54f37f2d5",
+  "bun_commit": "73b53109f704b85ca889ef4e76285eb083c8d5f6",
+  "bun_revision": "1.4.4-canary.1+73b53109f",
+  "bun_binary_sha256": "2480b715f5c61e9d0a0a0062c2435614ffadea9795d7fd24e47f0a48ee0ede15",
+  "official_canary_asset_id": 686547070,
+  "official_canary_zip_sha256": "72a0f84c6a632790592ad363cb231d8e090cbaf1356d0b1cd9785698646b77d8",
+  "node_version": "v24.14.1",
+  "noble_hashes_version": "2.4.0",
+  "tracked_cli_source_package_lock_unchanged": true,
+  "noble_package_bytes_restored": true,
+  "wrapper_source_sha256": "ff792398eb4c0da81fec507a1edd6ce72d8ad3bc69d3fa1969730b3af49b2f63",
+  "current_release_check": "Connected GitHub read confirmed the same macOS arm64 canary asset; URL is mutable.",
+  "hardware": "Apple M5, 24 GiB, shared macOS arm64 developer laptop"
+}

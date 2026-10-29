@@ -1,0 +1,642 @@
+[
+  {
+    "mode": "jit-default",
+    "block": 0,
+    "position": 0,
+    "elapsed_ms": 253.668625,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 0,
+    "position": 1,
+    "elapsed_ms": 907.038417,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 0,
+    "position": 2,
+    "elapsed_ms": 167.945833,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 0,
+    "position": 3,
+    "elapsed_ms": 263.241917,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 1,
+    "position": 0,
+    "elapsed_ms": 340.43025,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 1,
+    "position": 1,
+    "elapsed_ms": 172.204041,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 1,
+    "position": 2,
+    "elapsed_ms": 251.996084,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 1,
+    "position": 3,
+    "elapsed_ms": 78.6815,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 2,
+    "position": 0,
+    "elapsed_ms": 145.514041,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 2,
+    "position": 1,
+    "elapsed_ms": 301.886084,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 2,
+    "position": 2,
+    "elapsed_ms": 86.456041,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 2,
+    "position": 3,
+    "elapsed_ms": 461.350958,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 3,
+    "position": 0,
+    "elapsed_ms": 267.867667,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 3,
+    "position": 1,
+    "elapsed_ms": 84.464458,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 3,
+    "position": 2,
+    "elapsed_ms": 478.808709,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 3,
+    "position": 3,
+    "elapsed_ms": 206.058875,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 4,
+    "position": 0,
+    "elapsed_ms": 365.130542,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 4,
+    "position": 1,
+    "elapsed_ms": 200.273625,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 4,
+    "position": 2,
+    "elapsed_ms": 396.784,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 4,
+    "position": 3,
+    "elapsed_ms": 127.81075,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 5,
+    "position": 0,
+    "elapsed_ms": 175.68,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 5,
+    "position": 1,
+    "elapsed_ms": 1461.118916,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 5,
+    "position": 2,
+    "elapsed_ms": 644.588584,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 5,
+    "position": 3,
+    "elapsed_ms": 564.289958,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 6,
+    "position": 0,
+    "elapsed_ms": 348.586625,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 6,
+    "position": 1,
+    "elapsed_ms": 88.175042,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 6,
+    "position": 2,
+    "elapsed_ms": 241.035083,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 6,
+    "position": 3,
+    "elapsed_ms": 134.81725,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 7,
+    "position": 0,
+    "elapsed_ms": 141.359708,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 7,
+    "position": 1,
+    "elapsed_ms": 372.369,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 7,
+    "position": 2,
+    "elapsed_ms": 120.59375,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 7,
+    "position": 3,
+    "elapsed_ms": 330.813667,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 8,
+    "position": 0,
+    "elapsed_ms": 119.492667,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 8,
+    "position": 1,
+    "elapsed_ms": 405.448625,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 8,
+    "position": 2,
+    "elapsed_ms": 212.36625,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 8,
+    "position": 3,
+    "elapsed_ms": 282.262791,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 9,
+    "position": 0,
+    "elapsed_ms": 420.253292,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 9,
+    "position": 1,
+    "elapsed_ms": 215.06075,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 9,
+    "position": 2,
+    "elapsed_ms": 268.020208,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 9,
+    "position": 3,
+    "elapsed_ms": 98.4195,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 10,
+    "position": 0,
+    "elapsed_ms": 158.798875,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 10,
+    "position": 1,
+    "elapsed_ms": 242.856625,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 10,
+    "position": 2,
+    "elapsed_ms": 79.191458,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 10,
+    "position": 3,
+    "elapsed_ms": 335.028084,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 11,
+    "position": 0,
+    "elapsed_ms": 232.315667,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 11,
+    "position": 1,
+    "elapsed_ms": 76.216666,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 11,
+    "position": 2,
+    "elapsed_ms": 320.128875,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 11,
+    "position": 3,
+    "elapsed_ms": 137.773958,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 12,
+    "position": 0,
+    "elapsed_ms": 229.778625,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 12,
+    "position": 1,
+    "elapsed_ms": 128.531,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 12,
+    "position": 2,
+    "elapsed_ms": 321.623958,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 12,
+    "position": 3,
+    "elapsed_ms": 75.675375,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 13,
+    "position": 0,
+    "elapsed_ms": 74.962583,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 13,
+    "position": 1,
+    "elapsed_ms": 239.660542,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 13,
+    "position": 2,
+    "elapsed_ms": 139.790167,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 13,
+    "position": 3,
+    "elapsed_ms": 324.80675,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 14,
+    "position": 0,
+    "elapsed_ms": 323.121583,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 14,
+    "position": 1,
+    "elapsed_ms": 73.946792,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 14,
+    "position": 2,
+    "elapsed_ms": 235.81225,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 14,
+    "position": 3,
+    "elapsed_ms": 137.067834,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 15,
+    "position": 0,
+    "elapsed_ms": 133.253917,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 15,
+    "position": 1,
+    "elapsed_ms": 325.256125,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 15,
+    "position": 2,
+    "elapsed_ms": 74.910042,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 15,
+    "position": 3,
+    "elapsed_ms": 236.812875,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 16,
+    "position": 0,
+    "elapsed_ms": 82.741292,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 16,
+    "position": 1,
+    "elapsed_ms": 326.736417,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 16,
+    "position": 2,
+    "elapsed_ms": 133.14175,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 16,
+    "position": 3,
+    "elapsed_ms": 239.409083,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 17,
+    "position": 0,
+    "elapsed_ms": 321.651708,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 17,
+    "position": 1,
+    "elapsed_ms": 135.052125,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 17,
+    "position": 2,
+    "elapsed_ms": 239.940291,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 17,
+    "position": 3,
+    "elapsed_ms": 75.091208,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 18,
+    "position": 0,
+    "elapsed_ms": 137.973792,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 18,
+    "position": 1,
+    "elapsed_ms": 237.069375,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 18,
+    "position": 2,
+    "elapsed_ms": 73.243792,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 18,
+    "position": 3,
+    "elapsed_ms": 324.547875,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-jitless",
+    "block": 19,
+    "position": 0,
+    "elapsed_ms": 235.866166,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-default",
+    "block": 19,
+    "position": 1,
+    "elapsed_ms": 70.338917,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "aot-default",
+    "block": 19,
+    "position": 2,
+    "elapsed_ms": 326.141333,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  },
+  {
+    "mode": "jit-jitless",
+    "block": 19,
+    "position": 3,
+    "elapsed_ms": 144.221459,
+    "passed": 2000000,
+    "stdout_sha256": "6bbe98f2b10d27ccd93601b97bc224e1b3643cfe175334ce68050748ddba09c6"
+  }
+]

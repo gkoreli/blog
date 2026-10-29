@@ -1,0 +1,85 @@
+{
+  "scope": "Small trials, accepted structured observations and fresh-workflow acceptance; no original frozen research accounting, dependencies, binaries or raw logs.",
+  "files": [
+    {
+      "path": "quickstart/README.md",
+      "bytes": 2330,
+      "sha256": "71d90c8d4e3c939ae99068b5a51079ce8c009f2a8b66ce3e2eb9248e49b47d54"
+    },
+    {
+      "path": "quickstart/compare.py",
+      "bytes": 4977,
+      "sha256": "ddfc9cdcb06554339d53afb77eed516d7cc1214b8172bb7d2537c5b59414b431"
+    },
+    {
+      "path": "quickstart/example.ts",
+      "bytes": 874,
+      "sha256": "bb6b11c7df1a468b3e8db87efb2344f2cdfbe5632d6f3c6cd949bb6d66e5abb6"
+    },
+    {
+      "path": "quickstart/trial-macos-arm64.json",
+      "bytes": 6512,
+      "sha256": "bdab95753d59240aa518e42b06cffd6a1f165a1795602b8308018964a8a8f328"
+    },
+    {
+      "path": "zod-repro/README.md",
+      "bytes": 4330,
+      "sha256": "31f1cab40c9258b8c4008dfe856e905a298054369ddcbe9edc94bb2380deaacc"
+    },
+    {
+      "path": "zod-repro/bench.ts",
+      "bytes": 851,
+      "sha256": "5d7a4bd5d658104016390d84959ad39cd02f568cbf3f38846ee9cf0ec2604350"
+    },
+    {
+      "path": "zod-repro/bun.lock",
+      "bytes": 300,
+      "sha256": "5a90e043d45226ed40b702df2a268a8f67ad9354a1d6456678142178610460ef"
+    },
+    {
+      "path": "zod-repro/fresh-workflow-check.json",
+      "bytes": 485,
+      "sha256": "ddeedff7f019a3dc3c8435700396c269256b07b19bf42d530f373cbfea1d3800"
+    },
+    {
+      "path": "zod-repro/measure.py",
+      "bytes": 5748,
+      "sha256": "07c3d390fdfe23c3c88c5af91d022dd4adbdfaf03fc6bdb3b0ad58af88e2c95a"
+    },
+    {
+      "path": "zod-repro/package.json",
+      "bytes": 126,
+      "sha256": "fea001566ae58fa844289ec3c4838ebcef1de1b9b74f687ce9e1f60dd4bfe4de"
+    },
+    {
+      "path": "zod-repro/results/4.3.6/observations.json",
+      "bytes": 16963,
+      "sha256": "da961049ed5e41453404c643c47d3af285015f4d0ac33853077f29e81b99c3d7"
+    },
+    {
+      "path": "zod-repro/results/4.3.6/policy-observations.json",
+      "bytes": 1711,
+      "sha256": "d12fc6dff75936f133b85118a0dbe440d23637b5711c70a64f18dbd7bd58ab67"
+    },
+    {
+      "path": "zod-repro/results/4.3.6/results.json",
+      "bytes": 1837,
+      "sha256": "68663f0d2a0423395027ba91c9f398c82b2a2bd399b689f94a44884373ec1fab"
+    },
+    {
+      "path": "zod-repro/results/4.6.7/observations.json",
+      "bytes": 16965,
+      "sha256": "2ae8671746b61546dc1f7e376ebeb4f76af294d96053cdf2bcdeb0fedc9bc23f"
+    },
+    {
+      "path": "zod-repro/results/4.6.7/policy-observations.json",
+      "bytes": 1707,
+      "sha256": "765968e60d4c50b5188e9b78977a0b1b8a417373d7807ec6f7ba94d85303b442"
+    },
+    {
+      "path": "zod-repro/results/4.6.7/results.json",
+      "bytes": 1842,
+      "sha256": "f5f834bfeb1720bc1f9aad0e43d675dc8814167b6f3faffe19c2b95f959e5aeb"
+    }
+  ]
+}

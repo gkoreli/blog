@@ -1,0 +1,114 @@
+[
+  {
+    "mode": "node-package",
+    "valid_message": true,
+    "returncode": 0,
+    "stdout_sha256": "579401173a7e8b5082511dce4b0ee0cfba2a2229f729f58fb7d9f4e82d80de24",
+    "stdout_bytes": 122,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0
+  },
+  {
+    "mode": "node-package",
+    "valid_message": false,
+    "returncode": 1,
+    "stdout_sha256": "70c1d00761c730b2035ecc5b5105ad7a852300136775430e5a8c793b15534d3f",
+    "stdout_bytes": 147,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0
+  },
+  {
+    "mode": "jit",
+    "valid_message": true,
+    "returncode": 0,
+    "stdout_sha256": "579401173a7e8b5082511dce4b0ee0cfba2a2229f729f58fb7d9f4e82d80de24",
+    "stdout_bytes": 122,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0
+  },
+  {
+    "mode": "jit",
+    "valid_message": false,
+    "returncode": 1,
+    "stdout_sha256": "70c1d00761c730b2035ecc5b5105ad7a852300136775430e5a8c793b15534d3f",
+    "stdout_bytes": 147,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0
+  },
+  {
+    "mode": "aot-asset",
+    "valid_message": true,
+    "returncode": 0,
+    "stdout_sha256": "579401173a7e8b5082511dce4b0ee0cfba2a2229f729f58fb7d9f4e82d80de24",
+    "stdout_bytes": 122,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0
+  },
+  {
+    "mode": "aot-asset",
+    "valid_message": false,
+    "returncode": 1,
+    "stdout_sha256": "70c1d00761c730b2035ecc5b5105ad7a852300136775430e5a8c793b15534d3f",
+    "stdout_bytes": 147,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0
+  },
+  {
+    "mode": "aot-wasm-import",
+    "valid_message": true,
+    "returncode": 0,
+    "stdout_sha256": "579401173a7e8b5082511dce4b0ee0cfba2a2229f729f58fb7d9f4e82d80de24",
+    "stdout_bytes": 122,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0
+  },
+  {
+    "mode": "aot-wasm-import",
+    "valid_message": false,
+    "returncode": 1,
+    "stdout_sha256": "70c1d00761c730b2035ecc5b5105ad7a852300136775430e5a8c793b15534d3f",
+    "stdout_bytes": 147,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0
+  },
+  {
+    "mode": "aot-asset",
+    "valid_message": true,
+    "checkout_reads_denied": true,
+    "returncode": 0,
+    "stdout_sha256": "579401173a7e8b5082511dce4b0ee0cfba2a2229f729f58fb7d9f4e82d80de24",
+    "stdout_bytes": 122,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0
+  },
+  {
+    "mode": "aot-asset",
+    "valid_message": false,
+    "checkout_reads_denied": true,
+    "returncode": 1,
+    "stdout_sha256": "70c1d00761c730b2035ecc5b5105ad7a852300136775430e5a8c793b15534d3f",
+    "stdout_bytes": 147,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0
+  },
+  {
+    "mode": "aot-wasm-import",
+    "valid_message": true,
+    "checkout_reads_denied": true,
+    "returncode": 0,
+    "stdout_sha256": "579401173a7e8b5082511dce4b0ee0cfba2a2229f729f58fb7d9f4e82d80de24",
+    "stdout_bytes": 122,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0
+  },
+  {
+    "mode": "aot-wasm-import",
+    "valid_message": false,
+    "checkout_reads_denied": true,
+    "returncode": 1,
+    "stdout_sha256": "70c1d00761c730b2035ecc5b5105ad7a852300136775430e5a8c793b15534d3f",
+    "stdout_bytes": 147,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0
+  }
+]

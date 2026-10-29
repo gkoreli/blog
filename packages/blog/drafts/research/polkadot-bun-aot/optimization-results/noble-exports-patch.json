@@ -1,0 +1,74 @@
+{
+  "version": "2.4.0",
+  "original_package_sha256": "3e361734f5269de162fa362483d7f45dee7efb533ec217157945338f7591baaf",
+  "exports": {
+    ".": {
+      "aot": "./src/index.ts",
+      "default": "./index.js"
+    },
+    "./_md.js": {
+      "aot": "./src/_md.ts",
+      "default": "./_md.js"
+    },
+    "./argon2.js": {
+      "aot": "./src/argon2.ts",
+      "default": "./argon2.js"
+    },
+    "./blake1.js": {
+      "aot": "./src/blake1.ts",
+      "default": "./blake1.js"
+    },
+    "./blake2.js": {
+      "aot": "./src/blake2.ts",
+      "default": "./blake2.js"
+    },
+    "./blake3.js": {
+      "aot": "./src/blake3.ts",
+      "default": "./blake3.js"
+    },
+    "./eskdf.js": {
+      "aot": "./src/eskdf.ts",
+      "default": "./eskdf.js"
+    },
+    "./hkdf.js": {
+      "aot": "./src/hkdf.ts",
+      "default": "./hkdf.js"
+    },
+    "./hmac.js": {
+      "aot": "./src/hmac.ts",
+      "default": "./hmac.js"
+    },
+    "./legacy.js": {
+      "aot": "./src/legacy.ts",
+      "default": "./legacy.js"
+    },
+    "./pbkdf2.js": {
+      "aot": "./src/pbkdf2.ts",
+      "default": "./pbkdf2.js"
+    },
+    "./scrypt.js": {
+      "aot": "./src/scrypt.ts",
+      "default": "./scrypt.js"
+    },
+    "./sha2.js": {
+      "aot": "./src/sha2.ts",
+      "default": "./sha2.js"
+    },
+    "./sha3-addons.js": {
+      "aot": "./src/sha3-addons.ts",
+      "default": "./sha3-addons.js"
+    },
+    "./sha3.js": {
+      "aot": "./src/sha3.ts",
+      "default": "./sha3.js"
+    },
+    "./webcrypto.js": {
+      "aot": "./src/webcrypto.ts",
+      "default": "./webcrypto.js"
+    },
+    "./utils.js": {
+      "aot": "./src/utils.ts",
+      "default": "./utils.js"
+    }
+  }
+}

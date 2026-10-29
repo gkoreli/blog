@@ -1,0 +1,402 @@
+[
+  {
+    "mode": "baseline",
+    "case": "help",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 11.6364375,
+      "min": 11.181542,
+      "max": 13.641959
+    },
+    "peak_rss_bytes": {
+      "median": 23363584.0,
+      "min": 23314432,
+      "max": 23379968
+    },
+    "peak_physical_bytes": {
+      "median": 9781704.0,
+      "min": 9781704,
+      "max": 9781704
+    }
+  },
+  {
+    "mode": "no-source",
+    "case": "help",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 11.659771,
+      "min": 11.142667,
+      "max": 14.049542
+    },
+    "peak_rss_bytes": {
+      "median": 23363584.0,
+      "min": 23347200,
+      "max": 23363584
+    },
+    "peak_physical_bytes": {
+      "median": 9781704.0,
+      "min": 9781704,
+      "max": 9781704
+    }
+  },
+  {
+    "mode": "no-codegen",
+    "case": "help",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 11.601062500000001,
+      "min": 11.2055,
+      "max": 12.961792
+    },
+    "peak_rss_bytes": {
+      "median": 23429120.0,
+      "min": 23396352,
+      "max": 23429120
+    },
+    "peak_physical_bytes": {
+      "median": 9781704.0,
+      "min": 9781704,
+      "max": 9781704
+    }
+  },
+  {
+    "mode": "no-source-codegen",
+    "case": "help",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 11.7486255,
+      "min": 11.332708,
+      "max": 14.51125
+    },
+    "peak_rss_bytes": {
+      "median": 23429120.0,
+      "min": 23412736,
+      "max": 23445504
+    },
+    "peak_physical_bytes": {
+      "median": 9781704.0,
+      "min": 9781704,
+      "max": 9781704
+    }
+  },
+  {
+    "mode": "wasm-import",
+    "case": "help",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 11.688583000000001,
+      "min": 11.400167,
+      "max": 15.751084
+    },
+    "peak_rss_bytes": {
+      "median": 23330816.0,
+      "min": 23314432,
+      "max": 23347200
+    },
+    "peak_physical_bytes": {
+      "median": 9781704.0,
+      "min": 9781704,
+      "max": 9781704
+    }
+  },
+  {
+    "mode": "baseline",
+    "case": "hash-file-16mib",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 70.1491665,
+      "min": 69.59025,
+      "max": 72.328959
+    },
+    "peak_rss_bytes": {
+      "median": 57982976.0,
+      "min": 57966592,
+      "max": 57999360
+    },
+    "peak_physical_bytes": {
+      "median": 43025200.0,
+      "min": 43008768,
+      "max": 43057992
+    }
+  },
+  {
+    "mode": "no-source",
+    "case": "hash-file-16mib",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 70.5707495,
+      "min": 69.558,
+      "max": 73.48875
+    },
+    "peak_rss_bytes": {
+      "median": 57982976.0,
+      "min": 57966592,
+      "max": 57999360
+    },
+    "peak_physical_bytes": {
+      "median": 43041560.0,
+      "min": 42975976,
+      "max": 43074376
+    }
+  },
+  {
+    "mode": "no-codegen",
+    "case": "hash-file-16mib",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 70.54625,
+      "min": 69.594208,
+      "max": 72.480458
+    },
+    "peak_rss_bytes": {
+      "median": 58048512.0,
+      "min": 58015744,
+      "max": 58064896
+    },
+    "peak_physical_bytes": {
+      "median": 43057944.0,
+      "min": 43008744,
+      "max": 43074400
+    }
+  },
+  {
+    "mode": "no-source-codegen",
+    "case": "hash-file-16mib",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 70.49660399999999,
+      "min": 69.627792,
+      "max": 72.300375
+    },
+    "peak_rss_bytes": {
+      "median": 58064896.0,
+      "min": 58032128,
+      "max": 58064896
+    },
+    "peak_physical_bytes": {
+      "median": 43057956.0,
+      "min": 43025176,
+      "max": 43090736
+    }
+  },
+  {
+    "mode": "wasm-import",
+    "case": "hash-file-16mib",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 70.1592915,
+      "min": 69.486417,
+      "max": 72.061458
+    },
+    "peak_rss_bytes": {
+      "median": 57966592.0,
+      "min": 57933824,
+      "max": 57982976
+    },
+    "peak_physical_bytes": {
+      "median": 43057968.0,
+      "min": 43025176,
+      "max": 43074376
+    }
+  },
+  {
+    "mode": "baseline",
+    "case": "inspect-account",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 18.580937,
+      "min": 17.991125,
+      "max": 19.922292
+    },
+    "peak_rss_bytes": {
+      "median": 36388864.0,
+      "min": 36192256,
+      "max": 36519936
+    },
+    "peak_physical_bytes": {
+      "median": 19579684.0,
+      "min": 19432192,
+      "max": 19727152
+    }
+  },
+  {
+    "mode": "no-source",
+    "case": "inspect-account",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 18.5206245,
+      "min": 18.087708,
+      "max": 20.076083
+    },
+    "peak_rss_bytes": {
+      "median": 36380672.0,
+      "min": 36208640,
+      "max": 36601856
+    },
+    "peak_physical_bytes": {
+      "median": 19571492.0,
+      "min": 19448576,
+      "max": 20087624
+    }
+  },
+  {
+    "mode": "no-codegen",
+    "case": "inspect-account",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 18.5974165,
+      "min": 17.942958,
+      "max": 20.086375
+    },
+    "peak_rss_bytes": {
+      "median": 36454400.0,
+      "min": 36274176,
+      "max": 36536320
+    },
+    "peak_physical_bytes": {
+      "median": 19563288.0,
+      "min": 19448600,
+      "max": 19628872
+    }
+  },
+  {
+    "mode": "no-source-codegen",
+    "case": "inspect-account",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 18.511625,
+      "min": 18.121292,
+      "max": 20.6595
+    },
+    "peak_rss_bytes": {
+      "median": 36446208.0,
+      "min": 36290560,
+      "max": 36569088
+    },
+    "peak_physical_bytes": {
+      "median": 19571468.0,
+      "min": 19481368,
+      "max": 19694384
+    }
+  },
+  {
+    "mode": "wasm-import",
+    "case": "inspect-account",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 18.578166500000002,
+      "min": 17.902542,
+      "max": 20.246625
+    },
+    "peak_rss_bytes": {
+      "median": 36421632.0,
+      "min": 36192256,
+      "max": 36552704
+    },
+    "peak_physical_bytes": {
+      "median": 19604284.0,
+      "min": 19448624,
+      "max": 19792736
+    }
+  },
+  {
+    "mode": "baseline",
+    "case": "member-full",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 24.962125,
+      "min": 24.444542,
+      "max": 26.269834
+    },
+    "peak_rss_bytes": {
+      "median": 73859072.0,
+      "min": 73842688,
+      "max": 73875456
+    },
+    "peak_physical_bytes": {
+      "median": 48956232.0,
+      "min": 48939800,
+      "max": 48989024
+    }
+  },
+  {
+    "mode": "no-source",
+    "case": "member-full",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 24.94175,
+      "min": 24.532833,
+      "max": 26.099083
+    },
+    "peak_rss_bytes": {
+      "median": 73859072.0,
+      "min": 73842688,
+      "max": 73875456
+    },
+    "peak_physical_bytes": {
+      "median": 48956208.0,
+      "min": 48923416,
+      "max": 48989000
+    }
+  },
+  {
+    "mode": "no-codegen",
+    "case": "member-full",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 24.953896,
+      "min": 24.444083,
+      "max": 26.157417
+    },
+    "peak_rss_bytes": {
+      "median": 73891840.0,
+      "min": 73859072,
+      "max": 73908224
+    },
+    "peak_physical_bytes": {
+      "median": 48988976.0,
+      "min": 48939800,
+      "max": 49005384
+    }
+  },
+  {
+    "mode": "no-source-codegen",
+    "case": "member-full",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 25.0978755,
+      "min": 24.231167,
+      "max": 26.055583
+    },
+    "peak_rss_bytes": {
+      "median": 73891840.0,
+      "min": 73859072,
+      "max": 73908224
+    },
+    "peak_physical_bytes": {
+      "median": 49005360.0,
+      "min": 48939776,
+      "max": 49021768
+    }
+  },
+  {
+    "mode": "wasm-import",
+    "case": "member-full",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 40.9468125,
+      "min": 40.104416,
+      "max": 43.053375
+    },
+    "peak_rss_bytes": {
+      "median": 70688768.0,
+      "min": 70664192,
+      "max": 70713344
+    },
+    "peak_physical_bytes": {
+      "median": 45695804.0,
+      "min": 45646616,
+      "max": 45728584
+    }
+  }
+]

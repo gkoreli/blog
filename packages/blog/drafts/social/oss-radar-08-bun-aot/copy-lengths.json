@@ -1,0 +1,20 @@
+[
+  {
+    "file": "shot-list.md",
+    "opening": "My server executable shrank from 121.5 MB to 30.3 MB. I",
+    "weighted_characters": 213,
+    "published": false
+  },
+  {
+    "file": "adoption-next.md",
+    "opening": "One Polkadot proof check took 73 ms with regular Bun an",
+    "weighted_characters": 216,
+    "published": false
+  },
+  {
+    "file": "adoption-next.md",
+    "opening": "If you have a public TypeScript CLI you're considering ",
+    "weighted_characters": 241,
+    "published": false
+  }
+]

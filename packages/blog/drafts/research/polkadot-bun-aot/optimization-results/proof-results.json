@@ -1,0 +1,159 @@
+{
+  "fixture_sha256": "1d6c17b7d7548b477b4775eafee4d290c4159bac3d3253f4affa8769eb3676b8",
+  "bun_revision": "1.4.4-canary.1+73b53109f",
+  "cli_commit": "8e85fdac1fb81c5996a4ecc4c93178a54f37f2d5",
+  "checks": [
+    {
+      "mode": "node-package",
+      "valid_message": true,
+      "returncode": 0,
+      "stdout_sha256": "579401173a7e8b5082511dce4b0ee0cfba2a2229f729f58fb7d9f4e82d80de24",
+      "stdout_bytes": 122,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "mode": "node-package",
+      "valid_message": false,
+      "returncode": 1,
+      "stdout_sha256": "70c1d00761c730b2035ecc5b5105ad7a852300136775430e5a8c793b15534d3f",
+      "stdout_bytes": 147,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "mode": "jit",
+      "valid_message": true,
+      "returncode": 0,
+      "stdout_sha256": "579401173a7e8b5082511dce4b0ee0cfba2a2229f729f58fb7d9f4e82d80de24",
+      "stdout_bytes": 122,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "mode": "jit",
+      "valid_message": false,
+      "returncode": 1,
+      "stdout_sha256": "70c1d00761c730b2035ecc5b5105ad7a852300136775430e5a8c793b15534d3f",
+      "stdout_bytes": 147,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "mode": "aot-asset",
+      "valid_message": true,
+      "returncode": 0,
+      "stdout_sha256": "579401173a7e8b5082511dce4b0ee0cfba2a2229f729f58fb7d9f4e82d80de24",
+      "stdout_bytes": 122,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "mode": "aot-asset",
+      "valid_message": false,
+      "returncode": 1,
+      "stdout_sha256": "70c1d00761c730b2035ecc5b5105ad7a852300136775430e5a8c793b15534d3f",
+      "stdout_bytes": 147,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "mode": "aot-wasm-import",
+      "valid_message": true,
+      "returncode": 0,
+      "stdout_sha256": "579401173a7e8b5082511dce4b0ee0cfba2a2229f729f58fb7d9f4e82d80de24",
+      "stdout_bytes": 122,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "mode": "aot-wasm-import",
+      "valid_message": false,
+      "returncode": 1,
+      "stdout_sha256": "70c1d00761c730b2035ecc5b5105ad7a852300136775430e5a8c793b15534d3f",
+      "stdout_bytes": 147,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    }
+  ],
+  "summary": [
+    {
+      "mode": "node-package",
+      "n": 20,
+      "elapsed_ms": {
+        "median": 132.87491699999998,
+        "min": 126.782917,
+        "max": 164.236
+      },
+      "peak_rss_bytes": {
+        "median": 122978304.0,
+        "min": 121618432,
+        "max": 123502592
+      },
+      "peak_physical_bytes": {
+        "median": 83949844.0,
+        "min": 82401304,
+        "max": 84433112
+      }
+    },
+    {
+      "mode": "jit",
+      "n": 20,
+      "elapsed_ms": {
+        "median": 72.846479,
+        "min": 69.34475,
+        "max": 78.945834
+      },
+      "peak_rss_bytes": {
+        "median": 98992128.0,
+        "min": 98222080,
+        "max": 100794368
+      },
+      "peak_physical_bytes": {
+        "median": 77906652.0,
+        "min": 77169384,
+        "max": 79643368
+      }
+    },
+    {
+      "mode": "aot-asset",
+      "n": 20,
+      "elapsed_ms": {
+        "median": 608.8818125,
+        "min": 597.540334,
+        "max": 767.940875
+      },
+      "peak_rss_bytes": {
+        "median": 84557824.0,
+        "min": 84541440,
+        "max": 84574208
+      },
+      "peak_physical_bytes": {
+        "median": 51250004.0,
+        "min": 51184432,
+        "max": 51299168
+      }
+    },
+    {
+      "mode": "aot-wasm-import",
+      "n": 20,
+      "elapsed_ms": {
+        "median": 66.944729,
+        "min": 64.017792,
+        "max": 70.921667
+      },
+      "peak_rss_bytes": {
+        "median": 81985536.0,
+        "min": 81969152,
+        "max": 82018304
+      },
+      "peak_physical_bytes": {
+        "median": 56460092.0,
+        "min": 56427288,
+        "max": 56492872
+      }
+    }
+  ],
+  "method": "Twenty fresh whole processes per mode after two warmups; rotating/reversed order; fixed synthetic one-member proof; warm filesystem caches; elapsed includes launch and time wrapper; shared macOS laptop. No network, real account, transaction signing/submission, or security audit.",
+  "node_version": "v24.14.1"
+}

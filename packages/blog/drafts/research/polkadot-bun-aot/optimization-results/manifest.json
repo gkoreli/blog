@@ -1,0 +1,85 @@
+{
+  "scope": "New optimization/proof observations; the original experiment manifest remains unchanged. Raw logs, source checkout, dependencies and binaries are excluded.",
+  "files": [
+    {
+      "path": "03-optimization-experiments.md",
+      "bytes": 8229,
+      "sha256": "8901325675be5ee684024a0756bdec33cb9e3331275123c815cd8fbd4a4013ba"
+    },
+    {
+      "path": "repro/optimize.py",
+      "bytes": 8980,
+      "sha256": "efb3030dd7f9a2a5b62f7b8a1f5e0d43987078e95497598faf933453d1fd285f"
+    },
+    {
+      "path": "repro/crypto-verify.py",
+      "bytes": 5493,
+      "sha256": "c96def99bcb004563d4c698557313a0087cee145c3081263508267b8a414589c"
+    },
+    {
+      "path": "optimization-results/inputs.json",
+      "bytes": 838,
+      "sha256": "e54f58e54c7a66d1ce6415de5e366505a88a910b7faccaa37b1695c3cc6d95d3"
+    },
+    {
+      "path": "optimization-results/noble-exports-patch.json",
+      "bytes": 1661,
+      "sha256": "86a7a070aa4882628325cc5d7f6ab4f4dc76af17a93ebcee37f086be6d677152"
+    },
+    {
+      "path": "optimization-results/noble-observations.json",
+      "bytes": 70596,
+      "sha256": "0695268f4132442a1481baad0c2c4d59e4ff078b8d3f5be00c0e0501bfca1788"
+    },
+    {
+      "path": "optimization-results/noble-summary.json",
+      "bytes": 3115,
+      "sha256": "e6b4c2c85cf43a37aab663e760899a9861ad19a6d96ae03553c3c855a28583e8"
+    },
+    {
+      "path": "optimization-results/optimization-builds.json",
+      "bytes": 5739,
+      "sha256": "63521d9f7f2f6c5c7996b793ba0c44973a0e83b657c040a000db8a0d2c72eae2"
+    },
+    {
+      "path": "optimization-results/optimization-checks.json",
+      "bytes": 35758,
+      "sha256": "075118ee852937dfc1dbafd15cb5b94dfd7a17f66c64c8877144b25334065f30"
+    },
+    {
+      "path": "optimization-results/options-observations.json",
+      "bytes": 176915,
+      "sha256": "8ff9018675e8e0271f3a5db9e1db6454509763eee71324a33398e35b428cfc0b"
+    },
+    {
+      "path": "optimization-results/options-summary.json",
+      "bytes": 7805,
+      "sha256": "518ea41d28584bf47ca7df7350f88631c237ac3062b7e4dc38619501639696a9"
+    },
+    {
+      "path": "optimization-results/proof-checks.json",
+      "bytes": 3851,
+      "sha256": "e9b4eaeb68fe28c7f783de35e49c33e675ec743a4083ffb2aaee2d16ec92f2eb"
+    },
+    {
+      "path": "optimization-results/proof-fixture.json",
+      "bytes": 1848,
+      "sha256": "1d6c17b7d7548b477b4775eafee4d290c4159bac3d3253f4affa8769eb3676b8"
+    },
+    {
+      "path": "optimization-results/proof-observations.json",
+      "bytes": 33192,
+      "sha256": "f88d6e992949f7efe66cbaf3bc2b0c097ed34a8ccbdb1e52bcb92d7fc17ada13"
+    },
+    {
+      "path": "optimization-results/proof-results.json",
+      "bytes": 4779,
+      "sha256": "df3637fa8ef785161ce26ba9e62b63b14c1668825a42bf89a40ad2323f2cf433"
+    },
+    {
+      "path": "optimization-results/wasm-log-check.json",
+      "bytes": 486,
+      "sha256": "787329bcf3ab135967c61f47f842abcc64d0f006e954db40f60974e27255b873"
+    }
+  ]
+}

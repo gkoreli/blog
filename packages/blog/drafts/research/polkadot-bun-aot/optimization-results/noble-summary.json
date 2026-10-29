@@ -1,0 +1,162 @@
+[
+  {
+    "mode": "baseline",
+    "case": "help",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 11.623625,
+      "min": 11.081,
+      "max": 15.342833
+    },
+    "peak_rss_bytes": {
+      "median": 23330816.0,
+      "min": 23314432,
+      "max": 23347200
+    },
+    "peak_physical_bytes": {
+      "median": 9781704.0,
+      "min": 9781704,
+      "max": 9781704
+    }
+  },
+  {
+    "mode": "noble-source",
+    "case": "help",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 11.623542,
+      "min": 10.944542,
+      "max": 14.287875
+    },
+    "peak_rss_bytes": {
+      "median": 23298048.0,
+      "min": 23281664,
+      "max": 23314432
+    },
+    "peak_physical_bytes": {
+      "median": 9781704.0,
+      "min": 9781704,
+      "max": 9781704
+    }
+  },
+  {
+    "mode": "baseline",
+    "case": "hash-file-16mib",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 70.924354,
+      "min": 69.381916,
+      "max": 85.179416
+    },
+    "peak_rss_bytes": {
+      "median": 57868288.0,
+      "min": 57851904,
+      "max": 57884672
+    },
+    "peak_physical_bytes": {
+      "median": 42943256.0,
+      "min": 42910488,
+      "max": 42976072
+    }
+  },
+  {
+    "mode": "noble-source",
+    "case": "hash-file-16mib",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 68.01710399999999,
+      "min": 66.417458,
+      "max": 80.244208
+    },
+    "peak_rss_bytes": {
+      "median": 57802752.0,
+      "min": 57786368,
+      "max": 57819136
+    },
+    "peak_physical_bytes": {
+      "median": 42926872.0,
+      "min": 42910488,
+      "max": 42959688
+    }
+  },
+  {
+    "mode": "baseline",
+    "case": "inspect-account",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 19.819542,
+      "min": 18.443083,
+      "max": 26.09725
+    },
+    "peak_rss_bytes": {
+      "median": 36380672.0,
+      "min": 36110336,
+      "max": 36831232
+    },
+    "peak_physical_bytes": {
+      "median": 19563264.0,
+      "min": 19366656,
+      "max": 20038448
+    }
+  },
+  {
+    "mode": "noble-source",
+    "case": "inspect-account",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 19.792125,
+      "min": 18.398625,
+      "max": 29.623875
+    },
+    "peak_rss_bytes": {
+      "median": 36347904.0,
+      "min": 36110336,
+      "max": 36683776
+    },
+    "peak_physical_bytes": {
+      "median": 19563300.0,
+      "min": 19383064,
+      "max": 19874560
+    }
+  },
+  {
+    "mode": "baseline",
+    "case": "member-full",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 24.837229,
+      "min": 24.29025,
+      "max": 32.747375
+    },
+    "peak_rss_bytes": {
+      "median": 73711616.0,
+      "min": 73711616,
+      "max": 73728000
+    },
+    "peak_physical_bytes": {
+      "median": 48825160.0,
+      "min": 48808728,
+      "max": 48841568
+    }
+  },
+  {
+    "mode": "noble-source",
+    "case": "member-full",
+    "n": 20,
+    "elapsed_ms": {
+      "median": 25.105978999999998,
+      "min": 24.479791,
+      "max": 34.365709
+    },
+    "peak_rss_bytes": {
+      "median": 73695232.0,
+      "min": 73678848,
+      "max": 73695232
+    },
+    "peak_physical_bytes": {
+      "median": 48841544.0,
+      "min": 48792344,
+      "max": 48857952
+    }
+  }
+]

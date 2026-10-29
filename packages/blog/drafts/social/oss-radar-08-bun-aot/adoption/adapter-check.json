@@ -1,0 +1,30 @@
+{
+  "fixture_sha256": "9c190a71fdcf2b62b853bb2b0634df20d2e96dc4954ed6f95c07597329a5d4fb",
+  "node_version": "v24.14.1",
+  "bun_revision": "1.4.4-canary.1+73b53109f",
+  "aot_flags": [
+    "--compile",
+    "--aot",
+    "--trim"
+  ],
+  "checks": [
+    {
+      "mode": "node",
+      "returncode": 0,
+      "stdout": "RESULT 562757611\n"
+    },
+    {
+      "mode": "bun-source",
+      "returncode": 0,
+      "stdout": "RESULT 562757611\n"
+    },
+    {
+      "mode": "bun-aot",
+      "returncode": 0,
+      "stdout": "RESULT 562757611\n"
+    }
+  ],
+  "external_suite_run": false,
+  "linux_run": false,
+  "limit": "Fixed-input source adapter, not the same source or a timing comparison with the configurable quickstart."
+}

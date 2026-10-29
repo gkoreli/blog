@@ -1,0 +1,11 @@
+{
+  "version": "4.6.7",
+  "bun_revision": "1.4.4-canary.1+73b53109f",
+  "fixture_sha256": "5d7a4bd5d658104016390d84959ad39cd02f568cbf3f38846ee9cf0ec2604350",
+  "frozen_install": "passed",
+  "final_runner_sha256": "07c3d390fdfe23c3c88c5af91d022dd4adbdfaf03fc6bdb3b0ad58af88e2c95a",
+  "validation_cases": 6,
+  "validation_modes": 5,
+  "timed_smoke_runs_per_mode": 4,
+  "purpose": "Fresh public-folder workflow check only; accepted timing comparison uses separate 20-run observations."
+}

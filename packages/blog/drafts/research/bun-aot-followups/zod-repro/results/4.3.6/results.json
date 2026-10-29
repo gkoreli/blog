@@ -1,0 +1,65 @@
+{
+  "bun_revision": "1.4.4-canary.1+73b53109f",
+  "bun_sha256": "2480b715f5c61e9d0a0a0062c2435614ffadea9795d7fd24e47f0a48ee0ede15",
+  "zod_version": "4.3.6",
+  "fixture_sha256": "5d7a4bd5d658104016390d84959ad39cd02f568cbf3f38846ee9cf0ec2604350",
+  "iterations": 2000000,
+  "runs_per_mode": 20,
+  "builds": [
+    {
+      "mode": "jit",
+      "flags": [],
+      "bytes": 121613858,
+      "sha256": "468cbd9a6fbdd779e61cbf831721eda1190b2b68c4442b42901b73efcfd0b21e"
+    },
+    {
+      "mode": "aot",
+      "flags": [
+        "--aot"
+      ],
+      "bytes": 53122082,
+      "sha256": "6843de2958c878563957cf6d52a6f65b5a468bd8a69868e6148dff977d34cc14"
+    },
+    {
+      "mode": "aot-no-codegen",
+      "flags": [
+        "--aot",
+        "--trim",
+        "--disallow-code-generation-from-strings=strict"
+      ],
+      "bytes": 33770050,
+      "sha256": "5fd75d6164253251d7578ff664ab11a491bfff2683f7084a368c33258746fa99"
+    }
+  ],
+  "method": "Fresh whole processes, two untimed warmups per default/jitless mode, balanced rotating/reversed order; filesystem caches warm; shared macOS laptop. Code-generation-denied control is a separate sequential batch.",
+  "validation_cases": 6,
+  "outputs_match_across_modes": true,
+  "summary": [
+    {
+      "mode": "jit-default",
+      "median_ms": 80.966375,
+      "min_ms": 70.338917,
+      "max_ms": 253.668625
+    },
+    {
+      "mode": "aot-default",
+      "median_ms": 337.72916699999996,
+      "min_ms": 320.128875,
+      "max_ms": 907.038417
+    },
+    {
+      "mode": "jit-jitless",
+      "median_ms": 142.79058350000003,
+      "min_ms": 128.531,
+      "max_ms": 644.588584
+    },
+    {
+      "mode": "aot-jitless",
+      "median_ms": 241.945854,
+      "min_ms": 229.778625,
+      "max_ms": 1461.118916
+    }
+  ],
+  "codegen_denied_median_ms": 236.73083350000002,
+  "validation_modes": 5
+}

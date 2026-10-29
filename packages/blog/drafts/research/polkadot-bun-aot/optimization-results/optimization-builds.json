@@ -1,0 +1,137 @@
+[
+  {
+    "mode": "baseline",
+    "flags": [
+      "--aot",
+      "--trim",
+      "--asset",
+      "node_modules/verifiablejs/pkg-nodejs/verifiablejs_bg.wasm"
+    ],
+    "returncode": 0,
+    "build_ms": 4681.198292,
+    "warnings": [
+      "--trim kept APIs your code doesn't call because the program calls eval() or new Function() (node_modules/verifiablejs/pkg-nodejs/verifiablejs.js:430:21)",
+      "--trim kept APIs your code doesn't call because the program calls import() or require() with a dynamic path",
+      "Untyped code works, but runs slower. Run with --explain to see what to fix.",
+      "Dependencies: 19.3% of property accesses are one load: 2,288 free, 5,597 tested, 3,920 by name (11,805)",
+      "24.5% of property accesses are one load: 895 free, 1,591 tested, 1,158 by name (3,644)"
+    ],
+    "bytes": 59710386,
+    "sha256": "a09f8582d1e3ba25cc625d297ba8a0299c78dd7bd3c0d5ee3e7fe3b8ac4a9be0"
+  },
+  {
+    "mode": "no-source",
+    "flags": [
+      "--aot",
+      "--trim",
+      "--asset",
+      "node_modules/verifiablejs/pkg-nodejs/verifiablejs_bg.wasm",
+      "--no-compile-function-source"
+    ],
+    "returncode": 0,
+    "build_ms": 4476.80975,
+    "warnings": [
+      "--trim kept APIs your code doesn't call because the program calls eval() or new Function() (node_modules/verifiablejs/pkg-nodejs/verifiablejs.js:430:21)",
+      "--trim kept APIs your code doesn't call because the program calls import() or require() with a dynamic path",
+      "Untyped code works, but runs slower. Run with --explain to see what to fix.",
+      "Dependencies: 19.3% of property accesses are one load: 2,288 free, 5,597 tested, 3,920 by name (11,805)",
+      "24.5% of property accesses are one load: 895 free, 1,591 tested, 1,158 by name (3,644)"
+    ],
+    "bytes": 58851762,
+    "sha256": "c5dd92efd46d0ac53750c234051d9f512722d0d4debf5695ac01863d274b0db8"
+  },
+  {
+    "mode": "no-codegen",
+    "flags": [
+      "--aot",
+      "--trim",
+      "--asset",
+      "node_modules/verifiablejs/pkg-nodejs/verifiablejs_bg.wasm",
+      "--disallow-code-generation-from-strings=strict"
+    ],
+    "returncode": 0,
+    "build_ms": 3679.243292,
+    "warnings": [
+      "--trim kept APIs your code doesn't call because the program calls import() or require() with a dynamic path",
+      "Untyped code works, but runs slower. Run with --explain to see what to fix.",
+      "Dependencies: 19.4% of property accesses are one load: 2,290 free, 5,595 tested, 3,918 by name (11,803)",
+      "24.6% of property accesses are one load: 900 free, 1,586 tested, 1,158 by name (3,644)"
+    ],
+    "bytes": 59644338,
+    "sha256": "1fa923c9180c257e8ef3f0565dad714c4800d6f86ba352bee7e1ab7bbc96838f"
+  },
+  {
+    "mode": "no-source-codegen",
+    "flags": [
+      "--aot",
+      "--trim",
+      "--asset",
+      "node_modules/verifiablejs/pkg-nodejs/verifiablejs_bg.wasm",
+      "--no-compile-function-source",
+      "--disallow-code-generation-from-strings=strict"
+    ],
+    "returncode": 0,
+    "build_ms": 3554.2165,
+    "warnings": [
+      "--trim kept APIs your code doesn't call because the program calls import() or require() with a dynamic path",
+      "Untyped code works, but runs slower. Run with --explain to see what to fix.",
+      "Dependencies: 19.4% of property accesses are one load: 2,290 free, 5,595 tested, 3,918 by name (11,803)",
+      "24.6% of property accesses are one load: 900 free, 1,586 tested, 1,158 by name (3,644)"
+    ],
+    "bytes": 58785714,
+    "sha256": "0cc30e2bf99bebc891f09686417506bc8bed7a79b1b1dcd1f0477179dc675e0d"
+  },
+  {
+    "mode": "wasm-import",
+    "flags": [
+      "--aot",
+      "--trim",
+      "--asset",
+      "node_modules/verifiablejs/pkg-nodejs/verifiablejs_bg.wasm"
+    ],
+    "returncode": 0,
+    "build_ms": 3680.209292,
+    "warnings": [
+      "--trim kept APIs your code doesn't call because the program calls eval() or new Function() (node_modules/verifiablejs/pkg-nodejs/verifiablejs.js:430:21)",
+      "--trim kept APIs your code doesn't call because the program calls import() or require() with a dynamic path",
+      "Untyped code works, but runs slower. Run with --explain to see what to fix.",
+      "Dependencies: 19.3% of property accesses are one load: 2,288 free, 5,597 tested, 3,920 by name (11,805)",
+      "24.5% of property accesses are one load: 895 free, 1,591 tested, 1,160 by name (3,646)"
+    ],
+    "bytes": 68494770,
+    "sha256": "5200689edea6a00cd52da1264d9695c61c4fa14b4ef0e8c4e98e20a8a5a670f4"
+  },
+  {
+    "mode": "jit-bytecode",
+    "flags": [
+      "--bytecode",
+      "--asset",
+      "node_modules/verifiablejs/pkg-nodejs/verifiablejs_bg.wasm"
+    ],
+    "returncode": 0,
+    "build_ms": 370.912666,
+    "warnings": [],
+    "bytes": 134823458,
+    "sha256": "d662e5b9c1c253495cedabb840913bb7ed7db86949b643121ce7d34ee7f43765"
+  },
+  {
+    "mode": "noble-source",
+    "flags": [
+      "--aot",
+      "--trim",
+      "--asset",
+      "node_modules/verifiablejs/pkg-nodejs/verifiablejs_bg.wasm"
+    ],
+    "returncode": 0,
+    "build_ms": 2956.487459,
+    "warnings": [
+      "--trim kept APIs your code doesn't call because the program calls eval() or new Function() (node_modules/verifiablejs/pkg-nodejs/verifiablejs.js:430:21)",
+      "--trim kept APIs your code doesn't call because the program calls import() or require() with a dynamic path",
+      "Untyped code works, but runs slower. Run with --explain to see what to fix.",
+      "Dependencies: 19.9% of property accesses are one load: 2,377 free, 5,619 tested, 3,943 by name (11,939)",
+      "24.6% of property accesses are one load: 897 free, 1,589 tested, 1,158 by name (3,644)"
+    ],
+    "bytes": 59644338,
+    "sha256": "fe7e08398f38f2be98e2ed7488f10154213dbcb2aa68ac0c1beb2b0409f5c5e1"
+  }
+]
