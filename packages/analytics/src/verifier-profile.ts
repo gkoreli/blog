@@ -9,6 +9,7 @@ export const REVIEWED_VERIFIER_PROFILES = [
   '2026-10-27.5', '2026-10-27.6', '2026-10-27.7',
   '2026-10-28.1', '2026-10-28.2', '2026-10-28.3', '2026-10-28.4',
   '2026-10-28.5', '2026-10-28.6', '2026-10-28.7',
+  '2026-10-29.1',
 ] as const;
 export type ReportedVerifierProfile = typeof REVIEWED_VERIFIER_PROFILES[number] | 'not-recorded' | 'unrecognized-record' | 'test-injected';
 export function isReportedVerifierProfile(value: unknown): value is ReportedVerifierProfile {

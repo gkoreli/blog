@@ -15,7 +15,7 @@ export async function wireFailureFixture() {
   const headers={'User-Agent':'ExaSearchBot/1.0','Signature-Agent':agent,'Signature-Input':`one=${params}`,Signature:`one=:${Buffer.from(signature).toString('base64')}:`};
   const specifications=[
    ['valid',null,'verified'],['tampered','signature-invalid','invalid'],['expired','expired','policy-rejected'],['future','not-yet-valid','policy-rejected'],
-   ['directory-unavailable','directory-unavailable','unavailable'],['key-missing','key-not-found','unavailable'],['unsupported-alg','unsupported-alg','unsupported'],
+   ['directory-unavailable','dir-http-status','unavailable'],['key-missing','key-not-found','unavailable'],['unsupported-alg','unsupported-alg','unsupported'],
    ['malformed-fields','malformed-signature-fields','invalid'],['unrelated-tag','no-web-bot-auth-signature','not-applicable'],
    ['invalid-clock','invalid-verification-time','indeterminate'],['key-metadata','key-metadata-rejected','policy-rejected'],
    ['key-window','key-validity-conflict','policy-rejected'],['mixed-failures','unsupported-alg','indeterminate'],['missing-input','missing-signature-input','invalid'],

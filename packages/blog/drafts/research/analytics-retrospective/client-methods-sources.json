@@ -1,0 +1,45 @@
+{
+  "revision": "2c3eb0bb9afb648ab9b8c1440701c20cc9bdd5f0",
+  "files": [
+    {
+      "url": "https://raw.githubusercontent.com/cloudflare/web-bot-auth/2c3eb0bb9afb648ab9b8c1440701c20cc9bdd5f0/packages/web-bot-auth/src/index.ts",
+      "status": 200,
+      "bytes": 12766,
+      "sha256": "35207ccb6699ffa2fd4ba27f144b7c90d6257d9149f69bb5e5261bf070dd9918"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cloudflare/web-bot-auth/2c3eb0bb9afb648ab9b8c1440701c20cc9bdd5f0/packages/http-message-sig/src/errors.ts",
+      "status": 200,
+      "bytes": 1026,
+      "sha256": "a4decc66313fedd0b62889badbd39c0d68df5f2245aa7a8faeaa46ac59c1aae6"
+    }
+  ],
+  "checkedAt": "2026-10-29T02:14:45.792125+00:00",
+  "documentation": [
+    {
+      "url": "https://crawler.exa.ai/",
+      "supports": "ExaSearchBot search/index role, spoofable UA and signing claim; not observed native acceptance"
+    },
+    {
+      "url": "https://crawler.exa.ai/exauser",
+      "supports": "On-demand user/application fetches and separate ExaUser declaration; not deterministic human trigger"
+    },
+    {
+      "url": "https://ahrefs.com/robot",
+      "supports": "Separate crawler/audit roles and published IP method; no blanket per-client signing promise"
+    },
+    {
+      "url": "https://developers.cloudflare.com/bots/concepts/bot/verified-bots/",
+      "supports": "Provider verification separates declared identity, method and behavior; BotBase taxonomy is not a request-level oracle"
+    },
+    {
+      "url": "https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/",
+      "supports": "Registration, key-directory media type, wire form and nonce/replay limits; not account entitlement or local agreement"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9421.html#section-7.2.1",
+      "supports": "Only covered components receive integrity; key resolution and message-signature failure need distinct interpretation"
+    }
+  ],
+  "implementationLearning": "Pinned Cloudflare source separates ResolverFailed from VerificationFailed and accepts a caller-supplied resolver; our directory codes refine local resolution failure, not a native Cloudflare verdict."
+}

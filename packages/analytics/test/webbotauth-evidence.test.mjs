@@ -78,9 +78,9 @@ test('directory key activation and expiry are enforced, including imported-key e
 
 test('wrong media type, redirect and oversized directory bodies fail without granting identity', async () => {
   const key = await signer(); const request = await key.request();
-  for (const response of [Response.json({ keys: [key.jwk] }), new Response(null, { status: 302, headers: { Location: 'https://other.example' } }), new Response('x'.repeat(65537), { headers: { 'Content-Type': 'application/http-message-signatures-directory+json' } })]) {
+  for (const [response,reason] of [[Response.json({ keys: [key.jwk] }),'dir-media-type'], [new Response(null, { status: 302, headers: { Location: 'https://other.example' } }),'dir-http-status'], [new Response('x'.repeat(65537), { headers: { 'Content-Type': 'application/http-message-signatures-directory+json' } }),'dir-body-limit']]) {
     const verdict = await verifyWebBotAuth(request, { now, cache: createWebBotAuthCache(), fetcher: async (url, init) => { assert.equal(init.redirect, 'manual'); return response; } });
-    assert.deepEqual(verdict, { status: 'unverified', reason: 'directory-unavailable' });
+    assert.deepEqual(verdict, { status: 'unverified', reason });
   }
 });
 
@@ -92,12 +92,12 @@ test('production lifetime policy rejects oversized signature windows before key 
 
 test('directory concurrency is bounded while an existing origin shares its pending lookup', async () => {
   const key = await signer(); const request = await key.request(); const cache = createWebBotAuthCache();
-  for (let i = 0; i < 64; i++) cache.pendingDirectories.set(`https://pending-${i}.example/.well-known/http-message-signatures-directory`, Promise.resolve(null));
+  for (let i = 0; i < 64; i++) cache.pendingDirectories.set(`https://pending-${i}.example/.well-known/http-message-signatures-directory`, Promise.resolve({reason:'dir-fetch-failed'}));
   let fetches = 0;
   const options = { now, cache, fetcher: async () => { fetches++; return directory([key.jwk]); } };
-  assert.deepEqual(await verifyWebBotAuth(request, options), { status: 'unverified', reason: 'directory-unavailable' });
+  assert.deepEqual(await verifyWebBotAuth(request, options), { status: 'unverified', reason: 'dir-concurrency-limit' });
   assert.equal(fetches, 0);
-  cache.pendingDirectories.set('https://fixture.example/.well-known/http-message-signatures-directory', Promise.resolve({ keys: [{ jwk: key.jwk, notBefore: null, expires: null }], expiresAt: now.getTime() + 300000 }));
+  cache.pendingDirectories.set('https://fixture.example/.well-known/http-message-signatures-directory', Promise.resolve({directory:{ keys: [{ jwk: key.jwk, notBefore: null, expires: null }], expiresAt: now.getTime() + 300000 }}));
   assert.equal((await verifyWebBotAuth(request, options)).status, 'verified');
   assert.equal(fetches, 0);
 });

@@ -35,7 +35,8 @@ test('historical bare-URI fallback stays readable while current failures retain 
  const f=await wireFailureFixture(),trial=f.cases.find(t=>t.form==='bare-uri'&&t.scenario==='directory-unavailable'),request=new Request(trial.url,{headers:trial.headers});
  const result=await verifyWebBotAuth(request,{now:f.now,cache:createWebBotAuthCache(),fetcher:async()=>new Response(null,{status:503})});
  const evidence=verificationEvidence(request,result,false,['ExaSearchBot']);
- assert.equal(evidence.localReason,'directory-unavailable');assert.equal(evidence.localOutcome,'unavailable');assert.deepEqual(evidence.localReasons,['directory-unavailable']);
+ assert.equal(verificationOutcome({status:'unverified',reason:'directory-unavailable'}),'unavailable');
+ assert.equal(evidence.localReason,'dir-http-status');assert.equal(evidence.localOutcome,'unavailable');assert.deepEqual(evidence.localReasons,['dir-http-status']);
  assert.equal(evidence.vendor.status,'not-verified');assert.equal(evidence.coverage,null);
  for(const canary of [trial.headers.Signature,trial.headers['Signature-Agent'],trial.url])assert.equal(JSON.stringify(evidence).includes(canary),false);
 });

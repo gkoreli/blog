@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { KNOWN_AGENT_NAMES } from '../.test-dist/classify.js';
 import { readFileSync } from 'node:fs';
 import { FAILURE_OUTCOMES, verificationEvidence, verificationOutcome } from '../.test-dist/signature-evidence.js';
 import { vendorSignatureEvidence } from '../.test-dist/vendor-signatures.js';
@@ -26,6 +27,8 @@ test('closed reason evidence cannot retain injected free text; complete failure 
   assert.equal(evidence.localOutcome, 'indeterminate');
   assert.equal(JSON.stringify(evidence).includes('private-canary'), false);
   assert.ok(Buffer.byteLength(JSON.stringify(evidence)) <= 2048);
+  const allDeclarations = verificationEvidence(request, { status: 'unverified', reason: 'private-canary', reasons: Object.keys(FAILURE_OUTCOMES) }, false, [...KNOWN_AGENT_NAMES]);
+  assert.ok(Buffer.byteLength(JSON.stringify(allDeclarations)) <= 2048);
 });
 
 test('documented Exa methods do not grant trust to arbitrary keys, unmapped declarations or injected verdicts', () => {

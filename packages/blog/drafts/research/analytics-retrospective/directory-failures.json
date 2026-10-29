@@ -1,0 +1,1511 @@
+{
+  "checkedAt": "2026-10-29T02:14:45.792125+00:00",
+  "sourceBaseline": "cf42773",
+  "before": {
+    "checkedAt": "2026-10-29T02:10:03.549Z",
+    "mode": "baseline",
+    "cases": 13,
+    "pathsPerRuntime": 39,
+    "node": [
+      {
+        "name": "valid",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "outcome": "verified",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "outcome": "verified",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "http-status",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "redirect",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "media-type",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "declared-body-limit",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "streamed-body-limit",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "body-missing",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "body-read-failed",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "json-invalid",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "shape-invalid",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "key-limit",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "fetch-failed",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "empty-keys",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-not-found",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-not-found",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      }
+    ],
+    "native": [
+      {
+        "name": "valid",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "outcome": "verified",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "outcome": "verified",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "http-status",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "redirect",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "media-type",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "declared-body-limit",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "streamed-body-limit",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "body-missing",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "body-read-failed",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "json-invalid",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "shape-invalid",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "key-limit",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "fetch-failed",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "directory-unavailable",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "empty-keys",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-not-found",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-not-found",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      }
+    ],
+    "syncThrowRecovery": {
+      "fetches": 1,
+      "status": "unverified",
+      "pending": 1
+    },
+    "productionRequests": 0,
+    "externalRequests": 0
+  },
+  "after": {
+    "checkedAt": "2026-10-29T02:11:45.336Z",
+    "mode": "current",
+    "cases": 13,
+    "pathsPerRuntime": 39,
+    "node": [
+      {
+        "name": "valid",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "outcome": "verified",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "outcome": "verified",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "http-status",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-http-status",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-http-status",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "redirect",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-http-status",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-http-status",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "media-type",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-media-type",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-media-type",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "declared-body-limit",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-body-limit",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-body-limit",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "streamed-body-limit",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-body-limit",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-body-limit",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "body-missing",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-body-missing",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-body-missing",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "body-read-failed",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-body-read-failed",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-body-read-failed",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "json-invalid",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-json-invalid",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-json-invalid",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "shape-invalid",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-shape-invalid",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-shape-invalid",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "key-limit",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-key-limit",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-key-limit",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "fetch-failed",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-fetch-failed",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-fetch-failed",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "empty-keys",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-not-found",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-not-found",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      }
+    ],
+    "native": [
+      {
+        "name": "valid",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "verified",
+            "reason": null,
+            "outcome": "verified",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "verified",
+            "reason": null,
+            "outcome": "verified",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "complete",
+            "verified": 1,
+            "unavailable": 0,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "http-status",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-http-status",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-http-status",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "redirect",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-http-status",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-http-status",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "media-type",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-media-type",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-media-type",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "declared-body-limit",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-body-limit",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-body-limit",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "streamed-body-limit",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-body-limit",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-body-limit",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "body-missing",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-body-missing",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-body-missing",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "body-read-failed",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-body-read-failed",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-body-read-failed",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "json-invalid",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-json-invalid",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-json-invalid",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "shape-invalid",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-shape-invalid",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-shape-invalid",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "key-limit",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-key-limit",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-key-limit",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "fetch-failed",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "dir-fetch-failed",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "dir-fetch-failed",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      },
+      {
+        "name": "empty-keys",
+        "paths": [
+          {
+            "mode": "default",
+            "status": "unverified",
+            "reason": "key-not-found",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "selected",
+            "status": "unverified",
+            "reason": "key-not-found",
+            "outcome": "unavailable",
+            "fetches": 1
+          },
+          {
+            "mode": "audit",
+            "assessment": "partial",
+            "verified": 0,
+            "unavailable": 1,
+            "fetches": 1
+          }
+        ]
+      }
+    ],
+    "syncThrowRecovery": {
+      "fetches": 2,
+      "status": "verified",
+      "pending": 0
+    },
+    "productionRequests": 0,
+    "externalRequests": 0
+  },
+  "collector": {
+    "checkedAt": "2026-10-29T02:12:13.633Z",
+    "runtime": "local workerd/WebCrypto/D1, actual collector and exact returned row references",
+    "collectionVersion": "2026-10-29.1",
+    "verifierProfile": "2026-10-29.1",
+    "rows": [
+      {
+        "case": "valid",
+        "reason": null,
+        "outcome": "verified",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 1207
+      },
+      {
+        "case": "http-status",
+        "reason": "dir-http-status",
+        "outcome": "unavailable",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 827
+      },
+      {
+        "case": "redirect",
+        "reason": "dir-http-status",
+        "outcome": "unavailable",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 827
+      },
+      {
+        "case": "media-type",
+        "reason": "dir-media-type",
+        "outcome": "unavailable",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 825
+      },
+      {
+        "case": "declared-body-limit",
+        "reason": "dir-body-limit",
+        "outcome": "unavailable",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 825
+      },
+      {
+        "case": "streamed-body-limit",
+        "reason": "dir-body-limit",
+        "outcome": "unavailable",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 825
+      },
+      {
+        "case": "body-missing",
+        "reason": "dir-body-missing",
+        "outcome": "unavailable",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 829
+      },
+      {
+        "case": "body-read-failed",
+        "reason": "dir-body-read-failed",
+        "outcome": "unavailable",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 837
+      },
+      {
+        "case": "json-invalid",
+        "reason": "dir-json-invalid",
+        "outcome": "unavailable",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 829
+      },
+      {
+        "case": "shape-invalid",
+        "reason": "dir-shape-invalid",
+        "outcome": "unavailable",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 831
+      },
+      {
+        "case": "key-limit",
+        "reason": "dir-key-limit",
+        "outcome": "unavailable",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 823
+      },
+      {
+        "case": "fetch-failed",
+        "reason": "dir-fetch-failed",
+        "outcome": "unavailable",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 829
+      },
+      {
+        "case": "empty-keys",
+        "reason": "key-not-found",
+        "outcome": "unavailable",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 823
+      },
+      {
+        "case": "valid",
+        "reason": null,
+        "outcome": "verified",
+        "storedReceiptAgreement": true,
+        "signatureBytes": 1207
+      }
+    ],
+    "controls": 14,
+    "rawRequestEvidenceAbsent": true,
+    "nativeUnavailable": true,
+    "productionRequests": 0,
+    "externalRequests": 0
+  },
+  "additionalConcurrencyLimitReason": "dir-concurrency-limit; existing pending-origin sharing/budget unit control",
+  "reasonVocabulary": "Ten new dir-* codes retain unavailable outcome; directory-unavailable remains readable as historical",
+  "evidenceLimitBytes": 2048,
+  "fullClosedReasonSetWithAllRecognizedDeclarationsBytes": 2039,
+  "schemaChanged": false,
+  "productionFailureCauseRecovered": false,
+  "trustOrCryptoPolicyChanged": false,
+  "pendingCleanupBehaviorChanged": true,
+  "initialNativeHarnessFailure": "Date was serialized as text; native fixture returned 500. Reconstructing Date accepts the same actual verifier controls; no production request involved.",
+  "firstFullSuiteFailure": "Expanded verbose reason names exceeded 2048-byte contract; compact dir-* names restore it without dropping reasons or enlarging storage."
+}

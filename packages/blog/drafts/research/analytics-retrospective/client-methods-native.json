@@ -1,0 +1,76 @@
+{
+  "checkedAt": "2026-10-29T02:14:45.792125+00:00",
+  "executedTemplateAcceptance": {
+    "checkedAt": "2026-10-29T02:07:24.849Z",
+    "fixtureRows": 15,
+    "checks": {
+      "empty": true,
+      "closedCandidates": true,
+      "duplicateCandidateRejected": true,
+      "otherProfileRejected": true,
+      "legacyDisagreement": true,
+      "ownerReferralPrecedence": true,
+      "closedReasonSets": true,
+      "unknownCanariesAbsent": true,
+      "reorderedDuplicateRejected": true,
+      "concreteParameterizedEquality": true,
+      "exactIdsAboveSafeInteger": true,
+      "scopeSpanGuard": true
+    },
+    "scale": {
+      "rows": 712,
+      "reads": 23823,
+      "writes": 0
+    },
+    "plan": {
+      "maximumIdSpan": 712,
+      "maximumGroups": 712,
+      "maximumReasonEntries": 64,
+      "postExecutionReadReviewThreshold": 60000,
+      "databaseEnforcedReadCap": false,
+      "statements": 1,
+      "agentAttempts": 1
+    },
+    "sqlTemplateSha256": "bfec45d5c3aac59d16c4f4eb3683dec677975aa9749be78649e15d7fe2d049dc",
+    "productionCalls": 0
+  },
+  "currentVocabularyAcceptance": {
+    "checkedAt": "2026-10-29T02:12:49.589Z",
+    "fixtureRows": 15,
+    "checks": {
+      "empty": true,
+      "closedCandidates": true,
+      "duplicateCandidateRejected": true,
+      "otherProfileRejected": true,
+      "legacyDisagreement": true,
+      "ownerReferralPrecedence": true,
+      "closedReasonSets": true,
+      "unknownCanariesAbsent": true,
+      "reorderedDuplicateRejected": true,
+      "concreteParameterizedEquality": true,
+      "exactIdsAboveSafeInteger": true,
+      "scopeSpanGuard": true
+    },
+    "scale": {
+      "rows": 712,
+      "reads": 23823,
+      "writes": 0
+    },
+    "plan": {
+      "maximumIdSpan": 712,
+      "maximumGroups": 712,
+      "maximumReasonEntries": 64,
+      "postExecutionReadReviewThreshold": 60000,
+      "databaseEnforcedReadCap": false,
+      "statements": 1,
+      "agentAttempts": 1
+    },
+    "sqlTemplateSha256": "7c3c7f2b4ef65894a6242ffc58622349aac1a864d6a72dccff859a80c3943af3",
+    "productionCalls": 0
+  },
+  "executedHelperSha256": "fb0b2aed1a2237cd24cdfab9558622c6eb4e9054d07cef9a1b49260141f0711b",
+  "executedImportDigestsPreservedPrivately": true,
+  "sqlTemplateChangedAfterRuntimeVocabularyExtension": true,
+  "productionRepeated": false,
+  "capturedRowsPassCurrentClosedValidator": true
+}

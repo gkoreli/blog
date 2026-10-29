@@ -106,6 +106,11 @@ interface DirectoryEntry {
   keys: Array<{ jwk: JsonWebKey; metadataRejected: boolean; notBefore: number | null; expires: number | null }>;
 }
 
+type DirectoryFailure = 'dir-concurrency-limit' | 'dir-fetch-failed' | 'dir-http-status'
+  | 'dir-media-type' | 'dir-body-limit' | 'dir-body-missing' | 'dir-body-read-failed'
+  | 'dir-json-invalid' | 'dir-shape-invalid' | 'dir-key-limit';
+type DirectoryResult = { directory: DirectoryEntry } | { reason: DirectoryFailure };
+
 interface KeyEntry {
   expiresAt: number;
   notBefore: number | null;
@@ -116,7 +121,7 @@ interface KeyEntry {
 export interface WebBotAuthCache {
   directories: Map<string, DirectoryEntry>;
   keys: Map<string, KeyEntry>;
-  pendingDirectories: Map<string, Promise<DirectoryEntry | null>>;
+  pendingDirectories: Map<string, Promise<DirectoryResult>>;
   forcedRefreshes: Map<string, number>;
 }
 
@@ -675,75 +680,84 @@ async function fetchDirectory(
   fetcher: typeof fetch,
   cache: WebBotAuthCache,
   nowMs: number,
-): Promise<DirectoryEntry | null> {
+): Promise<DirectoryResult> {
   const cached = cache.directories.get(directoryUrl);
-  if (cached !== undefined && cached.expiresAt > nowMs && cached.keyPolicy === PUBLIC_KEY_POLICY_VERSION) return cached;
+  if (cached !== undefined && cached.expiresAt > nowMs && cached.keyPolicy === PUBLIC_KEY_POLICY_VERSION) return { directory: cached };
   if (cached !== undefined) cache.directories.delete(directoryUrl);
 
   const pending = cache.pendingDirectories.get(directoryUrl);
   if (pending !== undefined) return pending;
-  if (cache.pendingDirectories.size >= 64) return null;
+  if (cache.pendingDirectories.size >= 64) return { reason: 'dir-concurrency-limit' };
 
-  const load = async (): Promise<DirectoryEntry | null> => {
+  const load = async (): Promise<DirectoryResult> => {
+    let response: Response;
     try {
-      const response = await fetcher(directoryUrl, {
+      response = await fetcher(directoryUrl, {
         method: 'GET',
         redirect: 'manual',
         headers: { Accept: 'application/http-message-signatures-directory+json' },
       });
-      if (response.status !== 200) return null;
-      if (response.headers.get('Content-Type')?.split(';')[0]?.trim().toLowerCase() !== 'application/http-message-signatures-directory+json') return null;
-      if (Number(response.headers.get('Content-Length') ?? 0) > 65536) return null;
-      const reader = response.body?.getReader();
-      if (reader === undefined) return null;
-      let size = 0;
-      const chunks: Uint8Array[] = [];
-      try {
-        for (;;) {
-          const part = await reader.read();
-          if (part.done) break;
-          size += part.value.byteLength;
-          if (size > 65536) { await reader.cancel(); return null; }
-          chunks.push(part.value);
-        }
-      } finally { reader.releaseLock(); }
-      const bytes = new Uint8Array(size);
-      let offset = 0;
-      for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
-      const body: unknown = JSON.parse(new TextDecoder().decode(bytes));
-      if (!isRecord(body) || !Array.isArray(body.keys)) return null;
-      if (body.keys.length > 128) return null;
-      const keys: DirectoryEntry['keys'] = [];
-      for (const value of body.keys) {
-        const key = directoryKey(value);
-        if (key === null || !isRecord(value)) continue;
-        const notBefore = typeof value.nbf === 'number' && Number.isSafeInteger(value.nbf) ? value.nbf : null;
-        const expires = typeof value.exp === 'number' && Number.isSafeInteger(value.exp) ? value.exp : null;
-        const validityRejected = value.nbf !== undefined && notBefore === null
-          || value.exp !== undefined && expires === null
-          || notBefore !== null && expires !== null && expires <= notBefore;
-        keys.push({ ...key, metadataRejected: key.metadataRejected || validityRejected, notBefore, expires });
-      }
-      const control = response.headers.get('Cache-Control') ?? '';
-      const maxAge = /(?:^|,)\s*max-age\s*=\s*"?(\d+)"?(?:\s*,|\s*$)/i.exec(control);
-      const age = Number(response.headers.get('Age') ?? 0);
-      const seconds = /(?:^|,)\s*(?:no-cache|no-store)\b/i.test(control) ? 0
-        : Math.max(0, Math.min(DIRECTORY_TTL_MS / 1000, maxAge?.[1] === undefined ? 300 : Number(maxAge[1])) - (Number.isFinite(age) && age > 0 ? age : 0));
-      const entry: DirectoryEntry = { keys, keyPolicy: PUBLIC_KEY_POLICY_VERSION, expiresAt: nowMs + seconds * 1000 };
-      // A newly fetched directory also invalidates imported removed/revoked keys.
-      for (const key of cache.keys.keys()) if (key.startsWith(`${directoryUrl}\n`)) cache.keys.delete(key);
-      if (cache.directories.size >= 256) cache.directories.delete(cache.directories.keys().next().value ?? '');
-      cache.directories.set(directoryUrl, entry);
-      return entry;
     } catch {
-      return null;
-    } finally {
-      cache.pendingDirectories.delete(directoryUrl);
+      return { reason: 'dir-fetch-failed' };
     }
+    if (response.status !== 200) return { reason: 'dir-http-status' };
+    if (response.headers.get('Content-Type')?.split(';')[0]?.trim().toLowerCase() !== 'application/http-message-signatures-directory+json') return { reason: 'dir-media-type' };
+    if (Number(response.headers.get('Content-Length') ?? 0) > 65536) return { reason: 'dir-body-limit' };
+    const reader = response.body?.getReader();
+    if (reader === undefined) return { reason: 'dir-body-missing' };
+    let size = 0;
+    const chunks: Uint8Array[] = [];
+    try {
+      for (;;) {
+        const part = await reader.read();
+        if (part.done) break;
+        size += part.value.byteLength;
+        if (size > 65536) {
+          try { await reader.cancel(); } catch { /* The observed body limit remains the cause. */ }
+          return { reason: 'dir-body-limit' };
+        }
+        chunks.push(part.value);
+      }
+    } catch {
+      return { reason: 'dir-body-read-failed' };
+    } finally { reader.releaseLock(); }
+    const bytes = new Uint8Array(size);
+    let offset = 0;
+    for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+    let body: unknown;
+    try { body = JSON.parse(new TextDecoder().decode(bytes)); }
+    catch { return { reason: 'dir-json-invalid' }; }
+    if (!isRecord(body) || !Array.isArray(body.keys)) return { reason: 'dir-shape-invalid' };
+    if (body.keys.length > 128) return { reason: 'dir-key-limit' };
+    const keys: DirectoryEntry['keys'] = [];
+    for (const value of body.keys) {
+      const key = directoryKey(value);
+      if (key === null || !isRecord(value)) continue;
+      const notBefore = typeof value.nbf === 'number' && Number.isSafeInteger(value.nbf) ? value.nbf : null;
+      const expires = typeof value.exp === 'number' && Number.isSafeInteger(value.exp) ? value.exp : null;
+      const validityRejected = value.nbf !== undefined && notBefore === null
+        || value.exp !== undefined && expires === null
+        || notBefore !== null && expires !== null && expires <= notBefore;
+      keys.push({ ...key, metadataRejected: key.metadataRejected || validityRejected, notBefore, expires });
+    }
+    const control = response.headers.get('Cache-Control') ?? '';
+    const maxAge = /(?:^|,)\s*max-age\s*=\s*"?(\d+)"?(?:\s*,|\s*$)/i.exec(control);
+    const age = Number(response.headers.get('Age') ?? 0);
+    const seconds = /(?:^|,)\s*(?:no-cache|no-store)\b/i.test(control) ? 0
+      : Math.max(0, Math.min(DIRECTORY_TTL_MS / 1000, maxAge?.[1] === undefined ? 300 : Number(maxAge[1])) - (Number.isFinite(age) && age > 0 ? age : 0));
+    const entry: DirectoryEntry = { keys, keyPolicy: PUBLIC_KEY_POLICY_VERSION, expiresAt: nowMs + seconds * 1000 };
+    // A newly fetched directory also invalidates imported removed/revoked keys.
+    for (const key of cache.keys.keys()) if (key.startsWith(`${directoryUrl}\n`)) cache.keys.delete(key);
+    if (cache.directories.size >= 256) cache.directories.delete(cache.directories.keys().next().value ?? '');
+    cache.directories.set(directoryUrl, entry);
+    return { directory: entry };
   };
   const promise = load();
   cache.pendingDirectories.set(directoryUrl, promise);
-  return promise;
+  // Clean up after registration even when a caller-supplied fetcher throws
+  // synchronously. An older completion must not delete a newer pending lookup.
+  try { return await promise; }
+  finally { if (cache.pendingDirectories.get(directoryUrl) === promise) cache.pendingDirectories.delete(directoryUrl); }
 }
 
 function pairKey(directoryUrl: string, keyid: string): string {
@@ -767,8 +781,9 @@ async function resolveVerificationKey(
 
   const previousDirectory = cache.directories.get(directoryUrl);
   const hadFreshDirectory = previousDirectory?.keyPolicy === PUBLIC_KEY_POLICY_VERSION && previousDirectory.expiresAt > nowMs;
-  let directory = await fetchDirectory(directoryUrl, fetcher, cache, nowMs);
-  if (directory === null) return { reason: 'directory-unavailable' };
+  const initial = await fetchDirectory(directoryUrl, fetcher, cache, nowMs);
+  if ('reason' in initial) return initial;
+  let directory = initial.directory;
   const find = async (entry: DirectoryEntry) => {
     for (const candidate of entry.keys) if (await ed25519JwkThumbprint(candidate.jwk) === keyid) {
       // Equal fixed kty/crv/x members have the same RFC 7638 identity. A second
@@ -784,8 +799,9 @@ async function resolveVerificationKey(
     if (cache.forcedRefreshes.size >= 256) cache.forcedRefreshes.delete(cache.forcedRefreshes.keys().next().value ?? '');
     cache.forcedRefreshes.set(directoryUrl, nowMs);
     cache.directories.delete(directoryUrl);
-    directory = await fetchDirectory(directoryUrl, fetcher, cache, nowMs);
-    if (directory === null) return { reason: 'directory-unavailable' };
+    const refreshed = await fetchDirectory(directoryUrl, fetcher, cache, nowMs);
+    if ('reason' in refreshed) return refreshed;
+    directory = refreshed.directory;
     matching = await find(directory);
   }
   const selected = matching[0];
