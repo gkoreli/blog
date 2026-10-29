@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-29T22:04:54.423950+00:00",
-  "sourceBaseline": "e2fdae6",
+  "checkedAt": "2026-10-29T22:08:51.202440+00:00",
+  "sourceBaseline": "3fa5893c9289acdd6f36f34c3d68bd613b107752",
   "goalAchieved": false,
   "previousTurn": "progress",
-  "scope": "Research96 corrects the dated fetcher reference using archived-proof controls and an independent pinned implementation; original requirements retained.",
+  "scope": "Research96 offline20-context replay and article023 correction accepted on source-linked allocated Worker and exact served Markdown; original requirements remain open.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Accept corrected article delivery/served content; obtain authenticated Search Console evidence when available; plan fresh labelled vendor trials without reopening deferred human trials.",
+  "nextBoundedAction": "Use authenticated Search Console evidence if available; prepare fresh vendor-labelled trials with source/time/account conditions, independently of deferred human trials.",
   "article": {
     "bodyWhitespaceWords": 1450,
     "prompts": 31,
@@ -62,8 +62,8 @@
     "localBuildAccepted": true,
     "localBuildReceipt": "public-parsing-checks.json"
   },
-  "runtimeUnchanged": false,
-  "productionStatements": 2,
+  "runtimeUnchanged": true,
+  "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
@@ -95,7 +95,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 8,
+  "productionOwnSiteGets": 1,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -170,13 +170,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 33868,
+  "productionReportedReads": 0,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
-    "providerWriteMetering": "No collection-eligible own-site request; no D1 ingestion readback. Natural/provider activity remains additional."
+    "providerWriteMetering": "No collection-eligible own-site request or ingestion readback. No per-request write trace; natural/provider activity additional."
   },
-  "newVisitsScope": "Eight one-attempt curl GETs, all ineligible. Seven exact marker/Ray/version joins; one unjoined SJC response. No production browser or human trial.",
+  "newVisitsScope": "One direct Markdown publication GET with source eligibility exclusion; no ingestion readback/per-request version trace or human label.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -382,7 +382,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Fresh source/Ready deployment row plus CLI100% allocation and full-version response joins. Full build log unavailable; GSC remains at signed-out account chooser.",
+  "liveAccountInspectionScope": "GitHub Cloudflare provider check binds full source/build/Worker; fresh Wrangler listing allocates exact version100%. Dashboard remains rate-limited.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -630,8 +630,8 @@
     "liveEmptyCounters": 44
   },
   "productionDirectDiagnosticSelects": 0,
-  "productionReportCalculations": 2,
-  "productionReadScope": "First DFW MISS33868 reads/0writes/one attempt. Separate SJC MISS lacks a meter. Same-connection DFW HIT/HIT has no calculation logs. Four asset checks have no report-calculation logs.",
+  "productionReportCalculations": 0,
+  "productionReadScope": "One direct Markdown asset request only; source eligibility excludes collection. No diagnostic SELECT or report fill.",
   "unresolvedMetadata": {
     "research": "88-unresolved-metadata-and-retained-inputs.md",
     "production": "unresolved-metadata-production.json",
@@ -659,7 +659,7 @@
     "checks": "unresolved-metadata-checks.json",
     "release": "unresolved-metadata-release.json"
   },
-  "runtimeUnchangedScope": "Focused report is accepted; collector/classifier/verifier/schema/referral/optional collection unchanged. New local date-parser repair changes one generated local metadata field; dry-run Worker JavaScript identical.",
+  "runtimeUnchangedScope": "Article023, prompt provenance and research scripts/receipts only. Collector/classifier/verifier/schema/report/cache/optional capture unchanged.",
   "localMetadataRelay": {
     "research": "89-local-browser-relays-and-fetch-metadata.md",
     "experiment": "local-metadata-relay-experiment.json",
@@ -718,7 +718,7 @@
     "productionCollectorReadbackReceipt": "metadata-collector-production.json",
     "productionCollectorReadbackScope": "Four matched requests on d65be377; the later article-only publication Worker is accepted separately, without repeating collector trials."
   },
-  "newControlledRequests": 8,
+  "newControlledRequests": 1,
   "liveMetadataControls": {
     "research": "91-live-metadata-controls-and-redacted-correlation.md",
     "native": "metadata-collector-native.json",
@@ -763,7 +763,7 @@
     "warmCache": "HIT",
     "populationPrevalenceMeasured": false
   },
-  "ownSiteGetRequests": 8,
+  "ownSiteGetRequests": 1,
   "collectionEligibleRequests": 0,
   "diagnosticSelects": 0,
   "evidenceDelta": {
@@ -838,16 +838,18 @@
     "unmeteredCalculations": 1,
     "productionBrowserLayoutMeasured": false
   },
-  "productionStatementsScope": "Two MISS responses indicate report calculations; one has a complete matched one-statement meter. No direct diagnostic SELECT.",
-  "productionReportedReadsCoverage": "Known returned-attempt meter for the first calculation only. Second MISS unmetered; total unavailable, not33868 and not zero.",
-  "productionReadTotal": null,
+  "productionStatementsScope": "No diagnostic D1 statement or public report request in Research96.",
+  "productionReportedReadsCoverage": "No diagnostic statements to meter. No per-request D1 trace or account-wide usage claim; natural/provider activity additional.",
+  "productionReadTotal": 0,
   "publicationDateRepair": {
     "receipt": "article-reach-date-checks.json",
     "siteTests": 120,
     "sourceDateEdited": false,
     "oneLocalMetadataFieldCorrected": true,
     "workerJavaScriptIdentical": true,
-    "sourceActivationSeparatelyUnmeasured": true
+    "sourceActivationSeparatelyUnmeasured": false,
+    "activationReceipt": "fetcher-reference-release.json",
+    "activationScope": "Later source3fa5893 includes the date repair and is allocated100%; no new posts.json request or timezone measurement."
   },
   "fetcherReferenceCorrection": {
     "research": "96-fetcher-reference-coverage-correction.md",
@@ -862,6 +864,11 @@
     "runtimeChanged": false,
     "article023Changed": true,
     "originalFootprintFrozen": true,
-    "publicationAccepted": false
+    "publicationAccepted": true,
+    "release": "fetcher-reference-release.json",
+    "sourceCommit": "3fa5893c9289acdd6f36f34c3d68bd613b107752",
+    "workerVersion": "f24ce144-fe76-4d29-8a55-3b38e0f2f7a0",
+    "servedMarkdownBytes": 48479,
+    "perRequestVersionJoined": false
   }
 }

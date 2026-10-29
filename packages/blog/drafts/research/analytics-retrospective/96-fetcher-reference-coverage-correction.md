@@ -63,3 +63,11 @@ The [local publication checks](fetcher-reference-checks.json) pass: twenty repla
 The original goal remains open: native managed-verifier agreement, real-population errors/unresolved rates, human/device trials, historical proof completeness and reader intent are not established. Human trials remain deferred. Next, accept the corrected publication, then use authenticated Search Console evidence if available and plan fresh vendor-labelled trials separately from human trials. Do not derive search demand or a human growth rate from this replay.
 
 Private evidence is preserved outside Git under a 26-file manifest, SHA-256 `50315ad290f613ffc5637b50910d397ec8f782a7368203716c5e7a58eaf23df4`. It includes the saved directory, intermediate receipt, final receipt, checked source snapshot and failed-build log. October 31 remains a review date, not automatic deletion.
+
+## Served correction accepted
+
+[Publication receipt](fetcher-reference-release.json): GitHub's Cloudflare Workers build check joins source `3fa5893` to successful build `d3da90bc` and full Worker `f24ce144-fe76-4d29-8a55-3b38e0f2f7a0`; a fresh Wrangler deployment listing allocates that exact version at 100%. The dashboard remained rate-limited after one backed-off retry, so its page is not the source proof. The full provider check supplies the source/build/version chain.
+
+One planned direct Markdown GET returns HTTP 200 and matches all **48,479 built bytes**, including the dated correction. This has null analytics representation in the reviewed Worker source; no ingestion readback or per-request version trace was collected. No new report calculation, diagnostic D1 SELECT, collector/native-managed acceptance or production browser-layout claim follows. The local checks and current source remain distinct from the observed served-byte match. Article 030 remains unchanged.
+
+The separate private release archive has 45 files under manifest SHA-256 `eb621bf54c66ddb9e89a1e86fd9e6754daf5d7739054518d60f313e769003440`, including the frozen one-request plan, provider check, allocation metadata, exact response and pinned reference sources. No owned preview server or tail remains active.

@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-29T22:08:14.949274+00:00",
+  "sourceCommit": "3fa5893c9289acdd6f36f34c3d68bd613b107752",
+  "providerCheck": {
+    "id": 123761568345,
+    "appSlug": "cloudflare-workers-and-pages",
+    "headSha": "3fa5893c9289acdd6f36f34c3d68bd613b107752",
+    "conclusion": "success",
+    "buildId": "d3da90bc-3c77-4993-9839-52792f046838",
+    "buildUrl": "https://dash.cloudflare.com/7e0dc86ef69b4572a63162a52cddd269/workers/services/view/gkoreli-com/production/builds/d3da90bc-3c77-4993-9839-52792f046838",
+    "workerVersion": "f24ce144-fe76-4d29-8a55-3b38e0f2f7a0"
+  },
+  "allocation": {
+    "version": "f24ce144-fe76-4d29-8a55-3b38e0f2f7a0",
+    "percentage": 100,
+    "createdOn": "2026-10-29T22:07:13.107138Z"
+  },
+  "request": {
+    "count": 1,
+    "status": 200,
+    "representation": "direct Markdown",
+    "bytes": 48479,
+    "sha256": "bb564305ff39a2c439726d0451071b6ccf1c8522b48c56652267c7cdf77bcfc6",
+    "matchesIsolatedBuild": true,
+    "perRequestVersionJoined": false,
+    "ingestionReadback": false,
+    "sourceEligibility": "null analytics representation for direct Markdown in reviewed Worker source"
+  },
+  "productionD1Statements": 0,
+  "publicReportFills": 0,
+  "newHumanLabels": 0,
+  "collectorAcceptanceClaimed": false,
+  "productionBrowserLayoutClaimed": false,
+  "planSha256": "37b78e79c054a5c6d15b621b51d8f823a7fe19fc74c40bcab23163773454d166",
+  "dashboardSourceProof": "Rate-limited page; one backed-off UI retry did not recover. GitHub provider check supplies full source/build/version join."
+}
