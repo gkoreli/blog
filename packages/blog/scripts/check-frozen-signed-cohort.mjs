@@ -9,10 +9,17 @@ import { verifyWebBotAuth } from '../../analytics/.test-dist/webbotauth.js';
 import { auditWebBotAuth } from '../../analytics/.test-dist/webbotauth-audit.js';
 import { auditWebBotAuthReuse } from '../../analytics/.test-dist/webbotauth-reuse-audit.js';
 
-const [inputFile, preflightFile, historicalRoot, manifestFile, historicalBundle, output] = process.argv.slice(2); assert.ok(output);
+const [inputFile, preflightFile, historicalRoot, manifestFile, historicalBundle, output, expectedCount = '52'] = process.argv.slice(2); assert.ok(output);
+assert.match(expectedCount, /^[1-9][0-9]*$/);
+const originalsExpected = Number(expectedCount);
+assert.ok(Number.isSafeInteger(originalsExpected) && originalsExpected <= 52);
+const contextsExpected = originalsExpected * 3;
 const hash = bytes => createHash('sha256').update(bytes).digest('hex'), inputBytes = readFileSync(inputFile), input = JSON.parse(inputBytes);
 const preflight = JSON.parse(readFileSync(preflightFile)), manifest = JSON.parse(readFileSync(manifestFile));
-assert.equal(hash(inputBytes), preflight.inputSha256); assert.equal(input.trials.length, 156);
+assert.equal(hash(inputBytes), preflight.inputSha256); assert.equal(input.trials.length, contextsExpected);
+assert.equal(input.trials.filter(row => row.variant === 'original').length, originalsExpected);
+assert.equal(input.trials.filter(row => row.variant === 'changed-authority').length, originalsExpected);
+assert.equal(input.trials.filter(row => row.variant === 'changed-unsigned-role-and-path').length, originalsExpected);
 assert.equal(manifest.verifierProfile, '2026-10-28.7'); assert.equal(manifest.files.length, 51);
 for (const file of manifest.files) assert.equal(hash(readFileSync(join(historicalRoot,file.path))),file.sha256);
 const historicSrc = join(historicalRoot,'packages/analytics/src');
@@ -61,12 +68,12 @@ try {
     const row=originals.find(row=>String(url)===(row.vendor==='exa'?'https://crawler.exa.ai':'https://ahrefs.com')+'/.well-known/http-message-signatures-directory');assert.ok(row);
     return Response.json(row.directory,{headers:{'Content-Type':'application/http-message-signatures-directory+json'}});
   }});
-  assert.equal(reuse.assessment,'complete');assert.equal(reuse.verifiedObservations,52);
+  assert.equal(reuse.assessment,'complete');assert.equal(reuse.verifiedObservations,originalsExpected);
   const receipt={checkedAt:new Date().toISOString(),inputSha256:hash(inputBytes),preflightSha256:hash(readFileSync(preflightFile)),scriptSha256:hash(readFileSync(new URL(import.meta.url))),
     historicalCommit:manifest.commit,historicalFilesRechecked:manifest.files.length,historicalManifestSha256:hash(readFileSync(manifestFile)),historicalBundleSha256:hash(Buffer.from(old)),
-    historicalProfile:'2026-10-28.7',currentProfile:'2026-10-29.1',contextsPerRuntimePerProfile:156,originals:52,results,reuse,
+    historicalProfile:'2026-10-28.7',currentProfile:'2026-10-29.1',contextsPerRuntimePerProfile:contextsExpected,originals:originalsExpected,results,reuse,
     productionRequests:0,externalResolverRequests:0,d1Statements:0,humanLabels:0,
     limits:['Later captured keys do not reconstruct original resolver state.','Two local implementations/profiles do not establish managed-provider agreement.','Reuse audit references are synthetic one-to-one ordinals after native request-reference uniqueness checks; no identities or digests are emitted.']};
   writeFileSync(output,JSON.stringify(receipt,null,2)+'\n',{flag:'wx',mode:0o600});
-  console.log(JSON.stringify({contextsPerRuntimePerProfile:156,originals:52,distinctProofs:reuse.distinctVerifiedProofs,repeatedProofGroups:reuse.repeatedProofGroups}));
+  console.log(JSON.stringify({contextsPerRuntimePerProfile:contextsExpected,originals:originalsExpected,distinctProofs:reuse.distinctVerifiedProofs,repeatedProofGroups:reuse.repeatedProofGroups}));
 }finally{await mf.dispose();}

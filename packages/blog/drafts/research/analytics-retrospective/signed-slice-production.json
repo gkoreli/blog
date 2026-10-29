@@ -1,0 +1,136 @@
+{
+  "checkedAt": "2026-10-29T06:46:46.991Z",
+  "sourceBaseline": "c79bb49",
+  "scope": "All 114 retained rows in the frozen Research 78 new-ID range; seven selected stored verified claims.",
+  "initial": {
+    "checkedAt": "2026-10-29T06:39:15.665Z",
+    "stage": "six-archived-proofs-reconciled-one-uncovered",
+    "rows": 114,
+    "selectedProjections": 7,
+    "distinctArchivedReferences": 6,
+    "matchedDistinct": 6,
+    "matchingBySource": {
+      "current-four": 4,
+      "latest-two": 2
+    },
+    "overlappingSourceMemberships": 0,
+    "missingArchiveEntries": 0,
+    "changedArchiveEntries": 0,
+    "uncoveredProjections": 1,
+    "profiles": {
+      "2026-10-28.7": 1,
+      "2026-10-29.1": 6
+    },
+    "managedAgreementMeasured": false,
+    "newHumanLabels": 0,
+    "localStates": {
+      "absent": 107,
+      "verified": 7
+    },
+    "currentProjectionSha256": "89259afb4d3e463e868912f1c184894e545c29733cc52d0695e712b089233feb",
+    "knownSha256": "6680689624dbdcb36c2df23882dc8e704eb3643ed7e26ed843523ae3cb85df39",
+    "archiveRevalidationSha256": "ecad0f29e88c10795d2e47f24e3d1e1fd1b6c1effc1bb5e7a13f7ff3dcd1b69c",
+    "uncovered": {
+      "observedAt": "2026-10-29 01:53:47",
+      "verifierProfile": "2026-10-28.7",
+      "collectionVersion": "2026-10-28.10",
+      "classifierVersion": "2026-10-27.5"
+    },
+    "d1InfoFailure": {
+      "code": 10000,
+      "cause": "not-established"
+    },
+    "queryAccessControl": "passed"
+  },
+  "final": {
+    "rows": 114,
+    "selectedProjections": 7,
+    "distinctArchivedReferences": 7,
+    "matchedDistinct": 7,
+    "matchingBySource": {
+      "current-four": 4,
+      "latest-two": 2,
+      "recovered-older-one": 1
+    },
+    "overlappingSourceMemberships": 0,
+    "missingArchiveEntries": 0,
+    "changedArchiveEntries": 0,
+    "uncoveredProjections": 0,
+    "profiles": {
+      "2026-10-28.7": 1,
+      "2026-10-29.1": 6
+    },
+    "managedAgreementMeasured": false,
+    "newHumanLabels": 0
+  },
+  "previouslyAcceptedProofsReconciled": 6,
+  "newlyRecoveredProofs": 1,
+  "newRecordedTimeContextsPerRuntimePerProfile": 3,
+  "newIndependentRfcContexts": 3,
+  "regressionOriginals": 52,
+  "regressionResultsAndReuseUnchanged": true,
+  "proofComparison": "Complete private stored projections, exact text references and retained receipt/invocation chains; no count-only join.",
+  "storage": {
+    "newProjectionMatches": 1,
+    "separateQueryCopyMatches": 1
+  },
+  "statements": [
+    {
+      "purpose": "constant access",
+      "reads": 0,
+      "writes": 0,
+      "providerAttempts": 1
+    },
+    {
+      "purpose": "complete fixed slice",
+      "reads": 343,
+      "writes": 0,
+      "providerAttempts": 1
+    }
+  ],
+  "reportedReads": 343,
+  "reportedWrites": 0,
+  "reviewThreshold": 500,
+  "databaseEnforcedReadCap": false,
+  "queryMode": "Wrangler --command; prepared private SQL passed as one subprocess argument",
+  "readPlanArchive": {
+    "capturedFiles": 11,
+    "manifestSha256": "d19bc0e9eac7ca5ffdfacde384671414165740fcfef78c1e2e13502aa83c46c6",
+    "beforeProductionSelects": true,
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "nativeFixtureReads": 130,
+  "nativeProductionCostEquivalenceEstablished": false,
+  "d1MetadataFailure": {
+    "code": 10000,
+    "cause": "not-established",
+    "attempts": 1
+  },
+  "resourceIdentity": "Separate successful Worker allocation/version metadata matches the configured D1 binding; constant control separately accepts query access.",
+  "nativeUi": {
+    "start": "2026-10-29T01:53:00Z",
+    "endExclusive": "2026-10-29T01:55:00Z",
+    "receiptQueryRecords": 1,
+    "linkedQueryRecords": 4,
+    "acknowledgedCopies": 2,
+    "providerQueryMetering": "not-returned",
+    "pricingNoticeAccepted": false
+  },
+  "ownSiteRequests": 0,
+  "newHumanLabels": 0,
+  "managedCryptoAgreementMeasured": false,
+  "runtimeChanged": false,
+  "articleChanged": false,
+  "limits": [
+    "Six archived proof cohorts are reused; only one new proof has fresh Node/workerd/two-profile and independent RFC replay.",
+    "The 52-proof regression reruns archived contexts; it is not new production evidence.",
+    "Later captured keys do not reconstruct original directory discovery, and source replay does not attest deployed bytes.",
+    "Separate query copies share provider retention; neither proves wire-complete capture or delivery uniqueness.",
+    "No held database snapshot, whole-history correctness, current service health, human trigger, readership or managed-verifier agreement claim.",
+    "Cross-cohort seven-proof nonce/reuse census is not performed; the new proof reuse assessment has one observation.",
+    "Native 130 reads and production 343 reads are separate measured costs; fixture equivalence is not established."
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "checkedAt": "2026-10-29T06:47:19.483918+00:00",
+  "newExternalSourceFetches": 0,
+  "implementations": [
+    {
+      "path": "packages/blog/scripts/check-signed-slice.mjs",
+      "sha256": "38b1b56e4f6a2a36cb0d6215599b1b55f5e3043e84cf30a7b986d57f408e857d"
+    },
+    {
+      "path": "packages/blog/scripts/check-frozen-signed-cohort.mjs",
+      "sha256": "ca83a8fc687c52e5b00464eeb4be3855bc416c516785f9bf502025c9268c18a3"
+    },
+    {
+      "path": "packages/blog/drafts/research/analytics-retrospective/analyze-signed-slice-input.mjs",
+      "sha256": "d24ad93d9adbf2837a479658c7ef712a97e79fa9223c715492ffe08988ad6512"
+    },
+    {
+      "path": "packages/blog/drafts/research/analytics-retrospective/accept-signed-slice.mjs",
+      "sha256": "ff20ac5e83f9db6af35ea75626f45b05a5628e41129d8f2419265e49ac2a0319"
+    }
+  ],
+  "executedSliceSourceUnchangedSincePlan": true,
+  "historicalReplay": {
+    "historicalCommit": "29237542dcc8e0f5a1ad0f68c769d9a41a097823",
+    "historicalFilesRechecked": 51,
+    "historicalManifestSha256": "27cf68b5edc3be26ae72d6c40d0bf62d3bcff3d162b46bff9ca4784ec6aa00c2",
+    "historicalBundleSha256": "d8c5391e8f5df7273154ae2f494a227dcaadc01bc9beab9418e9e138a4c57199"
+  },
+  "referenceLibrary": {
+    "sourceCommit": "1de433d9a49fd608475c6054ab14a1652c088844",
+    "sourceFilesRechecked": 18,
+    "keyResolver": "per-trial captured publisher keys by RFC thumbprint",
+    "maxAgeSeconds": 86400
+  },
+  "reusedDirectory": {
+    "source": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+    "capturedAt": "2026-10-29T05:08:08.680529+00:00",
+    "responseStatus": 200,
+    "responseHeaders": {
+      "content-type": "application/http-message-signatures-directory+json",
+      "cache-control": "max-age=300",
+      "date": "Thu, 29 Oct 2026 05:08:07 GMT"
+    },
+    "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+    "readerTelemetryForwarded": false
+  },
+  "previousArchives": [
+    {
+      "cohort": "current-four",
+      "research": "69-current-verifier-signed-cohort.md",
+      "manifestSha256": "cb42083b12b7d6442ecd6becec0806612116d92d525df707606f1a0dec89a4a8"
+    },
+    {
+      "cohort": "latest-two",
+      "research": "72-latest-signed-proofs-and-log-identifiers.md",
+      "manifestSha256": "334e3e35e1c04c68bc9ea983c166520a577b319abc06b7489fd54ac708fa1f5a"
+    },
+    {
+      "cohort": "historical implementation and directory",
+      "research": "75-frozen-signed-cohort-and-export-boundaries.md",
+      "manifestSha256": "529fd9f870dd49065fd63f9eb39dfa6727f4260ed1f49ee9133c8108568e4556"
+    }
+  ],
+  "primaryCrossReferences": [
+    {
+      "purpose": "Retained logs and sampling",
+      "url": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
+      "priorReceipt": "frozen-signed-checks.json"
+    },
+    {
+      "purpose": "Native field queries and exports",
+      "url": "https://developers.cloudflare.com/workers/observability/query-builder/",
+      "priorReceipt": "frozen-signed-checks.json"
+    },
+    {
+      "purpose": "RFC message signatures and component coverage",
+      "url": "https://www.rfc-editor.org/rfc/rfc9421.html",
+      "priorReceipt": "complete-audit-sources.json"
+    }
+  ],
+  "limits": [
+    "Prior captures and source commitments reused; no claim that vendor keys or primary pages were freshly fetched in this iteration.",
+    "Source replay is not a deployed-byte attestation; later keys do not recover original discovery state."
+  ]
+}

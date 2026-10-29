@@ -1,0 +1,106 @@
+{
+  "checkedAt": "2026-10-29T06:48:44.557193+00:00",
+  "sourceBaseline": "c79bb49",
+  "receipts": [
+    "signed-slice-production.json",
+    "signed-slice-native.json",
+    "signed-slice-preflight.json",
+    "signed-slice-replay.json",
+    "signed-slice-reference.json",
+    "signed-slice-sources.json"
+  ],
+  "nativeFixtureChecks": {
+    "exactLargeIds": true,
+    "concreteMatchesParameterized": true,
+    "allRowsSelected": true,
+    "contradictoryOwnerRecordPreserved": true,
+    "outcomeOnlyPreserved": true,
+    "duplicateAndOverlappingArchivesSeparated": true,
+    "conflictingArchiveCopiesRejected": true,
+    "changedOrMissingProjectionNotAccepted": true,
+    "unsafeNumericReferenceRejected": true
+  },
+  "negativeChecks": [
+    {
+      "condition": "wrong-receipt-reference",
+      "rejectedBeforeOutput": true
+    },
+    {
+      "condition": "changed-receipt-coverage",
+      "rejectedBeforeOutput": true
+    },
+    {
+      "condition": "invalid-expected-count-0",
+      "rejectedBeforeReplay": true
+    },
+    {
+      "condition": "invalid-expected-count-53",
+      "rejectedBeforeReplay": true
+    },
+    {
+      "condition": "invalid-expected-count-1x",
+      "rejectedBeforeReplay": true
+    }
+  ],
+  "localAttempts": {
+    "checkedAt": "2026-10-29T06:47:19.483622+00:00",
+    "attempts": [
+      {
+        "stage": "metadata",
+        "result": "d1 info authentication 10000; cause unknown; raw output private"
+      },
+      {
+        "stage": "plan assembly",
+        "result": "Parsing non-JSON failed metadata stopped locally; initial archive directory remained empty; corrected immutable plan was frozen before SELECTs"
+      },
+      {
+        "stage": "native replay",
+        "result": "Sandbox loopback listener EPERM; no native result or production request; a fresh output path passed with approved local execution"
+      },
+      {
+        "stage": "acceptance assembly",
+        "result": "First bound lookup used the wrong envelope; corrected to known.bounds before acceptance"
+      },
+      {
+        "stage": "regression comparison",
+        "result": "Public replay receipt is compact and lacks full results; acceptance now hash-checks the preserved private full result before comparison"
+      }
+    ],
+    "countCorrection": "107 absent raw rows, not 103 included-only absent rows; no query repeated",
+    "productionRetries": 0
+  },
+  "readPlanArchive": {
+    "capturedFiles": 11,
+    "manifestSha256": "d19bc0e9eac7ca5ffdfacde384671414165740fcfef78c1e2e13502aa83c46c6",
+    "beforeProductionSelects": true,
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "privateDataArchive": {
+    "capturedFiles": 57,
+    "manifestSha256": "b31e87cff5c354362481cb5321af572564fc14898c324bf1fdce4f730b37c7a6",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "productionStatements": 2,
+  "productionReads": 343,
+  "productionWrites": 0,
+  "collectorChanged": false,
+  "articleChanged": false,
+  "bodyWords": 1376,
+  "prompts": 31,
+  "publication": "Prior article acceptance retained; no fresh deployment or served check required for offline diagnostic records.",
+  "syntax": "pass",
+  "runtimeTests": "Fresh native fixed-slice controls, one-proof Node/workerd dual-profile comparison, independent three-context RFC comparison and 52-proof regression; unchanged collector suites not rerun.",
+  "siteBuild": "Not run: diagnostic scripts and records only; collector and article unchanged.",
+  "relativeLinks": 364,
+  "markdownValidation": "pass, 22 posts",
+  "privateIdentifierAndRawHeaderScan": "pass",
+  "sourceCommitments": "pass",
+  "articleSourceHash": "unchanged",
+  "diffWhitespace": "pass"
+}

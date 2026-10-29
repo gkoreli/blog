@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-10-29T06:34:24.627Z",
+  "plan": {
+    "maximumIdSpan": 114,
+    "maximumRows": 114,
+    "readReviewThreshold": 500,
+    "maximumStatements": 2,
+    "attemptsPerStatement": 1,
+    "databaseEnforcedReadCap": false
+  },
+  "fixtureKnown": 6,
+  "checks": {
+    "exactLargeIds": true,
+    "concreteMatchesParameterized": true,
+    "allRowsSelected": true,
+    "contradictoryOwnerRecordPreserved": true,
+    "outcomeOnlyPreserved": true,
+    "duplicateAndOverlappingArchivesSeparated": true,
+    "conflictingArchiveCopiesRejected": true,
+    "changedOrMissingProjectionNotAccepted": true,
+    "unsafeNumericReferenceRejected": true
+  },
+  "scale": {
+    "rows": 114,
+    "reads": 130,
+    "writes": 0
+  },
+  "constant": {
+    "reads": 0,
+    "writes": 0
+  },
+  "queryPlan": [
+    "SEARCH page_observations USING INTEGER PRIMARY KEY (rowid>? AND rowid<?)"
+  ],
+  "templateSha256": "cc118401401161d891e875b66efd7b4edee1f14741277a19b8ddbb3415b62ec8",
+  "inputSha256": "6680689624dbdcb36c2df23882dc8e704eb3643ed7e26ed843523ae3cb85df39",
+  "productionCalls": 0
+}

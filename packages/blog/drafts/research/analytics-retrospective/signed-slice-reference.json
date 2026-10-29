@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-10-29T06:44:43.675611+00:00",
+  "sourceCommit": "1de433d9a49fd608475c6054ab14a1652c088844",
+  "sourceFilesRechecked": 18,
+  "recordedClock": true,
+  "keyResolver": "per-trial captured publisher keys by RFC thumbprint",
+  "maxAgeSeconds": 86400,
+  "rows": [
+    {
+      "vendor": "exa",
+      "variant": "original",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "exa",
+      "variant": "changed-authority",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature"
+    },
+    {
+      "vendor": "exa",
+      "variant": "changed-unsigned-role-and-path",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    }
+  ],
+  "referenceCalls": 3,
+  "externalRequests": 0,
+  "limits": [
+    "Generic RFC verification; discovery, publisher registration and Web Bot Auth admission are separate.",
+    "An exception is not a complete census of valid candidates; this cohort has one eligible candidate per request."
+  ]
+}

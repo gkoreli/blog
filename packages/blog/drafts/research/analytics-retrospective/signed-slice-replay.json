@@ -1,0 +1,236 @@
+{
+  "checkedAt": "2026-10-29T06:44:50.648Z",
+  "inputSha256": "483db225571d45bf548f91b0ed8f11f8a471ab3f31c78dcbab40f840d8f5e427",
+  "preflightSha256": "80de885f4aee8b143a5cc3fb4a91225dc4f5c3a69d25fb3bc4554541c0957f96",
+  "scriptSha256": "ca83a8fc687c52e5b00464eeb4be3855bc416c516785f9bf502025c9268c18a3",
+  "historicalCommit": "29237542dcc8e0f5a1ad0f68c769d9a41a097823",
+  "historicalFilesRechecked": 51,
+  "historicalManifestSha256": "27cf68b5edc3be26ae72d6c40d0bf62d3bcff3d162b46bff9ca4784ec6aa00c2",
+  "historicalBundleSha256": "d8c5391e8f5df7273154ae2f494a227dcaadc01bc9beab9418e9e138a4c57199",
+  "historicalProfile": "2026-10-28.7",
+  "currentProfile": "2026-10-29.1",
+  "contextsPerRuntimePerProfile": 3,
+  "originals": 1,
+  "results": [
+    {
+      "vendor": "exa",
+      "variant": "original",
+      "historical": {
+        "status": "verified",
+        "reason": null,
+        "expectedPublisher": true,
+        "coverage": {
+          "version": "2026-10-28.1",
+          "headerForm": "legacy-string",
+          "covered": {
+            "authority": true,
+            "targetUri": false,
+            "method": false,
+            "path": false,
+            "query": false,
+            "userAgent": false,
+            "contentDigest": false
+          },
+          "otherComponentCount": 0,
+          "validitySeconds": 300,
+          "ageSeconds": 0,
+          "replayPolicy": "expiry-only",
+          "selection": {
+            "policy": "first-valid-in-input-order",
+            "matchedCandidates": 1,
+            "taggedCandidates": 1,
+            "attemptedCandidates": 1,
+            "unassessedCandidates": 0
+          }
+        }
+      },
+      "current": {
+        "status": "verified",
+        "reason": null,
+        "expectedPublisher": true,
+        "coverage": {
+          "version": "2026-10-28.1",
+          "headerForm": "legacy-string",
+          "covered": {
+            "authority": true,
+            "targetUri": false,
+            "method": false,
+            "path": false,
+            "query": false,
+            "userAgent": false,
+            "contentDigest": false
+          },
+          "otherComponentCount": 0,
+          "validitySeconds": 300,
+          "ageSeconds": 0,
+          "replayPolicy": "expiry-only",
+          "selection": {
+            "policy": "first-valid-in-input-order",
+            "matchedCandidates": 1,
+            "taggedCandidates": 1,
+            "attemptedCandidates": 1,
+            "unassessedCandidates": 0
+          }
+        },
+        "candidateAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "inputMembers": 1,
+          "signatureMembers": 1,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "verifiedCandidates": 1,
+          "notVerifiedByProfileCandidates": 0,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": 0,
+          "unresolvedCandidates": 0,
+          "verifiedPublisherOriginLowerBound": 1,
+          "directoryFetches": 1
+        }
+      }
+    },
+    {
+      "vendor": "exa",
+      "variant": "changed-authority",
+      "historical": {
+        "status": "unverified",
+        "reason": "signature-invalid",
+        "expectedPublisher": null,
+        "coverage": null
+      },
+      "current": {
+        "status": "unverified",
+        "reason": "signature-invalid",
+        "expectedPublisher": null,
+        "coverage": null
+      }
+    },
+    {
+      "vendor": "exa",
+      "variant": "changed-unsigned-role-and-path",
+      "historical": {
+        "status": "verified",
+        "reason": null,
+        "expectedPublisher": true,
+        "coverage": {
+          "version": "2026-10-28.1",
+          "headerForm": "legacy-string",
+          "covered": {
+            "authority": true,
+            "targetUri": false,
+            "method": false,
+            "path": false,
+            "query": false,
+            "userAgent": false,
+            "contentDigest": false
+          },
+          "otherComponentCount": 0,
+          "validitySeconds": 300,
+          "ageSeconds": 0,
+          "replayPolicy": "expiry-only",
+          "selection": {
+            "policy": "first-valid-in-input-order",
+            "matchedCandidates": 1,
+            "taggedCandidates": 1,
+            "attemptedCandidates": 1,
+            "unassessedCandidates": 0
+          }
+        }
+      },
+      "current": {
+        "status": "verified",
+        "reason": null,
+        "expectedPublisher": true,
+        "coverage": {
+          "version": "2026-10-28.1",
+          "headerForm": "legacy-string",
+          "covered": {
+            "authority": true,
+            "targetUri": false,
+            "method": false,
+            "path": false,
+            "query": false,
+            "userAgent": false,
+            "contentDigest": false
+          },
+          "otherComponentCount": 0,
+          "validitySeconds": 300,
+          "ageSeconds": 0,
+          "replayPolicy": "expiry-only",
+          "selection": {
+            "policy": "first-valid-in-input-order",
+            "matchedCandidates": 1,
+            "taggedCandidates": 1,
+            "attemptedCandidates": 1,
+            "unassessedCandidates": 0
+          }
+        }
+      }
+    }
+  ],
+  "reuse": {
+    "version": "2026-10-28.1",
+    "verifierProfile": "2026-10-29.1",
+    "scope": "supplied-observations-publisher-key",
+    "enforcement": "none",
+    "assessment": "complete",
+    "termination": "exhausted",
+    "policy": {
+      "maxObservations": 64,
+      "maxCandidatesPerObservation": 8,
+      "deadlineMs": 2000,
+      "maxAgeSeconds": 86400,
+      "headerBudgetUnits": 32768
+    },
+    "submittedObservations": 1,
+    "assessedObservations": 1,
+    "unassessedObservations": 0,
+    "missingReferenceRecords": 0,
+    "duplicateReferenceRecords": 0,
+    "invalidContextRecords": 0,
+    "headerBudgetRecords": 0,
+    "incompleteObservations": 0,
+    "verifiedObservations": 1,
+    "knownTaggedCandidates": 1,
+    "attemptedCandidates": 1,
+    "unassessedKnownCandidates": 0,
+    "verifiedCandidates": 1,
+    "notVerifiedByProfileCandidates": 0,
+    "unresolvedCandidates": 0,
+    "nonceStringCandidates": 1,
+    "nonceAbsentCandidates": 0,
+    "nonceUnusableCandidates": 0,
+    "distinctVerifiedProofs": 1,
+    "repeatedProofGroups": 0,
+    "observationsInRepeatedProofGroups": 0,
+    "repeatedProofGroupsWithChangedMethodUrlOrUserAgent": 0,
+    "distinctUsableNonces": 1,
+    "repeatedNonceGroups": 0,
+    "repeatedNonceGroupsWithDifferentProofs": 0,
+    "directoryFetches": 1
+  },
+  "productionRequests": 0,
+  "externalResolverRequests": 0,
+  "d1Statements": 0,
+  "humanLabels": 0,
+  "limits": [
+    "Later captured keys do not reconstruct original resolver state.",
+    "Two local implementations/profiles do not establish managed-provider agreement.",
+    "Reuse audit references are synthetic one-to-one ordinals after native request-reference uniqueness checks; no identities or digests are emitted."
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "checkedAt": "2026-10-29T06:44:38.478Z",
+  "chainsSha256": "f3082cd29303bc42049d4112f49bc00ba685e32281a9d034adc58a8b69c0dd83",
+  "receiptCopySha256": "1dba8492d26907bc0f901037da30f23a6e93d85e1248f989e648a574a2da9306",
+  "storedProjectionSha256": "cfb5fc3d5b3b04e26009eef63051d3c56cb02e7194cfe96c0bd546c1717fbf9a",
+  "inputSha256": "483db225571d45bf548f91b0ed8f11f8a471ab3f31c78dcbab40f840d8f5e427",
+  "scriptSha256": "d24ad93d9adbf2837a479658c7ef712a97e79fa9223c715492ffe08988ad6512",
+  "completeChains": 1,
+  "identicalStoredProjectionPairs": 1,
+  "matchingSeparateQueryCopies": 1,
+  "storedProfile": "2026-10-28.7",
+  "collectionVersion": "2026-10-28.10",
+  "queryWindow": {
+    "start": "2026-10-29T01:53:00Z",
+    "endExclusive": "2026-10-29T01:55:00Z"
+  },
+  "contextCount": 3,
+  "directory": {
+    "source": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+    "capturedAt": "2026-10-29T05:08:08.680529+00:00",
+    "responseStatus": 200,
+    "responseHeaders": {
+      "content-type": "application/http-message-signatures-directory+json",
+      "cache-control": "max-age=300",
+      "date": "Thu, 29 Oct 2026 05:08:07 GMT"
+    },
+    "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+    "readerTelemetryForwarded": false
+  },
+  "integrity": {
+    "missingIds": 0,
+    "duplicateIds": 0,
+    "truncatedRecords": 0
+  },
+  "storage": {
+    "candidateRows": 1,
+    "retainedInputRecords": 4,
+    "retainedStoredRecords": 1,
+    "rejectedRetainedRecords": {
+      "shape": 0,
+      "timestamp": 0
+    },
+    "invalidCandidateReferences": 0,
+    "unavailableReceiptReferences": 0,
+    "invalidReceiptReferences": 0,
+    "unmatchedCandidateRows": 0,
+    "unmatchedReceiptRecords": 0,
+    "ambiguousReferenceGroups": 0,
+    "invalidPairMetadata": 0,
+    "unprojectableCandidateRows": 0,
+    "matchedReferencePairs": 1,
+    "identicalProjectionPairs": 1,
+    "differentProjectionPairs": 0,
+    "storedLocalVerifiedPairs": 1,
+    "testInjectedPairs": 0,
+    "conflictingStoredStatusPairs": 0,
+    "changedFields": {},
+    "unexpectedFields": 0
+  },
+  "copyStorage": {
+    "candidateRows": 1,
+    "retainedInputRecords": 1,
+    "retainedStoredRecords": 1,
+    "rejectedRetainedRecords": {
+      "shape": 0,
+      "timestamp": 0
+    },
+    "invalidCandidateReferences": 0,
+    "unavailableReceiptReferences": 0,
+    "invalidReceiptReferences": 0,
+    "unmatchedCandidateRows": 0,
+    "unmatchedReceiptRecords": 0,
+    "ambiguousReferenceGroups": 0,
+    "invalidPairMetadata": 0,
+    "unprojectableCandidateRows": 0,
+    "matchedReferencePairs": 1,
+    "identicalProjectionPairs": 1,
+    "differentProjectionPairs": 0,
+    "storedLocalVerifiedPairs": 1,
+    "testInjectedPairs": 0,
+    "conflictingStoredStatusPairs": 0,
+    "changedFields": {},
+    "unexpectedFields": 0
+  },
+  "executionWorker": "5826bc1c-1d35-499c-98c9-0552f767a8e4",
+  "limits": [
+    "Separate exports share the retained provider source; neither is an independent wire capture.",
+    "Later captured directory keys do not recover original resolver state.",
+    "No new production request, human label or managed verification comparison."
+  ]
+}

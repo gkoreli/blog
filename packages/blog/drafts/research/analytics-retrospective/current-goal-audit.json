@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T06:27:34.354224+00:00",
-  "sourceBaseline": "f88468d",
+  "checkedAt": "2026-10-29T06:48:44.557193+00:00",
+  "sourceBaseline": "c79bb49",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -44,7 +44,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Reconcile already recovered proof cohorts with the seven signed ExaSearchBot outcomes in Research 78\u2019s frozen new-ID slice before retrieving more inputs; preserve exact references/profile boundaries. Human trials remain deferred.",
+  "nextBoundedAction": "Consolidate proof-recovery coverage and retained-source limits across the existing frozen cohorts before another retrieval; distinguish linked proofs, outcome-only history and unavailable original directory/native evidence. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 31,
@@ -54,11 +54,11 @@
     "publicationReceipt": "retained-population-release.json",
     "servedMatchesCheckedBuild": true,
     "lastServedCheckReceipt": "retained-population-release.json",
-    "publicationStatus": "No article/source change or fresh served check in phase 79; prior 1376-word acceptance remains dated in retained-population-release.json.",
+    "publicationStatus": "No article/source change or fresh served check in phase 80; prior 1376-word acceptance remains dated in retained-population-release.json.",
     "previousPublicationReceipt": "frozen-signed-release.json"
   },
   "runtimeUnchanged": true,
-  "productionStatements": 3,
+  "productionStatements": 2,
   "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
@@ -165,13 +165,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 104,
+  "productionReportedReads": 343,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No production observation requested by this investigation; natural ingestion and provider costs are separate."
   },
-  "newVisitsScope": "Historical recovery of 52 request chains; no new eligible production request or human label. Publication verification uses three collection-ineligible GETs: two direct Markdown checks and one HTML prefetch. Two SELECTs report 104 reads and zero writes.",
+  "newVisitsScope": "Existing seven-outcome cohort reconciliation; one older request newly recovered, six prior proof cohorts reused, earlier 52-proof regression rerun offline. No own-site request or human label.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -377,7 +377,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Wrangler D1 resource metadata only; rolling zero counters are ambiguous without raw GraphQL response coverage.",
+  "liveAccountInspectionScope": "Wrangler metadata, constant access control, fixed-slice D1 SELECT and native retained Observability queries; no configuration change.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -400,5 +400,25 @@
     "originalWireOrHumanTruthEstablished": false,
     "collectorAdoption": false,
     "ambiguousWranglerZero": true
+  },
+  "signedSliceReconciliation": {
+    "receipt": "signed-slice-production.json",
+    "checks": "signed-slice-checks.json",
+    "retainedRows": 114,
+    "selectedVerified": 7,
+    "previouslyAcceptedProofsReconciled": 6,
+    "newlyRecoveredProofs": 1,
+    "matchingStoredProjections": 7,
+    "uncovered": 0,
+    "newRecordedTimeContextsPerRuntimePerProfile": 3,
+    "newIndependentRfcContexts": 3,
+    "old52RegressionUnchanged": true,
+    "reportedReads": 343,
+    "reportedWrites": 0,
+    "statements": 2,
+    "nativeFixtureReads": 130,
+    "managedAgreementMeasured": false,
+    "humanTriggerEstablished": false,
+    "wholeHistoryCorrectnessProven": false
   }
 }
