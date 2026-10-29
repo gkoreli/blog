@@ -1,0 +1,150 @@
+{
+  "checkedAt": "2026-10-29T04:35:23.725883+00:00",
+  "sourceBaseline": "05d957c6d8e207b89184383f27cdae3f1b96252c",
+  "targetedTests": 21,
+  "failures": 0,
+  "negativeGates": {
+    "checkedAt": "2026-10-29T04:31:05.840302+00:00",
+    "results": [
+      {
+        "condition": "selected-log-id-collision",
+        "rejectedAtExpectedGate": true,
+        "acceptedOutputAbsent": true
+      },
+      {
+        "condition": "independent-request-copy-mismatch",
+        "rejectedAtExpectedGate": true,
+        "acceptedOutputAbsent": true
+      },
+      {
+        "condition": "wrong-stored-row-reference",
+        "rejectedAtExpectedGate": true,
+        "acceptedOutputAbsent": true
+      }
+    ]
+  },
+  "scriptSyntaxChecks": 3,
+  "markdownValidation": {
+    "validPosts": 21
+  },
+  "articleSourceSha256": "3c51458d27908a851e629bde089c14f4e8f3f650396052d9484804d6fcd9ed73",
+  "articleChanged": false,
+  "productionOwnSiteRequests": 0,
+  "collectionEligibleRequests": 0,
+  "newHumanLabels": 0,
+  "runtimeProfilesChanged": false,
+  "rawCaptureEnabledByThisWork": false,
+  "nativeQueries": {
+    "fixedStart": "2026-10-29T03:15:00.000Z",
+    "fixedEnd": "2026-10-29T04:15:00.000Z",
+    "positiveHeaderPresence": {
+      "expression": "exists($workers.event.request.headers.x-forwarded-proto)",
+      "nativeEvents": 409,
+      "exportCap": 500,
+      "exportedRecords": 409
+    },
+    "forwardedPresence": {
+      "expression": "exists($workers.event.request.headers.forwarded)",
+      "nativeEvents": 0,
+      "positiveFieldIndexingWhenPresent": "not-established"
+    },
+    "exactSignedChainSelection": {
+      "privateRequestReferences": 2,
+      "nativeEvents": 8,
+      "exportCap": 100,
+      "exportedRecords": 8
+    },
+    "latestReceiptSelection": {
+      "collectionVersion": "2026-10-29.3",
+      "receiptVersion": "2026-10-29.1",
+      "signatureOutcome": "verified",
+      "nativeEvents": 2,
+      "exportCap": 100,
+      "exportedRecords": 2
+    },
+    "samplingNoticeAccepted": false,
+    "providerQueryAndExportCost": "not-returned",
+    "completeWireOrPopulationCoverageProven": false
+  },
+  "nativeSql": {
+    "checkedAt": "2026-10-29T04:25:58.050Z",
+    "sqlSha256": "71584506f2b0b76455f9e9bbf50a931f46f57f5985e35345564fc0b727273026",
+    "nativeRows": 2,
+    "reads": 4,
+    "writes": 0,
+    "primaryKeyPlan": true,
+    "unsafeNeighborTextIdsDistinct": true,
+    "contradictoryAndMissingFieldsRetained": true,
+    "ownerIncluded": true,
+    "accessControl": {
+      "sql": "SELECT 1 AS query_access_control",
+      "reads": 0,
+      "writes": 0
+    },
+    "productionStatements": 0
+  },
+  "primarySources": [
+    {
+      "source": "https://developers.cloudflare.com/workers/observability/query-builder/",
+      "capturedAt": "2026-10-29T04:33:00.360283+00:00",
+      "status": 200,
+      "sha256": "f204586c8c754370784637506c0ecd60ccd35573010b19c895dfb25175b7de9d",
+      "bytes": 215754
+    },
+    {
+      "source": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
+      "capturedAt": "2026-10-29T04:33:00.421589+00:00",
+      "status": 200,
+      "sha256": "a6a8a35da57aab2fc28ac141e92579e80e92fd7ae16b94892d18d11582b5761c",
+      "bytes": 228933
+    },
+    {
+      "source": "https://developers.cloudflare.com/workers/authorization/",
+      "capturedAt": "2026-10-29T04:33:00.488458+00:00",
+      "status": 200,
+      "sha256": "3f3899bfcaa2a83fe3f792f6755272c2587294a309a46db5091b25e2da48f1a3",
+      "bytes": 192410
+    },
+    {
+      "source": "https://crawler.exa.ai/",
+      "capturedAt": "2026-10-29T04:33:00.593289+00:00",
+      "status": 200,
+      "sha256": "509df05b8dd9217156e197eaa580d66bd2bbdebebf8703e082242a04e370c7f3",
+      "bytes": 7108
+    }
+  ],
+  "cliSource": {
+    "installedVersion": "4.71.0",
+    "installedBundleSha256": "66de0d2d36ede4d9ded6cfaecee2b1e496c2ad8f97bb2258c5dd0f14bcc48d8b",
+    "metadataSymbol": "getDatabaseInfoFromIdOrName",
+    "metadataMethod": "GET-default",
+    "querySymbol": "executeRemotely/d1ApiPost",
+    "commandQueryAction": "query",
+    "queryMethod": "POST",
+    "fileImportUsed": false,
+    "sources": [
+      "https://github.com/cloudflare/workers-sdk/blob/wrangler@4.71.0/packages/wrangler/src/d1/info.ts",
+      "https://github.com/cloudflare/workers-sdk/blob/wrangler@4.71.0/packages/wrangler/src/d1/execute.ts"
+    ],
+    "limit": "Different command paths and sequential observed responses do not establish the metadata authentication failure cause or a permissions repair."
+  },
+  "readPlanArchive": {
+    "capturedFiles": 8,
+    "manifestSha256": "f6130220658071fb8b0b52eee768d1102660131483a81f4e11929e0e68806b54"
+  },
+  "finalChecks": {
+    "localLinksChecked": 22,
+    "privateProofAddressAndReferenceScan": "pass",
+    "articleSourceUnchanged": true,
+    "dataAndPlanArchivesSeparate": true
+  },
+  "privateDataArchive": {
+    "capturedFiles": 83,
+    "manifestSha256": "334e3e35e1c04c68bc9ea983c166520a577b319abc06b7489fd54ac708fa1f5a",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false,
+    "priorArchivesUnchanged": true
+  }
+}

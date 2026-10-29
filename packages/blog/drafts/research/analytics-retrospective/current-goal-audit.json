@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-29T04:14:02.623734+00:00",
-  "sourceBaseline": "e0e7d1024e8d360bab18099329c444f33dc06487",
+  "checkedAt": "2026-10-29T04:39:04.623670+00:00",
+  "sourceBaseline": "05d957c6d8e207b89184383f27cdae3f1b96252c",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
@@ -35,7 +35,7 @@
     "Concise article and preserved source/evidence trail"
   ],
   "incomplete": [
-    "Newest-collector .29.3 signed-input/receipt/proof acceptance remains open; four genuine .29.1-verifier proofs under collectors .29.1/.29.2 are now exact-joined and replayed. The 52 old .28.7 outcome-only records remain unrecovered.",
+    "The 52 older .28.7 stored verified outcomes still lack complete recovered inputs and fresh cryptographic replay; the separate two-request latest-collector acceptance does not repair them.",
     "Request-level native managed-verifier comparison",
     "Human/device/actual-JavaScript-off and Cloudflare RUM-receipt measurements",
     "R1 operator/authenticity/trigger attribution",
@@ -45,7 +45,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Use bounded native retained-log selection to investigate whether genuine Forwarded fields are present and queryable; preserve exact window, field queryability, input source and collector provenance before any separately planned database read. Header survival alone does not establish trusted provider propagation. Human trials remain deferred.",
+  "nextBoundedAction": "Inspect native request-header provenance and redaction against current primary documentation and bounded captured representations before using vendor-branded transport fields for attribution. Header names, retained absence and provider bot booleans are not operator proof. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1358,
     "prompts": 31,
@@ -57,10 +57,10 @@
     "lastServedCheckReceipt": "network-receipt-release.json"
   },
   "runtimeUnchanged": true,
-  "productionStatements": 0,
+  "productionStatements": 2,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": false,
+  "liveAccountInspection": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -163,13 +163,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 0,
+  "productionReportedReads": 4,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedApplicationRows": 0,
-    "providerWriteMetering": "No production observation requested in the offline operator/purpose audit."
+    "providerWriteMetering": "No production observation requested by this investigation; natural ingestion and provider costs are separate."
   },
-  "newVisitsScope": "Offline Forwarded/operator/use diagnostic only: four retained originals and eight injected unsigned-header counterfactuals, plus synthetic signature/syntax controls. No new site observation or production SQL.",
+  "newVisitsScope": "Fixed retained-log selection: 409 invocation representations, two latest-collector signed chains and six offline replay contexts. No new site observation requested. Two successful SELECTs report four reads/zero writes; one failed metadata attempt has unavailable cost.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -192,7 +192,8 @@
     "newD1Statements": 0,
     "newObservations": 0,
     "providerQueryCost": "not returned",
-    "signedFailureOrMultiSourceRetainedBranchesMeasured": false
+    "signedFailureOrMultiSourceRetainedBranchesMeasured": false,
+    "additionalSignedUnmappedBranchReceipt": "latest-signed-production.json"
   },
   "currentVerifierCohort": {
     "receipt": "current-verifier-cohort.json",
@@ -208,7 +209,8 @@
     "nativeBooleanValuesAvailable": 0,
     "newestCollectorAccepted": false,
     "wholeHistoricalCohortRecovered": false,
-    "humanTriggerEstablished": false
+    "humanTriggerEstablished": false,
+    "newestCollectorFollowup": "latest-signed-production.json; separate two-request latest-collector cohort, not a change to Research 69 scope."
   },
   "replayPolicyExperiment": {
     "receipt": "replay-policy-candidate.json",
@@ -244,5 +246,29 @@
     "articleChanged": false,
     "retainedHeaderObjectsWithoutForwarded": 4,
     "wireCompleteHeaderRetentionProven": false
+  },
+  "latestSignedCohort": {
+    "receipt": "latest-signed-production.json",
+    "checks": "latest-signed-checks.json",
+    "collectionVersion": "2026-10-29.3",
+    "receiptVersion": "2026-10-29.1",
+    "verifierProfile": "2026-10-29.1",
+    "exactStoredChains": 2,
+    "independentReceiptCopies": 2,
+    "latestCollectorAcceptedForSelectedCohort": true,
+    "old52ProofsRecovered": false,
+    "nativeBooleanValuesAvailable": 0,
+    "wholeHistoryCorrectnessProven": false,
+    "humanTriggerOrActualUseEstablished": false
+  },
+  "retainedHeaderSelection": {
+    "receipt": "latest-signed-production.json",
+    "invocations": 409,
+    "distinctRequestReferences": 409,
+    "distinctLogIds": 402,
+    "duplicateLogIdGroups": 7,
+    "capturedForwardedHeaders": 0,
+    "forwardedPositiveIndexingWhenPresent": "not-established",
+    "wireCompleteRetentionProven": false
   }
 }

@@ -49,3 +49,5 @@ The older 52 `.28.7` outcome-only records remain unrecovered; these four differe
 The separate private archive preserves 48 captured files plus its manifest, 0700 directories/0600 files. Manifest SHA-256: `cb42083b12b7d6442ecd6becec0806612116d92d525df707606f1a0dec89a4a8`. The five-file pre-execution plan archive stays immutable. October 31 is a review date, not automatic deletion or provider-wide erasure.
 
 [Research 70](70-replay-policies-atomicity-and-cost.md) tests candidate atomic replay state, cross-Worker scope, retry/unsigned-context counterexamples, expiry retention and local metered cost. It activates no production store or rejection policy.
+
+[Research 72](72-latest-signed-proofs-and-log-identifiers.md) closes latest-collector `.29.3` signed-input/receipt/storage acceptance for a separate two-request Exa cohort. It preserves seven unrelated exported log-ID collisions and does not repair the older missing proofs or establish purpose/native agreement.

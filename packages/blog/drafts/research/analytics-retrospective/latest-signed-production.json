@@ -1,0 +1,451 @@
+{
+  "checkedAt": "2026-10-29T04:30:28.483Z",
+  "stage": "accepted-exact-storage-and-replay",
+  "headerSelection": {
+    "start": "2026-10-29T03:15:00.000Z",
+    "end": "2026-10-29T04:15:00.000Z",
+    "nativeCount": 409,
+    "exportCap": 500,
+    "exportedInvocations": 409,
+    "distinctLogReferences": 402,
+    "duplicateLogIdGroups": 7,
+    "recordsInDuplicateLogIdGroups": 14,
+    "signedRecordsInDuplicateLogIdGroups": 0,
+    "distinctRequestReferences": 409,
+    "positiveHeader": "x-forwarded-proto",
+    "capturedForwardedHeaders": 0,
+    "signatureTriples": 2
+  },
+  "broadExportLogIdCollisionsPreserved": true,
+  "latestCollector": "2026-10-29.3",
+  "receiptVersion": "2026-10-29.1",
+  "verifierProfile": "2026-10-29.1",
+  "exactCompleteChains": 2,
+  "independentInvocationCopyPairs": 2,
+  "independentReceiptCopyPairs": 2,
+  "exactStorageProjectionPairs": 2,
+  "comparison": {
+    "candidateRows": 2,
+    "retainedInputRecords": 8,
+    "retainedStoredRecords": 2,
+    "rejectedRetainedRecords": {
+      "shape": 0,
+      "timestamp": 0
+    },
+    "invalidCandidateReferences": 0,
+    "unavailableReceiptReferences": 0,
+    "invalidReceiptReferences": 0,
+    "unmatchedCandidateRows": 0,
+    "unmatchedReceiptRecords": 0,
+    "ambiguousReferenceGroups": 0,
+    "invalidPairMetadata": 0,
+    "unprojectableCandidateRows": 0,
+    "matchedReferencePairs": 2,
+    "identicalProjectionPairs": 2,
+    "differentProjectionPairs": 0,
+    "storedLocalVerifiedPairs": 2,
+    "testInjectedPairs": 0,
+    "conflictingStoredStatusPairs": 0,
+    "changedFields": {},
+    "unexpectedFields": 0
+  },
+  "scopedNativeExportIntegrity": {
+    "missingIds": 0,
+    "duplicateIds": 0,
+    "truncatedRecords": 0
+  },
+  "executionWorkers": [
+    "2c022398-d1de-4ad4-9ba1-2ede9670e301"
+  ],
+  "rows": [
+    {
+      "collectionVersion": "2026-10-29.3",
+      "receiptVersion": "2026-10-29.1",
+      "readerKind": "ai-search",
+      "declaredClient": "ExaSearchBot",
+      "signature": {
+        "coverage": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false,
+          "status": "recorded",
+          "replayPolicy": "expiry-only"
+        },
+        "evidenceVersion": "2026-10-27.5",
+        "source": "local-webbotauth",
+        "verifierProfile": "2026-10-29.1",
+        "status": "verified",
+        "outcome": "verified",
+        "reason": "none",
+        "reasonNames": "none",
+        "signer": "Exa",
+        "signerDisplayProfile": "2026-10-28.1",
+        "documentedVendorStatus": "matching-origin",
+        "userAgentCovered": "false",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        },
+        "reasonCount": 0
+      },
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable",
+        "categoryStatus": "known",
+        "categoryValue": "Search Engine Crawler"
+      },
+      "vendorNetwork": {
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "status": "recorded",
+        "profile": "2026-10-29.1",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T03:39:36.117Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "sourceNames": "none",
+        "checks": {
+          "status": "none"
+        },
+        "declarationCount": 1,
+        "configuredDeclarationCount": 0,
+        "unmappedDeclarationCount": 1,
+        "checkCount": 0
+      },
+      "exhaustiveAudit": {
+        "version": "2026-10-28.1",
+        "verifierProfile": "2026-10-29.1",
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "headerBudgetUnits": 32768,
+          "clockSource": "caller-supplied"
+        },
+        "scope": "paired-web-bot-auth-candidates",
+        "assessment": "complete",
+        "termination": "exhausted",
+        "inputMembers": 1,
+        "signatureMembers": 1,
+        "unpairedInputs": 0,
+        "unpairedSignatures": 0,
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "verifiedCandidates": 1,
+        "notVerifiedByProfileCandidates": 0,
+        "unavailableCandidates": 0,
+        "unsupportedCandidates": 0,
+        "indeterminateCandidates": 0,
+        "unassessedCandidates": 0,
+        "unresolvedCandidates": 0,
+        "verifiedPublisherOriginLowerBound": 1,
+        "directoryFetches": 1
+      },
+      "outcomes": {
+        "original": {
+          "status": "verified",
+          "reason": null
+        },
+        "changed-authority": {
+          "status": "unverified",
+          "reason": "signature-invalid"
+        },
+        "changed-unsigned-role-and-path": {
+          "status": "verified",
+          "reason": null
+        }
+      }
+    },
+    {
+      "collectionVersion": "2026-10-29.3",
+      "receiptVersion": "2026-10-29.1",
+      "readerKind": "ai-search",
+      "declaredClient": "ExaSearchBot",
+      "signature": {
+        "coverage": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false,
+          "status": "recorded",
+          "replayPolicy": "expiry-only"
+        },
+        "evidenceVersion": "2026-10-27.5",
+        "source": "local-webbotauth",
+        "verifierProfile": "2026-10-29.1",
+        "status": "verified",
+        "outcome": "verified",
+        "reason": "none",
+        "reasonNames": "none",
+        "signer": "Exa",
+        "signerDisplayProfile": "2026-10-28.1",
+        "documentedVendorStatus": "matching-origin",
+        "userAgentCovered": "false",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        },
+        "reasonCount": 0
+      },
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable",
+        "categoryStatus": "known",
+        "categoryValue": "Search Engine Crawler"
+      },
+      "vendorNetwork": {
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "status": "recorded",
+        "profile": "2026-10-29.1",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T03:39:36.688Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "sourceNames": "none",
+        "checks": {
+          "status": "none"
+        },
+        "declarationCount": 1,
+        "configuredDeclarationCount": 0,
+        "unmappedDeclarationCount": 1,
+        "checkCount": 0
+      },
+      "exhaustiveAudit": {
+        "version": "2026-10-28.1",
+        "verifierProfile": "2026-10-29.1",
+        "policy": {
+          "maxCandidates": 8,
+          "deadlineMs": 2000,
+          "maxAgeSeconds": 86400,
+          "headerBudgetUnits": 32768,
+          "clockSource": "caller-supplied"
+        },
+        "scope": "paired-web-bot-auth-candidates",
+        "assessment": "complete",
+        "termination": "exhausted",
+        "inputMembers": 1,
+        "signatureMembers": 1,
+        "unpairedInputs": 0,
+        "unpairedSignatures": 0,
+        "matchedCandidates": 1,
+        "taggedCandidates": 1,
+        "attemptedCandidates": 1,
+        "verifiedCandidates": 1,
+        "notVerifiedByProfileCandidates": 0,
+        "unavailableCandidates": 0,
+        "unsupportedCandidates": 0,
+        "indeterminateCandidates": 0,
+        "unassessedCandidates": 0,
+        "unresolvedCandidates": 0,
+        "verifiedPublisherOriginLowerBound": 1,
+        "directoryFetches": 1
+      },
+      "outcomes": {
+        "original": {
+          "status": "verified",
+          "reason": null
+        },
+        "changed-authority": {
+          "status": "unverified",
+          "reason": "signature-invalid"
+        },
+        "changed-unsigned-role-and-path": {
+          "status": "verified",
+          "reason": null
+        }
+      }
+    }
+  ],
+  "nodeAndWorkerdContexts": 6,
+  "independentRfcContexts": 6,
+  "independentReference": {
+    "checkedAt": "2026-10-29T04:23:49.806151+00:00",
+    "sourceCommit": "1de433d9a49fd608475c6054ab14a1652c088844",
+    "sourceFilesRechecked": 18,
+    "recordedClock": true,
+    "keyResolver": "per-trial captured publisher keys by RFC thumbprint",
+    "maxAgeSeconds": 86400,
+    "rows": [
+      {
+        "vendor": "exa",
+        "variant": "original",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "exa",
+        "variant": "changed-authority",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": null,
+        "error": "InvalidSignature"
+      },
+      {
+        "vendor": "exa",
+        "variant": "changed-unsigned-role-and-path",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "exa",
+        "variant": "original",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      },
+      {
+        "vendor": "exa",
+        "variant": "changed-authority",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": null,
+        "error": "InvalidSignature"
+      },
+      {
+        "vendor": "exa",
+        "variant": "changed-unsigned-role-and-path",
+        "referenceClockSkewSeconds": 5,
+        "returnedResults": 1,
+        "error": null
+      }
+    ],
+    "referenceCalls": 6,
+    "externalRequests": 0,
+    "limits": [
+      "Generic RFC verification; discovery, publisher registration and Web Bot Auth admission are separate.",
+      "An exception is not a complete census of valid candidates; this cohort has one eligible candidate per request."
+    ],
+    "execution": {
+      "inputSha256": "0dd6cbe662dd5635e7edb247e25384bd31342aaa5cae5f0344bee34416da6318",
+      "scriptSha256": "f9a687f4831239c9258dd1d54ee8943a1e714401f60bf875bfa97ba9acee7098",
+      "sourceManifestSha256": "b3b73b129b8f5424a4862bcf00528424cba91fe6874faae6648855151125ebd9",
+      "dependenciesRechecked": {
+        "cryptography": "50.0.2",
+        "http-sf": "1.5.0",
+        "cffi": "2.1.1",
+        "typing_extensions": "4.16.0",
+        "pycparser": "3.12"
+      },
+      "transport": "Frozen input bytes supplied directly to child stdin; no shell interpolation."
+    }
+  },
+  "boundedReuse": {
+    "version": "2026-10-28.1",
+    "verifierProfile": "2026-10-29.1",
+    "scope": "supplied-observations-publisher-key",
+    "enforcement": "none",
+    "assessment": "complete",
+    "termination": "exhausted",
+    "policy": {
+      "maxObservations": 2,
+      "maxCandidatesPerObservation": 2,
+      "deadlineMs": 2000,
+      "maxAgeSeconds": 86400,
+      "headerBudgetUnits": 32768
+    },
+    "submittedObservations": 2,
+    "assessedObservations": 2,
+    "unassessedObservations": 0,
+    "missingReferenceRecords": 0,
+    "duplicateReferenceRecords": 0,
+    "invalidContextRecords": 0,
+    "headerBudgetRecords": 0,
+    "incompleteObservations": 0,
+    "verifiedObservations": 2,
+    "knownTaggedCandidates": 2,
+    "attemptedCandidates": 2,
+    "unassessedKnownCandidates": 0,
+    "verifiedCandidates": 2,
+    "notVerifiedByProfileCandidates": 0,
+    "unresolvedCandidates": 0,
+    "nonceStringCandidates": 2,
+    "nonceAbsentCandidates": 0,
+    "nonceUnusableCandidates": 0,
+    "distinctVerifiedProofs": 2,
+    "repeatedProofGroups": 0,
+    "observationsInRepeatedProofGroups": 0,
+    "repeatedProofGroupsWithChangedMethodUrlOrUserAgent": 0,
+    "distinctUsableNonces": 2,
+    "repeatedNonceGroups": 0,
+    "repeatedNonceGroupsWithDifferentProofs": 0,
+    "directoryFetches": 1
+  },
+  "directory": {
+    "source": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+    "capturedAt": "2026-10-29T04:20:25.614088+00:00",
+    "responseStatus": 200,
+    "responseHeaders": {
+      "content-type": "application/http-message-signatures-directory+json",
+      "cache-control": "max-age=300"
+    },
+    "sha256": "2a9fed3dab0798b45eb58791f5e0c178bb95ef6d247d5a37531890058bd0fb52",
+    "readerTelemetryForwarded": false
+  },
+  "inputCommitments": {
+    "headers": "3fbabb4406e82dbe5e779107bab8c97712996206d3ec9ca53197f70f038798a1",
+    "chains": "db093bf4d5e8c54adc1a7f99b2d10f1579fc27b179090b86df6c14c6190282fa",
+    "replay": "0dd6cbe662dd5635e7edb247e25384bd31342aaa5cae5f0344bee34416da6318",
+    "receiptCopies": "463184921b61a24e28baa316834fcdd1d4f7cbb1b4f02880f2fb2b54d02a82ae",
+    "sqlTemplate": "71584506f2b0b76455f9e9bbf50a931f46f57f5985e35345564fc0b727273026"
+  },
+  "productionDiagnostics": {
+    "statements": 2,
+    "agentAttempts": 2,
+    "reportedReads": 4,
+    "reportedWrites": 0,
+    "reportedAttempts": 2,
+    "metadataFailure": {
+      "attempts": 1,
+      "providerCode": 10000,
+      "metering": "unavailable",
+      "cause": "not-established"
+    },
+    "queryAccessControl": {
+      "reads": 0,
+      "writes": 0
+    },
+    "exactRead": {
+      "reads": 4,
+      "writes": 0
+    },
+    "remainingDailyBudgetEstablished": false
+  },
+  "newSiteRequests": 0,
+  "newHumanLabels": 0,
+  "runtimeChanged": false,
+  "limits": [
+    "Fixed retained representations, not complete traffic or wire-complete request headers; positive x-forwarded-proto selection and provider sampling apply.",
+    "Seven colliding exported log-ID pairs are outside the exact signed selection and are preserved, not deduplicated.",
+    "Two latest-collector proofs do not recover the old 52 outcome-only records or prove whole-history correctness.",
+    "Unsigned User-Agent/resource and no trustworthy Forwarded assertion leave request purpose, human trigger and actual use unestablished.",
+    "Later captured keys do not establish the original resolver snapshot or Cloudflare managed-verifier agreement.",
+    "Native UI/export and failed metadata costs are additional and unreturned; successful SELECT metering is not an account-wide ledger."
+  ]
+}
