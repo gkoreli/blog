@@ -1,0 +1,834 @@
+{
+  "checkedAt": "2026-10-29T04:47:52.365Z",
+  "scope": "offline retained representation diagnostic",
+  "inputSha256": "8e8166000128074ec3b5c6691eae0a642aa3f69bb874813b166e76d4a0ffbfa1",
+  "retainedInputSha256": "0dd6cbe662dd5635e7edb247e25384bd31342aaa5cae5f0344bee34416da6318",
+  "scriptSha256": "27f9ff4f5d74a926be76da70d1c3ac60f4daae07b2ebc4beae89802e769a5147",
+  "moduleSha256": "e124b55732459bde4835f4498aa3f1a4ec1aa704415387d29585c7f542d29e32",
+  "fixtureSha256": "eadce8213b64c2288c37769a556574b2f15de9093b0d376243007a4036646f8c",
+  "casesPerRuntime": 18,
+  "results": [
+    {
+      "name": "original",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "verified-captured-context",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "inputMembers": 1,
+          "signatureMembers": 1,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "verifiedCandidates": 1,
+          "notVerifiedByProfileCandidates": 0,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": 0,
+          "unresolvedCandidates": 0,
+          "verifiedPublisherOriginLowerBound": 1,
+          "directoryFetches": 1
+        },
+        "availability": {
+          "inspectedCandidates": 1,
+          "uninspectedCandidates": 0,
+          "components": 3,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "redacted",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "not-verified-captured-context",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "inputMembers": 1,
+          "signatureMembers": 1,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "verifiedCandidates": 0,
+          "notVerifiedByProfileCandidates": 1,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": 0,
+          "unresolvedCandidates": 0,
+          "verifiedPublisherOriginLowerBound": 0,
+          "directoryFetches": 1
+        },
+        "availability": {
+          "inspectedCandidates": 1,
+          "uninspectedCandidates": 0,
+          "components": 3,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 1,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "missing",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "not-verified-captured-context",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "inputMembers": 1,
+          "signatureMembers": 1,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "verifiedCandidates": 0,
+          "notVerifiedByProfileCandidates": 0,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 1,
+          "unassessedCandidates": 0,
+          "unresolvedCandidates": 1,
+          "verifiedPublisherOriginLowerBound": 0,
+          "directoryFetches": 0
+        },
+        "availability": {
+          "inspectedCandidates": 1,
+          "uninspectedCandidates": 0,
+          "components": 3,
+          "missingHeaderComponents": 1,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "invalid",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "not-verified-captured-context",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "inputMembers": 1,
+          "signatureMembers": 1,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "verifiedCandidates": 0,
+          "notVerifiedByProfileCandidates": 1,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": 0,
+          "unresolvedCandidates": 0,
+          "verifiedPublisherOriginLowerBound": 0,
+          "directoryFetches": 1
+        },
+        "availability": {
+          "inspectedCandidates": 1,
+          "uninspectedCandidates": 0,
+          "components": 3,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "literal",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "verified-captured-context",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "inputMembers": 1,
+          "signatureMembers": 1,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "verifiedCandidates": 1,
+          "notVerifiedByProfileCandidates": 0,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": 0,
+          "unresolvedCandidates": 0,
+          "verifiedPublisherOriginLowerBound": 1,
+          "directoryFetches": 1
+        },
+        "availability": {
+          "inspectedCandidates": 1,
+          "uninspectedCandidates": 0,
+          "components": 3,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 1,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "unsignedMarker",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "verified-captured-context",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "inputMembers": 1,
+          "signatureMembers": 1,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "verifiedCandidates": 1,
+          "notVerifiedByProfileCandidates": 0,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": 0,
+          "unresolvedCandidates": 0,
+          "verifiedPublisherOriginLowerBound": 1,
+          "directoryFetches": 1
+        },
+        "availability": {
+          "inspectedCandidates": 1,
+          "uninspectedCandidates": 0,
+          "components": 3,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "mixed",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "verified-captured-context",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "inputMembers": 2,
+          "signatureMembers": 2,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 2,
+          "taggedCandidates": 2,
+          "attemptedCandidates": 2,
+          "verifiedCandidates": 1,
+          "notVerifiedByProfileCandidates": 1,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": 0,
+          "unresolvedCandidates": 0,
+          "verifiedPublisherOriginLowerBound": 1,
+          "directoryFetches": 1
+        },
+        "availability": {
+          "inspectedCandidates": 2,
+          "uninspectedCandidates": 0,
+          "components": 6,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 1,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "limit",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "not-verified-captured-context",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 1,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "partial",
+          "termination": "candidate-limit",
+          "inputMembers": 2,
+          "signatureMembers": 2,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 2,
+          "taggedCandidates": 2,
+          "attemptedCandidates": 1,
+          "verifiedCandidates": 0,
+          "notVerifiedByProfileCandidates": 1,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": 1,
+          "unresolvedCandidates": 1,
+          "verifiedPublisherOriginLowerBound": 0,
+          "directoryFetches": 1
+        },
+        "availability": {
+          "inspectedCandidates": 1,
+          "uninspectedCandidates": 1,
+          "components": 3,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 1,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "unavailable",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "not-verified-captured-context",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "partial",
+          "termination": "exhausted",
+          "inputMembers": 1,
+          "signatureMembers": 1,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "verifiedCandidates": 0,
+          "notVerifiedByProfileCandidates": 0,
+          "unavailableCandidates": 1,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": 0,
+          "unresolvedCandidates": 1,
+          "verifiedPublisherOriginLowerBound": 0,
+          "directoryFetches": 1
+        },
+        "availability": {
+          "inspectedCandidates": 1,
+          "uninspectedCandidates": 0,
+          "components": 3,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "deadline",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "not-verified-captured-context",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 50,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "partial",
+          "termination": "deadline",
+          "inputMembers": 1,
+          "signatureMembers": 1,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "verifiedCandidates": 0,
+          "notVerifiedByProfileCandidates": 0,
+          "unavailableCandidates": 1,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": 0,
+          "unresolvedCandidates": 1,
+          "verifiedPublisherOriginLowerBound": 0,
+          "directoryFetches": 1
+        },
+        "availability": {
+          "inspectedCandidates": 1,
+          "uninspectedCandidates": 0,
+          "components": 3,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": true
+    },
+    {
+      "name": "mutation",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "verified-captured-context",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "inputMembers": 1,
+          "signatureMembers": 1,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "verifiedCandidates": 1,
+          "notVerifiedByProfileCandidates": 0,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": 0,
+          "unresolvedCandidates": 0,
+          "verifiedPublisherOriginLowerBound": 1,
+          "directoryFetches": 1
+        },
+        "availability": {
+          "inspectedCandidates": 1,
+          "uninspectedCandidates": 0,
+          "components": 3,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "missing-clock",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "missing-or-invalid",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "not-assessed",
+        "capturedInputAudit": null,
+        "availability": {
+          "inspectedCandidates": 0,
+          "uninspectedCandidates": null,
+          "components": 0,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "null-clock",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "missing-or-invalid",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "not-assessed",
+        "capturedInputAudit": null,
+        "availability": {
+          "inspectedCandidates": 0,
+          "uninspectedCandidates": null,
+          "components": 0,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "invalid-clock",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "missing-or-invalid",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "not-assessed",
+        "capturedInputAudit": null,
+        "availability": {
+          "inspectedCandidates": 0,
+          "uninspectedCandidates": null,
+          "components": 0,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "header-budget",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "not-assessed",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "not-assessed",
+          "termination": "header-budget",
+          "inputMembers": null,
+          "signatureMembers": null,
+          "unpairedInputs": null,
+          "unpairedSignatures": null,
+          "matchedCandidates": null,
+          "taggedCandidates": null,
+          "attemptedCandidates": 0,
+          "verifiedCandidates": 0,
+          "notVerifiedByProfileCandidates": 0,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": null,
+          "unresolvedCandidates": null,
+          "verifiedPublisherOriginLowerBound": 0,
+          "directoryFetches": 0
+        },
+        "availability": {
+          "inspectedCandidates": 0,
+          "uninspectedCandidates": null,
+          "components": 0,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "malformed",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "not-assessed",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "not-assessed",
+          "termination": "input-not-assessed",
+          "inputMembers": null,
+          "signatureMembers": null,
+          "unpairedInputs": null,
+          "unpairedSignatures": null,
+          "matchedCandidates": null,
+          "taggedCandidates": null,
+          "attemptedCandidates": 0,
+          "verifiedCandidates": 0,
+          "notVerifiedByProfileCandidates": 0,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": null,
+          "unresolvedCandidates": null,
+          "verifiedPublisherOriginLowerBound": 0,
+          "directoryFetches": 0
+        },
+        "availability": {
+          "inspectedCandidates": 0,
+          "uninspectedCandidates": null,
+          "components": 0,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "retained-0",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "verified-captured-context",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "inputMembers": 1,
+          "signatureMembers": 1,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "verifiedCandidates": 1,
+          "notVerifiedByProfileCandidates": 0,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": 0,
+          "unresolvedCandidates": 0,
+          "verifiedPublisherOriginLowerBound": 1,
+          "directoryFetches": 1
+        },
+        "availability": {
+          "inspectedCandidates": 1,
+          "uninspectedCandidates": 0,
+          "components": 2,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    },
+    {
+      "name": "retained-1",
+      "result": {
+        "version": "2026-10-29.1",
+        "scope": "retained-request-representation",
+        "recordedClock": "supplied",
+        "originalRequestValidity": "not-established",
+        "directorySnapshotEquivalence": "not-established",
+        "replayInterpretation": "verified-captured-context",
+        "capturedInputAudit": {
+          "version": "2026-10-28.1",
+          "verifierProfile": "2026-10-29.1",
+          "policy": {
+            "maxCandidates": 8,
+            "deadlineMs": 2000,
+            "maxAgeSeconds": 86400,
+            "headerBudgetUnits": 32768,
+            "clockSource": "caller-supplied"
+          },
+          "scope": "paired-web-bot-auth-candidates",
+          "assessment": "complete",
+          "termination": "exhausted",
+          "inputMembers": 1,
+          "signatureMembers": 1,
+          "unpairedInputs": 0,
+          "unpairedSignatures": 0,
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "verifiedCandidates": 1,
+          "notVerifiedByProfileCandidates": 0,
+          "unavailableCandidates": 0,
+          "unsupportedCandidates": 0,
+          "indeterminateCandidates": 0,
+          "unassessedCandidates": 0,
+          "unresolvedCandidates": 0,
+          "verifiedPublisherOriginLowerBound": 1,
+          "directoryFetches": 1
+        },
+        "availability": {
+          "inspectedCandidates": 1,
+          "uninspectedCandidates": 0,
+          "components": 2,
+          "missingHeaderComponents": 0,
+          "placeholderShapedHeaderComponents": 0,
+          "unresolvedComponents": 0
+        }
+      },
+      "aborted": false
+    }
+  ],
+  "newProductionRequests": 0,
+  "d1Statements": 0,
+  "externalResolverRequests": 0,
+  "newHumanLabels": 0,
+  "limits": [
+    "Two retained originals come from Research 72; no new observation.",
+    "Marker shape does not establish provider redaction.",
+    "No original-wire or historical directory snapshot equivalence claim."
+  ]
+}

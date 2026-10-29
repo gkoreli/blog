@@ -1005,6 +1005,35 @@ export function inspectWebBotAuthCandidates(request: Request): CandidateInspecti
   } catch { return { status: 'unverified', reason: 'verification-error' }; }
 }
 
+/** Availability of a selected retained representation, not original-wire
+ * fidelity or a verification verdict. No untrusted names/values escape.
+ * Callers must bound the signing headers and candidate traversal first.
+ */
+export function inspectWebBotAuthCandidateCapture(request: Request, label: string): {
+  components: number; missingHeaderComponents: number;
+  placeholderShapedHeaderComponents: number; unresolvedComponents: number;
+} | null {
+  try {
+    const context = candidateContext(request);
+    if (context.status !== 'ready') return null;
+    const candidate = context.tagged.find(candidate => candidate.label === label);
+    if (candidate === undefined || hasDuplicateComponent(candidate.input)) return null;
+    const result = { components: candidate.input.items.length, missingHeaderComponents: 0, placeholderShapedHeaderComponents: 0, unresolvedComponents: 0 };
+    for (const item of candidate.input.items) {
+      if (item.bare.type === 'string' && !item.bare.value.startsWith('@') && item.parameters.length === 0 && item.bare.value === item.bare.value.toLowerCase()) {
+        const value = request.headers.get(item.bare.value);
+        if (value === null) { result.missingHeaderComponents++; continue; }
+        // A signer can legitimately sign these literal values. Shape alone is
+        // neither provider redaction provenance nor a reason to skip crypto.
+        if (['REDACTED', '[REDACTED]', '[redacted]', '<redacted>'].includes(value)) result.placeholderShapedHeaderComponents++;
+      }
+      const resolved = componentValue(request, item, context.parsedAgent);
+      if (resolved === null || 'reason' in resolved) result.unresolvedComponents++;
+    }
+    return result;
+  } catch { return null; }
+}
+
 /** Verify one eligible label against the original message, preserving other
  * signature fields and covered context. This is a selected proof, not a
  * first-valid or exhaustive assessment. Used by the separately bounded audit.

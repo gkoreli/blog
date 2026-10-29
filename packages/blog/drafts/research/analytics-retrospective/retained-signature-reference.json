@@ -1,0 +1,85 @@
+{
+  "checkedAt": "2026-10-29T04:48:00.761636+00:00",
+  "sourceCommit": "1de433d9a49fd608475c6054ab14a1652c088844",
+  "sourceFilesRechecked": 18,
+  "recordedClock": true,
+  "keyResolver": "per-trial captured publisher keys by RFC thumbprint",
+  "maxAgeSeconds": 86400,
+  "rows": [
+    {
+      "vendor": "synthetic",
+      "variant": "original",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "redacted",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature"
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "missing",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature"
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "invalid",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": null,
+      "error": "InvalidSignature"
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "literal",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "synthetic",
+      "variant": "unsignedMarker",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "Exa",
+      "variant": "retained-0",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    },
+    {
+      "vendor": "Exa",
+      "variant": "retained-1",
+      "referenceClockSkewSeconds": 5,
+      "returnedResults": 1,
+      "error": null
+    }
+  ],
+  "referenceCalls": 8,
+  "externalRequests": 0,
+  "limits": [
+    "Generic RFC verification; discovery, publisher registration and Web Bot Auth admission are separate.",
+    "An exception is not a complete census of valid candidates; this cohort has one eligible candidate per request."
+  ],
+  "execution": {
+    "inputSha256": "3ca0b98bcf37bc38aa086e80b38d219d63fa148fbee3868a9b9d40cec9059ebc",
+    "scriptSha256": "f9a687f4831239c9258dd1d54ee8943a1e714401f60bf875bfa97ba9acee7098",
+    "sourceManifestSha256": "b3b73b129b8f5424a4862bcf00528424cba91fe6874faae6648855151125ebd9",
+    "fixtureInputSha256": "8e8166000128074ec3b5c6691eae0a642aa3f69bb874813b166e76d4a0ffbfa1",
+    "dependencyVersions": {
+      "cryptography": "50.0.2",
+      "http-sf": "1.5.0",
+      "cffi": "2.1.1",
+      "typing_extensions": "4.16.0",
+      "pycparser": "3.12"
+    }
+  }
+}

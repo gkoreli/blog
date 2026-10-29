@@ -18,7 +18,8 @@
     "./directory-publication": "./src/directory-publication-contract.ts",
     "./webbotauth-audit": "./src/webbotauth-audit.ts",
     "./webbotauth-reuse-audit": "./src/webbotauth-reuse-audit.ts",
-    "./forwarded-purpose": "./src/forwarded-purpose.ts"
+    "./forwarded-purpose": "./src/forwarded-purpose.ts",
+    "./retained-signature-audit": "./src/retained-signature-audit.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",

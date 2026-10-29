@@ -1,0 +1,106 @@
+{
+  "checkedAt": "2026-10-29T04:48:40.339383+00:00",
+  "scope": "Optional offline diagnostic; no collector or verifier acceptance-policy change",
+  "sourceBaseline": "37a25877d1d72ab759ff069b927f54e067aaf620",
+  "primarySources": {
+    "checkedAt": "2026-10-29T04:46:14.502920+00:00",
+    "workerdCommit": "aa494794c44a900592c8281b191302d3b0a6e2a5",
+    "sources": [
+      {
+        "name": "http-headers.md",
+        "url": "https://developers.cloudflare.com/fundamentals/reference/http-headers/index.md",
+        "status": 403,
+        "accepted": false
+      },
+      {
+        "name": "rfc9421.txt",
+        "url": "https://www.rfc-editor.org/rfc/rfc9421.txt",
+        "status": 200,
+        "sha256": "612655786bf4293bfc486e4177571467fbb3de6e6f0eea90cb74c346a34fdf3c",
+        "bytes": 241160
+      },
+      {
+        "name": "trace.c++",
+        "url": "https://github.com/cloudflare/workerd/blob/aa494794c44a900592c8281b191302d3b0a6e2a5/src/workerd/api/trace.c%2B%2B",
+        "capture": "rawLines reconstructed with trailing newline from main-page embedded JSON and its currentOid; raw endpoint returned 403",
+        "sha256": "fa417962efbb5dd982c1db95758f829086796b232a718119d2e37179bc5d0645",
+        "bytes": 30833
+      }
+    ],
+    "failedDiscovery": [
+      "sandbox DNS unavailable",
+      "GitHub API unauthenticated rate limit 403",
+      "raw endpoint 403"
+    ]
+  },
+  "webInspectedSource": {
+    "url": "https://developers.cloudflare.com/fundamentals/reference/http-headers/",
+    "localMarkdownCaptureStatus": 403,
+    "webReadAccepted": true,
+    "limits": "Provider documents origin-facing transformations; do not infer retained Worker topology from header presence alone."
+  },
+  "workerGraph": {
+    "checkedAt": "2026-10-29T04:48:08.497Z",
+    "entry": "packages/blog/src/worker/index.ts",
+    "inputs": 151,
+    "diagnosticModulePresent": false,
+    "inspectorPresent": false,
+    "scope": "Controlled esbuild dependency graph, not production build or deployed-byte comparison"
+  },
+  "acceptance": {
+    "nodeAndNativeCases": 18,
+    "independentRfcMessages": 8,
+    "sourceFilesRechecked": 18,
+    "retainedOriginals": 2,
+    "analyticsTests": 280,
+    "targetedTests": 13,
+    "workspaceTypecheck": "pass",
+    "moduleActivation": "Dedicated source export only; absent from collector/report graph",
+    "originalWireValidityProven": false,
+    "managedProviderComparison": false,
+    "newProductionRequests": 0,
+    "d1Statements": 0,
+    "humanLabels": 0,
+    "newTests": 5,
+    "markdownValidation": "pass"
+  },
+  "retrievalLimits": [
+    "Public source API was rate-limited; main-page embedded source/currentOid supplies the pinned code capture.",
+    "Raw-source and local documentation retrieval returned 403; RFC text capture and web documentation/source reads succeeded."
+  ],
+  "correctedPreAcceptanceAssumptions": [
+    "Initial test assumed a missing covered field was invalid, then unsupported; actual local audit is indeterminate. Final Node/workerd test preserves it.",
+    "Initial harness used wrong acceptance-artifact property; corrected to inputCommitments.replay before any accepted run.",
+    "Initial native launch lacked loopback permission; isolated reruns used approved local listener."
+  ],
+  "article": {
+    "unchanged": true,
+    "sourceSha256": "3c51458d27908a851e629bde089c14f4e8f3f650396052d9484804d6fcd9ed73",
+    "bodyWhitespaceWords": 1358,
+    "prompts": 31,
+    "freshServedCheck": false
+  },
+  "limits": [
+    "Synthetic redaction controls are not observed Exa failures.",
+    "Two marker-shaped Cookie values do not establish their exact production redaction path.",
+    "No operator, purpose, human or population accuracy claim."
+  ],
+  "negativeControl": {
+    "changedExportDigestRejected": true,
+    "acceptedOutputWritten": false
+  },
+  "privateArchive": {
+    "capturedFiles": 32,
+    "manifestSha256": "cbffdcbdaeccc95a028fb7e918ce48babf60aeda495b7403d48c58ff13736280",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false,
+    "priorArchivesUnchanged": true
+  },
+  "finalChecks": {
+    "localLinksChecked": 417,
+    "privateProofAddressAndReferenceScan": "pass",
+    "articleSourceUnchanged": true
+  }
+}

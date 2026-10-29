@@ -1,0 +1,97 @@
+{
+  "checkedAt": "2026-10-29T04:47:49.676Z",
+  "sourceSha256": "3fbabb4406e82dbe5e779107bab8c97712996206d3ec9ca53197f70f038798a1",
+  "scriptSha256": "8fd80ba6693500b3d0fb23e0f84f900c963061c717110f91f863ab0d7ba7a408",
+  "selection": {
+    "start": "2026-10-29T03:15:00.000Z",
+    "end": "2026-10-29T04:15:00.000Z",
+    "nativeCount": 409,
+    "exportCap": 500,
+    "exportedInvocations": 409,
+    "distinctLogReferences": 402,
+    "duplicateLogIdGroups": 7,
+    "recordsInDuplicateLogIdGroups": 14,
+    "signedRecordsInDuplicateLogIdGroups": 0,
+    "distinctRequestReferences": 409,
+    "positiveHeader": "x-forwarded-proto",
+    "capturedForwardedHeaders": 0,
+    "signatureTriples": 2
+  },
+  "counts": {
+    "user-agent": {
+      "absent": 0,
+      "empty": 0,
+      "placeholderShaped": 0,
+      "nonemptyUninterpreted": 409,
+      "validIpSyntax": 0
+    },
+    "cookie": {
+      "absent": 407,
+      "empty": 0,
+      "placeholderShaped": 2,
+      "nonemptyUninterpreted": 0,
+      "validIpSyntax": 0
+    },
+    "authorization": {
+      "absent": 409,
+      "empty": 0,
+      "placeholderShaped": 0,
+      "nonemptyUninterpreted": 0,
+      "validIpSyntax": 0
+    },
+    "cf-connecting-ip": {
+      "absent": 0,
+      "empty": 0,
+      "placeholderShaped": 0,
+      "nonemptyUninterpreted": 409,
+      "validIpSyntax": 409
+    },
+    "cf-connecting-ipv6": {
+      "absent": 409,
+      "empty": 0,
+      "placeholderShaped": 0,
+      "nonemptyUninterpreted": 0,
+      "validIpSyntax": 0
+    },
+    "x-real-ip": {
+      "absent": 0,
+      "empty": 0,
+      "placeholderShaped": 0,
+      "nonemptyUninterpreted": 409,
+      "validIpSyntax": 409
+    },
+    "cf-worker": {
+      "absent": 408,
+      "empty": 0,
+      "placeholderShaped": 0,
+      "nonemptyUninterpreted": 1,
+      "validIpSyntax": 0
+    },
+    "x-openai-host-hash": {
+      "absent": 408,
+      "empty": 0,
+      "placeholderShaped": 0,
+      "nonemptyUninterpreted": 1,
+      "validIpSyntax": 0
+    },
+    "forwarded": {
+      "absent": 409,
+      "empty": 0,
+      "placeholderShaped": 0,
+      "nonemptyUninterpreted": 0,
+      "validIpSyntax": 0
+    }
+  },
+  "distinctRequests": 409,
+  "distinctLogIds": 402,
+  "newProductionRequests": 0,
+  "d1Statements": 0,
+  "newHumanLabels": 0,
+  "interpretation": {
+    "cookie": "Two placeholder-shaped retained values; original bytes and exact redaction path unestablished.",
+    "address": "Syntactically valid retained addresses do not alone establish trusted edge provenance or original client topology.",
+    "cfWorker": "One captured nonempty value; no native trustworthy-header adoption or independently established upstream operator.",
+    "openaiHostHash": "One unreviewed transport hint; field name does not authenticate an OpenAI operator or human trigger.",
+    "forwarded": "Absent from captured objects, not proof of wire-complete absence."
+  }
+}
