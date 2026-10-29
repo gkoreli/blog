@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-29T22:08:51.202440+00:00",
-  "sourceBaseline": "3fa5893c9289acdd6f36f34c3d68bd613b107752",
+  "checkedAt": "2026-10-29T22:22:12.741993+00:00",
+  "sourceBaseline": "e623964",
   "goalAchieved": false,
   "previousTurn": "progress",
-  "scope": "Research96 offline20-context replay and article023 correction accepted on source-linked allocated Worker and exact served Markdown; original requirements remain open.",
+  "scope": "Research97 fresh excluded automation inputs and strict measurement association; no runtime change. Original requirements retained.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Use authenticated Search Console evidence if available; prepare fresh vendor-labelled trials with source/time/account conditions, independently of deferred human trials.",
+  "nextBoundedAction": "Finish checked source delivery; if Duck.ai terms are approved, prepare a new vendor trial plan/window. Otherwise continue available independent evidence; human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1450,
     "prompts": 31,
@@ -176,7 +176,7 @@
     "acknowledgedApplicationRows": 0,
     "providerWriteMetering": "No collection-eligible own-site request or ingestion readback. No per-request write trace; natural/provider activity additional."
   },
-  "newVisitsScope": "One direct Markdown publication GET with source eligibility exclusion; no ingestion readback/per-request version trace or human label.",
+  "newVisitsScope": "Two operation submissions, one confirmed controlled page GET. Not an all-request census; no human visit.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -631,7 +631,7 @@
   },
   "productionDirectDiagnosticSelects": 0,
   "productionReportCalculations": 0,
-  "productionReadScope": "One direct Markdown asset request only; source eligibility excludes collection. No diagnostic SELECT or report fill.",
+  "productionReadScope": "One exactly captured controlled owner-page GET; web tool operation lacks an accepted native match. Browser assets/additional events are outside this page-level counter.",
   "unresolvedMetadata": {
     "research": "88-unresolved-metadata-and-retained-inputs.md",
     "production": "unresolved-metadata-production.json",
@@ -659,7 +659,7 @@
     "checks": "unresolved-metadata-checks.json",
     "release": "unresolved-metadata-release.json"
   },
-  "runtimeUnchangedScope": "Article023, prompt provenance and research scripts/receipts only. Collector/classifier/verifier/schema/report/cache/optional capture unchanged.",
+  "runtimeUnchangedScope": "Diagnostic scripts, tests, prompt provenance and evidence only; classification/collection/verifier/report/schema/configuration unchanged.",
   "localMetadataRelay": {
     "research": "89-local-browser-relays-and-fetch-metadata.md",
     "experiment": "local-metadata-relay-experiment.json",
@@ -718,7 +718,7 @@
     "productionCollectorReadbackReceipt": "metadata-collector-production.json",
     "productionCollectorReadbackScope": "Four matched requests on d65be377; the later article-only publication Worker is accepted separately, without repeating collector trials."
   },
-  "newControlledRequests": 1,
+  "newControlledRequests": 2,
   "liveMetadataControls": {
     "research": "91-live-metadata-controls-and-redacted-correlation.md",
     "native": "metadata-collector-native.json",
@@ -838,8 +838,8 @@
     "unmeteredCalculations": 1,
     "productionBrowserLayoutMeasured": false
   },
-  "productionStatementsScope": "No diagnostic D1 statement or public report request in Research96.",
-  "productionReportedReadsCoverage": "No diagnostic statements to meter. No per-request D1 trace or account-wide usage claim; natural/provider activity additional.",
+  "productionStatementsScope": "No D1 diagnostic statement or report request; existing source excludes /owner.",
+  "productionReportedReadsCoverage": "No diagnostic statements to meter. No ingestion readback/account-wide or natural/provider cost claim.",
   "productionReadTotal": 0,
   "publicationDateRepair": {
     "receipt": "article-reach-date-checks.json",
@@ -870,5 +870,21 @@
     "workerVersion": "f24ce144-fe76-4d29-8a55-3b38e0f2f7a0",
     "servedMarkdownBytes": 48479,
     "perRequestVersionJoined": false
+  },
+  "freshAutomatedFetches": {
+    "research": "97-fresh-automated-fetches-and-measurement-gaps.md",
+    "receipt": "fetcher-trial-replay.json",
+    "executedOperations": 2,
+    "acceptedMeasurements": 1,
+    "evaluatedKnownAutomationRequests": 1,
+    "operatorAbstentions": 1,
+    "operatorDecisions": 0,
+    "errorAmongOperatorDecisions": null,
+    "humanLabels": 0,
+    "storedProductionObservation": false,
+    "duckAi": "Not submitted; terms approval pending",
+    "tailStopped": true,
+    "tailOwnedGroupMembersRemaining": 0,
+    "browserControlTabClosed": true
   }
 }

@@ -1,0 +1,162 @@
+{
+  "checkedAt": "2026-10-29T22:23:33.908Z",
+  "sourceBaseline": "e623964",
+  "capturedWorkerVersion": "33a76b4c-d324-4462-9110-8e5393795c0c",
+  "classifierProfile": "2026-10-29.3",
+  "scope": "Fresh exact captured metadata replay; original owner page is excluded before collection, not a production observation or end-to-end persistence measurement",
+  "planned": 2,
+  "executed": 2,
+  "matchedTrials": 1,
+  "trialsWithoutAcceptedMeasurement": 1,
+  "labeledAutomationRequestsEvaluated": 1,
+  "operatorAbstentions": 1,
+  "committedOperatorDecisions": 0,
+  "errorAmongOperatorDecisions": null,
+  "humanLabels": 0,
+  "humanFalsePositiveRate": null,
+  "populationAccuracyClaimed": false,
+  "productionObservationWritten": false,
+  "measurements": [
+    {
+      "ordinal": 1,
+      "operator": "automated-web-tool",
+      "status": "capture-unavailable",
+      "matchedRequests": 0,
+      "duplicateCopies": 0,
+      "predictions": []
+    },
+    {
+      "ordinal": 2,
+      "operator": "agent-operated-browser",
+      "status": "matched",
+      "matchedRequests": 1,
+      "duplicateCopies": 0,
+      "predictions": [
+        {
+          "assessment": "classified",
+          "classifierProfile": "2026-10-29.3",
+          "declarations": {
+            "status": "none",
+            "candidates": [],
+            "matchedProducts": [],
+            "browserFamily": "chromium"
+          },
+          "reader": {
+            "kind": "browser",
+            "reason": "navigation-shaped-network-unlisted"
+          },
+          "classification": {
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-29.3",
+            "declarations": {
+              "status": "none",
+              "candidates": [],
+              "matchedProducts": [],
+              "browserFamily": "chromium"
+            },
+            "fetchMetadataBits": 1170,
+            "declaredCategoryBits": 0,
+            "categoryAgreement": "no-match",
+            "network": "not-listed",
+            "navigationShaped": true,
+            "activation": "true-claim",
+            "referrerContext": "no-conflict-observed"
+          },
+          "native": {
+            "verifiedBot": null,
+            "signedAgent": null,
+            "category": {
+              "version": "2026-10-27.1",
+              "status": "empty",
+              "value": null
+            }
+          },
+          "signatureAssessment": "absent",
+          "operatorPrediction": "abstain"
+        }
+      ]
+    }
+  ],
+  "syntheticControls": [
+    {
+      "condition": "unassessed-signature",
+      "result": {
+        "assessment": "not-assessed",
+        "reason": "explicit-signature-replay-required",
+        "declarations": {
+          "status": "none",
+          "candidates": [],
+          "matchedProducts": [],
+          "browserFamily": "chromium"
+        }
+      },
+      "scope": "Modified context only; excluded from actual automation denominator"
+    },
+    {
+      "condition": "missing-network",
+      "result": {
+        "assessment": "classified",
+        "classifierProfile": "2026-10-29.3",
+        "declarations": {
+          "status": "none",
+          "candidates": [],
+          "matchedProducts": [],
+          "browserFamily": "chromium"
+        },
+        "reader": {
+          "kind": "unresolved",
+          "reason": "network-evidence-missing"
+        },
+        "classification": {
+          "version": "2026-10-29.2",
+          "classifierProfile": "2026-10-29.3",
+          "declarations": {
+            "status": "none",
+            "candidates": [],
+            "matchedProducts": [],
+            "browserFamily": "chromium"
+          },
+          "fetchMetadataBits": 1170,
+          "declaredCategoryBits": 0,
+          "categoryAgreement": "no-match",
+          "network": "missing",
+          "navigationShaped": true,
+          "activation": "true-claim",
+          "referrerContext": "no-conflict-observed"
+        },
+        "native": {
+          "verifiedBot": null,
+          "signedAgent": null,
+          "category": {
+            "version": "2026-10-27.1",
+            "status": "unavailable",
+            "value": null
+          }
+        },
+        "signatureAssessment": "absent",
+        "operatorPrediction": "abstain"
+      },
+      "scope": "Modified context only; excluded from actual automation denominator"
+    }
+  ],
+  "inputHashes": {
+    "plan.json": "786180227f2ce08434430c1cc3af27e04f2803a41a062cb942c128652e625196",
+    "executions.json": "d64850065f28d03bac228258a554dbfdb37cb307cd20e96e8f3d4cf388f5330a",
+    "tail.jsonstream": "7d0f0b473c002e3a95a0ec9ad7f9d1dc0d297e9dfc90005fc12693d9ea775489",
+    "tail-terminal.json": "6c0a16bb9f0cf28fd847d4caad673480fde190e26154b98c3bc4eb2ff2053217"
+  },
+  "sourceHashes": {
+    "packages/blog/scripts/fetcher-trial-ledger.mjs": "cdc1ac78c6860e080c40a89415ed376a69154bc26d8121999fe290aede35e2dc",
+    "packages/blog/scripts/check-fetcher-trial-replay.mjs": "57619bb8496f75694912361440f6872782a667d768f3fec0743e806193639baa",
+    "packages/analytics/src/classify.ts": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
+    "packages/analytics/src/readerkind.ts": "4150a6fc0186aed820c0e9fa60e98dbcde1817db4c8b3414ffa1cce3a95bf030",
+    "packages/analytics/src/metadata.ts": "4a8750594b0fd81d6322f747c05cf486fa81d1ace3493a7c932192006da1c566",
+    "packages/analytics/src/versions.ts": "1f87b08748a5001fa93ec6c55749b578bad1db9297e72aa9ff077f6eb5dff90e"
+  },
+  "limits": [
+    "No accepted capture is not proof of no request.",
+    "Metadata replay does not independently identify an engine, device, person or intent.",
+    "Missing signed contexts require explicit verification; no implicit resolver or absent-verification substitution.",
+    "Cases with no accepted measurement remain outside classifier abstention/error denominators."
+  ]
+}

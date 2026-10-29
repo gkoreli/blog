@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-29T22:24:47.868981+00:00",
+  "sourceBaseline": "e623964",
+  "siteTests": 124,
+  "ledgerTestGroups": 4,
+  "workspaceTypecheck": true,
+  "markdownValidPosts": 22,
+  "isolatedBuildPosts": 33,
+  "sharedDistTouched": false,
+  "promptProvenance": {
+    "originalRecordPrefixPreserved": true,
+    "automatedGoalReplayRemoved": true,
+    "actualShapingMessagesAppended": 2,
+    "attachmentRepublished": false,
+    "builtAutoReplayAbsent": true
+  },
+  "post023MainContentUnchanged": true,
+  "post030Unchanged": true,
+  "builtPost023MarkdownMatchesPriorAcceptedBytes": true,
+  "capturedSource": {
+    "commit": "e6239649717e3537cde01e641587deb592bffefc",
+    "providerApp": "cloudflare-workers-and-pages",
+    "build": "7699a6e3-f72d-4b64-bd3a-e1244d474037",
+    "workerVersion": "33a76b4c-d324-4462-9110-8e5393795c0c"
+  },
+  "productionD1Statements": 0,
+  "humanLabels": 0,
+  "privateTailTerminal": {
+    "childExit": -2,
+    "ownedGroupMembersRemaining": 0
+  }
+}
