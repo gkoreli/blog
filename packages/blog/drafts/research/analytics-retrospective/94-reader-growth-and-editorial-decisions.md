@@ -40,7 +40,7 @@ Of 1,429 events, **624 send no referrer, 328 are internal navigation and 477 rep
 
 Home and section hubs are excluded from this article table. Publication ages differ. Counts measure deliveries, not useful reading, completion, adoption or approval. Daily pseudonyms can expose repeated same-day client/page requests; they cannot establish distinct people or return readers across days. The source audit and exclusions are preserved in [the closed results](audience-audit-production.json).
 
-A fresh aggregate-only subscriber query finds **one current active subscription; zero active records created or last confirmed in October 1–28**. It selects no emails, addresses, tokens or other direct identifiers. Current status/latest timestamps do not reconstruct deleted records, all confirmation actions or article attribution. This supplies no evidence that the spike built a continuing subscriber audience.
+A fresh aggregate-only subscriber query finds **one current active subscription; zero active records created or last confirmed in October 1–28**. It selects no emails, addresses, tokens or other direct identifiers. Current status/latest timestamps do not reconstruct deleted records, all confirmation actions or article attribution. This supplies no evidence that the spike built a continuing subscriber audience. [Research98](98-subscription-funnel-and-reader-signals.md) subsequently finds a current rendered signup failure. These aggregate state counts therefore do not establish lack of reader interest or a working conversion path; historical impact is unmeasured.
 
 ## Editorial decision and next bounded work
 

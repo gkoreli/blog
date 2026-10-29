@@ -1,5 +1,7 @@
 # Subscription bombing: implementation and article worklist
 
+**October 29rendered-form regression:** [Current investigation](17-rendered-sitekey-regression.md) finds that a live form's public Turnstile key is lost through a nested opening-tag template. Native attribute bindings repair the default and equivalent experimental locations.128 tests/types/isolated 33-post build and actual-SSG/client initialization pass; the build guard rejects the saved broken production page. Source/activation/DOM acceptance remain pending; no email or real challenge is repeated. This supersedes treating the September flow as current readiness.
+
 Started September 8 PDT / September 9 UTC, 2026. Backlog container: [FLDR-0010](../../../../../docs/folders/FLDR-0010-newsletter-reliability-and-bot-protection-worklist.md). This directory is the canonical worklist folder for all research Markdown, the evolving article, and verification evidence. Existing incident artifacts stay here with their original dates and limits.
 
 Goga asked to build the protection on his own platform and write **Subscription Bombing: How I Protect My Blog** in parallel. The incident that prompted the work was a verifier-secret failure; it is not evidence of an observed subscription-bombing attack. The [September 9 live test](15-live-signup-acceptance.md) found a fresh invalid-secret failure, repaired the production binding, and completed one authorized subscription. The earlier owner-reported repair remains historical evidence, not acceptance of the current deployment.
@@ -42,10 +44,11 @@ The implemented starting policy is one confirmation admission per normalized add
 | [14-handoff.md](14-handoff.md) | Committed work, applied migration, completed live test and exact next steps |
 | [15-live-signup-acceptance.md](15-live-signup-acceptance.md) | Current invalid-secret repair, authorized email/activation receipt, query budget and Gmail Spam finding |
 | [16-bookkeeping-review.md](16-bookkeeping-review.md) | Break audit, corrected instructions, local verification and private workspace recovery |
+| [17-rendered-sitekey-regression.md](17-rendered-sitekey-regression.md) | October 29current rendered configuration failure and repair |
 | [article.md](article.md) | Evolving unpublished engineering article |
 | [source.prompts.md](source.prompts.md) | Complete shaping prompts in chronological order |
 | `repro/` | Saved original probes and measured results; retain historical outputs unchanged |
 
 Implementation and article development are concurrent. Runtime edits, article prose, and review artifacts have separate owners for this session. The parent integrates and verifies the combined result. Production queries, migrations, sends, and deployments are recorded separately; the article is not published merely because the implementation is pushed.
 
-Latest checkpoint: implementation `86dad93` is committed and deployed; migration 0005 is applied. The final combined 100-test suite, typechecks and build pass. The designated-recipient flow completed on September 9 UTC after a production secret-binding repair; the address is active. Gmail placed the confirmation in Spam, and production webhook setup is still missing. [Resume here](14-handoff.md). The original `repro/audit.mjs` and `repro/lifecycle.mjs` target the September 7 source and preserve historical failures; use the current regression suite and D1 probe for the new contract.
+September9checkpoint (historical): implementation `86dad93` is committed and deployed; migration 0005 is applied. The final combined 100-test suite, typechecks and build pass. The designated-recipient flow completed on September 9 UTC after a production secret-binding repair; the address is active. Gmail placed the confirmation in Spam, and production webhook setup is still missing. [Resume here](14-handoff.md). The original `repro/audit.mjs` and `repro/lifecycle.mjs` target the September 7 source and preserve historical failures; use the current regression suite and D1 probe for the new contract.

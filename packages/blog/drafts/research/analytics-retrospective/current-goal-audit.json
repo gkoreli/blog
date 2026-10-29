@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-29T22:22:12.741993+00:00",
-  "sourceBaseline": "e623964",
+  "checkedAt": "2026-10-29T22:46:01.870627+00:00",
+  "sourceBaseline": "4470e98",
   "goalAchieved": false,
   "previousTurn": "progress",
-  "scope": "Research97 fresh excluded automation inputs and strict measurement association; no runtime change. Original requirements retained.",
+  "scope": "Research97publication accepted from native source/build/log/CLI and saved configured HTML; Research98discovers and locally repairs a newsletter rendering failure that weakens conversion interpretation.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Finish checked source delivery; if Duck.ai terms are approved, prepare a new vendor trial plan/window. Otherwise continue available independent evidence; human trials remain deferred.",
+  "nextBoundedAction": "Deliver checked rendering repair, accept exact source/build/Worker allocation and excluded rendered-key/browser DOM. Do not equate it with email delivery; original classification/readership goals remain open.",
   "article": {
     "bodyWhitespaceWords": 1450,
     "prompts": 31,
@@ -885,6 +885,19 @@
     "duckAi": "Not submitted; terms approval pending",
     "tailStopped": true,
     "tailOwnedGroupMembersRemaining": 0,
-    "browserControlTabClosed": true
+    "browserControlTabClosed": true,
+    "publicationRelease": "fetcher-trial-release.json",
+    "promptPublicationAccepted": true
+  },
+  "signupRendering": {
+    "research": "98-subscription-funnel-and-reader-signals.md",
+    "canonicalWorklist": "../newsletter-reliability/17-rendered-sitekey-regression.md",
+    "checks": "../newsletter-reliability/rendered-sitekey-checks.json",
+    "localAccepted": true,
+    "productionActivationAccepted": false,
+    "actualEmailRetested": false,
+    "siteTests": 128,
+    "historicalImpactEstablished": false,
+    "metricCountsRewritten": false
   }
 }

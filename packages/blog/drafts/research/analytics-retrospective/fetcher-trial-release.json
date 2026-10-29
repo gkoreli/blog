@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-10-29T22:38:12.637790+00:00",
+  "sourceCommit": "4470e98d79f90f116bbc776675776b8b5e744635",
+  "buildId": "e7ed30a4-0386-4e14-b430-6a5027ddb562",
+  "workerVersion": "c5ddd54a-43f3-476d-90aa-0b717bd473d7",
+  "allocation": 100,
+  "activationProof": "Native source-linked successful Cloudflare build/deploy log with full Worker ID and fresh CLI allocation",
+  "githubCheck": {
+    "id": 123769899001,
+    "status": "in_progress",
+    "conclusion": null,
+    "usedAsRunningJobOrSuccessProof": false
+  },
+  "clipboardBuildLogAccepted": false,
+  "requests": 1,
+  "requestPurpose": "prefetch",
+  "sourceEligibility": "Current code excludes prefetch; no ingestion readback",
+  "httpStatus": 200,
+  "servedPromptHtml": {
+    "bytes": 14152,
+    "sha256": "e4f87d402465e9722a0e90410c331eb90561c1e0f0e27ce7a57b18e640c89031",
+    "matchesConfiguredIsolatedBuild": true,
+    "matchesOriginalUnconfiguredBuild": false,
+    "originalExpectedBytes": 14019,
+    "configurationDifference": "Exactly a Turnstile script and slot; source presence-only branch reproduced locally",
+    "actualHumanDirectionsPresent": 2,
+    "automaticGoalReplayAbsent": true
+  },
+  "scope": "Prompt provenance content accepted. Current malformed signup key attribute discovered separately, not accepted as working signup.",
+  "perRequestVersionJoined": false,
+  "productionDiagnosticD1Statements": 0,
+  "publicReportFills": 0,
+  "newHumanLabels": 0,
+  "newOwnSiteRequestsDuringReconciliation": 0,
+  "nativeEvidenceHashes": {
+    "native-build-state.txt": "c6c9a37ec4e04ae1d5dc05ffa2eb13d1f22da315f587d6d905711d344a1a1284",
+    "native-build-context.json": "de8bd050fcb8e3ab99dacaba4dfb6e9ad6ed3fe920ccacc48128498f35a4f542",
+    "native-build-ready.png": "f7b9ecb2fed22103e9fe2a636e1a3063674286753dc954623a976c55df9cbfca"
+  },
+  "planSha256": "c1b649a65aa01b8a906927a44caad5d538ce2fc85bac19a40265bb4a9cb5d7d1",
+  "configuredBuildReceiptSha256": "7335d0d36f89f7e337a36f61c09804f70b9b8c7f3a9fa278341652521bd46447"
+}

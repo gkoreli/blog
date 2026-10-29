@@ -32,7 +32,7 @@ export function DispatchReceipt({ turnstileSiteKey }: ReplySlipProps) {
         <p>Just the next essay from the build log.</p>
       </div>
       <div class="ds-receipt-divider">- - - - - - - - - - - - - - - - - - - -</div>
-      <form class="ds-receipt-form" novalidate${turnstileSiteKey ? html` data-turnstile-sitekey="${turnstileSiteKey}"` : ''}>
+      <form class="ds-receipt-form" novalidate data-turnstile-sitekey=${turnstileSiteKey}>
         <label class="ds-receipt-form-label" for="receipt-email">REPLY ADDRESS</label>
         <div class="ds-receipt-row">
           <input id="receipt-email" class="ds-receipt-input" type="email" name="email" placeholder="your@email.com" required autocomplete="email">
@@ -65,7 +65,7 @@ export function DispatchSignal({ turnstileSiteKey }: ReplySlipProps) {
       <p>A note when there is signal.</p>
       <p>No drip sequence. No growth hacks. Just the next essay from the build log.</p>
     </div>
-    <form class="ds-signal-form" novalidate${turnstileSiteKey ? html` data-turnstile-sitekey="${turnstileSiteKey}"` : ''}>
+    <form class="ds-signal-form" novalidate data-turnstile-sitekey=${turnstileSiteKey}>
       <div class="ds-signal-prompt">
         <span class="ds-signal-cursor">&gt;</span>
         <input class="ds-signal-email" type="email" name="email" placeholder="your@email.com" required autocomplete="email">
@@ -100,7 +100,7 @@ export function DispatchCard({ turnstileSiteKey }: ReplySlipProps) {
       </div>
       <p class="ds-card-desc">Filed from the workbench when there is something worth sending. No drip sequence. No growth hacks. Just the next essay.</p>
     </div>
-    <form class="ds-card-form" novalidate${turnstileSiteKey ? html` data-turnstile-sitekey="${turnstileSiteKey}"` : ''}>
+    <form class="ds-card-form" novalidate data-turnstile-sitekey=${turnstileSiteKey}>
       <label class="ds-card-form-label" for="card-email">PATRON ADDRESS</label>
       <div class="ds-card-row">
         <input id="card-email" class="ds-card-input" type="email" name="email" placeholder="your@email.com" required autocomplete="email">
@@ -136,7 +136,7 @@ function schlierenShell(
         <p>A note when there is signal.</p>
         <p>No drip sequence. No growth hacks. Just the next essay from the build log.</p>
       </div>
-      <form class="sch-form" novalidate${turnstileSiteKey ? html` data-turnstile-sitekey="${turnstileSiteKey}"` : ''}>
+      <form class="sch-form" novalidate data-turnstile-sitekey=${turnstileSiteKey}>
         <label class="sch-form-label" for="${inputId}">REPLY ADDRESS</label>
         <div class="sch-row">
           <input id="${inputId}" class="sch-input" type="email" name="email" placeholder="your@email.com" required autocomplete="email">
@@ -193,7 +193,7 @@ export function DispatchCaustic({ turnstileSiteKey }: ReplySlipProps) {
         <p>A note when there is signal.</p>
         <p>No drip sequence. No growth hacks. Just the next essay from the build log.</p>
       </div>
-      <form class="cst-form" novalidate${turnstileSiteKey ? html` data-turnstile-sitekey="${turnstileSiteKey}"` : ''}>
+      <form class="cst-form" novalidate data-turnstile-sitekey=${turnstileSiteKey}>
         <div class="cst-prompt">
           <span class="cst-cursor">&gt;</span>
           <input class="cst-email" type="email" name="email" placeholder="your@email.com" required autocomplete="email">
@@ -225,7 +225,7 @@ export function DispatchInterference({ turnstileSiteKey }: ReplySlipProps) {
       <div class="if-meta-row"><span class="if-meta-key">MODE</span><span>Occasional</span></div>
     </div>
     <p class="if-body">A note when there is signal. No drip sequence. No growth hacks. Just the next essay from the build log.</p>
-    <form class="if-form" novalidate${turnstileSiteKey ? html` data-turnstile-sitekey="${turnstileSiteKey}"` : ''}>
+    <form class="if-form" novalidate data-turnstile-sitekey=${turnstileSiteKey}>
       <label class="if-form-label" for="if-email">REPLY ADDRESS</label>
       <div class="if-row">
         <input id="if-email" class="if-input" type="email" name="email" placeholder="your@email.com" required autocomplete="email">

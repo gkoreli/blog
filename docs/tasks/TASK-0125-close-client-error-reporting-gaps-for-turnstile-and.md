@@ -7,6 +7,8 @@ created_at: '2026-09-07T05:09:30.781Z'
 updated_at: '2026-09-09T03:02:04.289Z'
 type: task
 ---
+
+**October 29current rendering repair:** [Evidence and acceptance](../../packages/blog/drafts/research/newsletter-reliability/17-rendered-sitekey-regression.md). The live main form loses its public key through a nested attribute fragment, so the existing client cannot initialize verification. Direct native attribute binding, actual SSG/client regression coverage and a production-output guard pass local checks. Source delivery/activation/DOM acceptance remain separate; no email/challenge repeat or change to secrets, verification, limits or provider sending. Earlier September acceptance stays historical and the remaining reporting requirements below remain open.
 P1 remaining client observability. The subscription form's missing/late widget, failure, expiry, unsupported-browser and timeout paths now emit static stages and leave usable retries; 25 controlled tests pass and one authorized real flow completed. Do not repeat that implementation. Preserve occurredAt in storage (currently parsed then discarded), attach actual build revision, and correlate the failed operation with its browser report instead of storing only the logging request ray. Cover bootstrap/resource-load failures where practical. Add duplicate/event budgets and bounded delivery semantics: sendBeacon queueing is not durable receipt, FetchTransport ignores non-2xx, and D1 waitUntil writes may fail after 204. Keep addresses, tokens and arbitrary API response text out of diagnostics. Tests must exercise the remaining failure behavior.
 
 ## Investigation checkpoint

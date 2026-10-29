@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-29T22:46:01.867256+00:00",
+  "sourceBaseline": "4470e98",
+  "coreVersion": "0.57.0",
+  "ssgVersion": "0.4.0",
+  "siteTests": 128,
+  "ssgClientRegressionTestGroups": 4,
+  "formRenderers": 11,
+  "snapshotConfigurationCases": 3,
+  "actualClientSnapshotInitialization": {
+    "renderCalls": 1,
+    "challengeExecuteCalls": 0,
+    "emailCalls": 0
+  },
+  "workspaceTypes": true,
+  "validMarkdownPosts": 22,
+  "isolatedBuildPosts": 33,
+  "privateEnvCopied": false,
+  "publicConfiguration": "synthetic nonempty sitekey",
+  "productionRequestsDuringLocalRepair": 0,
+  "productionDiagnosticD1Statements": 0,
+  "newHumanLabels": 0,
+  "guard": {
+    "checkedAt": "2026-10-29T22:43:52.549398+00:00",
+    "before": "Previously captured production prompt HTML, not invented broken markup",
+    "beforeExit": 1,
+    "afterExit": 0,
+    "expectedFailures": [
+      "template binding marker in form attributes",
+      "configured main newsletter form lacks public sitekey"
+    ],
+    "afterSnapshotSha256": "4fc933c2192fd8c1373735f713d02c7613bc017274ecd7916c4ab2dc7908c42b",
+    "newProductionRequests": 0,
+    "serverEmailOrChallengeCalls": 0
+  },
+  "sourceHashes": {
+    "packages/blog/src/templates/artifacts.ts": "4dff859b294fb54ed3736215ccf55636da7c1641c60415fb23cc4775b631fa16",
+    "packages/blog/src/templates/experiments/dispatch-variants.ts": "ab2ae47178f94bd5f29860d9842de5fe0666c3ef56331a4787904f79b792c32c",
+    "packages/blog/src/pipeline/build.ts": "2e467c6dd60ac30aac92b17b64bf4c7180dec10c910747780c0f722502109271",
+    "packages/blog/src/client/subscribe.ts": "edda695a26cd560256824abceaca84b00a8daa7f78867c44cb5fc391d7c6231b",
+    "packages/blog/test/subscribe-rendering.test.ts": "fc015db59e0e1c37a229011814eec481bb0ea7b1544b757c334902cb13f051e4"
+  },
+  "libraryHashes": {
+    "packages/blog/node_modules/@nisli/core/dist/bundler/template.js": "7ac0afa1326a703f03a40fe4444df71282d768ce2b3f14c613d8af71311e7915",
+    "packages/blog/node_modules/@nisli/ssg/dist/core-render.js": "84bbf083f79f01917e27023860cb7731c410b3e6984e89c64c689a19b49ce6aa"
+  },
+  "productionActivationAccepted": false,
+  "productionChallengeAndEmailRetested": false
+}

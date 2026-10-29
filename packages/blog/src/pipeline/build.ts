@@ -406,6 +406,15 @@ export function validateHtmlOutput(): void {
   const problems: string[] = [];
 
   for (const page of pages) {
+    const hasTurnstile = tags(page.html, 'script').some(tag => attribute(tag, 'src') === 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit');
+    for (const form of tags(page.html, 'form')) {
+      if (/\s--bk-\d+--(?:=|\s|>)/.test(form) || form.includes('novalidate<')) {
+        problems.push(`${page.file}: template binding marker leaked into form attributes`);
+      }
+      if (hasTurnstile && attribute(form, 'id') === 'sub-form' && !attribute(form, 'data-turnstile-sitekey')?.trim()) {
+        problems.push(`${page.file}: configured newsletter form is missing its public Turnstile sitekey`);
+      }
+    }
     const lines = page.html.split('\n');
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i]!;

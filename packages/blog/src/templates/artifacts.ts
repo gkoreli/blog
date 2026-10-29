@@ -51,7 +51,7 @@ interface ReplySlipProps {
 }
 
 export function ReplySlip({ turnstileSiteKey }: ReplySlipProps) {
-  return html`<form id="sub-form" class="dispatch-form subscribe-form" novalidate${turnstileSiteKey ? html` data-turnstile-sitekey="${turnstileSiteKey}"` : ''}>
+  return html`<form id="sub-form" class="dispatch-form subscribe-form" novalidate data-turnstile-sitekey=${turnstileSiteKey}>
     <label for="subscribe-email" class="dispatch-email-label">Email address</label>
     <div class="dispatch-form-row">
       <input id="subscribe-email" type="email" name="email" class="dispatch-input subscribe-input" placeholder="your@email.com" required autocomplete="email">

@@ -33,6 +33,8 @@ The current Markdown post renderer expects one H1 in the body, matching `title`;
 
 Use Markdown and native custom elements with the existing tagged-template pipeline. Embedded elements require their implementation to be registered through `customElements.define()` in a loaded client bundle. Ordinary prose remains portable to other Markdown viewers; component behavior depends on that implementation.
 
+Bind attribute values directly, for example `data-turnstile-sitekey=${siteKey}`. Do not splice a nested `html` fragment into opening-tag attribute syntax: the mounted snapshot can turn it into malformed attributes rather than the intended configuration. Test configuration consumed by the client against actual SSG output, including nonempty and missing public configuration. Before comparing served HTML with an isolated build, record relevant public build-configuration presence; do not copy private environment files or assume an unconfigured local build reproduces production markup.
+
 Use the existing pipeline rather than adding a JSX runtime or MDX compilation. [ADR-0001](../../../../docs/adr/0001-blog-architecture.md) records the architecture decision.
 
 ### How SSG Works
