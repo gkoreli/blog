@@ -34,7 +34,7 @@ test('published directory provenance is separate from documented signing promise
 test('Google publisher review stays separate from client declarations, injected verdicts and related products', () => {
   const result={status:'verified',agent:'https://agent.bot.goog'};
   const evidence=directoryPublicationEvidence(['Google-Agent'],result);
-  assert.equal(evidence.profile,'2026-10-28.1');assert.equal(evidence.reviewedOn,'2026-10-28');
+  assert.equal(evidence.profile,'2026-10-29.1');assert.equal(evidence.reviewedOn,'2026-10-29');
   assert.equal(evidence.status,'matching-publisher');assert.equal(evidence.configuredDeclarationCount,1);
   assert.equal(directoryPublicationEvidence(['Google-Agent'],{status:'absent'}).status,'not-verified');
   assert.equal(directoryPublicationEvidence(['Google-GeminiNotebook'],result).status,'not-configured');
@@ -48,12 +48,13 @@ test('legacy directory profile/date pairs remain readable, but hybrid profiles c
   const {sqlite,add}=fixture();
   const current=verificationEvidence(new Request('https://publication.example'),verified,false,['AhrefsBot']);
   const legacy=structuredClone(current);legacy.directoryPublication.profile='2026-10-27.1';legacy.directoryPublication.reviewedOn='2026-10-27';
-  add(legacy);add(current);
-  for(const [profile,date]of [['2026-10-27.1','2026-10-28'],['2026-10-28.1','2026-10-27'],['future','2026-10-28']]){
+  const prior=structuredClone(current);prior.directoryPublication.profile='2026-10-28.1';prior.directoryPublication.reviewedOn='2026-10-28';
+  add(legacy);add(prior);add(current);
+  for(const [profile,date]of [['2026-10-27.1','2026-10-28'],['2026-10-28.1','2026-10-27'],['2026-10-28.1','2026-10-29'],['2026-10-29.1','2026-10-28'],['future','2026-10-29']]){
     const hybrid=structuredClone(current);hybrid.directoryPublication.profile=profile;hybrid.directoryPublication.reviewedOn=date;add(hybrid);
   }
   assert.deepEqual(sqlite.prepare(`SELECT ${directoryPublicationBasisSql()} basis FROM page_observations`).all().map(r=>r.basis),
-    ['matching-publisher','matching-publisher','unrecognized-record','unrecognized-record','unrecognized-record']);
+    ['matching-publisher','matching-publisher','matching-publisher','unrecognized-record','unrecognized-record','unrecognized-record','unrecognized-record','unrecognized-record']);
 });
 
 test('duplicates, partial mappings, competing publishers and injected verdicts retain uncertainty', () => {

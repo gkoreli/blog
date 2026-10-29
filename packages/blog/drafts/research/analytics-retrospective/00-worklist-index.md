@@ -363,3 +363,8 @@ The [public signer release](public-signer-release.json) is accepted: source f0e7
 
 
 [Parallel declaration release acceptance](parallel-declarations-release.json) closes source `cc7c5a9`, successful build and 100% Worker activation, two exact excluded control/row matches, and served Markdown/article-element equality. Single indexed SELECT: six reads/zero writes; ingestion is additional. Full HTML differs only by two production Turnstile hooks; exact downloaded HTML is locally inspected. Four own-site GETs/three eligible, no public report fill or human label; tail/preview stopped. Next: documented Parallel signing-origin and publisher-provenance registration with native controls. Human trials remain deferred; TASK-0119 stays open.
+
+
+## October 29 documented Parallel signing and address methods
+
+[Research 84](84-parallel-documented-signing-and-address-methods.md) follows the accepted declaration release with two per-client signing mappings, two reviewed publisher entries and a ShapBot-only IP feed. Fourteen native collector controls, six address controls and two legacy-profile rows reconcile. Three retained originals and nine counterfactual contexts agree across Node/workerd and pinned independent RFC; unsigned UA swaps remain verified while method comparison disagrees. No authenticated historical D1 joins or human labels. 292 analytics/117 site tests, types and isolated build pass; article unchanged at 1,375 words/31 prompts. Source/activation/live controls remain separate. Next: checked exact-source delivery and acceptance, then bounded new-ID census delta. Human trials deferred.

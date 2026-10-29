@@ -1,0 +1,76 @@
+{
+  "checkedAt": "2026-10-29T16:16:40.699122+00:00",
+  "sourceBaseline": "3639bf6",
+  "previousGoalTurn": "progress",
+  "analyticsTests": 292,
+  "blogTests": 117,
+  "typecheck": "pass",
+  "markdownValidation": "pass",
+  "nativeCollectorControls": 14,
+  "legacyProfileRows": 2,
+  "nativeReportIncluded": 14,
+  "nativeReportReads": 8229,
+  "nativeFilteredReports": 2,
+  "nativeRetainedOriginals": 3,
+  "nodeAndWorkerdRetainedContexts": 12,
+  "independentRfcContexts": 12,
+  "independentVerified": 9,
+  "independentChangedAuthorityFailures": 3,
+  "sourceFilesRechecked": 18,
+  "build": {
+    "isolated": true,
+    "posts": 33,
+    "turnstilePresence": "Public placeholder enabled markup condition; no credentials copied.",
+    "articleFullHtmlMatchesPriorServed": true,
+    "providerRuntimeEquivalenceClaim": false
+  },
+  "versions": {
+    "collection": "2026-10-29.5",
+    "classifier": "2026-10-29.2",
+    "verifier": "2026-10-29.1",
+    "documentedSigning": "2026-10-29.1",
+    "directoryPublication": "2026-10-29.1",
+    "reportCache": "2026-10-29.4",
+    "vendorIp": "2026-10-29.2"
+  },
+  "article": {
+    "unchanged": true,
+    "words": 1375,
+    "prompts": 31
+  },
+  "nativeFixtureCorrections": [
+    "Initial intercepted-fetch guard assumed Headers.has; corrected to normalize HeadersInit without changing verifier policy.",
+    "An owner-exclusion fixture used reserved /owner and was correctly ineligible; controls moved beneath /parallel-fixture/."
+  ],
+  "failedPatchAttempt": "One combined patch used the wrong hardcoded test context and applied no changes; corrected after reading exact lines.",
+  "productionRequests": 0,
+  "productionD1Statements": 0,
+  "productionDiagnosticWrites": 0,
+  "humanLabels": 0,
+  "activationAccepted": false,
+  "sourceSha256": {
+    "packages/analytics/src/vendor-signatures.ts": "5ebe59ba79c7dd48032da249fabdf104a5929f897ce1d827d3ea3455bbd88e04",
+    "packages/analytics/src/directory-publication.ts": "c236bad89b31b5afc82b896395fc9ce2a9a89f1ab407a362ac3bc33efcc68b66",
+    "packages/analytics/src/directory-publication-contract.ts": "2253924d050612e83951033245b82d604409a3ea94a0bae49263314d75f39a81",
+    "packages/analytics/src/signature-summary.ts": "fe7cbad450bbfb1a25c99e46e324df8dce54e0a317261e9fb560c472b2d5b488",
+    "packages/analytics/src/versions.ts": "4b1f9ee4daf09b5fded91319deb3be96a14949afdb2e3ba597b6a20605dcfd63",
+    "packages/blog/src/worker/stats-cache.ts": "f766c9bab852c702cb137f61ca3dbbf19fffecbe5b9d5ef0c8fff8a978a64791",
+    "packages/blog/scripts/check-parallel-signing.mjs": "9b1067653c9d0642202959227f68e8517afb8a6fd9c81d28f0bc42aadc22dca8",
+    "packages/analytics/src/vendor-ip.ts": "6a387ece5571fbf65bd1980b1bdb5b04466a9aa866391a2a46b37fc551a93fb3",
+    "packages/analytics/src/vendor-ip-sources.ts": "6b122f6e7610ac95edb9f4c9d38a05ab4577fb4c3a2c6a19377943bc6acab7ff",
+    "packages/analytics/src/vendor-network-summary.ts": "0c3ec4487bf4f93d220237422cd273a38b3ab692ade6d7e4822be96dbfd880e5"
+  },
+  "nativeIpControls": 6,
+  "nativeCollectorCorrectionsAfterScopeExpansion": "Used the saved ShapBot feed and globally routable fixture IP; partial-mapping declaration changed from already IP-mapped GPTBot to unmapped Bytespider to isolate the intended method gap.",
+  "privateDataArchive": {
+    "capturedFiles": 38,
+    "manifestSha256": "1149faf3c2ea79201116a8bc7ce0630d4ad5f8f1cdf79f2c588427390a2812b9",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticErasure": false
+  },
+  "closedArtifactScan": "pass",
+  "localLinks": "pass",
+  "sharedDistTouched": false
+}

@@ -61,3 +61,6 @@ Next: deliver and accept the exact source, then implement Parallel's documented 
 The served Markdown is byte-identical to the isolated build, as is the HTML article element. Full HTML equality is rejected: production adds exactly two Turnstile hooks absent from the local environment; all other HTML bytes agree. The exact downloaded HTML is visually inspected in a temporary local preview. Four own-site GETs comprise two controls and two article fetches; three are collection-eligible and supply the active excluded referrer. Only the two control rows receive exact readback. Provider build Node 24.22.1 differs from local pinned 24.14.1. These are recorded conditions, not runtime equivalence or RUM acceptance. The tail and preview stop; the temporary tab closes.
 
 This closes the source/activation/selected-control/served-article gates for this iteration. Next: register the two documented Parallel signing methods and publisher provenance with native positive, mismatch and conflict cases. Whole-history validity, original-wire failure causes and human/device rates remain unmeasured; human trials stay deferred.
+
+
+[Research 84](84-parallel-documented-signing-and-address-methods.md) implements the next documented Parallel signing, publisher and ShapBot address methods. Research 83's unconfigured statuses remain the recorded facts of its older source and controls.

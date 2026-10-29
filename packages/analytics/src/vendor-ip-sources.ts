@@ -22,6 +22,8 @@ export const VENDOR_IP_SOURCES = [
   { id: 'amazonbot', vendor: 'Amazon', declarations: ['Amazonbot'], url: 'https://developer.amazon.com/amazonbot/ip-addresses/', documentation: 'https://developer.amazon.com/amazonbot', mediaTypes: ['text/html'], format: 'amazon-hosts-html' },
   { id: 'amazon-search', vendor: 'Amazon', declarations: ['Amzn-SearchBot'], url: 'https://developer.amazon.com/amazonbot/searchbot-ip-addresses/', documentation: 'https://developer.amazon.com/amazonbot', mediaTypes: ['text/html'], format: 'amazon-prefixes-html' },
   { id: 'amazon-user', vendor: 'Amazon', declarations: ['Amzn-User'], url: 'https://developer.amazon.com/amazonbot/live-ip-addresses/', documentation: 'https://developer.amazon.com/amazonbot', mediaTypes: ['text/html'], format: 'amazon-hosts-html' },
+  // Shap-User has its own signing method; this published IP list is ShapBot-only.
+  { id: 'parallel-shapbot', vendor: 'Parallel', declarations: ['ShapBot'], url: 'https://docs.parallel.ai/resources/shapbot.json', documentation: 'https://parallel.ai/parallel-web-systems-bots', mediaTypes: ['application/json'] },
 ] as const;
 export type VendorIpSource = typeof VENDOR_IP_SOURCES[number];
 export type VendorIpSourceId = VendorIpSource['id'];

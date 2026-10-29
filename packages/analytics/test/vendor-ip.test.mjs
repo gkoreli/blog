@@ -10,6 +10,18 @@ function request(ip = '66.249.66.1', headers = {}, cf = true) { const r = new Re
 function feed(prefixes = [{ ipv4Prefix: '66.249.66.0/24' }], headers = {}) { return Response.json({ creationTime: '2026-10-27T00:00:00', prefixes }, { headers: { 'Cache-Control': 'max-age=300', ...headers } }); }
 const options = (fetcher, cache = createVendorIpCache(), at = now) => ({ now: at, cache, fetcher });
 
+test('Parallel IP publication applies only to ShapBot and never to its user-triggered sibling', async () => {
+  for(const [r,outcome]of [[request(),'listed'],[request('8.8.8.8'),'not-listed']]){
+    const e=await verifyVendorIp(r,['ShapBot'],options(async(url,init)=>{
+      assert.equal(url,'https://docs.parallel.ai/resources/shapbot.json');assert.equal(init.redirect,'manual');
+      assert.equal(init.headers.has('CF-Connecting-IP'),false);assert.equal(init.headers.has('User-Agent'),false);return feed();
+    }));
+    assert.equal(e.profile,'2026-10-29.2');assert.equal(e.checks[0].source,'parallel-shapbot');assert.equal(e.checks[0].outcome,outcome);
+  }
+  const user=await verifyVendorIp(request(),['Shap-User'],options(async()=>assert.fail('No documented Shap-User IP feed')));
+  assert.equal(user.configuredDeclarationCount,0);assert.equal(user.unmappedDeclarationCount,1);assert.deepEqual(user.checks,[]);
+});
+
 test('strict address grammar rejects library-compatible ambiguous encodings and scoped/list inputs', () => {
   for (const value of ['001.2.3.4','0x7f000001','127.1','2130706433','1.2.3.256','1.2.3.4,5.6.7.8','1.2.3.4:80','[2001:4860::1]','fe80::1%eth0','::ffff:001.2.3.4',' 1.2.3.4','2001::1::2','']) assert.equal(strictIp(value), null, value);
   assert.equal(strictIp('::ffff:66.249.66.1').toString(), '66.249.66.1');
@@ -40,7 +52,7 @@ test('IPv4, IPv6, mapped IPv4 and pseudo-IPv4 original IPv6 use family-correct C
 test('source selection deduplicates shared feeds, bounds fanout and retains unmapped declarations', async () => {
   const names=VENDOR_IP_SOURCES.flatMap(s=>s.declarations);let fetches=0;
   const e=await verifyVendorIp(request(),[...names,'ExaUser'],options(async()=>{fetches++;return feed()}));
-  assert.equal(fetches,4);assert.equal(e.checks.length,15);assert.equal(e.configuredDeclarationCount,16);assert.equal(e.unmappedDeclarationCount,1);assert.equal(e.checks.filter(c=>c.reason==='request-budget').length,11);assert.ok(Buffer.byteLength(JSON.stringify(e))<=4096);
+  assert.equal(fetches,4);assert.equal(e.checks.length,16);assert.equal(e.configuredDeclarationCount,17);assert.equal(e.unmappedDeclarationCount,1);assert.equal(e.checks.filter(c=>c.reason==='request-budget').length,12);assert.ok(Buffer.byteLength(JSON.stringify(e))<=4096);
   const single=await verifyVendorIp(request(),['AhrefsBot','AhrefsSiteAudit'],options(async()=>feed()));assert.equal(single.checks.length,1);assert.equal(single.configuredDeclarationCount,2);
   const none=await verifyVendorIp(request(),[],options(async()=>{throw new Error('must not fetch')}));assert.equal(none.checks.length,0);assert.equal(none.declarationCount,0);
 });
@@ -56,7 +68,7 @@ test('DuckDuckBot and Google-Agent methods use dedicated fixed feeds without exp
         assert.equal(actual, url); assert.equal(init.redirect, 'manual');
         assert.equal(init.headers.has('CF-Connecting-IP'), false); calls++; return feed();
       }));
-      assert.equal(calls, 1); assert.equal(evidence.profile, '2026-10-29.1');
+      assert.equal(calls, 1); assert.equal(evidence.profile, '2026-10-29.2');
       assert.equal(evidence.configuredDeclarationCount, 1); assert.equal(evidence.checks[0].source, source);
       assert.equal(evidence.checks[0].outcome, outcome);
     }

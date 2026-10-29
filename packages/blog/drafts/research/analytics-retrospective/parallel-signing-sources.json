@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-10-29T16:11:42.971145+00:00",
+  "officialDocumentation": "https://parallel.ai/parallel-web-systems-bots",
+  "effectiveDate": "2026-10-24",
+  "checkedPrimaryClaims": [
+    "ShapBot: search index maintenance; documented signing directory and IP feed.",
+    "Shap-User: retrieval on behalf of users; separate documented signing directory."
+  ],
+  "documentationCapture": {
+    "receipt": "additional-publishers-sources.json",
+    "sha256": "bd072af0e5dbf4f0c408375788c95e41b5e0f426cdb838d21bfe1695c3b715ae",
+    "freshWebReaderReview": true
+  },
+  "directoryCaptures": [
+    {
+      "name": "shapbot",
+      "url": "https://shapbot.parallel.ai/.well-known/http-message-signatures-directory",
+      "capturedAt": "2026-10-29T16:04:12.466211+00:00",
+      "status": 200,
+      "mediaType": "application/http-message-signatures-directory+json",
+      "keys": 2,
+      "sha256": "6dd30f821e075ff9347ca1ce123c2008fd85f8506cc7f51d195b379ff6e07f55",
+      "bytes": 274,
+      "redirectsAllowed": false,
+      "allResolvedAddressesGlobal": true,
+      "tlsHostnamePinned": true,
+      "readerHeadersForwarded": false
+    },
+    {
+      "name": "shap-user",
+      "url": "https://shap-user.parallel.ai/.well-known/http-message-signatures-directory",
+      "capturedAt": "2026-10-29T16:04:12.615110+00:00",
+      "status": 200,
+      "mediaType": "application/http-message-signatures-directory+json",
+      "keys": 2,
+      "sha256": "06190b472b4bebd4a28896c75dd1bdc2dc0d5617482aad13c71bbbb2ce0b4e50",
+      "bytes": 274,
+      "redirectsAllowed": false,
+      "allResolvedAddressesGlobal": true,
+      "tlsHostnamePinned": true,
+      "readerHeadersForwarded": false
+    }
+  ],
+  "referenceLibrary": {
+    "repository": "https://github.com/pyauth/http-message-signatures",
+    "commit": "1de433d9a49fd608475c6054ab14a1652c088844",
+    "sourceManifest": "complete-audit-sources.json",
+    "filesRechecked": 18
+  },
+  "limits": [
+    "Keys are public snapshots; importing a key does not authenticate a request.",
+    "The fresh directory captures do not reconstruct original directory resolution.",
+    "The web reader could not open the JSON directory endpoints; bounded direct HTTPS captures succeeded.",
+    "Public signer-display approvals stay unchanged; matching origin and UA coverage remain separate facts.",
+    "ShapBot IP publication is configured only for ShapBot; no Shap-User address publication is inferred."
+  ],
+  "feedCapture": {
+    "capturedAt": "2026-10-29T16:13:22.617017+00:00",
+    "url": "https://docs.parallel.ai/resources/shapbot.json",
+    "status": 200,
+    "sha256": "93ee5f1904987470c4cd7de66c7411760b89afc017a40d5e64729065645c41fb",
+    "bytes": 587,
+    "prefixCount": 10,
+    "publisherVersion": "2026-07-14T00:00:00.000000",
+    "redirectsAllowed": false,
+    "bodyLimit": 262144,
+    "readerHeadersForwarded": false
+  }
+}

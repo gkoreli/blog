@@ -1,0 +1,575 @@
+{
+  "checkedAt": "2026-10-29T16:07:39.813Z",
+  "sourceBaseline": "3639bf6",
+  "scriptSha256": "28b1b0a7a62654425b7e6a7942ec8bb8444f71e5324fb64633a1569e4fd1c34d",
+  "privateSourceManifestSha256": "5228bcc1aa4c02259ab065b0794c0185bf7d2c07b949848ecde173dd3c033810",
+  "directorySha256": "6dd30f821e075ff9347ca1ce123c2008fd85f8506cc7f51d195b379ff6e07f55",
+  "originals": 3,
+  "contextsPerRuntime": 12,
+  "rows": [
+    {
+      "context": "retained-1",
+      "variant": "original",
+      "declaredNames": [
+        "ShapBot"
+      ],
+      "localStatus": "verified",
+      "localReason": null,
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "matching-publisher"
+      },
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 300,
+        "ageSeconds": 1,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "context": "retained-1",
+      "variant": "changed-authority",
+      "declaredNames": [
+        "ShapBot"
+      ],
+      "localStatus": "unverified",
+      "localReason": "signature-invalid",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": null,
+        "differentOriginDeclarationCount": null,
+        "status": "not-verified",
+        "userAgentCovered": null
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "not-verified"
+      },
+      "coverage": null
+    },
+    {
+      "context": "retained-1",
+      "variant": "changed-unsigned-client-declaration",
+      "declaredNames": [
+        "Shap-User"
+      ],
+      "localStatus": "verified",
+      "localReason": null,
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 0,
+        "differentOriginDeclarationCount": 1,
+        "status": "different-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "different-publisher"
+      },
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 300,
+        "ageSeconds": 1,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "context": "retained-1",
+      "variant": "changed-unsigned-path",
+      "declaredNames": [
+        "ShapBot"
+      ],
+      "localStatus": "verified",
+      "localReason": null,
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "matching-publisher"
+      },
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 300,
+        "ageSeconds": 1,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "context": "retained-2",
+      "variant": "original",
+      "declaredNames": [
+        "ShapBot"
+      ],
+      "localStatus": "verified",
+      "localReason": null,
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "matching-publisher"
+      },
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 300,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "context": "retained-2",
+      "variant": "changed-authority",
+      "declaredNames": [
+        "ShapBot"
+      ],
+      "localStatus": "unverified",
+      "localReason": "signature-invalid",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": null,
+        "differentOriginDeclarationCount": null,
+        "status": "not-verified",
+        "userAgentCovered": null
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "not-verified"
+      },
+      "coverage": null
+    },
+    {
+      "context": "retained-2",
+      "variant": "changed-unsigned-client-declaration",
+      "declaredNames": [
+        "Shap-User"
+      ],
+      "localStatus": "verified",
+      "localReason": null,
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 0,
+        "differentOriginDeclarationCount": 1,
+        "status": "different-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "different-publisher"
+      },
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 300,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "context": "retained-2",
+      "variant": "changed-unsigned-path",
+      "declaredNames": [
+        "ShapBot"
+      ],
+      "localStatus": "verified",
+      "localReason": null,
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "matching-publisher"
+      },
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 300,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "context": "retained-3",
+      "variant": "original",
+      "declaredNames": [
+        "ShapBot"
+      ],
+      "localStatus": "verified",
+      "localReason": null,
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "matching-publisher"
+      },
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 300,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "context": "retained-3",
+      "variant": "changed-authority",
+      "declaredNames": [
+        "ShapBot"
+      ],
+      "localStatus": "unverified",
+      "localReason": "signature-invalid",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": null,
+        "differentOriginDeclarationCount": null,
+        "status": "not-verified",
+        "userAgentCovered": null
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "not-verified"
+      },
+      "coverage": null
+    },
+    {
+      "context": "retained-3",
+      "variant": "changed-unsigned-client-declaration",
+      "declaredNames": [
+        "Shap-User"
+      ],
+      "localStatus": "verified",
+      "localReason": null,
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 0,
+        "differentOriginDeclarationCount": 1,
+        "status": "different-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "different-publisher"
+      },
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 300,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    },
+    {
+      "context": "retained-3",
+      "variant": "changed-unsigned-path",
+      "declaredNames": [
+        "ShapBot"
+      ],
+      "localStatus": "verified",
+      "localReason": null,
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "matching-publisher"
+      },
+      "coverage": {
+        "version": "2026-10-28.1",
+        "headerForm": "legacy-string",
+        "covered": {
+          "authority": true,
+          "targetUri": false,
+          "method": false,
+          "path": false,
+          "query": false,
+          "userAgent": false,
+          "contentDigest": false
+        },
+        "otherComponentCount": 0,
+        "validitySeconds": 300,
+        "ageSeconds": 0,
+        "replayPolicy": "expiry-only",
+        "selection": {
+          "policy": "first-valid-in-input-order",
+          "matchedCandidates": 1,
+          "taggedCandidates": 1,
+          "attemptedCandidates": 1,
+          "unassessedCandidates": 0
+        }
+      }
+    }
+  ],
+  "newProductionRequests": 0,
+  "newD1Statements": 0,
+  "newHumanLabels": 0,
+  "limits": [
+    "Later keys against retained representations at recorded times; original directory state and wire completeness remain unproven.",
+    "Current method mapping is a fresh interpretation, not a rewrite of stored historical assessments.",
+    "A valid proof with a changed unsigned UA authenticates no user-directed trigger.",
+    "No authenticated D1 joins or managed-verifier comparison."
+  ]
+}

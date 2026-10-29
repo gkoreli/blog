@@ -1,0 +1,1196 @@
+{
+  "checkedAt": "2026-10-29T16:14:48.401Z",
+  "collectionVersion": "2026-10-29.5",
+  "classifierVersion": "2026-10-29.2",
+  "controls": [
+    {
+      "label": "bot-unsigned",
+      "kind": "ai-search",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": null,
+        "differentOriginDeclarationCount": null,
+        "status": "not-verified",
+        "userAgentCovered": null
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "not-verified"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.308Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "not-listed",
+              "reason": "none",
+              "snapshot": {
+                "status": "recorded",
+                "sha256": "5f56bcf29874a30752fd89bb0af4e69cd2d0f55ba8539f3ae7aafc9741bf4611",
+                "fetchedAt": "2026-10-29T16:14:48.308Z",
+                "validatedAt": "2026-10-29T16:14:48.308Z",
+                "freshUntil": "2026-10-29T16:19:48.308Z",
+                "publisherVersionStatus": "recorded",
+                "publisherVersion": "2026-07-14T00:00:00.000000",
+                "prefixCount": 10
+              }
+            }
+          }
+        }
+      },
+      "localStatus": "absent",
+      "userAgentCovered": null,
+      "receiptMatches": true
+    },
+    {
+      "label": "user-unsigned",
+      "kind": "ai-assistant",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": null,
+        "differentOriginDeclarationCount": null,
+        "status": "not-verified",
+        "userAgentCovered": null
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "not-verified"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.315Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 0,
+        "unmappedDeclarationCount": 1,
+        "checkCount": 0,
+        "sourceNames": "none",
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "none"
+        }
+      },
+      "localStatus": "absent",
+      "userAgentCovered": null,
+      "receiptMatches": true
+    },
+    {
+      "label": "bot-match",
+      "kind": "ai-search",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "matching-publisher"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.322Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "not-listed",
+              "reason": "none",
+              "snapshot": {
+                "status": "recorded",
+                "sha256": "5f56bcf29874a30752fd89bb0af4e69cd2d0f55ba8539f3ae7aafc9741bf4611",
+                "fetchedAt": "2026-10-29T16:14:48.308Z",
+                "validatedAt": "2026-10-29T16:14:48.308Z",
+                "freshUntil": "2026-10-29T16:19:48.308Z",
+                "publisherVersionStatus": "recorded",
+                "publisherVersion": "2026-07-14T00:00:00.000000",
+                "prefixCount": 10
+              }
+            }
+          }
+        }
+      },
+      "localStatus": "verified",
+      "userAgentCovered": false,
+      "receiptMatches": true
+    },
+    {
+      "label": "user-match",
+      "kind": "ai-assistant",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "matching-publisher"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.327Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 0,
+        "unmappedDeclarationCount": 1,
+        "checkCount": 0,
+        "sourceNames": "none",
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "none"
+        }
+      },
+      "localStatus": "verified",
+      "userAgentCovered": false,
+      "receiptMatches": true
+    },
+    {
+      "label": "bot-cross",
+      "kind": "ai-search",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 0,
+        "differentOriginDeclarationCount": 1,
+        "status": "different-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "different-publisher"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.331Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "not-listed",
+              "reason": "none",
+              "snapshot": {
+                "status": "recorded",
+                "sha256": "5f56bcf29874a30752fd89bb0af4e69cd2d0f55ba8539f3ae7aafc9741bf4611",
+                "fetchedAt": "2026-10-29T16:14:48.308Z",
+                "validatedAt": "2026-10-29T16:14:48.308Z",
+                "freshUntil": "2026-10-29T16:19:48.308Z",
+                "publisherVersionStatus": "recorded",
+                "publisherVersion": "2026-07-14T00:00:00.000000",
+                "prefixCount": 10
+              }
+            }
+          }
+        }
+      },
+      "localStatus": "verified",
+      "userAgentCovered": false,
+      "receiptMatches": true
+    },
+    {
+      "label": "user-cross",
+      "kind": "ai-assistant",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 0,
+        "differentOriginDeclarationCount": 1,
+        "status": "different-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "different-publisher"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.335Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 0,
+        "unmappedDeclarationCount": 1,
+        "checkCount": 0,
+        "sourceNames": "none",
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "none"
+        }
+      },
+      "localStatus": "verified",
+      "userAgentCovered": false,
+      "receiptMatches": true
+    },
+    {
+      "label": "bot-impostor",
+      "kind": "ai-search",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 0,
+        "differentOriginDeclarationCount": 1,
+        "status": "different-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "different-publisher"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.339Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "not-listed",
+              "reason": "none",
+              "snapshot": {
+                "status": "recorded",
+                "sha256": "5f56bcf29874a30752fd89bb0af4e69cd2d0f55ba8539f3ae7aafc9741bf4611",
+                "fetchedAt": "2026-10-29T16:14:48.308Z",
+                "validatedAt": "2026-10-29T16:14:48.308Z",
+                "freshUntil": "2026-10-29T16:19:48.308Z",
+                "publisherVersionStatus": "recorded",
+                "publisherVersion": "2026-07-14T00:00:00.000000",
+                "prefixCount": 10
+              }
+            }
+          }
+        }
+      },
+      "localStatus": "verified",
+      "userAgentCovered": false,
+      "receiptMatches": true
+    },
+    {
+      "label": "mixed-bot",
+      "kind": "unresolved",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 2,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 2,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 1,
+        "status": "conflicting-origins",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 2,
+        "unmappedDeclarationCount": 0,
+        "status": "conflicting-publishers"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.343Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 2,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 1,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "not-listed",
+              "reason": "none",
+              "snapshot": {
+                "status": "recorded",
+                "sha256": "5f56bcf29874a30752fd89bb0af4e69cd2d0f55ba8539f3ae7aafc9741bf4611",
+                "fetchedAt": "2026-10-29T16:14:48.308Z",
+                "validatedAt": "2026-10-29T16:14:48.308Z",
+                "freshUntil": "2026-10-29T16:19:48.308Z",
+                "publisherVersionStatus": "recorded",
+                "publisherVersion": "2026-07-14T00:00:00.000000",
+                "prefixCount": 10
+              }
+            }
+          }
+        }
+      },
+      "localStatus": "verified",
+      "userAgentCovered": false,
+      "receiptMatches": true
+    },
+    {
+      "label": "mixed-user",
+      "kind": "unresolved",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 2,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 2,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 1,
+        "status": "conflicting-origins",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 2,
+        "unmappedDeclarationCount": 0,
+        "status": "conflicting-publishers"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.347Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 2,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 1,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "not-listed",
+              "reason": "none",
+              "snapshot": {
+                "status": "recorded",
+                "sha256": "5f56bcf29874a30752fd89bb0af4e69cd2d0f55ba8539f3ae7aafc9741bf4611",
+                "fetchedAt": "2026-10-29T16:14:48.308Z",
+                "validatedAt": "2026-10-29T16:14:48.308Z",
+                "freshUntil": "2026-10-29T16:19:48.308Z",
+                "publisherVersionStatus": "recorded",
+                "publisherVersion": "2026-07-14T00:00:00.000000",
+                "prefixCount": 10
+              }
+            }
+          }
+        }
+      },
+      "localStatus": "verified",
+      "userAgentCovered": false,
+      "receiptMatches": true
+    },
+    {
+      "label": "partial",
+      "kind": "unresolved",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 1,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 1,
+        "status": "partial-mapping"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.350Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 2,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 1,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "not-listed",
+              "reason": "none",
+              "snapshot": {
+                "status": "recorded",
+                "sha256": "5f56bcf29874a30752fd89bb0af4e69cd2d0f55ba8539f3ae7aafc9741bf4611",
+                "fetchedAt": "2026-10-29T16:14:48.308Z",
+                "validatedAt": "2026-10-29T16:14:48.308Z",
+                "freshUntil": "2026-10-29T16:19:48.308Z",
+                "publisherVersionStatus": "recorded",
+                "publisherVersion": "2026-07-14T00:00:00.000000",
+                "prefixCount": 10
+              }
+            }
+          }
+        }
+      },
+      "localStatus": "verified",
+      "userAgentCovered": false,
+      "receiptMatches": true
+    },
+    {
+      "label": "covered-ua",
+      "kind": "ai-search",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": true
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "matching-publisher"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.354Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "not-listed",
+              "reason": "none",
+              "snapshot": {
+                "status": "recorded",
+                "sha256": "5f56bcf29874a30752fd89bb0af4e69cd2d0f55ba8539f3ae7aafc9741bf4611",
+                "fetchedAt": "2026-10-29T16:14:48.308Z",
+                "validatedAt": "2026-10-29T16:14:48.308Z",
+                "freshUntil": "2026-10-29T16:19:48.308Z",
+                "publisherVersionStatus": "recorded",
+                "publisherVersion": "2026-07-14T00:00:00.000000",
+                "prefixCount": 10
+              }
+            }
+          }
+        }
+      },
+      "localStatus": "verified",
+      "userAgentCovered": true,
+      "receiptMatches": true
+    },
+    {
+      "label": "tampered",
+      "kind": "ai-search",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": null,
+        "differentOriginDeclarationCount": null,
+        "status": "not-verified",
+        "userAgentCovered": null
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "not-verified"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.357Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "not-listed",
+              "reason": "none",
+              "snapshot": {
+                "status": "recorded",
+                "sha256": "5f56bcf29874a30752fd89bb0af4e69cd2d0f55ba8539f3ae7aafc9741bf4611",
+                "fetchedAt": "2026-10-29T16:14:48.308Z",
+                "validatedAt": "2026-10-29T16:14:48.308Z",
+                "freshUntil": "2026-10-29T16:19:48.308Z",
+                "publisherVersionStatus": "recorded",
+                "publisherVersion": "2026-07-14T00:00:00.000000",
+                "prefixCount": 10
+              }
+            }
+          }
+        }
+      },
+      "localStatus": "unverified",
+      "userAgentCovered": null,
+      "receiptMatches": true
+    },
+    {
+      "label": "owner",
+      "kind": "ai-search",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "matching-publisher"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.362Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "not-listed",
+              "reason": "none",
+              "snapshot": {
+                "status": "recorded",
+                "sha256": "5f56bcf29874a30752fd89bb0af4e69cd2d0f55ba8539f3ae7aafc9741bf4611",
+                "fetchedAt": "2026-10-29T16:14:48.308Z",
+                "validatedAt": "2026-10-29T16:14:48.308Z",
+                "freshUntil": "2026-10-29T16:19:48.308Z",
+                "publisherVersionStatus": "recorded",
+                "publisherVersion": "2026-07-14T00:00:00.000000",
+                "prefixCount": 10
+              }
+            }
+          }
+        }
+      },
+      "localStatus": "verified",
+      "userAgentCovered": false,
+      "receiptMatches": true
+    },
+    {
+      "label": "referral",
+      "kind": "ai-assistant",
+      "vendor": {
+        "profile": "2026-10-29.1",
+        "method": "documented-signing-origin",
+        "documentedDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "expectedOriginCount": 1,
+        "matchingDeclarationCount": 1,
+        "differentOriginDeclarationCount": 0,
+        "status": "matching-origin",
+        "userAgentCovered": false
+      },
+      "publisher": {
+        "profile": "2026-10-29.1",
+        "method": "reviewed-first-party-directory",
+        "reviewedOn": "2026-10-29",
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "status": "matching-publisher"
+      },
+      "network": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.366Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 0,
+        "unmappedDeclarationCount": 1,
+        "checkCount": 0,
+        "sourceNames": "none",
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "none"
+        }
+      },
+      "localStatus": "verified",
+      "userAgentCovered": false,
+      "receiptMatches": true
+    }
+  ],
+  "ipControls": [
+    {
+      "mode": "listed",
+      "receipt": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.295Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": true,
+          "notListed": false,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "listed",
+              "reason": "none",
+              "snapshot": {
+                "status": "recorded",
+                "sha256": "5f56bcf29874a30752fd89bb0af4e69cd2d0f55ba8539f3ae7aafc9741bf4611",
+                "fetchedAt": "2026-10-29T16:14:48.295Z",
+                "validatedAt": "2026-10-29T16:14:48.295Z",
+                "freshUntil": "2026-10-29T16:19:48.295Z",
+                "publisherVersionStatus": "recorded",
+                "publisherVersion": "2026-07-14T00:00:00.000000",
+                "prefixCount": 10
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "mode": "not-listed",
+      "receipt": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.303Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": true,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "not-listed",
+              "reason": "none",
+              "snapshot": {
+                "status": "recorded",
+                "sha256": "5f56bcf29874a30752fd89bb0af4e69cd2d0f55ba8539f3ae7aafc9741bf4611",
+                "fetchedAt": "2026-10-29T16:14:48.303Z",
+                "validatedAt": "2026-10-29T16:14:48.303Z",
+                "freshUntil": "2026-10-29T16:19:48.303Z",
+                "publisherVersionStatus": "recorded",
+                "publisherVersion": "2026-07-14T00:00:00.000000",
+                "prefixCount": 10
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "mode": "http-failed",
+      "receipt": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.304Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": true,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "unavailable",
+              "reason": "http-status",
+              "snapshot": {
+                "status": "unavailable"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "mode": "bad-feed",
+      "receipt": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.305Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": true,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "unavailable",
+              "reason": "invalid-feed",
+              "snapshot": {
+                "status": "unavailable"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "mode": "relay",
+      "receipt": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.306Z",
+        "addressState": "worker-subrequest",
+        "addressHeader": "none",
+        "addressFamily": "none",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 1,
+        "unmappedDeclarationCount": 0,
+        "checkCount": 1,
+        "sourceNames": "parallel-shapbot",
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": true,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "recorded",
+          "sources": {
+            "parallel-shapbot": {
+              "outcome": "unavailable",
+              "reason": "address-unavailable",
+              "snapshot": {
+                "status": "unavailable"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "mode": "unmapped-user",
+      "receipt": {
+        "status": "recorded",
+        "profile": "2026-10-29.2",
+        "method": "published-ip-feed",
+        "source": "local-vendor-ip",
+        "checkedAt": "2026-10-29T16:14:48.306Z",
+        "addressState": "usable",
+        "addressHeader": "cf-connecting-ip",
+        "addressFamily": "ipv4",
+        "declarationCount": 1,
+        "configuredDeclarationCount": 0,
+        "unmappedDeclarationCount": 1,
+        "checkCount": 0,
+        "sourceNames": "none",
+        "summary": {
+          "listed": false,
+          "notListed": false,
+          "unavailable": false,
+          "notAssessed": false
+        },
+        "checks": {
+          "status": "none"
+        }
+      }
+    }
+  ],
+  "nativeCollectorControls": 14,
+  "legacyProfileRows": 2,
+  "report": {
+    "included": 14,
+    "ownerExcluded": 1,
+    "referralExcluded": 1,
+    "reads": 8229,
+    "diagnosticWrites": 0,
+    "verification": {
+      "vendorCheckUnrecognizedViews": 0,
+      "vendorCheckRecognizedViews": 14,
+      "unrecognizedLocalViews": 0,
+      "coverageNotRecordedVerifiedViews": 0,
+      "coverageUnrecognizedVerifiedViews": 0,
+      "nativeUnavailableViews": 14,
+      "nativeNotRecordedViews": 0,
+      "nativeUnrecognizedViews": 0,
+      "localInvalidViews": 1,
+      "localUnsupportedViews": 0,
+      "localUnavailableViews": 0,
+      "localPolicyRejectedViews": 0,
+      "localNotApplicableViews": 0,
+      "localIndeterminateViews": 0,
+      "unverifiedOutcomeNotRecordedViews": 0,
+      "vendorDocumentedViews": 12,
+      "vendorMatchingOriginViews": 4,
+      "vendorDifferentOriginViews": 3,
+      "vendorOriginConflictViews": 2,
+      "vendorConflictWithMatchingOriginViews": 2,
+      "vendorNotVerifiedViews": 3,
+      "vendorUnmappedDeclarationViews": 3,
+      "vendorUserAgentBoundViews": 1,
+      "vendorCheckNotRecordedViews": 0,
+      "recordedViews": 14,
+      "notRecordedViews": 0,
+      "localVerifiedViews": 10,
+      "localUnverifiedViews": 1,
+      "localAbsentViews": 3,
+      "testVerdictViews": 0,
+      "selectionUnrecognizedVerifiedViews": 0,
+      "selectionRecordedViews": 10,
+      "selectionNotRecordedVerifiedViews": 0,
+      "multipleTaggedCandidateViews": 0,
+      "unassessedCandidateViews": 0,
+      "coverageRecordedViews": 10,
+      "userAgentBoundViews": 1,
+      "resourceBoundViews": 0,
+      "methodBoundViews": 0,
+      "authorityOnlyViews": 10,
+      "nativeAvailableViews": 0,
+      "nativeVerifiedBotViews": 0,
+      "nativeSignedAgentViews": 0,
+      "localVerifiedNativeNotVerifiedViews": 0
+    },
+    "network": {
+      "recognizedViews": 12,
+      "unrecognizedViews": 0,
+      "recordedViews": 12,
+      "notRecordedViews": 2,
+      "configuredDeclarationViews": 9,
+      "unmappedDeclarationViews": 6,
+      "noDeclarationViews": 0,
+      "listedViews": 0,
+      "notListedViews": 9,
+      "unavailableViews": 0,
+      "notAssessedViews": 0,
+      "addressUnavailableViews": 0
+    },
+    "directoryDistribution": [
+      {
+        "basis": "different-publisher",
+        "views": 3
+      },
+      {
+        "basis": "matching-publisher",
+        "views": 3
+      },
+      {
+        "basis": "not-verified",
+        "views": 3
+      },
+      {
+        "basis": "conflicting-publishers",
+        "views": 2
+      },
+      {
+        "basis": "not-configured",
+        "views": 2
+      },
+      {
+        "basis": "partial-mapping",
+        "views": 1
+      }
+    ]
+  },
+  "filteredReports": 2,
+  "unexpectedFetches": 0,
+  "productionRequests": 0,
+  "vendorRequests": 0,
+  "humanLabels": 0,
+  "limits": [
+    "Generated keys and intercepted directories are fixtures, not vendor authentication.",
+    "Covered UA fixtures prove the binding mechanism, not actual Parallel coverage.",
+    "Old profiles are read as recorded; no historical row is reclassified.",
+    "Roles, signing evidence and human triggers remain separate."
+  ]
+}

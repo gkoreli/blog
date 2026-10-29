@@ -3,8 +3,10 @@ import type { WebBotAuthResult } from './webbotauth.js';
 
 /** Documented key discovery, independent of the public signer display catalogue.
  * This comparison adds no trust to arbitrary origins and makes no IP/trigger claim.
- * Sources checked 2026-10-28; version the registry when its scope changes.
+ * Parallel sources checked 2026-10-29; earlier entries retain their dated evidence.
+ * Version the registry when its scope changes.
  */
+export const VENDOR_SIGNATURE_PROFILE = '2026-10-29.1';
 export const VENDOR_SIGNATURE_METHODS = [{
   vendor: 'Exa', origin: 'https://crawler.exa.ai',
   declarations: ['ExaSearchBot', 'ExaUser'],
@@ -15,10 +17,18 @@ export const VENDOR_SIGNATURE_METHODS = [{
   declarations: ['Google-Agent'],
   sources: ['https://developers.google.com/crawling/docs/crawlers-fetchers/web-bot-auth',
     'https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers#google-agent'],
+}, {
+  vendor: 'Parallel', origin: 'https://shapbot.parallel.ai',
+  declarations: ['ShapBot'],
+  sources: ['https://parallel.ai/parallel-web-systems-bots'],
+}, {
+  vendor: 'Parallel', origin: 'https://shap-user.parallel.ai',
+  declarations: ['Shap-User'],
+  sources: ['https://parallel.ai/parallel-web-systems-bots'],
 }] as const;
 
 export interface VendorSignatureEvidence {
-  profile: '2026-10-28.1';
+  profile: typeof VENDOR_SIGNATURE_PROFILE;
   method: 'documented-signing-origin';
   documentedDeclarationCount: number;
   unmappedDeclarationCount: number;
@@ -39,7 +49,7 @@ export function vendorSignatureEvidence(names: readonly KnownAgentName[], signat
     ? new Set(methods.filter(method => method.origin === signature.agent)
       .flatMap(method => method.declarations.filter(name => declarations.has(name)))).size : null;
   return {
-    profile: '2026-10-28.1', method: 'documented-signing-origin',
+    profile: VENDOR_SIGNATURE_PROFILE, method: 'documented-signing-origin',
     documentedDeclarationCount: mapped.size, unmappedDeclarationCount: declarations.size - mapped.size,
     expectedOriginCount: origins.size, matchingDeclarationCount: matching,
     differentOriginDeclarationCount: matching === null ? null : mapped.size - matching,

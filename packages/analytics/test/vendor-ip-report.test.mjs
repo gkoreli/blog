@@ -6,6 +6,14 @@ import { queryStats } from '../.test-dist/stats.js';
 import { networkEvidence, networkSummaryCases } from './fixtures/vendor-network-summary.mjs';
 import { consistentVendorNetworkSummary } from '../.test-dist/vendor-network-summary.js';
 import { verifyVendorIp, createVendorIpCache } from '../.test-dist/vendor-ip.js';
+import { vendorNetworkStateSql } from '../.test-dist/vendor-network-summary.js';
+
+test('Parallel address source is recognized only under its introducing profile',()=>{
+  const sqlite=new DatabaseSync(':memory:');sqlite.exec(readFileSync(new URL('../schema.sql',import.meta.url),'utf8'));
+  const insert=sqlite.prepare("INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner,vendor_ip_evidence) VALUES('/a','00000000000000000000000000000000','ai','desktop',0,?)");
+  for(const profile of ['2026-10-29.2','2026-10-29.1','2026-10-28.2'])insert.run(JSON.stringify(networkEvidence('listed',{profile,source:'parallel-shapbot'})));
+  assert.deepEqual(sqlite.prepare(`SELECT ${vendorNetworkStateSql()} state FROM page_observations`).all().map(r=>r.state),['recognized','unrecognized','unrecognized']);
+});
 
 test('IP evidence migration preserves history and validates the derived JSON byte boundary', () => {
   const sqlite = new DatabaseSync(':memory:');

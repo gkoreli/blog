@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-10-29T16:10:10.401Z",
+  "directoryCount": 2,
+  "importedKeyEntries": 4,
+  "distinctPublicKeys": 4,
+  "sharedPublicKeys": 0,
+  "runtime": "Node.js v24.14.1",
+  "signatureVerifiedByImport": false
+}

@@ -26,7 +26,7 @@ export function vendorSignatureStateSql(): string {
   return `CASE
     WHEN json_type(signature_evidence, '$.vendor') IS NULL THEN 'not-recorded'
     WHEN NOT COALESCE((local_state IN ('verified','unverified','absent','test-injected')
-      AND ${v('profile')} IN ('2026-10-27.1','2026-10-28.1') AND ${v('method')} = 'documented-signing-origin'
+      AND ${v('profile')} IN ('2026-10-27.1','2026-10-28.1','2026-10-29.1') AND ${v('method')} = 'documented-signing-origin'
       AND ${integer('documentedDeclarationCount')} AND ${integer('unmappedDeclarationCount')}
       AND ${t('userAgentCovered')} IN ('true','false','null')
       AND (${v('status')} = 'test-injected') = (local_state = 'test-injected')
@@ -36,8 +36,8 @@ export function vendorSignatureStateSql(): string {
       AND (${v('status')} <> 'not-verified' OR (local_state IN ('unverified','absent') AND ${v('documentedDeclarationCount')} > 0))
       AND (NOT (${positive}) OR (local_state = 'verified' AND ${v('documentedDeclarationCount')} > 0))
       AND ((${t('userAgentCovered')} = 'null' AND (local_state <> 'verified' OR coverage_valid = 0)) OR (local_state = 'verified' AND coverage_valid = 1 AND ${v('userAgentCovered')} = json_extract(signature_evidence, '$.coverage.covered.userAgent')))
-      AND (${v('status')} <> 'conflicting-origins' OR (${v('profile')} = '2026-10-28.1' AND ${v('documentedDeclarationCount')} >= 2))
-      AND (${v('profile')} <> '2026-10-28.1' OR (
+      AND (${v('status')} <> 'conflicting-origins' OR (${v('profile')} IN ('2026-10-28.1','2026-10-29.1') AND ${v('documentedDeclarationCount')} >= 2))
+      AND (${v('profile')} NOT IN ('2026-10-28.1','2026-10-29.1') OR (
         ${integer('expectedOriginCount')}
         AND ${v('expectedOriginCount')} <= ${v('documentedDeclarationCount')}
         AND (${v('expectedOriginCount')} = 0) = (${v('documentedDeclarationCount')} = 0)

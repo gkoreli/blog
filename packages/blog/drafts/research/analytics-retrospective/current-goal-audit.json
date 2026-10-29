@@ -1,19 +1,19 @@
 {
-  "checkedAt": "2026-10-29T15:59:43.662045+00:00",
-  "sourceBaseline": "3d245a0",
+  "checkedAt": "2026-10-29T16:16:40.699122+00:00",
+  "sourceBaseline": "3639bf6",
   "goalAchieved": false,
   "previousTurn": "progress",
   "scope": "Original analytics understanding, evidence, native/vendor validation and labelled measurement requirements retained.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
-    "ipFeedSources": 15,
-    "declarationsWithConfiguredIpMethod": 16,
-    "documentedSigningOrigins": 2,
-    "declarationsWithDocumentedSigningMethod": 3,
-    "declarationsWithAnyConfiguredPerDeclarationMethod": 18,
-    "declarationsWithoutConfiguredPerDeclarationMethod": 33,
-    "reviewedDirectoryOrigins": 3,
-    "declarationsWithReviewedDirectoryPublisher": 5,
+    "ipFeedSources": 16,
+    "declarationsWithConfiguredIpMethod": 17,
+    "documentedSigningOrigins": 4,
+    "declarationsWithDocumentedSigningMethod": 5,
+    "declarationsWithAnyConfiguredPerDeclarationMethod": 20,
+    "declarationsWithoutConfiguredPerDeclarationMethod": 31,
+    "reviewedDirectoryOrigins": 5,
+    "declarationsWithReviewedDirectoryPublisher": 7,
     "publicDisplayApprovals": 4
   },
   "calibration": {
@@ -44,25 +44,25 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Configure Parallel ShapBot and Shap-User documented signing origins and reviewed-publisher provenance with bounded native positive/negative/conflict controls; no new raw capture or human trials.",
+  "nextBoundedAction": "Deliver and accept exact Parallel signing/IP method source, then native-test a bounded new-ID delta since the frozen retained census to assess current provenance and remaining uncertainty. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1375,
     "prompts": 31,
     "sourceSha256": "efb458c18aa509537f1faf077b404695b8d4e06b21fc769b471b7ee64fd9feaf",
-    "unchanged": false,
-    "freshServedCheck": true,
+    "unchanged": true,
+    "freshServedCheck": false,
     "publicationReceipt": "parallel-declarations-release.json",
     "servedMatchesCheckedBuild": true,
     "lastServedCheckReceipt": "parallel-declarations-release.json",
-    "publicationStatus": "cc7c5a9 accepted through successful build/100% activation, exact served Markdown/article element and local visual preview of downloaded HTML.",
+    "publicationStatus": "Article unchanged at 1375 words/31 prompts in phase 84; prior served acceptance remains dated in parallel-declarations-release.json.",
     "previousPublicationReceipt": "retained-population-release.json",
     "servedMatchScope": "Exact Markdown and article element; full HTML differs by exactly two production Turnstile hooks."
   },
   "runtimeUnchanged": false,
-  "productionStatements": 1,
-  "newVisits": 4,
+  "productionStatements": 0,
+  "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": true,
+  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -91,8 +91,8 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 4,
-  "collectionEligibleGets": 3,
+  "productionOwnSiteGets": 0,
+  "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
     "receipt": "retained-delta-production.json",
@@ -166,7 +166,7 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 6,
+  "productionReportedReads": 0,
   "productionDiagnosticWrites": 0,
   "normalIngestion": {
     "acknowledgedControlRows": 2,
@@ -379,7 +379,7 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "Exact source/build/100% Worker allocation and bindings; two referral-excluded synthetic controls with six-read exact-ID lookup. No configuration change.",
+  "liveAccountInspectionScope": "Fresh primary documentation and fixed public key/IP captures; no production observations in the local research slice.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -494,5 +494,25 @@
     ],
     "documentedParallelSigningConfigured": false,
     "release": "parallel-declarations-release.json"
+  },
+  "parallelMethods": {
+    "sources": "parallel-signing-sources.json",
+    "native": "parallel-signing-native.json",
+    "retained": "parallel-signing-retained.json",
+    "reference": "parallel-signing-reference.json",
+    "checks": "parallel-signing-checks.json",
+    "documentedSigningOriginsAdded": 2,
+    "documentedIpSourcesAdded": 1,
+    "nativeCollectorControls": 14,
+    "nativeIpControls": 6,
+    "legacyProfileRows": 2,
+    "retainedOriginals": 3,
+    "recordedTimeContextsPerRuntime": 12,
+    "independentRfcContexts": 12,
+    "unsignedRoleChangesRemainVerified": 3,
+    "authenticatedD1Joins": 0,
+    "managedAgreementMeasured": false,
+    "humanTriggerEstablished": false,
+    "productionActivation": "pending"
   }
 }
