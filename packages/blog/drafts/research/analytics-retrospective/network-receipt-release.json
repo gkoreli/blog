@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-29T03:13:28.629154+00:00",
+  "checkedAt": "2026-10-29T03:19:45.884216+00:00",
   "sourceBaseline": "697c8a7",
-  "sourceCommit": null,
-  "publication": "pending",
+  "sourceCommit": "7793f1430587881da7e5dff33447b34aad956a9c",
+  "publication": "accepted",
   "collectionVersion": "2026-10-29.3",
   "receiptVersion": "2026-10-29.1",
   "classifierVersion": "2026-10-29.1",
@@ -29,11 +29,13 @@
   "article": {
     "bodyWhitespaceWords": 1358,
     "prompts": 31,
-    "freshServedCheck": false,
-    "checkedBuildMarkdownSha256": "7e1cf80295e891fbacb047d5457be31573cec8819b207ab52974c10b54a8beff"
+    "freshServedCheck": true,
+    "checkedBuildMarkdownSha256": "7e1cf80295e891fbacb047d5457be31573cec8819b207ab52974c10b54a8beff",
+    "servedMarkdownSha256": "7e1cf80295e891fbacb047d5457be31573cec8819b207ab52974c10b54a8beff",
+    "servedMatchesCheckedBuild": true
   },
-  "productionStatements": 0,
-  "productionOwnSiteGets": 0,
+  "productionStatements": 1,
+  "productionOwnSiteGets": 3,
   "newHumanLabels": 0,
   "nativeReceipt": "network-receipt-native.json",
   "legacyReceipt": "network-receipt-legacy.json",
@@ -46,7 +48,7 @@
     "packages/analytics/src/db.ts": "bfa4692279bd06bc958f063d3bd725243cef76384ec2c482a6453e227aa58955",
     "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "3c51458d27908a851e629bde089c14f4e8f3f650396052d9484804d6fcd9ed73"
   },
-  "nextBoundedAction": "Accept source activation and two excluded synthetic production receipts against exact stored rows. Human trials remain deferred; genuine newest-profile signed proof chains and native-provider comparison remain open.",
+  "nextBoundedAction": "Inspect the exact two control receipts through the provider retained-log path and compare known network fields. Human trials remain deferred; signed proof/native-provider/attribution/privacy requirements remain open.",
   "livePlanSha256": "ef69c9b9b245e460b3bcbee49d5c45c3d6a5470569ba1115377a7994e54f48c6",
   "privateArchive": {
     "name": "2026-10-29-published-address-receipt-native",
@@ -56,5 +58,37 @@
     "reviewDate": "2026-10-31",
     "automaticDeletion": false,
     "modes": "0700/0600"
-  }
+  },
+  "activation": {
+    "checkedAt": "2026-10-29T03:17:16.874497+00:00",
+    "sourceCommit": "7793f1430587881da7e5dff33447b34aad956a9c",
+    "buildId": "c2ea6836-2981-4703-8055-9fb468f2fbad",
+    "workerVersion": "2c8ab95c-e591-4877-98b5-0f8a2576a6b1",
+    "allocationPercentage": 100,
+    "buildCompleted": true,
+    "optionalCaptureBindingsAbsent": true,
+    "agentRetries": 0,
+    "agentManualDeployments": 0
+  },
+  "liveReceipt": "network-receipt-live.json",
+  "livePrivateArchive": {
+    "name": "2026-10-29-published-address-receipt-live",
+    "capturedFiles": 30,
+    "files": 31,
+    "manifestSha256": "a5c549bb6581faac16141b3699287a6f8202b1ed208635e509f699b62fd51764",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false,
+    "modes": "0700/0600"
+  },
+  "productionReportedReads": 4,
+  "productionDiagnosticWrites": 0,
+  "collectionEligibleGets": 2,
+  "collectionIneligibleReadinessGets": 1,
+  "normalIngestion": {
+    "acknowledgedApplicationRows": 2,
+    "providerWriteMetering": "not returned; additional to diagnostic meter"
+  },
+  "ownedTailExited": true,
+  "ownedProcessGroupAbsent": true,
+  "dashboardAttribution": "Source-linked Ready row names the exact Worker; full source build/log and CLI allocation 100% agree. Active-summary traffic text renders 0% beside a 100% indicator, so UI percentage alone is not the allocation evidence."
 }

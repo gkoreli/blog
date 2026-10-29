@@ -34,6 +34,23 @@ Fresh checks pass: **273 analytics tests, 117 site tests, workspace types, 21 Ma
 
 ## Delivery and remaining work
 
-[Release evidence](network-receipt-release.json) separates source publication, activation and production measurement. Local acceptance does not establish deployed behavior. The next check is exact source/version attribution followed by two labelled, referral-excluded synthetic controls and a native-tested exact-reference readback. Human trials remain deferred. Genuine newest-profile signed proof chains, request-level native-verifier agreement, R1 attribution and applicable privacy decisions remain open in [the goal audit](current-goal-audit.json).
+[Release evidence](network-receipt-release.json) separates source publication, activation and production measurement. Local acceptance does not establish deployed behavior. That planned check is now accepted in the production evidence below. Human trials remain deferred. Genuine newest-profile signed proof chains, request-level native-verifier agreement, R1 attribution and applicable privacy decisions remain open in [the goal audit](current-goal-audit.json).
 
 The frozen private source/native archive contains 39 captured files plus its manifest, with 0700/0600 modes. Manifest SHA-256: `b70294888842fcf8b35272d0872f4fe04362c2ad0f41bbffa1f5a89d4166e2f0`. October 31 is a review date, not automatic deletion. Later activation and live evidence will use a separate archive.
+
+## Production acceptance
+
+Source `7793f1430587881da7e5dff33447b34aad956a9c` builds as `c2ea6836-2981-4703-8055-9fb468f2fbad` and deploys Worker `2c8ab95c-e591-4877-98b5-0f8a2576a6b1`. The full build page/log, source-linked Ready row and CLI 100% allocation agree; the controlled invocation names that exact version. The active-summary screenshot renders 0% beside a 100% indicator, so UI traffic text alone is not used as allocation evidence. Both optional capture bindings are absent; rules are not re-inspected. No manual deployment or agent retry is used.
+
+One collection-ineligible Markdown readiness GET proves tail delivery and served/build article equality. Two eligible synthetic GETs follow, once each, matching the active referral exclusion. [Live evidence](network-receipt-live.json) joins invocation, attempt, successful receipt and exact private D1 reference. Both complete known receipt projections agree with storage, including `vendorNetwork`:
+
+| Synthetic claim | Stored role | Network facts now present in the receipt |
+|---|---|---|
+| Meta-ExternalAds | Other bot | Usable address, zero configured declarations, explicit no-check state |
+| Amzn-SearchBot | AI search | Not-listed by `amazon-search`, 816 entries, publisher version `2026-09-08T05:24:10.610952Z` and stored snapshot facts |
+
+Both local signature outcomes are absent; both native booleans remain unavailable. Neither request authenticates its claimed vendor. One exact command-mode SELECT costs **four reported reads and zero diagnostic writes**, one provider attempt and no agent retry. The 100-read figure is a post-execution review threshold, not an enforced query cap. Normal collection separately acknowledges two added application rows; provider write metering is not returned. There is no population scan, public-report fill or human label, and the twelve-trial calibration cohort is unchanged.
+
+The owned tail exits and its process group is confirmed absent. This is not an account-wide tail-cleanup claim. A separate private live/publication archive contains 30 captures plus its manifest with 0700/0600 modes; manifest SHA-256 `a5c549bb6581faac16141b3699287a6f8202b1ed208635e509f699b62fd51764`. October 31 is a review date, not automatic erasure. The earlier native archive remains frozen.
+
+Live receipt/storage agreement closes this release's integration gate. Whether all new scalar/source/snapshot fields survive the provider's retained-log path remains unmeasured; that exact-control comparison is the next bounded action. It establishes no complete population retention, bot/human accuracy or native cryptographic agreement.
