@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+<rect width="1200" height="1200" fill="#f7f2e7"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#24241f">
+<text x="78" y="88" font-size="30" letter-spacing="3">GOGA KORELI · OSS RADAR #08</text>
+<text x="78" y="186" font-size="70" font-weight="700">Same TypeScript.</text>
+<text x="78" y="267" font-size="70" font-weight="700">Smaller executable.</text>
+<text x="78" y="367" font-size="42">Usual Bun build</text><text x="1122" y="367" text-anchor="end" font-size="48" font-weight="700">121.5 MB</text><rect x="78" y="397" width="1044" height="66" rx="5" fill="#77746b"/>
+<text x="78" y="552" font-size="42">Bun AOT</text><text x="1122" y="552" text-anchor="end" font-size="48" font-weight="700">51.8 MB</text><rect x="78" y="582" width="445.6501356185839" height="66" rx="5" fill="#d79c77"/>
+<text x="78" y="737" font-size="42">Bun AOT + --trim</text><text x="1122" y="737" text-anchor="end" font-size="48" font-weight="700">30.3 MB</text><rect x="78" y="767" width="260.723832608004" height="66" rx="5" fill="#b54129"/>
+<text x="78" y="935" font-size="46" font-weight="700">File size, not RAM.</text>
+<text x="78" y="992" font-size="30">Same server · macOS arm64 · October 27 preview</text>
+<text x="78" y="1035" font-size="30">Bun 06888611e · decimal MB · bars start at zero</text>
+<line x1="78" x2="1122" y1="1080" y2="1080" stroke="#c6bfb1"/>
+<text x="78" y="1141" font-size="34">gkoreli.com/oss-radar-08-bun-aot</text>
+</g></svg>

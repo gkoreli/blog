@@ -40,3 +40,13 @@ Goga approved the final plain-language drafts and explicitly requested posting b
 - HN clarification email: sent to `hn@ycombinator.com` with subject `Are my submissions being blocked?`; Gmail's `SENT` label, recipient, subject and send date verified by a separate metadata read. Delivery, reading and a moderator response are unverified. The private receipt retains the message identifiers and exact outgoing text.
 
 See [the executed copy and receipts](next-actions.md). These follow-ups do not update the earlier traction snapshot or establish new adoption. No new HN post, vote solicitation, deletion, repost or monitoring automation was performed. Private proof files are outside Git under `~/.local/share/gkoreli/social-evidence/2026-10-28-bun-aot-followups/`.
+
+## October 28 evening: promotion research and preparation
+
+Goga requested the same serious attention to promotion and adoption as to building. The [checked opportunity review](promotion-2026-10-28.md) ranks ten routes, separates verified coverage/routes from experiments, and rules out unsuitable destinations. The [copy packet](promotion-copy.md) contains seven exact unsent drafts; the [size image](binary-size.png) is ready locally. A [DEV copy](dev-crosspost.md) remains on hold under its authorship/purpose rules. Nothing new was sent, published or scheduled in this research pass.
+
+Around 6:30 PM Pacific, fresh X views showed 17 impressions on the original post, 3 engagements/detail expands and zero tracked clicks or social reactions. The two replies showed 8 and 10 views respectively, with no displayed replies or social reactions. The checked HN email thread contained only our sent message. These observations supersede no earlier receipt and do not establish readership, efficacy or an algorithmic cause. No site/D1 query was made.
+
+Private DOM snapshots stay outside Git in the task's temporary promotion-evidence folder. The image uses the existing accepted binary-byte measurements; its bars share a zero baseline and scale, with decimal-MB labels. It was inspected at 1200 pixels and a 390-pixel phone preview. The SVG source is committed alongside the PNG. The earlier article, title, experiments and frozen accounting were not changed.
+
+Owner direction was recorded in the editorial learning reference and linked from the X launch skill. These instructions require concrete preparation and honest evidence, while preserving scoped authorization, article form and the absence of a mandatory positive-feedback gate. Research/preparation is complete; the next proposed action is the one reviewed Cooperpress pitch, not an automatic send.

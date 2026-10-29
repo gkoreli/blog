@@ -6,6 +6,12 @@ Goga's direction of October 18, 2026 is to prioritize sustained reader value and
 
 Prefer bounded learning with willing readers facing the actual question: understand their task, find where the explanation or artifact fails them, and improve the relevant work. Keep hypotheses separate from reported use and observed behavior. This direction does not impose utility metrics on personal essays, require positive feedback before publishing, or make difficulty itself a sign of valuable growth. Preserve the article's form and authorship.
 
+## Owner direction: promotion deserves equal attention
+
+Goga's direction of October 28, 2026 is to give adoption and distribution the same serious planning attention as building. For a growth request, do the concrete preparation: identify named destinations and readers, check current rules and comparable coverage, prepare usable copy or evidence, and define the next observable result. Do not substitute generic advice such as “share in relevant communities” for that work. Distinguish observed results, evidence of audience fit and untested ideas; do not call a tactic proven merely because a platform exists. This is a priority for planning, not a fixed time quota, a requirement to post everywhere, or authority to send unrequested messages.
+
+Use the article's existing social directory for promotion work after its research cutoff. Keep exact drafts, proposed actions, publication receipts and measured outcomes separate. A completed article is not evidence of completed distribution; a completed strategy request also does not imply that its proposed posts have been authorized, published or scheduled. The [Bun AOT opportunity review](../../../../packages/blog/drafts/social/oss-radar-08-bun-aot/promotion-2026-10-28.md) is one dated example, not a permanent channel list.
+
 ## Publication feedback
 
 After publishing a substantive engineering article:
