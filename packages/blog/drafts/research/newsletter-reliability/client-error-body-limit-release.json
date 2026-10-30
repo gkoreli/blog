@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-30T05:40:56.172962+00:00",
+  "sourceCommit": "8d5772bb942f764ac1faf849f355694615651767",
+  "buildId": "5b9a3dca-68e8-4393-9bbd-f6e599634f44",
+  "workerVersion": "f42e009b-ce32-46cc-b6ce-06fce906d5e6",
+  "allocationPercent": 100,
+  "nativeSuccessfulDeploymentInspected": true,
+  "assetFilesChanged": 0,
+  "productionIngestionTrial": false,
+  "actualWireFramingMeasured": false,
+  "perRequestVersionJoined": false,
+  "productionHttpRequests": 0,
+  "productionSqlStatements": 0,
+  "humanLabels": 0,
+  "scope": "Source/native build/full allocation acceptance only; eleven-case before/after behavior measured in local workerd with native D1.",
+  "privateReleaseManifestSha256": "19937b077ae953088f742adad3ca5f265b51e278a03735514ef0cad5462fd5a2"
+}
