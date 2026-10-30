@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T07:07:28.237438+00:00",
-  "sourceBaseline": "84882a8bfff73059d8348343cd8ad285e7df6385",
+  "checkedAt": "2026-10-30T07:20:56.142783+00:00",
+  "sourceBaseline": "765a2acf22268fb207879f6c6cba7d673d19b492",
   "goalAchieved": false,
   "previousTurn": "progress: body-limit code, paired native cases and source/build/full-allocation acceptance",
-  "scope": "Active goal continues independent diagnostic attribution. Local identity mechanism/readback accepted; hosted build/served association still pending. No new human or bot-calibration measurement.",
+  "scope": "Active goal: compiled client-build attribution has scoped local browser/native-D1 and hosted source/asset acceptance. No authenticated report, production browser-delivery rate or population/human/bot calibration follows.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Deliver and independently join hosted source/build metadata to the served client. Then add failed-operation correlation or remaining scoped admission without reopening deferred human trials. Full search/human/native/privacy/history goals remain unproven.",
+  "nextBoundedAction": "Add failed-operation correlation and remaining scoped diagnostic admission/attribution, using labelled local controls and explicit unknowns. Keep search/human/native/privacy/history measurement requirements distinct and human trials deferred.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -763,7 +763,7 @@
     "warmCache": "HIT",
     "populationPrevalenceMeasured": false
   },
-  "ownSiteGetRequests": 0,
+  "ownSiteGetRequests": 1,
   "collectionEligibleRequests": 0,
   "diagnosticSelects": 2,
   "evidenceDelta": {
@@ -838,7 +838,7 @@
     "unmeteredCalculations": 1,
     "productionBrowserLayoutMeasured": false
   },
-  "productionStatementsScope": "No new production operation in local body-limit iteration",
+  "productionStatementsScope": "One source-excluded static/prefetch main.js GET; no production SQL or diagnostic POST",
   "productionReportedReadsCoverage": "No new production database operation; historical costs stay in their dated receipts.",
   "productionReadTotal": 0,
   "publicationDateRepair": {
@@ -1018,7 +1018,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: client-build attribution implemented; compiled tests,150site tests/types/isolated build and local actual-browser/native-D1 identity readback accepted, original message gate failed and retained",
+  "currentTurn": "progress: client-build attribution implemented;150site tests/types/build, local browser/native D1 identity readback and source/native deploy/CLI/full served-client association accepted. Original local message gate remains failed.",
   "requirementsAudit": {
     "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
     "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
@@ -1170,6 +1170,11 @@
     "originalMessageGatePassed": false,
     "productionRequests": 0,
     "humanLabels": 0,
-    "hostedAssociationAccepted": false
+    "hostedAssociationAccepted": true,
+    "release": "../newsletter-reliability/client-build-identity-release.json",
+    "sourceCommit": "765a2acf22268fb207879f6c6cba7d673d19b492",
+    "workerVersion": "60b611f9-26ef-441c-9480-d10d5cc54256",
+    "servedClientBytes": 28469,
+    "reportAuthenticated": false
   }
 }
