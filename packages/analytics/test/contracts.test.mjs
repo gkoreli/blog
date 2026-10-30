@@ -934,6 +934,7 @@ test('stats result decoding rejects malformed, duplicate, missing, and misplaced
     { section: 'signer', payload: '[]' },
     { section: 'verification', payload: emptyVerification },
     { section: 'vendor-ip', payload: emptyNetwork },
+    { section: 'vendor-cache', payload: '[]' },
     { section: 'kind-signature', payload: '[]' },
     { section: 'native-category', payload: '[]' },
     { section: 'directory-publication', payload: '[]' },

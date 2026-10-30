@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-10-30T11:10:37.948696+00:00",
+  "reportFixture": "95 explicitly labelled synthetic stored-record cases; no production data",
+  "renderedCounts": 25,
+  "allCountsMatchIndependentNativeReport": true,
+  "layout": {
+    "desktop": {
+      "viewport": 1280,
+      "documentWidth": 1280,
+      "detailsWidth": 728
+    },
+    "mobile": {
+      "documentWidth": 390,
+      "open": true,
+      "overflowRows": 0,
+      "rectWidth": 354,
+      "viewport": 390
+    },
+    "keyboardClosed": true,
+    "mouseReopened": true,
+    "syntheticReport": true
+  },
+  "failureRecovery": {
+    "failures": [
+      {
+        "mode": "missing",
+        "dashboardHidden": true,
+        "status": "Unable to load stats. Try again"
+      },
+      {
+        "mode": "contradictory",
+        "dashboardHidden": true,
+        "status": "Unable to load stats. Try again"
+      },
+      {
+        "mode": "failure",
+        "dashboardHidden": true,
+        "status": "Unable to load stats. Try again"
+      }
+    ],
+    "recovered": true
+  },
+  "nativeDisclosureDefaultClosed": true,
+  "ownedPreviewStoppedAndAwaited": true,
+  "viewportReset": true,
+  "productionCalls": 0,
+  "humanLabels": 0,
+  "screenshotsSha256": {
+    "cache-summary-desktop.jpg": "99398280b19a11cc03e15e37117b12572aba30050578bfeacfbf5e02a16bc698",
+    "cache-summary-mobile.jpg": "2fd796db573a86f8dc29a30ee4265ecd8d72cab6219dea0908969b0f10589ae0"
+  },
+  "previewTabClosed": true
+}

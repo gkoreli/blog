@@ -147,3 +147,9 @@ a.stats-label { color: var(--color-link); }
 .stats-fetch-metadata caption { text-align: left; color: var(--color-text-muted); padding: 0.5rem 0; }
 .stats-fetch-metadata th, .stats-fetch-metadata td { padding: 0.6rem; border-bottom: 1px solid var(--color-border); text-align: right; font-variant-numeric: tabular-nums; }
 .stats-fetch-metadata th:first-child { text-align: left; }
+
+/* Native disclosure keeps detailed method diagnostics available without a long default list. */
+.stats-cache-details { margin: 0 0 2rem; border-block: 1px solid var(--color-border); }
+.stats-cache-details > summary { padding: 0.8rem 0; cursor: pointer; font-family: var(--font-sans); font-size: 0.9rem; }
+.stats-cache-details > summary:focus-visible { outline: 2px solid var(--color-link); outline-offset: 2px; }
+.stats-cache-details[open] > summary { margin-bottom: 1rem; }

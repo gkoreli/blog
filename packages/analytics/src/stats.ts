@@ -1,3 +1,4 @@
+import { vendorCacheReportCtes, vendorCacheReportProjectionSql, decodeVendorCacheRows } from './vendor-cache-report.js';
 import { fetchMetadataReportCtes, fetchMetadataReportProjectionSql, decodeFetchMetadataRows } from './fetch-metadata-report.js';
 import { boundedJsonObjectSql } from './sql-json.js';
 import { vendorNetworkStateSql, consistentVendorNetworkSummary } from './vendor-network-summary.js';
@@ -287,7 +288,7 @@ function payloadRows(row: Record<string, unknown>): Record<string, unknown>[] {
 function reportSections(rows: Record<string, unknown>[], includeBoundary: boolean): Map<string, Record<string, unknown>[]> {
   const expected = new Set([
     'totals', 'path', 'country', 'series', 'referrer', 'device', 'agent', 'kind', 'excluded',
-    'referrer-state', 'transitions', 'referrer-details', 'signer', 'verification', 'vendor-ip', 'kind-signature', 'native-category', 'directory-publication', 'fetch-metadata',
+    'referrer-state', 'transitions', 'referrer-details', 'signer', 'verification', 'vendor-ip', 'vendor-cache', 'kind-signature', 'native-category', 'directory-publication', 'fetch-metadata',
   ]);
   if (includeBoundary) expected.add('boundary');
   const sections = new Map<string, Record<string, unknown>[]>();
@@ -342,7 +343,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     "('totals', 0)", "('path', 1)", "('country', 2)", "('series', 3)", "('referrer', 4)",
     "('device', 5)", "('agent', 6)", "('kind', 7)", "('excluded', 8)",
     "('referrer-state', 9)", "('transitions', 10)", "('referrer-details', 11)",
-    "('signer', 12)", "('verification', 14)", "('vendor-ip', 15)", "('kind-signature', 16)", "('native-category', 17)", "('directory-publication', 18)", "('fetch-metadata', 19)",
+    "('signer', 12)", "('verification', 14)", "('vendor-ip', 15)", "('kind-signature', 16)", "('native-category', 17)", "('directory-publication', 18)", "('fetch-metadata', 19)", "('vendor-cache', 20)",
   ];
   if (includeBoundary) sectionValues.push("('boundary', 13)");
 
@@ -382,6 +383,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         FROM included
       ),
       ${fetchMetadataReportCtes()},
+      ${vendorCacheReportCtes()},
       signature_summary AS MATERIALIZED (
         SELECT *, ${vendorSignatureStateSql()} AS vendor_state,
           ${signatureSelectionRecordedSql()} AS selection_valid FROM signature_facts
@@ -483,6 +485,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
           SELECT json_array(json_object('views', COUNT(*)))
           FROM report_scope WHERE referral_excluded = 1
         )
+        WHEN 'vendor-cache' THEN (${vendorCacheReportProjectionSql()})
         WHEN 'vendor-ip' THEN (
           SELECT json_array(json_object(
             'recordedViews', SUM(vendor_ip_evidence IS NOT NULL),
@@ -708,6 +711,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     byKindNativeCategory: nativeCategoryRows(requiredSection(sections, 'native-category'), numberField(totalsRow, 'views')),
     byDirectoryPublication: directoryPublicationRows(requiredSection(sections, 'directory-publication'), numberField(totalsRow, 'views')),
     vendorNetwork,
+    vendorCache: decodeVendorCacheRows(requiredSection(sections, 'vendor-cache'), numberField(totalsRow, 'views')),
     fetchMetadata: decodeFetchMetadataRows(requiredSection(sections, 'fetch-metadata'), numberField(totalsRow, 'views')),
     verification,
   };

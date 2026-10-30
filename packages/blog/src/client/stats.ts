@@ -1,3 +1,4 @@
+import { consistentVendorCacheSummary } from '@gkoreli/analytics/vendor-cache-summary';
 import { consistentFetchMetadataSummary, FETCH_METADATA_REPORT_FIELDS } from '@gkoreli/analytics/fetch-metadata-summary';
 import { consistentVendorNetworkSummary } from '@gkoreli/analytics/vendor-network-summary';
 import { consistentSignatureSummary } from '@gkoreli/analytics/signature-summary';
@@ -207,6 +208,7 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
     || !REVIEWED_VERIFIER_PROFILES.some(profile => profile === data.verifierProfile.current)
     || !data.byKindSignature.every(row => isReportedVerifierProfile(row.profile))) throw new Error('Updated verifier profile provenance is unavailable. Please reload.');
   if (!consistentFetchMetadataSummary(data.fetchMetadata, data.totals.views)) throw new Error('Request-context evidence is incomplete or inconsistent. Please reload.');
+  if (!consistentVendorCacheSummary(data.vendorCache, data.totals.views)) throw new Error('Vendor cache diagnostics are missing or inconsistent. Please reload.');
   if (!consistentVendorNetworkSummary(data.vendorNetwork, data.totals.views)) throw new Error('Inconsistent vendor network summary. Please reload.');
   if (!consistentSignatureSummary(data.verification, data.totals.views, data.byKindSignature)) throw new Error('Inconsistent signature summary. Please reload.');
   if (!Number.isSafeInteger(data.verification.vendorOriginConflictViews) || data.verification.vendorOriginConflictViews < 0
@@ -763,6 +765,38 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     { label: 'Applicable declaration; address unavailable', views: data.vendorNetwork.addressUnavailableViews },
     { label: 'Has declarations without this IP method', views: data.vendorNetwork.unmappedDeclarationViews },
     { label: 'No recognized named declaration', views: data.vendorNetwork.noDeclarationViews },
+  ], null);
+  const cache = data.vendorCache, records = cache.records;
+  replaceSectionRows('stats-vendor-cache', [
+    { label: 'Recognized record for cache diagnostics', views: records.recognizedViews },
+    { label: 'Cache facts not recorded — historical or unreported', views: records.notRecordedViews },
+    { label: 'Unsupported or inconsistent stored record', views: records.unrecognizedViews },
+    { label: 'No applicable published-range method', views: records.noApplicableViews },
+    { label: 'Only address or fanout guards; no cache access', views: records.guardedOnlyViews },
+    { label: 'At least one recorded cache access path', views: records.withAccessViews },
+    { label: 'Accepted policy context available', views: records.policyKnownViews },
+    { label: 'At least one access with no accepted policy context', views: records.policyUnknownViews },
+    { label: 'Both known and unknown policy contexts', views: records.partialPolicyViews },
+  ], null);
+  replaceSectionRows('stats-vendor-cache-access', [
+    { label: 'Fetched and accepted a feed response', views: cache.byAccess.fetched },
+    { label: 'Revalidated a stored feed', views: cache.byAccess.revalidated },
+    { label: 'Reused a fresh in-memory feed', views: cache.byAccess.memory },
+    { label: 'Shared an in-flight fetch — success or failure', views: cache.byAccess.coalesced },
+    { label: 'Skipped under the refresh cooldown', views: cache.byAccess.cooldown },
+    { label: 'Fetch or validation failed', views: cache.byAccess.failed },
+  ], null);
+  replaceSectionRows('stats-vendor-cache-policy', [
+    { label: 'Positive reuse interval at accepted validation', views: cache.byPolicy.positiveViews },
+    { label: 'Reuse blocked at accepted validation', views: cache.byPolicy.blockedViews },
+    { label: 'Both positive and blocked contexts', views: cache.byPolicy.mixedViews },
+    { label: 'no-store — no feed body retained', views: cache.byBlocker.noStore },
+    { label: 'private — no shared feed body retained', views: cache.byBlocker.private },
+    { label: 'no-cache — validate before reuse', views: cache.byBlocker.noCache },
+    { label: 'Invalid or duplicate lifetime information', views: cache.byBlocker.invalidLifetime },
+    { label: 'Zero lifetime, including expired Expires', views: cache.byBlocker.zeroLifetime },
+    { label: 'Invalid or overflowing Age value', views: cache.byBlocker.invalidAge },
+    { label: 'Age exhausted the allowed lifetime', views: cache.byBlocker.ageExhausted },
   ], null);
   replaceSectionRows('stats-vendor-signatures', [
     { label: 'Declaration with a documented signing method', views: verification.vendorDocumentedViews },

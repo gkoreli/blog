@@ -1,0 +1,163 @@
+{
+  "checkedAt": "2026-10-30T11:07:14.399Z",
+  "baselineCommit": "7bebbab",
+  "labelledRecordCases": 95,
+  "nativeIndividualReports": 95,
+  "nodeNativeCasesEqual": true,
+  "nodeNativeReportsEqual": true,
+  "independentSetOraclePassed": true,
+  "mixed": {
+    "views": 95,
+    "summary": {
+      "records": {
+        "recognizedViews": 53,
+        "notRecordedViews": 17,
+        "unrecognizedViews": 25,
+        "noApplicableViews": 2,
+        "guardedOnlyViews": 1,
+        "withAccessViews": 50,
+        "policyKnownViews": 44,
+        "policyUnknownViews": 8,
+        "partialPolicyViews": 2
+      },
+      "byAccess": {
+        "fetched": 23,
+        "revalidated": 1,
+        "memory": 5,
+        "coalesced": 3,
+        "cooldown": 18,
+        "failed": 5
+      },
+      "byPolicy": {
+        "positiveViews": 12,
+        "blockedViews": 34,
+        "mixedViews": 2
+      },
+      "byBlocker": {
+        "noStore": 5,
+        "private": 5,
+        "noCache": 12,
+        "invalidLifetime": 9,
+        "zeroLifetime": 4,
+        "invalidAge": 7,
+        "ageExhausted": 4
+      }
+    },
+    "beforeReads": 13724,
+    "afterReads": 14321,
+    "commonReportEqual": true
+  },
+  "allRangeCommonReportEqual": true,
+  "sqlSizeAndBindingChecks": [
+    {
+      "range": "7d",
+      "sqlBytes": 76736,
+      "boundParameters": 7
+    },
+    {
+      "range": "all",
+      "sqlBytes": 77107,
+      "boundParameters": 7
+    }
+  ],
+  "decoderNegatives": 18,
+  "collectorRegression": {
+    "actualNativeCollector": true,
+    "operator": "automated-fixture",
+    "humanLabel": false,
+    "collection": "2026-10-30.1",
+    "classifier": "2026-10-29.3",
+    "before": {
+      "recognizedViews": 0,
+      "notRecordedViews": 0,
+      "unrecognizedViews": 1,
+      "inconsistentViews": 0
+    },
+    "after": {
+      "recognizedViews": 1,
+      "notRecordedViews": 0,
+      "unrecognizedViews": 0,
+      "inconsistentViews": 0
+    },
+    "otherCommonReportEqual": true,
+    "rawStoredParsingFactsUnchanged": true,
+    "compatibility": [
+      {
+        "version": "2026-10-29.6",
+        "records": {
+          "recognizedViews": 1,
+          "notRecordedViews": 0,
+          "unrecognizedViews": 0,
+          "inconsistentViews": 0
+        }
+      },
+      {
+        "version": "2026-10-30.1",
+        "records": {
+          "recognizedViews": 1,
+          "notRecordedViews": 0,
+          "unrecognizedViews": 0,
+          "inconsistentViews": 0
+        }
+      },
+      {
+        "version": "2026-10-29.5",
+        "records": {
+          "recognizedViews": 0,
+          "notRecordedViews": 0,
+          "unrecognizedViews": 1,
+          "inconsistentViews": 0
+        }
+      },
+      {
+        "version": "future-collection",
+        "records": {
+          "recognizedViews": 0,
+          "notRecordedViews": 0,
+          "unrecognizedViews": 1,
+          "inconsistentViews": 0
+        }
+      }
+    ]
+  },
+  "scale": [
+    {
+      "scenario": "historical",
+      "rows": 512,
+      "beforeReads": 34797,
+      "afterReads": 35874,
+      "delta": 1077,
+      "writes": 0
+    },
+    {
+      "scenario": "current-repeated",
+      "rows": 512,
+      "beforeReads": 44233,
+      "afterReads": 45538,
+      "delta": 1305,
+      "writes": 0
+    },
+    {
+      "scenario": "current-distinct",
+      "rows": 512,
+      "beforeReads": 44233,
+      "afterReads": 48558,
+      "delta": 4325,
+      "writes": 0
+    }
+  ],
+  "productionCalls": 0,
+  "productionSqlStatements": 0,
+  "humanLabels": 0,
+  "sourceHashBase": "packages/blog/scripts/",
+  "sourceSha256": {
+    "../../analytics/src/stats.ts": "d6c9f02a52d0df97baf6adbae4b60d90244d3f4ccffdd9a0744c95d189192317",
+    "../../analytics/src/vendor-cache-report.ts": "68bd2e68f4a1d996ab73711b56293e7f8ce6046528605c60b464b1896cb8ac24",
+    "../../analytics/src/vendor-cache-report-contract.ts": "2a7930897d69055ac13fba6763ebc9dd120d025ac926fabbd9f8d8cb351df6f0",
+    "../../analytics/src/fetch-metadata-report.ts": "92800d728d3b3c762ee9a01b078520a77df509b4c08872ca5ab542acf3c947b7",
+    "../../analytics/test/fixtures/vendor-cache-summary.mjs": "a08a36f049eeec7971633b231fd8a97b39255ec163d498618526e885c4ff1434",
+    "../test/fixtures/vendor-cache-summary-worker.js": "2527c9f06ea65daee87736a32967e0a1f54327713d0b1809b9e6ee2902630e89",
+    "./check-vendor-cache-summary.mjs": "2ff1ce37ec711bda8310a30956e0fced23055c75f6ed9014b16d6fd196cffb40"
+  },
+  "limits": "Local synthetic upstream/record consistency controls. Marginal overlap counts are events, not upstream requests, operators, people, native-provider accuracy or measured production cost. Production activation, assets/report/cache and current CLI authorization remain separate."
+}

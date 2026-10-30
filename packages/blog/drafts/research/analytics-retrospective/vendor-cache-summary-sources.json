@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-10-30T11:10:37.949111+00:00",
+  "sources": [
+    {
+      "url": "https://www.sqlite.org/json1.html",
+      "contract": "json_each expands immediate JSON children; extracted scalars have SQL types, and json() marks serialized objects for JSON aggregation.",
+      "code": [
+        "packages/analytics/src/vendor-cache-report.ts#vendorCacheReportCtes",
+        "packages/analytics/src/vendor-cache-report.ts#vendorCacheReportProjectionSql"
+      ],
+      "controls": [
+        "95 native grouped cohorts",
+        "duplicate/group-loss/claim contradictions"
+      ]
+    },
+    {
+      "url": "https://www.sqlite.org/lang_with.html#materialization_hints",
+      "contract": "MATERIALIZED acts as an optimization fence; its cost must be measured for the actual query/input. It is not a guarantee that grouping saves production reads.",
+      "code": [
+        "packages/analytics/src/vendor-cache-report.ts#vendorCacheReportCtes"
+      ],
+      "controls": [
+        "historical/current-repeated/current-distinct matched 512-row fixtures"
+      ]
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/sql-api/query-json/",
+      "contract": "D1 documents JSON extraction, json_each and typed scalar conversion; invalid JSON can error.",
+      "code": [
+        "packages/analytics/src/vendor-network-summary.ts",
+        "packages/analytics/src/vendor-cache-report.ts"
+      ],
+      "controls": [
+        "reuse recognized stored-record gate before cache expansion",
+        "unsupported profiles do not carry masks"
+      ]
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/platform/limits/",
+      "contract": "Documented maximum SQL statement 100000 bytes, 100 bindings and 32 arguments per SQL function.",
+      "code": [
+        "packages/analytics/src/vendor-cache-report.ts#vendorCacheReportProjectionSql",
+        "packages/analytics/src/sql-json.ts"
+      ],
+      "controls": [
+        "actual report SQL: 76736/77107 bytes and seven bindings for 7d/all",
+        "new projection json_object has six pairs; internal mask object three pairs"
+      ]
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.html#section-5.2.2",
+      "contract": "Display validation-before-reuse separately from storage restrictions; retained accepted context does not establish freshness now.",
+      "code": [
+        "packages/blog/src/pages/stats.ts",
+        "packages/blog/src/client/stats.ts"
+      ],
+      "priorEvidence": "vendor-cache-evidence-sources.json"
+    }
+  ],
+  "metadataCompatibility": {
+    "collectorStamp": "2026-10-30.1",
+    "parserRecord": "2026-10-29.2",
+    "classifier": "2026-10-29.3",
+    "priorCompatibleCollection": "2026-10-29.6",
+    "code": "packages/analytics/src/fetch-metadata-report.ts",
+    "controls": "Actual compiled/native collector; pinned baseline rejects the same stored parsing facts, fixed report recognizes them. Unsupported/future collection stamps stay unrecognized."
+  },
+  "scope": "Primary docs plus inspectable repository implementation. Native controls do not establish server production behavior or population calibration."
+}

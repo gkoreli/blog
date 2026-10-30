@@ -132,6 +132,24 @@ export function statsPage() {
       <p class="stats-section-note">Checks compare an edge-supplied address with documented vendor ranges. Membership supports network attribution; a nonmatch does not prove impersonation. Missing addresses, Worker relay addresses, unavailable feeds, failed revalidation and budget skips stay explicit. Only recognized, consistent stored assessments support outcome counts; inconsistent records stay separate. Historical profiles retain their recorded source scope, without fresh address verification. Outcomes can overlap when several declarations apply. Earlier records remain unknown. <a href="https://github.com/gkoreli/blog/blob/main/packages/analytics/src/vendor-ip-sources.ts" target="_blank" rel="noopener">Configured methods and sources</a>.</p>
       ${listSkeleton(3)}
     </section>
+    <details class="stats-cache-details">
+      <summary>Why vendor checks were skipped or reused</summary>
+      <section class="stats-section" id="stats-vendor-cache">
+        <h2>Cache diagnostic coverage</h2>
+        <p class="stats-section-note">Each included event appears once as recognized, unrecorded or inconsistent. Recognized records separate no applicable method, guards only and recorded cache access. Old records remain unknown. Known and unknown policy contexts can overlap when several sources apply.</p>
+        ${listSkeleton(3)}
+      </section>
+      <section class="stats-section" id="stats-vendor-cache-access">
+        <h2>Recorded access paths</h2>
+        <p class="stats-section-note">Counts are events with at least one matching source check. Paths can overlap and are not upstream-request totals. A cooldown stays unassessed; a shared fetch may fail. These facts do not identify a vendor, operator or reader.</p>
+        ${listSkeleton(3)}
+      </section>
+      <section class="stats-section" id="stats-vendor-cache-policy">
+        <h2>Last accepted cache policy</h2>
+        <p class="stats-section-note">A cooldown can carry the last accepted policy context without a membership snapshot. Positive and blocked intervals refer to that validation, not freshness now. Sources and blockers overlap; do not add these counts. Failure without accepted context remains unknown. <a href="https://www.rfc-editor.org/rfc/rfc9111.html#section-5.2.2" target="_blank" rel="noopener">HTTP cache directives</a>.</p>
+        ${listSkeleton(3)}
+      </section>
+    </details>
     <section class="stats-section" id="stats-vendor-signatures">
       <h2>Declared vendor checks <span>documented signing origins</span></h2>
       <p class="stats-section-note">Recognized stored method assessments cover ExaSearchBot, ExaUser and Google-Agent using their documented signing origins. Inconsistent method records remain separate. Google’s rollout is experimental; unsigned does not mean impersonation. Conflicting declared origins stay visible even when the selected proof matches one. A matching key does not bind an unsigned User-Agent, identify the initiating user or prevent replay. Counts overlap; other declarations remain unmapped. IP checks are separate; no DNS verification is performed here.</p>
