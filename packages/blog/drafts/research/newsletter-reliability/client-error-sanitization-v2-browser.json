@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-30T08:55:23.551825+00:00",
+  "operator": "agent-browser",
+  "actualBrowser": true,
+  "performedClicks": 2,
+  "initialRows": 0,
+  "storedRows": 2,
+  "sourceMatches": true,
+  "originalExactStackGate": true,
+  "processingMatches": true,
+  "syntheticMarkerAbsent": true,
+  "beaconReceipt": "browser-queued",
+  "fetchReceipt": "server-acknowledged",
+  "originalTrialAccepted": true,
+  "independentNativeReadback": true,
+  "populationCompatibilityMeasured": false,
+  "productionRequests": 0,
+  "humanLabels": 0,
+  "clientSha256": "6305a3c13dd6d3d01b6b5703a72d7a2faab1033275a45c5d171fc88640261d3e",
+  "workerSha256": "4cfe88dcefbe8fb86a0d0a41d8a51463d70446f4493d0cc887f11c5abba64f4c",
+  "stop": {
+    "checkedAt": "2026-10-30T08:56:52.363456+00:00",
+    "controllerCommandExit": 143,
+    "endpointUnreachable": true,
+    "finalDisposeMarkerObserved": false
+  }
+}

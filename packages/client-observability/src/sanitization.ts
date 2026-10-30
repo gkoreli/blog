@@ -1,6 +1,6 @@
 import type { ClientErrorEvent } from './types.js';
 
-export const SANITIZATION_PROFILE = 'client-error-urls-v1';
+export const SANITIZATION_PROFILE = 'client-error-urls-v2';
 export const ADMISSION_PROFILE = 'origin-route-budget-v1';
 const UNSUPPORTED_SOURCE = '[unsupported-source]';
 const FILTERED_URL = '[filtered-url]';
@@ -49,9 +49,13 @@ function referrerField(raw: string | undefined, origin: string | undefined): str
 /** Structural URL scrubbing, not a detector for arbitrary personal data or secrets. */
 function textField(raw: string | undefined, max: number): string | undefined {
   if (!raw) return undefined;
-  const text = raw.replace(/\b(?:https?:\/\/|(?:data|file|blob|javascript|mailto):)[^\s<>"'`)]+/gi, match => {
-    const url = httpUrl(match);
-    return url ? cleanUrl(url) : FILTERED_URL;
+  const text = raw.replace(/\b(?:https?:\/\/|(?:data|file|blob|javascript|mailto):)[^\s<>"'`]+/gi, match => {
+    // Internal parentheses belong to URLs too. Peel only a terminal stack wrapper;
+    // stopping at the first ')' could leave the following query in raw text.
+    const suffix = match.endsWith(')') ? ')' : '';
+    const candidate = suffix ? match.slice(0, -1) : match;
+    const url = httpUrl(candidate);
+    return (url ? cleanUrl(url) : FILTERED_URL) + suffix;
   }).replace(/\/api\/(confirm|unsubscribe)\/[^\s/?#)]+/g, '/api/$1/[redacted]');
   return text.trim().slice(0, max) || undefined;
 }

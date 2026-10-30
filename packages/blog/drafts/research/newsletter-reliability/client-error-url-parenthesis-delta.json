@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-30T08:52:01.678Z",
+  "baseline": "00d39cca523a807b32e44b592386f0f1cc6ee5da",
+  "workerSha256": "0bad17fad1bbd0f628837139c52f229ccd4530dd77d469d2974d160ef078e4c5",
+  "beforeProfile": "client-error-urls-v1",
+  "afterProfile": "client-error-urls-v2",
+  "beforeMessageRetained": true,
+  "beforeStackRetained": true,
+  "afterMessageRetained": false,
+  "afterStackRetained": false,
+  "separateLineFieldsInThisControl": false,
+  "productionRequests": 0
+}

@@ -11,6 +11,13 @@ const origin='https://fixture.invalid';
 const base={type:'interaction_error',component:'subscribe_form',message:'subscribe_api_rejected',path:'/owner',occurredAt:'2026-10-30T00:00:00.000Z'};
 const secret='fixture-secret-value';
 const credentialUrl='https://fixture-user:'+secret+'@fixture.invalid/main.js?token='+secret+'#'+secret;
+test('parentheses inside a URL path do not expose its following query or fragment',()=>{
+ const url=origin+'/main(1).js?token='+secret+'#'+secret;
+ const parsed=parseClientErrorPayload({...base,message:'Failed '+url,stack:'Error\n at fn ('+url+')'},origin);
+ assert.equal(parsed.message,'Failed '+origin+'/main(1).js');
+ assert.equal(parsed.stack,'Error\n at fn ('+origin+'/main(1).js)');
+ assert.ok(!JSON.stringify(parsed).includes(secret));assert.deepEqual(parseClientErrorPayload(parsed,origin),parsed);
+});
 function fixture(t){
  const db=new DatabaseSync(':memory:');t.after(()=>db.close());
  for(const name of ['0001_create_client_errors.sql','0002_add_subscription_error_evidence.sql','0003_add_processing_evidence.sql'])db.exec(readFileSync(new URL('../../client-observability/migrations/'+name,import.meta.url),'utf8'));
@@ -64,7 +71,7 @@ test('storage reapplies the boundary and stamps direct writes without inventing 
  const h=fixture(t);
  await recordClientError(h.DB,{...base,id:'direct',source:credentialUrl,referrer:origin+'/article?token='+secret,requestOrigin:origin,ray:null,country:null,colo:null,asOrganization:null,processing_evidence:'forged'});
  const row=h.db.prepare('SELECT source,referrer,processing_evidence FROM client_errors').get();assert.equal(row.source,origin+'/main.js');assert.equal(row.referrer,origin+'/article');
- assert.deepEqual(JSON.parse(row.processing_evidence),{profile:'client-error-processing-v1',sanitization:'client-error-urls-v1',admission:'unassessed'});
+ assert.deepEqual(JSON.parse(row.processing_evidence),{profile:'client-error-processing-v1',sanitization:'client-error-urls-v2',admission:'unassessed'});
 });
 
 test('HTTP admission provenance is server-generated, and logging sees scrubbed values before persistence',async t=>{
@@ -72,5 +79,5 @@ test('HTTP admission provenance is server-generated, and logging sees scrubbed v
  const response=await handleClientError(new Request(origin+'/api/client-error',{method:'POST',headers:{origin,'content-type':'application/json'},body:JSON.stringify({...base,message:'Failed '+credentialUrl,source:credentialUrl,admissionProfile:'forged-client-profile',processing_evidence:{profile:'forged'}})}),{DB:h.DB,CLIENT_ERROR_RATE_LIMITER:{async limit(){return{success:true}}}});
  assert.equal(response.status,204);assert.ok(!JSON.stringify(logs).includes(secret));
  const row=h.db.prepare('SELECT message,source,processing_evidence FROM client_errors').get();assert.ok(!JSON.stringify(row).includes(secret));
- assert.deepEqual(JSON.parse(row.processing_evidence),{profile:'client-error-processing-v1',sanitization:'client-error-urls-v1',admission:'origin-route-budget-v1'});
+ assert.deepEqual(JSON.parse(row.processing_evidence),{profile:'client-error-processing-v1',sanitization:'client-error-urls-v2',admission:'origin-route-budget-v1'});
 });

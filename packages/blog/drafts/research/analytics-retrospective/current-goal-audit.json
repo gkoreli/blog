@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-30T08:42:41.822675+00:00",
+  "checkedAt": "2026-10-30T08:58:44.957154+00:00",
   "sourceBaseline": "4cefd55ceae96edb000660fab4f626e669917997",
   "goalAchieved": false,
   "previousTurn": "progress: Origin/JSON/native route budget,19 paired controls, two local browser readbacks and160 tests/types/build; native source/binding/allocation plus403/415 and one204/readback/cleanup accepted; GitHub in_progress disagreement retained",
@@ -970,7 +970,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: shared structural URL boundary and server processing profiles;13 paired native conditions/four rollout states,165 tests/types/build/two browser controls pass; additive schema accepted after preserved access failure and fresh positive query",
+  "currentTurn": "progress: schema accepted, initial URL sanitizer published; a separately evidenced parenthesis-token gap is corrected under v2, with166 tests/14 native conditions/two new browser controls. Final v2 activation/readback remains pending.",
   "requirementsAudit": {
     "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
     "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
@@ -1253,6 +1253,22 @@
     "browserProfileMatchedRows": 2,
     "productionSchemaAccepted": true,
     "writerActivated": false,
-    "historicalRowsBackfilled": false
+    "historicalRowsBackfilled": false,
+    "v2": {
+      "profile": "client-error-urls-v2",
+      "native": "../newsletter-reliability/client-error-sanitization-v2-native.json",
+      "delta": "../newsletter-reliability/client-error-url-parenthesis-delta.json",
+      "browser": "../newsletter-reliability/client-error-sanitization-v2-browser.json",
+      "checks": "../newsletter-reliability/client-error-sanitization-v2-checks.json",
+      "siteTests": 166,
+      "nativeCorpusBaseline": "4cefd55",
+      "nativeCasesPerVersion": 14,
+      "nativeOldMarkerRetentions": 12,
+      "nativeNewMarkerRetentions": 0,
+      "publishedV1DeltaBaseline": "00d39cc",
+      "knownFreeTextResidualsPerVersion": 1,
+      "v1CohortPreserved": true,
+      "activationAccepted": false
+    }
   }
 }

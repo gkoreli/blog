@@ -10,7 +10,7 @@ const repo=resolve(dirname(fileURLToPath(import.meta.url)),'../../..');execFileS
 const rootRequire=createRequire(repo+'/package.json'),blogRequire=createRequire(repo+'/packages/blog/package.json');
 const{Miniflare}=await import(pathToFileURL(rootRequire.resolve('miniflare',{paths:[dirname(rootRequire.resolve('wrangler/package.json'))]})));
 const{build}=await import(pathToFileURL(blogRequire.resolve('esbuild')));
-const cases=['ordinary','source-url','referrer-url','message-url','stack-url','token-path','data-source','file-stack','long-userinfo','component','invalid-referrer','network-path','free-text-residual'];
+const cases=['ordinary','source-url','referrer-url','message-url','stack-url','parenthesized-url','token-path','data-source','file-stack','long-userinfo','component','invalid-referrer','network-path','free-text-residual'];
 const migrations=['0001_create_client_errors.sql','0002_add_subscription_error_evidence.sql','0003_add_processing_evidence.sql'];
 writeFileSync(output+'/plan.json',JSON.stringify({frozenAt:new Date().toISOString(),baseline,cases,variants:['before','after'],scope:'selected structural URL cases; free-text residual explicitly unresolved; local workerd/native D1 only',rollout:['old-before','new-before-unconfirmed','new-after','old-after'],productionRequests:0,humanLabels:0},null,2)+'\n',{mode:0o600,flag:'wx'});
 async function migrate(db,names){for(const n of names)for(const sql of readFileSync(repo+'/packages/client-observability/migrations/'+n,'utf8').split(';').filter(s=>s.trim()))await db.prepare(sql).run()}
@@ -26,7 +26,7 @@ for(const variant of ['before','after']){
  try{
   const db=await mf.getD1Database('DB');await migrate(db,migrations);const rows=[];
   for(const mode of cases){const response=await mf.dispatchFetch('https://fixture.invalid/'+mode);assert.equal(response.status,200);rows.push(await response.json());writeFileSync(dir+'/rows.json',JSON.stringify(rows,null,2)+'\n',{mode:0o600});}
-  for(const row of rows){assert.equal(row.status,variant==='after'&&row.mode==='network-path'?400:204);assert.equal(row.insertedRows,row.status===204?1:0);if(variant==='after')assert.equal(row.syntheticUrlSecretRetained,false,row.mode);if(variant==='after'&&row.insertedRows)assert.deepEqual(row.processing,{profile:'client-error-processing-v1',sanitization:'client-error-urls-v1',admission:'origin-route-budget-v1'});if(variant==='before')assert.equal(row.processing,null);assert.equal(row.clientProfileForged,false);}
+  for(const row of rows){assert.equal(row.status,variant==='after'&&row.mode==='network-path'?400:204);assert.equal(row.insertedRows,row.status===204?1:0);if(variant==='after')assert.equal(row.syntheticUrlSecretRetained,false,row.mode);if(variant==='after'&&row.insertedRows)assert.deepEqual(row.processing,{profile:'client-error-processing-v1',sanitization:'client-error-urls-v2',admission:'origin-route-budget-v1'});if(variant==='before')assert.equal(row.processing,null);assert.equal(row.clientProfileForged,false);}
   assert.equal(rows.find(r=>r.mode==='free-text-residual').freeTextEmailShapeRetained,true,'record the residual, not a claim of universal PII removal');
   variants[variant]={workerSha256:createHash('sha256').update(script).digest('hex'),rows};
  }finally{await mf.dispose()}

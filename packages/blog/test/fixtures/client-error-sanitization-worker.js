@@ -8,6 +8,7 @@ export default{async fetch(request,env){
  if(mode==='referrer-url')payload.referrer='https://user:'+secret+'@external.invalid/private?token='+secret;
  if(mode==='message-url')payload.message='Failed '+url;
  if(mode==='stack-url')payload.stack='Error\n at f ('+url+')';
+ if(mode==='parenthesized-url')payload.message='Failed https://fixture.invalid/main(1).js?token='+secret+'#'+secret;
  if(mode==='token-path')payload.path='/api/confirm/'+secret;
  if(mode==='data-source')payload.source='data:text/javascript,'+secret;
  if(mode==='file-stack')payload.stack='Error\n at f (file:///Users/'+secret+'/private.js)';

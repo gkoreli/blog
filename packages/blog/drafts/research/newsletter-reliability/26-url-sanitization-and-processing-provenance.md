@@ -16,7 +16,7 @@ This keeps script paths, separate line/column, HTTP status, bounded User-Agent a
 
 ## Server-generated provenance
 
-New rows can store a nullable `processing_evidence` JSON field:
+The first candidate, source `00d39cc`, introduces this nullable `processing_evidence` shape (its v1 sanitizer remains a dated candidate; the v2 correction is below):
 
 ```json
 {"profile":"client-error-processing-v1","sanitization":"client-error-urls-v1","admission":"origin-route-budget-v1"}
@@ -45,3 +45,14 @@ A new immutable schema plan uses that positive capability evidence. [Schema rece
 Next: source/build activation and one bounded owned-record check of stored scrubbed fields and processing metadata. The full analytics goal remains active. Free-text privacy, duplicate/event budgets, bootstrap/resource failures, admission loss and real readership/agent-purpose measurements remain separate unfinished work. Article prose/prompts and analytics classification/verifier profiles stay unchanged.
 
 The private 186-file implementation/schema archive preserves original plans/failures, exact native source snapshots, browser receipts, checked builds and schema meters under manifest SHA-256 `1abccd96433dfc192586c80d3a149cc0a5ea2ea6b73aa58344795df1fd73f60d`. October 31 is review, not automatic deletion. All owned local experiment/build command handles are terminal.
+
+
+## A delimiter changed the profile
+
+A later grammar control finds that `)` can be part of a URL path. The first text-token regex stops at that character, so a URL such as `https://fixture.invalid/main(1).js?token=fixture-secret-value` can leave its following query in message/stack text. Structured source-URL parsing already handles that path; the problem is text extraction. The [native transformation comparison](client-error-url-parenthesis-delta.json) snapshots the exact published `00d39cc` v1 function and the candidate v2 function: the marker survives in both v1 message/stack views and neither v2 view. This is a pure transformation comparison, not an ingestion or population measurement.
+
+The corrected rule consumes internal parentheses and peels only a terminal stack wrapper before URL parsing. Its sanitizer stamp changes to **client-error-urls-v2**; the processing schema and admission profile remain v1. The earlier 13-condition v1 record and its two-browser-control cohort remain unchanged. A [separate expanded native corpus](client-error-sanitization-v2-native.json) compares the original pre-boundary `4cefd55` baseline with v2 across 14 conditions: 12 old URL-marker retentions become zero; the free-text email-shaped residual still survives. These twelve cases are not twelve failures of the published v1 sanitizer.
+
+[The new browser cohort](client-error-sanitization-v2-browser.json) makes two planned single clicks with parenthesized source/stack URLs. Independent native-D1 readback matches both exact scrubbed strings and the v2 processing profile. Its original gate passes without normalization or repeated clicks. The owned command is terminal and the endpoint unreachable; no missing disposal marker is inferred. [Fresh v2 checks](client-error-sanitization-v2-checks.json) pass 166 tests, workspace types, validation and an isolated 33-post build. Source activation and a bounded production profile/field readback remain separate. No additional production query, human trial or article change comes from these controls.
+
+The separate 58-file v2 archive has manifest SHA-256 `28523bd3d5e1612d11535718936f803fa447d2fcc84e80b638f7f2d0ff24773b`, with the same October 31 review/no automatic deletion boundary. It does not replace the earlier archive.
