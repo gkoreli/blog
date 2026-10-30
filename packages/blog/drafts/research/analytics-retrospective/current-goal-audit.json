@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-30T09:16:25.857Z",
+  "checkedAt": "2026-10-30T09:36:54.453891+00:00",
   "sourceBaseline": "4cefd55ceae96edb000660fab4f626e669917997",
   "goalAchieved": false,
-  "previousTurn": "progress: v2 diagnostic URL processing source/deployment/direct readback/owned cleanup accepted; checkpoint0a76221 pushed. No readership measurement followed from that control.",
+  "previousTurn": "progress: October29 Browser-only additive capture and frozen reconstruction accepted in Research100; article-specific concentration gap established, not human growth.",
   "scope": "Active goal: operation references improve failure investigation; no authenticated report, reader demand, human growth or population calibration follows.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Add article-level largest reported external-source concentration alongside the fixed whole-window sensitivity. Native-test partitions, private naming, exclusions, contract and metering; do not reinterpret the remainder as humans. Authenticated search access and human trials remain separate gates.",
+  "nextBoundedAction": "Commit/push checked report extension, associate exact hosted build/Worker activation, then execute a bounded report/assets acceptance without forcing cache fills or repeating requests for missing meters. Preserve separate search/human/native-verifier gates.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -62,7 +62,7 @@
     "localBuildAccepted": true,
     "localBuildReceipt": "readership-article-checks.json"
   },
-  "runtimeUnchanged": true,
+  "runtimeUnchanged": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -970,7 +970,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: one completed Browser day exported once, verified frozen history reused, rolling source/article metrics independently reconstructed; new article-level concentration gap and Search Console boundary/completeness contract established.",
+  "currentTurn": "progress: article-specific source concentration implemented, native/frozen/shared-contract/UI acceptance complete; hosted activation remains separate.",
   "requirementsAudit": {
     "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
     "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
@@ -1130,18 +1130,6 @@
     "reportAuthenticated": false
   },
   "previousOperationalSummary": {
-    "httpRequests": 1,
-    "sqlAttempts": 9,
-    "meteredStatements": 8,
-    "reportedReads": 58,
-    "reportedWrites": 2,
-    "ingestionWriteCostReturned": false,
-    "unmeteredFailedPreflight": 1,
-    "readerRecordsReturned": 0,
-    "humanLabels": 0
-  },
-  "runtimeUnchangedScope": "Investigation helper/native checker gain validated windows; no runtime analytics collector/classifier/verifier/report, newsletter, credential or article change.",
-  "productionOperationsThisTurn": {
     "httpRequests": 0,
     "sqlAttempts": 2,
     "meteredStatements": 2,
@@ -1149,6 +1137,15 @@
     "reportedWrites": 0,
     "selectedStoredKind": "browser",
     "rawSelectedRows": 86,
+    "humanLabels": 0
+  },
+  "runtimeUnchangedScope": "Article-reach SQL, shared response contract/cache namespace and report UI change; analytics collector/classifier/verifier, collection, owner/referral policy, schema, newsletter and article remain unchanged.",
+  "productionOperationsThisTurn": {
+    "httpRequests": 0,
+    "sqlAttempts": 0,
+    "reportedReads": 0,
+    "reportedWrites": 0,
+    "newPopulationExports": 0,
     "humanLabels": 0
   },
   "subscriptionResponseCorrelation": {
@@ -1260,5 +1257,21 @@
     "currentWholeWindowSnapshot": false,
     "humanGrowthEstablished": false,
     "searchQueriesMeasured": false
+  },
+  "articleSourceConcentration": {
+    "research": "101-article-specific-source-concentration.md",
+    "native": "article-source-concentration-native.json",
+    "checks": "article-source-concentration-checks.json",
+    "frozen": "article-source-concentration-frozen.json",
+    "sources": "article-source-concentration-sources.json",
+    "reportVersion": "2026-10-30.1",
+    "analyticsTests": 308,
+    "siteTests": 166,
+    "nativeConcentrationCases": 15,
+    "contractNegatives": 35,
+    "frozenArticles": 33,
+    "localAccepted": true,
+    "hostedActivationAccepted": false,
+    "humanAccuracyMeasured": false
   }
 }

@@ -1,5 +1,5 @@
 /** Request evidence for editorial decisions; no reader, session or identity claims. */
-export const ARTICLE_REACH_VERSION = '2026-10-29.1';
+export const ARTICLE_REACH_VERSION = '2026-10-30.1';
 export const REACH_METRIC_KEYS = ['views', 'externalViews', 'internalViews', 'unattributedViews', 'unknownSourceViews', 'largestSourceViews', 'unrecognizedTimeViews'] as const;
 export interface ReachMetrics {
   views: number;
@@ -15,6 +15,13 @@ export interface ReachArticle {
   title: string;
   publishedOn: string;
 }
+export interface ArticleSourceConcentration {
+  selection: 'largest-for-article-in-whole-window';
+  name: string | null;
+  views: number;
+  weeks: number[];
+  unrecognizedTimeViews: number;
+}
 export interface ArticleReachReport {
   version: typeof ARTICLE_REACH_VERSION;
   period: { startInclusive: string; endExclusive: string; updatedAt: string; timeZone: 'UTC' };
@@ -23,7 +30,7 @@ export interface ArticleReachReport {
   site: ReachMetrics;
   articleTotals: ReachMetrics;
   weeks: Array<{ startInclusive: string; endExclusive: string; site: ReachMetrics; articles: ReachMetrics }>;
-  articles: Array<ReachArticle & { totals: ReachMetrics; weeks: ReachMetrics[] }>;
+  articles: Array<ReachArticle & { totals: ReachMetrics; weeks: ReachMetrics[]; largestExternalSource: ArticleSourceConcentration }>;
   largestExternalSource: { selection: 'largest-in-whole-window'; name: string | null; views: number };
   classification: { recordedProfiles: number; unversionedViews: number };
   referralPolicy: { version: string; sha256: string; excludedViews: number };
@@ -39,6 +46,9 @@ function keys(value: Record<string, unknown>, expected: readonly string[]): bool
   return Object.keys(value).length === expected.length && expected.every(key => Object.hasOwn(value, key));
 }
 function count(value: unknown): value is number { return typeof value === 'number' && Number.isSafeInteger(value) && value >= 0; }
+function sourceName(value: unknown): value is string | null {
+  return value === null || (typeof value === 'string' && value.length <= 253 && /^(?:[a-z0-9-]+\.)+[a-z0-9-]+$/.test(value));
+}
 export function reachDay(value: unknown): value is string {
   return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
     && Number.isFinite(Date.parse(value + 'T00:00:00Z')) && new Date(value + 'T00:00:00Z').toISOString().slice(0, 10) === value;
@@ -95,7 +105,7 @@ export function consistentArticleReach(value: unknown): value is ArticleReachRep
   if (!record(referralPolicy) || !keys(referralPolicy, ['version', 'sha256', 'excludedViews']) || typeof referralPolicy.version !== 'string'
     || !/^\d{4}-\d{2}-\d{2}\.\d+$/.test(referralPolicy.version) || typeof referralPolicy.sha256 !== 'string' || !/^[0-9a-f]{64}$/.test(referralPolicy.sha256) || !count(referralPolicy.excludedViews)) return false;
   if (!record(largestExternalSource) || !keys(largestExternalSource, ['selection', 'name', 'views']) || largestExternalSource.selection !== 'largest-in-whole-window'
-    || !(largestExternalSource.name === null || (typeof largestExternalSource.name === 'string' && largestExternalSource.name.length <= 253 && /^(?:[a-z0-9-]+\.)+[a-z0-9-]+$/.test(largestExternalSource.name)))
+    || !sourceName(largestExternalSource.name)
     || largestExternalSource.views !== value.site.largestSourceViews || (largestExternalSource.views === 0 && largestExternalSource.name !== null)
     || (value.site.largestSourceViews === 0) !== (value.site.externalViews === 0)) return false;
   if (!Array.isArray(value.weeks) || value.weeks.length !== 4 || !Array.isArray(value.articles) || value.articles.length === 0 || value.articles.length > 256 || value.catalogueSize !== value.articles.length) return false;
@@ -110,13 +120,23 @@ export function consistentArticleReach(value: unknown): value is ArticleReachRep
   if (!completedWeeks(siteWeeks, value.site) || !completedWeeks(articleWeeks, value.articleTotals)) return false;
   const catalogue: ReachArticle[] = [], totals: ReachMetrics[] = [], perWeek: ReachMetrics[][] = [[], [], [], []];
   for (const article of value.articles) {
-    if (!record(article) || !keys(article, ['path', 'title', 'publishedOn', 'totals', 'weeks']) || typeof article.path !== 'string'
+    if (!record(article) || !keys(article, ['path', 'title', 'publishedOn', 'totals', 'weeks', 'largestExternalSource']) || typeof article.path !== 'string'
       || typeof article.title !== 'string' || typeof article.publishedOn !== 'string' || !metrics(article.totals)
       || !Array.isArray(article.weeks) || !article.weeks.every(metrics) || !completedWeeks(article.weeks, article.totals)) return false;
+    const source = article.largestExternalSource;
+    if (!record(source) || !keys(source, ['selection', 'name', 'views', 'weeks', 'unrecognizedTimeViews'])
+      || source.selection !== 'largest-for-article-in-whole-window' || !sourceName(source.name)
+      || !count(source.views) || !count(source.unrecognizedTimeViews) || !Array.isArray(source.weeks) || source.weeks.length !== 4 || !source.weeks.every(count)
+      || source.views > article.totals.externalViews || source.views < article.totals.largestSourceViews
+      || source.unrecognizedTimeViews > article.totals.unrecognizedTimeViews
+      || source.weeks.reduce((total, value) => total + value, 0) + source.unrecognizedTimeViews !== source.views
+      || (source.views === 0) !== (article.totals.externalViews === 0) || (source.views === 0 && source.name !== null)
+      || (source.name !== null && source.name === largestExternalSource.name && source.views !== article.totals.largestSourceViews)) return false;
     catalogue.push({ path: article.path, title: article.title, publishedOn: article.publishedOn }); totals.push(article.totals);
     for (let i = 0; i < 4; i++) {
       const week = article.weeks[i], peers = perWeek[i];
-      if (!week || !peers) return false;
+      const sourceViews = source.weeks[i];
+      if (!week || !peers || sourceViews === undefined || sourceViews > week.externalViews) return false;
       peers.push(week);
     }
   }

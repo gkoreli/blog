@@ -27,5 +27,30 @@ export function checkReach(report){
 }
 export function reportMutations(){return [
  r=>delete r.site,r=>r.site.views++,r=>r.site.largestSourceViews++,r=>r.site.unrecognizedTimeViews++,r=>r.articles.pop(),r=>r.articles[1].path=r.articles[0].path,
- r=>r.weeks[0].site.views++,r=>r.weeks[1].endExclusive='2026-10-14',r=>r.articles[0].weeks.pop(),r=>r.articleTotals.externalViews++,r=>r.largestExternalSource.views++,r=>r.classification.unversionedViews=9999,r=>r.period.startInclusive='2026-10-02',r=>r.period.updatedAt='2026-10-28T00:00:00Z',r=>r.site.views='18',r=>r.site.views=true,r=>r.site.extra=0,r=>r.articles[0].publishedOn='2026-02-30',r=>r.articles[0].path='//private.example',r=>r.referralPolicy.sha256='bad',r=>r.version='future',r=>r.extra='private-canary',r=>r.period.updatedAt='2026-10-29',r=>r.classification.recordedProfiles=0,r=>{r.largestExternalSource.views=0;r.site.largestSourceViews=0}
+ r=>r.weeks[0].site.views++,r=>r.weeks[1].endExclusive='2026-10-14',r=>r.articles[0].weeks.pop(),r=>r.articleTotals.externalViews++,r=>r.largestExternalSource.views++,r=>r.classification.unversionedViews=9999,r=>r.period.startInclusive='2026-10-02',r=>r.period.updatedAt='2026-10-28T00:00:00Z',r=>r.site.views='18',r=>r.site.views=true,r=>r.site.extra=0,r=>r.articles[0].publishedOn='2026-02-30',r=>r.articles[0].path='//private.example',r=>r.referralPolicy.sha256='bad',r=>r.version='future',r=>r.extra='private-canary',r=>r.period.updatedAt='2026-10-29',r=>r.classification.recordedProfiles=0,r=>{r.largestExternalSource.views=0;r.site.largestSourceViews=0},
+ r=>delete r.articles[0].largestExternalSource,r=>r.articles[0].largestExternalSource.views++,r=>r.articles[0].largestExternalSource.weeks.pop(),r=>r.articles[0].largestExternalSource.weeks[0]++,r=>r.articles[0].largestExternalSource.unrecognizedTimeViews++,r=>r.articles[0].largestExternalSource.name='https://private.example',r=>r.articles[0].largestExternalSource.selection='largest-in-whole-window',r=>r.articles[0].largestExternalSource.extra='private',r=>r.articles.find(a=>a.path==='/zero').largestExternalSource.name='google.com',r=>r.articles[0].largestExternalSource.views=true
  ]}
+
+export function clearPrivateSourceNames(report){report.largestExternalSource.name=null;for(const article of report.articles)if(article.largestExternalSource.name==='private-canary.example')article.largestExternalSource.name=null;return report}
+export function concentrationCases(){
+ const external=(id,path,host,overrides={})=>row(id,{path,referrer_state:'external',referrer_host:host,...overrides});
+ return [
+  ...Array.from({length:5},(_,i)=>external(100+i,'/','global-source.example')),
+  external(110,'/a','global-source.example'),external(111,'/a','local-source.example'),
+  external(112,'/a','WWW.LOCAL-SOURCE.EXAMPLE.',{observed_at:'2026-10-08 00:00:00'}),
+  external(113,'/a','local-source.example',{observed_at:'2026-10-25 99:00:00'}),
+  external(114,'/b','kagi.com'),external(115,'/b','www.google.com.'),
+  row(116,{path:'/zero',referrer_state:'internal'}),
+  external(117,'/a','traffic2cash.xyz'),external(118,'/a','global-source.example',{is_owner:1}),
+  external(119,'/a','global-source.example',{owner_client:1}),
+ ];
+}
+export function checkConcentration(report){
+ assert.equal(report.site.views,12);assert.equal(report.largestExternalSource.views,6);
+ const a=report.articles.find(a=>a.path==='/a'),b=report.articles.find(a=>a.path==='/b'),zero=report.articles.find(a=>a.path==='/zero');
+ assert.equal(a.totals.views,4);assert.equal(a.totals.largestSourceViews,1);
+ assert.deepEqual(a.largestExternalSource,{selection:'largest-for-article-in-whole-window',name:null,views:3,weeks:[1,1,0,0],unrecognizedTimeViews:1});
+ assert.equal(b.largestExternalSource.name,'google.com');assert.equal(b.largestExternalSource.views,1);assert.equal(b.totals.largestSourceViews,0);
+ assert.equal(zero.largestExternalSource.views,0);assert.equal(zero.largestExternalSource.name,null);
+ assert.equal(JSON.stringify(report).includes('local-source.example'),false);assert.equal(JSON.stringify(report).includes('global-source.example'),false);
+}

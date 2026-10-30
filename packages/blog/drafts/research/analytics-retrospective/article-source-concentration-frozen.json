@@ -1,0 +1,568 @@
+{
+  "articles": [
+    {
+      "path": "/chatgpt-plugin-apps",
+      "views": 134,
+      "globalLargestSourceViews": 91,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 91,
+        "weeks": [
+          0,
+          0,
+          0,
+          91
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/oss-radar-02-the-toolchain-is-the-moat",
+      "views": 116,
+      "globalLargestSourceViews": 103,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 103,
+        "weeks": [
+          0,
+          0,
+          0,
+          103
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/which-ai-fetchers-send-which-headers",
+      "views": 67,
+      "globalLargestSourceViews": 4,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 4,
+        "weeks": [
+          0,
+          0,
+          0,
+          4
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/how-ghx-was-born",
+      "views": 57,
+      "globalLargestSourceViews": 37,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 37,
+        "weeks": [
+          0,
+          0,
+          0,
+          37
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/how-i-separate-readers-from-bots-without-javascript",
+      "views": 52,
+      "globalLargestSourceViews": 16,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 16,
+        "weeks": [
+          0,
+          0,
+          0,
+          16
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/oss-radar-05-bun-1-4",
+      "views": 36,
+      "globalLargestSourceViews": 27,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 27,
+        "weeks": [
+          0,
+          0,
+          0,
+          27
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/does-llms-txt-work",
+      "views": 34,
+      "globalLargestSourceViews": 17,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 17,
+        "weeks": [
+          0,
+          0,
+          0,
+          17
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/you-dont-need-codemap",
+      "views": 34,
+      "globalLargestSourceViews": 8,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 8,
+        "weeks": [
+          0,
+          0,
+          0,
+          8
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/first-party-analytics-for-a-personal-blog",
+      "views": 32,
+      "globalLargestSourceViews": 7,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 7,
+        "weeks": [
+          0,
+          0,
+          0,
+          7
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/topologies-of-thoughts",
+      "views": 32,
+      "globalLargestSourceViews": 4,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 9,
+        "weeks": [
+          0,
+          0,
+          0,
+          9
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/linux-signal-stack-conflict",
+      "views": 29,
+      "globalLargestSourceViews": 0,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 2,
+        "weeks": [
+          0,
+          2,
+          0,
+          0
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/oss-radar-03-buzz-is-slack-on-airoids",
+      "views": 29,
+      "globalLargestSourceViews": 1,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 1,
+        "weeks": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/bring-your-own-ai-agent",
+      "views": 26,
+      "globalLargestSourceViews": 6,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 6,
+        "weeks": [
+          0,
+          0,
+          0,
+          6
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/oss-radar-06-interp-engine",
+      "views": 26,
+      "globalLargestSourceViews": 15,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 15,
+        "weeks": [
+          0,
+          0,
+          0,
+          15
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/oss-radar-07-ai-citations",
+      "views": 26,
+      "globalLargestSourceViews": 16,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 16,
+        "weeks": [
+          0,
+          0,
+          0,
+          16
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/one-hundred-pull-requests",
+      "views": 23,
+      "globalLargestSourceViews": 12,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 12,
+        "weeks": [
+          0,
+          0,
+          0,
+          12
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+      "views": 23,
+      "globalLargestSourceViews": 9,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 9,
+        "weeks": [
+          0,
+          0,
+          0,
+          9
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/oss-radar-01-vercel-winter-2026-cohort",
+      "views": 19,
+      "globalLargestSourceViews": 3,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 3,
+        "weeks": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/building-blog-analytics-what-the-numbers-can-prove",
+      "views": 18,
+      "globalLargestSourceViews": 0,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 0,
+        "weeks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/oss-radar-08-bun-aot",
+      "views": 18,
+      "globalLargestSourceViews": 0,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": "reddit.com",
+        "views": 4,
+        "weeks": [
+          0,
+          0,
+          0,
+          4
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/openclaw-chose-solid-why-id-choose-nisli",
+      "views": 16,
+      "globalLargestSourceViews": 0,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": "t.co",
+        "views": 2,
+        "weeks": [
+          0,
+          0,
+          2,
+          0
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/productive-procrastination",
+      "views": 16,
+      "globalLargestSourceViews": 3,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 3,
+        "weeks": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/prompt-cache-context-edits",
+      "views": 16,
+      "globalLargestSourceViews": 0,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 0,
+        "weeks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/i-am-lost-right-now",
+      "views": 11,
+      "globalLargestSourceViews": 2,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 2,
+        "weeks": [
+          0,
+          0,
+          0,
+          2
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/i-thought-building-was-enough",
+      "views": 11,
+      "globalLargestSourceViews": 3,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 3,
+        "weeks": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/what-if-the-agent-was-better-before-we-helped",
+      "views": 11,
+      "globalLargestSourceViews": 0,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 0,
+        "weeks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/life-as-background-music",
+      "views": 10,
+      "globalLargestSourceViews": 0,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 0,
+        "weeks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+      "views": 10,
+      "globalLargestSourceViews": 1,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 1,
+        "weeks": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/filter-referrer-spam-without-deleting-analytics-history",
+      "views": 9,
+      "globalLargestSourceViews": 0,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": "t.co",
+        "views": 1,
+        "weeks": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/openwiki-validates-my-bet",
+      "views": 9,
+      "globalLargestSourceViews": 1,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 1,
+        "weeks": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/my-evals-say-it-works-i-dont-use-it",
+      "views": 8,
+      "globalLargestSourceViews": 1,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 1,
+        "weeks": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/the-agentic-product-engineer",
+      "views": 7,
+      "globalLargestSourceViews": 1,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 1,
+        "weeks": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    },
+    {
+      "path": "/why-worktree-setup-is-slow-on-macos",
+      "views": 6,
+      "globalLargestSourceViews": 0,
+      "articleLargestSource": {
+        "selection": "largest-for-article-in-whole-window",
+        "name": null,
+        "views": 0,
+        "weeks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    }
+  ],
+  "oldMetricsUnchanged": true,
+  "nativeBeforeReads": 27199,
+  "nativeAfterReads": 32298
+}

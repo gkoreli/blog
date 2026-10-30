@@ -1,0 +1,72 @@
+{
+  "checkedAt": "2026-10-30T09:35:12.143932+00:00",
+  "baseline": "a7cd2fb",
+  "reportVersion": "2026-10-30.1",
+  "analyticsTests": 308,
+  "siteTests": 166,
+  "workspaceTypes": "pass",
+  "markdownPostsValid": 22,
+  "isolatedBuildPosts": 33,
+  "runtimeMatchesFinalIsolatedBuild": true,
+  "sourceSha256": {
+    "packages/analytics/src/article-reach.ts": "f89db8f0ec04ea6718b2f0364e5a2880c03fa11d99add23578e233b1a8935c19",
+    "packages/analytics/src/article-reach-contract.ts": "a5295af13ce4ea77a2d45260d33c3f042f974f8f6caa36d3147b9da6f6f490c2",
+    "packages/analytics/test/article-reach.test.mjs": "bada8b52faf6598d1de32cc20c937e0f5aa97004a723dbae9be2a953375133c1",
+    "packages/analytics/test/fixtures/article-reach.mjs": "900225a9d781760ad3550194028ed7302c35085f7c0608f22bc53e6176ff2260",
+    "packages/blog/scripts/check-article-reach.mjs": "902daac673883202d23fa9215b5fca122b4c86b6fbad9b95a0be20f8a8f5a662",
+    "packages/blog/src/client/article-reach.ts": "249cd21d431d377100b997bb1922efc3809dc6e7eb86a2e19b8557806e9f5184",
+    "packages/blog/src/pages/article-reach.ts": "2b6fdf2836caa119be3f51b92459d7a14959adbb10bd8f74079ef74f46a5aec9",
+    "packages/blog/src/styles/article-reach.css": "aa1c1da55c44f558f5b575109d4e461b8c09c714ef7f3f0a50792ada0c12e09b"
+  },
+  "nativeFixtureCases": 24,
+  "independentArticleSourceCases": 15,
+  "contractNegativeControls": 35,
+  "frozenArticleComparisons": 33,
+  "existingMetricsUnchanged": true,
+  "browser": {
+    "fixture": "Actual isolated assets and native frozen JSON; local-only server, third-party scripts/connections/frames restricted",
+    "desktopWidth": 1280,
+    "desktopDocumentWidth": 1280,
+    "desktopTableRegion": [
+      728,
+      728
+    ],
+    "mobile": {
+      "documentWidth": 390,
+      "regionWidth": 354,
+      "tabIndex": 0,
+      "tableWidth": 720,
+      "width": 390,
+      "scrollLeft": 34.5
+    },
+    "sortChangesRequests": 0,
+    "missingEvidenceHidden": true,
+    "contradictoryCountsHidden": true,
+    "httpFailureHidden": true,
+    "retryRecovered": true,
+    "originalPreviewColumnOverflowCorrected": true,
+    "viewportReset": true,
+    "tabClosed": true,
+    "ownedEndpointsUnreachable": {
+      "59183": true,
+      "59766": true
+    }
+  },
+  "productionHttpRequests": 0,
+  "productionSqlStatements": 0,
+  "humanLabels": 0,
+  "hostedActivationAccepted": false,
+  "initialNegativeTest": "Missing weekly source row was accepted with a lower plausible total; separate per-article total now detects it. Original failure log retained.",
+  "limits": [
+    "No new collection, identity proof, source authenticity, demand or human accuracy claim.",
+    "The article-specific outside counts refer to different cohorts and cannot be summed as one source-excluded site audience.",
+    "Local fixture read costs are not production savings or a database-enforced ceiling."
+  ],
+  "finalUiTypes": "pass",
+  "privateEvidence": {
+    "files": 121,
+    "manifestSha256": "414788a0d3f69855fa803c137bafacfd4784eb7fdcddd1195442e73add1109c9",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  }
+}

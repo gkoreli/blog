@@ -30,8 +30,9 @@ export function articleReachPage() {
       </section>
       <section class="stats-section" aria-labelledby="reach-articles-heading">
         <h2 id="reach-articles-heading">Article reach</h2>
-        <label class="reach-sort">Sort articles <select id="reach-sort"><option value="views">Total events</option><option value="outside">Events outside the largest source</option></select></label>
-        <p class="stats-section-note">Current published articles only; home, section hubs and prompt pages are outside this ranking. Dates provide publication context; actual exposure is unmeasured. “Outside largest” overlaps the source columns; do not add it to the total. Repeated requests count again.</p>
+        <label class="reach-sort">Sort articles <select id="reach-sort"><option value="views">Total events</option><option value="outside">Outside site’s top external source</option><option value="outside-article">Outside each article’s top external source</option></select></label>
+        <p class="stats-section-note">Current published articles only; home, section hubs and prompt pages are outside this ranking. Dates provide publication context; actual exposure is unmeasured. Repeated requests count again.</p>
+        <p class="stats-section-note">An article can depend on a different source from the site’s largest. Its top external hostname is selected across the full window, independently for each article. The percentage uses that article’s external events; the outside count uses all its events, including internal and unattributed requests. These overlapping comparisons are not extra events or human counts. Names appear only with existing public display approval.</p>
         <div id="reach-articles" class="reach-table" role="region" aria-label="Article source comparison; scroll horizontally if needed" tabindex="0"></div>
       </section>
       <aside class="stats-methodology">

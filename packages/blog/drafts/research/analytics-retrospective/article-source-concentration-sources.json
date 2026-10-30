@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-30",
+  "sources": [
+    {
+      "url": "https://www.sqlite.org/windowfunctions.html",
+      "use": "row_number with an article partition and explicit count/hostname ordering selects a deterministic winner; the window order does not establish final output order.",
+      "crossReference": "packages/analytics/src/article-reach.ts: article_ranked_sources"
+    },
+    {
+      "url": "https://www.sqlite.org/lang_with.html",
+      "use": "Factoring one statement and materialization boundaries. Actual native query plans and read meters are tested; a materialization hint is not a global work or quota cap.",
+      "crossReference": "packages/blog/scripts/check-article-reach.mjs"
+    }
+  ],
+  "implementation": "Existing D1/SQLite, report adapter, shared contract and platform DOM; no new runtime SDK or dependency.",
+  "previousEvidence": "100-readership-delta-and-source-concentration.md",
+  "humanAccuracyMeasured": false,
+  "privateEvidence": {
+    "files": 121,
+    "manifestSha256": "414788a0d3f69855fa803c137bafacfd4784eb7fdcddd1195442e73add1109c9",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  }
+}

@@ -29,9 +29,10 @@ function overview(data: ArticleReachReport): void {
 function articles(data: ArticleReachReport): void {
   const sort = element('reach-sort');
   const outside = sort instanceof HTMLSelectElement && sort.value === 'outside';
-  const rank = (post: ArticleReachReport['articles'][number]) => post.totals.views - (outside ? post.totals.largestSourceViews : 0);
+  const outsideArticle = sort instanceof HTMLSelectElement && sort.value === 'outside-article';
+  const rank = (post: ArticleReachReport['articles'][number]) => post.totals.views - (outside ? post.totals.largestSourceViews : outsideArticle ? post.largestExternalSource.views : 0);
   const posts = [...data.articles].sort((a, b) => rank(b) - rank(a) || a.path.localeCompare(b.path));
-  const { table: result, body } = table(['Article / publication date', 'Total', 'Outside largest', 'External', 'Internal', 'No referrer', 'Unknown'], 'Browser-signal page events by article and reported source');
+  const { table: result, body } = table(['Article / date / source concentration', 'Total', 'Outside site’s top source', 'External', 'Internal', 'No referrer', 'Unknown'], 'Browser-signal page events by article and reported source');
   for (const post of posts) {
     const row = body.insertRow(), title = document.createElement('th'), link = document.createElement('a'), date = document.createElement('span'); title.scope = 'row';
     link.href = post.path; link.textContent = post.title; date.className = 'reach-published';
@@ -39,7 +40,12 @@ function articles(data: ArticleReachReport): void {
     const days = Math.max(0, Math.round((Date.parse(data.period.endExclusive + 'T00:00:00Z') - first) / 86_400_000));
     date.textContent = `${post.publishedOn} · ${days} ${days === 1 ? 'day' : 'days'} in this window`;
     title.append(link, date); row.append(title);
-    const m = post.totals; for (const value of [m.views, m.views - m.largestSourceViews, m.externalViews, m.internalViews, m.unattributedViews, m.unknownSourceViews]) cell(row, value);
+    const m = post.totals, source = post.largestExternalSource;
+    cell(row, m.views); cell(row, m.views - m.largestSourceViews);
+    const concentration = document.createElement('span'); concentration.className = 'reach-published reach-source';
+    concentration.textContent = source.views === 0 ? 'No external referrer recorded' : `Top external source: ${number(source.views)} of ${number(m.externalViews)} (${percent(source.views, m.externalViews)}) · ${source.name ?? 'name withheld'}. ${number(m.views - source.views)} total events outside this source.`;
+    title.append(concentration);
+    for (const value of [m.externalViews, m.internalViews, m.unattributedViews, m.unknownSourceViews]) cell(row, value);
   }
   element('reach-articles').replaceChildren(result);
 }
