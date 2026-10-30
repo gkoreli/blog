@@ -1,4 +1,4 @@
-import { captureSubscriptionError, type ClientLogger, type SubscriptionPhase } from '@gkoreli/client-observability/client';
+import { captureSubscriptionError, captureSubscriptionResponse, type ClientLogger, type SubscriptionPhase, type SubscriptionOperationEvidence } from '@gkoreli/client-observability/client';
 
 /** Minimal Turnstile API surface we use */
 interface Turnstile {
@@ -41,6 +41,7 @@ const REQUEST_TIMEOUT_MS = 35_000;
 
 interface Attempt {
   email: string;
+  operation: SubscriptionOperationEvidence;
   phase: 'verifying' | 'sending';
   timer: number | null;
   controller: AbortController | null;
@@ -107,6 +108,7 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
 
     const attempt: Attempt = {
       email: emailInput.value.trim(), phase: 'verifying', timer: null, controller: null,
+      operation: { state: 'not-started' },
     };
     active = attempt;
     btn.disabled = true;
@@ -213,6 +215,8 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     msg.textContent = 'Submitting…';
 
     try {
+      // No response yet does not mean the server never received or committed it.
+      attempt.operation = { state: 'response-unavailable' };
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
@@ -220,10 +224,11 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
         signal: controller.signal,
       });
       if (active !== attempt) return;
+      attempt.operation = captureSubscriptionResponse(res.headers.get('x-request-id'), res.redirected);
       if (res.status === 202) {
         clearDeadline(attempt);
         active = null;
-        removeWidget();
+        removeWidget(attempt);
         form.removeAttribute('aria-busy');
         btn.disabled = false;
         msg.textContent = 'Request received. If confirmation is needed, check your inbox and spam folder. No email? You can try again in ten minutes.';
@@ -246,11 +251,11 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     }
   }
 
-  function report(stage: string, status?: number, phase: SubscriptionPhase = active?.phase ?? 'idle', provider?: { errorCode: unknown }): void {
+  function report(stage: string, status?: number, phase: SubscriptionPhase = active?.phase ?? 'idle', provider?: { errorCode: unknown }, operation: SubscriptionOperationEvidence = active?.operation ?? { state: 'not-started' }): void {
     try {
       logger.report({
         type: 'interaction_error', component: 'subscribe_form', message: stage, status,
-        subscriptionEvidence: captureSubscriptionError(phase, provider),
+        subscriptionEvidence: captureSubscriptionError(phase, provider, operation),
       });
     } catch {
       // Reporting must not break the form's recovery path.
@@ -262,14 +267,14 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     attempt.timer = null;
   }
 
-  function removeWidget(): void {
+  function removeWidget(attempt: Attempt | null = active): void {
     const previous = widget;
     widget = null; // Ignore callbacks from a removed or failed challenge.
     if (previous && previous.id !== null) {
       try {
         previous.api.remove(previous.id);
       } catch {
-        report('subscribe_widget_remove_exception');
+        report('subscribe_widget_remove_exception', undefined, attempt?.phase ?? 'idle', undefined, attempt?.operation ?? { state: 'not-started' });
         if (slot instanceof HTMLElement) slot.replaceChildren();
       }
     } else if (previous && slot instanceof HTMLElement) {
@@ -285,10 +290,10 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
       clearDeadline(attempt);
       attempt.controller?.abort();
     }
-    removeWidget();
+    removeWidget(attempt);
     msg.textContent = text;
     form.removeAttribute('aria-busy');
     btn.disabled = false;
-    report(stage, status, phase, provider);
+    report(stage, status, phase, provider, attempt?.operation ?? { state: 'not-started' });
   }
 }

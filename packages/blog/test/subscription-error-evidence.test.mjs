@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {readFileSync} from 'node:fs';
 import {DatabaseSync} from 'node:sqlite';
-import {captureSubscriptionError,parseSubscriptionErrorEvidence} from '../../client-observability/src/subscription-evidence.ts';
+import {captureSubscriptionError,captureSubscriptionResponse,parseSubscriptionErrorEvidence} from '../../client-observability/src/subscription-evidence.ts';
 import {parseClientErrorPayload} from '../../client-observability/src/schema.ts';
 import {defaultRedact} from '../../client-observability/src/redact.ts';
 import {recordClientError} from '../../client-observability/src/db.ts';
@@ -103,4 +103,40 @@ test('actual ingestion retains bounded evidence, while unsupported or malformed 
   assert.equal(rows.length,3);
   assert.deepEqual(rows.map(row=>JSON.parse(row.subscription_evidence)),[bounded,{state:'unsupported-profile'},{state:'invalid'}]);
   assert.ok(rows.every(row=>row.occurred_at===base.occurredAt));
+});
+
+
+test('response correlation has closed absent/invalid/redirected states and exact UUIDv4 syntax',()=>{
+  const id='12345678-1234-4234-8234-123456789abc';
+  assert.deepEqual(captureSubscriptionResponse(id.toUpperCase(),false),{state:'response-id',requestId:id});
+  assert.deepEqual(captureSubscriptionResponse(null,false),{state:'response-id-missing'});
+  assert.deepEqual(captureSubscriptionResponse(id,true),{state:'redirected-response'});
+  for(const value of ['',id+'\n',id+' ',id+', '+id,'private@example.invalid','0'.repeat(36),id.replace('-4234-','-5234-'),id.replace('-8234-','-1234-')]){
+    assert.deepEqual(captureSubscriptionResponse(value,false),{state:'response-id-invalid'});
+    assert.deepEqual(parseSubscriptionErrorEvidence({...bounded,operation:{state:'response-id',requestId:value}}).operation,{state:'invalid'});
+  }
+  for(const value of [null,{},'private', {state:'future'}, {state:'response-id'}])assert.deepEqual(parseSubscriptionErrorEvidence({...bounded,operation:value}).operation,{state:'invalid'});
+  const {operation,...withoutOperation}=bounded;
+  assert.deepEqual(parseSubscriptionErrorEvidence(withoutOperation).operation,{state:'unrecorded'});
+  const legacy={...withoutOperation,profile:'subscribe-error-v1'};
+  assert.deepEqual(parseSubscriptionErrorEvidence({...legacy,operation:{state:'response-id',requestId:id}}),legacy,'historical profile never acquires new semantics');
+  for(const state of ['not-started','response-unavailable','response-id-missing','response-id-invalid','redirected-response','unrecorded','invalid']){
+    const evidence=parseSubscriptionErrorEvidence({...bounded,operation:{state,private:'discard'}});
+    assert.deepEqual(evidence.operation,{state});assert.ok(!JSON.stringify(evidence).includes('discard'));
+  }
+});
+
+test('operation response ID survives redaction, schema and confirmed storage without becoming the ingestion ray',async t=>{
+  const h=fixture(t);h.migrate();
+  Object.defineProperty(globalThis,'location',{configurable:true,value:{origin:'https://example.invalid'}});
+  t.after(()=>Reflect.deleteProperty(globalThis,'location'));
+  const id='12345678-1234-4234-8234-123456789abc';
+  const evidence=captureSubscriptionError('sending',undefined,captureSubscriptionResponse(id,false));
+  const redacted=defaultRedact({...base,subscriptionEvidence:{...evidence,operation:{...evidence.operation,token:'never-store'}}},{path:base.path,occurredAt:base.occurredAt});
+  const event=serverEvent(redacted); event.ray='diagnostic-ingestion-ray';
+  await recordClientError(h.DB,event);
+  const row=h.sqlite.prepare('SELECT ray,subscription_evidence FROM client_errors').get();
+  assert.equal(row.ray,'diagnostic-ingestion-ray');
+  assert.deepEqual(JSON.parse(row.subscription_evidence),evidence);
+  assert.ok(!row.subscription_evidence.includes('never-store'));
 });

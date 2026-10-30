@@ -260,7 +260,8 @@ test('an idle widget error is a diagnostic without a submitted signup', t => {
   callback('110100');
   assert.deepEqual(h.reports.map(event => event.message), ['subscribe_widget_error']);
   assert.deepEqual(h.reports[0]?.subscriptionEvidence, {
-    state: 'recorded', profile: 'subscribe-error-v1', phase: 'idle',
+    state: 'recorded', profile: 'subscribe-error-v2', phase: 'idle',
+    operation: { state: 'not-started' },
     turnstileError: { state: 'bounded-code', code: '110100' },
   });
   assert.equal(h.executions.length, 0);
@@ -276,7 +277,8 @@ test('widget diagnostics retain the active verification phase before failure cle
   h.submit();
   h.options()['error-callback']?.('200500');
   assert.deepEqual(h.reports[0]?.subscriptionEvidence, {
-    state: 'recorded', profile: 'subscribe-error-v1', phase: 'verifying',
+    state: 'recorded', profile: 'subscribe-error-v2', phase: 'verifying',
+    operation: { state: 'not-started' },
     turnstileError: { state: 'bounded-code', code: '200500' },
   });
   assert.equal(h.reports[0]?.status, undefined, 'provider codes must not become HTTP statuses');
@@ -293,7 +295,8 @@ test('API failure diagnostics retain sending phase and keep provider errors inap
   assert.equal(h.reports[0]?.message, 'subscribe_api_rejected');
   assert.equal(h.reports[0]?.status, 503);
   assert.deepEqual(h.reports[0]?.subscriptionEvidence, {
-    state: 'recorded', profile: 'subscribe-error-v1', phase: 'sending',
+    state: 'recorded', profile: 'subscribe-error-v2', phase: 'sending',
+    operation: { state: 'response-id-missing' },
     turnstileError: { state: 'not-applicable' },
   });
 });
@@ -466,4 +469,69 @@ test('generic acceptance leaves the email and form available for another verifie
   assert.equal(h.form.innerHTML, '');
   assert.equal(h.form.input.value, ' reader@example.invalid ');
   assert.equal(h.form.button.disabled, false);
+});
+
+const REQUEST_A = '12345678-1234-4234-8234-123456789abc';
+const REQUEST_B = '22345678-1234-4234-8234-123456789abc';
+
+function operationOf(event: ClientErrorInput | undefined) {
+  const evidence = event?.subscriptionEvidence;
+  assert.ok(evidence?.state === 'recorded' && evidence.profile === 'subscribe-error-v2');
+  return evidence.operation;
+}
+
+test('rejected signup retains only the response request ID, including cleanup errors and a fresh retry', async t => {
+  const h = harness(t);
+  let id = REQUEST_A;
+  h.setFetch(async () => new Response('private-response token=never-store', {
+    status: 503, headers: { 'x-request-id': id, 'cf-ray': 'unrelated-ray', 'other': 'never-store' },
+  }));
+  h.failRemove();
+  h.initialize(); h.submit(); h.options().callback?.('synthetic-token');
+  await settle();
+  assert.equal(h.reports.length, 2);
+  for (const event of h.reports) {
+    assert.deepEqual(operationOf(event), { state: 'response-id', requestId: REQUEST_A });
+    assert.equal(event.subscriptionEvidence?.state === 'recorded' && event.subscriptionEvidence.phase, 'sending');
+  }
+  id = REQUEST_B;
+  h.submit(); h.options().callback?.('synthetic-retry'); await settle();
+  assert.deepEqual(operationOf(h.reports.at(-1)), { state: 'response-id', requestId: REQUEST_B });
+  assert.doesNotMatch(JSON.stringify(h.reports), /never-store|unrelated-ray|synthetic-token|synthetic-retry/);
+});
+
+test('timeout has no response ID; a late response cannot attach its ID to the next attempt', async t => {
+  const h = harness(t);
+  const old = Promise.withResolvers<Response>();
+  h.setFetch(() => old.promise);
+  h.initialize(); h.submit(); h.options().callback?.('synthetic-token');
+  h.tick(35_000);
+  assert.deepEqual(operationOf(h.reports.at(-1)), { state: 'response-unavailable' });
+  const next = Promise.withResolvers<Response>();
+  h.setFetch(() => next.promise);
+  h.submit(); h.options().callback?.('synthetic-retry');
+  old.resolve(new Response(null, { status: 503, headers: { 'x-request-id': REQUEST_A } }));
+  await settle();
+  assert.equal(h.reports.length, 1);
+  next.resolve(new Response(null, { status: 503, headers: { 'x-request-id': REQUEST_B } }));
+  await settle();
+  assert.deepEqual(operationOf(h.reports.at(-1)), { state: 'response-id', requestId: REQUEST_B });
+});
+
+test('network exceptions and sending-phase widget failures leave server receipt unknown', async t => {
+  const h = harness(t);
+  h.setFetch(async () => { throw new Error('private-network-text'); });
+  h.initialize(); h.submit(); h.options().callback?.('synthetic-token'); await settle();
+  assert.deepEqual(operationOf(h.reports.at(-1)), { state: 'response-unavailable' });
+  h.setFetch(() => new Promise(() => {}));
+  h.submit(); h.options().callback?.('synthetic-retry');
+  h.options()['expired-callback']?.();
+  assert.deepEqual(operationOf(h.reports.at(-1)), { state: 'response-unavailable' });
+});
+
+test('response metadata cannot turn a successful 202 into a failure report', async t => {
+  const h = harness(t);
+  h.setFetch(async () => new Response(null, { status: 202, headers: { 'x-request-id': 'private-invalid-id' } }));
+  h.initialize(); h.submit(); h.options().callback?.('synthetic-token'); await settle();
+  assert.equal(h.reports.length, 0); assert.match(h.form.message.textContent, /Request received/);
 });

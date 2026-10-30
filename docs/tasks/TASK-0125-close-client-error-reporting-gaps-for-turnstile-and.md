@@ -4,7 +4,7 @@ title: Close client error reporting gaps for Turnstile and subscription failures
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.781Z'
-updated_at: '2026-10-30T00:00:45.152259+00:00'
+updated_at: '2026-10-30T07:35:04.214458+00:00'
 type: task
 ---
 
@@ -12,6 +12,8 @@ type: task
 P1 remaining client observability. The subscription form's missing/late widget, failure, expiry, unsupported-browser and timeout paths emit static stages and leave usable retries; the September acceptance remains dated evidence. Do not repeat that implementation. October 29's occurrence/phase/provider-evidence and acknowledgment implementations have separate delivery/acceptance records below. Attach actual build revision and correlate the failed operation with its browser report instead of storing only the logging request ray. Cover bootstrap/resource-load failures where practical. Add duplicate/event budgets and actual browser-delivery controls; a queued beacon remains distinct from storage acknowledgment. Keep addresses, tokens and arbitrary API response text out of diagnostics. Tests must exercise the remaining failure behavior.
 
 ## Investigation checkpoint
+
+**October 30 response correlation:** [Research 24](../../packages/blog/drafts/research/newsletter-reliability/24-subscription-response-correlation.md) retains the existing signup response UUID in new closed v2 diagnostics, separately from the logging request Ray. Historical v1 remains supported. Six paired compiled-client/native-Worker/D1 controls each store one report: one available direct-response reference changes from unmatched to matched; missing/invalid/redirected/lost/idle states stay explicit. A constructed lost response leaves the server log present and client receipt unknown. 156 site tests/types/22 Markdown validations/isolated 33-post build pass. No production request/SQL, verification, mail or human trial. Hosted activation/production correlation remain separate; no-response correlation and broader admission/bootstrap/budget work remain open.
 
 **October 30 build identity:** [Research 23](../../packages/blog/drafts/research/newsletter-reliability/23-client-build-attribution.md) supplies a compiled Workers build UUID/source identifier to the default logger. The existing field/schema/writer preserve all 80 characters; unknown manual/development builds stay absent. [Hosted association](../../packages/blog/drafts/research/newsletter-reliability/client-build-identity-release.json) is accepted on source765a2ac/native build/full allocated Worker with one exact28,469-byte served client. The metadata remains client-supplied and does not authenticate reports. 150 site tests/types/validation/isolated build pass. A local actual-browser/native-D1 readback matches the full identifier after one click; the old exact-message gate remains failed because of the browser prefix. No production request, signup or human label. Operation correlation, admission, budgets and bootstrap remain separate.
 

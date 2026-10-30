@@ -1,0 +1,179 @@
+{
+  "checkedAt": "2026-10-30T07:33:15.078Z",
+  "baseline": "1ce4f51e1e55d7ae2f7f9764c4387c742351fc58",
+  "casesPerVariant": 6,
+  "matchedBefore": 0,
+  "matchedAfter": 1,
+  "nativeWorkerSha256": "07fe10f437a703d32853582ddf0a5fad50feb30ef8a096f3f1c11bddd5e27dc8",
+  "method": "paired compiled actual subscribe/default logger in a Node VM DOM fixture; real handlers/native local workerd D1; beacon false selects FetchTransport",
+  "actualBrowser": false,
+  "productionRequests": 0,
+  "productionSqlStatements": 0,
+  "humanLabels": 0,
+  "verificationCalls": 0,
+  "providerSendCalls": 0,
+  "keepaliveWireBehaviorMeasured": false,
+  "sourceOnlyLookupHintsAuthenticated": false,
+  "before": {
+    "clientSha256": "5e5470011a96c32a826db57fc25ae67c0f14fdb4c22e5b8c2bc096db8fbebf08",
+    "rows": [
+      {
+        "mode": "config",
+        "apiCalls": 1,
+        "reportsStored": 1,
+        "diagnosticStatus": 204,
+        "phase": "sending",
+        "operationState": "unrecorded",
+        "matchedServerLog": false,
+        "ingestionRaySeparate": true,
+        "serverStages": [
+          "configuration_unavailable"
+        ]
+      },
+      {
+        "mode": "missing",
+        "apiCalls": 1,
+        "reportsStored": 1,
+        "diagnosticStatus": 204,
+        "phase": "sending",
+        "operationState": "unrecorded",
+        "matchedServerLog": false,
+        "ingestionRaySeparate": true,
+        "serverStages": [
+          "configuration_unavailable"
+        ]
+      },
+      {
+        "mode": "invalid",
+        "apiCalls": 1,
+        "reportsStored": 1,
+        "diagnosticStatus": 204,
+        "phase": "sending",
+        "operationState": "unrecorded",
+        "matchedServerLog": false,
+        "ingestionRaySeparate": true,
+        "serverStages": [
+          "configuration_unavailable"
+        ]
+      },
+      {
+        "mode": "redirected",
+        "apiCalls": 1,
+        "reportsStored": 1,
+        "diagnosticStatus": 204,
+        "phase": "sending",
+        "operationState": "unrecorded",
+        "matchedServerLog": false,
+        "ingestionRaySeparate": true,
+        "serverStages": [
+          "configuration_unavailable"
+        ]
+      },
+      {
+        "mode": "lost-response",
+        "apiCalls": 1,
+        "reportsStored": 1,
+        "diagnosticStatus": 204,
+        "phase": "sending",
+        "operationState": "unrecorded",
+        "matchedServerLog": false,
+        "ingestionRaySeparate": true,
+        "serverStages": [
+          "configuration_unavailable"
+        ]
+      },
+      {
+        "mode": "idle",
+        "apiCalls": 0,
+        "reportsStored": 1,
+        "diagnosticStatus": 204,
+        "phase": "idle",
+        "operationState": "unrecorded",
+        "matchedServerLog": false,
+        "ingestionRaySeparate": true,
+        "serverStages": []
+      }
+    ]
+  },
+  "after": {
+    "clientSha256": "12a1fcfdf3e2c36c1446593fff498e2d27bed9ab62f96e597084b3219166c4f7",
+    "rows": [
+      {
+        "mode": "config",
+        "apiCalls": 1,
+        "reportsStored": 1,
+        "diagnosticStatus": 204,
+        "phase": "sending",
+        "operationState": "response-id",
+        "matchedServerLog": true,
+        "ingestionRaySeparate": true,
+        "serverStages": [
+          "configuration_unavailable"
+        ]
+      },
+      {
+        "mode": "missing",
+        "apiCalls": 1,
+        "reportsStored": 1,
+        "diagnosticStatus": 204,
+        "phase": "sending",
+        "operationState": "response-id-missing",
+        "matchedServerLog": false,
+        "ingestionRaySeparate": true,
+        "serverStages": [
+          "configuration_unavailable"
+        ]
+      },
+      {
+        "mode": "invalid",
+        "apiCalls": 1,
+        "reportsStored": 1,
+        "diagnosticStatus": 204,
+        "phase": "sending",
+        "operationState": "response-id-invalid",
+        "matchedServerLog": false,
+        "ingestionRaySeparate": true,
+        "serverStages": [
+          "configuration_unavailable"
+        ]
+      },
+      {
+        "mode": "redirected",
+        "apiCalls": 1,
+        "reportsStored": 1,
+        "diagnosticStatus": 204,
+        "phase": "sending",
+        "operationState": "redirected-response",
+        "matchedServerLog": false,
+        "ingestionRaySeparate": true,
+        "serverStages": [
+          "configuration_unavailable"
+        ]
+      },
+      {
+        "mode": "lost-response",
+        "apiCalls": 1,
+        "reportsStored": 1,
+        "diagnosticStatus": 204,
+        "phase": "sending",
+        "operationState": "response-unavailable",
+        "matchedServerLog": false,
+        "ingestionRaySeparate": true,
+        "serverStages": [
+          "configuration_unavailable"
+        ]
+      },
+      {
+        "mode": "idle",
+        "apiCalls": 0,
+        "reportsStored": 1,
+        "diagnosticStatus": 204,
+        "phase": "idle",
+        "operationState": "not-started",
+        "matchedServerLog": false,
+        "ingestionRaySeparate": true,
+        "serverStages": []
+      }
+    ]
+  }
+}

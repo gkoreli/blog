@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T07:20:56.142783+00:00",
-  "sourceBaseline": "765a2acf22268fb207879f6c6cba7d673d19b492",
+  "checkedAt": "2026-10-30T07:35:04.214458+00:00",
+  "sourceBaseline": "1ce4f51e1e55d7ae2f7f9764c4387c742351fc58",
   "goalAchieved": false,
-  "previousTurn": "progress: body-limit code, paired native cases and source/build/full-allocation acceptance",
-  "scope": "Active goal: compiled client-build attribution has scoped local browser/native-D1 and hosted source/asset acceptance. No authenticated report, production browser-delivery rate or population/human/bot calibration follows.",
+  "previousTurn": "progress: compiled client-build identity plus scoped hosted association and one local browser identity readback; original message gate failed",
+  "scope": "Active goal: operation references improve failure investigation; no authenticated report, reader demand, human growth or population calibration follows.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Add failed-operation correlation and remaining scoped diagnostic admission/attribution, using labelled local controls and explicit unknowns. Keep search/human/native/privacy/history measurement requirements distinct and human trials deferred.",
+  "nextBoundedAction": "Accept source/build activation separately; then bounded diagnostic origin/rate admission and remaining bootstrap/budget work. No-response correlation needs a separate design. Human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -63,10 +63,6 @@
     "localBuildReceipt": "readership-article-checks.json"
   },
   "runtimeUnchanged": false,
-  "productionStatements": 0,
-  "newVisits": 0,
-  "newHumanLabels": 0,
-  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -95,9 +91,6 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 1,
-  "collectionEligibleGets": 0,
-  "ownerMarkPosts": 0,
   "retainedDelta": {
     "receipt": "retained-delta-production.json",
     "reasonReceipt": "retained-delta-reasons.json",
@@ -170,13 +163,10 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 9,
-  "productionDiagnosticWrites": 1,
   "normalIngestion": {
     "acknowledgedApplicationRows": 1,
     "providerWriteMetering": "One labelled stored row observed and removed; ingestion write meter unavailable. Natural/provider activity additional."
   },
-  "newVisitsScope": "One source-excluded prefetch asset GET and one labelled diagnostic POST; no browser page/human visit. Provider account inspection additional.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -382,7 +372,6 @@
     "heldHistoricalSnapshot": false,
     "wholeHistoryCorrectnessProven": false
   },
-  "liveAccountInspectionScope": "GitHub Cloudflare provider check binds full source/build/Worker; fresh Wrangler listing allocates exact version100%. Dashboard remains rate-limited.",
   "cohortContextAndMethods": {
     "receipt": "cohort-context-production.json",
     "native": "cohort-context-native.json",
@@ -629,9 +618,6 @@
     "exactRetainedRequestVersionMatched": true,
     "liveEmptyCounters": 44
   },
-  "productionDirectDiagnosticSelects": 2,
-  "productionReportCalculations": 0,
-  "productionReadScope": "Only owned-control occurrence/ingestion/evidence fields returned; no reader records exported.",
   "unresolvedMetadata": {
     "research": "88-unresolved-metadata-and-retained-inputs.md",
     "production": "unresolved-metadata-production.json",
@@ -659,7 +645,6 @@
     "checks": "unresolved-metadata-checks.json",
     "release": "unresolved-metadata-release.json"
   },
-  "runtimeUnchangedScope": "Client-error DB acknowledgment/server response and transport receipts/log phases change; no payload/schema, page collector/classifier/verifier, newsletter verification/admission/sender or credential change.",
   "localMetadataRelay": {
     "research": "89-local-browser-relays-and-fetch-metadata.md",
     "experiment": "local-metadata-relay-experiment.json",
@@ -718,7 +703,6 @@
     "productionCollectorReadbackReceipt": "metadata-collector-production.json",
     "productionCollectorReadbackScope": "Four matched requests on d65be377; the later article-only publication Worker is accepted separately, without repeating collector trials."
   },
-  "newControlledRequests": 2,
   "liveMetadataControls": {
     "research": "91-live-metadata-controls-and-redacted-correlation.md",
     "native": "metadata-collector-native.json",
@@ -763,9 +747,6 @@
     "warmCache": "HIT",
     "populationPrevalenceMeasured": false
   },
-  "ownSiteGetRequests": 1,
-  "collectionEligibleRequests": 0,
-  "diagnosticSelects": 2,
   "evidenceDelta": {
     "research": "93-frozen-delta-and-reusable-evidence.md",
     "production": "evidence-delta-production.json",
@@ -838,9 +819,6 @@
     "unmeteredCalculations": 1,
     "productionBrowserLayoutMeasured": false
   },
-  "productionStatementsScope": "One source-excluded static/prefetch main.js GET; no production SQL or diagnostic POST",
-  "productionReportedReadsCoverage": "No new production database operation; historical costs stay in their dated receipts.",
-  "productionReadTotal": 0,
   "publicationDateRepair": {
     "receipt": "article-reach-date-checks.json",
     "siteTests": 120,
@@ -907,7 +885,6 @@
     "widgetReadinessEstablished": false,
     "browserTabClosed": true
   },
-  "productionDiagnosticD1Statements": 0,
   "retainedSubscriptionErrors": {
     "research": "../newsletter-reliability/18-retained-widget-errors-and-conversion-limits.md",
     "production": "../newsletter-reliability/subscription-error-audit-production.json",
@@ -928,7 +905,6 @@
     "runtimeChanged": false,
     "humanLabels": 0
   },
-  "productionDdlWrites": 0,
   "subscriptionDiagnosticEvidence": {
     "research": "../newsletter-reliability/19-subscription-error-phase-and-provider-evidence.md",
     "native": "../newsletter-reliability/subscription-evidence-native.json",
@@ -955,30 +931,6 @@
     "privateReleaseManifestSha256": "6f67ba00ec3c415dc81cfa23e5768bdc5dad2d5ba1f37c8437910edfe37ff15b",
     "liveControl": "../newsletter-reliability/subscription-control-production.json",
     "liveControlScope": "One direct HTTP ingestion, no actual browser callback/transport or population acceptance; fixture cleaned."
-  },
-  "ownSitePostRequests": 0,
-  "diagnosticControlPosts": 1,
-  "diagnosticControl": {
-    "research": "../newsletter-reliability/20-production-diagnostic-readback-and-cleanup.md",
-    "production": "../newsletter-reliability/subscription-control-production.json",
-    "native": "../newsletter-reliability/subscription-control-native.json",
-    "operator": "controlled-http-client",
-    "postAttempts": 1,
-    "observedStoredRows": 1,
-    "removedRows": 1,
-    "remainingMarkerRows": 0,
-    "extraPropertyDiscarded": true,
-    "primaryReceipts": 3,
-    "reportedReads": 9,
-    "reportedCleanupWrites": 1,
-    "ingestionMeterAvailable": false,
-    "runtimeChanged": false,
-    "siteTests": 138,
-    "pageClassifierTrialsAdded": 0,
-    "actualBrowserTransportAccepted": false,
-    "generalDurabilityAccepted": false,
-    "humanLabels": 0,
-    "privateDataManifestSha256": "dcb2e75560909a752457311b0e6678ec219f85125c1468735ea9ffb874214ea5"
   },
   "clientErrorAcknowledgment": {
     "research": "../newsletter-reliability/21-truthful-error-report-acknowledgments.md",
@@ -1018,7 +970,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: client-build attribution implemented;150site tests/types/build, local browser/native D1 identity readback and source/native deploy/CLI/full served-client association accepted. Original local message gate remains failed.",
+  "currentTurn": "progress: response-operation evidence implemented; six paired local native cases, 156 site tests/types/validation/isolated build pass; activation separate",
   "requirementsAudit": {
     "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
     "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
@@ -1132,7 +1084,7 @@
   "dependencyAudit": {
     "consecutiveBlockedGoalTurns": 0,
     "status": "active; measurement-specific external dependencies retained",
-    "condition": "Search/human/native/collection observations remain gated separately. Existing TASK0126 actual-byte repair is independently actionable; these dependencies do not justify treating all engineering as impossible.",
+    "condition": "Search/human/native/collection dependencies gate their specific measurements. Independent diagnostic correlation/admission/bootstrap/budget engineering remains actionable.",
     "search": "Existing account selected; Google requires completion using a passkey. No credential/code entered, account setting changed or report viewed. One actionable async request pending.",
     "human": "Owner explicitly deferred human trials; not reopened.",
     "provider": "Fresh primary docs still specify Enterprise Bot Management and intermediary classification for signed_agent; last observed Free zone plan remains a dated Research76 observation, not a fresh account-entitlement inspection. No upgrade/enrollment/access expansion authorized or attempted.",
@@ -1176,5 +1128,77 @@
     "workerVersion": "60b611f9-26ef-441c-9480-d10d5cc54256",
     "servedClientBytes": 28469,
     "reportAuthenticated": false
+  },
+  "previousOperationalSummary": {
+    "productionStatements": 0,
+    "newVisits": 0,
+    "newHumanLabels": 0,
+    "liveAccountInspection": false,
+    "productionOwnSiteGets": 1,
+    "collectionEligibleGets": 0,
+    "ownerMarkPosts": 0,
+    "productionReportedReads": 9,
+    "productionDiagnosticWrites": 1,
+    "newVisitsScope": "One source-excluded prefetch asset GET and one labelled diagnostic POST; no browser page/human visit. Provider account inspection additional.",
+    "liveAccountInspectionScope": "GitHub Cloudflare provider check binds full source/build/Worker; fresh Wrangler listing allocates exact version100%. Dashboard remains rate-limited.",
+    "productionDirectDiagnosticSelects": 2,
+    "productionReportCalculations": 0,
+    "productionReadScope": "Only owned-control occurrence/ingestion/evidence fields returned; no reader records exported.",
+    "runtimeUnchangedScope": "Client-error DB acknowledgment/server response and transport receipts/log phases change; no payload/schema, page collector/classifier/verifier, newsletter verification/admission/sender or credential change.",
+    "newControlledRequests": 2,
+    "ownSiteGetRequests": 1,
+    "collectionEligibleRequests": 0,
+    "diagnosticSelects": 2,
+    "productionStatementsScope": "One source-excluded static/prefetch main.js GET; no production SQL or diagnostic POST",
+    "productionReportedReadsCoverage": "No new production database operation; historical costs stay in their dated receipts.",
+    "productionReadTotal": 0,
+    "productionDiagnosticD1Statements": 0,
+    "productionDdlWrites": 0,
+    "ownSitePostRequests": 0,
+    "diagnosticControlPosts": 1,
+    "diagnosticControl": {
+      "research": "../newsletter-reliability/20-production-diagnostic-readback-and-cleanup.md",
+      "production": "../newsletter-reliability/subscription-control-production.json",
+      "native": "../newsletter-reliability/subscription-control-native.json",
+      "operator": "controlled-http-client",
+      "postAttempts": 1,
+      "observedStoredRows": 1,
+      "removedRows": 1,
+      "remainingMarkerRows": 0,
+      "extraPropertyDiscarded": true,
+      "primaryReceipts": 3,
+      "reportedReads": 9,
+      "reportedCleanupWrites": 1,
+      "ingestionMeterAvailable": false,
+      "runtimeChanged": false,
+      "siteTests": 138,
+      "pageClassifierTrialsAdded": 0,
+      "actualBrowserTransportAccepted": false,
+      "generalDurabilityAccepted": false,
+      "humanLabels": 0,
+      "privateDataManifestSha256": "dcb2e75560909a752457311b0e6678ec219f85125c1468735ea9ffb874214ea5"
+    }
+  },
+  "runtimeUnchangedScope": "Subscribe client and diagnostic evidence parser change; newsletter handler, credentials, verifier/admission/sender, schema and analytics collector/classifier remain unchanged.",
+  "productionOperationsThisTurn": {
+    "httpRequests": 0,
+    "sqlStatements": 0,
+    "verificationCalls": 0,
+    "providerSends": 0,
+    "humanLabels": 0
+  },
+  "subscriptionResponseCorrelation": {
+    "research": "../newsletter-reliability/24-subscription-response-correlation.md",
+    "native": "../newsletter-reliability/subscription-correlation-native.json",
+    "checks": "../newsletter-reliability/subscription-correlation-checks.json",
+    "casesPerVersion": 6,
+    "siteTests": 156,
+    "availableDirectResponseReferencesPerVersion": 1,
+    "matchedBefore": 0,
+    "matchedAfter": 1,
+    "actualBrowser": false,
+    "clientClaimAuthenticated": false,
+    "noResponseFailuresCorrelated": false,
+    "sourceActivationAccepted": false
   }
 }

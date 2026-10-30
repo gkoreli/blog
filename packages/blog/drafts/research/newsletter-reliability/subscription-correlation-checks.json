@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-30T07:34:26.090462+00:00",
+  "baseline": "1ce4f51e1e55d7ae2f7f9764c4387c742351fc58",
+  "siteTests": 156,
+  "workspaceTypes": "pass",
+  "markdownPostsValid": 22,
+  "isolatedBuildPosts": 33,
+  "sourceSha256": {
+    "packages/blog/src/client/subscribe.ts": "a686d3e05a39741edff5b6dc3b0a204f63bc62d62f7dc63abefb70ad5379f38b",
+    "packages/client-observability/src/client.ts": "85d91a0058f9767532336a0e9352ffebc84c74bfd16e7d6efa194436be140410",
+    "packages/client-observability/src/subscription-evidence.ts": "ef98b3867294ab600f5c547ec4464b88f1f3edc2d768dffa39171b7fdb7c7dd1",
+    "packages/blog/test/subscribe.test.ts": "72568ae1e9dabb09c0ba73b31c250add3b465c8e1a006d293bbbf81411392b00",
+    "packages/blog/test/subscription-error-evidence.test.mjs": "57610177631995fb4968048d1b7986e971afd185023ef7b10dc43a6e7a6f1b82",
+    "packages/blog/scripts/check-subscription-correlation.mjs": "a90c13278bf3c09a7fa223692c0c2d14120642f0b8f61ed38fbcdf8978fdde14",
+    "packages/blog/test/fixtures/subscription-correlation-worker.js": "c82515b673be09e567568395af64b03607bbf465b6231dc3cede9cc5ddda0159"
+  },
+  "privateEnvCopied": false,
+  "pairedNativeCasesPerVersion": 6,
+  "localMatchedResponseIdsBefore": 0,
+  "localMatchedResponseIdsAfter": 1,
+  "failedHarnessInvocationsBeforeAcceptance": 4,
+  "initialBuildSandboxIpcFailurePreserved": true,
+  "sourceActivationAccepted": false,
+  "productionBehaviorMeasured": false,
+  "humanLabels": 0,
+  "privateEvidenceManifestSha256": "6e7a8362638bebf4cad2126ac38a2ab27efabb019328420dedbc6b5254fac33a",
+  "privateEvidenceFiles": 87
+}
