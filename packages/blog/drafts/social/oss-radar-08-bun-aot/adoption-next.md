@@ -1,6 +1,6 @@
 # Next adoption work: give someone a result they can use
 
-Prepared October 28, 2026. **Item 1 was posted October 29**; the other proposals below remain unsent. [Execution receipt](execution-2026-10-29.md) also records the separately authorized Assaf pitch and historical-demo X post. This extends [the earlier evidence review](battle-tested-2026-10-28.md), rather than repeating the newsletter pitches and posts already executed.
+Prepared October 28, 2026. **Item 1 was posted October 29; item 5 was posted October 30**. The other proposals below remain unsent. [Execution receipt](execution-2026-10-29.md) also records the separately authorized Assaf pitch and historical-demo X post. This extends [the earlier evidence review](battle-tested-2026-10-28.md), rather than repeating the newsletter pitches and posts already executed.
 
 ## What the evidence actually supports
 
@@ -52,17 +52,27 @@ I made a small record-scan case while comparing Bun JIT and AOT. It uses no depe
 
 An accepted fixture or independently published result would give the article a durable evidence link. It would not establish how many people read it. No PR, issue or message has been sent.
 
-## 5. Offer two bounded trials on readers' own CLIs
+## 5. Two readers' CLI trials — invitation published
 
-**New experiment:** make one public invitation for two public repositories and one offline command each. Cap each trial at 45 minutes, retain failed builds, and give each participant a small result they can use. This applies the helper-first practice above to the exact decision in the article. It is not a proven acquisition tactic for this account.
+Goga explicitly approved this offer on October 30 by selecting the two-CLI proposal and saying “Im down lets do it”. [Posted as @GogaKoreli](https://x.com/GogaKoreli/status/2116196406960758926) at **8:51:55 AM Pacific / 15:51:55 UTC**. This authorizes the bounded trials; it does not authorize the separate ICE or benchmark-suite outreach.
 
-Prepared post:
+Exact published copy, two sentences and **226 weighted characters**:
 
 ```text
-If you have a public TypeScript CLI you're considering rewriting for speed, link it with one offline command. I'll test the first two with Bun AOT and share the speed, memory and file-size results, including failures: https://gkoreli.com/oss-radar-08-bun-aot
+Have a TypeScript CLI you'd like to make faster? Reply with its public repo and one offline command, and I'll test the first two with Bun AOT and share speed, RAM and file size, including failed builds: https://gkoreli.com/oss-radar-08-bun-aot
 ```
 
-This is a proposed future commitment, not a posted promise or an open-ended support offer. It needs Goga's decision before publication. The useful result is two actual trials and whether either changes a decision; a dozen interested replies without a runnable command is not the same outcome. Do not build a submission website or collect emails for this.
+The signed-in profile showed no duplicate offer. The composer showed the exact copy, then one Post click published it. Reopened the canonical status and verified account, text, article card and timestamp. X's unauthenticated embedding endpoint independently returned the exact text and author. The article URL returned HTTP 200. Raw screenshot, copy and public embed capture are outside Git under `/tmp/bun-aot-two-cli-20261030/`. Publication is verified; participation and adoption are not.
+
+### Trial scope and next action
+
+- Take the first two eligible replies with a public TypeScript CLI repository and one command that runs offline. Neither slot is filled at the publication check; no trial has run.
+- Allow 45 minutes per project. Pin source, runtime and compiler versions; compare the same source and command. Keep setup or build failures in the result.
+- Check command output before timing. Record repeated elapsed time, peak physical memory (or explicitly labeled RSS where physical footprint is unavailable), executable bytes and packaging requirements. Report slower results as plainly as faster ones.
+- Give each participant the commands, result table and limits. Use the existing [Polkadot reproduction method](../../research/polkadot-bun-aot/repro/README.md) and [result template](adoption/result-template.md) as starting points, not proof their project works.
+- Next bounded action: inspect replies and record each eligible repo/command here before testing. No polling or reminder has been scheduled; later execution needs a fresh reply check.
+
+This remains an experiment in helping readers make a decision. Replies, tests completed and changed decisions are separate outcomes.
 
 ## What not to spend time on next
 

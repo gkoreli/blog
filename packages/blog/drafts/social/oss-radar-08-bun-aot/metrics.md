@@ -62,3 +62,7 @@ Changelog required a new account and then revealed a newsletter-subscriber gate.
 ## October 29: three further actions executed
 
 [Execution receipt](execution-2026-10-29.md): the Polkadot comment is public, Assaf’s pitch is sent and separately verified, and the [30-second X demo](https://x.com/GogaKoreli/status/2115822454497309070) is published. Canonical status, text, native playback and article destination were checked; X’s public embedding service independently returned the exact text. The immediate owner view displayed one view, which is not evidence of an independent reader. No new adoption or editorial selection is established. No measurement automation was scheduled.
+
+## October 30: two-CLI invitation published
+
+Goga selected and approved the public offer to test two TypeScript CLIs. [Published invitation](https://x.com/GogaKoreli/status/2116196406960758926), **8:51:55 AM Pacific**, two sentences / 226 weighted characters. [Exact copy, checks and bounded trial scope](adoption-next.md#5-two-readers-cli-trials--invitation-published). Canonical status, author, text, article card and timestamp were checked; X's unauthenticated embed independently returned the exact text. Both trial slots are open at this receipt. No trial, independent rerun or adoption result is claimed. No monitor, extra reply or additional outreach was created.
