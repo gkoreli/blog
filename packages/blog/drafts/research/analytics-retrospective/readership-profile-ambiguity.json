@@ -1,0 +1,118 @@
+{
+  "checkedAt": "2026-10-30T11:47:43.896Z",
+  "method": "Paired local native D1, full current schema, same 16 constructed stored-Browser events; only classifier stamps change.",
+  "reportEqual": true,
+  "distinctUnderlyingWeeklyProfileDistributions": true,
+  "mixedWeeklyProfiles": [
+    {
+      "day": "2026-10-03",
+      "profile": "fixture-A",
+      "views": 2
+    },
+    {
+      "day": "2026-10-03",
+      "profile": "fixture-B",
+      "views": 2
+    },
+    {
+      "day": "2026-10-10",
+      "profile": "fixture-A",
+      "views": 2
+    },
+    {
+      "day": "2026-10-10",
+      "profile": "fixture-B",
+      "views": 2
+    },
+    {
+      "day": "2026-10-17",
+      "profile": "fixture-A",
+      "views": 2
+    },
+    {
+      "day": "2026-10-17",
+      "profile": "fixture-B",
+      "views": 2
+    },
+    {
+      "day": "2026-10-24",
+      "profile": "fixture-A",
+      "views": 2
+    },
+    {
+      "day": "2026-10-24",
+      "profile": "fixture-B",
+      "views": 2
+    }
+  ],
+  "switchedWeeklyProfiles": [
+    {
+      "day": "2026-10-03",
+      "profile": "fixture-A",
+      "views": 4
+    },
+    {
+      "day": "2026-10-10",
+      "profile": "fixture-A",
+      "views": 4
+    },
+    {
+      "day": "2026-10-17",
+      "profile": "fixture-B",
+      "views": 4
+    },
+    {
+      "day": "2026-10-24",
+      "profile": "fixture-B",
+      "views": 4
+    }
+  ],
+  "reportClassification": {
+    "recordedProfiles": 2,
+    "unversionedViews": 0
+  },
+  "weeklyEvents": [
+    4,
+    4,
+    4,
+    4
+  ],
+  "reportMeters": [
+    {
+      "version": "2026-10-28.1",
+      "event": "stats-report-calculation",
+      "outcome": "returned",
+      "submittedStatements": 1,
+      "returnedResults": 1,
+      "metadata": "partial",
+      "counterScope": "last-attempt",
+      "reportedRowsRead": 4988,
+      "reportedRowsWritten": 0,
+      "totalAttempts": null,
+      "unexpectedWrites": false
+    },
+    {
+      "version": "2026-10-28.1",
+      "event": "stats-report-calculation",
+      "outcome": "returned",
+      "submittedStatements": 1,
+      "returnedResults": 1,
+      "metadata": "partial",
+      "counterScope": "last-attempt",
+      "reportedRowsRead": 4988,
+      "reportedRowsWritten": 0,
+      "totalAttempts": null,
+      "unexpectedWrites": false
+    }
+  ],
+  "productionCalls": 0,
+  "newLabels": 0,
+  "sourceSha256": {
+    "packages/analytics/src/article-reach.ts": "f89db8f0ec04ea6718b2f0364e5a2880c03fa11d99add23578e233b1a8935c19",
+    "packages/analytics/src/article-reach-contract.ts": "a5295af13ce4ea77a2d45260d33c3f042f974f8f6caa36d3147b9da6f6f490c2",
+    "packages/blog/src/client/article-reach.ts": "249cd21d431d377100b997bb1922efc3809dc6e7eb86a2e19b8557806e9f5184",
+    "packages/blog/src/pages/article-reach.ts": "2b6fdf2836caa119be3f51b92459d7a14959adbb10bd8f74079ef74f46a5aec9",
+    "packages/blog/scripts/check-readership-profile-ambiguity.mjs": "cf07645d9c6dd5868c7cf01b69ace7ed5b1087e6293ba097518749ef728de67c"
+  },
+  "limits": "Demonstrates report information loss about stored measurement profiles, not an actual rule change, its effect on traffic, comparable population, human count or growth correction. Profile equality alone would not prove semantic stability."
+}

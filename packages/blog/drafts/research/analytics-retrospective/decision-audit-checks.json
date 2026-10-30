@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-10-30T11:49:13.402327+00:00",
+  "freshAnalyticsCompilationPassed": true,
+  "catalogueAssertionsPassed": true,
+  "historicalCalibrationInputHashesMatched": 7,
+  "currentStoredKindEvaluationMatchesAccepted": true,
+  "newAutomationLabels": 0,
+  "newHumanLabels": 0,
+  "nativeProfileHistoryCounterexamplePassed": true,
+  "localReportReads": [
+    4988,
+    4988
+  ],
+  "localReportWrites": [
+    0,
+    0
+  ],
+  "productionOperations": {
+    "siteRequests": 0,
+    "d1Statements": 0,
+    "humanLabels": 0,
+    "rawCaptureActivation": false
+  },
+  "articleSha256Unchanged": "f6186a1f16af8114a3318b8125af3c2a04cc34216f0126b7093b2f5a6e5d1aa1",
+  "fullTestSuiteRerun": false,
+  "scope": "Offline diagnostic and audit records only. No production runtime or article change.",
+  "privateArchive": {
+    "directory": "2026-10-30-decision-measurement-audit",
+    "files": 20,
+    "manifestSha256": "59e97906128f7872395d15be3e5d37e02bbe8ca907672be1deb3a07c871afd3e",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-30T11:49:13.402327+00:00",
+  "sources": [
+    {
+      "url": "https://www.sqlite.org/lang_aggfunc.html",
+      "claim": "COUNT(DISTINCT X) counts distinct values; it does not retain their time distribution.",
+      "code": [
+        "packages/analytics/src/article-reach.ts"
+      ],
+      "experiment": "readership-profile-ambiguity.json",
+      "limit": "Our paired native experiment, not the documentation alone, proves identical report outputs."
+    },
+    {
+      "url": "https://matomo.org/guide/reporting-tools/annotations/",
+      "claim": "Matomo attaches notes to historical dates to provide context for interpreting reports.",
+      "code": [
+        "packages/blog/src/pages/article-reach.ts"
+      ],
+      "proposal": "Borrow dated measurement-change context alongside stored per-week profile composition.",
+      "limit": "No Matomo package adoption, feature execution or attribution guarantee is claimed."
+    }
+  ]
+}

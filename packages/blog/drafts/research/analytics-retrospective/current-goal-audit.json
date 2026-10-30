@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T10:13:54.284171+00:00",
-  "sourceBaseline": "4cefd55ceae96edb000660fab4f626e669917997",
+  "checkedAt": "2026-10-30T11:49:13.402327+00:00",
+  "sourceBaseline": "f4702851a2f020b934241b1b55e047b5ddd6307b",
   "goalAchieved": false,
-  "previousTurn": "progress: article-specific source concentration deployed/accepted on3b28416, five exact joins and live meter; evidence checkpoint9c3609c. No human/readership proof.",
-  "scope": "Active goal: operation references improve failure investigation; no authenticated report, reader demand, human growth or population calibration follows.",
+  "previousTurn": "progress: Research107 accepts controlled nonzero production cache/metadata SQL projection without organic/readership claims.",
+  "scope": "Current source/catalogue and saved evidence audit. Fresh native constructed report counterexample and historical stored-kind reevaluation, not a new production census, packet replay, human test or live health assertion.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -26,7 +26,7 @@
     "humanFalsePositiveRate": null,
     "humanAbstentionRate": null,
     "newEndToEndCollectorRun": false,
-    "scope": "Earlier twelve production automation controls, unchanged; the fifteen local relay visits and four new curl/parser controls remain separate cohorts and are not added to this accuracy denominator."
+    "scope": "Fresh current evaluator over seven hash-matched historical input files; same 12 original controls, not new current-classifier packet replay. Other cohorts stay separate."
   },
   "delivered": [
     "Explicit unknown/conflict and exact declaration matching",
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Add closed feed-cache storage/reuse/refresh rationale to future vendor-IP evidence, using the six-condition Node/workerd baseline. Preserve all existing membership outcomes, cooldown and no-stale policy; keep historical missing rationale unknown, and measure compatibility/visibility rather than treating the metadata as identity truth.",
+  "nextBoundedAction": "Add reconciled weekly measurement-profile composition to the article-readership report from existing stored fields. First preserve the paired profile-history counterexample, unknown/historical stamps, collection/source/representation differences and matched cost; do not reclassify old rows, authenticate people, normalize a human-growth curve or scan production before native acceptance.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -970,10 +970,10 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: all397 retained new-ID rows captured once and fully assessed;185 unresolved contexts,31 authority-bound stored verifications and two Google cooldown skips remain explicit. Six labelled cache-policy contrasts expose indistinguishable evidence; reusable diagnostic added.",
+  "currentTurn": "progress: fresh catalogue and hash-matched stored-kind evaluation; paired native reports expose weekly profile-history ambiguity; remaining decision/requirement audit updated. No new visits, labels or production queries.",
   "requirementsAudit": {
-    "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
-    "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
+    "sourceCommit": "f4702851a2f020b934241b1b55e047b5ddd6307b",
+    "method": "Fresh source inspection/compilation/catalogue; accepted dated production receipts; hash-matched current evaluator on original stored-kind ledger; paired full-schema native readership reports. No fresh production, browser/sign-in, human/device or packet replay.",
     "sourceSha256": {
       "classify.ts": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
       "readerkind.ts": "4150a6fc0186aed820c0e9fa60e98dbcde1817db4c8b3414ffa1cce3a95bf030",
@@ -984,7 +984,7 @@
       "native-bot-comparison.ts": "291eedcb5e03758ab554ab8b2091b81949346346d2a8e87facff16b22fc50a2f",
       "observation-receipt.ts": "3b78f4efce7161e69cfbb31fc455fcf2b4464d55d634a2eb0d3d46fa38d65beb",
       "calibration-evaluation.ts": "14cb49966cb6c500f130a9e867b230c439d0177f61a073217b5bc49c9f704fa4",
-      "versions.ts": "1f87b08748a5001fa93ec6c55749b578bad1db9297e72aa9ff077f6eb5dff90e"
+      "versions.ts": "984b602f3edb7973f16e77f05dd52d52978504db2c97a0d47294571bda7c9f46"
     },
     "requirements": [
       {
@@ -999,7 +999,10 @@
         "evidence": [
           "90-fetch-metadata-parsing-and-evidence.md",
           "91-live-metadata-controls-and-redacted-correlation.md",
-          "92-public-parsing-states-and-browser-signals.md"
+          "92-public-parsing-states-and-browser-signals.md",
+          "105-public-cache-explanations-and-metadata-compatibility.md",
+          "106-public-cache-explanations-production-acceptance.md",
+          "107-controlled-nonzero-production-projection.md"
         ],
         "limit": "Current source retains lexical declarations, malformed/missing/unassessed fields, conflicting contexts and unavailable native values. This does not prove population-level human accuracy."
       },
@@ -1010,9 +1013,10 @@
           "classify.ts"
         ],
         "evidence": [
-          "97-fresh-automated-fetches-and-measurement-gaps.md"
+          "97-fresh-automated-fetches-and-measurement-gaps.md",
+          "decision-audit-catalogue.json"
         ],
-        "limit": "Exact lexical product matching retains multiple candidates and aliases; UA claims remain spoofable and browser-family precedence remains lexical."
+        "limit": "51 lexical declarations, 20 with a configured IP/signing method and 31 without; naming and documented role remain claims, not authenticated operator or purpose."
       },
       {
         "requirement": "Retain signature-coverage facts",
@@ -1048,10 +1052,10 @@
           "calibration-evaluation.ts"
         ],
         "evidence": [
-          "current-goal-calibration.json",
+          "decision-audit-calibration.json",
           "97-fresh-automated-fetches-and-measurement-gaps.md"
         ],
-        "limit": "Original12automation controls:3committed correct/9abstained, no human labels. Later one current-version automated-browser replay abstains and remains a separate cohort. Selected controls supply no production prevalence or human false-positive rate."
+        "limit": "Fresh evaluator reproduces 3 committed correct/9 abstained among the original 12 automation controls. No current-classifier request replay or human denominator; zero observed errors is not population accuracy."
       },
       {
         "requirement": "Use analytics for readership/editorial decisions",
@@ -1061,35 +1065,53 @@
           "95-article-reach-report.md",
           "98-subscription-funnel-and-reader-signals.md",
           "99-readership-lessons-in-the-retrospective.md",
-          "readership-article-release.json"
+          "readership-article-release.json",
+          "100-readership-delta-and-source-concentration.md",
+          "101-article-specific-source-concentration.md",
+          "readership-profile-ambiguity.json"
         ],
-        "limit": "Source sensitivity and article ranking are measured; authenticated query/page evidence, reader use, R1 attribution and human growth remain missing."
+        "limit": "Source sensitivity and article concentration accepted. Weekly classifier distributions can differ behind identical reports; human growth, authenticated search queries and article usefulness remain unmeasured."
       }
     ],
     "primaryDocsRechecked": [
       {
-        "url": "https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.signed_agent/",
-        "claim": "Field is a known Web Bot Auth intermediary assertion and requires Enterprise Bot Management; not a generic cryptographic oracle."
+        "url": "https://www.sqlite.org/lang_aggfunc.html",
+        "claim": "Distinct aggregate inputs do not preserve weekly profile distribution; native paired reports supply the concrete evidence."
       },
       {
-        "url": "https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties",
-        "claim": "Native request metadata is a provider runtime contract; local replay does not execute the managed detector."
-      },
-      {
-        "url": "https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/",
-        "claim": "Cloudflare integration and verification documentation; no new registered positive or native experiment from reading it."
+        "url": "https://matomo.org/guide/reporting-tools/annotations/",
+        "claim": "Dated annotations provide historical report context; borrowed design idea, not an adopted library or causal attribution."
       }
-    ]
+    ],
+    "checkedAt": "2026-10-30T11:49:13.402327+00:00",
+    "previousPrimaryDocsReview": {
+      "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
+      "sources": [
+        {
+          "url": "https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.signed_agent/",
+          "claim": "Field is a known Web Bot Auth intermediary assertion and requires Enterprise Bot Management; not a generic cryptographic oracle."
+        },
+        {
+          "url": "https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties",
+          "claim": "Native request metadata is a provider runtime contract; local replay does not execute the managed detector."
+        },
+        {
+          "url": "https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/",
+          "claim": "Cloudflare integration and verification documentation; no new registered positive or native experiment from reading it."
+        }
+      ],
+      "scope": "Historical review; not freshly read by Research108."
+    }
   },
   "dependencyAudit": {
     "consecutiveBlockedGoalTurns": 0,
-    "status": "active; measurement-specific external dependencies retained",
-    "condition": "Search/human/native/collection dependencies remain measurement-specific. D1 schema query preflight initially fails7403; fresh metadata and a constant SELECT then allow a newly planned bounded schema change. No cause or credential repair is inferred; writer activation/acceptance remains actionable.",
-    "search": "Existing account selected; Google requires completion using a passkey. No credential/code entered, account setting changed or report viewed. One actionable async request pending.",
-    "human": "Owner explicitly deferred human trials; not reopened.",
-    "provider": "Fresh primary docs still specify Enterprise Bot Management and intermediary classification for signed_agent; last observed Free zone plan remains a dated Research76 observation, not a fresh account-entitlement inspection. No upgrade/enrollment/access expansion authorized or attempted.",
-    "privacy": "Optional raw diagnostic capture stays off pending the previously recorded collection/basis/retention decisions. No new legal compliance verdict.",
-    "otherPending": "Duck.ai terms approval remains pending; no prompt submitted or agreement accepted."
+    "status": "active; independent report improvement remains actionable",
+    "condition": "No fresh external capability check in this audit. Dated failures are not new live blockers. Weekly measurement-history visibility can improve with existing stored fields and local experiments.",
+    "search": "Google-origin observation was auto-review rejected; specific approval remains pending. No retry or bypass.",
+    "human": "Owner explicitly deferred human trials and separate normal owner-browser verification; not reopened.",
+    "provider": "No accepted request-level native managed-verifier positive/relay comparison. Prior entitlement observations remain dated; no upgrade/enrollment/access expansion.",
+    "privacy": "Optional raw diagnostics stay off pending basis/retention/rights/provider decisions; no EU/US compliance verdict.",
+    "otherPending": "Duck.ai terms approval pending; no prompt or agreement submitted."
   },
   "ownerLifecycleRequest": "Keep the goal active",
   "observedGoalLifecycle": "active; objective remains incomplete, human trials deferred. Google-origin observation rejected by automatic approval review; specific authorization pending, no bypass.",
@@ -1142,18 +1164,12 @@
     "newPopulationExports": 0,
     "humanLabels": 0
   },
-  "runtimeUnchangedScope": "Only the reusable cache-policy diagnostic and synthetic fixtures are added. Collector/classifier/verifier, report UI, schema, owner/referral policy, credentials, optional capture and article remain unchanged.",
+  "runtimeUnchangedScope": "Only an offline diagnostic helper and research records change; production classifier, collector, verifier, reports, settings and article remain unchanged in Research108.",
   "productionOperationsThisTurn": {
-    "httpRequests": 0,
-    "sqlAttempts": 2,
-    "meteredStatements": 2,
-    "reportedReads": 794,
-    "reportedWrites": 0,
-    "newPopulationExports": 1,
-    "selectedStoredKinds": "all",
-    "selectedRows": 397,
+    "siteRequests": 0,
+    "d1Statements": 0,
     "humanLabels": 0,
-    "newProofReplays": 0
+    "rawCaptureActivation": false
   },
   "subscriptionResponseCorrelation": {
     "research": "../newsletter-reliability/24-subscription-response-correlation.md",
@@ -1319,5 +1335,27 @@
     "retainedProjectionGroupsForThoseCauses": 1,
     "sourceCausesRecoveredFromHistoricalRecords": false,
     "productionRequests": 0
+  },
+  "vendorCacheEvidence": {
+    "implementation": "103-vendor-cache-policy-provenance.md",
+    "persistence": "104-vendor-cache-production-acceptance.md",
+    "publicReport": "105-public-cache-explanations-and-metadata-compatibility.md",
+    "release": "106-public-cache-explanations-production-acceptance.md",
+    "controlledProjection": "107-controlled-nonzero-production-projection.md",
+    "positiveOrganicPublicBranchAccepted": false,
+    "controlledDirectSqlAccepted": true,
+    "historicalCauseRecovered": false
+  },
+  "decisionAudit": {
+    "research": "108-decision-evidence-and-measurement-history-audit.md",
+    "catalogue": "decision-audit-catalogue.json",
+    "calibration": "decision-audit-calibration.json",
+    "counterexample": "readership-profile-ambiguity.json",
+    "growth": "Latest complete-week Browser events312\u2192691; outside fixed R1 308\u2192303. Classification drift/source authenticity and human traffic remain unmeasured.",
+    "discovery": "Reported hosts and absent/internal partitions exist; search queries/intent/authenticity not accepted.",
+    "editorial": "Fetcher reference is a source-sensitive delivery lead, not search demand or usefulness. Bun follow-up remains a hypothesis.",
+    "identityPurpose": "Covered-key verification, declaration roles, documented methods and native booleans are separate; caller/trigger and R1/R2 operators remain unresolved.",
+    "weeklyMeasurementHistory": "Current report has one global distinct-classifier count. Paired16-row fixtures have identical reports but eight versus four week/profile groups.",
+    "nextDecision": "Expose weekly composition before interpreting changes as growth; choose editorial experiments only with explicit evidence limits."
   }
 }

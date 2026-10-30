@@ -1,0 +1,684 @@
+{
+  "checkedAt": "2026-10-30T11:47:20.004Z",
+  "method": "Static source catalogue coverage, not request counts, feed freshness, vendor authenticity or detection accuracy. Reviewed directory publication and public display approvals are separate from per-client documented methods.",
+  "profiles": {
+    "collection": "2026-10-30.1",
+    "classifier": "2026-10-29.3",
+    "verifier": "2026-10-29.1"
+  },
+  "counts": {
+    "recognizedDeclarations": 51,
+    "ipFeedSources": 16,
+    "declarationsWithConfiguredIpMethod": 17,
+    "documentedSigningOrigins": 4,
+    "declarationsWithDocumentedSigningMethod": 5,
+    "declarationsWithAnyConfiguredPerDeclarationMethod": 20,
+    "declarationsWithoutConfiguredPerDeclarationMethod": 31,
+    "reviewedDirectoryOrigins": 5,
+    "declarationsWithReviewedDirectoryPublisher": 7,
+    "publicDisplayApprovals": 4
+  },
+  "sourceSha256": {
+    "classify.ts": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
+    "readerkind.ts": "4150a6fc0186aed820c0e9fa60e98dbcde1817db4c8b3414ffa1cce3a95bf030",
+    "vendor-ip-sources.ts": "6b122f6e7610ac95edb9f4c9d38a05ab4577fb4c3a2c6a19377943bc6acab7ff",
+    "vendor-signatures.ts": "5ebe59ba79c7dd48032da249fabdf104a5929f897ce1d827d3ea3455bbd88e04",
+    "directory-publication.ts": "c236bad89b31b5afc82b896395fc9ce2a9a89f1ab407a362ac3bc33efcc68b66",
+    "signers.ts": "22bb1ff00ace0b2c59c907037c8252a3011217135506b993cebda3a8ea499fb1",
+    "classification-evidence.ts": "f6716df870cadb5d86953b18ea613eb01e696169966b9223d97de5ab7900e3c1",
+    "client-form.ts": "dc15738e02cacf441630c5874d4b0c9e727776c984faac14cbd9f5baabda595b",
+    "calibration-evaluation.ts": "14cb49966cb6c500f130a9e867b230c439d0177f61a073217b5bc49c9f704fa4",
+    "versions.ts": "984b602f3edb7973f16e77f05dd52d52978504db2c97a0d47294571bda7c9f46"
+  },
+  "rows": [
+    {
+      "name": "AhrefsBot",
+      "declaredRole": "seo-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "ahrefs-crawlers",
+          "documentation": "https://ahrefs.com/robot",
+          "feed": "https://api.ahrefs.com/v3/public/crawler-ip-ranges"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [
+        {
+          "origin": "https://ahrefs.com",
+          "source": "https://ahrefs.com/.well-known/http-message-signatures-directory"
+        }
+      ],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "AhrefsSiteAudit",
+      "declaredRole": "seo-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "ahrefs-crawlers",
+          "documentation": "https://ahrefs.com/robot",
+          "feed": "https://api.ahrefs.com/v3/public/crawler-ip-ranges"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [
+        {
+          "origin": "https://ahrefs.com",
+          "source": "https://ahrefs.com/.well-known/http-message-signatures-directory"
+        }
+      ],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "Amazonbot",
+      "declaredRole": "ai-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "amazonbot",
+          "documentation": "https://developer.amazon.com/amazonbot",
+          "feed": "https://developer.amazon.com/amazonbot/ip-addresses/"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "Amzn-SearchBot",
+      "declaredRole": "ai-search",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "amazon-search",
+          "documentation": "https://developer.amazon.com/amazonbot",
+          "feed": "https://developer.amazon.com/amazonbot/searchbot-ip-addresses/"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "Amzn-User",
+      "declaredRole": "ai-assistant",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "amazon-user",
+          "documentation": "https://developer.amazon.com/amazonbot",
+          "feed": "https://developer.amazon.com/amazonbot/live-ip-addresses/"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "Applebot",
+      "declaredRole": "ai-search",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "applebot",
+          "documentation": "https://support.apple.com/en-us/119829",
+          "feed": "https://search.developer.apple.com/applebot.json"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "Applebot-Extended",
+      "declaredRole": "other-bot",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Baiduspider",
+      "declaredRole": "search-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Bingbot",
+      "declaredRole": "search-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "bingbot",
+          "documentation": "https://blogs.bing.com/webmaster/2022/5/SEO-best-practice-for-subscription-based-and-paywall-content/",
+          "feed": "https://www.bing.com/toolbox/bingbot.json"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "Bytespider",
+      "declaredRole": "ai-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "CCBot",
+      "declaredRole": "ai-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "ChatGPT-User",
+      "declaredRole": "ai-assistant",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "openai-user",
+          "documentation": "https://developers.openai.com/api/docs/bots",
+          "feed": "https://openai.com/chatgpt-user.json"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "Claude-SearchBot",
+      "declaredRole": "ai-search",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Claude-User",
+      "declaredRole": "ai-assistant",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Claude-Web",
+      "declaredRole": "other-bot",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "ClaudeBot",
+      "declaredRole": "ai-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Cohere-AI",
+      "declaredRole": "ai-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Cypress",
+      "declaredRole": "headless-browser",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "DuckAssistBot",
+      "declaredRole": "ai-assistant",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "DuckDuckBot",
+      "declaredRole": "search-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "duckduckbot",
+          "documentation": "https://duckduckgo.com/duckduckgo-help-pages/results/duckduckbot",
+          "feed": "https://duckduckgo.com/duckduckbot.json"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "ExaSearchBot",
+      "declaredRole": "ai-search",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [
+        {
+          "vendor": "Exa",
+          "origin": "https://crawler.exa.ai",
+          "sources": [
+            "https://crawler.exa.ai/",
+            "https://crawler.exa.ai/exauser"
+          ]
+        }
+      ],
+      "reviewedDirectoryPublishers": [
+        {
+          "origin": "https://crawler.exa.ai",
+          "source": "https://crawler.exa.ai/.well-known/http-message-signatures-directory"
+        }
+      ],
+      "methodCoverage": "signing-only"
+    },
+    {
+      "name": "ExaUser",
+      "declaredRole": "ai-assistant",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [
+        {
+          "vendor": "Exa",
+          "origin": "https://crawler.exa.ai",
+          "sources": [
+            "https://crawler.exa.ai/",
+            "https://crawler.exa.ai/exauser"
+          ]
+        }
+      ],
+      "reviewedDirectoryPublishers": [
+        {
+          "origin": "https://crawler.exa.ai",
+          "source": "https://crawler.exa.ai/.well-known/http-message-signatures-directory"
+        }
+      ],
+      "methodCoverage": "signing-only"
+    },
+    {
+      "name": "FacebookBot",
+      "declaredRole": "preview-or-feed",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "GPTBot",
+      "declaredRole": "ai-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "openai-gpt",
+          "documentation": "https://developers.openai.com/api/docs/bots",
+          "feed": "https://openai.com/gptbot.json"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "Google-Agent",
+      "declaredRole": "ai-assistant",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "google-agent",
+          "documentation": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers#google-agent",
+          "feed": "https://developers.google.com/static/crawling/ipranges/user-triggered-agents.json"
+        }
+      ],
+      "documentedSigningMethods": [
+        {
+          "vendor": "Google",
+          "origin": "https://agent.bot.goog",
+          "sources": [
+            "https://developers.google.com/crawling/docs/crawlers-fetchers/web-bot-auth",
+            "https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers#google-agent"
+          ]
+        }
+      ],
+      "reviewedDirectoryPublishers": [
+        {
+          "origin": "https://agent.bot.goog",
+          "source": "https://agent.bot.goog/.well-known/http-message-signatures-directory"
+        }
+      ],
+      "methodCoverage": "ip-and-signing"
+    },
+    {
+      "name": "Google-CloudVertexBot",
+      "declaredRole": "ai-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Google-Extended",
+      "declaredRole": "other-bot",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Google-GeminiNotebook",
+      "declaredRole": "ai-assistant",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "GoogleOther",
+      "declaredRole": "other-bot",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Googlebot",
+      "declaredRole": "search-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "google-common",
+          "documentation": "https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests",
+          "feed": "https://developers.google.com/static/crawling/ipranges/common-crawlers.json"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "HeadlessChrome",
+      "declaredRole": "headless-browser",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Lightpanda",
+      "declaredRole": "headless-browser",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "LinkedInBot",
+      "declaredRole": "preview-or-feed",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Meta-ExternalAds",
+      "declaredRole": "other-bot",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Meta-ExternalAgent",
+      "declaredRole": "ai-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Meta-ExternalFetcher",
+      "declaredRole": "ai-assistant",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Meta-WebIndexer",
+      "declaredRole": "ai-search",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "MistralAI-Index",
+      "declaredRole": "ai-search",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "MistralAI-Training",
+      "declaredRole": "ai-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "MistralAI-User",
+      "declaredRole": "ai-assistant",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "OAI-AdsBot",
+      "declaredRole": "other-bot",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "openai-ads",
+          "documentation": "https://developers.openai.com/api/docs/bots",
+          "feed": "https://openai.com/adsbot.json"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "OAI-SearchBot",
+      "declaredRole": "ai-search",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "openai-search",
+          "documentation": "https://developers.openai.com/api/docs/bots",
+          "feed": "https://openai.com/searchbot.json"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "Perplexity-User",
+      "declaredRole": "ai-assistant",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "perplexity-user",
+          "documentation": "https://docs.perplexity.ai/docs/resources/perplexity-crawlers",
+          "feed": "https://www.perplexity.ai/perplexity-user.json"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "PerplexityBot",
+      "declaredRole": "ai-search",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "perplexity-bot",
+          "documentation": "https://docs.perplexity.ai/docs/resources/perplexity-crawlers",
+          "feed": "https://www.perplexity.ai/perplexitybot.json"
+        }
+      ],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "ip-only"
+    },
+    {
+      "name": "PetalBot",
+      "declaredRole": "ai-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Shap-User",
+      "declaredRole": "ai-assistant",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [
+        {
+          "vendor": "Parallel",
+          "origin": "https://shap-user.parallel.ai",
+          "sources": [
+            "https://parallel.ai/parallel-web-systems-bots"
+          ]
+        }
+      ],
+      "reviewedDirectoryPublishers": [
+        {
+          "origin": "https://shap-user.parallel.ai",
+          "source": "https://shap-user.parallel.ai/.well-known/http-message-signatures-directory"
+        }
+      ],
+      "methodCoverage": "signing-only"
+    },
+    {
+      "name": "ShapBot",
+      "declaredRole": "ai-search",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [
+        {
+          "source": "parallel-shapbot",
+          "documentation": "https://parallel.ai/parallel-web-systems-bots",
+          "feed": "https://docs.parallel.ai/resources/shapbot.json"
+        }
+      ],
+      "documentedSigningMethods": [
+        {
+          "vendor": "Parallel",
+          "origin": "https://shapbot.parallel.ai",
+          "sources": [
+            "https://parallel.ai/parallel-web-systems-bots"
+          ]
+        }
+      ],
+      "reviewedDirectoryPublishers": [
+        {
+          "origin": "https://shapbot.parallel.ai",
+          "source": "https://shapbot.parallel.ai/.well-known/http-message-signatures-directory"
+        }
+      ],
+      "methodCoverage": "ip-and-signing"
+    },
+    {
+      "name": "Slack-ImgProxy",
+      "declaredRole": "preview-or-feed",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Slackbot",
+      "declaredRole": "other-bot",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "Slackbot-LinkExpanding",
+      "declaredRole": "preview-or-feed",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    },
+    {
+      "name": "YandexBot",
+      "declaredRole": "search-crawler",
+      "roleBasis": "declaration-catalogue",
+      "ipMethods": [],
+      "documentedSigningMethods": [],
+      "reviewedDirectoryPublishers": [],
+      "methodCoverage": "no-configured-per-declaration-method"
+    }
+  ],
+  "productionRequests": 0,
+  "d1Statements": 0,
+  "externalRequests": 0,
+  "limits": [
+    "A missing configured method is not proof the vendor publishes no method.",
+    "Method counts concern declarations, not independent vendors, requests or people.",
+    "Reviewed directories and display approvals do not create per-client signing promises.",
+    "Generic key verification can work outside these vendor maps; it does not establish a reviewed operator.",
+    "Documented roles do not establish request trigger, unique action or readership."
+  ]
+}
