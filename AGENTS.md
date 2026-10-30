@@ -2,6 +2,8 @@
 
 Personal engineering publication by Goga Koreli, built with `@nisli/core` and deployed to Cloudflare Workers.
 
+Build expertise in agentic engineering through inspectable work, writing with AI agents, and measured discovery; develop our analytics toward broad site adoption. [Publication and product direction](docs/adr/0019-agentic-engineering-publication-and-analytics-ambition.md) governs this ambition and its evidence standard.
+
 ## Repository essentials
 
 - `packages/blog/` owns the site; `posts/` and `prompts/` live inside that package.
