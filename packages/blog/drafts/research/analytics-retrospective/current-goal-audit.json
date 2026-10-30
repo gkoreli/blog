@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T00:10:49.691093+00:00",
-  "sourceBaseline": "b989e8e9c650f20d5e589f87ff7b160644c1aa1e",
+  "checkedAt": "2026-10-30T00:13:39.431969+00:00",
+  "sourceBaseline": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
   "goalAchieved": false,
-  "previousTurn": "no progress: explanation of existing readership evidence only; revalidated current source and took article revision as next safe action",
-  "scope": "Research99 connects the concise retrospective to measured readership/source concentration and funnel limits; local rendering, source/build/native deploy/CLI allocation and exact served Markdown accepted. Full analytics goal remains open.",
+  "previousTurn": "progress: source b989e8e article revised, checked, pushed and accepted through exact served Markdown; receipt follow-up4bfee76 pushed",
+  "scope": "Revalidated current classifier/evidence/evaluator source and original-goal gates. Local implementation and selected experiments exist; human/population/native-provider conclusions remain unproven. Article work is delivered. No substitute native-app editorial experiment is treated as completion of bot-detection requirements.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,13 +46,13 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Use authenticated Search Console query/page evidence when access is available; otherwise conduct the named bounded native-app workflow investigation as an editorial hypothesis, without asserting reader demand. Human trials remain deferred; native managed-verifier, historical, privacy and readership/use requirements remain open.",
+  "nextBoundedAction": "If Google sign-in completes, inspect page-filtered query/click/impression evidence over the latest complete available28days and prior28days, recording actual endpoints/preliminary flags. Otherwise revalidate the same dependency gates next goal turn; do not replace missing labels/provider evidence with more fixture counts or an unrelated native-app project.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
     "sourceSha256": "f6186a1f16af8114a3318b8125af3c2a04cc34216f0126b7093b2f5a6e5d1aa1",
     "unchanged": false,
-    "freshServedCheck": true,
+    "freshServedCheck": false,
     "publicationReceipt": "readership-article-release.json",
     "servedMatchesCheckedBuild": true,
     "lastServedCheckReceipt": "readership-article-release.json",
@@ -66,7 +66,7 @@
   "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": true,
+  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -763,7 +763,7 @@
     "warmCache": "HIT",
     "populationPrevalenceMeasured": false
   },
-  "ownSiteGetRequests": 1,
+  "ownSiteGetRequests": 0,
   "collectionEligibleRequests": 0,
   "diagnosticSelects": 2,
   "evidenceDelta": {
@@ -808,7 +808,7 @@
     "humanGrowthEstablished": false,
     "sourcePolicyChanged": false,
     "searchQueriesMeasured": false,
-    "searchConsole": "Existing tab rechecked:accounts.google.com account chooser; no authenticated search report inspected.",
+    "searchConsole": "Fresh browser: existing account selected; Google requires passkey user presence. No authenticated query/page report inspected.",
     "subscriberActive": 1,
     "activeCreatedInWindow": 0,
     "activeLatestConfirmedInWindow": 0,
@@ -838,8 +838,8 @@
     "unmeteredCalculations": 1,
     "productionBrowserLayoutMeasured": false
   },
-  "productionStatementsScope": "Research99: one excluded Markdown publication GET; no production SQL",
-  "productionReportedReadsCoverage": "No new production query in Research99; historical receipts remain independently dated.",
+  "productionStatementsScope": "This requirement/dependency audit: no production SQL or own-site request",
+  "productionReportedReadsCoverage": "No new production database operation; historical costs stay in their dated receipts.",
   "productionReadTotal": 0,
   "publicationDateRepair": {
     "receipt": "article-reach-date-checks.json",
@@ -1018,5 +1018,125 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: article materially revised, checked, pushed, deployed and exact served Markdown accepted"
+  "currentTurn": "Fresh requirement/dependency audit; Search Console advanced from signed-out account chooser to user-presence passkey challenge; no authenticated report inspected.",
+  "requirementsAudit": {
+    "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
+    "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
+    "sourceSha256": {
+      "classify.ts": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
+      "readerkind.ts": "4150a6fc0186aed820c0e9fa60e98dbcde1817db4c8b3414ffa1cce3a95bf030",
+      "classification-evidence.ts": "f6716df870cadb5d86953b18ea613eb01e696169966b9223d97de5ab7900e3c1",
+      "signature-evidence.ts": "3b0eae1a23dd89a29676886fe58715ec0b1d6423f2fa755d6aa9e79ad7877f35",
+      "vendor-signatures.ts": "5ebe59ba79c7dd48032da249fabdf104a5929f897ce1d827d3ea3455bbd88e04",
+      "native-bot-evidence.ts": "3577e51bb9c8107427c9609f3c5e08f052a564c1a7dc519ef7692d61c9270fae",
+      "native-bot-comparison.ts": "291eedcb5e03758ab554ab8b2091b81949346346d2a8e87facff16b22fc50a2f",
+      "observation-receipt.ts": "3b78f4efce7161e69cfbb31fc455fcf2b4464d55d634a2eb0d3d46fa38d65beb",
+      "calibration-evaluation.ts": "14cb49966cb6c500f130a9e867b230c439d0177f61a073217b5bc49c9f704fa4",
+      "versions.ts": "1f87b08748a5001fa93ec6c55749b578bad1db9297e72aa9ff077f6eb5dff90e"
+    },
+    "requirements": [
+      {
+        "requirement": "Make unknowns and conflicts explicit",
+        "status": "implemented-with-scoped-evidence",
+        "source": [
+          "classify.ts",
+          "readerkind.ts",
+          "classification-evidence.ts",
+          "native-bot-evidence.ts"
+        ],
+        "evidence": [
+          "90-fetch-metadata-parsing-and-evidence.md",
+          "91-live-metadata-controls-and-redacted-correlation.md",
+          "92-public-parsing-states-and-browser-signals.md"
+        ],
+        "limit": "Current source retains lexical declarations, malformed/missing/unassessed fields, conflicting contexts and unavailable native values. This does not prove population-level human accuracy."
+      },
+      {
+        "requirement": "Tighten name matching",
+        "status": "implemented-with-scoped-evidence",
+        "source": [
+          "classify.ts"
+        ],
+        "evidence": [
+          "97-fresh-automated-fetches-and-measurement-gaps.md"
+        ],
+        "limit": "Exact lexical product matching retains multiple candidates and aliases; UA claims remain spoofable and browser-family precedence remains lexical."
+      },
+      {
+        "requirement": "Retain signature-coverage facts",
+        "status": "implemented-with-historical-gaps",
+        "source": [
+          "signature-evidence.ts",
+          "observation-receipt.ts"
+        ],
+        "evidence": [
+          "75-frozen-signed-cohort-and-export-boundaries.md",
+          "96-fetcher-reference-coverage-correction.md"
+        ],
+        "limit": "Verified selected proofs retain coverage and profiles; older outcomes without retained proofs and wire/capture loss cannot be repaired by a current field."
+      },
+      {
+        "requirement": "Validate vendor claims through documented methods and authoritative implementations",
+        "status": "partially-measured",
+        "source": [
+          "vendor-signatures.ts",
+          "native-bot-comparison.ts"
+        ],
+        "evidence": [
+          "76-native-bot-signals-and-public-diagnostic.md",
+          "77-direct-signed-bots-and-registry-evidence.md",
+          "96-fetcher-reference-coverage-correction.md"
+        ],
+        "limit": "Selected recorded proofs and Node/workerd/independent RFC comparisons exist. Managed provider agreement requires an eligible registered identity and actual request-level native signal; neither is accepted."
+      },
+      {
+        "requirement": "Run labelled experiments measuring errors and unresolved cases",
+        "status": "automation-measured-human-and-population-missing",
+        "source": [
+          "calibration-evaluation.ts"
+        ],
+        "evidence": [
+          "current-goal-calibration.json",
+          "97-fresh-automated-fetches-and-measurement-gaps.md"
+        ],
+        "limit": "Original12automation controls:3committed correct/9abstained, no human labels. Later one current-version automated-browser replay abstains and remains a separate cohort. Selected controls supply no production prevalence or human false-positive rate."
+      },
+      {
+        "requirement": "Use analytics for readership/editorial decisions",
+        "status": "report-and-article-accepted-demand-unproven",
+        "evidence": [
+          "94-reader-growth-and-editorial-decisions.md",
+          "95-article-reach-report.md",
+          "98-subscription-funnel-and-reader-signals.md",
+          "99-readership-lessons-in-the-retrospective.md",
+          "readership-article-release.json"
+        ],
+        "limit": "Source sensitivity and article ranking are measured; authenticated query/page evidence, reader use, R1 attribution and human growth remain missing."
+      }
+    ],
+    "primaryDocsRechecked": [
+      {
+        "url": "https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.signed_agent/",
+        "claim": "Field is a known Web Bot Auth intermediary assertion and requires Enterprise Bot Management; not a generic cryptographic oracle."
+      },
+      {
+        "url": "https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties",
+        "claim": "Native request metadata is a provider runtime contract; local replay does not execute the managed detector."
+      },
+      {
+        "url": "https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/",
+        "claim": "Cloudflare integration and verification documentation; no new registered positive or native experiment from reading it."
+      }
+    ]
+  },
+  "dependencyAudit": {
+    "consecutiveBlockedGoalTurns": 1,
+    "status": "active-first-dependency-check-not-blocked-terminal",
+    "condition": "New decisive measurements require user-presence authentication, deferred human-operated labels, provider eligibility/access, or an explicit collection/privacy decision. Repeating accepted fixtures cannot supply these observations.",
+    "search": "Existing account selected; Google requires completion using a passkey. No credential/code entered, account setting changed or report viewed. One actionable async request pending.",
+    "human": "Owner explicitly deferred human trials; not reopened.",
+    "provider": "Fresh primary docs still specify Enterprise Bot Management and intermediary classification for signed_agent; last observed Free zone plan remains a dated Research76 observation, not a fresh account-entitlement inspection. No upgrade/enrollment/access expansion authorized or attempted.",
+    "privacy": "Optional raw diagnostic capture stays off pending the previously recorded collection/basis/retention decisions. No new legal compliance verdict.",
+    "otherPending": "Duck.ai terms approval remains pending; no prompt submitted or agreement accepted."
+  }
 }
