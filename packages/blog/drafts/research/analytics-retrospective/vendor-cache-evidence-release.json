@@ -1,0 +1,164 @@
+{
+  "checkedAt": "2026-10-30T10:48:54.553Z",
+  "sourceCommit": "2884b39d1a3657074c101c39fd32adbdefc83e3f",
+  "buildId": "f332b2ac-17b8-47b8-9885-25590382afbb",
+  "workerVersion": "819625a9-465f-4550-8ab5-6992f105c484",
+  "allocationPercent": 100,
+  "githubCheckSuccess": true,
+  "exactRequestVersionAndResponseRayJoins": 3,
+  "controlledStoredRows": 2,
+  "independentConsoleReadback": true,
+  "persistenceAccepted": true,
+  "productionCostAcceptance": "unassessed",
+  "acceptedScopes": [
+    "source-build",
+    "allocation",
+    "controlled-persistence",
+    "privacy-disclosure"
+  ],
+  "pendingScopes": [
+    "production-cost",
+    "public-cache-cause-aggregation",
+    "full-public-report-and-cache"
+  ],
+  "exclusionAcceptance": "Stored referrer and unchanged native-tested exclusion policy; no public report fill in this acceptance",
+  "results": [
+    {
+      "stage": "control-1",
+      "exactReturnedReference": true,
+      "receiptProjectionMatch": true,
+      "productionNetworkStateRecognized": true,
+      "localNetworkStateRecognized": true,
+      "referralExcluded": true,
+      "storedOwnerFlag": false,
+      "ownerProfileMark": "not-assessed",
+      "kind": "search-crawler",
+      "collection": "2026-10-30.1",
+      "classifier": "2026-10-29.3",
+      "cache": {
+        "access": "fetched",
+        "policy": {
+          "assessedAt": "2026-10-30T10:41:56.105Z",
+          "lifetimeSource": "expires",
+          "blockers": [
+            "no-cache",
+            "zero-lifetime"
+          ]
+        }
+      },
+      "outcome": "not-listed",
+      "reason": null,
+      "snapshot": {
+        "sha256": "ebe3381f830086e9d8ae871d018e14076a8d8b640f38f3f38b531afe07503b43",
+        "fetchedAt": "2026-10-30T10:41:56.105Z",
+        "validatedAt": "2026-10-30T10:41:56.105Z",
+        "freshUntil": "2026-10-30T10:41:56.105Z",
+        "publisherVersion": "2026-10-29T15:45:53.000000",
+        "prefixCount": 317
+      },
+      "networkBytes": 856,
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable",
+        "categoryStatus": "empty",
+        "categoryValue": "none"
+      }
+    },
+    {
+      "stage": "control-2",
+      "exactReturnedReference": true,
+      "receiptProjectionMatch": true,
+      "productionNetworkStateRecognized": true,
+      "localNetworkStateRecognized": true,
+      "referralExcluded": true,
+      "storedOwnerFlag": false,
+      "ownerProfileMark": "not-assessed",
+      "kind": "search-crawler",
+      "collection": "2026-10-30.1",
+      "classifier": "2026-10-29.3",
+      "cache": {
+        "access": "cooldown",
+        "policy": {
+          "assessedAt": "2026-10-30T10:41:56.105Z",
+          "lifetimeSource": "expires",
+          "blockers": [
+            "no-cache",
+            "zero-lifetime"
+          ]
+        }
+      },
+      "outcome": "not-assessed",
+      "reason": "refresh-cooldown",
+      "snapshot": null,
+      "networkBytes": 614,
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable",
+        "categoryStatus": "empty",
+        "categoryValue": "none"
+      }
+    }
+  ],
+  "transport": "Signed-in native Cloudflare D1 console after Wrangler D1 metadata code 10000; no CLI data SELECT attempted",
+  "sql": {
+    "capabilityStatements": 1,
+    "indexedDataStatements": 1,
+    "returnedRows": 2,
+    "renderedTableBytes": 4828,
+    "rowsRead": null,
+    "rowsWritten": null,
+    "meterStatus": "unavailable in observed console result; never zero",
+    "statementsReadOnly": true,
+    "queryTimeMs": {
+      "capability": 0.44,
+      "data": 5.03
+    },
+    "readReviewThreshold": 1000,
+    "thresholdMet": "unassessed without meter",
+    "localFixtureReads": 61,
+    "localFixtureWrites": 0,
+    "agentSubmissionsEach": 1,
+    "providerAttempts": null
+  },
+  "ownSiteHttpRequests": 3,
+  "collectionEligibleControls": 2,
+  "publicReportFills": 0,
+  "humanLabels": 0,
+  "optionalRawCaptureActivated": false,
+  "newPrivacyDisclosureServed": true,
+  "limits": [
+    "These are controlled curl declarations, not Google or human requests.",
+    "Two UI-displayed nullable scalar fields use the <null> sentinel; original typed API transport is not captured. The two stored JSON evidence strings and reported byte lengths reconcile.",
+    "Cache context describes these checks; it does not recover historical Google headers or prove native-provider detection.",
+    "The console capability result is separate from the failed CLI authorization, whose cause remains unknown.",
+    "Two explicitly submitted SELECTs are observed; provider retries and dashboard background queries/metadata work are unassessed.",
+    "Stored is_owner=0 does not establish absence of an owner_clients mark; that separate lookup is not selected.",
+    "No public cache-cause aggregation or population correctness/growth acceptance."
+  ],
+  "privatePlans": {
+    "controlledHttp": {
+      "manifestSha256": "0866abe7d20a99c57eb08798db3c0d3d6ef8c3b0578141904e409f825ccc9655",
+      "files": 13
+    },
+    "consoleRead": {
+      "files": 8,
+      "manifestSha256": "4459998205c1b21b1211ae9efc211f62be91b7638dc6fd46aa521347bb5dcda8"
+    },
+    "consoleTransport": {
+      "files": 5,
+      "manifestSha256": "ee6a89f3efd23901aa7ec88f93a5dd53b37fddd354bf3c7594ee6e55d27d1e60"
+    }
+  },
+  "privateReleaseArchive": {
+    "files": 73,
+    "manifestSha256": "a696074fa1007ba53ce63bc1b2efad8d27576bf89ed2e008bf67075f41fb392d",
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  },
+  "ownedTailStoppedAndAwaited": true,
+  "ownedTailGroupAbsent": true,
+  "providerTailDeletionIndependentlyConfirmed": false,
+  "consoleTabClosed": true
+}

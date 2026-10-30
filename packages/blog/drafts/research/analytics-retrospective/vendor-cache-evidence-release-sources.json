@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-30T10:49:39.685481+00:00",
+  "sources": [
+    {
+      "url": "https://developers.cloudflare.com/d1/worker-api/return-object/",
+      "claim": "D1Result metadata carries rows_read, rows_written and total_attempts separately from result rows and timing.",
+      "observedBoundary": "The native console table/timing view did not expose these meters; no original typed result metadata was captured.",
+      "code": [
+        "packages/analytics/src/db.ts",
+        "packages/analytics/src/vendor-network-summary.ts"
+      ],
+      "evidence": "vendor-cache-evidence-release.json"
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/platform/pricing/",
+      "claim": "Rows read are scanned rows; returned rows and elapsed time do not determine row-read billing. Index use affects scan work.",
+      "observedBoundary": "Two returned rows are not a two-read production cost; 61 reads is a separate local native fixture result.",
+      "evidence": "vendor-cache-evidence-release.json"
+    }
+  ],
+  "priorPolicySources": "vendor-cache-evidence-sources.json",
+  "authBoundary": "Signed-in browser D1 capability success does not establish repaired Wrangler D1 authorization."
+}
