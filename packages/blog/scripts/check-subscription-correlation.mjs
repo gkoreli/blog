@@ -25,12 +25,14 @@ const mf=new Miniflare({modules:true,script:worker.outputFiles[0].text,compatibi
 const results={};
 try{
  const db=await mf.getD1Database('DB');
- for(const name of ['0001_create_client_errors.sql','0002_add_subscription_error_evidence.sql'])for(const sql of readFileSync(repo+'/packages/client-observability/migrations/'+name,'utf8').split(';').filter(s=>s.trim()))await db.prepare(sql).run();
+ for(const name of ['0001_create_client_errors.sql','0002_add_subscription_error_evidence.sql','0003_add_processing_evidence.sql'])for(const sql of readFileSync(repo+'/packages/client-observability/migrations/'+name,'utf8').split(';').filter(s=>s.trim()))await db.prepare(sql).run();
  for(const variant of plan.variants){
   const dir=output+'/'+variant;mkdirSync(dir+'/observability',{recursive:true,mode:0o700});
   const copy=(relative,target)=>writeFileSync(target,variant==='before'?execFileSync('git',['show',baseline+':'+relative],{cwd:repo}):readFileSync(repo+'/'+relative),{mode:0o600});
   copy('packages/blog/src/client/subscribe.ts',dir+'/subscribe.ts');
-  for(const name of readdirSync(repo+'/packages/client-observability/src'))if(name.endsWith('.ts'))copy('packages/client-observability/src/'+name,dir+'/observability/'+name);
+  const prefix='packages/client-observability/src/';
+  const sourceNames=variant==='before'?execFileSync('git',['ls-tree','-r','--name-only',baseline,'--',prefix],{cwd:repo}).toString().split('\n').filter(name=>name.endsWith('.ts')).map(name=>name.slice(prefix.length)):readdirSync(repo+'/'+prefix).filter(name=>name.endsWith('.ts'));
+  for(const name of sourceNames)copy(prefix+name,dir+'/observability/'+name);
   const bundle=await build({stdin:{contents:'import {initSubscribeForm} from "./subscribe.ts";import {createDefaultClientLogger} from "@gkoreli/client-observability/client";initSubscribeForm({logger:createDefaultClientLogger()});',resolveDir:dir},alias:{'@gkoreli/client-observability/client':dir+'/observability/client.ts'},bundle:true,write:false,format:'iife',platform:'browser',target:'es2024'});
   writeFileSync(dir+'/client.js',bundle.outputFiles[0].text,{mode:0o600});
   const rows=[];

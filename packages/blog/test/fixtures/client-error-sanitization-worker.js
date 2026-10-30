@@ -1,0 +1,25 @@
+import {handleClientError} from './src/server.ts';
+const origin='https://fixture.invalid',secret='fixture-secret-value';
+const url='https://user:'+secret+'@fixture.invalid/main.js?token='+secret+'#'+secret;
+const base={type:'interaction_error',component:'subscribe_form',message:'sanitize_fixture',path:'/owner',occurredAt:'2026-10-30T00:00:00.000Z'};
+export default{async fetch(request,env){
+ const mode=new URL(request.url).pathname.slice(1),payload={...base};
+ if(mode==='source-url')payload.source=url;
+ if(mode==='referrer-url')payload.referrer='https://user:'+secret+'@external.invalid/private?token='+secret;
+ if(mode==='message-url')payload.message='Failed '+url;
+ if(mode==='stack-url')payload.stack='Error\n at f ('+url+')';
+ if(mode==='token-path')payload.path='/api/confirm/'+secret;
+ if(mode==='data-source')payload.source='data:text/javascript,'+secret;
+ if(mode==='file-stack')payload.stack='Error\n at f (file:///Users/'+secret+'/private.js)';
+ if(mode==='long-userinfo')payload.source='https://'+secret+'x'.repeat(220)+'@fixture.invalid/a';
+ if(mode==='component')payload.component=secret+'@example.invalid';
+ if(mode==='invalid-referrer')payload.referrer='data:text/plain,'+secret;
+ if(mode==='network-path')payload.path='//external.invalid/'+secret;
+ if(mode==='free-text-residual')payload.message='Contact reader@example.invalid';
+ payload.admissionProfile='forged-client-profile';payload.processing_evidence={profile:'forged-client-profile'};
+ const before=await env.DB.prepare('SELECT COUNT(*) AS n FROM client_errors').first();
+ const response=await handleClientError(new Request(origin+'/api/client-error',{method:'POST',headers:{origin,'content-type':'application/json'},body:JSON.stringify(payload)}),env);
+ const after=await env.DB.prepare('SELECT COUNT(*) AS n FROM client_errors').first();
+ const row=after.n>before.n?await env.DB.prepare('SELECT message,path,referrer,component,source,stack,processing_evidence FROM client_errors ORDER BY rowid DESC LIMIT 1').first():null;
+ return Response.json({mode,status:response.status,insertedRows:after.n-before.n,syntheticUrlSecretRetained:row!==null&&JSON.stringify(row).includes(secret),freeTextEmailShapeRetained:row?.message.includes('reader@example.invalid')??false,processing:row?.processing_evidence===null?null:row?.processing_evidence?JSON.parse(row.processing_evidence):null,clientProfileForged:row!==null&&JSON.stringify(row).includes('forged-client-profile')});
+}};

@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-30T08:12:58.449599+00:00",
-  "sourceBaseline": "ac7ada652ac83d49678c33cd42fe4eee7abde10c",
+  "checkedAt": "2026-10-30T08:42:41.822675+00:00",
+  "sourceBaseline": "4cefd55ceae96edb000660fab4f626e669917997",
   "goalAchieved": false,
-  "previousTurn": "progress: response-operation evidence, six paired native cases and 156 tests/types/build; exact source/native build/allocation/29,779-byte hosted client accepted",
+  "previousTurn": "progress: Origin/JSON/native route budget,19 paired controls, two local browser readbacks and160 tests/types/build; native source/binding/allocation plus403/415 and one204/readback/cleanup accepted; GitHub in_progress disagreement retained",
   "scope": "Active goal: operation references improve failure investigation; no authenticated report, reader demand, human growth or population calibration follows.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Server-side field sanitization and admission-policy provenance, then per-page/duplicate budgets and bootstrap failures. Keep policy-related diagnostic loss distinct from readership; human trials stay deferred.",
+  "nextBoundedAction": "Publish checked writer after accepted schema, join source/native allocation and verify one owned report processing profile with guarded cleanup. Keep free-text residual and broader readership measurements open.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -970,7 +970,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: Origin/JSON/native route budget,19 paired controls, two local browser readbacks and160 tests/types/build; native source/binding/allocation plus403/415 and one204/readback/cleanup accepted; GitHub in_progress disagreement retained",
+  "currentTurn": "progress: shared structural URL boundary and server processing profiles;13 paired native conditions/four rollout states,165 tests/types/build/two browser controls pass; additive schema accepted after preserved access failure and fresh positive query",
   "requirementsAudit": {
     "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
     "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
@@ -1084,7 +1084,7 @@
   "dependencyAudit": {
     "consecutiveBlockedGoalTurns": 0,
     "status": "active; measurement-specific external dependencies retained",
-    "condition": "Search/human/native/collection dependencies gate their specific measurements. Independent diagnostic correlation/admission/bootstrap/budget engineering remains actionable.",
+    "condition": "Search/human/native/collection dependencies remain measurement-specific. D1 schema query preflight initially fails7403; fresh metadata and a constant SELECT then allow a newly planned bounded schema change. No cause or credential repair is inferred; writer activation/acceptance remains actionable.",
     "search": "Existing account selected; Google requires completion using a passkey. No credential/code entered, account setting changed or report viewed. One actionable async request pending.",
     "human": "Owner explicitly deferred human trials; not reopened.",
     "provider": "Fresh primary docs still specify Enterprise Bot Management and intermediary classification for signed_agent; last observed Free zone plan remains a dated Research76 observation, not a fresh account-entitlement inspection. No upgrade/enrollment/access expansion authorized or attempted.",
@@ -1179,17 +1179,16 @@
       "privateDataManifestSha256": "dcb2e75560909a752457311b0e6678ec219f85125c1468735ea9ffb874214ea5"
     }
   },
-  "runtimeUnchangedScope": "Diagnostic admission and limiter binding change; native browser/reporting helpers adapted. No schema, analytics collection/classification/verifier, subscriber verification/sender, credential or article change.",
+  "runtimeUnchangedScope": "Client error parser/redactor/writer and nullable processing column change. No analytics collector/classifier/verifier, newsletter sender/admission, credential or article change.",
   "productionOperationsThisTurn": {
-    "httpRequests": 3,
-    "sqlStatements": 4,
-    "reportedSqlReads": 10,
-    "reportedCleanupWrites": 1,
-    "ingestionWriteCostReturned": false,
-    "verificationCalls": 0,
-    "providerSends": 0,
-    "humanLabels": 0,
-    "scope": "Two unparseable negative POSTs plus one labelled valid direct diagnostic; exact-owned readback/cleanup only. No browser page visit or reader export."
+    "httpRequests": 0,
+    "sqlAttempts": 5,
+    "meteredStatements": 4,
+    "reportedReads": 48,
+    "reportedWrites": 1,
+    "unmeteredFailedPreflight": 1,
+    "readerRecordsReturned": 0,
+    "humanLabels": 0
   },
   "subscriptionResponseCorrelation": {
     "research": "../newsletter-reliability/24-subscription-response-correlation.md",
@@ -1236,5 +1235,24 @@
     "productionRateExhaustionMeasured": false,
     "productionBrowserDeliveryMeasured": false,
     "githubStatusDisagreement": "native success and100% allocation; associated check stillin_progress/no conclusion"
+  },
+  "diagnosticSanitization": {
+    "research": "../newsletter-reliability/26-url-sanitization-and-processing-provenance.md",
+    "native": "../newsletter-reliability/client-error-sanitization-native.json",
+    "browser": "../newsletter-reliability/client-error-sanitization-browser.json",
+    "schema": "../newsletter-reliability/client-error-processing-schema.json",
+    "checks": "../newsletter-reliability/client-error-sanitization-checks.json",
+    "siteTests": 165,
+    "conditionsPerVersion": 13,
+    "oldUrlMarkerRetained": 11,
+    "newUrlMarkerRetained": 0,
+    "knownFreeTextResidualsPerVersion": 1,
+    "privacyComplianceEstablished": false,
+    "nativeRolloutConditions": 4,
+    "browserControls": 2,
+    "browserProfileMatchedRows": 2,
+    "productionSchemaAccepted": true,
+    "writerActivated": false,
+    "historicalRowsBackfilled": false
   }
 }

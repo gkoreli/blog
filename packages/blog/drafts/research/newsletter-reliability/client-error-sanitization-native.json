@@ -1,0 +1,314 @@
+{
+  "checkedAt": "2026-10-30T08:27:26.566Z",
+  "baseline": "4cefd55ceae96edb000660fab4f626e669917997",
+  "casesPerVersion": 13,
+  "urlMarkerRetainedBefore": 11,
+  "urlMarkerRetainedAfter": 0,
+  "knownFreeTextResidualsPerVersion": 1,
+  "privacyComplianceEstablished": false,
+  "productionRequests": 0,
+  "humanLabels": 0,
+  "rollout": {
+    "oldBefore": 204,
+    "newBefore": 503,
+    "newAfter": 204,
+    "oldAfter": 204,
+    "historicalRowsPreserved": true,
+    "historicalProcessingRemainsNull": true,
+    "legacyWriterStillCompatible": true,
+    "newRowsStamped": 1,
+    "oldRowsUnrecorded": 2
+  },
+  "before": {
+    "workerSha256": "d006cfa7c0329ccf2635842ad58018de634197136a7dc7ccafd5efa1e0eb3258",
+    "rows": [
+      {
+        "mode": "ordinary",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": false,
+        "processing": null,
+        "clientProfileForged": false
+      },
+      {
+        "mode": "source-url",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": true,
+        "freeTextEmailShapeRetained": false,
+        "processing": null,
+        "clientProfileForged": false
+      },
+      {
+        "mode": "referrer-url",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": true,
+        "freeTextEmailShapeRetained": false,
+        "processing": null,
+        "clientProfileForged": false
+      },
+      {
+        "mode": "message-url",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": true,
+        "freeTextEmailShapeRetained": false,
+        "processing": null,
+        "clientProfileForged": false
+      },
+      {
+        "mode": "stack-url",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": true,
+        "freeTextEmailShapeRetained": false,
+        "processing": null,
+        "clientProfileForged": false
+      },
+      {
+        "mode": "token-path",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": true,
+        "freeTextEmailShapeRetained": false,
+        "processing": null,
+        "clientProfileForged": false
+      },
+      {
+        "mode": "data-source",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": true,
+        "freeTextEmailShapeRetained": false,
+        "processing": null,
+        "clientProfileForged": false
+      },
+      {
+        "mode": "file-stack",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": true,
+        "freeTextEmailShapeRetained": false,
+        "processing": null,
+        "clientProfileForged": false
+      },
+      {
+        "mode": "long-userinfo",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": true,
+        "freeTextEmailShapeRetained": false,
+        "processing": null,
+        "clientProfileForged": false
+      },
+      {
+        "mode": "component",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": true,
+        "freeTextEmailShapeRetained": false,
+        "processing": null,
+        "clientProfileForged": false
+      },
+      {
+        "mode": "invalid-referrer",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": true,
+        "freeTextEmailShapeRetained": false,
+        "processing": null,
+        "clientProfileForged": false
+      },
+      {
+        "mode": "network-path",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": true,
+        "freeTextEmailShapeRetained": false,
+        "processing": null,
+        "clientProfileForged": false
+      },
+      {
+        "mode": "free-text-residual",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": true,
+        "processing": null,
+        "clientProfileForged": false
+      }
+    ]
+  },
+  "after": {
+    "workerSha256": "6a450d3058c53caf99f9e6d8e678dff4ca30bcceae9d654fd57297da8101fc85",
+    "rows": [
+      {
+        "mode": "ordinary",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": false,
+        "processing": {
+          "profile": "client-error-processing-v1",
+          "sanitization": "client-error-urls-v1",
+          "admission": "origin-route-budget-v1"
+        },
+        "clientProfileForged": false
+      },
+      {
+        "mode": "source-url",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": false,
+        "processing": {
+          "profile": "client-error-processing-v1",
+          "sanitization": "client-error-urls-v1",
+          "admission": "origin-route-budget-v1"
+        },
+        "clientProfileForged": false
+      },
+      {
+        "mode": "referrer-url",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": false,
+        "processing": {
+          "profile": "client-error-processing-v1",
+          "sanitization": "client-error-urls-v1",
+          "admission": "origin-route-budget-v1"
+        },
+        "clientProfileForged": false
+      },
+      {
+        "mode": "message-url",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": false,
+        "processing": {
+          "profile": "client-error-processing-v1",
+          "sanitization": "client-error-urls-v1",
+          "admission": "origin-route-budget-v1"
+        },
+        "clientProfileForged": false
+      },
+      {
+        "mode": "stack-url",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": false,
+        "processing": {
+          "profile": "client-error-processing-v1",
+          "sanitization": "client-error-urls-v1",
+          "admission": "origin-route-budget-v1"
+        },
+        "clientProfileForged": false
+      },
+      {
+        "mode": "token-path",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": false,
+        "processing": {
+          "profile": "client-error-processing-v1",
+          "sanitization": "client-error-urls-v1",
+          "admission": "origin-route-budget-v1"
+        },
+        "clientProfileForged": false
+      },
+      {
+        "mode": "data-source",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": false,
+        "processing": {
+          "profile": "client-error-processing-v1",
+          "sanitization": "client-error-urls-v1",
+          "admission": "origin-route-budget-v1"
+        },
+        "clientProfileForged": false
+      },
+      {
+        "mode": "file-stack",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": false,
+        "processing": {
+          "profile": "client-error-processing-v1",
+          "sanitization": "client-error-urls-v1",
+          "admission": "origin-route-budget-v1"
+        },
+        "clientProfileForged": false
+      },
+      {
+        "mode": "long-userinfo",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": false,
+        "processing": {
+          "profile": "client-error-processing-v1",
+          "sanitization": "client-error-urls-v1",
+          "admission": "origin-route-budget-v1"
+        },
+        "clientProfileForged": false
+      },
+      {
+        "mode": "component",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": false,
+        "processing": {
+          "profile": "client-error-processing-v1",
+          "sanitization": "client-error-urls-v1",
+          "admission": "origin-route-budget-v1"
+        },
+        "clientProfileForged": false
+      },
+      {
+        "mode": "invalid-referrer",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": false,
+        "processing": {
+          "profile": "client-error-processing-v1",
+          "sanitization": "client-error-urls-v1",
+          "admission": "origin-route-budget-v1"
+        },
+        "clientProfileForged": false
+      },
+      {
+        "mode": "network-path",
+        "status": 400,
+        "insertedRows": 0,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": false,
+        "processing": null,
+        "clientProfileForged": false
+      },
+      {
+        "mode": "free-text-residual",
+        "status": 204,
+        "insertedRows": 1,
+        "syntheticUrlSecretRetained": false,
+        "freeTextEmailShapeRetained": true,
+        "processing": {
+          "profile": "client-error-processing-v1",
+          "sanitization": "client-error-urls-v1",
+          "admission": "origin-route-budget-v1"
+        },
+        "clientProfileForged": false
+      }
+    ]
+  }
+}

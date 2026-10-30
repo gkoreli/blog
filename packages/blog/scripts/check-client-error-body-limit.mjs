@@ -20,14 +20,14 @@ const cases=['ordinary','boundary','oversize','zero-hint','short-hint','malforme
 const outputs={};
 for(const variant of ['before','after']){
  const directory=output+'/'+variant;mkdirSync(directory+'/src',{recursive:true,mode:0o700});
- for(const name of names){const relative='packages/client-observability/src/'+name;writeFileSync(directory+'/src/'+name,variant==='before'?execFileSync('git',['show',baseline+':'+relative],{cwd:repo}):readFileSync(repo+'/'+relative),{mode:0o600});}
+ for(const name of variant==='before'?names:[...names,'sanitization.ts']){const relative='packages/client-observability/src/'+name;writeFileSync(directory+'/src/'+name,variant==='before'?execFileSync('git',['show',baseline+':'+relative],{cwd:repo}):readFileSync(repo+'/'+relative),{mode:0o600});}
  writeFileSync(directory+'/probe.js',readFileSync(repo+'/packages/blog/test/fixtures/client-error-body-worker.js'),{mode:0o600});
  const bundle=await build({entryPoints:[directory+'/probe.js'],bundle:true,write:false,format:'esm',platform:'browser',target:'es2024'});
  const script=bundle.outputFiles[0].text;writeFileSync(directory+'/worker.js',script,{mode:0o600});
  const mf=new Miniflare({modules:true,script,compatibilityDate:'2026-03-06',cf:{},ratelimits:{CLIENT_ERROR_RATE_LIMITER:{simple:{limit:1000,period:60}}},d1Databases:{DB:'body-limit-'+variant}});
  try{
   const db=await mf.getD1Database('DB');
-  for(const name of ['0001_create_client_errors.sql','0002_add_subscription_error_evidence.sql'])for(const statement of readFileSync(repo+'/packages/client-observability/migrations/'+name,'utf8').split(';').filter(part=>part.trim()))await db.prepare(statement).run();
+  for(const name of ['0001_create_client_errors.sql','0002_add_subscription_error_evidence.sql','0003_add_processing_evidence.sql'])for(const statement of readFileSync(repo+'/packages/client-observability/migrations/'+name,'utf8').split(';').filter(part=>part.trim()))await db.prepare(statement).run();
   const rows=[];
   for(const mode of cases){const response=await mf.dispatchFetch('https://fixture.invalid/'+mode);assert.equal(response.status,200);rows.push(await response.json());}
   outputs[variant]={rows,workerSha256:createHash('sha256').update(script).digest('hex')};

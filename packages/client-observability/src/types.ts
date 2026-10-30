@@ -45,6 +45,9 @@ export interface ClientLoggerConfig {
 }
 
 export interface ServerClientErrorEvent extends ClientErrorEvent {
+  /** Set by the HTTP handler, never reconstructed from client payload properties. */
+  admissionProfile?: 'origin-route-budget-v1';
+  requestOrigin?: string;
   id: string;
   ray: string | null;
   country: string | null;

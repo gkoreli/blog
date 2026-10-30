@@ -30,7 +30,7 @@ const mf=new Miniflare({modules:true,script:worker.outputFiles[0].text,compatibi
 try{
  const db=await mf.getD1Database('DB');
  const{readFileSync}=await import('node:fs');
- for(const n of ['0001_create_client_errors.sql','0002_add_subscription_error_evidence.sql'])for(const sql of readFileSync(repo+'/packages/client-observability/migrations/'+n,'utf8').split(';').filter(x=>x.trim()))await db.prepare(sql).run();
+ for(const n of ['0001_create_client_errors.sql','0002_add_subscription_error_evidence.sql','0003_add_processing_evidence.sql'])for(const sql of readFileSync(repo+'/packages/client-observability/migrations/'+n,'utf8').split(';').filter(x=>x.trim()))await db.prepare(sql).run();
  const url=await mf.ready;
  const plan={fixtureOnly:true,url:url.origin,buildId,metadataSynthetic:true,operator:'agent-browser',maximumClicks:1,expectedRows:1,allowedMessages:['client_build_fixture','Uncaught Error: client_build_fixture'],clientSha256:createHash('sha256').update(client).digest('hex'),productionCalls:0,humanLabels:0};
  writeFileSync(output+'/plan.json',JSON.stringify(plan,null,2)+'\n',{mode:0o600});console.log(JSON.stringify(plan));

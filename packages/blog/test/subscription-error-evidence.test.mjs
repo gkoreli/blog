@@ -16,7 +16,7 @@ function fixture(t){
   const migration=name=>sqlite.exec(readFileSync(new URL('../../client-observability/migrations/'+name,import.meta.url),'utf8'));
   migration('0001_create_client_errors.sql');
   const DB={prepare(sql){return{bind(...values){return{async run(){const result=sqlite.prepare(sql).run(...values);return{success:true,meta:{changes:Number(result.changes)}};}};}};}};
-  return{sqlite,DB,migrate:()=>migration('0002_add_subscription_error_evidence.sql')};
+  return{sqlite,DB,migrate:()=>{migration('0002_add_subscription_error_evidence.sql');migration('0003_add_processing_evidence.sql')}};
 }
 
 function serverEvent(payload,id='fixture-event'){
@@ -72,7 +72,8 @@ test('additive migration preserves legacy rows and new writes keep occurrence se
   const before=h.sqlite.prepare("SELECT * FROM client_errors WHERE id='legacy'").get();
   h.migrate();
   const after=h.sqlite.prepare("SELECT * FROM client_errors WHERE id='legacy'").get();
-  const{occurred_at,subscription_evidence,...oldFields}=after;
+  const{occurred_at,subscription_evidence,processing_evidence,...oldFields}=after;
+  assert.equal(processing_evidence,null);
   assert.equal(occurred_at,null);assert.equal(subscription_evidence,null);assert.deepEqual(oldFields,{...before});
   await recordClientError(h.DB,serverEvent({...base,subscriptionEvidence:bounded}));
   const row=h.sqlite.prepare("SELECT occurred_at,created_at,subscription_evidence FROM client_errors WHERE id='fixture-event'").get();

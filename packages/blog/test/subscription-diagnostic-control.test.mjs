@@ -6,7 +6,7 @@ import {subscriptionDiagnosticControl,validateControlReadback,validateControlCle
 
 test('diagnostic control cleanup needs one exact owned marker and refuses ambiguous or adjacent rows',t=>{
  const db=new DatabaseSync(':memory:');t.after(()=>db.close());
- for(const name of ['0001_create_client_errors.sql','0002_add_subscription_error_evidence.sql'])db.exec(readFileSync(new URL('../../client-observability/migrations/'+name,import.meta.url),'utf8'));
+ for(const name of ['0001_create_client_errors.sql','0002_add_subscription_error_evidence.sql','0003_add_processing_evidence.sql'])db.exec(readFileSync(new URL('../../client-observability/migrations/'+name,import.meta.url),'utf8'));
  const control=subscriptionDiagnosticControl('a'.repeat(32),'2026-10-29T12:00:00.000Z');
  const read=()=>db.prepare(control.readSql).all().map(row=>({...row}));
  const cleanup=()=>db.prepare(control.cleanupSql).all().map(row=>({...row}));

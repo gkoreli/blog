@@ -1,13 +1,11 @@
 import type { ClientErrorEvent, ClientErrorType } from './types.js';
 import { parseSubscriptionErrorEvidence } from './subscription-evidence.js';
+import { sanitizeClientError } from './sanitization.js';
 
-const TYPES = new Set<ClientErrorType>(['window_error', 'unhandled_rejection', 'interaction_error']);
-const MAX_MESSAGE = 500;
-const MAX_PATH = 200;
-const MAX_REFERRER = 200;
+// Do not truncate a URL into a different parseable authority before scrubbing it.
+// HTTP ingestion already bounds the whole body; direct/browser callers get the same field cap.
+const MAX_INPUT = 8 * 1024;
 const MAX_COMPONENT = 80;
-const MAX_SOURCE = 200;
-const MAX_STACK = 2_000;
 const MAX_UA = 512;
 const MAX_BUILD_ID = 80;
 
@@ -22,6 +20,10 @@ function stringField(value: unknown, max: number): string | undefined {
   if (typeof value !== 'string') return undefined;
   const trimmed = value.trim().slice(0, max);
   return trimmed || undefined;
+}
+
+function rawField(value: unknown): string | undefined {
+  return typeof value === 'string' && value.length <= MAX_INPUT ? value.trim() || undefined : undefined;
 }
 
 function numberField(value: unknown): number | undefined {
@@ -40,33 +42,33 @@ function dateField(value: unknown): string | undefined {
   return Number.isFinite(timestamp) ? new Date(timestamp).toISOString() : undefined;
 }
 
-export function parseClientErrorPayload(raw: unknown): ClientErrorEvent | null {
+export function parseClientErrorPayload(raw: unknown, origin?: string): ClientErrorEvent | null {
   if (typeof raw !== 'object' || raw === null) return null;
   const type = 'type' in raw ? errorType(raw.type) : null;
   if (!type) return null;
 
-  const message = 'message' in raw ? stringField(raw.message, MAX_MESSAGE) : undefined;
-  const path = 'path' in raw ? stringField(raw.path, MAX_PATH) : undefined;
+  const message = 'message' in raw ? rawField(raw.message) : undefined;
+  const path = 'path' in raw ? rawField(raw.path) : undefined;
   const occurredAt = 'occurredAt' in raw ? dateField(raw.occurredAt) : undefined;
   if (!message || !path || !path.startsWith('/') || !occurredAt) return null;
   const component = 'component' in raw ? stringField(raw.component, MAX_COMPONENT) : undefined;
 
-  return {
+  return sanitizeClientError({
     type,
     message,
-    path: path.split(/[?#]/)[0] ?? path,
+    path,
     occurredAt,
-    referrer: 'referrer' in raw ? stringField(raw.referrer, MAX_REFERRER) : undefined,
+    referrer: 'referrer' in raw ? rawField(raw.referrer) : undefined,
     component,
     status: 'status' in raw ? statusField(raw.status) : undefined,
-    source: 'source' in raw ? stringField(raw.source, MAX_SOURCE) : undefined,
+    source: 'source' in raw ? rawField(raw.source) : undefined,
     line: 'line' in raw ? numberField(raw.line) : undefined,
     column: 'column' in raw ? numberField(raw.column) : undefined,
-    stack: 'stack' in raw ? stringField(raw.stack, MAX_STACK) : undefined,
+    stack: 'stack' in raw ? rawField(raw.stack) : undefined,
     userAgent: 'userAgent' in raw ? stringField(raw.userAgent, MAX_UA) : undefined,
     buildId: 'buildId' in raw ? stringField(raw.buildId, MAX_BUILD_ID) : undefined,
     subscriptionEvidence: type === 'interaction_error' && component === 'subscribe_form'
       ? parseSubscriptionErrorEvidence('subscriptionEvidence' in raw ? raw.subscriptionEvidence : undefined)
       : undefined,
-  };
+  }, origin);
 }

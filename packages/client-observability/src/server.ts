@@ -1,6 +1,7 @@
 import { recordClientError, type ClientObservabilityEnv } from './db.js';
 import { parseClientErrorPayload } from './schema.js';
 import type { ServerClientErrorEvent } from './types.js';
+import { ADMISSION_PROFILE } from './sanitization.js';
 
 export { purgeOldClientErrors } from './db.js';
 export type { ClientObservabilityEnv } from './db.js';
@@ -62,6 +63,8 @@ function enrich(request: Request, event: ReturnType<typeof parseClientErrorPaylo
   const cf = request.cf;
   return {
     ...event,
+    admissionProfile: ADMISSION_PROFILE,
+    requestOrigin: new URL(request.url).origin,
     id: randomId(),
     ray: request.headers.get('cf-ray'),
     country: typeof cf?.country === 'string' ? cf.country : null,
@@ -99,7 +102,7 @@ export async function handleClientError(
   const body = await boundedJson(request);
   if (body.status === 'too-large') return emptyResponse(413);
   if (body.status === 'invalid') return emptyResponse(400);
-  const event = enrich(request, parseClientErrorPayload(body.payload));
+  const event = enrich(request, parseClientErrorPayload(body.payload, origin));
   if (!event) return emptyResponse(400);
 
   console.warn('[client:error]', {

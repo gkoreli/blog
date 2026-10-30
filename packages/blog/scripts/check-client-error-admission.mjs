@@ -22,7 +22,7 @@ writeFileSync(output+'/plan.json',JSON.stringify(plan,null,2)+'\n',{mode:0o600,f
 const variants={};
 for(const variant of plan.variants){
  const dir=output+'/'+variant;mkdirSync(dir+'/src',{recursive:true,mode:0o700});
- for(const name of ['server.ts','db.ts','schema.ts','types.ts','subscription-evidence.ts']){
+ for(const name of ['server.ts','db.ts','schema.ts','types.ts','subscription-evidence.ts',...(variant==='after'?['sanitization.ts']:[])]){
   const relative='packages/client-observability/src/'+name;
   writeFileSync(dir+'/src/'+name,variant==='before'?execFileSync('git',['show',baseline+':'+relative],{cwd:repo}):readFileSync(repo+'/'+relative),{mode:0o600});
  }
@@ -32,7 +32,7 @@ for(const variant of plan.variants){
  const mf=new Miniflare({modules:true,script,compatibilityDate:'2026-03-06',cf:{},d1Databases:{DB:'admission-'+variant},ratelimits:{CLIENT_ERROR_RATE_LIMITER:{simple:{limit:1000,period:60}},BUDGET_CONTROL:{simple:{limit:3,period:60}}}});
  try{
   const db=await mf.getD1Database('DB');
-  for(const name of ['0001_create_client_errors.sql','0002_add_subscription_error_evidence.sql'])for(const sql of readFileSync(repo+'/packages/client-observability/migrations/'+name,'utf8').split(';').filter(s=>s.trim()))await db.prepare(sql).run();
+  for(const name of ['0001_create_client_errors.sql','0002_add_subscription_error_evidence.sql','0003_add_processing_evidence.sql'])for(const sql of readFileSync(repo+'/packages/client-observability/migrations/'+name,'utf8').split(';').filter(s=>s.trim()))await db.prepare(sql).run();
   const rows=[];
   for(const mode of cases){const response=await mf.dispatchFetch('https://fixture.invalid/'+mode);assert.equal(response.status,200);const row=await response.json();rows.push(row);writeFileSync(dir+'/rows.json',JSON.stringify(rows,null,2)+'\n',{mode:0o600});}
   for(const row of rows){

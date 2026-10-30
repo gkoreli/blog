@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-10-30T08:37:48.876042+00:00",
+  "applied": true,
+  "priorPreflightAccepted": false,
+  "freshConstantQueryConfirmed": true,
+  "recoveryCauseKnown": false,
+  "beforeColumnCount": 20,
+  "afterColumnCount": 21,
+  "newColumn": {
+    "cid": 20,
+    "name": "processing_evidence",
+    "type": "TEXT",
+    "notnull": 0,
+    "dflt_value": null,
+    "pk": 0
+  },
+  "priorColumnMetadataPreserved": true,
+  "backfillExecuted": false,
+  "productionSqlStatements": 3,
+  "productionHttpRequests": 0,
+  "meters": [
+    {
+      "stage": "schema2-preflight",
+      "rowsRead": 0,
+      "rowsWritten": 0,
+      "changes": 0
+    },
+    {
+      "stage": "schema2-add",
+      "rowsRead": 48,
+      "rowsWritten": 1,
+      "changes": 0
+    },
+    {
+      "stage": "schema2-postflight",
+      "rowsRead": 0,
+      "rowsWritten": 0,
+      "changes": 0
+    }
+  ],
+  "privatePlanManifestSha256": "3e86c1f8e729bed234306135d6ffcfc7fa57f888e7d7ee11036876b84e62d47f",
+  "dataRowsInspected": false,
+  "newWriterActivated": false,
+  "initialPreflightError": 7403,
+  "productionSqlAttemptsIncludingFailedAndAccessProbe": 5,
+  "meteredStatementsIncludingAccessProbe": 4,
+  "reportedSqlReadsIncludingAccessProbe": 48,
+  "reportedSqlWritesIncludingAccessProbe": 1,
+  "initialFailureMeterReturned": false,
+  "accessProbeManifestSha256": "c007e4a7e4b5259989e1910ad289003974e6c7eb34344022e8fbf9939b2febec"
+}
