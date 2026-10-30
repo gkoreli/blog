@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T12:41:52.131065+00:00",
+  "checkedAt": "2026-10-30T12:49:05.302715+00:00",
   "sourceBaseline": "9d64a67d19c9b0534b5ff0450cd1a07a07ea7408",
   "goalAchieved": false,
-  "previousTurn": "progress: Research110 accepts live weekly history, ordinary cache reuse and returned meter.",
-  "scope": "Research111 concise article and exact direct-Markdown publication accepted; no new population or human labels.",
+  "previousTurn": "progress: Research111 published and byte-verified the concise article.",
+  "scope": "Research112 reproduces native false/null report ambiguity and implements independently reconciled per-field denominators.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Request-level native-verifier positive/control comparison when an eligible original and accepted provenance/access are available. Human trials remain deferred; preserve pending Search Console/privacy approvals and do not repeat broad scans or accepted article checks.",
+  "nextBoundedAction": "Deliver checked native-boolean denominator change; accept exact source/build/allocation and one narrowly filtered ordinary API/cache/assets cohort. No native oracle, entitlement or human trial is supplied by this report change.",
   "article": {
     "bodyWhitespaceWords": 1379,
     "prompts": 32,
@@ -1408,5 +1408,17 @@
     "release": "weekly-history-article-release.json",
     "sourceCommit": "9d64a67d19c9b0534b5ff0450cd1a07a07ea7408",
     "workerVersion": "518da772-b771-4c66-b86a-bfde6d65f452"
+  },
+  "nativeBooleanAvailability": {
+    "research": "112-native-booleans-need-their-own-denominators.md",
+    "native": "native-boolean-availability-native.json",
+    "checks": "native-boolean-availability-checks.json",
+    "localAccepted": true,
+    "hostedActivationAccepted": false,
+    "livePublicAccepted": false,
+    "reportVersion": "2026-10-30.3",
+    "counterexampleBaselineAllFieldsEqual": true,
+    "managedNativeOracleMeasured": false,
+    "humanLabels": 0
   }
 }

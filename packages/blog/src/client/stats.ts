@@ -738,9 +738,13 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     { label: 'Native boolean fields unavailable', views: verification.nativeUnavailableViews },
     { label: 'Native boolean record not recorded', views: verification.nativeNotRecordedViews },
     { label: 'Native boolean record unrecognized', views: verification.nativeUnrecognizedViews },
-    { label: 'Native boolean fields available', views: verification.nativeAvailableViews },
+    { label: 'At least one stored native boolean available', views: verification.nativeAvailableViews },
+    { label: 'Stored native verified-bot boolean available', views: verification.nativeVerifiedBotAvailableViews },
     { label: 'Native verified-bot result true', views: verification.nativeVerifiedBotViews },
+    { label: 'Native verified-bot result false', views: verification.nativeVerifiedBotAvailableViews - verification.nativeVerifiedBotViews },
+    { label: 'Stored native signed-agent boolean available', views: verification.nativeSignedAgentAvailableViews },
     { label: 'Native signed-agent result true', views: verification.nativeSignedAgentViews },
+    { label: 'Native signed-agent result false', views: verification.nativeSignedAgentAvailableViews - verification.nativeSignedAgentViews },
     { label: 'Local verified; native verified-bot false', views: verification.localVerifiedNativeNotVerifiedViews },
   ], null);
   replaceSectionRows('stats-verification-outcomes', [

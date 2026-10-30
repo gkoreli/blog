@@ -1,0 +1,190 @@
+{
+  "checkedAt": "2026-10-30T12:45:25.137Z",
+  "baseline": "31abaf4",
+  "method": "Actual workerd/D1 synthetic stored records; no provider verdict or cryptographic comparison.",
+  "controls": [
+    {
+      "verifiedBot": true,
+      "signedAgent": true,
+      "availableVerified": 1,
+      "availableSigned": 1
+    },
+    {
+      "verifiedBot": true,
+      "signedAgent": false,
+      "availableVerified": 1,
+      "availableSigned": 1
+    },
+    {
+      "verifiedBot": true,
+      "signedAgent": null,
+      "availableVerified": 1,
+      "availableSigned": 0
+    },
+    {
+      "verifiedBot": false,
+      "signedAgent": true,
+      "availableVerified": 1,
+      "availableSigned": 1
+    },
+    {
+      "verifiedBot": false,
+      "signedAgent": false,
+      "availableVerified": 1,
+      "availableSigned": 1
+    },
+    {
+      "verifiedBot": false,
+      "signedAgent": null,
+      "availableVerified": 1,
+      "availableSigned": 0
+    },
+    {
+      "verifiedBot": null,
+      "signedAgent": true,
+      "availableVerified": 0,
+      "availableSigned": 1
+    },
+    {
+      "verifiedBot": null,
+      "signedAgent": false,
+      "availableVerified": 0,
+      "availableSigned": 1
+    },
+    {
+      "verifiedBot": null,
+      "signedAgent": null,
+      "availableVerified": 0,
+      "availableSigned": 0
+    }
+  ],
+  "counterexample": {
+    "baselineAllFieldsEqual": true,
+    "candidateSeparatesFalseAndNull": true
+  },
+  "costs": [
+    {
+      "label": "verified:true/signed:true",
+      "beforeReads": 4834,
+      "afterReads": 4834,
+      "writes": 0,
+      "commonOutputEqual": true,
+      "sqlBytes": 77032,
+      "parameters": 7
+    },
+    {
+      "label": "verified:true/signed:false",
+      "beforeReads": 4834,
+      "afterReads": 4834,
+      "writes": 0,
+      "commonOutputEqual": true,
+      "sqlBytes": 77032,
+      "parameters": 7
+    },
+    {
+      "label": "verified:true/signed:null",
+      "beforeReads": 4834,
+      "afterReads": 4834,
+      "writes": 0,
+      "commonOutputEqual": true,
+      "sqlBytes": 77032,
+      "parameters": 7
+    },
+    {
+      "label": "verified:false/signed:true",
+      "beforeReads": 4834,
+      "afterReads": 4834,
+      "writes": 0,
+      "commonOutputEqual": true,
+      "sqlBytes": 77032,
+      "parameters": 7
+    },
+    {
+      "label": "verified:false/signed:false",
+      "beforeReads": 4834,
+      "afterReads": 4834,
+      "writes": 0,
+      "commonOutputEqual": true,
+      "sqlBytes": 77032,
+      "parameters": 7
+    },
+    {
+      "label": "verified:false/signed:null",
+      "beforeReads": 4834,
+      "afterReads": 4834,
+      "writes": 0,
+      "commonOutputEqual": true,
+      "sqlBytes": 77032,
+      "parameters": 7
+    },
+    {
+      "label": "verified:null/signed:true",
+      "beforeReads": 4834,
+      "afterReads": 4834,
+      "writes": 0,
+      "commonOutputEqual": true,
+      "sqlBytes": 77032,
+      "parameters": 7
+    },
+    {
+      "label": "verified:null/signed:false",
+      "beforeReads": 4834,
+      "afterReads": 4834,
+      "writes": 0,
+      "commonOutputEqual": true,
+      "sqlBytes": 77032,
+      "parameters": 7
+    },
+    {
+      "label": "verified:null/signed:null",
+      "beforeReads": 4834,
+      "afterReads": 4834,
+      "writes": 0,
+      "commonOutputEqual": true,
+      "sqlBytes": 77032,
+      "parameters": 7
+    },
+    {
+      "label": "mixed-512",
+      "beforeReads": 33061,
+      "afterReads": 33061,
+      "writes": 0,
+      "commonOutputEqual": true,
+      "sqlBytes": 77032,
+      "parameters": 7
+    },
+    {
+      "label": "history-512",
+      "beforeReads": 29860,
+      "afterReads": 29860,
+      "writes": 0,
+      "commonOutputEqual": true,
+      "sqlBytes": 77032,
+      "parameters": 7
+    },
+    {
+      "label": "empty-path",
+      "beforeReads": 102,
+      "afterReads": 102,
+      "writes": 0,
+      "commonOutputEqual": true,
+      "sqlBytes": 77032,
+      "parameters": 7
+    },
+    {
+      "label": "all-time",
+      "beforeReads": 30375,
+      "afterReads": 30375,
+      "writes": 0,
+      "commonOutputEqual": true,
+      "sqlBytes": 77403,
+      "parameters": 7
+    }
+  ],
+  "verificationFields": 46,
+  "unionMeaning": "At least one boolean; each field denominator includes only its explicit true/false in the existing recognized envelope.",
+  "productionRequests": 0,
+  "productionSqlStatements": 0,
+  "humanLabels": 0,
+  "scriptSha256": "f4b5e11178c35095b69fd460a2b6463cc5f7d9d1a9701b80177f0eddced61bc2"
+}

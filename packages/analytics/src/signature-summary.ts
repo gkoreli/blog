@@ -72,8 +72,10 @@ export function consistentSignatureSummary(v: VerificationSummary, total: number
     && v.selectionRecordedViews + v.selectionNotRecordedVerifiedViews + v.selectionUnrecognizedVerifiedViews === v.localVerifiedViews
     && v.localInvalidViews + v.localUnsupportedViews + v.localUnavailableViews + v.localPolicyRejectedViews + v.localNotApplicableViews + v.localIndeterminateViews + v.unverifiedOutcomeNotRecordedViews === v.localUnverifiedViews
     && v.nativeAvailableViews + v.nativeUnavailableViews + v.nativeNotRecordedViews + v.nativeUnrecognizedViews === total
-    && v.nativeVerifiedBotViews <= v.nativeAvailableViews && v.nativeSignedAgentViews <= v.nativeAvailableViews
-    && v.localVerifiedNativeNotVerifiedViews <= Math.min(v.nativeAvailableViews,v.localVerifiedViews)
+    && v.nativeVerifiedBotViews <= v.nativeVerifiedBotAvailableViews && v.nativeSignedAgentViews <= v.nativeSignedAgentAvailableViews
+    && Math.max(v.nativeVerifiedBotAvailableViews,v.nativeSignedAgentAvailableViews) <= v.nativeAvailableViews
+    && v.nativeAvailableViews <= v.nativeVerifiedBotAvailableViews + v.nativeSignedAgentAvailableViews
+    && v.localVerifiedNativeNotVerifiedViews <= Math.min(v.nativeVerifiedBotAvailableViews - v.nativeVerifiedBotViews,v.localVerifiedViews)
     && v.vendorCheckRecognizedViews + v.vendorCheckUnrecognizedViews + v.vendorCheckNotRecordedViews === total
     && v.vendorDocumentedViews === v.vendorMatchingOriginViews + v.vendorDifferentOriginViews + v.vendorOriginConflictViews + v.vendorNotVerifiedViews
     && v.vendorDocumentedViews <= v.vendorCheckRecognizedViews && v.vendorUnmappedDeclarationViews <= v.vendorCheckRecognizedViews

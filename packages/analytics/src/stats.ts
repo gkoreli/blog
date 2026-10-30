@@ -542,6 +542,8 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
             methodBoundViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.method') = 'true')",
             authorityOnlyViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.authority') = 'true' AND json_type(signature_evidence, '$.coverage.covered.targetUri') = 'false' AND json_type(signature_evidence, '$.coverage.covered.path') = 'false' AND json_type(signature_evidence, '$.coverage.covered.method') = 'false' AND json_type(signature_evidence, '$.coverage.covered.query') = 'false')",
             nativeAvailableViews: "SUM(native_state = 'available')",
+            nativeVerifiedBotAvailableViews: "SUM(native_state = 'available' AND json_type(signature_evidence, '$.native.verifiedBot') IN ('true','false'))",
+            nativeSignedAgentAvailableViews: "SUM(native_state = 'available' AND json_type(signature_evidence, '$.native.signedAgent') IN ('true','false'))",
             nativeUnavailableViews: "SUM(native_state = 'unavailable')",
             nativeNotRecordedViews: "SUM(native_state = 'not-recorded')",
             nativeUnrecognizedViews: "SUM(native_state = 'unrecognized')",
@@ -638,7 +640,10 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     testVerdictViews: summaryNumberField(verificationRow, 'testVerdictViews'),
     selectionUnrecognizedVerifiedViews: summaryNumberField(verificationRow, 'selectionUnrecognizedVerifiedViews'), selectionRecordedViews: summaryNumberField(verificationRow, 'selectionRecordedViews'), selectionNotRecordedVerifiedViews: summaryNumberField(verificationRow, 'selectionNotRecordedVerifiedViews'), multipleTaggedCandidateViews: summaryNumberField(verificationRow, 'multipleTaggedCandidateViews'), unassessedCandidateViews: summaryNumberField(verificationRow, 'unassessedCandidateViews'),
     coverageRecordedViews: summaryNumberField(verificationRow, 'coverageRecordedViews'), userAgentBoundViews: summaryNumberField(verificationRow, 'userAgentBoundViews'), resourceBoundViews: summaryNumberField(verificationRow, 'resourceBoundViews'), methodBoundViews: summaryNumberField(verificationRow, 'methodBoundViews'), authorityOnlyViews: summaryNumberField(verificationRow, 'authorityOnlyViews'),
-    nativeAvailableViews: summaryNumberField(verificationRow, 'nativeAvailableViews'), nativeVerifiedBotViews: summaryNumberField(verificationRow, 'nativeVerifiedBotViews'), nativeSignedAgentViews: summaryNumberField(verificationRow, 'nativeSignedAgentViews'), localVerifiedNativeNotVerifiedViews: summaryNumberField(verificationRow, 'localVerifiedNativeNotVerifiedViews'),
+    nativeAvailableViews: summaryNumberField(verificationRow, 'nativeAvailableViews'),
+    nativeVerifiedBotAvailableViews: summaryNumberField(verificationRow, 'nativeVerifiedBotAvailableViews'),
+    nativeSignedAgentAvailableViews: summaryNumberField(verificationRow, 'nativeSignedAgentAvailableViews'),
+    nativeVerifiedBotViews: summaryNumberField(verificationRow, 'nativeVerifiedBotViews'), nativeSignedAgentViews: summaryNumberField(verificationRow, 'nativeSignedAgentViews'), localVerifiedNativeNotVerifiedViews: summaryNumberField(verificationRow, 'localVerifiedNativeNotVerifiedViews'),
   };
   const signatureRows = kindSignatureRows(requiredSection(sections, 'kind-signature'), numberField(totalsRow, 'views'));
   if (!consistentSignatureSummary(verification, numberField(totalsRow, 'views'), signatureRows)) return malformedReport();

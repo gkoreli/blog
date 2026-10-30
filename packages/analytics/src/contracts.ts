@@ -131,6 +131,8 @@ export interface VerificationSummary {
   methodBoundViews: number;
   authorityOnlyViews: number;
   nativeAvailableViews: number;
+  nativeVerifiedBotAvailableViews: number;
+  nativeSignedAgentAvailableViews: number;
   nativeVerifiedBotViews: number;
   nativeSignedAgentViews: number;
   localVerifiedNativeNotVerifiedViews: number;
