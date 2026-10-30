@@ -1,10 +1,10 @@
 ---
 title: "Building Blog Analytics: What the Numbers Can Prove"
 seoTitle: "Building Blog Analytics with Cloudflare Workers and D1"
-alternativeHeadline: "What a misleading traffic spike taught me about page counts, bot identity, and the cost of trustworthy analytics"
+alternativeHeadline: "What a misleading traffic spike taught me about readership, signed crawlers, and measurement failures"
 date: "2026-10-25"
-lastModified: "2026-10-29"
-description: "Cloudflare Workers and D1 analytics lessons: investigate misleading traffic growth, separate signed crawlers from assistants, and preserve evidence behind the counts."
+lastModified: "2026-10-30"
+description: "Cloudflare Workers and D1 analytics lessons: investigate misleading growth, inspect signed crawlers, and choose article experiments without mistaking requests for readers."
 section: engineering
 tags: [analytics, cloudflare-workers, d1, bots, observability]
 series:
@@ -15,13 +15,13 @@ series:
 
 # Building Blog Analytics: What the Numbers Can Prove
 
-My blog’s Browser traffic more than doubled between two complete weeks. Yet one unexplained referrer supplied more than half the later week’s events. The totals added up; the audience-growth story did not follow.
+My blog’s Browser traffic doubled in a week, but I still couldn’t answer the useful questions: who reads these articles, are they finding them useful, and what should I write next? One unexplained referrer supplied most of the increase. The counter worked; the growth story needed scrutiny.
 
-Readership analytics starts with three decisions:
+Building the analytics on Cloudflare Workers and D1 taught me three distinctions:
 
-- What event deserves to be counted?
-- What does a bot’s identity actually establish?
-- What evidence must survive when the interpretation changes?
+- A delivered page is evidence of a request, with readership still to establish.
+- A crawler’s signature authenticates only the components it covers.
+- Editorial decisions need source quality and evidence of usefulness alongside totals.
 
 ## Count the event you can observe
 
@@ -33,15 +33,22 @@ The counter accepts successful, non-prefetch page GETs serving HTML or negotiate
 
 A keyed hash groups requests by site, UTC date, IP and User-Agent. The table retains neither raw IPs nor User-Agent strings. Changed inputs can split one person’s activity; shared inputs can combine people. Daily client IDs are not unique readers.
 
-## One referrer changed the growth story
+## Ask whether growth survives its largest source
 
-The October 26 audit counted **[14,835 included events](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/10-full-interval-and-field-hardening.md)** from partial September 9 through partial October 26 UTC. The [October 29 census](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/78-refreshed-retained-population.md) covers **33,189 stored observations**, including 2,564 legacy beacons. Excluding 59 owner and 110 referral events leaves **33,020 included observations** across collection methods and classifier versions.
+The [October 29 audit](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/94-reader-growth-and-editorial-decisions.md) examined every retained stored-Browser row for four complete UTC weeks: 1,463 rows, or 1,429 after owner exclusions.
 
-Browser events rose from **306** in the complete UTC week beginning September 14 to **711** in the week beginning October 19. One unexplained referrer, R1, supplied **388** of the later week’s events. Setting that cohort aside gives **323 versus 306**, a 5.6% increase instead of a 2.32-fold count.
+| UTC dates | Browser signals | Outside unexplained source R1 |
+|---|---:|---:|
+| October 1–7 | 235 | 235 |
+| October 8–14 | 253 | 251 |
+| October 15–21 | 312 | 305 |
+| October 22–28 | 629 | 241 |
 
-That is a sensitivity check. R1 remains included, and the subtraction does not produce a corrected human count. Its operator and authenticity are unresolved.
+Setting R1 aside changes the last comparison from **312→629 to 305→241**. R1 remains included in reporting. This sensitivity check exposes concentration; it supplies no corrected human count. Rules also changed during the window, so neither series establishes human growth or decline.
 
-[Recent Cloudflare logs](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/15-native-input-recovery.md) recovered 381 R1 requests over October 24–25, with 29 User-Agent strings. Earlier rules called all Browser. [New-rule replay](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/19-explicit-classification-uncertainty.md) leaves 118 unresolved: their headers claim same-origin context while supplying an external referrer. This includes redirects and changes no stored history. Operator and population differences from D1 remain unknown. **More evidence can test a rule without authenticating its subject.**
+Of those 1,429 events, 624 sent no referrer, 328 reported internal navigation and 477 reported external hosts. R1 supplied 397 external events. Missing referrers leave acquisition unknown: bookmarks, private sharing, stripped referrals and automation remain possible. [HTTP permits omission](https://www.rfc-editor.org/rfc/rfc9110.html#section-10.1.3). Internal navigation can generate more events after arrival.
+
+The public Other bucket groups hosts under our display policy. It is not an authenticity verdict. **We still don’t know R1’s operator or trigger.**
 
 ## A signed crawler was being counted as an assistant
 
@@ -53,55 +60,54 @@ The repair separates declared roles from [signing evidence](https://github.com/g
 
 **Identity, role and trigger answer different questions.** All three signatures protected the host. User-Agent and article path were unsigned. Changing those unsigned fields left each signature valid. [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) authenticate covered components against a key; an unsigned role or human trigger needs separate evidence. Unique actions remain unproven.
 
-[The historical census](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/31-retained-history-completeness-and-delta.md) leaves **1,025 included records labelled Exa with unknown roles**. In the [712-record delta](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/65-client-methods-and-directory-failures.md), 51 included requests declare ExaSearchBot; none declares ExaUser. [All 52 verified outcomes](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/75-frozen-signed-cohort-and-export-boundaries.md) now have replayed inputs and matching D1 rows. **None signs User-Agent or resource.**
+The later [52-proof cohort](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/75-frozen-signed-cohort-and-export-boundaries.md) had the same authority-only coverage. Inspect each proof’s covered fields before deciding what it authenticates.
 
-Logs can alter the evidence. In [13 synthetic producer/Tail Worker controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/74-native-trace-redaction-and-covered-urls.md), 12 requests verified before tracing; seven verified from default redacted traces. Header and URL redaction explained five lost replays. **A failed log replay alone does not prove the original signature was invalid.**
-
-Coverage varies by publisher. Of [fourteen retained DuckDuckBot contexts](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/83-additional-publishers-and-parallel-declarations.md), seven verified with method and path protected; seven failed in both implementations. The cause remains unresolved. **Inspect each proof’s covered fields before deciding what it authenticates.**
+Logs can alter the evidence. In [13 synthetic producer/Tail Worker controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/74-native-trace-redaction-and-covered-urls.md), 12 requests verified before tracing; seven verified from default redacted traces. Redaction explained five lost replays. **A failed log replay alone does not prove the original signature was invalid.**
 
 ## Preserve uncertainty in the data
 
-Conflicts enter Unresolved. [R1 replay](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/22-client-form-and-calibration.md) yields **355 desktop defaults**: 181 non-mobile preferences and 174 requests without form markers. Neither authenticates desktop hardware. A hosting-list nonmatch likewise establishes no residential source.
+Conflicting inputs enter Unresolved. Our [parser audit](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/90-fetch-metadata-parsing-and-evidence.md) caught a false Browser match: lowercasing NAVIGATE made an invalid value look valid. Four [excluded production controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/91-live-metadata-controls-and-redacted-correlation.md) also showed two ordinary curl requests matching Browser. The dashboard now says **Browser signals** and [distinguishes absent headers from unassessed history](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/92-public-parsing-states-and-browser-signals.md).
 
-Replaying [100 recovered contexts](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/88-unresolved-metadata-and-retained-inputs.md) reproduced their stored Unresolved decisions; one remains unavailable. [Relays changed headers in local controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/89-local-browser-relays-and-fetch-metadata.md). Our [parser audit](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/90-fetch-metadata-parsing-and-evidence.md) caught a false Browser match in a fixture: we lowercased `NAVIGATE` into `navigate`. The repair preserves parse failures and accepts valid parameters. In [four excluded production controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/91-live-metadata-controls-and-redacted-correlation.md), two curl requests still matched Browser. The dashboard now calls this group **Browser signals** and [separates absent headers from unassessed history](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/92-public-parsing-states-and-browser-signals.md). The engine and operator remain unverified.
-
-D1 discarded User-Agent after classification, so that table alone cannot replay the Exa/Ahrefs gap. Provider logs retained some inputs; complete historical recovery remains unproven. [Plausible](https://plausible.io/data-policy) keeps parsed software facts; [the IETF](https://www.ietf.org/policies/web-analytics/) keeps raw visitor data for five days and aggregates for twelve months. I’ve prepared an expiring diagnostic store; collection remains off pending privacy decisions. Filtering arbitrary text cannot guarantee the absence of personal information.
-
-Among 2,365 included internal-referrer events, **1,540 recorded `/` as their source**. That can mean the homepage, but it can also mean an origin-only URL whose path was omitted. [Referrer Policy](https://www.w3.org/TR/referrer-policy/) allows detail to be withheld. We had stored more certainty than the input supported.
-
-New observations omit that ambiguous source path; history gets an explicit label. Genuine transitions are lost.
-
-The [referrer-abuse policy](/filter-referrer-spam-without-deleting-analytics-history) versions public exclusions. Unapproved referrers and signing origins appear as Other; evidence stays private.
-
-A [native D1 fixture](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/29-unreported-classifications-and-denominators.md) reported ten events but classified five. [Network summaries](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/56-vendor-network-summary-consistency.md) now separate unsupported “listed” flags; [feed revalidation](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/57-vendor-ip-revalidation.md) rejects mismatched validators. These fixtures establish no production inflation. **[1,181 historical verification outcomes lack proof detail](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/31-retained-history-completeness-and-delta.md)**.
+D1 discarded User-Agent after classification; provider logs recovered some inputs, with complete historical recovery unproven. Expiring diagnostic collection remains off pending privacy decisions. Filtering arbitrary text cannot guarantee the absence of personal information. A more precise label preserves a gap; it does not resolve the identity behind it.
 
 ## Correct totals can still break production
 
-One report repeated referral assessment across nine queries, consuming **182,388 D1 row reads**. The account later exhausted its allowance.
+One report repeated referral assessment across nine queries, consuming **182,388 D1 row reads**. The account later exhausted its allowance. Sharing assessment reduced the same report to **33,259 reads**, with identical output in the [measured comparison](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md).
 
-Sharing the selected population and assessment reduced the same report to **33,259 reads**, an **81.8% reduction**, with identical output. The [recovery measurements](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md) preserve the comparison.
-
-[D1 row reads](https://developers.cloudflare.com/d1/platform/pricing/#definitions) measure query work. [Report telemetry](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/55-report-calculation-cost.md) separates counters from cache reuse. Last-attempt counters leave earlier retries unmeasured. Missing metadata stays unknown. Caching preserves calculation time for up to an hour. Hits avoid calculation; other database work remains additional.
+[D1 row reads](https://developers.cloudflare.com/d1/platform/pricing/#definitions) measure query work, not audience size. Caching avoids recalculation on hits. Other database work and unmetered retries remain additional; missing cost metadata stays unknown.
 
 ## Test the stages, not counter agreement
 
 For October 20–25 UTC, D1 recorded **694 Browser HTML events** versus Cloudflare’s **117 non-bot beacon loads** after stats/API exclusions. Sampling and path reconciliation remain incomplete. Neither is human ground truth. Agreement is not the goal; explaining what each instrument observes is.
 
-I [reconciled 12 production controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/09-trial-ledger-and-selective-evaluation.md): nine agent-operated browser visits and three curl requests, excluded from public totals. Each trial had one stored observation and separate stage counts:
+I [reconciled 12 production controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/09-trial-ledger-and-selective-evaluation.md), excluded from public totals. Three normal automated-browser visits stored observations and delivered beacons. Blocking beacons preserved three observations: sendBeacon returned true, but the receiver got none. True means [queued](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon#return_value). Blocking scripts still stored three observations. Three curl controls stored as Other bot.
 
-- Three normal visits stored observations and delivered three beacons.
-- Blocking the beacon preserved three observations. `sendBeacon()` returned true three times; the server received none. True means [queued](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon#return_value), not received.
-- Blocking scripts still stored three observations. The curl controls stored as Other bot without executing JavaScript.
+All nine automated-browser visits matched Browser. JavaScript execution and browser headers do not authenticate humans. A [local failure experiment](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/07-matched-classifier-calibration.md) lost three observations while pages and beacons succeeded; no database failure was injected into production.
 
-Nine automated visits matched Browser. **Browser shape and JavaScript do not authenticate humans.** [Agent-driven input](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/30-filter-pointer-targets-and-browser-trust.md) produced `isTrusted=true` events locally. Our receiver proves arrival; Cloudflare’s receipt remains separate. Human false-positive rates remain unmeasured.
+These mechanisms do not explain the historical gap’s proportions. Human/device error rates and Cloudflare beacon receipt remain unmeasured.
 
-A [local failure experiment](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/07-matched-classifier-calibration.md) lost three observations while pages and beacons succeeded. No database failure was injected into production.
+## Check the funnel before judging interest
 
-Local provider metadata needs scrutiny too. [Miniflare's fallback](https://github.com/cloudflare/workers-sdk/blob/ea57dfd56f2e82079927ce0b6fe690713e794a78/packages/miniflare/src/cf.ts) includes `verifiedBot: false`; `cf: false` selects it. Our [capture harness](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/60-guarded-native-capture-and-fixture-provenance.md) supplies `cf: {}` explicitly. **Executing our code in the native runtime does not reproduce the provider's detection service.**
+The subscriber aggregate showed one active subscription and zero active records created or last confirmed in October 1–28. Then we [found the rendered signup form missing its required public Turnstile key](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/98-subscription-funnel-and-reader-signals.md). Correct state counts could not establish a working conversion path or weak reader interest. Key delivery and handler initialization are repaired; complete challenge, email and activation acceptance remain separate.
 
-In [seven live controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/61-live-native-header-boundaries.md), a transform delivered Cloudflare's known-bot result as `false` while Worker-native bot booleans stayed unavailable. It replaced single and duplicate caller headers. [Disabling the rule before expiry](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/63-disabled-before-expiry.md) let a caller's `true` survive. **A forwarded flag needs trusted provenance before it can support a verified-bot count.**
+Even error reporting overstated success. Our endpoint returned 204 before confirming storage. A [paired native experiment](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/newsletter-reliability/21-truthful-error-report-acknowledgments.md) had four old failure cases returning 204 without an inserted row; the repair had zero. These are fixture cases, not historical loss estimates. A write can also commit before its acknowledgment fails, so automatic retries could duplicate reports.
 
-These mechanisms do not explain the historical gap’s proportions. Real phones, human-operated browsers, actual JavaScript-off and Cloudflare beacon receipt remain to test. Count missing measurements, abstentions and wrong decisions separately.
+## Turn the evidence into an editorial bet
+
+The article rankings change when inspected outside R1:
+
+| Article | All events | Outside R1 |
+|---|---:|---:|
+| ChatGPT plugin apps | 133 | 42 |
+| OSS Radar: toolchain | 116 | 13 |
+| AI-fetcher headers | 67 | 63 |
+| Bot detection without JavaScript | 53 | 37 |
+
+Publication ages differ, and these remain deliveries. Still, the fetcher reference gives me a provisional topic worth developing without depending on the spike. I’ve [corrected its signature-coverage claims](/which-ai-fetchers-send-which-headers). A next experiment is one concrete native-app workflow article, showing operation, conflict, undo and saving.
+
+The [readership report](/stats/readership) now separates article traffic, internal navigation, unattributed events and source concentration. Actual search questions remain unavailable until an authenticated [Search Console comparison](https://support.google.com/webmasters/answer/7576553) supplies query/page evidence. I won’t invent them from article titles.
+
+For each editorial experiment, compare seven and 28 complete days, inspect source concentration and search discovery, and look for corrections or reports of use. Better bot detection helps interpret delivery. Understanding what readers need requires evidence beyond the request.
 
 ---
 
@@ -114,4 +120,4 @@ These mechanisms do not explain the historical gap’s proportions. Real phones,
 | Message signature | Verification of covered components against a key; [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html), February 2024. |
 | D1 row reads | Database work, separate from audience size; [metering definitions](https://developers.cloudflare.com/d1/platform/pricing/#definitions). |
 
-Sources checked October 25–29, 2026 UTC. The [research index](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-retrospective) retains methods, receipts, corrections and remaining work.
+Measurements retain their dated windows. Sources checked October 25–30, 2026 UTC. The [research index](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-retrospective) retains methods, receipts, corrections and remaining work.

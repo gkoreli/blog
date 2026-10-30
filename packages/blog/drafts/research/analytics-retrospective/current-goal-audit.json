@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T00:00:45.152259+00:00",
-  "sourceBaseline": "dae0bc37247f7e44fb1066b20aa7a99cc9fea69e",
+  "checkedAt": "2026-10-30T00:07:53.660887+00:00",
+  "sourceBaseline": "9cf84084ad907633edc16db0611896a7f3e5d730",
   "goalAchieved": false,
-  "previousTurn": "progress",
-  "scope": "Truthful diagnostic acknowledgment/transport receipts implemented and accepted locally, in source/build/full allocation, exact served client and one labelled live success/readback/cleanup. Native failure cases remain separate; full analytics goal retained.",
+  "previousTurn": "no progress: explanation of existing readership evidence only; revalidated current source and took article revision as next safe action",
+  "scope": "Research99 revises the concise analytics retrospective with measured readership/source sensitivity and funnel lessons; accepted local build and frozen-table checks, publication acceptance pending.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,27 +46,27 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Use writing workflow to distill measured readership/source concentration and funnel-quality lessons into the concise existing analytics article; preserve original study dates/footprint and avoid new population claims. Build/correlation/admission/bootstrap and wider native/human/search/privacy requirements stay open. GSC login/Duck.ai terms approval pending; human trials deferred.",
+  "nextBoundedAction": "Deliver checked readership article revision; verify source/build activation and one excluded served representation. Then pursue authenticated search query/page evidence when access is available or one bounded native-app workflow investigation. Human trials remain deferred; full analytics requirements remain open.",
   "article": {
-    "bodyWhitespaceWords": 1450,
-    "prompts": 31,
-    "sourceSha256": "7b44f831ba0d60113a5c6104f3de333ac842a9e5d1537e0833bec83151385a4e",
-    "unchanged": true,
+    "bodyWhitespaceWords": 1376,
+    "prompts": 32,
+    "sourceSha256": "f6186a1f16af8114a3318b8125af3c2a04cc34216f0126b7093b2f5a6e5d1aa1",
+    "unchanged": false,
     "freshServedCheck": false,
-    "publicationReceipt": "public-parsing-release.json",
-    "servedMatchesCheckedBuild": true,
+    "publicationReceipt": null,
+    "servedMatchesCheckedBuild": false,
     "lastServedCheckReceipt": "public-parsing-release.json",
-    "publicationStatus": "Unchanged at 1450 words/31 prompts. Last accepted served Markdown remains Research 92; no new publication/served claim in Research 93/94.",
+    "publicationStatus": "Research99 local checked revision; delivery/activation/served acceptance pending. Earlier Research92 served equality describes its earlier source only.",
     "previousPublicationReceipt": "metadata-collector-release.json",
-    "servedMatchScope": "Exact direct Markdown. Stats new section/JS/CSS also checked separately; no production browser layout or full HTML equality claim.",
+    "servedMatchScope": "Current Research99 source awaits served acceptance; lastServedCheckReceipt retains only the earlier accepted source.",
     "localBuildAccepted": true,
-    "localBuildReceipt": "public-parsing-checks.json"
+    "localBuildReceipt": "readership-article-checks.json"
   },
-  "runtimeUnchanged": false,
-  "productionStatements": 3,
+  "runtimeUnchanged": true,
+  "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": true,
+  "liveAccountInspection": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -763,7 +763,7 @@
     "warmCache": "HIT",
     "populationPrevalenceMeasured": false
   },
-  "ownSiteGetRequests": 1,
+  "ownSiteGetRequests": 0,
   "collectionEligibleRequests": 0,
   "diagnosticSelects": 2,
   "evidenceDelta": {
@@ -816,7 +816,7 @@
     "reportedWrites": 0,
     "statements": 3,
     "runtimeChanged": false,
-    "articleChanged": false,
+    "articleChanged": true,
     "sourceAwareReportImplemented": true,
     "privateDataManifestSha256": "cdb08bd84b2ff00c05fc60174dfe23d73c5297245b3f660fa496ad2206a4a23e",
     "sourceAwareReportAcceptance": "Accepted on Research95 recorded source/Worker; date parser repair delivered with acceptance record"
@@ -838,9 +838,9 @@
     "unmeteredCalculations": 1,
     "productionBrowserLayoutMeasured": false
   },
-  "productionStatementsScope": "One owned-control readback, exact guarded DELETE and absence query. Ingestion cost unmetered.",
-  "productionReportedReadsCoverage": "Nine reads/one cleanup write over three primary SQL statements; one observed ingestion row with unavailable write meter, not account-wide cost.",
-  "productionReadTotal": 9,
+  "productionStatementsScope": "Research99 article-only iteration: no new SQL",
+  "productionReportedReadsCoverage": "No new production query in Research99; historical receipts remain independently dated.",
+  "productionReadTotal": 0,
   "publicationDateRepair": {
     "receipt": "article-reach-date-checks.json",
     "siteTests": 120,
@@ -907,7 +907,7 @@
     "widgetReadinessEstablished": false,
     "browserTabClosed": true
   },
-  "productionDiagnosticD1Statements": 3,
+  "productionDiagnosticD1Statements": 0,
   "retainedSubscriptionErrors": {
     "research": "../newsletter-reliability/18-retained-widget-errors-and-conversion-limits.md",
     "production": "../newsletter-reliability/subscription-error-audit-production.json",
@@ -956,7 +956,7 @@
     "liveControl": "../newsletter-reliability/subscription-control-production.json",
     "liveControlScope": "One direct HTTP ingestion, no actual browser callback/transport or population acceptance; fixture cleaned."
   },
-  "ownSitePostRequests": 1,
+  "ownSitePostRequests": 0,
   "diagnosticControlPosts": 1,
   "diagnosticControl": {
     "research": "../newsletter-reliability/20-production-diagnostic-readback-and-cleanup.md",
@@ -1006,5 +1006,15 @@
     "liveOwnedMarkerAbsent": true,
     "productionFailureInjection": false,
     "privateReleaseManifestSha256": "6677023039167eb7eebe4cd57af33564d64ab40351d79284151111b3cfecfe3f"
+  },
+  "articleDistillation": {
+    "research": "99-readership-lessons-in-the-retrospective.md",
+    "checks": "readership-article-checks.json",
+    "previousGoalResponseClass": "no-progress",
+    "goalStillOpen": true,
+    "newPopulationClaims": false,
+    "newHumanLabels": 0,
+    "localAccepted": true,
+    "productionAccepted": false
   }
 }
