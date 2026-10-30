@@ -1,0 +1,177 @@
+{
+  "checkedAt": "2026-10-30T11:33:01.924398+00:00",
+  "acceptedScopes": [
+    "source-build-allocation",
+    "filtered-public-report",
+    "same-colo-cross-connection-cache-hit",
+    "new-disclosure-fragment",
+    "exact-stats-js-css",
+    "captured-single-attempt-report-cost"
+  ],
+  "sourceCommit": "55a56b14cfacba9adc66efabed43abf47a67f2bf",
+  "buildId": "5bbeadea-10aa-4d36-a39d-bdd89a6f19b7",
+  "workerVersion": "9955ef07-7f17-408b-9a4f-fa6ed43291d1",
+  "allocationPercent": 100,
+  "githubCheckSuccess": true,
+  "nativeBuildSuccess": true,
+  "ownSiteHttpRequests": 7,
+  "collectionEligibleRequests": 0,
+  "exactOwnedEventVersionRayJoins": 7,
+  "selection": {
+    "range": "7d",
+    "traffic": "crawlers",
+    "path": null,
+    "agent": "Googlebot",
+    "kind": "search-crawler"
+  },
+  "reportVersionFromAcceptedSource": "2026-10-30.2",
+  "report": {
+    "contract": true,
+    "selectionMatched": true,
+    "headlineEvents": 47,
+    "dailyClients": 36,
+    "calculatedAt": "2026-10-30T11:26:01.247Z",
+    "cache": {
+      "records": {
+        "recognizedViews": 0,
+        "notRecordedViews": 47,
+        "unrecognizedViews": 0,
+        "noApplicableViews": 0,
+        "guardedOnlyViews": 0,
+        "withAccessViews": 0,
+        "policyKnownViews": 0,
+        "policyUnknownViews": 0,
+        "partialPolicyViews": 0
+      },
+      "byAccess": {
+        "fetched": 0,
+        "revalidated": 0,
+        "memory": 0,
+        "coalesced": 0,
+        "cooldown": 0,
+        "failed": 0
+      },
+      "byPolicy": {
+        "positiveViews": 0,
+        "blockedViews": 0,
+        "mixedViews": 0
+      },
+      "byBlocker": {
+        "noStore": 0,
+        "private": 0,
+        "noCache": 0,
+        "invalidLifetime": 0,
+        "zeroLifetime": 0,
+        "invalidAge": 0,
+        "ageExhausted": 0
+      }
+    },
+    "network": {
+      "recognizedViews": 29,
+      "unrecognizedViews": 0,
+      "recordedViews": 29,
+      "notRecordedViews": 18,
+      "configuredDeclarationViews": 29,
+      "unmappedDeclarationViews": 0,
+      "noDeclarationViews": 0,
+      "listedViews": 27,
+      "notListedViews": 0,
+      "unavailableViews": 0,
+      "notAssessedViews": 2,
+      "addressUnavailableViews": 0
+    },
+    "metadata": {
+      "recognizedViews": 15,
+      "notRecordedViews": 32,
+      "unrecognizedViews": 0,
+      "inconsistentViews": 0
+    },
+    "limits": "Public stored-event aggregates, not authenticated Google requests, native verification, unique upstream calls, people or readership. No per-row joins or population calibration."
+  },
+  "cache": {
+    "first": "MISS",
+    "second": "HIT",
+    "sameSocket": false,
+    "originalSameSocketGate": "not-proven after harness stopped and closed the socket",
+    "sameColo": true,
+    "colo": "SEA",
+    "bodyEqual": true,
+    "calculatedAtEqual": true,
+    "expiresEqual": true,
+    "expiresAt": "Fri, 30 Oct 2026 12:26:01 GMT",
+    "expiryAfterCalculationSeconds": 3599.753,
+    "secondCalculations": 0
+  },
+  "calculationReceipts": [
+    {
+      "version": "2026-10-28.1",
+      "event": "stats-report-calculation",
+      "outcome": "returned",
+      "submittedStatements": 1,
+      "returnedResults": 1,
+      "metadata": "complete",
+      "counterScope": "last-attempt",
+      "reportedRowsRead": 44643,
+      "reportedRowsWritten": 0,
+      "totalAttempts": 1,
+      "unexpectedWrites": false
+    }
+  ],
+  "reportedLastAttemptReads": 44643,
+  "reportedLastAttemptWrites": 0,
+  "readReviewThreshold": 50000,
+  "readThresholdPassed": true,
+  "assets": {
+    "html": {
+      "newDisclosureFragmentMatched": true,
+      "bytes": 1902
+    },
+    "js": {
+      "exactBuiltBytesMatched": true,
+      "bytes": 96480,
+      "sha256": "c2304a897b9248832bac72ee4d5d5aa57f69ed292ed42ff3cfa8faf4f0cf2e55"
+    },
+    "css": {
+      "exactBuiltBytesMatched": true,
+      "bytes": 9242,
+      "sha256": "00a09aa3a24ebb6b14b0078cba30c955acae36f1492057e226daf756fcb4ad28"
+    }
+  },
+  "directProductionSelects": 0,
+  "humanLabels": 0,
+  "optionalRawCaptureActivated": false,
+  "firstReportRecoveredOffline": true,
+  "additionalColdReportRequested": false,
+  "sourceCodeUnchanged": true,
+  "originalPlanManifestSha256": "bab8bb36d4def62cd9cb51cbca1bcc4da3fc39d7dede38a3ce28544f0667359a",
+  "recoveryPlanManifestSha256": "7c265312d2c11f0eebbabd9529e3b24fbfd08397ab58ef2157e8c10feb1c77e7",
+  "limits": [
+    "The first CLI guard failed before executing validation; the source response and cost are independently recovered offline, and the corrected actual CLI transport has six negative controls.",
+    "Same-socket measurement was not completed. Accepted cache evidence is a later HIT across connections in the same reported colo, with identical canonical selection, body/time/expiry.",
+    "All 47 included events lack cache-era method facts; zero diagnostic outcomes do not establish absence of failures. Positive organic cache-era public-count acceptance remains unobserved.",
+    "These are stored Googlebot declarations, not authenticated operators, people, native-provider accuracy or readership.",
+    "Only returned-attempt query counters are measured; whole-account costs, background activity and unreported retry work remain separate.",
+    "New disclosure fragment and exact JS/CSS bytes are accepted; full HTML equality and production interactive/device acceptance are not claimed.",
+    "CLI D1 authorization is not retried or declared repaired. Later documentation-only deployments have different version identities.",
+    "The frozen method/bounds and validator remain inspectable; an exact pre-execution snapshot of the successful recovery Python program is not claimed. No requests repeated to repair archive provenance."
+  ],
+  "recoveryProgramProvenance": {
+    "checkedAt": "2026-10-30T11:39:02.009681+00:00",
+    "frozenPlanManifestVerified": true,
+    "recoveryLimitsFrozenBeforeRequests": true,
+    "exactExecutedRecoveryProgramFrozenBeforeRequests": false,
+    "archivedProgram": "Preceding constructor-failing recovery version, not executed v2",
+    "executedProgram": "continue-live-v2.py",
+    "executedProgramSha256PreservedAfterRun": "21d83444ccc22f15d82004a550ba792d8d0ff6bd21a0d9c765a2e89d775376ae",
+    "archivedProgramSha256": "5ab07d5d4b8f1ec8ed75ecf3cb6fb0a85adea704adb4a973faeb0f43313ee13b",
+    "immutablePlanArchiveModified": false,
+    "limits": "The frozen method/bounds and validator remain inspectable; an exact pre-execution snapshot of the successful recovery Python program is not claimed. No requests repeated to repair archive provenance."
+  },
+  "ownedTails": {
+    "checkedAt": "2026-10-30T11:33:58.646515+00:00",
+    "ownedGroups": 2,
+    "members": 0,
+    "controllersAwaited": true,
+    "providerDeletionIndependentlyConfirmed": false
+  }
+}
