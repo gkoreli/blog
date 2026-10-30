@@ -1,0 +1,122 @@
+{
+  "checkedAt": "2026-10-30T08:12:58.449599+00:00",
+  "sourceCommit": "b9d9c42eeaad9900af4ef12f94775e9b2b6e753e",
+  "buildId": "513271d0-cb17-48b4-b3cb-3d2e65111789",
+  "workerVersion": "462493c0-8a9d-47a9-a2a7-e1f65e1138ad",
+  "allocationPercent": 100,
+  "nativeSuccessfulBuildInspected": true,
+  "nativeLimiterBindingInspected": true,
+  "githubCheck": {
+    "observedStatus": "in_progress",
+    "conclusion": null,
+    "nativeStatusDisagreementResolved": false,
+    "claimedGreen": false
+  },
+  "configuredLimiter": {
+    "limit": 60,
+    "periodSeconds": 60,
+    "scope": "approximate per Cloudflare location; fixed route key; separate signup namespace"
+  },
+  "productionHttpRequests": 3,
+  "productionSqlStatements": 4,
+  "humanLabels": 0,
+  "negative": {
+    "checkedAt": "2026-10-30T08:08:29.791311+00:00",
+    "sourceCommit": "b9d9c42eeaad9900af4ef12f94775e9b2b6e753e",
+    "buildId": "513271d0-cb17-48b4-b3cb-3d2e65111789",
+    "workerVersion": "462493c0-8a9d-47a9-a2a7-e1f65e1138ad",
+    "allocationPercent": 100,
+    "nativeSuccessfulBuildInspected": true,
+    "githubCheckStatus": "in_progress",
+    "githubCheckConclusion": null,
+    "productionHttpRequests": 2,
+    "productionSqlStatements": 0,
+    "productionPayloadsParseable": false,
+    "nativeRateBehaviorMeasured": false,
+    "positiveProductionIngestionMeasured": false,
+    "perRequestVersionJoined": false,
+    "humanLabels": 0,
+    "privatePlanManifestSha256": "27afb5ef7a5cd2a7e5a1776bd322f7216d70111fbba022bd3f7bc56ff839de7f",
+    "conditions": [
+      {
+        "name": "foreign-origin",
+        "curlExit": 0,
+        "status": 403,
+        "expectedStatus": 403,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "agentAttempts": 1
+      },
+      {
+        "name": "misleading-mime",
+        "curlExit": 0,
+        "status": 415,
+        "expectedStatus": 415,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "agentAttempts": 1
+      }
+    ],
+    "scope": "No valid diagnostic payload; no D1 readback or metered ingestion audit. Source predicts rejection before limiter/body/D1, not a direct measurement of zero writes."
+  },
+  "positive": {
+    "checkedAt": "2026-10-30T08:10:39.466062+00:00",
+    "sourceCommit": "b9d9c42eeaad9900af4ef12f94775e9b2b6e753e",
+    "buildId": "513271d0-cb17-48b4-b3cb-3d2e65111789",
+    "workerVersion": "462493c0-8a9d-47a9-a2a7-e1f65e1138ad",
+    "allocationPercent": 100,
+    "productionHttpRequests": 1,
+    "productionSqlStatements": 4,
+    "post": {
+      "status": 204,
+      "curlExit": 0,
+      "emptyBody": true
+    },
+    "independentReadbackMatched": true,
+    "cleanupRemovedRows": 1,
+    "finalAbsent": true,
+    "meters": [
+      {
+        "stage": "positive-preflight",
+        "rowsRead": 1,
+        "rowsWritten": 0,
+        "changes": 0
+      },
+      {
+        "stage": "positive-readback",
+        "rowsRead": 3,
+        "rowsWritten": 0,
+        "changes": 0
+      },
+      {
+        "stage": "positive-cleanup",
+        "rowsRead": 5,
+        "rowsWritten": 1,
+        "changes": 1
+      },
+      {
+        "stage": "positive-absence",
+        "rowsRead": 1,
+        "rowsWritten": 0,
+        "changes": 0
+      }
+    ],
+    "reportedSqlReads": 10,
+    "reportedSqlWrites": 1,
+    "ingestionWriteCostReturned": false,
+    "privatePlanManifestSha256": "5f5b1da4546886d3ecdc8528310148e0e3d4fdc0870bb7f746d674414476c5f8",
+    "humanLabels": 0,
+    "actualBrowser": false,
+    "burstOrGlobalRateAccuracyMeasured": false,
+    "perRequestVersionJoined": false,
+    "scope": "One labelled valid diagnostic, independent exact-marker readback, guarded owned-row cleanup and absence check. Not browser/population/burst or global limiter accuracy.",
+    "accepted": true
+  },
+  "productionRateExhaustionMeasured": false,
+  "productionBrowserDeliveryMeasured": false,
+  "perRequestVersionJoined": false,
+  "privateReleaseManifestSha256": "8a0f7a306d392fdf1e1b22167c79312ce8acff80c243f24810951e71f93f18eb",
+  "scope": "Native source/deploy/100% allocation association, two selected early rejections and one direct positive persistence/cleanup; no global/burst or human/population claim."
+}
