@@ -41,3 +41,13 @@ This requires local IPC and the baseline commit in the checkout; it does not con
 Source delivery, activation and a labelled production success/readback/cleanup remain separate acceptance work. Failure behavior is accepted in the native matrix, not through a production outage. Build identity, operation correlation, admission, actual-byte limits, bootstrap coverage, actual browser delivery and the wider readership/native-verification requirements remain open.
 
 The private 116-file archive preserves baseline/current snapshots, initial and accepted candidates, native results, checked build/source and handoff under SHA-256 manifest `58f9a41b1ad7b3566fecaab406bedc99b9d421d6f064d6289082961352487a5c`. Runtime hashes match the isolated snapshot. October 31 is a review date, not automatic deletion.
+
+## Deployed success accepted
+
+[Release receipt](client-error-acknowledgment-release.json) joins source `dae0bc3`, successful native build `e1aef8be` and full Worker `e586a0e4-b228-43b3-9425-1252cb089689` at fresh CLI 100%. One frozen prefetch GET returns the exact 28,309-byte checked client. One fresh labelled diagnostic POST returns 204; independent readback finds its exact bounded fields, followed by one guarded removal and verified absence. Three SQL statements cost nine reads/one cleanup write; ingestion cost remains unmetered. No response or POST is repeated, no production failure is injected, and no email, signup, challenge or human trial runs.
+
+The asset/prefetch and diagnostic requests are excluded from page collection by source; no page-observation or per-request version trace is collected. The success control does not turn native fault cases into measured production failures or establish a browser delivery rate. Source code/native controls establish the acknowledgment policy; this positive live sample validates its deployed path. Historical diagnostics and readership counts remain unchanged.
+
+Next, distill the measured readership/funnel lessons into the concise analytics article under the writing workflow, retaining the original study's dates and footprint. Build/correlation/admission/bootstrap and human/native/search requirements remain discoverable in the existing tasks. The wider analytics goal remains open.
+
+The private 49-file release archive has SHA-256 manifest `6677023039167eb7eebe4cd57af33564d64ab40351d79284151111b3cfecfe3f`. It preserves native build/version evidence, served bytes, the frozen live plan, selected readback/cleanup receipts and handoff. The owned control is absent at verification; no native runtime, build, test job, server or tail remains running.

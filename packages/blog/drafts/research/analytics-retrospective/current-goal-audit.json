@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-29T23:53:40.515329+00:00",
-  "sourceBaseline": "728b17efe9e18238b76f90609be1aeb00e024736",
+  "checkedAt": "2026-10-30T00:00:45.152259+00:00",
+  "sourceBaseline": "dae0bc37247f7e44fb1066b20aa7a99cc9fea69e",
   "goalAchieved": false,
   "previousTurn": "progress",
-  "scope": "Truthful diagnostic acknowledgment and explicit transport receipts implemented, paired native faults/144site tests/types/validation/isolated build accepted; source/activation/live success pending. Full analytics goal retained.",
+  "scope": "Truthful diagnostic acknowledgment/transport receipts implemented and accepted locally, in source/build/full allocation, exact served client and one labelled live success/readback/cleanup. Native failure cases remain separate; full analytics goal retained.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Commit/push checked acknowledgment implementation; verify source/build/allocation and served client, then one fresh labelled success/readback/guarded-cleanup control. Failure behavior remains native-only. GSC login/Duck.ai terms approval pending; human trials deferred.",
+  "nextBoundedAction": "Use writing workflow to distill measured readership/source concentration and funnel-quality lessons into the concise existing analytics article; preserve original study dates/footprint and avoid new population claims. Build/correlation/admission/bootstrap and wider native/human/search/privacy requirements stay open. GSC login/Duck.ai terms approval pending; human trials deferred.",
   "article": {
     "bodyWhitespaceWords": 1450,
     "prompts": 31,
@@ -63,7 +63,7 @@
     "localBuildReceipt": "public-parsing-checks.json"
   },
   "runtimeUnchanged": false,
-  "productionStatements": 0,
+  "productionStatements": 3,
   "newVisits": 0,
   "newHumanLabels": 0,
   "liveAccountInspection": true,
@@ -95,7 +95,7 @@
     "lastObservedRuleActive": false,
     "ruleInspectionReference": "disabled-before-expiry-release.json; rules not re-inspected in the network-receipt slice. Both optional capture bindings absent on exact Worker 2c8ab95c, checked in network-receipt-release.json."
   },
-  "productionOwnSiteGets": 0,
+  "productionOwnSiteGets": 1,
   "collectionEligibleGets": 0,
   "ownerMarkPosts": 0,
   "retainedDelta": {
@@ -170,13 +170,13 @@
     "networkAssessmentInReceipt": false,
     "optionalCaptureBindingsAbsent": true
   },
-  "productionReportedReads": 0,
-  "productionDiagnosticWrites": 0,
+  "productionReportedReads": 9,
+  "productionDiagnosticWrites": 1,
   "normalIngestion": {
-    "acknowledgedApplicationRows": 0,
-    "providerWriteMetering": "No own-site request in local repair; natural/provider activity additional."
+    "acknowledgedApplicationRows": 1,
+    "providerWriteMetering": "One labelled stored row observed and removed; ingestion write meter unavailable. Natural/provider activity additional."
   },
-  "newVisitsScope": "No production own-site request or human/browser trial during local acknowledgment repair.",
+  "newVisitsScope": "One source-excluded prefetch asset GET and one labelled diagnostic POST; no browser page/human visit. Provider account inspection additional.",
   "networkReceipt": {
     "releaseReceipt": "network-receipt-release.json",
     "receiptVersion": "2026-10-29.1",
@@ -629,9 +629,9 @@
     "exactRetainedRequestVersionMatched": true,
     "liveEmptyCounters": 44
   },
-  "productionDirectDiagnosticSelects": 0,
+  "productionDirectDiagnosticSelects": 2,
   "productionReportCalculations": 0,
-  "productionReadScope": "Native local fixtures only; no production records selected.",
+  "productionReadScope": "Only owned-control occurrence/ingestion/evidence fields returned; no reader records exported.",
   "unresolvedMetadata": {
     "research": "88-unresolved-metadata-and-retained-inputs.md",
     "production": "unresolved-metadata-production.json",
@@ -718,7 +718,7 @@
     "productionCollectorReadbackReceipt": "metadata-collector-production.json",
     "productionCollectorReadbackScope": "Four matched requests on d65be377; the later article-only publication Worker is accepted separately, without repeating collector trials."
   },
-  "newControlledRequests": 0,
+  "newControlledRequests": 2,
   "liveMetadataControls": {
     "research": "91-live-metadata-controls-and-redacted-correlation.md",
     "native": "metadata-collector-native.json",
@@ -763,9 +763,9 @@
     "warmCache": "HIT",
     "populationPrevalenceMeasured": false
   },
-  "ownSiteGetRequests": 0,
+  "ownSiteGetRequests": 1,
   "collectionEligibleRequests": 0,
-  "diagnosticSelects": 0,
+  "diagnosticSelects": 2,
   "evidenceDelta": {
     "research": "93-frozen-delta-and-reusable-evidence.md",
     "production": "evidence-delta-production.json",
@@ -838,9 +838,9 @@
     "unmeteredCalculations": 1,
     "productionBrowserLayoutMeasured": false
   },
-  "productionStatementsScope": "No production D1 statement in the local repair slice.",
-  "productionReportedReadsCoverage": "No production statements to meter in this local slice; no total/account-wide cost claim.",
-  "productionReadTotal": 0,
+  "productionStatementsScope": "One owned-control readback, exact guarded DELETE and absence query. Ingestion cost unmetered.",
+  "productionReportedReadsCoverage": "Nine reads/one cleanup write over three primary SQL statements; one observed ingestion row with unavailable write meter, not account-wide cost.",
+  "productionReadTotal": 9,
   "publicationDateRepair": {
     "receipt": "article-reach-date-checks.json",
     "siteTests": 120,
@@ -907,7 +907,7 @@
     "widgetReadinessEstablished": false,
     "browserTabClosed": true
   },
-  "productionDiagnosticD1Statements": 0,
+  "productionDiagnosticD1Statements": 3,
   "retainedSubscriptionErrors": {
     "research": "../newsletter-reliability/18-retained-widget-errors-and-conversion-limits.md",
     "production": "../newsletter-reliability/subscription-error-audit-production.json",
@@ -956,8 +956,8 @@
     "liveControl": "../newsletter-reliability/subscription-control-production.json",
     "liveControlScope": "One direct HTTP ingestion, no actual browser callback/transport or population acceptance; fixture cleaned."
   },
-  "ownSitePostRequests": 0,
-  "diagnosticControlPosts": 0,
+  "ownSitePostRequests": 1,
+  "diagnosticControlPosts": 1,
   "diagnosticControl": {
     "research": "../newsletter-reliability/20-production-diagnostic-readback-and-cleanup.md",
     "production": "../newsletter-reliability/subscription-control-production.json",
@@ -994,10 +994,17 @@
     "actualBrowserTransportMeasured": false,
     "automaticRetriesAdded": false,
     "siteTests": 144,
-    "productionActivationAccepted": false,
-    "liveSuccessReadback": false,
+    "productionActivationAccepted": true,
+    "liveSuccessReadback": true,
     "schemaChanged": false,
     "historicalPopulationAccuracyEstablished": false,
-    "privateDataManifestSha256": "58f9a41b1ad7b3566fecaab406bedc99b9d421d6f064d6289082961352487a5c"
+    "privateDataManifestSha256": "58f9a41b1ad7b3566fecaab406bedc99b9d421d6f064d6289082961352487a5c",
+    "release": "../newsletter-reliability/client-error-acknowledgment-release.json",
+    "sourceCommit": "dae0bc37247f7e44fb1066b20aa7a99cc9fea69e",
+    "workerVersion": "e586a0e4-b228-43b3-9425-1252cb089689",
+    "servedClientExactMatch": true,
+    "liveOwnedMarkerAbsent": true,
+    "productionFailureInjection": false,
+    "privateReleaseManifestSha256": "6677023039167eb7eebe4cd57af33564d64ab40351d79284151111b3cfecfe3f"
   }
 }

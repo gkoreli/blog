@@ -1,0 +1,106 @@
+{
+  "checkedAt": "2026-10-29T23:59:39.543809+00:00",
+  "sourceCommit": "dae0bc37247f7e44fb1066b20aa7a99cc9fea69e",
+  "workerVersion": "e586a0e4-b228-43b3-9425-1252cb089689",
+  "allocation": 100,
+  "buildCheckId": 123805050587,
+  "buildUrl": "https://dash.cloudflare.com/7e0dc86ef69b4572a63162a52cddd269/workers/services/view/gkoreli-com/production/builds/e1aef8be-dab2-40a9-b821-bbb1194a50f0",
+  "nativeSourceVersionJoin": true,
+  "perRequestVersionTrace": false,
+  "servedClient": {
+    "at": "2026-10-29T23:57:26.876150+00:00",
+    "status": 200,
+    "bytes": 28309,
+    "sha256": "92805345c7a2f2eca777ee67ddafaed6177f24d80f40d785bad82985f691c8da",
+    "exactMatch": true,
+    "attempts": 1,
+    "sourceExclusion": "asset/prefetch; no ingestion readback"
+  },
+  "post": {
+    "endedAt": "2026-10-29T23:57:47.700978+00:00",
+    "curlExit": 0,
+    "status": 204,
+    "bodyBytes": 0,
+    "agentPostAttempts": 1,
+    "persistenceNotProvedByStatus": true
+  },
+  "readback": {
+    "checkedAt": "2026-10-29T23:57:58.244Z",
+    "state": "matched",
+    "rows": 1,
+    "occurredAt": "2026-10-29T23:54:50.420Z",
+    "ingestedAt": "2026-10-29 23:57:47",
+    "evidence": {
+      "state": "recorded",
+      "profile": "subscribe-error-v1",
+      "phase": "idle",
+      "turnstileError": {
+        "state": "bounded-code",
+        "code": "200500"
+      }
+    }
+  },
+  "cleanup": {
+    "checkedAt": "2026-10-29T23:58:04.691Z",
+    "removedRows": 1
+  },
+  "verification": {
+    "checkedAt": "2026-10-29T23:58:09.458Z",
+    "state": "absent",
+    "rows": 0
+  },
+  "meters": [
+    {
+      "stage": "readback",
+      "reportedRowsRead": 3,
+      "reportedRowsWritten": 0,
+      "providerTotalAttempts": 1,
+      "agentAttempts": 1,
+      "thresholdNotDatabaseCap": true,
+      "servedByPrimary": true
+    },
+    {
+      "stage": "cleanup",
+      "reportedRowsRead": 5,
+      "reportedRowsWritten": 1,
+      "providerTotalAttempts": 1,
+      "agentAttempts": 1,
+      "thresholdNotDatabaseCap": true,
+      "servedByPrimary": true
+    },
+    {
+      "stage": "verify",
+      "reportedRowsRead": 1,
+      "reportedRowsWritten": 0,
+      "providerTotalAttempts": 1,
+      "agentAttempts": 1,
+      "thresholdNotDatabaseCap": true,
+      "servedByPrimary": true
+    }
+  ],
+  "reportedReads": 9,
+  "reportedCleanupWrites": 1,
+  "observedIngestionRows": 1,
+  "ingestionWriteMeterAvailable": false,
+  "ownSiteGets": 1,
+  "diagnosticPosts": 1,
+  "productionFailureInjection": false,
+  "productionEmails": 0,
+  "humanLabels": 0,
+  "actualBrowserTransportMeasured": false,
+  "actualClientDisconnectMeasured": false,
+  "productionPopulationErrorRateMeasured": false,
+  "legacyCalibrationChanged": false,
+  "schemaChanged": false,
+  "nativeFailureReceipt": "client-error-acknowledgment-native.json",
+  "planManifestSha256": "743dcbd5870ef98b4dc77ecb252c63c39d5a231c3ed943d3a5e127439470fac3",
+  "nativeBuildStateSha256": "86a7bf3437124fd2d1049e97ecc6b4471d1b90f0f4bd12c16fdd6c8d28a8a9b5",
+  "nativeBuildScreenshotSha256": "d55020a476fea5d6ed1ab345f185fdb87cd368003aa0b149f865529ea6fd70bf",
+  "limits": [
+    "One labelled success validates this deployed direct-ingestion path, not every browser report.",
+    "Failure/ambiguous-commit behavior measured in local workerd/D1 only.",
+    "503 is unconfirmed, not proof of no commit; no automatic retry.",
+    "Source-excluded asset GET and POST, no page-observation readback."
+  ],
+  "privateReleaseManifestSha256": "6677023039167eb7eebe4cd57af33564d64ab40351d79284151111b3cfecfe3f"
+}

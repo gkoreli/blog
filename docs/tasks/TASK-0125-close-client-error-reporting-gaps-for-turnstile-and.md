@@ -4,7 +4,7 @@ title: Close client error reporting gaps for Turnstile and subscription failures
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.781Z'
-updated_at: '2026-10-29T23:53:40.515329+00:00'
+updated_at: '2026-10-30T00:00:45.152259+00:00'
 type: task
 ---
 
@@ -32,3 +32,5 @@ The authorized native Chrome flow passed a real Turnstile challenge and signup, 
 **October 29 direct-ingestion readback:** [Research 20](../../packages/blog/drafts/research/newsletter-reliability/20-production-diagnostic-readback-and-cleanup.md) closes one labelled production metadata check on source `36839d7` / Worker `2a8c948e`: exact fields stored, unrecognized extra property discarded, one owned synthetic row removed and absence verified. Three primary statements cost nine reads/one cleanup write; ingestion cost is unmetered. Native guards and 138 site tests/types pass. This is direct HTTP ingestion, not actual browser callback or population delivery acceptance. The remaining requirements above stay open.
 
 **October 29 acknowledgment implementation:** [Research 21](../../packages/blog/drafts/research/newsletter-reliability/21-truthful-error-report-acknowledgments.md) implements one-row D1 confirmation before 204, unconfirmed 503, and distinct transport receipts with exact-204 fetch handling and no retries. Handled disconnect completion stays registered. Paired native write/HTTP faults and 144 site tests/types/validation/isolated build pass. Activation and a labelled live success remain separate; actual browser delivery, build/correlation, budgets/admission and bootstrap remain open.
+
+**Acknowledgment release accepted:** [Source/build/allocation/served-client/live success receipt](../../packages/blog/drafts/research/newsletter-reliability/client-error-acknowledgment-release.json) closes delivery on source `dae0bc3` / full Worker `e586a0e4` at 100%. One labelled record is independently read back, removed and verified absent. Native failures remain separate from actual browser/population/outage measurements. The remaining requirements above stay open.
