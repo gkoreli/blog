@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-30T06:58:17.302333+00:00",
+  "operator": "agent-browser",
+  "clicks": 1,
+  "beforeRows": 0,
+  "afterRows": 1,
+  "completeBuildIdStored": true,
+  "buildIdCharacters": 80,
+  "syntheticMetadata": true,
+  "actualMainBundle": true,
+  "actualBrowser": true,
+  "nativeD1": true,
+  "originalExactMessageGate": "failed: browser supplied Uncaught Error prefix",
+  "originalTrialAccepted": false,
+  "identityReadbackAccepted": true,
+  "requestRepeated": false,
+  "productionCalls": 0,
+  "humanLabels": 0,
+  "scope": "One local stored browser report matches the complete compiled ID; original exact-message plan mismatch retained. No population or production browser-delivery rate."
+}

@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-30T07:04:08.986614+00:00",
+  "baseline": "84882a8bfff73059d8348343cd8ad285e7df6385",
+  "siteTests": 150,
+  "workspaceTypes": "pass",
+  "markdownPostsValid": 22,
+  "isolatedBuildPosts": 33,
+  "sourceSha256": {
+    "packages/blog/src/client/main.ts": "97ce757a52035e489a7fe9fef1fcd0b5eebae78e02bb21b5f3df0589779ab9b3",
+    "packages/blog/src/client/build-identity.ts": "f75a8e4f307a1ae41dc8b16d5efb7cbbdba06bca25156622ca7cceb3da88b56f",
+    "packages/blog/src/pipeline/client-mode.ts": "fa854ae49e03df738b53bdff589a29663d7acbf1740238f53bbee72319070e80",
+    "packages/blog/src/pipeline/build.ts": "2d573593e55a238ee6f128483ffc42bcb91dce404260557a583fd3db193b41dd",
+    "packages/client-observability/src/client.ts": "e4938311fb3c2984ae156c6db546481c86c284839534d67d205e67cee19c22a9",
+    "packages/blog/scripts/client-build-identity-fixture.mjs": "06a094853d14386d5ee559b2d90c0dbd9f0bb682376edc731686bcb55b70bcf1",
+    "packages/blog/test/client-build-identity.test.mjs": "4bb2974f2a81dee22f651bfd4cb4be0fe0b51b459a8a8c6827f4aa02ea6b39e2"
+  },
+  "syntheticBuildId": "cf:12345678-1234-4234-8234-123456789abc:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "syntheticClientSha256": "f7d26c46c40309bd5b1bdba76c88f88bb02b4781b1054bcfa43cdb4d40534776",
+  "browserClientSha256": "f7d26c46c40309bd5b1bdba76c88f88bb02b4781b1054bcfa43cdb4d40534776",
+  "productionPipelineMatchesBrowserFixtureBytes": true,
+  "metadataEnvironmentExplicit": true,
+  "privateEnvCopied": false,
+  "browserIdentityReadback": true,
+  "originalBrowserMessageGate": "failed; independently retained identity readback is matched",
+  "productionRequests": 0,
+  "humanLabels": 0,
+  "sourceActivationAccepted": false,
+  "privateEvidenceManifestSha256": "cfc1353c4d2df24e42a80e2c97a86311b0027fdd5c84c82521b09dac079e74c1"
+}

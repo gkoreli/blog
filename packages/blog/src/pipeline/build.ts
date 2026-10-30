@@ -636,7 +636,7 @@ export async function bundleClient(minify = true): Promise<void> {
     entryNames: '[name]',
     format: 'esm',
     minify,
-    define: clientDefines(true),
+    define: clientDefines(true, process.env),
     target: 'es2024',
   });
 }

@@ -32,10 +32,11 @@ export function createClientLogger(config: ClientLoggerConfig): ClientLogger {
   };
 }
 
-export function createDefaultClientLogger(): ClientLogger {
+export function createDefaultClientLogger(options: { buildId?: string | undefined } = {}): ClientLogger {
+  const buildId = options.buildId;
   return createClientLogger({
     transport: new BeaconTransport(),
-    context: browserContext,
+    context: () => ({ ...browserContext(), buildId }),
     redact: defaultRedact,
     sample: keepAll,
   });

@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T05:41:55.607562+00:00",
-  "sourceBaseline": "8d5772bb942f764ac1faf849f355694615651767",
+  "checkedAt": "2026-10-30T07:07:28.237438+00:00",
+  "sourceBaseline": "84882a8bfff73059d8348343cd8ad285e7df6385",
   "goalAchieved": false,
-  "previousTurn": "Goal marked blocked after repeated dependency checks; no new analytics measurement. Owner now explicitly requests keeping goal active.",
-  "scope": "Owner-requested continuation; external inputs remain prerequisites for specific human/search/native claims, while existing independent ingestion work remains actionable. Prior global impasse assessment was too broad.",
+  "previousTurn": "progress: body-limit code, paired native cases and source/build/full-allocation acceptance",
+  "scope": "Active goal continues independent diagnostic attribution. Local identity mechanism/readback accepted; hosted build/served association still pending. No new human or bot-calibration measurement.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Continue independent remaining TASK0126 origin/rate admission, server sanitization and diagnostic attribution with bounded tests. Search/human/native inputs gate specific observations; owner-controlled goal row Resume is needed for automatic continuation while available API remains blocked.",
+  "nextBoundedAction": "Deliver and independently join hosted source/build metadata to the served client. Then add failed-operation correlation or remaining scoped admission without reopening deferred human trials. Full search/human/native/privacy/history goals remain unproven.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -1018,7 +1018,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: actual-body limit repaired and accepted locally, in source-linked build/native deploy and full CLI100% allocation; no production ingestion test",
+  "currentTurn": "progress: client-build attribution implemented; compiled tests,150site tests/types/isolated build and local actual-browser/native-D1 identity readback accepted, original message gate failed and retained",
   "requirementsAudit": {
     "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
     "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
@@ -1131,7 +1131,7 @@
   },
   "dependencyAudit": {
     "consecutiveBlockedGoalTurns": 0,
-    "status": "measurement-specific-dependencies; independent implementation continues",
+    "status": "active; measurement-specific external dependencies retained",
     "condition": "Search/human/native/collection observations remain gated separately. Existing TASK0126 actual-byte repair is independently actionable; these dependencies do not justify treating all engineering as impossible.",
     "search": "Existing account selected; Google requires completion using a passkey. No credential/code entered, account setting changed or report viewed. One actionable async request pending.",
     "human": "Owner explicitly deferred human trials; not reopened.",
@@ -1140,7 +1140,7 @@
     "otherPending": "Duck.ai terms approval remains pending; no prompt submitted or agreement accepted."
   },
   "ownerLifecycleRequest": "Keep the goal active",
-  "observedGoalLifecycle": "blocked; available API cannot set active, and native computer-use cannot operate Codex app controls. Continuing requested work in this turn; owner can resume via goal progress row.",
+  "observedGoalLifecycle": "active; user set active and fresh get_goal confirms it",
   "diagnosticBodyAdmission": {
     "research": "../newsletter-reliability/22-measured-diagnostic-body-limits.md",
     "native": "../newsletter-reliability/client-error-body-limit-native.json",
@@ -1158,5 +1158,18 @@
     "release": "../newsletter-reliability/client-error-body-limit-release.json",
     "sourceCommit": "8d5772bb942f764ac1faf849f355694615651767",
     "workerVersion": "f42e009b-ce32-46cc-b6ce-06fce906d5e6"
+  },
+  "clientBuildAttribution": {
+    "research": "../newsletter-reliability/23-client-build-attribution.md",
+    "checks": "../newsletter-reliability/client-build-identity-checks.json",
+    "localBrowser": "../newsletter-reliability/client-build-browser.json",
+    "siteTests": 150,
+    "identityCharacters": 80,
+    "localBrowserReportsStored": 1,
+    "identityReadbackAccepted": true,
+    "originalMessageGatePassed": false,
+    "productionRequests": 0,
+    "humanLabels": 0,
+    "hostedAssociationAccepted": false
   }
 }
