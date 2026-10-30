@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T00:07:53.660887+00:00",
-  "sourceBaseline": "9cf84084ad907633edc16db0611896a7f3e5d730",
+  "checkedAt": "2026-10-30T00:10:49.691093+00:00",
+  "sourceBaseline": "b989e8e9c650f20d5e589f87ff7b160644c1aa1e",
   "goalAchieved": false,
   "previousTurn": "no progress: explanation of existing readership evidence only; revalidated current source and took article revision as next safe action",
-  "scope": "Research99 revises the concise analytics retrospective with measured readership/source sensitivity and funnel lessons; accepted local build and frozen-table checks, publication acceptance pending.",
+  "scope": "Research99 connects the concise retrospective to measured readership/source concentration and funnel limits; local rendering, source/build/native deploy/CLI allocation and exact served Markdown accepted. Full analytics goal remains open.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,19 +46,19 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Deliver checked readership article revision; verify source/build activation and one excluded served representation. Then pursue authenticated search query/page evidence when access is available or one bounded native-app workflow investigation. Human trials remain deferred; full analytics requirements remain open.",
+  "nextBoundedAction": "Use authenticated Search Console query/page evidence when access is available; otherwise conduct the named bounded native-app workflow investigation as an editorial hypothesis, without asserting reader demand. Human trials remain deferred; native managed-verifier, historical, privacy and readership/use requirements remain open.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
     "sourceSha256": "f6186a1f16af8114a3318b8125af3c2a04cc34216f0126b7093b2f5a6e5d1aa1",
     "unchanged": false,
-    "freshServedCheck": false,
-    "publicationReceipt": null,
-    "servedMatchesCheckedBuild": false,
-    "lastServedCheckReceipt": "public-parsing-release.json",
-    "publicationStatus": "Research99 local checked revision; delivery/activation/served acceptance pending. Earlier Research92 served equality describes its earlier source only.",
-    "previousPublicationReceipt": "metadata-collector-release.json",
-    "servedMatchScope": "Current Research99 source awaits served acceptance; lastServedCheckReceipt retains only the earlier accepted source.",
+    "freshServedCheck": true,
+    "publicationReceipt": "readership-article-release.json",
+    "servedMatchesCheckedBuild": true,
+    "lastServedCheckReceipt": "readership-article-release.json",
+    "publicationStatus": "Research99 article accepted on source b989e8e / Worker29f1c079; exact direct Markdown equality, separate local desktop preview.",
+    "previousPublicationReceipt": "public-parsing-release.json",
+    "servedMatchScope": "Exact served direct Markdown13243 bytes; no fresh production browser layout/full HTML/per-request version trace.",
     "localBuildAccepted": true,
     "localBuildReceipt": "readership-article-checks.json"
   },
@@ -66,7 +66,7 @@
   "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
-  "liveAccountInspection": false,
+  "liveAccountInspection": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -763,7 +763,7 @@
     "warmCache": "HIT",
     "populationPrevalenceMeasured": false
   },
-  "ownSiteGetRequests": 0,
+  "ownSiteGetRequests": 1,
   "collectionEligibleRequests": 0,
   "diagnosticSelects": 2,
   "evidenceDelta": {
@@ -838,7 +838,7 @@
     "unmeteredCalculations": 1,
     "productionBrowserLayoutMeasured": false
   },
-  "productionStatementsScope": "Research99 article-only iteration: no new SQL",
+  "productionStatementsScope": "Research99: one excluded Markdown publication GET; no production SQL",
   "productionReportedReadsCoverage": "No new production query in Research99; historical receipts remain independently dated.",
   "productionReadTotal": 0,
   "publicationDateRepair": {
@@ -1015,6 +1015,8 @@
     "newPopulationClaims": false,
     "newHumanLabels": 0,
     "localAccepted": true,
-    "productionAccepted": false
-  }
+    "productionAccepted": true,
+    "release": "readership-article-release.json"
+  },
+  "currentTurn": "progress: article materially revised, checked, pushed, deployed and exact served Markdown accepted"
 }
