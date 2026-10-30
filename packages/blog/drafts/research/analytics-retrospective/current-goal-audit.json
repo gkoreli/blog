@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-30T08:58:44.957154+00:00",
+  "checkedAt": "2026-10-30T09:07:31.032818+00:00",
   "sourceBaseline": "4cefd55ceae96edb000660fab4f626e669917997",
   "goalAchieved": false,
   "previousTurn": "progress: Origin/JSON/native route budget,19 paired controls, two local browser readbacks and160 tests/types/build; native source/binding/allocation plus403/415 and one204/readback/cleanup accepted; GitHub in_progress disagreement retained",
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Publish checked writer after accepted schema, join source/native allocation and verify one owned report processing profile with guarded cleanup. Keep free-text residual and broader readership measurements open.",
+  "nextBoundedAction": "Return to source-sensitive completed-week readership comparisons and authenticated query/page evidence when available; preserve R1 sensitivity, changing collection rules and unknown human status. Human trials remain deferred; do not count diagnostic controls as readers or calibration labels.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -970,7 +970,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: schema accepted, initial URL sanitizer published; a separately evidenced parenthesis-token gap is corrected under v2, with166 tests/14 native conditions/two new browser controls. Final v2 activation/readback remains pending.",
+  "currentTurn": "progress: v2 URL processing/provenance source, native deployment and one direct production readback/owned cleanup accepted; known free-text residual and readership evidence gaps remain open.",
   "requirementsAudit": {
     "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
     "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
@@ -1092,7 +1092,7 @@
     "otherPending": "Duck.ai terms approval remains pending; no prompt submitted or agreement accepted."
   },
   "ownerLifecycleRequest": "Keep the goal active",
-  "observedGoalLifecycle": "active; user set active and fresh get_goal confirms it",
+  "observedGoalLifecycle": "active; fresh get_goal confirms owner instruction to keep active. Full objective not achieved.",
   "diagnosticBodyAdmission": {
     "research": "../newsletter-reliability/22-measured-diagnostic-body-limits.md",
     "native": "../newsletter-reliability/client-error-body-limit-native.json",
@@ -1181,11 +1181,12 @@
   },
   "runtimeUnchangedScope": "Client error parser/redactor/writer and nullable processing column change. No analytics collector/classifier/verifier, newsletter sender/admission, credential or article change.",
   "productionOperationsThisTurn": {
-    "httpRequests": 0,
-    "sqlAttempts": 5,
-    "meteredStatements": 4,
-    "reportedReads": 48,
-    "reportedWrites": 1,
+    "httpRequests": 1,
+    "sqlAttempts": 9,
+    "meteredStatements": 8,
+    "reportedReads": 58,
+    "reportedWrites": 2,
+    "ingestionWriteCostReturned": false,
     "unmeteredFailedPreflight": 1,
     "readerRecordsReturned": 0,
     "humanLabels": 0
@@ -1252,7 +1253,7 @@
     "browserControls": 2,
     "browserProfileMatchedRows": 2,
     "productionSchemaAccepted": true,
-    "writerActivated": false,
+    "writerActivated": true,
     "historicalRowsBackfilled": false,
     "v2": {
       "profile": "client-error-urls-v2",
@@ -1268,7 +1269,12 @@
       "publishedV1DeltaBaseline": "00d39cc",
       "knownFreeTextResidualsPerVersion": 1,
       "v1CohortPreserved": true,
-      "activationAccepted": false
+      "activationAccepted": true,
+      "release": "../newsletter-reliability/client-error-sanitization-release.json",
+      "sourceCommit": "832bc3a4a4489755b13966d468d97230d1d03cb0",
+      "productionDirectControls": 1,
+      "productionReadbackAccepted": true,
+      "ownedCleanupAccepted": true
     }
   }
 }

@@ -1,0 +1,98 @@
+{
+  "checkedAt": "2026-10-30T09:07:31.032818+00:00",
+  "sourceCommit": "832bc3a4a4489755b13966d468d97230d1d03cb0",
+  "buildId": "4ec8c7c3-9979-4c40-90c8-ee82c1df00b8",
+  "workerVersion": "e63c1fbc-39cd-417e-a0d8-64dba148c91e",
+  "allocationPercent": 100,
+  "productionHttpRequests": 1,
+  "productionSqlStatements": 4,
+  "post": {
+    "status": 204,
+    "curlExit": 0,
+    "emptyBody": true
+  },
+  "independentReadbackMatched": true,
+  "storedFieldsMatched": true,
+  "serverProcessingMatched": true,
+  "clientProvenanceOverrideDiscarded": true,
+  "reportedClientBuildIsSynthetic": true,
+  "cleanupRemovedRows": 1,
+  "finalAbsent": true,
+  "meters": [
+    {
+      "stage": "positive-preflight",
+      "rowsRead": 1,
+      "rowsWritten": 0,
+      "changes": 0
+    },
+    {
+      "stage": "positive-readback",
+      "rowsRead": 3,
+      "rowsWritten": 0,
+      "changes": 0
+    },
+    {
+      "stage": "positive-cleanup",
+      "rowsRead": 5,
+      "rowsWritten": 1,
+      "changes": 1
+    },
+    {
+      "stage": "positive-absence",
+      "rowsRead": 1,
+      "rowsWritten": 0,
+      "changes": 0
+    }
+  ],
+  "reportedSqlReads": 10,
+  "reportedSqlWrites": 1,
+  "ingestionWriteCostReturned": false,
+  "privatePlanManifestSha256": "b063db25311c66fdeb721c372d81adafb22ceec55d932671fb2e849d7065205f",
+  "humanLabels": 0,
+  "actualBrowser": false,
+  "burstOrGlobalRateAccuracyMeasured": false,
+  "perRequestVersionJoined": false,
+  "scope": "One labelled direct diagnostic: exact scrubbed source/referrer/stack, preserved line/column/UA/synthetic build, server-generated processing profiles, guarded owned cleanup and absence. No browser/population or universal privacy claim.",
+  "accepted": true,
+  "githubCheck": {
+    "id": 123978763537,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "nativeBuildLogObserved": true,
+  "servedAssetBytesCompared": false,
+  "processingEvidence": {
+    "profile": "client-error-processing-v1",
+    "sanitization": "client-error-urls-v2",
+    "admission": "origin-route-budget-v1"
+  },
+  "preservedFields": [
+    "line=7",
+    "column=3",
+    "synthetic User-Agent",
+    "synthetic full 80-character client build ID"
+  ],
+  "expectedScrubbedFields": {
+    "source": "https://example.invalid/main(1).js",
+    "referrer": "https://gkoreli.com/owner",
+    "stack": "Error: fixture\n at fn (https://example.invalid/main(1).js)"
+  },
+  "privateEvidence": {
+    "files": 45,
+    "manifestSha256": "6118ca7c4bcba059b67a5a63eadbe83de944497d2bbe9a0158dd86013eabbf92",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  },
+  "initialArchiveStop": {
+    "productionHttpAttempts": 0,
+    "productionSqlAttempts": 0,
+    "cause": "Required native UI capture had not yet been saved; no completed manifest."
+  },
+  "limits": [
+    "Point-in-time source/build/allocation association; no per-request version join.",
+    "One synthetic direct HTTP control, not production browser delivery or human calibration.",
+    "Client-reported build and User-Agent are controlled inputs, not authenticated sender facts.",
+    "The known plain-text residual, broader retention/basis review and readership measurements remain open.",
+    "Reported SQL writes omit the ingestion write cost, which was not returned."
+  ]
+}
