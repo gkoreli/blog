@@ -1,0 +1,54 @@
+{
+  "asset": "infographic-v2.png",
+  "sha256": "986ca8c21ebf3e428e2902674516fc4c4f6c7e1d5514e388661c8de24fbcc090",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "bytes": 1640060,
+  "caption": "Apparently my Mac's upgrade was putting Linux inside it lmao. A 4 GB VM beat macOS at pnpm installs in all four repos I tested; same Mac, warm caches: https://gkoreli.com/why-worktree-setup-is-slow-on-macos",
+  "weightedLength": 174,
+  "altText": "Infographic: 'My Mac lost to the Linux VM inside it. At installing dependencies.' One M5 Mac, two OS environments. Five-run median default warm-cache pnpm 12 installs (macOS versus Linux VM): T3 Code 8.12s versus 2.10s; Next.js 4.56s versus 1.56s; Vite 1.82s versus 0.48s; SvelteKit 0.59s versus 0.13s. Host: 10 logical CPUs, 24 GB RAM. VM: 4 vCPUs, 4 GB RAM. Offline, frozen lockfiles. Install times only; OS, storage and resources differ. The terminal is an illustration.",
+  "reviewedPhoneDisplayCssPixels": 390,
+  "measurements": [
+    {
+      "repo": "T3 Code",
+      "macosSeconds": 8.12,
+      "linuxVmSeconds": 2.1
+    },
+    {
+      "repo": "Next.js",
+      "macosSeconds": 4.56,
+      "linuxVmSeconds": 1.56
+    },
+    {
+      "repo": "Vite",
+      "macosSeconds": 1.82,
+      "linuxVmSeconds": 0.48
+    },
+    {
+      "repo": "SvelteKit",
+      "macosSeconds": 0.59,
+      "linuxVmSeconds": 0.13
+    }
+  ],
+  "status": "published",
+  "url": "https://x.com/GogaKoreli/status/2116201465174012310",
+  "publishedAtPacific": "2026-10-30 09:12",
+  "checkedAtUtc": "2026-10-30T16:15:06.901723+00:00",
+  "nativeCaptionImageAndAltVerified": true,
+  "nativeMadeWithAiLabelObserved": true,
+  "publicTextVerified": true,
+  "publicEndpointStatus": 200,
+  "publicEndpointSha256": "fb75c06f34bc550abad2ab5dd58ea1e41a66ce0a574b4dc8e4dc36510df3fee1",
+  "visibilityLimit": "Public text and owner-view media verified; no causal readership or ordinary feed reach claim.",
+  "privateEvidenceSha256": {
+    "x-published.dom.txt": "3b994ad116e6ff503f31ef5136dffb2ce48627b34e1e0f1e0499d1c5b2f19ee6",
+    "x-published.jpg": "976f2b70315784687deb7b918b548255c84017301b3a315e6a01b39b9adbb36f",
+    "public-oembed.json": "fb75c06f34bc550abad2ab5dd58ea1e41a66ce0a574b4dc8e4dc36510df3fee1",
+    "phone-preview.jpg": "7d9efedf03d993ad9dacdd669666ac782ef9b3617bba3ee69855441212a943e1",
+    "preview.py": "149e2d7c26cd55f51e8a08eed2604242b6cbe45be4144a0e3696223e210f53f3"
+  },
+  "builtInImagegenUsed": true,
+  "originalArticleAndPostUnchanged": true
+}

@@ -31,3 +31,9 @@ The campaign used the [launch-article-on-x skill](../../../../../.agents/skills/
 - Confidence and confounders: publication verified; no causal attribution of readership or useful response yet.
 - Article correction needed: the ext4/ZFS condition is clarified from existing evidence; no benchmark rerun or changed timing claim.
 - Shared-skill change needed: none from this single launch.
+
+## Additional infographic post, October 30
+
+Goga requested a visually appealing, deliberately provocative additional X post. Published at **9:12 AM Pacific**: https://x.com/GogaKoreli/status/2116201465174012310. [Exact copy and acceptance](infographic-post.md), [selected PNG](infographic-v2.png), [generation/edit prompts](infographic-prompts.md) and [check record](infographic-checks.json) are saved. The final graphic preserves the four repository medians and conditions; approximate bars, tiny qualifiers and a misleading download illustration in the initial draft were removed before publication. The native Made with AI label remains visible.
+
+The permanent page confirms the full graphic, exact caption, all-data alt text and article link. The official public oEmbed response separately verifies author/text. Initial two owner-view impressions and zero reactions are not readership/adoption acceptance. This explicit new visual request changes media and copy together, so no causal format comparison is claimed. No article, benchmark or original post was edited. Changelog is still prepared and unsent pending destination-specific approval.

@@ -25,3 +25,11 @@ Yes, the chart times pnpm install in a new worktree. Bare git worktree creation 
 Prepared for https://x.com/SamHulick/status/2115348794325749966, after reading Theo's existing ZFS answer. Adds the independent ext4 result and the separate XFS cache-placement control; does not claim a ZFS benchmark or an APFS-only decomposition.
 
 ZFS wasn't required in my tests: an ext4 Linux VM on the same Mac beat macOS in all four repos. Moving the cache onto the checkout's filesystem cut a separate XFS test from 7.6s to 1.4s; this doesn't isolate APFS alone. https://gkoreli.com/why-worktree-setup-is-slow-on-macos
+
+## Additional infographic post
+
+Published: https://x.com/GogaKoreli/status/2116201465174012310
+
+Weighted count: 174. Image: [infographic-v2.png](infographic-v2.png), with the exact description in [its post record](infographic-post.md).
+
+Apparently my Mac's upgrade was putting Linux inside it lmao. A 4 GB VM beat macOS at pnpm installs in all four repos I tested; same Mac, warm caches: https://gkoreli.com/why-worktree-setup-is-slow-on-macos
