@@ -1,0 +1,157 @@
+{
+  "checkedAt": "2026-10-30T09:42:53.723588+00:00",
+  "sourceCommit": "3b28416347ac1da93b8fb4dcc9d642b51d220adb",
+  "buildId": "cfbc6510-addf-4de7-a8ec-b8b94806ec44",
+  "workerVersion": "6afde47c-70e9-4e68-84da-ecc86fd9fdc3",
+  "allocationPercent": 100,
+  "githubCheckAtPlan": "in_progress",
+  "nativeBuildSuccessObserved": true,
+  "httpRequests": 5,
+  "http": [
+    {
+      "stage": "ready",
+      "status": 200,
+      "curlExit": 0
+    },
+    {
+      "stage": "report",
+      "status": 200,
+      "curlExit": 0
+    },
+    {
+      "stage": "html",
+      "status": 200,
+      "curlExit": 0
+    },
+    {
+      "stage": "js",
+      "status": 200,
+      "curlExit": 0
+    },
+    {
+      "stage": "css",
+      "status": 200,
+      "curlExit": 0
+    }
+  ],
+  "readinessEventMatched": true,
+  "reportEventMatched": true,
+  "matchedWorkerVersion": "6afde47c-70e9-4e68-84da-ecc86fd9fdc3",
+  "cache": "MISS",
+  "validations": {
+    "report": {
+      "contract": true,
+      "allFrozenMetricsMatched": true,
+      "articleSourceComparisons": 33,
+      "version": "2026-10-30.1",
+      "siteEvents": 1477,
+      "articleEvents": 971,
+      "calculatedAt": "2026-10-30T09:42:52.238Z"
+    },
+    "html": {
+      "articleFragmentMatched": true
+    },
+    "js": {
+      "exactBytesMatched": true,
+      "bytes": 10234,
+      "sha256": "8acfdbc1c48b6a76637bc1ea761f6be0f474516e662acd5318a87d6b11c37553"
+    },
+    "css": {
+      "exactBytesMatched": true,
+      "bytes": 8764,
+      "sha256": "aa7d40582e9cd5c4bb1f8460aadbbb9ce4de2d664785b5a0a55094cbb07a375d"
+    }
+  },
+  "calculationReceipts": [
+    {
+      "version": "2026-10-28.1",
+      "event": "stats-report-calculation",
+      "outcome": "returned",
+      "submittedStatements": 1,
+      "returnedResults": 1,
+      "metadata": "complete",
+      "counterScope": "last-attempt",
+      "reportedRowsRead": 40011,
+      "reportedRowsWritten": 0,
+      "totalAttempts": 1,
+      "unexpectedWrites": false
+    }
+  ],
+  "directSqlStatements": 0,
+  "humanLabels": 0,
+  "collectionEligibleRequests": 0,
+  "privatePlanManifestSha256": "6c35175b52747201504cb712c53c22fc8fcc0bd11eae996aa270342566d55cc1",
+  "accepted": true,
+  "limits": [
+    "Exact frozen aggregate/asset validation is not human identity, source authenticity or readership proof.",
+    "A missing calculation meter is unavailable, not zero; no request is repeated to recover it.",
+    "Point-in-time source/native activation association; later docs commits have their own build identity."
+  ],
+  "githubCheckFinal": {
+    "id": 123992894434,
+    "status": "in_progress",
+    "conclusion": null,
+    "head_sha": "3b28416347ac1da93b8fb4dcc9d642b51d220adb",
+    "completed_at": null
+  },
+  "reconciliation": {
+    "ownedRequests": 5,
+    "uniqueExactEventJoins": 5,
+    "workerVersionJoins": 5,
+    "responseRayJoins": 5,
+    "rows": [
+      {
+        "stage": "ready",
+        "workerVersionMatched": true,
+        "responseRayMatched": true,
+        "methodMatched": true,
+        "uniqueEvent": true
+      },
+      {
+        "stage": "report",
+        "workerVersionMatched": true,
+        "responseRayMatched": true,
+        "methodMatched": true,
+        "uniqueEvent": true
+      },
+      {
+        "stage": "html",
+        "workerVersionMatched": true,
+        "responseRayMatched": true,
+        "methodMatched": true,
+        "uniqueEvent": true
+      },
+      {
+        "stage": "js",
+        "workerVersionMatched": true,
+        "responseRayMatched": true,
+        "methodMatched": true,
+        "uniqueEvent": true
+      },
+      {
+        "stage": "css",
+        "workerVersionMatched": true,
+        "responseRayMatched": true,
+        "methodMatched": true,
+        "uniqueEvent": true
+      }
+    ]
+  },
+  "tailShutdown": {
+    "exit": -15,
+    "controllerAwaited": true,
+    "providerDeletionIndependentlyConfirmed": false,
+    "remainingLocalGroupMembers": 0
+  },
+  "privateEvidence": {
+    "files": 47,
+    "manifestSha256": "5c634651dfe527ae2550963dc9f465360f04c0f3c6d11c7b922f9e7ec9a62e73",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  },
+  "reportVersion": "2026-10-30.1",
+  "coldWarmCachePairMeasured": false,
+  "productionBrowserTrial": false,
+  "nativeBuildNode": "24.22.1",
+  "localPinnedNode": "24.14.1"
+}

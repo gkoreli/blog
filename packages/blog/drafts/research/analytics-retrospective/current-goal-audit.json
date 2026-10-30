@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-30T09:36:54.453891+00:00",
+  "checkedAt": "2026-10-30T09:42:53.723588+00:00",
   "sourceBaseline": "4cefd55ceae96edb000660fab4f626e669917997",
   "goalAchieved": false,
   "previousTurn": "progress: October29 Browser-only additive capture and frozen reconstruction accepted in Research100; article-specific concentration gap established, not human growth.",
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Commit/push checked report extension, associate exact hosted build/Worker activation, then execute a bounded report/assets acceptance without forcing cache fills or repeating requests for missing meters. Preserve separate search/human/native-verifier gates.",
+  "nextBoundedAction": "Use the exact private upper-ID cutoff from Research93 to preflight the unassessed new-ID interval across all stored kinds. Apply existing row/byte/read gates before any export/offline shared assessment; preserve unknowns, cohort scopes and independent labels. Browser-only Research100 is not an all-kind census.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -970,7 +970,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: article-specific source concentration implemented, native/frozen/shared-contract/UI acceptance complete; hosted activation remains separate.",
+  "currentTurn": "progress: article-specific source concentration implementation and local checks are accepted, plus exact hosted source/build/allocation, five version/Ray joins, all33 live article cohorts, served JS/CSS and one 40,011-read calculation. GitHub/native disagreement retained.",
   "requirementsAudit": {
     "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
     "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
@@ -1141,10 +1141,15 @@
   },
   "runtimeUnchangedScope": "Article-reach SQL, shared response contract/cache namespace and report UI change; analytics collector/classifier/verifier, collection, owner/referral policy, schema, newsletter and article remain unchanged.",
   "productionOperationsThisTurn": {
-    "httpRequests": 0,
-    "sqlAttempts": 0,
-    "reportedReads": 0,
+    "httpRequests": 5,
+    "directSqlStatements": 0,
+    "reportCalculationStatements": 1,
+    "reportedReads": 40011,
     "reportedWrites": 0,
+    "counterScope": "last-attempt",
+    "providerTotalAttempts": 1,
+    "cache": "MISS",
+    "collectionEligibleRequests": 0,
     "newPopulationExports": 0,
     "humanLabels": 0
   },
@@ -1271,7 +1276,14 @@
     "contractNegatives": 35,
     "frozenArticles": 33,
     "localAccepted": true,
-    "hostedActivationAccepted": false,
-    "humanAccuracyMeasured": false
+    "hostedActivationAccepted": true,
+    "humanAccuracyMeasured": false,
+    "liveAccepted": true,
+    "release": "article-source-concentration-release.json",
+    "codeCommit": "3b28416347ac1da93b8fb4dcc9d642b51d220adb",
+    "workerVersion": "6afde47c-70e9-4e68-84da-ecc86fd9fdc3",
+    "liveArticleComparisons": 33,
+    "productionReads": 40011,
+    "githubNativeDisagreement": "Final GitHub in_progress / native build+deploy success; cause unknown."
   }
 }
