@@ -37,3 +37,19 @@ In the paired local 512-row cases, reported reads are unchanged: 33,061 mixed / 
 Source delivery, actual hosted activation and a bounded public API/cache/assets acceptance remain separate. No production request, diagnostic SELECT, new population capture or human label occurs in this local iteration. The concise article stays unchanged: this narrow denominator lesson belongs here until it changes the reader’s central argument. The full goal remains active and incomplete.
 
 The private 33-file local archive has manifest SHA-256 `b8793855b9ed7f67bb637d9a3619cd9f2d6110d19185e711ca1cbfd7890c6c9b`. Investigation-copy review is October 31, not automatic erasure. Raw captures, SQL snapshots and session material remain outside Git.
+
+## Exact-source publication and live public acceptance
+
+[Release receipt](native-boolean-availability-release.json) joins source `47daee3b57f8906f266f3ee04e89bc3136176f7c`, successful GitHub check `124071828741`, native build `80f5a4a7-63ae-46f0-bd90-f14ed090fd61` and full Worker `766c612c-5ee9-4001-b50f-42558dd0d47f` at a fresh Wrangler 100% allocation. Hosted Node 24.22.1 and pinned local 24.14.1 remain distinct. Later bookkeeping deployments have separate identities.
+
+Before live execution, the actual native handleStats route returns the planned privacy/Other-bot/Automation/seven-day selection on two synthetic records. It reports verified-bot availability 2 / true 2 / false 0 and signed-agent availability 1 / true 0 / false 1. Six altered-report cases fail both the exported checker and its actual CLI path. This proves the acceptance checker exercises the added distinction; it supplies no real provider verdict.
+
+The frozen plan executes six single-attempt GETs: owner readiness, two matching filtered report requests, stats HTML and its JS/CSS. All six uniquely join exact controlled URL/header, full Worker version and response Ray; no observation attempt/storage log appears. Source eligibility keeps those routes/responses outside collection. No direct D1 diagnostic SELECT, new population capture, raw mode or human label occurs. CLI D1 authorization is not retried or declared repaired.
+
+At 12:52:24.239 UTC the report includes six stored events. Both field availability/true/false families are zero; four events explicitly store unavailable native values and two have no record. These are missing evidence, not six native negative decisions. Genuine current native-positive/false field results remain unobserved by this production selection; the nonzero cases above are synthetic only.
+
+The ordinary same-socket/SEA pair is MISS→HIT with identical bytes, calculation time and expiry 13:52:24 GMT, and no second calculation. One submitted/returned statement and one captured attempt report 7,683 reads/zero writes, below the frozen 50,000 review threshold. The threshold is not server enforced or an account-wide total. Provider retries and unreported/background work remain outside this returned-attempt meter; no production before/after saving is claimed.
+
+The 1,333-byte verification-section fragment and exact 97,153-byte JS / 9,242-byte CSS match the checked build. No full HTML equality or fresh production interactive/device/human acceptance is inferred. Frozen 26-file plan/program inputs reconcile; the final 59-file private archive has manifest `87c551a7e936628b3c95f07f79775079e579b09cfb239fcf5f07d080ee458680`. Tail shutdown is awaited and its owned group has no members; provider deletion is not independently confirmed. Review remains October 31, not automatic erasure.
+
+This closes this reporting repair. The native request-level oracle and accepted intermediary identity, source operator/trigger, authenticated search evidence, privacy decisions and deferred human/owner-browser measurements remain separate. The full goal remains active and incomplete.

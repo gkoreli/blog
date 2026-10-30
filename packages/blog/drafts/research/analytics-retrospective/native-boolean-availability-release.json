@@ -1,0 +1,112 @@
+{
+  "checkedAt": "2026-10-30T12:52:26.277204+00:00",
+  "sourceCommit": "47daee3b57f8906f266f3ee04e89bc3136176f7c",
+  "buildId": "80f5a4a7-63ae-46f0-bd90-f14ed090fd61",
+  "workerVersion": "766c612c-5ee9-4001-b50f-42558dd0d47f",
+  "allocationPercent": 100,
+  "githubCheckSuccess": true,
+  "nativeBuildSuccess": true,
+  "ownSiteHttpRequests": 6,
+  "collectionEligibleRequests": 0,
+  "exactOwnedEventVersionRayJoins": 6,
+  "selection": {
+    "range": "7d",
+    "traffic": "automation",
+    "path": "/privacy",
+    "agent": null,
+    "kind": "other-bot"
+  },
+  "reportVersionFromAcceptedSource": "2026-10-30.3",
+  "report": {
+    "contract": true,
+    "selectionMatched": true,
+    "headlineEvents": 6,
+    "calculatedAt": "2026-10-30T12:52:24.239Z",
+    "native": {
+      "unionAvailable": 0,
+      "verifiedBot": {
+        "available": 0,
+        "true": 0,
+        "false": 0
+      },
+      "signedAgent": {
+        "available": 0,
+        "true": 0,
+        "false": 0
+      },
+      "bothUnavailable": 4,
+      "notRecorded": 2,
+      "unrecognized": 0
+    },
+    "limits": "Filtered stored outcomes, not an accepted native oracle, known provider identity, person or human calibration."
+  },
+  "cache": {
+    "first": "MISS",
+    "second": "HIT",
+    "sameSocket": true,
+    "sameColo": true,
+    "colo": "SEA",
+    "bodyEqual": true,
+    "calculatedAtEqual": true,
+    "expiresEqual": true,
+    "expiresAt": "Fri, 30 Oct 2026 13:52:24 GMT",
+    "remainingBoundSeconds": 3599.761,
+    "secondCalculations": 0
+  },
+  "calculationReceipts": [
+    {
+      "version": "2026-10-28.1",
+      "event": "stats-report-calculation",
+      "outcome": "returned",
+      "submittedStatements": 1,
+      "returnedResults": 1,
+      "metadata": "complete",
+      "counterScope": "last-attempt",
+      "reportedRowsRead": 7683,
+      "reportedRowsWritten": 0,
+      "totalAttempts": 1,
+      "unexpectedWrites": false
+    }
+  ],
+  "reportedLastAttemptReads": 7683,
+  "reportedLastAttemptWrites": 0,
+  "costAcceptance": "captured-returned-attempt",
+  "readReviewThreshold": 50000,
+  "thresholdPassed": true,
+  "assets": {
+    "html": {
+      "nativeVerificationFragmentMatched": true,
+      "bytes": 1333
+    },
+    "js": {
+      "exactBuiltBytesMatched": true,
+      "bytes": 97153,
+      "sha256": "27d06afad64308d8c54e27a719341d2175d841a6ddb5781b3e0616b1d0edfec3"
+    },
+    "css": {
+      "exactBuiltBytesMatched": true,
+      "bytes": 9242,
+      "sha256": "00a09aa3a24ebb6b14b0078cba30c955acae36f1492057e226daf756fcb4ad28"
+    }
+  },
+  "directProductionSelects": 0,
+  "humanLabels": 0,
+  "optionalRawCaptureActivated": false,
+  "planManifestSha256": "77f695c9cf94238a2ae518903ee6e0c37235051a646de7f3739d89b4e27c3c8e",
+  "accepted": true,
+  "limits": [
+    "Filtered stored-event cohort, not native oracle or provider identity, operator, human readership, source authenticity or population calibration.",
+    "Captured D1 counters cover returned attempts; retries/account-wide billing and background work remain separate.",
+    "Exact native-verification HTML fragment and JS/CSS bytes; no full-HTML equality or production interactive-browser/device acceptance.",
+    "Cache reuse is observed on one connection/colo at this time, not a global cache or read budget.",
+    "CLI D1 authorization is not retried or declared repaired.",
+    "Scope is this accepted source/version, not later documentation-only deployments."
+  ],
+  "privateEvidenceManifestSha256": "87c551a7e936628b3c95f07f79775079e579b09cfb239fcf5f07d080ee458680",
+  "privateEvidenceFiles": 59,
+  "frozenInputsAndProgramsReconciled": true,
+  "ownedTailAwaited": true,
+  "ownedTailGroupMembers": 0,
+  "providerTailDeletionIndependentlyConfirmed": false,
+  "githubCheckId": 124071828741
+}
