@@ -1,0 +1,82 @@
+{
+  "sourceCommit": "4d2c475af236088e7cfe32b0ec0c9f0accb2bce2",
+  "build": {
+    "id": "c29536f3-9472-48b3-b50a-99802cdecae1",
+    "checkId": 124189136180,
+    "status": "completed",
+    "conclusion": "success",
+    "completedAt": "2026-10-30T16:42:33Z"
+  },
+  "separatelyObservedDeployment": {
+    "id": "621d22c1-419d-453f-8e85-357ca909774e",
+    "created_on": "2026-10-30T16:42:27.212689Z",
+    "versions": [
+      {
+        "version_id": "ea1eaa74-97a6-4b16-b651-d571a5b0134f",
+        "percentage": 100
+      }
+    ]
+  },
+  "capture": [
+    {
+      "name": "published-html",
+      "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog",
+      "startedAt": "2026-10-30T16:43:15.300155+00:00",
+      "exitCode": 0,
+      "status": "200",
+      "bytes": 57242,
+      "sha256": "c5929f31861d6795f63cf2ecbe6aa5d1d0d191d14ea2182863f8fa0327299485"
+    },
+    {
+      "name": "published-md",
+      "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog.md",
+      "startedAt": "2026-10-30T16:43:15.763041+00:00",
+      "exitCode": 0,
+      "status": "200",
+      "bytes": 27120,
+      "sha256": "58c658c50479e8a50fa9c5f203eaca249148771c8b9be19694e84cf803654f09"
+    }
+  ],
+  "rows": [
+    {
+      "name": "published-html",
+      "representation": "html",
+      "bytes": 57242,
+      "sha256": "c5929f31861d6795f63cf2ecbe6aa5d1d0d191d14ea2182863f8fa0327299485",
+      "historicalScopeBeforeFirstH2": true,
+      "namedOctoberContinuationBeforeFirstH2": true,
+      "acceptance": true,
+      "continuationLink": {
+        "href": "/building-blog-analytics-what-the-numbers-can-prove",
+        "text": "Building Blog Analytics: What the Numbers Can Prove"
+      }
+    },
+    {
+      "name": "published-md",
+      "representation": "markdown",
+      "bytes": 27120,
+      "sha256": "58c658c50479e8a50fa9c5f203eaca249148771c8b9be19694e84cf803654f09",
+      "historicalScopeBeforeFirstH2": true,
+      "namedOctoberContinuationBeforeFirstH2": true,
+      "acceptance": true,
+      "continuationLink": {
+        "text": "Building Blog Analytics: What the Numbers Can Prove",
+        "href": "/building-blog-analytics-what-the-numbers-can-prove"
+      }
+    }
+  ],
+  "markdownExactMatchToCheckedBuild": true,
+  "fullHtmlExactMatchToLocalBuild": false,
+  "perRequestWorkerVersionJoined": false,
+  "sourceToWorkerVersionJoined": false,
+  "productionBrowserLayoutMeasured": false,
+  "productionSqlStatements": 0,
+  "exclusion": "Current native eligibility function rejects Purpose: prefetch HTML and direct .md assets; no ingestion readback performed.",
+  "decision": "Retain the delivered note; reader usefulness and discovery effects remain unmeasured.",
+  "readerFollowUpWindow": {
+    "startInclusiveUtc": "2026-10-31T00:00:00Z",
+    "endExclusiveUtc": "2026-11-07T00:00:00Z",
+    "scheduled": false
+  },
+  "searchFollowUp": "Separate 28-day window after confirmed recrawl and authorized page/query data; not started."
+}
