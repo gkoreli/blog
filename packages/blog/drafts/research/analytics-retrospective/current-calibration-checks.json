@@ -1,0 +1,134 @@
+{
+  "checkedAt": "2026-10-30T13:12:12.311980+00:00",
+  "sourceBaseline": "0551880ac02cdb17cbb324dae136aa9ace51cfdd",
+  "runtimeCodeChanged": false,
+  "helperChanges": [
+    "Current collection min/max required rather than hardcoded October27 profile",
+    "Explicit empty provider fixture metadata",
+    "New per-trial summary with independent execution provenance and receipt/D1 agreement"
+  ],
+  "nativePreflight": {
+    "actualComposedWorker": true,
+    "syntheticHttpStageConditions": 4,
+    "historyMigrationPreserved": true,
+    "ownerGuardAndPermanentExclusion": true,
+    "publicTotalZeroAfterRemovingMarks": true,
+    "notBrowserOrProviderLabels": true
+  },
+  "nativeLedger": {
+    "indexed": true,
+    "rows": 12,
+    "reads": 166,
+    "writes": 0,
+    "boundAndLiteralEqual": true,
+    "queryPlan": [
+      {
+        "id": 3,
+        "parent": 0,
+        "notused": 0,
+        "detail": "MATERIALIZE requested"
+      },
+      {
+        "id": 6,
+        "parent": 3,
+        "notused": 0,
+        "detail": "SCAN json_each VIRTUAL TABLE INDEX 1:"
+      },
+      {
+        "id": 19,
+        "parent": 0,
+        "notused": 0,
+        "detail": "MATERIALIZE observed"
+      },
+      {
+        "id": 29,
+        "parent": 19,
+        "notused": 216,
+        "detail": "SCAN r"
+      },
+      {
+        "id": 31,
+        "parent": 19,
+        "notused": 59,
+        "detail": "SEARCH o USING INDEX idx_page_observations_public_path_time (is_owner=? AND path=? AND observed_at>? AND observed_at<?)"
+      },
+      {
+        "id": 58,
+        "parent": 19,
+        "notused": 0,
+        "detail": "USE TEMP B-TREE FOR GROUP BY"
+      },
+      {
+        "id": 139,
+        "parent": 0,
+        "notused": 62,
+        "detail": "SCAN r"
+      },
+      {
+        "id": 141,
+        "parent": 0,
+        "notused": 46,
+        "detail": "SEARCH t USING INDEX sqlite_autoindex_analytics_calibration_trials_1 (id=?) LEFT-JOIN"
+      },
+      {
+        "id": 153,
+        "parent": 0,
+        "notused": 0,
+        "detail": "BLOOM FILTER ON o (id=?)"
+      },
+      {
+        "id": 167,
+        "parent": 0,
+        "notused": 47,
+        "detail": "SEARCH o USING AUTOMATIC COVERING INDEX (id=?) LEFT-JOIN"
+      },
+      {
+        "id": 211,
+        "parent": 0,
+        "notused": 0,
+        "detail": "USE TEMP B-TREE FOR ORDER BY"
+      }
+    ]
+  },
+  "realProductionControls": 12,
+  "knownAutomationLabels": 12,
+  "knownHumanLabels": 0,
+  "summaryNegativeCases": 12,
+  "twoHelperSyntaxChecks": true,
+  "articleAndPromptsChanged": false,
+  "articleSha256": "b22116595f06ab41f0ca83575f577f7e981fe12843775bdc5093cfbe0efad595",
+  "promptSha256": "c315f9c8f03054ed25c857d87e9960dcb18a214311689b93ea4cc1e04c284618",
+  "sourceSha256": {
+    "packages/blog/scripts/check-production-calibration.mjs": "e3a5c97df53874ff7610b2b03acdcda1d851aeb0bef323d801cbb16d52803140",
+    "packages/blog/scripts/summarize-current-calibration.mjs": "7ba1b94715c3b160fc40f659fde97b24bd08ae61114fe9f8a2b481d2f5891459"
+  },
+  "independentLedgerReads": 167,
+  "independentLedgerWrites": 0,
+  "independentLedgerAgentAttempts": 1,
+  "independentLedgerProviderAttempts": 1,
+  "constantProbeReads": 0,
+  "constantProbeWrites": 0,
+  "originalTemporaryBindingsRemoved": true,
+  "namespaceInactiveBeforeExpiry": true,
+  "providerScriptEtagAndRuntimeUnchanged": true,
+  "perRequestWorkerTraceCaptured": false,
+  "browserTabClosed": true,
+  "tailsStarted": 0,
+  "rawModeActivated": false,
+  "preservedHarnessFailures": [
+    "First query-access harness assumed local CLI row meters existed; actual local response exposed duration only. It stopped before any remote probe. Remote-only recovery used the saved positive local result and preserved unknown local meters.",
+    "Wrangler4.71 rejects --force on secret delete before its handler; no deletion attempted by that invocation. Source-confirmed noninteractive command removed both bindings and metadata/inactive checks accepted cleanup.",
+    "The browser developer-console export contains no recorded CSP messages; stage outcomes are not claimed as a complete browser network trace."
+  ],
+  "baseNativeBuildSourceJoin": true,
+  "baseBuildId": "f3e2d520-368a-4272-aab5-a658888f5426",
+  "privateArchive": {
+    "files": 148,
+    "sha256": "11e1756de113907780ca4d752aae9d5e8e77d9c13152d2ccc6dff48c516163da",
+    "activationPlanSha256": "f7bb7752a291e724a842cf94a4ac9932932a14ab136731d27a6f3cafb8bbfb91",
+    "readPlanSha256": "265e74aa9bfd5651420c443f439c617c73029113fdbb7c3d68d4e1920088522d",
+    "planAndReadInputsReconciled": true
+  },
+  "allTemporaryBindingsRemoved": true,
+  "noNewRuntimeProfile": true
+}

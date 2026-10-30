@@ -5,6 +5,7 @@ import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
+import { COLLECTION_VERSION } from '../../analytics/.test-dist/versions.js';
 
 const output=process.argv[2];if(!output)throw Error('Provide a new aggregate receipt path');
 const req=createRequire(resolve('package.json'));
@@ -14,7 +15,7 @@ const trials=conditions.map(condition=>({id:randomUUID(),condition,operator:cond
 const issuedAt=Date.now()-1000,expiresAt=Date.now()+600000,token='e'.repeat(64);
 const compiled=await build({entryPoints:['packages/blog/src/worker/index.ts'],bundle:true,write:false,format:'esm',platform:'browser',external:['cloudflare:workers'],logLevel:'silent'});
 assert.equal(compiled.outputFiles.length,1);
-const mf=new Miniflare({modules:true,script:compiled.outputFiles[0].text,compatibilityDate:'2026-03-06',d1Databases:{DB:'production-calibration'},bindings:{ANALYTICS_HASH_KEY:'local-only',OWNER_MARK_GRANT:JSON.stringify({token,issuedAt,expiresAt}),ANALYTICS_CALIBRATION:JSON.stringify({issuedAt,expiresAt,trials})}});
+const mf=new Miniflare({modules:true,script:compiled.outputFiles[0].text,compatibilityDate:'2026-03-06',cf:{},d1Databases:{DB:'production-calibration'},bindings:{ANALYTICS_HASH_KEY:'local-only',OWNER_MARK_GRANT:JSON.stringify({token,issuedAt,expiresAt}),ANALYTICS_CALIBRATION:JSON.stringify({issuedAt,expiresAt,trials})}});
 const origin='https://publication.example';
 const call=(path,init={})=>mf.dispatchFetch(origin+path,{...init,headers:{'User-Agent':'NativeFixture/1.0','CF-Connecting-IP':'192.0.2.1',...init.headers}});
 try{
@@ -50,7 +51,7 @@ try{
  const accepted=(await db.prepare(acceptanceSql).bind(JSON.stringify(trials.map(t=>t.id)),'2000-01-01 00:00:00','2100-01-01 00:00:00').all()).results;
  const queryPlan=(await db.prepare('EXPLAIN QUERY PLAN '+acceptanceSql).bind(JSON.stringify(trials.map(t=>t.id)),'2000-01-01 00:00:00','2100-01-01 00:00:00').all()).results;
  assert.ok(queryPlan.some(row=>typeof row.detail==='string'&&row.detail.includes('idx_page_observations_public_path_time')));
- assert.equal(accepted.length,4);assert.ok(accepted.every(r=>r.storedObservations===1&&r.ownerExcludedObservations===1&&r.minCollectionVersion==='2026-10-27.6'));
+ assert.equal(accepted.length,4);assert.ok(accepted.every(r=>r.storedObservations===1&&r.ownerExcludedObservations===1&&r.minCollectionVersion===COLLECTION_VERSION&&r.maxCollectionVersion===COLLECTION_VERSION));
  const publicReport=await(await call('/api/stats?range=7d&traffic=all')).json();assert.equal(publicReport.totals.views,0);
  const stored=await db.prepare("SELECT COUNT(*) AS n, SUM(is_owner) AS ownerRows FROM page_observations WHERE path LIKE '/analytics-check/%'").first();assert.equal(stored.n,4);assert.equal(stored.ownerRows,4);
  await db.prepare("UPDATE analytics_calibration_trials SET expires_at=datetime('now','-1 second')").run();

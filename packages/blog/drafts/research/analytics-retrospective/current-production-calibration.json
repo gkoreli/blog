@@ -1,0 +1,253 @@
+{
+  "checkedAt": "2026-10-30T13:16:26.769Z",
+  "method": "Fresh separately operated agent-browser/curl cohort; exact twelve-ID independent D1 ledger agrees with each client receipt. Not a replay of October27 controls.",
+  "sourceCommit": "0551880ac02cdb17cbb324dae136aa9ace51cfdd",
+  "deploymentContext": {
+    "baseVersion": "98172983-9337-4373-9119-4b24add0d754",
+    "activeVersion": "92dcc79e-2dae-45bb-aba6-bc31210119da",
+    "cleanupVersion": "98f87bc3-1c08-48c1-ab54-5bb08fe8e687",
+    "baseBuildId": "f3e2d520-368a-4272-aab5-a658888f5426",
+    "nativeBuildSourceJoined": true,
+    "scriptEtagUnchanged": true,
+    "runtimeSettingsUnchanged": true,
+    "otherBindingsUnchanged": true,
+    "perRequestVersionTrace": false
+  },
+  "collection": "2026-10-30.1",
+  "classifier": "2026-10-29.3",
+  "observationWindow": {
+    "startInclusive": "2026-10-30 13:01:20",
+    "endExclusive": "2026-10-30 13:05:30"
+  },
+  "evaluation": {
+    "profile": "evaluation-only-kind-to-operator-v2",
+    "accounting": {
+      "planned": 12,
+      "executed": 12,
+      "noAcceptedExecution": 0,
+      "completeExecuted": 12,
+      "incompleteExecuted": 0,
+      "executedCohortComplete": true,
+      "completeUnlabeled": 0,
+      "labeledEvaluable": 12,
+      "humanLabels": 0,
+      "automationLabels": 12
+    },
+    "issueCounts": {
+      "measurement-missing": 0,
+      "trial-record-missing": 0,
+      "plan-mismatch": 0,
+      "response-count": 0,
+      "observation-missing": 0,
+      "observation-duplicate": 0,
+      "owner-exclusion": 0,
+      "kind-unrecognized": 0
+    },
+    "confusion": {
+      "automation": {
+        "automation": 3,
+        "human": 0,
+        "abstain": 9
+      },
+      "human": {
+        "automation": 0,
+        "human": 0,
+        "abstain": 0
+      }
+    },
+    "decisions": {
+      "committed": 3,
+      "correct": 3,
+      "wrong": 0,
+      "abstained": 9
+    },
+    "rates": {
+      "decisionCoverage": 0.25,
+      "abstentionRate": 0.75,
+      "errorAmongDecisions": 0,
+      "automationFalsePositiveRateAmongDecidedHumans": null,
+      "humanAbstentionRate": null,
+      "automationAbstentionRate": 0.75
+    }
+  },
+  "counterfactualBrowserAsHuman": {
+    "profile": "counterfactual-browser-as-human-v1",
+    "accounting": {
+      "planned": 12,
+      "executed": 12,
+      "noAcceptedExecution": 0,
+      "completeExecuted": 12,
+      "incompleteExecuted": 0,
+      "executedCohortComplete": true,
+      "completeUnlabeled": 0,
+      "labeledEvaluable": 12,
+      "humanLabels": 0,
+      "automationLabels": 12
+    },
+    "issueCounts": {
+      "measurement-missing": 0,
+      "trial-record-missing": 0,
+      "plan-mismatch": 0,
+      "response-count": 0,
+      "observation-missing": 0,
+      "observation-duplicate": 0,
+      "owner-exclusion": 0,
+      "kind-unrecognized": 0
+    },
+    "confusion": {
+      "automation": {
+        "automation": 3,
+        "human": 9,
+        "abstain": 0
+      },
+      "human": {
+        "automation": 0,
+        "human": 0,
+        "abstain": 0
+      }
+    },
+    "decisions": {
+      "committed": 12,
+      "correct": 3,
+      "wrong": 9,
+      "abstained": 0
+    },
+    "rates": {
+      "decisionCoverage": 1,
+      "abstentionRate": 0,
+      "errorAmongDecisions": 0.75,
+      "automationFalsePositiveRateAmongDecidedHumans": null,
+      "humanAbstentionRate": null,
+      "automationAbstentionRate": 0
+    }
+  },
+  "byCondition": [
+    {
+      "condition": "normal",
+      "trials": 3,
+      "responsesPrepared": 3,
+      "scriptReports": 3,
+      "beaconAttemptReports": 3,
+      "queuedReports": 3,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 3
+    },
+    {
+      "condition": "block-script",
+      "trials": 3,
+      "responsesPrepared": 3,
+      "scriptReports": 0,
+      "beaconAttemptReports": 0,
+      "queuedReports": 0,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 0
+    },
+    {
+      "condition": "block-beacon",
+      "trials": 3,
+      "responsesPrepared": 3,
+      "scriptReports": 3,
+      "beaconAttemptReports": 3,
+      "queuedReports": 3,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 0
+    },
+    {
+      "condition": "http-client",
+      "trials": 3,
+      "responsesPrepared": 3,
+      "scriptReports": 0,
+      "beaconAttemptReports": 0,
+      "queuedReports": 0,
+      "notQueuedReports": 0,
+      "thrownReports": 0,
+      "beaconReceipts": 0
+    }
+  ],
+  "byKind": [
+    {
+      "kind": "browser",
+      "events": 9
+    },
+    {
+      "kind": "other-bot",
+      "events": 3
+    }
+  ],
+  "classificationFacts": [
+    {
+      "kind": "browser",
+      "network": "not-listed",
+      "navigationShaped": true,
+      "activation": "true-claim",
+      "browserFamilyClaim": "chromium",
+      "fetchMetadataBits": 1170,
+      "events": 9
+    },
+    {
+      "kind": "other-bot",
+      "network": "not-listed",
+      "navigationShaped": false,
+      "activation": "absent",
+      "browserFamilyClaim": "unrecognized",
+      "fetchMetadataBits": 585,
+      "events": 3
+    }
+  ],
+  "native": {
+    "verifiedBot": {
+      "true": 0,
+      "false": 0,
+      "unavailable": 12,
+      "unrecognized": 0
+    },
+    "signedAgent": {
+      "true": 0,
+      "false": 0,
+      "unavailable": 12,
+      "unrecognized": 0
+    }
+  },
+  "directStatements": {
+    "constantProbeReads": 0,
+    "ledgerReads": 167,
+    "ledgerWrites": 0,
+    "ledgerAttempts": 1,
+    "reviewThreshold": 500
+  },
+  "negativeChecks": 12,
+  "cleanup": {
+    "checkedAt": "2026-10-30T13:06:41.233583+00:00",
+    "version": "98f87bc3-1c08-48c1-ab54-5bb08fe8e687",
+    "allocationPercent": 100,
+    "scriptEtagUnchanged": true,
+    "runtimeUnchanged": true,
+    "originalSecretNamesRestored": true,
+    "inactiveStatus": 404,
+    "disabledBeforeExpiry": true,
+    "remainingConfigLifetimeMs": 518882,
+    "counterRowsPhysicallyDeleted": false
+  },
+  "inputSha256": {
+    "trial-plan.json": "4a1d0dedbaa24e6b0421f5e4160b2203bbc6090a7e869cff5718aff3c585ac7e",
+    "browser-executed.json": "6416940cf580039d92e6ca1bb709a0a7af9f540ffe865f85b0c8443638423087",
+    "curl-executed.json": "a8fddfeb8154c06610abf22683070fa9ea0a81c9e5be2e2dbf93120331cbf8e3",
+    "ledger-production.sql": "fa1279b5110ff41a8033b7fea8c7e8d91a04f6a4954924111693e16e01633bfe",
+    "ledger-query.json": "8412818d4695ba4e575b46c9bc94571016c2249f75dfb57c56b3435467870eb1",
+    "ledger-query-metadata.json": "5abd34513abf8f17a3b887e859787a85828e32085cc5de4666c7faf76be8478e",
+    "cleanup-acceptance.json": "c6f9b45ce16f26a925954f6a4eb04df3cd9e3273d918beb185e07fdcf40698fe"
+  },
+  "limits": [
+    "Twelve correlated automation controls from one browser profile and one curl profile, not population accuracy or twelve readers.",
+    "No human, real-device or JavaScript-disabled control; CSP script blocking is a separate condition. Human rates remain null.",
+    "Evaluation-only operator policy abstains on Browser/legacy/Unresolved; it is not a deployed human classifier.",
+    "The counterfactual Browser-as-human policy is not deployed.",
+    "Counters measure accepted first-party stages through the cutoff, not Cloudflare Web Analytics receipt or every wire attempt.",
+    "Profile stamps and unchanged provider script ETags establish the recorded deployment context; no per-request Worker version trace was captured.",
+    "Guard/stage/collector/receipt/metadata work is additional to direct SELECT metering.",
+    "Temporary bindings are removed before expiry; physical counter deletion and provider-wide erasure are unproven."
+  ]
+}

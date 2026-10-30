@@ -1,0 +1,19 @@
+{
+  "checkedOn": "2026-10-30",
+  "sources": [
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon#return_value",
+      "supports": "True is queue acceptance, not application receipt; do not assign the historical discrepancy to this mechanism."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/connect-src",
+      "supports": "CSP connect-src governs sendBeacon and Fetch. The trial condition narrows destinations while allowing stage reports."
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil",
+      "supports": "Background scheduling is not persistence; HTTP waitUntil has a shared post-invocation extension limit. Check stored rows separately."
+    }
+  ],
+  "priorMethod": "edge-vs-rum/08-production-stage-protocol.md",
+  "nativeRuntimeScope": "Actual composed local Worker; explicit cf:{} removes implicit synthetic provider facts. Separate from the twelve actual production visits."
+}

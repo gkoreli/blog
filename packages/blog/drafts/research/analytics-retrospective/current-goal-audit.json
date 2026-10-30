@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T12:53:38.688194+00:00",
-  "sourceBaseline": "47daee3b57f8906f266f3ee04e89bc3136176f7c",
+  "checkedAt": "2026-10-30T13:17:49.914452+00:00",
+  "sourceBaseline": "0551880ac02cdb17cbb324dae136aa9ace51cfdd",
   "goalAchieved": false,
-  "previousTurn": "progress: Research111 published and byte-verified the concise article.",
-  "scope": "Research112 native per-field availability repair and exact-source live public acceptance; genuine native-verifier comparison remains missing.",
+  "previousTurn": "progress: Research112 deployed and accepted independent native-field availability/false counts.",
+  "scope": "Research113 fresh current-production automation calibration accepted; prior cohort kept separately. Runtime code/article unchanged; two calibration helpers improved.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -17,6 +17,8 @@
     "publicDisplayApprovals": 4
   },
   "calibration": {
+    "research": "113-fresh-current-production-calibration.md",
+    "receipt": "current-production-calibration.json",
     "executed": 12,
     "automationLabels": 12,
     "humanLabels": 0,
@@ -25,8 +27,15 @@
     "abstentions": 9,
     "humanFalsePositiveRate": null,
     "humanAbstentionRate": null,
-    "newEndToEndCollectorRun": false,
-    "scope": "Fresh current evaluator over seven hash-matched historical input files; same 12 original controls, not new current-classifier packet replay. Other cohorts stay separate."
+    "newEndToEndCollectorRun": true,
+    "scope": "Fresh October 30 actual production collector/stage cohort; nine independently agent-operated browser visits and three actual curl visits, all permanently excluded. Separate from original October 27 controls; not population accuracy.",
+    "collection": "2026-10-30.1",
+    "classifier": "2026-10-29.3",
+    "nativeVerificationBooleansAvailable": 0,
+    "independentLedgerReads": 167,
+    "independentLedgerWrites": 0,
+    "sourceBuildJoined": true,
+    "temporaryBindingsRemovedBeforeExpiry": true
   },
   "delivered": [
     "Explicit unknown/conflict and exact declaration matching",
@@ -46,7 +55,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Resume request-level managed-native comparison only with an accepted eligible identity/original and provider provenance; generic known-bot status or this aggregate cannot supply it. Human trials remain deferred. Preserve pending search/privacy approvals; do not repeat accepted report checks or broad scans without a new question.",
+  "nextBoundedAction": "Current automation collector/stage gate is accepted; do not repeat it without a changed implementation or new condition. Remaining measurements need accepted native identity/oracle inputs, authenticated search evidence, privacy decisions or deferred human/device/normal-owner-browser participation. Preserve pending approvals; no broad rescan or invented human label.",
   "article": {
     "bodyWhitespaceWords": 1379,
     "prompts": 32,
@@ -62,7 +71,7 @@
     "localBuildAccepted": true,
     "localBuildReceipt": "weekly-history-article-checks.json"
   },
-  "runtimeUnchanged": false,
+  "runtimeUnchanged": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -1427,5 +1436,35 @@
     "reportedWrites": 0,
     "reportedAttempts": 1,
     "positiveOrganicNativeBooleanObserved": false
+  },
+  "historicalCalibration": {
+    "executed": 12,
+    "automationLabels": 12,
+    "humanLabels": 0,
+    "correctDecisions": 3,
+    "wrongDecisions": 0,
+    "abstentions": 9,
+    "humanFalsePositiveRate": null,
+    "humanAbstentionRate": null,
+    "newEndToEndCollectorRun": false,
+    "scope": "Fresh current evaluator over seven hash-matched historical input files; same 12 original controls, not new current-classifier packet replay. Other cohorts stay separate."
+  },
+  "currentProductionCalibration": {
+    "research": "113-fresh-current-production-calibration.md",
+    "receipt": "current-production-calibration.json",
+    "checks": "current-calibration-checks.json",
+    "nativePreflight": "current-calibration-native.json",
+    "sources": "current-calibration-sources.json",
+    "accepted": true,
+    "originalCohortPooled": false,
+    "operatorProfiles": 2,
+    "productionPageTrials": 12,
+    "knownAutomationLabels": 12,
+    "knownHumanLabels": 0,
+    "temporaryWindowMinutes": 14,
+    "cleanupVersion": "98f87bc3-1c08-48c1-ab54-5bb08fe8e687",
+    "publicReportFills": 0,
+    "rawDiagnosticsActivated": false,
+    "perRequestWorkerVersionTrace": false
   }
 }
