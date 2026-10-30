@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-30",
+  "sources": [
+    {"url":"https://support.google.com/webmasters/answer/7576553","use":"Metric definitions and chart/table aggregation; query/page dimensions and preliminary data. Exported unavailable values can become zero, so preserve report display/flags as well as CSV.","localCrossReference":"packages/blog/drafts/research/analytics-retrospective/94-reader-growth-and-editorial-decisions.md"},
+    {"url":"https://developers.google.com/webmaster-tools/v1/searchanalytics/query","use":"Pacific Time inclusive date bounds; finalized versus fresh data; response aggregation; missing dates and top-row completeness limits. No API authorization is created or expanded.","localCrossReference":"packages/analytics/src/article-reach.ts"},
+    {"url":"https://developers.google.com/webmaster-tools/v1/how-tos/all-your-data","use":"Page/query detail may drop data, even with pagination. Accurate aggregate counts need separate requests without those dimensions; 50K rows/day/type ceiling.","localCrossReference":"packages/blog/drafts/research/analytics-retrospective/95-article-reach-report.md"},
+    {"url":"https://support.google.com/webmasters/answer/17010575?hl=en&ref_topic=17010766","use":"Anonymized queries omitted from query tables, aggregation/truncation differences, PT day labels and typical reporting delay.","localCrossReference":"packages/blog/scripts/audience-audit.mjs"}
+  ],
+  "failedFetches":[{"url":"https://support.google.com/webmasters/answer/17011364?hl=en&ref_topic=17010766","result":"Timeout; not relied on."}],
+  "authenticatedSearchReportsRead":0,
+  "browserAccess":"Existing tab inventory shows an expired Google session. Attempt to bind the Google tab is rejected by automatic approval review; no content observed and no alternate route attempted. Specific authorization question pending.",
+  "claimsNotEstablished":["Search queries actually bringing readers","Bot-free human readership","Comparable counts simply because calendar labels match","All query rows recoverable through pagination"]
+}

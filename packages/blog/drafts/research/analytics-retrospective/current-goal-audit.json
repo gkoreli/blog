@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-30T09:07:31.032818+00:00",
+  "checkedAt": "2026-10-30T09:16:25.857Z",
   "sourceBaseline": "4cefd55ceae96edb000660fab4f626e669917997",
   "goalAchieved": false,
-  "previousTurn": "progress: Origin/JSON/native route budget,19 paired controls, two local browser readbacks and160 tests/types/build; native source/binding/allocation plus403/415 and one204/readback/cleanup accepted; GitHub in_progress disagreement retained",
+  "previousTurn": "progress: v2 diagnostic URL processing source/deployment/direct readback/owned cleanup accepted; checkpoint0a76221 pushed. No readership measurement followed from that control.",
   "scope": "Active goal: operation references improve failure investigation; no authenticated report, reader demand, human growth or population calibration follows.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Return to source-sensitive completed-week readership comparisons and authenticated query/page evidence when available; preserve R1 sensitivity, changing collection rules and unknown human status. Human trials remain deferred; do not count diagnostic controls as readers or calibration labels.",
+  "nextBoundedAction": "Add article-level largest reported external-source concentration alongside the fixed whole-window sensitivity. Native-test partitions, private naming, exclusions, contract and metering; do not reinterpret the remainder as humans. Authenticated search access and human trials remain separate gates.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -62,7 +62,7 @@
     "localBuildAccepted": true,
     "localBuildReceipt": "readership-article-checks.json"
   },
-  "runtimeUnchanged": false,
+  "runtimeUnchanged": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -970,7 +970,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: v2 URL processing/provenance source, native deployment and one direct production readback/owned cleanup accepted; known free-text residual and readership evidence gaps remain open.",
+  "currentTurn": "progress: one completed Browser day exported once, verified frozen history reused, rolling source/article metrics independently reconstructed; new article-level concentration gap and Search Console boundary/completeness contract established.",
   "requirementsAudit": {
     "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
     "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
@@ -1092,7 +1092,7 @@
     "otherPending": "Duck.ai terms approval remains pending; no prompt submitted or agreement accepted."
   },
   "ownerLifecycleRequest": "Keep the goal active",
-  "observedGoalLifecycle": "active; fresh get_goal confirms owner instruction to keep active. Full objective not achieved.",
+  "observedGoalLifecycle": "active; objective remains incomplete, human trials deferred. Google-origin observation rejected by automatic approval review; specific authorization pending, no bypass.",
   "diagnosticBodyAdmission": {
     "research": "../newsletter-reliability/22-measured-diagnostic-body-limits.md",
     "native": "../newsletter-reliability/client-error-body-limit-native.json",
@@ -1130,57 +1130,6 @@
     "reportAuthenticated": false
   },
   "previousOperationalSummary": {
-    "productionStatements": 0,
-    "newVisits": 0,
-    "newHumanLabels": 0,
-    "liveAccountInspection": false,
-    "productionOwnSiteGets": 1,
-    "collectionEligibleGets": 0,
-    "ownerMarkPosts": 0,
-    "productionReportedReads": 9,
-    "productionDiagnosticWrites": 1,
-    "newVisitsScope": "One source-excluded prefetch asset GET and one labelled diagnostic POST; no browser page/human visit. Provider account inspection additional.",
-    "liveAccountInspectionScope": "GitHub Cloudflare provider check binds full source/build/Worker; fresh Wrangler listing allocates exact version100%. Dashboard remains rate-limited.",
-    "productionDirectDiagnosticSelects": 2,
-    "productionReportCalculations": 0,
-    "productionReadScope": "Only owned-control occurrence/ingestion/evidence fields returned; no reader records exported.",
-    "runtimeUnchangedScope": "Client-error DB acknowledgment/server response and transport receipts/log phases change; no payload/schema, page collector/classifier/verifier, newsletter verification/admission/sender or credential change.",
-    "newControlledRequests": 2,
-    "ownSiteGetRequests": 1,
-    "collectionEligibleRequests": 0,
-    "diagnosticSelects": 2,
-    "productionStatementsScope": "One source-excluded static/prefetch main.js GET; no production SQL or diagnostic POST",
-    "productionReportedReadsCoverage": "No new production database operation; historical costs stay in their dated receipts.",
-    "productionReadTotal": 0,
-    "productionDiagnosticD1Statements": 0,
-    "productionDdlWrites": 0,
-    "ownSitePostRequests": 0,
-    "diagnosticControlPosts": 1,
-    "diagnosticControl": {
-      "research": "../newsletter-reliability/20-production-diagnostic-readback-and-cleanup.md",
-      "production": "../newsletter-reliability/subscription-control-production.json",
-      "native": "../newsletter-reliability/subscription-control-native.json",
-      "operator": "controlled-http-client",
-      "postAttempts": 1,
-      "observedStoredRows": 1,
-      "removedRows": 1,
-      "remainingMarkerRows": 0,
-      "extraPropertyDiscarded": true,
-      "primaryReceipts": 3,
-      "reportedReads": 9,
-      "reportedCleanupWrites": 1,
-      "ingestionMeterAvailable": false,
-      "runtimeChanged": false,
-      "siteTests": 138,
-      "pageClassifierTrialsAdded": 0,
-      "actualBrowserTransportAccepted": false,
-      "generalDurabilityAccepted": false,
-      "humanLabels": 0,
-      "privateDataManifestSha256": "dcb2e75560909a752457311b0e6678ec219f85125c1468735ea9ffb874214ea5"
-    }
-  },
-  "runtimeUnchangedScope": "Client error parser/redactor/writer and nullable processing column change. No analytics collector/classifier/verifier, newsletter sender/admission, credential or article change.",
-  "productionOperationsThisTurn": {
     "httpRequests": 1,
     "sqlAttempts": 9,
     "meteredStatements": 8,
@@ -1189,6 +1138,17 @@
     "ingestionWriteCostReturned": false,
     "unmeteredFailedPreflight": 1,
     "readerRecordsReturned": 0,
+    "humanLabels": 0
+  },
+  "runtimeUnchangedScope": "Investigation helper/native checker gain validated windows; no runtime analytics collector/classifier/verifier/report, newsletter, credential or article change.",
+  "productionOperationsThisTurn": {
+    "httpRequests": 0,
+    "sqlAttempts": 2,
+    "meteredStatements": 2,
+    "reportedReads": 1344,
+    "reportedWrites": 0,
+    "selectedStoredKind": "browser",
+    "rawSelectedRows": 86,
     "humanLabels": 0
   },
   "subscriptionResponseCorrelation": {
@@ -1276,5 +1236,29 @@
       "productionReadbackAccepted": true,
       "ownedCleanupAccepted": true
     }
+  },
+  "readershipCompletedDayRefresh": {
+    "research": "100-readership-delta-and-source-concentration.md",
+    "results": "readership-delta-production.json",
+    "native": "readership-delta-native.json",
+    "reconstruction": "readership-delta-frozen.json",
+    "sources": "readership-delta-sources.json",
+    "sourceBaseline": "0a762214ccc4fe98e49390d87113363a852486df",
+    "rollingIncluded": 1477,
+    "newDayIncluded": 84,
+    "newDayR1": 0,
+    "newDayR2": 17,
+    "latestWeeklyTotal": [
+      312,
+      691
+    ],
+    "latestWeeklyOutsideFixedR1": [
+      308,
+      303
+    ],
+    "allArticleComparisons": 33,
+    "currentWholeWindowSnapshot": false,
+    "humanGrowthEstablished": false,
+    "searchQueriesMeasured": false
   }
 }

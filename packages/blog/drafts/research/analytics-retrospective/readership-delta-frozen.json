@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-30T09:17:57.781Z",
+  "sourceCapture": "Hash-verified Research94 history plus single accepted October29 export",
+  "frozenRows": 1513,
+  "articleComparisons": 33,
+  "catalogueArticles": 33,
+  "weeklyAndSourceMetricsEqual": true,
+  "privateValuesAbsent": true,
+  "nativeMeter": {
+    "version": "2026-10-28.1",
+    "event": "stats-report-calculation",
+    "outcome": "returned",
+    "submittedStatements": 1,
+    "returnedResults": 1,
+    "metadata": "partial",
+    "counterScope": "last-attempt",
+    "reportedRowsRead": 27199,
+    "reportedRowsWritten": 0,
+    "totalAttempts": null,
+    "unexpectedWrites": false
+  },
+  "analysisRelation": "Selected scalar fields with synthetic defaults for unselected required columns; not a complete production snapshot or new production read.",
+  "productionCalls": 0,
+  "humanLabels": 0
+}

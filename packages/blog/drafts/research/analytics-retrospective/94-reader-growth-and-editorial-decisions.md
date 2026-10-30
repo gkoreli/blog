@@ -62,3 +62,5 @@ Two one-attempt browser-data SELECTs cost **17,548 reads**; the separate subscri
 The wider goal remains open. Search terms, sustained readership, R1 operator/trigger, human/device accuracy and native managed-verifier agreement have not been established. Human-operated trials remain deferred. The next useful dependency is authenticated Search Console evidence; the prepared source-aware brief is usable now.
 
 [Research 95](95-article-reach-report.md) supersedes the prepared-report status: the article/source view is accepted on its measured Worker. It also finds one local catalogue-date error: the macOS article’s authored/production date is October 28, while the archived local index said October 27 because of timezone conversion. The original capture stays intact; all traffic/source counts are unchanged.
+
+[Research 100](100-readership-delta-and-source-concentration.md) extends the frozen Browser analysis with October 29 only. It records another article-specific referrer concentration and the Pacific/inclusive Search Console boundary needed for future comparison. The original window and counts above remain unchanged.
