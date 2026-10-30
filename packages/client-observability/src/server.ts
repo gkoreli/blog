@@ -75,11 +75,26 @@ export async function handleClientError(
   env: ClientObservabilityEnv,
   ctx?: ExecutionContext,
 ): Promise<Response> {
+  // Browser-origin isolation is not sender authentication: non-browser callers
+  // can forge Origin. Do not use an accepted report as a human/bot verdict.
+  const origin = new URL(request.url).origin;
+  if (origin === 'null' || request.headers.get('origin') !== origin) return emptyResponse(403);
   const contentType = request.headers.get('content-type') ?? '';
-  if (!contentType.toLowerCase().includes('application/json')) return emptyResponse(415);
+  if (contentType.split(';')[0]?.trim().toLowerCase() !== 'application/json') return emptyResponse(415);
 
   const rawLength = Number(request.headers.get('content-length') ?? '0');
   if (Number.isFinite(rawLength) && rawLength > MAX_BODY_BYTES) return emptyResponse(413);
+
+  // A fixed route key protects the shared store without inventing a reader ID.
+  // Cloudflare's native count is approximate and local, not a global cost cap.
+  if (!env.CLIENT_ERROR_RATE_LIMITER) return emptyResponse(503);
+  try {
+    const result = await env.CLIENT_ERROR_RATE_LIMITER.limit({ key: 'client-error:v1' });
+    if (result.success === false) return emptyResponse(429);
+    if (result.success !== true) return emptyResponse(503);
+  } catch {
+    return emptyResponse(503);
+  }
 
   const body = await boundedJson(request);
   if (body.status === 'too-large') return emptyResponse(413);

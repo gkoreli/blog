@@ -96,7 +96,7 @@ test('storage rebuilds evidence even for a direct caller instead of persisting a
 test('actual ingestion retains bounded evidence, while unsupported or malformed evidence stays explicit',async t=>{
   const h=fixture(t);h.migrate();
   for(const evidence of [bounded,{...bounded,profile:'future'},null]){
-    const response=await handleClientError(new Request('https://example.invalid/api/client-error',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({...base,subscriptionEvidence:evidence})}),{DB:h.DB});
+    const response=await handleClientError(new Request('https://example.invalid/api/client-error',{method:'POST',headers:{'origin':'https://example.invalid','content-type':'application/json'},body:JSON.stringify({...base,subscriptionEvidence:evidence})}),{DB:h.DB,CLIENT_ERROR_RATE_LIMITER:{async limit(){return{success:true}}}});
     assert.equal(response.status,204);
   }
   const rows=h.sqlite.prepare('SELECT occurred_at,subscription_evidence FROM client_errors ORDER BY rowid').all();

@@ -5,9 +5,9 @@ import {FetchTransport,BeaconTransport,NoopTransport} from '../../client-observa
 import {createClientLogger} from '../../client-observability/src/client.ts';
 
 const event={type:'interaction_error',component:'subscribe_form',message:'diagnostic_fixture',path:'/owner',occurredAt:'2026-10-29T12:00:00.000Z'};
-const request=()=>new Request('https://example.invalid/api/client-error',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(event)});
+const request=()=>new Request('https://example.invalid/api/client-error',{method:'POST',headers:{'origin':'https://example.invalid','content-type':'application/json'},body:JSON.stringify(event)});
 const success={success:true,meta:{changes:1}};
-function database(run){return{DB:{prepare(){return{bind(){return{run};}};}}};}
+function database(run){return{CLIENT_ERROR_RATE_LIMITER:{async limit(){return{success:true}}},DB:{prepare(){return{bind(){return{run};}};}}};}
 function deferred(){let resolve,reject;const promise=new Promise((yes,no)=>{resolve=yes;reject=no;});return{promise,resolve,reject};}
 
 test('204 waits for confirmed storage even when a waitUntil context is available',async t=>{

@@ -23,7 +23,8 @@ export function subscriptionDiagnosticControl(reference,occurredAt){
   const cleanupSql=targets+` DELETE FROM client_errors
  WHERE id=(SELECT CASE WHEN COUNT(*)=1 THEN MIN(id) ELSE NULL END FROM targets)
  RETURNING 1 AS removed;\n`;
-  return{reference,message,payload,evidence,readSql,cleanupSql};
+  const headers={'content-type':'application/json',origin:'https://gkoreli.com'};
+  return{reference,message,payload,evidence,headers,readSql,cleanupSql};
 }
 
 export function validateControlReadback(rows,control){

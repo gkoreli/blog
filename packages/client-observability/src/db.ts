@@ -3,6 +3,8 @@ import { parseSubscriptionErrorEvidence } from './subscription-evidence.js';
 
 export interface ClientObservabilityEnv {
   DB: D1Database;
+  /** Separate, approximate per-location diagnostic budget; unavailable means no ingestion. */
+  CLIENT_ERROR_RATE_LIMITER?: RateLimit;
 }
 
 const INSERT = `INSERT INTO client_errors

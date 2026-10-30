@@ -2,7 +2,7 @@ import {handleClientError} from './src/server.ts';
 import {FetchTransport,BeaconTransport,NoopTransport} from './src/transport.ts';
 
 const event={type:'interaction_error',component:'subscribe_form',message:'ack_fixture',path:'/owner',occurredAt:'2026-10-29T12:00:00.000Z'};
-const input=()=>new Request('https://fixture.invalid/api/client-error',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(event)});
+const input=()=>new Request('https://fixture.invalid/api/client-error',{method:'POST',headers:{'origin':'https://fixture.invalid','content-type':'application/json'},body:JSON.stringify(event)});
 
 export default {
  async fetch(request,env){
@@ -26,7 +26,7 @@ export default {
      return result;
     })();return runTask;
    }}}}}};
-   const responseTask=handleClientError(input(),{DB},{waitUntil(promise){background.push(promise)}}).then(response=>{responseSettled=true;return response});
+   const responseTask=handleClientError(input(),{DB,CLIENT_ERROR_RATE_LIMITER:env.CLIENT_ERROR_RATE_LIMITER},{waitUntil(promise){background.push(promise)}}).then(response=>{responseSettled=true;return response});
    await writeStarted;
    let returnedBeforeWriteConfirmation=null;
    if(mode==='delayed'){

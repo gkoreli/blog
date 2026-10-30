@@ -26,7 +26,7 @@ export default{async fetch(request,env,ctx){const path=new URL(request.url).path
  return new Response(null,{status:404});}};`;
 writeFileSync(output+'/worker-entry.js',source,{mode:0o600});
 const worker=await build({stdin:{contents:source,resolveDir:repo},bundle:true,write:false,format:'esm',target:'es2024'});
-const mf=new Miniflare({modules:true,script:worker.outputFiles[0].text,compatibilityDate:'2026-03-06',cf:{},host:'127.0.0.1',port:0,d1Databases:{DB:'client-build-fixture'}});
+const mf=new Miniflare({modules:true,script:worker.outputFiles[0].text,compatibilityDate:'2026-03-06',cf:{},ratelimits:{CLIENT_ERROR_RATE_LIMITER:{simple:{limit:1000,period:60}}},host:'127.0.0.1',port:0,d1Databases:{DB:'client-build-fixture'}});
 try{
  const db=await mf.getD1Database('DB');
  const{readFileSync}=await import('node:fs');

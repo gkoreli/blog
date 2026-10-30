@@ -10,8 +10,8 @@ function exactBytes(size,multibyte=false){
  const extra=size-encoded.encode(base).byteLength;
  return encoded.encode(JSON.stringify({...event,padding:multibyte?'é'.repeat(Math.floor(extra/2))+' '.repeat(extra%2):' '.repeat(extra)}));
 }
-function input(body,headers={}){return new Request('https://fixture.invalid/api/client-error',{method:'POST',headers:{'content-type':'application/json',...headers},body,duplex:'half'});}
-function database(){let writes=0;return{get writes(){return writes},env:{DB:{prepare(){return{bind(){return{async run(){writes++;return{success:true,meta:{changes:1}};}}}}}}}};}
+function input(body,headers={}){return new Request('https://fixture.invalid/api/client-error',{method:'POST',headers:{'origin':'https://fixture.invalid','content-type':'application/json',...headers},body,duplex:'half'});}
+function database(){let writes=0;return{get writes(){return writes},env:{CLIENT_ERROR_RATE_LIMITER:{async limit(){return{success:true}}},DB:{prepare(){return{bind(){return{async run(){writes++;return{success:true,meta:{changes:1}};}}}}}}}};}
 async function assess(request,status){const db=database();const response=await handleClientError(request,db.env);assert.equal(response.status,status);assert.equal(db.writes,status===204?1:0);assert.equal(response.headers.get('cache-control'),'no-store');assert.equal(await response.text(),'');}
 
 test('actual byte cap rejects absent, zero, understated and malformed length hints',async()=>{
@@ -33,5 +33,5 @@ test('read failures, consumed bodies and invalid JSON never write a diagnostic',
  const stream=new ReadableStream({start(controller){controller.error(new Error('synthetic-reader-failure'));}});
  await assess(input(stream),400);await assess(input('{'),400);
  const consumed=input(JSON.stringify(event));await consumed.text();await assess(consumed,400);
- await assess(new Request('https://fixture.invalid/api/client-error',{method:'POST',headers:{'content-type':'application/json'}}),400);
+ await assess(new Request('https://fixture.invalid/api/client-error',{method:'POST',headers:{'origin':'https://fixture.invalid','content-type':'application/json'}}),400);
 });

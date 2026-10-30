@@ -4,7 +4,7 @@ const event={type:'interaction_error',message:'body_limit_fixture',component:'su
 function bytes(size,unicode){const extra=size-encoder.encode(JSON.stringify({...event,padding:''})).byteLength;return encoder.encode(JSON.stringify({...event,padding:unicode?'é'.repeat(Math.floor(extra/2))+' '.repeat(extra%2):' '.repeat(extra)}));}
 export default{async fetch(request,env){
  const mode=new URL(request.url).pathname.slice(1);let pulls=0,cancels=0;
- const headers={'content-type':'application/json'};
+ const headers={'origin':'https://fixture.invalid','content-type':'application/json'};
  if(mode==='zero-hint')headers['content-length']='0';
  if(mode==='short-hint')headers['content-length']='1';
  if(mode==='malformed-hint')headers['content-length']='invalid';
@@ -14,7 +14,7 @@ export default{async fetch(request,env){
  const stream=new ReadableStream({pull(controller){pulls++;if(mode==='read-error'){controller.error(new Error('synthetic-reader-failure'));return}if(at===body.length){controller.close();return}controller.enqueue(body.slice(at,at+step));at=Math.min(at+step,body.length);},cancel(){cancels++;}},{highWaterMark:0});
  const before=await env.DB.prepare('SELECT COUNT(*) AS n FROM client_errors').first();
  let runCalls=0;const DB={prepare(sql){const statement=env.DB.prepare(sql);return{bind(...values){const bound=statement.bind(...values);return{async run(){runCalls++;return bound.run();}}}}}};
- const response=await handleClientError(new Request('https://fixture.invalid/api/client-error',{method:'POST',headers,body:stream}),{DB});
+ const response=await handleClientError(new Request('https://fixture.invalid/api/client-error',{method:'POST',headers,body:stream}),{DB,CLIENT_ERROR_RATE_LIMITER:env.CLIENT_ERROR_RATE_LIMITER});
  const after=await env.DB.prepare('SELECT COUNT(*) AS n FROM client_errors').first();
  return Response.json({mode,status:response.status,bodyBytes:body.length,insertedRows:after.n-before.n,runCalls,pulls,cancels,emptyResponse:(await response.text())==='',noStore:response.headers.get('cache-control')==='no-store'});
 }};

@@ -21,7 +21,7 @@ const plan={createdAt:new Date().toISOString(),baseline,cases,variants:['before'
 writeFileSync(output+'/plan.json',JSON.stringify(plan,null,2)+'\n',{mode:0o600,flag:'wx'});
 const worker=await build({entryPoints:[repo+'/packages/blog/test/fixtures/subscription-correlation-worker.js'],bundle:true,write:false,format:'esm',platform:'browser',target:'es2024'});
 writeFileSync(output+'/worker.js',worker.outputFiles[0].text,{mode:0o600});
-const mf=new Miniflare({modules:true,script:worker.outputFiles[0].text,compatibilityDate:'2026-03-06',cf:{},d1Databases:{DB:'subscription-correlation'}});
+const mf=new Miniflare({modules:true,script:worker.outputFiles[0].text,compatibilityDate:'2026-03-06',cf:{},ratelimits:{CLIENT_ERROR_RATE_LIMITER:{simple:{limit:1000,period:60}}},d1Databases:{DB:'subscription-correlation'}});
 const results={};
 try{
  const db=await mf.getD1Database('DB');
@@ -46,7 +46,7 @@ try{
     requestedPaths.push(path);
     const task=(async()=>{
      const headers=new Headers(init.headers);
-     if(path==='/api/client-error')headers.set('cf-ray','fixture-ingestion-ray');
+     if(path==='/api/client-error'){headers.set('cf-ray','fixture-ingestion-ray');headers.set('origin','https://fixture.invalid');}
      const {keepalive,...dispatchInit}=init;
      if(path==='/api/client-error')assert.equal(keepalive,true);
      const response=await mf.dispatchFetch('https://fixture.invalid'+path,{...dispatchInit,headers});

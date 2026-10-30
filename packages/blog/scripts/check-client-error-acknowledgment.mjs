@@ -25,7 +25,7 @@ for(const variant of ['before','after']){
  writeFileSync(directory+'/probe.js',readFileSync(repo+'/packages/blog/test/fixtures/client-error-ack-worker.js'),{mode:0o600});
  const bundle=await build({entryPoints:[directory+'/probe.js'],bundle:true,write:false,format:'esm',platform:'browser',target:'es2024'});
  const script=bundle.outputFiles[0].text;writeFileSync(directory+'/worker.js',script,{mode:0o600});
- const mf=new Miniflare({modules:true,script,compatibilityDate:'2026-03-06',cf:{},d1Databases:{DB:'acknowledgment-'+variant}});
+ const mf=new Miniflare({modules:true,script,compatibilityDate:'2026-03-06',cf:{},ratelimits:{CLIENT_ERROR_RATE_LIMITER:{simple:{limit:1000,period:60}}},d1Databases:{DB:'acknowledgment-'+variant}});
  try{
   const db=await mf.getD1Database('DB');
   for(const name of ['0001_create_client_errors.sql','0002_add_subscription_error_evidence.sql'])for(const statement of readFileSync(repo+'/packages/client-observability/migrations/'+name,'utf8').split(';').filter(part=>part.trim()))await db.prepare(statement).run();

@@ -1,0 +1,542 @@
+{
+  "checkedAt": "2026-10-30T07:48:46.959Z",
+  "baseline": "ac7ada652ac83d49678c33cd42fe4eee7abde10c",
+  "casesPerVersion": 19,
+  "productionRequests": 0,
+  "humanLabels": 0,
+  "actualBrowser": false,
+  "managedAccuracyMeasured": false,
+  "before": {
+    "workerSha256": "75319c5805aa433deaa9a6fb08f668facca8c76ee55d22a8a8426ecc17d08a4d",
+    "rows": [
+      {
+        "mode": "ordinary",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "foreign",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "missing",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "null",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "subdomain",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "referrer-spoof",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "mime-parameter",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "mime-suffix",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "mime-list",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "charset",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "limiter-denied",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "limiter-missing",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "limiter-throw",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "invalid-json",
+        "status": 400,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "oversize",
+        "status": 413,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 0,
+        "keys": [],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "budget-1",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "budget-2",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "budget-3",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "budget-4",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 0,
+        "keys": [],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      }
+    ]
+  },
+  "after": {
+    "workerSha256": "fc9b0020f2460532b5da131ed817a04645490e8e33b7e0657466e8da16c36677",
+    "rows": [
+      {
+        "mode": "ordinary",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 1,
+        "keys": [
+          "client-error:v1"
+        ],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "foreign",
+        "status": 403,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 0,
+        "keys": [],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "missing",
+        "status": 403,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 0,
+        "keys": [],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "null",
+        "status": 403,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 0,
+        "keys": [],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "subdomain",
+        "status": 403,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 0,
+        "keys": [],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "referrer-spoof",
+        "status": 403,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 0,
+        "keys": [],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "mime-parameter",
+        "status": 415,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 0,
+        "keys": [],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "mime-suffix",
+        "status": 415,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 0,
+        "keys": [],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "mime-list",
+        "status": 415,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 0,
+        "keys": [],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "charset",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 1,
+        "keys": [
+          "client-error:v1"
+        ],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "limiter-denied",
+        "status": 429,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 1,
+        "keys": [
+          "client-error:v1"
+        ],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "limiter-missing",
+        "status": 503,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 0,
+        "keys": [],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "limiter-throw",
+        "status": 503,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 1,
+        "keys": [
+          "client-error:v1"
+        ],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "invalid-json",
+        "status": 400,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 1,
+        "keys": [
+          "client-error:v1"
+        ],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "oversize",
+        "status": 413,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 0,
+        "keys": [],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "budget-1",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 1,
+        "keys": [
+          "client-error:v1"
+        ],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "budget-2",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 1,
+        "keys": [
+          "client-error:v1"
+        ],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "budget-3",
+        "status": 204,
+        "insertedRows": 1,
+        "writes": 1,
+        "checks": 1,
+        "keys": [
+          "client-error:v1"
+        ],
+        "pulls": 2,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      },
+      {
+        "mode": "budget-4",
+        "status": 429,
+        "insertedRows": 0,
+        "writes": 0,
+        "checks": 1,
+        "keys": [
+          "client-error:v1"
+        ],
+        "pulls": 0,
+        "emptyBody": true,
+        "noStore": true,
+        "corsGranted": false,
+        "retryAfter": null
+      }
+    ]
+  },
+  "localConfiguredBudgetControl": {
+    "limit": 3,
+    "period": 60
+  },
+  "productionConfiguredPolicy": {
+    "limit": 60,
+    "period": 60,
+    "scope": "approximate per-Cloudflare-location fixed route key; no global guarantee"
+  },
+  "oldInserted": 17,
+  "newInserted": 5
+}

@@ -44,11 +44,22 @@
 			"migrations_dir": "packages/analytics/migrations"
 		}
 	],
-	// Native Workers Rate Limiting: one shared per-IP budget for subscribe and resend.
+	// Native Workers Rate Limiting: separate diagnostic and signup/resend budgets.
 	// Local, eventually consistent protection; D1 admission enforces shared mail limits.
 	// (Cloudflare only supports period=10 or period=60; 60s chosen.)
-	// Runs before Turnstile. Namespace ID is arbitrary; created on deploy.
+	// Signup runs before Turnstile. Namespace IDs are arbitrary; created on deploy.
 	"ratelimits": [
+		{
+			"name": "CLIENT_ERROR_RATE_LIMITER",
+			"namespace_id": "1002",
+			"simple": {
+				// Shared diagnostic route budget per Cloudflare location, approximate.
+				// A policy starting point, not a measured safe threshold or global cap.
+				// Fixed route key: no IP/user identifiers and no signup-budget sharing.
+				"limit": 60,
+				"period": 60
+			}
+		},
 		{
 			"name": "SUBSCRIBE_RATE_LIMITER",
 			"namespace_id": "1001",

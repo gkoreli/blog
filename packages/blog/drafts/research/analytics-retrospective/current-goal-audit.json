@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-30T07:43:39.834916+00:00",
-  "sourceBaseline": "1ce4f51e1e55d7ae2f7f9764c4387c742351fc58",
+  "checkedAt": "2026-10-30T08:02:15.833645+00:00",
+  "sourceBaseline": "ac7ada652ac83d49678c33cd42fe4eee7abde10c",
   "goalAchieved": false,
-  "previousTurn": "progress: compiled client-build identity plus scoped hosted association and one local browser identity readback; original message gate failed",
+  "previousTurn": "progress: response-operation evidence, six paired native cases and 156 tests/types/build; exact source/native build/allocation/29,779-byte hosted client accepted",
   "scope": "Active goal: operation references improve failure investigation; no authenticated report, reader demand, human growth or population calibration follows.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Bounded diagnostic origin/rate admission and remaining bootstrap/event budgets. No-response correlation needs a separate design. Human trials stay deferred.",
+  "nextBoundedAction": "Accept source/binding activation and bounded malformed-payload rejection separately. Then server-side sanitization/policy stamps and per-page/duplicate budgets; human trials remain deferred.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -970,7 +970,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: response-operation evidence, six paired native cases and 156 tests/types/build; exact source/native build/allocation/29,779-byte hosted client accepted",
+  "currentTurn": "progress: exact Origin/JSON admission and separate approximate native route budget implemented;19 paired native controls, two actual-browser readbacks,160 tests/types/build/dry-run pass; activation separate",
   "requirementsAudit": {
     "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
     "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
@@ -1179,14 +1179,13 @@
       "privateDataManifestSha256": "dcb2e75560909a752457311b0e6678ec219f85125c1468735ea9ffb874214ea5"
     }
   },
-  "runtimeUnchangedScope": "Subscribe client and diagnostic evidence parser change; newsletter handler, credentials, verifier/admission/sender, schema and analytics collector/classifier remain unchanged.",
+  "runtimeUnchangedScope": "Diagnostic admission and limiter binding change; native browser/reporting helpers adapted. No schema, analytics collection/classification/verifier, subscriber verification/sender, credential or article change.",
   "productionOperationsThisTurn": {
-    "httpRequests": 1,
+    "httpRequests": 0,
     "sqlStatements": 0,
     "verificationCalls": 0,
     "providerSends": 0,
-    "humanLabels": 0,
-    "scope": "One source-excluded static/prefetch asset GET; no production diagnostic POST or SQL."
+    "humanLabels": 0
   },
   "subscriptionResponseCorrelation": {
     "research": "../newsletter-reliability/24-subscription-response-correlation.md",
@@ -1206,5 +1205,26 @@
     "workerVersion": "b01cdda3-7766-425f-9fd1-9e5f11966872",
     "servedClientBytes": 29779,
     "productionCorrelationMeasured": false
+  },
+  "diagnosticOriginRateAdmission": {
+    "research": "../newsletter-reliability/25-diagnostic-origin-and-rate-admission.md",
+    "native": "../newsletter-reliability/client-error-admission-native.json",
+    "browser": "../newsletter-reliability/client-error-admission-browser.json",
+    "checks": "../newsletter-reliability/client-error-admission-checks.json",
+    "siteTests": 160,
+    "nativeConditionsPerVersion": 19,
+    "nativeInsertedBefore": 17,
+    "nativeInsertedAfter": 5,
+    "actualBrowserControls": 2,
+    "actualBrowserStoredRows": 2,
+    "newHumanLabels": 0,
+    "populationCompatibilityMeasured": false,
+    "strictOrGlobalRateLimit": false,
+    "limit": 60,
+    "periodSeconds": 60,
+    "key": "fixed route, no IP/user identifier",
+    "sourceActivationAccepted": false,
+    "productionAdmissionMeasured": false,
+    "serverPolicyStampedInD1": false
   }
 }

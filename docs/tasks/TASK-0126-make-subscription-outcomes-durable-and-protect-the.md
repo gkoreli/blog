@@ -4,12 +4,14 @@ title: Make subscription outcomes durable and protect the diagnostic endpoint
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.844Z'
-updated_at: '2026-10-30T00:00:45.152259+00:00'
+updated_at: '2026-10-30T08:02:15.833645+00:00'
 type: task
 ---
 P1 remaining operations. Shared confirmation admission, bounded provider retries and the private accepted/failed/unknown attempt ledger are implemented; sending is awaited before the response. Campaign delivery_logs remains separate. The authorized live test linked a server attempt ID to one accepted send and activation, with Gmail Spam placement tracked in TASK-0145. This task still owns configuration-failure review/alerts and general diagnostic-ingestion protection: server sanitization, a deliberate origin policy and bounded rate/event admission. The acknowledgment contract's scoped acceptance is linked below; actual browser delivery remains unmeasured. Reuse local failure captures and test the fixes without repeating production scans. Keep shared-D1 quota failures distinct from verifier configuration failures; one does not establish the other's cause.
 
 ## Investigation checkpoint
+
+**October 30 diagnostic admission:** [Research 25](../../packages/blog/drafts/research/newsletter-reliability/25-diagnostic-origin-and-rate-admission.md) adds exact required Origin, JSON essence and a separate approximate native route budget of60/60s per location, with no new IP/user key. Nineteen paired native controls change17 stored synthetic reports to5; early rejection does not read bodies or write D1. A local real-browser beacon/fetch pair independently stores2/2 with matching Origin, preserving queue versus acknowledgment receipts. 160 site tests/types/22 Markdown validations/isolated33-post build/Wrangler dry-run and three updated native reproducers pass. No production request or human label; source activation/live admission remain separate. Per-page budgets, sanitization, slow-body/bootstrap and server-side policy provenance stay open.
 
 **October 30 actual-body limit:** [Research 22](../../packages/blog/drafts/research/newsletter-reliability/22-measured-diagnostic-body-limits.md) replaces reliance on Content-Length with measured streaming bytes before JSON/logging/storage, preserving the early hint and acknowledgment contracts. Eleven paired native cases and four unit groups accept exact 8,192-byte ASCII/split UTF-8 input and reject six previously accepted oversized conditions without a write. 148 site tests/types/isolated 33-post build pass. [Source/activation acceptance](../../packages/blog/drafts/research/newsletter-reliability/client-error-body-limit-release.json) joins8d5772b to native successful build/full Worker at100%; production admission/wire behavior remains unmeasured. Slow-stream duration, origin/rate admission and sanitization remain open.
 

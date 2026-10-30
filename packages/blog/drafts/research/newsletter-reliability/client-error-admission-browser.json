@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-30T07:55:01.569834+00:00",
+  "operator": "agent-browser",
+  "actualBrowser": true,
+  "plannedClicks": 2,
+  "performedClicks": 2,
+  "initialRows": 0,
+  "finalRows": 2,
+  "receivedRequests": 2,
+  "matchedOriginRequests": 2,
+  "serverAcknowledgedRequests": 2,
+  "beaconClientReceipt": "browser-queued",
+  "fetchClientReceipt": "server-acknowledged",
+  "independentNativeReadback": true,
+  "productionRequests": 0,
+  "humanLabels": 0,
+  "populationCompatibilityMeasured": false,
+  "browserCloseDeliveryMeasured": false,
+  "clientSha256": "02842de5932ae614372c0a3d508627dd4b106d1a6e3aa04a633a2ca464b77a4b",
+  "workerSha256": "95eb71ce99a1221ae3459366e108035ec1dc8e87f981dedca18483868e1e4d94",
+  "stop": {
+    "checkedAt": "2026-10-30T07:57:52.575447+00:00",
+    "controllerCommandExit": 143,
+    "signal": "SIGTERM",
+    "finalDisposeMarkerObserved": false,
+    "endpointUnreachable": true,
+    "scope": "Terminal owned command and inaccessible local endpoint; final native disposal marker not inferred from signal exit"
+  }
+}
