@@ -1,0 +1,156 @@
+{
+  "checkedAt": "2026-10-30T11:45:27.357204+00:00",
+  "sourceCommit": "6a47867",
+  "reportImplementationCommit": "55a56b1",
+  "querySha256": "fcda9ef702755f92d82a7e49d4d329d37a88c1b24f7ad61a691d14501155bcce",
+  "sqlBytes": 24115,
+  "scope": "Direct production D1 SQL using current report builders/decoders, over exactly two already excluded known controls; not the deployed public API or organic public counts.",
+  "productionProjectionAccepted": true,
+  "selectedControlledRows": 2,
+  "referralExcludedRows": 2,
+  "cache": {
+    "records": {
+      "recognizedViews": 2,
+      "notRecordedViews": 0,
+      "unrecognizedViews": 0,
+      "noApplicableViews": 0,
+      "guardedOnlyViews": 0,
+      "withAccessViews": 2,
+      "policyKnownViews": 2,
+      "policyUnknownViews": 0,
+      "partialPolicyViews": 0
+    },
+    "byAccess": {
+      "fetched": 1,
+      "revalidated": 0,
+      "memory": 0,
+      "coalesced": 0,
+      "cooldown": 1,
+      "failed": 0
+    },
+    "byPolicy": {
+      "positiveViews": 0,
+      "blockedViews": 2,
+      "mixedViews": 0
+    },
+    "byBlocker": {
+      "noStore": 0,
+      "private": 0,
+      "noCache": 2,
+      "invalidLifetime": 0,
+      "zeroLifetime": 2,
+      "invalidAge": 0,
+      "ageExhausted": 0
+    }
+  },
+  "metadata": {
+    "records": {
+      "recognizedViews": 2,
+      "notRecordedViews": 0,
+      "unrecognizedViews": 0,
+      "inconsistentViews": 0
+    },
+    "fields": {
+      "mode": {
+        "notAssessedViews": 0,
+        "absentViews": 2,
+        "validViews": 0,
+        "unrecognizedViews": 0,
+        "invalidViews": 0,
+        "policyLimitedViews": 0,
+        "parametersViews": 0
+      },
+      "destination": {
+        "notAssessedViews": 0,
+        "absentViews": 2,
+        "validViews": 0,
+        "unrecognizedViews": 0,
+        "invalidViews": 0,
+        "policyLimitedViews": 0,
+        "parametersViews": 0
+      },
+      "site": {
+        "notAssessedViews": 0,
+        "absentViews": 2,
+        "validViews": 0,
+        "unrecognizedViews": 0,
+        "invalidViews": 0,
+        "policyLimitedViews": 0,
+        "parametersViews": 0
+      },
+      "activation": {
+        "notAssessedViews": 0,
+        "absentViews": 2,
+        "validViews": 0,
+        "unrecognizedViews": 0,
+        "invalidViews": 0,
+        "policyLimitedViews": 0,
+        "parametersViews": 0
+      }
+    },
+    "activation": {
+      "trueClaimViews": 0,
+      "falseValueViews": 0
+    }
+  },
+  "sql": {
+    "submittedCapabilitySelects": 1,
+    "submittedIndexedDataSelects": 1,
+    "returnedDataRows": 1,
+    "explicitAttemptsPerSubmission": 1,
+    "providerAttempts": null,
+    "rowsRead": null,
+    "rowsWritten": null,
+    "meterStatus": "Unavailable in rendered console; read-only SQL submits no mutations, but no returned write meter is claimed.",
+    "readReviewThreshold": 1000,
+    "thresholdMet": null,
+    "queryTimeMs": {
+      "capability": 0.21,
+      "data": 4.88
+    }
+  },
+  "native": {
+    "localReads": 139,
+    "localWrites": 0,
+    "primaryKeySearch": true,
+    "baseTableScan": false,
+    "schema": "Minimal native fixture retaining production JSON-validity constraints, not a full-schema migration acceptance.",
+    "unsupportedAndMissingControls": 4,
+    "jsonConstraintRejection": true,
+    "actualCliValidatorPositive": true,
+    "actualCliValidatorNegatives": 4
+  },
+  "sourceSha256": {
+    "packages/analytics/src/vendor-network-summary.ts": "a5cad12d519ec5dc08ce833779fb605dda49541065afd65ec958c6b72c7a0ac4",
+    "packages/analytics/src/vendor-cache-report.ts": "68bd2e68f4a1d996ab73711b56293e7f8ce6046528605c60b464b1896cb8ac24",
+    "packages/analytics/src/fetch-metadata-report.ts": "92800d728d3b3c762ee9a01b078520a77df509b4c08872ca5ab542acf3c947b7",
+    "packages/analytics/schema.sql": "a53392e14c69a62ce1c73c9f8c24afff2e773f68d55831490896e45fa6f93099"
+  },
+  "planArchive": {
+    "files": 11,
+    "manifestSha256": "f4d5e026a862503779953ed70989de1992c22fba14c0ca67c8c7fb30ea020252"
+  },
+  "planAndExactProgramsReconciled": true,
+  "ownSiteRequests": 0,
+  "newObservations": 0,
+  "publicReportFills": 0,
+  "humanLabels": 0,
+  "cliD1Requests": 0,
+  "runtimeChanges": false,
+  "articleChanged": false,
+  "temporaryConsoleClosed": true,
+  "limits": [
+    "Known command controls do not authenticate Google or people, establish readership growth, calibrate population accuracy or validate organic cache-era counts.",
+    "Direct SQL bypasses public referral filtering only for the controlled diagnostic; no production exclusion or public report behavior is changed.",
+    "Owner-profile marks are not queried; exclusion rests on the unchanged saved referral policy.",
+    "Native EXPLAIN describes the local plan, not production billing or provider retries.",
+    "CLI D1 authorization is not retried or declared repaired.",
+    "Two harness failures precede success: wrong assertion field; then invalid JSON admitted by an underspecified local schema. Their corrected fixture restores the production JSON constraint; no runtime defect or impossible stored row is inferred."
+  ],
+  "privateArchive": {
+    "files": 42,
+    "manifestSha256": "4a8c0948abd657daa4a8d3299a3146c43ded0a552156304a65feff83427ce078",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  }
+}
