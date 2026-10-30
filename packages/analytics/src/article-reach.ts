@@ -1,4 +1,4 @@
-import { ARTICLE_REACH_VERSION, REACH_METRIC_KEYS, consistentArticleReach, emptyReachMetrics, validReachCatalogue, type ArticleReachReport, type ReachArticle, type ReachMetrics } from './article-reach-contract.js';
+import { ARTICLE_REACH_VERSION, REACH_METRIC_KEYS, consistentArticleReach, emptyReachMetrics, validReachCatalogue, reachMeasurementHistoryRow, type ArticleReachReport, type ReachArticle, type ReachMetrics } from './article-reach-contract.js';
 import { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
 import { referralAssessmentCtes, referralRulesJson } from './referral-sql.js';
 import type { ReferralPolicy } from './referral-policy.js';
@@ -6,16 +6,24 @@ import { measuredReportBatch, type ReportCalculationObserver } from './report-co
 
 const DAY = 86_400_000;
 const NORMALIZED_HOST = `CASE WHEN substr(lower(rtrim(referrer_host, '.')),1,4)='www.' THEN substr(lower(rtrim(referrer_host,'.')),5) ELSE lower(rtrim(referrer_host,'.')) END`;
+// Only a bounded stamp grammar reaches the public report. Unknown text stays a category.
+const stamp = (column: string) => `CASE WHEN ${column} IS NULL THEN NULL
+  WHEN typeof(${column})='text' AND length(${column}) BETWEEN 12 AND 17
+    AND substr(${column},11,1)='.' AND substr(${column},12) NOT GLOB '*[^0-9]*'
+    AND CAST(CAST(substr(${column},12) AS INTEGER) AS TEXT)=substr(${column},12)
+    AND strftime('%Y-%m-%d',substr(${column},1,10),'+0 days')=substr(${column},1,10)
+    AND substr(${column},1,10) GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'
+  THEN ${column} ELSE 'unrecognized' END`;
 
 /** One fixed public selection avoids per-article report fills and arbitrary host probes. */
 export const ARTICLE_REACH_SQL = `WITH RECURSIVE
   catalogue AS MATERIALIZED (SELECT value AS path FROM json_each(?)),
   window_rows AS MATERIALIZED (
-    SELECT path,observed_at,referrer_host,referrer_state,classifier_version,is_owner,daily_client_id
+    SELECT path,observed_at,referrer_host,referrer_state,classifier_version,collection_version,observation_source,representation,is_owner,daily_client_id
     FROM page_observations WHERE reader_kind='browser' AND observed_at>=? AND observed_at<?
   ),
   selected AS MATERIALIZED (
-    SELECT path,observed_at,referrer_host,referrer_state,classifier_version
+    SELECT path,observed_at,referrer_host,referrer_state,classifier_version,collection_version,observation_source,representation
     FROM window_rows WHERE is_owner=0
       AND NOT EXISTS(SELECT 1 FROM owner_clients WHERE owner_clients.daily_client_id=window_rows.daily_client_id)
   ),
@@ -35,7 +43,9 @@ export const ARTICLE_REACH_SQL = `WITH RECURSIVE
         WHEN referrer_state='absent' AND referrer_host IS NULL THEN 'unattributed'
         WHEN (referrer_state='external' OR referrer_state IS NULL) AND length(host) BETWEEN 1 AND 253 THEN 'external'
         ELSE 'unknown' END AS source,
-      classifier_version
+      classifier_version,${stamp('classifier_version')} AS classifier_stamp,${stamp('collection_version')} AS collection_stamp,
+      CASE WHEN observation_source IS NULL THEN 'not-recorded' WHEN observation_source IN ('edge','beacon') THEN observation_source ELSE 'unrecognized' END AS measurement_source,
+      CASE WHEN representation IS NULL THEN 'not-recorded' WHEN representation IN ('html','markdown') THEN representation ELSE 'unrecognized' END AS measurement_representation
     FROM normalized
   ),
   public_hosts AS MATERIALIZED (SELECT value AS host FROM json_each(?)),
@@ -70,7 +80,13 @@ SELECT 'article-source-total',article_path,NULL,NULL,NULL,views,
   CASE WHEN host IN (SELECT host FROM public_hosts) THEN host ELSE NULL END,NULL,NULL,NULL FROM article_largest
 UNION ALL
 SELECT 'article-source',article_path,week,NULL,NULL,views,
-  CASE WHEN host IN (SELECT host FROM public_hosts) THEN host ELSE NULL END,NULL,NULL,NULL FROM article_concentration`;
+  CASE WHEN host IN (SELECT host FROM public_hosts) THEN host ELSE NULL END,NULL,NULL,NULL FROM article_concentration
+UNION ALL
+SELECT 'measurement-history',article_path,NULL,NULL,NULL,COUNT(*),
+  json_object('collection',collection_stamp,'classifier',classifier_stamp,'observationSource',measurement_source,'representation',measurement_representation,
+    'weeks',json_array(SUM(week=0),SUM(week=1),SUM(week=2),SUM(week=3)),'unrecognizedTimeViews',SUM(week=-1)),NULL,NULL,NULL
+FROM facts GROUP BY article_path,collection_stamp,classifier_stamp,measurement_source,measurement_representation
+ORDER BY row_type,article_path,week,source,public_name`;
 
 function invalid(): never { throw new Error('Incomplete or inconsistent article reach report'); }
 function count(value: unknown): value is number { return typeof value === 'number' && Number.isSafeInteger(value) && value >= 0; }
@@ -93,6 +109,7 @@ export async function queryArticleReach(db: D1Database, catalogue: ReachArticle[
     articles: catalogue.map(post => ({ ...post, totals: emptyReachMetrics(), weeks: Array.from({ length: 4 }, emptyReachMetrics), largestExternalSource: { selection: 'largest-for-article-in-whole-window', name: null, views: 0, weeks: [0, 0, 0, 0], unrecognizedTimeViews: 0 } })),
     largestExternalSource: { selection: 'largest-in-whole-window', name: null, views: 0 },
     classification: { recordedProfiles: 0, unversionedViews: 0 },
+    measurementHistory: [],
     referralPolicy: { version: policy.version, sha256: policy.sha256, excludedViews: 0 },
   };
   const articles = new Map(report.articles.map(post => [post.path, post])), groups = new Set<string>();
@@ -103,6 +120,18 @@ export async function queryArticleReach(db: D1Database, catalogue: ReachArticle[
     const expected = ['row_type', 'article_path', 'week', 'source', 'largest', 'views', 'public_name', 'excluded_views', 'recorded_profiles', 'unversioned_views'];
     if (Object.keys(row).length !== expected.length || !expected.every(key => Object.hasOwn(row, key))) return invalid();
     if (row.row_type === 'summary') { if (summary !== null) return invalid(); summary = row; continue; }
+    if (row.row_type === 'measurement-history') {
+      if (typeof row.public_name !== 'string' || !count(row.views) || row.views === 0
+        || ['week', 'source', 'largest', 'excluded_views', 'recorded_profiles', 'unversioned_views'].some(key => row[key] !== null)) return invalid();
+      let profile: unknown;
+      try { profile = JSON.parse(row.public_name); } catch { return invalid(); }
+      if (typeof profile !== 'object' || profile === null || Array.isArray(profile)
+        || Object.keys(profile).length !== 6 || !['collection', 'classifier', 'observationSource', 'representation', 'weeks', 'unrecognizedTimeViews'].every(k => Object.hasOwn(profile, k))) return invalid();
+      const entry = { ...profile, path: row.article_path, views: row.views };
+      if (!reachMeasurementHistoryRow(entry)) return invalid();
+      report.measurementHistory.push(entry);
+      continue;
+    }
     if (row.row_type === 'article-source' || row.row_type === 'article-source-total') {
       const { article_path: path, week, views, public_name: name } = row;
       const article = typeof path === 'string' ? articles.get(path) : undefined;

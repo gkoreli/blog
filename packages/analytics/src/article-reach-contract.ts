@@ -1,5 +1,5 @@
 /** Request evidence for editorial decisions; no reader, session or identity claims. */
-export const ARTICLE_REACH_VERSION = '2026-10-30.1';
+export const ARTICLE_REACH_VERSION = '2026-10-30.2';
 export const REACH_METRIC_KEYS = ['views', 'externalViews', 'internalViews', 'unattributedViews', 'unknownSourceViews', 'largestSourceViews', 'unrecognizedTimeViews'] as const;
 export interface ReachMetrics {
   views: number;
@@ -22,6 +22,17 @@ export interface ArticleSourceConcentration {
   weeks: number[];
   unrecognizedTimeViews: number;
 }
+/** Syntactically recognized stamps are retained provenance, not reviewed semantics. */
+export interface ReachMeasurementHistory {
+  path: string | null;
+  collection: string | null;
+  classifier: string | null;
+  observationSource: 'edge' | 'beacon' | 'not-recorded' | 'unrecognized';
+  representation: 'html' | 'markdown' | 'not-recorded' | 'unrecognized';
+  views: number;
+  weeks: number[];
+  unrecognizedTimeViews: number;
+}
 export interface ArticleReachReport {
   version: typeof ARTICLE_REACH_VERSION;
   period: { startInclusive: string; endExclusive: string; updatedAt: string; timeZone: 'UTC' };
@@ -33,6 +44,7 @@ export interface ArticleReachReport {
   articles: Array<ReachArticle & { totals: ReachMetrics; weeks: ReachMetrics[]; largestExternalSource: ArticleSourceConcentration }>;
   largestExternalSource: { selection: 'largest-in-whole-window'; name: string | null; views: number };
   classification: { recordedProfiles: number; unversionedViews: number };
+  measurementHistory: ReachMeasurementHistory[];
   referralPolicy: { version: string; sha256: string; excludedViews: number };
 }
 
@@ -52,6 +64,44 @@ function sourceName(value: unknown): value is string | null {
 export function reachDay(value: unknown): value is string {
   return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
     && Number.isFinite(Date.parse(value + 'T00:00:00Z')) && new Date(value + 'T00:00:00Z').toISOString().slice(0, 10) === value;
+}
+export function reachMeasurementStamp(value: unknown): value is string | null {
+  return value === null || value === 'unrecognized' || (typeof value === 'string'
+    && /^\d{4}-\d{2}-\d{2}\.(?:0|[1-9]\d{0,5})$/.test(value) && reachDay(value.slice(0, 10)));
+}
+export function reachMeasurementHistoryRow(value: unknown): value is ReachMeasurementHistory {
+  return record(value) && keys(value, ['path', 'collection', 'classifier', 'observationSource', 'representation', 'views', 'weeks', 'unrecognizedTimeViews'])
+    && (value.path === null || typeof value.path === 'string')
+    && reachMeasurementStamp(value.collection) && reachMeasurementStamp(value.classifier)
+    && ['edge', 'beacon', 'not-recorded', 'unrecognized'].some(v => v === value.observationSource)
+    && ['html', 'markdown', 'not-recorded', 'unrecognized'].some(v => v === value.representation)
+    && count(value.views) && value.views > 0 && count(value.unrecognizedTimeViews)
+    && Array.isArray(value.weeks) && value.weeks.length === 4 && value.weeks.every(count)
+    && value.weeks.reduce((sum, n) => sum + BigInt(n), BigInt(value.unrecognizedTimeViews)) === BigInt(value.views);
+}
+
+interface MeasurementScope { path: string | null; views: number; weeks: number[]; unknown: number }
+function measurementHistory(value: unknown, expected: readonly MeasurementScope[], unversionedViews: number): boolean {
+  if (!Array.isArray(value) || !value.every(reachMeasurementHistoryRow)) return false;
+  const seen = new Set<string>();
+  const scopes = new Map<string | null, { views: bigint; weeks: bigint[]; unknown: bigint }>();
+  let unversioned = 0n;
+  for (const row of value) {
+    if (!expected.some(e => e.path === row.path)) return false;
+    const key = JSON.stringify([row.path, row.collection, row.classifier, row.observationSource, row.representation]);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    if (row.classifier === null) unversioned += BigInt(row.views);
+    const totals = scopes.get(row.path) ?? { views: 0n, weeks: [0n, 0n, 0n, 0n], unknown: 0n };
+    totals.views += BigInt(row.views); totals.unknown += BigInt(row.unrecognizedTimeViews);
+    for (const [i, count] of row.weeks.entries()) totals.weeks[i] = (totals.weeks[i] ?? 0n) + BigInt(count);
+    scopes.set(row.path, totals);
+  }
+  return unversioned === BigInt(unversionedViews) && expected.every(e => {
+    const actual = scopes.get(e.path) ?? { views: 0n, weeks: [0n, 0n, 0n, 0n], unknown: 0n };
+    return actual.views === BigInt(e.views) && actual.unknown === BigInt(e.unknown)
+      && e.weeks.every((n, i) => actual.weeks[i] === BigInt(n));
+  });
 }
 export function validReachCatalogue(value: unknown): value is ReachArticle[] {
   if (!Array.isArray(value) || value.length === 0 || value.length > 256) return false;
@@ -88,7 +138,7 @@ function completedWeeks(weeks: ReachMetrics[], total: ReachMetrics): boolean {
 
 /** Reject stale, incomplete or contradictory responses at both server and browser boundaries. */
 export function consistentArticleReach(value: unknown): value is ArticleReachReport {
-  if (!record(value) || !keys(value, ['version', 'period', 'selection', 'catalogueSize', 'site', 'articleTotals', 'weeks', 'articles', 'largestExternalSource', 'classification', 'referralPolicy'])
+  if (!record(value) || !keys(value, ['version', 'period', 'selection', 'catalogueSize', 'site', 'articleTotals', 'weeks', 'articles', 'largestExternalSource', 'classification', 'measurementHistory', 'referralPolicy'])
     || value.version !== ARTICLE_REACH_VERSION || value.selection !== 'stored-browser-signals'
     || !metrics(value.site) || !metrics(value.articleTotals) || !contained(value.articleTotals, value.site)) return false;
   const { period, classification, referralPolicy, largestExternalSource } = value;
@@ -140,5 +190,11 @@ export function consistentArticleReach(value: unknown): value is ArticleReachRep
       peers.push(week);
     }
   }
-  return validReachCatalogue(catalogue) && equal(sum(totals), value.articleTotals) && perWeek.every((week, i) => equal(sum(week), articleWeeks[i] ?? emptyReachMetrics()));
+  const measurementScopes: MeasurementScope[] = [{ path: null, views: value.site.views - value.articleTotals.views,
+    unknown: value.site.unrecognizedTimeViews - value.articleTotals.unrecognizedTimeViews,
+    weeks: siteWeeks.map((w, i) => w.views - (articleWeeks[i]?.views ?? 0)) },
+    ...catalogue.map((a, i) => ({ path: a.path, views: totals[i]?.views ?? 0, unknown: totals[i]?.unrecognizedTimeViews ?? 0,
+      weeks: perWeek.map(w => w[i]?.views ?? 0) }))];
+  return validReachCatalogue(catalogue) && equal(sum(totals), value.articleTotals) && perWeek.every((week, i) => equal(sum(week), articleWeeks[i] ?? emptyReachMetrics()))
+    && measurementHistory(value.measurementHistory, measurementScopes, classification.unversionedViews);
 }

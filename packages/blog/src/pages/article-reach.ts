@@ -27,6 +27,13 @@ export function articleReachPage() {
         <p class="stats-section-note">Articles are a subset of the site total. Today’s partial day is omitted. Changing collection or classification rules can change these counts independently of audience growth.</p>
         <div id="reach-weeks" class="reach-table" role="region" aria-label="Completed-week comparison; scroll horizontally if needed" tabindex="0"></div>
         <p id="reach-profiles" class="stats-section-note"></p>
+        <details class="reach-history">
+          <summary>Measurement history</summary>
+          <p class="stats-section-note">Check whether the recorded collection and classification methods changed across weeks before interpreting a trend. These groups cover only the Browser signals already selected above; they cannot reveal requests an older rule excluded.</p>
+          <label class="reach-sort">Show history for <select id="reach-history-scope"><option value="site">All site events</option><option value="articles">All article events</option></select></label>
+          <div id="reach-history" class="reach-table" role="region" aria-label="Weekly measurement history; scroll horizontally if needed" tabindex="0"></div>
+          <p class="stats-section-note">Stamps identify the stored method, not people or proven comparability. A date-shaped stamp is not a review of its rules. Missing and unrecognized stamps stay explicit. Groups describe stored events, not a replay under today's rules.</p>
+        </details>
       </section>
       <section class="stats-section" aria-labelledby="reach-articles-heading">
         <h2 id="reach-articles-heading">Article reach</h2>

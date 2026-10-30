@@ -1,0 +1,660 @@
+{
+  "checkedAt": "2026-10-30T11:55:23.060Z",
+  "method": "Paired local native D1, full current schema, same 16 constructed stored-Browser events; only syntactically valid classifier stamps change. Pinned prior source/contract comparison.",
+  "baselineCommit": "1af6696",
+  "priorReportsEqual": true,
+  "currentHistoryDiffers": true,
+  "otherReportFieldsUnchanged": true,
+  "distinctUnderlyingWeeklyProfileDistributions": true,
+  "mixedWeeklyProfiles": [
+    {
+      "day": "2026-10-03",
+      "profile": "2026-10-01.1",
+      "views": 2
+    },
+    {
+      "day": "2026-10-03",
+      "profile": "2026-10-16.1",
+      "views": 2
+    },
+    {
+      "day": "2026-10-10",
+      "profile": "2026-10-01.1",
+      "views": 2
+    },
+    {
+      "day": "2026-10-10",
+      "profile": "2026-10-16.1",
+      "views": 2
+    },
+    {
+      "day": "2026-10-17",
+      "profile": "2026-10-01.1",
+      "views": 2
+    },
+    {
+      "day": "2026-10-17",
+      "profile": "2026-10-16.1",
+      "views": 2
+    },
+    {
+      "day": "2026-10-24",
+      "profile": "2026-10-01.1",
+      "views": 2
+    },
+    {
+      "day": "2026-10-24",
+      "profile": "2026-10-16.1",
+      "views": 2
+    }
+  ],
+  "switchedWeeklyProfiles": [
+    {
+      "day": "2026-10-03",
+      "profile": "2026-10-01.1",
+      "views": 4
+    },
+    {
+      "day": "2026-10-10",
+      "profile": "2026-10-01.1",
+      "views": 4
+    },
+    {
+      "day": "2026-10-17",
+      "profile": "2026-10-16.1",
+      "views": 4
+    },
+    {
+      "day": "2026-10-24",
+      "profile": "2026-10-16.1",
+      "views": 4
+    }
+  ],
+  "reportClassification": {
+    "recordedProfiles": 2,
+    "unversionedViews": 0
+  },
+  "weeklyEvents": [
+    4,
+    4,
+    4,
+    4
+  ],
+  "reportMeters": [
+    {
+      "version": "2026-10-28.1",
+      "event": "stats-report-calculation",
+      "outcome": "returned",
+      "submittedStatements": 1,
+      "returnedResults": 1,
+      "metadata": "partial",
+      "counterScope": "last-attempt",
+      "reportedRowsRead": 5028,
+      "reportedRowsWritten": 0,
+      "totalAttempts": null,
+      "unexpectedWrites": false
+    },
+    {
+      "version": "2026-10-28.1",
+      "event": "stats-report-calculation",
+      "outcome": "returned",
+      "submittedStatements": 1,
+      "returnedResults": 1,
+      "metadata": "partial",
+      "counterScope": "last-attempt",
+      "reportedRowsRead": 5028,
+      "reportedRowsWritten": 0,
+      "totalAttempts": null,
+      "unexpectedWrites": false
+    }
+  ],
+  "independentLabelledRecordCases": 13,
+  "contractNegatives": 16,
+  "scale": [
+    {
+      "scenario": "historical",
+      "rows": 512,
+      "beforeReads": 12428,
+      "afterReads": 13459,
+      "writes": 0
+    },
+    {
+      "scenario": "mixed",
+      "rows": 512,
+      "beforeReads": 12428,
+      "afterReads": 13460,
+      "writes": 0
+    },
+    {
+      "scenario": "distinct",
+      "rows": 512,
+      "beforeReads": 12428,
+      "afterReads": 13970,
+      "writes": 0
+    }
+  ],
+  "mixedHistory": [
+    {
+      "collection": null,
+      "classifier": "2026-10-01.1",
+      "observationSource": "edge",
+      "representation": "not-recorded",
+      "weeks": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "unrecognizedTimeViews": 0,
+      "path": "/fixture",
+      "views": 8
+    },
+    {
+      "collection": null,
+      "classifier": "2026-10-16.1",
+      "observationSource": "edge",
+      "representation": "not-recorded",
+      "weeks": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "unrecognizedTimeViews": 0,
+      "path": "/fixture",
+      "views": 8
+    }
+  ],
+  "switchedHistory": [
+    {
+      "collection": null,
+      "classifier": "2026-10-01.1",
+      "observationSource": "edge",
+      "representation": "not-recorded",
+      "weeks": [
+        4,
+        4,
+        0,
+        0
+      ],
+      "unrecognizedTimeViews": 0,
+      "path": "/fixture",
+      "views": 8
+    },
+    {
+      "collection": null,
+      "classifier": "2026-10-16.1",
+      "observationSource": "edge",
+      "representation": "not-recorded",
+      "weeks": [
+        0,
+        0,
+        4,
+        4
+      ],
+      "unrecognizedTimeViews": 0,
+      "path": "/fixture",
+      "views": 8
+    }
+  ],
+  "fixture": {
+    "version": "2026-10-30.2",
+    "period": {
+      "startInclusive": "2026-10-01",
+      "endExclusive": "2026-10-29",
+      "updatedAt": "2026-10-29T21:00:00.000Z",
+      "timeZone": "UTC"
+    },
+    "selection": "stored-browser-signals",
+    "catalogueSize": 3,
+    "site": {
+      "views": 11,
+      "externalViews": 0,
+      "internalViews": 0,
+      "unattributedViews": 11,
+      "unknownSourceViews": 0,
+      "largestSourceViews": 0,
+      "unrecognizedTimeViews": 1
+    },
+    "articleTotals": {
+      "views": 9,
+      "externalViews": 0,
+      "internalViews": 0,
+      "unattributedViews": 9,
+      "unknownSourceViews": 0,
+      "largestSourceViews": 0,
+      "unrecognizedTimeViews": 1
+    },
+    "weeks": [
+      {
+        "startInclusive": "2026-10-01",
+        "endExclusive": "2026-10-08",
+        "site": {
+          "views": 7,
+          "externalViews": 0,
+          "internalViews": 0,
+          "unattributedViews": 7,
+          "unknownSourceViews": 0,
+          "largestSourceViews": 0,
+          "unrecognizedTimeViews": 0
+        },
+        "articles": {
+          "views": 5,
+          "externalViews": 0,
+          "internalViews": 0,
+          "unattributedViews": 5,
+          "unknownSourceViews": 0,
+          "largestSourceViews": 0,
+          "unrecognizedTimeViews": 0
+        }
+      },
+      {
+        "startInclusive": "2026-10-08",
+        "endExclusive": "2026-10-15",
+        "site": {
+          "views": 1,
+          "externalViews": 0,
+          "internalViews": 0,
+          "unattributedViews": 1,
+          "unknownSourceViews": 0,
+          "largestSourceViews": 0,
+          "unrecognizedTimeViews": 0
+        },
+        "articles": {
+          "views": 1,
+          "externalViews": 0,
+          "internalViews": 0,
+          "unattributedViews": 1,
+          "unknownSourceViews": 0,
+          "largestSourceViews": 0,
+          "unrecognizedTimeViews": 0
+        }
+      },
+      {
+        "startInclusive": "2026-10-15",
+        "endExclusive": "2026-10-22",
+        "site": {
+          "views": 1,
+          "externalViews": 0,
+          "internalViews": 0,
+          "unattributedViews": 1,
+          "unknownSourceViews": 0,
+          "largestSourceViews": 0,
+          "unrecognizedTimeViews": 0
+        },
+        "articles": {
+          "views": 1,
+          "externalViews": 0,
+          "internalViews": 0,
+          "unattributedViews": 1,
+          "unknownSourceViews": 0,
+          "largestSourceViews": 0,
+          "unrecognizedTimeViews": 0
+        }
+      },
+      {
+        "startInclusive": "2026-10-22",
+        "endExclusive": "2026-10-29",
+        "site": {
+          "views": 1,
+          "externalViews": 0,
+          "internalViews": 0,
+          "unattributedViews": 1,
+          "unknownSourceViews": 0,
+          "largestSourceViews": 0,
+          "unrecognizedTimeViews": 0
+        },
+        "articles": {
+          "views": 1,
+          "externalViews": 0,
+          "internalViews": 0,
+          "unattributedViews": 1,
+          "unknownSourceViews": 0,
+          "largestSourceViews": 0,
+          "unrecognizedTimeViews": 0
+        }
+      }
+    ],
+    "articles": [
+      {
+        "path": "/a",
+        "title": "Article A",
+        "publishedOn": "2026-09-01",
+        "totals": {
+          "views": 8,
+          "externalViews": 0,
+          "internalViews": 0,
+          "unattributedViews": 8,
+          "unknownSourceViews": 0,
+          "largestSourceViews": 0,
+          "unrecognizedTimeViews": 1
+        },
+        "weeks": [
+          {
+            "views": 4,
+            "externalViews": 0,
+            "internalViews": 0,
+            "unattributedViews": 4,
+            "unknownSourceViews": 0,
+            "largestSourceViews": 0,
+            "unrecognizedTimeViews": 0
+          },
+          {
+            "views": 1,
+            "externalViews": 0,
+            "internalViews": 0,
+            "unattributedViews": 1,
+            "unknownSourceViews": 0,
+            "largestSourceViews": 0,
+            "unrecognizedTimeViews": 0
+          },
+          {
+            "views": 1,
+            "externalViews": 0,
+            "internalViews": 0,
+            "unattributedViews": 1,
+            "unknownSourceViews": 0,
+            "largestSourceViews": 0,
+            "unrecognizedTimeViews": 0
+          },
+          {
+            "views": 1,
+            "externalViews": 0,
+            "internalViews": 0,
+            "unattributedViews": 1,
+            "unknownSourceViews": 0,
+            "largestSourceViews": 0,
+            "unrecognizedTimeViews": 0
+          }
+        ],
+        "largestExternalSource": {
+          "selection": "largest-for-article-in-whole-window",
+          "name": null,
+          "views": 0,
+          "weeks": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "unrecognizedTimeViews": 0
+        }
+      },
+      {
+        "path": "/b",
+        "title": "Article B",
+        "publishedOn": "2026-10-22",
+        "totals": {
+          "views": 1,
+          "externalViews": 0,
+          "internalViews": 0,
+          "unattributedViews": 1,
+          "unknownSourceViews": 0,
+          "largestSourceViews": 0,
+          "unrecognizedTimeViews": 0
+        },
+        "weeks": [
+          {
+            "views": 1,
+            "externalViews": 0,
+            "internalViews": 0,
+            "unattributedViews": 1,
+            "unknownSourceViews": 0,
+            "largestSourceViews": 0,
+            "unrecognizedTimeViews": 0
+          },
+          {
+            "views": 0,
+            "externalViews": 0,
+            "internalViews": 0,
+            "unattributedViews": 0,
+            "unknownSourceViews": 0,
+            "largestSourceViews": 0,
+            "unrecognizedTimeViews": 0
+          },
+          {
+            "views": 0,
+            "externalViews": 0,
+            "internalViews": 0,
+            "unattributedViews": 0,
+            "unknownSourceViews": 0,
+            "largestSourceViews": 0,
+            "unrecognizedTimeViews": 0
+          },
+          {
+            "views": 0,
+            "externalViews": 0,
+            "internalViews": 0,
+            "unattributedViews": 0,
+            "unknownSourceViews": 0,
+            "largestSourceViews": 0,
+            "unrecognizedTimeViews": 0
+          }
+        ],
+        "largestExternalSource": {
+          "selection": "largest-for-article-in-whole-window",
+          "name": null,
+          "views": 0,
+          "weeks": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "unrecognizedTimeViews": 0
+        }
+      },
+      {
+        "path": "/zero",
+        "title": "No events yet",
+        "publishedOn": "2026-10-28",
+        "totals": {
+          "views": 0,
+          "externalViews": 0,
+          "internalViews": 0,
+          "unattributedViews": 0,
+          "unknownSourceViews": 0,
+          "largestSourceViews": 0,
+          "unrecognizedTimeViews": 0
+        },
+        "weeks": [
+          {
+            "views": 0,
+            "externalViews": 0,
+            "internalViews": 0,
+            "unattributedViews": 0,
+            "unknownSourceViews": 0,
+            "largestSourceViews": 0,
+            "unrecognizedTimeViews": 0
+          },
+          {
+            "views": 0,
+            "externalViews": 0,
+            "internalViews": 0,
+            "unattributedViews": 0,
+            "unknownSourceViews": 0,
+            "largestSourceViews": 0,
+            "unrecognizedTimeViews": 0
+          },
+          {
+            "views": 0,
+            "externalViews": 0,
+            "internalViews": 0,
+            "unattributedViews": 0,
+            "unknownSourceViews": 0,
+            "largestSourceViews": 0,
+            "unrecognizedTimeViews": 0
+          },
+          {
+            "views": 0,
+            "externalViews": 0,
+            "internalViews": 0,
+            "unattributedViews": 0,
+            "unknownSourceViews": 0,
+            "largestSourceViews": 0,
+            "unrecognizedTimeViews": 0
+          }
+        ],
+        "largestExternalSource": {
+          "selection": "largest-for-article-in-whole-window",
+          "name": null,
+          "views": 0,
+          "weeks": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "unrecognizedTimeViews": 0
+        }
+      }
+    ],
+    "largestExternalSource": {
+      "selection": "largest-in-whole-window",
+      "name": null,
+      "views": 0
+    },
+    "classification": {
+      "recordedProfiles": 5,
+      "unversionedViews": 2
+    },
+    "measurementHistory": [
+      {
+        "collection": "2026-02-28.999999",
+        "classifier": null,
+        "observationSource": "edge",
+        "representation": "html",
+        "weeks": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "unrecognizedTimeViews": 0,
+        "path": null,
+        "views": 1
+      },
+      {
+        "collection": "2026-10-01.1",
+        "classifier": "2026-10-01.2",
+        "observationSource": "edge",
+        "representation": "not-recorded",
+        "weeks": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "unrecognizedTimeViews": 0,
+        "path": null,
+        "views": 1
+      },
+      {
+        "collection": "2026-10-01.0",
+        "classifier": "2026-10-01.1",
+        "observationSource": "edge",
+        "representation": "html",
+        "weeks": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "unrecognizedTimeViews": 0,
+        "path": "/a",
+        "views": 1
+      },
+      {
+        "collection": "2026-10-01.1",
+        "classifier": "2026-10-01.2",
+        "observationSource": "beacon",
+        "representation": "markdown",
+        "weeks": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "unrecognizedTimeViews": 0,
+        "path": "/a",
+        "views": 1
+      },
+      {
+        "collection": "2026-10-01.1",
+        "classifier": "2026-10-01.2",
+        "observationSource": "edge",
+        "representation": "html",
+        "weeks": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "unrecognizedTimeViews": 1,
+        "path": "/a",
+        "views": 3
+      },
+      {
+        "collection": "2026-10-01.1",
+        "classifier": "2026-10-15.1",
+        "observationSource": "edge",
+        "representation": "html",
+        "weeks": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "unrecognizedTimeViews": 0,
+        "path": "/a",
+        "views": 1
+      },
+      {
+        "collection": "unrecognized",
+        "classifier": "unrecognized",
+        "observationSource": "edge",
+        "representation": "html",
+        "weeks": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "unrecognizedTimeViews": 0,
+        "path": "/a",
+        "views": 2
+      },
+      {
+        "collection": null,
+        "classifier": null,
+        "observationSource": "edge",
+        "representation": "not-recorded",
+        "weeks": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "unrecognizedTimeViews": 0,
+        "path": "/b",
+        "views": 1
+      }
+    ],
+    "referralPolicy": {
+      "version": "2026-09-06.2",
+      "sha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+      "excludedViews": 1
+    }
+  },
+  "productionCalls": 0,
+  "newLabels": 0,
+  "sourceSha256": {
+    "packages/analytics/src/article-reach.ts": "17379b45e0c7c3f251e19b69632b830cfb051318433ef2b53d89b080f83854f9",
+    "packages/analytics/src/article-reach-contract.ts": "38cd7b99af5ae8384fab0a53692e682088fc2b70fba33548703cf487965e2321",
+    "packages/blog/src/client/article-reach.ts": "22b63841391e86faa56e0487b0c32b395f4353da591c20131a57b0ea75d65a10",
+    "packages/blog/src/pages/article-reach.ts": "e1408b7ed371991c922e24d28c67b481f2b3fcdfcf31a91c5eba30884b552273",
+    "packages/analytics/test/fixtures/measurement-history.mjs": "885e62cfad6a19028672d8f75aa9a150bca5681376343533bcd9121faa92d782",
+    "packages/blog/scripts/check-readership-profile-ambiguity.mjs": "798b650f7ec4e3d3960a6c4509ca6b32ff18458b73c32ab0395651390976241f"
+  },
+  "limits": "Constructed report history, not actual rule changes or measured production cost/growth. Unsupported non-date-shaped stamps are folded into unrecognized, not displayed. Profile equality does not prove semantic stability; Browser-selected rows cannot reveal requests excluded by old rules."
+}

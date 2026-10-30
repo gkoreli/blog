@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-10-30T12:06:16.719872+00:00",
+  "sources": [
+    {
+      "url": "https://www.sqlite.org/lang_datefunc.html",
+      "claim": "SQLite date functions format/modify time-values; the report adds an explicit canonical date/revision boundary.",
+      "code": [
+        "packages/analytics/src/article-reach.ts",
+        "packages/analytics/src/article-reach-contract.ts"
+      ],
+      "evidence": "readership-history-native.json",
+      "limit": "Our admission rule is not a claim that every parsable SQLite date is canonical."
+    },
+    {
+      "url": "https://www.sqlite.org/json1.html",
+      "claim": "JSON constructors preserve a nested array supplied as a JSON value.",
+      "code": [
+        "packages/analytics/src/article-reach.ts"
+      ],
+      "evidence": "readership-history-native.json",
+      "limit": "Typed construction and decoder reconciliation are not request authentication."
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/platform/limits/",
+      "claim": "Documented limits include SQL100000bytes,100bindings,32function arguments and50byteGLOB patterns.",
+      "code": [
+        "packages/analytics/src/article-reach.ts"
+      ],
+      "evidence": "readership-history-scale.json",
+      "limit": "Native fixture/size acceptance is separate from production allocation, execution and cost."
+    },
+    {
+      "url": "https://matomo.org/guide/reporting-tools/annotations/",
+      "claim": "Borrow the dated report-context idea from Research108 source review; no new Matomo execution or dependency.",
+      "review": "decision-audit-sources.json",
+      "code": [
+        "packages/blog/src/pages/article-reach.ts"
+      ],
+      "limit": "Stored stamp distributions are evidence of provenance, not causal attribution."
+    }
+  ]
+}

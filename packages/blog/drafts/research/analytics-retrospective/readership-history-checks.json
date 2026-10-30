@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-10-30T12:06:16.719872+00:00",
+  "analyticsTests": 319,
+  "siteTests": 166,
+  "workspaceTypecheckPassed": true,
+  "markdownValidationPosts": 22,
+  "isolatedBuildPosts": 33,
+  "workerDryRunPassed": true,
+  "nativeIndependentRecordCases": 13,
+  "historyContractNegatives": 16,
+  "historyNativeRowNegatives": 8,
+  "existingReportNegatives": 35,
+  "bindings": 6,
+  "sqlBytes": 7300,
+  "newJsonObjectArguments": 12,
+  "newJsonArrayArguments": 4,
+  "stampGlobBytes": 42,
+  "newProductionRequests": 0,
+  "newProductionSelects": 0,
+  "newHumanLabels": 0,
+  "articleChanged": false,
+  "privateEnvCopied": false,
+  "sharedWorkspaceDependencyLinks": true,
+  "syntheticPublicBuildConfiguration": true,
+  "ownedPreviewShutdown": {
+    "terminalAwaited": true,
+    "terminalExit": 1,
+    "portUnreachable": true,
+    "previousPreviewAwaitedExits": [
+      143,
+      1
+    ]
+  },
+  "browserCleanup": {
+    "temporaryTabClosed": true,
+    "tab": "51",
+    "viewportReset": true,
+    "priorSourceBuildTabRetained": true
+  },
+  "sourceSha256": {
+    "packages/analytics/src/article-reach.ts": "17379b45e0c7c3f251e19b69632b830cfb051318433ef2b53d89b080f83854f9",
+    "packages/analytics/src/article-reach-contract.ts": "38cd7b99af5ae8384fab0a53692e682088fc2b70fba33548703cf487965e2321",
+    "packages/analytics/test/article-reach.test.mjs": "cd0d227d762eb937ae6f58d3e4d333ee9898cc1a1454887aaef7f652bfb26666",
+    "packages/analytics/test/fixtures/measurement-history.mjs": "885e62cfad6a19028672d8f75aa9a150bca5681376343533bcd9121faa92d782",
+    "packages/blog/scripts/check-readership-profile-ambiguity.mjs": "798b650f7ec4e3d3960a6c4509ca6b32ff18458b73c32ab0395651390976241f",
+    "packages/blog/scripts/check-article-reach.mjs": "7b6b3d0ef30c7063ed22ba33c26307ff39af7f132cd572bab276882925932f00",
+    "packages/blog/src/client/article-reach.ts": "22b63841391e86faa56e0487b0c32b395f4353da591c20131a57b0ea75d65a10",
+    "packages/blog/src/pages/article-reach.ts": "8d02c024ff50b1cf6c5f212b2cfa7d37f161737cf70ff591f9f7e0c29afc1fcd",
+    "packages/blog/src/styles/article-reach.css": "8d5bdba457abe3439db97bfd1f86b17227f695e73873e71527f403204e22d4f6"
+  },
+  "logSha256": {
+    "analytics-tests-v2.log": "5cb2e8037cf0f3d089c5716cbbcaf9c24c608435ea50640c8101ed0e7a68468b",
+    "blog-tests.log": "f9f21d01a4c35f3c0825bf8b85364e99a7ddb04810ab4bbc0f688ea0b9932726",
+    "typecheck.log": "e6a3a5ed5d5be7dcd6e2d9b246de28bf30d4cfc134e1eabc3275c43adb1cd037",
+    "validate.log": "2ce2ea114241d00718f5ea92721c1cbfa14e927d7031df330eb6a4499026345b",
+    "native-history-v2.log": "3efbfd25713723eee3865c169596b1e1ca42e3f4c6925fbbd24a01287a417ed6",
+    "full-native-matched.log": "89813a034919fc01c61f88e5c0f9e4675c57b94a0767b3924a018c69a6488967",
+    "build-v4/build.log": "94c614ec3cfd1f1155a390a4e36417bc2ca04ed8c88c84b3413d5a6d44132fe5",
+    "worker-dry-run.log": "0c70afb5957381e78cd23b344485d45ada89a11260c2f9eb233ce83fbc916ea4",
+    "build-final.log": "7561fc098b92f52c3b6d33b2389957b764204acd0ba25cc2e20db5acfdf2eac4"
+  },
+  "limits": "Local acceptance only; exact source push, deployment and live canonical API/cache/assets/meter remain separate. CLI D1 authorization not retried.",
+  "finalStaticWordingChecked": true,
+  "finalJavaScriptMatchesBrowserCheckedBundle": true,
+  "postBrowserChange": "One disclaimer narrows page deliveries to stored events, covering beacon sources. Final isolated build/static assertion pass; JS and behavioral code unchanged.",
+  "privateArchive": {
+    "directory": "2026-10-30-readership-measurement-history",
+    "files": 94,
+    "manifestSha256": "123f5b1094031be452990a0a2de89eb6101982f0a8c705dfcd9cc993d2da66f6",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  }
+}

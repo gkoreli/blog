@@ -1,0 +1,89 @@
+{
+  "checkedAt": "2026-10-30T12:06:16.719872+00:00",
+  "checks": [
+    {
+      "scope": "site",
+      "rows": 8,
+      "allCellsMatch": true
+    },
+    {
+      "scope": "articles",
+      "rows": 6,
+      "allCellsMatch": true
+    },
+    {
+      "scope": "/a",
+      "rows": 5,
+      "allCellsMatch": true
+    },
+    {
+      "scope": "/b",
+      "rows": 1,
+      "allCellsMatch": true
+    },
+    {
+      "scope": "/zero",
+      "rows": 0,
+      "allCellsMatch": true
+    }
+  ],
+  "apiRequestsBefore": 1,
+  "apiRequestsAfter": 1,
+  "desktop": {
+    "document": 1280,
+    "historyScroll": 728,
+    "historyWidth": 728,
+    "open": true,
+    "viewport": 1280
+  },
+  "mobile": {
+    "before": {
+      "client": 354,
+      "document": 390,
+      "left": 0,
+      "scroll": 720,
+      "viewport": 390
+    },
+    "after": {
+      "client": 354,
+      "document": 390,
+      "left": 40,
+      "scroll": 720,
+      "viewport": 390
+    }
+  },
+  "failureRecovery": [
+    {
+      "mode": "missing",
+      "hiddenOnFailure": true,
+      "retryRestored": true
+    },
+    {
+      "mode": "contradictory",
+      "hiddenOnFailure": true,
+      "retryRestored": true
+    },
+    {
+      "mode": "failure",
+      "hiddenOnFailure": true,
+      "retryRestored": true
+    }
+  ],
+  "controls": {
+    "keyboardCollapse": true,
+    "pointerOpen": true,
+    "viewportReset": true
+  },
+  "finalJavaScriptIdentity": {
+    "scopeChecksBuiltJavaScriptMatchesFinal": true,
+    "bytes": 13831,
+    "sha256": "e58b8849ba35e041d7167912156531232bd769b025d1fdf590df894decca3296"
+  },
+  "cleanup": {
+    "temporaryTabClosed": true,
+    "tab": "51",
+    "viewportReset": true,
+    "priorSourceBuildTabRetained": true
+  },
+  "limits": "Synthetic local native report rendered by compiled assets; no production layout, human/device calibration or source authentication."
+}

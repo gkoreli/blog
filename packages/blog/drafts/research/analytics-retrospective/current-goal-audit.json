@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T11:49:13.402327+00:00",
+  "checkedAt": "2026-10-30T12:06:16.719872+00:00",
   "sourceBaseline": "f4702851a2f020b934241b1b55e047b5ddd6307b",
   "goalAchieved": false,
-  "previousTurn": "progress: Research107 accepts controlled nonzero production cache/metadata SQL projection without organic/readership claims.",
-  "scope": "Current source/catalogue and saved evidence audit. Fresh native constructed report counterexample and historical stored-kind reevaluation, not a new production census, packet replay, human test or live health assertion.",
+  "previousTurn": "progress: Research108 reconciles decision evidence and measures profile-history ambiguity with a paired native counterexample.",
+  "scope": "Research109 implements joint stored weekly measurement history; local native/contract/cost/UI acceptance only. No production operation, new operator label, historical reclassification, human growth or live-health assertion.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Add reconciled weekly measurement-profile composition to the article-readership report from existing stored fields. First preserve the paired profile-history counterexample, unknown/historical stamps, collection/source/representation differences and matched cost; do not reclassify old rows, authenticate people, normalize a human-growth curve or scan production before native acceptance.",
+  "nextBoundedAction": "Accept exact source/build/allocation and canonical public API/cache/assets/returned meter for readership history2026-10-30.2 under frozen bounds. No forced fill, raw recensus or reopened human/approval gates.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -62,7 +62,7 @@
     "localBuildAccepted": true,
     "localBuildReceipt": "readership-article-checks.json"
   },
-  "runtimeUnchanged": true,
+  "runtimeUnchanged": false,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -970,7 +970,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: fresh catalogue and hash-matched stored-kind evaluation; paired native reports expose weekly profile-history ambiguity; remaining decision/requirement audit updated. No new visits, labels or production queries.",
+  "currentTurn": "progress: joint weekly measurement history implemented; pinned native counterexample distinguished, old report fields unchanged, cost and browser/failure controls accepted locally.",
   "requirementsAudit": {
     "sourceCommit": "f4702851a2f020b934241b1b55e047b5ddd6307b",
     "method": "Fresh source inspection/compilation/catalogue; accepted dated production receipts; hash-matched current evaluator on original stored-kind ledger; paired full-schema native readership reports. No fresh production, browser/sign-in, human/device or packet replay.",
@@ -1164,7 +1164,7 @@
     "newPopulationExports": 0,
     "humanLabels": 0
   },
-  "runtimeUnchangedScope": "Only an offline diagnostic helper and research records change; production classifier, collector, verifier, reports, settings and article remain unchanged in Research108.",
+  "runtimeUnchangedScope": "Readership query/contract/UI/cache version changes. Collector/classifier/verifier/schema/exclusions/article stay unchanged.",
   "productionOperationsThisTurn": {
     "siteRequests": 0,
     "d1Statements": 0,
@@ -1355,7 +1355,21 @@
     "discovery": "Reported hosts and absent/internal partitions exist; search queries/intent/authenticity not accepted.",
     "editorial": "Fetcher reference is a source-sensitive delivery lead, not search demand or usefulness. Bun follow-up remains a hypothesis.",
     "identityPurpose": "Covered-key verification, declaration roles, documented methods and native booleans are separate; caller/trigger and R1/R2 operators remain unresolved.",
-    "weeklyMeasurementHistory": "Current report has one global distinct-classifier count. Paired16-row fixtures have identical reports but eight versus four week/profile groups.",
+    "weeklyMeasurementHistory": "Implemented locally in Research109; syntactically valid stamps distinguish the paired histories, unsupported names stay unrecognized. Exact-source live acceptance pending.",
     "nextDecision": "Expose weekly composition before interpreting changes as growth; choose editorial experiments only with explicit evidence limits."
+  },
+  "weeklyMeasurementHistory": {
+    "research": "109-weekly-measurement-history.md",
+    "native": "readership-history-native.json",
+    "scale": "readership-history-scale.json",
+    "browser": "readership-history-browser.json",
+    "checks": "readership-history-checks.json",
+    "version": "2026-10-30.2",
+    "localAccepted": true,
+    "hostedActivationAccepted": false,
+    "livePublicAccepted": false,
+    "oldFieldsMatchPinnedReport": true,
+    "humanGrowthMeasured": false,
+    "historyScope": "Joint existing collection/classifier/source/representation on selected Browser events, current article/nonarticle partition; no old-rule replay."
   }
 }

@@ -49,6 +49,31 @@ function articles(data: ArticleReachReport): void {
   }
   element('reach-articles').replaceChildren(result);
 }
+function history(data: ArticleReachReport): void {
+  const select = element('reach-history-scope');
+  const scope = select instanceof HTMLSelectElement ? select.value : 'site';
+  const grouped = new Map<string, { collection: string | null; classifier: string | null; observationSource: string; representation: string; views: number; weeks: number[]; unrecognizedTimeViews: number }>();
+  for (const row of data.measurementHistory) {
+    if (scope === 'articles' ? row.path === null : scope !== 'site' && row.path !== scope) continue;
+    const key = JSON.stringify([row.collection, row.classifier, row.observationSource, row.representation]);
+    const combined = grouped.get(key) ?? { ...row, views: 0, weeks: [0, 0, 0, 0], unrecognizedTimeViews: 0 };
+    combined.views += row.views; combined.unrecognizedTimeViews += row.unrecognizedTimeViews;
+    for (const [i, count] of row.weeks.entries()) combined.weeks[i] = (combined.weeks[i] ?? 0) + count;
+    grouped.set(key, combined);
+  }
+  if (grouped.size === 0) { element('reach-history').textContent = 'No events in this selection.'; return; }
+  const { table: result, body } = table(['Measurement method', ...data.weeks.map(w => w.startInclusive), 'Total', 'Unknown time'], 'Weekly Browser-signal events by stored collection, classifier, source and representation; date columns are week starts');
+  const stamp = (value: string | null) => value === null ? 'not recorded' : value === 'unrecognized' ? 'unrecognized stamp' : value;
+  for (const [, profile] of [...grouped].sort(([a], [b]) => a.localeCompare(b))) {
+    const row = body.insertRow(), label = document.createElement('th'); label.scope = 'row';
+    label.textContent = `Collector ${stamp(profile.collection)} · classifier ${stamp(profile.classifier)}`;
+    const delivery = document.createElement('span'); delivery.className = 'reach-published';
+    delivery.textContent = `Source: ${profile.observationSource} · representation: ${profile.representation}`;
+    label.append(delivery); row.append(label);
+    for (const count of [...profile.weeks, profile.views, profile.unrecognizedTimeViews]) cell(row, count);
+  }
+  element('reach-history').replaceChildren(result);
+}
 function render(data: ArticleReachReport): void {
   element('reach-period').textContent = `${data.period.startInclusive} 00:00 inclusive → ${data.period.endExclusive} 00:00 exclusive, UTC. Calculated ${data.period.updatedAt}.`;
   overview(data);
@@ -63,6 +88,13 @@ function render(data: ArticleReachReport): void {
   }
   element('reach-weeks').replaceChildren(weekly);
   element('reach-profiles').textContent = `${number(data.classification.recordedProfiles)} distinct stored classifier identifiers; ${number(data.classification.unversionedViews)} site events lack a classifier stamp. ${number(data.site.unrecognizedTimeViews)} events have unrecognized timestamps and are outside the weekly rows, while remaining in the totals.`;
+  const scope = element('reach-history-scope');
+  if (!(scope instanceof HTMLSelectElement)) throw new Error('Missing history selection');
+  scope.replaceChildren();
+  for (const [value, label] of [['site', 'All site events'], ['articles', 'All article events'], ...data.articles.map(a => [a.path, a.title])]) {
+    const option = document.createElement('option'); option.value = value ?? ''; option.textContent = label ?? ''; scope.append(option);
+  }
+  history(data);
   articles(data);
   element('reach-policy').textContent = `Owner-marked observations are excluded. Referral policy ${data.referralPolicy.version} excludes ${number(data.referralPolicy.excludedViews)} additional Browser-signal observations in this window. The largest-source comparison does not change that policy or stored records.`;
   element('reach-status').textContent = data.site.views === 0 ? 'No stored Browser signals in this completed window.' : 'Report ready.';
@@ -70,6 +102,7 @@ function render(data: ArticleReachReport): void {
 }
 let current: ArticleReachReport | null = null;
 element('reach-sort').addEventListener('change', () => { if (current) articles(current); });
+element('reach-history-scope').addEventListener('change', () => { if (current) history(current); });
 async function load(): Promise<void> {
   element('reach-status').textContent = 'Loading the report…'; element('reach-report').hidden = true;
   try {
