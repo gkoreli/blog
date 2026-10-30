@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T00:13:39.431969+00:00",
+  "checkedAt": "2026-10-30T05:37:46.096170+00:00",
   "sourceBaseline": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
   "goalAchieved": false,
-  "previousTurn": "progress: source b989e8e article revised, checked, pushed and accepted through exact served Markdown; receipt follow-up4bfee76 pushed",
-  "scope": "Revalidated current classifier/evidence/evaluator source and original-goal gates. Local implementation and selected experiments exist; human/population/native-provider conclusions remain unproven. Article work is delivered. No substitute native-app editorial experiment is treated as completion of bot-detection requirements.",
+  "previousTurn": "Goal marked blocked after repeated dependency checks; no new analytics measurement. Owner now explicitly requests keeping goal active.",
+  "scope": "Owner-requested continuation; external inputs remain prerequisites for specific human/search/native claims, while existing independent ingestion work remains actionable. Prior global impasse assessment was too broad.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,12 +46,12 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "If Google sign-in completes, inspect page-filtered query/click/impression evidence over the latest complete available28days and prior28days, recording actual endpoints/preliminary flags. Otherwise revalidate the same dependency gates next goal turn; do not replace missing labels/provider evidence with more fixture counts or an unrelated native-app project.",
+  "nextBoundedAction": "Deliver and accept actual-byte ingestion limit; then pursue remaining scoped diagnostic attribution/admission requirements without changing deferred human trials or inferring population readership. Resume automatic lifecycle through owner-controlled goal row.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
     "sourceSha256": "f6186a1f16af8114a3318b8125af3c2a04cc34216f0126b7093b2f5a6e5d1aa1",
-    "unchanged": false,
+    "unchanged": true,
     "freshServedCheck": false,
     "publicationReceipt": "readership-article-release.json",
     "servedMatchesCheckedBuild": true,
@@ -62,7 +62,7 @@
     "localBuildAccepted": true,
     "localBuildReceipt": "readership-article-checks.json"
   },
-  "runtimeUnchanged": true,
+  "runtimeUnchanged": false,
   "productionStatements": 0,
   "newVisits": 0,
   "newHumanLabels": 0,
@@ -838,7 +838,7 @@
     "unmeteredCalculations": 1,
     "productionBrowserLayoutMeasured": false
   },
-  "productionStatementsScope": "This requirement/dependency audit: no production SQL or own-site request",
+  "productionStatementsScope": "No new production operation in local body-limit iteration",
   "productionReportedReadsCoverage": "No new production database operation; historical costs stay in their dated receipts.",
   "productionReadTotal": 0,
   "publicationDateRepair": {
@@ -1018,7 +1018,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "Fresh requirement/dependency audit; Search Console advanced from signed-out account chooser to user-presence passkey challenge; no authenticated report inspected.",
+  "currentTurn": "progress: independent actual-body ingestion defect repaired, paired native comparison and148site tests/types/isolated build accepted; publication pending",
   "requirementsAudit": {
     "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
     "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
@@ -1130,13 +1130,28 @@
     ]
   },
   "dependencyAudit": {
-    "consecutiveBlockedGoalTurns": 1,
-    "status": "active-first-dependency-check-not-blocked-terminal",
-    "condition": "New decisive measurements require user-presence authentication, deferred human-operated labels, provider eligibility/access, or an explicit collection/privacy decision. Repeating accepted fixtures cannot supply these observations.",
+    "consecutiveBlockedGoalTurns": 0,
+    "status": "measurement-specific-dependencies; independent implementation continues",
+    "condition": "Search/human/native/collection observations remain gated separately. Existing TASK0126 actual-byte repair is independently actionable; these dependencies do not justify treating all engineering as impossible.",
     "search": "Existing account selected; Google requires completion using a passkey. No credential/code entered, account setting changed or report viewed. One actionable async request pending.",
     "human": "Owner explicitly deferred human trials; not reopened.",
     "provider": "Fresh primary docs still specify Enterprise Bot Management and intermediary classification for signed_agent; last observed Free zone plan remains a dated Research76 observation, not a fresh account-entitlement inspection. No upgrade/enrollment/access expansion authorized or attempted.",
     "privacy": "Optional raw diagnostic capture stays off pending the previously recorded collection/basis/retention decisions. No new legal compliance verdict.",
     "otherPending": "Duck.ai terms approval remains pending; no prompt submitted or agreement accepted."
+  },
+  "ownerLifecycleRequest": "Keep the goal active",
+  "observedGoalLifecycle": "blocked; available API cannot set active, and native computer-use cannot operate Codex app controls. Continuing requested work in this turn; owner can resume via goal progress row.",
+  "diagnosticBodyAdmission": {
+    "research": "../newsletter-reliability/22-measured-diagnostic-body-limits.md",
+    "native": "../newsletter-reliability/client-error-body-limit-native.json",
+    "checks": "../newsletter-reliability/client-error-body-limit-checks.json",
+    "casesPerVersion": 11,
+    "oldOversizeWrites": 6,
+    "newOversizeWrites": 0,
+    "siteTests": 148,
+    "localAccepted": true,
+    "productionAccepted": false,
+    "humanLabels": 0,
+    "actualWireFramingMeasured": false
   }
 }

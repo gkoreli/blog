@@ -1,0 +1,263 @@
+{
+  "checkedAt": "2026-10-30T05:35:59.238Z",
+  "baseline": "3b8a2d077affcd41328cc40c6b3e9ae9b458e2c0",
+  "runtime": "paired actual handlers in local workerd with native D1 and constructed Request streams",
+  "casesPerVersion": 11,
+  "oldOversizeWrites": 6,
+  "newOversizeWrites": 0,
+  "actualWireFramingMeasured": false,
+  "productionCalls": 0,
+  "humanLabels": 0,
+  "before": {
+    "rows": [
+      {
+        "mode": "ordinary",
+        "status": 204,
+        "bodyBytes": 1024,
+        "insertedRows": 1,
+        "runCalls": 1,
+        "pulls": 2,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "boundary",
+        "status": 204,
+        "bodyBytes": 8192,
+        "insertedRows": 1,
+        "runCalls": 1,
+        "pulls": 3,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "oversize",
+        "status": 204,
+        "bodyBytes": 8193,
+        "insertedRows": 1,
+        "runCalls": 1,
+        "pulls": 4,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "zero-hint",
+        "status": 204,
+        "bodyBytes": 8193,
+        "insertedRows": 1,
+        "runCalls": 1,
+        "pulls": 4,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "short-hint",
+        "status": 204,
+        "bodyBytes": 8193,
+        "insertedRows": 1,
+        "runCalls": 1,
+        "pulls": 4,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "malformed-hint",
+        "status": 204,
+        "bodyBytes": 8193,
+        "insertedRows": 1,
+        "runCalls": 1,
+        "pulls": 4,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "unicode-boundary",
+        "status": 204,
+        "bodyBytes": 8192,
+        "insertedRows": 1,
+        "runCalls": 1,
+        "pulls": 8193,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "unicode-oversize",
+        "status": 204,
+        "bodyBytes": 8193,
+        "insertedRows": 1,
+        "runCalls": 1,
+        "pulls": 4,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "drain-control",
+        "status": 204,
+        "bodyBytes": 16384,
+        "insertedRows": 1,
+        "runCalls": 1,
+        "pulls": 3,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "invalid-json",
+        "status": 400,
+        "bodyBytes": 1,
+        "insertedRows": 0,
+        "runCalls": 0,
+        "pulls": 2,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "read-error",
+        "status": 400,
+        "bodyBytes": 8193,
+        "insertedRows": 0,
+        "runCalls": 0,
+        "pulls": 1,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      }
+    ],
+    "workerSha256": "8718070fea85aeff759a75aa28fcbff7e973b182068be7bfefa1f210984936e8"
+  },
+  "after": {
+    "rows": [
+      {
+        "mode": "ordinary",
+        "status": 204,
+        "bodyBytes": 1024,
+        "insertedRows": 1,
+        "runCalls": 1,
+        "pulls": 2,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "boundary",
+        "status": 204,
+        "bodyBytes": 8192,
+        "insertedRows": 1,
+        "runCalls": 1,
+        "pulls": 3,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "oversize",
+        "status": 413,
+        "bodyBytes": 8193,
+        "insertedRows": 0,
+        "runCalls": 0,
+        "pulls": 3,
+        "cancels": 1,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "zero-hint",
+        "status": 413,
+        "bodyBytes": 8193,
+        "insertedRows": 0,
+        "runCalls": 0,
+        "pulls": 3,
+        "cancels": 1,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "short-hint",
+        "status": 413,
+        "bodyBytes": 8193,
+        "insertedRows": 0,
+        "runCalls": 0,
+        "pulls": 3,
+        "cancels": 1,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "malformed-hint",
+        "status": 413,
+        "bodyBytes": 8193,
+        "insertedRows": 0,
+        "runCalls": 0,
+        "pulls": 3,
+        "cancels": 1,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "unicode-boundary",
+        "status": 204,
+        "bodyBytes": 8192,
+        "insertedRows": 1,
+        "runCalls": 1,
+        "pulls": 8193,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "unicode-oversize",
+        "status": 413,
+        "bodyBytes": 8193,
+        "insertedRows": 0,
+        "runCalls": 0,
+        "pulls": 3,
+        "cancels": 1,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "drain-control",
+        "status": 413,
+        "bodyBytes": 16384,
+        "insertedRows": 0,
+        "runCalls": 0,
+        "pulls": 1,
+        "cancels": 1,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "invalid-json",
+        "status": 400,
+        "bodyBytes": 1,
+        "insertedRows": 0,
+        "runCalls": 0,
+        "pulls": 2,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      },
+      {
+        "mode": "read-error",
+        "status": 400,
+        "bodyBytes": 8193,
+        "insertedRows": 0,
+        "runCalls": 0,
+        "pulls": 1,
+        "cancels": 0,
+        "emptyResponse": true,
+        "noStore": true
+      }
+    ],
+    "workerSha256": "0ae73f07d810cf9cd2fb9083df4c14fb7f8c4df60a9b32910fa2f8873ed03b91"
+  }
+}

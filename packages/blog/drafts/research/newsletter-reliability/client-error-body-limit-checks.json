@@ -1,0 +1,30 @@
+{
+  "baseline": "3b8a2d077affcd41328cc40c6b3e9ae9b458e2c0",
+  "siteTests": 148,
+  "workspaceTypes": "pass",
+  "isolatedBuildPosts": 33,
+  "nativeCasesPerVersion": 11,
+  "oldOversizeWrites": 6,
+  "newOversizeWrites": 0,
+  "sourceSha256": {
+    "packages/client-observability/src/server.ts": "10f7191eea7d6b683ac09bb9328e1b15086170c05e4e938c8be4b192f8627511",
+    "packages/blog/test/client-error-body-limit.test.mjs": "714e3be58315c7ca08e501a5908484fecbaa345631a7bbefcd593522290f361b",
+    "packages/blog/test/fixtures/client-error-body-worker.js": "ab062297fa7cb187329cad4046682b3b033766146702c46d206ffb5f1cf1eb10",
+    "packages/blog/scripts/check-client-error-body-limit.mjs": "0d3d336caf27d9e181acbebe6421a7b689be1d39a7235ffd613d1558d458a67b"
+  },
+  "clientJavaScriptUnchanged": true,
+  "privateEnvCopied": false,
+  "publicBuildConfiguration": "Synthetic nonempty Turnstile value, no signup",
+  "actualWireFramingMeasured": false,
+  "productionRequests": 0,
+  "productionSqlStatements": 0,
+  "humanLabels": 0,
+  "deploymentAccepted": false,
+  "failuresPreserved": [
+    "Root loader resolution failed; package-scoped tests pass",
+    "Type narrowing error repaired with closed union arms",
+    "Initial native fixture cursor failed to terminate; corrected fixture passes",
+    "Process inspection required sandbox escalation"
+  ],
+  "privateEvidenceManifestSha256": "64644d205e791c0ed9f277ed083fd0a7c4cb7f01daca93453e91cae21058e16e"
+}

@@ -7,6 +7,40 @@ export type { ClientObservabilityEnv } from './db.js';
 
 const MAX_BODY_BYTES = 8 * 1024;
 
+type BodyResult = { status: 'ok'; payload: unknown } | { status: 'too-large' } | { status: 'invalid' };
+
+/** Bound consumed bytes before parsing; Content-Length is only an early hint. */
+async function boundedJson(request: Request): Promise<BodyResult> {
+  if (request.body === null) return { status: 'invalid' };
+  try {
+    const reader = request.body.getReader();
+    const decoder = new TextDecoder();
+    const parts: string[] = [];
+    let bytes = 0;
+    try {
+      while (true) {
+        const chunk = await reader.read();
+        if (chunk.done) break;
+        if (chunk.value.byteLength === 0) continue;
+        bytes += chunk.value.byteLength;
+        if (bytes > MAX_BODY_BYTES) {
+          // Cancellation can itself remain pending; rejection must not wait for it.
+          void reader.cancel().catch(() => {});
+          return { status: 'too-large' };
+        }
+        parts.push(decoder.decode(chunk.value, { stream: true }));
+      }
+      parts.push(decoder.decode());
+      const payload: unknown = JSON.parse(parts.join(''));
+      return { status: 'ok', payload };
+    } finally {
+      reader.releaseLock();
+    }
+  } catch {
+    return { status: 'invalid' };
+  }
+}
+
 function emptyResponse(status: number): Response {
   return new Response(null, {
     status,
@@ -47,8 +81,10 @@ export async function handleClientError(
   const rawLength = Number(request.headers.get('content-length') ?? '0');
   if (Number.isFinite(rawLength) && rawLength > MAX_BODY_BYTES) return emptyResponse(413);
 
-  const payload = await request.json().catch(() => null);
-  const event = enrich(request, parseClientErrorPayload(payload));
+  const body = await boundedJson(request);
+  if (body.status === 'too-large') return emptyResponse(413);
+  if (body.status === 'invalid') return emptyResponse(400);
+  const event = enrich(request, parseClientErrorPayload(body.payload));
   if (!event) return emptyResponse(400);
 
   console.warn('[client:error]', {
