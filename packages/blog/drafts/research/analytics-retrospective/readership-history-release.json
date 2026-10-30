@@ -1,0 +1,499 @@
+{
+  "checkedAt": "2026-10-30T12:15:20.154165+00:00",
+  "sourceCommit": "fac4fd30c19ac0dfdc4572301e3b7743474b7785",
+  "buildId": "f7b4f013-5168-4d14-bab6-b6e047357488",
+  "workerVersion": "2d36106e-f911-45e4-9fa3-f0e517c1838b",
+  "allocationPercent": 100,
+  "githubCheckSuccess": true,
+  "nativeBuildSuccess": true,
+  "ownSiteHttpRequests": 6,
+  "collectionEligibleRequests": 0,
+  "exactOwnedEventVersionRayJoins": 6,
+  "selection": {
+    "mode": "canonical",
+    "selection": "stored-browser-signals"
+  },
+  "reportVersionFromAcceptedSource": "2026-10-30.2",
+  "report": {
+    "contract": true,
+    "catalogueMatched": true,
+    "version": "2026-10-30.2",
+    "selection": "stored-browser-signals",
+    "calculatedAt": "2026-10-30T12:15:18.416Z",
+    "period": {
+      "startInclusive": "2026-10-02",
+      "endExclusive": "2026-10-30",
+      "updatedAt": "2026-10-30T12:15:18.416Z",
+      "timeZone": "UTC"
+    },
+    "siteEvents": 1477,
+    "articleEvents": 971,
+    "classification": {
+      "recordedProfiles": 8,
+      "unversionedViews": 1245
+    },
+    "historyGroups": 137,
+    "historyByMethod": [
+      {
+        "collection": "2026-10-26.2",
+        "classifier": "2026-10-26.2",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 11,
+        "weeks": [
+          0,
+          0,
+          0,
+          11
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-26.3",
+        "classifier": "2026-10-26.3",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 54,
+        "weeks": [
+          0,
+          0,
+          0,
+          54
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-27.1",
+        "classifier": "2026-10-26.3",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 5,
+        "weeks": [
+          0,
+          0,
+          0,
+          5
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-27.2",
+        "classifier": "2026-10-27.2",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 7,
+        "weeks": [
+          0,
+          0,
+          0,
+          7
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-27.3",
+        "classifier": "2026-10-27.2",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 5,
+        "weeks": [
+          0,
+          0,
+          0,
+          5
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-27.6",
+        "classifier": "2026-10-27.5",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 9,
+        "weeks": [
+          0,
+          0,
+          0,
+          9
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-27.7",
+        "classifier": "2026-10-27.5",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 2,
+        "weeks": [
+          0,
+          0,
+          0,
+          2
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-27.8",
+        "classifier": "2026-10-27.5",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 3,
+        "weeks": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-28.1",
+        "classifier": "2026-10-27.5",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 2,
+        "weeks": [
+          0,
+          0,
+          0,
+          2
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-28.10",
+        "classifier": "2026-10-27.5",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 45,
+        "weeks": [
+          0,
+          0,
+          0,
+          45
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-28.4",
+        "classifier": "2026-10-27.5",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 1,
+        "weeks": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-28.8",
+        "classifier": "2026-10-27.5",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 1,
+        "weeks": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-28.9",
+        "classifier": "2026-10-27.5",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 3,
+        "weeks": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-29.3",
+        "classifier": "2026-10-29.1",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 52,
+        "weeks": [
+          0,
+          0,
+          0,
+          52
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-29.5",
+        "classifier": "2026-10-29.2",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 8,
+        "weeks": [
+          0,
+          0,
+          0,
+          8
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-29.6",
+        "classifier": "2026-10-29.3",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 13,
+        "weeks": [
+          0,
+          0,
+          0,
+          13
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": null,
+        "classifier": null,
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 1245,
+        "weeks": [
+          217,
+          257,
+          312,
+          459
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-28.2",
+        "classifier": "2026-10-27.5",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 3,
+        "weeks": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-27.4",
+        "classifier": "2026-10-27.4",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 3,
+        "weeks": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-29.1",
+        "classifier": "2026-10-27.5",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 1,
+        "weeks": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-29.4",
+        "classifier": "2026-10-29.2",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 2,
+        "weeks": [
+          0,
+          0,
+          0,
+          2
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-29.2",
+        "classifier": "2026-10-29.1",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 1,
+        "weeks": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "unrecognizedTimeViews": 0
+      },
+      {
+        "collection": "2026-10-27.5",
+        "classifier": "2026-10-27.5",
+        "observationSource": "edge",
+        "representation": "html",
+        "views": 1,
+        "weeks": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "unrecognizedTimeViews": 0
+      }
+    ],
+    "weekly": [
+      {
+        "start": "2026-10-02",
+        "end": "2026-10-09",
+        "site": 217,
+        "outsideSiteTopSource": 217,
+        "articles": 86
+      },
+      {
+        "start": "2026-10-09",
+        "end": "2026-10-16",
+        "site": 257,
+        "outsideSiteTopSource": 252,
+        "articles": 144
+      },
+      {
+        "start": "2026-10-16",
+        "end": "2026-10-23",
+        "site": 312,
+        "outsideSiteTopSource": 308,
+        "articles": 173
+      },
+      {
+        "start": "2026-10-23",
+        "end": "2026-10-30",
+        "site": 691,
+        "outsideSiteTopSource": 303,
+        "articles": 568
+      }
+    ],
+    "limits": "Public stored Browser-signal aggregates and retained method stamps; not people, source authenticity, causal rule effects or growth correction."
+  },
+  "cache": {
+    "first": "MISS",
+    "second": "HIT",
+    "sameSocket": true,
+    "sameColo": true,
+    "colo": "SJC",
+    "bodyEqual": true,
+    "calculatedAtEqual": true,
+    "expiresEqual": true,
+    "expiresAt": "Fri, 30 Oct 2026 13:15:18 GMT",
+    "remainingBoundSeconds": 3599.584,
+    "secondCalculations": 0
+  },
+  "calculationReceipts": [
+    {
+      "version": "2026-10-28.1",
+      "event": "stats-report-calculation",
+      "outcome": "returned",
+      "submittedStatements": 1,
+      "returnedResults": 1,
+      "metadata": "complete",
+      "counterScope": "last-attempt",
+      "reportedRowsRead": 43395,
+      "reportedRowsWritten": 0,
+      "totalAttempts": 1,
+      "unexpectedWrites": false
+    }
+  ],
+  "reportedLastAttemptReads": 43395,
+  "reportedLastAttemptWrites": 0,
+  "costAcceptance": "captured-returned-attempt",
+  "readReviewThreshold": 50000,
+  "thresholdPassed": true,
+  "assets": {
+    "html": {
+      "historyFragmentMatched": true,
+      "bytes": 1015
+    },
+    "js": {
+      "exactBuiltBytesMatched": true,
+      "bytes": 13831,
+      "sha256": "e58b8849ba35e041d7167912156531232bd769b025d1fdf590df894decca3296"
+    },
+    "css": {
+      "exactBuiltBytesMatched": true,
+      "bytes": 9440,
+      "sha256": "9198543cb74d59ca6e938824aa6d4b3a7ec7e57883144ebfc87e8c88859810a5"
+    }
+  },
+  "directProductionSelects": 0,
+  "humanLabels": 0,
+  "optionalRawCaptureActivated": false,
+  "planManifestSha256": "410fa8a0c485b07ceb37fa244df3787b62a4c42db6863b7a72364cff44bf8172",
+  "accepted": true,
+  "limits": [
+    "Canonical stored Browser-signal aggregates, not authenticated identity, operator, human readership, source authenticity or population calibration.",
+    "Captured D1 counters cover returned attempts; retries/account-wide billing and background work remain separate.",
+    "Exact measurement-history HTML fragment and JS/CSS bytes; no full-HTML equality or production interactive-browser/device acceptance.",
+    "Cache reuse is observed on one connection/colo at this time, not a global cache or read budget.",
+    "CLI D1 authorization is not retried or declared repaired.",
+    "Scope is this accepted source/version, not later documentation-only deployments."
+  ],
+  "githubCheckId": 124054437335,
+  "exactFrozenProgramAndInputsReconciled": true,
+  "ownedTail": {
+    "checkedAt": "2026-10-30T12:17:13.993601+00:00",
+    "ownedGroups": 1,
+    "members": 0,
+    "controllerAwaited": true,
+    "providerDeletionIndependentlyConfirmed": false
+  },
+  "historyFinding": {
+    "unrecordedCollectionAndClassifierEvents": 1245,
+    "includedEvents": 1477,
+    "unrecordedPercentRounded": 84.3,
+    "unrecordedByWeek": [
+      217,
+      257,
+      312,
+      459
+    ],
+    "stampedByWeek": [
+      0,
+      0,
+      0,
+      232
+    ],
+    "classifierIdentifiers": 8,
+    "jointSiteMethodCombinations": 23,
+    "storedSourceAndRepresentation": "All included records carry edge/html tags; these do not reconstruct historical collection/rule implementations.",
+    "limits": "Not a historical replay or estimate of how many requests each rule excluded. No human-growth conclusion."
+  },
+  "localHarnessBoundary": {
+    "nativeHandlerAndCliValidatorAccepted": true,
+    "nativeCliNegatives": 6,
+    "initialNativeFixture": "Stored a Response across requests; second cache lookup was unavailable. Serialized body/status/headers fixture restores HIT. The caught exception itself was not captured, so its exact runtime cause is not asserted.",
+    "preparer": "An optional description replacement assertion fails before controller creation; corrected preparer/syntax/constructor smoke precede all live requests.",
+    "newRuntimeCodeChanges": false,
+    "productionRequestsRepeated": false
+  },
+  "privateArchive": {
+    "directory": "2026-10-30-readership-history-release",
+    "files": 69,
+    "manifestSha256": "5ac132691ef4e6b9b162adde58d46cbbdd91691debceb4938242ebe794d6b271",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T12:06:16.719872+00:00",
-  "sourceBaseline": "f4702851a2f020b934241b1b55e047b5ddd6307b",
+  "checkedAt": "2026-10-30T12:21:43.892867+00:00",
+  "sourceBaseline": "fac4fd30c19ac0dfdc4572301e3b7743474b7785",
   "goalAchieved": false,
   "previousTurn": "progress: Research108 reconciles decision evidence and measures profile-history ambiguity with a paired native counterexample.",
-  "scope": "Research109 implements joint stored weekly measurement history; local native/contract/cost/UI acceptance only. No production operation, new operator label, historical reclassification, human growth or live-health assertion.",
+  "scope": "Research109 local implementation plus Research110 exact-source production acceptance; no new human/operator labels or historical reclassification. Public aggregate history is not comparable human growth.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Accept exact source/build/allocation and canonical public API/cache/assets/returned meter for readership history2026-10-30.2 under frozen bounds. No forced fill, raw recensus or reopened human/approval gates.",
+  "nextBoundedAction": "Update the existing concise retrospective from captured weekly history and explicit missingness, preserving dated windows, evidence limits and human prompts. No additional census or forced cache fill needed.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -970,7 +970,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: joint weekly measurement history implemented; pinned native counterexample distinguished, old report fields unchanged, cost and browser/failure controls accepted locally.",
+  "currentTurn": "progress: joint weekly measurement history implemented and accepted on its exact deployed source; six live joins, cache reuse/assets/returned meter, and 1245/1477 null-stamp coverage recorded.",
   "requirementsAudit": {
     "sourceCommit": "f4702851a2f020b934241b1b55e047b5ddd6307b",
     "method": "Fresh source inspection/compilation/catalogue; accepted dated production receipts; hash-matched current evaluator on original stored-kind ledger; paired full-schema native readership reports. No fresh production, browser/sign-in, human/device or packet replay.",
@@ -1002,7 +1002,9 @@
           "92-public-parsing-states-and-browser-signals.md",
           "105-public-cache-explanations-and-metadata-compatibility.md",
           "106-public-cache-explanations-production-acceptance.md",
-          "107-controlled-nonzero-production-projection.md"
+          "107-controlled-nonzero-production-projection.md",
+          "109-weekly-measurement-history.md",
+          "110-weekly-history-production-acceptance.md"
         ],
         "limit": "Current source retains lexical declarations, malformed/missing/unassessed fields, conflicting contexts and unavailable native values. This does not prove population-level human accuracy."
       },
@@ -1068,7 +1070,8 @@
           "readership-article-release.json",
           "100-readership-delta-and-source-concentration.md",
           "101-article-specific-source-concentration.md",
-          "readership-profile-ambiguity.json"
+          "readership-profile-ambiguity.json",
+          "readership-history-release.json"
         ],
         "limit": "Source sensitivity and article concentration accepted. Weekly classifier distributions can differ behind identical reports; human growth, authenticated search queries and article usefulness remain unmeasured."
       }
@@ -1164,10 +1167,13 @@
     "newPopulationExports": 0,
     "humanLabels": 0
   },
-  "runtimeUnchangedScope": "Readership query/contract/UI/cache version changes. Collector/classifier/verifier/schema/exclusions/article stay unchanged.",
+  "runtimeUnchangedScope": "Research109 changes readership query/contract/UI/cache version; Research110 adds acceptance evidence only. Collector/classifier/verifier/schema/exclusions/article remain unchanged in this combined iteration.",
   "productionOperationsThisTurn": {
-    "siteRequests": 0,
-    "d1Statements": 0,
+    "controlledSiteRequests": 6,
+    "directDiagnosticSelects": 0,
+    "publicReportCalculations": 1,
+    "reportedReturnedAttemptReads": 43395,
+    "reportedReturnedAttemptWrites": 0,
     "humanLabels": 0,
     "rawCaptureActivation": false
   },
@@ -1355,7 +1361,7 @@
     "discovery": "Reported hosts and absent/internal partitions exist; search queries/intent/authenticity not accepted.",
     "editorial": "Fetcher reference is a source-sensitive delivery lead, not search demand or usefulness. Bun follow-up remains a hypothesis.",
     "identityPurpose": "Covered-key verification, declaration roles, documented methods and native booleans are separate; caller/trigger and R1/R2 operators remain unresolved.",
-    "weeklyMeasurementHistory": "Implemented locally in Research109; syntactically valid stamps distinguish the paired histories, unsupported names stay unrecognized. Exact-source live acceptance pending.",
+    "weeklyMeasurementHistory": "Research109/110 implemented and accepted: 1245/1477 null stamp columns, all232 stamped events in the last week. Selected Browser history cannot replay rules or prove human growth.",
     "nextDecision": "Expose weekly composition before interpreting changes as growth; choose editorial experiments only with explicit evidence limits."
   },
   "weeklyMeasurementHistory": {
@@ -1366,10 +1372,32 @@
     "checks": "readership-history-checks.json",
     "version": "2026-10-30.2",
     "localAccepted": true,
-    "hostedActivationAccepted": false,
-    "livePublicAccepted": false,
+    "hostedActivationAccepted": true,
+    "livePublicAccepted": true,
     "oldFieldsMatchPinnedReport": true,
     "humanGrowthMeasured": false,
-    "historyScope": "Joint existing collection/classifier/source/representation on selected Browser events, current article/nonarticle partition; no old-rule replay."
+    "historyScope": "Joint existing collection/classifier/source/representation on selected Browser events, current article/nonarticle partition; no old-rule replay.",
+    "release": "readership-history-release.json",
+    "releaseResearch": "110-weekly-history-production-acceptance.md",
+    "implementationSource": "fac4fd30c19ac0dfdc4572301e3b7743474b7785",
+    "workerVersion": "2d36106e-f911-45e4-9fa3-f0e517c1838b",
+    "reportedReads": 43395,
+    "reportedWrites": 0,
+    "reportedAttempts": 1,
+    "sameSocketSameColoCacheHit": true,
+    "includedEvents": 1477,
+    "nullCollectionAndClassifierColumns": 1245,
+    "unstampedByWeek": [
+      217,
+      257,
+      312,
+      459
+    ],
+    "stampedByWeek": [
+      0,
+      0,
+      0,
+      232
+    ]
   }
 }
