@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T13:17:49.914452+00:00",
-  "sourceBaseline": "0551880ac02cdb17cbb324dae136aa9ace51cfdd",
+  "checkedAt": "2026-10-30T13:24:43.780901+00:00",
+  "sourceBaseline": "73787f92c973f7d258d824505cfc240cb83ea8eb",
   "goalAchieved": false,
-  "previousTurn": "progress: Research112 deployed and accepted independent native-field availability/false counts.",
-  "scope": "Research113 fresh current-production automation calibration accepted; prior cohort kept separately. Runtime code/article unchanged; two calibration helpers improved.",
+  "previousTurn": "no-progress: same missing permission/measurement inputs; no accepted work reopened",
+  "scope": "Blocked checkpoint only after three consecutive no-progress goal turns. No code, configuration, article, production measurement or existing cohort change.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -55,7 +55,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Current automation collector/stage gate is accepted; do not repeat it without a changed implementation or new condition. Remaining measurements need accepted native identity/oracle inputs, authenticated search evidence, privacy decisions or deferred human/device/normal-owner-browser participation. Preserve pending approvals; no broad rescan or invented human label.",
+  "nextBoundedAction": "Resume from a newly supplied input: specific authorization for the pending Google Search Console origin/sign-in/read-only report flow or supplied query/page/click/impression figures; accepted native identity/oracle evidence; owner privacy decisions; or an explicit end to the human/device/normal-browser deferral. Preserve existing approvals and measurements. Do not retry the Google origin without permission, repeat accepted controls, force report fills or reopen broad scans solely to keep the goal running.",
   "article": {
     "bodyWhitespaceWords": 1379,
     "prompts": 32,
@@ -1466,5 +1466,22 @@
     "publicReportFills": 0,
     "rawDiagnosticsActivated": false,
     "perRequestWorkerVersionTrace": false
+  },
+  "goalStatus": "blocked",
+  "blockedAudit": {
+    "checkedAt": "2026-10-30T13:24:43.780901+00:00",
+    "consecutiveNoProgressGoalTurns": 3,
+    "lastProgressCommit": "73787f92c973f7d258d824505cfc240cb83ea8eb",
+    "lastAcceptedResearch": "113-fresh-current-production-calibration.md",
+    "condition": "All currently actionable implementation and automation checks are accepted; remaining measurements require unavailable external/user inputs or permission.",
+    "liveProcessWait": false,
+    "newProductionRequests": 0,
+    "newProductionStatements": 0,
+    "newHumanLabels": 0,
+    "searchConsolePermissionPending": true,
+    "nativeEligibleIdentityAndRequestOracleUnavailable": true,
+    "ownerHumanTrialDeferralStillApplies": true,
+    "privacyActivationDecisionsUnresolved": true,
+    "goalComplete": false
   }
 }
