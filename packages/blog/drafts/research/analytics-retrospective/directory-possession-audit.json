@@ -1,0 +1,163 @@
+{
+  "checkedAt": "2026-10-30T15:55:26.986172+00:00",
+  "sourceBaseline": "7a866e8a5fda70ddc4ca5d0693156aa4733b8a50",
+  "research": "114-directory-possession-and-profile-drift.md",
+  "probe": "probe-directory-possession.mjs",
+  "runtime": "Node 24.14.1",
+  "observations": [
+    {
+      "url": "https://crawler.exa.ai/.well-known/http-message-signatures-directory",
+      "start": "2026-10-30T15:53:05.251487+00:00",
+      "end": "2026-10-30T15:53:05.403156+00:00",
+      "status": 200,
+      "bodyBytes": 142,
+      "bodySha256": "bee8945369fe6693772a56cd4ef63803964cc1c33a9247c08a3087bf36b745ef",
+      "publisher": "exa",
+      "keys": 1
+    },
+    {
+      "url": "https://ahrefs.com/.well-known/http-message-signatures-directory",
+      "start": "2026-10-30T15:53:05.403341+00:00",
+      "end": "2026-10-30T15:53:05.641510+00:00",
+      "status": 200,
+      "bodyBytes": 298,
+      "bodySha256": "a647d3d54713f9299e73dec67cdd28175cfb488ebc9692d245b82821244eb0cc",
+      "publisher": "ahrefs",
+      "keys": 2
+    }
+  ],
+  "offline": {
+    "profile": "captured authority-only directory response",
+    "rows": [
+      {
+        "vendor": "exa",
+        "label": "binding0",
+        "cryptoValid": true,
+        "timeValidAtCapture": true,
+        "coveredComponents": [
+          "\"@authority\";req"
+        ],
+        "contentDigestPresent": false,
+        "signatureLifetimeSeconds": 300,
+        "controls": {
+          "wrongAuthorityRejected": true,
+          "changedSignatureRejected": true,
+          "differentKeyRejected": true,
+          "changedBodyHashDiffers": true,
+          "changedBodyRetainsCryptoProof": true
+        }
+      },
+      {
+        "vendor": "ahrefs",
+        "label": "binding0",
+        "cryptoValid": true,
+        "timeValidAtCapture": true,
+        "coveredComponents": [
+          "\"@authority\";req"
+        ],
+        "contentDigestPresent": false,
+        "signatureLifetimeSeconds": 604800,
+        "controls": {
+          "wrongAuthorityRejected": true,
+          "changedSignatureRejected": true,
+          "differentKeyRejected": true,
+          "changedBodyHashDiffers": true,
+          "changedBodyRetainsCryptoProof": true
+        }
+      },
+      {
+        "vendor": "ahrefs",
+        "label": "binding1",
+        "cryptoValid": true,
+        "timeValidAtCapture": true,
+        "coveredComponents": [
+          "\"@authority\";req"
+        ],
+        "contentDigestPresent": false,
+        "signatureLifetimeSeconds": 604800,
+        "controls": {
+          "wrongAuthorityRejected": true,
+          "changedSignatureRejected": true,
+          "differentKeyRejected": true,
+          "changedBodyHashDiffers": true,
+          "changedBodyRetainsCryptoProof": true
+        }
+      }
+    ],
+    "proofCount": 3,
+    "controlAssertions": 15,
+    "externalRequests": 0,
+    "limits": [
+      "Time assessed at capture, not execution; no replay claim.",
+      "Body mutation retains the advertised verification key; TLS still protects the fetched body in transit.",
+      "Node cryptographic check, not independent RFC or Cloudflare-managed execution."
+    ]
+  },
+  "inputNegatives": [
+    {
+      "variant": "body-hash-mismatch",
+      "rejected": true
+    },
+    {
+      "variant": "missing-proof",
+      "rejected": true
+    },
+    {
+      "variant": "unsupported-coverage",
+      "rejected": true
+    },
+    {
+      "variant": "missing-key",
+      "rejected": true
+    }
+  ],
+  "library": {
+    "name": "http-signature-directory",
+    "version": "0.7.0",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/cloudflare/web-bot-auth",
+    "commit": "b4c855647c1e7c715601cc13d5a9119d90014113",
+    "archiveSha256": "5b03303dc302aa8e2699c23a949d0d03d0f77b5f814696772016be3122bff972",
+    "mainSourceSha256": "e2ac712cadc6bcd9bf4ccea42d5c705296ff83a4c8b70d7a67f74a5b26d046d7",
+    "sourceReviewed": true,
+    "executed": false,
+    "runtimeInstalled": false
+  },
+  "profiles": {
+    "providerDocs": "https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/",
+    "providerDirectoryDraft": "draft-meunier-http-message-signatures-directory-03",
+    "activeDraft": "https://datatracker.ietf.org/doc/html/draft-ietf-webbotauth-httpsig-protocol-01",
+    "activeDraftDate": "2026-10-29",
+    "domainBindingAppendixBRequiresDigest": true,
+    "urlTlsIdentityCanSkipAppendixB": true
+  },
+  "network": {
+    "cliAttempts": 7,
+    "sandboxDnsFailures": 3,
+    "successfulPublicHttpCaptures": 4,
+    "vendorDirectories": 2,
+    "crateMetadata": 1,
+    "pinnedCrateArchive": 1,
+    "redirectsFollowed": 0,
+    "retriesAfterSandboxFailure": "one explicitly network-authorized attempt for each of three frozen URLs; no application/HTTP retry",
+    "webDocumentationReadsSeparate": true,
+    "docsRsReadsUnavailable": 2
+  },
+  "effects": {
+    "ownSiteRequests": 0,
+    "productionSqlStatements": 0,
+    "newHumanLabels": 0,
+    "runtimeChanged": false,
+    "articleChanged": false,
+    "dependenciesAdded": false,
+    "accountAccess": false,
+    "goalAchieved": false
+  },
+  "privateEvidence": {
+    "temporary": "/tmp/gk-directory-proof-20261030",
+    "durable": "/Users/goga/Documents/goga/analytics-evidence/2026-10-30-directory-possession",
+    "files": 24,
+    "manifestSha256": "8f0fec8295db137d824dae502a1793a65bf7958728006fe482072103961040ef",
+    "rechecked": true
+  }
+}
