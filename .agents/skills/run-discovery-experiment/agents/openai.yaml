@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run a Discovery Experiment"
+  short_description: "Test one publishing idea and preserve the evidence"
+  default_prompt: "Use $run-discovery-experiment to test one discovery or reader-use question on gkoreli.com and record the result."

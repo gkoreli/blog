@@ -1,0 +1,82 @@
+{
+  "assessedAt": "2026-10-30T16:39:04.715695+00:00",
+  "baselineRevision": "d6f698e93764986e043d417a403dbe0534bad4be",
+  "planSha256": "15510cefe00fcede557170f37eb60fb60e9ee0ecdd9fe0fddb53fba6bac1b33d",
+  "outcomeUnit": "representations meeting the predeclared entry-point criterion, not readers or acquisitions",
+  "rows": [
+    {
+      "name": "baseline-html",
+      "representation": "html",
+      "bytes": 56873,
+      "sha256": "b528ae80b6137c074db0c0ff8aa9795b7d1ecd6d550f5b19603eb844ea80aa73",
+      "historicalScopeBeforeFirstH2": false,
+      "namedOctoberContinuationBeforeFirstH2": false,
+      "acceptance": false,
+      "continuationLink": null
+    },
+    {
+      "name": "baseline-md",
+      "representation": "markdown",
+      "bytes": 26781,
+      "sha256": "df5bc9c47629b73ed1b85e3c0a3430c9017e84de89ca7fc7fe7a37f3494d4642",
+      "historicalScopeBeforeFirstH2": false,
+      "namedOctoberContinuationBeforeFirstH2": false,
+      "acceptance": false,
+      "continuationLink": null
+    },
+    {
+      "name": "baseline-local-html",
+      "representation": "html",
+      "bytes": 56716,
+      "sha256": "2782f6ef0f31ee283263b53d1e9a29c7763d9834212edfa1ce54880bf0d900fe",
+      "historicalScopeBeforeFirstH2": false,
+      "namedOctoberContinuationBeforeFirstH2": false,
+      "acceptance": false,
+      "continuationLink": null
+    },
+    {
+      "name": "baseline-local-md",
+      "representation": "markdown",
+      "bytes": 26781,
+      "sha256": "df5bc9c47629b73ed1b85e3c0a3430c9017e84de89ca7fc7fe7a37f3494d4642",
+      "historicalScopeBeforeFirstH2": false,
+      "namedOctoberContinuationBeforeFirstH2": false,
+      "acceptance": false,
+      "continuationLink": null
+    },
+    {
+      "name": "candidate-local-html",
+      "representation": "html",
+      "bytes": 57085,
+      "sha256": "3847bc75055efc45d660e722794bf8c49b1d30f7fb0b447a8e59406a74a8ca23",
+      "historicalScopeBeforeFirstH2": true,
+      "namedOctoberContinuationBeforeFirstH2": true,
+      "acceptance": true,
+      "continuationLink": {
+        "href": "/building-blog-analytics-what-the-numbers-can-prove",
+        "text": "Building Blog Analytics: What the Numbers Can Prove"
+      }
+    },
+    {
+      "name": "candidate-local-md",
+      "representation": "markdown",
+      "bytes": 27120,
+      "sha256": "58c658c50479e8a50fa9c5f203eaca249148771c8b9be19694e84cf803654f09",
+      "historicalScopeBeforeFirstH2": true,
+      "namedOctoberContinuationBeforeFirstH2": true,
+      "acceptance": true,
+      "continuationLink": {
+        "text": "Building Blog Analytics: What the Numbers Can Prove",
+        "href": "/building-blog-analytics-what-the-numbers-can-prove"
+      }
+    }
+  ],
+  "preservation": {
+    "originalBodyApartFromNoteUnchanged": true,
+    "existingPromptsBytePrefixPreserved": true,
+    "titleDescriptionPublicationDateAndFrozenCountersUnchanged": true
+  },
+  "measuredHumanTrials": 0,
+  "aiAnswerTrials": 0,
+  "productionSqlStatements": 0
+}

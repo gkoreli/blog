@@ -3,6 +3,7 @@ title: "How I Built First-Party Analytics for a Personal Blog"
 seoTitle: "Blog Analytics with Cloudflare Workers and D1"
 alternativeHeadline: "A Cloudflare Workers and D1 architecture for public, source-aware personal blog analytics"
 date: "2026-08-26"
+lastModified: "2026-10-30"
 description: "A code-backed guide to first-party blog analytics with Cloudflare Workers and D1: edge events, privacy, migrations, and public stats."
 section: engineering
 tags: [analytics, cloudflare-workers, d1, privacy, observability]
@@ -22,11 +23,14 @@ researchFootprint:
   startedAt: "2026-08-26T04:53:10.248Z"
   measuredAt: "2026-08-26T19:51:10.023Z"
   provenanceUrl: "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-wrong-event"
+  scope: "Frozen August 26, 2026 research and implementation measurement. The October 30, 2026 scope-and-continuation note and discovery experiment are outside these totals."
 ---
 
 # How I Built First-Party Analytics for a Personal Blog
 
 <p class="post-orient">A code-backed guide to first-party analytics for a personal blog—Cloudflare Workers, D1, public stats, privacy tradeoffs, and the wrong event that forced a rebuild.</p>
+
+**Scope and continuation (October 30, 2026):** This article records the August 26, 2026 analytics cutover. For the October investigation of misleading traffic growth, signed crawlers, and what the measurements can establish, read [Building Blog Analytics: What the Numbers Can Prove](/building-blog-analytics-what-the-numbers-can-prove).
 
 The rebuild is deployed. The dashboard is live. The old data is still there.
 

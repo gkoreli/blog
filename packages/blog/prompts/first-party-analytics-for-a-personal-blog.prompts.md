@@ -37,3 +37,13 @@ the language and positioning matters a lot, imagine what are potential ways to c
 where is the researchFootprint and totalTokens  for this article? i feel like we spent so much time, effort and tokens on this article, it would be nice to showcase it
 ---
 in the article you can't tell how new referrer works, it only talks about the wrong mistakes, and nothing about in the present tense, whats up with that? We need to show comparisons and rationale, this is the wrong one how it used to be, this is how it looks now, this is why i made this decision, rationale and tenet, vision. Why don't we have any of this? Its impossible to share a lesson learned if we only talk about the mistakes, but do not explain the takeaways or how did we fix them and why. Only what is not meaningful, how and why are really important as well, capture these in the skills or agents.md and make necessary changes. Once finished commit and push, update the article too.
+
+---
+
+This is the level of due dilligence and thorough work that i want to do for my blog: https://x.com/wespreadjam/status/2115568290307469548?a=VLy1Fz13dzpp0dlnl1o&s=46
+
+I want us to be experts in the modern day writing with AI Agents and building in oublic, building the visibility and analytics in the modern day for blogs and websites, the analytics work that we are doing for ourselves will become a defacto analytics for millions of sites in the future thats what i want to achieve. We are builders and engineers and experts in agentic engineering
+
+---
+
+Lets do it lets run all this through ine experiment and build a skill around it for now, build and iterate

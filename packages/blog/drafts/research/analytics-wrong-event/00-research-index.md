@@ -6,6 +6,8 @@
 
 **Cutoff:** 2026-08-26
 
+**October 30 continuation note:** [Discovery experiment 01](../discovery-experiment-01/00-experiment.md) adds dated opening guidance to the later measurement investigation. The August account and frozen numerical footprint remain intact; this later experiment is outside that accounting cutoff. Its publication and outcome evidence are separate.
+
 **Governing decision:** publish the current before/after article now from grounded implementation evidence, earned lessons, present uncertainty, and future intent. The 30-day result is a separate continuation.
 
 ## Worklists
