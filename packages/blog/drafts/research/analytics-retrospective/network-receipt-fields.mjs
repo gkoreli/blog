@@ -17,12 +17,13 @@ export function recognizedNetworkEvidence(value) {
 }
 
 const snapshotKeys = ['status','sha256','fetchedAt','validatedAt','freshUntil','publisherVersionStatus','publisherVersion','prefixCount'];
+const cacheKeys = ['status','access','policy.status','policy.assessedAt','policy.lifetimeSource','policy.blockerCount','policy.blockerNames'];
 export const networkReceiptPaths = [
   ...['status','profile','method','source','checkedAt','addressState','addressHeader','addressFamily',
     'declarationCount','configuredDeclarationCount','unmappedDeclarationCount','checkCount','sourceNames'].map(key => 'vendorNetwork.'+key),
   ...['listed','notListed','unavailable','notAssessed'].map(key => 'vendorNetwork.summary.'+key),
   'vendorNetwork.checks.status',
-  ...[...sourceIds].flatMap(source => ['outcome','reason',...snapshotKeys.map(key => 'snapshot.'+key)]
+  ...[...sourceIds].flatMap(source => ['outcome','reason',...snapshotKeys.map(key => 'snapshot.'+key),...cacheKeys.map(key => 'cache.'+key)]
     .map(key => 'vendorNetwork.checks.sources.'+source+'.'+key)),
 ];
 
@@ -65,7 +66,22 @@ export function validNetworkReceipt(value) {
         const check=value.checks.sources[source],snapshot=check.snapshot;
         if (!object(snapshot) || !['recorded','unavailable'].includes(snapshot.status)) throw Error('Unknown snapshot state');
         if (snapshot.status === 'recorded' && !['recorded','unavailable'].includes(snapshot.publisherVersionStatus)) throw Error('Unknown publisher-version state');
+        let cache;
+        if ('cache' in check) {
+          if (!object(check.cache)) throw Error('Unknown cache state');
+          if (check.cache.status === 'not-applicable') cache = null;
+          else {
+            if (check.cache.status !== 'recorded' || !object(check.cache.policy)) throw Error('Unknown cache policy');
+            const policy = check.cache.policy;
+            if (!['recorded','unavailable'].includes(policy.status)) throw Error('Unknown cache policy state');
+            cache = {access:check.cache.access,policy:policy.status === 'unavailable' ? null : {
+              assessedAt:policy.assessedAt,lifetimeSource:policy.lifetimeSource,
+              blockers:policy.blockerNames === 'none' ? [] : policy.blockerNames.split(','),
+            }};
+          }
+        }
         return {source,outcome:check.outcome,reason:check.reason === 'none' ? null : check.reason,
+          ...('cache' in check ? {cache} : {}),
           snapshot:snapshot.status === 'unavailable' ? null : {
             sha256:snapshot.sha256,fetchedAt:snapshot.fetchedAt,validatedAt:snapshot.validatedAt,freshUntil:snapshot.freshUntil,
             publisherVersion:snapshot.publisherVersionStatus === 'unavailable' ? null : snapshot.publisherVersion,prefixCount:snapshot.prefixCount,

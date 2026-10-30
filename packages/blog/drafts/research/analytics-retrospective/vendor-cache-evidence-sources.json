@@ -1,0 +1,67 @@
+{
+  "checkedAt": "2026-10-30T10:32:42.478404+00:00",
+  "defaultBranch": "main",
+  "libraryCommit": "b1d4bd682fbab0252985de45219f4e7497c0067c",
+  "sources": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.html",
+      "file": "rfc9111.html",
+      "sha256": "ce91ee9848d2b9ac46386b0f0cbd4bfd9c0cd1948ebc363834cadc7e0997f3d7",
+      "bytes": 232630
+    },
+    {
+      "url": "https://raw.githubusercontent.com/kornelski/http-cache-semantics/b1d4bd682fbab0252985de45219f4e7497c0067c/index.js",
+      "file": "cache-library-index.js",
+      "sha256": "ede1cc404a492fa348eb9d97a3007a0d72aa717bd22cd86a56bd0824c19729ca",
+      "bytes": 35882
+    }
+  ],
+  "crossReferences": [
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc9111.html#section-5.2.2.4",
+      "contract": "no-cache requires validation before reuse; it is distinct from a storage prohibition",
+      "code": [
+        "packages/analytics/src/vendor-ip.ts#freshness",
+        "packages/analytics/src/vendor-ip-cache-evidence.ts"
+      ],
+      "tests": [
+        "no-cache",
+        "no-store",
+        "private",
+        "revalidated"
+      ]
+    },
+    {
+      "source": "https://www.rfc-editor.org/rfc/rfc9111.html#section-4.2",
+      "contract": "freshness lifetime and current age are separate inputs",
+      "code": [
+        "packages/analytics/src/vendor-ip.ts#freshness"
+      ],
+      "tests": [
+        "zero",
+        "bad-lifetime",
+        "duplicate",
+        "bad-expires",
+        "past-expires",
+        "bad-age",
+        "overflow-age",
+        "age-exhausted",
+        "date-exhausted"
+      ]
+    },
+    {
+      "source": "https://github.com/kornelski/http-cache-semantics/blob/b1d4bd682fbab0252985de45219f4e7497c0067c/index.js",
+      "contract": "inspect separate storable(), maxAge() and satisfiesWithoutRevalidation() methods; adopt the distinction in evidence, not implementation equivalence",
+      "code": [
+        "packages/analytics/src/vendor-ip-cache-evidence.ts",
+        "packages/analytics/src/vendor-ip-receipt.ts"
+      ],
+      "limits": "No dependency or source copy. Upstream supports policies outside our fixed-feed profile; its parser notes duplicate directives as unfinished. No full RFC/cache-library conformance claim."
+    }
+  ],
+  "sourceDownloadCorrection": {
+    "masterCommitEndpointStatus": 422,
+    "defaultBranchFromRepositoryMetadata": "main",
+    "noSpecificCauseInferred": true
+  }
+}

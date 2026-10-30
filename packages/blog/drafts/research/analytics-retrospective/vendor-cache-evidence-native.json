@@ -1,0 +1,87 @@
+{
+  "checkedAt": "2026-10-30T10:33:34.052Z",
+  "baselineCommit": "c1b9166",
+  "policies": 16,
+  "accessScenarios": 5,
+  "pairedEvidenceRecords": 45,
+  "nodeNativeEqual": true,
+  "priorMembershipAndTimingEqual": true,
+  "nativeRecognizedRecords": 91,
+  "nativeNegativeRecords": 14,
+  "historicalProfilesNotBackfilled": true,
+  "maxFanout": {
+    "checks": 16,
+    "accepted": 4,
+    "budgetSkipped": 12,
+    "bytes": 3744,
+    "limit": 4096
+  },
+  "collectorControls": [
+    {
+      "relay": false,
+      "outcome": "listed",
+      "reason": null,
+      "cache": {
+        "access": "fetched",
+        "policy": {
+          "assessedAt": "2026-10-30T10:33:34.042Z",
+          "lifetimeSource": "default",
+          "blockers": [
+            "no-cache"
+          ]
+        }
+      },
+      "ownerExcluded": true
+    },
+    {
+      "relay": false,
+      "outcome": "not-assessed",
+      "reason": "refresh-cooldown",
+      "cache": {
+        "access": "cooldown",
+        "policy": {
+          "assessedAt": "2026-10-30T10:33:34.042Z",
+          "lifetimeSource": "default",
+          "blockers": [
+            "no-cache"
+          ]
+        }
+      },
+      "ownerExcluded": true
+    },
+    {
+      "relay": true,
+      "outcome": "unavailable",
+      "reason": "address-unavailable",
+      "cache": null,
+      "ownerExcluded": true
+    }
+  ],
+  "currentReceiptReconciliationPassed": true,
+  "rawPublisherAndAddressCanariesAbsent": true,
+  "localReadCost": {
+    "historicalRows": 512,
+    "validatorBefore": 6720,
+    "validatorAfter": 7232,
+    "fullReportBefore": 35039,
+    "fullReportAfter": 35551,
+    "commonFullReportEqual": true,
+    "newProfileRows": 512,
+    "newProfileFullReport": 41359,
+    "writes": 0
+  },
+  "productionRequests": 0,
+  "productionSqlStatements": 0,
+  "humanLabels": 0,
+  "sourceHashBase": "packages/blog/scripts/",
+  "sourceSha256": {
+    "../../analytics/src/vendor-ip.ts": "93a841d73216d4434268395890c0bc603d23aecb6876a9bef3e3d63ffb9602a2",
+    "../../analytics/src/vendor-ip-cache-evidence.ts": "6fbe86bcf13a09d3504b4a1fa96c09a5734ae8dfec6b38ca6ca872edc113f60c",
+    "../../analytics/src/vendor-network-summary.ts": "a5cad12d519ec5dc08ce833779fb605dda49541065afd65ec958c6b72c7a0ac4",
+    "../../analytics/src/vendor-ip-receipt.ts": "545417d17610212579e2f9a61f30c3d346626183ab2d7b3a94525b5c6ae34618",
+    "../../analytics/test/fixtures/vendor-cache-evidence.mjs": "3a4aea767c84855d83260390685eccec7d0855af86cab7ccf2e573eb934fba23",
+    "../test/fixtures/vendor-cache-evidence-worker.js": "2be9328a643bd61da10e96594e77fb6ccd75be4b1ecd1a6031d0a01dd92e716b",
+    "./check-vendor-cache-evidence.mjs": "900fe661f8e95ca28cd87c810b80368c8296264e601cf57d219cf44c385b6be9"
+  },
+  "limits": "Synthetic local publisher/edge contexts and stored-field coherence. Not historical header recovery, native-provider agreement, measured production cost or reader identity/accuracy. Public cache-cause aggregates and production acceptance remain separate."
+}

@@ -7,6 +7,7 @@ import { build } from 'esbuild';
 import { ed25519JwkThumbprint } from '../../analytics/.test-dist/webbotauth.js';
 import { queryStats } from '../../analytics/.test-dist/stats.js';
 import { COLLECTION_VERSION, CLASSIFIER_VERSION } from '../../analytics/.test-dist/versions.js';
+import { VENDOR_IP_PROFILE } from '../../analytics/.test-dist/vendor-ip.js';
 import { vendorIpReceipt } from '../../analytics/.test-dist/vendor-ip-receipt.js';
 
 // Intercepted generated keys at documented origins are fixtures, not vendor authentication.
@@ -63,7 +64,7 @@ try{
     const headers={'CF-Connecting-IP':mode==='not-listed'?'8.8.8.8':listedAddress,'X-Fixture-Mode':'ip-check','X-Fixture-IP-Mode':mode};
     if(mode==='relay')headers['CF-Worker']='fixture-relay.example';
     const result=await(await mf.dispatchFetch('https://publication.example/parallel-ip-fixture',{headers})).json();
-    assert.equal(result.evidence.profile,'2026-10-29.2');
+    assert.equal(result.evidence.profile,VENDOR_IP_PROFILE);
     if(mode==='unmapped-user'){assert.equal(result.evidence.configuredDeclarationCount,0);assert.equal(result.calls.length,0);}
     else{const check=result.evidence.checks[0];assert.equal(check.source,'parallel-shapbot');
       assert.equal(check.outcome,['listed','not-listed'].includes(mode)?mode:'unavailable');

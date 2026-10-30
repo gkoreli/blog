@@ -16,7 +16,7 @@ test('Parallel IP publication applies only to ShapBot and never to its user-trig
       assert.equal(url,'https://docs.parallel.ai/resources/shapbot.json');assert.equal(init.redirect,'manual');
       assert.equal(init.headers.has('CF-Connecting-IP'),false);assert.equal(init.headers.has('User-Agent'),false);return feed();
     }));
-    assert.equal(e.profile,'2026-10-29.2');assert.equal(e.checks[0].source,'parallel-shapbot');assert.equal(e.checks[0].outcome,outcome);
+    assert.equal(e.profile,'2026-10-30.1');assert.equal(e.checks[0].source,'parallel-shapbot');assert.equal(e.checks[0].outcome,outcome);
   }
   const user=await verifyVendorIp(request(),['Shap-User'],options(async()=>assert.fail('No documented Shap-User IP feed')));
   assert.equal(user.configuredDeclarationCount,0);assert.equal(user.unmappedDeclarationCount,1);assert.deepEqual(user.checks,[]);
@@ -68,7 +68,7 @@ test('DuckDuckBot and Google-Agent methods use dedicated fixed feeds without exp
         assert.equal(actual, url); assert.equal(init.redirect, 'manual');
         assert.equal(init.headers.has('CF-Connecting-IP'), false); calls++; return feed();
       }));
-      assert.equal(calls, 1); assert.equal(evidence.profile, '2026-10-29.2');
+      assert.equal(calls, 1); assert.equal(evidence.profile, '2026-10-30.1');
       assert.equal(evidence.configuredDeclarationCount, 1); assert.equal(evidence.checks[0].source, source);
       assert.equal(evidence.checks[0].outcome, outcome);
     }
@@ -160,8 +160,10 @@ test('a late mismatched 304 cannot evict a newer feed after its deadline', async
     return feed([{ipv4Prefix:'8.8.8.0/24'}],{'Cache-Control':'max-age=300',ETag:'"v3"'});};
   await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache));
   const timeout=await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache,new Date(now.getTime()+31000)));assert.equal(timeout.checks[0].reason,'fetch-timeout');
+  assert.equal(timeout.checks[0].cache.access,'failed');assert.equal(cache.policies.has('google-common'),false);
   const newest=await verifyVendorIp(request(),['Googlebot'],options(fetcher,cache,new Date(now.getTime()+62000)));assert.equal(newest.checks[0].outcome,'not-listed');
   release();await new Promise(resolve=>setTimeout(resolve,0));assert.equal(cache.feeds.get('google-common').snapshot.sha256,newest.checks[0].snapshot.sha256);assert.equal(calls,3);
+  assert.deepEqual(cache.policies.get('google-common'),newest.checks[0].cache.policy);
 });
 
 test('request-start expiry agrees with independent response-age calculations without extending stale data', async () => {

@@ -11,7 +11,7 @@ import { networkReceiptPaths, recognizedNetworkEvidence } from './network-receip
 
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const profiles = new Set(['2026-10-27.6','2026-10-27.7','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','2026-10-28.7','2026-10-29.1','not-applicable']);
-const collections = new Set(['2026-10-27.9','2026-10-27.10','2026-10-27.11','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','2026-10-28.7','2026-10-28.8','2026-10-28.9','2026-10-28.10','2026-10-29.1','2026-10-29.2','2026-10-29.3','2026-10-29.4','2026-10-29.5','2026-10-29.6']);
+const collections = new Set(['2026-10-27.9','2026-10-27.10','2026-10-27.11','2026-10-28.1','2026-10-28.2','2026-10-28.3','2026-10-28.4','2026-10-28.5','2026-10-28.6','2026-10-28.7','2026-10-28.8','2026-10-28.9','2026-10-28.10','2026-10-29.1','2026-10-29.2','2026-10-29.3','2026-10-29.4','2026-10-29.5','2026-10-29.6','2026-10-30.1']);
 const paths = [...networkReceiptPaths,'version','fetchMetadataBits','classifierProfile','readerKind',
   ...['profile','method','reviewedOn','configuredDeclarationCount','unmappedDeclarationCount','status'].map(key=>'directoryPublication.'+key),
   ...['status','candidateCount','candidateNames','categoryAgreement'].map(key=>'declarations.'+key),
@@ -76,7 +76,7 @@ export function projectStoredReceipt(row,receiptVersion) {
         ||s.unassessedCandidates!==s.taggedCandidates-s.attemptedCandidates)return null;
     }
     if (receiptVersion === '2026-10-29.2') {
-      if (c.version !== '2026-10-29.2' || row.classifierVersion !== '2026-10-29.3' || row.collectionVersion !== '2026-10-29.6'
+      if (c.version !== '2026-10-29.2' || row.classifierVersion !== '2026-10-29.3' || !['2026-10-29.6','2026-10-30.1'].includes(row.collectionVersion)
         || fetchMetadataFields(c.fetchMetadataBits) === null) return null;
     } else if (c.fetchMetadataBits !== undefined || c.version === '2026-10-29.2') return null;
     const networkVersion=['2026-10-29.1','2026-10-29.2'].includes(receiptVersion);

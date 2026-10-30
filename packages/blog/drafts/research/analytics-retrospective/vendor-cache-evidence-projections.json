@@ -1,0 +1,110 @@
+{
+  "checkedAt": "2026-10-30T10:31:32.971Z",
+  "profile": "zero-reuse-provenance-v1",
+  "controlledClock": "2026-10-30T09:00:00.000Z",
+  "conditions": 6,
+  "checksPerCondition": 2,
+  "nodeAndNativeEqual": true,
+  "zeroReuseProjectionGroups": [
+    {
+      "labels": [
+        "no-cache"
+      ],
+      "sha256": "be8369a2997370cbcbd415265da2d4e31a29fd1b85bdb4dc23f4c2452046231a"
+    },
+    {
+      "labels": [
+        "no-store"
+      ],
+      "sha256": "0a48b8bed70ce154c3fe85676dd0c7c6627c20a460032f6bc2b6e2b7d06e3da4"
+    },
+    {
+      "labels": [
+        "private"
+      ],
+      "sha256": "3f785f0ca077c85a45513858ac373e5c5c6e3a685031fa95cf3f23f48decae3d"
+    },
+    {
+      "labels": [
+        "max-age-zero"
+      ],
+      "sha256": "1085760d312793f4e2c4171ad93d023d5ebfd59e0255df8babfcfb5ba28c85b7"
+    },
+    {
+      "labels": [
+        "age-exhausted"
+      ],
+      "sha256": "6a0a3f2fef4ffa80b76227f1f4b52645350c897bba6961b7a97b22dce2fb7a1b"
+    }
+  ],
+  "differentStorageStatesPresent": true,
+  "positiveReuseControlPassed": true,
+  "skippedChecksRemainNotAssessed": true,
+  "results": [
+    {
+      "label": "positive-max-age",
+      "firstOutcome": "listed",
+      "freshForMs": 300000,
+      "secondOutcome": "listed",
+      "secondReason": null,
+      "upstreamCalls": 1,
+      "cacheRetained": true
+    },
+    {
+      "label": "no-cache",
+      "firstOutcome": "listed",
+      "freshForMs": 0,
+      "secondOutcome": "not-assessed",
+      "secondReason": "refresh-cooldown",
+      "upstreamCalls": 1,
+      "cacheRetained": true
+    },
+    {
+      "label": "no-store",
+      "firstOutcome": "listed",
+      "freshForMs": 0,
+      "secondOutcome": "not-assessed",
+      "secondReason": "refresh-cooldown",
+      "upstreamCalls": 1,
+      "cacheRetained": false
+    },
+    {
+      "label": "private",
+      "firstOutcome": "listed",
+      "freshForMs": 0,
+      "secondOutcome": "not-assessed",
+      "secondReason": "refresh-cooldown",
+      "upstreamCalls": 1,
+      "cacheRetained": false
+    },
+    {
+      "label": "max-age-zero",
+      "firstOutcome": "listed",
+      "freshForMs": 0,
+      "secondOutcome": "not-assessed",
+      "secondReason": "refresh-cooldown",
+      "upstreamCalls": 1,
+      "cacheRetained": true
+    },
+    {
+      "label": "age-exhausted",
+      "firstOutcome": "listed",
+      "freshForMs": 0,
+      "secondOutcome": "not-assessed",
+      "secondReason": "refresh-cooldown",
+      "upstreamCalls": 1,
+      "cacheRetained": true
+    }
+  ],
+  "upstreamCallsPerRuntime": 6,
+  "productionRequests": 0,
+  "productionSqlStatements": 0,
+  "humanLabels": 0,
+  "sourceSha256": {
+    "../../analytics/src/vendor-ip.ts": "93a841d73216d4434268395890c0bc603d23aecb6876a9bef3e3d63ffb9602a2",
+    "../../analytics/test/fixtures/vendor-cache-provenance.mjs": "d4ca15e4c412a20441050b4a399c365a5e3962d8639d28e2207c3f064af95c44",
+    "../test/fixtures/vendor-cache-provenance-worker.js": "2c2cd7020f366aa1bbd415561fbb131254f5b48f7dd1ed870ed76d528beb0504",
+    "./check-vendor-cache-provenance.mjs": "9f27faca9fd0a0495e0de68f73d374dcb296586bc8ca871249550080d6bcc9ea"
+  },
+  "scope": "Synthetic cache-policy contrast, not current Google headers, historical header recovery, native provider detection or classifier accuracy."
+}

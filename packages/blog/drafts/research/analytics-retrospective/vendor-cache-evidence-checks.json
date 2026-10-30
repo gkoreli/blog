@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-30T10:35:40.091083+00:00",
+  "analyticsTests": 313,
+  "blogTests": 166,
+  "typecheckPassed": true,
+  "markdownValidation": 22,
+  "isolatedPostBuild": 33,
+  "workerDryRunPassed": true,
+  "allOwnedLocalCommandsTerminal": true,
+  "productionRequests": 0,
+  "productionSqlStatements": 0,
+  "humanLabels": 0,
+  "filesSha256": {
+    "analytics-tests-final.log": "390f6e933978526a0746b2c8632de8c36d55c979432013b3af8b49014f5766a6",
+    "blog-tests-final.log": "c0cced8c5635d01c707f4e9ec94b60e11d261e12401eaf8523e2375b441ff7ff",
+    "typecheck-final.log": "169f1037b5ab63005238ea7ef9e6e31cd414552c7ede159d1278cc36f6932673",
+    "validate.log": "2ce2ea114241d00718f5ea92721c1cbfa14e927d7031df330eb6a4499026345b",
+    "build-final/build.log": "ac553ea3c257e7d8f126d836894a675d8b978db53eda0f11127358058049abb8",
+    "wrangler-dry-run.log": "ce83dd1982ea71f05d4b7dd96dbdf7c9717043efd48a84f1633e10f8e79d6784",
+    "native-final.json": "90aabecc1dcab6c4e60d180abd84a81e669b829bb211e06cb4cfc0d005c3c357",
+    "projection-after.json": "5766ecc608b8e654378bb93969e6a87c6bbdfcd29954fe5166c9f2903c460be5",
+    "artifact-validation.json": "a82e537018db4da66fd08315c26e0a84d80479c827d6bfa53bdc45b836fdc073"
+  },
+  "limits": "Local acceptance; source delivery, production activation, live persistence and public cache-cause aggregates remain separate."
+}

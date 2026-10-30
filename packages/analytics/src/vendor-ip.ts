@@ -3,9 +3,10 @@ import ipaddr from 'ipaddr.js';
 import type { KnownAgentName } from './classify.js';
 import { VENDOR_IP_SOURCES, type VendorIpSource, type VendorIpSourceId } from './vendor-ip-sources.js';
 import { decodeVendorIpDocument, VENDOR_IP_MAX_PREFIXES } from './vendor-ip-document.js';
+import { copyVendorCachePolicy, type VendorCacheEvidence, type VendorCachePolicy } from './vendor-ip-cache-evidence.js';
 export { VENDOR_IP_MAX_PREFIXES } from './vendor-ip-document.js';
 
-export const VENDOR_IP_PROFILE = '2026-10-29.2';
+export const VENDOR_IP_PROFILE = '2026-10-30.1';
 export const VENDOR_IP_FETCH_DEADLINE_MS = 1500;
 export const VENDOR_IP_MAX_REQUEST_SOURCES = 4;
 export const VENDOR_IP_MAX_BODY_BYTES = 262144;
@@ -24,20 +25,23 @@ interface Snapshot {
   publisherVersion: string | null;
   prefixCount: number;
 }
-interface Feed { snapshot: Snapshot; prefixes: Prefix[]; etag: string | null; modified: string | null; cacheControl: string; expires: string | null; }
-type FeedResult = { feed: Feed } | { reason: Failure };
+interface Feed { snapshot: Snapshot; prefixes: Prefix[]; etag: string | null; modified: string | null; cacheControl: string; expires: string | null; policy: VendorCachePolicy; }
+type FeedWorkResult = { feed: Feed } | { reason: Failure };
+type FeedResult = FeedWorkResult & { cache: VendorCacheEvidence };
 export interface VendorIpCache {
   feeds: Map<VendorIpSourceId, Feed>;
   attemptedAt: Map<VendorIpSourceId, number>;
-  pending: Map<VendorIpSourceId, Promise<FeedResult>>;
+  pending: Map<VendorIpSourceId, Promise<FeedWorkResult>>;
+  policies: Map<VendorIpSourceId, VendorCachePolicy>;
 }
-export function createVendorIpCache(): VendorIpCache { return { feeds: new Map(), attemptedAt: new Map(), pending: new Map() }; }
+export function createVendorIpCache(): VendorIpCache { return { feeds: new Map(), attemptedAt: new Map(), pending: new Map(), policies: new Map() }; }
 const sharedCache = createVendorIpCache();
 export interface VendorIpCheck {
   source: VendorIpSourceId;
   outcome: 'listed' | 'not-listed' | 'unavailable' | 'not-assessed';
   reason: Failure | null;
   snapshot: Snapshot | null;
+  cache: VendorCacheEvidence | null;
 }
 export interface VendorIpEvidence {
   profile: typeof VENDOR_IP_PROFILE;
@@ -101,7 +105,7 @@ export function parseVendorIpFeed(value: unknown): { prefixes: Prefix[]; publish
   return { prefixes, publisherVersion: Number.isFinite(version) && typeof value.creationTime === 'string' && value.creationTime.length <= 32 ? value.creationTime : null };
 }
 
-function freshness(response: Response, now: number, previous?: Feed): { until: number; store: boolean; cacheControl: string; expires: string | null } {
+function freshness(response: Response, now: number, previous?: Feed): { until: number; store: boolean; cacheControl: string; expires: string | null; evidence: VendorCachePolicy } {
   const policy = response.headers.get('Cache-Control') ?? previous?.cacheControl ?? '';
   const store = !/(?:^|,)\s*(?:no-store|private)\b/i.test(policy);
   const ageValue = response.headers.get('Age');
@@ -113,13 +117,26 @@ function freshness(response: Response, now: number, previous?: Feed): { until: n
   const maxAgeNames = policy.match(/(?:^|,)\s*max-age\b/gi) ?? [];
   const maxAge = /(?:^|,)\s*max-age\s*=\s*(?:"(\d+)"|(\d+))\s*(?=,|$)/i.exec(policy);
   let ttl = DEFAULT_TTL_SECONDS;
+  const lifetimeSource = maxAgeNames.length > 0 ? 'max-age' : expires !== null ? 'expires' : 'default';
+  let invalidLifetime = false;
+  if (maxAgeNames.length > 0) invalidLifetime = maxAgeNames.length !== 1 || maxAge === null;
+  else if (expires !== null) invalidLifetime = !Number.isFinite(Date.parse(expires));
   if (maxAgeNames.length > 0) ttl = maxAgeNames.length === 1 && maxAge !== null ? Number(maxAge[1] ?? maxAge[2]) : 0;
   else if (expires !== null) {
     const expiry = Date.parse(expires);
     ttl = Number.isFinite(expiry) ? Math.max(0, (expiry - (Number.isFinite(responseDate) ? responseDate : now)) / 1000) : 0;
   }
   const seconds = /(?:^|,)\s*no-cache\b/i.test(policy) || !store ? 0 : Math.max(0, Math.min(ttl, MAX_TTL_SECONDS) - age);
-  return { until: now + seconds * 1000, store, cacheControl: policy, expires };
+  const blockers: VendorCachePolicy['blockers'] = [];
+  if (/(?:^|,)\s*no-store\b/i.test(policy)) blockers.push('no-store');
+  if (/(?:^|,)\s*private\b/i.test(policy)) blockers.push('private');
+  if (/(?:^|,)\s*no-cache\b/i.test(policy)) blockers.push('no-cache');
+  if (invalidLifetime) blockers.push('invalid-lifetime');
+  else if (ttl === 0) blockers.push('zero-lifetime');
+  if (!Number.isFinite(headerAge)) blockers.push('invalid-age');
+  else if (!invalidLifetime && ttl > 0 && age >= Math.min(ttl, MAX_TTL_SECONDS)) blockers.push('age-exhausted');
+  return { until: now + seconds * 1000, store, cacheControl: policy, expires,
+    evidence: { assessedAt: new Date(now).toISOString(), lifetimeSource, blockers } };
 }
 
 async function bodyBytes(response: Response): Promise<Uint8Array | null> {
@@ -133,13 +150,19 @@ async function bodyBytes(response: Response): Promise<Uint8Array | null> {
 }
 
 async function fetchFeed(source: VendorIpSource, cache: VendorIpCache, fetcher: typeof fetch, now: number): Promise<FeedResult> {
+  const resultWithCache = (result: FeedWorkResult, access: VendorCacheEvidence['access']): FeedResult => ({ ...result,
+    cache: { access, policy: copyVendorCachePolicy('feed' in result ? result.feed.policy : null) } });
   const old = cache.feeds.get(source.id);
-  if (old && Date.parse(old.snapshot.freshUntil) > now) return { feed: old };
-  const pending = cache.pending.get(source.id); if (pending) return pending;
-  if (now - (cache.attemptedAt.get(source.id) ?? -Infinity) < REFRESH_COOLDOWN_MS) return { reason: 'refresh-cooldown' };
+  if (old && Date.parse(old.snapshot.freshUntil) > now) return resultWithCache({ feed: old }, 'memory');
+  const pending = cache.pending.get(source.id); if (pending) return resultWithCache(await pending, 'coalesced');
+  if (now - (cache.attemptedAt.get(source.id) ?? -Infinity) < REFRESH_COOLDOWN_MS) return { reason: 'refresh-cooldown',
+    cache: { access: 'cooldown', policy: copyVendorCachePolicy(cache.policies.get(source.id) ?? null) } };
   cache.attemptedAt.set(source.id, now);
+  // Do not attribute a failed new attempt to the policy of an older accepted response.
+  cache.policies.delete(source.id);
   const controller = new AbortController(); let timer: ReturnType<typeof setTimeout> | undefined;
-  const work = (async (): Promise<FeedResult> => {
+  let acceptedAccess: 'fetched' | 'revalidated' = 'fetched';
+  const work = (async (): Promise<FeedWorkResult> => {
     try {
       const headers = new Headers({ Accept: 'format' in source ? 'text/html' : 'application/json' });
       if (old?.etag) headers.set('If-None-Match', old.etag);
@@ -153,8 +176,8 @@ async function fetchFeed(source: VendorIpSource, cache: VendorIpCache, fetcher: 
           cache.feeds.delete(source.id);
           return { reason: 'revalidation-mismatch' };
         }
-        const feed = { ...old, snapshot: { ...old.snapshot, validatedAt: new Date(now).toISOString(), freshUntil: new Date(policy.until).toISOString() }, cacheControl: policy.cacheControl, expires: policy.expires, etag: feedEntityTag(response) ?? old.etag, modified: feedLastModified(response) ?? old.modified };
-        if (!controller.signal.aborted) { if (policy.store) cache.feeds.set(source.id, feed); else cache.feeds.delete(source.id); }
+        const feed = { ...old, snapshot: { ...old.snapshot, validatedAt: new Date(now).toISOString(), freshUntil: new Date(policy.until).toISOString() }, cacheControl: policy.cacheControl, expires: policy.expires, etag: feedEntityTag(response) ?? old.etag, modified: feedLastModified(response) ?? old.modified, policy: policy.evidence };
+        if (!controller.signal.aborted) { if (policy.store) cache.feeds.set(source.id, feed); else cache.feeds.delete(source.id); cache.policies.set(source.id, policy.evidence); acceptedAccess = 'revalidated'; }
         return controller.signal.aborted ? { reason: 'fetch-timeout' } : { feed };
       }
       if (response.status !== 200) { await response.body?.cancel(); return { reason: 'http-status' }; }
@@ -164,15 +187,16 @@ async function fetchFeed(source: VendorIpSource, cache: VendorIpCache, fetcher: 
       const parsed = await decodeVendorIpDocument(source, bytes);
       const parsedFeed = parseVendorIpFeed(parsed); if (parsedFeed === null) return { reason: 'invalid-feed' };
       const sha256 = [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))].map(b => b.toString(16).padStart(2, '0')).join('');
-      const feed: Feed = { snapshot: { sha256, fetchedAt: new Date(now).toISOString(), validatedAt: new Date(now).toISOString(), freshUntil: new Date(policy.until).toISOString(), publisherVersion: parsedFeed.publisherVersion, prefixCount: parsedFeed.prefixes.length }, prefixes: parsedFeed.prefixes, etag: feedEntityTag(response), modified: feedLastModified(response), cacheControl: policy.cacheControl, expires: policy.expires };
+      const feed: Feed = { snapshot: { sha256, fetchedAt: new Date(now).toISOString(), validatedAt: new Date(now).toISOString(), freshUntil: new Date(policy.until).toISOString(), publisherVersion: parsedFeed.publisherVersion, prefixCount: parsedFeed.prefixes.length }, prefixes: parsedFeed.prefixes, etag: feedEntityTag(response), modified: feedLastModified(response), cacheControl: policy.cacheControl, expires: policy.expires, policy: policy.evidence };
       if (controller.signal.aborted) return { reason: 'fetch-timeout' };
       if (policy.store) cache.feeds.set(source.id, feed); else cache.feeds.delete(source.id);
+      cache.policies.set(source.id, policy.evidence);
       return { feed };
     } catch { return { reason: controller.signal.aborted ? 'fetch-timeout' : 'fetch-failed' }; }
   })();
-  const deadline = new Promise<FeedResult>(resolve => { timer = setTimeout(() => { controller.abort(); resolve({ reason: 'fetch-timeout' }); }, VENDOR_IP_FETCH_DEADLINE_MS); });
+  const deadline = new Promise<FeedWorkResult>(resolve => { timer = setTimeout(() => { controller.abort(); resolve({ reason: 'fetch-timeout' }); }, VENDOR_IP_FETCH_DEADLINE_MS); });
   const result = Promise.race([work, deadline]); cache.pending.set(source.id, result);
-  try { return await result; }
+  try { const resolved = await result; return resultWithCache(resolved, 'feed' in resolved ? acceptedAccess : 'failed'); }
   finally { if (timer !== undefined) clearTimeout(timer); cache.pending.delete(source.id); }
 }
 
@@ -183,12 +207,12 @@ export async function verifyVendorIp(request: Request, names: readonly KnownAgen
   const mapped = new Set(sources.flatMap(source => source.declarations.filter(name => declarations.has(name))));
   const selected = requestAddress(request);
   const checks = await Promise.all(sources.map(async (source, index): Promise<VendorIpCheck> => {
-    if (selected.address === null) return { source: source.id, outcome: 'unavailable', reason: 'address-unavailable', snapshot: null };
-    if (index >= VENDOR_IP_MAX_REQUEST_SOURCES) return { source: source.id, outcome: 'not-assessed', reason: 'request-budget', snapshot: null };
+    if (selected.address === null) return { source: source.id, outcome: 'unavailable', reason: 'address-unavailable', snapshot: null, cache: null };
+    if (index >= VENDOR_IP_MAX_REQUEST_SOURCES) return { source: source.id, outcome: 'not-assessed', reason: 'request-budget', snapshot: null, cache: null };
     const result = await fetchFeed(source, options.cache ?? sharedCache, options.fetcher ?? fetch, now);
-    if ('reason' in result) return { source: source.id, outcome: result.reason === 'refresh-cooldown' ? 'not-assessed' : 'unavailable', reason: result.reason, snapshot: null };
+    if ('reason' in result) return { source: source.id, outcome: result.reason === 'refresh-cooldown' ? 'not-assessed' : 'unavailable', reason: result.reason, snapshot: null, cache: result.cache };
     const listed = result.feed.prefixes.some(([network, bits]) => selected.address !== null && network.kind() === selected.address.kind() && selected.address.match(network, bits));
-    return { source: source.id, outcome: listed ? 'listed' : 'not-listed', reason: null, snapshot: result.feed.snapshot };
+    return { source: source.id, outcome: listed ? 'listed' : 'not-listed', reason: null, snapshot: { ...result.feed.snapshot }, cache: result.cache };
   }));
   return { profile: VENDOR_IP_PROFILE, method: 'published-ip-feed', source: 'local-vendor-ip', checkedAt: new Date(now).toISOString(), address: selected.evidence, declarationCount: declarations.size, configuredDeclarationCount: mapped.size, unmappedDeclarationCount: declarations.size - mapped.size, summary: { listed: checks.some(c => c.outcome === 'listed'), notListed: checks.some(c => c.outcome === 'not-listed'), unavailable: checks.some(c => c.outcome === 'unavailable'), notAssessed: checks.some(c => c.outcome === 'not-assessed') }, checks };
 }
