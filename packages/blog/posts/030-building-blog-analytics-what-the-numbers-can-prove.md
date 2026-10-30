@@ -15,7 +15,7 @@ series:
 
 # Building Blog Analytics: What the Numbers Can Prove
 
-My blog’s Browser traffic doubled in a week, but I still couldn’t answer the useful questions: who reads these articles, are they finding them useful, and what should I write next? One unexplained referrer supplied most of the increase. The counter worked; the growth story needed scrutiny.
+My blog’s Browser count more than doubled in a week, but I still couldn’t answer useful questions: who reads these articles, are they finding them useful, and what should I write next? One unexplained referrer supplied most of the increase. The counter worked; the growth story needed scrutiny.
 
 Building the analytics on Cloudflare Workers and D1 taught me three distinctions:
 
@@ -35,40 +35,42 @@ A keyed hash groups requests by site, UTC date, IP and User-Agent. The table ret
 
 ## Ask whether growth survives its largest source
 
-The [October 29 audit](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/94-reader-growth-and-editorial-decisions.md) examined every retained stored-Browser row for four complete UTC weeks: 1,463 rows, or 1,429 after owner exclusions.
+The [October 30 report](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/110-weekly-history-production-acceptance.md) covers 1,477 included Browser signals across four complete UTC weeks, October 2–29:
 
-| UTC dates | Browser signals | Outside unexplained source R1 |
-|---|---:|---:|
-| October 1–7 | 235 | 235 |
-| October 8–14 | 253 | 251 |
-| October 15–21 | 312 | 305 |
-| October 22–28 | 629 | 241 |
+| UTC dates | Browser signals | Outside unexplained source R1 | Missing method stamps |
+|---|---:|---:|---:|
+| October 2–8 | 217 | 217 | 217 |
+| October 9–15 | 257 | 252 | 257 |
+| October 16–22 | 312 | 308 | 312 |
+| October 23–29 | 691 | 303 | 459 |
 
-Setting R1 aside changes the last comparison from **312→629 to 305→241**. R1 remains included in reporting. This sensitivity check exposes concentration; it supplies no corrected human count. Rules also changed during the window, so neither series establishes human growth or decline.
+Setting R1 aside changes the last comparison from **312→691 to 308→303**. R1 remains included. This exposes source concentration; it supplies no corrected human count.
 
-Of those 1,429 events, 624 sent no referrer, 328 reported internal navigation and 477 reported external hosts. R1 supplied 397 external events. Missing referrers leave acquisition unknown: bookmarks, private sharing, stripped referrals and automation remain possible. [HTTP permits omission](https://www.rfc-editor.org/rfc/rfc9110.html#section-10.1.3). Internal navigation can generate more events after arrival.
+**Compare the measurement rules too.** Collection and classifier stamp columns were null for 1,245 events; all stamped events fell in the last week. I added [weekly measurement history](/stats/readership) to expose that gap. It cannot show requests older rules excluded or establish human growth.
 
-The public Other bucket groups hosts under our display policy. It is not an authenticity verdict. **We still don’t know R1’s operator or trigger.**
+Of those 1,477 events, 642 had no recorded referrer, 337 reported internal navigation and 498 reported external hosts. R1 supplied 397 external events. Missing referrers leave acquisition unknown: bookmarks, private sharing, stripped referrals and automation remain possible. [HTTP permits omission](https://www.rfc-editor.org/rfc/rfc9110.html#section-10.1.3). Internal navigation can generate more events after arrival.
+
+The Other bucket groups hosts under our display policy. It is not an authenticity verdict. **We still don’t know R1’s operator or trigger.**
 
 ## A signed crawler was being counted as an assistant
 
 A verified signature replaced the client’s declared role with `signed-agent`, letting a signed SEO crawler enter the AI agents group.
 
-Our catalogue also missed four documented names. [ExaSearchBot](https://crawler.exa.ai/) crawls for search; [ExaUser](https://crawler.exa.ai/exauser) retrieves pages requested by users or applications. [AhrefsBot and AhrefsSiteAudit](https://ahrefs.com/robot) declare crawling and auditing roles. Their signing evidence cannot substitute for those distinctions.
+Our catalogue missed four documented names. [Exa documents two roles](https://crawler.exa.ai/): ExaSearchBot crawls for search; ExaUser fetches on request. [AhrefsBot and AhrefsSiteAudit](https://ahrefs.com/robot) declare crawling and auditing roles. Their signing evidence cannot substitute for those distinctions.
 
 The repair separates declared roles from [signing evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/33-reviewed-directory-publishers.md). I [traced three requests](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/49-current-verifier-vendor-evidence.md), two ExaSearchBot and one AhrefsBot, from retained headers through receipts to exact D1 rows. All replayed under their recorded verifier using later-captured publisher keys; an independent RFC 9421 implementation agrees. Native-verifier agreement remains unmeasured.
 
 **Identity, role and trigger answer different questions.** All three signatures protected the host. User-Agent and article path were unsigned. Changing those unsigned fields left each signature valid. [HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html) authenticate covered components against a key; an unsigned role or human trigger needs separate evidence. Unique actions remain unproven.
 
-The later [52-proof cohort](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/75-frozen-signed-cohort-and-export-boundaries.md) had the same authority-only coverage. Inspect each proof’s covered fields before deciding what it authenticates.
+The later [52-proof cohort](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/75-frozen-signed-cohort-and-export-boundaries.md) also left User-Agent and resource unsigned. Inspect each proof’s covered fields before deciding what it authenticates.
 
-Logs can alter the evidence. In [13 synthetic producer/Tail Worker controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/74-native-trace-redaction-and-covered-urls.md), 12 requests verified before tracing; seven verified from default redacted traces. Redaction explained five lost replays. **A failed log replay alone does not prove the original signature was invalid.**
+In [13 synthetic producer/Tail Worker controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/74-native-trace-redaction-and-covered-urls.md), 12 requests verified before tracing; seven verified from default redacted traces. Redaction explained five lost replays. **A failed log replay alone does not prove the original signature was invalid.**
 
 ## Preserve uncertainty in the data
 
-Conflicting inputs enter Unresolved. Our [parser audit](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/90-fetch-metadata-parsing-and-evidence.md) caught a false Browser match: lowercasing NAVIGATE made an invalid value look valid. Four [excluded production controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/91-live-metadata-controls-and-redacted-correlation.md) also showed two ordinary curl requests matching Browser. The dashboard now says **Browser signals** and [distinguishes absent headers from unassessed history](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/92-public-parsing-states-and-browser-signals.md).
+Conflicting inputs enter Unresolved. Our [parser audit](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/90-fetch-metadata-parsing-and-evidence.md) caught a false Browser match: lowercasing NAVIGATE made an invalid value look valid. Four [excluded production controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/91-live-metadata-controls-and-redacted-correlation.md) also showed two curl requests with supplied browser headers matching Browser. The dashboard now says **Browser signals** and [distinguishes absent headers from unassessed history](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/92-public-parsing-states-and-browser-signals.md).
 
-D1 discarded User-Agent after classification; provider logs recovered some inputs, with complete historical recovery unproven. Expiring diagnostic collection remains off pending privacy decisions. Filtering arbitrary text cannot guarantee the absence of personal information. A more precise label preserves a gap; it does not resolve the identity behind it.
+D1 discarded User-Agent after classification; provider logs recovered some inputs, with complete historical recovery unproven. Expiring diagnostic collection remains off pending privacy decisions. Filtering arbitrary text cannot guarantee the absence of personal information.
 
 ## Correct totals can still break production
 
@@ -98,14 +100,14 @@ The article rankings change when inspected outside R1:
 
 | Article | All events | Outside R1 |
 |---|---:|---:|
-| ChatGPT plugin apps | 133 | 42 |
+| ChatGPT plugin apps | 134 | 43 |
 | OSS Radar: toolchain | 116 | 13 |
 | AI-fetcher headers | 67 | 63 |
-| Bot detection without JavaScript | 53 | 37 |
+| Bot detection without JavaScript | 52 | 36 |
 
 Publication ages differ, and these remain deliveries. Still, the fetcher reference gives me a provisional topic worth developing without depending on the spike. I’ve [corrected its signature-coverage claims](/which-ai-fetchers-send-which-headers). A next experiment is one concrete native-app workflow article, showing operation, conflict, undo and saving.
 
-The [readership report](/stats/readership) now separates article traffic, internal navigation, unattributed events and source concentration. Actual search questions remain unavailable until an authenticated [Search Console comparison](https://support.google.com/webmasters/answer/7576553) supplies query/page evidence. I won’t invent them from article titles.
+Actual search questions remain unavailable until an authenticated [Search Console comparison](https://support.google.com/webmasters/answer/7576553) supplies query/page evidence. I won’t invent them from article titles.
 
 For each editorial experiment, compare seven and 28 complete days, inspect source concentration and search discovery, and look for corrections or reports of use. Better bot detection helps interpret delivery. Understanding what readers need requires evidence beyond the request.
 

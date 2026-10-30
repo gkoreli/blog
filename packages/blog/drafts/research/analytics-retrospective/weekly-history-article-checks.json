@@ -1,0 +1,31 @@
+{
+  "baseline": "ec365a699cc426c6726710591e30c851b5650862",
+  "bodyWhitespaceWords": 1379,
+  "readingEstimate": "About 5\u20136 minutes, not an observed reading time",
+  "prompts": 32,
+  "promptBytesUnchanged": true,
+  "metadataUnchanged": true,
+  "markdownPostsValid": 22,
+  "isolatedBuildPosts": 33,
+  "h1": 1,
+  "tables": 3,
+  "checkedLocalArticleLinks": 17,
+  "reportInputSha256": "7da016716c093350e52e02c6aa748991f052f1c517bdba83ad8faaec3f8653e6",
+  "weeklyAndArticleTablesMatchAcceptedReport": true,
+  "sourceSha256": "b22116595f06ab41f0ca83575f577f7e981fe12843775bdc5093cfbe0efad595",
+  "promptsSha256": "c315f9c8f03054ed25c857d87e9960dcb18a214311689b93ea4cc1e04c284618",
+  "htmlSha256": "297de473ab267a3e5b0d6a321fdddf134f67eccc6dabd74792d83f8445a859bb",
+  "markdownSha256": "dae2414487545ba587b993bc1273627f92a0f653786395fbc5cd97bf01afd179",
+  "privateEnvCopied": false,
+  "syntheticNonemptyPublicConfig": true,
+  "productionRequests": 0,
+  "productionSqlStatements": 0,
+  "humanLabels": 0,
+  "productionPublicationAccepted": false,
+  "browserScope": "Desktop 1280 and mobile390 isolated static preview. Mobile table405 inside354px scrolling region, document390; horizontal scroll51.5 exposes final column. No device/human inference.",
+  "preservedHarnessFailures": [
+    "Stale preview session handle unknown; exact PID subsequently absent.",
+    "Pre-build expected1380 word assertion failed; actual1379, before build execution. No source edit to satisfy guessed count."
+  ],
+  "newPopulationCapture": false
+}

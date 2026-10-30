@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T12:21:43.892867+00:00",
-  "sourceBaseline": "fac4fd30c19ac0dfdc4572301e3b7743474b7785",
+  "checkedAt": "2026-10-30T12:38:35.782225+00:00",
+  "sourceBaseline": "ec365a699cc426c6726710591e30c851b5650862",
   "goalAchieved": false,
-  "previousTurn": "progress: Research108 reconciles decision evidence and measures profile-history ambiguity with a paired native counterexample.",
-  "scope": "Research109 local implementation plus Research110 exact-source production acceptance; no new human/operator labels or historical reclassification. Public aggregate history is not comparable human growth.",
+  "previousTurn": "progress: Research110 accepts live weekly history, ordinary cache reuse and returned meter.",
+  "scope": "Research111 distills accepted weekly history into the concise article; no new population or human labels.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -46,21 +46,21 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Update the existing concise retrospective from captured weekly history and explicit missingness, preserving dated windows, evidence limits and human prompts. No additional census or forced cache fill needed.",
+  "nextBoundedAction": "Accept this checked article publication with one frozen collection-ineligible direct Markdown GET; no new report fill, SQL census or pending-approval bypass.",
   "article": {
-    "bodyWhitespaceWords": 1376,
+    "bodyWhitespaceWords": 1379,
     "prompts": 32,
-    "sourceSha256": "f6186a1f16af8114a3318b8125af3c2a04cc34216f0126b7093b2f5a6e5d1aa1",
-    "unchanged": true,
+    "sourceSha256": "b22116595f06ab41f0ca83575f577f7e981fe12843775bdc5093cfbe0efad595",
+    "unchanged": false,
     "freshServedCheck": false,
     "publicationReceipt": "readership-article-release.json",
-    "servedMatchesCheckedBuild": true,
+    "servedMatchesCheckedBuild": false,
     "lastServedCheckReceipt": "readership-article-release.json",
-    "publicationStatus": "Research99 article accepted on source b989e8e / Worker29f1c079; exact direct Markdown equality, separate local desktop preview.",
+    "publicationStatus": "Research111 checked revision; publication pending.",
     "previousPublicationReceipt": "public-parsing-release.json",
     "servedMatchScope": "Exact served direct Markdown13243 bytes; no fresh production browser layout/full HTML/per-request version trace.",
     "localBuildAccepted": true,
-    "localBuildReceipt": "readership-article-checks.json"
+    "localBuildReceipt": "weekly-history-article-checks.json"
   },
   "runtimeUnchanged": false,
   "nativeKnownBotPath": {
@@ -1399,5 +1399,11 @@
       0,
       232
     ]
+  },
+  "weeklyHistoryArticle": {
+    "research": "111-weekly-history-in-the-retrospective.md",
+    "checks": "weekly-history-article-checks.json",
+    "localAccepted": true,
+    "publicationAccepted": false
   }
 }
