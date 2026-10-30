@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-30T07:35:04.214458+00:00",
+  "checkedAt": "2026-10-30T07:43:39.834916+00:00",
   "sourceBaseline": "1ce4f51e1e55d7ae2f7f9764c4387c742351fc58",
   "goalAchieved": false,
   "previousTurn": "progress: compiled client-build identity plus scoped hosted association and one local browser identity readback; original message gate failed",
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Accept source/build activation separately; then bounded diagnostic origin/rate admission and remaining bootstrap/budget work. No-response correlation needs a separate design. Human trials remain deferred.",
+  "nextBoundedAction": "Bounded diagnostic origin/rate admission and remaining bootstrap/event budgets. No-response correlation needs a separate design. Human trials stay deferred.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -970,7 +970,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: response-operation evidence implemented; six paired local native cases, 156 site tests/types/validation/isolated build pass; activation separate",
+  "currentTurn": "progress: response-operation evidence, six paired native cases and 156 tests/types/build; exact source/native build/allocation/29,779-byte hosted client accepted",
   "requirementsAudit": {
     "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
     "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
@@ -1181,11 +1181,12 @@
   },
   "runtimeUnchangedScope": "Subscribe client and diagnostic evidence parser change; newsletter handler, credentials, verifier/admission/sender, schema and analytics collector/classifier remain unchanged.",
   "productionOperationsThisTurn": {
-    "httpRequests": 0,
+    "httpRequests": 1,
     "sqlStatements": 0,
     "verificationCalls": 0,
     "providerSends": 0,
-    "humanLabels": 0
+    "humanLabels": 0,
+    "scope": "One source-excluded static/prefetch asset GET; no production diagnostic POST or SQL."
   },
   "subscriptionResponseCorrelation": {
     "research": "../newsletter-reliability/24-subscription-response-correlation.md",
@@ -1199,6 +1200,11 @@
     "actualBrowser": false,
     "clientClaimAuthenticated": false,
     "noResponseFailuresCorrelated": false,
-    "sourceActivationAccepted": false
+    "sourceActivationAccepted": true,
+    "release": "../newsletter-reliability/subscription-correlation-release.json",
+    "sourceCommit": "7a24b214a6315fe70b53c946f32847137bf3d4e2",
+    "workerVersion": "b01cdda3-7766-425f-9fd1-9e5f11966872",
+    "servedClientBytes": 29779,
+    "productionCorrelationMeasured": false
   }
 }

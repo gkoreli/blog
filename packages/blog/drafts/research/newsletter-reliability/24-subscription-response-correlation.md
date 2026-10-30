@@ -1,6 +1,6 @@
 # Which signup failed, and which request reported it?
 
-October 30 UTC, 2026. Local implementation and labelled native acceptance; hosted activation and production behavior remain separate.
+October 30 UTC, 2026. Local implementation, labelled native acceptance and scoped hosted association below. Production correlation remains unmeasured.
 
 A browser's diagnostic request has its own Cloudflare Ray ID. That ID does not identify the earlier signup request. Our confirmation handler already generates a random UUIDv4, returns it as `x-request-id` on every response, and includes it as `attemptId` in structured server logs where that stage logs. Admitted sends use the same ID in the private confirmation ledger. The client was discarding the response identifier. A stored `subscribe_api_rejected` report could identify its client build and HTTP status while still lacking a direct lookup key for the failed operation.
 
@@ -43,3 +43,14 @@ The dispatch adapter asserts the client's keepalive setting but omits that brows
 The private 87-file archive preserves the plans, source snapshots, failed runs and results under manifest SHA-256 `6e7a8362638bebf4cad2126ac38a2ab27efabb019328420dedbc6b5254fac33a`. October 31 is a review date, not automatic deletion. All owned experiment/build command handles are terminal; native disposal is awaited. A sandbox-denied process listing provides no additional process-state evidence.
 
 Next: source/build activation evidence, followed by bounded diagnostic origin/rate admission and remaining bootstrap/budget work. Human trials remain deferred; search demand, human growth, unexplained referrer attribution and native managed-signature agreement remain separate unresolved measurements. The full analytics goal stays active.
+
+
+## Hosted association accepted
+
+[Release receipt](subscription-correlation-release.json) joins source `7a24b214a6315fe70b53c946f32847137bf3d4e2`, successful native build `285692d3-df88-4ad7-b581-e4618e3d3575`, its deploy log and full Worker `b01cdda3-7766-425f-9fd1-9e5f11966872` at fresh Wrangler 100%. Only main.js is uploaded as a changed asset. Native Node 24.22.1 differs from pinned local 24.14.1; runtime policy is not changed.
+
+One frozen static/prefetch GET returns 200 and exactly matches all 29,779 reconstructed client bytes, including the native build/source identifier. No production diagnostic is posted and no production SQL, verification, email or human trial runs. This accepts source/build/served-asset association; it does not accept actual browser or production operation correlation. No per-request Worker trace is joined.
+
+The separate 16-file private release archive has manifest SHA-256 `72f8c3353a5aad872a72327828a777ed1ea5d2f4de417f9b62dd8d22026ffaa0`; the pre-request plan commitment is recorded in the receipt. October 31 remains a review date, not automatic deletion. This receipt belongs to the inspected code-bearing build: later builds, including a documentation follow-up, receive their own metadata and must not inherit these identifiers as proof of latest state.
+
+Next bounded action: diagnostic origin/rate admission and remaining event/bootstrap budgets, with no-response operation correlation still an explicit design gap. All experiment/build command handles are terminal. The full analytics goal remains active; no human trials or provider terms are reopened by this release.
