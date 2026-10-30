@@ -1485,16 +1485,16 @@
     "goalComplete": false
   },
   "latestIndependentWork": {
-    "checkedAt": "2026-10-30T15:55:26.986172+00:00",
-    "research": "114-directory-possession-and-profile-drift.md",
-    "receipt": "directory-possession-audit.json",
-    "trigger": "Owner away from locked Mac asks what can proceed independently",
-    "completed": "Three public directory possession proofs, coverage controls and pinned provider source/profile review",
+    "checkedAt": "2026-10-30T16:08:56.352980+00:00",
+    "research": "115-offline-directory-response-profiles.md",
+    "receipt": "directory-response-profile-audit.json",
+    "trigger": "Owner authorizes independent offline implementation while away",
+    "completed": "Dedicated directory-response adapter, 35 Node/workerd cases, pinned independent RFC comparison and explicit profile/unknown states",
     "newHumanLabels": 0,
     "productionQueries": 0,
-    "runtimeChanged": false,
+    "productionPolicyChanged": false,
     "articleChanged": false,
     "trackerStatus": "blocked",
-    "note": "New independent progress supersedes the earlier claim that no actionable public work remained. Historical three-turn blocked audit retained; missing external inputs and full goal remain unresolved."
+    "note": "New independent implementation accepted locally; historical blocked audit retained. Full goal and external/native/search/privacy/human inputs remain unresolved."
   }
 }

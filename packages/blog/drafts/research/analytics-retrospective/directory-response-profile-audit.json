@@ -1,0 +1,542 @@
+{
+  "checkedAt": "2026-10-30T16:08:56.352980+00:00",
+  "sourceBaseline": "043a4a262250fb7a0189552725544777721f621b",
+  "research": "115-offline-directory-response-profiles.md",
+  "module": "../../../../analytics/src/directory-response-audit.ts",
+  "version": "2026-10-30.1",
+  "evidenceScope": "Offline, recorded-time directory responses; no native managed oracle or reader measurements",
+  "comparison": {
+    "trials": 35,
+    "referenceCalls": 195,
+    "matchedSemanticChecks": 183,
+    "documentedDifferences": [
+      {
+        "name": "unsupported-component",
+        "candidateIndex": 0,
+        "mode": "crypto",
+        "localAccepted": false,
+        "referenceAccepted": true,
+        "cause": "component subset"
+      },
+      {
+        "name": "unsupported-component",
+        "candidateIndex": 0,
+        "mode": "authority",
+        "localAccepted": false,
+        "referenceAccepted": true,
+        "cause": "component subset"
+      },
+      {
+        "name": "unsupported-component",
+        "candidateIndex": 1,
+        "mode": "crypto",
+        "localAccepted": false,
+        "referenceAccepted": true,
+        "cause": "component subset"
+      },
+      {
+        "name": "unsupported-component",
+        "candidateIndex": 1,
+        "mode": "authority",
+        "localAccepted": false,
+        "referenceAccepted": true,
+        "cause": "component subset"
+      },
+      {
+        "name": "conflicting-duplicate-key",
+        "candidateIndex": 0,
+        "mode": "crypto",
+        "localAccepted": false,
+        "referenceAccepted": true,
+        "cause": "explicit local JWK admission policy"
+      },
+      {
+        "name": "conflicting-duplicate-key",
+        "candidateIndex": 0,
+        "mode": "authority",
+        "localAccepted": false,
+        "referenceAccepted": true,
+        "cause": "explicit local JWK admission policy"
+      },
+      {
+        "name": "rejected-key-metadata",
+        "candidateIndex": 0,
+        "mode": "crypto",
+        "localAccepted": false,
+        "referenceAccepted": true,
+        "cause": "explicit local JWK admission policy"
+      },
+      {
+        "name": "rejected-key-metadata",
+        "candidateIndex": 0,
+        "mode": "authority",
+        "localAccepted": false,
+        "referenceAccepted": true,
+        "cause": "explicit local JWK admission policy"
+      },
+      {
+        "name": "conflicting-validity-duplicates",
+        "candidateIndex": 0,
+        "mode": "crypto",
+        "localAccepted": false,
+        "referenceAccepted": true,
+        "cause": "explicit local JWK admission policy"
+      },
+      {
+        "name": "conflicting-validity-duplicates",
+        "candidateIndex": 0,
+        "mode": "authority",
+        "localAccepted": false,
+        "referenceAccepted": true,
+        "cause": "explicit local JWK admission policy"
+      },
+      {
+        "name": "expired-key-boundary",
+        "candidateIndex": 0,
+        "mode": "crypto",
+        "localAccepted": false,
+        "referenceAccepted": true,
+        "cause": "explicit local JWK admission policy"
+      },
+      {
+        "name": "expired-key-boundary",
+        "candidateIndex": 0,
+        "mode": "authority",
+        "localAccepted": false,
+        "referenceAccepted": true,
+        "cause": "explicit local JWK admission policy"
+      }
+    ],
+    "unexplainedDifferences": 0,
+    "sourceCommit": "1de433d9a49fd608475c6054ab14a1652c088844",
+    "sourceFilesRechecked": 18,
+    "rows": [
+      {
+        "name": "authority-only",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 2,
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "digest-bound",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 2,
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "bodyBoundKeys": 2,
+        "digest": "matched"
+      },
+      {
+        "name": "sha512-bound",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 2,
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "bodyBoundKeys": 2,
+        "digest": "matched"
+      },
+      {
+        "name": "status-also-covered",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 2,
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "bodyBoundKeys": 2,
+        "digest": "matched"
+      },
+      {
+        "name": "unsigned-body-change",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 2,
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "signed-body-change",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 2,
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "bodyBoundKeys": 0,
+        "digest": "mismatch"
+      },
+      {
+        "name": "signed-header-change",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "mismatch"
+      },
+      {
+        "name": "wrong-authority",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "expired",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "future",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "missing-associated-request-flag",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "unsupported-component",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "digest-without-authority",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 2,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "matched"
+      },
+      {
+        "name": "one-proof-two-keys",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 1,
+        "admittedKeys": 2,
+        "authorityKeys": 1,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "duplicate-key-entry",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 2,
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "conflicting-duplicate-key",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 1,
+        "admittedKeys": 1,
+        "authorityKeys": 1,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "wrong-tag",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "malformed-created-type",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "signature-mutated",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "empty-directory",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 0,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "proofs-absent",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "unsupported-digest",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "unsupported"
+      },
+      {
+        "name": "malformed-digest",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "malformed"
+      },
+      {
+        "name": "first-invalid-later-valid",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 1,
+        "admittedKeys": 2,
+        "authorityKeys": 1,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "repeated-proof-one-key",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 3,
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "rejected-key-metadata",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 1,
+        "admittedKeys": 1,
+        "authorityKeys": 1,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "unavailable-key",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 1,
+        "admittedKeys": 1,
+        "authorityKeys": 1,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "additional-unsupported-key",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 2,
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "signed-unsupported-digest",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 2,
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "bodyBoundKeys": 0,
+        "digest": "unsupported"
+      },
+      {
+        "name": "duplicate-component",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 0,
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "conflicting-validity-duplicates",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 1,
+        "admittedKeys": 1,
+        "authorityKeys": 1,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "expired-key-boundary",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 1,
+        "admittedKeys": 1,
+        "authorityKeys": 1,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "signature-validity-boundary",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 2,
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "captured-exa",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 1,
+        "admittedKeys": 1,
+        "authorityKeys": 1,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      },
+      {
+        "name": "captured-ahrefs",
+        "nodeNativeEqual": true,
+        "cryptoProofs": 2,
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "bodyBoundKeys": 0,
+        "digest": "absent"
+      }
+    ]
+  },
+  "checks": {
+    "workspaceTypecheck": true,
+    "analyticsTestsPassed": 326,
+    "nodeWorkerdCases": 35,
+    "syntheticCases": 33,
+    "savedPublicResponses": 2,
+    "sourceFilesRechecked": 18,
+    "referenceCalls": 195,
+    "commonSemanticChecksEqual": 183,
+    "documentedScopeAndAdmissionDifferences": 12,
+    "unexplainedDifferences": 0,
+    "comparisonIntegrityNegatives": [
+      {
+        "case": "missing-row",
+        "rejected": true
+      },
+      {
+        "case": "order-mismatch",
+        "rejected": true
+      },
+      {
+        "case": "unexpected-result",
+        "rejected": true
+      },
+      {
+        "case": "lost-policy-difference",
+        "rejected": true
+      }
+    ],
+    "negativeControlInputNative": "native-release.json",
+    "negativeControlInputReference": "reference-release.json",
+    "negativeControlDatasetCases": 34,
+    "contextSizeEncodingOptionGates": 9,
+    "snapshotAndCandidateOrphanTests": true,
+    "entryBundleBefore": {
+      "bytes": 220746,
+      "sha256": "8c42b505bca70cc7503d1e1a08558b6a34a52a9246817ce22232f3b01f0fda39"
+    },
+    "entryBundleAfter": {
+      "bytes": 220746,
+      "sha256": "8c42b505bca70cc7503d1e1a08558b6a34a52a9246817ce22232f3b01f0fda39"
+    },
+    "entryBundleBytesIdentical": true,
+    "fullSiteBuildRun": false,
+    "sitePublicationAccepted": false
+  },
+  "sourceHashes": [
+    {
+      "path": "packages/analytics/src/directory-response-audit.ts",
+      "sha256": "4f53ad847a93d38ca41cbf41a5a90f537eab5dc3a6bc43ac247eabb70894e0a5"
+    },
+    {
+      "path": "packages/analytics/src/webbotauth.ts",
+      "sha256": "6278fd218a06bf6c67b2fa2a3fa741621eb07e1d13d4239147c5202820cdfd61"
+    },
+    {
+      "path": "packages/analytics/test/directory-response-audit.test.mjs",
+      "sha256": "52ffc1a2925a406511b06095b2f7316986328644db5c8f669c40c415a0476bf4"
+    },
+    {
+      "path": "packages/analytics/test/fixtures/directory-response.mjs",
+      "sha256": "c092edeb48ee06a5666d82f8f12b8bfeb86575231c24e62cb59f0b7609e550b8"
+    },
+    {
+      "path": "packages/blog/scripts/check-directory-response-audit.mjs",
+      "sha256": "a5741d6ce9fed2bd255384624c41fd56a3273c87f1f712ae406d155eef7f1683"
+    },
+    {
+      "path": "packages/blog/scripts/summarize-directory-response-comparison.mjs",
+      "sha256": "9d21bbed5a1f95eab806238d9b3d34e0775f9368f07c0935c0cffbe231d23bd2"
+    },
+    {
+      "path": "packages/blog/drafts/research/analytics-retrospective/probe-directory-reference.py",
+      "sha256": "2b38f5be66257a0c0116158d864b3723bf76fc4fb7701b1d3eb1d2a7a3cf5f76"
+    }
+  ],
+  "acceptedPrivateFiles": [
+    "inputs-delivery.json",
+    "native-delivery.json",
+    "reference-delivery.json",
+    "comparison-delivery.json",
+    "typecheck-delivery.log",
+    "analytics-tests-delivery.log",
+    "bundle-delivery.json"
+  ],
+  "effects": {
+    "implicitNetworkTransport": false,
+    "productionSiteRequests": 0,
+    "productionSqlStatements": 0,
+    "newVendorCaptures": 0,
+    "newHumanLabels": 0,
+    "productionPolicyChanged": false,
+    "collectorImportAdded": false,
+    "schemaOrReportChanged": false,
+    "articleChanged": false,
+    "dependencyOrLockfileChanged": false,
+    "goalAchieved": false
+  },
+  "privateEvidence": {
+    "temporary": "/tmp/gk-directory-adapter-20261030",
+    "durable": "/Users/goga/Documents/goga/analytics-evidence/2026-10-30-directory-response-adapter",
+    "files": 77,
+    "manifestSha256": "7534edb2b4ebdbfb62650c7778d385978e735c87b341ce4350e1f9d434125a27",
+    "rechecked": true
+  },
+  "remaining": [
+    "Runtime adoption policy and response-validation/cache cost experiment",
+    "Generic component/encoding/algorithm support outside this deliberately bounded adapter",
+    "Managed provider request-level comparison",
+    "Existing search data, human trials, source-purpose and privacy decisions remain separate"
+  ]
+}

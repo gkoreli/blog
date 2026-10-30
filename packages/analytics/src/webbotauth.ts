@@ -346,6 +346,11 @@ function parseDictionary(value: string): DictionaryEntry[] | null {
   return new StructuredFieldParser(value).parseDictionary();
 }
 
+// Shared with the offline directory-response adapter. No collector policy change.
+export { parseDictionary, parameter, serializeItem, serializeInnerList,
+  signatureCandidates, malformedSignatureParameterReason, directoryKey };
+export type { SignatureCandidate };
+
 function stringValue(item: BareItem | undefined): string | null {
   return item?.type === 'string' ? item.value : null;
 }
