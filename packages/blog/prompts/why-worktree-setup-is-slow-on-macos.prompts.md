@@ -28,3 +28,7 @@ Can we try other notorious repos too in the benchmark, and then continue with ev
 ---
 
 I feel like title undersells the article and the initial section doesnt even contain the most important reasons to why read this article. I feel like its insane that there is a vm running on macos and is faster than the macos itself. Lmao why are you underselling and hiding the main points burried into the article?
+
+---
+
+Share this on x and reply to the original theo’s post too and lets increase readership like share to the places that matter, there must be people asking questions on x and across the board, we should be answering within our article

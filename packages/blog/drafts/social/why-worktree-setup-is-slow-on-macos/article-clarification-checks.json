@@ -1,0 +1,11 @@
+{
+  "wordCount": 967,
+  "promptCount": 8,
+  "unchangedBenchmarkLedger": true,
+  "validatedMarkdownPosts": 22,
+  "builtPosts": 33,
+  "files": {
+    "packages/blog/posts/032-why-worktree-setup-is-slow-on-macos.md": "e8358dd6be47ac0589b2d04b7e475d9e39c4564f042835e7913e5a62e413a078",
+    "packages/blog/prompts/why-worktree-setup-is-slow-on-macos.prompts.md": "5e4509643019b384b56b08d41146aa38fbd45409047fbbf61e9d904f44e4004e"
+  }
+}

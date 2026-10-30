@@ -2,7 +2,7 @@
 title: "A Linux VM on My Mac Beat macOS at Installing Dependencies"
 description: "A Linux VM on my Mac installed T3 Code dependencies almost 4× faster than macOS. I tested four repos, traced the file work and checked the fixes."
 date: 2026-10-28
-lastModified: "2026-10-29"
+lastModified: "2026-10-30"
 section: engineering
 tags: [macos, linux, pnpm, git]
 readTime: "5 min read"
@@ -35,7 +35,7 @@ Each cell contains five runs. T3 came from an earlier 30-install block; the othe
 
 All used Node 26.12.1 and their own pinned pnpm 12 version. Package and build caches were populated; allowed install scripts stayed enabled. Timed installs used `--offline --frozen-lockfile`. CI mode skipped Next's optional native-compiler download. Checks ran outside the timer.
 
-Linux's project and cache lived inside its own filesystem. This compares software and storage paths with different resources, rather than isolating APFS alone.
+Linux's project and cache lived on the VM's own ext4 filesystem. The gap didn't require ZFS. This compares software and storage paths with different resources, rather than isolating APFS alone.
 
 Theo's [29.7-second Mac versus 3.8-second Linux chart](https://x.com/theo/status/2115338547620401326) prompted this investigation. His [disclosed method](https://x.com/theo/status/2115338762830184877/photo/1) describes five machines, averaging their individual middle timings, with Linux's after-fix runs. His price caption isn't a controlled two-machine experiment.
 

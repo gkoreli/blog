@@ -1,0 +1,42 @@
+{
+  "checkedAtUtc": "2026-10-30T15:51:54.982578+00:00",
+  "method": "Official unauthenticated X publishing oEmbed endpoint; establishes returned public post text, not feed delivery or readership.",
+  "posts": [
+    {
+      "label": "original",
+      "url": "https://x.com/GogaKoreli/status/2116195462818771267",
+      "publicTextVerified": true,
+      "httpStatus": 200,
+      "sha256": "9d2407c2a0677dc7b59a7826ac579f477ddfe96ed0ecfdbba2127dc9b463ec0b",
+      "author": "Goga Koreli",
+      "returnedPostText": "I gave Linux 4 GB of my Mac's 24 GB RAM: T3 Code dependencies installed in 2.10s vs 8.12s on macOS. Tested four repos, traced the extra file work, and checked fixes for speed, type errors and cache writes. https://t.co/fnj3tFK10h"
+    },
+    {
+      "label": "theo-reply",
+      "url": "https://x.com/GogaKoreli/status/2116195500060012683",
+      "publicTextVerified": true,
+      "httpStatus": 200,
+      "sha256": "345320db03f80f1389a0b274fe7fc24e1c9d066fec37b3996e9d173faed16971",
+      "author": "Goga Koreli",
+      "returnedPostText": "I tested this on the same M5 Mac: 2.10s in a 4 GB Linux VM vs 8.12s on macOS for T3 dependencies, with warm caches. Tested four repos and found fixes, type errors, and a build that changed cached package files: https://t.co/fnj3tFK10h"
+    },
+    {
+      "label": "install-answer",
+      "url": "https://x.com/GogaKoreli/status/2116196008078279036",
+      "publicTextVerified": true,
+      "httpStatus": 200,
+      "sha256": "ae45805636f5083810c3736b28ce84f5dbb84796f26dfd7cd7810e307e7a5d9d",
+      "author": "Goga Koreli",
+      "returnedPostText": "Yes, the chart times pnpm install in a new worktree. Bare git worktree creation is separate; I measured only the install step, with warm caches, across T3, Next.js, Vite and SvelteKit: https://t.co/fnj3tFK10h"
+    },
+    {
+      "label": "filesystem-answer",
+      "url": "https://x.com/GogaKoreli/status/2116196276144607385",
+      "publicTextVerified": true,
+      "httpStatus": 200,
+      "sha256": "bee29f9e8fa899ef3e0ce3ca6070a10850d902833b7d3c5b73f6ff075025aba1",
+      "author": "Goga Koreli",
+      "returnedPostText": "ZFS wasn't required in my tests: an ext4 Linux VM on the same Mac beat macOS in all four repos. Moving the cache onto the checkout's filesystem cut a separate XFS test from 7.6s to 1.4s; this doesn't isolate APFS alone. https://t.co/fnj3tFK10h"
+    }
+  ]
+}

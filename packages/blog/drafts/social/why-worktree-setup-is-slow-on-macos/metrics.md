@@ -1,0 +1,33 @@
+# Publication and readership receipt — October 30, 2026
+
+## Published as @GogaKoreli
+
+| Action | Permanent URL | Verification |
+| --- | --- | --- |
+| Original announcement | https://x.com/GogaKoreli/status/2116195462818771267 | Reopened own status; exact text and native article card. Published at 8:48 AM Pacific. |
+| Reply to Theo's original price/chart post | https://x.com/GogaKoreli/status/2116195500060012683 | Reopened status shows Theo's parent and the independent warm-cache result. Published at 8:48 AM Pacific. |
+| Answer: worktree versus install timer | https://x.com/GogaKoreli/status/2116196008078279036 | Reopened status and checked the direct answer to Aditya's actual question. |
+| Answer: filesystem/ZFS | https://x.com/GogaKoreli/status/2116196276144607385 | Reopened status and checked ext4 evidence, separate XFS control and APFS-only limit. |
+
+All four returned the correct author and post text from X's official unauthenticated publishing oEmbed endpoint at `2026-10-30T15:51:54Z`. The [public verification record](public-verification.json) retains selected results and response hashes. Public text availability is established; feed reach, qualified reader contact and article visits are not.
+
+Initial owner view showed one view on the original post and zero reactions. Owner views can count; these are delivery observations, not adoption evidence. Comparable-age original-post baseline and click analytics were not measured. No future monitoring or email subscription was scheduled. Freeze this copy rather than reacting to early noise.
+
+## Destination and article acceptance
+
+The live article's checkout/install distinction was verified in the browser. The small ext4/ZFS clarification is backed by the unchanged 90-trial ledger and accepted VM protocol. It renders to 967 words (about 4.84 minutes), with eight exact shaping prompts and `lastModified: 2026-10-30`; URL and publication date remain stable. All 22 Markdown posts validate and an isolated current-main build produces 33 posts. Publication acceptance for this clarification will be appended after deployment.
+
+A direct Python request to the Markdown twin returned HTTP 403; the canonical article loaded normally in the signed-in browser. Do not treat that programmatic refusal as evidence that ordinary readers cannot access the article, or claim universal anonymous access from the browser receipt.
+
+Changelog: exact submission is filled in the existing signed-in account, but Submit was rejected by automatic approval review for missing destination-specific authorization. The specific approval question is pending. No Changelog submission, editorial acceptance or public item is claimed. No workaround, new account, opt-in change or off-platform message was used.
+
+The campaign used the [launch-article-on-x skill](../../../../../.agents/skills/launch-article-on-x/SKILL.md). HN rules were checked and its automated-posting/generated-text prohibition was respected; no HN post or comment was sent. Old Reddit questions and pnpm issues are discovery leads, not additional publication receipts.
+
+## Decision
+
+- Keep: same-Mac VM result, concrete numbers, direct answers to existing questions and canonical article links.
+- Change next time: wait for comparable-age results before deciding on media or copy changes.
+- Evidence: four native status pages and four independent public text responses; article question coverage and explicit experimental limits.
+- Confidence and confounders: publication verified; no causal attribution of readership or useful response yet.
+- Article correction needed: the ext4/ZFS condition is clarified from existing evidence; no benchmark rerun or changed timing claim.
+- Shared-skill change needed: none from this single launch.
