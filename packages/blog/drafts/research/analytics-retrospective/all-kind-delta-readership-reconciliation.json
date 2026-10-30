@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-10-30T10:01:11.806Z",
+  "earlierBrowserOnlyWindow": {
+    "start": "2026-10-29 00:00:00",
+    "end": "2026-10-30 00:00:00"
+  },
+  "earlierRawBrowserRows": 86,
+  "earlierIncludedBrowserRows": 84,
+  "allKindWindow": "Exact-ID suffix from Research93 through new frozen upper ID; crosses two UTC dates",
+  "days": {
+    "2026-10-29": {
+      "allKinds": 42,
+      "browser": 7,
+      "unresolved": 5
+    },
+    "2026-10-30": {
+      "allKinds": 355,
+      "browser": 22,
+      "unresolved": 180
+    }
+  },
+  "overlappingRows": 7,
+  "matchedFieldsPerRow": 12,
+  "earlierCaptureManifestSha256": "41e5e45a2310080fdaa68f8f51adcb5a5423b85e8a63d34af369006b9bf82257",
+  "allOverlapsMatch": true,
+  "limits": [
+    "Earlier readership window contains the whole October 29 day; new all-kind interval starts after 20:33 and also includes October 30 partial day.",
+    "Do not compare 86 versus 29 as growth or add overlapping captures together.",
+    "The rolling readership report omits October 30 partial day by design."
+  ],
+  "privateEvidence": {
+    "files": 70,
+    "manifestSha256": "0d6fef628964411d409a063c9430be67cc18af9823a2b0e2d663ae3404211079",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  }
+}

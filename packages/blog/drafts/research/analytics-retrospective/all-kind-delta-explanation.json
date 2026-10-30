@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-10-30T09:57:17.155Z",
+  "sourceResponseSha256": "7278d7d3cd431b55179e172821e3dbbf94ceaa9bd242a43ec721340e6b583310",
+  "rows": 397,
+  "unresolved": {
+    "rows": 185,
+    "declaredFamilies": {
+      "chromium": 181,
+      "unrecognized": 2,
+      "webkit": 1,
+      "firefox": 1
+    },
+    "retainedContext": {
+      "{\"mode\":null,\"dest\":null,\"site\":null,\"user\":null,\"html\":1,\"language\":0}": 180,
+      "{\"mode\":null,\"dest\":null,\"site\":null,\"user\":null,\"html\":null,\"language\":0}": 3,
+      "{\"mode\":null,\"dest\":null,\"site\":null,\"user\":null,\"html\":1,\"language\":1}": 2
+    },
+    "sourceStates": {
+      "absent": 184,
+      "internal": 1
+    },
+    "articleEvents": 103,
+    "otherKnownPageEvents": 40,
+    "otherPathEvents": 42,
+    "distinctCanonicalArticles": 33,
+    "utcHours": {
+      "2026-10-29 20": 1,
+      "2026-10-29 21": 1,
+      "2026-10-29 22": 2,
+      "2026-10-29 23": 1,
+      "2026-10-30 00": 133,
+      "2026-10-30 02": 5,
+      "2026-10-30 04": 1,
+      "2026-10-30 05": 8,
+      "2026-10-30 06": 33
+    },
+    "localAsnListEvidence": {
+      "not-listed": 185
+    }
+  },
+  "googleEvidence": {
+    "declarations": 15,
+    "listed": 13,
+    "notListed": 0,
+    "unavailable": 0,
+    "notAssessed": 2,
+    "reasons": {
+      "refresh-cooldown": 2
+    },
+    "listedWithZeroRecordedReuseInterval": 13,
+    "cooldownSnapshotsRetained": 0,
+    "rawPublisherCacheHeadersInSelectedEvidence": false
+  },
+  "methodCoverage": {
+    "declaredRequestViews": 70,
+    "configuredMethodRequestViews": 54,
+    "withoutConfiguredMethodRequestViews": 16,
+    "declaredClients": 12
+  },
+  "evidenceUnion": {
+    "storedVerified": 31,
+    "publishedRangeListed": 23,
+    "both": 2,
+    "either": 52
+  },
+  "scope": "Derived only from the accepted frozen rows and closed native per-row assessments; declared browser/network categories and local outcomes remain claims, not operator truth.",
+  "privateEvidence": {
+    "files": 70,
+    "manifestSha256": "0d6fef628964411d409a063c9430be67cc18af9823a2b0e2d663ae3404211079",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  }
+}

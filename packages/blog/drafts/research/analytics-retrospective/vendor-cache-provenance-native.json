@@ -1,0 +1,97 @@
+{
+  "checkedAt": "2026-10-30T10:09:05.097Z",
+  "profile": "zero-reuse-provenance-v1",
+  "controlledClock": "2026-10-30T09:00:00.000Z",
+  "conditions": 6,
+  "checksPerCondition": 2,
+  "nodeAndNativeEqual": true,
+  "zeroReuseProjectionGroups": [
+    {
+      "labels": [
+        "no-cache",
+        "no-store",
+        "private",
+        "max-age-zero",
+        "age-exhausted"
+      ],
+      "sha256": "4dd4da73e3ab43de3f09716905f5d8d1e159202230af3e6185731a51c10e37f8"
+    }
+  ],
+  "differentStorageStatesPresent": true,
+  "positiveReuseControlPassed": true,
+  "skippedChecksRemainNotAssessed": true,
+  "results": [
+    {
+      "label": "positive-max-age",
+      "firstOutcome": "listed",
+      "freshForMs": 300000,
+      "secondOutcome": "listed",
+      "secondReason": null,
+      "upstreamCalls": 1,
+      "cacheRetained": true
+    },
+    {
+      "label": "no-cache",
+      "firstOutcome": "listed",
+      "freshForMs": 0,
+      "secondOutcome": "not-assessed",
+      "secondReason": "refresh-cooldown",
+      "upstreamCalls": 1,
+      "cacheRetained": true
+    },
+    {
+      "label": "no-store",
+      "firstOutcome": "listed",
+      "freshForMs": 0,
+      "secondOutcome": "not-assessed",
+      "secondReason": "refresh-cooldown",
+      "upstreamCalls": 1,
+      "cacheRetained": false
+    },
+    {
+      "label": "private",
+      "firstOutcome": "listed",
+      "freshForMs": 0,
+      "secondOutcome": "not-assessed",
+      "secondReason": "refresh-cooldown",
+      "upstreamCalls": 1,
+      "cacheRetained": false
+    },
+    {
+      "label": "max-age-zero",
+      "firstOutcome": "listed",
+      "freshForMs": 0,
+      "secondOutcome": "not-assessed",
+      "secondReason": "refresh-cooldown",
+      "upstreamCalls": 1,
+      "cacheRetained": true
+    },
+    {
+      "label": "age-exhausted",
+      "firstOutcome": "listed",
+      "freshForMs": 0,
+      "secondOutcome": "not-assessed",
+      "secondReason": "refresh-cooldown",
+      "upstreamCalls": 1,
+      "cacheRetained": true
+    }
+  ],
+  "upstreamCallsPerRuntime": 6,
+  "productionRequests": 0,
+  "productionSqlStatements": 0,
+  "humanLabels": 0,
+  "sourceSha256": {
+    "../../analytics/src/vendor-ip.ts": "6a387ece5571fbf65bd1980b1bdb5b04466a9aa866391a2a46b37fc551a93fb3",
+    "../../analytics/test/fixtures/vendor-cache-provenance.mjs": "d4ca15e4c412a20441050b4a399c365a5e3962d8639d28e2207c3f064af95c44",
+    "../test/fixtures/vendor-cache-provenance-worker.js": "2c2cd7020f366aa1bbd415561fbb131254f5b48f7dd1ed870ed76d528beb0504",
+    "./check-vendor-cache-provenance.mjs": "9f27faca9fd0a0495e0de68f73d374dcb296586bc8ca871249550080d6bcc9ea"
+  },
+  "scope": "Synthetic cache-policy contrast, not current Google headers, historical header recovery, native provider detection or classifier accuracy.",
+  "privateEvidence": {
+    "files": 70,
+    "manifestSha256": "0d6fef628964411d409a063c9430be67cc18af9823a2b0e2d663ae3404211079",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  },
+  "sourceHashBase": "packages/blog/scripts/"
+}

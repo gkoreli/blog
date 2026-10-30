@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-30T09:42:53.723588+00:00",
+  "checkedAt": "2026-10-30T10:13:54.284171+00:00",
   "sourceBaseline": "4cefd55ceae96edb000660fab4f626e669917997",
   "goalAchieved": false,
-  "previousTurn": "progress: October29 Browser-only additive capture and frozen reconstruction accepted in Research100; article-specific concentration gap established, not human growth.",
+  "previousTurn": "progress: article-specific source concentration deployed/accepted on3b28416, five exact joins and live meter; evidence checkpoint9c3609c. No human/readership proof.",
   "scope": "Active goal: operation references improve failure investigation; no authenticated report, reader demand, human growth or population calibration follows.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
@@ -46,7 +46,7 @@
   "deferredByOwner": [
     "Human-operated trials and separate owner-browser verification"
   ],
-  "nextBoundedAction": "Use the exact private upper-ID cutoff from Research93 to preflight the unassessed new-ID interval across all stored kinds. Apply existing row/byte/read gates before any export/offline shared assessment; preserve unknowns, cohort scopes and independent labels. Browser-only Research100 is not an all-kind census.",
+  "nextBoundedAction": "Add closed feed-cache storage/reuse/refresh rationale to future vendor-IP evidence, using the six-condition Node/workerd baseline. Preserve all existing membership outcomes, cooldown and no-stale policy; keep historical missing rationale unknown, and measure compatibility/visibility rather than treating the metadata as identity truth.",
   "article": {
     "bodyWhitespaceWords": 1376,
     "prompts": 32,
@@ -62,7 +62,7 @@
     "localBuildAccepted": true,
     "localBuildReceipt": "readership-article-checks.json"
   },
-  "runtimeUnchanged": false,
+  "runtimeUnchanged": true,
   "nativeKnownBotPath": {
     "expressionValidation": "accepted-dashboard",
     "runtimeDelivery": "Research 61 live header delivery accepted; research 62 unavailable diagnostics activated from e3e0d60 in Worker 8482029c, with production off-mode acceptance only. New failure reasons remain locally measured.",
@@ -970,7 +970,7 @@
     "productionAccepted": true,
     "release": "readership-article-release.json"
   },
-  "currentTurn": "progress: article-specific source concentration implementation and local checks are accepted, plus exact hosted source/build/allocation, five version/Ray joins, all33 live article cohorts, served JS/CSS and one 40,011-read calculation. GitHub/native disagreement retained.",
+  "currentTurn": "progress: all397 retained new-ID rows captured once and fully assessed;185 unresolved contexts,31 authority-bound stored verifications and two Google cooldown skips remain explicit. Six labelled cache-policy contrasts expose indistinguishable evidence; reusable diagnostic added.",
   "requirementsAudit": {
     "sourceCommit": "4bfee768cdb6447b54ce58ba8638786d885b2c30",
     "method": "Current source inspection, existing dated experiment receipts and fresh browser sign-in state. No fresh classifier test run, population export, inbound provider measurement or human trial.",
@@ -1130,17 +1130,6 @@
     "reportAuthenticated": false
   },
   "previousOperationalSummary": {
-    "httpRequests": 0,
-    "sqlAttempts": 2,
-    "meteredStatements": 2,
-    "reportedReads": 1344,
-    "reportedWrites": 0,
-    "selectedStoredKind": "browser",
-    "rawSelectedRows": 86,
-    "humanLabels": 0
-  },
-  "runtimeUnchangedScope": "Article-reach SQL, shared response contract/cache namespace and report UI change; analytics collector/classifier/verifier, collection, owner/referral policy, schema, newsletter and article remain unchanged.",
-  "productionOperationsThisTurn": {
     "httpRequests": 5,
     "directSqlStatements": 0,
     "reportCalculationStatements": 1,
@@ -1152,6 +1141,19 @@
     "collectionEligibleRequests": 0,
     "newPopulationExports": 0,
     "humanLabels": 0
+  },
+  "runtimeUnchangedScope": "Only the reusable cache-policy diagnostic and synthetic fixtures are added. Collector/classifier/verifier, report UI, schema, owner/referral policy, credentials, optional capture and article remain unchanged.",
+  "productionOperationsThisTurn": {
+    "httpRequests": 0,
+    "sqlAttempts": 2,
+    "meteredStatements": 2,
+    "reportedReads": 794,
+    "reportedWrites": 0,
+    "newPopulationExports": 1,
+    "selectedStoredKinds": "all",
+    "selectedRows": 397,
+    "humanLabels": 0,
+    "newProofReplays": 0
   },
   "subscriptionResponseCorrelation": {
     "research": "../newsletter-reliability/24-subscription-response-correlation.md",
@@ -1285,5 +1287,37 @@
     "liveArticleComparisons": 33,
     "productionReads": 40011,
     "githubNativeDisagreement": "Final GitHub in_progress / native build+deploy success; cause unknown."
+  },
+  "allKindDeltaRefresh": {
+    "research": "102-all-kind-delta-and-verification-unknowns.md",
+    "results": "all-kind-delta-production.json",
+    "explanation": "all-kind-delta-explanation.json",
+    "reconciliation": "all-kind-delta-readership-reconciliation.json",
+    "native": "all-kind-delta-native.json",
+    "cachePolicy": "vendor-cache-provenance-native.json",
+    "sourceBaseline": "9c3609c",
+    "rows": 397,
+    "included": 397,
+    "unresolved": 185,
+    "browser": 29,
+    "cloudBrowser": 95,
+    "storedVerified": 31,
+    "nativeVerificationBooleansAvailable": 0,
+    "googleListed": 13,
+    "googleCooldownNotAssessed": 2,
+    "newHumanLabels": 0,
+    "newCryptographicProofReplays": 0,
+    "allKindCutoffAdvanced": true,
+    "latestPrivateCutoffSource": "2026-10-30-all-kind-delta-data/preflight-accepted.json",
+    "heldDatabaseSnapshot": false
+  },
+  "vendorCachePolicyBaseline": {
+    "conditions": 6,
+    "checksPerConditionPerRuntime": 2,
+    "nodeAndWorkerdEqual": true,
+    "distinctZeroReuseCauses": 5,
+    "retainedProjectionGroupsForThoseCauses": 1,
+    "sourceCausesRecoveredFromHistoricalRecords": false,
+    "productionRequests": 0
   }
 }

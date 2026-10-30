@@ -1,0 +1,1047 @@
+{
+  "checkedAt": "2026-10-30T09:52:26.391Z",
+  "sourceBaseline": "9c3609c91d46d5b24021f67c504d03d5fe0eb576",
+  "scope": "All stored kinds above the last accepted exact-ID cutoff through a new frozen preflight upper ID; not whole history, a transaction, unique readers or current cryptographic replay.",
+  "baselineReceipt": "evidence-delta-production.json",
+  "baselineCaptureManifestSha256": "e0a88595501eb04ebaafa13e0dda9fbc7be45178c9f39f905a27e35603b6b3d9",
+  "inheritedAssessmentEventCutoff": "2026-10-29 16:47:57",
+  "latestCohortTiming": {
+    "reference": "2026-10-29 20:33:06",
+    "inheritedAssessmentReference": "2026-10-29 16:47:57",
+    "validCanonical": 397,
+    "invalid": 0,
+    "beforeLatestCohortReference": 0,
+    "atOrAfterLatestCohortReference": 397
+  },
+  "transportFields": 31,
+  "rowsValidated": 397,
+  "census": {
+    "totals": {
+      "rows": 397,
+      "detailedRows": 397,
+      "firstObservedAt": "2026-10-29 20:39:23",
+      "lastObservedAt": "2026-10-30 09:38:03"
+    },
+    "groups": [
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "ai-assistant",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "not-configured",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 1,
+        "views": 2,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "not-configured"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "ai-crawler",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "not-configured",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 0,
+        "views": 3,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "not-configured"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "ai-crawler",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "not-configured",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 1,
+        "views": 4,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "not-configured"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "ai-search",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "not-configured",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 0,
+        "views": 11,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "not-configured"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "ai-search",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "not-configured",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 1,
+        "views": 1,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "not-configured"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "ai-search",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "verified",
+        "basis": "verified-ua-uncovered",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "matching-origin",
+        "network_state": "recognized",
+        "binding_mask": 8,
+        "native_mask": 0,
+        "network_mask": 0,
+        "views": 29,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "matching-publisher"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "browser",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "no-declaration",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 0,
+        "views": 29,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "no-declaration"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "cloud-browser",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "no-declaration",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 0,
+        "views": 95,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "no-declaration"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "headless-browser",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "not-configured",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 0,
+        "views": 1,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "not-configured"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "http-client",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "no-declaration",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 0,
+        "views": 4,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "no-declaration"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "other-bot",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "no-declaration",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 0,
+        "views": 14,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "no-declaration"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "search-crawler",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "not-configured",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 0,
+        "views": 1,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "not-configured"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "search-crawler",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "not-configured",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 1,
+        "views": 14,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "not-configured"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "search-crawler",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "not-configured",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 8,
+        "views": 2,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "not-configured"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "seo-crawler",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "verified",
+        "basis": "verified-ua-uncovered",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "not-configured",
+        "network_state": "recognized",
+        "binding_mask": 8,
+        "native_mask": 0,
+        "network_mask": 1,
+        "views": 2,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "matching-publisher"
+      },
+      {
+        "inclusion": "included",
+        "time_scope": "at-or-after-baseline-event-cutoff",
+        "stored_kind": "unresolved",
+        "collection_state": "current",
+        "classifier_state": "current",
+        "evidence_state": "detailed-record",
+        "local_state": "absent",
+        "basis": "unsigned",
+        "profile": "2026-10-29.1",
+        "native_state": "unavailable",
+        "vendor_state": "no-declaration",
+        "network_state": "recognized",
+        "binding_mask": 0,
+        "native_mask": 0,
+        "network_mask": 0,
+        "views": 185,
+        "collection_stamp": "2026-10-29.6",
+        "classifier_stamp": "2026-10-29.3",
+        "directory_state": "no-declaration"
+      }
+    ]
+  },
+  "methods": [
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "AhrefsBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "seo-crawler",
+      "method_mask": 1,
+      "local_state": "verified",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 2
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Amazonbot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-crawler",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 4
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Applebot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Baiduspider",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "search-crawler",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Bingbot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "search-crawler",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Bytespider",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-crawler",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 2
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "ChatGPT-User",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-assistant",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 2
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "ExaSearchBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 2,
+      "local_state": "verified",
+      "vendor_state": "matching-origin",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 29
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Googlebot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "search-crawler",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 13
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Googlebot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "search-crawler",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 8,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 2
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "HeadlessChrome",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "headless-browser",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Meta-WebIndexer",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 11
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "PetalBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-crawler",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "browser",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 29
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "cloud-browser",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 95
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "http-client",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 4
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "other-bot",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 14
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "unresolved",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 185
+    }
+  ],
+  "context": [
+    {
+      "classifier_state": "current",
+      "mode_state": "missing",
+      "family_state": "chromium",
+      "navigation_state": "incomplete",
+      "activation_state": "not-retained",
+      "inclusion": "included",
+      "stored_kind": "unresolved",
+      "local_state": "absent",
+      "unresolved_reason": "fetch-metadata-absent",
+      "context_support": "inputs-not-assessed",
+      "failure_outcome": "not-applicable",
+      "views": 181
+    },
+    {
+      "classifier_state": "current",
+      "mode_state": "missing",
+      "family_state": "firefox",
+      "navigation_state": "incomplete",
+      "activation_state": "not-retained",
+      "inclusion": "included",
+      "stored_kind": "unresolved",
+      "local_state": "absent",
+      "unresolved_reason": "fetch-metadata-support-unknown",
+      "context_support": "inputs-not-assessed",
+      "failure_outcome": "not-applicable",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "mode_state": "missing",
+      "family_state": "unrecognized",
+      "navigation_state": "incomplete",
+      "activation_state": "not-retained",
+      "inclusion": "included",
+      "stored_kind": "unresolved",
+      "local_state": "absent",
+      "unresolved_reason": "unrecognized-browser-claim",
+      "context_support": "inputs-not-assessed",
+      "failure_outcome": "not-applicable",
+      "views": 2
+    },
+    {
+      "classifier_state": "current",
+      "mode_state": "missing",
+      "family_state": "webkit",
+      "navigation_state": "incomplete",
+      "activation_state": "not-retained",
+      "inclusion": "included",
+      "stored_kind": "unresolved",
+      "local_state": "absent",
+      "unresolved_reason": "fetch-metadata-support-unknown",
+      "context_support": "inputs-not-assessed",
+      "failure_outcome": "not-applicable",
+      "views": 1
+    }
+  ],
+  "summary": {
+    "rows": 397,
+    "inclusion": {
+      "included": 397
+    },
+    "included": {
+      "time_scope": {
+        "at-or-after-baseline-event-cutoff": 397
+      },
+      "stored_kind": {
+        "ai-assistant": 2,
+        "ai-crawler": 7,
+        "ai-search": 41,
+        "browser": 29,
+        "cloud-browser": 95,
+        "headless-browser": 1,
+        "http-client": 4,
+        "other-bot": 14,
+        "search-crawler": 17,
+        "seo-crawler": 2,
+        "unresolved": 185
+      },
+      "collection_state": {
+        "current": 397
+      },
+      "classifier_state": {
+        "current": 397
+      },
+      "evidence_state": {
+        "detailed-record": 397
+      },
+      "local_state": {
+        "absent": 366,
+        "verified": 31
+      },
+      "basis": {
+        "unsigned": 366,
+        "verified-ua-uncovered": 31
+      },
+      "profile": {
+        "2026-10-29.1": 397
+      },
+      "native_state": {
+        "unavailable": 397
+      },
+      "vendor_state": {
+        "not-configured": 41,
+        "matching-origin": 29,
+        "no-declaration": 327
+      },
+      "network_state": {
+        "recognized": 397
+      },
+      "binding_mask": {
+        "0": 366,
+        "8": 31
+      },
+      "native_mask": {
+        "0": 397
+      },
+      "network_mask": {
+        "0": 372,
+        "1": 23,
+        "8": 2
+      },
+      "collection_stamp": {
+        "2026-10-29.6": 397
+      },
+      "classifier_stamp": {
+        "2026-10-29.3": 397
+      },
+      "directory_state": {
+        "not-configured": 39,
+        "matching-publisher": 31,
+        "no-declaration": 327
+      }
+    },
+    "all": {
+      "time_scope": {
+        "at-or-after-baseline-event-cutoff": 397
+      },
+      "stored_kind": {
+        "ai-assistant": 2,
+        "ai-crawler": 7,
+        "ai-search": 41,
+        "browser": 29,
+        "cloud-browser": 95,
+        "headless-browser": 1,
+        "http-client": 4,
+        "other-bot": 14,
+        "search-crawler": 17,
+        "seo-crawler": 2,
+        "unresolved": 185
+      },
+      "collection_state": {
+        "current": 397
+      },
+      "classifier_state": {
+        "current": 397
+      },
+      "evidence_state": {
+        "detailed-record": 397
+      },
+      "local_state": {
+        "absent": 366,
+        "verified": 31
+      },
+      "basis": {
+        "unsigned": 366,
+        "verified-ua-uncovered": 31
+      },
+      "profile": {
+        "2026-10-29.1": 397
+      },
+      "native_state": {
+        "unavailable": 397
+      },
+      "vendor_state": {
+        "not-configured": 41,
+        "matching-origin": 29,
+        "no-declaration": 327
+      },
+      "network_state": {
+        "recognized": 397
+      },
+      "binding_mask": {
+        "0": 366,
+        "8": 31
+      },
+      "native_mask": {
+        "0": 397
+      },
+      "network_mask": {
+        "0": 372,
+        "1": 23,
+        "8": 2
+      },
+      "collection_stamp": {
+        "2026-10-29.6": 397
+      },
+      "classifier_stamp": {
+        "2026-10-29.3": 397
+      },
+      "directory_state": {
+        "not-configured": 39,
+        "matching-publisher": 31,
+        "no-declaration": 327
+      }
+    }
+  },
+  "metadata": {
+    "raw": {
+      "records": {
+        "recognizedViews": 397,
+        "notRecordedViews": 0,
+        "unrecognizedViews": 0,
+        "inconsistentViews": 0
+      },
+      "fields": {
+        "mode": {
+          "notAssessedViews": 0,
+          "absentViews": 353,
+          "validViews": 44,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        },
+        "destination": {
+          "notAssessedViews": 0,
+          "absentViews": 356,
+          "validViews": 41,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        },
+        "site": {
+          "notAssessedViews": 0,
+          "absentViews": 356,
+          "validViews": 41,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        },
+        "activation": {
+          "notAssessedViews": 0,
+          "absentViews": 362,
+          "validViews": 35,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        }
+      },
+      "activation": {
+        "trueClaimViews": 35,
+        "falseValueViews": 0
+      }
+    },
+    "included": {
+      "records": {
+        "recognizedViews": 397,
+        "notRecordedViews": 0,
+        "unrecognizedViews": 0,
+        "inconsistentViews": 0
+      },
+      "fields": {
+        "mode": {
+          "notAssessedViews": 0,
+          "absentViews": 353,
+          "validViews": 44,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        },
+        "destination": {
+          "notAssessedViews": 0,
+          "absentViews": 356,
+          "validViews": 41,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        },
+        "site": {
+          "notAssessedViews": 0,
+          "absentViews": 356,
+          "validViews": 41,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        },
+        "activation": {
+          "notAssessedViews": 0,
+          "absentViews": 362,
+          "validViews": 35,
+          "unrecognizedViews": 0,
+          "invalidViews": 0,
+          "policyLimitedViews": 0,
+          "parametersViews": 0
+        }
+      },
+      "activation": {
+        "trueClaimViews": 35,
+        "falseValueViews": 0
+      }
+    }
+  },
+  "observationSources": {
+    "raw": {
+      "edge": 397
+    },
+    "included": {
+      "edge": 397
+    }
+  },
+  "localMeters": [
+    {
+      "rowsRead": 18459,
+      "rowsWritten": 0
+    },
+    {
+      "rowsRead": 15797,
+      "rowsWritten": 0
+    },
+    {
+      "rowsRead": 7608,
+      "rowsWritten": 0
+    },
+    {
+      "rowsRead": 18062,
+      "rowsWritten": 0
+    },
+    {
+      "rowsRead": 2978,
+      "rowsWritten": 0
+    },
+    {
+      "rowsRead": 11227,
+      "rowsWritten": 0
+    }
+  ],
+  "production": {
+    "checkedAt": "2026-10-30T09:50:44.663556+00:00",
+    "accepted": true,
+    "scope": "All stored kinds above the last accepted exact-ID cutoff through a new frozen preflight upper ID; not whole history, a transaction, unique readers or current cryptographic replay.",
+    "statements": 2,
+    "reportedReads": 794,
+    "reportedWrites": 0,
+    "planManifests": [
+      "4126d0d0914bb9e6138cdacb6d4f36951cd7e91308372dfdd3d60729479891e1",
+      "a1862322185714c85db3f55a63d722b577f8d60ea312464aab0a62fc69ef93bf"
+    ],
+    "productionHttpRequests": 0,
+    "humanLabels": 0
+  },
+  "productionMeters": [
+    {
+      "stage": "preflight",
+      "reportedReads": 397,
+      "reportedWrites": 0,
+      "providerTotalAttempts": 1,
+      "agentAttempts": 1,
+      "returnedRows": 1
+    },
+    {
+      "stage": "export",
+      "reportedReads": 397,
+      "reportedWrites": 0,
+      "providerTotalAttempts": 1,
+      "agentAttempts": 1,
+      "returnedRows": 397
+    }
+  ],
+  "heldDatabaseSnapshot": false,
+  "humanLabels": 0,
+  "newProofReplays": 0,
+  "limits": [
+    "Stored local signature outcomes are not fresh proof replays.",
+    "Unavailable native booleans are not false detector outcomes.",
+    "Synthetic per-row analysis client keys reproduce exclusions; they cannot measure distinct clients or retention.",
+    "No newly independent operator labels or source authenticity follows from this census.",
+    "The inherited assessment event reference stays explicit; separate timing compares against the immediately preceding cohort.",
+    "Current profile-stamp agreement is not a per-request deployed-source join; zero matching exclusions does not prove no unmarked owner/test traffic."
+  ],
+  "privateEvidence": {
+    "files": 70,
+    "manifestSha256": "0d6fef628964411d409a063c9430be67cc18af9823a2b0e2d663ae3404211079",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  }
+}

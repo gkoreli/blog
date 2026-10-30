@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-30",
+  "sources": [
+    {
+      "url": "https://www.w3.org/TR/2026/WD-fetch-metadata-20260921/",
+      "status": "Working Draft, not a final W3C Recommendation",
+      "use": "Browser request-context headers and Sec-Fetch-User semantics; protected web-script headers are not authentication of arbitrary HTTP clients or a human operator.",
+      "crossReference": "packages/analytics/src/fetch-metadata.ts; packages/analytics/src/readerkind.ts; Research97 known automated browser with true-claim activation"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9421.html#section-7.2.1",
+      "use": "Covered components and insufficient coverage/replay boundaries; authority-bound stored outcomes do not bind unsigned UA, method or resource, or establish human-directed use.",
+      "crossReference": "packages/analytics/src/signature-evidence.ts; packages/analytics/src/signature-basis.ts"
+    },
+    {
+      "url": "https://developers.cloudflare.com/bots/concepts/bot/verified-bots/",
+      "use": "Provider Verified classification includes identity and behavioral requirements; Direct/Intermediary is registry taxonomy. Local signature outcomes are not equivalent to a returned native provider verdict.",
+      "crossReference": "packages/analytics/src/native-bot-evidence.ts; packages/analytics/src/native-bot-comparison.ts"
+    },
+    {
+      "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests",
+      "use": "Google's published crawler/fetcher IP lists and forward-confirmed reverse DNS are documented identity methods. No DNS lookup or reader address transmission occurs here.",
+      "crossReference": "packages/analytics/src/vendor-ip-sources.ts: google-common"
+    },
+    {
+      "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/web-bot-auth",
+      "use": "Google-Agent subset signing at agent.bot.goog is experimental; not every participating request is signed. This does not establish a Googlebot signing promise or expand our per-client mapping. Key cache lifetime and signature expiry are separate.",
+      "crossReference": "packages/analytics/src/vendor-signatures.ts; packages/analytics/src/directory-publication.ts"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.html#section-5.2.2.4",
+      "use": "no-cache requires validation before reuse and differs from no-store/private storage restrictions. The six-condition contrast measures our current retained projection, not universal HTTP cache conformance or historical publisher headers.",
+      "crossReference": "packages/analytics/src/vendor-ip.ts; packages/blog/scripts/check-vendor-cache-provenance.mjs"
+    }
+  ],
+  "newIndependentHumanLabels": 0,
+  "newCryptographicProofReplays": 0,
+  "knownAutomationCrossReference": "97-fresh-automated-fetches-and-measurement-gaps.md",
+  "currentVendorHeaderFetches": 0,
+  "privateEvidence": {
+    "files": 70,
+    "manifestSha256": "0d6fef628964411d409a063c9430be67cc18af9823a2b0e2d663ae3404211079",
+    "reviewDate": "2026-10-31",
+    "automaticDeletion": false
+  }
+}
