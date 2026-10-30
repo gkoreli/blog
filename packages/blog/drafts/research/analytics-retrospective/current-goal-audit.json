@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T13:24:43.780901+00:00",
+  "checkedAt": "2026-10-30T23:48:11.547624+00:00",
   "sourceBaseline": "73787f92c973f7d258d824505cfc240cb83ea8eb",
   "goalAchieved": false,
-  "previousTurn": "no-progress: same missing permission/measurement inputs; no accepted work reopened",
-  "scope": "Blocked checkpoint only after three consecutive no-progress goal turns. No code, configuration, article, production measurement or existing cohort change.",
+  "previousTurn": "progress: d6f698e delivered the offline auditor; current turn repairs admission/reassessment and measures exact crypto/cache boundaries",
+  "scope": "Active continuation status and Research116 local acceptance. Historical catalogue/calibration/source facts retain their original evidence windows; this is not a fresh population census or a full completion audit.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -1467,7 +1467,7 @@
     "rawDiagnosticsActivated": false,
     "perRequestWorkerVersionTrace": false
   },
-  "goalStatus": "blocked",
+  "goalStatus": "active",
   "blockedAudit": {
     "checkedAt": "2026-10-30T13:24:43.780901+00:00",
     "consecutiveNoProgressGoalTurns": 3,
@@ -1485,16 +1485,25 @@
     "goalComplete": false
   },
   "latestIndependentWork": {
-    "checkedAt": "2026-10-30T16:08:56.352980+00:00",
-    "research": "115-offline-directory-response-profiles.md",
-    "receipt": "directory-response-profile-audit.json",
-    "trigger": "Owner authorizes independent offline implementation while away",
-    "completed": "Dedicated directory-response adapter, 35 Node/workerd cases, pinned independent RFC comparison and explicit profile/unknown states",
-    "newHumanLabels": 0,
-    "productionQueries": 0,
+    "checkedAt": "2026-10-30T23:48:11.547624+00:00",
+    "research": "116-directory-cache-clocks-and-key-admission.md",
+    "receipt": "directory-cache-clocks-audit.json",
+    "completed": "Recorded-time transitions, reviewed demonstration-key policy, deduplicated per-audit key work, native/reference regression and cache-policy counterexample",
     "productionPolicyChanged": false,
     "articleChanged": false,
-    "trackerStatus": "blocked",
-    "note": "New independent implementation accepted locally; historical blocked audit retained. Full goal and external/native/search/privacy/human inputs remain unresolved."
-  }
+    "newHumanLabels": 0,
+    "productionQueries": 0,
+    "trackerStatus": "active",
+    "nextBoundedAction": "Local native request-lifecycle/coalescing/cancellation controls for cold/warm keys and advisory failure before runtime adoption; retain external/native/search/privacy/human gates.",
+    "goalComplete": false
+  },
+  "resumedAudit": {
+    "checkedAt": "2026-10-30T23:48:11.547624+00:00",
+    "goalServiceObservedStatus": "active",
+    "consecutiveNoProgressGoalTurns": 0,
+    "lastGoalTurnClassification": "progress",
+    "historicalBlockedAuditRetained": true
+  },
+  "latestWorkSourceBaseline": "0aad2b3205b9276c9f45299fa63bced1ff194fbf",
+  "legacyFactsRevalidatedInThisTurn": false
 }

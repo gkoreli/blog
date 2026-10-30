@@ -1,14 +1,15 @@
 import { parseDictionary, parameter, serializeItem, serializeInnerList, signatureCandidates,
   malformedSignatureParameterReason, directoryKey, ed25519JwkThumbprint, type SignatureCandidate } from './webbotauth.js';
+import { knownTestPublicKey, PUBLIC_KEY_POLICY_VERSION } from './known-test-keys.js';
 
-export const DIRECTORY_RESPONSE_AUDIT_VERSION = '2026-10-30.1';
+export const DIRECTORY_RESPONSE_AUDIT_VERSION = '2026-10-30.2';
 type Outcome = 'verified' | 'invalid' | 'policy-rejected' | 'unsupported';
 type DigestState = 'not-assessed' | 'absent' | 'matched' | 'mismatch' | 'malformed' | 'unsupported';
 export interface DirectoryProofAudit {
   /** Signature/admission result only; body integrity is evaluated separately. */
   outcome: Outcome;
   reason: 'verified' | 'signature-mismatch' | 'key-unavailable' | 'key-rejected' | 'invalid-parameters'
-    | 'outside-validity' | 'different-tag' | 'algorithm-unsupported' | 'component-unsupported' | 'duplicate-component';
+    | 'outside-validity' | 'different-tag' | 'algorithm-unsupported' | 'component-unsupported' | 'duplicate-component' | 'known-test-key';
   authorityCovered: boolean | null;
   digestCovered: boolean | null;
 }
@@ -20,13 +21,23 @@ interface ProfileCoverage {
 }
 export interface DirectoryResponseAudit {
   version: typeof DIRECTORY_RESPONSE_AUDIT_VERSION;
+  publicKeyPolicy: typeof PUBLIC_KEY_POLICY_VERSION;
   scope: 'offline-directory-response';
+  clock: {
+    assessedAtMs: number | null;
+    /** First known transition in inspected keys/attempted tagged proofs.
+     * Not an HTTP freshness or trust deadline; partial results are not reusable.
+     * Null means no known representable transition, never indefinite validity.
+     */
+    nextReassessmentAtMs: number | null;
+  };
   assessment: 'assessed' | 'partial' | 'not-assessed';
   reason: 'finished' | 'candidate-limit' | 'invalid-context' | 'input-budget' | 'http-status' | 'media-type'
     | 'directory-invalid' | 'fields-malformed' | 'proofs-absent' | 'unsupported-evidence' | 'encoding-unsupported';
   keyEntries: number | null;
   admittedKeys: number;
   rejectedKeyEntries: number;
+  knownDemonstrationKeyEntries: number;
   unsupportedKeyEntries: number;
   duplicateKeyEntries: number;
   digest: DigestState;
@@ -112,20 +123,26 @@ function base(candidate: SignatureCandidate, authority: string, status: number, 
  */
 export async function auditDirectoryResponse(context: DirectoryResponseContext, options: DirectoryResponseAuditOptions): Promise<DirectoryResponseAudit> {
   const result: DirectoryResponseAudit = {
-    version: DIRECTORY_RESPONSE_AUDIT_VERSION, scope: 'offline-directory-response', assessment: 'not-assessed', reason: 'invalid-context',
-    keyEntries: null, admittedKeys: 0, rejectedKeyEntries: 0, unsupportedKeyEntries: 0, duplicateKeyEntries: 0,
+    version: DIRECTORY_RESPONSE_AUDIT_VERSION, publicKeyPolicy: PUBLIC_KEY_POLICY_VERSION,
+    scope: 'offline-directory-response', clock: { assessedAtMs: null, nextReassessmentAtMs: null }, assessment: 'not-assessed', reason: 'invalid-context',
+    keyEntries: null, admittedKeys: 0, rejectedKeyEntries: 0, knownDemonstrationKeyEntries: 0, unsupportedKeyEntries: 0, duplicateKeyEntries: 0,
     digest: 'not-assessed', inputMembers: null, signatureMembers: null, pairedCandidates: null, unpairedMembers: null,
     unassessedCandidates: null, proofs: [], profiles: {
       cloudflareDirectory03: { verifiedKeys: 0, allAdmittedKeysVerified: null },
       ietfProtocol01DomainBinding: { verifiedKeys: 0, allAdmittedKeysVerified: null },
     },
   };
-  const now = options.now.getTime() / 1000, limit = options.maxCandidates ?? 16, status = context.status;
+  const nowMs = options.now.getTime(), now = nowMs / 1000, limit = options.maxCandidates ?? 16, status = context.status;
   let url: URL, headers: Headers;
   try { url = new URL(context.requestUrl); headers = new Headers(context.headers); } catch { return result; }
   if (!Number.isFinite(now) || !Number.isSafeInteger(limit) || limit < 1 || limit > 16
     || url.protocol !== 'https:' || url.username || url.password || url.hash
     || url.pathname !== '/.well-known/http-message-signatures-directory' || url.search) return result;
+  result.clock.assessedAtMs = nowMs;
+  const transition = (atMs: number) => {
+    if (Number.isSafeInteger(atMs) && atMs > nowMs
+      && (result.clock.nextReassessmentAtMs === null || atMs < result.clock.nextReassessmentAtMs)) result.clock.nextReassessmentAtMs = atMs;
+  };
   // Snapshot before the first await; caller mutation cannot change later candidates.
   if (context.body.byteLength > 65536 || [...headers].reduce((size, [name, value]) => size + name.length + value.length, 0) > 32768) return { ...result, reason: 'input-budget' };
   const body = new Uint8Array(context.body);
@@ -137,15 +154,23 @@ export async function auditDirectoryResponse(context: DirectoryResponseContext, 
   try { directory = JSON.parse(new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(body)); } catch { return { ...result, reason: 'directory-invalid' }; }
   if (!record(directory) || !Array.isArray(directory.keys) || directory.keys.length > 128) return { ...result, reason: 'directory-invalid' };
   result.keyEntries = directory.keys.length;
-  const keys = new Map<string, CryptoKey>(), forbidden = new Set<string>(), seen = new Set<string>(), validity = new Map<string, string>();
+  const keys = new Map<string, CryptoKey>(), forbidden = new Set<string>(), demonstration = new Set<string>();
+  const seen = new Set<string>(), validity = new Map<string, string>(), thumbprints = new Map<string, string>();
   for (const value of directory.keys) {
     if (!record(value) || value.kty !== 'OKP' || value.crv !== 'Ed25519') { result.unsupportedKeyEntries++; continue; }
-    const thumbprint = canonicalKeyMaterial(value) ? await ed25519JwkThumbprint(value) : null;
+    const x = string(value.x) ? value.x : null;
+    const thumbprint = x !== null && canonicalKeyMaterial(value) ? thumbprints.get(x) ?? await ed25519JwkThumbprint(value) : null;
     if (thumbprint === null) { result.rejectedKeyEntries++; continue; }
+    if (x !== null) thumbprints.set(x, thumbprint);
     if (seen.has(thumbprint)) result.duplicateKeyEntries++;
     seen.add(thumbprint);
     const key = directoryKey(value);
     const nbf = value.nbf, exp = value.exp;
+    if (typeof nbf === 'number' && Number.isSafeInteger(nbf)) transition(nbf * 1000);
+    if (typeof exp === 'number' && Number.isSafeInteger(exp)) transition(exp * 1000);
+    if (key !== null && knownTestPublicKey(key.jwk)) {
+      result.rejectedKeyEntries++; result.knownDemonstrationKeyEntries++; forbidden.add(thumbprint); demonstration.add(thumbprint); continue;
+    }
     const window = JSON.stringify([nbf ?? null, exp ?? null]);
     if (validity.has(thumbprint) && validity.get(thumbprint) !== window) {
       result.rejectedKeyEntries++; forbidden.add(thumbprint); continue;
@@ -156,6 +181,7 @@ export async function auditDirectoryResponse(context: DirectoryResponseContext, 
       || (typeof exp === 'number' && typeof nbf === 'number' && exp <= nbf)) {
       result.rejectedKeyEntries++; forbidden.add(thumbprint); continue;
     }
+    if (keys.has(thumbprint) || forbidden.has(thumbprint)) continue;
     try { keys.set(thumbprint, await crypto.subtle.importKey('jwk', key.jwk, { name: 'Ed25519' }, false, ['verify'])); }
     catch { result.rejectedKeyEntries++; forbidden.add(thumbprint); }
   }
@@ -175,12 +201,17 @@ export async function auditDirectoryResponse(context: DirectoryResponseContext, 
     const proof: DirectoryProofAudit = { outcome: 'policy-rejected', reason: 'invalid-parameters', authorityCovered: null, digestCovered: null };
     const p = candidate.input.parameters, created = parameter(p, 'created'), expires = parameter(p, 'expires');
     const tag = parameter(p, 'tag'), keyid = parameter(p, 'keyid'), algorithm = parameter(p, 'alg');
+    if (tag?.type === 'string' && tag.value === 'http-message-signatures-directory') {
+      if (created?.type === 'integer') transition(created.value * 1000);
+      // Signature expiry is inclusive; the first representable change is +1 ms.
+      if (expires?.type === 'integer') transition(expires.value * 1000 + 1);
+    }
     if (malformedSignatureParameterReason(candidate.input) !== null || created?.type !== 'integer' || expires?.type !== 'integer'
       || keyid?.type !== 'string' || expires.value < created.value) { result.proofs.push(proof); continue; }
     if (tag?.type !== 'string' || tag.value !== 'http-message-signatures-directory') proof.reason = 'different-tag';
     else if (created.value > now || expires.value < now) proof.reason = 'outside-validity';
     else if (algorithm !== undefined && (algorithm.type !== 'string' || algorithm.value !== 'ed25519')) { proof.reason = 'algorithm-unsupported'; proof.outcome = 'unsupported'; }
-    else if (!keys.has(keyid.value)) { proof.reason = forbidden.has(keyid.value) ? 'key-rejected' : 'key-unavailable'; }
+    else if (!keys.has(keyid.value)) { proof.reason = demonstration.has(keyid.value) ? 'known-test-key' : forbidden.has(keyid.value) ? 'key-rejected' : 'key-unavailable'; }
     else {
       const built = base(candidate, url.host, status, headers), key = keys.get(keyid.value);
       if (typeof built === 'string') { proof.reason = built; proof.outcome = built === 'duplicate-component' ? 'invalid' : 'unsupported'; }

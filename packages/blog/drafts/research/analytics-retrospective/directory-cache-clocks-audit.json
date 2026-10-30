@@ -1,0 +1,536 @@
+{
+  "checkedAt": "2026-10-30T23:48:11.547624+00:00",
+  "sourceBaseline": "0aad2b3205b9276c9f45299fa63bced1ff194fbf",
+  "research": "116-directory-cache-clocks-and-key-admission.md",
+  "auditVersionBefore": "2026-10-30.1",
+  "auditVersionAfter": "2026-10-30.2",
+  "publicKeyPolicy": "2026-10-28.2",
+  "question": "Do HTTP directory freshness, possession validity and key validity permit safe cached advisory reuse, and what crypto work is repeated?",
+  "scope": "Actual offline Node/workerd audits and crypto-operation counters, plus explicit cache policy simulation; not production latency/CPU/billing or provider/native verdicts",
+  "previousGoalTurn": {
+    "classification": "progress",
+    "commit": "d6f698e",
+    "result": "Dedicated offline response auditor and accepted local/independent comparison"
+  },
+  "comparison": {
+    "inputSha256": "bb385c9f295455fad3b2ac3dde448044753de05af39fd20dbd1fdf8ee79a241f",
+    "nativeNodeCases": 19,
+    "unchangedCommonResults": 18,
+    "deliberateAdmissionRepairs": 1,
+    "operationCounts": [
+      {
+        "name": "proof-expires@0",
+        "beforeOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 2
+        },
+        "afterOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 2
+        },
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "nextReassessmentAtMs": 1793376005001,
+        "boundedReused": false
+      },
+      {
+        "name": "proof-expires@5",
+        "beforeOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 2
+        },
+        "afterOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 2
+        },
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "nextReassessmentAtMs": 1793376005001,
+        "boundedReused": true
+      },
+      {
+        "name": "proof-expires@5.001",
+        "beforeOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 0
+        },
+        "afterOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 0
+        },
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "nextReassessmentAtMs": null,
+        "boundedReused": false
+      },
+      {
+        "name": "proof-expires@6",
+        "beforeOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 0
+        },
+        "afterOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 0
+        },
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "nextReassessmentAtMs": null,
+        "boundedReused": true
+      },
+      {
+        "name": "body-proof-expires@0",
+        "beforeOperations": {
+          "digest": 3,
+          "importKey": 2,
+          "verify": 2
+        },
+        "afterOperations": {
+          "digest": 3,
+          "importKey": 2,
+          "verify": 2
+        },
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "nextReassessmentAtMs": 1793376005001,
+        "boundedReused": false
+      },
+      {
+        "name": "body-proof-expires@6",
+        "beforeOperations": {
+          "digest": 3,
+          "importKey": 2,
+          "verify": 0
+        },
+        "afterOperations": {
+          "digest": 3,
+          "importKey": 2,
+          "verify": 0
+        },
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "nextReassessmentAtMs": null,
+        "boundedReused": false
+      },
+      {
+        "name": "future-proof@0",
+        "beforeOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 0
+        },
+        "afterOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 0
+        },
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "nextReassessmentAtMs": 1793376005000,
+        "boundedReused": false
+      },
+      {
+        "name": "future-proof@5",
+        "beforeOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 2
+        },
+        "afterOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 2
+        },
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "nextReassessmentAtMs": 1793376020001,
+        "boundedReused": false
+      },
+      {
+        "name": "key-expires@0",
+        "beforeOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 2
+        },
+        "afterOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 2
+        },
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "nextReassessmentAtMs": 1793376005000,
+        "boundedReused": false
+      },
+      {
+        "name": "key-expires@5",
+        "beforeOperations": {
+          "digest": 2,
+          "importKey": 1,
+          "verify": 1
+        },
+        "afterOperations": {
+          "digest": 2,
+          "importKey": 1,
+          "verify": 1
+        },
+        "admittedKeys": 1,
+        "authorityKeys": 1,
+        "nextReassessmentAtMs": 1793376300001,
+        "boundedReused": false
+      },
+      {
+        "name": "future-key@0",
+        "beforeOperations": {
+          "digest": 2,
+          "importKey": 1,
+          "verify": 1
+        },
+        "afterOperations": {
+          "digest": 2,
+          "importKey": 1,
+          "verify": 1
+        },
+        "admittedKeys": 1,
+        "authorityKeys": 1,
+        "nextReassessmentAtMs": 1793376005000,
+        "boundedReused": false
+      },
+      {
+        "name": "future-key@5",
+        "beforeOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 2
+        },
+        "afterOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 2
+        },
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "nextReassessmentAtMs": 1793376300001,
+        "boundedReused": false
+      },
+      {
+        "name": "mixed-expiry@0",
+        "beforeOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 2
+        },
+        "afterOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 2
+        },
+        "admittedKeys": 2,
+        "authorityKeys": 2,
+        "nextReassessmentAtMs": 1793376005001,
+        "boundedReused": false
+      },
+      {
+        "name": "mixed-expiry@6",
+        "beforeOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 1
+        },
+        "afterOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 1
+        },
+        "admittedKeys": 2,
+        "authorityKeys": 1,
+        "nextReassessmentAtMs": 1793376020001,
+        "boundedReused": false
+      },
+      {
+        "name": "mixed-expiry@21",
+        "beforeOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 0
+        },
+        "afterOperations": {
+          "digest": 2,
+          "importKey": 2,
+          "verify": 0
+        },
+        "admittedKeys": 2,
+        "authorityKeys": 0,
+        "nextReassessmentAtMs": null,
+        "boundedReused": false
+      },
+      {
+        "name": "duplicate-128@0",
+        "beforeOperations": {
+          "digest": 128,
+          "importKey": 128,
+          "verify": 1
+        },
+        "afterOperations": {
+          "digest": 1,
+          "importKey": 1,
+          "verify": 1
+        },
+        "admittedKeys": 1,
+        "authorityKeys": 1,
+        "nextReassessmentAtMs": 1793376300001,
+        "boundedReused": false
+      },
+      {
+        "name": "absent-proof-duplicate-128@0",
+        "beforeOperations": {
+          "digest": 128,
+          "importKey": 128,
+          "verify": 0
+        },
+        "afterOperations": {
+          "digest": 1,
+          "importKey": 1,
+          "verify": 0
+        },
+        "admittedKeys": 1,
+        "authorityKeys": 0,
+        "nextReassessmentAtMs": null,
+        "boundedReused": false
+      },
+      {
+        "name": "unique-128-two-proofs@0",
+        "beforeOperations": {
+          "digest": 128,
+          "importKey": 128,
+          "verify": 2
+        },
+        "afterOperations": {
+          "digest": 128,
+          "importKey": 128,
+          "verify": 2
+        },
+        "admittedKeys": 128,
+        "authorityKeys": 2,
+        "nextReassessmentAtMs": 1793376300001,
+        "boundedReused": false
+      },
+      {
+        "name": "known-public-demonstration-key@0",
+        "beforeOperations": {
+          "digest": 1,
+          "importKey": 1,
+          "verify": 1
+        },
+        "afterOperations": {
+          "digest": 1,
+          "importKey": 0,
+          "verify": 0
+        },
+        "admittedKeys": 0,
+        "authorityKeys": 0,
+        "nextReassessmentAtMs": 1793376060001,
+        "boundedReused": false
+      }
+    ],
+    "referenceComparison": {
+      "calls": 102,
+      "matched": 96,
+      "differences": [
+        {
+          "name": "key-expires@5",
+          "candidateIndex": 1,
+          "mode": "crypto",
+          "localAccepted": false,
+          "referenceAccepted": true,
+          "cause": "explicit local key validity/demonstration admission policy"
+        },
+        {
+          "name": "key-expires@5",
+          "candidateIndex": 1,
+          "mode": "authority",
+          "localAccepted": false,
+          "referenceAccepted": true,
+          "cause": "explicit local key validity/demonstration admission policy"
+        },
+        {
+          "name": "future-key@0",
+          "candidateIndex": 1,
+          "mode": "crypto",
+          "localAccepted": false,
+          "referenceAccepted": true,
+          "cause": "explicit local key validity/demonstration admission policy"
+        },
+        {
+          "name": "future-key@0",
+          "candidateIndex": 1,
+          "mode": "authority",
+          "localAccepted": false,
+          "referenceAccepted": true,
+          "cause": "explicit local key validity/demonstration admission policy"
+        },
+        {
+          "name": "known-public-demonstration-key@0",
+          "candidateIndex": 0,
+          "mode": "crypto",
+          "localAccepted": false,
+          "referenceAccepted": true,
+          "cause": "explicit local key validity/demonstration admission policy"
+        },
+        {
+          "name": "known-public-demonstration-key@0",
+          "candidateIndex": 0,
+          "mode": "authority",
+          "localAccepted": false,
+          "referenceAccepted": true,
+          "cause": "explicit local key validity/demonstration admission policy"
+        }
+      ],
+      "unexplained": 0
+    },
+    "model": {
+      "hypotheticalHttpFreshSeconds": 3600,
+      "scenarios": 10,
+      "decisions": 19,
+      "naiveIncorrectDecisions": [
+        "proof-expires@5.001",
+        "proof-expires@6",
+        "body-proof-expires@6",
+        "future-proof@5",
+        "key-expires@5",
+        "future-key@5",
+        "mixed-expiry@6",
+        "mixed-expiry@21"
+      ],
+      "boundedIncorrectDecisions": [],
+      "boundedReassessments": 17,
+      "boundedReuses": 2,
+      "limit": "Policy simulation over actual recorded-time audits; no runtime cache, HTTP fetch, CPU or billing measurement."
+    },
+    "externalRequests": 0,
+    "productionRequests": 0,
+    "d1Statements": 0
+  },
+  "regression": {
+    "cases": 35,
+    "referenceCalls": 195,
+    "matching": 183,
+    "documentedDifferences": 12,
+    "unexplained": 0
+  },
+  "checks": {
+    "analyticsTests": 328,
+    "workspaceTypecheck": true,
+    "temporalExpectations": 15,
+    "demonstrationRequestRejectedWithoutFetch": true,
+    "plainCounterResultsEqual": true,
+    "negativeControls": [
+      {
+        "case": "input-mismatch",
+        "rejected": true
+      },
+      {
+        "case": "missing-row",
+        "rejected": true
+      },
+      {
+        "case": "deadline-lost",
+        "rejected": true
+      },
+      {
+        "case": "duplicate-work-regression",
+        "rejected": true
+      }
+    ],
+    "negativeControllerScope": "Four original comparison gates; reference comparison is an additional independent branch.",
+    "entryBundle": {
+      "bytes": 220746,
+      "sha256": "8c42b505bca70cc7503d1e1a08558b6a34a52a9246817ce22232f3b01f0fda39"
+    },
+    "matchesResearch115EntryBundle": true,
+    "newRuntimeCacheImplemented": false,
+    "fullSiteBuild": false
+  },
+  "sourceReview": {
+    "repository": "panva/jose",
+    "commit": "5a6a5b63bf970bea89f0aa2e5f7eb322e6962ae1",
+    "version": "6.2.14",
+    "license": "MIT",
+    "executed": false,
+    "installed": false,
+    "captures": [
+      {
+        "url": "https://api.github.com/repos/panva/jose/commits?path=src/jwks/remote.ts&per_page=1",
+        "status": 200,
+        "bytes": 4238,
+        "sha256": "e5469479e3a285dd8fad49a140a167aadc899b3e4983c1fd10a4eb34ff5a4050",
+        "capturedAt": "2026-10-30T23:40:08.375682+00:00"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/panva/jose/5a6a5b63bf970bea89f0aa2e5f7eb322e6962ae1/src/jwks/remote.ts",
+        "status": 200,
+        "bytes": 16834,
+        "sha256": "9f31620476d7883059007335586c1cf6c9d673385f7c97cd9df21fc2968e208a",
+        "capturedAt": "2026-10-30T23:40:08.690057+00:00"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/panva/jose/5a6a5b63bf970bea89f0aa2e5f7eb322e6962ae1/package.json",
+        "status": 200,
+        "bytes": 6015,
+        "sha256": "e6e8a1ab4d14f1a7d074af5d13d9275c3a4e86026f9f026078c57001d5f96035",
+        "capturedAt": "2026-10-30T23:40:09.134027+00:00"
+      }
+    ],
+    "reference": "pyauth/http-message-signatures@1de433d9a49fd608475c6054ab14a1652c088844",
+    "referenceFilesRechecked": 18,
+    "agentCritiqueIsIndependentOracle": false
+  },
+  "sourceHashes": [
+    {
+      "path": "packages/analytics/src/directory-response-audit.ts",
+      "sha256": "28ca19e43c5270a3f50a1a09c590b05afda0a4921d1213c2d3ba9f440ec2dd55"
+    },
+    {
+      "path": "packages/analytics/src/known-test-keys.ts",
+      "sha256": "d83c868f94170ed5a90a214ca07743489bc61b132a301d5d9dc1715f7d8df06c"
+    },
+    {
+      "path": "packages/blog/scripts/check-directory-response-cache.mjs",
+      "sha256": "bb1e85fa54752b6cc08c8d39bc4755759643d18c7d442e5617ea66d771b6e3fc"
+    },
+    {
+      "path": "packages/blog/scripts/summarize-directory-cache-experiment.mjs",
+      "sha256": "6e0481ce71314a35c6f01bcb5266e75d0bf9e38acedc387b830d4146ddd0d922"
+    }
+  ],
+  "effects": {
+    "siteRequests": 0,
+    "productionSqlStatements": 0,
+    "freshVendorDirectories": 0,
+    "publicSourceHttpReads": 3,
+    "webDocumentationReadsSeparate": true,
+    "newHumanLabels": 0,
+    "productionPolicyChanged": false,
+    "collectorReportSchemaChanged": false,
+    "dependenciesOrLockfileChanged": false,
+    "articleChanged": false,
+    "goalAchieved": false
+  },
+  "privateEvidence": {
+    "temporary": "/tmp/gk-directory-cache-20261030",
+    "durable": "/Users/goga/Documents/goga/analytics-evidence/2026-10-30-directory-cache-clocks",
+    "files": 45,
+    "manifestSha256": "5fd1413473146fa639aa96b365bcd363369811b24d5f47dc01ad66c97a10c6da",
+    "rechecked": true
+  },
+  "nextBoundedAction": "Local native request-lifecycle/coalescing/cancellation controls for cold/warm keys and advisory failure before runtime adoption; retain external/native/search/privacy/human gates."
+}

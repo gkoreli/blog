@@ -2,6 +2,42 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { auditDirectoryResponse } from '../.test-dist/directory-response-audit.js';
 import { directoryResponseFixture } from './fixtures/directory-response.mjs';
+import { directoryCacheFixture } from './fixtures/directory-cache.mjs';
+import { verifyWebBotAuth } from '../.test-dist/webbotauth.js';
+
+test('temporal facts separate future activation, inclusive proof expiry and exclusive key expiry', async () => {
+  const { scenarios, epoch } = directoryCacheFixture();
+  const expected = new Map([
+    ['proof-expires@0', [2, 2, 5001]], ['proof-expires@5', [2, 2, 5001]], ['proof-expires@5.001', [2, 0, null]],
+    ['proof-expires@6', [2, 0, null]], ['body-proof-expires@0', [2, 2, 5001]], ['body-proof-expires@6', [2, 0, null]],
+    ['future-proof@0', [2, 0, 5000]], ['future-proof@5', [2, 2, 20001]],
+    ['key-expires@0', [2, 2, 5000]], ['key-expires@5', [1, 1, 300001]],
+    ['future-key@0', [1, 1, 5000]], ['future-key@5', [2, 2, 300001]],
+    ['mixed-expiry@0', [2, 2, 5001]], ['mixed-expiry@6', [2, 1, 20001]], ['mixed-expiry@21', [2, 0, null]],
+  ]);
+  for (const trial of scenarios.filter(trial => expected.has(trial.name))) {
+    const r = await auditDirectoryResponse({ ...trial.context, body: new Uint8Array(trial.context.body) }, { now: new Date(trial.now) });
+    const [keys, authority, nextOffset] = expected.get(trial.name);
+    assert.equal(r.admittedKeys, keys, trial.name); assert.equal(r.profiles.cloudflareDirectory03.verifiedKeys, authority, trial.name);
+    assert.equal(r.clock.assessedAtMs, new Date(trial.now).getTime(), trial.name);
+    assert.equal(r.clock.nextReassessmentAtMs, nextOffset === null ? null : epoch * 1000 + nextOffset, trial.name);
+  }
+});
+
+test('directory and request evidence reject reviewed public demonstration material under the same policy', async () => {
+  const { scenarios, demonstrationRequest, epoch } = directoryCacheFixture();
+  const trial = scenarios.find(trial => trial.scenario === 'known-public-demonstration-key');
+  const now = new Date(epoch * 1000);
+  const r = await auditDirectoryResponse({ ...trial.context, body: new Uint8Array(trial.context.body) }, { now });
+  assert.equal(r.admittedKeys, 0); assert.equal(r.knownDemonstrationKeyEntries, 1); assert.equal(r.rejectedKeyEntries, 1);
+  assert.equal(r.proofs[0].reason, 'known-test-key'); assert.equal(r.proofs[0].outcome, 'policy-rejected');
+  assert.equal(r.profiles.cloudflareDirectory03.allAdmittedKeysVerified, null);
+  let fetches = 0;
+  const requestResult = await verifyWebBotAuth(new Request(demonstrationRequest.url, { headers: demonstrationRequest.headers }), {
+    now, fetcher: async () => { fetches++; throw Error('Unexpected request'); },
+  });
+  assert.equal(requestResult.reason, 'known-test-key'); assert.equal(fetches, 0);
+});
 
 test('labelled response matrix separates possession, signed headers and actual body integrity', async () => {
   const fixture = directoryResponseFixture();
