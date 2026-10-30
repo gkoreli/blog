@@ -7,5 +7,49 @@
   "files": {
     "packages/blog/posts/032-why-worktree-setup-is-slow-on-macos.md": "e8358dd6be47ac0589b2d04b7e475d9e39c4564f042835e7913e5a62e413a078",
     "packages/blog/prompts/why-worktree-setup-is-slow-on-macos.prompts.md": "5e4509643019b384b56b08d41146aa38fbd45409047fbbf61e9d904f44e4004e"
-  }
+  },
+  "sourceCommit": "da32ca1d1acb06a22c91fde12a9086fe9f513ef2",
+  "releaseDeployment": {
+    "id": "f4a6df31-6856-4656-bff4-6ea3151fa6ed",
+    "created_on": "2026-10-30T15:55:21.649361Z",
+    "versions": [
+      {
+        "version_id": "1d2fa6af-0717-4e73-8025-9d117372a4f9",
+        "percentage": 100
+      }
+    ],
+    "annotations": {
+      "workers/message": "da32ca1: answer reader ext4/ZFS question in worktree article",
+      "workers/triggered_by": "deployment"
+    }
+  },
+  "laterObservedDeployment": {
+    "id": "b060d6f8-45de-417b-80a5-4c3c8c60bacb",
+    "created_on": "2026-10-30T15:56:24.616766Z",
+    "versions": [
+      {
+        "version_id": "766eff5b-d63d-4327-8217-91474e860349",
+        "percentage": 100
+      }
+    ],
+    "annotations": {
+      "workers/triggered_by": "deployment"
+    }
+  },
+  "laterCommitBuildCheck": {
+    "buildId": "edc72b0d-fcf0-438a-84d1-1d093bed9524",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "checkedAtUtc": "2026-10-30T15:57:39.766291+00:00",
+  "liveBrowserAcceptance": {
+    "canonicalArticleLoaded": true,
+    "ext4ZfsSentenceVisible": true,
+    "separateInstallTimerVisible": true,
+    "titleAndOriginalDatePreserved": true,
+    "eightPromptLinkVisible": true,
+    "eighthExactPromptVerifiedOnLivePage": true,
+    "articleRecheckedAfterLaterDeployment": true
+  },
+  "limit": "The automated Markdown request returned 403; browser article/prompt acceptance and local representations are recorded separately, not universal anonymous access."
 }
