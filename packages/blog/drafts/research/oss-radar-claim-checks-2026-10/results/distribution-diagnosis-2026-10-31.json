@@ -1,0 +1,144 @@
+{
+  "observedAt": "2026-10-31T19:57:34.585349+00:00",
+  "reddit": {
+    "post": "https://www.reddit.com/r/bun/comments/1xi7ih0/i_tested_bun_aot_much_less_ram_for_the_compiler_a/",
+    "displayedViews": "7K",
+    "displayedUpvotes": 26,
+    "displayedUpvoteRatio": "100%",
+    "commentsIncludingOwner": 3,
+    "otherCommenters": 2,
+    "shares": 1,
+    "reposts": 0,
+    "first24HourlyViews": 5261,
+    "first48HourlyViews": 6488,
+    "limits": "Platform views, not unique people or completed reads; owner auto-vote included in displayed engagement. One substantive comprehension complaint, one uninformative comment, one owner clarification already present."
+  },
+  "bunReports": [
+    {
+      "filters": {
+        "traffic": "all",
+        "range": "7d",
+        "path": "/oss-radar-08-bun-aot",
+        "agent": null,
+        "kind": null
+      },
+      "period": {
+        "start": "2026-10-25",
+        "end": "2026-10-31",
+        "timeZone": "UTC",
+        "granularity": "hour",
+        "updatedAt": "2026-10-31T19:56:02.607Z"
+      },
+      "requests": 139,
+      "referrers": [
+        {
+          "referrerHost": "reddit.com",
+          "views": 8
+        },
+        {
+          "referrerHost": "google.com",
+          "views": 6
+        },
+        {
+          "referrerHost": "t.co",
+          "views": 2
+        },
+        {
+          "referrerHost": "bing.com",
+          "views": 1
+        },
+        {
+          "referrerHost": "github.com",
+          "views": 1
+        },
+        {
+          "referrerHost": "kagi.com",
+          "views": 1
+        }
+      ]
+    },
+    {
+      "filters": {
+        "traffic": "browser",
+        "range": "7d",
+        "path": "/oss-radar-08-bun-aot",
+        "agent": null,
+        "kind": null
+      },
+      "period": {
+        "start": "2026-10-25",
+        "end": "2026-10-31",
+        "timeZone": "UTC",
+        "granularity": "hour",
+        "updatedAt": "2026-10-31T19:56:13.466Z"
+      },
+      "requests": 25,
+      "referrers": [
+        {
+          "referrerHost": "reddit.com",
+          "views": 7
+        },
+        {
+          "referrerHost": "t.co",
+          "views": 2
+        },
+        {
+          "referrerHost": "bing.com",
+          "views": 1
+        },
+        {
+          "referrerHost": "github.com",
+          "views": 1
+        },
+        {
+          "referrerHost": "kagi.com",
+          "views": 1
+        }
+      ]
+    }
+  ],
+  "arcjet": {
+    "url": "https://arcjet.com/learn/web-bot-auth",
+    "target": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+    "observed": "Current native browser page attributes DuckAssistBot signed-component and expiry evidence to the linked study.",
+    "outcome": "One independently published guide reusing and citing evidence; no product integration claim."
+  },
+  "hn": {
+    "by": "gogakoreli",
+    "dead": true,
+    "id": 50262191,
+    "kids": [
+      50262192
+    ],
+    "score": 1,
+    "time": 1793120567,
+    "type": "story"
+  },
+  "captures": [
+    {
+      "file": "arcjet-dom.txt",
+      "sha256": "885c42569cfba62ce1b067d53ca1cce7350d2e83247bb7f265f83c26671df977"
+    },
+    {
+      "file": "bun-all.json",
+      "sha256": "895262cb12a0ec48fa472712ae5fe9fe50f7f0555086b2474d263ffb09a37200"
+    },
+    {
+      "file": "bun-browser.json",
+      "sha256": "8ea44970285d7dff5c2cc26beac96f4e0437007062fe405c6df7920e39e61ce0"
+    },
+    {
+      "file": "hn-current.json",
+      "sha256": "cf09af709185fe76bfbe2f60ac2ad898b6506ebe38ce8644f3c223d637ab0ad0"
+    },
+    {
+      "file": "reddit-insights-dom.txt",
+      "sha256": "447ccd146bb3eff798bc3533bdc00c76fa7482c52b13d62e054a2c87bc7140b7"
+    },
+    {
+      "file": "reddit-post-dom.txt",
+      "sha256": "da4c0a94a989d7b873b95342dfef19efe0869a249781ba15f7c5a1b51266b2de"
+    }
+  ],
+  "actions": "Read-only. No new outreach, post edits, production SQL, scheduled work or synthetic article requests."
+}
