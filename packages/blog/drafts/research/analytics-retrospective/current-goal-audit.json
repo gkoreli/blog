@@ -1,6 +1,6 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T10:19:00.776417+00:00",
+  "checkedAt": "2026-10-31T10:22:01.873020+00:00",
   "sourceBaseline": "733a56901aacab0331e8d9d08c3b1cb2975ff537",
   "goalStatus": "active",
   "goalAchieved": false,
@@ -239,7 +239,7 @@
     {
       "id": "engineering-article",
       "requirement": "Deliver a concise retrospective with inspectable evidence and cross-references",
-      "status": "updated-source-locally-accepted-activation-pending",
+      "status": "updated-source-activated-served-content-pending",
       "evidence": [
         "111-weekly-history-in-the-retrospective.md",
         "weekly-history-article-release.json",
@@ -247,9 +247,10 @@
         "../discovery-experiment-02/report-integrity-checks.json",
         "../discovery-experiment-02/report-integrity-release.json",
         "../discovery-experiment-02/10-retained-network-assignment-consistency.md",
-        "../discovery-experiment-02/network-assignment-checks.json"
+        "../discovery-experiment-02/network-assignment-checks.json",
+        "../discovery-experiment-02/network-assignment-release.json"
       ],
-      "limit": "1,437-word/33-prompt source is locally accepted; this iteration adds eight words and no human prompt. New source activation and served-content acceptance remain separate from prior dated receipts."
+      "limit": "1,437-word/33-prompt source is locally accepted and exact source activation is accepted. This iteration adds eight words and no human prompt. Current served-content and reader outcomes remain unmeasured."
     },
     {
       "id": "offline-search-evidence",
@@ -319,8 +320,9 @@
     "currentWords": 1437,
     "currentHumanPrompts": 33,
     "currentLocalAcceptanceReceipt": "../discovery-experiment-02/network-assignment-checks.json",
-    "sourceActivationReceipt": "../discovery-experiment-02/report-integrity-release.json",
-    "currentSourceActivationPending": true
+    "sourceActivationReceipt": "../discovery-experiment-02/network-assignment-release.json",
+    "currentSourceActivationPending": false,
+    "matchesSourceActivation": true
   },
   "unresolvedInputs": [
     {
@@ -368,7 +370,7 @@
     "rawCollectionActivated": false,
     "articleChanged": true,
     "articleChangedByThisWork": true,
-    "sourceActivationMeasured": false,
+    "sourceActivationMeasured": true,
     "servedDestinationAcceptance": false,
     "privacyDisclosureChanged": false,
     "productionRequests": 0,
@@ -388,7 +390,7 @@
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: offline retained assignment check, guard binding and malformed-row retention accepted; article locally updated",
+    "thisTurnClassification": "progress: offline retained assignment check, guard binding and malformed-row retention accepted; article locally updated; exact source activation accepted",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
@@ -424,13 +426,14 @@
   "latestContinuation": {
     "research": "../discovery-experiment-02/10-retained-network-assignment-consistency.md",
     "receipt": "../discovery-experiment-02/network-assignment-checks.json",
-    "nextBoundedAction": "Decide whether public reports should adopt retained assignment checks using retained coverage and native query-cost evidence; public adoption remains proposed. Preserve all six external input gates, closed advisory no-adoption and deferred human trials; no production-data retry or repeated accepted controls."
+    "nextBoundedAction": "Decide whether public reports should adopt retained assignment checks using retained coverage and native query-cost evidence; public adoption remains proposed. Preserve all six external input gates, closed advisory no-adoption and deferred human trials; no production-data retry or repeated accepted controls.",
+    "release": "../discovery-experiment-02/network-assignment-release.json"
   },
   "latestAcceptedSourceActivation": {
-    "sourceCommit": "b737e6ad4ce298f7a4103ce7f023eb36d03d09a6",
-    "versionId": "d20dd8bf-e02f-4b3f-80e5-724bd58407cb",
+    "sourceCommit": "d9a19a98aeb3886f9a109d03a2d589eac0bd12c6",
+    "versionId": "b5c26b46-dd15-47e7-8c15-c9a8b81bf21b",
     "allocation": 100,
-    "receipt": "../discovery-experiment-02/cloudvertex-release.json",
+    "receipt": "../discovery-experiment-02/network-assignment-release.json",
     "method": "Native source-linked build log, Ready status, allocation meter100 and matching active version prefix",
     "productionBehaviorMeasured": false,
     "servedDestinationAcceptance": false

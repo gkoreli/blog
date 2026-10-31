@@ -1,0 +1,43 @@
+{
+  "profile": "network-assignment-source-activation-v1",
+  "checkedAt": "2026-10-31T10:22:01.873020+00:00",
+  "sourceCommit": "d9a19a98aeb3886f9a109d03a2d589eac0bd12c6",
+  "localAcceptanceReceipt": "network-assignment-checks.json",
+  "sourceMatchingFiles": 9,
+  "allSourceHashesMatch": true,
+  "initialGithubCheckRuns": 0,
+  "native": {
+    "buildId": "329a8374-2ea3-418f-b655-81f3ed1763a4",
+    "workerVersion": "b5c26b46-dd15-47e7-8c15-c9a8b81bf21b",
+    "buildStatus": "Ready",
+    "allocationPercent": 100,
+    "buildPageDurationSeconds": 46,
+    "deploymentsRowDurationSeconds": 41,
+    "durationScope": "Separate observed native surfaces; not interchangeable latency measures",
+    "node": "24.22.1",
+    "pnpm": "9.15.4",
+    "builtPosts": 38,
+    "buildLogBytes": 5880,
+    "buildLogSha256": "a3bf7a3affcd320e6350f642d3cb65c77474439c4534eb304bd9a8c8ab6902af"
+  },
+  "localNode": "24.14.1",
+  "privateEvidence": {
+    "path": "packages/blog/worklog/analytics-evidence/2026-10-31-network-assignment-release",
+    "files": 5,
+    "manifestSha256": "5a83fc69bdb8c7b7aadc95efcef81aa34135ca5773b929174e90a1afe609ff9c",
+    "allEntriesVerified": true
+  },
+  "limits": {
+    "productionSiteRequests": 0,
+    "productionStatsRequests": 0,
+    "productionSqlStatements": 0,
+    "productionObservationMeasured": false,
+    "assignmentIncidenceMeasured": false,
+    "managedNativeBotVerdictMeasured": false,
+    "servedArticleMeasured": false,
+    "deploymentRetried": false,
+    "settingsOrScopesChanged": false,
+    "newHumanLabels": 0,
+    "fullGoalComplete": false
+  }
+}

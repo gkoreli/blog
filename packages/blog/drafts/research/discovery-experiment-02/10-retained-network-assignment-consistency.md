@@ -37,3 +37,7 @@ The production export fields, SQL and capture plan remain byte-identical. The ad
 [Acceptance receipt](network-assignment-checks.json) records the final suites, native checks, source commitments and private manifest. The retrospective replaces its existing integrity paragraph, adding eight words: 1,437 words and the unchanged 33 human prompts. Its title, URL, original date and qualification about production corruption are preserved. This automatic continuation adds no human prompt. Source delivery, activation and served content remain separate.
 
 No new production observation, SQL query, feed request, account/security change, human label, task-answer/model trial or optional diagnostic collection occurs. No real cohort is assessed for assignment incidence. The six existing measurement/input gates stay intact. Next: assess whether this check should enter public reports, using coverage and query-cost evidence before changing report semantics or historical classifications.
+
+## Source activation
+
+The [release receipt](network-assignment-release.json) joins exact accepted source `d9a19a9` to native build `329a8374` and Worker `b5c26b46`, Ready at 100%. The native log confirms 38 posts; hosted Node 24.22.1 differs from local 24.14.1. The build and deployments pages show 46s and 41s respectively; both are preserved as separate display observations. No site/stats request or SQL was made, and served prose and real assignment incidence remain unmeasured. This acceptance does not restore D1 CLI authorization or provide a managed bot verdict.
