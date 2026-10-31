@@ -6,7 +6,9 @@ import type { DeviceType, TrafficClass } from './contracts.js';
  * These are exact lexical User-Agent product claims, not verified identities.
  * All canonical candidates and matched product aliases are retained; multiple
  * candidates abstain from selecting a name. Reviewed boundaries 2026-10-27.
- * Googlebot Image/Video aliases: https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers
+ * Googlebot and GoogleOther Image/Video aliases (reviewed 2026-10-31):
+ * https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers
+ * GoogleOther is a generic product-team crawler, without an AI/Search purpose claim.
  * Slack variants: https://api.slack.com/robots. The general Slackbot token
  * does not establish link expansion; its historical role remains reportable. The vendor
  * documentation recorded in research artifact 06 is the source for each current
@@ -41,7 +43,7 @@ import type { DeviceType, TrafficClass } from './contracts.js';
  * Google-Extended and Applebot-Extended are robots.txt product tokens that the
  * vendors say are not request User-Agents. A request containing either is stored
  * as a named bot claim, never as the corresponding vendor crawler. CCBot warns
- * that its token is spoofable. Bytespider, Cohere-AI, Claude-Web, GoogleOther,
+ * that its token is spoofable. Bytespider, Cohere-AI, Claude-Web,
  * and PetalBot remain literal legacy/undocumented tokens, not vendor attribution.
  * HeadlessChrome, Cypress, and Lightpanda are self-declared automation tokens.
  *
@@ -92,10 +94,10 @@ const AI_RULES = [
   { name: 'PetalBot', products: ['PetalBot'] },
   { name: 'Cohere-AI', products: ['Cohere-AI'] },
   { name: 'Claude-Web', products: ['Claude-Web'] },
-  { name: 'GoogleOther', products: ['GoogleOther'] },
 ] as const satisfies readonly AgentRule[];
 
 const BOT_RULES = [
+  { name: 'GoogleOther', products: ['GoogleOther', 'GoogleOther-Image', 'GoogleOther-Video'] },
   { name: 'Meta-ExternalAds', products: ['Meta-ExternalAds'] },
   { name: 'AhrefsSiteAudit', products: ['AhrefsSiteAudit'] },
   { name: 'AhrefsBot', products: ['AhrefsBot'] },

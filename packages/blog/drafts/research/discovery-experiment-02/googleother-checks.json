@@ -1,0 +1,101 @@
+{
+  "profile": "googleother-acceptance-v1",
+  "checkedAt": "2026-10-31T09:29:40.005711+00:00",
+  "baseline": "6788e6140ba2dffd1f32f155031a597622f5e98c",
+  "versions": {
+    "classifier": "2026-10-31.1",
+    "vendorIp": "2026-10-31.1",
+    "reportCache": "2026-10-31.5",
+    "collection": "2026-10-30.1",
+    "verifier": "2026-10-31.2"
+  },
+  "catalogueDelta": {
+    "canonicalNamesAdded": 0,
+    "canonicalName": "GoogleOther",
+    "productAliasesAdded": [
+      "GoogleOther-Image",
+      "GoogleOther-Video"
+    ],
+    "coarseTrafficBefore": "ai",
+    "coarseTrafficAfter": "bot",
+    "readerKind": "other-bot",
+    "ipSource": "google-common",
+    "configuredIpDeclarationsBefore": 17,
+    "configuredIpDeclarationsAfter": 18,
+    "ipSourcesUnchanged": 16,
+    "maxFetchSourcesUnchanged": 4,
+    "declarationsWithAnyMethodBefore": 20,
+    "declarationsWithAnyMethodAfter": 21
+  },
+  "checks": {
+    "analyticsTests": 373,
+    "siteTests": 169,
+    "workspaceTypes": "pass",
+    "markdownValidations": 27,
+    "isolatedBuildPosts": 38,
+    "workerDryRun": "pass",
+    "independentSourceReview": "no-material-defect",
+    "native": {
+      "profile": "googleother-native-controls-v1",
+      "node": "v24.14.1",
+      "classifications": 13,
+      "networkCases": 9,
+      "profileCorruptions": 3,
+      "cacheSequence": 1,
+      "mixedHistoricalReport": 1,
+      "exactNodeWorkerdD1Agreement": true,
+      "workerBundleSha256": "5a3c51e79613f3c90ddbffbedd6b59ea7e507337444d1429e26f86329b7a9ab8",
+      "productionRequests": 0,
+      "productionSqlStatements": 0
+    },
+    "lexicalComparison": {
+      "scope": "One selected GoogleOther lexical rule, not entire library behavior, role classification or identity verification",
+      "libraryCommit": "db662d2787f984ed4fe3043744a12eb067b89218",
+      "fixtures": 13,
+      "localFalseDeclarationMatches": 0,
+      "selectedLibraryRuleFalseDeclarationMatches": 3
+    }
+  },
+  "sourceSha256": {
+    "packages/analytics/src/classify.ts": "95cc9f5fd26856f7b0cba3960fe577a070f035621f224542f0b1870c6b61d2ff",
+    "packages/analytics/src/fetch-metadata-report.ts": "d902cb7be17e932d3a88e868d33897e757915efdfb317fe3ffd1b887c4b26dec",
+    "packages/analytics/src/vendor-cache-report.ts": "9d1f5e224a1ab2a7704ff976e64ff14890cc865af3ebc503afccd1528840869f",
+    "packages/analytics/src/vendor-ip-sources.ts": "d669997b3f5d11de5649e53fd7e99418f0d9984f682618a25d41877bb98c0c2d",
+    "packages/analytics/src/vendor-ip.ts": "f3cc8bfd861461ae2e788e6b9e90329f11cf2c65a936e9ea105d31c936c709d2",
+    "packages/analytics/src/vendor-network-summary.ts": "142e8e4115de85169ee9a521afba4ac8b613c168a7d43b760c9e7a65ff9610ec",
+    "packages/analytics/src/versions.ts": "e233a71efd6eb6d91d9ab7197bd449bad3767120c0f8299a1c101be1259fb68e",
+    "packages/analytics/test/contracts.test.mjs": "2bbb9d95de9be4441d6da0690bacd549840f13d139e50a4273eb6f8ecf374dbf",
+    "packages/analytics/test/fixtures/fetch-metadata-summary.mjs": "661a1e74192df8654fc580034b52ab615ac0fab5e4fc1f4d7cf6e7130f620679",
+    "packages/analytics/test/vendor-ip.test.mjs": "6cdfff908aeb8336a36d96a69d894183559f8364abf77db43469cc99812a1b53",
+    "packages/blog/src/worker/stats-cache.ts": "136d03540b2489b81cd38495df657b589d8e070514e352e3835d48b15b209971",
+    "packages/analytics/test/googleother.test.mjs": "ab00c0ad55e0b28e77626a3e8bdd42bfada2a25a8b008507aafa0341555c1705"
+  },
+  "articleSha256": "85d3d022262eac6a129d9cf31ce385ad7e65037561d64a0fdb8b7fdf5c45c452",
+  "privateEvidence": {
+    "path": "packages/blog/worklog/analytics-evidence/2026-10-31-googleother",
+    "files": 36,
+    "manifestSha256": "26e7ef566989d7b0c091e509b891d2388e2fae7cb819107477d69133db8cbeb3",
+    "allEntriesVerified": true
+  },
+  "effects": {
+    "classifierChanged": true,
+    "newAliasAndNetworkEvidence": true,
+    "reportCompatibilityChanged": true,
+    "historicalRowsRewritten": false,
+    "schemaOrEligibilityChanged": false,
+    "verifierChanged": false,
+    "rawDiagnosticsActivated": false,
+    "articleOrPromptsChanged": false,
+    "productionRequests": 0,
+    "productionSqlStatements": 0,
+    "newHumanLabels": 0,
+    "newNativeManagedVerdicts": 0,
+    "activationMeasured": false
+  },
+  "limits": [
+    "Synthetic declarations are not authenticated Google traffic or current production incidence",
+    "Feed outcomes do not establish a particular product, task, human trigger or use",
+    "The 13-case lexical comparison covers one registry rule, not overall library or population accuracy",
+    "Source delivery, activation and production behavior remain separate; full goal incomplete"
+  ]
+}

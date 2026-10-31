@@ -14,11 +14,11 @@ export function vendorCacheReportCtes(): string {
   ), vendor_cache_records AS MATERIALIZED (
     SELECT cache_views,
       CASE WHEN network_state = 'unrecognized' THEN 'unrecognized'
-        WHEN network_state = 'recognized' AND json_extract(vendor_ip_evidence,'$.profile') = '2026-10-30.1' THEN 'recognized'
+        WHEN network_state = 'recognized' AND json_extract(vendor_ip_evidence,'$.profile') IN ('2026-10-30.1','2026-10-31.1') THEN 'recognized'
         ELSE 'not-recorded' END AS cache_state,
-      CASE WHEN network_state = 'recognized' AND json_extract(vendor_ip_evidence,'$.profile') = '2026-10-30.1' THEN
+      CASE WHEN network_state = 'recognized' AND json_extract(vendor_ip_evidence,'$.profile') IN ('2026-10-30.1','2026-10-31.1') THEN
         CASE WHEN json_array_length(vendor_ip_evidence,'$.checks') = 0 THEN 0 ELSE 1 END ELSE NULL END AS applicable,
-      CASE WHEN network_state = 'recognized' AND json_extract(vendor_ip_evidence,'$.profile') = '2026-10-30.1' THEN (
+      CASE WHEN network_state = 'recognized' AND json_extract(vendor_ip_evidence,'$.profile') IN ('2026-10-30.1','2026-10-31.1') THEN (
         WITH cache_checks AS MATERIALIZED (
           SELECT CASE json_extract(value,'$.cache.access') ${access} ELSE 0 END AS access_mask,
             CASE WHEN json_type(value,'$.cache.policy') = 'object' THEN

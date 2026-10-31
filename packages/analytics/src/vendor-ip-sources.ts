@@ -4,7 +4,7 @@
  */
 export const VENDOR_IP_SOURCES = [
   { id: 'ahrefs-crawlers', vendor: 'Ahrefs', declarations: ['AhrefsBot', 'AhrefsSiteAudit'], url: 'https://api.ahrefs.com/v3/public/crawler-ip-ranges', documentation: 'https://ahrefs.com/robot', mediaTypes: ['application/json'] },
-  { id: 'google-common', vendor: 'Google', declarations: ['Googlebot'], url: 'https://developers.google.com/static/crawling/ipranges/common-crawlers.json', documentation: 'https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests', mediaTypes: ['application/json'] },
+  { id: 'google-common', vendor: 'Google', declarations: ['Googlebot', 'GoogleOther'], url: 'https://developers.google.com/static/crawling/ipranges/common-crawlers.json', documentation: 'https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests', mediaTypes: ['application/json'] },
   { id: 'openai-ads', vendor: 'OpenAI', declarations: ['OAI-AdsBot'], url: 'https://openai.com/adsbot.json', documentation: 'https://developers.openai.com/api/docs/bots', mediaTypes: ['application/json'] },
   { id: 'openai-gpt', vendor: 'OpenAI', declarations: ['GPTBot'], url: 'https://openai.com/gptbot.json', documentation: 'https://developers.openai.com/api/docs/bots', mediaTypes: ['application/json'] },
   { id: 'openai-search', vendor: 'OpenAI', declarations: ['OAI-SearchBot'], url: 'https://openai.com/searchbot.json', documentation: 'https://developers.openai.com/api/docs/bots', mediaTypes: ['application/json'] },

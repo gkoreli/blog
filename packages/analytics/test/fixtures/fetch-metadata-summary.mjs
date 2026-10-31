@@ -2,11 +2,12 @@ import {extractRequestMetadata} from '../../.test-dist/metadata.js';
 import {analyzeTraffic} from '../../.test-dist/classify.js';
 import {classificationEvidence} from '../../.test-dist/classification-evidence.js';
 import {classifyReaderKind} from '../../.test-dist/readerkind.js';
+import {CLASSIFIER_VERSION} from '../../.test-dist/versions.js';
 export const now=new Date('2026-10-29T20:00:00Z');
 export function current(headers={}){
  const request=new Request('https://publication.example/fixture',{headers:{'User-Agent':'Mozilla/5.0 Chrome/152.0 Safari/537.36','Sec-Fetch-Mode':'navigate','Sec-Fetch-Dest':'document','Sec-Fetch-Site':'none','Sec-Fetch-User':'?1',Accept:'text/html','Accept-Language':'en',...headers}});
  Object.defineProperty(request,'cf',{value:{asn:64512}});const m=extractRequestMetadata(request),a=analyzeTraffic(m.userAgent),facts={...m,...a,observationSource:'edge',signature:{status:'absent'}},c=classificationEvidence(facts,a.declarations),reader=classifyReaderKind(facts);
- return {path:'/fixture',daily_client_id:'0'.repeat(32),traffic_class:a.trafficClass,agent_name:a.agentName,device_type:'desktop',is_owner:0,observation_source:'edge',observed_at:'2026-10-29 19:00:00',collection_version:'2026-10-29.6',classifier_version:'2026-10-29.3',reader_kind:reader.kind,reader_reason:reader.reason,sec_fetch_mode:m.secFetchMode,sec_fetch_dest:m.secFetchDest,sec_fetch_site:m.secFetchSite,sec_fetch_user:m.secFetchUser,classification_evidence:JSON.stringify(c)};
+ return {path:'/fixture',daily_client_id:'0'.repeat(32),traffic_class:a.trafficClass,agent_name:a.agentName,device_type:'desktop',is_owner:0,observation_source:'edge',observed_at:'2026-10-29 19:00:00',collection_version:'2026-10-29.6',classifier_version:CLASSIFIER_VERSION,reader_kind:reader.kind,reader_reason:reader.reason,sec_fetch_mode:m.secFetchMode,sec_fetch_dest:m.secFetchDest,sec_fetch_site:m.secFetchSite,sec_fetch_user:m.secFetchUser,classification_evidence:JSON.stringify(c)};
 }
 function evidence(row,mutate){const c=JSON.parse(row.classification_evidence);mutate(c);return {...row,classification_evidence:JSON.stringify(c)}}
 

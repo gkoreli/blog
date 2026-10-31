@@ -11,11 +11,14 @@ function recordStateSql(): string {
   // The cache-evidence collection bump preserves this parser/record format.
   // Keep explicit compatibility; an arbitrary future collector must not inherit it.
   const compatibleCollection = "collection_version IN ('2026-10-29.6','2026-10-30.1')";
+  // GoogleOther catalogue changes do not change Fetch Metadata parsing or encoding.
+  const compatibleClassifiers = "('2026-10-29.3','2026-10-31.1')";
+  const compatibleClassifier = `classifier_version IN ${compatibleClassifiers}`;
   const j = (key: string) => `json_extract(metadata_json,'$.${key}')`;
   const t = (key: string) => `json_type(metadata_json,'$.${key}')`;
   const bit = j('fetchMetadataBits');
   const checks = [
-    "observation_source = 'edge'", compatibleCollection, "classifier_version = '2026-10-29.3'",
+    "observation_source = 'edge'", compatibleCollection, compatibleClassifier,
     `${t('fetchMetadataBits')} = 'integer'`, `${bit} BETWEEN 0 AND 65535`,
     "NOT EXISTS (SELECT 1 FROM json_each(metadata_json) GROUP BY key HAVING COUNT(*) > 1)",
   ];
@@ -37,10 +40,10 @@ function recordStateSql(): string {
   return `CASE WHEN metadata_missing = 1 THEN 'not-recorded'
     WHEN json_type(metadata_json) <> 'object' THEN 'unrecognized'
     WHEN ${j('version')} IN ('2026-10-27.2','2026-10-29.1') AND ${t('fetchMetadataBits')} IS NULL THEN
-      CASE WHEN ${compatibleCollection} OR classifier_version = '2026-10-29.3' OR ${j('classifierProfile')} = '2026-10-29.3' THEN 'inconsistent' ELSE 'not-recorded' END
+      CASE WHEN ${compatibleCollection} OR ${compatibleClassifier} OR ${j('classifierProfile')} IN ${compatibleClassifiers} THEN 'inconsistent' ELSE 'not-recorded' END
     WHEN ${j('version')} IS NULL OR ${j('version')} <> '2026-10-29.2' THEN 'unrecognized'
     WHEN NOT COALESCE(${t('classifierProfile')} = 'text' AND ${j('classifierProfile')} = classifier_version,0) THEN 'inconsistent'
-    WHEN collection_version IS NULL OR classifier_version IS NULL OR NOT (${compatibleCollection}) OR classifier_version <> '2026-10-29.3' THEN 'unrecognized'
+    WHEN collection_version IS NULL OR classifier_version IS NULL OR NOT (${compatibleCollection}) OR NOT (${compatibleClassifier}) THEN 'unrecognized'
     WHEN NOT COALESCE((${checks.join(' AND ')}),0) THEN 'inconsistent'
     ELSE 'recognized' END`;
 }

@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T09:22:57.327788+00:00",
-  "sourceBaseline": "7d578ad8f586ce942621cc9bbe11f712db01cb7f",
+  "checkedAt": "2026-10-31T09:29:54.392623+00:00",
+  "sourceBaseline": "6788e6140ba2dffd1f32f155031a597622f5e98c",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "ebe9439 repaired report integrity and updated the concise retrospective; 7d578ad records native activation."
+    "scope": "6788e61 corrected the unsupported absolute error-data disclosure with synthetic evidence."
   },
-  "scope": "Correct error-report disclosure to source-backed filtering limits, validated with offline synthetic parser/browser-redaction/SQLite controls.",
+  "scope": "Documented GoogleOther lexical aliases and network method, versioned shared-source bounds, preserved historical classifications and report compatibility.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -18,15 +18,16 @@
   },
   "sourceVersions": {
     "collection": "2026-10-30.1",
-    "classifier": "2026-10-29.3",
+    "classifier": "2026-10-31.1",
     "incomingVerifier": "2026-10-31.2",
     "offlineDirectoryAudit": "2026-10-31.2",
-    "statsReportCache": "2026-10-31.4",
+    "statsReportCache": "2026-10-31.5",
     "offlineResourceReach": "2026-10-31.1",
-    "offlineAccessEvidence": "2026-10-31.2"
+    "offlineAccessEvidence": "2026-10-31.2",
+    "vendorIp": "2026-10-31.1"
   },
   "sourceSha256": {
-    "classify.ts": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
+    "classify.ts": "95cc9f5fd26856f7b0cba3960fe577a070f035621f224542f0b1870c6b61d2ff",
     "readerkind.ts": "4150a6fc0186aed820c0e9fa60e98dbcde1817db4c8b3414ffa1cce3a95bf030",
     "classification-evidence.ts": "f6716df870cadb5d86953b18ea613eb01e696169966b9223d97de5ab7900e3c1",
     "signature-evidence.ts": "b284f1e4366d371dda5e3e7b9dedeebc45bfab3f8a983663df09e534160baf75",
@@ -36,7 +37,7 @@
     "calibration-evaluation.ts": "14cb49966cb6c500f130a9e867b230c439d0177f61a073217b5bc49c9f704fa4",
     "article-reach.ts": "17379b45e0c7c3f251e19b69632b830cfb051318433ef2b53d89b080f83854f9",
     "article-reach-contract.ts": "38cd7b99af5ae8384fab0a53692e682088fc2b70fba33548703cf487965e2321",
-    "versions.ts": "47399980b7c03b98d4b0a27aaf5f027202c7b32a4f03851e80703a1da1344e82",
+    "versions.ts": "e233a71efd6eb6d91d9ab7197bd449bad3767120c0f8299a1c101be1259fb68e",
     "webbotauth.ts": "54348a11b372528ae042dc31b17b42c06104ec16e72e32b1e025b1f94aa38411",
     "directory-response-audit.ts": "f72a1ad7609ac8b05ed92b2a4a74aab2e7396324bd7bf86f54bd9846ac1ca710",
     "search-evidence.ts": "2dcca61325112b040e30c39d1f5ebb0281da270ad7de164bfe13dc7e47fb8c8c",
@@ -85,7 +86,9 @@
       ],
       "evidence": [
         "decision-audit-catalogue.json",
-        "97-fresh-automated-fetches-and-measurement-gaps.md"
+        "97-fresh-automated-fetches-and-measurement-gaps.md",
+        "../discovery-experiment-02/08-googleother-declarations-and-network-evidence.md",
+        "../discovery-experiment-02/googleother-checks.json"
       ],
       "limit": "Exact lexical product boundaries and multiple candidates are retained. Nine catalogue source hashes still match; source configuration is neither fresh vendor validation nor an authenticated operator."
     },
@@ -129,9 +132,11 @@
         "structured-extension-compatibility.json",
         "structured-extension-release.json",
         "../discovery-experiment-02/03-edge-access-evidence.md",
-        "../discovery-experiment-02/edge-access-evidence.json"
+        "../discovery-experiment-02/edge-access-evidence.json",
+        "../discovery-experiment-02/08-googleother-declarations-and-network-evidence.md",
+        "../discovery-experiment-02/googleother-checks.json"
       ],
-      "limit": "Selected syntax/crypto conditions have exact Node/workerd and independent Structured Field syntax evidence. Profile .31.2 repairs decimal and semicolon-SP compatibility; this does not establish complete grammar/draft conformance, native managed agreement or actual vendor frequency. No accepted request-level signedAgent oracle or eligible controlled identity exists. The response-advisory runtime no-adoption decision remains closed."
+      "limit": "Selected syntax/crypto conditions have exact Node/workerd and independent Structured Field syntax evidence. Profile .31.2 repairs decimal and semicolon-SP compatibility; this does not establish complete grammar/draft conformance, native managed agreement or actual vendor frequency. No accepted request-level signedAgent oracle or eligible controlled identity exists. The response-advisory runtime no-adoption decision remains closed. GoogleOther now has a documented shared network method and synthetic local/native acceptance; actual vendor request and managed native-verdict comparison are unmeasured."
     },
     {
       "id": "labelled-errors-and-abstentions",
@@ -245,12 +250,10 @@
     }
   ],
   "catalogue": {
-    "scope": "Static configured methods; nine owning source hashes match the dated catalogue. No fresh endpoint or vendor claim validation.",
+    "scope": "Dated base catalogue plus reviewed GoogleOther delta; seven untouched owning sources preserve the base snapshot. The changed classifier/source-map hashes are in the delta receipt. No fresh vendor-traffic or managed-verifier claim.",
     "receipt": "decision-audit-catalogue.json",
     "unchangedOwningSources": [
-      "classify.ts",
       "readerkind.ts",
-      "vendor-ip-sources.ts",
       "vendor-signatures.ts",
       "directory-publication.ts",
       "signers.ts",
@@ -261,15 +264,16 @@
     "counts": {
       "recognizedDeclarations": 51,
       "ipFeedSources": 16,
-      "declarationsWithConfiguredIpMethod": 17,
+      "declarationsWithConfiguredIpMethod": 18,
       "documentedSigningOrigins": 4,
       "declarationsWithDocumentedSigningMethod": 5,
-      "declarationsWithAnyConfiguredPerDeclarationMethod": 20,
-      "declarationsWithoutConfiguredPerDeclarationMethod": 31,
+      "declarationsWithAnyConfiguredPerDeclarationMethod": 21,
+      "declarationsWithoutConfiguredPerDeclarationMethod": 30,
       "reviewedDirectoryOrigins": 5,
       "declarationsWithReviewedDirectoryPublisher": 7,
       "publicDisplayApprovals": 4
-    }
+    },
+    "latestDelta": "../discovery-experiment-02/googleother-checks.json"
   },
   "latestAcceptedProductionAutomation": {
     "receipt": "current-production-calibration.json",
@@ -341,36 +345,38 @@
     }
   ],
   "effectsThisAudit": {
-    "runtimeChanged": false,
+    "runtimeChanged": true,
     "clientChanged": false,
-    "collectorClassifierVerifierSchemaChanged": false,
+    "collectorClassifierVerifierSchemaChanged": true,
     "accountOrSecurityChanges": false,
     "rawCollectionActivated": false,
     "articleChanged": false,
     "articleChangedByThisWork": false,
     "sourceActivationMeasured": false,
     "servedDestinationAcceptance": false,
-    "privacyDisclosureChanged": true,
+    "privacyDisclosureChanged": false,
     "productionRequests": 0,
     "productionSqlStatements": 0,
     "newHumanLabels": 0,
     "newCalibrationTrials": 0,
     "newModelTrialsOrRegrades": 0,
-    "reportRuntimeChanged": false,
+    "reportRuntimeChanged": true,
     "productionSiteRequests": 0,
     "nativeMatchingSecurityEventsObserved": 0,
     "newRegisteredCalibrationTrials": 0,
-    "newControlledAnswerTrials": 0
+    "newControlledAnswerTrials": 0,
+    "classifierChanged": true,
+    "collectionSchemaVerifierChanged": false
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: demonstrated mismatch between absolute public error-data promise and implemented structural filtering; corrected disclosure with six synthetic controls and isolated build",
+    "thisTurnClassification": "progress: documented GoogleOther mislabel/alias/method gaps repaired with preserved history, versioned report bounds, exact Node/workerd/D1 controls and pinned registry comparison",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Review existing diagnostic call sites for actionable stable codes versus arbitrary text before proposing a collection change. Preserve useful debugging evidence and existing privacy decisions. Native/search/human/source-purpose/D1 measurements still need their own accepted inputs; no repeated controls or documentation-only activation chase.",
+  "nextBoundedAction": "Confirm exact-source activation of the GoogleOther repair. Then review the documented Google-CloudVertexBot role/method separately, preserving the distinction between owner-requested agent crawling and a proved action purpose. Existing native/search/human/privacy/source-purpose/D1 gates remain; do not retry gated measurements or repeat accepted fixtures.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -396,11 +402,11 @@
     "scopeAfterOwnerContinuation": "Historical checkpoint for missing measurement inputs; not a prohibition on independent implementation, observed agent growth or discovery work."
   },
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
-  "goalStatusScope": "Persistent goal active/incomplete. Disclosure correctness is new scoped progress; no new readership, growth, human/native accuracy or privacy-compliance outcome.",
+  "goalStatusScope": "Persistent goal active/incomplete. Catalogue, network and report correctness improved under synthetic local/native controls; no new production incidence, growth, human/native managed accuracy or privacy acceptance.",
   "latestContinuation": {
-    "research": "../discovery-experiment-02/07-error-disclosure-boundary.md",
-    "receipt": "../discovery-experiment-02/error-disclosure-checks.json",
-    "nextBoundedAction": "Review existing diagnostic call sites for actionable stable codes versus arbitrary text before proposing a collection change. Preserve useful debugging evidence and existing privacy decisions. Native/search/human/source-purpose/D1 measurements still need their own accepted inputs; no repeated controls or documentation-only activation chase."
+    "research": "../discovery-experiment-02/08-googleother-declarations-and-network-evidence.md",
+    "receipt": "../discovery-experiment-02/googleother-checks.json",
+    "nextBoundedAction": "Confirm exact-source activation of the GoogleOther repair. Then review the documented Google-CloudVertexBot role/method separately, preserving the distinction between owner-requested agent crawling and a proved action purpose. Existing native/search/human/privacy/source-purpose/D1 gates remain; do not retry gated measurements or repeat accepted fixtures."
   },
   "latestAcceptedSourceActivation": {
     "sourceCommit": "ebe943974b2b53197ee2cb1106b337cc376d8437",
