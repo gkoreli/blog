@@ -21,10 +21,12 @@ test('synchronous directory failure clears its pending entry and permits a later
 
 test('concurrent requests share one pending result and clear failures before a later lookup',async()=>{
   const fixture=await wireFailureFixture(),trial=fixture.cases.find(row=>row.form==='dictionary'&&row.scenario==='valid');
-  const request=new Request(trial.url,{headers:trial.headers}),cache=createWebBotAuthCache();let fetches=0,release;
+  const request=new Request(trial.url,{headers:trial.headers}),cache=createWebBotAuthCache();let fetches=0,release,started;
   const pending=new Promise(resolve=>{release=resolve;});
-  const options={now:fixture.now,cache,fetcher:()=>{fetches++;return pending;}};
+  const entered=new Promise(resolve=>{started=resolve;});
+  const options={now:fixture.now,cache,fetcher:()=>{fetches++;started();return pending;}};
   const first=verifyWebBotAuth(request,options),second=verifyWebBotAuth(request,options);
+  await entered;
   assert.equal(cache.pendingDirectories.size,1);assert.equal(fetches,1);
   release(new Response(null,{status:503}));
   const outcomes=await Promise.all([first,second]);assert.ok(outcomes.every(result=>result.reason==='dir-http-status'));assert.equal(cache.pendingDirectories.size,0);

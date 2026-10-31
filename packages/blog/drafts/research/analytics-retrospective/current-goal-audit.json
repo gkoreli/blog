@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-31T00:09:09.468124+00:00",
+  "checkedAt": "2026-10-31T00:24:22.731893+00:00",
   "sourceBaseline": "73787f92c973f7d258d824505cfc240cb83ea8eb",
   "goalAchieved": false,
-  "previousTurn": "progress: eda77d6 delivered clock/admission/cost corrections; current turn reproduces and repairs request-verifier lifecycle races",
-  "scope": "Active continuation and Research117 local acceptance, not full completion audit or new population/historical census. Prior catalogue/cohort evidence retains its original scope.",
+  "previousTurn": "progress: 2a99495 records source-linked activation of the prior key lifecycle repair",
+  "scope": "Research118 explicit owner-lifetime repair and local acceptance; no new population/historical census or full completion claim.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -1502,11 +1502,25 @@
     "collectorEligibleRequests": 0
   },
   "resumedAudit": {
-    "checkedAt": "2026-10-31T00:03:47.953626+00:00",
+    "checkedAt": "2026-10-31T00:24:22.731893+00:00",
     "consecutiveNoProgressGoalTurns": 0,
     "lastGoalTurnClassification": "progress",
     "historicalBlockedAuditRetained": true
   },
-  "latestWorkSourceBaseline": "eda77d6752d10a695010c7ba6613e9734c60d7b2",
-  "legacyFactsRevalidatedInThisTurn": false
+  "latestWorkSourceBaseline": "2a99495c4aeb8fc0c554d2492feb85b15bb47b12",
+  "legacyFactsRevalidatedInThisTurn": false,
+  "latestContinuation": {
+    "checkedAt": "2026-10-31T00:24:22.731893+00:00",
+    "research": "118-caller-owned-directory-recovery.md",
+    "receipt": "key-request-ownership-audit.json",
+    "completed": "Bounded explicit owner-abort recovery, publication/cancellation controls, canceled-hash mutation repair and native D1/profile acceptance",
+    "productionPolicyCodeChanged": true,
+    "activationMeasured": false,
+    "productionQueries": 0,
+    "newOwnSiteHttpRequests": 0,
+    "newHumanLabels": 0,
+    "trackerStatus": "active",
+    "goalComplete": false,
+    "nextBoundedAction": "Checked source delivery and exact-source activation; then decide runtime adoption of offline directory-response advisory from a bounded benefit/cost design."
+  }
 }

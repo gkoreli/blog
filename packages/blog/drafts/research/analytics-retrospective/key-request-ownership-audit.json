@@ -1,0 +1,80 @@
+{
+  "checkedAt": "2026-10-31T00:24:22.731893+00:00",
+  "sourceSha256": "edacdfd0e5aeed48fdc081b5c1953d6eee128ec1b6eb5a0c70e1f7bf7319b265",
+  "inputSha256": "07a4e39b3e8352e13f79098c372b7ffd5601f5962e1179cf7a4b124028ea3925",
+  "nativeSchedules": 12,
+  "pairedNodeWorkerdConditions": 27,
+  "comparisonNegativeControls": 4,
+  "ownerDeadlineBefore": "waiter unavailable, one lookup",
+  "ownerDeadlineAfter": "waiter verified, two lookups",
+  "fiveWaiterRecoveryRounds": 3,
+  "hashCancellationMutationBefore": 3,
+  "hashCancellationMutationAfter": 0,
+  "physicalDrainCounters": "Held custom fetches drain to zero; logical pending-map cap does not bound all transports that ignore abort.",
+  "artifacts": [
+    {
+      "file": "before.json",
+      "sha256": "a60b760a9d77794b744bbb3f90206c8e23cafa30730ddfae17fbd6703cba2be5"
+    },
+    {
+      "file": "controls-final.json",
+      "sha256": "03b2a4ed47c6642fb2f76b1dd27f7b45f232abba0761866d679730ab29bffed9"
+    },
+    {
+      "file": "native-final1.json",
+      "sha256": "ee43e0db72fc9cbfd64e1397b006fd84996a31c67dda7eca370787b03f038f66"
+    },
+    {
+      "file": "native-final2.json",
+      "sha256": "aa3e73e12eb1d0c94f0b43ef2376950cb5e9e3c9faffd54ffdce17e1dd7575dd"
+    },
+    {
+      "file": "native-final3.json",
+      "sha256": "f11fae403b79c5f4032fbe603d8d1bc941c71c29acbe2b8032cc221ab1c4e5e2"
+    }
+  ],
+  "productionRequests": 0,
+  "d1Statements": 0,
+  "humanLabels": 0,
+  "sourceBaseline": "2a99495c4aeb8fc0c554d2492feb85b15bb47b12",
+  "research": "118-caller-owned-directory-recovery.md",
+  "previousGoalTurn": {
+    "classification": "progress",
+    "commit": "2a99495"
+  },
+  "verifierProfile": "2026-10-31.1",
+  "reportCache": "2026-10-31.1",
+  "checks": {
+    "analyticsTests": 330,
+    "siteTests": 166,
+    "workspaceTypes": true,
+    "markdownPostsValid": 22,
+    "isolatedPostsBuilt": 33,
+    "workerDryRun": true,
+    "priorRacePairedConditions": 12,
+    "nativeD1EnvelopeRows": 2
+  },
+  "failuresPreserved": [
+    "Foreign active AbortSignal.aborted getter produced workerd RefcountedCanceler ownership error; plain-JS owner flag replaces it.",
+    "Hash cancellation mutated shared directory/cooldown in 3/3 comparisons before guard.",
+    "Full suite expected synchronous transport start; real start barrier preserves sharing assertions."
+  ],
+  "privateArchive": {
+    "path": "/Users/goga/Documents/goga/analytics-evidence/2026-10-31-key-request-ownership",
+    "files": 75,
+    "manifestSha256": "eaa31c088d84ff6f7e21ed9acf377346898002d33a047868d2b00c7d4cad5670",
+    "verified": true,
+    "scope": "Core captures, sources, failed prototypes, logs, Worker dry-run; build tree excluded. Pre-hash-guard source reconstructed and matched captured hash."
+  },
+  "limits": [
+    "Explicit caller signals only, no universal implicit request-termination guarantee",
+    "Pending-map cap is not a bound on ignored-abort physical transports",
+    "No historical or production race-incidence measurement",
+    "Completed noncacheable replacement interleavings remain separate",
+    "No human, intent, readership growth or managed native-verifier claim"
+  ],
+  "articleUnchanged": true,
+  "activationMeasured": false,
+  "goalStatus": "active",
+  "goalComplete": false
+}

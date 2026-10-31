@@ -50,7 +50,7 @@ async function verifyRequestSignature(request: Request, headersPresent: boolean,
   });
   const verification = Promise.resolve().then(() => verifier
     ? verifier(request)
-    : verifyWebBotAuth(request, { includeEvidence: true, maxAgeSeconds: 86400,
+    : verifyWebBotAuth(request, { includeEvidence: true, maxAgeSeconds: 86400, signal: controller.signal,
       fetcher: (input, init) => fetch(input, { ...init, signal: controller.signal }) }))
     .catch((): WebBotAuthResult => ({ status: 'unverified', reason: 'verification-error' }));
   try { return await Promise.race([verification, deadline]); }

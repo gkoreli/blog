@@ -106,7 +106,7 @@ interface DirectoryEntry {
   keys: Array<{ jwk: JsonWebKey; metadataRejected: boolean; notBefore: number | null; expires: number | null }>;
 }
 
-type DirectoryFailure = 'dir-concurrency-limit' | 'dir-fetch-failed' | 'dir-http-status'
+type DirectoryFailure = 'directory-unavailable' | 'dir-concurrency-limit' | 'dir-fetch-failed' | 'dir-http-status'
   | 'dir-media-type' | 'dir-body-limit' | 'dir-body-missing' | 'dir-body-read-failed'
   | 'dir-json-invalid' | 'dir-shape-invalid' | 'dir-key-limit';
 type DirectoryResult = { directory: DirectoryEntry } | { reason: DirectoryFailure };
@@ -127,6 +127,8 @@ export interface WebBotAuthCache {
 
 export interface WebBotAuthOptions {
   now?: Date;
+  /** Explicit caller lifetime. No inference from a Worker's implicit termination. */
+  signal?: AbortSignal;
   fetcher?: typeof fetch;
   cache?: WebBotAuthCache;
   includeEvidence?: boolean;
@@ -680,31 +682,91 @@ export function createWebBotAuthCache(): WebBotAuthCache {
 
 const sharedCache = createWebBotAuthCache();
 
+interface DirectoryOperation {
+  owner: AbortSignal | undefined;
+  settled: boolean;
+  aborted: boolean;
+}
+interface DirectoryRecovery { remaining: 0 | 1 }
+type DirectoryWait = { kind: 'result'; result: DirectoryResult } | { kind: 'caller-aborted' | 'owner-aborted' };
+const directoryOperations = new WeakMap<Promise<DirectoryResult>, DirectoryOperation>();
+
+function awaitDirectory(pending: Promise<DirectoryResult>, signal: AbortSignal | undefined): Promise<DirectoryWait> {
+  const operation = directoryOperations.get(pending);
+  if (signal?.aborted) return Promise.resolve({ kind: 'caller-aborted' });
+  return new Promise((resolve, reject) => {
+    let finished = false;
+    const cleanup = () => {
+      signal?.removeEventListener('abort', callerAbort);
+      if (operation?.owner !== signal) operation?.owner?.removeEventListener('abort', ownerAbort);
+    };
+    const finish = (value: DirectoryWait) => {
+      if (finished) return;
+      finished = true; cleanup(); resolve(value);
+    };
+    const callerAbort = () => finish({ kind: 'caller-aborted' });
+    const ownerAbort = () => { if (operation !== undefined && !operation.settled) finish({ kind: 'owner-aborted' }); };
+    signal?.addEventListener('abort', callerAbort, { once: true });
+    if (operation?.owner !== signal) operation?.owner?.addEventListener('abort', ownerAbort, { once: true });
+    // A synchronous abort between inspection and listener registration is still observed.
+    if (signal?.aborted) callerAbort();
+    // Reading a foreign request's active AbortSignal state can violate workerd
+    // I/O ownership. Its owner records this plain-JS flag synchronously instead.
+    else if (operation?.aborted) ownerAbort();
+    pending.then(result => finish({ kind: 'result', result }), error => {
+      if (finished) return;
+      finished = true; cleanup(); reject(error);
+    });
+  });
+}
+
+async function joinDirectory(
+  pending: Promise<DirectoryResult>, directoryUrl: string, fetcher: typeof fetch,
+  cache: WebBotAuthCache, nowMs: number, signal: AbortSignal | undefined, recovery: DirectoryRecovery,
+): Promise<DirectoryResult> {
+  const waited = await awaitDirectory(pending, signal);
+  if (waited.kind === 'result') return waited.result;
+  if (waited.kind === 'owner-aborted' && signal !== undefined && !signal.aborted && recovery.remaining === 1) {
+    // One allowance for the whole verifier call, shared by all candidates/stages.
+    recovery.remaining = 0;
+    if (cache.pendingDirectories.get(directoryUrl) === pending) cache.pendingDirectories.delete(directoryUrl);
+    return fetchDirectory(directoryUrl, fetcher, cache, nowMs, signal, recovery);
+  }
+  return { reason: 'directory-unavailable' };
+}
+
 async function fetchDirectory(
   directoryUrl: string,
   fetcher: typeof fetch,
   cache: WebBotAuthCache,
   nowMs: number,
+  signal: AbortSignal | undefined,
+  recovery: DirectoryRecovery,
 ): Promise<DirectoryResult> {
+  if (signal?.aborted) return { reason: 'directory-unavailable' };
   const cached = cache.directories.get(directoryUrl);
   if (cached !== undefined && cached.expiresAt > nowMs && cached.keyPolicy === PUBLIC_KEY_POLICY_VERSION) return { directory: cached };
   if (cached !== undefined) cache.directories.delete(directoryUrl);
 
   const pending = cache.pendingDirectories.get(directoryUrl);
-  if (pending !== undefined) return pending;
+  if (pending !== undefined) return joinDirectory(pending, directoryUrl, fetcher, cache, nowMs, signal, recovery);
   if (cache.pendingDirectories.size >= 64) return { reason: 'dir-concurrency-limit' };
 
+  const operation: DirectoryOperation = { owner: signal, settled: false, aborted: false };
   const load = async (): Promise<DirectoryResult> => {
+    if (operation.aborted) return { reason: 'directory-unavailable' };
     let response: Response;
     try {
       response = await fetcher(directoryUrl, {
         method: 'GET',
         redirect: 'manual',
         headers: { Accept: 'application/http-message-signatures-directory+json' },
+        signal,
       });
     } catch {
       return { reason: 'dir-fetch-failed' };
     }
+    if (operation.aborted) return { reason: 'directory-unavailable' };
     if (response.status !== 200) return { reason: 'dir-http-status' };
     if (response.headers.get('Content-Type')?.split(';')[0]?.trim().toLowerCase() !== 'application/http-message-signatures-directory+json') return { reason: 'dir-media-type' };
     if (Number(response.headers.get('Content-Length') ?? 0) > 65536) return { reason: 'dir-body-limit' };
@@ -714,6 +776,7 @@ async function fetchDirectory(
     const chunks: Uint8Array[] = [];
     try {
       for (;;) {
+        if (operation.aborted) return { reason: 'directory-unavailable' };
         const part = await reader.read();
         if (part.done) break;
         size += part.value.byteLength;
@@ -751,18 +814,33 @@ async function fetchDirectory(
     const seconds = /(?:^|,)\s*(?:no-cache|no-store)\b/i.test(control) ? 0
       : Math.max(0, Math.min(DIRECTORY_TTL_MS / 1000, maxAge?.[1] === undefined ? 300 : Number(maxAge[1])) - (Number.isFinite(age) && age > 0 ? age : 0));
     const entry: DirectoryEntry = { keys, keyPolicy: PUBLIC_KEY_POLICY_VERSION, expiresAt: nowMs + seconds * 1000 };
+    if (operation.aborted || signal?.aborted) return { reason: 'directory-unavailable' };
     // A newly fetched directory also invalidates imported removed/revoked keys.
     for (const key of cache.keys.keys()) if (key.startsWith(`${directoryUrl}\n`)) cache.keys.delete(key);
     if (cache.directories.size >= 256) cache.directories.delete(cache.directories.keys().next().value ?? '');
     cache.directories.set(directoryUrl, entry);
     return { directory: entry };
   };
-  const promise = load();
+  // Register ownership/abort cleanup before a caller transport can run synchronously.
+  const promise = Promise.resolve().then(load).then(result => {
+    operation.settled = true; return result;
+  }, error => { operation.settled = true; throw error; });
+  directoryOperations.set(promise, operation);
   cache.pendingDirectories.set(directoryUrl, promise);
+  const ownerAbort = () => {
+    if (operation.settled) return;
+    operation.aborted = true;
+    if (cache.pendingDirectories.get(directoryUrl) === promise) cache.pendingDirectories.delete(directoryUrl);
+  };
+  signal?.addEventListener('abort', ownerAbort, { once: true });
+  if (signal?.aborted) ownerAbort();
   // Clean up after registration even when a caller-supplied fetcher throws
   // synchronously. An older completion must not delete a newer pending lookup.
-  try { return await promise; }
-  finally { if (cache.pendingDirectories.get(directoryUrl) === promise) cache.pendingDirectories.delete(directoryUrl); }
+  try { return await joinDirectory(promise, directoryUrl, fetcher, cache, nowMs, signal, recovery); }
+  finally {
+    signal?.removeEventListener('abort', ownerAbort);
+    if (cache.pendingDirectories.get(directoryUrl) === promise) cache.pendingDirectories.delete(directoryUrl);
+  }
 }
 
 function pairKey(directoryUrl: string, keyid: string): string {
@@ -775,7 +853,10 @@ async function resolveVerificationKey(
   fetcher: typeof fetch,
   cache: WebBotAuthCache,
   nowMs: number,
+  signal: AbortSignal | undefined,
+  recovery: DirectoryRecovery,
 ): Promise<{ key: CryptoKey } | { reason: string }> {
+  if (signal?.aborted) return { reason: 'directory-unavailable' };
   const cacheKey = pairKey(directoryUrl, keyid);
   const cached = cache.keys.get(cacheKey);
   if (cached !== undefined && cached.expiresAt > nowMs && cached.keyPolicy === PUBLIC_KEY_POLICY_VERSION) {
@@ -786,7 +867,7 @@ async function resolveVerificationKey(
 
   const previousDirectory = cache.directories.get(directoryUrl);
   const hadFreshDirectory = previousDirectory?.keyPolicy === PUBLIC_KEY_POLICY_VERSION && previousDirectory.expiresAt > nowMs;
-  const initial = await fetchDirectory(directoryUrl, fetcher, cache, nowMs);
+  const initial = await fetchDirectory(directoryUrl, fetcher, cache, nowMs, signal, recovery);
   if ('reason' in initial) return initial;
   let directory = initial.directory;
   const find = async (entry: DirectoryEntry) => {
@@ -798,13 +879,14 @@ async function resolveVerificationKey(
     return [];
   };
   let matching = await find(directory);
+  if (signal?.aborted) return { reason: 'directory-unavailable' };
   // A parallel resolver may already be refreshing the same fresh-but-missing
   // key set. Join that work (or inspect its published replacement) before a
   // cooldown turns an old snapshot's miss into an avoidable negative.
   if (matching.length === 0 && hadFreshDirectory) {
     const pendingRefresh = cache.pendingDirectories.get(directoryUrl);
     if (pendingRefresh !== undefined) {
-      const refreshed = await pendingRefresh;
+      const refreshed = await joinDirectory(pendingRefresh, directoryUrl, fetcher, cache, nowMs, signal, recovery);
       if ('reason' in refreshed) return refreshed;
       directory = refreshed.directory;
       matching = await find(directory);
@@ -818,15 +900,17 @@ async function resolveVerificationKey(
   }
   // One forced refresh per origin per 30 seconds handles overlapping key rotation
   // without turning every random keyid into an unbounded directory fetch loop.
+  if (signal?.aborted) return { reason: 'directory-unavailable' };
   if (matching.length === 0 && hadFreshDirectory && nowMs - (cache.forcedRefreshes.get(directoryUrl) ?? -Infinity) >= 30000) {
     if (cache.forcedRefreshes.size >= 256) cache.forcedRefreshes.delete(cache.forcedRefreshes.keys().next().value ?? '');
     cache.forcedRefreshes.set(directoryUrl, nowMs);
     cache.directories.delete(directoryUrl);
-    const refreshed = await fetchDirectory(directoryUrl, fetcher, cache, nowMs);
+    const refreshed = await fetchDirectory(directoryUrl, fetcher, cache, nowMs, signal, recovery);
     if ('reason' in refreshed) return refreshed;
     directory = refreshed.directory;
     matching = await find(directory);
   }
+  if (signal?.aborted) return { reason: 'directory-unavailable' };
   const selected = matching[0];
   if (selected === undefined) return { reason: 'key-not-found' };
   if (matching.some(key => key.metadataRejected)) return { reason: matching.some(key => !key.metadataRejected) ? 'key-metadata-conflict' : 'key-metadata-rejected' };
@@ -840,6 +924,7 @@ async function resolveVerificationKey(
   {
     try {
       const key = await crypto.subtle.importKey('jwk', selected.jwk, 'Ed25519', false, ['verify']);
+      if (signal?.aborted) return { reason: 'directory-unavailable' };
       // Import is asynchronous. A newer directory may have removed this key
       // while it was pending; never resurrect that old source in the fast cache.
       if (cache.directories.get(directoryUrl) !== directory) return { reason: 'reload' };
@@ -860,6 +945,7 @@ async function verifyCandidate(
   cache: WebBotAuthCache,
   nowMs: number,
   options: WebBotAuthOptions,
+  recovery: DirectoryRecovery,
 ): Promise<WebBotAuthResult> {
   const parameterReason = malformedSignatureParameterReason(candidate.input);
   if (parameterReason !== null) return { status: 'unverified', reason: parameterReason };
@@ -896,8 +982,9 @@ async function verifyCandidate(
   if ('reason' in location) return { status: 'unverified', reason: location.reason };
   if (knownTestKeyId(keyid)) return { status: 'unverified', reason: 'known-test-key' };
 
-  const resolvedKey = await resolveVerificationKey(location.directoryUrl, keyid, fetcher, cache, nowMs);
+  const resolvedKey = await resolveVerificationKey(location.directoryUrl, keyid, fetcher, cache, nowMs, options.signal, recovery);
   if ('reason' in resolvedKey) return { status: 'unverified', reason: resolvedKey.reason };
+  if (options.signal?.aborted) return { status: 'unverified', reason: 'directory-unavailable' };
   try {
     const verified = await crypto.subtle.verify(
       'Ed25519',
@@ -905,6 +992,7 @@ async function verifyCandidate(
       candidate.signature,
       encoder.encode(signatureBase.base),
     );
+    if (options.signal?.aborted) return { status: 'unverified', reason: 'directory-unavailable' };
     if (!verified) return { status: 'unverified', reason: 'signature-invalid' };
     if (!options.includeEvidence) return { status: 'verified', agent: location.agent };
     const names = new Set(candidate.input.items.flatMap(item => item.bare.type === 'string' ? [item.bare.value] : []));
@@ -967,9 +1055,10 @@ export async function verifyWebBotAuth(
     let lastFailure: WebBotAuthResult = { status: 'unverified', reason: 'signature-invalid' };
     const reasons = new Set<string>();
     let attemptedCandidates = 0;
+    const recovery: DirectoryRecovery = { remaining: 1 };
     for (const candidate of tagged) {
       attemptedCandidates++;
-      const result = await verifyCandidate(request, candidate, parsedAgent, fetcher, cache, nowMs, options);
+      const result = await verifyCandidate(request, candidate, parsedAgent, fetcher, cache, nowMs, options, recovery);
       if (result.status === 'verified') {
         if (!options.includeEvidence || result.evidence === undefined) return result;
         // This is one selected proof. Later candidates may also verify, fail, or
@@ -1082,7 +1171,7 @@ export async function verifyWebBotAuthCandidate(request: Request, label: string,
     }
     const nowMs = verificationTime(options.now);
     if (nowMs === null) return { status: 'unverified', reason: 'invalid-verification-time' };
-    return await verifyCandidate(request, candidate, context.parsedAgent, options.fetcher ?? fetch, options.cache ?? createWebBotAuthCache(), nowMs, options);
+    return await verifyCandidate(request, candidate, context.parsedAgent, options.fetcher ?? fetch, options.cache ?? createWebBotAuthCache(), nowMs, options, { remaining: 1 });
   } catch { return { status: 'unverified', reason: 'verification-error' }; }
 }
 

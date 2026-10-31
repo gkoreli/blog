@@ -90,7 +90,7 @@ export async function auditWebBotAuth(request: Request, options: SignatureAuditO
     for (const label of inspected.labels.slice(0, maxCandidates)) {
       if (timedOut) break;
       result.attemptedCandidates++;
-      const verdict = await Promise.race([verifyWebBotAuthCandidate(snapshot, label, { now, maxAgeSeconds, includeEvidence: true, cache, fetcher }), deadline]);
+      const verdict = await Promise.race([verifyWebBotAuthCandidate(snapshot, label, { now, maxAgeSeconds, includeEvidence: true, cache, fetcher, signal: controller.signal }), deadline]);
       if (verdict.status === 'verified') { result.verifiedCandidates++; origins.add(verdict.agent); }
       else {
         const outcome = verificationOutcome(verdict);
