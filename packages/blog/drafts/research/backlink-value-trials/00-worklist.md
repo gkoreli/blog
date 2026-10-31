@@ -32,3 +32,7 @@ An additional frozen Perplexity Search trial encountered a sign-up gate after th
 - Relative document links checked; `pnpm -C packages/blog validate` passed for all 27 posts. No production build, deployment or production measurement was needed for these offline code/research additions.
 
 The local trials are complete. Next bounded external action: submit the benchmark contribution for workload review and send the prepared correction, if Goga authorizes those actions. Publisher acceptance, additional compiler coverage, organic visibility change and future monitoring remain unmeasured. No background follow-up is scheduled.
+
+## Subsequent owner request
+
+The owner identified Arcjet's direct citation and technical reuse as a consequential publishing outcome, then requested a follow-up article, a stronger original reference and further hands-on research. [Fetcher study v2](../fetcher-study-v2/00-worklist.md) owns that new scope. The completed trials here, unsent contributions and their original limits remain unchanged.

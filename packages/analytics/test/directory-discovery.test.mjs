@@ -22,9 +22,13 @@ test('directory URL policy rejects literals, normalized IPv4 aliases and local n
 });
 
 test('unsupported discovery locations remain distinct from URL admission policy', () => {
-  for (const target of ['not a URL', 'http://crawler.exa.ai', 'https://user:password@crawler.exa.ai', 'https://crawler.exa.ai/keys', 'https://crawler.exa.ai/?key=1', 'https://crawler.exa.ai/#keys']) {
+  for (const target of ['not a URL', 'http://crawler.exa.ai', 'https://user:password@crawler.exa.ai', 'https://crawler.exa.ai/?key=1', 'https://crawler.exa.ai/#keys']) {
     assert.deepEqual(directoryLocation(target), { reason: 'invalid-signature-agent' });
   }
+  for (const target of ['https://crawler.exa.ai/keys', 'https://crawler.exa.ai/.well-known/http-message-signatures-directory']) {
+    assert.deepEqual(directoryLocation(target), { reason: 'unsupported-signature-agent-location' });
+  }
+  assert.deepEqual(directoryLocation('https://127.1/keys'), { reason: 'discovery-policy-rejected' });
 });
 
 test('both supported wire forms reject discovery before cached keys or a fetch and preserve a closed outcome', async () => {

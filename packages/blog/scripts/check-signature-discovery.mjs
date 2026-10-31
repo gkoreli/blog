@@ -30,7 +30,7 @@ try {
   await db.batch(schema.split(';').map(s => s.trim()).filter(Boolean).map(s => db.prepare(s)));
   await db.prepare("INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner,reader_kind,reader_reason,observed_at) VALUES('/historical','00000000000000000000000000000000','browser','desktop',0,'browser','fixture',datetime('now'))").run();
   const trials = [];
-  for (const [label, target] of [['loopback', 'https://127.1'], ['local-name', 'https://service.localhost.'], ['port', 'https://fixture.example:8443'], ['unsigned', null], ['excluded', 'https://[::1]']]) {
+  for (const [label, target] of [['loopback', 'https://127.1'], ['local-name', 'https://service.localhost.'], ['port', 'https://fixture.example:8443'], ['unsigned', null], ['excluded', 'https://[::1]'], ['explicit-directory', 'https://fixture.example/keys']]) {
     const epoch = Math.floor(Date.now() / 1000), headers = { 'User-Agent': 'SyntheticClient/1.0', Accept: 'text/html' };
     if (target) Object.assign(headers, { 'Signature-Agent': JSON.stringify(target),
       'Signature-Input': `sig=("@authority" "signature-agent");created=${epoch};expires=${epoch + 300};keyid="synthetic-control";alg="ed25519";tag="web-bot-auth"`, Signature: `sig=:${Buffer.alloc(64).toString('base64')}:` });
@@ -46,19 +46,23 @@ try {
     assert.ok(row);
     const evidence = JSON.parse(row.signature_evidence);
     assert.equal(evidence.verifierProfile, VERIFIER_PROFILE_VERSION);
-    assert.equal(evidence.localOutcome, target ? 'policy-rejected' : 'absent');
-    assert.deepEqual(evidence.localReasons, target ? ['discovery-policy-rejected'] : []);
+    assert.equal(evidence.localOutcome, label === 'explicit-directory' ? 'unsupported' : target ? 'policy-rejected' : 'absent');
+    assert.deepEqual(evidence.localReasons, label === 'explicit-directory' ? ['unsupported-signature-agent-location'] : target ? ['discovery-policy-rejected'] : []);
     assert.equal(evidence.coverage, null); assert.equal(row.request_evidence, null);
     trials.push({ label, outcome: evidence.localOutcome, reasons: evidence.localReasons, evidenceBytes: Buffer.byteLength(row.signature_evidence) });
   }
   const directory = await (await mf.dispatchFetch('https://publication.example/__fetch-count')).json();
   assert.equal(directory.directoryFetches, 0);
   const report = await queryStats(db, { range: '7d', traffic: 'all' });
-  assert.equal(report.totals.views, 5); assert.equal(report.referralPolicy.excludedViews, 1);
+  assert.equal(report.totals.views, 6); assert.equal(report.referralPolicy.excludedViews, 1);
   assert.equal(report.verification.localPolicyRejectedViews, 3); assert.equal(report.verification.localInvalidViews, 0);
+  assert.equal(report.verification.localUnsupportedViews, 1);
   assert.equal(report.verification.localAbsentViews, 1); assert.equal(report.verification.notRecordedViews, 1);
-  const sql = readFileSync('packages/blog/drafts/research/analytics-retrospective/signature-discovery-control-acceptance.sql', 'utf8');
-  const bindings = ['2000-01-01 00:00:00', '2100-01-01 00:00:00'];
+  const historicalSql = readFileSync('packages/blog/drafts/research/analytics-retrospective/signature-discovery-control-acceptance.sql', 'utf8');
+  assert.ok(historicalSql.includes("= '2026-10-27.5'"));
+  // Reuse the indexed query shape; the archived acceptance retains its old profile.
+  const sql = historicalSql.replace("= '2026-10-27.5'", '= ?');
+  const bindings = ['2000-01-01 00:00:00', '2100-01-01 00:00:00', VERIFIER_PROFILE_VERSION];
   const controls = (await db.prepare(sql).bind(...bindings).all()).results;
   assert.equal(controls.length, 1); assert.equal(controls[0].outcome, 'policy-rejected');
   assert.equal(controls[0].coverageAbsent, 1); assert.equal(controls[0].optionalCaptureAbsent, 1);

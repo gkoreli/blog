@@ -23,7 +23,7 @@ test('all implementation failure codes have explicit semantics; unknown codes an
 
 test('closed reason evidence cannot retain injected free text; complete failure sets stay within JSON budget', () => {
   const evidence = verificationEvidence(request, { status: 'unverified', reason: 'private-canary'.repeat(4000), reasons: [...Object.keys(FAILURE_OUTCOMES), 'other-private-canary'] });
-  assert.equal(evidence.localReason, 'unrecognized-verifier-reason');
+  assert.equal(evidence.localReason, 'unknown');
   assert.equal(evidence.localOutcome, 'indeterminate');
   assert.equal(JSON.stringify(evidence).includes('private-canary'), false);
   assert.ok(Buffer.byteLength(JSON.stringify(evidence)) <= 2048);

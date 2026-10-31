@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-10-31T20:01:15.904829+00:00",
+  "buildBaseCommit": "74ca7f1f5d96d56ab2679cfcdd9d3a61c5de05b8",
+  "build": "39 posts; isolated attached worktree",
+  "markdownValidation": "28 posts valid",
+  "analyticsTests": "392 passed at final repair checkpoint",
+  "blogTests": "174 passed",
+  "workspaceTypes": "passed in isolated checkout",
+  "pages": {
+    "ai-fetcher-research-from-experiments-to-a-cited-reference": {
+      "h1": 1,
+      "uniqueIds": true,
+      "internalTargetsAndFragments": true,
+      "htmlSha256": "94a8d46bb1d9e1c89640a107d7bead349ecd84d35b92609ae958b9d2a8b96e21"
+    },
+    "which-ai-fetchers-send-which-headers": {
+      "h1": 1,
+      "uniqueIds": true,
+      "internalTargetsAndFragments": true,
+      "htmlSha256": "419459778edd897bd62fb0945d9687667d63bb1e3080bb48816f807473d85687"
+    }
+  },
+  "reciprocalLinks": true,
+  "markdownCslBibAndPromptRoutes": true,
+  "researchRelativeLinksChecked": 52,
+  "finalExperimentSourceHashesMatch": true,
+  "nativeBrowser": "Local IAB article fully visible; desktop layout inspected. Local static preview only; no production or human label.",
+  "productionRequests": 0,
+  "limits": [
+    "No current served-production response acceptance.",
+    "Current activation must be checked separately after source push.",
+    "Historical evidence links do not refresh the referenced experiments."
+  ]
+}

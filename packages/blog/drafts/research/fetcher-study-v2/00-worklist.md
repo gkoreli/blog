@@ -1,0 +1,39 @@
+# Fetcher study v2 and follow-up article
+
+October 31, 2026 UTC. Owner requests a follow-up article, hardening and improvements to the original fetcher reference, further hands-on experiments/research, and a substantive account of recent growth and completed improvements. Continues [the completed backlink trials](../backlink-value-trials/00-worklist.md), [the analytics evidence index](../analytics-retrospective/00-worklist-index.md) and [discovery evidence](../discovery-experiment-02/00-worklist.md); their accepted work stays complete.
+
+## Governing question and form
+
+How can a small publication turn agent-assisted experiments into a technical reference that other people use, and what must change when its evidence and implementation mature? Evidence-led engineering follow-up grounded in the original ten-assistant study, subsequent signature/analytics work and Arcjet's independently published use of the study. The article must teach an operator something concrete, make the author's documented decisions visible, and recognize supported growth positively at its actual stage.
+
+The original URL remains the dated capture reference. A follow-up can explain new tests and the resulting method without relabelling September provider observations as current or duplicating an existing broad guide.
+
+## Acceptance
+
+- Inventory actual completed improvements, direct external technical reuse/distribution and supported growth; preserve source/window/method boundaries and avoid reducing all success to identified human visits.
+- Choose and freeze a consequential new experiment after inspecting existing tests. Do not present the October 29 coverage, redaction or recovered-cohort tests as new.
+- Run the fresh experiment on actual local implementations with positive, negative and preservation controls. Apply supported hardening, or retain a justified no-change result. Keep raw captures outside Git.
+- Harden article 023's present wording, dates and relationships at its stable URL; preserve historical captures, original prompts and frozen usage totals.
+- Write the follow-up with useful explanations, reproducible artifacts, first-party experience and the Arcjet citation as an observed publication outcome. Preserve complete material human shaping prompts. Treat comparisons as task-specific editorial judgments.
+- Review claims, source/version applicability, metadata, internal links and generated representations. Run appropriate tests and isolated publication build. Commit and push scoped work to main. Report source delivery, activation and served acceptance separately.
+
+## Work lanes
+
+- Parent: synthesis, freeze final experiment, run/implement, write/edit, verify and deliver.
+- Growth evidence: bounded read-only synthesis in `02-growth-and-improvements.md`.
+- Experiment design: current code/spec/history inspection and one proposed test in `03-new-experiment-design.md`; proposed remains unrun until parent freezes it.
+- Editorial challenge: overlap, original-article overclaims and constructive follow-up in `04-editorial-redteam.md`.
+
+No outreach, new account, paid service, production query, synthetic production traffic or protection bypass is part of this plan. Existing production access/answer-service stops remain in effect. Independent local experimentation and publication preparation can proceed.
+
+## Completed local work
+
+- [Shape and claim audit](01-editorial-shape-and-claims.md), [growth/improvement inventory](02-growth-and-improvements.md) and [editorial challenge/final review](04-editorial-redteam.md).
+- [New incoming-request discovery experiment](06-discovery-profile-results.md): 20 frozen cases, three actual API paths, exact Node/local-workerd agreement for baseline and final source. Five explicit-path results become unsupported; supported acceptance and every supplied resolver call stay unchanged. The new outcome survives actual collector/local D1/report processing.
+- Verifier `.31.3`, historical profile recognition and public cache `.31.8`; closed reason evidence stays inside the existing 2 KiB budget with no omitted known reasons or raw unknown text.
+- Article023 hardened at the stable URL: historical key/version statements, local CLI scope, Copilot internals, Grok rule limits, registry snapshots and upstream-submission promises corrected. September captures/date/frozen footprint retained; actual new shaping prompt appended.
+- [Follow-up source](../../../posts/038-ai-fetcher-research-from-experiments-to-a-cited-reference.md) and [five complete shaping prompts](../../../prompts/ai-fetcher-research-from-experiments-to-a-cited-reference.prompts.md). The Arcjet citation leads; recent completed results retain their dates and scope.
+- [Publication checks](publication-checks.json): 392 analytics tests,174 site tests, workspace types,28 Markdown validations and isolated39-post build pass. Both article pages have one H1/unique IDs; internal targets/fragments, reciprocal relationship, prompt/Markdown/CSL/BibTeX routes and52 research links check. Native local browser content/layout inspected. Initial harness/build/content-expectation failures are preserved in the result record and private logs.
+- [Private archive commitment](private-archive.json) retains synthetic frozen inputs, comparison results and check logs in ignored worklog storage. No raw production capture enters Git.
+
+Next: commit/push the scoped article and implementation, inspect source-linked activation, record served acceptance as a separate state, and clean up the owned preview/worktree. No new vendor trials, external outreach, production traffic/query, managed-provider verdict or human labels are claimed.

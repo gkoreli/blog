@@ -12,7 +12,7 @@ test('the measured fetcher answer has real server-rendered section destinations'
   for (const id of ['duckassistbot-what-its-signature-actually-covers', 'how-a-site-owner-can-classify-ai-fetches', 'ai-fetcher-probe-method-and-limits']) {
     assert.equal(html.split(`id="${id}"`).length - 1, 1, id);
   }
-  assert.ok(html.includes('Changing the path, query, method or User-Agent leaves verification successful.'));
+  assert.ok(html.includes('Changing the path, query, method or User-Agent left verification successful.'));
 });
 
 test('heading collisions are resolved within each document without leaking across renders', async () => {

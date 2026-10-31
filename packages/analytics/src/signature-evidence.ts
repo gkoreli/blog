@@ -18,7 +18,7 @@ export const FAILURE_OUTCOMES = {
   // Retain the old fallback for historical evidence; supported bare-URI
   // compatibility no longer overwrites a current verifier's failure cause.
   'bare-uri-signature-agent': 'unsupported', 'unsupported-alg': 'unsupported',
-  'non-ascii-signature-base': 'unsupported',
+  'non-ascii-signature-base': 'unsupported', 'unsupported-signature-agent-location': 'unsupported',
   'directory-unavailable': 'unavailable', 'key-not-found': 'unavailable', 'key-not-yet-valid': 'unavailable', 'key-expired': 'unavailable', 'key-invalid': 'unavailable', 'verification-timeout': 'unavailable',
   'dir-concurrency-limit': 'unavailable', 'dir-fetch-failed': 'unavailable', 'dir-http-status': 'unavailable',
   'dir-media-type': 'unavailable', 'dir-body-limit': 'unavailable', 'dir-body-missing': 'unavailable',
@@ -33,6 +33,9 @@ export const FAILURE_OUTCOMES = {
 type FailureReason = keyof typeof FAILURE_OUTCOMES;
 export type VerificationOutcome = typeof FAILURE_OUTCOMES[FailureReason] | 'verified' | 'absent' | 'test-injected';
 function knownReason(value: string): value is FailureReason { return Object.hasOwn(FAILURE_OUTCOMES, value); }
+// A compact closed marker preserves the 2 KiB evidence budget even when every
+// known failure is supplied. Never retain unknown free text or truncate reasons.
+const UNKNOWN_REASON = 'unknown';
 
 export function verificationOutcome(result: WebBotAuthResult, injected = false): VerificationOutcome {
   if (injected) return 'test-injected';
@@ -67,8 +70,8 @@ export function verificationEvidence(request: Request, result: WebBotAuthResult,
     version: '2026-10-27.5', source: injected ? 'test-injected' : 'local-webbotauth',
     verifierProfile: injected ? null : VERIFIER_PROFILE_VERSION,
     localStatus: result.status,
-    localReason: result.status === 'unverified' ? knownReason(result.reason) ? result.reason : 'unrecognized-verifier-reason' : null,
-    localReasons: result.status === 'unverified' ? [...new Set([result.reason, ...result.reasons ?? []].map(reason => knownReason(reason) ? reason : 'unrecognized-verifier-reason'))].sort() : [],
+    localReason: result.status === 'unverified' ? knownReason(result.reason) ? result.reason : UNKNOWN_REASON : null,
+    localReasons: result.status === 'unverified' ? [...new Set([result.reason, ...result.reasons ?? []].map(reason => knownReason(reason) ? reason : UNKNOWN_REASON))].sort() : [],
     localOutcome: verificationOutcome(result, injected),
     vendor: vendorSignatureEvidence(declarations, result, injected),
     directoryPublication: directoryPublicationEvidence(declarations, result, injected),

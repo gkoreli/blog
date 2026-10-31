@@ -1,0 +1,270 @@
+{
+  "checkedAt": "2026-10-31T19:55:37.888Z",
+  "baselineProfile": "2026-10-31.2",
+  "candidateProfile": "2026-10-31.3",
+  "inputSha256": "9866dc04191aa8b6b4c0d533108600c22d9613b5f71c5027a162ed095ff238ac",
+  "caseCount": 20,
+  "apiPathsPerRuntime": 60,
+  "runtimes": [
+    "Node v24.14.1",
+    "local workerd"
+  ],
+  "baselineAndFinalNativeMatches": true,
+  "sameResolverCallsEveryCaseAndPath": true,
+  "sameVerifiedSet": true,
+  "changed": [
+    {
+      "case": "explicit-well-known",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "unsupported",
+        "reason": "unsupported-signature-agent-location"
+      },
+      "resolverCallCount": 0
+    },
+    {
+      "case": "explicit-tenant-a",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "unsupported",
+        "reason": "unsupported-signature-agent-location"
+      },
+      "resolverCallCount": 0
+    },
+    {
+      "case": "explicit-tenant-b",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "unsupported",
+        "reason": "unsupported-signature-agent-location"
+      },
+      "resolverCallCount": 0
+    },
+    {
+      "case": "invalid-explicit-proof",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "unsupported",
+        "reason": "unsupported-signature-agent-location"
+      },
+      "resolverCallCount": 0
+    },
+    {
+      "case": "ip-explicit",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "policy-rejected",
+        "reason": "discovery-policy-rejected"
+      },
+      "resolverCallCount": 0
+    },
+    {
+      "case": "local-explicit",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "policy-rejected",
+        "reason": "discovery-policy-rejected"
+      },
+      "resolverCallCount": 0
+    },
+    {
+      "case": "explicit-legacy-parameter",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "unsupported",
+        "reason": "unsupported-signature-agent-location"
+      },
+      "resolverCallCount": 0
+    }
+  ],
+  "preserved": [
+    {
+      "case": "legacy-origin",
+      "before": {
+        "outcome": "verified",
+        "reason": null
+      },
+      "after": {
+        "outcome": "verified",
+        "reason": null
+      },
+      "resolverCallCount": 1
+    },
+    {
+      "case": "dictionary-origin",
+      "before": {
+        "outcome": "verified",
+        "reason": null
+      },
+      "after": {
+        "outcome": "verified",
+        "reason": null
+      },
+      "resolverCallCount": 1
+    },
+    {
+      "case": "legacy-directory-parameter",
+      "before": {
+        "outcome": "verified",
+        "reason": null
+      },
+      "after": {
+        "outcome": "verified",
+        "reason": null
+      },
+      "resolverCallCount": 1
+    },
+    {
+      "case": "explicit-query",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "resolverCallCount": 0
+    },
+    {
+      "case": "explicit-fragment",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "resolverCallCount": 0
+    },
+    {
+      "case": "origin-query",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "resolverCallCount": 0
+    },
+    {
+      "case": "origin-fragment",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "resolverCallCount": 0
+    },
+    {
+      "case": "root-resource-key",
+      "before": {
+        "outcome": "unavailable",
+        "reason": "key-not-found"
+      },
+      "after": {
+        "outcome": "unavailable",
+        "reason": "key-not-found"
+      },
+      "resolverCallCount": 1
+    },
+    {
+      "case": "invalid-origin-proof",
+      "before": {
+        "outcome": "invalid",
+        "reason": "signature-invalid"
+      },
+      "after": {
+        "outcome": "invalid",
+        "reason": "signature-invalid"
+      },
+      "resolverCallCount": 1
+    },
+    {
+      "case": "non-https-explicit",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "resolverCallCount": 0
+    },
+    {
+      "case": "credentials-explicit",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "resolverCallCount": 0
+    },
+    {
+      "case": "malformed-uri",
+      "before": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "after": {
+        "outcome": "invalid",
+        "reason": "invalid-signature-agent"
+      },
+      "resolverCallCount": 0
+    },
+    {
+      "case": "unsupported-type",
+      "before": {
+        "outcome": "indeterminate",
+        "reason": "unsupported-or-missing-component"
+      },
+      "after": {
+        "outcome": "indeterminate",
+        "reason": "unsupported-or-missing-component"
+      },
+      "resolverCallCount": 0
+    }
+  ],
+  "independentMath": {
+    "expectedPositive": 18,
+    "expectedCorrupted": 2,
+    "scope": "Supplied canonical-base mathematical verification only; malformed/unsafe/superseded profile controls can also have valid math."
+  },
+  "productionRequests": 0,
+  "externalDirectoryCalls": 0,
+  "limits": [
+    "No full draft conformance, vendor adoption, independent complete protocol verifier, DNS/egress guarantee or managed-service comparison.",
+    "Unchanged local query/fragment rejection is a profile boundary, not universal protocol invalidity."
+  ]
+}

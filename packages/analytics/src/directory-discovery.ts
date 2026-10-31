@@ -3,19 +3,21 @@ const LOCAL_SUFFIXES = ['localhost', 'local', 'internal', 'home.arpa'];
 
 export type DirectoryLocation =
   | { agent: string; directoryUrl: string }
-  | { reason: 'invalid-signature-agent' | 'discovery-policy-rejected' };
+  | { reason: 'invalid-signature-agent' | 'discovery-policy-rejected' | 'unsupported-signature-agent-location' };
 
 /**
  * Local URL-admission policy, not a DNS/egress safety guarantee. A permitted
  * DNS name may still resolve to an internal address or change its resolution.
  * Reject all IP literals, including public ones: directory discovery here is
- * limited to DNS origins on HTTPS's default port. WHATWG URL normalizes IPv4
+ * limited to DNS origins on HTTPS's default port. Explicit directory paths
+ * belong to another discovery profile; do not collapse their URL identity
+ * into this profile's origin or fetch them implicitly. WHATWG URL normalizes IPv4
  * integer/hex/octal spellings before the literal check.
  */
 export function directoryLocation(uri: string): DirectoryLocation {
   try {
     const url = new URL(uri);
-    if (url.protocol !== 'https:' || url.username || url.password || url.pathname !== '/' || url.search || url.hash) {
+    if (url.protocol !== 'https:' || url.username || url.password || url.search || url.hash) {
       return { reason: 'invalid-signature-agent' };
     }
     const hostname = url.hostname.replace(/\.$/, '');
@@ -26,6 +28,7 @@ export function directoryLocation(uri: string): DirectoryLocation {
       /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(label)
     ));
     if (url.port || literal || local || !dnsName) return { reason: 'discovery-policy-rejected' };
+    if (url.pathname !== '/') return { reason: 'unsupported-signature-agent-location' };
     return { agent: url.origin, directoryUrl: url.origin + DIRECTORY_PATH };
   } catch {
     return { reason: 'invalid-signature-agent' };

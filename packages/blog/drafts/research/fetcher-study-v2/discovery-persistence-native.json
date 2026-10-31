@@ -1,0 +1,91 @@
+{
+  "checkedAt": "2026-10-31T19:55:36.447Z",
+  "runtime": "v24.14.1",
+  "method": "Actual bundled collector in native local workerd/D1/crypto, with a fixture response wrapper and intercepted directory fetches. Dummy signature bytes: URL policy rejects before crypto.",
+  "verifierProfile": "2026-10-31.3",
+  "trials": [
+    {
+      "label": "loopback",
+      "outcome": "policy-rejected",
+      "reasons": [
+        "discovery-policy-rejected"
+      ],
+      "evidenceBytes": 850
+    },
+    {
+      "label": "local-name",
+      "outcome": "policy-rejected",
+      "reasons": [
+        "discovery-policy-rejected"
+      ],
+      "evidenceBytes": 850
+    },
+    {
+      "label": "port",
+      "outcome": "policy-rejected",
+      "reasons": [
+        "discovery-policy-rejected"
+      ],
+      "evidenceBytes": 850
+    },
+    {
+      "label": "unsigned",
+      "outcome": "absent",
+      "reasons": [],
+      "evidenceBytes": 787
+    },
+    {
+      "label": "excluded",
+      "outcome": "policy-rejected",
+      "reasons": [
+        "discovery-policy-rejected"
+      ],
+      "evidenceBytes": 850
+    },
+    {
+      "label": "explicit-directory",
+      "outcome": "unsupported",
+      "reasons": [
+        "unsupported-signature-agent-location"
+      ],
+      "evidenceBytes": 868
+    }
+  ],
+  "queryPlan": [
+    {
+      "id": 5,
+      "parent": 0,
+      "notused": 59,
+      "detail": "SEARCH page_observations USING INDEX idx_page_observations_public_path_time (is_owner=? AND path=? AND observed_at>? AND observed_at<?)"
+    },
+    {
+      "id": 71,
+      "parent": 0,
+      "notused": 0,
+      "detail": "USE TEMP B-TREE FOR ORDER BY"
+    }
+  ],
+  "checks": {
+    "closedOutcomePersistence": true,
+    "policySummary": true,
+    "invalidSummaryUnchanged": true,
+    "historicalNull": true,
+    "referralExclusion": true,
+    "optionalCaptureOff": true,
+    "indexedAcceptanceSql": true
+  },
+  "sourceSha256": {
+    "packages/analytics/src/directory-discovery.ts": "2acc0b003d1e96f611318385b5052bcfc493b4ad2e293ee1b68895dd90459254",
+    "packages/analytics/src/webbotauth.ts": "54348a11b372528ae042dc31b17b42c06104ec16e72e32b1e025b1f94aa38411",
+    "packages/analytics/src/signature-evidence.ts": "76830f72e20e5afd58a7e8f50a68aa0a91ea4d656736a0a7ce898f27ffa3839d",
+    "packages/analytics/src/versions.ts": "e4df46c9d57cc228367d4ca0e5f4919e355ab1e5ed4c063661242295357a9ff6",
+    "packages/blog/drafts/research/analytics-retrospective/signature-discovery-control-acceptance.sql": "b8c556e73ca8193b6efbc42d18de007ce808963c97dfab309a7789cffc2580a4"
+  },
+  "networkCalls": 0,
+  "productionCalls": 0,
+  "directoryFetches": 0,
+  "limits": [
+    "No DNS resolution, egress enforcement, rebinding, vendor identity or native-provider acceptance is tested.",
+    "The fixture response wrapper is not the production blog routing. Independent signed cases are recorded separately."
+  ]
+}

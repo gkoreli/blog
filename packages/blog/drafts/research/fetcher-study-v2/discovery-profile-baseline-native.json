@@ -1,0 +1,1449 @@
+{
+  "checkedAt": "2026-10-31T19:52:40.155Z",
+  "scope": "Incoming synthetic request discovery; no directory-response proofs",
+  "inputSha256": "9866dc04191aa8b6b4c0d533108600c22d9613b5f71c5027a162ed095ff238ac",
+  "fixtureSha256": "99de1b58ab0f52e4394849fd476c1a65498d9779ad0e116f9e5140d0a1cc6b1c",
+  "harnessSha256": "08d0e23ceeb4ad3ae21ab1eac0688706810bc3b747327d4b880d73a7a470e19a",
+  "bundledSourceSha256": "f9e19b66c058555ec34d472e49f7ecdc347485e78982836734dd38ae0e3dbdb5",
+  "sourceSha256": {
+    "packages/analytics/src/directory-discovery.ts": "48a15a0f4c839cecb649660b75e051a2aa6fa46b3be513acc20072abf9579a09",
+    "packages/analytics/src/webbotauth.ts": "54348a11b372528ae042dc31b17b42c06104ec16e72e32b1e025b1f94aa38411",
+    "packages/analytics/src/signature-evidence.ts": "b284f1e4366d371dda5e3e7b9dedeebc45bfab3f8a983663df09e534160baf75",
+    "packages/analytics/src/versions.ts": "e233a71efd6eb6d91d9ab7197bd449bad3767120c0f8299a1c101be1259fb68e",
+    "packages/analytics/src/webbotauth-audit.ts": "9ca43ed0c717f96d320c56194e092f7d19f6c7d9280c70ea96f5523c06cc00c9"
+  },
+  "nodeVersion": "v24.14.1",
+  "node": {
+    "profile": "2026-10-31.2",
+    "rows": [
+      {
+        "name": "legacy-origin",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "status": "verified",
+              "agent": "https://keys.example",
+              "evidence": {
+                "version": "2026-10-28.1",
+                "headerForm": "legacy-string",
+                "covered": {
+                  "authority": true,
+                  "targetUri": false,
+                  "method": false,
+                  "path": false,
+                  "query": false,
+                  "userAgent": false,
+                  "contentDigest": false
+                },
+                "otherComponentCount": 0,
+                "validitySeconds": 300,
+                "ageSeconds": 0,
+                "replayPolicy": "expiry-only",
+                "selection": {
+                  "policy": "first-valid-in-input-order",
+                  "matchedCandidates": 1,
+                  "taggedCandidates": 1,
+                  "attemptedCandidates": 1,
+                  "unassessedCandidates": 0
+                }
+              }
+            },
+            "outcome": "verified"
+          },
+          {
+            "mode": "candidate",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "status": "verified",
+              "agent": "https://keys.example",
+              "evidence": {
+                "version": "2026-10-27.1",
+                "headerForm": "legacy-string",
+                "covered": {
+                  "authority": true,
+                  "targetUri": false,
+                  "method": false,
+                  "path": false,
+                  "query": false,
+                  "userAgent": false,
+                  "contentDigest": false
+                },
+                "otherComponentCount": 0,
+                "validitySeconds": 300,
+                "ageSeconds": 0,
+                "replayPolicy": "expiry-only"
+              }
+            },
+            "outcome": "verified"
+          },
+          {
+            "mode": "audit",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 1,
+              "notVerifiedByProfileCandidates": 0,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 1,
+              "directoryFetches": 1
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "dictionary-origin",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "status": "verified",
+              "agent": "https://keys.example",
+              "evidence": {
+                "version": "2026-10-28.1",
+                "headerForm": "dictionary",
+                "covered": {
+                  "authority": true,
+                  "targetUri": false,
+                  "method": false,
+                  "path": false,
+                  "query": false,
+                  "userAgent": false,
+                  "contentDigest": false
+                },
+                "otherComponentCount": 0,
+                "validitySeconds": 300,
+                "ageSeconds": 0,
+                "replayPolicy": "expiry-only",
+                "selection": {
+                  "policy": "first-valid-in-input-order",
+                  "matchedCandidates": 1,
+                  "taggedCandidates": 1,
+                  "attemptedCandidates": 1,
+                  "unassessedCandidates": 0
+                }
+              }
+            },
+            "outcome": "verified"
+          },
+          {
+            "mode": "candidate",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "status": "verified",
+              "agent": "https://keys.example",
+              "evidence": {
+                "version": "2026-10-27.1",
+                "headerForm": "dictionary",
+                "covered": {
+                  "authority": true,
+                  "targetUri": false,
+                  "method": false,
+                  "path": false,
+                  "query": false,
+                  "userAgent": false,
+                  "contentDigest": false
+                },
+                "otherComponentCount": 0,
+                "validitySeconds": 300,
+                "ageSeconds": 0,
+                "replayPolicy": "expiry-only"
+              }
+            },
+            "outcome": "verified"
+          },
+          {
+            "mode": "audit",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 1,
+              "notVerifiedByProfileCandidates": 0,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 1,
+              "directoryFetches": 1
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "legacy-directory-parameter",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "status": "verified",
+              "agent": "https://keys.example",
+              "evidence": {
+                "version": "2026-10-28.1",
+                "headerForm": "dictionary",
+                "covered": {
+                  "authority": true,
+                  "targetUri": false,
+                  "method": false,
+                  "path": false,
+                  "query": false,
+                  "userAgent": false,
+                  "contentDigest": false
+                },
+                "otherComponentCount": 0,
+                "validitySeconds": 300,
+                "ageSeconds": 0,
+                "replayPolicy": "expiry-only",
+                "selection": {
+                  "policy": "first-valid-in-input-order",
+                  "matchedCandidates": 1,
+                  "taggedCandidates": 1,
+                  "attemptedCandidates": 1,
+                  "unassessedCandidates": 0
+                }
+              }
+            },
+            "outcome": "verified"
+          },
+          {
+            "mode": "candidate",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "status": "verified",
+              "agent": "https://keys.example",
+              "evidence": {
+                "version": "2026-10-27.1",
+                "headerForm": "dictionary",
+                "covered": {
+                  "authority": true,
+                  "targetUri": false,
+                  "method": false,
+                  "path": false,
+                  "query": false,
+                  "userAgent": false,
+                  "contentDigest": false
+                },
+                "otherComponentCount": 0,
+                "validitySeconds": 300,
+                "ageSeconds": 0,
+                "replayPolicy": "expiry-only"
+              }
+            },
+            "outcome": "verified"
+          },
+          {
+            "mode": "audit",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 1,
+              "notVerifiedByProfileCandidates": 0,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 1,
+              "directoryFetches": 1
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "explicit-well-known",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "explicit-tenant-a",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "explicit-tenant-b",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "explicit-query",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "explicit-fragment",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "origin-query",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "origin-fragment",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "root-resource-key",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "status": "unverified",
+              "reason": "key-not-found"
+            },
+            "outcome": "unavailable"
+          },
+          {
+            "mode": "candidate",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "status": "unverified",
+              "reason": "key-not-found"
+            },
+            "outcome": "unavailable"
+          },
+          {
+            "mode": "audit",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "partial",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 0,
+              "unavailableCandidates": 1,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 1,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 1
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "invalid-origin-proof",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "status": "unverified",
+              "reason": "signature-invalid"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "status": "unverified",
+              "reason": "signature-invalid"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [
+              "https://keys.example/.well-known/http-message-signatures-directory"
+            ],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 1
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "invalid-explicit-proof",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "non-https-explicit",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "credentials-explicit",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "ip-explicit",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "local-explicit",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "malformed-uri",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "explicit-legacy-parameter",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "invalid-signature-agent"
+            },
+            "outcome": "invalid"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "complete",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 1,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 0,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 0,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      },
+      {
+        "name": "unsupported-type",
+        "paths": [
+          {
+            "mode": "default",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "unsupported-or-missing-component"
+            },
+            "outcome": "indeterminate"
+          },
+          {
+            "mode": "candidate",
+            "calls": [],
+            "result": {
+              "status": "unverified",
+              "reason": "unsupported-or-missing-component"
+            },
+            "outcome": "indeterminate"
+          },
+          {
+            "mode": "audit",
+            "calls": [],
+            "result": {
+              "version": "2026-10-28.1",
+              "verifierProfile": "2026-10-31.2",
+              "policy": {
+                "maxCandidates": 8,
+                "deadlineMs": 2000,
+                "maxAgeSeconds": 86400,
+                "headerBudgetUnits": 32768,
+                "clockSource": "caller-supplied"
+              },
+              "scope": "paired-web-bot-auth-candidates",
+              "assessment": "partial",
+              "termination": "exhausted",
+              "inputMembers": 1,
+              "signatureMembers": 1,
+              "unpairedInputs": 0,
+              "unpairedSignatures": 0,
+              "matchedCandidates": 1,
+              "taggedCandidates": 1,
+              "attemptedCandidates": 1,
+              "verifiedCandidates": 0,
+              "notVerifiedByProfileCandidates": 0,
+              "unavailableCandidates": 0,
+              "unsupportedCandidates": 0,
+              "indeterminateCandidates": 1,
+              "unassessedCandidates": 0,
+              "unresolvedCandidates": 1,
+              "verifiedPublisherOriginLowerBound": 0,
+              "directoryFetches": 0
+            },
+            "outcome": null
+          }
+        ]
+      }
+    ]
+  },
+  "nativeComparison": "exact-match",
+  "oracle": [
+    {
+      "name": "legacy-origin",
+      "signatureMathVerified": true,
+      "baseSha256": "4ba9e900218fc5d1cb7eef20493b4b4f5e54dc0e061058cd74d711567bcd5885"
+    },
+    {
+      "name": "dictionary-origin",
+      "signatureMathVerified": true,
+      "baseSha256": "60635690a8202c50208280ef7a985e566b76a75e49249f760f82c6bc87778893"
+    },
+    {
+      "name": "legacy-directory-parameter",
+      "signatureMathVerified": true,
+      "baseSha256": "34fe96eaa851ac03a28c010268f40260c5405a819ff14101a4e30be09d868a7b"
+    },
+    {
+      "name": "explicit-well-known",
+      "signatureMathVerified": true,
+      "baseSha256": "5e9585cb3b645494cd23a0da13101432ad67ceb7ff2d886721d1b719c67a7fad"
+    },
+    {
+      "name": "explicit-tenant-a",
+      "signatureMathVerified": true,
+      "baseSha256": "9715bcfc964bb31f0449828c8308a14464403bd5d67d032a8e6629ac1a815792"
+    },
+    {
+      "name": "explicit-tenant-b",
+      "signatureMathVerified": true,
+      "baseSha256": "35ba28608885c8e6505833e042b72b31b45f6e8dbf5c6acf1cff64734df81cdd"
+    },
+    {
+      "name": "explicit-query",
+      "signatureMathVerified": true,
+      "baseSha256": "dfbe4152248b8b9b8b28c274f783f9e0973b11799547c457aba4aa0a1eec3342"
+    },
+    {
+      "name": "explicit-fragment",
+      "signatureMathVerified": true,
+      "baseSha256": "aabc88fc4a733df3ab44f3dddfe12e1b384c3f25e77381ad0e2bb55974e6a939"
+    },
+    {
+      "name": "origin-query",
+      "signatureMathVerified": true,
+      "baseSha256": "b2f04d62625fdb0bdf5a5168c5382428256ea31afa9ef63bfec6264508432d09"
+    },
+    {
+      "name": "origin-fragment",
+      "signatureMathVerified": true,
+      "baseSha256": "eb33aaf29f63bd3f40517eb1caee55ff1e802ec1e70a9d6fd196fb00bb79a8c1"
+    },
+    {
+      "name": "root-resource-key",
+      "signatureMathVerified": true,
+      "baseSha256": "fb65ffd78fda0be5538e1e68109bb42b6f820477f40039c5881fef37e1a8e3fd"
+    },
+    {
+      "name": "invalid-origin-proof",
+      "signatureMathVerified": false,
+      "baseSha256": "60635690a8202c50208280ef7a985e566b76a75e49249f760f82c6bc87778893"
+    },
+    {
+      "name": "invalid-explicit-proof",
+      "signatureMathVerified": false,
+      "baseSha256": "5e9585cb3b645494cd23a0da13101432ad67ceb7ff2d886721d1b719c67a7fad"
+    },
+    {
+      "name": "non-https-explicit",
+      "signatureMathVerified": true,
+      "baseSha256": "bb081059adec294b24352f9c8e877016e4819cb9d6535902c56772726d51a8c5"
+    },
+    {
+      "name": "credentials-explicit",
+      "signatureMathVerified": true,
+      "baseSha256": "9baacdb0086fd3feaf7566262d0b9faaa26942fad7d3ada67bb0fea04b55d789"
+    },
+    {
+      "name": "ip-explicit",
+      "signatureMathVerified": true,
+      "baseSha256": "8697600bfc278c81a96e795b249c28118cb7a20e93db909640e952223d0828d4"
+    },
+    {
+      "name": "local-explicit",
+      "signatureMathVerified": true,
+      "baseSha256": "df48779655ffe1027ce2ff0957a37cf9b56f495d821e6c9c3388ef1518db2adc"
+    },
+    {
+      "name": "malformed-uri",
+      "signatureMathVerified": true,
+      "baseSha256": "4406678b2e41e18944dada9f187c9f0a905c38ba4bb94b2fd2bc3fd765cb7a02"
+    },
+    {
+      "name": "explicit-legacy-parameter",
+      "signatureMathVerified": true,
+      "baseSha256": "b38f03231ec1fc9a07ec28a69d3f9c5ab9aea4608b04d5b26d17f2cd39615752"
+    },
+    {
+      "name": "unsupported-type",
+      "signatureMathVerified": true,
+      "baseSha256": "5a3c28d57d7e4f92d2cd0d6476e0156f68e6b96d2d98fb6d608063c9cd3d7ed0"
+    }
+  ],
+  "caseCount": 20,
+  "perRuntimeApiPaths": 60,
+  "productionRequests": 0,
+  "realDirectoryFetches": 0,
+  "d1Statements": 0,
+  "humanLabels": 0,
+  "limits": [
+    "Synthetic incoming requests, keys and exact-map resolver only.",
+    "Independent WebCrypto checks signature math; not an independent complete protocol verifier.",
+    "Origin-only local profile; direct-URL standards compatibility is not vendor adoption.",
+    "Native comparison, when run, is local workerd, not the managed provider service."
+  ]
+}

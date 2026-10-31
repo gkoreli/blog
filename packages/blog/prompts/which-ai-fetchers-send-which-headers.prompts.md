@@ -68,3 +68,7 @@ Then do something about it
 ---
 
 Btw we are not screaming chasing for the human readers people can be using their ai agents to come across us and read on behalf of them. Why dony we count that as growth? Why is this not part of our tenets please fix things
+
+---
+
+We need a follow up article and hardening and improvements (almost like v2) of that article and even more hands on experimentation and research and all the recent growth and improvements that we have done and accomplished
