@@ -1,7 +1,6 @@
 {
   "checkedAt": "2026-10-31T15:54:23.399270+00:00",
   "sourceBaseline": "b31cb86af81eab5da8b33517b5d25910909b1a12",
-  "integrationParent": "ec7661d40f99e46e1771a809224483829569ebf2",
   "frozen": {
     "frozenAt": "2026-10-31T15:41:36.850185+00:00",
     "base": "b31cb86af81eab5da8b33517b5d25910909b1a12",
@@ -117,5 +116,20 @@
     "Reproduction-supplied condition not submitted",
     "Different service requires its own protocol/cohort; do not pool it into this run"
   ],
-  "decision": "Retain article prose; preserve the actual neutral answer's useful criteria and incomplete primary task, and use claim-level citation-support review alongside source selection."
+  "decision": "Retain article prose; preserve the actual neutral answer's useful criteria and incomplete primary task, and use claim-level citation-support review alongside source selection.",
+  "recordedHeadBeforeDelivery": "ec7661d40f99e46e1771a809224483829569ebf2",
+  "delivery": {
+    "implementationCommit": "cba0b09",
+    "actualSourceParent": "ec7661d40f99e46e1771a809224483829569ebf2",
+    "branch": "main",
+    "pushed": true,
+    "finalIntegratedSiteTests": 174,
+    "finalIntegratedWorkspaceTypes": true,
+    "privateArtifacts": {
+      "path": "/Users/goga/.local/share/gkoreli/analytics-evidence/2026-10-31-public-answer-fidelity/delivery",
+      "files": 3,
+      "manifestSha256": "bc3d4aef2bb08e342c0732ab032a36fc05b631ffae4e31eecad6a6afbfaca1c3"
+    },
+    "runtimeActivationClaimed": false
+  }
 }
