@@ -1,0 +1,208 @@
+{
+  "checkedOn": "2026-10-31",
+  "article": "https://gkoreli.com/oss-radar-08-bun-aot",
+  "scope": "14 published/submitted/sent actions; current platform observations, sent threads, public issues and article-filtered reports",
+  "redditPost": {
+    "url": "https://www.reddit.com/r/bun/comments/1xi7ih0/i_tested_bun_aot_much_less_ram_for_the_compiler_a/",
+    "insightsUrl": "https://www.reddit.com/poststats/1xi7ih0/",
+    "displayedViews": "6.9K",
+    "displayedUpvotes": 25,
+    "displayedUpvoteRatio": "100%",
+    "shares": 1,
+    "comments": 2,
+    "substantiveClarificationRequests": 1,
+    "method": "fresh reload and native owner insights",
+    "uniqueReaders": null
+  },
+  "redditTrimReply": {
+    "url": "https://www.reddit.com/r/bun/comments/1xgp32y/comment/19rwm4brdp4md/",
+    "views": 7,
+    "upvotes": 1,
+    "replies": 0,
+    "shares": 0,
+    "upvoteLimit": "automatic self-upvote; no independent vote inferred"
+  },
+  "x": {
+    "posts": [
+      {
+        "post": "original",
+        "url": "https://x.com/GogaKoreli/status/2115127031583371718",
+        "impressions": 22,
+        "engagements": 3,
+        "detailExpands": 3,
+        "profileVisits": 0,
+        "linkClicks": 0,
+        "likes": 0,
+        "reposts": 0,
+        "replies": 0
+      },
+      {
+        "post": "image",
+        "url": "https://x.com/GogaKoreli/status/2115625218228338750",
+        "impressions": 24,
+        "engagements": 3,
+        "detailExpands": 2,
+        "profileVisits": 1,
+        "linkClicks": 0,
+        "likes": 0,
+        "reposts": 0,
+        "replies": 0
+      },
+      {
+        "post": "video",
+        "url": "https://x.com/GogaKoreli/status/2115822454497309070",
+        "impressions": 17,
+        "engagements": 2,
+        "detailExpands": 1,
+        "profileVisits": 0,
+        "linkClicks": 1,
+        "likes": 0,
+        "reposts": 0,
+        "replies": 0
+      },
+      {
+        "post": "invitation",
+        "url": "https://x.com/GogaKoreli/status/2116196406960758926",
+        "impressions": 7,
+        "engagements": 2,
+        "detailExpands": 2,
+        "profileVisits": 0,
+        "linkClicks": 0,
+        "likes": 0,
+        "reposts": 0,
+        "replies": 0
+      },
+      {
+        "post": "karn",
+        "url": "https://x.com/GogaKoreli/status/2115486760872665345",
+        "impressions": 27,
+        "engagements": 9,
+        "detailExpands": 7,
+        "profileVisits": 0,
+        "linkClicks": 0,
+        "likes": 1,
+        "reposts": 0,
+        "replies": 1
+      },
+      {
+        "post": "colin",
+        "url": "https://x.com/GogaKoreli/status/2115486762508415228",
+        "impressions": 18,
+        "engagements": 8,
+        "detailExpands": 7,
+        "profileVisits": 0,
+        "linkClicks": 1,
+        "likes": 0,
+        "reposts": 0,
+        "replies": 0
+      }
+    ],
+    "sumOfCapturedImpressions": 115,
+    "trackedLinkClicks": 2,
+    "clickDestinations": {
+      "articleFromVideo": 1,
+      "reproductionFromZodReply": 1
+    },
+    "uniquePeople": null,
+    "karnResponse": "https://x.com/gyankarn/status/2115692156505800758",
+    "karnResponseAt": "2026-10-29T06:28:12Z",
+    "cliSubmissionsObserved": 0,
+    "video": {
+      "platformUniqueViews": 4,
+      "platformViews": 8
+    }
+  },
+  "site": {
+    "period": {
+      "start": "2026-10-25",
+      "end": "2026-10-31",
+      "timeZone": "UTC",
+      "granularity": "hour",
+      "updatedAt": "2026-10-31T15:50:48.639Z"
+    },
+    "allRequestObservations": 136,
+    "kinds": {
+      "browser": 25,
+      "other-bot": 23,
+      "cloud-browser": 39,
+      "ai-search": 19,
+      "unresolved": 12,
+      "search-crawler": 7,
+      "http-client": 3,
+      "seo-crawler": 2,
+      "ai-assistant": 1,
+      "ai-crawler": 5
+    },
+    "browserSignalObservations": 25,
+    "browserReferrers": [
+      {
+        "referrerHost": "reddit.com",
+        "views": 7
+      },
+      {
+        "referrerHost": "t.co",
+        "views": 2
+      },
+      {
+        "referrerHost": "bing.com",
+        "views": 1
+      },
+      {
+        "referrerHost": "github.com",
+        "views": 1
+      },
+      {
+        "referrerHost": "kagi.com",
+        "views": 1
+      }
+    ],
+    "otherBrowserExternalReferrers": 3,
+    "unattributedBrowserObservations": 10,
+    "declaredAiRoleObservations": 25,
+    "organicAiAcquisitionEstablished": false,
+    "confirmedPeople": null,
+    "postSpecificAttribution": false
+  },
+  "github": {
+    "polkadotOtherComments": 0,
+    "polkadotCommentReactions": 0,
+    "reproductionPathPlatformViews": 4,
+    "reproductionPathPlatformUniques": 3,
+    "polkadotFolderPlatformViews": 2,
+    "polkadotFolderPlatformUniques": 1,
+    "trafficScope": "GitHub rolling 14-day popular-path report, not campaign-only or operator-use evidence"
+  },
+  "emails": {
+    "cooperpressMessagesInSentThread": 1,
+    "assafMessagesInSentThread": 1,
+    "hnMessagesInSentThread": 1,
+    "replyObserved": false
+  },
+  "editorial": {
+    "changelogExactUrlSearchMatch": false,
+    "verifiedPlacement": false,
+    "jsWeeklyLatestChecked": "808, October 27",
+    "nodeWeeklyLatestChecked": "645, October 29",
+    "labnotesLatestWeekendIssueChecked": "October 24",
+    "limit": "No selection or rejection inferred from missing coverage; inspected issues and sent threads only"
+  },
+  "hn": {
+    "id": 50262191,
+    "dead": true,
+    "score": 1
+  },
+  "unavailable": {
+    "xPrivateMessages": "automatic approval review blocked inbox access; user approval requested, no message contents read",
+    "newsletterConversions": "D1 metadata authentication failed with code 10000; no diagnostic SQL or conversion query executed"
+  },
+  "queries": {
+    "articleReportHttpGets": 2,
+    "coldFills": 2,
+    "directDiagnosticSqlStatements": 0,
+    "d1MetadataAttempts": 1,
+    "reportedD1RowsRead": null,
+    "readMeterLimit": "public reports omit the meter; two path-filtered seven-day fills, no retries or bypass"
+  },
+  "newExternalCommunications": 0,
+  "monitorScheduled": false
+}

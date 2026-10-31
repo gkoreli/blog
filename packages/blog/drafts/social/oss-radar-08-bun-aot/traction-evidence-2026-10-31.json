@@ -1,0 +1,192 @@
+{
+  "checkedOn": "2026-10-31",
+  "privateCaptureDirectory": "~/.local/share/gkoreli/social-evidence/2026-10-31-bun-aot-audit/",
+  "temporaryCaptureDirectory": "/tmp/bun-adoption-audit-20261031",
+  "files": [
+    {
+      "file": "changelog-exact-search.txt",
+      "bytes": 6430,
+      "sha256": "f6622b7a1c9dbae031d5284820417b28d186702debdb05faa54e07c9807dbd5e"
+    },
+    {
+      "file": "d1-info.json",
+      "bytes": 1538,
+      "sha256": "9d8ef5f03bf08fbc35325b52a3373d229e1435ea208aa9dbf030cf97032cb939"
+    },
+    {
+      "file": "github-comment-audit.json",
+      "bytes": 2276,
+      "sha256": "f9ddddb0f11ef84e6fe15a143f47626d00b9843e595cc4090fecdf53c440d885"
+    },
+    {
+      "file": "github-popular-paths.json",
+      "bytes": 1681,
+      "sha256": "0b155b4a27dc15d74d3cb4dd51486ffd316844cfe70f66278475567bd952f301"
+    },
+    {
+      "file": "github-referrers.json",
+      "bytes": 244,
+      "sha256": "1124e5bb5db2a34aacc74c53d64a2825c7b17968989f39d8a136347665568227"
+    },
+    {
+      "file": "gmail-campaign-search.json",
+      "bytes": 3126,
+      "sha256": "3f3524f099d69e3e550c6db3fcb9bdc14b8ea5531642869dfc9b6f86ea61b19f"
+    },
+    {
+      "file": "gmail-hn-search.json",
+      "bytes": 1171,
+      "sha256": "ba3dc34188ba5f14b620585df593cb0156267ff3117bdde64788a606f0ea0340"
+    },
+    {
+      "file": "gmail-hn-thread.json",
+      "bytes": 2537,
+      "sha256": "17b4917efcb91d2292ed435b1bf186f1bc8e9011310cc2ee3f2638bb37753390"
+    },
+    {
+      "file": "gmail-pitch-threads.json",
+      "bytes": 6108,
+      "sha256": "dc951f302d883df09d6eb518bcccaeaae9db7339b3f91cac8cd76e025bbc8d20"
+    },
+    {
+      "file": "hn-item.json",
+      "bytes": 106,
+      "sha256": "cf09af709185fe76bfbe2f60ac2ad898b6506ebe38ce8644f3c223d637ab0ad0"
+    },
+    {
+      "file": "jsweekly-808.html",
+      "bytes": 50671,
+      "sha256": "47d7949111dde2b1d4bf75bce731a379a6379626312fab1d79a2e041cc97adb7"
+    },
+    {
+      "file": "labnotes-rss.xml",
+      "bytes": 126376,
+      "sha256": "d5f5eb03e57f2020ef1b23de6f919b4174dbbb89c92dc7089c8a91e73154e5ad"
+    },
+    {
+      "file": "nodeweekly-latest.html",
+      "bytes": 43969,
+      "sha256": "dacbc7f55ade08c440eb9266d4808befc15f439b6ee61db099ef5f277bbe013c"
+    },
+    {
+      "file": "nodeweekly.html",
+      "bytes": 12290,
+      "sha256": "3ff42eb0a34e2c40fd0a74778b7b58425ae3edc2b1a196f1baadeceb9542fc93"
+    },
+    {
+      "file": "reddit-insights.png",
+      "bytes": 64560,
+      "sha256": "7313ff3c8284471f53bbef6f3a36d4c75856bfe5eedf2046c0c05fb65be7ea81"
+    },
+    {
+      "file": "reddit-post-insights.txt",
+      "bytes": 9302,
+      "sha256": "85a4da00350f1d487612c949bb7d4a86383c3e89c387813041085a4b623e6fd9"
+    },
+    {
+      "file": "reddit-post.txt",
+      "bytes": 16779,
+      "sha256": "556804bb5336b3bf99b5cd3452b021d6463ebd006dc30910489adde8edcb4db3"
+    },
+    {
+      "file": "reddit-public.headers",
+      "bytes": 1197,
+      "sha256": "9fe61493ae058a7b7a20c4ad648ac80f05ec60cf0e10c0a962ab550c3a7c1fc3"
+    },
+    {
+      "file": "reddit-public.json",
+      "bytes": 189908,
+      "sha256": "13bcba13bd1bad5aace04e8a76880b710337a8d595224967e874401832cc203c"
+    },
+    {
+      "file": "reddit-trim-expanded.txt",
+      "bytes": 26631,
+      "sha256": "1a76cbdc8b1ef1c495270be97f5eb4f25e44dde43bcef6be1ec0533a2a71af3e"
+    },
+    {
+      "file": "reddit-trim-insights.txt",
+      "bytes": 9373,
+      "sha256": "d3423dc3000f885cc3fb40d2c4f76c983f5b2ed89bd352db718d3285bc27f9fd"
+    },
+    {
+      "file": "reddit-trim-thread.txt",
+      "bytes": 24650,
+      "sha256": "34afb7ac4fe25f143b70d6acd147f197af565897c9ea5e19bb96b985417d4357"
+    },
+    {
+      "file": "site-all.headers",
+      "bytes": 624,
+      "sha256": "679611178ba607e1e8251b2e95eb33df0c01e5e0bf80d3618f7933aac2caa75f"
+    },
+    {
+      "file": "site-all.json",
+      "bytes": 21984,
+      "sha256": "3b3003cf909022945d22229af99ca27582dbaf4df980e041fd11030dad32b933"
+    },
+    {
+      "file": "site-browser.headers",
+      "bytes": 630,
+      "sha256": "5b3a2dd92c02e2f4414e514fd8453831f2e4ef8460a2c3cd836637e2c6548240"
+    },
+    {
+      "file": "site-browser.json",
+      "bytes": 15355,
+      "sha256": "b901531affe0dfbed9a7929495ea68ed177ea6f961873042678ad99a42e61c11"
+    },
+    {
+      "file": "x-colin-analytics.txt",
+      "bytes": 2664,
+      "sha256": "383a38e1908e661bbf727d9c9db3f8333d3611630eae739122c1b5eb3cbdde8d"
+    },
+    {
+      "file": "x-image-analytics.txt",
+      "bytes": 3339,
+      "sha256": "7e6bbc340585673231075f971cdb4124a588479c440bc483bef53edb42a28f5e"
+    },
+    {
+      "file": "x-invitation-analytics.txt",
+      "bytes": 2611,
+      "sha256": "027447e27cda4b63c426b1a9a856a92489483dbf52570eaa24f36d59596f1805"
+    },
+    {
+      "file": "x-karn-analytics.txt",
+      "bytes": 3047,
+      "sha256": "d34891fd113400a47b1f7fbc910436aa51c3b52ec7ad1384961ec4c4e59880e6"
+    },
+    {
+      "file": "x-karn-reply.png",
+      "bytes": 115735,
+      "sha256": "9f7626bfcc67f85d8496f83c657ab1d287354285a39756b35dac47f069f4ce4b"
+    },
+    {
+      "file": "x-karn-response.png",
+      "bytes": 95712,
+      "sha256": "6a4337ec432e079b7678077a564bbd66c51f8901fbe41e3482b0b2a73eccea95"
+    },
+    {
+      "file": "x-karn-response.txt",
+      "bytes": 20450,
+      "sha256": "5c7b3c841907d37fc49700d5c4229fc7a67eac72fe3c87f3a393f828066c6f69"
+    },
+    {
+      "file": "x-karn-thread.txt",
+      "bytes": 20438,
+      "sha256": "4d3ab749b3b585cf205c14246af892927027aa85b13b203ff786dbc95cd27a71"
+    },
+    {
+      "file": "x-original-analytics.txt",
+      "bytes": 2636,
+      "sha256": "f051753dc3a345f4950e73070b2acde7fe3ec0304ab07f575af555c761d1d4be"
+    },
+    {
+      "file": "x-summary.json",
+      "bytes": 1575,
+      "sha256": "83d3c03c2ae565926a28e3058e4be7bd85435a95db11e5ab88edbaeccfa9c3f3"
+    },
+    {
+      "file": "x-video-analytics.txt",
+      "bytes": 3111,
+      "sha256": "115aca908b04a144c1245fdf088ad8a96773baa715a75c047505307d08e944f0"
+    }
+  ]
+}
