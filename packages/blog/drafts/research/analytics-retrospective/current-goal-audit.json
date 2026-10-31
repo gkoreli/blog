@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T08:38:59.612559+00:00",
-  "sourceBaseline": "a3462164a54ca750fbbadc00352563267066c3ef",
+  "checkedAt": "2026-10-31T08:47:52.629228+00:00",
+  "sourceBaseline": "24e9afbe9620a1f2cd9b4991271ed55983329ae3",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "a346216 accepted exact heading repair activation and preserved single served403without retry."
+    "scope": "24e9afb established native BIC cause without retrying the rejected control."
   },
-  "scope": "Read-only native Security Events and saved-response audit identifies BIC denial and contextual matching limits.",
+  "scope": "Implemented and accepted a dedicated offline access-evidence ledger against the retained BIC control; no new live measurement.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -22,7 +22,8 @@
     "incomingVerifier": "2026-10-31.2",
     "offlineDirectoryAudit": "2026-10-31.2",
     "statsReportCache": "2026-10-31.3",
-    "offlineResourceReach": "2026-10-31.1"
+    "offlineResourceReach": "2026-10-31.1",
+    "offlineAccessEvidence": "2026-10-31.1"
   },
   "sourceSha256": {
     "classify.ts": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
@@ -40,7 +41,8 @@
     "directory-response-audit.ts": "f72a1ad7609ac8b05ed92b2a4a74aab2e7396324bd7bf86f54bd9846ac1ca710",
     "search-evidence.ts": "2dcca61325112b040e30c39d1f5ebb0281da270ad7de164bfe13dc7e47fb8c8c",
     "verifier-profile.ts": "d4d9d00f32c1a750878c1b80a66d088a27557b924ad862a6e939bc7e5c221864",
-    "resource-reach.ts": "a2d5341e3870a902be4c740f308aadd55ff166f4b48277de352ce75383d32718"
+    "resource-reach.ts": "a2d5341e3870a902be4c740f308aadd55ff166f4b48277de352ce75383d32718",
+    "access-evidence.ts": "20158a54ed1fb93f20908298dfacb049719baf97f149432ad7ba7664585436c9"
   },
   "requirements": [
     {
@@ -52,14 +54,17 @@
         "readerkind.ts",
         "classification-evidence.ts",
         "signature-summary.ts",
-        "native-bot-evidence.ts"
+        "native-bot-evidence.ts",
+        "access-evidence.ts"
       ],
       "evidence": [
         "90-fetch-metadata-parsing-and-evidence.md",
         "92-public-parsing-states-and-browser-signals.md",
         "105-public-cache-explanations-and-metadata-compatibility.md",
         "112-native-booleans-need-their-own-denominators.md",
-        "native-boolean-availability-release.json"
+        "native-boolean-availability-release.json",
+        "../discovery-experiment-02/04-offline-access-ledger.md",
+        "../discovery-experiment-02/access-ledger-checks.json"
       ],
       "limit": "Missing, unsupported, conflicting and native unavailable values stay distinct. This does not prove human accuracy or managed-verifier agreement."
     },
@@ -141,7 +146,8 @@
       "source": [
         "article-reach.ts",
         "article-reach-contract.ts",
-        "resource-reach.ts"
+        "resource-reach.ts",
+        "access-evidence.ts"
       ],
       "evidence": [
         "109-weekly-measurement-history.md",
@@ -153,7 +159,9 @@
         "126-retained-windows-and-resource-trends.md",
         "retained-resource-window-findings.json",
         "../discovery-experiment-02/03-edge-access-evidence.md",
-        "../discovery-experiment-02/edge-access-evidence.json"
+        "../discovery-experiment-02/edge-access-evidence.json",
+        "../discovery-experiment-02/04-offline-access-ledger.md",
+        "../discovery-experiment-02/access-ledger-checks.json"
       ],
       "limit": "Weekly joint measurement history is implemented and has dated production acceptance; Research108's identical-report counterexample is superseded for that gap. Stage controls distinguish response/script/queue/receipt, but representative human/device/RUM behavior remains unmeasured."
     },
@@ -311,27 +319,36 @@
     }
   ],
   "effectsThisAudit": {
+    "offlineCapabilityChanged": true,
+    "liveCollectorChanged": false,
+    "productionRequests": 0,
+    "sqlStatements": 0,
+    "newNativeObservations": 0,
+    "replayedRetainedNativeRecords": 1,
+    "newHumanLabels": 0,
+    "registeredCalibrationTrials": 0,
+    "modelTrialsOrRegrades": 0,
+    "rulesCredentialsOrScopesChanged": false,
+    "articleChanged": false,
+    "sourceActivationMeasured": false,
     "runtimeChanged": false,
     "productionSiteRequests": 0,
     "productionSqlStatements": 0,
-    "nativeMatchingSecurityEventsObserved": 1,
-    "newHumanLabels": 0,
+    "nativeMatchingSecurityEventsObserved": 0,
     "newRegisteredCalibrationTrials": 0,
     "newControlledAnswerTrials": 0,
     "articleChangedByThisWork": false,
-    "rulesCredentialsOrScopesChanged": false,
-    "servedDestinationAcceptance": false,
-    "rejectingFeatureEstablished": "bic"
+    "servedDestinationAcceptance": false
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: saved1010response corroborated by context-matched native BIC block; stage, multiplicity and ID-uniqueness boundaries established",
+    "thisTurnClassification": "progress: offline access ledger with actual retained control, ambiguity/multiplicity/unknown semantics and corrected operator provenance",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Design and implement a separate bounded offline access-evidence ledger against the saved control: distinct attempts, security events, responses, collector and classification stages; contextual Ray joins, multiplicity/conflict handling and unknown downstream states. Do not loosen the existing calibration matrix, security policy or retry the denied request.",
+  "nextBoundedAction": "Inspect retained failed fetcher/calibration control receipts for recoverable response/context/security evidence. Produce a scoped availability inventory and reconcile only supported joins with the access ledger; stop at named capture gaps. Do not repeat accepted controls, make new site requests, query D1, change protection or infer absent events.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -357,11 +374,11 @@
     "scopeAfterOwnerContinuation": "Historical checkpoint for missing measurement inputs; not a prohibition on independent implementation, observed agent growth or discovery work."
   },
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
-  "goalStatusScope": "Persistent goal tracker confirmed active this turn. Offline acceptance is new progress; historical blocked checkpoint and claim-specific gates remain preserved.",
+  "goalStatusScope": "Persistent goal remains active. Offline acceptance is new progress; historical blocked checkpoint and claim-specific gates remain preserved.",
   "latestContinuation": {
-    "research": "../discovery-experiment-02/03-edge-access-evidence.md",
-    "receipt": "../discovery-experiment-02/edge-access-evidence.json",
-    "nextBoundedAction": "Design and implement a separate bounded offline access-evidence ledger against the saved control: distinct attempts, security events, responses, collector and classification stages; contextual Ray joins, multiplicity/conflict handling and unknown downstream states. Do not loosen the existing calibration matrix, security policy or retry the denied request."
+    "research": "../discovery-experiment-02/04-offline-access-ledger.md",
+    "receipt": "../discovery-experiment-02/access-ledger-checks.json",
+    "nextBoundedAction": "Inspect retained failed fetcher/calibration control receipts for recoverable response/context/security evidence. Produce a scoped availability inventory and reconcile only supported joins with the access ledger; stop at named capture gaps. Do not repeat accepted controls, make new site requests, query D1, change protection or infer absent events."
   },
   "latestAcceptedSourceActivation": {
     "sourceCommit": "762e3b5a7f6b2c7b2770ae22f41f730ceca6ba84",

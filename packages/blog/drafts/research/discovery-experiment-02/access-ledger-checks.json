@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "offline-access-ledger-2026-10-31.1",
+  "checkedAt": "2026-10-31T08:47:52.629228+00:00",
+  "sourceBaseline": "24e9afbe9620a1f2cd9b4991271ed55983329ae3",
+  "implementation": "../../../../analytics/src/access-evidence.ts",
+  "contract": "../../../../analytics/ACCESS_EVIDENCE.md",
+  "apiVersion": "access-evidence-v1",
+  "profile": "2026-10-31.1",
+  "sourceSha256": "20158a54ed1fb93f20908298dfacb049719baf97f149432ad7ba7664585436c9",
+  "acceptance": {
+    "analyticsTests": 364,
+    "workspaceTypes": true,
+    "isolatedAcceptedRun": true,
+    "nodeVersion": "24.14.1",
+    "pnpmVersion": "9.15.4",
+    "nodeWorkerd": {
+      "cases": 32,
+      "accepted": 20,
+      "rejected": 12,
+      "exactAgreement": true,
+      "rounds": 1,
+      "syntheticCases": 31,
+      "actualSavedControlCases": 1
+    },
+    "actualSavedControl": {
+      "version": "access-evidence-v1",
+      "profile": "2026-10-31.1",
+      "provenance": "saved-control",
+      "sourceAuthenticity": "not-established",
+      "populationCompleteness": "not-established",
+      "totals": {
+        "plannedAttempts": 1,
+        "executedAttempts": 1,
+        "receivedResponses": 1,
+        "suppliedSecurityRecords": 1,
+        "uniquelyAssignedSecurityRecords": 1,
+        "ambiguousSecurityRecords": 0,
+        "unmatchedSecurityRecords": 0,
+        "attemptsWithAssignedSecurityRecords": 1,
+        "suppliedCollectorRecords": 0,
+        "completeCollectorLookups": 0,
+        "partialCollectorLookups": 0,
+        "unknownCollectorAttempts": 1,
+        "identicalSecurityFactGroups": 0
+      },
+      "attempts": [
+        {
+          "ordinal": 1,
+          "executed": true,
+          "labelSource": "controlled-client-receipt",
+          "declaredOperator": "automation",
+          "timingBasis": "receipt-second-window",
+          "responseStatus": 403,
+          "assignedSecurityRecords": 1,
+          "ambiguousSecurityRecords": 0,
+          "collector": "unknown",
+          "collectorLookupState": "not-supplied",
+          "suppliedCollectorRecords": 0,
+          "storedKinds": [],
+          "methodHistory": [],
+          "warnings": []
+        }
+      ],
+      "securityRecords": [
+        {
+          "ordinal": 1,
+          "association": "unique-context-match",
+          "candidateAttemptOrdinals": [
+            1
+          ],
+          "sameRayTimeCompatibleContextConflicts": 0,
+          "sameRayOutsideWindow": 0,
+          "action": "block",
+          "feature": "bic",
+          "sampleInterval": 1,
+          "identicalFactCopies": 1
+        }
+      ],
+      "limits": [
+        "Counts describe supplied records and declared scope. Schema validation authenticates neither captures, labels nor lookup completeness; no population completeness is established.",
+        "Security records are not unique requests or visits. Repeated facts are surfaced without deduplication; sampleInterval is not a population multiplier or a completeness promise.",
+        "A contextual Ray match corroborates supplied evidence; it is not identity authentication. Receipt-second overlap is not a measured execution duration or guaranteed provider-clock agreement.",
+        "Complete-empty means zero supplied records in a caller-declared complete lookup scope, not absent Worker invocation or global storage absence. Partial and unavailable evidence remain distinct.",
+        "Response status does not prove article delivery, reading or usefulness. BIC actions do not establish malicious intent, human identity, purpose or RFC9421 verification.",
+        "Stored kinds are observations, not truth labels or accuracy measurements. This report does not enter the calibration confusion matrix. Input references, Rays, context and arbitrary source labels are omitted."
+      ]
+    },
+    "collectorEntry": {
+      "method": "Identical relative entry/esbuild options in HEAD baseline and candidate; offline module not imported by collector.",
+      "baseline": {
+        "bytes": 333942,
+        "sha256": "15eba7182e052858d32b1b7b6338d6958a902d0e20cd5877bffe86b9b4c5a3ff"
+      },
+      "candidate": {
+        "bytes": 333942,
+        "sha256": "15eba7182e052858d32b1b7b6338d6958a902d0e20cd5877bffe86b9b4c5a3ff"
+      },
+      "identical": true,
+      "productionBehaviorMeasured": false
+    },
+    "calibrationSourceUnchanged": true,
+    "originalArchiveFilesVerified": 15
+  },
+  "review": {
+    "issue": "Receipt provenance had been inferred as automation.",
+    "repair": "Required independent operator declaration; human-operated receipt control.",
+    "finalSourceReview": "No remaining material defect found; not independent provider validation."
+  },
+  "effects": {
+    "offlineCapabilityChanged": true,
+    "liveCollectorChanged": false,
+    "productionRequests": 0,
+    "sqlStatements": 0,
+    "newNativeObservations": 0,
+    "replayedRetainedNativeRecords": 1,
+    "newHumanLabels": 0,
+    "registeredCalibrationTrials": 0,
+    "modelTrialsOrRegrades": 0,
+    "rulesCredentialsOrScopesChanged": false,
+    "articleChanged": false,
+    "sourceActivationMeasured": false
+  },
+  "privateArchive": {
+    "location": "packages/blog/worklog/analytics-evidence/2026-10-31-access-ledger",
+    "files": 33,
+    "manifestSha256": "29746ac48c4ea75fb00921e85aa7f26398dc6ae990a5a926f018ca36a5e82965"
+  },
+  "limits": [
+    "Only supplied controlled attempts and minimized saved records; no population completeness, unique audience, reading, purpose or identity claim.",
+    "Complete-empty refers to caller-declared lookup scope; unknown/partial/unavailable remain explicit. No absent Worker/storage inference.",
+    "Contextual Ray joining corroborates supplied records; clock alignment, labels and authenticity remain caller-established.",
+    "BIC is a provider security feature, not RFC9421 verification or malicious-intent proof.",
+    "No raw-collection activation, production classifier/calibration change or current served-body acceptance."
+  ],
+  "goalStatus": "active",
+  "goalComplete": false,
+  "nextBoundedAction": "Inspect retained failed fetcher/calibration control receipts for recoverable response/context/security evidence. Produce a scoped availability inventory and reconcile only supported joins with the access ledger; stop at named capture gaps. Do not repeat accepted controls, make new site requests, query D1, change protection or infer absent events."
+}

@@ -28,7 +28,8 @@
     "./fetch-metadata-summary": "./src/fetch-metadata-report-contract.ts",
     "./article-reach": "./src/article-reach.ts",
     "./article-reach-contract": "./src/article-reach-contract.ts",
-    "./resource-reach": "./src/resource-reach.ts"
+    "./resource-reach": "./src/resource-reach.ts",
+    "./access-evidence": "./src/access-evidence.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
