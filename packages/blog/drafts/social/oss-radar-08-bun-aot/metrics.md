@@ -86,3 +86,31 @@ The answer identifies the October 27 macOS preview, separates trimming’s 51.8 
 ## October 31: measured adoption audit
 
 [Current audit](traction-2026-10-31.md) and [selected results](traction-summary-2026-10-31.json): the Reddit post reports **6.9K views / 25 upvotes / one share / two comments**. One comment asks for a clearer comparison. [Karn replied](https://x.com/gyankarn/status/2115692156505800758) to the RAM explanation and thanked us for measuring. Six X actions total 115 captured impressions and two tracked outbound clicks: one article, one code. The exact-path site reports contain 25 Browser-signal observations, including seven claiming Reddit, two X and one GitHub; these are not confirmed people or a reliable post-level join. No CLI submission, independent rerun, maintainer/editor reply or newsletter placement is verified. HN remains dead. X private messages need separately requested approval; signup changes remain unverified after metadata authentication failed. The audit sent no new communications and scheduled no monitor. Historical receipts and article measurements are unchanged.
+
+## October 31: reader replies executed
+
+Goga explicitly requested replying to Karn on X and to the Reddit commenter who questioned the compiler/AOT comparison. Both scoped replies were posted once and checked on their permanent pages. This is subsequent communication after the earlier read-only audit, not a change to its historical metrics.
+
+### X reply to Karn
+
+[Published reply](https://x.com/GogaKoreli/status/2116566572873768968), **9:22:49 AM Pacific / 16:22:49 UTC**, replying to [Karn's response](https://x.com/gyankarn/status/2115692156505800758). Two sentences / 150 weighted characters:
+
+```text
+Yeah, that explains part of the drop. My small server only saved about 9% peak RAM overall, so I'd still measure each app before assuming it'll halve.
+```
+
+The fresh parent thread had zero replies before posting. The exact composer text, author, published body, timestamp and ancestry were checked; X's unauthenticated embedding endpoint independently returned the author and exact text. Saved a screenshot of the canonical status.
+
+### Reddit clarification
+
+[Published reply](https://www.reddit.com/r/bun/comments/1xi7ih0/comment/19rxrmn00mmht/) directly under [antigravitys-rainbow's question](https://www.reddit.com/r/bun/comments/1xi7ih0/comment/19rvljtee3syr/):
+
+```text
+The test program was the TypeScript compiler itself (tsc 6.0.3), checking the Effect codebase. I built that same program as a regular Bun executable (JIT) and as a Bun AOT executable.
+
+5.02s vs 1.54s is how long each took to check Effect, not how long Bun took to build them. I should've labelled those columns 'Bun JIT' and 'Bun AOT'.
+```
+
+The fresh question had no existing author reply. Checked the full composer, clicked Comment once, then verified the exact body and child permalink as `u/ggaua`. Reopened the canonical reply and inspected its body and parent context; saved a screenshot. The explanation separates the program being measured (tsc 6.0.3 checking Effect) from the two execution modes and identifies the reported seconds as checking time. It acknowledges the table-label ambiguity without changing the existing post or article. Independent anonymous availability was not newly verified.
+
+Private exact copies, native captures, screenshots and the public embedding response are archived outside Git in `~/.local/share/gkoreli/social-evidence/2026-10-31-bun-reader-replies/` (working captures in `/tmp/bun-reader-replies-20261031/`). Posting is verified; no later reaction, article click, reproduction or adoption is claimed. No additional message, private-inbox access or monitoring job was created.
