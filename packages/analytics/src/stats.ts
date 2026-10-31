@@ -741,9 +741,8 @@ export function parseStatsQuery(params: URLSearchParams): StatsQuery | string {
     return 'kind must be one of the reader kinds';
   }
   const kind = rawKind === null ? undefined : rawKind;
-  const scoped = agent !== undefined || kind !== undefined;
   const traffic = trafficValue === null
-    ? scoped ? 'all' : 'browser'
+    ? 'all'
     : parseTrafficFilter(trafficValue);
   if (traffic === null) return 'traffic must be browser, agents, crawlers, automation, unresolved, or all';
   if (agent !== undefined && kind !== undefined && kind !== 'signed-agent' && kind !== 'unresolved' && !agentReaderKinds(agent).includes(kind)) {

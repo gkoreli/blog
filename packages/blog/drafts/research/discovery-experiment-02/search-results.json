@@ -1,0 +1,381 @@
+{
+  "observedAt": "2026-10-31T00:52:30.120026+00:00",
+  "querySet": "questions.json",
+  "method": "Four separate exact public web-tool searches, one per declared question; result order is tool order and is not asserted as a Google rank.",
+  "rows": [
+    {
+      "questionId": "headers",
+      "rawSha256": "d857a796df2dd5021a4aca549132ba103b1418b18d2c1d71ab2fd77a12ebb962",
+      "returnedSources": [
+        {
+          "title": "Accept-Language header - HTTP | MDN",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Accept-Language"
+        },
+        {
+          "title": "Fetch metadata - HTTP | MDN",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Fetch_metadata"
+        },
+        {
+          "title": "ChatGPT, Claude, Gemini and Grok Fetcher Headers, Measured",
+          "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers"
+        },
+        {
+          "title": "Content negotiation - HTTP | MDN",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation"
+        },
+        {
+          "title": "Request headers - what Googlebot and AI bots send with every request - EdgeComet",
+          "url": "https://edgecomet.com/blog/request-headers-what-googlebot-and-ai-bots-send-with-every-request/"
+        },
+        {
+          "title": "RFC 9110: HTTP Semantics",
+          "url": "https://www.rfc-editor.org/rfc/rfc9110.html"
+        },
+        {
+          "title": "An Eight-Week Analysis of Accept-Language Headers Across Major AI Bots | HackerNoon",
+          "url": "https://hackernoon.com/an-eight-week-analysis-of-accept-language-headers-across-major-ai-bots"
+        },
+        {
+          "title": "Which AI Fetchers Send Which Headers, Measured on a Live Site \u2014 Web Pulse",
+          "url": "https://wpnews.pro/news/which-ai-fetchers-send-which-headers-measured-on-a-live-site"
+        },
+        {
+          "title": "Overview of OpenAI Crawlers",
+          "url": "https://developers.openai.com/api/docs/bots?app=1"
+        },
+        {
+          "title": "HTTP headers - HTTP | MDN",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers?trk=public_post_comment-text"
+        },
+        {
+          "title": "ChatGPT-User: User Agent, IP Ranges, robots.txt | PROXIES.SX",
+          "url": "https://www.proxies.sx/crawlers/chatgpt-user"
+        },
+        {
+          "title": "content/files/en-us/web/http/reference/headers/accept-language/index.md at main \u00b7 mdn/content \u00b7 GitHub",
+          "url": "https://github.com/mdn/content/blob/main/files/en-us/web/http/reference/headers/accept-language/index.md"
+        },
+        {
+          "title": "PRD: ChatGPT Chat Manager",
+          "url": "https://assets.nextleap.app/submissions/PRD_ChatGPTChatManager-cb56fa40-9e1e-4167-87e2-cb3f94e20bc8.pdf"
+        },
+        {
+          "title": "List of HTTP header fields",
+          "url": "https://en.wikipedia.org/wiki/List_of_HTTP_header_fields"
+        },
+        {
+          "title": "Beer-bridge",
+          "url": "https://secweb.work/presentations/2022/Beer-bridge.pdf"
+        },
+        {
+          "title": "Anyone know how to reverse the gpt3.5 to gpt4 in the same chat?",
+          "url": "https://www.reddit.com/r/ChatGPT/comments/13x4j46"
+        },
+        {
+          "title": "Machine learning model for bot and applications",
+          "url": "https://unire.unige.it/bitstream/handle/123456789/6780/tesi25610488.pdf?group=an&isAllowed=y&sequence=1"
+        },
+        {
+          "title": "Interacting with ChatGPT",
+          "url": "https://indico.global/event/10406/contributions/100196/attachments/46159/87281/Creating-questions-ChatGPT.pdf"
+        },
+        {
+          "title": "I tricked ChatGPT to give me any metadata it receives",
+          "url": "https://www.reddit.com/r/ChatGPT/comments/1pgo288/i_tricked_chatgpt_to_give_me_any_metadata_it/"
+        },
+        {
+          "title": "HTTP",
+          "url": "https://en.wikipedia.org/wiki/HTTP"
+        },
+        {
+          "title": "Content negotiation",
+          "url": "https://en.wikipedia.org/wiki/Content_negotiation"
+        },
+        {
+          "title": "fetch(`https://api",
+          "url": "https://cdck-file-uploads-europe1.s3.dualstack.eu-west-1.amazonaws.com/flex013/uploads/make/original/3X/3/b/3b952b8ffa4aef3350b62a808feaa0f235e88523.pdf"
+        }
+      ],
+      "canonicalReturned": true,
+      "webPulseCopyReturned": true,
+      "arcjetGuideReturned": false
+    },
+    {
+      "questionId": "coverage",
+      "rawSha256": "03c27799b3336b50f8ee5f28783788629e4fc4b91a5058958238c22e890e3d6d",
+      "returnedSources": [
+        {
+          "title": "DuckAssistbot Bot Information | Cloudflare Radar",
+          "url": "https://radar.cloudflare.com/bots/directory/duckassistbot"
+        },
+        {
+          "title": "ChatGPT, Claude, Gemini and Grok Fetcher Headers, Measured",
+          "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers"
+        },
+        {
+          "title": "Web Bot Auth guide: verify signed bots and AI agents | Arcjet",
+          "url": "https://arcjet.com/learn/web-bot-auth"
+        },
+        {
+          "title": "DuckAssistBot \u2014 Verified Bots Directory",
+          "url": "https://verifiedbots.dev/bots/duckassistbot/"
+        },
+        {
+          "title": "DuckAssistBot User Agent, IP Ranges & robots.txt | HadoSEO",
+          "url": "https://hadoseo.com/bots/duckassistbot"
+        },
+        {
+          "title": "DuckAssistBot: What It Is and How to Block or Allow It",
+          "url": "https://www.elementera.com/ai-crawlers/duckassistbot"
+        },
+        {
+          "title": "DuckAssistBot \u2014 Botcard",
+          "url": "https://whosthatbot.com/crawlers/duckassistbot.html"
+        },
+        {
+          "title": "DuckAssistBot: user agent, IP list and robots.txt - JS SEO Lab",
+          "url": "https://jsseo.dev/bots/duckassistbot/"
+        },
+        {
+          "title": "Web Bot Auth signed requests: who signs, and what a signature proves \u00b7 Aethelforge",
+          "url": "https://aethelforge.ai/research/field-notes/agents-have-started-signing-their-requests"
+        },
+        {
+          "title": "Web Bot Auth \u00b7 Cloudflare bot solutions docs",
+          "url": "https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/"
+        },
+        {
+          "title": "Is DuckAssistBot related to DuckDuckGo? - DuckDuckGo Help Pages",
+          "url": "https://ddg.titlecan.cn/duckduckgo-help-pages/results/duckassistbot"
+        },
+        {
+          "title": "DuckAssistBot Guide: Purpose, User Agent & Details | XPU Live",
+          "url": "https://xpu.live/agents/duckassistbot/"
+        },
+        {
+          "title": "BIG-IP\u00ae Application Security Manager\u2122: Attack and Bot Signatures",
+          "url": "https://techdocs.f5.com/content/kb/en-us/products/big-ip_asm/manuals/product/asm-bot-and-attack-signature-reference-12-1-0/_jcr_content/pdfAttach/download/file.res/BIG-IP_Application_Security_Manager__Attack_and_Bot_Signatures.pdf"
+        },
+        {
+          "title": "Anti-Bot Service \u2014 User Guide / 2 Protection Settings",
+          "url": "https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download/pdf/DNANTIBOT1858614_en-US_intl_190613142619_public_6f10d6bf4f2c91614398ff49af6edcbd.pdf"
+        },
+        {
+          "title": "Detecting Web Robots with Passive Behavioral Analysis and Forced",
+          "url": "https://getd.libs.uga.edu/pdfs/brewer_douglas_201012_phd.pdf"
+        },
+        {
+          "title": "[webbotauth] Cloudflare use cases - Thibault Meunier",
+          "url": "https://datatracker.ietf.org/meeting/123/materials/slides-123-webbotauth-cloudflare-use-cases-00"
+        },
+        {
+          "title": "Anti-Bot Service",
+          "url": "https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download%2Fpdf%2F85363%2FUser_Guide_reseller_en-US.pdf"
+        },
+        {
+          "title": "From a decoy log: one scanner posed as 25 different AI and search bots in 12 seconds while hunting for .env files",
+          "url": "https://www.reddit.com/r/cybersecurity/comments/1xfdc19/from_a_decoy_log_one_scanner_posed_as_25/"
+        },
+        {
+          "title": "Is most AEO advice optimising for the wrong bots?",
+          "url": "https://www.reddit.com/r/aeo/comments/1x0ze9y/is_most_aeo_advice_optimising_for_the_wrong_bots/"
+        },
+        {
+          "title": "User-Agent header",
+          "url": "https://en.wikipedia.org/wiki/User-Agent_header"
+        },
+        {
+          "title": "Google posted experimental Web Bot Auth docs yesterday -- cryptographic bot signing, not user-agent strings",
+          "url": "https://www.reddit.com/r/DIYSEO/comments/1t4peta/google_posted_experimental_web_bot_auth_docs/"
+        }
+      ],
+      "canonicalReturned": true,
+      "webPulseCopyReturned": false,
+      "arcjetGuideReturned": true
+    },
+    {
+      "questionId": "codex",
+      "rawSha256": "8f5baf370f752618ff5e63f07ed985966b86af5b9b38ac408ef746ecd99c7dbc",
+      "returnedSources": [
+        {
+          "title": "Web search | ChatGPT Learn",
+          "url": "https://learn.chatgpt.com/docs/web-search"
+        },
+        {
+          "title": "Web Search - Amazon Bedrock",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/web-search.html"
+        },
+        {
+          "title": "web_search \u2014 Codex config \u2014 Codex Insider",
+          "url": "https://www.codexinsider.com/config/web-search/"
+        },
+        {
+          "title": "Codex web search: cached vs live mode and web_search | Kipt",
+          "url": "https://kipt.me/guides/codex-web-search"
+        },
+        {
+          "title": "codex/codex-rs/ext/web-search/web_run_description.md at main \u00b7 openai/codex \u00b7 GitHub",
+          "url": "https://github.com/openai/codex/blob/main/codex-rs/ext/web-search/web_run_description.md"
+        },
+        {
+          "title": "web-search.md \u2014 Spybara",
+          "url": "https://spybara.com/openai/codex/history/docs/en/2026-07-31-2202..2026-08-02-2100/web-search/"
+        },
+        {
+          "title": "Web Search - Amazon Bedrock",
+          "url": "https://docs.aws.amazon.com/en_en/bedrock/latest/userguide/web-search.html"
+        },
+        {
+          "title": "openai-mirror/learn.chatgpt.com/docs/web-search.md at main \u00b7 ai-native-engineer/openai-mirror \u00b7 GitHub",
+          "url": "https://github.com/ai-native-engineer/openai-mirror/blob/main/learn.chatgpt.com/docs/web-search.md"
+        },
+        {
+          "title": "codex/codex-rs/ext/web-search/src/tool.rs at main \u00b7 openai/codex \u00b7 GitHub",
+          "url": "https://github.com/openai/codex/blob/main/codex-rs/ext/web-search/src/tool.rs"
+        },
+        {
+          "title": "Codex CLI Fetch URL: How to Read Web Pages in Codex \u00b7 AliasMode",
+          "url": "https://aliasmode.com/anyfetch/codex-cli-fetch-url/"
+        },
+        {
+          "title": "web-search.md \u2014 Spybara",
+          "url": "https://spybara.com/openai/codex/history/docs/en/2026-08-14-2200..2026-08-15-0101/web-search/"
+        },
+        {
+          "title": "ChatGPT, Claude, Gemini and Grok Fetcher Headers, Measured",
+          "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers"
+        },
+        {
+          "title": "CodEx \u2013 Design Manual",
+          "url": "https://jenda.hrach.eu/f2/codex-manual.pdf"
+        },
+        {
+          "title": "CodeX: Contextual Flow Tracking for Browser Extensions",
+          "url": "https://smahmadpanah.github.io/papers/10-codaspy25/codex-fullversion.pdf"
+        },
+        {
+          "title": "CodeX: Contextual Flow Tracking for Browser Extensions",
+          "url": "https://www.cse.chalmers.se/research/group/security/codex/codex-fullversion.pdf"
+        },
+        {
+          "title": "CodeX: Contextual Flow Tracking for Browser Extensions",
+          "url": "https://www.cse.chalmers.se/research/group/security/codex/codex.pdf"
+        },
+        {
+          "title": "Robots.txt",
+          "url": "https://en.wikipedia.org/wiki/Robots.txt"
+        },
+        {
+          "title": "Search engine",
+          "url": "https://en.wikipedia.org/wiki/Search_engine"
+        },
+        {
+          "title": "Search engine scraping",
+          "url": "https://en.wikipedia.org/wiki/Search_engine_scraping"
+        }
+      ],
+      "canonicalReturned": true,
+      "webPulseCopyReturned": false,
+      "arcjetGuideReturned": false
+    },
+    {
+      "questionId": "grok",
+      "rawSha256": "5b331688fb0ae6eca4621996e15042754d80bea4d428a19b1b28213cd2ead76f",
+      "returnedSources": [
+        {
+          "title": "Scrunch | FAQs - What AI models and agents does Scrunch currently track traffic for?",
+          "url": "https://scrunch.com/faqs/what-ai-models-and-agents-does-scrunch-currently-track-traffic-for"
+        },
+        {
+          "title": "How to detect AI crawlers | Cloudflare",
+          "url": "https://www.cloudflare.com/en-gb/learning/ai/how-to-detect-which-ai-bots-crawl/"
+        },
+        {
+          "title": "Inside Web Publishers\u2019 Quest to Stamp Out AI Bots Posing as Humans \u2014 The Information",
+          "url": "https://info-reader-production.herokuapp.com/articles/inside-web-publishers-quest-stamp-ai-bots-posing-humans"
+        },
+        {
+          "title": "About Grok | X Help Center",
+          "url": "https://help.x.com/en/using-x/about-grok"
+        },
+        {
+          "title": "Scrunch | FAQs - How does Scrunch track AI search visits to my website?",
+          "url": "https://scrunch.com/faqs/how-does-scrunch-track-ai-search-visits-to-my-website"
+        },
+        {
+          "title": "How to Track AI Traffic: A Guide to AI Traffic Detection",
+          "url": "https://stape.io/blog/track-ai-traffic?trk=public_post_comment-text"
+        },
+        {
+          "title": "Dissecting the Network Traffic of Grok: AI with Real-Time Intelligence | Keysight Blogs",
+          "url": "https://www.keysight.com/blogs/en/tech/nwvs/2025/03/28/grok"
+        },
+        {
+          "title": "AI Bot & Agent Traffic Trends 2026 | DataDome",
+          "url": "https://datadome.co/resources/bot-and-agent-security-report/ai-traffic-trends/"
+        },
+        {
+          "title": "AI agents caught masquerading as humans to bypass website defenses",
+          "url": "https://ppc.land/ai-agents-caught-masquerading-as-humans-to-bypass-website-defenses/"
+        },
+        {
+          "title": "How to Tell an AI Agent from a Bot, Scraper, or Human",
+          "url": "https://www.itechguides.com/how-to-tell-a-rogue-ai-agent-from-a-bot-scraper-or-human-user/"
+        },
+        {
+          "title": "Scrunch | How-to guides - How to track if AI bots are visiting your website",
+          "url": "https://scrunch.com/how-tos/how-to-track-if-ai-bots-are-visiting-your-website/"
+        },
+        {
+          "title": "How Grok Bot Crawls Websites: What xAI Documents",
+          "url": "https://www.itechguides.com/how-grok-bot-crawls-and-captures-websites-whats-known-and-what-isnt/"
+        },
+        {
+          "title": "Detecting Grok Bot on your website.",
+          "url": "https://www.reddit.com/r/SaaS/comments/1x96lyd/detecting_grok_bot_on_your_website/"
+        },
+        {
+          "title": "Grok in the Wild: Characterizing the Roles and Uses of Large Language Models on Social Media",
+          "url": "https://arxiv.org/abs/2602.11286"
+        },
+        {
+          "title": "Asking Grok: AI-Assisted Sensemaking in Social Media Conversations",
+          "url": "https://arxiv.org/abs/2605.19720"
+        },
+        {
+          "title": "Grok Bot is making detection hard",
+          "url": "https://www.reddit.com/r/grok/comments/1x9f9hu/grok_bot_is_making_detection_hard/"
+        },
+        {
+          "title": "GrokUnleashed",
+          "url": "https://aiforensics.org/uploads/GrokUnleashed.pdf"
+        },
+        {
+          "title": "The invisible traffic problem: why AI agents are your biggest blind spot",
+          "url": "https://www.techradar.com/pro/the-invisible-traffic-problem-why-ai-agents-are-your-biggest-blind-spot"
+        },
+        {
+          "title": "Despite Grok's claims to the contrary, over 370,000 xAI conversations have reportedly been openly listed on search engines, with responses said to include 'a detailed plan for the assassination of Elon Musk'",
+          "url": "https://www.pcgamer.com/software/ai/despite-groks-claims-to-the-contrary-over-370-000-xai-conversations-have-reportedly-been-openly-listed-on-search-engines-with-responses-said-to-include-a-detailed-plan-for-the-assassination-of-elon-musk/"
+        },
+        {
+          "title": "From crawlers to AI agents: why untangling the new AI-powered web takes an intent-based approach",
+          "url": "https://www.techradar.com/pro/from-crawlers-to-ai-agents-why-untangling-the-new-ai-powered-web-takes-an-intent-based-approach"
+        }
+      ],
+      "canonicalReturned": false,
+      "webPulseCopyReturned": false,
+      "arcjetGuideReturned": false
+    }
+  ],
+  "summary": {
+    "questions": 4,
+    "canonicalReturnedIn": 3,
+    "copyReturnedIn": 1,
+    "arcjetReturnedIn": 1
+  },
+  "humanLabelsRequired": false,
+  "humanClicksMeasured": false,
+  "aiAnswerCitationRateMeasured": false,
+  "scope": "This run observes agent-operated search discovery and identifies a real third-party citation; it is not a growth-rate estimate or a full search-index census."
+}

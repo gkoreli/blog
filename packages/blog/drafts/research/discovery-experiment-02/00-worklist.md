@@ -1,0 +1,43 @@
+# Agent-inclusive growth and external discovery
+
+October 31, 2026 UTC. Continues the [Analytics Worklist](../../../../../docs/folders/FLDR-0001.md) and [discovery workflow](../../../../../.agents/skills/run-discovery-experiment/SKILL.md). The owner requested action on the evidence, then explicitly corrected a human-only framing of growth. [ADR-0016.19](../../../../../docs/adr/0016.19-agent-mediated-audience-growth.md) preserves that complete direction and governs this work.
+
+## Accepted scope
+
+Fix the tenets, experiment criteria and public defaults so agent reach and agent-mediated use count as supported publication outcomes. Preserve claim boundaries without treating missing human labels as zero progress. The broader analytics goal's human/native/search/privacy gates retain their specific scope.
+
+The main dashboard and unfiltered stats API will include all existing request categories by default. Explicit Browser filters remain available. The completed-week report remains its accepted Browser-only selection, with a clearly named page and direct routes to assistant, crawler and all-category views. No collector, row history, classification, exclusion, retention or focused-report SQL changes are planned.
+
+## Baseline and acceptance
+
+Baseline source `25b74f9` has Browser defaults in both the client and stats parser, and a Browser-only focused report titled Readership signals. Earlier author tenets already welcome agent readership; newer growth guidance and summaries failed to carry that through.
+
+Acceptance: default query includes every existing category; explicit category selection remains distinct; default and explicit all share the normalized cache key; explicit Browser has another key; category composition continues to reconcile; public controls and report scope reflect the decision. Run relevant suites/types, an isolated production build, and local browser checks before publishing. Record source, activation and served behavior separately. Avoid a production report fill or SQL query merely to verify this wording/default change.
+
+## External discovery continuation
+
+The Web Pulse copy is a concrete distribution lead, with canonical attribution and older claims. Its article links advertise API/MCP/tool access; the linked JSON control actually opens the API documentation. The documentation describes a read-only detail endpoint but also contains API-key and example-response material, so documentation is not proof that the article's machine response is available or current. No account or key is created and no write route is used.
+
+Next source work: freeze a small exact question set, inspect per-query public results, and compare the original and external copy's claim versions before selecting a substantive intervention. Agent-facing discovery and supported answers count as outcomes; a human browser arrival is not required. No external correction message is authorized or sent by this record.
+
+## Results
+
+### Agent-operated discovery and external reuse
+
+The frozen [question set](questions.json) contains four technical questions without a site/domain filter or a supplied source URL. [Per-question results](search-results.json) preserve each returned source list and the hash of its raw tool response. One public web-tool query ran per question on October 31 UTC, before the article intervention. The canonical fetcher article appeared for the header, signature-coverage and Codex questions: **three of four sampled searches**. It was absent from the returned Grok pool. The Web Pulse copy appeared for the header question. These are observed agent-operated discovery outcomes; no human click is required to recognize them. They are not an all-engine ranking, an AI-answer citation rate or a measured change over time.
+
+The coverage question also returned [Arcjet's Web Bot Auth guide](https://arcjet.com/learn/web-bot-auth). Inspection of the complete captured HTML verifies its direct link to the canonical article. The guide uses our DuckAssistBot capture to compare request-signature coverage. This is an attributable external reference and reuse of the published engineering evidence, distinct from the Web Pulse reproduction. It does not establish that Arcjet installed our analytics or identify whether a person or agent found the study.
+
+**Action:** add the verified Arcjet reference to article 023 under Referenced by, with a truthful modification date, changelog and the two complete material owner messages. Preserve all vendor observations and frozen footprint figures. A 200 direct Markdown baseline is retained for byte comparisons. No new vendor trial, paid tool, external message, source-account change or production SQL is needed.
+
+The Web Pulse copy remains a separate source-version lead. Its older prose is not independent corroboration of our technical claims, and its displayed counters are not adopted as our audience measurements. A correction request or machine-endpoint investigation requires its own concrete scope; finding this copy does not authorize a write to its API.
+
+### Audience implementation acceptance
+
+The API/client defaults now select all groups; explicit Browser and assistant scopes remain available. The cache namespace advances to `2026-10-31.2`. The focused report is named Browser-signal article reach and links to the broader audience views. All 332 analytics tests, 166 site tests and workspace typechecks pass. A new fixture proves that the unfiltered report retains assistant, crawler, automation and unresolved events, excludes a labelled owner control, and reconciles kind and daily totals. Cache checks prove omitted/explicit all coalesce while Browser stays distinct.
+
+Both isolated production builds pass for 33 posts; the final one includes the article reference. [Checks](checks.json) preserve the tested outputs and asset hashes. The browser's default request selects `all` and displays six synthetic events spanning the existing groups; the assistant filter selects one, and explicit Browser selects one. Mobile width 390 and desktop width 1280 have no document overflow. The local article renders Referenced by with the Arcjet link. The owned server/tab were stopped/closed and the viewport reset. These fixture counts verify inclusion behavior, not organic growth. The broader analytics implementation and prior studies retain their dated results and unresolved claim-specific inputs.
+
+The earlier discovery experiment remains complete only for its scoped delivery check; this continuation does not turn it into a measured acquisition result. Remaining acceptance: scoped source delivery, served stats/assets/article evidence, then archive and checkpoint. No production report calculation is required to prove the new default.
+
+Final scope review also aligns the focused report's document title and incoming dashboard label. An initial copy command ran from the isolated checkout and rejected copying a file onto itself; that build retained the earlier title. The corrected preparation uses the explicit repository root, and the subsequent build passes with the new generated title and updated asset hashes. No other session's output or code was changed. The private pre-publication archive at `/Users/goga/.local/share/gkoreli/analytics-evidence/2026-10-31-agent-inclusive-discovery` contains 17 files under manifest SHA-256 `b3d8bacbced1ac0bd4555b2123a3243dd30c3a41fc7da73734a407f5d598e2c7`; later release preparation and served receipts will be appended separately.

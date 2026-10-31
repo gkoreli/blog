@@ -7,6 +7,14 @@ description: Run a bounded gkoreli.com discovery or reader-use experiment from a
 
 Turn a publishing or site-owner question into one inspectable experiment. Deliver the tested change or justified no-change decision, evidence of what happened, and the next action. Follow [ADR-0019](../../../docs/adr/0019-agentic-engineering-publication-and-analytics-ambition.md); preserve the article's governing form and authorship.
 
+## Audience and growth
+
+People and agents are both audience under [ADR-0016.19](../../../docs/adr/0016.19-agent-mediated-audience-growth.md). A person may discover, retrieve, understand and apply the work through an agent without visiting the page directly. Count observed agent access, answer citations, distribution and supported use at their actual stages. Missing human identity or a human-trigger label is not a reason to erase those results or require direct human acquisition as the sole success measure.
+
+Declare the outcome being tested. Comparable growth in eligible declared-agent requests is growth in observed agent access; a captured supported answer is task evidence; an attributed external copy is distribution evidence. None needs a human browser visit to count. Preserve source, sample and method limits without turning a limit on a stronger claim into a verdict of no value. Controlled owner/agent trials remain separate from organic counts. Human/device calibration gates apply to human/device claims, not all discovery work.
+
+For a discovery request, collect actual question/source-selection evidence before calling a presentation edit an experiment result. Keep QA, delivered access, observed discovery and supported use distinct, and report each positively at its supported stage. Read exact external sources for claim-version drift; an older copy may remain discoverable after the canonical article is corrected.
+
 ## Choose a consequential question
 
 Read the relevant worklist, latest handoff, saved results, and article before opening a new investigation. Reuse the worklist; keep new experiment evidence in a linked dated directory. Completed work stays complete unless new evidence changes it.
@@ -47,7 +55,7 @@ Inspect exact third-party sources when they shape a result. Separate owned pages
 | Delivery and navigation | Actual response bytes, representations, destinations, and placement | No proof of discovery, comprehension, or use. |
 | Search discovery | Page/query report with dates, filters, coverage, data state, and timezone | Missing/anonymized queries are not zero demand. |
 | AI answer visibility | Frozen questions, service/model when exposed, search mode, date, context, trials, answers, cited URLs, and denominator | Search-tool results alone are not an AI citation rate or all-model visibility. |
-| Reader value | Attributable feedback, corrections, subscriptions, links, or reports of application | Requests and agent review do not establish human reception. |
+| Human and agent value | Supported agent answers, attributable feedback, corrections, subscriptions, links, or reports of application, including agent-mediated work | Count the observed task/use outcome; direct human contact is optional evidence, not the sole definition of value. |
 | Product adoption | Independent operator installation and use for an actual decision | Our own successful deployment does not establish portability or scale. |
 
 Keep public search reconnaissance distinct from authenticated Google performance data and from controlled model trials. Do not infer non-indexing or universal absence because a result is missing from one returned pool. A result pool merged across queries does not supply per-query ranking denominators.

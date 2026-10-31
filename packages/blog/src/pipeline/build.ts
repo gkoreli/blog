@@ -292,7 +292,7 @@ export async function buildHTML(): Promise<void> {
   const statsBody = statsPage();
   const statsShell = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody, canonicalPath: '/stats', currentSlug: 'stats', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: statsHead, noindex: true });
   addPage('stats', statsShell);
-  addPage('stats/readership', pageShell({ title: 'Readership signals', description: 'Article reach, completed weeks and reported source concentration.', content: articleReachPage(), canonicalPath: '/stats/readership', currentSlug: 'stats', noindex: true, ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: '<link rel="stylesheet" href="/article-reach.css">', scripts: ['/article-reach.js'] }));
+  addPage('stats/readership', pageShell({ title: 'Browser-signal article reach', description: 'Browser-signal article reach, completed weeks and reported source concentration.', content: articleReachPage(), canonicalPath: '/stats/readership', currentSlug: 'stats', noindex: true, ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: '<link rel="stylesheet" href="/article-reach.css">', scripts: ['/article-reach.js'] }));
 
   addPage('owner', pageShell({ title: 'Exclude my browser', description: 'Owner browser exclusion for analytics', content: ownerPage(), canonicalPath: '/owner', currentSlug: 'owner', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, noindex: true, scripts: ['/owner.js'] }));
 

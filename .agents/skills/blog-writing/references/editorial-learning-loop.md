@@ -6,6 +6,12 @@ Goga's direction of October 18, 2026 is to prioritize sustained reader value and
 
 Prefer bounded learning with willing readers facing the actual question: understand their task, find where the explanation or artifact fails them, and improve the relevant work. Keep hypotheses separate from reported use and observed behavior. This direction does not impose utility metrics on personal essays, require positive feedback before publishing, or make difficulty itself a sign of valuable growth. Preserve the article's form and authorship.
 
+## Owner direction: people and agents are audience
+
+The October 31, 2026 direction in [ADR-0016.19](../../../../docs/adr/0016.19-agent-mediated-audience-growth.md) makes agent-mediated readership part of growth. People may use agents to discover, retrieve, summarize, cite and apply the work without arriving in a browser or subscribing directly. Recognize supported growth in agent access, captured answer citations, external distribution and reports of application. Keep their stage, cohort, window and evidence limits explicit. Missing human identity limits attribution; it does not invalidate an observed agent result.
+
+Use the evidence needed for the chosen outcome. Human feedback remains useful, but human trials, direct clicks and subscriptions are not universal release or success gates. Agent-operated controlled tests establish their declared task result and stay outside organic audience growth. A known URL tests access rather than organic discovery; source selection observed in an unseeded search is a separate discovery observation. Start with what the result establishes before explaining what it cannot establish.
+
 ## Owner direction: promotion deserves equal attention
 
 Goga's direction of October 28, 2026 is to give adoption and distribution the same serious planning attention as building. For a growth request, do the concrete preparation: identify named destinations and readers, check current rules and comparable coverage, prepare usable copy or evidence, and define the next observable result. Do not substitute generic advice such as “share in relevant communities” for that work. Distinguish observed results, evidence of audience fit and untested ideas; do not call a tactic proven merely because a platform exists. This is a priority for planning, not a fixed time quota, a requirement to post everywhere, or authority to send unrequested messages.

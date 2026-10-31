@@ -16,6 +16,10 @@ Retrospectives, guides, investigations, build journals, decisions, project visio
 
 Exposed essays remain author-written under [personal-essays](../../personal-essays/SKILL.md). They do not require a tutorial, lesson, or resolved ending.
 
+## Audience
+
+People may read directly or use agents to discover, retrieve, summarize, cite and apply the work. Both routes belong in the audience. [ADR-0016.19](../../../../docs/adr/0016.19-agent-mediated-audience-growth.md) governs how observed agent access, distribution, citations and use count as outcomes without inventing human identity or comprehension. Direct human replies and subscriptions are useful evidence, not the only valid form of readership.
+
 ## Publication roles
 
 | Role | Contribution |

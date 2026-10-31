@@ -2,7 +2,7 @@
 
 Goga Koreli's personal publication covers engineering, personal experience, opinions, and philosophical inquiry. Writing should help the author understand his work and give readers useful explanation, evidence, or a precise account of experience.
 
-Last revised: 2026-09-28.
+Last revised: 2026-10-31.
 
 ## Publication Scope
 
@@ -29,6 +29,10 @@ Photography belongs on a separate site if an actual body of curated photographs 
 - Preserve Essays and Engineering as the primary destinations. Keep OSS Radar reachable while its direction remains undecided.
 
 ## What Guides Readership
+
+Readers may arrive directly or use AI agents to discover, retrieve, summarize, cite and apply the work on their behalf. Both routes belong in the publication's audience and growth strategy. Build for useful access by people and agents; a browser visit, newsletter subscription or identifiable human response is not the only valuable outcome.
+
+Recognize the result the evidence supports: growth in served agent requests, observed answer citations, attributable referrals, external distribution or reported application. Keep their populations, periods and methods distinct. Agent access is meaningful reach even when its human trigger is unavailable; a request alone still does not establish comprehension or successful use. Unknown identity limits attribution rather than invalidating the observed outcome. [Audience-growth tenet](docs/adr/0016.19-agent-mediated-audience-growth.md).
 
 Undertake difficult, useful work when the question warrants it. Difficulty alone does not give readers a reason to care: explain the consequence, evidence, and relevance in language they can follow.
 

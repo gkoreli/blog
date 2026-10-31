@@ -4,6 +4,10 @@ Edge-observed, cookieless page analytics for gkoreli.com, running in a Cloudflar
 
 One runtime dependency: pinned `ipaddr.js` 2.5.0 for published-range verification. MIT.
 
+## Audience and growth
+
+People and agents are both audience. Observed agent access, external references and supported agent-mediated use count as outcomes at their observed stages; a missing human trigger does not cancel them. `/stats` and unfiltered `/api/stats` default to all recorded categories. Explicit `traffic=browser`, `agents`, `crawlers`, `automation` and `unresolved` retain their selection semantics. The focused `/stats/readership` report remains Browser-only and is labelled accordingly. See [ADR-0016.19](../../docs/adr/0016.19-agent-mediated-audience-growth.md). Existing collection eligibility still applies; these defaults do not add resource-request tracking or change stored classifications.
+
 ## What a row is
 
 One observation is scheduled per eligible successful, non-prefetch `GET` that served a page as HTML or as the page's negotiated Markdown twin (`eligibility.ts`). The dashboard, assets, API routes, feeds, redirects, errors, and direct requests to `/<slug>.md` do not count. Scheduling with `waitUntil` is not a guarantee that a database write succeeds. Rows retain selected evidence and derived values alongside a classification:

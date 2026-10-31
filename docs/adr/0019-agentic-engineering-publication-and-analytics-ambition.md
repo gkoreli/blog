@@ -14,6 +14,8 @@ The complete owner message, preserved exactly:
 
 ## Decision
 
+[ADR-0016.19](0016.19-agent-mediated-audience-growth.md) makes explicit that people and agents are both audience. Agent-mediated discovery, access, citations, distribution and use are legitimate growth outcomes at their observed stages; human identification is not a condition for recognizing them.
+
 Develop gkoreli.com as a publication and working environment for agentic engineering: build useful systems, write with AI agents while preserving human authorship, publish inspectable work, and learn how people and agents discover and use it. Develop the analytics we need ourselves with the long-term ambition of serving millions of sites. That scale is the owner's intended destination; current adoption and readiness require their own evidence.
 
 Publication, distribution, and analytics are substantive engineering work. Give each a defined question, implementation or intervention, and acceptance evidence. Expertise comes from explaining mechanisms, testing alternatives, using the result, and correcting errors publicly. Neither agent-generated prose nor a detailed research archive establishes expertise by itself.
@@ -53,8 +55,8 @@ Keep these outcomes separate:
 | --- | --- | --- |
 | Search discovery | Page/query impressions, clicks, and indexing evidence | Search Console scope and access limits remain visible. |
 | AI answer visibility | Observed mentions and citations within the declared prompt sample | No claim to cover all questions, users, or model behavior. |
-| Site access | Eligible responses, declared clients, verification evidence, attributable referrals | A fetch or signer does not establish reading, citation, or use. |
-| Reader value | Specific feedback, corrections, confirmed subscriptions, links, and reports of application | Preserve provenance and consent; do not infer cross-day identity. |
+| Audience access | Eligible responses from people, declared agents, crawlers, automation and unresolved clients | Count observed reach and comparable growth; a fetch or signer alone does not establish comprehension or a human trigger. |
+| Reader and agent value | Supported answers, citations, specific feedback, corrections, subscriptions, links, and reports of application, including agent-mediated work | Direct human contact is one useful signal; preserve provenance and consent without requiring it for agent outcomes. |
 | Product value | Another operator can install, understand, use, and maintain the analytics | Our own successful use does not establish independent adoption. |
 
 Select the next correction, discovery change, distribution change, experiment, or no action from that evidence. Reuse [article reach reporting](0016.18-article-reach-and-source-concentration.md) and saved measurements before adding instrumentation.

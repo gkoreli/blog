@@ -1,0 +1,23 @@
+{
+  "version": "2026-10-31.1",
+  "method": "One unseeded public web-tool search per exact question; returned-pool observation, not Google ranking or AI answer citation rate. No site or source URL supplied in queries.",
+  "phase": "pre-intervention source-discovery baseline",
+  "questions": [
+    {
+      "id": "headers",
+      "query": "ChatGPT-User Accept-Language Fetch Metadata headers"
+    },
+    {
+      "id": "coverage",
+      "query": "Does DuckAssistBot Web Bot Auth signature cover User-Agent request path"
+    },
+    {
+      "id": "codex",
+      "query": "Does Codex web search fetch the original URL"
+    },
+    {
+      "id": "grok",
+      "query": "Can Grok requests be distinguished from human website traffic"
+    }
+  ]
+}

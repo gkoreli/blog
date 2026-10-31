@@ -22,7 +22,7 @@ test('canonical public states reuse a completed report despite irrelevant parame
   const now = Date.parse('2026-09-07T05:00:00Z');
   const serve = createStatsHandler(cache, async () => Response.json({ generation: ++generations }), { now: () => now });
   const first = await serve(request(), {});
-  const second = await serve(request('nonce=second&traffic=browser&range=30d&path=', {
+  const second = await serve(request('nonce=second&traffic=all&range=30d&path=', {
     'Cache-Control': 'no-cache', Cookie: 'private=value', 'If-None-Match': 'different',
   }), {});
   assert.equal(generations, 1);
@@ -39,7 +39,7 @@ test('every supported filter changes the cache key while implicit scoped default
   const cache = memoryCache();
   let generations = 0;
   const serve = createStatsHandler(cache, async () => Response.json({ generation: ++generations }));
-  for (const query of ['', 'range=7d', 'traffic=all', 'path=%2Fpost', 'agent=GPTBot', 'kind=search-crawler']) {
+  for (const query of ['', 'range=7d', 'traffic=browser', 'path=%2Fpost', 'agent=GPTBot', 'kind=search-crawler']) {
     assert.equal((await serve(request(query), {})).status, 200);
   }
   assert.equal(generations, 6);

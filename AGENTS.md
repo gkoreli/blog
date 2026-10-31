@@ -4,6 +4,8 @@ Personal engineering publication by Goga Koreli, built with `@nisli/core` and de
 
 Build expertise in agentic engineering through inspectable work, writing with AI agents, and measured discovery; develop our analytics toward broad site adoption. [Publication and product direction](docs/adr/0019-agentic-engineering-publication-and-analytics-ambition.md) governs this ambition and its evidence standard.
 
+People and agents are part of the audience. Count agent reach, agent-mediated use, citations and distribution as supported outcomes; human identification is not a condition for recognizing growth. Preserve each metric's evidence boundary. [Audience growth](docs/adr/0016.19-agent-mediated-audience-growth.md).
+
 ## Repository essentials
 
 - `packages/blog/` owns the site; `posts/` and `prompts/` live inside that package.

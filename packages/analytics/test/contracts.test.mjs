@@ -907,9 +907,10 @@ test('referral exclusions preserve scoped agent counts and handle all-excluded h
   assert.equal(sqlite.prepare('SELECT COUNT(*) AS count FROM page_observations').get().count, 2);
 });
 
-test('stats query parsing preserves endpoint defaults, empty paths, canonical scopes, and errors', () => {
-  assert.deepEqual(parseStatsQuery(new URLSearchParams()), { range: '30d', traffic: 'browser' });
-  assert.deepEqual(parseStatsQuery(new URLSearchParams('path=&ignored=value')), { range: '30d', traffic: 'browser' });
+test('stats query parsing includes all audience categories by default and preserves explicit scopes and errors', () => {
+  assert.deepEqual(parseStatsQuery(new URLSearchParams()), { range: '30d', traffic: 'all' });
+  assert.deepEqual(parseStatsQuery(new URLSearchParams('path=&ignored=value')), { range: '30d', traffic: 'all' });
+  assert.deepEqual(parseStatsQuery(new URLSearchParams('traffic=browser')), { range: '30d', traffic: 'browser' });
   assert.deepEqual(parseStatsQuery(new URLSearchParams('agent=GPTBot&path=%2Farticle')), {
     range: '30d', traffic: 'all', path: '/article', agent: 'GPTBot',
   });
@@ -918,6 +919,35 @@ test('stats query parsing preserves endpoint defaults, empty paths, canonical sc
     parseStatsQuery(new URLSearchParams('traffic=browser&agent=GPTBot')),
     'agent GPTBot cannot be combined with traffic=browser',
   );
+});
+
+test('unfiltered stats retain agent, crawler, automation and unresolved reach while excluding owner controls', async () => {
+  const { sqlite, d1 } = analyticsDatabase();
+  const kinds = ['browser', 'ai-assistant', 'ai-search', 'cloud-browser', 'other-bot', 'unresolved'];
+  for (const [index, readerKind] of kinds.entries()) {
+    insertObservation(sqlite, {
+      path: '/audience', dailyClientId: String(index + 1).repeat(32),
+      trafficClass: readerKind === 'browser' ? 'browser' : 'ai', readerKind,
+      readerReason: 'audience-fixture', observedAt: '2026-10-29 12:00:00',
+    });
+  }
+  insertObservation(sqlite, {
+    path: '/audience', dailyClientId: '7'.repeat(32), trafficClass: 'ai',
+    readerKind: 'ai-assistant', readerReason: 'owner-control', isOwner: true,
+    observedAt: '2026-10-29 12:00:00',
+  });
+  const parsed = parseStatsQuery(new URLSearchParams());
+  assert.notEqual(typeof parsed, 'string');
+  const now = new Date('2026-10-31T00:00:00Z');
+  const report = await queryStats(d1, parsed, now);
+  assert.equal(report.totals.views, kinds.length);
+  assert.deepEqual(report.byKind.map(row => row.kind).sort(), [...kinds].sort());
+  assert.equal(report.byKind.reduce((sum, row) => sum + row.views, 0), report.totals.views);
+  assert.equal(report.timeSeries.reduce((sum, row) => sum + row.views, 0), report.totals.views);
+  assert.deepEqual(report, await queryStats(d1, { range: '30d', traffic: 'all' }, now));
+  assert.equal((await queryStats(d1, { range: '30d', traffic: 'browser' }, now)).totals.views, 1);
+  assert.equal((await queryStats(d1, { range: '30d', traffic: 'agents' }, now)).totals.views, 1);
+  sqlite.close();
 });
 
 test('stats result decoding rejects malformed, duplicate, missing, and misplaced section payloads', async () => {

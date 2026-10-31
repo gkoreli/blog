@@ -63,6 +63,8 @@ Original measurements, reproductions, decision tables, diagrams, datasets, and c
 
 ## Separate outcomes
 
+People and agents are both audience. Agent-mediated discovery, retrieval, citations and use are legitimate outcomes under [ADR-0016.19](../../../docs/adr/0016.19-agent-mediated-audience-growth.md). A human browser arrival or subscription is not required to recognize them. Report each observed stage and comparable growth positively; preserve the limits on identity, human trigger and comprehension without treating those limits as zero reach or zero value.
+
 Metadata changes improve how the article is described. Distribution puts it before a chosen audience. Another publisher decides whether to link it. Reader replies and reports of use are separate outcomes. Do not equate impressions with readers, requests with use, backlinks with endorsement, or any of them with guaranteed growth.
 
 After publication, follow the [measurement workflow](../blog-writing/references/editorial-learning-loop.md). Report the recommended change or no-change decision, its evidence, expected reader benefit, and remaining uncertainty. Scale the explanation to the change; do not produce fields and scores the decision does not need.

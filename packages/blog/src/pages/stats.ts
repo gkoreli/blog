@@ -13,19 +13,20 @@ export function statsPage() {
     <div>
       <h1>Stats</h1>
       <p class="stats-intro">A public view of pages served by this site.</p>
-      <p class="stats-section-note"><a href="/stats/readership">Article reach and completed-week source comparisons</a></p>
+      <p class="stats-section-note">People and agents are part of this publication's audience. The default includes all recorded request categories; agent access counts as reach even when its human trigger is unknown. Use the category filters to inspect how the work is accessed.</p>
+      <p class="stats-section-note"><a href="/stats/readership">Browser-signal article reach and completed-week source comparisons</a></p>
       <p class="stats-section-note">Classifications describe request signals and declared roles. Browser signals can come from browsers, automated clients or relays; they do not identify people.</p>
     </div>
     <div class="stats-controls" aria-label="Stats filters">
       <fieldset class="stats-filter" data-filter-group="traffic">
         <legend>Traffic</legend>
         <div class="stats-pills">
-          <button type="button" data-traffic="browser" aria-pressed="true">Browser signals</button>
+          <button type="button" data-traffic="all" aria-pressed="true">All</button>
+          <button type="button" data-traffic="browser" aria-pressed="false">Browser signals</button>
           <button type="button" data-traffic="agents" aria-pressed="false">Assistants &amp; signed clients</button>
           <button type="button" data-traffic="crawlers" aria-pressed="false">Crawlers</button>
           <button type="button" data-traffic="automation" aria-pressed="false">Automation & legacy rules</button>
           <button type="button" data-traffic="unresolved" aria-pressed="false">Unresolved</button>
-          <button type="button" data-traffic="all" aria-pressed="false">All</button>
         </div>
       </fieldset>
       <fieldset class="stats-filter" data-filter-group="period">

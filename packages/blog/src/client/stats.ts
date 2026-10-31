@@ -31,7 +31,7 @@ type RankedItem = {
 
 const MAX_ITEMS = 10;
 const CHART_HEIGHT = 300;
-const DEFAULT_STATE: ViewState = { range: '30d', traffic: 'browser', path: null, agent: null, kind: null };
+const DEFAULT_STATE: ViewState = { range: '30d', traffic: 'all', path: null, agent: null, kind: null };
 
 /** Public names describe stored rule matches and declared roles. */
 const KIND_LABELS: Record<ReaderKind, string> = {
@@ -147,10 +147,9 @@ function getState(): ViewState {
   const path = optionalFilter(params.get('path'));
   const agent = optionalFilter(params.get('agent'));
   const kind = parseKind(params.get('kind'));
-  const scoped = agent !== null || kind !== null;
   return {
     range: parseRange(params.get('range')),
-    traffic: parseTraffic(params.get('traffic'), scoped ? 'all' : DEFAULT_STATE.traffic),
+    traffic: parseTraffic(params.get('traffic'), DEFAULT_STATE.traffic),
     path,
     agent,
     kind,

@@ -6,6 +6,8 @@ Consult the relevant ADR before changing an established choice. Implementation f
 
 Publication and product direction: [ADR-0019](../adr/0019-agentic-engineering-publication-and-analytics-ambition.md) accepts agentic engineering expertise, rigorous writing and discovery work, and the ambition to develop our analytics for millions of sites. Adoption and scale remain outcomes to establish.
 
+Audience and growth: [ADR-0016.19](../adr/0016.19-agent-mediated-audience-growth.md) counts people and agents as audience. Observed agent reach, citations, distribution and use are legitimate outcomes; human identification is not a growth gate. The main stats surface defaults to all categories, while the focused Browser report retains its explicit scope.
+
 | Concern | Decision and reason | Reference |
 |---|---|---|
 | Framework | `@nisli/core` as a standalone dependency; readable HTML with interactive web components | [Architecture](../adr/0001-blog-architecture.md) |

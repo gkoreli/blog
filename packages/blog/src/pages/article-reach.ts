@@ -3,10 +3,10 @@ import { html } from '@nisli/core';
 export function articleReachPage() {
   return html`<article class="article-reach">
     <header>
-      <h1>Readership signals</h1>
+      <h1>Browser-signal article reach</h1>
       <p>Which articles attract requests, and how much depends on one reported source?</p>
       <p class="stats-section-note">Four completed UTC weeks of stored Browser signals. These requests can come from people, automated browsers or relays. They do not measure reading or identify readers.</p>
-      <p class="stats-section-note"><a href="/stats">All stats and classification evidence</a> · <a href="/api/readership">Report as JSON</a></p>
+      <p class="stats-section-note">This is one request category, not the whole audience. People may use agents to discover and use the articles; their access is part of our reach. <a href="/stats?traffic=all">All audience access</a> · <a href="/stats?traffic=agents">Assistants and signed clients</a> · <a href="/stats?traffic=crawlers">Crawler access</a> · <a href="/api/readership">Browser-signal report as JSON</a></p>
     </header>
     <p id="reach-status" role="status" aria-atomic="true">Loading the report…</p>
     <noscript><p>The report is also available through the JSON link above. Its dates, counts and evidence limits are included there.</p></noscript>

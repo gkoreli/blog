@@ -3,7 +3,7 @@ title: "Which AI Fetchers Send Which Headers, Measured on a Live Site"
 seoTitle: "ChatGPT, Claude, Gemini and Grok Fetcher Headers, Measured"
 alternativeHeadline: "What happened at a Cloudflare Worker when ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, DuckDuckGo, Claude Code and Codex were asked to fetch a page: headers, networks, IP lists and signatures"
 date: "2026-09-03"
-lastModified: "2026-10-29"
+lastModified: "2026-10-31"
 description: "What happened when ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, DuckDuckGo, Claude Code and Codex were asked to fetch a page on a live Cloudflare Worker: the User-Agent, Accept and Fetch Metadata headers received, vendor IP-list matches, the limits of verified Web Bot Auth signatures, and which assistants sent no observed request."
 section: engineering
 tags: [ai-agents, analytics, cloudflare-workers, http, observability, agentic-engineering]
@@ -231,6 +231,10 @@ What this does not show:
 
 Evidence that would change the conclusions: a Google page documenting the `Google` User-Agent and its IP range; a Perplexity-User capture; any xAI documentation or a `Signature-Agent` header on an anonymous Grok request; a repeat of any run, on the same surface and account state, whose headers differ from those recorded here.
 
+## Referenced by
+
+[Arcjet's Web Bot Auth guide](https://arcjet.com/learn/web-bot-auth) uses this study's DuckAssistBot capture to explain how signatures differ in their request-path coverage. The guide links to this article and contrasts the captured hostname-bound proof with a path-bound example published by SeatGeek.
+
 ## Maintaining this reference
 
 The current analytics retain separate declaration, network, signature-coverage and unresolved evidence; [the later build log](/building-blog-analytics-what-the-numbers-can-prove) explains those changes. Browser remains a request classification, not a human count. The September Grok captures demonstrate errors in the rules tested then; they do not establish today's error rate or a universal detection limit.
@@ -238,6 +242,8 @@ The current analytics retain separate declaration, network, signature-coverage a
 No new vendor trials are included in this October correction, and the promised monthly repeats have not been completed. A future update should repeat labelled trials, report missed automation and unresolved cases, and preserve the earlier results alongside changed behavior. [The classifier article](/how-i-separate-readers-from-bots-without-javascript) describes the original implementation.
 
 ### Changelog
+
+- **2026-10-31, external reference.** Added Arcjet's guide, which references the published DuckAssistBot capture. This records external reuse of the capture; it adds no vendor trial or population growth estimate. The frozen September research-footprint figures exclude this update and the discovery audit.
 
 - **2026-10-29, coverage correction.** Replayed both saved DuckAssistBot proofs across 20 original/modified/expired/unavailable contexts in Node, local workerd and a pinned independent RFC implementation. Narrowed signature, network-identity and human-reading claims; kept the September captures and vendor observations dated. No new assistant trials. The research-footprint figures above remain the frozen September 3–4 measurement; they exclude this October correction and the later linked analytics investigation.
 

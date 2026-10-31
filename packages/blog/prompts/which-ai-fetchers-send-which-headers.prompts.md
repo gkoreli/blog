@@ -58,3 +58,13 @@ We might even write another dedicated article on it
 ---
 
 I still dont get it like if not google or twitter or github or whatever where are we getting all this viewers from lmao. We have been soending so much time and effort to improve our readership understanding and the analytics library, but personally i still don’t understand who is reading our articles. Are we overall growing or what? What are people looking for? Like ideally i want to make some more data based decisions, like what articles are working better, what are people looking fir and what are they finding us for and why and how and all that, so that we can give them even more useful articles and so that we can rank even higher and serve them what they want. But so far we have such large numbers and i still have no idea why and still have no idea what kinda articles to write next. Like where should we become experts in further and further
+
+
+---
+
+Then do something about it
+
+
+---
+
+Btw we are not screaming chasing for the human readers people can be using their ai agents to come across us and read on behalf of them. Why dony we count that as growth? Why is this not part of our tenets please fix things

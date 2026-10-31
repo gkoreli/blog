@@ -1,0 +1,85 @@
+{
+  "baselineRevision": "25b74f9f8a106b064919cc4a74606684d8883782",
+  "analyticsTests": 332,
+  "siteTests": 166,
+  "workspaceTypecheck": true,
+  "markdownPostsValid": 22,
+  "isolatedBuildPosts": 33,
+  "cacheNamespace": "2026-10-31.2",
+  "syntheticBrowserRequests": [
+    {
+      "query": "?range=30d&traffic=all",
+      "traffic": "all",
+      "views": 6,
+      "kinds": [
+        "ai-assistant",
+        "ai-search",
+        "browser",
+        "cloud-browser",
+        "other-bot",
+        "unresolved"
+      ]
+    },
+    {
+      "query": "?range=30d&traffic=agents",
+      "traffic": "agents",
+      "views": 1,
+      "kinds": [
+        "ai-assistant"
+      ]
+    },
+    {
+      "query": "?range=30d&traffic=browser",
+      "traffic": "browser",
+      "views": 1,
+      "kinds": [
+        "browser"
+      ]
+    }
+  ],
+  "desktop": {
+    "width": 1280,
+    "scrollWidth": 1280,
+    "default": "all",
+    "views": 6
+  },
+  "mobile": {
+    "width": 390,
+    "scrollWidth": 390,
+    "explicitFilter": "browser",
+    "views": 1
+  },
+  "assistantFilterViews": 1,
+  "articleReferencedByVerified": true,
+  "originalPromptPrefixPreserved": true,
+  "skillValidatorPassed": true,
+  "instructionDocumentsChecked": 11,
+  "localLinksChecked": 94,
+  "rootInstructionLines": 54,
+  "productionSqlStatements": 0,
+  "populationGrowthMeasured": false,
+  "discoveryResult": "Canonical article returned in three of four declared question pools; Arcjet has a verified direct reference to the DuckAssistBot capture.",
+  "buildAssets": [
+    {
+      "path": "stats/index.html",
+      "bytes": 31066,
+      "sha256": "e52f8b125d3d507e4ee624fcb9c3c41330e4e48ec0b318ca1636a0fd61dc25a8"
+    },
+    {
+      "path": "stats/readership/index.html",
+      "bytes": 12049,
+      "sha256": "7ac2155cec7a8324df775c84d1ebcb2269a27d9243ab95cd74d8825af5b7c277"
+    },
+    {
+      "path": "stats.js",
+      "bytes": 97150,
+      "sha256": "8778372fd403f631154d9292e6226c71dc7bb0bf6a9167b4cf0ced8c10ae40a0"
+    },
+    {
+      "path": "which-ai-fetchers-send-which-headers.md",
+      "bytes": 49108,
+      "sha256": "44b02f08bb126aeb8e4417b8fab6a8536c5c74bb40e761fe76dae1e643a3cb7b"
+    }
+  ],
+  "focusedReportTitleMatchesScope": true
+}
