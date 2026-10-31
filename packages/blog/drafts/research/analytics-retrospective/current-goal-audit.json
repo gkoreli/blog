@@ -1,6 +1,6 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T10:26:54.013463+00:00",
+  "checkedAt": "2026-10-31T10:29:37.494347+00:00",
   "sourceBaseline": "60725b8178cb55592cc5e33389a38e3624b08565",
   "goalStatus": "active",
   "goalAchieved": false,
@@ -374,7 +374,7 @@
     "rawCollectionActivated": false,
     "articleChanged": false,
     "articleChangedByThisWork": false,
-    "sourceActivationMeasured": false,
+    "sourceActivationMeasured": true,
     "servedDestinationAcceptance": false,
     "privacyDisclosureChanged": false,
     "productionRequests": 0,
@@ -397,7 +397,7 @@
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: independent historical coverage, native input-query cost and correction of public structural/count claims accepted locally",
+    "thisTurnClassification": "progress: independent historical coverage, native input-query cost and correction of public structural/count claims accepted locally; exact source activation accepted",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
@@ -433,13 +433,14 @@
   "latestContinuation": {
     "research": "../discovery-experiment-02/11-assignment-coverage-cost-and-public-claims.md",
     "receipt": "../discovery-experiment-02/assignment-report-scope-checks.json",
-    "nextBoundedAction": "Audit the remaining public verification claims against their actual retained fields and validation gates, prioritizing any demonstrated signature-coverage/identity/purpose overclaim. Do not repeat accepted assignment fixtures, fetch fresh production data, reopen the directory-advisory decision, or bypass any of the six unresolved inputs. Public raw-row assignment integration stays unadopted pending a separately justified bounded design."
+    "nextBoundedAction": "Audit the remaining public verification claims against their actual retained fields and validation gates, prioritizing any demonstrated signature-coverage/identity/purpose overclaim. Do not repeat accepted assignment fixtures, fetch fresh production data, reopen the directory-advisory decision, or bypass any of the six unresolved inputs. Public raw-row assignment integration stays unadopted pending a separately justified bounded design.",
+    "release": "../discovery-experiment-02/assignment-report-scope-release.json"
   },
   "latestAcceptedSourceActivation": {
-    "sourceCommit": "d9a19a98aeb3886f9a109d03a2d589eac0bd12c6",
-    "versionId": "b5c26b46-dd15-47e7-8c15-c9a8b81bf21b",
+    "sourceCommit": "a908cfbd80b26a1453a6d3fb92e877eb57f248dd",
+    "versionId": "e722677f-d9e6-43c0-b999-d25df3b6b396",
     "allocation": 100,
-    "receipt": "../discovery-experiment-02/network-assignment-release.json",
+    "receipt": "../discovery-experiment-02/assignment-report-scope-release.json",
     "method": "Native source-linked build log, Ready status, allocation meter100 and matching active version prefix",
     "productionBehaviorMeasured": false,
     "servedDestinationAcceptance": false

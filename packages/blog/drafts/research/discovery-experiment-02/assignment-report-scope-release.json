@@ -1,0 +1,44 @@
+{
+  "profile": "assignment-report-scope-activation-v1",
+  "checkedAt": "2026-10-31T10:29:37.494347+00:00",
+  "sourceCommit": "a908cfbd80b26a1453a6d3fb92e877eb57f248dd",
+  "localAcceptanceReceipt": "assignment-report-scope-checks.json",
+  "sourceMatchingFiles": 2,
+  "allSourceHashesMatch": true,
+  "initialGithubCheckRuns": 0,
+  "native": {
+    "buildId": "261859ab-391b-445d-916f-81c3a1626f9c",
+    "workerVersion": "e722677f-d9e6-43c0-b999-d25df3b6b396",
+    "buildStatus": "Ready",
+    "allocationPercent": 100,
+    "initializingSeconds": 55,
+    "buildPageDurationSeconds": 88,
+    "deploymentsRowDurationSeconds": 35,
+    "durationScope": "Separate native display scopes; not interchangeable latency measures",
+    "node": "24.22.1",
+    "pnpm": "9.15.4",
+    "builtPosts": 38,
+    "buildLogBytes": 5661,
+    "buildLogSha256": "2fcd2015e34b6f6ecf5981f2aec41731cdb165dbbda72ab086963178373b4bba"
+  },
+  "localNode": "24.14.1",
+  "privateEvidence": {
+    "path": "packages/blog/worklog/analytics-evidence/2026-10-31-assignment-report-scope-release",
+    "files": 5,
+    "manifestSha256": "b97daca5991d52d81120cb4c50d98dcf0cf633613081e69d9233272b5f91a011",
+    "allEntriesVerified": true
+  },
+  "limits": {
+    "productionSiteRequests": 0,
+    "productionStatsRequests": 0,
+    "productionSqlStatements": 0,
+    "servedDashboardMeasured": false,
+    "currentProductionDataMeasured": false,
+    "D1CliAuthorizationRepaired": false,
+    "managedBotVerdictMeasured": false,
+    "newHumanLabels": 0,
+    "deploymentRetried": false,
+    "settingsOrScopesChanged": false,
+    "fullGoalComplete": false
+  }
+}
