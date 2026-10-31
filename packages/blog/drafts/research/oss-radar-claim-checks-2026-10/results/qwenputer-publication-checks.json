@@ -1,0 +1,16 @@
+{
+  "state": "local acceptance; push and served checks pending",
+  "buildBaseCommit": "a08f2c0",
+  "markdownPostsValidated": 25,
+  "builtPosts": 36,
+  "renderedWords": 853,
+  "minutesAt200Words": 4.265,
+  "h1": "OSS Radar #11: Qwenputer Ran My Program Inside Qwen\u2019s Layers",
+  "canonical": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu",
+  "ogTitle": "OSS Radar #11: Qwenputer Ran My Program Inside Qwen\u2019s Layers",
+  "description": "I compiled Qwenputer's standalone CPU, changed a program's inputs, and disabled the reference interpreter during generation. The model still computed the right result.",
+  "openingNamesStandaloneScope": true,
+  "resultsAndLimitsInHtml": true,
+  "sourceSha256": "f3254673d6606cac0b45fe4164d191451cef87b6e385bda1831ba62f5d275fc8",
+  "htmlSha256": "73ec4ea00b937054c9979274fd6e64cfa93e5a76d7ef9860fab1f4be5ac683ab"
+}

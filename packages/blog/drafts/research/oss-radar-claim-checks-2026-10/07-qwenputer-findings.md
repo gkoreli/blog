@@ -1,0 +1,35 @@
+# Qwenputer: emitted model executes, full merged model untested
+
+October 30, 2026 Pacific. Baseline `divagr18/qwenputer@f07a0b2e38271454c4d455dc2b9bf78d3d399170`, still main at 01:26:56 UTC October 31. Original October 22 explanation, October 29 HN discussion. Reader asks whether layers were trained; [intake](00-worklist-index.md) records the exact question before experiments. [Protocol](05-qwenputer-protocol.md).
+
+## Claim table, completed before prose
+
+| Claim | Product says | Code / test | State | Inference | Reader consequence |
+| --- | --- | --- | --- | --- | --- |
+| Added CPU weights are compiled, not trained | Author and README | `tiny.build` emits tensors, zeros parameters, loads compiled state; `emit_layers` constructs the operations. No optimizer/training in this build | Code-inspected; build reproduced | The result demonstrates constructed computation, not a language model learning a CPU | Do not use it as evidence of spontaneous reasoning |
+| CPU runs in stock Qwen model modules | Standalone `rv-tiny` and full merged model | Actual `Qwen3_5ForCausalLM`, bf16 CPU, 12 layers, hidden 2816, 2,113,019,200 parameters | Reproduced standalone only | Stock layer types can execute the compiled circuit | Distinguish model architecture from pretrained chat behavior |
+| Generation performs the calculation | Compiled circuit owns trace tokens | Two arithmetic/store/reload programs produce A/B, 13 tokens each, exact reference trace. `Machine.run` and `record` replaced by throwing guards during generation; guard self-test passes, no calls during execution | Reproduced | Reference interpreter did not supply the measured trace | Actual model-level test, not reference-only execution |
+| Fault behavior is meaningful | RV32 fault path | Illegal word produces `FLT(0)` plus address tokens and HALT, 11-token exact trace | Reproduced | Model does not unconditionally emit the success trace | Narrow negative control, not ISA certification |
+| Model residual matches circuit | Upstream test | `tinycheck --device cpu --progs signext`: 118,800 cells equal; 44 generated tokens match | Reproduced | Separate teacher-forced internal-state and free-running trace checks agree for one program | Useful stronger check, not 18M instructions rerun |
+| Merged Qwen4B needs a driver | Author and code | `RvChat.generate` injects initial state, chooses CPU versus text tokens, skips Qwen layers for CPU trace; optional lock verifies a reference rather than supplies predictions | Code-inspected | Computation in weights still needs orchestration | Do not promise plain full-model generate portability |
+| 18.8GB checkpoint, 24GB GPU, arithmetic scores, 18M instructions | Author measurements | Full checkpoint and CUDA benchmarks not run locally | Reported | Our three tiny cases cannot certify the whole launch | No new accuracy or throughput claim |
+
+## Competing explanations and product map
+
+| Theory | View | Evidence for | Evidence against / limit | Direction | Disproof |
+| --- | --- | --- | --- | --- | --- |
+| Exact circuits can be inserted into ordinary model layers | Maintainer thesis | Tensor compiler, real model execution, memory instructions, exact changed output | Large padded model; narrow CPU test, not full chat evaluation | Shipped experiment | Model/reference divergence under valid inputs |
+| A host interpreter secretly supplies computed answers | Reader objection | Python host holds a reference Machine for boot state and tests | Throwing run/record guards permit both successful programs and fault; emitted Qwen modules generate all tokens | Rejected for tested standalone path | A generation-time reference call or supplied expected token |
+| Training caused a model to infer machine semantics | Reader's alternative | Normal learned model architecture can suggest this reading | This build writes tensors directly, never trains; standalone has no pretrained chat weights | Rejected for tested build | A training/optimizer path constructing these tensors |
+
+Replaces: host arithmetic execution for the experimental merged model's `calc` lane, according to inspected integration; not a general Python/Linux replacement. Wraps: stock Transformers/PyTorch and compiler. Extends: Qwen layer architecture with designed circuitry and recurrent memory; full merge extends pretrained Qwen. Relies on: host tensor runtime/hardware, firmware loading and decoder orchestration. May enter: research into exact recurrent state; no roadmap promised from extension points. Author's filesystem and NPU branches are excluded side topics.
+
+## Execution record and limits
+
+Python 3.12 temporary venv, Torch 2.15.0, Transformers 5.22.1, NumPy 2.3.5, safetensors 0.8.0. Versions satisfy declared minimums; this is not the upstream uv.lock environment. Apple M5, macOS 27.0.1, CPU, bf16, four Torch threads. No model download or cloud call; HF_HUB_OFFLINE=1 applies to model lookups, not a whole-process packet audit. Dependencies were downloaded during setup. Reference PyTorch convolution/DeltaNet fallbacks explicitly warned of slower execution.
+
+Own build took 34.19 seconds. Two valid programs (7×9+2 and 8×8+2) store, zero and reload the result, then print its ASCII character: A and B. 17.67s and 14.29s, 13 generated tokens each. Illegal instruction 11.97s, 11 tokens. These are one run each, no general performance benchmark. Process peak RSS 12,070,731,776 bytes includes compilation and tensor construction, not steady-state model memory. Both owned Python processes finished successfully; no model server remains.
+
+[Model results](results/qwenputer-model.json), [runner](repro/qwenputer-model.py), [source check](results/qwenputer-source-check.json), [source hashes](results/qwenputer-source-hashes.json). Initial upstream test separately passed (36s build plus 56.5s signext check). Our wrapper changes no upstream implementation. Expected reference traces are generated before blocking; initial memory/ROM snapshots still use the reference's data representation and instruction preprocessing. During generation, the stock model owns predicted tokens, with no reference execution. This rules out one host-interpreter explanation, not malicious arbitrary code or all numerical failure modes.
+
+Publication decision: enough independent model-level evidence to explain compiled versus trained and the host driver's role. Opening must name standalone scope immediately. Do not report the full 4B model, evaluation scores, CUDA speed or training/generalization as reproduced. The [manuscript](../../../posts/035-oss-radar-11-qwenputer-compiled-cpu.md) is 853 rendered words (4.27 minutes). Markdown validation passes 25 posts; isolated production build passes 36. Opening scope, exact result table, canonical and social metadata pass [local publication checks](results/qwenputer-publication-checks.json). Push and served acceptance remain pending.

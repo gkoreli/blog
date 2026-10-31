@@ -1,0 +1,72 @@
+{
+  "sourceCommit": "f07a0b2e38271454c4d455dc2b9bf78d3d399170",
+  "scope": "Standalone compiled CPU in stock Qwen modules; not the merged pretrained 4B chat model",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "device": "cpu",
+  "dtype": "torch.bfloat16",
+  "threads": 4,
+  "versions": {
+    "torch": "2.15.0",
+    "transformers": "5.22.1",
+    "numpy": "2.3.5",
+    "safetensors": "0.8.0"
+  },
+  "parameters": 2113019200,
+  "hiddenSize": 2816,
+  "layers": 12,
+  "buildSeconds": 34.18786037503742,
+  "peakRssBytes": 12070731776,
+  "guardSelfTestPassed": true,
+  "referenceCallsDuringGeneration": 0,
+  "cases": [
+    {
+      "name": "7*9+2, store and reload",
+      "source": "_start: li t0, 7\nli t1, 9\nmul a0, t0, t1\naddi a0, a0, 2\nla s0, slot\nsw a0, 0(s0)\nli a0, 0\nlbu a0, 0(s0)\nli a7, 1\necall\nli a7, 93\necall\n.data\nslot: .word 0\n",
+      "expectedOutput": "A",
+      "actualOutput": "A",
+      "traceMatchesReference": true,
+      "generatedTokens": 13,
+      "lastToken": "HALT",
+      "faultTokens": [],
+      "traceSha256": "5e92261bed3e55864ebd0310d72d05e4b47dacca8df424320d1059442280d87b",
+      "seconds": 17.670432041981257,
+      "referenceCallsDuringGeneration": 0
+    },
+    {
+      "name": "8*8+2, changed operands",
+      "source": "_start: li t0, 8\nli t1, 8\nmul a0, t0, t1\naddi a0, a0, 2\nla s0, slot\nsw a0, 0(s0)\nli a0, 0\nlbu a0, 0(s0)\nli a7, 1\necall\nli a7, 93\necall\n.data\nslot: .word 0\n",
+      "expectedOutput": "B",
+      "actualOutput": "B",
+      "traceMatchesReference": true,
+      "generatedTokens": 13,
+      "lastToken": "HALT",
+      "faultTokens": [],
+      "traceSha256": "5bbf0a195dc8d171956d56c17029f8ac1197e3bfae7936d123440caea4f89d3d",
+      "seconds": 14.293211499985773,
+      "referenceCallsDuringGeneration": 0
+    },
+    {
+      "name": "illegal instruction",
+      "source": "_start: .word 0x0000000b",
+      "expectedOutput": "",
+      "actualOutput": "",
+      "traceMatchesReference": true,
+      "generatedTokens": 11,
+      "lastToken": "HALT",
+      "faultTokens": [
+        "FLT(0)"
+      ],
+      "traceSha256": "4d42f4526a086167a2a6215b48a648238d9463362c37d4246fe6b9424a29b841",
+      "seconds": 11.971926041995175,
+      "referenceCallsDuringGeneration": 0
+    }
+  ],
+  "upstreamSignextCheck": {
+    "command": "python -m chipformer.rv.tinycheck --device cpu --progs signext",
+    "exitCode": 0,
+    "residualCellsEqual": 118800,
+    "generatedTokens": 44,
+    "traceMatchesReference": true,
+    "seconds": 56.5
+  }
+}
