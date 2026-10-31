@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "edge-access-evidence-2026-10-31.1",
+  "checkedAt": "2026-10-31T08:38:59.612559+00:00",
+  "sourceBaseline": "a3462164a54ca750fbbadc00352563267066c3ef",
+  "originalControlReceipt": "answer-fidelity-release.json",
+  "originalResponseSha256": "2ba64e90d0daa2f2418b2f7b63ed4d831648f731288041ddc4e8ee8f29fbd4bf",
+  "originalManifestFilesVerified": 12,
+  "savedResponse": {
+    "status": 403,
+    "cloudflareError": 1010,
+    "successfulArticleDelivery": false
+  },
+  "nativeEvent": {
+    "action": "block",
+    "datetime": "2026-10-31T08:26:51Z",
+    "description": "",
+    "matchIndex": 0,
+    "rayName": "a53146f84f27ec08",
+    "ref": "",
+    "ruleId": "bic",
+    "rulesetId": "",
+    "sampleInterval": 1,
+    "source": "bic",
+    "userAgent": "Python-urllib/3.14",
+    "clientRequestHTTPHost": "gkoreli.com",
+    "clientRequestHTTPMethodName": "GET",
+    "clientRequestHTTPProtocol": "HTTP/1.1",
+    "clientRequestPath": "/which-ai-fetchers-send-which-headers",
+    "clientRequestQuery": "",
+    "zoneVersion": 0
+  },
+  "nativeSelection": {
+    "field": "Ray ID",
+    "operator": "equals",
+    "value": "a53146f84f27ec08",
+    "uiWindow": "Last 24 hours",
+    "absoluteBounds": "not-exported",
+    "matchingRowsObserved": 1,
+    "source": "Cloudflare zone Security Events sampled logs"
+  },
+  "contextJoin": {
+    "sameRayBody": true,
+    "sameHostPathMethod": true,
+    "sameEmptyQuery": true,
+    "providerEventSecondContainsResponseTime": true,
+    "responseReceivedMinusEventSecond": 0.586073,
+    "providerUserAgent": "Python-urllib/3.14",
+    "userAgentInterpretation": "Matches the controlled Python urllib execution; provider UA is a request claim, not a general authenticated operator identity.",
+    "rayUniqueness": "Not guaranteed by Cloudflare; corroborating time/host/path/method/query are required here.",
+    "sampleInterval": 1,
+    "sampleInterpretation": "Returned record interval only, not evidence of complete Security Events coverage.",
+    "nativeRuleId": "bic",
+    "nativeRulesetId": "",
+    "emptyFieldsNotInvented": true,
+    "workerInvocationTrace": "not-measured",
+    "d1AbsenceReadback": "not-measured",
+    "successfulArticleDelivery": false
+  },
+  "capture": {
+    "method": "Selected-field projection of the already displayed native event-export data URI, with expanded UI agreement.",
+    "originalExportSaved": false,
+    "selectedFields": 17,
+    "omittedFields": [
+      "clientASNDescription",
+      "clientAsn",
+      "clientCountryName",
+      "clientIP",
+      "clientRefererHost",
+      "contentScanObjTypes",
+      "metadata"
+    ],
+    "downloadFailure": "One download listener timeout/reset; no event file found. No export retry or extra own-site request.",
+    "ownedTabClosed": true,
+    "userTabsChanged": false
+  },
+  "conclusions": {
+    "rejectingFeature": "Browser Integrity Check",
+    "nativeRuleId": "bic",
+    "decisiveHeaderOrHeuristic": "not-established",
+    "httpMessageSignatureVerdict": "not-established by this BIC event",
+    "workerInvocationOrStorageTrace": "not-measured",
+    "servedDestinationAcceptance": false,
+    "originalModelTrialRegraded": false,
+    "populationBlockingOrClassifierErrorRate": null
+  },
+  "currentCodeReview": {
+    "calibrationEvaluator": "Incomplete measurements stay outside classifier abstentions/confusion matrix. This ordinary release control is not registered in that trial protocol.",
+    "fetcherTrialLedger": "Requires its own marked plan and Worker capture; no event is invented for this rejected check.",
+    "sourceSha256": {
+      "packages/analytics/src/calibration-evaluation.ts": "14cb49966cb6c500f130a9e867b230c439d0177f61a073217b5bc49c9f704fa4",
+      "packages/blog/scripts/fetcher-trial-ledger.mjs": "cdc1ac78c6860e080c40a89415ed376a69154bc26d8121999fe290aede35e2dc",
+      "packages/analytics/src/eligibility.ts": "4b3cfdb2f1696ad093ac890b47337e9d5f2d053e65ef1844dc092f024193a2e8",
+      "wrangler.jsonc": "f52b91f8bd9abf98b109e7ab5d3c7f411cb59218031b440bc7dadc69137eaff3"
+    }
+  },
+  "primarySources": [
+    {
+      "url": "https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/",
+      "claim": "1010 is a browser-signature access denial. Separate managed-zone exception names pages.dev/workers.dev and Pages custom domains.",
+      "limit": "Our source declares a Worker Custom Domain, so that exception is not automatically applicable."
+    },
+    {
+      "url": "https://developers.cloudflare.com/waf/tools/browser-integrity-check/",
+      "claim": "BIC evaluates headers including missing/nonstandard UA.",
+      "limit": "Not an RFC9421 cryptographic verification verdict or proof of malicious intent."
+    },
+    {
+      "url": "https://developers.cloudflare.com/waf/analytics/security-events/",
+      "claim": "Security Events reports actioned/flagged security events, not requests; can sample and can have multiple events per request.",
+      "limit": "One event with sampleInterval1 does not establish coverage or a population blocking rate."
+    },
+    {
+      "url": "https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/",
+      "claim": "Ray IDs are useful for investigation but not guaranteed unique for every request.",
+      "limit": "Join uses context rather than assuming a globally unique request key."
+    },
+    {
+      "url": "https://developers.cloudflare.com/learning-paths/mtls/mtls-workers/",
+      "claim": "Workers runs after WAF and Access.",
+      "limit": "Architecture is not a per-request invocation or storage trace."
+    },
+    {
+      "url": "https://developers.cloudflare.com/waf/feature-interoperability/",
+      "claim": "BIC is independent of the Ruleset Engine.",
+      "limit": "Do not assign this event a guessed named ruleset phase."
+    }
+  ],
+  "privateArchive": {
+    "location": "packages/blog/worklog/analytics-evidence/2026-10-31-edge-access",
+    "files": 15,
+    "manifestSha256": "4f59017cc32972db217c319881bcf490364fad777be69cc4b214f8d66c81bfa5"
+  },
+  "effects": {
+    "newOwnSiteHttpRequests": 0,
+    "productionD1Statements": 0,
+    "nativeMatchingEventsObserved": 1,
+    "newControlledAnswerTrials": 0,
+    "newRegisteredCalibrationTrials": 0,
+    "newHumanLabels": 0,
+    "runtimeOrArticleChanged": false,
+    "securityRulesCredentialsOrScopesChanged": false
+  },
+  "limits": [
+    "Native service/rule IDs establish the observed BIC block. The specific decisive signal and historical effective configuration are not reconstructed.",
+    "Browser-signature heuristics are separate from RFC9421 cryptographic proofs, verified-agent identity and per-action purpose.",
+    "Ray IDs are not guaranteed globally unique; the match also uses timestamp, host, path, method and query.",
+    "Security events may be multiple per request and sampled; sampleInterval1 on this record does not prove completeness.",
+    "Cloudflare documents Workers after WAF/Access and BIC separately from Ruleset Engine phases. This is architectural context, not an independent Worker/storage trace.",
+    "The Worker Custom Domain declaration does not automatically inherit the Pages custom-domain/workers.dev special no-log exception.",
+    "One controlled benign-purpose client block is not a population false-positive rate or proof that the service is misconfigured.",
+    "Missing/unobserved downstream measurement remains unknown, not zero or classifier abstention."
+  ],
+  "checks": {
+    "scopedLocalMarkdownLinks": 10,
+    "fencesBalanced": true,
+    "originalReleaseAndNewPrivateManifestsVerified": true,
+    "contextualRequestJoinAssertionsPassed": true,
+    "reviewedSourcesUnchanged": true,
+    "independentReadOnlyReview": "No material overclaim; no extra query, trial or regrading.",
+    "newRuntimeTestsRun": false
+  }
+}

@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T08:27:59.227102+00:00",
-  "sourceBaseline": "3736f09b3946e1d70c66106e7749d9c369cbbbac",
+  "checkedAt": "2026-10-31T08:38:59.612559+00:00",
+  "sourceBaseline": "a3462164a54ca750fbbadc00352563267066c3ef",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "3736f09 reconciled complete-week resource/source vectors and rejected unsupported growth inference."
+    "scope": "a346216 accepted exact heading repair activation and preserved single served403without retry."
   },
-  "scope": "Single controlled answer trial exposes missing citation targets; checked local build-time Markdown repair preserves original baseline failure.",
+  "scope": "Read-only native Security Events and saved-response audit identifies BIC denial and contextual matching limits.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -115,7 +115,9 @@
         "119-directory-adoption-policy-and-cost.md",
         "123-structured-field-extension-compatibility.md",
         "structured-extension-compatibility.json",
-        "structured-extension-release.json"
+        "structured-extension-release.json",
+        "../discovery-experiment-02/03-edge-access-evidence.md",
+        "../discovery-experiment-02/edge-access-evidence.json"
       ],
       "limit": "Selected syntax/crypto conditions have exact Node/workerd and independent Structured Field syntax evidence. Profile .31.2 repairs decimal and semicolon-SP compatibility; this does not establish complete grammar/draft conformance, native managed agreement or actual vendor frequency. No accepted request-level signedAgent oracle or eligible controlled identity exists. The response-advisory runtime no-adoption decision remains closed."
     },
@@ -149,7 +151,9 @@
         "125-explicit-resource-reach-accounting.md",
         "resource-reach-checks.json",
         "126-retained-windows-and-resource-trends.md",
-        "retained-resource-window-findings.json"
+        "retained-resource-window-findings.json",
+        "../discovery-experiment-02/03-edge-access-evidence.md",
+        "../discovery-experiment-02/edge-access-evidence.json"
       ],
       "limit": "Weekly joint measurement history is implemented and has dated production acceptance; Research108's identical-report counterexample is superseded for that gap. Stage controls distinguish response/script/queue/receipt, but representative human/device/RUM behavior remains unmeasured."
     },
@@ -175,7 +179,9 @@
         "126-retained-windows-and-resource-trends.md",
         "retained-resource-window-findings.json",
         "../discovery-experiment-02/02-source-supplied-answer-fidelity.md",
-        "../discovery-experiment-02/answer-fidelity-checks.json"
+        "../discovery-experiment-02/answer-fidelity-checks.json",
+        "../discovery-experiment-02/03-edge-access-evidence.md",
+        "../discovery-experiment-02/edge-access-evidence.json"
       ],
       "limit": "Observed request reach, targeted agent-search discovery and external evidence reuse count at their supported stages. The historical 397-row cohort separates 243 article, 68 prompt-page and 86 hub events; it cannot establish current growth, useful reading, authentic referrals, population search intent or people. No fresh all-kind suffix is accepted after the D1 metadata authentication error. One source-supplied answer has supported content but failed baseline destination fidelity; this is controlled task evidence, not organic demand or population accuracy."
     },
@@ -305,28 +311,27 @@
     }
   ],
   "effectsThisAudit": {
-    "runtimeCollectorChanged": false,
-    "buildRendererChanged": true,
-    "productionSiteRequests": 1,
+    "runtimeChanged": false,
+    "productionSiteRequests": 0,
     "productionSqlStatements": 0,
+    "nativeMatchingSecurityEventsObserved": 1,
     "newHumanLabels": 0,
-    "controlledAnswerTrials": 1,
-    "newPublicSearchCalls": 0,
+    "newRegisteredCalibrationTrials": 0,
+    "newControlledAnswerTrials": 0,
     "articleChangedByThisWork": false,
-    "credentialsOrScopesChanged": false,
-    "headingRendererActivationAccepted": true,
+    "rulesCredentialsOrScopesChanged": false,
     "servedDestinationAcceptance": false,
-    "servedStatus": 403
+    "rejectingFeatureEstablished": "bic"
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: one complete answer/citation baseline, real missing-ID defect and checked local repair; exact source activation accepted, single served check403 preserved without retry",
+    "thisTurnClassification": "progress: saved1010response corroborated by context-matched native BIC block; stage, multiplicity and ID-uniqueness boundaries established",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Inspect existing native edge policy and retained request evidence for the single rejected prefetch control (Ray in answer-fidelity-release.json). Determine rule/ingress stage if evidence permits; no retry, alternate-client bypass or weaker protection is authorized by this finding.",
+  "nextBoundedAction": "Design and implement a separate bounded offline access-evidence ledger against the saved control: distinct attempts, security events, responses, collector and classification stages; contextual Ray joins, multiplicity/conflict handling and unknown downstream states. Do not loosen the existing calibration matrix, security policy or retry the denied request.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -354,10 +359,9 @@
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
   "goalStatusScope": "Persistent goal tracker confirmed active this turn. Offline acceptance is new progress; historical blocked checkpoint and claim-specific gates remain preserved.",
   "latestContinuation": {
-    "research": "../discovery-experiment-02/02-source-supplied-answer-fidelity.md",
-    "receipt": "../discovery-experiment-02/answer-fidelity-checks.json",
-    "nextBoundedAction": "Inspect existing native edge policy and retained request evidence for the single rejected prefetch control (Ray in answer-fidelity-release.json). Determine rule/ingress stage if evidence permits; no retry, alternate-client bypass or weaker protection is authorized by this finding.",
-    "activationReceipt": "../discovery-experiment-02/answer-fidelity-release.json"
+    "research": "../discovery-experiment-02/03-edge-access-evidence.md",
+    "receipt": "../discovery-experiment-02/edge-access-evidence.json",
+    "nextBoundedAction": "Design and implement a separate bounded offline access-evidence ledger against the saved control: distinct attempts, security events, responses, collector and classification stages; contextual Ray joins, multiplicity/conflict handling and unknown downstream states. Do not loosen the existing calibration matrix, security policy or retry the denied request."
   },
   "latestAcceptedSourceActivation": {
     "sourceCommit": "762e3b5a7f6b2c7b2770ae22f41f730ceca6ba84",
