@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-31T00:03:47.953626+00:00",
+  "checkedAt": "2026-10-31T00:09:09.468124+00:00",
   "sourceBaseline": "73787f92c973f7d258d824505cfc240cb83ea8eb",
   "goalAchieved": false,
   "previousTurn": "progress: eda77d6 delivered clock/admission/cost corrections; current turn reproduces and repairs request-verifier lifecycle races",
@@ -1490,12 +1490,16 @@
     "receipt": "key-lifecycle-race-audit.json",
     "completed": "Repeated native races, source-identity/import repair, refresh waiter repair, current-profile D1/report acceptance and actual request cancellation/recovery controls",
     "productionPolicyCodeChanged": true,
-    "activationMeasured": false,
+    "activationMeasured": true,
     "productionQueries": 0,
     "newHumanLabels": 0,
     "trackerStatus": "active",
     "goalComplete": false,
-    "nextBoundedAction": "Exact-source activation and narrow non-population release check, then caller-owned timeout/retry/lifecycle design preserving publication ordering."
+    "nextBoundedAction": "Caller-owned bounded failure/retry semantics with publication ordering and noncacheable-response/cancellation controls; preserve remaining native/human/search/source-purpose/privacy gates.",
+    "releaseReceipt": "key-lifecycle-release.json",
+    "activationScope": "Exact source-linked provider check, native version/deployment allocation, and unchanged direct Markdown availability; no production race exercise or collector/storage/HTML/report measurement",
+    "newOwnSiteHttpRequests": 1,
+    "collectorEligibleRequests": 0
   },
   "resumedAudit": {
     "checkedAt": "2026-10-31T00:03:47.953626+00:00",

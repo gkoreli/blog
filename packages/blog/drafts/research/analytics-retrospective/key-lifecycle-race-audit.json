@@ -229,9 +229,13 @@
     "rechecked": true
   },
   "release": {
-    "codeCommit": null,
-    "activation": "not-yet-measured",
-    "productionAcceptance": "not-yet-measured"
+    "codeCommit": "c05c97332df4a952c71472c9399382ce2f73b18c",
+    "receipt": "key-lifecycle-release.json",
+    "activation": "source-linked GitHub check names exact Worker version, fresh Wrangler allocation matches at 100%",
+    "acceptedWorkerVersion": "04c20df7-81b3-4d24-9b5d-0457dee15d55",
+    "publicAcceptance": "one collector-ineligible direct Markdown GET matches unchanged 13181 bytes",
+    "productionRaceOrIngestionAcceptance": false,
+    "nativeBuildDetailsHttpStatus": 403
   },
   "effectsAtLocalAcceptance": {
     "productionRequests": 0,

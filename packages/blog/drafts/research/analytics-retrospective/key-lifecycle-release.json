@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-10-31T00:09:09.468124+00:00",
+  "sourceCommit": "c05c97332df4a952c71472c9399382ce2f73b18c",
+  "githubCheckId": 124378102874,
+  "githubCheckUrl": "https://github.com/gkoreli/blog/runs/124378102874",
+  "githubCheckSuccess": true,
+  "checkReportedBuildId": "8a40f7d7-bc2e-4d6a-aa04-dc69329b9aa9",
+  "checkReportedWorkerVersion": "04c20df7-81b3-4d24-9b5d-0457dee15d55",
+  "freshDeploymentId": "2fdef250-6a25-462e-b0fb-6c8f4de9acb2",
+  "workerVersionMatches": true,
+  "allocationPercent": 100,
+  "workerVersionCreatedOn": "2026-10-31T00:04:57.276214Z",
+  "nativeBuildDetailsHttpStatus": 403,
+  "nativeBuildOutcomeDirectlyRead": false,
+  "ownSiteHttpRequests": 1,
+  "collectorEligibleRequests": 0,
+  "productionSelects": 0,
+  "tailCreated": false,
+  "publicReportCalculationRequested": false,
+  "markdown": {
+    "status": 200,
+    "bytes": 13181,
+    "sha256": "dae2414487545ba587b993bc1273627f92a0f653786395fbc5cd97bf01afd179",
+    "contentType": "text/markdown; charset=utf-8"
+  },
+  "acceptedScope": "Exact source-linked provider check, native version/deployment allocation, and unchanged direct Markdown availability; no production race exercise or collector/storage/HTML/report measurement",
+  "limits": [
+    "Native build-details read returned HTTP403; cause unestablished, build logs not fetched.",
+    "Per-request Worker version/Ray join not captured; metadata and HTTP byte acceptance are separate.",
+    "All race/cancellation measurements are local synthetic controls; historical incidence and real vendor behavior remain unknown.",
+    "Later documentation-only deployments have separate Worker identities."
+  ],
+  "privateEvidence": {
+    "durable": "/Users/goga/Documents/goga/analytics-evidence/2026-10-31-key-lifecycle/release",
+    "files": 23,
+    "manifestSha256": "d05ac77f77fd0b44eb57d39e8087c340e19a71c45eadd0382fd0a69985b02032",
+    "rechecked": true
+  }
+}
