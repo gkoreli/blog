@@ -13,15 +13,15 @@ const pair = () => {
 export function directoryResponseFixture() {
   const keys = [pair(), pair()];
   const build = ({ digest = false, count = 2, components, created = seconds - 10, expires = seconds + 300,
-    tag = 'http-message-signatures-directory', directoryKeys = keys.map(key => key.jwk), digestAlgorithm = 'sha-256',
+    tag = 'http-message-signatures-directory', directoryKeys = keys.map(key => key.jwk), digestAlgorithm = 'sha-256', digestValue, signerOffset = 0,
     inputTransform = value => value, signatureTransform = value => value } = {}) => {
     const body = Buffer.from(JSON.stringify({ keys: directoryKeys }));
     const headers = { 'Content-Type': 'application/http-message-signatures-directory+json' };
-    if (digest) headers['Content-Digest'] = `${digestAlgorithm}=:${createHash(digestAlgorithm === 'sha-512' ? 'sha512' : 'sha256').update(body).digest('base64')}:`;
+    if (digest) headers['Content-Digest'] = digestValue ?? `${digestAlgorithm}=:${createHash(digestAlgorithm === 'sha-512' ? 'sha512' : 'sha256').update(body).digest('base64')}:`;
     const covered = components ?? (digest ? ['"@authority";req', '"content-digest"'] : ['"@authority";req']);
     const inputs = [], signatures = [];
     for (let index = 0; index < count; index++) {
-      const key = keys[index % keys.length];
+      const key = keys[(index + signerOffset) % keys.length];
       const params = `(${covered.join(' ')});created=${created};keyid="${key.jwk.kid}";alg="ed25519";expires=${expires};tag="${tag}"`;
       const values = { '"@authority";req': 'fixture.example', '"@authority"': 'fixture.example',
         '"content-digest"': headers['Content-Digest'], '"@status"': '200', '"@path";req': '/.well-known/http-message-signatures-directory' };
@@ -78,5 +78,12 @@ export function directoryResponseFixture() {
   add('conflicting-validity-duplicates', build({ directoryKeys: [{ ...keys[0].jwk, exp: seconds + 100 }, { ...keys[0].jwk, exp: seconds + 200 }, keys[1].jwk] }), { verified: 1, authority: 1, bound: 0, digest: 'absent', admitted: 1, rejected: 1, reason: 'key-rejected' });
   add('expired-key-boundary', build({ directoryKeys: [{ ...keys[0].jwk, exp: seconds }, keys[1].jwk] }), { verified: 1, authority: 1, bound: 0, digest: 'absent', admitted: 1, rejected: 1, reason: 'key-rejected' });
   add('signature-validity-boundary', build({ created: seconds, expires: seconds }), { verified: 2, authority: 2, bound: 0, digest: 'absent' });
-  return { now, cases, build, clone };
+  const incoming = () => {
+    const key = keys[0];
+    const params = `("@authority" "signature-agent");created=${seconds};expires=${seconds + 300};keyid="${key.jwk.kid}";alg="ed25519";tag="web-bot-auth"`;
+    const base = `"@authority": publication.example\n"signature-agent": "https://fixture.example"\n"@signature-params": ${params}`;
+    return { url: 'https://publication.example/article', headers: { 'Signature-Agent': '"https://fixture.example"',
+      'Signature-Input': `reader=${params}`, Signature: `reader=:${sign(null, Buffer.from(base), key.privateKey).toString('base64')}:` } };
+  };
+  return { now, cases, build, clone, incoming };
 }

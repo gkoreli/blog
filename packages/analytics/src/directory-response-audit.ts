@@ -2,7 +2,7 @@ import { parseDictionary, parameter, serializeItem, serializeInnerList, signatur
   malformedSignatureParameterReason, directoryKey, ed25519JwkThumbprint, type SignatureCandidate } from './webbotauth.js';
 import { knownTestPublicKey, PUBLIC_KEY_POLICY_VERSION } from './known-test-keys.js';
 
-export const DIRECTORY_RESPONSE_AUDIT_VERSION = '2026-10-30.2';
+export const DIRECTORY_RESPONSE_AUDIT_VERSION = '2026-10-31.1';
 type Outcome = 'verified' | 'invalid' | 'policy-rejected' | 'unsupported';
 type DigestState = 'not-assessed' | 'absent' | 'matched' | 'mismatch' | 'malformed' | 'unsupported';
 export interface DirectoryProofAudit {
@@ -82,7 +82,9 @@ async function digestState(headers: Headers, body: Uint8Array): Promise<DigestSt
   if (entries === null) return 'malformed';
   let mismatch = false, unsupported = false;
   for (const entry of entries) {
-    if (entry.member.type !== 'item' || entry.member.value.parameters.length || entry.member.value.bare.type !== 'bytes') return 'malformed';
+    if (entry.member.type !== 'item' || entry.member.value.bare.type !== 'bytes') return 'malformed';
+    // RFC 8941 Items can carry extension parameters. Digest calculation uses
+    // their bare bytes; the signature base still covers the entire field value.
     const algorithm = entry.key === 'sha-256' ? 'SHA-256' : entry.key === 'sha-512' ? 'SHA-512' : null;
     if (algorithm === null) { unsupported = true; continue; }
     const actual = new Uint8Array(await crypto.subtle.digest(algorithm, body));

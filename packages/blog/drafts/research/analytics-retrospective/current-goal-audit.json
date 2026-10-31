@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-31T00:26:39.806885+00:00",
+  "checkedAt": "2026-10-31T00:33:31.713459+00:00",
   "sourceBaseline": "73787f92c973f7d258d824505cfc240cb83ea8eb",
   "goalAchieved": false,
-  "previousTurn": "progress: 2a99495 records source-linked activation of the prior key lifecycle repair",
-  "scope": "Research118 explicit owner-lifetime repair and local acceptance; no new population/historical census or full completion claim.",
+  "previousTurn": "progress: 605ab9c repairs caller-owned directory lookup recovery; 9082d4b records exact-source activation",
+  "scope": "Research119 directory-response adoption decision and offline parameter compatibility repair; no new population/history or full completion claim.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -1502,14 +1502,28 @@
     "collectorEligibleRequests": 0
   },
   "resumedAudit": {
-    "checkedAt": "2026-10-31T00:24:22.731893+00:00",
+    "checkedAt": "2026-10-31T00:33:31.713459+00:00",
     "consecutiveNoProgressGoalTurns": 0,
     "lastGoalTurnClassification": "progress",
     "historicalBlockedAuditRetained": true
   },
-  "latestWorkSourceBaseline": "2a99495c4aeb8fc0c554d2492feb85b15bb47b12",
+  "latestWorkSourceBaseline": "9082d4bd489df4218dc1837862c22b6adca95533",
   "legacyFactsRevalidatedInThisTurn": false,
   "latestContinuation": {
+    "checkedAt": "2026-10-31T00:33:31.713459+00:00",
+    "research": "119-directory-adoption-policy-and-cost.md",
+    "receipt": "directory-adoption-audit.json",
+    "completed": "Runtime no-adoption decision, selected-key aggregate limitation, cold per-stage crypto measurements and offline string-parameter compatibility repair",
+    "productionPolicyCodeChanged": false,
+    "collectorEntryByteIdentical": true,
+    "productionQueries": 0,
+    "newOwnSiteHttpRequests": 0,
+    "newHumanLabels": 0,
+    "trackerStatus": "active",
+    "goalComplete": false,
+    "nextBoundedAction": "Audit the remaining decision requirements against current evidence; take a new investigation only when an available input can change the answer. Do not reopen runtime adoption or repeat this matrix solely to continue work."
+  },
+  "previousContinuation": {
     "checkedAt": "2026-10-31T00:24:22.731893+00:00",
     "research": "118-caller-owned-directory-recovery.md",
     "receipt": "key-request-ownership-audit.json",

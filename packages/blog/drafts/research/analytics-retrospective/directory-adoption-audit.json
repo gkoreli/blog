@@ -1,0 +1,81 @@
+{
+  "checkedAt": "2026-10-31T00:33:31.713459+00:00",
+  "inputSha256": "34f99b88769e93aae87f5d7f1e7bc6f756b204c92fa2e4008f753798778dd07f",
+  "sourceHashes": [
+    {
+      "path": "packages/analytics/src/directory-response-audit.ts",
+      "sha256": "cd1b11f67bed8e0ba0e0e183d6e3fa0bc4ec48eff084b255b4cb8bd966a103f9"
+    },
+    {
+      "path": "packages/analytics/src/webbotauth.ts",
+      "sha256": "edacdfd0e5aeed48fdc081b5c1953d6eee128ec1b6eb5a0c70e1f7bf7319b265"
+    }
+  ],
+  "rounds": 3,
+  "pairedConditions": 42,
+  "syntheticCases": 14,
+  "independentReferenceChecks": 66,
+  "unexplainedReferenceDifferences": 0,
+  "changedDigestCases": 3,
+  "incomingResultsChanged": 0,
+  "comparisonNegativeControls": 4,
+  "hypotheticalPerRound": {
+    "currentVerified": 13,
+    "requireAllDirectoryAuthority": 7,
+    "requireAllDirectoryBodyBound": 2,
+    "denominator": "14 deliberately selected signed-request/directory conditions; no prevalence or error-rate estimate"
+  },
+  "analyticsEntryBundle": {
+    "bytes": 223052,
+    "sha256": "275bd94f3fcdfbe1406dc5f96e459e2d3180c362156cca81bf8a93633190383d"
+  },
+  "productionRequests": 0,
+  "d1Statements": 0,
+  "humanLabels": 0,
+  "decision": "Keep the directory audit offline; do not gate incoming verification or promote aggregate directory counts to selected-key/operator facts. Runtime proposal requires a specific consumer decision, key-specific association, failure policy and additional cost/lifecycle acceptance.",
+  "sourceBaseline": "9082d4bd489df4218dc1837862c22b6adca95533",
+  "research": "119-directory-adoption-policy-and-cost.md",
+  "previousGoalTurn": {
+    "classification": "progress",
+    "codeCommit": "605ab9c",
+    "receiptCommit": "9082d4b"
+  },
+  "offlineAuditVersion": "2026-10-31.1",
+  "checks": {
+    "analyticsTests": 331,
+    "workspaceTypes": true,
+    "scriptSyntax": true,
+    "plainAndInstrumentedAdapterAgreement": true,
+    "fullSiteBuildRequiredOrClaimed": false
+  },
+  "privateArchive": {
+    "path": "/Users/goga/Documents/goga/analytics-evidence/2026-10-31-directory-adoption",
+    "files": 48,
+    "manifestSha256": "3fd6ef89e845dfc6a8d00d82839a3187af447e620065f340476d917707c61f44",
+    "verified": true
+  },
+  "hypotheses": {
+    "emptyDictionaryBypass": "Refuted in current bounded parser and signed-empty-field native control; no invented RFC prohibition or corresponding repair.",
+    "parameterizedStringDigest": "Reproduced compatibility rejection; bare-byte hashing with complete signed header fixes the selected string-parameter case.",
+    "aggregateIdentifiesSelectedKey": "Refuted by two identical full aggregate results from different signing-key conditions."
+  },
+  "costLimits": "Cold separately measured stages, incoming key first; counts are neither universal multiplier, CPU, latency, billing nor production prevalence.",
+  "remainingGrammarLimit": {
+    "decimalValuedParameters": "Shared parser rejects them; source-inspected limitation, not one of fourteen native conditions or complete parameter grammar support."
+  },
+  "runtimeDecisionRecorded": "../../../../../docs/adr/0016.11-signature-verification-evidence.md",
+  "effects": {
+    "collectorIntegration": false,
+    "collectionClassifierVerifierProfilesChanged": false,
+    "reportSchemaCacheChanged": false,
+    "dependencyChanged": false,
+    "rawDiagnosticsActivated": false,
+    "freshVendorCaptures": 0,
+    "articleChanged": false,
+    "nativeManagedComparison": false,
+    "newHumanLabels": 0,
+    "goalComplete": false
+  },
+  "nextBoundedAction": "Audit the remaining decision requirements against current evidence; take a new investigation only when an available input can change the answer. Do not reopen runtime adoption or repeat this matrix solely to continue work.",
+  "goalStatus": "active"
+}
