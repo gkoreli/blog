@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T09:17:25.392020+00:00",
-  "sourceBaseline": "8c9adf34d94d11f6f272f1cadf59010765e4d8aa",
+  "checkedAt": "2026-10-31T09:22:57.327788+00:00",
+  "sourceBaseline": "7d578ad8f586ce942621cc9bbe11f712db01cb7f",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "8c9adf3 corrected observation-time semantics and raw-evidence availability boundaries."
+    "scope": "ebe9439 repaired report integrity and updated the concise retrospective; 7d578ad records native activation."
   },
-  "scope": "Public report count/partition integrity, clock-boundary repair and concise evidence-linked retrospective update.",
+  "scope": "Correct error-report disclosure to source-backed filtering limits, validated with offline synthetic parser/browser-redaction/SQLite controls.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -210,10 +210,12 @@
       "requirement": "Respect EU and US guidance while preserving useful evidence",
       "status": "decisions-and-operational-acceptance-pending",
       "evidence": [
-        "13-eu-us-collection-boundaries.md"
+        "13-eu-us-collection-boundaries.md",
+        "../discovery-experiment-02/07-error-disclosure-boundary.md",
+        "../discovery-experiment-02/error-disclosure-checks.json"
       ],
       "decision": "../../../../../docs/adr/0016.10-private-request-evidence.md",
-      "limit": "Expanded raw diagnostics remain unactivated under the unresolved boundary. Source/default policy, dated off-mode acceptance and provider terms are not a completed applicability, lawful-basis, aggregate-preserving retention, rights/contact or transfer review."
+      "limit": "Expanded raw diagnostics remain unactivated under the unresolved boundary. Source/default policy, dated off-mode acceptance and provider terms are not a completed applicability, lawful-basis, aggregate-preserving retention, rights/contact or transfer review. Error-diagnostic disclosure now matches reviewed filtering limits; this is not a completed privacy decision or production-content audit."
     },
     {
       "id": "engineering-article",
@@ -339,35 +341,36 @@
     }
   ],
   "effectsThisAudit": {
-    "reportRuntimeChanged": true,
-    "clientChanged": true,
+    "runtimeChanged": false,
+    "clientChanged": false,
     "collectorClassifierVerifierSchemaChanged": false,
-    "productionRequests": 0,
-    "productionSqlStatements": 0,
     "accountOrSecurityChanges": false,
     "rawCollectionActivated": false,
+    "articleChanged": false,
+    "articleChangedByThisWork": false,
+    "sourceActivationMeasured": false,
+    "servedDestinationAcceptance": false,
+    "privacyDisclosureChanged": true,
+    "productionRequests": 0,
+    "productionSqlStatements": 0,
     "newHumanLabels": 0,
     "newCalibrationTrials": 0,
     "newModelTrialsOrRegrades": 0,
-    "articleChanged": true,
-    "sourceActivationMeasured": true,
-    "runtimeChanged": true,
+    "reportRuntimeChanged": false,
     "productionSiteRequests": 0,
     "nativeMatchingSecurityEventsObserved": 0,
     "newRegisteredCalibrationTrials": 0,
-    "newControlledAnswerTrials": 0,
-    "articleChangedByThisWork": true,
-    "servedDestinationAcceptance": false
+    "newControlledAnswerTrials": 0
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: demonstrated plausible-zero report acceptance repaired; clock-boundary risk corrected, native/local cache/browser checks and concise article accepted",
+    "thisTurnClassification": "progress: demonstrated mismatch between absolute public error-data promise and implemented structural filtering; corrected disclosure with six synthetic controls and isolated build",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Audit the remaining full-goal requirements against current authoritative evidence and input availability. Choose only a decision-changing next investigation; preserve native/search/human/privacy/source-purpose gates, and do not repeat accepted local controls or chase documentation-only deployments.",
+  "nextBoundedAction": "Review existing diagnostic call sites for actionable stable codes versus arbitrary text before proposing a collection change. Preserve useful debugging evidence and existing privacy decisions. Native/search/human/source-purpose/D1 measurements still need their own accepted inputs; no repeated controls or documentation-only activation chase.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -393,12 +396,11 @@
     "scopeAfterOwnerContinuation": "Historical checkpoint for missing measurement inputs; not a prohibition on independent implementation, observed agent growth or discovery work."
   },
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
-  "goalStatusScope": "Persistent goal active. Code/local acceptance and concise source update are progress; production measurements and remaining input-specific requirements are not declared complete.",
+  "goalStatusScope": "Persistent goal active/incomplete. Disclosure correctness is new scoped progress; no new readership, growth, human/native accuracy or privacy-compliance outcome.",
   "latestContinuation": {
-    "research": "../discovery-experiment-02/06-public-report-integrity.md",
-    "receipt": "../discovery-experiment-02/report-integrity-checks.json",
-    "nextBoundedAction": "Audit the remaining full-goal requirements against current authoritative evidence and input availability. Choose only a decision-changing next investigation; preserve native/search/human/privacy/source-purpose gates, and do not repeat accepted local controls or chase documentation-only deployments.",
-    "release": "../discovery-experiment-02/report-integrity-release.json"
+    "research": "../discovery-experiment-02/07-error-disclosure-boundary.md",
+    "receipt": "../discovery-experiment-02/error-disclosure-checks.json",
+    "nextBoundedAction": "Review existing diagnostic call sites for actionable stable codes versus arbitrary text before proposing a collection change. Preserve useful debugging evidence and existing privacy decisions. Native/search/human/source-purpose/D1 measurements still need their own accepted inputs; no repeated controls or documentation-only activation chase."
   },
   "latestAcceptedSourceActivation": {
     "sourceCommit": "ebe943974b2b53197ee2cb1106b337cc376d8437",

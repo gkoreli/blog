@@ -1,5 +1,7 @@
 # Agent-inclusive growth and external discovery
 
+**October 31 error-disclosure correction:** [Six synthetic controls](07-error-disclosure-boundary.md) show plain email text, relative queries and bounded User-Agent queries surviving error parsing/storage, while structural URL filtering and closed fields work as designed. The privacy page now describes that boundary and separates database cleanup from logs/backups. Six existing tests, types, 27 validations and an isolated 38-post build pass. Collection/retention and article are unchanged; no production data or activation measurement, and the full goal remains active.
+
 **October31 report repair activated:** [Release receipt](report-integrity-release.json) joins sourceebe9439/nativebuild579addf2/Worker65bdef0f to native Ready/100% and the active prefix; six scoped source/article/prompt files match. Native log confirms38posts; hostedNode24.22.1 differs from local24.14.1. No production stats/API/asset request, SQL, retry or settings change; current served content and report behavior remain unmeasured. Goal active/incomplete.
 
 

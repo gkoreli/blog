@@ -1,0 +1,64 @@
+{
+  "profile": "error-disclosure-acceptance-v1",
+  "checkedAt": "2026-10-31T09:22:57.327788+00:00",
+  "baseline": "7d578ad8f586ce942621cc9bbe11f712db01cb7f",
+  "scope": "Correct public error-report disclosure to the existing collection boundary; synthetic controls only.",
+  "syntheticControls": {
+    "planned": 6,
+    "passed": 6,
+    "stages": [
+      "actual parser",
+      "browser redaction with supplied context",
+      "actual writer/local SQLite"
+    ],
+    "node": "24.14.1",
+    "productionData": false
+  },
+  "checks": {
+    "existingSanitizerTests": 6,
+    "workspaceTypes": "pass",
+    "markdownValidations": 27,
+    "isolatedBuildPosts": 38,
+    "generatedPrivacy": {
+      "generatedPrivacySha256": "03d2add56a1065dd8e7a6215a526b03fb46dc330ee2c232805750847b1c02f0b",
+      "requiredPassages": 4,
+      "removedAbsolutePromise": true,
+      "h1Count": 1,
+      "fullBuildPosts": 38
+    },
+    "independentSourceReview": "approved-with-scoped-limits"
+  },
+  "sourceSha256": {
+    "packages/blog/src/pages/privacy.ts": "c199c86d360892953f3f70fc7f4163c21f1df6c2c4c6f1bd3662b1ae4aa5e336",
+    "packages/client-observability/src/schema.ts": "d04a2d4ccb7576ac987dc6fb318564e7420048b864818a9d4aa4da20660e794f",
+    "packages/client-observability/src/sanitization.ts": "ae160e34000f1c03930dd67b77d835e1d7bcaf8e2c853c96167c89cf04705cee",
+    "packages/client-observability/src/redact.ts": "a6207e275cae4bc42acd13dc2dd170003718ec1d7da24ddcc5bf19224f4489bd",
+    "packages/client-observability/src/server.ts": "48405243ffb85dfc9bfa82a072bfd4e63f25893b324f72295c4edc24abbdef8f",
+    "packages/client-observability/src/db.ts": "6eb366322e715c250801af3de5f2755247a519639cee5a1491bca172076100c4",
+    "packages/client-observability/src/types.ts": "c6168c69eb16ba9db6cbf115e73d10fc6ec4d9a86d3c4c2eba442836b556054f"
+  },
+  "articleSha256": "85d3d022262eac6a129d9cf31ce385ad7e65037561d64a0fdb8b7fdf5c45c452",
+  "privateEvidence": {
+    "path": "packages/blog/worklog/analytics-evidence/2026-10-31-error-disclosure",
+    "files": 21,
+    "manifestSha256": "8352057ae78235267b1145b2bf7792320a7c9d425475714c0613bc8cfaf28ef2",
+    "allEntriesVerified": true
+  },
+  "effects": {
+    "privacyDisclosureChanged": true,
+    "collectionAdmissionStorageRetentionChanged": false,
+    "optionalDiagnosticsActivated": false,
+    "articleOrPromptsChanged": false,
+    "productionRequests": 0,
+    "productionSqlStatements": 0,
+    "newHumanLabels": 0,
+    "newModelTrials": 0,
+    "activationMeasured": false,
+    "servedPrivacyMeasured": false
+  },
+  "limits": [
+    "Selected synthetic boundary controls, not actual production sensitive contents or prevalence",
+    "No comprehensive PII-removal, cleanup execution or legal-compliance claim",
+    "Native/search/human/privacy/source-purpose/D1 input gates remain unresolved"
+  ]
+}
