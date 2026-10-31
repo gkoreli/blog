@@ -1,0 +1,209 @@
+{
+  "capturedAt": "2026-10-31T15:43:48.718176+00:00",
+  "window": {
+    "start": "2026-10-25",
+    "end": "2026-10-31",
+    "timezone": "UTC"
+  },
+  "articles": [
+    {
+      "path": "/oss-radar-09-tsrs-typescript-memory",
+      "requests": 17,
+      "browserShapedRequests": 3,
+      "namedAiIndexingRequests": 1,
+      "assistantOrSignedRequests": 0,
+      "byKind": {
+        "cloud-browser": 9,
+        "browser": 3,
+        "unresolved": 3,
+        "ai-crawler": 1,
+        "other-bot": 1
+      },
+      "referrers": [
+        {
+          "referrerHost": "google.com",
+          "views": 3
+        }
+      ],
+      "calculatedAt": "2026-10-31T15:42:04.063Z"
+    },
+    {
+      "path": "/oss-radar-10-paperpilot-redaction",
+      "requests": 22,
+      "browserShapedRequests": 3,
+      "namedAiIndexingRequests": 2,
+      "assistantOrSignedRequests": 0,
+      "byKind": {
+        "cloud-browser": 13,
+        "browser": 3,
+        "unresolved": 3,
+        "ai-crawler": 1,
+        "ai-search": 1,
+        "other-bot": 1
+      },
+      "referrers": [
+        {
+          "referrerHost": "google.com",
+          "views": 3
+        }
+      ],
+      "calculatedAt": "2026-10-31T15:42:04.402Z"
+    },
+    {
+      "path": "/oss-radar-11-qwenputer-compiled-cpu",
+      "requests": 17,
+      "browserShapedRequests": 3,
+      "namedAiIndexingRequests": 1,
+      "assistantOrSignedRequests": 0,
+      "byKind": {
+        "cloud-browser": 9,
+        "browser": 3,
+        "unresolved": 3,
+        "ai-crawler": 1,
+        "other-bot": 1
+      },
+      "referrers": [
+        {
+          "referrerHost": "google.com",
+          "views": 3
+        }
+      ],
+      "calculatedAt": "2026-10-31T15:42:04.811Z"
+    },
+    {
+      "path": "/oss-radar-12-claude-code-status-summary",
+      "requests": 18,
+      "browserShapedRequests": 4,
+      "namedAiIndexingRequests": 1,
+      "assistantOrSignedRequests": 0,
+      "byKind": {
+        "browser": 4,
+        "cloud-browser": 9,
+        "unresolved": 3,
+        "ai-crawler": 1,
+        "other-bot": 1
+      },
+      "referrers": [
+        {
+          "referrerHost": "google.com",
+          "views": 3
+        }
+      ],
+      "calculatedAt": "2026-10-31T15:42:05.316Z"
+    },
+    {
+      "path": "/oss-radar-13-hob-offline-file-tasks",
+      "requests": 19,
+      "browserShapedRequests": 5,
+      "namedAiIndexingRequests": 1,
+      "assistantOrSignedRequests": 0,
+      "byKind": {
+        "browser": 5,
+        "cloud-browser": 9,
+        "unresolved": 3,
+        "ai-crawler": 1,
+        "other-bot": 1
+      },
+      "referrers": [
+        {
+          "referrerHost": "google.com",
+          "views": 3
+        }
+      ],
+      "calculatedAt": "2026-10-31T15:42:05.738Z"
+    }
+  ],
+  "totalsByKind": {
+    "cloud-browser": 49,
+    "browser": 18,
+    "unresolved": 15,
+    "ai-crawler": 5,
+    "other-bot": 5,
+    "ai-search": 1
+  },
+  "namedAgents": {
+    "ClaudeBot": 5,
+    "PerplexityBot": 1
+  },
+  "totalRequests": 93,
+  "browserShapedRequests": 18,
+  "namedAiIndexingRequests": 6,
+  "assistantOrSignedRequests": 0,
+  "limits": [
+    "Requests, not unique people or complete reads.",
+    "Known owner markers/referral exclusions applied by public report; unmarked controlled traffic can remain.",
+    "Cloud browsers and unresolved requests are not identified as people or specific AI clients.",
+    "No full organic-growth comparison; articles about14hours old."
+  ],
+  "olderArticleRequests": {
+    "window": "2026-10-25 through partial2026-10-31 UTC",
+    "bunAot": {
+      "all": 136,
+      "browserShaped": 25
+    },
+    "macWorktree": {
+      "all": 67,
+      "browserShaped": 9
+    }
+  },
+  "macOriginalX": {
+    "url": "https://x.com/GogaKoreli/status/2116195462818771267",
+    "impressions": 8,
+    "engagements": 2,
+    "detailExpands": 2,
+    "profileVisits": 0,
+    "linkClicks": 0,
+    "likes": 0,
+    "reposts": 0,
+    "replies": 0,
+    "age": "approximately24hours",
+    "limits": "Owner-view per-post analytics, not unique people; inspection can add impressions/expands."
+  },
+  "macInfographicX": {
+    "url": "https://x.com/GogaKoreli/status/2116201465174012310",
+    "displayedViews": 13
+  },
+  "theoInvitation": {
+    "url": "https://x.com/GogaKoreli/status/2116331850935464159",
+    "displayedViews": 11,
+    "independentReplyVisible": false,
+    "limit": "Displayed reply branch only; parent reply count includes our invitation."
+  },
+  "substantiveFeedback": {
+    "url": "https://x.com/gyankarn/status/2115692156505800758",
+    "author": "gyankarn",
+    "replyTo": "https://x.com/GogaKoreli/status/2115486760872665345",
+    "state": "Primary X thread inspected; reader connects the measured pointer-width result to startup RAM behavior and thanks the author",
+    "limits": "Evidence of specific answer uptake; not an independent rerun or recurring use."
+  },
+  "otherFollowups": {
+    "maintainerIssue": "https://github.com/paritytech/polkadot-cli/issues/218",
+    "issueComments": 1,
+    "commentsByOthers": 0,
+    "onePreviouslySentEditorialPitch": "Thread still contains only the sent message; no received reply in the checked thread."
+  },
+  "method": {
+    "publicReports": 8,
+    "directSqlStatements": 0,
+    "failedHttpAttempts": 1,
+    "failure": "Python public report request403; native browser report succeeds",
+    "metering": "Public report per-statement rows_read not exposed/captured; no account-wide cost claim",
+    "questionAsked": "Any adoption after publishing and promotion?",
+    "intervention": "None; read-only outcome check, no posts or messages sent."
+  },
+  "captureHashes": {
+    "mac-x-analytics.txt": "d4e046587644480082d479f2b61b3469a2e919a5579c168efdc1bf25bd46e700",
+    "all-7d.json": "7d2f64e22e7d1767f29c41ebbb8dadf3d8b83caaccc01c8efd2c8f1a31de9e4b",
+    "oss-radar-13-hob-offline-file-tasks.json": "06639548ba75aaab27ecbb7508cc042a400b8eab60c80427feaf78785784af6a",
+    "browser-7d.json": "1048dda8f367a27668c46afbe44cd31d934a4fe238d22defe4b569b0f22d4102",
+    "theo-followup-dom.txt": "80080a85a9f2acc624bb18f3c78d7b4ba8de64462d2994413d4b6344a4380eca",
+    "mac-infographic-dom.txt": "a4b453f9c4973770196aaa3d0e185456f212fb5b6bcb697c1ade48712434081f",
+    "oss-radar-11-qwenputer-compiled-cpu.json": "19b90752b5ac347bdc206614a85dabacffb0472bdd01328117869103b5b5a6e8",
+    "oss-radar-09-tsrs-typescript-memory.json": "4bfef4bfeddbe9324fb163200087ac961209325458e9712d1ad1617f94c4e223",
+    "oss-radar-12-claude-code-status-summary.json": "c3b82a488dec8db3b4e1d9d4a02011487117b57dd66fbb7308b54e405ce16e77",
+    "mac-x-dom.txt": "d5938109f0fb63148935e0bc8cdb69ee3bf20fe8e912fbbb43f2e82007284ced",
+    "agents-7d.json": "4e81b63628e19e35ebc1fbb6fb897b98f11ca2514c051e9fceccbe61022bfd88",
+    "karn-reply-dom.txt": "3c807d94b0dab8259fcf5a9127f197e3c72a892c26e1cab64946200a5ffa7da4",
+    "oss-radar-10-paperpilot-redaction.json": "71d490a87aa9831e706f6eb80f333ef20de4b2a4ae8805017234465649706a72"
+  }
+}
