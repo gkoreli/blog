@@ -82,3 +82,43 @@ Code, measurements and limits: https://gkoreli.com/oss-radar-08-bun-aot
 The fresh thread showed the specific claim that trimming would save memory and no existing reply from this account. The composer was checked, Comment clicked once, then the page displayed the exact body, article link, author and new reply permalink as a child of the intended comment. The one displayed upvote was Reddit’s automatic self-upvote, not independent engagement. The permanent reply link was opened. Browser calls timed out returning their observations, but the saved screenshot was subsequently recovered from disk and independently inspected: it shows the highlighted reply, exact body, author, link and parent-thread context. An unauthenticated public JSON request returned HTTP 403; third-party visibility remains unverified. Neither failure was treated as evidence of removal, and no duplicate was posted.
 
 The answer identifies the October 27 macOS preview, separates trimming’s 51.8 → 30.3 MB disk result from the regular-build/AOT server’s roughly 9% peak RSS reduction, and discloses the article context. The community-rules page was checked in browser and public read; it displayed the Community Rules heading without rule entries. Private copy and anonymous-response capture remain under `/tmp/bun-trim-reply-20261030/`. No other outreach, reply or monitor was created. No reader response or adoption result is established.
+
+## October 31: measured adoption audit
+
+[Current audit](traction-2026-10-31.md) and [selected results](traction-summary-2026-10-31.json): the Reddit post reports **6.9K views / 25 upvotes / one share / two comments**. One comment asks for a clearer comparison. [Karn replied](https://x.com/gyankarn/status/2115692156505800758) to the RAM explanation and thanked us for measuring. Six X actions total 115 captured impressions and two tracked outbound clicks: one article, one code. The exact-path site reports contain 25 Browser-signal observations, including seven claiming Reddit, two X and one GitHub; these are not confirmed people or a reliable post-level join. No CLI submission, independent rerun, maintainer/editor reply or newsletter placement is verified. HN remains dead. X private messages need separately requested approval; signup changes remain unverified after metadata authentication failed. The audit sent no new communications and scheduled no monitor. Historical receipts and article measurements are unchanged.
+
+## October 31: reader replies executed
+
+Goga explicitly requested replying to Karn on X and to the Reddit commenter who questioned the compiler/AOT comparison. Both scoped replies were posted once and checked on their permanent pages. This is subsequent communication after the earlier read-only audit, not a change to its historical metrics.
+
+### X reply to Karn
+
+[Published reply](https://x.com/GogaKoreli/status/2116566572873768968), **9:22:49 AM Pacific / 16:22:49 UTC**, replying to [Karn's response](https://x.com/gyankarn/status/2115692156505800758). Two sentences / 150 weighted characters:
+
+```text
+Yeah, that explains part of the drop. My small server only saved about 9% peak RAM overall, so I'd still measure each app before assuming it'll halve.
+```
+
+The fresh parent thread had zero replies before posting. The exact composer text, author, published body, timestamp and ancestry were checked; X's unauthenticated embedding endpoint independently returned the author and exact text. Saved a screenshot of the canonical status.
+
+### Reddit clarification
+
+[Published reply](https://www.reddit.com/r/bun/comments/1xi7ih0/comment/19rxrmn00mmht/) directly under [antigravitys-rainbow's question](https://www.reddit.com/r/bun/comments/1xi7ih0/comment/19rvljtee3syr/):
+
+```text
+The test program was the TypeScript compiler itself (tsc 6.0.3), checking the Effect codebase. I built that same program as a regular Bun executable (JIT) and as a Bun AOT executable.
+
+5.02s vs 1.54s is how long each took to check Effect, not how long Bun took to build them. I should've labelled those columns 'Bun JIT' and 'Bun AOT'.
+```
+
+The fresh question had no existing author reply. Checked the full composer, clicked Comment once, then verified the exact body and child permalink as `u/ggaua`. Reopened the canonical reply and inspected its body and parent context; saved a screenshot. The explanation separates the program being measured (tsc 6.0.3 checking Effect) from the two execution modes and identifies the reported seconds as checking time. It acknowledges the table-label ambiguity without changing the existing post or article. Independent anonymous availability was not newly verified.
+
+Private exact copies, native captures, screenshots and the public embedding response are archived outside Git in `~/.local/share/gkoreli/social-evidence/2026-10-31-bun-reader-replies/` (working captures in `/tmp/bun-reader-replies-20261031/`). Posting is verified; no later reaction, article click, reproduction or adoption is claimed. No additional message, private-inbox access or monitoring job was created.
+
+## October 31, 17:33 UTC: follow-up validation and decisions
+
+[Updated scorecard](traction-2026-10-31.md#follow-up-validation-what-to-keep-pause-and-test-next) / [selected fresh observations](adoption-validation-2026-10-31.json): Browser-signal article observations remain 25 with the same source counts. Reddit remains 6.9K views / 25 upvotes / one share; its third comment is our own clarification. The latest X/Reddit replies have no new response after about an hour. The test offer still has seven impressions and zero replies. The decision is to keep useful community contributions and question-specific answers, pause further X launch assets for this article, and treat the trial offer and editorial outreach as unvalidated/pending. Decopin's open planning issue is a checked candidate for the next bounded test, not completed outreach. No new external communication, site edit, SQL, private-inbox access or monitor occurred.
+
+## October 31: owner boundary for GitHub outreach
+
+Goga clarified that promotion/trial-recruitment comments on other projects' GitHub issues are welcome only in RFCs or where maintainers explicitly invite outside engagement. The decopin recommendation is withdrawn; no comment was sent. The benchmark-suite issue-outreach proposal is on hold until an invitation is verified. The standing direction is recorded in the editorial learning reference and linked from both discovery and launch workflows. Existing publication receipts and measurements remain unchanged.

@@ -48,6 +48,8 @@ For controlled own-site checks, inspect current eligibility before choosing an e
 
 Inspect exact third-party sources when they shape a result. Separate owned pages, maintainable profiles, independent coverage, and substantiated errors. This skill does not authorize outreach, account changes, paid tools, or unrequested posts. Prepare usable material within the request; publish externally only within the user's authorization.
 
+For promotion or trial recruitment through GitHub issues, follow [Goga's invitation requirement](../blog-writing/references/editorial-learning-loop.md#owner-direction-github-outreach-needs-an-invitation).
+
 ## Interpret each layer separately
 
 | Layer | Evidence needed | Limit |
