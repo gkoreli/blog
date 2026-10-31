@@ -1,0 +1,2 @@
+ANALYTICS_HASH_KEY="replace-with-a-random-local-key"
+ADMIN_SECRET="replace-with-a-different-random-local-key"

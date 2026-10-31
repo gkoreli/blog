@@ -505,5 +505,16 @@
       "resume": "A new decision-changing native/search/human/privacy/source-purpose input, under the existing acceptance requirements. Do not infer approval from another automatic continuation.",
       "scopeAfterOwnerContinuation": "Historical checkpoint for missing measurement inputs; not a prohibition on independent implementation, observed agent growth or discovery work."
     }
-  ]
+  ],
+  "postCheckpointWork": {
+    "ownerExplicitlyContinued": true,
+    "research": "../discovery-experiment-02/14-fresh-install-portability.md",
+    "receipt": "../discovery-experiment-02/fresh-install-portability-checks.json",
+    "newConcreteDefect": "The historical upgrade chain fails on an empty database without the legacy page_views table and includes blog-specific data backfills",
+    "boundedRepair": "Fresh empty-install schema, drift checks and local minimal Worker accepted",
+    "originalObjectiveComplete": false,
+    "measurementGatesChanged": false,
+    "trackerStatus": "blocked; tool has no agent resume operation",
+    "nextBoundedAction": "Independent disposable-project operator evaluation; public deployment requires its own scoped decisions"
+  }
 }

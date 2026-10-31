@@ -1,0 +1,82 @@
+{
+  "checkedAt": "2026-10-31T15:44:04.714437+00:00",
+  "baseline": "b31cb86",
+  "scope": "Local empty-install portability; no production measurement",
+  "defect": "Historical migration 0002 requires page_views; migration 0007 also contains blog-specific row-ID backfills",
+  "implementation": {
+    "freshSnapshotThrough": "0016",
+    "tables": 5,
+    "indexes": 8,
+    "blogHistoricalChainChanged": false,
+    "productionEntryChanged": false,
+    "newDependencies": 0
+  },
+  "wranglerMigration": {
+    "version": "4.71.0",
+    "command": "pnpm exec wrangler d1 migrations apply analytics-local-example --local --config packages/analytics/examples/minimal-worker/wrangler.jsonc --persist-to /tmp/gk-analytics-portability-20261031",
+    "result": "success",
+    "commandsReported": 14,
+    "migration": "0001_fresh_analytics.sql",
+    "location": "local",
+    "remote": false
+  },
+  "nativeWorker": {
+    "result": "passed",
+    "requests": 22,
+    "storedEvents": 6,
+    "publicEvents": 3,
+    "ownerExcluded": 3,
+    "secondOriginIdSeparated": true,
+    "diagnostics": 0,
+    "externalRequests": 0,
+    "storedKinds": [
+      "http-client",
+      "http-client",
+      "headless-browser",
+      "ai-search"
+    ],
+    "productionRequests": 0,
+    "humanLabels": 0
+  },
+  "checks": {
+    "analyticsTests": 387,
+    "workspaceTypecheck": "passed",
+    "snapshotMatchesHistoricalSchema": true,
+    "legacyChainFailureReproduced": true,
+    "nativeCheckUsesFreshSnapshot": true
+  },
+  "limits": [
+    "Agent-operated synthetic local controls, no independent operator adoption",
+    "No human accuracy/native managed-verifier measurement",
+    "Local transport reports normal-UA controls as http-client; no browser accuracy inference",
+    "One D1 database per site; no tenant column",
+    "Public production setup needs caching/budgets, secrets, privacy/retention decisions and deliberate upgrade migrations",
+    "No production deployment, served acceptance or fresh traffic measurement performed"
+  ],
+  "initialFailure": {
+    "stage": "sandbox native runtime startup",
+    "error": "listen EPERM 127.0.0.1",
+    "resolution": "Approved local loopback execution; no network bypass or production access"
+  },
+  "sources": [
+    "https://developers.cloudflare.com/d1/reference/migrations/",
+    "https://developers.cloudflare.com/d1/best-practices/local-development/",
+    "https://developers.cloudflare.com/workers/runtime-apis/context/"
+  ],
+  "sourceSha256": {
+    ".gitignore": "9cfa4e879ae80ddc067ac0dcde4ca26b37fefed35184f112ba5be11826ec2899",
+    "packages/analytics/package.json": "e016b16e2ba4fedf544896ccf4a95505972d10c5fff8c62a8e267ec4fcb767db",
+    "packages/analytics/tsconfig.json": "e5aa8a01d689cf65d4cbe34294824186ae322609ca82b0c9669f024d4d412956",
+    "packages/analytics/README.md": "227b537f0fed24f6b3a85550d0d2e8bb940cb8031474ae9a2e777ec5c573fbb8",
+    "packages/analytics/scripts/fresh-schema.mjs": "de5f42d6ff0773b228768a3dcdd948abe24ab49f893f33653625cab6fc7d40f2",
+    "packages/analytics/scripts/check-minimal-worker.mjs": "40f6bbf030afedc401ef3667b5d7d0b99b7412659b71fcc4f9864fee0026d829",
+    "packages/analytics/test/fresh-schema.test.mjs": "22a49ce886b4739376b92219d678ac576ceaef1daefc7826b8e36d302e26e8f9",
+    "packages/analytics/schema/0001_fresh_analytics.sql": "e775603c1253673d37ca40a52fae64e82b5eca0de258250d0a856e970e22a9dc",
+    "packages/analytics/examples/minimal-worker/README.md": "6bc94d4cb2e2d2a1914d1714e2486b3e5375727ad6774fcad851329bee7c7695",
+    "packages/analytics/examples/minimal-worker/dev.vars.example": "ee460d19b4d6787e19596e62730d65e37437df42a69ad212a20dea6fd7176574",
+    "packages/analytics/examples/minimal-worker/worker.ts": "764d6d3657b0289d280baa55bdfc5ff8fbad2b977918d5d3738bac38dcb340cc",
+    "packages/analytics/examples/minimal-worker/wrangler.jsonc": "55f2640ed4990bc748b6f16ce786a7263a50c8e3b668045904be35d3653d2696"
+  },
+  "privateEvidence": "packages/blog/worklog/analytics-evidence/2026-10-31-fresh-install-portability",
+  "privateManifestSha256": "a9a2e0fe8c262fc1224280665c2439f057b8102f1cc3ea38cc8bddae890b5ec3"
+}

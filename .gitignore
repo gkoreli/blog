@@ -8,3 +8,4 @@ dist/
 packages/blog/worklog/
 .env
 .env.local
+.dev.vars

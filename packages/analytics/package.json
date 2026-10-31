@@ -34,7 +34,8 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "tsc -p tsconfig.test.json && node --test test/*.test.mjs"
+    "test": "tsc -p tsconfig.test.json && node --test test/*.test.mjs",
+    "test:portability": "node scripts/fresh-schema.mjs --check && node scripts/check-minimal-worker.mjs"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250306.0",
