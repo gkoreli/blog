@@ -1,0 +1,225 @@
+{
+  "checkedAt": "2026-10-31T07:33:45.745727+00:00",
+  "sourceBaseline": "5343de188fe32968b84f1bf58340ed4bf2e3d1d3",
+  "integrationBase": "3174aebff8a119e00a20fe977ba827fe64f3e4cf",
+  "sourceSha256": [
+    {
+      "path": "packages/analytics/src/webbotauth.ts",
+      "sha256": "54348a11b372528ae042dc31b17b42c06104ec16e72e32b1e025b1f94aa38411"
+    },
+    {
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "47399980b7c03b98d4b0a27aaf5f027202c7b32a4f03851e80703a1da1344e82"
+    },
+    {
+      "path": "packages/analytics/src/verifier-profile.ts",
+      "sha256": "d4d9d00f32c1a750878c1b80a66d088a27557b924ad862a6e939bc7e5c221864"
+    },
+    {
+      "path": "packages/analytics/src/directory-response-audit.ts",
+      "sha256": "f72a1ad7609ac8b05ed92b2a4a74aab2e7396324bd7bf86f54bd9846ac1ca710"
+    },
+    {
+      "path": "packages/blog/src/worker/stats-cache.ts",
+      "sha256": "d6ab3a2afac4946a399fb832eed35e86a68fa6aad9f176c42aa464687f62d0c7"
+    },
+    {
+      "path": "packages/analytics/test/structured-extensions.test.mjs",
+      "sha256": "8b7f0564dbe989c11ef1ca03fe05e9b6c719cb25ec580bd1852747dae1e589aa"
+    },
+    {
+      "path": "packages/analytics/test/fixtures/structured-extensions.mjs",
+      "sha256": "74c73dd3e662a338ef3bc29729aa0db26af90efa1debff33296d5ac89f418e4b"
+    },
+    {
+      "path": "packages/blog/scripts/check-structured-extensions.mjs",
+      "sha256": "bfce4eaa20d850717951d5dbb245d647e474b26ef9dd4e518f20e8e393811488"
+    },
+    {
+      "path": "packages/blog/scripts/check-structured-extensions-reference.py",
+      "sha256": "61500b7eb1c1eef76e2c883e922f2fae723ce00ef11a9c4687548221541047ab"
+    }
+  ],
+  "profiles": {
+    "verifier": "2026-10-31.2",
+    "offlineDirectoryAudit": "2026-10-31.2",
+    "reportCache": "2026-10-31.3"
+  },
+  "frozenInputSha256": "ed187fae8c9b0853421f97817dfdaddc6668c47c047f9e2fc49bbee6bdd6e206",
+  "localRuntime": {
+    "node": "24.14.1",
+    "workerdCompatibilityDate": "2026-03-06",
+    "exactBeforeAndAfter": true,
+    "syntaxCases": 26,
+    "signedRequests": 12,
+    "signedResponses": 3,
+    "baselineVerifiedRequests": 1,
+    "repairedVerifiedRequests": 6,
+    "requestChanges": [
+      {
+        "name": "decimal-extension",
+        "before": "malformed-signature-fields",
+        "after": "verified",
+        "afterLookups": 1
+      },
+      {
+        "name": "integral-decimal-extension",
+        "before": "malformed-signature-fields",
+        "after": "verified",
+        "afterLookups": 1
+      },
+      {
+        "name": "negative-zero-extension",
+        "before": "malformed-signature-fields",
+        "after": "verified",
+        "afterLookups": 1
+      },
+      {
+        "name": "maximum-decimal-extension",
+        "before": "malformed-signature-fields",
+        "after": "verified",
+        "afterLookups": 1
+      },
+      {
+        "name": "semicolon-sp",
+        "before": "malformed-signature-fields",
+        "after": "verified",
+        "afterLookups": 1
+      },
+      {
+        "name": "changed-decimal",
+        "before": "malformed-signature-fields",
+        "after": "signature-invalid",
+        "afterLookups": 1
+      },
+      {
+        "name": "changed-parameter-order",
+        "before": "malformed-signature-fields",
+        "after": "signature-invalid",
+        "afterLookups": 1
+      },
+      {
+        "name": "decimal-created",
+        "before": "malformed-signature-fields",
+        "after": "invalid-created-type",
+        "afterLookups": 0
+      },
+      {
+        "name": "decimal-expires",
+        "before": "malformed-signature-fields",
+        "after": "invalid-expires-type",
+        "afterLookups": 0
+      }
+    ],
+    "responseChanges": [
+      {
+        "name": "decimal-digest-extension",
+        "beforeDigest": "malformed",
+        "afterDigest": "matched",
+        "afterProofs": [
+          {
+            "outcome": "verified",
+            "reason": "verified",
+            "authorityCovered": true,
+            "digestCovered": true
+          }
+        ],
+        "bodyBoundKeys": 1
+      },
+      {
+        "name": "changed-signed-digest-parameter",
+        "beforeDigest": "malformed",
+        "afterDigest": "matched",
+        "afterProofs": [
+          {
+            "outcome": "invalid",
+            "reason": "signature-mismatch",
+            "authorityCovered": true,
+            "digestCovered": true
+          }
+        ],
+        "bodyBoundKeys": 0
+      },
+      {
+        "name": "changed-body",
+        "beforeDigest": "malformed",
+        "afterDigest": "mismatch",
+        "afterProofs": [
+          {
+            "outcome": "verified",
+            "reason": "verified",
+            "authorityCovered": true,
+            "digestCovered": true
+          }
+        ],
+        "bodyBoundKeys": 0
+      }
+    ]
+  },
+  "independentReference": {
+    "package": "http-sf",
+    "version": "1.5.0",
+    "artifacts": [
+      {
+        "file": "http_sf-1.5.0-py3-none-any.whl",
+        "sha256": "031282bd376549b04fcaa397d9ef351acdc5bd383435cccd1d8ea17b1661c80e"
+      },
+      {
+        "file": "typing_extensions-4.16.0-py3-none-any.whl",
+        "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+      }
+    ],
+    "sourceFilesRechecked": 23,
+    "syntaxCases": 26,
+    "exactAgreements": 24,
+    "deliberateDuplicatePolicyDifferences": [
+      "duplicate-parameter",
+      "duplicate-dictionary-label"
+    ],
+    "endToEndCryptoCompared": false
+  },
+  "checks": {
+    "originalIsolatedAnalyticsTests": 339,
+    "integratedAnalyticsTests": 347,
+    "siteTests": 166,
+    "workspaceTypes": true,
+    "markdownPostsValidated": 27,
+    "builtPosts": 38,
+    "workerDryRun": true,
+    "localD1ProfileCases": 4,
+    "focusedFinalTests": 2,
+    "sourceReview": "no substantive issue found"
+  },
+  "failuresPreserved": [
+    "Initial fixture used wrong directory media type; rejected as acceptance evidence, then corrected and frozen.",
+    "Initial isolated build failed sandbox IPC socket; permitted rerun passed.",
+    "Initial setup command addressed a new fixture before copying it into the isolated checkout; corrected with explicit root paths."
+  ],
+  "archive": {
+    "path": "/Users/goga/Documents/goga/blog/packages/blog/worklog/analytics-evidence/2026-10-31-structured-extensions",
+    "files": 50,
+    "manifestSha256": "4b4832c74bdcaea7b6b7bce9696244efbc648d92e9a57ef8a6ba9501cad76109",
+    "verified": true,
+    "gitIgnored": true,
+    "manifestFile": "manifest-final.json"
+  },
+  "effects": {
+    "productionSiteRequests": 0,
+    "productionSqlStatements": 0,
+    "freshVendorCaptures": 0,
+    "newHumanLabels": 0,
+    "schemaChanged": false,
+    "rawDiagnosticsActivated": false,
+    "dependencyChanged": false,
+    "articleChanged": false,
+    "directoryRuntimeAdoptionChanged": false,
+    "sourceDeliveryAccepted": false,
+    "activationMeasured": false,
+    "fullGoalComplete": false
+  },
+  "limits": [
+    "Selected synthetic grammar/cryptography controls, not production prevalence or complete RFC conformance.",
+    "The independent library comparison covers syntax/canonicalization, not full signature or native-provider agreement.",
+    "Original stored observations and historical profile interpretation remain separate."
+  ]
+}

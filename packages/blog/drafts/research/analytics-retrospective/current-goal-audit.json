@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T07:24:21.731276+00:00",
-  "sourceBaseline": "73deb544c8cff837f3201715c14f78563f72e08c",
+  "checkedAt": "2026-10-31T07:33:45.745727+00:00",
+  "sourceBaseline": "3174aebff8a119e00a20fe977ba827fe64f3e4cf",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "73deb54 delivered the private offline search evidence capability and acceptance. This resumed goal continues through available discovery evidence."
+    "scope": "75d8d91 recorded independent discovery observations and reproduced draft reporting risks."
   },
-  "scope": "Independent four-question agent-search repetition and preserved draft reporting review; other active task owns analyzer implementation and its own trials. No new human or native managed verdicts.",
+  "scope": "Repair of legal Structured Field extension syntax with frozen before/after native-local controls and independent syntax comparison. Source activation remains separate.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -19,8 +19,9 @@
   "sourceVersions": {
     "collection": "2026-10-30.1",
     "classifier": "2026-10-29.3",
-    "incomingVerifier": "2026-10-31.1",
-    "offlineDirectoryAudit": "2026-10-31.1"
+    "incomingVerifier": "2026-10-31.2",
+    "offlineDirectoryAudit": "2026-10-31.2",
+    "statsReportCache": "2026-10-31.3"
   },
   "sourceSha256": {
     "classify.ts": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
@@ -33,10 +34,11 @@
     "calibration-evaluation.ts": "14cb49966cb6c500f130a9e867b230c439d0177f61a073217b5bc49c9f704fa4",
     "article-reach.ts": "17379b45e0c7c3f251e19b69632b830cfb051318433ef2b53d89b080f83854f9",
     "article-reach-contract.ts": "38cd7b99af5ae8384fab0a53692e682088fc2b70fba33548703cf487965e2321",
-    "versions.ts": "7512353067a5cf7919d03262da0396782f59ccbe41eb06436e10ad18e7dabf54",
-    "webbotauth.ts": "edacdfd0e5aeed48fdc081b5c1953d6eee128ec1b6eb5a0c70e1f7bf7319b265",
-    "directory-response-audit.ts": "cd1b11f67bed8e0ba0e0e183d6e3fa0bc4ec48eff084b255b4cb8bd966a103f9",
-    "search-evidence.ts": "2dcca61325112b040e30c39d1f5ebb0281da270ad7de164bfe13dc7e47fb8c8c"
+    "versions.ts": "47399980b7c03b98d4b0a27aaf5f027202c7b32a4f03851e80703a1da1344e82",
+    "webbotauth.ts": "54348a11b372528ae042dc31b17b42c06104ec16e72e32b1e025b1f94aa38411",
+    "directory-response-audit.ts": "f72a1ad7609ac8b05ed92b2a4a74aab2e7396324bd7bf86f54bd9846ac1ca710",
+    "search-evidence.ts": "2dcca61325112b040e30c39d1f5ebb0281da270ad7de164bfe13dc7e47fb8c8c",
+    "verifier-profile.ts": "d4d9d00f32c1a750878c1b80a66d088a27557b924ad862a6e939bc7e5c221864"
   },
   "requirements": [
     {
@@ -86,7 +88,9 @@
         "75-frozen-signed-cohort-and-export-boundaries.md",
         "96-fetcher-reference-coverage-correction.md",
         "117-key-import-and-request-lifecycle-races.md",
-        "118-caller-owned-directory-recovery.md"
+        "118-caller-owned-directory-recovery.md",
+        "123-structured-field-extension-compatibility.md",
+        "structured-extension-compatibility.json"
       ],
       "limit": "Selected verified-proof coverage is preserved with profile provenance. Unsigned UA/path and discarded original evidence cannot be reconstructed by current code. Current verifier repairs do not rewrite old rows or prove production race frequency."
     },
@@ -105,9 +109,11 @@
         "114-directory-possession-and-profile-drift.md",
         "115-offline-directory-response-profiles.md",
         "116-directory-cache-clocks-and-key-admission.md",
-        "119-directory-adoption-policy-and-cost.md"
+        "119-directory-adoption-policy-and-cost.md",
+        "123-structured-field-extension-compatibility.md",
+        "structured-extension-compatibility.json"
       ],
-      "limit": "Recorded-time fixtures and selected captures have native-local and independent RFC evidence. No accepted request-level managed signedAgent oracle or eligible controlled identity exists. The response-advisory no-adoption decision is closed under current evidence; known decimal-parameter grammar limits remain explicit."
+      "limit": "Selected syntax/crypto conditions have exact Node/workerd and independent Structured Field syntax evidence. Profile .31.2 repairs decimal and semicolon-SP compatibility; this does not establish complete grammar/draft conformance, native managed agreement or actual vendor frequency. No accepted request-level signedAgent oracle or eligible controlled identity exists. The response-advisory runtime no-adoption decision remains closed."
     },
     {
       "id": "labelled-errors-and-abstentions",
@@ -273,27 +279,27 @@
     }
   ],
   "effectsThisAudit": {
-    "scope": "This independent evidence/review slice only; other active task source and trials are separate.",
-    "collectorChanged": false,
-    "offlineLibraryCapabilityAdded": false,
-    "articleChangedByThisWork": false,
+    "collectorParserChanged": true,
+    "signatureCoverageSemanticsChanged": false,
     "productionSiteRequests": 0,
     "productionSqlStatements": 0,
     "newHumanLabels": 0,
-    "realSearchRows": 0,
-    "agentSearchCalls": 4,
-    "accountRequests": 0,
-    "draftReviewIssuesReproduced": 2
+    "vendorCaptures": 0,
+    "localSyntaxCases": 26,
+    "localSignedRequestCases": 12,
+    "localSignedResponseCases": 3,
+    "articleChangedByThisWork": false,
+    "directoryRuntimeAdoptionChanged": false
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: real independent discovery observations and two reproduced draft-reporting risks change acceptance and next action",
+    "thisTurnClassification": "progress: legal extension parsing repaired and validated on frozen signed inputs with independent syntax evidence",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Inspect the owning active task\u2019s completed agent-discovery analyzer against the reproduced incompatible-method and page-identity risks; keep our trials distinct. Then diagnose Grok question/answer fit under a declared experiment. Accept authorized saved real API input independently; human identification is not a blanket growth gate.",
+  "nextBoundedAction": "Verify exact-source activation of verifier .31.2, then repair the two Research122 discovery-reporting risks against delivered analyzer3174aeb. Preserve claim-specific human/native/privacy/search-input gates and the directory runtime no-adoption decision.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -321,9 +327,8 @@
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
   "goalStatusScope": "Persistent tracker confirmed active on this resumed turn. Historical blocked checkpoint remains preserved; claim-specific input gates do not block independent work.",
   "latestContinuation": {
-    "research": "122-independent-agent-discovery-and-report-review.md",
-    "receipt": "independent-agent-discovery-review.json",
-    "ownerDirection": "Continue find some alternative ways to fontinue building",
-    "nextBoundedAction": "Inspect the owning active task\u2019s completed agent-discovery analyzer against the reproduced incompatible-method and page-identity risks; keep our trials distinct. Then diagnose Grok question/answer fit under a declared experiment. Accept authorized saved real API input independently; human identification is not a blanket growth gate."
+    "research": "123-structured-field-extension-compatibility.md",
+    "receipt": "structured-extension-compatibility.json",
+    "nextBoundedAction": "Verify exact-source activation of verifier .31.2, then repair the two Research122 discovery-reporting risks against delivered analyzer3174aeb. Preserve claim-specific human/native/privacy/search-input gates and the directory runtime no-adoption decision."
   }
 }

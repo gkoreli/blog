@@ -2,7 +2,7 @@ import { parseDictionary, parameter, serializeItem, serializeInnerList, signatur
   malformedSignatureParameterReason, directoryKey, ed25519JwkThumbprint, type SignatureCandidate } from './webbotauth.js';
 import { knownTestPublicKey, PUBLIC_KEY_POLICY_VERSION } from './known-test-keys.js';
 
-export const DIRECTORY_RESPONSE_AUDIT_VERSION = '2026-10-31.1';
+export const DIRECTORY_RESPONSE_AUDIT_VERSION = '2026-10-31.2';
 type Outcome = 'verified' | 'invalid' | 'policy-rejected' | 'unsupported';
 type DigestState = 'not-assessed' | 'absent' | 'matched' | 'mismatch' | 'malformed' | 'unsupported';
 export interface DirectoryProofAudit {

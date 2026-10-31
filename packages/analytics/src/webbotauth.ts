@@ -37,6 +37,8 @@ export type WebBotAuthResult =
 type BareItem =
   | { type: 'string'; value: string }
   | { type: 'integer'; value: number }
+  // Canonical decimal text keeps the full RFC range exact without binary floats.
+  | { type: 'decimal'; value: string }
   | { type: 'token'; value: string }
   | { type: 'boolean'; value: boolean }
   | { type: 'bytes'; value: Uint8Array };
@@ -235,7 +237,7 @@ class StructuredFieldParser {
     if (first === '"') return this.parseString();
     if (first === ':') return this.parseBytes();
     if (first === '?') return this.parseBoolean();
-    if (first === '-' || (first !== undefined && /[0-9]/.test(first))) return this.parseInteger();
+    if (first === '-' || (first !== undefined && /[0-9]/.test(first))) return this.parseNumber();
     return this.parseToken();
   }
 
@@ -288,7 +290,7 @@ class StructuredFieldParser {
     return { type: 'boolean', value: value === '?1' };
   }
 
-  private parseInteger(): BareItem | null {
+  private parseNumber(): BareItem | null {
     const start = this.index;
     if (this.source[this.index] === '-') this.index += 1;
     const digitsStart = this.index;
@@ -296,7 +298,19 @@ class StructuredFieldParser {
       this.index += 1;
     }
     const digitCount = this.index - digitsStart;
-    if (digitCount === 0 || digitCount > 15 || this.source[this.index] === '.') return null;
+    if (digitCount === 0 || digitCount > 15) return null;
+    if (this.source[this.index] === '.') {
+      if (digitCount > 12) return null;
+      const integer = String(Number(this.source.slice(digitsStart, this.index)));
+      this.index += 1;
+      const fractionStart = this.index;
+      while (this.source[this.index] !== undefined && /[0-9]/.test(this.source[this.index] ?? '')) this.index += 1;
+      const fractionLength = this.index - fractionStart;
+      if (fractionLength < 1 || fractionLength > 3) return null;
+      const fraction = this.source.slice(fractionStart, this.index).replace(/0+$/, '') || '0';
+      const sign = this.source[start] === '-' && (integer !== '0' || fraction !== '0') ? '-' : '';
+      return { type: 'decimal', value: `${sign}${integer}.${fraction}` };
+    }
     const value = Number(this.source.slice(start, this.index));
     return Number.isSafeInteger(value) ? { type: 'integer', value } : null;
   }
@@ -317,6 +331,8 @@ class StructuredFieldParser {
     const names = new Set<string>();
     while (this.source[this.index] === ';') {
       this.index += 1;
+      // RFC 8941 §4.2.3.2 permits SP here, not the broader HTTP OWS set.
+      while (this.source[this.index] === ' ') this.index += 1;
       const name = this.parseKey();
       if (name === null || names.has(name)) return null;
       names.add(name);
@@ -375,6 +391,8 @@ function serializeBareItem(item: BareItem): string {
       return escapeString(item.value);
     case 'integer':
       return String(item.value);
+    case 'decimal':
+      return item.value;
     case 'token':
       return item.value;
     case 'boolean':
