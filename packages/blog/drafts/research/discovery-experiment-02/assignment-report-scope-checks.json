@@ -1,0 +1,256 @@
+{
+  "checkedAt": "2026-10-31T10:23:55.279Z",
+  "sourceManifestVerified": 70,
+  "historicalRows": 397,
+  "exactNodeNativeHistoricalAgreement": true,
+  "historicalNetworkAssignments": {
+    "profile": "2026-10-31.1",
+    "raw": {
+      "rows": 397,
+      "states": {
+        "consistent": 397,
+        "contradictory": 0,
+        "not-assessed": 0
+      },
+      "reasons": {
+        "classification-not-recorded": 0,
+        "classification-invalid-json": 0,
+        "classification-duplicate-key": 0,
+        "network-not-recorded": 0,
+        "network-invalid-json": 0,
+        "network-duplicate-key": 0,
+        "decoder-state-invalid": 0,
+        "classification-policy-limit": 0,
+        "network-policy-limit": 0,
+        "classification-envelope-invalid": 0,
+        "classifier-profile-missing": 0,
+        "classifier-profile-invalid": 0,
+        "classifier-profile-conflict": 0,
+        "classifier-profile-unsupported": 0,
+        "classification-schema-missing": 0,
+        "classification-schema-invalid": 0,
+        "classification-schema-unsupported": 0,
+        "classification-schema-conflict": 0,
+        "declarations-invalid": 0,
+        "network-envelope-invalid": 0,
+        "network-profile-missing": 0,
+        "network-profile-invalid": 0,
+        "network-profile-unsupported": 0,
+        "profile-pair-unreviewed": 0,
+        "network-assignment-fields-invalid": 0,
+        "source-unsupported": 0,
+        "declaration-count": 0,
+        "configured-count": 0,
+        "unmapped-count": 0,
+        "duplicate-source": 0,
+        "source-set": 0,
+        "source-order": 0
+      },
+      "cohorts": [
+        {
+          "classifierProfile": "2026-10-29.3",
+          "networkProfile": "2026-10-29.2",
+          "structuralState": "recognized",
+          "assignmentState": "consistent",
+          "reasons": [],
+          "rows": 397
+        }
+      ]
+    },
+    "included": {
+      "rows": 397,
+      "states": {
+        "consistent": 397,
+        "contradictory": 0,
+        "not-assessed": 0
+      },
+      "reasons": {
+        "classification-not-recorded": 0,
+        "classification-invalid-json": 0,
+        "classification-duplicate-key": 0,
+        "network-not-recorded": 0,
+        "network-invalid-json": 0,
+        "network-duplicate-key": 0,
+        "decoder-state-invalid": 0,
+        "classification-policy-limit": 0,
+        "network-policy-limit": 0,
+        "classification-envelope-invalid": 0,
+        "classifier-profile-missing": 0,
+        "classifier-profile-invalid": 0,
+        "classifier-profile-conflict": 0,
+        "classifier-profile-unsupported": 0,
+        "classification-schema-missing": 0,
+        "classification-schema-invalid": 0,
+        "classification-schema-unsupported": 0,
+        "classification-schema-conflict": 0,
+        "declarations-invalid": 0,
+        "network-envelope-invalid": 0,
+        "network-profile-missing": 0,
+        "network-profile-invalid": 0,
+        "network-profile-unsupported": 0,
+        "profile-pair-unreviewed": 0,
+        "network-assignment-fields-invalid": 0,
+        "source-unsupported": 0,
+        "declaration-count": 0,
+        "configured-count": 0,
+        "unmapped-count": 0,
+        "duplicate-source": 0,
+        "source-set": 0,
+        "source-order": 0
+      },
+      "cohorts": [
+        {
+          "classifierProfile": "2026-10-29.3",
+          "networkProfile": "2026-10-29.2",
+          "structuralState": "recognized",
+          "assignmentState": "consistent",
+          "reasons": [],
+          "rows": 397
+        }
+      ]
+    }
+  },
+  "costs": [
+    {
+      "relation": "historical397",
+      "rows": 397,
+      "sourceTextBytes": 758224,
+      "bareInputQuery": {
+        "rowsRead": 397,
+        "rowsWritten": 0,
+        "returnedJsonBytes": 379147
+      },
+      "guardedInputQuery": {
+        "rowsRead": 27405,
+        "rowsWritten": 0,
+        "returnedJsonBytes": 405746
+      },
+      "additionalReads": 27008,
+      "states": {
+        "consistent": 397,
+        "contradictory": 0,
+        "not-assessed": 0
+      },
+      "scope": "Incremental local input query only; not a full public report, production cost or CPU benchmark"
+    },
+    {
+      "relation": "synthetic1024-small",
+      "rows": 1024,
+      "sourceTextBytes": 751616,
+      "bareInputQuery": {
+        "rowsRead": 1024,
+        "rowsWritten": 0,
+        "returnedJsonBytes": 866222
+      },
+      "guardedInputQuery": {
+        "rowsRead": 70656,
+        "rowsWritten": 0,
+        "returnedJsonBytes": 934830
+      },
+      "additionalReads": 69632,
+      "states": {
+        "consistent": 1024,
+        "contradictory": 0,
+        "not-assessed": 0
+      },
+      "scope": "Incremental local input query only; not a full public report, production cost or CPU benchmark"
+    },
+    {
+      "relation": "synthetic1024-expanded-json",
+      "rows": 1024,
+      "sourceTextBytes": 1341440,
+      "bareInputQuery": {
+        "rowsRead": 1024,
+        "rowsWritten": 0,
+        "returnedJsonBytes": 1464238
+      },
+      "guardedInputQuery": {
+        "rowsRead": 603136,
+        "rowsWritten": 0,
+        "returnedJsonBytes": 1532846
+      },
+      "additionalReads": 602112,
+      "states": {
+        "consistent": 1024,
+        "contradictory": 0,
+        "not-assessed": 0
+      },
+      "scope": "Incremental local input query only; not a full public report, production cost or CPU benchmark"
+    }
+  ],
+  "productionRequests": 0,
+  "productionSqlStatements": 0,
+  "feedRequests": 0,
+  "newHumanLabels": 0,
+  "originalOwnerLinkStatePreserved": true,
+  "existingLocalCollectorVerdictsNotReplayed": true,
+  "baseline": "60725b8178cb55592cc5e33389a38e3624b08565",
+  "profile": "assignment-report-scope-v1",
+  "historicalCoverage": {
+    "zeroDeclarations": 327,
+    "namedDeclarations": 70,
+    "configuredNamesPresent": 25,
+    "unmappedNamesPresent": 45,
+    "configuredAndUnmappedPresent": 0,
+    "retainedChecks": 25,
+    "positiveIdentityOrReadershipConclusion": false
+  },
+  "independentReconstruction": {
+    "method": "Python duplicate-key rejection and Git snapshot extraction, new assessor not invoked",
+    "classifierCommit": "84c4550772fa91a23c6f9371ba03270ef71783d5",
+    "networkCommit": "2a0c19fdaa52b3a0b0419cea48445de25f1cd7c8",
+    "all397AssignmentsAgree": true,
+    "validatedExportEqualsOriginalTransport": true
+  },
+  "presentation": {
+    "sourceSha256": {
+      "packages/blog/src/client/stats.ts": "0369a25dd80242d6e4d4fed2bcd7bead085777b9af50cc840a6e5ec223178a8a",
+      "packages/blog/src/pages/stats.ts": "f5561846fd1dfcde71478c9d944377ed1ba2687e9b5a7a0e10bc55d08dfdb11d"
+    },
+    "builtStatsHtmlSha256": "9d62559d652070ebd380addff15d304e8abf835f4bb14ebc49d9f9a1ca0d4200",
+    "builtStatsJsSha256": "2ecbf7a6c5949438fa75620233594e6471a9207ed2344bc3851986a720e6285e",
+    "staticScopeNoteRendered": true,
+    "clientLabelsBundled": true,
+    "analyticsAggregationAndVersionsByteUnchanged": true,
+    "retrospectiveByteUnchanged": true,
+    "types": true,
+    "siteTests": 169,
+    "markdownValidations": 27,
+    "isolatedBuiltPosts": 38,
+    "buildSandboxFailure": "tsx IPC listen EPERM, preserved; build accepted with local IPC allowed",
+    "newPresentationTestsAdded": 0
+  },
+  "runtime": {
+    "miniflareVersion": "4.20260301.1",
+    "installedD1WorkerSha256": "4d2fe9209eb614a01ef5041d21140df67147b4d073053f81643bbaabff141e89",
+    "method": "Read installed #query implementation; complete cursor.raw() consumption before rows_read:cursor.rowsRead. Official main source inspected separately; not assumed identical to pinned installed package.",
+    "officialSource": "https://github.com/cloudflare/workers-sdk/blob/main/packages/miniflare/src/workers/d1/database.worker.ts",
+    "node": "24.14.1",
+    "nativeSqliteVersion": "not-exposed; not queried again"
+  },
+  "privateEvidence": {
+    "path": "packages/blog/worklog/analytics-evidence/2026-10-31-assignment-report-scope",
+    "files": 29,
+    "manifestSha256": "77b6cf263ebd8d1e906cc65f5ae61137428ac7d4586968af4596698aeb65c023",
+    "allEntriesVerified": true
+  },
+  "decision": {
+    "publicRawRowAssignmentPassAdopted": false,
+    "offlineAnalyzerRetained": true,
+    "publicLabelsCorrected": true,
+    "publicMetricsOrApiChanged": false,
+    "reason": "Historical selected records have no assignment contradiction; raw-row reporting needs a bounded design and guard work scales with JSON structure. Correct public structural/count wording immediately. Local input-query costs do not reject every future aggregate or ingest-time design.",
+    "revisit": "A separately proposed bounded public representation with shared-node/retention/privacy and native cost/parity evidence, or new retained contradictions affecting a concrete decision."
+  },
+  "limits": {
+    "wholeHistoryAssessed": false,
+    "currentProductionMeasured": false,
+    "productionD1AuthorizationRepaired": false,
+    "managedVerifierOracleObtained": false,
+    "sourceActivationMeasured": false,
+    "servedContentMeasured": false,
+    "newCalibrationTrials": 0,
+    "newModelTrials": 0,
+    "fullGoalComplete": false
+  }
+}

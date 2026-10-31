@@ -759,17 +759,17 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   ], null);
   replaceSectionRows('stats-vendor-network', [
     { label: 'Stored method record present', views: data.vendorNetwork.recordedViews },
-    { label: 'Recognized, consistent stored assessment', views: data.vendorNetwork.recognizedViews },
-    { label: 'Unrecognized or inconsistent method record', views: data.vendorNetwork.unrecognizedViews },
+    { label: 'Structurally recognized stored network record', views: data.vendorNetwork.recognizedViews },
+    { label: 'Unrecognized or structurally inconsistent record', views: data.vendorNetwork.unrecognizedViews },
     { label: 'Method not recorded — historical or unreported', views: data.vendorNetwork.notRecordedViews },
-    { label: 'Has a declaration with a configured IP feed', views: data.vendorNetwork.configuredDeclarationViews },
-    { label: 'Address listed in at least one applicable feed', views: data.vendorNetwork.listedViews },
-    { label: 'Address absent from at least one applicable feed', views: data.vendorNetwork.notListedViews },
+    { label: 'Record reports a configured declaration', views: data.vendorNetwork.configuredDeclarationViews },
+    { label: 'Stored result: listed in a checked feed', views: data.vendorNetwork.listedViews },
+    { label: 'Stored result: absent from a checked feed', views: data.vendorNetwork.notListedViews },
     { label: 'Check unavailable — address, feed, validation or deadline', views: data.vendorNetwork.unavailableViews },
     { label: 'Not assessed — refresh cooldown or request budget', views: data.vendorNetwork.notAssessedViews },
-    { label: 'Applicable declaration; address unavailable', views: data.vendorNetwork.addressUnavailableViews },
-    { label: 'Has declarations without this IP method', views: data.vendorNetwork.unmappedDeclarationViews },
-    { label: 'No recognized named declaration', views: data.vendorNetwork.noDeclarationViews },
+    { label: 'Stored configured declarations; address unavailable', views: data.vendorNetwork.addressUnavailableViews },
+    { label: 'Record reports an unmapped declaration', views: data.vendorNetwork.unmappedDeclarationViews },
+    { label: 'Stored declaration count: zero', views: data.vendorNetwork.noDeclarationViews },
   ], null);
   const cache = data.vendorCache, records = cache.records;
   replaceSectionRows('stats-vendor-cache', [

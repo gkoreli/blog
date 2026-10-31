@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T10:22:01.873020+00:00",
-  "sourceBaseline": "733a56901aacab0331e8d9d08c3b1cb2975ff537",
+  "checkedAt": "2026-10-31T10:26:54.013463+00:00",
+  "sourceBaseline": "60725b8178cb55592cc5e33389a38e3624b08565",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "b737e6a/733a569 repaired CloudVertex network evidence and accepted native activation."
+    "scope": "d9a19a9/60725b8 delivered offline assignment checks, concise article and native source activation."
   },
-  "scope": "Offline retained declaration/network-source assignment consistency, guarded decoding and concise retrospective update; no public report or collector runtime change.",
+  "scope": "Apply assignment checks to a verified397-row historical capture, compare local guarded-input query work, retain offline architecture and correct public panel overclaims.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -79,9 +79,11 @@
         "../discovery-experiment-02/report-integrity-checks.json",
         "../discovery-experiment-02/report-integrity-release.json",
         "../discovery-experiment-02/10-retained-network-assignment-consistency.md",
-        "../discovery-experiment-02/network-assignment-checks.json"
+        "../discovery-experiment-02/network-assignment-checks.json",
+        "../discovery-experiment-02/11-assignment-coverage-cost-and-public-claims.md",
+        "../discovery-experiment-02/assignment-report-scope-checks.json"
       ],
-      "limit": "Missing, unsupported, conflicting and native unavailable values stay distinct. This does not prove human accuracy or managed-verifier agreement. Offline assignment consistency now distinguishes supported contradictions from missing/invalid/unsupported inputs using reviewed historical maps; synthetic acceptance does not establish production incidence or vendor identity."
+      "limit": "Missing, unsupported, conflicting and native unavailable values stay distinct. This does not prove human accuracy or managed-verifier agreement. Offline assignment consistency now distinguishes supported contradictions from missing/invalid/unsupported inputs using reviewed historical maps; synthetic acceptance does not establish production incidence or vendor identity. The saved397-row selection has397 consistent assignments:327 empty,45 correctly unmapped and25 configured. Public wording now describes its structural gate; no identity or population accuracy follows."
     },
     {
       "id": "name-matching",
@@ -147,9 +149,11 @@
         "../discovery-experiment-02/09-cloudvertex-indexing-and-method-boundaries.md",
         "../discovery-experiment-02/cloudvertex-checks.json",
         "../discovery-experiment-02/10-retained-network-assignment-consistency.md",
-        "../discovery-experiment-02/network-assignment-checks.json"
+        "../discovery-experiment-02/network-assignment-checks.json",
+        "../discovery-experiment-02/11-assignment-coverage-cost-and-public-claims.md",
+        "../discovery-experiment-02/assignment-report-scope-checks.json"
       ],
-      "limit": "Selected syntax/crypto conditions have exact Node/workerd and independent Structured Field syntax evidence. Profile .31.2 repairs decimal and semicolon-SP compatibility; this does not establish complete grammar/draft conformance, native managed agreement or actual vendor frequency. No accepted request-level signedAgent oracle or eligible controlled identity exists. The response-advisory runtime no-adoption decision remains closed. GoogleOther now has a documented shared network method and synthetic local/native acceptance; actual vendor request and managed native-verdict comparison are unmeasured. CloudVertex gains a documented generally-used common-crawler network method, with synthetic actual collector acceptance; no request-level source purpose or signing promise is established. Offline assignment consistency now distinguishes supported contradictions from missing/invalid/unsupported inputs using reviewed historical maps; synthetic acceptance does not establish production incidence or vendor identity."
+      "limit": "Selected syntax/crypto conditions have exact Node/workerd and independent Structured Field syntax evidence. Profile .31.2 repairs decimal and semicolon-SP compatibility; this does not establish complete grammar/draft conformance, native managed agreement or actual vendor frequency. No accepted request-level signedAgent oracle or eligible controlled identity exists. The response-advisory runtime no-adoption decision remains closed. GoogleOther now has a documented shared network method and synthetic local/native acceptance; actual vendor request and managed native-verdict comparison are unmeasured. CloudVertex gains a documented generally-used common-crawler network method, with synthetic actual collector acceptance; no request-level source purpose or signing promise is established. Offline assignment consistency now distinguishes supported contradictions from missing/invalid/unsupported inputs using reviewed historical maps; synthetic acceptance does not establish production incidence or vendor identity. The saved397-row selection has397 consistent assignments:327 empty,45 correctly unmapped and25 configured. Public wording now describes its structural gate; no identity or population accuracy follows."
     },
     {
       "id": "labelled-errors-and-abstentions",
@@ -363,14 +367,14 @@
     }
   ],
   "effectsThisAudit": {
-    "runtimeChanged": false,
-    "clientChanged": false,
+    "runtimeChanged": true,
+    "clientChanged": true,
     "collectorClassifierVerifierSchemaChanged": false,
     "accountOrSecurityChanges": false,
     "rawCollectionActivated": false,
-    "articleChanged": true,
-    "articleChangedByThisWork": true,
-    "sourceActivationMeasured": true,
+    "articleChanged": false,
+    "articleChangedByThisWork": false,
+    "sourceActivationMeasured": false,
     "servedDestinationAcceptance": false,
     "privacyDisclosureChanged": false,
     "productionRequests": 0,
@@ -386,17 +390,20 @@
     "classifierChanged": false,
     "collectionSchemaVerifierChanged": false,
     "collectorNetworkMethodChanged": false,
-    "offlineAnalyzerChanged": true
+    "offlineAnalyzerChanged": false,
+    "publicPresentationChanged": true,
+    "historicalRowsAssessed": 397,
+    "publicMetricsChanged": false
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: offline retained assignment check, guard binding and malformed-row retention accepted; article locally updated; exact source activation accepted",
+    "thisTurnClassification": "progress: independent historical coverage, native input-query cost and correction of public structural/count claims accepted locally",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Decide whether public reports should adopt retained assignment checks using retained coverage and native query-cost evidence; public adoption remains proposed. Preserve all six external input gates, closed advisory no-adoption and deferred human trials; no production-data retry or repeated accepted controls.",
+  "nextBoundedAction": "Audit the remaining public verification claims against their actual retained fields and validation gates, prioritizing any demonstrated signature-coverage/identity/purpose overclaim. Do not repeat accepted assignment fixtures, fetch fresh production data, reopen the directory-advisory decision, or bypass any of the six unresolved inputs. Public raw-row assignment integration stays unadopted pending a separately justified bounded design.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -422,12 +429,11 @@
     "scopeAfterOwnerContinuation": "Historical checkpoint for missing measurement inputs; not a prohibition on independent implementation, observed agent growth or discovery work."
   },
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
-  "goalStatusScope": "Persistent goal active/incomplete. Retained assignment contradictions and unknowns now have a guarded offline assessment; real incidence, source task, readership/demand/growth, human/native managed accuracy and privacy acceptance retain their evidence gaps.",
+  "goalStatusScope": "Persistent goal active/incomplete. Historical assignment coverage and current public metric descriptions are more precise; native/human accuracy, source purpose, current traffic and privacy decisions remain unresolved.",
   "latestContinuation": {
-    "research": "../discovery-experiment-02/10-retained-network-assignment-consistency.md",
-    "receipt": "../discovery-experiment-02/network-assignment-checks.json",
-    "nextBoundedAction": "Decide whether public reports should adopt retained assignment checks using retained coverage and native query-cost evidence; public adoption remains proposed. Preserve all six external input gates, closed advisory no-adoption and deferred human trials; no production-data retry or repeated accepted controls.",
-    "release": "../discovery-experiment-02/network-assignment-release.json"
+    "research": "../discovery-experiment-02/11-assignment-coverage-cost-and-public-claims.md",
+    "receipt": "../discovery-experiment-02/assignment-report-scope-checks.json",
+    "nextBoundedAction": "Audit the remaining public verification claims against their actual retained fields and validation gates, prioritizing any demonstrated signature-coverage/identity/purpose overclaim. Do not repeat accepted assignment fixtures, fetch fresh production data, reopen the directory-advisory decision, or bypass any of the six unresolved inputs. Public raw-row assignment integration stays unadopted pending a separately justified bounded design."
   },
   "latestAcceptedSourceActivation": {
     "sourceCommit": "d9a19a98aeb3886f9a109d03a2d589eac0bd12c6",
