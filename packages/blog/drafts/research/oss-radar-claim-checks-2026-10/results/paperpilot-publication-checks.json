@@ -1,5 +1,5 @@
 {
-  "state": "local acceptance; source push and served checks pending",
+  "state": "published; source-linked build and served article verified",
   "buildBaseCommit": "16b7537525d5ec00a158b68d0814a256f81803c8",
   "markdownPostsValidated": 24,
   "builtPosts": 35,
@@ -21,5 +21,23 @@
   "htmlSha256": "351923e81422f5bc33cb20922b32e1957bf85759ff82b7a18b60ba58d3e6c8a4",
   "markdownSha256": "02dd9dc625871d3856f9c571356a17a39cd6f4a6357cf1e44ad9d58ddff4b31c",
   "imageSha256": "a3b802df8e294aefa6aeff62cd4cc36f86ca381610ba47d25a66a02f1d4c2f28",
-  "publicSubscriptionKeyPresent": true
+  "publicSubscriptionKeyPresent": true,
+  "sourceCommit": "e3b2653",
+  "cloudflareBuild": {
+    "id": "b2885c2f-dbf6-4017-8771-0d9d44a16750",
+    "conclusion": "success"
+  },
+  "served": {
+    "checkedAt": "2026-10-31T01:22:47.291147+00:00",
+    "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction",
+    "h1Matches": true,
+    "canonicalMatches": true,
+    "imageComplete": true,
+    "imageNaturalDimensions": [
+      1020,
+      1320
+    ],
+    "domSha256": "237555f92619cefe1deca7f77572417ece3019d02f5bd98c3ccc49c337074d0b",
+    "scope": "Native in-app browser; not a claim of availability to all automated clients or reader adoption."
+  }
 }
