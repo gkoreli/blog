@@ -1,0 +1,36 @@
+# Claude Code status requests: source and hook checked, bill not reproduced
+
+October 30, 2026 Pacific. Project deep dive. [Protocol](08-status-summary-protocol.md); original question, gist revisions and audience in the [intake](00-worklist-index.md). Official registry package `@anthropic-ai/claude-code-darwin-arm64@2.1.312`; npm SHA-512 verified. Binary SHA-256 `6b5ec691195e551b02c41df9f7d723f4ea61eaa03c2df90acefe3736f1aeb620`. No vendor bundle enters Git.
+
+## Claim table before prose
+
+| Claim | Product / report says | Code / test | State | Inference | Reader consequence |
+| --- | --- | --- | --- | --- | --- |
+| Status labels cause model calls | Gist describes agent_summary forks | Official binary's minified source `Mu`: full transcript via forkContextMessages, querySource agent_summary, one turn, skipTranscript true. `vu`: short notes alternative | Code-inspected | Missing from a transcript does not mean no request | Count request events rather than only conversation text |
+| Full transcript is always used every 30s | Report describes default full path and 30–240s server schedule | `Ui` has changed-transcript/minimum-message checks, cold-response holds, full/short selection; `xe` schedules Me with refresh config | Code-inspected | Do not turn a timer interval into a guaranteed billed-call rate or claim every server rollout uses full mode | Measure actual window, model, cache and mode |
+| 16.4% applies to everyone | Report explicitly scopes its own week/estimated costs | No original per-request dataset published in retrieved gist; no private telemetry inspected | Reported only | Cannot recompute the author's week or generalize savings | Not a new billing benchmark |
+| Closing the panel disables summaries | Reader asks | Background task's enableSummarization derives from SDK/fork/interactive gates, scheduler owns timer; inspected lifecycle contains no panel-visibility condition | Code-inspected selected paths, not a live UI test | Hiding the panel is not an evidenced spending control for the inspected path | Verify actual request counts, not visual status |
+| Hook disables matching global timers | Gist exact JS revision e02ed... | Extracted actual Ui source in Node VM: no hook/pass 30000ms; off 2147483647ms inert callback; foreign identity passes; unrelated timer stays1234ms | Reproduced VM only | Hook implements advertised narrow timer interception on this source | Not proof of live model suppression |
+| Hook survives a bound callback | Gist warns fail-open | Exact callback bound before passing to hooked timer stays30000ms | Reproduced synthetic update control | Source-text matching depends on callback presentation | Reverify after each update |
+| --version activation proves the saving | Gist distinguishes load and suppression checks | Actual binary --version: active Bun1.4.4; exit0; matched0/suppressed0; network denied, temporary config/log | Reproduced activation only | Activation cannot prove live requests disappeared | Separate marker, matched timers and request telemetry |
+| Cache means free | Reader objection | Official pricing has nonzero model-specific cache-read rates; usage docs separate input/cache creation/read/output | Documentation | Three output words do not describe total charged work | Include all token categories, avoid double counting |
+
+## Competing explanations and product map
+
+| Theory | View | Evidence for | Against / limit | Direction | Disproof |
+| --- | --- | --- | --- | --- | --- |
+| Model-written status provides useful background-agent visibility | Client design | Full/short request paths, summary validation, registry status update | Repeated requests consume compute; no local cost/benefit study | Shipped | Equivalent useful local progress labels at materially lower overhead |
+| The headline is purely fabricated or the request is just local display | Skeptical reader | Small output and no session transcript suggest this | Official source issues a named model fork with skipTranscript | Rejected for source path | No actual reachable caller or calls absent despite enabled active workload |
+| Every reader can save16.4% by loading a hook | Overgeneralized reading | Author's measured week and successful hook tests | No raw week to recompute; server modes/workloads differ; bound callbacks evade source matching | Unsupported generalization | Equal-workload measured request totals with acceptance intact |
+
+Replaces: this unofficial patch suppresses a narrow timer, losing fresh status labels. Wraps: global setTimeout inside Bun. Extends: user's client launch environment, not model inference. Relies on: exact binary entry/path shape, Function.toString, timer/callback implementation and inherited environment. It is not an official user setting or a general cheaper-agent product. Short-notes and alternate-writer code is shipped, but current server selection was not observed; do not call it a new promised rollout.
+
+## Reproduction and evidence
+
+Runner [status-summary-hook.cjs](repro/status-summary-hook.cjs), [curated results](results/status-summary-hook.json). It finds exact scheduler boundaries in the integrity-checked binary and executes the extracted function in a synthetic VM with dependency stubs sufficient only to arm the timer. No callback/API body executes. Tests intercept scheduled delay, inspect matching source and check clear unrelated/foreign controls. Bound-callback control captures the original callback before installing the off hook, then passes its bound wrapper; it fails open as expected. The scheduler source hash is retained, not the vendor source itself.
+
+Actual command: task-local `BUN_OPTIONS=--preload=...`, `CC_AGENT_SUMMARY_LOG=...`, `CLAUDE_CONFIG_DIR=...`, then sandbox-exec `(version 1)(allow default)(deny network-outbound)` official binary `--version`. Returned2.1.312; hook logs active modeoff Bun1.4.4; zero matched timers. No agent spawned or model request initiated; temporary config supplied. No private session was inspected, daemon stopped or permanent environment edited. Owned process finished.
+
+Official [monitoring docs](https://code.claude.com/docs/en/monitoring-usage) define api_request query_source, cost_usd as estimate, and three distinct input categories. [Caching docs](https://platform.claude.com/docs/en/build-with-claude/prompt-caching) show model-specific nonzero read rates; do not blindly assume every model uses the older10% multiplier. These sources were read live October30. Do not export raw prompts/bodies for a cost calculation. No telemetry was enabled here.
+
+Publication decision: explain a real request path, a reproducible workaround boundary and correct accounting. Scope it as a binary-source and hook audit, not a live cost study. No new savings percentage, generalized default-mode claim, unsupported official setting, patched user install or adoption result. The [manuscript](../../../posts/036-oss-radar-12-claude-code-status-summary.md) is 844 rendered words, 4.22 minutes. Markdown validation passes 26 posts; isolated build passes 37. Canonical, H1, social metadata and HTML hashes are in [publication checks](results/status-summary-publication-checks.json). Source push and served acceptance pending.

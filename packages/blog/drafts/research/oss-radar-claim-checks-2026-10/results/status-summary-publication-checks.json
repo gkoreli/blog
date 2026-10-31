@@ -1,0 +1,14 @@
+{
+  "state": "local acceptance; push and served checks pending",
+  "buildBaseCommit": "a08f2c0 plus subsequent article overlays",
+  "markdownPostsValidated": 26,
+  "builtPosts": 37,
+  "renderedWords": 844,
+  "minutesAt200Words": 4.22,
+  "h1": "OSS Radar #12: Claude Code\u2019s Status Labels Make Their Own Model Calls",
+  "canonical": "https://gkoreli.com/oss-radar-12-claude-code-status-summary",
+  "ogTitle": "OSS Radar #12: Claude Code\u2019s Status Labels Make Their Own Model Calls",
+  "description": "Claude Code's tiny agent-status labels can trigger separate model requests. I checked the binary and timer hook, including a case where the workaround silently misses.",
+  "sourceSha256": "6c46ecccc9a6b2f74e8e5246dc8a7e4b28c81d42faa9a2f80193bf84783dc70b",
+  "htmlSha256": "9ef10540174525680e55a6da726c8944fc176f1e3c53b7c77949328610ed5faa"
+}

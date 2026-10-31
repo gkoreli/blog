@@ -1,0 +1,9 @@
+# Claude Code summaries: separate cost reports, timer code and hook behavior
+
+October 30, 2026 Pacific. Original reader questions and the report's exact gist revisions are in the [intake](00-worklist-index.md) and [source baselines](source-baselines.json). The source report measures 16.4% of estimated request cost over its own week, not an invoice or a universal proportion.
+
+Official npm `@anthropic-ai/claude-code-darwin-arm64@2.1.312` metadata and tarball retrieved; SHA-512 integrity matches the registry. Its binary contains both bytecode strings and minified source. Initial static inspection finds the reported timer callback, the full-transcript fork and short-mode alternative. Preserve package integrity and binary/source hashes rather than publishing the vendor bundle.
+
+Next bounded checks, frozen before dynamic execution: extract the actual scheduler function; trace its call sites and enablement separately from panel rendering. Test the exact gist hook against the extracted callback and clear synthetic controls in an isolated VM. Check default/off/pass, a non-Claude identity, bound callback and an unrelated timer. Verify actual preload activation with the official binary's `--version` only if safe and needed, using temporary logs/config; no agent, API, private session or daemon restart. Do not install the hook globally.
+
+Acceptance: source-backed answer about scheduler enablement and a reproduced hook boundary. Do not generalize VM tests to live summary suppression, or repeat the author's cost fraction as our measurement. No paid calls or background-agent delegation. If the missing billing question cannot be answered independently from public data, keep that limit explicit and do not claim a new cost study. Group by `query_source` and cache categories using public telemetry documentation, without reading private telemetry.
