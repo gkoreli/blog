@@ -1,0 +1,479 @@
+{
+  "observedAt": "2026-10-31T15:45Z",
+  "localSourceRevision": null,
+  "sourceState": "Working-tree capture; base commit was not recorded at capture. Concurrent unrelated work was preserved.",
+  "fragmentMethod": "Render 27 Markdown posts with packages/blog/src/lib/markdown.ts using repository frontmatter parsing. Collect actual HTML IDs and same-site fragment-bearing anchors; compare fragments to rendered Markdown targets.",
+  "fragments": {
+    "markdown_posts_rendered": 27,
+    "assessed_fragment_links": 1,
+    "broken": [],
+    "unassessed_target_formats_or_nonposts": [],
+    "all_assessed": [
+      {
+        "source": "first-party-analytics-for-a-personal-blog",
+        "href": "/does-llms-txt-work#how-to-test-llmstxt-by-stage",
+        "target": "does-llms-txt-work",
+        "fragment": "how-to-test-llmstxt-by-stage",
+        "exists": true
+      }
+    ]
+  },
+  "evidencePaths": {
+    "method": "Current checked-out source path existence, not a live GitHub HTTP check or historical pinned-commit audit. Includes Markdown post links only. Declared source-preservation audit extended to owned evidence paths before any intervention.",
+    "links": 64,
+    "distinct_paths": 48,
+    "broken": [],
+    "rows": [
+      {
+        "article": "does-llms-txt-work",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/llms-txt-geo/06-edge-baseline-2026-08-24.md",
+        "path": "packages/blog/drafts/research/llms-txt-geo/06-edge-baseline-2026-08-24.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "does-llms-txt-work",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/llms-txt-geo/08a-green-team-client-evidence.md",
+        "path": "packages/blog/drafts/research/llms-txt-geo/08a-green-team-client-evidence.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "first-party-analytics-for-a-personal-blog",
+        "href": "https://github.com/gkoreli/blog/blob/main/docs/tasks/TASK-0035.md",
+        "path": "docs/tasks/TASK-0035.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "which-ai-fetchers-send-which-headers",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/ai-fetcher-headers",
+        "path": "packages/blog/drafts/research/ai-fetcher-headers",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "which-ai-fetchers-send-which-headers",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/ai-fetcher-headers/data/captures.jsonl",
+        "path": "packages/blog/drafts/research/ai-fetcher-headers/data/captures.jsonl",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "which-ai-fetchers-send-which-headers",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/96-fetcher-reference-coverage-correction.md",
+        "path": "packages/blog/drafts/research/analytics-retrospective/96-fetcher-reference-coverage-correction.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "which-ai-fetchers-send-which-headers",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/ai-fetcher-headers",
+        "path": "packages/blog/drafts/research/ai-fetcher-headers",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "which-ai-fetchers-send-which-headers",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/96-fetcher-reference-coverage-correction.md",
+        "path": "packages/blog/drafts/research/analytics-retrospective/96-fetcher-reference-coverage-correction.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/02-evidence-ledger.md",
+        "path": "packages/blog/drafts/research/readers-vs-bots/02-evidence-ledger.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/09-fetch-metadata-prior-art.md",
+        "path": "packages/blog/drafts/research/readers-vs-bots/09-fetch-metadata-prior-art.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md",
+        "path": "packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/03-local-experiment.md",
+        "path": "packages/blog/drafts/research/edge-vs-rum/03-local-experiment.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md",
+        "path": "packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/12-production-followup-2026-09-05.md",
+        "path": "packages/blog/drafts/research/readers-vs-bots/12-production-followup-2026-09-05.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/15-existing-cloudflare-evidence-2026-09-06.md",
+        "path": "packages/blog/drafts/research/readers-vs-bots/15-existing-cloudflare-evidence-2026-09-06.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/09-fetch-metadata-prior-art.md",
+        "path": "packages/blog/drafts/research/readers-vs-bots/09-fetch-metadata-prior-art.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md",
+        "path": "packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/04-release-verification.md",
+        "path": "packages/blog/drafts/research/edge-vs-rum/04-release-verification.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/12-production-followup-2026-09-05.md",
+        "path": "packages/blog/drafts/research/readers-vs-bots/12-production-followup-2026-09-05.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/scripts/analytics-evidence.md",
+        "path": "packages/blog/scripts/analytics-evidence.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/readers-vs-bots",
+        "path": "packages/blog/drafts/research/readers-vs-bots",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "how-i-separate-readers-from-bots-without-javascript",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/readers-vs-bots/16-claims-and-work-status-2026-09-06.md",
+        "path": "packages/blog/drafts/research/readers-vs-bots/16-claims-and-work-status-2026-09-06.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "filter-referrer-spam-without-deleting-analytics-history",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/00-incident.md",
+        "path": "packages/blog/drafts/research/d1-read-budget/00-incident.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "filter-referrer-spam-without-deleting-analytics-history",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md",
+        "path": "packages/blog/drafts/research/d1-read-budget/02-recovery.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "openclaw-chose-solid-why-id-choose-nisli",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/nisli-framework/publication/README.md",
+        "path": "packages/blog/drafts/research/nisli-framework/publication/README.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "openclaw-chose-solid-why-id-choose-nisli",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/nisli-framework/examples/README.md",
+        "path": "packages/blog/drafts/research/nisli-framework/examples/README.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "openclaw-chose-solid-why-id-choose-nisli",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/nisli-framework/publication/README.md",
+        "path": "packages/blog/drafts/research/nisli-framework/publication/README.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "openclaw-chose-solid-why-id-choose-nisli",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/nisli-framework/publication/README.md#bundle-size",
+        "path": "packages/blog/drafts/research/nisli-framework/publication/README.md",
+        "exists": true,
+        "fragment": "bundle-size"
+      },
+      {
+        "article": "openclaw-chose-solid-why-id-choose-nisli",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/nisli-framework/release/README.md",
+        "path": "packages/blog/drafts/research/nisli-framework/release/README.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "openclaw-chose-solid-why-id-choose-nisli",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/nisli-framework/integration/README.md",
+        "path": "packages/blog/drafts/research/nisli-framework/integration/README.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "openclaw-chose-solid-why-id-choose-nisli",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/nisli-framework/02-claims.md",
+        "path": "packages/blog/drafts/research/nisli-framework/02-claims.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/110-weekly-history-production-acceptance.md",
+        "path": "packages/blog/drafts/research/analytics-retrospective/110-weekly-history-production-acceptance.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/33-reviewed-directory-publishers.md",
+        "path": "packages/blog/drafts/research/analytics-retrospective/33-reviewed-directory-publishers.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/49-current-verifier-vendor-evidence.md",
+        "path": "packages/blog/drafts/research/analytics-retrospective/49-current-verifier-vendor-evidence.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/75-frozen-signed-cohort-and-export-boundaries.md",
+        "path": "packages/blog/drafts/research/analytics-retrospective/75-frozen-signed-cohort-and-export-boundaries.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/74-native-trace-redaction-and-covered-urls.md",
+        "path": "packages/blog/drafts/research/analytics-retrospective/74-native-trace-redaction-and-covered-urls.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/90-fetch-metadata-parsing-and-evidence.md",
+        "path": "packages/blog/drafts/research/analytics-retrospective/90-fetch-metadata-parsing-and-evidence.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/91-live-metadata-controls-and-redacted-correlation.md",
+        "path": "packages/blog/drafts/research/analytics-retrospective/91-live-metadata-controls-and-redacted-correlation.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/92-public-parsing-states-and-browser-signals.md",
+        "path": "packages/blog/drafts/research/analytics-retrospective/92-public-parsing-states-and-browser-signals.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/discovery-experiment-02/06-public-report-integrity.md",
+        "path": "packages/blog/drafts/research/discovery-experiment-02/06-public-report-integrity.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/discovery-experiment-02/10-retained-network-assignment-consistency.md",
+        "path": "packages/blog/drafts/research/discovery-experiment-02/10-retained-network-assignment-consistency.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/d1-read-budget/02-recovery.md",
+        "path": "packages/blog/drafts/research/d1-read-budget/02-recovery.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/09-trial-ledger-and-selective-evaluation.md",
+        "path": "packages/blog/drafts/research/edge-vs-rum/09-trial-ledger-and-selective-evaluation.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/edge-vs-rum/07-matched-classifier-calibration.md",
+        "path": "packages/blog/drafts/research/edge-vs-rum/07-matched-classifier-calibration.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/98-subscription-funnel-and-reader-signals.md",
+        "path": "packages/blog/drafts/research/analytics-retrospective/98-subscription-funnel-and-reader-signals.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/newsletter-reliability/21-truthful-error-report-acknowledgments.md",
+        "path": "packages/blog/drafts/research/newsletter-reliability/21-truthful-error-report-acknowledgments.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "building-blog-analytics-what-the-numbers-can-prove",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-retrospective",
+        "path": "packages/blog/drafts/research/analytics-retrospective",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-08-bun-aot",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-aot",
+        "path": "packages/blog/drafts/research/bun-aot",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-08-bun-aot",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-aot",
+        "path": "packages/blog/drafts/research/bun-aot",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "why-worktree-setup-is-slow-on-macos",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/macos-worktree",
+        "path": "packages/blog/drafts/research/macos-worktree",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "why-worktree-setup-is-slow-on-macos",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/macos-worktree/repro",
+        "path": "packages/blog/drafts/research/macos-worktree/repro",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-09-tsrs-typescript-memory",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "path": "packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-09-tsrs-typescript-memory",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "path": "packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-10-paperpilot-redaction",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "path": "packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-10-paperpilot-redaction",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "path": "packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-11-qwenputer-compiled-cpu",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "path": "packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-11-qwenputer-compiled-cpu",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-claim-checks-2026-10/repro/qwenputer-model.py",
+        "path": "packages/blog/drafts/research/oss-radar-claim-checks-2026-10/repro/qwenputer-model.py",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-11-qwenputer-compiled-cpu",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-claim-checks-2026-10/results/qwenputer-model.json",
+        "path": "packages/blog/drafts/research/oss-radar-claim-checks-2026-10/results/qwenputer-model.json",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-12-claude-code-status-summary",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "path": "packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-12-claude-code-status-summary",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-claim-checks-2026-10/repro/status-summary-hook.cjs",
+        "path": "packages/blog/drafts/research/oss-radar-claim-checks-2026-10/repro/status-summary-hook.cjs",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-12-claude-code-status-summary",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-claim-checks-2026-10/results/status-summary-hook.json",
+        "path": "packages/blog/drafts/research/oss-radar-claim-checks-2026-10/results/status-summary-hook.json",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-13-hob-offline-file-tasks",
+        "href": "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "path": "packages/blog/drafts/research/oss-radar-claim-checks-2026-10",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-13-hob-offline-file-tasks",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-claim-checks-2026-10/repro/hob/README.md",
+        "path": "packages/blog/drafts/research/oss-radar-claim-checks-2026-10/repro/hob/README.md",
+        "exists": true,
+        "fragment": ""
+      },
+      {
+        "article": "oss-radar-13-hob-offline-file-tasks",
+        "href": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-claim-checks-2026-10/results/hob-tasks.json",
+        "path": "packages/blog/drafts/research/oss-radar-claim-checks-2026-10/results/hob-tasks.json",
+        "exists": true,
+        "fragment": ""
+      }
+    ]
+  },
+  "limits": "No live production response, TS/HTML post coverage, external redirect, historical pinned commit, or evidence-file fragment audit.",
+  "renderedCorpusSha256": "7f683f57a381228c32fbcf5f84e57fc397a4dc3bf4da167c92d46cc952086dcb"
+}

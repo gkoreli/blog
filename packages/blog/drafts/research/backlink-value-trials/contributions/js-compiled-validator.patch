@@ -1,0 +1,113 @@
+diff --git a/benches/60-validator-static.ts b/benches/60-validator-static.ts
+new file mode 100644
+index 0000000..fa33fe8
+--- /dev/null
++++ b/benches/60-validator-static.ts
+@@ -0,0 +1,29 @@
++// Hand-written validation, paired with 61-validator-generated.ts.
++// Same data and checks; only the implementation of validate changes.
++interface Row { name: string | null; age: number; enabled: boolean }
++const minimumAge = Number(process.argv[2] ?? '18');
++if (!Number.isInteger(minimumAge)) throw new Error('minimum age must be an integer');
++const changing: Row = { name: 'Ada', age: 37, enabled: true };
++const rows: Row[] = [
++  changing,
++  { name: 'Bo', age: 40, enabled: true },
++  { name: null, age: 24, enabled: true },
++  { name: 'Lin', age: 17, enabled: true },
++  { name: 'Pat', age: 22.5, enabled: true },
++  { name: 'Sam', age: 28, enabled: false },
++  { name: 'Ren', age: 19, enabled: true },
++  { name: '', age: 21, enabled: true },
++  { name: 'Max', age: NaN, enabled: true },
++  { name: 'Kai', age: 60, enabled: true },
++];
++function validate(value: Row): boolean {
++  return typeof value.name === 'string' && value.name.length >= 3
++    && Number.isInteger(value.age) && value.age >= minimumAge && value.enabled === true;
++}
++let accepted = 0;
++for (let round = 0; round < 1_000_000; round++) {
++  // Mutate an input on every round; prevent precomputing a constant result.
++  changing.age = round % 40;
++  for (const row of rows) if (validate(row)) accepted++;
++}
++console.log('RESULT ' + accepted);
+diff --git a/benches/61-validator-generated.ts b/benches/61-validator-generated.ts
+new file mode 100644
+index 0000000..3897150
+--- /dev/null
++++ b/benches/61-validator-generated.ts
+@@ -0,0 +1,28 @@
++// Runtime-generated validation, paired with 60-validator-static.ts.
++// Models the execution mechanism, not the performance of a named library.
++interface Row { name: string | null; age: number; enabled: boolean }
++const minimumAge = Number(process.argv[2] ?? '18');
++if (!Number.isInteger(minimumAge)) throw new Error('minimum age must be an integer');
++const changing: Row = { name: 'Ada', age: 37, enabled: true };
++const rows: Row[] = [
++  changing,
++  { name: 'Bo', age: 40, enabled: true },
++  { name: null, age: 24, enabled: true },
++  { name: 'Lin', age: 17, enabled: true },
++  { name: 'Pat', age: 22.5, enabled: true },
++  { name: 'Sam', age: 28, enabled: false },
++  { name: 'Ren', age: 19, enabled: true },
++  { name: '', age: 21, enabled: true },
++  { name: 'Max', age: NaN, enabled: true },
++  { name: 'Kai', age: 60, enabled: true },
++];
++const generated = new Function('value',
++  'return typeof value.name === "string" && value.name.length >= 3'
++  + ' && Number.isInteger(value.age) && value.age >= ' + minimumAge + ' && value.enabled === true;');
++function validate(value: Row): boolean { return Boolean(generated(value)); }
++let accepted = 0;
++for (let round = 0; round < 1_000_000; round++) {
++  changing.age = round % 40;
++  for (const row of rows) if (validate(row)) accepted++;
++}
++console.log('RESULT ' + accepted);
+diff --git a/harness/validator.test.mjs b/harness/validator.test.mjs
+new file mode 100644
+index 0000000..0a6c200
+--- /dev/null
++++ b/harness/validator.test.mjs
+@@ -0,0 +1,38 @@
++import assert from 'node:assert/strict';
++import { spawnSync } from 'node:child_process';
++import { existsSync } from 'node:fs';
++import { join } from 'node:path';
++import test from 'node:test';
++
++// Works beside the fixtures in this research directory, or under upstream's
++// harness/ when the two fixtures are copied into its benches/ directory.
++const fixtures = existsSync(join(import.meta.dirname, '60-validator-static.ts'))
++  ? import.meta.dirname : join(import.meta.dirname, '..', 'benches');
++const variants = ['60-validator-static.ts', '61-validator-generated.ts'];
++
++function oracle(minimumAge) {
++  const fixed = [17, 19, 60].filter(age => age >= minimumAge).length * 1_000_000;
++  const changing = Array.from({length: 40}, (_, age) => age)
++    .filter(age => age >= minimumAge).length * 25_000;
++  return `RESULT ${fixed + changing}\n`;
++}
++
++test('static and generated implementations match an independent count for runtime inputs', () => {
++  for (const minimumAge of [0, 18, 29, 61]) {
++    for (const variant of variants) {
++      const result = spawnSync(process.execPath, [join(fixtures, variant), String(minimumAge)], {
++        encoding: 'utf8', timeout: 15_000,
++      });
++      assert.equal(result.status, 0, result.stderr);
++      assert.equal(result.stdout, oracle(minimumAge), `${variant}, minimumAge=${minimumAge}`);
++    }
++  }
++});
++
++test('both fixtures reject a noninteger runtime threshold', () => {
++  for (const variant of variants) {
++    const result = spawnSync(process.execPath, [join(fixtures, variant), '18.5'], {encoding:'utf8', timeout:15_000});
++    assert.notEqual(result.status, 0);
++    assert.match(result.stderr, /minimum age must be an integer/);
++  }
++});

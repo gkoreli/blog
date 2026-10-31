@@ -1,0 +1,79 @@
+{
+  "source": "https://x.com/borjafat/status/2116164330014007296",
+  "observedAt": "2026-10-31T15:42Z/2026-10-31T15:48Z",
+  "discussion": {
+    "sort": "Relevant as displayed",
+    "distinctLoadedStatuses": 59,
+    "textRecords": 56,
+    "gifOnlyStatuses": 3,
+    "coverage": "partial_sample",
+    "parentRelationships": "unknown; includes follow-ups",
+    "captureSha256": "58505a25c511fc4a8bd747c389b13bd808b359fe005b3c8a8c08576b25c31901"
+  },
+  "frozenTrials": {
+    "question": "Which backlink tactics produce a concrete useful asset or repair for this engineering publication?",
+    "source": "https://x.com/borjafat/status/2116164330014007296",
+    "vendorSourceRevision": "01bbede516a8963bff5731bbda412f0e2a364188",
+    "trials": [
+      {
+        "id": "stable-reference-audit",
+        "lesson": "Keep research URLs stable; repair earned reference destinations.",
+        "hypothesis": "The publication can have working page routes with broken section citations because its current build validation discards fragments.",
+        "method": "Render all current Markdown posts with the actual renderer, extract links/IDs, and resolve same-site section targets. Preserve absent targets separately from unrendered target formats. Repair only confirmed owned defects and repeat the same audit.",
+        "outcome": "Actual supported broken destinations fixed, or justified no change."
+      },
+      {
+        "id": "fact-decay-contribution",
+        "lesson": "Find a specific factual gap and provide a ready-to-use correction.",
+        "hypothesis": "One of the already discovered external guides or copies contains a verifiable stale statement our primary evidence can correct.",
+        "method": "Read exact page context and compare against primary source/code; produce a dated correction sheet and concrete replacement, with no external sending.",
+        "outcome": "At least one independently checkable correction asset; reject unverifiable prospects."
+      },
+      {
+        "id": "source-prospecting",
+        "lesson": "Prospect from sources readers/agents actually encounter, then qualify the missing contribution.",
+        "hypothesis": "A targeted technical source map yields a contribution opportunity better than generic roundup outreach.",
+        "method": "Inspect current guides and repository fixtures for existing references and an exact missing reproducible case. Prepare a scoped artifact or patch when justified. Keep observed citations distinct from search pools.",
+        "outcome": "Reviewed prospect table with keep/drop reasons and a contribution the user can inspect."
+      }
+    ],
+    "boundaries": "No outreach, paid services, account creation, link exchange, or synthetic traffic. Existing completed discovery/analytics work remains completed. Organic link acquisition is not measurable without publisher participation and time."
+  },
+  "answerTrialProtocol": {
+    "service": "Perplexity web UI",
+    "mode": "Search selected; default model not exposed at composer",
+    "context": "Three new search sessions, no supplied source URL, prior publication topics known to the authoring researcher. Account and personalization not controlled.",
+    "purpose": "Find actual answer-cited sources for technical publishing opportunities, then inspect and qualify contributions. This is a small controlled source-selection study, not a service-wide citation rate.",
+    "questions": [
+      {
+        "id": "headers",
+        "prompt": "I operate a small engineering publication. How can I distinguish AI assistants fetching articles from human browser visits using server-side HTTP evidence? Recommend reproducible studies or open-source implementations I can inspect, explain their limits, and cite your sources. Keep the answer under 450 words."
+      },
+      {
+        "id": "spam",
+        "prompt": "I publish public website analytics. How can I remove referrer-spam promotion from the dashboard while preserving the original events for later investigation? Recommend inspectable implementations or practical guides, explain the tradeoffs, and cite your sources. Keep the answer under 450 words."
+      },
+      {
+        "id": "aot",
+        "prompt": "Before rewriting a TypeScript service in Rust, how should I test whether Bun ahead-of-time compilation solves its memory or throughput problem? Include dependency compatibility and runtime-generated validators, recommend reproducible benchmarks or code I can inspect, and cite your sources. Keep the answer under 450 words."
+      }
+    ],
+    "stop": "One submitted prompt and one answer per question. No regeneration, coaching or new agreement. Preserve failures. Citation presence requires a visible answer link; inspect cited source before treating it as a contribution prospect."
+  },
+  "answerTrialResults": {
+    "observedAt": "2026-10-31T15:48Z",
+    "service": "Perplexity Search web UI",
+    "headers": {
+      "state": "sign-up gate after submit",
+      "answerObserved": false,
+      "citationScore": null
+    },
+    "spam": {
+      "state": "unsubmitted after gate"
+    },
+    "aot": {
+      "state": "unsubmitted after gate"
+    },
+    "limits": "No answer evidence. No account, agreement, regeneration or service-wide inference."
+  }
+}

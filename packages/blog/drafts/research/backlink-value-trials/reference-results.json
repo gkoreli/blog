@@ -1,0 +1,181 @@
+{
+  "observedAt": "2026-10-31T15:46Z",
+  "acquisition": [
+    {
+      "id": "arcjet",
+      "url": "https://arcjet.com/learn/web-bot-auth",
+      "startedAt": "2026-10-31T15:46:11.731940+00:00",
+      "status": 200,
+      "finalUrl": "https://arcjet.com/learn/web-bot-auth",
+      "bytes": 926846,
+      "sha256": "824b745bee85969ff27176be9b971178dc7a8e583d03bd1ff295fd5b00580df0",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "id": "web-pulse",
+      "url": "https://wpnews.pro/news/which-ai-fetchers-send-which-headers-measured-on-a-live-site",
+      "startedAt": "2026-10-31T15:46:11.732091+00:00",
+      "status": 200,
+      "finalUrl": "https://wpnews.pro/news/which-ai-fetchers-send-which-headers-measured-on-a-live-site",
+      "bytes": 103255,
+      "sha256": "e06b8657ccc5ef2ad73db6a90fa57959241eb86f43dbb56d8667603abe9a7e82",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "id": "edgecomet",
+      "url": "https://edgecomet.com/blog/request-headers-what-googlebot-and-ai-bots-send-with-every-request/",
+      "startedAt": "2026-10-31T15:46:11.732140+00:00",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "id": "vuink",
+      "url": "https://vuink.com/post/txberyv-d-dpbz/which-ai-fetchers-send-which-headers",
+      "startedAt": "2026-10-31T15:46:11.824044+00:00",
+      "status": 200,
+      "finalUrl": "https://vuink.com/post/txberyv-d-dpbz/which-ai-fetchers-send-which-headers",
+      "bytes": 45851,
+      "sha256": "526a27b70b34438b9b47039109e5d97d17f88198585cea6562f5d054180f723b",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "id": "ai-today",
+      "url": "https://aitoday.vercel.app/story/which-ai-fetchers-send-which-headers-measured-on-a-live-site-f12q?list=recent",
+      "startedAt": "2026-10-31T15:46:12.200874+00:00",
+      "status": 200,
+      "finalUrl": "https://dailyartifact.ai/story/which-ai-fetchers-send-which-headers-measured-on-a-live-site-f12q?list=recent",
+      "bytes": 122481,
+      "sha256": "8307c2d4bed126e1b0a937c69a78e3a0fd90b990e53fabc74b50e3915b7ada49",
+      "contentType": "text/html; charset=utf-8"
+    }
+  ],
+  "references": [
+    {
+      "sourceUrl": "https://arcjet.com/learn/web-bot-auth",
+      "targetUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "directLinkPresent": true,
+      "directLinks": [
+        {
+          "href": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "rel": [
+            "noopener",
+            "noreferrer"
+          ],
+          "text": "published",
+          "resolvedUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "qualifiers": []
+        }
+      ],
+      "unverifiedWrapperCandidates": [],
+      "limits": "Saved HTML links only. No rendering, redirect resolution, fragment existence, editorial independence, ranking credit, traffic or citation-use claim. Duplicate anchors on one page are one source observation.",
+      "htmlSha256": "824b745bee85969ff27176be9b971178dc7a8e583d03bd1ff295fd5b00580df0",
+      "sourceId": "arcjet"
+    },
+    {
+      "sourceUrl": "https://wpnews.pro/news/which-ai-fetchers-send-which-headers-measured-on-a-live-site",
+      "targetUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "directLinkPresent": true,
+      "directLinks": [
+        {
+          "href": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "rel": [
+            "external",
+            "nofollow",
+            "noopener"
+          ],
+          "resolvedUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "qualifiers": [
+            "nofollow"
+          ]
+        },
+        {
+          "href": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "rel": [
+            "external",
+            "noopener"
+          ],
+          "resolvedUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "qualifiers": []
+        },
+        {
+          "href": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "rel": [
+            "external",
+            "nofollow",
+            "noopener"
+          ],
+          "resolvedUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "qualifiers": [
+            "nofollow"
+          ]
+        },
+        {
+          "href": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "rel": [
+            "external",
+            "nofollow",
+            "noopener"
+          ],
+          "resolvedUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "qualifiers": [
+            "nofollow"
+          ]
+        },
+        {
+          "href": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "rel": [
+            "external",
+            "nofollow",
+            "noopener"
+          ],
+          "resolvedUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "qualifiers": [
+            "nofollow"
+          ]
+        }
+      ],
+      "unverifiedWrapperCandidates": [],
+      "limits": "Saved HTML links only. No rendering, redirect resolution, fragment existence, editorial independence, ranking credit, traffic or citation-use claim. Duplicate anchors on one page are one source observation.",
+      "htmlSha256": "e06b8657ccc5ef2ad73db6a90fa57959241eb86f43dbb56d8667603abe9a7e82",
+      "sourceId": "web-pulse",
+      "publicationNote": "Anchor labels omitted from the public receipt; full saved-byte inspection is retained privately. URLs and rel tokens are preserved."
+    },
+    {
+      "sourceUrl": "https://vuink.com/post/txberyv-d-dpbz/which-ai-fetchers-send-which-headers",
+      "targetUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "directLinkPresent": false,
+      "directLinks": [],
+      "unverifiedWrapperCandidates": [
+        {
+          "href": "https://vuink.com/go/gkoreli.com/which-ai-fetchers-send-which-headers",
+          "rel": [],
+          "text": "gkoreli.com/which-ai...",
+          "resolvedUrl": "https://vuink.com/go/gkoreli.com/which-ai-fetchers-send-which-headers"
+        }
+      ],
+      "limits": "Saved HTML links only. No rendering, redirect resolution, fragment existence, editorial independence, ranking credit, traffic or citation-use claim. Duplicate anchors on one page are one source observation.",
+      "htmlSha256": "526a27b70b34438b9b47039109e5d97d17f88198585cea6562f5d054180f723b",
+      "sourceId": "vuink"
+    },
+    {
+      "sourceUrl": "https://dailyartifact.ai/story/which-ai-fetchers-send-which-headers-measured-on-a-live-site-f12q?list=recent",
+      "targetUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "directLinkPresent": true,
+      "directLinks": [
+        {
+          "href": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "rel": [
+            "noopener",
+            "noreferrer"
+          ],
+          "text": "Read the full article",
+          "resolvedUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+          "qualifiers": []
+        }
+      ],
+      "unverifiedWrapperCandidates": [],
+      "limits": "Saved HTML links only. No rendering, redirect resolution, fragment existence, editorial independence, ranking credit, traffic or citation-use claim. Duplicate anchors on one page are one source observation.",
+      "htmlSha256": "8307c2d4bed126e1b0a937c69a78e3a0fd90b990e53fabc74b50e3915b7ada49",
+      "sourceId": "ai-today"
+    }
+  ]
+}

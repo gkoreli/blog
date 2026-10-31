@@ -1,0 +1,1532 @@
+{
+  "runtimeThreshold": {
+    "startedAt": "2026-10-31T15:51:17.387860+00:00",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "bunRevision": "1.4.4-canary.1+06888611e",
+    "bunSha256": "6f3f644be027638c560bad1e728cfb0bf3cb7b2c40dca2acbdf03c757090c834",
+    "method": "One discarded whole-process warmup then five rotated-order wall-time measurements per compiled executable. Fresh processes, no network or service load.",
+    "rows": [
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 1.0690434999996796,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.41292079200502485,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.7627271669916809,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.6444002499920316,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.01974775001872331,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.02485845796763897,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.2831302910344675,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.025404707994312048,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.025585792027413845,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.25424391601700336,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.025539583002682775,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.020419209031388164,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.2430122080259025,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.02581833302974701,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.020056832989212126,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.02537037496222183,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.02450462500564754,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.019852457975503057,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.025645665999036282,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.2719341249903664,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.021795291977468878,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.025826582976151258,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.24135720799677074,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.024937083013355732,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      }
+    ],
+    "medians": {
+      "static-jit": 0.025404707994312048,
+      "static-aot": 0.020056832989212126,
+      "generated-jit": 0.025585792027413845,
+      "generated-aot": 0.25424391601700336
+    },
+    "completedAt": "2026-10-31T15:51:22.937354+00:00",
+    "sourceSha256": {
+      "60-validator-static.ts": "9f27b3f36a22038ed1dd5ec1f3850314dc990fe1d9cd411ecef126c5048546e4",
+      "61-validator-generated.ts": "fd38f8c187d4b3e9da94077c4e0f4bf0e1032ff01ec97dfa3b3660cb2ac141db"
+    },
+    "buildFlags": "build --compile --production --format=esm [--aot] SOURCE --outfile EXECUTABLE"
+  },
+  "literalControl": {
+    "startedAt": "2026-10-31T15:50:00.290062+00:00",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "bunRevision": "1.4.4-canary.1+06888611e",
+    "bunSha256": "6f3f644be027638c560bad1e728cfb0bf3cb7b2c40dca2acbdf03c757090c834",
+    "method": "One discarded whole-process warmup then five rotated-order wall-time measurements per compiled executable. Fresh processes, no network or service load.",
+    "rows": [
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.8039654589956626,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.40681608294835314,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.7661451669991948,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.39411654096329585,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.025057165999896824,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.025379750004503876,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.018419000029098243,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.02396874997066334,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.02512704097898677,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.01759254198987037,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.024376209010370076,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.017634290968999267,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.017201541049871594,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.024233333009760827,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.0174693749868311,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.023665874963626266,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.023925207962747663,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.017663750040810555,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.022468958981335163,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.018346833996474743,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.01772220799466595,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.023527792014647275,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.017817458952777088,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.02395900001283735,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      }
+    ],
+    "medians": {
+      "static-jit": 0.02396874997066334,
+      "static-aot": 0.017663750040810555,
+      "generated-jit": 0.023665874963626266,
+      "generated-aot": 0.017817458952777088
+    },
+    "completedAt": "2026-10-31T15:50:03.891065+00:00",
+    "sourceSha256": {
+      "60-validator-static.ts": "d49640d3ec86954cbfb70c0ea252b2fa9da4ce78cf2ead83cbff070ae31ecd08",
+      "61-validator-generated.ts": "c972f3bfc49ec9538e09d8c3b0b4cfbefe2a7356e28daf6baf7edae7c1d8fe80"
+    },
+    "buildFlags": "build --compile --production --format=esm [--aot] SOURCE --outfile EXECUTABLE"
+  },
+  "inputControls": [
+    {
+      "minimumAge": 0,
+      "kind": "static",
+      "mode": "jit",
+      "exitCode": 0,
+      "expectedCount": 4000000,
+      "stdout": "RESULT 4000000\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 0,
+      "kind": "static",
+      "mode": "aot",
+      "exitCode": 0,
+      "expectedCount": 4000000,
+      "stdout": "RESULT 4000000\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 0,
+      "kind": "generated",
+      "mode": "jit",
+      "exitCode": 0,
+      "expectedCount": 4000000,
+      "stdout": "RESULT 4000000\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 0,
+      "kind": "generated",
+      "mode": "aot",
+      "exitCode": 0,
+      "expectedCount": 4000000,
+      "stdout": "RESULT 4000000\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 18,
+      "kind": "static",
+      "mode": "jit",
+      "exitCode": 0,
+      "expectedCount": 2550000,
+      "stdout": "RESULT 2550000\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 18,
+      "kind": "static",
+      "mode": "aot",
+      "exitCode": 0,
+      "expectedCount": 2550000,
+      "stdout": "RESULT 2550000\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 18,
+      "kind": "generated",
+      "mode": "jit",
+      "exitCode": 0,
+      "expectedCount": 2550000,
+      "stdout": "RESULT 2550000\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 18,
+      "kind": "generated",
+      "mode": "aot",
+      "exitCode": 0,
+      "expectedCount": 2550000,
+      "stdout": "RESULT 2550000\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 29,
+      "kind": "static",
+      "mode": "jit",
+      "exitCode": 0,
+      "expectedCount": 1275000,
+      "stdout": "RESULT 1275000\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 29,
+      "kind": "static",
+      "mode": "aot",
+      "exitCode": 0,
+      "expectedCount": 1275000,
+      "stdout": "RESULT 1275000\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 29,
+      "kind": "generated",
+      "mode": "jit",
+      "exitCode": 0,
+      "expectedCount": 1275000,
+      "stdout": "RESULT 1275000\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 29,
+      "kind": "generated",
+      "mode": "aot",
+      "exitCode": 0,
+      "expectedCount": 1275000,
+      "stdout": "RESULT 1275000\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 61,
+      "kind": "static",
+      "mode": "jit",
+      "exitCode": 0,
+      "expectedCount": 0,
+      "stdout": "RESULT 0\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 61,
+      "kind": "static",
+      "mode": "aot",
+      "exitCode": 0,
+      "expectedCount": 0,
+      "stdout": "RESULT 0\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 61,
+      "kind": "generated",
+      "mode": "jit",
+      "exitCode": 0,
+      "expectedCount": 0,
+      "stdout": "RESULT 0\n",
+      "matchesOracle": true
+    },
+    {
+      "minimumAge": 61,
+      "kind": "generated",
+      "mode": "aot",
+      "exitCode": 0,
+      "expectedCount": 0,
+      "stdout": "RESULT 0\n",
+      "matchesOracle": true
+    }
+  ],
+  "upstreamHarness": {
+    "baseRevision": "418fda419afcb6dad58e1bc85f3ccbb7911c99ed",
+    "nodeVersion": "v24.14.1",
+    "options": {
+      "runs": 5,
+      "warmup": 1,
+      "rssRuns": 1,
+      "timeout": 10,
+      "buildTimeout": 300,
+      "memLimitMb": 4096
+    },
+    "benches": {
+      "60-validator-static.ts": {
+        "file": "60-validator-static.ts",
+        "sourceBytes": 1296,
+        "runners": {
+          "node": {
+            "mode": "interpreted",
+            "label": "Node.js",
+            "version": "v24.14.1",
+            "artifactKind": null,
+            "sourcePolicy": null,
+            "sourceMode": null,
+            "toolchain": null,
+            "status": "ok",
+            "output": "2550000",
+            "checkMs": 50.766542,
+            "checkPeakRssKb": 0,
+            "matchesReference": true,
+            "time": {
+              "min": 48.793791,
+              "max": 52.673583,
+              "mean": 50.1660832,
+              "median": 49.008417,
+              "stddev": 1.777979037875644,
+              "runs": 5
+            },
+            "maxRssKb": 76080
+          }
+        },
+        "reference": {
+          "version": "v24.14.1",
+          "output": "2550000"
+        }
+      },
+      "61-validator-generated.ts": {
+        "file": "61-validator-generated.ts",
+        "sourceBytes": 1315,
+        "runners": {
+          "node": {
+            "mode": "interpreted",
+            "label": "Node.js",
+            "version": "v24.14.1",
+            "artifactKind": null,
+            "sourcePolicy": null,
+            "sourceMode": null,
+            "toolchain": null,
+            "status": "ok",
+            "output": "2550000",
+            "checkMs": 49.028625,
+            "checkPeakRssKb": 0,
+            "matchesReference": true,
+            "time": {
+              "min": 48.358375,
+              "max": 54.057625,
+              "mean": 51.210024999999995,
+              "median": 51.289375,
+              "stddev": 2.427708002856192,
+              "runs": 5
+            },
+            "maxRssKb": 76240
+          }
+        },
+        "reference": {
+          "version": "v24.14.1",
+          "output": "2550000"
+        }
+      }
+    },
+    "method": "Actual upstream harness, Node-only. Distinct timing method from the Bun comparison; do not compare these medians across harnesses."
+  },
+  "portableRuntimeReproduction": {
+    "startedAt": "2026-10-31T15:54:22.569208+00:00",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "bunRevision": "1.4.4-canary.1+06888611e",
+    "bunSha256": "6f3f644be027638c560bad1e728cfb0bf3cb7b2c40dca2acbdf03c757090c834",
+    "control": "runtime-threshold",
+    "method": "One discarded whole-process warmup, then five rotated-order fresh-process wall times per executable; startup included, ambient OS load uncontrolled.",
+    "sourceSha256": {
+      "60-validator-static.ts": "9f27b3f36a22038ed1dd5ec1f3850314dc990fe1d9cd411ecef126c5048546e4",
+      "61-validator-generated.ts": "fd38f8c187d4b3e9da94077c4e0f4bf0e1032ff01ec97dfa3b3660cb2ac141db"
+    },
+    "rows": [
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.7505580830038525,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.304301124997437,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.7432708749547601,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.5533040419686586,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.019252291996963322,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.02438312501180917,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.24010162497870624,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.025127750006504357,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.024345999991055578,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.24273258302127942,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.024562249949667603,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.01840129104675725,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.24500979197910056,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.02639224997255951,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.01829745899885893,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.02480945800198242,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.024552499991841614,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.019011499942280352,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.022918500006198883,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.24528937501600012,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.019457290996797383,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.025553208019118756,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.24670312501257285,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.025740290991961956,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      }
+    ],
+    "inputControls": [
+      {
+        "threshold": 0,
+        "kind": "static",
+        "mode": "jit",
+        "expected": 4000000,
+        "returncode": 0,
+        "stdout": "RESULT 4000000\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 0,
+        "kind": "static",
+        "mode": "aot",
+        "expected": 4000000,
+        "returncode": 0,
+        "stdout": "RESULT 4000000\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 0,
+        "kind": "generated",
+        "mode": "jit",
+        "expected": 4000000,
+        "returncode": 0,
+        "stdout": "RESULT 4000000\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 0,
+        "kind": "generated",
+        "mode": "aot",
+        "expected": 4000000,
+        "returncode": 0,
+        "stdout": "RESULT 4000000\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 18,
+        "kind": "static",
+        "mode": "jit",
+        "expected": 2550000,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 18,
+        "kind": "static",
+        "mode": "aot",
+        "expected": 2550000,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 18,
+        "kind": "generated",
+        "mode": "jit",
+        "expected": 2550000,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 18,
+        "kind": "generated",
+        "mode": "aot",
+        "expected": 2550000,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 29,
+        "kind": "static",
+        "mode": "jit",
+        "expected": 1275000,
+        "returncode": 0,
+        "stdout": "RESULT 1275000\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 29,
+        "kind": "static",
+        "mode": "aot",
+        "expected": 1275000,
+        "returncode": 0,
+        "stdout": "RESULT 1275000\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 29,
+        "kind": "generated",
+        "mode": "jit",
+        "expected": 1275000,
+        "returncode": 0,
+        "stdout": "RESULT 1275000\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 29,
+        "kind": "generated",
+        "mode": "aot",
+        "expected": 1275000,
+        "returncode": 0,
+        "stdout": "RESULT 1275000\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 61,
+        "kind": "static",
+        "mode": "jit",
+        "expected": 0,
+        "returncode": 0,
+        "stdout": "RESULT 0\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 61,
+        "kind": "static",
+        "mode": "aot",
+        "expected": 0,
+        "returncode": 0,
+        "stdout": "RESULT 0\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 61,
+        "kind": "generated",
+        "mode": "jit",
+        "expected": 0,
+        "returncode": 0,
+        "stdout": "RESULT 0\n",
+        "stderr": "",
+        "matchesOracle": true
+      },
+      {
+        "threshold": 61,
+        "kind": "generated",
+        "mode": "aot",
+        "expected": 0,
+        "returncode": 0,
+        "stdout": "RESULT 0\n",
+        "stderr": "",
+        "matchesOracle": true
+      }
+    ],
+    "medians": {
+      "static-jit": 0.025127750006504357,
+      "static-aot": 0.019011499942280352,
+      "generated-jit": 0.02438312501180917,
+      "generated-aot": 0.24500979197910056
+    },
+    "completedAt": "2026-10-31T15:54:28.659598+00:00"
+  },
+  "portableLiteralReproduction": {
+    "startedAt": "2026-10-31T15:55:28.476211+00:00",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "bunRevision": "1.4.4-canary.1+06888611e",
+    "bunSha256": "6f3f644be027638c560bad1e728cfb0bf3cb7b2c40dca2acbdf03c757090c834",
+    "control": "literal",
+    "method": "One discarded whole-process warmup, then five rotated-order fresh-process wall times per executable; startup included, ambient OS load uncontrolled.",
+    "sourceSha256": {
+      "60-validator-static.ts": "d49640d3ec86954cbfb70c0ea252b2fa9da4ce78cf2ead83cbff070ae31ecd08",
+      "61-validator-generated.ts": "c972f3bfc49ec9538e09d8c3b0b4cfbefe2a7356e28daf6baf7edae7c1d8fe80"
+    },
+    "rows": [
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.8291480840416625,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.4005943749798462,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.7429217910394073,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 0,
+        "warmup": true,
+        "seconds": 0.39149191696196795,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.023594625003170222,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.026139624998904765,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.01823029201477766,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 1,
+        "warmup": false,
+        "seconds": 0.02328962500905618,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.022617625014390796,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.017103624995797873,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.023431708046700805,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 2,
+        "warmup": false,
+        "seconds": 0.01739566703327,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.01741287502227351,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.023794625012669712,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.017165500030387193,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 3,
+        "warmup": false,
+        "seconds": 0.022180583968292922,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.02466154203284532,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.01735308300703764,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.022435916995164007,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 4,
+        "warmup": false,
+        "seconds": 0.017185708973556757,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "aot",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.017148999962955713,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "jit",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.024454709026031196,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "generated",
+        "mode": "aot",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.018122042005416006,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      },
+      {
+        "kind": "static",
+        "mode": "jit",
+        "repetition": 5,
+        "warmup": false,
+        "seconds": 0.02401529101189226,
+        "returncode": 0,
+        "stdout": "RESULT 2550000\n",
+        "stderr": "",
+        "oracleMatches": true
+      }
+    ],
+    "inputControls": [],
+    "medians": {
+      "static-jit": 0.023794625012669712,
+      "static-aot": 0.01735308300703764,
+      "generated-jit": 0.022617625014390796,
+      "generated-aot": 0.01741287502227351
+    },
+    "completedAt": "2026-10-31T15:55:32.097207+00:00"
+  }
+}
