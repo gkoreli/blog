@@ -6,6 +6,8 @@ import {CENSUS_SQL as BASE_CENSUS, METHODS_SQL, CONTEXT_SQL, EVENT_CUTOFF as OLD
 import {referralRulesJson} from '../../analytics/.test-dist/referral-sql.js';
 import {ACTIVE_REFERRAL_POLICY} from '../../analytics/.test-dist/referral-policy.generated.js';
 import {fetchMetadataReportCtes,fetchMetadataReportProjectionSql,decodeFetchMetadataRows} from '../../analytics/.test-dist/fetch-metadata-report.js';
+import {assessStoredNetworkAssignment,networkAssignmentJsonStateSql,NETWORK_ASSIGNMENT_PROFILE,NETWORK_ASSIGNMENT_STATES,NETWORK_ASSIGNMENT_REASONS} from '../../analytics/.test-dist/vendor-declaration-assessment.js';
+import {vendorNetworkStateSql} from '../../analytics/.test-dist/vendor-network-summary.js';
 
 export const PLAN={maximumRows:1024,maximumRowSourceBytes:16384,maximumSourceBytes:2000000,maximumProductionStatements:2,attemptsPerStatement:1,readReviewThresholdPerStatement:10000,databaseEnforcedReadCap:false};
 export const EVENT_CUTOFF='2026-10-29 16:47:57';
@@ -69,9 +71,32 @@ const prefix=CENSUS_SQL.slice(0,CENSUS_SQL.indexOf('facts AS MATERIALIZED'));
 const included=`is_owner=0 AND NOT EXISTS(SELECT 1 FROM owner_clients WHERE owner_clients.daily_client_id=bounded.daily_client_id) AND NOT COALESCE(referrer_host IN (SELECT original FROM abusive_hosts),0)`;
 function metadataSql(selection){return prefix+`included AS MATERIALIZED (SELECT * FROM bounded${selection==='included'?' WHERE '+included:''}),${fetchMetadataReportCtes()} SELECT COUNT(*) AS rows,(${fetchMetadataReportProjectionSql()}) AS payload FROM included`}
 const knownSources=new Set(['edge','beacon']);
+const networkExpression=vendorNetworkStateSql();
+// The public report supplies a guarded JSON relation. This older offline census
+// reads raw exported text instead; keep malformed input as explicit unknown data.
+const safeDiagnosticSql=sql=>sql.includes(networkExpression)?once(sql,networkExpression,
+ `CASE WHEN vendor_ip_evidence IS NOT NULL AND NOT json_valid(vendor_ip_evidence) THEN 'unrecognized' ELSE (${networkExpression}) END`):sql;
+const ASSIGNMENT_INPUT_SQL=`SELECT CAST(id AS TEXT) AS private_reference,
+ classification_evidence,vendor_ip_evidence,classifier_version,
+ ${networkAssignmentJsonStateSql('classification_evidence')} AS classification_json_state,
+ ${networkAssignmentJsonStateSql('vendor_ip_evidence')} AS network_json_state
+ FROM page_observations WHERE id>CAST(? AS INTEGER) AND id<=CAST(? AS INTEGER) ORDER BY id`;
+function assignmentSummary(rows){
+ const states=Object.fromEntries(NETWORK_ASSIGNMENT_STATES.map(state=>[state,0]));
+ const reasons=Object.fromEntries(NETWORK_ASSIGNMENT_REASONS.map(reason=>[reason,0]));
+ const cohorts=new Map();
+ for(const row of rows){
+  const a=row.networkAssignment;states[a.state]++;
+  for(const reason of a.reasons)reasons[reason]++;
+  const facts={classifierProfile:a.classifierProfile,networkProfile:a.networkProfile,structuralState:row.network_state,assignmentState:a.state,reasons:a.reasons};
+  const key=JSON.stringify(facts),old=cohorts.get(key);if(old)old.rows++;else cohorts.set(key,{...facts,rows:1});
+ }
+ assert.equal(Object.values(states).reduce((n,v)=>n+v,0),rows.length);
+ return{rows:rows.length,states,reasons,cohorts:[...cohorts.values()].sort((a,b)=>JSON.stringify(a).localeCompare(JSON.stringify(b)))};
+}
 export async function analyze(db,rows,lower,upper){
  exactId(lower);exactId(upper);const parameters=[lower,upper,referralRulesJson(ACTIVE_REFERRAL_POLICY)];
- const meters=[];const run=async sql=>{const result=await db.prepare(sql).bind(...parameters).all();meters.push({rowsRead:result.meta.rows_read,rowsWritten:result.meta.rows_written});return result};
+ const meters=[];const run=async sql=>{const result=await db.prepare(safeDiagnosticSql(sql)).bind(...parameters).all();meters.push({rowsRead:result.meta.rows_read,rowsWritten:result.meta.rows_written});return result};
  const census=validateAggregate('census',(await run(CENSUS_SQL)).results);assert.equal(census.totals.rows,rows.length);
  const methods=validateAggregate('methods',(await run(METHODS_SQL)).results),context=validateAggregate('context',(await run(CONTEXT_SQL)).results);
  assert.equal(methods.reduce((n,r)=>n+r.views,0),rows.length);
@@ -86,6 +111,18 @@ export async function analyze(db,rows,lower,upper){
  const metadata={};for(const scope of ['raw','included']){
   const result=await run(metadataSql(scope));assert.equal(result.results.length,1);const raw=result.results[0];assert.equal(raw.rows,scope==='raw'?rows.length:selected.length);metadata[scope]=decodeFetchMetadataRows(JSON.parse(raw.payload),raw.rows);
  }
+ // Local analysis only: the existing production export already retains these
+ // fields. IDs and raw strings must match the supplied snapshot before decoding.
+ const guarded=await db.prepare(ASSIGNMENT_INPUT_SQL).bind(lower,upper).all();
+ meters.push({rowsRead:guarded.meta.rows_read,rowsWritten:guarded.meta.rows_written});
+ assert.equal(guarded.results.length,rows.length);
+ for(const [i,guard]of guarded.results.entries()){
+  const input=rows[i],row=assessments[i];assert.equal(guard.private_reference,input.id);assert.equal(row.private_reference,input.id);
+  assert.ok(guard.classification_evidence===input.classification_evidence&&guard.vendor_ip_evidence===input.vendor_ip_evidence&&guard.classifier_version===input.classifier_version,'Local assignment fields differ from supplied rowset');
+  row.networkAssignment=assessStoredNetworkAssignment({classificationJson:guard.classification_evidence,networkJson:guard.vendor_ip_evidence,storedClassifier:guard.classifier_version,
+   classificationJsonState:guard.classification_json_state,networkJsonState:guard.network_json_state});
+ }
+ const networkAssignments={profile:NETWORK_ASSIGNMENT_PROFILE,raw:assignmentSummary(assessments),included:assignmentSummary(selected)};
  const sourceCounts=selectedRows=>{const out={};for(const row of selectedRows){const source=rows.find(input=>input.id===row.private_reference).observation_source;const key=source===null?'not-recorded':knownSources.has(source)?source:'unrecognized';out[key]=(out[key]??0)+1}return out};
- return{census,methods,context,summary,metadata,observationSources:{raw:sourceCounts(assessments),included:sourceCounts(selected)},assessments,localMeters:meters};
+ return{census,methods,context,summary,metadata,networkAssignments,observationSources:{raw:sourceCounts(assessments),included:sourceCounts(selected)},assessments,localMeters:meters};
 }

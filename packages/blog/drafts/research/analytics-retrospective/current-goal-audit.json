@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T09:41:46.892682+00:00",
-  "sourceBaseline": "2f465ad994dbf003ccaf7e7a4be2e0d326e78ee0",
+  "checkedAt": "2026-10-31T10:19:00.776417+00:00",
+  "sourceBaseline": "733a56901aacab0331e8d9d08c3b1cb2975ff537",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "afe2289/2f465ad repaired GoogleOther declarations/network methods and accepted native source activation."
+    "scope": "b737e6a/733a569 repaired CloudVertex network evidence and accepted native activation."
   },
-  "scope": "CloudVertex documented website/application-indexing role, added common-network method, versioned source widths/cache report and actual local collector persistence.",
+  "scope": "Offline retained declaration/network-source assignment consistency, guarded decoding and concise retrospective update; no public report or collector runtime change.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -24,7 +24,8 @@
     "statsReportCache": "2026-10-31.6",
     "offlineResourceReach": "2026-10-31.1",
     "offlineAccessEvidence": "2026-10-31.2",
-    "vendorIp": "2026-10-31.2"
+    "vendorIp": "2026-10-31.2",
+    "offlineNetworkAssignment": "2026-10-31.1"
   },
   "sourceSha256": {
     "classify.ts": "994c1f2b6f07c6e112723b8fb4d9aef28dff9607a0dca73e8e5f019357fc62ae",
@@ -45,7 +46,9 @@
     "resource-reach.ts": "a2d5341e3870a902be4c740f308aadd55ff166f4b48277de352ce75383d32718",
     "access-evidence.ts": "7422813c2d32af9ab0358ffc96d1bad45e6218d6bc8d056ef4c3af32ef68c1e4",
     "stats.ts": "2a0a57c81d1358750ec205a4fd3cac1b5dc564bf699bcdca05cf27136da9fdb4",
-    "dates.ts": "f334e2087231b06aa183f927b689da5f0afa011ebf1e9d7001297025c0bee723"
+    "dates.ts": "f334e2087231b06aa183f927b689da5f0afa011ebf1e9d7001297025c0bee723",
+    "vendor-declaration-assessment.ts": "9d59ec53a9f7d73800a9592fa589e315f3c28f415f1b943d0b978a9da6d9cb0f",
+    "vendor-declaration-profiles.ts": "b17cb800260c9bdc147e2d88e96d56f497c7dc4b5d4d430960f41c4461c7fadc"
   },
   "requirements": [
     {
@@ -58,7 +61,9 @@
         "classification-evidence.ts",
         "signature-summary.ts",
         "native-bot-evidence.ts",
-        "access-evidence.ts"
+        "access-evidence.ts",
+        "vendor-declaration-assessment.ts",
+        "vendor-declaration-profiles.ts"
       ],
       "evidence": [
         "90-fetch-metadata-parsing-and-evidence.md",
@@ -72,9 +77,11 @@
         "../discovery-experiment-02/retained-control-checks.json",
         "../discovery-experiment-02/06-public-report-integrity.md",
         "../discovery-experiment-02/report-integrity-checks.json",
-        "../discovery-experiment-02/report-integrity-release.json"
+        "../discovery-experiment-02/report-integrity-release.json",
+        "../discovery-experiment-02/10-retained-network-assignment-consistency.md",
+        "../discovery-experiment-02/network-assignment-checks.json"
       ],
-      "limit": "Missing, unsupported, conflicting and native unavailable values stay distinct. This does not prove human accuracy or managed-verifier agreement."
+      "limit": "Missing, unsupported, conflicting and native unavailable values stay distinct. This does not prove human accuracy or managed-verifier agreement. Offline assignment consistency now distinguishes supported contradictions from missing/invalid/unsupported inputs using reviewed historical maps; synthetic acceptance does not establish production incidence or vendor identity."
     },
     {
       "id": "name-matching",
@@ -119,7 +126,9 @@
       "source": [
         "webbotauth.ts",
         "native-bot-evidence.ts",
-        "directory-response-audit.ts"
+        "directory-response-audit.ts",
+        "vendor-declaration-assessment.ts",
+        "vendor-declaration-profiles.ts"
       ],
       "evidence": [
         "76-native-bot-signals-and-public-diagnostic.md",
@@ -136,9 +145,11 @@
         "../discovery-experiment-02/08-googleother-declarations-and-network-evidence.md",
         "../discovery-experiment-02/googleother-checks.json",
         "../discovery-experiment-02/09-cloudvertex-indexing-and-method-boundaries.md",
-        "../discovery-experiment-02/cloudvertex-checks.json"
+        "../discovery-experiment-02/cloudvertex-checks.json",
+        "../discovery-experiment-02/10-retained-network-assignment-consistency.md",
+        "../discovery-experiment-02/network-assignment-checks.json"
       ],
-      "limit": "Selected syntax/crypto conditions have exact Node/workerd and independent Structured Field syntax evidence. Profile .31.2 repairs decimal and semicolon-SP compatibility; this does not establish complete grammar/draft conformance, native managed agreement or actual vendor frequency. No accepted request-level signedAgent oracle or eligible controlled identity exists. The response-advisory runtime no-adoption decision remains closed. GoogleOther now has a documented shared network method and synthetic local/native acceptance; actual vendor request and managed native-verdict comparison are unmeasured. CloudVertex gains a documented generally-used common-crawler network method, with synthetic actual collector acceptance; no request-level source purpose or signing promise is established."
+      "limit": "Selected syntax/crypto conditions have exact Node/workerd and independent Structured Field syntax evidence. Profile .31.2 repairs decimal and semicolon-SP compatibility; this does not establish complete grammar/draft conformance, native managed agreement or actual vendor frequency. No accepted request-level signedAgent oracle or eligible controlled identity exists. The response-advisory runtime no-adoption decision remains closed. GoogleOther now has a documented shared network method and synthetic local/native acceptance; actual vendor request and managed native-verdict comparison are unmeasured. CloudVertex gains a documented generally-used common-crawler network method, with synthetic actual collector acceptance; no request-level source purpose or signing promise is established. Offline assignment consistency now distinguishes supported contradictions from missing/invalid/unsupported inputs using reviewed historical maps; synthetic acceptance does not establish production incidence or vendor identity."
     },
     {
       "id": "labelled-errors-and-abstentions",
@@ -149,9 +160,10 @@
       ],
       "evidence": [
         "113-fresh-current-production-calibration.md",
-        "current-production-calibration.json"
+        "current-production-calibration.json",
+        "../discovery-experiment-02/network-assignment-checks.json"
       ],
-      "limit": "The separate October30 production cohort has twelve known automation controls, three correct decisions and nine abstentions. It has zero human labels. This corrects the older claim that no fresh production automation cohort exists; it does not establish accuracy for the current deployment or the population."
+      "limit": "The separate October30 production cohort has twelve known automation controls, three correct decisions and nine abstentions. It has zero human labels. This corrects the older claim that no fresh production automation cohort exists; it does not establish accuracy for the current deployment or the population. Sixty-two synthetic assignment fixtures are separate software controls, not additional calibration trials or a population error rate."
     },
     {
       "id": "measurement-history",
@@ -227,15 +239,17 @@
     {
       "id": "engineering-article",
       "requirement": "Deliver a concise retrospective with inspectable evidence and cross-references",
-      "status": "updated-source-activated-served-content-pending",
+      "status": "updated-source-locally-accepted-activation-pending",
       "evidence": [
         "111-weekly-history-in-the-retrospective.md",
         "weekly-history-article-release.json",
         "../discovery-experiment-02/06-public-report-integrity.md",
         "../discovery-experiment-02/report-integrity-checks.json",
-        "../discovery-experiment-02/report-integrity-release.json"
+        "../discovery-experiment-02/report-integrity-release.json",
+        "../discovery-experiment-02/10-retained-network-assignment-consistency.md",
+        "../discovery-experiment-02/network-assignment-checks.json"
       ],
-      "limit": "1429-word/33-prompt source is locally accepted and its exact source activation is accepted. Prior1379/32 served publication remains dated; no new served-content or reader outcome claim."
+      "limit": "1,437-word/33-prompt source is locally accepted; this iteration adds eight words and no human prompt. New source activation and served-content acceptance remain separate from prior dated receipts."
     },
     {
       "id": "offline-search-evidence",
@@ -297,15 +311,16 @@
   },
   "article": {
     "source": "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md",
-    "sourceSha256": "85d3d022262eac6a129d9cf31ce385ad7e65037561d64a0fdb8b7fdf5c45c452",
+    "sourceSha256": "fbd4f3d2c123e3775686a0171e235f0bdadf37ec4a9f741128228986e9c93907",
     "matchesAcceptedSource": false,
     "acceptedReceipt": "weekly-history-article-release.json",
     "freshServedCheck": false,
-    "previousAcceptedSourceSha256": "b22116595f06ab41f0ca83575f577f7e981fe12843775bdc5093cfbe0efad595",
-    "currentWords": 1429,
+    "previousAcceptedSourceSha256": "85d3d022262eac6a129d9cf31ce385ad7e65037561d64a0fdb8b7fdf5c45c452",
+    "currentWords": 1437,
     "currentHumanPrompts": 33,
-    "currentLocalAcceptanceReceipt": "../discovery-experiment-02/report-integrity-checks.json",
-    "sourceActivationReceipt": "../discovery-experiment-02/report-integrity-release.json"
+    "currentLocalAcceptanceReceipt": "../discovery-experiment-02/network-assignment-checks.json",
+    "sourceActivationReceipt": "../discovery-experiment-02/report-integrity-release.json",
+    "currentSourceActivationPending": true
   },
   "unresolvedInputs": [
     {
@@ -346,14 +361,14 @@
     }
   ],
   "effectsThisAudit": {
-    "runtimeChanged": true,
+    "runtimeChanged": false,
     "clientChanged": false,
-    "collectorClassifierVerifierSchemaChanged": true,
+    "collectorClassifierVerifierSchemaChanged": false,
     "accountOrSecurityChanges": false,
     "rawCollectionActivated": false,
-    "articleChanged": false,
-    "articleChangedByThisWork": false,
-    "sourceActivationMeasured": true,
+    "articleChanged": true,
+    "articleChangedByThisWork": true,
+    "sourceActivationMeasured": false,
     "servedDestinationAcceptance": false,
     "privacyDisclosureChanged": false,
     "productionRequests": 0,
@@ -361,24 +376,25 @@
     "newHumanLabels": 0,
     "newCalibrationTrials": 0,
     "newModelTrialsOrRegrades": 0,
-    "reportRuntimeChanged": true,
+    "reportRuntimeChanged": false,
     "productionSiteRequests": 0,
     "nativeMatchingSecurityEventsObserved": 0,
     "newRegisteredCalibrationTrials": 0,
     "newControlledAnswerTrials": 0,
     "classifierChanged": false,
     "collectionSchemaVerifierChanged": false,
-    "collectorNetworkMethodChanged": true
+    "collectorNetworkMethodChanged": false,
+    "offlineAnalyzerChanged": true
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: CloudVertex method and indexing scope repaired; versioned history bounds, exact Node/native controls and actual local collector writes accepted; exact source activation accepted",
+    "thisTurnClassification": "progress: offline retained assignment check, guard binding and malformed-row retention accepted; article locally updated",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Inspect whether separately retained classification facts can cross-check network source/count assignments without inventing historical evidence or expanding collection. Preserve all six external input gates; no production-data retry, repeated accepted fixtures or documentation-only activation chase.",
+  "nextBoundedAction": "Decide whether public reports should adopt retained assignment checks using retained coverage and native query-cost evidence; public adoption remains proposed. Preserve all six external input gates, closed advisory no-adoption and deferred human trials; no production-data retry or repeated accepted controls.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -404,12 +420,11 @@
     "scopeAfterOwnerContinuation": "Historical checkpoint for missing measurement inputs; not a prohibition on independent implementation, observed agent growth or discovery work."
   },
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
-  "goalStatusScope": "Persistent goal active/incomplete. Documented method, public scope and controlled collector/report behavior improved; real source task, readership/growth, human/native managed accuracy and privacy acceptance remain unproven.",
+  "goalStatusScope": "Persistent goal active/incomplete. Retained assignment contradictions and unknowns now have a guarded offline assessment; real incidence, source task, readership/demand/growth, human/native managed accuracy and privacy acceptance retain their evidence gaps.",
   "latestContinuation": {
-    "research": "../discovery-experiment-02/09-cloudvertex-indexing-and-method-boundaries.md",
-    "receipt": "../discovery-experiment-02/cloudvertex-checks.json",
-    "nextBoundedAction": "Inspect whether separately retained classification facts can cross-check network source/count assignments without inventing historical evidence or expanding collection. Preserve all six external input gates; no production-data retry, repeated accepted fixtures or documentation-only activation chase.",
-    "release": "../discovery-experiment-02/cloudvertex-release.json"
+    "research": "../discovery-experiment-02/10-retained-network-assignment-consistency.md",
+    "receipt": "../discovery-experiment-02/network-assignment-checks.json",
+    "nextBoundedAction": "Decide whether public reports should adopt retained assignment checks using retained coverage and native query-cost evidence; public adoption remains proposed. Preserve all six external input gates, closed advisory no-adoption and deferred human trials; no production-data retry or repeated accepted controls."
   },
   "latestAcceptedSourceActivation": {
     "sourceCommit": "b737e6ad4ce298f7a4103ce7f023eb36d03d09a6",

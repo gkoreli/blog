@@ -12,6 +12,7 @@
     "./client-form": "./src/client-form.ts",
     "./vendor-cache-summary": "./src/vendor-cache-report-contract.ts",
     "./vendor-network-summary": "./src/vendor-network-summary.ts",
+    "./vendor-declaration-assessment": "./src/vendor-declaration-assessment.ts",
     "./signature-summary": "./src/signature-summary.ts",
     "./signature-basis": "./src/signature-basis.ts",
     "./verifier-profile": "./src/verifier-profile.ts",

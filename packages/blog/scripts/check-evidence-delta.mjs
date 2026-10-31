@@ -26,6 +26,10 @@ try{
  assert.deepEqual(exported,synthetic);assert.deepEqual((await db.prepare(prepare('export','0',pre.upperId)).all()).results,exported);
  assert.deepEqual(await db.prepare(prepare('preflight','0')).first(),pre);
  const direct=await analyze(db,exported,'0',pre.upperId);
+ for(const field of ['classification_evidence','vendor_ip_evidence','classifier_version']){
+  const changed=structuredClone(exported);changed[0][field]='private-canary-mismatched-field';
+  await assert.rejects(analyze(db,changed,'0',pre.upperId),error=>error.message==='Local assignment fields differ from supplied rowset');
+ }
  const frozen=await nativeDatabase();try{
   await loadRows(frozen.db,exported);const replay=await analyze(frozen.db,exported,'0',pre.upperId);
   const{localMeters:one,...a}=direct,{localMeters:two,...b}=replay;assert.deepEqual(a,b);

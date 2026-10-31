@@ -1,0 +1,107 @@
+{
+  "checkedAt": "2026-10-31T10:19:45.663Z",
+  "baseline": "733a56901aacab0331e8d9d08c3b1cb2975ff537",
+  "node": "v24.14.1",
+  "nodeSqliteVersion": "3.51.2",
+  "nativeSqliteVersion": null,
+  "nativeSqliteVersionState": "not-exposed",
+  "fixtureCases": 62,
+  "exactNodeWorkerdD1Agreement": true,
+  "matrixBundleSha256": "a19cf40a5923373568f01a911f06cdae83e9d4949b8bff9388ab89de26f5a501",
+  "analyzerRawRows": 10,
+  "analyzerIncludedRows": 7,
+  "priorAnalyzerFieldsIdenticalForParseableRows": 9,
+  "malformedRowRetained": true,
+  "productionExportAndPlanIdentical": true,
+  "guardBindingMismatchControls": 3,
+  "collectorEntryBundleIdentical": true,
+  "collectorEntryBundleSha256": "03b798dcdc29a4e1b4bad242c7fdafdfcf883b90aeb93793359cb41bb9637414",
+  "productionRequests": 0,
+  "productionSqlStatements": 0,
+  "newHumanLabels": 0,
+  "profile": "retained-network-assignment-acceptance-v1",
+  "sourceSha256": {
+    "packages/analytics/package.json": "3aff9ba5186264769af6ff25c77ed27d185e748acf598eae0d8d1bf780d85c07",
+    "packages/blog/scripts/evidence-delta.mjs": "bcafff42fe5d017e0b4d2e7163b020c502210020358158994b1dc2144f52d31d",
+    "packages/analytics/src/vendor-declaration-profiles.ts": "b17cb800260c9bdc147e2d88e96d56f497c7dc4b5d4d430960f41c4461c7fadc",
+    "packages/analytics/src/vendor-declaration-assessment.ts": "9d59ec53a9f7d73800a9592fa589e315f3c28f415f1b943d0b978a9da6d9cb0f",
+    "packages/analytics/test/network-assignment.test.mjs": "6f167799dde4ffb4766dca5b54083353c289df980b36971c5ee1d01eea20d279",
+    "packages/analytics/test/fixtures/network-assignment.mjs": "a9cecac4ef909320804153bd94134c6ef2b03ea712d265269f6d0bd0bb28035c",
+    "packages/blog/scripts/check-evidence-delta.mjs": "eb199b4b80725d04a1b4601ecdccfe149f73b166009adfd830696b998910cf6d",
+    "packages/blog/scripts/check-network-assignment.mjs": "a3c83cc46b2cd57247dbf503330d02aac3dc36c3a9ab833f4749b5e5fa461e57",
+    "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "fbd4f3d2c123e3775686a0171e235f0bdadf37ec4a9f741128228986e9c93907"
+  },
+  "historyReceipt": "network-assignment-history.json",
+  "checks": {
+    "analyticsTests": 381,
+    "siteTests": 169,
+    "workspaceTypes": true,
+    "markdownFilesValidated": 27,
+    "isolatedPostsBuilt": 38,
+    "existingAnalyzerFixtures": 64,
+    "transportNegativeControls": 17
+  },
+  "article": {
+    "words": 1437,
+    "humanPrompts": 33,
+    "promptByteIdenticalToBaseline": true,
+    "sourceSha256": "fbd4f3d2c123e3775686a0171e235f0bdadf37ec4a9f741128228986e9c93907",
+    "builtHtmlSha256": "a8ed9c4bdd4969380a023d4dd2ad1ed9862b7b8061203647a35f7f754b6c856e",
+    "builtPromptHtmlSha256": "5c2c8980a920be8d639a2d874926a72ddd0036da90931a8e3c2913038041941e",
+    "newSyntheticLessonAndEvidenceLinkRendered": true,
+    "servedContentChecked": false
+  },
+  "syntheticAssignmentPartitions": {
+    "raw": {
+      "consistent": 3,
+      "contradictory": 4,
+      "notAssessed": 3
+    },
+    "included": {
+      "consistent": 3,
+      "contradictory": 1,
+      "notAssessed": 3
+    },
+    "ownerExcluded": 2,
+    "referralExcluded": 1
+  },
+  "localScale": {
+    "rows": 1024,
+    "preflightReads": 1024,
+    "exportReads": 1060,
+    "productionStyleCaptureReads": 2084,
+    "localAssessmentReads": 144729,
+    "nativeRepeatedAssessmentComparisonReads": 62825,
+    "comparisonScope": "Same fixed synthetic relation and preflight; three remote-style aggregate calculations versus one exported rowset with offline calculations. Not a measured production saving.",
+    "queryWrites": 0,
+    "sourceBytes": 1310960
+  },
+  "privateEvidence": {
+    "path": "packages/blog/worklog/analytics-evidence/2026-10-31-network-assignment",
+    "files": 100,
+    "manifestSha256": "38d2dbc468413c5719a89a045d0ad253110e490bc0e8e4b2125b191ca3477d69",
+    "allEntriesVerified": true
+  },
+  "preservedFailures": [
+    "ID-only guard binding could parse different caller JSON; repaired with exact raw-field binding and three mismatch refusals",
+    "Optional native sqlite_version() query rejected; version stays unavailable",
+    "Old private analyzer aborted on malformed network JSON; private guarded wrapper retains that row",
+    "Two mixed unsupported/reviewed classifier identifiers returned conflict; corrected support-before-conflict precedence",
+    "Local listener sandbox denial and harness output-directory omission; final native checks accepted after preparing directory/allowing localhost"
+  ],
+  "prototypeRevision": "Original 48-case and intermediate 60-case reason labels superseded by final 62-case matrix. Missing, invalid and unsupported bases remain separate from conflicts between supported values; no population denominator.",
+  "limits": {
+    "realCohortAssessed": false,
+    "productionIncidenceMeasured": false,
+    "publicReportRuntimeChanged": false,
+    "collectorRuntimeChanged": false,
+    "productionExportChanged": false,
+    "newHumanLabels": 0,
+    "newModelTrials": 0,
+    "feedRequests": 0,
+    "privacyPolicyChanged": false,
+    "sourceActivationMeasured": false,
+    "servedArticleMeasured": false,
+    "fullGoalComplete": false
+  }
+}

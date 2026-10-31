@@ -1,0 +1,177 @@
+{
+  "method": "Frozen Git source projections; not deployment, feed or request evidence",
+  "baseline": "733a56901aacab0331e8d9d08c3b1cb2975ff537",
+  "commitsInspected": 45,
+  "allProjectionsUniqueWithinRecordedProfile": true,
+  "allSelectedSourceHashesMatch": true,
+  "classifiers": [
+    {
+      "profile": "2026-10-31.1",
+      "commit": "afe2289105cb84b8c0b1498f93c89f087225c224",
+      "classifySha256": "95cc9f5fd26856f7b0cba3960fe577a070f035621f224542f0b1870c6b61d2ff",
+      "schema": "2026-10-29.2",
+      "canonicalNames": 51
+    },
+    {
+      "profile": "2026-10-29.3",
+      "commit": "84c4550772fa91a23c6f9371ba03270ef71783d5",
+      "classifySha256": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
+      "schema": "2026-10-29.2",
+      "canonicalNames": 51
+    },
+    {
+      "profile": "2026-10-29.2",
+      "commit": "2a0c19fdaa52b3a0b0419cea48445de25f1cd7c8",
+      "classifySha256": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
+      "schema": "2026-10-29.1",
+      "canonicalNames": 51
+    },
+    {
+      "profile": "2026-10-29.1",
+      "commit": "7793f1430587881da7e5dff33447b34aad956a9c",
+      "classifySha256": "cfa564fb095db1d5545e72baa1961ea627da4b24e540216969ae3e2c742ceb77",
+      "schema": "2026-10-27.2",
+      "canonicalNames": 49
+    },
+    {
+      "profile": "2026-10-27.5",
+      "commit": "f06e78c4caf74f9339abc55f0bf92798ecddb627",
+      "classifySha256": "de1420a8d401d5e643c3ce6fc5a534701da1a4ffe8af4868e54ce24ee473d6c1",
+      "schema": "2026-10-27.2",
+      "canonicalNames": 48
+    },
+    {
+      "profile": "2026-10-27.4",
+      "commit": "a8d88fb38a65141e291ffb52fc3c67349cc23732",
+      "classifySha256": "8a66baf13e2563cd68c16456e870a71ab6561cedd56e017ea36f830a8f7adc47",
+      "schema": "2026-10-27.2",
+      "canonicalNames": 48
+    },
+    {
+      "profile": "2026-10-27.2",
+      "commit": "87b381f48aad79218bfe3fbcf2cf4bc2ed2982aa",
+      "classifySha256": "778ed91b1fcb6dc92bf74e56d9d43d32721eed81d93dc1476e864f26fdb5338d",
+      "schema": "2026-10-27.2",
+      "canonicalNames": 47
+    },
+    {
+      "profile": "2026-10-26.3",
+      "commit": "d723a88a1a4053d80a21583e582ec72172083a4c",
+      "classifySha256": "9089e6562e7a7753135e3b47ec0d88da730d0068571b1e0d6636558c6e8016be",
+      "schema": null,
+      "canonicalNames": 45
+    },
+    {
+      "profile": "2026-10-26.2",
+      "commit": "9b9799c8953c05f0e02099b24f8d2bcd6f5d8266",
+      "classifySha256": "9089e6562e7a7753135e3b47ec0d88da730d0068571b1e0d6636558c6e8016be",
+      "schema": null,
+      "canonicalNames": 45
+    }
+  ],
+  "networks": [
+    {
+      "profile": "2026-10-31.2",
+      "commit": "b737e6ad4ce298f7a4103ce7f023eb36d03d09a6",
+      "sourceSha256": "c2b721f47e798f6fb8d1fd5d1f24beee401f07ed69af7cea7238b8724d64a91f",
+      "orderedSources": 16,
+      "configuredDeclarations": 19
+    },
+    {
+      "profile": "2026-10-31.1",
+      "commit": "afe2289105cb84b8c0b1498f93c89f087225c224",
+      "sourceSha256": "d669997b3f5d11de5649e53fd7e99418f0d9984f682618a25d41877bb98c0c2d",
+      "orderedSources": 16,
+      "configuredDeclarations": 18
+    },
+    {
+      "profile": "2026-10-30.1",
+      "commit": "2884b39d1a3657074c101c39fd32adbdefc83e3f",
+      "sourceSha256": "6b122f6e7610ac95edb9f4c9d38a05ab4577fb4c3a2c6a19377943bc6acab7ff",
+      "orderedSources": 16,
+      "configuredDeclarations": 17
+    },
+    {
+      "profile": "2026-10-29.2",
+      "commit": "2a0c19fdaa52b3a0b0419cea48445de25f1cd7c8",
+      "sourceSha256": "6b122f6e7610ac95edb9f4c9d38a05ab4577fb4c3a2c6a19377943bc6acab7ff",
+      "orderedSources": 16,
+      "configuredDeclarations": 17
+    },
+    {
+      "profile": "2026-10-29.1",
+      "commit": "2f202f462cb8a6a37df095f51daa13d1a8e701a8",
+      "sourceSha256": "5d3aac97ee42c0b294de9e6508c3528d62d80c5aeed7cb0410e0b842e1e344d9",
+      "orderedSources": 15,
+      "configuredDeclarations": 16
+    },
+    {
+      "profile": "2026-10-28.2",
+      "commit": "6fa9ac66750b78bd6a929b976c6fc696645a8fde",
+      "sourceSha256": "05b861a59106be5ba65e07f86fe2895f73b964074428b0d31d1f294b9cb99b02",
+      "orderedSources": 10,
+      "configuredDeclarations": 11
+    },
+    {
+      "profile": "2026-10-28.1",
+      "commit": "af9604835d3d424f4d931cd880db745d59ce3265",
+      "sourceSha256": "05b861a59106be5ba65e07f86fe2895f73b964074428b0d31d1f294b9cb99b02",
+      "orderedSources": 10,
+      "configuredDeclarations": 11
+    },
+    {
+      "profile": "2026-10-27.1",
+      "commit": "6124fab52d8013a619a1ed4a1239e3255dce4d7a",
+      "sourceSha256": "b1ab77976978e6873bdcca46515255fe5c659012fb3df976b0072bee82639d75",
+      "orderedSources": 8,
+      "configuredDeclarations": 9
+    }
+  ],
+  "reviewedProfilePairs": [
+    [
+      "2026-10-27.4",
+      "2026-10-27.1"
+    ],
+    [
+      "2026-10-27.5",
+      "2026-10-27.1"
+    ],
+    [
+      "2026-10-27.5",
+      "2026-10-28.1"
+    ],
+    [
+      "2026-10-27.5",
+      "2026-10-28.2"
+    ],
+    [
+      "2026-10-29.1",
+      "2026-10-29.1"
+    ],
+    [
+      "2026-10-29.2",
+      "2026-10-29.1"
+    ],
+    [
+      "2026-10-29.2",
+      "2026-10-29.2"
+    ],
+    [
+      "2026-10-29.3",
+      "2026-10-29.2"
+    ],
+    [
+      "2026-10-29.3",
+      "2026-10-30.1"
+    ],
+    [
+      "2026-10-31.1",
+      "2026-10-31.1"
+    ],
+    [
+      "2026-10-31.1",
+      "2026-10-31.2"
+    ]
+  ],
+  "interpretation": "Seven supported classifier profiles use three formats. The two earlier profiles have no retained declaration schema and remain unassessed. New or unreviewed profile pairs abstain."
+}
