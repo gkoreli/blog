@@ -1,0 +1,31 @@
+{
+  "h1Count": 1,
+  "h1": "OSS Radar #09: tsrs Checks VS Code Faster with 56% Less RAM",
+  "canonical": [
+    "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory"
+  ],
+  "ogTitle": "OSS Radar #09: tsrs Checks VS Code Faster with 56% Less RAM",
+  "twitterTitle": "OSS Radar #09: tsrs Checks VS Code Faster with 56% Less RAM",
+  "description": "tsrs checked VS Code in 1.72s using 2.52GB peak RAM, versus TypeScript 7.1 beta's 4.67s and 5.71GB. I also reproduced a fast-mode compatibility difference.",
+  "hasOpening": true,
+  "hasFastModeControl": true,
+  "markdownHasConditions": true,
+  "hasPublicSubscriptionKey": true,
+  "sourceSha256": "801e1d946cb4b2fbea0b82efdd54e5ee3f3cc9d37884e43bb580ef016d8f7682",
+  "builtHtmlSha256": "9b4d3570ad1fe0aa31f0f9edf7b61345aedb810c77ea0d9c08cb0814de2cf07f",
+  "builtMarkdownSha256": "422ff4bbffc51ebdd66acdd6214b9361034bf64f3a3c1493238b75a78f08bafc",
+  "buildBaseCommit": "4b59993828936e5c7ce567350c02c1b86981bdf7",
+  "candidatePost": "packages/blog/posts/033-oss-radar-09-tsrs-typescript-memory.md",
+  "markdownPostsValidated": 23,
+  "builtPosts": 34,
+  "renderedWords": 954,
+  "minutesAt200Words": 4.77,
+  "isolatedTypecheck": "passed",
+  "sharedCheckoutTypecheck": "failed: current node_modules missing ipaddr.js; isolated frozen install and same source passed; no source fix made",
+  "buildEnvironment": {
+    "node": "24.14.1",
+    "TZ": "UTC",
+    "publicTurnstileKeyPresent": true
+  },
+  "publicationState": "local acceptance; push and served checks pending"
+}

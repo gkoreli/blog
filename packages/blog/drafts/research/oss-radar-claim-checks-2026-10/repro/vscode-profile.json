@@ -1,0 +1,10 @@
+{
+  "lockfile": "package-lock.json",
+  "projects": {
+    "vscode": {
+      "config": "src/tsconfig.json",
+      "incremental": false,
+      "negativeControl": "src/compiler-negative-control.ts"
+    }
+  }
+}

@@ -1,0 +1,782 @@
+{
+  "schemaVersion": 1,
+  "status": "complete",
+  "sourceCommit": "9cf0128b9822dcd8a533f08ef7312956a4390301",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "cpu": "Apple M5",
+  "logicalCpus": 10,
+  "memoryBytes": 25769803776,
+  "nodeVersion": "v24.14.1",
+  "clearedEnvironmentNames": [],
+  "lockfileSha256": "282160a21a3dbe463ac42b6678cd71965a8a1a3e5a8b04e7058d2319fcdb5a17",
+  "profile": {
+    "lockfile": "package-lock.json",
+    "projects": {
+      "vscode": {
+        "config": "src/tsconfig.json",
+        "incremental": false,
+        "negativeControl": "src/compiler-negative-control.ts"
+      }
+    }
+  },
+  "projects": {
+    "vscode": {
+      "config": "src/tsconfig.json",
+      "sha256": "6c35a05a6798601b37cd28c535f4e7258ffdf34e271fbf6a4411d328f1db2332"
+    }
+  },
+  "binaries": {
+    "tsrs": {
+      "version": "Version 7.1.0-beta (tsrs 0.20.1-ts7.1.0-beta, microsoft/TypeScript@3e9236361fa9)",
+      "sha256": "5c1f6789358b9947e5c2176532f2cbee5488a5d7481652ee2f1763efdf105217"
+    },
+    "ts70": {
+      "version": "Version 7.0.2",
+      "sha256": "a82f731365ad69d5c4c15f5e18fba4584bf3b7b839960172a76c3462b5114bf2"
+    },
+    "ts71": {
+      "version": "Version 7.1.0-beta",
+      "sha256": "29f5eb8daa5c8cf6ef1c0cb79fbcf47c0cfdf26edabdf148bb779d0b2d56cebc"
+    }
+  },
+  "preflight": [
+    {
+      "project": "vscode",
+      "variant": "typescript-7.0",
+      "exitCode": 1,
+      "outputSha256": "d9c2fdcef20dfbe92a221d24d15f8f6dfd150889e4d630208b2b9d628cc385d6",
+      "diagnosticSetSha256": "91b78ca2d217c6bc9f735e2d0d0e8154b9dcb170f150c54caec6e387e5c9c4ea",
+      "command": [
+        "ts70",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "diagnosticCount": 359
+    },
+    {
+      "project": "vscode",
+      "variant": "typescript-7.1-beta",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "ts71",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-default",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast",
+        "false"
+      ],
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-fast-4",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast"
+      ],
+      "diagnosticCount": 371
+    }
+  ],
+  "negativeControls": [
+    {
+      "project": "vscode",
+      "variant": "typescript-7.0",
+      "exitCode": 1,
+      "outputSha256": "5e1751aa704ec1829ff390f74f662c9744077b9fa8b9f2ecec28c61fdca248f5",
+      "diagnosticSetSha256": "a1e38f89c3977efca4d14826bf20f6ea30aebc5d188eb7ea91cc98245ee86718",
+      "command": [
+        "ts70",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "detectedExpectedError": true,
+      "diagnosticCount": 360
+    },
+    {
+      "project": "vscode",
+      "variant": "typescript-7.1-beta",
+      "exitCode": 2,
+      "outputSha256": "07f61bb7b844468cb1df055b6138e724ebd0f66ee713a5a01eae119e7d980809",
+      "diagnosticSetSha256": "a71c32f2b599ad088da4a7db8636796914276fe4a9f5e354302e0c7d7a2306f5",
+      "command": [
+        "ts71",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "detectedExpectedError": true,
+      "diagnosticCount": 372
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-default",
+      "exitCode": 2,
+      "outputSha256": "07f61bb7b844468cb1df055b6138e724ebd0f66ee713a5a01eae119e7d980809",
+      "diagnosticSetSha256": "a71c32f2b599ad088da4a7db8636796914276fe4a9f5e354302e0c7d7a2306f5",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast",
+        "false"
+      ],
+      "detectedExpectedError": true,
+      "diagnosticCount": 372
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-fast-4",
+      "exitCode": 2,
+      "outputSha256": "07f61bb7b844468cb1df055b6138e724ebd0f66ee713a5a01eae119e7d980809",
+      "diagnosticSetSha256": "a71c32f2b599ad088da4a7db8636796914276fe4a9f5e354302e0c7d7a2306f5",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast"
+      ],
+      "detectedExpectedError": true,
+      "diagnosticCount": 372
+    }
+  ],
+  "samples": [
+    {
+      "project": "vscode",
+      "variant": "typescript-7.0",
+      "exitCode": 1,
+      "outputSha256": "d9c2fdcef20dfbe92a221d24d15f8f6dfd150889e4d630208b2b9d628cc385d6",
+      "diagnosticSetSha256": "91b78ca2d217c6bc9f735e2d0d0e8154b9dcb170f150c54caec6e387e5c9c4ea",
+      "command": [
+        "ts70",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "wallSeconds": 6.680147583014332,
+      "peakRssBytes": 6019317760,
+      "round": 1,
+      "diagnosticCount": 359
+    },
+    {
+      "project": "vscode",
+      "variant": "typescript-7.1-beta",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "ts71",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "wallSeconds": 4.733192207990214,
+      "peakRssBytes": 5690982400,
+      "round": 1,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-default",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast",
+        "false"
+      ],
+      "wallSeconds": 1.7025372079806402,
+      "peakRssBytes": 2520694784,
+      "round": 1,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-fast-4",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast"
+      ],
+      "wallSeconds": 1.4608051250106655,
+      "peakRssBytes": 1833074688,
+      "round": 1,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "typescript-7.1-beta",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "ts71",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "wallSeconds": 4.582962625019718,
+      "peakRssBytes": 5876006912,
+      "round": 2,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-default",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast",
+        "false"
+      ],
+      "wallSeconds": 1.716827042051591,
+      "peakRssBytes": 2531786752,
+      "round": 2,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-fast-4",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast"
+      ],
+      "wallSeconds": 1.447229499986861,
+      "peakRssBytes": 1837481984,
+      "round": 2,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "typescript-7.0",
+      "exitCode": 1,
+      "outputSha256": "d9c2fdcef20dfbe92a221d24d15f8f6dfd150889e4d630208b2b9d628cc385d6",
+      "diagnosticSetSha256": "91b78ca2d217c6bc9f735e2d0d0e8154b9dcb170f150c54caec6e387e5c9c4ea",
+      "command": [
+        "ts70",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "wallSeconds": 7.384307499974966,
+      "peakRssBytes": 5685903360,
+      "round": 2,
+      "diagnosticCount": 359
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-default",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast",
+        "false"
+      ],
+      "wallSeconds": 1.846344500023406,
+      "peakRssBytes": 2531278848,
+      "round": 3,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-fast-4",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast"
+      ],
+      "wallSeconds": 1.4597900829976425,
+      "peakRssBytes": 1842184192,
+      "round": 3,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "typescript-7.0",
+      "exitCode": 1,
+      "outputSha256": "d9c2fdcef20dfbe92a221d24d15f8f6dfd150889e4d630208b2b9d628cc385d6",
+      "diagnosticSetSha256": "91b78ca2d217c6bc9f735e2d0d0e8154b9dcb170f150c54caec6e387e5c9c4ea",
+      "command": [
+        "ts70",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "wallSeconds": 6.520308874954935,
+      "peakRssBytes": 6047236096,
+      "round": 3,
+      "diagnosticCount": 359
+    },
+    {
+      "project": "vscode",
+      "variant": "typescript-7.1-beta",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "ts71",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "wallSeconds": 4.669322790985461,
+      "peakRssBytes": 5713920000,
+      "round": 3,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-fast-4",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast"
+      ],
+      "wallSeconds": 1.4475773749873042,
+      "peakRssBytes": 1839235072,
+      "round": 4,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "typescript-7.0",
+      "exitCode": 1,
+      "outputSha256": "d9c2fdcef20dfbe92a221d24d15f8f6dfd150889e4d630208b2b9d628cc385d6",
+      "diagnosticSetSha256": "91b78ca2d217c6bc9f735e2d0d0e8154b9dcb170f150c54caec6e387e5c9c4ea",
+      "command": [
+        "ts70",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "wallSeconds": 6.633954667020589,
+      "peakRssBytes": 6142967808,
+      "round": 4,
+      "diagnosticCount": 359
+    },
+    {
+      "project": "vscode",
+      "variant": "typescript-7.1-beta",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "ts71",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "wallSeconds": 4.684656249999534,
+      "peakRssBytes": 5671813120,
+      "round": 4,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-default",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast",
+        "false"
+      ],
+      "wallSeconds": 1.7228014169959351,
+      "peakRssBytes": 2522693632,
+      "round": 4,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "typescript-7.0",
+      "exitCode": 1,
+      "outputSha256": "d9c2fdcef20dfbe92a221d24d15f8f6dfd150889e4d630208b2b9d628cc385d6",
+      "diagnosticSetSha256": "91b78ca2d217c6bc9f735e2d0d0e8154b9dcb170f150c54caec6e387e5c9c4ea",
+      "command": [
+        "ts70",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "wallSeconds": 6.150264167052228,
+      "peakRssBytes": 6091210752,
+      "round": 5,
+      "diagnosticCount": 359
+    },
+    {
+      "project": "vscode",
+      "variant": "typescript-7.1-beta",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "ts71",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4"
+      ],
+      "wallSeconds": 4.588139625033364,
+      "peakRssBytes": 5850988544,
+      "round": 5,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-default",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast",
+        "false"
+      ],
+      "wallSeconds": 1.6960902090067975,
+      "peakRssBytes": 2522021888,
+      "round": 5,
+      "diagnosticCount": 371
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-fast-4",
+      "exitCode": 2,
+      "outputSha256": "dcc260fad8ad07cadc63a726be2a136e529d675b2ffc095567113a99fc499bb3",
+      "diagnosticSetSha256": "8ecb8486a35ea7c82debabf53ca34cc9b550cb3996ff45e69a35554c0a8dd01a",
+      "command": [
+        "tsrs",
+        "-p",
+        "src/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false",
+        "--checkers",
+        "4",
+        "--fast"
+      ],
+      "wallSeconds": 1.4412236249772832,
+      "peakRssBytes": 1837940736,
+      "round": 5,
+      "diagnosticCount": 371
+    }
+  ],
+  "cpuSnapshots": [
+    {
+      "project": "vscode",
+      "round": 1,
+      "totalCpuPercentBeforeRound": 34.4
+    },
+    {
+      "project": "vscode",
+      "round": 2,
+      "totalCpuPercentBeforeRound": 18.3
+    },
+    {
+      "project": "vscode",
+      "round": 3,
+      "totalCpuPercentBeforeRound": 95.6
+    },
+    {
+      "project": "vscode",
+      "round": 4,
+      "totalCpuPercentBeforeRound": 19.6
+    },
+    {
+      "project": "vscode",
+      "round": 5,
+      "totalCpuPercentBeforeRound": 29.3
+    }
+  ],
+  "referenceParity": [
+    {
+      "project": "vscode",
+      "variant": "typescript-7.0",
+      "matches": false
+    },
+    {
+      "project": "vscode",
+      "variant": "typescript-7.1-beta",
+      "matches": true
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-default",
+      "matches": true
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-fast-4",
+      "matches": true
+    }
+  ],
+  "summary": [
+    {
+      "project": "vscode",
+      "variant": "typescript-7.0",
+      "runs": 5,
+      "medianWallSeconds": 6.633954667020589,
+      "minWallSeconds": 6.150264167052228,
+      "maxWallSeconds": 7.384307499974966,
+      "medianPeakRssBytes": 6047236096
+    },
+    {
+      "project": "vscode",
+      "variant": "typescript-7.1-beta",
+      "runs": 5,
+      "medianWallSeconds": 4.669322790985461,
+      "minWallSeconds": 4.582962625019718,
+      "maxWallSeconds": 4.733192207990214,
+      "medianPeakRssBytes": 5713920000
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-default",
+      "runs": 5,
+      "medianWallSeconds": 1.716827042051591,
+      "minWallSeconds": 1.6960902090067975,
+      "maxWallSeconds": 1.846344500023406,
+      "medianPeakRssBytes": 2522693632
+    },
+    {
+      "project": "vscode",
+      "variant": "tsrs-fast-4",
+      "runs": 5,
+      "medianWallSeconds": 1.4475773749873042,
+      "minWallSeconds": 1.4412236249772832,
+      "maxWallSeconds": 1.4608051250106655,
+      "medianPeakRssBytes": 1837940736
+    }
+  ],
+  "rawArtifactSha256": "c68ac64d13b788502a1772840848cdeb7f486c3b5ca9b276cd3be038ac97730f"
+}
