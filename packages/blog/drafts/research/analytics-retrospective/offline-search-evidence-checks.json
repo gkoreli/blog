@@ -1,0 +1,77 @@
+{
+  "checkedAt": "2026-10-31T01:01:22.406014+00:00",
+  "research": "121-offline-search-evidence-workbench.md",
+  "originalBaseline": "25b74f9",
+  "integrationBaseline": "10c90fb03edf16bb633f14599ead9b84cfa734de",
+  "module": "../../../../analytics/src/search-evidence.ts",
+  "moduleVersion": "2026-10-31.1",
+  "sourceSha256": "2dcca61325112b040e30c39d1f5ebb0281da270ad7de164bfe13dc7e47fb8c8c",
+  "inputSha256": "922e61fccd93a8d64e2bfc8062f384f75f571b23a9797cdbb8c19c0bd77f0ad0",
+  "cliSourceSha256": "eab2635febba08786dd4eb35f906471bc46a3fa331ffe1067e5be8ebe93b6e4b",
+  "comparisons": {
+    "nodeWorkerdRounds": 3,
+    "conditionsPerRound": 16,
+    "exactResultAndBriefComparisons": 48,
+    "acceptedPerRound": 8,
+    "rejectedPerRound": 8,
+    "scope": "Synthetic API-shaped contexts, not native Google responses or measured readership"
+  },
+  "checks": {
+    "focusedTestGroups": 5,
+    "scopedBaselineAnalyticsTests": 336,
+    "integratedAnalyticsTests": 337,
+    "scopedAndIntegratedWorkspaceTypes": true,
+    "cliPrivateModes": true,
+    "noOverwriteAndSymlinkRefusal": true,
+    "noQueryOrCredentialCanariesInLogs": true,
+    "fatalUtf8AndBomRefusal": true,
+    "fifoRefusalWithoutBlocking": true,
+    "boundedDescriptorReads": true,
+    "sourceByteHash": true
+  },
+  "collectorEntry": {
+    "scopedBaseline": {
+      "bytes": 223052,
+      "sha256": "275bd94f3fcdfbe1406dc5f96e459e2d3180c362156cca81bf8a93633190383d"
+    },
+    "integratedBefore": {
+      "bytes": 223019,
+      "sha256": "7418d0b0c7f5af1b668c039956be7f2b70469cc4ea5745d3b99336ab83335777"
+    },
+    "integratedAfter": {
+      "bytes": 223019,
+      "sha256": "7418d0b0c7f5af1b668c039956be7f2b70469cc4ea5745d3b99336ab83335777"
+    },
+    "ownChangesByteIdenticalInBothBaselines": true,
+    "currentProductionEqualityClaimed": false
+  },
+  "reviewCorrections": [
+    "Actual descriptor read cap replaces saved-size-only assumption",
+    "Fatal UTF-8 and explicit BOM refusal",
+    "Human brief reconciles all URL cohorts and narrower query-table scope"
+  ],
+  "effects": {
+    "collectorIntegration": false,
+    "existingReportOrSchemaChanges": false,
+    "newDependencies": false,
+    "productionRequests": 0,
+    "accountRequests": 0,
+    "productionSqlStatements": 0,
+    "realSearchRows": 0,
+    "newHumanLabels": 0,
+    "articleChangedByThisWork": false
+  },
+  "privateArchive": {
+    "path": "/Users/goga/Documents/goga/analytics-evidence/2026-10-31-search-evidence",
+    "files": 64,
+    "manifestSha256": "3dc5dd6b2500410321b386b440bd012a9ed7a702294009178e534e28d7a2f65b",
+    "verified": true
+  },
+  "remaining": [
+    "Actual authorized saved API-response acceptance",
+    "Independent operator use",
+    "CSV/Sheets/XLSX/bulk formats require separately validated adapters",
+    "Agent-growth outcomes do not require human identification; other specific measurements retain their input gates"
+  ],
+  "goalComplete": false
+}

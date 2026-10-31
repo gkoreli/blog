@@ -1,7 +1,7 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T00:40:21.399815+00:00",
-  "sourceBaseline": "c92a688b2ec538caea3b4217cd74c2fa7b071977",
+  "checkedAt": "2026-10-31T01:01:22.406014+00:00",
+  "sourceBaseline": "10c90fb03edf16bb633f14599ead9b84cfa734de",
   "goalStatus": "blocked",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
@@ -9,7 +9,7 @@
     "classification": "no progress",
     "scope": "Second consecutive check revalidated the same source/input gates without edits or deployment."
   },
-  "scope": "Third consecutive no-progress dependency check; thirteen source hashes remain unchanged. No new account/production measurement, human label or authorization. Full objective remains incomplete.",
+  "scope": "Owner-resumed offline search-evidence capability and local acceptance. No new real search, human or managed-native measurements; concurrent audience changes have their own evidence.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -35,7 +35,8 @@
     "article-reach-contract.ts": "38cd7b99af5ae8384fab0a53692e682088fc2b70fba33548703cf487965e2321",
     "versions.ts": "7512353067a5cf7919d03262da0396782f59ccbe41eb06436e10ad18e7dabf54",
     "webbotauth.ts": "edacdfd0e5aeed48fdc081b5c1953d6eee128ec1b6eb5a0c70e1f7bf7319b265",
-    "directory-response-audit.ts": "cd1b11f67bed8e0ba0e0e183d6e3fa0bc4ec48eff084b255b4cb8bd966a103f9"
+    "directory-response-audit.ts": "cd1b11f67bed8e0ba0e0e183d6e3fa0bc4ec48eff084b255b4cb8bd966a103f9",
+    "search-evidence.ts": "2dcca61325112b040e30c39d1f5ebb0281da270ad7de164bfe13dc7e47fb8c8c"
   },
   "requirements": [
     {
@@ -150,7 +151,7 @@
         "111-weekly-history-in-the-retrospective.md",
         "weekly-history-article-release.json"
       ],
-      "limit": "Historical source sensitivity and article rankings are delivery evidence. They do not prove human growth, authentic referrals, search queries, useful reading or retention. No new census or authenticated query report is claimed."
+      "limit": "Historical source sensitivity and article rankings are delivery evidence. They do not prove human growth, authentic referrals, search queries, useful reading or retention. No new census or authenticated query report is claimed. Human identification is not required to recognize supported agent reach, citation, distribution or use outcomes; ADR-0016.19 and its owning experiment record govern those claims."
     },
     {
       "id": "eu-us-privacy-and-evidence-retention",
@@ -171,6 +172,19 @@
         "weekly-history-article-release.json"
       ],
       "limit": "Source hash matches the accepted 1379-word/32-prompt version. No fresh served-content check or new reader outcome is claimed."
+    },
+    {
+      "id": "offline-search-evidence",
+      "requirement": "Provide an account-independent path for supplied search evidence and editorial decisions",
+      "status": "implemented-and-locally-accepted-real-input-pending",
+      "source": [
+        "search-evidence.ts"
+      ],
+      "evidence": [
+        "121-offline-search-evidence-workbench.md",
+        "offline-search-evidence-checks.json"
+      ],
+      "limit": "One saved query/page API slice with explicit request context. All current controls are synthetic; no real export, CSV compatibility or independent operator adoption is claimed."
     }
   ],
   "catalogue": {
@@ -259,23 +273,25 @@
     }
   ],
   "effectsThisAudit": {
-    "runtimeChanged": false,
-    "articleChanged": false,
+    "scope": "This alternative-work slice only; concurrent audience/publication changes have separate acceptance.",
+    "collectorChanged": false,
+    "offlineLibraryCapabilityAdded": true,
+    "articleChangedByThisWork": false,
     "productionSiteRequests": 0,
     "productionSqlStatements": 0,
     "newHumanLabels": 0,
-    "newNativeManagedComparisons": 0,
-    "rawCaptureActivated": false,
-    "ownedLiveWait": false
+    "realSearchRows": 0,
+    "accountRequests": 0
   },
   "resumedAudit": {
     "previousTurnClassification": "no progress",
-    "thisTurnClassification": "no progress: same required external/user input condition for three consecutive goal turns",
-    "consecutiveNoProgressGoalTurns": 3,
+    "thisTurnClassification": "progress: independent offline analyzer built and verified after owner requested alternatives",
+    "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history is preserved in the archive; this is a separate resumed-run blocked audit.",
-    "verifiedLiveWait": false
+    "verifiedLiveWait": false,
+    "freshResumedRun": true
   },
-  "nextBoundedAction": "Resume from an actual newly available native/search/human/privacy/source-purpose input that can change a named decision. Preserve accepted runtime no-adoption and release checks. Do not repeat accepted controls, scan history or expand optional protocol work solely to keep the goal running.",
+  "nextBoundedAction": "Use existing saved agent-discovery/distribution observations for an outcome-specific decision brief; accept a real authorized saved API response when supplied. Do not make human identification a blanket growth/building gate.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -297,6 +313,15 @@
     "goalComplete": false,
     "condition": "Substantive remaining requirements need unavailable user/external inputs; another local protocol or bookkeeping iteration cannot establish native agreement, human accuracy, search demand, historical completeness, purpose or privacy acceptance.",
     "ownedLiveProcessWait": false,
-    "resume": "A new decision-changing native/search/human/privacy/source-purpose input, under the existing acceptance requirements. Do not infer approval from another automatic continuation."
+    "resume": "A new decision-changing native/search/human/privacy/source-purpose input, under the existing acceptance requirements. Do not infer approval from another automatic continuation.",
+    "scopeAfterOwnerContinuation": "Historical checkpoint for missing measurement inputs; not a prohibition on independent implementation, observed agent growth or discovery work."
+  },
+  "ownerWorkStatus": "resumed through explicitly requested alternative building",
+  "goalStatusScope": "Last observed tracker status is blocked; the owner has explicitly resumed independent implementation. Claim-specific measurement gates do not block all work.",
+  "latestContinuation": {
+    "research": "121-offline-search-evidence-workbench.md",
+    "receipt": "offline-search-evidence-checks.json",
+    "ownerDirection": "Continue find some alternative ways to fontinue building",
+    "nextBoundedAction": "Use existing saved agent-discovery/distribution observations for an outcome-specific decision brief; accept a real authorized saved API response when supplied. Do not make human identification a blanket growth/building gate."
   }
 }

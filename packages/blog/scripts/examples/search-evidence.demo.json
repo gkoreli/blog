@@ -1,0 +1,31 @@
+{
+  "version": "search-console-query-page-v1",
+  "provenance": "synthetic",
+  "capturedAt": "2026-10-30T12:00:00Z",
+  "siteOrigin": "https://example.test",
+  "property": "sc-domain:example.test",
+  "request": {
+    "startDate": "2026-10-01", "endDate": "2026-10-28",
+    "dimensions": ["page", "query"], "type": "web", "dataState": "final",
+    "aggregationType": "auto", "rowLimit": 1000, "startRow": 0
+  },
+  "response": {
+    "responseAggregationType": "byPage",
+    "rows": [
+      { "keys": ["https://example.test/agent-fetchers", "verify an agent request"], "clicks": 5, "impressions": 100, "ctr": 0.05, "position": 8 },
+      { "keys": ["https://example.test/agent-fetchers", "which headers do AI fetchers send"], "clicks": 0, "impressions": 200, "ctr": 0, "position": 12 },
+      { "keys": ["https://example.test/analytics", "count bots separately"], "clicks": 0, "impressions": 50, "ctr": 0, "position": 5 },
+      { "keys": ["https://example.test/agent-fetchers/?variant=1", "agent requests"], "clicks": 1, "impressions": 10, "ctr": 0.1, "position": 7 },
+      { "keys": ["https://example.test/unknown", "unknown article"], "clicks": 3, "impressions": 30, "ctr": 0.1, "position": 2 },
+      { "keys": ["https://docs.example.test/agent-fetchers", "another origin"], "clicks": 4, "impressions": 40, "ctr": 0.1, "position": 3 },
+      { "keys": ["https://example.test/analytics", ""], "clicks": 0, "impressions": 5, "ctr": 0, "position": 9 },
+      { "keys": ["https://example.test/guide/cache", "cache a key directory"], "clicks": 2, "impressions": 20, "ctr": 0.1, "position": 4 }
+    ]
+  },
+  "articles": [
+    { "path": "/agent-fetchers", "title": "Agent fetcher field notes" },
+    { "path": "/analytics", "title": "What analytics can prove" },
+    { "path": "/guide/cache", "title": "Key directory cache guide" },
+    { "path": "/unused", "title": "No returned search rows" }
+  ]
+}

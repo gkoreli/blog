@@ -18,6 +18,7 @@
     "./native-bot-evidence": "./src/native-bot-evidence.ts",
     "./directory-publication": "./src/directory-publication-contract.ts",
     "./directory-response-audit": "./src/directory-response-audit.ts",
+    "./search-evidence": "./src/search-evidence.ts",
     "./webbotauth-audit": "./src/webbotauth-audit.ts",
     "./webbotauth-reuse-audit": "./src/webbotauth-reuse-audit.ts",
     "./forwarded-purpose": "./src/forwarded-purpose.ts",
