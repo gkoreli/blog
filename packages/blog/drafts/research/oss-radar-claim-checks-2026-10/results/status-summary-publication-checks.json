@@ -22,5 +22,7 @@
     "canonicalMatches": true,
     "domSha256": "18df30cc870bb6ebf102102ed151a1bc2a0aacfea2b3c4e08dfb5eacf644fc5a",
     "scope": "Native browser; no readership measured"
-  }
+  },
+  "renderedMarkdownSha256": "bc3c87f48fc9fadca7de69d266c69f179319de708d65c6d022a7bfc4b7a8e567",
+  "markdownRetainsResultsAndLimits": true
 }

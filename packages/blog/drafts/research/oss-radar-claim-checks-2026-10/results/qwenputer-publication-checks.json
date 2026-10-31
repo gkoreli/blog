@@ -24,5 +24,7 @@
     "h1Matches": true,
     "domSha256": "92e2b7214db6960b0cd7e658fa2a22c959c4e225511177e33d31ee1620341c51",
     "scope": "Native browser; no reader adoption measured"
-  }
+  },
+  "renderedMarkdownSha256": "555df5c9b285ab87f1d9dc556b9411660ec27677aa458ff8b0b2db8e523571fa",
+  "markdownRetainsResultsAndLimits": true
 }

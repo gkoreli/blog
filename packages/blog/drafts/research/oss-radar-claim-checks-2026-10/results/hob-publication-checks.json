@@ -1,5 +1,5 @@
 {
-  "state": "local acceptance; push and served checks pending",
+  "state": "published; source-linked build and served article verified",
   "buildBaseCommit": "a08f2c0 plus subsequent article overlays",
   "markdownPostsValidated": 27,
   "builtPosts": 38,
@@ -10,5 +10,19 @@
   "ogTitle": "OSS Radar #13: Hob Wrote Correct Files with Network Access Blocked",
   "description": "Hob's local engine wrote the correct JSON and CSV report with networking blocked. I tested its recommended model, setup cost, waiting time and M1 selection rules.",
   "sourceSha256": "fc3e06bd7a155d69d17b733a2ff15b41e04d7de0c9a36c21c1af158d4508ee19",
-  "htmlSha256": "6b9acd5b185ae04bc921f9a1696c984b890b15c1823915ef0ce318f00bb7b4e3"
+  "htmlSha256": "6b9acd5b185ae04bc921f9a1696c984b890b15c1823915ef0ce318f00bb7b4e3",
+  "renderedMarkdownSha256": "53a66ba1754eecf7b0bdf727fdcb7f163c4b41e77a4f7196c0be0928c1125f96",
+  "markdownRetainsResultsAndLimits": true,
+  "sourceCommit": "b61bc7e",
+  "cloudflareBuild": {
+    "id": "9faea733-86e2-4ca7-a168-1ee2678ce016",
+    "conclusion": "success"
+  },
+  "served": {
+    "checkedAt": "2026-10-31T01:40:15.518237+00:00",
+    "h1Matches": true,
+    "canonicalMatches": true,
+    "domSha256": "b1b1738bd87c5f018a51c06847ff35ed589aaea41bdeb08752c11f8323a3f699",
+    "scope": "Native browser; no organic readership or independent adoption measured"
+  }
 }
