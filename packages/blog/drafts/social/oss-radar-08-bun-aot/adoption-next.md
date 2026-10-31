@@ -40,6 +40,8 @@ This is a separate angle from the [30-second historical demo](shot-list.md), whi
 
 ## 4. Offer a runnable fixture to an independent benchmark suite
 
+**On hold after Goga's October 31 direction:** GitHub issue outreach requires an RFC or an explicit invitation for outside input. No qualifying invitation is verified for this proposal. The note below remains an unsent historical draft.
+
 **Named destination:** [jlucaso1/js-compiled](https://github.com/jlucaso1/js-compiled), which already includes Bun AOT and publishes CI results. Its [benchmark contract](https://github.com/jlucaso1/js-compiled#benchmarks) uses deterministic TypeScript and a `RESULT` line checked against Node. This is a small validation project, not a verified source of large traffic.
 
 The [prepared record-scan adapter](adoption/record-scan.ts) has no dependencies or random input and prints `RESULT 562757611`. It fixes the quickstart's input sizes at their defaults and changes the output format; it is a separate source variant. Node 24.14.1, pinned Bun source execution and a Bun AOT build all produced that output. This is preparation, not proof it passes the external harness, every compiler or Linux CI. The suite already has a much larger pipeline benchmark; offer this smaller startup/retained-data case only if its maintainer sees a gap, rather than creating a redundant PR.

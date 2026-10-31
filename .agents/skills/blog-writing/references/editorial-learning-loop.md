@@ -18,6 +18,10 @@ Goga's direction of October 28, 2026 is to give adoption and distribution the sa
 
 Use the article's existing social directory for promotion work after its research cutoff. Keep exact drafts, proposed actions, publication receipts and measured outcomes separate. A completed article is not evidence of completed distribution; a completed strategy request also does not imply that its proposed posts have been authorized, published or scheduled. The [Bun AOT opportunity review](../../../../packages/blog/drafts/social/oss-radar-08-bun-aot/promotion-2026-10-28.md) is one dated example, not a permanent channel list.
 
+## Owner direction: GitHub outreach needs an invitation
+
+Goga's October 31, 2026 direction: do not use another project's GitHub issues for article promotion or trial recruitment unless the thread is an RFC or explicitly invites outside engagement. A relevant topic, open issue or maintainer's internal experiment plan is insufficient. Verify the invitation before proposing or drafting issue outreach. This applies to promotion and trial recruitment, not ordinary issue work.
+
 ## Publication feedback
 
 After publishing a substantive engineering article:

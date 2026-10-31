@@ -120,7 +120,12 @@
     "issueUpdatedAt": "2026-10-30T08:03:12Z",
     "comments": 0,
     "fit": "Maintainer is planning a generated-CLI startup, size and memory comparison and currently prefers waiting for stable",
-    "outreachSent": false
+    "outreachSent": false,
+    "status": "withdrawn",
+    "ownerCorrection": {
+      "date": "2026-10-31",
+      "reason": "Promotion/trial recruitment on GitHub requires an RFC or an explicit invitation for outside engagement; an internal experiment plan is insufficient."
+    }
   },
   "scope": {
     "publicArticleReportGets": 1,
