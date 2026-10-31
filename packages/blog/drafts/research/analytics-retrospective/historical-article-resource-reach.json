@@ -1,0 +1,1398 @@
+{
+  "analyzedAt": "2026-10-31T07:49:37.361Z",
+  "scope": "Historical Research102 retained all-kind suffix; no new observations, current owner-table refresh or population trend.",
+  "sourceBaseline": "84c4550772fa91a23c6f9371ba03270ef71783d5",
+  "capture": {
+    "first": "2026-10-29 20:39:23",
+    "last": "2026-10-30 09:38:03",
+    "rows": 397,
+    "sourceManifestSha256": "0d6fef628964411d409a063c9430be67cc18af9823a2b0e2d663ae3404211079",
+    "sourceExportSha256": "99237bb5327224cc4564b09223b7afb36a7445012f0d8ec2c3af3266e8e6cd89",
+    "reusedArchiveFilesVerified": 70
+  },
+  "catalogue": {
+    "entries": 38,
+    "sha256": "8221d27b9edab674daf32f1a9480b1e02c368e36d0aa54a95b372f4206a693e4",
+    "explicitPromptPaths": 19,
+    "source": "Isolated3174aeb plus checked parser repair; current path/title labels, not historical metadata reconstruction."
+  },
+  "inclusion": {
+    "included": 397,
+    "ownerExcluded": 0,
+    "referralExcluded": 0,
+    "scope": "Original capture owner-link state, current unchanged referral policy; not a fresh owner-table read."
+  },
+  "site": {
+    "kinds": {
+      "unresolved": 185,
+      "search-crawler": 17,
+      "cloud-browser": 95,
+      "browser": 29,
+      "ai-crawler": 7,
+      "ai-search": 41,
+      "seo-crawler": 2,
+      "other-bot": 14,
+      "http-client": 4,
+      "headless-browser": 1,
+      "ai-assistant": 2
+    },
+    "declarations": {
+      "none": 327,
+      "Bingbot": 1,
+      "Amazonbot": 4,
+      "Baiduspider": 1,
+      "Meta-WebIndexer": 11,
+      "AhrefsBot": 2,
+      "ExaSearchBot": 29,
+      "Googlebot": 15,
+      "Bytespider": 2,
+      "HeadlessChrome": 1,
+      "ChatGPT-User": 2,
+      "Applebot": 1,
+      "PetalBot": 1
+    },
+    "referrers": {
+      "absent": 355,
+      "internal": 10,
+      "external": 32
+    },
+    "forms": {
+      "no-form-marker": 157,
+      "unknown": 60,
+      "non-mobile-preference": 21,
+      "mobile-marker": 159
+    },
+    "versions": {
+      "[\"2026-10-29.6\",\"2026-10-29.3\",\"current\"]": 397
+    },
+    "articleEvents": 243,
+    "promptPageEvents": 68,
+    "hubEvents": 86,
+    "unknownPathEvents": 0,
+    "distinctArticlesWithEvents": 33
+  },
+  "articles": [
+    {
+      "path": "/oss-radar-08-bun-aot",
+      "title": "OSS Radar #08: Bun AOT \u2014 Don't Rewrite TypeScript in Rust Yet",
+      "date": "2026-10-27",
+      "events": 19,
+      "kinds": {
+        "ai-search": 2,
+        "cloud-browser": 9,
+        "unresolved": 3,
+        "browser": 3,
+        "other-bot": 1,
+        "search-crawler": 1
+      },
+      "declarations": {
+        "ExaSearchBot": 2,
+        "none": 16,
+        "Googlebot": 1
+      },
+      "sources": {
+        "absent": 13,
+        "external": 6
+      },
+      "namedAiServiceEvents": 2,
+      "verifiedOutcomes": 2,
+      "forms": {
+        "unknown": 4,
+        "no-form-marker": 10,
+        "mobile-marker": 4,
+        "non-mobile-preference": 1
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": "google.com",
+        "events": 3,
+        "ofExternalEvents": 6
+      }
+    },
+    {
+      "path": "/which-ai-fetchers-send-which-headers",
+      "title": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+      "date": "2026-09-03",
+      "events": 15,
+      "kinds": {
+        "ai-search": 3,
+        "browser": 4,
+        "unresolved": 3,
+        "cloud-browser": 3,
+        "search-crawler": 1,
+        "ai-crawler": 1
+      },
+      "declarations": {
+        "ExaSearchBot": 2,
+        "none": 10,
+        "Meta-WebIndexer": 1,
+        "Googlebot": 1,
+        "Amazonbot": 1
+      },
+      "sources": {
+        "absent": 13,
+        "internal": 1,
+        "external": 1
+      },
+      "namedAiServiceEvents": 4,
+      "verifiedOutcomes": 2,
+      "forms": {
+        "unknown": 2,
+        "no-form-marker": 7,
+        "non-mobile-preference": 3,
+        "mobile-marker": 3
+      },
+      "promptPageEvents": 3,
+      "promptKinds": {
+        "unresolved": 3
+      },
+      "promptDeclarations": {
+        "none": 3
+      },
+      "promptSources": {
+        "absent": 3
+      },
+      "largestReportedExternalSource": {
+        "publicHost": "t.co",
+        "events": 1,
+        "ofExternalEvents": 1
+      }
+    },
+    {
+      "path": "/how-i-separate-readers-from-bots-without-javascript",
+      "title": "Bot Detection Without JavaScript: What My Blog Measured",
+      "date": "2026-09-03",
+      "events": 13,
+      "kinds": {
+        "cloud-browser": 3,
+        "other-bot": 3,
+        "http-client": 2,
+        "unresolved": 3,
+        "browser": 1,
+        "search-crawler": 1
+      },
+      "declarations": {
+        "none": 12,
+        "Googlebot": 1
+      },
+      "sources": {
+        "absent": 12,
+        "external": 1
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "unknown": 4,
+        "no-form-marker": 5,
+        "mobile-marker": 3,
+        "non-mobile-preference": 1
+      },
+      "promptPageEvents": 5,
+      "promptKinds": {
+        "unresolved": 3,
+        "cloud-browser": 2
+      },
+      "promptDeclarations": {
+        "none": 5
+      },
+      "promptSources": {
+        "absent": 5
+      },
+      "largestReportedExternalSource": {
+        "publicHost": "t.co",
+        "events": 1,
+        "ofExternalEvents": 1
+      }
+    },
+    {
+      "path": "/linux-signal-stack-conflict",
+      "title": "One bitmask in task_struct: how a 10-line kernel patch resolves 15 years of multi-runtime signal conflicts on Linux",
+      "date": "2026-05-21",
+      "events": 10,
+      "kinds": {
+        "unresolved": 4,
+        "ai-crawler": 1,
+        "ai-search": 2,
+        "cloud-browser": 3
+      },
+      "declarations": {
+        "none": 7,
+        "Bytespider": 1,
+        "ExaSearchBot": 2
+      },
+      "sources": {
+        "absent": 10
+      },
+      "namedAiServiceEvents": 3,
+      "verifiedOutcomes": 2,
+      "forms": {
+        "mobile-marker": 3,
+        "no-form-marker": 5,
+        "unknown": 2
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/topologies-of-thoughts",
+      "title": "Topologies of Thoughts",
+      "date": "2026-03-31",
+      "events": 10,
+      "kinds": {
+        "browser": 3,
+        "unresolved": 3,
+        "ai-search": 2,
+        "cloud-browser": 1,
+        "other-bot": 1
+      },
+      "declarations": {
+        "none": 8,
+        "ExaSearchBot": 2
+      },
+      "sources": {
+        "external": 3,
+        "absent": 7
+      },
+      "namedAiServiceEvents": 2,
+      "verifiedOutcomes": 2,
+      "forms": {
+        "no-form-marker": 5,
+        "mobile-marker": 2,
+        "unknown": 3
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 3,
+        "ofExternalEvents": 3
+      }
+    },
+    {
+      "path": "/first-party-analytics-for-a-personal-blog",
+      "title": "How I Built First-Party Analytics for a Personal Blog",
+      "date": "2026-08-26",
+      "events": 9,
+      "kinds": {
+        "ai-search": 3,
+        "unresolved": 3,
+        "browser": 1,
+        "cloud-browser": 2
+      },
+      "declarations": {
+        "Meta-WebIndexer": 1,
+        "ExaSearchBot": 2,
+        "none": 6
+      },
+      "sources": {
+        "absent": 9
+      },
+      "namedAiServiceEvents": 3,
+      "verifiedOutcomes": 2,
+      "forms": {
+        "no-form-marker": 4,
+        "unknown": 2,
+        "mobile-marker": 2,
+        "non-mobile-preference": 1
+      },
+      "promptPageEvents": 7,
+      "promptKinds": {
+        "unresolved": 3,
+        "ai-search": 2,
+        "cloud-browser": 2
+      },
+      "promptDeclarations": {
+        "none": 5,
+        "Meta-WebIndexer": 1,
+        "ExaSearchBot": 1
+      },
+      "promptSources": {
+        "absent": 7
+      },
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+      "title": "OSS Radar #04: The Agent Multiplexer Is Becoming a Runtime",
+      "date": "2026-08-21",
+      "events": 9,
+      "kinds": {
+        "unresolved": 3,
+        "ai-search": 3,
+        "ai-assistant": 1,
+        "cloud-browser": 1,
+        "browser": 1
+      },
+      "declarations": {
+        "none": 5,
+        "ExaSearchBot": 2,
+        "Meta-WebIndexer": 1,
+        "ChatGPT-User": 1
+      },
+      "sources": {
+        "absent": 9
+      },
+      "namedAiServiceEvents": 4,
+      "verifiedOutcomes": 2,
+      "forms": {
+        "mobile-marker": 2,
+        "unknown": 3,
+        "no-form-marker": 3,
+        "non-mobile-preference": 1
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/building-blog-analytics-what-the-numbers-can-prove",
+      "title": "Building Blog Analytics: What the Numbers Can Prove",
+      "date": "2026-10-25",
+      "events": 8,
+      "kinds": {
+        "unresolved": 3,
+        "browser": 2,
+        "search-crawler": 1,
+        "other-bot": 1,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 7,
+        "Googlebot": 1
+      },
+      "sources": {
+        "absent": 7,
+        "external": 1
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 3,
+        "non-mobile-preference": 2,
+        "unknown": 1,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 7,
+      "promptKinds": {
+        "cloud-browser": 4,
+        "unresolved": 2,
+        "ai-search": 1
+      },
+      "promptDeclarations": {
+        "none": 6,
+        "Applebot": 1
+      },
+      "promptSources": {
+        "external": 3,
+        "absent": 4
+      },
+      "largestReportedExternalSource": {
+        "publicHost": "t.co",
+        "events": 1,
+        "ofExternalEvents": 1
+      }
+    },
+    {
+      "path": "/does-llms-txt-work",
+      "title": "Does llms.txt Work? What a Live Implementation Revealed",
+      "date": "2026-08-25",
+      "events": 8,
+      "kinds": {
+        "unresolved": 4,
+        "ai-search": 1,
+        "search-crawler": 1,
+        "cloud-browser": 2
+      },
+      "declarations": {
+        "none": 6,
+        "Meta-WebIndexer": 1,
+        "Googlebot": 1
+      },
+      "sources": {
+        "absent": 7,
+        "external": 1
+      },
+      "namedAiServiceEvents": 1,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 4,
+        "no-form-marker": 4
+      },
+      "promptPageEvents": 5,
+      "promptKinds": {
+        "seo-crawler": 1,
+        "unresolved": 3,
+        "search-crawler": 1
+      },
+      "promptDeclarations": {
+        "AhrefsBot": 1,
+        "none": 3,
+        "Googlebot": 1
+      },
+      "promptSources": {
+        "absent": 4,
+        "external": 1
+      },
+      "largestReportedExternalSource": {
+        "publicHost": "t.co",
+        "events": 1,
+        "ofExternalEvents": 1
+      }
+    },
+    {
+      "path": "/openclaw-chose-solid-why-id-choose-nisli",
+      "title": "OpenClaw Chose Solid. Here\u2019s Why I\u2019d Choose Nisli.",
+      "date": "2026-10-21",
+      "events": 8,
+      "kinds": {
+        "unresolved": 3,
+        "browser": 1,
+        "ai-search": 2,
+        "search-crawler": 1,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 5,
+        "ExaSearchBot": 2,
+        "Googlebot": 1
+      },
+      "sources": {
+        "absent": 7,
+        "external": 1
+      },
+      "namedAiServiceEvents": 2,
+      "verifiedOutcomes": 2,
+      "forms": {
+        "mobile-marker": 3,
+        "non-mobile-preference": 1,
+        "unknown": 2,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": "t.co",
+        "events": 1,
+        "ofExternalEvents": 1
+      }
+    },
+    {
+      "path": "/oss-radar-05-bun-1-4",
+      "title": "OSS Radar #05: Bun 1.4 Made the Runtime the Dependency",
+      "date": "2026-08-26",
+      "events": 8,
+      "kinds": {
+        "unresolved": 4,
+        "browser": 1,
+        "ai-search": 2,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 6,
+        "ExaSearchBot": 2
+      },
+      "sources": {
+        "absent": 8
+      },
+      "namedAiServiceEvents": 2,
+      "verifiedOutcomes": 2,
+      "forms": {
+        "mobile-marker": 3,
+        "no-form-marker": 2,
+        "non-mobile-preference": 1,
+        "unknown": 2
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/bring-your-own-ai-agent",
+      "title": "Bring Your Own AI Agent Everywhere",
+      "date": "2026-08-20",
+      "events": 7,
+      "kinds": {
+        "ai-search": 3,
+        "unresolved": 3,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "Meta-WebIndexer": 1,
+        "none": 4,
+        "ExaSearchBot": 2
+      },
+      "sources": {
+        "absent": 7
+      },
+      "namedAiServiceEvents": 3,
+      "verifiedOutcomes": 2,
+      "forms": {
+        "no-form-marker": 3,
+        "mobile-marker": 2,
+        "unknown": 2
+      },
+      "promptPageEvents": 3,
+      "promptKinds": {
+        "unresolved": 2,
+        "browser": 1
+      },
+      "promptDeclarations": {
+        "none": 3
+      },
+      "promptSources": {
+        "absent": 3
+      },
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/chatgpt-plugin-apps",
+      "title": "ChatGPT Plugin Apps: What Changed, and What I'd Build",
+      "date": "2026-10-04",
+      "events": 7,
+      "kinds": {
+        "ai-search": 2,
+        "unresolved": 3,
+        "search-crawler": 1,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "ExaSearchBot": 2,
+        "none": 4,
+        "Googlebot": 1
+      },
+      "sources": {
+        "absent": 6,
+        "external": 1
+      },
+      "namedAiServiceEvents": 2,
+      "verifiedOutcomes": 2,
+      "forms": {
+        "unknown": 2,
+        "mobile-marker": 3,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 3,
+      "promptKinds": {
+        "unresolved": 2,
+        "cloud-browser": 1
+      },
+      "promptDeclarations": {
+        "none": 3
+      },
+      "promptSources": {
+        "absent": 3
+      },
+      "largestReportedExternalSource": {
+        "publicHost": "t.co",
+        "events": 1,
+        "ofExternalEvents": 1
+      }
+    },
+    {
+      "path": "/life-as-background-music",
+      "title": "Life as Background Music",
+      "date": "2026-04-22",
+      "events": 7,
+      "kinds": {
+        "search-crawler": 1,
+        "ai-search": 2,
+        "unresolved": 3,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "Bingbot": 1,
+        "Meta-WebIndexer": 2,
+        "none": 4
+      },
+      "sources": {
+        "absent": 7
+      },
+      "namedAiServiceEvents": 2,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "no-form-marker": 5,
+        "mobile-marker": 2
+      },
+      "promptPageEvents": 3,
+      "promptKinds": {
+        "ai-crawler": 1,
+        "unresolved": 2
+      },
+      "promptDeclarations": {
+        "Amazonbot": 1,
+        "none": 2
+      },
+      "promptSources": {
+        "absent": 3
+      },
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/oss-radar-03-buzz-is-slack-on-airoids",
+      "title": "OSS Radar #03: Buzz Is Slack on AIroids",
+      "date": "2026-07-24",
+      "events": 7,
+      "kinds": {
+        "unresolved": 3,
+        "search-crawler": 1,
+        "browser": 2,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 6,
+        "Googlebot": 1
+      },
+      "sources": {
+        "absent": 6,
+        "external": 1
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 3,
+        "non-mobile-preference": 1,
+        "no-form-marker": 3
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": "t.co",
+        "events": 1,
+        "ofExternalEvents": 1
+      }
+    },
+    {
+      "path": "/why-worktree-setup-is-slow-on-macos",
+      "title": "A Linux VM on My Mac Beat macOS at Installing Dependencies",
+      "date": "2026-10-28",
+      "events": 7,
+      "kinds": {
+        "unresolved": 3,
+        "http-client": 1,
+        "cloud-browser": 2,
+        "other-bot": 1
+      },
+      "declarations": {
+        "none": 7
+      },
+      "sources": {
+        "absent": 7
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 2,
+        "no-form-marker": 4,
+        "unknown": 1
+      },
+      "promptPageEvents": 3,
+      "promptKinds": {
+        "unresolved": 2,
+        "cloud-browser": 1
+      },
+      "promptDeclarations": {
+        "none": 3
+      },
+      "promptSources": {
+        "absent": 3
+      },
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/how-ghx-was-born",
+      "title": "Build the GitHub Exploration Tool, No Mistakes",
+      "date": "2026-03-29",
+      "events": 6,
+      "kinds": {
+        "unresolved": 3,
+        "ai-search": 2,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 4,
+        "ExaSearchBot": 2
+      },
+      "sources": {
+        "absent": 6
+      },
+      "namedAiServiceEvents": 2,
+      "verifiedOutcomes": 2,
+      "forms": {
+        "mobile-marker": 2,
+        "unknown": 2,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 2,
+      "promptKinds": {
+        "unresolved": 2
+      },
+      "promptDeclarations": {
+        "none": 2
+      },
+      "promptSources": {
+        "absent": 2
+      },
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/one-hundred-pull-requests",
+      "title": "117 Pull Requests Later, It Wasn\u2019t a Task Manager Anymore",
+      "date": "2026-07-09",
+      "events": 6,
+      "kinds": {
+        "browser": 2,
+        "unresolved": 3,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 6
+      },
+      "sources": {
+        "external": 2,
+        "absent": 4
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "no-form-marker": 4,
+        "mobile-marker": 2
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 2,
+        "ofExternalEvents": 2
+      }
+    },
+    {
+      "path": "/oss-radar-01-vercel-winter-2026-cohort",
+      "title": "OSS Radar #01: Vercel's Winter 2026 Cohort",
+      "date": "2026-03-19",
+      "events": 6,
+      "kinds": {
+        "ai-search": 2,
+        "unresolved": 3,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "ExaSearchBot": 2,
+        "none": 4
+      },
+      "sources": {
+        "absent": 6
+      },
+      "namedAiServiceEvents": 2,
+      "verifiedOutcomes": 2,
+      "forms": {
+        "unknown": 2,
+        "mobile-marker": 2,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/oss-radar-02-the-toolchain-is-the-moat",
+      "title": "OSS Radar #02: The Toolchain Is the Moat",
+      "date": "2026-04-12",
+      "events": 6,
+      "kinds": {
+        "unresolved": 3,
+        "ai-search": 1,
+        "cloud-browser": 1,
+        "ai-crawler": 1
+      },
+      "declarations": {
+        "none": 4,
+        "Meta-WebIndexer": 1,
+        "PetalBot": 1
+      },
+      "sources": {
+        "absent": 5,
+        "internal": 1
+      },
+      "namedAiServiceEvents": 2,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 3,
+        "no-form-marker": 3
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/oss-radar-06-interp-engine",
+      "title": "OSS Radar #06: interp-engine, Neuronpedia's New Interpretability Engine, Tested on a Mac",
+      "date": "2026-09-02",
+      "events": 6,
+      "kinds": {
+        "unresolved": 3,
+        "seo-crawler": 1,
+        "http-client": 1,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 5,
+        "AhrefsBot": 1
+      },
+      "sources": {
+        "absent": 6
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 1,
+      "forms": {
+        "mobile-marker": 2,
+        "unknown": 1,
+        "no-form-marker": 3
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/oss-radar-07-ai-citations",
+      "title": "OSS Radar #07: AI Citations \u2014 Do Agents Preserve the Evidence Behind an Answer?",
+      "date": "2026-09-10",
+      "events": 6,
+      "kinds": {
+        "unresolved": 3,
+        "search-crawler": 1,
+        "ai-assistant": 1,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 4,
+        "Googlebot": 1,
+        "ChatGPT-User": 1
+      },
+      "sources": {
+        "absent": 5,
+        "external": 1
+      },
+      "namedAiServiceEvents": 1,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 3,
+        "unknown": 1,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 5,
+      "promptKinds": {
+        "unresolved": 3,
+        "cloud-browser": 2
+      },
+      "promptDeclarations": {
+        "none": 5
+      },
+      "promptSources": {
+        "absent": 5
+      },
+      "largestReportedExternalSource": {
+        "publicHost": "t.co",
+        "events": 1,
+        "ofExternalEvents": 1
+      }
+    },
+    {
+      "path": "/procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+      "title": "Procrastination Is a Craft You've Been Mastering Your Entire Life",
+      "date": "2026-04-07",
+      "events": 6,
+      "kinds": {
+        "unresolved": 4,
+        "ai-crawler": 1,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 5,
+        "Bytespider": 1
+      },
+      "sources": {
+        "absent": 6
+      },
+      "namedAiServiceEvents": 1,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 4,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/prompt-cache-context-edits",
+      "title": "Can You Change an Agent\u2019s Context Without Losing Its Prompt Cache?",
+      "date": "2026-09-29",
+      "events": 6,
+      "kinds": {
+        "ai-search": 2,
+        "unresolved": 3,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "ExaSearchBot": 2,
+        "none": 4
+      },
+      "sources": {
+        "absent": 6
+      },
+      "namedAiServiceEvents": 2,
+      "verifiedOutcomes": 2,
+      "forms": {
+        "unknown": 2,
+        "mobile-marker": 2,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 4,
+      "promptKinds": {
+        "unresolved": 2,
+        "ai-search": 1,
+        "cloud-browser": 1
+      },
+      "promptDeclarations": {
+        "none": 3,
+        "ExaSearchBot": 1
+      },
+      "promptSources": {
+        "absent": 4
+      },
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/you-dont-need-codemap",
+      "title": "You Don't Always Need Codemap",
+      "date": "2026-04-17",
+      "events": 6,
+      "kinds": {
+        "unresolved": 3,
+        "ai-search": 2,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 4,
+        "Meta-WebIndexer": 2
+      },
+      "sources": {
+        "absent": 6
+      },
+      "namedAiServiceEvents": 2,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 2,
+        "no-form-marker": 4
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/filter-referrer-spam-without-deleting-analytics-history",
+      "title": "How I Defend My Analytics Against Referrer Spam",
+      "date": "2026-09-06",
+      "events": 5,
+      "kinds": {
+        "unresolved": 3,
+        "other-bot": 1,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 5
+      },
+      "sources": {
+        "absent": 5
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 2,
+        "unknown": 1,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 6,
+      "promptKinds": {
+        "ai-search": 1,
+        "unresolved": 3,
+        "cloud-browser": 2
+      },
+      "promptDeclarations": {
+        "ExaSearchBot": 1,
+        "none": 5
+      },
+      "promptSources": {
+        "absent": 6
+      },
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/i-thought-building-was-enough",
+      "title": "The Builder\u2019s Perfectionism Trap",
+      "date": "2026-07-01",
+      "events": 5,
+      "kinds": {
+        "search-crawler": 1,
+        "unresolved": 3,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "Baiduspider": 1,
+        "none": 4
+      },
+      "sources": {
+        "absent": 5
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "unknown": 1,
+        "mobile-marker": 2,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 2,
+      "promptKinds": {
+        "unresolved": 2
+      },
+      "promptDeclarations": {
+        "none": 2
+      },
+      "promptSources": {
+        "absent": 2
+      },
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/my-evals-say-it-works-i-dont-use-it",
+      "title": "My Evals Say It Works. I Still Don't Reach for It.",
+      "date": "2026-08-21",
+      "events": 5,
+      "kinds": {
+        "unresolved": 3,
+        "search-crawler": 1,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 4,
+        "Googlebot": 1
+      },
+      "sources": {
+        "absent": 4,
+        "external": 1
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 3,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 3,
+      "promptKinds": {
+        "unresolved": 2,
+        "cloud-browser": 1
+      },
+      "promptDeclarations": {
+        "none": 3
+      },
+      "promptSources": {
+        "absent": 3
+      },
+      "largestReportedExternalSource": {
+        "publicHost": "t.co",
+        "events": 1,
+        "ofExternalEvents": 1
+      }
+    },
+    {
+      "path": "/openwiki-validates-my-bet",
+      "title": "OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live",
+      "date": "2026-07-23",
+      "events": 5,
+      "kinds": {
+        "unresolved": 3,
+        "search-crawler": 1,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 4,
+        "Googlebot": 1
+      },
+      "sources": {
+        "absent": 4,
+        "external": 1
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 3,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": "t.co",
+        "events": 1,
+        "ofExternalEvents": 1
+      }
+    },
+    {
+      "path": "/productive-procrastination",
+      "title": "Productive Procrastination: When Meaningful Work Costs You Sleep",
+      "date": "2026-09-21",
+      "events": 5,
+      "kinds": {
+        "unresolved": 3,
+        "search-crawler": 1,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 4,
+        "Googlebot": 1
+      },
+      "sources": {
+        "absent": 4,
+        "external": 1
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 3,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 3,
+      "promptKinds": {
+        "unresolved": 2,
+        "cloud-browser": 1
+      },
+      "promptDeclarations": {
+        "none": 3
+      },
+      "promptSources": {
+        "absent": 3
+      },
+      "largestReportedExternalSource": {
+        "publicHost": "t.co",
+        "events": 1,
+        "ofExternalEvents": 1
+      }
+    },
+    {
+      "path": "/i-am-lost-right-now",
+      "title": "I Am Lost Right Now",
+      "date": "2026-07-19",
+      "events": 4,
+      "kinds": {
+        "unresolved": 3,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 4
+      },
+      "sources": {
+        "absent": 4
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 2,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 0,
+      "promptKinds": {},
+      "promptDeclarations": {},
+      "promptSources": {},
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/the-agentic-product-engineer",
+      "title": "The Agentic Product Engineer",
+      "date": "2026-03-05",
+      "events": 4,
+      "kinds": {
+        "unresolved": 3,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 4
+      },
+      "sources": {
+        "absent": 4
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 2,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 2,
+      "promptKinds": {
+        "unresolved": 2
+      },
+      "promptDeclarations": {
+        "none": 2
+      },
+      "promptSources": {
+        "absent": 2
+      },
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    },
+    {
+      "path": "/what-if-the-agent-was-better-before-we-helped",
+      "title": "What If the Agent Was Better Before We Helped?",
+      "date": "2026-07-05",
+      "events": 4,
+      "kinds": {
+        "unresolved": 3,
+        "cloud-browser": 1
+      },
+      "declarations": {
+        "none": 4
+      },
+      "sources": {
+        "absent": 4
+      },
+      "namedAiServiceEvents": 0,
+      "verifiedOutcomes": 0,
+      "forms": {
+        "mobile-marker": 2,
+        "no-form-marker": 2
+      },
+      "promptPageEvents": 2,
+      "promptKinds": {
+        "unresolved": 2
+      },
+      "promptDeclarations": {
+        "none": 2
+      },
+      "promptSources": {
+        "absent": 2
+      },
+      "largestReportedExternalSource": {
+        "publicHost": null,
+        "events": 0,
+        "ofExternalEvents": 0
+      }
+    }
+  ],
+  "verification": {
+    "perRowSharedFactsMatchedOriginal": 397,
+    "sqlArticleKindGroupsMatched": 160,
+    "generatedModulesPinned": 68,
+    "generatedManifestSha256": "ec4d73704f8e296cb871c7befac801bbae020e713c31bfc96ab9834960e49abb",
+    "localMethodRowsRead": 15822,
+    "independentGroupRowsRead": 708
+  },
+  "productionSqlStatements": 0,
+  "newHumanLabels": 0,
+  "limits": [
+    "All counts are events, not people, retained clients, searches or comprehension.",
+    "AI-service counts require a recognized single declaration and a stored AI assistant/search/crawler kind; they are declared access, not verified purpose.",
+    "Stored verified outcomes are not fresh cryptographic replays.",
+    "Client-form markers describe claims, not physical-device or operator identity.",
+    "Unknown/referral concentration is not a spam verdict or acquisition authentication.",
+    "New catalogue articles with no captured rows are omitted; absence here is not zero demand."
+  ]
+}

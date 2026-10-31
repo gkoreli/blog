@@ -1,0 +1,43 @@
+{
+  "recordedAt": "2026-10-31T07:52:36.625129+00:00",
+  "sourceCommit": "84c4550772fa91a23c6f9371ba03270ef71783d5",
+  "buildId": "0b5d4039-1dfa-4542-b520-2d4706e4ef6c",
+  "versionId": "185a7ea6-6451-4af4-a31e-e2358ffb2cc2",
+  "nativeBuildCompletedAt": "2026-10-31T07:35:00.337Z",
+  "allocation": 100,
+  "sourceActivationAccepted": true,
+  "activationMethod": "Source-linked native dashboard build log and Ready deployment row with 100% control; active-version prefix agrees.",
+  "nativeNodeVersion": "24.22.1",
+  "localNodeVersion": "24.14.1",
+  "githubCheck": {
+    "id": 124478582846,
+    "status": "in_progress",
+    "conclusion": null,
+    "agreesWithNativeCompletion": false
+  },
+  "sourceFilesMatchCheckedCandidate": 9,
+  "linkageNegativeControls": 5,
+  "localBehaviorReceipt": "structured-extension-compatibility.json",
+  "productionSiteRequests": 0,
+  "productionSqlStatements": 0,
+  "newHumanLabels": 0,
+  "temporaryBrowserTabClosed": true,
+  "credentialsOrScopesChanged": false,
+  "directNativeBuildApiRead": false,
+  "fullGoalComplete": false,
+  "limits": [
+    "Native allocation displays an abbreviated version; its source-linked build log supplies the full version.",
+    "No fresh served asset, report, collector, vendor signature or per-request version trace was measured.",
+    "This is dashboard activation evidence, not a successful Wrangler API read or a green GitHub conclusion.",
+    "UI observation times were not independently timestamped; recordedAt is the later evidence-record creation time.",
+    "Later documentation-only deployments have separate identities."
+  ],
+  "archive": {
+    "path": "/Users/goga/Documents/goga/blog/packages/blog/worklog/analytics-evidence/2026-10-31-retained-agent-reach",
+    "files": 121,
+    "manifestFile": "manifest-final.json",
+    "manifestSha256": "164d000e8f54702d46c0675fa108dc9d016ae94a9f21ea3ad4e7556fc4c2b62b",
+    "verified": true,
+    "gitIgnored": true
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "recordedAt": "2026-10-31T07:53:50.470401+00:00",
+  "sourceCommit": "84c4550772fa91a23c6f9371ba03270ef71783d5",
+  "previousGoalTurn": "progress:84c4550 parser repair and local acceptance",
+  "scope": "Source activation accepted through pre-authorized native dashboard; historical397-row resource analysis. Fresh suffix stopped before SELECT.",
+  "freshDataAttempt": {
+    "metadataTool": "Wrangler 4.71.0 d1 info",
+    "exitCode": 1,
+    "providerErrorCode": 10000,
+    "causeEstablished": false,
+    "productionSelectStatements": 0,
+    "retried": false,
+    "credentialsOrScopesChanged": false,
+    "newUpperCutoffAccepted": false,
+    "latestAcceptedCutoffOwner": "102-all-kind-delta-and-verification-unknowns.md"
+  },
+  "nativeHelper": {
+    "fixtureCases": 64,
+    "scale": {
+      "rows": 1024,
+      "preflightReads": 1024,
+      "exportReads": 1060,
+      "productionStyleCaptureReads": 2084,
+      "localAssessmentReads": 112985,
+      "nativeRepeatedAssessmentComparisonReads": 62825,
+      "comparisonScope": "Same fixed synthetic relation and preflight; three remote-style aggregate calculations versus one exported rowset with offline calculations. Not a measured production saving.",
+      "queryWrites": 0,
+      "sourceBytes": 1310960
+    },
+    "isolatedCompiledVerifierProfile": "2026-10-31.2"
+  },
+  "discoveryFixAcceptance": {
+    "sourceCommit": "3174aebff8a119e00a20fe977ba827fe64f3e4cf",
+    "exactNodeWorkerdCases": 12,
+    "allExact": true,
+    "changesRepeated": false,
+    "newPublicSearchCalls": 0
+  },
+  "historicalResourceAnalysis": {
+    "sourceRows": 397,
+    "sourceManifestFilesVerified": 70,
+    "articleEvents": 243,
+    "promptPageEvents": 68,
+    "hubEvents": 86,
+    "unmappedEvents": 0,
+    "uniqueArticleParents": 33,
+    "distinctPromptPathsWithEvents": 18,
+    "perRowFactsMatched": 397,
+    "independentSqlGroups": 160,
+    "compiledModulesPinned": 68,
+    "catalogueEntries": 38,
+    "newerArticlesNotTreatedAsZeroDemand": true,
+    "newHumanLabels": 0,
+    "growthMeasured": false,
+    "currentOwnerTableRefreshed": false
+  },
+  "archive": {
+    "path": "/Users/goga/Documents/goga/blog/packages/blog/worklog/analytics-evidence/2026-10-31-retained-agent-reach",
+    "files": 121,
+    "manifestFile": "manifest-final.json",
+    "manifestSha256": "164d000e8f54702d46c0675fa108dc9d016ae94a9f21ea3ad4e7556fc4c2b62b",
+    "verified": true,
+    "gitIgnored": true
+  },
+  "fullGoalComplete": false,
+  "nextBoundedAction": "Build explicit article/evidence-resource accounting from checked catalogue relationships and test it on the frozen cohort; preserve separate counts and parent uniqueness. Native/human/privacy/search/fresh-D1 inputs retain their specific gates."
+}

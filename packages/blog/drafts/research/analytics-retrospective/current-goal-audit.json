@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T07:33:45.745727+00:00",
-  "sourceBaseline": "3174aebff8a119e00a20fe977ba827fe64f3e4cf",
+  "checkedAt": "2026-10-31T07:53:50.470401+00:00",
+  "sourceBaseline": "84c4550772fa91a23c6f9371ba03270ef71783d5",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "75d8d91 recorded independent discovery observations and reproduced draft reporting risks."
+    "scope": "84c4550 repaired legal Structured Field extensions with native-local and independent syntax evidence."
   },
-  "scope": "Repair of legal Structured Field extension syntax with frozen before/after native-local controls and independent syntax comparison. Source activation remains separate.",
+  "scope": "Source activation accepted through pre-authorized native dashboard; historical 397-row resource analysis. Fresh suffix stopped before SELECT.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -90,7 +90,8 @@
         "117-key-import-and-request-lifecycle-races.md",
         "118-caller-owned-directory-recovery.md",
         "123-structured-field-extension-compatibility.md",
-        "structured-extension-compatibility.json"
+        "structured-extension-compatibility.json",
+        "structured-extension-release.json"
       ],
       "limit": "Selected verified-proof coverage is preserved with profile provenance. Unsigned UA/path and discarded original evidence cannot be reconstructed by current code. Current verifier repairs do not rewrite old rows or prove production race frequency."
     },
@@ -111,7 +112,8 @@
         "116-directory-cache-clocks-and-key-admission.md",
         "119-directory-adoption-policy-and-cost.md",
         "123-structured-field-extension-compatibility.md",
-        "structured-extension-compatibility.json"
+        "structured-extension-compatibility.json",
+        "structured-extension-release.json"
       ],
       "limit": "Selected syntax/crypto conditions have exact Node/workerd and independent Structured Field syntax evidence. Profile .31.2 repairs decimal and semicolon-SP compatibility; this does not establish complete grammar/draft conformance, native managed agreement or actual vendor frequency. No accepted request-level signedAgent oracle or eligible controlled identity exists. The response-advisory runtime no-adoption decision remains closed."
     },
@@ -147,7 +149,7 @@
     {
       "id": "readership-and-editorial-use",
       "requirement": "Understand readership, growth, acquisition, search intent and article usefulness",
-      "status": "delivery-proxies-measured-demand-unproven",
+      "status": "access-discovery-and-external-reuse-measured-demand-and-growth-unproven",
       "source": [
         "article-reach.ts"
       ],
@@ -155,9 +157,13 @@
         "100-readership-delta-and-source-concentration.md",
         "101-article-specific-source-concentration.md",
         "111-weekly-history-in-the-retrospective.md",
-        "weekly-history-article-release.json"
+        "weekly-history-article-release.json",
+        "122-independent-agent-discovery-and-report-review.md",
+        "124-retained-agent-reach-delta.md",
+        "historical-article-resource-reach.json",
+        "retained-agent-reach-checks.json"
       ],
-      "limit": "Historical source sensitivity and article rankings are delivery evidence. They do not prove human growth, authentic referrals, search queries, useful reading or retention. No new census or authenticated query report is claimed. Human identification is not required to recognize supported agent reach, citation, distribution or use outcomes; ADR-0016.19 and its owning experiment record govern those claims."
+      "limit": "Observed request reach, targeted agent-search discovery and external evidence reuse count at their supported stages. The historical 397-row cohort separates 243 article, 68 prompt-page and 86 hub events; it cannot establish current growth, useful reading, authentic referrals, population search intent or people. No fresh all-kind suffix is accepted after the D1 metadata authentication error."
     },
     {
       "id": "eu-us-privacy-and-evidence-retention",
@@ -276,30 +282,37 @@
       "needed": "Independent/cooperative evidence of source operator and per-action purpose; original historical proofs/keys/wire evidence where recovery is claimed.",
       "owner": "75-frozen-signed-cohort-and-export-boundaries.md",
       "state": "unproven; missing referrer/UA or a valid host-bound signature cannot supply these facts, and discarded historical evidence may remain unrecoverable"
+    },
+    {
+      "id": "production-d1-authorization",
+      "needed": "Restore existing authorized CLI database access or another explicitly scoped accepted measurement input; no permission expansion is implied.",
+      "owner": "124-retained-agent-reach-delta.md",
+      "state": "Wrangler metadata API authentication code 10000; cause unknown, zero production SELECTs, no retry or credential/scope change."
     }
   ],
   "effectsThisAudit": {
-    "collectorParserChanged": true,
-    "signatureCoverageSemanticsChanged": false,
+    "runtimeChanged": false,
+    "parserSourceActivationAccepted": true,
+    "activationMethod": "Source-linked native dashboard; GitHub check still in_progress",
     "productionSiteRequests": 0,
     "productionSqlStatements": 0,
     "newHumanLabels": 0,
-    "vendorCaptures": 0,
-    "localSyntaxCases": 26,
-    "localSignedRequestCases": 12,
-    "localSignedResponseCases": 3,
+    "newPublicSearchCalls": 0,
+    "historicalRowsAnalyzed": 397,
+    "newRowsCaptured": 0,
+    "discoveryDraftFindingsClosedAgainstDeliveredSource": true,
     "articleChangedByThisWork": false,
-    "directoryRuntimeAdoptionChanged": false
+    "credentialsOrScopesChanged": false
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: legal extension parsing repaired and validated on frozen signed inputs with independent syntax evidence",
+    "thisTurnClassification": "progress: native source activation accepted, delivered reporting fixes verified and historical article/process access newly reconciled",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Verify exact-source activation of verifier .31.2, then repair the two Research122 discovery-reporting risks against delivered analyzer3174aeb. Preserve claim-specific human/native/privacy/search-input gates and the directory runtime no-adoption decision.",
+  "nextBoundedAction": "Build explicit article/evidence-resource accounting from checked catalogue relationships and test it on the frozen cohort; preserve separate counts and parent uniqueness. Native/human/privacy/search/fresh-D1 inputs retain their specific gates.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -327,8 +340,18 @@
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
   "goalStatusScope": "Persistent tracker confirmed active on this resumed turn. Historical blocked checkpoint remains preserved; claim-specific input gates do not block independent work.",
   "latestContinuation": {
-    "research": "123-structured-field-extension-compatibility.md",
-    "receipt": "structured-extension-compatibility.json",
-    "nextBoundedAction": "Verify exact-source activation of verifier .31.2, then repair the two Research122 discovery-reporting risks against delivered analyzer3174aeb. Preserve claim-specific human/native/privacy/search-input gates and the directory runtime no-adoption decision."
+    "research": "124-retained-agent-reach-delta.md",
+    "receipt": "retained-agent-reach-checks.json",
+    "activationReceipt": "structured-extension-release.json",
+    "nextBoundedAction": "Build explicit article/evidence-resource accounting from checked catalogue relationships and test it on the frozen cohort; preserve separate counts and parent uniqueness. Native/human/privacy/search/fresh-D1 inputs retain their specific gates."
+  },
+  "latestAcceptedSourceActivation": {
+    "sourceCommit": "84c4550772fa91a23c6f9371ba03270ef71783d5",
+    "versionId": "185a7ea6-6451-4af4-a31e-e2358ffb2cc2",
+    "allocation": 100,
+    "receipt": "structured-extension-release.json",
+    "method": "Native dashboard build log and deployment row",
+    "gitHubCheckStatus": "in_progress",
+    "productionBehaviorMeasured": false
   }
 }
