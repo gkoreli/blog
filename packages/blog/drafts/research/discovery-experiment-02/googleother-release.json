@@ -1,0 +1,44 @@
+{
+  "profile": "googleother-source-activation-v1",
+  "checkedAt": "2026-10-31T09:32:37.542612+00:00",
+  "sourceCommit": "afe2289105cb84b8c0b1498f93c89f087225c224",
+  "localAcceptanceReceipt": "googleother-checks.json",
+  "sourceMatchingFiles": 12,
+  "allSourceHashesMatch": true,
+  "githubCheck": {
+    "id": 124501656361,
+    "initialStatus": "in_progress",
+    "nativeBuildId": "27e2d1da-2597-41bb-83ae-d798037c218a"
+  },
+  "native": {
+    "workerVersion": "a980cbba-0e11-4cfb-90a0-7c2dbde9c16b",
+    "buildStatus": "Ready",
+    "allocationPercent": 100,
+    "buildDurationSeconds": 38,
+    "node": "24.22.1",
+    "pnpm": "9.15.4",
+    "builtPosts": 38,
+    "buildLogBytes": 5570,
+    "buildLogSha256": "fbc2a1c0403f552562466405719b4c2a3e05f7201566437fe003898b07546158"
+  },
+  "localNode": "24.14.1",
+  "privateEvidence": {
+    "path": "packages/blog/worklog/analytics-evidence/2026-10-31-googleother-release",
+    "files": 6,
+    "manifestSha256": "f785594e29000854eb1027f07c1b6b3260fa0f86060301c089394c722fa3eec5",
+    "allEntriesVerified": true
+  },
+  "limits": {
+    "productionSiteRequests": 0,
+    "productionStatsRequests": 0,
+    "productionSqlStatements": 0,
+    "productionObservationMeasured": false,
+    "currentVendorFrequencyMeasured": false,
+    "managedNativeBotVerdictMeasured": false,
+    "servedArticleOrPrivacyMeasured": false,
+    "deploymentRetried": false,
+    "settingsOrScopesChanged": false,
+    "newHumanLabels": 0,
+    "fullGoalComplete": false
+  }
+}

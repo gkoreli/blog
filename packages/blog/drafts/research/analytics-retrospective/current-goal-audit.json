@@ -1,6 +1,6 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T09:29:54.392623+00:00",
+  "checkedAt": "2026-10-31T09:32:37.542612+00:00",
   "sourceBaseline": "6788e6140ba2dffd1f32f155031a597622f5e98c",
   "goalStatus": "active",
   "goalAchieved": false,
@@ -352,7 +352,7 @@
     "rawCollectionActivated": false,
     "articleChanged": false,
     "articleChangedByThisWork": false,
-    "sourceActivationMeasured": false,
+    "sourceActivationMeasured": true,
     "servedDestinationAcceptance": false,
     "privacyDisclosureChanged": false,
     "productionRequests": 0,
@@ -370,13 +370,13 @@
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: documented GoogleOther mislabel/alias/method gaps repaired with preserved history, versioned report bounds, exact Node/workerd/D1 controls and pinned registry comparison",
+    "thisTurnClassification": "progress: documented GoogleOther mislabel/alias/method gaps repaired with preserved history, versioned report bounds, exact Node/workerd/D1 controls and pinned registry comparison; exact source activation accepted",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Confirm exact-source activation of the GoogleOther repair. Then review the documented Google-CloudVertexBot role/method separately, preserving the distinction between owner-requested agent crawling and a proved action purpose. Existing native/search/human/privacy/source-purpose/D1 gates remain; do not retry gated measurements or repeat accepted fixtures.",
+  "nextBoundedAction": "Review the documented Google-CloudVertexBot role/method separately, preserving the distinction between owner-requested agent crawling and a proved action purpose. Existing native/search/human/privacy/source-purpose/D1 gates remain; do not retry gated measurements, repeat accepted fixtures or chase documentation-only deployments.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -406,14 +406,15 @@
   "latestContinuation": {
     "research": "../discovery-experiment-02/08-googleother-declarations-and-network-evidence.md",
     "receipt": "../discovery-experiment-02/googleother-checks.json",
-    "nextBoundedAction": "Confirm exact-source activation of the GoogleOther repair. Then review the documented Google-CloudVertexBot role/method separately, preserving the distinction between owner-requested agent crawling and a proved action purpose. Existing native/search/human/privacy/source-purpose/D1 gates remain; do not retry gated measurements or repeat accepted fixtures."
+    "nextBoundedAction": "Review the documented Google-CloudVertexBot role/method separately, preserving the distinction between owner-requested agent crawling and a proved action purpose. Existing native/search/human/privacy/source-purpose/D1 gates remain; do not retry gated measurements, repeat accepted fixtures or chase documentation-only deployments.",
+    "release": "../discovery-experiment-02/googleother-release.json"
   },
   "latestAcceptedSourceActivation": {
-    "sourceCommit": "ebe943974b2b53197ee2cb1106b337cc376d8437",
-    "versionId": "65bdef0f-7f28-45f5-9a0c-0e701bf9f61b",
+    "sourceCommit": "afe2289105cb84b8c0b1498f93c89f087225c224",
+    "versionId": "a980cbba-0e11-4cfb-90a0-7c2dbde9c16b",
     "allocation": 100,
-    "receipt": "../discovery-experiment-02/report-integrity-release.json",
-    "method": "Native source-linked build log, displayed Ready/100% meter and active version prefix",
+    "receipt": "../discovery-experiment-02/googleother-release.json",
+    "method": "Native source-linked build log, Ready status, allocation meter100 and matching active version prefix",
     "productionBehaviorMeasured": false,
     "servedDestinationAcceptance": false
   }
