@@ -40,4 +40,6 @@ Four repository baselines and the gist's exact per-file raw revisions are record
 
 Remaining: implementation traces and reproductions; distinct article decisions, drafts, checks and site publication; authorized distribution and reader outcomes. `rustc` resolves to an unconfigured mise shim; a Rust 1.96.1 installation is advertised, but no global setting was changed. These are first-pass inputs, not repeated blockers.
 
-**Next bounded action:** finish the isolated build and served acceptance of the first tsrs article, then test PaperPilot's redaction path with a synthetic PDF. The other projects' pinned source inventories and selected code are downloaded outside Git. No agent delegation is authorized or needed.
+**Current progress:** one of five investigations has a published, served-verified article: [OSS Radar #09: tsrs Checks VS Code Faster with 56% Less RAM](https://gkoreli.com/oss-radar-09-tsrs-typescript-memory). Sixty timing samples, twelve deliberate-error controls and thirty-two file-order/count checks support it. [Delivery evidence](results/tsrs-publication-checks.json). Actual readership is not measured. Four investigations remain incomplete.
+
+**Next bounded action:** test PaperPilot's redaction path with a synthetic PDF. Its pinned full source is extracted at `/tmp/oss-radar-five-claims-2026-10-30/paperpilot-fixture`; the actual MCP `pdf_redact` handler calls the inspected `RedactOperation`. The other projects' pinned source inventories and selected code are downloaded outside Git. No agent delegation is authorized or needed.

@@ -27,5 +27,25 @@
     "TZ": "UTC",
     "publicTurnstileKeyPresent": true
   },
-  "publicationState": "local acceptance; push and served checks pending"
+  "publicationState": "published; source-linked build passed and canonical browser page verified",
+  "sourceCommit": "91c93e1598827917d0ed43c91f05ece484e87502",
+  "sourceLinkedBuild": {
+    "id": "c0db4142-f350-4735-ad55-32c8d6c06cc3",
+    "url": "https://dash.cloudflare.com/7e0dc86ef69b4572a63162a52cddd269/workers/services/view/gkoreli-com/production/builds/c0db4142-f350-4735-ad55-32c8d6c06cc3",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "live": {
+    "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory",
+    "checkedAt": "2026-10-31T01:07:33.157Z",
+    "method": "canonical browser page after source-linked build completed",
+    "h1AndOpening": true,
+    "timingAndMemoryTable": true,
+    "fileOrderControl": true,
+    "methodsAndSources": true,
+    "rawDomSha256": "7da06fd36fa8843b0d57facd4b6f666fb407dacbfe9db34203b1113943de5293",
+    "screenshotSha256": "8e68b262a50ad408b1a0abeaa0c9eb344a54967c8379cf0958796a996872de02",
+    "programmaticFirstRequest": "HTTP 403; browser canonical page loads normally; not universal anonymous access evidence"
+  },
+  "distribution": "No additional social post or HN comment sent; publication and actual readers remain distinct"
 }
