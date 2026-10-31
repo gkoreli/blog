@@ -1,0 +1,44 @@
+{
+  "profile": "cloudvertex-source-activation-v1",
+  "checkedAt": "2026-10-31T09:41:46.892682+00:00",
+  "sourceCommit": "b737e6ad4ce298f7a4103ce7f023eb36d03d09a6",
+  "localAcceptanceReceipt": "cloudvertex-checks.json",
+  "sourceMatchingFiles": 11,
+  "allSourceHashesMatch": true,
+  "githubCheck": {
+    "id": 124503484967,
+    "initialStatus": "in_progress",
+    "nativeBuildId": "e479ca93-96ed-4ae9-98da-0fe40bc9eeec"
+  },
+  "native": {
+    "workerVersion": "d20dd8bf-e02f-4b3f-80e5-724bd58407cb",
+    "buildStatus": "Ready",
+    "allocationPercent": 100,
+    "buildDurationSeconds": 47,
+    "node": "24.22.1",
+    "pnpm": "9.15.4",
+    "builtPosts": 38,
+    "buildLogBytes": 5575,
+    "buildLogSha256": "6e131d4bc91574068ebef4563431e0974c7e95d6579d539c8ce82ced013622db"
+  },
+  "localNode": "24.14.1",
+  "privateEvidence": {
+    "path": "packages/blog/worklog/analytics-evidence/2026-10-31-cloudvertex-release",
+    "files": 6,
+    "manifestSha256": "d5f516002d998f7e9edbde90a176e8fcd358b96a1974a0585e7477f08b2cde55",
+    "allEntriesVerified": true
+  },
+  "limits": {
+    "productionSiteRequests": 0,
+    "productionStatsRequests": 0,
+    "productionSqlStatements": 0,
+    "productionObservationMeasured": false,
+    "currentVendorFrequencyMeasured": false,
+    "managedNativeBotVerdictMeasured": false,
+    "servedDashboardOrArticleMeasured": false,
+    "deploymentRetried": false,
+    "settingsOrScopesChanged": false,
+    "newHumanLabels": 0,
+    "fullGoalComplete": false
+  }
+}

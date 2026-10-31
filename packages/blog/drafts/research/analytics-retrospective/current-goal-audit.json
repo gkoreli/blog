@@ -1,6 +1,6 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T09:39:20.462093+00:00",
+  "checkedAt": "2026-10-31T09:41:46.892682+00:00",
   "sourceBaseline": "2f465ad994dbf003ccaf7e7a4be2e0d326e78ee0",
   "goalStatus": "active",
   "goalAchieved": false,
@@ -353,7 +353,7 @@
     "rawCollectionActivated": false,
     "articleChanged": false,
     "articleChangedByThisWork": false,
-    "sourceActivationMeasured": false,
+    "sourceActivationMeasured": true,
     "servedDestinationAcceptance": false,
     "privacyDisclosureChanged": false,
     "productionRequests": 0,
@@ -372,13 +372,13 @@
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: CloudVertex method and indexing scope repaired; versioned history bounds, exact Node/native controls and actual local collector writes accepted",
+    "thisTurnClassification": "progress: CloudVertex method and indexing scope repaired; versioned history bounds, exact Node/native controls and actual local collector writes accepted; exact source activation accepted",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Confirm exact-source activation of the CloudVertex repair. Then inspect whether separately retained classification facts can cross-check network source/count assignments without inventing historical evidence or expanding collection. Preserve all six external input gates; no production-data retry, repeated accepted fixtures or documentation-only activation chase.",
+  "nextBoundedAction": "Inspect whether separately retained classification facts can cross-check network source/count assignments without inventing historical evidence or expanding collection. Preserve all six external input gates; no production-data retry, repeated accepted fixtures or documentation-only activation chase.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -408,13 +408,14 @@
   "latestContinuation": {
     "research": "../discovery-experiment-02/09-cloudvertex-indexing-and-method-boundaries.md",
     "receipt": "../discovery-experiment-02/cloudvertex-checks.json",
-    "nextBoundedAction": "Confirm exact-source activation of the CloudVertex repair. Then inspect whether separately retained classification facts can cross-check network source/count assignments without inventing historical evidence or expanding collection. Preserve all six external input gates; no production-data retry, repeated accepted fixtures or documentation-only activation chase."
+    "nextBoundedAction": "Inspect whether separately retained classification facts can cross-check network source/count assignments without inventing historical evidence or expanding collection. Preserve all six external input gates; no production-data retry, repeated accepted fixtures or documentation-only activation chase.",
+    "release": "../discovery-experiment-02/cloudvertex-release.json"
   },
   "latestAcceptedSourceActivation": {
-    "sourceCommit": "afe2289105cb84b8c0b1498f93c89f087225c224",
-    "versionId": "a980cbba-0e11-4cfb-90a0-7c2dbde9c16b",
+    "sourceCommit": "b737e6ad4ce298f7a4103ce7f023eb36d03d09a6",
+    "versionId": "d20dd8bf-e02f-4b3f-80e5-724bd58407cb",
     "allocation": 100,
-    "receipt": "../discovery-experiment-02/googleother-release.json",
+    "receipt": "../discovery-experiment-02/cloudvertex-release.json",
     "method": "Native source-linked build log, Ready status, allocation meter100 and matching active version prefix",
     "productionBehaviorMeasured": false,
     "servedDestinationAcceptance": false
