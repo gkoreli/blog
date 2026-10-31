@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T07:53:50.470401+00:00",
-  "sourceBaseline": "84c4550772fa91a23c6f9371ba03270ef71783d5",
+  "checkedAt": "2026-10-31T08:06:20.341425+00:00",
+  "sourceBaseline": "8f0b8e89ceca8d955748f91e893f8bafed4bed7b",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "84c4550 repaired legal Structured Field extensions with native-local and independent syntax evidence."
+    "scope": "Research124 native parser activation and historical resource reconciliation."
   },
-  "scope": "Source activation accepted through pre-authorized native dashboard; historical 397-row resource analysis. Fresh suffix stopped before SELECT.",
+  "scope": "Offline explicit resource-reach capability accepted on historical data, no fresh collection or production access.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -21,7 +21,8 @@
     "classifier": "2026-10-29.3",
     "incomingVerifier": "2026-10-31.2",
     "offlineDirectoryAudit": "2026-10-31.2",
-    "statsReportCache": "2026-10-31.3"
+    "statsReportCache": "2026-10-31.3",
+    "offlineResourceReach": "2026-10-31.1"
   },
   "sourceSha256": {
     "classify.ts": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
@@ -38,7 +39,8 @@
     "webbotauth.ts": "54348a11b372528ae042dc31b17b42c06104ec16e72e32b1e025b1f94aa38411",
     "directory-response-audit.ts": "f72a1ad7609ac8b05ed92b2a4a74aab2e7396324bd7bf86f54bd9846ac1ca710",
     "search-evidence.ts": "2dcca61325112b040e30c39d1f5ebb0281da270ad7de164bfe13dc7e47fb8c8c",
-    "verifier-profile.ts": "d4d9d00f32c1a750878c1b80a66d088a27557b924ad862a6e939bc7e5c221864"
+    "verifier-profile.ts": "d4d9d00f32c1a750878c1b80a66d088a27557b924ad862a6e939bc7e5c221864",
+    "resource-reach.ts": "a2d5341e3870a902be4c740f308aadd55ff166f4b48277de352ce75383d32718"
   },
   "requirements": [
     {
@@ -136,13 +138,16 @@
       "status": "report-implemented-growth-inference-incomplete",
       "source": [
         "article-reach.ts",
-        "article-reach-contract.ts"
+        "article-reach-contract.ts",
+        "resource-reach.ts"
       ],
       "evidence": [
         "109-weekly-measurement-history.md",
         "110-weekly-history-production-acceptance.md",
         "readership-history-release.json",
-        "113-fresh-current-production-calibration.md"
+        "113-fresh-current-production-calibration.md",
+        "125-explicit-resource-reach-accounting.md",
+        "resource-reach-checks.json"
       ],
       "limit": "Weekly joint measurement history is implemented and has dated production acceptance; Research108's identical-report counterexample is superseded for that gap. Stage controls distinguish response/script/queue/receipt, but representative human/device/RUM behavior remains unmeasured."
     },
@@ -151,7 +156,8 @@
       "requirement": "Understand readership, growth, acquisition, search intent and article usefulness",
       "status": "access-discovery-and-external-reuse-measured-demand-and-growth-unproven",
       "source": [
-        "article-reach.ts"
+        "article-reach.ts",
+        "resource-reach.ts"
       ],
       "evidence": [
         "100-readership-delta-and-source-concentration.md",
@@ -161,7 +167,9 @@
         "122-independent-agent-discovery-and-report-review.md",
         "124-retained-agent-reach-delta.md",
         "historical-article-resource-reach.json",
-        "retained-agent-reach-checks.json"
+        "retained-agent-reach-checks.json",
+        "125-explicit-resource-reach-accounting.md",
+        "resource-reach-checks.json"
       ],
       "limit": "Observed request reach, targeted agent-search discovery and external evidence reuse count at their supported stages. The historical 397-row cohort separates 243 article, 68 prompt-page and 86 hub events; it cannot establish current growth, useful reading, authentic referrals, population search intent or people. No fresh all-kind suffix is accepted after the D1 metadata authentication error."
     },
@@ -292,27 +300,25 @@
   ],
   "effectsThisAudit": {
     "runtimeChanged": false,
-    "parserSourceActivationAccepted": true,
-    "activationMethod": "Source-linked native dashboard; GitHub check still in_progress",
+    "offlineCapabilityAdded": true,
     "productionSiteRequests": 0,
     "productionSqlStatements": 0,
     "newHumanLabels": 0,
     "newPublicSearchCalls": 0,
     "historicalRowsAnalyzed": 397,
     "newRowsCaptured": 0,
-    "discoveryDraftFindingsClosedAgainstDeliveredSource": true,
     "articleChangedByThisWork": false,
     "credentialsOrScopesChanged": false
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: native source activation accepted, delivered reporting fixes verified and historical article/process access newly reconciled",
+    "thisTurnClassification": "progress: reusable explicit resource accounting, actual historical input and independent native/CLI acceptance",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Build explicit article/evidence-resource accounting from checked catalogue relationships and test it on the frozen cohort; preserve separate counts and parent uniqueness. Native/human/privacy/search/fresh-D1 inputs retain their specific gates.",
+  "nextBoundedAction": "Inspect retained windows and publication/exposure boundaries for a defensible article/resource trend. Compare only qualifying selections with explicit measurement histories; otherwise report missing coverage. Claim-specific external inputs remain unresolved.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -338,12 +344,11 @@
     "scopeAfterOwnerContinuation": "Historical checkpoint for missing measurement inputs; not a prohibition on independent implementation, observed agent growth or discovery work."
   },
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
-  "goalStatusScope": "Persistent tracker confirmed active on this resumed turn. Historical blocked checkpoint remains preserved; claim-specific input gates do not block independent work.",
+  "goalStatusScope": "Persistent goal tracker confirmed active this turn. Offline acceptance is new progress; historical blocked checkpoint and claim-specific gates remain preserved.",
   "latestContinuation": {
-    "research": "124-retained-agent-reach-delta.md",
-    "receipt": "retained-agent-reach-checks.json",
-    "activationReceipt": "structured-extension-release.json",
-    "nextBoundedAction": "Build explicit article/evidence-resource accounting from checked catalogue relationships and test it on the frozen cohort; preserve separate counts and parent uniqueness. Native/human/privacy/search/fresh-D1 inputs retain their specific gates."
+    "research": "125-explicit-resource-reach-accounting.md",
+    "receipt": "resource-reach-checks.json",
+    "nextBoundedAction": "Inspect retained windows and publication/exposure boundaries for a defensible article/resource trend. Compare only qualifying selections with explicit measurement histories; otherwise report missing coverage. Claim-specific external inputs remain unresolved."
   },
   "latestAcceptedSourceActivation": {
     "sourceCommit": "84c4550772fa91a23c6f9371ba03270ef71783d5",

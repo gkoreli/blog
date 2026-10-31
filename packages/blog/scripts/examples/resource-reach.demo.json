@@ -1,0 +1,128 @@
+{
+  "version": "resource-reach-v1",
+  "provenance": "synthetic",
+  "scope": {
+    "selectionId": "synthetic-control",
+    "registryVersion": "demo-1",
+    "inclusionContext": "Labelled synthetic assessment; no production data.",
+    "capturedAt": "2026-10-31T12:00:00Z",
+    "startInclusive": "2026-10-30T00:00:00Z",
+    "endExclusive": "2026-10-31T00:00:00Z"
+  },
+  "registry": {
+    "articles": [
+      {
+        "id": "article-a",
+        "path": "/article-a",
+        "title": "Article A",
+        "aliases": [
+          "/old-a"
+        ],
+        "evidence": [
+          {
+            "id": "article-a:prompts",
+            "path": "/declared-evidence-a",
+            "title": "Prompts"
+          }
+        ]
+      }
+    ],
+    "siteResources": [
+      {
+        "id": "home",
+        "path": "/",
+        "title": "Home"
+      }
+    ]
+  },
+  "events": [
+    {
+      "reference": "private-reference-0",
+      "path": "/article-a",
+      "observedAt": "2026-10-30T12:00:00Z",
+      "assessment": "included",
+      "storedKind": "ai-search",
+      "collection": "2026-10-29.6",
+      "classifier": "2026-10-29.3",
+      "observationSource": "edge",
+      "representation": "html"
+    },
+    {
+      "reference": "private-reference-1",
+      "path": "/declared-evidence-a",
+      "observedAt": "2026-10-30T12:00:00Z",
+      "assessment": "included",
+      "storedKind": "browser",
+      "collection": "2026-10-29.6",
+      "classifier": "2026-10-29.3",
+      "observationSource": "edge",
+      "representation": "html"
+    },
+    {
+      "reference": "private-reference-2",
+      "path": "/old-a",
+      "observedAt": "2026-10-30T12:00:00Z",
+      "assessment": "included",
+      "storedKind": "unresolved",
+      "collection": "2026-10-29.6",
+      "classifier": "2026-10-29.3",
+      "observationSource": "edge",
+      "representation": "html"
+    },
+    {
+      "reference": "private-reference-3",
+      "path": "/",
+      "observedAt": "2026-10-30T12:00:00Z",
+      "assessment": "included",
+      "storedKind": "browser",
+      "collection": "2026-10-29.6",
+      "classifier": "2026-10-29.3",
+      "observationSource": "edge",
+      "representation": "html"
+    },
+    {
+      "reference": "private-reference-4",
+      "path": "/private-unmapped-canary",
+      "observedAt": "2026-10-30T12:00:00Z",
+      "assessment": "included",
+      "storedKind": null,
+      "collection": "2026-10-29.6",
+      "classifier": "2026-10-29.3",
+      "observationSource": "edge",
+      "representation": "html"
+    },
+    {
+      "reference": "private-reference-5",
+      "path": "/article-a",
+      "observedAt": "2026-10-30T12:00:00Z",
+      "assessment": "owner-excluded",
+      "storedKind": "browser",
+      "collection": "2026-10-29.6",
+      "classifier": "2026-10-29.3",
+      "observationSource": "edge",
+      "representation": "html"
+    },
+    {
+      "reference": "private-reference-6",
+      "path": "/declared-evidence-a",
+      "observedAt": "2026-10-30T12:00:00Z",
+      "assessment": "referral-excluded",
+      "storedKind": "browser",
+      "collection": "2026-10-29.6",
+      "classifier": "2026-10-29.3",
+      "observationSource": "edge",
+      "representation": "html"
+    },
+    {
+      "reference": "private-reference-7",
+      "path": "/article-a",
+      "observedAt": "2026-10-30T12:00:00Z",
+      "assessment": "unassessed",
+      "storedKind": "browser",
+      "collection": "2026-10-29.6",
+      "classifier": "2026-10-29.3",
+      "observationSource": "edge",
+      "representation": "html"
+    }
+  ]
+}

@@ -1,0 +1,502 @@
+{
+  "checkedAt": "2026-10-31T08:06:20.341425+00:00",
+  "sourceBaseline": "8f0b8e89ceca8d955748f91e893f8bafed4bed7b",
+  "capability": "resource-reach-v1",
+  "profile": "2026-10-31.1",
+  "sourceSha256": {
+    "packages/analytics/src/resource-reach.ts": "a2d5341e3870a902be4c740f308aadd55ff166f4b48277de352ce75383d32718",
+    "packages/analytics/src/contracts.ts": "b026d4ee769655abbdfac1d74940ad2c9798ce726644c2fe66d5847f99c91e16",
+    "packages/analytics/test/resource-reach.test.mjs": "0282537b115d8d214eea6fe9b0a23150c03dfa0d49ad3d985bd96a8de78d2163",
+    "packages/analytics/package.json": "60f6d349a0929d63ee47f8d11db14e67be9b62d4f2e843da7a435bad0f01bee2",
+    "packages/blog/scripts/resource-reach.mjs": "191ddfc7312cf8cf8d6eab5bfa7737dfaf31ea337941680ffb83e58172b2d40c",
+    "packages/blog/scripts/check-resource-reach.mjs": "c98f7ad3909dc547a98a550176ecf0461dc152cbb09a02a5636a00f6212a4d28",
+    "packages/blog/scripts/check-resource-reach-cli.mjs": "3b6cd70408b55c74d1aaa220271da0514ec6e4929b69823332c852d00193a002",
+    "packages/blog/scripts/examples/resource-reach.demo.json": "65738a36c8b4ca4f96f924713a7fca819b4fb553937a49e2fe3e527eca89cb76"
+  },
+  "historical": {
+    "checkedAt": "2026-10-31T08:05:04.589Z",
+    "sourceArchiveManifestSha256": "164d000e8f54702d46c0675fa108dc9d016ae94a9f21ea3ad4e7556fc4c2b62b",
+    "archiveFilesVerified": 121,
+    "inputSha256": "5775fa96478f57e752c0a1839373be0193027d25fa9eecd54b06a051c84c262b",
+    "registry": {
+      "articles": 38,
+      "evidenceResources": 19,
+      "siteResources": 9,
+      "registeredPaths": 66
+    },
+    "accounting": {
+      "selectedEvents": 397,
+      "includedEvents": 397,
+      "ownerExcludedEvents": 0,
+      "referralExcludedEvents": 0,
+      "unassessedEvents": 0
+    },
+    "roles": [
+      {
+        "role": "article",
+        "accounting": {
+          "selectedEvents": 243,
+          "includedEvents": 243,
+          "ownerExcludedEvents": 0,
+          "referralExcludedEvents": 0,
+          "unassessedEvents": 0
+        },
+        "selected": {
+          "events": 243,
+          "aliasEvents": 0,
+          "timeNotRecordedEvents": 0,
+          "timeUnrecognizedEvents": 0,
+          "byStoredKind": [
+            {
+              "kind": "ai-assistant",
+              "events": 2
+            },
+            {
+              "kind": "ai-crawler",
+              "events": 4
+            },
+            {
+              "kind": "ai-search",
+              "events": 36
+            },
+            {
+              "kind": "browser",
+              "events": 21
+            },
+            {
+              "kind": "cloud-browser",
+              "events": 50
+            },
+            {
+              "kind": "http-client",
+              "events": 4
+            },
+            {
+              "kind": "other-bot",
+              "events": 8
+            },
+            {
+              "kind": "search-crawler",
+              "events": 14
+            },
+            {
+              "kind": "seo-crawler",
+              "events": 1
+            },
+            {
+              "kind": "unresolved",
+              "events": 103
+            }
+          ],
+          "measurementHistory": [
+            {
+              "collection": "2026-10-29.6",
+              "classifier": "2026-10-29.3",
+              "observationSource": "edge",
+              "representation": "html",
+              "events": 229
+            },
+            {
+              "collection": "2026-10-29.6",
+              "classifier": "2026-10-29.3",
+              "observationSource": "edge",
+              "representation": "markdown",
+              "events": 14
+            }
+          ]
+        },
+        "included": {
+          "events": 243,
+          "aliasEvents": 0,
+          "timeNotRecordedEvents": 0,
+          "timeUnrecognizedEvents": 0,
+          "byStoredKind": [
+            {
+              "kind": "ai-assistant",
+              "events": 2
+            },
+            {
+              "kind": "ai-crawler",
+              "events": 4
+            },
+            {
+              "kind": "ai-search",
+              "events": 36
+            },
+            {
+              "kind": "browser",
+              "events": 21
+            },
+            {
+              "kind": "cloud-browser",
+              "events": 50
+            },
+            {
+              "kind": "http-client",
+              "events": 4
+            },
+            {
+              "kind": "other-bot",
+              "events": 8
+            },
+            {
+              "kind": "search-crawler",
+              "events": 14
+            },
+            {
+              "kind": "seo-crawler",
+              "events": 1
+            },
+            {
+              "kind": "unresolved",
+              "events": 103
+            }
+          ],
+          "measurementHistory": [
+            {
+              "collection": "2026-10-29.6",
+              "classifier": "2026-10-29.3",
+              "observationSource": "edge",
+              "representation": "html",
+              "events": 229
+            },
+            {
+              "collection": "2026-10-29.6",
+              "classifier": "2026-10-29.3",
+              "observationSource": "edge",
+              "representation": "markdown",
+              "events": 14
+            }
+          ]
+        }
+      },
+      {
+        "role": "evidence",
+        "accounting": {
+          "selectedEvents": 68,
+          "includedEvents": 68,
+          "ownerExcludedEvents": 0,
+          "referralExcludedEvents": 0,
+          "unassessedEvents": 0
+        },
+        "selected": {
+          "events": 68,
+          "aliasEvents": 0,
+          "timeNotRecordedEvents": 0,
+          "timeUnrecognizedEvents": 0,
+          "byStoredKind": [
+            {
+              "kind": "ai-crawler",
+              "events": 1
+            },
+            {
+              "kind": "ai-search",
+              "events": 5
+            },
+            {
+              "kind": "browser",
+              "events": 1
+            },
+            {
+              "kind": "cloud-browser",
+              "events": 17
+            },
+            {
+              "kind": "search-crawler",
+              "events": 1
+            },
+            {
+              "kind": "seo-crawler",
+              "events": 1
+            },
+            {
+              "kind": "unresolved",
+              "events": 42
+            }
+          ],
+          "measurementHistory": [
+            {
+              "collection": "2026-10-29.6",
+              "classifier": "2026-10-29.3",
+              "observationSource": "edge",
+              "representation": "html",
+              "events": 68
+            }
+          ]
+        },
+        "included": {
+          "events": 68,
+          "aliasEvents": 0,
+          "timeNotRecordedEvents": 0,
+          "timeUnrecognizedEvents": 0,
+          "byStoredKind": [
+            {
+              "kind": "ai-crawler",
+              "events": 1
+            },
+            {
+              "kind": "ai-search",
+              "events": 5
+            },
+            {
+              "kind": "browser",
+              "events": 1
+            },
+            {
+              "kind": "cloud-browser",
+              "events": 17
+            },
+            {
+              "kind": "search-crawler",
+              "events": 1
+            },
+            {
+              "kind": "seo-crawler",
+              "events": 1
+            },
+            {
+              "kind": "unresolved",
+              "events": 42
+            }
+          ],
+          "measurementHistory": [
+            {
+              "collection": "2026-10-29.6",
+              "classifier": "2026-10-29.3",
+              "observationSource": "edge",
+              "representation": "html",
+              "events": 68
+            }
+          ]
+        }
+      },
+      {
+        "role": "site",
+        "accounting": {
+          "selectedEvents": 86,
+          "includedEvents": 86,
+          "ownerExcludedEvents": 0,
+          "referralExcludedEvents": 0,
+          "unassessedEvents": 0
+        },
+        "selected": {
+          "events": 86,
+          "aliasEvents": 0,
+          "timeNotRecordedEvents": 0,
+          "timeUnrecognizedEvents": 0,
+          "byStoredKind": [
+            {
+              "kind": "ai-crawler",
+              "events": 2
+            },
+            {
+              "kind": "browser",
+              "events": 7
+            },
+            {
+              "kind": "cloud-browser",
+              "events": 28
+            },
+            {
+              "kind": "headless-browser",
+              "events": 1
+            },
+            {
+              "kind": "other-bot",
+              "events": 6
+            },
+            {
+              "kind": "search-crawler",
+              "events": 2
+            },
+            {
+              "kind": "unresolved",
+              "events": 40
+            }
+          ],
+          "measurementHistory": [
+            {
+              "collection": "2026-10-29.6",
+              "classifier": "2026-10-29.3",
+              "observationSource": "edge",
+              "representation": "html",
+              "events": 86
+            }
+          ]
+        },
+        "included": {
+          "events": 86,
+          "aliasEvents": 0,
+          "timeNotRecordedEvents": 0,
+          "timeUnrecognizedEvents": 0,
+          "byStoredKind": [
+            {
+              "kind": "ai-crawler",
+              "events": 2
+            },
+            {
+              "kind": "browser",
+              "events": 7
+            },
+            {
+              "kind": "cloud-browser",
+              "events": 28
+            },
+            {
+              "kind": "headless-browser",
+              "events": 1
+            },
+            {
+              "kind": "other-bot",
+              "events": 6
+            },
+            {
+              "kind": "search-crawler",
+              "events": 2
+            },
+            {
+              "kind": "unresolved",
+              "events": 40
+            }
+          ],
+          "measurementHistory": [
+            {
+              "collection": "2026-10-29.6",
+              "classifier": "2026-10-29.3",
+              "observationSource": "edge",
+              "representation": "html",
+              "events": 86
+            }
+          ]
+        }
+      },
+      {
+        "role": "unmapped",
+        "accounting": {
+          "selectedEvents": 0,
+          "includedEvents": 0,
+          "ownerExcludedEvents": 0,
+          "referralExcludedEvents": 0,
+          "unassessedEvents": 0
+        },
+        "selected": {
+          "events": 0,
+          "aliasEvents": 0,
+          "timeNotRecordedEvents": 0,
+          "timeUnrecognizedEvents": 0,
+          "byStoredKind": [],
+          "measurementHistory": []
+        },
+        "included": {
+          "events": 0,
+          "aliasEvents": 0,
+          "timeNotRecordedEvents": 0,
+          "timeUnrecognizedEvents": 0,
+          "byStoredKind": [],
+          "measurementHistory": []
+        }
+      }
+    ],
+    "articleParentsObserved": 33,
+    "priorNativeSqlGroupsMatched": 160,
+    "storedKindsMatched": true,
+    "scope": {
+      "selectionId": "research-102-retained-suffix",
+      "registryVersion": "research-124-catalogue-8221d27",
+      "inclusionContext": "Research 102 retained capture owner-link state and supplied accepted assessments; no fresh owner-table read.",
+      "capturedAt": "2026-10-30T09:50:12.131Z",
+      "startInclusive": "2026-10-29T20:39:23Z",
+      "endExclusive": "2026-10-30T09:38:04Z",
+      "timeZone": "UTC",
+      "windowExtendsAfterCapture": false,
+      "populationCompleteness": "not-established"
+    },
+    "sourceAuthenticity": "not-established",
+    "productionRequests": 0,
+    "productionSqlStatements": 0,
+    "newHumanLabels": 0
+  },
+  "native": {
+    "syntheticCases": 34,
+    "rounds": 3,
+    "exactSyntheticComparisons": 102,
+    "acceptedPerRound": 18,
+    "rejectedPerRound": 16,
+    "historicalComparisons": 3,
+    "resultAndBriefEqual": true,
+    "sourceSha256": "a2d5341e3870a902be4c740f308aadd55ff166f4b48277de352ce75383d32718",
+    "workerBundleSha256": "bfdc22e4924bfc04228b3042220d9ac9bf4136eb4c23cfd7fc126b055abc6fc6",
+    "inputSha256": "7a10a5038a88a27254a161494048ea1cce07b8d2f614d66a3fccc050893efdbc"
+  },
+  "cli": {
+    "checkedAt": "2026-10-31T08:05:05.263Z",
+    "node": "v24.14.1",
+    "successfulSyntheticInput": true,
+    "privateModesChecked": true,
+    "inputByteHashMatches": true,
+    "eventAndUnmappedPathCanariesOmitted": true,
+    "credentialCanaryAbsentFromLogs": true,
+    "existingDestinationPreserved": true,
+    "symlinkDestinationPreserved": true,
+    "invalidUtf8Rejected": true,
+    "bomRejected": true,
+    "oversizedFileRejected": true,
+    "fifoRejectedWithoutBlocking": true,
+    "directoryInputRejected": true,
+    "cliSourceSha256": "191ddfc7312cf8cf8d6eab5bfa7737dfaf31ea337941680ffb83e58172b2d40c",
+    "analysisSourceSha256": "a2d5341e3870a902be4c740f308aadd55ff166f4b48277de352ce75383d32718",
+    "productionRequests": 0,
+    "externalRequests": 0,
+    "d1Statements": 0
+  },
+  "historicalCliReportMatchesNative": true,
+  "collectorEntry": {
+    "baseline": "8f0b8e89ceca8d955748f91e893f8bafed4bed7b",
+    "method": "Same esbuild options and relative collector entry in isolated baseline and candidate; offline export not imported.",
+    "baselineBundle": {
+      "bytes": 333942,
+      "sha256": "15eba7182e052858d32b1b7b6338d6958a902d0e20cd5877bffe86b9b4c5a3ff"
+    },
+    "candidateBundle": {
+      "bytes": 333942,
+      "sha256": "15eba7182e052858d32b1b7b6338d6958a902d0e20cd5877bffe86b9b4c5a3ff"
+    },
+    "identical": true,
+    "productionBehaviorClaim": false
+  },
+  "checks": {
+    "analyticsTestsPassed": 355,
+    "workspaceTypecheck": true,
+    "scopedMarkdownLinksAndStructure": {
+      "passed": true,
+      "localLinksChecked": 6,
+      "fencesBalanced": true
+    }
+  },
+  "review": {
+    "initialGap": "Excluded/unassessed records originally lacked quality/provenance metrics.",
+    "repair": "Selected-event metrics now retain those facts before inclusion filtering, overall and by role.",
+    "finalScopedReview": "No further material defect reported; review did not execute tests."
+  },
+  "privateArchive": {
+    "relativeLocation": "packages/blog/worklog/analytics-evidence/2026-10-31-resource-reach",
+    "files": 40,
+    "manifestSha256": "5a63d312e9f2a5f597c1fa187c5ec78eefd3115dfb0e51384686ef761e48f43a"
+  },
+  "effects": {
+    "newProductionRows": 0,
+    "productionRequests": 0,
+    "productionSqlStatements": 0,
+    "newHumanLabels": 0,
+    "collectorEntryChanged": false,
+    "articleChanged": false,
+    "deploymentActivationClaim": false
+  },
+  "limits": [
+    "Historical capture only, no present-day trend or population completeness.",
+    "Supplied owner/referral assessments are retained, not refreshed or authenticated.",
+    "Resource and stored-kind counts do not prove people, reading, purpose or useful use.",
+    "The 160 groups match prior native SQL evidence; no fresh SQL execution this turn.",
+    "All registered current-catalogue resources are present; zero included events is not zero demand."
+  ]
+}
