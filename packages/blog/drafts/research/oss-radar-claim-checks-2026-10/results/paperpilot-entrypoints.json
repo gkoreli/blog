@@ -1,0 +1,67 @@
+{
+  "cli": {
+    "exitCode": 0,
+    "stdout": "{\"success\":true,\"operation\":\"Redact\",\"error\":null}\n",
+    "stderr": "",
+    "output": {
+      "sha256": "e738356139d0564755e31c8f037c0b5c292cc3390d4312dfdf370e5e72ce2bf8",
+      "canaryExtracted": true,
+      "canaryInDecodedPageContent": true,
+      "publicLineExtracted": true
+    }
+  },
+  "binaries": {
+    "cli": "7d1d17347dda5076cb432c50593eac9d19f0a437d6a6f792509a5ecdbe9a2f16",
+    "mcp": "df3ab63a6cb8b2c825f20bc5cc26eb8b42ea323611b8344ded52bec28db05527"
+  },
+  "initialize": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "protocolVersion": "2025-06-18",
+      "capabilities": {
+        "tools": {}
+      },
+      "serverInfo": {
+        "name": "rmcp",
+        "version": "3.5.1"
+      }
+    }
+  },
+  "mcp": {
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"message\":\"PDF redacted successfully.\",\"output_path\":\"<proof-directory>/paperpilot.pdf\",\"data\":null}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    "output": {
+      "sha256": "e738356139d0564755e31c8f037c0b5c292cc3390d4312dfdf370e5e72ce2bf8",
+      "canaryExtracted": true,
+      "canaryInDecodedPageContent": true,
+      "publicLineExtracted": true
+    }
+  },
+  "invalidPage": {
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "error": {
+        "code": -32602,
+        "message": "Other error: Page 999 not found"
+      }
+    },
+    "outputExists": false
+  },
+  "mcpProcessExitCode": 0,
+  "mcpStderr": "",
+  "rawArtifactSha256": "18409d74efe596c33fcd329ad33b6fba2bb0729ea961fb4bb7a7048e52bf9c82",
+  "freshOutputBeforeEachEntryPoint": true
+}

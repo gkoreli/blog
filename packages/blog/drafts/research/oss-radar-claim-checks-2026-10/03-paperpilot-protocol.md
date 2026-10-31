@@ -32,3 +32,7 @@ Pass for the documented permanent-redaction claim: the covered canary cannot be 
 No fixture, operation execution or failure has been reproduced yet. Do not publicly call the product's redaction unsafe from source inspection alone. Do not infer a network upload from its `reqwest` dependency. Local processing, MCP tool results, model-provider transmission and optional downloads require separate evidence.
 
 Next: inspect document load/save and crate build requirements; create the synthetic fixture and run the real operation. Rust 1.96.1 is already present in mise's installation directory; use a task-local PATH instead of changing global tool settings. The PDF skill was read and its use announced, but its required create/edit marker has **not** yet been run. No PaperPilot build or test process is running at this checkpoint.
+
+## Execution update
+
+The frozen procedure above has now been executed. The marker completed once before the first authoring command. Three PDF paths were used, reusing the same PaperPilot output for the operation/CLI/MCP runs. Rust's mise entry is a symlink to the rustup binary directory rather than an installation with another `bin/` subdirectory; the existing rustup 1.96.1 toolchain was selected without a global change. Real default-feature CLI and full MCP transport confirm the operation-level finding. [Results, controls and limitations](04-paperpilot-findings.md) supersede the unexecuted status above. No owned process remains running.

@@ -1,0 +1,71 @@
+{
+  "source": "1e6ea36467066a124289e88b1d3ee7d636f3d5b5",
+  "files": [
+    {
+      "path": "paperpilot-pdf/src/document.rs",
+      "sha256": "79422aed741385a5e9a929148ef729e5f753cc42c6f856f942a34bef362f740f"
+    },
+    {
+      "path": "paperpilot-pdf/src/operations/redact.rs",
+      "sha256": "8ac5f87b063c3ae2fcedb9b3af703226704f36e80f0b16c2e6540b58e36e7f56"
+    },
+    {
+      "path": "paperpilot-cli/src/commands/group_b.rs",
+      "sha256": "7ec6003bd0f4aa63f17de403fb9da128a50afdfb23a08861cf57de7a43c3676b"
+    },
+    {
+      "path": "paperpilot-mcp/src/server.rs",
+      "sha256": "3a3443515b7aa6fe9df4ea5e87b269b070c1a9d153ccb9e3344a3b90011a569c"
+    },
+    {
+      "path": "apps/docs/src/content/docs/reference/tools/pdf_redact.md",
+      "sha256": "5baca5ae4e32d2d9d5c2a4c91a5f1504d9b38445f5471678fff48fc4cd030fe8"
+    },
+    {
+      "path": "Cargo.lock",
+      "sha256": "018210d32a51949f0e3b90c73607ae7b0e6976e8a941e31ae35987deecc65d70"
+    }
+  ],
+  "nativeProbeSha256": "053151f7e33895a69c247086163c578746aaa413e170f3f75935c0660e6eb358",
+  "build": {
+    "command": "cargo build --locked --no-default-features -p paperpilot-pdf --example paperpilot_redaction_probe",
+    "rust": "1.96.1-aarch64-apple-darwin",
+    "modifiedFiles": [
+      "new example only; library implementation unchanged"
+    ]
+  },
+  "operationExitCode": 0,
+  "fixtureMarker": "create, expected 3 PDFs, completed before first PDF authoring",
+  "visualInspection": [
+    "input.png: secret visible; public line visible",
+    "paperpilot.png: secret hidden by black rectangle; public line visible",
+    "positive-removal.png: secret hidden by black rectangle; public line visible"
+  ],
+  "rawArtifactSha256": "8a5d3e364fd803ee80166d2f5385a3c05c43710c74e0eb7210b79a8d5f0b270c",
+  "defaultEntryPointBuild": {
+    "command": "cargo build --locked -p paperpilot-mcp -p paperpilot-cli --bin paperpilot-mcp --bin paperpilot",
+    "features": "default",
+    "sourceLibraryUnchanged": true
+  },
+  "existingUnitTest": {
+    "command": "cargo test --locked --no-default-features -p paperpilot-pdf --lib operations::redact::tests::test_redact_valid_page -- --exact --nocapture",
+    "passed": 1,
+    "filtered": 164,
+    "wholeSuitePassClaimed": false,
+    "initialAttempt": "Without --lib, unrelated OCR integration tests failed to compile with default features disabled; no full-suite pass inferred."
+  },
+  "ownExtraction": {
+    "command": "paperpilot extract-text --input paperpilot.pdf --output paperpilot-extracted.txt --json",
+    "exitCode": 0,
+    "reportedSuccess": true,
+    "canaryRecovered": true,
+    "textSha256": "ddc1d1a654a913ee4da7994183a04282c06d64117b1a2417ed18068004f64786"
+  },
+  "illustration": {
+    "path": "packages/blog/public/images/oss-radar-10-paperpilot-redacted.png",
+    "sha256": "a3b802df8e294aefa6aeff62cd4cc36f86ca381610ba47d25a66a02f1d4c2f28",
+    "source": "Poppler rendering of actual synthetic PaperPilot output; unedited PNG",
+    "renderDpi": 120
+  },
+  "markerScope": "Three PDF paths: input, PaperPilot output reused by all three entry paths, independent removal control. CLI/MCP overwrite the same output path; each result hash is captured."
+}

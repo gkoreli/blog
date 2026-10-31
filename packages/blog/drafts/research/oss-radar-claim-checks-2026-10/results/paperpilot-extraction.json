@@ -1,0 +1,54 @@
+{
+  "fixture": {
+    "canary": "DEMO-SECRET-482915",
+    "publicLine": "PUBLIC-LINE-UNCHANGED",
+    "pagePoints": [
+      612,
+      792
+    ],
+    "rectanglePdfCoordinates": [
+      50,
+      700,
+      450,
+      30
+    ]
+  },
+  "libraries": {
+    "pypdf": "6.10.0",
+    "reportlab": "4.4.9",
+    "PyMuPDF": "2.0"
+  },
+  "results": [
+    {
+      "file": "input.pdf",
+      "sha256": "d1d2945ceddc88b567a1753b556348b919ddfef953a54271c47c8164d6e7c363",
+      "bytes": 1467,
+      "pages": 1,
+      "canaryExtracted": true,
+      "publicLineExtracted": true,
+      "canaryInDecodedPageContent": true,
+      "extractedText": "Synthetic PDF redaction test\nDEMO-SECRET-482915\nPUBLIC-LINE-UNCHANGED\n"
+    },
+    {
+      "file": "paperpilot.pdf",
+      "sha256": "e738356139d0564755e31c8f037c0b5c292cc3390d4312dfdf370e5e72ce2bf8",
+      "bytes": 1374,
+      "pages": 1,
+      "canaryExtracted": true,
+      "publicLineExtracted": true,
+      "canaryInDecodedPageContent": true,
+      "extractedText": "Synthetic PDF redaction test\nDEMO-SECRET-482915\nPUBLIC-LINE-UNCHANGED\n"
+    },
+    {
+      "file": "positive-removal.pdf",
+      "sha256": "0605340913c71bc76e6c3979da00177ad0617a2b6b5c90e6b2ad92099cea16a0",
+      "bytes": 1250,
+      "pages": 1,
+      "canaryExtracted": false,
+      "publicLineExtracted": true,
+      "canaryInDecodedPageContent": false,
+      "extractedText": "Synthetic PDF redaction test\nPUBLIC-LINE-UNCHANGED"
+    }
+  ],
+  "rawArtifactSha256": "4f25d9a15fbf8d5b63cd31b42a6f7db761cc1c59adb141da3a6776c1317e9e74"
+}
