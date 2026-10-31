@@ -1,6 +1,6 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T10:37:15.507532+00:00",
+  "checkedAt": "2026-10-31T10:39:18.335168+00:00",
   "sourceBaseline": "c3e4c0ee6d016147272e329197d4c1c85ab2ac34",
   "goalStatus": "active",
   "goalAchieved": false,
@@ -378,7 +378,7 @@
     "rawCollectionActivated": false,
     "articleChanged": false,
     "articleChangedByThisWork": false,
-    "sourceActivationMeasured": false,
+    "sourceActivationMeasured": true,
     "servedDestinationAcceptance": false,
     "privacyDisclosureChanged": false,
     "productionRequests": 0,
@@ -401,22 +401,21 @@
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: stored coverage contradictions repaired;14 record/6 signed controls and historical397-row predicate check accepted; Parallel disclosure corrected",
+    "thisTurnClassification": "progress: stored coverage contradictions repaired;14 record/6 signed controls and historical397-row predicate check accepted; Parallel disclosure corrected; exact source activation accepted",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Reconcile remaining goal requirements with newly available authorized measurement inputs. Preserve all six gates, deferred human trials and closed advisory/assignment runtime-adoption decisions. Do not repeat accepted local controls or expand implementation merely to avoid missing native/search/human/privacy/source-purpose evidence. Current coverage repair still needs source activation; served production behavior remains unmeasured.",
+  "nextBoundedAction": "Reconcile remaining goal requirements with newly available authorized measurement inputs. Preserve all six gates, deferred human trials and closed advisory/assignment runtime-adoption decisions. Do not repeat accepted local controls or expand implementation merely to avoid missing native/search/human/privacy/source-purpose evidence. Coverage source activation is accepted; served production behavior remains unmeasured. Do not chase the documentation-only checkpoint deployment.",
   "latestDependencyCheck": {
-    "checkedAt": "2026-10-31T00:40:21.399815+00:00",
+    "checkedAt": "2026-10-31T10:39:18.335168+00:00",
     "availableToolMetadataInspected": true,
     "dedicatedSearchConsoleOrManagedBotToolsFound": 0,
+    "irrelevantSitesPlatformMatches": 4,
     "newUserAuthorizationOrMeasurementInput": false,
-    "sourceHashesStillMatch": 13,
-    "externalOriginsOrAccountsAccessed": false,
-    "acceptedControlsRepeated": false,
-    "status": "The same required native/search/human/privacy/source-purpose inputs remain unavailable. No new dedicated input tool or user-supplied authorization/measurement exists. No gated origin/account access, local-control repetition or policy expansion attempted."
+    "externalOriginsOrAccountsAccessedForDependencyRetry": false,
+    "status": "No newly available dedicated input tool or user-provided measurement/authorization. Four generic Sites matches do not establish access to this repository site or native oracle and were not invoked. No D1 or gated sign-in retry, human trial, scope/protection change or raw activation."
   },
   "blockedAudit": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
@@ -437,13 +436,14 @@
   "latestContinuation": {
     "research": "../discovery-experiment-02/12-signature-coverage-producer-invariants.md",
     "receipt": "../discovery-experiment-02/coverage-consistency-checks.json",
-    "nextBoundedAction": "Reconcile remaining goal requirements with newly available authorized measurement inputs. Preserve all six gates, deferred human trials and closed advisory/assignment runtime-adoption decisions. Do not repeat accepted local controls or expand implementation merely to avoid missing native/search/human/privacy/source-purpose evidence. Current coverage repair still needs source activation; served production behavior remains unmeasured."
+    "nextBoundedAction": "Reconcile remaining goal requirements with newly available authorized measurement inputs. Preserve all six gates, deferred human trials and closed advisory/assignment runtime-adoption decisions. Do not repeat accepted local controls or expand implementation merely to avoid missing native/search/human/privacy/source-purpose evidence. Coverage source activation is accepted; served production behavior remains unmeasured. Do not chase the documentation-only checkpoint deployment.",
+    "release": "../discovery-experiment-02/coverage-consistency-release.json"
   },
   "latestAcceptedSourceActivation": {
-    "sourceCommit": "a908cfbd80b26a1453a6d3fb92e877eb57f248dd",
-    "versionId": "e722677f-d9e6-43c0-b999-d25df3b6b396",
+    "sourceCommit": "25f859975cdf577e37aa26925de7f7e852b5e459",
+    "versionId": "e45497d1-ce92-4212-b04f-1affe085ec3a",
     "allocation": 100,
-    "receipt": "../discovery-experiment-02/assignment-report-scope-release.json",
+    "receipt": "../discovery-experiment-02/coverage-consistency-release.json",
     "method": "Native source-linked build log, Ready status, allocation meter100 and matching active version prefix",
     "productionBehaviorMeasured": false,
     "servedDestinationAcceptance": false

@@ -1,0 +1,43 @@
+{
+  "profile": "signature-coverage-consistency-activation-v1",
+  "checkedAt": "2026-10-31T10:39:18.335168+00:00",
+  "sourceCommit": "25f859975cdf577e37aa26925de7f7e852b5e459",
+  "localAcceptanceReceipt": "coverage-consistency-checks.json",
+  "sourceMatchingFiles": 6,
+  "allSourceHashesMatch": true,
+  "method": "Native source-linked build details/log and Ready deployment row/active allocation",
+  "native": {
+    "buildId": "33c142d3-8d75-44ee-bf89-31c4cfd8e030",
+    "workerVersion": "e45497d1-ce92-4212-b04f-1affe085ec3a",
+    "buildStatus": "Ready",
+    "allocationPercent": 100,
+    "buildPageDurationSeconds": 43,
+    "deploymentsRowDurationSeconds": 44,
+    "durationScope": "Separate native surfaces, not interchangeable latency measures",
+    "node": "24.22.1",
+    "pnpm": "9.15.4",
+    "builtPosts": 38,
+    "buildLogBytes": 5745,
+    "buildLogSha256": "3bcc006bc338a0854258d047e5cc00d8dca1b71fd0d354888bd524c2cf14d114"
+  },
+  "localNode": "24.14.1",
+  "privateEvidence": {
+    "path": "packages/blog/worklog/analytics-evidence/2026-10-31-signature-coverage-consistency-release",
+    "files": 4,
+    "manifestSha256": "240b475b0163826acc1429e1b2d2b1caa7bd4d7982418e3e45f9ae6d8354a206",
+    "allEntriesVerified": true
+  },
+  "limits": {
+    "productionSiteRequests": 0,
+    "productionStatsRequests": 0,
+    "productionSqlStatements": 0,
+    "servedReportBehaviorMeasured": false,
+    "currentTrafficMeasured": false,
+    "productionD1AuthorizationRepaired": false,
+    "managedNativeOracleObtained": false,
+    "newHumanLabels": 0,
+    "deploymentRetried": false,
+    "settingsOrScopesChanged": false,
+    "fullGoalComplete": false
+  }
+}
