@@ -1,14 +1,14 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T00:37:16.262060+00:00",
+  "checkedAt": "2026-10-31T00:39:12.240408+00:00",
   "sourceBaseline": "be6b26b60c91ee2a067e9ddc876646e91cf2134c",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "commit": "be6b26b60c91ee2a067e9ddc876646e91cf2134c",
-    "receipt": "directory-adoption-audit.json"
+    "commit": "6d7b0730ae4025bb5019761d9270aecca43a23bd",
+    "receipt": "goal-reconciliation-checks.json"
   },
   "scope": "Fresh current-source and saved-receipt inspection only. Dated production results retain their dates; no fresh production, vendor, browser, native managed or human measurement.",
   "history": {
@@ -271,9 +271,20 @@
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: correct stale current-audit claims and preserve the complete historical snapshot",
-    "consecutiveNoProgressGoalTurns": 0,
-    "historicalBlockedAudit": "Preserved in the archived snapshot; it is not current goal status."
+    "thisTurnClassification": "no progress: required external/user inputs remain unavailable; checkpoint bookkeeping is not substantive progress",
+    "consecutiveNoProgressGoalTurns": 1,
+    "historicalBlockedAudit": "Preserved in the archived snapshot; it is not current goal status.",
+    "verifiedLiveWait": false
   },
-  "nextBoundedAction": "Resume from an actual newly available native/search/human/privacy/source-purpose input that can change a named decision. Preserve accepted runtime no-adoption and release checks. Do not repeat accepted controls, scan history or expand optional protocol work solely to keep the goal running."
+  "nextBoundedAction": "Resume from an actual newly available native/search/human/privacy/source-purpose input that can change a named decision. Preserve accepted runtime no-adoption and release checks. Do not repeat accepted controls, scan history or expand optional protocol work solely to keep the goal running.",
+  "latestDependencyCheck": {
+    "checkedAt": "2026-10-31T00:39:12.240408+00:00",
+    "availableToolMetadataInspected": true,
+    "dedicatedSearchConsoleOrManagedBotToolsFound": 0,
+    "newUserAuthorizationOrMeasurementInput": false,
+    "sourceHashesStillMatch": 13,
+    "externalOriginsOrAccountsAccessed": false,
+    "acceptedControlsRepeated": false,
+    "status": "Required native/search/human/privacy/source-purpose inputs remain unaccepted. Historical provider/account observations are not fresh failures; no bypass or expansion is attempted."
+  }
 }
