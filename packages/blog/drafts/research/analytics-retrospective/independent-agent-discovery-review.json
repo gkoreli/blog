@@ -1,0 +1,323 @@
+{
+  "sourceBaseline": "73deb54",
+  "sourceSnapshotSha256": "074eca44d63fd05726daa5d7e6a3c388e76da4d5cdf849e1bd9a94e765ea820f",
+  "scope": "Independent extra repetition from Analytics builder blog. Other active task trials and implementation are excluded from this receipt.",
+  "questionSet": "2026-10-31.1",
+  "queries": [
+    {
+      "id": "headers",
+      "query": "ChatGPT-User Accept-Language Fetch Metadata headers"
+    },
+    {
+      "id": "coverage",
+      "query": "Does DuckAssistBot Web Bot Auth signature cover User-Agent request path"
+    },
+    {
+      "id": "codex",
+      "query": "Does Codex web search fetch the original URL"
+    },
+    {
+      "id": "grok",
+      "query": "Can Grok requests be distinguished from human website traffic"
+    }
+  ],
+  "runs": [
+    {
+      "id": "baseline",
+      "method": {
+        "service": "web.run public search",
+        "mode": "one exact query per call; no domain filter",
+        "model": null,
+        "context": "Explicit search request contains only the frozen question. This authoring session has prior source knowledge. Underlying index/model, locale, account and personalization are unavailable.",
+        "responseSetting": "not retained in baseline artifact"
+      },
+      "completed": 4,
+      "failed": 0,
+      "missing": 0,
+      "matches": [
+        {
+          "sourceId": "canonical",
+          "found": 3,
+          "completed": 4,
+          "byQuestion": [
+            {
+              "questionId": "headers",
+              "presence": "found"
+            },
+            {
+              "questionId": "coverage",
+              "presence": "found"
+            },
+            {
+              "questionId": "codex",
+              "presence": "found"
+            },
+            {
+              "questionId": "grok",
+              "presence": "not-returned"
+            }
+          ]
+        },
+        {
+          "sourceId": "web-pulse",
+          "found": 1,
+          "completed": 4,
+          "byQuestion": [
+            {
+              "questionId": "headers",
+              "presence": "found"
+            },
+            {
+              "questionId": "coverage",
+              "presence": "not-returned"
+            },
+            {
+              "questionId": "codex",
+              "presence": "not-returned"
+            },
+            {
+              "questionId": "grok",
+              "presence": "not-returned"
+            }
+          ]
+        },
+        {
+          "sourceId": "arcjet",
+          "found": 1,
+          "completed": 4,
+          "byQuestion": [
+            {
+              "questionId": "headers",
+              "presence": "not-returned"
+            },
+            {
+              "questionId": "coverage",
+              "presence": "found"
+            },
+            {
+              "questionId": "codex",
+              "presence": "not-returned"
+            },
+            {
+              "questionId": "grok",
+              "presence": "not-returned"
+            }
+          ]
+        }
+      ],
+      "observations": [
+        {
+          "questionId": "headers",
+          "capturedAt": "2026-10-31T00:52:30.120Z",
+          "rawSha256": "d857a796df2dd5021a4aca549132ba103b1418b18d2c1d71ab2fd77a12ebb962",
+          "status": "captured",
+          "returnedSourceCount": 22
+        },
+        {
+          "questionId": "coverage",
+          "capturedAt": "2026-10-31T00:52:30.120Z",
+          "rawSha256": "03c27799b3336b50f8ee5f28783788629e4fc4b91a5058958238c22e890e3d6d",
+          "status": "captured",
+          "returnedSourceCount": 21
+        },
+        {
+          "questionId": "codex",
+          "capturedAt": "2026-10-31T00:52:30.120Z",
+          "rawSha256": "8f5baf370f752618ff5e63f07ed985966b86af5b9b38ac408ef746ecd99c7dbc",
+          "status": "captured",
+          "returnedSourceCount": 19
+        },
+        {
+          "questionId": "grok",
+          "capturedAt": "2026-10-31T00:52:30.120Z",
+          "rawSha256": "5b331688fb0ae6eca4621996e15042754d80bea4d428a19b1b28213cd2ead76f",
+          "status": "captured",
+          "returnedSourceCount": 20
+        }
+      ]
+    },
+    {
+      "id": "independent-repeat",
+      "method": {
+        "service": "web.run public search",
+        "mode": "one exact query per call; no domain filter",
+        "model": null,
+        "context": "Explicit search request contains only the frozen question. This authoring session has prior source knowledge. Underlying index/model, locale, account and personalization are unavailable.",
+        "responseSetting": "short"
+      },
+      "completed": 4,
+      "failed": 0,
+      "missing": 0,
+      "matches": [
+        {
+          "sourceId": "canonical",
+          "found": 3,
+          "completed": 4,
+          "byQuestion": [
+            {
+              "questionId": "headers",
+              "presence": "found"
+            },
+            {
+              "questionId": "coverage",
+              "presence": "found"
+            },
+            {
+              "questionId": "codex",
+              "presence": "found"
+            },
+            {
+              "questionId": "grok",
+              "presence": "not-returned"
+            }
+          ]
+        },
+        {
+          "sourceId": "web-pulse",
+          "found": 1,
+          "completed": 4,
+          "byQuestion": [
+            {
+              "questionId": "headers",
+              "presence": "found"
+            },
+            {
+              "questionId": "coverage",
+              "presence": "not-returned"
+            },
+            {
+              "questionId": "codex",
+              "presence": "not-returned"
+            },
+            {
+              "questionId": "grok",
+              "presence": "not-returned"
+            }
+          ]
+        },
+        {
+          "sourceId": "arcjet",
+          "found": 1,
+          "completed": 4,
+          "byQuestion": [
+            {
+              "questionId": "headers",
+              "presence": "not-returned"
+            },
+            {
+              "questionId": "coverage",
+              "presence": "found"
+            },
+            {
+              "questionId": "codex",
+              "presence": "not-returned"
+            },
+            {
+              "questionId": "grok",
+              "presence": "not-returned"
+            }
+          ]
+        }
+      ],
+      "observations": [
+        {
+          "questionId": "headers",
+          "capturedAt": "2026-10-31T07:21:51Z",
+          "rawSha256": "0f057a0eec91af0f5811e599bbb84434707f89eb29501df221b1892c743132d7",
+          "status": "captured",
+          "returnedSourceCount": 16
+        },
+        {
+          "questionId": "coverage",
+          "capturedAt": "2026-10-31T07:21:54Z",
+          "rawSha256": "7a3df04d8af21ddab5591c6238274f197efccf8e85b0840a74d05c46cde7f3ae",
+          "status": "captured",
+          "returnedSourceCount": 21
+        },
+        {
+          "questionId": "codex",
+          "capturedAt": "2026-10-31T07:21:57Z",
+          "rawSha256": "299089c3e72469794b69146f9a5a42ae3c062ec9fdaa06df6c52c61b7761a77f",
+          "status": "captured",
+          "returnedSourceCount": 19
+        },
+        {
+          "questionId": "grok",
+          "capturedAt": "2026-10-31T07:22:00Z",
+          "rawSha256": "72de37e1b7c244e896f69cd299736e5115587ef927386cbecb409f60c4e61e47",
+          "status": "captured",
+          "returnedSourceCount": 22
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "sourceUrl": "https://arcjet.com/learn/web-bot-auth",
+      "targetId": "canonical",
+      "relation": "evidence-reuse",
+      "observations": [
+        {
+          "sourceUrl": "https://arcjet.com/learn/web-bot-auth",
+          "targetId": "canonical",
+          "relation": "evidence-reuse",
+          "capturedAt": "2026-10-31T00:52:32.180Z",
+          "rawSha256": "6a90a9af0856bb119a68918eef8d62938f1d4a4a2a6c8986cf070fa4cf251855",
+          "review": "Saved full HTML links to the canonical study and uses its DuckAssistBot capture to explain signature coverage. Historical observation; no new recapture."
+        }
+      ]
+    }
+  ],
+  "referenceTotals": {
+    "distinctSourcePages": 1,
+    "distinctSourceTargetPairs": 1,
+    "evidenceReusePairs": 1,
+    "reviewedObservations": 1
+  },
+  "reviewControls": {
+    "changedMethod": {
+      "sameDeclaredMethod": false,
+      "pairedCompleted": 4,
+      "retained": [
+        "headers",
+        "coverage",
+        "codex"
+      ]
+    },
+    "fragmentVariant": {
+      "distinctSourcePages": 2,
+      "distinctSourceTargetPairs": 2,
+      "evidenceReusePairs": 2,
+      "reviewedObservations": 2
+    }
+  },
+  "limits": [
+    "Baseline time is the prior aggregate record time; repeat times are tool-completion times, to the second. Baseline response setting is not retained in its source artifact; do not infer identical method conditions.",
+    "Exact returned URL presence is measured; result order is not claimed as search rank.",
+    "All eight observations cover four distinct questions, not eight audience members.",
+    "These own four repeat calls are separate from the other active task\u2019s four repeat calls; they are not silently pooled.",
+    "Synthetic review controls reproduce the preserved draft snapshot only; they do not establish that the final implementation retains these defects.",
+    "No population trend, answer citation rate, human count, current vendor-behavior trial or account/SQL operation."
+  ],
+  "archive": {
+    "path": "/Users/goga/Documents/goga/blog/packages/blog/worklog/analytics-evidence/2026-10-31-independent-discovery-review",
+    "files": 21,
+    "manifestFile": "manifest-final.json",
+    "manifestSha256": "974f3afc9570e143d99bb6b790d0bdf5d4ca877bf6be7082ff020dcafc009662",
+    "verified": true,
+    "gitIgnored": true
+  },
+  "verification": {
+    "node": "24.14.1",
+    "preservedRequirementCount": 10,
+    "priorSourceHashesMatched": 14,
+    "localLinksChecked": 510,
+    "baselineRawHashesAndExtractionsVerified": 4,
+    "newSearchCalls": 4,
+    "reviewedExternalCaptureHashesVerified": 1,
+    "syntheticDraftReportingIssuesReproduced": 2,
+    "runtimeFilesChangedByThisTurn": 0,
+    "fullSuiteRun": false,
+    "scope": "Documentation/evidence only. Owning analyzer implementation and acceptance are separate."
+  }
+}
