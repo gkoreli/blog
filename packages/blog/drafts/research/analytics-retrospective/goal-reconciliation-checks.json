@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-10-31T00:37:16.262060+00:00",
+  "sourceBaseline": "be6b26b60c91ee2a067e9ddc876646e91cf2134c",
+  "historicalSnapshotSha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
+  "historicalSnapshotBytes": 66428,
+  "historicalSnapshotKeys": 90,
+  "snapshotBytesPreserved": true,
+  "currentSourceHashes": {
+    "classify.ts": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
+    "readerkind.ts": "4150a6fc0186aed820c0e9fa60e98dbcde1817db4c8b3414ffa1cce3a95bf030",
+    "classification-evidence.ts": "f6716df870cadb5d86953b18ea613eb01e696169966b9223d97de5ab7900e3c1",
+    "signature-evidence.ts": "b284f1e4366d371dda5e3e7b9dedeebc45bfab3f8a983663df09e534160baf75",
+    "signature-coverage-report.ts": "4dc991039cb03eeeea08d084d1d2b4a42800052dee01aa7b631b550beaf92fca",
+    "signature-summary.ts": "c2b4376e2fbaab46755a4dc4ebd76f0b4ef609ead86b960d3516020fbb7ed394",
+    "native-bot-evidence.ts": "3577e51bb9c8107427c9609f3c5e08f052a564c1a7dc519ef7692d61c9270fae",
+    "calibration-evaluation.ts": "14cb49966cb6c500f130a9e867b230c439d0177f61a073217b5bc49c9f704fa4",
+    "article-reach.ts": "17379b45e0c7c3f251e19b69632b830cfb051318433ef2b53d89b080f83854f9",
+    "article-reach-contract.ts": "38cd7b99af5ae8384fab0a53692e682088fc2b70fba33548703cf487965e2321",
+    "versions.ts": "7512353067a5cf7919d03262da0396782f59ccbe41eb06436e10ad18e7dabf54",
+    "webbotauth.ts": "edacdfd0e5aeed48fdc081b5c1953d6eee128ec1b6eb5a0c70e1f7bf7319b265",
+    "directory-response-audit.ts": "cd1b11f67bed8e0ba0e0e183d6e3fa0bc4ec48eff084b255b4cb8bd966a103f9"
+  },
+  "matchedCatalogueOwningSourceHashes": 9,
+  "articleHashMatchesAccepted": true,
+  "correctedClaims": [
+    "Research109/110 delivered weekly measurement history; old unresolved report-distribution claim is historical.",
+    "Research113 delivered a new production automation cohort; the original replay is not the latest experiment.",
+    "Old currentTurn and productionOperationsThisTurn describe Research110, not the present audit."
+  ],
+  "freshProductionOperations": 0,
+  "newMeasurements": 0,
+  "goalAchieved": false,
+  "jsonAndLocalReferencesPass": true,
+  "all90OldKeysPreservedAtSameArchiveKeys": true,
+  "sourceVersionsMatchCode": true,
+  "datedCalibrationNumbersReconcile": true,
+  "noHistoricalCohortsSummed": true,
+  "currentRequirements": 9,
+  "currentSourceHashCount": 13,
+  "newRuntimeTestsOrBuilds": 0,
+  "newAccountOrProductionAccess": false
+}
