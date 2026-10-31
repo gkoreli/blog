@@ -74,7 +74,9 @@
     "No human, intent, readership growth or managed native-verifier claim"
   ],
   "articleUnchanged": true,
-  "activationMeasured": false,
+  "activationMeasured": true,
   "goalStatus": "active",
-  "goalComplete": false
+  "goalComplete": false,
+  "releaseReceipt": "key-request-ownership-release.json",
+  "activationScope": "Source-linked provider check and fresh Wrangler version/allocation; no new site/collector/report/race measurement."
 }

@@ -1,0 +1,33 @@
+{
+  "sourceCommit": "605ab9c940bde82c5aeb7d9708596c5a67500031",
+  "checkId": 124384235857,
+  "buildId": "368c24cc-8046-4a17-8f8f-b3d43e99f13e",
+  "versionId": "d74b4efe-ca54-436d-a500-93de8e12cf63",
+  "deploymentId": "10119b49-3668-4212-b55c-f2a33f5e1fb7",
+  "allocation": 100,
+  "linkageNegativeControls": 4,
+  "productionSiteRequests": 0,
+  "productionSqlStatements": 0,
+  "productionRaceIncidence": null,
+  "scope": "Source-matched successful provider check and its declared version matched to fresh native Wrangler version/allocation; local race behavior is separate.",
+  "checkedAt": "2026-10-31T00:26:39.806885+00:00",
+  "providerAppSlug": "cloudflare-workers-and-pages",
+  "activationMeasured": true,
+  "fullGoalComplete": false,
+  "localBehaviorReceipt": "key-request-ownership-audit.json",
+  "articleUnchanged": true,
+  "directNativeBuildDetailsFetched": false,
+  "previousBuildDetails403Retried": false,
+  "productionTailStarted": false,
+  "privateArchive": {
+    "path": "/Users/goga/Documents/goga/analytics-evidence/2026-10-31-key-request-ownership/release",
+    "files": 10,
+    "manifestSha256": "00ae3df5549677c382ca59d204b887bd49d9f5a9ab5509f04310c9e547aee267",
+    "verified": true
+  },
+  "limits": [
+    "No fresh public asset/HTML/report/collector/storage behavior measured.",
+    "No production race exercise or historical incidence estimate.",
+    "Subsequent documentation-only deployments have separate version identities."
+  ]
+}

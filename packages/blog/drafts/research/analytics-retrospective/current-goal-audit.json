@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-31T00:24:22.731893+00:00",
+  "checkedAt": "2026-10-31T00:26:39.806885+00:00",
   "sourceBaseline": "73787f92c973f7d258d824505cfc240cb83ea8eb",
   "goalAchieved": false,
   "previousTurn": "progress: 2a99495 records source-linked activation of the prior key lifecycle repair",
@@ -1515,12 +1515,14 @@
     "receipt": "key-request-ownership-audit.json",
     "completed": "Bounded explicit owner-abort recovery, publication/cancellation controls, canceled-hash mutation repair and native D1/profile acceptance",
     "productionPolicyCodeChanged": true,
-    "activationMeasured": false,
+    "activationMeasured": true,
     "productionQueries": 0,
     "newOwnSiteHttpRequests": 0,
     "newHumanLabels": 0,
     "trackerStatus": "active",
     "goalComplete": false,
-    "nextBoundedAction": "Checked source delivery and exact-source activation; then decide runtime adoption of offline directory-response advisory from a bounded benefit/cost design."
+    "nextBoundedAction": "Decide whether the offline directory-response advisory adds enough authenticity evidence to justify runtime cost; preserve external native/search/privacy/purpose and deferred human/device gates.",
+    "releaseReceipt": "key-request-ownership-release.json",
+    "activationScope": "Source-linked provider check and fresh Wrangler version/allocation; no new site/collector/report/race measurement."
   }
 }
