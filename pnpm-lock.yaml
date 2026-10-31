@@ -67,6 +67,9 @@ importers:
       marked:
         specifier: ^17.0.4
         version: 17.0.4
+      marked-gfm-heading-id:
+        specifier: 4.1.4
+        version: 4.1.4(marked@17.0.4)
       marked-shiki:
         specifier: ^1.2.1
         version: 1.2.1(marked@17.0.4)(shiki@4.0.1)
@@ -1126,6 +1129,9 @@ packages:
   gifuct-js@2.1.2:
     resolution: {integrity: sha512-rI2asw77u0mGgwhV3qA+OEgYqaDn5UNqgs+Bx0FGwSpuqfYn+Ir6RQY5ENNQ8SbIiG/m5gVa7CD5RriO4f4Lsg==}
 
+  github-slugger@2.0.0:
+    resolution: {integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==}
+
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
@@ -1248,6 +1254,11 @@ packages:
 
   lodash@4.17.23:
     resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
+
+  marked-gfm-heading-id@4.1.4:
+    resolution: {integrity: sha512-CspnvVfHSkb/znqdPS4jUR8HtCjq3M/DnrsJCrfLBLvdrgbemmoINKpeWKQYkBiXAoBGejw0cV7xzqrPdup3WA==}
+    peerDependencies:
+      marked: '>=13 <19'
 
   marked-shiki@1.2.1:
     resolution: {integrity: sha512-yHxYQhPY5oYaIRnROn98foKhuClark7M373/VpLxiy5TrDu9Jd/LsMwo8w+U91Up4oDb9IXFrP0N1MFRz8W/DQ==}
@@ -2516,6 +2527,8 @@ snapshots:
     dependencies:
       js-binary-schema-parser: 2.0.3
 
+  github-slugger@2.0.0: {}
+
   glob-parent@5.1.2:
     dependencies:
       is-glob: 4.0.3
@@ -2649,6 +2662,11 @@ snapshots:
   lodash.isfinite@3.3.2: {}
 
   lodash@4.17.23: {}
+
+  marked-gfm-heading-id@4.1.4(marked@17.0.4):
+    dependencies:
+      github-slugger: 2.0.0
+      marked: 17.0.4
 
   marked-shiki@1.2.1(marked@17.0.4)(shiki@4.0.1):
     dependencies:

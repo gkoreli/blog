@@ -1,5 +1,7 @@
 # Agent-inclusive growth and external discovery
 
+**October 31 answer fidelity found a real link defect:** [Single-trial result and repair](02-source-supplied-answer-fidelity.md) captures a useful coverage answer but retains strict failure: five of six required criteria fully pass; all three intended section targets are absent in baseline HTML. Marked heading IDs plus serialized async parses repair the destinations locally without another model trial or prose edit. All 169 site tests/types/validation and isolated 38-post build pass; three script-blocked native fragment checks pass. Source delivery, activation and bounded served acceptance remain separate.
+
 October 31, 2026 UTC. Continues the [Analytics Worklist](../../../../../docs/folders/FLDR-0001.md) and [discovery workflow](../../../../../.agents/skills/run-discovery-experiment/SKILL.md). The owner requested action on the evidence, then explicitly corrected a human-only framing of growth. [ADR-0016.19](../../../../../docs/adr/0016.19-agent-mediated-audience-growth.md) preserves that complete direction and governs this work.
 
 ## Accepted scope

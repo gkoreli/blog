@@ -1,0 +1,431 @@
+{
+  "checkedAt": "2026-10-31T08:22:45.675334+00:00",
+  "sourceBaseline": "3736f09b3946e1d70c66106e7749d9c369cbbbac",
+  "conditionVersion": "answer-fidelity-2026-10-31.1",
+  "method": {
+    "question": "Does DuckAssistBot's Web Bot Auth signature cover User-Agent and request path, and what can a site owner actually conclude from a verified request?",
+    "condition": "One fresh Codex collaboration worker; source-supplied article only, no tools except snapshot read and answer write; no prior turn fork.",
+    "model": "Inherited; actual model identifier not exposed by collaboration response.",
+    "samplingSettings": "Not exposed; no override requested.",
+    "trials": 1,
+    "retries": 0,
+    "followUpCoaching": 0,
+    "intervention": "Supply existing article snapshot, without editing it or exposing rubric.",
+    "primaryOutcome": "A captured answer supports the six required claims/citation boundaries under root review.",
+    "hypothesis": "The corrected article can supply a useful coverage explanation without promoting host-bound proof to authenticated reading.",
+    "competingExplanation": "The worker may know the standards independently; this single supplied-source trial cannot establish causal lift from the article.",
+    "notMeasured": [
+      "unseeded discovery",
+      "organic citations/use",
+      "population answer accuracy",
+      "human reading",
+      "native managed verification",
+      "current vendor traffic"
+    ]
+  },
+  "inputHashes": {
+    "article": "59c96f4351e3325b7dc8b49e90ac1ddea946f538ff78842b7c568d69ace5a7aa",
+    "promptFile": "49e8b58feb1ff721fad2fca797b3f7c6505bc1082e4cba202a6d5f5aeafca1a1",
+    "preExecutionManifest": "9e3c2001168595534931bbb5873cb4fdbb11fdb8ca0e43ec64049c7234258040"
+  },
+  "baseline": {
+    "checkedAt": "2026-10-31T08:21:50.686721+00:00",
+    "sourceArticleSha256": "59c96f4351e3325b7dc8b49e90ac1ddea946f538ff78842b7c568d69ace5a7aa",
+    "answerSha256": "eac1640422382d8a4d124145362b0f981af85c0e851281493f9e681b28b400d0",
+    "wordCountingMethod": "Whitespace-separated words",
+    "words": 313,
+    "answerLinks": 6,
+    "distinctCitationFragments": 3,
+    "trials": 1,
+    "retries": 0,
+    "requiredPassed": 5,
+    "requiredPartialFailed": 1,
+    "diagnosticPassed": 2,
+    "strictPrimaryOutcomePassed": false,
+    "grades": [
+      {
+        "criterion": "covered-components",
+        "required": true,
+        "status": "pass",
+        "basis": "Answer paragraph1 identifies @authority and signature-agent as captured covered fields."
+      },
+      {
+        "criterion": "unsigned-components",
+        "required": true,
+        "status": "pass",
+        "basis": "Paragraphs1/3 preserve unsigned method/path/query/User-Agent and successful mutations."
+      },
+      {
+        "criterion": "proof-association",
+        "required": true,
+        "status": "pass",
+        "basis": "Paragraph2 limits association to covered data, selected key and policy; network/UA facts stay separate."
+      },
+      {
+        "criterion": "reading-and-reuse",
+        "required": true,
+        "status": "pass",
+        "basis": "Paragraphs2\u20134 reject human reading/intent and keep reuse possible without claiming observed replay."
+      },
+      {
+        "criterion": "date-and-sample",
+        "required": true,
+        "status": "pass",
+        "basis": "Paragraphs1/5 scope two captures, September observations and October replay without fresh behavior claims."
+      },
+      {
+        "criterion": "citation-fidelity",
+        "required": true,
+        "status": "partial-fail",
+        "basis": "All6links name correct canonical source and relevant subject, but0of3distinct fragments exist in baseline render."
+      },
+      {
+        "criterion": "freshness-policy",
+        "required": false,
+        "status": "pass",
+        "basis": "Paragraphs2/3 keep validity/reuse separate from crypto coverage."
+      },
+      {
+        "criterion": "unavailable-state",
+        "required": false,
+        "status": "pass",
+        "basis": "Paragraph4 keeps directory failure/timeout unresolved rather than signature-invalid."
+      }
+    ],
+    "review": "Root review and separate read-only reviewer agree. Agreement is not a second model trial or independent standards experiment.",
+    "baselineRewritten": false,
+    "limitations": [
+      "unseeded discovery",
+      "organic citations/use",
+      "population answer accuracy",
+      "human reading",
+      "native managed verification",
+      "current vendor traffic"
+    ]
+  },
+  "baselineFragmentTargets": {
+    "headingCount": 16,
+    "targets": [
+      {
+        "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#duckassistbot-what-its-signature-actually-covers",
+        "fragment": "duckassistbot-what-its-signature-actually-covers",
+        "present": false
+      },
+      {
+        "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#how-a-site-owner-can-classify-ai-fetches",
+        "fragment": "how-a-site-owner-can-classify-ai-fetches",
+        "present": false
+      },
+      {
+        "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#ai-fetcher-probe-method-and-limits",
+        "fragment": "ai-fetcher-probe-method-and-limits",
+        "present": false
+      }
+    ]
+  },
+  "repair": {
+    "newModelTrials": 0,
+    "candidateFragmentTargets": {
+      "headingCount": 16,
+      "targets": [
+        {
+          "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#duckassistbot-what-its-signature-actually-covers",
+          "fragment": "duckassistbot-what-its-signature-actually-covers",
+          "present": true
+        },
+        {
+          "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#how-a-site-owner-can-classify-ai-fetches",
+          "fragment": "how-a-site-owner-can-classify-ai-fetches",
+          "present": true
+        },
+        {
+          "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#ai-fetcher-probe-method-and-limits",
+          "fragment": "ai-fetcher-probe-method-and-limits",
+          "present": true
+        }
+      ]
+    },
+    "artifacts": {
+      "sameBodyAfterRemovingOnlyHeadingIds": true,
+      "sourceArticleUnchanged": true,
+      "markdownArticlePages": 27,
+      "allMarkdownArticlePageIdsNonemptyAndUnique": true,
+      "pages": [
+        {
+          "slug": "my-evals-say-it-works-i-dont-use-it",
+          "headingCount": 13,
+          "idCount": 15,
+          "duplicateIds": []
+        },
+        {
+          "slug": "bring-your-own-ai-agent",
+          "headingCount": 16,
+          "idCount": 18,
+          "duplicateIds": []
+        },
+        {
+          "slug": "life-as-background-music",
+          "headingCount": 2,
+          "idCount": 5,
+          "duplicateIds": []
+        },
+        {
+          "slug": "filter-referrer-spam-without-deleting-analytics-history",
+          "headingCount": 12,
+          "idCount": 14,
+          "duplicateIds": []
+        },
+        {
+          "slug": "the-agentic-product-engineer",
+          "headingCount": 10,
+          "idCount": 12,
+          "duplicateIds": []
+        },
+        {
+          "slug": "chatgpt-plugin-apps",
+          "headingCount": 15,
+          "idCount": 17,
+          "duplicateIds": []
+        },
+        {
+          "slug": "oss-radar-12-claude-code-status-summary",
+          "headingCount": 9,
+          "idCount": 11,
+          "duplicateIds": []
+        },
+        {
+          "slug": "i-thought-building-was-enough",
+          "headingCount": 9,
+          "idCount": 12,
+          "duplicateIds": []
+        },
+        {
+          "slug": "why-worktree-setup-is-slow-on-macos",
+          "headingCount": 9,
+          "idCount": 11,
+          "duplicateIds": []
+        },
+        {
+          "slug": "first-party-analytics-for-a-personal-blog",
+          "headingCount": 22,
+          "idCount": 24,
+          "duplicateIds": []
+        },
+        {
+          "slug": "oss-radar-01-vercel-winter-2026-cohort",
+          "headingCount": 36,
+          "idCount": 38,
+          "duplicateIds": []
+        },
+        {
+          "slug": "building-blog-analytics-what-the-numbers-can-prove",
+          "headingCount": 12,
+          "idCount": 14,
+          "duplicateIds": []
+        },
+        {
+          "slug": "linux-signal-stack-conflict",
+          "headingCount": 15,
+          "idCount": 17,
+          "duplicateIds": []
+        },
+        {
+          "slug": "what-if-the-agent-was-better-before-we-helped",
+          "headingCount": 11,
+          "idCount": 13,
+          "duplicateIds": []
+        },
+        {
+          "slug": "does-llms-txt-work",
+          "headingCount": 28,
+          "idCount": 30,
+          "duplicateIds": []
+        },
+        {
+          "slug": "how-ghx-was-born",
+          "headingCount": 18,
+          "idCount": 20,
+          "duplicateIds": []
+        },
+        {
+          "slug": "oss-radar-11-qwenputer-compiled-cpu",
+          "headingCount": 9,
+          "idCount": 11,
+          "duplicateIds": []
+        },
+        {
+          "slug": "oss-radar-13-hob-offline-file-tasks",
+          "headingCount": 8,
+          "idCount": 10,
+          "duplicateIds": []
+        },
+        {
+          "slug": "i-am-lost-right-now",
+          "headingCount": 2,
+          "idCount": 5,
+          "duplicateIds": []
+        },
+        {
+          "slug": "openwiki-validates-my-bet",
+          "headingCount": 8,
+          "idCount": 10,
+          "duplicateIds": []
+        },
+        {
+          "slug": "openclaw-chose-solid-why-id-choose-nisli",
+          "headingCount": 10,
+          "idCount": 12,
+          "duplicateIds": []
+        },
+        {
+          "slug": "which-ai-fetchers-send-which-headers",
+          "headingCount": 20,
+          "idCount": 22,
+          "duplicateIds": []
+        },
+        {
+          "slug": "productive-procrastination",
+          "headingCount": 12,
+          "idCount": 15,
+          "duplicateIds": []
+        },
+        {
+          "slug": "oss-radar-09-tsrs-typescript-memory",
+          "headingCount": 8,
+          "idCount": 10,
+          "duplicateIds": []
+        },
+        {
+          "slug": "oss-radar-10-paperpilot-redaction",
+          "headingCount": 8,
+          "idCount": 10,
+          "duplicateIds": []
+        },
+        {
+          "slug": "oss-radar-08-bun-aot",
+          "headingCount": 8,
+          "idCount": 10,
+          "duplicateIds": []
+        },
+        {
+          "slug": "how-i-separate-readers-from-bots-without-javascript",
+          "headingCount": 12,
+          "idCount": 14,
+          "duplicateIds": []
+        }
+      ],
+      "candidateBodySha256": "47fb11a649020cdeadc466cc8f46355f191a92616149fd3794a964849bfb602a",
+      "baselineBodySha256": "e865f38077ff8109591486ecdd7d3a9a2c0b658632e58da539ca6feefd906447",
+      "productionBehaviorClaim": false
+    },
+    "browser": {
+      "scope": "Local isolated build in IAB, CSP script-src none/connect-src none/frame-src none. Browser controls read DOM; no application JS supplies IDs or navigation.",
+      "tabClosed": true,
+      "ownedServerStopped": true,
+      "portUnreachable": true,
+      "viewportOverrideUsed": false,
+      "observations": [
+        {
+          "id": "duckassistbot-what-its-signature-actually-covers",
+          "top": -0.1484375,
+          "scrollY": 7025,
+          "positioned": true
+        },
+        {
+          "id": "how-a-site-owner-can-classify-ai-fetches",
+          "top": 0.0859375,
+          "scrollY": 15195,
+          "positioned": true
+        },
+        {
+          "id": "ai-fetcher-probe-method-and-limits",
+          "top": -0.046875,
+          "scrollY": 16535,
+          "positioned": true
+        }
+      ]
+    },
+    "dependencies": {
+      "marked": "17.0.4",
+      "marked-gfm-heading-id": "4.1.4",
+      "github-slugger": "2.0.0",
+      "scope": "Node build renderer only; pinned lockfile integrity.",
+      "moduleState": "Shared extension slugger requires serialized async render calls; errors release the queue."
+    },
+    "sourceSha256": {
+      "packages/blog/src/lib/markdown.ts": "489895d3efe501ccba9e9ac2c4bb2e1a6451314340005ef8400d3c94bab0ba49",
+      "packages/blog/test/markdown-heading-links.test.ts": "ecf963d5f3705fb58d3cbf20338b0c8fa1c259a8bb2a49606d3f62fa4493bbdc",
+      "packages/blog/package.json": "5c011323858f3682abac7abbb3b51361a936b6ee03f983c153745dc2c41c2f51",
+      "pnpm-lock.yaml": "07718bc6ee6bfc74aa4b48312913743eaad8e12e41d6ffe0a5b58517eb983255"
+    },
+    "siteTests": 169,
+    "workspaceTypes": true,
+    "markdownValidation": true,
+    "markdownPostsValidated": 27,
+    "isolatedBuiltPosts": 38,
+    "publicTestWidgetKeyUsed": true,
+    "articleSourceUnchanged": true,
+    "activationAccepted": false,
+    "documentationChecks": {
+      "localLinks": 4,
+      "fencesBalanced": true,
+      "scopedDiffChecked": true
+    },
+    "independentSourceReview": "No material issue found; reviewer ran no tests, trials or regrading."
+  },
+  "primarySources": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9421.html#section-7.2.1",
+      "review": "Unsigned message components can change without altering the signature; verification and application policy remain separate.",
+      "boundary": "Supports interpretation; no new request or cryptographic replay this turn."
+    },
+    {
+      "url": "https://datatracker.ietf.org/doc/draft-ietf-webbotauth-httpsig-protocol-01/",
+      "review": "Current observed revision01; AppendixC.6 separates lifetimes, nonce enforcement and replay state.",
+      "boundary": "Draft and deployment policy, not a current DuckAssistBot request verdict."
+    },
+    {
+      "url": "https://duckduckgo.com/duckduckgo-help-pages/results/duckassistbot",
+      "review": "Current public page describes Search AI-answer crawling; no Signature text was returned in the inspected document.",
+      "boundary": "Declared purpose and inspected page scope, not per-action purpose or an assertion that no signing documentation exists elsewhere."
+    },
+    {
+      "url": "https://marked.js.org/using_pro#renderer",
+      "review": "Documented renderer extension point. Installed Marked17.0.4 emits plain hN withoutIDs.",
+      "boundary": "Local package implementation and measured output establish the defect."
+    },
+    {
+      "url": "https://github.com/markedjs/marked-gfm-heading-id",
+      "review": "Installed4.1.4 source uses github-slugger2.0.0; preprocess resets module-global state by default.",
+      "boundary": "Async interleaving requires local serialization; source inspected and regression tested."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/browsing-the-web.html#scroll-to-the-fragment",
+      "review": "HTML native fragment navigation needs an indicated target.",
+      "boundary": "Local CSP-script-blocked navigation verifies these3targets, not current production."
+    }
+  ],
+  "privateArchive": {
+    "location": "packages/blog/worklog/analytics-evidence/2026-10-31-answer-fidelity",
+    "files": 40,
+    "manifestSha256": "261d4b1a7ae56eb51b73a9023ea94ba18b93001c5cf0be84698c05a4f7982e76"
+  },
+  "effects": {
+    "productionRequests": 0,
+    "productionSqlStatements": 0,
+    "newVendorTrials": 0,
+    "newHumanLabels": 0,
+    "newCollectionFields": 0,
+    "articleProseChanged": false,
+    "modelAnswerEdited": false,
+    "hostedActivationClaim": false
+  },
+  "scopeNotes": [
+    "The single supplied-source answer is a controlled use observation, not an organic citation or population accuracy rate.",
+    "Root and read-only reviewer agreement is not another trial or independent standards validation.",
+    "Declaring no external browsing in the prompt is not an exported complete tool-compliance trace.",
+    "No model source ablation or causal article-lift claim.",
+    "Raw HTML headings remain author-controlled; generated heading IDs can change when headings are renamed. TypeScript pages are outside this Markdown renderer repair.",
+    "The baseline remains a strict failure after the separate rendering repair."
+  ]
+}
