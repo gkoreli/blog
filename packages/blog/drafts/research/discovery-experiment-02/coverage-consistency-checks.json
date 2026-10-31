@@ -1,0 +1,139 @@
+{
+  "checkedAt": "2026-10-31T10:35:15.468Z",
+  "baseline": "c3e4c0ee6d016147272e329197d4c1c85ab2ac34",
+  "recordCases": 14,
+  "changedCoverageCases": 5,
+  "exactNodeNativeFullReportAgreement": true,
+  "producerCases": 6,
+  "exactNodeNativeProducerAgreement": true,
+  "validReads": {
+    "rows": 384,
+    "beforeReads": 30513,
+    "afterReads": 30513,
+    "beforeWrites": 0,
+    "afterWrites": 0,
+    "fullReportIdentical": true,
+    "scope": "One local native relation; not production cost or CPU/latency benchmark"
+  },
+  "ownerExclusion": true,
+  "referralExclusion": true,
+  "outsideWindowExclusion": true,
+  "emptyReportAllZero": true,
+  "rawRowsRewritten": false,
+  "packageEntryIncludesChangedReport": true,
+  "packageEntryBeforeSha256": "03b798dcdc29a4e1b4bad242c7fdafdfcf883b90aeb93793359cb41bb9637414",
+  "packageEntryAfterSha256": "1f45299bd9695465300e5ba151facdb26e5ac2536ef692de533c086a84c0003a",
+  "observationExportBundleIdentical": true,
+  "observationExportBundleSha256": "96cb1e69dff0aff8b531880530fe75c05c22fc2b79a14b64eeef734839209b07",
+  "productionRequests": 0,
+  "productionSqlStatements": 0,
+  "externalFeedRequests": 0,
+  "newHumanLabels": 0,
+  "profile": "signature-coverage-consistency-acceptance-v1",
+  "sourceSha256": {
+    "packages/analytics/src/signature-coverage-report.ts": "a3e6dde864638f529803c61475a6aa5aa162eda41cf6a7e2b15d5b897e11e554",
+    "packages/analytics/test/coverage-consistency.test.mjs": "6bd80445abb0369f48750ff86cfc20842c579da5f5d907105d8f2fa463081225",
+    "packages/analytics/test/fixtures/coverage-consistency.mjs": "f016a14693bcc2be6fe244b048c7aa6b3fa52d09179deb7e978279d04809e546",
+    "packages/blog/src/pages/stats.ts": "0a924fd2a8262a016ce6dbece225ea4e9da450905e76723d612932f18296458c",
+    "packages/blog/src/worker/stats-cache.ts": "97a5fa886a210f2bf9cc996df7c427ad5e8d74c2a7f5cda83d70cfd12df3359e",
+    "packages/blog/scripts/check-coverage-consistency.mjs": "b4304aa3359d75ce785b3c1e00cfc7eba42ab6441f519db434be6bc833a4178a"
+  },
+  "history": {
+    "statesReviewed": 41,
+    "originalCoverageOnly": 16,
+    "selectionWrappedCoverage": 25,
+    "unchangedInvariants": [
+      "authority-or-targetUri required before verification",
+      "recorded age clamped to zero",
+      "validity is expires-created after rejecting expires<created; zero allowed"
+    ],
+    "anchors": [
+      {
+        "commit": "d723a88a1a4053d80a21583e582ec72172083a4c",
+        "webbotauthSha256": "5e57f4b56a66026589b86976a7da775d8c1341b5de0062cbf421d30ae0134ba7"
+      },
+      {
+        "commit": "610841a",
+        "webbotauthSha256": "39ec42a0bed787ba7bcea900cb796693b1e4c37f42095525054d7a15a300a725"
+      },
+      {
+        "commit": "afe2289105cb84b8c0b1498f93c89f087225c224",
+        "webbotauthSha256": "54348a11b372528ae042dc31b17b42c06104ec16e72e32b1e025b1f94aa38411"
+      }
+    ],
+    "limit": "Source projection; original inline audit preserved after execution. Not every per-state full digest was captured. No deployment/production incidence or universal RFC policy proof."
+  },
+  "historical": {
+    "checkedAt": "2026-10-31T10:35:48.792Z",
+    "selection": "Original397-row all-kind capture, Oct29 20:39:23\u2013Oct30 09:38:03UTC; not current production or whole history",
+    "sourceManifestEntriesVerified": 70,
+    "sourceManifestSha256": "0d6fef628964411d409a063c9430be67cc18af9823a2b0e2d663ae3404211079",
+    "sourceExportSha256": "99237bb5327224cc4564b09223b7afb36a7445012f0d8ec2c3af3266e8e6cd89",
+    "exactNodeNativeAgreement": true,
+    "counts": {
+      "total": 397,
+      "localVerified": 31,
+      "verifiedCoverageBefore": 31,
+      "verifiedCoverageAfter": 31,
+      "changedCoverageFacts": 0
+    },
+    "localMeter": {
+      "rows_read": 2717,
+      "rows_written": 0
+    },
+    "method": "Evaluate old/new stored coverage predicates only; no cryptographic re-verification, current policy clock or feed request",
+    "productionRequests": 0,
+    "productionSqlStatements": 0
+  },
+  "acceptance": {
+    "types": true,
+    "analyticsTests": 384,
+    "siteTests": 169,
+    "markdownValidations": 27,
+    "isolatedPostsBuilt": 38,
+    "builtStatsHtmlSha256": "5dcd37e96220138706eb32f7ad34f76985b055f99ea42c584646021ef626eef0",
+    "parallelDisclosuresRendered": true,
+    "verifierCollectorAndVersionsSourcesUnchanged": true,
+    "retrospectiveUnchanged": true,
+    "sameFrozenProducerResultsAsBaseline": true,
+    "reportCacheVersion": "2026-10-31.7"
+  },
+  "privateEvidence": {
+    "path": "packages/blog/worklog/analytics-evidence/2026-10-31-signature-coverage-consistency",
+    "files": 52,
+    "manifestSha256": "56659f9022eba8de90a8903b8ef3752c372762920e41513036773d724e4f45b4",
+    "allEntriesVerified": true
+  },
+  "preservedHarnessFailures": [
+    "Package-entry byte-parity assertion failed because it includes the changed report; observation-only parity is the relevant claim",
+    "First observation wrapper used a nonexistent export; corrected to actual observePageResponse"
+  ],
+  "sources": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9421.html#section-3.2.1",
+      "use": "Application-specific coverage policies, not universal host requirement"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9421.html#section-7.2.1",
+      "use": "Unsigned components remain mutable; supplied metadata is not proof replay"
+    },
+    {
+      "url": "https://parallel.ai/parallel-web-systems-bots",
+      "use": "Documented ShapBot/Shap-User signing origins; no new vendor request measured"
+    }
+  ],
+  "sourcesCheckedOn": "2026-10-31",
+  "limits": {
+    "collectionSchemaClassifierVerifierChanged": false,
+    "publicReportInterpretationChanged": true,
+    "historicalRowsRewritten": false,
+    "realCurrentProductionIncidenceMeasured": false,
+    "managedNativeOracleObtained": false,
+    "newCalibrationTrials": 0,
+    "newModelTrials": 0,
+    "articleChanged": false,
+    "sourceActivationMeasured": false,
+    "servedPresentationMeasured": false,
+    "fullGoalComplete": false
+  }
+}

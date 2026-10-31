@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T10:29:37.494347+00:00",
-  "sourceBaseline": "60725b8178cb55592cc5e33389a38e3624b08565",
+  "checkedAt": "2026-10-31T10:37:15.507532+00:00",
+  "sourceBaseline": "c3e4c0ee6d016147272e329197d4c1c85ab2ac34",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "d9a19a9/60725b8 delivered offline assignment checks, concise article and native source activation."
+    "scope": "a908cfb/c3e4c0e verified historical assignment coverage/cost, corrected public structural claims and accepted source activation."
   },
-  "scope": "Apply assignment checks to a verified397-row historical capture, compare local guarded-input query work, retain offline architecture and correct public panel overclaims.",
+  "scope": "Enforce historical coverage producer invariants in reports, preserve verified outcomes, accept synthetic/native and retained historical checks, and correct already-supported Parallel capability disclosure.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -21,7 +21,7 @@
     "classifier": "2026-10-31.1",
     "incomingVerifier": "2026-10-31.2",
     "offlineDirectoryAudit": "2026-10-31.2",
-    "statsReportCache": "2026-10-31.6",
+    "statsReportCache": "2026-10-31.7",
     "offlineResourceReach": "2026-10-31.1",
     "offlineAccessEvidence": "2026-10-31.2",
     "vendorIp": "2026-10-31.2",
@@ -32,7 +32,7 @@
     "readerkind.ts": "bf00c27e7edcb31135231080921e517caff9fbd2060bb7793837366926447307",
     "classification-evidence.ts": "f6716df870cadb5d86953b18ea613eb01e696169966b9223d97de5ab7900e3c1",
     "signature-evidence.ts": "b284f1e4366d371dda5e3e7b9dedeebc45bfab3f8a983663df09e534160baf75",
-    "signature-coverage-report.ts": "4dc991039cb03eeeea08d084d1d2b4a42800052dee01aa7b631b550beaf92fca",
+    "signature-coverage-report.ts": "a3e6dde864638f529803c61475a6aa5aa162eda41cf6a7e2b15d5b897e11e554",
     "signature-summary.ts": "c2b4376e2fbaab46755a4dc4ebd76f0b4ef609ead86b960d3516020fbb7ed394",
     "native-bot-evidence.ts": "3577e51bb9c8107427c9609f3c5e08f052a564c1a7dc519ef7692d61c9270fae",
     "calibration-evaluation.ts": "14cb49966cb6c500f130a9e867b230c439d0177f61a073217b5bc49c9f704fa4",
@@ -81,9 +81,11 @@
         "../discovery-experiment-02/10-retained-network-assignment-consistency.md",
         "../discovery-experiment-02/network-assignment-checks.json",
         "../discovery-experiment-02/11-assignment-coverage-cost-and-public-claims.md",
-        "../discovery-experiment-02/assignment-report-scope-checks.json"
+        "../discovery-experiment-02/assignment-report-scope-checks.json",
+        "../discovery-experiment-02/12-signature-coverage-producer-invariants.md",
+        "../discovery-experiment-02/coverage-consistency-checks.json"
       ],
-      "limit": "Missing, unsupported, conflicting and native unavailable values stay distinct. This does not prove human accuracy or managed-verifier agreement. Offline assignment consistency now distinguishes supported contradictions from missing/invalid/unsupported inputs using reviewed historical maps; synthetic acceptance does not establish production incidence or vendor identity. The saved397-row selection has397 consistent assignments:327 empty,45 correctly unmapped and25 configured. Public wording now describes its structural gate; no identity or population accuracy follows."
+      "limit": "Missing, unsupported, conflicting and native unavailable values stay distinct. This does not prove human accuracy or managed-verifier agreement. Offline assignment consistency now distinguishes supported contradictions from missing/invalid/unsupported inputs using reviewed historical maps; synthetic acceptance does not establish production incidence or vendor identity. The saved397-row selection has397 consistent assignments:327 empty,45 correctly unmapped and25 configured. Public wording now describes its structural gate; no identity or population accuracy follows. Public coverage now requires historical producer target/age invariants. Impossible detail becomes unknown while stored verified outcomes remain. Zero duration and dated history are preserved; no current production incidence is established."
     },
     {
       "id": "name-matching",
@@ -117,9 +119,11 @@
         "118-caller-owned-directory-recovery.md",
         "123-structured-field-extension-compatibility.md",
         "structured-extension-compatibility.json",
-        "structured-extension-release.json"
+        "structured-extension-release.json",
+        "../discovery-experiment-02/12-signature-coverage-producer-invariants.md",
+        "../discovery-experiment-02/coverage-consistency-checks.json"
       ],
-      "limit": "Selected verified-proof coverage is preserved with profile provenance. Unsigned UA/path and discarded original evidence cannot be reconstructed by current code. Current verifier repairs do not rewrite old rows or prove production race frequency."
+      "limit": "Selected verified-proof coverage is preserved with profile provenance. Unsigned UA/path and discarded original evidence cannot be reconstructed by current code. Current verifier repairs do not rewrite old rows or prove production race frequency. Public coverage now requires historical producer target/age invariants. Impossible detail becomes unknown while stored verified outcomes remain. Zero duration and dated history are preserved; no current production incidence is established."
     },
     {
       "id": "vendor-and-native-verification",
@@ -368,13 +372,13 @@
   ],
   "effectsThisAudit": {
     "runtimeChanged": true,
-    "clientChanged": true,
+    "clientChanged": false,
     "collectorClassifierVerifierSchemaChanged": false,
     "accountOrSecurityChanges": false,
     "rawCollectionActivated": false,
     "articleChanged": false,
     "articleChangedByThisWork": false,
-    "sourceActivationMeasured": true,
+    "sourceActivationMeasured": false,
     "servedDestinationAcceptance": false,
     "privacyDisclosureChanged": false,
     "productionRequests": 0,
@@ -382,7 +386,7 @@
     "newHumanLabels": 0,
     "newCalibrationTrials": 0,
     "newModelTrialsOrRegrades": 0,
-    "reportRuntimeChanged": false,
+    "reportRuntimeChanged": true,
     "productionSiteRequests": 0,
     "nativeMatchingSecurityEventsObserved": 0,
     "newRegisteredCalibrationTrials": 0,
@@ -393,17 +397,17 @@
     "offlineAnalyzerChanged": false,
     "publicPresentationChanged": true,
     "historicalRowsAssessed": 397,
-    "publicMetricsChanged": false
+    "publicMetricsChanged": true
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: independent historical coverage, native input-query cost and correction of public structural/count claims accepted locally; exact source activation accepted",
+    "thisTurnClassification": "progress: stored coverage contradictions repaired;14 record/6 signed controls and historical397-row predicate check accepted; Parallel disclosure corrected",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Audit the remaining public verification claims against their actual retained fields and validation gates, prioritizing any demonstrated signature-coverage/identity/purpose overclaim. Do not repeat accepted assignment fixtures, fetch fresh production data, reopen the directory-advisory decision, or bypass any of the six unresolved inputs. Public raw-row assignment integration stays unadopted pending a separately justified bounded design.",
+  "nextBoundedAction": "Reconcile remaining goal requirements with newly available authorized measurement inputs. Preserve all six gates, deferred human trials and closed advisory/assignment runtime-adoption decisions. Do not repeat accepted local controls or expand implementation merely to avoid missing native/search/human/privacy/source-purpose evidence. Current coverage repair still needs source activation; served production behavior remains unmeasured.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -429,12 +433,11 @@
     "scopeAfterOwnerContinuation": "Historical checkpoint for missing measurement inputs; not a prohibition on independent implementation, observed agent growth or discovery work."
   },
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
-  "goalStatusScope": "Persistent goal active/incomplete. Historical assignment coverage and current public metric descriptions are more precise; native/human accuracy, source purpose, current traffic and privacy decisions remain unresolved.",
+  "goalStatusScope": "Persistent goal active/incomplete. Public signature coverage now enforces historical producer invariants and preserves unknown detail; current native/human accuracy, readership/growth, purpose and privacy acceptance remain unresolved.",
   "latestContinuation": {
-    "research": "../discovery-experiment-02/11-assignment-coverage-cost-and-public-claims.md",
-    "receipt": "../discovery-experiment-02/assignment-report-scope-checks.json",
-    "nextBoundedAction": "Audit the remaining public verification claims against their actual retained fields and validation gates, prioritizing any demonstrated signature-coverage/identity/purpose overclaim. Do not repeat accepted assignment fixtures, fetch fresh production data, reopen the directory-advisory decision, or bypass any of the six unresolved inputs. Public raw-row assignment integration stays unadopted pending a separately justified bounded design.",
-    "release": "../discovery-experiment-02/assignment-report-scope-release.json"
+    "research": "../discovery-experiment-02/12-signature-coverage-producer-invariants.md",
+    "receipt": "../discovery-experiment-02/coverage-consistency-checks.json",
+    "nextBoundedAction": "Reconcile remaining goal requirements with newly available authorized measurement inputs. Preserve all six gates, deferred human trials and closed advisory/assignment runtime-adoption decisions. Do not repeat accepted local controls or expand implementation merely to avoid missing native/search/human/privacy/source-purpose evidence. Current coverage repair still needs source activation; served production behavior remains unmeasured."
   },
   "latestAcceptedSourceActivation": {
     "sourceCommit": "a908cfbd80b26a1453a6d3fb92e877eb57f248dd",
