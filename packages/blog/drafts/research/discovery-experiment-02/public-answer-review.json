@@ -1,0 +1,213 @@
+{
+  "version": "answer-review-v1",
+  "protocol": "13-public-answer-fidelity-protocol.md",
+  "protocolSha256": "607d2761cf24752455df0d1595cbc4ce430f72ceec6f2cae2200ea65cfdd2134",
+  "reviewMethod": "Authoring agent categorical review against a frozen replay-backed rubric. Capture hashes and completeness can be checked mechanically; correctness remains a supplied review, not an automated truth verdict or independent human panel.",
+  "criteria": [
+    {
+      "id": "coverage",
+      "primary": true
+    },
+    {
+      "id": "unsigned",
+      "primary": true
+    },
+    {
+      "id": "key",
+      "primary": false
+    },
+    {
+      "id": "reuse",
+      "primary": false
+    },
+    {
+      "id": "intent",
+      "primary": true
+    },
+    {
+      "id": "scope",
+      "primary": false
+    }
+  ],
+  "cohorts": [
+    {
+      "id": "perplexity-search",
+      "service": "Perplexity web UI",
+      "mode": "Search selected",
+      "model": null,
+      "context": "Anonymous visible Sign In control; account identity, hidden context and personalization unavailable. Fresh visible sessions in declared order."
+    }
+  ],
+  "conditions": [
+    {
+      "id": "neutral",
+      "cohort": "perplexity-search",
+      "status": "completed",
+      "submittedAt": "2026-10-31T15:42:12.452Z",
+      "observedAt": "2026-10-31T15:42:26.454Z",
+      "promptSha256": "3928c807a67b7b47a764509761d470d96c755092563968b61c4c6a83b4bb85b8",
+      "answerCapture": "neutral-answer.json",
+      "answerParagraphs": 2,
+      "answerWords": 132,
+      "grades": [
+        {
+          "criterion": "coverage",
+          "status": "not-addressed",
+          "paragraphs": [
+            1
+          ],
+          "reason": "The answer declines to identify the captured signed components. The rubric needs the observed authority and Signature-Agent list."
+        },
+        {
+          "criterion": "unsigned",
+          "status": "not-addressed",
+          "paragraphs": [
+            1
+          ],
+          "reason": "The general dependence on Signature-Input is correct, but the answer never establishes that the captured User-Agent and path are unsigned."
+        },
+        {
+          "criterion": "key",
+          "status": "supported",
+          "paragraphs": [
+            1,
+            2
+          ],
+          "reason": "The answer connects verification to a key and the signed components, with time/expiry context in paragraph 2. It does not bind the unsigned User-Agent to the operator. Specific key trust configuration is not independently established."
+        },
+        {
+          "criterion": "reuse",
+          "status": "not-addressed",
+          "paragraphs": [
+            2
+          ],
+          "reason": "It correctly qualifies changes to covered fields, but declines the requested capture-specific reuse/window explanation. That omission is distinct from an incorrect assertion that replay is impossible."
+        },
+        {
+          "criterion": "intent",
+          "status": "supported",
+          "paragraphs": [
+            1
+          ],
+          "reason": "It explicitly denies inferring a person intended to fetch or read the article from verification."
+        },
+        {
+          "criterion": "scope",
+          "status": "supported",
+          "paragraphs": [
+            1,
+            2
+          ],
+          "reason": "It separates its general protocol description from unavailable capture-specific knowledge and does not universalize one captured implementation."
+        }
+      ],
+      "citationGroups": [
+        {
+          "answerParagraph": 1,
+          "citedUrls": [
+            "https://developers.google.com/crawling/docs/crawlers-fetchers/web-bot-auth",
+            "https://arcjet.com/learn/web-bot-auth"
+          ]
+        },
+        {
+          "answerParagraph": 2,
+          "citedUrls": [
+            "https://developers.google.com/crawling/docs/crawlers-fetchers/web-bot-auth",
+            "https://cloudless.sh/log/web-bot-auth-in-the-wild/"
+          ]
+        }
+      ],
+      "retrievedSourcesDisplayed": 10,
+      "directCanonicalCitationObserved": false,
+      "citationSupportReview": [
+        {
+          "answerParagraph": 1,
+          "source": "https://arcjet.com/learn/web-bot-auth",
+          "sourcePassage": "What exactly gets signed?; paragraph beginning Real signers make different choices",
+          "finding": "The full retrieved guide supplies the captured authority/Signature-Agent coverage and ten-minute expiry, and links to our study. The completed answer declines to establish those details.",
+          "interpretation": "Observed full-source/answer evidence gap. The service's internal excerpts and retrieval context are unavailable, so the failing component and whether it consumed that paragraph are unestablished."
+        },
+        {
+          "answerParagraph": 2,
+          "source": "https://cloudless.sh/log/web-bot-auth-in-the-wild/",
+          "sourcePassage": "Catching it in the wild; DuckDuckGo row in Signer/Covers/Validity table",
+          "finding": "The cited source independently reports authority/Signature-Agent coverage and an approximately ten-minute window for its own DuckAssistBot observations. The answer declines a capture-specific lifetime.",
+          "interpretation": "This source's separate captures are not a new verification of our captured proof. Its reported evidence supports a concrete answer lead; it does not authenticate the service's internal context."
+        }
+      ]
+    },
+    {
+      "id": "canonical",
+      "cohort": "perplexity-search",
+      "status": "blocked",
+      "submittedAt": "2026-10-31T15:43:56.757Z",
+      "observedAt": "2026-10-31T15:44:13.599Z",
+      "promptSha256": "57ae0e6b8ee6a4bf2da4859d7e40d91fc0aa4029b74261ea33135efd05d8b64a",
+      "gateCapture": "canonical-unavailable.json",
+      "grades": [],
+      "reason": "The service required sign-in after submission. No complete answer was available; no login, new agreement, alternate anonymous route or retry was attempted."
+    },
+    {
+      "id": "reproduction",
+      "cohort": "perplexity-search",
+      "status": "not-submitted",
+      "promptSha256": "2ad37a001bef1effe40286ae18975dc5f5e8090bebb810155db393f14e9d32ff",
+      "grades": [],
+      "reason": "The declared access-gate stop rule was reached. No answer-generation attempt was submitted for this condition."
+    }
+  ],
+  "captures": [
+    {
+      "file": "answer-fidelity-final-source-passages.json",
+      "sha256": "76b579cae26d8d5990444e8bc4cf4a8edff8bfd4e9bf4c49aea3921b02e21282"
+    },
+    {
+      "file": "answer-fidelity-neutral-citation-sources.json",
+      "sha256": "9fb404c4ab3c87ff23be6a2c78c8ca08de123d9c87a744c33f838368d17cea51"
+    },
+    {
+      "file": "answer-fidelity-source-passages.json",
+      "sha256": "f055de6f8ba12505c8e7782af2da24cdb09a65926c9768b825195d6c551478c0"
+    },
+    {
+      "file": "answer-fidelity-source-review.json",
+      "sha256": "1ea944771bc76334d78601be89691b58ad4347393e606ae457c0b3be032b9fcc"
+    },
+    {
+      "file": "canonical-prompt.txt",
+      "sha256": "57ae0e6b8ee6a4bf2da4859d7e40d91fc0aa4029b74261ea33135efd05d8b64a"
+    },
+    {
+      "file": "canonical-unavailable.json",
+      "sha256": "7e655bd979432e8e5bf253061a4399f90b1c5ee003138117e8b7c6de8938fd71"
+    },
+    {
+      "file": "neutral-answer.json",
+      "sha256": "b77e1ad2c2eb59eba9ac15f9b380b652335518bd8d42a2be3462a323bfc3f32e"
+    },
+    {
+      "file": "neutral-prompt.txt",
+      "sha256": "3928c807a67b7b47a764509761d470d96c755092563968b61c4c6a83b4bb85b8"
+    },
+    {
+      "file": "protocol.md",
+      "sha256": "607d2761cf24752455df0d1595cbc4ce430f72ceec6f2cae2200ea65cfdd2134"
+    },
+    {
+      "file": "reference-article.md",
+      "sha256": "59c96f4351e3325b7dc8b49e90ac1ddea946f538ff78842b7c568d69ace5a7aa"
+    },
+    {
+      "file": "reproduction-prompt.txt",
+      "sha256": "2ad37a001bef1effe40286ae18975dc5f5e8090bebb810155db393f14e9d32ff"
+    }
+  ],
+  "limits": [
+    "One completed answer among three planned conditions; do not turn access gates into content failures or divide answer accuracy by the planned count.",
+    "Source-supplied contrasts are unavailable. The reproduction failure hypothesis is untested.",
+    "No origin request, current vendor behavior, unique person, reading, general citation rate or causal uplift was measured.",
+    "Source paths/hosts are transcribed from visible AX links with HTTPS review URLs; exact hidden tracking/redirect behavior is not established.",
+    "The web-tool source reviews expose full-source passages at their returned crawl versions. The service's actual retrieved chunks may differ.",
+    "Existing article-snapshot trial and this external-service trial remain separate."
+  ]
+}

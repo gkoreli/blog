@@ -1,0 +1,121 @@
+{
+  "checkedAt": "2026-10-31T15:54:23.399270+00:00",
+  "sourceBaseline": "b31cb86af81eab5da8b33517b5d25910909b1a12",
+  "integrationParent": "ec7661d40f99e46e1771a809224483829569ebf2",
+  "frozen": {
+    "frozenAt": "2026-10-31T15:41:36.850185+00:00",
+    "base": "b31cb86af81eab5da8b33517b5d25910909b1a12",
+    "protocolSha256": "607d2761cf24752455df0d1595cbc4ce430f72ceec6f2cae2200ea65cfdd2134",
+    "referenceArticleSha256": "59c96f4351e3325b7dc8b49e90ac1ddea946f538ff78842b7c568d69ace5a7aa",
+    "prompts": {
+      "neutral": "3928c807a67b7b47a764509761d470d96c755092563968b61c4c6a83b4bb85b8",
+      "canonical": "57ae0e6b8ee6a4bf2da4859d7e40d91fc0aa4029b74261ea33135efd05d8b64a",
+      "reproduction": "2ad37a001bef1effe40286ae18975dc5f5e8090bebb810155db393f14e9d32ff"
+    },
+    "service": "Perplexity web UI",
+    "mode": "Search selected",
+    "model": null,
+    "plannedPrompts": 3,
+    "submittedPrompts": 0,
+    "note": "This is the immutable pre-execution record; observed submissions are reported separately in effects and reviewVerification."
+  },
+  "sourceSha256": {
+    "packages/blog/scripts/verify-answer-review.mjs": "e76af7ddd75264f3e4bbae57a76e9b9cd697c96e7952ed50d36f78a77b5b42d5",
+    "packages/blog/test/answer-review.test.mjs": "0159f425a79428fab4a5ecc5ffd47ef5ae2f27ec0fb7f1758cecc24851c0c4c4",
+    "packages/blog/drafts/research/discovery-experiment-02/public-answer-review.json": "77160ea03aa832db523862618e3d6f067abe855f0ae81e02d304902feca53be7",
+    "packages/blog/drafts/research/discovery-experiment-02/13-public-answer-fidelity-protocol.md": "607d2761cf24752455df0d1595cbc4ce430f72ceec6f2cae2200ea65cfdd2134",
+    ".agents/skills/run-discovery-experiment/references/answer-fidelity.md": "5e17f132939b696e5f6a76f8d9853bb3022f54d33a729f08545a9392f91b8ae3"
+  },
+  "reviewVerification": {
+    "inputSha256": "77160ea03aa832db523862618e3d6f067abe855f0ae81e02d304902feca53be7",
+    "version": "answer-review-summary-v1",
+    "reviewIsSuppliedAssessment": true,
+    "criteria": 6,
+    "conditions": [
+      {
+        "id": "neutral",
+        "cohort": "perplexity-search",
+        "status": "completed",
+        "primaryPassed": false,
+        "supported": 3,
+        "contradicted": 0,
+        "notAddressed": 3,
+        "unavailable": 0
+      },
+      {
+        "id": "canonical",
+        "cohort": "perplexity-search",
+        "status": "blocked",
+        "primaryPassed": null,
+        "supported": null,
+        "contradicted": null,
+        "notAddressed": null,
+        "unavailable": null
+      },
+      {
+        "id": "reproduction",
+        "cohort": "perplexity-search",
+        "status": "not-submitted",
+        "primaryPassed": null,
+        "supported": null,
+        "contradicted": null,
+        "notAddressed": null,
+        "unavailable": null
+      }
+    ],
+    "cohorts": [
+      {
+        "id": "perplexity-search",
+        "planned": 3,
+        "submitted": 2,
+        "completed": 1,
+        "blocked": 1,
+        "notSubmitted": 1,
+        "primaryPassed": 0,
+        "primaryNotPassed": 1,
+        "primaryOutcomeDenominator": 1
+      }
+    ],
+    "captureHashesVerified": 11
+  },
+  "checks": {
+    "focusedTestGroups": 5,
+    "siteTests": 174,
+    "workspaceTypes": true,
+    "scriptSyntax": true,
+    "skillValidator": true,
+    "documentation": {
+      "localLinks": 62,
+      "checkedDocuments": 6,
+      "frozenProtocolUnchanged": true,
+      "priorSkillInstructionsPreserved": true,
+      "rootInstructionLines": 54
+    }
+  },
+  "effects": {
+    "directOwnSiteRequests": 0,
+    "answerServicePromptsSubmitted": 2,
+    "answerServiceOriginRequests": "not-measured",
+    "productionSqlStatements": 0,
+    "accountOrAgreementChanges": false,
+    "paidToolChanges": false,
+    "articleChanged": false,
+    "collectorOrPublicReportChanged": false,
+    "productionBuildOrActivationClaimed": false
+  },
+  "artifactLimit": "The access-gate screenshot was emitted in the tool output; a browser-policy-denied local data-URL export was not retried or worked around. No saved image file is claimed. Raw answer text and citation metadata are archived and hash-verified.",
+  "privateArchive": {
+    "path": "/Users/goga/.local/share/gkoreli/analytics-evidence/2026-10-31-public-answer-fidelity",
+    "rawCaptureDirectory": "/Users/goga/.local/share/gkoreli/analytics-evidence/2026-10-31-public-answer-fidelity/raw",
+    "files": 26,
+    "manifestSha256": "8330f7a95ddac999f70cacf83477227da1372706a0c431e1ca0481ed0d5ee2ed",
+    "verified": true
+  },
+  "executionRouteChoice": "Pending user response; no approval inferred",
+  "remaining": [
+    "Canonical-source answer unavailable after login gate",
+    "Reproduction-supplied condition not submitted",
+    "Different service requires its own protocol/cohort; do not pool it into this run"
+  ],
+  "decision": "Retain article prose; preserve the actual neutral answer's useful criteria and incomplete primary task, and use claim-level citation-support review alongside source selection."
+}
