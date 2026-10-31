@@ -1,0 +1,3 @@
+import {readFileSync,writeFileSync} from 'node:fs';import {pick} from './flow.mjs';
+const cat=JSON.parse(readFileSync('../catalog/catalog.json','utf8'));
+const rows=[8,16].map(gib=>{const hw={os:'darwin',arch:'arm64',cpuModel:'Apple M1',totalRamGB:Math.round(gib*2**30/1e8)/10,freeDiskGB:100,gpu:{kind:'unified',name:'Apple M1',vramGB:Math.round(gib*2**30/1e8)/10}};const r=pick(hw,cat.models);return {hypothetical:true,ramGiB:gib,hardware:hw,recommended:r.recommended,starter:r.starter,liteMode:r.liteMode}});writeFileSync(process.argv[2],JSON.stringify(rows,null,2));console.log(JSON.stringify(rows.map(r=>({ramGiB:r.ramGiB,model:r.recommended?.model.id,context:r.recommended?.contextSize,estimatedTokensPerSecond:r.recommended?.estTokPerSec,liteMode:r.liteMode}))));

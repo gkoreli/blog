@@ -1,5 +1,5 @@
 {
-  "state": "local acceptance; push and served checks pending",
+  "state": "published; source-linked build and served article verified",
   "buildBaseCommit": "a08f2c0 plus subsequent article overlays",
   "markdownPostsValidated": 26,
   "builtPosts": 37,
@@ -10,5 +10,17 @@
   "ogTitle": "OSS Radar #12: Claude Code\u2019s Status Labels Make Their Own Model Calls",
   "description": "Claude Code's tiny agent-status labels can trigger separate model requests. I checked the binary and timer hook, including a case where the workaround silently misses.",
   "sourceSha256": "6c46ecccc9a6b2f74e8e5246dc8a7e4b28c81d42faa9a2f80193bf84783dc70b",
-  "htmlSha256": "9ef10540174525680e55a6da726c8944fc176f1e3c53b7c77949328610ed5faa"
+  "htmlSha256": "9ef10540174525680e55a6da726c8944fc176f1e3c53b7c77949328610ed5faa",
+  "sourceCommit": "1e7564f",
+  "cloudflareBuild": {
+    "id": "cf4aabd0-cebb-4d9c-ac5f-7b77fa889936",
+    "conclusion": "success"
+  },
+  "served": {
+    "checkedAt": "2026-10-31T01:38:29.931620+00:00",
+    "h1Matches": true,
+    "canonicalMatches": true,
+    "domSha256": "18df30cc870bb6ebf102102ed151a1bc2a0aacfea2b3c4e08dfb5eacf644fc5a",
+    "scope": "Native browser; no readership measured"
+  }
 }
