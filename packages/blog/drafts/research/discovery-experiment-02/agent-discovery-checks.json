@@ -1,0 +1,163 @@
+{
+  "checkedAt": "2026-10-31T07:27:54.354197+00:00",
+  "version": "agent-discovery-v1",
+  "validationBase": "73deb54",
+  "integrationParent": "5343de188fe32968b84f1bf58340ed4bf2e3d1d3",
+  "sourceSha256": {
+    "packages/analytics/src/agent-discovery-evidence.ts": "5b190bc71f4808d2b95e00deb4f398404800a36ec82b5e4b49dc54beec4b5d92",
+    "packages/analytics/test/agent-discovery-evidence.test.mjs": "36107d725367d5c718c92215057539b4ed256c9fa13511b9663bb88c19df6e16",
+    "packages/blog/scripts/agent-discovery-evidence.mjs": "537ebd72a135170767cedcdae62484fc4f6c7b8deb34dc48abfd161208e8012b",
+    "packages/blog/scripts/check-agent-discovery-cli.mjs": "d3aeb86ed1902f27dbf32dd52ca175b43c4547df1714a21c4d604fe0b3954eab",
+    "packages/blog/scripts/check-agent-discovery-runtime.mjs": "273c5a002323d9bc2421d03fe1ec359c7457815870820b40e715337fdf1e4a19",
+    "packages/blog/drafts/research/discovery-experiment-02/agent-discovery-evidence.json": "c3f9bb99b997d7329d2ad78e43a058e8382880aa90713760ee6f4ad1c58d3429",
+    "packages/blog/drafts/research/discovery-experiment-02/agent-discovery-brief.md": "615dc86ad1a7a6132ea51481bce90ea0c40a188e9e212c4f727c3d776f966d35"
+  },
+  "inputByteHashMatches": true,
+  "tests": {
+    "analytics": 345,
+    "workspaceTypes": true,
+    "focusedGroups": 8,
+    "cli": {
+      "checkedAt": "2026-10-31T07:26:48.691Z",
+      "checks": [
+        "actual-pack-hash-modes-and-log-minimization",
+        "existing-destination",
+        "destination-symlink",
+        "invalid-utf8",
+        "bom",
+        "oversized",
+        "invalid-json",
+        "schema-secret-not-logged",
+        "nonblocking-fifo-refusal",
+        "device-refusal"
+      ],
+      "networkRequests": 0,
+      "d1Statements": 0
+    },
+    "nodeWorkerd": {
+      "checkedAt": "2026-10-31T07:27:13.289Z",
+      "inputSha256": "c3f9bb99b997d7329d2ad78e43a058e8382880aa90713760ee6f4ad1c58d3429",
+      "sourceSha256": "5b190bc71f4808d2b95e00deb4f398404800a36ec82b5e4b49dc54beec4b5d92",
+      "comparisons": [
+        {
+          "name": "actual-two-run-audit",
+          "accepted": true,
+          "exactReportAndBriefMatch": true
+        },
+        {
+          "name": "completed-empty-pools",
+          "accepted": true,
+          "exactReportAndBriefMatch": true
+        },
+        {
+          "name": "failed-and-missing",
+          "accepted": true,
+          "exactReportAndBriefMatch": true
+        },
+        {
+          "name": "compatible-method",
+          "accepted": true,
+          "exactReportAndBriefMatch": true
+        },
+        {
+          "name": "fragment-reference",
+          "accepted": true,
+          "exactReportAndBriefMatch": true
+        },
+        {
+          "name": "changed-method",
+          "accepted": true,
+          "exactReportAndBriefMatch": true
+        },
+        {
+          "name": "repeat-reference",
+          "accepted": true,
+          "exactReportAndBriefMatch": true
+        },
+        {
+          "name": "unregistered-fragment",
+          "accepted": true,
+          "exactReportAndBriefMatch": true
+        },
+        {
+          "name": "duplicate-question",
+          "accepted": false,
+          "exactReportAndBriefMatch": true
+        },
+        {
+          "name": "invalid-date",
+          "accepted": false,
+          "exactReportAndBriefMatch": true
+        },
+        {
+          "name": "credential-field",
+          "accepted": false,
+          "exactReportAndBriefMatch": true
+        },
+        {
+          "name": "ambiguous-source",
+          "accepted": false,
+          "exactReportAndBriefMatch": true
+        }
+      ],
+      "method": "One saved actual audit and eleven explicitly modified controls, one exact Node/workerd comparison each; no search or provider API execution.",
+      "externalRequests": 0,
+      "productionRequests": 0,
+      "d1Statements": 0
+    },
+    "documentation": {
+      "linksChecked": 117,
+      "guidanceAndEvidenceFiles": 7,
+      "rootInstructionLines": 54,
+      "jsonReportHashMatches": true,
+      "publicBriefMatchesActualCommand": true,
+      "methodTransitionsWithheld": true
+    }
+  },
+  "observations": {
+    "newSearchCalls": 4,
+    "failedCalls": 0,
+    "distinctQuestions": 4,
+    "runs": 2,
+    "canonicalFoundByRun": [
+      3,
+      3
+    ],
+    "canonicalCompletedByRun": [
+      4,
+      4
+    ],
+    "referenceTotals": {
+      "distinctSourceUrls": 1,
+      "distinctSourceTargetPairs": 1,
+      "evidenceReusePairs": 1,
+      "reviewedObservations": 1
+    },
+    "methodTransitions": "withheld; original response setting unrecorded",
+    "independentResearch122TrialsPooled": false
+  },
+  "corrections": [
+    "Incompatible declared methods start a new baseline and withhold transitions",
+    "Reference URL fragments do not inflate source counts; query strings are retained without page-equivalence inference",
+    "Original response setting marked unrecorded, not reconstructed as observed metadata"
+  ],
+  "timestampNote": "Initial search: prior aggregate observation time truncated to milliseconds. Arcjet: prior fetch start truncated to milliseconds. Repeat: saved wrapper file mtime. Raw wrapper retains exact result text and call-start time; no precise completion time asserted.",
+  "privateArchive": {
+    "path": "/Users/goga/.local/share/gkoreli/analytics-evidence/2026-10-31-agent-discovery-repeat",
+    "files": 32,
+    "manifestSha256": "a92413d36a300a541d08d33c76df631b286537a491cd2afc1138b7fb68c367ca",
+    "verified": true
+  },
+  "scope": {
+    "newOwnSiteRequests": 0,
+    "productionSqlStatements": 0,
+    "externalMessages": 0,
+    "newDependencies": false,
+    "collectorOrSchemaChanged": false,
+    "articleChanged": false,
+    "productionActivationClaimed": false,
+    "aiAnswerCitationRateMeasured": false,
+    "independentOperatorAdoptionMeasured": false
+  },
+  "decision": "Retain the article; recognize repeated observed agent discovery and reviewed external evidence reuse. Deliver the offline analyzer and propose bounded signature-answer fidelity next."
+}

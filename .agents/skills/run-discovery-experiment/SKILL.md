@@ -60,6 +60,8 @@ Inspect exact third-party sources when they shape a result. Separate owned pages
 
 Keep public search reconnaissance distinct from authenticated Google performance data and from controlled model trials. Do not infer non-indexing or universal absence because a result is missing from one returned pool. A result pool merged across queries does not supply per-query ranking denominators.
 
+For saved agent-operated search pools and reviewed external references, use the [offline agent-discovery workbench](../../../packages/blog/scripts/agent-discovery-evidence.md). It preserves exact questions, declared method, completed/failed/missing observations and separate per-run denominators. Compare repeated questions before treating one missing result as a content defect when a bounded repeat can resolve that uncertainty. A repeated source appearance is another discovery observation; repeated captures of the same external reference are not additional independent references. Keep source-version changes visible; inspect whether selected sources concern the intended product, mode and observation period before diagnosing a coverage gap. Choose the next intervention from the generated brief plus inspected article/source evidence.
+
 Preserve cohort/window/method changes and start a new baseline when the comparison scope changes. Do not pool retries or failed trials invisibly. A before/after change is descriptive unless the design supports a causal claim. Do not run synthetic traffic to manufacture a growth outcome.
 
 ## Close the loop and improve the skill
