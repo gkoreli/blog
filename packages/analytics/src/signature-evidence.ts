@@ -23,6 +23,8 @@ export const FAILURE_OUTCOMES = {
   'dir-concurrency-limit': 'unavailable', 'dir-fetch-failed': 'unavailable', 'dir-http-status': 'unavailable',
   'dir-media-type': 'unavailable', 'dir-body-limit': 'unavailable', 'dir-body-missing': 'unavailable',
   'dir-body-read-failed': 'unavailable', 'dir-json-invalid': 'unavailable', 'dir-shape-invalid': 'unavailable', 'dir-key-limit': 'unavailable',
+  // Compact stable ID for a directory replaced during asynchronous key import.
+  'reload': 'unavailable',
   'missing-validity': 'policy-rejected', 'not-yet-valid': 'policy-rejected', 'expired': 'policy-rejected', 'validity-policy-exceeded': 'policy-rejected', 'missing-target-component': 'policy-rejected', 'discovery-policy-rejected': 'policy-rejected', 'known-test-key': 'policy-rejected', 'key-metadata-rejected': 'policy-rejected', 'key-metadata-conflict': 'policy-rejected', 'key-validity-conflict': 'policy-rejected',
   'not-web-bot-auth': 'not-applicable', 'no-web-bot-auth-signature': 'not-applicable',
   'unsupported-or-missing-component': 'indeterminate', 'invalid-max-age-policy': 'indeterminate', 'invalid-verification-time': 'indeterminate', 'verification-error': 'indeterminate',

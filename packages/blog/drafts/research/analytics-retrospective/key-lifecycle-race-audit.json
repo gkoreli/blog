@@ -1,0 +1,255 @@
+{
+  "checkedAt": "2026-10-31T00:03:47.953626+00:00",
+  "sourceBaseline": "eda77d6752d10a695010c7ba6613e9734c60d7b2",
+  "research": "117-key-import-and-request-lifecycle-races.md",
+  "previousGoalTurn": {
+    "classification": "progress",
+    "commit": "eda77d6"
+  },
+  "comparison": {
+    "inputSha256": "07a4e39b3e8352e13f79098c372b7ffd5601f5962e1179cf7a4b124028ea3925",
+    "sourceSha256": "5fb192a037f7e92c0264b7eb91f1d0ac9c0afb7e1dfa5c8000f51e8270a98633",
+    "beforeAfterRounds": 3,
+    "pairedCases": 12,
+    "removedKeyResurrectionBefore": 3,
+    "removedKeyResurrectionAfter": 0,
+    "prematureWarmMissBefore": 3,
+    "prematureWarmMissAfter": 0,
+    "unchangedColdWarmControlCases": 6,
+    "crossRequestRounds": 3,
+    "crossRequestCases": 9,
+    "crossRequestRows": [
+      {
+        "condition": "cross-request-shared-success",
+        "results": [
+          {
+            "httpStatus": 200,
+            "status": "verified",
+            "reason": null
+          },
+          {
+            "httpStatus": 200,
+            "status": "verified",
+            "reason": null
+          }
+        ],
+        "state": {
+          "lookups": 1,
+          "active": 0,
+          "pending": 0,
+          "keys": 1
+        },
+        "recovery": {
+          "httpStatus": 200,
+          "status": "verified",
+          "reason": null
+        },
+        "finalState": {
+          "lookups": 1,
+          "active": 0,
+          "pending": 0,
+          "keys": 1
+        }
+      },
+      {
+        "condition": "owner-deadline",
+        "results": [
+          {
+            "httpStatus": 200,
+            "status": "unverified",
+            "reason": "fixture-deadline"
+          },
+          {
+            "httpStatus": 200,
+            "status": "unverified",
+            "reason": "dir-fetch-failed"
+          }
+        ],
+        "state": {
+          "lookups": 1,
+          "active": 0,
+          "pending": 0,
+          "keys": 0
+        },
+        "recovery": {
+          "httpStatus": 200,
+          "status": "verified",
+          "reason": null
+        },
+        "finalState": {
+          "lookups": 2,
+          "active": 0,
+          "pending": 0,
+          "keys": 1
+        }
+      },
+      {
+        "condition": "newer-waiter-deadline",
+        "results": [
+          {
+            "httpStatus": 200,
+            "status": "verified",
+            "reason": null
+          },
+          {
+            "httpStatus": 200,
+            "status": "unverified",
+            "reason": "fixture-deadline"
+          }
+        ],
+        "state": {
+          "lookups": 1,
+          "active": 0,
+          "pending": 0,
+          "keys": 1
+        },
+        "recovery": {
+          "httpStatus": 200,
+          "status": "verified",
+          "reason": null
+        },
+        "finalState": {
+          "lookups": 1,
+          "active": 0,
+          "pending": 0,
+          "keys": 1
+        }
+      }
+    ],
+    "limits": [
+      "Synthetic, controlled local Worker/service-binding schedules; no traffic prevalence or managed-provider accuracy.",
+      "Owner timeout still affects its shared lookup waiter; all measured recovery calls verified.",
+      "Completed noncacheable replacements/other cancellation schedules remain outside this matrix."
+    ],
+    "productionRequests": 0,
+    "externalRequests": 0,
+    "productionD1Statements": 0
+  },
+  "reportProjection": {
+    "checkedAt": "2026-10-30T23:59:02.698Z",
+    "source": "Actual local D1 stored-envelope SQL and full report decoder",
+    "verifierProfile": "2026-10-30.1",
+    "storedRows": 2,
+    "currentProfileRows": 2,
+    "unavailableReason": "reload",
+    "unavailableOutcome": "unavailable",
+    "totals": 2,
+    "byKindSignature": [
+      {
+        "kind": "other-bot",
+        "basis": "not-verified",
+        "profile": "2026-10-30.1",
+        "views": 1
+      },
+      {
+        "kind": "other-bot",
+        "basis": "verified-ua-uncovered",
+        "profile": "2026-10-30.1",
+        "views": 1
+      }
+    ],
+    "largestStoredEnvelopeBytes": 1211,
+    "productionStatements": 0
+  },
+  "checks": {
+    "analyticsTests": 329,
+    "siteTests": 166,
+    "workspaceTypecheck": true,
+    "markdownPostsValidated": 22,
+    "isolatedBuildPosts": 33,
+    "workerDryRun": true,
+    "comparisonNegatives": [
+      {
+        "case": "input-mismatch",
+        "rejected": true
+      },
+      {
+        "case": "resurrection-restored",
+        "rejected": true
+      },
+      {
+        "case": "rotation-miss-restored",
+        "rejected": true
+      },
+      {
+        "case": "extra-fetch",
+        "rejected": true
+      }
+    ],
+    "initialFullSuiteFailures": 5,
+    "correctedCauses": [
+      "new profile missing from reviewed report catalogue",
+      "long failure ID exceeded worst-case 2048-byte budget",
+      "pending test fixture returned unpublished directory source"
+    ],
+    "buildSandboxIpcFailurePreserved": true,
+    "crossRequestContinuationWarningPreserved": true,
+    "sharedDistTouched": false
+  },
+  "profiles": {
+    "verifierBefore": "2026-10-29.1",
+    "verifierAfter": "2026-10-30.1",
+    "reportCacheAfter": "2026-10-30.4",
+    "collectionUnchanged": "2026-10-30.1",
+    "classifierUnchanged": "2026-10-29.3",
+    "cause": "reload",
+    "outcome": "unavailable"
+  },
+  "sourceHashes": [
+    {
+      "path": "packages/analytics/src/webbotauth.ts",
+      "sha256": "5fb192a037f7e92c0264b7eb91f1d0ac9c0afb7e1dfa5c8000f51e8270a98633"
+    },
+    {
+      "path": "packages/analytics/src/signature-evidence.ts",
+      "sha256": "b284f1e4366d371dda5e3e7b9dedeebc45bfab3f8a983663df09e534160baf75"
+    },
+    {
+      "path": "packages/analytics/src/verifier-profile.ts",
+      "sha256": "791355e1dc7eb957d8ea509a053186bc2348a975597c0faedc0abb8fc93c166a"
+    },
+    {
+      "path": "packages/analytics/src/versions.ts",
+      "sha256": "8aebf312f1794a9dc408140a24f7e6c8e982b277afb9f87125a167ae50158503"
+    },
+    {
+      "path": "packages/blog/src/worker/stats-cache.ts",
+      "sha256": "fd1a3fda07ac5fbffe0cf333bff44a1b824e9ebaa0ac1e8f6897a7c9527f9707"
+    }
+  ],
+  "workerDryRunArtifact": {
+    "bytes": 988837,
+    "sha256": "89e0c84d9bbf5a080330972d8fe367a2ebe5d4f68279502b7b0eb7ae602e5dcc"
+  },
+  "privateEvidence": {
+    "temporary": "/tmp/gk-key-lifecycle-20261030",
+    "durable": "/Users/goga/Documents/goga/analytics-evidence/2026-10-31-key-lifecycle",
+    "files": 50,
+    "manifestSha256": "6ffdfeebb447f6bd04d42d8b4fa5598513ca4dedc9716c94c17cddc54ebb8674",
+    "rechecked": true
+  },
+  "release": {
+    "codeCommit": null,
+    "activation": "not-yet-measured",
+    "productionAcceptance": "not-yet-measured"
+  },
+  "effectsAtLocalAcceptance": {
+    "productionRequests": 0,
+    "productionSqlStatements": 0,
+    "newVendorCaptures": 0,
+    "newHumanLabels": 0,
+    "runtimeVerifierCodeChanged": true,
+    "schemaChanged": false,
+    "dependenciesChanged": false,
+    "articleOrPromptsChanged": false,
+    "nativeManagedComparison": false,
+    "historicalIncidenceKnown": false,
+    "goalComplete": false
+  },
+  "remaining": [
+    "Exact code activation/production acceptance remains separate",
+    "Lookup-owner deadline coupling; bounded retry/lifecycle design and publication ordering",
+    "Completed noncacheable replacement and other interleavings outside current matrix",
+    "Broader native/human/discovery/source-purpose/privacy evidence remains unresolved"
+  ]
+}

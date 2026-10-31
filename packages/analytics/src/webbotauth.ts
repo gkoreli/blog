@@ -798,6 +798,24 @@ async function resolveVerificationKey(
     return [];
   };
   let matching = await find(directory);
+  // A parallel resolver may already be refreshing the same fresh-but-missing
+  // key set. Join that work (or inspect its published replacement) before a
+  // cooldown turns an old snapshot's miss into an avoidable negative.
+  if (matching.length === 0 && hadFreshDirectory) {
+    const pendingRefresh = cache.pendingDirectories.get(directoryUrl);
+    if (pendingRefresh !== undefined) {
+      const refreshed = await pendingRefresh;
+      if ('reason' in refreshed) return refreshed;
+      directory = refreshed.directory;
+      matching = await find(directory);
+    } else {
+      const current = cache.directories.get(directoryUrl);
+      if (current !== undefined && current !== directory && current.keyPolicy === PUBLIC_KEY_POLICY_VERSION && current.expiresAt > nowMs) {
+        directory = current;
+        matching = await find(directory);
+      }
+    }
+  }
   // One forced refresh per origin per 30 seconds handles overlapping key rotation
   // without turning every random keyid into an unbounded directory fetch loop.
   if (matching.length === 0 && hadFreshDirectory && nowMs - (cache.forcedRefreshes.get(directoryUrl) ?? -Infinity) >= 30000) {
@@ -822,6 +840,9 @@ async function resolveVerificationKey(
   {
     try {
       const key = await crypto.subtle.importKey('jwk', selected.jwk, 'Ed25519', false, ['verify']);
+      // Import is asynchronous. A newer directory may have removed this key
+      // while it was pending; never resurrect that old source in the fast cache.
+      if (cache.directories.get(directoryUrl) !== directory) return { reason: 'reload' };
       if (cache.keys.size >= 256) cache.keys.delete(cache.keys.keys().next().value ?? '');
       cache.keys.set(cacheKey, { key, notBefore: selected.notBefore, keyPolicy: PUBLIC_KEY_POLICY_VERSION, expiresAt: Math.min(directory.expiresAt, selected.expires === null ? Infinity : selected.expires * 1000) });
       return { key };

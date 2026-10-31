@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-30T23:48:11.547624+00:00",
+  "checkedAt": "2026-10-31T00:03:47.953626+00:00",
   "sourceBaseline": "73787f92c973f7d258d824505cfc240cb83ea8eb",
   "goalAchieved": false,
-  "previousTurn": "progress: d6f698e delivered the offline auditor; current turn repairs admission/reassessment and measures exact crypto/cache boundaries",
-  "scope": "Active continuation status and Research116 local acceptance. Historical catalogue/calibration/source facts retain their original evidence windows; this is not a fresh population census or a full completion audit.",
+  "previousTurn": "progress: eda77d6 delivered clock/admission/cost corrections; current turn reproduces and repairs request-verifier lifecycle races",
+  "scope": "Active continuation and Research117 local acceptance, not full completion audit or new population/historical census. Prior catalogue/cohort evidence retains its original scope.",
   "staticCatalogue": {
     "recognizedDeclarations": 51,
     "ipFeedSources": 16,
@@ -1485,25 +1485,24 @@
     "goalComplete": false
   },
   "latestIndependentWork": {
-    "checkedAt": "2026-10-30T23:48:11.547624+00:00",
-    "research": "116-directory-cache-clocks-and-key-admission.md",
-    "receipt": "directory-cache-clocks-audit.json",
-    "completed": "Recorded-time transitions, reviewed demonstration-key policy, deduplicated per-audit key work, native/reference regression and cache-policy counterexample",
-    "productionPolicyChanged": false,
-    "articleChanged": false,
-    "newHumanLabels": 0,
+    "checkedAt": "2026-10-31T00:03:47.953626+00:00",
+    "research": "117-key-import-and-request-lifecycle-races.md",
+    "receipt": "key-lifecycle-race-audit.json",
+    "completed": "Repeated native races, source-identity/import repair, refresh waiter repair, current-profile D1/report acceptance and actual request cancellation/recovery controls",
+    "productionPolicyCodeChanged": true,
+    "activationMeasured": false,
     "productionQueries": 0,
+    "newHumanLabels": 0,
     "trackerStatus": "active",
-    "nextBoundedAction": "Local native request-lifecycle/coalescing/cancellation controls for cold/warm keys and advisory failure before runtime adoption; retain external/native/search/privacy/human gates.",
-    "goalComplete": false
+    "goalComplete": false,
+    "nextBoundedAction": "Exact-source activation and narrow non-population release check, then caller-owned timeout/retry/lifecycle design preserving publication ordering."
   },
   "resumedAudit": {
-    "checkedAt": "2026-10-30T23:48:11.547624+00:00",
-    "goalServiceObservedStatus": "active",
+    "checkedAt": "2026-10-31T00:03:47.953626+00:00",
     "consecutiveNoProgressGoalTurns": 0,
     "lastGoalTurnClassification": "progress",
     "historicalBlockedAuditRetained": true
   },
-  "latestWorkSourceBaseline": "0aad2b3205b9276c9f45299fa63bced1ff194fbf",
+  "latestWorkSourceBaseline": "eda77d6752d10a695010c7ba6613e9734c60d7b2",
   "legacyFactsRevalidatedInThisTurn": false
 }

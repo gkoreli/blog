@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { buildSignatureBase, createWebBotAuthCache, ed25519JwkThumbprint, verifyWebBotAuth } from '../.test-dist/webbotauth.js';
 import { verificationEvidence } from '../.test-dist/signature-evidence.js';
+import { PUBLIC_KEY_POLICY_VERSION } from '../.test-dist/known-test-keys.js';
 
 const now = new Date('2026-10-27T01:00:00Z');
 const epoch = Math.floor(now.getTime() / 1000);
@@ -97,7 +98,12 @@ test('directory concurrency is bounded while an existing origin shares its pendi
   const options = { now, cache, fetcher: async () => { fetches++; return directory([key.jwk]); } };
   assert.deepEqual(await verifyWebBotAuth(request, options), { status: 'unverified', reason: 'dir-concurrency-limit' });
   assert.equal(fetches, 0);
-  cache.pendingDirectories.set('https://fixture.example/.well-known/http-message-signatures-directory', Promise.resolve({directory:{ keys: [{ jwk: key.jwk, notBefore: null, expires: null }], expiresAt: now.getTime() + 300000 }}));
+  const source = { keys: [{ jwk: key.jwk, metadataRejected: false, notBefore: null, expires: null }], expiresAt: now.getTime() + 300000, keyPolicy: PUBLIC_KEY_POLICY_VERSION };
+  cache.pendingDirectories.set('https://fixture.example/.well-known/http-message-signatures-directory', Promise.resolve().then(() => {
+    // A completed real directory lookup publishes the same source it returns.
+    cache.directories.set('https://fixture.example/.well-known/http-message-signatures-directory', source);
+    return { directory: source };
+  }));
   assert.equal((await verifyWebBotAuth(request, options)).status, 'verified');
   assert.equal(fetches, 0);
 });
