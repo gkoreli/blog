@@ -1,0 +1,116 @@
+{
+  "checkedAt": "2026-10-31T19:56:23.838889+00:00",
+  "baseline": "f2c1c48e2c1067cc7b51ca0e141e91435f4b10af",
+  "scope": "Separate-agent guide attempt, manual standalone install, generated local project acceptance; no customer adoption",
+  "guideTrial": {
+    "operator": "separate Codex agent",
+    "checkout": "git archive of baseline; no node_modules",
+    "conditionChange": "Offline installation imposed",
+    "result": "stopped at first install",
+    "failure": "ERR_PNPM_NO_OFFLINE_TARBALL for wrangler 4.71.0",
+    "normalOnlineGuideFailureEstablished": false,
+    "nativeRuntimeStarted": false
+  },
+  "manualTrial": {
+    "newProject": true,
+    "analyticsDependency": "file:./packages/analytics",
+    "blogApplicationPresent": false,
+    "blogToolingReused": false,
+    "initialOfflineFailure": "Missing pnpm metadata for ipaddr.js 2.5.0",
+    "initialOnlineInstallPnpm": "11.25.0",
+    "subsequentUnpinnedDirectoryNodeInspection": "20.20.2",
+    "initialArtifactsPreserved": true,
+    "correctedPins": {
+      "node": "24.14.1",
+      "pnpm": "9.15.4",
+      "wrangler": "4.71.0"
+    },
+    "packageRegistryAccess": "Dependency installs only, lifecycle scripts disabled",
+    "nativeLocalMigrationCommandsReported": 14,
+    "httpRequests": 12,
+    "compatibilityDateRequested": "2026-03-06",
+    "compatibilityDateFallback": "2026-03-01"
+  },
+  "generatedTrial": {
+    "newProject": true,
+    "dependency": "file:./vendor/analytics",
+    "install": "offline --ignore-scripts after authorized online cache population",
+    "noBlogApplicationOrTooling": true,
+    "runtimePinsIncluded": true,
+    "localKeysGenerated": true,
+    "keysArchived": false,
+    "nativeMigrationCommandsReported": 14,
+    "httpRequests": 12,
+    "observationStoredAcknowledgements": 6,
+    "publicEvents": 6,
+    "dailyClientIds": 3,
+    "kinds": {
+      "headless-browser": 3,
+      "ai-search": 2,
+      "unresolved": 1
+    },
+    "namedExaEvents": 2,
+    "signatures": "absent",
+    "unattributedEvents": 6,
+    "optionalCapturesActivated": false,
+    "effectiveCompatibilityDate": "2026-03-01",
+    "fallbackWarning": false,
+    "cost": {
+      "empty": {
+        "reportedRowsRead": 100,
+        "reportedRowsWritten": 0,
+        "totalAttempts": null,
+        "metadata": "partial"
+      },
+      "sixEvents": {
+        "reportedRowsRead": 5320,
+        "reportedRowsWritten": 0,
+        "totalAttempts": null,
+        "metadata": "partial"
+      },
+      "scope": "local provider-returned last-attempt counters; not production cost or account billing"
+    },
+    "workingTreeInput": {
+      "sourceFiles": 72,
+      "differentFromBaseline": [
+        "directory-discovery.ts",
+        "signature-evidence.ts",
+        "verifier-profile.ts",
+        "versions.ts"
+      ],
+      "explanation": "Concurrent source work copied at generation time; exact source frozen privately. No acceptance claim for those verifier changes."
+    },
+    "ownedServerStopped": true
+  },
+  "decision": {
+    "installation": "Provide the standalone generator; source installation need not include the blog application",
+    "publicExposure": "Keep starter local until shared report caching and query budgets are deliberately implemented",
+    "editorial": "No content-demand or readership-growth inference from supplied automated requests"
+  },
+  "checks": {
+    "availableAnalyticsTests": 393,
+    "availableCombinedWorkingTree": true,
+    "scopedGeneratorTest": 1,
+    "workspaceTypecheck": "passed",
+    "existingNativePortabilityRequests": 22,
+    "existingNativePortability": "passed"
+  },
+  "productionRequests": 0,
+  "productionSql": 0,
+  "newHumanLabels": 0,
+  "independentCustomerAdoption": false,
+  "sources": [
+    "https://developers.cloudflare.com/workers/configuration/compatibility-dates/"
+  ],
+  "sourceSha256": {
+    "packages/analytics/scripts/create-local-project.mjs": "b8d06b84944ea186da42e838d9b91d7bdb4b700440cf727d9ffc0946282db432",
+    "packages/analytics/test/local-project.test.mjs": "8ed32d5a3605902be4dcd0daf8f323275cc3ff59b31fb0625b4f176f82c779b3",
+    "packages/analytics/examples/minimal-worker/worker.ts": "0db32df9c7e3ef3bf806b76cb815c22dcfd5abc63251c18aa8cf96d566343ea4",
+    "packages/analytics/examples/minimal-worker/wrangler.jsonc": "ac956fc18e25b44bbff31ae049eb9cc80c29dc918d3162a9185d867c0fcee358",
+    "packages/analytics/examples/minimal-worker/README.md": "9f220504096df7be09c54361dfcc28bc3dc1623523263826fca3a81386fbb842",
+    "packages/analytics/scripts/check-minimal-worker.mjs": "7b2d858f9151051f80aefb3028ea96f092403d05efa7273e98c6665a97e7e3b3"
+  },
+  "privateEvidence": "packages/blog/worklog/analytics-evidence/2026-10-31-local-project-trial",
+  "privateFiles": 103,
+  "privateManifestSha256": "17c139f08efce657824e1371ef248663e4554c975cc26f01655d052050c10f85"
+}

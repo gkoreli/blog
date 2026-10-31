@@ -29,7 +29,7 @@ const secret = randomBytes(32).toString('hex');
 let outbound = 0;
 function instance(hashKey = randomBytes(32).toString('hex')) {
   return new Miniflare({ modules: true, script: bundle.outputFiles[0].text,
-    compatibilityDate: '2026-03-06', cf: {}, d1Databases: { DB: 'minimal-worker' },
+    compatibilityDate: '2026-03-01', cf: {}, d1Databases: { DB: 'minimal-worker' },
     bindings: { ANALYTICS_HASH_KEY: hashKey, ADMIN_SECRET: secret },
     outboundService() { outbound++; throw new Error('External network disabled in portability check'); },
     log: new Log(LogLevel.ERROR),

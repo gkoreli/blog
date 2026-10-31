@@ -8,7 +8,7 @@ export default {
     if (path === '/api/owner') return handleOwner(request, env);
     if (path === '/api/stats') {
       if (request.method !== 'GET') return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'GET' } });
-      try { return await handleStats(request, env); }
+      try { return await handleStats(request, env, event => console.log('analytics.example_report_calculation', event)); }
       catch { return Response.json({ error: 'Report unavailable' }, { status: 503, headers: { 'Cache-Control': 'no-store' } }); }
     }
     if (request.method !== 'GET' && request.method !== 'HEAD') {

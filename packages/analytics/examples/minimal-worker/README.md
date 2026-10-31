@@ -2,7 +2,25 @@
 
 This local example serves two pages, records eligible responses in D1, marks an owner and returns the real analytics report. It imports the analytics package directly; it uses no blog router, static assets, article catalogue, newsletter or browser JavaScript. The package is private workspace source, not a published npm install.
 
-## Run it
+## Create a separate local project
+
+From the repository root:
+
+```sh
+node packages/analytics/scripts/create-local-project.mjs /tmp/my-analytics-evaluation
+cd /tmp/my-analytics-evaluation
+node --version
+pnpm --version
+pnpm install
+pnpm db:local
+pnpm dev
+```
+
+The destination must be new. The generator copies the library source, fresh schema and code licence; it creates a private local dependency, a Worker using the package export and separate local D1 configuration. It includes the repository's Node 24.14.1 and pnpm 9.15.4 pins and generates two distinct local keys in an ignored, mode-0600 `.dev.vars`. Confirm those tool versions before installing; a directory outside this repository may otherwise select different defaults. No cloud resources or deployments are created. Retain the generated lockfile for repeat installations.
+
+Installation requires registry access or a populated package cache. The package is still private workspace source, not a published npm release. The generated project has its own Wrangler 4.71.0 dependency; it uses no blog application or blog-installed tooling. Its compatibility date is March 1, 2026, within that pinned local runtime's support. The previous March 6 example silently fell back to March 1 in an actual standalone run; production compatibility remains separate. [Cloudflare's compatibility-date contract](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) explains why a requested date is a behavioral choice rather than a runtime version.
+
+## Run inside this repository
 
 From the repository root with the pinned Node and pnpm versions:
 
@@ -22,6 +40,10 @@ pnpm exec wrangler dev --config packages/analytics/examples/minimal-worker/wrang
 Open the local URL Wrangler prints, visit `/notes`, then inspect `/api/stats?traffic=all`. Try `/notes` with `Accept: text/markdown` for the negotiated twin. `/notes.md`, prefetch, HEAD, errors and API requests do not add observations. This example uses an exact Accept match to illustrate the integration; applications own their actual content negotiation.
 
 `observePageResponse` schedules work with `ctx.waitUntil`; an HTML response does not acknowledge a stored observation. Inspect `analytics.observation_stored` or `analytics.observation_write_failed` in the local console. The automated check waits for scheduled work in its test wrapper before inspecting D1. It uses generated local keys, blocks external Worker requests and disposes its ephemeral instances.
+
+Reports log `analytics.example_report_calculation` with the existing closed calculation receipt. `reportedRowsRead` describes provider-returned query work for that local last attempt; missing counters stay unavailable. This example does not cache calculations. Use those observations to decide whether repeated public report reads need a cache and budget before deploying.
+
+For interpretation, inspect `totals.views`, `totals.dailyClients`, `byKind` and `byAgent` together. A controlled six-event run split into three headless events, two declared ExaSearchBot events and one unresolved event also had three daily IDs. It supports neither “six readers” nor “three people.” All six arrived without referrers; their acquisition source remained unknown. Those are local fixture results, not this blog's readership. A useful operator decision is to require composition and evidence boundaries alongside a total before using that total to select content.
 
 Owner marking uses `POST /api/owner` with `Authorization: Bearer <your local ADMIN_SECRET>`. Keep the same site host, IP and User-Agent for the visit being marked. Marks cover a UTC day and also exclude matching earlier observations. No owner form is included. A changed profile or day needs a new mark.
 

@@ -1,5 +1,7 @@
 # Agent-inclusive growth and external discovery
 
+**October 31 standalone project trial accepted locally:** [Setup and decision](15-standalone-install-and-operator-decisions.md) preserves offline/tool-pin failures, adds a local-project generator and aligns the example's supported compatibility date. Two actual local HTTP runs reconcile six events to three daily IDs with separate kinds. Metered report work supports keeping the starter local pending reusable caching/budgets. Generator, combined-tree tests/types and native regression pass; independent adoption and real readership remain unmeasured.
+
 **October 31 fresh-install portability accepted locally:** [Result and setup](14-fresh-install-portability.md) replace a legacy-table installation dependency with a separate empty-install baseline and minimal Worker. Actual local Wrangler migration, 22 native requests, 387 analytics tests and workspace types pass. Existing blog runtime/history and article stay unchanged. Independent operator adoption remains the next product test; measurement and privacy gates remain scoped to their existing decisions.
 
 **October 31 coverage repair source activated:** [Release receipt](coverage-consistency-release.json) joins source 25f8599, native build 33c142d3 and Worker e45497d1 to Ready/100%; six scoped files match accepted hashes. Native log confirms 38 posts; hosted Node 24.22.1 differs from local 24.14.1. No site/stats request, SQL, retry or settings change; served behavior and current incidence remain unmeasured. Full goal active/incomplete.
