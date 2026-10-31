@@ -1,7 +1,7 @@
 {
   "archive": "packages/blog/worklog/fetcher-study-v2-20261031 (Git-ignored)",
-  "fileCount": 22,
-  "manifestSha256": "f6a12a2d88c0f2cdc3c5485781f5b7afa7f1f2c3a90145fc6e12647d41688028",
+  "fileCount": 30,
+  "manifestSha256": "4892b105c53ff3d7a5b32e40ec00d010192613cecc5a13bcb2eb5b6c50c8af3c",
   "privateInputsRetained": true,
   "rawOperationalCapturesCommitted": false
 }

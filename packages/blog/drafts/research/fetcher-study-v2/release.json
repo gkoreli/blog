@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-10-31T20:06:23.366418+00:00",
+  "codeCommit": "fe111fcd93a6189a6dbd4f97a68b47e636b49520",
+  "integratedReleaseCommit": "038e2e04df5512d0a130a736c6305acf0d8b7272",
+  "integration": "Normal merge preserves non-overlapping concurrent research after non-fast-forward push rejection; no force push.",
+  "scopeSourceFiles": 29,
+  "allScopedSourceFilesMatchReleaseCommit": true,
+  "native": {
+    "observedAt": "2026-10-31T20:06:23.366418+00:00",
+    "method": "Read-only native Cloudflare build page and active deployment table; no rollout action",
+    "sourceCommit": "038e2e04df5512d0a130a736c6305acf0d8b7272",
+    "buildId": "557af7d8-edbc-4901-8931-26cd663eb369",
+    "workerVersionPrefix": "74ad7dbf",
+    "status": "Ready",
+    "allocationPercent": 100,
+    "buildPageDurationSeconds": 60,
+    "deploymentTableDurationSeconds": 61,
+    "scope": "Active version prefix and source-linked Ready row. Full Worker UUID is supplied by downloaded build log.",
+    "workerVersion": "74ad7dbf-472e-42e2-a2ce-e3cff36c7abf",
+    "hostedNode": "24.22.1",
+    "pnpm": "9.15.4",
+    "localNode": "24.14.1",
+    "builtPosts": 39,
+    "uploadedNewOrChangedAssets": 28,
+    "buildLogSha256": "e4856136a4d76995e6fcd2867349d4a17d37ae2e17054af3f1d16d9a266d59a5"
+  },
+  "githubCheck": {
+    "id": 124642771276,
+    "lastObservedState": "in_progress",
+    "conclusion": null,
+    "interpretation": "Native successful build log and source-linked Ready/100% table supply activation evidence; GitHub completion was unavailable at last read."
+  },
+  "servedAcceptance": {
+    "state": "not-requested",
+    "reason": "Existing production access stop remains; no alternate client, path or protection change is used to bypass it.",
+    "productionSiteRequests": 0,
+    "productionStatsRequests": 0,
+    "productionSqlStatements": 0
+  },
+  "cleanup": {
+    "localPreviewStopped": true,
+    "localPreviewTabClosed": true,
+    "managedWorktree": "Retained checked snapshot: archive tool rejects the task primary checkout; original main checkout is not managed and attach is unavailable. No reset/removal workaround performed.",
+    "temporaryProviderTab": "Read-only; closes at end of turn."
+  },
+  "limits": [
+    "Activation does not establish a fresh served response, current traffic, managed verifier agreement or new vendor behavior.",
+    "Bookkeeping receipt is separate from accepted article/runtime source."
+  ]
+}
