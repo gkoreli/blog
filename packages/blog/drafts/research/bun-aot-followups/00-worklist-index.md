@@ -52,4 +52,4 @@ Goga subsequently authorized the Polkadot comment, Assaf pitch and X demo public
 
 ## New owner request — October 31: application trials and article update
 
-The original follow-up acceptance above remains complete. Goga has now authorized broader validator, framework and database experiments and publication of their distilled findings in the existing article. [Experiment plan and delivery gates](validation-2026-10-31/00-plan.md). The experiments and numeric audit are complete; publication acceptance is tracked in that plan. They are not a maintainer endorsement or an independent replication of our measurements.
+The original follow-up acceptance above remains complete. Goga has now authorized broader validator, framework and database experiments and publication of their distilled findings in the existing article. [Experiment plan and delivery gates](validation-2026-10-31/00-plan.md). The experiments, numeric audit and verified article publication are complete; the plan records the build, activation, live HTML/Markdown and individual result-delivery receipts. They are not a maintainer endorsement or an independent replication of our measurements.

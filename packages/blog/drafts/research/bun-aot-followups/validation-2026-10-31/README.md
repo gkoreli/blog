@@ -1,6 +1,6 @@
 # Bun AOT: validation and real-server experiments
 
-**Experiments complete and audited, October 31.** Validator, framework, database, driver, bytecode, one-minute memory, concurrency and relocated-packaging checks are complete. The article's publication receipt belongs in the [worklist](00-plan.md). No maintainer has reviewed these tests; no independent operator replication is established.
+**Published and verified, October 31.** Validator, framework, database, driver, bytecode, one-minute memory, concurrency and relocated-packaging checks are complete. The article's publication receipt belongs in the [worklist](00-plan.md). No maintainer has reviewed these tests; no independent operator replication is established.
 
 This extends the [October 27 article](https://gkoreli.com/oss-radar-08-bun-aot) and the [October 28 CLI experiments](../../polkadot-bun-aot/03-optimization-experiments.md). The older measurements retain their original compiler, source and conditions. [Questions and acceptance](00-plan.md) · [claim audit](01-claim-audit.md) · [reproduction guide](reproduce.md).
 

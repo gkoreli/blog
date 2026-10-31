@@ -86,3 +86,10 @@ This remains an experiment in helping readers make a decision. Replies, tests co
 - The repository URL embedded in `verifiablejs`'s package metadata was not accessible through the public GitHub checks. Do not invent a maintainer contact route; the existing Polkadot discussion can carry the finding.
 
 Item #1 is complete. Item #2's old ask is superseded by the two individually sent offers; replies and independent use remain unverified. Keep a manual record of replies, reruns, failures and decisions. No new service, tracking system, mass outreach or automated follow-up is needed.
+
+
+## October 31 results delivered
+
+The [application trials](../../research/bun-aot-followups/validation-2026-10-31/README.md) and the [updated live article](https://gkoreli.com/oss-radar-08-bun-aot#sources-and-evidence) are published. Mert received the corrected matching-output validator result in the existing conversation; ICE received the completed framework results. Both were read back as sent; neither thread had an incoming reply at that check. Davron received the [API findings in his invited comparison](https://www.reddit.com/r/bun/comments/1w9jkzz/comment/19ry53pmjozc5/), with the article/code and test limits. The posted text and permanent link were verified in the browser. [Publication and delivery receipt](../../research/bun-aot-followups/validation-2026-10-31/00-plan.md#publication-and-result-delivery-complete).
+
+These are our measured findings and delivered messages. No supplied case, independent rerun, endorsement or adoption lift is established. Further work depends on a useful reader/author response; this batch needs no more broadcast posts or generic follow-ups.

@@ -28,7 +28,7 @@ Hardware: Apple M5, 10 CPUs, 24 GiB, macOS arm64. Shared laptop; filesystem cach
 - [x] Audit summaries against every retained observation; preserve pilot/changed-method batches separately.
 - [x] Distill only supported decisions into the article, link full methods/results and retain the opening's executable-size result.
 - [x] Validate content, types, isolated build and rendered desktop/mobile article.
-- [ ] Commit/push scoped work to main; verify deployment and the served article/Markdown separately.
+- [x] Commit/push scoped work to main; verify deployment and the served article/Markdown separately.
 
 Two individual offers were sent to the authors through their intentionally public email routes at **20:18:50 and 20:18:55 UTC**, within Goga's go-ahead to approach the shortlisted people. Native Gmail readback verified the account, recipients, exact copy and SENT state. One offers to test a relevant ata schema and includes the measured validator result; the other offers a server case beyond the current public fixtures. No request to promote the article was made. Raw mail receipts stay outside Git. No acceptance, reply, maintainer review or partnership is established. Davron's previously invited Reddit comparison remains uncontacted. GitHub issue recruitment still requires an explicit invitation under Goga's standing direction.
 
@@ -102,3 +102,22 @@ Full workspace typecheck, content validation and the isolated production build p
 A browser rendered the exact built article at desktop width 1280 and in a 390-pixel iframe for the mobile CSS layout. The opening and new evidence table were visually checked at both widths. Desktop DOM inspection found one H1, a matching canonical URL, no horizontal document overflow and **978 article words**, below five minutes at 200 words/minute. The generated source contains the modified date, all opening sizes, corrected validator comparison, database tradeoff and bytecode result. No prompt link or prompt page exists. The phone-width check is a layout test, not a separate mobile-device/browser test.
 
 The isolated build has no copied private environment values; production configuration is checked through actual delivery separately. Publication and outreach remain the next bounded actions.
+
+
+### Publication and result delivery complete
+
+Recorded 2026-10-31T21:25:53+00:00.
+
+The article and full experiment evidence were committed and pushed directly to main as `79d7de9`. Workers Build `17c471cf-396f-41a8-85d3-d9af48eaa28e` completed successfully at **21:24:12 UTC**. A fresh deployment observation showed deployment `0ff13530-92ec-4930-ba7f-067c9ebfcbbb`, activated at **21:24:03.64912 UTC**, with version `6b298e24-bb81-4aaa-b603-26657a757a7f` serving 100%. [Selected delivery receipt](delivery-receipt.json).
+
+Fresh public HTML and Markdown both returned successfully and contained the original three executable sizes, corrected 264→50 ms validation comparison with the 34 ms regular-Bun baseline, the database throughput tradeoff and the bytecode result. Browser readback confirmed one H1, the canonical URL, the new public evidence link, 978 article words and no desktop document overflow. The public GitHub manifest matched the audited local bytes. These are delivery checks, not traffic/adoption measurements.
+
+Result delivery after publication:
+
+- Mert received a reply in the existing email conversation correcting the initial raw-module comparison. It explains the omitted return values/error difference and gives the matching-output 264/50/34 ms figures, with public behavior/code/results and article links.
+- ICE received the completed framework result in the existing email conversation: about 30% lower physical memory, throughput −5% to +7% at eight connections, separate Elysia-plugin factor and linked code/response checks/run order/limits.
+- Davron received a [reply in his explicitly invited comparison](https://www.reddit.com/r/bun/comments/1w9jkzz/comment/19ry53pmjozc5/), naming native Bun AOT separately from Elysia's plugin, half-memory versus fewer database requests, the bytecode alternative, the public article/code and the cached-row/local-database limit. The posted text and permanent link were read back through the signed-in browser. This is posting acceptance, not independent proof of readership or moderation visibility to every visitor.
+
+Native Gmail readback confirmed the two result messages' recipients, exact copy, SENT state and existing conversations. Neither conversation contained an incoming reply at that check. Private mail IDs/headers, account captures and screenshots stay outside Git. No GitHub issue recruitment, new PR, extra X/HN launch, repeated newsletter submission or automation was created.
+
+All required experiments, audit, article checks and verified publication are complete. No performance run or temporary database remains active. Results are from one shared Mac and one preview compiler; no Rust-equivalence, production-capacity, permanent-memory, maintainer-endorsement or independent-replication claim is supported. If an author supplies a public case or replies, that becomes a separately bounded next experiment; do not silently reopen this completed batch.

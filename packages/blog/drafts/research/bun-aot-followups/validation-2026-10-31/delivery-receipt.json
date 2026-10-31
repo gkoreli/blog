@@ -1,0 +1,36 @@
+{
+  "checked_at": "2026-10-31T21:24:31.217853+00:00",
+  "article": "https://gkoreli.com/oss-radar-08-bun-aot",
+  "html_sha256": "0e2e88656f75680de9731522db3365100a87087972f04ec33998be494c282e16",
+  "markdown_sha256": "c8bac105c6a6eebd339a6212c3c7787b3f31a6bc9645592dee8a3d2579c6f7b7",
+  "new_findings_present": true,
+  "one_h1": true,
+  "no_prompt_link": true,
+  "article_commit": "79d7de9",
+  "workers_build": {
+    "id": "17c471cf-396f-41a8-85d3-d9af48eaa28e",
+    "conclusion": "success",
+    "completed_at": "2026-10-31T21:24:12Z",
+    "url": "https://dash.cloudflare.com/7e0dc86ef69b4572a63162a52cddd269/workers/services/view/gkoreli-com/production/builds/17c471cf-396f-41a8-85d3-d9af48eaa28e"
+  },
+  "activation": {
+    "deployment_id": "0ff13530-92ec-4930-ba7f-067c9ebfcbbb",
+    "created_on": "2026-10-31T21:24:03.64912Z",
+    "versions": [
+      {
+        "version_id": "6b298e24-bb81-4aaa-b603-26657a757a7f",
+        "percentage": 100
+      }
+    ]
+  },
+  "browser": {
+    "article_words": 978,
+    "h1_count": 1,
+    "viewport_width": 1280,
+    "document_width": 1280,
+    "canonical": "https://gkoreli.com/oss-radar-08-bun-aot",
+    "evidence_link_present": true
+  },
+  "evidence_manifest_public_bytes_verified": true,
+  "private_captures_in_git": false
+}
