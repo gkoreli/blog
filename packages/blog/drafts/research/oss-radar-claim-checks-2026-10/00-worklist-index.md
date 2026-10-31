@@ -2,6 +2,8 @@
 
 Started October 30, 2026 (Pacific; initial source capture continues into October 31 UTC). Owner requested applying the question-led claim-checking approach to five ideas. All five investigations now have separate published, served-verified articles; see the [delivery record](11-delivery-record.md). Reader adoption remains unmeasured.
 
+Latest outcome work: [expanded distribution diagnosis, October 31](13-distribution-diagnosis-2026-10-31.md). It distinguishes ~7K native Reddit views, a concrete comprehension complaint, path-attributed requests, independent Arcjet citation/reuse of earlier research, and the five newest articles' still-limited outcomes. It supersedes the early check's broader low-exposure diagnosis and unqualified PaperPilot outreach proposal; publication remains complete.
+
 ## Scope and acceptance
 
 For each selected idea: identify the original claim, dated public reader question and intended user before substantial research; pin the implementation; inspect and reproduce the consequential behavior where feasible; test the strongest obvious alternative; then publish the supported missing answer, or explicitly reject/defer the idea if the evidence or distinct reader value fails. Keep each resulting article to roughly four–five minutes. Use a separate project deep dive for each; this intake is not a five-project roundup.
