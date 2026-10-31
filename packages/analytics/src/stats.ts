@@ -97,9 +97,20 @@ function predicateFor(window: StatsWindow, query: StatsQuery, includeOutgoing = 
   return { sql, values };
 }
 
-function numberField(row: Record<string, unknown> | undefined, field: string): number {
+/** Required COUNT projections never turn absent or malformed data into zero. */
+function countField(row: Record<string, unknown> | undefined, field: string, minimum = 0): number {
   const value = row?.[field];
-  return typeof value === 'number' && Number.isFinite(value) ? value : 0;
+  return row && Object.hasOwn(row,field) && typeof value === 'number' && Number.isSafeInteger(value) && value >= minimum
+    ? value : malformedReport();
+}
+
+function requiredString(row: Record<string, unknown>, field: string): string {
+  return Object.hasOwn(row,field) && typeof row[field] === 'string' ? row[field] : malformedReport();
+}
+
+function nullableString(row: Record<string, unknown>, field: string): string | null {
+  const value = row[field];
+  return Object.hasOwn(row,field) && (value === null || typeof value === 'string') ? value : malformedReport();
 }
 
 /** SUM over an empty selection is null; a missing or mistyped API field is not zero. */
@@ -118,8 +129,9 @@ function stringField(row: Record<string, unknown>, field: string): string | null
 function pathRows(rows: Record<string, unknown>[]): StatsResponse['byPath'] {
   const result: StatsResponse['byPath'] = [];
   for (const row of rows) {
-    const path = stringField(row, 'key1');
-    if (path !== null) result.push({ path, views: numberField(row, 'views'), dailyClients: numberField(row, 'dailyClients') });
+    const path = requiredString(row, 'key1');
+    if (!path.startsWith('/')) return malformedReport();
+    result.push({ path, views: countField(row, 'views',1), dailyClients: countField(row, 'dailyClients',1) });
   }
   return result;
 }
@@ -127,8 +139,8 @@ function pathRows(rows: Record<string, unknown>[]): StatsResponse['byPath'] {
 function countryRows(rows: Record<string, unknown>[]): StatsResponse['byCountry'] {
   const result: StatsResponse['byCountry'] = [];
   for (const row of rows) {
-    const country = stringField(row, 'key1');
-    if (country !== null) result.push({ country, views: numberField(row, 'views') });
+    const country = requiredString(row, 'key1');
+    result.push({ country, views: countField(row, 'views',1) });
   }
   return result;
 }
@@ -137,7 +149,7 @@ function kindSignatureRows(rows: Record<string, unknown>[], total: number): Stat
   const result: StatsResponse['byKindSignature'] = [];
   const keys = new Set<string>();
   for (const row of rows) {
-    const kind = stringField(row, 'key1');
+    const kind = nullableString(row, 'key1');
     const basis = stringField(row, 'key2');
     const profile = row.key3;
     if ((kind !== null && !isReaderKind(kind)) || basis === null || !isSignatureBasis(basis) || !isReportedVerifierProfile(profile)) return malformedReport();
@@ -166,8 +178,8 @@ function nativeCategoryRows(rows: Record<string, unknown>[], total: number): Sta
 function seriesRows(rows: Record<string, unknown>[]): TimeSeriesPoint[] {
   const result: TimeSeriesPoint[] = [];
   for (const row of rows) {
-    const bucket = stringField(row, 'key1');
-    if (bucket !== null) result.push({ bucket, views: numberField(row, 'views'), dailyClients: numberField(row, 'dailyClients') });
+    const bucket = requiredString(row, 'key1');
+    result.push({ bucket, views: countField(row, 'views',1), dailyClients: countField(row, 'dailyClients',1) });
   }
   return result;
 }
@@ -186,8 +198,8 @@ function directoryPublicationRows(rows: Record<string, unknown>[], total: number
 function referrerRows(rows: Record<string, unknown>[]): StatsResponse['byReferrer'] {
   const result: StatsResponse['byReferrer'] = [];
   for (const row of rows) {
-    const referrerHost = stringField(row, 'key1');
-    if (referrerHost !== null) result.push({ referrerHost, views: numberField(row, 'views') });
+    const referrerHost = requiredString(row, 'key1');
+    result.push({ referrerHost, views: countField(row, 'views',1) });
   }
   return result;
 }
@@ -198,7 +210,7 @@ function referrerStateRows(rows: Record<string, unknown>[]): StatsResponse['byRe
     const state = stringField(row, 'key1');
     if (state === 'external' || state === 'internal' || state === 'absent'
       || state === 'unusable' || state === 'legacy-unknown') {
-      result.push({ state, views: numberField(row, 'views') });
+      result.push({ state, views: countField(row, 'views',1) });
     } else return malformedReport();
   }
   return result;
@@ -210,7 +222,7 @@ function transitionRows(rows: Record<string, unknown>[]): StatsResponse['interna
     const fromPath = stringField(row, 'key1');
     const toPath = stringField(row, 'key2');
     if (fromPath === null || toPath === null) return malformedReport();
-    result.push({ fromPath, toPath, views: numberField(row, 'views') });
+    result.push({ fromPath, toPath, views: countField(row, 'views',1) });
   }
   return result;
 }
@@ -221,16 +233,22 @@ function clientFormRows(rows: Record<string, unknown>[]): { rows: StatsResponse[
   for (const row of rows) {
     const form = stringField(row, 'key1');
     if (form === null || !isReportedClientForm(form)) return malformedReport();
-    const views = numberField(row, 'views');
-    const recorded = numberField(row, 'recordedViews');
+    const views = countField(row, 'views',1);
+    const recorded = countField(row, 'recordedViews');
     if (recorded > views) return malformedReport();
     result.push({ form, views });
     evidence.recordedViews += recorded;
     evidence.historicalViews += form === 'unrecognized-record' ? 0 : views - recorded;
     if (form === 'unrecognized-record') evidence.unrecognizedRecordViews += views;
-    evidence.unsupportedHintViews += numberField(row, 'unsupportedHintViews');
-    evidence.differingSignalsViews += numberField(row, 'differingSignalsViews');
-    evidence.legacyDefaultedViews += numberField(row, 'legacyDefaultedViews');
+    const unsupportedHintViews = summaryNumberField(row, 'unsupportedHintViews');
+    if (unsupportedHintViews > views) return malformedReport();
+    evidence.unsupportedHintViews += unsupportedHintViews;
+    const differingSignalsViews = summaryNumberField(row, 'differingSignalsViews');
+    if (differingSignalsViews > views) return malformedReport();
+    evidence.differingSignalsViews += differingSignalsViews;
+    const legacyDefaultedViews = summaryNumberField(row, 'legacyDefaultedViews');
+    if (legacyDefaultedViews > views) return malformedReport();
+    evidence.legacyDefaultedViews += legacyDefaultedViews;
   }
   return { rows: result, evidence };
 }
@@ -240,9 +258,8 @@ function agentRows(rows: Record<string, unknown>[]): StatsResponse['byAgent'] {
   for (const row of rows) {
     const agentName = stringField(row, 'key1');
     const trafficClass = stringField(row, 'key2');
-    if (agentName !== null && (trafficClass === 'bot' || trafficClass === 'ai')) {
-      result.push({ agentName, trafficClass, views: numberField(row, 'views') });
-    }
+    if (agentName === null || trafficClass !== 'bot' && trafficClass !== 'ai') return malformedReport();
+    result.push({ agentName, trafficClass, views: countField(row, 'views',1) });
   }
   return result;
 }
@@ -307,6 +324,66 @@ function reportSections(rows: Record<string, unknown>[], includeBoundary: boolea
 
 function requiredSection(sections: Map<string, Record<string, unknown>[]>, section: string): Record<string, unknown>[] {
   return sections.get(section) ?? malformedReport();
+}
+
+function sumViews(rows: readonly { views: number }[]): number {
+  let total = 0;
+  for (const row of rows) {
+    total += row.views;
+    if (!Number.isSafeInteger(total)) return malformedReport();
+  }
+  return total;
+}
+
+function uniqueRows<T>(rows: readonly T[], key: (row: T) => string): void {
+  const keys = new Set<string>();
+  for (const row of rows) {
+    const value = key(row);
+    if (keys.has(value)) return malformedReport();
+    keys.add(value);
+  }
+}
+
+/** These are event partitions, not additive unique-audience estimates. */
+function validateReportCounts(
+  report: StatsResponse, populatedSeries: TimeSeriesPoint[],
+  rawReferrers: Array<{ referrerHost: string; views: number }>,
+): void {
+  const { totals, byPath, byCountry, byReferrerState, byClientForm, byAgent, bySigner, timeSeries } = report;
+  if (totals.dailyClients > totals.views || totals.unattributedViews > totals.views
+    || (totals.views > 0 && totals.dailyClients === 0)) return malformedReport();
+  uniqueRows(byPath, row => row.path);
+  uniqueRows(byCountry, row => row.country);
+  uniqueRows(rawReferrers, row => row.referrerHost);
+  uniqueRows(populatedSeries, row => row.bucket);
+  uniqueRows(byReferrerState, row => row.state);
+  uniqueRows(byClientForm, row => row.form);
+  uniqueRows(byAgent, row => JSON.stringify([row.agentName,row.trafficClass]));
+  uniqueRows(bySigner, row => row.signatureAgent);
+  uniqueRows(report.internalTransitions, row => JSON.stringify([row.fromPath,row.toPath]));
+  for (const partition of [byPath, populatedSeries, timeSeries, byReferrerState, byClientForm]) {
+    if (sumViews(partition) !== totals.views) return malformedReport();
+  }
+  for (const subset of [byCountry, byAgent, bySigner, rawReferrers]) {
+    if (sumViews(subset) > totals.views) return malformedReport();
+  }
+  if (sumViews(rawReferrers) + totals.unattributedViews !== totals.views
+    || sumViews(report.byReferrer) + report.otherReferrerViews !== sumViews(rawReferrers)) return malformedReport();
+  // The same daily ID can occur in several paths/hours. Only bounds are additive here.
+  for (const partition of [byPath,populatedSeries]) {
+    let clients = 0;
+    for (const row of partition) {
+      if (row.dailyClients > row.views || row.dailyClients > totals.dailyClients) return malformedReport();
+      clients += row.dailyClients;
+      if (!Number.isSafeInteger(clients)) return malformedReport();
+    }
+    if (clients < totals.dailyClients) return malformedReport();
+  }
+  const forms = report.clientFormEvidence;
+  if (forms.recordedViews + forms.historicalViews + forms.unrecognizedRecordViews !== totals.views
+    || !Object.values(forms).every(value => Number.isSafeInteger(value) && value >= 0 && value <= totals.views)) return malformedReport();
+  // Transitions and their details may include outgoing requests outside the selected path.
+  sumViews(report.internalTransitions);
 }
 
 /** Exact origins only: no suffix matching, normalization or caller-controlled SQL. */
@@ -599,11 +676,12 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
   const rows = results[0]?.results ?? [];
   const sections = reportSections(rows, query.range === 'all');
   const firstObservedRow = query.range === 'all' ? requiredSection(sections, 'boundary')[0] : undefined;
-  const firstObservedAt = firstObservedRow ? stringField(firstObservedRow, 'firstObservedAt') : null;
+  const firstObservedAt = firstObservedRow ? nullableString(firstObservedRow, 'firstObservedAt') : null;
   const window = createStatsWindow(query.range, now, firstObservedAt ?? undefined);
   const totalsRow = requiredSection(sections, 'totals')[0];
   const populatedSeries = seriesRows(requiredSection(sections, 'series'));
-  const referrals = publicReferrers(referrerRows(requiredSection(sections, 'referrer')), policy);
+  const rawReferrers = referrerRows(requiredSection(sections, 'referrer'));
+  const referrals = publicReferrers(rawReferrers, policy);
   const referrerDetails = requiredSection(sections, 'referrer-details')[0];
   const verificationRow = requiredSection(sections, 'verification')[0];
   const vendorNetworkRow = requiredSection(sections, 'vendor-ip')[0];
@@ -645,8 +723,8 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     nativeSignedAgentAvailableViews: summaryNumberField(verificationRow, 'nativeSignedAgentAvailableViews'),
     nativeVerifiedBotViews: summaryNumberField(verificationRow, 'nativeVerifiedBotViews'), nativeSignedAgentViews: summaryNumberField(verificationRow, 'nativeSignedAgentViews'), localVerifiedNativeNotVerifiedViews: summaryNumberField(verificationRow, 'localVerifiedNativeNotVerifiedViews'),
   };
-  const signatureRows = kindSignatureRows(requiredSection(sections, 'kind-signature'), numberField(totalsRow, 'views'));
-  if (!consistentSignatureSummary(verification, numberField(totalsRow, 'views'), signatureRows)) return malformedReport();
+  const signatureRows = kindSignatureRows(requiredSection(sections, 'kind-signature'), countField(totalsRow, 'views'));
+  if (!consistentSignatureSummary(verification, countField(totalsRow, 'views'), signatureRows)) return malformedReport();
 
   const vendorNetwork = {
     recognizedViews: summaryNumberField(vendorNetworkRow, 'recognizedViews'),
@@ -662,8 +740,8 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     notAssessedViews: summaryNumberField(vendorNetworkRow, 'notAssessedViews'),
     addressUnavailableViews: summaryNumberField(vendorNetworkRow, 'addressUnavailableViews'),
   };
-  if (!consistentVendorNetworkSummary(vendorNetwork, numberField(totalsRow, 'views'))) return malformedReport();
-  return {
+  if (!consistentVendorNetworkSummary(vendorNetwork, countField(totalsRow, 'views'))) return malformedReport();
+  const response: StatsResponse = {
     period: {
       start: window.start,
       end: window.end,
@@ -672,9 +750,9 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
       updatedAt: window.updatedAt,
     },
     totals: {
-      views: numberField(totalsRow, 'views'),
-      dailyClients: numberField(totalsRow, 'dailyClients'),
-      unattributedViews: numberField(totalsRow, 'unattributedViews'),
+      views: countField(totalsRow, 'views'),
+      dailyClients: countField(totalsRow, 'dailyClients'),
+      unattributedViews: summaryNumberField(totalsRow, 'unattributedViews'),
     },
     filters: {
       traffic: query.traffic,
@@ -691,16 +769,16 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     byReferrerState: referrerStateRows(requiredSection(sections, 'referrer-state')),
     internalTransitions: transitionRows(requiredSection(sections, 'transitions')),
     internalReferrerDetails: {
-      unrecognizedPathViews: numberField(referrerDetails, 'unrecognizedPathViews'),
-      selfReferrals: numberField(referrerDetails, 'selfReferrals'),
-      firstCapturedAt: stringField(referrerDetails, 'firstCapturedAt'),
+      unrecognizedPathViews: summaryNumberField(referrerDetails, 'unrecognizedPathViews'),
+      selfReferrals: summaryNumberField(referrerDetails, 'selfReferrals'),
+      firstCapturedAt: nullableString(referrerDetails, 'firstCapturedAt'),
     },
     referralPolicy: {
       version: policy.version,
       sha256: policy.sha256,
       evaluator: policy.evaluator,
       source: { provider: policy.source.provider, revision: policy.source.revision, sha256: policy.source.sha256 },
-      excludedViews: numberField(requiredSection(sections, 'excluded')[0], 'views'),
+      excludedViews: countField(requiredSection(sections, 'excluded')[0], 'views'),
     },
     byClientForm: clientForms.rows,
     clientFormEvidence: clientForms.evidence,
@@ -708,18 +786,20 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     bySigner: requiredSection(sections, 'signer').map(row => {
       const signatureAgent = stringField(row, 'key1');
       if (!isPublicSignerName(signatureAgent)) return malformedReport();
-      return { signatureAgent, views: numberField(row, 'views') };
+      return { signatureAgent, views: countField(row, 'views',1) };
     }),
-    byKind: kindRows(requiredSection(sections, 'kind'), numberField(totalsRow, 'views')),
+    byKind: kindRows(requiredSection(sections, 'kind'), countField(totalsRow, 'views')),
     byKindSignature: signatureRows,
     verifierProfile: { current: CURRENT_VERIFIER_PROFILE, assessment: 'stored-profile-not-reverified' },
-    byKindNativeCategory: nativeCategoryRows(requiredSection(sections, 'native-category'), numberField(totalsRow, 'views')),
-    byDirectoryPublication: directoryPublicationRows(requiredSection(sections, 'directory-publication'), numberField(totalsRow, 'views')),
+    byKindNativeCategory: nativeCategoryRows(requiredSection(sections, 'native-category'), countField(totalsRow, 'views')),
+    byDirectoryPublication: directoryPublicationRows(requiredSection(sections, 'directory-publication'), countField(totalsRow, 'views')),
     vendorNetwork,
-    vendorCache: decodeVendorCacheRows(requiredSection(sections, 'vendor-cache'), numberField(totalsRow, 'views')),
-    fetchMetadata: decodeFetchMetadataRows(requiredSection(sections, 'fetch-metadata'), numberField(totalsRow, 'views')),
+    vendorCache: decodeVendorCacheRows(requiredSection(sections, 'vendor-cache'), countField(totalsRow, 'views')),
+    fetchMetadata: decodeFetchMetadataRows(requiredSection(sections, 'fetch-metadata'), countField(totalsRow, 'views')),
     verification,
   };
+  validateReportCounts(response, populatedSeries, rawReferrers);
+  return response;
 }
 
 function jsonError(message: string): Response {

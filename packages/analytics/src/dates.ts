@@ -57,23 +57,35 @@ export function createStatsWindow(range: StatsRange, now: Date, allStart?: strin
 }
 
 export function completeTimeSeries(window: StatsWindow, rows: readonly TimeSeriesPoint[], now: Date): TimeSeriesPoint[] {
+  const start = new Date(`${window.start}T00:00:00Z`).getTime();
+  const end = Date.parse(window.endExclusive.replace(' ', 'T') + 'Z');
   const byBucket = new Map<string, TimeSeriesPoint>();
-  for (const row of rows) byBucket.set(row.bucket, row);
+  for (const row of rows) {
+    const time = Date.parse(window.granularity === 'hour' ? row.bucket : `${row.bucket}T00:00:00Z`);
+    if (!Number.isFinite(time)) throw new Error('Malformed statistics report');
+    const canonical = window.granularity === 'hour'
+      ? `${new Date(time).toISOString().slice(0,13)}:00:00Z` : new Date(time).toISOString().slice(0,10);
+    if (row.bucket !== canonical || time < start || time >= end || byBucket.has(row.bucket)) throw new Error('Malformed statistics report');
+    byBucket.set(row.bucket, row);
+  }
 
   const result: TimeSeriesPoint[] = [];
-  const start = new Date(`${window.start}T00:00:00Z`).getTime();
   const current = window.granularity === 'hour'
     ? Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours())
     : utcMidnight(now).getTime();
   const step = window.granularity === 'hour' ? HOUR_MS : DAY_MS;
 
-  for (let time = start; time <= current; time += step) {
+  for (let time = start; time <= current && time < end; time += step) {
     const instant = new Date(time);
     const bucket = window.granularity === 'hour'
       ? `${instant.toISOString().slice(0, 13)}:00:00Z`
       : dateLabel(instant);
     result.push(byBucket.get(bucket) ?? { bucket, views: 0, dailyClients: 0 });
+    byBucket.delete(bucket);
   }
 
-  return result;
+  // D1 can read after a clock boundary. Preserve valid returned buckets; do not
+  // invent zero buckets beyond the sampled clock or silently discard observations.
+  result.push(...byBucket.values());
+  return result.sort((a,b) => a.bucket < b.bucket ? -1 : a.bucket > b.bucket ? 1 : 0);
 }

@@ -1,0 +1,246 @@
+{
+  "schemaVersion": "public-report-integrity-2026-10-31.1",
+  "checkedAt": "2026-10-31T09:13:33.092492+00:00",
+  "sourceBaseline": "8c9adf34d94d11f6f272f1cadf59010765e4d8aa",
+  "baselineFailures": {
+    "method": "Synthetic single-row local SQLite, actual queryStats, mutate one native result field/key while all other sections remain valid.",
+    "populationClaim": false,
+    "rows": [
+      {
+        "name": "missing-headline-client-count",
+        "accepted": true,
+        "totalViews": 1,
+        "output": {
+          "views": 1,
+          "dailyClients": 0,
+          "unattributedViews": 0
+        }
+      },
+      {
+        "name": "string-page-count",
+        "accepted": true,
+        "totalViews": 1,
+        "output": [
+          {
+            "path": "/article",
+            "views": 0,
+            "dailyClients": 1
+          }
+        ]
+      },
+      {
+        "name": "missing-page-key",
+        "accepted": true,
+        "totalViews": 1,
+        "output": []
+      },
+      {
+        "name": "string-series-count",
+        "accepted": true,
+        "totalViews": 1,
+        "output": []
+      },
+      {
+        "name": "missing-series-key",
+        "accepted": true,
+        "totalViews": 1,
+        "output": []
+      }
+    ]
+  },
+  "repair": {
+    "requiredCounts": "Safe integer projections, positive grouped counts; only explicit nullable SUM nulls map to zero.",
+    "missingKeys": "Required keys cannot silently drop rows; nullable provenance fields must still exist.",
+    "partitions": "Pages, raw/completedseries, referrer-state, forms and rawhosts+nohost reconcile to headline.",
+    "subsets": "Country/declaration/signer totals bounded, not required to cover population.",
+    "dailyIdentifiers": "Per-row bounds only; shared daily IDs do not become additive unique audience.",
+    "broaderScope": "Outgoing transitions/referrer details are not bounded to destination-only headline.",
+    "clockBoundary": "Preserve canonical returned buckets within unchanged SQL selection; pad zeros only through sampledclock; periodnote exposes laterreturnedtimestamps.",
+    "cacheVersion": "2026-10-31.4",
+    "sqlOrPredicateChanged": false
+  },
+  "acceptance": {
+    "analyticsTests": 369,
+    "siteTests": 169,
+    "workspaceTypes": true,
+    "markdownValidated": 27,
+    "isolatedBuiltPosts": 38,
+    "workerDryRun": true,
+    "node": "24.14.1",
+    "pnpm": "9.15.4",
+    "nodeNativeD1Workerd": {
+      "cases": 71,
+      "valid": 7,
+      "invalid": 64,
+      "exactAgreement": true,
+      "cache503NoStoreRecoveryChecks": 2,
+      "validEmptyCached": true
+    },
+    "validBaselineComparisons": {
+      "baseline": "8c9adf3",
+      "sourceGraphPinned": true,
+      "validQueries": [
+        {
+          "query": {
+            "range": "7d",
+            "traffic": "all"
+          },
+          "completeValidReportUnchanged": true,
+          "sqlAndParametersIdentical": true,
+          "sqlSha256": "bde7997a738cc5eb5c62a885cbc758d5bfdf890ae69e66c6f7f91265cffc9dd4",
+          "views": 5
+        },
+        {
+          "query": {
+            "range": "all",
+            "traffic": "all"
+          },
+          "completeValidReportUnchanged": true,
+          "sqlAndParametersIdentical": true,
+          "sqlSha256": "f5b8522be848cdf1cbfc6a8946c1d3dc4a454add4121e6ec61909e975da71767",
+          "views": 5
+        },
+        {
+          "query": {
+            "range": "7d",
+            "traffic": "agents"
+          },
+          "completeValidReportUnchanged": true,
+          "sqlAndParametersIdentical": true,
+          "sqlSha256": "880a990b75fd4818a1b0d26bef8b2b5960f2136874e3edd44aa9b9858e850da9",
+          "views": 1
+        },
+        {
+          "query": {
+            "range": "7d",
+            "traffic": "all",
+            "kind": "browser"
+          },
+          "completeValidReportUnchanged": true,
+          "sqlAndParametersIdentical": true,
+          "sqlSha256": "df5fb0acc305ce2ab13ce4fc1c68bc929ccdbfa292fc7d6f144735582373bdf0",
+          "views": 3
+        },
+        {
+          "query": {
+            "range": "7d",
+            "traffic": "all",
+            "path": "/alpha"
+          },
+          "completeValidReportUnchanged": true,
+          "sqlAndParametersIdentical": true,
+          "sqlSha256": "6649445617b38d3d621519472d3dd26b8d308820007704f39dba6b8654f9ea09",
+          "views": 1
+        },
+        {
+          "query": {
+            "range": "7d",
+            "traffic": "all",
+            "path": "/absent"
+          },
+          "completeValidReportUnchanged": true,
+          "sqlAndParametersIdentical": true,
+          "sqlSha256": "6649445617b38d3d621519472d3dd26b8d308820007704f39dba6b8654f9ea09",
+          "views": 0
+        }
+      ],
+      "productionOperations": 0
+    },
+    "browser": {
+      "method": "Actual built stats client in IAB59 against loopback-only synthetic API fixtures. DOM/AX reads; no production site/API/database access.",
+      "normal": {
+        "cards": [
+          "5",
+          "3"
+        ],
+        "dashboardHidden": false,
+        "status": "Showing 5 page views. 1 observation excluded by the referral-abuse policy for this selection."
+      },
+      "laterBucket": {
+        "dashboardHidden": false,
+        "headlineAndChartEvents": 5,
+        "periodContains": "Some returned bucket timestamps are later than the calculation clock"
+      },
+      "unavailable": {
+        "dashboardHidden": true,
+        "periodHidden": true,
+        "status": "Unable to load stats. Try again"
+      },
+      "ownedTabClosed": true,
+      "previewStopped": true,
+      "portUnreachable": true,
+      "viewportOverrideUsed": false,
+      "humanLabel": false,
+      "statsAssetSha256": "b3898d6a2d5847e064fb940c1e3cd738e8c281956397d8e336ee3874b9d58fd1"
+    },
+    "article": {
+      "articleSha256": "85d3d022262eac6a129d9cf31ce385ad7e65037561d64a0fdb8b7fdf5c45c452",
+      "previousArticleSha256": "b22116595f06ab41f0ca83575f577f7e981fe12843775bdc5093cfbe0efad595",
+      "words": 1429,
+      "addedWords": 50,
+      "wordMethod": "Remove YAML frontmatter; use Markdown link labels; split on whitespace. Same method gives prior1379.",
+      "humanPrompts": 33,
+      "originalHumanPromptPrefixPreserved": true,
+      "automaticGoalPromptAppended": false,
+      "lastModified": "2026-10-31",
+      "sourceWindowUpdated": "October25\u201331UTC",
+      "builtParagraphAndEvidenceLinkPresent": true,
+      "statsAssetSameAsBrowserQA": true,
+      "liveArticleAcceptance": false
+    }
+  },
+  "sourceSha256": {
+    "packages/analytics/src/stats.ts": "2a0a57c81d1358750ec205a4fd3cac1b5dc564bf699bcdca05cf27136da9fdb4",
+    "packages/analytics/src/dates.ts": "f334e2087231b06aa183f927b689da5f0afa011ebf1e9d7001297025c0bee723",
+    "packages/blog/src/client/stats.ts": "978ec4a704a01606e9e35174144edb74f703aac72fd0f2dd25ed39c9a3e655c5",
+    "packages/blog/src/worker/stats-cache.ts": "c0f3c80107491253439ed7d5a6f85bc2f88fbf717e3b9aab424d60a80d6cebb2",
+    "packages/analytics/test/stats-integrity.test.mjs": "4da38406639aa52612c9fb5f8a1a8246473f9337ed7856342f68c1a2b59ab501",
+    "packages/analytics/test/fixtures/stats-integrity.mjs": "9c5bf3e52a7e468d8a8f39d1943da0277f7bd9baeac6687e17c2f36c74b512af"
+  },
+  "unchangedCoreSources": {
+    "packages/analytics/src/classify.ts": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
+    "packages/analytics/src/readerkind.ts": "4150a6fc0186aed820c0e9fa60e98dbcde1817db4c8b3414ffa1cce3a95bf030",
+    "packages/analytics/src/webbotauth.ts": "54348a11b372528ae042dc31b17b42c06104ec16e72e32b1e025b1f94aa38411",
+    "packages/analytics/src/versions.ts": "47399980b7c03b98d4b0a27aaf5f027202c7b32a4f03851e80703a1da1344e82"
+  },
+  "primarySources": [
+    {
+      "url": "https://www.sqlite.org/lang_aggfunc.html",
+      "claim": "COUNT versus nullable SUM over no non-null inputs."
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/worker-api/return-object/",
+      "claim": "D1 return success/results/meta are separate; app group consistency is not implied."
+    }
+  ],
+  "review": "Independent bounded source review found decoder gap, then caught valid clock-boundary rejection in the first repair; final source review found no remaining material count/date/null/denominator issue. Not production validation.",
+  "privateArchive": {
+    "location": "packages/blog/worklog/analytics-evidence/2026-10-31-stats-integrity",
+    "files": 62,
+    "manifestSha256": "4969d8602f54bde042bb89a68682ad9153bcd54fb431af15ac18252b2dac074a"
+  },
+  "effects": {
+    "reportRuntimeChanged": true,
+    "clientChanged": true,
+    "collectorClassifierVerifierSchemaChanged": false,
+    "productionRequests": 0,
+    "productionSqlStatements": 0,
+    "accountOrSecurityChanges": false,
+    "rawCollectionActivated": false,
+    "newHumanLabels": 0,
+    "newCalibrationTrials": 0,
+    "newModelTrialsOrRegrades": 0,
+    "articleChanged": true,
+    "sourceActivationMeasured": false
+  },
+  "limits": [
+    "Synthetic decoder faults demonstrate acceptance risk, not current production corruption or frequency.",
+    "Valid reports across six scopes and SQL/parameters match baseline; this is not production cost or service-health acceptance.",
+    "A consistent report does not establish human identity, intent, reading, useful agent work or growth.",
+    "The later returned bucket note exposes supplied-clock disagreement without naming its real-world cause.",
+    "Checked source, native local behavior, publication activation and production data remain separate."
+  ],
+  "goalStatus": "active",
+  "goalComplete": false,
+  "nextBoundedAction": "Verify this exact report-integrity source in deployment metadata and, if an existing zero-query acceptance route is available, its served stats-client/article assets. Keep production report/API reads, D1 authorization retries, native/human labels and privacy/raw collection gated. Then audit remaining full-goal requirements from current evidence; do not repeat accepted local controls to manufacture progress."
+}

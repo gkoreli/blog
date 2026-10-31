@@ -3,7 +3,7 @@ title: "Building Blog Analytics: What the Numbers Can Prove"
 seoTitle: "Building Blog Analytics with Cloudflare Workers and D1"
 alternativeHeadline: "What a misleading traffic spike taught me about readership, signed crawlers, and measurement failures"
 date: "2026-10-25"
-lastModified: "2026-10-30"
+lastModified: "2026-10-31"
 description: "Cloudflare Workers and D1 analytics lessons: investigate misleading growth, inspect signed crawlers, and choose article experiments without mistaking requests for readers."
 section: engineering
 tags: [analytics, cloudflare-workers, d1, bots, observability]
@@ -70,6 +70,8 @@ In [13 synthetic producer/Tail Worker controls](https://github.com/gkoreli/blog/
 
 Conflicting inputs enter Unresolved. Our [parser audit](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/90-fetch-metadata-parsing-and-evidence.md) caught a false Browser match: lowercasing NAVIGATE made an invalid value look valid. Four [excluded production controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/91-live-metadata-controls-and-redacted-correlation.md) also showed two curl requests with supplied browser headers matching Browser. The dashboard now says **Browser signals** and [distinguishes absent headers from unassessed history](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/92-public-parsing-states-and-browser-signals.md).
 
+**Missing is not zero.** A [local report test](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/discovery-experiment-02/06-public-report-integrity.md) showed missing counts becoming zero and malformed chart rows disappearing beside a nonzero headline. The repair rejects invalid results and reconciles complete event partitions. Valid empty selections still return zero. This exposed a decoder defect; it did not establish corrupted production data.
+
 D1 discarded User-Agent after classification; provider logs recovered some inputs, with complete historical recovery unproven. Expiring diagnostic collection remains off pending privacy decisions. Filtering arbitrary text cannot guarantee the absence of personal information.
 
 ## Correct totals can still break production
@@ -122,4 +124,4 @@ For each editorial experiment, compare seven and 28 complete days, inspect sourc
 | Message signature | Verification of covered components against a key; [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html), February 2024. |
 | D1 row reads | Database work, separate from audience size; [metering definitions](https://developers.cloudflare.com/d1/platform/pricing/#definitions). |
 
-Measurements retain their dated windows. Sources checked October 25–30, 2026 UTC. The [research index](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-retrospective) retains methods, receipts, corrections and remaining work.
+Measurements retain their dated windows. Sources checked October 25–31, 2026 UTC. The [research index](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/analytics-retrospective) retains methods, receipts, corrections and remaining work.

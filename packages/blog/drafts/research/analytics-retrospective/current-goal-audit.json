@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T08:56:55.118791+00:00",
-  "sourceBaseline": "8e1d061856e5d11fb13d56d66033e577dc925899",
+  "checkedAt": "2026-10-31T09:13:33.092492+00:00",
+  "sourceBaseline": "8c9adf34d94d11f6f272f1cadf59010765e4d8aa",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "8e1d061 implemented the separate offline ledger; this audit found and corrects its observation-clock semantics."
+    "scope": "8c9adf3 corrected observation-time semantics and raw-evidence availability boundaries."
   },
-  "scope": "Retained-control availability inventory, explicit v2 observation/context provenance and correction of unsupported arrival-time implication.",
+  "scope": "Public report count/partition integrity, clock-boundary repair and concise evidence-linked retrospective update.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -21,7 +21,7 @@
     "classifier": "2026-10-29.3",
     "incomingVerifier": "2026-10-31.2",
     "offlineDirectoryAudit": "2026-10-31.2",
-    "statsReportCache": "2026-10-31.3",
+    "statsReportCache": "2026-10-31.4",
     "offlineResourceReach": "2026-10-31.1",
     "offlineAccessEvidence": "2026-10-31.2"
   },
@@ -42,7 +42,9 @@
     "search-evidence.ts": "2dcca61325112b040e30c39d1f5ebb0281da270ad7de164bfe13dc7e47fb8c8c",
     "verifier-profile.ts": "d4d9d00f32c1a750878c1b80a66d088a27557b924ad862a6e939bc7e5c221864",
     "resource-reach.ts": "a2d5341e3870a902be4c740f308aadd55ff166f4b48277de352ce75383d32718",
-    "access-evidence.ts": "7422813c2d32af9ab0358ffc96d1bad45e6218d6bc8d056ef4c3af32ef68c1e4"
+    "access-evidence.ts": "7422813c2d32af9ab0358ffc96d1bad45e6218d6bc8d056ef4c3af32ef68c1e4",
+    "stats.ts": "2a0a57c81d1358750ec205a4fd3cac1b5dc564bf699bcdca05cf27136da9fdb4",
+    "dates.ts": "f334e2087231b06aa183f927b689da5f0afa011ebf1e9d7001297025c0bee723"
   },
   "requirements": [
     {
@@ -66,7 +68,9 @@
         "../discovery-experiment-02/04-offline-access-ledger.md",
         "../discovery-experiment-02/access-ledger-checks.json",
         "../discovery-experiment-02/05-retained-control-evidence.md",
-        "../discovery-experiment-02/retained-control-checks.json"
+        "../discovery-experiment-02/retained-control-checks.json",
+        "../discovery-experiment-02/06-public-report-integrity.md",
+        "../discovery-experiment-02/report-integrity-checks.json"
       ],
       "limit": "Missing, unsupported, conflicting and native unavailable values stay distinct. This does not prove human accuracy or managed-verifier agreement."
     },
@@ -165,7 +169,9 @@
         "../discovery-experiment-02/04-offline-access-ledger.md",
         "../discovery-experiment-02/access-ledger-checks.json",
         "../discovery-experiment-02/05-retained-control-evidence.md",
-        "../discovery-experiment-02/retained-control-checks.json"
+        "../discovery-experiment-02/retained-control-checks.json",
+        "../discovery-experiment-02/06-public-report-integrity.md",
+        "../discovery-experiment-02/report-integrity-checks.json"
       ],
       "limit": "Weekly joint measurement history is implemented and has dated production acceptance; Research108's identical-report counterexample is superseded for that gap. Stage controls distinguish response/script/queue/receipt, but representative human/device/RUM behavior remains unmeasured."
     },
@@ -210,12 +216,14 @@
     {
       "id": "engineering-article",
       "requirement": "Deliver a concise retrospective with inspectable evidence and cross-references",
-      "status": "published-with-dated-acceptance",
+      "status": "updated-source-locally-accepted-publication-pending",
       "evidence": [
         "111-weekly-history-in-the-retrospective.md",
-        "weekly-history-article-release.json"
+        "weekly-history-article-release.json",
+        "../discovery-experiment-02/06-public-report-integrity.md",
+        "../discovery-experiment-02/report-integrity-checks.json"
       ],
-      "limit": "Source hash matches the accepted 1379-word/32-prompt version. No fresh served-content check or new reader outcome is claimed."
+      "limit": "Current source is1429words/33humanprompts with prior prefix preserved. Prior1379/32 publication remains dated; this addition is locally built/validated but no new served acceptance is claimed."
     },
     {
       "id": "offline-search-evidence",
@@ -279,10 +287,14 @@
   },
   "article": {
     "source": "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md",
-    "sourceSha256": "b22116595f06ab41f0ca83575f577f7e981fe12843775bdc5093cfbe0efad595",
-    "matchesAcceptedSource": true,
+    "sourceSha256": "85d3d022262eac6a129d9cf31ce385ad7e65037561d64a0fdb8b7fdf5c45c452",
+    "matchesAcceptedSource": false,
     "acceptedReceipt": "weekly-history-article-release.json",
-    "freshServedCheck": false
+    "freshServedCheck": false,
+    "previousAcceptedSourceSha256": "b22116595f06ab41f0ca83575f577f7e981fe12843775bdc5093cfbe0efad595",
+    "currentWords": 1429,
+    "currentHumanPrompts": 33,
+    "currentLocalAcceptanceReceipt": "../discovery-experiment-02/report-integrity-checks.json"
   },
   "unresolvedInputs": [
     {
@@ -323,36 +335,35 @@
     }
   ],
   "effectsThisAudit": {
-    "offlineCapabilityChanged": true,
-    "liveCollectorChanged": false,
-    "newSiteRequests": 0,
-    "productionQueries": 0,
-    "newNativeObservations": 0,
+    "reportRuntimeChanged": true,
+    "clientChanged": true,
+    "collectorClassifierVerifierSchemaChanged": false,
+    "productionRequests": 0,
+    "productionSqlStatements": 0,
+    "accountOrSecurityChanges": false,
+    "rawCollectionActivated": false,
     "newHumanLabels": 0,
     "newCalibrationTrials": 0,
     "newModelTrialsOrRegrades": 0,
-    "rulesCredentialsOrScopesChanged": false,
-    "rawCollectionActivated": false,
-    "articleChanged": false,
+    "articleChanged": true,
     "sourceActivationMeasured": false,
-    "runtimeChanged": false,
+    "runtimeChanged": true,
     "productionSiteRequests": 0,
-    "productionSqlStatements": 0,
     "nativeMatchingSecurityEventsObserved": 0,
     "newRegisteredCalibrationTrials": 0,
     "newControlledAnswerTrials": 0,
-    "articleChangedByThisWork": false,
+    "articleChangedByThisWork": true,
     "servedDestinationAcceptance": false
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: retained receipts expose v1 observation-clock conflation; v2 provenance/migration and separate historical controls accepted",
+    "thisTurnClassification": "progress: demonstrated plausible-zero report acceptance repaired; clock-boundary risk corrected, native/local cache/browser checks and concise article accepted",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Audit current public analytics vocabulary and denominator paths against the accepted evidence: identify concrete cases that silently turn unknown/missing stages or declared identity into successful delivery, human readership or purpose. Repair only demonstrated discrepancies; no new live requests, queries, raw collection, rule changes or repeated accepted experiments.",
+  "nextBoundedAction": "Verify this exact report-integrity source in deployment metadata and, if an existing zero-query acceptance route is available, its served stats-client/article assets. Keep production report/API reads, D1 authorization retries, native/human labels and privacy/raw collection gated. Then audit remaining full-goal requirements from current evidence; do not repeat accepted local controls to manufacture progress.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -378,11 +389,11 @@
     "scopeAfterOwnerContinuation": "Historical checkpoint for missing measurement inputs; not a prohibition on independent implementation, observed agent growth or discovery work."
   },
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
-  "goalStatusScope": "Persistent goal remains active. This correction is progress; no arrival, population or missing-input requirement is declared complete.",
+  "goalStatusScope": "Persistent goal active. Code/local acceptance and concise source update are progress; production measurements and remaining input-specific requirements are not declared complete.",
   "latestContinuation": {
-    "research": "../discovery-experiment-02/05-retained-control-evidence.md",
-    "receipt": "../discovery-experiment-02/retained-control-checks.json",
-    "nextBoundedAction": "Audit current public analytics vocabulary and denominator paths against the accepted evidence: identify concrete cases that silently turn unknown/missing stages or declared identity into successful delivery, human readership or purpose. Repair only demonstrated discrepancies; no new live requests, queries, raw collection, rule changes or repeated accepted experiments."
+    "research": "../discovery-experiment-02/06-public-report-integrity.md",
+    "receipt": "../discovery-experiment-02/report-integrity-checks.json",
+    "nextBoundedAction": "Verify this exact report-integrity source in deployment metadata and, if an existing zero-query acceptance route is available, its served stats-client/article assets. Keep production report/API reads, D1 authorization retries, native/human labels and privacy/raw collection gated. Then audit remaining full-goal requirements from current evidence; do not repeat accepted local controls to manufacture progress."
   },
   "latestAcceptedSourceActivation": {
     "sourceCommit": "762e3b5a7f6b2c7b2770ae22f41f730ceca6ba84",

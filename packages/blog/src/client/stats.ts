@@ -298,10 +298,12 @@ function setDashboardVisible(visible: boolean): void {
   dashboard.setAttribute('aria-busy', String(!visible));
 }
 
-function renderPeriod(period: StatsResponse['period']): void {
+function renderPeriod(period: StatsResponse['period'], series: StatsResponse['timeSeries']): void {
   const granularity = period.granularity === 'hour' ? 'Hourly buckets' : 'Daily buckets';
   const partial = period.granularity === 'hour' ? 'current UTC hour is partial' : 'current UTC day is partial';
-  element('stats-period').textContent = `${period.start} through ${period.end} UTC · ${granularity} · ${partial} · Updated ${formatUpdatedAt(period.updatedAt)}`;
+  const laterBuckets = series.some(row => bucketTimestamp(row.bucket,period.granularity)*1000 > Date.parse(period.updatedAt));
+  const clockNote = laterBuckets ? ' · Some returned bucket timestamps are later than the calculation clock' : '';
+  element('stats-period').textContent = `${period.start} through ${period.end} UTC · ${granularity} · ${partial} · Updated ${formatUpdatedAt(period.updatedAt)}${clockNote}`;
   element('stats-period').hidden = false;
 }
 
@@ -678,7 +680,7 @@ function renderFetchMetadata(data: StatsResponse): void {
 }
 
 function renderDashboard(data: StatsResponse, state: ViewState): void {
-  renderPeriod(data.period);
+  renderPeriod(data.period,data.timeSeries);
   renderScope(data.filters);
   const excluded = data.referralPolicy.excludedViews;
   const exclusionNotice = excluded > 0

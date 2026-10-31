@@ -1,5 +1,8 @@
 # Analytics retrospective — worklist and shaping notes
 
+**October31 public-report integrity repaired:** [Count/partition audit](../discovery-experiment-02/06-public-report-integrity.md) reproduces five plausible-zero/dropped-row failures, then requires valid counts/keys and reconciled complete event partitions. It preserves non-additive daily IDs, subset tables and broader outgoing transitions. Review catches and repairs a new-hour clock-boundary rejection; valid returned buckets survive and the client exposes later timestamps. 369analytics/169site tests, types,27validations/38-post isolatedbuild/dry-run and71exact Node/nativeD1/workerd comparisons pass. Invalid local reports503/no-store/recover; empty200caches. The retrospective adds50words (1429total) and exact human prompt33. No production data query or new labels; activation remains separate, full goal active.
+
+
 **October 31 retained-control timing corrected:** [Evidence inventory and v2](../discovery-experiment-02/05-retained-control-evidence.md) distinguish observation clocks from network arrival and retained request metadata from protocol reconstruction. The BIC adapter had mapped a post-read timestamp into receivedAt; legacy v1 inputs now reject. Original archives verify48+74files; three original curl controls replay separately with completion provenance/scoped stored rows, while missing browser clocks and human execution remain gaps. Later raw47/148file manifests were not found in a bounded132-manifest search; no deletion/global-absence claim. 365tests/types/42exact Node/workerd comparisons pass; collector/calibration/article unchanged, no live measurement or new labels. Full goal active/incomplete.
 
 

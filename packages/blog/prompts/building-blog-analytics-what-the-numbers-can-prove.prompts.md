@@ -160,3 +160,7 @@ Continue without human trials for now
 ---
 
 I still dont get it like if not google or twitter or github or whatever where are we getting all this viewers from lmao. We have been soending so much time and effort to improve our readership understanding and the analytics library, but personally i still don’t understand who is reading our articles. Are we overall growing or what? What are people looking for? Like ideally i want to make some more data based decisions, like what articles are working better, what are people looking fir and what are they finding us for and why and how and all that, so that we can give them even more useful articles and so that we can rank even higher and serve them what they want. But so far we have such large numbers and i still have no idea why and still have no idea what kinda articles to write next. Like where should we become experts in further and further
+
+---
+
+Continue find some alternative ways to fontinue building
