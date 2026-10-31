@@ -1,0 +1,31 @@
+# An AI crawler can be building an application index
+
+October 31, 2026 UTC. Continues [the activated GoogleOther repair](08-googleother-declarations-and-network-evidence.md) and [TASK-0119](../../../../../docs/tasks/TASK-0119.md). The previous turn made progress; the full goal remains active.
+
+[Google's crawler reference](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers) describes Google-CloudVertexBot as performing site-owner-requested crawls for Vertex agents. The linked [Google Cloud ingestion guide](https://docs.cloud.google.com/generative-ai-app-builder/docs/prepare-data) explains website crawling and indexing for customer-built search and recommendation applications. This supports application indexing as a declared role; it does not establish model training, a reader-triggered fetch, a particular customer or completed downstream use. Both sources were reviewed October 31.
+
+## A method gap, without a matching-rule gap
+
+The baseline already recognizes the documented full User-Agent and retains the broad `ai-crawler` role. Eight fixed lexical/signing-expectation fixtures are identical before and after this repair. The [pinned crawler-user-agents entry](https://github.com/monperrus/crawler-user-agents/blob/db662d2787f984ed4fe3043744a12eb067b89218/crawler-user-agents.json) likewise describes enterprise-search indexing and supplies compatible full User-Agent examples. No lexer relaxation, alias, role reassignment or dependency is needed.
+
+We had not mapped this existing declaration to Google's documented common-crawler range publication. The [source map](../../../../analytics/src/vendor-ip-sources.ts) now does so, using the existing fixed endpoint. Google's reference says common crawlers generally use that publication. Listed, nonlisted and unavailable outcomes therefore remain network evidence; neither a match nor a miss proves a specific task or authenticates the declaration. Google-Agent retains its separate feed. No DNS lookup or new endpoint is added.
+
+The dashboard's former AI search/training description omitted this application-indexing use. Its [crawler-group explanation](../../../src/pages/stats.ts) now includes application indexing. Existing reader kinds and historical rows remain unchanged.
+
+## Signing and source checks answer separate questions
+
+Google's [experimental Web Bot Auth guide](https://developers.google.com/crawling/docs/crawlers-fetchers/web-bot-auth) documents partial Google-Agent signing, with gaps even for participating agents. The reviewed sources establish no CloudVertex-specific signing promise. The existing [signing-expectation map](../../../../analytics/src/vendor-signatures.ts) stays unchanged, and CloudVertex remains `not-configured` there. A supplied generic verified-key verdict does not create a documented CloudVertex expectation. This mapper control is not a signature or managed-verifier experiment.
+
+Three Google declarations now share the common feed. With two Ahrefs declarations sharing another feed, five configured declarations can legitimately produce two source checks. Network profile `2026-10-31.2` permits that width and caps configured declarations at 19 across the unchanged 16 sources. Profile `.31.1` retains its two-Google width and cap18; earlier bounds remain unchanged. The four-fetch budget, address guards and cache requirements stay intact. Cache reporting accepts the new profile and the report cache advances to `.31.6`; collector, classifier, verifier and schema versions stay unchanged.
+
+**These are possible-width checks, not independent name-to-source reconstruction.** The network envelope retains source checks and declaration counts, without per-source declaration-name assignments. Its report validator checks structural consistency under the recorded profile. Actual supplied-name-to-source behavior is established only within the tested writer/runtime conditions. That limit remains visible rather than turning a consistent envelope into stronger identity evidence.
+
+## Acceptance
+
+Node and native workerd/D1 agree exactly on eight declaration/signing fixtures, nine network cases, five profile-boundary controls, a cache sequence and a mixed historical report. The latter preserves old unmapped CloudVertex evidence alongside new mapped evidence, without changing the role or classifier history. Cases cover distinct Google-Agent feeds, all 19 mapped declarations, budgeted source checks, nonlisted addresses, unavailable feeds, Worker relays and unrelated unmapped Google products.
+
+A separate frozen integration check runs the actual collector and writer in local workerd/D1. CloudVertex and GoogleOther produce two stored observations with the expected profiles, roles and no signing expectation. An entirely local feed interceptor handles one cold request; the second observation reuses it from memory. The edge context and feed are synthetic; this is not an actual Google request or a native managed-bot verdict.
+
+The first analytics run passes 376/377 tests: an earlier GoogleOther test applied its original excess-count expectation to whichever profile was current. Pinning that historical fixture to `.31.1` preserves its original assertion; a new test checks `.31.2`'s larger valid width and rejects six declarations across the two sources. Final acceptance: 377 analytics tests, 169 site tests, workspace types, 27 Markdown validations, isolated 38-post build, generated dashboard prose check and Wrangler dry-run pass. Four permanent tests and an independent source review support the repair. [Receipt](cloudvertex-checks.json) preserves hashes, the initial failure and the private archive.
+
+No production site request, SQL query, real vendor capture, human label, optional diagnostics activation or account/security change occurs. Deployment activation and current production incidence remain separate. The concise retrospective already distinguishes declaration, identity and trigger; its prose and human prompts remain unchanged. A useful next investigation is whether the separately retained classification facts can cross-check source/count assignments, while keeping missing historical evidence explicit. The six existing input gates remain unresolved.

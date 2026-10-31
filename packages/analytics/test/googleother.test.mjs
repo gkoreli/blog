@@ -40,7 +40,8 @@ test('new shared-source count bounds admit both pairs without changing historica
  const e=await verifyVendorIp(request(),['Googlebot','GoogleOther','AhrefsBot','AhrefsSiteAudit'],{now,cache:createVendorIpCache(),fetcher:async()=>feed()});
  assert.equal(e.checks.length,2);assert.equal(e.configuredDeclarationCount,4);assert.equal(state(e),'recognized');
  const old=structuredClone(e);old.profile='2026-10-30.1';assert.equal(state(old),'unrecognized');old.declarationCount=old.configuredDeclarationCount=3;assert.equal(state(old),'recognized');
- const excess=structuredClone(e);excess.declarationCount=excess.configuredDeclarationCount=5;assert.equal(state(excess),'unrecognized');
+ // Pin the original two-Google-declaration width; later profiles may add a third.
+ const excess=structuredClone(e);excess.profile='2026-10-31.1';excess.declarationCount=excess.configuredDeclarationCount=5;assert.equal(state(excess),'unrecognized');
  const future=structuredClone(e);future.profile='future';assert.equal(state(future),'unrecognized');
  const noCache=structuredClone(e);delete noCache.checks[0].cache;assert.equal(state(noCache),'unrecognized');
 });

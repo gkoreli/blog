@@ -6,7 +6,7 @@ import { decodeVendorIpDocument, VENDOR_IP_MAX_PREFIXES } from './vendor-ip-docu
 import { copyVendorCachePolicy, type VendorCacheEvidence, type VendorCachePolicy } from './vendor-ip-cache-evidence.js';
 export { VENDOR_IP_MAX_PREFIXES } from './vendor-ip-document.js';
 
-export const VENDOR_IP_PROFILE = '2026-10-31.1';
+export const VENDOR_IP_PROFILE = '2026-10-31.2';
 export const VENDOR_IP_FETCH_DEADLINE_MS = 1500;
 export const VENDOR_IP_MAX_REQUEST_SOURCES = 4;
 export const VENDOR_IP_MAX_BODY_BYTES = 262144;

@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T09:32:37.542612+00:00",
-  "sourceBaseline": "6788e6140ba2dffd1f32f155031a597622f5e98c",
+  "checkedAt": "2026-10-31T09:39:20.462093+00:00",
+  "sourceBaseline": "2f465ad994dbf003ccaf7e7a4be2e0d326e78ee0",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "6788e61 corrected the unsupported absolute error-data disclosure with synthetic evidence."
+    "scope": "afe2289/2f465ad repaired GoogleOther declarations/network methods and accepted native source activation."
   },
-  "scope": "Documented GoogleOther lexical aliases and network method, versioned shared-source bounds, preserved historical classifications and report compatibility.",
+  "scope": "CloudVertex documented website/application-indexing role, added common-network method, versioned source widths/cache report and actual local collector persistence.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -21,14 +21,14 @@
     "classifier": "2026-10-31.1",
     "incomingVerifier": "2026-10-31.2",
     "offlineDirectoryAudit": "2026-10-31.2",
-    "statsReportCache": "2026-10-31.5",
+    "statsReportCache": "2026-10-31.6",
     "offlineResourceReach": "2026-10-31.1",
     "offlineAccessEvidence": "2026-10-31.2",
-    "vendorIp": "2026-10-31.1"
+    "vendorIp": "2026-10-31.2"
   },
   "sourceSha256": {
-    "classify.ts": "95cc9f5fd26856f7b0cba3960fe577a070f035621f224542f0b1870c6b61d2ff",
-    "readerkind.ts": "4150a6fc0186aed820c0e9fa60e98dbcde1817db4c8b3414ffa1cce3a95bf030",
+    "classify.ts": "994c1f2b6f07c6e112723b8fb4d9aef28dff9607a0dca73e8e5f019357fc62ae",
+    "readerkind.ts": "bf00c27e7edcb31135231080921e517caff9fbd2060bb7793837366926447307",
     "classification-evidence.ts": "f6716df870cadb5d86953b18ea613eb01e696169966b9223d97de5ab7900e3c1",
     "signature-evidence.ts": "b284f1e4366d371dda5e3e7b9dedeebc45bfab3f8a983663df09e534160baf75",
     "signature-coverage-report.ts": "4dc991039cb03eeeea08d084d1d2b4a42800052dee01aa7b631b550beaf92fca",
@@ -134,9 +134,11 @@
         "../discovery-experiment-02/03-edge-access-evidence.md",
         "../discovery-experiment-02/edge-access-evidence.json",
         "../discovery-experiment-02/08-googleother-declarations-and-network-evidence.md",
-        "../discovery-experiment-02/googleother-checks.json"
+        "../discovery-experiment-02/googleother-checks.json",
+        "../discovery-experiment-02/09-cloudvertex-indexing-and-method-boundaries.md",
+        "../discovery-experiment-02/cloudvertex-checks.json"
       ],
-      "limit": "Selected syntax/crypto conditions have exact Node/workerd and independent Structured Field syntax evidence. Profile .31.2 repairs decimal and semicolon-SP compatibility; this does not establish complete grammar/draft conformance, native managed agreement or actual vendor frequency. No accepted request-level signedAgent oracle or eligible controlled identity exists. The response-advisory runtime no-adoption decision remains closed. GoogleOther now has a documented shared network method and synthetic local/native acceptance; actual vendor request and managed native-verdict comparison are unmeasured."
+      "limit": "Selected syntax/crypto conditions have exact Node/workerd and independent Structured Field syntax evidence. Profile .31.2 repairs decimal and semicolon-SP compatibility; this does not establish complete grammar/draft conformance, native managed agreement or actual vendor frequency. No accepted request-level signedAgent oracle or eligible controlled identity exists. The response-advisory runtime no-adoption decision remains closed. GoogleOther now has a documented shared network method and synthetic local/native acceptance; actual vendor request and managed native-verdict comparison are unmeasured. CloudVertex gains a documented generally-used common-crawler network method, with synthetic actual collector acceptance; no request-level source purpose or signing promise is established."
     },
     {
       "id": "labelled-errors-and-abstentions",
@@ -250,10 +252,9 @@
     }
   ],
   "catalogue": {
-    "scope": "Dated base catalogue plus reviewed GoogleOther delta; seven untouched owning sources preserve the base snapshot. The changed classifier/source-map hashes are in the delta receipt. No fresh vendor-traffic or managed-verifier claim.",
+    "scope": "Dated base catalogue plus GoogleOther and CloudVertex method deltas. Classify/readerkind comments now clarify sources without taxonomy changes; six other owning source hashes remain unchanged from the base snapshot. No current vendor traffic or managed-verifier claim.",
     "receipt": "decision-audit-catalogue.json",
     "unchangedOwningSources": [
-      "readerkind.ts",
       "vendor-signatures.ts",
       "directory-publication.ts",
       "signers.ts",
@@ -264,16 +265,16 @@
     "counts": {
       "recognizedDeclarations": 51,
       "ipFeedSources": 16,
-      "declarationsWithConfiguredIpMethod": 18,
+      "declarationsWithConfiguredIpMethod": 19,
       "documentedSigningOrigins": 4,
       "declarationsWithDocumentedSigningMethod": 5,
-      "declarationsWithAnyConfiguredPerDeclarationMethod": 21,
-      "declarationsWithoutConfiguredPerDeclarationMethod": 30,
+      "declarationsWithAnyConfiguredPerDeclarationMethod": 22,
+      "declarationsWithoutConfiguredPerDeclarationMethod": 29,
       "reviewedDirectoryOrigins": 5,
       "declarationsWithReviewedDirectoryPublisher": 7,
       "publicDisplayApprovals": 4
     },
-    "latestDelta": "../discovery-experiment-02/googleother-checks.json"
+    "latestDelta": "../discovery-experiment-02/cloudvertex-checks.json"
   },
   "latestAcceptedProductionAutomation": {
     "receipt": "current-production-calibration.json",
@@ -352,7 +353,7 @@
     "rawCollectionActivated": false,
     "articleChanged": false,
     "articleChangedByThisWork": false,
-    "sourceActivationMeasured": true,
+    "sourceActivationMeasured": false,
     "servedDestinationAcceptance": false,
     "privacyDisclosureChanged": false,
     "productionRequests": 0,
@@ -365,18 +366,19 @@
     "nativeMatchingSecurityEventsObserved": 0,
     "newRegisteredCalibrationTrials": 0,
     "newControlledAnswerTrials": 0,
-    "classifierChanged": true,
-    "collectionSchemaVerifierChanged": false
+    "classifierChanged": false,
+    "collectionSchemaVerifierChanged": false,
+    "collectorNetworkMethodChanged": true
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: documented GoogleOther mislabel/alias/method gaps repaired with preserved history, versioned report bounds, exact Node/workerd/D1 controls and pinned registry comparison; exact source activation accepted",
+    "thisTurnClassification": "progress: CloudVertex method and indexing scope repaired; versioned history bounds, exact Node/native controls and actual local collector writes accepted",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Review the documented Google-CloudVertexBot role/method separately, preserving the distinction between owner-requested agent crawling and a proved action purpose. Existing native/search/human/privacy/source-purpose/D1 gates remain; do not retry gated measurements, repeat accepted fixtures or chase documentation-only deployments.",
+  "nextBoundedAction": "Confirm exact-source activation of the CloudVertex repair. Then inspect whether separately retained classification facts can cross-check network source/count assignments without inventing historical evidence or expanding collection. Preserve all six external input gates; no production-data retry, repeated accepted fixtures or documentation-only activation chase.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -402,12 +404,11 @@
     "scopeAfterOwnerContinuation": "Historical checkpoint for missing measurement inputs; not a prohibition on independent implementation, observed agent growth or discovery work."
   },
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
-  "goalStatusScope": "Persistent goal active/incomplete. Catalogue, network and report correctness improved under synthetic local/native controls; no new production incidence, growth, human/native managed accuracy or privacy acceptance.",
+  "goalStatusScope": "Persistent goal active/incomplete. Documented method, public scope and controlled collector/report behavior improved; real source task, readership/growth, human/native managed accuracy and privacy acceptance remain unproven.",
   "latestContinuation": {
-    "research": "../discovery-experiment-02/08-googleother-declarations-and-network-evidence.md",
-    "receipt": "../discovery-experiment-02/googleother-checks.json",
-    "nextBoundedAction": "Review the documented Google-CloudVertexBot role/method separately, preserving the distinction between owner-requested agent crawling and a proved action purpose. Existing native/search/human/privacy/source-purpose/D1 gates remain; do not retry gated measurements, repeat accepted fixtures or chase documentation-only deployments.",
-    "release": "../discovery-experiment-02/googleother-release.json"
+    "research": "../discovery-experiment-02/09-cloudvertex-indexing-and-method-boundaries.md",
+    "receipt": "../discovery-experiment-02/cloudvertex-checks.json",
+    "nextBoundedAction": "Confirm exact-source activation of the CloudVertex repair. Then inspect whether separately retained classification facts can cross-check network source/count assignments without inventing historical evidence or expanding collection. Preserve all six external input gates; no production-data retry, repeated accepted fixtures or documentation-only activation chase."
   },
   "latestAcceptedSourceActivation": {
     "sourceCommit": "afe2289105cb84b8c0b1498f93c89f087225c224",

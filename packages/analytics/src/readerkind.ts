@@ -33,6 +33,7 @@ export const AI_SEARCH_CRAWLERS = [
   'Applebot',
 ] as const;
 
+/** Broad declared AI-related crawling, not a per-request training conclusion. */
 export const AI_CRAWLERS = [
   'GPTBot',
   'ClaudeBot',

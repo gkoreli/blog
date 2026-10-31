@@ -1,0 +1,96 @@
+{
+  "profile": "cloudvertex-acceptance-v1",
+  "checkedAt": "2026-10-31T09:39:20.462093+00:00",
+  "baseline": "2f465ad994dbf003ccaf7e7a4be2e0d326e78ee0",
+  "versions": {
+    "collection": "2026-10-30.1",
+    "classifier": "2026-10-31.1",
+    "verifier": "2026-10-31.2",
+    "vendorIp": "2026-10-31.2",
+    "reportCache": "2026-10-31.6"
+  },
+  "methodDelta": {
+    "canonicalName": "Google-CloudVertexBot",
+    "declaredRoleUnchanged": "ai-crawler",
+    "ipSource": "google-common",
+    "configuredIpDeclarationsBefore": 18,
+    "configuredIpDeclarationsAfter": 19,
+    "ipSourcesUnchanged": 16,
+    "maxFetchSourcesUnchanged": 4,
+    "signingExpectationUnchanged": "not-configured",
+    "newEndpoint": false,
+    "aliasesOrNamesAdded": 0
+  },
+  "checks": {
+    "initialAnalytics": {
+      "passed": 376,
+      "failed": 1,
+      "cause": "historical shared-source regression used current profile; preserved and pinned to31.1"
+    },
+    "finalAnalyticsTests": 377,
+    "siteTests": 169,
+    "workspaceTypes": "pass",
+    "markdownValidations": 27,
+    "isolatedBuildPosts": 38,
+    "workerDryRun": "pass",
+    "generatedStats": {
+      "statsHtmlSha256": "6f1d95c98db86197039d4783bb21c0183c4cdf3e9894c200a4e03aee87e4e972",
+      "newDescriptionPresent": true,
+      "oldDescriptionRemoved": true
+    },
+    "native": {
+      "profile": "cloudvertex-native-controls-v1",
+      "node": "v24.14.1",
+      "classifications": 8,
+      "networkCases": 9,
+      "profileCorruptions": 5,
+      "cacheSequence": 1,
+      "mixedHistoricalReport": 1,
+      "exactNodeWorkerdD1Agreement": true,
+      "workerBundleSha256": "09f2846ea7ee1d5c2fc84002ff9990ca0b82df7eda4f178a5a5d391a638335d3",
+      "productionRequests": 0,
+      "productionSqlStatements": 0
+    },
+    "actualLocalCollector": {
+      "storedRows": 2,
+      "interceptedFeedFetches": 1,
+      "followedByMemoryReuse": true,
+      "syntheticEdgeContext": true,
+      "noUnexpectedSigningExpectation": true
+    },
+    "independentReview": "no-material-defect"
+  },
+  "sourceSha256": {
+    "packages/analytics/src/classify.ts": "994c1f2b6f07c6e112723b8fb4d9aef28dff9607a0dca73e8e5f019357fc62ae",
+    "packages/analytics/src/readerkind.ts": "bf00c27e7edcb31135231080921e517caff9fbd2060bb7793837366926447307",
+    "packages/analytics/src/vendor-cache-report.ts": "262e221b5cc0b93be1ec85a3e7fac839271e85b0069a439fa23d01dde834b57d",
+    "packages/analytics/src/vendor-ip-sources.ts": "c2b721f47e798f6fb8d1fd5d1f24beee401f07ed69af7cea7238b8724d64a91f",
+    "packages/analytics/src/vendor-ip.ts": "5fd9d768a44831e1ed493a06a442c0cdb8dd81a9687fd974bcd6973719c75a76",
+    "packages/analytics/src/vendor-network-summary.ts": "d07596f65a49062119a7a86613fb42b9cc53c246d44a3c954b0057ba99dfddcc",
+    "packages/analytics/test/vendor-ip.test.mjs": "75c720f9ef687284c4c007729935b9c9c73a1d737a109779bc78e629093fce63",
+    "packages/blog/src/pages/stats.ts": "1c13f1d5ceadeeb53812bbe0a947d94654de9bfd9c7d0d218d8b64cf57cc682e",
+    "packages/blog/src/worker/stats-cache.ts": "6624bc01ad08baa1798209c051ba9905e73da6f3b5c4bef0a2de7273403b77bd",
+    "packages/analytics/test/cloudvertex.test.mjs": "135825ad273d879028464a443d7f35830c25b54280fc52032f31e1aa9f31d8ac",
+    "packages/analytics/test/googleother.test.mjs": "3d152e0dfc4c41a3939bff87df86e35342df1e47aebf4b10a04fb7661e0b3c0c"
+  },
+  "unchangedRuntimeSources": {
+    "packages/analytics/src/versions.ts": "e233a71efd6eb6d91d9ab7197bd449bad3767120c0f8299a1c101be1259fb68e",
+    "packages/analytics/src/index.ts": "25622f94cd80c5a00b0fdf3ccf010675ea9c0a4ff8a6378c1feff0a6b642041f",
+    "packages/analytics/src/vendor-signatures.ts": "5ebe59ba79c7dd48032da249fabdf104a5929f897ce1d827d3ea3455bbd88e04",
+    "packages/analytics/src/webbotauth.ts": "54348a11b372528ae042dc31b17b42c06104ec16e72e32b1e025b1f94aa38411"
+  },
+  "articleSha256": "85d3d022262eac6a129d9cf31ce385ad7e65037561d64a0fdb8b7fdf5c45c452",
+  "privateEvidence": {
+    "path": "packages/blog/worklog/analytics-evidence/2026-10-31-cloudvertex",
+    "files": 38,
+    "manifestSha256": "72392770903c3e5f5629c207406752994bb6e94ee188e839b6cb7dea59fd24b7",
+    "allEntriesVerified": true
+  },
+  "limits": [
+    "Actual source+name assignment is tested under controlled runtime inputs; stored envelopes only check structurally possible widths",
+    "Declared role/network result cannot establish training, a specific customer/task/reader or indexing completion",
+    "Synthetic edge/feed controls are not actual Google traffic or managed native bot verdicts",
+    "No production site/SQL access, human labels, raw mode, account/security change or article edit; activation not yet measured",
+    "All six existing input gates and the full unfinished goal remain intact"
+  ]
+}

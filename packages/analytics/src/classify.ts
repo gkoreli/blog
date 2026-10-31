@@ -27,8 +27,10 @@ import type { DeviceType, TrafficClass } from './contracts.js';
  *   https://docs.mistral.ai/robots
  * - Amazon — Amazonbot, Amzn-User, Amzn-SearchBot:
  *   https://developer.amazon.com/amazonbot
- * - Google — Google-Agent, Google-GeminiNotebook, Google-CloudVertexBot:
+ * - Google — Google-Agent, Google-GeminiNotebook:
  *   https://developers.google.com/crawling/docs/crawlers-fetchers/google-agent
+ * - Google-CloudVertexBot — website indexing for customer-built search/agents:
+ *   https://docs.cloud.google.com/generative-ai-app-builder/docs/prepare-data
  * - Apple — Applebot:
  *   https://support.apple.com/en-us/119829
  * - DuckDuckGo — DuckAssistBot:
