@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T08:06:20.341425+00:00",
-  "sourceBaseline": "8f0b8e89ceca8d955748f91e893f8bafed4bed7b",
+  "checkedAt": "2026-10-31T08:11:56.021925+00:00",
+  "sourceBaseline": "089df19fb1ad0d6b36c0624493ededd1fc36b7e0",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "Research124 native parser activation and historical resource reconciliation."
+    "scope": "089df19 delivered explicit resource accounting with historical/native/CLI acceptance."
   },
-  "scope": "Offline explicit resource-reach capability accepted on historical data, no fresh collection or production access.",
+  "scope": "Saved-window audit establishes descriptive Browser resource comparisons and rejects unsupported normalized/all-audience growth.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -147,7 +147,9 @@
         "readership-history-release.json",
         "113-fresh-current-production-calibration.md",
         "125-explicit-resource-reach-accounting.md",
-        "resource-reach-checks.json"
+        "resource-reach-checks.json",
+        "126-retained-windows-and-resource-trends.md",
+        "retained-resource-window-findings.json"
       ],
       "limit": "Weekly joint measurement history is implemented and has dated production acceptance; Research108's identical-report counterexample is superseded for that gap. Stage controls distinguish response/script/queue/receipt, but representative human/device/RUM behavior remains unmeasured."
     },
@@ -169,7 +171,9 @@
         "historical-article-resource-reach.json",
         "retained-agent-reach-checks.json",
         "125-explicit-resource-reach-accounting.md",
-        "resource-reach-checks.json"
+        "resource-reach-checks.json",
+        "126-retained-windows-and-resource-trends.md",
+        "retained-resource-window-findings.json"
       ],
       "limit": "Observed request reach, targeted agent-search discovery and external evidence reuse count at their supported stages. The historical 397-row cohort separates 243 article, 68 prompt-page and 86 hub events; it cannot establish current growth, useful reading, authentic referrals, population search intent or people. No fresh all-kind suffix is accepted after the D1 metadata authentication error."
     },
@@ -300,25 +304,26 @@
   ],
   "effectsThisAudit": {
     "runtimeChanged": false,
-    "offlineCapabilityAdded": true,
     "productionSiteRequests": 0,
     "productionSqlStatements": 0,
     "newHumanLabels": 0,
     "newPublicSearchCalls": 0,
-    "historicalRowsAnalyzed": 397,
+    "historicalBrowserRawRowsAnalyzed": 1513,
+    "historicalAllKindSuffixRowsAnalyzed": 494,
+    "overlappingRawBrowserRowsNotAdded": 23,
     "newRowsCaptured": 0,
     "articleChangedByThisWork": false,
     "credentialsOrScopesChanged": false
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: reusable explicit resource accounting, actual historical input and independent native/CLI acceptance",
+    "thisTurnClassification": "progress: actual four-week article/evidence/source decomposition, exact saved-native reconciliation and comparison scope decision",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Inspect retained windows and publication/exposure boundaries for a defensible article/resource trend. Compare only qualifying selections with explicit measurement histories; otherwise report missing coverage. Claim-specific external inputs remain unresolved.",
+  "nextBoundedAction": "Use the existing discovery question-to-article map for one controlled task-answer evaluation of the fetcher reference; preserve full answer, actual citations and signature-coverage qualifications in a new controlled baseline. Do not treat it as organic demand or repeat search visibility.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -346,9 +351,9 @@
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
   "goalStatusScope": "Persistent goal tracker confirmed active this turn. Offline acceptance is new progress; historical blocked checkpoint and claim-specific gates remain preserved.",
   "latestContinuation": {
-    "research": "125-explicit-resource-reach-accounting.md",
-    "receipt": "resource-reach-checks.json",
-    "nextBoundedAction": "Inspect retained windows and publication/exposure boundaries for a defensible article/resource trend. Compare only qualifying selections with explicit measurement histories; otherwise report missing coverage. Claim-specific external inputs remain unresolved."
+    "research": "126-retained-windows-and-resource-trends.md",
+    "receipt": "retained-resource-window-findings.json",
+    "nextBoundedAction": "Use the existing discovery question-to-article map for one controlled task-answer evaluation of the fetcher reference; preserve full answer, actual citations and signature-coverage qualifications in a new controlled baseline. Do not treat it as organic demand or repeat search visibility."
   },
   "latestAcceptedSourceActivation": {
     "sourceCommit": "84c4550772fa91a23c6f9371ba03270ef71783d5",

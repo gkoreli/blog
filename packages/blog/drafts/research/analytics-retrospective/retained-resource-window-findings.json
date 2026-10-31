@@ -1,0 +1,2480 @@
+{
+  "schemaVersion": "retained-resource-windows-2026-10-31.1",
+  "checkedAt": "2026-10-31T08:11:56.021925+00:00",
+  "sourceBaseline": "089df19fb1ad0d6b36c0624493ededd1fc36b7e0",
+  "question": "Which retained windows support a fair longitudinal resource comparison?",
+  "status": {
+    "descriptiveBrowserEventComparison": "supported-for-supplied-selection",
+    "allAudienceGrowth": "not-established",
+    "stableMeasurementGrowth": "not-established",
+    "ageAdjustedDemand": null,
+    "newGeneralComparisonFeature": "not-justified-by-these-inputs"
+  },
+  "archivesVerified": [
+    {
+      "folder": "2026-10-29-audience-audit-data",
+      "manifestSha256": "cdb08bd84b2ff00c05fc60174dfe23d73c5297245b3f660fa496ad2206a4a23e",
+      "files": 54
+    },
+    {
+      "folder": "2026-10-30-readership-delta-data",
+      "manifestSha256": "41e5e45a2310080fdaa68f8f51adcb5a5423b85e8a63d34af369006b9bf82257",
+      "files": 50
+    },
+    {
+      "folder": "2026-10-29-evidence-delta-data",
+      "manifestSha256": "e0a88595501eb04ebaafa13e0dda9fbc7be45178c9f39f905a27e35603b6b3d9",
+      "files": 60
+    },
+    {
+      "folder": "2026-10-30-all-kind-delta-data",
+      "manifestSha256": "0d6fef628964411d409a063c9430be67cc18af9823a2b0e2d663ae3404211079",
+      "files": 70
+    },
+    {
+      "folder": "2026-10-30-readership-history-release",
+      "manifestSha256": "5ac132691ef4e6b9b162adde58d46cbbdd91691debceb4938242ebe794d6b271",
+      "files": 69
+    }
+  ],
+  "priorResourceArchiveFilesVerified": 40,
+  "browser": {
+    "rawRows": 1513,
+    "includedEvents": 1477,
+    "exclusions": {
+      "owner-excluded": 34,
+      "referral-excluded": 2
+    },
+    "selectedKindProvenance": "Saved SQL reader_kind=browser selection; field absent from the fourteen-column export.",
+    "weeks": [
+      {
+        "startInclusive": "2026-10-02",
+        "endExclusive": "2026-10-09",
+        "accounting": {
+          "selectedEvents": 217,
+          "includedEvents": 217,
+          "ownerExcludedEvents": 0,
+          "referralExcludedEvents": 0,
+          "unassessedEvents": 0
+        },
+        "roles": [
+          {
+            "role": "article",
+            "events": 86
+          },
+          {
+            "role": "evidence",
+            "events": 27
+          },
+          {
+            "role": "site",
+            "events": 104
+          },
+          {
+            "role": "unmapped",
+            "events": 0
+          }
+        ],
+        "bothStampsNull": 217,
+        "sourceSensitivity": [
+          {
+            "role": "article",
+            "events": 86,
+            "r1Events": 0,
+            "outsideR1": 86
+          },
+          {
+            "role": "evidence",
+            "events": 27,
+            "r1Events": 0,
+            "outsideR1": 27
+          },
+          {
+            "role": "site",
+            "events": 104,
+            "r1Events": 0,
+            "outsideR1": 104
+          },
+          {
+            "role": "unmapped",
+            "events": 0,
+            "r1Events": 0,
+            "outsideR1": 0
+          }
+        ]
+      },
+      {
+        "startInclusive": "2026-10-09",
+        "endExclusive": "2026-10-16",
+        "accounting": {
+          "selectedEvents": 257,
+          "includedEvents": 257,
+          "ownerExcludedEvents": 0,
+          "referralExcludedEvents": 0,
+          "unassessedEvents": 0
+        },
+        "roles": [
+          {
+            "role": "article",
+            "events": 144
+          },
+          {
+            "role": "evidence",
+            "events": 24
+          },
+          {
+            "role": "site",
+            "events": 89
+          },
+          {
+            "role": "unmapped",
+            "events": 0
+          }
+        ],
+        "bothStampsNull": 257,
+        "sourceSensitivity": [
+          {
+            "role": "article",
+            "events": 144,
+            "r1Events": 0,
+            "outsideR1": 144
+          },
+          {
+            "role": "evidence",
+            "events": 24,
+            "r1Events": 5,
+            "outsideR1": 19
+          },
+          {
+            "role": "site",
+            "events": 89,
+            "r1Events": 0,
+            "outsideR1": 89
+          },
+          {
+            "role": "unmapped",
+            "events": 0,
+            "r1Events": 0,
+            "outsideR1": 0
+          }
+        ]
+      },
+      {
+        "startInclusive": "2026-10-16",
+        "endExclusive": "2026-10-23",
+        "accounting": {
+          "selectedEvents": 312,
+          "includedEvents": 312,
+          "ownerExcludedEvents": 0,
+          "referralExcludedEvents": 0,
+          "unassessedEvents": 0
+        },
+        "roles": [
+          {
+            "role": "article",
+            "events": 173
+          },
+          {
+            "role": "evidence",
+            "events": 41
+          },
+          {
+            "role": "site",
+            "events": 98
+          },
+          {
+            "role": "unmapped",
+            "events": 0
+          }
+        ],
+        "bothStampsNull": 312,
+        "sourceSensitivity": [
+          {
+            "role": "article",
+            "events": 173,
+            "r1Events": 0,
+            "outsideR1": 173
+          },
+          {
+            "role": "evidence",
+            "events": 41,
+            "r1Events": 4,
+            "outsideR1": 37
+          },
+          {
+            "role": "site",
+            "events": 98,
+            "r1Events": 0,
+            "outsideR1": 98
+          },
+          {
+            "role": "unmapped",
+            "events": 0,
+            "r1Events": 0,
+            "outsideR1": 0
+          }
+        ]
+      },
+      {
+        "startInclusive": "2026-10-23",
+        "endExclusive": "2026-10-30",
+        "accounting": {
+          "selectedEvents": 727,
+          "includedEvents": 691,
+          "ownerExcludedEvents": 34,
+          "referralExcludedEvents": 2,
+          "unassessedEvents": 0
+        },
+        "roles": [
+          {
+            "role": "article",
+            "events": 568
+          },
+          {
+            "role": "evidence",
+            "events": 22
+          },
+          {
+            "role": "site",
+            "events": 101
+          },
+          {
+            "role": "unmapped",
+            "events": 0
+          }
+        ],
+        "bothStampsNull": 459,
+        "sourceSensitivity": [
+          {
+            "role": "article",
+            "events": 568,
+            "r1Events": 388,
+            "outsideR1": 180
+          },
+          {
+            "role": "evidence",
+            "events": 22,
+            "r1Events": 0,
+            "outsideR1": 22
+          },
+          {
+            "role": "site",
+            "events": 101,
+            "r1Events": 0,
+            "outsideR1": 101
+          },
+          {
+            "role": "unmapped",
+            "events": 0,
+            "r1Events": 0,
+            "outsideR1": 0
+          }
+        ]
+      }
+    ],
+    "articles": [
+      {
+        "id": "why-worktree-setup-is-slow-on-macos",
+        "path": "/why-worktree-setup-is-slow-on-macos",
+        "title": "A Linux VM on My Mac Beat macOS at Installing Dependencies",
+        "authoredDate": "2026-10-28",
+        "articleEvents": [
+          0,
+          0,
+          0,
+          6
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          0,
+          0,
+          0,
+          6
+        ],
+        "outsideR1ArticleEvents": [
+          0,
+          0,
+          0,
+          6
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 5,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "oss-radar-08-bun-aot",
+        "path": "/oss-radar-08-bun-aot",
+        "title": "OSS Radar #08: Bun AOT \u2014 Don't Rewrite TypeScript in Rust Yet",
+        "authoredDate": "2026-10-27",
+        "articleEvents": [
+          0,
+          0,
+          0,
+          18
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          0,
+          0,
+          0,
+          18
+        ],
+        "outsideR1ArticleEvents": [
+          0,
+          0,
+          0,
+          18
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 10,
+            "internal": 1,
+            "noReferrer": 7,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "building-blog-analytics-what-the-numbers-can-prove",
+        "path": "/building-blog-analytics-what-the-numbers-can-prove",
+        "title": "Building Blog Analytics: What the Numbers Can Prove",
+        "authoredDate": "2026-10-25",
+        "articleEvents": [
+          0,
+          0,
+          0,
+          18
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "relatedEvents": [
+          0,
+          0,
+          0,
+          21
+        ],
+        "outsideR1ArticleEvents": [
+          0,
+          0,
+          0,
+          18
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 4,
+            "noReferrer": 14,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "openclaw-chose-solid-why-id-choose-nisli",
+        "path": "/openclaw-chose-solid-why-id-choose-nisli",
+        "title": "OpenClaw Chose Solid. Here\u2019s Why I\u2019d Choose Nisli.",
+        "authoredDate": "2026-10-21",
+        "articleEvents": [
+          0,
+          0,
+          13,
+          3
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          0,
+          0,
+          13,
+          3
+        ],
+        "outsideR1ArticleEvents": [
+          0,
+          0,
+          13,
+          3
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 3,
+            "internal": 3,
+            "noReferrer": 7,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "chatgpt-plugin-apps",
+        "path": "/chatgpt-plugin-apps",
+        "title": "ChatGPT Plugin Apps: What Changed, and What I'd Build",
+        "authoredDate": "2026-10-04",
+        "articleEvents": [
+          7,
+          6,
+          26,
+          95
+        ],
+        "evidenceEvents": [
+          3,
+          3,
+          2,
+          2
+        ],
+        "relatedEvents": [
+          10,
+          9,
+          28,
+          97
+        ],
+        "outsideR1ArticleEvents": [
+          7,
+          6,
+          26,
+          4
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          91
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 2,
+            "internal": 4,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 3,
+            "noReferrer": 3,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 19,
+            "noReferrer": 7,
+            "unknown": 0
+          },
+          {
+            "external": 91,
+            "internal": 1,
+            "noReferrer": 3,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "prompt-cache-context-edits",
+        "path": "/prompt-cache-context-edits",
+        "title": "Can You Change an Agent\u2019s Context Without Losing Its Prompt Cache?",
+        "authoredDate": "2026-09-29",
+        "articleEvents": [
+          5,
+          3,
+          5,
+          3
+        ],
+        "evidenceEvents": [
+          3,
+          3,
+          4,
+          1
+        ],
+        "relatedEvents": [
+          8,
+          6,
+          9,
+          4
+        ],
+        "outsideR1ArticleEvents": [
+          5,
+          3,
+          5,
+          3
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 3,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 4,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "productive-procrastination",
+        "path": "/productive-procrastination",
+        "title": "Productive Procrastination: When Meaningful Work Costs You Sleep",
+        "authoredDate": "2026-09-21",
+        "articleEvents": [
+          0,
+          3,
+          8,
+          5
+        ],
+        "evidenceEvents": [
+          4,
+          2,
+          5,
+          1
+        ],
+        "relatedEvents": [
+          4,
+          5,
+          13,
+          6
+        ],
+        "outsideR1ArticleEvents": [
+          0,
+          3,
+          8,
+          2
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 7,
+            "unknown": 0
+          },
+          {
+            "external": 4,
+            "internal": 0,
+            "noReferrer": 1,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "oss-radar-07-ai-citations",
+        "path": "/oss-radar-07-ai-citations",
+        "title": "OSS Radar #07: AI Citations \u2014 Do Agents Preserve the Evidence Behind an Answer?",
+        "authoredDate": "2026-09-10",
+        "articleEvents": [
+          4,
+          1,
+          2,
+          19
+        ],
+        "evidenceEvents": [
+          3,
+          3,
+          2,
+          1
+        ],
+        "relatedEvents": [
+          7,
+          4,
+          4,
+          20
+        ],
+        "outsideR1ArticleEvents": [
+          4,
+          1,
+          2,
+          3
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          16
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 3,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 17,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "filter-referrer-spam-without-deleting-analytics-history",
+        "path": "/filter-referrer-spam-without-deleting-analytics-history",
+        "title": "How I Defend My Analytics Against Referrer Spam",
+        "authoredDate": "2026-09-06",
+        "articleEvents": [
+          2,
+          3,
+          2,
+          2
+        ],
+        "evidenceEvents": [
+          1,
+          0,
+          2,
+          2
+        ],
+        "relatedEvents": [
+          3,
+          3,
+          4,
+          4
+        ],
+        "outsideR1ArticleEvents": [
+          2,
+          3,
+          2,
+          2
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 1,
+            "internal": 1,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "how-i-separate-readers-from-bots-without-javascript",
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "title": "Bot Detection Without JavaScript: What My Blog Measured",
+        "authoredDate": "2026-09-03",
+        "articleEvents": [
+          5,
+          9,
+          12,
+          26
+        ],
+        "evidenceEvents": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "relatedEvents": [
+          6,
+          10,
+          13,
+          27
+        ],
+        "outsideR1ArticleEvents": [
+          5,
+          9,
+          12,
+          10
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          16
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 1,
+            "internal": 0,
+            "noReferrer": 4,
+            "unknown": 0
+          },
+          {
+            "external": 1,
+            "internal": 2,
+            "noReferrer": 6,
+            "unknown": 0
+          },
+          {
+            "external": 3,
+            "internal": 0,
+            "noReferrer": 9,
+            "unknown": 0
+          },
+          {
+            "external": 21,
+            "internal": 0,
+            "noReferrer": 5,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "which-ai-fetchers-send-which-headers",
+        "path": "/which-ai-fetchers-send-which-headers",
+        "title": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+        "authoredDate": "2026-09-03",
+        "articleEvents": [
+          11,
+          20,
+          14,
+          22
+        ],
+        "evidenceEvents": [
+          0,
+          3,
+          4,
+          0
+        ],
+        "relatedEvents": [
+          11,
+          23,
+          18,
+          22
+        ],
+        "outsideR1ArticleEvents": [
+          11,
+          20,
+          14,
+          18
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          4
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 1,
+            "internal": 0,
+            "noReferrer": 10,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 10,
+            "noReferrer": 10,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 14,
+            "unknown": 0
+          },
+          {
+            "external": 4,
+            "internal": 2,
+            "noReferrer": 16,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "oss-radar-06-interp-engine",
+        "path": "/oss-radar-06-interp-engine",
+        "title": "OSS Radar #06: interp-engine, Neuronpedia's New Interpretability Engine, Tested on a Mac",
+        "authoredDate": "2026-09-02",
+        "articleEvents": [
+          3,
+          3,
+          2,
+          18
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          3,
+          3,
+          2,
+          18
+        ],
+        "outsideR1ArticleEvents": [
+          3,
+          3,
+          2,
+          3
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          15
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 1,
+            "internal": 1,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 15,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "oss-radar-05-bun-1-4",
+        "path": "/oss-radar-05-bun-1-4",
+        "title": "OSS Radar #05: Bun 1.4 Made the Runtime the Dependency",
+        "authoredDate": "2026-08-26",
+        "articleEvents": [
+          1,
+          2,
+          4,
+          29
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          1,
+          2,
+          4,
+          29
+        ],
+        "outsideR1ArticleEvents": [
+          1,
+          2,
+          4,
+          2
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          27
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 4,
+            "unknown": 0
+          },
+          {
+            "external": 27,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "first-party-analytics-for-a-personal-blog",
+        "path": "/first-party-analytics-for-a-personal-blog",
+        "title": "How I Built First-Party Analytics for a Personal Blog",
+        "authoredDate": "2026-08-26",
+        "articleEvents": [
+          3,
+          13,
+          3,
+          13
+        ],
+        "evidenceEvents": [
+          1,
+          3,
+          2,
+          2
+        ],
+        "relatedEvents": [
+          4,
+          16,
+          5,
+          15
+        ],
+        "outsideR1ArticleEvents": [
+          3,
+          13,
+          3,
+          6
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          7
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 10,
+            "noReferrer": 3,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 3,
+            "unknown": 0
+          },
+          {
+            "external": 11,
+            "internal": 1,
+            "noReferrer": 1,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "does-llms-txt-work",
+        "path": "/does-llms-txt-work",
+        "title": "Does llms.txt Work? What a Live Implementation Revealed",
+        "authoredDate": "2026-08-25",
+        "articleEvents": [
+          4,
+          2,
+          8,
+          20
+        ],
+        "evidenceEvents": [
+          2,
+          1,
+          2,
+          1
+        ],
+        "relatedEvents": [
+          6,
+          3,
+          10,
+          21
+        ],
+        "outsideR1ArticleEvents": [
+          4,
+          2,
+          8,
+          3
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          17
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 4,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 7,
+            "unknown": 0
+          },
+          {
+            "external": 18,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "my-evals-say-it-works-i-dont-use-it",
+        "path": "/my-evals-say-it-works-i-dont-use-it",
+        "title": "My Evals Say It Works. I Still Don't Reach for It.",
+        "authoredDate": "2026-08-21",
+        "articleEvents": [
+          1,
+          2,
+          2,
+          3
+        ],
+        "evidenceEvents": [
+          0,
+          1,
+          3,
+          0
+        ],
+        "relatedEvents": [
+          1,
+          3,
+          5,
+          3
+        ],
+        "outsideR1ArticleEvents": [
+          1,
+          2,
+          2,
+          2
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 1,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+        "path": "/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+        "title": "OSS Radar #04: The Agent Multiplexer Is Becoming a Runtime",
+        "authoredDate": "2026-08-21",
+        "articleEvents": [
+          2,
+          3,
+          3,
+          15
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          2,
+          3,
+          3,
+          15
+        ],
+        "outsideR1ArticleEvents": [
+          2,
+          3,
+          3,
+          6
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          9
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 1,
+            "internal": 1,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 3,
+            "unknown": 0
+          },
+          {
+            "external": 11,
+            "internal": 0,
+            "noReferrer": 4,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "bring-your-own-ai-agent",
+        "path": "/bring-your-own-ai-agent",
+        "title": "Bring Your Own AI Agent Everywhere",
+        "authoredDate": "2026-08-20",
+        "articleEvents": [
+          3,
+          6,
+          8,
+          9
+        ],
+        "evidenceEvents": [
+          1,
+          0,
+          2,
+          2
+        ],
+        "relatedEvents": [
+          4,
+          6,
+          10,
+          11
+        ],
+        "outsideR1ArticleEvents": [
+          3,
+          6,
+          8,
+          3
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          6
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 3,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 2,
+            "noReferrer": 4,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 8,
+            "unknown": 0
+          },
+          {
+            "external": 6,
+            "internal": 0,
+            "noReferrer": 3,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "oss-radar-03-buzz-is-slack-on-airoids",
+        "path": "/oss-radar-03-buzz-is-slack-on-airoids",
+        "title": "OSS Radar #03: Buzz Is Slack on AIroids",
+        "authoredDate": "2026-07-24",
+        "articleEvents": [
+          2,
+          10,
+          8,
+          9
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          2,
+          10,
+          8,
+          9
+        ],
+        "outsideR1ArticleEvents": [
+          2,
+          10,
+          8,
+          8
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 9,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 8,
+            "unknown": 0
+          },
+          {
+            "external": 1,
+            "internal": 0,
+            "noReferrer": 8,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "openwiki-validates-my-bet",
+        "path": "/openwiki-validates-my-bet",
+        "title": "OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live",
+        "authoredDate": "2026-07-23",
+        "articleEvents": [
+          1,
+          4,
+          2,
+          2
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          1,
+          4,
+          2,
+          2
+        ],
+        "outsideR1ArticleEvents": [
+          1,
+          4,
+          2,
+          1
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 2,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 1,
+            "internal": 0,
+            "noReferrer": 1,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "i-am-lost-right-now",
+        "path": "/i-am-lost-right-now",
+        "title": "I Am Lost Right Now",
+        "authoredDate": "2026-07-19",
+        "articleEvents": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "outsideR1ArticleEvents": [
+          1,
+          2,
+          3,
+          3
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          2
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 2,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "one-hundred-pull-requests",
+        "path": "/one-hundred-pull-requests",
+        "title": "117 Pull Requests Later, It Wasn\u2019t a Task Manager Anymore",
+        "authoredDate": "2026-07-09",
+        "articleEvents": [
+          2,
+          3,
+          3,
+          15
+        ],
+        "evidenceEvents": [
+          1,
+          1,
+          2,
+          0
+        ],
+        "relatedEvents": [
+          3,
+          4,
+          5,
+          15
+        ],
+        "outsideR1ArticleEvents": [
+          2,
+          3,
+          3,
+          3
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          12
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 2,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 3,
+            "unknown": 0
+          },
+          {
+            "external": 13,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "what-if-the-agent-was-better-before-we-helped",
+        "path": "/what-if-the-agent-was-better-before-we-helped",
+        "title": "What If the Agent Was Better Before We Helped?",
+        "authoredDate": "2026-07-05",
+        "articleEvents": [
+          3,
+          3,
+          3,
+          2
+        ],
+        "evidenceEvents": [
+          1,
+          1,
+          2,
+          1
+        ],
+        "relatedEvents": [
+          4,
+          4,
+          5,
+          3
+        ],
+        "outsideR1ArticleEvents": [
+          3,
+          3,
+          3,
+          2
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 3,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 2,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 3,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "i-thought-building-was-enough",
+        "path": "/i-thought-building-was-enough",
+        "title": "The Builder\u2019s Perfectionism Trap",
+        "authoredDate": "2026-07-01",
+        "articleEvents": [
+          2,
+          2,
+          2,
+          5
+        ],
+        "evidenceEvents": [
+          3,
+          0,
+          2,
+          1
+        ],
+        "relatedEvents": [
+          5,
+          2,
+          4,
+          6
+        ],
+        "outsideR1ArticleEvents": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 3,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "linux-signal-stack-conflict",
+        "path": "/linux-signal-stack-conflict",
+        "title": "One bitmask in task_struct: how a 10-line kernel patch resolves 15 years of multi-runtime signal conflicts on Linux",
+        "authoredDate": "2026-05-21",
+        "articleEvents": [
+          5,
+          18,
+          3,
+          3
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          5,
+          18,
+          3,
+          3
+        ],
+        "outsideR1ArticleEvents": [
+          5,
+          18,
+          3,
+          3
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 1,
+            "internal": 0,
+            "noReferrer": 4,
+            "unknown": 0
+          },
+          {
+            "external": 4,
+            "internal": 1,
+            "noReferrer": 13,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 3,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 3,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "life-as-background-music",
+        "path": "/life-as-background-music",
+        "title": "Life as Background Music",
+        "authoredDate": "2026-04-22",
+        "articleEvents": [
+          0,
+          3,
+          4,
+          3
+        ],
+        "evidenceEvents": [
+          1,
+          1,
+          2,
+          1
+        ],
+        "relatedEvents": [
+          1,
+          4,
+          6,
+          4
+        ],
+        "outsideR1ArticleEvents": [
+          0,
+          3,
+          4,
+          3
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 4,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "you-dont-need-codemap",
+        "path": "/you-dont-need-codemap",
+        "title": "You Don't Always Need Codemap",
+        "authoredDate": "2026-04-17",
+        "articleEvents": [
+          4,
+          6,
+          5,
+          19
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          4,
+          6,
+          5,
+          19
+        ],
+        "outsideR1ArticleEvents": [
+          4,
+          6,
+          5,
+          11
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          8
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 1,
+            "internal": 0,
+            "noReferrer": 3,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 5,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 5,
+            "unknown": 0
+          },
+          {
+            "external": 16,
+            "internal": 0,
+            "noReferrer": 3,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "oss-radar-02-the-toolchain-is-the-moat",
+        "path": "/oss-radar-02-the-toolchain-is-the-moat",
+        "title": "OSS Radar #02: The Toolchain Is the Moat",
+        "authoredDate": "2026-04-12",
+        "articleEvents": [
+          3,
+          2,
+          4,
+          107
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          3,
+          2,
+          4,
+          107
+        ],
+        "outsideR1ArticleEvents": [
+          3,
+          2,
+          4,
+          4
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          103
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 4,
+            "unknown": 0
+          },
+          {
+            "external": 103,
+            "internal": 0,
+            "noReferrer": 4,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+        "path": "/procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+        "title": "Procrastination Is a Craft You've Been Mastering Your Entire Life",
+        "authoredDate": "2026-04-07",
+        "articleEvents": [
+          2,
+          2,
+          2,
+          4
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          2,
+          2,
+          2,
+          4
+        ],
+        "outsideR1ArticleEvents": [
+          2,
+          2,
+          2,
+          3
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 1,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "topologies-of-thoughts",
+        "path": "/topologies-of-thoughts",
+        "title": "Topologies of Thoughts",
+        "authoredDate": "2026-03-31",
+        "articleEvents": [
+          2,
+          3,
+          11,
+          16
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          2,
+          3,
+          11,
+          16
+        ],
+        "outsideR1ArticleEvents": [
+          2,
+          3,
+          11,
+          12
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          4
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 11,
+            "unknown": 0
+          },
+          {
+            "external": 13,
+            "internal": 1,
+            "noReferrer": 2,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "how-ghx-was-born",
+        "path": "/how-ghx-was-born",
+        "title": "Build the GitHub Exploration Tool, No Mistakes",
+        "authoredDate": "2026-03-29",
+        "articleEvents": [
+          2,
+          6,
+          4,
+          45
+        ],
+        "evidenceEvents": [
+          1,
+          1,
+          2,
+          3
+        ],
+        "relatedEvents": [
+          3,
+          7,
+          6,
+          48
+        ],
+        "outsideR1ArticleEvents": [
+          2,
+          6,
+          4,
+          8
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          37
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 5,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 3,
+            "unknown": 0
+          },
+          {
+            "external": 41,
+            "internal": 0,
+            "noReferrer": 4,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "oss-radar-01-vercel-winter-2026-cohort",
+        "path": "/oss-radar-01-vercel-winter-2026-cohort",
+        "title": "OSS Radar #01: Vercel's Winter 2026 Cohort",
+        "authoredDate": "2026-03-19",
+        "articleEvents": [
+          5,
+          2,
+          5,
+          7
+        ],
+        "evidenceEvents": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "relatedEvents": [
+          5,
+          2,
+          5,
+          7
+        ],
+        "outsideR1ArticleEvents": [
+          5,
+          2,
+          5,
+          4
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 1,
+            "internal": 0,
+            "noReferrer": 4,
+            "unknown": 0
+          },
+          {
+            "external": 1,
+            "internal": 1,
+            "noReferrer": 0,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 5,
+            "unknown": 0
+          },
+          {
+            "external": 4,
+            "internal": 0,
+            "noReferrer": 3,
+            "unknown": 0
+          }
+        ]
+      },
+      {
+        "id": "the-agentic-product-engineer",
+        "path": "/the-agentic-product-engineer",
+        "title": "The Agentic Product Engineer",
+        "authoredDate": "2026-03-05",
+        "articleEvents": [
+          1,
+          2,
+          2,
+          2
+        ],
+        "evidenceEvents": [
+          1,
+          0,
+          2,
+          0
+        ],
+        "relatedEvents": [
+          2,
+          2,
+          4,
+          2
+        ],
+        "outsideR1ArticleEvents": [
+          1,
+          2,
+          2,
+          1
+        ],
+        "r1ArticleEvents": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "articleReportedSourcePartitions": [
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 1,
+            "noReferrer": 1,
+            "unknown": 0
+          },
+          {
+            "external": 0,
+            "internal": 0,
+            "noReferrer": 2,
+            "unknown": 0
+          },
+          {
+            "external": 1,
+            "internal": 0,
+            "noReferrer": 1,
+            "unknown": 0
+          }
+        ]
+      }
+    ],
+    "priorFullAnalysisMatches": true,
+    "nativeHistoryGroupsMatched": 137,
+    "articlePopulationExposure": "Authored dates only; exact serving and publication/redirect intervals unestablished."
+  },
+  "allKinds": {
+    "selections": [
+      {
+        "rows": 97,
+        "first": "2026-10-29 16:48:53",
+        "last": "2026-10-29 20:33:06"
+      },
+      {
+        "rows": 397,
+        "first": "2026-10-29 20:39:23",
+        "last": "2026-10-30 09:38:03"
+      }
+    ],
+    "distinctRecords": 494,
+    "adjacentIdCutoffs": true,
+    "completeCalendarPeriods": false,
+    "browserRecordsSharedWithCompleteDayCapture": 23,
+    "byDay": {
+      "2026-10-29": 139,
+      "2026-10-30": 355
+    },
+    "byKind": {
+      "cloud-browser": 116,
+      "other-bot": 56,
+      "ai-search": 46,
+      "unresolved": 191,
+      "browser": 45,
+      "search-crawler": 19,
+      "ai-crawler": 11,
+      "seo-crawler": 3,
+      "http-client": 4,
+      "headless-browser": 1,
+      "ai-assistant": 2
+    },
+    "profileAndInclusionHistory": [
+      {
+        "rawRows": 97,
+        "jointProfiles": [
+          {
+            "collection": "2026-10-29.5",
+            "classifier": "2026-10-29.2",
+            "events": 77
+          },
+          {
+            "collection": "2026-10-29.6",
+            "classifier": "2026-10-29.3",
+            "events": 20
+          }
+        ],
+        "suppliedHistoricalInclusion": {
+          "included": 93,
+          "referral-excluded": 4
+        }
+      },
+      {
+        "rawRows": 397,
+        "jointProfiles": [
+          {
+            "collection": "2026-10-29.6",
+            "classifier": "2026-10-29.3",
+            "events": 397
+          }
+        ],
+        "suppliedHistoricalInclusion": {
+          "included": 397
+        }
+      }
+    ]
+  },
+  "checks": {
+    "independentPythonRoleAndSelectionAccounting": true,
+    "weeks": 4,
+    "inputsSha256": [
+      "e59970f28e2644790f153906327ecc47a7c420087afc5e93952a156daf790c0e",
+      "2628baa9f77fce293e9f0f0cf9e8ba794b6e82944975b08c1321d7f8beb2b3bc",
+      "2148e4dade71b53ed3156dbb0900160eeb3ec78b9f1d46010f800ac6a7c86f58",
+      "71519af3de9112ddbd99333d7edef76b2d72ed4c7e5d7b4e9297b79b8c875375"
+    ],
+    "newSqlStatements": 0,
+    "newProductionRequests": 0,
+    "priorFull1513RowAnalysisMatched": true,
+    "savedNativeArticleNonArticleHistoryGroupsMatched": 137,
+    "savedNativeReportSha256": "7da016716c093350e52e02c6aa748991f052f1c517bdba83ad8faaec3f8653e6",
+    "sourceByteHashes": {
+      "packages/analytics/src/resource-reach.ts": "a2d5341e3870a902be4c740f308aadd55ff166f4b48277de352ce75383d32718",
+      "packages/analytics/src/contracts.ts": "b026d4ee769655abbdfac1d74940ad2c9798ce726644c2fe66d5847f99c91e16",
+      "packages/analytics/src/referral-policy.ts": "a5e0a92dd2d9986cbb10e795ca9733fcb9a3b70cbf100901646232b09d55dc3a",
+      "packages/analytics/src/referral-policy.generated.ts": "82ec6d0ec1f22dd85cf33775602e8484696dd4f4808e8258ec29fd76741bfd30",
+      "packages/blog/scripts/audience-audit.mjs": "5989a6165e2929e564418b01c68f0d8661d44ffddadc85842643e439cf7fab15",
+      "packages/analytics/src/article-reach.ts": "17379b45e0c7c3f251e19b69632b830cfb051318433ef2b53d89b080f83854f9"
+    },
+    "freshIsolatedAnalyticsCompilation": true,
+    "newNativeSqlExecution": false,
+    "scopedDocumentationLinks": {
+      "passed": true,
+      "localLinksChecked": 4,
+      "fencesBalanced": true
+    }
+  },
+  "sourceCrossReferences": [
+    {
+      "source": "https://matomo.org/guide/reporting-tools/annotations/",
+      "contract": "Dated annotations retain context beside historical charts.",
+      "application": "Profile/source/exposure context belongs beside descriptive resource comparisons; annotations do not prove causality."
+    },
+    {
+      "source": "https://support.google.com/webmasters/answer/7576553?hl=en",
+      "contract": "Search performance distinguishes clicks, impressions, queries, aggregation and preliminary/unavailable data.",
+      "application": "Resource event trends cannot supply search queries, impressions, demand or missing account figures."
+    },
+    {
+      "source": "packages/blog/scripts/audience-audit.mjs",
+      "contract": "EXPORT_SQL selects reader_kind=browser with explicit observed-at bounds.",
+      "application": "Stored kind in minimal weekly inputs follows the saved selector, not an absent exported column."
+    },
+    {
+      "source": "packages/analytics/src/resource-reach.ts",
+      "contract": "Explicit singular role/parent registry; selected/included history and exact path matching.",
+      "application": "Four complete-week roles reconcile without converting evidence requests into article events."
+    }
+  ],
+  "review": {
+    "scope": "Independent read-only review of saved windows and interpretation; no new tests or production access.",
+    "findings": [
+      "Use production report-first.body; native-report.json in that archive is synthetic preflight.",
+      "Adjacent all-kind suffixes have unequal durations and changed profiles; equal raw totals are not a trend.",
+      "Equal null/missing method stamps cannot qualify stable measurement. Equal recorded stamps are provenance, not authentication of execution.",
+      "Date-only publication labels and newer zero rows cannot supply exact exposure or zero demand.",
+      "Aggregate native agreement does not refresh historical owner flags or prove unchanged row membership."
+    ]
+  },
+  "privateArchive": {
+    "location": "packages/blog/worklog/analytics-evidence/2026-10-31-resource-windows",
+    "files": 451,
+    "manifestSha256": "27788b652d6777037b62b8e538fb23cbbafba7b63c27236d47d5a961283e557e"
+  },
+  "effects": {
+    "runtimeChanged": false,
+    "productionRequests": 0,
+    "productionSqlStatements": 0,
+    "newRowsCaptured": 0,
+    "newHumanLabels": 0,
+    "articleChanged": false,
+    "deploymentActivationClaim": false
+  },
+  "limits": [
+    "Browser-selected history does not represent all-category history or recover events not stored by earlier rules.",
+    "Equal complete-week duration permits descriptive event comparisons, not a stable measurement population or causal growth inference.",
+    "Null stamps remain unknown; same stamps are provenance, not evidence of stable delivery, classification or audience.",
+    "Evidence-page requests are separate reach outcomes, not article views or proof of use.",
+    "Authored calendar dates cannot supply exact publication exposure; no per-hour/day age-normalized demand is produced.",
+    "Saved owner links are not refreshed. Referrer sensitivity is not an exclusion or authenticity verdict."
+  ]
+}
