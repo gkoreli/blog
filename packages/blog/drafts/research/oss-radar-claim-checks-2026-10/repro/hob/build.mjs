@@ -1,0 +1,6 @@
+import {build} from 'esbuild';
+import {readFileSync,readdirSync} from 'node:fs';
+import {dirname,join} from 'node:path';
+const localeGlob={name:'vite-locale-glob',setup(b){b.onLoad({filter:/shared\/i18n\.ts$/},({path})=>{const dir=join(dirname(path),'locales');const tables=Object.fromEntries(readdirSync(dir).filter(x=>x.endsWith('.json')).map(x=>['./locales/'+x,JSON.parse(readFileSync(join(dir,x),'utf8'))]));const source=readFileSync(path,'utf8');const old="import.meta.glob<Table>('./locales/*.json', { eager: true, import: 'default' })";if(!source.includes(old))throw Error('Locale glob changed');return {contents:source.replace(old,JSON.stringify(tables)),loader:'ts'};});}};
+await build({entryPoints:['../app/src/engine/worker.ts'],outfile:'engine.mjs',bundle:true,platform:'node',format:'esm',packages:'external',plugins:[localeGlob]});
+await build({stdin:{contents:"export {runTurn} from '../app/src/main/agent/turn.ts'; export {Store} from '../app/src/main/store.ts'; export {readFile,writeFile,listFiles} from '../app/src/main/tools/files.ts'; export {pick} from '../packages/picker/src/pick.ts';",resolveDir:process.cwd()},outfile:'flow.mjs',bundle:true,platform:'node',format:'esm',packages:'external',plugins:[localeGlob]});

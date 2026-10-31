@@ -1,0 +1,60 @@
+{
+  "scope": "Extracted scheduler source in a synthetic Node VM; no live summary or billing measurement",
+  "binarySha256": "6b5ec691195e551b02c41df9f7d723f4ea61eaa03c2df90acefe3736f1aeb620",
+  "hookSha256": "f95df896a998653ee86e7320ae9a29a547add4addd50cf631491dffaa6040b40",
+  "schedulerSha256": "e5ffdfff509683704323568771c761e80387a32ba8ea26dcb43bdfb0f0d105e8",
+  "schedulerSourceRange": [
+    235114629,
+    235120641
+  ],
+  "rows": [
+    {
+      "scenario": "no-hook",
+      "schedulerDelayMs": 30000,
+      "schedulerCallbackCarriesAnchor": true,
+      "ordinaryDelayMs": 1234
+    },
+    {
+      "scenario": "off",
+      "schedulerDelayMs": 2147483647,
+      "schedulerCallbackCarriesAnchor": false,
+      "ordinaryDelayMs": 1234
+    },
+    {
+      "scenario": "pass",
+      "schedulerDelayMs": 30000,
+      "schedulerCallbackCarriesAnchor": true,
+      "ordinaryDelayMs": 1234
+    },
+    {
+      "scenario": "foreign-process",
+      "schedulerDelayMs": 30000,
+      "schedulerCallbackCarriesAnchor": true,
+      "ordinaryDelayMs": 1234
+    },
+    {
+      "scenario": "bound-callback",
+      "schedulerDelayMs": 30000,
+      "schedulerCallbackCarriesAnchor": true,
+      "ordinaryDelayMs": 1234,
+      "boundDelayMs": 30000
+    }
+  ],
+  "package": {
+    "name": "@anthropic-ai/claude-code-darwin-arm64",
+    "version": "2.1.312",
+    "integrity": "sha512-sad6CDDDvoE00/UpbnYKNYJRGjtKbAlTFNEkgihc8+Dvk4cEpRWNF4iY9aQpa2VKQDFNE7hQVB8EwKvM+ElQ9w==",
+    "tarballIntegrityVerified": true
+  },
+  "preloadVersionCheck": {
+    "exitCode": 0,
+    "stdout": "2.1.312 (Claude Code)",
+    "active": true,
+    "bunVersion": "1.4.4",
+    "summaryTimersMatched": 0,
+    "summaryTimersSuppressed": 0,
+    "network": "sandbox-exec deny network-outbound",
+    "config": "temporary directory",
+    "limit": "Activation only; --version never exercises a live agent summary"
+  }
+}

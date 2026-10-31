@@ -1,0 +1,430 @@
+{
+  "source": "oxc-project/tsrs@e18fb617ee516917342dcda27063ab67acc79e49",
+  "results": [
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "ts70",
+      "mode": [],
+      "checkers": 1,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "ts70",
+      "mode": [],
+      "checkers": 2,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "ts70",
+      "mode": [],
+      "checkers": 4,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "ts70",
+      "mode": [],
+      "checkers": 8,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "ts71",
+      "mode": [],
+      "checkers": 1,
+      "exitCode": 2,
+      "stdout": "b.ts(3,12): error TS2339: Property 'b' does not exist on type 'T'.\n",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "ts71",
+      "mode": [],
+      "checkers": 2,
+      "exitCode": 2,
+      "stdout": "b.ts(3,12): error TS2339: Property 'b' does not exist on type 'T'.\n",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "ts71",
+      "mode": [],
+      "checkers": 4,
+      "exitCode": 2,
+      "stdout": "b.ts(3,12): error TS2339: Property 'b' does not exist on type 'T'.\n",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "ts71",
+      "mode": [],
+      "checkers": 8,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast",
+        "false"
+      ],
+      "checkers": 1,
+      "exitCode": 2,
+      "stdout": "b.ts(3,12): error TS2339: Property 'b' does not exist on type 'T'.\n",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast",
+        "false"
+      ],
+      "checkers": 2,
+      "exitCode": 2,
+      "stdout": "b.ts(3,12): error TS2339: Property 'b' does not exist on type 'T'.\n",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast",
+        "false"
+      ],
+      "checkers": 4,
+      "exitCode": 2,
+      "stdout": "b.ts(3,12): error TS2339: Property 'b' does not exist on type 'T'.\n",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast",
+        "false"
+      ],
+      "checkers": 8,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast"
+      ],
+      "checkers": 1,
+      "exitCode": 2,
+      "stdout": "b.ts(3,12): error TS2339: Property 'b' does not exist on type 'T'.\n",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast"
+      ],
+      "checkers": 2,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast"
+      ],
+      "checkers": 4,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "a.ts",
+        "b.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast"
+      ],
+      "checkers": 8,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "ts70",
+      "mode": [],
+      "checkers": 1,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "ts70",
+      "mode": [],
+      "checkers": 2,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "ts70",
+      "mode": [],
+      "checkers": 4,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "ts70",
+      "mode": [],
+      "checkers": 8,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "ts71",
+      "mode": [],
+      "checkers": 1,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "ts71",
+      "mode": [],
+      "checkers": 2,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "ts71",
+      "mode": [],
+      "checkers": 4,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "ts71",
+      "mode": [],
+      "checkers": 8,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast",
+        "false"
+      ],
+      "checkers": 1,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast",
+        "false"
+      ],
+      "checkers": 2,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast",
+        "false"
+      ],
+      "checkers": 4,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast",
+        "false"
+      ],
+      "checkers": 8,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast"
+      ],
+      "checkers": 1,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast"
+      ],
+      "checkers": 2,
+      "exitCode": 2,
+      "stdout": "b.ts(3,12): error TS2339: Property 'b' does not exist on type 'T'.\n",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast"
+      ],
+      "checkers": 4,
+      "exitCode": 2,
+      "stdout": "b.ts(3,12): error TS2339: Property 'b' does not exist on type 'T'.\n",
+      "stderr": ""
+    },
+    {
+      "files": [
+        "b.ts",
+        "a.ts"
+      ],
+      "compiler": "tsrs",
+      "mode": [
+        "--fast"
+      ],
+      "checkers": 8,
+      "exitCode": 2,
+      "stdout": "b.ts(3,12): error TS2339: Property 'b' does not exist on type 'T'.\n",
+      "stderr": ""
+    }
+  ],
+  "rawArtifactSha256": "b016814baa61175c41adb22f3908b40e6464cbdf8f41010ac8384d9f8b60e8a3"
+}

@@ -1,0 +1,11 @@
+{
+  "chipformer/rv/core.py": "2205b32147b9fd8e17819934ace20b0cf33336c2b98c51ddc760b95788c54210",
+  "chipformer/rv/hf.py": "a1bdce19e6c3cdfb11a7e4904712462ebd0c3fbab3827309068c977f58f013b6",
+  "chipformer/rv/tiny.py": "6077bb168884747bf033f9834b6ad3ae9bd18913691de7cbbb7ec55b53f164fc",
+  "chipformer/rv/firmware.py": "f9911d826251a4ce6089bc4572ddcfdcbf24b807380be6681ac0cc474d5facff",
+  "chipformer/rv/chat.py": "b1791197de659409fd900edd44f1de4e3a0263fbe242145ae6618524563c502e",
+  "chipformer/rv/merge.py": "8bd4e29173f17c5ce7e296af2fe3240ddc11249ab877ecad15540c81fc1cff06",
+  "chipformer/q35/emit.py": "e3fc75021e5a6c94d2857017b051b5bf91f2ad527128b2c04873fbd1bb384134",
+  "pyproject.toml": "ed33d599c6664c22168be6d31f76530bec90ebe5c012b2a0755bd56c5f890d7d",
+  "uv.lock": "4df11fdd977d9097677e258cd7cb1d73a704d390b4040dd7865211d265ebbfda"
+}

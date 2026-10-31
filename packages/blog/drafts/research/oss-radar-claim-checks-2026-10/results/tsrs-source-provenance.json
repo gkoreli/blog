@@ -1,0 +1,32 @@
+{
+  "packageSource": "77d3cddb44540734abc33a42ccca4d3f33bee527",
+  "earlierInspectionSource": "e18fb617ee516917342dcda27063ab67acc79e49",
+  "files": [
+    {
+      "path": "docs/DEFAULTS.md",
+      "sha256": "de74f2cf930c4aaf7b6e66f0250e42dac3f7c83164e9913ab62eb2f0a056eb00",
+      "sameAsInitialBaseline": true
+    },
+    {
+      "path": "docs/COMPATIBILITY.md",
+      "sha256": "e500fa5b93b2b03a25b78f91987498a5fb9d6bd7c9cf44b3ca56873f4a2d16e9",
+      "sameAsInitialBaseline": false
+    },
+    {
+      "path": "docs/USAGE.md",
+      "sha256": "396fb061195c422ff786c8002c8dad651ff9b48d57a337bacda86601098c04f6",
+      "sameAsInitialBaseline": true
+    },
+    {
+      "path": "notes/determinism-base-constraint-depth.md",
+      "sha256": "5c1171161c27bb863f42be4334a514e2a65484b075e4234e4c8b632a8c725626",
+      "sameAsInitialBaseline": true
+    },
+    {
+      "path": "crates/tsrs_compiler/src/programregions.rs",
+      "sha256": "2adfdd5ae17c1243e29ea7886c963d5e6a2b58734b5625a8301ae87e5dd83926",
+      "sameAsInitialBaseline": false
+    }
+  ],
+  "note": "Source revision from npm registry provenance; reading provenance is not an independent signature audit. Platform executable hashes are recorded in run results."
+}
