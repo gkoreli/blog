@@ -1,0 +1,342 @@
+{
+  "schemaVersion": "retained-control-clock-audit-2026-10-31.1",
+  "checkedAt": "2026-10-31T08:56:55.118791+00:00",
+  "sourceBaseline": "8e1d061856e5d11fb13d56d66033e577dc925899",
+  "implementation": "../../../../analytics/src/access-evidence.ts",
+  "contract": "../../../../analytics/ACCESS_EVIDENCE.md",
+  "version": "access-evidence-v2",
+  "profile": "2026-10-31.2",
+  "sourceSha256": "7422813c2d32af9ab0358ffc96d1bad45e6218d6bc8d056ef4c3af32ef68c1e4",
+  "supersedes": {
+    "v1Receipt": "access-ledger-checks.json",
+    "originalCodeCommit": "8e1d061",
+    "scope": "Clock interpretation and explicit context provenance; original captures/v1 output counts retained, not rewritten. BIC block/context corroboration remains supported.",
+    "legacyInputsAccepted": false
+  },
+  "correction": {
+    "oldAdapter": "Mapped checkedAt sampled after reading/processing into receivedAt.",
+    "newContract": "observedAt plus observationBasis; contextBasis retained in report; observedResponses counter.",
+    "networkArrivalTimeRecovered": false,
+    "automaticMigration": false
+  },
+  "inventory": {
+    "originalArchives": [
+      {
+        "archive": "2026-10-27-trial-ledger",
+        "manifestSha256": "1f29cd43154d2b65656b2e86f026f3fcde8e0b2783cd5a3437912b7ab3efcbb5",
+        "filesVerified": 48
+      },
+      {
+        "archive": "2026-10-27-production-stage",
+        "manifestSha256": "089e0e7d7016ea753d9b2bbb886a94e022456d554af6e782cfb81debe8b97f5d",
+        "filesVerified": 74
+      }
+    ],
+    "bicArchiveFilesVerified": 15,
+    "v1ArchiveFilesVerified": 33,
+    "laterArchiveSearch": {
+      "roots": [
+        "/Users/goga/Documents/goga/blog",
+        "/Users/goga/.local/share/gkoreli"
+      ],
+      "manifestFilenamePattern": "*manifest*.json",
+      "manifestsExamined": 132,
+      "excludedDirectories": [
+        "node_modules",
+        ".git",
+        ".pnpm-store"
+      ],
+      "wantedHashes": [
+        "11e1756de113907780ca4d752aae9d5e8e77d9c13152d2ccc6dff48c516163da",
+        "c1a80757bbcd0de77568d30817744e734d7148b207622bf0730faedf01016d43"
+      ],
+      "matches": [],
+      "limit": "Bounded local search; no global absence, deletion or invalidation of prior acceptance claimed."
+    },
+    "originalCohort": {
+      "planned": 18,
+      "acceptedExecutionReceipts": 12,
+      "browserPointReceipts": 9,
+      "curlCompletionReceiptsWith200Headers": 3,
+      "collectorRows": 12,
+      "perExecutedResponsePreparedAndExcludedObservation": true,
+      "humanPlansWithoutAcceptedExecution": 6,
+      "newHumanLabels": 0,
+      "sourceQueryMeter": {
+        "capturedAt": "2026-10-27T19:43:03.319307+00:00",
+        "rowsRead": 166,
+        "rowsWritten": 0,
+        "rowsReturned": 12
+      },
+      "sourceQueryMeterScope": "Historical saved SELECT only; no new SQL or total experiment-cost claim."
+    },
+    "laterPublishedCohorts": {
+      "October29": "Two operations, one accepted capture/one capture-unavailable; original raw archive not located in bounded search.",
+      "October30": "Published twelve-control current-production acceptance remains dated; raw archive not located in bounded search.",
+      "pooledIntoNewCalibration": false
+    }
+  },
+  "acceptance": {
+    "analyticsTests": 365,
+    "workspaceTypes": true,
+    "isolatedGeneratedOutput": true,
+    "node": "24.14.1",
+    "pnpm": "9.15.4",
+    "nodeWorkerd": {
+      "cases": 42,
+      "syntheticInputs": 40,
+      "actualHistoricalInputs": 2,
+      "historicalAttemptsRepresentedSeparately": [
+        1,
+        3
+      ],
+      "accepted": 23,
+      "rejected": 19,
+      "rounds": 1,
+      "exactAgreement": true
+    },
+    "bicV2": {
+      "version": "access-evidence-v2",
+      "profile": "2026-10-31.2",
+      "provenance": "saved-control",
+      "sourceAuthenticity": "not-established",
+      "populationCompleteness": "not-established",
+      "totals": {
+        "plannedAttempts": 1,
+        "executedAttempts": 1,
+        "observedResponses": 1,
+        "suppliedSecurityRecords": 1,
+        "uniquelyAssignedSecurityRecords": 1,
+        "ambiguousSecurityRecords": 0,
+        "unmatchedSecurityRecords": 0,
+        "attemptsWithAssignedSecurityRecords": 1,
+        "suppliedCollectorRecords": 0,
+        "completeCollectorLookups": 0,
+        "partialCollectorLookups": 0,
+        "unknownCollectorAttempts": 1,
+        "identicalSecurityFactGroups": 0
+      },
+      "attempts": [
+        {
+          "ordinal": 1,
+          "executed": true,
+          "labelSource": "controlled-client-receipt",
+          "declaredOperator": "automation",
+          "timingBasis": "observation-second-window",
+          "contextBasis": "recorded-request",
+          "responseObservationBasis": "after-body-read",
+          "responseStatus": 403,
+          "assignedSecurityRecords": 1,
+          "ambiguousSecurityRecords": 0,
+          "collector": "unknown",
+          "collectorLookupState": "not-supplied",
+          "suppliedCollectorRecords": 0,
+          "storedKinds": [],
+          "methodHistory": [],
+          "warnings": []
+        }
+      ],
+      "securityRecords": [
+        {
+          "ordinal": 1,
+          "association": "unique-context-match",
+          "candidateAttemptOrdinals": [
+            1
+          ],
+          "sameRayTimeCompatibleContextConflicts": 0,
+          "sameRayOutsideWindow": 0,
+          "action": "block",
+          "feature": "bic",
+          "sampleInterval": 1,
+          "identicalFactCopies": 1
+        }
+      ],
+      "limits": [
+        "Counts describe supplied records and declared scope. Schema validation authenticates neither captures, labels nor lookup completeness; no population completeness is established.",
+        "Security records are not unique requests or visits. Repeated facts are surfaced without deduplication; sampleInterval is not a population multiplier or a completeness promise.",
+        "A contextual Ray match corroborates supplied evidence; it is not identity authentication. Observation-second overlap is not a measured execution duration or guaranteed provider-clock agreement.",
+        "Complete-empty means zero supplied records in a caller-declared complete lookup scope, not absent Worker invocation or global storage absence. Partial and unavailable evidence remain distinct.",
+        "Observation clocks record caller-observed stages, not network-arrival instants. Context basis distinguishes retained request metadata from protocol reconstruction; neither authenticates wire context or redirects.",
+        "Response status does not prove article delivery, reading or usefulness. BIC actions do not establish malicious intent, human identity, purpose or RFC9421 verification.",
+        "Stored kinds are observations, not truth labels or accuracy measurements. This report does not enter the calibration confusion matrix. Input references, Rays, context and arbitrary source labels are omitted."
+      ]
+    },
+    "originalCurlV2": {
+      "version": "access-evidence-v2",
+      "profile": "2026-10-31.2",
+      "provenance": "saved-control",
+      "sourceAuthenticity": "not-established",
+      "populationCompleteness": "not-established",
+      "totals": {
+        "plannedAttempts": 3,
+        "executedAttempts": 3,
+        "observedResponses": 3,
+        "suppliedSecurityRecords": 0,
+        "uniquelyAssignedSecurityRecords": 0,
+        "ambiguousSecurityRecords": 0,
+        "unmatchedSecurityRecords": 0,
+        "attemptsWithAssignedSecurityRecords": 0,
+        "suppliedCollectorRecords": 3,
+        "completeCollectorLookups": 3,
+        "partialCollectorLookups": 0,
+        "unknownCollectorAttempts": 0,
+        "identicalSecurityFactGroups": 0
+      },
+      "attempts": [
+        {
+          "ordinal": 1,
+          "executed": true,
+          "labelSource": "controlled-client-receipt",
+          "declaredOperator": "automation",
+          "timingBasis": "observation-second-window",
+          "contextBasis": "protocol-reconstruction",
+          "responseObservationBasis": "controller-completed",
+          "responseStatus": 200,
+          "assignedSecurityRecords": 0,
+          "ambiguousSecurityRecords": 0,
+          "collector": "complete-with-records",
+          "collectorLookupState": "complete",
+          "suppliedCollectorRecords": 1,
+          "storedKinds": [
+            {
+              "kind": "other-bot",
+              "records": 1
+            }
+          ],
+          "methodHistory": [
+            {
+              "collection": "2026-10-27.6",
+              "classifier": null,
+              "records": 1
+            }
+          ],
+          "warnings": []
+        },
+        {
+          "ordinal": 2,
+          "executed": true,
+          "labelSource": "controlled-client-receipt",
+          "declaredOperator": "automation",
+          "timingBasis": "observation-second-window",
+          "contextBasis": "protocol-reconstruction",
+          "responseObservationBasis": "controller-completed",
+          "responseStatus": 200,
+          "assignedSecurityRecords": 0,
+          "ambiguousSecurityRecords": 0,
+          "collector": "complete-with-records",
+          "collectorLookupState": "complete",
+          "suppliedCollectorRecords": 1,
+          "storedKinds": [
+            {
+              "kind": "other-bot",
+              "records": 1
+            }
+          ],
+          "methodHistory": [
+            {
+              "collection": "2026-10-27.6",
+              "classifier": null,
+              "records": 1
+            }
+          ],
+          "warnings": []
+        },
+        {
+          "ordinal": 3,
+          "executed": true,
+          "labelSource": "controlled-client-receipt",
+          "declaredOperator": "automation",
+          "timingBasis": "observation-second-window",
+          "contextBasis": "protocol-reconstruction",
+          "responseObservationBasis": "controller-completed",
+          "responseStatus": 200,
+          "assignedSecurityRecords": 0,
+          "ambiguousSecurityRecords": 0,
+          "collector": "complete-with-records",
+          "collectorLookupState": "complete",
+          "suppliedCollectorRecords": 1,
+          "storedKinds": [
+            {
+              "kind": "other-bot",
+              "records": 1
+            }
+          ],
+          "methodHistory": [
+            {
+              "collection": "2026-10-27.6",
+              "classifier": null,
+              "records": 1
+            }
+          ],
+          "warnings": []
+        }
+      ],
+      "securityRecords": [],
+      "limits": [
+        "Counts describe supplied records and declared scope. Schema validation authenticates neither captures, labels nor lookup completeness; no population completeness is established.",
+        "Security records are not unique requests or visits. Repeated facts are surfaced without deduplication; sampleInterval is not a population multiplier or a completeness promise.",
+        "A contextual Ray match corroborates supplied evidence; it is not identity authentication. Observation-second overlap is not a measured execution duration or guaranteed provider-clock agreement.",
+        "Complete-empty means zero supplied records in a caller-declared complete lookup scope, not absent Worker invocation or global storage absence. Partial and unavailable evidence remain distinct.",
+        "Observation clocks record caller-observed stages, not network-arrival instants. Context basis distinguishes retained request metadata from protocol reconstruction; neither authenticates wire context or redirects.",
+        "Response status does not prove article delivery, reading or usefulness. BIC actions do not establish malicious intent, human identity, purpose or RFC9421 verification.",
+        "Stored kinds are observations, not truth labels or accuracy measurements. This report does not enter the calibration confusion matrix. Input references, Rays, context and arbitrary source labels are omitted."
+      ]
+    },
+    "collectorEntry": {
+      "method": "Identical relative entry/esbuild options in HEAD baseline and candidate; offline module not imported by collector.",
+      "baseline": {
+        "bytes": 333942,
+        "sha256": "15eba7182e052858d32b1b7b6338d6958a902d0e20cd5877bffe86b9b4c5a3ff"
+      },
+      "candidate": {
+        "bytes": 333942,
+        "sha256": "15eba7182e052858d32b1b7b6338d6958a902d0e20cd5877bffe86b9b4c5a3ff"
+      },
+      "identical": true,
+      "productionBehaviorMeasured": false
+    },
+    "calibrationSourceUnchanged": true
+  },
+  "primarySources": [
+    {
+      "url": "https://opentelemetry.io/docs/specs/otel/logs/data-model/",
+      "claim": "Event time and collection observation time are distinct; source event time may be unknown.",
+      "limit": "No OTel integration or independent clock validation."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/specs/semconv/http/http-spans/",
+      "claim": "Client-span completion is after headers; body inclusion may vary.",
+      "limit": "Completion does not recover arrival time or guarantee full byte delivery."
+    }
+  ],
+  "review": "Methodological and final source review caught the BIC consistency issue, accepted explicit v2 provenance and found no remaining material defect; review is not independent provider verification.",
+  "privateArchive": {
+    "location": "packages/blog/worklog/analytics-evidence/2026-10-31-control-evidence",
+    "files": 48,
+    "manifestSha256": "a41ff18338bf8a67e36a976cc2bd3ea08bb36a9a0ee801f0b5d74f6f8cd3d4f1"
+  },
+  "effects": {
+    "offlineCapabilityChanged": true,
+    "liveCollectorChanged": false,
+    "newSiteRequests": 0,
+    "productionQueries": 0,
+    "newNativeObservations": 0,
+    "newHumanLabels": 0,
+    "newCalibrationTrials": 0,
+    "newModelTrialsOrRegrades": 0,
+    "rulesCredentialsOrScopesChanged": false,
+    "rawCollectionActivated": false,
+    "articleChanged": false,
+    "sourceActivationMeasured": false
+  },
+  "limits": [
+    "Bounded local archive search is not deletion/global absence evidence; historical published acceptance is not invalidated.",
+    "Observed clocks and reconstructed expected context are explicit, not inferred network arrival or authenticated wire request.",
+    "Original curl controls remain part of the October27 cohort; no new labels, growth, population or accuracy denominator.",
+    "Zero supplied security records for curl does not mean zero security activity. No native lookup was made.",
+    "Human plans without accepted execution are not proof of no attempt; missing browser clocks are not reconstructed."
+  ],
+  "goalStatus": "active",
+  "goalComplete": false,
+  "nextBoundedAction": "Audit current public analytics vocabulary and denominator paths against the accepted evidence: identify concrete cases that silently turn unknown/missing stages or declared identity into successful delivery, human readership or purpose. Repair only demonstrated discrepancies; no new live requests, queries, raw collection, rule changes or repeated accepted experiments."
+}

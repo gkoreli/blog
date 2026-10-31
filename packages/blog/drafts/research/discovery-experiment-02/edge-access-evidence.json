@@ -54,7 +54,18 @@
     "emptyFieldsNotInvented": true,
     "workerInvocationTrace": "not-measured",
     "d1AbsenceReadback": "not-measured",
-    "successfulArticleDelivery": false
+    "successfulArticleDelivery": false,
+    "clockInterpretationCorrection": {
+      "supersededBy": "05-retained-control-evidence.md",
+      "originalFieldsRetained": [
+        "providerEventSecondContainsResponseTime",
+        "responseReceivedMinusEventSecond"
+      ],
+      "correctedMeaning": "Original checkedAt was sampled after body reading and processing. The values compare an observation clock with the provider event second, not a measured response-arrival clock.",
+      "providerEventSecondContainsPostReadObservationTime": true,
+      "postReadObservationMinusEventSecond": 0.586073,
+      "networkArrivalTime": "not-recorded"
+    }
   },
   "capture": {
     "method": "Selected-field projection of the already displayed native event-export data URI, with expanded UI agreement.",

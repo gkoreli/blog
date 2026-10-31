@@ -6,10 +6,10 @@ import { analyzeAccessEvidence } from '../.test-dist/access-evidence.js';
 export function fixture() {
   const context = {method:'GET',host:'example.test',path:'/private-path-canary',query:'private-query-canary=1'};
   return {
-    version:'access-evidence-v1',provenance:'synthetic',
-    attempts:[{reference:'private-attempt-canary',executed:true,labelSource:'controlled-client-receipt',declaredOperator:'automation',context,
-      startInclusive:'2026-10-31T08:26:51Z',endExclusive:'2026-10-31T08:26:52Z',timingBasis:'receipt-second-window',
-      response:{status:403,receivedAt:'2026-10-31T08:26:51.586Z',ray:'1234567890abcdef'},collector:null}],
+    version:'access-evidence-v2',provenance:'synthetic',
+    attempts:[{reference:'private-attempt-canary',executed:true,labelSource:'controlled-client-receipt',declaredOperator:'automation',context,contextBasis:'recorded-request',
+      startInclusive:'2026-10-31T08:26:51Z',endExclusive:'2026-10-31T08:26:52Z',timingBasis:'observation-second-window',
+      response:{status:403,observationBasis:'after-body-read',observedAt:'2026-10-31T08:26:51.586Z',ray:'1234567890abcdef'},collector:null}],
     securityRecords:[{reference:'private-event-canary',context:{...context},datetime:'2026-10-31T08:26:51Z',ray:'1234567890abcdef',
       action:'block',source:'bic',ruleId:'bic',sampleInterval:1}],
   };
@@ -17,7 +17,7 @@ export function fixture() {
 test('one blocked response joins by context without inventing downstream absence or classifier outcomes',()=>{
   const f=fixture(), before=structuredClone(f), r=analyzeAccessEvidence(f);
   assert.deepEqual(f,before);
-  assert.deepEqual(r.totals,{plannedAttempts:1,executedAttempts:1,receivedResponses:1,suppliedSecurityRecords:1,
+  assert.deepEqual(r.totals,{plannedAttempts:1,executedAttempts:1,observedResponses:1,suppliedSecurityRecords:1,
     uniquelyAssignedSecurityRecords:1,ambiguousSecurityRecords:0,unmatchedSecurityRecords:0,attemptsWithAssignedSecurityRecords:1,
     suppliedCollectorRecords:0,completeCollectorLookups:0,partialCollectorLookups:0,unknownCollectorAttempts:1,identicalSecurityFactGroups:0});
   assert.equal(r.attempts[0].collector,'unknown'); assert.deepEqual(r.attempts[0].storedKinds,[]);
@@ -93,10 +93,22 @@ test('strict schemas budgets clocks duplicates and malformed states reject entir
     f=>f.securityRecords.push(structuredClone(f.securityRecords[0])),f=>f.attempts.push(structuredClone(f.attempts[0])),
     f=>f.attempts=Array.from({length:33},()=>f.attempts[0]),f=>f.securityRecords=Array.from({length:129},()=>f.securityRecords[0]),
     f=>f.attempts[0].reference='x'.repeat(262144),f=>f.securityRecords[0].datetime='2026-02-30T00:00:00Z',
-    f=>f.securityRecords[0].datetime='2026-10-31T08:26:51.001Z',f=>f.attempts[0].response.receivedAt='2026-10-31T08:26:52Z',
+    f=>f.securityRecords[0].datetime='2026-10-31T08:26:51.001Z',f=>f.attempts[0].response.observedAt='2026-10-31T08:26:52Z',
     f=>f.attempts[0].endExclusive='2026-10-31T08:28:00Z',f=>f.attempts[0].endExclusive=f.attempts[0].startInclusive,
     f=>f.securityRecords[0].ray+='-SEA',f=>f.securityRecords[0].sampleInterval=0,f=>f.securityRecords[0].context.path='/x/../y',
     f=>f.securityRecords[0].context.query='?x=1',f=>f.securityRecords[0].context.path='/bad%zz',
   ];
   for(const change of changes){const f=fixture();change(f);assert.throws(()=>analyzeAccessEvidence(f),/Access evidence rejected:/);}
+});
+
+
+test('v2 observation and context provenance survive without silent v1 reinterpretation',()=>{
+  const f=fixture();f.attempts[0].contextBasis='protocol-reconstruction';f.attempts[0].response.observationBasis='controller-completed';
+  const r=analyzeAccessEvidence(f);assert.equal(r.version,'access-evidence-v2');assert.equal(r.profile,'2026-10-31.2');
+  assert.equal(r.attempts[0].contextBasis,'protocol-reconstruction');assert.equal(r.attempts[0].responseObservationBasis,'controller-completed');
+  for(const mutate of [
+    f=>f.version='access-evidence-v1',f=>{f.attempts[0].response.receivedAt=f.attempts[0].response.observedAt;delete f.attempts[0].response.observedAt;},
+    f=>f.attempts[0].timingBasis='receipt-second-window',f=>delete f.attempts[0].response.observationBasis,
+    f=>f.attempts[0].response.observationBasis='arrival-guessed',f=>delete f.attempts[0].contextBasis,f=>f.attempts[0].contextBasis='authenticated-wire',
+  ]){const g=fixture();mutate(g);assert.throws(()=>analyzeAccessEvidence(g),/Access evidence rejected:/);}
 });

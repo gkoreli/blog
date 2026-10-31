@@ -1,15 +1,15 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T08:47:52.629228+00:00",
-  "sourceBaseline": "24e9afbe9620a1f2cd9b4991271ed55983329ae3",
+  "checkedAt": "2026-10-31T08:56:55.118791+00:00",
+  "sourceBaseline": "8e1d061856e5d11fb13d56d66033e577dc925899",
   "goalStatus": "active",
   "goalAchieved": false,
   "objective": "The next engineering iteration should make unknowns and conflicts explicit, tighten name matching, retain signature-coverage facts, and validate vendor claims through documented methods. Then we need labelled experiments measuring errors and unresolved cases.\n\nContinue we need better visibility, truthfulness and correctness. Read authoritative code and open source libraries, how are others doing it? Lets borrow ideas, to improve our approaches further. Iterate, lookup, experiment and improve our analytics.",
   "previousGoalTurn": {
     "classification": "progress",
-    "scope": "24e9afb established native BIC cause without retrying the rejected control."
+    "scope": "8e1d061 implemented the separate offline ledger; this audit found and corrects its observation-clock semantics."
   },
-  "scope": "Implemented and accepted a dedicated offline access-evidence ledger against the retained BIC control; no new live measurement.",
+  "scope": "Retained-control availability inventory, explicit v2 observation/context provenance and correction of unsupported arrival-time implication.",
   "history": {
     "archive": "120-goal-audit-before-reconciliation.json",
     "sha256": "9ade8ddf503fad3dc779fd057ebcc7602474bcc1c68f5911f39a44511cab0ee3",
@@ -23,7 +23,7 @@
     "offlineDirectoryAudit": "2026-10-31.2",
     "statsReportCache": "2026-10-31.3",
     "offlineResourceReach": "2026-10-31.1",
-    "offlineAccessEvidence": "2026-10-31.1"
+    "offlineAccessEvidence": "2026-10-31.2"
   },
   "sourceSha256": {
     "classify.ts": "3a0752a98dab350243323aae3a66fa7d06b14f1648ca1856fe704f9e9ab9f794",
@@ -42,7 +42,7 @@
     "search-evidence.ts": "2dcca61325112b040e30c39d1f5ebb0281da270ad7de164bfe13dc7e47fb8c8c",
     "verifier-profile.ts": "d4d9d00f32c1a750878c1b80a66d088a27557b924ad862a6e939bc7e5c221864",
     "resource-reach.ts": "a2d5341e3870a902be4c740f308aadd55ff166f4b48277de352ce75383d32718",
-    "access-evidence.ts": "20158a54ed1fb93f20908298dfacb049719baf97f149432ad7ba7664585436c9"
+    "access-evidence.ts": "7422813c2d32af9ab0358ffc96d1bad45e6218d6bc8d056ef4c3af32ef68c1e4"
   },
   "requirements": [
     {
@@ -64,7 +64,9 @@
         "112-native-booleans-need-their-own-denominators.md",
         "native-boolean-availability-release.json",
         "../discovery-experiment-02/04-offline-access-ledger.md",
-        "../discovery-experiment-02/access-ledger-checks.json"
+        "../discovery-experiment-02/access-ledger-checks.json",
+        "../discovery-experiment-02/05-retained-control-evidence.md",
+        "../discovery-experiment-02/retained-control-checks.json"
       ],
       "limit": "Missing, unsupported, conflicting and native unavailable values stay distinct. This does not prove human accuracy or managed-verifier agreement."
     },
@@ -161,7 +163,9 @@
         "../discovery-experiment-02/03-edge-access-evidence.md",
         "../discovery-experiment-02/edge-access-evidence.json",
         "../discovery-experiment-02/04-offline-access-ledger.md",
-        "../discovery-experiment-02/access-ledger-checks.json"
+        "../discovery-experiment-02/access-ledger-checks.json",
+        "../discovery-experiment-02/05-retained-control-evidence.md",
+        "../discovery-experiment-02/retained-control-checks.json"
       ],
       "limit": "Weekly joint measurement history is implemented and has dated production acceptance; Research108's identical-report counterexample is superseded for that gap. Stage controls distinguish response/script/queue/receipt, but representative human/device/RUM behavior remains unmeasured."
     },
@@ -321,14 +325,14 @@
   "effectsThisAudit": {
     "offlineCapabilityChanged": true,
     "liveCollectorChanged": false,
-    "productionRequests": 0,
-    "sqlStatements": 0,
+    "newSiteRequests": 0,
+    "productionQueries": 0,
     "newNativeObservations": 0,
-    "replayedRetainedNativeRecords": 1,
     "newHumanLabels": 0,
-    "registeredCalibrationTrials": 0,
-    "modelTrialsOrRegrades": 0,
+    "newCalibrationTrials": 0,
+    "newModelTrialsOrRegrades": 0,
     "rulesCredentialsOrScopesChanged": false,
+    "rawCollectionActivated": false,
     "articleChanged": false,
     "sourceActivationMeasured": false,
     "runtimeChanged": false,
@@ -342,13 +346,13 @@
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: offline access ledger with actual retained control, ambiguity/multiplicity/unknown semantics and corrected operator provenance",
+    "thisTurnClassification": "progress: retained receipts expose v1 observation-clock conflation; v2 provenance/migration and separate historical controls accepted",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Inspect retained failed fetcher/calibration control receipts for recoverable response/context/security evidence. Produce a scoped availability inventory and reconcile only supported joins with the access ledger; stop at named capture gaps. Do not repeat accepted controls, make new site requests, query D1, change protection or infer absent events.",
+  "nextBoundedAction": "Audit current public analytics vocabulary and denominator paths against the accepted evidence: identify concrete cases that silently turn unknown/missing stages or declared identity into successful delivery, human readership or purpose. Repair only demonstrated discrepancies; no new live requests, queries, raw collection, rule changes or repeated accepted experiments.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -374,11 +378,11 @@
     "scopeAfterOwnerContinuation": "Historical checkpoint for missing measurement inputs; not a prohibition on independent implementation, observed agent growth or discovery work."
   },
   "ownerWorkStatus": "active alternative building and evidence-led discovery",
-  "goalStatusScope": "Persistent goal remains active. Offline acceptance is new progress; historical blocked checkpoint and claim-specific gates remain preserved.",
+  "goalStatusScope": "Persistent goal remains active. This correction is progress; no arrival, population or missing-input requirement is declared complete.",
   "latestContinuation": {
-    "research": "../discovery-experiment-02/04-offline-access-ledger.md",
-    "receipt": "../discovery-experiment-02/access-ledger-checks.json",
-    "nextBoundedAction": "Inspect retained failed fetcher/calibration control receipts for recoverable response/context/security evidence. Produce a scoped availability inventory and reconcile only supported joins with the access ledger; stop at named capture gaps. Do not repeat accepted controls, make new site requests, query D1, change protection or infer absent events."
+    "research": "../discovery-experiment-02/05-retained-control-evidence.md",
+    "receipt": "../discovery-experiment-02/retained-control-checks.json",
+    "nextBoundedAction": "Audit current public analytics vocabulary and denominator paths against the accepted evidence: identify concrete cases that silently turn unknown/missing stages or declared identity into successful delivery, human readership or purpose. Repair only demonstrated discrepancies; no new live requests, queries, raw collection, rule changes or repeated accepted experiments."
   },
   "latestAcceptedSourceActivation": {
     "sourceCommit": "762e3b5a7f6b2c7b2770ae22f41f730ceca6ba84",

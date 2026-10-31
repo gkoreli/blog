@@ -2,6 +2,8 @@
 
 October 31, 2026. Continues [the retained BIC control](03-edge-access-evidence.md) and [TASK-0119](../../../../../docs/tasks/TASK-0119.md).
 
+**Clock interpretation superseded:** [The retained-control audit](05-retained-control-evidence.md) found that the original adapter mapped a post-read observation into `receivedAt`. Its arrival-time implication was unsupported. The original v1 outputs remain preserved; v2 requires explicit observation and context provenance. This record retains the original implementation and dated checks.
+
 ## Frozen implementation and acceptance plan
 
 Build a dedicated offline analytics export, outside the collector and calibration evaluator. One closed, versioned input contains at most 32 planned attempts and 128 supplied Cloudflare security records. Each executed attempt declares exact method/host/serialized path/query, a UTC half-open join window of at most 60 seconds, its timing basis, operator-label provenance, an optional received response, and an optional scoped collector lookup. A receipt-second window is contextual matching evidence, not a measured execution duration. Reject response or lookup evidence attached to unexecuted attempts.

@@ -11,7 +11,7 @@ const report = analyzeAccessEvidence(savedInput);
 
 ## Input contract
 
-Envelope: `{ version: "access-evidence-v1", provenance: "saved-control" | "synthetic", attempts: [], securityRecords: [] }`.
+Envelope: `{ version: "access-evidence-v2", provenance: "saved-control" | "synthetic", attempts: [], securityRecords: [] }`.
 
 Each attempt requires:
 
@@ -22,10 +22,13 @@ Each attempt requires:
 | `declaredOperator` | `automation`, `human-reported` or `unconfirmed`; never inferred from headers |
 | `labelSource` | `controlled-client-receipt`, `agent-controller`, `human-attestation` or `unconfirmed` |
 | `context` | Exact `{ method, host, path, query }`; uppercase method, lowercase DNS host, serialized absolute path, query without a leading `?` |
+| `contextBasis` | `recorded-request` for retained request metadata, or `protocol-reconstruction` for reconstructed expected context; neither promises authenticated wire capture or redirect resolution |
 | `startInclusive`, `endExclusive` | UTC instants, whole seconds or exactly three fractional digits; positive half-open window of at most 60 seconds |
-| `timingBasis` | `execution-window` or `receipt-second-window`; the latter requires an aligned one-second window and a response |
-| `response` | `null` or `{ status, receivedAt, ray }`; status 100–599, instant inside the window, Ray `null` or 16 lowercase hex digits without the data-center suffix |
+| `timingBasis` | `execution-window` or `observation-second-window`; the latter requires an aligned one-second window and a response |
+| `response` | `null` or `{ status, observedAt, observationBasis, ray }`; status 100–599, observation instant inside the window, Ray `null` or 16 lowercase hex digits without the data-center suffix |
 | `collector` | `null` or `{ scope, state, records }`; scope is a nonempty private reference to the supplied lookup conditions; state is `complete`, `partial` or `unavailable` |
+
+`observationBasis` is `headers-observed`, `after-body-read` or `controller-completed`. The observation clock records when the caller captured that stage. An after-body-read timestamp can follow additional processing; a controller-completed timestamp can follow the client process. Neither is an inferred network-arrival instant. Context and observation bases survive in the report.
 
 A controlled receipt can support either an automation or human-reported declaration. `agent-controller` must pair with automation; `human-attestation` with human-reported; `unconfirmed` with unconfirmed. The caller must establish these declarations independently. This module does not authenticate them.
 
@@ -35,10 +38,14 @@ Each security record requires `{ reference, context, datetime, ray, action, sour
 
 ## Joining and interpreting the output
 
-A security record can join only to an executed attempt with the same response Ray, exact request context, and an overlapping provider second/window. Two candidate attempts leave it ambiguous and unallocated. Several records may join one attempt. Same-Ray context disagreement within the time window stays separate from out-of-window Ray reuse. There is no tolerance expansion, URL decoding, suffix stripping or path/query normalization.
+A security record can join only to an executed attempt with the same response Ray, exact request context, and an overlapping provider second/window. For an observation-second window, this compares a supplied observation clock with a provider clock; it does not reconstruct a request execution interval or establish clock synchronization. Two candidate attempts leave it ambiguous and unallocated. Several records may join one attempt. Same-Ray context disagreement within the time window stays separate from out-of-window Ray reuse. There is no tolerance expansion, URL decoding, suffix stripping or path/query normalization.
 
 The report numbers attempts and security records in input order; retain the private input to map ordinals back to evidence. It omits references, context, Rays and arbitrary provider labels. It retains allowlisted operator/provenance states, response status, supplied-record counts, stored kinds, syntactic method history and lookup availability. An exact `source=bic` / `ruleId=bic` pair is reported as BIC; other combinations are `not-established`. Empty action is `not-recorded`. Sample intervals are retained without multiplying counts. Repeated identical security facts are surfaced without deduplication. Differences in omitted native fields cannot be recovered.
 
-Totals have separate denominators: planned/executed attempts, received responses, supplied security records, attempts with assigned records, lookup availability and supplied collector records. Ambiguous records never become assigned records. `unknownCollectorAttempts` counts executed attempts with no supplied or unavailable lookup; partial lookups have their own counter. Zero supplied collector records alongside an unknown lookup remains unknown. No rate of human accuracy, unique visitors, demand, successful article delivery, reading or useful agent work follows from these counts. A block paired with 2xx or collector rows produces a warning, not an invented explanation.
+Totals have separate denominators: planned/executed attempts, observed responses, supplied security records, attempts with assigned records, lookup availability and supplied collector records. Ambiguous records never become assigned records. `unknownCollectorAttempts` counts executed attempts with no supplied or unavailable lookup; partial lookups have their own counter. Zero supplied collector records alongside an unknown lookup remains unknown. No rate of human accuracy, unique visitors, demand, successful article delivery, reading or useful agent work follows from these counts. A block paired with 2xx or collector rows produces a warning, not an invented explanation.
 
-Cloudflare documents [non-unique Ray IDs](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/) and [multiple/sampled security events](https://developers.cloudflare.com/waf/analytics/security-events/). The [actual BIC replay and acceptance](../blog/drafts/research/discovery-experiment-02/04-offline-access-ledger.md) owns the dated evidence. BIC is not an RFC9421 verdict. The existing calibration evaluator remains independent.
+Cloudflare documents [non-unique Ray IDs](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/) and [multiple/sampled security events](https://developers.cloudflare.com/waf/analytics/security-events/). The [retained-control audit and v2 correction](../blog/drafts/research/discovery-experiment-02/05-retained-control-evidence.md) owns the dated evidence. BIC is not an RFC9421 verdict. The existing calibration evaluator remains independent.
+
+## Version boundary
+
+Profile `2026-10-31.2` accepts only v2. Version1's `receivedAt`, `receipt-second-window` and `receivedResponses` mixed receipt terminology with an after-body-read observation in our saved BIC adapter. V2 requires explicit observation/context bases and uses `observedResponses`. It rejects v1 and legacy fields rather than converting them. The original v1 captures/results remain inspectable; reuse requires reviewing the source of each clock and context before constructing new input. No arrival time can be recovered from a later completion time alone. This remains an offline package export with no deployed collector change.

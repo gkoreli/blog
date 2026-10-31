@@ -23,7 +23,7 @@ The original response and all twelve prior archive files verify. Its saved HTML 
 | Protocol / query | HTTP/1.1 / empty |
 | `sampleInterval`, `matchIndex` | 1, 0 |
 
-Ray, time, host, path, method and empty query corroborate the match to the saved release control. The provider event timestamp's one-second interval contains the recorded response-receipt time. The same User-Agent also matches the known Python urllib execution. This is a controlled request attribution, not authentication of arbitrary future requests claiming that token. Empty description/ruleset fields and `zoneVersion: 0` are retained without inventing their semantics.
+Ray, time, host, path, method and empty query corroborate the match to the saved release control. The provider event timestamp's one-second interval contains the recorded post-read observation time. [The later clock audit](05-retained-control-evidence.md) corrects the original receipt-time wording: the Python script sampled that clock after reading and processing the body, not at network arrival. The same User-Agent also matches the known Python urllib execution. This is a controlled request attribution, not authentication of arbitrary future requests claiming that token. Empty description/ruleset fields and `zoneVersion: 0` are retained without inventing their semantics.
 
 The [closed record](edge-access-evidence.json) supersedes the earlier unknown rejecting-feature status: **BIC is now supported by native provider evidence**. The exact decisive signal, effective historical configuration and per-request Worker/storage trace remain unmeasured. No current setting needed inspection after the provider identified the feature; no setting was changed.
 
