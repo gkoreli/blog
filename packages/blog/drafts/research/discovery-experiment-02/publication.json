@@ -1,0 +1,79 @@
+{
+  "sourceCommit": "10c90fb03edf16bb633f14599ead9b84cfa734de",
+  "scopedImplementationCommit": "b8232ecb3004f04718ccd54242250070327eccf9",
+  "build": {
+    "checks": [
+      {
+        "completed_at": "2026-10-31T00:58:06Z",
+        "conclusion": "success",
+        "details_url": "https://dash.cloudflare.com/7e0dc86ef69b4572a63162a52cddd269/workers/services/view/gkoreli-com/production/builds/05277192-573e-4ccc-a9aa-2cde26ee1522",
+        "id": 124393442508,
+        "status": "completed"
+      }
+    ],
+    "total_count": 1
+  },
+  "captures": [
+    {
+      "name": "stats-html",
+      "url": "https://gkoreli.com/stats",
+      "startedAt": "2026-10-31T00:58:28.233837+00:00",
+      "exitCode": 0,
+      "status": "200",
+      "bytes": 31223,
+      "sha256": "a483da624098b43ca7f54412236dfeeff7fe3ad1dc90747650dd34133d1bf3ad"
+    },
+    {
+      "name": "stats-script",
+      "url": "https://gkoreli.com/stats.js",
+      "startedAt": "2026-10-31T00:58:28.603309+00:00",
+      "exitCode": 0,
+      "status": "200",
+      "bytes": 97150,
+      "sha256": "8778372fd403f631154d9292e6226c71dc7bb0bf6a9167b4cf0ced8c10ae40a0"
+    },
+    {
+      "name": "focused-html",
+      "url": "https://gkoreli.com/stats/readership",
+      "startedAt": "2026-10-31T00:58:28.944254+00:00",
+      "exitCode": 0,
+      "status": "200",
+      "bytes": 12206,
+      "sha256": "219379d213b0eab6be76a614caf25a09004f3c4cd4ced0c0bf7a5dcbc08598f7"
+    },
+    {
+      "name": "article-md",
+      "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers.md",
+      "startedAt": "2026-10-31T00:58:29.321739+00:00",
+      "exitCode": 0,
+      "status": "200",
+      "bytes": 49108,
+      "sha256": "44b02f08bb126aeb8e4417b8fab6a8536c5c74bb40e761fe76dae1e643a3cb7b"
+    }
+  ],
+  "accepted": {
+    "statsDefaultAllSelected": true,
+    "peopleAndAgentsAudienceCopy": true,
+    "focusedReportScopeAndTitle": true,
+    "statsClientExactCheckedBytes": true,
+    "articleMarkdownExactCheckedBytes": true,
+    "externalReferenceServed": true,
+    "runtimeSourcesMatchPushedCommit": true
+  },
+  "limits": {
+    "fullHtmlParityClaimed": false,
+    "productionBrowserReportExecuted": false,
+    "productionApiDefaultPayloadRead": false,
+    "productionSqlStatements": 0,
+    "perRequestWorkerVersionJoined": false,
+    "ingestionReadbackPerformed": false
+  },
+  "discovery": {
+    "questionSetVersion": "2026-10-31.1",
+    "questions": 4,
+    "canonicalReturnedIn": 3,
+    "arcjetExternalReferenceVerified": true,
+    "populationGrowthRateMeasured": false
+  },
+  "decision": "Retain agent-inclusive defaults and recognize observed discovery and external reuse as positive audience outcomes; continue distinct question/source and use measurements."
+}
