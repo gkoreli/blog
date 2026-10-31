@@ -1,0 +1,78 @@
+{
+  "checkedAt": "2026-10-31T08:27:59.227102+00:00",
+  "source": {
+    "checkedAt": "2026-10-31T08:26:51.471000+00:00",
+    "method": "Fresh native dashboard source link, build log and Ready/100% rendered meter; active deployment displays same version prefix.",
+    "sourceCommit": "762e3b5a7f6b2c7b2770ae22f41f730ceca6ba84",
+    "buildId": "019b0ea5-b801-49dd-b14c-ac6734950cf5",
+    "workerVersion": "c1c6a99c-8d8b-4a85-a4fc-960d5fca9da4",
+    "ready": true,
+    "meterPercent": 100,
+    "sourceBuildCompletedAt": "2026-10-31T08:25:10.082Z",
+    "hostedNode": "24.22.1",
+    "localNode": "24.14.1",
+    "ownedDashboardTabClosed": true,
+    "buildLogSha256": "ff29585ddb13666d39611e8adfe4e6c7ee4cf5213d693ee780d44c851e79fd12"
+  },
+  "nativeReadySourceRowMeter": 100,
+  "singleServedAttempt": {
+    "checkedAt": "2026-10-31T08:26:51.586073+00:00",
+    "status": 403,
+    "bytes": 7527,
+    "sha256": "2ba64e90d0daa2f2418b2f7b63ed4d831648f731288041ddc4e8ee8f29fbd4bf",
+    "expectedSerializedPostBodySha256": "659e4ed88d70747e2e0b2806ca90e7bc27d7036be15a03353b2b416f25e04fd3",
+    "exactIsolatedPostBodyPresent": false,
+    "targets": [
+      {
+        "id": "duckassistbot-what-its-signature-actually-covers",
+        "occurrences": 0
+      },
+      {
+        "id": "how-a-site-owner-can-classify-ai-fetches",
+        "occurrences": 0
+      },
+      {
+        "id": "ai-fetcher-probe-method-and-limits",
+        "occurrences": 0
+      }
+    ],
+    "attempts": 1,
+    "headers": {
+      "Accept": "text/html",
+      "Purpose": "prefetch"
+    },
+    "sourceExclusionControls": {
+      "normalGet": true,
+      "prefetchGet": false
+    },
+    "productionSqlStatements": 0,
+    "requestLevelWorkerVersionJoin": false,
+    "storageAbsenceReadback": false,
+    "scope": "One prefetch-marked HTML response. Source exclusion rule and local controls support ingestion-ineligible scope; no production insert readback or per-request version trace."
+  },
+  "responseKind": "Cloudflare Access denied HTML, not the article",
+  "ray": "a53146f84f27ec08-SEA",
+  "servedDestinationAcceptance": false,
+  "noRetry": true,
+  "ruleCause": "not-established",
+  "workerIngressReached": "not-established",
+  "baselineModelTrialRegraded": false,
+  "effects": {
+    "productionSiteRequests": 1,
+    "productionSqlStatements": 0,
+    "rulesCredentialsOrScopesChanged": false,
+    "rawCaptureActivated": false,
+    "newHumanLabels": 0
+  },
+  "privateArchive": {
+    "files": 12,
+    "location": "packages/blog/worklog/analytics-evidence/2026-10-31-answer-fidelity-release",
+    "manifestSha256": "08d9e63e0b719cdad8c8b7d4827bb4cbaa5955ecefe91b40d017d4c8424a4c65"
+  },
+  "scope": [
+    "Source build/activation is accepted independently of the rejected body check.",
+    "The delivered403body does not establish the selected rule or absent Worker/storage activity.",
+    "No alternative client, retry, security-bypass or provider challenge action was attempted.",
+    "Later documentation-only builds have separate identities."
+  ]
+}

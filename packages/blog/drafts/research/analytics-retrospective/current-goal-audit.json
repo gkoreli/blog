@@ -1,6 +1,6 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T08:22:45.675334+00:00",
+  "checkedAt": "2026-10-31T08:27:59.227102+00:00",
   "sourceBaseline": "3736f09b3946e1d70c66106e7749d9c369cbbbac",
   "goalStatus": "active",
   "goalAchieved": false,
@@ -307,23 +307,26 @@
   "effectsThisAudit": {
     "runtimeCollectorChanged": false,
     "buildRendererChanged": true,
-    "productionSiteRequests": 0,
+    "productionSiteRequests": 1,
     "productionSqlStatements": 0,
     "newHumanLabels": 0,
     "controlledAnswerTrials": 1,
     "newPublicSearchCalls": 0,
     "articleChangedByThisWork": false,
-    "credentialsOrScopesChanged": false
+    "credentialsOrScopesChanged": false,
+    "headingRendererActivationAccepted": true,
+    "servedDestinationAcceptance": false,
+    "servedStatus": 403
   },
   "resumedAudit": {
     "previousTurnClassification": "progress",
-    "thisTurnClassification": "progress: one complete answer/citation baseline, real missing-ID defect and checked local repair",
+    "thisTurnClassification": "progress: one complete answer/citation baseline, real missing-ID defect and checked local repair; exact source activation accepted, single served check403 preserved without retry",
     "consecutiveNoProgressGoalTurns": 0,
     "historicalBlockedAudit": "Prior blocked history concerns particular external measurement inputs; active tracker confirmed this turn.",
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Accept exact source-linked build/activation, then one frozen prefetch-marked HTML response for the three citation destinations. Preserve the original single-trial failure; no D1 retry, report fill or model coaching.",
+  "nextBoundedAction": "Inspect existing native edge policy and retained request evidence for the single rejected prefetch control (Ray in answer-fidelity-release.json). Determine rule/ingress stage if evidence permits; no retry, alternate-client bypass or weaker protection is authorized by this finding.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -353,15 +356,16 @@
   "latestContinuation": {
     "research": "../discovery-experiment-02/02-source-supplied-answer-fidelity.md",
     "receipt": "../discovery-experiment-02/answer-fidelity-checks.json",
-    "nextBoundedAction": "Accept exact source-linked build/activation, then one frozen prefetch-marked HTML response for the three citation destinations. Preserve the original single-trial failure; no D1 retry, report fill or model coaching."
+    "nextBoundedAction": "Inspect existing native edge policy and retained request evidence for the single rejected prefetch control (Ray in answer-fidelity-release.json). Determine rule/ingress stage if evidence permits; no retry, alternate-client bypass or weaker protection is authorized by this finding.",
+    "activationReceipt": "../discovery-experiment-02/answer-fidelity-release.json"
   },
   "latestAcceptedSourceActivation": {
-    "sourceCommit": "84c4550772fa91a23c6f9371ba03270ef71783d5",
-    "versionId": "185a7ea6-6451-4af4-a31e-e2358ffb2cc2",
+    "sourceCommit": "762e3b5a7f6b2c7b2770ae22f41f730ceca6ba84",
+    "versionId": "c1c6a99c-8d8b-4a85-a4fc-960d5fca9da4",
     "allocation": 100,
-    "receipt": "structured-extension-release.json",
-    "method": "Native dashboard build log and deployment row",
-    "gitHubCheckStatus": "in_progress",
-    "productionBehaviorMeasured": false
+    "receipt": "../discovery-experiment-02/answer-fidelity-release.json",
+    "method": "Native source-linked build log, Ready100%meter and activeprefix",
+    "productionBehaviorMeasured": false,
+    "servedDestinationAcceptance": false
   }
 }
