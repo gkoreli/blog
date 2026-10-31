@@ -66,3 +66,19 @@ Changelog required a new account and then revealed a newsletter-subscriber gate.
 ## October 30: two-CLI invitation published
 
 Goga selected and approved the public offer to test two TypeScript CLIs. [Published invitation](https://x.com/GogaKoreli/status/2116196406960758926), **8:51:55 AM Pacific**, two sentences / 226 weighted characters. [Exact copy, checks and bounded trial scope](adoption-next.md#5-two-readers-cli-trials--invitation-published). Canonical status, author, text, article card and timestamp were checked; X's unauthenticated embed independently returned the exact text. Both trial slots are open at this receipt. No trial, independent rerun or adoption result is claimed. No monitor, extra reply or additional outreach was created.
+
+## October 30: reply separating executable size from RAM
+
+Goga authorized only the second proposed conversation. Posted one reply as `u/ggaua` directly under [AbdullahxXD’s trimming comment](https://www.reddit.com/r/bun/comments/1xgp32y/comment/19rqjn2igc1wj/): [published reply](https://www.reddit.com/r/bun/comments/1xgp32y/comment/19rwm4brdp4md/).
+
+Exact posted copy:
+
+```text
+I tested --trim on the Oct 27 macOS preview while writing this article: my server executable went from 51.8 MB to 30.3 MB, but RAM after warm-up barely changed. Going from the regular Bun build to AOT saved about 9% peak RAM (RSS) on that server, so the smaller file doesn't mean the same drop in RAM.
+
+Code, measurements and limits: https://gkoreli.com/oss-radar-08-bun-aot
+```
+
+The fresh thread showed the specific claim that trimming would save memory and no existing reply from this account. The composer was checked, Comment clicked once, then the page displayed the exact body, article link, author and new reply permalink as a child of the intended comment. The one displayed upvote was Reddit’s automatic self-upvote, not independent engagement. The permanent reply link was opened. Browser calls timed out returning their observations, but the saved screenshot was subsequently recovered from disk and independently inspected: it shows the highlighted reply, exact body, author, link and parent-thread context. An unauthenticated public JSON request returned HTTP 403; third-party visibility remains unverified. Neither failure was treated as evidence of removal, and no duplicate was posted.
+
+The answer identifies the October 27 macOS preview, separates trimming’s 51.8 → 30.3 MB disk result from the regular-build/AOT server’s roughly 9% peak RSS reduction, and discloses the article context. The community-rules page was checked in browser and public read; it displayed the Community Rules heading without rule entries. Private copy and anonymous-response capture remain under `/tmp/bun-trim-reply-20261030/`. No other outreach, reply or monitor was created. No reader response or adoption result is established.
